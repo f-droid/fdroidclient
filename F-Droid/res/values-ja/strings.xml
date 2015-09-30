@@ -317,4 +317,9 @@
 	<string name="tab_installed_apps">ｲﾝｽﾄｰﾙ済</string>
 	<string name="download_error">ﾀﾞｳﾝﾛｰﾄﾞできませんでした</string>
 
-    </resources>
+    <string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+
+	</resources>

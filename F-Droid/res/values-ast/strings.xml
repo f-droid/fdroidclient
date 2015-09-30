@@ -309,8 +309,15 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="system_install_post_fail_message">Falló la instalación de F-Droid privilexáu. El métodu d\'instalación nun ta sofitáu por toles distribuciones Android, por favor consulta\'l rastrexador de fallos de F-Droid pa más información.</string>
     <string name="swap_not_enabled">Intercambéu non habilitáu</string>
     <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) de %1$s</string>
-	<string name="unstable_updates_summary">Suxer l\'anovamietnu a versiones inestables</string>
+	<string name="unstable_updates_summary">Suxer l\'anovamientu a versiones inestables</string>
 	<string name="wifi_ap">Fastera Wi-Fi</string>
 
     <string name="swap_active_hotspot">%1$s (la to fastera Wi-Fi)</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+
+	<string name="download_error">Descarga non esitosa</string>
+
     </resources>

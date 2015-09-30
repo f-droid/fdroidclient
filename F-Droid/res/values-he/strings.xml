@@ -5,7 +5,7 @@
     <string name="searchres_noapps">לא נמצאו אפליקציות תואמות את \'%s\'</string>
     <string name="installIncompatible">נראה כי חבילה זו אינה תואמת את מכשירך. האם ברצונך להתקין אותה בכל מקרה?</string>
     <string name="installDowngrade">הינך מנסה להנמיך את אפליקציה זו. פעולה שכזו עלולה לגרום לתפקוד לקוי ואף לאיבוד מידע. האם ברצונך לנסות להנמיך בכל מקרה?</string>
-    <string name="version">גרסא</string>
+    <string name="version">גרסה</string>
     <string name="delete">מחק</string>
     <string name="enable_nfc_send">אפשר NFC Send…</string>
     <string name="cache_downloaded">הטמן חבילות</string>
@@ -38,13 +38,13 @@
         GNU GPLv3.</string>
     <string name="about_site">אתר רשת:</string>
     <string name="about_mail">דוא״ל:</string>
-    <string name="about_version">גרסא:</string>
+    <string name="about_version">גרסה:</string>
     <string name="app_installed">מותקנת</string>
     <string name="app_not_installed">לא מותקנת</string>
     <string name="app_inst_known_source">מותקנת (מתוך %s)</string>
     <string name="app_inst_unknown_source">מותקנת (מתוך מקור לא ידוע)</string>
 
-    <string name="added_on">התווסף %s</string>
+    <string name="added_on">התווספה ב%s</string>
 
     <string name="ok">אישור</string>
 
@@ -60,7 +60,7 @@
     <string name="add_key">הוסף מפתח</string>
     <string name="overwrite">שכתב</string>
 
-    <string name="tab_available_apps">זמינים</string>
+    <string name="tab_available_apps">זמינות</string>
     <string name="tab_updates">עדכונים</string>
     <string name="one_update_available">עדכון 1 זמין.</string>
     <string name="many_updates_available">%d עדכונים זמינים.</string>
@@ -95,11 +95,11 @@
     <string name="menu_changelog">יומן שינויים</string>
     <string name="menu_source">קוד מקור</string>
     <string name="menu_upgrade">שדרג</string>
-    <string name="menu_donate">תרום</string>
+    <string name="menu_donate">תרומות</string>
 
-    <string name="details_installed">גרסא %s מותקנת</string>
+    <string name="details_installed">גרסה %s מותקנת</string>
     <string name="details_notinstalled">לא מותקנת</string>
-    <string name="corrupt_download">קובץ מורד הינו מושחת.</string>
+    <string name="corrupt_download">קובץ מורד הינו פגום.</string>
     <string name="antiadslist">אפליקציה זו מכילה פרסום</string>
     <string name="antitracklist">אפליקציה זו עוקבת ומדווחת על פעילותך</string>
     <string name="antinonfreeadlist">אפליקציה זו מקדמת תוספים לא-חופשיים</string>
@@ -157,7 +157,7 @@
         <string name="all_other_repos_fine">כל שאר המאגרים לא יצרו שגיאות.</string>
         <string name="global_error_updating_repos">שגיאה במהלך עדכון: %s</string>
     <string name="no_permissions">אין הרשאות בשימוש.</string>
-    <string name="permissions_for_long">הרשאות עבור גרסא %s</string>
+    <string name="permissions_for_long">הרשאות עבור גרסה %s</string>
     <string name="no_handler_app">אין לך שום אפליקציה זמינה אשר מסוגלת להתמודד עם %s.</string>
     <string name="compactlayout">סידור קומפקטי</string>
     <string name="compactlayout_on">הצג סמלים בגודל קטן יותר</string>
@@ -303,7 +303,7 @@
 <string name="unstable_updates">עדכונים לא יציבים</string>
 	<string name="unstable_updates_summary">הצע עדכונים לגרסאות לא יציבות</string>
 	<string name="about_source">מקור:</string>
-	<string name="tab_installed_apps">מותקנת</string>
+	<string name="tab_installed_apps">מותקנות</string>
 	<string name="swap_nfc_title">גע כדי להחליף</string>
     <string name="swap_nearby">הֶחְלֵף בקרבת מקום</string>
     <string name="swap_cant_find_peers">אינך יכול למצוא את מי שאתה מחפש?</string>
@@ -333,4 +333,11 @@
     <string name="install_confirm_update_no_perms">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? המידע הקיים שלך לא יאבד. זו לא מצריכה שום גישה מיוחדת.</string>
     <string name="install_confirm_update_system_no_perms">האם ברצונך להתקין עדכון לאפליקציה מובנית (קרי, built-in)? המידע הקיים שלך לא יאבד. זו לא מצריכה שום גישה מיוחדת.</string>
     <string name="update_interval_zero">אין עדכוני רשימת אפליקציה אוטומטיים</string>
-	</resources>
+	<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+
+	<string name="download_error">הורדה לא צלחה</string>
+
+    </resources>

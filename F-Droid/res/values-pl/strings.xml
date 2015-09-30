@@ -294,9 +294,9 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="privacyPerms">Prywatność</string>
     <string name="devicePerms">Dostęp do urządzenia</string>
     <string name="perm_costs_money">To może Cię kosztować</string>
-    <string name="uninstall_update_confirm">Czy chcesz zastąpić tą aplikację z pierwotną wersją?</string>
+    <string name="uninstall_update_confirm">Czy chcesz zastąpić tą aplikację pierwotną wersją?</string>
     <string name="uninstall_confirm">Czy chcesz odinstalować tą aplikację?</string>
-    <string name="tap_to_install">Pobieranie skończone, kliknij by zainstalować</string>
+    <string name="tap_to_install">Pobieranie zakończone, kliknij by zainstalować</string>
 
     <string name="perms_new_perm_prefix">"Nowe: "</string>
     <string name="perms_description_app">Dostarczone przez %1$s.</string>
@@ -315,4 +315,11 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 <string name="unstable_updates">Wersje niestabilne</string>
 	<string name="unstable_updates_summary">Sugeruj aktualizacje do niestabilnych wersji</string>
 	<string name="tab_installed_apps">Zainstalowana</string>
-	</resources>
+	<string name="menu_bitcoin">Bitcon</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+
+	<string name="download_error">Pobieranie nie powiodło się</string>
+
+    </resources>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="version">Versio</string>
   <string name="delete">Forigi</string>
@@ -118,4 +118,6 @@
   <string name="swap_view_available_networks">(Tuŝu por montri disponeblajn retojn)</string>
   <string name="open_qr_code_scanner">Malfermi QR-kodan skanilon</string>
   <string name="swap_welcome">Bonvenon al F-Droid!</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	</resources>

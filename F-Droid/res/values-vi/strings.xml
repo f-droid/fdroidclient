@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Tìm thấy %1$d ứng dụng với từ khoá \'%2$s\':</string>
   <string name="searchres_oneapp">Tìm thấy một ứng dụng với từ khoá \'%s\':</string>
@@ -10,29 +10,29 @@
   <string name="delete">Xoá</string>
   <string name="enable_nfc_send">Kích hoạt gửi qua NFC…</string>
   <string name="cache_downloaded">Lưu ứng dụng</string>
-  <string name="cache_downloaded_on">Lưu các tập tin apk đã tải trong thẻ nhớ</string>
+  <string name="cache_downloaded_on">Lưu các tập tin gói đã tải trong thẻ nhớ</string>
   <string name="updates">Cập nhật</string>
   <string name="other">Khác</string>
   <string name="update_interval">Tự động cạp nhật định kì</string>
   <string name="update_interval_zero">Không tự động cập nhật danh sách ứng dụng</string>
-  <string name="automatic_scan_wifi">Chỉ khi dùng wifi</string>
-  <string name="automatic_scan_wifi_on">Chỉ tự động cập nhật danh sách ứng dụng khi dùng wifi</string>
-  <string name="notify">Thông báo</string>
-  <string name="notify_on">Thông báo khi có bản cập nhật</string>
+  <string name="automatic_scan_wifi">Chỉ khi dùng Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Chỉ tự động cập nhật danh sách ứng dụng khi dùng Wi-Fi</string>
+  <string name="notify">Thông báo cập nhật</string>
+  <string name="notify_on">Hiện thông báo khi có bản cập nhật</string>
   <string name="update_history">Lịch sử cập nhật</string>
   <string name="update_history_summ">Ứng dụng sẽ được xem là mới nếu được thêm hoặc cập nhật trong vòng %s ngày</string>
   <string name="system_installer">Cài đặt bằng quyền hệ thống</string>
-  <string name="system_installer_on">Dùng quyền hệ thống để cài đặt, cập nhật và xoá ứng dụng</string>
+  <string name="system_installer_on">Dùng quyền hệ thống để cài đặt, cập nhật và gỡ bỏ ứng dụng</string>
   <string name="local_repo_name">Tên kho ứng dụng nội bộ</string>
   <string name="local_repo_https">Dùng kết nối riêng tư</string>
   <string name="local_repo_https_on">Dùng kết nối HTTPS:// mã hoá cho kho nội bộ</string>
   <string name="search_results">Kết quả tìm kiếm</string>
   <string name="app_details">Thông tin ứng dụng</string>
-  <string name="no_such_app">Không tìm thấy ứng dụng</string>
+  <string name="no_such_app">Không tìm thấy ứng dụng.</string>
   <string name="about_title">Giới thiệu về F-Droid</string>
   <string name="about_desc">Được xây dựng dựa trên Aptoide. Phát hành theo giấy phép GNU GPLv3.</string>
   <string name="about_site">Trang web:</string>
-  <string name="about_mail">Email:</string>
+  <string name="about_mail">E-Mail:</string>
   <string name="about_version">Phiên bản:</string>
   <string name="app_installed">Đã cài đặt</string>
   <string name="app_not_installed">Chưa cài đặt</string>
@@ -57,11 +57,11 @@
   <string name="choose_bt_send">Chọn cách gửi qua Bluetooth</string>
   <string name="send_via_bluetooth">Gửi qua Bluetooth</string>
   <string name="repo_add_url">Địa chỉ kho</string>
-  <string name="repo_delete_to_overwrite">Bạn phải xoá kho này trước thì mới có thể thêm kho có mã khác!</string>
+  <string name="repo_delete_to_overwrite">Bạn phải xoá kho này trước thì mới có thể thêm kho có mã khác.</string>
   <string name="malformed_repo_uri">Bỏ qua địa chỉ lỗi: %s</string>
   <string name="menu_update_repo">Cập nhật kho</string>
   <string name="menu_manage">Kho ứng dụng</string>
-  <string name="menu_send_apk_bt">Gửi FDroid.apk qua Bluetooth…</string>
+  <string name="menu_send_apk_bt">Chia sẻ F-Droid qua Bluetooth</string>
   <string name="menu_preferences">Cài đặt</string>
   <string name="menu_about">Giới thiệu</string>
   <string name="menu_search">Tìm kiếm</string>
@@ -79,7 +79,7 @@
   <string name="menu_donate">Ủng hộ</string>
   <string name="details_installed">Đã cài đặt phiên bản %s</string>
   <string name="details_notinstalled">Chưa cài đặt</string>
-  <string name="corrupt_download">Tập tin đã tải bị lỗi</string>
+  <string name="corrupt_download">Tập tin đã tải bị hỏng.</string>
   <string name="antiadslist">Ứng dụng này có quảng cáo</string>
   <string name="antitracklist">Ứng dụng này theo dõi và báo cáo hoạt động của bạn</string>
   <string name="antinonfreeadlist">Ứng dụng này khuyến khích sử dụng phần mở rộng không tự do</string>
@@ -87,15 +87,15 @@
   <string name="antinonfreedeplist">Ứng dụng này phụ thuộc vào các ứng dụng không tự do khác</string>
   <string name="antiupstreamnonfreelist">Mã nguồn không hoàn toàn tự do</string>
   <string name="display">Hiển thị</string>
-  <string name="expert">Nâng cao</string>
+  <string name="expert">Chế độ nâng cao</string>
   <string name="expert_on">Hiện thông tin và cài đặt bổ sung</string>
   <string name="search_hint">Tìm kiếm ứng dụng</string>
   <string name="appcompatibility">Tính tương thích của ứng dụng</string>
   <string name="show_incompat_versions">Phiên bản không tương thích</string>
   <string name="show_incompat_versions_on">Hiện các phiên bản không tương thích với thiết bị này</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Bỏ qua quyền root</string>
   <string name="rooted_on">Không bôi xám các ứng dụng yêu cầu quyền root</string>
-  <string name="ignoreTouch">Bỏ qua cảm ứng</string>
+  <string name="ignoreTouch">Bỏ qua màn hình cảm ứng</string>
   <string name="ignoreTouch_on">Luôn hiện các ứng dụng yêu cầu màn hình cảm ứng</string>
   <string name="category_all">Tất cả</string>
   <string name="category_whatsnew">Mới</string>
@@ -106,7 +106,7 @@
   <string name="deleting_repo">Đang xoá kho hiện tại…</string>
   <string name="adding_apks_format">Đang thêm %s vào kho…</string>
   <string name="copying_icons">Đang sao chép biểu tượng ứng dụng vào kho…</string>
-  <string name="icon">biểu tượng</string>
+  <string name="icon">Biểu tượng</string>
   <string name="next">Tiếp</string>
   <string name="skip">Bỏ qua</string>
   <string name="proxy">Proxy</string>
@@ -118,10 +118,10 @@
   <string name="status_checking_compatibility">Đang kiểm tra tính tương thích của các ứng dụng…</string>
   <string name="status_inserting">Đang lưu thông tin ứng dụng (%1$d%%)</string>
   <string name="repos_unchanged">Không có kho nào có cập nhật</string>
-  <string name="global_error_updating_repos">Lỗi khi cập nhật:</string>
+  <string name="global_error_updating_repos">Lỗi khi cập nhật: %s</string>
   <string name="no_permissions">Không sử dụng quyền nào.</string>
   <string name="permissions_for_long">Các quyền trong phiên bản %s</string>
-  <string name="no_handler_app">Bạn không có ứng dụng nào tương thích với %s</string>
+  <string name="no_handler_app">Bạn không có ứng dụng nào để xử lí %s.</string>
   <string name="compactlayout">Xem rút gọn</string>
   <string name="compactlayout_on">Giảm kích cỡ biểu tượng</string>
   <string name="theme">Giao diện</string>
@@ -131,16 +131,19 @@
   <string name="repo_last_update">Cập nhật lần cuối vào</string>
   <string name="repo_update">Cập nhật</string>
   <string name="repo_name">Tên</string>
-  <string name="repo_not_yet_updated">Kho này chưa được sử dụng. Để xem ứng dụng trong kho, bạn phải cập nhật nó. Khi đã cập nhật xong, các thông tin sẽ xuất hiện ở đây.</string>
+  <string name="repo_not_yet_updated">Kho ứng dụng này chưa được sử dụng. Để xem ứng dụng trong kho, bạn phải cập nhật.
+\n\nKhi đã cập nhật xong, mô tả ứng dụng và các thông tin khác sẽ xuất hiện ở đây.</string>
   <string name="repo_confirm_delete_title">Xoá kho?</string>
-  <string name="repo_confirm_delete_body">Nếu xoá kho, ứng dụng trong kho sẽ không xuất hiện trong F-Droid. Chú ý: Ứng dụng đã cài trước đó sẽ vẫn còn trên thiết bị của bạn.</string>
-  <string name="repo_disabled_notification">Đã tắt \"%1$s\". Bạn sẽ cần phải kích hoạt lại để cài ứng dụng từ kho này.</string>
-  <string name="repo_added">Đã lưu kho F-Droid %1$s</string>
+  <string name="repo_confirm_delete_body">Nếu xoá kho, ứng dụng trong kho sẽ không xuất hiện trong F-Droid.
+\n\nChú ý: Ứng dụng đã cài trước đó sẽ vẫn còn trên thiết bị của bạn.</string>
+  <string name="repo_disabled_notification">Đã tắt %1$s.
+\n\nBạn sẽ cần phải kích hoạt lại để cài ứng dụng từ kho này.</string>
+  <string name="repo_added">Đã lưu kho F-Droid %1$s.</string>
   <string name="repo_searching_address">Đang tìm kho F-Droid tại địa chỉ %1$s</string>
   <string name="minsdk_or_later">%s hoặc mới hơn</string>
-  <string name="up_to_maxsdk">đến %s</string>
+  <string name="up_to_maxsdk">Đến %s</string>
   <string name="minsdk_up_to_maxsdk">Từ %1$s đến %2$s</string>
-  <string name="not_on_same_wifi">Thiết bị của bạn không trong cùng mạng WiFi với kho nội bộ mới thêm! Hãy vào mạng này: %s</string>
+  <string name="not_on_same_wifi">Thiết bị của bạn không trong cùng mạng Wi-Fi với kho nội bộ mới thêm! Hãy vào mạng này: %s</string>
   <string name="requires_features">Yêu cầu: %1$s</string>
   <string name="app_icon">Biểu tượng ứng dụng</string>
   <string name="repo_icon">Biểu tượng kho</string>
@@ -162,7 +165,7 @@
   <string name="system_permission_denied_body">Chỉ có tuỳ chọn này khi F-Droid được cài làm ứng dụng hệ thống.</string>
   <string name="app_description">F-Droid là một kho ứng dụng FOSS (tự do và mã nguồn mở) cài đặt được trên nền tảng Android. Ứng dụng F-Droid giúp bạn tìm kiếm, cài đặt và theo dõi cập nhật dễ dàng hơn.</string>
   <string name="swap_nfc_description">Nếu bạn của bạn có NFC, hãy chạm hai điện thoại vào nhau.</string>
-  <string name="swap_join_same_wifi">Vào cùng mạng WiFi với bạn của bạn</string>
+  <string name="swap_join_same_wifi">Vào cùng một mạng Wi-Fi với bạn của bạn</string>
   <string name="menu_swap">Trao đổi ứng dụng</string>
   <string name="swap">Trao đổi ứng dụng</string>
   <string name="swap_no_wifi_network">Không có mạng</string>
@@ -170,4 +173,146 @@
   <string name="open_qr_code_scanner">Mở trình quét mã QR</string>
   <string name="swap_welcome">Chào mừng bạn đến với F-Droid!</string>
   <string name="swap_confirm_connect">Bạn có muốn nhận ứng dụng từ %1$s bây giờ không?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="unstable_updates">Cập nhật bản không ổn định</string>
+	<string name="unstable_updates_summary">Thông báo cập nhật đối với các phiên bản chưa hoàn thiện</string>
+	<string name="uninstall_system">Gỡ bỏ F-Droid được cấp quyền</string>
+	<string name="uninstall_system_summary">Gỡ bỏ ứng dụng F-Droid được cấp quyền</string>
+	<string name="links">Liên kết</string>
+	<string name="content_description_view_more">Xem thêm</string>
+
+	<string name="back">Quay lại</string>
+	<string name="local_repo_name_summary">Tên kho phần mềm nội bộ của bạn: %s</string>
+	<string name="about_source">Mã nguồn:</string>
+	<string name="app_incompatible">Không tương thích</string>
+	<string name="tab_installed_apps">Đã cài đặt</string>
+	<string name="update_notification_more">+%1$d ứng dụng khác…</string>
+	<string name="invalid_url">Đây không phải là URL hợp lệ.</string>
+	<string name="menu_changelog">Lịch sử sửa đổi</string>
+	<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+
+	<string name="failed_to_create_index">Không tạo được mục lục kho!</string>
+	<string name="writing_index_jar">Đang ghi tập tin mục lục có chữ kí (index.jar)…</string>
+	<string name="linking_apks">Đang kết nối các tập tin APK vào kho…</string>
+	<string name="enable_proxy_summary">Thiết lập proxy HTTP cho tất cả các yêu cầu nối mạng</string>
+	<string name="proxy_host">Máy chủ Proxy</string>
+	<string name="proxy_host_summary">Thiết lập tên máy chủ proxy của bạn (ví dụ 127.0.0.1)</string>
+	<string name="update_notification_title">Đang cập nhật các kho ứng dụng</string>
+	<string name="status_processing_xml_percent">Đang xử lí %2$s / %3$s (%4$d%%) từ</string>
+	<string name="unsigned">Chưa được kí</string>
+    <string name="unsigned_description">Điều này nghĩa là danh sách ứng dụng không được kiểm duyệt. Bạn hãy cẩn thận khi tải ứng dụng từ mục lục không có chữ kí điện tử.</string>
+    <string name="unknown">Không rõ</string>
+    <string name="pref_language">Ngôn ngữ</string>
+    <string name="pref_language_default">Mặc định</string>
+
+    <string name="wifi">Wi-Fi</string>
+    <string name="wifi_ap">Điểm truy cập</string>
+
+    <string name="Connectivity">Kết nối</string>
+    <string name="Graphics">Đồ hoạ</string>
+    <string name="Money">Chi tiêu</string>
+    <string name="Sports_Health">Thể thao &amp; Sức khoẻ</string>
+    <string name="Theming">Giao diện</string>
+    <string name="Time">Thời gian</string>
+    <string name="Writing">Soạn thảo</string>
+
+    <string name="empty_installed_app_list">Chưa cài đặt ứng dụng nào.\n\nCó ứng dụng trên máy của bạn, nhưng những ứng dụng này không có trên F-Droid. Có thể bạn cần phải cập nhật các kho ứng dụng, hoặc không ứng dụng nào của bạn có trên các kho này.</string>
+    <string name="empty_available_app_list">Không có ứng dụng nào trong mục này.\n\nHãy chọn một mục khác hoặc cập nhật kho ứng dụng để có danh sách ứng dụng mới.</string>
+    <string name="empty_can_update_app_list">Tất cả các ứng dụng đã được cập nhật.\n\nChúc mừng! Tất cả các ứng dụng của bạn đã được cập nhật (hoặc các kho ứng dụng chưa được cập nhật).</string>
+
+    <string name="install_error_title">Lỗi cài đặt</string>
+    <string name="install_error_unknown">Không thể cài đặt do có lỗi xảy ra</string>
+    <string name="install_error_cannot_parse">Xảy ra lỗi khi phân tích gói</string>
+    <string name="uninstall_error_title">Lỗi khi xoá bỏ</string>
+    <string name="uninstall_error_unknown">Không thể xoá ứng dụng do có lỗi xảy ra</string>
+    <string name="system_permission_install_via_root">Cài F-Droid được cấp quyền</string>
+    <string name="system_install_first_time_notification">Cài F-Droid được cấp quyền?</string>
+    <string name="system_install_first_time_notification_message_short">Chạm để xem thêm thông tin.</string>
+    <string name="system_install_first_time_notification_message">Chạm vào đây để cài đặt ứng dụng F-Droid được cấp quyền, tích hợp sâu vào hệ điều hành Android. Việc này cho phép F-Droid tự cài đặt, nâng cấp và gỡ bỏ ứng dụng.\nBạn cũng có thể vào phần cài đặt của F-Droid để làm việc này.</string>
+    <string name="system_install_post_success">Cài đặt F-Droid được cấp quyền thành công</string>
+    <string name="system_install_post_fail">Cài đặt F-Droid được cấp quyền thất bại</string>
+    <string name="system_install_post_success_message">Ứng dụng F-Droid được cấp quyền đã được cài đặt thành công. Việc này cho phép F-Droid tự cài đặt, nâng cấp và gỡ bỏ ứng dụng.</string>
+    <string name="system_install_post_fail_message">Cài đặt ứng dụng F-Droid được cấp quyền đã thất bại. Cách cài đặt này không được tất cả các bản Android hỗ trợ, hãy truy cập trình theo dõi lỗi của F-Droid để biết thêm thông tin.</string>
+    <string name="system_install_installing">Đang cài đặt…</string>
+    <string name="system_install_uninstalling">Đang gỡ bỏ…</string>
+    <string name="system_install_question">Bạn có muốn cài ứng dụng F-Droid được cấp quyền không?\nViệc cài đặt sẽ mất 10 giây.</string>
+    <string name="system_install_question_lollipop">Bạn có muốn cài ứng dụng F-Droid được cấp quyền không?\nViệc cài đặt sẽ mất 10 giây và sau đó máy bạn sẽ khởi động lại.</string>
+    <string name="system_install_first_time_message">Có vẻ bạn không có quyền root. Bây giờ bạn có thể cài ứng dụng F-Droid được cấp quyền, tích hợp sâu vào hệ điều hành Android. Việc này cho phép F-Droid tự cài đặt, cập nhật và gỡ bỏ ứng dụng.</string>
+    <string name="system_uninstall">Bạn có muốn gỡ bỏ ứng dụng F-Droid được cấp quyền không?</string>
+    <string name="system_uninstall_message">Việc này sẽ gỡ bỏ ứng dụng F-Droid được cấp quyền.</string>
+    <string name="system_uninstall_button">Gỡ bỏ</string>
+
+    <string name="swap_nfc_title">Chạm để trao đổi</string>
+    <string name="swap_join_same_wifi_desc">Để trao đổi ứng dụng qua Wi-Fi, cả hai người phải ở trong cùng một mạng. Nếu không truy cập được vào cùng một mạng thì một người có thể tạo điểm truy cập Wi-Fi.</string>
+    <string name="swap_success">Đã trao đổi thành công!</string>
+    <string name="swap_active_hotspot">%1$s (điểm truy cập của bạn)</string>
+    <string name="swap_switch_to_wifi">Chạm để chuyển sang mạng Wi-Fi</string>
+    <string name="swap_tap_to_select_apps">Chạm để chọn ứng dụng bạn muốn trao đổi.</string>
+    <string name="swap_dont_show_again">Không hiện lại</string>
+    <string name="swap_scan_or_type_url">Một người phải quét mã, hoặc nhập URL của người kia vào trình duyệt.</string>
+    <string name="swap_choose_apps">Chọn ứng dụng</string>
+    <string name="swap_scan_qr">Quét mã QR</string>
+    <string name="swap_people_nearby">Những người ở gần</string>
+    <string name="swap_scanning_for_peers">Đang tìm kiếm những người ở gần bạn…</string>
+    <string name="swap_intro">Kết nối và trao đổi ứng dụng với những người ở gần bạn.</string>
+    <string name="swap_nearby">Trao đổi gần</string>
+    <string name="swap_visible_bluetooth">Nhìn thấy được qua Bluetooth</string>
+    <string name="swap_setting_up_bluetooth">Đang cài đặt Bluetooth…</string>
+    <string name="swap_not_visible_bluetooth">Không nhìn thấy được qua Bluetooth</string>
+    <string name="swap_visible_wifi">Nhìn thấy được qua Wi-Fi</string>
+    <string name="swap_setting_up_wifi">Đang cài đặt Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">Không nhìn thấy được qua Wi-Fi</string>
+    <string name="swap_wifi_device_name">Tên thiết bị</string>
+    <string name="swap_cant_find_peers">Bạn không tìm được người cần tìm?</string>
+    <string name="swap_send_fdroid">Gửi F-Droid</string>
+    <string name="swap_no_peers_nearby">Không tìm thấy người ở gần để trao đổi.</string>
+    <string name="swap_connecting">Đang kết nối</string>
+    <string name="swap_confirm">Xác nhận trao đổi</string>
+    <string name="swap_qr_isnt_for_swap">Mã QR đã quét không phải là mã trao đổi.</string>
+    <string name="bluetooth_unavailable">Không có Bluetooth</string>
+    <string name="swap_cant_send_no_bluetooth">Không thể gửi F-Droid vì thiết bị này không có Bluetooth.</string>
+    <string name="loading">Đang tải…</string>
+    <string name="swap_not_enabled">Trao đổi đang tắt</string>
+    <string name="swap_connection_misc_error">Đã xảy ra lỗi khi kết nối, vì vậy không thể trao đổi được :(</string>
+    <string name="swap_attempt_install">Thử cài đặt</string>
+    <string name="swap_not_enabled_description">Trước khi trao đổi, máy của bạn phải nhìn thấy được qua mạng.</string>
+
+    <string name="install_confirm">Bạn có muốn cài đặt ứng dụng này không? Nó sẽ có quyền truy cập vào:</string>
+    <string name="install_confirm_no_perms">Bạn có muốn cài đặt ứng dụng này không? Nó không đòi hỏi quyền truy cập đặc biệt nào.</string>
+    <string name="install_confirm_update">Bạn có muốn cập nhật ứng dụng đã có này không? Dữ liệu đã có sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
+    <string name="install_confirm_update_system">Bạn có muốn cập nhật ứng dụng hệ thống này không? Dữ liệu đã có sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
+    <string name="install_confirm_update_no_perms">Bạn có muốn cập nhật ứng dụng đã có này không? Dữ liệu đã có sẽ không bị mất. Ứng dụng không đòi hỏi quyền truy cập đặc biệt nào.</string>
+    <string name="install_confirm_update_system_no_perms">Bạn có muốn cập nhật ứng dụng hệ thống này không? Dữ liệu đã có sẽ không bị mất. Ứng dụng không đòi hỏi quyền truy cập đặc biệt nào.</string>
+    <string name="newPerms">Mới</string>
+    <string name="allPerms">Tất cả</string>
+    <string name="privacyPerms">Quyền riêng tư</string>
+    <string name="devicePerms">Truy cập thiết bị</string>
+    <string name="perm_costs_money">Việc này có thể mất phí</string>
+    <string name="uninstall_update_confirm">Bạn có muốn thay thế ứng dụng này bằng phiên bản xuất xưởng không?</string>
+    <string name="uninstall_confirm">Bạn có muốn gỡ bỏ ứng dụng này không?</string>
+    <string name="tap_to_install">Đã tải xong, chạm để cài đặt</string>
+    <string name="download_error">Tải về thất bại</string>
+
+    <string name="perms_new_perm_prefix">"Mới: "</string>
+    <string name="perms_description_app">Được cung cấp bởi %1$s.</string>
+    <string name="downloading">Đang tải về…</string>
+
+    <string name="interval_never">Không bao giờ</string>
+    <string name="interval_1h">Hàng giờ</string>
+    <string name="interval_4h">Mỗi 4 giờ</string>
+    <string name="interval_12h">Mỗi 12 giờ</string>
+    <string name="interval_1d">Hàng ngày</string>
+    <string name="interval_1w">Hàng tuần</string>
+    <string name="interval_2w">Mỗi 2 tuần</string>
+
+    <string name="theme_light">Sáng</string>
+    <string name="theme_dark">Tối</string>
+<string name="all_other_repos_fine">Tất cả các kho khác không có lỗi.</string>
+        <string name="swap_join_this_hotspot">Giúp đỡ bạn của bạn vào điểm truy cập</string>
+    <string name="repo_exists_add_fingerprint">Kho này đã được cài đặt, việc này sẽ thêm thông tin mới về mã khoá.</string>
+	<string name="repo_exists_enable">Kho này đã được cài đặt, hãy xác nhận bạn muốn kích hoạt lại nó.</string>
+	</resources>

@@ -10,7 +10,7 @@
   <string name="delete">Supprimer</string>
   <string name="enable_nfc_send">Activer l\'envoi NFC…</string>
   <string name="cache_downloaded">Stockage d\'applications téléchargées</string>
-  <string name="cache_downloaded_on">Garder les fichiers apk téléchargés sur la carte SD</string>
+  <string name="cache_downloaded_on">Garder les fichiers apk téléchargés sur le périphérique</string>
   <string name="updates">Mises à jour</string>
   <string name="other">Autres</string>
   <string name="update_interval">Intervalle de mise à jour automatique</string>
@@ -192,7 +192,7 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="swap_view_available_networks">(Appuyez pour ouvrir les réseaux disponibles)</string>
   <string name="open_qr_code_scanner">Ouvrir le scanner QR Code</string>
   <string name="swap_welcome">Bienvenue sur F-Droid/u00A0!</string>
-  <string name="swap_confirm_connect">Voulez-vous recevoir des applications de %1$s maintenantu00A0?</string>
+  <string name="swap_confirm_connect">Voulez-vous recevoir des applications de %1$s maintenant ?</string>
 <string name="app_name">F-Droid</string>
 
 	<string name="unstable_updates">Mises à jour instables</string>
@@ -226,4 +226,78 @@ Publiée sous licence GNU GPLv3.</string>
     <string name="system_install_installing">Installation…</string>
     <string name="system_install_uninstalling">Désinstallation…</string>
     <string name="swap_nfc_description">Si votre ami a F-Droid et NFC d\'activés collez vos téléphones.</string>
+    <string name="swap_switch_to_wifi">Tapez pour changer de réseau Wi-Fi</string>
+    <string name="swap_dont_show_again">Ne plus jamais afficher ceci</string>
+    <string name="loading">Chargement…</string>
+    <string name="install_confirm">Voulez-vous installer cette application ? Elle aura accès à :</string>
+    <string name="install_confirm_no_perms">Voulez-vous installer cette aplication ? Elle ne requiert pas de permission particulière.</string>
+    <string name="install_confirm_update">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Une fois mise à jour l\'application aura accès à :</string>
+    <string name="install_confirm_update_system">Voulez-vous mettre à jour cette application système ? Vos données ne seront pas perdues. Une fois mise à jour l\'application aura accès à :</string>
+    <string name="install_confirm_update_no_perms">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Elle ne requiert aucune permission particulière.</string>
+    <string name="install_confirm_update_system_no_perms">Voulez-vous mettre à jour cette application système ? Vos données ne seront pas perdues. Elle ne requiert pas d\'autorisation particulière.</string>
+    <string name="newPerms">Nouvelle</string>
+    <string name="allPerms">Toutes</string>
+    <string name="privacyPerms">Vie privée</string>
+    <string name="devicePerms">Accès à l\'appareil</string>
+    <string name="perm_costs_money">Cela pet vous coûter de l\'argent</string>
+    <string name="uninstall_update_confirm">Voulez-vous remplacer cette application avec la version d\'usine ?</string>
+    <string name="uninstall_confirm">Voulez-vous désinstaller cette application ?</string>
+    <string name="tap_to_install">Téléchargement terminé, tapez pour installer</string>
+    <string name="download_error">Le téléchargement a échoué</string>
+
+    <string name="perms_new_perm_prefix">"Nouvelle : "</string>
+    <string name="downloading">Téléchargement…</string>
+
+    <string name="interval_never">Jamais</string>
+    <string name="interval_4h">Toutes les quatre heures</string>
+    <string name="interval_12h">Toutes les douze heures</string>
+    <string name="interval_1d">Quotidiennement</string>
+    <string name="interval_1w">Toutes les semaines</string>
+    <string name="interval_2w">Toutes les deux semaines</string>
+
+    <string name="theme_light">Clair</string>
+    <string name="theme_dark">Sombre</string>
+<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+
+	<string name="status_processing_xml_percent">Traitement de %2$s / %3$s (%4$d%%) à partir de %1$s</string>
+	<string name="repo_added">Enregistrement du dépôt F-Droid %1$s.</string>
+    <string name="repo_searching_address">Recherche d\'un dépôt F-Droid à
+\n%1$s</string>
+    <string name="Graphics">Graphiques</string>
+    <string name="empty_installed_app_list">Aucune application installée.\n\nIl y a des applications sur votre appareil mais aucune n\'est disponible sur F-Droid. Vos dépôts ne sont peut-être plus à jour, ou alors vos applications ne sont pas disponibles dans ces dépôts.</string>
+    <string name="install_error_unknown">l\'installation a échouée pour une raison inconnue</string>
+    <string name="install_error_cannot_parse">Une erreur s\'est produite pendant l\'analyse du paquet</string>
+    <string name="uninstall_error_unknown">La désinstallation a échouée pour une raison inconnue</string>
+    <string name="swap_nfc_title">Touchez pour échanger</string>
+    <string name="swap_join_same_wifi_desc">Pour échanger via Wi-Fi, assurez-vous d\'être sur le même réseau Wi-Fi. Si vous n\'avez pas accès au même réseau, l\'un d\'entre vous peut créer un point d\'accès Wi-Fi.</string>
+    <string name="swap_join_this_hotspot">Aidez votre ami à se connecter à votre point d\'accès</string>
+    <string name="swap_success">Échange réussit !</string>
+    <string name="swap_active_hotspot">%1$s (votre point d\'accès)</string>
+    <string name="swap_tap_to_select_apps">Touchez pour sélectionner les applications que vous voulez échanger.</string>
+    <string name="swap_scan_or_type_url">Une personne doit scanner ce code, ou taper le lien dans un navigateur.</string>
+    <string name="swap_choose_apps">Choisissez les applications</string>
+    <string name="swap_scan_qr">Scannez le QR Code</string>
+    <string name="swap_people_nearby">Personnes à proximité</string>
+    <string name="swap_scanning_for_peers">Recherche de personnes à proximité…</string>
+    <string name="swap_nearby">Échange à proximité</string>
+    <string name="swap_intro">Partagez des applications avec des personnes proches de vous.</string>
+    <string name="swap_visible_bluetooth">Visible via Bluetooth</string>
+    <string name="swap_setting_up_bluetooth">Activation du Bluetooth…</string>
+    <string name="swap_not_visible_bluetooth">Non visible via Bluetooth</string>
+    <string name="swap_visible_wifi">Visible via Wi-Fi</string>
+    <string name="swap_setting_up_wifi">Activation du Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">Non visible via Wi-Fi</string>
+    <string name="swap_wifi_device_name">Nom de l\'appareil</string>
+    <string name="swap_send_fdroid">Envoyer F-Droid</string>
+    <string name="swap_no_peers_nearby">Impossible de trouver des personnes à proximité.</string>
+    <string name="swap_connecting">Connexion</string>
+    <string name="swap_confirm">Confirmez l\'échange</string>
+    <string name="swap_qr_isnt_for_swap">Le QR code que vous avez scanné ne ressemble pas à un code d\'échange.</string>
+    <string name="bluetooth_unavailable">Bluetooth indisponible</string>
+    <string name="swap_cant_send_no_bluetooth">Impossible d\'envoyer F-Droid, le Bluetooth n\'est pas disponible sur le périphérique.</string>
+    <string name="swap_not_enabled_description">Votre appareil doit être visible avant de commencer l\'échange.</string>
+
     </resources>
