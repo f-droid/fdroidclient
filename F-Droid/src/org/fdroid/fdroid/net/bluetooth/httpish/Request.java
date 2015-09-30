@@ -2,6 +2,7 @@ package org.fdroid.fdroid.net.bluetooth.httpish;
 
 import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 
 import java.io.ByteArrayOutputStream;
@@ -54,7 +55,7 @@ public class Request {
 
     public Response send() throws IOException {
 
-        Log.d(TAG, "Sending request to server (" + path + ")");
+        Utils.debugLog(TAG, "Sending request to server (" + path + ")");
 
         output.write(method);
         output.write(' ');
@@ -64,21 +65,21 @@ public class Request {
 
         output.flush();
 
-        Log.d(TAG, "Finished sending request, now attempting to read response status code...");
+        Utils.debugLog(TAG, "Finished sending request, now attempting to read response status code...");
 
         int responseCode = readResponseCode();
 
-        Log.d(TAG, "Read response code " + responseCode + " from server, now reading headers...");
+        Utils.debugLog(TAG, "Read response code " + responseCode + " from server, now reading headers...");
 
         Map<String, String> headers = readHeaders();
 
-        Log.d(TAG, "Read " + headers.size() + " headers");
+        Utils.debugLog(TAG, "Read " + headers.size() + " headers");
 
         if (method.equals(Methods.HEAD)) {
-            Log.d(TAG, "Request was a " + Methods.HEAD + " request, not including anything other than headers and status...");
+            Utils.debugLog(TAG, "Request was a " + Methods.HEAD + " request, not including anything other than headers and status...");
             return new Response(responseCode, headers);
         } else {
-            Log.d(TAG, "Request was a " + Methods.GET + " request, so including content stream in response...");
+            Utils.debugLog(TAG, "Request was a " + Methods.GET + " request, so including content stream in response...");
             return new Response(responseCode, headers, connection.getInputStream());
         }
 

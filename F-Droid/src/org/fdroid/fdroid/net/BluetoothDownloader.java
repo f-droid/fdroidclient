@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import org.apache.commons.io.input.BoundedInputStream;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.net.bluetooth.BluetoothClient;
 import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 import org.fdroid.fdroid.net.bluetooth.FileDetails;
@@ -58,7 +59,7 @@ public class BluetoothDownloader extends Downloader {
      */
     public FileDetails getFileDetails() {
         if (fileDetails == null) {
-            Log.d(TAG, "Going to Bluetooth \"server\" to get file details.");
+            Utils.debugLog(TAG, "Going to Bluetooth \"server\" to get file details.");
             try {
                 fileDetails = Request.createHEAD(sourceUrl.getPath(), connection).send().toFileDetails();
             } catch (IOException e) {

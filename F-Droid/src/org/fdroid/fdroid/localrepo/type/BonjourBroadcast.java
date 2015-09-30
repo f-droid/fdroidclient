@@ -32,7 +32,7 @@ public class BonjourBroadcast extends SwapType {
     @Override
     public void start() {
 
-        Log.d(TAG, "Preparing to start Bonjour service.");
+        Utils.debugLog(TAG, "Preparing to start Bonjour service.");
         sendBroadcast(SwapService.EXTRA_STARTING);
 
         /*
@@ -56,12 +56,12 @@ public class BonjourBroadcast extends SwapType {
             type = "_http._tcp.local.";
         }
         try {
-            Log.d(TAG, "Starting bonjour service...");
+            Utils.debugLog(TAG, "Starting bonjour service...");
             pairService = ServiceInfo.create(type, repoName, FDroidApp.port, 0, 0, values);
             jmdns = JmDNS.create(InetAddress.getByName(FDroidApp.ipAddressString));
             jmdns.registerService(pairService);
             setConnected(true);
-            Log.d(TAG, "... Bounjour service started.");
+            Utils.debugLog(TAG, "... Bounjour service started.");
         } catch (IOException e) {
             Log.e(TAG, "Error while registering jmdns service", e);
             setConnected(false);
@@ -70,7 +70,7 @@ public class BonjourBroadcast extends SwapType {
 
     @Override
     public void stop() {
-        Log.d(TAG, "Unregistering MDNS service...");
+        Utils.debugLog(TAG, "Unregistering MDNS service...");
         clearCurrentMDNSService();
         setConnected(false);
     }

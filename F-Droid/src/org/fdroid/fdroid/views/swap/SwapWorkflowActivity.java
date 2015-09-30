@@ -123,7 +123,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName className, IBinder binder) {
-            Log.d(TAG, "Swap service connected. Will hold onto it so we can talk to it regularly.");
+            Utils.debugLog(TAG, "Swap service connected. Will hold onto it so we can talk to it regularly.");
             service = ((SwapService.Binder)binder).getService();
             showRelevantView();
         }
@@ -131,7 +131,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         // TODO: What causes this? Do we need to stop swapping explicitly when this is invoked?
         @Override
         public void onServiceDisconnected(ComponentName className) {
-            Log.d(TAG, "Swap service disconnected");
+            Utils.debugLog(TAG, "Swap service disconnected");
             service = null;
             // TODO: What to do about the UI in this instance?
         }
@@ -262,7 +262,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             Log.e(TAG, "Could not enable WiFi AP.");
             // TODO: Feedback to user?
         } else {
-            Log.d(TAG, "WiFi AP enabled.");
+            Utils.debugLog(TAG, "WiFi AP enabled.");
             // TODO: Seems to be broken some times...
         }
     }
@@ -456,7 +456,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         // this, but this should never take precedence over the other.
         // TODO: Also don't allow this to run multiple times (e.g. if a user keeps navigating back
         // to the main screen.
-        Log.d(TAG, "Preparing initial repo with only F-Droid, until we have allowed the user to configure their own repo.");
+        Utils.debugLog(TAG, "Preparing initial repo with only F-Droid, until we have allowed the user to configure their own repo.");
         new PrepareInitialSwapRepo().execute();
     }
 
@@ -569,20 +569,20 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         } else if (requestCode == REQUEST_BLUETOOTH_ENABLE_FOR_SWAP) {
 
             if (resultCode == RESULT_OK) {
-                Log.d(TAG, "User enabled Bluetooth, will make sure we are discoverable.");
+                Utils.debugLog(TAG, "User enabled Bluetooth, will make sure we are discoverable.");
                 ensureBluetoothDiscoverableThenStart();
             } else {
                 // Didn't enable bluetooth
-                Log.d(TAG, "User chose not to enable Bluetooth, so doing nothing (i.e. sticking with wifi).");
+                Utils.debugLog(TAG, "User chose not to enable Bluetooth, so doing nothing (i.e. sticking with wifi).");
             }
 
         } else if (requestCode == REQUEST_BLUETOOTH_DISCOVERABLE) {
 
             if (resultCode != RESULT_CANCELED) {
-                Log.d(TAG, "User made Bluetooth discoverable, will proceed to start bluetooth server.");
+                Utils.debugLog(TAG, "User made Bluetooth discoverable, will proceed to start bluetooth server.");
                 getState().getBluetoothSwap().startInBackground();
             } else {
-                Log.d(TAG, "User chose not to make Bluetooth discoverable, so doing nothing (i.e. sticking with wifi).");
+                Utils.debugLog(TAG, "User chose not to make Bluetooth discoverable, so doing nothing (i.e. sticking with wifi).");
             }
 
         } else if (requestCode == REQUEST_BLUETOOTH_ENABLE_FOR_SEND) {
@@ -603,28 +603,28 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      */
     public void startBluetoothSwap() {
 
-        Log.d(TAG, "Initiating Bluetooth swap, will ensure the Bluetooth devices is enabled and discoverable before starting server.");
+        Utils.debugLog(TAG, "Initiating Bluetooth swap, will ensure the Bluetooth devices is enabled and discoverable before starting server.");
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
 
         if (adapter != null)
             if (adapter.isEnabled()) {
-                Log.d(TAG, "Bluetooth enabled, will check if device is discoverable with device.");
+                Utils.debugLog(TAG, "Bluetooth enabled, will check if device is discoverable with device.");
                 ensureBluetoothDiscoverableThenStart();
             } else {
-                Log.d(TAG, "Bluetooth disabled, asking user to enable it.");
+                Utils.debugLog(TAG, "Bluetooth disabled, asking user to enable it.");
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_BLUETOOTH_ENABLE_FOR_SWAP);
             }
     }
 
     private void ensureBluetoothDiscoverableThenStart() {
-        Log.d(TAG, "Ensuring Bluetooth is in discoverable mode.");
+        Utils.debugLog(TAG, "Ensuring Bluetooth is in discoverable mode.");
         if (BluetoothAdapter.getDefaultAdapter().getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
 
             // TODO: Listen for BluetoothAdapter.ACTION_SCAN_MODE_CHANGED and respond if discovery
             // is cancelled prematurely.
 
-            Log.d(TAG, "Not currently in discoverable mode, so prompting user to enable.");
+            Utils.debugLog(TAG, "Not currently in discoverable mode, so prompting user to enable.");
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
             intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, BluetoothFinder.DISCOVERABLE_TIMEOUT); // 3600 is new maximum! TODO: What about when this expires? What if user manually disables discovery?
             startActivityForResult(intent, REQUEST_BLUETOOTH_DISCOVERABLE);
@@ -678,7 +678,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             Intent intent = new Intent(ACTION);
             intent.putExtra(EXTRA_TYPE, type);
             if (message != null) {
-                Log.d(TAG, "Preparing swap: " + message);
+                Utils.debugLog(TAG, "Preparing swap: " + message);
                 intent.putExtra(EXTRA_MESSAGE, message);
             }
             LocalBroadcastManager.getInstance(SwapWorkflowActivity.this).sendBroadcast(intent);
@@ -771,7 +771,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
 
             Date now = new Date();
-            Log.d("Swap Status", now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " " + message);
+            Utils.debugLog("Swap Status", now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " " + message);
 
             new Timer().schedule(new TimerTask() {
                     @Override

@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
@@ -87,7 +88,7 @@ public class BluetoothSwap extends SwapType {
 
         /*
         if (server != null) {
-            Log.d(TAG, "Attempting to start Bluetooth swap, but it appears to be running already. Will cancel it so it can be restarted.");
+            Utils.debugLog(TAG, "Attempting to start Bluetooth swap, but it appears to be running already. Will cancel it so it can be restarted.");
             server.close();
             server = null;
         }*/
@@ -101,7 +102,7 @@ public class BluetoothSwap extends SwapType {
         deviceBluetoothName = adapter.getName();
 
         /*
-        Log.d(TAG, "Prefixing Bluetooth adapter name with " + BLUETOOTH_NAME_TAG + " to make it identifiable as a swap device.");
+        Utils.debugLog(TAG, "Prefixing Bluetooth adapter name with " + BLUETOOTH_NAME_TAG + " to make it identifiable as a swap device.");
         if (!deviceBluetoothName.startsWith(BLUETOOTH_NAME_TAG))
             adapter.setName(BLUETOOTH_NAME_TAG + deviceBluetoothName);
 
@@ -111,9 +112,9 @@ public class BluetoothSwap extends SwapType {
         }*/
 
         if (!adapter.isEnabled()) {
-            Log.d(TAG, "Bluetooth adapter is disabled, attempting to enable.");
+            Utils.debugLog(TAG, "Bluetooth adapter is disabled, attempting to enable.");
             if (!adapter.enable()) {
-                Log.d(TAG, "Could not enable Bluetooth adapter, so bailing out of Bluetooth swap.");
+                Utils.debugLog(TAG, "Could not enable Bluetooth adapter, so bailing out of Bluetooth swap.");
                 setConnected(false);
                 return;
             }
@@ -153,7 +154,7 @@ public class BluetoothSwap extends SwapType {
     }
 
     protected void onStopped() {
-        Log.d(TAG, "Resetting bluetooth device name to " + deviceBluetoothName + " after swapping.");
+        Utils.debugLog(TAG, "Resetting bluetooth device name to " + deviceBluetoothName + " after swapping.");
         adapter.setName(deviceBluetoothName);
     }
 

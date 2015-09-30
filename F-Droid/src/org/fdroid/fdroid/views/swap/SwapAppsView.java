@@ -126,11 +126,11 @@ public class SwapAppsView extends ListView implements
     private void pollForUpdates() {
         if (adapter.getCount() > 1 ||
                 (adapter.getCount() == 1 && !new App((Cursor)adapter.getItem(0)).id.equals("org.fdroid.fdroid"))) {
-            Log.d(TAG, "Not polling for new apps from swap repo, because we already have more than one.");
+            Utils.debugLog(TAG, "Not polling for new apps from swap repo, because we already have more than one.");
             return;
         }
 
-        Log.d(TAG, "Polling swap repo to see if it has any updates.");
+        Utils.debugLog(TAG, "Polling swap repo to see if it has any updates.");
         getActivity().getService().refreshSwap();
         if (pollForUpdatesReceiver != null) {
             pollForUpdatesReceiver = new BroadcastReceiver() {
@@ -139,7 +139,7 @@ public class SwapAppsView extends ListView implements
                     int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
                     switch (statusCode) {
                         case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
-                            Log.d(TAG, "Swap repo has updates, notifying the list adapter.");
+                            Utils.debugLog(TAG, "Swap repo has updates, notifying the list adapter.");
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -166,7 +166,7 @@ public class SwapAppsView extends ListView implements
     }
 
     private void schedulePollForUpdates() {
-        Log.d(TAG, "Scheduling poll for updated swap repo in 5 seconds.");
+        Utils.debugLog(TAG, "Scheduling poll for updated swap repo in 5 seconds.");
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {

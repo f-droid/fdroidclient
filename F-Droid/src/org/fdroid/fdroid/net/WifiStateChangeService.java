@@ -17,7 +17,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.apache.commons.net.util.SubnetUtils;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
@@ -45,7 +44,7 @@ public class WifiStateChangeService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "WiFi change service started, clearing info about wifi state until we have figured it out again.");
+        Utils.debugLog(TAG, "WiFi change service started, clearing info about wifi state until we have figured it out again.");
         FDroidApp.initWifiSettings();
         NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
@@ -74,7 +73,7 @@ public class WifiStateChangeService extends Service {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                Log.d(TAG, "Checking wifi state (in background thread).");
+                Utils.debugLog(TAG, "Checking wifi state (in background thread).");
                 WifiInfo wifiInfo = null;
 
                 wifiState = wifiManager.getWifiState();
@@ -100,9 +99,7 @@ public class WifiStateChangeService extends Service {
 
                     if (FDroidApp.ipAddressString == null) {
                         Thread.sleep(1000);
-                        if (BuildConfig.DEBUG) {
-                            Utils.debugLog(TAG, "waiting for an IP address...");
-                        }
+                        Utils.debugLog(TAG, "waiting for an IP address...");
                     }
                 }
                 if (isCancelled())  // can be canceled by a change via WifiStateChangeReceiver
@@ -110,7 +107,7 @@ public class WifiStateChangeService extends Service {
 
                 if (wifiInfo != null) {
                     String ssid = wifiInfo.getSSID();
-                    Log.d(TAG, "Have wifi info, connected to " + ssid);
+                    Utils.debugLog(TAG, "Have wifi info, connected to " + ssid);
                     if (ssid != null) {
                         FDroidApp.ssid = ssid.replaceAll("^\"(.*)\"$", "$1");
                     }

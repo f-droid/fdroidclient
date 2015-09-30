@@ -107,7 +107,7 @@ public class Response {
 
     public void send(BluetoothConnection connection) throws IOException {
 
-        Log.d(TAG, "Sending Bluetooth HTTP-ish response...");
+        Utils.debugLog(TAG, "Sending Bluetooth HTTP-ish response...");
 
         Writer output = new OutputStreamWriter(connection.getOutputStream());
         output.write("HTTP(ish)/0.1 200 OK\n");

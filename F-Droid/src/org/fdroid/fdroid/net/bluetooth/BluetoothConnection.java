@@ -43,7 +43,7 @@ public class BluetoothConnection {
 
         input  = new BufferedInputStream(socket.getInputStream());
         output = new BufferedOutputStream(socket.getOutputStream());
-        Log.d(TAG, "Opened connection to Bluetooth device");
+        Utils.debugLog(TAG, "Opened connection to Bluetooth device");
     }
 
     public void closeQuietly() {

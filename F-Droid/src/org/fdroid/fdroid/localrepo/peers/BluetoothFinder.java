@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
+
 public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
 
     private static final String TAG = "BluetoothFinder";
@@ -53,7 +55,7 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     if (isScanning) {
-                        Log.d(TAG, "Scan complete, but we haven't been asked to stop scanning yet, so will restart scan.");
+                        Utils.debugLog(TAG, "Scan complete, but we haven't been asked to stop scanning yet, so will restart scan.");
                         startDiscovery();
                     }
                 }
@@ -72,7 +74,7 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
             // TODO: Can we reset the discovering timeout, so that it doesn't, e.g. time out in 3
             // seconds because we had already almost completed the previous scan? We could
             // cancelDiscovery(), but then it will probably prompt the user again.
-            Log.d(TAG, "Requested bluetooth scan when already scanning, so will ignore request.");
+            Utils.debugLog(TAG, "Requested bluetooth scan when already scanning, so will ignore request.");
             return;
         }
 
@@ -85,7 +87,7 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
     @Override
     public void cancel() {
         if (adapter != null) {
-            Log.d(TAG, "Stopping bluetooth discovery.");
+            Utils.debugLog(TAG, "Stopping bluetooth discovery.");
             adapter.cancelDiscovery();
         }
 

@@ -5,8 +5,8 @@ import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Utils;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -34,7 +34,7 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
     @Override
     public void scan() {
 
-        Log.d(TAG, "Requested Bonjour (mDNS) scan for peers.");
+        Utils.debugLog(TAG, "Requested Bonjour (mDNS) scan for peers.");
 
         if (wifiManager == null) {
             wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
@@ -43,7 +43,7 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
         }
 
         if (isScanning) {
-            Log.d(TAG, "Requested Bonjour scan, but already scanning. But we will still try to explicitly scan for services.");
+            Utils.debugLog(TAG, "Requested Bonjour scan, but already scanning. But we will still try to explicitly scan for services.");
             // listServices();
             return;
         }
@@ -55,7 +55,7 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    Log.d(TAG, "Searching for Bonjour (mDNS) clients...");
+                    Utils.debugLog(TAG, "Searching for Bonjour (mDNS) clients...");
                     jmdns = JmDNS.create(InetAddress.getByName(FDroidApp.ipAddressString));
                 } catch (IOException e) {
                     Log.e(TAG, "", e);
@@ -67,7 +67,7 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
             protected void onPostExecute(Void result) {
                 // TODO: This is not threadsafe - cancelling the discovery will make jmdns null, but it could happen after this check and before call to addServiceListener().
                 if (jmdns != null) {
-                    Log.d(TAG, "Adding mDNS service listeners for " + HTTP_SERVICE_TYPE + " and " + HTTPS_SERVICE_TYPE);
+                    Utils.debugLog(TAG, "Adding mDNS service listeners for " + HTTP_SERVICE_TYPE + " and " + HTTPS_SERVICE_TYPE);
                     jmdns.addServiceListener(HTTP_SERVICE_TYPE, BonjourFinder.this);
                     jmdns.addServiceListener(HTTPS_SERVICE_TYPE, BonjourFinder.this);
                     listServices();
@@ -87,7 +87,7 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
 
             @Override
             protected Void doInBackground(Void... params) {
-                Log.d(TAG, "Explicitly querying for services, in addition to waiting for notifications.");
+                Utils.debugLog(TAG, "Explicitly querying for services, in addition to waiting for notifications.");
                 addFDroidServices(mdns.list(HTTP_SERVICE_TYPE));
                 addFDroidServices(mdns.list(HTTPS_SERVICE_TYPE));
                 return null;
@@ -145,17 +145,13 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
         final boolean isFDroid = type != null && type.startsWith("fdroidrepo");
         final boolean isSelf = FDroidApp.repo != null && fingerprint != null && fingerprint.equalsIgnoreCase(FDroidApp.repo.fingerprint);
         if (isFDroid && !isSelf) {
-            if (BuildConfig.DEBUG) {
-                Log.d(TAG, "Found F-Droid swap Bonjour service:\n" + serviceInfo);
-            }
+            Utils.debugLog(TAG, "Found F-Droid swap Bonjour service:\n" + serviceInfo);
             foundPeer(new BonjourPeer(serviceInfo));
         } else {
-            if (BuildConfig.DEBUG) {
-                if (isSelf) {
-                    Log.d(TAG, "Ignoring Bonjour service because it belongs to this device:\n" + serviceInfo);
-                } else {
-                    Log.d(TAG, "Ignoring Bonjour service because it doesn't look like an F-Droid swap repo:\n" + serviceInfo);
-                }
+            if (isSelf) {
+                Utils.debugLog(TAG, "Ignoring Bonjour service because it belongs to this device:\n" + serviceInfo);
+            } else {
+                Utils.debugLog(TAG, "Ignoring Bonjour service because it doesn't look like an F-Droid swap repo:\n" + serviceInfo);
             }
         }
     }

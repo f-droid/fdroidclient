@@ -160,7 +160,7 @@ abstract public class Installer {
             try {
                 activity = (Activity) mContext;
             } catch (ClassCastException e) {
-                Log.d(TAG, "F-Droid Privileged can only be updated using an activity!");
+                Utils.debugLog(TAG, "F-Droid Privileged can only be updated using an activity!");
                 return;
             }
 

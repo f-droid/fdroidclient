@@ -76,7 +76,7 @@ public class BluetoothServer extends Thread {
 
         while (true) {
             if (isInterrupted()) {
-                Log.d(TAG, "Server stopped so will terminate loop looking for client connections.");
+                Utils.debugLog(TAG, "Server stopped so will terminate loop looking for client connections.");
                 break;
             }
 
@@ -84,7 +84,7 @@ public class BluetoothServer extends Thread {
                 BluetoothSocket clientSocket = serverSocket.accept();
                 if (clientSocket != null) {
                     if (isInterrupted()) {
-                        Log.d(TAG, "Server stopped after socket accepted from client, but before initiating connection.");
+                        Utils.debugLog(TAG, "Server stopped after socket accepted from client, but before initiating connection.");
                         break;
                     }
                     ClientConnection client = new ClientConnection(clientSocket, webRoot);
@@ -111,7 +111,7 @@ public class BluetoothServer extends Thread {
         @Override
         public void run() {
 
-            Log.d(TAG, "Listening for incoming Bluetooth requests from client");
+            Utils.debugLog(TAG, "Listening for incoming Bluetooth requests from client");
 
             BluetoothConnection connection;
             try {
@@ -125,7 +125,7 @@ public class BluetoothServer extends Thread {
             while (true) {
 
                 try {
-                    Log.d(TAG, "Listening for new Bluetooth request from client.");
+                    Utils.debugLog(TAG, "Listening for new Bluetooth request from client.");
                     Request incomingRequest = Request.listenForRequest(connection);
                     handleRequest(incomingRequest).send(connection);
                 } catch (IOException e) {
@@ -143,7 +143,7 @@ public class BluetoothServer extends Thread {
 
         private Response handleRequest(Request request) throws IOException {
 
-            Log.d(TAG, "Received Bluetooth request from client, will process it now.");
+            Utils.debugLog(TAG, "Received Bluetooth request from client, will process it now.");
 
             Response.Builder builder = null;
 
