@@ -72,9 +72,12 @@ public class DownloaderFactory {
     /**
      * Tests to see if we can use Android's DownloadManager to download the APK, instead of
      * a downloader returned from DownloadFactory.
+     *
+     * We require ICE_CREAM_SANDWICH (4.0). The DownloadManager does exist on
+     * 2.3.X, but it lacks HTTPS support.
      */
     private static boolean canUseDownloadManager(URL url) {
-        return Build.VERSION.SDK_INT > Build.VERSION_CODES.FROYO && !isOnionAddress(url);
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH && !isOnionAddress(url);
     }
 
 }
