@@ -1329,14 +1329,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 final TextView informationHeader = (TextView) ll_view_more_information.findViewById(R.id.information);
                 final LinearLayout information_content = (LinearLayout) ll_view_more_information.findViewById(R.id.ll_information_content);
                 if (!view_all_information) {
-                    view_all_information = true;
                     information_content.setVisibility(View.GONE);
                     informationHeader.setCompoundDrawablesWithIntrinsicBounds(null, null, getActivity().getResources().getDrawable(R.drawable.ic_expand_more_grey600), null);
                 } else {
-                    view_all_information = false;
                     information_content.setVisibility(View.VISIBLE);
                     informationHeader.setCompoundDrawablesWithIntrinsicBounds(null, null, getActivity().getResources().getDrawable(R.drawable.ic_expand_less_grey600), null);
                 }
+                view_all_information ^= true;
             }
         };
 
@@ -1345,11 +1344,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 final TextView permissionHeader = (TextView) ll_view_more_permissions.findViewById(R.id.permissions);
                 final TextView permissionListView = (TextView) ll_view_more_permissions.findViewById(R.id.permissions_list);
                 if (!view_all_permissions) {
-                    view_all_permissions = true;
                     permissionListView.setVisibility(View.GONE);
                     permissionHeader.setCompoundDrawablesWithIntrinsicBounds(null, null, getActivity().getResources().getDrawable(R.drawable.ic_expand_more_grey600), null);
                 } else {
-                    view_all_permissions = false;
                     CommaSeparatedList permsList = getApks().getItem(0).permissions;
                     if (permsList == null) {
                         permissionListView.setText(R.string.no_permissions);
@@ -1374,6 +1371,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                     permissionListView.setVisibility(View.VISIBLE);
                     permissionHeader.setCompoundDrawablesWithIntrinsicBounds(null, null, getActivity().getResources().getDrawable(R.drawable.ic_expand_less_grey600), null);
                 }
+                view_all_permissions ^= true;
             }
         };
 
