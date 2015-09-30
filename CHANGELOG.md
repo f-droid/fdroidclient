@@ -22,6 +22,8 @@
 
 * Switched to Weblate for translations
 
+* Material design tweaks and fixes
+
 * Translation updates
 
 ### 0.96.1 (2015-09-24)
