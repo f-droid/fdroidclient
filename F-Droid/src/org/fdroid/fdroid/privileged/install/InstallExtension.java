@@ -36,17 +36,17 @@ import eu.chainfire.libsuperuser.Shell;
  * http://omerjerk.in/2014/08/how-to-install-an-app-to-system-partition/
  * https://github.com/omerjerk/RemoteDroid/blob/master/app/src/main/java/in/omerjerk/remotedroid/app/MainActivity.java
  */
-abstract class InstallPrivileged {
+abstract class InstallExtension {
 
     protected final Context context;
 
     private static final String APK_FILE_NAME = "FDroidPrivileged.apk";
 
-    public InstallPrivileged(final Context context) {
+    public InstallExtension(final Context context) {
         this.context = context;
     }
 
-    public static InstallPrivileged create(final Context context) {
+    public static InstallExtension create(final Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return new LollipopImpl(context);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -56,32 +56,27 @@ abstract class InstallPrivileged {
         }
     }
 
+    final void runInstall(String apkPath) {
+        onPreInstall();
+        Shell.SU.run(getInstallCommands(apkPath));
+    }
+
+    final void runUninstall() {
+        Shell.SU.run(getUninstallCommands());
+    }
+
     protected abstract String getSystemFolder();
 
     protected void onPreInstall() {
         // To be overridden by relevant base class[es]
     }
 
-    public String getWarningInfo() {
-        return context.getString(R.string.system_install_question);
+    public String getWarningString() {
+        return context.getString(R.string.system_install_warning);
     }
 
-    final void runUninstall() {
-        final String[] commands = {
-                "am force-stop " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME,
-                "pm clear " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME,
-                "mount -o rw,remount /system",
-                "pm uninstall " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME,
-                "rm -f " + getInstallPath(),
-                "sleep 5",
-                "mount -o ro,remount /system"
-        };
-        Shell.SU.run(commands);
-    }
-
-    final void runInstall(String apkPath) {
-        onPreInstall();
-        Shell.SU.run(getInstallCommands(apkPath));
+    public String getInstallingString() {
+        return context.getString(R.string.system_install_installing);
     }
 
     protected String getInstallPath() {
@@ -92,12 +87,12 @@ abstract class InstallPrivileged {
         final List<String> commands = new ArrayList<>();
         commands.add("mount -o rw,remount /system");
         commands.addAll(getCopyToSystemCommands(apkPath));
-        commands.add("pm uninstall " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+        commands.add("pm uninstall " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.add("mv " + getInstallPath() + ".tmp " + getInstallPath());
         commands.add("pm install -r " + getInstallPath());
         commands.add("sleep 5"); // wait until the app is really installed
         commands.add("mount -o ro,remount /system");
-        commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+        commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.addAll(getPostInstallCommands());
         return commands;
     }
@@ -111,11 +106,35 @@ abstract class InstallPrivileged {
 
     protected List<String> getPostInstallCommands() {
         final List<String> commands = new ArrayList<>(1);
-        commands.add("am start -n org.fdroid.fdroid/.installer.InstallIntoSystemDialogActivity --ez post_install true");
+        commands.add("am start -n org.fdroid.fdroid/.privileged.install.InstallExtensionDialogActivity --ez "
+                + InstallExtensionDialogActivity.ACTION_POST_INSTALL + " true");
         return commands;
     }
 
-    private static class PreKitKatImpl extends InstallPrivileged {
+    private List<String> getUninstallCommands() {
+        final List<String> commands = new ArrayList<>();
+        commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
+        commands.add("pm clear " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
+        commands.add("mount -o rw,remount /system");
+        commands.add("pm uninstall " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
+        commands.addAll(getCleanUninstallCommands());
+        commands.add("sleep 5");
+        commands.add("mount -o ro,remount /system");
+        commands.addAll(getPostUninstallCommands());
+        return commands;
+    }
+
+    protected List<String> getCleanUninstallCommands() {
+        final List<String> commands = new ArrayList<>(1);
+        commands.add("rm -f " + getInstallPath());
+        return commands;
+    }
+
+    protected List<String> getPostUninstallCommands() {
+        return new ArrayList<>(0);
+    }
+
+    private static class PreKitKatImpl extends InstallExtension {
 
         public PreKitKatImpl(Context context) {
             super(context);
@@ -128,7 +147,7 @@ abstract class InstallPrivileged {
 
     }
 
-    private static class KitKatToLollipopImpl extends InstallPrivileged {
+    private static class KitKatToLollipopImpl extends InstallExtension {
 
         public KitKatToLollipopImpl(Context context) {
             super(context);
@@ -149,7 +168,7 @@ abstract class InstallPrivileged {
      * History of PackageManagerService in Lollipop:
      * https://github.com/android/platform_frameworks_base/commits/lollipop-release/services/core/java/com/android/server/pm/PackageManagerService.java
      */
-    private static class LollipopImpl extends InstallPrivileged {
+    private static class LollipopImpl extends InstallExtension {
 
         public LollipopImpl(Context context) {
             super(context);
@@ -161,8 +180,12 @@ abstract class InstallPrivileged {
             Preferences.get().setPostPrivilegedInstall(true);
         }
 
-        public String getWarningInfo() {
-            return context.getString(R.string.system_install_question_lollipop);
+        public String getWarningString() {
+            return context.getString(R.string.system_install_warning_lollipop);
+        }
+
+        public String getInstallingString() {
+            return context.getString(R.string.system_install_installing_rebooting);
         }
 
         /**
@@ -197,6 +220,24 @@ abstract class InstallPrivileged {
          */
         @Override
         protected List<String> getPostInstallCommands() {
+            List<String> commands = new ArrayList<>(3);
+            commands.add("am broadcast -a android.intent.action.ACTION_SHUTDOWN");
+            commands.add("sleep 1");
+            commands.add("reboot");
+            return commands;
+        }
+
+        @Override
+        protected List<String> getCleanUninstallCommands() {
+            final List<String> commands = new ArrayList<>(3);
+            commands.add("rm -f " + getInstallPath());
+            commands.add("sleep 1");
+            commands.add("rm -f " + getSystemFolder());
+            return commands;
+        }
+
+        @Override
+        protected List<String> getPostUninstallCommands() {
             List<String> commands = new ArrayList<>(3);
             commands.add("am broadcast -a android.intent.action.ACTION_SHUTDOWN");
             commands.add("sleep 1");

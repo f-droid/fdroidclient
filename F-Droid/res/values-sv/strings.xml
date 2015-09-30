@@ -177,8 +177,8 @@ Släppt under licensen GNU GPLv3.</string>
   <string name="root_access_denied_title">Root-åtkomst nekad</string>
   <string name="root_access_denied_body">Antingen är din Android-enhet inte rootad eller så har du nekat root-åtkomst för F-Droid.</string>
   <string name="update_all">Uppdatera alla</string>
-  <string name="system_permission_denied_title">Systembehörigheter nekade</string>
-  <string name="system_permission_denied_body">Detta val är endast tillgängligt när F-Droid installerats som en system-app.</string>
+  <string name="system_install_denied_title">Systembehörigheter nekade</string>
+  <string name="system_install_denied_body">Detta val är endast tillgängligt när F-Droid installerats som en system-app.</string>
   <string name="app_description">F-Droid är en installerbar katalog av fri och öppen källkodsprogramvara (FOSS) för Android-plattformen. Klienten gör det enkelt att bläddra bland, installera och hålla koll på uppdateringar på din enhet.</string>
   <string name="swap_join_same_wifi">Använd samma wifi som din vän</string>
   <string name="menu_swap">Byt appar</string>

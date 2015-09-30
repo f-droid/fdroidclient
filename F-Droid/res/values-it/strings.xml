@@ -179,8 +179,8 @@ Prova a collegarti a questa rete: %s</string>
   <string name="root_access_denied_title">Accesso Root negato</string>
   <string name="root_access_denied_body">Il tuo telefono non ha i permessi di root oppure li hai negati ad F-Droid.</string>
   <string name="update_all">Aggiorna tutto</string>
-  <string name="system_permission_denied_title">Permessi di sistema negati</string>
-  <string name="system_permission_denied_body">Questa opzione è disponibile solo quando F-Droid è installato come app di sistema.</string>
+  <string name="system_install_denied_title">Permessi di sistema negati</string>
+  <string name="system_install_denied_body">Questa opzione è disponibile solo quando F-Droid è installato come app di sistema.</string>
   <string name="app_description">F-Droid è un catalogo installabile di applicazioni FOSS (Free and Open Source Software) per Android. Il client rende semplice cercare, installare e tenere traccia deglii aggiornamenti sul tuo dispositivo.</string>
   <string name="swap_join_same_wifi">Collegati alla stessa WiFi del tuo amico</string>
   <string name="menu_swap">Invia apps</string>

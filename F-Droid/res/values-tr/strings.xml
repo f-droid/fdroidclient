@@ -190,8 +190,8 @@ Ondan uygulama indirmek için bu depoyu tekrar etkinleştirmeniz gerekecektir.</
   <string name="root_access_denied_title">Root erişimi engellendi</string>
   <string name="root_access_denied_body">Ya Android cihazınız rootlu değil ya da F-Droid için root erişimini engellediniz.</string>
   <string name="update_all">Tümünü güncelle</string>
-  <string name="system_permission_denied_title">Sistem izinleri reddedildi</string>
-  <string name="system_permission_denied_body">Bu seçenek sadece F-Droid bir sistem uygulaması olarak kurulduğunda mevcuttur.</string>
+  <string name="system_install_denied_title">Sistem izinleri reddedildi</string>
+  <string name="system_install_denied_body">Bu seçenek sadece F-Droid bir sistem uygulaması olarak kurulduğunda mevcuttur.</string>
   <string name="app_description">F-Droid, Android platformu için kurulabilir Özgür ve Açık Kaynaklı Yazılım kataloğudur. İstemci cihazınızda uygulama taramayı, kurmayı ve güncellemeyi kolaylaştırır.</string>
   <string name="swap_nfc_description">Arkadaşınızda NFC varsa telefonlarınızı birbirine dokundurun.</string>
   <string name="swap_join_same_wifi">Arkadaşınızla aynı kablosuz ağda bulunun</string>

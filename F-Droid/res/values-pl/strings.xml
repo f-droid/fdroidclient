@@ -137,8 +137,8 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
   <string name="root_access_denied_title">Odmówiono uprawnień roota</string>
   <string name="root_access_denied_body">Urządzenie nie zostało zrootowane lub odmówiono uprawnień roota F-Droidowi.</string>
   <string name="update_all">Uaktualnij wszystko</string>
-  <string name="system_permission_denied_title">Odmówiono uprawnień systemowych</string>
-  <string name="system_permission_denied_body">Opcja dostępna tylko wtedy, gdy F-Droid został zainstalowany jako aplikacja systemowa.</string>
+  <string name="system_install_denied_title">Odmówiono uprawnień systemowych</string>
+  <string name="system_install_denied_body">Opcja dostępna tylko wtedy, gdy F-Droid został zainstalowany jako aplikacja systemowa.</string>
   <string name="app_description">F-Droid jest katalogiem aplikacji FOSS (Wolne i Otwarte Oprogramowanie) dla platformy Android. Klient umożliwia łatwe przeglądanie, instalowanie i zarządzanie aktualizacjami na Twoim urządzeniu.</string>
   <string name="swap_nfc_description">Jeśli oba urządzenie mają F-Droida i NFC, możecie je zbliżyć do siebie.</string>
   <string name="swap_join_same_wifi">Połącz się z tą samą siecią Wi-Fi</string>

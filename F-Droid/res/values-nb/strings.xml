@@ -188,8 +188,8 @@ Du må
   <string name="root_access_denied_title">Root tilgang nektet</string>
   <string name="root_access_denied_body">Enten mangler din Android-enhet superbrukertilgang, eller så har du nektet F-droid root-tilgang.</string>
   <string name="update_all">Oppdater alle</string>
-  <string name="system_permission_denied_title">System-rettigheter avslått</string>
-  <string name="system_permission_denied_body">Dette valget er bare tilgjengelig når F-Droid er installert som system-program.</string>
+  <string name="system_install_denied_title">System-rettigheter avslått</string>
+  <string name="system_install_denied_body">Dette valget er bare tilgjengelig når F-Droid er installert som system-program.</string>
   <string name="app_description">F-droid er en ansamling fri programvare som kan installeres på Android-plattformen. Klienten gjør det enkelt å sjekke ut, installere og holde øye med oppdateringer på din enhet.</string>
   <string name="swap_nfc_description">Hvis du og din venn holder telefonene deres sammen.</string>
   <string name="swap_join_same_wifi">Koble til samme Wi-Fi-nett som din venn</string>

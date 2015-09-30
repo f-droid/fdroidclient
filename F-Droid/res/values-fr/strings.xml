@@ -182,8 +182,8 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="root_access_denied_title">Droits root refusés</string>
   <string name="root_access_denied_body">Soit votre système Android n\'a pas les droits root/SuperUser, soit vous les avez refusés à F-Droid.</string>
   <string name="update_all">Tout mettre à jour</string>
-  <string name="system_permission_denied_title">Permissions systèmes refusées</string>
-  <string name="system_permission_denied_body">Cette option est seulement disponible quand F-Droid est installé comme application-système.</string>
+  <string name="system_install_denied_title">Permissions systèmes refusées</string>
+  <string name="system_install_denied_body">Cette option est seulement disponible quand F-Droid est installé comme application-système.</string>
   <string name="app_description">F-Droid est un catalogue installable de logiciels libres et open source pour le système Android. Le client permet une navigation facile, l\'installation, et garder une trace des mises à jour sur votre appareil.</string>
   <string name="swap_join_same_wifi">Se connecter au même Wi-Fi que votre ami</string>
   <string name="menu_swap">Échanger des apps</string>

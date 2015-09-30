@@ -48,7 +48,7 @@ import eu.chainfire.libsuperuser.Shell;
 /**
  * Note: This activity has no view on its own, it displays consecutive dialogs.
  */
-public class InstallPrivilegedDialogActivity extends FragmentActivity {
+public class InstallExtensionDialogActivity extends FragmentActivity {
 
     private static final String TAG = "InstallIntoSystem";
 
@@ -59,7 +59,6 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
     public static final String ACTION_POST_INSTALL = "post_install";
     public static final String ACTION_FIRST_TIME = "first_time";
 
-    String action;
     String apkFile;
 
     @Override
@@ -81,7 +80,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
                 uninstall();
                 break;
             case ACTION_INSTALL:
-                checkRootTask.execute();
+                askBeforeInstall();
                 break;
             case ACTION_FIRST_TIME:
                 checkRootTask.execute();
@@ -96,10 +95,20 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
         if (Preferences.get().isFirstTime()) {
             Preferences.get().setFirstTime(false);
 
-            if (PrivilegedInstaller.isAvailable(context)) {
-                Preferences.get().setPrivilegedInstallerEnabled(true);
-            } else {
-                runFirstTime(context);
+            int isInstalledCorrectly = PrivilegedInstaller.isExtensionInstalledCorrectly(context);
+            switch (isInstalledCorrectly) {
+                case PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES:
+                    Preferences.get().setPrivilegedInstallerEnabled(true);
+                    break;
+
+                case PrivilegedInstaller.IS_EXTENSION_INSTALLED_NO:
+                    runFirstTime(context);
+                    break;
+
+                case PrivilegedInstaller.IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
+                case PrivilegedInstaller.IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
+                default:
+                    // do nothing
             }
         }
     }
@@ -123,8 +132,8 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
                 if (false && probablyRoot) {
                     // looks like we have root, at least su has a version number and is present
 
-                    Intent installIntent = new Intent(context, InstallPrivilegedDialogActivity.class);
-                    installIntent.setAction(InstallPrivilegedDialogActivity.ACTION_FIRST_TIME);
+                    Intent installIntent = new Intent(context, InstallExtensionDialogActivity.class);
+                    installIntent.setAction(InstallExtensionDialogActivity.ACTION_FIRST_TIME);
                     installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                     PendingIntent resultPendingIntent =
@@ -165,32 +174,56 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
      * first time
      */
     private void firstTime() {
-        // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
+        // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
         String message = getString(R.string.system_install_first_time_message) + "<br/><br/>"
-                + InstallPrivileged.create(getApplicationContext()).getWarningInfo();
+                + getString(R.string.system_install_question);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(theme)
                 .setMessage(Html.fromHtml(message))
-                .setPositiveButton(R.string.system_permission_install_via_root, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.system_install_button_open, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // Open details of F-Droid Privileged
-                        Intent intent = new Intent(InstallPrivilegedDialogActivity.this, AppDetails.class);
+                        Intent intent = new Intent(InstallExtensionDialogActivity.this, AppDetails.class);
                         intent.putExtra(AppDetails.EXTRA_APPID,
-                                PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+                                PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
                         startActivity(intent);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        InstallPrivilegedDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                        InstallPrivilegedDialogActivity.this.finish();
+                        InstallExtensionDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                        InstallExtensionDialogActivity.this.finish();
                     }
                 });
         builder.create().show();
+    }
+
+    public void askBeforeInstall() {
+        // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
+        ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
+
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(theme);
+        alertBuilder.setTitle(R.string.system_install_question);
+        String message = InstallExtension.create(getApplicationContext()).getWarningString();
+        alertBuilder.setMessage(Html.fromHtml(message));
+        alertBuilder.setPositiveButton(R.string.system_install_button_install, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                checkRootTask.execute();
+            }
+        });
+        alertBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                InstallExtensionDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                InstallExtensionDialogActivity.this.finish();
+            }
+        });
+        alertBuilder.create().show();
     }
 
     /**
@@ -203,8 +236,8 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
-            ContextThemeWrapper theme = new ContextThemeWrapper(InstallPrivilegedDialogActivity.this,
+            // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
+            ContextThemeWrapper theme = new ContextThemeWrapper(InstallExtensionDialogActivity.this,
                     FDroidApp.getCurThemeResId());
 
             mProgressDialog = new ProgressDialog(theme);
@@ -228,7 +261,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
             if (rootGranted) {
                 // root access granted
 
-                switch (action) {
+                switch (getIntent().getAction()) {
                     case ACTION_UNINSTALL:
                         uninstallTask.execute();
                         break;
@@ -242,9 +275,9 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
             } else {
                 // root access denied
 
-                if (!ACTION_FIRST_TIME.equals(action)) {
-                    // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
-                    ContextThemeWrapper theme = new ContextThemeWrapper(InstallPrivilegedDialogActivity.this,
+                if (!ACTION_FIRST_TIME.equals(getIntent().getAction())) {
+                    // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
+                    ContextThemeWrapper theme = new ContextThemeWrapper(InstallExtensionDialogActivity.this,
                             FDroidApp.getCurThemeResId());
 
                     AlertDialog.Builder alertBuilder = new AlertDialog.Builder(theme)
@@ -253,8 +286,8 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
                             .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    InstallPrivilegedDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                                    InstallPrivilegedDialogActivity.this.finish();
+                                    InstallExtensionDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                                    InstallExtensionDialogActivity.this.finish();
                                 }
                             });
                     alertBuilder.create().show();
@@ -273,12 +306,12 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
-            ContextThemeWrapper theme = new ContextThemeWrapper(InstallPrivilegedDialogActivity.this,
+            // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
+            ContextThemeWrapper theme = new ContextThemeWrapper(InstallExtensionDialogActivity.this,
                     FDroidApp.getCurThemeResId());
 
             mProgressDialog = new ProgressDialog(theme);
-            mProgressDialog.setMessage(getString(R.string.system_install_installing));
+            mProgressDialog.setMessage(InstallExtension.create(getApplicationContext()).getInstallingString());
             mProgressDialog.setIndeterminate(true);
             mProgressDialog.setCancelable(false);
             mProgressDialog.show();
@@ -286,7 +319,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallPrivileged.create(getApplicationContext()).runInstall(apkFile);
+            InstallExtension.create(getApplicationContext()).runInstall(apkFile);
             return null;
         }
     };
@@ -295,23 +328,54 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
      * 3. Verify that install worked
      */
     private void postInstall() {
-        // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
+        // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
-        final boolean success = PrivilegedInstaller.isAvailable(this);
+        int isInstalledCorrectly =
+                PrivilegedInstaller.isExtensionInstalledCorrectly(this);
 
-        // enable system installer on installation success
-        Preferences.get().setPrivilegedInstallerEnabled(success);
+        String title;
+        String message;
+        final int result;
+        switch (isInstalledCorrectly) {
+            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES:
+                title = getString(R.string.system_install_post_success);
+                message = getString(R.string.system_install_post_success_message);
+                result = Activity.RESULT_OK;
+
+                // enable system installer on installation success
+                Preferences.get().setPrivilegedInstallerEnabled(true);
+                break;
+            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_NO:
+                title = getString(R.string.system_install_post_fail);
+                message = getString(R.string.system_install_post_fail_message);
+                result = Activity.RESULT_CANCELED;
+                break;
+            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
+                title = getString(R.string.system_install_post_fail);
+                message = getString(R.string.system_install_post_fail_message) +
+                        "\n\n" + getString(R.string.system_install_denied_signature);
+                result = Activity.RESULT_CANCELED;
+                break;
+            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
+                title = getString(R.string.system_install_post_fail);
+                message = getString(R.string.system_install_post_fail_message) +
+                        "\n\n" + getString(R.string.system_install_denied_permissions);
+                result = Activity.RESULT_CANCELED;
+                break;
+            default:
+                throw new RuntimeException("unhandled return");
+        }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(theme)
-                .setTitle(success ? R.string.system_install_post_success : R.string.system_install_post_fail)
-                .setMessage(success ? R.string.system_install_post_success_message : R.string.system_install_post_fail_message)
+                .setTitle(title)
+                .setMessage(message)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        InstallPrivilegedDialogActivity.this.setResult(success ? Activity.RESULT_OK : Activity.RESULT_CANCELED);
-                        InstallPrivilegedDialogActivity.this.finish();
-                        startActivity(new Intent(InstallPrivilegedDialogActivity.this, FDroid.class));
+                        InstallExtensionDialogActivity.this.setResult(result);
+                        InstallExtensionDialogActivity.this.finish();
+                        startActivity(new Intent(InstallExtensionDialogActivity.this, FDroid.class));
                     }
                 })
                 .setCancelable(false);
@@ -319,15 +383,17 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
     }
 
     private void uninstall() {
-        // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
+        // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
-        final boolean isAvailable = PrivilegedInstaller.isAvailable(this);
+        final boolean isInstalled = PrivilegedInstaller.isExtensionInstalled(this);
 
-        if (isAvailable) {
+        if (isInstalled) {
+            String message = InstallExtension.create(getApplicationContext()).getWarningString();
+
             AlertDialog.Builder builder = new AlertDialog.Builder(theme)
                     .setTitle(R.string.system_uninstall)
-                    .setMessage(R.string.system_uninstall_message)
+                    .setMessage(Html.fromHtml(message))
                     .setPositiveButton(R.string.system_uninstall_button, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -337,23 +403,13 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
                     .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            InstallPrivilegedDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                            InstallPrivilegedDialogActivity.this.finish();
+                            InstallExtensionDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                            InstallExtensionDialogActivity.this.finish();
                         }
                     });
             builder.create().show();
         } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(theme)
-                    .setTitle(R.string.system_permission_denied_title)
-                    .setMessage(getString(R.string.system_permission_denied_body))
-                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            InstallPrivilegedDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                            InstallPrivilegedDialogActivity.this.finish();
-                        }
-                    });
-            builder.create().show();
+            throw new RuntimeException("Uninstall invoked, but extension is not installed!");
         }
     }
 
@@ -364,8 +420,8 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
-            ContextThemeWrapper theme = new ContextThemeWrapper(InstallPrivilegedDialogActivity.this,
+            // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
+            ContextThemeWrapper theme = new ContextThemeWrapper(InstallExtensionDialogActivity.this,
                     FDroidApp.getCurThemeResId());
 
             mProgressDialog = new ProgressDialog(theme);
@@ -377,7 +433,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallPrivileged.create(getApplicationContext()).runUninstall();
+            InstallExtension.create(getApplicationContext()).runUninstall();
             return null;
         }
 
