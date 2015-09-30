@@ -30,7 +30,7 @@
 	<string name="system_installer">Privileged Extension</string>
 	<string name="system_installer_on">Use F-Droid Privileged Extension to install, update, and remove packages</string>
 	<string name="uninstall_system">Update/Uninstall Privileged Extension</string>
-	<string name="uninstall_system_summary">Open details screen of Privileged Extension to update/uninstall it.</string>
+	<string name="uninstall_system_summary">Open details screen of Privileged Extension to update/uninstall it</string>
 	<string name="local_repo_name">Name of your Local Repo</string>
 	<string name="local_repo_name_summary">The advertised title of your local repo: %s</string>
 	<string name="local_repo_https">Use Private Connection</string>
