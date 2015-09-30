@@ -89,11 +89,8 @@ public class RepoXMLHandler extends DefaultHandler {
             throws SAXException {
 
         super.endElement(uri, localName, qName);
-        final String curel = localName;
-        final String str = curchars.toString().trim();
-        final boolean empty = TextUtils.isEmpty(str);
 
-        if (curel.equals("application") && curapp != null) {
+        if (localName.equals("application") && curapp != null) {
             apps.add(curapp);
             curapp = null;
             // If the app id is already present in this apps list, then it
@@ -104,11 +101,16 @@ public class RepoXMLHandler extends DefaultHandler {
             // happen, and I don't *think* it will crash the client, because
             // the first app will insert, the second one will update the newly
             // inserted one.
-        } else if (curel.equals("package") && curapk != null && curapp != null) {
+        } else if (localName.equals("package") && curapk != null && curapp != null) {
             apksList.add(curapk);
             curapk = null;
-        } else if (!empty && curapk != null) {
-            switch (curel) {
+        } else if (curchars.length() == 0) {
+            // All options below require non-empty content
+            return;
+        }
+        final String str = curchars.toString().trim();
+        if (curapk != null) {
+            switch (localName) {
             case "version":
                 curapk.version = str;
                 break;
@@ -157,8 +159,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapk.nativecode = Utils.CommaSeparatedList.make(str);
                 break;
             }
-        } else if (!empty && curapp != null) {
-            switch (curel) {
+        } else if (curapp != null) {
+            switch (localName) {
             case "name":
                 curapp.name = str;
                 break;
@@ -227,7 +229,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.requirements = Utils.CommaSeparatedList.make(str);
                 break;
             }
-        } else if (!empty && curel.equals("description")) {
+        } else if (localName.equals("description")) {
             description = cleanWhiteSpace(str);
         }
     }
