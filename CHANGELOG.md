@@ -3,15 +3,20 @@
 * Resumeable, simultaneous app downloads in the background using
   Android's DownloadManager
 
-* Fix crash when trying to install incompatible apps with the privileged
-  installer
-
 * Add option to prompt for unstable updates globally
 
 * Add support for free Certificate Authorities: cert.startcom.org and
   letsencrypt.org
 
+* Rework the privileged installer to use an extension as a privileged app
+  instead of F-Droid itself
+
 * Enable TLS v1.2 on all Android versions that support it
+
+* Fix crash when trying to install incompatible apps with the privileged
+  installer
+
+* Material design tweaks and fixes
 
 * Add StrictMode to debug builds
 
@@ -21,8 +26,6 @@
   pulled from maven repositories
 
 * Switched to Weblate for translations
-
-* Material design tweaks and fixes
 
 * Translation updates
 
