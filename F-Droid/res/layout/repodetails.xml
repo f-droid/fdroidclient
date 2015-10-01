@@ -86,6 +86,7 @@
             android:id="@+id/text_repo_fingerprint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:typeface="monospace"
             style="@style/RepoDetailsBody"/>
         <TextView
             android:id="@+id/text_repo_fingerprint_description"
