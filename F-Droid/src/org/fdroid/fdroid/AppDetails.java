@@ -129,6 +129,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     public static final String EXTRA_APPID = "appid";
     public static final String EXTRA_FROM = "from";
+    public static final String EXTRA_HINT_SEARCHING = "searching";
 
     private FDroidApp fdroidApp;
     private ApkListAdapter adapter;
@@ -769,7 +770,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         switch (item.getItemId()) {
 
         case android.R.id.home:
-            navigateUp();
+            if (getIntent().hasExtra(EXTRA_HINT_SEARCHING)) {
+                finish();
+            } else {
+                navigateUp();
+            }
             return true;
 
         case LAUNCH:
