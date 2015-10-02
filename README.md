@@ -1,132 +1,34 @@
-F-Droid Client
-==============
+# F-Droid Client
 
 [![build status](https://gitlab.com/ci/projects/6571/status.png?ref=master)](https://gitlab.com/ci/projects/6571?ref=master) [![Translation status](https://hosted.weblate.org/widgets/f-droid/-/svg-badge.svg)](https://hosted.weblate.org/engage/f-droid/)
 
 Client for [F-Droid](https://f-droid.org), the Free Software repository system
 for Android.
 
-Building with Gradle
---------------------
+## Building with Gradle
 
-The only required tools are the [Android SDK](https://developer.android.com/sdk/index.html)
-and Gradle.
-
-You should use a relatively new version of Gradle, such as 2.4, or use the
-gradle wrapper.
-
-Once you have checked out the version you wish to build, run:
+The only requirements are the [Android SDK](https://developer.android.com/sdk/index.html)
+and Gradle 2.4 or newer:
 
 	cd F-Droid
 	gradle assembleRelease
 
-The resulting apk will be in `build/outputs/apk/`.
-
-Android Studio
---------------
-
-From Android Studio: File -> Import Project -> Select the cloned top folder
-
-
-Building tips
--------------
-
-* Use `gradle --daemon` if you are going to build F-Droid multiple times.
-* If you get a message like `Could not find com.android.support:support-...`,
-  make sure that you have the latest Android support maven repository.
-
-Direct download
----------------
+## Direct download
 
 You can [download the application](https://f-droid.org/FDroid.apk) directly
 from our site or [browse it in the repo](https://f-droid.org/app/org.fdroid.fdroid).
 
+## Contributing
 
-Contributing
-------------
+See our [Contributing doc](CONTRIBUTING.md) for information on how to report
+issues, translate the app into your language or help with development.
 
-You are welcome to submit
-[Merge Requests](https://gitlab.com/fdroid/fdroidclient/merge_requests)
-via the Gitlab web interface. You can also follow our
-[Issue tracker](https://gitlab.com/fdroid/fdroidclient/issues) and our
-[Forums](https://f-droid.org/forums).
+## IRC
 
-Also see our [Contributing doc](CONTRIBUTING.md).
+We are on `#fdroid` and `#fdroid-dev` on Freenode. We hold weekly dev meetings
+on `#fdroid-dev` on Tuesdays at 21h UTC, which usually last half an hour.
 
-
-Translating
------------
-
-The strings are translated using [Weblate](https://weblate.org/en/). Follow
-[these instructions](https://hosted.weblate.org/engage/f-droid/) if you would
-like to contribute.
-
-Please *do not* send merge requests or patches modifying the translations. Use
-Weblate instead - it applies a series of fixes and suggestions, plus it keeps
-track of modifications and fuzzy translations. Applying translations manually
-skips all of the fixes and checks, and overrides the fuzzy state of strings.
-
-
-Running the test suite
-----------------------
-
-In order to run the F-Droid test suite, you will need to have either a real device
-connected via `adb`, or an emulator running. Then, execute the following from the
-command line:
-
-	gradle connectedCheck
-
-This will build and install F-Droid and the test apk, then execute the entire
-test suite on the device or emulator.
-
-Note that the CI already runs the tests on an emulator, so you don't
-necessarily have to do this yourself if you open a merge request as the tests
-will get run.
-
-See the [Android Gradle user guide](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Testing)
-for more details, including how to use Android Studio to run tests (which
-provides more useful feedback than the command line).
-
-
-Versioning
-----------
-
-Each stable version follows the `X.Y` pattern. Hotfix releases - i.e. when a
-stable has an important bug that needs immediate fixing - will follow the
-`X.Y.Z` pattern.
-
-Before each stable release, a number of alpha releases will be released. They
-will follow the pattern `X.Y-alphaN`, where `N` is the current alpha number.
-These will usually include changes and new features that have not been tested
-enough for a stable release, so use at your own risk. Testers and reporters
-are very welcome.
-
-The version codes use a number of digits per each of these keys: `XYYZNN`.
-So for example, 1.3.1 would be `103150` and 0.95-alpha13 would be `95013`
-(leading zeros are omitted).
-
-Note that we use a trailing `50` for actual stable releases, so alphas are
-limited to `-alpha49`.
-
-This is an example of a release process for **0.95**:
-
-* We are currently at stable **0.94**
-* **0.95-alpha1** is released
-* **0.95-alpha2** is released
-* **0.95-alpha3** is released
-* `stable-v0.95` is branched and frozen
-* **0.95** is released
-* A bug is reported on the stable release and fixed
-* **0.95.1** is released with only that fix
-
-As soon as a stable is tagged, master will move on to `-alpha0` on the next
-version. This is a temporary measure - until `-alpha1` is released - so that
-moving from stable to master doesn't require a downgrade. `-alpha0` versions
-will not be tagged nor released.
-
-
-License
--------
+## License
 
 This program is Free Software: You can use, study share and improve it at your
 will. Specifically you can redistribute and/or modify it under the terms of the
