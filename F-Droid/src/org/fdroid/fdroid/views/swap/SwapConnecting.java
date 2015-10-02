@@ -68,8 +68,8 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
                 prepareSwapReceiver, new IntentFilter(SwapWorkflowActivity.PrepareSwapRepo.ACTION));
     }
 
-    private BroadcastReceiver repoUpdateReceiver = new ConnectSwapReceiver();
-    private BroadcastReceiver prepareSwapReceiver = new PrepareSwapReceiver();
+    private final BroadcastReceiver repoUpdateReceiver = new ConnectSwapReceiver();
+    private final BroadcastReceiver prepareSwapReceiver = new PrepareSwapReceiver();
 
     /**
      * Listens for feedback about a local repository being prepared:

@@ -85,7 +85,7 @@ public class SwapService extends Service {
     private static final String KEY_WIFI_ENABLED = "wifiEnabled";
 
     @NonNull
-    private Set<String> appsToSwap = new HashSet<>();
+    private final Set<String> appsToSwap = new HashSet<>();
 
     public SwapService() {
         super();

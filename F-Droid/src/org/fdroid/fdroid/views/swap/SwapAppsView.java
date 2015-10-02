@@ -276,7 +276,7 @@ public class SwapAppsView extends ListView implements
             TextView statusInstalled;
             TextView statusIncompatible;
 
-            private BroadcastReceiver downloadProgressReceiver = new BroadcastReceiver() {
+            private final BroadcastReceiver downloadProgressReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     Apk apk = getApkToInstall();
@@ -297,7 +297,7 @@ public class SwapAppsView extends ListView implements
                 }
             };
 
-            private BroadcastReceiver apkDownloadReceiver = new BroadcastReceiver() {
+            private final BroadcastReceiver apkDownloadReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     Apk apk = getApkToInstall();
@@ -325,7 +325,7 @@ public class SwapAppsView extends ListView implements
                 }
             };
 
-            private ContentObserver appObserver = new ContentObserver(new Handler()) {
+            private final ContentObserver appObserver = new ContentObserver(new Handler()) {
                 @Override
                 public void onChange(boolean selfChange) {
                     app = AppProvider.Helper.findById(getActivity().getContentResolver(), app.id);

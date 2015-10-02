@@ -9,7 +9,7 @@ import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 public class BluetoothPeer implements Peer {
     private static final String TAG = "BluetoothPeer";
 
-    private BluetoothDevice device;
+    private final BluetoothDevice device;
 
     public BluetoothPeer(BluetoothDevice device) {
         this.device = device;

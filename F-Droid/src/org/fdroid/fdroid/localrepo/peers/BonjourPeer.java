@@ -8,7 +8,7 @@ import javax.jmdns.impl.FDroidServiceInfo;
 
 public class BonjourPeer extends WifiPeer {
 
-    private FDroidServiceInfo serviceInfo;
+    private final FDroidServiceInfo serviceInfo;
 
     public BonjourPeer(ServiceInfo serviceInfo) {
         this.serviceInfo = new FDroidServiceInfo(serviceInfo);

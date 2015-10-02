@@ -31,7 +31,7 @@ public class BluetoothServer extends Thread {
     private static final String TAG = "BluetoothServer";
 
     private BluetoothServerSocket serverSocket;
-    private List<ClientConnection> clients = new ArrayList<>();
+    private final List<ClientConnection> clients = new ArrayList<>();
 
     private final File webRoot;
     private final BluetoothSwap swap;

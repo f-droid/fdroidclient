@@ -26,9 +26,9 @@ public class Request {
     private String path;
     private Map<String, String> headers;
 
-    private BluetoothConnection connection;
-    private Writer output;
-    private InputStream input;
+    private final BluetoothConnection connection;
+    private final Writer output;
+    private final InputStream input;
 
     private Request(String method, String path, BluetoothConnection connection) {
         this.method = method;

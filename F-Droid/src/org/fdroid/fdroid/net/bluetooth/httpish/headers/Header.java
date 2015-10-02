@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public abstract class Header {
 
-    private static Header[] VALID_HEADERS = {
+    private static final Header[] VALID_HEADERS = {
         new ContentLengthHeader(),
         new ETagHeader(),
     };

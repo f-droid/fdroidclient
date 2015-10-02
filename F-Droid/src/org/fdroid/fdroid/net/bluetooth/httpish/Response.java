@@ -22,8 +22,8 @@ public class Response {
 
     private static final String TAG = "bluetooth.Response";
 
-    private int statusCode;
-    private Map<String, String> headers;
+    private final int statusCode;
+    private final Map<String, String> headers;
     private final InputStream contentStream;
 
     public Response(int statusCode, Map<String, String> headers) {
