@@ -37,7 +37,7 @@ import java.lang.reflect.Method;
  */
 public class PrivilegedService extends Service {
 
-    public static final String TAG = "PrivilegedFDroid";
+    private static final String TAG = "PrivilegedService";
 
     private Method mInstallMethod;
     private Method mDeleteMethod;
