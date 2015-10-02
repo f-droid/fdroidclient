@@ -21,8 +21,8 @@
   <string name="notify_on">Amuesa un avisu cuando tán disponibles anovamientos</string>
   <string name="update_history">Anovar historia</string>
   <string name="update_history_summ">Díes pa considerar a les aplicaciones nueves o recientes: %s</string>
-  <string name="system_installer">Habilitar F-Droid privilexáu</string>
-  <string name="system_installer_on">Usa los permisos privilexaos pa instalar, anovar y desaniciar paquetes</string>
+  <string name="system_installer">Estensión con privilexos</string>
+  <string name="system_installer_on">Usa la estensión F-droid con privilexos pa instalar, anovar y desaniciar paquetes</string>
   <string name="local_repo_name">Nome del to repositoriu llocal</string>
   <string name="local_repo_name_summary">El títulu alvertíu del to repositoriu llocal: %s</string>
   <string name="local_repo_https">Usar conexón privada</string>
@@ -210,7 +210,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="swap_cant_find_peers">¿Nun pues alcontrar a quien tas guetando?</string>
     <string name="swap_send_fdroid">Unviar F-droid</string>
     <string name="swap_qr_isnt_for_swap">El códigu QR qu\'escaniesti nun paez ser un códigu d\'intercambéu.</string>
-    <string name="swap_connection_misc_error">Asocedió un fallu entrín se coneutaba col preséu, paez que nun podemos facer l\'intercambéu con elli :(</string>
+    <string name="swap_connection_misc_error">Asocedió un fallu entrín se coneutaba col preséu, paez que nun podemos facer l\'intercambéu con elli.</string>
     <string name="bluetooth_unavailable">Bluetooth non disponible</string>
     <string name="swap_confirm">Confirmar intercambéu</string>
     <string name="swap_wifi_device_name">Nome del preséu</string>
@@ -223,8 +223,8 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="swap_success">¡Intercambéu esitosu!</string>
     <string name="theme_dark">Escuru</string>
 <string name="theme_light">Claru</string>
-    <string name="uninstall_system">Desinstalar F-Droid privilexáu</string>
-	<string name="uninstall_system_summary">Desinstala l\'aplicación adicional de F-droid privilexáu</string>
+    <string name="uninstall_system">Anovar/Instalar estensión con privilexos</string>
+	<string name="uninstall_system_summary">Abre la pantalla de detalles de la estensión con privilexos p\'anovala/desinstalala</string>
 	<string name="about_source">Fonte:</string>
 	<string name="app_incompatible">Incompatible</string>
 	<string name="links">Enllaces</string>
@@ -258,18 +258,18 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="install_error_cannot_parse">Asocedió un fallu entrín s\'analizaba\'l paquete</string>
     <string name="uninstall_error_title">Fallu de desinstalación</string>
     <string name="uninstall_error_unknown">Fallu al desinstalar pola mor d\'un fallu desconocíu</string>
-    <string name="system_install_first_time_notification">¿Instalar F-Droid privilexáu?</string>
+    <string name="system_install_first_time_notification">¿Instalar estensión F-Droid con privilexos?</string>
     <string name="system_install_first_time_notification_message_short">Toca pa más información.</string>
-    <string name="system_install_first_time_notification_message">Toca pa instalar F-Droid privilexáu, integraráse col to sistema operativu Android. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.\nTamién pues facer esto sero nes preferencies de F-Droid.</string>
-    <string name="system_install_post_success">Instalóse con ésitu F-Droid privilexáu</string>
-    <string name="system_install_post_fail">Fallo la instalación de F-Droid privilexáu</string>
-    <string name="system_install_post_success_message">Instalóse con ésitu F-Droid privilexáu. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.</string>
+    <string name="system_install_first_time_notification_message">Toca pa instalar la estensión F-Droid con privilexos, integraráse col to sistema operativu Android. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.\nTamién pues facer esto sero nes preferencies de F-Droid.</string>
+    <string name="system_install_post_success">Instalóse con ésitu la estensión F-Droid con privilexos</string>
+    <string name="system_install_post_fail">Fallo la instalación de la estensión F-Droid con privilexos</string>
+    <string name="system_install_post_success_message">Instalóse con ésitu la estensión F-Droid con privilexos. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.</string>
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
-    <string name="system_install_question">¿Quies instalar F-Droid privilexáu?\nEsto tardará 10 segundos.</string>
+    <string name="system_install_question">¿Quies instalar la estensión F-Droid con privilexos?</string>
     <string name="system_install_warning_lollipop">¿Quies instalar F-Droid pivilexáu?\nEsto tardará 10 segundos y el preséu reaniciaráse darréu.</string>
-    <string name="system_install_first_time_message">Paez que tienes accesu root nel to preséu. Agora pues instalar F-Droid privilexáu, integraráse col to sistema operativu Android. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.</string>
-    <string name="system_uninstall">¿Quies desinstalar F-Droid privilexáu?</string>
+    <string name="system_install_first_time_message">Paez que tienes accesu root nel to preséu. Agora pues instalar la esteisón F-Droid con privilexos, integraráse col to sistema operativu Android. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.</string>
+    <string name="system_uninstall">¿Quies desinstalar la estensión F-Droid con privilexos?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Toca pa intercambiar</string>
@@ -304,7 +304,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
 
     <string name="perms_description_app">Forníu por %1$s.</string>
     <string name="interval_1h">Cada hora</string>
-    <string name="system_install_post_fail_message">Falló la instalación de F-Droid privilexáu. El métodu d\'instalación nun ta sofitáu por toles distribuciones Android, por favor consulta\'l rastrexador de fallos de F-Droid pa más información.</string>
+    <string name="system_install_post_fail_message">Falló la instalación de la estensión F-Droid con privilexos. El métodu d\'instalación nun ta sofitáu por toles distribuciones Android, por favor consulta\'l rastrexador de fallos de F-Droid pa más información.</string>
     <string name="swap_not_enabled">Intercambéu non habilitáu</string>
     <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) de %1$s</string>
 	<string name="unstable_updates_summary">Suxer l\'anovamientu a versiones inestables</string>
@@ -318,4 +318,10 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
 
 	<string name="download_error">Descarga non esitosa</string>
 
-    </resources>
+    <string name="system_install_denied_signature">¡La robla d\'esta estensión ta mal! ¡Por favor, crea un informe de fallu!</string>
+    <string name="system_install_denied_permissions">¡Nun s\'otorgaron permisos root pa la estensión! ¡Por favor, crea un informe de fallu!</string>
+    <string name="system_install_button_install">Instalar</string>
+	<string name="system_install_button_open">Abrir estensión</string>
+    <string name="system_install_installing_rebooting">Instalando y reaniciando…</string>
+    <string name="system_install_warning">Tardará fasta 10 segundos.</string>
+	</resources>

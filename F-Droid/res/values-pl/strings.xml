@@ -226,8 +226,8 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="system_install_post_fail">Instalacja Uprzywilejowanego dodatku nie powiodła się</string>
     <string name="system_install_post_success_message">Instalacja Uprzywilejowanego dodatku powiodła się. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.</string>
     <string name="system_install_post_fail_message">Instalacja Uprzywilejowanego dodatku nie powiodła się. Metoda instalacji może nie być wspierana przez Twój system. Proszę sprawdzić listę problemów F-Droida by dowiedzieć się więcej.</string>
-    <string name="system_install_installing">instalowanie…</string>
-    <string name="system_install_uninstalling">odinstalowywanie…</string>
+    <string name="system_install_installing">Instalowanie…</string>
+    <string name="system_install_uninstalling">Odinstalowywanie…</string>
     <string name="system_install_question">Czy chcesz zainstalować Uprzywilejowany dodatek?</string>
     <string name="system_install_first_time_message">Wygląda na to, że masz dostęp do roota na swoim urządzeniu. Możesz zainstalować Uprzywilejowany dodatek. Pozwala to na automatyczne instalowanie, aktualizowanie i odinstalowywanie aplikacji przez F-Droida.</string>
     <string name="system_uninstall">Czy chcesz odinstalować Uprzywilejowany dodatek?</string>
@@ -323,7 +323,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="system_install_denied_permissions">Uprzywilejowanemu dodatkowi nie zostały przyznane wymagane uprawnienia! Prosimy o zgłoszenie błędu!</string>
     <string name="system_install_button_install">Instalacja</string>
 	<string name="system_install_button_open">Otwórz dodatek</string>
-    <string name="system_install_installing_rebooting">instalowanie i restartowanie…</string>
-    <string name="system_install_warning">Zajmuje to ok. 10 sekund</string>
-	<string name="system_install_warning_lollipop">Zajmuje to ok. 10 sekund, następnie urządzenie zostanie <b>zrestartowane</b></string>
+    <string name="system_install_installing_rebooting">Instalowanie i restartowanie…</string>
+    <string name="system_install_warning">Zajmuje to ok. 10 sekund.</string>
+	<string name="system_install_warning_lollipop">Zajmuje to ok. 10 sekund, następnie urządzenie zostanie <b>zrestartowane</b>.</string>
 	</resources>
