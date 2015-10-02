@@ -347,7 +347,7 @@
         </activity>-->
         <activity
             android:name=".views.RepoDetailsActivity"
-            android:label="@string/menu_manage"
+            android:label="@string/repo_details"
             android:parentActivityName=".views.ManageReposActivity"
             android:windowSoftInputMode="stateHidden">
             <meta-data

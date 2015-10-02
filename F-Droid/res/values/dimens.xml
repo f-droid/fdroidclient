@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="padding_side">8dp</dimen>
-    <dimen name="padding_top">5dp</dimen>
-    <dimen name="form_label_top">5dp</dimen>
     <dimen name="applist_icon_normal_size">48dp</dimen>
     <dimen name="applist_icon_compact_size">32dp</dimen>
 

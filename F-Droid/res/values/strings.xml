@@ -188,8 +188,10 @@
     <string name="theme">Theme</string>
     <string name="unsigned">Unsigned</string>
     <string name="unverified">Unverified</string>
+    <string name="repo_details">Repository</string>
+    <string name="repo_url">Address</string>
     <string name="repo_num_apps">Number of apps</string>
-    <string name="repo_fingerprint">Fingerprint of Repo Signing Key (SHA-256)</string>
+    <string name="repo_fingerprint">Fingerprint of the signing key (SHA-256)</string>
     <string name="repo_description">Description</string>
     <string name="repo_last_update">Last update</string>
     <string name="repo_update">Update</string>
@@ -198,9 +200,7 @@
         applications could not be verified. You should be careful
         with applications downloaded from unsigned indexes.</string>
     <string name="repo_not_yet_updated">This repository has not been used yet.
-        In order to view the apps it provides, you will need to update
-        it.\n\nOnce updated, the description and other details will
-        become available here.</string>
+        You need to enable it to view the apps it provides.</string>
     <string name="unknown">Unknown</string>
     <string name="repo_confirm_delete_title">Delete Repository?</string>
     <string name="repo_confirm_delete_body">Deleting a repository means
