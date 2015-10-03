@@ -107,7 +107,7 @@
   <string name="theme"> Motyw</string>
   <string name="unverified">Niezweryfikowane</string>
   <string name="repo_num_apps">Liczba aplikacji</string>
-  <string name="repo_fingerprint">Suma kontrolna podpisu cyfrowego repozytorium (SHA-256)</string>
+  <string name="repo_fingerprint">Suma kontrolna podpisu cyfrowego (SHA-256)</string>
   <string name="repo_description">Opis</string>
   <string name="repo_last_update">Ostatnia modyfikacja</string>
   <string name="repo_update">Aktualizacja</string>
@@ -200,7 +200,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="no_permissions">Brak wymaganych uprawnień.</string>
 	<string name="unsigned">Brak podpisu</string>
     <string name="unsigned_description">Oznacza to, że lista aplikacji nie mogła zostać zweryfikowana. Powinieneś być ostrożny podczas pobierania aplikacji z nieznanych źródeł.</string>
-    <string name="repo_not_yet_updated">To repozytorium nie zostało jeszcze użyte. By zobaczyć jakie aplikacje posiada, musisz je zaktualizować.\n\nGdy je zaktualizujesz, tutaj zobaczysz jego opis i więcej informacji.</string>
+    <string name="repo_not_yet_updated">To repozytorium nie zostało jeszcze użyte. Musisz uaktywnić to repozytorium by zobaczyć jakie aplikacje dostarcza.</string>
     <string name="repo_disabled_notification">Wyłączono %1$a.\n\nAby ponownie móc instalować z niego aplikacje musisz je włączyć ponownie.</string>
     <string name="repo_added">Dodano repozytorium %1$s.</string>
     <string name="repo_searching_address">Szukam repozytorium F-Droida pod adresem:\n%1$s</string>
@@ -326,4 +326,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="system_install_installing_rebooting">Instalowanie i restartowanie…</string>
     <string name="system_install_warning">Zajmuje to ok. 10 sekund.</string>
 	<string name="system_install_warning_lollipop">Zajmuje to ok. 10 sekund, następnie urządzenie zostanie <b>zrestartowane</b>.</string>
-	</resources>
+	<string name="repo_details">Repozytorium</string>
+    <string name="repo_url">Adres</string>
+    </resources>

@@ -71,7 +71,7 @@
     <string name="interval_12h">Кожні 12 годин</string>
     <string name="interval_1d">Щоденно</string>
     <string name="interval_1w">Щотижня</string>
-    <string name="interval_2w">Кожні 2 тижня</string>
+    <string name="interval_2w">Кожні 2 тижні</string>
 
     <string name="interval_1h">Щогодинно</string>
     <string name="unstable_updates">Нестабільні оновлення</string>
@@ -136,9 +136,9 @@
 
 	<string name="local_repo">Локальний репозиторій</string>
 	<string name="deleting_repo">Видалення поточного репозиторію…</string>
-	<string name="adding_apks_format">Додавання %s до репозиторію…</string>
+	<string name="adding_apks_format">Додавання «%s» до репозиторію…</string>
 	<string name="next">Далі</string>
-	<string name="enable_proxy_title">Задіяти HTTP проксі</string>
+	<string name="enable_proxy_title">Використовувати HTTP проксі</string>
 	<string name="enable_proxy_summary">Налаштувати HTTP проксі для всіх мережевих запитів</string>
 	<string name="proxy_host">Проксі хост</string>
 	<string name="proxy_host_summary">Налаштувати назву хосту вашого проксі (наприклад 127.0.0.1)</string>
@@ -194,19 +194,19 @@
 
     <string name="swap_join_same_wifi">Приєднайтеся до того самого Wi-Fi, що і ваш друг</string>
     <string name="swap_view_available_networks">Торкніться, аби відкрити доступні мережі</string>
-    <string name="open_qr_code_scanner">Відкрити QR сканер</string>
+    <string name="open_qr_code_scanner">Відкрити QR-сканер</string>
     <string name="swap_welcome">Ласкаво просимо до F-Droid!</string>
     <string name="swap_choose_apps">Оберіть додатки</string>
-    <string name="swap_scan_qr">Сканувати QR код</string>
+    <string name="swap_scan_qr">Сканувати QR-код</string>
     <string name="swap_wifi_device_name">Назва пристрою</string>
     <string name="swap_send_fdroid">Відправити F-Droid</string>
     <string name="swap_connecting">Підключення</string>
     <string name="bluetooth_unavailable">Bluetooth не доступний</string>
-    <string name="swap_cant_send_no_bluetooth">"Неможливо надіслати F-Droid, так як  Bluetooth не доступний на цьому пристрої."</string>
+    <string name="swap_cant_send_no_bluetooth">Неможливо надіслати F-Droid, тому що Bluetooth не доступний на цьому пристрої.</string>
     <string name="loading">Завантаження …</string>
     <string name="newPerms">Нові</string>
     <string name="allPerms">Всі</string>
-    <string name="enable_nfc_send">Ввімкнути відправку через NFC…</string>
+    <string name="enable_nfc_send">Ввімкнути надсилання через NFC…</string>
 	<string name="repo_add_fingerprint">Відбиток (опція)</string>
 	<string name="antiadslist">Цей додаток містить рекламні пропозиції</string>
 	<string name="copying_icons">Копіювання піктограми додатку до репозиторію…</string>
@@ -220,12 +220,12 @@
     <string name="empty_available_app_list">Відсутні додатки в даній категорії.\n\nСпробуйте обрати іншу категорію або ж оновити ваші репозиторії, для отримання свіжого переліку додатків.</string>
     <string name="empty_can_update_app_list">Всі додатки оновлені.\n\nВітаємо! Всі ваші додатки мають крайні версії (або ж ваші репозиторії застаріли).</string>
 
-    <string name="install_error_unknown">Не вдалося встановити через невідному помилку</string>
+    <string name="install_error_unknown">Не вдалося встановити через невідому помилку</string>
     <string name="system_install_button_open">Відкрити розширення</string>
     <string name="system_install_warning">Це забере приблизно 10 секунд.</string>
 	<string name="swap_nfc_description">Якщо ваш друг має F-Droid та ввімкнений NFC, просто торкніться телефонами.</string>
     <string name="swap_no_wifi_network">Мережа відсутня</string>
-    <string name="swap_confirm_connect">Бажаєте отримати додатки з %s зараз?</string>
+    <string name="swap_confirm_connect">Бажаєте отримати додатки з «%s» зараз?</string>
     <string name="swap_dont_show_again">Не показувати це знову</string>
     <string name="swap_visible_bluetooth">Видимий через Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Налаштування Bluetooth…</string>
@@ -238,8 +238,8 @@
 	<string name="about_desc">Оснований на Aptoide.\nВипущено під ліцензією GNU GPLv3.</string>
 
 	<string name="app_incompatible">Несумісний</string>
-	<string name="bluetooth_activity_not_found">Жодного методу відправки по Bluetooth не знайдено, оберіть один з них!</string>
-	<string name="choose_bt_send">Оберіть метод відправки через Bluetooth</string>
+	<string name="bluetooth_activity_not_found">Жодного методу надсилання по Bluetooth не знайдено, оберіть один з них!</string>
+	<string name="choose_bt_send">Оберіть метод надсилання через Bluetooth</string>
 	<string name="repo_exists_add_fingerprint">Цей репозиторії вже налаштовано, ця дія оновить інформацію про ключ.</string>
 	<string name="repo_exists_enable">Цей репозиторії вже налаштовано, підтвердіть, що бажаєте знову ввімкнути його.</string>
 	<string name="repo_exists_and_enabled">Репозиторій вже налаштовано і увімкнено.</string>
@@ -259,7 +259,7 @@
 	<string name="failed_to_create_index">Не вдалося створити індекс репозиторію!</string>
 	<string name="linking_apks">Включення APK-файлів до репозиторію…</string>
 	<string name="all_other_repos_fine">Всі інші репозиторії не призвели до помилки.</string>
-        <string name="no_handler_app">Ви не маєте додатку для обробки %s.</string>
+        <string name="no_handler_app">Ви не маєте додатку для обробки «%s».</string>
 	<string name="repo_num_apps">Кількість додатків</string>
     <string name="repo_fingerprint">Відбиток ключа підпису репозиторію (SHA-256)</string>
     <string name="unsigned_description">Це означає, що список додатків не може бути перевірено. Ви повинні бути обачними із додатками, які завантажуєте з не підписаних джерел.</string>
@@ -285,8 +285,8 @@
     <string name="swap_nfc_title">Торкніться для обміну</string>
     <string name="menu_swap">Обмінятися додатками</string>
     <string name="swap">Обмін додатками</string>
-    <string name="swap_success">Обмін пройшов вдало!</string>
-    <string name="swap_switch_to_wifi">Торкніться для переключення Wi-Fi мережі</string>
+    <string name="swap_success">Обмін пройшов удало!</string>
+    <string name="swap_switch_to_wifi">Торкніться для перемикання Wi-Fi мережі</string>
     <string name="swap_tap_to_select_apps">Торкніться для вибору додатків на обмін.</string>
     <string name="swap_intro">Підключайтеся та обмінюйтесь додатками з людьми навколо вас.</string>
     <string name="swap_visible_wifi">Видимий через Wi-Fi</string>
@@ -314,4 +314,20 @@
     <string name="install_confirm_update_system_no_perms">Бажаєте встановити оновлення на вбудований додаток? Ваші наявні дані не буде втрачено. Оновлений додаток не потребує спеціальних дозволів.</string>
     <string name="uninstall_update_confirm">Бажаєте замінити цей додаток заволзькою версією?</string>
     <string name="perms_new_perm_prefix">"Нові: "</string>
+    <string name="empty_installed_app_list">Жодного додатку не встановлено.\n\nЖоден додаток на вашому пристрої не доступний через F-Droid. Можливо вам слід оновити репозиторії, або ж ваші репозиторії не містять такі додатки.</string>
+    <string name="system_install_first_time_notification_message">Торкніться, аби встановити привілейоване розширення F-Droid, інтегруючи його до операційної системи Android. Це дозволить додатку F-Droid власними засобами встановлювати, оновлювати чи видаляти додатки.\nВи також можете зробити це пізніше через налаштування F-Droid.</string>
+    <string name="system_install_post_fail_message">Не вдалося встановити привілейоване розширення F-Droid. Метод встановлення не підтримується постачальником системи Android, будь ласка, проконсультуйтеся на форумі F-Droid з приводу отримання додаткової інформації.</string>
+    <string name="app_description">F-Droid — це каталог вільного та відкритого програмного забезпечення (FOSS), призначений для встановлення на Android платформу. Клієнт робить зручним огляд, встановлення та оновлення додатків на вашому пристрої.</string>
+    <string name="swap_join_same_wifi_desc">Для обміну через Wi-Fi, переконайтеся, що ви знаходитесь в одній й тій самій мережі. Якщо ж ви не маєте доступу до тієї ж мережі, єдине що лишається, це створити власну Wi-Fi точку доступу.</string>
+    <string name="swap_join_this_hotspot">Допоможіть вашим друзям приєднатись до вашої точки доступу</string>
+    <string name="swap_scan_or_type_url">Один з вас повинен відреагувати код, чи ввести URL іншого в оглядачу.</string>
+    <string name="swap_people_nearby">Люди поблизу</string>
+    <string name="swap_cant_find_peers">Не можете знайти хто вас шукає?</string>
+    <string name="swap_no_peers_nearby">Не вдалося знайти людей поблизу для обміну.</string>
+    <string name="swap_qr_isnt_for_swap">QR-код, який ви просканувати, не містить коду для обміну.</string>
+    <string name="devicePerms">Доступ до пристрою</string>
+    <string name="repo_added">F-Droid ропозиторій %1$s збережено.</string>
+    <string name="Theming">Графічні теми</string>
+    <string name="swap_connection_misc_error">Трапилася помилка під час доступу до пристрою, не можливо продовжити обмін з ним.</string>
+    <string name="system_install_first_time_message">Схоже, що у вас є root доступ на вашому пристрою. Ви можете встановити привілейоване розширення F-Droid, що інтегрується з операційною системою Android. Це дозволить додатку F-Droid встановлювати, оновлювати та видаляти додатки своїми засобами.</string>
     </resources>
