@@ -21,8 +21,8 @@
   <string name="notify_on">更新があれば通知を表示します</string>
   <string name="update_history">更新履歴</string>
   <string name="update_history_summ">ｱﾌﾟﾘｹｰｼｮﾝが新しいものだと判断する日数:%s日</string>
-  <string name="system_installer">ｼｽﾃﾑｱｸｾｽ許可を使用してｲﾝｽﾄｰﾙ</string>
-  <string name="system_installer_on">ﾊﾟｯｹｰｼﾞのｲﾝｽﾄｰﾙ､更新､および削除にｼｽﾃﾑｱｸｾｽ許可を使用する</string>
+  <string name="system_installer">特権拡張</string>
+  <string name="system_installer_on">F-Droid 特権拡張を使用してﾊﾟｯｹｰｼﾞのｲﾝｽﾄｰﾙ､更新､および削除します</string>
   <string name="local_repo_name">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘの名前</string>
   <string name="local_repo_name_summary">公開するﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘの題名: %s</string>
   <string name="local_repo_https">ﾌﾟﾗｲﾍﾞｰﾄ接続を使用する</string>
@@ -143,14 +143,13 @@
   <string name="unsigned">未署名</string>
   <string name="unverified">未検証</string>
   <string name="repo_num_apps">ｱﾌﾟﾘｹｰｼｮﾝ数</string>
-  <string name="repo_fingerprint">ﾘﾎﾟｼﾞﾄﾘ署名ｷｰのﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄ(SHA-256)</string>
+  <string name="repo_fingerprint">署名ｷｰのﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄ(SHA-256)</string>
   <string name="repo_description">説明</string>
   <string name="repo_last_update">最終更新</string>
   <string name="repo_update">更新</string>
   <string name="repo_name">名前</string>
   <string name="unsigned_description">ｱﾌﾟﾘｹｰｼｮﾝの一覧は検証されていません｡未署名の索引からｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝﾛｰﾄﾞする時は注意してください｡</string>
-  <string name="repo_not_yet_updated">このﾘﾎﾟｼﾞﾄﾘはまだ使用されていません｡ ｱﾌﾟﾘｹｰｼｮﾝを表示するためには､ﾘﾎﾟｼﾞﾄﾘを更新する必要があります｡
-\n\n更新すると､説明やその他の詳細がここで有効になります｡</string>
+  <string name="repo_not_yet_updated">このﾘﾎﾟｼﾞﾄﾘはまだ使用されていません｡ ｱﾌﾟﾘｹｰｼｮﾝを表示するには､ﾘﾎﾟｼﾞﾄﾘを有効にする必要があります｡</string>
   <string name="unknown">不明</string>
   <string name="repo_confirm_delete_title">ﾘﾎﾟｼﾞﾄﾘを削除しますか?</string>
   <string name="repo_confirm_delete_body">ﾘﾎﾟｼﾞﾄﾘを削除するとｱﾌﾟﾘｹｰｼｮﾝはF-Droidからｲﾝｽﾄｰﾙできなくなります｡\n\n 注:これまでにｲﾝｽﾄｰﾙしたｱﾌﾟﾘｹｰｼｮﾝは端末に残ります｡</string>
@@ -191,8 +190,8 @@
   <string name="open_qr_code_scanner">QRｺｰﾄﾞｽｷｬﾅｰを開く</string>
   <string name="swap_welcome">F-Droidにようこそ!</string>
   <string name="swap_confirm_connect">今すぐ %1$s からｱﾌﾟﾘを取得しますか?</string>
-<string name="uninstall_system">特権 F-Droid をｱﾝｲﾝｽﾄｰﾙ</string>
-	<string name="uninstall_system_summary">追加の特権を持つ F-Droid ｱﾌﾟﾘをｱﾝｲﾝｽﾄｰﾙします</string>
+<string name="uninstall_system">特権拡張をｲﾝｽﾄｰﾙ/ｱﾝｲﾝｽﾄｰﾙ</string>
+	<string name="uninstall_system_summary">特権拡張の詳細画面を開いて、ｱﾌﾟﾘをｲﾝｽﾄｰﾙ/ｱﾝｲﾝｽﾄｰﾙします</string>
 	<string name="app_incompatible">非互換</string>
 	<string name="links">ﾘﾝｸ</string>
 	<string name="content_description_view_more">もっと見る</string>
@@ -222,19 +221,19 @@
     <string name="install_error_cannot_parse">ﾊﾟｯｹｰｼﾞの解析中にｴﾗｰが発生しました</string>
     <string name="uninstall_error_title">ｱﾝｲﾝｽﾄｰﾙｴﾗｰ</string>
     <string name="uninstall_error_unknown">不明なｴﾗｰのためｱﾝｲﾝｽﾄｰﾙに失敗しました</string>
-    <string name="system_install_first_time_notification">特権 F-Droid をｲﾝｽﾄｰﾙしますか?</string>
+    <string name="system_install_first_time_notification">F-Droid 特権拡張をｲﾝｽﾄｰﾙしますか?</string>
     <string name="system_install_first_time_notification_message_short">詳細はﾀｯﾁしてください。</string>
-    <string name="system_install_first_time_notification_message">ﾀｯﾁすると、Android ｵﾍﾟﾚｰﾃｨﾝｸﾞ ｼｽﾃﾑと密接に関連した特権 F-Droid をｲﾝｽﾄｰﾙします。これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ、およびｱﾝｲﾝｽﾄｰﾙすることができます。\nまた、これは F-Droid の設定から後で実行することもできます。</string>
-    <string name="system_install_post_success">特権 F-Droid を正常にｲﾝｽﾄｰﾙしました</string>
-    <string name="system_install_post_fail">特権 F-Droid のｲﾝｽﾄｰﾙに失敗しました</string>
-    <string name="system_install_post_success_message">特権 F-Droid は正常にｲﾝｽﾄｰﾙされています。これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ、およびｱﾝｲﾝｽﾄｰﾙすることができます。</string>
-    <string name="system_install_post_fail_message">特権 F-Droid のｲﾝｽﾄｰﾙに失敗しました。すべての Android ﾃﾞｨｽﾄﾘﾋﾞｭｰｼｮﾝでのｲﾝｽﾄｰﾙ方法はｻﾎﾟｰﾄされていません。詳細については F-Droid のﾊﾞｸﾞ追跡ｼｽﾃﾑを参照してください。</string>
+    <string name="system_install_first_time_notification_message">ﾀｯﾁすると、Android ｵﾍﾟﾚｰﾃｨﾝｸﾞ ｼｽﾃﾑと密接に関連した F-Droid 特権拡張をｲﾝｽﾄｰﾙします。これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ、およびｱﾝｲﾝｽﾄｰﾙすることができます。\nまた、これは F-Droid の設定から後で実行することもできます。</string>
+    <string name="system_install_post_success">F-Droid 特権拡張を正常にｲﾝｽﾄｰﾙしました</string>
+    <string name="system_install_post_fail">F-Droid 特権拡張のｲﾝｽﾄｰﾙに失敗しました</string>
+    <string name="system_install_post_success_message">F-Droid 特権拡張は正常にｲﾝｽﾄｰﾙされています。これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ、およびｱﾝｲﾝｽﾄｰﾙすることができます。</string>
+    <string name="system_install_post_fail_message">F-Droid 特権拡張のｲﾝｽﾄｰﾙに失敗しました。すべての Android ﾃﾞｨｽﾄﾘﾋﾞｭｰｼｮﾝで、ｲﾝｽﾄｰﾙ方法がｻﾎﾟｰﾄされてるわけではありません。詳細については F-Droid のﾊﾞｸﾞ追跡ｼｽﾃﾑを参照してください。</string>
     <string name="system_install_installing">ｲﾝｽﾄｰﾙ中…</string>
     <string name="system_install_uninstalling">ｱﾝｲﾝｽﾄｰﾙ中…</string>
-    <string name="system_install_question">特権 F-Droid をｲﾝｽﾄｰﾙしますか?\nこれは 10 秒ほどかかります。</string>
+    <string name="system_install_question">F-Droid 特権拡張をｲﾝｽﾄｰﾙしますか?</string>
     <string name="system_install_warning_lollipop">特権 F-Droid をｲﾝｽﾄｰﾙしますか?\nこれは、10 秒ほどかかり、その後デバイスを再起動します。<b>再起動</b> します。</string>
-    <string name="system_install_first_time_message">お使いの端末に管理者権限でｱｸｾｽできるようです。Android のｵﾍﾟﾚｰﾃｨﾝｸﾞ ｼｽﾃﾑと密接に関連した特権 F-Droid をｲﾝｽﾄｰﾙすることができます。これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ、およびｱﾝｲﾝｽﾄｰﾙすることができます。</string>
-    <string name="system_uninstall">特権 F-Droid をｱﾝｲﾝｽﾄｰﾙしますか?</string>
+    <string name="system_install_first_time_message">お使いの端末に管理者権限でｱｸｾｽできるようです。Android のｵﾍﾟﾚｰﾃｨﾝｸﾞ ｼｽﾃﾑと密接に関連した F-Droid 特権拡張をｲﾝｽﾄｰﾙすることができます。これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ、およびｱﾝｲﾝｽﾄｰﾙすることができます。</string>
+    <string name="system_uninstall">F-Droid 特権拡張をｱﾝｲﾝｽﾄｰﾙしますか?</string>
     <string name="system_uninstall_button">ｱﾝｲﾝｽﾄｰﾙ</string>
 
     <string name="swap_success">正常に交換しました!</string>
@@ -272,7 +271,7 @@
     <string name="downloading">ﾀﾞｳﾝﾛｰﾄﾞ中…</string>
 
     <string name="swap_attempt_install">ｲﾝｽﾄｰﾙしてみる</string>
-    <string name="swap_connection_misc_error">端末への接続中にｴﾗｰが発生しました。交換できないようです :(</string>
+    <string name="swap_connection_misc_error">端末への接続中にｴﾗｰが発生しました。交換できないようです。</string>
     <string name="swap_not_enabled">交換は有効ではありません</string>
     <string name="swap_not_enabled_description">交換する前に、お使いの端末が表示されている必要があります。</string>
 
@@ -320,4 +319,12 @@
 	<string name="menu_flattr">Flattr</string>
 
 
+	<string name="repo_details">ﾘﾎﾟｼﾞﾄﾘ</string>
+    <string name="repo_url">ｱﾄﾞﾚｽ</string>
+    <string name="system_install_denied_signature">拡張の署名が間違っています! ﾊﾞｸﾞ報告を送ってください!</string>
+    <string name="system_install_denied_permissions">特権のｱｸｾｽ許可が拡張に付与されていません! ﾊﾞｸﾞ報告を送ってください!</string>
+    <string name="system_install_button_install">ｲﾝｽﾄｰﾙ</string>
+	<string name="system_install_button_open">拡張を開く</string>
+    <string name="system_install_installing_rebooting">ｲﾝｽﾄｰﾙおよび再起動中…</string>
+    <string name="system_install_warning">これは 10 秒ほどかかります。</string>
 	</resources>

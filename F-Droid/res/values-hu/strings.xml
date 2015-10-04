@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">\"%1$d alkalmazás találat ehhez \'%2$s\':\"</string>
   <string name="searchres_oneapp">\"Egy alkalmazás találat ehhez \'%s\':\"</string>
@@ -112,4 +112,5 @@ Ha frissített, a leírás és egyéb részletek itt lesz elérhető .</string>
   <string name="repo_confirm_delete_body">A repository törlése azt jelenti, hogy az többé nem lesz elérhető az F-Droid-ból. Megj.: Minden korábban telepített app a készüléken marad.</string>
   <string name="repo_disabled_notification">\"%1$s\" letiltva. Újra kell majd engedélyezni a repo-t, hogy appokat telepíthessen belőle.</string>
   <string name="minsdk_or_later">Android %s vagy későbbi</string>
-</resources>
+<string name="delete">Törlés</string>
+	</resources>

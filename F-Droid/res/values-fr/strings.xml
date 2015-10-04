@@ -204,7 +204,7 @@ Publiée sous licence GNU GPLv3.</string>
 	<string name="content_description_view_more">Voir plus</string>
 
 	<string name="back">Retour</string>
-	<string name="tab_installed_apps">Installé</string>
+	<string name="tab_installed_apps">Installées</string>
 	<string name="bad_fingerprint">Mauvaise empreinte</string>
 	<string name="invalid_url">Ce n\'est pas une URL valide.</string>
 	<string name="menu_changelog">Journal des changements</string>
@@ -300,4 +300,6 @@ Publiée sous licence GNU GPLv3.</string>
     <string name="swap_cant_send_no_bluetooth">Impossible d\'envoyer F-Droid, le Bluetooth n\'est pas disponible sur le périphérique.</string>
     <string name="swap_not_enabled_description">Votre appareil doit être visible avant de commencer l\'échange.</string>
 
+    <string name="interval_1h">Toutes les heures</string>
+    <string name="perms_description_app">Fourni par %1$s.</string>
     </resources>

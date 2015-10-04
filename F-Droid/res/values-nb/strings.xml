@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Fant %1$d applikasjoner som matcher \'%2$s\':</string>
   <string name="searchres_oneapp">Fant en applikasjon som matcher \'%s\':</string>
@@ -16,20 +16,20 @@
   <string name="update_interval">Intervall for automatisk oppdatering</string>
   <string name="update_interval_zero">Ingen automatiske registerlisteoppdateringer</string>
   <string name="automatic_scan_wifi">Bare på trådløst</string>
-  <string name="automatic_scan_wifi_on">Oppdater applikasjoner automatisk kun på trådløst</string>
+  <string name="automatic_scan_wifi_on">Bare oppdater programmer på trådløst</string>
   <string name="notify">Varsle</string>
   <string name="notify_on">Varsle når nye oppdateringer er tilgjengelige</string>
   <string name="update_history">Oppdater historikk</string>
   <string name="update_history_summ">Dager nytt innhold skal anses som ferskt: %s</string>
   <string name="system_installer">Installer ved bruk av system-tilgang</string>
-  <string name="system_installer_on">Bruk system rettigheter til å installere, oppdatere, og fjerne applikasjoner.</string>
+  <string name="system_installer_on">Bruk system-rettigheter til å installere, oppdatere, og fjerne applikasjoner</string>
   <string name="local_repo_name">Navn på lokal pakkebrønn</string>
   <string name="local_repo_name_summary">Offentliggjort tittel for din lokale pakkebrønn: %s</string>
   <string name="local_repo_https">Bruk privat tilkobling</string>
   <string name="local_repo_https_on">Bruk sikret HTTP://-tilkobling for lokal pakkebrønn</string>
   <string name="search_results">Søkeresultater</string>
   <string name="app_details">Programdetaljer</string>
-  <string name="no_such_app">Program ikke funnet</string>
+  <string name="no_such_app">Program ikke funnet.</string>
   <string name="about_title">Om F-Droid</string>
   <string name="about_desc">Basert på Aptoide.
 Lisensiert GNU GPLv3.</string>
@@ -55,7 +55,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="one_update_available">1 oppdatering tilgjengelig.</string>
   <string name="many_updates_available">%d oppdateringer tilgjengelig.</string>
   <string name="fdroid_updates_available">F-Droid: Oppdateringer tilgjengelig</string>
-  <string name="bluetooth_activity_not_found">Ingen forsendelsesmåte for blåtann funnet, velg en!</string>
+  <string name="bluetooth_activity_not_found">Ingen forsendelsesmåte for blåtann funnet, velg en.</string>
   <string name="choose_bt_send">Velg forsendelsesmåte for Blåtann</string>
   <string name="send_via_bluetooth">Send via Blåtann</string>
   <string name="repo_add_url">Pakkebrønnsadresse</string>
@@ -67,7 +67,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="malformed_repo_uri">Ignorerer ugyldig registernettadresse: %s</string>
   <string name="menu_update_repo">Oppdater registrene</string>
   <string name="menu_manage">Endre registrene</string>
-  <string name="menu_send_apk_bt">Blåtann FDroid.apk…</string>
+  <string name="menu_send_apk_bt">Del F-Droid.apk via Blåtann</string>
   <string name="menu_preferences">Innstillinger</string>
   <string name="menu_about">Om</string>
   <string name="menu_search">Søk</string>
@@ -93,7 +93,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="antinonfreedeplist">Dette programmet avhenger av andre ufrie applikasjoner</string>
   <string name="antiupstreamnonfreelist">Koden fra kilden er ikke helt fri</string>
   <string name="display">Vis</string>
-  <string name="expert">Ekspert</string>
+  <string name="expert">Ekspertmodus</string>
   <string name="expert_on">Vis ekstra info og skru på ekstra innstillinger</string>
   <string name="search_hint">Søk i programliste</string>
   <string name="appcompatibility">Programstøtte</string>
@@ -134,26 +134,23 @@ Lisensiert GNU GPLv3.</string>
   <string name="status_inserting">Lagrer programdata (%1$d%%)</string>
   <string name="repos_unchanged">Ingen av pakkebrønnene hadde noen oppdateringer</string>
   <string name="all_other_repos_fine">Alle de andre pakkebrønnene lagde ikke noe krøll.</string>
-  <string name="global_error_updating_repos">Feil under oppdatering:</string>
+  <string name="global_error_updating_repos">Feil under oppdatering: %s</string>
   <string name="no_permissions">Krever ingen tillatelser.</string>
   <string name="permissions_for_long">Tillatelser for versjon %s</string>
-  <string name="no_handler_app">Du har ingen tilgjengelige applikasjoner som kan håndtere %s</string>
+  <string name="no_handler_app">Du har ingen tilgjengelige applikasjoner som kan håndtere %s.</string>
   <string name="compactlayout">Kompakt layout</string>
   <string name="compactlayout_on">Vis ikoner i mindre størrelse</string>
   <string name="theme">Utseende</string>
   <string name="unsigned">Usignert</string>
   <string name="unverified">Ubekreftet</string>
   <string name="repo_num_apps">Antall app-er</string>
-  <string name="repo_fingerprint">Fingeravtrykk for signeringsnøkkel til register (SHA-256)</string>
+  <string name="repo_fingerprint">Fingeravtrykk tilhørende signeringsnøkkel (SHA-256)</string>
   <string name="repo_description">Beskrivelse</string>
   <string name="repo_last_update">Siste oppdatering</string>
   <string name="repo_update">Oppdater</string>
   <string name="repo_name">Navn</string>
   <string name="unsigned_description">Dette betyr at listen over applikasjoner ikke er kontrollert. Du bør være forsiktig med applikasjoner lastet ned fra usignerte lister.</string>
-  <string name="repo_not_yet_updated">Dette registret har ikke blitt brukt enda.
-For å se app-ene det har tilgjengelig, må du oppdatere det.
-
-Når så er gjort, vil beskrivelser og andre detaljer bli tilgjengelige her.</string>
+  <string name="repo_not_yet_updated">Dette registret har ikke blitt tatt i bruk enda. For å se app-ene det har tilgjengelig, må du oppdatere det. Når så er gjort, vil beskrivelser og andre detaljer bli tilgjengelige her.</string>
   <string name="unknown">Ukjent</string>
   <string name="repo_confirm_delete_title">Slett register?</string>
   <string name="repo_confirm_delete_body">Sletting av register betyr
@@ -168,9 +165,9 @@ Du må
   <string name="repo_added">Lagret F-Droid-pakkebrønn %1$s</string>
   <string name="repo_searching_address">Ser etter F-Droid-pakkebrønn på %1$s</string>
   <string name="minsdk_or_later">%s eller senere</string>
-  <string name="up_to_maxsdk">opptil %s</string>
+  <string name="up_to_maxsdk">Opptil %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s opptil %2$s</string>
-  <string name="not_on_same_wifi">Din enhet er ikke på det samme lokale WiFi-nettet som registret du nettopp la til! Prøv å koble til dette nettverket: %s</string>
+  <string name="not_on_same_wifi">Din enhet er ikke på det samme lokale Wi.Fi-nettet som registret du nettopp la til! Prøv å koble til dette nettverket: %s</string>
   <string name="requires_features">Krever: %1$s</string>
   <string name="app_icon">App ikon</string>
   <string name="repo_icon">Pakkebrønns-ikon</string>
@@ -200,4 +197,100 @@ Du må
   <string name="open_qr_code_scanner">Åpne QR-kode-skanner</string>
   <string name="swap_welcome">Velkommen til F-Droid!</string>
   <string name="swap_confirm_connect">Ønsker du å hente pakker fra %1$s nå?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="theme_dark">Mørk</string>
+<string name="unstable_updates">Ustabile oppdateringer</string>
+	<string name="unstable_updates_summary">Foreslå oppdatering til ustabile versjoner</string>
+	<string name="about_source">Kildekode:</string>
+	<string name="app_incompatible">Ukompatibel</string>
+	<string name="links">Lenker</string>
+	<string name="content_description_view_more">Vis flere</string>
+
+	<string name="back">Tilbake</string>
+	<string name="tab_installed_apps">Installert</string>
+	<string name="update_notification_more">+%1$d flere…</string>
+	<string name="bad_fingerprint">Feil i fingeravtrykk</string>
+	<string name="invalid_url">Dette er ikke en gyldig nettadresse.</string>
+	<string name="menu_changelog">Endringslogg</string>
+	<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+
+	<string name="update_notification_title">Oppdaterer pakkebrønner</string>
+	<string name="status_processing_xml_percent">Behandler %2$s / %3$s (%4$d%%) fra %1$s</string>
+	<string name="repo_details">Pakkebrønn</string>
+    <string name="repo_url">Adresse</string>
+    <string name="pref_language">Språk</string>
+    <string name="pref_language_default">Systemforvalg</string>
+
+    <string name="wifi">Wi-Fi</string>
+    <string name="Graphics">Grafikk</string>
+    <string name="Money">Penger</string>
+    <string name="Sports_Health">Idrett og helse</string>
+    <string name="Time">Tid</string>
+    <string name="Writing">Skriving</string>
+
+    <string name="install_error_title">Installasjonsfeil</string>
+    <string name="install_error_unknown">Som følge av ukjent feil gikk installasjonen i vasken</string>
+    <string name="uninstall_error_title">Avinstallasjonsfeil</string>
+    <string name="uninstall_error_unknown">Klarte ikke å installere grunnet ukjent feil</string>
+    <string name="system_install_button_install">Installer</string>
+	<string name="system_install_button_open">Åpne tillegg</string>
+    <string name="system_install_first_time_notification_message_short">Trykk for mer informasjon,</string>
+    <string name="system_install_installing">Installerer…</string>
+	<string name="system_install_installing_rebooting">Installerer og starter på ny…</string>
+    <string name="system_install_uninstalling">Avinstallerer…</string>
+	<string name="system_install_warning">Dette kan ta opptil 10 sekunder.</string>
+	<string name="system_install_warning_lollipop">Dette kan ta opptil 10 sekunder, <b>omstart</b> vil igangsettes etterpå.</string>
+	<string name="system_uninstall_button">Avinstaller</string>
+
+    <string name="swap_switch_to_wifi">Trykk for å bytte Wi-Fi-nettverk</string>
+    <string name="swap_tap_to_select_apps">Trykk for å velge hvilke programmer du ønsker å bytte.</string>
+    <string name="swap_dont_show_again">Ikke vis dette igjen</string>
+    <string name="swap_scan_or_type_url">Én person trenger å skanne koden, eller at man skriver nettadressen til motparten i en nettleser.</string>
+    <string name="swap_choose_apps">Velg programmer</string>
+    <string name="swap_scan_qr">Skann QR-kode</string>
+    <string name="swap_people_nearby">Folk i nærheten</string>
+    <string name="swap_scanning_for_peers">Søker etter folk i nærheten..,</string>
+    <string name="swap_visible_bluetooth">Synlig via Blåtann</string>
+    <string name="swap_setting_up_bluetooth">Setter opp Blåtann…</string>
+    <string name="swap_not_visible_bluetooth">Ikke synlig via Blåtann</string>
+    <string name="swap_visible_wifi">Synlig via Wi-Fi</string>
+    <string name="swap_setting_up_wifi">Setter opp Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">Ikke synlig via Wi-Fi</string>
+    <string name="swap_wifi_device_name">Enhetsnavn</string>
+    <string name="swap_cant_find_peers">Finner du ikke den du leter etter?</string>
+    <string name="swap_send_fdroid">Oversend F-Droid</string>
+    <string name="swap_connecting">Kobler til</string>
+    <string name="bluetooth_unavailable">Blåtann utilgjengelig</string>
+    <string name="swap_cant_send_no_bluetooth">Kan ikke sende F-Droid siden Blåtann ikke er tilgjengelig på denne enheten.</string>
+    <string name="loading">Laster inn…</string>
+    <string name="swap_attempt_install">Prøv å installere</string>
+    <string name="install_confirm">Ønsker du å installere dette programmet? Du får tilgang til:</string>
+    <string name="install_confirm_no_perms">Ønsker du å installere dette programmet? Ingen spesielle rettigheter påkrevd.</string>
+    <string name="newPerms">Ny</string>
+    <string name="allPerms">Alle</string>
+    <string name="privacyPerms">Personvern</string>
+    <string name="devicePerms">Tilgang til enheten</string>
+    <string name="perm_costs_money">Dette kan koste penger</string>
+    <string name="uninstall_update_confirm">Ønsker du å erstatte dette programmet med fabrikkversjonen?</string>
+    <string name="uninstall_confirm">Ønsker du å avinstallere dette programmet?</string>
+    <string name="tap_to_install">Nedlasting fullført, trykk for å installere</string>
+    <string name="download_error">Nedlasting feilet</string>
+
+    <string name="perms_new_perm_prefix">"Ny: "</string>
+    <string name="perms_description_app">Tilbudt av %1$s.</string>
+    <string name="downloading">Laster ned…</string>
+
+    <string name="interval_never">Aldri</string>
+    <string name="interval_1h">Timevis</string>
+    <string name="interval_4h">Hver fjerde time</string>
+    <string name="interval_12h">Hver tolvte time</string>
+    <string name="interval_1d">Daglig</string>
+    <string name="interval_1w">Ukentlig</string>
+    <string name="interval_2w">Hver andre uke</string>
+
+    <string name="theme_light">Lyst</string>
+    </resources>

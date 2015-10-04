@@ -55,8 +55,8 @@
   <string name="one_update_available">Ta disponible 1 anovamientu.</string>
   <string name="many_updates_available">Tán disponibles %d anovamientos.</string>
   <string name="fdroid_updates_available">Anovamientos de F-Droid disponibles</string>
-  <string name="bluetooth_activity_not_found">Nun s\'alcontró dal métodu d\'unviu per Bluetooth, ¡escueyi ún!</string>
-  <string name="choose_bt_send">Escoyer métodu d\'unviu per Bluetooth</string>
+  <string name="bluetooth_activity_not_found">Nun s\'alcontró dal mou d\'unviar pente Bluetooth, escueyi ún.</string>
+  <string name="choose_bt_send">Escueyi\'l mou d\'unviar pente Bluetooth</string>
   <string name="send_via_bluetooth">Unviar pente Bluetooth</string>
   <string name="repo_add_url">Direición del repositoriu</string>
   <string name="repo_add_fingerprint">Buelga (opcional)</string>
@@ -108,7 +108,7 @@
   <string name="category_recentlyupdated">Anovao apocayá</string>
   <string name="local_repo">Repositoriu llocal</string>
   <string name="local_repo_running">F-Doid ta tresnáu pa intercambiar</string>
-  <string name="touch_to_configure_local_repo">Toca pa ver los detalles y almitir a otros intercambiar les tos aplicaciones.</string>
+  <string name="touch_to_configure_local_repo">Toca pa ver los detalles y permitir a otros intercambiar les tos aplicaciones.</string>
   <string name="deleting_repo">Desaniciando\'l repositoriu actual…</string>
   <string name="adding_apks_format">Amestando %s al repositoriu…</string>
   <string name="writing_index_jar">Escribiendo\'l ficheru d\'índiz robláu (index.jar)…</string>
@@ -149,7 +149,7 @@
   <string name="repo_name">Nome</string>
   <string name="unsigned_description">Esto quier dicir que nun pudo verificase\'l llistáu d\'aplicaciones.
 Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</string>
-  <string name="repo_not_yet_updated">Entá nun s\'usó esti repositoriu. Pa ver les aplicaciones que forne, necesitarás anovalu.\n\nUna vegada anováu, la descripción y los otros detalles tarán disponibles equí.</string>
+  <string name="repo_not_yet_updated">Entá nun s\'usó esti repositoriu. Necesites anovalu pa ver les aplicaciones que forne.</string>
   <string name="unknown">Desconocíu</string>
   <string name="repo_confirm_delete_title">¿Desaniciar repositoriu?</string>
   <string name="repo_confirm_delete_body">Desaniciar un repositoriu quier dicir que les aplicaciones d\'elli nun tarán disponibles dende F-Droid.
@@ -157,7 +157,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
   <string name="repo_disabled_notification">Deshabilitóse %1$s.\n\nNecesitarás rehabilitar esti repositoriu pa instalar aplicaciones dende elli.</string>
   <string name="repo_added">Guardóse\'l repositoriu F-Droid %1$s.</string>
   <string name="repo_searching_address">Guetando repositorios F-Droid en\n%1$s</string>
-  <string name="minsdk_or_later">%s o posterior</string>
+  <string name="minsdk_or_later">%s ó posterior</string>
   <string name="up_to_maxsdk">Fasta %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s fasta %2$s</string>
   <string name="not_on_same_wifi">¡El to preséu nun ta na mesma rede Wi-Fi que\'l repositoriu llocal que tas acabante d\'amestar! Intenta xunite a esta rede: %s</string>
@@ -267,7 +267,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">¿Quies instalar la estensión F-Droid con privilexos?</string>
-    <string name="system_install_warning_lollipop">¿Quies instalar F-Droid pivilexáu?\nEsto tardará 10 segundos y el preséu reaniciaráse darréu.</string>
+    <string name="system_install_warning_lollipop">¿Quies instalar F-Droid pivilexáu?\nEsto tardará 10 segundos y el preséu <b>reaniciaráse</b> darréu.</string>
     <string name="system_install_first_time_message">Paez que tienes accesu root nel to preséu. Agora pues instalar la esteisón F-Droid con privilexos, integraráse col to sistema operativu Android. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.</string>
     <string name="system_uninstall">¿Quies desinstalar la estensión F-Droid con privilexos?</string>
     <string name="system_uninstall_button">Desinstalar</string>
@@ -324,4 +324,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
 	<string name="system_install_button_open">Abrir estensión</string>
     <string name="system_install_installing_rebooting">Instalando y reaniciando…</string>
     <string name="system_install_warning">Tardará fasta 10 segundos.</string>
-	</resources>
+	<string name="repo_details">Repositoriu</string>
+    <string name="repo_url">Direición</string>
+    <string name="perms_new_perm_prefix">"Nuevo: "</string>
+    </resources>

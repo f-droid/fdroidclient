@@ -21,8 +21,8 @@
   <string name="notify_on">Muestra una notificación cuando hay actualizaciones</string>
   <string name="update_history">Historial de actualizaciones</string>
   <string name="update_history_summ">Días para considerar las aplicaciones nuevas o recientes: %s</string>
-  <string name="system_installer">Habilitar F-Droid con permisos de sistema</string>
-  <string name="system_installer_on">Utilizar permisos de sistema para instalar, actualizar y eliminar paquetes</string>
+  <string name="system_installer">Extensión de privilegios</string>
+  <string name="system_installer_on">Utilizar la extensión de privilegios de F-Droid al instalar, actualizar, y eliminar paquetes</string>
   <string name="local_repo_name">Nombre de tu repo local</string>
   <string name="local_repo_name_summary">El título que se publicita para el repo local: %s</string>
   <string name="local_repo_https">Usar conexión privada</string>
@@ -204,7 +204,7 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 
 	<string name="back">Volver</string>
 	<string name="update_notification_more">+%1$d más…</string>
-	<string name="uninstall_system">Desinstalar F-Droid con permisos de sistema</string>
+	<string name="uninstall_system">Actualiza/Desinstala la extensión de privilegios</string>
 	<string name="uninstall_system_summary">Desinstala la aplicación adicional «F-Droid con permisos de sistema»</string>
 	<string name="bad_fingerprint">Huella digital incorrecta</string>
 	<string name="invalid_url">No es una URL válida.</string>
@@ -243,7 +243,7 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">¿Desea instalar F-Droid con permisos de sistema?\nEsto puede tardar hasta 10 segundos.</string>
-    <string name="system_install_warning_lollipop">¿Desea instalar F-Droid con permisos de sistema?\nEsto puede tardar hasta 10 segundos y el dispositivo será reiniciado a continuación.</string>
+    <string name="system_install_warning_lollipop">Esto tardará sobre 10 segundos y el dispositivo será <b>reiniciado</b> tras ello.</string>
     <string name="system_uninstall">¿Deseas desinstalar F-Droid con permisos de sistema?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 

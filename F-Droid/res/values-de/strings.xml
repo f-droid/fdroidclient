@@ -9,8 +9,8 @@
   <string name="version">Version</string>
   <string name="delete">Löschen</string>
   <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
-  <string name="cache_downloaded">Anwendungszwischenspeicher</string>
-  <string name="cache_downloaded_on">Heruntergeladene Programmpakete auf der SD-Karte behalten</string>
+  <string name="cache_downloaded">Pakete zwischenspeichern</string>
+  <string name="cache_downloaded_on">Heruntergeladene Programmpakete auf dem Gerät behalten</string>
   <string name="updates">Updates</string>
   <string name="other">Andere</string>
   <string name="update_interval">Automatischer Aktualisierungsintervall</string>
@@ -228,4 +228,14 @@ wird verbunden</string>
     <string name="Theming">Aussehen</string>
     <string name="Writing">Schreiben</string>
 
+    <string name="system_uninstall_button">Deinstallieren</string>
+
+    <string name="bluetooth_unavailable">Bluetooth nicht verfügbar</string>
+    <string name="newPerms">Neu</string>
+    <string name="perms_new_perm_prefix">"Neu: "</string>
+    <string name="interval_1h">Stündlich</string>
+    <string name="interval_4h">Alle 4 Stunden</string>
+    <string name="interval_12h">Alle 12 Stunden</string>
+    <string name="interval_1d">Täglich</string>
+    <string name="interval_1w">Wöchentlich</string>
     </resources>

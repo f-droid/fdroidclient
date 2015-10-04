@@ -143,7 +143,7 @@ Intregadu cun sa litzèntzia
   <string name="unsigned">Non firmadu</string>
   <string name="unverified">Non verificadu</string>
   <string name="repo_num_apps">Nùmeru de aplicatziones</string>
-  <string name="repo_fingerprint">Imprenta digitale de sa Crae de su Depòsitu (SHA-256)</string>
+  <string name="repo_fingerprint">Imprenta digitale de sa crae de intrada (SHA-256)</string>
   <string name="repo_description">Descritzione</string>
   <string name="repo_last_update">Ùrtimu agiornamentu</string>
   <string name="repo_update">Agiorna</string>
@@ -151,7 +151,7 @@ Intregadu cun sa litzèntzia
   <string name="unsigned_description">Custu bolet nàrrere chi sa lista de
         sas aplicatziones no est istadu possìbile a la verificare. Depes istare atentu
         cun sas aplicatziones iscarrifìgadas dae ìnditzes non firmados.</string>
-  <string name="repo_not_yet_updated">Custu depòsitu no est istadu galu impreadu. Pro che bìdere sas aplicatziones in intro, lu depes agiornare.\n\nA pustis, sa descritzione e sos àteros detallios ant a èssere disponìbiles inoghe.</string>
+  <string name="repo_not_yet_updated">Custu depòsitu no est istadu galu impreadu. Pro che bìdere sas aplicatziones in intro, lu depes abilitare.</string>
   <string name="unknown">Disconnotu</string>
   <string name="repo_confirm_delete_title">Burrare su depòsitu?</string>
   <string name="repo_confirm_delete_body">Burrare unu depòsitu at a nàrrere chi sas aplicatziones in intro no ant a èssere prus disponìbiles tràmite F-Droid.\n\nNota: Totu sas aplicatziones giai installadas ant a abarrare in su dispositivu tuo.</string>
@@ -326,4 +326,6 @@ Intregadu cun sa litzèntzia
 	<string name="system_install_button_open">Aberi estensione</string>
     <string name="system_install_installing_rebooting">Installende e torrende a allùere…</string>
     <string name="system_install_warning">Custu podet durare finas a 10 segundos.</string>
-	</resources>
+	<string name="repo_details">Depòsitu</string>
+    <string name="repo_url">Indiritzu</string>
+    </resources>

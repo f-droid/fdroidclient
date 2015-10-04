@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Hittade %1$d program som matchade \'%2$s\':</string>
   <string name="searchres_oneapp">Ett program matchade \'%s\':</string>
@@ -188,4 +188,6 @@ Släppt under licensen GNU GPLv3.</string>
   <string name="open_qr_code_scanner">Öppna QR-kodsläsare</string>
   <string name="swap_welcome">Välkommen till F-Droid!</string>
   <string name="swap_confirm_connect">Vill du ta emot appar från %1$s nu?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	</resources>

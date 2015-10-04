@@ -89,4 +89,34 @@
 	<string name="invalid_url">Esta não é uma URL válida.</string>
 	<string name="malformed_repo_uri">A ignorar URI de repositório mal formada: %s</string>
 
+	<string name="menu_update_repo">Actualizar repositórios</string>
+	<string name="menu_manage">Repositórios</string>
+	<string name="menu_send_apk_bt">Partilhar F-Droid por Bluetooth</string>
+	<string name="menu_preferences">Preferências</string>
+	<string name="menu_about">Sobre</string>
+	<string name="menu_search">Procurar</string>
+	<string name="menu_add_repo">Novo repositório</string>
+
+	<string name="menu_launch">Executar</string>
+	<string name="menu_share">Partilhar</string>
+	<string name="menu_install">Instalar</string>
+	<string name="menu_uninstall">Desinstalar</string>
+	<string name="menu_ignore_all">Ignorar todas as actualizações</string>
+	<string name="menu_ignore_this">Ignorar esta actualização</string>
+	<string name="menu_website">Website</string>
+	<string name="menu_issues">Problemas</string>
+	<string name="menu_changelog">Lista de Modificações</string>
+	<string name="menu_source">Código Fonte</string>
+	<string name="menu_upgrade">Actualizar</string>
+	<string name="menu_donate">Doar</string>
+	<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+
+	<string name="details_installed">Versão %s instalada</string>
+	<string name="details_notinstalled">Não instalado</string>
+	<string name="corrupt_download">O ficheiro transferido está corrompido.</string>
+
+	<string name="antiadslist">Esta aplicação contém publicidade</string>
 	</resources>

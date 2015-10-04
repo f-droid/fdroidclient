@@ -261,9 +261,9 @@
 	<string name="all_other_repos_fine">Всі інші репозиторії не призвели до помилки.</string>
         <string name="no_handler_app">Ви не маєте додатку для обробки «%s».</string>
 	<string name="repo_num_apps">Кількість додатків</string>
-    <string name="repo_fingerprint">Відбиток ключа підпису репозиторію (SHA-256)</string>
+    <string name="repo_fingerprint">Відбиток ключа підпису (SHA-256)</string>
     <string name="unsigned_description">Це означає, що список додатків не може бути перевірено. Ви повинні бути обачними із додатками, які завантажуєте з не підписаних джерел.</string>
-    <string name="repo_not_yet_updated">Цей репозиторій ще не використовувався. Оновіть його, аби побачити додатки, які він містить.\n\nПісля оновлення тут з\'явиться опис та інші подробиці.</string>
+    <string name="repo_not_yet_updated">Цей репозиторій ще не використовувався. Ввімкніть його, аби побачити додатки, які він містить.</string>
     <string name="repo_confirm_delete_body">"Видалення репозиторію означає, що додатки з нього не будуть доступні з  F-Droid.\n\nПримітка: Всі раніше встановленні додатки залишаться на пристрої."</string>
     <string name="repo_disabled_notification">%1$s відключено.\n\nНеобхідно ввімкнути його, аби встановлювати додатки з нього.</string>
     <string name="minsdk_or_later">%s чи старше</string>
@@ -330,4 +330,6 @@
     <string name="Theming">Графічні теми</string>
     <string name="swap_connection_misc_error">Трапилася помилка під час доступу до пристрою, не можливо продовжити обмін з ним.</string>
     <string name="system_install_first_time_message">Схоже, що у вас є root доступ на вашому пристрою. Ви можете встановити привілейоване розширення F-Droid, що інтегрується з операційною системою Android. Це дозволить додатку F-Droid встановлювати, оновлювати та видаляти додатки своїми засобами.</string>
+    <string name="repo_details">Репозиторій</string>
+    <string name="repo_url">Адреса</string>
     </resources>
