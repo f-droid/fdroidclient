@@ -1502,7 +1502,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             if (totalBytes == -1) {
                 setProgressVisible(true);
                 progressBar.setIndeterminate(true);
-                progressSize.setText(readableFileSize(bytesDownloaded));
+                progressSize.setText(Utils.getFriendlySize(bytesDownloaded));
                 progressPercent.setText("");
             } else {
                 long percent = bytesDownloaded * 100 / totalBytes;
@@ -1510,22 +1510,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 progressBar.setIndeterminate(false);
                 progressBar.setProgress((int) percent);
                 progressBar.setMax(100);
-                progressSize.setText(readableFileSize(bytesDownloaded) + " / " + readableFileSize(totalBytes));
+                progressSize.setText(Utils.getFriendlySize(bytesDownloaded) + " / " + Utils.getFriendlySize(totalBytes));
                 progressPercent.setText(Long.toString(percent) + " %");
             }
-        }
-
-        /**
-         * Converts a number of bytes to a human readable file size (eg 3.5 GiB).
-         *
-         * Based on http://stackoverflow.com/a/5599842
-         */
-        public String readableFileSize(long bytes) {
-            final String[] units = getResources().getStringArray(R.array.file_size_units);
-            if (bytes <= 0) return "0 " + units[0];
-            int digitGroups = (int) (Math.log10(bytes) / Math.log10(1024));
-            return new DecimalFormat("#,##0.#")
-                    .format(bytes / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
         }
 
         /**
