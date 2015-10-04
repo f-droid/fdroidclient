@@ -186,7 +186,7 @@ public final class Utils {
         }
     }
 
-    public static String getFriendlySize(int size) {
+    public static String getFriendlySize(long size) {
         double s = size;
         int i = 0;
         while (i < FRIENDLY_SIZE_FORMAT.length - 1 && s >= 1024) {

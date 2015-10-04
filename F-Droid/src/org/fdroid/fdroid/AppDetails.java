@@ -1498,31 +1498,26 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         /**
          * Updates progress bar and captions to new values (in bytes).
          */
-        public void updateProgress(long progress, long total) {
-            // Avoid division by zero and other weird values
-            if (progress < 0 || total <= 0) {
+        public void updateProgress(long bytesDownloaded, long totalBytes) {
+            if (bytesDownloaded < 0 || totalBytes == 0) {
+                // Avoid division by zero and other weird values
                 return;
             }
-            long percent = progress * 100 / total;
-            setProgressVisible(true);
-            progressBar.setIndeterminate(false);
-            progressBar.setProgress((int) percent);
-            progressBar.setMax(100);
-            progressSize.setText(readableFileSize(progress) + " / " + readableFileSize(total));
-            progressPercent.setText(Long.toString(percent) + " %");
-        }
 
-        /**
-         * Converts a number of bytes to a human readable file size (eg 3.5 GiB).
-         *
-         * Based on http://stackoverflow.com/a/5599842
-         */
-        public String readableFileSize(long bytes) {
-            final String[] units = getResources().getStringArray(R.array.file_size_units);
-            if (bytes <= 0) return "0 " + units[0];
-            int digitGroups = (int) (Math.log10(bytes) / Math.log10(1024));
-            return new DecimalFormat("#,##0.#")
-                    .format(bytes / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
+            if (totalBytes == -1) {
+                setProgressVisible(true);
+                progressBar.setIndeterminate(true);
+                progressSize.setText(Utils.getFriendlySize(bytesDownloaded));
+                progressPercent.setText("");
+            } else {
+                long percent = bytesDownloaded * 100 / totalBytes;
+                setProgressVisible(true);
+                progressBar.setIndeterminate(false);
+                progressBar.setProgress((int) percent);
+                progressBar.setMax(100);
+                progressSize.setText(Utils.getFriendlySize(bytesDownloaded) + " / " + Utils.getFriendlySize(totalBytes));
+                progressPercent.setText(Long.toString(percent) + " %");
+            }
         }
 
         /**
