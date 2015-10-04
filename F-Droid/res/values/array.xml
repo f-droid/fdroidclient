@@ -13,6 +13,7 @@
     <string-array name="themeNames">
         <item>@string/theme_light</item>
         <item>@string/theme_dark</item>
+        <item>@string/theme_night</item>
     </string-array>
 
 </resources>

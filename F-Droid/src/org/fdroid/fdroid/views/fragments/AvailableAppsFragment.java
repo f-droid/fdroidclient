@@ -129,8 +129,12 @@ public class AvailableAppsFragment extends AppListFragment implements
     private void styleSpinner(Spinner spinner) {
 
         Drawable menuButton = getResources().getDrawable(android.R.drawable.btn_dropdown);
-        if (FDroidApp.getCurTheme() == FDroidApp.Theme.dark) {
-            menuButton.setAlpha(32); // make it darker via alpha
+        switch (FDroidApp.getCurTheme()) {
+            case dark:
+                // fallthrough
+            case night:
+                menuButton.setAlpha(32); // make it darker via alpha
+                break;
         }
         if (Build.VERSION.SDK_INT >= 16) {
             spinner.setBackground(menuButton);

@@ -20,6 +20,7 @@
     <string-array name="themeValues">
         <item>light</item>
         <item>dark</item>
+        <item>night</item>
     </string-array>
 
     <string-array name="languageValues">

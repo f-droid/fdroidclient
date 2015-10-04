@@ -29,6 +29,13 @@
         <!-- customizations that are not API-level specific go here. -->
     </style>
 
+    <style name="AppThemeNight" parent="AppThemeDark">
+        <!-- customizations that are not API-level specific go here. -->
+
+        <item name="colorPrimary">@color/fdroid_night</item>
+        <item name="colorPrimaryDark">@color/fdroid_night_dark</item>
+    </style>
+
     <style name="AlertDialogBaseThemeDark" parent="Theme.AppCompat.Dialog.Alert" />
     <style name="AlertDialogThemeDark" parent="AlertDialogBaseThemeDark">
         <item name="colorAccent">@color/fdroid_green</item>
