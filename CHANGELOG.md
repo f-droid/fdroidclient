@@ -16,6 +16,8 @@
 * Fix crash when trying to install incompatible apps with the privileged
   installer
 
+* Fix downloading from HTTP servers that did not send a Content-Length
+
 * Material design tweaks and fixes
 
 * Add StrictMode to debug builds
