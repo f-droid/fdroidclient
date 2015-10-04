@@ -209,12 +209,17 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             String repoAddress = intent.getStringExtra(Downloader.EXTRA_ADDRESS);
             int downloadedSize = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1);
+            String downloadedSizeFriendly = Utils.getFriendlySize(downloadedSize);
             int totalSize = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1);
             int percent = (int) ((double) downloadedSize / totalSize * 100);
-            sendStatus(STATUS_INFO,
-                    getString(R.string.status_download, repoAddress,
-                            Utils.getFriendlySize(downloadedSize),
-                            Utils.getFriendlySize(totalSize), percent));
+            String message;
+            if (totalSize == -1) {
+                message = getString(R.string.status_download_unknown_size, repoAddress, downloadedSizeFriendly);
+            } else {
+                String totalSizeFriendly = Utils.getFriendlySize(totalSize);
+                message = getString(R.string.status_download, repoAddress, downloadedSizeFriendly, totalSizeFriendly, percent);
+            }
+            sendStatus(STATUS_INFO, message);
         }
     };
 

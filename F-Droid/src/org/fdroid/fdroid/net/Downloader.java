@@ -154,11 +154,10 @@ public abstract class Downloader {
         throwExceptionIfInterrupted();
 
         sendProgress(bytesRead, totalBytes);
-        while (bytesRead < totalBytes) {
+        while (true) {
 
             int count;
-            if (input.available()>0) {
-
+            if (input.available() > 0) {
                 int readLength = Math.min(input.available(), buffer.length);
                 count = input.read(buffer, 0, readLength);
             } else {

@@ -293,6 +293,8 @@ public class SwapAppsView extends ListView implements
                         progressView.setIndeterminate(false);
                         progressView.setMax(100);
                         progressView.setProgress(progress);
+                    } else {
+                        progressView.setIndeterminate(true);
                     }
                 }
             };
