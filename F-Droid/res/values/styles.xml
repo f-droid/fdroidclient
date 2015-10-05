@@ -178,4 +178,24 @@
         <item name="android:textStyle">italic</item>
     </style>
 
+    <style name="AppDetailsLinkBase">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/material_listitem_height</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="AppDetailsLink" parent="AppDetailsLinkBase" />
+
+    <style name="AppDetailsSubheaderTextBase">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/material_listitem_height</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">12dp</item>
+    </style>
+
+    <style name="AppDetailsSubheaderText" parent="AppDetailsSubheaderTextBase" />
 </resources>

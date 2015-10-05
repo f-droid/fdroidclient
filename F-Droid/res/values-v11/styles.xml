@@ -15,4 +15,8 @@
         <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
     </style>
 
+    <style name="AppDetailsLink" parent="AppDetailsLinkBase">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
 </resources>
