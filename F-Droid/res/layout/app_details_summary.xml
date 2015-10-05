@@ -22,8 +22,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingBottom="8dp"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
+    android:paddingLeft="@dimen/layout_horizontal_margin"
+    android:paddingStart="@dimen/layout_horizontal_margin"
+    android:paddingRight="@dimen/layout_horizontal_margin"
+    android:paddingEnd="@dimen/layout_horizontal_margin"
     android:paddingTop="4dp">
 
     <TextView
@@ -91,142 +93,111 @@ Android is open in the sense that you are free to install apks from anywhere you
 
 Changelog" />
 
-        <ImageView
+        <TextView
             android:id="@+id/view_more_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:contentDescription="@string/content_description_view_more"
-            android:src="@drawable/ic_expand_more_grey600"
-            tools:src="@drawable/ic_expand_more_grey600" />
+            android:layout_gravity="bottom|center_horizontal"
+            android:text="@string/more"
+            android:textAllCaps="true"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:textColor="?android:textColorSecondary"
+            tools:ignore="UnusedAttribute" />
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="?android:attr/listDivider"
+        tools:ignore="PxUsage" />
 
     <LinearLayout
         android:id="@+id/ll_information"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UnusedAttribute">
 
         <TextView
             android:id="@+id/information"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8sp"
-            android:drawableRight="@drawable/ic_expand_more_grey600"
-            android:drawablePadding="4dp"
-            android:drawableEnd="@drawable/ic_expand_more_grey600"
-            android:singleLine="true"
+            style="@style/AppDetailsSubheaderText"
             android:text="@string/links"
-            android:textStyle="bold"
-            tools:text="@string/links"
-            tools:drawableRight="@drawable/ic_expand_more_grey600"/>
+            android:drawableRight="@drawable/ic_expand_more_grey600"
+            android:drawableEnd="@drawable/ic_expand_more_grey600"
+            android:drawableLeft="@drawable/ic_website"
+            android:drawableStart="@drawable/ic_website" />
 
         <LinearLayout
             android:id="@+id/ll_information_content"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/layout_horizontal_margin"
+            android:layout_marginStart="@dimen/layout_horizontal_margin"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/source"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                style="@style/AppDetailsLink"
                 android:drawableLeft="@drawable/ic_source_code"
-                android:drawablePadding="4dp"
                 android:drawableStart="@drawable/ic_source_code"
-                android:gravity="center_vertical"
-                android:text="@string/menu_source"
-                tools:text="@string/menu_source" />
+                android:text="@string/menu_source" />
 
             <TextView
                 android:id="@+id/issues"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                style="@style/AppDetailsLink"
                 android:drawableLeft="@drawable/ic_issues"
-                android:drawablePadding="4dp"
                 android:drawableStart="@drawable/ic_issues"
-                android:gravity="center_vertical"
-                android:paddingTop="4dp"
-                android:text="@string/menu_issues"
-                tools:text="@string/menu_issues" />
+                android:text="@string/menu_issues" />
 
             <TextView
                 android:id="@+id/changelog"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                style="@style/AppDetailsLink"
                 android:drawableLeft="@drawable/ic_changelog"
-                android:drawablePadding="4dp"
                 android:drawableStart="@drawable/ic_changelog"
-                android:gravity="center_vertical"
-                android:paddingTop="4dp"
-                android:text="@string/menu_changelog"
-                tools:text="@string/menu_changelog" />
+                android:text="@string/menu_changelog" />
 
             <TextView
                 android:id="@+id/website"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                style="@style/AppDetailsLink"
                 android:drawableLeft="@drawable/ic_website"
-                android:drawablePadding="4dp"
                 android:drawableStart="@drawable/ic_website"
-                android:gravity="center_vertical"
-                android:paddingTop="4dp"
-                android:text="@string/menu_website"
-                tools:text="@string/menu_website" />
+                android:text="@string/menu_website" />
 
             <TextView
                 android:id="@+id/donate"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                style="@style/AppDetailsLink"
                 android:drawableLeft="@drawable/ic_donate"
-                android:drawablePadding="4dp"
                 android:drawableStart="@drawable/ic_donate"
-                android:gravity="center_vertical"
-                android:paddingTop="4dp"
-                android:text="@string/menu_donate"
-                tools:text="@string/menu_donate" />
+                android:text="@string/menu_donate" />
 
             <TextView
                 android:id="@+id/bitcoin"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                style="@style/AppDetailsLink"
                 android:drawableLeft="@drawable/ic_bitcoin"
-                android:drawablePadding="4dp"
                 android:drawableStart="@drawable/ic_bitcoin"
-                android:gravity="center_vertical"
-                android:paddingTop="4dp"
-                android:text="@string/menu_bitcoin"
-                tools:text="@string/menu_bitcoin" />
+                android:text="@string/menu_bitcoin" />
 
             <TextView
                 android:id="@+id/litecoin"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                style="@style/AppDetailsLink"
                 android:drawableLeft="@drawable/ic_litecoin"
-                android:drawablePadding="4dp"
                 android:drawableStart="@drawable/ic_litecoin"
-                android:gravity="center_vertical"
-                android:paddingTop="4dp"
-                android:text="@string/menu_litecoin"
-                tools:text="@string/menu_litecoin" />
+                android:text="@string/menu_litecoin" />
 
             <TextView
                 android:id="@+id/flattr"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                style="@style/AppDetailsLink"
                 android:drawableLeft="@drawable/ic_flattr"
-                android:drawablePadding="4dp"
                 android:drawableStart="@drawable/ic_flattr"
-                android:gravity="center_vertical"
-                android:paddingTop="4dp"
-                android:text="@string/menu_flattr"
-                tools:text="@string/menu_flattr" />
+                android:text="@string/menu_flattr" />
 
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
@@ -234,27 +205,29 @@ Changelog" />
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="8dp"
+        tools:ignore="UnusedAttribute">
 
         <TextView
             android:id="@+id/permissions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8sp"
-            android:drawablePadding="4dp"
-            android:drawableEnd="@drawable/ic_expand_more_grey600"
+            style="@style/AppDetailsSubheaderText"
+            android:text="@string/permissions"
+            android:drawableLeft="@drawable/ic_lock_24dp_grey600"
+            android:drawableStart="@drawable/ic_lock_24dp_grey600"
             android:drawableRight="@drawable/ic_expand_more_grey600"
-            android:singleLine="true"
-            android:textStyle="bold"
-            tools:text="Permissions for version 1.0"
-            tools:drawableRight="@drawable/ic_expand_more_grey600"/>
+            android:drawableEnd="@drawable/ic_expand_more_grey600" />
 
         <TextView
             android:id="@+id/permissions_list"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:singleLine="false"
-            android:textSize="13sp"
+            android:fontFamily="sans-serif-light"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/layout_horizontal_margin"
+            android:layout_marginStart="@dimen/layout_horizontal_margin"
             tools:text="    * Full network access
     * View network connections
     * View Wi-Fi connections

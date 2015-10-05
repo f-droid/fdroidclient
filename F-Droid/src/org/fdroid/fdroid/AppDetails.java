@@ -43,6 +43,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
@@ -1056,11 +1057,24 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private AppDetailsData data;
         private static final int MAX_LINES = 5;
         private static boolean view_all_description;
-        private static boolean view_all_information;
-        private static boolean view_all_permissions;
         private static LinearLayout ll_view_more_description;
-        private static LinearLayout ll_view_more_information;
         private static LinearLayout ll_view_more_permissions;
+        private final View.OnClickListener expander_permissions = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final TextView permissionListView = (TextView) ll_view_more_permissions.findViewById(R.id.permissions_list);
+                final TextView permissionHeader = (TextView) ll_view_more_permissions.findViewById(R.id.permissions);
+
+                if (permissionListView.getVisibility() == View.GONE) {
+                    permissionListView.setVisibility(View.VISIBLE);
+                    permissionHeader.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(getActivity(), R.drawable.ic_lock_24dp_grey600), null, ContextCompat.getDrawable(getActivity(), R.drawable.ic_expand_less_grey600), null);
+                } else {
+                    permissionListView.setVisibility(View.GONE);
+                    permissionHeader.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(getActivity(), R.drawable.ic_lock_24dp_grey600), null, ContextCompat.getDrawable(getActivity(), R.drawable.ic_expand_more_grey600), null);
+                }
+            }
+        };
+        private ViewGroup layout_links;
 
         public AppDetailsSummaryFragment() {
             prefs = Preferences.get();
@@ -1116,168 +1130,22 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             return s.subSequence(0, i);
         }
 
-        private void setupView(final View view) {
-            // Expandable description
-            final TextView description = (TextView) view.findViewById(R.id.description);
-            final Spanned desc = Html.fromHtml(getApp().description, null, new Utils.HtmlTagHandler());
-            description.setMovementMethod(SafeLinkMovementMethod.getInstance(getActivity()));
-            description.setText(trimNewlines(desc));
-            final ImageView view_more_description = (ImageView) view.findViewById(R.id.view_more_description);
-            description.post(new Runnable() {
-                @Override
-                public void run() {
-                    // If description has more than five lines
-                    if (description.getLineCount() > MAX_LINES) {
-                        description.setMaxLines(MAX_LINES);
-                        description.setOnClickListener(expander_description);
-                        view_all_description = true;
+        private ViewGroup layout_links_content;
+        private View.OnClickListener expander_links = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                        ll_view_more_description = (LinearLayout) view.findViewById(R.id.ll_description);
-                        ll_view_more_description.setOnClickListener(expander_description);
+                TextView linksHeader = (TextView) layout_links.findViewById(R.id.information);
 
-                        view_more_description.setImageResource(R.drawable.ic_expand_more_grey600);
-                        view_more_description.setOnClickListener(expander_description);
-                    } else {
-                        view_more_description.setVisibility(View.GONE);
-                    }
-                }
-            });
-
-            // App ID
-            final TextView appIdView = (TextView) view.findViewById(R.id.appid);
-            if (prefs.expertMode())
-                appIdView.setText(getApp().id);
-            else
-                appIdView.setVisibility(View.GONE);
-
-            // Expandable information
-            ll_view_more_information = (LinearLayout) view.findViewById(R.id.ll_information);
-            final TextView information = (TextView) view.findViewById(R.id.information);
-            final LinearLayout ll_view_more_information_content = (LinearLayout) view.findViewById(R.id.ll_information_content);
-            ll_view_more_information_content.setVisibility(View.GONE);
-            view_all_information = true;
-            information.setCompoundDrawablesWithIntrinsicBounds(null, null, getActivity().getResources().getDrawable(R.drawable.ic_expand_more_grey600), null);
-
-            ll_view_more_information.setOnClickListener(expander_information);
-            information.setOnClickListener(expander_information);
-
-            // Summary
-            final TextView summaryView = (TextView) view.findViewById(R.id.summary);
-            summaryView.setText(getApp().summary);
-
-            // Website button
-            TextView tv = (TextView) view.findViewById(R.id.website);
-            if (!TextUtils.isEmpty(getApp().webURL))
-                tv.setOnClickListener(mOnClickListener);
-            else
-                tv.setVisibility(View.GONE);
-
-            // Source button
-            tv = (TextView) view.findViewById(R.id.source);
-            if (!TextUtils.isEmpty(getApp().sourceURL))
-                tv.setOnClickListener(mOnClickListener);
-            else
-                tv.setVisibility(View.GONE);
-
-            // Issues button
-            tv = (TextView) view.findViewById(R.id.issues);
-            if (!TextUtils.isEmpty(getApp().trackerURL))
-                tv.setOnClickListener(mOnClickListener);
-            else
-                tv.setVisibility(View.GONE);
-
-            // Changelog button
-            tv = (TextView) view.findViewById(R.id.changelog);
-            if (!TextUtils.isEmpty(getApp().changelogURL))
-                tv.setOnClickListener(mOnClickListener);
-            else
-                tv.setVisibility(View.GONE);
-
-            // Donate button
-            tv = (TextView) view.findViewById(R.id.donate);
-            if (!TextUtils.isEmpty(getApp().donateURL))
-                tv.setOnClickListener(mOnClickListener);
-            else
-                tv.setVisibility(View.GONE);
-
-            // Bitcoin
-            tv = (TextView) view.findViewById(R.id.bitcoin);
-            if (!TextUtils.isEmpty(getApp().bitcoinAddr))
-                tv.setOnClickListener(mOnClickListener);
-            else
-                tv.setVisibility(View.GONE);
-
-            // Litecoin
-            tv = (TextView) view.findViewById(R.id.litecoin);
-            if (!TextUtils.isEmpty(getApp().litecoinAddr))
-                tv.setOnClickListener(mOnClickListener);
-            else
-                tv.setVisibility(View.GONE);
-
-            // Flattr
-            tv = (TextView) view.findViewById(R.id.flattr);
-            if (!TextUtils.isEmpty(getApp().flattrID))
-                tv.setOnClickListener(mOnClickListener);
-            else
-                tv.setVisibility(View.GONE);
-
-            // Categories TextView
-            final TextView categories = (TextView) view.findViewById(R.id.categories);
-            if (prefs.expertMode() && getApp().categories != null)
-                categories.setText(getApp().categories.toString().replaceAll(",", ", "));
-            else
-                categories.setVisibility(View.GONE);
-
-            Apk curApk = null;
-            for (int i = 0; i < getApks().getCount(); i++) {
-                final Apk apk = getApks().getItem(i);
-                if (apk.vercode == getApp().suggestedVercode) {
-                    curApk = apk;
-                    break;
-                }
-            }
-
-            // Expandable permissions
-            ll_view_more_permissions = (LinearLayout) view.findViewById(R.id.ll_permissions);
-            final TextView permissionHeader = (TextView) view.findViewById(R.id.permissions);
-            final TextView permissionListView = (TextView) view.findViewById(R.id.permissions_list);
-            permissionListView.setVisibility(View.GONE);
-            view_all_permissions = true;
-
-            final boolean curApkCompatible = curApk != null && curApk.compatible;
-            if (!getApks().isEmpty() && (curApkCompatible || prefs.showIncompatibleVersions())) {
-                permissionHeader.setText(getString(R.string.permissions_for_long, getApks().getItem(0).version));
-                permissionHeader.setCompoundDrawablesWithIntrinsicBounds(null, null, getActivity().getResources().getDrawable(R.drawable.ic_expand_more_grey600), null);
-
-                ll_view_more_permissions.setOnClickListener(expander_permissions);
-                permissionHeader.setOnClickListener(expander_permissions);
-            } else {
-                permissionHeader.setVisibility(View.GONE);
-                permissionHeader.setCompoundDrawables(null, null, null, null);
-            }
-
-            // Anti features
-            final TextView antiFeaturesView = (TextView) view.findViewById(R.id.antifeatures);
-            if (getApp().antiFeatures != null) {
-                StringBuilder sb = new StringBuilder();
-                for (final String af : getApp().antiFeatures) {
-                    final String afdesc = descAntiFeature(af);
-                    if (afdesc != null) {
-                        sb.append("\t• ").append(afdesc).append('\n');
-                    }
-                }
-                if (sb.length() > 0) {
-                    sb.setLength(sb.length() - 1);
-                    antiFeaturesView.setText(sb.toString());
+                if (layout_links_content.getVisibility() == View.GONE) {
+                    layout_links_content.setVisibility(View.VISIBLE);
+                    linksHeader.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(getActivity(), R.drawable.ic_website), null, ContextCompat.getDrawable(getActivity(), R.drawable.ic_expand_less_grey600), null);
                 } else {
-                    antiFeaturesView.setVisibility(View.GONE);
+                    layout_links_content.setVisibility(View.GONE);
+                    linksHeader.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(getActivity(), R.drawable.ic_website), null, ContextCompat.getDrawable(getActivity(), R.drawable.ic_expand_more_grey600), null);
                 }
-            } else {
-                antiFeaturesView.setVisibility(View.GONE);
             }
-
-            updateViews(view);
-        }
+        };
 
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
@@ -1317,68 +1185,200 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private final View.OnClickListener expander_description = new View.OnClickListener() {
             public void onClick(View v) {
                 final TextView description = (TextView) ll_view_more_description.findViewById(R.id.description);
-                final ImageView view_more_permissions = (ImageView) ll_view_more_description.findViewById(R.id.view_more_description);
+                final TextView view_more_permissions = (TextView)ll_view_more_description.findViewById(R.id.view_more_description);
                 if (view_all_description) {
                     description.setMaxLines(Integer.MAX_VALUE);
-                    view_more_permissions.setImageResource(R.drawable.ic_expand_less_grey600);
+                    view_more_permissions.setText(getString(R.string.less));
                 } else {
                     description.setMaxLines(MAX_LINES);
-                    view_more_permissions.setImageResource(R.drawable.ic_expand_more_grey600);
+                    description.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                    view_more_permissions.setText(R.string.more);
                 }
                 view_all_description ^= true;
             }
         };
 
-        private final View.OnClickListener expander_information = new View.OnClickListener() {
-            public void onClick(View v) {
-                final TextView informationHeader = (TextView) ll_view_more_information.findViewById(R.id.information);
-                final LinearLayout information_content = (LinearLayout) ll_view_more_information.findViewById(R.id.ll_information_content);
-                if (!view_all_information) {
-                    information_content.setVisibility(View.GONE);
-                    informationHeader.setCompoundDrawablesWithIntrinsicBounds(null, null, getActivity().getResources().getDrawable(R.drawable.ic_expand_more_grey600), null);
-                } else {
-                    information_content.setVisibility(View.VISIBLE);
-                    informationHeader.setCompoundDrawablesWithIntrinsicBounds(null, null, getActivity().getResources().getDrawable(R.drawable.ic_expand_less_grey600), null);
-                }
-                view_all_information ^= true;
-            }
-        };
+        private void setupView(final View view) {
+            // Expandable description
+            final TextView description = (TextView) view.findViewById(R.id.description);
+            final Spanned desc = Html.fromHtml(getApp().description, null, new Utils.HtmlTagHandler());
+            description.setMovementMethod(SafeLinkMovementMethod.getInstance(getActivity()));
+            description.setText(trimNewlines(desc));
+            final View view_more_description =  view.findViewById(R.id.view_more_description);
+            description.post(new Runnable() {
+                @Override
+                public void run() {
+                    // If description has more than five lines
+                    if (description.getLineCount() > MAX_LINES) {
+                        description.setMaxLines(MAX_LINES);
+                        description.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                        description.setOnClickListener(expander_description);
+                        view_all_description = true;
 
-        private final View.OnClickListener expander_permissions = new View.OnClickListener() {
-            public void onClick(View v) {
-                final TextView permissionHeader = (TextView) ll_view_more_permissions.findViewById(R.id.permissions);
-                final TextView permissionListView = (TextView) ll_view_more_permissions.findViewById(R.id.permissions_list);
-                if (!view_all_permissions) {
-                    permissionListView.setVisibility(View.GONE);
-                    permissionHeader.setCompoundDrawablesWithIntrinsicBounds(null, null, getActivity().getResources().getDrawable(R.drawable.ic_expand_more_grey600), null);
-                } else {
-                    CommaSeparatedList permsList = getApks().getItem(0).permissions;
-                    if (permsList == null) {
-                        permissionListView.setText(R.string.no_permissions);
+                        ll_view_more_description = (LinearLayout) view.findViewById(R.id.ll_description);
+                        ll_view_more_description.setOnClickListener(expander_description);
+
+                        view_more_description.setOnClickListener(expander_description);
                     } else {
-                        Iterator<String> permissions = permsList.iterator();
-                        StringBuilder sb = new StringBuilder();
-                        while (permissions.hasNext()) {
-                            final String permissionName = permissions.next();
-                            try {
-                                final Permission permission = new Permission(getActivity(), permissionName);
-                                // TODO: Make this list RTL friendly
-                                sb.append("\t• ").append(permission.getName()).append('\n');
-                            } catch (PackageManager.NameNotFoundException e) {
-                                Log.e(TAG, "Permission not yet available: " + permissionName);
-                            }
-                        }
-                        if (sb.length() > 0) {
-                            sb.setLength(sb.length() - 1);
-                        }
-                        permissionListView.setText(sb.toString());
+                        view_more_description.setVisibility(View.GONE);
                     }
-                    permissionListView.setVisibility(View.VISIBLE);
-                    permissionHeader.setCompoundDrawablesWithIntrinsicBounds(null, null, getActivity().getResources().getDrawable(R.drawable.ic_expand_less_grey600), null);
                 }
-                view_all_permissions ^= true;
+            });
+
+            // App ID
+            final TextView appIdView = (TextView) view.findViewById(R.id.appid);
+            if (prefs.expertMode())
+                appIdView.setText(getApp().id);
+            else
+                appIdView.setVisibility(View.GONE);
+
+            // Summary
+            final TextView summaryView = (TextView) view.findViewById(R.id.summary);
+            summaryView.setText(getApp().summary);
+
+
+            layout_links = (ViewGroup) view.findViewById(R.id.ll_information);
+            layout_links_content = (ViewGroup) layout_links.findViewById(R.id.ll_information_content);
+
+            final TextView linksHeader = (TextView) view.findViewById(R.id.information);
+            linksHeader.setOnClickListener(expander_links);
+
+            // Website button
+            View tv = view.findViewById(R.id.website);
+            if (!TextUtils.isEmpty(getApp().webURL))
+                tv.setOnClickListener(mOnClickListener);
+            else
+                tv.setVisibility(View.GONE);
+
+            // Source button
+            tv = view.findViewById(R.id.source);
+            if (!TextUtils.isEmpty(getApp().sourceURL))
+                tv.setOnClickListener(mOnClickListener);
+            else
+                tv.setVisibility(View.GONE);
+
+            // Issues button
+            tv = view.findViewById(R.id.issues);
+            if (!TextUtils.isEmpty(getApp().trackerURL))
+                tv.setOnClickListener(mOnClickListener);
+            else
+                tv.setVisibility(View.GONE);
+
+            // Changelog button
+            tv = view.findViewById(R.id.changelog);
+            if (!TextUtils.isEmpty(getApp().changelogURL))
+                tv.setOnClickListener(mOnClickListener);
+            else
+                tv.setVisibility(View.GONE);
+
+            // Donate button
+            tv = view.findViewById(R.id.donate);
+            if (!TextUtils.isEmpty(getApp().donateURL))
+                tv.setOnClickListener(mOnClickListener);
+            else
+                tv.setVisibility(View.GONE);
+
+            // Bitcoin
+            tv = view.findViewById(R.id.bitcoin);
+            if (!TextUtils.isEmpty(getApp().bitcoinAddr))
+                tv.setOnClickListener(mOnClickListener);
+            else
+                tv.setVisibility(View.GONE);
+
+            // Litecoin
+            tv = view.findViewById(R.id.litecoin);
+            if (!TextUtils.isEmpty(getApp().litecoinAddr))
+                tv.setOnClickListener(mOnClickListener);
+            else
+                tv.setVisibility(View.GONE);
+
+            // Flattr
+            tv = view.findViewById(R.id.flattr);
+            if (!TextUtils.isEmpty(getApp().flattrID))
+                tv.setOnClickListener(mOnClickListener);
+            else
+                tv.setVisibility(View.GONE);
+
+            // Categories TextView
+            final TextView categories = (TextView) view.findViewById(R.id.categories);
+            if (prefs.expertMode() && getApp().categories != null)
+                categories.setText(getApp().categories.toString().replaceAll(",", ", "));
+            else
+                categories.setVisibility(View.GONE);
+
+            Apk curApk = null;
+            for (int i = 0; i < getApks().getCount(); i++) {
+                final Apk apk = getApks().getItem(i);
+                if (apk.vercode == getApp().suggestedVercode) {
+                    curApk = apk;
+                    break;
+                }
             }
-        };
+
+            // Expandable permissions
+            ll_view_more_permissions = (LinearLayout) view.findViewById(R.id.ll_permissions);
+            final TextView permissionHeader = (TextView) view.findViewById(R.id.permissions);
+
+            final boolean curApkCompatible = curApk != null && curApk.compatible;
+            if (!getApks().isEmpty() && (curApkCompatible || prefs.showIncompatibleVersions())) {
+                // build and set the string once
+                buildPermissionInfo();
+                permissionHeader.setOnClickListener(expander_permissions);
+
+            } else {
+                permissionHeader.setVisibility(View.GONE);
+            }
+
+            // Anti features
+            final TextView antiFeaturesView = (TextView) view.findViewById(R.id.antifeatures);
+            if (getApp().antiFeatures != null) {
+                StringBuilder sb = new StringBuilder();
+                for (final String af : getApp().antiFeatures) {
+                    final String afdesc = descAntiFeature(af);
+                    if (afdesc != null) {
+                        sb.append("\t• ").append(afdesc).append('\n');
+                    }
+                }
+                if (sb.length() > 0) {
+                    sb.setLength(sb.length() - 1);
+                    antiFeaturesView.setText(sb.toString());
+                } else {
+                    antiFeaturesView.setVisibility(View.GONE);
+                }
+            } else {
+                antiFeaturesView.setVisibility(View.GONE);
+            }
+
+            updateViews(view);
+        }
+
+        private void buildPermissionInfo() {
+            final TextView permissionListView = (TextView) ll_view_more_permissions.findViewById(R.id.permissions_list);
+
+            CommaSeparatedList permsList = getApks().getItem(0).permissions;
+            if (permsList == null) {
+                permissionListView.setText(R.string.no_permissions);
+            } else {
+                Iterator<String> permissions = permsList.iterator();
+                StringBuilder sb = new StringBuilder();
+                while (permissions.hasNext()) {
+                    final String permissionName = permissions.next();
+                    try {
+                        final Permission permission = new Permission(getActivity(), permissionName);
+                        // TODO: Make this list RTL friendly
+                        sb.append("\t• ").append(permission.getName()).append('\n');
+                    } catch (PackageManager.NameNotFoundException e) {
+                        Log.e(TAG, "Permission not yet available: " + permissionName);
+                    }
+                }
+                if (sb.length() > 0) {
+                    sb.setLength(sb.length() - 1);
+                    permissionListView.setText(sb.toString());
+                } else {
+                    permissionListView.setText(R.string.no_permissions);
+                }
+            }
+        }
 
         private String descAntiFeature(String af) {
             switch (af) {
