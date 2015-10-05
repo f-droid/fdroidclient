@@ -85,13 +85,11 @@ abstract class InstallExtension {
 
     private List<String> getInstallCommands(String apkPath) {
         final List<String> commands = new ArrayList<>();
-        commands.add("mount -o rw,remount /system");
+        commands.add("mount -o rw,remount /system"); // remount as read-write
         commands.addAll(getCopyToSystemCommands(apkPath));
-        commands.add("pm uninstall " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.add("mv " + getInstallPath() + ".tmp " + getInstallPath());
-        commands.add("pm install -r " + getInstallPath());
         commands.add("sleep 5"); // wait until the app is really installed
-        commands.add("mount -o ro,remount /system");
+        commands.add("mount -o ro,remount /system"); // remount as read-only
         commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.addAll(getPostInstallCommands());
         return commands;
@@ -116,7 +114,6 @@ abstract class InstallExtension {
         commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.add("pm clear " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.add("mount -o rw,remount /system");
-        commands.add("pm uninstall " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.addAll(getCleanUninstallCommands());
         commands.add("sleep 5");
         commands.add("mount -o ro,remount /system");
@@ -201,7 +198,7 @@ abstract class InstallExtension {
          */
         @Override
         protected List<String> getCopyToSystemCommands(String apkPath) {
-            List<String> commands = new ArrayList<>(3);
+            List<String> commands = new ArrayList<>(4);
             commands.add("mkdir -p " + getSystemFolder()); // create app directory if not existing
             commands.add("chmod 755 " + getSystemFolder());
             commands.add("cat " + apkPath + " > " + getInstallPath() + ".tmp");
@@ -229,10 +226,8 @@ abstract class InstallExtension {
 
         @Override
         protected List<String> getCleanUninstallCommands() {
-            final List<String> commands = new ArrayList<>(3);
-            commands.add("rm -f " + getInstallPath());
-            commands.add("sleep 1");
-            commands.add("rm -f " + getSystemFolder());
+            final List<String> commands = new ArrayList<>(1);
+            commands.add("rm -rf " + getSystemFolder());
             return commands;
         }
 
