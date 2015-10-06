@@ -23,8 +23,8 @@
   <string name="notify_on">Отображать уведомление когда есть обновления</string>
   <string name="update_history">История обновлений</string>
   <string name="update_history_summ">Показывать новые приложения и обновления за последние %s дней</string>
-  <string name="system_installer">Устанавливать используя системные привилегии</string>
-  <string name="system_installer_on">Использовать системные привилегии для установки, обновления и удаления приложений</string>
+  <string name="system_installer">Привилегированное расширение</string>
+  <string name="system_installer_on">Использовать привилегированное расширение F-Droid для установки, обновления и удаления пакетов</string>
   <string name="local_repo_name">Название вашего локального репозитория</string>
   <string name="local_repo_name_summary">Ваш локальный репозиторий рекламируется под именем: %s</string>
   <string name="local_repo_https">Использовать частное соединение</string>
@@ -57,11 +57,11 @@
   <string name="one_update_available">Доступно 1 обновление.</string>
   <string name="many_updates_available">Доступно %d обновлений.</string>
   <string name="fdroid_updates_available">Доступны обновления для F-Droid</string>
-  <string name="bluetooth_activity_not_found">Ни один метод отправки по Bluetooth не найден, выберите один из них!</string>
+  <string name="bluetooth_activity_not_found">Методы отправки по Bluetooth не найдены, выберите какой-либо!</string>
   <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>
-  <string name="send_via_bluetooth">Отправить через Bluetooth</string>
+  <string name="send_via_bluetooth">Отправить по Bluetooth</string>
   <string name="repo_add_url">Адрес репозитория</string>
-  <string name="repo_add_fingerprint">Отпечаток ключа (опционально)</string>
+  <string name="repo_add_fingerprint">Отпечаток ключа (необязательно)</string>
   <string name="repo_exists_add_fingerprint">Этот репозиторий уже настроен, это действие обновит информацию о ключе.</string>
   <string name="repo_exists_enable">Этот репозиторий уже настроен, подтвердите, что вы хотите снова включить его.</string>
   <string name="repo_exists_and_enabled">Репозиторий уже настроен и включён.</string>
@@ -103,8 +103,8 @@
   <string name="show_incompat_versions_on">Показать версии программ, несовместимые с устройством</string>
   <string name="rooted">Суперпользователь</string>
   <string name="rooted_on">Не выделять серым цветом приложения, требующие привилегии суперпользователя</string>
-  <string name="ignoreTouch">Игнорировать Тачскрин</string>
-  <string name="ignoreTouch_on">Всегда включать приложения, которые требуют сенсорный экран</string>
+  <string name="ignoreTouch">Сенсорный экран</string>
+  <string name="ignoreTouch_on">Всегда включать приложения, требующие сенсорный экран</string>
   <string name="category_all">Все</string>
   <string name="category_whatsnew">Новинки</string>
   <string name="category_recentlyupdated">Недавно обновлённые</string>
@@ -145,14 +145,14 @@
   <string name="unsigned">Неподписанный</string>
   <string name="unverified">Неподтверждённый</string>
   <string name="repo_num_apps">Количество приложений</string>
-  <string name="repo_fingerprint">Отпечаток ключа подписи репозитория (SHA-256)</string>
+  <string name="repo_fingerprint">Отпечаток ключа подписи (SHA-256)</string>
   <string name="repo_description">Описание</string>
-  <string name="repo_last_update">Последние обновление</string>
+  <string name="repo_last_update">Последнее обновление</string>
   <string name="repo_update">Обновить</string>
   <string name="repo_name">Название</string>
   <string name="unsigned_description">Это означает, что список приложений не может быть проверен. Вы должны быть осторожны с приложениями, загруженными из неподписанных источников.</string>
-  <string name="repo_not_yet_updated">Этот репозиторий еще не использовался. Обновите репозиторий чтобы просмотреть содержащиеся в нём приложения.\n\nПосле обновления здесь появится описание и прочие подробности.</string>
-  <string name="unknown">Неизвестный</string>
+  <string name="repo_not_yet_updated">Этот репозиторий еще не использовался. Включите его чтобы просмотреть содержащиеся в нём приложения.</string>
+  <string name="unknown">Неизвестно</string>
   <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
   <string name="repo_confirm_delete_body">Удаление репозитория означает что приложения из него больше не будут доступны в F-Droid.\n\nПримечание: Все ранее установленные приложения останутся на вашем устройстве.</string>
   <string name="repo_disabled_notification">%1$s отключён.\n\nДля установки приложений из этого репозитория вам необходимо повторно включить его.</string>
@@ -218,4 +218,8 @@
     <string name="install_error_cannot_parse">При разборе пакета произошла ошибка</string>
     <string name="uninstall_error_title">Ошибка удаления</string>
     <string name="uninstall_error_unknown">Удаление не удалось из-за неизвестной ошибки</string>
+    <string name="repo_details">Репозиторий</string>
+    <string name="repo_url">Адрес</string>
+    <string name="pref_language_default">Системный</string>
+
     </resources>

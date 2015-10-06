@@ -332,4 +332,6 @@
     <string name="system_install_first_time_message">Схоже, що у вас є root доступ на вашому пристрою. Ви можете встановити привілейоване розширення F-Droid, що інтегрується з операційною системою Android. Це дозволить додатку F-Droid встановлювати, оновлювати та видаляти додатки своїми засобами.</string>
     <string name="repo_details">Репозиторій</string>
     <string name="repo_url">Адреса</string>
+    <string name="status_download_unknown_size">Завантаження\n%2$1s з\n%1$s</string>
+	<string name="repo_searching_address">Перегляд репозиторію F-Droid\n%1$s</string>
     </resources>

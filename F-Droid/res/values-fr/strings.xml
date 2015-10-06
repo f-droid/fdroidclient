@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">%1$d applications trouvées contenant \'%2$s\':</string>
-  <string name="searchres_oneapp">Une application trouvée contenant \'%s\':</string>
-  <string name="searchres_noapps">Aucune application contenant \'%s\' n\'a été trouvée</string>
-  <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez cela puis recommencez. (Veuillez noter que désinstaller effacera les données enregistrées par l\'application)</string>
-  <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous quand même tenter de l\'installer?</string>
-  <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous tout de même revenir à une ancienne version?</string>
+  <string name="searchres_napps">%1$d applications trouvées contenant \"%2$s\" :</string>
+  <string name="searchres_oneapp">Une application trouvée contenant \"%s\" :</string>
+  <string name="searchres_noapps">Aucune application contenant \"%s\" n\'a été trouvée</string>
+  <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez de nouveau après avoir désinstallé l\'ancienne application. (Veuillez noter que la désinstallation effacera les données stockées par l\'application)</string>
+  <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous quand même tenter de l\'installer ?</string>
+  <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous tout de même revenir à une ancienne version ?</string>
   <string name="version">Version</string>
   <string name="delete">Supprimer</string>
-  <string name="enable_nfc_send">Activer l\'envoi NFC…</string>
-  <string name="cache_downloaded">Stockage d\'applications téléchargées</string>
-  <string name="cache_downloaded_on">Garder les fichiers apk téléchargés sur le périphérique</string>
+  <string name="enable_nfc_send">Activer l\'envoi via NFC…</string>
+  <string name="cache_downloaded">Stockage de paquets</string>
+  <string name="cache_downloaded_on">Conserver les paquets téléchargés sur l\'appareil</string>
   <string name="updates">Mises à jour</string>
   <string name="other">Autres</string>
   <string name="update_interval">Intervalle de mise à jour automatique</string>
   <string name="update_interval_zero">Pas de mise à jour automatique de la liste d\'applications</string>
-  <string name="automatic_scan_wifi">Seulement par Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Mettre à jour automatiquement les listes d\'applications uniquement par Wi-Fi</string>
-  <string name="notify">Notifier</string>
-  <string name="notify_on">Notifier quand des mises à jour sont disponibles</string>
+  <string name="automatic_scan_wifi">Seulement via Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Mettre à jour automatiquement les listes d\'applications uniquement via Wi-Fi</string>
+  <string name="notify">Notifications de mise à jour</string>
+  <string name="notify_on">Afficher une notification quand des mises à jour sont disponibles</string>
   <string name="update_history">Historique des mises à jour</string>
-  <string name="update_history_summ">Jours pour considérer les apps comme nouvelles ou récentes: %s</string>
-  <string name="system_installer">Installer en utilisant les permissions systèmes</string>
-  <string name="system_installer_on">Utiliser les permissions du système pour installer, mettre à jour et supprimer des paquets</string>
+  <string name="update_history_summ">Nombre de jours durant lesquels les apps sont considérées nouvelles ou récentes : %s</string>
+  <string name="system_installer">Extension des Privilèges</string>
+  <string name="system_installer_on">Utiliser F-Droid - Extension des Privilèges pour installer, mettre à jour et supprimer des paquets</string>
   <string name="local_repo_name">Nom de votre dépôt local</string>
   <string name="local_repo_name_summary">Le nom public de votre dépôt local: %s</string>
   <string name="local_repo_https">Utilisez une connexion privée</string>
@@ -55,11 +55,11 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="one_update_available">Une mise à jour est disponible.</string>
   <string name="many_updates_available">%d mises à jour sont disponibles.</string>
   <string name="fdroid_updates_available">Des mises à jour F-Droid sont disponibles</string>
-  <string name="bluetooth_activity_not_found">Pas de méthode d\'envoi Bluetooth trouvée, choisissez-en une!</string>
-  <string name="choose_bt_send">Choisir la méthode d\'envoi Bluetooth</string>
+  <string name="bluetooth_activity_not_found">Aucune méthode d\'envoi Bluetooth n\'a été trouvée, choisissez-en une !</string>
+  <string name="choose_bt_send">Choisir une méthode d\'envoi Bluetooth</string>
   <string name="send_via_bluetooth">Envoyer par Bluetooth</string>
   <string name="repo_add_url">Adresse du dépôt</string>
-  <string name="repo_add_fingerprint">Empreinte digitale (optionnel)</string>
+  <string name="repo_add_fingerprint">Empreinte (optionnel)</string>
   <string name="repo_exists_add_fingerprint">Ce dépôt est déjà configuré, cela va ajouter les informations des nouvelles clés.</string>
   <string name="repo_exists_enable">Ce dépôt est déjà configuré, confirmer que vous voulez le réactiver.</string>
   <string name="repo_exists_and_enabled">Le dépôt entrant est déjà configuré et activé.</string>
@@ -99,7 +99,7 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="appcompatibility">Compatibilité des applications</string>
   <string name="show_incompat_versions">Versions incompatibles</string>
   <string name="show_incompat_versions_on">Afficher les versions des applications incompatibles avec l\'appareil</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Ignorer root</string>
   <string name="rooted_on">Ne pas griser les applications nécessitant les privilèges root</string>
   <string name="ignoreTouch">Ignorer l\'écran tactile</string>
   <string name="ignoreTouch_on">Toujours inclure les apps nécessitant un écran tactile</string>
@@ -112,7 +112,7 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="deleting_repo">Supprimer le dépôt actuel…</string>
   <string name="adding_apks_format">Ajout de %s au dépôt…</string>
   <string name="writing_index_jar">Écriture d\'un fichier d\'index signé (index.jar)…</string>
-  <string name="failed_to_create_index">Échec à la création d\'un index de dépôt!</string>
+  <string name="failed_to_create_index">Échec de la création d\'un index de dépôt !</string>
   <string name="linking_apks">Création de liens pour les APKs dans le dépôt…</string>
   <string name="copying_icons">Copie des icônes des apps dans le dépôt…</string>
   <string name="icon">Icône</string>
@@ -144,7 +144,7 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="unsigned">Non signé</string>
   <string name="unverified">Non vérifié</string>
   <string name="repo_num_apps">Nombre d\'applications</string>
-  <string name="repo_fingerprint">Empreinte numérique de la clef de signature pour le dépôt (SHA-256)</string>
+  <string name="repo_fingerprint">Empreinte de la clé utilisée pour signer le dépôt (SHA-256)</string>
   <string name="repo_description">Description</string>
   <string name="repo_last_update">Dernière mise à jour</string>
   <string name="repo_update">Mise à jour</string>
@@ -153,8 +153,7 @@ Publiée sous licence GNU GPLv3.</string>
         des applications n\'a pu être vérifiée. Vous
         devriez faire attention avec les
         applications téléchargées d\'indexes non signés.</string>
-  <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé. Pour voir la liste des applications qu\'il offre, vous devez le mettre à jour. Une fois la mise à jour effectuée,
-\nla description et les autres détails seront affichés ici.</string>
+  <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé. Vous devez l\'activer pour voir la liste des applications qu\'il offre.</string>
   <string name="unknown">Inconnu</string>
   <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
   <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses applications ne seront plus disponibles via F-Droid.
@@ -182,7 +181,7 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="root_access_denied_title">Droits root refusés</string>
   <string name="root_access_denied_body">Soit votre système Android n\'a pas les droits root/SuperUser, soit vous les avez refusés à F-Droid.</string>
   <string name="update_all">Tout mettre à jour</string>
-  <string name="system_install_denied_title">Permissions systèmes refusées</string>
+  <string name="system_install_denied_title">F-Droid - Extension des Privilèges n\'est pas disponible</string>
   <string name="system_install_denied_body">Cette option est seulement disponible quand F-Droid est installé comme application-système.</string>
   <string name="app_description">F-Droid est un catalogue installable de logiciels libres et open source pour le système Android. Le client permet une navigation facile, l\'installation, et garder une trace des mises à jour sur votre appareil.</string>
   <string name="swap_join_same_wifi">Se connecter au même Wi-Fi que votre ami</string>
@@ -191,13 +190,13 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="swap_no_wifi_network">Pas encore de réseau</string>
   <string name="swap_view_available_networks">(Appuyez pour ouvrir les réseaux disponibles)</string>
   <string name="open_qr_code_scanner">Ouvrir le scanner QR Code</string>
-  <string name="swap_welcome">Bienvenue sur F-Droid/u00A0!</string>
+  <string name="swap_welcome">Bienvenue sur F-Droid !</string>
   <string name="swap_confirm_connect">Voulez-vous recevoir des applications de %1$s maintenant ?</string>
 <string name="app_name">F-Droid</string>
 
 	<string name="unstable_updates">Mises à jour instables</string>
-	<string name="unstable_updates_summary">Suggérer les mises à jour instables</string>
-	<string name="uninstall_system">Désinstaller F-Droid privilégié</string>
+	<string name="unstable_updates_summary">Proposer les mises à jour de versions instables</string>
+	<string name="uninstall_system">Installer/désinstaller l\'Extension des Privilèges</string>
 	<string name="about_source">Source :</string>
 	<string name="app_incompatible">Incompatible</string>
 	<string name="links">Liens</string>
@@ -302,4 +301,36 @@ Publiée sous licence GNU GPLv3.</string>
 
     <string name="interval_1h">Toutes les heures</string>
     <string name="perms_description_app">Fourni par %1$s.</string>
+    <string name="uninstall_system_summary">Ouvrir l\'écran des détails d\'Extension Privilégiée pour la mettre à jour/désinstaller</string>
+	<string name="update_notification_more">%1$d de plus…</string>
+	<string name="status_download_unknown_size">Téléchargement\n%2$s sur\n%1$s</string>
+	<string name="repo_details">Dépôt</string>
+    <string name="repo_url">Adresse</string>
+    <string name="Money">Finances</string>
+    <string name="Theming">Habillage d\'interface</string>
+    <string name="Writing">Écriture</string>
+
+    <string name="system_install_denied_signature">La signature de l\'extension est erronée ! Merci de créer un rapport de bogue.</string>
+    <string name="system_install_denied_permissions">Les permissions privilégiées n\'ont pas été accordée à l\'extension ! Merci de créer un rapport de bogue.</string>
+    <string name="system_install_button_install">Installer</string>
+	<string name="system_install_button_open">Ouvrir l\'Extension</string>
+    <string name="system_install_first_time_notification">Installer F-Droid - Extension des Privilèges ?</string>
+    <string name="system_install_first_time_notification_message">Appuyez pour installer F-Droid Extension Privilégiée. Étroitement liée au système d\'exploitation Android, elle permet à F-Droid installer, metter à jour et désinstaller des applications de son propre chef.\nVous pouvez le faire plus tard, depuis les préférences de F-Droid.</string>
+    <string name="system_install_post_success">F-Droid - Extension des Privilèges a été installée avec succès</string>
+    <string name="system_install_post_fail">Échec de l\'installation de F-Droid - Extension des Privilèges</string>
+    <string name="system_install_post_success_message">F-Droid Extension Privilégiée a été installée avec succès. Elle permet à F-Droid d\'installer, mettre à jour et désinstaller des applications de son propre chef.</string>
+    <string name="system_install_post_fail_message">Échec de l\'installation de F-Droid Extension Privilégiée. La méthode d\'installation utilsée n\'est pas supportée par toutes les variantes d\'Android. Veuillez consulter la base de donnée de bogues pour plus d\'informations.</string>
+    <string name="system_install_installing_rebooting">Installation et redémarrage…</string>
+    <string name="system_install_question">Voulez-vous installer F-Droid Extension Privilégiée ?</string>
+	<string name="system_install_warning">Ceci peut prendre jusqu\'à 10 secondes.</string>
+	<string name="system_install_warning_lollipop">Ceci peut prendre jusqu\'à 10 secondes et l\'appareil sera ensuite <b>redémarré</b>.</string>
+	<string name="system_install_first_time_message">On dirait que vous avez accès au root de votre appareil. Vous pouvez maintenant installer F-Droid - Extension des Privilèges. Étroitement lié au système d\'exploitation Android, elle permet à F-Droid d\'installer, mettre à jour et désinstaller les applications de son propre chef.</string>
+    <string name="system_uninstall">Voulez-vous désinstaller F-Droid - Extension des privilèges ?</string>
+    <string name="system_uninstall_button">Désinstaller</string>
+
+    <string name="swap_cant_find_peers">Vous n\'arrivez pas à trouver ce que vous cherchez ?</string>
+    <string name="swap_attempt_install">Essayer d\'installer</string>
+    <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, on dirait que nous ne pouvons pas faire l\'échange avec.</string>
+    <string name="swap_not_enabled">Échange désactivé</string>
+    <string name="Time">Temps</string>
     </resources>

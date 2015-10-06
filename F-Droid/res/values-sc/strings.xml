@@ -58,7 +58,7 @@ Intregadu cun sa litzèntzia
   <string name="fdroid_updates_available">Agiornamentos pro F-Droid disponìbiles</string>
   <string name="bluetooth_activity_not_found">Perunu mètodu de imbiu Bluetooth agatadu, issèberane unu!</string>
   <string name="choose_bt_send">Issèbera su mètodu de imbiu Bluetooth</string>
-  <string name="send_via_bluetooth">Imbia tramite Bluetooth</string>
+  <string name="send_via_bluetooth">Imbia tràmite Bluetooth</string>
   <string name="repo_add_url">Indiritzu depòsitu</string>
   <string name="repo_add_fingerprint">Arrastu/Imprenta (optzionale)</string>
   <string name="repo_exists_add_fingerprint">Custu depòsitu est giai cunfiguradu, custu at a annànghere un\'informatzione crae noa.</string>
@@ -328,4 +328,5 @@ Intregadu cun sa litzèntzia
     <string name="system_install_warning">Custu podet durare finas a 10 segundos.</string>
 	<string name="repo_details">Depòsitu</string>
     <string name="repo_url">Indiritzu</string>
-    </resources>
+    <string name="status_download_unknown_size">Iscarrighende\n%2$s dae\n%1$s</string>
+	</resources>

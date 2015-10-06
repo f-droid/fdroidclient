@@ -55,8 +55,8 @@
   <string name="one_update_available">Ta disponible 1 anovamientu.</string>
   <string name="many_updates_available">Tán disponibles %d anovamientos.</string>
   <string name="fdroid_updates_available">Anovamientos de F-Droid disponibles</string>
-  <string name="bluetooth_activity_not_found">Nun s\'alcontró dal mou d\'unviar pente Bluetooth, escueyi ún.</string>
-  <string name="choose_bt_send">Escueyi\'l mou d\'unviar pente Bluetooth</string>
+  <string name="bluetooth_activity_not_found">Nun s\'alcontró dal métodu d\'unviu pente Bluetooth, ¡escueyi ún!</string>
+  <string name="choose_bt_send">Escueyi\'l métodu d\'unvu pente Bluetooth</string>
   <string name="send_via_bluetooth">Unviar pente Bluetooth</string>
   <string name="repo_add_url">Direición del repositoriu</string>
   <string name="repo_add_fingerprint">Buelga (opcional)</string>
@@ -327,4 +327,5 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
 	<string name="repo_details">Repositoriu</string>
     <string name="repo_url">Direición</string>
     <string name="perms_new_perm_prefix">"Nuevo: "</string>
-    </resources>
+    <string name="status_download_unknown_size">Baxando\n%2$s de\n%1$s</string>
+	</resources>
