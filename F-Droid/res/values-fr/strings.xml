@@ -136,7 +136,6 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="all_other_repos_fine">Tous les autres dépôts n\'ont pas générés d\'erreurs.</string>
   <string name="global_error_updating_repos">Erreur durant la mise à jour : %s</string>
   <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
-  <string name="permissions_for_long">Permissions pour la version %s</string>
   <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s.</string>
   <string name="compactlayout">Affichage compact</string>
   <string name="compactlayout_on">Montrer les icônes à une taille plus petite</string>
@@ -200,7 +199,6 @@ Publiée sous licence GNU GPLv3.</string>
 	<string name="about_source">Source :</string>
 	<string name="app_incompatible">Incompatible</string>
 	<string name="links">Liens</string>
-	<string name="content_description_view_more">Voir plus</string>
 
 	<string name="back">Retour</string>
 	<string name="tab_installed_apps">Installées</string>

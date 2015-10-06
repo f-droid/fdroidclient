@@ -133,7 +133,6 @@ Vydaný pod licenciou
   <string name="all_other_repos_fine">Ostatné repozitáre nevytvorili chyby.</string>
   <string name="global_error_updating_repos">Chyba počas aktualizácie: %s</string>
   <string name="no_permissions">Nepoužívajú sa žiadne povolenia.</string>
-  <string name="permissions_for_long">Povolenia pre verziu %s</string>
   <string name="no_handler_app">Nemáte žiadne dostupné aplikácie, ktoré môžu spracovať %s.</string>
   <string name="compactlayout">Úsporné rozloženie</string>
   <string name="compactlayout_on">Zobraziť menšie ikony</string>
@@ -196,7 +195,6 @@ Vydaný pod licenciou
 	<string name="about_source">Zdrojáky:</string>
 	<string name="app_incompatible">Nekompatibilné</string>
 	<string name="links">Linky</string>
-	<string name="content_description_view_more">Zobraziť viac</string>
 
 	<string name="back">Späť</string>
 	<string name="tab_installed_apps">Nainštalované</string>

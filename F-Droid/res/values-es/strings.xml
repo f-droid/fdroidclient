@@ -135,7 +135,6 @@
   <string name="all_other_repos_fine">El resto de los repos no crearon errores.</string>
   <string name="global_error_updating_repos">Error en la actualización: %s</string>
   <string name="no_permissions">No se usan permisos.</string>
-  <string name="permissions_for_long">Permisos para la versión %s</string>
   <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda manejar %s.</string>
   <string name="compactlayout">Diseño compacto</string>
   <string name="compactlayout_on">Mostrar iconos en tamaño menor</string>
@@ -200,7 +199,6 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 	<string name="about_source">Código fuente:</string>
 	<string name="app_incompatible">Incompatible</string>
 	<string name="links">Enlaces</string>
-	<string name="content_description_view_more">Ver más</string>
 
 	<string name="back">Volver</string>
 	<string name="update_notification_more">+%1$d más…</string>

@@ -136,7 +136,6 @@ bağlanılıyor</string>
   <string name="all_other_repos_fine">Diğer tüm depolar hata oluşturmadılar.</string>
   <string name="global_error_updating_repos">Güncelleme sırasında hata:</string>
   <string name="no_permissions">Hiçbir izin kullanılmıyor.</string>
-  <string name="permissions_for_long">%s sürümü için izinler</string>
   <string name="no_handler_app">%s unsurunu yönetecek hiçbir mevcut uygulamanız yok</string>
   <string name="compactlayout">Yoğun düzen</string>
   <string name="compactlayout_on">İkonları daha küçük boyutta görüntüle</string>

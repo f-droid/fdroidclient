@@ -136,7 +136,6 @@ wird verbunden</string>
   <string name="all_other_repos_fine">Alle anderen Paketquellen erzeugen keine Fehler.</string>
   <string name="global_error_updating_repos">Fehler während der Aktualisierung: %s</string>
   <string name="no_permissions">Es werden keine Berechtigungen verwendet.</string>
-  <string name="permissions_for_long">Berechtigungen für Version %s</string>
   <string name="no_handler_app">Es ist keine Anwendung installiert, die mit %s umgehen kann.</string>
   <string name="compactlayout">Kompakte Ansicht</string>
   <string name="compactlayout_on">Symbole in einer kleineren Größe anzeigen</string>
@@ -219,7 +218,6 @@ wird verbunden</string>
 
 	<string name="unstable_updates">Instabile Updates</string>
 	<string name="unstable_updates_summary">Updates für instabile Version vorschlagen</string>
-	<string name="content_description_view_more">Mehr anzeigen</string>
 
 	<string name="tab_installed_apps">Installiert</string>
 	<string name="menu_changelog">Änderungen</string>

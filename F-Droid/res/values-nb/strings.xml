@@ -136,7 +136,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="all_other_repos_fine">Alle de andre pakkebrønnene lagde ikke noe krøll.</string>
   <string name="global_error_updating_repos">Feil under oppdatering: %s</string>
   <string name="no_permissions">Krever ingen tillatelser.</string>
-  <string name="permissions_for_long">Tillatelser for versjon %s</string>
   <string name="no_handler_app">Du har ingen tilgjengelige applikasjoner som kan håndtere %s.</string>
   <string name="compactlayout">Kompakt layout</string>
   <string name="compactlayout_on">Vis ikoner i mindre størrelse</string>
@@ -205,7 +204,6 @@ Du må
 	<string name="about_source">Kildekode:</string>
 	<string name="app_incompatible">Ukompatibel</string>
 	<string name="links">Lenker</string>
-	<string name="content_description_view_more">Vis flere</string>
 
 	<string name="back">Tilbake</string>
 	<string name="tab_installed_apps">Installert</string>

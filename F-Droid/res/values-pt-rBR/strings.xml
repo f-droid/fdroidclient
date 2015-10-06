@@ -132,7 +132,6 @@
   <string name="all_other_repos_fine">Todos os outros repositórios não geraram erros.</string>
   <string name="global_error_updating_repos">Erro durante a atualização: %s</string>
   <string name="no_permissions">Nenhuma permissão utilizada.</string>
-  <string name="permissions_for_long">Permissões para a versão %s</string>
   <string name="no_handler_app">Você não tem nenhum aplicativo instalado que possa lidar com %s.</string>
   <string name="compactlayout">Leiaute compacto</string>
   <string name="compactlayout_on">Mostrar ícones em um tamanho menor</string>
@@ -195,7 +194,6 @@ com aplicativos baixados a partir de índices não assinados.</string>
 	<string name="uninstall_system_summary">Abrir tela de detalhes da extensão privilegiada para atualizá-la/desinstalá-la</string>
 	<string name="app_incompatible">Incompatível</string>
 	<string name="links">Links</string>
-	<string name="content_description_view_more">Ver mais</string>
 
 	<string name="back">Voltar</string>
 	<string name="update_notification_more">+%1$d mais…</string>

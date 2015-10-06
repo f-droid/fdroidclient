@@ -66,12 +66,4 @@
         <item>zh-rHK</item>
     </string-array>
 
-    <string-array name="file_size_units">
-        <item>B</item>
-        <item>KiB</item>
-        <item>MiB</item>
-        <item>GiB</item>
-        <item>TiB</item>
-    </string-array>
-
 </resources>

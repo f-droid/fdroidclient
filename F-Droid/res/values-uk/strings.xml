@@ -89,7 +89,6 @@
 	<string name="added_on">Додано %s</string>
 
 	<string name="links">Посилання</string>
-	<string name="content_description_view_more">Переглянути ще</string>
 
 	<string name="back">Назад</string>
 	<string name="enable">Увімкнути</string>
@@ -214,7 +213,6 @@
 	<string name="status_checking_compatibility">Перевірка додатків на сумісність із пристроєм…</string>
     <string name="status_inserting">Збереження подробиць додатків (%1$d%%)</string>
 	<string name="no_permissions">Не потребує дозволів.</string>
-	<string name="permissions_for_long">Дозволи для версії %s</string>
 	<string name="compactlayout">Компактний вигляд</string>
 	<string name="requires_features">Залежності: %1$s</string>
     <string name="empty_available_app_list">Відсутні додатки в даній категорії.\n\nСпробуйте обрати іншу категорію або ж оновити ваші репозиторії, для отримання свіжого переліку додатків.</string>

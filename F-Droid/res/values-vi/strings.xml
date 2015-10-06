@@ -120,7 +120,6 @@
   <string name="repos_unchanged">Không có kho nào có cập nhật</string>
   <string name="global_error_updating_repos">Lỗi khi cập nhật: %s</string>
   <string name="no_permissions">Không sử dụng quyền nào.</string>
-  <string name="permissions_for_long">Các quyền trong phiên bản %s</string>
   <string name="no_handler_app">Bạn không có ứng dụng nào để xử lí %s.</string>
   <string name="compactlayout">Xem rút gọn</string>
   <string name="compactlayout_on">Giảm kích cỡ biểu tượng</string>
@@ -180,7 +179,6 @@
 	<string name="uninstall_system">Gỡ bỏ F-Droid được cấp quyền</string>
 	<string name="uninstall_system_summary">Gỡ bỏ ứng dụng F-Droid được cấp quyền</string>
 	<string name="links">Liên kết</string>
-	<string name="content_description_view_more">Xem thêm</string>
 
 	<string name="back">Quay lại</string>
 	<string name="local_repo_name_summary">Tên kho phần mềm nội bộ của bạn: %s</string>

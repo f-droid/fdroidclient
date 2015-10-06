@@ -134,7 +134,6 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="all_other_repos_fine">Cap dels altres dipòsits ha donat errors.</string>
   <string name="global_error_updating_repos">S\'ha produït un error durant l\'actualització: %s</string>
   <string name="no_permissions">No es fa servir cap permís.</string>
-  <string name="permissions_for_long">Permisos de la versió %s</string>
   <string name="no_handler_app">No teniu cap aplicació disponible que pugui gestionar %s.</string>
   <string name="compactlayout">Vista compacta</string>
   <string name="compactlayout_on">Redueix la mida de les icones</string>
@@ -192,7 +191,6 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
 	<string name="about_source">Codi font:</string>
 	<string name="app_incompatible">Incompatible</string>
 	<string name="links">Enllaços</string>
-	<string name="content_description_view_more">Veure més</string>
 
 	<string name="back">Torna</string>
 	<string name="update_notification_more">+%1$d més…</string>

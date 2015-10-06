@@ -77,7 +77,6 @@ GNU GPLv3 lizentziapean argitaratua.</string>
 konektatzen</string>
   <string name="status_checking_compatibility">Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen…</string>
   <string name="no_permissions">Ez da baimenik erabiltzen.</string>
-  <string name="permissions_for_long">%s bertsioarentzako baimenak</string>
   <string name="compactlayout">Diseinu trinkoa</string>
   <string name="theme">Gaia</string>
   <string name="unsigned">Sinatu gabea</string>
@@ -110,7 +109,6 @@ konektatzen</string>
 	<string name="app_inst_unknown_source">Instalatuta (Iturri ezezagunetik)</string>
 
 	<string name="links">Loturak</string>
-	<string name="content_description_view_more">Ikusi gehiago</string>
 
 	<string name="back">Atzera</string>
 	<string name="update_notification_more">+%1$d gehiago…</string>

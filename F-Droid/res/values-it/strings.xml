@@ -134,7 +134,6 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="all_other_repos_fine">Tutte le altre repo non hanno generato errori.</string>
   <string name="global_error_updating_repos">Errore nell\'aggiornamento:</string>
   <string name="no_permissions">Non viene usata alcuna autorizzazione.</string>
-  <string name="permissions_for_long">Autorizzazioni per la versione %s</string>
   <string name="no_handler_app">Non hai alcuna app disponibile che può gestire %s</string>
   <string name="compactlayout">Layout Compatto</string>
   <string name="compactlayout_on">Mostra le icone a dimensione ridotta</string>

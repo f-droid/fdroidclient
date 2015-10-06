@@ -135,7 +135,6 @@ Intregadu cun sa litzèntzia
   <string name="all_other_repos_fine">Totu sos àteros depòsitos no ant creadu faddinas.</string>
   <string name="global_error_updating_repos">Faddina durante s\'agiornamentu: %s</string>
   <string name="no_permissions">Perunu permissu impreadu.</string>
-  <string name="permissions_for_long">Permissos pro sa versione %s</string>
   <string name="no_handler_app">Non tenes peruna aplicatzione disponìbile pro gestire %s.</string>
   <string name="compactlayout">Aspetu cumpatu</string>
   <string name="compactlayout_on">Ammustra sas iconas cun una mannària minimada</string>
@@ -195,7 +194,6 @@ Intregadu cun sa litzèntzia
 
 	<string name="app_incompatible">Non cumpatìbile</string>
 	<string name="links">Ligòngios</string>
-	<string name="content_description_view_more">Ammustra àteru</string>
 
 	<string name="back">In dae segus</string>
 	<string name="update_notification_more">+%1$d àteru(os)…</string>

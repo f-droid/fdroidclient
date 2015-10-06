@@ -137,7 +137,6 @@
   <string name="all_other_repos_fine">Все другие репозитории не привели к ошибкам.</string>
   <string name="global_error_updating_repos">Ошибка во время обновления: %s</string>
   <string name="no_permissions">Разрешений не требуется.</string>
-  <string name="permissions_for_long">Разрешения для версии %s</string>
   <string name="no_handler_app">У вас нет приложения для обработки %s.</string>
   <string name="compactlayout">Компактный вид</string>
   <string name="compactlayout_on">Показать иконки в меньшем размере</string>

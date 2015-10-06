@@ -110,7 +110,6 @@
   <string name="all_other_repos_fine">其他倉庫都沒有出現問題。</string>
   <string name="global_error_updating_repos">更新時出現問題：%s</string>
   <string name="no_permissions">沒有使用任何存取權。</string>
-  <string name="permissions_for_long">版本 %s 的存取權</string>
   <string name="compactlayout">濃縮設計</string>
   <string name="compactlayout_on">顯示小型圖示</string>
   <string name="theme">主題</string>
@@ -160,7 +159,6 @@
 	<string name="about_source">原始碼：</string>
 	<string name="app_incompatible">不相容</string>
 	<string name="links">連結</string>
-	<string name="content_description_view_more">顯示更多</string>
 
 	<string name="back">返回</string>
 	<string name="tab_installed_apps">已安裝</string>

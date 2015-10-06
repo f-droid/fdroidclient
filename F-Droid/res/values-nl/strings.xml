@@ -134,7 +134,6 @@
   <string name="all_other_repos_fine">Alle andere bronnen hebben geen fouten veroorzaakt.</string>
   <string name="global_error_updating_repos">Fout tijdens update: %s</string>
   <string name="no_permissions">Geen permissies worden gebruikt.</string>
-  <string name="permissions_for_long">Permissies voor versie %s</string>
   <string name="no_handler_app">Je hebt geen app die %s kan verwerken.</string>
   <string name="compactlayout">Compacte Layout</string>
   <string name="compactlayout_on">Iconen weergeven in klein formaat</string>
@@ -189,7 +188,6 @@
   <string name="swap_confirm_connect">Wilt u nu apps van %1$s ontvangen?</string>
 <string name="app_incompatible">Incompatibel</string>
 	<string name="links">Links</string>
-	<string name="content_description_view_more">Bekijk meer</string>
 
 	<string name="back">Terug</string>
 	<string name="update_notification_more">+%1$d meer…</string>

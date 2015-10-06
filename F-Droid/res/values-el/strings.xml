@@ -105,7 +105,6 @@
   <string name="status_checking_compatibility">Έλεγχος συμβατότητας εφαρμογών με τη συσκευή σας…</string>
   <string name="status_inserting">Αποθήκευση λεπτομερειών των εφαρμογών</string>
   <string name="no_permissions">Δεν χρησιμοποιείται καμία άδεια.</string>
-  <string name="permissions_for_long">Άδειες για την έκδοση %s</string>
   <string name="no_handler_app">Δεν έχεται καμία διαθέσιμη εφαρμογή που να μπορεί να χειριστεί %s</string>
   <string name="compactlayout">Συμπτυγμένη Διάταξη</string>
   <string name="compactlayout_on">Εμφάνιση εικονιδίων σε μικρότερο μέγεθος</string>

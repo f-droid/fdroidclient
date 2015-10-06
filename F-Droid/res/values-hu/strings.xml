@@ -100,7 +100,6 @@ Honosítás: gidano | sympda.info\"</string>
 %1$s\"</string>
   <string name="status_checking_compatibility">Alkalmazások eszközkompatibilitási ellenőrzése…</string>
   <string name="no_permissions">Nincsenek engedélyei.</string>
-  <string name="permissions_for_long">Engedélyek erre a verzióra - %s</string>
   <string name="no_handler_app">\"Nincs semmilyen app, ami képes ezt kezelni %s\"</string>
   <string name="compactlayout">Kompakt elrendezés</string>
   <string name="compactlayout_on">Ikonok kisebb méretben</string>
