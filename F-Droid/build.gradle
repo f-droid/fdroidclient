@@ -29,6 +29,7 @@ if (!hasProperty('sourceDeps')) {
         compile 'com.madgag.spongycastle:prov:1.51.0.0'
         compile 'com.madgag.spongycastle:core:1.51.0.0'
         compile 'commons-net:commons-net:3.3'
+        compile 'org.openhab.jmdns:jmdns:3.4.2'
 
         // Upstream doesn't have a binary on mavenCentral/jcenter yet:
         // https://github.com/kolavar/android-support-v4-preferencefragment/issues/13
@@ -42,11 +43,6 @@ if (!hasProperty('sourceDeps')) {
         // Google Code.  We include this code directly in this repo, and have made
         // modifications that should be pushed to anyone who wants to maintain it.
         compile(name: 'zipsigner')
-
-        // Project semi-abandoned, 3.4.1 is from 2011 and we use trunk from 2013
-        // TODO: active again and 3.4.2 now released, switch when available in jcenter:
-        // https://github.com/openhab/jmdns/issues/6
-        compile(name: 'jmdns')
 
         androidTestCompile 'commons-io:commons-io:2.2'
     }
@@ -73,13 +69,13 @@ if (!hasProperty('sourceDeps')) {
         compile 'cc.mvdan.accesspoint:library:0.1.1'
         compile 'info.guardianproject.netcipher:netcipher:1.2'
         compile 'commons-net:commons-net:3.3'
+        compile 'org.openhab.jmdns:jmdns:3.4.2'
 
         compile(project(':extern:support-v4-preferencefragment')) {
             exclude module: 'support-v4'
         }
         compile project(':extern:nanohttpd:core')
         compile project(':extern:zipsigner')
-        compile project(':extern:jmdns')
 
         androidTestCompile 'commons-io:commons-io:2.2'
     }
@@ -103,6 +99,7 @@ dependencyVerification {
         'com.madgag.spongycastle:prov:b8c3fec3a59aac1aa04ccf4dad7179351e54ef7672f53f508151b614c131398a',
         'com.madgag.spongycastle:core:8d6240b974b0aca4d3da9c7dd44d42339d8a374358aca5fc98e50a995764511f',
         'commons-net:commons-net:b35ad597f17a6f221575df2f729a9de8f70390509e047680771e713bad713fb9',
+        'org.openhab.jmdns:jmdns:7a4b34b5606bbd2aff7fdfe629edcb0416fccd367fb59a099f210b9aba4f0bce',
     ]
 }
 task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
@@ -114,7 +111,6 @@ task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
         include 'support-v4-preferencefragment/build/outputs/aar/support-v4-preferencefragment-release.aar'
         include 'nanohttpd/core/build/libs/nanohttpd-2.1.0.jar'
         include 'zipsigner/build/libs/zipsigner.jar'
-        include 'jmdns/build/libs/jmdns.jar'
     }
 
     into 'libs/binaryDeps'
