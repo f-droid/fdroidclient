@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 public class IconDownloader extends BaseImageDownloader {
 
@@ -32,7 +33,7 @@ public class IconDownloader extends BaseImageDownloader {
         }
 
         //bluetooth isn't a scheme in the Scheme. library, so we can add a check here
-        if (imageUri.toLowerCase().startsWith("bluetooth")) {
+        if (imageUri.toLowerCase(Locale.ENGLISH).startsWith("bluetooth")) {
             Downloader downloader = DownloaderFactory.create(context, imageUri);
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
