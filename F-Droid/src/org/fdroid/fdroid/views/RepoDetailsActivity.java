@@ -16,6 +16,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.text.format.DateUtils;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -303,9 +304,15 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
         // Repos that existed before this feature was supported will have an
         // "Unknown" last update until next time they update...
-        String lastUpdate = repo.lastUpdated != null
-                ? repo.lastUpdated.toString() : getString(R.string.unknown);
-        lastUpdated.setText(lastUpdate);
+        if (repo.lastUpdated == null) {
+            lastUpdated.setText(R.string.unknown);
+        } else {
+            int format = DateUtils.isToday(repo.lastUpdated.getTime()) ?
+                    DateUtils.FORMAT_SHOW_TIME :
+                    DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE;
+            lastUpdated.setText(DateUtils.formatDateTime(this,
+                    repo.lastUpdated.getTime(), format));
+        }
     }
 
     private void promptForDelete() {
