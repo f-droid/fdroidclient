@@ -362,14 +362,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
      * never happen as AppDetails is only to be called by the FDroid activity
      * and not externally.
      */
-    private String getAppIdFromIntent() {
-        Intent i = getIntent();
-        if (!i.hasExtra(EXTRA_APPID)) {
+    private String getAppIdFromIntent(Intent intent) {
+        if (!intent.hasExtra(EXTRA_APPID)) {
             Log.e(TAG, "No application ID found in the intent!");
             return null;
         }
 
-        return i.getStringExtra(EXTRA_APPID);
+        return intent.getStringExtra(EXTRA_APPID);
     }
 
     @Override
@@ -384,8 +383,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         // compat implementation is assigned in the ActionBarActivity base class.
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
-        if (getIntent().hasExtra(EXTRA_FROM)) {
-            setTitle(getIntent().getStringExtra(EXTRA_FROM));
+        Intent intent = getIntent();
+        if (intent.hasExtra(EXTRA_FROM)) {
+            setTitle(intent.getStringExtra(EXTRA_FROM));
         }
 
         mPm = getPackageManager();
@@ -403,7 +403,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             app = previousData.app;
             setApp(app);
         } else {
-            if (!reset(getAppIdFromIntent())) {
+            if (!reset(getAppIdFromIntent(intent))) {
                 finish();
                 return;
             }

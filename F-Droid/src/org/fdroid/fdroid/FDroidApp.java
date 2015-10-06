@@ -288,10 +288,10 @@ public class FDroidApp extends Application {
     private BluetoothAdapter getBluetoothAdapter() {
         // to use the new, recommended way of getting the adapter
         // http://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html
-        if (Build.VERSION.SDK_INT < 18)
+        if (Build.VERSION.SDK_INT < 18) {
             return BluetoothAdapter.getDefaultAdapter();
-        else
-            return ((BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
+        }
+        return ((BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
     }
 
     public void sendViaBluetooth(Activity activity, int resultCode, String packageName) {
@@ -327,13 +327,13 @@ public class FDroidApp extends Application {
             found = false;
         }
         if (sendBt != null) {
-            if (!found) {
+            if (found) {
+                sendBt.setClassName(bluetoothPackageName, className);
+                activity.startActivity(sendBt);
+            } else {
                 Toast.makeText(this, R.string.bluetooth_activity_not_found,
                         Toast.LENGTH_SHORT).show();
                 activity.startActivity(Intent.createChooser(sendBt, getString(R.string.choose_bt_send)));
-            } else {
-                sendBt.setClassName(bluetoothPackageName, className);
-                activity.startActivity(sendBt);
             }
         }
     }
