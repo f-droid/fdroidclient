@@ -272,14 +272,27 @@ public class PreferencesFragment extends PreferenceFragment
         });
     }
 
+    private String localeDisplayName(Locale locale, String defName) {
+        if (locale == null) {
+            return defName;
+        }
+        String name = locale.getDisplayName(locale);
+        if (name.length() < 2) {
+            return name;
+        }
+        // In some cases (e.g. "català" or "français") the display name isn't
+        // capitalized, so make sure it is.
+        return Character.toUpperCase(name.charAt(0)) + name.substring(1);
+    }
+
     private void langSpinner(String key) {
         final ListPreference pref = (ListPreference)findPreference(key);
         final String[] langValues = getResources().getStringArray(R.array.languageValues);
         String[] langNames = new String[langValues.length];
         langNames[0] = getString(R.string.pref_language_default);
         for (int i = 1; i < langValues.length; i++) {
-            final Locale appLoc = Utils.getLocaleFromAndroidLangTag(langValues[i]);
-            langNames[i] = appLoc == null ? langValues[i] : appLoc.getDisplayName(appLoc);
+            Locale locale = Utils.getLocaleFromAndroidLangTag(langValues[i]);
+            langNames[i] = localeDisplayName(locale, langValues[i]);
         }
         pref.setEntries(langNames);
     }
