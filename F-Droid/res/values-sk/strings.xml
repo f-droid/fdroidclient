@@ -161,16 +161,16 @@ Vydaný pod licenciou
   <string name="requires_features">Vyžaduje: %1$s</string>
   <string name="app_icon">Ikona aplikácie</string>
   <string name="repo_icon">Ikona repa</string>
-  <string name="Development">Vývoj</string>
-  <string name="Games">Hry</string>
-  <string name="Internet">Internet</string>
-  <string name="Multimedia">Multimédiá</string>
-  <string name="Navigation">Navigácia</string>
-  <string name="Phone_SMS">Telefón a SMS</string>
-  <string name="Reading">Čítanie</string>
-  <string name="Science_Education">Veda a výuka</string>
-  <string name="Security">Bezpečnosť</string>
-  <string name="System">Systém</string>
+  <string name="category_Development">Vývoj</string>
+  <string name="category_Games">Hry</string>
+  <string name="category_Internet">Internet</string>
+  <string name="category_Multimedia">Multimédiá</string>
+  <string name="category_Navigation">Navigácia</string>
+  <string name="category_Phone_SMS">Telefón a SMS</string>
+  <string name="category_Reading">Čítanie</string>
+  <string name="category_Science_Education">Veda a výuka</string>
+  <string name="category_Security">Bezpečnosť</string>
+  <string name="category_System">Systém</string>
   <string name="requesting_root_access_body">Žiadame root prístup…</string>
   <string name="root_access_denied_title">Root prístup zamietnutý</string>
   <string name="root_access_denied_body">Buď vaše zariadenie s Androidom nemá urobený root alebo ste odmietli root prístup pre F-Droid.</string>
@@ -215,10 +215,10 @@ Vydaný pod licenciou
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="Connectivity">Pripojiteľnosť</string>
-    <string name="Graphics">Grafika</string>
-    <string name="Money">Financie</string>
-    <string name="Sports_Health">Šport &amp; Zdravie</string>
+    <string name="category_Connectivity">Pripojiteľnosť</string>
+    <string name="category_Graphics">Grafika</string>
+    <string name="category_Money">Financie</string>
+    <string name="category_Sports_Health">Šport &amp; Zdravie</string>
     <string name="empty_can_update_app_list">Všetky aplikácie sú aktuálne.\n\nGratulujeme! Všetky vaše aplikácie sú aktuálne (alebo vaše repozitáre sú neaktuálne).</string>
 
     <string name="install_error_title">Chyba pri inštalácií</string>
@@ -227,7 +227,7 @@ Vydaný pod licenciou
     <string name="system_install_first_time_notification">Inštalovať Oprávnené Rozšírenie F-Droidu?</string>
     <string name="menu_bitcoin">Bitcoin</string>
 	<string name="menu_litecoin">Litecoin</string>
-	<string name="Time">Čas</string>
+	<string name="category_Time">Čas</string>
     <string name="empty_installed_app_list">Nenainštalované žiadne aplikácie.
 \n\nMáte aplikácie v zariadení, ale nie sú dostupné z F-Droidu. Možné dôvody: treba aktualizovať repozitáre, v repozitároch nie sú k dispozícií aplikácie.</string>
     <string name="empty_available_app_list">Žiadne aplikácie v tejto kategórií\n\nSkúste inú kategóriu alebo aktualizujte repozitáre pre aktuálny zoznam aplikácií.</string>
@@ -278,9 +278,9 @@ Vydaný pod licenciou
 
     <string name="theme_light">Svetlá</string>
     <string name="theme_dark">Tmavá</string>
-<string name="Writing">Písanie</string>
+<string name="category_Writing">Písanie</string>
 
-    <string name="Theming">Témy</string>
+    <string name="category_Theming">Témy</string>
     <string name="swap_not_visible_bluetooth">Nie je viditeľný cez Bluetooth</string>
     <string name="swap_not_visible_wifi">Nie je viditeľný cez Wi-Fi</string>
     <string name="swap_cant_send_no_bluetooth">Nemožno poslať F-Droid, pretože Bluetooh nie je dostupný na tomto zariadení.</string>

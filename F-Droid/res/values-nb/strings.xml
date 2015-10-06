@@ -171,16 +171,16 @@ Du må
   <string name="requires_features">Krever: %1$s</string>
   <string name="app_icon">App ikon</string>
   <string name="repo_icon">Pakkebrønns-ikon</string>
-  <string name="Development">Utvikling</string>
-  <string name="Games">Spill</string>
-  <string name="Internet">Internett</string>
-  <string name="Multimedia">Multimedia</string>
-  <string name="Navigation">Navigasjon</string>
-  <string name="Phone_SMS">Telefon og SMS</string>
-  <string name="Reading">Leser</string>
-  <string name="Science_Education">Vitenskap &amp; Opplæring</string>
-  <string name="Security">Sikkerhet</string>
-  <string name="System">System</string>
+  <string name="category_Development">Utvikling</string>
+  <string name="category_Games">Spill</string>
+  <string name="category_Internet">Internett</string>
+  <string name="category_Multimedia">Multimedia</string>
+  <string name="category_Navigation">Navigasjon</string>
+  <string name="category_Phone_SMS">Telefon og SMS</string>
+  <string name="category_Reading">Leser</string>
+  <string name="category_Science_Education">Vitenskap &amp; Opplæring</string>
+  <string name="category_Security">Sikkerhet</string>
+  <string name="category_System">System</string>
   <string name="requesting_root_access_body">Etterspørr root-tilgang…</string>
   <string name="root_access_denied_title">Root tilgang nektet</string>
   <string name="root_access_denied_body">Enten mangler din Android-enhet superbrukertilgang, eller så har du nektet F-droid root-tilgang.</string>
@@ -226,11 +226,11 @@ Du må
     <string name="pref_language_default">Systemforvalg</string>
 
     <string name="wifi">Wi-Fi</string>
-    <string name="Graphics">Grafikk</string>
-    <string name="Money">Penger</string>
-    <string name="Sports_Health">Idrett og helse</string>
-    <string name="Time">Tid</string>
-    <string name="Writing">Skriving</string>
+    <string name="category_Graphics">Grafikk</string>
+    <string name="category_Money">Penger</string>
+    <string name="category_Sports_Health">Idrett og helse</string>
+    <string name="category_Time">Tid</string>
+    <string name="category_Writing">Skriving</string>
 
     <string name="install_error_title">Installasjonsfeil</string>
     <string name="install_error_unknown">Som følge av ukjent feil gikk installasjonen i vasken</string>

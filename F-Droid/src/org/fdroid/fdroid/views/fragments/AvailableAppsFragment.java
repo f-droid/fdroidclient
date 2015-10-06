@@ -113,8 +113,10 @@ public class AvailableAppsFragment extends AppListFragment implements
     private List<String> translateCategories(List<String> categories) {
         List<String> translatedCategories = new ArrayList<>(categories.size());
         Resources res = getResources();
+        String pkgName = getActivity().getPackageName();
         for (final String category : categories) {
-            int id = res.getIdentifier(category.replace(" & ", "_"), "string", getActivity().getPackageName());
+            String resName = "category_" + category.replace(" & ", "_");
+            int id = res.getIdentifier(resName, "string", pkgName);
             translatedCategories.add(id == 0 ? category : getString(id));
         }
         return translatedCategories;

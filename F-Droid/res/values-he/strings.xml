@@ -182,16 +182,16 @@
     <string name="app_icon">סמל אפליקציה</string>
     <string name="repo_icon">סמל מאגר</string>
 
-    <string name="Development">פיתוח</string>
-    <string name="Games">משחקים</string>
-    <string name="Internet">אינטרנט</string>
-    <string name="Multimedia">מולטימדיה</string>
-    <string name="Navigation">ניווט</string>
-    <string name="Phone_SMS">טלפון וגם SMS</string>
-    <string name="Reading">קריאה</string>
-    <string name="Science_Education">חינוך ומדע</string>
-    <string name="Security">אבטחה</string>
-    <string name="System">מערכת</string>
+    <string name="category_Development">פיתוח</string>
+    <string name="category_Games">משחקים</string>
+    <string name="category_Internet">אינטרנט</string>
+    <string name="category_Multimedia">מולטימדיה</string>
+    <string name="category_Navigation">ניווט</string>
+    <string name="category_Phone_SMS">טלפון וגם SMS</string>
+    <string name="category_Reading">קריאה</string>
+    <string name="category_Science_Education">חינוך ומדע</string>
+    <string name="category_Security">אבטחה</string>
+    <string name="category_System">מערכת</string>
     <string name="empty_installed_app_list">אין אפליקציות מותקנות.\n\nאין אפליקציות מותקנות על מכשירך, אך אלו אינן זמינות מתוך F-Droid. אפשרי כי זה כך מפני שעליך לעדכן את המאגרים שלך, או שלמאגרים באמת אין את האפליקציות שלך זמינות.</string>
     <string name="empty_available_app_list">אין אפליקציות בתוך קטגוריה זו.\n\nנסה לבחור קטגוריה אחרת או לעדכן את המאגרים שלך כדי להשיג רשימה רעננה של אפליקציות.</string>
     <string name="empty_can_update_app_list">כל האפליקציות מעודכנות.\n\nברכותינו! כל האפליקציות שלך הינן מעודכנות (או שהמאגרים שלך אינם מעודכנים).</string>
@@ -262,13 +262,13 @@
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">נקודה חמה</string>
 
-    <string name="Connectivity">קישוריות</string>
-    <string name="Graphics">גרפיקה</string>
-    <string name="Money">כספים</string>
-    <string name="Sports_Health">ספורט ובריאות</string>
-    <string name="Theming">עיצוב</string>
-    <string name="Time">זמן</string>
-    <string name="Writing">כתיבה</string>
+    <string name="category_Connectivity">קישוריות</string>
+    <string name="category_Graphics">גרפיקה</string>
+    <string name="category_Money">כספים</string>
+    <string name="category_Sports_Health">ספורט ובריאות</string>
+    <string name="category_Theming">עיצוב</string>
+    <string name="category_Time">זמן</string>
+    <string name="category_Writing">כתיבה</string>
 
     <string name="install_error_cannot_parse">אירעה שגיאה במהלך פענוח החבילה</string>
     <string name="swap_choose_apps">בחר אפליקציות</string>

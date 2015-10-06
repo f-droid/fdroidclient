@@ -169,16 +169,16 @@ wird verbunden</string>
   <string name="requires_features">Erfordert: %1$s</string>
   <string name="app_icon">App-Symbol</string>
   <string name="repo_icon">Paketquellensymbol</string>
-  <string name="Development">Entwicklung</string>
-  <string name="Games">Spiele</string>
-  <string name="Internet">Internet</string>
-  <string name="Multimedia">Multimedia</string>
-  <string name="Navigation">Navigation</string>
-  <string name="Phone_SMS">Telefon &amp; SMS</string>
-  <string name="Reading">Lesen</string>
-  <string name="Science_Education">Wissenschaft &amp; Bildung</string>
-  <string name="Security">Sicherheit</string>
-  <string name="System">System</string>
+  <string name="category_Development">Entwicklung</string>
+  <string name="category_Games">Spiele</string>
+  <string name="category_Internet">Internet</string>
+  <string name="category_Multimedia">Multimedia</string>
+  <string name="category_Navigation">Navigation</string>
+  <string name="category_Phone_SMS">Telefon &amp; SMS</string>
+  <string name="category_Reading">Lesen</string>
+  <string name="category_Science_Education">Wissenschaft &amp; Bildung</string>
+  <string name="category_Security">Sicherheit</string>
+  <string name="category_System">System</string>
   <string name="requesting_root_access_body">Root-Rechte werden angefordert …</string>
   <string name="root_access_denied_title">Root-Zugriff verweigert</string>
   <string name="root_access_denied_body">Entweder ist Ihr Android-Gerät nicht gerootet oder Sie haben den Root-Zugriff für F-Droid verweigert.</string>
@@ -207,9 +207,9 @@ wird verbunden</string>
     <string name="pref_language_default">System Standard</string>
 
     <string name="wifi">WLAN</string>
-    <string name="Graphics">Grafik</string>
-    <string name="Money">Geld</string>
-    <string name="Time">Zeit</string>
+    <string name="category_Graphics">Grafik</string>
+    <string name="category_Money">Geld</string>
+    <string name="category_Time">Zeit</string>
     <string name="install_error_title">Installations-Fehler</string>
     <string name="install_error_unknown">Installation wegen unbekanntem Fehler fehlgeschlagen</string>
     <string name="install_error_cannot_parse">Es ist ein Fehler beim Auslesen des Pakets aufgetreten</string>
@@ -223,10 +223,10 @@ wird verbunden</string>
 
 	<string name="tab_installed_apps">Installiert</string>
 	<string name="menu_changelog">Änderungen</string>
-	<string name="Connectivity">Verbindung</string>
-    <string name="Sports_Health">Sport &amp; Gesundheit</string>
-    <string name="Theming">Aussehen</string>
-    <string name="Writing">Schreiben</string>
+	<string name="category_Connectivity">Verbindung</string>
+    <string name="category_Sports_Health">Sport &amp; Gesundheit</string>
+    <string name="category_Theming">Aussehen</string>
+    <string name="category_Writing">Schreiben</string>
 
     <string name="system_uninstall_button">Deinstallieren</string>
 

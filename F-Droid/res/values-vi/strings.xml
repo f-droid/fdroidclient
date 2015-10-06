@@ -147,16 +147,16 @@
   <string name="requires_features">Yêu cầu: %1$s</string>
   <string name="app_icon">Biểu tượng ứng dụng</string>
   <string name="repo_icon">Biểu tượng kho</string>
-  <string name="Development">Lập trình</string>
-  <string name="Games">Trò chơi</string>
-  <string name="Internet">Internet</string>
-  <string name="Multimedia">Đa phương tiện</string>
-  <string name="Navigation">Điều hướng</string>
-  <string name="Phone_SMS">Gọi &amp; nhắn tin</string>
-  <string name="Reading">Đọc</string>
-  <string name="Science_Education">Khoa học &amp; giáo dục</string>
-  <string name="Security">Bảo mật</string>
-  <string name="System">Hệ thống</string>
+  <string name="category_Development">Lập trình</string>
+  <string name="category_Games">Trò chơi</string>
+  <string name="category_Internet">Internet</string>
+  <string name="category_Multimedia">Đa phương tiện</string>
+  <string name="category_Navigation">Điều hướng</string>
+  <string name="category_Phone_SMS">Gọi &amp; nhắn tin</string>
+  <string name="category_Reading">Đọc</string>
+  <string name="category_Science_Education">Khoa học &amp; giáo dục</string>
+  <string name="category_Security">Bảo mật</string>
+  <string name="category_System">Hệ thống</string>
   <string name="requesting_root_access_body">Đang yêu cầu quyền root…</string>
   <string name="root_access_denied_title">Bị từ chối quyền root</string>
   <string name="root_access_denied_body">Thiết bị của bạn chưa được root hoặc bạn đã từ chối quyền root của F-Droid.</string>
@@ -212,13 +212,13 @@
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Điểm truy cập</string>
 
-    <string name="Connectivity">Kết nối</string>
-    <string name="Graphics">Đồ hoạ</string>
-    <string name="Money">Chi tiêu</string>
-    <string name="Sports_Health">Thể thao &amp; Sức khoẻ</string>
-    <string name="Theming">Giao diện</string>
-    <string name="Time">Thời gian</string>
-    <string name="Writing">Soạn thảo</string>
+    <string name="category_Connectivity">Kết nối</string>
+    <string name="category_Graphics">Đồ hoạ</string>
+    <string name="category_Money">Chi tiêu</string>
+    <string name="category_Sports_Health">Thể thao &amp; Sức khoẻ</string>
+    <string name="category_Theming">Giao diện</string>
+    <string name="category_Time">Thời gian</string>
+    <string name="category_Writing">Soạn thảo</string>
 
     <string name="empty_installed_app_list">Chưa cài đặt ứng dụng nào.\n\nCó ứng dụng trên máy của bạn, nhưng những ứng dụng này không có trên F-Droid. Có thể bạn cần phải cập nhật các kho ứng dụng, hoặc không ứng dụng nào của bạn có trên các kho này.</string>
     <string name="empty_available_app_list">Không có ứng dụng nào trong mục này.\n\nHãy chọn một mục khác hoặc cập nhật kho ứng dụng để có danh sách ứng dụng mới.</string>

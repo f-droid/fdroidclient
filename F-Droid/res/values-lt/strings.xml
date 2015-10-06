@@ -77,7 +77,7 @@
   <string name="repo_confirm_delete_body">Ištrynus saugyklą, jos programų katalogas nebebus pasiekiamas su F-Droid. Tačiau iki trynimo iš saugyklos įkeltos programos pašalintos nebus.</string>
   <string name="repo_disabled_notification">\"%1$s\" pažymėta kaip nenaudotina. Jei norite įkelti programas iš šios saugyklos, turite pirma leisti tai savo nustatymuose.</string>
   <string name="requires_features">Reikalauja: %1$s</string>
-  <string name="Science_Education">Mokslas ir mokymasis</string>
+  <string name="category_Science_Education">Mokslas ir mokymasis</string>
   <string name="menu_swap">Dalintis programom</string>
   <string name="swap_welcome">Sveikiname, jūs naudojate F-Droid!</string>
 </resources>

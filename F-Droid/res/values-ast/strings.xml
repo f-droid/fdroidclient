@@ -164,16 +164,16 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
   <string name="requires_features">Rique: %1$s</string>
   <string name="app_icon">Iconu d\'aplicación</string>
   <string name="repo_icon">Iconu de repositoriu</string>
-  <string name="Development">Desendolcu</string>
-  <string name="Games">Xuegos</string>
-  <string name="Internet">Internet</string>
-  <string name="Multimedia">Multimedia</string>
-  <string name="Navigation">Navegación</string>
-  <string name="Phone_SMS">Teléfonu y SMS</string>
-  <string name="Reading">Llectura</string>
-  <string name="Science_Education">Ciencia y educación</string>
-  <string name="Security">Seguranza</string>
-  <string name="System">Sistema</string>
+  <string name="category_Development">Desendolcu</string>
+  <string name="category_Games">Xuegos</string>
+  <string name="category_Internet">Internet</string>
+  <string name="category_Multimedia">Multimedia</string>
+  <string name="category_Navigation">Navegación</string>
+  <string name="category_Phone_SMS">Teléfonu y SMS</string>
+  <string name="category_Reading">Llectura</string>
+  <string name="category_Science_Education">Ciencia y educación</string>
+  <string name="category_Security">Seguranza</string>
+  <string name="category_System">Sistema</string>
   <string name="requesting_root_access_body">Solicitando l\'accesu root…</string>
   <string name="root_access_denied_title">Refugóse l\'accesu root</string>
   <string name="root_access_denied_body">O\'l to preséu Android nun ta rootexáu o refuguesti l\'accesu root pa F-Droid.</string>
@@ -241,13 +241,13 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="pref_language_default">Por defeutu del sistema</string>
 
     <string name="wifi">Wi-Fi</string>
-    <string name="Connectivity">Coneutividá</string>
-    <string name="Graphics">Gráficos</string>
-    <string name="Money">Dineru</string>
-    <string name="Sports_Health">Deporte y salú</string>
-    <string name="Theming">Temes</string>
-    <string name="Time">Tiempu</string>
-    <string name="Writing">Escritura</string>
+    <string name="category_Connectivity">Coneutividá</string>
+    <string name="category_Graphics">Gráficos</string>
+    <string name="category_Money">Dineru</string>
+    <string name="category_Sports_Health">Deporte y salú</string>
+    <string name="category_Theming">Temes</string>
+    <string name="category_Time">Tiempu</string>
+    <string name="category_Writing">Escritura</string>
 
     <string name="empty_installed_app_list">Nun hai aplicaciones instalaes.\n\nHai aplicaciones nel to preséu pero nun tán disponibles dende F-Droid. Esto quiciabes sía porque necesites anovar los tos repositorios o porque los repositorios nun tengan daveres les tos aplicaciones disponibles.</string>
     <string name="empty_available_app_list">Nun hai aplicaciones nesta estaya.\n\nIntenta esbillar una estaya distinta o anovar los tos repositorios pa consiguir un llistáu frescu d\'aplicaciones.</string>

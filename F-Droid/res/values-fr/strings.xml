@@ -167,16 +167,16 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="requires_features">Nécessiteu00A0: %1$s</string>
   <string name="app_icon">Icône de l\'application</string>
   <string name="repo_icon">Icône du dépôt</string>
-  <string name="Development">Développement</string>
-  <string name="Games">Jeux</string>
-  <string name="Internet">Internet</string>
-  <string name="Multimedia">Multimédia</string>
-  <string name="Navigation">Navigation</string>
-  <string name="Phone_SMS">Téléphone &amp; SMS</string>
-  <string name="Reading">Lecture</string>
-  <string name="Science_Education">Science &amp; Éducation</string>
-  <string name="Security">Sécurité</string>
-  <string name="System">Système</string>
+  <string name="category_Development">Développement</string>
+  <string name="category_Games">Jeux</string>
+  <string name="category_Internet">Internet</string>
+  <string name="category_Multimedia">Multimédia</string>
+  <string name="category_Navigation">Navigation</string>
+  <string name="category_Phone_SMS">Téléphone &amp; SMS</string>
+  <string name="category_Reading">Lecture</string>
+  <string name="category_Science_Education">Science &amp; Éducation</string>
+  <string name="category_Security">Sécurité</string>
+  <string name="category_System">Système</string>
   <string name="requesting_root_access_body">Demande des droits root…</string>
   <string name="root_access_denied_title">Droits root refusés</string>
   <string name="root_access_denied_body">Soit votre système Android n\'a pas les droits root/SuperUser, soit vous les avez refusés à F-Droid.</string>
@@ -214,8 +214,8 @@ Publiée sous licence GNU GPLv3.</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Point d\'accès</string>
 
-    <string name="Connectivity">Connectivité</string>
-    <string name="Sports_Health">Sport et santé</string>
+    <string name="category_Connectivity">Connectivité</string>
+    <string name="category_Sports_Health">Sport et santé</string>
     <string name="empty_available_app_list">Aucune applications dans cette catégorie.\n\nEssayer de sélectionner une autre catégorie ou mettez à jour vos dépots pour avoir une liste d\'applications récente.</string>
     <string name="empty_can_update_app_list">Tout les applications sont à jour.\n\nFélicitation ! Toutes vos applications sont à jours (ou vos dépots ne le sont pas).</string>
 
@@ -265,7 +265,7 @@ Publiée sous licence GNU GPLv3.</string>
 	<string name="repo_added">Enregistrement du dépôt F-Droid %1$s.</string>
     <string name="repo_searching_address">Recherche d\'un dépôt F-Droid à
 \n%1$s</string>
-    <string name="Graphics">Graphiques</string>
+    <string name="category_Graphics">Graphiques</string>
     <string name="empty_installed_app_list">Aucune application installée.\n\nIl y a des applications sur votre appareil mais aucune n\'est disponible sur F-Droid. Vos dépôts ne sont peut-être plus à jour, ou alors vos applications ne sont pas disponibles dans ces dépôts.</string>
     <string name="install_error_unknown">l\'installation a échouée pour une raison inconnue</string>
     <string name="install_error_cannot_parse">Une erreur s\'est produite pendant l\'analyse du paquet</string>
@@ -306,9 +306,9 @@ Publiée sous licence GNU GPLv3.</string>
 	<string name="status_download_unknown_size">Téléchargement\n%2$s sur\n%1$s</string>
 	<string name="repo_details">Dépôt</string>
     <string name="repo_url">Adresse</string>
-    <string name="Money">Finances</string>
-    <string name="Theming">Habillage d\'interface</string>
-    <string name="Writing">Écriture</string>
+    <string name="category_Money">Finances</string>
+    <string name="category_Theming">Habillage d\'interface</string>
+    <string name="category_Writing">Écriture</string>
 
     <string name="system_install_denied_signature">La signature de l\'extension est erronée ! Merci de créer un rapport de bogue.</string>
     <string name="system_install_denied_permissions">Les permissions privilégiées n\'ont pas été accordée à l\'extension ! Merci de créer un rapport de bogue.</string>
@@ -332,5 +332,5 @@ Publiée sous licence GNU GPLv3.</string>
     <string name="swap_attempt_install">Essayer d\'installer</string>
     <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, on dirait que nous ne pouvons pas faire l\'échange avec.</string>
     <string name="swap_not_enabled">Échange désactivé</string>
-    <string name="Time">Temps</string>
+    <string name="category_Time">Temps</string>
     </resources>

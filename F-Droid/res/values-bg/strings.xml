@@ -141,16 +141,16 @@
   <string name="requires_features">Изисква: %1$s</string>
   <string name="app_icon">Икона на приложението</string>
   <string name="repo_icon">Икона на хранилището</string>
-  <string name="Development">Разработване</string>
-  <string name="Games">Игри</string>
-  <string name="Internet">Интернет</string>
-  <string name="Multimedia">Мултимедия</string>
-  <string name="Navigation">Навигация</string>
-  <string name="Phone_SMS">Телефон и SMS</string>
-  <string name="Reading">Четене</string>
-  <string name="Science_Education">Наука и образование</string>
-  <string name="Security">Сигурност</string>
-  <string name="System">Система</string>
+  <string name="category_Development">Разработване</string>
+  <string name="category_Games">Игри</string>
+  <string name="category_Internet">Интернет</string>
+  <string name="category_Multimedia">Мултимедия</string>
+  <string name="category_Navigation">Навигация</string>
+  <string name="category_Phone_SMS">Телефон и SMS</string>
+  <string name="category_Reading">Четене</string>
+  <string name="category_Science_Education">Наука и образование</string>
+  <string name="category_Security">Сигурност</string>
+  <string name="category_System">Система</string>
   <string name="requesting_root_access_body">Изисква Root достъп…</string>
   <string name="root_access_denied_title">Root достъпът е отказан</string>
   <string name="update_all">Актуализирай всички</string>
@@ -173,12 +173,12 @@
     <string name="pref_language_default">Стандартния за системата</string>
 
     <string name="wifi">Wi-Fi</string>
-    <string name="Money">Пари</string>
-    <string name="Graphics">Изображения</string>
-    <string name="Sports_Health">Спорт и здраве</string>
-    <string name="Theming">Теми</string>
-    <string name="Time">Час</string>
-    <string name="Writing">Писане</string>
+    <string name="category_Money">Пари</string>
+    <string name="category_Graphics">Изображения</string>
+    <string name="category_Sports_Health">Спорт и здраве</string>
+    <string name="category_Theming">Теми</string>
+    <string name="category_Time">Час</string>
+    <string name="category_Writing">Писане</string>
 
     <string name="install_error_title">Грешка при инсталирането</string>
     <string name="uninstall_error_title">Грешка при деинсталирането</string>
@@ -218,7 +218,7 @@
     <string name="unstable_updates">Нестабилни актуализации</string>
 	<string name="unstable_updates_summary">Предлага актуализиране до версии, които могат да бъдат нестабилни</string>
 	<string name="empty_available_app_list">В категорията няма приложения.\n\nИзберете друга категория или актуализирайте хранилищата за да получите актуалния списък с приложения.</string>
-    <string name="Connectivity">Свързаност</string>
+    <string name="category_Connectivity">Свързаност</string>
     <string name="menu_upgrade">Обнови</string>
 	<string name="links">Връзки</string>
 	<string name="empty_installed_app_list">Няма инсталирани приложения.\n\nСъществуващите приложения не са налични през F-Droid. Вероятна причина може да бъде неактуализирани хранилища или просто хранилищата не предлагат програмите, който ползвате.</string>

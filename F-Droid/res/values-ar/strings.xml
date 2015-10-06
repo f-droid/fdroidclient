@@ -60,14 +60,14 @@
   <string name="repo_confirm_delete_title">حذف المستودع</string>
   <string name="app_icon">أيقونة التطبيق</string>
   <string name="repo_icon">أيقونة المستودع</string>
-  <string name="Development">التطوير</string>
-  <string name="Games">الألعاب</string>
-  <string name="Internet">الانترنت</string>
-  <string name="Multimedia">الوسائط المتعددة</string>
-  <string name="Phone_SMS">الهاتف و الرسائل</string>
-  <string name="Reading">القراءة</string>
-  <string name="Science_Education">العلوم و التعليم</string>
-  <string name="Security">الأمان</string>
-  <string name="System">النظام</string>
+  <string name="category_Development">التطوير</string>
+  <string name="category_Games">الألعاب</string>
+  <string name="category_Internet">الانترنت</string>
+  <string name="category_Multimedia">الوسائط المتعددة</string>
+  <string name="category_Phone_SMS">الهاتف و الرسائل</string>
+  <string name="category_Reading">القراءة</string>
+  <string name="category_Science_Education">العلوم و التعليم</string>
+  <string name="category_Security">الأمان</string>
+  <string name="category_System">النظام</string>
   <string name="update_all">تحديث الكل</string>
 </resources>

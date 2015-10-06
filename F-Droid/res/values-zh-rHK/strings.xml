@@ -132,16 +132,16 @@
   <string name="requires_features">需要：%1$s</string>
   <string name="app_icon">應用程式圖示</string>
   <string name="repo_icon">倉庫圖示</string>
-  <string name="Development">開發</string>
-  <string name="Games">遊戲</string>
-  <string name="Internet">互聯網</string>
-  <string name="Multimedia">多媒體</string>
-  <string name="Navigation">導航</string>
-  <string name="Phone_SMS">通話與短訊</string>
-  <string name="Reading">閱讀</string>
-  <string name="Science_Education">科學與教育</string>
-  <string name="Security">安全性</string>
-  <string name="System">系統</string>
+  <string name="category_Development">開發</string>
+  <string name="category_Games">遊戲</string>
+  <string name="category_Internet">互聯網</string>
+  <string name="category_Multimedia">多媒體</string>
+  <string name="category_Navigation">導航</string>
+  <string name="category_Phone_SMS">通話與短訊</string>
+  <string name="category_Reading">閱讀</string>
+  <string name="category_Science_Education">科學與教育</string>
+  <string name="category_Security">安全性</string>
+  <string name="category_System">系統</string>
   <string name="requesting_root_access_body">要求 root 權限中…</string>
   <string name="root_access_denied_title">Root 權限被拒絕</string>
   <string name="update_all">更新所有應用程式</string>
@@ -176,13 +176,13 @@
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Wi-Fi 熱點</string>
 
-    <string name="Connectivity">網絡</string>
-    <string name="Graphics">繪圖</string>
-    <string name="Money">財經</string>
-    <string name="Sports_Health">體育與健康</string>
-    <string name="Theming">主題</string>
-    <string name="Time">時間</string>
-    <string name="Writing">文書</string>
+    <string name="category_Connectivity">網絡</string>
+    <string name="category_Graphics">繪圖</string>
+    <string name="category_Money">財經</string>
+    <string name="category_Sports_Health">體育與健康</string>
+    <string name="category_Theming">主題</string>
+    <string name="category_Time">時間</string>
+    <string name="category_Writing">文書</string>
 
     <string name="empty_available_app_list">此分類沒有任何應用程式。\n\n請選擇另一個分類或嘗試更新您的軟件倉庫以取得最新的程式清單。</string>
     <string name="empty_can_update_app_list">所有應用程式都是最新的。\n\n恭喜您！您所有的應用程式都是最新的版本 (或許您的軟件倉庫已過期)。</string>

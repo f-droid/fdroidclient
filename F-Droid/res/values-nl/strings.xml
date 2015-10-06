@@ -162,16 +162,16 @@
   <string name="requires_features">Benodigd: %1$s</string>
   <string name="app_icon">App icoon</string>
   <string name="repo_icon">Bron icoon</string>
-  <string name="Development">Ontwikkeling</string>
-  <string name="Games">Spellen</string>
-  <string name="Internet">Internet</string>
-  <string name="Multimedia">Multimedia</string>
-  <string name="Navigation">Navigatie</string>
-  <string name="Phone_SMS">Telefoon &amp; SMS</string>
-  <string name="Reading">Lezen</string>
-  <string name="Science_Education">Wetenschap &amp; Educatie</string>
-  <string name="Security">Beveiliging</string>
-  <string name="System">Systeem</string>
+  <string name="category_Development">Ontwikkeling</string>
+  <string name="category_Games">Spellen</string>
+  <string name="category_Internet">Internet</string>
+  <string name="category_Multimedia">Multimedia</string>
+  <string name="category_Navigation">Navigatie</string>
+  <string name="category_Phone_SMS">Telefoon &amp; SMS</string>
+  <string name="category_Reading">Lezen</string>
+  <string name="category_Science_Education">Wetenschap &amp; Educatie</string>
+  <string name="category_Security">Beveiliging</string>
+  <string name="category_System">Systeem</string>
   <string name="requesting_root_access_body">Root toegang aanvragen…</string>
   <string name="root_access_denied_title">Root toegang geweigerd</string>
   <string name="root_access_denied_body">Uw Android apparaat is niet geroot, of u heeft F-Droid geen root toegang gegeven.</string>
@@ -230,13 +230,13 @@
     <string name="app_name">F-Droid</string>
 
 	<string name="about_source">Bron:</string>
-	<string name="Connectivity">Connectiviteit</string>
-    <string name="Graphics">Grafisch</string>
-    <string name="Money">Geld</string>
-    <string name="Sports_Health">Sport &amp; Gezondheid</string>
-    <string name="Theming">Thema\'s</string>
-    <string name="Time">Tijd</string>
-    <string name="Writing">Schrijven</string>
+	<string name="category_Connectivity">Connectiviteit</string>
+    <string name="category_Graphics">Grafisch</string>
+    <string name="category_Money">Geld</string>
+    <string name="category_Sports_Health">Sport &amp; Gezondheid</string>
+    <string name="category_Theming">Thema\'s</string>
+    <string name="category_Time">Tijd</string>
+    <string name="category_Writing">Schrijven</string>
 
     <string name="swap_scan_or_type_url">Een iemand moet de code scannen, of de URL van de ander in een browser openen.</string>
     <string name="swap_choose_apps">Kies Apps</string>
