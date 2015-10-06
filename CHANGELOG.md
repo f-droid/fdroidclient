@@ -11,6 +11,8 @@
 * Rework the privileged installer to use an extension as a privileged app
   instead of F-Droid itself
 
+* Add a new night theme
+
 * Enable TLS v1.2 on all Android versions that support it
 
 * Fix crash when trying to install incompatible apps with the privileged
@@ -18,7 +20,7 @@
 
 * Fix downloading from HTTP servers that did not send a Content-Length
 
-* Material design tweaks and fixes
+* Material design tweaks and fixes, including repo and app screens makeovers
 
 * Add StrictMode to debug builds
 
