@@ -103,9 +103,9 @@
   <string name="rooted_on">No marcar en gris las aplicaciones que requieren permisos de «root»</string>
   <string name="ignoreTouch">Ignorar pantalla táctil</string>
   <string name="ignoreTouch_on">Siempre incluir aplicaciones que requieran pantalla táctil</string>
-  <string name="category_all">Todas</string>
-  <string name="category_whatsnew">Novedades</string>
-  <string name="category_recentlyupdated">Recientemente actualizados</string>
+  <string name="category_All">Todas</string>
+  <string name="category_Whats_New">Novedades</string>
+  <string name="category_Recently_Updated">Recientemente actualizados</string>
   <string name="local_repo">Repo local</string>
   <string name="local_repo_running">F-Droid está preparado para intercambiar</string>
   <string name="touch_to_configure_local_repo">Tocar para ver los detalles y permitir a otros intercambiar aplicaciones.</string>

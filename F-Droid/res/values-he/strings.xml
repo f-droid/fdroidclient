@@ -122,9 +122,9 @@
     <string name="ignoreTouch">התעלם ממסך מגע</string>
     <string name="ignoreTouch_on">תמיד הכלל אפליקציות אשר מצריכות מסך מגע</string>
 
-    <string name="category_all">הכל</string>
-    <string name="category_whatsnew">מה חדש</string>
-    <string name="category_recentlyupdated">עודכנו לאחרונה</string>
+    <string name="category_All">הכל</string>
+    <string name="category_Whats_New">מה חדש</string>
+    <string name="category_Recently_Updated">עודכנו לאחרונה</string>
 
     <string name="local_repo">מאגר מקומי</string>
     <string name="local_repo_running">F-Droid הינו מוכן להחליף</string>

@@ -102,9 +102,9 @@
   <string name="rooted_on">Verberg apps niet die root-permissies vereisen</string>
   <string name="ignoreTouch">Negeer aanraakscherm</string>
   <string name="ignoreTouch_on">Altijd apps meerekenen die een touch screen vereisen</string>
-  <string name="category_all">Alles</string>
-  <string name="category_whatsnew">Wat is nieuw</string>
-  <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
+  <string name="category_All">Alles</string>
+  <string name="category_Whats_New">Wat is nieuw</string>
+  <string name="category_Recently_Updated">Recentelijk vernieuwd</string>
   <string name="local_repo">Collectie gedeelde apps</string>
   <string name="local_repo_running">F-Droid is klaar om apps te delen</string>
   <string name="touch_to_configure_local_repo">Raak aan om details te bekijken en anderen gedeelde apps van jou te laten downloaden.</string>

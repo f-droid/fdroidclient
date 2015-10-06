@@ -97,9 +97,9 @@
   <string name="rooted_on">Không bôi xám các ứng dụng yêu cầu quyền root</string>
   <string name="ignoreTouch">Bỏ qua màn hình cảm ứng</string>
   <string name="ignoreTouch_on">Luôn hiện các ứng dụng yêu cầu màn hình cảm ứng</string>
-  <string name="category_all">Tất cả</string>
-  <string name="category_whatsnew">Mới</string>
-  <string name="category_recentlyupdated">Mới cập nhật</string>
+  <string name="category_All">Tất cả</string>
+  <string name="category_Whats_New">Mới</string>
+  <string name="category_Recently_Updated">Mới cập nhật</string>
   <string name="local_repo">Kho nội bộ</string>
   <string name="local_repo_running">F-Droid đã sẵn sàng để trao đổi</string>
   <string name="touch_to_configure_local_repo">Chạm để xem danh sách và cho phép mọi người trao đổi ứng dụng với bạn.</string>

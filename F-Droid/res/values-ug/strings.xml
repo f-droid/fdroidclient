@@ -69,9 +69,9 @@
   <string name="show_incompat_versions">ماسلاشمايدىغان نەشرىلىرى</string>
   <string name="rooted">Root</string>
   <string name="ignoreTouch">سەزگۈر ئېكرانغا پەرۋا قىلما</string>
-  <string name="category_all">ھەممىسى</string>
-  <string name="category_whatsnew">يېڭىلىقلار</string>
-  <string name="category_recentlyupdated">يېقىنقى يېڭىلانغانلار</string>
+  <string name="category_All">ھەممىسى</string>
+  <string name="category_Whats_New">يېڭىلىقلار</string>
+  <string name="category_Recently_Updated">يېقىنقى يېڭىلانغانلار</string>
   <string name="status_download">چۈشۈرۈۋاتىدۇ
 %2$s / %3$s (%4$d%%)
 %1$s</string>

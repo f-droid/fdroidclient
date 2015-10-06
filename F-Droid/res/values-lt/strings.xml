@@ -57,9 +57,9 @@
   <string name="show_incompat_versions">Nesuderintos versijos</string>
   <string name="show_incompat_versions_on">Rodyti programų laidas, netinkamas šiam įrenginiui</string>
   <string name="rooted">Administratoriaus privilegijos</string>
-  <string name="category_all">Rodyti visas</string>
-  <string name="category_whatsnew">Naujienos</string>
-  <string name="category_recentlyupdated">Neseniai atnaujinta</string>
+  <string name="category_All">Rodyti visas</string>
+  <string name="category_Whats_New">Naujienos</string>
+  <string name="category_Recently_Updated">Neseniai atnaujinta</string>
   <string name="deleting_repo">Šalinama pasirinkta saugykla…</string>
   <string name="next">Toliau</string>
   <string name="status_connecting_to_repo">Jungiamasi prie

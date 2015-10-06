@@ -44,9 +44,9 @@ Distribuit sub licenta GNU GPLv3.</string>
   <string name="expert">Expert</string>
   <string name="rooted">Root</string>
   <string name="ignoreTouch_on">Tot</string>
-  <string name="category_all">Tot</string>
-  <string name="category_whatsnew">Ce este nou</string>
-  <string name="category_recentlyupdated">Actualizat recent</string>
+  <string name="category_All">Tot</string>
+  <string name="category_Whats_New">Ce este nou</string>
+  <string name="category_Recently_Updated">Actualizat recent</string>
   <string name="theme">Temă</string>
   <string name="repo_num_apps">Număr de aplicaţii</string>
   <string name="repo_last_update">Ultima actualizare</string>

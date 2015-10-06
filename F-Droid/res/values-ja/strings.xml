@@ -102,9 +102,9 @@
   <string name="rooted_on">管理者権限を要求するｱﾌﾟﾘｹｰｼｮﾝをｸﾞﾚｰｱｳﾄしません</string>
   <string name="ignoreTouch">ﾀｯﾁｽｸﾘｰﾝを無視</string>
   <string name="ignoreTouch_on">ﾀｯﾁｽｸﾘｰﾝを要求するｱﾌﾟﾘｹｰｼｮﾝを常に含めます</string>
-  <string name="category_all">全て</string>
-  <string name="category_whatsnew">新着</string>
-  <string name="category_recentlyupdated">最近の更新</string>
+  <string name="category_All">全て</string>
+  <string name="category_Whats_New">新着</string>
+  <string name="category_Recently_Updated">最近の更新</string>
   <string name="local_repo">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘ</string>
   <string name="local_repo_running">F-Droidは交換の準備ができました</string>
   <string name="touch_to_configure_local_repo">ﾀｯﾁすると詳細を表示し､ｱﾌﾟﾘの交換ができるようになります｡</string>

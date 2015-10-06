@@ -180,8 +180,7 @@ public class AvailableAppsFragment extends AppListFragment implements
 
         ((ListView)view.findViewById(android.R.id.list)).setOnItemClickListener(this);
 
-        // R.string.category_whatsnew is the default set in AppListManager
-        DEFAULT_CATEGORY = getActivity().getString(R.string.category_whatsnew);
+        DEFAULT_CATEGORY = AppProvider.Helper.getCategoryWhatsNew(getActivity());
 
         return view;
     }

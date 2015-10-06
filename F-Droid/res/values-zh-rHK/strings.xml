@@ -92,9 +92,9 @@
   <string name="rooted">忽略 root</string>
   <string name="ignoreTouch">略過觸碰屏幕</string>
   <string name="ignoreTouch_on">永遠顯示需要觸碰屏幕的應用程式</string>
-  <string name="category_all">所有</string>
-  <string name="category_whatsnew">最新</string>
-  <string name="category_recentlyupdated">最近更新</string>
+  <string name="category_All">所有</string>
+  <string name="category_Whats_New">最新</string>
+  <string name="category_Recently_Updated">最近更新</string>
   <string name="local_repo">本地倉庫</string>
   <string name="local_repo_running">F-Droid 隨時可以進行交換</string>
   <string name="touch_to_configure_local_repo">觸碰以顯示詳細資料及允許其他人交換您的應用程式。</string>

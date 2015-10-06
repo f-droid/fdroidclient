@@ -42,8 +42,8 @@
   <string name="menu_ignore_this">تجاهل هذا التحديث</string>
   <string name="menu_source">الشفرة المصدرية</string>
   <string name="menu_donate">التبرع</string>
-  <string name="category_all">الكل</string>
-  <string name="category_whatsnew">مالجديد</string>
+  <string name="category_All">الكل</string>
+  <string name="category_Whats_New">مالجديد</string>
   <string name="local_repo">مستودع محلي</string>
   <string name="deleting_repo">يتم حذف المستودع الحالي…</string>
   <string name="next">التالي</string>

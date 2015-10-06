@@ -101,9 +101,9 @@ Vydaný pod licenciou
   <string name="rooted_on">Nezašediť aplikácie vyžadujúce práva root</string>
   <string name="ignoreTouch">Ignorovať dotykovú obrazovku</string>
   <string name="ignoreTouch_on">Vždy zahrnúť aplikácie vyžadujúce dotykovú obrazovku</string>
-  <string name="category_all">Všetky</string>
-  <string name="category_whatsnew">Čo je nové</string>
-  <string name="category_recentlyupdated">Nedávno aktualizované</string>
+  <string name="category_All">Všetky</string>
+  <string name="category_Whats_New">Čo je nové</string>
+  <string name="category_Recently_Updated">Nedávno aktualizované</string>
   <string name="local_repo">Miestne repo</string>
   <string name="local_repo_running">F-Droid je pripravený na výmenu</string>
   <string name="touch_to_configure_local_repo">Ťuknite pre zobrazenie detailov a umožnite ostatným vymieňať vaše aplikácie.</string>

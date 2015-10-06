@@ -77,15 +77,15 @@ public class AppProvider extends FDroidProvider {
         }
 
         public static String getCategoryAll(Context context) {
-            return context.getString(R.string.category_all);
+            return context.getString(R.string.category_All);
         }
 
         public static String getCategoryWhatsNew(Context context) {
-            return context.getString(R.string.category_whatsnew);
+            return context.getString(R.string.category_Whats_New);
         }
 
         public static String getCategoryRecentlyUpdated(Context context) {
-            return context.getString(R.string.category_recentlyupdated);
+            return context.getString(R.string.category_Recently_Updated);
         }
 
         public static List<String> categories(Context context) {

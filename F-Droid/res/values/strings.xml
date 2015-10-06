@@ -233,9 +233,9 @@
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="category_all">All</string>
-    <string name="category_whatsnew">What\'s New</string>
-    <string name="category_recentlyupdated">Recently Updated</string>
+    <string name="category_All">All</string>
+    <string name="category_Whats_New">What\'s New</string>
+    <string name="category_Recently_Updated">Recently Updated</string>
     <string name="category_Connectivity">Connectivity</string>
     <string name="category_Development">Development</string>
     <string name="category_Games">Games</string>

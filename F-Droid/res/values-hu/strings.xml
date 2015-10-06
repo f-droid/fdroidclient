@@ -90,9 +90,9 @@ Honosítás: gidano | sympda.info\"</string>
   <string name="rooted_on">Nem szürkíti ki a root jogot igénylő alkalmazásokat</string>
   <string name="ignoreTouch">Érintőképernyő ignorálás</string>
   <string name="ignoreTouch_on">Mindig tartalmazza az érintőképernyőt igénylő alkalmazásokat</string>
-  <string name="category_all">Összes</string>
-  <string name="category_whatsnew">\"Újdonságok\"</string>
-  <string name="category_recentlyupdated">Legutóbb frissítve</string>
+  <string name="category_All">Összes</string>
+  <string name="category_Whats_New">\"Újdonságok\"</string>
+  <string name="category_Recently_Updated">Legutóbb frissítve</string>
   <string name="status_download">\"Letöltés
 %2$s / %3$s (%4$d%%) innen
 %1$s\"</string>

@@ -92,9 +92,9 @@ käyttöehtojen mukaisesti.</string>
   <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
   <string name="rooted">Root</string>
   <string name="ignoreTouch">Älä välitä kosketusnäytöstä</string>
-  <string name="category_all">Kaikki</string>
-  <string name="category_whatsnew">Uutta</string>
-  <string name="category_recentlyupdated">Viimeaikoina päivitetty</string>
+  <string name="category_All">Kaikki</string>
+  <string name="category_Whats_New">Uutta</string>
+  <string name="category_Recently_Updated">Viimeaikoina päivitetty</string>
   <string name="local_repo">Paikallinen säilö</string>
   <string name="local_repo_running">F-Droid on valmis vaihtamaan</string>
   <string name="touch_to_configure_local_repo">Kosketa nähdäksesi tiedot ja salliaksesi toisten vaihtaa sovelluksiasi.</string>

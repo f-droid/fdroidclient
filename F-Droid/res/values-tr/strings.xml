@@ -103,9 +103,9 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="rooted_on">Root yetkileri gerektiren uygulamaları gri yapma</string>
   <string name="ignoreTouch">Dokunmatik ekranı yok say</string>
   <string name="ignoreTouch_on">Dokunmatik ekran gerektiren uygulamaları daima dahil et</string>
-  <string name="category_all">Tümü</string>
-  <string name="category_whatsnew">Yeni olanlar</string>
-  <string name="category_recentlyupdated">Yakın geçmişte güncellenen</string>
+  <string name="category_All">Tümü</string>
+  <string name="category_Whats_New">Yeni olanlar</string>
+  <string name="category_Recently_Updated">Yakın geçmişte güncellenen</string>
   <string name="local_repo">Yerel Depo</string>
   <string name="local_repo_running">F-Droid değiş-tokuşa hazır</string>
   <string name="touch_to_configure_local_repo">Detayları görmek için ve başkalarının uygulamalarınızı takas edebilmesi için dokunun.</string>

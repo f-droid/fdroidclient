@@ -44,9 +44,9 @@
   <string name="appcompatibility">Сумісність</string>
   <string name="rooted">Ігнорувати Суперкористувача</string>
   <string name="ignoreTouch">Ігнорувати тачскрін</string>
-  <string name="category_all">Всі програми</string>
-  <string name="category_whatsnew">Недавні додання</string>
-  <string name="category_recentlyupdated">Недавні оновлення</string>
+  <string name="category_All">Всі програми</string>
+  <string name="category_Whats_New">Недавні додання</string>
+  <string name="category_Recently_Updated">Недавні оновлення</string>
 <string name="app_name">F-Droid</string>
 
 	<string name="installIncompatible">Схоже, ця програма не сумісна з вашим пристроєм. Спробувати встановити її все одно?</string>

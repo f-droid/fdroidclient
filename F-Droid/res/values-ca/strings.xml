@@ -101,9 +101,9 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="rooted_on">No marquis en gris aplicacions que requereixen privilegis d\'administrador</string>
   <string name="ignoreTouch">Ignora la pantalla tàctil</string>
   <string name="ignoreTouch_on">Inclou sempre aplicacions que requereixin pantalla tàctil</string>
-  <string name="category_all">Tot</string>
-  <string name="category_whatsnew">Novetats</string>
-  <string name="category_recentlyupdated">S\'ha actualitzat fa poc</string>
+  <string name="category_All">Tot</string>
+  <string name="category_Whats_New">Novetats</string>
+  <string name="category_Recently_Updated">S\'ha actualitzat fa poc</string>
   <string name="local_repo">Dipòsit local</string>
   <string name="local_repo_running">F-Droid és llest per a l\'intercanvi</string>
   <string name="touch_to_configure_local_repo">Toqueu per veure més detalls i permetre l\'intercanvi d\'aplicacions.</string>

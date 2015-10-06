@@ -105,9 +105,9 @@
   <string name="rooted_on">Не выделять серым цветом приложения, требующие привилегии суперпользователя</string>
   <string name="ignoreTouch">Сенсорный экран</string>
   <string name="ignoreTouch_on">Всегда включать приложения, требующие сенсорный экран</string>
-  <string name="category_all">Все</string>
-  <string name="category_whatsnew">Новинки</string>
-  <string name="category_recentlyupdated">Недавно обновлённые</string>
+  <string name="category_All">Все</string>
+  <string name="category_Whats_New">Новинки</string>
+  <string name="category_Recently_Updated">Недавно обновлённые</string>
   <string name="local_repo">Локальный репозиторий</string>
   <string name="local_repo_running">F-Droid готов для обмена</string>
   <string name="deleting_repo">Удаление текущего репозитория…</string>

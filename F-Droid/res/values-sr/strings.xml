@@ -101,9 +101,9 @@
   <string name="rooted_on">Нормалан приказ апликација које захтевају корени приступ</string>
   <string name="ignoreTouch">Игнориши додирни екран</string>
   <string name="ignoreTouch_on">Увек укључи апликације које захтевају додирни екран</string>
-  <string name="category_all">Све</string>
-  <string name="category_whatsnew">Нове</string>
-  <string name="category_recentlyupdated">Недавно надограђене</string>
+  <string name="category_All">Све</string>
+  <string name="category_Whats_New">Нове</string>
+  <string name="category_Recently_Updated">Недавно надограђене</string>
   <string name="local_repo">Локална ризница</string>
   <string name="local_repo_running">Ф-дроид је спреман за размену</string>
   <string name="touch_to_configure_local_repo">Тапните за приказ детаља и да дозволите другима да размењују ваше апликације.</string>

@@ -95,9 +95,9 @@
   <string name="rooted_on">Приложенията изискващи Root няма да бъдат изобразявани в сиво</string>
   <string name="ignoreTouch">Игнорирай сензорния екран</string>
   <string name="ignoreTouch_on">Приложенията изискващи сензорен екран ще бъдат показвани винаги</string>
-  <string name="category_all">Всички</string>
-  <string name="category_whatsnew">Какво ново</string>
-  <string name="category_recentlyupdated">Обновени наскоро</string>
+  <string name="category_All">Всички</string>
+  <string name="category_Whats_New">Какво ново</string>
+  <string name="category_Recently_Updated">Обновени наскоро</string>
   <string name="local_repo">Локално хранилище</string>
   <string name="deleting_repo">Изтриване на хранилището…</string>
   <string name="adding_apks_format">Добавяне на %s към хранилището…</string>

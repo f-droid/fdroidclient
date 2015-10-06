@@ -103,9 +103,9 @@
   <string name="rooted_on">Nun escurez les aplicaciones que rican privilexos root</string>
   <string name="ignoreTouch">Inorar pantalla táutil</string>
   <string name="ignoreTouch_on">Inclúi siempres aplicaciones que rican pantalla táutil</string>
-  <string name="category_all">Too</string>
-  <string name="category_whatsnew">Qué hai nuevo</string>
-  <string name="category_recentlyupdated">Anovao apocayá</string>
+  <string name="category_All">Too</string>
+  <string name="category_Whats_New">Qué hai nuevo</string>
+  <string name="category_Recently_Updated">Anovao apocayá</string>
   <string name="local_repo">Repositoriu llocal</string>
   <string name="local_repo_running">F-Doid ta tresnáu pa intercambiar</string>
   <string name="touch_to_configure_local_repo">Toca pa ver los detalles y permitir a otros intercambiar les tos aplicaciones.</string>

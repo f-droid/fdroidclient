@@ -103,9 +103,9 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="rooted_on">Anwendungen, die Root-Rechte verlangen, nicht ausgrauen</string>
   <string name="ignoreTouch">Touchscreen ignorieren</string>
   <string name="ignoreTouch_on">Anwendungen, die einen Touchscreen benötigen, anzeigen</string>
-  <string name="category_all">Alle</string>
-  <string name="category_whatsnew">Was gibt es Neues</string>
-  <string name="category_recentlyupdated">Kürzlich Aktualisiert</string>
+  <string name="category_All">Alle</string>
+  <string name="category_Whats_New">Was gibt es Neues</string>
+  <string name="category_Recently_Updated">Kürzlich Aktualisiert</string>
   <string name="local_repo">Lokale Paketquelle</string>
   <string name="local_repo_running">F-Droid ist bereit zum Tauschen</string>
   <string name="touch_to_configure_local_repo">Berühren, um Details zu sehen und es anderen erlauben Ihre Anwendungen zu tauschen.</string>

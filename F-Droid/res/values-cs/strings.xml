@@ -84,9 +84,9 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="rooted_on">Nezašedávat aplikace vyžadující root oprávnění</string>
   <string name="ignoreTouch">Ignorovat dotykovou obrazovku</string>
   <string name="ignoreTouch_on">Vždy zahrnovat aplikace vyžadující dotykovou obrazovku</string>
-  <string name="category_all">Vše</string>
-  <string name="category_whatsnew">Novinky</string>
-  <string name="category_recentlyupdated">Nedávno aktualizované</string>
+  <string name="category_All">Vše</string>
+  <string name="category_Whats_New">Novinky</string>
+  <string name="category_Recently_Updated">Nedávno aktualizované</string>
   <string name="local_repo">Místní repozitář</string>
   <string name="local_repo_running">F-Droid je připraven k výměně</string>
   <string name="touch_to_configure_local_repo">Dotykem zobraz detaily a umožni ostatním  si přetáhnout tvé aplikace.</string>

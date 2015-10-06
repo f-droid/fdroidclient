@@ -103,9 +103,9 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="rooted_on">루트 권한을 요구하는 앱을 비활성화 하지 않기</string>
   <string name="ignoreTouch">터치스크린 무시</string>
   <string name="ignoreTouch_on">터치스크린을 요구하는 앱을 항상 포함</string>
-  <string name="category_all">전체</string>
-  <string name="category_whatsnew">새로운 기능</string>
-  <string name="category_recentlyupdated">최근 업데이트</string>
+  <string name="category_All">전체</string>
+  <string name="category_Whats_New">새로운 기능</string>
+  <string name="category_Recently_Updated">최근 업데이트</string>
   <string name="local_repo">로컬 저장소</string>
   <string name="local_repo_running">F-Droid는 교환할 준비가 되었습니다</string>
   <string name="touch_to_configure_local_repo">자세한 정보를 보고, 타인이 당신과 앱을 교환할 수 있도록 하려면 여기를 누르세요.</string>

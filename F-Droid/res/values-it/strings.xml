@@ -101,9 +101,9 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="rooted_on">Non disabilitare le applicazioni che richiedono privilegi di root</string>
   <string name="ignoreTouch">Ignora il Touchscreen</string>
   <string name="ignoreTouch_on">Includi sempre le applicazioni con touchscreen obbligatorio</string>
-  <string name="category_all">Tutte</string>
-  <string name="category_whatsnew">Novità</string>
-  <string name="category_recentlyupdated">Aggiornate di Recente</string>
+  <string name="category_All">Tutte</string>
+  <string name="category_Whats_New">Novità</string>
+  <string name="category_Recently_Updated">Aggiornate di Recente</string>
   <string name="local_repo">Repo Locale</string>
   <string name="local_repo_running">F-Droid è pronto per inviare con swap</string>
   <string name="touch_to_configure_local_repo">Tocca per vedere i dettagli e permettere agli altri di ricevere le tue app.</string>

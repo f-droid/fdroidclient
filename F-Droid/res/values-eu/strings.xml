@@ -70,9 +70,9 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="show_incompat_versions">Bertsio bateraezinak</string>
   <string name="rooted">Ezikusi Root</string>
   <string name="ignoreTouch">Ezikusi egin ukipen-pantailari</string>
-  <string name="category_all">Guztia</string>
-  <string name="category_whatsnew">Zer da berria</string>
-  <string name="category_recentlyupdated">Azkenaldian eguneratua</string>
+  <string name="category_All">Guztia</string>
+  <string name="category_Whats_New">Zer da berria</string>
+  <string name="category_Recently_Updated">Azkenaldian eguneratua</string>
   <string name="status_connecting_to_repo">%1$s(e)ra
 konektatzen</string>
   <string name="status_checking_compatibility">Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen…</string>

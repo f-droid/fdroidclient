@@ -72,9 +72,9 @@
   <string name="rooted_on">Ne grizigi aplikaĵojn, kiuj postulas ĉefuzantajn privilegiojn</string>
   <string name="ignoreTouch">Ignori tuŝekranon</string>
   <string name="ignoreTouch_on">Ĉiam inkluzivi aplikaĵojn, kiuj postulas tuŝekranon</string>
-  <string name="category_all">Ĉiuj</string>
-  <string name="category_whatsnew">Novaĵoj</string>
-  <string name="category_recentlyupdated">Ĵus ĝisdatigitaj</string>
+  <string name="category_All">Ĉiuj</string>
+  <string name="category_Whats_New">Novaĵoj</string>
+  <string name="category_Recently_Updated">Ĵus ĝisdatigitaj</string>
   <string name="local_repo">Loka deponejo</string>
   <string name="deleting_repo">Foriganta la nunan deponejon…</string>
   <string name="adding_apks_format">Aldonanta %s al la deponejo…</string>

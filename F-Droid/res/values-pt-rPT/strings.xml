@@ -210,9 +210,9 @@
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="category_all">Todas</string>
-    <string name="category_whatsnew">Novidades</string>
-    <string name="category_recentlyupdated">Atualizadas recentemente</string>
+    <string name="category_All">Todas</string>
+    <string name="category_Whats_New">Novidades</string>
+    <string name="category_Recently_Updated">Atualizadas recentemente</string>
     <string name="category_Connectivity">Conectividade</string>
     <string name="category_Development">Desenvolvimento</string>
     <string name="category_Games">Jogos</string>

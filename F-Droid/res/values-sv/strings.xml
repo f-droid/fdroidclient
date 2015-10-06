@@ -103,9 +103,9 @@ Släppt under licensen GNU GPLv3.</string>
   <string name="rooted_on">Gråtona inte appar som kräver root-behörighet</string>
   <string name="ignoreTouch">Ignorera touchscreen</string>
   <string name="ignoreTouch_on">Inkludera alltid appar som kräver touchscreen</string>
-  <string name="category_all">Alla</string>
-  <string name="category_whatsnew">Nyheter</string>
-  <string name="category_recentlyupdated">Nyss uppdaterade</string>
+  <string name="category_All">Alla</string>
+  <string name="category_Whats_New">Nyheter</string>
+  <string name="category_Recently_Updated">Nyss uppdaterade</string>
   <string name="local_repo">Lokalt förråd</string>
   <string name="local_repo_running">F-Droid är redo att byta</string>
   <string name="touch_to_configure_local_repo">Rör för att se detaljer och tillåta andra att byta appar med dig.</string>

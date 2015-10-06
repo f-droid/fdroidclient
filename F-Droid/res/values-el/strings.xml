@@ -94,9 +94,9 @@
   <string name="rooted_on">Να μη γκριζάρονται εφαρμογές που απαιτούν δικαιώματα υπερχρήστη</string>
   <string name="ignoreTouch">Αγνόηση της Οθόνης Επαφής</string>
   <string name="ignoreTouch_on">Πάντα να περιλαμβάνονται εφαρμογές που απαιτούν οθόνη αφής</string>
-  <string name="category_all">Όλα</string>
-  <string name="category_whatsnew">Τι νέο υπάρχει</string>
-  <string name="category_recentlyupdated">Πρόσφατα Ενημερωμένες</string>
+  <string name="category_All">Όλα</string>
+  <string name="category_Whats_New">Τι νέο υπάρχει</string>
+  <string name="category_Recently_Updated">Πρόσφατα Ενημερωμένες</string>
   <string name="status_download">Λήψη
 %2$s / %3$s (%4$d%%) από
 %1$s</string>

@@ -59,7 +59,7 @@
   <string name="appcompatibility">هماهنگی برنامه</string>
   <string name="rooted">روت</string>
   <string name="ignoreTouch">صفحهٔ نمایش لمسی را در نظر نگیر</string>
-  <string name="category_all">همه</string>
+  <string name="category_All">همه</string>
   <string name="status_download">دریافت
 %2$s / %3$s (%4$d%%) از
 %1$s</string>

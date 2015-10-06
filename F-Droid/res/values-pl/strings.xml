@@ -72,9 +72,9 @@
   <string name="rooted_on">Nie przyciemniaj aplikacji wymagających uprawnień roota</string>
   <string name="ignoreTouch">Ignoruj ekran dotykowy</string>
   <string name="ignoreTouch_on">Zawsze uwzględniaj aplikacje, które wymagają ekranu dotykowego</string>
-  <string name="category_all">Wszystkie</string>
-  <string name="category_whatsnew">Co nowego</string>
-  <string name="category_recentlyupdated">Ostatnio zaktualizowane</string>
+  <string name="category_All">Wszystkie</string>
+  <string name="category_Whats_New">Co nowego</string>
+  <string name="category_Recently_Updated">Ostatnio zaktualizowane</string>
   <string name="local_repo">Repozytorium lokalne</string>
   <string name="local_repo_running">F-Droid gotowy do wymiany</string>
   <string name="touch_to_configure_local_repo">Dotknij, aby sprawdzić szczegóły i umożliwić wymianę aplikacji.</string>

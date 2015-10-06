@@ -69,9 +69,9 @@ Publicado con licenza GNU GPLv3.</string>
   <string name="show_incompat_versions">Versións incompatíbeis</string>
   <string name="rooted">Root</string>
   <string name="ignoreTouch">Ignorar a pantalla táctil</string>
-  <string name="category_all">Todos</string>
-  <string name="category_whatsnew">Qué novidades hai</string>
-  <string name="category_recentlyupdated">Actualizado recentemente</string>
+  <string name="category_All">Todos</string>
+  <string name="category_Whats_New">Qué novidades hai</string>
+  <string name="category_Recently_Updated">Actualizado recentemente</string>
   <string name="status_download">Descargando
 %2$s / %3$s (%4$d%%) desde
 %1$s</string>
