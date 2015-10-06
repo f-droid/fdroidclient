@@ -86,8 +86,9 @@ public class FDroidApp extends Application {
     }
 
     public enum Theme {
-        dark,
         light,
+        dark,
+        night,
         lightWithDarkActionBar, // Obsolete
     }
 
@@ -109,10 +110,12 @@ public class FDroidApp extends Application {
 
     public static int getCurThemeResId() {
         switch (curTheme) {
-            case dark:
-                return R.style.AppThemeDark;
             case light:
                 return R.style.AppThemeLight;
+            case dark:
+                return R.style.AppThemeDark;
+            case night:
+                return R.style.AppThemeNight;
             default:
                 return R.style.AppThemeLight;
         }
