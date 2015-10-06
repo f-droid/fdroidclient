@@ -19,7 +19,6 @@
 # removed, proguard will strip classes which are required, which may result in
 # crashes.
 -keep class kellinwood.** {*;}
--keep class javax.jmdns.** {*;}
 -keep class org.spongycastle.** {*;}
 
 # This keeps class members used for SystemInstaller IPC.
