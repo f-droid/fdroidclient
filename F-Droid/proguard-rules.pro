@@ -21,7 +21,6 @@
 -keep class kellinwood.** {*;}
 -keep class javax.jmdns.** {*;}
 -keep class org.spongycastle.** {*;}
--keep class eu.chainfire.** {*;}
 
 # This keeps class members used for SystemInstaller IPC.
 #   Reference: https://gitlab.com/fdroid/fdroidclient/issues/79
