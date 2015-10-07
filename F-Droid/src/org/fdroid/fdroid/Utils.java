@@ -75,7 +75,8 @@ public final class Utils {
 
     // The date format used for storing dates (e.g. lastupdated, added) in the
     // database.
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+    private static final SimpleDateFormat DATE_FORMAT =
+            new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.ENGLISH);
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
