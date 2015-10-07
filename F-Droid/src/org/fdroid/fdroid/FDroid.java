@@ -99,9 +99,12 @@ public class FDroid extends ActionBarActivity {
 
         InstallExtensionDialogActivity.firstTime(this);
 
-        if (UpdateService.isNetworkAvailableForUpdate(this)) {
-            UpdateService.updateNow(this);
-        }
+        // Re-enable once it can be disabled via a setting
+        // See https://gitlab.com/fdroid/fdroidclient/issues/435
+        //
+        // if (UpdateService.isNetworkAvailableForUpdate(this)) {
+        //     UpdateService.updateNow(this);
+        // }
     }
 
     @Override
