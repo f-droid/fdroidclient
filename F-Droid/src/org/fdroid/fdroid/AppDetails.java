@@ -1127,7 +1127,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             if (i == s.length()-1) {
                 return s;
             }
-            return s.subSequence(0, i);
+            return s.subSequence(0, i+1);
         }
 
         private ViewGroup layout_links_content;
