@@ -115,10 +115,8 @@ public class AvailableAppsFragment extends AppListFragment implements
         Resources res = getResources();
         String pkgName = getActivity().getPackageName();
         for (String category : categories) {
-            category = category.replace(" & ", "_");
-            category = category.replace(" ", "_");
-            category = category.replace("'", "");
-            int id = res.getIdentifier("category_" + category, "string", pkgName);
+            String resId = category.replace(" & ", "_").replace(" ", "_").replace("'", "");
+            int id = res.getIdentifier("category_" + resId, "string", pkgName);
             translatedCategories.add(id == 0 ? category : getString(id));
         }
         return translatedCategories;
