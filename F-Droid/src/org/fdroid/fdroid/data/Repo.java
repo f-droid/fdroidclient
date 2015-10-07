@@ -65,7 +65,7 @@ public class Repo extends ValueObject {
                 inuse = cursor.getInt(i) == 1;
                 break;
             case RepoProvider.DataColumns.LAST_UPDATED:
-                lastUpdated = Utils.parseDate(cursor.getString(i), null);
+                lastUpdated = Utils.parseTime(cursor.getString(i), null);
                 break;
             case RepoProvider.DataColumns.MAX_AGE:
                 maxage = cursor.getInt(i);
@@ -160,7 +160,7 @@ public class Repo extends ValueObject {
 
         if (values.containsKey(RepoProvider.DataColumns.LAST_UPDATED)) {
             final String dateString = values.getAsString(RepoProvider.DataColumns.LAST_UPDATED);
-            lastUpdated = Utils.parseDate(dateString, null);
+            lastUpdated = Utils.parseTime(dateString, null);
         }
 
         if (values.containsKey(RepoProvider.DataColumns.MAX_AGE)) {

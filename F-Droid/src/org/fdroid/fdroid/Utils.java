@@ -58,6 +58,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -76,6 +77,9 @@ public final class Utils {
     // The date format used for storing dates (e.g. lastupdated, added) in the
     // database.
     private static final SimpleDateFormat DATE_FORMAT =
+            new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+
+    private static final SimpleDateFormat TIME_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.ENGLISH);
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
@@ -562,24 +566,40 @@ public final class Utils {
         return result;
     }
 
-    public static Date parseDate(String str, Date fallback) {
+    private static Date parseDateFormat(DateFormat format, String str, Date fallback) {
         if (str == null || str.length() == 0) {
             return fallback;
         }
         Date result;
         try {
-            result = DATE_FORMAT.parse(str);
+            result = format.parse(str);
         } catch (ParseException e) {
             result = fallback;
         }
         return result;
     }
 
-    public static String formatDate(Date date, String fallback) {
+    private static String formatDateFormat(DateFormat format, Date date, String fallback) {
         if (date == null) {
             return fallback;
         }
-        return DATE_FORMAT.format(date);
+        return format.format(date);
+    }
+
+    public static Date parseDate(String str, Date fallback) {
+        return parseDateFormat(DATE_FORMAT, str, fallback);
+    }
+
+    public static String formatDate(Date date, String fallback) {
+        return formatDateFormat(DATE_FORMAT, date, fallback);
+    }
+
+    public static Date parseTime(String str, Date fallback) {
+        return parseDateFormat(TIME_FORMAT, str, fallback);
+    }
+
+    public static String formatTime(Date date, String fallback) {
+        return formatDateFormat(TIME_FORMAT, date, fallback);
     }
 
     // Need this to add the unimplemented support for ordered and unordered

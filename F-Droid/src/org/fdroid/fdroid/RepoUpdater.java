@@ -191,7 +191,7 @@ public class RepoUpdater {
     private ContentValues prepareRepoDetailsForSaving(RepoXMLHandler handler, String etag) {
         ContentValues values = new ContentValues();
 
-        values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatDate(new Date(), ""));
+        values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatTime(new Date(), ""));
 
         if (repo.lastetag == null || !repo.lastetag.equals(etag)) {
             values.put(RepoProvider.DataColumns.LAST_ETAG, etag);
@@ -305,7 +305,7 @@ public class RepoUpdater {
         if (trustNewSigningCertificate) {
             Utils.debugLog(TAG, "Saving new signing certificate in the database for " + repo.address);
             ContentValues values = new ContentValues(2);
-            values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatDate(new Date(), ""));
+            values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatTime(new Date(), ""));
             values.put(RepoProvider.DataColumns.PUBLIC_KEY, Hasher.hex(rawCertFromJar));
             RepoProvider.Helper.update(context, repo, values);
         }
