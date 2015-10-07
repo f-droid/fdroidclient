@@ -216,4 +216,9 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
 
 
 	<string name="update_notification_title">Actualitzant els dipòsits</string>
+	<string name="more">Més</string>
+    <string name="less">Menys</string>
+
+	<string name="permissions">Permisos</string>
+	<string name="system_install_button_install">Instal·la</string>
 	</resources>

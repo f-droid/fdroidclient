@@ -327,4 +327,9 @@ Intregadu cun sa litzèntzia
 	<string name="repo_details">Depòsitu</string>
     <string name="repo_url">Indiritzu</string>
     <string name="status_download_unknown_size">Iscarrighende\n%2$s dae\n%1$s</string>
+	<string name="permissions">Permissos</string>
+	<string name="theme_night">Note</string>
+<string name="more">De prus</string>
+    <string name="less">De mancu</string>
+
 	</resources>

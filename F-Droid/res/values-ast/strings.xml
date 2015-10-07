@@ -284,7 +284,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="swap_setting_up_wifi">Configurando Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Nun ye visible pente Wi-Fi</string>
     <string name="swap_no_peers_nearby">Nun pudo alcontrase xente averao cola qu\'intercambiar.</string>
-    <string name="swap_attempt_install"/>
+    <string name="swap_attempt_install">Intentar instalación</string>
     <string name="swap_not_enabled_description">Enantes d\'intercambiar, el to preséu ha tar visible.</string>
 
     <string name="install_confirm">¿Quies instalar esta aplicación? Tendrá accesu a:</string>
@@ -326,4 +326,9 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="repo_url">Direición</string>
     <string name="perms_new_perm_prefix">"Nuevo: "</string>
     <string name="status_download_unknown_size">Baxando\n%2$s de\n%1$s</string>
-	</resources>
+	<string name="more">Más</string>
+    <string name="less">Menos</string>
+
+	<string name="permissions">Permitir</string>
+	<string name="theme_night">Nueche</string>
+</resources>

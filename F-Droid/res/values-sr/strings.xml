@@ -21,8 +21,8 @@
   <string name="notify_on">Приказ обавештења о доступним надоградњама</string>
   <string name="update_history">Историјат надоградњи</string>
   <string name="update_history_summ">Колико дана се апликације сматрају новим или недавним: %s</string>
-  <string name="system_installer">Омогући повлашћени Ф-дроид</string>
-  <string name="system_installer_on">Користи системске дозволе за инсталирање, надоградњу и уклањање пакета</string>
+  <string name="system_installer">Повлашћено проширење</string>
+  <string name="system_installer_on">Користи повлашћено проширење за инсталирање, надоградњу и уклањање пакета</string>
   <string name="local_repo_name">Име ваше локалне ризнице</string>
   <string name="local_repo_https">Користи приватну везу</string>
   <string name="local_repo_https_on">Користи шифровану ХТТПС:// везу за ову ризницу</string>
@@ -53,7 +53,7 @@
   <string name="one_update_available">1 надоградња је доступна.</string>
   <string name="many_updates_available">%d нових надоградњи је доступно.</string>
   <string name="fdroid_updates_available">Доступне су надоградње на Ф-дроиду</string>
-  <string name="bluetooth_activity_not_found">Није одређена метода слања блутутом, одредите једну!</string>
+  <string name="bluetooth_activity_not_found">Нема метода слања блутутом, одредите једну!</string>
   <string name="choose_bt_send">Одредите методу слања блутутом</string>
   <string name="send_via_bluetooth">Пошаљи блутутом</string>
   <string name="repo_add_url">Адреса ризнице</string>
@@ -138,7 +138,7 @@
   <string name="unsigned">Непотписана</string>
   <string name="unverified">Неоверена</string>
   <string name="repo_num_apps">Број апликација</string>
-  <string name="repo_fingerprint">Отисак или кључ за потписивање ризнице (SHA-256)</string>
+  <string name="repo_fingerprint">Отисак кључа за потписивање (SHA-256)</string>
   <string name="repo_description">Опис</string>
   <string name="repo_last_update">Последње ажурирање</string>
   <string name="repo_update">Ажурирај</string>
@@ -146,7 +146,7 @@
   <string name="unsigned_description">Ово значи да списак апликација није
 могао бити оверен. Требате бити опрезни са
 апликацијама преузетим са непотписаних индекса.</string>
-  <string name="repo_not_yet_updated">Ова ризница још није коришћена. Да бисте видели апликације које садржи, најпре је ажурирајте.\n\nНакон тога, описи и остали детаљи ће бити доступни овде.</string>
+  <string name="repo_not_yet_updated">Ова ризница још није коришћена. Омогућите је да бисте видели апликације које садржи.</string>
   <string name="unknown">Непознато</string>
   <string name="repo_confirm_delete_title">Обрисати ризницу?</string>
   <string name="repo_confirm_delete_body">Брисање ризнице значи да њене апликације више неће бити доступне на Ф-дроиду.\n\nНапомена: Све претходно инсталиране апликације ће остати на уређају.</string>
@@ -174,8 +174,8 @@
   <string name="root_access_denied_title">Корени приступ одбијен</string>
   <string name="root_access_denied_body">Или ваш Андроид уређај није рутован или сте Ф-дроиду одбили корени приступ.</string>
   <string name="update_all">Надогради све</string>
-  <string name="system_install_denied_title">Системске дозволе одбијене</string>
-  <string name="system_install_denied_body">Ова опција доступна само када је Ф-дроид инсталиран као системска апликација.</string>
+  <string name="system_install_denied_title">Повлашћено проширење за Ф-дроид није доступно</string>
+  <string name="system_install_denied_body">Ова опција доступна само када је инсталирано повлашћено проширење за Ф-дроид.</string>
   <string name="app_description">Ф-дроид је каталог ФОСС (слободан и софтвер отвореног кôда) апликација за Андроид платформу. Клијент олакшава претрагу, инсталацију и праћење надоградњи на вашем уређају.</string>
   <string name="swap_nfc_description">Ако ваш пријатељ има НФЦ, спојите телефоне.</string>
   <string name="swap_join_same_wifi">Повежите се на исту бежичну мрежу на којој је ваш пријатељ</string>
@@ -190,8 +190,8 @@
 
 	<string name="unstable_updates">Надоградње нестабилних</string>
 	<string name="unstable_updates_summary">Предлагање ажурирања на нестабилна издања</string>
-	<string name="uninstall_system">Уклони повлашћени Ф-дроид</string>
-	<string name="uninstall_system_summary">Уклања додатну повлашћену Ф-дроид апликацију</string>
+	<string name="uninstall_system">Ажурирај/уклони повлашћено проширење</string>
+	<string name="uninstall_system_summary">Отвара детаље повлашћеног проширења да бисте га ажурирали/уклонили</string>
 	<string name="about_source">Изворни кôд:</string>
 	<string name="app_incompatible">Некомпатибилно</string>
 	<string name="links">Везе</string>
@@ -221,10 +221,10 @@
     <string name="install_error_title">Грешка инсталације</string>
     <string name="install_error_cannot_parse">Десила се грешка приликом рашчлањивања пакета</string>
     <string name="uninstall_error_title">Грешка уклањања</string>
-    <string name="system_install_first_time_notification">Да инсталирам повлашћени Ф-дроид?</string>
+    <string name="system_install_first_time_notification">Да инсталирам повлашћено проширење за Ф-дроид?</string>
     <string name="system_install_first_time_notification_message_short">Тапните за више информација.</string>
-    <string name="system_install_post_success">Успешно инсталиран повлашћени Ф-дроид</string>
-    <string name="system_install_post_fail">Инсталација повлашћеног Ф-дроида није успела</string>
+    <string name="system_install_post_success">Успешно инсталирано повлашћено проширење за Ф-дроид</string>
+    <string name="system_install_post_fail">Инсталација повлашћеног проширења за Ф-дроид није успела</string>
     <string name="system_install_installing">Инсталирам…</string>
     <string name="system_install_uninstalling">Уклањам…</string>
     <string name="system_uninstall_button">Уклони</string>
@@ -264,8 +264,8 @@
     <string name="local_repo_name_summary">Објављени назив ваше локалне ризнице: %s</string>
 	<string name="install_error_unknown">Неуспех инсталације услед непознате грешке</string>
     <string name="uninstall_error_unknown">Неуспех уклањања услед непознате грешке</string>
-    <string name="system_install_question">Желите ли да инсталирате повлашћени Ф-дроид?\nОво траје до 10 секунди.</string>
-    <string name="system_uninstall">Желите ли да уклоните повлашћени Ф-дроид?</string>
+    <string name="system_install_question">Желите ли да инсталирате повлашћено проширење за Ф-дроид?</string>
+    <string name="system_uninstall">Желите ли да уклоните повлашћено проширење за Ф-дроид?</string>
     <string name="swap_qr_isnt_for_swap">Бар-кôд који сте очитали не изгледа као кôд размене.</string>
     <string name="install_confirm">Желите ли да инсталирате ову апликацију? Имаће приступ следећем:</string>
     <string name="install_confirm_no_perms">Желите ли да инсталирате ову апликацију? Не захтева посебан приступ.</string>
@@ -284,7 +284,7 @@
     <string name="swap_scan_or_type_url">Једна особа мора да очита кôд, или да укуца УРЛ друге особе у прегледачу.</string>
     <string name="swap_tap_to_select_apps">Тапните за одабир апликација за размену.</string>
     <string name="swap_switch_to_wifi">Тапните за пребацивање на бежичну мрежу</string>
-    <string name="system_install_warning_lollipop">Желите ли да инсталирате повлашћени Ф-дроид?\nОво траје до 10 секунди и ваш уређај ће након тога поново да се покрене.</string>
+    <string name="system_install_warning_lollipop">Ово траје десетак секунди и ваш уређај ће након тога <b>поново да се покрене</b>.</string>
     <string name="empty_can_update_app_list">Све апликације су ажурне.\n\nЧеститке! Све ваше апликације су ажурне (или ваше ризнице нису ажуриране).</string>
 
     <string name="swap_people_nearby">Људи у близини</string>
@@ -294,11 +294,33 @@
     <string name="swap_join_this_hotspot">Помозите пријатељу да се придружи вашем хотспоту</string>
     <string name="swap_cant_find_peers">Не можете да нађете кога тражите?</string>
     <string name="swap_attempt_install">Покушај да инсталираш</string>
-    <string name="system_install_first_time_message">Чини се да имате корени приступ на вашем уређају. Сада можете да инсталирате повлашћени Ф-дроид, уско повезан са Андроид оперативним системом. Ово ће да омогући Ф-дроиду да сам инсталира, надограђује и уклања апликације.</string>
+    <string name="system_install_first_time_message">Чини се да имате корени приступ на вашем уређају. Сада можете да инсталирате повлашћено проширење за Ф-дроид, уско повезано са Андроид оперативним системом. Ово омогућује Ф-дроиду да сам инсталира, надограђује и уклања апликације.</string>
     <string name="swap_nearby">Оближња размена</string>
     <string name="swap_intro">Повежите се са људима у близини и размењујте апликације.</string>
     <string name="swap_no_peers_nearby">Нисам нашао никога у близини за размену.</string>
     <string name="download_error">Преузимање није успешно</string>
 
     <string name="perms_description_app">Обезбеђује %1$s.</string>
+    <string name="more">Више</string>
+    <string name="less">Мање</string>
+
+	<string name="status_download_unknown_size">Преузимам\n%2$s са\n%1$s</string>
+	<string name="permissions">Дозволе</string>
+	<string name="repo_details">Ризница</string>
+    <string name="repo_url">Адреса</string>
+    <string name="system_install_denied_signature">Потпис проширење је погрешан! Пријавите грешку!</string>
+    <string name="system_install_button_install">Инсталирај</string>
+	<string name="system_install_denied_permissions">Повлашћене дозволе нису одобрене за проширење! Пријавите грешку!</string>
+    <string name="system_install_button_open">Отвори проширење</string>
+    <string name="system_install_installing_rebooting">Инсталирам и поново покрећем…</string>
+    <string name="system_install_warning">Ово траје десетак секунди.</string>
+	<string name="theme_night">Ноћ</string>
+<string name="menu_bitcoin">Биткоин</string>
+	<string name="menu_litecoin">Лајткоин</string>
+	<string name="menu_flattr">Флатр</string>
+
+
+	<string name="system_install_first_time_notification_message">Тапните да инсталирате повлашћено проширење за Ф-дроид, уско повезано са Андроид оперативним системом. Ово омогућује Ф-дроиду да сам инсталира, надограђује и уклања апликације.\nОво можете такође да урадите и касније у поставкама Ф-дроида.</string>
+    <string name="system_install_post_success_message">Повлашћено проширење за Ф-дроид је успешно инсталирано. Оно омогућује Ф-дроиду да сам инсталира, надограђује и уклања апликације.</string>
+    <string name="system_install_post_fail_message">Инсталација повлашћеног проширења за Ф-дроид није успела. Методу инсталације не подржавају све дистрибуције Андроида, посаветујте се са пратиоцем грешака Ф-дроида за више информација.</string>
     </resources>
