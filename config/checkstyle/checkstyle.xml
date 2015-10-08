@@ -37,6 +37,7 @@
         <module name="Indentation" />
         <module name="EmptyLineSeparator">
             <property name="allowNoEmptyLineBetweenFields" value="true" />
+            <!--<property name="allowMultipleEmptyLines" value="false" />-->
         </module>
 
         <module name="EmptyForIteratorPad" />
@@ -64,6 +65,7 @@
         <!--<module name="HiddenField" />-->
         <module name="IllegalInstantiation" />
         <!--<module name="InnerAssignment" />-->
+        <module name="DefaultComesLast" />
         <!--<module name="MissingSwitchDefault" />-->
 
         <module name="FinalClass" />
