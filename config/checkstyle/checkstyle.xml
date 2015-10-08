@@ -40,6 +40,9 @@
             <!--<property name="allowMultipleEmptyLines" value="false" />-->
         </module>
 
+        <!--<module name="OneTopLevelClass" />-->
+        <module name="OneStatementPerLine" />
+
         <module name="EmptyForIteratorPad" />
         <module name="GenericWhitespace" />
         <module name="MethodParamPad" />
