@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'witness'
+apply plugin: 'checkstyle'
 if (!hasProperty('sourceDeps')) {
 
     repositories {
@@ -181,6 +182,14 @@ android {
         disable 'MissingTranslation'
     }
 
+}
+task checkstyle(type: Checkstyle) {
+    configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    classpath = files()
 }
 // This person took the example code below from another blogpost online, however
 // I lost the reference to it:
