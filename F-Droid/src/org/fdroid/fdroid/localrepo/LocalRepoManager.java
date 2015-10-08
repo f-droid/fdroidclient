@@ -62,7 +62,7 @@ import java.util.jar.JarOutputStream;
  * This class deals specifically with the webroot side of things, ensuring we have a valid index.jar
  * and the relevant .apk and icon files available.
  */
-public class LocalRepoManager {
+public final class LocalRepoManager {
     private static final String TAG = "LocalRepoManager";
 
     // For ref, official F-droid repo presently uses a maxage of 14 days

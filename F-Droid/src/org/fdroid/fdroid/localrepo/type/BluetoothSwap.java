@@ -13,7 +13,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
-public class BluetoothSwap extends SwapType {
+public final class BluetoothSwap extends SwapType {
 
     private static final String TAG = "BluetoothSwap";
     public static final String BLUETOOTH_NAME_TAG = "FDroid:";

@@ -704,7 +704,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         startActivity(intent);
     }
 
-    private static class SafeLinkMovementMethod extends LinkMovementMethod {
+    private static final class SafeLinkMovementMethod extends LinkMovementMethod {
 
         private static SafeLinkMovementMethod instance;
 

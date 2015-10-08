@@ -21,7 +21,7 @@ import java.util.Random;
  * accessed via the {@link org.fdroid.fdroid.Preferences#get()}
  * singleton method.
  */
-public class Preferences implements SharedPreferences.OnSharedPreferenceChangeListener {
+public final class Preferences implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String TAG = "Preferences";
 

@@ -54,7 +54,7 @@ import kellinwood.security.zipsigner.ZipSigner;
 
 // TODO Address exception handling in a uniform way throughout
 
-public class LocalRepoKeyStore {
+public final class LocalRepoKeyStore {
 
     private static final String TAG = "LocalRepoKeyStore";
 
@@ -333,7 +333,7 @@ public class LocalRepoKeyStore {
      * for it's chosen server alias. All other operations are deferred to the
      * wrapped X509KeyManager.
      */
-    private static class KerplappKeyManager implements X509KeyManager {
+    private static final class KerplappKeyManager implements X509KeyManager {
         private final X509KeyManager wrapped;
 
         private KerplappKeyManager(X509KeyManager wrapped) {

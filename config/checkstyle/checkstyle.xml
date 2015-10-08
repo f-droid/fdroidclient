@@ -60,7 +60,7 @@
         <!--<module name="InnerAssignment" />-->
         <!--<module name="MissingSwitchDefault" />-->
 
-        <!--<module name="FinalClass" />-->
+        <module name="FinalClass" />
         <!--<module name="HideUtilityClassConstructor" />-->
         <!--<module name="InterfaceIsType" />-->
         <!--<module name="VisibilityModifier" />-->

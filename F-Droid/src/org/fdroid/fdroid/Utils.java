@@ -421,7 +421,7 @@ public final class Utils {
         return repoAddress + "/" + apk.apkName.replace(" ", "%20");
     }
 
-    public static class CommaSeparatedList implements Iterable<String> {
+    public static final class CommaSeparatedList implements Iterable<String> {
         private final String value;
 
         private CommaSeparatedList(String list) {
