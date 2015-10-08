@@ -54,18 +54,18 @@ public class LocalHTTPD extends NanoHTTPD {
         while (st.hasMoreTokens()) {
             String tok = st.nextToken();
             switch (tok) {
-            case "/":
-                newUri += "/";
-                break;
-            case " ":
-                newUri += "%20";
-                break;
-            default:
-                try {
-                    newUri += URLEncoder.encode(tok, "UTF-8");
-                } catch (UnsupportedEncodingException ignored) {
-                }
-                break;
+                case "/":
+                    newUri += "/";
+                    break;
+                case " ":
+                    newUri += "%20";
+                    break;
+                default:
+                    try {
+                        newUri += URLEncoder.encode(tok, "UTF-8");
+                    } catch (UnsupportedEncodingException ignored) {
+                    }
+                    break;
             }
         }
         return newUri;
@@ -105,13 +105,13 @@ public class LocalHTTPD extends NanoHTTPD {
     private Response handlePost(IHTTPSession session) {
         Uri uri = Uri.parse(session.getUri());
         switch (uri.getPath()) {
-        case "/request-swap":
-            if (!session.getParms().containsKey("repo")) {
-                Log.e(TAG, "Malformed /request-swap request to local repo HTTP server. Should have posted a 'repo' parameter.");
-                return new Response(Response.Status.BAD_REQUEST, MIME_PLAINTEXT, "Requires 'repo' parameter to be posted.");
-            }
-            requestSwap(session.getParms().get("repo"));
-            return new Response(Response.Status.OK, MIME_PLAINTEXT, "Swap request received.");
+            case "/request-swap":
+                if (!session.getParms().containsKey("repo")) {
+                    Log.e(TAG, "Malformed /request-swap request to local repo HTTP server. Should have posted a 'repo' parameter.");
+                    return new Response(Response.Status.BAD_REQUEST, MIME_PLAINTEXT, "Requires 'repo' parameter to be posted.");
+                }
+                requestSwap(session.getParms().get("repo"));
+                return new Response(Response.Status.OK, MIME_PLAINTEXT, "Swap request received.");
         }
         return new Response("");
     }

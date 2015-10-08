@@ -83,118 +83,118 @@ public final class QRCodeEncoder {
 
     private void encodeQRCodeContents(String data, Bundle bundle, String type) {
         switch (type) {
-        case Contents.Type.TEXT:
-            if (data != null && data.length() > 0) {
-                contents = data;
-                displayContents = data;
-                title = "Text";
-            }
-            break;
-        case Contents.Type.EMAIL:
-            data = trim(data);
-            if (data != null) {
-                contents = "mailto:" + data;
-                displayContents = data;
-                title = "E-Mail";
-            }
-            break;
-        case Contents.Type.PHONE:
-            data = trim(data);
-            if (data != null) {
-                contents = "tel:" + data;
-                displayContents = PhoneNumberUtils.formatNumber(data);
-                title = "Phone";
-            }
-            break;
-        case Contents.Type.SMS:
-            data = trim(data);
-            if (data != null) {
-                contents = "sms:" + data;
-                displayContents = PhoneNumberUtils.formatNumber(data);
-                title = "SMS";
-            }
-            break;
-        case Contents.Type.CONTACT:
-            if (bundle != null) {
-                StringBuilder newContents = new StringBuilder(100);
-                StringBuilder newDisplayContents = new StringBuilder(100);
-
-                newContents.append("MECARD:");
-
-                String name = trim(bundle.getString(ContactsContract.Intents.Insert.NAME));
-                if (name != null) {
-                    newContents.append("N:").append(escapeMECARD(name)).append(';');
-                    newDisplayContents.append(name);
+            case Contents.Type.TEXT:
+                if (data != null && data.length() > 0) {
+                    contents = data;
+                    displayContents = data;
+                    title = "Text";
                 }
-
-                String address = trim(bundle.getString(ContactsContract.Intents.Insert.POSTAL));
-                if (address != null) {
-                    newContents.append("ADR:").append(escapeMECARD(address)).append(';');
-                    newDisplayContents.append('\n').append(address);
+                break;
+            case Contents.Type.EMAIL:
+                data = trim(data);
+                if (data != null) {
+                    contents = "mailto:" + data;
+                    displayContents = data;
+                    title = "E-Mail";
                 }
+                break;
+            case Contents.Type.PHONE:
+                data = trim(data);
+                if (data != null) {
+                    contents = "tel:" + data;
+                    displayContents = PhoneNumberUtils.formatNumber(data);
+                    title = "Phone";
+                }
+                break;
+            case Contents.Type.SMS:
+                data = trim(data);
+                if (data != null) {
+                    contents = "sms:" + data;
+                    displayContents = PhoneNumberUtils.formatNumber(data);
+                    title = "SMS";
+                }
+                break;
+            case Contents.Type.CONTACT:
+                if (bundle != null) {
+                    StringBuilder newContents = new StringBuilder(100);
+                    StringBuilder newDisplayContents = new StringBuilder(100);
 
-                Collection<String> uniquePhones = new HashSet<>(Contents.PHONE_KEYS.length);
-                for (int x = 0; x < Contents.PHONE_KEYS.length; x++) {
-                    String phone = trim(bundle.getString(Contents.PHONE_KEYS[x]));
-                    if (phone != null) {
-                        uniquePhones.add(phone);
+                    newContents.append("MECARD:");
+
+                    String name = trim(bundle.getString(ContactsContract.Intents.Insert.NAME));
+                    if (name != null) {
+                        newContents.append("N:").append(escapeMECARD(name)).append(';');
+                        newDisplayContents.append(name);
+                    }
+
+                    String address = trim(bundle.getString(ContactsContract.Intents.Insert.POSTAL));
+                    if (address != null) {
+                        newContents.append("ADR:").append(escapeMECARD(address)).append(';');
+                        newDisplayContents.append('\n').append(address);
+                    }
+
+                    Collection<String> uniquePhones = new HashSet<>(Contents.PHONE_KEYS.length);
+                    for (int x = 0; x < Contents.PHONE_KEYS.length; x++) {
+                        String phone = trim(bundle.getString(Contents.PHONE_KEYS[x]));
+                        if (phone != null) {
+                            uniquePhones.add(phone);
+                        }
+                    }
+                    for (String phone : uniquePhones) {
+                        newContents.append("TEL:").append(escapeMECARD(phone)).append(';');
+                        newDisplayContents.append('\n').append(PhoneNumberUtils.formatNumber(phone));
+                    }
+
+                    Collection<String> uniqueEmails = new HashSet<>(Contents.EMAIL_KEYS.length);
+                    for (int x = 0; x < Contents.EMAIL_KEYS.length; x++) {
+                        String email = trim(bundle.getString(Contents.EMAIL_KEYS[x]));
+                        if (email != null) {
+                            uniqueEmails.add(email);
+                        }
+                    }
+                    for (String email : uniqueEmails) {
+                        newContents.append("EMAIL:").append(escapeMECARD(email)).append(';');
+                        newDisplayContents.append('\n').append(email);
+                    }
+
+                    String url = trim(bundle.getString(Contents.URL_KEY));
+                    if (url != null) {
+                        // escapeMECARD(url) -> wrong escape e.g. http\://zxing.google.com
+                        newContents.append("URL:").append(url).append(';');
+                        newDisplayContents.append('\n').append(url);
+                    }
+
+                    String note = trim(bundle.getString(Contents.NOTE_KEY));
+                    if (note != null) {
+                        newContents.append("NOTE:").append(escapeMECARD(note)).append(';');
+                        newDisplayContents.append('\n').append(note);
+                    }
+
+                    // Make sure we've encoded at least one field.
+                    if (newDisplayContents.length() > 0) {
+                        newContents.append(';');
+                        contents = newContents.toString();
+                        displayContents = newDisplayContents.toString();
+                        title = "Contact";
+                    } else {
+                        contents = null;
+                        displayContents = null;
+                    }
+
+                }
+                break;
+            case Contents.Type.LOCATION:
+                if (bundle != null) {
+                    // These must use Bundle.getFloat(), not getDouble(), it's part of the API.
+                    float latitude = bundle.getFloat("LAT", Float.MAX_VALUE);
+                    float longitude = bundle.getFloat("LONG", Float.MAX_VALUE);
+                    if (latitude != Float.MAX_VALUE && longitude != Float.MAX_VALUE) {
+                        contents = "geo:" + latitude + ',' + longitude;
+                        displayContents = latitude + "," + longitude;
+                        title = "Location";
                     }
                 }
-                for (String phone : uniquePhones) {
-                    newContents.append("TEL:").append(escapeMECARD(phone)).append(';');
-                    newDisplayContents.append('\n').append(PhoneNumberUtils.formatNumber(phone));
-                }
-
-                Collection<String> uniqueEmails = new HashSet<>(Contents.EMAIL_KEYS.length);
-                for (int x = 0; x < Contents.EMAIL_KEYS.length; x++) {
-                    String email = trim(bundle.getString(Contents.EMAIL_KEYS[x]));
-                    if (email != null) {
-                        uniqueEmails.add(email);
-                    }
-                }
-                for (String email : uniqueEmails) {
-                    newContents.append("EMAIL:").append(escapeMECARD(email)).append(';');
-                    newDisplayContents.append('\n').append(email);
-                }
-
-                String url = trim(bundle.getString(Contents.URL_KEY));
-                if (url != null) {
-                    // escapeMECARD(url) -> wrong escape e.g. http\://zxing.google.com
-                    newContents.append("URL:").append(url).append(';');
-                    newDisplayContents.append('\n').append(url);
-                }
-
-                String note = trim(bundle.getString(Contents.NOTE_KEY));
-                if (note != null) {
-                    newContents.append("NOTE:").append(escapeMECARD(note)).append(';');
-                    newDisplayContents.append('\n').append(note);
-                }
-
-                // Make sure we've encoded at least one field.
-                if (newDisplayContents.length() > 0) {
-                    newContents.append(';');
-                    contents = newContents.toString();
-                    displayContents = newDisplayContents.toString();
-                    title = "Contact";
-                } else {
-                    contents = null;
-                    displayContents = null;
-                }
-
-            }
-            break;
-        case Contents.Type.LOCATION:
-            if (bundle != null) {
-                // These must use Bundle.getFloat(), not getDouble(), it's part of the API.
-                float latitude = bundle.getFloat("LAT", Float.MAX_VALUE);
-                float longitude = bundle.getFloat("LONG", Float.MAX_VALUE);
-                if (latitude != Float.MAX_VALUE && longitude != Float.MAX_VALUE) {
-                    contents = "geo:" + latitude + ',' + longitude;
-                    displayContents = latitude + "," + longitude;
-                    title = "Location";
-                }
-            }
-            break;
+                break;
         }
     }
 

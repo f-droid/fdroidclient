@@ -34,21 +34,21 @@ public abstract class AppListFragment extends ThemeableListFragment implements
     private static final int REQUEST_APPDETAILS = 0;
 
     public static final String[] APP_PROJECTION = {
-            AppProvider.DataColumns._ID, // Required for cursor loader to work.
-            AppProvider.DataColumns.APP_ID,
-            AppProvider.DataColumns.NAME,
-            AppProvider.DataColumns.SUMMARY,
-            AppProvider.DataColumns.IS_COMPATIBLE,
-            AppProvider.DataColumns.LICENSE,
-            AppProvider.DataColumns.ICON,
-            AppProvider.DataColumns.ICON_URL,
-            AppProvider.DataColumns.InstalledApp.VERSION_CODE,
-            AppProvider.DataColumns.InstalledApp.VERSION_NAME,
-            AppProvider.DataColumns.SuggestedApk.VERSION,
-            AppProvider.DataColumns.SUGGESTED_VERSION_CODE,
-            AppProvider.DataColumns.IGNORE_ALLUPDATES,
-            AppProvider.DataColumns.IGNORE_THISUPDATE,
-            AppProvider.DataColumns.REQUIREMENTS, // Needed for filtering apps that require root.
+        AppProvider.DataColumns._ID, // Required for cursor loader to work.
+        AppProvider.DataColumns.APP_ID,
+        AppProvider.DataColumns.NAME,
+        AppProvider.DataColumns.SUMMARY,
+        AppProvider.DataColumns.IS_COMPATIBLE,
+        AppProvider.DataColumns.LICENSE,
+        AppProvider.DataColumns.ICON,
+        AppProvider.DataColumns.ICON_URL,
+        AppProvider.DataColumns.InstalledApp.VERSION_CODE,
+        AppProvider.DataColumns.InstalledApp.VERSION_NAME,
+        AppProvider.DataColumns.SuggestedApk.VERSION,
+        AppProvider.DataColumns.SUGGESTED_VERSION_CODE,
+        AppProvider.DataColumns.IGNORE_ALLUPDATES,
+        AppProvider.DataColumns.IGNORE_THISUPDATE,
+        AppProvider.DataColumns.REQUIREMENTS, // Needed for filtering apps that require root.
     };
 
     public static final String APP_SORT = AppProvider.DataColumns.NAME;

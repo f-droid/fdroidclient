@@ -92,7 +92,7 @@ public class BluetoothDownloader extends Downloader {
             details != null &&
             details.getCacheTag() != null &&
             details.getCacheTag().equals(getCacheTag())
-        );
+            );
     }
 
     @Override

@@ -142,12 +142,12 @@ public class PrivilegedService extends Service {
         // get internal methods via reflection
         try {
             Class<?>[] installTypes = {
-                    Uri.class, IPackageInstallObserver.class, int.class,
-                    String.class
+                Uri.class, IPackageInstallObserver.class, int.class,
+                String.class
             };
             Class<?>[] deleteTypes = {
-                    String.class, IPackageDeleteObserver.class,
-                    int.class
+                String.class, IPackageDeleteObserver.class,
+                int.class
             };
 
             PackageManager pm = getPackageManager();

@@ -256,35 +256,35 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         uninitialize(key);
 
         switch (key) {
-        case PREF_COMPACT_LAYOUT:
-            for (ChangeListener listener : compactLayoutListeners)  {
-                listener.onPreferenceChange();
-            }
-            break;
-        case PREF_ROOTED:
-            for (ChangeListener listener : filterAppsRequiringRootListeners) {
-                listener.onPreferenceChange();
-            }
-            break;
-        case PREF_UPD_HISTORY:
-            for (ChangeListener listener : updateHistoryListeners) {
-                listener.onPreferenceChange();
-            }
-            break;
-        case PREF_LOCAL_REPO_NAME:
-            for (ChangeListener listener : localRepoNameListeners) {
-                listener.onPreferenceChange();
-            }
-            break;
-        case PREF_LOCAL_REPO_HTTPS:
-            for (ChangeListener listener : localRepoHttpsListeners) {
-                listener.onPreferenceChange();
-            }
-        case PREF_UNSTABLE_UPDATES:
-            for (ChangeListener listener : unstableUpdatesListeners) {
-                listener.onPreferenceChange();
-            }
-            break;
+            case PREF_COMPACT_LAYOUT:
+                for (ChangeListener listener : compactLayoutListeners)  {
+                    listener.onPreferenceChange();
+                }
+                break;
+            case PREF_ROOTED:
+                for (ChangeListener listener : filterAppsRequiringRootListeners) {
+                    listener.onPreferenceChange();
+                }
+                break;
+            case PREF_UPD_HISTORY:
+                for (ChangeListener listener : updateHistoryListeners) {
+                    listener.onPreferenceChange();
+                }
+                break;
+            case PREF_LOCAL_REPO_NAME:
+                for (ChangeListener listener : localRepoNameListeners) {
+                    listener.onPreferenceChange();
+                }
+                break;
+            case PREF_LOCAL_REPO_HTTPS:
+                for (ChangeListener listener : localRepoHttpsListeners) {
+                    listener.onPreferenceChange();
+                }
+            case PREF_UNSTABLE_UPDATES:
+                for (ChangeListener listener : unstableUpdatesListeners) {
+                    listener.onPreferenceChange();
+                }
+                break;
         }
     }
 

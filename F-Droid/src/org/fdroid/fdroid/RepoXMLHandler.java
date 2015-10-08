@@ -109,123 +109,123 @@ public class RepoXMLHandler extends DefaultHandler {
         final String str = curchars.toString().trim();
         if (curapk != null) {
             switch (localName) {
-            case "version":
-                curapk.version = str;
-                break;
-            case "versioncode":
-                curapk.vercode = Utils.parseInt(str, -1);
-                break;
-            case "size":
-                curapk.size = Utils.parseInt(str, 0);
-                break;
-            case "hash":
-                if (hashType == null || hashType.equals("md5")) {
-                    if (curapk.hash == null) {
+                case "version":
+                    curapk.version = str;
+                    break;
+                case "versioncode":
+                    curapk.vercode = Utils.parseInt(str, -1);
+                    break;
+                case "size":
+                    curapk.size = Utils.parseInt(str, 0);
+                    break;
+                case "hash":
+                    if (hashType == null || hashType.equals("md5")) {
+                        if (curapk.hash == null) {
+                            curapk.hash = str;
+                            curapk.hashType = "MD5";
+                        }
+                    } else if (hashType.equals("sha256")) {
                         curapk.hash = str;
-                        curapk.hashType = "MD5";
+                        curapk.hashType = "SHA-256";
                     }
-                } else if (hashType.equals("sha256")) {
-                    curapk.hash = str;
-                    curapk.hashType = "SHA-256";
-                }
-                break;
-            case "sig":
-                curapk.sig = str;
-                break;
-            case "srcname":
-                curapk.srcname = str;
-                break;
-            case "apkname":
-                curapk.apkName = str;
-                break;
-            case "sdkver":
-                curapk.minSdkVersion = Utils.parseInt(str, 0);
-                break;
-            case "maxsdkver":
-                curapk.maxSdkVersion = Utils.parseInt(str, 0);
-                break;
-            case "added":
-                curapk.added = Utils.parseDate(str, null);
-                break;
-            case "permissions":
-                curapk.permissions = Utils.CommaSeparatedList.make(str);
-                break;
-            case "features":
-                curapk.features = Utils.CommaSeparatedList.make(str);
-                break;
-            case "nativecode":
-                curapk.nativecode = Utils.CommaSeparatedList.make(str);
-                break;
+                    break;
+                case "sig":
+                    curapk.sig = str;
+                    break;
+                case "srcname":
+                    curapk.srcname = str;
+                    break;
+                case "apkname":
+                    curapk.apkName = str;
+                    break;
+                case "sdkver":
+                    curapk.minSdkVersion = Utils.parseInt(str, 0);
+                    break;
+                case "maxsdkver":
+                    curapk.maxSdkVersion = Utils.parseInt(str, 0);
+                    break;
+                case "added":
+                    curapk.added = Utils.parseDate(str, null);
+                    break;
+                case "permissions":
+                    curapk.permissions = Utils.CommaSeparatedList.make(str);
+                    break;
+                case "features":
+                    curapk.features = Utils.CommaSeparatedList.make(str);
+                    break;
+                case "nativecode":
+                    curapk.nativecode = Utils.CommaSeparatedList.make(str);
+                    break;
             }
         } else if (curapp != null) {
             switch (localName) {
-            case "name":
-                curapp.name = str;
-                break;
-            case "icon":
-                curapp.icon = str;
-                break;
-            case "description":
-                // This is the old-style description. We'll read it
-                // if present, to support old repos, but in newer
-                // repos it will get overwritten straight away!
-                curapp.description = "<p>" + str + "</p>";
-                break;
-            case "desc":
-                // New-style description.
-                curapp.description = str;
-                break;
-            case "summary":
-                curapp.summary = str;
-                break;
-            case "license":
-                curapp.license = str;
-                break;
-            case "source":
-                curapp.sourceURL = str;
-                break;
-            case "changelog":
-                curapp.changelogURL = str;
-                break;
-            case "donate":
-                curapp.donateURL = str;
-                break;
-            case "bitcoin":
-                curapp.bitcoinAddr = str;
-                break;
-            case "litecoin":
-                curapp.litecoinAddr = str;
-                break;
-            case "flattr":
-                curapp.flattrID = str;
-                break;
-            case "web":
-                curapp.webURL = str;
-                break;
-            case "tracker":
-                curapp.trackerURL = str;
-                break;
-            case "added":
-                curapp.added = Utils.parseDate(str, null);
-                break;
-            case "lastupdated":
-                curapp.lastUpdated = Utils.parseDate(str, null);
-                break;
-            case "marketversion":
-                curapp.upstreamVersion = str;
-                break;
-            case "marketvercode":
-                curapp.upstreamVercode = Utils.parseInt(str, -1);
-                break;
-            case "categories":
-                curapp.categories = Utils.CommaSeparatedList.make(str);
-                break;
-            case "antifeatures":
-                curapp.antiFeatures = Utils.CommaSeparatedList.make(str);
-                break;
-            case "requirements":
-                curapp.requirements = Utils.CommaSeparatedList.make(str);
-                break;
+                case "name":
+                    curapp.name = str;
+                    break;
+                case "icon":
+                    curapp.icon = str;
+                    break;
+                case "description":
+                    // This is the old-style description. We'll read it
+                    // if present, to support old repos, but in newer
+                    // repos it will get overwritten straight away!
+                    curapp.description = "<p>" + str + "</p>";
+                    break;
+                case "desc":
+                    // New-style description.
+                    curapp.description = str;
+                    break;
+                case "summary":
+                    curapp.summary = str;
+                    break;
+                case "license":
+                    curapp.license = str;
+                    break;
+                case "source":
+                    curapp.sourceURL = str;
+                    break;
+                case "changelog":
+                    curapp.changelogURL = str;
+                    break;
+                case "donate":
+                    curapp.donateURL = str;
+                    break;
+                case "bitcoin":
+                    curapp.bitcoinAddr = str;
+                    break;
+                case "litecoin":
+                    curapp.litecoinAddr = str;
+                    break;
+                case "flattr":
+                    curapp.flattrID = str;
+                    break;
+                case "web":
+                    curapp.webURL = str;
+                    break;
+                case "tracker":
+                    curapp.trackerURL = str;
+                    break;
+                case "added":
+                    curapp.added = Utils.parseDate(str, null);
+                    break;
+                case "lastupdated":
+                    curapp.lastUpdated = Utils.parseDate(str, null);
+                    break;
+                case "marketversion":
+                    curapp.upstreamVersion = str;
+                    break;
+                case "marketvercode":
+                    curapp.upstreamVercode = Utils.parseInt(str, -1);
+                    break;
+                case "categories":
+                    curapp.categories = Utils.CommaSeparatedList.make(str);
+                    break;
+                case "antifeatures":
+                    curapp.antiFeatures = Utils.CommaSeparatedList.make(str);
+                    break;
+                case "requirements":
+                    curapp.requirements = Utils.CommaSeparatedList.make(str);
+                    break;
             }
         } else if (localName.equals("description")) {
             description = cleanWhiteSpace(str);

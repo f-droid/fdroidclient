@@ -34,12 +34,12 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int i) {
         switch (i) {
-        case TabManager.INDEX_AVAILABLE:
-            return new AvailableAppsFragment();
-        case TabManager.INDEX_INSTALLED:
-            return new InstalledAppsFragment();
-        default:
-            return new CanUpdateAppsFragment();
+            case TabManager.INDEX_AVAILABLE:
+                return new AvailableAppsFragment();
+            case TabManager.INDEX_INSTALLED:
+                return new InstalledAppsFragment();
+            default:
+                return new CanUpdateAppsFragment();
         }
     }
 
@@ -49,14 +49,14 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public String getPageTitle(int i) {
         switch (i) {
-        case TabManager.INDEX_AVAILABLE:
-            return parent.getString(R.string.tab_available_apps);
-        case TabManager.INDEX_INSTALLED:
-            return parent.getString(R.string.tab_installed_apps);
-        case TabManager.INDEX_CAN_UPDATE:
-            return getUpdateTabTitle();
-        default:
-            return "";
+            case TabManager.INDEX_AVAILABLE:
+                return parent.getString(R.string.tab_available_apps);
+            case TabManager.INDEX_INSTALLED:
+                return parent.getString(R.string.tab_installed_apps);
+            case TabManager.INDEX_CAN_UPDATE:
+                return getUpdateTabTitle();
+            default:
+                return "";
         }
     }
 

@@ -353,14 +353,14 @@ public class AppSecurityPermissions {
 
     private List<MyPermissionInfo> getPermissionList(MyPermissionGroupInfo grp, int which) {
         switch (which) {
-        case WHICH_NEW:
-            return grp.mNewPermissions;
-        case WHICH_PERSONAL:
-            return grp.mPersonalPermissions;
-        case WHICH_DEVICE:
-            return grp.mDevicePermissions;
-        default:
-            return grp.mAllPermissions;
+            case WHICH_NEW:
+                return grp.mNewPermissions;
+            case WHICH_PERSONAL:
+                return grp.mPersonalPermissions;
+            case WHICH_DEVICE:
+                return grp.mDevicePermissions;
+            default:
+                return grp.mAllPermissions;
         }
     }
 

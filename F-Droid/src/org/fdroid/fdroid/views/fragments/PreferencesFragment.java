@@ -72,108 +72,108 @@ public class PreferencesFragment extends PreferenceFragment
         int result = 0;
 
         switch (key) {
-        case Preferences.PREF_UPD_INTERVAL:
-            ListPreference listPref = (ListPreference) findPreference(
-                    Preferences.PREF_UPD_INTERVAL);
-            int interval = Integer.parseInt(listPref.getValue());
-            Preference onlyOnWifi = findPreference(
-                    Preferences.PREF_UPD_WIFI_ONLY);
-            onlyOnWifi.setEnabled(interval > 0);
-            if (interval == 0) {
-                listPref.setSummary(R.string.update_interval_zero);
-            } else {
-                listPref.setSummary(listPref.getEntry());
-            }
-            break;
+            case Preferences.PREF_UPD_INTERVAL:
+                ListPreference listPref = (ListPreference) findPreference(
+                        Preferences.PREF_UPD_INTERVAL);
+                int interval = Integer.parseInt(listPref.getValue());
+                Preference onlyOnWifi = findPreference(
+                        Preferences.PREF_UPD_WIFI_ONLY);
+                onlyOnWifi.setEnabled(interval > 0);
+                if (interval == 0) {
+                    listPref.setSummary(R.string.update_interval_zero);
+                } else {
+                    listPref.setSummary(listPref.getEntry());
+                }
+                break;
 
-        case Preferences.PREF_UPD_WIFI_ONLY:
-            checkSummary(key, R.string.automatic_scan_wifi_on);
-            break;
+            case Preferences.PREF_UPD_WIFI_ONLY:
+                checkSummary(key, R.string.automatic_scan_wifi_on);
+                break;
 
-        case Preferences.PREF_UPD_NOTIFY:
-            checkSummary(key, R.string.notify_on);
-            break;
+            case Preferences.PREF_UPD_NOTIFY:
+                checkSummary(key, R.string.notify_on);
+                break;
 
-        case Preferences.PREF_UPD_HISTORY:
-            textSummary(key, R.string.update_history_summ);
-            break;
+            case Preferences.PREF_UPD_HISTORY:
+                textSummary(key, R.string.update_history_summ);
+                break;
 
-        case Preferences.PREF_COMPACT_LAYOUT:
-            checkSummary(key, R.string.compactlayout_on);
-            break;
+            case Preferences.PREF_COMPACT_LAYOUT:
+                checkSummary(key, R.string.compactlayout_on);
+                break;
 
-        case Preferences.PREF_THEME:
-            entrySummary(key);
-            if (changing) {
-                result |= PreferencesActivity.RESULT_RESTART;
-                getActivity().setResult(result);
-            }
-            break;
+            case Preferences.PREF_THEME:
+                entrySummary(key);
+                if (changing) {
+                    result |= PreferencesActivity.RESULT_RESTART;
+                    getActivity().setResult(result);
+                }
+                break;
 
-        case Preferences.PREF_INCOMP_VER:
-            checkSummary(key, R.string.show_incompat_versions_on);
-            break;
+            case Preferences.PREF_INCOMP_VER:
+                checkSummary(key, R.string.show_incompat_versions_on);
+                break;
 
-        case Preferences.PREF_ROOTED:
-            checkSummary(key, R.string.rooted_on);
-            break;
+            case Preferences.PREF_ROOTED:
+                checkSummary(key, R.string.rooted_on);
+                break;
 
-        case Preferences.PREF_IGN_TOUCH:
-            checkSummary(key, R.string.ignoreTouch_on);
-            break;
+            case Preferences.PREF_IGN_TOUCH:
+                checkSummary(key, R.string.ignoreTouch_on);
+                break;
 
-        case Preferences.PREF_LOCAL_REPO_NAME:
-            textSummary(key, R.string.local_repo_name_summary);
-            break;
+            case Preferences.PREF_LOCAL_REPO_NAME:
+                textSummary(key, R.string.local_repo_name_summary);
+                break;
 
-        case Preferences.PREF_LOCAL_REPO_HTTPS:
-            checkSummary(key, R.string.local_repo_https_on);
-            break;
+            case Preferences.PREF_LOCAL_REPO_HTTPS:
+                checkSummary(key, R.string.local_repo_https_on);
+                break;
 
-        case Preferences.PREF_LANGUAGE:
-            langSpinner(key);
-            entrySummary(key);
-            if (changing) {
-                result |= PreferencesActivity.RESULT_RESTART;
-                getActivity().setResult(result);
-                FDroidApp.updateLanguage(this.getActivity());
-            }
-            break;
+            case Preferences.PREF_LANGUAGE:
+                langSpinner(key);
+                entrySummary(key);
+                if (changing) {
+                    result |= PreferencesActivity.RESULT_RESTART;
+                    getActivity().setResult(result);
+                    FDroidApp.updateLanguage(this.getActivity());
+                }
+                break;
 
-        case Preferences.PREF_CACHE_APK:
-            checkSummary(key, R.string.cache_downloaded_on);
-            break;
+            case Preferences.PREF_CACHE_APK:
+                checkSummary(key, R.string.cache_downloaded_on);
+                break;
 
-        case Preferences.PREF_EXPERT:
-            checkSummary(key, R.string.expert_on);
-            break;
+            case Preferences.PREF_EXPERT:
+                checkSummary(key, R.string.expert_on);
+                break;
 
-        case Preferences.PREF_PRIVILEGED_INSTALLER:
-            checkSummary(key, R.string.system_installer_on);
-            break;
+            case Preferences.PREF_PRIVILEGED_INSTALLER:
+                checkSummary(key, R.string.system_installer_on);
+                break;
 
-        case Preferences.PREF_ENABLE_PROXY:
-            CheckBoxPreference checkPref = (CheckBoxPreference) findPreference(key);
-            checkPref.setSummary(R.string.enable_proxy_summary);
-            break;
+            case Preferences.PREF_ENABLE_PROXY:
+                CheckBoxPreference checkPref = (CheckBoxPreference) findPreference(key);
+                checkPref.setSummary(R.string.enable_proxy_summary);
+                break;
 
-        case Preferences.PREF_PROXY_HOST:
-            EditTextPreference textPref = (EditTextPreference) findPreference(key);
-            String text = Preferences.get().getProxyHost();
-            if (TextUtils.isEmpty(text) || text.equals(Preferences.DEFAULT_PROXY_HOST))
-                textPref.setSummary(R.string.proxy_host_summary);
-            else
-                textPref.setSummary(text);
-            break;
+            case Preferences.PREF_PROXY_HOST:
+                EditTextPreference textPref = (EditTextPreference) findPreference(key);
+                String text = Preferences.get().getProxyHost();
+                if (TextUtils.isEmpty(text) || text.equals(Preferences.DEFAULT_PROXY_HOST))
+                    textPref.setSummary(R.string.proxy_host_summary);
+                else
+                    textPref.setSummary(text);
+                break;
 
-        case Preferences.PREF_PROXY_PORT:
-            EditTextPreference textPref2 = (EditTextPreference) findPreference(key);
-            int port = Preferences.get().getProxyPort();
-            if (port == Preferences.DEFAULT_PROXY_PORT)
-                textPref2.setSummary(R.string.proxy_port_summary);
-            else
-                textPref2.setSummary(String.valueOf(port));
-            break;
+            case Preferences.PREF_PROXY_PORT:
+                EditTextPreference textPref2 = (EditTextPreference) findPreference(key);
+                int port = Preferences.get().getProxyPort();
+                if (port == Preferences.DEFAULT_PROXY_PORT)
+                    textPref2.setSummary(R.string.proxy_port_summary);
+                else
+                    textPref2.setSummary(String.valueOf(port));
+                break;
 
         }
     }

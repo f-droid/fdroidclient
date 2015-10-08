@@ -155,17 +155,17 @@ public class ManageReposActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case android.R.id.home:
-            Intent destIntent = new Intent(this, FDroid.class);
-            setResult(RESULT_OK, destIntent);
-            NavUtils.navigateUpTo(this, destIntent);
-            return true;
-        case R.id.action_add_repo:
-            showAddRepo();
-            return true;
-        case R.id.action_update_repo:
-            UpdateService.updateNow(this);
-            return true;
+            case android.R.id.home:
+                Intent destIntent = new Intent(this, FDroid.class);
+                setResult(RESULT_OK, destIntent);
+                NavUtils.navigateUpTo(this, destIntent);
+                return true;
+            case R.id.action_add_repo:
+                showAddRepo();
+                return true;
+            case R.id.action_update_repo:
+                UpdateService.updateNow(this);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -649,11 +649,11 @@ public class ManageReposActivity extends ActionBarActivity {
             Uri uri = RepoProvider.allExceptSwapUri();
             Utils.debugLog(TAG, "Creating repo loader '" + uri + "'.");
             final String[] projection = {
-                    RepoProvider.DataColumns._ID,
-                    RepoProvider.DataColumns.NAME,
-                    RepoProvider.DataColumns.PUBLIC_KEY,
-                    RepoProvider.DataColumns.FINGERPRINT,
-                    RepoProvider.DataColumns.IN_USE
+                RepoProvider.DataColumns._ID,
+                RepoProvider.DataColumns.NAME,
+                RepoProvider.DataColumns.PUBLIC_KEY,
+                RepoProvider.DataColumns.FINGERPRINT,
+                RepoProvider.DataColumns.IN_USE
             };
             return new CursorLoader(getActivity(), uri, projection, null, null, null);
         }

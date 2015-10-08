@@ -21,8 +21,8 @@ public class TorHttpDownloader extends HttpDownloader {
 
     @Override
     protected void setupConnection() throws IOException {
-            SocketAddress sa = new InetSocketAddress("127.0.0.1", 8118);
-            Proxy tor = new Proxy(Proxy.Type.HTTP, sa);
-            connection = (HttpURLConnection) sourceUrl.openConnection(tor);
+        SocketAddress sa = new InetSocketAddress("127.0.0.1", 8118);
+        Proxy tor = new Proxy(Proxy.Type.HTTP, sa);
+        connection = (HttpURLConnection) sourceUrl.openConnection(tor);
     }
 }

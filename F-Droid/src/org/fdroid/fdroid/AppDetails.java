@@ -769,57 +769,57 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         switch (item.getItemId()) {
 
-        case android.R.id.home:
-            if (getIntent().hasExtra(EXTRA_HINT_SEARCHING)) {
-                finish();
-            } else {
-                navigateUp();
-            }
-            return true;
+            case android.R.id.home:
+                if (getIntent().hasExtra(EXTRA_HINT_SEARCHING)) {
+                    finish();
+                } else {
+                    navigateUp();
+                }
+                return true;
 
-        case LAUNCH:
-            launchApk(app.id);
-            return true;
+            case LAUNCH:
+                launchApk(app.id);
+                return true;
 
-        case SHARE:
-            shareApp(app);
-            return true;
+            case SHARE:
+                shareApp(app);
+                return true;
 
-        case INSTALL:
-            // Note that this handles updating as well as installing.
-            if (app.suggestedVercode > 0) {
-                final Apk apkToInstall = ApkProvider.Helper.find(this, app.id, app.suggestedVercode);
-                install(apkToInstall);
-            }
-            return true;
+            case INSTALL:
+                // Note that this handles updating as well as installing.
+                if (app.suggestedVercode > 0) {
+                    final Apk apkToInstall = ApkProvider.Helper.find(this, app.id, app.suggestedVercode);
+                    install(apkToInstall);
+                }
+                return true;
 
-        case UNINSTALL:
-            removeApk(app.id);
-            return true;
+            case UNINSTALL:
+                removeApk(app.id);
+                return true;
 
-        case IGNOREALL:
-            app.ignoreAllUpdates ^= true;
-            item.setChecked(app.ignoreAllUpdates);
-            return true;
+            case IGNOREALL:
+                app.ignoreAllUpdates ^= true;
+                item.setChecked(app.ignoreAllUpdates);
+                return true;
 
-        case IGNORETHIS:
-            if (app.ignoreThisUpdate >= app.suggestedVercode)
-                app.ignoreThisUpdate = 0;
-            else
-                app.ignoreThisUpdate = app.suggestedVercode;
-            item.setChecked(app.ignoreThisUpdate > 0);
-            return true;
+            case IGNORETHIS:
+                if (app.ignoreThisUpdate >= app.suggestedVercode)
+                    app.ignoreThisUpdate = 0;
+                else
+                    app.ignoreThisUpdate = app.suggestedVercode;
+                item.setChecked(app.ignoreThisUpdate > 0);
+                return true;
 
-        case SEND_VIA_BLUETOOTH:
-            /*
-             * If Bluetooth has not been enabled/turned on, then
-             * enabling device discoverability will automatically enable Bluetooth
-             */
-            Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
-            startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
-            // if this is successful, the Bluetooth transfer is started
-            return true;
+            case SEND_VIA_BLUETOOTH:
+                /*
+                 * If Bluetooth has not been enabled/turned on, then
+                 * enabling device discoverability will automatically enable Bluetooth
+                 */
+                Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+                discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
+                startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
+                // if this is successful, the Bluetooth transfer is started
+                return true;
 
         }
         return super.onOptionsItemSelected(item);
@@ -937,19 +937,19 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             if (operation == InstallerCallback.OPERATION_INSTALL) {
                 title = R.string.install_error_title;
                 switch (errorCode) {
-                case ERROR_CODE_CANNOT_PARSE:
-                    body = R.string.install_error_cannot_parse;
-                    break;
-                default: // ERROR_CODE_OTHER
-                    body = R.string.install_error_unknown;
-                    break;
+                    case ERROR_CODE_CANNOT_PARSE:
+                        body = R.string.install_error_cannot_parse;
+                        break;
+                    default: // ERROR_CODE_OTHER
+                        body = R.string.install_error_unknown;
+                        break;
                 }
             } else { // InstallerCallback.OPERATION_DELETE
                 title = R.string.uninstall_error_title;
                 switch (errorCode) {
-                default: // ERROR_CODE_OTHER
-                    body = R.string.uninstall_error_unknown;
-                    break;
+                    default: // ERROR_CODE_OTHER
+                        body = R.string.uninstall_error_unknown;
+                        break;
                 }
             }
             runOnUiThread(new Runnable() {
@@ -1000,21 +1000,21 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         boolean finished = false;
         switch (event.type) {
-        case ApkDownloader.EVENT_ERROR:
-            final int res;
-            if (event.getData().getInt(ApkDownloader.EVENT_DATA_ERROR_TYPE) == ApkDownloader.ERROR_HASH_MISMATCH)
-                res = R.string.corrupt_download;
-            else
-                res = R.string.details_notinstalled;
-            // this must be on the main UI thread
-            Toast.makeText(this, res, Toast.LENGTH_LONG).show();
-            cleanUpFinishedDownload();
-            finished = true;
-            break;
-        case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
-            downloadCompleteInstallApk();
-            finished = true;
-            break;
+            case ApkDownloader.EVENT_ERROR:
+                final int res;
+                if (event.getData().getInt(ApkDownloader.EVENT_DATA_ERROR_TYPE) == ApkDownloader.ERROR_HASH_MISMATCH)
+                    res = R.string.corrupt_download;
+                else
+                    res = R.string.details_notinstalled;
+                // this must be on the main UI thread
+                Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+                cleanUpFinishedDownload();
+                finished = true;
+                break;
+            case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
+                downloadCompleteInstallApk();
+                finished = true;
+                break;
         }
 
         if (finished) {
@@ -1032,9 +1032,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         switch (requestCode) {
-        case REQUEST_ENABLE_BLUETOOTH:
-            fdroidApp.sendViaBluetooth(this, resultCode, app.id);
-            break;
+            case REQUEST_ENABLE_BLUETOOTH:
+                fdroidApp.sendViaBluetooth(this, resultCode, app.id);
+                break;
         }
     }
 
@@ -1381,18 +1381,18 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         private String descAntiFeature(String af) {
             switch (af) {
-            case "Ads":
-                return getString(R.string.antiadslist);
-            case "Tracking":
-                return getString(R.string.antitracklist);
-            case "NonFreeNet":
-                return getString(R.string.antinonfreenetlist);
-            case "NonFreeAdd":
-                return getString(R.string.antinonfreeadlist);
-            case "NonFreeDep":
-                return getString(R.string.antinonfreedeplist);
-            case "UpstreamNonFree":
-                return getString(R.string.antiupstreamnonfreelist);
+                case "Ads":
+                    return getString(R.string.antiadslist);
+                case "Tracking":
+                    return getString(R.string.antitracklist);
+                case "NonFreeNet":
+                    return getString(R.string.antinonfreenetlist);
+                case "NonFreeAdd":
+                    return getString(R.string.antinonfreeadlist);
+                case "NonFreeDep":
+                    return getString(R.string.antinonfreedeplist);
+                case "UpstreamNonFree":
+                    return getString(R.string.antiupstreamnonfreelist);
             }
             return null;
         }

@@ -47,23 +47,23 @@ public class RepoDetailsActivity extends ActionBarActivity {
      * all of this info, otherwise they will be hidden.
      */
     private static final int[] SHOW_IF_EXISTS = {
-            R.id.label_repo_name,
-            R.id.text_repo_name,
-            R.id.text_description,
-            R.id.label_num_apps,
-            R.id.text_num_apps,
-            R.id.label_last_update,
-            R.id.text_last_update,
-            R.id.label_repo_fingerprint,
-            R.id.text_repo_fingerprint,
-            R.id.text_repo_fingerprint_description
+        R.id.label_repo_name,
+        R.id.text_repo_name,
+        R.id.text_description,
+        R.id.label_num_apps,
+        R.id.text_num_apps,
+        R.id.label_last_update,
+        R.id.text_last_update,
+        R.id.label_repo_fingerprint,
+        R.id.text_repo_fingerprint,
+        R.id.text_repo_fingerprint_description
     };
     /**
      * If the repo has <em>not</em> been updated yet, then we only show
      * these, otherwise they are hidden.
      */
     private static final int[] HIDE_IF_EXISTS = {
-            R.id.text_not_yet_updated,
+        R.id.text_not_yet_updated,
     };
     private Repo repo;
     private long repoId;
@@ -95,9 +95,9 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
         repoId = getIntent().getLongExtra(ARG_REPO_ID, 0);
         final String[] projection = {
-                RepoProvider.DataColumns.NAME,
-                RepoProvider.DataColumns.ADDRESS,
-                RepoProvider.DataColumns.FINGERPRINT
+            RepoProvider.DataColumns.NAME,
+            RepoProvider.DataColumns.ADDRESS,
+            RepoProvider.DataColumns.FINGERPRINT
         };
         repo = RepoProvider.Helper.findById(this, repoId, projection);
 
@@ -317,22 +317,22 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
     private void promptForDelete() {
         new AlertDialog.Builder(this)
-                .setTitle(R.string.repo_confirm_delete_title)
-                .setMessage(R.string.repo_confirm_delete_body)
-                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        RepoProvider.Helper.remove(getApplicationContext(), repoId);
-                        finish();
-                    }
-                }).setNegativeButton(android.R.string.cancel,
+            .setTitle(R.string.repo_confirm_delete_title)
+            .setMessage(R.string.repo_confirm_delete_body)
+            .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    RepoProvider.Helper.remove(getApplicationContext(), repoId);
+                    finish();
+                }
+            }).setNegativeButton(android.R.string.cancel,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Do nothing...
                     }
                 }
-        ).show();
+            ).show();
     }
 
 }

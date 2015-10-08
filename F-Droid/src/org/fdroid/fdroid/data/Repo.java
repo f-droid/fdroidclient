@@ -46,45 +46,45 @@ public class Repo extends ValueObject {
 
         for (int i = 0; i < cursor.getColumnCount(); i++) {
             switch (cursor.getColumnName(i)) {
-            case RepoProvider.DataColumns._ID:
-                id = cursor.getInt(i);
-                break;
-            case RepoProvider.DataColumns.LAST_ETAG:
-                lastetag = cursor.getString(i);
-                break;
-            case RepoProvider.DataColumns.ADDRESS:
-                address = cursor.getString(i);
-                break;
-            case RepoProvider.DataColumns.DESCRIPTION:
-                description = cursor.getString(i);
-                break;
-            case RepoProvider.DataColumns.FINGERPRINT:
-                fingerprint = cursor.getString(i);
-                break;
-            case RepoProvider.DataColumns.IN_USE:
-                inuse = cursor.getInt(i) == 1;
-                break;
-            case RepoProvider.DataColumns.LAST_UPDATED:
-                lastUpdated = Utils.parseTime(cursor.getString(i), null);
-                break;
-            case RepoProvider.DataColumns.MAX_AGE:
-                maxage = cursor.getInt(i);
-                break;
-            case RepoProvider.DataColumns.VERSION:
-                version = cursor.getInt(i);
-                break;
-            case RepoProvider.DataColumns.NAME:
-                name = cursor.getString(i);
-                break;
-            case RepoProvider.DataColumns.PUBLIC_KEY:
-                pubkey = cursor.getString(i);
-                break;
-            case RepoProvider.DataColumns.PRIORITY:
-                priority = cursor.getInt(i);
-                break;
-            case RepoProvider.DataColumns.IS_SWAP:
-                isSwap = cursor.getInt(i) == 1;
-                break;
+                case RepoProvider.DataColumns._ID:
+                    id = cursor.getInt(i);
+                    break;
+                case RepoProvider.DataColumns.LAST_ETAG:
+                    lastetag = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.ADDRESS:
+                    address = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.DESCRIPTION:
+                    description = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.FINGERPRINT:
+                    fingerprint = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.IN_USE:
+                    inuse = cursor.getInt(i) == 1;
+                    break;
+                case RepoProvider.DataColumns.LAST_UPDATED:
+                    lastUpdated = Utils.parseTime(cursor.getString(i), null);
+                    break;
+                case RepoProvider.DataColumns.MAX_AGE:
+                    maxage = cursor.getInt(i);
+                    break;
+                case RepoProvider.DataColumns.VERSION:
+                    version = cursor.getInt(i);
+                    break;
+                case RepoProvider.DataColumns.NAME:
+                    name = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.PUBLIC_KEY:
+                    pubkey = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.PRIORITY:
+                    priority = cursor.getInt(i);
+                    break;
+                case RepoProvider.DataColumns.IS_SWAP:
+                    isSwap = cursor.getInt(i) == 1;
+                    break;
             }
         }
     }

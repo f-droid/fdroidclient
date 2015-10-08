@@ -234,17 +234,17 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 .setTitle(R.string.swap_join_same_wifi)
                 .setMessage(R.string.swap_join_same_wifi_desc)
                 .setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Do nothing
-                            }
-                        }
-                ).setPositiveButton(R.string.wifi, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
-                        }
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing
                     }
+                }
+                ).setPositiveButton(R.string.wifi, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
+                    }
+                }
                 ).setNegativeButton(R.string.wifi_ap, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

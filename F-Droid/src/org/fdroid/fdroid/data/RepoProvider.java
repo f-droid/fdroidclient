@@ -281,22 +281,22 @@ public class RepoProvider extends FDroidProvider {
         }
 
         switch (matcher.match(uri)) {
-        case CODE_LIST:
-            // Do nothing (don't restrict query)
-            break;
+            case CODE_LIST:
+                // Do nothing (don't restrict query)
+                break;
 
-        case CODE_SINGLE:
-            selection = (selection == null ? "" : selection + " AND ") +
+            case CODE_SINGLE:
+                selection = (selection == null ? "" : selection + " AND ") +
                     DataColumns._ID + " = " + uri.getLastPathSegment();
-            break;
+                break;
 
-        case CODE_ALL_EXCEPT_SWAP:
-            selection = DataColumns.IS_SWAP + " = 0 OR " + DataColumns.IS_SWAP + " IS NULL ";
-            break;
+            case CODE_ALL_EXCEPT_SWAP:
+                selection = DataColumns.IS_SWAP + " = 0 OR " + DataColumns.IS_SWAP + " IS NULL ";
+                break;
 
-        default:
-            Log.e(TAG, "Invalid URI for repo content provider: " + uri);
-            throw new UnsupportedOperationException("Invalid URI for repo content provider: " + uri);
+            default:
+                Log.e(TAG, "Invalid URI for repo content provider: " + uri);
+                throw new UnsupportedOperationException("Invalid URI for repo content provider: " + uri);
         }
 
         Cursor cursor = read().query(getTableName(), projection, selection,
@@ -346,18 +346,18 @@ public class RepoProvider extends FDroidProvider {
     public int delete(Uri uri, String where, String[] whereArgs) {
 
         switch (matcher.match(uri)) {
-        case CODE_LIST:
-            // Don't support deleting of multiple repos.
-            return 0;
+            case CODE_LIST:
+                // Don't support deleting of multiple repos.
+                return 0;
 
-        case CODE_SINGLE:
-            where = (where == null ? "" : where + " AND ") +
+            case CODE_SINGLE:
+                where = (where == null ? "" : where + " AND ") +
                     "_ID = " + uri.getLastPathSegment();
-            break;
+                break;
 
-        default:
-            Log.e(TAG, "Invalid URI for repo content provider: " + uri);
-            throw new UnsupportedOperationException("Invalid URI for repo content provider: " + uri);
+            default:
+                Log.e(TAG, "Invalid URI for repo content provider: " + uri);
+                throw new UnsupportedOperationException("Invalid URI for repo content provider: " + uri);
         }
 
         int rowsAffected = write().delete(getTableName(), where, whereArgs);

@@ -228,7 +228,7 @@ public class RepoUpdater {
         private ContentValues values;
 
         public void rememberUpdate() {
-             RepoProvider.Helper.update(context, repo, values);
+            RepoProvider.Helper.update(context, repo, values);
         }
 
     }

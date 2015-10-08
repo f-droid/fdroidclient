@@ -119,100 +119,100 @@ public class App extends ValueObject implements Comparable<App> {
         for (int i = 0; i < cursor.getColumnCount(); i++) {
             String n = cursor.getColumnName(i);
             switch (n) {
-            case AppProvider.DataColumns.IS_COMPATIBLE:
-                compatible = cursor.getInt(i) == 1;
-                break;
-            case AppProvider.DataColumns.APP_ID:
-                id = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.NAME:
-                name = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.SUMMARY:
-                summary = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.ICON:
-                icon = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.DESCRIPTION:
-                description = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.LICENSE:
-                license = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.WEB_URL:
-                webURL = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.TRACKER_URL:
-                trackerURL = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.SOURCE_URL:
-                sourceURL = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.CHANGELOG_URL:
-                changelogURL = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.DONATE_URL:
-                donateURL = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.BITCOIN_ADDR:
-                bitcoinAddr = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.LITECOIN_ADDR:
-                litecoinAddr = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.FLATTR_ID:
-                flattrID = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.SuggestedApk.VERSION:
-                suggestedVersion = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.SUGGESTED_VERSION_CODE:
-                suggestedVercode = cursor.getInt(i);
-                break;
-            case AppProvider.DataColumns.UPSTREAM_VERSION_CODE:
-                upstreamVercode = cursor.getInt(i);
-                break;
-            case AppProvider.DataColumns.UPSTREAM_VERSION:
-                upstreamVersion = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.ADDED:
-                added = Utils.parseDate(cursor.getString(i), null);
-                break;
-            case AppProvider.DataColumns.LAST_UPDATED:
-                lastUpdated = Utils.parseDate(cursor.getString(i), null);
-                break;
-            case AppProvider.DataColumns.CATEGORIES:
-                categories = Utils.CommaSeparatedList.make(cursor.getString(i));
-                break;
-            case AppProvider.DataColumns.ANTI_FEATURES:
-                antiFeatures = Utils.CommaSeparatedList.make(cursor.getString(i));
-                break;
-            case AppProvider.DataColumns.REQUIREMENTS:
-                requirements = Utils.CommaSeparatedList.make(cursor.getString(i));
-                break;
-            case AppProvider.DataColumns.IGNORE_ALLUPDATES:
-                ignoreAllUpdates = cursor.getInt(i) == 1;
-                break;
-            case AppProvider.DataColumns.IGNORE_THISUPDATE:
-                ignoreThisUpdate = cursor.getInt(i);
-                break;
-            case AppProvider.DataColumns.ICON_URL:
-                iconUrl = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.ICON_URL_LARGE:
-                iconUrlLarge = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.InstalledApp.VERSION_CODE:
-                installedVersionCode = cursor.getInt(i);
-                break;
-            case AppProvider.DataColumns.InstalledApp.VERSION_NAME:
-                installedVersionName = cursor.getString(i);
-                break;
-            case "_id":
-                break;
-            default:
-                Log.e(TAG, "Unknown column name " + n);
+                case AppProvider.DataColumns.IS_COMPATIBLE:
+                    compatible = cursor.getInt(i) == 1;
+                    break;
+                case AppProvider.DataColumns.APP_ID:
+                    id = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.NAME:
+                    name = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.SUMMARY:
+                    summary = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.ICON:
+                    icon = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.DESCRIPTION:
+                    description = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.LICENSE:
+                    license = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.WEB_URL:
+                    webURL = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.TRACKER_URL:
+                    trackerURL = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.SOURCE_URL:
+                    sourceURL = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.CHANGELOG_URL:
+                    changelogURL = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.DONATE_URL:
+                    donateURL = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.BITCOIN_ADDR:
+                    bitcoinAddr = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.LITECOIN_ADDR:
+                    litecoinAddr = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.FLATTR_ID:
+                    flattrID = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.SuggestedApk.VERSION:
+                    suggestedVersion = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.SUGGESTED_VERSION_CODE:
+                    suggestedVercode = cursor.getInt(i);
+                    break;
+                case AppProvider.DataColumns.UPSTREAM_VERSION_CODE:
+                    upstreamVercode = cursor.getInt(i);
+                    break;
+                case AppProvider.DataColumns.UPSTREAM_VERSION:
+                    upstreamVersion = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.ADDED:
+                    added = Utils.parseDate(cursor.getString(i), null);
+                    break;
+                case AppProvider.DataColumns.LAST_UPDATED:
+                    lastUpdated = Utils.parseDate(cursor.getString(i), null);
+                    break;
+                case AppProvider.DataColumns.CATEGORIES:
+                    categories = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    break;
+                case AppProvider.DataColumns.ANTI_FEATURES:
+                    antiFeatures = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    break;
+                case AppProvider.DataColumns.REQUIREMENTS:
+                    requirements = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    break;
+                case AppProvider.DataColumns.IGNORE_ALLUPDATES:
+                    ignoreAllUpdates = cursor.getInt(i) == 1;
+                    break;
+                case AppProvider.DataColumns.IGNORE_THISUPDATE:
+                    ignoreThisUpdate = cursor.getInt(i);
+                    break;
+                case AppProvider.DataColumns.ICON_URL:
+                    iconUrl = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.ICON_URL_LARGE:
+                    iconUrlLarge = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.InstalledApp.VERSION_CODE:
+                    installedVersionCode = cursor.getInt(i);
+                    break;
+                case AppProvider.DataColumns.InstalledApp.VERSION_NAME:
+                    installedVersionName = cursor.getString(i);
+                    break;
+                case "_id":
+                    break;
+                default:
+                    Log.e(TAG, "Unknown column name " + n);
             }
         }
     }

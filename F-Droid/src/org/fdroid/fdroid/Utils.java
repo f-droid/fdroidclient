@@ -83,7 +83,7 @@ public final class Utils {
             new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.ENGLISH);
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
-            "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
+        "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
 
     public static final String FALLBACK_ICONS_DIR = "/icons/";
 
@@ -611,30 +611,30 @@ public final class Utils {
         public void handleTag(boolean opening, String tag, Editable output,
                 XMLReader reader) {
             switch (tag) {
-            case "ul":
-                if (opening)
-                    listNum = -1;
-                else
-                    output.append('\n');
-                break;
-            case "ol":
-                if (opening)
-                    listNum = 1;
-                else
-                    output.append('\n');
-                break;
-            case "li":
-                if (opening) {
-                    if (listNum == -1) {
-                        output.append("\t• ");
+                case "ul":
+                    if (opening)
+                        listNum = -1;
+                    else
+                        output.append('\n');
+                    break;
+                case "ol":
+                    if (opening)
+                        listNum = 1;
+                    else
+                        output.append('\n');
+                    break;
+                case "li":
+                    if (opening) {
+                        if (listNum == -1) {
+                            output.append("\t• ");
+                        } else {
+                            output.append("\t").append(Integer.toString(listNum)).append(". ");
+                            listNum++;
+                        }
                     } else {
-                        output.append("\t").append(Integer.toString(listNum)).append(". ");
-                        listNum++;
+                        output.append('\n');
                     }
-                } else {
-                    output.append('\n');
-                }
-                break;
+                    break;
             }
         }
     }

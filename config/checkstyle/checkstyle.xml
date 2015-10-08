@@ -34,6 +34,8 @@
         <!--<module name="MethodLength" />-->
         <!--<module name="ParameterNumber" />-->
 
+        <module name="Indentation" />
+
         <module name="EmptyForIteratorPad" />
         <module name="GenericWhitespace" />
         <module name="MethodParamPad" />

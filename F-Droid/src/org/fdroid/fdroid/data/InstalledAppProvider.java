@@ -61,7 +61,7 @@ public class InstalledAppProvider extends FDroidProvider {
         String APPLICATION_LABEL = "applicationLabel";
 
         String[] ALL = {
-                _ID, APP_ID, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
+            _ID, APP_ID, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
         };
 
     }
@@ -142,21 +142,21 @@ public class InstalledAppProvider extends FDroidProvider {
 
         QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
         switch (matcher.match(uri)) {
-        case CODE_LIST:
-            break;
+            case CODE_LIST:
+                break;
 
-        case CODE_SINGLE:
-            selection = selection.add(queryApp(uri.getLastPathSegment()));
-            break;
+            case CODE_SINGLE:
+                selection = selection.add(queryApp(uri.getLastPathSegment()));
+                break;
 
-        case CODE_SEARCH:
-            selection = selection.add(querySearch(uri.getLastPathSegment()));
-            break;
+            case CODE_SEARCH:
+                selection = selection.add(querySearch(uri.getLastPathSegment()));
+                break;
 
-        default:
-            String message = "Invalid URI for installed app content provider: " + uri;
-            Log.e(TAG, message);
-            throw new UnsupportedOperationException(message);
+            default:
+                String message = "Invalid URI for installed app content provider: " + uri;
+                Log.e(TAG, message);
+                throw new UnsupportedOperationException(message);
         }
 
         Cursor cursor = read().query(getTableName(), projection, selection.getSelection(), selection.getArgs(), null, null, sortOrder);

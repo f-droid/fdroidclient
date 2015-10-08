@@ -130,43 +130,43 @@ public class FDroid extends ActionBarActivity {
                 return;
             }
             switch (host) {
-            case "f-droid.org":
-                // http://f-droid.org/app/app.id
-                if (path.startsWith("/repository/browse")) {
-                    // http://f-droid.org/repository/browse?fdid=app.id
-                    appId = data.getQueryParameter("fdid");
-                } else if (path.startsWith("/app")) {
-                    appId = data.getLastPathSegment();
-                    if (appId != null && appId.equals("app")) {
-                        appId = null;
+                case "f-droid.org":
+                    // http://f-droid.org/app/app.id
+                    if (path.startsWith("/repository/browse")) {
+                        // http://f-droid.org/repository/browse?fdid=app.id
+                        appId = data.getQueryParameter("fdid");
+                    } else if (path.startsWith("/app")) {
+                        appId = data.getLastPathSegment();
+                        if (appId != null && appId.equals("app")) {
+                            appId = null;
+                        }
                     }
-                }
-                break;
-            case "details":
-                // market://details?id=app.id
-                appId = data.getQueryParameter("id");
-                break;
-            case "search":
-                // market://search?q=query
-                query = data.getQueryParameter("q");
-                break;
-            case "play.google.com":
-                if (path.startsWith("/store/apps/details")) {
-                    // http://play.google.com/store/apps/details?id=app.id
+                    break;
+                case "details":
+                    // market://details?id=app.id
                     appId = data.getQueryParameter("id");
-                } else if (path.startsWith("/store/search")) {
-                    // http://play.google.com/store/search?q=foo
+                    break;
+                case "search":
+                    // market://search?q=query
                     query = data.getQueryParameter("q");
-                }
-                break;
-            case "apps":
-            case "amazon.com":
-            case "www.amazon.com":
-                // amzn://apps/android?p=app.id
-                // http://amazon.com/gp/mas/dl/android?p=app.id
-                appId = data.getQueryParameter("p");
-                query = data.getQueryParameter("s");
-                break;
+                    break;
+                case "play.google.com":
+                    if (path.startsWith("/store/apps/details")) {
+                        // http://play.google.com/store/apps/details?id=app.id
+                        appId = data.getQueryParameter("id");
+                    } else if (path.startsWith("/store/search")) {
+                        // http://play.google.com/store/search?q=foo
+                        query = data.getQueryParameter("q");
+                    }
+                    break;
+                case "apps":
+                case "amazon.com":
+                case "www.amazon.com":
+                    // amzn://apps/android?p=app.id
+                    // http://amazon.com/gp/mas/dl/android?p=app.id
+                    appId = data.getQueryParameter("p");
+                    query = data.getQueryParameter("s");
+                    break;
             }
         } else if (scheme.equals("fdroid.app")) {
             // fdroid.app:app.id
@@ -247,57 +247,57 @@ public class FDroid extends ActionBarActivity {
 
         switch (item.getItemId()) {
 
-        case R.id.action_update_repo:
-            UpdateService.updateNow(this);
-            return true;
+            case R.id.action_update_repo:
+                UpdateService.updateNow(this);
+                return true;
 
-        case R.id.action_manage_repos:
-            startActivity(new Intent(this, ManageReposActivity.class));
-            return true;
+            case R.id.action_manage_repos:
+                startActivity(new Intent(this, ManageReposActivity.class));
+                return true;
 
-        case R.id.action_settings:
-            Intent prefs = new Intent(getBaseContext(), PreferencesActivity.class);
-            startActivityForResult(prefs, REQUEST_PREFS);
-            return true;
+            case R.id.action_settings:
+                Intent prefs = new Intent(getBaseContext(), PreferencesActivity.class);
+                startActivityForResult(prefs, REQUEST_PREFS);
+                return true;
 
-        case R.id.action_swap:
-            startActivity(new Intent(this, SwapWorkflowActivity.class));
-            return true;
+            case R.id.action_swap:
+                startActivity(new Intent(this, SwapWorkflowActivity.class));
+                return true;
 
-        case R.id.action_search:
-            onSearchRequested();
-            return true;
+            case R.id.action_search:
+                onSearchRequested();
+                return true;
 
-        case R.id.action_bluetooth_apk:
-            /*
-             * If Bluetooth has not been enabled/turned on, then enabling
-             * device discoverability will automatically enable Bluetooth
-             */
-            Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
-            startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
-            // if this is successful, the Bluetooth transfer is started
-            return true;
+            case R.id.action_bluetooth_apk:
+                /*
+                 * If Bluetooth has not been enabled/turned on, then enabling
+                 * device discoverability will automatically enable Bluetooth
+                 */
+                Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+                discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
+                startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
+                // if this is successful, the Bluetooth transfer is started
+                return true;
 
-        case R.id.action_about:
-            View view = LayoutInflater.from(this).inflate(R.layout.about, null);
+            case R.id.action_about:
+                View view = LayoutInflater.from(this).inflate(R.layout.about, null);
 
-            String versionName = Utils.getVersionName(this);
-            if (versionName == null) {
-                versionName = getString(R.string.unknown);
-            }
-            ((TextView) view.findViewById(R.id.version)).setText(versionName);
+                String versionName = Utils.getVersionName(this);
+                if (versionName == null) {
+                    versionName = getString(R.string.unknown);
+                }
+                ((TextView) view.findViewById(R.id.version)).setText(versionName);
 
-            AlertDialog alrt = new AlertDialog.Builder(this).setView(view).create();
-            alrt.setTitle(R.string.about_title);
-            alrt.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.ok),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                        }
-                    });
-            alrt.show();
-            return true;
+                AlertDialog alrt = new AlertDialog.Builder(this).setView(view).create();
+                alrt.setTitle(R.string.about_title);
+                alrt.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.ok),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                            }
+                        });
+                alrt.show();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -306,25 +306,25 @@ public class FDroid extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         switch (requestCode) {
-        case REQUEST_PREFS:
-            // The automatic update settings may have changed, so reschedule (or
-            // unschedule) the service accordingly. It's cheap, so no need to
-            // check if the particular setting has actually been changed.
-            UpdateService.schedule(getBaseContext());
+            case REQUEST_PREFS:
+                // The automatic update settings may have changed, so reschedule (or
+                // unschedule) the service accordingly. It's cheap, so no need to
+                // check if the particular setting has actually been changed.
+                UpdateService.schedule(getBaseContext());
 
-            if ((resultCode & PreferencesActivity.RESULT_RESTART) != 0) {
-                ((FDroidApp) getApplication()).reloadTheme();
-                final Intent intent = getIntent();
-                overridePendingTransition(0, 0);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                finish();
-                overridePendingTransition(0, 0);
-                startActivity(intent);
-            }
-            break;
-        case REQUEST_ENABLE_BLUETOOTH:
-            fdroidApp.sendViaBluetooth(this, resultCode, "org.fdroid.fdroid");
-            break;
+                if ((resultCode & PreferencesActivity.RESULT_RESTART) != 0) {
+                    ((FDroidApp) getApplication()).reloadTheme();
+                    final Intent intent = getIntent();
+                    overridePendingTransition(0, 0);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    finish();
+                    overridePendingTransition(0, 0);
+                    startActivity(intent);
+                }
+                break;
+            case REQUEST_ENABLE_BLUETOOTH:
+                fdroidApp.sendViaBluetooth(this, resultCode, "org.fdroid.fdroid");
+                break;
         }
     }
 

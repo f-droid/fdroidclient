@@ -643,9 +643,9 @@ public class UpdateService extends IntentService implements ProgressListener {
      */
     private List<Apk> getKnownApks(List<Apk> apks) {
         final String[] fields = {
-                ApkProvider.DataColumns.APK_ID,
-                ApkProvider.DataColumns.VERSION,
-                ApkProvider.DataColumns.VERSION_CODE
+            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.VERSION,
+            ApkProvider.DataColumns.VERSION_CODE
         };
         return ApkProvider.Helper.knownApks(this, apks, fields);
     }
