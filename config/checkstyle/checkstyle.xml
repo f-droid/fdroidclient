@@ -70,6 +70,7 @@
         <!--<module name="InnerAssignment" />-->
         <module name="DefaultComesLast" />
         <!--<module name="MissingSwitchDefault" />-->
+        <module name="FallThrough" />
 
         <module name="FinalClass" />
 

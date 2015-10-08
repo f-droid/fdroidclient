@@ -280,6 +280,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 for (ChangeListener listener : localRepoHttpsListeners) {
                     listener.onPreferenceChange();
                 }
+                break;
             case PREF_UNSTABLE_UPDATES:
                 for (ChangeListener listener : unstableUpdatesListeners) {
                     listener.onPreferenceChange();
