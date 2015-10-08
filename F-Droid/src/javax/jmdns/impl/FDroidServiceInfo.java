@@ -62,7 +62,7 @@ public class FDroidServiceInfo extends ServiceInfoImpl implements Parcelable {
         );
 
         int addressCount = in.readInt();
-        for (int i = 0; i < addressCount; i ++) {
+        for (int i = 0; i < addressCount; i++) {
             try {
                 addAddress((Inet4Address) Inet4Address.getByAddress(readBytes(in)));
             } catch (UnknownHostException e) {
@@ -71,7 +71,7 @@ public class FDroidServiceInfo extends ServiceInfoImpl implements Parcelable {
         }
 
         addressCount = in.readInt();
-        for (int i = 0; i < addressCount; i ++) {
+        for (int i = 0; i < addressCount; i++) {
             try {
                 addAddress((Inet6Address) Inet6Address.getByAddress(readBytes(in)));
             } catch (UnknownHostException e) {
@@ -97,13 +97,13 @@ public class FDroidServiceInfo extends ServiceInfoImpl implements Parcelable {
         dest.writeInt(getTextBytes().length);
         dest.writeByteArray(getTextBytes());
         dest.writeInt(getInet4Addresses().length);
-        for (int i = 0; i < getInet4Addresses().length; i ++) {
+        for (int i = 0; i < getInet4Addresses().length; i++) {
             Inet4Address address = getInet4Addresses()[i];
             dest.writeInt(address.getAddress().length);
             dest.writeByteArray(address.getAddress());
         }
         dest.writeInt(getInet6Addresses().length);
-        for (int i = 0; i < getInet6Addresses().length; i ++) {
+        for (int i = 0; i < getInet6Addresses().length; i++) {
             Inet6Address address = getInet6Addresses()[i];
             dest.writeInt(address.getAddress().length);
             dest.writeByteArray(address.getAddress());

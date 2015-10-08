@@ -639,7 +639,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     class PrepareInitialSwapRepo extends PrepareSwapRepo {
         public PrepareInitialSwapRepo() {
-            super(new HashSet<>(Arrays.asList(new String[] { "org.fdroid.fdroid" })));
+            super(new HashSet<>(Arrays.asList(new String[] {"org.fdroid.fdroid"})));
         }
     }
 

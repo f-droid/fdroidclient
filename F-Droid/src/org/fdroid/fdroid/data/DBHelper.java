@@ -112,7 +112,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private void populateRepoNames(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 37) {
             Utils.debugLog(TAG, "Populating repo names from the url");
-            final String[] columns = { "address", "_id" };
+            final String[] columns = {"address", "_id"};
             Cursor cursor = db.query(TABLE_REPO, columns,
                     "name IS NULL OR name = ''", null, null, null, null);
             if (cursor != null) {
@@ -124,7 +124,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         ContentValues values = new ContentValues(1);
                         String name = Repo.addressToName(address);
                         values.put("name", name);
-                        final String[] args = { Long.toString(id) };
+                        final String[] args = {Long.toString(id)};
                         Utils.debugLog(TAG, "Setting repo name to '" + name + "' for repo " + address);
                         db.update(TABLE_REPO, values, "_id = ?", args);
                         cursor.moveToNext();
@@ -293,7 +293,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 20) {
             List<Repo> oldrepos = new ArrayList<>();
             Cursor cursor = db.query(TABLE_REPO,
-                    new String[] { "address", "inuse", "pubkey" },
+                    new String[] {"address", "inuse", "pubkey"},
                     null, null, null, null, null);
             if (cursor != null) {
                 if (cursor.getCount() > 0) {
@@ -368,7 +368,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 db.execSQL("alter table " + TABLE_REPO + " add column fingerprint text");
             List<Repo> oldrepos = new ArrayList<>();
             Cursor cursor = db.query(TABLE_REPO,
-                    new String[] { "address", "pubkey" },
+                    new String[] {"address", "pubkey"},
                     null, null, null, null, null);
             if (cursor != null) {
                 if (cursor.getCount() > 0) {
@@ -386,7 +386,7 @@ public class DBHelper extends SQLiteOpenHelper {
             for (final Repo repo : oldrepos) {
                 ContentValues values = new ContentValues();
                 values.put("fingerprint", Utils.calcFingerprint(repo.pubkey));
-                db.update(TABLE_REPO, values, "address = ?", new String[] { repo.address });
+                db.update(TABLE_REPO, values, "address = ?", new String[] {repo.address});
             }
         }
     }

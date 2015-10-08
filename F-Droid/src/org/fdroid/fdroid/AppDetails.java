@@ -877,7 +877,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     @Nullable
     private String getRepoAddress(Apk apk) {
-        final String[] projection = { RepoProvider.DataColumns.ADDRESS };
+        final String[] projection = {RepoProvider.DataColumns.ADDRESS};
         Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
         if (repo == null || repo.address == null) {
             return null;

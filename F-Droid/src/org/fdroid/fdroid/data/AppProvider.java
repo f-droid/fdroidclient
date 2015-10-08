@@ -31,7 +31,7 @@ public class AppProvider extends FDroidProvider {
         private Helper() {}
 
         public static int count(Context context, Uri uri) {
-            final String[] projection = { AppProvider.DataColumns._COUNT };
+            final String[] projection = {AppProvider.DataColumns._COUNT};
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             int count = 0;
             if (cursor != null) {
@@ -91,7 +91,7 @@ public class AppProvider extends FDroidProvider {
         public static List<String> categories(Context context) {
             final ContentResolver resolver = context.getContentResolver();
             final Uri uri = getContentUri();
-            final String[] projection = { DataColumns.CATEGORIES };
+            final String[] projection = {DataColumns.CATEGORIES};
             final Cursor cursor = resolver.query(uri, projection, null, null, null);
             final Set<String> categorySet = new HashSet<>();
             if (cursor != null) {
@@ -561,7 +561,7 @@ public class AppProvider extends FDroidProvider {
 
     private AppQuerySelection queryRepo(long repoId) {
         final String selection = " fdroid_apk.repo = ? ";
-        final String[] args = { String.valueOf(repoId) };
+        final String[] args = {String.valueOf(repoId)};
         return new AppQuerySelection(selection, args);
     }
 
@@ -616,7 +616,7 @@ public class AppProvider extends FDroidProvider {
 
     private AppQuerySelection querySingle(String id) {
         final String selection = "fdroid_app.id = ?";
-        final String[] args = { id };
+        final String[] args = {id};
         return new AppQuerySelection(selection, args);
     }
 
@@ -636,13 +636,13 @@ public class AppProvider extends FDroidProvider {
 
     private AppQuerySelection queryNewlyAdded() {
         final String selection = "fdroid_app.added > ?";
-        final String[] args = { Utils.formatDate(Preferences.get().calcMaxHistory(), "") };
+        final String[] args = {Utils.formatDate(Preferences.get().calcMaxHistory(), "")};
         return new AppQuerySelection(selection, args);
     }
 
     private AppQuerySelection queryRecentlyUpdated() {
         final String selection = "fdroid_app.added != fdroid_app.lastUpdated AND fdroid_app.lastUpdated > ?";
-        final String[] args = { Utils.formatDate(Preferences.get().calcMaxHistory(), "") };
+        final String[] args = {Utils.formatDate(Preferences.get().calcMaxHistory(), "")};
         return new AppQuerySelection(selection, args);
     }
 

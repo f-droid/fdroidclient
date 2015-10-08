@@ -73,7 +73,7 @@ public class RepoProvider extends FDroidProvider {
                                          String[] projection) {
             ContentResolver resolver = context.getContentResolver();
             Uri uri = RepoProvider.getContentUri();
-            final String[] args = { fieldValue };
+            final String[] args = {fieldValue};
             Cursor cursor = resolver.query(
                     uri, projection, fieldName + " = ?", args, null);
             return cursorToList(cursor);
@@ -159,7 +159,7 @@ public class RepoProvider extends FDroidProvider {
             }
 
             final Uri uri = getContentUri(repo.getId());
-            final String[] args = { Long.toString(repo.getId()) };
+            final String[] args = {Long.toString(repo.getId())};
             resolver.update(uri, values, DataColumns._ID + " = ?", args);
             repo.setValues(values);
         }
@@ -195,7 +195,7 @@ public class RepoProvider extends FDroidProvider {
 
         public static int countAppsForRepo(Context context, long repoId) {
             ContentResolver resolver = context.getContentResolver();
-            final String[] projection = { ApkProvider.DataColumns._COUNT_DISTINCT_ID };
+            final String[] projection = {ApkProvider.DataColumns._COUNT_DISTINCT_ID};
             Uri apkUri = ApkProvider.getRepoUri(repoId);
             Cursor cursor = resolver.query(apkUri, projection, null, null, null);
             int count = 0;

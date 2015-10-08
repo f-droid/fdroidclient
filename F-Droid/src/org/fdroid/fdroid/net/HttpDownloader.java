@@ -101,7 +101,7 @@ public class HttpDownloader extends Downloader {
         if (connection != null)
             return;
         Preferences prefs = Preferences.get();
-        if (prefs.isProxyEnabled() && ! isSwapUrl()) {
+        if (prefs.isProxyEnabled() && !isSwapUrl()) {
             SocketAddress sa = new InetSocketAddress(prefs.getProxyHost(), prefs.getProxyPort());
             Proxy proxy = new Proxy(Proxy.Type.HTTP, sa);
             NetCipher.setProxy(proxy);

@@ -339,7 +339,7 @@ public class ApkProvider extends FDroidProvider {
 
     private QuerySelection queryApp(String appId) {
         final String selection = DataColumns.APK_ID + " = ? ";
-        final String[] args = { appId };
+        final String[] args = {appId};
         return new QuerySelection(selection, args);
     }
 
@@ -356,7 +356,7 @@ public class ApkProvider extends FDroidProvider {
 
     private QuerySelection queryRepo(long repoId) {
         final String selection = DataColumns.REPO_ID + " = ? ";
-        final String[] args = { Long.toString(repoId) };
+        final String[] args = {Long.toString(repoId)};
         return new QuerySelection(selection, args);
     }
 

@@ -55,7 +55,7 @@ public class AppDiff {
         String pkgName = mPkgInfo.packageName;
         // Check if there is already a package on the device with this name
         // but it has been renamed to something else.
-        final String[] oldName = mPm.canonicalToCurrentPackageNames(new String[] { pkgName });
+        final String[] oldName = mPm.canonicalToCurrentPackageNames(new String[] {pkgName});
         if (oldName != null && oldName.length > 0 && oldName[0] != null) {
             pkgName = oldName[0];
             mPkgInfo.packageName = pkgName;

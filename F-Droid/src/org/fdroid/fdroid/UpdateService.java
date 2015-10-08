@@ -582,7 +582,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     private List<String> getKnownAppIdsFromProvider(List<App> apps) {
 
         final Uri uri = AppProvider.getContentUri(apps);
-        final String[] fields = { AppProvider.DataColumns.APP_ID };
+        final String[] fields = {AppProvider.DataColumns.APP_ID};
         Cursor cursor = getContentResolver().query(uri, fields, null, null, null);
 
         int knownIdCount = cursor != null ? cursor.getCount() : 0;
