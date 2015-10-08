@@ -16,8 +16,8 @@ public class BluetoothConnection {
 
     private static final String TAG = "BluetoothConnection";
 
-    private InputStream input = null;
-    private OutputStream output = null;
+    private InputStream input;
+    private OutputStream output;
     protected final BluetoothSocket socket;
 
     public BluetoothConnection(BluetoothSocket socket) throws IOException {

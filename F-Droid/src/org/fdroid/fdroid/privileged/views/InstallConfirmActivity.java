@@ -56,8 +56,8 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
     // Buttons to indicate user acceptance
     private Button mOk;
     private Button mCancel;
-    CaffeinatedScrollView mScrollView = null;
-    private boolean mOkCanInstall = false;
+    CaffeinatedScrollView mScrollView;
+    private boolean mOkCanInstall;
 
     private static final String TAB_ID_ALL = "all";
     private static final String TAB_ID_NEW = "new";

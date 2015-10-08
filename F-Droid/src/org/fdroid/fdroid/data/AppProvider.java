@@ -237,7 +237,7 @@ public class AppProvider extends FDroidProvider {
      */
     private static class AppQuerySelection extends QuerySelection {
 
-        private boolean naturalJoinToInstalled = false;
+        private boolean naturalJoinToInstalled;
 
         public AppQuerySelection() {
             // The same as no selection, because "1" will always resolve to true when executing the SQL query.
@@ -286,10 +286,10 @@ public class AppProvider extends FDroidProvider {
 
     private static class Query extends QueryBuilder {
 
-        private boolean isSuggestedApkTableAdded = false;
-        private boolean requiresInstalledTable = false;
-        private boolean categoryFieldAdded = false;
-        private boolean countFieldAppended = false;
+        private boolean isSuggestedApkTableAdded;
+        private boolean requiresInstalledTable;
+        private boolean categoryFieldAdded;
+        private boolean countFieldAppended;
 
         @Override
         protected String getRequiredTables() {

@@ -31,9 +31,9 @@ public abstract class Downloader {
     private final File outputFile;
 
     protected final URL sourceUrl;
-    protected String cacheTag = null;
-    protected int bytesRead = 0;
-    protected int totalBytes = 0;
+    protected String cacheTag;
+    protected int bytesRead;
+    protected int totalBytes;
 
     public abstract InputStream getInputStream() throws IOException;
     public abstract void close();

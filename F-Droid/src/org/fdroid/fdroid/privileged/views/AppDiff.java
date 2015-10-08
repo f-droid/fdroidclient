@@ -28,7 +28,7 @@ public class AppDiff {
     public final PackageManager mPm;
     public final PackageInfo mPkgInfo;
 
-    public ApplicationInfo mInstalledAppInfo = null;
+    public ApplicationInfo mInstalledAppInfo;
 
     public AppDiff(PackageManager mPm, Uri mPackageURI) {
         this.mPm = mPm;

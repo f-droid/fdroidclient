@@ -78,7 +78,7 @@ public class FDroidApp extends Application {
     private static final org.spongycastle.jce.provider.BouncyCastleProvider spongyCastleProvider;
 
     @SuppressWarnings("unused")
-    BluetoothAdapter bluetoothAdapter = null;
+    BluetoothAdapter bluetoothAdapter;
 
     static {
         spongyCastleProvider = new org.spongycastle.jce.provider.BouncyCastleProvider();

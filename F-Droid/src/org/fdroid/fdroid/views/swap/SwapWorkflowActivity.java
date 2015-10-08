@@ -115,9 +115,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private InnerView currentView;
-    private boolean hasPreparedLocalRepo = false;
-    private PrepareSwapRepo updateSwappableAppsTask = null;
-    private NewRepoConfig confirmSwapConfig = null;
+    private boolean hasPreparedLocalRepo;
+    private PrepareSwapRepo updateSwappableAppsTask;
+    private NewRepoConfig confirmSwapConfig;
 
     @NonNull
     private final ServiceConnection serviceConnection = new ServiceConnection() {
@@ -138,7 +138,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     };
 
     @Nullable
-    private SwapService service = null;
+    private SwapService service;
 
     @NonNull
     public SwapService getService() {

@@ -60,11 +60,11 @@ public class FDroid extends ActionBarActivity {
 
     public static final String ACTION_ADD_REPO = "org.fdroid.fdroid.FDroid.ACTION_ADD_REPO";
 
-    private FDroidApp fdroidApp = null;
+    private FDroidApp fdroidApp;
 
     private ViewPager viewPager;
 
-    private TabManager tabManager = null;
+    private TabManager tabManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

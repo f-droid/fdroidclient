@@ -91,7 +91,7 @@ public class ManageReposActivity extends ActionBarActivity {
      * True if activity started with an intent such as from QR code. False if
      * opened from, e.g. the main menu.
      */
-    private boolean isImportingRepo = false;
+    private boolean isImportingRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

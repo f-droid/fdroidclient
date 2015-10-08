@@ -47,6 +47,7 @@
         <module name="WhitespaceAfter" />
         <module name="WhitespaceAround" />
         <module name="UnnecessaryParentheses" />
+        <module name="ExplicitInitialization" />
 
         <module name="ModifierOrder" />
         <module name="RedundantModifier" />

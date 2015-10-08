@@ -305,7 +305,7 @@ public class ApkProvider extends FDroidProvider {
 
     private static class Query extends QueryBuilder {
 
-        private boolean repoTableRequired = false;
+        private boolean repoTableRequired;
 
         @Override
         protected String getRequiredTables() {

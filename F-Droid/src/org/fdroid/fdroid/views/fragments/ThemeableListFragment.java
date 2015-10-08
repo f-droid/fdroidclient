@@ -25,7 +25,7 @@ public abstract class ThemeableListFragment extends ListFragment {
         return headerView;
     }
 
-    private View headerView = null;
+    private View headerView;
 
     private View getHeaderView(LayoutInflater inflater, ViewGroup container) {
         if (getHeaderLayout() > 0) {

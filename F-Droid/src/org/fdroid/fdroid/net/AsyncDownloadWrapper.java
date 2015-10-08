@@ -17,7 +17,7 @@ class AsyncDownloadWrapper extends Handler implements AsyncDownloader {
     private static final String MSG_DATA            = "data";
 
     private final Downloader downloader;
-    private DownloadThread downloadThread = null;
+    private DownloadThread downloadThread;
 
     private final Listener listener;
 

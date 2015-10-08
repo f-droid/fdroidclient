@@ -42,8 +42,8 @@ public class AvailableAppsFragment extends AppListFragment implements
 
     private List<String> categories;
     private Spinner categorySpinner;
-    private String currentCategory = null;
-    private AppListAdapter adapter = null;
+    private String currentCategory;
+    private AppListAdapter adapter;
 
     @Override
     protected String getFromTitle() {

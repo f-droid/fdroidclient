@@ -40,8 +40,8 @@ public class RepoXMLHandler extends DefaultHandler {
     private final List<App> apps = new ArrayList<>();
     private final List<Apk> apksList = new ArrayList<>();
 
-    private App curapp = null;
-    private Apk curapk = null;
+    private App curapp;
+    private Apk curapk;
     private final StringBuilder curchars = new StringBuilder();
 
     // After processing the XML, these will be -1 if the index didn't specify

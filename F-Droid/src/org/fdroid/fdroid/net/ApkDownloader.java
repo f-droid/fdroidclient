@@ -61,7 +61,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     public static final int ERROR_DOWNLOAD_FAILED = 102;
 
     private static final String EVENT_SOURCE_ID = "sourceId";
-    private static long downloadIdCounter = 0;
+    private static long downloadIdCounter;
 
     /**
      * Used as a key to pass data through with an error event, explaining the type of event.
@@ -76,8 +76,8 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     @NonNull private final SanitizedFile potentiallyCachedFile;
 
     private ProgressListener listener;
-    private AsyncDownloader dlWrapper = null;
-    private boolean isComplete = false;
+    private AsyncDownloader dlWrapper;
+    private boolean isComplete;
 
     private final long id = ++downloadIdCounter;
 

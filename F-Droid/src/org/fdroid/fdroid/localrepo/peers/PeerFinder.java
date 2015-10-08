@@ -16,7 +16,7 @@ public abstract class PeerFinder<T extends Peer> {
 
     private static final String TAG = "PeerFinder";
 
-    protected boolean isScanning = false;
+    protected boolean isScanning;
     protected final Context context;
 
     public abstract void scan();

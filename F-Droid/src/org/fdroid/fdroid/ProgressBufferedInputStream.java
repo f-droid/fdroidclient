@@ -16,7 +16,7 @@ public class ProgressBufferedInputStream extends BufferedInputStream {
     final Bundle data;
     final int totalBytes;
 
-    int currentBytes = 0;
+    int currentBytes;
 
     /**
      * Reports progress to the specified {@link ProgressListener}, with the

@@ -82,8 +82,8 @@ public final class LocalRepoManager {
     private final Map<String, App> apps = new HashMap<>();
 
     public final SanitizedFile xmlIndex;
-    private SanitizedFile xmlIndexJar = null;
-    private SanitizedFile xmlIndexJarUnsigned = null;
+    private SanitizedFile xmlIndexJar;
+    private SanitizedFile xmlIndexJarUnsigned;
     public final SanitizedFile webRoot;
     public final SanitizedFile fdroidDir;
     public final SanitizedFile fdroidDirCaps;

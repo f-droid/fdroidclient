@@ -18,7 +18,7 @@ public class NewRepoConfig {
     private static final String TAG = "NewRepoConfig";
 
     private String errorMessage;
-    private boolean isValidRepo = false;
+    private boolean isValidRepo;
 
     private String uriString;
     private String host;

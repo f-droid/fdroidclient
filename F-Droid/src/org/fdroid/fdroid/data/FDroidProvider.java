@@ -25,7 +25,7 @@ public abstract class FDroidProvider extends ContentProvider {
 
     private DBHelper dbHelper;
 
-    private boolean isApplyingBatch = false;
+    private boolean isApplyingBatch;
 
     protected abstract String getTableName();
 

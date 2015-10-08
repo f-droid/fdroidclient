@@ -37,11 +37,11 @@ public final class QRCodeEncoder {
     private static final int BLACK = 0xFF000000;
 
     private int dimension = Integer.MIN_VALUE;
-    private String contents = null;
-    private String displayContents = null;
-    private String title = null;
-    private BarcodeFormat format = null;
-    private boolean encoded = false;
+    private String contents;
+    private String displayContents;
+    private String title;
+    private BarcodeFormat format;
+    private boolean encoded;
 
     public QRCodeEncoder(String data, Bundle bundle, String type, String format, int dimension) {
         this.dimension = dimension;

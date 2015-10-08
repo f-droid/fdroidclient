@@ -18,17 +18,17 @@ public final class BluetoothSwap extends SwapType {
     private static final String TAG = "BluetoothSwap";
     public static final String BLUETOOTH_NAME_TAG = "FDroid:";
 
-    private static BluetoothSwap mInstance = null;
+    private static BluetoothSwap mInstance;
 
     @NonNull
     private final BluetoothAdapter adapter;
     private BroadcastReceiver receiver;
-    private boolean isDiscoverable = false;
+    private boolean isDiscoverable;
 
     @Nullable
     private BluetoothServer server;
 
-    private String deviceBluetoothName = null;
+    private String deviceBluetoothName;
 
     public static SwapType create(@NonNull Context context) {
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();

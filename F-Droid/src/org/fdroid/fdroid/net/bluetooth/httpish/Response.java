@@ -152,7 +152,7 @@ public class Response {
         private InputStream contentStream;
         private int statusCode = 200;
         private int fileSize = -1;
-        private String etag = null;
+        private String etag;
 
         public Builder() { }
 

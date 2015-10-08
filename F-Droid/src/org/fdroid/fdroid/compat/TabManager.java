@@ -23,7 +23,7 @@ public class TabManager {
     private final ViewPager pager;
     private final FDroid parent;
     private final ActionBar actionBar;
-    private Spinner actionBarSpinner = null;
+    private Spinner actionBarSpinner;
 
     // Used to make sure we only search for the action bar spinner once
     // in each orientation.

@@ -7,8 +7,8 @@ abstract class QueryBuilder {
 
     private final List<String> fields = new ArrayList<>();
     private final StringBuilder tables = new StringBuilder(getRequiredTables());
-    private String selection = null;
-    private String orderBy = null;
+    private String selection;
+    private String orderBy;
 
     protected abstract String getRequiredTables();
 

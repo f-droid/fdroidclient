@@ -353,7 +353,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
     }
 
-    private boolean inProcessOfChangingConfiguration = false;
+    private boolean inProcessOfChangingConfiguration;
 
     /**
      * Attempt to extract the appId from the intent which launched this activity.
@@ -1424,8 +1424,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private TextView progressPercent;
         private ImageButton cancelButton;
         protected final DisplayImageOptions displayImageOptions;
-        public static boolean installed = false;
-        public static boolean updateWanted = false;
+        public static boolean installed;
+        public static boolean updateWanted;
 
         public AppDetailsHeaderFragment() {
             displayImageOptions = new DisplayImageOptions.Builder()
@@ -1643,7 +1643,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         private AppDetailsData data;
         private AppInstallListener installListener;
-        private AppDetailsSummaryFragment summaryFragment = null;
+        private AppDetailsSummaryFragment summaryFragment;
 
         private FrameLayout headerView;
 

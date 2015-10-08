@@ -23,7 +23,7 @@ public class WifiSwap extends SwapType {
 
     private static final String TAG = "WifiSwap";
 
-    private Handler webServerThreadHandler = null;
+    private Handler webServerThreadHandler;
     private LocalHTTPD localHttpd;
     private final BonjourBroadcast bonjourBroadcast;
 

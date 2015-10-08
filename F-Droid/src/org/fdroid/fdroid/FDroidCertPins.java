@@ -57,7 +57,7 @@ public class FDroidCertPins {
         "87e3bf322427c1405d2736c381e01d1a71d4a039",
     };
 
-    public static List<String> PINLIST = null;
+    public static List<String> PINLIST;
 
     public static String[] getPinList() {
         if (PINLIST == null) {

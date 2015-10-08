@@ -53,8 +53,8 @@ public class RepoUpdater {
     @NonNull protected final Repo repo;
     private List<App> apps = new ArrayList<>();
     private List<Apk> apks = new ArrayList<>();
-    private RepoUpdateRememberer rememberer = null;
-    protected boolean hasChanged = false;
+    private RepoUpdateRememberer rememberer;
+    protected boolean hasChanged;
     @Nullable protected ProgressListener progressListener;
 
     /**

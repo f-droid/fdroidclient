@@ -35,7 +35,7 @@ public class BluetoothServer extends Thread {
 
     private final File webRoot;
     private final BluetoothSwap swap;
-    private boolean isRunning = false;
+    private boolean isRunning;
 
     public BluetoothServer(BluetoothSwap swap, File webRoot) {
         this.webRoot = webRoot;
