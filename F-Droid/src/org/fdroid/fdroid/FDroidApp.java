@@ -140,7 +140,7 @@ public class FDroidApp extends Application {
     public static void initWifiSettings() {
         port = 8888;
         ipAddressString = null;
-        subnetInfo = (new SubnetUtils("0.0.0.0/32").getInfo());
+        subnetInfo = new SubnetUtils("0.0.0.0/32").getInfo();
         ssid = "";
         bssid = "";
     }

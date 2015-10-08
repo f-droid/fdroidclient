@@ -69,7 +69,7 @@ public class FDroid extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        fdroidApp = ((FDroidApp) getApplication());
+        fdroidApp = (FDroidApp) getApplication();
         fdroidApp.applyTheme(this);
 
         super.onCreate(savedInstanceState);

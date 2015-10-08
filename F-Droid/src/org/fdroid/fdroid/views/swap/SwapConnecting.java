@@ -150,9 +150,9 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            TextView progressText = ((TextView) findViewById(R.id.heading));
-            TextView errorText    = ((TextView) findViewById(R.id.error));
-            Button   backButton   = ((Button) findViewById(R.id.back));
+            TextView progressText = (TextView) findViewById(R.id.heading);
+            TextView errorText    = (TextView) findViewById(R.id.error);
+            Button   backButton   = (Button) findViewById(R.id.back);
 
             String message;
             if (intent.hasExtra(getMessageExtra())) {

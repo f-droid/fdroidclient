@@ -301,7 +301,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     while (!cursor.isAfterLast()) {
                         Repo repo = new Repo();
                         repo.address = cursor.getString(0);
-                        repo.inuse = (cursor.getInt(1) == 1);
+                        repo.inuse = cursor.getInt(1) == 1;
                         repo.pubkey = cursor.getString(2);
                         oldrepos.add(repo);
                         cursor.moveToNext();
@@ -491,8 +491,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static boolean columnExists(SQLiteDatabase db,
             String table, String column) {
-        return (db.rawQuery("select * from " + table + " limit 0,1", null)
-                .getColumnIndex(column) != -1);
+        return db.rawQuery("select * from " + table + " limit 0,1", null)
+                .getColumnIndex(column) != -1;
     }
 
 }

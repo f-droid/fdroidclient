@@ -46,6 +46,7 @@
         <module name="TypecastParenPad" />
         <module name="WhitespaceAfter" />
         <module name="WhitespaceAround" />
+        <module name="UnnecessaryParentheses" />
 
         <module name="ModifierOrder" />
         <module name="RedundantModifier" />
@@ -63,6 +64,7 @@
         <!--<module name="MissingSwitchDefault" />-->
 
         <module name="FinalClass" />
+
         <!--<module name="HideUtilityClassConstructor" />-->
         <!--<module name="InterfaceIsType" />-->
         <!--<module name="VisibilityModifier" />-->

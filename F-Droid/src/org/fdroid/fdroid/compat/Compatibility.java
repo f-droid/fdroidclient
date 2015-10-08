@@ -11,7 +11,7 @@ public abstract class Compatibility {
 
     // like maxSdkVersion
     protected static boolean upToApi(int apiLevel) {
-        return (apiLevel < 1 || getApi() <= apiLevel);
+        return apiLevel < 1 || getApi() <= apiLevel;
     }
 
     protected static int getApi() {

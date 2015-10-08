@@ -44,13 +44,13 @@ public class PrivilegedService extends Service {
 
     private boolean hasPrivilegedPermissionsImpl() {
         boolean hasInstallPermission =
-                (getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, getPackageName())
-                        == PackageManager.PERMISSION_GRANTED);
+                getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, getPackageName())
+                        == PackageManager.PERMISSION_GRANTED;
         boolean hasDeletePermission =
-                (getPackageManager().checkPermission(Manifest.permission.DELETE_PACKAGES, getPackageName())
-                        == PackageManager.PERMISSION_GRANTED);
+                getPackageManager().checkPermission(Manifest.permission.DELETE_PACKAGES, getPackageName())
+                        == PackageManager.PERMISSION_GRANTED;
 
-        return (hasInstallPermission && hasDeletePermission);
+        return hasInstallPermission && hasDeletePermission;
     }
 
     private void installPackageImpl(Uri packageURI, int flags, String installerPackageName,

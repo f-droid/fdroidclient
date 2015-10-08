@@ -373,7 +373,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        fdroidApp = ((FDroidApp) getApplication());
+        fdroidApp = (FDroidApp) getApplication();
         fdroidApp.applyTheme(this);
 
         super.onCreate(savedInstanceState);
@@ -1523,7 +1523,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
          * Shows or hides progress bar and related views.
          */
         private void setProgressVisible(boolean visible) {
-            int state = (visible) ? View.VISIBLE : View.GONE;
+            int state = visible ? View.VISIBLE : View.GONE;
             progressBar.setVisibility(state);
             progressSize.setVisibility(state);
             progressPercent.setVisibility(state);
@@ -1614,7 +1614,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 if (updateWanted) {
                     if (getApp().suggestedVercode > 0) {
                         final Apk apkToInstall = ApkProvider.Helper.find(activity, getApp().id, getApp().suggestedVercode);
-                        (activity).install(apkToInstall);
+                        activity.install(apkToInstall);
                         return;
                     }
                 }

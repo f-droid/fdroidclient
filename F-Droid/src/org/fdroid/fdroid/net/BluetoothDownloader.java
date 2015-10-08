@@ -88,11 +88,9 @@ public class BluetoothDownloader extends Downloader {
     @Override
     public boolean isCached() {
         FileDetails details = getFileDetails();
-        return (
-            details != null &&
+        return details != null &&
             details.getCacheTag() != null &&
-            details.getCacheTag().equals(getCacheTag())
-            );
+            details.getCacheTag().equals(getCacheTag());
     }
 
     @Override

@@ -462,7 +462,7 @@ public final class Utils {
         }
 
         public static String str(CommaSeparatedList instance) {
-            return (instance == null ? null : instance.toString());
+            return instance == null ? null : instance.toString();
         }
 
         @Override

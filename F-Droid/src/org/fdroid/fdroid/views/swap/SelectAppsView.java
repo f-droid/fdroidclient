@@ -173,7 +173,7 @@ public class SelectAppsView extends ListView implements
         adapter.swapCursor(cursor);
 
         for (int i = 0; i < getCount(); i++) {
-            Cursor c = ((Cursor) getItemAtPosition(i));
+            Cursor c = (Cursor) getItemAtPosition(i);
             String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
             getState().ensureFDroidSelected();
             for (String selected : getState().getAppsToSwap()) {

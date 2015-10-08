@@ -255,8 +255,8 @@ public class PrivilegedInstaller extends Installer {
             return;
         }
 
-        final boolean isSystem = ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
-        final boolean isUpdate = ((appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0);
+        final boolean isSystem = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
+        final boolean isUpdate = (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
 
         if (isSystem && !isUpdate) {
             // Cannot remove system apps unless we're uninstalling updates

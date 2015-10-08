@@ -213,7 +213,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
             int textResource = getManager().isBluetoothDiscoverable() ? R.string.swap_visible_bluetooth : R.string.swap_not_visible_bluetooth;
             textBluetoothVisible.setText(textResource);
 
-            final SwitchCompat bluetoothSwitch = ((SwitchCompat) findViewById(R.id.switch_bluetooth));
+            final SwitchCompat bluetoothSwitch = (SwitchCompat) findViewById(R.id.switch_bluetooth);
             Utils.debugLog(TAG, getManager().isBluetoothDiscoverable() ? "Initially marking switch as checked, because Bluetooth is discoverable." : "Initially marking switch as not-checked, because Bluetooth is not discoverable.");
             bluetoothSwitch.setChecked(getManager().isBluetoothDiscoverable());
             bluetoothSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

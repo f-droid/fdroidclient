@@ -120,7 +120,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
 
             @Override
             protected Boolean doInBackground(Void... params) {
-                return (Shell.SU.version(true) != null);
+                return Shell.SU.version(true) != null;
             }
 
             @Override

@@ -93,7 +93,7 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
             mScrollView = new CaffeinatedScrollView(this);
             mScrollView.setFillViewport(true);
             final boolean newPermissionsFound =
-                    (perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW) > 0);
+                    perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW) > 0;
             if (newPermissionsFound) {
                 permVisible = true;
                 mScrollView.addView(perms.getPermissionsView(

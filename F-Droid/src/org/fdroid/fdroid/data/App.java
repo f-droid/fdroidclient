@@ -340,8 +340,8 @@ public class App extends ValueObject implements Comparable<App> {
         apk.sig = Utils.hashBytes(fdroidSig, "md5");
 
         this.installedApk = apk;
-        this.system = ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
-        this.updatedSystemApp = ((appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0);
+        this.system = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
+        this.updatedSystemApp = (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
         this.uninstallable = !this.system || this.updatedSystemApp;
     }
 
@@ -405,7 +405,7 @@ public class App extends ValueObject implements Comparable<App> {
     public boolean hasUpdates() {
         boolean updates = false;
         if (suggestedVercode > 0) {
-            updates = (installedVersionCode > 0 && installedVersionCode < suggestedVercode);
+            updates = installedVersionCode > 0 && installedVersionCode < suggestedVercode;
         }
         return updates;
     }
