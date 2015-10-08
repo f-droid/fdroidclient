@@ -40,7 +40,7 @@ Some key points:
 * Braces are always used after if, for and while
 
 The current code base doesn't follow it entirely, but new code should follow
-it.
+it. We enforce some of these, but not all, via checkstyle.
 
 ## Debugging
 
