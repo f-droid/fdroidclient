@@ -747,27 +747,23 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             if (service == null) {
                 message = "No swap service";
             } else {
-                {
-                    String bluetooth = service.getBluetoothSwap().isConnected() ? "Y" : " N";
-                    String wifi = service.getWifiSwap().isConnected() ? "Y" : " N";
-                    String mdns = service.getWifiSwap().getBonjour().isConnected() ? "Y" : " N";
-                    message += "Swap { BT: " + bluetooth + ", WiFi: " + wifi + ", mDNS: " + mdns + "}, ";
+                String bluetooth = service.getBluetoothSwap().isConnected() ? "Y" : " N";
+                String wifi = service.getWifiSwap().isConnected() ? "Y" : " N";
+                String mdns = service.getWifiSwap().getBonjour().isConnected() ? "Y" : " N";
+                message += "Swap { BT: " + bluetooth + ", WiFi: " + wifi + ", mDNS: " + mdns + "}, ";
+
+                BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+                bluetooth = "N/A";
+                if (adapter != null) {
+                    Map<Integer, String> scanModes = new HashMap<>(3);
+                    scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE, "CON");
+                    scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, "CON_DISC");
+                    scanModes.put(BluetoothAdapter.SCAN_MODE_NONE, "NONE");
+                    bluetooth = "\"" + adapter.getName() + "\" - " + scanModes.get(adapter.getScanMode());
                 }
 
-                {
-                    BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-                    String bluetooth = "N/A";
-                    if (adapter != null) {
-                        Map<Integer, String> scanModes = new HashMap<>(3);
-                        scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE, "CON");
-                        scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, "CON_DISC");
-                        scanModes.put(BluetoothAdapter.SCAN_MODE_NONE, "NONE");
-                        bluetooth = "\"" + adapter.getName() + "\" - " + scanModes.get(adapter.getScanMode());
-                    }
-
-                    String wifi = service.getBonjourFinder().isScanning() ? "Y" : " N";
-                    message += "Find { BT: " + bluetooth + ", WiFi: " + wifi + "}";
-                }
+                wifi = service.getBonjourFinder().isScanning() ? "Y" : " N";
+                message += "Find { BT: " + bluetooth + ", WiFi: " + wifi + "}";
             }
 
             Date now = new Date();
