@@ -1,5 +1,5 @@
 include ':F-Droid'
-include ':F-Droid-Privileged'
+include ':Privileged-Extension'
 include ':privileged-api-lib'
 if (hasProperty('sourceDeps')) {
 	include ':extern:support-v4-preferencefragment'
