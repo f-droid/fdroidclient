@@ -49,7 +49,7 @@ public abstract class SwapType {
         }
     }
 
-    protected void onStopped() {}
+    protected void onStopped() { }
 
     /**
      * Sends either a {@link org.fdroid.fdroid.localrepo.SwapService#EXTRA_STARTING},

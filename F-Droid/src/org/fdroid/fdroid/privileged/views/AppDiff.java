@@ -68,7 +68,7 @@ public class AppDiff {
             // data we still want to count it as "installed".
             mInstalledAppInfo = mPm.getApplicationInfo(pkgName,
                     PackageManager.GET_UNINSTALLED_PACKAGES);
-            if ((mInstalledAppInfo.flags&ApplicationInfo.FLAG_INSTALLED) == 0) {
+            if ((mInstalledAppInfo.flags & ApplicationInfo.FLAG_INSTALLED) == 0) {
                 mInstalledAppInfo = null;
             }
         } catch (PackageManager.NameNotFoundException e) {

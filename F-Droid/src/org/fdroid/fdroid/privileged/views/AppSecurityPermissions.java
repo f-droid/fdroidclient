@@ -65,9 +65,9 @@ public class AppSecurityPermissions {
 
     private static final String TAG = "AppSecurityPermissions";
 
-    public static final int WHICH_PERSONAL = 1<<0;
-    public static final int WHICH_DEVICE = 1<<1;
-    public static final int WHICH_NEW = 1<<2;
+    public static final int WHICH_PERSONAL = 1 << 0;
+    public static final int WHICH_DEVICE = 1 << 1;
+    public static final int WHICH_NEW = 1 << 2;
 
     private final Context mContext;
     private final LayoutInflater mInflater;
@@ -276,12 +276,12 @@ public class AppSecurityPermissions {
         }
         final int[] flagsList = getRequestedPermissionFlags(info);
 
-        for (int i=0; i<strList.length; i++) {
+        for (int i = 0; i < strList.length; i++) {
             String permName = strList[i];
             // If we are only looking at an existing app, then we only
             // care about permissions that have actually been granted to it.
             if (installedPkgInfo != null && info == installedPkgInfo) {
-                if ((flagsList[i]&PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0) {
+                if ((flagsList[i] & PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0) {
                     continue;
                 }
             }
@@ -292,7 +292,7 @@ public class AppSecurityPermissions {
                 }
                 int existingIndex = -1;
                 if (installedPkgInfo != null && installedPkgInfo.requestedPermissions != null) {
-                    for (int j=0; j<installedPkgInfo.requestedPermissions.length; j++) {
+                    for (int j = 0; j < installedPkgInfo.requestedPermissions.length; j++) {
                         if (permName.equals(installedPkgInfo.requestedPermissions[j])) {
                             existingIndex = j;
                             break;
@@ -337,7 +337,7 @@ public class AppSecurityPermissions {
                     mPermGroups.put(tmpPermInfo.group, group);
                 }
                 final boolean newPerm = installedPkgInfo != null
-                        && (existingFlags&PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0;
+                        && (existingFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0;
                 MyPermissionInfo myPerm = new MyPermissionInfo(tmpPermInfo);
                 myPerm.mNewReqFlags = flagsList[i];
                 myPerm.mExistingReqFlags = existingFlags;
@@ -366,7 +366,7 @@ public class AppSecurityPermissions {
 
     public int getPermissionCount(int which) {
         int N = 0;
-        for (int i=0; i<mPermGroupsList.size(); i++) {
+        for (int i = 0; i < mPermGroupsList.size(); i++) {
             N += getPermissionList(mPermGroupsList.get(i), which).size();
         }
         return N;
@@ -393,12 +393,12 @@ public class AppSecurityPermissions {
             LinearLayout permListView, int which) {
         permListView.removeAllViews();
 
-        int spacing = (int) (8*mContext.getResources().getDisplayMetrics().density);
+        int spacing = (int) (8 * mContext.getResources().getDisplayMetrics().density);
 
-        for (int i=0; i<groups.size(); i++) {
+        for (int i = 0; i < groups.size(); i++) {
             MyPermissionGroupInfo grp = groups.get(i);
             final List<MyPermissionInfo> perms = getPermissionList(grp, which);
-            for (int j=0; j<perms.size(); j++) {
+            for (int j = 0; j < perms.size(); j++) {
                 MyPermissionInfo perm = perms.get(j);
                 View view = getPermissionItemView(grp, perm, j == 0,
                         which != WHICH_NEW ? mNewPermPrefix : null);
@@ -408,7 +408,7 @@ public class AppSecurityPermissions {
                 if (j == 0) {
                     lp.topMargin = spacing;
                 }
-                if (j == grp.mAllPermissions.size()-1) {
+                if (j == grp.mAllPermissions.size() - 1) {
                     lp.bottomMargin = spacing;
                 }
                 if (permListView.getChildCount() == 0) {
@@ -432,15 +432,15 @@ public class AppSecurityPermissions {
 
     private boolean isDisplayablePermission(PermissionInfo pInfo, int newReqFlags,
             int existingReqFlags) {
-        final int base = pInfo.protectionLevel&PermissionInfo.PROTECTION_MASK_BASE;
+        final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
         final boolean isNormal = (base == PermissionInfo.PROTECTION_NORMAL);
         final boolean isDangerous = (base == PermissionInfo.PROTECTION_DANGEROUS);
         final boolean isRequired =
-                ((newReqFlags&PackageInfo.REQUESTED_PERMISSION_REQUIRED) != 0);
+                ((newReqFlags & PackageInfo.REQUESTED_PERMISSION_REQUIRED) != 0);
         final boolean wasGranted =
-                ((existingReqFlags&PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0);
+                ((existingReqFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0);
         final boolean isGranted =
-                ((newReqFlags&PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0);
+                ((newReqFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0);
 
         // Dangerous and normal permissions are always shown to the user if the permission
         // is required, or it was previously granted
@@ -450,7 +450,7 @@ public class AppSecurityPermissions {
         }
 
         final boolean isDevelopment =
-                ((pInfo.protectionLevel&PermissionInfo.PROTECTION_FLAG_DEVELOPMENT) != 0);
+                ((pInfo.protectionLevel & PermissionInfo.PROTECTION_FLAG_DEVELOPMENT) != 0);
 
         // Development permissions are only shown to the user if they are already
         // granted to the app -- if we are installing an app and they are not
@@ -463,8 +463,8 @@ public class AppSecurityPermissions {
         PermissionGroupInfoComparator() {
         }
         public final int compare(MyPermissionGroupInfo a, MyPermissionGroupInfo b) {
-            if (((a.flags()^b.flags())&PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
-                return ((a.flags()&PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) ? -1 : 1;
+            if (((a.flags() ^ b.flags()) & PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
+                return ((a.flags() & PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) ? -1 : 1;
             }
             if (a.priority() != b.priority()) {
                 return a.priority() > b.priority() ? -1 : 1;
@@ -489,7 +489,7 @@ public class AppSecurityPermissions {
         }
         int idx = Collections.binarySearch(permList, pInfo, mPermComparator);
         if (idx < 0) {
-            idx = -idx-1;
+            idx = -idx - 1;
             permList.add(idx, pInfo);
         }
     }
@@ -508,7 +508,7 @@ public class AppSecurityPermissions {
                     if (pInfo.mNew) {
                         addPermToList(group.mNewPermissions, pInfo);
                     }
-                    if ((group.flags()&PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
+                    if ((group.flags() & PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
                         addPermToList(group.mPersonalPermissions, pInfo);
                     } else {
                         addPermToList(group.mDevicePermissions, pInfo);

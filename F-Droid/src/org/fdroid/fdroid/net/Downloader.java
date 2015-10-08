@@ -91,7 +91,7 @@ public abstract class Downloader {
     public void downloadUninterrupted() throws IOException {
         try {
             download();
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) { }
     }
 
     public abstract void download() throws IOException, InterruptedException;

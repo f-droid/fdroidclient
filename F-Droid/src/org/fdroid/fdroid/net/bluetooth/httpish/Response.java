@@ -154,7 +154,7 @@ public class Response {
         private int fileSize = -1;
         private String etag = null;
 
-        public Builder() {}
+        public Builder() { }
 
         public Builder(InputStream contentStream) {
             this.contentStream = contentStream;

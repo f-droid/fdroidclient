@@ -28,7 +28,7 @@ public class AppProvider extends FDroidProvider {
 
     public static final class Helper {
 
-        private Helper() {}
+        private Helper() { }
 
         public static int count(Context context, Uri uri) {
             final String[] projection = {AppProvider.DataColumns._COUNT};

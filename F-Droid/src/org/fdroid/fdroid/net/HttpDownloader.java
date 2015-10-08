@@ -169,7 +169,7 @@ public class HttpDownloader extends Downloader {
             if (stream != null)
                 stream.close();
         }
-        catch (IOException e) {}
+        catch (IOException e) { }
 
         connection.disconnect();
     }

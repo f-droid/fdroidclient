@@ -294,7 +294,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         }
 
-        switch(service.getStep()) {
+        switch (service.getStep()) {
             case SwapService.STEP_INTRO:
                 showIntro();
                 break;
@@ -426,7 +426,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                             R.string.cancel,
                             new DialogInterface.OnClickListener() {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which) {}
+                                public void onClick(DialogInterface dialog, int which) { }
                             }
                     ).create().show();
         }

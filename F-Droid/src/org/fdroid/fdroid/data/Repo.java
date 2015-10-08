@@ -184,7 +184,7 @@ public class Repo extends ValueObject {
         }
 
         if (values.containsKey(RepoProvider.DataColumns.IS_SWAP)) {
-            isSwap= toInt(values.getAsInteger(RepoProvider.DataColumns.IS_SWAP)) == 1;
+            isSwap = toInt(values.getAsInteger(RepoProvider.DataColumns.IS_SWAP)) == 1;
         }
     }
 }

@@ -315,7 +315,7 @@ public class SwapAppsView extends ListView implements
                         return;
                     }
 
-                    switch(intent.getStringExtra(ApkDownloader.EXTRA_TYPE)) {
+                    switch (intent.getStringExtra(ApkDownloader.EXTRA_TYPE)) {
                         // Fallthrough for each of these "downloader no longer going" events...
                         case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
                         case ApkDownloader.EVENT_APK_DOWNLOAD_CANCELLED:

@@ -40,7 +40,7 @@ public class IconDownloader extends BaseImageDownloader {
             InputStream is = downloader.getInputStream();
 
             int b;
-            while ((b = is.read())!=-1)
+            while ((b = is.read()) != -1)
                 baos.write(b);
 
             ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());

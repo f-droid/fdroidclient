@@ -25,7 +25,7 @@ public class RepoProvider extends FDroidProvider {
 
         private static final String TAG = "RepoProvider.Helper";
 
-        private Helper() {}
+        private Helper() { }
 
         public static Repo findByUri(Context context, Uri uri) {
             ContentResolver resolver = context.getContentResolver();

@@ -44,7 +44,7 @@ public final class PRNGFixes extends Compatibility {
         getBuildFingerprintAndDeviceSerial();
 
     /** Hidden constructor to prevent instantiation. */
-    private PRNGFixes() {}
+    private PRNGFixes() { }
 
     /**
      * Applies all fixes.

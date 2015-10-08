@@ -30,7 +30,7 @@ public class ApkProvider extends FDroidProvider {
 
     public static final class Helper {
 
-        private Helper() {}
+        private Helper() { }
 
         public static void update(Context context, Apk apk) {
             ContentResolver resolver = context.getContentResolver();

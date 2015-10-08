@@ -285,7 +285,7 @@ public class SwapService extends Service {
     @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR,
         STEP_CONNECTING, STEP_SUCCESS, STEP_CONFIRM_SWAP, STEP_INITIAL_LOADING})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface SwapStep {}
+    public @interface SwapStep { }
 
 
     // =================================================

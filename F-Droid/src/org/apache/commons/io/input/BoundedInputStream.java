@@ -114,17 +114,17 @@ public class BoundedInputStream extends InputStream {
      */
     @Override
     public int read(byte[] b, int off, int len) throws IOException {
-        if (max>=0 && pos>=max) {
+        if (max >= 0 && pos >= max) {
             return -1;
         }
-        long maxRead = max>=0 ? Math.min(len, max-pos) : len;
+        long maxRead = max >= 0 ? Math.min(len, max - pos) : len;
         int bytesRead = in.read(b, off, (int) maxRead);
 
-        if (bytesRead==-1) {
+        if (bytesRead == -1) {
             return -1;
         }
 
-        pos+=bytesRead;
+        pos += bytesRead;
         return bytesRead;
     }
 
@@ -136,9 +136,9 @@ public class BoundedInputStream extends InputStream {
      */
     @Override
     public long skip(long n) throws IOException {
-        long toSkip = max>=0 ? Math.min(n, max-pos) : n;
+        long toSkip = max >= 0 ? Math.min(n, max - pos) : n;
         long skippedBytes = in.skip(toSkip);
-        pos+=skippedBytes;
+        pos += skippedBytes;
         return skippedBytes;
     }
 
@@ -147,7 +147,7 @@ public class BoundedInputStream extends InputStream {
      */
     @Override
     public int available() throws IOException {
-        if (max>=0 && pos>=max) {
+        if (max >= 0 && pos >= max) {
             return 0;
         }
         return in.available();

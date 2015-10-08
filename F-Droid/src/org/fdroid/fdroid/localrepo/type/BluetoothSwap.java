@@ -170,10 +170,10 @@ public final class BluetoothSwap extends SwapType {
         }
 
         @Override
-        public void start() {}
+        public void start() { }
 
         @Override
-        public void stop() {}
+        public void stop() { }
 
         @Override
         protected String getBroadcastAction() {

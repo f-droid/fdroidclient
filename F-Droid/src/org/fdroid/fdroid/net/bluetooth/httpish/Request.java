@@ -140,7 +140,7 @@ public final class Request {
 
         while (line == null) {
 
-            while (input.available()>0) {
+            while (input.available() > 0) {
 
                 int b = input.read();
 
@@ -152,11 +152,10 @@ public final class Request {
                 }
 
                 baos.write(b);
-
             }
 
             try { Thread.sleep(100); }
-            catch (Exception e){}
+            catch (Exception e) { }
         }
 
         return line;
@@ -180,7 +179,7 @@ public final class Request {
                 headers.put(header, value);
             }
 
-            if (input.available()>0)
+            if (input.available() > 0)
                 responseLine = readLine();
             else
                 break;

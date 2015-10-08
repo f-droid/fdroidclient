@@ -1118,15 +1118,15 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return s;
             }
             int i;
-            for (i = s.length()-1; i >= 0; i--) {
+            for (i = s.length() - 1; i >= 0; i--) {
                 if (s.charAt(i) != '\n') {
                     break;
                 }
             }
-            if (i == s.length()-1) {
+            if (i == s.length() - 1) {
                 return s;
             }
-            return s.subSequence(0, i+1);
+            return s.subSequence(0, i + 1);
         }
 
         private ViewGroup layout_links_content;
@@ -1586,7 +1586,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                     btMain.setText(R.string.menu_upgrade);
                 } else {
                     updateWanted = false;
-                    if (activity.mPm.getLaunchIntentForPackage(getApp().id) != null){
+                    if (activity.mPm.getLaunchIntentForPackage(getApp().id) != null) {
                         btMain.setText(R.string.menu_launch);
                     } else {
                         btMain.setText(R.string.menu_uninstall);

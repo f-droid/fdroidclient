@@ -97,8 +97,8 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
     private void onDeviceFound(BluetoothDevice device) {
 
         if (device != null && device.getName() != null &&
-                (device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.COMPUTER_HANDHELD_PC_PDA||
-                device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.COMPUTER_PALM_SIZE_PC_PDA||
+                (device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.COMPUTER_HANDHELD_PC_PDA ||
+                device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.COMPUTER_PALM_SIZE_PC_PDA ||
                 device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.PHONE_SMART)) {
             foundPeer(new BluetoothPeer(device));
         }
