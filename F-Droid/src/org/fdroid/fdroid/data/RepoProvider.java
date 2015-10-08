@@ -286,7 +286,7 @@ public class RepoProvider extends FDroidProvider {
             break;
 
         case CODE_SINGLE:
-            selection = ( selection == null ? "" : selection + " AND " ) +
+            selection = (selection == null ? "" : selection + " AND ") +
                     DataColumns._ID + " = " + uri.getLastPathSegment();
             break;
 
@@ -351,7 +351,7 @@ public class RepoProvider extends FDroidProvider {
             return 0;
 
         case CODE_SINGLE:
-            where = ( where == null ? "" : where + " AND " ) +
+            where = (where == null ? "" : where + " AND ") +
                     "_ID = " + uri.getLastPathSegment();
             break;
 

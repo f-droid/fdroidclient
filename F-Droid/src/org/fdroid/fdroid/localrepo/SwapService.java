@@ -379,8 +379,8 @@ public class SwapService extends Service {
     // =============================================================
 
     private void persistPreferredSwapTypes() {
-        Utils.debugLog(TAG, "Remembering that Bluetooth swap " + ( bluetoothSwap.isConnected() ? "IS" : "is NOT" ) +
-                " connected and WiFi swap " + (wifiSwap.isConnected() ? "IS" : "is NOT" ) + " connected.");
+        Utils.debugLog(TAG, "Remembering that Bluetooth swap " + (bluetoothSwap.isConnected() ? "IS" : "is NOT") +
+                " connected and WiFi swap " + (wifiSwap.isConnected() ? "IS" : "is NOT") + " connected.");
         persistence().edit()
             .putBoolean(KEY_BLUETOOTH_ENABLED, bluetoothSwap.isConnected())
             .putBoolean(KEY_WIFI_ENABLED, wifiSwap.isConnected())

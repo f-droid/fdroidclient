@@ -3,8 +3,6 @@ package org.fdroid.fdroid.net;
 import android.content.Context;
 import android.util.Log;
 
-import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;

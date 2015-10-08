@@ -98,7 +98,6 @@ import org.fdroid.fdroid.net.Downloader;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
-import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 

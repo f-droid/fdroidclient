@@ -107,7 +107,7 @@ public class LocalHTTPD extends NanoHTTPD {
         switch (uri.getPath()) {
         case "/request-swap":
             if (!session.getParms().containsKey("repo")) {
-                Log.e(TAG, "Malformed /request-swap request to local repo HTTP server. Should have posted a 'repo' parameter." );
+                Log.e(TAG, "Malformed /request-swap request to local repo HTTP server. Should have posted a 'repo' parameter.");
                 return new Response(Response.Status.BAD_REQUEST, MIME_PLAINTEXT, "Requires 'repo' parameter to be posted.");
             }
             requestSwap(session.getParms().get("repo"));

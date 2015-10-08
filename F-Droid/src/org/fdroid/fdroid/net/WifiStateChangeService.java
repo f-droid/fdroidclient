@@ -187,10 +187,10 @@ public class WifiStateChangeService extends Service {
     @TargetApi(9)
     public void setIpInfoFromNetworkInterface() {
         try {
-            for (Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces(); networkInterfaces.hasMoreElements(); ) {
+            for (Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces(); networkInterfaces.hasMoreElements();) {
                 NetworkInterface netIf = networkInterfaces.nextElement();
 
-                for (Enumeration<InetAddress> inetAddresses = netIf.getInetAddresses(); inetAddresses.hasMoreElements(); ) {
+                for (Enumeration<InetAddress> inetAddresses = netIf.getInetAddresses(); inetAddresses.hasMoreElements();) {
                     InetAddress inetAddress = inetAddresses.nextElement();
                     if (inetAddress.isLoopbackAddress() || inetAddress instanceof Inet6Address) {
                         continue;
