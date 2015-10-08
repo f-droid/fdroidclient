@@ -57,7 +57,6 @@
         <!--<module name="RightCurly" />-->
 
         <module name="EmptyStatement" />
-        <!--<module name="EqualsHashCode" />-->
         <!--<module name="HiddenField" />-->
         <module name="IllegalInstantiation" />
         <!--<module name="InnerAssignment" />-->
@@ -71,6 +70,9 @@
 
         <module name="ArrayTypeStyle" />
         <module name="UpperEll" />
+
+        <module name="StringLiteralEquality" />
+        <!--<module name="EqualsHashCode" />-->
 
     </module>
 
