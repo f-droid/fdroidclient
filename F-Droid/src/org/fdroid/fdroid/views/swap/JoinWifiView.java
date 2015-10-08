@@ -46,7 +46,7 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
     }
 
     private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity)getContext();
+        return (SwapWorkflowActivity) getContext();
     }
 
     @Override

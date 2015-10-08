@@ -81,8 +81,8 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
             }
 
             Peer peer = getItem(position);
-            ((TextView)convertView.findViewById(R.id.peer_name)).setText(peer.getName());
-            ((ImageView)convertView.findViewById(R.id.icon)).setImageDrawable(getResources().getDrawable(peer.getIcon()));
+            ((TextView) convertView.findViewById(R.id.peer_name)).setText(peer.getName());
+            ((ImageView) convertView.findViewById(R.id.icon)).setImageDrawable(getResources().getDrawable(peer.getIcon()));
 
             return convertView;
         }
@@ -90,7 +90,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
     }
 
     private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity)getContext();
+        return (SwapWorkflowActivity) getContext();
     }
 
     private SwapService getManager() {
@@ -153,9 +153,9 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
      */
     private void uiInitPeers() {
 
-        peopleNearbyText = (TextView)findViewById(R.id.text_people_nearby);
-        peopleNearbyList = (ListView)findViewById(R.id.list_people_nearby);
-        peopleNearbyProgress = (ProgressBar)findViewById(R.id.searching_people_nearby);
+        peopleNearbyText = (TextView) findViewById(R.id.text_people_nearby);
+        peopleNearbyList = (ListView) findViewById(R.id.list_people_nearby);
+        peopleNearbyProgress = (ProgressBar) findViewById(R.id.searching_people_nearby);
 
         final PeopleNearbyAdapter adapter = new PeopleNearbyAdapter(getContext());
         peopleNearbyList.setAdapter(adapter);
@@ -204,9 +204,9 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
     private void uiInitBluetooth() {
         if (bluetooth != null) {
 
-            final TextView textBluetoothVisible = (TextView)findViewById(R.id.bluetooth_visible);
+            final TextView textBluetoothVisible = (TextView) findViewById(R.id.bluetooth_visible);
 
-            viewBluetoothId = (TextView)findViewById(R.id.device_id_bluetooth);
+            viewBluetoothId = (TextView) findViewById(R.id.device_id_bluetooth);
             viewBluetoothId.setText(bluetooth.getName());
             viewBluetoothId.setVisibility(bluetooth.isEnabled() ? View.VISIBLE : View.GONE);
 
@@ -269,10 +269,10 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
 
     private void uiInitWifi() {
 
-        viewWifiId = (TextView)findViewById(R.id.device_id_wifi);
-        viewWifiNetwork = (TextView)findViewById(R.id.wifi_network);
+        viewWifiId = (TextView) findViewById(R.id.device_id_wifi);
+        viewWifiNetwork = (TextView) findViewById(R.id.wifi_network);
 
-        final SwitchCompat wifiSwitch = (SwitchCompat)findViewById(R.id.switch_wifi);
+        final SwitchCompat wifiSwitch = (SwitchCompat) findViewById(R.id.switch_wifi);
         wifiSwitch.setChecked(getManager().isBonjourDiscoverable());
         wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -290,7 +290,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
             }
         });
 
-        final TextView textWifiVisible = (TextView)findViewById(R.id.wifi_visible);
+        final TextView textWifiVisible = (TextView) findViewById(R.id.wifi_visible);
         int textResource = getManager().isBonjourDiscoverable() ? R.string.swap_visible_wifi : R.string.swap_not_visible_wifi;
         textWifiVisible.setText(textResource);
 

@@ -42,7 +42,7 @@
         <!--<module name="OperatorWrap" />-->
         <module name="ParenPad" />
         <module name="TypecastParenPad" />
-        <!--<module name="WhitespaceAfter" />-->
+        <module name="WhitespaceAfter" />
         <!--<module name="WhitespaceAround" />-->
 
         <module name="ModifierOrder" />

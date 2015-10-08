@@ -53,17 +53,17 @@ public class PreferencesFragment extends PreferenceFragment
     }
 
     protected void checkSummary(String key, int resId) {
-        CheckBoxPreference pref = (CheckBoxPreference)findPreference(key);
+        CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);
         pref.setSummary(resId);
     }
 
     protected void entrySummary(String key) {
-        ListPreference pref = (ListPreference)findPreference(key);
+        ListPreference pref = (ListPreference) findPreference(key);
         pref.setSummary(pref.getEntry());
     }
 
     protected void textSummary(String key, int resId) {
-        EditTextPreference pref = (EditTextPreference)findPreference(key);
+        EditTextPreference pref = (EditTextPreference) findPreference(key);
         pref.setSummary(getString(resId, pref.getText()));
     }
 
@@ -73,7 +73,7 @@ public class PreferencesFragment extends PreferenceFragment
 
         switch (key) {
         case Preferences.PREF_UPD_INTERVAL:
-            ListPreference listPref = (ListPreference)findPreference(
+            ListPreference listPref = (ListPreference) findPreference(
                     Preferences.PREF_UPD_INTERVAL);
             int interval = Integer.parseInt(listPref.getValue());
             Preference onlyOnWifi = findPreference(
@@ -286,7 +286,7 @@ public class PreferencesFragment extends PreferenceFragment
     }
 
     private void langSpinner(String key) {
-        final ListPreference pref = (ListPreference)findPreference(key);
+        final ListPreference pref = (ListPreference) findPreference(key);
         final String[] langValues = getResources().getStringArray(R.array.languageValues);
         String[] langNames = new String[langValues.length];
         langNames[0] = getString(R.string.pref_language_default);

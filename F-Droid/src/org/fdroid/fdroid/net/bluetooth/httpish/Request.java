@@ -144,8 +144,7 @@ public final class Request {
 
                 int b = input.read();
 
-
-                if (((char)b) == '\n') {
+                if (((char) b) == '\n') {
                     if (baos.size() > 0)
                         line = new String(baos.toByteArray());
 

@@ -46,7 +46,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
     }
 
     private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity)getContext();
+        return (SwapWorkflowActivity) getContext();
     }
 
     @Override

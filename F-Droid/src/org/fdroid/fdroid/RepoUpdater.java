@@ -145,7 +145,7 @@ public class RepoUpdater {
             JarFile jarFile = new JarFile(downloadedFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                    progressListener, repo, (int)indexEntry.getSize());
+                    progressListener, repo, (int) indexEntry.getSize());
 
             // Process the index...
             final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();

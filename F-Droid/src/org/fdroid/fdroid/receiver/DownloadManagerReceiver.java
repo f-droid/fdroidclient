@@ -80,6 +80,6 @@ public class DownloadManagerReceiver extends BroadcastReceiver {
                 .build();
 
         NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        nm.notify((int)downloadId, notif);
+        nm.notify((int) downloadId, notif);
     }
 }

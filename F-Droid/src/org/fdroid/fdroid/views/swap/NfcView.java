@@ -38,13 +38,13 @@ public class NfcView extends RelativeLayout implements SwapWorkflowActivity.Inne
     }
 
     private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity)getContext();
+        return (SwapWorkflowActivity) getContext();
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        CheckBox dontShowAgain = (CheckBox)findViewById(R.id.checkbox_dont_show);
+        CheckBox dontShowAgain = (CheckBox) findViewById(R.id.checkbox_dont_show);
         dontShowAgain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

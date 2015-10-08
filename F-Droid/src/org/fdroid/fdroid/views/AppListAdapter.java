@@ -83,7 +83,7 @@ public abstract class AppListAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        ViewHolder holder = (ViewHolder)view.getTag();
+        ViewHolder holder = (ViewHolder) view.getTag();
         setupView(context, view, cursor, holder);
     }
 
@@ -140,12 +140,12 @@ public abstract class AppListAdapter extends CursorAdapter {
     }
 
     private void layoutIcon(ImageView icon, boolean compact) {
-        int size = (int)mContext.getResources().getDimension((compact
+        int size = (int) mContext.getResources().getDimension((compact
             ? R.dimen.applist_icon_compact_size
             : R.dimen.applist_icon_normal_size));
 
         LinearLayout.LayoutParams params =
-            (LinearLayout.LayoutParams)icon.getLayoutParams();
+            (LinearLayout.LayoutParams) icon.getLayoutParams();
 
         params.height = size;
         params.width = size;

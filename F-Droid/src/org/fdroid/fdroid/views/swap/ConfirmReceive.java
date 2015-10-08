@@ -38,7 +38,7 @@ public class ConfirmReceive extends RelativeLayout implements SwapWorkflowActivi
     }
 
     private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity)getContext();
+        return (SwapWorkflowActivity) getContext();
     }
 
     @Override

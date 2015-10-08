@@ -154,7 +154,7 @@ public class RepoProvider extends FDroidProvider {
             if (values.containsKey(DataColumns.IN_USE)) {
                 Integer inUse = values.getAsInteger(DataColumns.IN_USE);
                 if (inUse != null && inUse == 0) {
-                    values.put(DataColumns.LAST_ETAG, (String)null);
+                    values.put(DataColumns.LAST_ETAG, (String) null);
                 }
             }
 

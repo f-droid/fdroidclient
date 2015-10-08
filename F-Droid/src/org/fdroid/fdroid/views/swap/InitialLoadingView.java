@@ -33,7 +33,7 @@ public class InitialLoadingView extends RelativeLayout implements SwapWorkflowAc
     }
 
     private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity)getContext();
+        return (SwapWorkflowActivity) getContext();
     }
 
     @Override

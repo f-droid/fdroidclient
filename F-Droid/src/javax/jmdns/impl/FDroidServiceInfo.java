@@ -64,7 +64,7 @@ public class FDroidServiceInfo extends ServiceInfoImpl implements Parcelable {
         int addressCount = in.readInt();
         for (int i = 0; i < addressCount; i ++) {
             try {
-                addAddress((Inet4Address)Inet4Address.getByAddress(readBytes(in)));
+                addAddress((Inet4Address) Inet4Address.getByAddress(readBytes(in)));
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             }
@@ -73,7 +73,7 @@ public class FDroidServiceInfo extends ServiceInfoImpl implements Parcelable {
         addressCount = in.readInt();
         for (int i = 0; i < addressCount; i ++) {
             try {
-                addAddress((Inet6Address)Inet6Address.getByAddress(readBytes(in)));
+                addAddress((Inet6Address) Inet6Address.getByAddress(readBytes(in)));
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             }

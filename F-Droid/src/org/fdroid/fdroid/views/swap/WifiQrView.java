@@ -57,7 +57,7 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
     }
 
     private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity)getContext();
+        return (SwapWorkflowActivity) getContext();
     }
 
     @Override
@@ -65,12 +65,12 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         super.onFinishInflate();
         setUIFromWifi();
 
-        ImageView qrImage = (ImageView)findViewById(R.id.wifi_qr_code);
+        ImageView qrImage = (ImageView) findViewById(R.id.wifi_qr_code);
 
         // Replace all blacks with the background blue.
         qrImage.setColorFilter(new LightingColorFilter(0xffffffff, getResources().getColor(R.color.swap_blue)));
 
-        Button openQr = (Button)findViewById(R.id.btn_qr_scanner);
+        Button openQr = (Button) findViewById(R.id.btn_qr_scanner);
         openQr.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -632,7 +632,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             ArrayList<ContentProviderOperation> o = new ArrayList<>(operations.subList(i, i + count));
             sendStatus(STATUS_INFO, getString(
                 R.string.status_inserting,
-                (int)((double)(currentCount + i) / totalUpdateCount * 100)));
+                (int) ((double) (currentCount + i) / totalUpdateCount * 100)));
             getContentResolver().applyBatch(providerAuthority, o);
             i += 100;
         }

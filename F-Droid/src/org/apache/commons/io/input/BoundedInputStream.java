@@ -118,7 +118,7 @@ public class BoundedInputStream extends InputStream {
             return -1;
         }
         long maxRead = max>=0 ? Math.min(len, max-pos) : len;
-        int bytesRead = in.read(b, off, (int)maxRead);
+        int bytesRead = in.read(b, off, (int) maxRead);
 
         if (bytesRead==-1) {
             return -1;

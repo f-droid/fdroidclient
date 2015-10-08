@@ -30,7 +30,7 @@ public class BonjourPeer extends WifiPeer {
     @Override
     public boolean equals(Object peer) {
         if (peer != null && peer instanceof BonjourPeer) {
-            BonjourPeer that = (BonjourPeer)peer;
+            BonjourPeer that = (BonjourPeer) peer;
             return this.getFingerprint().equals(that.getFingerprint());
         }
         return false;
@@ -60,7 +60,7 @@ public class BonjourPeer extends WifiPeer {
     }
 
     protected BonjourPeer(Parcel in) {
-        this((ServiceInfo)in.readParcelable(FDroidServiceInfo.class.getClassLoader()));
+        this((ServiceInfo) in.readParcelable(FDroidServiceInfo.class.getClassLoader()));
     }
 
     public static final Creator<BonjourPeer> CREATOR = new Creator<BonjourPeer>() {

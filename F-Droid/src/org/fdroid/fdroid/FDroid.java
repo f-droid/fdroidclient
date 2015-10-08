@@ -329,7 +329,7 @@ public class FDroid extends ActionBarActivity {
     }
 
     private void createViews() {
-        viewPager = (ViewPager)findViewById(R.id.main_pager);
+        viewPager = (ViewPager) findViewById(R.id.main_pager);
         AppListFragmentPagerAdapter viewPagerAdapter = new AppListFragmentPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {

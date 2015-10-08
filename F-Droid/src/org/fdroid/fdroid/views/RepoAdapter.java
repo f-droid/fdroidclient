@@ -81,7 +81,7 @@ public class RepoAdapter extends CursorAdapter {
             }
         });
 
-        TextView nameView = (TextView)view.findViewById(R.id.repo_name);
+        TextView nameView = (TextView) view.findViewById(R.id.repo_name);
         nameView.setText(repo.getName());
 
         View unsignedView = view.findViewById(R.id.repo_unsigned);

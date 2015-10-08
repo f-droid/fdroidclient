@@ -61,7 +61,7 @@ public class SelectAppsView extends ListView implements
     }
 
     private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity)getContext();
+        return (SwapWorkflowActivity) getContext();
     }
 
     private SwapService getState() {
@@ -232,7 +232,7 @@ public class SelectAppsView extends ListView implements
         private LayoutInflater getInflater(Context context) {
             if (inflater == null) {
                 Context themedContext = new ContextThemeWrapper(context, R.style.SwapTheme_AppList_ListItem);
-                inflater = (LayoutInflater)themedContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                inflater = (LayoutInflater) themedContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             }
             return inflater;
         }
@@ -254,9 +254,9 @@ public class SelectAppsView extends ListView implements
         @Override
         public void bindView(final View view, final Context context, final Cursor cursor) {
 
-            TextView packageView = (TextView)view.findViewById(R.id.package_name);
-            TextView labelView = (TextView)view.findViewById(R.id.application_label);
-            ImageView iconView = (ImageView)view.findViewById(android.R.id.icon);
+            TextView packageView = (TextView) view.findViewById(R.id.package_name);
+            TextView labelView = (TextView) view.findViewById(R.id.application_label);
+            ImageView iconView = (ImageView) view.findViewById(android.R.id.icon);
 
             String packageName = cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
             String appLabel = cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APPLICATION_LABEL));
@@ -279,7 +279,7 @@ public class SelectAppsView extends ListView implements
             // by adding a checkbox which can toggle selected items.
             View checkBoxView = view.findViewById(R.id.checkbox);
             if (checkBoxView != null) {
-                CheckBox checkBox = (CheckBox)checkBoxView;
+                CheckBox checkBox = (CheckBox) checkBoxView;
                 checkBox.setOnCheckedChangeListener(null);
 
                 checkBox.setChecked(listView.isItemChecked(listPosition));
@@ -306,7 +306,7 @@ public class SelectAppsView extends ListView implements
         }
 
         private void updateCheckedIndicatorView(View view, boolean checked) {
-            ImageView imageView = (ImageView)view.findViewById(R.id.checked);
+            ImageView imageView = (ImageView) view.findViewById(R.id.checked);
             if (imageView != null) {
                 int resource;
                 int colour;

@@ -124,7 +124,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName className, IBinder binder) {
             Utils.debugLog(TAG, "Swap service connected. Will hold onto it so we can talk to it regularly.");
-            service = ((SwapService.Binder)binder).getService();
+            service = ((SwapService.Binder) binder).getService();
             showRelevantView();
         }
 
@@ -332,8 +332,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private InnerView inflateInnerView(@LayoutRes int viewRes) {
         container.removeAllViews();
-        View view = ((LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(viewRes, container, false);
-        currentView = (InnerView)view;
+        View view = ((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(viewRes, container, false);
+        currentView = (InnerView) view;
 
         // Don't actually set the step to STEP_INITIAL_LOADING, as we are going to use this view
         // purely as a placeholder for _whatever view is meant to be shown_.
@@ -381,7 +381,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void showConfirmSwap(@NonNull NewRepoConfig config) {
-        ((ConfirmReceive)inflateInnerView(R.layout.swap_confirm_receive)).setup(config);
+        ((ConfirmReceive) inflateInnerView(R.layout.swap_confirm_receive)).setup(config);
     }
 
     public void startQrWorkflow() {

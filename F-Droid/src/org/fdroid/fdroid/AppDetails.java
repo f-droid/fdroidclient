@@ -277,7 +277,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             }
 
             if (Preferences.get().expertMode() && apk.nativecode != null) {
-                holder.nativecode.setText(apk.nativecode.toString().replaceAll(","," "));
+                holder.nativecode.setText(apk.nativecode.toString().replaceAll(",", " "));
                 holder.nativecode.setVisibility(View.VISIBLE);
             } else {
                 holder.nativecode.setVisibility(View.GONE);
@@ -392,7 +392,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         installer = Installer.getActivityInstaller(this, mPm, myInstallerCallback);
 
         // Get the preferences we're going to use in this Activity...
-        ConfigurationChangeHelper previousData = (ConfigurationChangeHelper)getLastCustomNonConfigurationInstance();
+        ConfigurationChangeHelper previousData = (ConfigurationChangeHelper) getLastCustomNonConfigurationInstance();
         if (previousData != null) {
             Utils.debugLog(TAG, "Recreating view after configuration change.");
             downloadHandler = previousData.downloader;
@@ -1082,7 +1082,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            data = (AppDetailsData)activity;
+            data = (AppDetailsData) activity;
         }
 
         protected App getApp() { return data.getApp(); }
@@ -1184,7 +1184,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private final View.OnClickListener expander_description = new View.OnClickListener() {
             public void onClick(View v) {
                 final TextView description = (TextView) ll_view_more_description.findViewById(R.id.description);
-                final TextView view_more_permissions = (TextView)ll_view_more_description.findViewById(R.id.view_more_description);
+                final TextView view_more_permissions = (TextView) ll_view_more_description.findViewById(R.id.view_more_description);
                 if (view_all_description) {
                     description.setMaxLines(Integer.MAX_VALUE);
                     view_more_permissions.setText(getString(R.string.less));
@@ -1452,7 +1452,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            data = (AppDetailsData)activity;
+            data = (AppDetailsData) activity;
         }
 
         private void setupView(View view) {
@@ -1650,8 +1650,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            data = (AppDetailsData)activity;
-            installListener = (AppInstallListener)activity;
+            data = (AppDetailsData) activity;
+            installListener = (AppInstallListener) activity;
         }
 
         protected void install(final Apk apk) {
@@ -1731,7 +1731,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         public void setupSummaryHeader() {
             Fragment fragment = getChildFragmentManager().findFragmentByTag(SUMMARY_TAG);
             if (fragment != null) {
-                summaryFragment = (AppDetailsSummaryFragment)fragment;
+                summaryFragment = (AppDetailsSummaryFragment) fragment;
             } else {
                 summaryFragment = new AppDetailsSummaryFragment();
             }

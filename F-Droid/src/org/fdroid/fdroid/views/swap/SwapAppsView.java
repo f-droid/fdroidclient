@@ -81,7 +81,7 @@ public class SwapAppsView extends ListView implements
     }
 
     private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity)getContext();
+        return (SwapWorkflowActivity) getContext();
     }
 
     private static final int LOADER_SWAPABLE_APPS = 759283741;
@@ -124,7 +124,7 @@ public class SwapAppsView extends ListView implements
 
     private void pollForUpdates() {
         if (adapter.getCount() > 1 ||
-                (adapter.getCount() == 1 && !new App((Cursor)adapter.getItem(0)).id.equals("org.fdroid.fdroid"))) {
+                (adapter.getCount() == 1 && !new App((Cursor) adapter.getItem(0)).id.equals("org.fdroid.fdroid"))) {
             Utils.debugLog(TAG, "Not polling for new apps from swap repo, because we already have more than one.");
             return;
         }
@@ -441,7 +441,7 @@ public class SwapAppsView extends ListView implements
         @NonNull
         private LayoutInflater getInflater(Context context) {
             if (inflater == null) {
-                inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             }
             return inflater;
         }
@@ -459,13 +459,13 @@ public class SwapAppsView extends ListView implements
 
             ViewHolder holder = new ViewHolder();
 
-            holder.progressView = (ProgressBar)view.findViewById(R.id.progress);
-            holder.nameView = (TextView)view.findViewById(R.id.name);
-            holder.iconView = (ImageView)view.findViewById(android.R.id.icon);
-            holder.btnInstall = (Button)view.findViewById(R.id.btn_install);
-            holder.btnAttemptInstall = (TextView)view.findViewById(R.id.btn_attempt_install);
-            holder.statusInstalled = (TextView)view.findViewById(R.id.status_installed);
-            holder.statusIncompatible = (TextView)view.findViewById(R.id.status_incompatible);
+            holder.progressView = (ProgressBar) view.findViewById(R.id.progress);
+            holder.nameView = (TextView) view.findViewById(R.id.name);
+            holder.iconView = (ImageView) view.findViewById(android.R.id.icon);
+            holder.btnInstall = (Button) view.findViewById(R.id.btn_install);
+            holder.btnAttemptInstall = (TextView) view.findViewById(R.id.btn_attempt_install);
+            holder.statusInstalled = (TextView) view.findViewById(R.id.status_installed);
+            holder.statusIncompatible = (TextView) view.findViewById(R.id.status_incompatible);
 
             view.setTag(holder);
             bindView(view, context, cursor);
@@ -474,7 +474,7 @@ public class SwapAppsView extends ListView implements
 
         @Override
         public void bindView(final View view, final Context context, final Cursor cursor) {
-            ViewHolder holder = (ViewHolder)view.getTag();
+            ViewHolder holder = (ViewHolder) view.getTag();
             final App app = new App(cursor);
             holder.setApp(app);
         }

@@ -85,8 +85,8 @@ public abstract class AppListFragment extends ThemeableListFragment implements
         String emptyMessage = getEmptyMessage();
         if (emptyMessage != null) {
             View emptyView = getLayoutInflater(savedInstanceState).inflate(R.layout.empty_app_list, null);
-            ((TextView)emptyView.findViewById(R.id.text)).setText(emptyMessage);
-            ((ViewGroup)getListView().getParent()).addView(emptyView); // Needs to be added to this parent or it doesn't show.
+            ((TextView) emptyView.findViewById(R.id.text)).setText(emptyMessage);
+            ((ViewGroup) getListView().getParent()).addView(emptyView); // Needs to be added to this parent or it doesn't show.
             getListView().setEmptyView(emptyView);
         }
     }
@@ -143,7 +143,7 @@ public abstract class AppListFragment extends ThemeableListFragment implements
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         // Cursor is null in the swap list when touching the first item.
-        Cursor cursor = (Cursor)getListView().getItemAtPosition(position);
+        Cursor cursor = (Cursor) getListView().getItemAtPosition(position);
         if (cursor != null) {
             final App app = new App(cursor);
             Intent intent = getAppDetailsIntent();

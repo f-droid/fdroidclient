@@ -130,7 +130,7 @@ public class Hasher {
                 value = halfbyte - 'A' + 10;
             else
                 throw new IllegalArgumentException("Bad hex digit");
-            rawdata[i/2] += (byte)(i % 2 == 0 ? value << 4 : value);
+            rawdata[i/2] += (byte) (i % 2 == 0 ? value << 4 : value);
         }
         return rawdata;
     }

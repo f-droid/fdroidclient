@@ -180,9 +180,9 @@ public class AvailableAppsFragment extends AppListFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.available_app_list, container, false);
 
-        setupCategorySpinner((Spinner)view.findViewById(R.id.category_spinner));
+        setupCategorySpinner((Spinner) view.findViewById(R.id.category_spinner));
 
-        ((ListView)view.findViewById(android.R.id.list)).setOnItemClickListener(this);
+        ((ListView) view.findViewById(android.R.id.list)).setOnItemClickListener(this);
 
         DEFAULT_CATEGORY = AppProvider.Helper.getCategoryWhatsNew(getActivity());
 
