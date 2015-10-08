@@ -12,11 +12,11 @@ public class MockCategoryResources extends MockFDroidResources {
 
     @Override
     public String getString(int id) {
-        if (id == R.string.category_all) {
+        if (id == R.string.category_All) {
             return "All";
-        } else if (id == R.string.category_recentlyupdated) {
+        } else if (id == R.string.category_Recently_Updated) {
             return "Recently Updated";
-        } else if (id == R.string.category_whatsnew) {
+        } else if (id == R.string.category_Whats_New) {
             return "Whats New";
         } else {
             return "";

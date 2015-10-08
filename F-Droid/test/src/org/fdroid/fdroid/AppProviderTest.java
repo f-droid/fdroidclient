@@ -300,9 +300,9 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         List<String> categories = AppProvider.Helper.categories(getMockContext());
         String[] expected = new String[] {
-            getMockContext().getResources().getString(R.string.category_whatsnew),
-            getMockContext().getResources().getString(R.string.category_recentlyupdated),
-            getMockContext().getResources().getString(R.string.category_all),
+            getMockContext().getResources().getString(R.string.category_Whats_New),
+            getMockContext().getResources().getString(R.string.category_Recently_Updated),
+            getMockContext().getResources().getString(R.string.category_All),
             "Animal",
             "Mineral",
             "Vegetable"
@@ -317,9 +317,9 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         List<String> categories = AppProvider.Helper.categories(getMockContext());
         String[] expected = new String[] {
-            getMockContext().getResources().getString(R.string.category_whatsnew),
-            getMockContext().getResources().getString(R.string.category_recentlyupdated),
-            getMockContext().getResources().getString(R.string.category_all),
+            getMockContext().getResources().getString(R.string.category_Whats_New),
+            getMockContext().getResources().getString(R.string.category_Recently_Updated),
+            getMockContext().getResources().getString(R.string.category_All),
 
             "Animal",
             "Mineral",
@@ -333,9 +333,9 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         List<String> categoriesLonger = AppProvider.Helper.categories(getMockContext());
         String[] expectedLonger = new String[] {
-            getMockContext().getResources().getString(R.string.category_whatsnew),
-            getMockContext().getResources().getString(R.string.category_recentlyupdated),
-            getMockContext().getResources().getString(R.string.category_all),
+            getMockContext().getResources().getString(R.string.category_Whats_New),
+            getMockContext().getResources().getString(R.string.category_Recently_Updated),
+            getMockContext().getResources().getString(R.string.category_All),
 
             "Animal",
             "Mineral",
