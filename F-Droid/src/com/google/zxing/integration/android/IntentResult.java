@@ -79,7 +79,7 @@ public final class IntentResult {
   public String getErrorCorrectionLevel() {
     return errorCorrectionLevel;
   }
-  
+
   @Override
   public String toString() {
       int rawBytesLength = rawBytes == null ? 0 : rawBytes.length;
