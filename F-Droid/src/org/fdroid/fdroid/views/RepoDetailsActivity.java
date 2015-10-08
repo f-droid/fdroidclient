@@ -56,7 +56,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
         R.id.text_last_update,
         R.id.label_repo_fingerprint,
         R.id.text_repo_fingerprint,
-        R.id.text_repo_fingerprint_description
+        R.id.text_repo_fingerprint_description,
     };
     /**
      * If the repo has <em>not</em> been updated yet, then we only show
@@ -97,7 +97,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
         final String[] projection = {
             RepoProvider.DataColumns.NAME,
             RepoProvider.DataColumns.ADDRESS,
-            RepoProvider.DataColumns.FINGERPRINT
+            RepoProvider.DataColumns.FINGERPRINT,
         };
         repo = RepoProvider.Helper.findById(this, repoId, projection);
 

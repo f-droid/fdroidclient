@@ -100,7 +100,7 @@ public class UpdateService extends IntentService implements ProgressListener {
      */
     private static final String[] APP_FIELDS_TO_IGNORE = {
         AppProvider.DataColumns.IGNORE_ALLUPDATES,
-        AppProvider.DataColumns.IGNORE_THISUPDATE
+        AppProvider.DataColumns.IGNORE_THISUPDATE,
     };
 
     public static void updateNow(Context context) {
@@ -645,7 +645,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         final String[] fields = {
             ApkProvider.DataColumns.APK_ID,
             ApkProvider.DataColumns.VERSION,
-            ApkProvider.DataColumns.VERSION_CODE
+            ApkProvider.DataColumns.VERSION_CODE,
         };
         return ApkProvider.Helper.knownApks(this, apks, fields);
     }

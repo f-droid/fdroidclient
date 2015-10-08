@@ -83,7 +83,8 @@ public final class Utils {
             new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.ENGLISH);
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
-        "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
+        "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB",
+    };
 
     public static final String FALLBACK_ICONS_DIR = "/icons/";
 
@@ -225,7 +226,7 @@ public final class Utils {
         "4.4W",  // 20
         "5.0",   // 21
         "5.1",   // 22
-        "6.0"    // 23
+        "6.0",   // 23
     };
 
     public static String getAndroidVersionName(int sdkLevel) {

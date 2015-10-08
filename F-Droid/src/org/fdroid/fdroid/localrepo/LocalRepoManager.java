@@ -76,7 +76,7 @@ public final class LocalRepoManager {
     private static final String[] WEB_ROOT_ASSET_FILES = {
         "swap-icon.png",
         "swap-tick-done.png",
-        "swap-tick-not-done.png"
+        "swap-tick-not-done.png",
     };
 
     private final Map<String, App> apps = new HashMap<>();

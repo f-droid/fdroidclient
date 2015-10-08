@@ -70,6 +70,7 @@
         <!--<module name="VisibilityModifier" />-->
 
         <module name="ArrayTypeStyle" />
+        <module name="ArrayTrailingComma" />
         <module name="UpperEll" />
 
         <module name="StringLiteralEquality" />

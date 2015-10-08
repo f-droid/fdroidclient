@@ -55,7 +55,7 @@ public class FileCompat extends Compatibility {
         String[] commands = {
             "/system/bin/ln",
             source.getAbsolutePath(),
-            dest.getAbsolutePath()
+            dest.getAbsolutePath(),
         };
         try {
             Utils.debugLog(TAG, "Executing command: " + commands[0] + " " + commands[1] + " " + commands[2]);
@@ -102,7 +102,7 @@ public class FileCompat extends Compatibility {
         final String[] args = {
             "/system/bin/chmod",
             mode,
-            file.getAbsolutePath()
+            file.getAbsolutePath(),
         };
 
         try {

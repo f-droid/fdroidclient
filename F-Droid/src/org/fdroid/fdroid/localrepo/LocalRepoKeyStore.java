@@ -161,7 +161,7 @@ public final class LocalRepoKeyStore {
             KeyManager wrappedKeyManager = new KerplappKeyManager(
                     (X509KeyManager) defaultKeyManager);
             keyManagers = new KeyManager[] {
-                wrappedKeyManager
+                wrappedKeyManager,
             };
         } catch (UnrecoverableKeyException | KeyStoreException | NoSuchAlgorithmException | CertificateException | OperatorCreationException | IOException e) {
             Log.e(TAG, "Error loading keystore", e);
@@ -255,7 +255,7 @@ public final class LocalRepoKeyStore {
     private void addToStore(String alias, KeyPair kp, Certificate cert) throws KeyStoreException,
             NoSuchAlgorithmException, CertificateException, IOException, UnrecoverableKeyException {
         Certificate[] chain = {
-            cert
+            cert,
         };
         keyStore.setKeyEntry(alias, kp.getPrivate(),
                 "".toCharArray(), chain);
@@ -274,7 +274,7 @@ public final class LocalRepoKeyStore {
         KeyManager defaultKeyManager = keyManagerFactory.getKeyManagers()[0];
         KeyManager wrappedKeyManager = new KerplappKeyManager((X509KeyManager) defaultKeyManager);
         keyManagers = new KeyManager[] {
-            wrappedKeyManager
+            wrappedKeyManager,
         };
     }
 

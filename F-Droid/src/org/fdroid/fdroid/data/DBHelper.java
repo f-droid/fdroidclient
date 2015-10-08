@@ -330,7 +330,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put("name", context.getString(nameResId));
         values.put("description", context.getString(descriptionResId));
         db.update(TABLE_REPO, values, "address = ?", new String[] {
-                context.getString(addressResId)
+                context.getString(addressResId),
         });
     }
 

@@ -653,7 +653,7 @@ public class ManageReposActivity extends ActionBarActivity {
                 RepoProvider.DataColumns.NAME,
                 RepoProvider.DataColumns.PUBLIC_KEY,
                 RepoProvider.DataColumns.FINGERPRINT,
-                RepoProvider.DataColumns.IN_USE
+                RepoProvider.DataColumns.IN_USE,
             };
             return new CursorLoader(getActivity(), uri, projection, null, null, null);
         }

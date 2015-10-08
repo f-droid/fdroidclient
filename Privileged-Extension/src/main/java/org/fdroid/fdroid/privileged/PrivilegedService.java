@@ -143,11 +143,11 @@ public class PrivilegedService extends Service {
         try {
             Class<?>[] installTypes = {
                 Uri.class, IPackageInstallObserver.class, int.class,
-                String.class
+                String.class,
             };
             Class<?>[] deleteTypes = {
                 String.class, IPackageDeleteObserver.class,
-                int.class
+                int.class,
             };
 
             PackageManager pm = getPackageManager();

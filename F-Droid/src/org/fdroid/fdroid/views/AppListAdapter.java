@@ -108,7 +108,7 @@ public abstract class AppListAdapter extends CursorAdapter {
             holder.status,
             holder.summary,
             holder.license,
-            holder.name
+            holder.name,
         };
 
         for (View v : views) {

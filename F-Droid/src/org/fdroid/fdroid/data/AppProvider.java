@@ -219,7 +219,7 @@ public class AppProvider extends FDroidProvider {
             CATEGORIES, ANTI_FEATURES, REQUIREMENTS, IGNORE_ALLUPDATES,
             IGNORE_THISUPDATE, ICON_URL, ICON_URL_LARGE,
             SUGGESTED_VERSION_CODE, SuggestedApk.VERSION,
-            InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME
+            InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
         };
     }
 
@@ -974,7 +974,8 @@ public class AppProvider extends FDroidProvider {
         String query = getIconUpdateQuery();
         final String[] params = {
             repoVersion, iconsDir, Utils.FALLBACK_ICONS_DIR,
-            repoVersion, iconsDirLarge, Utils.FALLBACK_ICONS_DIR };
+            repoVersion, iconsDirLarge, Utils.FALLBACK_ICONS_DIR,
+        };
         db.execSQL(query, params);
     }
 

@@ -302,7 +302,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 holder.api,
                 holder.buildtype,
                 holder.added,
-                holder.nativecode
+                holder.nativecode,
             };
 
             for (final View v : views) {
