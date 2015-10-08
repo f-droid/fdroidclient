@@ -1,4 +1,9 @@
+repositories {
+    jcenter()
+}
+
 apply plugin: 'com.android.application'
+apply plugin: 'checkstyle'
 
 dependencies {
     compile project(':privileged-api-lib')
@@ -28,4 +33,13 @@ android {
         abortOnError false
     }
 
+}
+
+task checkstyle(type: Checkstyle) {
+    configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    classpath = files()
 }
