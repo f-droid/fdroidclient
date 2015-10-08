@@ -88,7 +88,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
         super.endElement(uri, localName, qName);
 
-        if (localName.equals("application") && curapp != null) {
+        if ("application".equals(localName) && curapp != null) {
             apps.add(curapp);
             curapp = null;
             // If the app id is already present in this apps list, then it
@@ -99,7 +99,7 @@ public class RepoXMLHandler extends DefaultHandler {
             // happen, and I don't *think* it will crash the client, because
             // the first app will insert, the second one will update the newly
             // inserted one.
-        } else if (localName.equals("package") && curapk != null && curapp != null) {
+        } else if ("package".equals(localName) && curapk != null && curapp != null) {
             apksList.add(curapk);
             curapk = null;
         } else if (curchars.length() == 0) {
@@ -119,12 +119,12 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapk.size = Utils.parseInt(str, 0);
                     break;
                 case "hash":
-                    if (hashType == null || hashType.equals("md5")) {
+                    if (hashType == null || "md5".equals(hashType)) {
                         if (curapk.hash == null) {
                             curapk.hash = str;
                             curapk.hashType = "MD5";
                         }
-                    } else if (hashType.equals("sha256")) {
+                    } else if ("sha256".equals(hashType)) {
                         curapk.hash = str;
                         curapk.hashType = "SHA-256";
                     }
@@ -227,7 +227,7 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.requirements = Utils.CommaSeparatedList.make(str);
                     break;
             }
-        } else if (localName.equals("description")) {
+        } else if ("description".equals(localName)) {
             description = cleanWhiteSpace(str);
         }
     }
@@ -237,7 +237,7 @@ public class RepoXMLHandler extends DefaultHandler {
             Attributes attributes) throws SAXException {
         super.startElement(uri, localName, qName, attributes);
 
-        if (localName.equals("repo")) {
+        if ("repo".equals(localName)) {
             signingCertFromIndexXml = attributes.getValue("", "pubkey");
             maxage = Utils.parseInt(attributes.getValue("", "maxage"), -1);
             version = Utils.parseInt(attributes.getValue("", "version"), -1);
@@ -249,16 +249,16 @@ public class RepoXMLHandler extends DefaultHandler {
             if (dc != null)
                 description = cleanWhiteSpace(dc);
 
-        } else if (localName.equals("application") && curapp == null) {
+        } else if ("application".equals(localName) && curapp == null) {
             curapp = new App();
             curapp.id = attributes.getValue("", "id");
-        } else if (localName.equals("package") && curapp != null && curapk == null) {
+        } else if ("package".equals(localName) && curapp != null && curapk == null) {
             curapk = new Apk();
             curapk.id = curapp.id;
             curapk.repo = repo.getId();
             hashType = null;
 
-        } else if (localName.equals("hash") && curapk != null) {
+        } else if ("hash".equals(localName) && curapk != null) {
             hashType = attributes.getValue("", "type");
         }
         curchars.setLength(0);

@@ -148,7 +148,7 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         // But it is only available on later Android versions. As such we use URLEncodedUtils instead.
         List<NameValuePair> parameters = URLEncodedUtils.parse(URI.create(sharingUri.toString()), "UTF-8");
         for (NameValuePair parameter : parameters) {
-            if (!parameter.getName().equals("ssid")) {
+            if (!"ssid".equals(parameter.getName())) {
                 if (first) {
                     qrUriString += "?";
                     first = false;

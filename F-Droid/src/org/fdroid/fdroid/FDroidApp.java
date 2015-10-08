@@ -315,8 +315,8 @@ public class FDroidApp extends Application {
             // let's find it
             for (ResolveInfo info : pm.queryIntentActivities(sendBt, 0)) {
                 bluetoothPackageName = info.activityInfo.packageName;
-                if (bluetoothPackageName.equals("com.android.bluetooth")
-                        || bluetoothPackageName.equals("com.mediatek.bluetooth")) {
+                if ("com.android.bluetooth".equals(bluetoothPackageName)
+                        || "com.mediatek.bluetooth".equals(bluetoothPackageName)) {
                     className = info.activityInfo.name;
                     found = true;
                     break;

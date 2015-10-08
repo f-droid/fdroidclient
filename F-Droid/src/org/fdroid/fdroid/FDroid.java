@@ -137,7 +137,7 @@ public class FDroid extends ActionBarActivity {
                         appId = data.getQueryParameter("fdid");
                     } else if (path.startsWith("/app")) {
                         appId = data.getLastPathSegment();
-                        if (appId != null && appId.equals("app")) {
+                        if ("app".equals(appId)) {
                             appId = null;
                         }
                     }
@@ -168,10 +168,10 @@ public class FDroid extends ActionBarActivity {
                     query = data.getQueryParameter("s");
                     break;
             }
-        } else if (scheme.equals("fdroid.app")) {
+        } else if ("fdroid.app".equals(scheme)) {
             // fdroid.app:app.id
             appId = data.getSchemeSpecificPart();
-        } else if (scheme.equals("fdroid.search")) {
+        } else if ("fdroid.search".equals(scheme)) {
             // fdroid.search:query
             query = data.getSchemeSpecificPart();
         }

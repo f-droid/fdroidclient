@@ -96,7 +96,7 @@ public class CompatibilityChecker extends Compatibility {
 
         if (apk.features != null) {
             for (final String feat : apk.features) {
-                if (ignoreTouchscreen && feat.equals("android.hardware.touchscreen")) {
+                if (ignoreTouchscreen && "android.hardware.touchscreen".equals(feat)) {
                     continue;
                 }
                 if (!features.contains(feat)) {

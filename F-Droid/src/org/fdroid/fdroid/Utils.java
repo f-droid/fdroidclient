@@ -247,7 +247,7 @@ public final class Utils {
             XmlResourceParser xml = am.openXmlResourceParser("AndroidManifest.xml");
             int eventType = xml.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_TAG && xml.getName().equals("uses-sdk")) {
+                if (eventType == XmlPullParser.START_TAG && "uses-sdk".equals(xml.getName())) {
                     for (int j = 0; j < xml.getAttributeCount(); j++) {
                         if (xml.getAttributeName(j).equals(attrName)) {
                             return Integer.parseInt(xml.getAttributeValue(j));

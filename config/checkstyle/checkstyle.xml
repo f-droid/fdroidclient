@@ -73,6 +73,7 @@
         <module name="UpperEll" />
 
         <module name="StringLiteralEquality" />
+        <module name="EqualsAvoidNull" />
         <!--<module name="EqualsHashCode" />-->
 
     </module>

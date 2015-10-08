@@ -74,7 +74,7 @@ public class Response {
     public int getFileSize() {
         if (headers != null) {
             for (Map.Entry<String, String> entry : headers.entrySet()) {
-                if (entry.getKey().toLowerCase(Locale.ENGLISH).equals("content-length")) {
+                if ("content-length".equals(entry.getKey().toLowerCase(Locale.ENGLISH))) {
                     try {
                         return Integer.parseInt(entry.getValue());
                     } catch (NumberFormatException e) {
