@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'witness'
 apply plugin: 'checkstyle'
+
 if (!hasProperty('sourceDeps')) {
 
     repositories {
@@ -82,6 +83,7 @@ if (!hasProperty('sourceDeps')) {
     }
 
 }
+
 // Only do the libraries imported from maven repositories. Our own libraries
 // (like privileged-api-lib) and the prebuilt jars already checked into the
 // source code don't need to be here.
@@ -103,6 +105,7 @@ dependencyVerification {
         'org.openhab.jmdns:jmdns:7a4b34b5606bbd2aff7fdfe629edcb0416fccd367fb59a099f210b9aba4f0bce',
     ]
 }
+
 task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
 
     enabled = project.hasProperty('sourceDeps')
@@ -124,6 +127,7 @@ task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
     }
 
 }
+
 android {
     compileSdkVersion 22
     buildToolsVersion '23.0.1'
@@ -183,6 +187,7 @@ android {
     }
 
 }
+
 task checkstyle(type: Checkstyle) {
     configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
     source 'src'
@@ -191,6 +196,7 @@ task checkstyle(type: Checkstyle) {
 
     classpath = files()
 }
+
 // This person took the example code below from another blogpost online, however
 // I lost the reference to it:
 // http://stackoverflow.com/questions/23297562/gradle-javadoc-and-android-documentation
