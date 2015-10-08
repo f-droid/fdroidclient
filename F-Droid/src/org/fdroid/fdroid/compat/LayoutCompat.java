@@ -14,8 +14,11 @@ public abstract class LayoutCompat extends Compatibility {
     private static final LayoutCompat impl = LayoutCompat.create();
 
     protected abstract int relativeLayoutStartOf();
+
     protected abstract int relativeLayoutEndOf();
+
     protected abstract int relativeLayoutAlignParentStart();
+
     protected abstract int relativeLayoutAlignParentEnd();
 
     public static class RelativeLayout {

@@ -15,6 +15,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
+
 package org.fdroid.fdroid.privileged.views;
 
 import android.annotation.TargetApi;
@@ -459,9 +460,12 @@ public class AppSecurityPermissions {
     }
 
     private static class PermissionGroupInfoComparator implements Comparator<MyPermissionGroupInfo> {
+
         private final Collator sCollator = Collator.getInstance();
+
         PermissionGroupInfoComparator() {
         }
+
         public final int compare(MyPermissionGroupInfo a, MyPermissionGroupInfo b) {
             if (((a.flags() ^ b.flags()) & PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
                 return ((a.flags() & PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) ? -1 : 1;
@@ -474,9 +478,12 @@ public class AppSecurityPermissions {
     }
 
     private static class PermissionInfoComparator implements Comparator<MyPermissionInfo> {
+
         private final Collator sCollator = Collator.getInstance();
+
         PermissionInfoComparator() {
         }
+
         public final int compare(MyPermissionInfo a, MyPermissionInfo b) {
             return sCollator.compare(a.mLabel, b.mLabel);
         }

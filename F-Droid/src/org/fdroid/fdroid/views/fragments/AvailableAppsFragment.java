@@ -168,6 +168,7 @@ public class AvailableAppsFragment extends AppListFragment implements
                 getListView().setSelection(0);
                 setCurrentCategory(categories.get(pos));
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 setCurrentCategory(null);

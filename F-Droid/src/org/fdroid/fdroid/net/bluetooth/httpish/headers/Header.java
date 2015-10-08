@@ -12,6 +12,7 @@ public abstract class Header {
     };
 
     protected abstract String getName();
+
     protected abstract void handle(FileDetails details, String value);
 
     public static void process(FileDetails details, String header, String value) {

@@ -36,6 +36,7 @@ public abstract class Downloader {
     protected int totalBytes;
 
     public abstract InputStream getInputStream() throws IOException;
+
     public abstract void close();
 
     Downloader(Context context, URL url, File destFile)

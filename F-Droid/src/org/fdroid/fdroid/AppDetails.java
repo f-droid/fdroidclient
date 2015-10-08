@@ -103,8 +103,11 @@ import java.util.List;
 
 interface AppDetailsData {
     App getApp();
+
     AppDetails.ApkListAdapter getApks();
+
     Signature getInstalledSignature();
+
     String getInstalledSignatureId();
 }
 
@@ -118,6 +121,7 @@ interface AppDetailsData {
  */
 interface AppInstallListener {
     void install(final Apk apk);
+
     void removeApk(String packageName);
 }
 

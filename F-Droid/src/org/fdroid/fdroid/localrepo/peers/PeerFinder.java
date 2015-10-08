@@ -20,6 +20,7 @@ public abstract class PeerFinder<T extends Peer> {
     protected final Context context;
 
     public abstract void scan();
+
     public abstract void cancel();
 
     public PeerFinder(Context context) {

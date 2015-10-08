@@ -35,6 +35,9 @@
         <!--<module name="ParameterNumber" />-->
 
         <module name="Indentation" />
+        <module name="EmptyLineSeparator">
+            <property name="allowNoEmptyLineBetweenFields" value="true" />
+        </module>
 
         <module name="EmptyForIteratorPad" />
         <module name="GenericWhitespace" />

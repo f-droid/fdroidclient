@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 // from https://stackoverflow.com/questions/4782543/integration-zxing-library-directly-into-my-android-application
+
 package com.google.zxing.encode;
 
 import android.graphics.Bitmap;

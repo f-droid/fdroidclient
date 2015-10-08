@@ -33,6 +33,7 @@ abstract class PackageReceiver extends BroadcastReceiver {
     private static final String TAG = "PackageReceiver";
 
     protected abstract boolean toDiscard(Intent intent);
+
     protected abstract void handle(Context context, String appId);
 
     protected PackageInfo getPackageInfo(Context context, String appId) {

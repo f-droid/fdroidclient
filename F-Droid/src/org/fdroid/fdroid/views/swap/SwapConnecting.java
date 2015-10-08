@@ -125,6 +125,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
             return status == UpdateService.STATUS_COMPLETE_AND_SAME ||
                     status == UpdateService.STATUS_COMPLETE_WITH_CHANGES;
         }
+
         @Override
         protected boolean isError(Intent intent) {
             int status = getStatusCode(intent);
@@ -143,8 +144,11 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
     abstract class Receiver extends BroadcastReceiver {
 
         protected abstract String getMessageExtra();
+
         protected abstract boolean isComplete(Intent intent);
+
         protected abstract boolean isError(Intent intent);
+
         protected abstract void onComplete();
 
         @Override
