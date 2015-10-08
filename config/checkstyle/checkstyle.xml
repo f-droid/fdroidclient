@@ -45,7 +45,7 @@
         <!--<module name="WhitespaceAfter" />-->
         <!--<module name="WhitespaceAround" />-->
 
-        <!--<module name="ModifierOrder" />-->
+        <module name="ModifierOrder" />
         <module name="RedundantModifier" />
 
         <module name="AvoidNestedBlocks" />

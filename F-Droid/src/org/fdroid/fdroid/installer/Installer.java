@@ -36,7 +36,7 @@ import java.util.List;
  * Abstract Installer class. Also provides static methods to automatically
  * instantiate a working Installer based on F-Droids granted permissions.
  */
-abstract public class Installer {
+public abstract class Installer {
     protected final Context mContext;
     protected final PackageManager mPm;
     protected final InstallerCallback mCallback;

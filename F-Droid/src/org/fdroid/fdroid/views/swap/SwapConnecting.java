@@ -25,7 +25,7 @@ import org.fdroid.fdroid.localrepo.SwapService;
 public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
     @SuppressWarnings("unused")
-    private final static String TAG = "SwapConnecting";
+    private static final String TAG = "SwapConnecting";
 
     public SwapConnecting(Context context) {
         super(context);

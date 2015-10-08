@@ -16,7 +16,7 @@ import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 public class BluetoothSwap extends SwapType {
 
     private static final String TAG = "BluetoothSwap";
-    public final static String BLUETOOTH_NAME_TAG = "FDroid:";
+    public static final String BLUETOOTH_NAME_TAG = "FDroid:";
 
     private static BluetoothSwap mInstance = null;
 

@@ -27,9 +27,9 @@ public abstract class FDroidProvider extends ContentProvider {
 
     private boolean isApplyingBatch = false;
 
-    abstract protected String getTableName();
+    protected abstract String getTableName();
 
-    abstract protected String getProviderName();
+    protected abstract String getProviderName();
 
     /**
      * Should always be the same as the provider:name in the AndroidManifest
@@ -97,7 +97,7 @@ public abstract class FDroidProvider extends ContentProvider {
         return "vnd.android.cursor." + type + "/vnd." + AUTHORITY + "." + getProviderName();
     }
 
-    abstract protected UriMatcher getMatcher();
+    protected abstract UriMatcher getMatcher();
 
     protected String generateQuestionMarksForInClause(int num) {
         StringBuilder sb = new StringBuilder(num * 2);

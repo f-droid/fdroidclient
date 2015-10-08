@@ -63,11 +63,12 @@ import java.util.Set;
  */
 public class AppSecurityPermissions {
 
+    private static final String TAG = "AppSecurityPermissions";
+
     public static final int WHICH_PERSONAL = 1<<0;
     public static final int WHICH_DEVICE = 1<<1;
     public static final int WHICH_NEW = 1<<2;
 
-    private final static String TAG = "AppSecurityPermissions";
     private final Context mContext;
     private final LayoutInflater mInflater;
     private final PackageManager mPm;

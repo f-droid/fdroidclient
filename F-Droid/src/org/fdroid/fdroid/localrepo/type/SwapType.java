@@ -17,7 +17,7 @@ import org.fdroid.fdroid.localrepo.SwapService;
  */
 public abstract class SwapType {
 
-    private final static String TAG = "SwapType";
+    private static final String TAG = "SwapType";
 
     private boolean isConnected;
 
@@ -28,11 +28,11 @@ public abstract class SwapType {
         this.context = context;
     }
 
-    abstract public void start();
+    public abstract void start();
 
-    abstract public void stop();
+    public abstract void stop();
 
-    abstract protected String getBroadcastAction();
+    protected abstract String getBroadcastAction();
 
     public boolean isDiscoverable() {
         return isConnected();

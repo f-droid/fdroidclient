@@ -24,7 +24,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
 
-abstract public class AppListFragment extends ThemeableListFragment implements
+public abstract class AppListFragment extends ThemeableListFragment implements
         AdapterView.OnItemClickListener,
         Preferences.ChangeListener,
         LoaderManager.LoaderCallbacks<Cursor> {

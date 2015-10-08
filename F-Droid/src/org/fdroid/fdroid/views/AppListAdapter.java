@@ -18,7 +18,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 
-abstract public class AppListAdapter extends CursorAdapter {
+public abstract class AppListAdapter extends CursorAdapter {
 
     private Context mContext;
     private LayoutInflater mInflater;
@@ -52,9 +52,9 @@ abstract public class AppListAdapter extends CursorAdapter {
 
     }
 
-    abstract protected boolean showStatusUpdate();
+    protected abstract boolean showStatusUpdate();
 
-    abstract protected boolean showStatusInstalled();
+    protected abstract boolean showStatusInstalled();
 
     private static class ViewHolder {
         TextView name;

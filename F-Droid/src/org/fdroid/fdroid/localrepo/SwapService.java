@@ -139,7 +139,7 @@ public class SwapService extends Service {
      */
     public static final int STEP_INITIAL_LOADING = 9;
 
-    private @SwapStep int step = STEP_INTRO;
+    @SwapStep private int step = STEP_INTRO;
 
     /**
      * Current screen that the swap process is up to.
@@ -155,7 +155,7 @@ public class SwapService extends Service {
         return this;
     }
 
-    public @NonNull Set<String> getAppsToSwap() {
+    @NonNull public Set<String> getAppsToSwap() {
         return appsToSwap;
     }
 
@@ -490,7 +490,7 @@ public class SwapService extends Service {
     private BonjourFinder bonjourFinder;
     private BluetoothFinder bluetoothFinder;
 
-    private final static int TIMEOUT = 900000; // 15 mins
+    private static final int TIMEOUT = 900000; // 15 mins
 
     /**
      * Used to automatically turn of swapping after a defined amount of time (15 mins).
