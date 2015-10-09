@@ -120,7 +120,7 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
             // uris.
             getProvider().query(uri, getMinimalProjection(), null, null, null);
             fail();
-        } catch (UnsupportedOperationException e) {}
+        } catch (UnsupportedOperationException e) { }
     }
 
     protected void assertValidUri(Uri uri) {

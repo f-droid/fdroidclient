@@ -38,7 +38,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     protected String[] getMinimalProjection() {
         return new String[] {
             AppProvider.DataColumns.APP_ID,
-            AppProvider.DataColumns.NAME
+            AppProvider.DataColumns.NAME,
         };
     }
 
@@ -56,21 +56,21 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         insertApp("com.example.app100", "App 100");
         insertApp("com.example.app1000", "App 1000");
 
-        for (int i = 0; i < 50; i ++) {
+        for (int i = 0; i < 50; i++) {
             pm.install("com.example.app" + i, 1, "v" + 1);
         }
         InstalledAppCacheUpdater.updateInForeground(getMockContext());
 
         assertResultCount(1, AppProvider.getInstalledUri());
 
-        for (int i = 50; i < 500; i ++) {
+        for (int i = 50; i < 500; i++) {
             pm.install("com.example.app" + i, 1, "v" + 1);
         }
         InstalledAppCacheUpdater.updateInForeground(getMockContext());
 
         assertResultCount(2, AppProvider.getInstalledUri());
 
-        for (int i = 500; i < 1100; i ++) {
+        for (int i = 500; i < 1100; i++) {
             pm.install("com.example.app" + i, 1, "v" + 1);
         }
         InstalledAppCacheUpdater.updateInForeground(getMockContext());
@@ -109,7 +109,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     }
 
     private void insertApps(int count) {
-        for (int i = 0; i < count; i ++) {
+        for (int i = 0; i < count; i++) {
             insertApp("com.example.test." + i, "Test app " + i);
         }
     }
@@ -207,7 +207,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         assertResultCount(10, AppProvider.getContentUri());
 
-        String[] projection = { AppProvider.DataColumns.APP_ID };
+        String[] projection = {AppProvider.DataColumns.APP_ID};
         List<App> ignoredApps = AppProvider.Helper.findIgnored(getMockContext(), projection);
 
         String[] expectedIgnored = {
@@ -217,7 +217,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
             // is should only ignore if "ignored version" is >= suggested
 
             "installed, old version, ignore all",
-            "installed, old version, ignore latest"
+            "installed, old version, ignore latest",
             // NOT "installed, old version, ignore newer, but not latest"
             // for the same reason as above.
         };
@@ -242,7 +242,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         assertResultCount(100, AppProvider.getContentUri());
         assertResultCount(0, AppProvider.getInstalledUri());
 
-        for (int i = 10; i < 20; i ++) {
+        for (int i = 10; i < 20; i++) {
             TestUtils.installAndBroadcast(getSwappableContext(), pm, "com.example.test." + i, i, "v1");
         }
 
@@ -305,7 +305,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
             getMockContext().getResources().getString(R.string.category_All),
             "Animal",
             "Mineral",
-            "Vegetable"
+            "Vegetable",
         };
         TestUtils.assertContainsOnly(categories, expected);
     }
@@ -323,7 +323,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
             "Animal",
             "Mineral",
-            "Vegetable"
+            "Vegetable",
         };
         TestUtils.assertContainsOnly(categories, expected);
 
@@ -350,7 +350,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
             "Blah",
             "Test category",
             "The quick brown fox jumps over the lazy dog",
-            "With apostrophe's"
+            "With apostrophe's",
         };
 
         TestUtils.assertContainsOnly(categoriesLonger, expectedLonger);

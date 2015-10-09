@@ -29,7 +29,7 @@ abstract class BaseApkProviderTest extends FDroidProviderTest<ApkProvider> {
             ApkProvider.DataColumns.APK_ID,
             ApkProvider.DataColumns.VERSION_CODE,
             ApkProvider.DataColumns.NAME,
-            ApkProvider.DataColumns.REPO_ID
+            ApkProvider.DataColumns.REPO_ID,
         };
     }
 

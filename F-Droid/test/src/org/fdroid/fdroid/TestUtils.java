@@ -53,7 +53,7 @@ public class TestUtils {
 
     public static <T> String listToString(List<T> list) {
         String string = "[";
-        for (int i = 0; i < list.size(); i ++) {
+        for (int i = 0; i < list.size(); i++) {
             if (i > 0) {
                 string += ", ";
             }
@@ -220,7 +220,7 @@ public class TestUtils {
         Context context = instrumentation.getContext();
         Context targetContext = instrumentation.getTargetContext();
         File dir = context.getCacheDir();
-        Log.d(TAG, "Looking for writeable dir, trying context.getCacheDir()" );
+        Log.d(TAG, "Looking for writeable dir, trying context.getCacheDir()");
         if (dir == null || !dir.canWrite()) {
             Log.d(TAG, "Looking for writeable dir, trying context.getFilesDir()");
             dir = context.getFilesDir();

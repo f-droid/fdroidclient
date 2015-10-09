@@ -17,13 +17,13 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
 
     public void testKnownApks() {
 
-        for (int i = 0; i < 7; i ++)
+        for (int i = 0; i < 7; i++)
             TestUtils.insertApk(this, "org.fdroid.fdroid", i);
 
-        for (int i = 0; i < 9; i ++)
+        for (int i = 0; i < 9; i++)
             TestUtils.insertApk(this, "org.example", i);
 
-        for (int i = 0; i < 3; i ++)
+        for (int i = 0; i < 3; i++)
             TestUtils.insertApk(this, "com.example", i);
 
         TestUtils.insertApk(this, "com.apk.thingo", 1);
@@ -57,7 +57,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
 
         String[] projection = {
             ApkProvider.DataColumns.APK_ID,
-            ApkProvider.DataColumns.VERSION_CODE
+            ApkProvider.DataColumns.VERSION_CODE,
         };
 
         List<Apk> knownApks = ApkProvider.Helper.knownApks(getMockContext(), apksToCheck, projection);
@@ -70,13 +70,13 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
 
     public void testFindByApp() {
 
-        for (int i = 0; i < 7; i ++)
+        for (int i = 0; i < 7; i++)
             TestUtils.insertApk(this, "org.fdroid.fdroid", i);
 
-        for (int i = 0; i < 9; i ++)
+        for (int i = 0; i < 9; i++)
             TestUtils.insertApk(this, "org.example", i);
 
-        for (int i = 0; i < 3; i ++)
+        for (int i = 0; i < 3; i++)
             TestUtils.insertApk(this, "com.example", i);
 
         TestUtils.insertApk(this, "com.apk.thingo", 1);
@@ -154,7 +154,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         // Insert some random apks either side of the "com.example", so that
         // the Helper.find() method doesn't stumble upon the app we are interested
         // in by shear dumb luck...
-        for (int i = 0; i < 10; i ++)
+        for (int i = 0; i < 10; i++)
             TestUtils.insertApk(this, "org.fdroid.apk." + i, i);
 
         ContentValues values = new ContentValues();
@@ -164,7 +164,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         TestUtils.insertApk(this, "com.example", 11, values);
 
         // ...and a few more for good measure...
-        for (int i = 15; i < 20; i ++)
+        for (int i = 15; i < 20; i++)
             TestUtils.insertApk(this, "com.other.thing." + i, i);
 
         Apk apk = ApkProvider.Helper.find(getMockContext(), "com.example", 11);
@@ -181,7 +181,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
 
         String[] projection = {
             ApkProvider.DataColumns.APK_ID,
-            ApkProvider.DataColumns.HASH
+            ApkProvider.DataColumns.HASH,
         };
 
         Apk apkLessFields = ApkProvider.Helper.find(getMockContext(), "com.example", 11, projection);

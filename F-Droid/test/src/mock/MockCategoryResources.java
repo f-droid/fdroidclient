@@ -21,6 +21,6 @@ public class MockCategoryResources extends MockFDroidResources {
         } else {
             return "";
         }
-}
+    }
 
 }

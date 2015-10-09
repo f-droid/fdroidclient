@@ -34,7 +34,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         assertInvalidUri(RepoProvider.getContentUri());
 
         List<Apk> apks = new ArrayList<Apk>(3);
-        for (int i = 0; i < 10; i ++) {
+        for (int i = 0; i < 10; i++) {
             apks.add(new MockApk("com.example." + i, i));
         }
 
@@ -47,7 +47,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         assertValidUri(ApkProvider.getRepoUri(1000));
 
         List<Apk> manyApks = new ArrayList<Apk>(PublicApkProvider.MAX_APKS_TO_QUERY - 5);
-        for (int i = 0; i < PublicApkProvider.MAX_APKS_TO_QUERY - 1; i ++) {
+        for (int i = 0; i < PublicApkProvider.MAX_APKS_TO_QUERY - 1; i++) {
             manyApks.add(new MockApk("com.example." + i, i));
         }
         assertValidUri(PublicApkProvider.getContentUri(manyApks));
@@ -69,7 +69,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
     }
 
     public void testAppApks() {
-        for (int i = 1; i <= 10; i ++) {
+        for (int i = 1; i <= 10; i++) {
             TestUtils.insertApk(this, "org.fdroid.fdroid", i);
             TestUtils.insertApk(this, "com.example", i);
         }
@@ -175,18 +175,18 @@ public class ApkProviderTest extends BaseApkProviderTest {
         assertCantDelete(Uri.withAppendedPath(ApkProvider.getContentUri(), "some-random-path"));
     }
 
-    public void testRepoApks() {
+    private static final long REPO_KEEP = 1;
+    private static final long REPO_DELETE = 2;
 
-        final long REPO_KEEP = 1;
-        final long REPO_DELETE = 2;
+    public void testRepoApks() {
 
         // Insert apks into two repos, one of which we will later purge the
         // the apks from.
-        for (int i = 1; i <= 5; i ++) {
+        for (int i = 1; i <= 5; i++) {
             insertApkForRepo("org.fdroid.fdroid", i, REPO_KEEP);
             insertApkForRepo("com.example." + i, 1, REPO_DELETE);
         }
-        for (int i = 6; i <= 10; i ++) {
+        for (int i = 6; i <= 10; i++) {
             insertApkForRepo("org.fdroid.fdroid", i, REPO_DELETE);
             insertApkForRepo("com.example." + i, 1, REPO_KEEP);
         }
@@ -253,9 +253,9 @@ public class ApkProviderTest extends BaseApkProviderTest {
 
     public void testCount() {
         String[] projectionFields = getMinimalProjection();
-        String[] projectionCount = new String[] { ApkProvider.DataColumns._COUNT };
+        String[] projectionCount = new String[] {ApkProvider.DataColumns._COUNT};
 
-        for (int i = 0; i < 13; i ++) {
+        for (int i = 0; i < 13; i++) {
             TestUtils.insertApk(this, "com.example", i);
         }
 
@@ -280,7 +280,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
             RepoProvider.DataColumns.ADDRESS,
             RepoProvider.DataColumns.FINGERPRINT,
             RepoProvider.DataColumns.NAME,
-            RepoProvider.DataColumns.PUBLIC_KEY
+            RepoProvider.DataColumns.PUBLIC_KEY,
         };
 
         for (String field : repoFields) {

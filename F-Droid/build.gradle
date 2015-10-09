@@ -190,7 +190,7 @@ android {
 
 task checkstyle(type: Checkstyle) {
     configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
-    source 'src'
+    source 'src', 'test/src'
     include '**/*.java'
     exclude '**/gen/**'
 

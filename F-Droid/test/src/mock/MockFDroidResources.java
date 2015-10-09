@@ -31,6 +31,6 @@ public class MockFDroidResources extends MockResources {
         } else {
             return 0;
         }
-}
+    }
 
 }

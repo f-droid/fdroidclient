@@ -53,7 +53,7 @@ public class FileCompatTest extends InstrumentationTestCase {
 
     public void testSymlinkOs() {
 
-        if (Build.VERSION.SDK_INT >= 21 ) {
+        if (Build.VERSION.SDK_INT >= 21) {
             FileCompatForTest.symlinkOsTest(sourceFile, destFile);
             assertTrue(destFile.getAbsolutePath() + " should exist after symlinking", destFile.exists());
         } else {

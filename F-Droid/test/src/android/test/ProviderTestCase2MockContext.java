@@ -116,7 +116,7 @@ public abstract class ProviderTestCase2MockContext<T extends ContentProvider> ex
         return mProvider;
     }
 
-    abstract protected Context createMockContext(Context delegate);
+    protected abstract Context createMockContext(Context delegate);
 
     /**
      * Sets up the environment for the test fixture.
