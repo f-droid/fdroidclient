@@ -287,11 +287,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 holder.nativecode.setVisibility(View.GONE);
             }
 
-            if (apk.incompatible_reasons != null) {
+            if (apk.incompatibleReasons != null) {
                 holder.incompatibleReasons.setText(
                     getResources().getString(
                         R.string.requires_features,
-                        apk.incompatible_reasons.toPrettyString()));
+                        apk.incompatibleReasons.toPrettyString()));
                 holder.incompatibleReasons.setVisibility(View.VISIBLE);
             } else {
                 holder.incompatibleReasons.setVisibility(View.GONE);
@@ -1062,7 +1062,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private static boolean view_all_description;
         private static LinearLayout ll_view_more_description;
         private static LinearLayout ll_view_more_permissions;
-        private final View.OnClickListener expander_permissions = new View.OnClickListener() {
+        private final View.OnClickListener expanderPermissions = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final TextView permissionListView = (TextView) ll_view_more_permissions.findViewById(R.id.permissions_list);
@@ -1077,7 +1077,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 }
             }
         };
-        private ViewGroup layout_links;
+        private ViewGroup layoutLinks;
 
         public AppDetailsSummaryFragment() {
             prefs = Preferences.get();
@@ -1133,18 +1133,18 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             return s.subSequence(0, i + 1);
         }
 
-        private ViewGroup layout_links_content;
-        private View.OnClickListener expander_links = new View.OnClickListener() {
+        private ViewGroup layoutLinksContent;
+        private View.OnClickListener expanderLinks = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                TextView linksHeader = (TextView) layout_links.findViewById(R.id.information);
+                TextView linksHeader = (TextView) layoutLinks.findViewById(R.id.information);
 
-                if (layout_links_content.getVisibility() == View.GONE) {
-                    layout_links_content.setVisibility(View.VISIBLE);
+                if (layoutLinksContent.getVisibility() == View.GONE) {
+                    layoutLinksContent.setVisibility(View.VISIBLE);
                     linksHeader.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(getActivity(), R.drawable.ic_website), null, ContextCompat.getDrawable(getActivity(), R.drawable.ic_expand_less_grey600), null);
                 } else {
-                    layout_links_content.setVisibility(View.GONE);
+                    layoutLinksContent.setVisibility(View.GONE);
                     linksHeader.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(getActivity(), R.drawable.ic_website), null, ContextCompat.getDrawable(getActivity(), R.drawable.ic_expand_more_grey600), null);
                 }
             }
@@ -1185,7 +1185,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             }
         };
 
-        private final View.OnClickListener expander_description = new View.OnClickListener() {
+        private final View.OnClickListener expanderDescription = new View.OnClickListener() {
             public void onClick(View v) {
                 final TextView description = (TextView) ll_view_more_description.findViewById(R.id.description);
                 final TextView view_more_permissions = (TextView) ll_view_more_description.findViewById(R.id.view_more_description);
@@ -1215,13 +1215,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                     if (description.getLineCount() > MAX_LINES) {
                         description.setMaxLines(MAX_LINES);
                         description.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                        description.setOnClickListener(expander_description);
+                        description.setOnClickListener(expanderDescription);
                         view_all_description = true;
 
                         ll_view_more_description = (LinearLayout) view.findViewById(R.id.ll_description);
-                        ll_view_more_description.setOnClickListener(expander_description);
+                        ll_view_more_description.setOnClickListener(expanderDescription);
 
-                        view_more_description.setOnClickListener(expander_description);
+                        view_more_description.setOnClickListener(expanderDescription);
                     } else {
                         view_more_description.setVisibility(View.GONE);
                     }
@@ -1240,11 +1240,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             summaryView.setText(getApp().summary);
 
 
-            layout_links = (ViewGroup) view.findViewById(R.id.ll_information);
-            layout_links_content = (ViewGroup) layout_links.findViewById(R.id.ll_information_content);
+            layoutLinks = (ViewGroup) view.findViewById(R.id.ll_information);
+            layoutLinksContent = (ViewGroup) layoutLinks.findViewById(R.id.ll_information_content);
 
             final TextView linksHeader = (TextView) view.findViewById(R.id.information);
-            linksHeader.setOnClickListener(expander_links);
+            linksHeader.setOnClickListener(expanderLinks);
 
             // Website button
             View tv = view.findViewById(R.id.website);
@@ -1326,7 +1326,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             if (!getApks().isEmpty() && (curApkCompatible || prefs.showIncompatibleVersions())) {
                 // build and set the string once
                 buildPermissionInfo();
-                permissionHeader.setOnClickListener(expander_permissions);
+                permissionHeader.setOnClickListener(expanderPermissions);
 
             } else {
                 permissionHeader.setVisibility(View.GONE);
@@ -1643,7 +1643,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     public static class AppDetailsListFragment extends ListFragment {
 
-        private final String SUMMARY_TAG = "summary";
+        private static final String SUMMARY_TAG = "summary";
 
         private AppDetailsData data;
         private AppInstallListener installListener;

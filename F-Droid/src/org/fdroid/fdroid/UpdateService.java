@@ -482,10 +482,10 @@ public class UpdateService extends IntentService implements ProgressListener {
             final List<String> reasons = checker.getIncompatibleReasons(apk);
             if (reasons.size() > 0) {
                 apk.compatible = false;
-                apk.incompatible_reasons = Utils.CommaSeparatedList.make(reasons);
+                apk.incompatibleReasons = Utils.CommaSeparatedList.make(reasons);
             } else {
                 apk.compatible = true;
-                apk.incompatible_reasons = null;
+                apk.incompatibleReasons = null;
             }
         }
     }

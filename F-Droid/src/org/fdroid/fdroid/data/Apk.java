@@ -42,7 +42,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     public int repoVersion;
     public String repoAddress;
-    public Utils.CommaSeparatedList incompatible_reasons;
+    public Utils.CommaSeparatedList incompatibleReasons;
 
     public Apk() {
         size = 0;
@@ -94,7 +94,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
                     nativecode = Utils.CommaSeparatedList.make(cursor.getString(i));
                     break;
                 case ApkProvider.DataColumns.INCOMPATIBLE_REASONS:
-                    incompatible_reasons = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    incompatibleReasons = Utils.CommaSeparatedList.make(cursor.getString(i));
                     break;
                 case ApkProvider.DataColumns.REPO_ID:
                     repo = cursor.getInt(i);
@@ -147,7 +147,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
         values.put(ApkProvider.DataColumns.PERMISSIONS, Utils.CommaSeparatedList.str(permissions));
         values.put(ApkProvider.DataColumns.FEATURES, Utils.CommaSeparatedList.str(features));
         values.put(ApkProvider.DataColumns.NATIVE_CODE, Utils.CommaSeparatedList.str(nativecode));
-        values.put(ApkProvider.DataColumns.INCOMPATIBLE_REASONS, Utils.CommaSeparatedList.str(incompatible_reasons));
+        values.put(ApkProvider.DataColumns.INCOMPATIBLE_REASONS, Utils.CommaSeparatedList.str(incompatibleReasons));
         values.put(ApkProvider.DataColumns.IS_COMPATIBLE, compatible ? 1 : 0);
         return values;
     }
