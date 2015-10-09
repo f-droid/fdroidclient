@@ -44,6 +44,9 @@
             <property name="allowNoEmptyLineBetweenFields" value="true" />
             <!--<property name="allowMultipleEmptyLines" value="false" />-->
         </module>
+        <module name="SeparatorWrap">
+            <property name="tokens" value="COMMA" />
+        </module>
 
         <!--<module name="OneTopLevelClass" />-->
         <module name="OneStatementPerLine" />
