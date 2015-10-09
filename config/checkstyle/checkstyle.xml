@@ -27,6 +27,7 @@
         <module name="TypeName" />
 
         <module name="AvoidStarImport" />
+        <module name="AvoidStaticImport" />
         <module name="RedundantImport" />
         <module name="UnusedImports" />
 

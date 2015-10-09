@@ -63,7 +63,7 @@ public class FDroidCertPins {
         if (pinList == null) {
             List<String> l = new ArrayList<>();
             l.addAll(Arrays.asList(DEFAULT_PINS));
-            pinList = pinlist;
+            pinList = l;
         }
 
         return pinList.toArray(new String[pinList.size()]);
