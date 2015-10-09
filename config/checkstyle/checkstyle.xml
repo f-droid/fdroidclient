@@ -25,11 +25,15 @@
         <module name="ParameterName" />
         <module name="StaticVariableName" />
         <module name="TypeName" />
+        <module name="MethodTypeParameterName" />
+        <module name="InterfaceTypeParameterName" />
+        <module name="ClassTypeParameterName" />
 
         <module name="AvoidStarImport" />
         <module name="AvoidStaticImport" />
         <module name="RedundantImport" />
         <module name="UnusedImports" />
+        <module name="OuterTypeFilename" />
 
         <!--<module name="LineLength">-->
         <!--<module name="MethodLength" />-->
