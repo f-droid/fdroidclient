@@ -44,7 +44,9 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public int getCount() { return TabManager.INDEX_COUNT; }
+    public int getCount() {
+        return TabManager.INDEX_COUNT;
+    }
 
     @Override
     public String getPageTitle(int i) {

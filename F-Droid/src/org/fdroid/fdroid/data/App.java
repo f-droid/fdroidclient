@@ -424,5 +424,7 @@ public class App extends ValueObject implements Comparable<App> {
         return new AppFilter().filter(this);
     }
 
-    public String getSuggestedVersion() { return suggestedVersion; }
+    public String getSuggestedVersion() {
+        return suggestedVersion;
+    }
 }

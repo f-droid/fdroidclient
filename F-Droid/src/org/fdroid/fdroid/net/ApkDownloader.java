@@ -281,9 +281,15 @@ public class ApkDownloader implements AsyncDownloader.Listener {
         }
     }
 
-    public Apk getApk() { return curApk; }
+    public Apk getApk() {
+        return curApk;
+    }
 
-    public int getBytesRead() { return dlWrapper != null ? dlWrapper.getBytesRead() : 0; }
+    public int getBytesRead() {
+        return dlWrapper != null ? dlWrapper.getBytesRead() : 0;
+    }
 
-    public int getTotalBytes() { return dlWrapper != null ? dlWrapper.getTotalBytes() : 0; }
+    public int getTotalBytes() {
+        return dlWrapper != null ? dlWrapper.getTotalBytes() : 0;
+    }
 }

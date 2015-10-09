@@ -63,19 +63,33 @@ public class RepoXMLHandler extends DefaultHandler {
         description = null;
     }
 
-    public List<App> getApps() { return apps; }
+    public List<App> getApps() {
+        return apps;
+    }
 
-    public List<Apk> getApks() { return apksList; }
+    public List<Apk> getApks() {
+        return apksList;
+    }
 
-    public int getMaxAge() { return maxage; }
+    public int getMaxAge() {
+        return maxage;
+    }
 
-    public int getVersion() { return version; }
+    public int getVersion() {
+        return version;
+    }
 
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public String getSigningCertFromIndexXml() { return signingCertFromIndexXml; }
+    public String getSigningCertFromIndexXml() {
+        return signingCertFromIndexXml;
+    }
 
     @Override
     public void characters(char[] ch, int start, int length) {

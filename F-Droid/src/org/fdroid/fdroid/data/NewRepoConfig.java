@@ -100,13 +100,21 @@ public class NewRepoConfig {
 
     }
 
-    public String getBssid() { return bssid; }
+    public String getBssid() {
+        return bssid;
+    }
 
-    public String getSsid() { return ssid; }
+    public String getSsid() {
+        return ssid;
+    }
 
-    public int getPort() { return port; }
+    public int getPort() {
+        return port;
+    }
 
-    public String getRepoUriString() { return uriString; }
+    public String getRepoUriString() {
+        return uriString;
+    }
 
     public Uri getRepoUri() {
         if (uriString == null) {
@@ -115,17 +123,29 @@ public class NewRepoConfig {
         return Uri.parse(uriString);
     }
 
-    public String getHost() { return host; }
+    public String getHost() {
+        return host;
+    }
 
-    public String getFingerprint() { return fingerprint; }
+    public String getFingerprint() {
+        return fingerprint;
+    }
 
-    public boolean isValidRepo() { return isValidRepo; }
+    public boolean isValidRepo() {
+        return isValidRepo;
+    }
 
-    public boolean isFromSwap() { return fromSwap; }
+    public boolean isFromSwap() {
+        return fromSwap;
+    }
 
-    public boolean preventFurtherSwaps() { return preventFurtherSwaps; }
+    public boolean preventFurtherSwaps() {
+        return preventFurtherSwaps;
+    }
 
-    public String getErrorMessage() { return errorMessage; }
+    public String getErrorMessage() {
+        return errorMessage;
+    }
 
     /** Sanitize and format an incoming repo URI for function and readability */
     public static String sanitizeRepoUri(Uri uri) {

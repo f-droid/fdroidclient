@@ -68,9 +68,9 @@
         <module name="RedundantModifier" />
 
         <module name="AvoidNestedBlocks" />
-        <!--<module name="LeftCurly" />-->
+        <module name="LeftCurly" />
         <!--<module name="NeedBraces" />-->
-        <!--<module name="RightCurly" />-->
+        <module name="RightCurly" />
 
         <module name="EmptyStatement" />
         <!--<module name="HiddenField" />-->

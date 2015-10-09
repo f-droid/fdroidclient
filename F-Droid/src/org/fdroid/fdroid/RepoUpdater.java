@@ -70,11 +70,17 @@ public class RepoUpdater {
         this.progressListener = progressListener;
     }
 
-    public boolean hasChanged() { return hasChanged; }
+    public boolean hasChanged() {
+        return hasChanged;
+    }
 
-    public List<App> getApps() { return apps; }
+    public List<App> getApps() {
+        return apps;
+    }
 
-    public List<Apk> getApks() { return apks; }
+    public List<Apk> getApks() {
+        return apks;
+    }
 
     private URL getIndexAddress() throws MalformedURLException {
         String urlString = repo.address + "/index.jar";
@@ -219,7 +225,9 @@ public class RepoUpdater {
         return values;
     }
 
-    public RepoUpdateRememberer getRememberer() { return rememberer; }
+    public RepoUpdateRememberer getRememberer() {
+        return rememberer;
+    }
 
     public static class RepoUpdateRememberer {
 

@@ -44,7 +44,9 @@ public class BluetoothServer extends Thread {
         start();
     }
 
-    public boolean isRunning() { return isRunning; }
+    public boolean isRunning() {
+        return isRunning;
+    }
 
     public void close() {
 

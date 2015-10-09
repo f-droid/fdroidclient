@@ -539,17 +539,23 @@ public class AppProvider extends FDroidProvider {
     }
 
     @Override
-    protected String getTableName() { return DBHelper.TABLE_APP; }
+    protected String getTableName() {
+        return DBHelper.TABLE_APP;
+    }
 
     @Override
-    protected String getProviderName() { return "AppProvider"; }
+    protected String getProviderName() {
+        return "AppProvider";
+    }
 
     public static String getAuthority() {
         return AUTHORITY + "." + PROVIDER_NAME;
     }
 
     @Override
-    protected UriMatcher getMatcher() { return matcher; }
+    protected UriMatcher getMatcher() {
+        return matcher;
+    }
 
     private AppQuerySelection queryCanUpdate() {
         final String ignoreCurrent = " fdroid_app.ignoreThisUpdate != fdroid_app.suggestedVercode ";

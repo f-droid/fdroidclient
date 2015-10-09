@@ -229,19 +229,25 @@ public final class QRCodeEncoder {
     private static String guessAppropriateEncoding(CharSequence contents) {
         // Very crude at the moment
         for (int i = 0; i < contents.length(); i++) {
-            if (contents.charAt(i) > 0xFF) { return "UTF-8"; }
+            if (contents.charAt(i) > 0xFF) {
+                return "UTF-8";
+            }
         }
         return null;
     }
 
     private static String trim(String s) {
-        if (s == null) { return null; }
+        if (s == null) {
+            return null;
+        }
         String result = s.trim();
         return result.length() == 0 ? null : result;
     }
 
     private static String escapeMECARD(String input) {
-        if (input == null || (input.indexOf(':') < 0 && input.indexOf(';') < 0)) { return input; }
+        if (input == null || (input.indexOf(':') < 0 && input.indexOf(';') < 0)) {
+            return input;
+        }
         int length = input.length();
         StringBuilder result = new StringBuilder(length);
         for (int i = 0; i < length; i++) {

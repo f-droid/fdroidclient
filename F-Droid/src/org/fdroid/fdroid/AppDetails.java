@@ -1043,16 +1043,24 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     }
 
     @Override
-    public App getApp() { return app; }
+    public App getApp() {
+        return app;
+    }
 
     @Override
-    public ApkListAdapter getApks() { return adapter; }
+    public ApkListAdapter getApks() {
+        return adapter;
+    }
 
     @Override
-    public Signature getInstalledSignature() { return mInstalledSignature; }
+    public Signature getInstalledSignature() {
+        return mInstalledSignature;
+    }
 
     @Override
-    public String getInstalledSignatureId() { return mInstalledSigID; }
+    public String getInstalledSignatureId() {
+        return mInstalledSigID;
+    }
 
     public static class AppDetailsSummaryFragment extends Fragment {
 
@@ -1089,13 +1097,21 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             data = (AppDetailsData) activity;
         }
 
-        protected App getApp() { return data.getApp(); }
+        protected App getApp() {
+            return data.getApp();
+        }
 
-        protected ApkListAdapter getApks() { return data.getApks(); }
+        protected ApkListAdapter getApks() {
+            return data.getApks();
+        }
 
-        protected Signature getInstalledSignature() { return data.getInstalledSignature(); }
+        protected Signature getInstalledSignature() {
+            return data.getInstalledSignature();
+        }
 
-        protected String getInstalledSignatureId() { return data.getInstalledSignatureId(); }
+        protected String getInstalledSignatureId() {
+            return data.getInstalledSignatureId();
+        }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -1442,9 +1458,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 .build();
         }
 
-        private App getApp() { return data.getApp(); }
+        private App getApp() {
+            return data.getApp();
+        }
 
-        private ApkListAdapter getApks() { return data.getApks(); }
+        private ApkListAdapter getApks() {
+            return data.getApks();
+        }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -1666,9 +1686,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             installListener.removeApk(getApp().id);
         }
 
-        protected App getApp() { return data.getApp(); }
+        protected App getApp() {
+            return data.getApp();
+        }
 
-        protected ApkListAdapter getApks() { return data.getApks(); }
+        protected ApkListAdapter getApks() {
+            return data.getApks();
+        }
 
         @Override
         public void onViewCreated(View view, Bundle savedInstanceState) {

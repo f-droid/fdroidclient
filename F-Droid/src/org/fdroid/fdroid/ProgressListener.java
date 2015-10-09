@@ -41,7 +41,9 @@ public interface ProgressListener {
         }
 
         @Override
-        public int describeContents() { return 0; }
+        public int describeContents() {
+            return 0;
+        }
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
@@ -70,7 +72,9 @@ public interface ProgressListener {
          * so we pass that through to the downloader when we set the progress listener. This way,
          * we can ask the event for the name of the repo.
          */
-        public Bundle getData() { return data; }
+        public Bundle getData() {
+            return data;
+        }
     }
 
 }

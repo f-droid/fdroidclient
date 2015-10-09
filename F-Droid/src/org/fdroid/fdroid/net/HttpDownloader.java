@@ -168,8 +168,8 @@ public class HttpDownloader extends Downloader {
         try {
             if (stream != null)
                 stream.close();
+        } catch (IOException e) {
         }
-        catch (IOException e) { }
 
         connection.disconnect();
     }
