@@ -366,11 +366,11 @@ public class AppSecurityPermissions {
     }
 
     public int getPermissionCount(int which) {
-        int N = 0;
+        int n = 0;
         for (int i = 0; i < mPermGroupsList.size(); i++) {
-            N += getPermissionList(mPermGroupsList.get(i), which).size();
+            n += getPermissionList(mPermGroupsList.get(i), which).size();
         }
-        return N;
+        return n;
     }
 
     public View getPermissionsView(int which) {

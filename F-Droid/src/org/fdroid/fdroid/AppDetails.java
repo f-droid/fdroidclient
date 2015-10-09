@@ -840,9 +840,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         if (repoaddress == null) return;
 
         if (!apk.compatible) {
-            AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
-            ask_alrt.setMessage(R.string.installIncompatible);
-            ask_alrt.setPositiveButton(R.string.yes,
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.installIncompatible);
+            builder.setPositiveButton(R.string.yes,
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog,
@@ -850,14 +850,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                             startDownload(apk, repoaddress);
                         }
                     });
-            ask_alrt.setNegativeButton(R.string.no,
+            builder.setNegativeButton(R.string.no,
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                         }
                     });
-            AlertDialog alert = ask_alrt.create();
+            AlertDialog alert = builder.create();
             alert.show();
             return;
         }
@@ -1698,9 +1698,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             if (getApp().installedVersionCode == apk.vercode) {
                 remove();
             } else if (getApp().installedVersionCode > apk.vercode) {
-                AlertDialog.Builder ask_alrt = new AlertDialog.Builder(getActivity());
-                ask_alrt.setMessage(R.string.installDowngrade);
-                ask_alrt.setPositiveButton(R.string.yes,
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage(R.string.installDowngrade);
+                builder.setPositiveButton(R.string.yes,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog,
@@ -1708,14 +1708,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                                 install(apk);
                             }
                         });
-                ask_alrt.setNegativeButton(R.string.no,
+                builder.setNegativeButton(R.string.no,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
                             }
                         });
-                AlertDialog alert = ask_alrt.create();
+                AlertDialog alert = builder.create();
                 alert.show();
             } else {
                 install(apk);
