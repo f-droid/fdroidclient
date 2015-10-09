@@ -38,7 +38,7 @@ public class AvailableAppsFragment extends AppListFragment implements
 
     public static final String PREFERENCES_FILE = "CategorySpinnerPosition";
     public static final String CATEGORY_KEY = "Selection";
-    public static String DEFAULT_CATEGORY;
+    public static String defaultCategory;
 
     private List<String> categories;
     private Spinner categorySpinner;
@@ -185,7 +185,7 @@ public class AvailableAppsFragment extends AppListFragment implements
 
         ((ListView) view.findViewById(android.R.id.list)).setOnItemClickListener(this);
 
-        DEFAULT_CATEGORY = AppProvider.Helper.getCategoryWhatsNew(getActivity());
+        defaultCategory = AppProvider.Helper.getCategoryWhatsNew(getActivity());
 
         return view;
     }
@@ -214,7 +214,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         Activity activity = getActivity();
         SharedPreferences p = activity.getSharedPreferences(PREFERENCES_FILE,
                 Context.MODE_PRIVATE);
-        currentCategory = p.getString(CATEGORY_KEY, DEFAULT_CATEGORY);
+        currentCategory = p.getString(CATEGORY_KEY, defaultCategory);
         for (int i = 0; i < categorySpinner.getCount(); i++) {
             if (currentCategory.equals(categorySpinner.getItemAtPosition(i).toString())) {
                 categorySpinner.setSelection(i);

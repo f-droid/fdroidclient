@@ -57,15 +57,15 @@ public class FDroidCertPins {
         "87e3bf322427c1405d2736c381e01d1a71d4a039",
     };
 
-    public static List<String> PINLIST;
+    public static List<String> pinList;
 
     public static String[] getPinList() {
-        if (PINLIST == null) {
-            List<String> pinlist = new ArrayList<>();
-            pinlist.addAll(Arrays.asList(DEFAULT_PINS));
-            PINLIST = pinlist;
+        if (pinList == null) {
+            List<String> l = new ArrayList<>();
+            l.addAll(Arrays.asList(DEFAULT_PINS));
+            pinList = pinlist;
         }
 
-        return PINLIST.toArray(new String[PINLIST.size()]);
+        return pinList.toArray(new String[pinList.size()]);
     }
 }

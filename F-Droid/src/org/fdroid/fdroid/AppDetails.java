@@ -1059,14 +1059,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         protected final Preferences prefs;
         private AppDetailsData data;
         private static final int MAX_LINES = 5;
-        private static boolean view_all_description;
-        private static LinearLayout ll_view_more_description;
-        private static LinearLayout ll_view_more_permissions;
+        private static boolean viewAllDescription;
+        private static LinearLayout llViewMoreDescription;
+        private static LinearLayout llViewMorePermissions;
         private final View.OnClickListener expanderPermissions = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final TextView permissionListView = (TextView) ll_view_more_permissions.findViewById(R.id.permissions_list);
-                final TextView permissionHeader = (TextView) ll_view_more_permissions.findViewById(R.id.permissions);
+                final TextView permissionListView = (TextView) llViewMorePermissions.findViewById(R.id.permissions_list);
+                final TextView permissionHeader = (TextView) llViewMorePermissions.findViewById(R.id.permissions);
 
                 if (permissionListView.getVisibility() == View.GONE) {
                     permissionListView.setVisibility(View.VISIBLE);
@@ -1187,9 +1187,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         private final View.OnClickListener expanderDescription = new View.OnClickListener() {
             public void onClick(View v) {
-                final TextView description = (TextView) ll_view_more_description.findViewById(R.id.description);
-                final TextView viewMorePermissions = (TextView) ll_view_more_description.findViewById(R.id.view_more_description);
-                if (view_all_description) {
+                final TextView description = (TextView) llViewMoreDescription.findViewById(R.id.description);
+                final TextView viewMorePermissions = (TextView) llViewMoreDescription.findViewById(R.id.view_more_description);
+                if (viewAllDescription) {
                     description.setMaxLines(Integer.MAX_VALUE);
                     viewMorePermissions.setText(getString(R.string.less));
                 } else {
@@ -1197,7 +1197,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                     description.setEllipsize(TextUtils.TruncateAt.MARQUEE);
                     viewMorePermissions.setText(R.string.more);
                 }
-                view_all_description ^= true;
+                viewAllDescription ^= true;
             }
         };
 
@@ -1216,10 +1216,10 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                         description.setMaxLines(MAX_LINES);
                         description.setEllipsize(TextUtils.TruncateAt.MARQUEE);
                         description.setOnClickListener(expanderDescription);
-                        view_all_description = true;
+                        viewAllDescription = true;
 
-                        ll_view_more_description = (LinearLayout) view.findViewById(R.id.ll_description);
-                        ll_view_more_description.setOnClickListener(expanderDescription);
+                        llViewMoreDescription = (LinearLayout) view.findViewById(R.id.ll_description);
+                        llViewMoreDescription.setOnClickListener(expanderDescription);
 
                         viewMoreDescription.setOnClickListener(expanderDescription);
                     } else {
@@ -1319,7 +1319,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             }
 
             // Expandable permissions
-            ll_view_more_permissions = (LinearLayout) view.findViewById(R.id.ll_permissions);
+            llViewMorePermissions = (LinearLayout) view.findViewById(R.id.ll_permissions);
             final TextView permissionHeader = (TextView) view.findViewById(R.id.permissions);
 
             final boolean curApkCompatible = curApk != null && curApk.compatible;
@@ -1356,7 +1356,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         private void buildPermissionInfo() {
-            final TextView permissionListView = (TextView) ll_view_more_permissions.findViewById(R.id.permissions_list);
+            final TextView permissionListView = (TextView) llViewMorePermissions.findViewById(R.id.permissions_list);
 
             CommaSeparatedList permsList = getApks().getItem(0).permissions;
             if (permsList == null) {
