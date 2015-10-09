@@ -25,8 +25,10 @@ before_script:
 
 test:
   script:
-    - echo " == Building via gradle"
+    - echo " == Running build"
     - gradle build
+    - echo " == Running checkstyle"
+    - gradle checkstyle
     - echo " == Creating Android 2.3.7 emulator"
     - echo no | android create avd --force -n fcl-test -t android-10 -b armeabi
     - echo " == Starting Android 2.3.7 emulator"
