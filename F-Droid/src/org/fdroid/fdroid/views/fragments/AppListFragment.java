@@ -121,12 +121,12 @@ public abstract class AppListFragment extends ThemeableListFragment implements
      * be bad.
      */
     public boolean updateEmptyRepos() {
-        final String TRIED_EMPTY_UPDATE = "triedEmptyUpdate";
+        final String triedEmptyUpdate = "triedEmptyUpdate";
         SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
-        boolean hasTriedEmptyUpdate = prefs.getBoolean(TRIED_EMPTY_UPDATE, false);
+        boolean hasTriedEmptyUpdate = prefs.getBoolean(triedEmptyUpdate, false);
         if (!hasTriedEmptyUpdate) {
             Utils.debugLog(TAG, "Empty app list, and we haven't done an update yet. Forcing repo update.");
-            prefs.edit().putBoolean(TRIED_EMPTY_UPDATE, true).commit();
+            prefs.edit().putBoolean(triedEmptyUpdate, true).commit();
             UpdateService.updateNow(getActivity());
             return true;
         }

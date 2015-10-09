@@ -1188,14 +1188,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private final View.OnClickListener expanderDescription = new View.OnClickListener() {
             public void onClick(View v) {
                 final TextView description = (TextView) ll_view_more_description.findViewById(R.id.description);
-                final TextView view_more_permissions = (TextView) ll_view_more_description.findViewById(R.id.view_more_description);
+                final TextView viewMorePermissions = (TextView) ll_view_more_description.findViewById(R.id.view_more_description);
                 if (view_all_description) {
                     description.setMaxLines(Integer.MAX_VALUE);
-                    view_more_permissions.setText(getString(R.string.less));
+                    viewMorePermissions.setText(getString(R.string.less));
                 } else {
                     description.setMaxLines(MAX_LINES);
                     description.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                    view_more_permissions.setText(R.string.more);
+                    viewMorePermissions.setText(R.string.more);
                 }
                 view_all_description ^= true;
             }
@@ -1207,7 +1207,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             final Spanned desc = Html.fromHtml(getApp().description, null, new Utils.HtmlTagHandler());
             description.setMovementMethod(SafeLinkMovementMethod.getInstance(getActivity()));
             description.setText(trimNewlines(desc));
-            final View view_more_description =  view.findViewById(R.id.view_more_description);
+            final View viewMoreDescription =  view.findViewById(R.id.view_more_description);
             description.post(new Runnable() {
                 @Override
                 public void run() {
@@ -1221,9 +1221,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                         ll_view_more_description = (LinearLayout) view.findViewById(R.id.ll_description);
                         ll_view_more_description.setOnClickListener(expanderDescription);
 
-                        view_more_description.setOnClickListener(expanderDescription);
+                        viewMoreDescription.setOnClickListener(expanderDescription);
                     } else {
-                        view_more_description.setVisibility(View.GONE);
+                        viewMoreDescription.setVisibility(View.GONE);
                     }
                 }
             });

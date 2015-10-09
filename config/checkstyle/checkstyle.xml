@@ -17,7 +17,7 @@
     <module name="TreeWalker">
 
         <!--<module name="ConstantName" />-->
-        <!--<module name="LocalFinalVariableName" />-->
+        <module name="LocalFinalVariableName" />
         <module name="LocalVariableName" />
         <module name="MemberName" />
         <module name="MethodName" />

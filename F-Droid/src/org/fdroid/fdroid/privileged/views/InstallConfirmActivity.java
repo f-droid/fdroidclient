@@ -107,9 +107,9 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
             findViewById(R.id.tabscontainer).setVisibility(View.GONE);
             findViewById(R.id.divider).setVisibility(View.VISIBLE);
         }
-        final int NP = perms.getPermissionCount(AppSecurityPermissions.WHICH_PERSONAL);
-        final int ND = perms.getPermissionCount(AppSecurityPermissions.WHICH_DEVICE);
-        if (NP > 0 || ND > 0) {
+        final int np = perms.getPermissionCount(AppSecurityPermissions.WHICH_PERSONAL);
+        final int nd = perms.getPermissionCount(AppSecurityPermissions.WHICH_DEVICE);
+        if (np > 0 || nd > 0) {
             permVisible = true;
             LayoutInflater inflater = (LayoutInflater) getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
@@ -118,13 +118,13 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
                 mScrollView = (CaffeinatedScrollView) root.findViewById(R.id.scrollview);
             }
             final ViewGroup privacyList = (ViewGroup) root.findViewById(R.id.privacylist);
-            if (NP > 0) {
+            if (np > 0) {
                 privacyList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_PERSONAL));
             } else {
                 privacyList.setVisibility(View.GONE);
             }
             final ViewGroup deviceList = (ViewGroup) root.findViewById(R.id.devicelist);
-            if (ND > 0) {
+            if (nd > 0) {
                 deviceList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_DEVICE));
             } else {
                 root.findViewById(R.id.devicelist).setVisibility(View.GONE);
