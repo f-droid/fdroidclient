@@ -184,6 +184,9 @@ android {
 
         // Our translations are crowd-sourced
         disable 'MissingTranslation'
+        // We have locale folders like "values-he" and "values-id" as symlinks
+        // since some devices ship deprecated locale codes
+        disable 'LocaleFolder'
     }
 
 }
