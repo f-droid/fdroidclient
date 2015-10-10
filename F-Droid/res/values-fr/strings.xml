@@ -105,7 +105,7 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="ignoreTouch_on">Toujours inclure les apps nécessitant un écran tactile</string>
   <string name="category_All">Tout</string>
   <string name="category_Whats_New">Quoi de neuf ?</string>
-  <string name="category_Recently_Updated">Mis à jour récemment</string>
+  <string name="category_Recently_Updated">Mises à jour récemment</string>
   <string name="local_repo">Dépôt local</string>
   <string name="local_repo_running">F-Droid est prêt à être échangé</string>
   <string name="touch_to_configure_local_repo">Appuyez pour voir les détails et autoriser les autres à échanger des apps.</string>
@@ -215,7 +215,7 @@ Publiée sous licence GNU GPLv3.</string>
     <string name="category_Connectivity">Connectivité</string>
     <string name="category_Sports_Health">Sport et santé</string>
     <string name="empty_available_app_list">Aucune applications dans cette catégorie.\n\nEssayer de sélectionner une autre catégorie ou mettez à jour vos dépots pour avoir une liste d\'applications récente.</string>
-    <string name="empty_can_update_app_list">Tout les applications sont à jour.\n\nFélicitation ! Toutes vos applications sont à jours (ou vos dépots ne le sont pas).</string>
+    <string name="empty_can_update_app_list">Toutes les applications sont à jour.\n\nFélicitation ! Toutes vos applications sont à jours (ou vos dépots ne le sont pas).</string>
 
     <string name="install_error_title">Erreur d\'installation</string>
     <string name="uninstall_error_title">Erreur de désinstallation</string>
@@ -268,7 +268,7 @@ Publiée sous licence GNU GPLv3.</string>
     <string name="install_error_unknown">l\'installation a échouée pour une raison inconnue</string>
     <string name="install_error_cannot_parse">Une erreur s\'est produite pendant l\'analyse du paquet</string>
     <string name="uninstall_error_unknown">La désinstallation a échouée pour une raison inconnue</string>
-    <string name="swap_nfc_title">Touchez pour échanger</string>
+    <string name="swap_nfc_title">Rapprochez vos téléphones pour commencer</string>
     <string name="swap_join_same_wifi_desc">Pour échanger via Wi-Fi, assurez-vous d\'être sur le même réseau Wi-Fi. Si vous n\'avez pas accès au même réseau, l\'un d\'entre vous peut créer un point d\'accès Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Aidez votre ami à se connecter à votre point d\'accès</string>
     <string name="swap_success">Échange réussit !</string>
@@ -331,4 +331,9 @@ Publiée sous licence GNU GPLv3.</string>
     <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, on dirait que nous ne pouvons pas faire l\'échange avec.</string>
     <string name="swap_not_enabled">Échange désactivé</string>
     <string name="category_Time">Temps</string>
-    </resources>
+    <string name="more">Plus</string>
+    <string name="less">Moins</string>
+
+	<string name="permissions">Permissions</string>
+	<string name="theme_night">Nuit</string>
+</resources>

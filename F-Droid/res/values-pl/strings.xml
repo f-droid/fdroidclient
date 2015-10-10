@@ -39,7 +39,7 @@
   <string name="fdroid_updates_available">Uaktualnienie F-Droid jest dostępne</string>
   <string name="send_via_bluetooth">Wyślij przez Bluetooth</string>
   <string name="repo_add_url">Adres repozytorium</string>
-  <string name="repo_add_fingerprint">Odcisk palca (opcjonalnie)</string>
+  <string name="repo_add_fingerprint">Podpis cyfrowy (opcjonalnie)</string>
   <string name="repo_delete_to_overwrite">Musisz najpierw usunąć to repozytorium zanim dodasz następne z innym kluczem.</string>
   <string name="malformed_repo_uri">Ignorowanie błędnego adresu (URI) repozytorium: %s</string>
   <string name="menu_update_repo">Aktualizuj repozytoria</string>
@@ -174,7 +174,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="back">Powrót</string>
 	<string name="many_updates_available">Liczba dostępnych aktualizacji: %d.</string>
 	<string name="update_notification_more">+%1$d więcej…</string>
-	<string name="bluetooth_activity_not_found">Nie znaleziono metody do wysłania przez Bluetooth. Wybierz jedną!</string>
+	<string name="bluetooth_activity_not_found">Nie znaleziono metody do wysłania przez Bluetooth!</string>
 	<string name="choose_bt_send">Wybierz metodę wysłania przez Bluetooth</string>
 	<string name="repo_exists_add_fingerprint">To repozytorium jest już dodane. Klucz zostanie zaktualizowany.</string>
 	<string name="repo_exists_enable">To repozytorium jest już dodane, potwierdź czy chcesz je włączyć.</string>
@@ -305,7 +305,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="interval_1w">Co tydzień</string>
     <string name="interval_2w">Co 2 tygodnie</string>
 
-    <string name="theme_light">Jasna</string>
+    <string name="theme_light">Jasny</string>
     <string name="theme_dark">Ciemna</string>
 <string name="unstable_updates">Wersje niestabilne</string>
 	<string name="unstable_updates_summary">Sugeruj aktualizacje do niestabilnych wersji</string>
@@ -326,4 +326,10 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="system_install_warning_lollipop">Zajmuje to ok. 10 sekund, następnie urządzenie zostanie <b>zrestartowane</b>.</string>
 	<string name="repo_details">Repozytorium</string>
     <string name="repo_url">Adres</string>
-    </resources>
+    <string name="more">Więcej</string>
+    <string name="less">Mniej</string>
+
+	<string name="status_download_unknown_size">Pobieranie\n%2$s z\n%1$s</string>
+	<string name="permissions">Uprawnienia</string>
+	<string name="theme_night">Ciemny</string>
+</resources>

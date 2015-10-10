@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources><string name="app_name">F-Droid</string>
+
+	<string name="searchres_napps">Menemukan %1$d aplikasi yang cocok dengan \'%2$s\':</string>
+	<string name="searchres_oneapp">Menemukan satu aplikasi yang cocok dengan \'%s\':</string>
+	<string name="searchres_noapps">Tidak ada aplikasi yang cocok dengan \'%s\'</string>
+	</resources>

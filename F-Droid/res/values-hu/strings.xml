@@ -13,8 +13,8 @@
   <string name="other">egyéb</string>
   <string name="update_interval">Auto. frissítés intervalluma</string>
   <string name="update_interval_zero">Ne frissítsen automatikusan</string>
-  <string name="automatic_scan_wifi">Csak Wifin</string>
-  <string name="automatic_scan_wifi_on">Automatikus app lista frissítés csak Wifin</string>
+  <string name="automatic_scan_wifi">Csak Wifin keresztül</string>
+  <string name="automatic_scan_wifi_on">Automatikus alkalmazás lista frissítése csak Wifi-n keresztül</string>
   <string name="notify">Értesítés</string>
   <string name="notify_on">Értesít ha frissítés érhető el</string>
   <string name="update_history">Frissítési előzmények</string>
@@ -112,4 +112,7 @@ Ha frissített, a leírás és egyéb részletek itt lesz elérhető .</string>
   <string name="repo_disabled_notification">\"%1$s\" letiltva. Újra kell majd engedélyezni a repo-t, hogy appokat telepíthessen belőle.</string>
   <string name="minsdk_or_later">Android %s vagy későbbi</string>
 <string name="delete">Törlés</string>
+	<string name="app_name">F-Droid</string>
+
+	<string name="enable_nfc_send">NFC küldés engedélyezése…</string>
 	</resources>

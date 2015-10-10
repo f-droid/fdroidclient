@@ -67,7 +67,7 @@
 	<string name="add_key">Adicionar chave</string>
 	<string name="overwrite">Substituir</string>
 
-	<string name="tab_available_apps">Disponível</string>
+	<string name="tab_available_apps">Disponíveis</string>
 	<string name="tab_installed_apps">Instaladas</string>
 	<string name="tab_updates">Atualizações</string>
 	<string name="one_update_available">1 atualização disponível.</string>
@@ -86,7 +86,7 @@
 	<string name="repo_delete_to_overwrite">Tem de apagar este repositório antes de adicionar outro com uma chave diferente.</string>
 	<string name="bad_fingerprint">Identificação inválida</string>
 	<string name="invalid_url">Este URL não é válido.</string>
-	<string name="malformed_repo_uri">Ignorando URI de repositório inválido: %s</string>
+	<string name="malformed_repo_uri">A ignorar URI de repositório inválido: %s</string>
 
 	<string name="menu_update_repo">Atualizar repositórios</string>
 	<string name="menu_manage">Repositórios</string>
@@ -122,7 +122,7 @@
 	<string name="antinonfreeadlist">Esta aplicação promove extras não livres</string>
 	<string name="antinonfreenetlist">Esta aplicação promove serviços de rede não livres</string>
 	<string name="antinonfreedeplist">Esta aplicação depende de aplicações não livres</string>
-	<string name="antiupstreamnonfreelist">O código-fonte não é integralmente aberto</string>
+	<string name="antiupstreamnonfreelist">O código-fonte não é integralmente Livre</string>
 
 	<string name="display">Exibição</string>
 
@@ -332,4 +332,18 @@
 
     <string name="install_confirm">Deseja instalar esta aplicação? A aplicação terá acesso a:</string>
     <string name="install_confirm_no_perms">Deseja instalar esta aplicação? A aplicação não requer qualquer acesso especial.</string>
-    </resources>
+    <string name="more">Mais</string>
+    <string name="less">Menos</string>
+
+	<string name="permissions">Permissões</string>
+	<string name="install_confirm_update">Deseja instalar uma atualização para esta aplicação? Os seus dados não serão perdidos. A aplicação atualizada terá acesso a:</string>
+    <string name="install_confirm_update_system">Deseja instalar uma atualização para esta aplicação do sistema? Os seus dados não serão perdidos. A aplicação atualizada terá acesso a:</string>
+    <string name="install_confirm_update_no_perms">Deseja instalar uma atualização para esta aplicação? Os seus dados não serão perdidos. A aplicação atualizada não requer acessos especiais.</string>
+    <string name="install_confirm_update_system_no_perms">Deseja instalar uma atualização para esta aplicação do sistema? Os seus dados não serão perdidos. A aplicação atualizada não requer qualquer acesso especial.</string>
+    <string name="uninstall_update_confirm">Deseja restaurar esta aplicação para a sua versão de fábrica?</string>
+    <string name="uninstall_confirm">Deseja desinstalar esta aplicação?</string>
+    <string name="tap_to_install">Transferência terminada. Toque para instalar</string>
+    <string name="download_error">Transferência não efetuada</string>
+
+    <string name="theme_night">Noite</string>
+</resources>
