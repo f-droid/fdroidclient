@@ -224,13 +224,44 @@ public abstract class Downloader {
             Downloader.this.close();
         }
 
-        @Override public int available() throws IOException { return toWrap.available(); }
-        @Override public void mark(int readlimit) { toWrap.mark(readlimit); }
-        @Override public boolean markSupported() { return toWrap.markSupported(); }
-        @Override public int read(@NonNull byte[] buffer) throws IOException { return toWrap.read(buffer); }
-        @Override public int read(@NonNull byte[] buffer, int byteOffset, int byteCount) throws IOException { return toWrap.read(buffer, byteOffset, byteCount); }
-        @Override public synchronized void reset() throws IOException { toWrap.reset(); }
-        @Override public long skip(long byteCount) throws IOException { return toWrap.skip(byteCount); }
-        @Override public int read() throws IOException { return toWrap.read(); }
+        @Override
+        public int available() throws IOException {
+            return toWrap.available();
+        }
+
+        @Override
+        public void mark(int readlimit) {
+            toWrap.mark(readlimit);
+        }
+
+        @Override
+        public boolean markSupported() {
+            return toWrap.markSupported();
+        }
+
+        @Override
+        public int read(@NonNull byte[] buffer) throws IOException {
+            return toWrap.read(buffer);
+        }
+
+        @Override
+        public int read(@NonNull byte[] buffer, int byteOffset, int byteCount) throws IOException {
+            return toWrap.read(buffer, byteOffset, byteCount);
+        }
+
+        @Override
+        public synchronized void reset() throws IOException {
+            toWrap.reset();
+        }
+
+        @Override
+        public long skip(long byteCount) throws IOException {
+            return toWrap.skip(byteCount);
+        }
+
+        @Override
+        public int read() throws IOException {
+            return toWrap.read();
+        }
     }
 }
