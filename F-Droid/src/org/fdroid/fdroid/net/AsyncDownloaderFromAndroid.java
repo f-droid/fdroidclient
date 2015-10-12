@@ -283,6 +283,14 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
      * @return -1 if not downloading, else the id from the Android download manager
      */
     public static long isDownloading(Context context, String uniqueDownloadId) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            // TODO: remove. This is necessary because AppDetails calls this
+            // static method directly, without using the whole pipe through
+            // DownloaderFactory. This shouldn't be called at all on android-8
+            // devices, since AppDetails is really using the old downloader,
+            // not this one.
+            return -1;
+        }
         DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Query query = new DownloadManager.Query();
         Cursor c = dm.query(query);
