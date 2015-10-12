@@ -3,11 +3,15 @@ package org.fdroid.fdroid.net;
 import android.content.Context;
 import android.os.Build;
 
+import org.fdroid.fdroid.Utils;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
 public class DownloaderFactory {
+
+    private static final String TAG = "DownloaderFactory";
 
     /**
      * Downloads to a temporary file, which *you must delete yourself when
@@ -58,9 +62,11 @@ public class DownloaderFactory {
 
     public static AsyncDownloader createAsync(Context context, URL url, File destFile, String title, String id, AsyncDownloader.Listener listener)
             throws IOException {
-        if (canUseDownloadManager(url)) {
+        if (canUseDownloadManager(context, url)) {
+            Utils.debugLog(TAG, "Using AsyncDownloaderFromAndroid");
             return new AsyncDownloaderFromAndroid(context, listener, title, id, url.toString(), destFile);
         }
+        Utils.debugLog(TAG, "Using AsyncDownloadWrapper");
         return new AsyncDownloadWrapper(create(context, url, destFile), listener);
     }
 
@@ -68,15 +74,25 @@ public class DownloaderFactory {
         return url.getHost().endsWith(".onion");
     }
 
+    private static boolean hasDownloadManager(Context context) {
+        return context.getSystemService(Context.DOWNLOAD_SERVICE) != null;
+    }
+
     /**
      * Tests to see if we can use Android's DownloadManager to download the APK, instead of
      * a downloader returned from DownloadFactory.
-     *
-     * We require ICE_CREAM_SANDWICH (4.0). The DownloadManager does exist on
-     * 2.3.X, but it lacks HTTPS support.
      */
-    private static boolean canUseDownloadManager(URL url) {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH && !isOnionAddress(url);
+    private static boolean canUseDownloadManager(Context context, URL url) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            // No HTTPS support on 2.3, no DownloadManager on 2.2. Don't have
+            // 3.0 devices to test on, so require 4.0.
+            return false;
+        }
+        if (isOnionAddress(url)) {
+            // We support onion addresses through our own downloader.
+            return false;
+        }
+        return hasDownloadManager(context);
     }
 
 }
