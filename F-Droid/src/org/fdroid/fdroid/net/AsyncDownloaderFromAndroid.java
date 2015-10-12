@@ -344,10 +344,9 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
                 int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
 
                 if (status == DownloadManager.STATUS_SUCCESSFUL) {
-                    return 0; //Download is valid, celebrate
-                } else {
-                    return c.getInt(c.getColumnIndex(DownloadManager.COLUMN_REASON));
+                    return 0; // Download is valid, celebrate
                 }
+                return c.getInt(c.getColumnIndex(DownloadManager.COLUMN_REASON));
             }
         } finally {
             c.close();

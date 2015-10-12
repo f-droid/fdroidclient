@@ -75,11 +75,9 @@ public final class Request {
         if (method.equals(Methods.HEAD)) {
             Utils.debugLog(TAG, "Request was a " + Methods.HEAD + " request, not including anything other than headers and status...");
             return new Response(responseCode, headers);
-        } else {
-            Utils.debugLog(TAG, "Request was a " + Methods.GET + " request, so including content stream in response...");
-            return new Response(responseCode, headers, connection.getInputStream());
         }
-
+        Utils.debugLog(TAG, "Request was a " + Methods.GET + " request, so including content stream in response...");
+        return new Response(responseCode, headers, connection.getInputStream());
     }
 
     /**

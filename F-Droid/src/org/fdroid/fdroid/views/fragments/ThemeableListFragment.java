@@ -28,14 +28,13 @@ public abstract class ThemeableListFragment extends ListFragment {
     private View headerView;
 
     private View getHeaderView(LayoutInflater inflater, ViewGroup container) {
-        if (getHeaderLayout() > 0) {
-            if (headerView == null) {
-                headerView = inflater.inflate(getHeaderLayout(), null, false);
-            }
-            return headerView;
-        } else {
+        if (getHeaderLayout() == 0) {
             return null;
         }
+        if (headerView == null) {
+            headerView = inflater.inflate(getHeaderLayout(), null, false);
+        }
+        return headerView;
     }
 
     private LayoutInflater getThemedInflater(Context context) {

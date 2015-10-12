@@ -150,11 +150,10 @@ public class PrivilegedInstaller extends Installer {
         }
 
         boolean hasPermissions = returnBundle.getBoolean("has_permissions", false);
-        if (hasPermissions) {
-            return IS_EXTENSION_INSTALLED_YES;
-        } else {
+        if (!hasPermissions) {
             return IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM;
         }
+        return IS_EXTENSION_INSTALLED_YES;
     }
 
     @Override

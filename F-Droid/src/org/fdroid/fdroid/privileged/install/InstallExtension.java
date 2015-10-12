@@ -49,11 +49,11 @@ abstract class InstallExtension {
     public static InstallExtension create(final Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return new LollipopImpl(context);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            return new KitKatToLollipopImpl(context);
-        } else {
-            return new PreKitKatImpl(context);
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            return new KitKatToLollipopImpl(context);
+        }
+        return new PreKitKatImpl(context);
     }
 
     final void runInstall(String apkPath) {

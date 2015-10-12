@@ -41,11 +41,11 @@ public class DownloaderFactory {
         if (isBluetoothAddress(url)) {
             String macAddress = url.getHost().replace("-", ":");
             return new BluetoothDownloader(context, macAddress, url, destFile);
-        } else if (isOnionAddress(url)) {
-            return new TorHttpDownloader(context, url, destFile);
-        } else {
-            return new HttpDownloader(context, url, destFile);
         }
+        if (isOnionAddress(url)) {
+            return new TorHttpDownloader(context, url, destFile);
+        }
+        return new HttpDownloader(context, url, destFile);
     }
 
     private static boolean isBluetoothAddress(URL url) {
@@ -60,9 +60,8 @@ public class DownloaderFactory {
             throws IOException {
         if (canUseDownloadManager(url)) {
             return new AsyncDownloaderFromAndroid(context, listener, title, id, url.toString(), destFile);
-        } else {
-            return new AsyncDownloadWrapper(create(context, url, destFile), listener);
         }
+        return new AsyncDownloadWrapper(create(context, url, destFile), listener);
     }
 
     static boolean isOnionAddress(URL url) {

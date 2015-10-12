@@ -99,17 +99,16 @@ public class AppSecurityPermissions {
 
         public Drawable loadGroupIcon(PackageManager pm) {
             if (icon != 0) {
-                //return loadUnbadgedIcon(pm);
+                // return loadUnbadgedIcon(pm);
                 return loadIcon(pm);
-            } else {
-                ApplicationInfo appInfo;
-                try {
-                    appInfo = pm.getApplicationInfo(packageName, 0);
-                    //return appInfo.loadUnbadgedIcon(pm);
-                    return appInfo.loadIcon(pm);
-                } catch (NameNotFoundException e) {
-                    // ignore
-                }
+            }
+            ApplicationInfo appInfo;
+            try {
+                appInfo = pm.getApplicationInfo(packageName, 0);
+                // return appInfo.loadUnbadgedIcon(pm);
+                return appInfo.loadIcon(pm);
+            } catch (NameNotFoundException e) {
+                // ignore
             }
             return null;
         }

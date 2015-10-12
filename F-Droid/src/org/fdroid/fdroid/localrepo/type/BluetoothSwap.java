@@ -34,12 +34,11 @@ public final class BluetoothSwap extends SwapType {
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         if (adapter == null) {
             return new NoBluetoothType(context);
-        } else {
-            if (mInstance == null)
-                mInstance = new BluetoothSwap(context, adapter);
-
-            return mInstance;
         }
+        if (mInstance == null)
+            mInstance = new BluetoothSwap(context, adapter);
+
+        return mInstance;
     }
 
     private BluetoothSwap(@NonNull Context context, @NonNull BluetoothAdapter adapter) {

@@ -221,13 +221,12 @@ public class WifiStateChangeService extends Service {
     private String formatIpAddress(int ipAddress) {
         if (ipAddress == 0) {
             return null;
-        } else {
-            return String.format(Locale.ENGLISH, "%d.%d.%d.%d",
-                    ipAddress & 0xff,
-                    ipAddress >> 8 & 0xff,
-                    ipAddress >> 16 & 0xff,
-                    ipAddress >> 24 & 0xff);
         }
+        return String.format(Locale.ENGLISH, "%d.%d.%d.%d",
+                ipAddress & 0xff,
+                ipAddress >> 8 & 0xff,
+                ipAddress >> 16 & 0xff,
+                ipAddress >> 24 & 0xff);
     }
 
     private String printWifiState(int wifiState) {

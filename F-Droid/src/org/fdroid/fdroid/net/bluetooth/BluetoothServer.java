@@ -234,13 +234,11 @@ public class BluetoothServer extends Thread {
                     if (f.canRead()) {
                         // No index file, list the directory if it is readable
                         return createResponse(NanoHTTPD.Response.Status.NOT_FOUND, NanoHTTPD.MIME_HTML, "");
-                    } else {
-                        return createResponse(NanoHTTPD.Response.Status.FORBIDDEN, NanoHTTPD.MIME_PLAINTEXT,
-                                "FORBIDDEN: No directory listing.");
                     }
-                } else {
-                    return respond(headers, uri + indexFile);
+                    return createResponse(NanoHTTPD.Response.Status.FORBIDDEN, NanoHTTPD.MIME_PLAINTEXT,
+                            "FORBIDDEN: No directory listing.");
                 }
+                return respond(headers, uri + indexFile);
             }
 
             Response response = serveFile(uri, headers, f, getMimeTypeForFile(uri));
