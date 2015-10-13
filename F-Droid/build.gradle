@@ -2,11 +2,32 @@ apply plugin: 'com.android.application'
 apply plugin: 'witness'
 apply plugin: 'checkstyle'
 
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile project(':privileged-api-lib')
+
+    compile 'com.android.support:support-v4:22.2.1'
+    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.android.support:support-annotations:22.2.1'
+
+    compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+    compile 'com.google.zxing:core:3.2.1'
+    compile 'eu.chainfire:libsuperuser:1.0.0.201510071325'
+    compile 'cc.mvdan.accesspoint:library:0.1.3'
+    compile 'info.guardianproject.netcipher:netcipher:1.2'
+    compile 'commons-net:commons-net:3.3'
+    compile 'org.openhab.jmdns:jmdns:3.4.2'
+
+    androidTestCompile 'commons-io:commons-io:2.2'
+}
+
 if (!hasProperty('sourceDeps')) {
 
     repositories {
-        jcenter()
-
         // This is here until we sort out all dependencies from mavenCentral/jcenter. Once all of
         // the dependencies below have been sorted out, this can be removed.
         flatDir {
@@ -15,23 +36,9 @@ if (!hasProperty('sourceDeps')) {
     }
 
     dependencies {
-        compile project(':privileged-api-lib')
-
-        compile 'com.android.support:support-v4:22.2.1'
-        compile 'com.android.support:appcompat-v7:22.1.1'
-        compile 'com.android.support:support-annotations:22.2.1'
-
-        compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
-        compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
-        compile 'com.google.zxing:core:3.2.1'
-        compile 'eu.chainfire:libsuperuser:1.0.0.201510071325'
-        compile 'cc.mvdan.accesspoint:library:0.1.3'
-        compile 'info.guardianproject.netcipher:netcipher:1.2'
         compile 'com.madgag.spongycastle:pkix:1.51.0.0'
         compile 'com.madgag.spongycastle:prov:1.51.0.0'
         compile 'com.madgag.spongycastle:core:1.51.0.0'
-        compile 'commons-net:commons-net:3.3'
-        compile 'org.openhab.jmdns:jmdns:3.4.2'
 
         // Upstream doesn't have a binary on mavenCentral/jcenter yet:
         // https://github.com/kolavar/android-support-v4-preferencefragment/issues/13
@@ -45,8 +52,6 @@ if (!hasProperty('sourceDeps')) {
         // Google Code.  We include this code directly in this repo, and have made
         // modifications that should be pushed to anyone who wants to maintain it.
         compile(name: 'zipsigner')
-
-        androidTestCompile 'commons-io:commons-io:2.2'
     }
 
     // Only do the libraries imported from maven repositories. Our own libraries
@@ -75,57 +80,34 @@ if (!hasProperty('sourceDeps')) {
 
     logger.info "Setting up *source* dependencies for F-Droid (because you passed in the -PsourceDeps argument to gradle while building)."
 
-    repositories {
-        jcenter()
-    }
-
     dependencies {
-        compile project(':privileged-api-lib')
-
-        compile 'com.android.support:support-v4:22.2.1'
-        compile 'com.android.support:appcompat-v7:22.1.1'
-        compile 'com.android.support:support-annotations:22.2.1'
-
-        compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
-        compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
-        compile 'com.google.zxing:core:3.2.1'
-        compile 'eu.chainfire:libsuperuser:1.0.0.201510071325'
-        compile 'cc.mvdan.accesspoint:library:0.1.3'
-        compile 'info.guardianproject.netcipher:netcipher:1.2'
-        compile 'commons-net:commons-net:3.3'
-        compile 'org.openhab.jmdns:jmdns:3.4.2'
-
         compile(project(':extern:support-v4-preferencefragment')) {
             exclude module: 'support-v4'
         }
         compile project(':extern:nanohttpd:core')
         compile project(':extern:zipsigner')
-
-        androidTestCompile 'commons-io:commons-io:2.2'
     }
 
-}
+    task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
 
-task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
+        enabled = project.hasProperty('sourceDeps')
+        description = "Copies .jar and .aar files from subproject dependencies in extern/ to F-Droid/libs. Requires the sourceDeps property to be set (\"gradle -PsourceDeps binaryDeps\")"
 
-    enabled = project.hasProperty('sourceDeps')
-    description = "Copies .jar and .aar files from subproject dependencies in extern/ to F-Droid/libs. Requires the sourceDeps property to be set (\"gradle -PsourceDeps binaryDeps\")"
+        from('../extern/') {
+            include 'support-v4-preferencefragment/build/outputs/aar/support-v4-preferencefragment-release.aar'
+            include 'nanohttpd/core/build/libs/nanohttpd-2.1.0.jar'
+            include 'zipsigner/build/libs/zipsigner.jar'
+        }
 
-    from('../extern/') {
-        include 'support-v4-preferencefragment/build/outputs/aar/support-v4-preferencefragment-release.aar'
-        include 'nanohttpd/core/build/libs/nanohttpd-2.1.0.jar'
-        include 'zipsigner/build/libs/zipsigner.jar'
+        into 'libs/binaryDeps'
+        includeEmptyDirs false
+
+        eachFile { FileCopyDetails details ->
+            // Don't copy to a sub folder such as libs/binaryDeps/Project/build/outputs/aar/project.aar, but
+            // rather libs/binaryDeps/project.aar.
+            details.path = details.name
+        }
     }
-
-    into 'libs/binaryDeps'
-    includeEmptyDirs false
-
-    eachFile { FileCopyDetails details ->
-        // Don't copy to a sub folder such as libs/binaryDeps/Project/build/outputs/aar/project.aar, but
-        // rather libs/binaryDeps/project.aar.
-        details.path = details.name
-    }
-
 }
 
 android {
@@ -188,7 +170,6 @@ android {
         // since some devices ship deprecated locale codes
         disable 'LocaleFolder'
     }
-
 }
 
 task checkstyle(type: Checkstyle) {
