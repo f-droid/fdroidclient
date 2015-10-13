@@ -54,7 +54,7 @@
   <string name="one_update_available">1 atualização disponível.</string>
   <string name="many_updates_available">%d atualizações disponíveis.</string>
   <string name="fdroid_updates_available">Atualizações do F-Droid disponíveis</string>
-  <string name="bluetooth_activity_not_found">Nenhum método de envio Bluetooth foi encontrado, escolha um!</string>
+  <string name="bluetooth_activity_not_found">Nenhum método de envio por Bluetooth foi encontrado, escolha um!</string>
   <string name="choose_bt_send">Escolher o método de envio Bluetooth</string>
   <string name="send_via_bluetooth">Enviar por bluetooth</string>
   <string name="repo_add_url">Endereço do repositório</string>
@@ -139,7 +139,7 @@
   <string name="unsigned">Não assinado</string>
   <string name="unverified">Não verificado</string>
   <string name="repo_num_apps">Número de aplicativos</string>
-  <string name="repo_fingerprint">Fingerprint da chave de assinatura do repositório (SHA-256)</string>
+  <string name="repo_fingerprint">Fingerprint da chave de assinatura (SHA-256)</string>
   <string name="repo_description">Descrição</string>
   <string name="repo_last_update">Última atualização</string>
   <string name="repo_update">Atualizar</string>
@@ -147,7 +147,7 @@
   <string name="unsigned_description">Isto significa que a lista de
 aplicativos não pôde ser verificada. Você deve ter cuidado
 com aplicativos baixados a partir de índices não assinados.</string>
-  <string name="repo_not_yet_updated">Este repositório não foi usado ainda. Para visualizar os aplicativos que ele disponibiliza, você precisará atualizá-lo.\n\nUma vez atualizado, a descrição e outros detalhes estarão disponíveis aqui.</string>
+  <string name="repo_not_yet_updated">Este repositório não foi usado ainda. Você precisará habilitá-lo para ver os aplicativos que ele fornece.</string>
   <string name="unknown">Desconhecido</string>
   <string name="repo_confirm_delete_title">Apagar repositório?</string>
   <string name="repo_confirm_delete_body">A exclusão de um repositório significa que os aplicativos do mesmo não estarão mais disponíveis pelo F-Droid.\n\nNota: Todos os aplicativos previamente instalados permanecerão no seu dispositivo.</string>
@@ -196,7 +196,7 @@ com aplicativos baixados a partir de índices não assinados.</string>
 	<string name="links">Links</string>
 
 	<string name="back">Voltar</string>
-	<string name="update_notification_more">+%1$d mais…</string>
+	<string name="update_notification_more">Mais +%1$d…</string>
 	<string name="bad_fingerprint">Falha na fingerprint</string>
 	<string name="invalid_url">Esta não é uma URL válida.</string>
 	<string name="menu_changelog">Changelog</string>
@@ -322,4 +322,12 @@ com aplicativos baixados a partir de índices não assinados.</string>
 	<string name="system_install_button_open">Abrir extensão</string>
     <string name="system_install_installing_rebooting">Instalando e reinicializando…</string>
     <string name="system_install_warning">Isto leva até 10 segundos.</string>
-	</resources>
+	<string name="more">Mais</string>
+    <string name="less">Menos</string>
+
+	<string name="status_download_unknown_size">Baixando\n%2$s de\n%1$s</string>
+	<string name="permissions">Permissões</string>
+	<string name="repo_details">Repositório</string>
+    <string name="repo_url">Endereço</string>
+    <string name="theme_night">Noite</string>
+</resources>

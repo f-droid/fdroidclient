@@ -4,4 +4,180 @@
 	<string name="searchres_napps">Menemukan %1$d aplikasi yang cocok dengan \'%2$s\':</string>
 	<string name="searchres_oneapp">Menemukan satu aplikasi yang cocok dengan \'%s\':</string>
 	<string name="searchres_noapps">Tidak ada aplikasi yang cocok dengan \'%s\'</string>
-	</resources>
+	<string name="installIncompatible">Sepertinya versi paket ini tidak kompatibel dengan perangkat Anda. Apakah Anda tetap ingin memasang dan mencobanya?</string>
+	<string name="installDowngrade">Anda mencoba untuk memasang versi yang lebih rendah dari aplikasi ini. Tetap memasangnya mungkin dapat meyebabkan aplikasi tidak bekerja dengan baik. Apakah Anda tetap ingin memasang dan mencobanya?</string>
+	<string name="version">Versi</string>
+	<string name="delete">Hapus</string>
+	<string name="enable_nfc_send">Aktifkan NFC Send…</string>
+	<string name="cache_downloaded">Tembolok paket</string>
+	<string name="cache_downloaded_on">Simpan berkas paket terunduh di dalam perangkat</string>
+	<string name="updates">Pembaruan</string>
+	<string name="unstable_updates">Pembaruan tidak stabil</string>
+	<string name="unstable_updates_summary">Sarankan pembaruan ke versi tidak stabil</string>
+	<string name="other">Lainnya</string>
+
+	<string name="update_interval">Selang waktu pembaruan otomatis</string>
+	<string name="update_interval_zero">Jangan perbarui otomatis daftar aplikasi</string>
+	<string name="automatic_scan_wifi">Hanya pada Wi-Fi</string>
+	<string name="automatic_scan_wifi_on">Perbarui daftar aplikasi secara otomatis hanya melalui Wi-Fi</string>
+	<string name="notify">Pemberitahuan pembaruan</string>
+	<string name="notify_on">Beri tahu jika pembaruan aplikasi tersedia</string>
+	<string name="update_history">Riwayat pembaruan</string>
+	<string name="update_history_summ">Jumlah hari sebuah aplikasi dianggap baru atau mutakhir: %s</string>
+	<string name="system_installer"></string>
+	<string name="system_installer_on">Gunakan F-Droid Privileged Extension untuk memasang, memperbarui, dan mencopot paket</string>
+	<string name="uninstall_system">Perbarui/Copot Privileged Extension</string>
+	<string name="uninstall_system_summary">Buka layar detail Privileged Extension untuk memperbarui/mencopotnya</string>
+	<string name="local_repo_name">Nama Repo Lokal Anda</string>
+	<string name="local_repo_name_summary">Judul repo lokal Anda yang disiarkan: %s</string>
+	<string name="local_repo_https">Gunakan Sambungan Privat</string>
+	<string name="local_repo_https_on">Gunakan sambungan HTTPS:// terenkripsi untuk repo lokal</string>
+
+	<string name="search_results">Hasil Pencarian</string>
+	<string name="app_details">Detail Apl</string>
+	<string name="no_such_app">Aplikasi tersebut tidak ditemukan.</string>
+
+	<string name="about_title">Tentang F-Droid</string>
+	<string name="about_version">Versi:</string>
+	<string name="about_site">Situs Web:</string>
+	<string name="about_source">Sumber:</string>
+	<string name="about_mail">Surel:</string>
+	<string name="about_desc">Mulanya berdasarkan pada Aptoide.\nDirilis di bawah lisensi lisensi GNU GPLv3.</string>
+
+	<string name="app_incompatible">Tidak kompatibel</string>
+	<string name="app_installed">Terpasang</string>
+	<string name="app_not_installed">Tidak Terpasang</string>
+	<string name="app_inst_known_source">Terpasang (dari %s)</string>
+	<string name="app_inst_unknown_source">Terpasang (dari sumber tidak dikenal)</string>
+
+	<string name="added_on">Ditambahkan pada %s</string>
+
+	<string name="ok">OK</string>
+
+	<string name="yes">Ya</string>
+	<string name="no">Tidak</string>
+	<string name="repo_add_title">Tambah repositori baru</string>
+	<string name="repo_add_add">Tambah</string>
+	<string name="links">Tautan</string>
+    <string name="more">Lebih banyak</string>
+    <string name="less">Lebih sedikit</string>
+
+	<string name="back">Kembali</string>
+	<string name="cancel">Batal</string>
+	<string name="enable">Aktif</string>
+	<string name="add_key">Tambah Kunci</string>
+	<string name="overwrite">Timpa</string>
+
+	<string name="tab_available_apps">Tersedia</string>
+	<string name="tab_installed_apps">Terpasang</string>
+	<string name="tab_updates">Pembaruan</string>
+	<string name="one_update_available">1 pembaruan tersedia.</string>
+	<string name="many_updates_available">%d pembaruan tersedia.</string>
+	<string name="fdroid_updates_available">Tersedia Pembaruan F-Droid</string>
+	<string name="bluetooth_activity_not_found">Metode pengiriman Bluetooth tidak ditemukan, pilih salah satu!</string>
+	<string name="choose_bt_send">Pilih metode pengiriman Bluetooth</string>
+	<string name="send_via_bluetooth">Kirim melalui Bluetooth</string>
+
+	<string name="repo_add_url">Alamat repositori</string>
+	<string name="repo_add_fingerprint">Sidik jari (opsional)</string>
+	<string name="repo_exists_add_fingerprint">Repo ini sudah disiapkan, ini akan menambah informasi kunci baru.</string>
+	<string name="repo_exists_enable">Repo ini sudah disiapkan, konfirmasi jika Anda ingin mengaktifkannya lagi.</string>
+	<string name="repo_exists_and_enabled">Repo yang masuk sudah disiapkan dan aktif.</string>
+	<string name="repo_delete_to_overwrite">Anda harus menghapus repo ini terlebh dahulu sebelum Anda bisa menambahkan yang baru dengan kunci yang berbeda.</string>
+	<string name="bad_fingerprint">Sidik jari buruk</string>
+	<string name="invalid_url">Ini bukan URL yang valid.</string>
+	<string name="malformed_repo_uri">Mengabaikan URI repo yang tidak valid: %s</string>
+
+	<string name="menu_update_repo">Perbarui Repo</string>
+	<string name="menu_manage">Repositori</string>
+	<string name="menu_send_apk_bt">Bagi F-Droid melalui Bluetooth</string>
+	<string name="menu_preferences">Preferensi</string>
+	<string name="menu_about">Tentang</string>
+	<string name="menu_search">Cari</string>
+	<string name="menu_add_repo">Repositori Baru</string>
+
+	<string name="menu_launch">Jalankan</string>
+	<string name="menu_share">Berbagi</string>
+	<string name="menu_install">Pasang</string>
+	<string name="menu_uninstall">Copot</string>
+	<string name="menu_ignore_all">Abaikan Semua Pembaruan</string>
+	<string name="menu_ignore_this">Abaikan Pembaruan Ini</string>
+	<string name="menu_website">Situs Web</string>
+	<string name="menu_issues">Masalah</string>
+	<string name="menu_changelog">Catatan Perubahan</string>
+	<string name="menu_source">Kode Sumber</string>
+	<string name="menu_upgrade">Tingkatkan</string>
+	<string name="menu_donate">Donasi</string>
+	<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+
+	<string name="details_installed">Versi %s terpasang</string>
+	<string name="details_notinstalled">Tidak terpasang</string>
+	<string name="corrupt_download">Berkas terunduh rusak.</string>
+
+	<string name="antiadslist">Aplikasi ini berisi iklan</string>
+	<string name="antitracklist">Aplikasi ini melacak dan melaporkan aktivitas Anda</string>
+	<string name="antinonfreeadlist">Aplikasi ini mempromosikan pengaya berbayar</string>
+	<string name="antinonfreenetlist">Aplikasi ini mempromosikan layanan jaringan berbayar</string>
+	<string name="antinonfreedeplist">Aplikasi ini bergantung pada aplikasi berbayar lainnya</string>
+	<string name="antiupstreamnonfreelist">Kode sumber utama tidak sepenuhnya Bebas</string>
+
+	<string name="display">Tampilan</string>
+
+	<string name="expert">Mode Ahli</string>
+	<string name="expert_on">Menampilkan info ekstra dan mengaktifkan pengaturan ekstra</string>
+
+	<string name="search_hint">Cari aplikasi</string>
+
+	<string name="appcompatibility">Kompatibilitas aplikasi</string>
+	<string name="show_incompat_versions">Versi tidak kompatibel</string>
+	<string name="show_incompat_versions_on">Menampilkan versi aplikasi yang tidak kompatibel dengan perangkat ini</string>
+	<string name="rooted">Abaikan root</string>
+	<string name="ignoreTouch">Abaikan layar sentuh</string>
+	<string name="ignoreTouch_on">Selalu sertakan aplikasi yang membutuhkan layar sentuh</string>
+
+	<string name="local_repo">Repo Lokal</string>
+	<string name="deleting_repo">Menghapus repo saat ini…</string>
+	<string name="adding_apks_format">Menambahkan %s ke repo…</string>
+	<string name="writing_index_jar">Menulis berkas indeks yang ditanda tangani (index.jar)…</string>
+	<string name="failed_to_create_index">Gagal membuat indeks repo!</string>
+	<string name="linking_apks">Menautkan APK ke dalam repo…</string>
+	<string name="copying_icons">Menyalin ikon aplikasi ke dalam repo…</string>
+	<string name="icon">Ikon</string>
+	<string name="next">Selanjutnya</string>
+	<string name="skip">Lewati</string>
+
+	<string name="proxy">Proksi</string>
+	<string name="enable_proxy_title">Aktifkan Proksi HTTP</string>
+	<string name="enable_proxy_summary">Konfigurasi Proksi HTTP untuk semua permintaan jaringan</string>
+	<string name="proxy_host">Host Proksi</string>
+	<string name="proxy_host_summary">Konfigurasi nama host proksi Anda (mis. 127.0.0.1)</string>
+	<string name="proxy_port">Port Proksi</string>
+	<string name="proxy_port_summary">Konfigurasi nomor port proksi Anda (mis. 8118)</string>
+
+	<string name="status_download">Mengunduh\n%2$s / %3$s (%4$d%%) dari\n%1$s</string>
+
+	<string name="status_download_unknown_size">Mengunduh\n%2$s dari\n%1$s</string>
+	<string name="update_notification_title">Memperbarui repositori</string>
+	<string name="status_processing_xml_percent">Memproses %2$s / %3$s (%4$d%%) dari %1$s</string>
+	<string name="status_connecting_to_repo">Menyambung ke\n%1$s</string>
+	<string name="status_checking_compatibility">Memeriksa kompatibilitas aplikasi dengan perangkat Anda…</string>
+    <string name="status_inserting">Menyimpan detail aplikasi (%1$d%%)</string>
+	<string name="repos_unchanged">Semua repositori telah diperbarui</string>
+        <string name="global_error_updating_repos">Galat saat memperbarui: %s</string>
+	<string name="no_permissions">Tidak memerlukan izin apapun.</string>
+    <string name="permissions">Perizinan</string>
+	<string name="no_handler_app">Anda tidak memiliki aplikasi yang bisa menangani %s.</string>
+	<string name="compactlayout">Tata Letak Ringkas</string>
+	<string name="compactlayout_on">Menampilkan ikon dengan ukuran yang lebih kecil</string>
+    <string name="theme">Tema</string>
+    <string name="unsigned">Tidak bertanda tangan</string>
+    <string name="unverified">Tidak terverifikasi</string>
+    <string name="repo_details">Repositori</string>
+    <string name="repo_url">Alamat</string>
+    <string name="repo_num_apps">Jumlah aplikasi</string>
+    <string name="repo_description">Deskripsi</string>
+    <string name="repo_last_update">Terakhir diperbarui</string>
+    </resources>

@@ -135,7 +135,7 @@
 	<string name="show_incompat_versions">Versões incompatíveis</string>
 	<string name="show_incompat_versions_on">Mostrar versões incompatíveis com o seu dispositivo</string>
 	<string name="rooted">Ignorar \'root\'</string>
-	<string name="rooted_on">Não sombrear aplicações que necessitam acesso \'root\'</string>
+	<string name="rooted_on">Não sombrear aplicações que necessitem de acesso \'root\'</string>
 	<string name="ignoreTouch">Ignorar ecrã de toque</string>
 	<string name="ignoreTouch_on">Incluir aplicações que necessitem de toque no ecrã</string>
 
