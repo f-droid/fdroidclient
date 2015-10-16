@@ -9,6 +9,7 @@
         <item name="colorAccent">@color/fdroid_green</item>
         <item name="android:textColorLink">@color/fdroid_green</item>
         <item name="alertDialogTheme">@style/AlertDialogThemeDark</item>
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
     </style>
 
     <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -19,6 +20,7 @@
         <item name="colorAccent">@color/fdroid_green</item>
         <item name="android:textColorLink">@color/fdroid_green</item>
         <item name="alertDialogTheme">@style/AlertDialogThemeLight</item>
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
     </style>
 
     <style name="AppThemeDark" parent="AppBaseThemeDark">
@@ -44,6 +46,10 @@
     <style name="AlertDialogBaseThemeLight" parent="Theme.AppCompat.Light.Dialog.Alert" />
     <style name="AlertDialogThemeLight" parent="AlertDialogBaseThemeLight">
         <item name="colorAccent">@color/fdroid_green</item>
+    </style>
+
+    <style name="TextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="RepoDetailsCaption">
