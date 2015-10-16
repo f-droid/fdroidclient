@@ -10,7 +10,7 @@ dependencies {
     compile project(':privileged-api-lib')
 
     compile 'com.android.support:support-v4:22.2.1'
-    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:support-annotations:22.2.1'
 
     compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
@@ -60,7 +60,7 @@ if (!hasProperty('sourceDeps')) {
     dependencyVerification {
         verify = [
             'com.android.support:support-v4:c62f0d025dafa86f423f48df9185b0d89496adbc5f6a9be5a7c394d84cf91423',
-            'com.android.support:appcompat-v7:9a2355537c2f01cf0b95523605c18606b8d824017e6e94a05c77b0cfc8f21c96',
+            'com.android.support:appcompat-v7:4b5ccba8c4557ef04f99aa0a80f8aa7d50f05f926a709010a54afd5c878d3618',
             'com.android.support:support-annotations:104f353b53d5dd8d64b2f77eece4b37f6b961de9732eb6b706395e91033ec70a',
             'org.thoughtcrime.ssl.pinning:AndroidPinning:afa1d74e699257fa75cb109ff29bac50726ef269c6e306bdeffe8223cee06ef4',
             'com.nostra13.universalimageloader:universal-image-loader:b99382c5536c7325ef8dc0a0fe9a6cad803cf3488942bea7e1cca4db3e5dec43',
