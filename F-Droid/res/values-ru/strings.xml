@@ -3,9 +3,7 @@
   <string name="searchres_napps">По запросу \'%2$s\' найдено %1$d приложений:</string>
   <string name="searchres_oneapp">Найдено одно приложение по запросу \'%s\':</string>
   <string name="searchres_noapps">По запросу \'%s\' ничего не найдено</string>
-  <string name="SignatureMismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии обязательно удалите старую.
-
-Внимание: при удалении программы все её данные будут утрачены</string>
+  <string name="SignatureMismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте ещё раз. (При удалении приложения все его данные будут потеряны)</string>
   <string name="installIncompatible">Похоже, этот пакет несовместим с вашим устройством. Всё равно установить?</string>
   <string name="installDowngrade">Вы пытаетесь установить более старую версию приложения. Это может привести к его некорректной работе и даже потере данных. Вы уверены, что хотите продолжить?</string>
   <string name="version">Версия</string>
@@ -141,7 +139,7 @@
   <string name="compactlayout">Компактный вид</string>
   <string name="compactlayout_on">Показать иконки в меньшем размере</string>
   <string name="theme">Тема</string>
-  <string name="unsigned">Неподписанный</string>
+  <string name="unsigned">Не подписан</string>
   <string name="unverified">Неподтверждённый</string>
   <string name="repo_num_apps">Количество приложений</string>
   <string name="repo_fingerprint">Отпечаток ключа подписи (SHA-256)</string>
@@ -149,8 +147,8 @@
   <string name="repo_last_update">Последнее обновление</string>
   <string name="repo_update">Обновить</string>
   <string name="repo_name">Название</string>
-  <string name="unsigned_description">Это означает, что список приложений не может быть проверен. Вы должны быть осторожны с приложениями, загруженными из неподписанных источников.</string>
-  <string name="repo_not_yet_updated">Этот репозиторий еще не использовался. Включите его чтобы просмотреть содержащиеся в нём приложения.</string>
+  <string name="unsigned_description">Это означает, что список приложений не может быть верифицирован. Вы должны быть осторожны с приложениями, загруженными из неподписанных источников.</string>
+  <string name="repo_not_yet_updated">Этот репозиторий ещё не использовался. Включите его чтобы просмотреть содержащиеся в нём приложения.</string>
   <string name="unknown">Неизвестно</string>
   <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
   <string name="repo_confirm_delete_body">Удаление репозитория означает что приложения из него больше не будут доступны в F-Droid.\n\nПримечание: Все ранее установленные приложения останутся на вашем устройстве.</string>

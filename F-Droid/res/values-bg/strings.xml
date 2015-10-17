@@ -266,7 +266,7 @@
     <string name="system_install_post_success">F-Droid е инсталиран като привилегировано приложение</string>
     <string name="system_install_post_fail">Инсталирането като привилегировано приложение се провали</string>
     <string name="system_install_question">Желаете ли F-Droid да бъде привилегировано приложение?\nИнсталцията отнема около 10 секунди.</string>
-    <string name="system_install_warning_lollipop">Желаете ли F-Droid да бъде привилегировано приложение?\nИнсталцията отнема около 10 секунди след което устройството ще бъде рестартирано.</string>
+    <string name="system_install_warning_lollipop">Инсталцията отнема около 10 секунди след което устройството ще бъде <b>рестартирано</b>.</string>
     <string name="system_uninstall">Желаете ли F-Droid да бъде деинсталиран като привилегировано приложение?</string>
     <string name="system_uninstall_button">Деинсталиране</string>
 

@@ -22,7 +22,7 @@
   <string name="about_title">O F-Droid</string>
   <string name="about_site">Strona internetowa:</string>
   <string name="about_version">Wersja:</string>
-  <string name="app_not_installed">Niezainstalowane</string>
+  <string name="app_not_installed">Nie zainstalowano</string>
   <string name="added_on">Dodano %s</string>
   <string name="ok">OK</string>
   <string name="yes">Tak</string>
@@ -116,7 +116,7 @@
   <string name="repo_confirm_delete_body">Usunięcie repozytorium oznacza, że aplikacje z niego nie będą dłużej dostępne w F-Droid.
 
 Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</string>
-  <string name="minsdk_or_later">%s lub później</string>
+  <string name="minsdk_or_later">%s lub nowszy</string>
   <string name="up_to_maxsdk">Wsparcie do %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s aż do %2$s</string>
   <string name="requires_features">Wymaga: %1$s</string>
@@ -309,7 +309,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="theme_dark">Ciemna</string>
 <string name="unstable_updates">Wersje niestabilne</string>
 	<string name="unstable_updates_summary">Sugeruj aktualizacje do niestabilnych wersji</string>
-	<string name="tab_installed_apps">Zainstalowana</string>
+	<string name="tab_installed_apps">Zainstalowane</string>
 	<string name="menu_bitcoin">Bitcon</string>
 	<string name="menu_litecoin">Litecoin</string>
 	<string name="menu_flattr">Flattr</string>
@@ -331,5 +331,5 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
 	<string name="status_download_unknown_size">Pobieranie\n%2$s z\n%1$s</string>
 	<string name="permissions">Uprawnienia</string>
-	<string name="theme_night">Ciemny</string>
+	<string name="theme_night">Nocny</string>
 </resources>
