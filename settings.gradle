@@ -2,12 +2,12 @@ include ':F-Droid'
 include ':Privileged-Extension'
 include ':privileged-api-lib'
 if (hasProperty('sourceDeps')) {
-	include ':extern:support-v4-preferencefragment'
-	include ':extern:nanohttpd:core'
-	include ':extern:zipsigner'
+    include ':extern:support-v4-preferencefragment'
+    include ':extern:nanohttpd:core'
+    include ':extern:zipsigner'
 
         // Needed for zipsigner
-	include ':extern:spongycastle:core'
-	include ':extern:spongycastle:pkix'
-	include ':extern:spongycastle:prov'
+    include ':extern:spongycastle:core'
+    include ':extern:spongycastle:pkix'
+    include ':extern:spongycastle:prov'
 }

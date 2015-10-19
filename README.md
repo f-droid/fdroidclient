@@ -10,8 +10,8 @@ for Android.
 The only requirements are the [Android SDK](https://developer.android.com/sdk/)
 and [Gradle](http://gradle.org/) 2.7:
 
-	cd F-Droid
-	gradle assembleRelease
+    cd F-Droid
+    gradle assembleRelease
 
 ## Direct download
 

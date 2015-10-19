@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<PreferenceCategory android:title="@string/updates">
-		<ListPreference android:title="@string/update_interval"
-			android:key="updateInterval"
-			android:defaultValue="24"
-			android:entries="@array/updateIntervalNames"
-			android:entryValues="@array/updateIntervalValues" />
-		<CheckBoxPreference android:title="@string/automatic_scan_wifi"
-			android:defaultValue="false"
-			android:key="updateOnWifiOnly" />
-		<CheckBoxPreference android:title="@string/notify"
-			android:defaultValue="true"
-			android:key="updateNotify" />
-		<EditTextPreference
-			android:defaultValue="14"
-			android:key="updateHistoryDays"
-			android:maxLength="2"
-			android:numeric="integer"
-			android:title="@string/update_history" />
-	</PreferenceCategory>
-	<PreferenceCategory android:title="@string/display">
+    <PreferenceCategory android:title="@string/updates">
+        <ListPreference android:title="@string/update_interval"
+            android:key="updateInterval"
+            android:defaultValue="24"
+            android:entries="@array/updateIntervalNames"
+            android:entryValues="@array/updateIntervalValues" />
+        <CheckBoxPreference android:title="@string/automatic_scan_wifi"
+            android:defaultValue="false"
+            android:key="updateOnWifiOnly" />
+        <CheckBoxPreference android:title="@string/notify"
+            android:defaultValue="true"
+            android:key="updateNotify" />
+        <EditTextPreference
+            android:defaultValue="14"
+            android:key="updateHistoryDays"
+            android:maxLength="2"
+            android:numeric="integer"
+            android:title="@string/update_history" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/display">
         <ListPreference android:title="@string/pref_language"
             android:key="language"
             android:defaultValue=""
@@ -27,29 +27,29 @@
         <CheckBoxPreference android:title="@string/compactlayout"
             android:defaultValue="false"
             android:key="compactlayout"/>
-		<ListPreference android:title="@string/theme"
-			android:key="theme"
-			android:defaultValue="light"
-			android:entries="@array/themeNames"
-			android:entryValues="@array/themeValues" />
-	</PreferenceCategory>
-	<PreferenceCategory android:title="@string/appcompatibility">
-       <CheckBoxPreference android:title="@string/show_incompat_versions"
-           android:defaultValue="false"
-           android:key="incompatibleVersions" />
-		<CheckBoxPreference android:title="@string/rooted"
-			android:defaultValue="true"
-			android:key="rooted" />
-		<CheckBoxPreference android:title="@string/ignoreTouch"
-			android:defaultValue="false"
-			android:key="ignoreTouchscreen" />
-	</PreferenceCategory>
-	<PreferenceCategory android:title="@string/local_repo">
-		<EditTextPreference
-		    android:key="localRepoName"
-		    android:title="@string/local_repo_name" />
-	</PreferenceCategory>
-	<PreferenceCategory android:title="@string/proxy" >
+        <ListPreference android:title="@string/theme"
+            android:key="theme"
+            android:defaultValue="light"
+            android:entries="@array/themeNames"
+            android:entryValues="@array/themeValues" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/appcompatibility">
+        <CheckBoxPreference android:title="@string/show_incompat_versions"
+            android:defaultValue="false"
+            android:key="incompatibleVersions" />
+        <CheckBoxPreference android:title="@string/rooted"
+            android:defaultValue="true"
+            android:key="rooted" />
+        <CheckBoxPreference android:title="@string/ignoreTouch"
+            android:defaultValue="false"
+            android:key="ignoreTouchscreen" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/local_repo">
+        <EditTextPreference
+            android:key="localRepoName"
+            android:title="@string/local_repo_name" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/proxy" >
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="enableProxy"
@@ -58,34 +58,34 @@
         <EditTextPreference
             android:key="proxyHost"
             android:title="@string/proxy_host"
-	    android:summary="@string/proxy_host_summary"
-	    android:dependency="enableProxy" />
+            android:summary="@string/proxy_host_summary"
+            android:dependency="enableProxy" />
         <EditTextPreference
             android:key="proxyPort"
             android:title="@string/proxy_port"
             android:summary="@string/proxy_port_summary"
-	    android:dependency="enableProxy" />
-	</PreferenceCategory>
-	<PreferenceCategory android:title="@string/other">
-		<CheckBoxPreference android:title="@string/cache_downloaded"
-			android:defaultValue="false"
-			android:key="cacheDownloaded" />
-		<CheckBoxPreference android:title="@string/expert"
-			android:defaultValue="false"
-			android:key="expert" />
-		<CheckBoxPreference
-			android:key="unstableUpdates"
-			android:title="@string/unstable_updates"
-			android:summary="@string/unstable_updates_summary"
-			android:defaultValue="false"
-			android:dependency="expert" />
-		<CheckBoxPreference android:title="@string/system_installer"
-			android:defaultValue="false"
-			android:key="privilegedInstaller"
-			android:dependency="expert" />
-		<Preference android:title="@string/uninstall_system"
-			android:summary="@string/uninstall_system_summary"
-			android:key="uninstallPrivilegedApp"
-			android:dependency="expert" />
-	</PreferenceCategory>
+            android:dependency="enableProxy" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/other">
+        <CheckBoxPreference android:title="@string/cache_downloaded"
+            android:defaultValue="false"
+            android:key="cacheDownloaded" />
+        <CheckBoxPreference android:title="@string/expert"
+            android:defaultValue="false"
+            android:key="expert" />
+        <CheckBoxPreference
+            android:key="unstableUpdates"
+            android:title="@string/unstable_updates"
+            android:summary="@string/unstable_updates_summary"
+            android:defaultValue="false"
+            android:dependency="expert" />
+        <CheckBoxPreference android:title="@string/system_installer"
+            android:defaultValue="false"
+            android:key="privilegedInstaller"
+            android:dependency="expert" />
+        <Preference android:title="@string/uninstall_system"
+            android:summary="@string/uninstall_system_summary"
+            android:key="uninstallPrivilegedApp"
+            android:dependency="expert" />
+    </PreferenceCategory>
 </PreferenceScreen>

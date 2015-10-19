@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:baselineAligned="false"
-	android:orientation="horizontal">
+    android:layout_height="fill_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
 
     <ScrollView
         android:id="@+id/app_summary_container"
@@ -17,7 +17,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-	        android:padding="5dp">
+            android:padding="5dp">
 
             <fragment
                 android:layout_width="fill_parent"

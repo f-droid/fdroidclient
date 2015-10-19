@@ -46,7 +46,7 @@ it. We enforce some of these, but not all, via checkstyle.
 
 To get all the logcat messages by F-Droid, you can run:
 
-	adb logcat | grep `adb shell ps | grep org.fdroid.fdroid | cut -c10-15`
+    adb logcat | grep `adb shell ps | grep org.fdroid.fdroid | cut -c10-15`
 
 ## Building tips
 
@@ -60,7 +60,7 @@ In order to run the F-Droid test suite, you will need to have either a real devi
 connected via `adb`, or an emulator running. Then, execute the following from the
 command line:
 
-	gradle connectedCheck
+    gradle connectedCheck
 
 Note that the CI already runs the tests on an emulator, so you don't
 necessarily have to do this yourself if you open a merge request as the tests
