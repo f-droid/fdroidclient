@@ -68,7 +68,6 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="menu_update_repo">Paketquellen aktualisieren</string>
   <string name="menu_manage">Paketquellen verwalten</string>
   <string name="menu_send_apk_bt">F-Droid über Bluetooth teilen</string>
-  <string name="menu_preferences">Einstellungen</string>
   <string name="menu_about">Über</string>
   <string name="menu_search">Suchen</string>
   <string name="menu_add_repo">Paketquelle hinzufügen</string>

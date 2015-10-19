@@ -66,7 +66,6 @@ Vydaný pod licenciou
   <string name="menu_update_repo">Aktualizovať repozitáre</string>
   <string name="menu_manage">Repozitáre</string>
   <string name="menu_send_apk_bt">Poslať FDroid cez bluetooth</string>
-  <string name="menu_preferences">Voľby</string>
   <string name="menu_about">O</string>
   <string name="menu_search">Hľadať</string>
   <string name="menu_add_repo">Nový repozitár</string>

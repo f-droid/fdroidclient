@@ -59,7 +59,6 @@
   <string name="menu_update_repo">Ενημέρωση αποθετηρίων</string>
   <string name="menu_manage">Διαχείριση Αποθετηρίων</string>
   <string name="menu_send_apk_bt">Αποστολή του FDroid.apk με Bluetooth</string>
-  <string name="menu_preferences">Προτιμήσεις</string>
   <string name="menu_about">Σχετικά</string>
   <string name="menu_search">Αναζήτηση</string>
   <string name="menu_add_repo">Νέο Αποθετήριο</string>

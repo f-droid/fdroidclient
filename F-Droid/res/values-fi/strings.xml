@@ -62,7 +62,6 @@ käyttöehtojen mukaisesti.</string>
   <string name="repo_add_fingerprint">Sormenjälki (valinnainen)</string>
   <string name="menu_update_repo">Päivitä sovelluslähteet</string>
   <string name="menu_manage">Hallitse sovelluslähteitä</string>
-  <string name="menu_preferences">Asetukset</string>
   <string name="menu_about">Tietoja</string>
   <string name="menu_search">Etsi</string>
   <string name="menu_add_repo">Uusi sovelluslähde</string>

@@ -61,7 +61,6 @@
   <string name="menu_update_repo">更新软件源</string>
   <string name="menu_manage">管理软件源</string>
   <string name="menu_send_apk_bt">通过蓝牙发送 FDroid.apk…</string>
-  <string name="menu_preferences">设置</string>
   <string name="menu_about">关于</string>
   <string name="menu_search">搜索</string>
   <string name="menu_add_repo">添加新软件源</string>

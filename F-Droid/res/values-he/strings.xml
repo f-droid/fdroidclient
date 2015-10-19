@@ -79,7 +79,6 @@
     <string name="menu_update_repo">עדכן מאגרים</string>
     <string name="menu_manage">מאגרים</string>
     <string name="menu_send_apk_bt">שתף את F-Droid בעזרת Bluetooth</string>
-    <string name="menu_preferences">העדפות</string>
     <string name="menu_about">אודות</string>
     <string name="menu_search">חפש</string>
     <string name="menu_add_repo">מאגר חדש</string>

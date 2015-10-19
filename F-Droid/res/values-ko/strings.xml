@@ -68,7 +68,6 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="menu_update_repo">저장소 업데이트</string>
   <string name="menu_manage">저장소 관리</string>
   <string name="menu_send_apk_bt">FDroid.apk 파일을 블루투스로 전송…</string>
-  <string name="menu_preferences">설정</string>
   <string name="menu_about">대하여</string>
   <string name="menu_search">검색</string>
   <string name="menu_add_repo">새로운 저장소</string>

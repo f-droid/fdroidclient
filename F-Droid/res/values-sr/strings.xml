@@ -66,7 +66,6 @@
   <string name="menu_update_repo">Ажурирај ризнице</string>
   <string name="menu_manage">Ризнице</string>
   <string name="menu_send_apk_bt">Подели FDroid.apk преко блутута</string>
-  <string name="menu_preferences">Поставке</string>
   <string name="menu_about">О програму</string>
   <string name="menu_search">Тражи</string>
   <string name="menu_add_repo">Нова ризница</string>

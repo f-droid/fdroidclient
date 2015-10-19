@@ -68,7 +68,6 @@
   <string name="menu_update_repo">Обновить репозитории</string>
   <string name="menu_manage">Репозитории</string>
   <string name="menu_send_apk_bt">Передать F-Droid по Bluetooth</string>
-  <string name="menu_preferences">Настройки</string>
   <string name="menu_about">О программе</string>
   <string name="menu_search">Поиск</string>
   <string name="menu_add_repo">Новый репозиторий</string>

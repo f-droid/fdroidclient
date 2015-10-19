@@ -68,7 +68,6 @@ Släppt under licensen GNU GPLv3.</string>
   <string name="menu_update_repo">Uppdatera förråd</string>
   <string name="menu_manage">Hantera förråd</string>
   <string name="menu_send_apk_bt">Bluetooth-sänd FDroid.apk…</string>
-  <string name="menu_preferences">Inställningar</string>
   <string name="menu_about">Om</string>
   <string name="menu_search">Sök</string>
   <string name="menu_add_repo">Nytt förråd</string>

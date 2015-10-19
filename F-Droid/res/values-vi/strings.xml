@@ -62,7 +62,6 @@
   <string name="menu_update_repo">Cập nhật kho</string>
   <string name="menu_manage">Kho ứng dụng</string>
   <string name="menu_send_apk_bt">Chia sẻ F-Droid qua Bluetooth</string>
-  <string name="menu_preferences">Tuỳ chọn</string>
   <string name="menu_about">Giới thiệu</string>
   <string name="menu_search">Tìm kiếm</string>
   <string name="menu_add_repo">Thêm kho ứng dụng mới</string>

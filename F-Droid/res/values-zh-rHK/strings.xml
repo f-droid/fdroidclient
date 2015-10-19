@@ -58,7 +58,6 @@
   <string name="menu_update_repo">更新倉庫</string>
   <string name="menu_manage">軟件倉庫</string>
   <string name="menu_send_apk_bt">透過藍牙傳送 F-Droid</string>
-  <string name="menu_preferences">設定</string>
   <string name="menu_about">關於</string>
   <string name="menu_search">搜尋</string>
   <string name="menu_add_repo">新增軟件倉庫</string>

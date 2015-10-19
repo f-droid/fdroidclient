@@ -67,7 +67,6 @@
   <string name="menu_update_repo">ﾘﾎﾟｼﾞﾄﾘの更新</string>
   <string name="menu_manage">ﾘﾎﾟｼﾞﾄﾘ</string>
   <string name="menu_send_apk_bt">BluetoothでFDroidを共有する</string>
-  <string name="menu_preferences">設定</string>
   <string name="menu_about">F-Droidについて</string>
   <string name="menu_search">検索</string>
   <string name="menu_add_repo">新しいﾘﾎﾟｼﾞﾄﾘ</string>

@@ -43,7 +43,6 @@
   <string name="repo_delete_to_overwrite">Musisz najpierw usunąć to repozytorium zanim dodasz następne z innym kluczem.</string>
   <string name="malformed_repo_uri">Ignorowanie błędnego adresu (URI) repozytorium: %s</string>
   <string name="menu_update_repo">Aktualizuj repozytoria</string>
-  <string name="menu_preferences">Ustawienia</string>
   <string name="menu_about">Informacje</string>
   <string name="menu_search">Wyszukaj</string>
   <string name="menu_add_repo">Nowe repozytorium</string>

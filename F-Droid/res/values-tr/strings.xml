@@ -68,7 +68,6 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="menu_update_repo">Depoları güncelle</string>
   <string name="menu_manage">Depoları Yönet</string>
   <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
-  <string name="menu_preferences">Tercihler</string>
   <string name="menu_about">Hakkında</string>
   <string name="menu_search">Arama</string>
   <string name="menu_add_repo">Yeni Depo</string>

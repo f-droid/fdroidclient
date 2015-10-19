@@ -24,7 +24,7 @@
     <string name="notify_on">Beri tahu jika pembaruan aplikasi tersedia</string>
     <string name="update_history">Riwayat pembaruan</string>
     <string name="update_history_summ">Jumlah hari sebuah aplikasi dianggap baru atau mutakhir: %s</string>
-    <string name="system_installer"></string>
+    <string name="system_installer"/>
     <string name="system_installer_on">Gunakan F-Droid Privileged Extension untuk memasang, memperbarui, dan mencopot paket</string>
     <string name="uninstall_system">Perbarui/Copot Privileged Extension</string>
     <string name="uninstall_system_summary">Buka layar detail Privileged Extension untuk memperbarui/mencopotnya</string>
@@ -91,7 +91,6 @@
     <string name="menu_update_repo">Perbarui Repo</string>
     <string name="menu_manage">Repositori</string>
     <string name="menu_send_apk_bt">Bagi F-Droid melalui Bluetooth</string>
-    <string name="menu_preferences">Preferensi</string>
     <string name="menu_about">Tentang</string>
     <string name="menu_search">Cari</string>
     <string name="menu_add_repo">Repositori Baru</string>

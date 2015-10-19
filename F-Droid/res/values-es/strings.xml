@@ -68,7 +68,6 @@
   <string name="menu_update_repo">Actualizar repositorios</string>
   <string name="menu_manage">Repositorios</string>
   <string name="menu_send_apk_bt">Compartir F-Droid por Bluetooth</string>
-  <string name="menu_preferences">Preferencias</string>
   <string name="menu_about">Acerca de</string>
   <string name="menu_search">Buscar</string>
   <string name="menu_add_repo">Repositorio nuevo</string>

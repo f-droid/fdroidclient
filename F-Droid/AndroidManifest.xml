@@ -345,7 +345,7 @@
 
         </activity>
         <activity
-            android:label="@string/menu_preferences"
+            android:label="@string/menu_settings"
             android:name=".PreferencesActivity"
             android:parentActivityName=".FDroid" >
             <meta-data

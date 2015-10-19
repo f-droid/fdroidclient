@@ -25,7 +25,6 @@
   <string name="repo_add_url">Адреса репозиторію</string>
   <string name="menu_update_repo">Оновити</string>
   <string name="menu_manage">Репозиторії</string>
-  <string name="menu_preferences">Параметри</string>
   <string name="menu_about">Про F-Droid</string>
   <string name="menu_search">Пошук</string>
   <string name="menu_add_repo">Додати</string>

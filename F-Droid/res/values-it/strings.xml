@@ -66,7 +66,6 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="menu_update_repo">Aggiorna i Repository</string>
   <string name="menu_manage">Gestione dei repository</string>
   <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
-  <string name="menu_preferences">Preferenze</string>
   <string name="menu_about">Informazioni</string>
   <string name="menu_search">Cerca</string>
   <string name="menu_add_repo">Nuovo Repository</string>

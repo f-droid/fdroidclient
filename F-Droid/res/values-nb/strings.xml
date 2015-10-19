@@ -68,7 +68,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="menu_update_repo">Oppdater registrene</string>
   <string name="menu_manage">Endre registrene</string>
   <string name="menu_send_apk_bt">Del F-Droid.apk via Blåtann</string>
-  <string name="menu_preferences">Innstillinger</string>
   <string name="menu_about">Om</string>
   <string name="menu_search">Søk</string>
   <string name="menu_add_repo">Nytt register</string>

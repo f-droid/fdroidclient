@@ -55,7 +55,6 @@ Honosítás: gidano | sympda.info\"</string>
   <string name="repo_delete_to_overwrite">Előbb törölnie kell ezt a repot, mielőtt hozzáad egyet eltérő kulccsal!</string>
   <string name="menu_update_repo">Repo-k frissítése</string>
   <string name="menu_manage">Repo-k kezelése</string>
-  <string name="menu_preferences">Lehetőségek</string>
   <string name="menu_about">Rólunk</string>
   <string name="menu_search">Keresés</string>
   <string name="menu_add_repo">Új repository</string>

@@ -31,7 +31,6 @@
   <string name="repo_add_fingerprint">البصمة (إختياري)</string>
   <string name="menu_update_repo">تحديث المستودعات</string>
   <string name="menu_manage">المستودعات</string>
-  <string name="menu_preferences">التفضيلات</string>
   <string name="menu_about">حول</string>
   <string name="menu_search">بحث</string>
   <string name="menu_launch">تشغيل</string>

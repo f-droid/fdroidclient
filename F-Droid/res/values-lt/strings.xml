@@ -38,7 +38,6 @@
   <string name="menu_update_repo">Atnaujinti saugyklas</string>
   <string name="menu_manage">Saugyklos</string>
   <string name="menu_send_apk_bt">Siųst FDroid.apk per Bluetooth…</string>
-  <string name="menu_preferences">Nustatymai</string>
   <string name="menu_about">Apie</string>
   <string name="menu_search">Ieškoti</string>
   <string name="menu_add_repo">Nauja saugykla</string>

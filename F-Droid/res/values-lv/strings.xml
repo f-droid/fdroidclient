@@ -59,7 +59,6 @@ Izlaists zem GNU GPLv3 licenzes</string>
   <string name="menu_update_repo">Atjauno Repozitorijus</string>
   <string name="menu_manage">Repozitoriji</string>
   <string name="menu_send_apk_bt">Bluesūta FDroid.apk…</string>
-  <string name="menu_preferences">Iestatījumi</string>
   <string name="menu_about">Par</string>
   <string name="menu_search">Meklēt</string>
   <string name="menu_add_repo">Jauns Repozitorijs</string>
