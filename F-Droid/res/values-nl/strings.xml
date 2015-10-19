@@ -9,20 +9,20 @@
   <string name="version">Versie</string>
   <string name="delete">Verwijderen</string>
   <string name="enable_nfc_send">Versturen via NFC aanzetten…</string>
-  <string name="cache_downloaded">buffer gedownloade apps</string>
-  <string name="cache_downloaded_on">Gedownloade apk-files bewaren op SD card</string>
+  <string name="cache_downloaded">Sla gedownloade apps op</string>
+  <string name="cache_downloaded_on">Bewaar gedownloade apps op apparaat</string>
   <string name="updates">Updates</string>
   <string name="other">Andere</string>
   <string name="update_interval">Automatische update interval</string>
   <string name="update_interval_zero">Geen automatische app-lijst updates</string>
   <string name="automatic_scan_wifi">Alleen op Wi-Fi</string>
   <string name="automatic_scan_wifi_on">Update app-lijsten automatisch alleen op Wi-Fi</string>
-  <string name="notify">Verwittigen</string>
-  <string name="notify_on">Meld wanneer updates beschikbaar zijn</string>
+  <string name="notify">Updatemeldingen</string>
+  <string name="notify_on">Toon een melding wanneer updates beschikbaar zijn</string>
   <string name="update_history">Vernieuw historie</string>
   <string name="update_history_summ">Dagen om een app als nieuw of recent te zien: %s</string>
-  <string name="system_installer">Installeer met systeem-rechten</string>
-  <string name="system_installer_on">Gebruik systeem rechten om pakketten te installeren, updaten en verwijderen</string>
+  <string name="system_installer">Extensie Voor Systeemrechten</string>
+  <string name="system_installer_on">Gebruik extensie voor systeemrechten om pakketten te installeren, updaten en verwijderen</string>
   <string name="local_repo_name">Naam van collectie gedeelde apps</string>
   <string name="local_repo_name_summary">De geadverteerde titel van jouw collectie gedeelde apps: %s</string>
   <string name="local_repo_https">Gebruik beveiligde verbinding</string>
@@ -66,7 +66,7 @@
   <string name="malformed_repo_uri">Misvormde bron-URI %s genegeerd</string>
   <string name="menu_update_repo">Vernieuw Bronnen</string>
   <string name="menu_manage">Beheer bronnen</string>
-  <string name="menu_send_apk_bt">Deel F-Droid via Bluetooth…</string>
+  <string name="menu_send_apk_bt">Deel F-Droid via Bluetooth</string>
   <string name="menu_preferences">Voorkeuren</string>
   <string name="menu_about">Over</string>
   <string name="menu_search">Zoeken</string>
@@ -92,13 +92,13 @@
   <string name="antinonfreedeplist">Deze app vereist andere niet-vrije apps</string>
   <string name="antiupstreamnonfreelist">De \'upstream\' broncode is niet helemaal Vrij (open source)</string>
   <string name="display">Laat zien</string>
-  <string name="expert">Expert</string>
+  <string name="expert">Expertmodus</string>
   <string name="expert_on">Laat extra informatie zien en activeer extra instellingen</string>
   <string name="search_hint">Zoek applicaties</string>
   <string name="appcompatibility">Applicatie verenigbaarheid</string>
   <string name="show_incompat_versions">Onverenigbare versies</string>
   <string name="show_incompat_versions_on">Laat app-versies zien die niet geschikt zijn voor uw apparaat</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Root negeren</string>
   <string name="rooted_on">Verberg apps niet die root-permissies vereisen</string>
   <string name="ignoreTouch">Negeer aanraakscherm</string>
   <string name="ignoreTouch_on">Altijd apps meerekenen die een touch screen vereisen</string>
@@ -141,13 +141,13 @@
   <string name="unsigned">Ongetekend</string>
   <string name="unverified">Onbevestigd</string>
   <string name="repo_num_apps">Aantal apps</string>
-  <string name="repo_fingerprint">Vingerafdruk van bronondertekensleutel (SHA-256)</string>
+  <string name="repo_fingerprint">Vingerafdruk van de bronondertekensleutel (SHA-256)</string>
   <string name="repo_description">Beschrijving</string>
   <string name="repo_last_update">Meest recente update</string>
   <string name="repo_update">Update</string>
   <string name="repo_name">Naam</string>
   <string name="unsigned_description">Dit betekent dat de lijst van applicaties niet geverifieerd kon worden. Je moet voorzichtig zijn met het downloaden van applicaties van ongetekende bronnen.</string>
-  <string name="repo_not_yet_updated">Deze bron is nog niet eerder gebruikt. Om de beschikbare apps te zien moet u het updaten.\n\nZodra de update gedaan is ziet u hier de beschrijving en andere details.</string>
+  <string name="repo_not_yet_updated">Deze bron is nog niet eerder gebruikt. Om de beschikbare apps te zien moet u deze inschakelen.</string>
   <string name="unknown">Onbekend</string>
   <string name="repo_confirm_delete_title">Verwijder softwarebron?</string>
   <string name="repo_confirm_delete_body">Het verwijderen van een bron betekent dat de apps in deze bron niet meer beschikbaar zijn via F-Droid.\n\nLet op: Eerder geïnstalleerde apps blijven op uw apparaat staan.</string>
@@ -251,7 +251,7 @@
     <string name="swap_not_visible_wifi">Niet zichtbaar via Wi-Fi</string>
     <string name="swap_wifi_device_name">Apparaatnaam</string>
     <string name="swap_cant_find_peers">Kan je degene waar je naar zoekt niet vinden?</string>
-    <string name="swap_send_fdroid">VERSTUUR F-DROID</string>
+    <string name="swap_send_fdroid">Verstuur F-Droid</string>
     <string name="swap_no_peers_nearby">Kon geen mensen in de buurt vinden om mee te swappen.</string>
     <string name="swap_connecting">Verbinden</string>
     <string name="swap_confirm">Bevestig swap</string>
@@ -259,8 +259,8 @@
     <string name="bluetooth_unavailable">Bluetooth niet beschikbaar</string>
     <string name="swap_cant_send_no_bluetooth">Kon F-Droid niet verzenden, omdat Bluetooth niet beschikbaar is op dit apparaat.</string>
     <string name="loading">Laden…</string>
-    <string name="swap_attempt_install">PROBEER TE INSTALLEREN</string>
-    <string name="swap_connection_misc_error">Een fout trad op bij het verbinden met het apparaat, dus het lijkt erop dat we er niet mee kunnen swappen :(</string>
+    <string name="swap_attempt_install">Probeer te installeren</string>
+    <string name="swap_connection_misc_error">Een fout trad op bij het verbinden met het apparaat, dus het lijkt erop dat we er niet mee kunnen swappen.</string>
     <string name="swap_not_enabled">Swap niet ingeschakeld</string>
     <string name="swap_not_enabled_description">Voordat we kunnen swappen, moet het apparaat zichtbaar gemaakt worden.</string>
 
@@ -293,4 +293,40 @@
 
     <string name="theme_light">Licht</string>
     <string name="theme_dark">Donker</string>
+<string name="unstable_updates">Testversies</string>
+	<string name="unstable_updates_summary">Geef updatemeldingen voor testversies</string>
+	<string name="uninstall_system">Update/Verwijder Extensie Voor Systeemrechten</string>
+	<string name="uninstall_system_summary">Open detailscherm van Extensie Voor Systeemrechten om deze te updaten of te verwijderen</string>
+	<string name="more">Meer</string>
+    <string name="less">Minder</string>
+
+	<string name="tab_installed_apps">Geïnstalleerd</string>
+	<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+
+	<string name="status_download_unknown_size">Downloaden\n%2$s van\n%1$s</string>
+	<string name="permissions">Rechten</string>
+	<string name="repo_details">Bron</string>
+    <string name="repo_url">Adres</string>
+    <string name="system_install_denied_signature">De handtekening van de extensie klopt niet! Maak a.u.b. een bugrapport aan!</string>
+    <string name="system_install_denied_permissions">De extensie heeft geen systeemrechten gekregen! Maak a.u.b. een bugrapport aan!</string>
+    <string name="system_install_button_install">Installeer</string>
+	<string name="system_install_button_open">Open Extensie</string>
+    <string name="system_install_first_time_notification">F-Droid Extensie Voor Systeemrechten Installeren?</string>
+    <string name="system_install_first_time_notification_message">Raak aan om de F-Droid Extensie Voor Systeemrechten te installeren. Dit zorgt ervoor dat F-Droid zelf apps kan installeren, updaten en verwijderen.\nJe kan dit ook later doen via F-Droid\'s instellingen.</string>
+    <string name="system_install_post_success">F-Droid Extensie Voor Systeemrechten is succesvol geïnstalleerd</string>
+    <string name="system_install_post_fail">Installatie van F-Droid Extensie Voor Systeemrechten is gefaald</string>
+    <string name="system_install_post_success_message">F-Droid Extensie Voor Systeemrechten is succesvol geïnstalleerd. F-Droid kan hiermee zelf apps installeren, updaten en verwijderen.</string>
+    <string name="system_install_post_fail_message">De installatie van de F-Droid Extensie Voor Systeemrechten is gefaald. De installatiemethode wordt niet door alle Android systemen ondersteund. Zie de F-Droid bugtracker voor meer informatie.</string>
+    <string name="system_install_installing_rebooting">Installeren en opnieuw opstarten…</string>
+    <string name="system_install_question">Wil je de F-Droid Extensie Voor Systeemrechten installeren?</string>
+	<string name="system_install_warning">Dit kan tot 10 seconden duren.</string>
+	<string name="system_install_warning_lollipop">Dit kan tot 10 seconden duren en het apparaat zal <b>opnieuw opgestart</b> worden.</string>
+	<string name="system_install_first_time_message">Het ziet ernaar uit dat je root toegang tot het apparaat hebt. Je kan de F-Droid Extensie Voor Systeemrechten installeren. F-Droid kan hiermee zelf apps installeren, updaten en verwijderen.</string>
+    <string name="system_uninstall">Wil je de F-Droid Extensie Voor Systeemrechten verwijderen?</string>
+    <string name="download_error">Download gefaald</string>
+
+    <string name="theme_night">Nacht</string>
 </resources>

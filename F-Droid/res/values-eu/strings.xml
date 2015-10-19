@@ -112,7 +112,7 @@ konektatzen</string>
 
 	<string name="back">Atzera</string>
 	<string name="update_notification_more">+%1$d gehiago…</string>
-	<string name="bluetooth_activity_not_found">Ez da aurkitu Bluetooth bidez bidaltzeko metodorik, aukeratu bat.</string>
+	<string name="bluetooth_activity_not_found">Ez da aurkitu Bluetooth bidez bidaltzeko metodorik, aukeratu bat!</string>
 	<string name="choose_bt_send">Aukeratu Bluetooth bidez bidaltzeko metodoa</string>
 	<string name="send_via_bluetooth">Bidali Bluetooth bidez</string>
 
@@ -332,4 +332,11 @@ konektatzen</string>
     <string name="download_error">Deskargak huts egin du</string>
 
     <string name="perms_description_app">%1$sk hornitua.</string>
-    </resources>
+    <string name="more">Gehiago</string>
+    <string name="less">Gutxiago</string>
+
+	<string name="status_download_unknown_size">Deskargatzen\n%2$s
+\n%1$s(e)tik</string>
+	<string name="permissions">Baimenak</string>
+	<string name="theme_night">Gaua</string>
+</resources>
