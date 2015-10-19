@@ -28,6 +28,8 @@ for d in glob.glob(os.path.join('res', 'values-*')):
             name = e.attrib['name']
             if name not in strings:
                 root.remove(e)
+            if not e.text:
+                root.remove(e)
 
         result = re.sub(r' />', r'/>', ElementTree.tostring(root, encoding='utf-8'))
 

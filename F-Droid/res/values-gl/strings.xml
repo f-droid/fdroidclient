@@ -332,9 +332,7 @@ Publicado con licenza GNU GPLv3.</string>
     <string name="perms_description_app">Ofertado por %1$s.</string>
     <string name="repo_exists_add_fingerprint">Este repositorio xa está instalado, engadirase información adicional sobre a chave.</string>
     <string name="writing_index_jar">Escribindo índice firmado para o ficheiro (index.jar)…</string>
-    <string name="system_install_first_time_notification_message"/>
     <string name="system_install_post_success_message">F-Droid Privileged Extension instalouse correctamente. Esto permite á F-Droid instalar, actualizar e desinstalar aplicativos pola súa conta.</string>
     <string name="system_install_post_fail_message">A instalación de F-Droid Privileged Extension fallou. O método de instalación non está dispoñible para todas as distribucións Android, por favor, consulta o seguimento de erros de F-Droid para máis información.</string>
-    <string name="system_install_first_time_message"/>
     <string name="app_description">F-Droid es un catálogo instalable de aplicativos FOSS (Free and Open Source Software) para a plataforma Android. O cliente facilita a navegación, instalación e actualización no teu dispositivo.</string>
     </resources>

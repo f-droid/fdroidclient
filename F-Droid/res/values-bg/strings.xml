@@ -206,7 +206,6 @@
     <string name="install_error_unknown">Инсталирането се провали поради неизвестна грешка</string>
     <string name="uninstall_error_unknown">Деинсталирането се провали поради неизвестна грешка</string>
     <string name="system_install_first_time_notification_message_short">Натиснете за повече информация.</string>
-    <string name="swap_join_same_wifi_desc"/>
     <string name="swap_choose_apps">Изберете приложения</string>
     <string name="swap_wifi_device_name">Име на устройството</string>
     <string name="swap_cant_find_peers">Не можете да откриете тези, които търсите?</string>
