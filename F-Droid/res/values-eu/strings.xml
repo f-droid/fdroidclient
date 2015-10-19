@@ -89,70 +89,70 @@ konektatzen</string>
   <string name="repo_confirm_delete_title">Biltegia ezabatu?</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="installIncompatible">Badirudi pakete hau ez dela zure gailuarekin bateragarria. Instalatzea saiatu nahi duzu hala ere?</string>
-	<string name="installDowngrade">Aplikazio hau bertsio-zahartzen saiatzen ari zara. Baliteke behar bezala ez ibiltzea eta zure datuak galtzea. Bertsio-zahartzea saiatu nahi duzu hala ere?</string>
-	<string name="unstable_updates">Eguneraketa ezegonkorrak</string>
-	<string name="unstable_updates_summary">Proposatu eguneraketak bertsio ezegonkorretara</string>
-	<string name="theme_dark">Iluna</string>
+    <string name="installIncompatible">Badirudi pakete hau ez dela zure gailuarekin bateragarria. Instalatzea saiatu nahi duzu hala ere?</string>
+    <string name="installDowngrade">Aplikazio hau bertsio-zahartzen saiatzen ari zara. Baliteke behar bezala ez ibiltzea eta zure datuak galtzea. Bertsio-zahartzea saiatu nahi duzu hala ere?</string>
+    <string name="unstable_updates">Eguneraketa ezegonkorrak</string>
+    <string name="unstable_updates_summary">Proposatu eguneraketak bertsio ezegonkorretara</string>
+    <string name="theme_dark">Iluna</string>
 <string name="theme_light">Argia</string>
     <string name="other">Bestelakoak</string>
-	<string name="update_interval">Eguneraketa automatikoaren tartea</string>
-	<string name="update_history_summ">Aplikazioa berri eta oraintsukotzat hartzeko egunak: %s</string>
-	<string name="system_installer">Pribilegiodun Luzapena</string>
-	<string name="system_installer_on">Erabili Pribilegiodun F-Droid Luzapena paketeak instalatu, eguneratu eta kentzeko</string>
-	<string name="uninstall_system">Eguneratu/Desinstalatu Pribilegiodun Luzapena</string>
-	<string name="uninstall_system_summary">Ireki Pribilegiodun Luzapenaren xehetasunen pantaila berau eguneratu edo desinstalatzeko</string>
-	<string name="local_repo_https">Erabili konexio pribatua</string>
-	<string name="about_source">Iturria:</string>
-	<string name="app_incompatible">Bateraezina</string>
-	<string name="app_inst_known_source">Instalatuta (%stik)</string>
-	<string name="app_inst_unknown_source">Instalatuta (Iturri ezezagunetik)</string>
+    <string name="update_interval">Eguneraketa automatikoaren tartea</string>
+    <string name="update_history_summ">Aplikazioa berri eta oraintsukotzat hartzeko egunak: %s</string>
+    <string name="system_installer">Pribilegiodun Luzapena</string>
+    <string name="system_installer_on">Erabili Pribilegiodun F-Droid Luzapena paketeak instalatu, eguneratu eta kentzeko</string>
+    <string name="uninstall_system">Eguneratu/Desinstalatu Pribilegiodun Luzapena</string>
+    <string name="uninstall_system_summary">Ireki Pribilegiodun Luzapenaren xehetasunen pantaila berau eguneratu edo desinstalatzeko</string>
+    <string name="local_repo_https">Erabili konexio pribatua</string>
+    <string name="about_source">Iturria:</string>
+    <string name="app_incompatible">Bateraezina</string>
+    <string name="app_inst_known_source">Instalatuta (%stik)</string>
+    <string name="app_inst_unknown_source">Instalatuta (Iturri ezezagunetik)</string>
 
-	<string name="links">Loturak</string>
+    <string name="links">Loturak</string>
 
-	<string name="back">Atzera</string>
-	<string name="update_notification_more">+%1$d gehiago…</string>
-	<string name="bluetooth_activity_not_found">Ez da aurkitu Bluetooth bidez bidaltzeko metodorik, aukeratu bat!</string>
-	<string name="choose_bt_send">Aukeratu Bluetooth bidez bidaltzeko metodoa</string>
-	<string name="send_via_bluetooth">Bidali Bluetooth bidez</string>
+    <string name="back">Atzera</string>
+    <string name="update_notification_more">+%1$d gehiago…</string>
+    <string name="bluetooth_activity_not_found">Ez da aurkitu Bluetooth bidez bidaltzeko metodorik, aukeratu bat!</string>
+    <string name="choose_bt_send">Aukeratu Bluetooth bidez bidaltzeko metodoa</string>
+    <string name="send_via_bluetooth">Bidali Bluetooth bidez</string>
 
-	<string name="repo_add_fingerprint">Hatz-marka (aukerazkoa)</string>
-	<string name="bad_fingerprint">Hatz-marka okerra</string>
-	<string name="menu_send_apk_bt">Partekatu F-Droid Bluetooth bidez</string>
-	<string name="menu_changelog">Aldaketa egunkaria</string>
-	<string name="antitracklist">Aplikazio honek zure eginkizunen jarraipena egiten du eta berri ematen du</string>
-	<string name="antinonfreeadlist">Aplikazio honen libreak ez diren gehigarriak bultzatzen ditu</string>
-	<string name="antinonfreenetlist">Aplikazio honek libreak ez diren sare zerbitzuak bultzatzen ditu</string>
-	<string name="antinonfreedeplist">Aplikazio honek libreak ez diren beste aplikazio batzuk behar ditu</string>
-	<string name="antiupstreamnonfreelist">Jatorrizko iturburu kodea ez da guztiz librea</string>
+    <string name="repo_add_fingerprint">Hatz-marka (aukerazkoa)</string>
+    <string name="bad_fingerprint">Hatz-marka okerra</string>
+    <string name="menu_send_apk_bt">Partekatu F-Droid Bluetooth bidez</string>
+    <string name="menu_changelog">Aldaketa egunkaria</string>
+    <string name="antitracklist">Aplikazio honek zure eginkizunen jarraipena egiten du eta berri ematen du</string>
+    <string name="antinonfreeadlist">Aplikazio honen libreak ez diren gehigarriak bultzatzen ditu</string>
+    <string name="antinonfreenetlist">Aplikazio honek libreak ez diren sare zerbitzuak bultzatzen ditu</string>
+    <string name="antinonfreedeplist">Aplikazio honek libreak ez diren beste aplikazio batzuk behar ditu</string>
+    <string name="antiupstreamnonfreelist">Jatorrizko iturburu kodea ez da guztiz librea</string>
 
-	<string name="local_repo_name">Izendatu zure tokiko biltegia</string>
-	<string name="local_repo_name_summary">Zure tokiko biltegiak iragarritako izenburua: %s</string>
-	<string name="local_repo_https_on">Erabili zifratu gabeko HTTPS:// konexioa tokiko biltegiarentzat</string>
+    <string name="local_repo_name">Izendatu zure tokiko biltegia</string>
+    <string name="local_repo_name_summary">Zure tokiko biltegiak iragarritako izenburua: %s</string>
+    <string name="local_repo_https_on">Erabili zifratu gabeko HTTPS:// konexioa tokiko biltegiarentzat</string>
 
-	<string name="tab_installed_apps">Instalatuta</string>
-	<string name="repo_exists_add_fingerprint">Biltegi hau ezarrita dago jada, honek gako informazio berria gehituko du.</string>
-	<string name="repo_exists_enable">Biltegi hau ezarrita dago jada, berretsi berrezarri nahi duzula.</string>
-	<string name="repo_exists_and_enabled">Sarrera biltegia ezarrita eta gaituta dago jada.</string>
-	<string name="repo_delete_to_overwrite">Biltegi hau ezabatu behar duzu gako ezberdin batekin sinatutako beste bat gehitu aurretik.</string>
-	<string name="invalid_url">URL hau baliogabea da.</string>
-	<string name="malformed_repo_uri">Ezikusi biltegi URI okerra: %s</string>
+    <string name="tab_installed_apps">Instalatuta</string>
+    <string name="repo_exists_add_fingerprint">Biltegi hau ezarrita dago jada, honek gako informazio berria gehituko du.</string>
+    <string name="repo_exists_enable">Biltegi hau ezarrita dago jada, berretsi berrezarri nahi duzula.</string>
+    <string name="repo_exists_and_enabled">Sarrera biltegia ezarrita eta gaituta dago jada.</string>
+    <string name="repo_delete_to_overwrite">Biltegi hau ezabatu behar duzu gako ezberdin batekin sinatutako beste bat gehitu aurretik.</string>
+    <string name="invalid_url">URL hau baliogabea da.</string>
+    <string name="malformed_repo_uri">Ezikusi biltegi URI okerra: %s</string>
 
-	<string name="expert_on">Bistaratu informazio eta ezarpen gehigarriak</string>
+    <string name="expert_on">Bistaratu informazio eta ezarpen gehigarriak</string>
 
-	<string name="show_incompat_versions_on">Bistaratu gailu honekin bateraezinak diren bertsioak</string>
-	<string name="ignoreTouch_on">Beti gehitu ukipen-pantaila behar duten aplikazioak</string>
+    <string name="show_incompat_versions_on">Bistaratu gailu honekin bateraezinak diren bertsioak</string>
+    <string name="ignoreTouch_on">Beti gehitu ukipen-pantaila behar duten aplikazioak</string>
 
-	<string name="local_repo">Tokiko biltegia</string>
-	<string name="deleting_repo">Uneko biltegia ezabatzen…</string>
-	<string name="adding_apks_format">%s biltegira gehitzen…</string>
-	<string name="icon">Ikonoa</string>
-	<string name="next">Hurrengoa</string>
-	<string name="skip">Saltatu</string>
+    <string name="local_repo">Tokiko biltegia</string>
+    <string name="deleting_repo">Uneko biltegia ezabatzen…</string>
+    <string name="adding_apks_format">%s biltegira gehitzen…</string>
+    <string name="icon">Ikonoa</string>
+    <string name="next">Hurrengoa</string>
+    <string name="skip">Saltatu</string>
 
-	<string name="proxy">Proxya</string>
-	<string name="enable_proxy_title">Gaitu HTTP Proxya</string>
-	<string name="interval_2w">Bi asterik behin</string>
+    <string name="proxy">Proxya</string>
+    <string name="enable_proxy_title">Gaitu HTTP Proxya</string>
+    <string name="interval_2w">Bi asterik behin</string>
 
     <string name="interval_4h">4 ordurik behin</string>
     <string name="downloading">Deskargatzen…</string>
@@ -173,33 +173,33 @@ konektatzen</string>
     <string name="swap_connecting">Konektatzen</string>
     <string name="swap_wifi_device_name">Gailuaren izena</string>
     <string name="writing_index_jar">Sinatutako aurkibide fitxategia idazten (index.jar)…</string>
-	<string name="failed_to_create_index">Ezin izan da aurkibide fitxategia sortu!</string>
-	<string name="linking_apks">APK fitxategiak biltegira lotzen…</string>
-	<string name="copying_icons">Aplikazioen ikonoak biltegira kopiatzen…</string>
-	<string name="proxy_host">Proxy ostalaria</string>
-	<string name="enable_proxy_summary">Konfiguratu HTTP Proxya sare eskari guztientzat</string>
-	<string name="update_notification_title">Biltegiak eguneratzen</string>
-	<string name="status_inserting">Aplikazioaren xehetasunak gordetzen (%1$d%%)</string>
-	<string name="repos_unchanged">Biltegi guztiak egunean daude</string>
+    <string name="failed_to_create_index">Ezin izan da aurkibide fitxategia sortu!</string>
+    <string name="linking_apks">APK fitxategiak biltegira lotzen…</string>
+    <string name="copying_icons">Aplikazioen ikonoak biltegira kopiatzen…</string>
+    <string name="proxy_host">Proxy ostalaria</string>
+    <string name="enable_proxy_summary">Konfiguratu HTTP Proxya sare eskari guztientzat</string>
+    <string name="update_notification_title">Biltegiak eguneratzen</string>
+    <string name="status_inserting">Aplikazioaren xehetasunak gordetzen (%1$d%%)</string>
+    <string name="repos_unchanged">Biltegi guztiak egunean daude</string>
         <string name="all_other_repos_fine">Beste biltegi guztiek ez dute errorerik sortu.</string>
         <string name="global_error_updating_repos">Errorea eguneratzean: %s</string>
-	<string name="update_interval_zero">Ez eguneratu automatikoki aplikazio zerrenda</string>
-	<string name="menu_bitcoin">Bitcoin</string>
-	<string name="menu_litecoin">Litecoin</string>
-	<string name="menu_flattr">Flattr</string>
+    <string name="update_interval_zero">Ez eguneratu automatikoki aplikazio zerrenda</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
 
 
-	<string name="rooted_on">Ez lainotu root baimena behar duten aplikazioak</string>
-	<string name="local_repo_running">F-Droid partekatzeko prest dago</string>
-	<string name="touch_to_configure_local_repo">Ukitu xehetasunak ikusteko eta besteek zure aplikazioak hartzea ahalbidetzeko.</string>
-	<string name="proxy_host_summary">Konfiguratu zure proxyaren zerbitzaria (adib. 127.0.0.1)</string>
-	<string name="proxy_port">Proxyaren ataka</string>
-	<string name="proxy_port_summary">Konfiguratu zure proxyaren ataka zenbakia (adib. 8118)</string>
+    <string name="rooted_on">Ez lainotu root baimena behar duten aplikazioak</string>
+    <string name="local_repo_running">F-Droid partekatzeko prest dago</string>
+    <string name="touch_to_configure_local_repo">Ukitu xehetasunak ikusteko eta besteek zure aplikazioak hartzea ahalbidetzeko.</string>
+    <string name="proxy_host_summary">Konfiguratu zure proxyaren zerbitzaria (adib. 127.0.0.1)</string>
+    <string name="proxy_port">Proxyaren ataka</string>
+    <string name="proxy_port_summary">Konfiguratu zure proxyaren ataka zenbakia (adib. 8118)</string>
 
-	<string name="status_download">Deskargatzen\n%2$s / %3$s (%4$d%%) hemendik:\n%1$s</string>
-	<string name="status_processing_xml_percent">Prozesatzen %2$s / %3$s (%4$d%%) hemendik: %1$s</string>
-	<string name="no_handler_app">Ez duzu %s tratatu dezakeen aplikaziorik eskura.</string>
-	<string name="compactlayout_on">Bistaratu ikono txikiagoak</string>
+    <string name="status_download">Deskargatzen\n%2$s / %3$s (%4$d%%) hemendik:\n%1$s</string>
+    <string name="status_processing_xml_percent">Prozesatzen %2$s / %3$s (%4$d%%) hemendik: %1$s</string>
+    <string name="no_handler_app">Ez duzu %s tratatu dezakeen aplikaziorik eskura.</string>
+    <string name="compactlayout_on">Bistaratu ikono txikiagoak</string>
     <string name="unverified">Egiaztatu gabea</string>
     <string name="repo_details">Biltegia</string>
     <string name="repo_url">Helbidea</string>
@@ -259,16 +259,16 @@ konektatzen</string>
     <string name="system_install_denied_signature">Luzapen honen sinadura okerra da! Mesedez eman akatsaren berri!</string>
     <string name="system_install_denied_permissions">Ez zaizkio pribilegiodun baimenak eman luzapenari! Mesedez eman akatsaren berri!</string>
     <string name="system_install_button_install">Instalatu</string>
-	<string name="system_install_button_open">Ireki Luzapena</string>
+    <string name="system_install_button_open">Ireki Luzapena</string>
     <string name="system_install_first_time_notification">Instalatu Pribilegiodun F-Droid Luzapena?</string>
     <string name="system_install_first_time_notification_message_short">Ukitu informazio gehiagorako.</string>
     <string name="system_install_installing">Instalatzen…</string>
-	<string name="system_install_installing_rebooting">Instalatzen eta berrabiarazten…</string>
+    <string name="system_install_installing_rebooting">Instalatzen eta berrabiarazten…</string>
     <string name="system_install_uninstalling">Desinstalatzen…</string>
-	<string name="system_install_question">Pribilegiodun F-Droid Luzapena instalatu nahi duzu?</string>
-	<string name="system_install_warning">Honek gehienez 10s emango ditu.</string>
-	<string name="system_install_warning_lollipop">Honek gehienez 10s emango ditu eta ondoren gailua <b>berrabiarazi</b> egingo da.</string>
-	<string name="system_uninstall_button">Desinstalatu</string>
+    <string name="system_install_question">Pribilegiodun F-Droid Luzapena instalatu nahi duzu?</string>
+    <string name="system_install_warning">Honek gehienez 10s emango ditu.</string>
+    <string name="system_install_warning_lollipop">Honek gehienez 10s emango ditu eta ondoren gailua <b>berrabiarazi</b> egingo da.</string>
+    <string name="system_uninstall_button">Desinstalatu</string>
 
     <string name="swap_join_this_hotspot">Lagundu adiskideari zure Wi-Fi gunera konektatzen</string>
     <string name="menu_swap">Partekatu aplikazioak</string>
@@ -335,8 +335,8 @@ konektatzen</string>
     <string name="more">Gehiago</string>
     <string name="less">Gutxiago</string>
 
-	<string name="status_download_unknown_size">Deskargatzen\n%2$s
+    <string name="status_download_unknown_size">Deskargatzen\n%2$s
 \n%1$s(e)tik</string>
-	<string name="permissions">Baimenak</string>
-	<string name="theme_night">Gaua</string>
+    <string name="permissions">Baimenak</string>
+    <string name="theme_night">Gaua</string>
 </resources>

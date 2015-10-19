@@ -188,13 +188,13 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
   <string name="swap_confirm_connect">Voleu baixar aplicacions des de %1$s ara?</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="about_source">Codi font:</string>
-	<string name="app_incompatible">Incompatible</string>
-	<string name="links">Enllaços</string>
+    <string name="about_source">Codi font:</string>
+    <string name="app_incompatible">Incompatible</string>
+    <string name="links">Enllaços</string>
 
-	<string name="back">Torna</string>
-	<string name="update_notification_more">+%1$d més…</string>
-	<string name="pref_language">Idioma</string>
+    <string name="back">Torna</string>
+    <string name="update_notification_more">+%1$d més…</string>
+    <string name="pref_language">Idioma</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Graphics">Gràfics</string>
     <string name="category_Money">Diners</string>
@@ -209,16 +209,16 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="system_uninstall_button">Desinstal·la</string>
 
     <string name="unstable_updates">Actualitzacions inestables</string>
-	<string name="tab_installed_apps">Instal·lades</string>
-	<string name="menu_bitcoin">Bitcoin</string>
-	<string name="menu_litecoin">Litecoin</string>
-	<string name="menu_flattr">Flattr</string>
+    <string name="tab_installed_apps">Instal·lades</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
 
 
-	<string name="update_notification_title">Actualitzant els dipòsits</string>
-	<string name="more">Més</string>
+    <string name="update_notification_title">Actualitzant els dipòsits</string>
+    <string name="more">Més</string>
     <string name="less">Menys</string>
 
-	<string name="permissions">Permisos</string>
-	<string name="system_install_button_install">Instal·la</string>
-	</resources>
+    <string name="permissions">Permisos</string>
+    <string name="system_install_button_install">Instal·la</string>
+    </resources>

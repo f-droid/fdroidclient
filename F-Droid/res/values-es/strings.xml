@@ -195,20 +195,20 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
   <string name="swap_confirm_connect">¿Quieres obtener aplicaciones desde %1$s ahora?</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="about_source">Código fuente:</string>
-	<string name="app_incompatible">Incompatible</string>
-	<string name="links">Enlaces</string>
+    <string name="about_source">Código fuente:</string>
+    <string name="app_incompatible">Incompatible</string>
+    <string name="links">Enlaces</string>
 
-	<string name="back">Volver</string>
-	<string name="update_notification_more">+%1$d más…</string>
-	<string name="uninstall_system">Actualiza/Desinstala la extensión de privilegios</string>
-	<string name="uninstall_system_summary">Abre la pantalla de detalles de la extensión de privilegios para actualizarla/desinstalarla</string>
-	<string name="bad_fingerprint">Huella digital incorrecta</string>
-	<string name="invalid_url">No es una URL válida.</string>
-	<string name="menu_changelog">Historial de cambios</string>
-	<string name="update_notification_title">Actualizando repositorios</string>
-	<string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) desde %1$s</string>
-	<string name="pref_language">Idioma</string>
+    <string name="back">Volver</string>
+    <string name="update_notification_more">+%1$d más…</string>
+    <string name="uninstall_system">Actualiza/Desinstala la extensión de privilegios</string>
+    <string name="uninstall_system_summary">Abre la pantalla de detalles de la extensión de privilegios para actualizarla/desinstalarla</string>
+    <string name="bad_fingerprint">Huella digital incorrecta</string>
+    <string name="invalid_url">No es una URL válida.</string>
+    <string name="menu_changelog">Historial de cambios</string>
+    <string name="update_notification_title">Actualizando repositorios</string>
+    <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) desde %1$s</string>
+    <string name="pref_language">Idioma</string>
     <string name="pref_language_default">Predeterminado del sistema</string>
 
     <string name="wifi">Wi-Fi</string>
@@ -308,29 +308,29 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Oscuro</string>
 <string name="unstable_updates">Actualizaciones inestables</string>
-	<string name="unstable_updates_summary">Sugerir actualizaciones a versiones inestables</string>
-	<string name="tab_installed_apps">Instalado</string>
-	<string name="system_install_post_fail_message">La instalación de F-Droid con permisos de sistema ha fallado. El método de instalación no está soportado por todas las versiones de Android, así que, por favor, consulta el sistema de gestión de incidencias de F-Droid para más información.</string>
+    <string name="unstable_updates_summary">Sugerir actualizaciones a versiones inestables</string>
+    <string name="tab_installed_apps">Instalado</string>
+    <string name="system_install_post_fail_message">La instalación de F-Droid con permisos de sistema ha fallado. El método de instalación no está soportado por todas las versiones de Android, así que, por favor, consulta el sistema de gestión de incidencias de F-Droid para más información.</string>
     <string name="system_install_first_time_message">Parece que tienes acceso «root» a tu dispositivo. Puedes instalar F-Droid con permisos de sistema, fuertemente acoplado al sistema operativo Android. Esto permite que F-Droid instale, actualice y desinstale aplicaciones por sí mismo.</string>
     <string name="install_confirm_update_system">¿Quiere instalar una actualización de esta aplicación fija? Sus datos no se perderán. La aplicación actualizada tendrá acceso a:</string>
     <string name="install_confirm_update_system_no_perms">¿Quiere instalar una actualización para esta aplicación fija? Sus datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="more">Más</string>
     <string name="less">Menos</string>
 
-	<string name="menu_bitcoin">Bitcoin</string>
-	<string name="menu_litecoin">Litecoin</string>
-	<string name="menu_flattr">Flattr</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
 
 
-	<string name="status_download_unknown_size">Descargando\n%2$s de\n%1$s</string>
-	<string name="permissions">Permisos</string>
-	<string name="repo_details">Repositorio</string>
+    <string name="status_download_unknown_size">Descargando\n%2$s de\n%1$s</string>
+    <string name="permissions">Permisos</string>
+    <string name="repo_details">Repositorio</string>
     <string name="repo_url">Dirección</string>
     <string name="system_install_denied_signature">¡La firma de la extensión es incorrecta! ¡Por favor, reporta el fallo!</string>
     <string name="system_install_button_install">Instalar</string>
-	<string name="system_install_installing_rebooting">Instalando y reiniciando…</string>
+    <string name="system_install_installing_rebooting">Instalando y reiniciando…</string>
     <string name="system_install_warning">Esto conlleva 10 segundos.</string>
-	<string name="download_error">Descarga fallida</string>
+    <string name="download_error">Descarga fallida</string>
 
     <string name="theme_night">Noche</string>
 <string name="system_install_denied_permissions">¡Los permisos de sistema no han sido otorgados! ¡Por favor, reporta el fallo!</string>

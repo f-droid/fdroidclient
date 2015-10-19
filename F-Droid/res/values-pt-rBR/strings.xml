@@ -190,19 +190,19 @@ com aplicativos baixados a partir de índices não assinados.</string>
   <string name="swap_confirm_connect">Você quer obter aplicativos de %1$s agora?</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="uninstall_system">Atualizar/desinstalar extensão privilegiada</string>
-	<string name="uninstall_system_summary">Abrir tela de detalhes da extensão privilegiada para atualizá-la/desinstalá-la</string>
-	<string name="app_incompatible">Incompatível</string>
-	<string name="links">Links</string>
+    <string name="uninstall_system">Atualizar/desinstalar extensão privilegiada</string>
+    <string name="uninstall_system_summary">Abrir tela de detalhes da extensão privilegiada para atualizá-la/desinstalá-la</string>
+    <string name="app_incompatible">Incompatível</string>
+    <string name="links">Links</string>
 
-	<string name="back">Voltar</string>
-	<string name="update_notification_more">Mais +%1$d…</string>
-	<string name="bad_fingerprint">Falha na fingerprint</string>
-	<string name="invalid_url">Esta não é uma URL válida.</string>
-	<string name="menu_changelog">Changelog</string>
-	<string name="update_notification_title">Atualizando repositórios</string>
-	<string name="status_processing_xml_percent">Processando %2$s / %3$s (%4$d%%) de %1$s</string>
-	<string name="pref_language">Idioma</string>
+    <string name="back">Voltar</string>
+    <string name="update_notification_more">Mais +%1$d…</string>
+    <string name="bad_fingerprint">Falha na fingerprint</string>
+    <string name="invalid_url">Esta não é uma URL válida.</string>
+    <string name="menu_changelog">Changelog</string>
+    <string name="update_notification_title">Atualizando repositórios</string>
+    <string name="status_processing_xml_percent">Processando %2$s / %3$s (%4$d%%) de %1$s</string>
+    <string name="pref_language">Idioma</string>
     <string name="pref_language_default">Padrão do sistema</string>
 
     <string name="wifi">Wi-Fi</string>
@@ -239,7 +239,7 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="swap_active_hotspot">%1$s (seu ponto de acesso)</string>
     <string name="swap_switch_to_wifi">Toque para mudar para uma rede Wi-Fi</string>
     <string name="about_source">Fonte:</string>
-	<string name="category_Connectivity">Conectividade</string>
+    <string name="category_Connectivity">Conectividade</string>
     <string name="category_Graphics">Gráficos</string>
     <string name="category_Money">Dinheiro</string>
     <string name="category_Sports_Health">Esportes e saúde</string>
@@ -307,27 +307,27 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
 <string name="unstable_updates">Atualizações instáveis</string>
-	<string name="unstable_updates_summary">Sugerir atualizações para versões instáveis</string>
-	<string name="tab_installed_apps">Instalado</string>
-	<string name="menu_bitcoin">Bitcoin</string>
-	<string name="menu_litecoin">Litecoin</string>
-	<string name="menu_flattr">Flattr</string>
+    <string name="unstable_updates_summary">Sugerir atualizações para versões instáveis</string>
+    <string name="tab_installed_apps">Instalado</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
 
 
-	<string name="download_error">Falha no download</string>
+    <string name="download_error">Falha no download</string>
 
     <string name="system_install_denied_signature">A assinatura da extensão é incorreta! Por favor, crie um relatório de bug!</string>
     <string name="system_install_denied_permissions">Não foram concedidas as permissões privilegiadas para a extensão! Por favor, crie um relatório de bug!</string>
     <string name="system_install_button_install">Instalar</string>
-	<string name="system_install_button_open">Abrir extensão</string>
+    <string name="system_install_button_open">Abrir extensão</string>
     <string name="system_install_installing_rebooting">Instalando e reinicializando…</string>
     <string name="system_install_warning">Isto leva até 10 segundos.</string>
-	<string name="more">Mais</string>
+    <string name="more">Mais</string>
     <string name="less">Menos</string>
 
-	<string name="status_download_unknown_size">Baixando\n%2$s de\n%1$s</string>
-	<string name="permissions">Permissões</string>
-	<string name="repo_details">Repositório</string>
+    <string name="status_download_unknown_size">Baixando\n%2$s de\n%1$s</string>
+    <string name="permissions">Permissões</string>
+    <string name="repo_details">Repositório</string>
     <string name="repo_url">Endereço</string>
     <string name="theme_night">Noite</string>
 </resources>

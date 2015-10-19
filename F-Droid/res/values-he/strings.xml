@@ -254,9 +254,9 @@
     <string name="downloading">כעת מוריד…</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="app_incompatible">לא תואמת</string>
-	<string name="back">אחורה</string>
-	<string name="repo_searching_address">כעת מחפש מאגר F-Droid אצל\n%1$s</string>
+    <string name="app_incompatible">לא תואמת</string>
+    <string name="back">אחורה</string>
+    <string name="repo_searching_address">כעת מחפש מאגר F-Droid אצל\n%1$s</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">נקודה חמה</string>
 
@@ -297,10 +297,10 @@
     <string name="theme_light">בהיר</string>
     <string name="theme_dark">אפל</string>
 <string name="unstable_updates">עדכונים לא יציבים</string>
-	<string name="unstable_updates_summary">הצע עדכונים לגרסאות לא יציבות</string>
-	<string name="about_source">מקור:</string>
-	<string name="tab_installed_apps">מותקנות</string>
-	<string name="swap_nfc_title">גע כדי להחליף</string>
+    <string name="unstable_updates_summary">הצע עדכונים לגרסאות לא יציבות</string>
+    <string name="about_source">מקור:</string>
+    <string name="tab_installed_apps">מותקנות</string>
+    <string name="swap_nfc_title">גע כדי להחליף</string>
     <string name="swap_nearby">הֶחְלֵף בקרבת מקום</string>
     <string name="swap_cant_find_peers">אינך יכול למצוא את מי שאתה מחפש?</string>
     <string name="swap_send_fdroid">שלח F-Droid</string>
@@ -314,10 +314,10 @@
     <string name="swap_no_peers_nearby">לא היה ניתן למצוא אנשים בקרבת מקום כדי לבצע הֶחְלֵף עמם.</string>
     <string name="swap_connection_misc_error">אירעה שגיאה במהלך התחברות להתקן, נראה כי אנחנו לא יכולים לבצע הֶחְלֵף עמו :(</string>
     <string name="SignatureMismatch">הגרסא החדשה הינה חתומה בעזרת מפתח אחר מזה הישן. כדי להתקין את הגרסא החדשה, על הישנה להיות מוסרת תחילה. אנא עשה זאת ונסה שוב. (לתשומת לבך ביטול התקנה יסיר כל מידע פנימי אשר מאוחסן על ידי האפליקציה)</string>
-	<string name="repo_exists_add_fingerprint">מאגר זה כבר מותקן, זה יוסיף מידע מפתח חדש.</string>
-	<string name="repo_exists_enable">מאגר זה כבר מותקן, אמת כי ברצונך לאפשרו שוב.</string>
-	<string name="repo_exists_and_enabled">המאגר הנכנס הינו מותקן ומאופשר כבר.</string>
-	<string name="repo_fingerprint">טביעת אצבע של מפתח חתימת מאגר (SHA-256)</string>
+    <string name="repo_exists_add_fingerprint">מאגר זה כבר מותקן, זה יוסיף מידע מפתח חדש.</string>
+    <string name="repo_exists_enable">מאגר זה כבר מותקן, אמת כי ברצונך לאפשרו שוב.</string>
+    <string name="repo_exists_and_enabled">המאגר הנכנס הינו מותקן ומאופשר כבר.</string>
+    <string name="repo_fingerprint">טביעת אצבע של מפתח חתימת מאגר (SHA-256)</string>
     <string name="unsigned_description">משמעות הדבר היא שלא היתה אפשרות לאמת את הרשימה של האפליקציות. עליך להיזהר מן אפליקציות אשר מורדות מתוך אינדקסים לא חתומים.</string>
     <string name="repo_not_yet_updated">מאגר זה לא נמצא בשימוש עדיין. על מנת לצפות באפליקציות אשר מאגר זה מספק, עליך לעדכן אותו.\n\nברגע שזה מעודכן, התיאור ופרטים אחרים יהפכו לזמינים כאן.</string>
     <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי אפליקציות מתוכו לא יהיו זמינים עוד מתוך F-Droid.\n\nהערה: כל אפליקציות אשר הותקנו בעבר יישארו על המכשיר שלך.</string>
@@ -329,11 +329,11 @@
     <string name="install_confirm_update_no_perms">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? המידע הקיים שלך לא יאבד. זו לא מצריכה שום גישה מיוחדת.</string>
     <string name="install_confirm_update_system_no_perms">האם ברצונך להתקין עדכון לאפליקציה מובנית (קרי, built-in)? המידע הקיים שלך לא יאבד. זו לא מצריכה שום גישה מיוחדת.</string>
     <string name="update_interval_zero">אין עדכוני רשימת אפליקציה אוטומטיים</string>
-	<string name="menu_bitcoin">Bitcoin</string>
-	<string name="menu_litecoin">Litecoin</string>
-	<string name="menu_flattr">Flattr</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
 
 
-	<string name="download_error">הורדה לא צלחה</string>
+    <string name="download_error">הורדה לא צלחה</string>
 
     </resources>

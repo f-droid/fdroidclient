@@ -49,23 +49,23 @@
   <string name="category_Recently_Updated">Недавні оновлення</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="installIncompatible">Схоже, ця програма не сумісна з вашим пристроєм. Спробувати встановити її все одно?</string>
-	<string name="installDowngrade">Ви збираєтесь встановити більш стару версію програми. Це можете призвести до некоректної робити і навіть втрати ваших даних. Встановити більш стару версію?</string>
-	<string name="delete">Видалити</string>
-	<string name="cache_downloaded_on">Зберігати завантажені пакети у пам\'яті пристрою</string>
-	<string name="other">Інше</string>
-	<string name="update_interval">Інтервал автооновлення</string>
-	<string name="update_interval_zero">Не оновлювати список програм автоматично</string>
-	<string name="automatic_scan_wifi">Тільки через Wi-Fi</string>
-	<string name="automatic_scan_wifi_on">Автоматично оновлювати списки програм тільки через Wi-Fi</string>
-	<string name="notify_on">Показувати сповіщення коли є доступні оновлення</string>
-	<string name="update_history">Історія оновлень</string>
-	<string name="update_history_summ">Скільки днів вважати програму новою чи нещодавньою: %s</string>
-	<string name="system_installer">Привілейоване розширення</string>
-	<string name="system_installer_on">Використовувати привілейоване розширення F-Droid для встановлення, оновлення та видалення пакетів</string>
-	<string name="uninstall_system">Оновити/Видалити привілейоване розширення F-Droid</string>
-	<string name="uninstall_system_summary">Відкрити подробиці, що до привілейованого розширення F-Droid для його оновлення чи видалення</string>
-	<string name="theme_dark">Темна</string>
+    <string name="installIncompatible">Схоже, ця програма не сумісна з вашим пристроєм. Спробувати встановити її все одно?</string>
+    <string name="installDowngrade">Ви збираєтесь встановити більш стару версію програми. Це можете призвести до некоректної робити і навіть втрати ваших даних. Встановити більш стару версію?</string>
+    <string name="delete">Видалити</string>
+    <string name="cache_downloaded_on">Зберігати завантажені пакети у пам\'яті пристрою</string>
+    <string name="other">Інше</string>
+    <string name="update_interval">Інтервал автооновлення</string>
+    <string name="update_interval_zero">Не оновлювати список програм автоматично</string>
+    <string name="automatic_scan_wifi">Тільки через Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Автоматично оновлювати списки програм тільки через Wi-Fi</string>
+    <string name="notify_on">Показувати сповіщення коли є доступні оновлення</string>
+    <string name="update_history">Історія оновлень</string>
+    <string name="update_history_summ">Скільки днів вважати програму новою чи нещодавньою: %s</string>
+    <string name="system_installer">Привілейоване розширення</string>
+    <string name="system_installer_on">Використовувати привілейоване розширення F-Droid для встановлення, оновлення та видалення пакетів</string>
+    <string name="uninstall_system">Оновити/Видалити привілейоване розширення F-Droid</string>
+    <string name="uninstall_system_summary">Відкрити подробиці, що до привілейованого розширення F-Droid для його оновлення чи видалення</string>
+    <string name="theme_dark">Темна</string>
 <string name="theme_light">Світла</string>
     <string name="interval_4h">Кожні 4 години</string>
     <string name="interval_12h">Кожні 12 годин</string>
@@ -75,82 +75,82 @@
 
     <string name="interval_1h">Щогодинно</string>
     <string name="unstable_updates">Нестабільні оновлення</string>
-	<string name="interval_never">Ніколи</string>
+    <string name="interval_never">Ніколи</string>
     <string name="downloading">Завантаження…</string>
 
     <string name="search_results">Результати пошуку</string>
-	<string name="app_details">Деталі додатку</string>
-	<string name="no_such_app">Не знайдено додатку.</string>
+    <string name="app_details">Деталі додатку</string>
+    <string name="no_such_app">Не знайдено додатку.</string>
 
-	<string name="about_source">Джерельний код:</string>
-	<string name="app_inst_known_source">Встановлено (з %s)</string>
-	<string name="app_inst_unknown_source">Встановлено (з невідомого джерела)</string>
+    <string name="about_source">Джерельний код:</string>
+    <string name="app_inst_known_source">Встановлено (з %s)</string>
+    <string name="app_inst_unknown_source">Встановлено (з невідомого джерела)</string>
 
-	<string name="added_on">Додано %s</string>
+    <string name="added_on">Додано %s</string>
 
-	<string name="links">Посилання</string>
+    <string name="links">Посилання</string>
 
-	<string name="back">Назад</string>
-	<string name="enable">Увімкнути</string>
-	<string name="add_key">Додати ключ</string>
-	<string name="tab_installed_apps">Встановлено</string>
-	<string name="one_update_available">Одне оновлення доступно.</string>
-	<string name="many_updates_available">%d оновлень доступно.</string>
-	<string name="fdroid_updates_available">F-Droid: доступні оновлення</string>
-	<string name="update_notification_more">+%1$d більше…</string>
-	<string name="send_via_bluetooth">Надіслати через Bluetooth</string>
+    <string name="back">Назад</string>
+    <string name="enable">Увімкнути</string>
+    <string name="add_key">Додати ключ</string>
+    <string name="tab_installed_apps">Встановлено</string>
+    <string name="one_update_available">Одне оновлення доступно.</string>
+    <string name="many_updates_available">%d оновлень доступно.</string>
+    <string name="fdroid_updates_available">F-Droid: доступні оновлення</string>
+    <string name="update_notification_more">+%1$d більше…</string>
+    <string name="send_via_bluetooth">Надіслати через Bluetooth</string>
 
-	<string name="menu_share">Поділитися</string>
-	<string name="menu_ignore_all">Ігнорувати всі оновлення</string>
-	<string name="menu_ignore_this">Ігнорувати це оновлення</string>
-	<string name="menu_changelog">Перелік змін</string>
-	<string name="menu_upgrade">Оновити</string>
-	<string name="menu_bitcoin">Bitcoin</string>
-	<string name="menu_litecoin">Litecoin</string>
-	<string name="menu_flattr">Flattr</string>
+    <string name="menu_share">Поділитися</string>
+    <string name="menu_ignore_all">Ігнорувати всі оновлення</string>
+    <string name="menu_ignore_this">Ігнорувати це оновлення</string>
+    <string name="menu_changelog">Перелік змін</string>
+    <string name="menu_upgrade">Оновити</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
 
 
-	<string name="skip">Пропустити</string>
+    <string name="skip">Пропустити</string>
 
-	<string name="proxy">Проксі</string>
-	<string name="download_error">Не вдалося завантажити</string>
+    <string name="proxy">Проксі</string>
+    <string name="download_error">Не вдалося завантажити</string>
 
     <string name="tap_to_install">Завантажено, натисніть аби встановити</string>
     <string name="uninstall_confirm">Бажаєте видалити цей додаток?</string>
     <string name="local_repo_name">Назва вашого локального репозиторію</string>
-	<string name="local_repo_https">Використовувати приватне з\'єднання</string>
-	<string name="local_repo_https_on">Використовувати шифроване HTTP:// з\'єднання для локального репозиторію</string>
+    <string name="local_repo_https">Використовувати приватне з\'єднання</string>
+    <string name="local_repo_https_on">Використовувати шифроване HTTP:// з\'єднання для локального репозиторію</string>
 
-	<string name="overwrite">Перезаписати</string>
+    <string name="overwrite">Перезаписати</string>
 
-	<string name="bad_fingerprint">Поганий відбиток</string>
-	<string name="invalid_url">Це не правильний URL.</string>
-	<string name="menu_send_apk_bt">Поділитися F-Droid через Bluetooth</string>
-	<string name="antitracklist">Цей додаток збирає дані та звітує про вашу активність</string>
-	<string name="antinonfreedeplist">Цей додаток залежить від іншого не вільного додатку</string>
-	<string name="expert_on">Показати додаткову інформацію та ввімкнути розширені параметри</string>
+    <string name="bad_fingerprint">Поганий відбиток</string>
+    <string name="invalid_url">Це не правильний URL.</string>
+    <string name="menu_send_apk_bt">Поділитися F-Droid через Bluetooth</string>
+    <string name="antitracklist">Цей додаток збирає дані та звітує про вашу активність</string>
+    <string name="antinonfreedeplist">Цей додаток залежить від іншого не вільного додатку</string>
+    <string name="expert_on">Показати додаткову інформацію та ввімкнути розширені параметри</string>
 
-	<string name="rooted_on">Не підсвічувати сірим додатки, які потребують прав суперкористувача</string>
-	<string name="ignoreTouch_on">Завжди включати додатки, які потребують сенсорного екрану</string>
+    <string name="rooted_on">Не підсвічувати сірим додатки, які потребують прав суперкористувача</string>
+    <string name="ignoreTouch_on">Завжди включати додатки, які потребують сенсорного екрану</string>
 
-	<string name="local_repo">Локальний репозиторій</string>
-	<string name="deleting_repo">Видалення поточного репозиторію…</string>
-	<string name="adding_apks_format">Додавання «%s» до репозиторію…</string>
-	<string name="next">Далі</string>
-	<string name="enable_proxy_title">Використовувати HTTP проксі</string>
-	<string name="enable_proxy_summary">Налаштувати HTTP проксі для всіх мережевих запитів</string>
-	<string name="proxy_host">Проксі хост</string>
-	<string name="proxy_host_summary">Налаштувати назву хосту вашого проксі (наприклад 127.0.0.1)</string>
-	<string name="proxy_port">Проксі порт</string>
-	<string name="proxy_port_summary">Налаштувати номер порту вашого проксі (наприклад 8118)</string>
+    <string name="local_repo">Локальний репозиторій</string>
+    <string name="deleting_repo">Видалення поточного репозиторію…</string>
+    <string name="adding_apks_format">Додавання «%s» до репозиторію…</string>
+    <string name="next">Далі</string>
+    <string name="enable_proxy_title">Використовувати HTTP проксі</string>
+    <string name="enable_proxy_summary">Налаштувати HTTP проксі для всіх мережевих запитів</string>
+    <string name="proxy_host">Проксі хост</string>
+    <string name="proxy_host_summary">Налаштувати назву хосту вашого проксі (наприклад 127.0.0.1)</string>
+    <string name="proxy_port">Проксі порт</string>
+    <string name="proxy_port_summary">Налаштувати номер порту вашого проксі (наприклад 8118)</string>
 
-	<string name="status_download">Завантаження\n%2$s / %3$s (%4$d%%) з\n%1$s</string>
-	<string name="update_notification_title">Оновлення репозиторіїв</string>
-	<string name="status_processing_xml_percent">Обробка %2$s / %3$s (%4$d%%) з %1$s</string>
-	<string name="status_connecting_to_repo">Підключення до\n%1$s</string>
-	<string name="repos_unchanged">Всі репозиторії в актуальному стані</string>
+    <string name="status_download">Завантаження\n%2$s / %3$s (%4$d%%) з\n%1$s</string>
+    <string name="update_notification_title">Оновлення репозиторіїв</string>
+    <string name="status_processing_xml_percent">Обробка %2$s / %3$s (%4$d%%) з %1$s</string>
+    <string name="status_connecting_to_repo">Підключення до\n%1$s</string>
+    <string name="repos_unchanged">Всі репозиторії в актуальному стані</string>
         <string name="global_error_updating_repos">Помилка під час оновлення: %s</string>
-	<string name="compactlayout_on">Показувати зменшенні піктограми</string>
+    <string name="compactlayout_on">Показувати зменшенні піктограми</string>
     <string name="theme">Тема</string>
     <string name="unsigned">Не підписано</string>
     <string name="unverified">Не перевірено</string>
@@ -185,11 +185,11 @@
     <string name="uninstall_error_title">Помилка видалення</string>
     <string name="uninstall_error_unknown">На вдалося видалити через невідому помилку</string>
     <string name="system_install_button_install">Встановити</string>
-	<string name="system_install_first_time_notification_message_short">Торкніться, для отримання додаткової інформації.</string>
+    <string name="system_install_first_time_notification_message_short">Торкніться, для отримання додаткової інформації.</string>
     <string name="system_install_installing">Встановлення…</string>
-	<string name="system_install_installing_rebooting">Встановлення та перезавантаження…</string>
+    <string name="system_install_installing_rebooting">Встановлення та перезавантаження…</string>
     <string name="system_install_uninstalling">Видалення…</string>
-	<string name="system_uninstall_button">Видалити</string>
+    <string name="system_uninstall_button">Видалити</string>
 
     <string name="swap_join_same_wifi">Приєднайтеся до того самого Wi-Fi, що і ваш друг</string>
     <string name="swap_view_available_networks">Торкніться, аби відкрити доступні мережі</string>
@@ -206,22 +206,22 @@
     <string name="newPerms">Нові</string>
     <string name="allPerms">Всі</string>
     <string name="enable_nfc_send">Ввімкнути надсилання через NFC…</string>
-	<string name="repo_add_fingerprint">Відбиток (опція)</string>
-	<string name="antiadslist">Цей додаток містить рекламні пропозиції</string>
-	<string name="copying_icons">Копіювання піктограми додатку до репозиторію…</string>
-	<string name="icon">Піктограма</string>
-	<string name="status_checking_compatibility">Перевірка додатків на сумісність із пристроєм…</string>
+    <string name="repo_add_fingerprint">Відбиток (опція)</string>
+    <string name="antiadslist">Цей додаток містить рекламні пропозиції</string>
+    <string name="copying_icons">Копіювання піктограми додатку до репозиторію…</string>
+    <string name="icon">Піктограма</string>
+    <string name="status_checking_compatibility">Перевірка додатків на сумісність із пристроєм…</string>
     <string name="status_inserting">Збереження подробиць додатків (%1$d%%)</string>
-	<string name="no_permissions">Не потребує дозволів.</string>
-	<string name="compactlayout">Компактний вигляд</string>
-	<string name="requires_features">Залежності: %1$s</string>
+    <string name="no_permissions">Не потребує дозволів.</string>
+    <string name="compactlayout">Компактний вигляд</string>
+    <string name="requires_features">Залежності: %1$s</string>
     <string name="empty_available_app_list">Відсутні додатки в даній категорії.\n\nСпробуйте обрати іншу категорію або ж оновити ваші репозиторії, для отримання свіжого переліку додатків.</string>
     <string name="empty_can_update_app_list">Всі додатки оновлені.\n\nВітаємо! Всі ваші додатки мають крайні версії (або ж ваші репозиторії застаріли).</string>
 
     <string name="install_error_unknown">Не вдалося встановити через невідому помилку</string>
     <string name="system_install_button_open">Відкрити розширення</string>
     <string name="system_install_warning">Це забере приблизно 10 секунд.</string>
-	<string name="swap_nfc_description">Якщо ваш друг має F-Droid та ввімкнений NFC, просто торкніться телефонами.</string>
+    <string name="swap_nfc_description">Якщо ваш друг має F-Droid та ввімкнений NFC, просто торкніться телефонами.</string>
     <string name="swap_no_wifi_network">Мережа відсутня</string>
     <string name="swap_confirm_connect">Бажаєте отримати додатки з «%s» зараз?</string>
     <string name="swap_dont_show_again">Не показувати це знову</string>
@@ -232,33 +232,33 @@
     <string name="privacyPerms">Приватність</string>
     <string name="perm_costs_money">Це може вам коштувати грошей</string>
     <string name="unstable_updates_summary">Пропонувати оновлення до нестабільних версій</string>
-	<string name="local_repo_name_summary">Ваш локальний репозиторії пропонується під назвою: %s</string>
-	<string name="about_desc">Оснований на Aptoide.\nВипущено під ліцензією GNU GPLv3.</string>
+    <string name="local_repo_name_summary">Ваш локальний репозиторії пропонується під назвою: %s</string>
+    <string name="about_desc">Оснований на Aptoide.\nВипущено під ліцензією GNU GPLv3.</string>
 
-	<string name="app_incompatible">Несумісний</string>
-	<string name="bluetooth_activity_not_found">Жодного методу надсилання по Bluetooth не знайдено, оберіть один з них!</string>
-	<string name="choose_bt_send">Оберіть метод надсилання через Bluetooth</string>
-	<string name="repo_exists_add_fingerprint">Цей репозиторії вже налаштовано, ця дія оновить інформацію про ключ.</string>
-	<string name="repo_exists_enable">Цей репозиторії вже налаштовано, підтвердіть, що бажаєте знову ввімкнути його.</string>
-	<string name="repo_exists_and_enabled">Репозиторій вже налаштовано і увімкнено.</string>
-	<string name="repo_delete_to_overwrite">Спершу ви маєте видалити цей репозиторій, а потім додати його з іншим ключем.</string>
-	<string name="malformed_repo_uri">Ігнорування не правильного URI репозиторію: %s</string>
+    <string name="app_incompatible">Несумісний</string>
+    <string name="bluetooth_activity_not_found">Жодного методу надсилання по Bluetooth не знайдено, оберіть один з них!</string>
+    <string name="choose_bt_send">Оберіть метод надсилання через Bluetooth</string>
+    <string name="repo_exists_add_fingerprint">Цей репозиторії вже налаштовано, ця дія оновить інформацію про ключ.</string>
+    <string name="repo_exists_enable">Цей репозиторії вже налаштовано, підтвердіть, що бажаєте знову ввімкнути його.</string>
+    <string name="repo_exists_and_enabled">Репозиторій вже налаштовано і увімкнено.</string>
+    <string name="repo_delete_to_overwrite">Спершу ви маєте видалити цей репозиторій, а потім додати його з іншим ключем.</string>
+    <string name="malformed_repo_uri">Ігнорування не правильного URI репозиторію: %s</string>
 
-	<string name="antinonfreeadlist">Цей додаток пропонує не вільні доповнення</string>
-	<string name="antinonfreenetlist">Цей додаток пропонує не вільні мережеві послуги</string>
-	<string name="antiupstreamnonfreelist">Джерельний код не є повністю вільним</string>
+    <string name="antinonfreeadlist">Цей додаток пропонує не вільні доповнення</string>
+    <string name="antinonfreenetlist">Цей додаток пропонує не вільні мережеві послуги</string>
+    <string name="antiupstreamnonfreelist">Джерельний код не є повністю вільним</string>
 
-	<string name="display">Вигляд</string>
+    <string name="display">Вигляд</string>
 
-	<string name="show_incompat_versions">Не сумісні версії</string>
-	<string name="show_incompat_versions_on">Показувати версії додатків, які не сумісні з пристроєм</string>
-	<string name="local_repo_running">F-Droid готовий до обміну</string>
-	<string name="writing_index_jar">Запис підписаного файлу індексу (index.jar)…</string>
-	<string name="failed_to_create_index">Не вдалося створити індекс репозиторію!</string>
-	<string name="linking_apks">Включення APK-файлів до репозиторію…</string>
-	<string name="all_other_repos_fine">Всі інші репозиторії не призвели до помилки.</string>
+    <string name="show_incompat_versions">Не сумісні версії</string>
+    <string name="show_incompat_versions_on">Показувати версії додатків, які не сумісні з пристроєм</string>
+    <string name="local_repo_running">F-Droid готовий до обміну</string>
+    <string name="writing_index_jar">Запис підписаного файлу індексу (index.jar)…</string>
+    <string name="failed_to_create_index">Не вдалося створити індекс репозиторію!</string>
+    <string name="linking_apks">Включення APK-файлів до репозиторію…</string>
+    <string name="all_other_repos_fine">Всі інші репозиторії не призвели до помилки.</string>
         <string name="no_handler_app">Ви не маєте додатку для обробки «%s».</string>
-	<string name="repo_num_apps">Кількість додатків</string>
+    <string name="repo_num_apps">Кількість додатків</string>
     <string name="repo_fingerprint">Відбиток ключа підпису (SHA-256)</string>
     <string name="unsigned_description">Це означає, що список додатків не може бути перевірено. Ви повинні бути обачними із додатками, які завантажуєте з не підписаних джерел.</string>
     <string name="repo_not_yet_updated">Цей репозиторій ще не використовувався. Ввімкніть його, аби побачити додатки, які він містить.</string>
@@ -279,7 +279,7 @@
     <string name="system_install_post_success">Привілейоване розширення F-Droid успішно встановлено</string>
     <string name="system_install_post_fail">Виникла посилка під час встановлення привілейованого розширення F-Droid</string>
     <string name="system_install_question">Бажаєте встановити привілейоване розширення F-Droid?</string>
-	<string name="system_uninstall">Бажаєте видалити привілейоване розширення F-Droid?</string>
+    <string name="system_uninstall">Бажаєте видалити привілейоване розширення F-Droid?</string>
     <string name="swap_nfc_title">Торкніться для обміну</string>
     <string name="menu_swap">Обмінятися додатками</string>
     <string name="swap">Обмін додатками</string>
@@ -300,7 +300,7 @@
     <string name="system_install_denied_permissions">Привілейований доступ не був наданий розширенню! Будь ласка, відзвітуйте про цю ваду!</string>
     <string name="system_install_post_success_message">Привілейоване розширення F-Droid встановлено. Це дозволить встановлювати, оновлювати та вилучати додатки за допомогою F-Droid.</string>
     <string name="system_install_warning_lollipop">Це забере приблизно 10 секунд, після чого пристрій буде <b>перезавантажено</b>.</string>
-	<string name="swap_active_hotspot">%1$s (ваша точка доступу)</string>
+    <string name="swap_active_hotspot">%1$s (ваша точка доступу)</string>
     <string name="swap_scanning_for_peers">Пошук людей поблизу…</string>
     <string name="swap_nearby">Ближній обмін</string>
     <string name="swap_not_visible_bluetooth">Не видимий через Bluetooth</string>
@@ -331,5 +331,5 @@
     <string name="repo_details">Репозиторій</string>
     <string name="repo_url">Адреса</string>
     <string name="status_download_unknown_size">Завантаження\n%2$1s з\n%1$s</string>
-	<string name="repo_searching_address">Перегляд репозиторію F-Droid\n%1$s</string>
+    <string name="repo_searching_address">Перегляд репозиторію F-Droid\n%1$s</string>
     </resources>

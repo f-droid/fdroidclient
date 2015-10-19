@@ -195,14 +195,14 @@ wird verbunden</string>
   <string name="swap_welcome">Willkommen bei F-Droid!</string>
   <string name="swap_confirm_connect">Möchten Sie jetzt Apps von %1$s erhalten?</string>
 <string name="about_source">Quelle:</string>
-	<string name="app_incompatible">Inkompatibel</string>
-	<string name="links">Links</string>
-	<string name="back">Zurück</string>
-	<string name="update_notification_more">+%1$d mehr…</string>
-	<string name="bad_fingerprint">Falscher Fingerprint</string>
-	<string name="invalid_url">Dies ist keine gültige URL.</string>
-	<string name="update_notification_title">Aktualisiere Quellen</string>
-	<string name="pref_language">Sprache</string>
+    <string name="app_incompatible">Inkompatibel</string>
+    <string name="links">Links</string>
+    <string name="back">Zurück</string>
+    <string name="update_notification_more">+%1$d mehr…</string>
+    <string name="bad_fingerprint">Falscher Fingerprint</string>
+    <string name="invalid_url">Dies ist keine gültige URL.</string>
+    <string name="update_notification_title">Aktualisiere Quellen</string>
+    <string name="pref_language">Sprache</string>
     <string name="pref_language_default">System Standard</string>
 
     <string name="wifi">WLAN</string>
@@ -216,12 +216,12 @@ wird verbunden</string>
     <string name="uninstall_error_unknown">De-Installation wegen unbekanntem Fehler fehlgeschlagen</string>
     <string name="app_name">F-Droid\n</string>
 
-	<string name="unstable_updates">Instabile Updates</string>
-	<string name="unstable_updates_summary">Updates für instabile Version vorschlagen</string>
+    <string name="unstable_updates">Instabile Updates</string>
+    <string name="unstable_updates_summary">Updates für instabile Version vorschlagen</string>
 
-	<string name="tab_installed_apps">Installiert</string>
-	<string name="menu_changelog">Änderungen</string>
-	<string name="category_Connectivity">Verbindung</string>
+    <string name="tab_installed_apps">Installiert</string>
+    <string name="menu_changelog">Änderungen</string>
+    <string name="category_Connectivity">Verbindung</string>
     <string name="category_Sports_Health">Sport &amp; Gesundheit</string>
     <string name="category_Theming">Aussehen</string>
     <string name="category_Writing">Schreiben</string>

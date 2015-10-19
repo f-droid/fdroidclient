@@ -188,23 +188,23 @@
   <string name="swap_confirm_connect">Желите ли да добавите апликације са %1$s одмах?</string>
 <string name="app_name">Ф-дроид</string>
 
-	<string name="unstable_updates">Надоградње нестабилних</string>
-	<string name="unstable_updates_summary">Предлагање ажурирања на нестабилна издања</string>
-	<string name="uninstall_system">Ажурирај/уклони повлашћено проширење</string>
-	<string name="uninstall_system_summary">Отвара детаље повлашћеног проширења да бисте га ажурирали/уклонили</string>
-	<string name="about_source">Изворни кôд:</string>
-	<string name="app_incompatible">Некомпатибилно</string>
-	<string name="links">Везе</string>
+    <string name="unstable_updates">Надоградње нестабилних</string>
+    <string name="unstable_updates_summary">Предлагање ажурирања на нестабилна издања</string>
+    <string name="uninstall_system">Ажурирај/уклони повлашћено проширење</string>
+    <string name="uninstall_system_summary">Отвара детаље повлашћеног проширења да бисте га ажурирали/уклонили</string>
+    <string name="about_source">Изворни кôд:</string>
+    <string name="app_incompatible">Некомпатибилно</string>
+    <string name="links">Везе</string>
 
-	<string name="back">Назад</string>
-	<string name="tab_installed_apps">Инсталиране</string>
-	<string name="update_notification_more">+још %1$d…</string>
-	<string name="bad_fingerprint">Лош отисак</string>
-	<string name="invalid_url">Ово није исправан УРЛ.</string>
-	<string name="menu_changelog">Дневник измена</string>
-	<string name="update_notification_title">Ажурирам ризнице</string>
-	<string name="status_processing_xml_percent">Обрађујем %2$s / %3$s (%4$d%%) од %1$s</string>
-	<string name="pref_language">Језик</string>
+    <string name="back">Назад</string>
+    <string name="tab_installed_apps">Инсталиране</string>
+    <string name="update_notification_more">+још %1$d…</string>
+    <string name="bad_fingerprint">Лош отисак</string>
+    <string name="invalid_url">Ово није исправан УРЛ.</string>
+    <string name="menu_changelog">Дневник измена</string>
+    <string name="update_notification_title">Ажурирам ризнице</string>
+    <string name="status_processing_xml_percent">Обрађујем %2$s / %3$s (%4$d%%) од %1$s</string>
+    <string name="pref_language">Језик</string>
     <string name="pref_language_default">Системски подразумеван</string>
 
     <string name="wifi">Бежични</string>
@@ -262,7 +262,7 @@
     <string name="theme_dark">Тамна</string>
 <string name="swap_scan_qr">Очитај бар-кôд</string>
     <string name="local_repo_name_summary">Објављени назив ваше локалне ризнице: %s</string>
-	<string name="install_error_unknown">Неуспех инсталације услед непознате грешке</string>
+    <string name="install_error_unknown">Неуспех инсталације услед непознате грешке</string>
     <string name="uninstall_error_unknown">Неуспех уклањања услед непознате грешке</string>
     <string name="system_install_question">Желите ли да инсталирате повлашћено проширење за Ф-дроид?</string>
     <string name="system_uninstall">Желите ли да уклоните повлашћено проширење за Ф-дроид?</string>
@@ -304,23 +304,23 @@
     <string name="more">Више</string>
     <string name="less">Мање</string>
 
-	<string name="status_download_unknown_size">Преузимам\n%2$s са\n%1$s</string>
-	<string name="permissions">Дозволе</string>
-	<string name="repo_details">Ризница</string>
+    <string name="status_download_unknown_size">Преузимам\n%2$s са\n%1$s</string>
+    <string name="permissions">Дозволе</string>
+    <string name="repo_details">Ризница</string>
     <string name="repo_url">Адреса</string>
     <string name="system_install_denied_signature">Потпис проширење је погрешан! Пријавите грешку!</string>
     <string name="system_install_button_install">Инсталирај</string>
-	<string name="system_install_denied_permissions">Повлашћене дозволе нису одобрене за проширење! Пријавите грешку!</string>
+    <string name="system_install_denied_permissions">Повлашћене дозволе нису одобрене за проширење! Пријавите грешку!</string>
     <string name="system_install_button_open">Отвори проширење</string>
     <string name="system_install_installing_rebooting">Инсталирам и поново покрећем…</string>
     <string name="system_install_warning">Ово траје десетак секунди.</string>
-	<string name="theme_night">Ноћ</string>
+    <string name="theme_night">Ноћ</string>
 <string name="menu_bitcoin">Биткоин</string>
-	<string name="menu_litecoin">Лајткоин</string>
-	<string name="menu_flattr">Флатр</string>
+    <string name="menu_litecoin">Лајткоин</string>
+    <string name="menu_flattr">Флатр</string>
 
 
-	<string name="system_install_first_time_notification_message">Тапните да инсталирате повлашћено проширење за Ф-дроид, уско повезано са Андроид оперативним системом. Ово омогућује Ф-дроиду да сам инсталира, надограђује и уклања апликације.\nОво можете такође да урадите и касније у поставкама Ф-дроида.</string>
+    <string name="system_install_first_time_notification_message">Тапните да инсталирате повлашћено проширење за Ф-дроид, уско повезано са Андроид оперативним системом. Ово омогућује Ф-дроиду да сам инсталира, надограђује и уклања апликације.\nОво можете такође да урадите и касније у поставкама Ф-дроида.</string>
     <string name="system_install_post_success_message">Повлашћено проширење за Ф-дроид је успешно инсталирано. Оно омогућује Ф-дроиду да сам инсталира, надограђује и уклања апликације.</string>
     <string name="system_install_post_fail_message">Инсталација повлашћеног проширења за Ф-дроид није успела. Методу инсталације не подржавају све дистрибуције Андроида, посаветујте се са пратиоцем грешака Ф-дроида за више информација.</string>
     </resources>

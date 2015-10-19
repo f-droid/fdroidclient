@@ -173,34 +173,34 @@
   <string name="swap_confirm_connect">Bạn có muốn nhận ứng dụng từ %1$s bây giờ không?</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="unstable_updates">Cập nhật bản không ổn định</string>
-	<string name="unstable_updates_summary">Thông báo cập nhật đối với các phiên bản chưa hoàn thiện</string>
-	<string name="uninstall_system">Cập nhật / Gỡ bỏ phần mở rộng F-Droid được cấp quyền</string>
-	<string name="uninstall_system_summary">Mở phần thông tin về phần mở rộng được cấp quyền để gỡ bỏ nó</string>
-	<string name="links">Liên kết</string>
+    <string name="unstable_updates">Cập nhật bản không ổn định</string>
+    <string name="unstable_updates_summary">Thông báo cập nhật đối với các phiên bản chưa hoàn thiện</string>
+    <string name="uninstall_system">Cập nhật / Gỡ bỏ phần mở rộng F-Droid được cấp quyền</string>
+    <string name="uninstall_system_summary">Mở phần thông tin về phần mở rộng được cấp quyền để gỡ bỏ nó</string>
+    <string name="links">Liên kết</string>
 
-	<string name="back">Quay lại</string>
-	<string name="local_repo_name_summary">Tên kho phần mềm nội bộ của bạn: %s</string>
-	<string name="about_source">Mã nguồn:</string>
-	<string name="app_incompatible">Không tương thích</string>
-	<string name="tab_installed_apps">Đã cài đặt</string>
-	<string name="update_notification_more">+%1$d ứng dụng khác…</string>
-	<string name="invalid_url">Đây không phải là URL hợp lệ.</string>
-	<string name="menu_changelog">Lịch sử sửa đổi</string>
-	<string name="menu_bitcoin">Bitcoin</string>
-	<string name="menu_litecoin">Litecoin</string>
-	<string name="menu_flattr">Flattr</string>
+    <string name="back">Quay lại</string>
+    <string name="local_repo_name_summary">Tên kho phần mềm nội bộ của bạn: %s</string>
+    <string name="about_source">Mã nguồn:</string>
+    <string name="app_incompatible">Không tương thích</string>
+    <string name="tab_installed_apps">Đã cài đặt</string>
+    <string name="update_notification_more">+%1$d ứng dụng khác…</string>
+    <string name="invalid_url">Đây không phải là URL hợp lệ.</string>
+    <string name="menu_changelog">Lịch sử sửa đổi</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
 
 
-	<string name="failed_to_create_index">Không tạo được mục lục kho!</string>
-	<string name="writing_index_jar">Đang ghi tập tin mục lục có chữ kí (index.jar)…</string>
-	<string name="linking_apks">Đang kết nối các tập tin APK vào kho…</string>
-	<string name="enable_proxy_summary">Thiết lập proxy HTTP cho tất cả các yêu cầu nối mạng</string>
-	<string name="proxy_host">Máy chủ Proxy</string>
-	<string name="proxy_host_summary">Thiết lập tên máy chủ proxy của bạn (ví dụ 127.0.0.1)</string>
-	<string name="update_notification_title">Đang cập nhật các kho ứng dụng</string>
-	<string name="status_processing_xml_percent">Đang xử lí %2$s / %3$s (%4$d%%) từ</string>
-	<string name="unsigned">Chưa được kí</string>
+    <string name="failed_to_create_index">Không tạo được mục lục kho!</string>
+    <string name="writing_index_jar">Đang ghi tập tin mục lục có chữ kí (index.jar)…</string>
+    <string name="linking_apks">Đang kết nối các tập tin APK vào kho…</string>
+    <string name="enable_proxy_summary">Thiết lập proxy HTTP cho tất cả các yêu cầu nối mạng</string>
+    <string name="proxy_host">Máy chủ Proxy</string>
+    <string name="proxy_host_summary">Thiết lập tên máy chủ proxy của bạn (ví dụ 127.0.0.1)</string>
+    <string name="update_notification_title">Đang cập nhật các kho ứng dụng</string>
+    <string name="status_processing_xml_percent">Đang xử lí %2$s / %3$s (%4$d%%) từ</string>
+    <string name="unsigned">Chưa được kí</string>
     <string name="unsigned_description">Điều này nghĩa là danh sách ứng dụng không được kiểm duyệt. Bạn hãy cẩn thận khi tải ứng dụng từ mục lục không có chữ kí điện tử.</string>
     <string name="unknown">Không rõ</string>
     <string name="pref_language">Ngôn ngữ</string>
@@ -309,18 +309,18 @@
 <string name="all_other_repos_fine">Tất cả các kho khác không có lỗi.</string>
         <string name="swap_join_this_hotspot">Giúp đỡ bạn của bạn vào điểm truy cập</string>
     <string name="repo_exists_add_fingerprint">Kho này đã được cài đặt, việc này sẽ thêm thông tin mới về mã khoá.</string>
-	<string name="repo_exists_enable">Kho này đã được cài đặt, hãy xác nhận bạn muốn kích hoạt lại nó.</string>
-	<string name="more">Thêm</string>
+    <string name="repo_exists_enable">Kho này đã được cài đặt, hãy xác nhận bạn muốn kích hoạt lại nó.</string>
+    <string name="more">Thêm</string>
     <string name="less">Ít hơn</string>
 
-	<string name="status_download_unknown_size">Đang tải\n%2$s từ\n%1$s</string>
-	<string name="permissions">Quyền</string>
-	<string name="repo_details">Kho ứng dụng</string>
+    <string name="status_download_unknown_size">Đang tải\n%2$s từ\n%1$s</string>
+    <string name="permissions">Quyền</string>
+    <string name="repo_details">Kho ứng dụng</string>
     <string name="repo_url">Địa chỉ</string>
     <string name="system_install_denied_permissions">Phần mở rộng chưa được cấp quyền nâng cao! Hãy thông báo lỗi này cho chúng tôi!</string>
     <string name="system_install_button_install">Cài đặt</string>
-	<string name="system_install_button_open">Mở phần mở rộng</string>
+    <string name="system_install_button_open">Mở phần mở rộng</string>
     <string name="system_install_installing_rebooting">Đang cài đặt và khởi động lại…</string>
     <string name="system_install_warning">Việc này mất tối đa 10 giây.</string>
-	<string name="theme_night">Đen</string>
+    <string name="theme_night">Đen</string>
 </resources>

@@ -163,12 +163,12 @@
   <string name="swap_welcome">Добре дошли в F-Droid!</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="theme_dark">Тъмна</string>
+    <string name="theme_dark">Тъмна</string>
 <string name="back">Назад</string>
-	<string name="bad_fingerprint">Грешен отпечатък</string>
-	<string name="invalid_url">Адресът не е валиден URL.</string>
-	<string name="menu_changelog">Журнал на промените</string>
-	<string name="pref_language">Език</string>
+    <string name="bad_fingerprint">Грешен отпечатък</string>
+    <string name="invalid_url">Адресът не е валиден URL.</string>
+    <string name="menu_changelog">Журнал на промените</string>
+    <string name="pref_language">Език</string>
     <string name="pref_language_default">Стандартния за системата</string>
 
     <string name="wifi">Wi-Fi</string>
@@ -200,10 +200,10 @@
     <string name="downloading">Сваляне…</string>
 
     <string name="about_source">Източник:</string>
-	<string name="tab_installed_apps">Инсталирани</string>
-	<string name="update_notification_more">+ още %1$d…</string>
-	<string name="update_notification_title">Актуализиране на хранилищата</string>
-	<string name="repo_update">Актуализиране</string>
+    <string name="tab_installed_apps">Инсталирани</string>
+    <string name="update_notification_more">+ още %1$d…</string>
+    <string name="update_notification_title">Актуализиране на хранилищата</string>
+    <string name="repo_update">Актуализиране</string>
     <string name="install_error_unknown">Инсталирането се провали поради неизвестна грешка</string>
     <string name="uninstall_error_unknown">Деинсталирането се провали поради неизвестна грешка</string>
     <string name="system_install_first_time_notification_message_short">Натиснете за повече информация.</string>
@@ -215,12 +215,12 @@
     <string name="tap_to_install">Свалянето приключи. Натиснете за инсталиране</string>
 
     <string name="unstable_updates">Нестабилни актуализации</string>
-	<string name="unstable_updates_summary">Предлага актуализиране до версии, които могат да бъдат нестабилни</string>
-	<string name="empty_available_app_list">В категорията няма приложения.\n\nИзберете друга категория или актуализирайте хранилищата за да получите актуалния списък с приложения.</string>
+    <string name="unstable_updates_summary">Предлага актуализиране до версии, които могат да бъдат нестабилни</string>
+    <string name="empty_available_app_list">В категорията няма приложения.\n\nИзберете друга категория или актуализирайте хранилищата за да получите актуалния списък с приложения.</string>
     <string name="category_Connectivity">Свързаност</string>
     <string name="menu_upgrade">Обнови</string>
-	<string name="links">Връзки</string>
-	<string name="empty_installed_app_list">Няма инсталирани приложения.\n\nСъществуващите приложения не са налични през F-Droid. Вероятна причина може да бъде неактуализирани хранилища или просто хранилищата не предлагат програмите, който ползвате.</string>
+    <string name="links">Връзки</string>
+    <string name="empty_installed_app_list">Няма инсталирани приложения.\n\nСъществуващите приложения не са налични през F-Droid. Вероятна причина може да бъде неактуализирани хранилища или просто хранилищата не предлагат програмите, който ползвате.</string>
     <string name="empty_can_update_app_list">Всички приложения са актуализирани до последните налични версии.\n\nПоздравления! Ползвате актуалните версии на приложенията (или хранилищата не са актуализирани).</string>
 
     <string name="install_confirm">Желаете ли приложението да бъде инсталирано? Ще има достъп до:</string>
@@ -249,19 +249,19 @@
     <string name="bluetooth_unavailable">Липсва Bluetooth</string>
     <string name="swap_nearby">Размяна с устройства наоколо</string>
     <string name="local_repo_running">F-Droid e в готовност за размяна</string>
-	<string name="touch_to_configure_local_repo">Натиснете за детайли или да позволите размяна на приложение.</string>
-	<string name="swap_nfc_title">Натиснете за размяна</string>
+    <string name="touch_to_configure_local_repo">Натиснете за детайли или да позволите размяна на приложение.</string>
+    <string name="swap_nfc_title">Натиснете за размяна</string>
     <string name="swap_success">Успешна размяна!</string>
     <string name="swap_switch_to_wifi">Натиснете за смяна на Wi-Fi мрежата</string>
     <string name="swap_tap_to_select_apps">Натиснете приложенията които желаете да размените.</string>
     <string name="swap_dont_show_again">Не показвай повече</string>
     <string name="repo_exists_add_fingerprint">Хранилището е вече настроено, сега ще бъде добавена информация за ключа.</string>
-	<string name="repo_exists_enable">Хранилището е вече настроено, потвърдете че желаете да бъде включено.</string>
-	<string name="repo_exists_and_enabled">Входящото хранилище е настроено и включено.</string>
-	<string name="repo_delete_to_overwrite">Необходимо е първо да изтриете хранилището преди да добавите различен ключ.</string>
-	<string name="copying_icons">Копиране иконите на приложенията в хранилището…</string>
-	<string name="app_incompatible">Несъвместимо</string>
-	<string name="all_other_repos_fine">Всички останали хранилища са наред.</string>
+    <string name="repo_exists_enable">Хранилището е вече настроено, потвърдете че желаете да бъде включено.</string>
+    <string name="repo_exists_and_enabled">Входящото хранилище е настроено и включено.</string>
+    <string name="repo_delete_to_overwrite">Необходимо е първо да изтриете хранилището преди да добавите различен ключ.</string>
+    <string name="copying_icons">Копиране иконите на приложенията в хранилището…</string>
+    <string name="app_incompatible">Несъвместимо</string>
+    <string name="all_other_repos_fine">Всички останали хранилища са наред.</string>
     <string name="system_install_first_time_notification_message">Натиснете за инсталиране на F-Droid като привилегировано приложение, тясно обвъзване с Android. Това позволява на F-Droid да инсталира, актуализира и деинсталира приложения автономно. Можете да направите инсталацията и по-късно от меню \"Предпочитания\".</string>
     <string name="system_install_post_success">F-Droid е инсталиран като привилегировано приложение</string>
     <string name="system_install_post_fail">Инсталирането като привилегировано приложение се провали</string>
@@ -272,8 +272,8 @@
 
     <string name="app_description">F-Droid предоставя каталог от FOSS (Free and Open Source Software - безплатен софтуер и с отворен код) приложения за Android. Клиентът позволява лесно преглеждане на наличните приложения, инсталиране и следене за актуализации.</string>
     <string name="uninstall_system">Деинсталиране на привилегирован F-Droid</string>
-	<string name="uninstall_system_summary">Деинсталиране на допълното привилегировано F-Droid приложение</string>
-	<string name="root_access_denied_body">Или вашето устройство не е root-нато или на F-Droid е отказан root достъп.</string>
+    <string name="uninstall_system_summary">Деинсталиране на допълното привилегировано F-Droid приложение</string>
+    <string name="root_access_denied_body">Или вашето устройство не е root-нато или на F-Droid е отказан root достъп.</string>
     <string name="system_install_first_time_notification">Инсталиране като привилегировано приложение?</string>
     <string name="system_install_post_success_message">F-Droid е инсталиран като привилегировано приложение. Това позволява на F-Droid да инсталира, актуализира и деинсталира приложения автономно.</string>
     </resources>

@@ -186,8 +186,8 @@
   <string name="swap_welcome">Добро пожаловать в F-Droid!</string>
   <string name="swap_confirm_connect">Вы хотите получить приложения от %1$s сейчас?</string>
 <string name="about_source">Исходный код:</string>
-	<string name="links">Ссылки</string>
-	<string name="interval_never">Никогда</string>
+    <string name="links">Ссылки</string>
+    <string name="interval_never">Никогда</string>
     <string name="interval_1h">Каждый час</string>
     <string name="interval_4h">Каждые 4 часа</string>
     <string name="interval_12h">Каждые 12 часов</string>
@@ -198,8 +198,8 @@
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Тёмная</string>
 <string name="unstable_updates">Нестабильные обновления</string>
-	<string name="unstable_updates_summary">Предлагать обновления до нестабильных версий</string>
-	<string name="pref_language">Язык</string>
+    <string name="unstable_updates_summary">Предлагать обновления до нестабильных версий</string>
+    <string name="pref_language">Язык</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Graphics">Графика</string>
     <string name="category_Money">Деньги</string>
@@ -207,10 +207,10 @@
     <string name="category_Time">Время</string>
     <string name="app_name">F-Droid</string>
 
-	<string name="tab_installed_apps">Установлено</string>
-	<string name="update_notification_title">Обновление репозиториев</string>
-	<string name="status_processing_xml_percent">Обработка %2$s / %3$s (%4$d%%) из %1$s</string>
-	<string name="install_error_title">Ошибка установки</string>
+    <string name="tab_installed_apps">Установлено</string>
+    <string name="update_notification_title">Обновление репозиториев</string>
+    <string name="status_processing_xml_percent">Обработка %2$s / %3$s (%4$d%%) из %1$s</string>
+    <string name="install_error_title">Ошибка установки</string>
     <string name="install_error_unknown">Установка не удалась из-за неизвестной ошибки</string>
     <string name="install_error_cannot_parse">При разборе пакета произошла ошибка</string>
     <string name="uninstall_error_title">Ошибка удаления</string>
@@ -225,4 +225,4 @@
     <string name="empty_can_update_app_list">Все приложения обновлены.\n\nПоздравляем! У вас установлены самые свежие версии приложений (либо репозитории требуют обновления).</string>
 
     <string name="permissions">Разрешения</string>
-	</resources>
+    </resources>

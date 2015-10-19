@@ -198,27 +198,27 @@ Du må
   <string name="swap_confirm_connect">Ønsker du å hente pakker fra %1$s nå?</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="theme_dark">Mørk</string>
+    <string name="theme_dark">Mørk</string>
 <string name="unstable_updates">Ustabile oppdateringer</string>
-	<string name="unstable_updates_summary">Foreslå oppdatering til ustabile versjoner</string>
-	<string name="about_source">Kildekode:</string>
-	<string name="app_incompatible">Ukompatibel</string>
-	<string name="links">Lenker</string>
+    <string name="unstable_updates_summary">Foreslå oppdatering til ustabile versjoner</string>
+    <string name="about_source">Kildekode:</string>
+    <string name="app_incompatible">Ukompatibel</string>
+    <string name="links">Lenker</string>
 
-	<string name="back">Tilbake</string>
-	<string name="tab_installed_apps">Installert</string>
-	<string name="update_notification_more">+%1$d flere…</string>
-	<string name="bad_fingerprint">Feil i fingeravtrykk</string>
-	<string name="invalid_url">Dette er ikke en gyldig nettadresse.</string>
-	<string name="menu_changelog">Endringslogg</string>
-	<string name="menu_bitcoin">Bitcoin</string>
-	<string name="menu_litecoin">Litecoin</string>
-	<string name="menu_flattr">Flattr</string>
+    <string name="back">Tilbake</string>
+    <string name="tab_installed_apps">Installert</string>
+    <string name="update_notification_more">+%1$d flere…</string>
+    <string name="bad_fingerprint">Feil i fingeravtrykk</string>
+    <string name="invalid_url">Dette er ikke en gyldig nettadresse.</string>
+    <string name="menu_changelog">Endringslogg</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
 
 
-	<string name="update_notification_title">Oppdaterer pakkebrønner</string>
-	<string name="status_processing_xml_percent">Behandler %2$s / %3$s (%4$d%%) fra %1$s</string>
-	<string name="repo_details">Pakkebrønn</string>
+    <string name="update_notification_title">Oppdaterer pakkebrønner</string>
+    <string name="status_processing_xml_percent">Behandler %2$s / %3$s (%4$d%%) fra %1$s</string>
+    <string name="repo_details">Pakkebrønn</string>
     <string name="repo_url">Adresse</string>
     <string name="pref_language">Språk</string>
     <string name="pref_language_default">Systemforvalg</string>
@@ -235,14 +235,14 @@ Du må
     <string name="uninstall_error_title">Avinstallasjonsfeil</string>
     <string name="uninstall_error_unknown">Klarte ikke å installere grunnet ukjent feil</string>
     <string name="system_install_button_install">Installer</string>
-	<string name="system_install_button_open">Åpne tillegg</string>
+    <string name="system_install_button_open">Åpne tillegg</string>
     <string name="system_install_first_time_notification_message_short">Trykk for mer informasjon,</string>
     <string name="system_install_installing">Installerer…</string>
-	<string name="system_install_installing_rebooting">Installerer og starter på ny…</string>
+    <string name="system_install_installing_rebooting">Installerer og starter på ny…</string>
     <string name="system_install_uninstalling">Avinstallerer…</string>
-	<string name="system_install_warning">Dette kan ta opptil 10 sekunder.</string>
-	<string name="system_install_warning_lollipop">Dette kan ta opptil 10 sekunder, <b>omstart</b> vil igangsettes etterpå.</string>
-	<string name="system_uninstall_button">Avinstaller</string>
+    <string name="system_install_warning">Dette kan ta opptil 10 sekunder.</string>
+    <string name="system_install_warning_lollipop">Dette kan ta opptil 10 sekunder, <b>omstart</b> vil igangsettes etterpå.</string>
+    <string name="system_uninstall_button">Avinstaller</string>
 
     <string name="swap_switch_to_wifi">Trykk for å bytte Wi-Fi-nettverk</string>
     <string name="swap_tap_to_select_apps">Trykk for å velge hvilke programmer du ønsker å bytte.</string>

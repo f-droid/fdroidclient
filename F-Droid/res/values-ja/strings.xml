@@ -190,18 +190,18 @@
   <string name="swap_welcome">F-Droidにようこそ!</string>
   <string name="swap_confirm_connect">今すぐ %1$s からｱﾌﾟﾘを取得しますか?</string>
 <string name="uninstall_system">特権拡張をｲﾝｽﾄｰﾙ/ｱﾝｲﾝｽﾄｰﾙ</string>
-	<string name="uninstall_system_summary">特権拡張の詳細画面を開いて、ｱﾌﾟﾘをｲﾝｽﾄｰﾙ/ｱﾝｲﾝｽﾄｰﾙします</string>
-	<string name="app_incompatible">非互換</string>
-	<string name="links">ﾘﾝｸ</string>
+    <string name="uninstall_system_summary">特権拡張の詳細画面を開いて、ｱﾌﾟﾘをｲﾝｽﾄｰﾙ/ｱﾝｲﾝｽﾄｰﾙします</string>
+    <string name="app_incompatible">非互換</string>
+    <string name="links">ﾘﾝｸ</string>
 
-	<string name="back">戻る</string>
-	<string name="update_notification_more">+%1$d 以上…</string>
-	<string name="bad_fingerprint">ﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄが違います</string>
-	<string name="invalid_url">有効な URL ではありません。</string>
-	<string name="menu_changelog">変更履歴</string>
-	<string name="update_notification_title">ﾘﾎﾟｼﾞﾄﾘを更新中</string>
-	<string name="status_processing_xml_percent">%1$s から %2$s / %3$s (%4$d%%) を処理中</string>
-	<string name="pref_language">言語</string>
+    <string name="back">戻る</string>
+    <string name="update_notification_more">+%1$d 以上…</string>
+    <string name="bad_fingerprint">ﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄが違います</string>
+    <string name="invalid_url">有効な URL ではありません。</string>
+    <string name="menu_changelog">変更履歴</string>
+    <string name="update_notification_title">ﾘﾎﾟｼﾞﾄﾘを更新中</string>
+    <string name="status_processing_xml_percent">%1$s から %2$s / %3$s (%4$d%%) を処理中</string>
+    <string name="pref_language">言語</string>
     <string name="pref_language_default">ｼｽﾃﾑの既定値</string>
 
     <string name="wifi">Wi-Fi</string>
@@ -239,7 +239,7 @@
     <string name="swap_switch_to_wifi">ﾀｯﾌﾟすると、Wi-Fi ﾈｯﾄﾜｰｸに切り替えます</string>
     <string name="app_name">F-Droid</string>
 
-	<string name="swap_tap_to_select_apps">ﾀｯﾌﾟして交換したいｱﾌﾟﾘを選択します。</string>
+    <string name="swap_tap_to_select_apps">ﾀｯﾌﾟして交換したいｱﾌﾟﾘを選択します。</string>
     <string name="swap_dont_show_again">今後、このﾒｯｾｰｼﾞを表示しない</string>
     <string name="swap_scan_or_type_url">一人は、ｺｰﾄﾞを読み取るか、他の URL をﾌﾞﾗｳｻﾞｰに入力する必要があります。</string>
     <string name="swap_choose_apps">ｱﾌﾟﾘを選択</string>
@@ -299,7 +299,7 @@
     <string name="theme_light">ﾗｲﾄ</string>
     <string name="theme_dark">ﾀﾞｰｸ</string>
 <string name="about_source">ｿｰｽ:</string>
-	<string name="category_Connectivity">接続</string>
+    <string name="category_Connectivity">接続</string>
     <string name="category_Graphics">ｸﾞﾗﾌｨｯｸ</string>
     <string name="category_Money">ﾏﾈｰ</string>
     <string name="category_Sports_Health">ｽﾎﾟｰﾂ &amp; 健康</string>
@@ -308,27 +308,27 @@
     <string name="category_Writing">文書</string>
 
     <string name="unstable_updates">非安定版の更新</string>
-	<string name="unstable_updates_summary">非安定版への更新を提案します</string>
-	<string name="tab_installed_apps">ｲﾝｽﾄｰﾙ済</string>
-	<string name="download_error">ﾀﾞｳﾝﾛｰﾄﾞできませんでした</string>
+    <string name="unstable_updates_summary">非安定版への更新を提案します</string>
+    <string name="tab_installed_apps">ｲﾝｽﾄｰﾙ済</string>
+    <string name="download_error">ﾀﾞｳﾝﾛｰﾄﾞできませんでした</string>
 
     <string name="menu_bitcoin">Bitcoin</string>
-	<string name="menu_litecoin">Litecoin</string>
-	<string name="menu_flattr">Flattr</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
 
 
-	<string name="repo_details">ﾘﾎﾟｼﾞﾄﾘ</string>
+    <string name="repo_details">ﾘﾎﾟｼﾞﾄﾘ</string>
     <string name="repo_url">ｱﾄﾞﾚｽ</string>
     <string name="system_install_denied_signature">拡張の署名が間違っています! ﾊﾞｸﾞ報告を送ってください!</string>
     <string name="system_install_denied_permissions">特権のｱｸｾｽ許可が拡張に付与されていません! ﾊﾞｸﾞ報告を送ってください!</string>
     <string name="system_install_button_install">ｲﾝｽﾄｰﾙ</string>
-	<string name="system_install_button_open">拡張を開く</string>
+    <string name="system_install_button_open">拡張を開く</string>
     <string name="system_install_installing_rebooting">ｲﾝｽﾄｰﾙおよび再起動中…</string>
     <string name="system_install_warning">これは 10 秒ほどかかります。</string>
-	<string name="more">さらに</string>
+    <string name="more">さらに</string>
     <string name="less">少ない</string>
 
-	<string name="status_download_unknown_size">ﾀﾞｳﾝﾛｰﾄﾞ中\n%2$s\n%1$s から</string>
-	<string name="permissions">ｱｸｾｽ許可</string>
-	<string name="theme_night">夜間</string>
+    <string name="status_download_unknown_size">ﾀﾞｳﾝﾛｰﾄﾞ中\n%2$s\n%1$s から</string>
+    <string name="permissions">ｱｸｾｽ許可</string>
+    <string name="theme_night">夜間</string>
 </resources>

@@ -155,37 +155,37 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="swap_welcome">Vítejte v aplikaci F-Droid!</string>
   <string name="swap_confirm_connect">Chceš nyní stáhnout aplikace z %1$s?</string>
 <string name="searchres_napps">Nalezeno %1$d aplikací odpovídajících \"%2$s\":</string>
-	<string name="uninstall_system">Odinstalovat verzi se systémovými oprávněními</string>
-	<string name="uninstall_system_summary">Odinstaluje dodatečnou aplikaci se systémovými oprávněními</string>
-	<string name="about_source">Zdroj:</string>
-	<string name="app_incompatible">Nekompatibilní</string>
-	<string name="app_inst_known_source">Nainstalováno (z %s)</string>
-	<string name="app_inst_unknown_source">Nainstalováno (z neznámého zdroje)</string>
+    <string name="uninstall_system">Odinstalovat verzi se systémovými oprávněními</string>
+    <string name="uninstall_system_summary">Odinstaluje dodatečnou aplikaci se systémovými oprávněními</string>
+    <string name="about_source">Zdroj:</string>
+    <string name="app_incompatible">Nekompatibilní</string>
+    <string name="app_inst_known_source">Nainstalováno (z %s)</string>
+    <string name="app_inst_unknown_source">Nainstalováno (z neznámého zdroje)</string>
 
-	<string name="links">Odkazy</string>
+    <string name="links">Odkazy</string>
 
-	<string name="back">Zpět</string>
-	<string name="update_notification_more">A %1$d více…</string>
-	<string name="bluetooth_activity_not_found">Žádná metoda přenosu Bluetooth nenalezena, jednu vyberte!</string>
-	<string name="choose_bt_send">Vyberte metodu přenosu Bluetooth</string>
-	<string name="repo_exists_add_fingerprint">Tento repozitář je již nastaven, budou jen přidány nové klíče.</string>
-	<string name="repo_exists_enable">Tento repozitář je již nastaven, potvrďte jeho znovupovolení.</string>
-	<string name="repo_exists_and_enabled">Tento příchozí repozitář je již nastaven a povolen.</string>
-	<string name="repo_delete_to_overwrite">Před přidáním repozitáře s jiným klíčem musíte nejprve tento odebrat.</string>
-	<string name="invalid_url">Toto není validní URL.</string>
-	<string name="malformed_repo_uri">Ignoruji poškozené URI repozitáře: %s</string>
+    <string name="back">Zpět</string>
+    <string name="update_notification_more">A %1$d více…</string>
+    <string name="bluetooth_activity_not_found">Žádná metoda přenosu Bluetooth nenalezena, jednu vyberte!</string>
+    <string name="choose_bt_send">Vyberte metodu přenosu Bluetooth</string>
+    <string name="repo_exists_add_fingerprint">Tento repozitář je již nastaven, budou jen přidány nové klíče.</string>
+    <string name="repo_exists_enable">Tento repozitář je již nastaven, potvrďte jeho znovupovolení.</string>
+    <string name="repo_exists_and_enabled">Tento příchozí repozitář je již nastaven a povolen.</string>
+    <string name="repo_delete_to_overwrite">Před přidáním repozitáře s jiným klíčem musíte nejprve tento odebrat.</string>
+    <string name="invalid_url">Toto není validní URL.</string>
+    <string name="malformed_repo_uri">Ignoruji poškozené URI repozitáře: %s</string>
 
-	<string name="menu_changelog">Seznam změn</string>
-	<string name="antinonfreeadlist">Tato aplikace propaguje nesvobodné doplňky</string>
-	<string name="antinonfreenetlist">Tato aplikace propaguje nesvobodné síťové služby</string>
-	<string name="antinonfreedeplist">Tato aplikace závisí na ostatních nesvobodných aplikacích</string>
-	<string name="antiupstreamnonfreelist">Originální zdrojový kód je částečně nesvovodný</string>
+    <string name="menu_changelog">Seznam změn</string>
+    <string name="antinonfreeadlist">Tato aplikace propaguje nesvobodné doplňky</string>
+    <string name="antinonfreenetlist">Tato aplikace propaguje nesvobodné síťové služby</string>
+    <string name="antinonfreedeplist">Tato aplikace závisí na ostatních nesvobodných aplikacích</string>
+    <string name="antiupstreamnonfreelist">Originální zdrojový kód je částečně nesvovodný</string>
 
-	<string name="appcompatibility">Kompatibilita aplikací</string>
-	<string name="display">Zobrazení</string>
+    <string name="appcompatibility">Kompatibilita aplikací</string>
+    <string name="display">Zobrazení</string>
 
-	<string name="show_incompat_versions_on">Zobrazit verze aplikací nekompatibilní s tímto zařízením</string>
-	<string name="proxy_port_summary">Nakonfigurovat číslo portu proxy</string>
+    <string name="show_incompat_versions_on">Zobrazit verze aplikací nekompatibilní s tímto zařízením</string>
+    <string name="proxy_port_summary">Nakonfigurovat číslo portu proxy</string>
 
-	<string name="status_download">Stahuji\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
-	</resources>
+    <string name="status_download">Stahuji\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
+    </resources>

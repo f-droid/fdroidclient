@@ -154,20 +154,20 @@
   <string name="swap_confirm_connect">你是否想從 %1$s 取得應用程式？</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="unstable_updates">不穩定的更新</string>
-	<string name="unstable_updates_summary">建議更新至不穩定的版本</string>
-	<string name="about_source">原始碼：</string>
-	<string name="app_incompatible">不相容</string>
-	<string name="links">連結</string>
+    <string name="unstable_updates">不穩定的更新</string>
+    <string name="unstable_updates_summary">建議更新至不穩定的版本</string>
+    <string name="about_source">原始碼：</string>
+    <string name="app_incompatible">不相容</string>
+    <string name="links">連結</string>
 
-	<string name="back">返回</string>
-	<string name="tab_installed_apps">已安裝</string>
-	<string name="invalid_url">這不是有效的網址。</string>
-	<string name="menu_changelog">更新日誌</string>
-	<string name="failed_to_create_index">建立軟件倉庫引首失敗！</string>
-	<string name="update_notification_title">正在更新軟件倉庫</string>
-	<string name="no_handler_app">您沒有任何應用程式可以開啟 %s。</string>
-	<string name="repo_confirm_delete_body">軟件倉庫被刪除後，倉庫中的應用程式將不會在 F-Droid 出現。\n\n註：之前所安裝的應用程式均會保留在您的裝置上。</string>
+    <string name="back">返回</string>
+    <string name="tab_installed_apps">已安裝</string>
+    <string name="invalid_url">這不是有效的網址。</string>
+    <string name="menu_changelog">更新日誌</string>
+    <string name="failed_to_create_index">建立軟件倉庫引首失敗！</string>
+    <string name="update_notification_title">正在更新軟件倉庫</string>
+    <string name="no_handler_app">您沒有任何應用程式可以開啟 %s。</string>
+    <string name="repo_confirm_delete_body">軟件倉庫被刪除後，倉庫中的應用程式將不會在 F-Droid 出現。\n\n註：之前所安裝的應用程式均會保留在您的裝置上。</string>
     <string name="pref_language">語言</string>
     <string name="pref_language_default">系統預設</string>
 
@@ -225,20 +225,20 @@
     <string name="swap_choose_apps">選擇程式</string>
     <string name="swap_dont_show_again">不要再顯示</string>
     <string name="installIncompatible">此軟件包與您的裝置不相容，您還要安裝它嗎？</string>
-	<string name="proxy">代理伺服器</string>
-	<string name="enable_proxy_title">啟用 HTTP 代理伺服器</string>
-	<string name="proxy_host">Proxy Host</string>
-	<string name="proxy_host_summary">設置您的代理伺服器 hostname (如 127.0.0.1)</string>
-	<string name="proxy_port">代理伺服器通訊埠</string>
-	<string name="proxy_port_summary">設置您的代理伺服器通訊埠號碼 (如 8118)</string>
+    <string name="proxy">代理伺服器</string>
+    <string name="enable_proxy_title">啟用 HTTP 代理伺服器</string>
+    <string name="proxy_host">Proxy Host</string>
+    <string name="proxy_host_summary">設置您的代理伺服器 hostname (如 127.0.0.1)</string>
+    <string name="proxy_port">代理伺服器通訊埠</string>
+    <string name="proxy_port_summary">設置您的代理伺服器通訊埠號碼 (如 8118)</string>
 
-	<string name="status_download">正在從 %1$s\n下載\n%2$s / %3$s (%4$d%%)</string>
-	<string name="install_confirm_no_perms">您想安裝此應用程式嗎？它不需要任何特別的存取權。</string>
+    <string name="status_download">正在從 %1$s\n下載\n%2$s / %3$s (%4$d%%)</string>
+    <string name="install_confirm_no_perms">您想安裝此應用程式嗎？它不需要任何特別的存取權。</string>
     <string name="install_confirm">您想安裝此應用程式嗎？它需要以下的存取權：</string>
     <string name="install_confirm_update">您想更新此應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
     <string name="install_confirm_update_system">您想更新此內置的應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
     <string name="install_confirm_update_system_no_perms">您想更新此應用程式嗎？您不會失去現有的數據。已更新的程式不需要任何特別的存取權。</string>
     <string name="update_notification_more">還有 +%1$d 個…</string>
-	<string name="next">下一步</string>
-	<string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
+    <string name="next">下一步</string>
+    <string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
     </resources>

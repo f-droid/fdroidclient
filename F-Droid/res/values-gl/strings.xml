@@ -84,85 +84,85 @@ Publicado con licenza GNU GPLv3.</string>
   <string name="theme">Tema</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="delete">Eliminar</string>
-	<string name="enable_nfc_send">Activar envío NFC…</string>
-	<string name="cache_downloaded_on">Manter os ficheiros dos paquetes descargados no dispositivo</string>
-	<string name="unstable_updates">Actualizacións inestables</string>
-	<string name="update_interval">Intervalo de actualización automática</string>
-	<string name="automatic_scan_wifi_on">Actualizar automáticamente o listado de apps só mediante Wi-Fi</string>
-	<string name="notify_on">Amosar unha notificación cando hai actualizacións dispoñibles</string>
-	<string name="system_installer_on">Utiliza F-Droid Privileged Extension para instalar, actualizar e eleminar paquetes</string>
-	<string name="uninstall_system">Actualizar/Desinstalar Privileged Extension</string>
-	<string name="local_repo_name">Nome do teu repositorio local</string>
-	<string name="local_repo_https">Utiliza unha conexión privada</string>
-	<string name="local_repo_https_on">Utilizar conexión cifrada HTTPS:// para o repositorio local</string>
+    <string name="delete">Eliminar</string>
+    <string name="enable_nfc_send">Activar envío NFC…</string>
+    <string name="cache_downloaded_on">Manter os ficheiros dos paquetes descargados no dispositivo</string>
+    <string name="unstable_updates">Actualizacións inestables</string>
+    <string name="update_interval">Intervalo de actualización automática</string>
+    <string name="automatic_scan_wifi_on">Actualizar automáticamente o listado de apps só mediante Wi-Fi</string>
+    <string name="notify_on">Amosar unha notificación cando hai actualizacións dispoñibles</string>
+    <string name="system_installer_on">Utiliza F-Droid Privileged Extension para instalar, actualizar e eleminar paquetes</string>
+    <string name="uninstall_system">Actualizar/Desinstalar Privileged Extension</string>
+    <string name="local_repo_name">Nome do teu repositorio local</string>
+    <string name="local_repo_https">Utiliza unha conexión privada</string>
+    <string name="local_repo_https_on">Utilizar conexión cifrada HTTPS:// para o repositorio local</string>
 
-	<string name="about_source">Fonte:</string>
-	<string name="app_incompatible">Incompatibel</string>
-	<string name="app_inst_known_source">Instalado (dende %s)</string>
-	<string name="app_inst_unknown_source">Instalado (dende unha fonte descoñecida)</string>
+    <string name="about_source">Fonte:</string>
+    <string name="app_incompatible">Incompatibel</string>
+    <string name="app_inst_known_source">Instalado (dende %s)</string>
+    <string name="app_inst_unknown_source">Instalado (dende unha fonte descoñecida)</string>
 
-	<string name="links">Ligazóns</string>
+    <string name="links">Ligazóns</string>
     <string name="more">Máis</string>
     <string name="less">Menos</string>
 
-	<string name="back">Atrás</string>
-	<string name="enable">Activar</string>
-	<string name="add_key">Engadir chave</string>
-	<string name="overwrite">Sobreescribir</string>
+    <string name="back">Atrás</string>
+    <string name="enable">Activar</string>
+    <string name="add_key">Engadir chave</string>
+    <string name="overwrite">Sobreescribir</string>
 
-	<string name="tab_installed_apps">Instalado</string>
-	<string name="update_notification_more">+%1$d máis…</string>
-	<string name="bluetooth_activity_not_found">Non se atopou ningún método de transmisión Bluetooth, escolla un!</string>
-	<string name="choose_bt_send">Escolla o método de transmisión Bluetooth</string>
-	<string name="send_via_bluetooth">Enviar por Bluetooth</string>
+    <string name="tab_installed_apps">Instalado</string>
+    <string name="update_notification_more">+%1$d máis…</string>
+    <string name="bluetooth_activity_not_found">Non se atopou ningún método de transmisión Bluetooth, escolla un!</string>
+    <string name="choose_bt_send">Escolla o método de transmisión Bluetooth</string>
+    <string name="send_via_bluetooth">Enviar por Bluetooth</string>
 
-	<string name="repo_add_fingerprint">Pegada dixital (opcional)</string>
-	<string name="repo_delete_to_overwrite">Primeiro debes eliminar éste repositorio antes de poder engadir outro con diferente chave.</string>
-	<string name="bad_fingerprint">Pegada dixital incorrecta</string>
-	<string name="invalid_url">Ésta non é unha URL válida.</string>
-	<string name="malformed_repo_uri">Ignorouse unha URL de repositorio mal formada: %s</string>
+    <string name="repo_add_fingerprint">Pegada dixital (opcional)</string>
+    <string name="repo_delete_to_overwrite">Primeiro debes eliminar éste repositorio antes de poder engadir outro con diferente chave.</string>
+    <string name="bad_fingerprint">Pegada dixital incorrecta</string>
+    <string name="invalid_url">Ésta non é unha URL válida.</string>
+    <string name="malformed_repo_uri">Ignorouse unha URL de repositorio mal formada: %s</string>
 
-	<string name="menu_send_apk_bt">Compartir F-Droid mediante Bluetooth</string>
-	<string name="menu_changelog">Historial de cambios</string>
-	<string name="menu_bitcoin">Bitcoin</string>
-	<string name="menu_litecoin">Litecoin</string>
-	<string name="menu_flattr">Flattr</string>
+    <string name="menu_send_apk_bt">Compartir F-Droid mediante Bluetooth</string>
+    <string name="menu_changelog">Historial de cambios</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
 
 
-	<string name="expert_on">Amosar información adicional e activar axustes adicionais</string>
+    <string name="expert_on">Amosar información adicional e activar axustes adicionais</string>
 
-	<string name="show_incompat_versions_on">Amosar versións de aplicativos incompatibles co dispositivo</string>
-	<string name="rooted_on">Non sombrear os aplicativos que requiran privilexios de root</string>
-	<string name="ignoreTouch_on">Incluír sempre aplicativos que requiran pantalla táctil</string>
+    <string name="show_incompat_versions_on">Amosar versións de aplicativos incompatibles co dispositivo</string>
+    <string name="rooted_on">Non sombrear os aplicativos que requiran privilexios de root</string>
+    <string name="ignoreTouch_on">Incluír sempre aplicativos que requiran pantalla táctil</string>
 
-	<string name="local_repo">Repositorio local</string>
-	<string name="local_repo_running">F-Droid está listo para o intercambio</string>
-	<string name="touch_to_configure_local_repo">Toca para ver detalles e permitir ós demáis o intercambio dos teus aplicativos.</string>
-	<string name="deleting_repo">Eliminando o repositorio actual…</string>
-	<string name="adding_apks_format">Engadindo %s ó repositorio…</string>
-	<string name="failed_to_create_index">Fallou ao crear o índice do repositorio!</string>
-	<string name="linking_apks">Ligando APKs ó repositorio…</string>
-	<string name="copying_icons">Copiando iconas de aplicativos no repositorio…</string>
-	<string name="icon">Icona</string>
-	<string name="next">Seguinte</string>
-	<string name="skip">Saltar</string>
+    <string name="local_repo">Repositorio local</string>
+    <string name="local_repo_running">F-Droid está listo para o intercambio</string>
+    <string name="touch_to_configure_local_repo">Toca para ver detalles e permitir ós demáis o intercambio dos teus aplicativos.</string>
+    <string name="deleting_repo">Eliminando o repositorio actual…</string>
+    <string name="adding_apks_format">Engadindo %s ó repositorio…</string>
+    <string name="failed_to_create_index">Fallou ao crear o índice do repositorio!</string>
+    <string name="linking_apks">Ligando APKs ó repositorio…</string>
+    <string name="copying_icons">Copiando iconas de aplicativos no repositorio…</string>
+    <string name="icon">Icona</string>
+    <string name="next">Seguinte</string>
+    <string name="skip">Saltar</string>
 
-	<string name="proxy">Proxy</string>
-	<string name="enable_proxy_title">Activar Proxy HTTP</string>
-	<string name="enable_proxy_summary">Configurar Proxy HTTP para tódalas peticións de rede</string>
-	<string name="proxy_port">Porto do Proxy</string>
-	<string name="proxy_port_summary">Configura o porto do teu proxy (p.e. 8118)</string>
+    <string name="proxy">Proxy</string>
+    <string name="enable_proxy_title">Activar Proxy HTTP</string>
+    <string name="enable_proxy_summary">Configurar Proxy HTTP para tódalas peticións de rede</string>
+    <string name="proxy_port">Porto do Proxy</string>
+    <string name="proxy_port_summary">Configura o porto do teu proxy (p.e. 8118)</string>
 
-	<string name="status_download_unknown_size">Descargando\n%2$s dende\n%1$s</string>
-	<string name="update_notification_title">Actualizando repositorios</string>
-	<string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) dende %1$s</string>
-	<string name="status_inserting">Gardando detalles do aplicativo (%1$d%%)</string>
-	<string name="repos_unchanged">Todos os repositorios están actualizados</string>
+    <string name="status_download_unknown_size">Descargando\n%2$s dende\n%1$s</string>
+    <string name="update_notification_title">Actualizando repositorios</string>
+    <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) dende %1$s</string>
+    <string name="status_inserting">Gardando detalles do aplicativo (%1$d%%)</string>
+    <string name="repos_unchanged">Todos os repositorios están actualizados</string>
         <string name="all_other_repos_fine">Os demáis repositorios non crearon erros.</string>
         <string name="global_error_updating_repos">Error durante a actualización: %s</string>
-	<string name="permissions">Permisos</string>
-	<string name="compactlayout_on">Amosar iconas máis pequenas</string>
+    <string name="permissions">Permisos</string>
+    <string name="compactlayout_on">Amosar iconas máis pequenas</string>
     <string name="unsigned">Sen firmar</string>
     <string name="unverified">Sen verificar</string>
     <string name="repo_details">Repositorio</string>
@@ -200,14 +200,14 @@ Publicado con licenza GNU GPLv3.</string>
     <string name="uninstall_error_unknown">Fallou ao desinstalar por un erro descoñecido</string>
     <string name="system_install_denied_title">F-Droid Privileged Extension non está dispoñíbel</string>
     <string name="system_install_button_install">Instalar</string>
-	<string name="system_install_first_time_notification_message_short">Toca para máis información.</string>
+    <string name="system_install_first_time_notification_message_short">Toca para máis información.</string>
     <string name="system_install_post_fail">Fallou a instalación de F-Droid Privileged Extension</string>
     <string name="system_install_installing">Instalando…</string>
-	<string name="system_install_installing_rebooting">Instalando e reiniciando…</string>
+    <string name="system_install_installing_rebooting">Instalando e reiniciando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
-	<string name="system_install_warning">Levará máis de 10 segundos...</string>
-	<string name="system_install_warning_lollipop">Levará máis de 10 segundos e o dispositivo será <b>reiniciado</b> a continuación.</string>
-	<string name="system_uninstall">Desexas desinstalar F-Droid Privileged Extension?</string>
+    <string name="system_install_warning">Levará máis de 10 segundos...</string>
+    <string name="system_install_warning_lollipop">Levará máis de 10 segundos e o dispositivo será <b>reiniciado</b> a continuación.</string>
+    <string name="system_uninstall">Desexas desinstalar F-Droid Privileged Extension?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Toca para intercambiar</string>
@@ -255,17 +255,17 @@ Publicado con licenza GNU GPLv3.</string>
     <string name="theme_dark">Oscuro</string>
     <string name="theme_night">Nocturno</string>
 <string name="unstable_updates_summary">Suxire actualizacións para versións inestables</string>
-	<string name="update_interval_zero">Non actualizar automáticamente o listado de aplicativos</string>
-	<string name="update_history_summ">Días para considerar aplicativos novos ou recentes: %s</string>
-	<string name="system_installer">Privileged Extension</string>
-	<string name="uninstall_system_summary">Abre a pantalla de detalles da Privileged Extension para actualizala/desinstalala</string>
-	<string name="repo_exists_enable">Este repositorio xa está instalado, confirma que desexas reactivalo.</string>
-	<string name="repo_exists_and_enabled">O seguinte repositorio xa está instalado e activado.</string>
-	<string name="antiupstreamnonfreelist">O código fonte non é completamente libre</string>
+    <string name="update_interval_zero">Non actualizar automáticamente o listado de aplicativos</string>
+    <string name="update_history_summ">Días para considerar aplicativos novos ou recentes: %s</string>
+    <string name="system_installer">Privileged Extension</string>
+    <string name="uninstall_system_summary">Abre a pantalla de detalles da Privileged Extension para actualizala/desinstalala</string>
+    <string name="repo_exists_enable">Este repositorio xa está instalado, confirma que desexas reactivalo.</string>
+    <string name="repo_exists_and_enabled">O seguinte repositorio xa está instalado e activado.</string>
+    <string name="antiupstreamnonfreelist">O código fonte non é completamente libre</string>
 
-	<string name="proxy_host">Servidor Proxy</string>
-	<string name="proxy_host_summary">Configura o nome do proxy (p.e. 127.0.0.1)</string>
-	<string name="unsigned_description">Esto significa que o listado de aplicativos podería non ser verificado. Deberías ter coidad cós aplicativos descargados dende fontes inseguras.</string>
+    <string name="proxy_host">Servidor Proxy</string>
+    <string name="proxy_host_summary">Configura o nome do proxy (p.e. 127.0.0.1)</string>
+    <string name="unsigned_description">Esto significa que o listado de aplicativos podería non ser verificado. Deberías ter coidad cós aplicativos descargados dende fontes inseguras.</string>
     <string name="repo_not_yet_updated">Este repositorio todavía non se uitlizou. Terás que activalo para ver os aplicativos que ofrece.</string>
     <string name="unknown">Descoñecido</string>
     <string name="repo_confirm_delete_title">Eliminar o repositorio?</string>
@@ -299,7 +299,7 @@ Publicado con licenza GNU GPLv3.</string>
     <string name="system_install_first_time_notification">Instalar F-Droid Privileged Extension?</string>
     <string name="system_install_post_success">F-Droid Privileged Extension foi instalado correctamente</string>
     <string name="system_install_question">Desexas instalar F-Droid Privileged Extension?</string>
-	<string name="swap_nfc_description">Se o teu amigo ten F-Droid e o NFC activado, achegade os dispositivos.</string>
+    <string name="swap_nfc_description">Se o teu amigo ten F-Droid e o NFC activado, achegade os dispositivos.</string>
     <string name="swap_join_same_wifi">Únete á mesma rede Wi-Fi que o teu amigo</string>
     <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, asegúrate de estar na mesma rede. Se non tes acceso á mesma rede, un de vos pode crear un punto de acceso Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Axuda ó teu amigo a unirte ao punto de acceso</string>
@@ -332,8 +332,8 @@ Publicado con licenza GNU GPLv3.</string>
 
     <string name="perms_description_app">Ofertado por %1$s.</string>
     <string name="repo_exists_add_fingerprint">Este repositorio xa está instalado, engadirase información adicional sobre a chave.</string>
-	<string name="writing_index_jar">Escribindo índice firmado para o ficheiro (index.jar)…</string>
-	<string name="system_install_first_time_notification_message"/>
+    <string name="writing_index_jar">Escribindo índice firmado para o ficheiro (index.jar)…</string>
+    <string name="system_install_first_time_notification_message"/>
     <string name="system_install_post_success_message">F-Droid Privileged Extension instalouse correctamente. Esto permite á F-Droid instalar, actualizar e desinstalar aplicativos pola súa conta.</string>
     <string name="system_install_post_fail_message">A instalación de F-Droid Privileged Extension fallou. O método de instalación non está dispoñible para todas as distribucións Android, por favor, consulta o seguimento de erros de F-Droid para máis información.</string>
     <string name="system_install_first_time_message"/>
