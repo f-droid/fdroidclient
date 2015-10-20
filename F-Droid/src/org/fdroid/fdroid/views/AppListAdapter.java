@@ -66,7 +66,7 @@ public abstract class AppListAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        View view = mInflater.inflate(R.layout.applistitem, null);
+        View view = mInflater.inflate(R.layout.applistitem, parent, false);
 
         ViewHolder holder = new ViewHolder();
         holder.name = (TextView) view.findViewById(R.id.name);
