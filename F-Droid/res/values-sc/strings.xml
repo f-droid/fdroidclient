@@ -94,7 +94,7 @@ Intregadu cun sa litzèntzia
   <string name="antiupstreamnonfreelist">Su còdighe mitza originale no est lìberu de su totu</string>
   <string name="display">Ammustra</string>
   <string name="expert">Modalidade Espertu</string>
-  <string name="expert_on">Ammustra àteras informatziones e abìlita àteras impostaduras</string>
+  <string name="expert_on">Ammustra àteras informatziones e abìlita àteras impostatziones</string>
   <string name="search_hint">Chirca aplicatziones</string>
   <string name="appcompatibility">Cumpatibilidade aplicatziones</string>
   <string name="show_incompat_versions">Versiones non cumpatìbiles</string>
@@ -331,4 +331,5 @@ Intregadu cun sa litzèntzia
 <string name="more">De prus</string>
     <string name="less">De mancu</string>
 
+    <string name="menu_settings">Impostatziones</string>
     </resources>

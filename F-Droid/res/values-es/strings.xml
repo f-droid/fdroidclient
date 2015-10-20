@@ -334,4 +334,5 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="theme_night">Noche</string>
 <string name="system_install_denied_permissions">¡Los permisos de sistema no han sido otorgados! ¡Por favor, reporta el fallo!</string>
     <string name="system_install_button_open">Conceder permiso</string>
+    <string name="menu_settings">Ajustes</string>
     </resources>

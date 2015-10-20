@@ -307,7 +307,7 @@
     <string name="system_install_button_install">Installer</string>
     <string name="system_install_button_open">Lancer l\'application d\'extension des privilèges</string>
     <string name="system_install_first_time_notification">Installer F-Droid - Extension des Privilèges ?</string>
-    <string name="system_install_first_time_notification_message">Appuyez pour installer F-Droid - Extension des Privilèges. Étroitement liée au système d\'exploitation Android, elle permet à F-Droid installer, metter à jour et désinstaller des applications de son propre chef.\nVous pouvez également le faire plus tard, depuis les préférences de F-Droid.</string>
+    <string name="system_install_first_time_notification_message">Appuyez pour installer F-Droid - Extension des Privilèges. Étroitement liée au système d\'exploitation Android, elle permet à F-Droid installer, metter à jour et désinstaller des applications de son propre chef.\nVous pouvez également le faire plus tard, depuis les paramètres de F-Droid.</string>
     <string name="system_install_post_success">F-Droid - Extension des Privilèges a été installée avec succès</string>
     <string name="system_install_post_fail">Échec de l\'installation de F-Droid - Extension des Privilèges</string>
     <string name="system_install_post_success_message">F-Droid - Extension Privilèges a été installée avec succès. Elle permet à F-Droid d\'installer, mettre à jour et désinstaller des applications de son propre chef.</string>
@@ -330,4 +330,5 @@
 
     <string name="permissions">Permissions</string>
     <string name="theme_night">Nocturne</string>
-</resources>
+<string name="menu_settings">Paramètres</string>
+    </resources>

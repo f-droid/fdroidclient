@@ -331,4 +331,5 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="status_download_unknown_size">Pobieranie\n%2$s z\n%1$s</string>
     <string name="permissions">Uprawnienia</string>
     <string name="theme_night">Nocny</string>
-</resources>
+<string name="menu_settings">Ustawienia</string>
+    </resources>

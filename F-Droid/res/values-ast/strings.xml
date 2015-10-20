@@ -330,4 +330,5 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
 
     <string name="permissions">Permitir</string>
     <string name="theme_night">Nueche</string>
-</resources>
+<string name="menu_settings">Axustes</string>
+    </resources>
