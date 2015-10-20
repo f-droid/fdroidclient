@@ -273,7 +273,7 @@
     <string name="system_install_button_open">Open Extension</string>
     <string name="system_install_first_time_notification">Install F-Droid Privileged Extension?</string>
     <string name="system_install_first_time_notification_message_short">Touch for more information.</string>
-    <string name="system_install_first_time_notification_message">Touch to install F-Droid Privileged Extension, tightly coupled with the Android operating system. This allows F-Droid to install, upgrade and uninstall apps on its own.\nYou can also do this later from F-Droid\'s preferences.</string>
+    <string name="system_install_first_time_notification_message">Touch to install F-Droid Privileged Extension, tightly coupled with the Android operating system. This allows F-Droid to install, upgrade and uninstall apps on its own.\nYou can also do this later from F-Droid\'s settings.</string>
     <string name="system_install_post_success">Successfully installed F-Droid Privileged Extension</string>
     <string name="system_install_post_fail">Installation of F-Droid Privileged Extension failed</string>
     <string name="system_install_post_success_message">F-Droid Privileged Extension has been successfully installed. This allows F-Droid to install, upgrade and uninstall apps on its own.</string>
