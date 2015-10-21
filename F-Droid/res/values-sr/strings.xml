@@ -131,8 +131,6 @@
   <string name="global_error_updating_repos">Грешка приликом ажурирања: %s</string>
   <string name="no_permissions">Не захтева никакве дозволе.</string>
   <string name="no_handler_app">Немате инсталирану апликацију за %s.</string>
-  <string name="compactlayout">Компактни распоред</string>
-  <string name="compactlayout_on">Приказ икона мање величине</string>
   <string name="theme">Тема</string>
   <string name="unsigned">Непотписана</string>
   <string name="unverified">Неоверена</string>

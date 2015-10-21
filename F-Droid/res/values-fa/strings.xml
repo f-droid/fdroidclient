@@ -67,8 +67,6 @@
 %1$s</string>
   <string name="status_checking_compatibility">بررسی سازگاری برنامه‌ها با دستگاه شما…</string>
   <string name="no_permissions">دسترسی‌ای استفاده نشده‌است.</string>
-  <string name="compactlayout">طرح‌بندی فشرده</string>
-  <string name="compactlayout_on">نمایش شکلک‌ها در اندازه کوچکتر</string>
   <string name="theme">پوسته</string>
   <string name="unsigned">بدون امضا</string>
   <string name="repo_description">توضیحات</string>

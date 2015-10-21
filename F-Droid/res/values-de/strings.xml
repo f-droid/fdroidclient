@@ -136,8 +136,6 @@ wird verbunden</string>
   <string name="global_error_updating_repos">Fehler während der Aktualisierung: %s</string>
   <string name="no_permissions">Es werden keine Berechtigungen verwendet.</string>
   <string name="no_handler_app">Es ist keine Anwendung installiert, die mit %s umgehen kann.</string>
-  <string name="compactlayout">Kompakte Ansicht</string>
-  <string name="compactlayout_on">Symbole in einer kleineren Größe anzeigen</string>
   <string name="theme">Thema</string>
   <string name="unsigned">Nicht signiert</string>
   <string name="unverified">Ungeprüft</string>

@@ -134,8 +134,6 @@
   <string name="global_error_updating_repos">Fallu nel anovamientu: %s</string>
   <string name="no_permissions">Nun s\'usaron permisos.</string>
   <string name="no_handler_app">Nun tienes dal aplicación disponible que puea remanar %s.</string>
-  <string name="compactlayout">Distribución compauta</string>
-  <string name="compactlayout_on">Amuesa los iconos nun tamañu más pequeñu</string>
   <string name="theme">Tema</string>
   <string name="unsigned">Non robáu</string>
   <string name="unverified">Non verificáu</string>

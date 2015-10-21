@@ -76,7 +76,6 @@ GNU GPLv3 lizentziapean argitaratua.</string>
 konektatzen</string>
   <string name="status_checking_compatibility">Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen…</string>
   <string name="no_permissions">Ez da baimenik erabiltzen.</string>
-  <string name="compactlayout">Diseinu trinkoa</string>
   <string name="theme">Gaia</string>
   <string name="unsigned">Sinatu gabea</string>
   <string name="repo_num_apps">Aplikazio kopurua</string>
@@ -198,7 +197,6 @@ konektatzen</string>
     <string name="status_download">Deskargatzen\n%2$s / %3$s (%4$d%%) hemendik:\n%1$s</string>
     <string name="status_processing_xml_percent">Prozesatzen %2$s / %3$s (%4$d%%) hemendik: %1$s</string>
     <string name="no_handler_app">Ez duzu %s tratatu dezakeen aplikaziorik eskura.</string>
-    <string name="compactlayout_on">Bistaratu ikono txikiagoak</string>
     <string name="unverified">Egiaztatu gabea</string>
     <string name="repo_details">Biltegia</string>
     <string name="repo_url">Helbidea</string>

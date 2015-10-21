@@ -135,8 +135,6 @@
   <string name="global_error_updating_repos">更新中に問題が発生しました: %s</string>
   <string name="no_permissions">使用される権限はありません｡</string>
   <string name="no_handler_app">取り扱うｱﾌﾟﾘｹｰｼｮﾝがありません %s。</string>
-  <string name="compactlayout">ｺﾝﾊﾟｸﾄ･ﾚｲｱｳﾄ</string>
-  <string name="compactlayout_on">ｱｲｺﾝを小さいｻｲｽﾞで表示します</string>
   <string name="theme">ﾃｰﾏ</string>
   <string name="unsigned">未署名</string>
   <string name="unverified">未検証</string>

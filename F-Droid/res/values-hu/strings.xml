@@ -100,8 +100,6 @@ Honosítás: gidano | sympda.info\"</string>
   <string name="status_checking_compatibility">Alkalmazások eszközkompatibilitási ellenőrzése…</string>
   <string name="no_permissions">Nincsenek engedélyei.</string>
   <string name="no_handler_app">\"Nincs semmilyen app, ami képes ezt kezelni %s\"</string>
-  <string name="compactlayout">Kompakt elrendezés</string>
-  <string name="compactlayout_on">Ikonok kisebb méretben</string>
   <string name="theme">Téma</string>
   <string name="repo_not_yet_updated">Ezt a repo-t még nem használták.
 Ahhoz, hogy megtekinthesse az alkalmazásokat, fissitenie kell.

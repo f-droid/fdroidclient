@@ -134,8 +134,6 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="global_error_updating_repos">업데이트 도중 오류:</string>
   <string name="no_permissions">사용된 권한이 없습니다.</string>
   <string name="no_handler_app">%s을(를) 처리할 수 있는 응용프로그램이 없습니다.</string>
-  <string name="compactlayout">컴팩트 레이아웃</string>
-  <string name="compactlayout_on">아이콘을 작게 표시</string>
   <string name="theme">테마</string>
   <string name="unsigned">서명되지 않음</string>
   <string name="unverified">검증되지 않음</string>

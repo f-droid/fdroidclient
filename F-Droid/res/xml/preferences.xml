@@ -24,9 +24,6 @@
             android:key="language"
             android:defaultValue=""
             android:entryValues="@array/languageValues" />
-        <CheckBoxPreference android:title="@string/compactlayout"
-            android:defaultValue="false"
-            android:key="compactlayout"/>
         <ListPreference android:title="@string/theme"
             android:key="theme"
             android:defaultValue="light"

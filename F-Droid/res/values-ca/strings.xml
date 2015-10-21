@@ -134,8 +134,6 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="global_error_updating_repos">S\'ha produït un error durant l\'actualització: %s</string>
   <string name="no_permissions">No es fa servir cap permís.</string>
   <string name="no_handler_app">No teniu cap aplicació disponible que pugui gestionar %s.</string>
-  <string name="compactlayout">Vista compacta</string>
-  <string name="compactlayout_on">Redueix la mida de les icones</string>
   <string name="theme">Tema</string>
   <string name="unsigned">Sense empremta digital</string>
   <string name="unverified">No verificat</string>

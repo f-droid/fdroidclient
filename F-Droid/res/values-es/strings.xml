@@ -135,8 +135,6 @@
   <string name="global_error_updating_repos">Error en la actualización: %s</string>
   <string name="no_permissions">No se usan permisos.</string>
   <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda manejar %s.</string>
-  <string name="compactlayout">Diseño compacto</string>
-  <string name="compactlayout_on">Mostrar iconos en tamaño menor</string>
   <string name="theme">Tema</string>
   <string name="unsigned">No firmado</string>
   <string name="unverified">No verificado</string>

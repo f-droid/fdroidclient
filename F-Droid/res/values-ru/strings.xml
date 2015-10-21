@@ -135,8 +135,6 @@
   <string name="global_error_updating_repos">Ошибка во время обновления: %s</string>
   <string name="no_permissions">Разрешений не требуется.</string>
   <string name="no_handler_app">У вас нет приложения для обработки %s.</string>
-  <string name="compactlayout">Компактный вид</string>
-  <string name="compactlayout_on">Показать иконки в меньшем размере</string>
   <string name="theme">Тема</string>
   <string name="unsigned">Не подписан</string>
   <string name="unverified">Неподтверждённый</string>

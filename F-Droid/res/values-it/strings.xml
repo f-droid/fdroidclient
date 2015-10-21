@@ -134,8 +134,6 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="global_error_updating_repos">Errore nell\'aggiornamento:</string>
   <string name="no_permissions">Non viene usata alcuna autorizzazione.</string>
   <string name="no_handler_app">Non hai alcuna app disponibile che può gestire %s</string>
-  <string name="compactlayout">Layout Compatto</string>
-  <string name="compactlayout_on">Mostra le icone a dimensione ridotta</string>
   <string name="theme">Tema</string>
   <string name="unsigned">Non firmato</string>
   <string name="unverified">Non verificato</string>

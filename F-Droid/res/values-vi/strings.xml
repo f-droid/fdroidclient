@@ -120,8 +120,6 @@
   <string name="global_error_updating_repos">Lỗi khi cập nhật: %s</string>
   <string name="no_permissions">Không sử dụng quyền nào.</string>
   <string name="no_handler_app">Bạn không có ứng dụng nào để xử lí %s.</string>
-  <string name="compactlayout">Xem rút gọn</string>
-  <string name="compactlayout_on">Giảm kích cỡ biểu tượng</string>
   <string name="theme">Giao diện</string>
   <string name="unverified">Chưa kiểm tra</string>
   <string name="repo_num_apps">Số ứng dụng</string>

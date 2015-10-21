@@ -149,7 +149,6 @@
     <string name="status_connecting_to_repo">Підключення до\n%1$s</string>
     <string name="repos_unchanged">Всі репозиторії в актуальному стані</string>
         <string name="global_error_updating_repos">Помилка під час оновлення: %s</string>
-    <string name="compactlayout_on">Показувати зменшенні піктограми</string>
     <string name="theme">Тема</string>
     <string name="unsigned">Не підписано</string>
     <string name="unverified">Не перевірено</string>
@@ -212,7 +211,6 @@
     <string name="status_checking_compatibility">Перевірка додатків на сумісність із пристроєм…</string>
     <string name="status_inserting">Збереження подробиць додатків (%1$d%%)</string>
     <string name="no_permissions">Не потребує дозволів.</string>
-    <string name="compactlayout">Компактний вигляд</string>
     <string name="requires_features">Залежності: %1$s</string>
     <string name="empty_available_app_list">Відсутні додатки в даній категорії.\n\nСпробуйте обрати іншу категорію або ж оновити ваші репозиторії, для отримання свіжого переліку додатків.</string>
     <string name="empty_can_update_app_list">Всі додатки оновлені.\n\nВітаємо! Всі ваші додатки мають крайні версії (або ж ваші репозиторії застаріли).</string>

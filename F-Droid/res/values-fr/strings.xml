@@ -134,8 +134,6 @@
   <string name="global_error_updating_repos">Erreur durant la mise à jour : %s</string>
   <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
   <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s.</string>
-  <string name="compactlayout">Mise en page compacte</string>
-  <string name="compactlayout_on">Réduire la taille des icônes affichés</string>
   <string name="theme">Thème</string>
   <string name="unsigned">Non signé</string>
   <string name="unverified">Non vérifié</string>

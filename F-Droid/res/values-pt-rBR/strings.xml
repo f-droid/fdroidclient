@@ -132,8 +132,6 @@
   <string name="global_error_updating_repos">Erro durante a atualização: %s</string>
   <string name="no_permissions">Nenhuma permissão utilizada.</string>
   <string name="no_handler_app">Você não tem nenhum aplicativo instalado que possa lidar com %s.</string>
-  <string name="compactlayout">Leiaute compacto</string>
-  <string name="compactlayout_on">Mostrar ícones em um tamanho menor</string>
   <string name="theme">Tema</string>
   <string name="unsigned">Não assinado</string>
   <string name="unverified">Não verificado</string>
