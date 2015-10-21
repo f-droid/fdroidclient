@@ -257,7 +257,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="uninstall_error_unknown">Fallu al desinstalar pola mor d\'un fallu desconocíu</string>
     <string name="system_install_first_time_notification">¿Instalar estensión F-Droid con privilexos?</string>
     <string name="system_install_first_time_notification_message_short">Toca pa más información.</string>
-    <string name="system_install_first_time_notification_message">Toca pa instalar la estensión F-Droid con privilexos, integraráse col to sistema operativu Android. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.\nTamién pues facer esto sero nes preferencies de F-Droid.</string>
+    <string name="system_install_first_time_notification_message">Toca pa instalar la estensión F-Droid con privilexos, integraráse col to sistema operativu Android. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.\nTamién pues facer esto sero nos axustes de F-Droid.</string>
     <string name="system_install_post_success">Instalóse con ésitu la estensión F-Droid con privilexos</string>
     <string name="system_install_post_fail">Fallo la instalación de la estensión F-Droid con privilexos</string>
     <string name="system_install_post_success_message">Instalóse con ésitu la estensión F-Droid con privilexos. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.</string>
