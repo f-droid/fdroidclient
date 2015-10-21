@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.views.fragments;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -130,8 +131,9 @@ public class PreferencesFragment extends PreferenceFragment
                 entrySummary(key);
                 if (changing) {
                     result |= PreferencesActivity.RESULT_RESTART;
-                    getActivity().setResult(result);
-                    FDroidApp.updateLanguage(this.getActivity());
+                    Activity activity = getActivity();
+                    activity.setResult(result);
+                    ((FDroidApp) activity.getApplication()).updateLanguage();
                 }
                 break;
 

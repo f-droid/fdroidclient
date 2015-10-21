@@ -66,6 +66,8 @@ public class FDroidApp extends Application {
 
     private static final String TAG = "FDroidApp";
 
+    private static Locale locale = null;
+
     // for the local repo on this device, all static since there is only one
     public static int port;
     public static String ipAddressString;
@@ -145,18 +147,25 @@ public class FDroidApp extends Application {
         bssid = "";
     }
 
-    public static void updateLanguage(Context c) {
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(c);
+    public void updateLanguage() {
+        Context ctx = getBaseContext();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         String lang = prefs.getString("language", "");
-        updateLanguage(c, lang);
+        locale = Utils.getLocaleFromAndroidLangTag(lang);
+        applyLanguage();
     }
 
-    public static void updateLanguage(Context c, String lang) {
-        final Configuration cfg = new Configuration();
-        final Locale newLocale = Utils.getLocaleFromAndroidLangTag(lang);
-        cfg.locale = newLocale == null ? Locale.getDefault() : newLocale;
-        c.getResources().updateConfiguration(cfg, null);
+    private void applyLanguage() {
+        Context ctx = getBaseContext();
+        Configuration cfg = new Configuration();
+        cfg.locale = locale == null ? Locale.getDefault() : locale;
+        ctx.getResources().updateConfiguration(cfg, null);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        applyLanguage();
     }
 
     @TargetApi(9)
@@ -172,7 +181,7 @@ public class FDroidApp extends Application {
                     .penaltyLog()
                     .build());
         }
-        updateLanguage(this);
+        updateLanguage();
         super.onCreate();
 
         // Needs to be setup before anything else tries to access it.
