@@ -25,6 +25,11 @@ Weblate instead - it applies a series of fixes and suggestions, plus it keeps
 track of modifications and fuzzy translations. Applying translations manually
 skips all of the fixes and checks, and overrides the fuzzy state of strings.
 
+Note that you cannot change the English strings on Weblate. If you have any
+suggestions on how to improve them, open a merge request like you would if you
+were making code changes. This way the changes can be reviewed before the
+source strings on Weblate are changed.
+
 ## Code Style
 
 We follow the [Android Java style](https://source.android.com/source/code-style.html).
