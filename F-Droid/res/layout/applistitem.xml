@@ -7,7 +7,6 @@
     android:baselineAligned="false"
     xmlns:tools="http://schemas.android.com/tools" >
 
-    <!-- Actual icon size is dependent on preferences and set in AppListAdapater.java:layoutIcon() -->
     <ImageView
         android:id="@+id/icon"
         android:contentDescription="@string/app_icon"

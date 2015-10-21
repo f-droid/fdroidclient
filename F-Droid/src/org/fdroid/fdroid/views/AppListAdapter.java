@@ -90,12 +90,9 @@ public abstract class AppListAdapter extends CursorAdapter {
     private void setupView(Context context, View view, Cursor cursor, ViewHolder holder) {
         final App app = new App(cursor);
 
-        boolean compact = Preferences.get().hasCompactLayout();
-
         holder.name.setText(app.name);
         holder.summary.setText(app.summary);
 
-        layoutIcon(holder.icon, compact);
         ImageLoader.getInstance().displayImage(app.iconUrl, holder.icon,
             displayImageOptions);
 
@@ -138,19 +135,4 @@ public abstract class AppListAdapter extends CursorAdapter {
 
         return installedVersionString;
     }
-
-    private void layoutIcon(ImageView icon, boolean compact) {
-        int size = (int) mContext.getResources().getDimension(compact
-            ? R.dimen.applist_icon_compact_size
-            : R.dimen.applist_icon_normal_size);
-
-        LinearLayout.LayoutParams params =
-            (LinearLayout.LayoutParams) icon.getLayoutParams();
-
-        params.height = size;
-        params.width = size;
-
-        icon.setLayoutParams(params);
-    }
-
 }

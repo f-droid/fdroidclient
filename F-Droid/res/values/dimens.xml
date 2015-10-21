@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="applist_icon_normal_size">48dp</dimen>
-    <dimen name="applist_icon_compact_size">32dp</dimen>
-
     <dimen name="layout_horizontal_margin">16dp</dimen>
     <dimen name="material_listitem_height">48dp</dimen>
+
 </resources>

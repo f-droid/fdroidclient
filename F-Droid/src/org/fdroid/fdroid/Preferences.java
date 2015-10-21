@@ -44,7 +44,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_ROOTED = "rooted";
     public static final String PREF_INCOMP_VER = "incompatibleVersions";
     public static final String PREF_THEME = "theme";
-    public static final String PREF_COMPACT_LAYOUT = "compactlayout";
     public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
     public static final String PREF_CACHE_APK = "cacheDownloaded";
     public static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
@@ -62,7 +61,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_FIRST_TIME = "firstTime";
     public static final String PREF_POST_PRIVILEGED_INSTALL = "postPrivilegedInstall";
 
-    private static final boolean DEFAULT_COMPACT_LAYOUT = false;
     private static final boolean DEFAULT_ROOTED = true;
     private static final int DEFAULT_UPD_HISTORY = 14;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = false;
@@ -80,7 +78,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_FIRST_TIME = true;
     private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
 
-    private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
 
     private final Map<String, Boolean> initialized = new HashMap<>();
@@ -187,14 +184,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
     }
 
-    public boolean hasCompactLayout() {
-        if (!isInitialized(PREF_COMPACT_LAYOUT)) {
-            initialize(PREF_COMPACT_LAYOUT);
-            compactLayout = preferences.getBoolean(PREF_COMPACT_LAYOUT, DEFAULT_COMPACT_LAYOUT);
-        }
-        return compactLayout;
-    }
-
     public void registerCompactLayoutChangeListener(ChangeListener listener) {
         compactLayoutListeners.add(listener);
     }
@@ -256,11 +245,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         uninitialize(key);
 
         switch (key) {
-            case PREF_COMPACT_LAYOUT:
-                for (ChangeListener listener : compactLayoutListeners)  {
-                    listener.onPreferenceChange();
-                }
-                break;
             case PREF_ROOTED:
                 for (ChangeListener listener : filterAppsRequiringRootListeners) {
                     listener.onPreferenceChange();
