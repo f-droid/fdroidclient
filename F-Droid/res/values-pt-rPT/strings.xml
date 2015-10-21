@@ -173,8 +173,6 @@
         <string name="global_error_updating_repos">Erro ao atualizar: %s</string>
     <string name="no_permissions">Não utiliza permissões.</string>
     <string name="no_handler_app">Não possui uma aplicação capaz de manipular %s.</string>
-    <string name="compactlayout">Esquema compacto</string>
-    <string name="compactlayout_on">Mostrar ícones mais pequenos</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Não assinada</string>
     <string name="unverified">Não verificada</string>

@@ -191,8 +191,6 @@
     <string name="no_permissions">No permissions are used.</string>
     <string name="permissions">Permissions</string>
     <string name="no_handler_app">You don\'t have any available app that can handle %s.</string>
-    <string name="compactlayout">Compact Layout</string>
-    <string name="compactlayout_on">Show icons at a smaller size</string>
     <string name="theme">Theme</string>
     <string name="unsigned">Unsigned</string>
     <string name="unverified">Unverified</string>

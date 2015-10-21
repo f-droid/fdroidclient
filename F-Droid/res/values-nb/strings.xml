@@ -136,8 +136,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="global_error_updating_repos">Feil under oppdatering: %s</string>
   <string name="no_permissions">Krever ingen tillatelser.</string>
   <string name="no_handler_app">Du har ingen tilgjengelige applikasjoner som kan håndtere %s.</string>
-  <string name="compactlayout">Kompakt layout</string>
-  <string name="compactlayout_on">Vis ikoner i mindre størrelse</string>
   <string name="theme">Utseende</string>
   <string name="unsigned">Usignert</string>
   <string name="unverified">Ubekreftet</string>

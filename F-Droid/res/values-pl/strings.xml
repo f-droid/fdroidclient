@@ -100,8 +100,6 @@
   <string name="all_other_repos_fine">Pozostałe repozytoria nie zgłosiły błędów.</string>
   <string name="global_error_updating_repos">Błąd podczas aktualizacji: %s</string>
   <string name="no_handler_app">Nie masz żadnej dostępnej aplikacji, która może obsłużyć %s.</string>
-  <string name="compactlayout">Widok kompaktowy</string>
-  <string name="compactlayout_on">Pokaż ikony w mniejszym rozmiarze</string>
   <string name="theme"> Motyw</string>
   <string name="unverified">Niezweryfikowane</string>
   <string name="repo_num_apps">Liczba aplikacji</string>

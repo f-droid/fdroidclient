@@ -135,8 +135,6 @@ Intregadu cun sa litzèntzia
   <string name="global_error_updating_repos">Faddina durante s\'agiornamentu: %s</string>
   <string name="no_permissions">Perunu permissu impreadu.</string>
   <string name="no_handler_app">Non tenes peruna aplicatzione disponìbile pro gestire %s.</string>
-  <string name="compactlayout">Aspetu cumpatu</string>
-  <string name="compactlayout_on">Ammustra sas iconas cun una mannària minimada</string>
   <string name="theme">Tema</string>
   <string name="unsigned">Non firmadu</string>
   <string name="unverified">Non verificadu</string>

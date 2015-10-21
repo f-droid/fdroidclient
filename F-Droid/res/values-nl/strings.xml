@@ -134,8 +134,6 @@
   <string name="global_error_updating_repos">Fout tijdens update: %s</string>
   <string name="no_permissions">Geen permissies worden gebruikt.</string>
   <string name="no_handler_app">Je hebt geen app die %s kan verwerken.</string>
-  <string name="compactlayout">Compacte Layout</string>
-  <string name="compactlayout_on">Iconen weergeven in klein formaat</string>
   <string name="theme">Thema</string>
   <string name="unsigned">Ongetekend</string>
   <string name="unverified">Onbevestigd</string>

@@ -168,8 +168,6 @@
     <string name="no_permissions">Tidak memerlukan izin apapun.</string>
     <string name="permissions">Perizinan</string>
     <string name="no_handler_app">Anda tidak memiliki aplikasi yang bisa menangani %s.</string>
-    <string name="compactlayout">Tata Letak Ringkas</string>
-    <string name="compactlayout_on">Menampilkan ikon dengan ukuran yang lebih kecil</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Tidak bertanda tangan</string>
     <string name="unverified">Tidak terverifikasi</string>

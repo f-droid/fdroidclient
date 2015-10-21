@@ -79,7 +79,6 @@ Publicado con licenza GNU GPLv3.</string>
   <string name="status_checking_compatibility">Comprobando a compatibilidade das aps con seu aparello…</string>
   <string name="no_permissions">Non se usan permisos.</string>
   <string name="no_handler_app">Non tes ningun aplicativo dispoñíbel que poida manexar %s.</string>
-  <string name="compactlayout">Deseño compacto</string>
   <string name="theme">Tema</string>
 <string name="app_name">F-Droid</string>
 
@@ -161,7 +160,6 @@ Publicado con licenza GNU GPLv3.</string>
         <string name="all_other_repos_fine">Os demáis repositorios non crearon erros.</string>
         <string name="global_error_updating_repos">Error durante a actualización: %s</string>
     <string name="permissions">Permisos</string>
-    <string name="compactlayout_on">Amosar iconas máis pequenas</string>
     <string name="unsigned">Sen firmar</string>
     <string name="unverified">Sen verificar</string>
     <string name="repo_details">Repositorio</string>

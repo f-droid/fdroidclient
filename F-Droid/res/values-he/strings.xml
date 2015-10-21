@@ -156,8 +156,6 @@
         <string name="global_error_updating_repos">שגיאה במהלך עדכון: %s</string>
     <string name="no_permissions">אין הרשאות בשימוש.</string>
     <string name="no_handler_app">אין לך שום אפליקציה זמינה אשר מסוגלת להתמודד עם %s.</string>
-    <string name="compactlayout">סידור קומפקטי</string>
-    <string name="compactlayout_on">הצג סמלים בגודל קטן יותר</string>
     <string name="theme">מוטיב</string>
     <string name="unsigned">לא חתום</string>
     <string name="unverified">לא בדוק</string>

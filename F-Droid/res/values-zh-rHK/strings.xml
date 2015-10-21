@@ -109,8 +109,6 @@
   <string name="all_other_repos_fine">其他倉庫都沒有出現問題。</string>
   <string name="global_error_updating_repos">更新時出現問題：%s</string>
   <string name="no_permissions">沒有使用任何存取權。</string>
-  <string name="compactlayout">濃縮設計</string>
-  <string name="compactlayout_on">顯示小型圖示</string>
   <string name="theme">主題</string>
   <string name="unsigned">未簽署</string>
   <string name="unverified">未經驗證</string>

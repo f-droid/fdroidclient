@@ -133,8 +133,6 @@ Vydaný pod licenciou
   <string name="global_error_updating_repos">Chyba počas aktualizácie: %s</string>
   <string name="no_permissions">Nepoužívajú sa žiadne povolenia.</string>
   <string name="no_handler_app">Nemáte žiadne dostupné aplikácie, ktoré môžu spracovať %s.</string>
-  <string name="compactlayout">Úsporné rozloženie</string>
-  <string name="compactlayout_on">Zobraziť menšie ikony</string>
   <string name="theme">Téma</string>
   <string name="unsigned">Nepodpísané</string>
   <string name="unverified">Neoverené</string>

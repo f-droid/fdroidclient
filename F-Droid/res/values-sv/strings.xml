@@ -136,8 +136,6 @@ Släppt under licensen GNU GPLv3.</string>
   <string name="global_error_updating_repos">Fel under uppdatering:</string>
   <string name="no_permissions">Inga behörigheter används.</string>
   <string name="no_handler_app">Du har inte någon app tillgänglig för hantering av %s</string>
-  <string name="compactlayout">Kompakt layout</string>
-  <string name="compactlayout_on">Visa ikoner i en mindre storlek</string>
   <string name="theme">Tema</string>
   <string name="unsigned">Osignerad</string>
   <string name="unverified">Ej verifierad</string>

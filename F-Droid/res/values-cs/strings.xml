@@ -110,8 +110,6 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="repos_unchanged">V žádném repozitáři nejsou dostupné aktualizace balíčků</string>
   <string name="global_error_updating_repos">Chyba při aktualizaci:</string>
   <string name="no_permissions">Žádná oprávnění nejsou použita.</string>
-  <string name="compactlayout">Úsporné rozvržení</string>
-  <string name="compactlayout_on">Zobrazit menší ikonky</string>
   <string name="theme">Téma</string>
   <string name="unsigned">Nepodepsáno</string>
   <string name="unverified">Neověřeno</string>

@@ -121,8 +121,6 @@
   <string name="global_error_updating_repos">Грешка при актуализирането: %s</string>
   <string name="no_permissions">Не изисква разрешения.</string>
   <string name="no_handler_app">Никое инсталирано приложение не може да изпълни %s.</string>
-  <string name="compactlayout">Компактно оформление</string>
-  <string name="compactlayout_on">Показва по-малки икони</string>
   <string name="theme">Тема</string>
   <string name="repo_num_apps">Брой приложения</string>
   <string name="repo_fingerprint">Отпечатък на ключа за подписване (SHA-256)</string>

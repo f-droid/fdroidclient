@@ -117,8 +117,6 @@
   <string name="status_inserting">正在保存应用程序的细节 (%1$d%%)</string>
   <string name="no_permissions">未使用任何权限。</string>
   <string name="no_handler_app">你没有可处理 %s 的应用程序</string>
-  <string name="compactlayout">紧凑布局</string>
-  <string name="compactlayout_on">显示小图标</string>
   <string name="theme">主题</string>
   <string name="unsigned">未签名</string>
   <string name="unverified">未验证的</string>
