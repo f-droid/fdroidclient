@@ -66,7 +66,7 @@ public class FDroidApp extends Application {
 
     private static final String TAG = "FDroidApp";
 
-    private static Locale locale = null;
+    private static Locale locale;
 
     // for the local repo on this device, all static since there is only one
     public static int port;
