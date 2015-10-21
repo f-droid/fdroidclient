@@ -759,7 +759,7 @@ public class AppProvider extends FDroidProvider {
         }
 
         if (AppProvider.DataColumns.NAME.equals(sortOrder)) {
-            sortOrder = " lower( fdroid_app." + sortOrder + " ) ";
+            sortOrder = " fdroid_app." + sortOrder + " COLLATE LOCALIZED ";
         }
 
         Query query = new Query();
