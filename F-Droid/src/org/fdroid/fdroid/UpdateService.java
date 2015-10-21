@@ -223,7 +223,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
     };
 
-        // For receiving results from the UpdateService when we've told it to
+    // For receiving results from the UpdateService when we've told it to
     // update in response to a user request.
     private final BroadcastReceiver updateStatusReceiver = new BroadcastReceiver() {
 
