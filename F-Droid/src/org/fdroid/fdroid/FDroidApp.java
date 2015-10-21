@@ -150,7 +150,7 @@ public class FDroidApp extends Application {
     public void updateLanguage() {
         Context ctx = getBaseContext();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
-        String lang = prefs.getString("language", "");
+        String lang = prefs.getString(Preferences.PREF_LANGUAGE, "");
         locale = Utils.getLocaleFromAndroidLangTag(lang);
         applyLanguage();
     }
