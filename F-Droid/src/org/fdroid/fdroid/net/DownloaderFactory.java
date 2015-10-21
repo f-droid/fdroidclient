@@ -1,6 +1,8 @@
 package org.fdroid.fdroid.net;
 
+import android.app.DownloadManager;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Build;
 
 import org.fdroid.fdroid.Utils;
@@ -75,7 +77,19 @@ public class DownloaderFactory {
     }
 
     private static boolean hasDownloadManager(Context context) {
-        return context.getSystemService(Context.DOWNLOAD_SERVICE) != null;
+        DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        if (dm == null) {
+            // Service was not found
+            return false;
+        }
+        DownloadManager.Query query = new DownloadManager.Query();
+        Cursor c = dm.query(query);
+        if (c == null) {
+            // Download Manager was disabled
+            return false;
+        }
+        c.close();
+        return true;
     }
 
     /**

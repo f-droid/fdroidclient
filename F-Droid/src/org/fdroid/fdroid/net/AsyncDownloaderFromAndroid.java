@@ -294,6 +294,10 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
         DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Query query = new DownloadManager.Query();
         Cursor c = dm.query(query);
+        if (c == null) {
+            // TODO: same as above.
+            return -1;
+        }
         int columnUniqueDownloadId = c.getColumnIndex(DownloadManager.COLUMN_DESCRIPTION);
         int columnId = c.getColumnIndex(DownloadManager.COLUMN_ID);
 
