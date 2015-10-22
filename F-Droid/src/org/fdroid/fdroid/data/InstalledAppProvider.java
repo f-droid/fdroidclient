@@ -4,15 +4,19 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,9 +63,11 @@ public class InstalledAppProvider extends FDroidProvider {
         String VERSION_CODE = "versionCode";
         String VERSION_NAME = "versionName";
         String APPLICATION_LABEL = "applicationLabel";
+        String SIGNATURE = "sig";
 
         String[] ALL = {
             _ID, APP_ID, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
+            SIGNATURE,
         };
 
     }
@@ -104,6 +110,18 @@ public class InstalledAppProvider extends FDroidProvider {
             Utils.debugLog(TAG, "Could not get application label", e);
         }
         return packageName; // all else fails, return id
+    }
+
+    public static String getPackageSig(PackageInfo info) {
+        Signature sig = info.signatures[0];
+        String sigHash = "";
+        try {
+            Hasher hash = new Hasher("MD5", sig.toCharsString().getBytes());
+            sigHash = hash.getHash();
+        } catch (NoSuchAlgorithmException e) {
+            // ignore
+        }
+        return sigHash;
     }
 
     @Override

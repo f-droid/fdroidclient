@@ -100,6 +100,8 @@ public class App extends ValueObject implements Comparable<App> {
 
     public Apk installedApk; // might be null if not installed
 
+    public String installedSig;
+
     public boolean system;
     public boolean updatedSystemApp;
 
@@ -208,6 +210,9 @@ public class App extends ValueObject implements Comparable<App> {
                     break;
                 case AppProvider.DataColumns.InstalledApp.VERSION_NAME:
                     installedVersionName = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.InstalledApp.SIGNATURE:
+                    installedSig = cursor.getString(i);
                     break;
                 case "_id":
                     break;
