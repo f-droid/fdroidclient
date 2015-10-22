@@ -828,72 +828,16 @@ public class AppProvider extends FDroidProvider {
 
     private void updateAppDetails() {
         updateCompatibleFlags();
-        updateSuggestedFromLatest();
         updateSuggestedFromUpstream();
+        updateSuggestedFromLatest();
         updateIconUrls(getContext(), write());
-    }
-
-    /**
-     * Look at the upstream version of each app, our goal is to find the apk
-     * with the closest version code to that, without going over.
-     * If the app is not compatible at all (i.e. no versions were compatible)
-     * then we take the highest, otherwise we take the highest compatible version.
-     *
-     * Replaces the existing Java code:
-     *
-     * if (app.upstreamVercode > 0) {
-     *     int latestcode = -1;
-     *     for (Apk apk : apksForApp) {
-     *         if ((!app.compatible || apk.compatible)
-     *                 && apk.vercode <= app.upstreamVercode
-     *                 && apk.vercode > latestcode) {
-     *             latestApk = apk;
-     *             latestcode = apk.vercode;
-     *         }
-     *     }
-     * }
-     *
-     * And it can be read a little easier like this (without the string concats):
-     *
-     *   UPDATE fdroid_app
-     *   SET suggestedVercode = (
-     *       SELECT MAX(fdroid_apk.vercode)
-     *       FROM fdroid_apk
-     *       WHERE
-     *           fdroid_app.id = fdroid_apk.id AND
-     *           fdroid_apk.vercode <= fdroid_app.upstreamVercode AND
-     *           ( fdroid_app.compatible = 0 OR fdroid_apk.compatible = 1 )
-     *   )
-     *   WHERE upstreamVercode > 0
-     */
-    private void updateSuggestedFromUpstream() {
-
-        Utils.debugLog(TAG, "Calculating suggested versions for all apps which specify an upstream version code.");
-
-        final String apk = DBHelper.TABLE_APK;
-        final String app = DBHelper.TABLE_APP;
-
-        final boolean unstableUpdates = Preferences.get().getUnstableUpdates();
-        String restrictToStable = unstableUpdates ? "" : (apk + ".vercode <= " + app + ".upstreamVercode AND ");
-        String updateSql =
-            "UPDATE " + app +
-            " SET suggestedVercode = ( " +
-                " SELECT MAX( " + apk + ".vercode ) " +
-                " FROM " + apk +
-                " WHERE " +
-                    app + ".id = " + apk + ".id AND " +
-                    restrictToStable +
-                    " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
-            " WHERE upstreamVercode > 0 ";
-
-        write().execSQL(updateSql);
     }
 
     /**
      * For each app, we want to set the isCompatible flag to 1 if any of the apks we know
      * about are compatible, and 0 otherwise.
      *
-     * Here is the SQL query without all of the concatenations (hopefully it's a bit easier to read):
+     * Readable SQL code:
      *
      *  UPDATE fdroid_app SET compatible = (
      *      SELECT TOTAL( fdroid_apk.compatible ) > 0
@@ -917,32 +861,64 @@ public class AppProvider extends FDroidProvider {
     }
 
     /**
-     * For all apps that don't specify an upstream version code, we take the
-     * latest apk in the repo. If the app is not compatible at all (i.e. no versions
-     * were compatible) then we take the highest, otherwise we take the highest
-     * compatible version.
+     * Look at the upstream version of each app, our goal is to find the apk
+     * with the closest version code to that, without going over.
+     * If the app is not compatible at all (i.e. no versions were compatible)
+     * then we take the highest, otherwise we take the highest compatible version.
      *
-     * Replaces the existing Java code:
+     * Readable SQL code:
      *
-     * for (Apk apk : apksForApp) {
-     *     if ((!app.compatible || apk.compatible)
-     *             && apk.vercode > latestCode) {
-     *         latestApk = apk;
-     *         latestCode = apk.vercode;
-     *     }
-     * }
+     *   UPDATE fdroid_app
+     *   SET suggestedVercode = (
+     *       SELECT MAX(fdroid_apk.vercode)
+     *       FROM fdroid_apk
+     *       WHERE
+     *           fdroid_app.id = fdroid_apk.id AND
+     *           fdroid_apk.vercode <= fdroid_app.upstreamVercode AND
+     *           ( fdroid_app.compatible = 0 OR fdroid_apk.compatible = 1 )
+     *   )
+     *   WHERE upstreamVercode > 0
+     */
+    private void updateSuggestedFromUpstream() {
+
+        Utils.debugLog(TAG, "Calculating suggested versions for all apps which specify an upstream version code.");
+
+        final String apk = DBHelper.TABLE_APK;
+        final String app = DBHelper.TABLE_APP;
+
+        final boolean unstableUpdates = Preferences.get().getUnstableUpdates();
+        String restrictToStable = unstableUpdates ? "" : (apk + ".vercode <= " + app + ".upstreamVercode AND ");
+        String updateSql =
+            "UPDATE " + app + " SET suggestedVercode = ( " +
+                " SELECT MAX( " + apk + ".vercode ) " +
+                " FROM " + apk +
+                " WHERE " +
+                    app + ".id = " + apk + ".id AND " +
+                    restrictToStable +
+                    " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
+            " WHERE upstreamVercode > 0 ";
+
+        write().execSQL(updateSql);
+    }
+
+    /**
+     * We set each app's suggested version to the latest available that is
+     * compatible, or the latest available if none are compatible.
      *
-     * And it can be read a little easier like this (without the string concats):
+     * If the suggested version is null, it means that we could not figure it
+     * out from the upstream vercode. In such a case, fall back to the simpler
+     * algorithm as if upstreamVercode was 0.
      *
-     *  UPDATE fdroid_app
-     *  SET suggestedVercode = (
+     * Readable SQL code:
+     *
+     *  UPDATE fdroid_app SET suggestedVercode = (
      *      SELECT MAX(fdroid_apk.vercode)
      *      FROM fdroid_apk
      *      WHERE
      *          fdroid_app.id = fdroid_apk.id AND
      *          ( fdroid_app.compatible = 0 OR fdroid_apk.compatible = 1 )
      *  )
-     *  WHERE upstreamVercode = 0 OR upstreamVercode IS NULL;
+     *  WHERE upstreamVercode = 0 OR upstreamVercode IS NULL OR suggestedVercode IS NULL;
      */
     private void updateSuggestedFromLatest() {
 
@@ -952,14 +928,13 @@ public class AppProvider extends FDroidProvider {
         final String app = DBHelper.TABLE_APP;
 
         String updateSql =
-            "UPDATE " + app +
-            " SET suggestedVercode = ( " +
+            "UPDATE " + app + " SET suggestedVercode = ( " +
                 " SELECT MAX( " + apk + ".vercode ) " +
                 " FROM " + apk +
                 " WHERE " +
                     app + ".id = " + apk + ".id AND " +
                     " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
-            " WHERE upstreamVercode = 0 OR upstreamVercode IS NULL ";
+            " WHERE upstreamVercode = 0 OR upstreamVercode IS NULL OR suggestedVercode IS NULL ";
 
         write().execSQL(updateSql);
     }
