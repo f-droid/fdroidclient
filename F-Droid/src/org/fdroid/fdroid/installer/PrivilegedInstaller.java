@@ -79,7 +79,7 @@ public class PrivilegedInstaller extends Installer {
 
     private Activity mActivity;
 
-    public static final int REQUEST_CONFIRM_PERMS = 0;
+    private static final int REQUEST_CONFIRM_PERMS = 0;
 
     public static final int IS_EXTENSION_INSTALLED_NO = 0;
     public static final int IS_EXTENSION_INSTALLED_YES = 1;

@@ -126,7 +126,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     private static final String TAG = "AppDetails";
 
-    public static final int REQUEST_ENABLE_BLUETOOTH = 2;
+    private static final int REQUEST_ENABLE_BLUETOOTH = 2;
 
     public static final String EXTRA_APPID = "appid";
     public static final String EXTRA_FROM = "from";
@@ -147,7 +147,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     }
 
     // observer to update view when package has been installed/deleted
-    AppObserver myAppObserver;
+    private AppObserver myAppObserver;
 
     class AppObserver extends ContentObserver {
 
@@ -548,7 +548,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         supportInvalidateOptionsMenu();
     }
 
-    public void setIgnoreUpdates(String appId, boolean ignoreAll, int ignoreVersionCode) {
+    private void setIgnoreUpdates(String appId, boolean ignoreAll, int ignoreVersionCode) {
 
         Uri uri = AppProvider.getContentUri(appId);
 
@@ -756,7 +756,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     }
 
-    protected void navigateUp() {
+    private void navigateUp() {
         NavUtils.navigateUpFromSameTask(this);
     }
 
@@ -908,7 +908,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
     }
 
-    final Installer.InstallerCallback myInstallerCallback = new Installer.InstallerCallback() {
+    private final Installer.InstallerCallback myInstallerCallback = new Installer.InstallerCallback() {
 
         @Override
         public void onSuccess(final int operation) {

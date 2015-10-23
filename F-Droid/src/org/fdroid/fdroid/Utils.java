@@ -72,7 +72,7 @@ public final class Utils {
     @SuppressWarnings("UnusedDeclaration")
     private static final String TAG = "Utils";
 
-    public static final int BUFFER_SIZE = 4096;
+    private static final int BUFFER_SIZE = 4096;
 
     // The date format used for storing dates (e.g. lastupdated, added) in the
     // database.

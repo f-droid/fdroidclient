@@ -371,7 +371,7 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
     /**
      * Broadcast receiver to listen for ACTION_DOWNLOAD_COMPLETE broadcasts
      */
-    final BroadcastReceiver receiver = new BroadcastReceiver() {
+    private final BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {

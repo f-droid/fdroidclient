@@ -52,9 +52,9 @@ public class FDroid extends ActionBarActivity {
 
     private static final String TAG = "FDroid";
 
-    public static final int REQUEST_PREFS = 1;
-    public static final int REQUEST_ENABLE_BLUETOOTH = 2;
-    public static final int REQUEST_SWAP = 3;
+    private static final int REQUEST_PREFS = 1;
+    private static final int REQUEST_ENABLE_BLUETOOTH = 2;
+    private static final int REQUEST_SWAP = 3;
 
     public static final String EXTRA_TAB_UPDATE = "extraTab";
 
@@ -347,7 +347,7 @@ public class FDroid extends ActionBarActivity {
         return tabManager;
     }
 
-    public void refreshUpdateTabLabel() {
+    private void refreshUpdateTabLabel() {
         getTabManager().refreshTabLabel(TabManager.INDEX_CAN_UPDATE);
     }
 

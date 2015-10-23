@@ -36,9 +36,9 @@ public class AvailableAppsFragment extends AppListFragment implements
 
     private static final String TAG = "AvailableAppsFragment";
 
-    public static final String PREFERENCES_FILE = "CategorySpinnerPosition";
-    public static final String CATEGORY_KEY = "Selection";
-    public static String defaultCategory;
+    private static final String PREFERENCES_FILE = "CategorySpinnerPosition";
+    private static final String CATEGORY_KEY = "Selection";
+    private static String defaultCategory;
 
     private List<String> categories;
     private Spinner categorySpinner;
