@@ -18,7 +18,6 @@ import org.fdroid.fdroid.data.App;
 
 public abstract class AppListAdapter extends CursorAdapter {
 
-    private Context mContext;
     private LayoutInflater mInflater;
     private DisplayImageOptions displayImageOptions;
 
@@ -43,8 +42,7 @@ public abstract class AppListAdapter extends CursorAdapter {
     }
 
     private void init(Context context) {
-        mContext = context;
-        mInflater = (LayoutInflater) mContext.getSystemService(
+        mInflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         displayImageOptions = Utils.getImageLoadingOptions().build();
 

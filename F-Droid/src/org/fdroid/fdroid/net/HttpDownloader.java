@@ -34,7 +34,6 @@ public class HttpDownloader extends Downloader {
     protected HttpURLConnection connection;
     private InputStream stream;
     private int statusCode = -1;
-    private boolean onlyStream;
 
     HttpDownloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
@@ -46,7 +45,6 @@ public class HttpDownloader extends Downloader {
      * only stream the file through the {@link HttpDownloader#getInputStream()}
      */
     public HttpDownloader streamDontDownload() {
-        onlyStream = true;
         return this;
     }
 
