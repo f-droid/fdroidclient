@@ -42,7 +42,7 @@ public final class QRCodeEncoder {
     private String displayContents;
     private String title;
     private BarcodeFormat format;
-    private boolean encoded;
+    private final boolean encoded;
 
     public QRCodeEncoder(String data, Bundle bundle, String type, String format, int dimension) {
         this.dimension = dimension;

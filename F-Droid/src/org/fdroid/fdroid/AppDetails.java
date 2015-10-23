@@ -1133,7 +1133,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         private ViewGroup layoutLinksContent;
-        private View.OnClickListener expanderLinks = new View.OnClickListener() {
+        private final View.OnClickListener expanderLinks = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
