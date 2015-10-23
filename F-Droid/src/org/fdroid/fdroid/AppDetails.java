@@ -699,7 +699,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     private void tryOpenUri(String s) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
-        if (intent.resolveActivity(getPackageManager()) == null) {
+        if (intent.resolveActivity(mPm) == null) {
             Toast.makeText(this,
                     getString(R.string.no_handler_app, intent.getDataString()),
                     Toast.LENGTH_LONG).show();
