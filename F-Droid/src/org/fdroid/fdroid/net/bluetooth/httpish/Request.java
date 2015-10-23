@@ -154,7 +154,9 @@ public final class Request {
 
             try {
                 Thread.sleep(100);
-            } catch (Exception e) { }
+            } catch (Exception e) {
+                // ignore
+            }
         }
 
         return line;

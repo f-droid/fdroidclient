@@ -122,6 +122,7 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
                     try {
                         Thread.sleep(1000);
                     } catch (Exception e) {
+                        // ignore
                     }
                     sendProgress(getBytesRead(), getTotalBytes());
                 }
