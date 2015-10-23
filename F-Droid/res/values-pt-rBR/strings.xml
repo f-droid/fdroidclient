@@ -126,8 +126,8 @@
   <string name="status_download">Baixando\n%2$s / %3$s (%4$d%%) de\n%1$s</string>
   <string name="status_connecting_to_repo">Conectando-se a\n%1$s</string>
   <string name="status_checking_compatibility">Verificando compatibilidade de aplicativos com o seu dispositivo…</string>
-  <string name="status_inserting">Salvando detalhes dos aplicativos (%1$d%%)</string>
-  <string name="repos_unchanged">Nenhum repositório tem atualizações de pacotes</string>
+  <string name="status_inserting">Salvando detalhes do aplicativo (%1$d%%)</string>
+  <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
   <string name="all_other_repos_fine">Todos os outros repositórios não geraram erros.</string>
   <string name="global_error_updating_repos">Erro durante a atualização: %s</string>
   <string name="no_permissions">Nenhuma permissão utilizada.</string>
@@ -216,7 +216,7 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
     <string name="system_install_first_time_notification">Instalar extensão privilegiada do F-Droid?</string>
     <string name="system_install_first_time_notification_message_short">Toque para obter mais informações.</string>
-    <string name="system_install_first_time_notification_message">Toque para instalar a extensão privilegiada do F-Droid, integrada fortemente com o sistema operacional Android. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.\nVocê também pode fazer isso depois nas preferências do F-Droid.</string>
+    <string name="system_install_first_time_notification_message">Toque para instalar a extensão privilegiada do F-Droid, integrada fortemente com o sistema operacional Android. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.\nVocê também pode fazer isso depois nas configurações do F-Droid.</string>
     <string name="system_install_post_success">A extensão privilegiada do F-Droid foi instalada com sucesso</string>
     <string name="system_install_post_fail">Falha na instalação da extensão privilegiada do F-Droid</string>
     <string name="system_install_post_success_message">A extensão privilegiada do F-Droid foi instalada com sucesso. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.</string>
@@ -327,4 +327,5 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="repo_details">Repositório</string>
     <string name="repo_url">Endereço</string>
     <string name="theme_night">Noite</string>
-</resources>
+<string name="menu_settings">Configurações</string>
+    </resources>

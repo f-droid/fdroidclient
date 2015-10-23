@@ -23,7 +23,7 @@
   <string name="update_history_summ">Показывать новые приложения и обновления за последние %s дней</string>
   <string name="system_installer">Привилегированное расширение</string>
   <string name="system_installer_on">Использовать привилегированное расширение F-Droid для установки, обновления и удаления пакетов</string>
-  <string name="local_repo_name">Название вашего локального репозитория</string>
+  <string name="local_repo_name">Название локального репозитория</string>
   <string name="local_repo_name_summary">Ваш локальный репозиторий рекламируется под именем: %s</string>
   <string name="local_repo_https">Использовать частное соединение</string>
   <string name="local_repo_https_on">Использовать защищённое HTTPS:// соединение для локального репозитория</string>
@@ -126,11 +126,10 @@
   <string name="status_download">Загрузка
 %2$s / %3$s (%4$d%%) из
 %1$s</string>
-  <string name="status_connecting_to_repo">Соединение с
-%1$s</string>
+  <string name="status_connecting_to_repo">Соединение с\n%1$s</string>
   <string name="status_checking_compatibility">Проверка совместимости приложений с вашим устройством…</string>
-  <string name="status_inserting">Сохранение данных приложений (%1$d%%)</string>
-  <string name="repos_unchanged">Нет обновлений репозиториев</string>
+  <string name="status_inserting">Сохранение данных о приложениях (%1$d%%)</string>
+  <string name="repos_unchanged">Все репозитории обновлены</string>
   <string name="all_other_repos_fine">Все другие репозитории не привели к ошибкам.</string>
   <string name="global_error_updating_repos">Ошибка во время обновления: %s</string>
   <string name="no_permissions">Разрешений не требуется.</string>
@@ -217,9 +216,10 @@
     <string name="pref_language_default">Системный</string>
 
     <string name="theme_night">Ночная</string>
-<string name="empty_installed_app_list">Нет установленных приложений.\n\nНа вашем устройстве есть приложения, но они недоступны из F-Droid. Это возможно из-за того, что репозитории не обновлены, а может быть они вообще не содержат установленных у вас приложений.</string>
+<string name="empty_installed_app_list">Нет установленных приложений.\n\nНа вашем устройстве есть приложения, но они недоступны из F-Droid. Возможно, репозитории не обновлены, а может быть они вообще не содержат установленных у вас приложений.</string>
     <string name="empty_available_app_list">Нет приложений в этой категории.\n\nПопробуйте выбрать другую категорию или обновите репозитории, чтобы получить свежий список приложений.</string>
     <string name="empty_can_update_app_list">Все приложения обновлены.\n\nПоздравляем! У вас установлены самые свежие версии приложений (либо репозитории требуют обновления).</string>
 
     <string name="permissions">Разрешения</string>
+    <string name="menu_settings">Настройки</string>
     </resources>

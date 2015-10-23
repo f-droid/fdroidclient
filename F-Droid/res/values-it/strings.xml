@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Trovate %1$d applicazioni corrispondenti a \'%2$s\':</string>
   <string name="searchres_oneapp">Trovata un\'applicazione corrispondente a \'%s\':</string>
@@ -186,4 +186,6 @@ Prova a collegarti a questa rete: %s</string>
   <string name="open_qr_code_scanner">Apri lo scanner per codici QR</string>
   <string name="swap_welcome">Benvenuto in F-Droid!</string>
   <string name="swap_confirm_connect">Vuoi ricevere le app da %1$s?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+    </resources>

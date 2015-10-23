@@ -126,11 +126,10 @@ Intregadu cun sa litzèntzia
   <string name="proxy_port">Ghenna proxy</string>
   <string name="proxy_port_summary">Cunfigura su nùmeru de sa ghenna de su proxy tuo (es. 8118)</string>
   <string name="status_download">Iscarrighende %2$s / %3$s (%4$d%%) dae %1$s</string>
-  <string name="status_connecting_to_repo">Cunnessione a
-%1$s</string>
+  <string name="status_connecting_to_repo">Cunnessione a\n%1$s</string>
   <string name="status_checking_compatibility">Verifichende sa cumpatibilidade cun su dispositivu tuo…</string>
   <string name="status_inserting">Sarbende minujas/detàllios aplicatziones (%1$d%%)</string>
-  <string name="repos_unchanged">Perunu depòsitu tenet agiornamentos de pachetos</string>
+  <string name="repos_unchanged">Totu sos depòsitos sunt agiornados</string>
   <string name="all_other_repos_fine">Totu sos àteros depòsitos no ant creadu faddinas.</string>
   <string name="global_error_updating_repos">Faddina durante s\'agiornamentu: %s</string>
   <string name="no_permissions">Perunu permissu impreadu.</string>
@@ -205,7 +204,7 @@ Intregadu cun sa litzèntzia
     <string name="wifi_ap">Puntu de atzessu (Hotspot)</string>
 
     <string name="empty_installed_app_list">Peruna aplicatzione installada.\n\nBi sunt aplicatziones in su dispositivu tuo, ma non sunt disponìbiles dae F-Droid. Custu podet nàrrere chi tenes bisòngiu de agiornare sos depòsitos tuos, o chi a beru sas aplicatziones tuas non bi sunt intre sas disponìbiles.</string>
-    <string name="empty_available_app_list">Peruna aplicatzione in custa categoria.\n\nProa a ischertare una categoria diferente o a agiornare sos depòsitos tuos pro tènnere una lista noa de aplicationes.</string>
+    <string name="empty_available_app_list">Peruna aplicatzione in custa categoria.\n\nProa a ischertare una categoria diferente o a agiornare sos depòsitos tuos pro tènnere una lista noa de aplicatziones.</string>
     <string name="empty_can_update_app_list">Totu sas aplicatziones sunt agiornadas.\n\nBene meda! Totu sas aplicatziones tuas sunt agiornadas (o sos depòsitos tuos non lu sunt).</string>
 
     <string name="install_error_title">Faddina de installatzione</string>
@@ -329,5 +328,5 @@ Intregadu cun sa litzèntzia
 <string name="more">De prus</string>
     <string name="less">De mancu</string>
 
-    <string name="menu_settings">Impostatziones</string>
+    <string name="menu_settings">Preferèntzias</string>
     </resources>
