@@ -32,7 +32,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -106,9 +105,7 @@ interface AppDetailsData {
 
     AppDetails.ApkListAdapter getApks();
 
-    Signature getInstalledSignature();
-
-    String getInstalledSignatureId();
+    String getInstalledSigHash();
 }
 
 /**
@@ -451,7 +448,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     }
 
     // The signature of the installed version.
-    private Signature mInstalledSignature;
     private String mInstalledSigID;
 
     @Override
@@ -618,21 +614,18 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         startingIgnoreThis = app.ignoreThisUpdate;
 
         // Get the signature of the installed package...
-        mInstalledSignature = null;
         mInstalledSigID = null;
 
         if (app.isInstalled()) {
             PackageManager pm = getPackageManager();
             try {
                 PackageInfo pi = pm.getPackageInfo(app.id, PackageManager.GET_SIGNATURES);
-                mInstalledSignature = pi.signatures[0];
-                Hasher hash = new Hasher("MD5", mInstalledSignature.toCharsString().getBytes());
+                Hasher hash = new Hasher("MD5", pi.signatures[0].toCharsString().getBytes());
                 mInstalledSigID = hash.getHash();
             } catch (PackageManager.NameNotFoundException e) {
                 Log.w(TAG, "Failed to get installed signature");
             } catch (NoSuchAlgorithmException e) {
                 Log.w(TAG, "Failed to calculate signature MD5 sum");
-                mInstalledSignature = null;
             }
         }
     }
@@ -1053,12 +1046,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     }
 
     @Override
-    public Signature getInstalledSignature() {
-        return mInstalledSignature;
-    }
-
-    @Override
-    public String getInstalledSignatureId() {
+    public String getInstalledSigHash() {
         return mInstalledSigID;
     }
 
@@ -1105,12 +1093,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             return data.getApks();
         }
 
-        protected Signature getInstalledSignature() {
-            return data.getInstalledSignature();
-        }
-
-        protected String getInstalledSignatureId() {
-            return data.getInstalledSignatureId();
+        protected String getInstalledSigHash() {
+            return data.getInstalledSigHash();
         }
 
         @Override
@@ -1418,20 +1402,19 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         public void updateViews(View view) {
-
             if (view == null) {
                 Log.e(TAG, "AppDetailsSummaryFragment.updateViews(): view == null. Oops.");
                 return;
             }
 
             TextView signatureView = (TextView) view.findViewById(R.id.signature);
-            if (prefs.expertMode() && getInstalledSignature() != null) {
+            String sig = getInstalledSigHash();
+            if (prefs.expertMode() && !TextUtils.isEmpty(sig)) {
                 signatureView.setVisibility(View.VISIBLE);
-                signatureView.setText("Signed: " + getInstalledSignatureId());
+                signatureView.setText("Signed: " + sig);
             } else {
                 signatureView.setVisibility(View.GONE);
             }
-
         }
     }
 
