@@ -209,7 +209,7 @@ public class PreferencesFragment extends PreferenceFragment
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
                         alertBuilder.setTitle(R.string.system_install_denied_title);
 
-                        String message = null;
+                        String message;
                         switch (isInstalledCorrectly) {
                             case PrivilegedInstaller.IS_EXTENSION_INSTALLED_NO:
                                 message = getActivity().getString(R.string.system_install_denied_body) +

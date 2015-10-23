@@ -293,7 +293,7 @@ public class RepoUpdater {
          * fingerprint.  In that case, check that fingerprint against what is
          * actually in the index.jar itself.  If no fingerprint, just store the
          * signing certificate */
-        boolean trustNewSigningCertificate = false;
+        boolean trustNewSigningCertificate;
         // If the fingerprint has never been set, it will be null (never "" or something else)
         if (repo.fingerprint == null) {
             // no info to check things are valid, so just Trust On First Use
