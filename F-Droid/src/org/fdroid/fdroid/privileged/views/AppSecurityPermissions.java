@@ -1,5 +1,4 @@
 /*
-**
 ** Copyright 2007, The Android Open Source Project
 ** Copyright 2015 Daniel Martí <mvdan@mvdan.cc>
 **
@@ -99,13 +98,10 @@ public class AppSecurityPermissions {
 
         public Drawable loadGroupIcon(PackageManager pm) {
             if (icon != 0) {
-                // return loadUnbadgedIcon(pm);
                 return loadIcon(pm);
             }
-            ApplicationInfo appInfo;
             try {
-                appInfo = pm.getApplicationInfo(packageName, 0);
-                // return appInfo.loadUnbadgedIcon(pm);
+                ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
                 return appInfo.loadIcon(pm);
             } catch (NameNotFoundException e) {
                 // ignore
@@ -214,7 +210,6 @@ public class AppSecurityPermissions {
                 }
                 builder.setCancelable(true);
                 builder.setIcon(mGroup.loadGroupIcon(pm));
-                //addRevokeUIIfNecessary(builder);
                 mDialog = builder.show();
                 mDialog.setCanceledOnTouchOutside(true);
             }
@@ -366,8 +361,8 @@ public class AppSecurityPermissions {
 
     public int getPermissionCount(int which) {
         int n = 0;
-        for (int i = 0; i < mPermGroupsList.size(); i++) {
-            n += getPermissionList(mPermGroupsList.get(i), which).size();
+        for (MyPermissionGroupInfo grp : mPermGroupsList) {
+            n += getPermissionList(grp, which).size();
         }
         return n;
     }
@@ -395,8 +390,7 @@ public class AppSecurityPermissions {
 
         int spacing = (int) (8 * mContext.getResources().getDisplayMetrics().density);
 
-        for (int i = 0; i < groups.size(); i++) {
-            MyPermissionGroupInfo grp = groups.get(i);
+        for (MyPermissionGroupInfo grp : groups) {
             final List<MyPermissionInfo> perms = getPermissionList(grp, which);
             for (int j = 0; j < perms.size(); j++) {
                 MyPermissionInfo perm = perms.get(j);
