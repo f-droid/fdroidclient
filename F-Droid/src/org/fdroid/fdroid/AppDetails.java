@@ -1153,30 +1153,31 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
                 String url = null;
+                App app = getApp();
                 switch (v.getId()) {
                     case R.id.website:
-                        url = getApp().webURL;
+                        url = app.webURL;
                         break;
                     case R.id.source:
-                        url = getApp().sourceURL;
+                        url = app.sourceURL;
                         break;
                     case R.id.issues:
-                        url = getApp().trackerURL;
+                        url = app.trackerURL;
                         break;
                     case R.id.changelog:
-                        url = getApp().changelogURL;
+                        url = app.changelogURL;
                         break;
                     case R.id.donate:
-                        url = getApp().donateURL;
+                        url = app.donateURL;
                         break;
                     case R.id.bitcoin:
-                        url = "bitcoin:" + getApp().bitcoinAddr;
+                        url = "bitcoin:" + app.bitcoinAddr;
                         break;
                     case R.id.litecoin:
-                        url = "litecoin:" + getApp().litecoinAddr;
+                        url = "litecoin:" + app.litecoinAddr;
                         break;
                     case R.id.flattr:
-                        url = "https://flattr.com/thing/" + getApp().flattrID;
+                        url = "https://flattr.com/thing/" + app.flattrID;
                         break;
                 }
                 if (url != null) {
@@ -1202,9 +1203,10 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         };
 
         private void setupView(final View view) {
+            App app = getApp();
             // Expandable description
             final TextView description = (TextView) view.findViewById(R.id.description);
-            final Spanned desc = Html.fromHtml(getApp().description, null, new Utils.HtmlTagHandler());
+            final Spanned desc = Html.fromHtml(app.description, null, new Utils.HtmlTagHandler());
             description.setMovementMethod(SafeLinkMovementMethod.getInstance(getActivity()));
             description.setText(trimNewlines(desc));
             final View viewMoreDescription =  view.findViewById(R.id.view_more_description);
@@ -1231,13 +1233,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             // App ID
             final TextView appIdView = (TextView) view.findViewById(R.id.appid);
             if (prefs.expertMode())
-                appIdView.setText(getApp().id);
+                appIdView.setText(app.id);
             else
                 appIdView.setVisibility(View.GONE);
 
             // Summary
             final TextView summaryView = (TextView) view.findViewById(R.id.summary);
-            summaryView.setText(getApp().summary);
+            summaryView.setText(app.summary);
 
 
             layoutLinks = (ViewGroup) view.findViewById(R.id.ll_information);
@@ -1248,71 +1250,71 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
             // Website button
             View tv = view.findViewById(R.id.website);
-            if (!TextUtils.isEmpty(getApp().webURL))
+            if (!TextUtils.isEmpty(app.webURL))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Source button
             tv = view.findViewById(R.id.source);
-            if (!TextUtils.isEmpty(getApp().sourceURL))
+            if (!TextUtils.isEmpty(app.sourceURL))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Issues button
             tv = view.findViewById(R.id.issues);
-            if (!TextUtils.isEmpty(getApp().trackerURL))
+            if (!TextUtils.isEmpty(app.trackerURL))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Changelog button
             tv = view.findViewById(R.id.changelog);
-            if (!TextUtils.isEmpty(getApp().changelogURL))
+            if (!TextUtils.isEmpty(app.changelogURL))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Donate button
             tv = view.findViewById(R.id.donate);
-            if (!TextUtils.isEmpty(getApp().donateURL))
+            if (!TextUtils.isEmpty(app.donateURL))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Bitcoin
             tv = view.findViewById(R.id.bitcoin);
-            if (!TextUtils.isEmpty(getApp().bitcoinAddr))
+            if (!TextUtils.isEmpty(app.bitcoinAddr))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Litecoin
             tv = view.findViewById(R.id.litecoin);
-            if (!TextUtils.isEmpty(getApp().litecoinAddr))
+            if (!TextUtils.isEmpty(app.litecoinAddr))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Flattr
             tv = view.findViewById(R.id.flattr);
-            if (!TextUtils.isEmpty(getApp().flattrID))
+            if (!TextUtils.isEmpty(app.flattrID))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Categories TextView
             final TextView categories = (TextView) view.findViewById(R.id.categories);
-            if (prefs.expertMode() && getApp().categories != null)
-                categories.setText(getApp().categories.toString().replaceAll(",", ", "));
+            if (prefs.expertMode() && app.categories != null)
+                categories.setText(app.categories.toString().replaceAll(",", ", "));
             else
                 categories.setVisibility(View.GONE);
 
             Apk curApk = null;
             for (int i = 0; i < getApks().getCount(); i++) {
                 final Apk apk = getApks().getItem(i);
-                if (apk.vercode == getApp().suggestedVercode) {
+                if (apk.vercode == app.suggestedVercode) {
                     curApk = apk;
                     break;
                 }
@@ -1334,9 +1336,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
             // Anti features
             final TextView antiFeaturesView = (TextView) view.findViewById(R.id.antifeatures);
-            if (getApp().antiFeatures != null) {
+            if (app.antiFeatures != null) {
                 StringBuilder sb = new StringBuilder();
-                for (final String af : getApp().antiFeatures) {
+                for (final String af : app.antiFeatures) {
                     final String afdesc = descAntiFeature(af);
                     if (afdesc != null) {
                         sb.append("\t• ").append(afdesc).append('\n');
@@ -1463,15 +1465,16 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         private void setupView(View view) {
+            App app = getApp();
 
             // Set the icon...
             ImageView iv = (ImageView) view.findViewById(R.id.icon);
-            ImageLoader.getInstance().displayImage(getApp().iconUrlLarge, iv,
+            ImageLoader.getInstance().displayImage(app.iconUrlLarge, iv,
                     displayImageOptions);
 
             // Set the title
             TextView tv = (TextView) view.findViewById(R.id.title);
-            tv.setText(getApp().name);
+            tv.setText(app.name);
 
             btMain   = (Button) view.findViewById(R.id.btn_main);
             progressBar     = (ProgressBar) view.findViewById(R.id.progress_bar);
@@ -1565,6 +1568,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         public void updateViews(View view) {
+            App app = getApp();
             TextView statusView = (TextView) view.findViewById(R.id.status);
             btMain.setVisibility(View.VISIBLE);
 
@@ -1574,7 +1578,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 btMain.setEnabled(false);
             // Check count > 0 due to incompatible apps resulting in an empty list.
             // If App isn't installed
-            } else if (!getApp().isInstalled() && getApp().suggestedVercode > 0 &&
+            } else if (!app.isInstalled() && app.suggestedVercode > 0 &&
                     activity.adapter.getCount() > 0) {
                 installed = false;
                 statusView.setText(R.string.details_notinstalled);
@@ -1584,20 +1588,20 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 btMain.setOnClickListener(mOnClickListener);
                 btMain.setEnabled(true);
             // If App is installed
-            } else if (getApp().isInstalled()) {
+            } else if (app.isInstalled()) {
                 installed = true;
-                statusView.setText(getString(R.string.details_installed, getApp().installedVersionName));
-                NfcHelper.setAndroidBeam(activity, getApp().id);
-                if (getApp().canAndWantToUpdate()) {
+                statusView.setText(getString(R.string.details_installed, app.installedVersionName));
+                NfcHelper.setAndroidBeam(activity, app.id);
+                if (app.canAndWantToUpdate()) {
                     updateWanted = true;
                     btMain.setText(R.string.menu_upgrade);
                 } else {
                     updateWanted = false;
-                    if (activity.mPm.getLaunchIntentForPackage(getApp().id) != null) {
+                    if (activity.mPm.getLaunchIntentForPackage(app.id) != null) {
                         btMain.setText(R.string.menu_launch);
                     } else {
                         btMain.setText(R.string.menu_uninstall);
-                        if (!getApp().uninstallable) {
+                        if (!app.uninstallable) {
                             btMain.setVisibility(View.GONE);
                         }
                     }
@@ -1617,10 +1621,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
+                App app = getApp();
                 AppDetails activity = (AppDetails) getActivity();
                 if (updateWanted) {
-                    if (getApp().suggestedVercode > 0) {
-                        final Apk apkToInstall = ApkProvider.Helper.find(activity, getApp().id, getApp().suggestedVercode);
+                    if (app.suggestedVercode > 0) {
+                        final Apk apkToInstall = ApkProvider.Helper.find(activity, app.id, app.suggestedVercode);
                         activity.install(apkToInstall);
                         return;
                     }
@@ -1628,16 +1633,16 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 // If installed
                 if (installed) {
                     // If "launchable", launch
-                    if (activity.mPm.getLaunchIntentForPackage(getApp().id) != null) {
-                        activity.launchApk(getApp().id);
+                    if (activity.mPm.getLaunchIntentForPackage(app.id) != null) {
+                        activity.launchApk(app.id);
                     } else {
-                        activity.removeApk(getApp().id);
+                        activity.removeApk(app.id);
                     }
                 // If not installed, install
-                } else if (getApp().suggestedVercode > 0) {
+                } else if (app.suggestedVercode > 0) {
                     btMain.setEnabled(false);
                     btMain.setText(R.string.system_install_installing);
-                    final Apk apkToInstall = ApkProvider.Helper.find(activity, getApp().id, getApp().suggestedVercode);
+                    final Apk apkToInstall = ApkProvider.Helper.find(activity, app.id, app.suggestedVercode);
                     activity.install(apkToInstall);
                 }
             }
@@ -1701,10 +1706,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
+            App app = getApp();
             final Apk apk = getApks().getItem(position - l.getHeaderViewsCount());
-            if (getApp().installedVersionCode == apk.vercode) {
+            if (app.installedVersionCode == apk.vercode) {
                 remove();
-            } else if (getApp().installedVersionCode > apk.vercode) {
+            } else if (app.installedVersionCode > apk.vercode) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setMessage(R.string.installDowngrade);
                 builder.setPositiveButton(R.string.yes,
