@@ -617,9 +617,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         mInstalledSigID = null;
 
         if (app.isInstalled()) {
-            PackageManager pm = getPackageManager();
             try {
-                PackageInfo pi = pm.getPackageInfo(app.id, PackageManager.GET_SIGNATURES);
+                PackageInfo pi = mPm.getPackageInfo(app.id, PackageManager.GET_SIGNATURES);
                 Hasher hash = new Hasher("MD5", pi.signatures[0].toCharsString().getBytes());
                 mInstalledSigID = hash.getHash();
             } catch (PackageManager.NameNotFoundException e) {
