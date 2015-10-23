@@ -1,23 +1,45 @@
 
 package org.fdroid.fdroid;
 
+import android.content.ContentProvider;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import android.test.InstrumentationTestCase;
+import android.test.RenamingDelegatingContext;
+import android.test.mock.MockContentResolver;
+import android.text.TextUtils;
+import android.util.Log;
 
 import org.fdroid.fdroid.RepoUpdater.UpdateException;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     private static final String TAG = "RepoUpdaterTest";
+
+    private static final String REPO_MAIN = "Test F-Droid repo";
+    private static final String REPO_ARCHIVE = "Test F-Droid repo (Archive)";
+    private static final String REPO_CONFLICTING = "Test F-Droid repo with different apps";
 
     private Context context;
     private RepoUpdater conflictingRepoUpdater;
     private RepoUpdater mainRepoUpdater;
     private RepoUpdater archiveRepoUpdater;
     private File testFilesDir;
+    private RepoPersister persister;
 
     private static final String PUB_KEY =
             "3082050b308202f3a003020102020420d8f212300d06092a864886f70d01010b050030363110300e0603" +
@@ -52,13 +74,75 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
             "98f848e0dbfce5a0f2da0198c47e6935a47fda12c518ef45adfb66ddf5aebaab13948a66c004b8592d22" +
             "e8af60597c4ae2977977cf61dc715a572e241ae717cafdb4f71781943945ac52e0f50b";
 
+    public class TestContext extends RenamingDelegatingContext {
+
+        private MockContentResolver resolver;
+
+        public TestContext() {
+            super(getInstrumentation().getTargetContext(), "test.");
+
+            resolver = new MockContentResolver();
+            resolver.addProvider(AppProvider.getAuthority(), prepareProvider(new AppProvider()));
+            resolver.addProvider(ApkProvider.getAuthority(), prepareProvider(new ApkProvider()));
+            resolver.addProvider(RepoProvider.getAuthority(), prepareProvider(new RepoProvider()));
+        }
+
+        private ContentProvider prepareProvider(ContentProvider provider) {
+            provider.attachInfo(this, null);
+            provider.onCreate();
+            return provider;
+        }
+
+        @Override
+        public File getFilesDir() {
+            return getInstrumentation().getTargetContext().getFilesDir();
+        }
+
+        /**
+         * String resources used during testing (e.g. when bootstraping the database) are from
+         * the real org.fdroid.fdroid app, not the test org.fdroid.fdroid.test app.
+         */
+        @Override
+        public Resources getResources() {
+            return getInstrumentation().getTargetContext().getResources();
+        }
+
+        @Override
+        public ContentResolver getContentResolver() {
+            return resolver;
+        }
+
+        @Override
+        public AssetManager getAssets() {
+            return getInstrumentation().getContext().getAssets();
+        }
+
+        @Override
+        public File getDatabasePath(String name) {
+            return new File(getInstrumentation().getContext().getFilesDir(), "fdroid_test.db");
+        }
+    }
+
     @Override
-    protected void setUp() {
-        context = getInstrumentation().getContext();
+    public void setUp() throws Exception {
+        super.setUp();
+
+        context = new TestContext();
+
         testFilesDir = TestUtils.getWriteableDir(getInstrumentation());
-        conflictingRepoUpdater = createUpdater(context);
-        mainRepoUpdater = createUpdater(context);
-        archiveRepoUpdater = createUpdater(context);
+
+        // On a fresh database install, there will be F-Droid + GP repos, including their Archive
+        // repos that we are not interested in.
+        RepoProvider.Helper.remove(context, 1);
+        RepoProvider.Helper.remove(context, 2);
+        RepoProvider.Helper.remove(context, 3);
+        RepoProvider.Helper.remove(context, 4);
+
+        persister = new RepoPersister(context);
+
+        conflictingRepoUpdater = createUpdater(REPO_CONFLICTING, context);
+        mainRepoUpdater = createUpdater(REPO_MAIN, context);
+        archiveRepoUpdater = createUpdater(REPO_ARCHIVE, context);
     }
 
     /**
@@ -67,49 +151,189 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
      * both conflicting and archive repo, and 51-53 were in both conflicting and main repo.
      */
     private void assertExpected() {
+        Log.d(TAG, "Asserting all versions of each .apk are in index.");
 
+        persister.save(new ArrayList<Repo>(0));
+
+        List<Repo> repos = RepoProvider.Helper.all(context);
+        assertEquals("Repos", 3, repos.size());
+
+        assertMainRepo(repos);
+        assertMainArchiveRepo(repos);
+        assertConflictingRepo(repos);
+
+        String appId = "com.uberspot.a2048";
+        App app = AppProvider.Helper.findById(context.getContentResolver(), appId);
+        assertNotNull("App " + appId + " exists", app);
+    }
+
+    /**
+     *  + 2048 (com.uberspot.a2048)
+     *    - Version 1.96 (19)
+     *    - Version 1.95 (18)
+     *  + AdAway (org.adaway)
+     *    - Version 3.0.2 (54)
+     *    - Version 3.0.1 (53)
+     *    - Version 3.0 (52)
+     *  + adbWireless (siir.es.adbWireless)
+     *    - Version 1.5.4 (12)
+     */
+    private void assertMainRepo(List<Repo> allRepos) {
+        Repo repo = findRepo(REPO_MAIN, allRepos);
+
+        List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, ApkProvider.DataColumns.ALL);
+        assertEquals("Apks for main repo", apks.size(), 6);
+        assertApksExist(apks, "com.uberspot.a2048", new int[]{18, 19});
+        assertApksExist(apks, "org.adaway", new int[] { 52, 53, 54 });
+        assertApksExist(apks, "siir.es.adbWireless", new int[]{12});
+    }
+
+    /**
+     *  + AdAway (org.adaway)
+     *    - Version 2.9.2 (51)
+     *    - Version 2.9.1 (50)
+     *    - Version 2.9 (49)
+     *    - Version 2.8.1 (48)
+     *    - Version 2.8 (47)
+     *    - Version 2.7 (46)
+     *    - Version 2.6 (45)
+     *    - Version 2.3 (42)
+     *    - Version 2.1 (40)
+     *    - Version 1.37 (38)
+     *    - Version 1.36 (37)
+     *    - Version 1.35 (36)
+     *    - Version 1.34 (35)
+     */
+    private void assertMainArchiveRepo(List<Repo> allRepos) {
+        Repo repo = findRepo(REPO_ARCHIVE, allRepos);
+
+        List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, ApkProvider.DataColumns.ALL);
+        assertEquals("Apks for main archive repo", 13, apks.size());
+        assertApksExist(apks, "org.adaway", new int[] { 35, 36, 37, 38, 40, 42, 45, 46, 47, 48, 49, 50, 51 });
+    }
+
+    /**
+     * + AdAway (org.adaway)
+     *   - Version 3.0.1 (53) *
+     *   - Version 3.0 (52) *
+     *   - Version 2.9.2 (51) *
+     *   - Version 2.2.1 (50) *
+     * + Add to calendar (org.dgtale.icsimport)
+     *   - Version 1.2 (3)
+     *   - Version 1.1 (2)
+     */
+    private void assertConflictingRepo(List<Repo> allRepos) {
+        Repo repo = findRepo(REPO_CONFLICTING, allRepos);
+
+        List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, ApkProvider.DataColumns.ALL);
+        assertEquals("Apks for main repo", 6, apks.size());
+        assertApksExist(apks, "org.adaway", new int[]{50, 51, 52, 53});
+        assertApksExist(apks, "org.dgtale.icsimport", new int[]{ 2, 3 });
+    }
+
+    @NonNull
+    private Repo findRepo(@NonNull String name, List<Repo> allRepos) {
+        Repo repo = null;
+        for (Repo r : allRepos) {
+            if (TextUtils.equals(name, r.getName())) {
+                repo = r;
+                break;
+            }
+        }
+
+        assertNotNull("Repo " + allRepos, repo);
+        return repo;
+    }
+
+    /**
+     * Checks that each version of appId as specified in versionCodes is present in apksToCheck.
+     */
+    private void assertApksExist(List<Apk> apksToCheck, String appId, int[] versionCodes) {
+        for (int versionCode : versionCodes) {
+            boolean found = false;
+            for (Apk apk : apksToCheck) {
+                if (apk.vercode == versionCode && apk.id.equals(appId)) {
+                    found = true;
+                    break;
+                }
+            }
+
+            assertTrue("Found app " + appId + ", v" + versionCode, found);
+        }
+    }
+
+    private void assertEmpty() {
+        assertEquals("No apps present", 0, AppProvider.Helper.all(context.getContentResolver()).size());
+
+        String[] packages = {
+                "com.uberspot.a2048",
+                "org.adaway",
+                "siir.es.adbWireless",
+        };
+
+        for (String id : packages) {
+            assertEquals("No apks for " + id, 0, ApkProvider.Helper.findByApp(context, id).size());
+        }
     }
 
     public void testConflictingThenMainThenArchive() throws UpdateException {
+        assertEmpty();
         if (updateConflicting() && updateMain() && updateArchive()) {
             assertExpected();
         }
     }
 
     public void testConflictingThenArchiveThenMain() throws UpdateException {
+        assertEmpty();
         if (updateConflicting() && updateArchive() && updateMain()) {
             assertExpected();
         }
     }
 
     public void testArchiveThenMainThenConflicting() throws UpdateException {
+        assertEmpty();
         if (updateArchive() && updateMain() && updateConflicting()) {
             assertExpected();
         }
     }
 
     public void testArchiveThenConflictingThenMain() throws UpdateException {
+        assertEmpty();
         if (updateArchive() && updateConflicting() && updateMain()) {
             assertExpected();
         }
     }
 
     public void testMainThenArchiveThenConflicting() throws UpdateException {
+        assertEmpty();
         if (updateMain() && updateArchive() && updateConflicting()) {
             assertExpected();
         }
     }
 
     public void testMainThenConflictingThenArchive() throws UpdateException {
+        assertEmpty();
         if (updateMain() && updateConflicting() && updateArchive()) {
             assertExpected();
         }
     }
 
-    private RepoUpdater createUpdater(Context context) {
+    private RepoUpdater createUpdater(String name, Context context) {
         Repo repo = new Repo();
         repo.pubkey = PUB_KEY;
-        return new RepoUpdater(context, repo);
+        repo.address = UUID.randomUUID().toString();
+        repo.name = name;
+
+        ContentValues values = new ContentValues(2);
+        values.put(RepoProvider.DataColumns.PUBLIC_KEY, repo.pubkey);
+        values.put(RepoProvider.DataColumns.ADDRESS, repo.address);
+        values.put(RepoProvider.DataColumns.NAME, repo.name);
+
+        RepoProvider.Helper.insert(context, values);
+
+        // Need to reload the repo based on address so that it includes the primary key from
+        // the database.
+        return new RepoUpdater(context, RepoProvider.Helper.findByAddress(context, repo.address));
     }
 
     private boolean updateConflicting() throws UpdateException {
@@ -130,6 +354,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
 
         File indexJar = TestUtils.copyAssetToDir(context, indexJarPath, testFilesDir);
         updater.processDownloadedFile(indexJar, UUID.randomUUID().toString());
+        persister.queueUpdater(updater);
         return true;
     }
 
