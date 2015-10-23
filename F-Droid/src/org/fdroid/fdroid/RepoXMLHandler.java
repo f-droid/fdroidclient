@@ -58,9 +58,6 @@ public class RepoXMLHandler extends DefaultHandler {
 
     public RepoXMLHandler(Repo repo) {
         this.repo = repo;
-        signingCertFromIndexXml = null;
-        name = null;
-        description = null;
     }
 
     public List<App> getApps() {

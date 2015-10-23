@@ -44,15 +44,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     public String repoAddress;
     public Utils.CommaSeparatedList incompatibleReasons;
 
-    public Apk() {
-        size = 0;
-        added = null;
-        repo = 0;
-        hash = null;
-        hashType = null;
-        permissions = null;
-        compatible = false;
-    }
+    public Apk() { }
 
     public Apk(Cursor cursor) {
 
