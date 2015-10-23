@@ -23,6 +23,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -37,12 +38,13 @@ abstract class PackageReceiver extends BroadcastReceiver {
     protected abstract void handle(Context context, String appId);
 
     protected PackageInfo getPackageInfo(Context context, String appId) {
-        for (PackageInfo info : context.getPackageManager().getInstalledPackages(0)) {
-            if (info.packageName.equals(appId)) {
-                return info;
-            }
+        PackageInfo info = null;
+        try {
+            info = context.getPackageManager().getPackageInfo(appId, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            // ignore
         }
-        return null;
+        return info;
     }
 
     @Override
