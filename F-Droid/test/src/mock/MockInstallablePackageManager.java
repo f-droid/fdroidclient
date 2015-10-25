@@ -17,8 +17,18 @@ public class MockInstallablePackageManager extends MockPackageManager {
         return info;
     }
 
+    @Override
+    public PackageInfo getPackageInfo(String id, int flags) {
+        for (PackageInfo i : info) {
+            if (i.packageName.equals(id)) {
+                return i;
+            }
+        }
+        return null;
+    }
+
     public void install(String id, int version, String versionName) {
-        PackageInfo existing = getPackageInfo(id);
+        PackageInfo existing = getPackageInfo(id, 0);
         if (existing != null) {
             existing.versionCode = version;
             existing.versionName = versionName;
@@ -33,16 +43,7 @@ public class MockInstallablePackageManager extends MockPackageManager {
 
     @Override
     public ApplicationInfo getApplicationInfo(String packageName, int flags) throws NameNotFoundException {
-        return new MockApplicationInfo(getPackageInfo(packageName));
-    }
-
-    public PackageInfo getPackageInfo(String id) {
-        for (PackageInfo i : info) {
-            if (i.packageName.equals(id)) {
-                return i;
-            }
-        }
-        return null;
+        return new MockApplicationInfo(getPackageInfo(packageName, 0));
     }
 
     public void remove(String id) {
