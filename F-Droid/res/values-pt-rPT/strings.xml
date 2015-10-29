@@ -164,8 +164,7 @@
     <string name="status_download_unknown_size">A transferir\n%2$s de\n%1$s</string>
     <string name="update_notification_title">A atualizar repositórios</string>
     <string name="status_processing_xml_percent">A processar %2$s/%3$s (%4$d%%) de %1$s</string>
-    <string name="status_connecting_to_repo">A estabelecer
-\nligação a %1$s</string>
+    <string name="status_connecting_to_repo">Estabelecendo\nligação a %1$s</string>
     <string name="status_checking_compatibility">A verificar compatibilidade com o seu dispositivo…</string>
     <string name="status_inserting">A guardar detalhes das aplicações (%1$d%%)</string>
     <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
@@ -226,9 +225,9 @@
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Escrita</string>
 
-    <string name="empty_installed_app_list">Não existem aplicações instaladas.\n\nExistem aplicações no seu dispositivo mas que não existem no F-Droid. Pode ser necessário atualizar os seus repositórios ou então os repositórios não possuem aplicações.</string>
-    <string name="empty_available_app_list">Não existem aplicações nesta categoria.\n\nSelecione uma categoria diferente ou atualize os repositórios para obter uma lista de aplicações.</string>
-    <string name="empty_can_update_app_list">Todas as aplicações atualizadas.\n\nParabéns! Todas as aplicações estão atualizadas (ou os repositórios não o estão).</string>
+    <string name="empty_installed_app_list">Não existem aplicações instaladas.\n\nExistem aplicações no seu dispositivo que não estão disponíveis no F-Droid. Pode ser necessário atualizar os seus repositórios ou os repositórios não possuem quaisquer aplicações.</string>
+    <string name="empty_available_app_list">Não existem aplicações nesta categoria.\n\nSelecione uma categoria diferente ou atualize os repositórios para obter a lista de aplicações.</string>
+    <string name="empty_can_update_app_list">Todas as aplicações estão atualizadas.\n\nParabéns! Todas as aplicações estão atualizadas (ou os repositórios não o estão).</string>
 
     <string name="requesting_root_access_body">A solicitar acesso \'root\'…</string>
     <string name="root_access_denied_title">Acesso \'root\' recusado</string>
@@ -247,7 +246,7 @@
     <string name="system_install_button_open">Abrir extensão</string>
     <string name="system_install_first_time_notification">Instalar a extensão privilegiada F-Droid?</string>
     <string name="system_install_first_time_notification_message_short">Toque para mais informações.</string>
-    <string name="system_install_first_time_notification_message">Toque para instalar a extensão privilegiada F-Droid, associada ao sistema operativo Android. Esta extensão permite que o F-Droid instale, atualize e desinstale aplicações por si só.\nTambém o pode fazer mais tarde através das preferências.</string>
+    <string name="system_install_first_time_notification_message">Toque para instalar a extensão privilegiada F-Droid, associada ao sistema operativo Android. Esta extensão permite que o F-Droid instale, atualize e desinstale aplicações por si só.\nTambém o pode fazer mais tarde através das definições.</string>
     <string name="system_install_post_success">Extensão privilegiada F-Droid instalada com sucesso</string>
     <string name="system_install_post_fail">Extensão privilegiada F-Droid não instalada</string>
     <string name="system_install_post_success_message">A extensão privilegiada F-Droid foi instalada com sucesso. Esta extensão permite que o F-Droid instale, atualize e desinstale aplicações por si só.</string>
@@ -343,4 +342,5 @@
     <string name="download_error">Transferência não efetuada</string>
 
     <string name="theme_night">Noite</string>
-</resources>
+<string name="menu_settings">Definições</string>
+    </resources>

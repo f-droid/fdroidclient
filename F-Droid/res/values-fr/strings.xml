@@ -14,13 +14,13 @@
   <string name="updates">Mises à jour</string>
   <string name="other">Autres</string>
   <string name="update_interval">Intervalle de mise à jour automatique</string>
-  <string name="update_interval_zero">Pas de mise à jour automatique de la liste d\'applications</string>
+  <string name="update_interval_zero">Pas de mise à jour automatique de la liste d\'apps</string>
   <string name="automatic_scan_wifi">Seulement via Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Mise à jour automatique de la liste d\'applications uniquement via Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Mise à jour automatique de la liste d\'apps uniquement via Wi-Fi</string>
   <string name="notify">Notifications de mise à jour</string>
   <string name="notify_on">Afficher une notification quand des mises à jour sont disponibles</string>
   <string name="update_history">Historique des mises à jour</string>
-  <string name="update_history_summ">Nombre de jours durant lesquels les applications sont considérées nouvelles ou récentes : %s</string>
+  <string name="update_history_summ">Nombre de jours durant lesquels les apps sont considérées nouvelles ou récentes : %s</string>
   <string name="system_installer">Extension des Privilèges</string>
   <string name="system_installer_on">Utiliser F-Droid - Extension des Privilèges pour installer, mettre à jour et supprimer des paquets</string>
   <string name="local_repo_name">Nom de votre dépôt local</string>
@@ -28,8 +28,8 @@
   <string name="local_repo_https">Utilisez une connexion privée</string>
   <string name="local_repo_https_on">Utiliser une connexion chiffrée HTTPS pour le dépôt local</string>
   <string name="search_results">Résultats de la recherche</string>
-  <string name="app_details">Détails de l\'application</string>
-  <string name="no_such_app">Pas d\'application trouvée.</string>
+  <string name="app_details">Détails de l\'app</string>
+  <string name="no_such_app">Pas d\'app trouvée.</string>
   <string name="about_title">À propos de F-Droid</string>
   <string name="about_desc">Initialement basée sur Aptoide.
 \nPubliée sous licence GNU GPLv3.</string>
@@ -85,11 +85,11 @@
   <string name="details_installed">Version %s installée</string>
   <string name="details_notinstalled">Non installée</string>
   <string name="corrupt_download">Le fichier téléchargé est corrompu.</string>
-  <string name="antiadslist">Cette application contient des publicités</string>
-  <string name="antitracklist">Cette application épie et rapporte votre activité</string>
-  <string name="antinonfreeadlist">Cette application promeut des extensions qui ne sont pas libres/open source</string>
-  <string name="antinonfreenetlist">Cette application promeut des services réseaux qui ne sont pas libres/open source</string>
-  <string name="antinonfreedeplist">Cette application dépend d\'autres applications qui ne sont pas libres/open source</string>
+  <string name="antiadslist">Cette app contient des publicités</string>
+  <string name="antitracklist">Cette app épie et rapporte votre activité</string>
+  <string name="antinonfreeadlist">Cette app promeut des extensions qui ne sont pas libres/open source</string>
+  <string name="antinonfreenetlist">Cette app promeut des services réseaux qui ne sont pas libres/open source</string>
+  <string name="antinonfreedeplist">Cette app dépend d\'autres apps qui ne sont pas libres/open source</string>
   <string name="antiupstreamnonfreelist">Le code source en amont n\'est pas entièrement libre/open source</string>
   <string name="display">Affichage</string>
   <string name="expert">Mode expert</string>
@@ -97,9 +97,9 @@
   <string name="search_hint">Rechercher des applications</string>
   <string name="appcompatibility">Compatibilité des applications</string>
   <string name="show_incompat_versions">Versions incompatibles</string>
-  <string name="show_incompat_versions_on">Afficher les versions des applications incompatibles avec l\'appareil</string>
+  <string name="show_incompat_versions_on">Afficher les versions d\'apps incompatibles avec l\'appareil</string>
   <string name="rooted">Ignorer root</string>
-  <string name="rooted_on">Ne pas griser les applications nécessitant les privilèges root</string>
+  <string name="rooted_on">Ne pas griser les apps nécessitant les privilèges root</string>
   <string name="ignoreTouch">Ignorer l\'écran tactile</string>
   <string name="ignoreTouch_on">Toujours inclure les apps nécessitant un écran tactile</string>
   <string name="category_All">Tout</string>
@@ -126,37 +126,35 @@
   <string name="proxy_port_summary">Configurer votre numéro de port de proxy (ex : 8118)</string>
   <string name="status_download">Téléchargement %2$s / %3$s (%4$d%%) depuis %1$s</string>
   <string name="status_connecting_to_repo">Connexion à
-%1$s</string>
-  <string name="status_checking_compatibility">Vérification de la compatibilité des applications avec votre appareil…</string>
-  <string name="status_inserting">Sauvegarde des détails de l\'application (%1$d%%)</string>
+\n%1$s</string>
+  <string name="status_checking_compatibility">Vérification de la compatibilité des apps avec votre appareil…</string>
+  <string name="status_inserting">Enregistrement des détails de l\'application (%1$d%%)</string>
   <string name="repos_unchanged">Tous les dépôts sont à jour</string>
   <string name="all_other_repos_fine">Les autres dépôts n\'ont généré aucune erreur.</string>
   <string name="global_error_updating_repos">Erreur durant la mise à jour : %s</string>
   <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
-  <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s.</string>
+  <string name="no_handler_app">Vous n\'avez aucune app installée pour gérer %s.</string>
   <string name="theme">Thème</string>
   <string name="unsigned">Non signé</string>
   <string name="unverified">Non vérifié</string>
-  <string name="repo_num_apps">Nombre d\'applications</string>
+  <string name="repo_num_apps">Nombre d\'apps</string>
   <string name="repo_fingerprint">Empreinte de la clé utilisée pour signer le dépôt (SHA-256)</string>
   <string name="repo_description">Description</string>
   <string name="repo_last_update">Dernière mise à jour</string>
   <string name="repo_update">Mettre à jour</string>
   <string name="repo_name">Nom</string>
   <string name="unsigned_description">Cela signifie que la liste des applications n\'a pas pu être vérifiée. Soyez prudent avec les applications téléchargées depuis des index non signés.</string>
-  <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé. Vous devez l\'activer pour voir la liste des applications qu\'il offre.</string>
+  <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé. Vous devez l\'activer pour voir la liste des apps qu\'il offre.</string>
   <string name="unknown">Inconnu</string>
   <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
-  <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses applications ne seront plus disponibles via F-Droid.
-\nNote : toutes les applications précédemment installées vont rester sur votre système.</string>
-  <string name="repo_disabled_notification">%1$s a été désactivé.
-\nVous devez réactiver ce dépôt afin d\'installer ses applications.</string>
+  <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses apps ne seront plus disponibles via F-Droid.\n\nNote : toutes les apps précédemment installées vont rester sur votre système.</string>
+  <string name="repo_disabled_notification">%1$s a été désactivé.\n\nVous devez réactiver ce dépôt pour installer les apps qu\'il contient.</string>
   <string name="minsdk_or_later">%s ou plus récent</string>
   <string name="up_to_maxsdk">Jusqu\'à %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s à %2$s</string>
   <string name="not_on_same_wifi">Votre appareil n\'est pas sur le même réseau Wi-Fi que le dépôt local que vous venez d\'ajouter ! Essayez de rejoindre ce réseau : %s</string>
   <string name="requires_features">Nécessite : %1$s</string>
-  <string name="app_icon">Icône de l\'application</string>
+  <string name="app_icon">Icône de l\'app</string>
   <string name="repo_icon">Icône du dépôt</string>
   <string name="category_Development">Développement</string>
   <string name="category_Games">Jeux</string>
@@ -174,7 +172,7 @@
   <string name="update_all">Tout mettre à jour</string>
   <string name="system_install_denied_title">F-Droid - Extension des Privilèges n\'est pas disponible</string>
   <string name="system_install_denied_body">Cette option est seulement disponible quand F-Droid - Extension des Privilèges est installée.</string>
-  <string name="app_description">F-Droid est une application cataloguant les logiciels libres et open source pour le système Android. Le client permet de naviguer, installer et garder une trace des mises à jour facilement sur votre appareil.</string>
+  <string name="app_description">F-Droid est un catalogue d\'applications libres et open source pour le système Android. Le client permet de facilement naviguer, installer et garder une trace des mises à jour sur votre appareil.</string>
   <string name="swap_join_same_wifi">Connectez-vous au même Wi-Fi que votre ami</string>
   <string name="menu_swap">Échanger des apps</string>
   <string name="swap">Échanger des apps</string>
@@ -182,7 +180,7 @@
   <string name="swap_view_available_networks">(Appuyez pour voir les réseaux disponibles)</string>
   <string name="open_qr_code_scanner">Ouvrir le scanner de code QR</string>
   <string name="swap_welcome">Bienvenue sur F-Droid !</string>
-  <string name="swap_confirm_connect">Voulez-vous recevoir des applications de %1$s maintenant ?</string>
+  <string name="swap_confirm_connect">Voulez-vous recevoir des apps de %1$s maintenant ?</string>
 <string name="app_name">F-Droid</string>
 
     <string name="unstable_updates">Mises à jour instables</string>
@@ -206,8 +204,8 @@
 
     <string name="category_Connectivity">Connectivité</string>
     <string name="category_Sports_Health">Sport &amp; Santé</string>
-    <string name="empty_available_app_list">Aucune applications dans cette catégorie.\n\nEssayez de sélectionner une autre catégorie ou mettez à jour vos dépôts pour avoir une liste d\'applications récente.</string>
-    <string name="empty_can_update_app_list">Toutes les applications sont à jour.\n\nFélicitation ! Toutes vos applications sont à jour (ou vos dépôts ne le sont pas).</string>
+    <string name="empty_available_app_list">Aucune app dans cette catégorie.\n\nEssayez de sélectionner une autre catégorie ou de mettre à jour vos dépôts pour avoir une liste d\'apps récente.</string>
+    <string name="empty_can_update_app_list">Toutes les apps sont à jour.\n\nFélicitations ! Toutes vos apps sont à jour (ou vos dépôts ne le sont pas).</string>
 
     <string name="install_error_title">Erreur d\'installation</string>
     <string name="uninstall_error_title">Erreur de désinstallation</string>
@@ -219,7 +217,7 @@
     <string name="swap_dont_show_again">Ne plus jamais afficher ceci</string>
     <string name="loading">Chargement…</string>
     <string name="install_confirm">Voulez-vous installer cette application ? Elle aura accès à :</string>
-    <string name="install_confirm_no_perms">Voulez-vous installer cette aplication ? Elle ne requiert pas de permission particulière.</string>
+    <string name="install_confirm_no_perms">Voulez-vous installer cette application ? Elle ne requiert aucune permission particulière.</string>
     <string name="install_confirm_update">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Une fois mise à jour, l\'application aura accès à :</string>
     <string name="install_confirm_update_system">Voulez-vous mettre à jour cette application système ? Vos données ne seront pas perdues. Une fois mise à jour, l\'application aura accès à :</string>
     <string name="install_confirm_update_no_perms">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Elle ne requiert aucune permission particulière.</string>
@@ -229,8 +227,8 @@
     <string name="privacyPerms">Vie privée</string>
     <string name="devicePerms">Accès à l\'appareil</string>
     <string name="perm_costs_money">Peut vous coûter de l\'argent</string>
-    <string name="uninstall_update_confirm">Voulez-vous remplacer cette application avec la version pré-installée ?</string>
-    <string name="uninstall_confirm">Voulez-vous désinstaller cette application ?</string>
+    <string name="uninstall_update_confirm">Voulez-vous remplacer cette app avec la version pré-installée ?</string>
+    <string name="uninstall_confirm">Voulez-vous désinstaller cette app ?</string>
     <string name="tap_to_install">Téléchargement terminé, appuyez pour installer</string>
     <string name="download_error">Le téléchargement a échoué</string>
 
@@ -256,7 +254,7 @@
     <string name="repo_searching_address">Recherche d\'un dépôt F-Droid sur
 \n%1$s</string>
     <string name="category_Graphics">Graphiques</string>
-    <string name="empty_installed_app_list">Aucune application installée.\n\nIl y a des applications sur votre appareil mais aucune n\'est disponible sur F-Droid. Vos dépôts ne sont peut-être plus à jour, ou alors vos applications ne sont pas disponibles dans ces dépôts.</string>
+    <string name="empty_installed_app_list">Aucune app installée.\n\nIl y a des apps sur votre appareil, mais aucune n\'est disponible sur F-Droid. Peut-être que vous devez mettre à jour vos dépôts, ou bien alors vos apps ne sont pas disponibles dans ces dépôts.</string>
     <string name="install_error_unknown">L\'installation a échoué pour une raison inconnue</string>
     <string name="install_error_cannot_parse">Une erreur s\'est produite pendant l\'analyse du paquet</string>
     <string name="uninstall_error_unknown">La désinstallation a échoué pour une raison inconnue</string>
@@ -265,14 +263,14 @@
     <string name="swap_join_this_hotspot">Aidez votre ami à se connecter à votre point d\'accès</string>
     <string name="swap_success">Échange réussi !</string>
     <string name="swap_active_hotspot">%1$s (votre point d\'accès)</string>
-    <string name="swap_tap_to_select_apps">Appuyez pour sélectionner les applications que vous voulez échanger.</string>
+    <string name="swap_tap_to_select_apps">Appuyez pour sélectionner les apps que vous voulez échanger.</string>
     <string name="swap_scan_or_type_url">Une personne doit scanner ce code ou saisir le lien dans un navigateur web.</string>
-    <string name="swap_choose_apps">Choisissez les applications</string>
+    <string name="swap_choose_apps">Sélectionnez des apps</string>
     <string name="swap_scan_qr">Scannez le code QR</string>
     <string name="swap_people_nearby">Personnes à proximité</string>
     <string name="swap_scanning_for_peers">Recherche de personnes à proximité…</string>
     <string name="swap_nearby">Échange à proximité</string>
-    <string name="swap_intro">Partagez des applications avec des personnes à proximité.</string>
+    <string name="swap_intro">Connectez-vous et échangez des apps avec des personnes à proximité.</string>
     <string name="swap_visible_bluetooth">Visible via Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Activation du Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Non visible via Bluetooth</string>
@@ -293,7 +291,9 @@
     <string name="perms_description_app">Fourni par %1$s.</string>
     <string name="uninstall_system_summary">Ouvrir l\'écran des détails d\'Extension des Privilèges pour la mettre à jour/désinstaller</string>
     <string name="update_notification_more">%1$d de plus…</string>
-    <string name="status_download_unknown_size">Téléchargement\n%2$s depuis\n%1$s</string>
+    <string name="status_download_unknown_size">Téléchargement de
+\n%2$s depuis
+\n%1$s</string>
     <string name="repo_details">Dépôt</string>
     <string name="repo_url">Adresse</string>
     <string name="category_Money">Finances</string>
@@ -305,16 +305,16 @@
     <string name="system_install_button_install">Installer</string>
     <string name="system_install_button_open">Lancer l\'application d\'extension des privilèges</string>
     <string name="system_install_first_time_notification">Installer F-Droid - Extension des Privilèges ?</string>
-    <string name="system_install_first_time_notification_message">Appuyez pour installer F-Droid - Extension des Privilèges. Étroitement liée au système d\'exploitation Android, elle permet à F-Droid installer, metter à jour et désinstaller des applications de son propre chef.\nVous pouvez également le faire plus tard, depuis les paramètres de F-Droid.</string>
+    <string name="system_install_first_time_notification_message">Appuyez pour installer F-Droid - Extension des Privilèges. Étroitement liée au système d\'exploitation Android, elle permet à F-Droid installer, metter à jour et désinstaller des apps de son propre chef.\nVous pouvez également le faire plus tard, depuis les paramètres de F-Droid.</string>
     <string name="system_install_post_success">F-Droid - Extension des Privilèges a été installée avec succès</string>
     <string name="system_install_post_fail">Échec de l\'installation de F-Droid - Extension des Privilèges</string>
-    <string name="system_install_post_success_message">F-Droid - Extension Privilèges a été installée avec succès. Elle permet à F-Droid d\'installer, mettre à jour et désinstaller des applications de son propre chef.</string>
+    <string name="system_install_post_success_message">F-Droid - Extension Privilèges a été installée avec succès. Elle permet à F-Droid d\'installer, mettre à jour et désinstaller des apps de son propre chef.</string>
     <string name="system_install_post_fail_message">Échec de l\'installation de F-Droid - Extension des Privilèges. La méthode d\'installation utilsée n\'est pas supportée par toutes les variantes d\'Android. Veuillez consulter la base de donnée de bogues pour plus d\'informations.</string>
     <string name="system_install_installing_rebooting">Installation et redémarrage…</string>
     <string name="system_install_question">Voulez-vous installer F-Droid - Extension des Privilèges ?</string>
     <string name="system_install_warning">Ceci peut prendre jusqu\'à 10 secondes.</string>
     <string name="system_install_warning_lollipop">Ceci peut prendre jusqu\'à 10 secondes et l\'appareil sera ensuite <b>redémarré</b>.</string>
-    <string name="system_install_first_time_message">On dirait que vous avez accès au root de votre appareil. Vous pouvez maintenant installer F-Droid - Extension des Privilèges. Étroitement lié au système d\'exploitation Android, elle permet à F-Droid d\'installer, mettre à jour et désinstaller les applications de son propre chef.</string>
+    <string name="system_install_first_time_message">On dirait que vous avez accès au root de votre appareil. Vous pouvez maintenant installer F-Droid - Extension des Privilèges. Étroitement lié au système d\'exploitation Android, elle permet à F-Droid d\'installer, mettre à jour et désinstaller des apps de son propre chef.</string>
     <string name="system_uninstall">Voulez-vous désinstaller F-Droid - Extension des Privilèges ?</string>
     <string name="system_uninstall_button">Désinstaller</string>
 

@@ -93,11 +93,10 @@
   <string name="proxy_host_summary">Skonfiguruj host proxy</string>
   <string name="proxy_port">Port proxy</string>
   <string name="proxy_port_summary">Skonfiguruj port proxy</string>
-  <string name="status_connecting_to_repo">Trwa łączenie z
-%1$s</string>
+  <string name="status_connecting_to_repo">Łączenie z\n%1$s</string>
   <string name="status_checking_compatibility">Sprawdzanie kompatybilności aplikacji z urządzeniem…</string>
   <string name="repos_unchanged">Brak aktualizacji w repozytoriach</string>
-  <string name="all_other_repos_fine">Pozostałe repozytoria nie zgłosiły błędów.</string>
+  <string name="all_other_repos_fine">Żadne inne repozytorium nie zgłosiło błędów.</string>
   <string name="global_error_updating_repos">Błąd podczas aktualizacji: %s</string>
   <string name="no_handler_app">Nie masz żadnej dostępnej aplikacji, która może obsłużyć %s.</string>
   <string name="theme"> Motyw</string>
@@ -303,7 +302,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="interval_2w">Co 2 tygodnie</string>
 
     <string name="theme_light">Jasny</string>
-    <string name="theme_dark">Ciemna</string>
+    <string name="theme_dark">Ciemny</string>
 <string name="unstable_updates">Wersje niestabilne</string>
     <string name="unstable_updates_summary">Sugeruj aktualizacje do niestabilnych wersji</string>
     <string name="tab_installed_apps">Zainstalowane</string>

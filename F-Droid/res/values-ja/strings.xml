@@ -126,11 +126,10 @@
   <string name="status_download">ﾀﾞｳﾝﾛｰﾄﾞ中
 %2$s / %3$s (%4$d%%) ﾀﾞｳﾝﾛｰﾄﾞ元
 %1$s</string>
-  <string name="status_connecting_to_repo">接続中
-%1$s</string>
-  <string name="status_checking_compatibility">あなたの端末とｱﾌﾟﾘｹｰｼｮﾝの互換性を確認しています…</string>
+  <string name="status_connecting_to_repo">接続中\n%1$s</string>
+  <string name="status_checking_compatibility">お使いの端末とｱﾌﾟﾘの互換性を確認しています…</string>
   <string name="status_inserting">ｱﾌﾟﾘｹｰｼｮﾝの詳細を保存しています (%1$d%%)</string>
-  <string name="repos_unchanged">ﾘﾎﾟｼﾞﾄﾘにﾊﾟｯｹｰｼﾞの更新はありません</string>
+  <string name="repos_unchanged">ﾘﾎﾟｼﾞﾄﾘはすべて最新です</string>
   <string name="all_other_repos_fine">全ての他のﾘﾎﾟｼﾞﾄﾘに異常はありません｡</string>
   <string name="global_error_updating_repos">更新中に問題が発生しました: %s</string>
   <string name="no_permissions">使用される権限はありません｡</string>
@@ -197,14 +196,14 @@
     <string name="invalid_url">有効な URL ではありません。</string>
     <string name="menu_changelog">変更履歴</string>
     <string name="update_notification_title">ﾘﾎﾟｼﾞﾄﾘを更新中</string>
-    <string name="status_processing_xml_percent">%1$s から %2$s / %3$s (%4$d%%) を処理中</string>
+    <string name="status_processing_xml_percent">%1$s から %2$s / %3$s (%4$d%%) 処理中</string>
     <string name="pref_language">言語</string>
     <string name="pref_language_default">ｼｽﾃﾑの既定値</string>
 
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">ﾎｯﾄｽﾎﾟｯﾄ</string>
 
-    <string name="empty_installed_app_list">ｱﾌﾟﾘがｲﾝｽﾄｰﾙされていません。\n\nお使いの端末にｱﾌﾟﾘはありますが、F-Droid からはご利用いただけません。ﾘﾎﾟｼﾞﾄﾘを更新する必要があるか、純粋にﾘﾎﾟｼﾞﾄﾘに利用可能なｱﾌﾟﾘがない可能性があります。</string>
+    <string name="empty_installed_app_list">ｱﾌﾟﾘがｲﾝｽﾄｰﾙされていません。\n\nお使いの端末にｱﾌﾟﾘはありますが、F-Droid からはご利用いただけません。ﾘﾎﾟｼﾞﾄﾘを更新する必要があるか、ﾘﾎﾟｼﾞﾄﾘからｱﾌﾟﾘが利用できない可能性があります。</string>
     <string name="swap_nfc_title">ﾀｯﾁして交換</string>
     <string name="swap_join_same_wifi_desc">Wi-Fiを使用して交換するには、同じﾈｯﾄﾜｰｸ上にいるを確認してください。同じﾈｯﾄﾜｰｸにｱｸｾｽしていない場合は、Wi-Fiﾎｯﾄｽﾎﾟｯﾄを作成できます。</string>
     <string name="swap_join_this_hotspot">友達がﾎｯﾄｽﾎﾟｯﾄに参加するのを助ける</string>
@@ -328,4 +327,5 @@
     <string name="status_download_unknown_size">ﾀﾞｳﾝﾛｰﾄﾞ中\n%2$s\n%1$s から</string>
     <string name="permissions">ｱｸｾｽ許可</string>
     <string name="theme_night">夜間</string>
-</resources>
+<string name="menu_settings">設定</string>
+    </resources>

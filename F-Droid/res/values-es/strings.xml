@@ -21,8 +21,8 @@
   <string name="notify_on">Muestra una notificación cuando hay actualizaciones</string>
   <string name="update_history">Historial de actualizaciones</string>
   <string name="update_history_summ">Días para considerar las aplicaciones nuevas o recientes: %s</string>
-  <string name="system_installer">Extensión de privilegios</string>
-  <string name="system_installer_on">Utilizar la extensión de privilegios de F-Droid al instalar, actualizar, y eliminar paquetes</string>
+  <string name="system_installer">Extensión con permisos de sistema</string>
+  <string name="system_installer_on">Utilizar la extensión de F-Droid con permisos de sistema al instalar, actualizar, y eliminar paquetes</string>
   <string name="local_repo_name">Nombre de tu repo local</string>
   <string name="local_repo_name_summary">El título que se publicita para el repo local: %s</string>
   <string name="local_repo_https">Usar conexión privada</string>
@@ -178,8 +178,8 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
   <string name="root_access_denied_title">Acceso «root» denegado</string>
   <string name="root_access_denied_body">El dispositivo Android no está «rooteado» o se ha denegado el acceso «root» para F-Droid.</string>
   <string name="update_all">Actualizar todo</string>
-  <string name="system_install_denied_title">F-Droid con permisos de sistema no está disponible</string>
-  <string name="system_install_denied_body">Esta opción sólo está disponible cuando F-Droid está instalado con permisos de sistema.</string>
+  <string name="system_install_denied_title">La extensión de F-Droid con permisos de sistema no está disponible</string>
+  <string name="system_install_denied_body">"Esta opción sólo está disponible cuando la extensión de  F-Droid con permisos de sistema está instalada."</string>
   <string name="app_description">F-Droid es un catálogo instalable de aplicaciones FOSS (Software libre y de Código Abierto) para la plataforma Android. El cliente hace que sea fácil navegar, instalar y mantener un registro de cambios en el dispositivo.</string>
   <string name="swap_nfc_description">Si tu amigo tiene F-Droid y NFC encendido, colocad los un teléfonos una contra el otro.</string>
   <string name="swap_join_same_wifi">Unirse a la misma Red Wi-Fi que tu amigo</string>
@@ -198,8 +198,8 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 
     <string name="back">Volver</string>
     <string name="update_notification_more">+%1$d más…</string>
-    <string name="uninstall_system">Actualiza/Desinstala la extensión de privilegios</string>
-    <string name="uninstall_system_summary">Abre la pantalla de detalles de la extensión de privilegios para actualizarla/desinstalarla</string>
+    <string name="uninstall_system">Actualiza/Desinstala la extensión con permisos de sistema</string>
+    <string name="uninstall_system_summary">Abre la pantalla de detalles de la extensión con permisos de sistema para actualizarla/desinstalarla</string>
     <string name="bad_fingerprint">Huella digital incorrecta</string>
     <string name="invalid_url">No es una URL válida.</string>
     <string name="menu_changelog">Historial de cambios</string>
@@ -216,10 +216,10 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="category_Money">Dinero</string>
     <string name="category_Sports_Health">Deportes y salud</string>
     <string name="category_Theming">Personalización del tema</string>
-    <string name="category_Time">Hora</string>
+    <string name="category_Time">Hora, gestión del tiempo</string>
     <string name="category_Writing">Escritura</string>
 
-    <string name="empty_installed_app_list">No hay aplicaciones instaladas.\n\nHay aplicaciones en tu dispositivo, pero no están disponibles desde F-Droid. Esto podría ser porque necesitas actualizar los repositorios, o los repositorios no contienen las aplicaciones que tienes.</string>
+    <string name="empty_installed_app_list">No hay aplicaciones instaladas.\n\nHay aplicaciones en tu dispositivo, pero no están disponibles desde F-Droid. Esto podría ser porque necesitas actualizar los repositorios, o porque los repositorios no tienen esas aplicaciones.</string>
     <string name="empty_available_app_list">No hay aplicaciones en esta categoría.\n\nPrueba a seleccionar una categoría diferente o actualizar los repositorios para obtener una lista reciente de aplicaciones.</string>
     <string name="empty_can_update_app_list">Todas las aplicaciones están actualizadas.\n\n¡Felicidades! Todas tus aplicaciones están actualizadas (o los repositorios están desactualizados).</string>
 
@@ -228,16 +228,16 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="install_error_cannot_parse">Ha ocurrido un error al analizar el paquete</string>
     <string name="uninstall_error_title">Error de desinstalación</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>
-    <string name="system_install_first_time_notification">¿Instalar F-Droid con permisos de sistema?</string>
+    <string name="system_install_first_time_notification">¿Instalar la extensión de F-Droid con permisos de sistema?</string>
     <string name="system_install_first_time_notification_message_short">Toque para más información.</string>
-    <string name="system_install_first_time_notification_message">Toque para instalar F-Droid con permisos de sistema, fuertemente acoplado con el sistema operativo Android. Esto permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.\nTambién puede realizar esto más tarde, desde las preferencias de F-Droid.</string>
-    <string name="system_install_post_success">Se ha instalado correctamente F-Droid con permisos de sistema</string>
-    <string name="system_install_post_fail">Fallo en la instalación de F-Droid con permisos de sistema</string>
-    <string name="system_install_post_success_message">Se ha instalado correctamente F-Droid con permisos de sistema. Esto le permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.</string>
+    <string name="system_install_first_time_notification_message">Toca para instalar la extensión de F-Droid con permisos de sistema, fuertemente acoplada con el sistema operativo Android. Esto permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.\nTambién puede realizar esto más tarde, desde los ajustes de F-Droid.</string>
+    <string name="system_install_post_success">La extensión de F-Droid con permisos de sistema se ha instalado correctamente</string>
+    <string name="system_install_post_fail">Fallo en la instalación de la extensión de F-Droid con permisos de sistema</string>
+    <string name="system_install_post_success_message">Se ha instalado correctamente la extensión de F-Droid con permisos de sistema. Esto le permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.</string>
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
-    <string name="system_install_question">¿Desea instalar F-Droid con permisos de sistema?</string>
-    <string name="system_install_warning_lollipop">Esto tardará sobre 10 segundos y el dispositivo será <b>reiniciado</b> tras ello.</string>
+    <string name="system_install_question">¿Deseas instalar la extensión de F-Droid con permisos de sistema?</string>
+    <string name="system_install_warning_lollipop">Esto tardará unos 10 segundos y después el dispositivo se <b>reiniciará</b>.</string>
     <string name="system_uninstall">¿Deseas desinstalar F-Droid con permisos de sistema?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
@@ -270,25 +270,25 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="swap_confirm">Confirmar intercambio</string>
     <string name="swap_qr_isnt_for_swap">El código QR escaneado no parece un código de intercambio.</string>
     <string name="bluetooth_unavailable">Bluetooth no disponible</string>
-    <string name="swap_cant_send_no_bluetooth">No se puede enviar F-Droid porque el Bluetooth no está disponible en este dispositivo.</string>
+    <string name="swap_cant_send_no_bluetooth">No se puede enviar F-Droid porque Bluetooth no está disponible en este dispositivo.</string>
     <string name="loading">Cargando…</string>
     <string name="swap_attempt_install">Intentar instalar</string>
-    <string name="swap_connection_misc_error">Un error ocurrió mientras se conectaba al dispositivo. Parece que no podemos intercambiar con él.</string>
+    <string name="swap_connection_misc_error">Ocurrió un error mientras se conectaba al dispositivo. Parece que no podemos intercambiar con él.</string>
     <string name="swap_not_enabled">Intercambio no activado</string>
     <string name="swap_not_enabled_description">Antes de intercambiar, el dispositivo debe ser visible.</string>
 
-    <string name="install_confirm">¿Quiere instalar esta aplicación? Tendrá acceso a:</string>
-    <string name="install_confirm_no_perms">¿Quiere instalar esta aplicación? No requiere ningún acceso especial.</string>
-    <string name="install_confirm_update">¿Quiere instalar una actualización de esta aplicación? Sus datos no se perderán. La aplicación actualizada tendrá acceso a:</string>
-    <string name="install_confirm_update_no_perms">¿Quiere instalar una actualización para esta aplicación? Sus datos no se perderán. No requiere ningún acceso especial.</string>
+    <string name="install_confirm">¿Quieres instalar esta aplicación? Tendrá acceso a:</string>
+    <string name="install_confirm_no_perms">¿Quieres instalar esta aplicación? No requiere ningún acceso especial.</string>
+    <string name="install_confirm_update">¿Quieres instalar una actualización de esta aplicación? Los datos no se perderán. La aplicación actualizada tendrá acceso a:</string>
+    <string name="install_confirm_update_no_perms">¿Quieres instalar una actualización para esta aplicación? Los datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="newPerms">Nuevo</string>
     <string name="allPerms">Todo</string>
     <string name="privacyPerms">Privacidad</string>
     <string name="devicePerms">Acceso a dispositivo</string>
     <string name="perm_costs_money">Esto puede costar dinero</string>
-    <string name="uninstall_update_confirm">¿Desea reemplazar esta aplicación con la versión de fábrica?</string>
-    <string name="uninstall_confirm">¿Desea desinstalar esta aplicación?</string>
-    <string name="tap_to_install">Descarga completada, toque para instalar</string>
+    <string name="uninstall_update_confirm">¿Deseas reemplazar esta aplicación con la versión de fábrica?</string>
+    <string name="uninstall_confirm">¿Quieres desinstalar esta aplicación?</string>
+    <string name="tap_to_install">Descarga completada, toca para instalar</string>
 
     <string name="perms_new_perm_prefix">"Nuevo: "</string>
     <string name="perms_description_app">Proporcionado por %1$s.</string>
@@ -307,10 +307,10 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 <string name="unstable_updates">Actualizaciones inestables</string>
     <string name="unstable_updates_summary">Sugerir actualizaciones a versiones inestables</string>
     <string name="tab_installed_apps">Instalado</string>
-    <string name="system_install_post_fail_message">La instalación de F-Droid con permisos de sistema ha fallado. El método de instalación no está soportado por todas las versiones de Android, así que, por favor, consulta el sistema de gestión de incidencias de F-Droid para más información.</string>
-    <string name="system_install_first_time_message">Parece que tienes acceso «root» a tu dispositivo. Puedes instalar F-Droid con permisos de sistema, fuertemente acoplado al sistema operativo Android. Esto permite que F-Droid instale, actualice y desinstale aplicaciones por sí mismo.</string>
-    <string name="install_confirm_update_system">¿Quiere instalar una actualización de esta aplicación fija? Sus datos no se perderán. La aplicación actualizada tendrá acceso a:</string>
-    <string name="install_confirm_update_system_no_perms">¿Quiere instalar una actualización para esta aplicación fija? Sus datos no se perderán. No requiere ningún acceso especial.</string>
+    <string name="system_install_post_fail_message">La instalación de la extensión de F-Droid con permisos de sistema ha fallado. El método de instalación no está soportado por todas las versiones de Android, así que, por favor, consulta el sistema de gestión de incidencias de F-Droid para más información.</string>
+    <string name="system_install_first_time_message">Parece que tienes acceso «root» a tu dispositivo. Puedes instalar la extensión de F-Droid con permisos de sistema, fuertemente acoplada al sistema operativo Android. Esto permite que F-Droid instale, actualice y desinstale aplicaciones por sí mismo.</string>
+    <string name="install_confirm_update_system">¿Quieres instalar una actualización de esta aplicación fija? Los datos no se perderán. La aplicación actualizada tendrá acceso a:</string>
+    <string name="install_confirm_update_system_no_perms">¿Quieres instalar una actualización para esta aplicación fija? Los datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="more">Más</string>
     <string name="less">Menos</string>
 
@@ -323,14 +323,14 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="permissions">Permisos</string>
     <string name="repo_details">Repositorio</string>
     <string name="repo_url">Dirección</string>
-    <string name="system_install_denied_signature">¡La firma de la extensión es incorrecta! ¡Por favor, reporta el fallo!</string>
+    <string name="system_install_denied_signature">¡La firma de la extensión es incorrecta! ¡Por favor, informa sobre este fallo!</string>
     <string name="system_install_button_install">Instalar</string>
     <string name="system_install_installing_rebooting">Instalando y reiniciando…</string>
-    <string name="system_install_warning">Esto conlleva 10 segundos.</string>
+    <string name="system_install_warning">Esto tardará unos 10 segundos.</string>
     <string name="download_error">Descarga fallida</string>
 
     <string name="theme_night">Noche</string>
-<string name="system_install_denied_permissions">¡Los permisos de sistema no han sido otorgados! ¡Por favor, reporta el fallo!</string>
-    <string name="system_install_button_open">Conceder permiso</string>
+<string name="system_install_denied_permissions">¡No se han concedido permisos de sistema a la extensión! ¡Por favor, informa sobre este fallo!</string>
+    <string name="system_install_button_open">Abrir la extensión</string>
     <string name="menu_settings">Ajustes</string>
     </resources>
