@@ -6,9 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.database.Cursor;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.view.LayoutInflater;
@@ -122,37 +120,12 @@ public class AvailableAppsFragment extends AppListFragment implements
         return translatedCategories;
     }
 
-    /**
-     * With holo, the menu gets lost since it looks the same as an app list item.
-     * Suppress deprecation warnings because:
-     *  * setBackgroundDrawable(Drawable) -> setBackground(Drawable) was only in API 16
-     */
-    @SuppressWarnings("deprecation")
-    private void styleSpinner(Spinner spinner) {
-
-        Drawable menuButton = getResources().getDrawable(android.R.drawable.btn_dropdown);
-        switch (FDroidApp.getCurTheme()) {
-            case dark:
-                // fallthrough
-            case night:
-                menuButton.setAlpha(32); // make it darker via alpha
-                break;
-        }
-        if (Build.VERSION.SDK_INT >= 16) {
-            spinner.setBackground(menuButton);
-        } else {
-            spinner.setBackgroundDrawable(menuButton);
-        }
-    }
-
     private Spinner setupCategorySpinner(Spinner spinner) {
 
         categorySpinner = spinner;
         categorySpinner.setId(R.id.category_spinner);
 
         categories = AppProvider.Helper.categories(getActivity());
-
-        styleSpinner(categorySpinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
             getActivity(), android.R.layout.simple_spinner_item, translateCategories(categories));
