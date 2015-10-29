@@ -1,7 +1,4 @@
-### 0.97 (2015-10-??)
-
-* Resumeable, simultaneous app downloads in the background using
-  Android's DownloadManager
+### 0.97 (2015-11-??)
 
 * Add option to prompt for unstable updates globally
 
