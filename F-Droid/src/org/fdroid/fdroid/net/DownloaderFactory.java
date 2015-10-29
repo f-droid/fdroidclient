@@ -64,7 +64,7 @@ public class DownloaderFactory {
 
     public static AsyncDownloader createAsync(Context context, URL url, File destFile, String title, String id, AsyncDownloader.Listener listener)
             throws IOException {
-        if (canUseDownloadManager(context, url)) {
+        if (false && canUseDownloadManager(context, url)) {
             Utils.debugLog(TAG, "Using AsyncDownloaderFromAndroid");
             return new AsyncDownloaderFromAndroid(context, listener, title, id, url.toString(), destFile);
         }
