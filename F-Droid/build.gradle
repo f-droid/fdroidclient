@@ -18,7 +18,6 @@ dependencies {
     compile 'com.google.zxing:core:3.2.1'
     compile 'eu.chainfire:libsuperuser:1.0.0.201510071325'
     compile 'cc.mvdan.accesspoint:library:0.1.3'
-    compile 'info.guardianproject.netcipher:netcipher:1.2'
     compile 'commons-net:commons-net:3.3'
     compile 'org.openhab.jmdns:jmdns:3.4.2'
 
@@ -67,7 +66,6 @@ if (!hasProperty('sourceDeps')) {
             'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
             'eu.chainfire:libsuperuser:a3ed4589e14f7d5ab255b3f31f7b79aaa1173a579035788f8db7c74215453a12',
             'cc.mvdan.accesspoint:library:dc89a085d6bc40381078b8dd7776b12bde0dbaf8ffbcddb17ec4ebc3edecc7ba',
-            'info.guardianproject.netcipher:netcipher:a8eef6c3bf190e360c44c9364044b8050f0d387418acdae8d7ec78bd105a32a6',
             'com.madgag.spongycastle:pkix:0d9cca6991f68eb373cfad309d5268c9fc38db5efb5fe00dcccf5c973af1eca1',
             'com.madgag.spongycastle:prov:b8c3fec3a59aac1aa04ccf4dad7179351e54ef7672f53f508151b614c131398a',
             'com.madgag.spongycastle:core:8d6240b974b0aca4d3da9c7dd44d42339d8a374358aca5fc98e50a995764511f',

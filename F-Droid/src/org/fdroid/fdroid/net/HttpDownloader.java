@@ -23,8 +23,6 @@ import java.net.URL;
 
 import javax.net.ssl.SSLHandshakeException;
 
-import info.guardianproject.netcipher.NetCipher;
-
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
 
@@ -102,11 +100,10 @@ public class HttpDownloader extends Downloader {
         if (prefs.isProxyEnabled() && !isSwapUrl()) {
             SocketAddress sa = new InetSocketAddress(prefs.getProxyHost(), prefs.getProxyPort());
             Proxy proxy = new Proxy(Proxy.Type.HTTP, sa);
-            NetCipher.setProxy(proxy);
+            connection = (HttpURLConnection) sourceUrl.openConnection(proxy);
         } else {
-            NetCipher.setProxy(null);
+            connection = (HttpURLConnection) sourceUrl.openConnection();
         }
-        connection = NetCipher.getHttpURLConnection(sourceUrl);
     }
 
     protected void doDownload() throws IOException, InterruptedException {

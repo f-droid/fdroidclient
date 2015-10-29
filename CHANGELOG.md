@@ -13,8 +13,6 @@
 
 * Add a new night theme
 
-* Enable TLS v1.2 on all Android versions that support it
-
 * Fix crash when trying to install incompatible apps with the privileged
   installer
 
