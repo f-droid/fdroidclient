@@ -126,7 +126,7 @@
   <string name="status_connecting_to_repo">Повезујем се са\n%1$s</string>
   <string name="status_checking_compatibility">Проверавам компатибилност апликација са вашим уређајем…</string>
   <string name="status_inserting">Уписујем детаље апликација (%1$d%%)</string>
-  <string name="repos_unchanged">Ниједна ризница нема надоградњи пакета</string>
+  <string name="repos_unchanged">Све ризнице су ажуриране</string>
   <string name="all_other_repos_fine">Остале ризнице нису направиле грешку.</string>
   <string name="global_error_updating_repos">Грешка приликом ажурирања: %s</string>
   <string name="no_permissions">Не захтева никакве дозволе.</string>
@@ -320,4 +320,6 @@
     <string name="system_install_first_time_notification_message">Тапните да инсталирате повлашћено проширење за Ф-дроид, уско повезано са Андроид оперативним системом. Ово омогућује Ф-дроиду да сам инсталира, надограђује и уклања апликације.\nОво можете такође да урадите и касније у поставкама Ф-дроида.</string>
     <string name="system_install_post_success_message">Повлашћено проширење за Ф-дроид је успешно инсталирано. Оно омогућује Ф-дроиду да сам инсталира, надограђује и уклања апликације.</string>
     <string name="system_install_post_fail_message">Инсталација повлашћеног проширења за Ф-дроид није успела. Методу инсталације не подржавају све дистрибуције Андроида, посаветујте се са пратиоцем грешака Ф-дроида за више информација.</string>
+    <string name="menu_settings">Поставке</string>
+    <string name="swap_connection_misc_error">Десила се грешка приликом повезивања са уређајем, изгледа да не можемо размењивати са њим.</string>
     </resources>
