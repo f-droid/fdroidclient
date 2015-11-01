@@ -6,11 +6,11 @@
         android:id="@+id/action_update_repo"
         android:icon="@drawable/ic_refresh_white"
         android:title="@string/menu_update_repo"
-        app:showAsAction="always|withText"/>
+        app:showAsAction="ifRoom|withText"/>
     <item
         android:id="@+id/action_add_repo"
         android:icon="@drawable/ic_add_white"
         android:title="@string/menu_add_repo"
-        app:showAsAction="always|withText"/>
+        app:showAsAction="ifRoom|withText"/>
 
 </menu>

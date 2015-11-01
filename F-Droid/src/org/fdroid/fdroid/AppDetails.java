@@ -646,11 +646,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         if (app == null)
             return true;
 
-        MenuItemCompat.setShowAsAction(menu.add(
-                        Menu.NONE, SHARE, 1, R.string.menu_share)
-                        .setIcon(R.drawable.ic_share_white),
-                MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
-                        MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+        if (mPm.getLaunchIntentForPackage(app.id) != null && app.canAndWantToUpdate()) {
+            MenuItemCompat.setShowAsAction(menu.add(
+                            Menu.NONE, LAUNCH, 1, R.string.menu_launch)
+                            .setIcon(R.drawable.ic_play_arrow_white),
+                    MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                            MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+        }
 
         if (app.isInstalled()) {
             MenuItemCompat.setShowAsAction(menu.add(
@@ -660,13 +662,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                             MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         }
 
-        if (mPm.getLaunchIntentForPackage(app.id) != null && app.canAndWantToUpdate()) {
-            MenuItemCompat.setShowAsAction(menu.add(
-                            Menu.NONE, LAUNCH, 1, R.string.menu_launch)
-                            .setIcon(R.drawable.ic_play_arrow_white),
-                    MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
-                            MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
-        }
+        MenuItemCompat.setShowAsAction(menu.add(
+                        Menu.NONE, SHARE, 1, R.string.menu_share)
+                        .setIcon(R.drawable.ic_share_white),
+                MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                        MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
         menu.add(Menu.NONE, IGNOREALL, 2, R.string.menu_ignore_all)
                     .setIcon(R.drawable.ic_do_not_disturb_white)
