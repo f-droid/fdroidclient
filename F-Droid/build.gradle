@@ -165,6 +165,15 @@ android {
         // since some devices ship deprecated locale codes
         disable 'LocaleFolder'
     }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/INDEX.LIST'
+        exclude '.readme'
+    }
 }
 
 task checkstyle(type: Checkstyle) {
