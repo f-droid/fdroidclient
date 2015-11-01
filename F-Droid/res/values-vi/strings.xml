@@ -196,7 +196,7 @@
     <string name="proxy_host">Máy chủ Proxy</string>
     <string name="proxy_host_summary">Thiết lập tên máy chủ proxy của bạn (ví dụ 127.0.0.1)</string>
     <string name="update_notification_title">Đang cập nhật các kho ứng dụng</string>
-    <string name="status_processing_xml_percent">Đang xử lí %2$s / %3$s (%4$d%%) từ</string>
+    <string name="status_processing_xml_percent">Đang xử lí %2$s / %3$s (%4$d%%) từ %1$s</string>
     <string name="unsigned">Chưa được kí</string>
     <string name="unsigned_description">Điều này nghĩa là danh sách ứng dụng không được kiểm duyệt. Bạn hãy cẩn thận khi tải ứng dụng từ mục lục không có chữ kí điện tử.</string>
     <string name="unknown">Không rõ</string>
