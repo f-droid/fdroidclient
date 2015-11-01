@@ -262,6 +262,7 @@ public class AppSecurityPermissions {
         return info.requestedPermissionsFlags;
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void extractPerms(PackageInfo info, Set<MyPermissionInfo> permSet,
             PackageInfo installedPkgInfo) {
 
@@ -424,6 +425,7 @@ public class AppSecurityPermissions {
         return permView;
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private boolean isDisplayablePermission(PermissionInfo pInfo, int newReqFlags,
             int existingReqFlags) {
         final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;

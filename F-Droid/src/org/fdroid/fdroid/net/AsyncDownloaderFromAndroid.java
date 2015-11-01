@@ -260,6 +260,7 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
     /**
      * Get the downloadManagerId from an Intent sent by the DownloadManagerReceiver
      */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static long getDownloadId(Intent intent) {
         if (intent != null) {
             if (intent.hasExtra(DownloadManager.EXTRA_DOWNLOAD_ID)) {

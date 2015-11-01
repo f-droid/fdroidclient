@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.net;
 
+import android.annotation.TargetApi;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.database.Cursor;
@@ -76,6 +77,7 @@ public class DownloaderFactory {
         return url.getHost().endsWith(".onion");
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     private static boolean hasDownloadManager(Context context) {
         DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         if (dm == null) {
