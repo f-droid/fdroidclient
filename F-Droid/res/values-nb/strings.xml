@@ -102,7 +102,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="rooted_on">Skyggelegg alle app-er som krever superbruker-tilgang</string>
   <string name="ignoreTouch">Ignorer pekeskjerm</string>
   <string name="ignoreTouch_on">Alltid inkluder app-er som krever pekeskjerm</string>
-  <string name="category_All">Alle</string>
+  <string name="category_All">Alt</string>
   <string name="category_Whats_New">Det som er nytt</string>
   <string name="category_Recently_Updated">Nylig oppdatert</string>
   <string name="local_repo">Lokal pakkebrønn</string>
@@ -156,8 +156,8 @@ Lisensiert GNU GPLv3.</string>
   <string name="minsdk_up_to_maxsdk">%1$s opptil %2$s</string>
   <string name="not_on_same_wifi">Din enhet er ikke på det samme lokale Wi-Fi-nettet som pakkebrønnen du nettopp la til! Prøv å koble til dette nettverket: %s</string>
   <string name="requires_features">Krever: %1$s</string>
-  <string name="app_icon">Program-miniatyrbilde</string>
-  <string name="repo_icon">Pakkebrønns-miniatyrbilde</string>
+  <string name="app_icon">Miniatyrbilde for program</string>
+  <string name="repo_icon">Miniatyrbilde for pakkebrønn</string>
   <string name="category_Development">Utvikling</string>
   <string name="category_Games">Spill</string>
   <string name="category_Internet">Internett</string>
@@ -165,7 +165,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="category_Navigation">Navigasjon</string>
   <string name="category_Phone_SMS">Telefon og SMS</string>
   <string name="category_Reading">Lesning</string>
-  <string name="category_Science_Education">Vitenskap &amp; Opplæring</string>
+  <string name="category_Science_Education">Vitenskap &amp; utdanning</string>
   <string name="category_Security">Sikkerhet</string>
   <string name="category_System">System</string>
   <string name="requesting_root_access_body">Etterspør root-tilgang…</string>
@@ -174,19 +174,19 @@ Lisensiert GNU GPLv3.</string>
   <string name="update_all">Oppdater alt</string>
   <string name="system_install_denied_title">F-Droid priviligert tillegg er ikke tilgjengelig</string>
   <string name="system_install_denied_body">Dette valget er bare tilgjengelig når F-Droid er installert som priviligert tillegg.</string>
-  <string name="app_description">F-droid er en ansamling fri programvare som kan installeres på Android-plattformen. Klienten gjør det enkelt å sjekke ut, installere og holde øye med oppdateringer på din enhet.</string>
+  <string name="app_description">F-droid er en ansamling fri programvare som kan installeres på Android-plattformen. Klienten gjør det enkelt å sjekke ut og installere, samt holde øye med oppdateringer på din enhet.</string>
   <string name="swap_nfc_description">Hvis du og din venn holder telefonene deres sammen.</string>
   <string name="swap_join_same_wifi">Koble til samme Wi-Fi-nett som din venn</string>
   <string name="menu_swap">Sirkuler programvare</string>
   <string name="swap">Sirkuler programvare</string>
   <string name="swap_no_wifi_network">Mangler nettverk</string>
-  <string name="swap_view_available_networks">(Trykk for å åpne tilgjengelige nettverk)</string>
+  <string name="swap_view_available_networks">(Trykk for å vise tilgjengelige nettverk)</string>
   <string name="open_qr_code_scanner">Åpne QR-kode-skanner</string>
   <string name="swap_welcome">Velkommen til F-Droid!</string>
   <string name="swap_confirm_connect">Ønsker du å hente pakker fra %1$s nå?</string>
 <string name="app_name">F-Droid</string>
 
-    <string name="theme_dark">Mørk</string>
+    <string name="theme_dark">Mørkt</string>
 <string name="unstable_updates">Ustabile oppdateringer</string>
     <string name="unstable_updates_summary">Foreslå oppdatering til ustabile versjoner</string>
     <string name="about_source">Kildekode:</string>
@@ -278,7 +278,7 @@ Lisensiert GNU GPLv3.</string>
     <string name="interval_1w">Ukentlig</string>
     <string name="interval_2w">Hver andre uke</string>
 
-    <string name="theme_light">Lys</string>
+    <string name="theme_light">Lyst</string>
     <string name="uninstall_system">Oppdater/avinstaller priviligert tillegg</string>
     <string name="uninstall_system_summary">Åpne detaljvisning av priviligert tillegg for å oppdatere/avinstallere det</string>
     <string name="more">Mer</string>
@@ -309,14 +309,14 @@ Lisensiert GNU GPLv3.</string>
     <string name="system_uninstall">Ønsker du å avinstallere F-Droid som priviligert tillegg?</string>
     <string name="swap_nfc_title">Trykk for å sirkulere</string>
     <string name="swap_join_same_wifi_desc">For å sirkulere ved bruk av Wi-Fi, forsikre deg om at dere er på samme nettverk. Hvis så ikke er tilfelle, kan du sette opp ditt eget mobiltrådløsnett.</string>
-    <string name="swap_join_this_hotspot">Hjelp en venn å ta del i ditt mobiltrådløstnett</string>
+    <string name="swap_join_this_hotspot">Hjelp en venn å ta del i ditt mobiltrådløsnett</string>
     <string name="swap_success">Vellykket sirkulering!</string>
     <string name="swap_active_hotspot">%1$s (ditt mobiltrådløsnett)</string>
     <string name="swap_nearby">Sirkulering i umiddelbar nærhet</string>
     <string name="swap_intro">Koble til og utveksle programmer med folk i nærheten av deg.</string>
     <string name="swap_no_peers_nearby">Fant ingen i nærheten å sirkulere med.</string>
     <string name="swap_confirm">Bekreft sirkulering</string>
-    <string name="swap_qr_isnt_for_swap">QR-koden du skannet later ikke til å være en sirkuleringskode.</string>
+    <string name="swap_qr_isnt_for_swap">QR-koden du skannet later til ikke å være en sirkuleringskode.</string>
     <string name="swap_connection_misc_error">En feil inntraff under tilkobling til enheten, klarer ikke å sirkulere med den.</string>
     <string name="swap_not_enabled">Sirkulering ikke påskrudd</string>
     <string name="swap_not_enabled_description">Før sirkulering må din enhet være i synlig modus.</string>

@@ -151,7 +151,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="searchres_noapps">Nie znaleziono żadnych wyników dla zapytania \'%s\'</string>
     <string name="SignatureMismatch">Nowa wersja jest podpisana cyfrowo z innym kluczem niż obecna wersja. Aby zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (odinstalowanie aplikacji spowoduje usunięcie jej danych i ustawień)</string>
     <string name="installDowngrade">Próbujesz zainstalować starszą wersję tej aplikacji. Wykonanie tej operacji może powodować błędy w jej działaniu lub utratę danych. Czy chcesz kontynuować?</string>
-    <string name="cache_downloaded_on">Zachowaj pobrane apliki .apk na urządzeniu by móc uch potem używać w trybie offline</string>
+    <string name="cache_downloaded_on">Trzymaj pobrane pliki .apk na urządzeniu by móc ich potem używać w trybie offline</string>
     <string name="update_interval">Okres pomiędzy sprawdzaniem aktualizacji</string>
     <string name="automatic_scan_wifi">Aktualizuj tylko przez Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Aktualizuj listę aplikacji tylko przez Wi-Fi (oszczędza dane mobilne)</string>

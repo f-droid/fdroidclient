@@ -113,11 +113,10 @@
   <string name="status_download">Сваляне
 %2$s / %3$s (%4$d%%) от
 %1$s</string>
-  <string name="status_connecting_to_repo">Свързване към
-%1$s</string>
+  <string name="status_connecting_to_repo">Свързване към\n%1$s</string>
   <string name="status_checking_compatibility">Проверка за съвместимост с устройството…</string>
   <string name="status_inserting">Запазване на детайли за приложенията (%1$d%%)</string>
-  <string name="repos_unchanged">В хранилищата няма актуализирани приложения</string>
+  <string name="repos_unchanged">Всички хранилищата са актуални</string>
   <string name="global_error_updating_repos">Грешка при актуализирането: %s</string>
   <string name="no_permissions">Не изисква разрешения.</string>
   <string name="no_handler_app">Никое инсталирано приложение не може да изпълни %s.</string>
@@ -127,7 +126,7 @@
   <string name="repo_description">Описание</string>
   <string name="repo_last_update">Последна актуализация</string>
   <string name="repo_name">Име</string>
-  <string name="repo_not_yet_updated">Хранилището не е било използвано. За да разгледате приложенията, които предлага, трябва да бъде актуализирано. След това ще имате достъп до описанието и други детайли...</string>
+  <string name="repo_not_yet_updated">Хранилището не е било използвано. За да разгледате приложенията, които предлага, трябва да го активирате.</string>
   <string name="repo_confirm_delete_title">Изтриване на хранилището?</string>
   <string name="repo_confirm_delete_body">Изтриването на хранилище значи, че приложенията от него няма да са налични в F-Droid.\nБележка: Всички вече инсталирани приложения ще останат на устройството.</string>
   <string name="repo_disabled_notification">\"%1$s\" е деактивирано.За да можете отново да инсталирате приложения ще трябва да го активирате наново.</string>
@@ -272,4 +271,22 @@
     <string name="root_access_denied_body">Или вашето устройство не е root-нато или на F-Droid е отказан root достъп.</string>
     <string name="system_install_first_time_notification">Инсталиране като привилегировано приложение?</string>
     <string name="system_install_post_success_message">F-Droid е инсталиран като привилегировано приложение. Това позволява на F-Droid да инсталира, актуализира и деинсталира приложения автономно.</string>
+    <string name="more">Повече</string>
+    <string name="less">По-малко</string>
+
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
+
+
+    <string name="status_download_unknown_size">Сваляне на\n%2$s от\n%1$s</string>
+    <string name="permissions">Разрешения</string>
+    <string name="repo_details">Хранилище</string>
+    <string name="repo_url">Адрес</string>
+    <string name="system_install_installing_rebooting">Инсталиране и рестартиране…</string>
+    <string name="system_install_warning">Отнема до 10 секунди.</string>
+    <string name="swap_join_same_wifi_desc">За осъществяване на размяна чрез Wi-Fi е необходимо да сте в една мрежа. Ако нямате достъп до една и съща мрежа единият можете да създадете нова.</string>
+    <string name="swap_confirm_connect">Желаете ли да получите приложения от %1$s?</string>
+    <string name="swap_qr_isnt_for_swap">Сканираният QR код не е код за размяна.</string>
     </resources>
