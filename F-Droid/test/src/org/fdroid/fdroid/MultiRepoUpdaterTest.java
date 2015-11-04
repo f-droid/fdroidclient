@@ -146,25 +146,53 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     }
 
     /**
-     * Check that a sample of expected apps and apk versions are available in the database.
-     * Also check that the AdAway apks versions 50-53 are as expected, given that 50 was in
-     * both conflicting and archive repo, and 51-53 were in both conflicting and main repo.
+     * Check that all of the expected apps and apk versions are available in the database. This
+     * check will take into account the repository the apks came from, to ensure that each
+     * repository indeed contains the apks that it said it would provide.
      */
     private void assertExpected() {
         Log.d(TAG, "Asserting all versions of each .apk are in index.");
-
-        persister.save(new ArrayList<Repo>(0));
-
         List<Repo> repos = RepoProvider.Helper.all(context);
         assertEquals("Repos", 3, repos.size());
 
         assertMainRepo(repos);
         assertMainArchiveRepo(repos);
         assertConflictingRepo(repos);
+    }
 
-        String appId = "com.uberspot.a2048";
-        App app = AppProvider.Helper.findById(context.getContentResolver(), appId);
-        assertNotNull("App " + appId + " exists", app);
+    /**
+     *
+     */
+    private void assertSomewhatAcceptable() {
+        Log.d(TAG, "Asserting at least one versions of each .apk is in index.");
+        List<Repo> repos = RepoProvider.Helper.all(context);
+        assertEquals("Repos", 3, repos.size());
+
+        assertApp2048();
+        assertAppAdaway();
+        assertAppAdbWireless();
+        assertAppIcsImport();
+    }
+
+    private void assertApp(String packageName, int[] versionCodes) {
+        List<Apk> apks = ApkProvider.Helper.findByApp(context, packageName, ApkProvider.DataColumns.ALL);
+        assertApksExist(apks, packageName, versionCodes);
+    }
+
+    private void assertApp2048() {
+        assertApp("com.uberspot.a2048", new int[]{ 19, 18 });
+    }
+
+    private void assertAppAdaway() {
+        assertApp("org.adaway", new int[]{ 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 42, 40, 38, 37, 36, 35 });
+    }
+
+    private void assertAppAdbWireless() {
+        assertApp("siir.es.adbWireless", new int[]{ 12 });
+    }
+
+    private void assertAppIcsImport() {
+        assertApp("org.dgtale.icsimport", new int[] { 3, 2 });
     }
 
     /**
@@ -184,7 +212,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, ApkProvider.DataColumns.ALL);
         assertEquals("Apks for main repo", apks.size(), 6);
         assertApksExist(apks, "com.uberspot.a2048", new int[]{18, 19});
-        assertApksExist(apks, "org.adaway", new int[] { 52, 53, 54 });
+        assertApksExist(apks, "org.adaway", new int[]{52, 53, 54});
         assertApksExist(apks, "siir.es.adbWireless", new int[]{12});
     }
 
@@ -228,7 +256,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, ApkProvider.DataColumns.ALL);
         assertEquals("Apks for main repo", 6, apks.size());
         assertApksExist(apks, "org.adaway", new int[]{50, 51, 52, 53});
-        assertApksExist(apks, "org.dgtale.icsimport", new int[]{ 2, 3 });
+        assertApksExist(apks, "org.dgtale.icsimport", new int[]{2, 3});
     }
 
     @NonNull
@@ -276,45 +304,103 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         }
     }
 
-    public void testConflictingThenMainThenArchive() throws UpdateException {
+    private void persistData() {
+        persister.save(new ArrayList<Repo>(0));
+    }
+
+    public void testCorrectConflictingThenMainThenArchive() throws UpdateException {
         assertEmpty();
         if (updateConflicting() && updateMain() && updateArchive()) {
+            persistData();
             assertExpected();
         }
     }
 
-    public void testConflictingThenArchiveThenMain() throws UpdateException {
+    public void testCorrectConflictingThenArchiveThenMain() throws UpdateException {
         assertEmpty();
         if (updateConflicting() && updateArchive() && updateMain()) {
+            persistData();
             assertExpected();
         }
     }
 
-    public void testArchiveThenMainThenConflicting() throws UpdateException {
+    public void testCorrectArchiveThenMainThenConflicting() throws UpdateException {
         assertEmpty();
         if (updateArchive() && updateMain() && updateConflicting()) {
+            persistData();
             assertExpected();
         }
     }
 
-    public void testArchiveThenConflictingThenMain() throws UpdateException {
+    public void testCorrectArchiveThenConflictingThenMain() throws UpdateException {
         assertEmpty();
         if (updateArchive() && updateConflicting() && updateMain()) {
+            persistData();
             assertExpected();
         }
     }
 
-    public void testMainThenArchiveThenConflicting() throws UpdateException {
+    public void testCorrectMainThenArchiveThenConflicting() throws UpdateException {
         assertEmpty();
         if (updateMain() && updateArchive() && updateConflicting()) {
+            persistData();
             assertExpected();
         }
     }
 
-    public void testMainThenConflictingThenArchive() throws UpdateException {
+    public void testCorrectMainThenConflictingThenArchive() throws UpdateException {
         assertEmpty();
         if (updateMain() && updateConflicting() && updateArchive()) {
+            persistData();
             assertExpected();
+        }
+    }
+
+    public void testAcceptableConflictingThenMainThenArchive() throws UpdateException {
+        assertEmpty();
+        if (updateConflicting() && updateMain() && updateArchive()) {
+            persistData();
+            assertSomewhatAcceptable();
+        }
+    }
+
+    public void testAcceptableConflictingThenArchiveThenMain() throws UpdateException {
+        assertEmpty();
+        if (updateConflicting() && updateArchive() && updateMain()) {
+            persistData();
+            assertSomewhatAcceptable();
+        }
+    }
+
+    public void testAcceptableArchiveThenMainThenConflicting() throws UpdateException {
+        assertEmpty();
+        if (updateArchive() && updateMain() && updateConflicting()) {
+            persistData();
+            assertSomewhatAcceptable();
+        }
+    }
+
+    public void testAcceptableArchiveThenConflictingThenMain() throws UpdateException {
+        assertEmpty();
+        if (updateArchive() && updateConflicting() && updateMain()) {
+            persistData();
+            assertSomewhatAcceptable();
+        }
+    }
+
+    public void testAcceptableMainThenArchiveThenConflicting() throws UpdateException {
+        assertEmpty();
+        if (updateMain() && updateArchive() && updateConflicting()) {
+            persistData();
+            assertSomewhatAcceptable();
+        }
+    }
+
+    public void testAcceptableMainThenConflictingThenArchive() throws UpdateException {
+        assertEmpty();
+        if (updateMain() && updateConflicting() && updateArchive()) {
+            persistData();
+            assertSomewhatAcceptable();
         }
     }
 
