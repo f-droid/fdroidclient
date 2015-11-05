@@ -130,7 +130,7 @@
   <string name="status_checking_compatibility">Проверка совместимости приложений с вашим устройством…</string>
   <string name="status_inserting">Сохранение данных о приложениях (%1$d%%)</string>
   <string name="repos_unchanged">Все репозитории обновлены</string>
-  <string name="all_other_repos_fine">Все другие репозитории не привели к ошибкам.</string>
+  <string name="all_other_repos_fine">Остальные репозитории не привели к ошибкам.</string>
   <string name="global_error_updating_repos">Ошибка во время обновления: %s</string>
   <string name="no_permissions">Разрешений не требуется.</string>
   <string name="no_handler_app">У вас нет приложения для обработки %s.</string>
@@ -222,4 +222,5 @@
 
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>
+    <string name="app_incompatible">Несовместимо</string>
     </resources>

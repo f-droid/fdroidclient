@@ -8,14 +8,14 @@
   <string name="installDowngrade">Ön megpróbálta régebbivel felülírni az alkalmazást. Ez hibás működést és az adatok elvesztését okozhatja. Ennek ellenére is megpróbálja telepíteni?</string>
   <string name="version">Verzió</string>
   <string name="cache_downloaded">App cache</string>
-  <string name="cache_downloaded_on">A letöltött apk fájlt megtartja az SD kártyán</string>
+  <string name="cache_downloaded_on">A letöltött csomagfájlokat megtartja a készüléken</string>
   <string name="updates">Frissítések</string>
   <string name="other">egyéb</string>
   <string name="update_interval">Auto. frissítés intervalluma</string>
   <string name="update_interval_zero">Ne frissítsen automatikusan</string>
   <string name="automatic_scan_wifi">Csak Wifin keresztül</string>
   <string name="automatic_scan_wifi_on">Automatikus alkalmazás lista frissítése csak Wifi-n keresztül</string>
-  <string name="notify">Értesítés</string>
+  <string name="notify">Frissítési értesítések</string>
   <string name="notify_on">Értesít ha frissítés érhető el</string>
   <string name="update_history">Frissítési előzmények</string>
   <string name="update_history_summ">Hány napig tekintse az appot frissnek vagy újnak: %s</string>
@@ -112,4 +112,8 @@ Ha frissített, a leírás és egyéb részletek itt lesz elérhető .</string>
     <string name="app_name">F-Droid</string>
 
     <string name="enable_nfc_send">NFC küldés engedélyezése…</string>
+    <string name="unstable_updates">Instabil frissítések</string>
+    <string name="unstable_updates_summary">Frissítések ajánlása instabil verziókra</string>
+    <string name="system_installer">Kiváltságos Kiterjesztés</string>
+    <string name="system_installer_on">Az F-Droid Kiváltságos Kiterjesztésének használata csomagok telepítéséhez, frissítéséhez és eltávolításához</string>
     </resources>
