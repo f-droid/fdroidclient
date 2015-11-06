@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -24,7 +25,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
 
-public abstract class AppListFragment extends ThemeableListFragment implements
+public abstract class AppListFragment extends ListFragment implements
         AdapterView.OnItemClickListener,
         Preferences.ChangeListener,
         LoaderManager.LoaderCallbacks<Cursor> {
