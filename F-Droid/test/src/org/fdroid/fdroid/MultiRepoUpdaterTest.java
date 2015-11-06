@@ -17,7 +17,6 @@ import android.util.Log;
 import org.fdroid.fdroid.RepoUpdater.UpdateException;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -42,7 +41,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     private RepoPersister persister;
 
     private static final String PUB_KEY =
-            "3082050b308202f3a003020102020420d8f212300d06092a864886f70d01010b050030363110300e0603" +
+        "3082050b308202f3a003020102020420d8f212300d06092a864886f70d01010b050030363110300e0603" +
             "55040b1307462d44726f69643122302006035504031319657073696c6f6e2e70657465722e7365727779" +
             "6c6f2e636f6d301e170d3135303931323233313632315a170d3433303132383233313632315a30363110" +
             "300e060355040b1307462d44726f69643122302006035504031319657073696c6f6e2e70657465722e73" +
@@ -180,31 +179,31 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     }
 
     private void assertApp2048() {
-        assertApp("com.uberspot.a2048", new int[]{ 19, 18 });
+        assertApp("com.uberspot.a2048", new int[]{19, 18});
     }
 
     private void assertAppAdaway() {
-        assertApp("org.adaway", new int[]{ 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 42, 40, 38, 37, 36, 35 });
+        assertApp("org.adaway", new int[]{54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 42, 40, 38, 37, 36, 35});
     }
 
     private void assertAppAdbWireless() {
-        assertApp("siir.es.adbWireless", new int[]{ 12 });
+        assertApp("siir.es.adbWireless", new int[]{12});
     }
 
     private void assertAppIcsImport() {
-        assertApp("org.dgtale.icsimport", new int[] { 3, 2 });
+        assertApp("org.dgtale.icsimport", new int[]{3, 2});
     }
 
     /**
-     *  + 2048 (com.uberspot.a2048)
-     *    - Version 1.96 (19)
-     *    - Version 1.95 (18)
-     *  + AdAway (org.adaway)
-     *    - Version 3.0.2 (54)
-     *    - Version 3.0.1 (53)
-     *    - Version 3.0 (52)
-     *  + adbWireless (siir.es.adbWireless)
-     *    - Version 1.5.4 (12)
+     * + 2048 (com.uberspot.a2048)
+     * - Version 1.96 (19)
+     * - Version 1.95 (18)
+     * + AdAway (org.adaway)
+     * - Version 3.0.2 (54)
+     * - Version 3.0.1 (53)
+     * - Version 3.0 (52)
+     * + adbWireless (siir.es.adbWireless)
+     * - Version 1.5.4 (12)
      */
     private void assertMainRepo(List<Repo> allRepos) {
         Repo repo = findRepo(REPO_MAIN, allRepos);
@@ -217,38 +216,38 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     }
 
     /**
-     *  + AdAway (org.adaway)
-     *    - Version 2.9.2 (51)
-     *    - Version 2.9.1 (50)
-     *    - Version 2.9 (49)
-     *    - Version 2.8.1 (48)
-     *    - Version 2.8 (47)
-     *    - Version 2.7 (46)
-     *    - Version 2.6 (45)
-     *    - Version 2.3 (42)
-     *    - Version 2.1 (40)
-     *    - Version 1.37 (38)
-     *    - Version 1.36 (37)
-     *    - Version 1.35 (36)
-     *    - Version 1.34 (35)
+     * + AdAway (org.adaway)
+     * - Version 2.9.2 (51)
+     * - Version 2.9.1 (50)
+     * - Version 2.9 (49)
+     * - Version 2.8.1 (48)
+     * - Version 2.8 (47)
+     * - Version 2.7 (46)
+     * - Version 2.6 (45)
+     * - Version 2.3 (42)
+     * - Version 2.1 (40)
+     * - Version 1.37 (38)
+     * - Version 1.36 (37)
+     * - Version 1.35 (36)
+     * - Version 1.34 (35)
      */
     private void assertMainArchiveRepo(List<Repo> allRepos) {
         Repo repo = findRepo(REPO_ARCHIVE, allRepos);
 
         List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, ApkProvider.DataColumns.ALL);
         assertEquals("Apks for main archive repo", 13, apks.size());
-        assertApksExist(apks, "org.adaway", new int[] { 35, 36, 37, 38, 40, 42, 45, 46, 47, 48, 49, 50, 51 });
+        assertApksExist(apks, "org.adaway", new int[]{35, 36, 37, 38, 40, 42, 45, 46, 47, 48, 49, 50, 51});
     }
 
     /**
      * + AdAway (org.adaway)
-     *   - Version 3.0.1 (53) *
-     *   - Version 3.0 (52) *
-     *   - Version 2.9.2 (51) *
-     *   - Version 2.2.1 (50) *
+     * - Version 3.0.1 (53) *
+     * - Version 3.0 (52) *
+     * - Version 2.9.2 (51) *
+     * - Version 2.2.1 (50) *
      * + Add to calendar (org.dgtale.icsimport)
-     *   - Version 1.2 (3)
-     *   - Version 1.1 (2)
+     * - Version 1.2 (3)
+     * - Version 1.1 (2)
      */
     private void assertConflictingRepo(List<Repo> allRepos) {
         Repo repo = findRepo(REPO_CONFLICTING, allRepos);
@@ -294,9 +293,9 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         assertEquals("No apps present", 0, AppProvider.Helper.all(context.getContentResolver()).size());
 
         String[] packages = {
-                "com.uberspot.a2048",
-                "org.adaway",
-                "siir.es.adbWireless",
+            "com.uberspot.a2048",
+            "org.adaway",
+            "siir.es.adbWireless",
         };
 
         for (String id : packages) {
@@ -308,7 +307,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         persister.save(new ArrayList<Repo>(0));
     }
 
-	/* At time fo writing, the following tests did not pass. This is because the multi-repo support
+    /* At time fo writing, the following tests did not pass. This is because the multi-repo support
        in F-Droid was not sufficient. When working on proper multi repo support than this should be
        ucommented and all these tests should pass:
 
@@ -360,7 +359,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         }
     }
 
-	*/
+    */
 
     public void testAcceptableConflictingThenMainThenArchive() throws UpdateException {
         assertEmpty();

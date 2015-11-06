@@ -34,13 +34,13 @@ public class RepoPersister {
      * values changed in the index, some fields should not be updated. Rather, they should be
      * ignored, because they were explicitly set by the user, and hence can't be automatically
      * overridden by the index.
-     *
+     * <p/>
      * NOTE: In the future, these attributes will be moved to a join table, so that the app table
      * is essentially completely transient, and can be nuked at any time.
      */
     private static final String[] APP_FIELDS_TO_IGNORE = {
-            AppProvider.DataColumns.IGNORE_ALLUPDATES,
-            AppProvider.DataColumns.IGNORE_THISUPDATE,
+        AppProvider.DataColumns.IGNORE_ALLUPDATES,
+        AppProvider.DataColumns.IGNORE_THISUPDATE,
     };
 
     @NonNull
@@ -129,9 +129,9 @@ public class RepoPersister {
         List<Apk> toRemove = new ArrayList<>();
 
         final String[] fields = {
-                ApkProvider.DataColumns.APK_ID,
-                ApkProvider.DataColumns.VERSION_CODE,
-                ApkProvider.DataColumns.VERSION,
+            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.VERSION_CODE,
+            ApkProvider.DataColumns.VERSION,
         };
 
         for (final Repo repo : updatedRepos) {
@@ -175,14 +175,14 @@ public class RepoPersister {
                                         List<ContentProviderOperation> operations,
                                         int currentCount,
                                         int totalUpdateCount)
-            throws RemoteException, OperationApplicationException {
+        throws RemoteException, OperationApplicationException {
         int i = 0;
         while (i < operations.size()) {
             int count = Math.min(operations.size() - i, 100);
             ArrayList<ContentProviderOperation> o = new ArrayList<>(operations.subList(i, i + count));
             UpdateService.sendStatus(context, UpdateService.STATUS_INFO, context.getString(
-                    R.string.status_inserting,
-                    (int) ((double) (currentCount + i) / totalUpdateCount * 100)));
+                R.string.status_inserting,
+                (int) ((double) (currentCount + i) / totalUpdateCount * 100)));
             context.getContentResolver().applyBatch(providerAuthority, o);
             i += 100;
         }
@@ -193,9 +193,9 @@ public class RepoPersister {
      */
     private List<Apk> getKnownApks(List<Apk> apks) {
         final String[] fields = {
-                ApkProvider.DataColumns.APK_ID,
-                ApkProvider.DataColumns.VERSION,
-                ApkProvider.DataColumns.VERSION_CODE,
+            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.VERSION,
+            ApkProvider.DataColumns.VERSION_CODE,
         };
         return ApkProvider.Helper.knownApks(context, apks, fields);
     }

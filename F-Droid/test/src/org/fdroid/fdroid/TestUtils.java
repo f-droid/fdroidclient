@@ -68,10 +68,10 @@ public class TestUtils {
         if (actualList.size() != expectedContains.size()) {
             String message =
                 "List sizes don't match.\n" +
-                "Expected: " +
-                listToString(expectedContains) + "\n" +
-                "Actual:   " +
-                listToString(actualList);
+                    "Expected: " +
+                    listToString(expectedContains) + "\n" +
+                    "Actual:   " +
+                    listToString(actualList);
             throw new AssertionFailedError(message);
         }
         for (T required : expectedContains) {
@@ -85,10 +85,10 @@ public class TestUtils {
             if (!containsRequired) {
                 String message =
                     "List doesn't contain \"" + required + "\".\n" +
-                    "Expected: " +
-                    listToString(expectedContains) + "\n" +
-                    "Actual:   " +
-                    listToString(actualList);
+                        "Expected: " +
+                        listToString(expectedContains) + "\n" +
+                        "Actual:   " +
+                        listToString(actualList);
                 throw new AssertionFailedError(message);
             }
         }
@@ -151,8 +151,8 @@ public class TestUtils {
      * "installed apps" table in the database.
      */
     public static void installAndBroadcast(
-            MockContextSwappableComponents context,  MockInstallablePackageManager pm,
-            String appId, int versionCode, String versionName) {
+        MockContextSwappableComponents context, MockInstallablePackageManager pm,
+        String appId, int versionCode, String versionName) {
 
         context.setPackageManager(pm);
         pm.install(appId, versionCode, versionName);
@@ -166,8 +166,8 @@ public class TestUtils {
      * @see org.fdroid.fdroid.TestUtils#installAndBroadcast(mock.MockContextSwappableComponents, mock.MockInstallablePackageManager, String, int, String)
      */
     public static void upgradeAndBroadcast(
-            MockContextSwappableComponents context, MockInstallablePackageManager pm,
-            String appId, int versionCode, String versionName) {
+        MockContextSwappableComponents context, MockInstallablePackageManager pm,
+        String appId, int versionCode, String versionName) {
         /*
         removeAndBroadcast(context, pm, appId);
         installAndBroadcast(context, pm, appId, versionCode, versionName);
@@ -214,18 +214,6 @@ public class TestUtils {
         return tempFile;
     }
 
-    public static File getWriteableDir(Context context) {
-        File[] dirsToTry = new File[] {
-                context.getCacheDir(),
-                context.getFilesDir(),
-                context.getExternalCacheDir(),
-                context.getExternalFilesDir(null),
-                Environment.getExternalStorageDirectory()
-        };
-
-        return getWriteableDir(dirsToTry);
-    }
-    
     /**
      * Prefer internal over external storage, because external tends to be FAT filesystems,
      * which don't support symlinks (which we test using this method).
@@ -235,21 +223,21 @@ public class TestUtils {
         Context targetContext = instrumentation.getTargetContext();
 
 
-        File[] dirsToTry = new File[] {
-                context.getCacheDir(),
-                context.getFilesDir(),
-                targetContext.getCacheDir(),
-                targetContext.getFilesDir(),
-                context.getExternalCacheDir(),
-                context.getExternalFilesDir(null),
-                targetContext.getExternalCacheDir(),
-                targetContext.getExternalFilesDir(null),
-                Environment.getExternalStorageDirectory()
+        File[] dirsToTry = new File[]{
+            context.getCacheDir(),
+            context.getFilesDir(),
+            targetContext.getCacheDir(),
+            targetContext.getFilesDir(),
+            context.getExternalCacheDir(),
+            context.getExternalFilesDir(null),
+            targetContext.getExternalCacheDir(),
+            targetContext.getExternalFilesDir(null),
+            Environment.getExternalStorageDirectory(),
         };
 
         return getWriteableDir(dirsToTry);
     }
-    
+
     private static File getWriteableDir(File[] dirsToTry) {
 
         for (File dir : dirsToTry) {
