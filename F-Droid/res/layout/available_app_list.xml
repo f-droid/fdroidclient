@@ -19,11 +19,21 @@
         android:layout_alignBottom="@id/category_spinner"
         android:background="@color/fdroid_green" />
 
-    <ListView
-        android:id="@android:id/list"
-        android:fastScrollEnabled="true"
+    <!-- The empty app list message gets shown on the parent of the @android:id/list.
+         For the update/installed lists, this is not a problem as it is attached to the linear
+         layout the list is in. However here, it will end up in the relative layout which
+         causes sadness. This FrameLayout is here so that the empty message will get shown here. -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/category_spinner" />
+        android:layout_below="@id/category_spinner">
+
+        <ListView
+            android:id="@android:id/list"
+            android:fastScrollEnabled="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
 
 </RelativeLayout>
