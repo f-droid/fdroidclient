@@ -2,6 +2,7 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 
 import org.fdroid.fdroid.Utils;
@@ -35,9 +36,9 @@ public abstract class Downloader {
     protected int bytesRead;
     protected int totalBytes;
 
-    public abstract InputStream getInputStream() throws IOException;
+    protected abstract InputStream getDownloadersInputStream() throws IOException;
 
-    public abstract void close();
+    protected abstract void close() throws IOException;
 
     Downloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
@@ -45,6 +46,10 @@ public abstract class Downloader {
         outputFile = destFile;
         outputStream = new FileOutputStream(outputFile);
         localBroadcastManager = LocalBroadcastManager.getInstance(context);
+    }
+
+    public final InputStream getInputStream() throws IOException {
+        return new WrappedInputStream(getDownloadersInputStream());
     }
 
     /**
@@ -196,5 +201,67 @@ public abstract class Downloader {
 
     public int getTotalBytes() {
         return totalBytes;
+    }
+
+    /**
+     * Overrides every method in {@link InputStream} and delegates to the wrapped stream.
+     * The only difference is that when we call the {@link WrappedInputStream#close()} method,
+     * after delegating to the wrapped stream we invoke the {@link Downloader#close()} method
+     * on the {@link Downloader} which created this.
+     */
+    private class WrappedInputStream extends InputStream {
+
+        private InputStream toWrap;
+
+        public WrappedInputStream(InputStream toWrap) {
+            super();
+            this.toWrap = toWrap;
+        }
+
+        @Override
+        public void close() throws IOException {
+            toWrap.close();
+            Downloader.this.close();
+        }
+
+        @Override
+        public int available() throws IOException {
+            return toWrap.available();
+        }
+
+        @Override
+        public void mark(int readlimit) {
+            toWrap.mark(readlimit);
+        }
+
+        @Override
+        public boolean markSupported() {
+            return toWrap.markSupported();
+        }
+
+        @Override
+        public int read(@NonNull byte[] buffer) throws IOException {
+            return toWrap.read(buffer);
+        }
+
+        @Override
+        public int read(@NonNull byte[] buffer, int byteOffset, int byteCount) throws IOException {
+            return toWrap.read(buffer, byteOffset, byteCount);
+        }
+
+        @Override
+        public synchronized void reset() throws IOException {
+            toWrap.reset();
+        }
+
+        @Override
+        public long skip(long byteCount) throws IOException {
+            return toWrap.skip(byteCount);
+        }
+
+        @Override
+        public int read() throws IOException {
+            return toWrap.read();
+        }
     }
 }

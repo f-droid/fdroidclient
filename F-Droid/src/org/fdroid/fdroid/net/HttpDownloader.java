@@ -8,12 +8,10 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
@@ -30,20 +28,11 @@ public class HttpDownloader extends Downloader {
     protected static final String HEADER_FIELD_ETAG = "ETag";
 
     protected HttpURLConnection connection;
-    private InputStream stream;
     private int statusCode = -1;
 
     HttpDownloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
         super(context, url, destFile);
-    }
-
-    /**
-     * Calling this makes this downloader not download a file. Instead, it will
-     * only stream the file through the {@link HttpDownloader#getInputStream()}
-     */
-    public HttpDownloader streamDontDownload() {
-        return this;
     }
 
     /**
@@ -55,14 +44,9 @@ public class HttpDownloader extends Downloader {
      * @throws IOException
      */
 
-    public InputStream getInputStream() throws IOException {
+    protected InputStream getDownloadersInputStream() throws IOException {
         setupConnection();
-        stream = new BufferedInputStream(connection.getInputStream());
-        return stream;
-    }
-
-    public BufferedReader getBufferedReader() throws IOException {
-        return new BufferedReader(new InputStreamReader(getInputStream()));
+        return new BufferedInputStream(connection.getInputStream());
     }
 
     // Get a remote file. Returns the HTTP response code.
@@ -155,18 +139,8 @@ public class HttpDownloader extends Downloader {
         return this.statusCode != 304;
     }
 
-    public int getStatusCode() {
-        return statusCode;
-    }
-
+    @Override
     public void close() {
-        try {
-            if (stream != null)
-                stream.close();
-        } catch (IOException e) {
-            // ignore
-        }
-
         connection.disconnect();
     }
 }

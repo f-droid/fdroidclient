@@ -108,6 +108,10 @@ public class DownloaderFactory {
             // We support onion addresses through our own downloader.
             return false;
         }
+        if (isBluetoothAddress(url)) {
+            // Completely differnet protocol not understood by the download manager.
+            return false;
+        }
         return hasDownloadManager(context);
     }
 

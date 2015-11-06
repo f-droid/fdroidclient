@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import org.apache.commons.io.input.BoundedInputStream;
@@ -31,11 +32,10 @@ public class BluetoothDownloader extends Downloader {
     }
 
     @Override
-    public InputStream getInputStream() throws IOException {
+    protected InputStream getDownloadersInputStream() throws IOException {
         Request request = Request.createGET(sourcePath, connection);
         Response response = request.send();
         fileDetails = response.toFileDetails();
-
 
         // TODO: Manage the dependency which includes this class better?
         // Right now, I only needed the one class from apache commons.
@@ -53,10 +53,8 @@ public class BluetoothDownloader extends Downloader {
 
     /**
      * May return null if an error occurred while getting file details.
-     * TODO: Should we throw an exception? Everywhere else in this blue package throws IO exceptions weely-neely.
-     * Will probably require some thought as to how the API looks, with regards to all of the public methods
-     * and their signatures.
      */
+    @Nullable
     public FileDetails getFileDetails() {
         if (fileDetails == null) {
             Utils.debugLog(TAG, "Going to Bluetooth \"server\" to get file details.");
@@ -71,12 +69,14 @@ public class BluetoothDownloader extends Downloader {
 
     @Override
     public boolean hasChanged() {
-        return getFileDetails().getCacheTag() == null || getFileDetails().getCacheTag().equals(getCacheTag());
+        FileDetails details = getFileDetails();
+        return details == null || details.getCacheTag() == null || details.getCacheTag().equals(getCacheTag());
     }
 
     @Override
     public int totalDownloadSize() {
-        return getFileDetails().getFileSize();
+        FileDetails details = getFileDetails();
+        return details != null ? details.getFileSize() : -1;
     }
 
     @Override
@@ -94,7 +94,7 @@ public class BluetoothDownloader extends Downloader {
     }
 
     @Override
-    public void close() {
+    protected void close() {
         if (connection != null)
             connection.closeQuietly();
     }

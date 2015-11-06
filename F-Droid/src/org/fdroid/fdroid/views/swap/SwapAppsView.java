@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -330,9 +331,12 @@ public class SwapAppsView extends ListView implements
             private final ContentObserver appObserver = new ContentObserver(new Handler()) {
                 @Override
                 public void onChange(boolean selfChange) {
-                    app = AppProvider.Helper.findById(getActivity().getContentResolver(), app.id);
-                    apkToInstall = null; // Force lazy loading to fetch correct apk next time.
-                    resetView();
+                    Activity activity = getActivity();
+                    if (activity != null) {
+                        app = AppProvider.Helper.findById(getActivity().getContentResolver(), app.id);
+                        apkToInstall = null; // Force lazy loading to fetch correct apk next time.
+                        resetView();
+                    }
                 }
             };
 
