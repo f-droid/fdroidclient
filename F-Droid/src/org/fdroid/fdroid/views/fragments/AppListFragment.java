@@ -6,19 +6,15 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.TextView;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
@@ -62,17 +58,6 @@ public abstract class AppListFragment extends ListFragment implements
 
     protected abstract Uri getDataUri();
 
-    /**
-     * Depending on the subclass, a different message may be desired. For example, in the main list
-     * of apps, might want to say "No apps for this category, how about you try...", while the
-     * "Update" tab may wish to say "Congratulations, all your apps are up to date."
-     *
-     * In the future, this may want to return a view instead of a string. That would allow nice
-     * visual graphics helping to show the message.
-     */
-    @Nullable
-    protected abstract String getEmptyMessage();
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -80,16 +65,7 @@ public abstract class AppListFragment extends ListFragment implements
         // Can't do this in the onCreate view, because "onCreateView" which
         // returns the list view is "called between onCreate and
         // onActivityCreated" according to the docs.
-        getListView().setFastScrollEnabled(true);
         getListView().setOnItemClickListener(this);
-
-        String emptyMessage = getEmptyMessage();
-        if (emptyMessage != null) {
-            View emptyView = getLayoutInflater(savedInstanceState).inflate(R.layout.empty_app_list, null);
-            ((TextView) emptyView.findViewById(R.id.text)).setText(emptyMessage);
-            ((ViewGroup) getListView().getParent()).addView(emptyView); // Needs to be added to this parent or it doesn't show.
-            getListView().setEmptyView(emptyView);
-        }
     }
 
     @Override

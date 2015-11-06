@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
 
 import org.fdroid.fdroid.Preferences;
@@ -60,11 +59,6 @@ public class AvailableAppsFragment extends AppListFragment implements
             adapter = a;
         }
         return adapter;
-    }
-
-    @Override
-    protected String getEmptyMessage() {
-        return getActivity().getString(R.string.empty_available_app_list);
     }
 
     private class CategoryObserver extends ContentObserver {
@@ -154,9 +148,6 @@ public class AvailableAppsFragment extends AppListFragment implements
         View view = inflater.inflate(R.layout.available_app_list, container, false);
 
         setupCategorySpinner((Spinner) view.findViewById(R.id.category_spinner));
-
-        ((ListView) view.findViewById(android.R.id.list)).setOnItemClickListener(this);
-
         defaultCategory = AppProvider.Helper.getCategoryWhatsNew(getActivity());
 
         return view;

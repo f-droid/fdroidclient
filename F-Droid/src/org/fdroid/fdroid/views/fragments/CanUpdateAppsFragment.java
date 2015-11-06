@@ -1,6 +1,10 @@
 package org.fdroid.fdroid.views.fragments;
 
 import android.net.Uri;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
@@ -20,13 +24,13 @@ public class CanUpdateAppsFragment extends AppListFragment {
     }
 
     @Override
-    protected String getEmptyMessage() {
-        return getActivity().getString(R.string.empty_can_update_app_list);
+    protected Uri getDataUri() {
+        return AppProvider.getCanUpdateUri();
     }
 
     @Override
-    protected Uri getDataUri() {
-        return AppProvider.getCanUpdateUri();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.can_update_app_list, container, false);
     }
 
 }
