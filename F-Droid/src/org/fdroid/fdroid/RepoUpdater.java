@@ -37,7 +37,7 @@ import javax.xml.parsers.SAXParserFactory;
 /**
  * Handles getting the index metadata for an app repo, then verifying the
  * signature on the index metdata, implementing as a JAR signature.
- * <p/>
+ *
  * <b>WARNING</b>: this class is the central piece of the entire security model of
  * FDroid!  Avoid modifying it when possible, if you absolutely must, be very,
  * very careful with the changes that you are making!

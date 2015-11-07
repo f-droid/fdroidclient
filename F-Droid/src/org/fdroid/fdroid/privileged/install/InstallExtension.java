@@ -208,11 +208,11 @@ abstract class InstallExtension {
 
         /**
          * NOTE: Only works with reboot
-         * <p/>
+         *
          * File observers on /system/priv-app/ have been removed because they don't work with the new
          * cluser-style layout. See
          * https://github.com/android/platform_frameworks_base/commit/84e71d1d61c53cd947becc7879e05947be681103
-         * <p/>
+         *
          * Related stack overflow post: http://stackoverflow.com/q/26487750
          */
         @Override

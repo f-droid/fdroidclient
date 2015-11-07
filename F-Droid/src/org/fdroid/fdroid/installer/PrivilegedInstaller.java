@@ -53,7 +53,7 @@ import java.util.List;
  * <li>android.permission.INSTALL_PACKAGES</li>
  * <li>android.permission.DELETE_PACKAGES</li>
  * </ul>
- * <p/>
+ *
  * Both permissions are protected by systemOrSignature (in newer versions:
  * system|signature) and only granted on F-Droid's install in the following
  * cases:
@@ -63,7 +63,7 @@ import java.util.List;
  * <li>On Android < 4.4 also when moved into /system/app/</li>
  * <li>On Android >= 4.4 also when moved into /system/priv-app/</li>
  * </ul>
- * <p/>
+ *
  * Sources for Android 4.4 change:
  * https://groups.google.com/forum/#!msg/android-
  * security-discuss/r7uL_OEMU5c/LijNHvxeV80J
@@ -665,8 +665,8 @@ public class PrivilegedInstaller extends Installer {
      * {@link #installPackage(android.net.Uri, IPackageInstallObserver, int)}
      * if the system failed to install the package because it is attempting to define a
      * permission that is already defined by some existing package.
-     * <p/>
-     * <p>The package name of the app which has already defined the permission is passed to
+     *
+     * The package name of the app which has already defined the permission is passed to
      * a {@link PackageInstallObserver}, if any, as the {@link #EXTRA_EXISTING_PACKAGE}
      * string extra; and the name of the permission being redefined is passed in the
      * {@link #EXTRA_EXISTING_PERMISSION} string extra.

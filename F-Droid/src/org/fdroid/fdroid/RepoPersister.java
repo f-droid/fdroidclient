@@ -34,7 +34,7 @@ public class RepoPersister {
      * values changed in the index, some fields should not be updated. Rather, they should be
      * ignored, because they were explicitly set by the user, and hence can't be automatically
      * overridden by the index.
-     * <p/>
+     *
      * NOTE: In the future, these attributes will be moved to a join table, so that the app table
      * is essentially completely transient, and can be nuked at any time.
      */

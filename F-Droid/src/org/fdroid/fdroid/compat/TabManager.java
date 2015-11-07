@@ -112,7 +112,7 @@ public class TabManager {
      * updated when we call setSelectedNavigationItem(), and they don't expose
      * the spinner via the API. So we go on a merry hunt for all spinners in
      * our view, and find the first one with an id of -1.
-     * <p/>
+     *
      * This is because the view hierarchy dictates that the action bar comes
      * before everything below it when traversing children, and also our spinner
      * on the first view (for the app categories) has an id, whereas the

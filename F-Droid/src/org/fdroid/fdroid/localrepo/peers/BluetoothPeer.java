@@ -42,7 +42,7 @@ public class BluetoothPeer implements Peer {
 
     /**
      * Return the fingerprint of the signing key, or {@code null} if it is not set.
-     * <p/>
+     *
      * This is not yet stored for Bluetooth connections. Once a device is connected to a bluetooth
      * socket, if we trust it enough to accept a fingerprint from it somehow, then we may as well
      * trust it enough to receive an index from it that contains a fingerprint we can use.
