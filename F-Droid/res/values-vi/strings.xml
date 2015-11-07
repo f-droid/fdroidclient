@@ -9,7 +9,7 @@
   <string name="version">Phiên bản</string>
   <string name="delete">Xoá</string>
   <string name="enable_nfc_send">Kích hoạt gửi qua NFC…</string>
-  <string name="cache_downloaded">Lưu ứng dụng</string>
+  <string name="cache_downloaded">Lưu tập tin gói</string>
   <string name="cache_downloaded_on">Lưu các tập tin gói đã tải trong thẻ nhớ</string>
   <string name="updates">Cập nhật</string>
   <string name="other">Khác</string>
@@ -113,10 +113,11 @@
   <string name="proxy_port">Cổng proxy</string>
   <string name="proxy_port_summary">Thiết lập số cổng proxy của bạn (ví dụ 8118)</string>
   <string name="status_download">Đang tải %2$s / %3$s (%4$d%%) từ %1$s</string>
-  <string name="status_connecting_to_repo">Đang kết nối đến %1$s</string>
-  <string name="status_checking_compatibility">Đang kiểm tra tính tương thích của các ứng dụng…</string>
+  <string name="status_connecting_to_repo">Đang kết nối đến
+\n%1$s</string>
+  <string name="status_checking_compatibility">Đang kiểm tra tính tương thích của các ứng dụng với thiết bị của bạn…</string>
   <string name="status_inserting">Đang lưu thông tin ứng dụng (%1$d%%)</string>
-  <string name="repos_unchanged">Không có kho nào có cập nhật</string>
+  <string name="repos_unchanged">Tất cả các kho ứng dụng đã được cập nhật</string>
   <string name="global_error_updating_repos">Lỗi khi cập nhật: %s</string>
   <string name="no_permissions">Không sử dụng quyền nào.</string>
   <string name="no_handler_app">Bạn không có ứng dụng nào để xử lí %s.</string>
@@ -214,9 +215,9 @@
     <string name="category_Time">Thời gian</string>
     <string name="category_Writing">Soạn thảo</string>
 
-    <string name="empty_installed_app_list">Chưa cài đặt ứng dụng nào.\n\nCó ứng dụng trên máy của bạn, nhưng những ứng dụng này không có trên F-Droid. Có thể bạn cần phải cập nhật các kho ứng dụng, hoặc không ứng dụng nào của bạn có trên các kho này.</string>
-    <string name="empty_available_app_list">Không có ứng dụng nào trong mục này.\n\nHãy chọn một mục khác hoặc cập nhật kho ứng dụng để có danh sách ứng dụng mới.</string>
-    <string name="empty_can_update_app_list">Tất cả các ứng dụng đã được cập nhật.\n\nChúc mừng! Tất cả các ứng dụng của bạn đã được cập nhật (hoặc các kho ứng dụng chưa được cập nhật).</string>
+    <string name="empty_installed_app_list">Chưa cài đặt ứng dụng nào.\n\nCó ứng dụng trên máy bạn, nhưng những ứng dụng này không nằm trong F-Droid. Có thể bạn cần cập nhật các kho ứng dụng, hoặc trong các kho không có ứng dụng bạn đang dùng.</string>
+    <string name="empty_available_app_list">Không có ứng dụng trong mục này.\n\nHãy thử chọn mục khác hoặc cập nhật kho ứng dụng để có danh sách ứng dụng mới.</string>
+    <string name="empty_can_update_app_list">Tất cả ứng dụng đã được cập nhật.\n\nChúc mừng! Bạn đang có những phiên bản mới nhất (nhưng cũng có thể các kho ứng dụng chưa được cập nhật).</string>
 
     <string name="install_error_title">Lỗi cài đặt</string>
     <string name="install_error_unknown">Không thể cài đặt do có lỗi xảy ra</string>
@@ -225,7 +226,7 @@
     <string name="uninstall_error_unknown">Không thể xoá ứng dụng do có lỗi xảy ra</string>
     <string name="system_install_first_time_notification">Cài đặt phần mở rộng F-Droid được cấp quyền?</string>
     <string name="system_install_first_time_notification_message_short">Chạm để xem thêm thông tin.</string>
-    <string name="system_install_first_time_notification_message">Chạm vào đây để cài đặt phần mở rộng được cấp quyền của F-Droid, tích hợp sâu vào hệ điều hành Android. Việc này cho phép F-Droid tự cài đặt, nâng cấp và gỡ bỏ ứng dụng.\nBạn cũng có thể vào phần tuỳ chọn của F-Droid để cài đặt.</string>
+    <string name="system_install_first_time_notification_message">Chạm vào đây để cài đặt phần mở rộng được cấp quyền của F-Droid, tích hợp sâu vào hệ điều hành Android. Nó cho phép F-Droid tự cài đặt, nâng cấp và gỡ bỏ ứng dụng.\nBạn cũng có thể vào phần tuỳ chọn của F-Droid để cài đặt.</string>
     <string name="system_install_post_success">Cài đặt phần mở rộng F-Droid được cấp quyền thành công</string>
     <string name="system_install_post_fail">Cài đặt phần mở rộng F-Droid được cấp quyền thất bại</string>
     <string name="system_install_post_success_message">Phần mở rộng F-Droid được cấp quyền đã được cài đặt thành công. Nó cho phép F-Droid tự cài đặt, nâng cấp và gỡ bỏ ứng dụng.</string>
@@ -320,4 +321,8 @@
     <string name="system_install_installing_rebooting">Đang cài đặt và khởi động lại…</string>
     <string name="system_install_warning">Việc này mất tối đa 10 giây.</string>
     <string name="theme_night">Đen</string>
-</resources>
+<string name="menu_settings">Tuỳ chọn</string>
+    <string name="system_install_denied_signature">Mã kiểm tra của phần mở rộng sai. Xin hãy báo lại lỗi này cho nhóm phát triển!</string>
+    <string name="repo_add_fingerprint">Mã kiểm tra (không bắt buộc)</string>
+    <string name="bad_fingerprint">Mã kiểm tra sai</string>
+    </resources>

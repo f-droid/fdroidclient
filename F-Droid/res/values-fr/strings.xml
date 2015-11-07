@@ -221,7 +221,7 @@
     <string name="install_confirm_update">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Une fois mise à jour, l\'application aura accès à :</string>
     <string name="install_confirm_update_system">Voulez-vous mettre à jour cette application système ? Vos données ne seront pas perdues. Une fois mise à jour, l\'application aura accès à :</string>
     <string name="install_confirm_update_no_perms">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Elle ne requiert aucune permission particulière.</string>
-    <string name="install_confirm_update_system_no_perms">Voulez-vous mettre à jour cette application système ? Vos données ne seront pas perdues. Elle ne requiert pas d\'autorisation particulière.</string>
+    <string name="install_confirm_update_system_no_perms">Voulez-vous mettre à jour cette application système ? Vos données ne seront pas perdues. Elle ne requiert aucune permission particulière.</string>
     <string name="newPerms">Nouvelles</string>
     <string name="allPerms">Toutes</string>
     <string name="privacyPerms">Vie privée</string>
@@ -249,7 +249,7 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="status_processing_xml_percent">Traitement de %2$s / %3$s (%4$d%%) depuis %1$s</string>
+    <string name="status_processing_xml_percent">Traitement de %2$s / %3$s (%4$d%%) de %1$s</string>
     <string name="repo_added">Le dépôt F-Droid %1$s a été sauvegardé.</string>
     <string name="repo_searching_address">Recherche d\'un dépôt F-Droid sur
 \n%1$s</string>
