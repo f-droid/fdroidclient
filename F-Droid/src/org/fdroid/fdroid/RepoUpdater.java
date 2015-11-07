@@ -110,7 +110,7 @@ public class RepoUpdater {
                 downloader.getFile().delete();
             }
 
-            throw new UpdateException(repo, "Error getting index file from " + repo.address, e);
+            throw new UpdateException(repo, "Error getting index file", e);
         }
         return downloader;
     }
@@ -177,7 +177,7 @@ public class RepoUpdater {
             rememberer.repo = repo;
             rememberer.values = prepareRepoDetailsForSaving(repoXMLHandler, cacheTag);
         } catch (SAXException | ParserConfigurationException | IOException e) {
-            throw new UpdateException(repo, "Error parsing index for repo " + repo.address, e);
+            throw new UpdateException(repo, "Error parsing index", e);
         } finally {
             FDroidApp.enableSpongyCastleOnLollipop();
             Utils.closeQuietly(indexInputStream);
