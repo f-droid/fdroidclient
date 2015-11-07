@@ -7,7 +7,7 @@ before_script:
   - echo " == Installing packages required by the 32-bit SDK"
   - apt-get -q install -y lib32stdc++6 lib32z1
   - echo " == Installing the Android SDK"
-  - wget -q -O android-sdk.tgz https://dl.google.com/android/android-sdk_r24.3.4-linux.tgz
+  - wget -q -O android-sdk.tgz https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
   - tar -x -z -f android-sdk.tgz
   - mv android-sdk-linux android-sdk
   - export ANDROID_HOME=$PWD/android-sdk
