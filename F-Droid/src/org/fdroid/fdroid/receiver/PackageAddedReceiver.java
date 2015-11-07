@@ -57,6 +57,8 @@ public class PackageAddedReceiver extends PackageReceiver {
         values.put(InstalledAppProvider.DataColumns.VERSION_NAME, info.versionName);
         values.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL,
                 InstalledAppProvider.getApplicationLabel(context, appId));
+        values.put(InstalledAppProvider.DataColumns.SIGNATURE,
+                InstalledAppProvider.getPackageSig(info));
         context.getContentResolver().insert(uri, values);
     }
 

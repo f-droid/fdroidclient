@@ -209,6 +209,7 @@ public class AppProvider extends FDroidProvider {
         interface InstalledApp {
             String VERSION_CODE = "installedVersionCode";
             String VERSION_NAME = "installedVersionName";
+            String SIGNATURE = "installedSig";
         }
 
         String[] ALL = {
@@ -220,6 +221,7 @@ public class AppProvider extends FDroidProvider {
             IGNORE_THISUPDATE, ICON_URL, ICON_URL_LARGE,
             SUGGESTED_VERSION_CODE, SuggestedApk.VERSION,
             InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
+            InstalledApp.SIGNATURE,
         };
     }
 
@@ -354,6 +356,9 @@ public class AppProvider extends FDroidProvider {
                 case DataColumns.InstalledApp.VERSION_CODE:
                     addInstalledAppVersionCode();
                     break;
+                case DataColumns.InstalledApp.SIGNATURE:
+                    addInstalledSig();
+                    break;
                 case DataColumns._COUNT:
                     appendCountField();
                     break;
@@ -399,6 +404,13 @@ public class AppProvider extends FDroidProvider {
             addInstalledAppField(
                     InstalledAppProvider.DataColumns.VERSION_CODE,
                     DataColumns.InstalledApp.VERSION_CODE
+            );
+        }
+
+        private void addInstalledSig() {
+            addInstalledAppField(
+                    InstalledAppProvider.DataColumns.SIGNATURE,
+                    DataColumns.InstalledApp.SIGNATURE
             );
         }
 

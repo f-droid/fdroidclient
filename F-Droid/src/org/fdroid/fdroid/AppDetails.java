@@ -30,7 +30,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
@@ -96,7 +95,6 @@ import org.fdroid.fdroid.net.AsyncDownloaderFromAndroid;
 import org.fdroid.fdroid.net.Downloader;
 
 import java.io.File;
-import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -104,8 +102,6 @@ interface AppDetailsData {
     App getApp();
 
     AppDetails.ApkListAdapter getApks();
-
-    String getInstalledSigHash();
 }
 
 /**
@@ -188,8 +184,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return getString(R.string.app_not_installed);
             }
             // Definitely installed this version.
-            if (mInstalledSigID != null && apk.sig != null
-                    && apk.sig.equals(mInstalledSigID)) {
+            if (app.installedSig != null && apk.sig != null
+                    && apk.sig.equals(app.installedSig)) {
                 return getString(R.string.app_installed);
             }
             // Installed the same version, but from someplace else.
@@ -447,9 +443,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     }
 
-    // The signature of the installed version.
-    private String mInstalledSigID;
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -601,7 +594,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
      * like that) and then finish the activity.
      */
     private void setApp(App newApp) {
-
         if (newApp == null) {
             Toast.makeText(this, R.string.no_such_app, Toast.LENGTH_LONG).show();
             finish();
@@ -612,21 +604,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         startingIgnoreAll = app.ignoreAllUpdates;
         startingIgnoreThis = app.ignoreThisUpdate;
-
-        // Get the signature of the installed package...
-        mInstalledSigID = null;
-
-        if (app.isInstalled()) {
-            try {
-                PackageInfo pi = mPm.getPackageInfo(app.id, PackageManager.GET_SIGNATURES);
-                Hasher hash = new Hasher("MD5", pi.signatures[0].toCharsString().getBytes());
-                mInstalledSigID = hash.getHash();
-            } catch (PackageManager.NameNotFoundException e) {
-                Log.w(TAG, "Failed to get installed signature");
-            } catch (NoSuchAlgorithmException e) {
-                Log.w(TAG, "Failed to calculate signature MD5 sum");
-            }
-        }
     }
 
     private void refreshApkList() {
@@ -853,8 +830,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             alert.show();
             return;
         }
-        if (mInstalledSigID != null && apk.sig != null
-                && !apk.sig.equals(mInstalledSigID)) {
+        if (app.installedSig != null && apk.sig != null
+                && !apk.sig.equals(app.installedSig)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
                     R.string.ok,
@@ -1044,11 +1021,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         return adapter;
     }
 
-    @Override
-    public String getInstalledSigHash() {
-        return mInstalledSigID;
-    }
-
     public static class AppDetailsSummaryFragment extends Fragment {
 
         protected final Preferences prefs;
@@ -1090,10 +1062,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         protected ApkListAdapter getApks() {
             return data.getApks();
-        }
-
-        protected String getInstalledSigHash() {
-            return data.getInstalledSigHash();
         }
 
         @Override
@@ -1408,11 +1376,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return;
             }
 
+            App app = getApp();
             TextView signatureView = (TextView) view.findViewById(R.id.signature);
-            String sig = getInstalledSigHash();
-            if (prefs.expertMode() && !TextUtils.isEmpty(sig)) {
+            if (prefs.expertMode() && !TextUtils.isEmpty(app.installedSig)) {
                 signatureView.setVisibility(View.VISIBLE);
-                signatureView.setText("Signed: " + sig);
+                signatureView.setText("Signed: " + app.installedSig);
             } else {
                 signatureView.setVisibility(View.GONE);
             }

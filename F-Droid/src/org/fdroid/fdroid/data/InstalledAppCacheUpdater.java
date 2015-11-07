@@ -4,6 +4,7 @@ import android.content.ContentProviderOperation;
 import android.content.Context;
 import android.content.OperationApplicationException;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.RemoteException;
@@ -110,7 +111,8 @@ public class InstalledAppCacheUpdater {
 
         Map<String, Integer> cachedInfo = InstalledAppProvider.Helper.all(context);
 
-        List<PackageInfo> installedPackages = context.getPackageManager().getInstalledPackages(0);
+        List<PackageInfo> installedPackages = context.getPackageManager()
+            .getInstalledPackages(PackageManager.GET_SIGNATURES);
         for (PackageInfo appInfo : installedPackages) {
             toInsert.add(appInfo);
             if (cachedInfo.containsKey(appInfo.packageName)) {
@@ -137,6 +139,8 @@ public class InstalledAppCacheUpdater {
                     .withValue(InstalledAppProvider.DataColumns.VERSION_NAME, info.versionName)
                     .withValue(InstalledAppProvider.DataColumns.APPLICATION_LABEL,
                             InstalledAppProvider.getApplicationLabel(context, info.packageName))
+                    .withValue(InstalledAppProvider.DataColumns.SIGNATURE,
+                            InstalledAppProvider.getPackageSig(info))
                     .build();
                 ops.add(op);
             }

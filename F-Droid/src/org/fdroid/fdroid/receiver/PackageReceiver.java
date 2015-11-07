@@ -40,7 +40,7 @@ abstract class PackageReceiver extends BroadcastReceiver {
     protected PackageInfo getPackageInfo(Context context, String appId) {
         PackageInfo info = null;
         try {
-            info = context.getPackageManager().getPackageInfo(appId, 0);
+            info = context.getPackageManager().getPackageInfo(appId, PackageManager.GET_SIGNATURES);
         } catch (PackageManager.NameNotFoundException e) {
             // ignore
         }

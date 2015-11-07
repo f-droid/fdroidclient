@@ -97,10 +97,12 @@ public class DBHelper extends SQLiteOpenHelper {
             + InstalledAppProvider.DataColumns.APP_ID + " TEXT NOT NULL PRIMARY KEY, "
             + InstalledAppProvider.DataColumns.VERSION_CODE + " INT NOT NULL, "
             + InstalledAppProvider.DataColumns.VERSION_NAME + " TEXT NOT NULL, "
-            + InstalledAppProvider.DataColumns.APPLICATION_LABEL + " TEXT NOT NULL "
+            + InstalledAppProvider.DataColumns.APPLICATION_LABEL + " TEXT NOT NULL, "
+            + InstalledAppProvider.DataColumns.SIGNATURE + " TEXT NOT NULL "
             + " );";
+    private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + TABLE_INSTALLED_APP + ";";
 
-    private static final int DB_VERSION = 50;
+    private static final int DB_VERSION = 51;
 
     private final Context context;
 
@@ -278,11 +280,11 @@ public class DBHelper extends SQLiteOpenHelper {
         renameRepoId(db, oldVersion);
         populateRepoNames(db, oldVersion);
         if (oldVersion < 43) createInstalledApp(db);
-        addAppLabelToInstalledCache(db, oldVersion);
         addIsSwapToRepo(db, oldVersion);
         addChangelogToApp(db, oldVersion);
         addIconUrlLargeToApp(db, oldVersion);
         updateIconUrlLarge(db, oldVersion);
+        recreateInstalledCache(db, oldVersion);
     }
 
     /**
@@ -478,13 +480,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
     }
 
-    private void addAppLabelToInstalledCache(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion < 45) {
-            Utils.debugLog(TAG, "Adding applicationLabel to installed app table. " +
-                    "Turns out we will need to repopulate the cache after doing this, " +
-                    "so just dropping and recreating the table (instead of altering and adding a column). " +
-                    "This will force the entire cache to be rebuilt, including app names.");
-            db.execSQL("DROP TABLE fdroid_installedApp;");
+    // If any column was added or removed, just drop the table, create it
+    // again and let the cache be filled from scratch again.
+    private void recreateInstalledCache(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 51) {
+            db.execSQL(DROP_TABLE_INSTALLED_APP);
             createInstalledApp(db);
         }
     }
