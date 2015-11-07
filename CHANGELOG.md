@@ -1,4 +1,4 @@
-### 0.97 (2015-11-??)
+### 0.97 (2015-11-07)
 
 * Add option to prompt for unstable updates globally
 
