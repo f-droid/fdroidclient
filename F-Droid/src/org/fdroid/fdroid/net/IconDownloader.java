@@ -2,25 +2,22 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 
-import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+import com.nostra13.universalimageloader.core.download.ImageDownloader;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class IconDownloader extends BaseImageDownloader {
+public class IconDownloader implements ImageDownloader {
+
+    private final Context context;
 
     public IconDownloader(Context context) {
-        super(context);
-    }
-
-    public IconDownloader(Context context, int connectTimeout, int readTimeout) {
-        super(context, connectTimeout, readTimeout);
+        this.context = context;
     }
 
     @Override
     public InputStream getStream(String imageUri, Object extra) throws IOException {
         return DownloaderFactory.create(context, imageUri).getInputStream();
     }
-
 
 }
