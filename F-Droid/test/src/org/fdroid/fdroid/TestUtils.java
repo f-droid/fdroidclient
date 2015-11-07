@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import junit.framework.AssertionFailedError;
@@ -67,10 +68,10 @@ public class TestUtils {
         if (actualList.size() != expectedContains.size()) {
             String message =
                 "List sizes don't match.\n" +
-                "Expected: " +
-                listToString(expectedContains) + "\n" +
-                "Actual:   " +
-                listToString(actualList);
+                    "Expected: " +
+                    listToString(expectedContains) + "\n" +
+                    "Actual:   " +
+                    listToString(actualList);
             throw new AssertionFailedError(message);
         }
         for (T required : expectedContains) {
@@ -84,10 +85,10 @@ public class TestUtils {
             if (!containsRequired) {
                 String message =
                     "List doesn't contain \"" + required + "\".\n" +
-                    "Expected: " +
-                    listToString(expectedContains) + "\n" +
-                    "Actual:   " +
-                    listToString(actualList);
+                        "Expected: " +
+                        listToString(expectedContains) + "\n" +
+                        "Actual:   " +
+                        listToString(actualList);
                 throw new AssertionFailedError(message);
             }
         }
@@ -150,8 +151,8 @@ public class TestUtils {
      * "installed apps" table in the database.
      */
     public static void installAndBroadcast(
-            MockContextSwappableComponents context,  MockInstallablePackageManager pm,
-            String appId, int versionCode, String versionName) {
+        MockContextSwappableComponents context, MockInstallablePackageManager pm,
+        String appId, int versionCode, String versionName) {
 
         context.setPackageManager(pm);
         pm.install(appId, versionCode, versionName);
@@ -165,8 +166,8 @@ public class TestUtils {
      * @see org.fdroid.fdroid.TestUtils#installAndBroadcast(mock.MockContextSwappableComponents, mock.MockInstallablePackageManager, String, int, String)
      */
     public static void upgradeAndBroadcast(
-            MockContextSwappableComponents context, MockInstallablePackageManager pm,
-            String appId, int versionCode, String versionName) {
+        MockContextSwappableComponents context, MockInstallablePackageManager pm,
+        String appId, int versionCode, String versionName) {
         /*
         removeAndBroadcast(context, pm, appId);
         installAndBroadcast(context, pm, appId, versionCode, versionName);
@@ -192,6 +193,7 @@ public class TestUtils {
 
     }
 
+    @Nullable
     public static File copyAssetToDir(Context context, String assetName, File directory) {
         File tempFile;
         InputStream input = null;
@@ -199,7 +201,7 @@ public class TestUtils {
         try {
             tempFile = File.createTempFile(assetName + "-", ".testasset", directory);
             Log.d(TAG, "Copying asset file " + assetName + " to directory " + directory);
-            input = context.getResources().getAssets().open(assetName);
+            input = context.getAssets().open(assetName);
             output = new FileOutputStream(tempFile);
             Utils.copy(input, output);
         } catch (IOException e) {
@@ -219,41 +221,31 @@ public class TestUtils {
     public static File getWriteableDir(Instrumentation instrumentation) {
         Context context = instrumentation.getContext();
         Context targetContext = instrumentation.getTargetContext();
-        File dir = context.getCacheDir();
-        Log.d(TAG, "Looking for writeable dir, trying context.getCacheDir()");
-        if (dir == null || !dir.canWrite()) {
-            Log.d(TAG, "Looking for writeable dir, trying context.getFilesDir()");
-            dir = context.getFilesDir();
+
+
+        File[] dirsToTry = new File[]{
+            context.getCacheDir(),
+            context.getFilesDir(),
+            targetContext.getCacheDir(),
+            targetContext.getFilesDir(),
+            context.getExternalCacheDir(),
+            context.getExternalFilesDir(null),
+            targetContext.getExternalCacheDir(),
+            targetContext.getExternalFilesDir(null),
+            Environment.getExternalStorageDirectory(),
+        };
+
+        return getWriteableDir(dirsToTry);
+    }
+
+    private static File getWriteableDir(File[] dirsToTry) {
+
+        for (File dir : dirsToTry) {
+            if (dir != null && dir.canWrite()) {
+                return dir;
+            }
         }
-        if (dir == null || !dir.canWrite()) {
-            Log.d(TAG, "Looking for writeable dir, trying targetContext.getCacheDir()");
-            dir = targetContext.getCacheDir();
-        }
-        if (dir == null || !dir.canWrite()) {
-            Log.d(TAG, "Looking for writeable dir, trying targetContext.getFilesDir()");
-            dir = targetContext.getFilesDir();
-        }
-        if (dir == null || !dir.canWrite()) {
-            Log.d(TAG, "Looking for writeable dir, trying context.getExternalCacheDir()");
-            dir = context.getExternalCacheDir();
-        }
-        if (dir == null || !dir.canWrite()) {
-            Log.d(TAG, "Looking for writeable dir, trying context.getExternalFilesDir(null)");
-            dir = context.getExternalFilesDir(null);
-        }
-        if (dir == null || !dir.canWrite()) {
-            Log.d(TAG, "Looking for writeable dir, trying targetContext.getExternalCacheDir()");
-            dir = targetContext.getExternalCacheDir();
-        }
-        if (dir == null || !dir.canWrite()) {
-            Log.d(TAG, "Looking for writeable dir, trying targetContext.getExternalFilesDir(null)");
-            dir = targetContext.getExternalFilesDir(null);
-        }
-        if (dir == null || !dir.canWrite()) {
-            Log.d(TAG, "Looking for writeable dir, trying Environment.getExternalStorageDirectory()");
-            dir = Environment.getExternalStorageDirectory();
-        }
-        Log.d(TAG, "Writeable dir found: " + dir);
-        return dir;
+
+        return null;
     }
 }

@@ -1,7 +1,6 @@
 
 package org.fdroid.fdroid;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.test.InstrumentationTestCase;
 
@@ -11,7 +10,6 @@ import org.fdroid.fdroid.data.Repo;
 import java.io.File;
 import java.util.UUID;
 
-@TargetApi(8)
 public class RepoUpdaterTest extends InstrumentationTestCase {
     private static final String TAG = "RepoUpdaterTest";
 

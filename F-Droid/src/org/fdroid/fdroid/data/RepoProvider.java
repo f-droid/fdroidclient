@@ -244,6 +244,10 @@ public class RepoProvider extends FDroidProvider {
         matcher.addURI(AUTHORITY + "." + PROVIDER_NAME, "#", CODE_SINGLE);
     }
 
+    public static String getAuthority() {
+        return AUTHORITY + "." + PROVIDER_NAME;
+    }
+
     public static Uri getContentUri() {
         return Uri.parse("content://" + AUTHORITY + "." + PROVIDER_NAME);
     }
