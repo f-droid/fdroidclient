@@ -48,15 +48,20 @@ public class DownloaderFactory {
         if (isBluetoothAddress(url)) {
             String macAddress = url.getHost().replace("-", ":");
             return new BluetoothDownloader(context, macAddress, url, destFile);
-        }
-        if (isOnionAddress(url)) {
+        } else if (isOnionAddress(url)) {
             return new TorHttpDownloader(context, url, destFile);
+        } else if (isLocalFile(url)) {
+            return new LocalFileDownloader(context, url, destFile);
         }
         return new HttpDownloader(context, url, destFile);
     }
 
     private static boolean isBluetoothAddress(URL url) {
         return "bluetooth".equalsIgnoreCase(url.getProtocol());
+    }
+
+    static boolean isLocalFile(URL url) {
+        return "file".equalsIgnoreCase(url.getProtocol());
     }
 
     public static AsyncDownloader createAsync(Context context, String urlString, File destFile, String title, String id, AsyncDownloader.Listener listener) throws IOException {
