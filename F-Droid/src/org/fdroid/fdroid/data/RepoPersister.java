@@ -51,6 +51,8 @@ public class RepoPersister {
     @NonNull
     private final Repo repo;
 
+    private boolean hasBeenInitialized;
+
     @NonNull
     private final Context context;
 
@@ -82,6 +84,17 @@ public class RepoPersister {
     }
 
     private void flushBufferToDb() throws RepoUpdater.UpdateException {
+        if (!hasBeenInitialized) {
+            // This is where we will store all of the metadata before commiting at the
+            // end of the process. This is due to the fact that we can't verify the cert
+            // the index was signed with until we've finished reading it - and we don't
+            // want to put stuff in the real database until we are sure it is from a
+            // trusted source.
+            TempAppProvider.Helper.init(context);
+            TempApkProvider.Helper.init(context);
+            hasBeenInitialized = true;
+        }
+
         if (apksToSave.size() > 0 || appsToSave.size() > 0) {
             Log.d(TAG, "Flushing details of up to " + MAX_APP_BUFFER + " apps and their packages to the database.");
             flushAppsToDbInBatch();

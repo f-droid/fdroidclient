@@ -15,6 +15,8 @@ public class TempAppProvider extends AppProvider {
 
     private static final String PROVIDER_NAME = "TempAppProvider";
 
+    private static final String TABLE_TEMP_APP = "temp_fdroid_app";
+
     private static final String PATH_INIT = "init";
     private static final String PATH_COMMIT = "commit";
 
@@ -31,7 +33,7 @@ public class TempAppProvider extends AppProvider {
 
     @Override
     protected String getTableName() {
-        return "temp_" + super.getTableName();
+        return TABLE_TEMP_APP;
     }
 
     public static String getAuthority() {
@@ -69,6 +71,11 @@ public class TempAppProvider extends AppProvider {
     }
 
     @Override
+    protected String getApkTableName() {
+        return TempApkProvider.TABLE_TEMP_APK;
+    }
+
+    @Override
     public Uri insert(Uri uri, ContentValues values) {
         int code = matcher.match(uri);
 
@@ -76,6 +83,7 @@ public class TempAppProvider extends AppProvider {
             initTable();
             return null;
         } else if (code == CODE_COMMIT) {
+            updateAppDetails();
             commitTable();
             return null;
         } else {
@@ -104,7 +112,7 @@ public class TempAppProvider extends AppProvider {
 
     private void initTable() {
         write().execSQL("DROP TABLE IF EXISTS " + getTableName());
-        write().execSQL("CREATE TEMPORARY TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APP);
+        write().execSQL("CREATE TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APP);
     }
 
     private void commitTable() {

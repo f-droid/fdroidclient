@@ -17,6 +17,8 @@ public class TempApkProvider extends ApkProvider {
 
     private static final String PROVIDER_NAME = "TempApkProvider";
 
+    static final String TABLE_TEMP_APK = "temp_fdroid_apk";
+
     private static final String PATH_INIT = "init";
     private static final String PATH_COMMIT = "commit";
 
@@ -135,7 +137,7 @@ public class TempApkProvider extends ApkProvider {
 
     private void initTable() {
         write().execSQL("DROP TABLE IF EXISTS " + getTableName());
-        write().execSQL("CREATE TEMPORARY TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APK);
+        write().execSQL("CREATE TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APK);
     }
 
     private void commitTable() {

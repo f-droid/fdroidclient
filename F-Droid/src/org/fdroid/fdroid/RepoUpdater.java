@@ -173,14 +173,6 @@ public class RepoUpdater {
             if (downloadedFile == null || !downloadedFile.exists())
                 throw new UpdateException(repo, downloadedFile + " does not exist!");
 
-            // This is where we will store all of the metadata before commiting at the
-            // end of the process. This is due to the fact that we can't verify the cert
-            // the index was signed with until we've finished reading it - and we don't
-            // want to put stuff in the real database until we are sure it is from a
-            // trusted source.
-            TempAppProvider.Helper.init(context);
-            TempApkProvider.Helper.init(context);
-
             // Due to a bug in Android 5.0 Lollipop, the inclusion of spongycastle causes
             // breakage when verifying the signature of the downloaded .jar. For more
             // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
