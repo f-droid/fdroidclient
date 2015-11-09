@@ -129,7 +129,7 @@
   <string name="repo_not_yet_updated">Хранилището не е било използвано. За да разгледате приложенията, които предлага, трябва да го активирате.</string>
   <string name="repo_confirm_delete_title">Изтриване на хранилището?</string>
   <string name="repo_confirm_delete_body">Изтриването на хранилище значи, че приложенията от него няма да са налични в F-Droid.\nБележка: Всички вече инсталирани приложения ще останат на устройството.</string>
-  <string name="repo_disabled_notification">\"%1$s\" е деактивирано.За да можете отново да инсталирате приложения ще трябва да го активирате наново.</string>
+  <string name="repo_disabled_notification">\"%1$s\" е деактивирано. За да инсталирате приложения от него ще трябва да го активирате наново.</string>
   <string name="up_to_maxsdk">До %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
   <string name="not_on_same_wifi">Вашето устройство не е в една и съща Wi-Fi мрежа с локалното хранилище, което добавихте! Опитайте да се свържете към тази мрежа: %s</string>

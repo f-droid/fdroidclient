@@ -166,9 +166,9 @@
   <string name="category_Science_Education">Science &amp; Éducation</string>
   <string name="category_Security">Sécurité</string>
   <string name="category_System">Système</string>
-  <string name="requesting_root_access_body">Demande des privilèges root…</string>
+  <string name="requesting_root_access_body">Demande d\'accès aux privilèges root…</string>
   <string name="root_access_denied_title">Privilèges root refusés</string>
-  <string name="root_access_denied_body">Soit votre système Android n\'a pas les privilèges root, soit vous les avez refusés à F-Droid.</string>
+  <string name="root_access_denied_body">Soit vous n\'avez pas accès aux privilèges root sur cet appareil Android, soit vous les avez refusés à F-Droid.</string>
   <string name="system_install_denied_title">F-Droid - Extension des Privilèges n\'est pas disponible</string>
   <string name="system_install_denied_body">Cette option est seulement disponible quand F-Droid - Extension des Privilèges est installée.</string>
   <string name="app_description">F-Droid est un catalogue d\'applications libres et open source pour le système Android. Le client permet de facilement naviguer, installer et garder une trace des mises à jour sur votre appareil.</string>
@@ -184,7 +184,7 @@
 
     <string name="unstable_updates">Mises à jour instables</string>
     <string name="unstable_updates_summary">Proposer les mises à jour de versions instables</string>
-    <string name="uninstall_system">Installer/désinstaller l\'Extension des Privilèges</string>
+    <string name="uninstall_system">Installer/désinstaller l\'app d\'Extension des Privilèges</string>
     <string name="about_source">Source :</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="links">Liens</string>
@@ -287,7 +287,7 @@
 
     <string name="interval_1h">Toutes les heures</string>
     <string name="perms_description_app">Fourni par %1$s.</string>
-    <string name="uninstall_system_summary">Ouvrir l\'écran des détails d\'Extension des Privilèges pour la mettre à jour/désinstaller</string>
+    <string name="uninstall_system_summary">Ouvrir l\'écran des détails de l\'app d\'Extension des Privilèges pour la mettre à jour/désinstaller</string>
     <string name="update_notification_more">%1$d de plus…</string>
     <string name="status_download_unknown_size">Téléchargement de
 \n%2$s depuis
@@ -301,18 +301,18 @@
     <string name="system_install_denied_signature">La signature de l\'application est erronée ! Merci de créer un rapport de bogue.</string>
     <string name="system_install_denied_permissions">Les permissions privilégiées n\'ont pas été accordée à l\'application ! Merci de créer un rapport de bogue.</string>
     <string name="system_install_button_install">Installer</string>
-    <string name="system_install_button_open">Lancer l\'application d\'extension des privilèges</string>
+    <string name="system_install_button_open">Lancer l\'app d\'Extension des Privilèges</string>
     <string name="system_install_first_time_notification">Installer F-Droid - Extension des Privilèges ?</string>
     <string name="system_install_first_time_notification_message">Appuyez pour installer F-Droid - Extension des Privilèges. Étroitement liée au système d\'exploitation Android, elle permet à F-Droid installer, metter à jour et désinstaller des apps de son propre chef.\nVous pouvez également le faire plus tard, depuis les paramètres de F-Droid.</string>
     <string name="system_install_post_success">F-Droid - Extension des Privilèges a été installée avec succès</string>
     <string name="system_install_post_fail">Échec de l\'installation de F-Droid - Extension des Privilèges</string>
-    <string name="system_install_post_success_message">F-Droid - Extension Privilèges a été installée avec succès. Elle permet à F-Droid d\'installer, mettre à jour et désinstaller des apps de son propre chef.</string>
-    <string name="system_install_post_fail_message">Échec de l\'installation de F-Droid - Extension des Privilèges. La méthode d\'installation utilsée n\'est pas supportée par toutes les variantes d\'Android. Veuillez consulter la base de donnée de bogues pour plus d\'informations.</string>
+    <string name="system_install_post_success_message">F-Droid - Extension des Privilèges a été installée avec succès. Elle permet à F-Droid d\'installer, mettre à jour et désinstaller des apps de son propre chef.</string>
+    <string name="system_install_post_fail_message">Échec de l\'installation de F-Droid - Extension des Privilèges. La méthode d\'installation utilisée n\'est pas supportée par toutes les variantes d\'Android. Veuillez consulter la base de donnée de bogues pour plus d\'informations.</string>
     <string name="system_install_installing_rebooting">Installation et redémarrage…</string>
     <string name="system_install_question">Voulez-vous installer F-Droid - Extension des Privilèges ?</string>
     <string name="system_install_warning">Ceci peut prendre jusqu\'à 10 secondes.</string>
     <string name="system_install_warning_lollipop">Ceci peut prendre jusqu\'à 10 secondes et l\'appareil sera ensuite <b>redémarré</b>.</string>
-    <string name="system_install_first_time_message">On dirait que vous avez accès au root de votre appareil. Vous pouvez maintenant installer F-Droid - Extension des Privilèges. Étroitement lié au système d\'exploitation Android, elle permet à F-Droid d\'installer, mettre à jour et désinstaller des apps de son propre chef.</string>
+    <string name="system_install_first_time_message">On dirait que vous avez accès aux privilèges root de votre appareil. Vous pouvez maintenant installer F-Droid - Extension des Privilèges. Étroitement lié au système d\'exploitation Android, elle permet à F-Droid d\'installer, mettre à jour et désinstaller des apps de son propre chef.</string>
     <string name="system_uninstall">Voulez-vous désinstaller F-Droid - Extension des Privilèges ?</string>
     <string name="system_uninstall_button">Désinstaller</string>
 
