@@ -278,7 +278,6 @@
     <string name="swap_visible_wifi">Видљив преко бежичног</string>
     <string name="swap_not_visible_wifi">Нисам видљив преко бежичног</string>
     <string name="swap_scan_or_type_url">Једна особа мора да очита кôд, или да укуца УРЛ друге особе у прегледачу.</string>
-    <string name="swap_tap_to_select_apps">Тапните за одабир апликација за размену.</string>
     <string name="swap_switch_to_wifi">Тапните за пребацивање на бежичну мрежу</string>
     <string name="system_install_warning_lollipop">Ово траје десетак секунди и ваш уређај ће након тога <b>поново да се покрене</b>.</string>
     <string name="empty_can_update_app_list">Све апликације су ажурне.\n\nЧеститке! Све ваше апликације су ажурне (или ваше ризнице нису ажуриране).</string>

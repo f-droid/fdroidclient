@@ -267,7 +267,6 @@
     <string name="open_qr_code_scanner">Ανοίξτε τον σαρωτή QR</string>
     <string name="swap_welcome">Καλώς ήλθατε στο F-Droid!</string>
     <string name="swap_confirm_connect">Θέλετε να πάρετε εφαρμογές από %1$s τώρα;</string>
-    <string name="swap_tap_to_select_apps">Πατήστε για να επιλέξετε τις εφαρμογές που θέλετε να ανταλλάξετε.</string>
     <string name="swap_dont_show_again">Να μην εμφανιστεί ξανά</string>
     <string name="swap_scan_or_type_url">Ένα άτομο πρέπει να σαρώσει τον κωδικό, ή να πληκτρολογήσει τη διεύθυνση URL του άλλου σε ένα πρόγραμμα περιήγησης.</string>
     <string name="swap_choose_apps">Επιλέξτε εφαρμογές</string>

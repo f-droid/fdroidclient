@@ -233,7 +233,6 @@ Prova a collegarti a questa rete: %s</string>
     <string name="swap_scanning_for_peers">In cerca di persone nelle vicinanze…</string>
     <string name="swap_dont_show_again">Non mostrare più</string>
     <string name="swap_switch_to_wifi">Tocca per passare ad una rete Wi-Fi</string>
-    <string name="swap_tap_to_select_apps">Tocca per selezionare le applicazioni da scambiare.</string>
     <string name="swap_choose_apps">Scegli le applicazioni</string>
     <string name="swap_scan_qr">Scannerizza il codice QR</string>
     <string name="swap_intro">Connettiti e scambia applicazioni con le persone vicine a te.</string>

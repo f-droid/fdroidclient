@@ -232,7 +232,6 @@ Lisensiert GNU GPLv3.</string>
     <string name="system_uninstall_button">Avinstaller</string>
 
     <string name="swap_switch_to_wifi">Trykk for å bytte Wi-Fi-nettverk</string>
-    <string name="swap_tap_to_select_apps">Trykk for å velge hvilke programmer du ønsker å bytte.</string>
     <string name="swap_dont_show_again">Ikke vis dette igjen</string>
     <string name="swap_scan_or_type_url">Én person trenger å skanne koden, eller man skriver motpartens adresseopplysninger en nettleser.</string>
     <string name="swap_choose_apps">Velg programmer</string>

@@ -243,7 +243,6 @@
     <string name="swap_success">Đã trao đổi thành công!</string>
     <string name="swap_active_hotspot">%1$s (điểm truy cập của bạn)</string>
     <string name="swap_switch_to_wifi">Chạm để chuyển sang mạng Wi-Fi</string>
-    <string name="swap_tap_to_select_apps">Chạm để chọn ứng dụng bạn muốn trao đổi.</string>
     <string name="swap_dont_show_again">Không hiện lại</string>
     <string name="swap_scan_or_type_url">Một người phải quét mã, hoặc nhập URL của người kia vào trình duyệt.</string>
     <string name="swap_choose_apps">Chọn ứng dụng</string>

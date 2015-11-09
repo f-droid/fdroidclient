@@ -243,7 +243,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="category_Time">Czas</string>
     <string name="category_Writing">Edycja tekstu</string>
 
-    <string name="swap_tap_to_select_apps">Dotknij by wybrać aplikacje, które chcesz przesłać.</string>
     <string name="swap_dont_show_again">Nie pokazuj więcej tego okna</string>
     <string name="swap_scan_or_type_url">Jedno z urządzeń musi mieć zeskanowany kod lub wpisany do przeglądarki adres URL drugiego urządzenia.</string>
     <string name="swap_choose_apps">Wybierz aplikacje</string>

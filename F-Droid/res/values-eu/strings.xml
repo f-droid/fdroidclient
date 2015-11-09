@@ -277,7 +277,6 @@ konektatzen</string>
     <string name="open_qr_code_scanner">Ireki QR eskanerra</string>
     <string name="swap_welcome">Ongi etorri F-Droidera!</string>
     <string name="swap_confirm_connect">%1$stik aplikazioak jaso nahi dituzu orain?</string>
-    <string name="swap_tap_to_select_apps">Ukitu partekatu nahi dituzun aplikazioak aukeratzeko.</string>
     <string name="swap_dont_show_again">Ez bistaratu hau berriro</string>
     <string name="swap_scan_or_type_url">Pertsona batek bestearen kodea eskaneatu behar du, edo URL helbidea nabigatzailean sartu.</string>
     <string name="swap_choose_apps">Hautatu aplikazioak</string>

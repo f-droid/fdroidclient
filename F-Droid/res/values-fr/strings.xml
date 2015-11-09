@@ -262,7 +262,6 @@
     <string name="swap_join_this_hotspot">Aidez votre ami à se connecter à votre point d\'accès</string>
     <string name="swap_success">Échange réussi !</string>
     <string name="swap_active_hotspot">%1$s (votre point d\'accès)</string>
-    <string name="swap_tap_to_select_apps">Appuyez pour sélectionner les apps que vous voulez échanger.</string>
     <string name="swap_scan_or_type_url">Une personne doit scanner ce code ou saisir le lien dans un navigateur web.</string>
     <string name="swap_choose_apps">Sélectionnez des apps</string>
     <string name="swap_scan_qr">Scannez le code QR</string>

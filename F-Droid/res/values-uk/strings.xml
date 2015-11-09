@@ -281,7 +281,6 @@
     <string name="swap">Обмін додатками</string>
     <string name="swap_success">Обмін пройшов удало!</string>
     <string name="swap_switch_to_wifi">Торкніться для перемикання Wi-Fi мережі</string>
-    <string name="swap_tap_to_select_apps">Торкніться для вибору додатків на обмін.</string>
     <string name="swap_intro">Підключайтеся та обмінюйтесь додатками з людьми навколо вас.</string>
     <string name="swap_visible_wifi">Видимий через Wi-Fi</string>
     <string name="swap_setting_up_wifi">Налаштування Wi-Fi…</string>

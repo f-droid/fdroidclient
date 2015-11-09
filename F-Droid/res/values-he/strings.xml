@@ -229,7 +229,6 @@
     <string name="open_qr_code_scanner">פתח סורק QR</string>
     <string name="swap_welcome">ברוכים הבאים אל F-Droid!</string>
     <string name="swap_confirm_connect">האם ברצונך לקבל אפליקציות מתוך %1$s כעת?</string>
-    <string name="swap_tap_to_select_apps">הקש כדי לבחור את האפליקציות אשר ברצונך להחליף.</string>
     <string name="swap_dont_show_again">אל תציג זאת שוב</string>
     <string name="swap_scan_or_type_url">אדם אחד צריך לסרוק את הקוד, או להקליד URL של המחליף האחר לתוך דפדפן.</string>
 

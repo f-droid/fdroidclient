@@ -303,7 +303,6 @@
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
 <string name="swap_confirm_connect">Deseja obter agora as aplicações de %1$s?</string>
-    <string name="swap_tap_to_select_apps">Toque para escolher as aplicações a trocar.</string>
     <string name="swap_scan_or_type_url">Uma pessoa tem que digitalizar o código ou digitar o URL da outra no navegador web.</string>
     <string name="swap_scan_qr">Digitalizar código QR</string>
     <string name="swap_people_nearby">Vizinhança</string>

@@ -219,7 +219,6 @@
     <string name="swap_success">Swap succesvol!</string>
     <string name="swap_active_hotspot">%1$s (jouw hotspot)</string>
     <string name="swap_switch_to_wifi">Raak aan om naar een Wi-Fi netwerk over te schakelen</string>
-    <string name="swap_tap_to_select_apps">Raak de apps aan die je wilt swappen.</string>
     <string name="swap_dont_show_again">Toon dit niet opnieuw</string>
     <string name="app_name">F-Droid</string>
 

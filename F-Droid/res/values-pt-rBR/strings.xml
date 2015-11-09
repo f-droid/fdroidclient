@@ -243,7 +243,6 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Escrita</string>
 
-    <string name="swap_tap_to_select_apps">Toque para selecionar os aplicativos que você quer permutar.</string>
     <string name="swap_dont_show_again">Não mostrar isto novamente</string>
     <string name="swap_scan_or_type_url">Uma pessoa precisa escanear o código ou digitar a URL de outro em um navegador.</string>
     <string name="swap_choose_apps">Escolher os aplicativos</string>
