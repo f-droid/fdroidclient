@@ -177,7 +177,6 @@
     <string name="category_Sports_Health">Спорт та здоров\'я</string>
     <string name="category_System">Система</string>
     <string name="category_Time">Час</string>
-    <string name="update_all">Оновити всі</string>
     <string name="install_error_title">Помилка встановлення</string>
     <string name="install_error_cannot_parse">Трапилася помилка під час обробки пакунку</string>
     <string name="uninstall_error_title">Помилка видалення</string>

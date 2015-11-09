@@ -149,7 +149,6 @@ Sinun pitää
   <string name="requesting_root_access_body">Pyydetään root-oikeuksia…</string>
   <string name="root_access_denied_title">Root-oikeudet kielletty</string>
   <string name="root_access_denied_body">Joko Android-laitettasi ei ole rootattu tai olet kieltänyt F-Droidin root-oikeuksiin pääsyn.</string>
-  <string name="update_all">Päivitä kaikki</string>
   <string name="system_install_denied_title">Järjestelmäasetukset kielletty</string>
   <string name="system_install_denied_body">Tämä asetus on käytössä vain silloin, kun F-Droid on asennettu järjestelmäsovellukseksi.</string>
   <string name="app_description">F-Droid on asennettava FOSS-sovellusten hakemisto (Free and Open Source Software) Androidille. Asiakasohjelma helpottaa selailemista, asentamista ja laitteesi pitämistä päivitettynä.</string>

@@ -172,7 +172,6 @@ com aplicativos baixados a partir de índices não assinados.</string>
   <string name="requesting_root_access_body">Solicitando acesso root…</string>
   <string name="root_access_denied_title">Acesso root negado</string>
   <string name="root_access_denied_body">Ou o seu dispositivo Android não está \"rooteado\" ou você recusou o acesso root para o F-Droid.</string>
-  <string name="update_all">Atualizar tudo</string>
   <string name="system_install_denied_title">A extensão privilegiada do F-droid não está disponível</string>
   <string name="system_install_denied_body">Esta opção só está disponível quando a extensão privilegiada do F-Droid está instalada.</string>
   <string name="app_description">F-Droid é um catálogo instalável de aplicativos FOSS (Software Livre e de Código Aberto) para a plataforma Android. O cliente faz com que seja fácil navegar, instalar e manter o controle das atualizações no seu dispositivo.</string>

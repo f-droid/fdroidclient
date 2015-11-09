@@ -148,7 +148,6 @@
   <string name="category_System">Система</string>
   <string name="requesting_root_access_body">Изисква Root достъп…</string>
   <string name="root_access_denied_title">Root достъпът е отказан</string>
-  <string name="update_all">Актуализирай всички</string>
   <string name="system_install_denied_body">Опцията е налична само когато сте инсталирали F-Droid като системно приложение.</string>
   <string name="swap_nfc_description">Ако приятелят ви има F-Droid и е активирал NFC можете да докоснете телефоните си.</string>
   <string name="swap_join_same_wifi">Свържете се към една и съща Wi-Fi мрежа с приятеля си</string>

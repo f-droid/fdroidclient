@@ -245,7 +245,6 @@ konektatzen</string>
     <string name="requesting_root_access_body">Root baimena eskatzen…</string>
     <string name="root_access_denied_title">Root baimena ukatu da</string>
     <string name="root_access_denied_body">Bietako bat, zure Android gailuan ez dago root baimena eskuratzea edo zuk ukatu diozu F-Droid aplikazioari root baimena.</string>
-    <string name="update_all">Eguneratu guztiak</string>
     <string name="install_error_title">Instalazio errorea</string>
     <string name="install_error_unknown">Instalazioak huts egin du errore ezezagun bat dela eta</string>
     <string name="install_error_cannot_parse">Errore bat gertatu da paketea prozesatzean</string>
