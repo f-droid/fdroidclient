@@ -1,21 +1,16 @@
 package org.fdroid.fdroid;
 
-import android.content.ContentProviderOperation;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.OperationApplicationException;
-import android.net.Uri;
-import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoPersister;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.TempApkProvider;
 import org.fdroid.fdroid.data.TempAppProvider;
@@ -33,11 +28,8 @@ import java.net.URL;
 import java.security.CodeSigner;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -63,20 +55,6 @@ public class RepoUpdater {
     public static final String PROGRESS_TYPE_PROCESS_XML = "processingXml";
     public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
 
-    /**
-     * When an app already exists in the db, and we are updating it on the off chance that some
-     * values changed in the index, some fields should not be updated. Rather, they should be
-     * ignored, because they were explicitly set by the user, and hence can't be automatically
-     * overridden by the index.
-     *
-     * NOTE: In the future, these attributes will be moved to a join table, so that the app table
-     * is essentially completely transient, and can be nuked at any time.
-     */
-    private static final String[] APP_FIELDS_TO_IGNORE = {
-        AppProvider.DataColumns.IGNORE_ALLUPDATES,
-        AppProvider.DataColumns.IGNORE_THISUPDATE,
-    };
-
     @NonNull
     protected final Context context;
     @NonNull
@@ -87,6 +65,9 @@ public class RepoUpdater {
     private String cacheTag;
     private X509Certificate signingCertFromJar;
 
+    @NonNull
+    private final RepoPersister persister;
+
     /**
      * Updates an app repo as read out of the database into a {@link Repo} instance.
      *
@@ -95,6 +76,7 @@ public class RepoUpdater {
     public RepoUpdater(@NonNull Context context, @NonNull Repo repo) {
         this.context = context;
         this.repo = repo;
+        this.persister = new RepoPersister(context, repo);
     }
 
     public void setProgressListener(@Nullable ProgressListener progressListener) {
@@ -177,237 +159,12 @@ public class RepoUpdater {
             @Override
             public void receiveApp(App app, List<Apk> packages) {
                 try {
-                    saveToDb(app, packages);
+                    persister.saveToDb(app, packages);
                 } catch (UpdateException e) {
                     throw new RuntimeException("Error while saving repo details to database.", e);
                 }
             }
         };
-    }
-
-    /**
-     * My crappy benchmark with a Nexus 4, Android 5.0 on a fairly crappy internet connection I get:
-     * * 25 = 37 seconds
-     * * 50 = 33 seconds
-     * * 100 = 30 seconds
-     * * 200 = 32 seconds
-     * Raising this means more memory consumption, so we'd like it to be low, but not
-     * so low that it takes too long.
-     */
-    private static final int MAX_APP_BUFFER = 50;
-
-    private List<App> appsToSave = new ArrayList<>();
-    private Map<String, List<Apk>> apksToSave = new HashMap<>();
-
-    private void saveToDb(App app, List<Apk> packages) throws UpdateException {
-        appsToSave.add(app);
-        apksToSave.put(app.id, packages);
-
-        if (appsToSave.size() >= MAX_APP_BUFFER) {
-            flushBufferToDb();
-        }
-    }
-
-    private void flushBufferToDb() throws UpdateException {
-        if (apksToSave.size() > 0 || appsToSave.size() > 0) {
-            Log.d(TAG, "Flushing details of up to " + MAX_APP_BUFFER + " apps and their packages to the database.");
-            flushAppsToDbInBatch();
-            flushApksToDbInBatch();
-            apksToSave.clear();
-            appsToSave.clear();
-        }
-    }
-
-    private void flushApksToDbInBatch() throws UpdateException {
-        List<Apk> apksToSaveList = new ArrayList<>();
-        for (Map.Entry<String, List<Apk>> entries : apksToSave.entrySet()) {
-            apksToSaveList.addAll(entries.getValue());
-        }
-
-        calcApkCompatibilityFlags(apksToSaveList);
-
-        ArrayList<ContentProviderOperation> apkOperations = new ArrayList<>();
-        ContentProviderOperation clearOrphans = deleteOrphanedApks(appsToSave, apksToSave);
-        if (clearOrphans != null) {
-            apkOperations.add(clearOrphans);
-        }
-        apkOperations.addAll(insertOrUpdateApks(apksToSaveList));
-
-        try {
-            context.getContentResolver().applyBatch(TempApkProvider.getAuthority(), apkOperations);
-        } catch (RemoteException | OperationApplicationException e) {
-            throw new UpdateException(repo, "An internal error occured while updating the database", e);
-        }
-    }
-
-    private void flushAppsToDbInBatch() throws UpdateException {
-        ArrayList<ContentProviderOperation> appOperations = insertOrUpdateApps(appsToSave);
-
-        try {
-            context.getContentResolver().applyBatch(TempAppProvider.getAuthority(), appOperations);
-        } catch (RemoteException | OperationApplicationException e) {
-            throw new UpdateException(repo, "An internal error occured while updating the database", e);
-        }
-    }
-
-    /**
-     * Depending on whether the {@link App}s have been added to the database previously, this
-     * will queue up an update or an insert {@link ContentProviderOperation} for each app.
-     */
-    private ArrayList<ContentProviderOperation> insertOrUpdateApps(List<App> apps) {
-        ArrayList<ContentProviderOperation> operations = new ArrayList<>(apps.size());
-        for (App app : apps) {
-            if (isAppInDatabase(app)) {
-                operations.add(updateExistingApp(app));
-            } else {
-                operations.add(insertNewApp(app));
-            }
-        }
-        return operations;
-    }
-
-    /**
-     * Depending on whether the .apks have been added to the database previously, this
-     * will queue up an update or an insert {@link ContentProviderOperation} for each package.
-     */
-    private ArrayList<ContentProviderOperation> insertOrUpdateApks(List<Apk> packages) {
-        List<Apk> existingApks = ApkProvider.Helper.knownApks(context, packages, new String[]{ApkProvider.DataColumns.VERSION_CODE});
-        ArrayList<ContentProviderOperation> operations = new ArrayList<>(packages.size());
-        for (Apk apk : packages) {
-            boolean exists = false;
-            for (Apk existing : existingApks) {
-                if (existing.vercode == apk.vercode) {
-                    exists = true;
-                    break;
-                }
-            }
-
-            if (exists) {
-                operations.add(updateExistingApk(apk));
-            } else {
-                operations.add(insertNewApk(apk));
-            }
-        }
-
-        return operations;
-    }
-
-    /**
-     * Creates an update {@link ContentProviderOperation} for the {@link App} in question.
-     * <strong>Does not do any checks to see if the app already exists or not.</strong>
-     */
-    private ContentProviderOperation updateExistingApp(App app) {
-        Uri uri = TempAppProvider.getAppUri(app);
-        ContentValues values = app.toContentValues();
-        for (final String toIgnore : APP_FIELDS_TO_IGNORE) {
-            if (values.containsKey(toIgnore)) {
-                values.remove(toIgnore);
-            }
-        }
-        return ContentProviderOperation.newUpdate(uri).withValues(values).build();
-    }
-
-    /**
-     * Creates an insert {@link ContentProviderOperation} for the {@link App} in question.
-     * <strong>Does not do any checks to see if the app already exists or not.</strong>
-     */
-    private ContentProviderOperation insertNewApp(App app) {
-        ContentValues values = app.toContentValues();
-        Uri uri = TempAppProvider.getContentUri();
-        return ContentProviderOperation.newInsert(uri).withValues(values).build();
-    }
-
-    /**
-     * Looks in the database to see which apps we already know about. Only
-     * returns ids of apps that are in the database if they are in the "apps"
-     * array.
-     */
-    private boolean isAppInDatabase(App app) {
-        String[] fields = {AppProvider.DataColumns.APP_ID};
-        App found = AppProvider.Helper.findById(context.getContentResolver(), app.id, fields);
-        return found != null;
-    }
-
-    /**
-     * Creates an update {@link ContentProviderOperation} for the {@link Apk} in question.
-     * <strong>Does not do any checks to see if the apk already exists or not.</strong>
-     */
-    private ContentProviderOperation updateExistingApk(final Apk apk) {
-        Uri uri = TempApkProvider.getApkUri(apk);
-        ContentValues values = apk.toContentValues();
-        return ContentProviderOperation.newUpdate(uri).withValues(values).build();
-    }
-
-    /**
-     * Creates an insert {@link ContentProviderOperation} for the {@link Apk} in question.
-     * <strong>Does not do any checks to see if the apk already exists or not.</strong>
-     */
-    private ContentProviderOperation insertNewApk(final Apk apk) {
-        ContentValues values = apk.toContentValues();
-        Uri uri = TempApkProvider.getContentUri();
-        return ContentProviderOperation.newInsert(uri).withValues(values).build();
-    }
-
-    /**
-     * Finds all apks from the repo we are currently updating, that belong to the specified app,
-     * and delete them as they are no longer provided by that repo.
-     */
-    @Nullable
-    private ContentProviderOperation deleteOrphanedApks(List<App> apps, Map<String, List<Apk>> packages) {
-
-        String[] projection = new String[]{ApkProvider.DataColumns.APK_ID, ApkProvider.DataColumns.VERSION_CODE};
-        List<Apk> existing = ApkProvider.Helper.find(context, repo, apps, projection);
-
-        List<Apk> toDelete = new ArrayList<>();
-
-        for (Apk existingApk : existing) {
-
-            boolean shouldStay = false;
-
-            for (Map.Entry<String, List<Apk>> entry : packages.entrySet()) {
-                for (Apk newApk : entry.getValue()) {
-                    if (newApk.vercode == existingApk.vercode) {
-                        shouldStay = true;
-                        break;
-                    }
-                }
-
-                if (shouldStay) {
-                    break;
-                }
-            }
-
-            if (!shouldStay) {
-                toDelete.add(existingApk);
-            }
-        }
-
-        if (toDelete.size() > 0) {
-            Uri uri = TempApkProvider.getApksUri(repo, toDelete);
-            return ContentProviderOperation.newDelete(uri).build();
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * This cannot be offloaded to the database (as we did with the query which
-     * updates apps, depending on whether their apks are compatible or not).
-     * The reason is that we need to interact with the CompatibilityChecker
-     * in order to see if, and why an apk is not compatible.
-     */
-    public void calcApkCompatibilityFlags(List<Apk> apks) {
-        final CompatibilityChecker checker = new CompatibilityChecker(context);
-        for (final Apk apk : apks) {
-            final List<String> reasons = checker.getIncompatibleReasons(apk);
-            if (reasons.size() > 0) {
-                apk.compatible = false;
-                apk.incompatibleReasons = Utils.CommaSeparatedList.make(reasons);
-            } else {
-                apk.compatible = true;
-                apk.incompatibleReasons = null;
-            }
-        }
     }
 
     public void processDownloadedFile(File downloadedFile) throws UpdateException {
@@ -441,8 +198,6 @@ public class RepoUpdater {
             reader.setContentHandler(repoXMLHandler);
             reader.parse(new InputSource(indexInputStream));
 
-            flushBufferToDb();
-
             signingCertFromJar = getSigningCertFromJar(indexEntry);
 
             // JarEntry can only read certificates after the file represented by that JarEntry
@@ -450,9 +205,7 @@ public class RepoUpdater {
             assertSigningCertFromXmlCorrect();
 
             Log.i(TAG, "Repo signature verified, saving app metadata to database.");
-            TempAppProvider.Helper.commit(context);
-            TempApkProvider.Helper.commit(context);
-            RepoProvider.Helper.update(context, repo, repoDetailsToSave);
+            persister.commit(repoDetailsToSave);
 
         } catch (SAXException | ParserConfigurationException | IOException e) {
             throw new UpdateException(repo, "Error parsing index", e);
