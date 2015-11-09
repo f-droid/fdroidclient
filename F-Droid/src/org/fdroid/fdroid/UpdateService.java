@@ -505,8 +505,6 @@ public class UpdateService extends IntentService implements ProgressListener {
     @Override
     public void onProgress(ProgressListener.Event event) {
         String message = "";
-        // TODO: Switch to passing through Bundles of data with the event, rather than a repo address. They are
-        // now much more general purpose then just repo downloading.
         String repoAddress = event.getData().getString(RepoUpdater.PROGRESS_DATA_REPO_ADDRESS);
         String downloadedSize = Utils.getFriendlySize(event.progress);
         String totalSize = Utils.getFriendlySize(event.total);
@@ -514,6 +512,9 @@ public class UpdateService extends IntentService implements ProgressListener {
         switch (event.type) {
             case RepoUpdater.PROGRESS_TYPE_PROCESS_XML:
                 message = getString(R.string.status_processing_xml_percent, repoAddress, downloadedSize, totalSize, percent);
+                break;
+            case RepoUpdater.PROGRESS_COMMITTING:
+                message = getString(R.string.status_inserting, 50);
                 break;
         }
         sendStatus(this, STATUS_INFO, message, percent);

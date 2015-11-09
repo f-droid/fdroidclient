@@ -53,6 +53,7 @@ public class RepoUpdater {
     private static final String TAG = "RepoUpdater";
 
     public static final String PROGRESS_TYPE_PROCESS_XML = "processingXml";
+    public static final String PROGRESS_COMMITTING = "committing";
     public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
 
     @NonNull
