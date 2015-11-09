@@ -171,7 +171,6 @@
   <string name="requesting_root_access_body">Root toegang aanvragen…</string>
   <string name="root_access_denied_title">Root toegang geweigerd</string>
   <string name="root_access_denied_body">Uw Android apparaat is niet geroot, of u heeft F-Droid geen root toegang gegeven.</string>
-  <string name="update_all">Update alles</string>
   <string name="system_install_denied_title">Systeemrechten geweigerd</string>
   <string name="system_install_denied_body">Deze optie is alleen beschikbaar als F-Droid als systeemapp geïnstalleerd is.</string>
   <string name="app_description">F-Droid is een installeerbare cataloges van FOSS (Vrije en Open Source Software) apps voor Android. Het programma maakt het gemakkelijk om door apps te bladeren, te installeren en up-to-date te houden.</string>
@@ -220,7 +219,6 @@
     <string name="swap_success">Swap succesvol!</string>
     <string name="swap_active_hotspot">%1$s (jouw hotspot)</string>
     <string name="swap_switch_to_wifi">Raak aan om naar een Wi-Fi netwerk over te schakelen</string>
-    <string name="swap_tap_to_select_apps">Raak de apps aan die je wilt swappen.</string>
     <string name="swap_dont_show_again">Toon dit niet opnieuw</string>
     <string name="app_name">F-Droid</string>
 

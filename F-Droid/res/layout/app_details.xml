@@ -26,7 +26,6 @@
         android:id="@+id/fragment_app_list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:name="org.fdroid.fdroid.AppDetails$AppDetailsListFragment"
-        tools:layout="@android:layout/list_content"/>
+        android:name="org.fdroid.fdroid.AppDetails$AppDetailsListFragment" />
 
 </LinearLayout>

@@ -156,7 +156,6 @@
   <string name="requesting_root_access_body">Đang yêu cầu quyền root…</string>
   <string name="root_access_denied_title">Bị từ chối quyền root</string>
   <string name="root_access_denied_body">Thiết bị của bạn chưa được root hoặc bạn đã từ chối quyền root của F-Droid.</string>
-  <string name="update_all">Cập nhật tất cả</string>
   <string name="system_install_denied_title">Bị từ chối quyền hệ thống</string>
   <string name="system_install_denied_body">Chỉ có tuỳ chọn này khi F-Droid được cài làm ứng dụng hệ thống.</string>
   <string name="app_description">F-Droid là một kho ứng dụng FOSS (tự do và mã nguồn mở) cài đặt được trên nền tảng Android. Ứng dụng F-Droid giúp bạn tìm kiếm, cài đặt và theo dõi cập nhật dễ dàng hơn.</string>
@@ -244,7 +243,6 @@
     <string name="swap_success">Đã trao đổi thành công!</string>
     <string name="swap_active_hotspot">%1$s (điểm truy cập của bạn)</string>
     <string name="swap_switch_to_wifi">Chạm để chuyển sang mạng Wi-Fi</string>
-    <string name="swap_tap_to_select_apps">Chạm để chọn ứng dụng bạn muốn trao đổi.</string>
     <string name="swap_dont_show_again">Không hiện lại</string>
     <string name="swap_scan_or_type_url">Một người phải quét mã, hoặc nhập URL của người kia vào trình duyệt.</string>
     <string name="swap_choose_apps">Chọn ứng dụng</string>

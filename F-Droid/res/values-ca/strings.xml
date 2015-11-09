@@ -171,7 +171,6 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
   <string name="requesting_root_access_body">S\'estan demanant privilegis d\'administrador…</string>
   <string name="root_access_denied_title">Accés com a administrador rebutjat</string>
   <string name="root_access_denied_body">Aquest dispositiu Android no permet actuar com a administrador o bé no heu donat privilegis d\'administrador a l\'F-Droid.</string>
-  <string name="update_all">Actualitza-ho tot</string>
   <string name="system_install_denied_body">Només disponible quan F-Droid és instal·lat com una aplicació al sistema.</string>
   <string name="app_description">F-Droid és un catàleg instal·lable d\'aplicacions lliures per a la plataforma Android. El client facilita la cerca, l\'instal·lació i l\'actualització d\'aplicacions al vostre dispositiu.</string>
   <string name="swap_join_same_wifi">Uniu-vos a la Wi-Fi del vostre amic</string>

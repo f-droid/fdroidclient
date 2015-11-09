@@ -169,7 +169,6 @@
   <string name="requesting_root_access_body">Demande des privilèges root…</string>
   <string name="root_access_denied_title">Privilèges root refusés</string>
   <string name="root_access_denied_body">Soit votre système Android n\'a pas les privilèges root, soit vous les avez refusés à F-Droid.</string>
-  <string name="update_all">Tout mettre à jour</string>
   <string name="system_install_denied_title">F-Droid - Extension des Privilèges n\'est pas disponible</string>
   <string name="system_install_denied_body">Cette option est seulement disponible quand F-Droid - Extension des Privilèges est installée.</string>
   <string name="app_description">F-Droid est un catalogue d\'applications libres et open source pour le système Android. Le client permet de facilement naviguer, installer et garder une trace des mises à jour sur votre appareil.</string>
@@ -263,7 +262,6 @@
     <string name="swap_join_this_hotspot">Aidez votre ami à se connecter à votre point d\'accès</string>
     <string name="swap_success">Échange réussi !</string>
     <string name="swap_active_hotspot">%1$s (votre point d\'accès)</string>
-    <string name="swap_tap_to_select_apps">Appuyez pour sélectionner les apps que vous voulez échanger.</string>
     <string name="swap_scan_or_type_url">Une personne doit scanner ce code ou saisir le lien dans un navigateur web.</string>
     <string name="swap_choose_apps">Sélectionnez des apps</string>
     <string name="swap_scan_qr">Scannez le code QR</string>

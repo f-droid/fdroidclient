@@ -1,6 +1,10 @@
 package org.fdroid.fdroid.views.fragments;
 
 import android.net.Uri;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
@@ -15,11 +19,6 @@ public class InstalledAppsFragment extends AppListFragment {
     }
 
     @Override
-    protected String getEmptyMessage() {
-        return getActivity().getString(R.string.empty_installed_app_list);
-    }
-
-    @Override
     protected String getFromTitle() {
         return getString(R.string.tab_installed_apps);
     }
@@ -27,6 +26,11 @@ public class InstalledAppsFragment extends AppListFragment {
     @Override
     protected Uri getDataUri() {
         return AppProvider.getInstalledUri();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.installed_app_list, container, false);
     }
 
 }

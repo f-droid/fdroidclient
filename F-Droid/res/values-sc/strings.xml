@@ -173,7 +173,6 @@ Intregadu cun sa litzèntzia
   <string name="requesting_root_access_body">Pedinde s\'atzessu root…</string>
   <string name="root_access_denied_title">Atzessu root dennegadu</string>
   <string name="root_access_denied_body">Su dispositivu tuo non tenet sos permissos de root o non los as datu a F-droid.</string>
-  <string name="update_all">Agiorna totu</string>
   <string name="system_install_denied_title">Permissos de sistema dennegados</string>
   <string name="system_install_denied_body">Custa optzione est disponìbile petzi cando F-Droid est installadu comente aplicatzione de sistema.</string>
   <string name="app_description">F-Droid est unu catàlogu installàbile de FOSS (Free and Open Source Software - Aplicatziones lìberas e a mitza aberta) pro Android. S\'aplicatzione-client permitit de chircare, installare, e compidare sos agiornamentos in su dispositivu tuo.</string>
@@ -249,7 +248,6 @@ Intregadu cun sa litzèntzia
     <string name="swap_success">Cumpartzidura resissida!</string>
     <string name="swap_active_hotspot">%1$s (puntu de atzessu tuo)</string>
     <string name="swap_switch_to_wifi">Toca pro colare a una retza Wi-Fi</string>
-    <string name="swap_tap_to_select_apps">Toca pro ischertare sas aplicatziones chi cheres cumpartzire.</string>
     <string name="swap_dont_show_again">Non mi l’ammustrare prus</string>
     <string name="swap_scan_or_type_url">Una pessone tenet de iscarrigare su còdighe, o iscrìere s’URL de s\'àtera in unu navigadore.</string>
     <string name="swap_choose_apps">Issèbera aplicatziones</string>

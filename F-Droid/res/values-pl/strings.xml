@@ -131,7 +131,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
   <string name="requesting_root_access_body">Żądanie uprawnień roota…</string>
   <string name="root_access_denied_title">Odmówiono uprawnień roota</string>
   <string name="root_access_denied_body">Urządzenie nie zostało zrootowane lub odmówiono uprawnień roota F-Droidowi.</string>
-  <string name="update_all">Uaktualnij wszystko</string>
   <string name="system_install_denied_title">Odmówiono uprawnień systemowych</string>
   <string name="system_install_denied_body">Opcja dostępna tylko wtedy, gdy F-Droid został zainstalowany jako aplikacja systemowa.</string>
   <string name="app_description">F-Droid jest katalogiem aplikacji FOSS (Wolne i Otwarte Oprogramowanie) dla platformy Android. Klient umożliwia łatwe przeglądanie, instalowanie i zarządzanie aktualizacjami na Twoim urządzeniu.</string>
@@ -244,7 +243,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="category_Time">Czas</string>
     <string name="category_Writing">Edycja tekstu</string>
 
-    <string name="swap_tap_to_select_apps">Dotknij by wybrać aplikacje, które chcesz przesłać.</string>
     <string name="swap_dont_show_again">Nie pokazuj więcej tego okna</string>
     <string name="swap_scan_or_type_url">Jedno z urządzeń musi mieć zeskanowany kod lub wpisany do przeglądarki adres URL drugiego urządzenia.</string>
     <string name="swap_choose_apps">Wybierz aplikacje</string>

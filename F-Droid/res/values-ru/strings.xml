@@ -169,7 +169,6 @@
   <string name="requesting_root_access_body">Запрос root доступа…</string>
   <string name="root_access_denied_title">Отказано в root доступе</string>
   <string name="root_access_denied_body">Либо у вашего устройства нет root доступа, либо вы отклонили запрос от F-Droid.</string>
-  <string name="update_all">Обновить всё</string>
   <string name="system_install_denied_title">Запрос на системные привилегии отклонён</string>
   <string name="system_install_denied_body">Данная опция доступна только если F-Droid установлен как системное приложение.</string>
   <string name="app_description">F-Droid — каталог FOSS (свободного и открытого программного обеспечения) для платформы Android. Клиент позволяет с лёгкостью просматривать, устанавливать и обновлять приложение на вашем устройстве.</string>

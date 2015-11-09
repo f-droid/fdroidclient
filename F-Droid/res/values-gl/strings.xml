@@ -191,7 +191,6 @@ Publicado con licenza GNU GPLv3.</string>
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Escrita</string>
 
-    <string name="update_all">Actualizar todo</string>
     <string name="install_error_title">Erro de instalación</string>
     <string name="uninstall_error_title">Erro de desinstalación</string>
     <string name="uninstall_error_unknown">Fallou ao desinstalar por un erro descoñecido</string>
@@ -215,7 +214,6 @@ Publicado con licenza GNU GPLv3.</string>
     <string name="open_qr_code_scanner">Abrir o lector QR</string>
     <string name="swap_welcome">Benvido a F-Droid!</string>
     <string name="swap_confirm_connect">Desexas obter aplicativos dende %1$s agora?</string>
-    <string name="swap_tap_to_select_apps">Toca para escoller os aplicativos que queres intercambiar.</string>
     <string name="swap_dont_show_again">Non amosar de novo</string>
     <string name="swap_choose_apps">Escolle os aplicativos</string>
     <string name="swap_scan_qr">Escanear código QR</string>

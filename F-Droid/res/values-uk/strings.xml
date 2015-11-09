@@ -177,7 +177,6 @@
     <string name="category_Sports_Health">Спорт та здоров\'я</string>
     <string name="category_System">Система</string>
     <string name="category_Time">Час</string>
-    <string name="update_all">Оновити всі</string>
     <string name="install_error_title">Помилка встановлення</string>
     <string name="install_error_cannot_parse">Трапилася помилка під час обробки пакунку</string>
     <string name="uninstall_error_title">Помилка видалення</string>
@@ -282,7 +281,6 @@
     <string name="swap">Обмін додатками</string>
     <string name="swap_success">Обмін пройшов удало!</string>
     <string name="swap_switch_to_wifi">Торкніться для перемикання Wi-Fi мережі</string>
-    <string name="swap_tap_to_select_apps">Торкніться для вибору додатків на обмін.</string>
     <string name="swap_intro">Підключайтеся та обмінюйтесь додатками з людьми навколо вас.</string>
     <string name="swap_visible_wifi">Видимий через Wi-Fi</string>
     <string name="swap_setting_up_wifi">Налаштування Wi-Fi…</string>

@@ -257,7 +257,6 @@
     <string name="requesting_root_access_body">Requesting root access…</string>
     <string name="root_access_denied_title">Root access denied</string>
     <string name="root_access_denied_body">Either your Android device is not rooted or you have denied root access for F-Droid.</string>
-    <string name="update_all">Update all</string>
     <string name="install_error_title">Install error</string>
     <string name="install_error_unknown">Failed to install due to an unknown error</string>
     <string name="install_error_cannot_parse">An error occurred while parsing the package</string>
@@ -302,7 +301,6 @@
     <string name="open_qr_code_scanner">Open QR Scanner</string>
     <string name="swap_welcome">Welcome to F-Droid!</string>
     <string name="swap_confirm_connect">Do you want to get apps from %1$s now?</string>
-    <string name="swap_tap_to_select_apps">Tap to select the apps you want to swap.</string>
     <string name="swap_dont_show_again">Don\'t show this again</string>
     <string name="swap_scan_or_type_url">One person needs to scan the code, or type the URL of the other in a browser.</string>
     <string name="swap_choose_apps">Choose Apps</string>

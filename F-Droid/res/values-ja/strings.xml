@@ -172,7 +172,6 @@
   <string name="requesting_root_access_body">管理者権限の要求中…</string>
   <string name="root_access_denied_title">管理者権限での接続が拒絶されました</string>
   <string name="root_access_denied_body">この端末はroot化されていないか､F-Droidの管理者権限要求が拒絶されされました｡</string>
-  <string name="update_all">全て更新</string>
   <string name="system_install_denied_title">ｼｽﾃﾑｱｸｾｽ許可が拒絶されました</string>
   <string name="system_install_denied_body">この設定は､F-Droidがｼｽﾃﾑｱﾌﾟﾘとしてｲﾝｽﾄｰﾙされているときのみ有効です｡</string>
   <string name="app_description">F-DroidはAndroidﾌﾟﾗｯﾄﾌｫｰﾑ向けFOSS(ﾌﾘｰのｵｰﾌﾟﾝｿｰｽｿﾌﾄｳｪｱ) ｱﾌﾟﾘｹｰｼｮﾝのｲﾝｽﾄｰﾙ可能なｶﾀﾛｸﾞです｡このｸﾗｲｱﾝﾄで、お使いの端末で簡単に参照､ｲﾝｽﾄｰﾙ､および更新履歴を記録することができます｡</string>
@@ -235,7 +234,6 @@
     <string name="swap_switch_to_wifi">ﾀｯﾌﾟすると、Wi-Fi ﾈｯﾄﾜｰｸに切り替えます</string>
     <string name="app_name">F-Droid</string>
 
-    <string name="swap_tap_to_select_apps">ﾀｯﾌﾟして交換したいｱﾌﾟﾘを選択します。</string>
     <string name="swap_dont_show_again">今後、このﾒｯｾｰｼﾞを表示しない</string>
     <string name="swap_scan_or_type_url">一人は、ｺｰﾄﾞを読み取るか、他の URL をﾌﾞﾗｳｻﾞｰに入力する必要があります。</string>
     <string name="swap_choose_apps">ｱﾌﾟﾘを選択</string>
