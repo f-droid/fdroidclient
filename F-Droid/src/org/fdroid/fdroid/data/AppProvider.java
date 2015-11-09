@@ -776,7 +776,7 @@ public class AppProvider extends FDroidProvider {
         }
 
         if (AppProvider.DataColumns.NAME.equals(sortOrder)) {
-            sortOrder = getTableName() + sortOrder + " COLLATE LOCALIZED ";
+            sortOrder = getTableName() + "." + sortOrder + " COLLATE LOCALIZED ";
         }
 
         Query query = new Query();
