@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="signed">#ffcccccc</color>
+
     <color name="unsigned">#ffCC0000</color>
     <color name="unverified">#ff999999</color>
     <color name="red">#ffdd2c00</color>
