@@ -29,9 +29,11 @@ import android.content.res.Configuration;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -239,6 +241,14 @@ public class FDroid extends ActionBarActivity {
             MenuItem btItem = menu.findItem(R.id.action_bluetooth_apk);
             btItem.setVisible(false);
         }
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        // LayoutParams.MATCH_PARENT does not work, use a big value instead
+        searchView.setMaxWidth(1000000);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -262,10 +272,6 @@ public class FDroid extends ActionBarActivity {
 
             case R.id.action_swap:
                 startActivity(new Intent(this, SwapWorkflowActivity.class));
-                return true;
-
-            case R.id.action_search:
-                onSearchRequested();
                 return true;
 
             case R.id.action_bluetooth_apk:
