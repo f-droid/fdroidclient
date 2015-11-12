@@ -20,6 +20,7 @@ import java.net.SocketAddress;
 import java.net.URL;
 
 import javax.net.ssl.SSLHandshakeException;
+import org.apache.commons.net.util.Base64;
 
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
@@ -87,6 +88,10 @@ public class HttpDownloader extends Downloader {
             connection = (HttpURLConnection) sourceUrl.openConnection(proxy);
         } else {
             connection = (HttpURLConnection) sourceUrl.openConnection();
+            final String userInfo = sourceUrl.getUserInfo();
+            if (userInfo != null) {
+                connection.setRequestProperty("Authorization", "Basic " + Base64.encodeBase64String(userInfo.getBytes()));
+            }
         }
     }
 
