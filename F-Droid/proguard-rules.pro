@@ -14,7 +14,7 @@
 # use reflection to instantiate classes, for example. If the keep flags are
 # removed, proguard will strip classes which are required, which may result in
 # crashes.
--keep class kellinwood.** {*;}
+-keep class kellinwood.security.zipsigner.** {*;}
 -keep class org.spongycastle.** {*;}
 
 # This keeps class members used for SystemInstaller IPC.
