@@ -141,7 +141,6 @@
   <string name="repo_fingerprint">Empreinte de la clé utilisée pour signer le dépôt (SHA-256)</string>
   <string name="repo_description">Description</string>
   <string name="repo_last_update">Dernière mise à jour</string>
-  <string name="repo_update">Mettre à jour</string>
   <string name="repo_name">Nom</string>
   <string name="unsigned_description">Cela signifie que la liste des applications n\'a pas pu être vérifiée. Soyez prudent avec les applications téléchargées depuis des index non signés.</string>
   <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé. Vous devez l\'activer pour voir la liste des apps qu\'il offre.</string>

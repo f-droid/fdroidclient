@@ -141,7 +141,6 @@
   <string name="repo_fingerprint">Vingerafdruk van de bronondertekensleutel (SHA-256)</string>
   <string name="repo_description">Beschrijving</string>
   <string name="repo_last_update">Meest recente update</string>
-  <string name="repo_update">Update</string>
   <string name="repo_name">Naam</string>
   <string name="unsigned_description">Dit betekent dat de lijst van applicaties niet geverifieerd kon worden. Je moet voorzichtig zijn met het downloaden van applicaties van ongetekende bronnen.</string>
   <string name="repo_not_yet_updated">Deze bron is nog niet eerder gebruikt. Om de beschikbare apps te zien moet u deze inschakelen.</string>

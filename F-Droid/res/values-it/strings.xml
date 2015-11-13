@@ -140,7 +140,6 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="repo_fingerprint">Impronta digitale della Chiave del Repo (SHA-256)</string>
   <string name="repo_description">Descrizione</string>
   <string name="repo_last_update">Ultimo aggiornamento</string>
-  <string name="repo_update">Aggiorna</string>
   <string name="repo_name">Nome</string>
   <string name="unsigned_description">Ciò significa che l\'elenco di applicazioni non potrà essere verificato. È consigliabile prestare attenzione alle applicazioni scaricate da indici non firmati.</string>
   <string name="repo_not_yet_updated">Questo repository non è ancora stato utilizzato.

@@ -139,7 +139,6 @@
   <string name="repo_fingerprint">Fingerprint da chave de assinatura (SHA-256)</string>
   <string name="repo_description">Descrição</string>
   <string name="repo_last_update">Última atualização</string>
-  <string name="repo_update">Atualizar</string>
   <string name="repo_name">Nome</string>
   <string name="unsigned_description">Isto significa que a lista de
 aplicativos não pôde ser verificada. Você deve ter cuidado

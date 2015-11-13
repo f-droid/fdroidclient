@@ -105,7 +105,6 @@
   <string name="repo_fingerprint">Suma kontrolna podpisu cyfrowego (SHA-256)</string>
   <string name="repo_description">Opis</string>
   <string name="repo_last_update">Ostatnia modyfikacja</string>
-  <string name="repo_update">Aktualizacja</string>
   <string name="repo_name">Nazwa</string>
   <string name="unknown">Nieznany</string>
   <string name="repo_confirm_delete_title">Usunąć repozytorium?</string>

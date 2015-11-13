@@ -141,7 +141,6 @@ Intregadu cun sa litzèntzia
   <string name="repo_fingerprint">Imprenta digitale de sa crae de intrada (SHA-256)</string>
   <string name="repo_description">Descritzione</string>
   <string name="repo_last_update">Ùrtimu agiornamentu</string>
-  <string name="repo_update">Agiorna</string>
   <string name="repo_name">Nùmene</string>
   <string name="unsigned_description">Custu bolet nàrrere chi sa lista de
         sas aplicatziones no est istadu possìbile a la verificare. Depes istare atentu

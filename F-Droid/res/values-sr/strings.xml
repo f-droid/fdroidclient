@@ -138,7 +138,6 @@
   <string name="repo_fingerprint">Отисак кључа за потписивање (SHA-256)</string>
   <string name="repo_description">Опис</string>
   <string name="repo_last_update">Последње ажурирање</string>
-  <string name="repo_update">Ажурирај</string>
   <string name="repo_name">Име</string>
   <string name="unsigned_description">Ово значи да списак апликација није
 могао бити оверен. Требате бити опрезни са

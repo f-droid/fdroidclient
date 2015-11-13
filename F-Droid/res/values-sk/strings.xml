@@ -140,7 +140,6 @@ Vydaný pod licenciou
   <string name="repo_fingerprint">Odtlačok podpisového kľúča (SHA-256) repozitára</string>
   <string name="repo_description">Popis</string>
   <string name="repo_last_update">Posledná aktualizácia</string>
-  <string name="repo_update">Aktualizovať</string>
   <string name="repo_name">Názov</string>
   <string name="unsigned_description">To znamená, že zoznam aplikácií nemohol byť overený. Buďte opatrný s aplikáciami z nepodpísaných indexov.</string>
   <string name="repo_not_yet_updated">Tento repozitár ste ešte nepoužili. Aby ste videli aplikácie, ktoré poskytuje, musíte ho aktualizovať. Po aktualizácii budú popisy a iné detaily dostupné tu.</string>

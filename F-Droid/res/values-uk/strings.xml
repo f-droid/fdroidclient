@@ -154,7 +154,6 @@
     <string name="unverified">Не перевірено</string>
     <string name="repo_description">Опис</string>
     <string name="repo_last_update">Останнє оновлення</string>
-    <string name="repo_update">Оновити</string>
     <string name="repo_name">Назва</string>
     <string name="unknown">Невідомо</string>
     <string name="repo_confirm_delete_title">Видалити репозиторій?</string>

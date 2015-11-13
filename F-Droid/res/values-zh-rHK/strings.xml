@@ -115,7 +115,6 @@
   <string name="repo_num_apps">應用程式數目</string>
   <string name="repo_description">描述</string>
   <string name="repo_last_update">最近更新</string>
-  <string name="repo_update">更新</string>
   <string name="repo_name">名稱</string>
   <string name="unknown">未知</string>
   <string name="repo_confirm_delete_title">刪除軟件倉庫？</string>

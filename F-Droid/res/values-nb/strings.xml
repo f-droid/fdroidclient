@@ -140,7 +140,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="repo_fingerprint">Fingeravtrykk tilhørende signeringsnøkkel (SHA-256)</string>
   <string name="repo_description">Beskrivelse</string>
   <string name="repo_last_update">Siste oppdatering</string>
-  <string name="repo_update">Oppdater</string>
   <string name="repo_name">Navn</string>
   <string name="unsigned_description">Dette betyr at programlisten ikke kunne bekreftes. Du bør være forsiktig med programmer lastet ned fra usignerte lister.</string>
   <string name="repo_not_yet_updated">Denne pakkebrønnen har ikke blitt tatt i bruk enda. Du må skru det på for å se programmene den tilbyr.</string>

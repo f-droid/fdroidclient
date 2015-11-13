@@ -141,7 +141,6 @@
   <string name="repo_fingerprint">Buelga de la clave de robláu del repositoriu (SHA-256)</string>
   <string name="repo_description">Descripción</string>
   <string name="repo_last_update">Anovamientu caberu</string>
-  <string name="repo_update">Anovar</string>
   <string name="repo_name">Nome</string>
   <string name="unsigned_description">Esto quier dicir que nun pudo verificase\'l llistáu d\'aplicaciones.
 Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</string>

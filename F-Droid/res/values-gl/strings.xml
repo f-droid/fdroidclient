@@ -168,7 +168,6 @@ Publicado con licenza GNU GPLv3.</string>
     <string name="repo_fingerprint">Pegada dixital da chave (SHA-256)</string>
     <string name="repo_description">Descrición</string>
     <string name="repo_last_update">Última actualización</string>
-    <string name="repo_update">Actualizar</string>
     <string name="repo_name">Nome</string>
     <string name="category_Science_Education">Ciencia e educación</string>
     <string name="category_Reading">Lectura</string>

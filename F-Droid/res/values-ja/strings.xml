@@ -141,7 +141,6 @@
   <string name="repo_fingerprint">署名ｷｰのﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄ(SHA-256)</string>
   <string name="repo_description">説明</string>
   <string name="repo_last_update">最終更新</string>
-  <string name="repo_update">更新</string>
   <string name="repo_name">名前</string>
   <string name="unsigned_description">ｱﾌﾟﾘｹｰｼｮﾝの一覧は検証されていません｡未署名の索引からｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝﾛｰﾄﾞする時は注意してください｡</string>
   <string name="repo_not_yet_updated">このﾘﾎﾟｼﾞﾄﾘはまだ使用されていません｡ ｱﾌﾟﾘｹｰｼｮﾝを表示するには､ﾘﾎﾟｼﾞﾄﾘを有効にする必要があります｡</string>

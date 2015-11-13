@@ -143,7 +143,6 @@ bağlanılıyor</string>
   <string name="repo_fingerprint">Depo imza anahtarının parmak izi (SHA-256)</string>
   <string name="repo_description">Betimleme</string>
   <string name="repo_last_update">Son güncelleme</string>
-  <string name="repo_update">Güncelle</string>
   <string name="repo_name">İsim</string>
   <string name="unsigned_description">Bu, uygulama listesinin
         teyit edilemediği anlamına gelir. İmzasız

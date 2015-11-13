@@ -142,7 +142,6 @@ wird heruntergeladen</string>
   <string name="repo_fingerprint">Fingerabdruck des Signaturschlüssels (SHA-256)</string>
   <string name="repo_description">Beschreibung</string>
   <string name="repo_last_update">Letzte Aktualisierung</string>
-  <string name="repo_update">Aktualisieren</string>
   <string name="repo_name">Name</string>
   <string name="unsigned_description">Das bedeutet, dass die Liste von
         Anwendungen nicht verifiziert werden konnte. 

@@ -141,7 +141,6 @@
   <string name="repo_fingerprint">Fingeravtryck för signeringsnyckel (SHA-256)</string>
   <string name="repo_description">Beskrivning</string>
   <string name="repo_last_update">Senaste uppdatering</string>
-  <string name="repo_update">Uppdatera</string>
   <string name="repo_name">Namn</string>
   <string name="unsigned_description">Detta betyder att listan av program inte kunde verifieras. Du bör vara försiktig med program som hämtats från osignerade index.</string>
   <string name="repo_not_yet_updated">Det här fil-förrådet har inte använts än. Du måste aktivera det för att se apparna som det förser dig .</string>

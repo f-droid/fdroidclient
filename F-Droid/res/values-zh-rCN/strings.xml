@@ -124,7 +124,6 @@
   <string name="repo_fingerprint">应用程序签名密钥指纹 (SHA-256)</string>
   <string name="repo_description">描述</string>
   <string name="repo_last_update">上次更新</string>
-  <string name="repo_update">更新</string>
   <string name="repo_name">名称</string>
   <string name="unsigned_description">这意味着应用程序清单可以被认证。对于从未签名来源下载的应用程序您应该小心。</string>
   <string name="repo_not_yet_updated">该软件源尚未使用。

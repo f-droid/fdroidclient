@@ -141,7 +141,6 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="repo_fingerprint">저장소 서명 키(SHA-256)의 핑거프린트</string>
   <string name="repo_description">설명</string>
   <string name="repo_last_update">마지막 업데이트</string>
-  <string name="repo_update">업데이트</string>
   <string name="repo_name">이름</string>
   <string name="unsigned_description">앱 목록을 검증할 수 없습니다. 서명되지 않은 색인으로부터 다운로드한 앱은 주의하시기 바랍니다.</string>
   <string name="repo_not_yet_updated">이 저장소는 아직 사용되지 않았습니다. 저장소가 제공하는 앱들을 열람하려면 업데이트를 해야만 합니다. 한번 업데이트되면, 여기에 설명과 상세 정보가 표시될 것입니다.</string>

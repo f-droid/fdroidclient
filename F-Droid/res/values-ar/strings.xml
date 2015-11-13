@@ -53,7 +53,6 @@
   <string name="repo_num_apps">عدد التطبيقات</string>
   <string name="repo_description">الوصف</string>
   <string name="repo_last_update">آخر تحديث</string>
-  <string name="repo_update">تحديث</string>
   <string name="repo_name">الإسم</string>
   <string name="unknown">غير معروف</string>
   <string name="repo_confirm_delete_title">حذف المستودع</string>

@@ -198,7 +198,6 @@
     <string name="tab_installed_apps">Инсталирани</string>
     <string name="update_notification_more">+ още %1$d…</string>
     <string name="update_notification_title">Актуализиране на хранилищата</string>
-    <string name="repo_update">Актуализиране</string>
     <string name="install_error_unknown">Инсталирането се провали поради неизвестна грешка</string>
     <string name="uninstall_error_unknown">Деинсталирането се провали поради неизвестна грешка</string>
     <string name="system_install_first_time_notification_message_short">Натиснете за повече информация.</string>
