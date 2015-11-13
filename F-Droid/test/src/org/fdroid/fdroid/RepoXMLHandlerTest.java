@@ -645,16 +645,7 @@ public class RepoXMLHandlerTest extends AndroidTestCase {
             InputSource is = new InputSource(new BufferedInputStream(input));
             reader.parse(is);
             return handler;
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-            fail();
-        } catch (SAXException e) {
-            e.printStackTrace();
-            fail();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            fail();
-        } catch (IOException e) {
+        } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
             fail();
         }
