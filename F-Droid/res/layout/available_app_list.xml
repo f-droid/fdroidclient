@@ -24,6 +24,7 @@
 
     <TextView
         style="@style/AppListEmptyText"
+        android:layout_below="@id/category_spinner"
         android:text="@string/empty_available_app_list" />
 
 </RelativeLayout>

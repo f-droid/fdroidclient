@@ -88,6 +88,10 @@
             android:name="org.fdroid.fdroid.data.InstalledAppProvider"
             android:exported="false"/>
 
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".SearchResults" />
+
         <activity
             android:name=".FDroid"
             android:launchMode="singleTop"
@@ -292,10 +296,6 @@
                 <data android:pathPattern="/.*/.*/FDROID/REPO" />
                 <data android:pathPattern="/.*/.*/.*/FDROID/REPO" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.default_searchable"
-                android:value=".SearchResults" />
         </activity>
         <activity
             android:name=".privileged.views.InstallConfirmActivity"
