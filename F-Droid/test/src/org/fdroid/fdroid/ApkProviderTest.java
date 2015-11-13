@@ -33,7 +33,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         assertInvalidUri(ApkProvider.getAuthority());
         assertInvalidUri(RepoProvider.getContentUri());
 
-        List<Apk> apks = new ArrayList<Apk>(3);
+        List<Apk> apks = new ArrayList<>(3);
         for (int i = 0; i < 10; i++) {
             apks.add(new MockApk("com.example." + i, i));
         }
@@ -46,7 +46,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         assertValidUri(ApkProvider.getContentUri("org.fdroid.fdroid", 100));
         assertValidUri(ApkProvider.getRepoUri(1000));
 
-        List<Apk> manyApks = new ArrayList<Apk>(PublicApkProvider.MAX_APKS_TO_QUERY - 5);
+        List<Apk> manyApks = new ArrayList<>(PublicApkProvider.MAX_APKS_TO_QUERY - 5);
         for (int i = 0; i < PublicApkProvider.MAX_APKS_TO_QUERY - 1; i++) {
             manyApks.add(new MockApk("com.example." + i, i));
         }
@@ -100,7 +100,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
     public void testInvalidUpdateUris() {
         Apk apk = new MockApk("org.fdroid.fdroid", 10);
 
-        List<Apk> apks = new ArrayList<Apk>();
+        List<Apk> apks = new ArrayList<>();
         apks.add(apk);
 
         assertCantUpdate(ApkProvider.getContentUri());
@@ -137,14 +137,14 @@ public class ApkProviderTest extends BaseApkProviderTest {
         };
 
         List<Apk> all = ApkProvider.Helper.findByRepo(getSwappableContext(), new MockRepo(10), ApkProvider.DataColumns.ALL);
-        List<String> actualIds = new ArrayList<String>();
+        List<String> actualIds = new ArrayList<>();
         for (Apk apk : all) {
             actualIds.add(apk.id);
         }
 
         TestUtils.assertContainsOnly(actualIds, expectedIds);
 
-        List<Apk> toDelete = new ArrayList<Apk>(3);
+        List<Apk> toDelete = new ArrayList<>(3);
         toDelete.add(two);
         toDelete.add(three);
         toDelete.add(four);
@@ -153,7 +153,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         assertTotalApkCount(2);
 
         List<Apk> allRemaining = ApkProvider.Helper.findByRepo(getSwappableContext(), new MockRepo(10), ApkProvider.DataColumns.ALL);
-        List<String> actualRemainingIds = new ArrayList<String>();
+        List<String> actualRemainingIds = new ArrayList<>();
         for (Apk apk : allRemaining) {
             actualRemainingIds.add(apk.id);
         }

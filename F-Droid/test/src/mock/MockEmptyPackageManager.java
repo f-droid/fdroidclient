@@ -10,7 +10,7 @@ public class MockEmptyPackageManager extends MockPackageManager {
 
     @Override
     public List<PackageInfo> getInstalledPackages(int flags) {
-        return new ArrayList<PackageInfo>();
+        return new ArrayList<>();
     }
 
 }

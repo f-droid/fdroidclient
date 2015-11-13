@@ -35,19 +35,19 @@ public class TestUtils {
     private static final String TAG = "TestUtils";
 
     public static <T extends Comparable> void assertContainsOnly(List<T> actualList, T[] expectedArray) {
-        List<T> expectedList = new ArrayList<T>(expectedArray.length);
+        List<T> expectedList = new ArrayList<>(expectedArray.length);
         Collections.addAll(expectedList, expectedArray);
         assertContainsOnly(actualList, expectedList);
     }
 
     public static <T extends Comparable> void assertContainsOnly(T[] actualArray, List<T> expectedList) {
-        List<T> actualList = new ArrayList<T>(actualArray.length);
+        List<T> actualList = new ArrayList<>(actualArray.length);
         Collections.addAll(actualList, actualArray);
         assertContainsOnly(actualList, expectedList);
     }
 
     public static <T extends Comparable> void assertContainsOnly(T[] actualArray, T[] expectedArray) {
-        List<T> expectedList = new ArrayList<T>(expectedArray.length);
+        List<T> expectedList = new ArrayList<>(expectedArray.length);
         Collections.addAll(expectedList, expectedArray);
         assertContainsOnly(actualArray, expectedList);
     }

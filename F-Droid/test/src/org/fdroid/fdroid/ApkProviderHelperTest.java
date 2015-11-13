@@ -51,7 +51,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
             new MockApk("info.example", 2),
         };
 
-        List<Apk> apksToCheck = new ArrayList<Apk>(known.length + unknown.length);
+        List<Apk> apksToCheck = new ArrayList<>(known.length + unknown.length);
         Collections.addAll(apksToCheck, known);
         Collections.addAll(apksToCheck, unknown);
 
