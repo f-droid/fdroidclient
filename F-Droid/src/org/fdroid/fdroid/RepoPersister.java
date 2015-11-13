@@ -46,9 +46,9 @@ public class RepoPersister {
     @NonNull
     private final Context context;
 
-    private Map<String, App> appsToUpdate = new HashMap<>();
-    private List<Apk> apksToUpdate = new ArrayList<>();
-    private List<Repo> repos = new ArrayList<>();
+    private final Map<String, App> appsToUpdate = new HashMap<>();
+    private final List<Apk> apksToUpdate = new ArrayList<>();
+    private final List<Repo> repos = new ArrayList<>();
 
     public RepoPersister(@NonNull Context context) {
         this.context = context;

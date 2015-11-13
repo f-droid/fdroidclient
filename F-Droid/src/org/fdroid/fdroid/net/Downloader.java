@@ -211,7 +211,7 @@ public abstract class Downloader {
      */
     private class WrappedInputStream extends InputStream {
 
-        private InputStream toWrap;
+        private final InputStream toWrap;
 
         public WrappedInputStream(InputStream toWrap) {
             super();
