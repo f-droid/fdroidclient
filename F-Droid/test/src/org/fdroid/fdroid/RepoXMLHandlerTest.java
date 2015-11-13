@@ -13,7 +13,6 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
