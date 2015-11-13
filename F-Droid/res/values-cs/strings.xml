@@ -127,7 +127,6 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="minsdk_or_later">%s nebo novější</string>
   <string name="requires_features">Vyžaduje: %1$s</string>
   <string name="app_icon">Ikona aplikace</string>
-  <string name="repo_icon">Ikona repozitáře</string>
   <string name="category_Development">Vývoj</string>
   <string name="category_Games">Hry</string>
   <string name="category_Internet">Internet</string>

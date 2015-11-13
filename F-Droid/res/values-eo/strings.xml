@@ -87,7 +87,6 @@
   <string name="repo_num_apps">Nombro da aplikaĵoj</string>
   <string name="repo_description">Priskribo</string>
   <string name="repo_last_update">Lasta ĝisdatigo</string>
-  <string name="repo_update">Ĝisdatigi</string>
   <string name="repo_name">Nomo</string>
   <string name="unknown">Nekonata</string>
   <string name="repo_confirm_delete_title">Ĉu forigi la deponejon?</string>
@@ -98,7 +97,6 @@
   <string name="minsdk_up_to_maxsdk">De %1$s ĝis %2$s</string>
   <string name="requires_features">Postulas: %1$s</string>
   <string name="app_icon">Aplikaĵemblemo</string>
-  <string name="repo_icon">Deponejemblemo</string>
   <string name="category_Development">Programado</string>
   <string name="category_Games">Ludoj</string>
   <string name="category_Internet">Interreto</string>

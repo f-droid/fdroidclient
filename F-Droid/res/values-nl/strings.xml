@@ -141,7 +141,6 @@
   <string name="repo_fingerprint">Vingerafdruk van de bronondertekensleutel (SHA-256)</string>
   <string name="repo_description">Beschrijving</string>
   <string name="repo_last_update">Meest recente update</string>
-  <string name="repo_update">Update</string>
   <string name="repo_name">Naam</string>
   <string name="unsigned_description">Dit betekent dat de lijst van applicaties niet geverifieerd kon worden. Je moet voorzichtig zijn met het downloaden van applicaties van ongetekende bronnen.</string>
   <string name="repo_not_yet_updated">Deze bron is nog niet eerder gebruikt. Om de beschikbare apps te zien moet u deze inschakelen.</string>
@@ -157,7 +156,6 @@
   <string name="not_on_same_wifi">Uw apparaat zit niet op hetzelfde Wi-Fi netwerk als de lokale bron die u zojuist heeft toegevoegd! Probeer om netwerk %s bij te treden</string>
   <string name="requires_features">Benodigd: %1$s</string>
   <string name="app_icon">App icoon</string>
-  <string name="repo_icon">Bron icoon</string>
   <string name="category_Development">Ontwikkeling</string>
   <string name="category_Games">Spellen</string>
   <string name="category_Internet">Internet</string>

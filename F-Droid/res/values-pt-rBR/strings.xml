@@ -139,7 +139,6 @@
   <string name="repo_fingerprint">Fingerprint da chave de assinatura (SHA-256)</string>
   <string name="repo_description">Descrição</string>
   <string name="repo_last_update">Última atualização</string>
-  <string name="repo_update">Atualizar</string>
   <string name="repo_name">Nome</string>
   <string name="unsigned_description">Isto significa que a lista de
 aplicativos não pôde ser verificada. Você deve ter cuidado
@@ -158,7 +157,6 @@ com aplicativos baixados a partir de índices não assinados.</string>
   <string name="not_on_same_wifi">O seu dispositivo não está no mesma rede Wi-Fi do repositório local que você acabou de adicionar! Tente conectar-se a esta rede: %s</string>
   <string name="requires_features">Requer: %1$s</string>
   <string name="app_icon">Ícone do aplicativo</string>
-  <string name="repo_icon">Ícone do repositório</string>
   <string name="category_Development">Desenvolvimento</string>
   <string name="category_Games">Jogos</string>
   <string name="category_Internet">Internet</string>

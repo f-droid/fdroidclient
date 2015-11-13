@@ -142,7 +142,6 @@ wird heruntergeladen</string>
   <string name="repo_fingerprint">Fingerabdruck des Signaturschlüssels (SHA-256)</string>
   <string name="repo_description">Beschreibung</string>
   <string name="repo_last_update">Letzte Aktualisierung</string>
-  <string name="repo_update">Aktualisieren</string>
   <string name="repo_name">Name</string>
   <string name="unsigned_description">Das bedeutet, dass die Liste von
         Anwendungen nicht verifiziert werden konnte. 
@@ -163,7 +162,6 @@ wird heruntergeladen</string>
   <string name="not_on_same_wifi">Dieses Gerät befindet sich nicht im selben WLAN, wie die eben hinzugefügte Paketquelle! Versuchen Sie sich mit dem folgenden Netzwerk zu verbinden: %s</string>
   <string name="requires_features">Erfordert: %1$s</string>
   <string name="app_icon">App-Symbol</string>
-  <string name="repo_icon">Paketquellensymbol</string>
   <string name="category_Development">Entwicklung</string>
   <string name="category_Games">Spiele</string>
   <string name="category_Internet">Internet</string>

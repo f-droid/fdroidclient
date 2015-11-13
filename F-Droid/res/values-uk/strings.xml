@@ -154,7 +154,6 @@
     <string name="unverified">Не перевірено</string>
     <string name="repo_description">Опис</string>
     <string name="repo_last_update">Останнє оновлення</string>
-    <string name="repo_update">Оновити</string>
     <string name="repo_name">Назва</string>
     <string name="unknown">Невідомо</string>
     <string name="repo_confirm_delete_title">Видалити репозиторій?</string>
@@ -162,7 +161,6 @@
     <string name="pref_language_default">Типова для системи</string>
 
     <string name="app_icon">Піктограма додатку</string>
-    <string name="repo_icon">Піктограма репозиторію</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Games">Ігри</string>
     <string name="category_Graphics">Графіка</string>

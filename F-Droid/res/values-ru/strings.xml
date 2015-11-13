@@ -141,7 +141,6 @@
   <string name="repo_fingerprint">Отпечаток ключа подписи (SHA-256)</string>
   <string name="repo_description">Описание</string>
   <string name="repo_last_update">Последнее обновление</string>
-  <string name="repo_update">Обновить</string>
   <string name="repo_name">Название</string>
   <string name="unsigned_description">Это означает, что список приложений не может быть верифицирован. Вы должны быть осторожны с приложениями, загруженными из неподписанных источников.</string>
   <string name="repo_not_yet_updated">Этот репозиторий ещё не использовался. Включите его чтобы просмотреть содержащиеся в нём приложения.</string>
@@ -155,7 +154,6 @@
   <string name="not_on_same_wifi">Данное устройство не находится в той же сети Wi-Fi, что и локальный репозиторий, который вы только что добавили! Попробуйте присоединиться к этой сети: %s</string>
   <string name="requires_features">Требуется: %1$s</string>
   <string name="app_icon">Иконка приложения</string>
-  <string name="repo_icon">Иконка репозитория</string>
   <string name="category_Development">Разработка</string>
   <string name="category_Games">Игры</string>
   <string name="category_Internet">Интернет</string>

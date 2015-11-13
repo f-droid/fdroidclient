@@ -141,7 +141,6 @@
   <string name="repo_fingerprint">Buelga de la clave de robláu del repositoriu (SHA-256)</string>
   <string name="repo_description">Descripción</string>
   <string name="repo_last_update">Anovamientu caberu</string>
-  <string name="repo_update">Anovar</string>
   <string name="repo_name">Nome</string>
   <string name="unsigned_description">Esto quier dicir que nun pudo verificase\'l llistáu d\'aplicaciones.
 Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</string>
@@ -159,7 +158,6 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
   <string name="not_on_same_wifi">¡El to preséu nun ta na mesma rede Wi-Fi que\'l repositoriu llocal que tas acabante d\'amestar! Intenta xunite a esta rede: %s</string>
   <string name="requires_features">Rique: %1$s</string>
   <string name="app_icon">Iconu d\'aplicación</string>
-  <string name="repo_icon">Iconu de repositoriu</string>
   <string name="category_Development">Desendolcu</string>
   <string name="category_Games">Xuegos</string>
   <string name="category_Internet">Internet</string>

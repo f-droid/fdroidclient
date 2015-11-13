@@ -141,7 +141,6 @@
   <string name="repo_fingerprint">Empreinte de la clé utilisée pour signer le dépôt (SHA-256)</string>
   <string name="repo_description">Description</string>
   <string name="repo_last_update">Dernière mise à jour</string>
-  <string name="repo_update">Mettre à jour</string>
   <string name="repo_name">Nom</string>
   <string name="unsigned_description">Cela signifie que la liste des applications n\'a pas pu être vérifiée. Soyez prudent avec les applications téléchargées depuis des index non signés.</string>
   <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé. Vous devez l\'activer pour voir la liste des apps qu\'il offre.</string>
@@ -155,7 +154,6 @@
   <string name="not_on_same_wifi">Votre appareil n\'est pas sur le même réseau Wi-Fi que le dépôt local que vous venez d\'ajouter ! Essayez de rejoindre ce réseau : %s</string>
   <string name="requires_features">Nécessite : %1$s</string>
   <string name="app_icon">Icône de l\'app</string>
-  <string name="repo_icon">Icône du dépôt</string>
   <string name="category_Development">Développement</string>
   <string name="category_Games">Jeux</string>
   <string name="category_Internet">Internet</string>

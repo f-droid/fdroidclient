@@ -140,7 +140,6 @@ Vydaný pod licenciou
   <string name="repo_fingerprint">Odtlačok podpisového kľúča (SHA-256) repozitára</string>
   <string name="repo_description">Popis</string>
   <string name="repo_last_update">Posledná aktualizácia</string>
-  <string name="repo_update">Aktualizovať</string>
   <string name="repo_name">Názov</string>
   <string name="unsigned_description">To znamená, že zoznam aplikácií nemohol byť overený. Buďte opatrný s aplikáciami z nepodpísaných indexov.</string>
   <string name="repo_not_yet_updated">Tento repozitár ste ešte nepoužili. Aby ste videli aplikácie, ktoré poskytuje, musíte ho aktualizovať. Po aktualizácii budú popisy a iné detaily dostupné tu.</string>
@@ -156,7 +155,6 @@ Vydaný pod licenciou
   <string name="not_on_same_wifi">Vaše zariadenie nie je na rovnakej Wi-Fi ako miestny repozitár, čo ste práve pridali! Skúste sa pripojiť na túto sieť: %s</string>
   <string name="requires_features">Vyžaduje: %1$s</string>
   <string name="app_icon">Ikona aplikácie</string>
-  <string name="repo_icon">Ikona repa</string>
   <string name="category_Development">Vývoj</string>
   <string name="category_Games">Hry</string>
   <string name="category_Internet">Internet</string>

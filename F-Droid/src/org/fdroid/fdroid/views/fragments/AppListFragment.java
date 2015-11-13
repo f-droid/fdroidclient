@@ -79,7 +79,6 @@ public abstract class AppListFragment extends ListFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Preferences.get().registerCompactLayoutChangeListener(this);
 
         appAdapter = getAppListAdapter();
 
@@ -109,12 +108,6 @@ public abstract class AppListFragment extends ListFragment implements
         }
         Utils.debugLog(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
         return false;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Preferences.get().unregisterCompactLayoutChangeListener(this);
     }
 
     @Override

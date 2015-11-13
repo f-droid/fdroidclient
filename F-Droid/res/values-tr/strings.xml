@@ -143,7 +143,6 @@ bağlanılıyor</string>
   <string name="repo_fingerprint">Depo imza anahtarının parmak izi (SHA-256)</string>
   <string name="repo_description">Betimleme</string>
   <string name="repo_last_update">Son güncelleme</string>
-  <string name="repo_update">Güncelle</string>
   <string name="repo_name">İsim</string>
   <string name="unsigned_description">Bu, uygulama listesinin
         teyit edilemediği anlamına gelir. İmzasız
@@ -171,7 +170,6 @@ Ondan uygulama indirmek için bu depoyu tekrar etkinleştirmeniz gerekecektir.</
   <string name="not_on_same_wifi">Cihazınız eklemiş olduğunuz yerel depoyla aynı WiFi\'de değildir. Şu şebekeye katılmayı deneyin: %s</string>
   <string name="requires_features">Gerektirdiği: %1$s</string>
   <string name="app_icon">Uygulama ikonu</string>
-  <string name="repo_icon">Depo ikonu</string>
   <string name="category_Development">Geliştirme</string>
   <string name="category_Games">Oyunlar</string>
   <string name="category_Internet">İnternet</string>

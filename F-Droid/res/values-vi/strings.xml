@@ -126,7 +126,6 @@
   <string name="repo_num_apps">Số ứng dụng</string>
   <string name="repo_description">Mô tả</string>
   <string name="repo_last_update">Cập nhật lần cuối vào</string>
-  <string name="repo_update">Cập nhật</string>
   <string name="repo_name">Tên</string>
   <string name="repo_not_yet_updated">Kho ứng dụng này chưa được sử dụng. Sau khi kích hoạt, bạn mới có thể xem được các ứng dụng trong kho.</string>
   <string name="repo_confirm_delete_title">Xoá kho?</string>
@@ -142,7 +141,6 @@
   <string name="not_on_same_wifi">Thiết bị của bạn không trong cùng mạng Wi-Fi với kho nội bộ mới thêm! Hãy vào mạng này: %s</string>
   <string name="requires_features">Yêu cầu: %1$s</string>
   <string name="app_icon">Biểu tượng ứng dụng</string>
-  <string name="repo_icon">Biểu tượng kho</string>
   <string name="category_Development">Lập trình</string>
   <string name="category_Games">Trò chơi</string>
   <string name="category_Internet">Internet</string>

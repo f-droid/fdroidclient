@@ -141,7 +141,6 @@
   <string name="repo_fingerprint">Fingeravtryck för signeringsnyckel (SHA-256)</string>
   <string name="repo_description">Beskrivning</string>
   <string name="repo_last_update">Senaste uppdatering</string>
-  <string name="repo_update">Uppdatera</string>
   <string name="repo_name">Namn</string>
   <string name="unsigned_description">Detta betyder att listan av program inte kunde verifieras. Du bör vara försiktig med program som hämtats från osignerade index.</string>
   <string name="repo_not_yet_updated">Det här fil-förrådet har inte använts än. Du måste aktivera det för att se apparna som det förser dig .</string>
@@ -156,7 +155,6 @@
   <string name="not_on_same_wifi">Din enhet är inte på samma trådlösa nätverk som det lokala förråd du just lagt till! Försök ansluta till detta nätverk: %s</string>
   <string name="requires_features">Kräver: %1$s</string>
   <string name="app_icon">Appikon</string>
-  <string name="repo_icon">Förrådsikon</string>
   <string name="category_Development">Utveckling</string>
   <string name="category_Games">Spel</string>
   <string name="category_Internet">Internet</string>

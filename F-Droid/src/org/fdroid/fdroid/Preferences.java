@@ -82,7 +82,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private final Map<String, Boolean> initialized = new HashMap<>();
 
-    private final List<ChangeListener> compactLayoutListeners = new ArrayList<>();
     private final List<ChangeListener> filterAppsRequiringRootListeners = new ArrayList<>();
     private final List<ChangeListener> updateHistoryListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoNameListeners = new ArrayList<>();
@@ -182,14 +181,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 return DEFAULT_PROXY_PORT;
             }
         }
-    }
-
-    public void registerCompactLayoutChangeListener(ChangeListener listener) {
-        compactLayoutListeners.add(listener);
-    }
-
-    public void unregisterCompactLayoutChangeListener(ChangeListener listener) {
-        compactLayoutListeners.remove(listener);
     }
 
     /**

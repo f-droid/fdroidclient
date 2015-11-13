@@ -110,7 +110,6 @@
   <string name="repo_fingerprint">Αποτύπωμα του κλειδιού υπογραφής (SHA-256)</string>
   <string name="repo_description">Περιγραφή</string>
   <string name="repo_last_update">Τελευταία ενημέρωση</string>
-  <string name="repo_update">Ενημέρωση</string>
   <string name="repo_name">Όνομα</string>
   <string name="unsigned_description">Αυτό σημαίνει ότι ο κατάλογος
         των εφαρμογών δεν μπορεί να επαληθευτεί. Θα πρέπει να
@@ -199,7 +198,6 @@
     <string name="pref_language_default">Προεπιλογή συστήματος</string>
 
     <string name="app_icon">Εικονίδιο εφαρμογής</string>
-    <string name="repo_icon">Εικονίδιο αποθετηρίου</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Σημείο πρόσβασης</string>
 

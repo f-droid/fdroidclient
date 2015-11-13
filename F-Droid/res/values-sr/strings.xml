@@ -138,7 +138,6 @@
   <string name="repo_fingerprint">Отисак кључа за потписивање (SHA-256)</string>
   <string name="repo_description">Опис</string>
   <string name="repo_last_update">Последње ажурирање</string>
-  <string name="repo_update">Ажурирај</string>
   <string name="repo_name">Име</string>
   <string name="unsigned_description">Ово значи да списак апликација није
 могао бити оверен. Требате бити опрезни са
@@ -156,7 +155,6 @@
   <string name="not_on_same_wifi">Ваш уређај није на истој бежичној мрежи са локалном ризницом коју сте управо додали! Придружите се овој мрежи: %s</string>
   <string name="requires_features">Захтева: %1$s</string>
   <string name="app_icon">Икона апликације</string>
-  <string name="repo_icon">Икона ризнице</string>
   <string name="category_Development">Програмирање</string>
   <string name="category_Games">Игре</string>
   <string name="category_Internet">Интернет</string>

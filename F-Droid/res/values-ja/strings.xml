@@ -141,7 +141,6 @@
   <string name="repo_fingerprint">署名ｷｰのﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄ(SHA-256)</string>
   <string name="repo_description">説明</string>
   <string name="repo_last_update">最終更新</string>
-  <string name="repo_update">更新</string>
   <string name="repo_name">名前</string>
   <string name="unsigned_description">ｱﾌﾟﾘｹｰｼｮﾝの一覧は検証されていません｡未署名の索引からｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝﾛｰﾄﾞする時は注意してください｡</string>
   <string name="repo_not_yet_updated">このﾘﾎﾟｼﾞﾄﾘはまだ使用されていません｡ ｱﾌﾟﾘｹｰｼｮﾝを表示するには､ﾘﾎﾟｼﾞﾄﾘを有効にする必要があります｡</string>
@@ -158,7 +157,6 @@
   <string name="not_on_same_wifi">あなたの端末は追加したﾛｰｶﾙ･ﾘﾎﾟｼﾞﾄﾘと同じWi-Fi上にありません｡このﾈｯﾄﾜｰｸに参加してみてください: %s</string>
   <string name="requires_features">必須: %1$s</string>
   <string name="app_icon">ｱﾌﾟﾘｱｲｺﾝ</string>
-  <string name="repo_icon">ﾘﾎﾟｼﾞﾄﾘのｱｲｺﾝ</string>
   <string name="category_Development">開発</string>
   <string name="category_Games">ｹﾞｰﾑ</string>
   <string name="category_Internet">ｲﾝﾀｰﾈｯﾄ</string>

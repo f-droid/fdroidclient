@@ -124,7 +124,6 @@
   <string name="repo_fingerprint">应用程序签名密钥指纹 (SHA-256)</string>
   <string name="repo_description">描述</string>
   <string name="repo_last_update">上次更新</string>
-  <string name="repo_update">更新</string>
   <string name="repo_name">名称</string>
   <string name="unsigned_description">这意味着应用程序清单可以被认证。对于从未签名来源下载的应用程序您应该小心。</string>
   <string name="repo_not_yet_updated">该软件源尚未使用。
@@ -147,7 +146,6 @@
   <string name="not_on_same_wifi">您的设备与刚刚添加的本地软件源不再同一个WiFi上！尝试加入该网络：%s</string>
   <string name="requires_features">需要：%1$s</string>
   <string name="app_icon">应用程序图标</string>
-  <string name="repo_icon">软件源图标</string>
   <string name="category_Development">软件开发</string>
   <string name="category_Games">游戏</string>
   <string name="category_Internet">互联网</string>

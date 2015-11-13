@@ -142,7 +142,6 @@
   <string name="repo_fingerprint">Huella digital de la clave de firmado del repo (SHA-256)</string>
   <string name="repo_description">Descripción</string>
   <string name="repo_last_update">Última actualización</string>
-  <string name="repo_update">Actualizar</string>
   <string name="repo_name">Nombre</string>
   <string name="unsigned_description">Esto significa que la lista de
 aplicaciones no ha podido verificarse.
@@ -163,7 +162,6 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
   <string name="not_on_same_wifi">¡Tu dispositivo no está en la misma Wi-Fi que el repo que acabas de añadir! Intenta unirte a esta red: %s</string>
   <string name="requires_features">Requiere: %1$s</string>
   <string name="app_icon">Icono de la aplicación</string>
-  <string name="repo_icon">Icono del repositorio</string>
   <string name="category_Development">Desarrollo</string>
   <string name="category_Games">Juegos</string>
   <string name="category_Internet">Internet</string>

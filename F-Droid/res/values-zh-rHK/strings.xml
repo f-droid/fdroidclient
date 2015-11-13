@@ -115,7 +115,6 @@
   <string name="repo_num_apps">應用程式數目</string>
   <string name="repo_description">描述</string>
   <string name="repo_last_update">最近更新</string>
-  <string name="repo_update">更新</string>
   <string name="repo_name">名稱</string>
   <string name="unknown">未知</string>
   <string name="repo_confirm_delete_title">刪除軟件倉庫？</string>
@@ -127,7 +126,6 @@
   <string name="not_on_same_wifi">您剛才添加的本地倉庫與您的裝置並不在同一個 Wi-Fi 網絡上！請嘗試加入以下網絡：%s</string>
   <string name="requires_features">需要：%1$s</string>
   <string name="app_icon">應用程式圖示</string>
-  <string name="repo_icon">倉庫圖示</string>
   <string name="category_Development">開發</string>
   <string name="category_Games">遊戲</string>
   <string name="category_Internet">互聯網</string>

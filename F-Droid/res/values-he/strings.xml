@@ -162,7 +162,6 @@
     <string name="repo_num_apps">מספר של אפליקציות</string>
     <string name="repo_description">תיאור</string>
     <string name="repo_last_update">עדכון אחרון</string>
-    <string name="repo_update">עדכן</string>
     <string name="repo_name">שם</string>
     <string name="unknown">לא ידוע</string>
     <string name="repo_confirm_delete_title">למחוק מאגר?</string>
@@ -175,7 +174,6 @@
     <string name="pref_language_default">שגרתית של מערכת</string>
 
     <string name="app_icon">סמל אפליקציה</string>
-    <string name="repo_icon">סמל מאגר</string>
 
     <string name="category_Development">פיתוח</string>
     <string name="category_Games">משחקים</string>

@@ -69,7 +69,6 @@
   <string name="repo_num_apps">Programų kiekis</string>
   <string name="repo_description">Aprašymas</string>
   <string name="repo_last_update">Paskiausias atnaujinimas</string>
-  <string name="repo_update">Atnaujinti</string>
   <string name="repo_name">Pavadinimas</string>
   <string name="repo_not_yet_updated">Ši saugykla dar nebuvo naudota. Norėdami pamatyti čia esančias programas, turite saugyklą atnaujinti. Atnaujinus, programų aprašymai taps matomi.</string>
   <string name="repo_confirm_delete_title">Pašalinti saugyklą?</string>
