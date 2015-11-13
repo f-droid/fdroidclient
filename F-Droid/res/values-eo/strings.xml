@@ -118,4 +118,7 @@
     <string name="installIncompatible">Ŝajnas ke tiu ĉi pakaĵo ne kongruas kun via aparato. Ĉu vi malgraŭe volas provi instali ĝin?</string>
     <string name="unstable_updates">Nestabilaj ĝisdatigoj</string>
     <string name="update_interval">Intervalo de aŭtomata ĝisdatigo</string>
+    <string name="installDowngrade">Vi klopodas malpromocii ĉi tiun aplikaĵon. Fari tion eble malfunkciigos ĝin kaj eĉ perdigos viajn datumojn. Ĉu vi volas klopodi malpromocii ĝin ĉiaokaze?</string>
+    <string name="searchres_napps">Trovitaj %1$d aplikaĵojn kongruante \'%2$s\':</string>
+    <string name="searchres_oneapp">Trovita unu aplikaĵon kongruante \'%s\':</string>
     </resources>

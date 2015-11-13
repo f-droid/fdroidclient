@@ -184,4 +184,6 @@ Uvolněno pod GPLv3 licencí.</string>
     <string name="proxy_port_summary">Nakonfigurovat číslo portu proxy</string>
 
     <string name="status_download">Stahuji\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
+    <string name="app_name">F-Droid</string>
+
     </resources>

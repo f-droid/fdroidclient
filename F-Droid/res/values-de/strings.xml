@@ -301,4 +301,33 @@ wird heruntergeladen</string>
     <string name="swap_no_peers_nearby">Keine Leute in der Nähe zum Tauschen gefunden.</string>
     <string name="swap_confirm">Bestätige Tausch</string>
     <string name="swap_qr_isnt_for_swap">Der QR-Code, den du gescannt hast, sieht nicht wie ein Tausch-Code aus.</string>
-    </resources>
+    <string name="system_install_first_time_message">Offensichtlich haben Sie Systemberechtigung auf Ihrem Gerät. Sie können nun \"F-Droid Privilegierte Erweiterungen\" installieren, die sehr eng mit dem Android Betriebssystem gekoppelt sind. Mit dieser Erweiterung kann F-Droid selbstständig Installationen, Upgrades und De-Installationen durchführen.</string>
+    <string name="swap_join_same_wifi_desc">Um über WLAN zu tauschen müssen Sie im selben Netzwerk befinden. Wenn Sie keinen gemeinsamen Netzwerkzugang haben kann einer von Ihnen einen WLAN-Hotspot einrichten.</string>
+    <string name="swap_nearby">Tausch in der Nähe</string>
+    <string name="swap_cant_send_no_bluetooth">F-Droid kann nicht gesendet werden, da auf diesem Gerät kein Bluetooth verfügbar ist.</string>
+    <string name="loading">Lade…</string>
+    <string name="swap_attempt_install">Installationsversuch</string>
+    <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich.</string>
+    <string name="swap_not_enabled">Tausch ist nicht aktiviert</string>
+    <string name="swap_not_enabled_description">Vor dem Tausch muss Ihr Gerät sichtbar gemacht werden.</string>
+
+    <string name="install_confirm">Wollen Sie diese Applikation installieren? Sie wird folgende Berechtigungen erhalten:</string>
+    <string name="install_confirm_no_perms">Wollen Sie diese Applikation installieren? Sie benötigt keine besonderen Berechtigungen.</string>
+    <string name="install_confirm_update">Wollen Sie eine Aktualisierung dieser bestehenden Applikation installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Applikation wird folgende Berechtigungen erhalten:</string>
+    <string name="install_confirm_update_no_perms">Wollen Sie eine Aktualisierung dieser vorinstallierten Applikation installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Applikation benötigt keine besonderen Berechtigungen.</string>
+    <string name="install_confirm_update_system">Wollen Sie eine Aktualisierung dieser vorinstallierten Applikation installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Applikation wird folgende Berechtigungen erhalten:</string>
+    <string name="install_confirm_update_system_no_perms">Wollen Sie eine Aktualisierung dieser vorinstallierten Applikation installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Applikation erfordert keine besonderen Berechtigungen.</string>
+    <string name="allPerms">Alle</string>
+    <string name="privacyPerms">Datenschutz</string>
+    <string name="devicePerms">Gerätezugriff</string>
+    <string name="perm_costs_money">Das könnte Sie Geld kosten</string>
+    <string name="uninstall_update_confirm">Möchten Sie diese App durch die Version des Werkszustands ersetzen?</string>
+    <string name="uninstall_confirm">Möchten Sie diese App de-installieren?</string>
+    <string name="tap_to_install">Herunterladen abgeschlossen, zur Installation antippen</string>
+    <string name="download_error">Herunterladen nicht erfolgreich</string>
+
+    <string name="perms_description_app">Bereitgestellt von %1$s.</string>
+    <string name="downloading">Herunterladen…</string>
+
+    <string name="theme_night">Nacht</string>
+</resources>
