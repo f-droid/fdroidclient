@@ -154,7 +154,6 @@
   <string name="not_on_same_wifi">Votre appareil n\'est pas sur le même réseau Wi-Fi que le dépôt local que vous venez d\'ajouter ! Essayez de rejoindre ce réseau : %s</string>
   <string name="requires_features">Nécessite : %1$s</string>
   <string name="app_icon">Icône de l\'app</string>
-  <string name="repo_icon">Icône du dépôt</string>
   <string name="category_Development">Développement</string>
   <string name="category_Games">Jeux</string>
   <string name="category_Internet">Internet</string>

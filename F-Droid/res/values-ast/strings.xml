@@ -158,7 +158,6 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
   <string name="not_on_same_wifi">¡El to preséu nun ta na mesma rede Wi-Fi que\'l repositoriu llocal que tas acabante d\'amestar! Intenta xunite a esta rede: %s</string>
   <string name="requires_features">Rique: %1$s</string>
   <string name="app_icon">Iconu d\'aplicación</string>
-  <string name="repo_icon">Iconu de repositoriu</string>
   <string name="category_Development">Desendolcu</string>
   <string name="category_Games">Xuegos</string>
   <string name="category_Internet">Internet</string>

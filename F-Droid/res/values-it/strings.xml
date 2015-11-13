@@ -158,7 +158,6 @@ Nota: Tutte le applicazioni installate precedentemente rimarranno sul dispositiv
 Prova a collegarti a questa rete: %s</string>
   <string name="requires_features">Richiede: %1$s</string>
   <string name="app_icon">Icona App</string>
-  <string name="repo_icon">Icona della Repo</string>
   <string name="category_Development">Sviluppo</string>
   <string name="category_Games">Giochi</string>
   <string name="category_Internet">Internet</string>

@@ -157,7 +157,6 @@
   <string name="not_on_same_wifi">あなたの端末は追加したﾛｰｶﾙ･ﾘﾎﾟｼﾞﾄﾘと同じWi-Fi上にありません｡このﾈｯﾄﾜｰｸに参加してみてください: %s</string>
   <string name="requires_features">必須: %1$s</string>
   <string name="app_icon">ｱﾌﾟﾘｱｲｺﾝ</string>
-  <string name="repo_icon">ﾘﾎﾟｼﾞﾄﾘのｱｲｺﾝ</string>
   <string name="category_Development">開発</string>
   <string name="category_Games">ｹﾞｰﾑ</string>
   <string name="category_Internet">ｲﾝﾀｰﾈｯﾄ</string>

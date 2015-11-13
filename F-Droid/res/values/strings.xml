@@ -225,7 +225,6 @@
     <string name="pref_language_default">System Default</string>
 
     <string name="app_icon">App icon</string>
-    <string name="repo_icon">Repo icon</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 

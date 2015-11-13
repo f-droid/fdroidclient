@@ -116,7 +116,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
   <string name="minsdk_up_to_maxsdk">%1$s aż do %2$s</string>
   <string name="requires_features">Wymaga: %1$s</string>
   <string name="app_icon">Ikona aplikacji</string>
-  <string name="repo_icon">Ikona repozytorium</string>
   <string name="category_Development">Tworzenie</string>
   <string name="category_Games">Gry</string>
   <string name="category_Internet">Internet</string>

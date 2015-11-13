@@ -126,7 +126,6 @@
   <string name="not_on_same_wifi">您剛才添加的本地倉庫與您的裝置並不在同一個 Wi-Fi 網絡上！請嘗試加入以下網絡：%s</string>
   <string name="requires_features">需要：%1$s</string>
   <string name="app_icon">應用程式圖示</string>
-  <string name="repo_icon">倉庫圖示</string>
   <string name="category_Development">開發</string>
   <string name="category_Games">遊戲</string>
   <string name="category_Internet">互聯網</string>

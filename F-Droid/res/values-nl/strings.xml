@@ -156,7 +156,6 @@
   <string name="not_on_same_wifi">Uw apparaat zit niet op hetzelfde Wi-Fi netwerk als de lokale bron die u zojuist heeft toegevoegd! Probeer om netwerk %s bij te treden</string>
   <string name="requires_features">Benodigd: %1$s</string>
   <string name="app_icon">App icoon</string>
-  <string name="repo_icon">Bron icoon</string>
   <string name="category_Development">Ontwikkeling</string>
   <string name="category_Games">Spellen</string>
   <string name="category_Internet">Internet</string>

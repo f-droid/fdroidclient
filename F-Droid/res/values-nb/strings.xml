@@ -156,7 +156,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="not_on_same_wifi">Din enhet er ikke på det samme lokale Wi-Fi-nettet som pakkebrønnen du nettopp la til! Prøv å koble til dette nettverket: %s</string>
   <string name="requires_features">Krever: %1$s</string>
   <string name="app_icon">Miniatyrbilde for program</string>
-  <string name="repo_icon">Miniatyrbilde for pakkebrønn</string>
   <string name="category_Development">Utvikling</string>
   <string name="category_Games">Spill</string>
   <string name="category_Internet">Internett</string>

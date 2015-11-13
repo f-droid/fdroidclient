@@ -156,7 +156,6 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
   <string name="not_on_same_wifi">El dipòsit local que acabeu d\'afegir i el vostre dispositiu no són a la mateixa Wi-Fi. Proveu amb aquesta xarxa: %s</string>
   <string name="requires_features">Requereix: %1$s</string>
   <string name="app_icon">Icona de l\'aplicació</string>
-  <string name="repo_icon">Icona del dipòsit</string>
   <string name="category_Development">Desenvolupament</string>
   <string name="category_Games">Jocs</string>
   <string name="category_Internet">Internet</string>

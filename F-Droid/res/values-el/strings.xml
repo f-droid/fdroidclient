@@ -198,7 +198,6 @@
     <string name="pref_language_default">Προεπιλογή συστήματος</string>
 
     <string name="app_icon">Εικονίδιο εφαρμογής</string>
-    <string name="repo_icon">Εικονίδιο αποθετηρίου</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Σημείο πρόσβασης</string>
 

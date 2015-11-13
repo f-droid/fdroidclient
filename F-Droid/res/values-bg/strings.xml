@@ -135,7 +135,6 @@
   <string name="not_on_same_wifi">Вашето устройство не е в една и съща Wi-Fi мрежа с локалното хранилище, което добавихте! Опитайте да се свържете към тази мрежа: %s</string>
   <string name="requires_features">Изисква: %1$s</string>
   <string name="app_icon">Икона на приложението</string>
-  <string name="repo_icon">Икона на хранилището</string>
   <string name="category_Development">Разработване</string>
   <string name="category_Games">Игри</string>
   <string name="category_Internet">Интернет</string>

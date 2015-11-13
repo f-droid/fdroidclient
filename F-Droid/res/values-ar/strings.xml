@@ -57,7 +57,6 @@
   <string name="unknown">غير معروف</string>
   <string name="repo_confirm_delete_title">حذف المستودع</string>
   <string name="app_icon">أيقونة التطبيق</string>
-  <string name="repo_icon">أيقونة المستودع</string>
   <string name="category_Development">التطوير</string>
   <string name="category_Games">الألعاب</string>
   <string name="category_Internet">الانترنت</string>

@@ -146,7 +146,6 @@
   <string name="not_on_same_wifi">您的设备与刚刚添加的本地软件源不再同一个WiFi上！尝试加入该网络：%s</string>
   <string name="requires_features">需要：%1$s</string>
   <string name="app_icon">应用程序图标</string>
-  <string name="repo_icon">软件源图标</string>
   <string name="category_Development">软件开发</string>
   <string name="category_Games">游戏</string>
   <string name="category_Internet">互联网</string>

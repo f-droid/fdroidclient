@@ -135,7 +135,6 @@ Sinun pitää
         ottaa tämä säilö uudelleen käyttöön asentaaksesi sieltä sovelluksia.</string>
   <string name="requires_features">Vaatii: %1$s</string>
   <string name="app_icon">Sovelluskuvake</string>
-  <string name="repo_icon">Säilön kuvake</string>
   <string name="category_Development">Kehitys</string>
   <string name="category_Games">Pelit</string>
   <string name="category_Internet">Internet</string>

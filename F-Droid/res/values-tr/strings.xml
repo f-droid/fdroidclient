@@ -170,7 +170,6 @@ Ondan uygulama indirmek için bu depoyu tekrar etkinleştirmeniz gerekecektir.</
   <string name="not_on_same_wifi">Cihazınız eklemiş olduğunuz yerel depoyla aynı WiFi\'de değildir. Şu şebekeye katılmayı deneyin: %s</string>
   <string name="requires_features">Gerektirdiği: %1$s</string>
   <string name="app_icon">Uygulama ikonu</string>
-  <string name="repo_icon">Depo ikonu</string>
   <string name="category_Development">Geliştirme</string>
   <string name="category_Games">Oyunlar</string>
   <string name="category_Internet">İnternet</string>

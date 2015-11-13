@@ -97,7 +97,6 @@
   <string name="minsdk_up_to_maxsdk">De %1$s ĝis %2$s</string>
   <string name="requires_features">Postulas: %1$s</string>
   <string name="app_icon">Aplikaĵemblemo</string>
-  <string name="repo_icon">Deponejemblemo</string>
   <string name="category_Development">Programado</string>
   <string name="category_Games">Ludoj</string>
   <string name="category_Internet">Interreto</string>

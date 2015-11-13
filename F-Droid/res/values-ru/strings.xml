@@ -154,7 +154,6 @@
   <string name="not_on_same_wifi">Данное устройство не находится в той же сети Wi-Fi, что и локальный репозиторий, который вы только что добавили! Попробуйте присоединиться к этой сети: %s</string>
   <string name="requires_features">Требуется: %1$s</string>
   <string name="app_icon">Иконка приложения</string>
-  <string name="repo_icon">Иконка репозитория</string>
   <string name="category_Development">Разработка</string>
   <string name="category_Games">Игры</string>
   <string name="category_Internet">Интернет</string>

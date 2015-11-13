@@ -155,7 +155,6 @@
   <string name="not_on_same_wifi">Ваш уређај није на истој бежичној мрежи са локалном ризницом коју сте управо додали! Придружите се овој мрежи: %s</string>
   <string name="requires_features">Захтева: %1$s</string>
   <string name="app_icon">Икона апликације</string>
-  <string name="repo_icon">Икона ризнице</string>
   <string name="category_Development">Програмирање</string>
   <string name="category_Games">Игре</string>
   <string name="category_Internet">Интернет</string>

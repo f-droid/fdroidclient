@@ -155,7 +155,6 @@ Vydaný pod licenciou
   <string name="not_on_same_wifi">Vaše zariadenie nie je na rovnakej Wi-Fi ako miestny repozitár, čo ste práve pridali! Skúste sa pripojiť na túto sieť: %s</string>
   <string name="requires_features">Vyžaduje: %1$s</string>
   <string name="app_icon">Ikona aplikácie</string>
-  <string name="repo_icon">Ikona repa</string>
   <string name="category_Development">Vývoj</string>
   <string name="category_Games">Hry</string>
   <string name="category_Internet">Internet</string>
