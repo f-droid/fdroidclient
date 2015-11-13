@@ -158,6 +158,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         values.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL, "Mock app: " + appId);
         values.put(InstalledAppProvider.DataColumns.VERSION_CODE, versionCode);
         values.put(InstalledAppProvider.DataColumns.VERSION_NAME, versionNumber);
+        values.put(InstalledAppProvider.DataColumns.SIGNATURE, "");
         return values;
     }
 

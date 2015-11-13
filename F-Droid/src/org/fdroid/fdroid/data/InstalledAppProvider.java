@@ -113,6 +113,9 @@ public class InstalledAppProvider extends FDroidProvider {
     }
 
     public static String getPackageSig(PackageInfo info) {
+        if (info == null || info.signatures == null || info.signatures.length < 1) {
+            return "";
+        }
         Signature sig = info.signatures[0];
         String sigHash = "";
         try {
