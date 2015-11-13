@@ -155,7 +155,7 @@ public class AppSecurityPermissions {
         }
 
         public void setPermission(MyPermissionGroupInfo grp, MyPermissionInfo perm,
-                boolean first, CharSequence newPermPrefix, String packageName) {
+                                  boolean first, CharSequence newPermPrefix) {
             mGroup = grp;
             mPerm = perm;
 
@@ -421,7 +421,7 @@ public class AppSecurityPermissions {
                 (perm.flags & PermissionInfo.FLAG_COSTS_MONEY) != 0
                 ? R.layout.app_permission_item_money : R.layout.app_permission_item,
                 null);
-        permView.setPermission(grp, perm, first, newPermPrefix, mPackageName);
+        permView.setPermission(grp, perm, first, newPermPrefix);
         return permView;
     }
 

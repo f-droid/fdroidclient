@@ -693,8 +693,7 @@ public class ManageReposActivity extends ActionBarActivity {
                 if (isEnabled) {
                     UpdateService.updateNow(getActivity());
                 } else {
-                    FDroidApp app = (FDroidApp) getActivity().getApplication();
-                    RepoProvider.Helper.purgeApps(getActivity(), repo, app);
+                    RepoProvider.Helper.purgeApps(getActivity(), repo);
                     String notification = getString(R.string.repo_disabled_notification, repo.name);
                     Toast.makeText(getActivity(), notification, Toast.LENGTH_LONG).show();
                 }

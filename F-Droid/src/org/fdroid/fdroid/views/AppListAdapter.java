@@ -72,7 +72,7 @@ public abstract class AppListAdapter extends CursorAdapter {
         holder.icon = (ImageView) view.findViewById(R.id.icon);
         view.setTag(holder);
 
-        setupView(context, view, cursor, holder);
+        setupView(view, cursor, holder);
 
         return view;
     }
@@ -80,10 +80,10 @@ public abstract class AppListAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         ViewHolder holder = (ViewHolder) view.getTag();
-        setupView(context, view, cursor, holder);
+        setupView(view, cursor, holder);
     }
 
-    private void setupView(Context context, View view, Cursor cursor, ViewHolder holder) {
+    private void setupView(View view, Cursor cursor, ViewHolder holder) {
         final App app = new App(cursor);
 
         holder.name.setText(app.name);

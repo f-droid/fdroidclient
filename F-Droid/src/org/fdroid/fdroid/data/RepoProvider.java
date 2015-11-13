@@ -182,7 +182,7 @@ public class RepoProvider extends FDroidProvider {
             resolver.delete(uri, null, null);
         }
 
-        public static void purgeApps(Context context, Repo repo, FDroidApp app) {
+        public static void purgeApps(Context context, Repo repo) {
             Uri apkUri = ApkProvider.getRepoUri(repo.getId());
             ContentResolver resolver = context.getContentResolver();
             int apkCount = resolver.delete(apkUri, null, null);
