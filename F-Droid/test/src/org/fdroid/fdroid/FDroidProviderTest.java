@@ -126,6 +126,7 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
     protected void assertValidUri(Uri uri) {
         Cursor cursor = getMockContentResolver().query(uri, getMinimalProjection(), null, null, null);
         assertNotNull(cursor);
+        cursor.close();
     }
 
     /**
@@ -138,6 +139,7 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
     protected void assertResultCount(int expectedCount, Uri uri) {
         Cursor cursor = getMockContentResolver().query(uri, getMinimalProjection(), null, null, null);
         assertResultCount(expectedCount, cursor);
+        cursor.close();
     }
 
     protected void assertResultCount(int expectedCount, List items) {
@@ -170,6 +172,7 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
         assertEquals(appId, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID)));
         assertEquals(versionCode, cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE)));
         assertEquals(versionName, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_NAME)));
+        cursor.close();
     }
 
 }

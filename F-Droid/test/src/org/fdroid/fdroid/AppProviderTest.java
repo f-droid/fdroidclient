@@ -106,6 +106,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     public void testQuery() {
         Cursor cursor = queryAllApps();
         assertNotNull(cursor);
+        cursor.close();
     }
 
     private void insertApps(int count) {
@@ -180,6 +181,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
             canUpdateIds.add(new App(canUpdateCursor).id);
             canUpdateCursor.moveToNext();
         }
+        canUpdateCursor.close();
 
         String[] expectedUpdateableIds = {
             "installed, old version, no ignore",
@@ -255,6 +257,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         Cursor cursor = queryAllApps();
         assertNotNull(cursor);
         assertEquals(0, cursor.getCount());
+        cursor.close();
 
         // Insert a new record...
         insertApp("org.fdroid.fdroid", "F-Droid");
@@ -278,6 +281,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         // APP_ID.
         cursor.moveToFirst();
         App app = new App(cursor);
+        cursor.close();
         assertEquals("org.fdroid.fdroid", app.id);
         assertEquals("F-Droid", app.name);
     }

@@ -82,6 +82,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
                 null, null, null);
         assertResultCount(10, fdroidApks);
         assertBelongsToApp(fdroidApks, "org.fdroid.fdroid");
+        fdroidApks.close();
 
         Cursor exampleApks = getMockContentResolver().query(
                 ApkProvider.getAppUri("com.example"),
@@ -89,12 +90,14 @@ public class ApkProviderTest extends BaseApkProviderTest {
                 null, null, null);
         assertResultCount(10, exampleApks);
         assertBelongsToApp(exampleApks, "com.example");
+        exampleApks.close();
 
         ApkProvider.Helper.deleteApksByApp(getMockContext(), new MockApp("com.example"));
 
         Cursor all = queryAllApks();
         assertResultCount(10, all);
         assertBelongsToApp(all, "org.fdroid.fdroid");
+        all.close();
     }
 
     public void testInvalidUpdateUris() {
@@ -197,6 +200,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
             ApkProvider.getRepoUri(REPO_DELETE), getMinimalProjection(), null, null, null);
         assertResultCount(10, cursor);
         assertBelongsToRepo(cursor, REPO_DELETE);
+        cursor.close();
 
         int count = ApkProvider.Helper.deleteApksByRepo(getMockContext(), new MockRepo(REPO_DELETE));
         assertEquals(10, count);
@@ -205,6 +209,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         cursor = getMockContentResolver().query(
             ApkProvider.getRepoUri(REPO_DELETE), getMinimalProjection(), null, null, null);
         assertResultCount(0, cursor);
+        cursor.close();
 
         // The only remaining apks should be those from REPO_KEEP.
         assertBelongsToRepo(queryAllApks(), REPO_KEEP);
@@ -213,6 +218,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
     public void testQuery() {
         Cursor cursor = queryAllApks();
         assertNotNull(cursor);
+        cursor.close();
     }
 
     public void testInsert() {
@@ -221,6 +227,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         Cursor cursor = queryAllApks();
         assertNotNull(cursor);
         assertEquals(0, cursor.getCount());
+        cursor.close();
 
         Apk apk = new MockApk("org.fdroid.fdroid", 13);
 
@@ -247,6 +254,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         // APK_ID.
         cursor.moveToFirst();
         Apk toCheck = new Apk(cursor);
+        cursor.close();
         assertEquals("org.fdroid.fdroid", toCheck.id);
         assertEquals(13, toCheck.vercode);
     }
@@ -264,11 +272,13 @@ public class ApkProviderTest extends BaseApkProviderTest {
         Cursor allWithCount = getMockContentResolver().query(all, projectionCount, null, null, null);
 
         assertResultCount(13, allWithFields);
+        allWithFields.close();
         assertResultCount(1, allWithCount);
 
         allWithCount.moveToFirst();
         int countColumn = allWithCount.getColumnIndex(ApkProvider.DataColumns._COUNT);
         assertEquals(13, allWithCount.getInt(countColumn));
+        allWithCount.close();
     }
 
     public void testInsertWithExtraFields() {
@@ -309,6 +319,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         Cursor cursor = getMockContentResolver().query(uri, projections, null, null, null);
         cursor.moveToFirst();
         Apk apk = new Apk(cursor);
+        cursor.close();
 
         // These should have quietly been dropped when we tried to save them,
         // because the provider only knows how to query them (not update them).

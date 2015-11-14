@@ -110,6 +110,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
 
         cursor.moveToFirst();
         Apk apk = new Apk(cursor);
+        cursor.close();
 
         assertEquals("com.example", apk.id);
         assertEquals(10, apk.vercode);
@@ -128,12 +129,14 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         // Should not have inserted anything else, just updated the already existing apk.
         Cursor allCursor = getMockContentResolver().query(ApkProvider.getContentUri(), allFields, null, null, null);
         assertResultCount(1, allCursor);
+        allCursor.close();
 
         Cursor updatedCursor = getMockContentResolver().query(apkUri, allFields, null, null, null);
         assertResultCount(1, updatedCursor);
 
         updatedCursor.moveToFirst();
         Apk updatedApk = new Apk(updatedCursor);
+        updatedCursor.close();
 
         assertEquals("com.example", updatedApk.id);
         assertEquals(10, updatedApk.vercode);
