@@ -35,9 +35,9 @@ if (!hasProperty('sourceDeps')) {
     }
 
     dependencies {
-        compile 'com.madgag.spongycastle:pkix:1.51.0.0'
-        compile 'com.madgag.spongycastle:prov:1.51.0.0'
-        compile 'com.madgag.spongycastle:core:1.51.0.0'
+        compile 'com.madgag.spongycastle:pkix:1.53.0.0'
+        compile 'com.madgag.spongycastle:prov:1.53.0.0'
+        compile 'com.madgag.spongycastle:core:1.53.0.0'
 
         // Upstream doesn't have a binary on mavenCentral/jcenter yet:
         // https://github.com/kolavar/android-support-v4-preferencefragment/issues/13
@@ -66,9 +66,9 @@ if (!hasProperty('sourceDeps')) {
             'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
             'eu.chainfire:libsuperuser:a3ed4589e14f7d5ab255b3f31f7b79aaa1173a579035788f8db7c74215453a12',
             'cc.mvdan.accesspoint:library:dc89a085d6bc40381078b8dd7776b12bde0dbaf8ffbcddb17ec4ebc3edecc7ba',
-            'com.madgag.spongycastle:pkix:0d9cca6991f68eb373cfad309d5268c9fc38db5efb5fe00dcccf5c973af1eca1',
-            'com.madgag.spongycastle:prov:b8c3fec3a59aac1aa04ccf4dad7179351e54ef7672f53f508151b614c131398a',
-            'com.madgag.spongycastle:core:8d6240b974b0aca4d3da9c7dd44d42339d8a374358aca5fc98e50a995764511f',
+            'com.madgag.spongycastle:pkix:6aba9b2210907a3d46dd3dcac782bb3424185290468d102d5207ebdc9796a905',
+            'com.madgag.spongycastle:prov:029f26cd6b67c06ffa05702d426d472c141789001bcb15b7262ed86c868e5643',
+            'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
             'commons-net:commons-net:b35ad597f17a6f221575df2f729a9de8f70390509e047680771e713bad713fb9',
             'org.openhab.jmdns:jmdns:7a4b34b5606bbd2aff7fdfe629edcb0416fccd367fb59a099f210b9aba4f0bce',
         ]
