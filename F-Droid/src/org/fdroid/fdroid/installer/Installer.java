@@ -202,7 +202,7 @@ public abstract class Installer {
             try {
                 activity = (Activity) mContext;
             } catch (ClassCastException e) {
-                Log.d(TAG, "F-Droid Privileged can only be uninstalled using an activity!");
+                Utils.debugLog(TAG, "F-Droid Privileged can only be uninstalled using an activity!");
                 return;
             }
 
