@@ -136,6 +136,8 @@ android {
     }
 
     buildTypes {
+        // use proguard on debug too since we have unknowingly broken
+        // release builds before.
         all {
             minifyEnabled true
             shrinkResources true
