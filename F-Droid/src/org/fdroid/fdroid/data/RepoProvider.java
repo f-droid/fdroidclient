@@ -223,10 +223,13 @@ public class RepoProvider extends FDroidProvider {
         String LAST_UPDATED = "lastUpdated";
         String VERSION      = "version";
         String IS_SWAP      = "isSwap";
+        String USERNAME     = "username";
+        String PASSWORD     = "password";
 
         String[] ALL = {
             _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, PUBLIC_KEY,
             FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION, IS_SWAP,
+            USERNAME, PASSWORD,
         };
     }
 
@@ -319,7 +322,7 @@ public class RepoProvider extends FDroidProvider {
         // to be present.
 
         if (!values.containsKey(DataColumns.IN_USE)) {
-            values.put(DataColumns.IN_USE, 1);
+            values.put(DataColumns.IN_USE, true);
         }
 
         if (!values.containsKey(DataColumns.PRIORITY)) {
@@ -376,5 +379,4 @@ public class RepoProvider extends FDroidProvider {
         getContext().getContentResolver().notifyChange(uri, null);
         return numRows;
     }
-
 }

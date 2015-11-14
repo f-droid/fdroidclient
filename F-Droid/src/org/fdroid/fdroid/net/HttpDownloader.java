@@ -29,11 +29,21 @@ public class HttpDownloader extends Downloader {
     protected static final String HEADER_FIELD_ETAG = "ETag";
 
     protected HttpURLConnection connection;
-    private int statusCode = -1;
+    private final String username;
+    private final String password;
+    private int statusCode  = -1;
 
     HttpDownloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
+        this(context, url, destFile, null, null);
+    }
+
+    HttpDownloader(Context context, URL url, File destFile, final String username, final String password)
+            throws FileNotFoundException, MalformedURLException {
         super(context, url, destFile);
+
+        this.username = username;
+        this.password = password;
     }
 
     /**
@@ -44,7 +54,7 @@ public class HttpDownloader extends Downloader {
      * same one twice, bail with an exception).
      * @throws IOException
      */
-
+    @Override
     protected InputStream getDownloadersInputStream() throws IOException {
         setupConnection();
         return new BufferedInputStream(connection.getInputStream());
@@ -87,10 +97,33 @@ public class HttpDownloader extends Downloader {
             Proxy proxy = new Proxy(Proxy.Type.HTTP, sa);
             connection = (HttpURLConnection) sourceUrl.openConnection(proxy);
         } else {
+
+            // send HEAD request first, then GET afterwards
             connection = (HttpURLConnection) sourceUrl.openConnection();
-            final String userInfo = sourceUrl.getUserInfo();
-            if (userInfo != null) {
-                connection.setRequestProperty("Authorization", "Basic " + Base64.encodeBase64String(userInfo.getBytes()));
+            connection.setRequestMethod("HEAD");
+
+            // fetch HTTP status code and check for authentication
+            statusCode = connection.getResponseCode();
+            connection.disconnect();
+
+            // reset connection
+            connection = (HttpURLConnection) sourceUrl.openConnection();
+
+            // handle status codes
+            switch (statusCode) {
+                case 401:
+
+                    final String userInfo = sourceUrl.getUserInfo();
+                    if (userInfo != null) {
+                        // add authorization header from user info in URL if present
+                        connection.setRequestProperty("Authorization", "Basic " + Base64.encodeBase64String(userInfo.getBytes()));
+                    } else {
+                        // add authorization header from username / password
+                        connection.setRequestProperty("Authorization", "Basic " + Base64.encodeBase64String((username + ":" + password).getBytes()));
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }

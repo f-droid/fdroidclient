@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views;
 
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,6 +22,8 @@ import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +57,9 @@ public class RepoDetailsActivity extends ActionBarActivity {
         R.id.text_num_apps,
         R.id.label_last_update,
         R.id.text_last_update,
+        R.id.label_username,
+        R.id.text_username,
+        R.id.button_edit_credentials,
         R.id.label_repo_fingerprint,
         R.id.text_repo_fingerprint,
         R.id.text_repo_fingerprint_description,
@@ -271,6 +277,25 @@ public class RepoDetailsActivity extends ActionBarActivity {
         repoFingerprintView.setText(repoFingerprint);
     }
 
+    private void setupCredentials(View parent, Repo repo) {
+
+        TextView usernameLabel = (TextView) parent.findViewById(R.id.label_username);
+        TextView username = (TextView) parent.findViewById(R.id.text_username);
+        Button changePassword = (Button) parent.findViewById(R.id.button_edit_credentials);
+
+        if (TextUtils.isEmpty(repo.username)) {
+            usernameLabel.setVisibility(View.GONE);
+            username.setVisibility(View.GONE);
+            username.setText("");
+            changePassword.setVisibility(View.GONE);
+        } else {
+            usernameLabel.setVisibility(View.VISIBLE);
+            username.setVisibility(View.VISIBLE);
+            username.setText(repo.username);
+            changePassword.setVisibility(View.VISIBLE);
+        }
+    }
+
     private void updateRepoView() {
 
         if (repo.hasBeenUpdated()) {
@@ -301,6 +326,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
         setupDescription(repoView, repo);
         setupRepoFingerprint(repoView, repo);
+        setupCredentials(repoView, repo);
 
         // Repos that existed before this feature was supported will have an
         // "Unknown" last update until next time they update...
@@ -335,4 +361,54 @@ public class RepoDetailsActivity extends ActionBarActivity {
             ).show();
     }
 
+    public void showChangePasswordDialog(final View parentView) {
+
+        final View view = getLayoutInflater().inflate(R.layout.login, null);
+        final AlertDialog credentialsDialog = new AlertDialog.Builder(this).setView(view).create();
+        final EditText nameInput = (EditText) view.findViewById(R.id.edit_name);
+        final EditText passwordInput = (EditText) view.findViewById(R.id.edit_password);
+
+        nameInput.setText(repo.username);
+        passwordInput.requestFocus();
+
+        credentialsDialog.setTitle(R.string.repo_edit_credentials);
+        credentialsDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
+                getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        credentialsDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                getString(R.string.ok),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        final String name = nameInput.getText().toString();
+                        final String password = passwordInput.getText().toString();
+
+                        if (name != null && !name.isEmpty()) {
+
+                            final ContentValues values = new ContentValues(2);
+                            values.put(RepoProvider.DataColumns.USERNAME, name);
+                            values.put(RepoProvider.DataColumns.PASSWORD, password);
+
+                            RepoProvider.Helper.update(RepoDetailsActivity.this, repo, values);
+
+                            updateRepoView();
+
+                            dialog.dismiss();
+
+                        } else {
+
+                            Toast.makeText(RepoDetailsActivity.this, R.string.repo_error_empty_username, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+        credentialsDialog.show();
+    }
 }

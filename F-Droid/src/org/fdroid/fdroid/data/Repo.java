@@ -37,6 +37,9 @@ public class Repo extends ValueObject {
     public Date lastUpdated;
     public boolean isSwap;
 
+    public String username;
+    public String password;
+
     public Repo() {
     }
 
@@ -84,6 +87,12 @@ public class Repo extends ValueObject {
                     break;
                 case RepoProvider.DataColumns.IS_SWAP:
                     isSwap = cursor.getInt(i) == 1;
+                    break;
+                case RepoProvider.DataColumns.USERNAME:
+                    username = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.PASSWORD:
+                    password = cursor.getString(i);
                     break;
             }
         }
@@ -191,6 +200,14 @@ public class Repo extends ValueObject {
 
         if (values.containsKey(RepoProvider.DataColumns.IS_SWAP)) {
             isSwap = toInt(values.getAsInteger(RepoProvider.DataColumns.IS_SWAP)) == 1;
+        }
+
+        if (values.containsKey(RepoProvider.DataColumns.USERNAME)) {
+            username = values.getAsString(RepoProvider.DataColumns.USERNAME);
+        }
+
+        if (values.containsKey(RepoProvider.DataColumns.PASSWORD)) {
+            password = values.getAsString(RepoProvider.DataColumns.PASSWORD);
         }
     }
 }

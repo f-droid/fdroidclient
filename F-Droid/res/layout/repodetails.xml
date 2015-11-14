@@ -75,6 +75,25 @@
             android:layout_height="wrap_content"
             style="@style/RepoDetailsBody"/>
 
+        <!-- The credentials used to access this repo (optional) -->
+        <TextView
+            android:id="@+id/label_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_name"
+            style="@style/RepoDetailsCaption"/>
+        <TextView
+            android:id="@+id/text_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RepoDetailsBody"/>
+        <Button
+            android:id="@+id/button_edit_credentials"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/repo_edit_credentials"
+            android:onClick="showChangePasswordDialog" />
+
         <!-- Signature (or "unsigned" if none) -->
         <TextView
             android:id="@+id/label_repo_fingerprint"
