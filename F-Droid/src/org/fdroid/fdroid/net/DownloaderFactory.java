@@ -70,6 +70,9 @@ public class DownloaderFactory {
 
     public static AsyncDownloader createAsync(Context context, URL url, File destFile, String title, String id, AsyncDownloader.Listener listener)
             throws IOException {
+        // To re-enable, fix the following:
+        // * https://gitlab.com/fdroid/fdroidclient/issues/445
+        // * https://gitlab.com/fdroid/fdroidclient/issues/459
         if (false && canUseDownloadManager(context, url)) {
             Utils.debugLog(TAG, "Using AsyncDownloaderFromAndroid");
             return new AsyncDownloaderFromAndroid(context, listener, title, id, url.toString(), destFile);
