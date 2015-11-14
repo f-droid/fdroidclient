@@ -1,6 +1,0 @@
-MIDlet-1: MIDPTest, , org.spongycastle.crypto.examples.MIDPTest
-MIDlet-Name: MIDPTest
-MIDlet-Jar-Size: 300000
-MIDlet-Jar-URL: midp_test.jar
-MIDlet-Vendor: The Legion of the Bouncy Castle
-MIDlet-Version: 1.0.0

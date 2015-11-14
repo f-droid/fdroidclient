@@ -1,7 +1,11 @@
 apply plugin: 'java'
 
+repositories {
+    jcenter()
+}
+
 dependencies {
-    compile project(':extern:spongycastle:core')
-    compile project(':extern:spongycastle:pkix')
-    compile project(':extern:spongycastle:prov')
+    compile 'com.madgag.spongycastle:pkix:1.53.0.0'
+    compile 'com.madgag.spongycastle:prov:1.53.0.0'
+    compile 'com.madgag.spongycastle:core:1.53.0.0'
 }
