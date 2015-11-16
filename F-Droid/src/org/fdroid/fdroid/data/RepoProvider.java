@@ -322,7 +322,7 @@ public class RepoProvider extends FDroidProvider {
         // to be present.
 
         if (!values.containsKey(DataColumns.IN_USE)) {
-            values.put(DataColumns.IN_USE, true);
+            values.put(DataColumns.IN_USE, 1);
         }
 
         if (!values.containsKey(DataColumns.PRIORITY)) {
