@@ -169,14 +169,12 @@ public class DBHelper extends SQLiteOpenHelper {
                         + "maxage integer not null default 0, "
                         + "version integer not null default 0, "
                         + "lastetag text, "
-                        + "lastUpdated string,"
-                        + "username string, password string"
-                        + ");";
+                        + "lastUpdated string);";
 
                 db.execSQL(createTableDdl);
 
                 String nonIdFields = "address,  name, description, inuse, priority, " +
-                        "pubkey, fingerprint, maxage, version, lastetag, lastUpdated, username, password";
+                        "pubkey, fingerprint, maxage, version, lastetag, lastUpdated";
 
                 String insertSql = "INSERT INTO " + TABLE_REPO +
                         "(_id, " + nonIdFields + " ) " +
