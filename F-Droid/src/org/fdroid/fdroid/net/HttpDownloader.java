@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -98,32 +99,10 @@ public class HttpDownloader extends Downloader {
             connection = (HttpURLConnection) sourceUrl.openConnection(proxy);
         } else {
 
-            // send HEAD request first, then GET afterwards
             connection = (HttpURLConnection) sourceUrl.openConnection();
-            connection.setRequestMethod("HEAD");
-
-            // fetch HTTP status code and check for authentication
-            statusCode = connection.getResponseCode();
-            connection.disconnect();
-
-            // reset connection
-            connection = (HttpURLConnection) sourceUrl.openConnection();
-
-            // handle status codes
-            switch (statusCode) {
-                case 401:
-
-                    final String userInfo = sourceUrl.getUserInfo();
-                    if (userInfo != null) {
-                        // add authorization header from user info in URL if present
-                        connection.setRequestProperty("Authorization", "Basic " + Base64.encodeBase64String(userInfo.getBytes()));
-                    } else {
-                        // add authorization header from username / password
-                        connection.setRequestProperty("Authorization", "Basic " + Base64.encodeBase64String((username + ":" + password).getBytes()));
-                    }
-                    break;
-                default:
-                    break;
+            if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
+                // add authorization header from username / password if set
+                connection.setRequestProperty("Authorization", "Basic " + Base64.encodeBase64String((username + ":" + password).getBytes()));
             }
         }
     }

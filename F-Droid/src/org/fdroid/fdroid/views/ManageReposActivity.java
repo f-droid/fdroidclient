@@ -71,7 +71,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Locale;
-import org.apache.commons.net.util.Base64;
 
 public class ManageReposActivity extends ActionBarActivity {
     private static final String TAG = "ManageReposActivity";
@@ -491,16 +490,9 @@ public class ManageReposActivity extends ActionBarActivity {
                     final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("HEAD");
 
-                    // support discovery of Basic Auth repository URLs without login prompt
-                    final String userInfo = url.getUserInfo();
-                    if (userInfo != null) {
-                        // authorize request
-                        connection.setRequestProperty("Authorization", "Basic " + Base64.encodeBase64String(userInfo.getBytes()));
-                    }
-
                     statusCode = connection.getResponseCode();
 
-		    return statusCode == 401 || statusCode == 200;
+                    return statusCode == 401 || statusCode == 200;
                 }
 
                 @Override
