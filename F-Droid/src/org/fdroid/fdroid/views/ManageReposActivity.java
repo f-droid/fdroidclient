@@ -499,14 +499,8 @@ public class ManageReposActivity extends ActionBarActivity {
                     }
 
                     statusCode = connection.getResponseCode();
-                    switch (statusCode) {
 
-                        case 401:
-                        case 200:
-                            return true;
-                    }
-
-                    return false;
+		    return statusCode == 401 || statusCode == 200;
                 }
 
                 @Override
