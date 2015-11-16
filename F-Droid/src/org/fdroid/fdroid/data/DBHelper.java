@@ -283,11 +283,11 @@ public class DBHelper extends SQLiteOpenHelper {
         populateRepoNames(db, oldVersion);
         if (oldVersion < 43) createInstalledApp(db);
         addIsSwapToRepo(db, oldVersion);
-        addCredentialsToRepo(db, oldVersion);
         addChangelogToApp(db, oldVersion);
         addIconUrlLargeToApp(db, oldVersion);
         updateIconUrlLarge(db, oldVersion);
         recreateInstalledCache(db, oldVersion);
+        addCredentialsToRepo(db, oldVersion);
     }
 
     /**
