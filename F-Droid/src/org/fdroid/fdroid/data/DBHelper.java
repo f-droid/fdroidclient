@@ -169,14 +169,12 @@ public class DBHelper extends SQLiteOpenHelper {
                         + "maxage integer not null default 0, "
                         + "version integer not null default 0, "
                         + "lastetag text, "
-                        + "lastUpdated string,"
-                        + "username string, password string"
-                        + ");";
+                        + "lastUpdated string);";
 
                 db.execSQL(createTableDdl);
 
                 String nonIdFields = "address,  name, description, inuse, priority, " +
-                        "pubkey, fingerprint, maxage, version, lastetag, lastUpdated, username, password";
+                        "pubkey, fingerprint, maxage, version, lastetag, lastUpdated";
 
                 String insertSql = "INSERT INTO " + TABLE_REPO +
                         "(_id, " + nonIdFields + " ) " +
@@ -285,11 +283,11 @@ public class DBHelper extends SQLiteOpenHelper {
         populateRepoNames(db, oldVersion);
         if (oldVersion < 43) createInstalledApp(db);
         addIsSwapToRepo(db, oldVersion);
-        addCredentialsToRepo(db, oldVersion);
         addChangelogToApp(db, oldVersion);
         addIconUrlLargeToApp(db, oldVersion);
         updateIconUrlLarge(db, oldVersion);
         recreateInstalledCache(db, oldVersion);
+        addCredentialsToRepo(db, oldVersion);
     }
 
     /**
@@ -425,11 +423,16 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     private void addCredentialsToRepo(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion < 52 && !columnExists(db, TABLE_REPO, "username") && !columnExists(db, TABLE_REPO, "password")) {
-            Utils.debugLog(TAG, "Adding username field to " + TABLE_REPO + " table in db.");
-            db.execSQL("alter table " + TABLE_REPO + " add column username string;");
-            Utils.debugLog(TAG, "Adding password field to " + TABLE_REPO + " table in db.");
-            db.execSQL("alter table " + TABLE_REPO + " add column password string;");
+        if (oldVersion < 52) {
+            if (!columnExists(db, TABLE_REPO, "username")) {
+                Utils.debugLog(TAG, "Adding username field to " + TABLE_REPO + " table in db.");
+                db.execSQL("alter table " + TABLE_REPO + " add column username string;");
+            }
+
+            if (!columnExists(db, TABLE_REPO, "password")) {
+                Utils.debugLog(TAG, "Adding password field to " + TABLE_REPO + " table in db.");
+                db.execSQL("alter table " + TABLE_REPO + " add column password string;");
+            }
         }
     }
 

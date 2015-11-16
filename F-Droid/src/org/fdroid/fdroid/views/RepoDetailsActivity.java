@@ -390,7 +390,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
                         final String name = nameInput.getText().toString();
                         final String password = passwordInput.getText().toString();
 
-                        if (name != null && !name.isEmpty()) {
+                        if (!TextUtils.isEmpty(name)) {
 
                             final ContentValues values = new ContentValues(2);
                             values.put(RepoProvider.DataColumns.USERNAME, name);

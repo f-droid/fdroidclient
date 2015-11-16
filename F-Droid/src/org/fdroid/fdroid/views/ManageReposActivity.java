@@ -547,7 +547,7 @@ public class ManageReposActivity extends ActionBarActivity {
                         } else {
 
                             // create repo without username/password
-                            createNewRepo(newAddress, fingerprint, null, null);
+                            createNewRepo(newAddress, fingerprint);
                         }
                     }
                 }
@@ -564,7 +564,7 @@ public class ManageReposActivity extends ActionBarActivity {
                     // or their internet is playing up, then you'd have to wait for several
                     // connection timeouts before being able to proceed.
 
-                    createNewRepo(originalAddress, fingerprint, null, null);
+                    createNewRepo(originalAddress, fingerprint);
                     checker.cancel(false);
                 }
             });
@@ -598,6 +598,13 @@ public class ManageReposActivity extends ActionBarActivity {
 
             return new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(),
                     path, uri.getQuery(), uri.getFragment()).toString();
+        }
+
+        /**
+         * Create a repository without a username or password.
+         */
+        private void createNewRepo(String address, String fingerprint) {
+            createNewRepo(address, fingerprint, null, null);
         }
 
         private void createNewRepo(String address, String fingerprint, final String username, final String password) {
