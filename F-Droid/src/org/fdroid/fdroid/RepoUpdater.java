@@ -196,10 +196,7 @@ public class RepoUpdater {
             // JarEntry can only read certificates after the file represented by that JarEntry
             // has been read completely, so verification cannot run until now...
             assertSigningCertFromXmlCorrect();
-
-            Log.i(TAG, "Repo signature verified, saving app metadata to database.");
-            persister.commit(repoDetailsToSave);
-
+            commitToDb();
         } catch (SAXException | ParserConfigurationException | IOException e) {
             throw new UpdateException(repo, "Error parsing index", e);
         } finally {
@@ -211,6 +208,14 @@ public class RepoUpdater {
                 }
             }
         }
+    }
+
+    private void commitToDb() throws UpdateException {
+        Log.i(TAG, "Repo signature verified, saving app metadata to database.");
+        if (progressListener != null) {
+            progressListener.onProgress(new ProgressListener.Event(PROGRESS_COMMITTING));
+        }
+        persister.commit(repoDetailsToSave);
     }
 
     private void assertSigningCertFromXmlCorrect() throws SigningException {
