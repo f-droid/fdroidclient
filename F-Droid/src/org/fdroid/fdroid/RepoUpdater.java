@@ -12,8 +12,6 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoPersister;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.TempApkProvider;
-import org.fdroid.fdroid.data.TempAppProvider;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderFactory;
 import org.xml.sax.InputSource;
