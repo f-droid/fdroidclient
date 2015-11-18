@@ -220,4 +220,24 @@
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>
     <string name="app_incompatible">Несовместимо</string>
+    <string name="uninstall_system">Обновить/Удалить Привилегированное расширение</string>
+    <string name="uninstall_system_summary">Открыть окно деталей Привилегированного расширения для изменения/удаления</string>
+    <string name="more">Детали</string>
+    <string name="less">Меньше</string>
+
+    <string name="back">Назад</string>
+    <string name="update_notification_more">Детали +%1$d …</string>
+    <string name="bad_fingerprint">Неверный отпечаток ключа</string>
+    <string name="invalid_url">Неверная страница URL.</string>
+    <string name="menu_changelog">"Логи  изменений"</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
+
+
+    <string name="touch_to_configure_local_repo">Коснитесь для просмотра подробностей и позволить другим скачать ваши приложения.</string>
+    <string name="status_download_unknown_size">Загрузка
+\n%2$s от
+\n%1$s</string>
+    <string name="repo_added">Сохранен F-Droid репозиторий %1$s.</string>
     </resources>

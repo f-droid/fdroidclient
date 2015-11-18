@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="version">Versija</string>
   <string name="delete">Dzēst</string>
-  <string name="enable_nfc_send">Ieslēgt sūtīšanu caur NFC</string>
+  <string name="enable_nfc_send">Ieslēgt sūtīšanu caur NFC…</string>
   <string name="cache_downloaded">Programmu kešs</string>
   <string name="cache_downloaded_on">Saglabāt novilktos apk failus SD kartē</string>
   <string name="updates">Atjauninājumi</string>
@@ -23,8 +23,7 @@
   <string name="app_details">Programmas detaļas</string>
   <string name="no_such_app">Nav atrasts</string>
   <string name="about_title">Par F-Droid</string>
-  <string name="about_desc">Veidots uz Aptoide bāzes
-Izlaists zem GNU GPLv3 licenzes</string>
+  <string name="about_desc">Veidots uz Aptoide bāzes Izlaists zem GNU GPLv3 licenzes.</string>
   <string name="about_site">Mājaslapa:</string>
   <string name="about_mail">Epasts:</string>
   <string name="about_version">Versija:</string>
@@ -44,17 +43,17 @@ Izlaists zem GNU GPLv3 licenzes</string>
   <string name="overwrite">Pārrakstīt</string>
   <string name="tab_available_apps">Pieejams</string>
   <string name="tab_updates">Atjauninājumi</string>
-  <string name="one_update_available">1 atjauninājums pieejams</string>
-  <string name="many_updates_available">%d atjauninājumi pieejami</string>
+  <string name="one_update_available">1 atjauninājums pieejams.</string>
+  <string name="many_updates_available">%d atjauninājumi pieejami.</string>
   <string name="bluetooth_activity_not_found">Nav Bluetooth aktivitāšu, izvēlies vienu!</string>
   <string name="choose_bt_send">Izvēlies Bluesūtīšanas metodi</string>
   <string name="send_via_bluetooth">Bluesūtīt</string>
   <string name="repo_add_url">Repozitorija adrese</string>
   <string name="repo_add_fingerprint">Nospiedums (opcionāli)</string>
-  <string name="repo_exists_add_fingerprint">Repozitorijs jau iestatīts, šis pievienos jaunu atslēgad info</string>
-  <string name="repo_exists_enable">Reozitroris jau iestatīts, apstiprini atkārtotu ieslēgšanu</string>
-  <string name="repo_exists_and_enabled">Ienākošais Repozitorijs jau iestatīts un ieslēgts!</string>
-  <string name="repo_delete_to_overwrite">Vispirms jāizdzēš Repozitorijs, pirms pievienošanas ar citu atslēgu!</string>
+  <string name="repo_exists_add_fingerprint">Repozitorijs jau iestatīts, šis pievienos jaunu atslēgas info.</string>
+  <string name="repo_exists_enable">Reozitroris jau iestatīts, apstiprini atkārtotu ieslēgšanu.</string>
+  <string name="repo_exists_and_enabled">Ienākošais Repozitorijs jau iestatīts un ieslēgts.</string>
+  <string name="repo_delete_to_overwrite">Vispirms jāizdzēš Repozitorijs, pirms pievienošanas ar citu atslēgu.</string>
   <string name="malformed_repo_uri">Ignorē nepareizu Repozitorija URI: %s</string>
   <string name="menu_update_repo">Atjauno Repozitorijus</string>
   <string name="menu_manage">Repozitoriji</string>
