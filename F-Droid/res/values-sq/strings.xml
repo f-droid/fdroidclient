@@ -76,14 +76,14 @@
     <string name="wifi_ap">Hotspot</string>
 
     <string name="category_Recently_Updated">Të përditësuar së fundmi</string>
-    <string xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources" name="category_Games">Lojra</string>
-    <string xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources" name="category_Internet">Internet</string>
-    <string xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources" name="category_Reading">Lexim</string>
-    <string xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources" name="category_Science_Education">Shkencë dhe edukim</string>
-    <string xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources" name="category_Security">Siguri</string>
-    <string xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources" name="category_System">Sistem</string>
-    <string xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources" name="category_Time">Kohë</string>
-    <string xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources" name="category_Writing">Shkrim</string>
+    <string name="category_Games">Lojra</string>
+    <string name="category_Internet">Internet</string>
+    <string name="category_Reading">Lexim</string>
+    <string name="category_Science_Education">Shkencë dhe edukim</string>
+    <string name="category_Security">Siguri</string>
+    <string name="category_System">Sistem</string>
+    <string name="category_Time">Kohë</string>
+    <string name="category_Writing">Shkrim</string>
 
     <string name="system_install_button_install">Instalo</string>
     <string name="system_install_warning">Kjo zgjat deri në 10 sekonda.</string>

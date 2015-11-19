@@ -331,5 +331,5 @@
     <string name="menu_settings">Налаштування</string>
     <string name="permissions">Привілеї</string>
     <string name="theme_night">Нічна</string>
-<string xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources" name="category_Connectivity">Зв\'язаність</string>
+<string name="category_Connectivity">Зв\'язаність</string>
     </resources>
