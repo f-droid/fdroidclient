@@ -176,4 +176,13 @@
     <string name="repo_num_apps">Jumlah aplikasi</string>
     <string name="repo_description">Deskripsi</string>
     <string name="repo_last_update">Terakhir diperbarui</string>
+    <string name="repo_name">Nama</string>
+    <string name="unknown">Tidak diketahui</string>
+    <string name="update_notification_more">+%1$d lainnya…</string>
+    <string name="menu_settings">Pengaturan</string>
+    <string name="rooted_on">Jangan bedakan warna aplikasi yang membutuhkan izin root</string>
+    <string name="unsigned_description">Ini artinya daftar aplikasi tersebut tidak bisa diverifikasi. Anda harus berhati-hati dengan aplikasi yang diunduh dari daftar yang tidak terverifikasi.</string>
+    <string name="repo_not_yet_updated">Repositori ini belum digunakan. Anda harus mengaktifkannya untuk melihat aplikasi yang tersedia.</string>
+    <string name="repo_confirm_delete_title">Hapus Repositori?</string>
+    <string name="repo_confirm_delete_body">Menghapus repositori artinya aplikasi dari repositori tersebut tidak lagi tersedia dari F-Droid.\n\nCatatan: Semua aplikasi yang sebelumnya dipasang dari repositori ini akan tetap ada di perangkat Anda.</string>
     </resources>

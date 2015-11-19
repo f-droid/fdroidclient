@@ -235,4 +235,8 @@
     <string name="update_notification_more">還有 +%1$d 個…</string>
     <string name="next">下一步</string>
     <string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
+    <string name="SignatureMismatch">新版本的應用程式使用了不同的鑰匙簽署。若要安裝新版本，必須先解除安裝舊版本。請這樣做之後再重新嘗試。（注意：解除安裝將會把應用應程的內存資料刪除）</string>
+    <string name="installDowngrade">你正在嘗試將應用程式降級。這樣做可能會導致運作不正常甚至資料損失。你肯定要嘗試降級嗎？</string>
+    <string name="download_error">下載失敗</string>
+
     </resources>

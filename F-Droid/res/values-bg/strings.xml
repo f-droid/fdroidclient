@@ -285,4 +285,20 @@
     <string name="swap_join_same_wifi_desc">За осъществяване на размяна чрез Wi-Fi е необходимо да сте в една мрежа. Ако нямате достъп до една и съща мрежа единият можете да създадете нова.</string>
     <string name="swap_confirm_connect">Желаете ли да получите приложения от %1$s?</string>
     <string name="swap_qr_isnt_for_swap">Сканираният QR код не е код за размяна.</string>
+    <string name="status_processing_xml_percent">Обработване на %2$s / %3$s (%4$d%%) от %1$s</string>
+    <string name="theme_night">Нощна</string>
+<string name="repo_added">Хранилището %1$s е записано.</string>
+    <string name="repo_searching_address">Търсене на хранилище в\n%1$s</string>
+    <string name="unsigned">Неподписано</string>
+    <string name="system_install_button_install">Инсталиране</string>
+    <string name="swap_confirm">Потвърдете размяната</string>
+    <string name="swap_attempt_install">Опит за инсталиране</string>
+    <string name="swap_connection_misc_error">Възникна грешка при свързването с устройството, размяната не може да се осъществи.</string>
+    <string name="newPerms">Нови</string>
+    <string name="devicePerms">Достъп до устройството</string>
+    <string name="uninstall_update_confirm">Желаете ли приложението да бъде заменено от фабричната му версия?</string>
+    <string name="download_error">Свалянето се провали</string>
+
+    <string name="perms_new_perm_prefix">"Ново: "</string>
+    <string name="perms_description_app">Предоставено от %1$s.</string>
     </resources>

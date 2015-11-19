@@ -205,11 +205,11 @@
     <string name="antiadslist">Цей додаток містить рекламні пропозиції</string>
     <string name="copying_icons">Копіювання піктограми додатку до репозиторію…</string>
     <string name="icon">Піктограма</string>
-    <string name="status_checking_compatibility">Перевірка додатків на сумісність із пристроєм…</string>
-    <string name="status_inserting">Збереження подробиць додатків (%1$d%%)</string>
+    <string name="status_checking_compatibility">Перевірка додатків на сумісність із Вашим пристроєм…</string>
+    <string name="status_inserting">Збереження подробиць про додатки (%1$d%%)</string>
     <string name="no_permissions">Не потребує дозволів.</string>
     <string name="requires_features">Залежності: %1$s</string>
-    <string name="empty_available_app_list">Відсутні додатки в даній категорії.\n\nСпробуйте обрати іншу категорію або ж оновити ваші репозиторії, для отримання свіжого переліку додатків.</string>
+    <string name="empty_available_app_list">Відсутні додатки в даній категорії.\n\nСпробуйте обрати іншу категорію, або оновити Ваші репозиторії, аби отримати свіжий перелік додатків.</string>
     <string name="empty_can_update_app_list">Всі додатки оновлені.\n\nВітаємо! Всі ваші додатки мають крайні версії (або ж ваші репозиторії застаріли).</string>
 
     <string name="install_error_unknown">Не вдалося встановити через невідому помилку</string>
@@ -250,7 +250,7 @@
     <string name="writing_index_jar">Запис підписаного файлу індексу (index.jar)…</string>
     <string name="failed_to_create_index">Не вдалося створити індекс репозиторію!</string>
     <string name="linking_apks">Включення APK-файлів до репозиторію…</string>
-    <string name="all_other_repos_fine">Всі інші репозиторії не призвели до помилки.</string>
+    <string name="all_other_repos_fine">Всі інші репозиторії не містять помилок.</string>
         <string name="no_handler_app">Ви не маєте додатку для обробки «%s».</string>
     <string name="repo_num_apps">Кількість додатків</string>
     <string name="repo_fingerprint">Відбиток ключа підпису (SHA-256)</string>
@@ -305,7 +305,7 @@
     <string name="install_confirm_update_system_no_perms">Бажаєте встановити оновлення на вбудований додаток? Ваші наявні дані не буде втрачено. Оновлений додаток не потребує спеціальних дозволів.</string>
     <string name="uninstall_update_confirm">Бажаєте замінити цей додаток заволзькою версією?</string>
     <string name="perms_new_perm_prefix">"Нові: "</string>
-    <string name="empty_installed_app_list">Жодного додатку не встановлено.\n\nЖоден додаток на вашому пристрої не доступний через F-Droid. Можливо вам слід оновити репозиторії, або ж ваші репозиторії не містять такі додатки.</string>
+    <string name="empty_installed_app_list">Жодного додатку не встановлено.\n\nДодатки, які встановлені на вашому пристрої, не доступні через F-Droid. Можливо вам слід оновити репозиторії, або ж ваші репозиторії не містять такі додатки.</string>
     <string name="system_install_first_time_notification_message">Торкніться, аби встановити привілейоване розширення F-Droid, інтегруючи його до операційної системи Android. Це дозволить додатку F-Droid власними засобами встановлювати, оновлювати чи видаляти додатки.\nВи також можете зробити це пізніше через налаштування F-Droid.</string>
     <string name="system_install_post_fail_message">Не вдалося встановити привілейоване розширення F-Droid. Метод встановлення не підтримується постачальником системи Android, будь ласка, проконсультуйтеся на форумі F-Droid з приводу отримання додаткової інформації.</string>
     <string name="app_description">F-Droid — це каталог вільного та відкритого програмного забезпечення (FOSS), призначений для встановлення на Android платформу. Клієнт робить зручним огляд, встановлення та оновлення додатків на вашому пристрої.</string>
@@ -323,6 +323,13 @@
     <string name="system_install_first_time_message">Схоже, що у вас є root доступ на вашому пристрою. Ви можете встановити привілейоване розширення F-Droid, що інтегрується з операційною системою Android. Це дозволить додатку F-Droid встановлювати, оновлювати та видаляти додатки своїми засобами.</string>
     <string name="repo_details">Репозиторій</string>
     <string name="repo_url">Адреса</string>
-    <string name="status_download_unknown_size">Завантаження\n%2$1s з\n%1$s</string>
+    <string name="status_download_unknown_size">Завантаження\n%2$s з\n%1$s</string>
     <string name="repo_searching_address">Перегляд репозиторію F-Droid\n%1$s</string>
+    <string name="more">Більше</string>
+    <string name="less">Приховати</string>
+
+    <string name="menu_settings">Налаштування</string>
+    <string name="permissions">Привілеї</string>
+    <string name="theme_night">Нічна</string>
+<string xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources" name="category_Connectivity">Зв\'язаність</string>
     </resources>

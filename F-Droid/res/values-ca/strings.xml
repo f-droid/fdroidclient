@@ -20,8 +20,8 @@
   <string name="notify_on">Ensenya una notificació quan hi hagi actualitzacions disponibles</string>
   <string name="update_history">Actualitzacions</string>
   <string name="update_history_summ">Les aplicacions es consideren noves o recents durant: %s dies</string>
-  <string name="system_installer">Instal·la d\'acord amb els permisos del sistema</string>
-  <string name="system_installer_on">Instal·la, actualitza i suprimeix paquets d\'acord amb els permisos del sistema</string>
+  <string name="system_installer">Extensió Privilegiada</string>
+  <string name="system_installer_on">Instal·la, actualitza i suprimeix paquets fent servir l\'extensió privilegiada de F-Droid</string>
   <string name="local_repo_name">Nom del vostre dipòsit local</string>
   <string name="local_repo_name_summary">Títol per difondre el vostre dipòsit local: %s</string>
   <string name="local_repo_https">Utilitza una connexió privada</string>
@@ -54,7 +54,7 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="one_update_available">Hi ha 1 actualització disponible.</string>
   <string name="many_updates_available">Hi ha %d actualitzacions disponibles.</string>
   <string name="fdroid_updates_available">Hi ha actualitzacions disponibles de l\'F-Droid</string>
-  <string name="bluetooth_activity_not_found">No s\'ha detectat cap activitat per Bluetooth, escolliu una!</string>
+  <string name="bluetooth_activity_not_found">Trieu un mètode d\'enviament per Bluetooth!</string>
   <string name="send_via_bluetooth">Envia per Bluetooth</string>
   <string name="repo_add_url">Adreça del dipòsit</string>
   <string name="repo_add_fingerprint">Empremta digital (opcional)</string>
@@ -143,7 +143,7 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="repo_name">Nom</string>
   <string name="unsigned_description">Això vol dir que la llista d\'aplicacions podria no estar verificada.
 Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.</string>
-  <string name="repo_not_yet_updated">Encara no heu utilitzat aquest dipòsit. Per veure les seves aplicacions heu d\'actualitzar-lo.\n\nDesprés, podreu consultar aquí la descripció i altres detalls.</string>
+  <string name="repo_not_yet_updated">Encara no heu utilitzat aquest dipòsit. Per veure les seves aplicacions heu d\'activar-lo.</string>
   <string name="unknown">Desconegut</string>
   <string name="repo_confirm_delete_title">Esborrar dipòsit?</string>
   <string name="repo_confirm_delete_body">Eliminar un dipòsit implica que les seves aplicacions ja no seran accessibles via F-Droid.\n\nNota: No es perdran les aplicacions ja instal·lades.</string>
@@ -214,4 +214,46 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
 
     <string name="permissions">Permisos</string>
     <string name="system_install_button_install">Instal·la</string>
+    <string name="enable_nfc_send">Habilita l\'enviament NFC…</string>
+    <string name="unstable_updates_summary">Suggereix actualitzacions a versions inestables</string>
+    <string name="uninstall_system">Actualitza/Elimina l\'extensió privilegiada</string>
+    <string name="uninstall_system_summary">Obre la pantalla de detalls de l\'Extensió Privilegiada per actualitzar-la o eliminar-la</string>
+    <string name="choose_bt_send">Trieu el mètode d\'enviament per Bluetooth</string>
+    <string name="bad_fingerprint">Empremta digital incorrecta</string>
+    <string name="invalid_url">L\'adreça URL és invàlida.</string>
+    <string name="menu_settings">Configuració</string>
+    <string name="menu_changelog">Registre de canvis</string>
+    <string name="status_download_unknown_size">S\'està baixant\n%2$s des de\n%1$s</string>
+    <string name="status_processing_xml_percent">S\'està processant %2$s / %3$s (%4$d%%) de %1$s</string>
+    <string name="repo_details">Dipòsit</string>
+    <string name="repo_url">Adreça</string>
+    <string name="pref_language_default">Predeterminat del sistema</string>
+
+    <string name="wifi_ap">Punt d\'accés</string>
+
+    <string name="interval_never">Mai</string>
+    <string name="interval_1h">Cada hora</string>
+    <string name="interval_4h">Cada 4 hores</string>
+    <string name="interval_12h">Cada 12 hores</string>
+    <string name="interval_1d">Cada dia</string>
+    <string name="interval_1w">Setmanalment</string>
+    <string name="interval_2w">Cada dues setmanes</string>
+
+    <string name="theme_light">Clar</string>
+    <string name="theme_dark">Fosc</string>
+    <string name="theme_night">Nit</string>
+<string name="newPerms">Nous</string>
+    <string name="allPerms">Tots</string>
+    <string name="privacyPerms">Privadesa</string>
+    <string name="devicePerms">Accés al dispositiu</string>
+    <string name="perm_costs_money">Això pot costat-li diners</string>
+    <string name="uninstall_update_confirm">Voleu canviar aquesta aplicació per la versió de fàbrica?</string>
+    <string name="uninstall_confirm">Voleu eliminar aquesta aplicació?</string>
+    <string name="tap_to_install">S\'ha completat la baixada, toqueu per instal·lar-la</string>
+    <string name="download_error">Error en la baixada</string>
+
+    <string name="perms_new_perm_prefix">"Nou: "</string>
+    <string name="perms_description_app">Proporcionat per %1$s.</string>
+    <string name="downloading">S\'està baixant…</string>
+
     </resources>
