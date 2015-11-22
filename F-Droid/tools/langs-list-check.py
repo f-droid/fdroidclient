@@ -9,7 +9,7 @@ import re
 from xml.etree import ElementTree
 
 prefs = set([''])
-trans = set([''])
+trans = set(['', 'en'])
 
 donottranslate = os.path.join('res', 'values', 'donottranslate.xml')
 
