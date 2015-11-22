@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Löydettiin %1$d sovellusta, jotka täsmäävät \'%2$s\':</string>
   <string name="searchres_oneapp">Löydettiin yksi sovellus, joka täsmää \'%s\':</string>
@@ -10,7 +10,7 @@
   <string name="delete">Poista</string>
   <string name="enable_nfc_send">Ota NFC-lähetys käyttöön…</string>
   <string name="cache_downloaded">Säilytä ladatut sovellukset välimuistissa</string>
-  <string name="cache_downloaded_on">Säilytä ladatud aptk-tiedostot SD-kortilla</string>
+  <string name="cache_downloaded_on">Säilytä ladatut pakettitiedostot laitteessa</string>
   <string name="updates">Päivitykset</string>
   <string name="other">Muu</string>
   <string name="update_interval">Automaattisen päivityksen tiheys</string>
@@ -160,4 +160,5 @@ Sinun pitää
   <string name="open_qr_code_scanner">Avaa QR-koodiskanneri</string>
   <string name="swap_welcome">Tervetuloa F-Droidiin!</string>
   <string name="swap_confirm_connect">Haluatko saada sovellukset kohteesta %1$s nyt?</string>
-</resources>
+<string name="unstable_updates_summary">Ehdota päivityksiä epävakaisiin versioihin</string>
+    </resources>

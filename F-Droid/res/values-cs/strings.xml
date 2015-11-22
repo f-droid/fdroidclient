@@ -2,8 +2,8 @@
 <resources>
   <string name="searchres_oneapp">Nalezena jedna aplikace odpovídající \'%s\':</string>
   <string name="searchres_noapps">Nenalezeny žádné aplikace odpovídající \'%s\'</string>
-  <string name="SignatureMismatch">Nová verze je podepsána jiným klíčem než ta stará. Před instalací nové verze je nutné starou odinstalovat. Poté instalaci zkuste znovu. (Nezapomeňte, že při odinstalování aplikace budou všechna její data v interním úložišti vymazána.)</string>
-  <string name="installIncompatible">Zdá se, že tento balíček není kompatibilní s tímto zařízením. Chcete ho přesto zkusit nainstalovat?</string>
+  <string name="SignatureMismatch">Nová verze je podepsána jiným klíčem, než ta stará. Před instalací nové verze je nutné starou odinstalovat. Poté zopakujte instalaci. (Nezapomeňte, že při odinstalování aplikace budou všechna její data v interním úložišti smazána.)</string>
+  <string name="installIncompatible">Zdá se, že balíček není kompatibilní s tímto zařízením. Chcete ho přesto zkusit nainstalovat?</string>
   <string name="installDowngrade">Pokoušíte se instalovat starší verzi než je nyní nainstalována. To nemusí fungovat a může to vést i ke ztrátě dat. Opravdu chcete starší verzi nainstalovat?</string>
   <string name="version">Verze</string>
   <string name="delete">Smazat</string>
@@ -18,8 +18,8 @@
   <string name="notify_on">Upozornit, pokud jsou dostupné aktualizace</string>
   <string name="update_history">Historie aktualizací</string>
   <string name="update_history_summ">Počet dnů, po které je aplikace vedena jako nová nebo nedávná: %s</string>
-  <string name="system_installer">Instalovat s použitím systémových oprávnění</string>
-  <string name="system_installer_on">Použít systémová oprávnění k instalování, aktualizaci a odebírání balíčků</string>
+  <string name="system_installer">Privilegovaná rozšíření</string>
+  <string name="system_installer_on">Použít privilegovaná rozšíření F-Droid k instalování, aktualizaci a odebírání balíčků</string>
   <string name="local_repo_name">Název místního repozitáře</string>
   <string name="local_repo_name_summary">Oznamovaný název místního repozitáře: %s</string>
   <string name="local_repo_https">Použít soukromé připojení</string>
@@ -33,8 +33,8 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="about_site">Webová stránka:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Verze:</string>
-  <string name="app_installed">Je nainstalováno</string>
-  <string name="app_not_installed">Není nainstalováno</string>
+  <string name="app_installed">Nainstalováno</string>
+  <string name="app_not_installed">Nenainstalováno</string>
   <string name="added_on">Přidáno %s</string>
   <string name="ok">OK</string>
   <string name="yes">Ano</string>
@@ -50,7 +50,7 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="one_update_available">1 aktualizace je dostupná.</string>
   <string name="many_updates_available">%d aktualizací je dostupných.</string>
   <string name="fdroid_updates_available">Dostupné aktualizace F-Droid</string>
-  <string name="send_via_bluetooth">Poslat přes Bluetooth</string>
+  <string name="send_via_bluetooth">Poslat přes bluetooth</string>
   <string name="repo_add_url">Adresa repositáře</string>
   <string name="repo_add_fingerprint">Fingerprint (volitelné)</string>
   <string name="menu_update_repo">Aktualizovat repozitáře</string>
@@ -71,11 +71,11 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="menu_upgrade">Aktualizovat</string>
   <string name="menu_donate">Přispět</string>
   <string name="details_installed">Verze %s nainstalována</string>
-  <string name="details_notinstalled">Není nainstalováno</string>
+  <string name="details_notinstalled">Nenainstalováno</string>
   <string name="corrupt_download">Stažený soubor je poškozen.</string>
   <string name="antiadslist">Tato aplikace obsahuje reklamu</string>
   <string name="antitracklist">Tato aplikace zaznamenává a hlásí vaše aktivity</string>
-  <string name="expert">Expert</string>
+  <string name="expert">Expertní mód</string>
   <string name="expert_on">Zobrazit dodatečné informace a povolit pokročilá nastavení</string>
   <string name="search_hint">Hledat aplikace</string>
   <string name="show_incompat_versions">Nekompatibilní verze</string>
@@ -104,26 +104,25 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="proxy_host">Proxy server</string>
   <string name="proxy_host_summary">Nakonfigurovat hostname proxy (např. 127.0.0.1)</string>
   <string name="proxy_port">Proxy port</string>
-  <string name="status_connecting_to_repo">Připojuji se k %1$s</string>
-  <string name="status_checking_compatibility">Kontroluji kompatibilitu aplikací s tímto zařízením…</string>
-  <string name="status_inserting">Ukládám podrobnosti o aplikacích (%1$d%%)</string>
-  <string name="repos_unchanged">V žádném repozitáři nejsou dostupné aktualizace balíčků</string>
-  <string name="global_error_updating_repos">Chyba při aktualizaci:</string>
+  <string name="status_connecting_to_repo">Připojování k\n%1$s</string>
+  <string name="status_checking_compatibility">Kontrola kompatibility aplikací s tímto zařízením…</string>
+  <string name="status_inserting">Ukládání podrobností o aplikacích (%1$d%%)</string>
+  <string name="repos_unchanged">Všechny repozitáře jsou aktuální</string>
+  <string name="global_error_updating_repos">Chyba při aktualizaci: %s</string>
   <string name="no_permissions">Žádná oprávnění nejsou použita.</string>
   <string name="theme">Téma</string>
   <string name="unsigned">Nepodepsáno</string>
   <string name="unverified">Neověřeno</string>
   <string name="repo_num_apps">Počet aplikací</string>
-  <string name="repo_fingerprint">Otisk podpisového klíče repositáře (SHA-256)</string>
+  <string name="repo_fingerprint">Otisk podpisového klíče repozitáře (SHA-256)</string>
   <string name="repo_description">Popis</string>
   <string name="repo_last_update">Poslední aktualizace</string>
   <string name="repo_name">Název</string>
   <string name="unsigned_description">Toto znamená, že seznam aplikací nemohl být verifikován. Buď opatrný s aplikacemi z nepodepsaných indexů.</string>
-  <string name="repo_not_yet_updated">"Tento repozitář ještě nebyl použit. Aby byly zobrazeny z něj dostupné aplikace, je nutné ho nejprve aktualizovat.\n\n Jakmile bude aktualizován, popis a další detaily se zobrazí zde. "</string>
+  <string name="repo_not_yet_updated">Tento repozitář ještě nebyl použit. Pro zobrazení nabízených aplikací je nutné ho nejprve aktualizovat.</string>
   <string name="repo_confirm_delete_title">Odebrat repositář?</string>
-  <string name="repo_confirm_delete_body">"Po odebrání repozitáře nebudou v něm umístěné aplikace nadále dostupné v F-Droidu.\n\nPozn.: Všechny aplikace nainstalované na tomto zařízení budou ponechány beze změn. "</string>
-  <string name="repo_disabled_notification">"\"%1$s\" zakázáno.
-\n\nTento repozitář bude nutné znovu povolit, aby z něj mohly být instalovány aplikace. "</string>
+  <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou nabízené aplikace nadále dostupné v F-Droidu.\n\nPozn.: Všechny dříve nainstalované aplikace budou na tomto zařízení ponechány beze změn.</string>
+  <string name="repo_disabled_notification">%1$s zakázáno.\n\nPro instalaci aplikací z tohoto repozitáře ho bude neprve třeba znovu povolit.</string>
   <string name="minsdk_or_later">%s nebo novější</string>
   <string name="requires_features">Vyžaduje: %1$s</string>
   <string name="app_icon">Ikona aplikace</string>
@@ -150,8 +149,8 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="swap_welcome">Vítejte v aplikaci F-Droid!</string>
   <string name="swap_confirm_connect">Chceš nyní stáhnout aplikace z %1$s?</string>
 <string name="searchres_napps">Nalezeno %1$d aplikací odpovídajících \"%2$s\":</string>
-    <string name="uninstall_system">Odinstalovat verzi se systémovými oprávněními</string>
-    <string name="uninstall_system_summary">Odinstaluje dodatečnou aplikaci se systémovými oprávněními</string>
+    <string name="uninstall_system">Aktualizovat/odinstalovat privilegovaná rozšíření</string>
+    <string name="uninstall_system_summary">Otevřít obrazovku detailů privilegovaných rozšíření pro aktualizaci/deinstalaci</string>
     <string name="about_source">Zdroj:</string>
     <string name="app_incompatible">Nekompatibilní</string>
     <string name="app_inst_known_source">Nainstalováno (z %s)</string>
@@ -160,7 +159,7 @@ Uvolněno pod GPLv3 licencí.</string>
     <string name="links">Odkazy</string>
 
     <string name="back">Zpět</string>
-    <string name="update_notification_more">A %1$d více…</string>
+    <string name="update_notification_more">+%1$d více…</string>
     <string name="bluetooth_activity_not_found">Žádná metoda přenosu Bluetooth nenalezena, jednu vyberte!</string>
     <string name="choose_bt_send">Vyberte metodu přenosu Bluetooth</string>
     <string name="repo_exists_add_fingerprint">Tento repozitář je již nastaven, budou jen přidány nové klíče.</string>
@@ -185,4 +184,30 @@ Uvolněno pod GPLv3 licencí.</string>
     <string name="status_download">Stahuji\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
     <string name="app_name">F-Droid</string>
 
+    <string name="unstable_updates">Nestabilní aktualizace</string>
+    <string name="unstable_updates_summary">Doporučovat aktualizace na nestabilní verze</string>
+    <string name="more">Více</string>
+    <string name="less">Méně</string>
+
+    <string name="tab_installed_apps">Nainstalováno</string>
+    <string name="bad_fingerprint">Špatný fingerprint</string>
+    <string name="menu_settings">Nastavení</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
+
+
+    <string name="status_download_unknown_size">Stahování\n%2$s z\n%1$s</string>
+    <string name="update_notification_title">Aktualizace repozitářů</string>
+    <string name="status_processing_xml_percent">Zpracovávání %2$s / %3$s (%4$d%%) z %1$s</string>
+    <string name="all_other_repos_fine">Žádné jiné repozitáře nenahlásily chyby.</string>
+        <string name="permissions">Oprávnění</string>
+    <string name="no_handler_app">Není dostupná žádná aplikace pro zpracování %s.</string>
+    <string name="repo_details">Repozitář</string>
+    <string name="repo_url">Adresa</string>
+    <string name="unknown">Neznámý</string>
+    <string name="repo_added">Uložit F-Droid repozitář %1$s.</string>
+    <string name="repo_searching_address">VyhledáváníF-Droid repozitáře na\n%1$s</string>
+    <string name="up_to_maxsdk">Až do %s</string>
+    <string name="minsdk_up_to_maxsdk">%1$s až do %2$s</string>
     </resources>

@@ -332,4 +332,5 @@
     <string name="permissions">Привілеї</string>
     <string name="theme_night">Нічна</string>
 <string name="category_Connectivity">Зв\'язаність</string>
+    <string name="touch_to_configure_local_repo">Торкніться для перегляду подробиць та дозволити іншим обмінюватись вашими додатками.</string>
     </resources>

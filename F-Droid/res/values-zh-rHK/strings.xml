@@ -51,10 +51,10 @@
   <string name="many_updates_available">有 %d 個更新。</string>
   <string name="fdroid_updates_available">您有 F-Droid 更新</string>
   <string name="bluetooth_activity_not_found">找不到任何藍牙傳送的方式，請選擇！</string>
-  <string name="choose_bt_send">選擇藍牙傳送方式</string>
+  <string name="choose_bt_send">選擇藍牙的傳送方式</string>
   <string name="send_via_bluetooth">透過藍牙傳送</string>
   <string name="repo_add_url">軟件倉庫網址</string>
-  <string name="repo_add_fingerprint">指模 (可選)</string>
+  <string name="repo_add_fingerprint">指紋 (可選擇填寫)</string>
   <string name="menu_update_repo">更新倉庫</string>
   <string name="menu_manage">軟件倉庫</string>
   <string name="menu_send_apk_bt">透過藍牙傳送 F-Droid</string>
@@ -103,9 +103,9 @@
   <string name="icon">圖示</string>
   <string name="skip">略過</string>
   <string name="status_connecting_to_repo">正在連接至\n%1$s</string>
-  <string name="status_checking_compatibility">正在檢查應用程式與裝置的相容性…</string>
-  <string name="status_inserting">儲存應用程式詳情中 (%1$d%%)</string>
-  <string name="repos_unchanged">所有倉庫都沒有任何可更新的軟件包</string>
+  <string name="status_checking_compatibility">正在檢查應用程式是否與裝置相容…</string>
+  <string name="status_inserting">正在儲存應用程式的詳情 (%1$d%%)</string>
+  <string name="repos_unchanged">所有倉庫已更新至最新的版本</string>
   <string name="all_other_repos_fine">其他倉庫都沒有出現問題。</string>
   <string name="global_error_updating_repos">更新時出現問題：%s</string>
   <string name="no_permissions">沒有使用任何存取權。</string>
@@ -177,7 +177,7 @@
     <string name="category_Writing">文書</string>
 
     <string name="empty_available_app_list">此分類沒有任何應用程式。\n\n請選擇另一個分類或嘗試更新您的軟件倉庫以取得最新的程式清單。</string>
-    <string name="empty_can_update_app_list">所有應用程式都是最新的。\n\n恭喜您！您所有的應用程式都是最新的版本 (或許您的軟件倉庫已過期)。</string>
+    <string name="empty_can_update_app_list">所有應用程式都是最新的。\n\n恭喜您！所有的應用程式已更新至最新的版本 (或許您的軟件倉庫已過期)。</string>
 
     <string name="install_error_title">安裝錯誤</string>
     <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
@@ -191,7 +191,7 @@
     <string name="swap_nfc_title">觸碰來交換</string>
     <string name="swap_nfc_description">若您的朋友有 F-Droid，並開啟了 NFC 功能，請觸碰您們的手機。</string>
     <string name="theme_dark">暗色系</string>
-<string name="theme_light">明亮系</string>
+<string name="theme_light">明亮色系</string>
     <string name="interval_2w">每兩星期</string>
 
     <string name="tap_to_install">下載完畢，觸碰以安裝</string>
@@ -235,8 +235,46 @@
     <string name="update_notification_more">還有 +%1$d 個…</string>
     <string name="next">下一步</string>
     <string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
-    <string name="SignatureMismatch">新版本的應用程式使用了不同的鑰匙簽署。若要安裝新版本，必須先解除安裝舊版本。請這樣做之後再重新嘗試。（注意：解除安裝將會把應用應程的內存資料刪除）</string>
+    <string name="SignatureMismatch">新版本的應用程式使用了不同的鑰匙簽署。若要安裝新版本，必須先解除安裝舊版本。請這樣做之後再重新嘗試。(注意：解除安裝將會把應用應程的內存資料刪除)</string>
     <string name="installDowngrade">你正在嘗試將應用程式降級。這樣做可能會導致運作不正常甚至資料損失。你肯定要嘗試降級嗎？</string>
     <string name="download_error">下載失敗</string>
 
+    <string name="more">顯示更多</string>
+    <string name="less">顯示較少</string>
+
+    <string name="repo_exists_enable">此倉庫已經設置。請確認您要重新啟用此倉庫。</string>
+    <string name="theme_night">深夜色系</string>
+<string name="swap_not_enabled_description">在交換之前，您的裝置必須可被其他裝置發現。</string>
+
+    <string name="swap_not_enabled">沒有啟用交換功能</string>
+    <string name="swap_connection_misc_error">與裝置連接的時候發生錯誤，未能與它進行交換。</string>
+    <string name="swap_attempt_install">嘗試安裝</string>
+    <string name="loading">正在載入…</string>
+    <string name="swap_cant_send_no_bluetooth">未能傳送 F-Droid，因為此裝置沒有藍牙功能。</string>
+    <string name="bluetooth_unavailable">藍牙不可用</string>
+    <string name="swap_qr_isnt_for_swap">您所掃描的 QR 碼不是一個交換碼。</string>
+    <string name="swap_confirm">確定交換</string>
+    <string name="swap_no_peers_nearby">找不到附近的人來進行交換。</string>
+    <string name="swap_cant_find_peers">找不到您想找的人?</string>
+    <string name="swap_not_visible_wifi">在 Wi-Fi 上不可被偵測</string>
+    <string name="swap_setting_up_wifi">正在設定 Wi-Fi…</string>
+    <string name="swap_visible_wifi">在 Wi-Fi 上可被偵測</string>
+    <string name="swap_not_visible_bluetooth">在藍牙上不可被偵測</string>
+    <string name="swap_setting_up_bluetooth">正在設定藍牙…</string>
+    <string name="swap_visible_bluetooth">在藍牙上可被偵測</string>
+    <string name="swap_intro">與您附近的人交換應用程式。</string>
+    <string name="swap_nearby">近距交換</string>
+    <string name="swap_scan_or_type_url">其中一人需掃描 QR 碼或在瀏覽器中輸入另一人的網址。</string>
+    <string name="swap_switch_to_wifi">觸碰以換至一個 Wi-Fi 網絡</string>
+    <string name="swap_view_available_networks">觸碰以檢視可加入的網絡</string>
+    <string name="swap_success">交換成功！</string>
+    <string name="menu_settings">設置</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
+
+
+    <string name="permissions">存取權</string>
+    <string name="repo_details">軟件倉庫</string>
+    <string name="repo_url">網址</string>
     </resources>

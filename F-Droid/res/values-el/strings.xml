@@ -126,7 +126,7 @@
   <string name="requires_features">Απαιτεί: %1$s</string>
 <string name="app_name">F-Droid</string>
 
-    <string name="unstable_updates">Ασταθής ενημερώσεις</string>
+    <string name="unstable_updates">Ασταθείς ενημερώσεις</string>
     <string name="unstable_updates_summary">Πρόταση ενημερώσεων σε ασταθείς εκδόσεις</string>
     <string name="system_installer">Επέκταση με δικαιώματα συστήματος</string>
     <string name="system_installer_on">Χρησιμοποιήστε την επέκταση του F-Droid με δικαιώματα συστήματος για να εγκαταστήσετε, ενημερώσετε και καταργήσετε πακέτα</string>
@@ -321,8 +321,8 @@
     <string name="interval_2w">Κάθε 2 εβδομάδες</string>
 
     <string name="theme_light">Φωτεινό</string>
-    <string name="theme_dark">Σκούρο</string>
-    <string name="theme_night">Νύχτα</string>
+    <string name="theme_dark">Σκοτεινό</string>
+    <string name="theme_night">Νυχτερινό</string>
 <string name="app_description">Το F-Droid είναι ένας κατάλογος εφαρμογών ΕΛ/ΛΑΚ (Ελεύθερο Λογισμικό και Λογισμικό Ανοικτού Κώδικα) για την πλατφόρμα Android. Η εφαρμογή το καθιστά εύκολο να περιηγηθείτε, να εγκαταστήσετε και να παρακολουθείτε τις ενημερώσεις στη συσκευή σας.</string>
     <string name="swap_nfc_title">Αγγίξτε για να μοιραστείτε</string>
     <string name="swap_nfc_description">Αν ο φίλος σας έχει ενεργοποιημένα το F-Droid και το NFC αγγίξτε μεταξύ τους τα τηλέφωνά σας.</string>
