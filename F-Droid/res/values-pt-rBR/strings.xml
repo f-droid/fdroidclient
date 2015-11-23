@@ -173,7 +173,7 @@ com aplicativos baixados a partir de índices não assinados.</string>
   <string name="system_install_denied_title">A extensão privilegiada do F-droid não está disponível</string>
   <string name="system_install_denied_body">Esta opção só está disponível quando a extensão privilegiada do F-Droid está instalada.</string>
   <string name="app_description">F-Droid é um catálogo instalável de aplicativos FOSS (Software Livre e de Código Aberto) para a plataforma Android. O cliente faz com que seja fácil navegar, instalar e manter o controle das atualizações no seu dispositivo.</string>
-  <string name="swap_nfc_description">Caso seu(sua) amigo(a) tenha o F-Droid e NFC ligados, ponham os seus telefones juntos.</string>
+  <string name="swap_nfc_description">Caso seu(sua) amigo(a) tenha o F-Droid e NFC ligados, ponham os seus dispositivos juntos.</string>
   <string name="swap_join_same_wifi">Juntar-se a mesma rede Wi-Fi do(a) seu(sua) amigo(a)</string>
   <string name="menu_swap">Permutar aplicativos</string>
   <string name="swap">Permutar aplicativos</string>

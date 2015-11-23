@@ -173,7 +173,7 @@
   <string name="system_install_denied_title">ｼｽﾃﾑｱｸｾｽ許可が拒絶されました</string>
   <string name="system_install_denied_body">この設定は､F-Droidがｼｽﾃﾑｱﾌﾟﾘとしてｲﾝｽﾄｰﾙされているときのみ有効です｡</string>
   <string name="app_description">F-DroidはAndroidﾌﾟﾗｯﾄﾌｫｰﾑ向けFOSS(ﾌﾘｰのｵｰﾌﾟﾝｿｰｽｿﾌﾄｳｪｱ) ｱﾌﾟﾘｹｰｼｮﾝのｲﾝｽﾄｰﾙ可能なｶﾀﾛｸﾞです｡このｸﾗｲｱﾝﾄで、お使いの端末で簡単に参照､ｲﾝｽﾄｰﾙ､および更新履歴を記録することができます｡</string>
-  <string name="swap_nfc_description">友達がF-DroidとNFCを持っていれば､一緒に電話をﾀｯﾁしてください｡</string>
+  <string name="swap_nfc_description">友達がF-DroidとNFCを持っていれば､一緒にお使いのﾃﾞﾊﾞｲｽをﾀｯﾁしてください｡</string>
   <string name="swap_join_same_wifi">友達として同じWi-Fiに参加</string>
   <string name="menu_swap">ｱﾌﾟﾘの交換</string>
   <string name="swap">ｱﾌﾟﾘの交換</string>

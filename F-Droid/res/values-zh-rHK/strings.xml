@@ -17,8 +17,8 @@
   <string name="notify">更新通知</string>
   <string name="notify_on">應用程式發佈更新時通知我</string>
   <string name="update_history">更新記錄</string>
-  <string name="system_installer">啟用有系統權限的 F-Droid</string>
-  <string name="system_installer_on">使用系統權限以安裝、更新及移除軟件包</string>
+  <string name="system_installer">系統權限套件</string>
+  <string name="system_installer_on">使用系統權限套件安裝、更新及移除軟件包</string>
   <string name="local_repo_name">您的本地倉庫名稱</string>
   <string name="local_repo_name_summary">您本地倉庫對外公開的名稱：%s</string>
   <string name="local_repo_https">使用私人連線</string>
@@ -189,7 +189,7 @@
     <string name="system_uninstall_button">卸載</string>
 
     <string name="swap_nfc_title">觸碰來交換</string>
-    <string name="swap_nfc_description">若您的朋友有 F-Droid，並開啟了 NFC 功能，請觸碰您們的手機。</string>
+    <string name="swap_nfc_description">若您的朋友有 F-Droid，並開啟了 NFC 功能，請觸碰您們的裝置。</string>
     <string name="theme_dark">暗色系</string>
 <string name="theme_light">明亮色系</string>
     <string name="interval_2w">每兩星期</string>
@@ -277,4 +277,35 @@
     <string name="permissions">存取權</string>
     <string name="repo_details">軟件倉庫</string>
     <string name="repo_url">網址</string>
+    <string name="uninstall_system">更新或卸載系統權限套件</string>
+    <string name="uninstall_system_summary">開啟系統權限套件的詳情以更新或卸載套件</string>
+    <string name="login_name">使用者名稱</string>
+    <string name="login_password">密碼</string>
+    <string name="repo_edit_credentials">更改密碼</string>
+    <string name="repo_error_empty_username">因使用者名稱未填妥，個人資料維持不變</string>
+
+    <string name="repo_exists_and_enabled">正被戴入的倉庫已設置好並在啟用中。</string>
+    <string name="bad_fingerprint">指紋無效</string>
+    <string name="status_download_unknown_size">正在從\n%1$s 下載\n%2$s</string>
+    <string name="malformed_repo_uri">略過無效的倉庫 URI：%s</string>
+
+    <string name="linking_apks">正在連接 APK 檔至軟件倉庫…</string>
+    <string name="status_processing_xml_percent">正在從 %1$s\n處理 %2$s / %3$s (%4$d%%)</string>
+    <string name="repo_not_yet_updated">此軟件倉庫還未被啟用。您先需要啟用倉庫才可以檢視其中的應用程式。</string>
+    <string name="system_install_button_install">安裝</string>
+    <string name="system_install_button_open">開啟套件</string>
+    <string name="system_install_first_time_notification">安裝 F-Droid 系統權限套件？</string>
+    <string name="system_install_post_success">成功安裝 F-Droid 系統權限套件</string>
+    <string name="system_install_post_fail">F-Droid 系統權限套件安裝失敗</string>
+    <string name="system_install_post_success_message">F-Droid 系統權限套件已成功安裝。今後，F-Droid 可以自行安裝、更新及卸載應用程式。</string>
+    <string name="system_install_installing_rebooting">正在安裝和重新啟動…</string>
+    <string name="system_install_question">您要安裝 F-Droid 系統權限套件嗎？</string>
+    <string name="system_install_warning">安裝過程只需最多 10 秒鐘。</string>
+    <string name="system_install_warning_lollipop">安裝過程只需最多 10 秒鐘，而裝置將會在安裝後<b>重新啟動</b>。</string>
+    <string name="system_uninstall">您想卸載 F-Droid 系統權限套件嗎？</string>
+    <string name="swap_join_same_wifi">與您的朋友加入同一個 Wi-Fi 網絡</string>
+    <string name="swap_join_same_wifi_desc">若要透過 Wi-Fi 進行交換，請確保雙方都加入了同一個網絡。如果您不能加入同一個網絡，您可以建立一個 Wi-Fi 熱點。</string>
+    <string name="swap_join_this_hotspot">協助您的朋友加入您的熱點</string>
+    <string name="swap_active_hotspot">%1$s (您的熱點)</string>
+    <string name="devicePerms">裝置權限</string>
     </resources>

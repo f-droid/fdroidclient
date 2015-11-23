@@ -209,7 +209,7 @@
     <string name="system_install_first_time_notification_message_short">Appuyez pour plus d\'informations.</string>
     <string name="system_install_installing">Installation…</string>
     <string name="system_install_uninstalling">Désinstallation…</string>
-    <string name="swap_nfc_description">Si votre ami a F-Droid et NFC activés, rapprochez vos téléphones.</string>
+    <string name="swap_nfc_description">Si votre ami possède F-Droid, activez les communications NFC et rapprochez vos appareils.</string>
     <string name="swap_switch_to_wifi">Appuyez pour passer à un réseau Wi-Fi</string>
     <string name="swap_dont_show_again">Ne plus jamais afficher ceci</string>
     <string name="loading">Chargement…</string>
@@ -325,4 +325,10 @@
     <string name="permissions">Permissions</string>
     <string name="theme_night">Nocturne</string>
 <string name="menu_settings">Paramètres</string>
+    <string name="login_title">Connexion requise</string>
+    <string name="login_name">Utilisateur</string>
+    <string name="login_password">Mot de passe</string>
+    <string name="repo_edit_credentials">Modifier le mot de passe</string>
+    <string name="repo_error_empty_username">Utilisateur non renseigné, aucune modification n\'a été effectuée</string>
+
     </resources>

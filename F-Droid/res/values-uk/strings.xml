@@ -215,7 +215,7 @@
     <string name="install_error_unknown">Не вдалося встановити через невідому помилку</string>
     <string name="system_install_button_open">Відкрити розширення</string>
     <string name="system_install_warning">Це забере приблизно 10 секунд.</string>
-    <string name="swap_nfc_description">Якщо ваш друг має F-Droid та ввімкнений NFC, просто торкніться телефонами.</string>
+    <string name="swap_nfc_description">Якщо ваш друг має F-Droid та ввімкнений NFC, просто торкніться пристроями.</string>
     <string name="swap_no_wifi_network">Мережа відсутня</string>
     <string name="swap_confirm_connect">Бажаєте отримати додатки з «%s» зараз?</string>
     <string name="swap_dont_show_again">Не показувати це знову</string>

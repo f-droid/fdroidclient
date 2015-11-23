@@ -171,7 +171,7 @@
   <string name="system_install_denied_title">Повлашћено проширење за Ф-дроид није доступно</string>
   <string name="system_install_denied_body">Ова опција доступна само када је инсталирано повлашћено проширење за Ф-дроид.</string>
   <string name="app_description">Ф-дроид је каталог ФОСС (слободан и софтвер отвореног кôда) апликација за Андроид платформу. Клијент олакшава претрагу, инсталацију и праћење надоградњи на вашем уређају.</string>
-  <string name="swap_nfc_description">Ако ваш пријатељ има НФЦ, спојите телефоне.</string>
+  <string name="swap_nfc_description">Ако ваш пријатељ има Ф-дроид и укључен НФЦ, додирните уређаје.</string>
   <string name="swap_join_same_wifi">Повежите се на исту бежичну мрежу на којој је ваш пријатељ</string>
   <string name="menu_swap">Размена</string>
   <string name="swap">Размена</string>
@@ -319,4 +319,10 @@
     <string name="menu_settings">Поставке</string>
     <string name="swap_connection_misc_error">Десила се грешка приликом повезивања са уређајем, изгледа да не можемо размењивати са њим.</string>
     <string name="swap_join_same_wifi_desc">Да бисте размењивали преко бежичног морате бити на истој мрежи. Ако немате приступ истој мрежи, једно од вас може да направи бежични хотспот.</string>
+    <string name="login_title">Потребна аутентификација</string>
+    <string name="login_name">Корисничко име</string>
+    <string name="login_password">Лозинка</string>
+    <string name="repo_edit_credentials">Измени лозинку</string>
+    <string name="repo_error_empty_username">Празно корисничко име, акредитиви нису измењени</string>
+
     </resources>
