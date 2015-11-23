@@ -36,6 +36,12 @@
     <string name="local_repo_https">Use Private Connection</string>
     <string name="local_repo_https_on">Use encrypted HTTPS:// connection for local repo</string>
 
+    <string name="login_title">Authentication required</string>
+    <string name="login_name">Username</string>
+    <string name="login_password">Password</string>
+    <string name="repo_edit_credentials">Change Password</string>
+    <string name="repo_error_empty_username">Empty username, credentials not changed</string>
+
     <string name="search_results">Search Results</string>
     <string name="app_details">App Details</string>
     <string name="no_such_app">No such app found.</string>

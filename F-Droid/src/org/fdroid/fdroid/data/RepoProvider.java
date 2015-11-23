@@ -223,10 +223,13 @@ public class RepoProvider extends FDroidProvider {
         String LAST_UPDATED = "lastUpdated";
         String VERSION      = "version";
         String IS_SWAP      = "isSwap";
+        String USERNAME     = "username";
+        String PASSWORD     = "password";
 
         String[] ALL = {
             _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, PUBLIC_KEY,
             FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION, IS_SWAP,
+            USERNAME, PASSWORD,
         };
     }
 
@@ -376,5 +379,4 @@ public class RepoProvider extends FDroidProvider {
         getContext().getContentResolver().notifyChange(uri, null);
         return numRows;
     }
-
 }

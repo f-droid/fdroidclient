@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -29,11 +30,21 @@ public class HttpDownloader extends Downloader {
     protected static final String HEADER_FIELD_ETAG = "ETag";
 
     protected HttpURLConnection connection;
-    private int statusCode = -1;
+    private final String username;
+    private final String password;
+    private int statusCode  = -1;
 
     HttpDownloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
+        this(context, url, destFile, null, null);
+    }
+
+    HttpDownloader(Context context, URL url, File destFile, final String username, final String password)
+            throws FileNotFoundException, MalformedURLException {
         super(context, url, destFile);
+
+        this.username = username;
+        this.password = password;
     }
 
     /**
@@ -44,7 +55,7 @@ public class HttpDownloader extends Downloader {
      * same one twice, bail with an exception).
      * @throws IOException
      */
-
+    @Override
     protected InputStream getDownloadersInputStream() throws IOException {
         setupConnection();
         return new BufferedInputStream(connection.getInputStream());
@@ -87,10 +98,11 @@ public class HttpDownloader extends Downloader {
             Proxy proxy = new Proxy(Proxy.Type.HTTP, sa);
             connection = (HttpURLConnection) sourceUrl.openConnection(proxy);
         } else {
+
             connection = (HttpURLConnection) sourceUrl.openConnection();
-            final String userInfo = sourceUrl.getUserInfo();
-            if (userInfo != null) {
-                connection.setRequestProperty("Authorization", "Basic " + Base64.encodeBase64String(userInfo.getBytes()));
+            if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
+                // add authorization header from username / password if set
+                connection.setRequestProperty("Authorization", "Basic " + Base64.encodeBase64String((username + ":" + password).getBytes()));
             }
         }
     }

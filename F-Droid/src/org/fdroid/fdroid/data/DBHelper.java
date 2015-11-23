@@ -34,7 +34,9 @@ public class DBHelper extends SQLiteOpenHelper {
             + "maxage integer not null default 0, "
             + "version integer not null default 0, "
             + "lastetag text, lastUpdated string,"
-            + "isSwap integer boolean default 0);";
+            + "isSwap integer boolean default 0,"
+            + "username string, password string"
+            + ");";
 
     private static final String CREATE_TABLE_APK =
             "CREATE TABLE " + TABLE_APK + " ( "
@@ -102,7 +104,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + TABLE_INSTALLED_APP + ";";
 
-    private static final int DB_VERSION = 51;
+    private static final int DB_VERSION = 52;
 
     private final Context context;
 
@@ -285,6 +287,7 @@ public class DBHelper extends SQLiteOpenHelper {
         addIconUrlLargeToApp(db, oldVersion);
         updateIconUrlLarge(db, oldVersion);
         recreateInstalledCache(db, oldVersion);
+        addCredentialsToRepo(db, oldVersion);
     }
 
     /**
@@ -416,6 +419,20 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 47 && !columnExists(db, TABLE_REPO, "isSwap")) {
             Utils.debugLog(TAG, "Adding isSwap field to " + TABLE_REPO + " table in db.");
             db.execSQL("alter table " + TABLE_REPO + " add column isSwap boolean default 0;");
+        }
+    }
+
+    private void addCredentialsToRepo(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 52) {
+            if (!columnExists(db, TABLE_REPO, "username")) {
+                Utils.debugLog(TAG, "Adding username field to " + TABLE_REPO + " table in db.");
+                db.execSQL("alter table " + TABLE_REPO + " add column username string;");
+            }
+
+            if (!columnExists(db, TABLE_REPO, "password")) {
+                Utils.debugLog(TAG, "Adding password field to " + TABLE_REPO + " table in db.");
+                db.execSQL("alter table " + TABLE_REPO + " add column password string;");
+            }
         }
     }
 

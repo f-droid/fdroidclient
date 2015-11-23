@@ -54,9 +54,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpHead;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -68,6 +65,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -451,6 +449,8 @@ public class ManageReposActivity extends ActionBarActivity {
 
             final AsyncTask<String, String, String> checker = new AsyncTask<String, String, String>() {
 
+                private int statusCode = -1;
+
                 @Override
                 protected String doInBackground(String... params) {
 
@@ -485,9 +485,14 @@ public class ManageReposActivity extends ActionBarActivity {
                 }
 
                 private boolean checkForRepository(Uri indexUri) throws IOException {
-                    HttpClient client = new DefaultHttpClient();
-                    HttpHead head = new HttpHead(indexUri.toString());
-                    return client.execute(head).getStatusLine().getStatusCode() == 200;
+
+                    final URL url = new URL(indexUri.toString());
+                    final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("HEAD");
+
+                    statusCode = connection.getResponseCode();
+
+                    return statusCode == 401 || statusCode == 200;
                 }
 
                 @Override
@@ -497,9 +502,45 @@ public class ManageReposActivity extends ActionBarActivity {
                 }
 
                 @Override
-                protected void onPostExecute(String newAddress) {
+                protected void onPostExecute(final String newAddress) {
+
                     if (addRepoDialog.isShowing()) {
-                        createNewRepo(newAddress, fingerprint);
+
+                        if (statusCode == 401) {
+
+                            final View view = getLayoutInflater().inflate(R.layout.login, null);
+                            final AlertDialog credentialsDialog = new AlertDialog.Builder(context).setView(view).create();
+                            final EditText nameInput = (EditText) view.findViewById(R.id.edit_name);
+                            final EditText passwordInput = (EditText) view.findViewById(R.id.edit_password);
+
+                            credentialsDialog.setTitle(R.string.login_title);
+                            credentialsDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
+                                    getString(R.string.cancel),
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                            // cancel parent dialog, don't add repo
+                                            addRepoDialog.cancel();
+                                        }
+                                    });
+
+                            credentialsDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                                    getString(R.string.ok),
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            createNewRepo(newAddress, fingerprint, nameInput.getText().toString(), passwordInput.getText().toString());
+                                        }
+                                    });
+
+                            credentialsDialog.show();
+
+                        } else {
+
+                            // create repo without username/password
+                            createNewRepo(newAddress, fingerprint);
+                        }
                     }
                 }
             };
@@ -551,17 +592,30 @@ public class ManageReposActivity extends ActionBarActivity {
                     path, uri.getQuery(), uri.getFragment()).toString();
         }
 
+        /**
+         * Create a repository without a username or password.
+         */
         private void createNewRepo(String address, String fingerprint) {
+            createNewRepo(address, fingerprint, null, null);
+        }
+
+        private void createNewRepo(String address, String fingerprint, final String username, final String password) {
             try {
                 address = normalizeUrl(address);
             } catch (URISyntaxException e) {
                 // Leave address as it was.
             }
-            ContentValues values = new ContentValues(2);
+            ContentValues values = new ContentValues(4);
             values.put(RepoProvider.DataColumns.ADDRESS, address);
             if (!TextUtils.isEmpty(fingerprint)) {
                 values.put(RepoProvider.DataColumns.FINGERPRINT, fingerprint.toUpperCase(Locale.ENGLISH));
             }
+
+            if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
+                values.put(RepoProvider.DataColumns.USERNAME, username);
+                values.put(RepoProvider.DataColumns.PASSWORD, password);
+            }
+
             RepoProvider.Helper.insert(context, values);
             finishedAddingRepo();
             Toast.makeText(ManageReposActivity.this, getString(R.string.repo_added, address), Toast.LENGTH_SHORT).show();

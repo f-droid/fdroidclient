@@ -45,6 +45,11 @@ public class DownloaderFactory {
 
     public static Downloader create(Context context, URL url, File destFile)
             throws IOException {
+        return create(context, url, destFile, null, null);
+    }
+
+    public static Downloader create(Context context, URL url, File destFile, final String username, final String password)
+            throws IOException {
         if (isBluetoothAddress(url)) {
             String macAddress = url.getHost().replace("-", ":");
             return new BluetoothDownloader(context, macAddress, url, destFile);
@@ -53,7 +58,7 @@ public class DownloaderFactory {
         } else if (isLocalFile(url)) {
             return new LocalFileDownloader(context, url, destFile);
         }
-        return new HttpDownloader(context, url, destFile);
+        return new HttpDownloader(context, url, destFile, username, password);
     }
 
     private static boolean isBluetoothAddress(URL url) {
