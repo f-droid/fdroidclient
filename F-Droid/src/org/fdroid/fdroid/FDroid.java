@@ -289,10 +289,9 @@ public class FDroid extends ActionBarActivity {
                 View view = LayoutInflater.from(this).inflate(R.layout.about, null);
 
                 String versionName = Utils.getVersionName(this);
-                if (versionName == null) {
-                    versionName = getString(R.string.unknown);
+                if (versionName != null) {
+                    ((TextView) view.findViewById(R.id.version)).setText(versionName);
                 }
-                ((TextView) view.findViewById(R.id.version)).setText(versionName);
 
                 AlertDialog alrt = new AlertDialog.Builder(this).setView(view).create();
                 alrt.setTitle(R.string.about_title);
