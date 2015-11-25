@@ -514,7 +514,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 message = getString(R.string.status_processing_xml_percent, repoAddress, downloadedSize, totalSize, percent);
                 break;
             case RepoUpdater.PROGRESS_COMMITTING:
-                message = getString(R.string.status_inserting, 50);
+                message = getString(R.string.status_inserting_apps);
                 break;
         }
         sendStatus(this, STATUS_INFO, message, percent);
