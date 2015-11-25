@@ -100,7 +100,7 @@
 
         <meta-data
             android:name="android.app.default_searchable"
-            android:value=".SearchResults" />
+            android:value=".FDroid" />
 
         <activity
             android:name=".FDroid"
@@ -223,6 +223,14 @@
                 <data android:host="play.google.com" /> <!-- they don't do www. -->
                 <data android:path="/store/search" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
 
             <!-- Handle NFC tags detected from outside our application -->
             <intent-filter>
@@ -388,25 +396,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <activity
-            android:name=".SearchResults"
-            android:label="@string/search_results"
-            android:exported="true"
-            android:launchMode="singleTop"
-            android:parentActivityName=".FDroid"
-            android:configChanges="layoutDirection|locale" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".FDroid" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
-        </activity>
 
         <receiver android:name=".receiver.StartupReceiver" >
             <intent-filter>

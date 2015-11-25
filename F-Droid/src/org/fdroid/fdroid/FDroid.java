@@ -29,10 +29,13 @@ import android.content.res.Configuration;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -48,9 +51,10 @@ import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
+import org.fdroid.fdroid.views.fragments.AppListFragment;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
-public class FDroid extends ActionBarActivity {
+public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     private static final String TAG = "FDroid";
 
@@ -66,7 +70,10 @@ public class FDroid extends ActionBarActivity {
 
     private ViewPager viewPager;
 
+    @Nullable
     private TabManager tabManager;
+
+    private AppListFragmentPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -248,6 +255,7 @@ public class FDroid extends ActionBarActivity {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         // LayoutParams.MATCH_PARENT does not work, use a big value instead
         searchView.setMaxWidth(1000000);
+        searchView.setOnQueryTextListener(this);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -335,8 +343,8 @@ public class FDroid extends ActionBarActivity {
 
     private void createViews() {
         viewPager = (ViewPager) findViewById(R.id.main_pager);
-        AppListFragmentPagerAdapter viewPagerAdapter = new AppListFragmentPagerAdapter(this);
-        viewPager.setAdapter(viewPagerAdapter);
+        this.adapter = new AppListFragmentPagerAdapter(this);
+        viewPager.setAdapter(this.adapter);
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -345,6 +353,7 @@ public class FDroid extends ActionBarActivity {
         });
     }
 
+    @NonNull
     private TabManager getTabManager() {
         if (tabManager == null) {
             tabManager = new TabManager(this, viewPager);
@@ -361,6 +370,20 @@ public class FDroid extends ActionBarActivity {
         NotificationManager nMgr = (NotificationManager) getBaseContext()
             .getSystemService(Context.NOTIFICATION_SERVICE);
         nMgr.cancel(id);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    private static final String SEARCH_CHANGED = "fdroid.SearchChanged";
+    private static final String SEARCH_QUERY = "fdroid.SearchQuery";
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        this.adapter.updateSearchQuery(newText, getTabManager().getSelectedIndex());
+        return true;
     }
 
     private class AppObserver extends ContentObserver {

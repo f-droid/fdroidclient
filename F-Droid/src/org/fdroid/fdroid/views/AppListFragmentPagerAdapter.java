@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.views;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 
@@ -7,6 +9,7 @@ import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.views.fragments.AppListFragment;
 import org.fdroid.fdroid.views.fragments.AvailableAppsFragment;
 import org.fdroid.fdroid.views.fragments.CanUpdateAppsFragment;
 import org.fdroid.fdroid.views.fragments.InstalledAppsFragment;
@@ -17,11 +20,28 @@ import org.fdroid.fdroid.views.fragments.InstalledAppsFragment;
  */
 public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
 
+    @NonNull
     private final FDroid parent;
+
+    @NonNull
+    private final AppListFragment availableFragment;
+    
+    @NonNull
+    private final AppListFragment installedFragment;
+    
+    @NonNull
+    private final AppListFragment canUpdateFragment;
+    
+    @Nullable
+    private String searchQuery;
 
     public AppListFragmentPagerAdapter(FDroid parent) {
         super(parent.getSupportFragmentManager());
         this.parent = parent;
+
+        availableFragment = new AvailableAppsFragment();
+        installedFragment = new InstalledAppsFragment();
+        canUpdateFragment = new CanUpdateAppsFragment();
     }
 
     private String getInstalledTabTitle() {
@@ -34,15 +54,22 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
         return parent.getString(R.string.tab_updates_count, updateCount);
     }
 
+    public void updateSearchQuery(@Nullable String query, int tabIndex) {
+		searchQuery = query;
+        availableFragment.updateSearchQuery(query);
+        installedFragment.updateSearchQuery(query);
+        canUpdateFragment.updateSearchQuery(query);
+    }
+
     @Override
     public Fragment getItem(int i) {
         switch (i) {
             case TabManager.INDEX_AVAILABLE:
-                return new AvailableAppsFragment();
+                return availableFragment;
             case TabManager.INDEX_INSTALLED:
-                return new InstalledAppsFragment();
+                return installedFragment;
             default:
-                return new CanUpdateAppsFragment();
+                return canUpdateFragment;
         }
     }
 

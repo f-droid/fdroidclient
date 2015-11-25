@@ -6,10 +6,12 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -52,11 +54,16 @@ public abstract class AppListFragment extends ListFragment implements
 
     protected AppListAdapter appAdapter;
 
+    @Nullable
+    private String searchQuery;
+
     protected abstract AppListAdapter getAppListAdapter();
 
     protected abstract String getFromTitle();
 
     protected abstract Uri getDataUri();
+
+    protected abstract Uri getDataUri(String query);
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -144,9 +151,15 @@ public abstract class AppListFragment extends ListFragment implements
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Uri uri = getDataUri();
+        Uri uri = TextUtils.isEmpty(searchQuery) ? getDataUri() : getDataUri(searchQuery);
         return new CursorLoader(
                 getActivity(), uri, APP_PROJECTION, null, null, APP_SORT);
     }
 
+    public void updateSearchQuery(@Nullable String query) {
+        this.searchQuery = query;
+        if (isAdded()) {
+            getLoaderManager().restartLoader(0, null, this);
+        }
+    }
 }

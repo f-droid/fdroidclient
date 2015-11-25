@@ -35,6 +35,10 @@ public class TabManager {
         this.pager = pager;
     }
 
+    public int getSelectedIndex() {
+        return actionBar != null ? actionBar.getSelectedNavigationIndex() : -1;
+    }
+
     protected CharSequence getLabel(int index) {
         return pager.getAdapter().getPageTitle(index);
     }

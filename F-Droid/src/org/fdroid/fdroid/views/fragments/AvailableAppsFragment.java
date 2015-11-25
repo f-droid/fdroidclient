@@ -164,6 +164,10 @@ public class AvailableAppsFragment extends AppListFragment implements
         return AppProvider.getCategoryUri(currentCategory);
     }
 
+    protected Uri getDataUri(String query) {
+        return AppProvider.getSearchUri(query);
+    }
+
     private void setCurrentCategory(String category) {
         currentCategory = category;
         Utils.debugLog(TAG, "Category '" + currentCategory + "' selected.");

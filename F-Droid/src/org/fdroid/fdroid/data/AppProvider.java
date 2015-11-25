@@ -425,6 +425,8 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_INSTALLED = "installed";
     private static final String PATH_CAN_UPDATE = "canUpdate";
     private static final String PATH_SEARCH = "search";
+    private static final String PATH_SEARCH_INSTALLED = "seasrchInstalled";
+    private static final String PATH_SEARCH_CAN_UPDATE = "searchCanUpdate";
     private static final String PATH_SEARCH_REPO = "searchRepo";
     private static final String PATH_NO_APKS = "noApks";
     private static final String PATH_APPS = "apps";
@@ -435,18 +437,20 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_CALC_APP_DETAILS_FROM_INDEX = "calcDetailsFromIndex";
     private static final String PATH_REPO = "repo";
 
-    private static final int CAN_UPDATE       = CODE_SINGLE + 1;
-    private static final int INSTALLED        = CAN_UPDATE + 1;
-    private static final int SEARCH           = INSTALLED + 1;
-    private static final int NO_APKS          = SEARCH + 1;
-    private static final int APPS             = NO_APKS + 1;
+    private static final int CAN_UPDATE = CODE_SINGLE + 1;
+    private static final int INSTALLED = CAN_UPDATE + 1;
+    private static final int SEARCH = INSTALLED + 1;
+    private static final int NO_APKS = SEARCH + 1;
+    private static final int APPS = NO_APKS + 1;
     private static final int RECENTLY_UPDATED = APPS + 1;
-    private static final int NEWLY_ADDED      = RECENTLY_UPDATED + 1;
-    private static final int CATEGORY         = NEWLY_ADDED + 1;
-    private static final int IGNORED          = CATEGORY + 1;
+    private static final int NEWLY_ADDED = RECENTLY_UPDATED + 1;
+    private static final int CATEGORY = NEWLY_ADDED + 1;
+    private static final int IGNORED = CATEGORY + 1;
     private static final int CALC_APP_DETAILS_FROM_INDEX = IGNORED + 1;
-    private static final int REPO             = CALC_APP_DETAILS_FROM_INDEX + 1;
-    private static final int SEARCH_REPO      = REPO + 1;
+    private static final int REPO = CALC_APP_DETAILS_FROM_INDEX + 1;
+    private static final int SEARCH_REPO = REPO + 1;
+    private static final int SEARCH_INSTALLED = SEARCH_REPO + 1;
+    private static final int SEARCH_CAN_UPDATE = SEARCH_INSTALLED + 1;
 
     static {
         matcher.addURI(getAuthority(), null, CODE_LIST);
@@ -456,6 +460,8 @@ public class AppProvider extends FDroidProvider {
         matcher.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
         matcher.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
         matcher.addURI(getAuthority(), PATH_SEARCH + "/*", SEARCH);
+        matcher.addURI(getAuthority(), PATH_SEARCH_INSTALLED + "/*", SEARCH_INSTALLED);
+        matcher.addURI(getAuthority(), PATH_SEARCH_CAN_UPDATE + "/*", SEARCH_CAN_UPDATE);
         matcher.addURI(getAuthority(), PATH_SEARCH_REPO + "/*/*", SEARCH_REPO);
         matcher.addURI(getAuthority(), PATH_REPO + "/#", REPO);
         matcher.addURI(getAuthority(), PATH_CAN_UPDATE, CAN_UPDATE);
@@ -536,6 +542,22 @@ public class AppProvider extends FDroidProvider {
     public static Uri getSearchUri(String query) {
         return getContentUri().buildUpon()
             .appendPath(PATH_SEARCH)
+            .appendPath(query)
+            .build();
+    }
+
+    public static Uri getSearchInstalledUri(String query) {
+        return getContentUri()
+            .buildUpon()
+            .appendPath(PATH_SEARCH_INSTALLED)
+            .appendPath(query)
+            .build();
+    }
+
+    public static Uri getSearchCanUpdateUri(String query) {
+        return getContentUri()
+            .buildUpon()
+            .appendPath(PATH_SEARCH_CAN_UPDATE)
             .appendPath(query)
             .build();
     }
@@ -732,6 +754,16 @@ public class AppProvider extends FDroidProvider {
 
             case SEARCH:
                 selection = selection.add(querySearch(uri.getLastPathSegment()));
+                includeSwap = false;
+                break;
+
+            case SEARCH_INSTALLED:
+                selection = querySearch(uri.getLastPathSegment()).add(queryInstalled());
+                includeSwap = false;
+                break;
+
+            case SEARCH_CAN_UPDATE:
+                selection = querySearch(uri.getLastPathSegment()).add(queryCanUpdate());
                 includeSwap = false;
                 break;
 
