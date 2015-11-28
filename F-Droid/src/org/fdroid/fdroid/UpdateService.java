@@ -61,6 +61,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     public static final String EXTRA_STATUS_CODE = "status";
     public static final String EXTRA_ADDRESS = "address";
     public static final String EXTRA_MANUAL_UPDATE = "manualUpdate";
+    public static final String EXTRA_PROGRESS = "progress";
 
     public static final int STATUS_COMPLETE_WITH_CHANGES = 0;
     public static final int STATUS_COMPLETE_AND_SAME = 1;
@@ -157,14 +158,19 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     protected static void sendStatus(Context context, int statusCode) {
-        sendStatus(context, statusCode, null);
+        sendStatus(context, statusCode, null, -1);
     }
 
     protected static void sendStatus(Context context, int statusCode, String message) {
+        sendStatus(context, statusCode, message, -1);
+    }
+
+    protected static void sendStatus(Context context, int statusCode, String message, int progress) {
         Intent intent = new Intent(LOCAL_ACTION_STATUS);
         intent.putExtra(EXTRA_STATUS_CODE, statusCode);
         if (!TextUtils.isEmpty(message))
             intent.putExtra(EXTRA_MESSAGE, message);
+        intent.putExtra(EXTRA_PROGRESS, progress);
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
@@ -193,11 +199,12 @@ public class UpdateService extends IntentService implements ProgressListener {
             String message;
             if (totalSize == -1) {
                 message = getString(R.string.status_download_unknown_size, repoAddress, downloadedSizeFriendly);
+                percent = -1;
             } else {
                 String totalSizeFriendly = Utils.getFriendlySize(totalSize);
                 message = getString(R.string.status_download, repoAddress, downloadedSizeFriendly, totalSizeFriendly, percent);
             }
-            sendStatus(context, STATUS_INFO, message);
+            sendStatus(context, STATUS_INFO, message, percent);
         }
     };
 
@@ -216,13 +223,16 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             final String message = intent.getStringExtra(EXTRA_MESSAGE);
             int resultCode = intent.getIntExtra(EXTRA_STATUS_CODE, -1);
+            int progress = intent.getIntExtra(EXTRA_PROGRESS, -1);
 
             String text;
             switch (resultCode) {
                 case STATUS_INFO:
                     notificationBuilder.setContentText(message)
-                            .setProgress(0, 0, true)
                             .setCategory(NotificationCompat.CATEGORY_SERVICE);
+                    if (progress != -1) {
+                        notificationBuilder.setProgress(100, progress, false);
+                    }
                     notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
                     break;
                 case STATUS_ERROR_GLOBAL:
@@ -510,6 +520,6 @@ public class UpdateService extends IntentService implements ProgressListener {
                 message = getString(R.string.status_processing_xml_percent, repoAddress, downloadedSize, totalSize, percent);
                 break;
         }
-        sendStatus(this, STATUS_INFO, message);
+        sendStatus(this, STATUS_INFO, message, percent);
     }
 }

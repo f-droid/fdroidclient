@@ -179,10 +179,10 @@ public class RepoPersister {
         int i = 0;
         while (i < operations.size()) {
             int count = Math.min(operations.size() - i, 100);
+            int progress = (int) ((double) (currentCount + i) / totalUpdateCount * 100);
             ArrayList<ContentProviderOperation> o = new ArrayList<>(operations.subList(i, i + count));
             UpdateService.sendStatus(context, UpdateService.STATUS_INFO, context.getString(
-                R.string.status_inserting,
-                (int) ((double) (currentCount + i) / totalUpdateCount * 100)));
+                R.string.status_inserting, progress), progress);
             context.getContentResolver().applyBatch(providerAuthority, o);
             i += 100;
         }
