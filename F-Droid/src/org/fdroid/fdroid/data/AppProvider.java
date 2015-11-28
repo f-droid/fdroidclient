@@ -425,14 +425,17 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_INSTALLED = "installed";
     private static final String PATH_CAN_UPDATE = "canUpdate";
     private static final String PATH_SEARCH = "search";
-    private static final String PATH_SEARCH_INSTALLED = "seasrchInstalled";
+    private static final String PATH_SEARCH_INSTALLED = "searchInstalled";
     private static final String PATH_SEARCH_CAN_UPDATE = "searchCanUpdate";
     private static final String PATH_SEARCH_REPO = "searchRepo";
     private static final String PATH_NO_APKS = "noApks";
     private static final String PATH_APPS = "apps";
     private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
+    private static final String PATH_SEARCH_RECENTLY_UPDATED = "searchRecentlyUpdated";
     private static final String PATH_NEWLY_ADDED = "newlyAdded";
+    private static final String PATH_SEARCH_NEWLY_ADDED = "searchNewlyAdded";
     private static final String PATH_CATEGORY = "category";
+    private static final String PATH_SEARCH_CATEGORY = "searchCategory";
     private static final String PATH_IGNORED = "ignored";
     private static final String PATH_CALC_APP_DETAILS_FROM_INDEX = "calcDetailsFromIndex";
     private static final String PATH_REPO = "repo";
@@ -451,6 +454,9 @@ public class AppProvider extends FDroidProvider {
     private static final int SEARCH_REPO = REPO + 1;
     private static final int SEARCH_INSTALLED = SEARCH_REPO + 1;
     private static final int SEARCH_CAN_UPDATE = SEARCH_INSTALLED + 1;
+    private static final int SEARCH_CATEGORY = SEARCH_CAN_UPDATE + 1;
+    private static final int SEARCH_NEWLY_ADDED = SEARCH_CATEGORY + 1;
+    private static final int SEARCH_RECENTLY_UPDATED = SEARCH_NEWLY_ADDED + 1;
 
     static {
         matcher.addURI(getAuthority(), null, CODE_LIST);
@@ -460,6 +466,9 @@ public class AppProvider extends FDroidProvider {
         matcher.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
         matcher.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
         matcher.addURI(getAuthority(), PATH_SEARCH + "/*", SEARCH);
+        matcher.addURI(getAuthority(), PATH_SEARCH_NEWLY_ADDED + "/*", SEARCH_NEWLY_ADDED);
+        matcher.addURI(getAuthority(), PATH_SEARCH_RECENTLY_UPDATED + "/*", SEARCH_RECENTLY_UPDATED);
+        matcher.addURI(getAuthority(), PATH_SEARCH_CATEGORY + "/*/*", SEARCH_CATEGORY);
         matcher.addURI(getAuthority(), PATH_SEARCH_INSTALLED + "/*", SEARCH_INSTALLED);
         matcher.addURI(getAuthority(), PATH_SEARCH_CAN_UPDATE + "/*", SEARCH_CAN_UPDATE);
         matcher.addURI(getAuthority(), PATH_SEARCH_REPO + "/*/*", SEARCH_REPO);
@@ -479,8 +488,22 @@ public class AppProvider extends FDroidProvider {
         return Uri.withAppendedPath(getContentUri(), PATH_RECENTLY_UPDATED);
     }
 
+    public static Uri getSearchRecentlyUpdatedUri(String query) {
+        return getContentUri().buildUpon()
+            .appendPath(PATH_SEARCH_RECENTLY_UPDATED)
+            .appendEncodedPath(query)
+            .build();
+    }
+
     public static Uri getNewlyAddedUri() {
         return Uri.withAppendedPath(getContentUri(), PATH_NEWLY_ADDED);
+    }
+
+    public static Uri getSearchNewlyAddedUri(String query) {
+        return getContentUri().buildUpon()
+            .appendPath(PATH_SEARCH_NEWLY_ADDED)
+            .appendEncodedPath(query)
+            .build();
     }
 
     public static Uri getIgnoredUri() {
@@ -495,6 +518,14 @@ public class AppProvider extends FDroidProvider {
         return getContentUri().buildUpon()
             .appendPath(PATH_CATEGORY)
             .appendPath(category)
+            .build();
+    }
+
+    public static Uri getSearchCategoryUri(String category, String query) {
+        return getContentUri().buildUpon()
+            .appendPath(PATH_SEARCH_CATEGORY)
+            .appendEncodedPath(category)
+            .appendEncodedPath(query)
             .build();
     }
 
@@ -542,7 +573,7 @@ public class AppProvider extends FDroidProvider {
     public static Uri getSearchUri(String query) {
         return getContentUri().buildUpon()
             .appendPath(PATH_SEARCH)
-            .appendPath(query)
+            .appendEncodedPath(query)
             .build();
     }
 
@@ -550,7 +581,7 @@ public class AppProvider extends FDroidProvider {
         return getContentUri()
             .buildUpon()
             .appendPath(PATH_SEARCH_INSTALLED)
-            .appendPath(query)
+            .appendEncodedPath(query)
             .build();
     }
 
@@ -558,7 +589,7 @@ public class AppProvider extends FDroidProvider {
         return getContentUri()
             .buildUpon()
             .appendPath(PATH_SEARCH_CAN_UPDATE)
-            .appendPath(query)
+            .appendEncodedPath(query)
             .build();
     }
 
@@ -566,7 +597,7 @@ public class AppProvider extends FDroidProvider {
         return getContentUri().buildUpon()
             .appendPath(PATH_SEARCH_REPO)
             .appendPath(repo.id + "")
-            .appendPath(query)
+            .appendEncodedPath(query)
             .build();
     }
 
@@ -789,15 +820,34 @@ public class AppProvider extends FDroidProvider {
                 includeSwap = false;
                 break;
 
+            case SEARCH_CATEGORY:
+                String query = uri.getPathSegments().get(2);
+                String category = uri.getPathSegments().get(1);
+                selection = selection.add(queryCategory(category)).add(querySearch(query));
+                includeSwap = false;
+                break;
+
             case RECENTLY_UPDATED:
                 sortOrder = getTableName() + ".lastUpdated DESC";
                 selection = selection.add(queryRecentlyUpdated());
                 includeSwap = false;
                 break;
 
+            case SEARCH_RECENTLY_UPDATED:
+                sortOrder = " fdroid_app.lastUpdated DESC";
+                selection = selection.add(queryRecentlyUpdated()).add(querySearch(uri.getLastPathSegment()));
+                includeSwap = false;
+                break;
+
             case NEWLY_ADDED:
                 sortOrder = getTableName() + ".added DESC";
                 selection = selection.add(queryNewlyAdded());
+                includeSwap = false;
+                break;
+
+            case SEARCH_NEWLY_ADDED:
+                sortOrder = " fdroid_app.added DESC";
+                selection = selection.add(queryNewlyAdded()).add(querySearch(uri.getLastPathSegment()));
                 includeSwap = false;
                 break;
 

@@ -165,7 +165,13 @@ public class AvailableAppsFragment extends AppListFragment implements
     }
 
     protected Uri getDataUri(String query) {
-        return AppProvider.getSearchUri(query);
+        if (currentCategory == null || currentCategory.equals(AppProvider.Helper.getCategoryAll(getActivity())))
+            return AppProvider.getSearchUri(query);
+        if (currentCategory.equals(AppProvider.Helper.getCategoryRecentlyUpdated(getActivity())))
+            return AppProvider.getSearchRecentlyUpdatedUri(query);
+        if (currentCategory.equals(AppProvider.Helper.getCategoryWhatsNew(getActivity())))
+            return AppProvider.getSearchNewlyAddedUri(query);
+        return AppProvider.getSearchCategoryUri(currentCategory, query);
     }
 
     private void setCurrentCategory(String category) {
