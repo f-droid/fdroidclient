@@ -333,4 +333,10 @@
     <string name="theme_night">Нічна</string>
 <string name="category_Connectivity">Зв\'язаність</string>
     <string name="touch_to_configure_local_repo">Торкніться для перегляду подробиць та дозволити іншим обмінюватись вашими додатками.</string>
+    <string name="login_title">Необхідна авторизація</string>
+    <string name="login_name">Ім\'я користувача</string>
+    <string name="login_password">Пароль</string>
+    <string name="repo_edit_credentials">Змінити пароль</string>
+    <string name="repo_error_empty_username">Відсутнє ім\'я користувача, облікові дані не змінено</string>
+
     </resources>

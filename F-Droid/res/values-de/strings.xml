@@ -116,13 +116,13 @@
   <string name="icon">Symbol</string>
   <string name="next">Weiter</string>
   <string name="skip">Überspringen</string>
-  <string name="proxy">Proxy</string>
+  <string name="proxy">Vermittlungsserver</string>
   <string name="enable_proxy_title">HTTP-Proxy aktivieren</string>
   <string name="enable_proxy_summary">HTTP-Proxy für alle Netzwerkanfragen konfigurieren</string>
-  <string name="proxy_host">Proxy-Hostnamen</string>
+  <string name="proxy_host">Proxy-Rechner</string>
   <string name="proxy_host_summary">Bitte Ihren Proxy-Rechnernamen konfigurieren (z.B. 127.0.0.1)</string>
   <string name="proxy_port">Proxy-Port</string>
-  <string name="proxy_port_summary">Konfigurieren Sie Ihren Proxy-Port (z.B. 8818)</string>
+  <string name="proxy_port_summary">Bitte Ihren Proxy-Port konfigurieren (z.B. 8818)</string>
   <string name="status_download">%2$s / %3$s (%4$d%%) von\n%1$s\nwird heruntergeladen</string>
   <string name="status_connecting_to_repo">Mit %1$s\nwird verbunden</string>
   <string name="status_checking_compatibility">Kompatibilität der Anwendungen mit Ihrem Gerät wird überprüft …</string>
@@ -174,7 +174,7 @@
   <string name="system_install_denied_title">F-Droid privilegierte Erweiterung ist nicht verfügbar</string>
   <string name="system_install_denied_body">Diese Option ist nur verfügbar, wenn F-Droid als System-App installiert wurde.</string>
   <string name="app_description">F-Droid ist ein installierbarer App-Store für FOSS (Freie und Quelloffene Software) Anwendungen für die Android-Plattform. Durch das Programm ist es einfach Apps zu durchsuchen, zu installieren und zu aktualisieren.</string>
-  <string name="swap_nfc_description">Wenn Ihr Freund F-Droid und NFC aktiviert hat, bitte die Telefone aneinander halten.</string>
+  <string name="swap_nfc_description">Wenn Ihr Freund F-Droid und NFC aktiviert hat, bitte die Geräte aneinander halten.</string>
   <string name="swap_join_same_wifi">Bitte mit dem gleichen WLAN-Netzwerk wie Ihr Freund verbinden</string>
   <string name="menu_swap">Apps tauschen</string>
   <string name="swap">Apps tauschen</string>
@@ -306,10 +306,10 @@
     <string name="swap_not_enabled_description">Vor dem Tausch muss Ihr Gerät sichtbar gemacht werden.</string>
 
     <string name="install_confirm">Wollen Sie diese Anwendung installieren? Sie wird Zugriff erhalten auf:</string>
-    <string name="install_confirm_no_perms">Wollen Sie diese Anwendung installieren? Sie benötigt keine besonderen Berechtigungen.</string>
-    <string name="install_confirm_update">Wollen Sie eine Aktualisierung dieser bestehenden Applikation installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Applikation wird folgende Berechtigungen erhalten:</string>
-    <string name="install_confirm_update_no_perms">Wollen Sie eine Aktualisierung dieser vorinstallierten Applikation installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Applikation benötigt keine besonderen Berechtigungen.</string>
-    <string name="install_confirm_update_system">Wollen Sie eine Aktualisierung dieser vorinstallierten Applikation installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Applikation wird folgende Berechtigungen erhalten:</string>
+    <string name="install_confirm_no_perms">Wollen Sie diese Anwendung installieren? Es werden keine besonderen Zugriffsrechte erfordert.</string>
+    <string name="install_confirm_update">Wollen Sie eine Aktualisierung dieser bestehenden Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Anwendung wird folgenden Zugriff erhalten:</string>
+    <string name="install_confirm_update_no_perms">Wollen Sie eine Aktualisierung dieser vorinstallierten Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Es werden keine besonderen Zugriffsrechte erfordert.</string>
+    <string name="install_confirm_update_system">Wollen Sie eine Aktualisierung dieser vorinstallierten Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Anwendung wird folgende Zugriff erhalten:</string>
     <string name="install_confirm_update_system_no_perms">Wollen Sie eine Aktualisierung dieser vorinstallierten Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Es werden keine besonderen Zugriffsrechte erfordert.</string>
     <string name="allPerms">Alle</string>
     <string name="privacyPerms">Datenschutz</string>
@@ -324,4 +324,10 @@
     <string name="downloading">Wird heruntergeladen …</string>
 
     <string name="theme_night">Nacht</string>
-</resources>
+<string name="login_title">Legitimierung erforderlich</string>
+    <string name="login_name">Benutzername</string>
+    <string name="login_password">Passwort</string>
+    <string name="repo_edit_credentials">Passwort ändern</string>
+    <string name="repo_error_empty_username">Leerer Benutzername, Anmeldeinformationen nicht geändert</string>
+
+    </resources>

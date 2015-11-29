@@ -325,4 +325,10 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="permissions">Uprawnienia</string>
     <string name="theme_night">Nocny</string>
 <string name="menu_settings">Ustawienia</string>
+    <string name="login_title">Wymagane uwierzytelnienie</string>
+    <string name="login_name">Użytkownik</string>
+    <string name="login_password">Hasło</string>
+    <string name="repo_edit_credentials">Zmień hasło</string>
+    <string name="repo_error_empty_username">Pusta nazwa użytkownika, poświadczenia nie zmienione</string>
+
     </resources>

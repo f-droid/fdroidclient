@@ -329,4 +329,10 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 <string name="system_install_denied_permissions">¡No se han concedido permisos de sistema a la extensión! ¡Por favor, informa sobre este fallo!</string>
     <string name="system_install_button_open">Abrir la extensión</string>
     <string name="menu_settings">Ajustes</string>
+    <string name="login_title">Se requiere autentificación</string>
+    <string name="login_name">Nombre de usuario</string>
+    <string name="login_password">Contraseña</string>
+    <string name="repo_edit_credentials">Cambiar contraseña</string>
+    <string name="repo_error_empty_username">Nombre de usuario vacío, las credenciales no se han cambiado</string>
+
     </resources>
