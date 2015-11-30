@@ -340,7 +340,7 @@ public class SwapAppsView extends ListView implements
                 }
             };
 
-            public ViewHolder() {
+            ViewHolder() {
                 // TODO: Unregister receivers correctly...
                 IntentFilter apkFilter = new IntentFilter(ApkDownloader.ACTION_STATUS);
                 LocalBroadcastManager.getInstance(getActivity()).registerReceiver(apkDownloadReceiver, apkFilter);
@@ -438,7 +438,7 @@ public class SwapAppsView extends ListView implements
         @Nullable
         private Drawable defaultAppIcon;
 
-        public AppListAdapter(@NonNull Context context, @Nullable Cursor c) {
+        AppListAdapter(@NonNull Context context, @Nullable Cursor c) {
             super(context, c, FLAG_REGISTER_CONTENT_OBSERVER);
         }
 

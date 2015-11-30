@@ -95,6 +95,7 @@ public abstract class ProviderTestCase2MockContext<T extends ContentProvider> ex
             return this;
         }
     }
+
     /**
      * Constructor.
      *

@@ -213,7 +213,7 @@ public abstract class Downloader {
 
         private final InputStream toWrap;
 
-        public WrappedInputStream(InputStream toWrap) {
+        WrappedInputStream(InputStream toWrap) {
             super();
             this.toWrap = toWrap;
         }

@@ -365,7 +365,7 @@ public class FDroid extends ActionBarActivity {
 
     private class AppObserver extends ContentObserver {
 
-        public AppObserver() {
+        AppObserver() {
             super(null);
         }
 

@@ -164,7 +164,7 @@ public final class BluetoothSwap extends SwapType {
 
     private static class NoBluetoothType extends SwapType {
 
-        public NoBluetoothType(@NonNull Context context) {
+        NoBluetoothType(@NonNull Context context) {
             super(context);
         }
 

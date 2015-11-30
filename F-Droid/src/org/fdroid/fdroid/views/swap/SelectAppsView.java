@@ -43,20 +43,20 @@ public class SelectAppsView extends ListView implements
         LoaderManager.LoaderCallbacks<Cursor>,
         SearchView.OnQueryTextListener {
 
-    public SelectAppsView(Context context) {
+    SelectAppsView(Context context) {
         super(context);
     }
 
-    public SelectAppsView(Context context, AttributeSet attrs) {
+    SelectAppsView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public SelectAppsView(Context context, AttributeSet attrs, int defStyleAttr) {
+    SelectAppsView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public SelectAppsView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    SelectAppsView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -223,7 +223,7 @@ public class SelectAppsView extends ListView implements
         @NonNull
         private final ListView listView;
 
-        public AppListAdapter(@NonNull ListView listView, @NonNull Context context, @Nullable Cursor c) {
+        AppListAdapter(@NonNull ListView listView, @NonNull Context context, @Nullable Cursor c) {
             super(context, c, FLAG_REGISTER_CONTENT_OBSERVER);
             this.listView = listView;
         }

@@ -219,7 +219,7 @@ public class ManageReposActivity extends ActionBarActivity {
 
         private AddRepoState addRepoState;
 
-        public AddRepo(String newAddress, String newFingerprint) {
+        AddRepo(String newAddress, String newFingerprint) {
 
             context = ManageReposActivity.this;
 

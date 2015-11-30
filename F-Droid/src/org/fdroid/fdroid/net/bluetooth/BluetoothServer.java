@@ -105,7 +105,7 @@ public class BluetoothServer extends Thread {
         private final BluetoothSocket socket;
         private final File webRoot;
 
-        public ClientConnection(BluetoothSocket socket, File webRoot) {
+        ClientConnection(BluetoothSocket socket, File webRoot) {
             this.socket = socket;
             this.webRoot = webRoot;
         }

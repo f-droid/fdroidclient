@@ -241,21 +241,21 @@ public class AppProvider extends FDroidProvider {
 
         private boolean naturalJoinToInstalled;
 
-        public AppQuerySelection() {
+        AppQuerySelection() {
             // The same as no selection, because "1" will always resolve to true when executing the SQL query.
             // e.g. "WHERE 1 AND ..." is the same as "WHERE ..."
             super("1");
         }
 
-        public AppQuerySelection(String selection) {
+        AppQuerySelection(String selection) {
             super(selection);
         }
 
-        public AppQuerySelection(String selection, String[] args) {
+        AppQuerySelection(String selection, String[] args) {
             super(selection, args);
         }
 
-        public AppQuerySelection(String selection, List<String> args) {
+        AppQuerySelection(String selection, List<String> args) {
             super(selection, args);
         }
 

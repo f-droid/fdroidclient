@@ -638,7 +638,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     class PrepareInitialSwapRepo extends PrepareSwapRepo {
-        public PrepareInitialSwapRepo() {
+        PrepareInitialSwapRepo() {
             super(new HashSet<>(Arrays.asList(new String[] {"org.fdroid.fdroid"})));
         }
     }
@@ -664,7 +664,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         @NonNull
         protected final Context context;
 
-        public PrepareSwapRepo(@NonNull Set<String> apps) {
+        PrepareSwapRepo(@NonNull Set<String> apps) {
             context = SwapWorkflowActivity.this;
             selectedApps = apps;
             sharingUri = Utils.getSharingUri(FDroidApp.repo);

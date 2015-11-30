@@ -53,7 +53,7 @@ public class TabsAdapter extends PagerAdapter
     static class DummyTabFactory implements TabHost.TabContentFactory {
         private final Context mContext;
 
-        public DummyTabFactory(Context context) {
+        DummyTabFactory(Context context) {
             mContext = context;
         }
 

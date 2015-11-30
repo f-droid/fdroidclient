@@ -19,7 +19,7 @@ import java.util.List;
  */
 abstract class BaseApkProviderTest extends FDroidProviderTest<ApkProvider> {
 
-    public BaseApkProviderTest() {
+    BaseApkProviderTest() {
         super(ApkProvider.class, ApkProvider.getAuthority());
     }
 

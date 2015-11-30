@@ -147,17 +147,17 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     class AppObserver extends ContentObserver {
 
-        public AppObserver(Handler handler) {
+        AppObserver(Handler handler) {
             super(handler);
         }
 
         @Override
-        public void onChange(boolean selfChange) {
+        void onChange(boolean selfChange) {
             onChange(selfChange, null);
         }
 
         @Override
-        public void onChange(boolean selfChange, Uri uri) {
+        void onChange(boolean selfChange, Uri uri) {
             onAppChanged();
         }
 
@@ -168,7 +168,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private final LayoutInflater mInflater = (LayoutInflater) mctx.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
-        public ApkListAdapter(Context context, App app) {
+        ApkListAdapter(Context context, App app) {
             super(context, 0);
             final List<Apk> apks = ApkProvider.Helper.findByApp(context, app.id);
             for (final Apk apk : apks) {
@@ -344,7 +344,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         public final ApkDownloader downloader;
         public final App app;
 
-        public ConfigurationChangeHelper(ApkDownloader downloader, App app) {
+        ConfigurationChangeHelper(ApkDownloader downloader, App app) {
             this.downloader = downloader;
             this.app = app;
         }

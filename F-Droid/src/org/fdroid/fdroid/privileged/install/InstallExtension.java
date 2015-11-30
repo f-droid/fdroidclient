@@ -42,7 +42,7 @@ abstract class InstallExtension {
 
     private static final String APK_FILE_NAME = "FDroidPrivileged.apk";
 
-    public InstallExtension(final Context context) {
+    InstallExtension(final Context context) {
         this.context = context;
     }
 
@@ -133,7 +133,7 @@ abstract class InstallExtension {
 
     private static class PreKitKatImpl extends InstallExtension {
 
-        public PreKitKatImpl(Context context) {
+        PreKitKatImpl(Context context) {
             super(context);
         }
 
@@ -146,7 +146,7 @@ abstract class InstallExtension {
 
     private static class KitKatToLollipopImpl extends InstallExtension {
 
-        public KitKatToLollipopImpl(Context context) {
+        KitKatToLollipopImpl(Context context) {
             super(context);
         }
 
@@ -167,7 +167,7 @@ abstract class InstallExtension {
      */
     private static class LollipopImpl extends InstallExtension {
 
-        public LollipopImpl(Context context) {
+        LollipopImpl(Context context) {
             super(context);
         }
 

@@ -65,7 +65,7 @@ public class AvailableAppsFragment extends AppListFragment implements
 
         private final ArrayAdapter<String> adapter;
 
-        public CategoryObserver(ArrayAdapter<String> adapter) {
+        CategoryObserver(ArrayAdapter<String> adapter) {
             super(null);
             this.adapter = adapter;
         }

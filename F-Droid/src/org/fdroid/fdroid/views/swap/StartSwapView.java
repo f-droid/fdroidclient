@@ -70,7 +70,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
 
     private class PeopleNearbyAdapter extends ArrayAdapter<Peer> {
 
-        public PeopleNearbyAdapter(Context context) {
+        PeopleNearbyAdapter(Context context) {
             super(context, 0, new ArrayList<Peer>());
         }
 

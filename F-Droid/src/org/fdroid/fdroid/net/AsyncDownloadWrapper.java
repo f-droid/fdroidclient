@@ -28,7 +28,7 @@ class AsyncDownloadWrapper extends Handler implements AsyncDownloader {
      * world about completion. Therefore, we require the listener as a
      * parameter to the constructor.
      */
-    public AsyncDownloadWrapper(Downloader downloader, Listener listener) {
+    AsyncDownloadWrapper(Downloader downloader, Listener listener) {
         this.downloader = downloader;
         this.listener = listener;
     }
