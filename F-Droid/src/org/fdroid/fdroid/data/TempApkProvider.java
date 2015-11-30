@@ -89,15 +89,15 @@ public class TempApkProvider extends ApkProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        int code = matcher.match(uri);
-        if (code == CODE_INIT) {
-            initTable();
-            return null;
-        } else if (code == CODE_COMMIT) {
-            commitTable();
-            return null;
-        } else {
-            return super.insert(uri, values);
+        switch (matcher.match(uri)) {
+            case CODE_INIT:
+                initTable();
+                return null;
+            case CODE_COMMIT:
+                commitTable();
+                return null;
+            default:
+                return super.insert(uri, values);
         }
     }
 

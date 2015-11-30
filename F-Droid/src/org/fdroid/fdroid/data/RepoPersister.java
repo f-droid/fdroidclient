@@ -122,7 +122,7 @@ public class RepoPersister {
         try {
             context.getContentResolver().applyBatch(TempApkProvider.getAuthority(), apkOperations);
         } catch (RemoteException | OperationApplicationException e) {
-            throw new RepoUpdater.UpdateException(repo, "An internal error occured while updating the database", e);
+            throw new RepoUpdater.UpdateException(repo, "An internal error occurred while updating the database", e);
         }
     }
 
@@ -132,7 +132,7 @@ public class RepoPersister {
         try {
             context.getContentResolver().applyBatch(TempAppProvider.getAuthority(), appOperations);
         } catch (RemoteException | OperationApplicationException e) {
-            throw new RepoUpdater.UpdateException(repo, "An internal error occured while updating the database", e);
+            throw new RepoUpdater.UpdateException(repo, "An internal error occurred while updating the database", e);
         }
     }
 
