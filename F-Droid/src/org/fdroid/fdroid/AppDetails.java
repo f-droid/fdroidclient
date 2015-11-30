@@ -1205,7 +1205,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             final TextView summaryView = (TextView) view.findViewById(R.id.summary);
             summaryView.setText(app.summary);
 
-
             layoutLinks = (ViewGroup) view.findViewById(R.id.ll_information);
             layoutLinksContent = (ViewGroup) layoutLinks.findViewById(R.id.ll_information_content);
 

@@ -222,7 +222,6 @@ public class TestUtils {
         Context context = instrumentation.getContext();
         Context targetContext = instrumentation.getTargetContext();
 
-
         File[] dirsToTry = new File[]{
             context.getCacheDir(),
             context.getFilesDir(),

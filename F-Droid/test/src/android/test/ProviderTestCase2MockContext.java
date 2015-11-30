@@ -168,7 +168,6 @@ public abstract class ProviderTestCase2MockContext<T extends ContentProvider> ex
         }
     }
 
-
     /**
      * Gets the {@link MockContentResolver} created by this class during initialization. You
      * must use the methods of this resolver to access the provider under test.

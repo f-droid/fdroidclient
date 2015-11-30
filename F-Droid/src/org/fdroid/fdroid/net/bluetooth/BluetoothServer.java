@@ -358,5 +358,4 @@ public class BluetoothServer extends Thread {
         }
     }
 
-
 }

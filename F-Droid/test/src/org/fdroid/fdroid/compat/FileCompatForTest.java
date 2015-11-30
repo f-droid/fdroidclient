@@ -24,5 +24,4 @@ public class FileCompatForTest extends FileCompat {
         symlinkLibcore(source, dest);
     }
 
-
 }

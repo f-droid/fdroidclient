@@ -400,7 +400,6 @@ public class IntentIntegrator {
         return downloadDialog.show();
     }
 
-
     /**
      * <p>Call this from your {@link Activity}'s
      * {@link Activity#onActivityResult(int, int, Intent)} method.</p>
@@ -431,7 +430,6 @@ public class IntentIntegrator {
         }
         return null;
     }
-
 
     /**
      * Defaults to type "TEXT_TYPE".

@@ -44,8 +44,6 @@ public final class BluetoothSwap extends SwapType {
     private BluetoothSwap(@NonNull Context context, @NonNull BluetoothAdapter adapter) {
         super(context);
         this.adapter = adapter;
-
-
     }
 
     @Override

@@ -341,7 +341,6 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
         return -1;
     }
 
-
     /**
      * Check if download was valid, see issue
      * http://code.google.com/p/android/issues/detail?id=18462

@@ -116,7 +116,6 @@ public class SwapService extends Service {
         bluetoothFinder.cancel();
     }
 
-
     // ==========================================================
     //                 Manage the current step
     // ("Step" refers to the current view being shown in the UI)
@@ -287,7 +286,6 @@ public class SwapService extends Service {
     @Retention(RetentionPolicy.SOURCE)
     public @interface SwapStep { }
 
-
     // =================================================
     //    Have selected a specific peer to swap with
     //  (Rather than showing a generic QR code to scan)
@@ -311,7 +309,6 @@ public class SwapService extends Service {
     public Peer getPeer() {
         return peer;
     }
-
 
     // ==========================================
     //      Remember apps user wants to swap
@@ -372,7 +369,6 @@ public class SwapService extends Service {
         }
         persistAppsToSwap();
     }
-
 
     // =============================================================
     //   Remember which swap technologies a user used in the past
@@ -468,7 +464,6 @@ public class SwapService extends Service {
 
     public static final String ACTION_PEER_FOUND = "org.fdroid.fdroid.SwapManager.ACTION_PEER_FOUND";
     public static final String EXTRA_PEER = "EXTRA_PEER";
-
 
     // ===============================================================
     //        Old SwapService stuff being merged into that.

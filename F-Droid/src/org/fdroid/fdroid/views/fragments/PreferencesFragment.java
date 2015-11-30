@@ -320,5 +320,4 @@ public class PreferencesFragment extends PreferenceFragment
         updateSummary(key, true);
     }
 
-
 }

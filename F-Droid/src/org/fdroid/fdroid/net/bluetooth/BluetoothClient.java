@@ -23,7 +23,6 @@ public class BluetoothClient {
 
     public BluetoothConnection openConnection() throws IOException {
 
-
         BluetoothSocket socket = null;
         BluetoothConnection connection = null;
         try {
