@@ -115,7 +115,7 @@ public class TempAppProvider extends AppProvider {
     }
 
     private void commitTable() {
-        Log.d(TAG, "Deleting all apks from " + DBHelper.TABLE_APP + " so they can be copied from " + getTableName());
+        Log.i(TAG, "Deleting all apks from " + DBHelper.TABLE_APP + " so they can be copied from " + getTableName());
         write().execSQL("DELETE FROM " + DBHelper.TABLE_APP);
         write().execSQL("INSERT INTO " + DBHelper.TABLE_APP + " SELECT * FROM " + getTableName());
         getContext().getContentResolver().notifyChange(AppProvider.getContentUri(), null);

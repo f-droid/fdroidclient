@@ -111,7 +111,7 @@ public class RepoUpdater {
         } catch (IOException e) {
             if (downloader != null && downloader.getFile() != null) {
                 if (!downloader.getFile().delete()) {
-                    Log.i(TAG, "Couldn't delete file: " + downloader.getFile().getAbsolutePath());
+                    Log.w(TAG, "Couldn't delete file: " + downloader.getFile().getAbsolutePath());
                 }
             }
 
@@ -198,7 +198,7 @@ public class RepoUpdater {
             Utils.closeQuietly(indexInputStream);
             if (downloadedFile != null) {
                 if (!downloadedFile.delete()) {
-                    Log.i(TAG, "Couldn't delete file: " + downloadedFile.getAbsolutePath());
+                    Log.w(TAG, "Couldn't delete file: " + downloadedFile.getAbsolutePath());
                 }
             }
         }

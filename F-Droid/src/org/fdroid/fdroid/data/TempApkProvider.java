@@ -141,7 +141,7 @@ public class TempApkProvider extends ApkProvider {
     }
 
     private void commitTable() {
-        Log.d(TAG, "Deleting all apks from " + DBHelper.TABLE_APK + " so they can be copied from " + getTableName());
+        Log.i(TAG, "Deleting all apks from " + DBHelper.TABLE_APK + " so they can be copied from " + getTableName());
         write().execSQL("DELETE FROM " + DBHelper.TABLE_APK);
         write().execSQL("INSERT INTO " + DBHelper.TABLE_APK + " SELECT * FROM " + getTableName());
         getContext().getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
