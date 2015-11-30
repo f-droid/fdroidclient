@@ -39,7 +39,12 @@
         <!--<module name="MethodLength" />-->
         <!--<module name="ParameterNumber" />-->
 
-        <module name="Indentation" />
+        <module name="Indentation">
+            <!--TODO: 8 spaces on wrapped funcs, 4 for arrays-->
+            <!--<property name="lineWrappingIndentation" value="4" />-->
+            <!--<property name="arrayInitIndent" value="0" />-->
+            <!--<property name="forceStrictCondition" value="true" />-->
+        </module>
         <module name="EmptyLineSeparator">
             <property name="allowNoEmptyLineBetweenFields" value="true" />
             <property name="allowMultipleEmptyLines" value="false" />
