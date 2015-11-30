@@ -54,18 +54,14 @@ public class RepoUpdater {
     public static final String PROGRESS_COMMITTING = "committing";
     public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
 
-    @NonNull
-    protected final Context context;
-    @NonNull
-    protected final Repo repo;
+    @NonNull protected final Context context;
+    @NonNull protected final Repo repo;
     protected boolean hasChanged;
-    @Nullable
-    protected ProgressListener progressListener;
+    @Nullable protected ProgressListener progressListener;
     private String cacheTag;
     private X509Certificate signingCertFromJar;
 
-    @NonNull
-    private final RepoPersister persister;
+    @NonNull private final RepoPersister persister;
 
     /**
      * Updates an app repo as read out of the database into a {@link Repo} instance.
