@@ -66,6 +66,7 @@
 
         <module name="ModifierOrder" />
         <module name="RedundantModifier" />
+        <module name="AnnotationLocation" />
 
         <module name="AvoidNestedBlocks" />
         <module name="LeftCurly" />
