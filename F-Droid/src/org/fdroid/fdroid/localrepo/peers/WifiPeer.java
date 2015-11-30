@@ -51,7 +51,6 @@ public class WifiPeer implements Peer {
         return shouldPromptForSwapBack;
     }
 
-
     @Override
     public int describeContents() {
         return 0;

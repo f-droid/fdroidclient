@@ -42,7 +42,7 @@
         <module name="Indentation" />
         <module name="EmptyLineSeparator">
             <property name="allowNoEmptyLineBetweenFields" value="true" />
-            <!--<property name="allowMultipleEmptyLines" value="false" />-->
+            <property name="allowMultipleEmptyLines" value="false" />
         </module>
         <module name="SeparatorWrap">
             <property name="tokens" value="COMMA" />

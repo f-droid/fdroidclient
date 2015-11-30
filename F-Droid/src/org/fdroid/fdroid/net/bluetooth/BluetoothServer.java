@@ -195,7 +195,6 @@ public class BluetoothServer extends Thread {
 
         }
 
-
         private Response respond(Map<String, String> headers, String uri) {
             // Remove URL arguments
             uri = uri.trim().replace(File.separatorChar, '/');

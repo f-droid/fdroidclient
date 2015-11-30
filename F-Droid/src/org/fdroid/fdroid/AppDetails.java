@@ -329,7 +329,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     private final Context mctx = this;
     private Installer installer;
 
-
     private AppDetailsHeaderFragment mHeaderFragment;
 
     /**
@@ -553,7 +552,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     }
 
-
     @Override
     public Object onRetainCustomNonConfigurationInstance() {
         inProcessOfChangingConfiguration = true;
@@ -664,7 +662,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
         return true;
     }
-
 
     private void tryOpenUri(String s) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
