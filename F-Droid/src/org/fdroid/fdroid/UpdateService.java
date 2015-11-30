@@ -508,7 +508,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         String repoAddress = event.getData().getString(RepoUpdater.PROGRESS_DATA_REPO_ADDRESS);
         String downloadedSize = Utils.getFriendlySize(event.progress);
         String totalSize = Utils.getFriendlySize(event.total);
-        int percent = (int) ((double) event.progress / event.total * 100);
+        int percent = event.total > 0 ? (int) ((double) event.progress / event.total * 100) : -1;
         switch (event.type) {
             case RepoUpdater.PROGRESS_TYPE_PROCESS_XML:
                 message = getString(R.string.status_processing_xml_percent, repoAddress, downloadedSize, totalSize, percent);
