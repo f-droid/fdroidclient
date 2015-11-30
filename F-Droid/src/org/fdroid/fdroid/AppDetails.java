@@ -152,12 +152,12 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         @Override
-        void onChange(boolean selfChange) {
+        public void onChange(boolean selfChange) {
             onChange(selfChange, null);
         }
 
         @Override
-        void onChange(boolean selfChange, Uri uri) {
+        public void onChange(boolean selfChange, Uri uri) {
             onAppChanged();
         }
 
