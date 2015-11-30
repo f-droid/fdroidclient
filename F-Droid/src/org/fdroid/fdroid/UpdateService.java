@@ -237,6 +237,8 @@ public class UpdateService extends IntentService implements ProgressListener {
                         .setCategory(NotificationCompat.CATEGORY_SERVICE);
                     if (progress != -1) {
                         notificationBuilder.setProgress(100, progress, false);
+                    } else {
+                        notificationBuilder.setProgress(100, 0, true);
                     }
                     notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
                     break;
