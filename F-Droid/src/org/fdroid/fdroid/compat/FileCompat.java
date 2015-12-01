@@ -118,13 +118,13 @@ public class FileCompat extends Compatibility {
     }
 
     @TargetApi(9)
-    public static boolean setExecutable(SanitizedFile file, boolean readable, boolean ownerOnly) {
+    public static boolean setExecutable(SanitizedFile file, boolean executable, boolean ownerOnly) {
 
         if (hasApi(9)) {
-            return file.setExecutable(readable, ownerOnly);
+            return file.setExecutable(executable, ownerOnly);
         }
         String mode;
-        if (readable) {
+        if (executable) {
             mode = ownerOnly ? "0700" : "0711";
         } else {
             mode = ownerOnly ? "0600" : "0600";
