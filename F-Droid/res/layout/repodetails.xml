@@ -13,80 +13,56 @@
 
         <!-- URL of this repo -->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/repo_url"
-            style="@style/RepoDetailsCaption"/>
+            style="@style/CaptionText" />
         <TextView
             android:id="@+id/input_repo_url"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/RepoDetailsBody"/>
+            style="@style/BodyText" />
 
         <!-- Name of this repo -->
         <TextView
             android:id="@+id/label_repo_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/repo_name"
-            style="@style/RepoDetailsCaption"/>
+            style="@style/CaptionText" />
         <TextView
             android:id="@+id/text_repo_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/RepoDetailsBody"/>
+            style="@style/BodyText" />
 
         <!-- Description - as pulled from the index file during last update... -->
         <TextView
             android:id="@+id/label_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/repo_description"
-            style="@style/RepoDetailsCaption"/>
+            style="@style/CaptionText" />
         <TextView
             android:id="@+id/text_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/RepoDetailsBody"/>
+            style="@style/BodyText" />
 
         <!-- Number of apps belonging to this repo -->
         <TextView
             android:id="@+id/label_num_apps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/repo_num_apps"
-            style="@style/RepoDetailsCaption"/>
+            style="@style/CaptionText" />
         <TextView
             android:id="@+id/text_num_apps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/RepoDetailsBody"/>
+            style="@style/BodyText" />
 
         <!-- The last time this repo was updated -->
         <TextView
             android:id="@+id/label_last_update"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/repo_last_update"
-            style="@style/RepoDetailsCaption"/>
+            style="@style/CaptionText" />
         <TextView
             android:id="@+id/text_last_update"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/RepoDetailsBody"/>
+            style="@style/BodyText" />
 
         <!-- The credentials used to access this repo (optional) -->
         <TextView
             android:id="@+id/label_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/login_name"
-            style="@style/RepoDetailsCaption"/>
+            style="@style/CaptionText" />
         <TextView
             android:id="@+id/text_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/RepoDetailsBody"/>
+            style="@style/BodyText" />
         <Button
             android:id="@+id/button_edit_credentials"
             android:layout_height="wrap_content"
@@ -97,28 +73,20 @@
         <!-- Signature (or "unsigned" if none) -->
         <TextView
             android:id="@+id/label_repo_fingerprint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/repo_fingerprint"
-            style="@style/RepoDetailsCaption"/>
+            style="@style/CaptionText" />
         <TextView
             android:id="@+id/text_repo_fingerprint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:typeface="monospace"
-            style="@style/RepoDetailsBody"/>
+            style="@style/BodyText" />
         <TextView
             android:id="@+id/text_repo_fingerprint_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/RepoDetailsBody"/>
+            style="@style/BodyText" />
 
         <TextView
             android:id="@+id/text_not_yet_updated"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/repo_not_yet_updated"
-            style="@style/RepoDetailsBody"/>
+            style="@style/BodyText" />
 
         <ImageView
             android:id="@+id/qr_code"

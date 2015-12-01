@@ -52,14 +52,24 @@
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
-    <style name="RepoDetailsCaption">
+    <!-- use this style for a text view that is a caption to a paragraph of text -->
+    <style name="CaptionTextBase">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingBottom">4dp</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Caption</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
+    <style name="CaptionText" parent="CaptionTextBase" />
 
-    <style name="RepoDetailsBody" />
+    <!-- use this style for a text views that is a paragraph of text -->
+    <style name="BodyTextBase">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+    </style>
+    <style name="BodyText" parent="BodyTextBase" />
 
     <style name="AppList">
         <item name="android:id">@android:id/list</item>
