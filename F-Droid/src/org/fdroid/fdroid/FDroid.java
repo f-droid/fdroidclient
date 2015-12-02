@@ -355,6 +355,7 @@ public class FDroid extends ActionBarActivity {
 
     private void refreshUpdateTabLabel() {
         getTabManager().refreshTabLabel(TabManager.INDEX_CAN_UPDATE);
+        getTabManager().refreshTabLabel(TabManager.INDEX_INSTALLED);
     }
 
     public void removeNotification(int id) {

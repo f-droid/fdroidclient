@@ -24,11 +24,14 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
         this.parent = parent;
     }
 
+    private String getInstalledTabTitle() {
+        int installedCount = AppProvider.Helper.count(parent, AppProvider.getInstalledUri());
+        return parent.getString(R.string.tab_installed_apps_i18n, installedCount);
+    }
+
     private String getUpdateTabTitle() {
         int updateCount = AppProvider.Helper.count(parent, AppProvider.getCanUpdateUri());
-
-        // TODO: Make RTL friendly, probably by having a different string for both tab_updates_none and tab_updates
-        return parent.getString(R.string.tab_updates) + " (" + updateCount + ")";
+        return parent.getString(R.string.tab_updates_i18n, updateCount);
     }
 
     @Override
@@ -54,7 +57,7 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
             case TabManager.INDEX_AVAILABLE:
                 return parent.getString(R.string.tab_available_apps);
             case TabManager.INDEX_INSTALLED:
-                return parent.getString(R.string.tab_installed_apps);
+                return getInstalledTabTitle();
             case TabManager.INDEX_CAN_UPDATE:
                 return getUpdateTabTitle();
             default:
