@@ -43,7 +43,7 @@ public class AvailableAppsFragment extends AppListFragment implements
 
     @Override
     protected String getFromTitle() {
-        return "Available";
+        return getString(R.string.tab_available_apps);
     }
 
     @Override

@@ -333,5 +333,4 @@
 
     <string name="tab_installed_apps_i18n">Installation (%d)</string>
     <string name="tab_updates_i18n">Mise à jour (%d)</string>
-    <string name="installed_title">Installé</string>
-</resources>
+    </resources>

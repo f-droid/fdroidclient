@@ -332,5 +332,4 @@
 
     <string name="tab_installed_apps_i18n">ｲﾝｽﾄｰﾙ済 (%d)</string>
     <string name="tab_updates_i18n">更新 (%d)</string>
-    <string name="installed_title">ｲﾝｽﾄｰﾙ済</string>
-</resources>
+    </resources>

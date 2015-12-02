@@ -20,7 +20,7 @@ public class CanUpdateAppsFragment extends AppListFragment {
 
     @Override
     protected String getFromTitle() {
-        return getString(R.string.updates);
+        return getString(R.string.tab_updates);
     }
 
     @Override
