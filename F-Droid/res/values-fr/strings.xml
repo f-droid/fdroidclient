@@ -331,4 +331,7 @@
     <string name="repo_edit_credentials">Modifier le mot de passe</string>
     <string name="repo_error_empty_username">Utilisateur non renseigné, aucune modification n\'a été effectuée</string>
 
-    </resources>
+    <string name="tab_installed_apps_i18n">Installation (%d)</string>
+    <string name="tab_updates_i18n">Mise à jour (%d)</string>
+    <string name="installed_title">Installé</string>
+</resources>
