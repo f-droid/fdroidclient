@@ -81,8 +81,8 @@
     <string name="tab_available_apps">Available</string>
     <string name="tab_installed_apps">Installed</string>
     <string name="tab_updates">Updates</string>
-    <string name="tab_installed_apps_i18n">Installed (%d)</string>
-    <string name="tab_updates_i18n">Updates (%d)</string>
+    <string name="tab_installed_apps_count">Installed (%d)</string>
+    <string name="tab_updates_count">Updates (%d)</string>
     <string name="one_update_available">1 update is available.</string>
     <string name="many_updates_available">%d updates are available.</string>
     <string name="fdroid_updates_available">F-Droid Updates Available</string>

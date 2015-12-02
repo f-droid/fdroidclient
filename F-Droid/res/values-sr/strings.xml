@@ -325,6 +325,4 @@
     <string name="repo_edit_credentials">Измени лозинку</string>
     <string name="repo_error_empty_username">Празно корисничко име, акредитиви нису измењени</string>
 
-    <string name="tab_installed_apps_i18n">Инсталиране (%d)</string>
-    <string name="tab_updates_i18n">Надоградње (%d)</string>
     </resources>

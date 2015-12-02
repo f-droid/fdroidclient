@@ -26,12 +26,12 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private String getInstalledTabTitle() {
         int installedCount = AppProvider.Helper.count(parent, AppProvider.getInstalledUri());
-        return parent.getString(R.string.tab_installed_apps_i18n, installedCount);
+        return parent.getString(R.string.tab_installed_apps_count, installedCount);
     }
 
     private String getUpdateTabTitle() {
         int updateCount = AppProvider.Helper.count(parent, AppProvider.getCanUpdateUri());
-        return parent.getString(R.string.tab_updates_i18n, updateCount);
+        return parent.getString(R.string.tab_updates_count, updateCount);
     }
 
     @Override
