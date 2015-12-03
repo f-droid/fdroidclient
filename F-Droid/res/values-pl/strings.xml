@@ -155,7 +155,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="notify_on">Wyświetlaj powiadomienie gdy znalezione zostaną nowe aktualizacje</string>
     <string name="uninstall_system">Aktualizuj/Odinstaluj Uprzywilejowany dodatek F-Droida</string>
     <string name="uninstall_system_summary">Pokaż szczegóły Uprzywilejowanego dodatku</string>
-    <string name="about_desc">Oryginalnie bazuje na Aptiode.\nWydano pod licencją GNU GPLv3.</string>
     <string name="about_mail">Email:</string>
     <string name="app_incompatible">Niekompatybilne</string>
     <string name="app_installed">Zainstalowano</string>

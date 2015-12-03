@@ -31,9 +31,6 @@
   <string name="app_details">Detaily aplikácie</string>
   <string name="no_such_app">Aplikácia sa nenašla.</string>
   <string name="about_title">O F-Droide</string>
-  <string name="about_desc">Pôvodne založený na Aptoide.
-Vydaný pod licenciou
-        GNU GPLv3.</string>
   <string name="about_site">Webstránka:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Verzia:</string>

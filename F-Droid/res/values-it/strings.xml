@@ -31,8 +31,6 @@
   <string name="app_details">Dettagli App</string>
   <string name="no_such_app">Nessuna app corrispondente trovata</string>
   <string name="about_title">Informazioni</string>
-  <string name="about_desc">Basato su Aptoide.
-Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="about_site">Sito Web:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Versione:</string>

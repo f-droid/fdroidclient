@@ -31,7 +31,6 @@
   <string name="app_details">ｱﾌﾟﾘ詳細</string>
   <string name="no_such_app">該当するｱﾌﾟﾘｹｰｼｮﾝが存在しません｡</string>
   <string name="about_title">F-Droidについて</string>
-  <string name="about_desc">Aptoideを基にしています。\nGNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="about_site">Webｻｲﾄ:</string>
   <string name="about_mail">電子ﾒｰﾙ:</string>
   <string name="about_version">ﾊﾞｰｼﾞｮﾝ:</string>

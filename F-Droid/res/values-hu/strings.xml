@@ -23,10 +23,6 @@
   <string name="app_details">App részletei</string>
   <string name="no_such_app">Nem található ilyen app</string>
   <string name="about_title">Az F-Droid</string>
-  <string name="about_desc">\"Eredetileg az Aptoide alapján.
-Kiadva GNU GPLv3 licensz alatt.
-
-Honosítás: gidano | sympda.info\"</string>
   <string name="about_site">Weboldal:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Verzió:</string>

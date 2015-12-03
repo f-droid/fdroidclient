@@ -28,8 +28,6 @@
   <string name="app_details">Detaily aplikace</string>
   <string name="no_such_app">Žádná taková aplikace nebyla nalezena.</string>
   <string name="about_title">O aplikaci F-Droid</string>
-  <string name="about_desc">Původně založeno na Aptoide.
-Uvolněno pod GPLv3 licencí.</string>
   <string name="about_site">Webová stránka:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Verze:</string>

@@ -31,8 +31,6 @@
   <string name="app_details">Uygulama Detayları</string>
   <string name="no_such_app">Böyle bir uygulama bulunamadı</string>
   <string name="about_title">F-Droid Hakkında</string>
-  <string name="about_desc">Aptoide\'den türetilmiştir.
-GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="about_site">Ağ sitesi:</string>
   <string name="about_mail">E-posta:</string>
   <string name="about_version">Sürüm:</string>

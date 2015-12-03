@@ -31,7 +31,6 @@
   <string name="app_details">Detaljer för app</string>
   <string name="no_such_app">Hittade ingen sådan app.</string>
   <string name="about_title">Om F-Droid</string>
-  <string name="about_desc">Ursprungligen baserad på Aptoide.\nSläppt under GNU GPLv3-licensen.</string>
   <string name="about_site">Hemsida:</string>
   <string name="about_mail">E-postadress:</string>
   <string name="about_version">Version:</string>

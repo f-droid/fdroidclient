@@ -25,8 +25,6 @@
   <string name="app_details">Λεπτομέρειες Εφαρμογής</string>
   <string name="no_such_app">Δεν βρέθηκε τέτοια εφαρμογή.</string>
   <string name="about_title">Σχετικά με το F-Droid</string>
-  <string name="about_desc">Αρχικά βασιζόταν στο Aptoide.
-Κυκλοφόρεί υπό την άδεια GNU GPLv3.</string>
   <string name="about_site">Ιστοσελίδα:</string>
   <string name="about_mail">Ηλ. ταχυδρομείο:</string>
   <string name="about_version">Έκδοση:</string>

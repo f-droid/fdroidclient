@@ -31,8 +31,6 @@
   <string name="app_details">Detalles d\'aplicación</string>
   <string name="no_such_app">Nun s\'alcontraron aplicaciones.</string>
   <string name="about_title">Tocante a F-Droid</string>
-  <string name="about_desc">Basáu orixinalmente n\'Aptoide.
-\nLlanzáu so la llicencia GNU GPLv3.</string>
   <string name="about_site">Sitiu web:</string>
   <string name="about_mail">Corréu:</string>
   <string name="about_version">Versión:</string>
