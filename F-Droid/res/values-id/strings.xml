@@ -41,8 +41,6 @@
     <string name="about_site">Situs Web:</string>
     <string name="about_source">Sumber:</string>
     <string name="about_mail">Surel:</string>
-    <string name="about_desc">Mulanya berdasarkan pada Aptoide.\nDirilis di bawah lisensi lisensi GNU GPLv3.</string>
-
     <string name="app_incompatible">Tidak kompatibel</string>
     <string name="app_installed">Terpasang</string>
     <string name="app_not_installed">Tidak Terpasang</string>

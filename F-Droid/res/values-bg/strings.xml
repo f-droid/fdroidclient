@@ -30,8 +30,6 @@
   <string name="app_details">Детайли за приложението</string>
   <string name="no_such_app">Не е намерено такова приложение.</string>
   <string name="about_title">Относно F-Droid</string>
-  <string name="about_desc">Първоначално базиран на Aptoide.
-Лицензиран под GNU GPLv3.</string>
   <string name="about_site">Уебсайт:</string>
   <string name="about_mail">Имейл:</string>
   <string name="about_version">Версия:</string>

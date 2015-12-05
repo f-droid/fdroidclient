@@ -31,8 +31,6 @@
   <string name="app_details">Détails de l\'app</string>
   <string name="no_such_app">Pas d\'app trouvée.</string>
   <string name="about_title">À propos de F-Droid</string>
-  <string name="about_desc">Initialement basée sur Aptoide.
-\nPubliée sous licence GNU GPLv3.</string>
   <string name="about_site">Site web :</string>
   <string name="about_mail">Courriel :</string>
   <string name="about_version">Version :</string>

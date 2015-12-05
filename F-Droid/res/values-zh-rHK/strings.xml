@@ -27,7 +27,6 @@
   <string name="app_details">應用程式詳細資料</string>
   <string name="no_such_app">找不到這樣的應用程式。</string>
   <string name="about_title">關於 F-Droid</string>
-  <string name="about_desc">原始碼源自 Aptoide，\n以 GNU GPL 第三版特許條款發行。</string>
   <string name="about_site">網站：</string>
   <string name="about_mail">電郵：</string>
   <string name="about_version">版本：</string>

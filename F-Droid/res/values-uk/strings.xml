@@ -227,8 +227,6 @@
     <string name="perm_costs_money">Це може вам коштувати грошей</string>
     <string name="unstable_updates_summary">Пропонувати оновлення до нестабільних версій</string>
     <string name="local_repo_name_summary">Ваш локальний репозиторії пропонується під назвою: %s</string>
-    <string name="about_desc">Оснований на Aptoide.\nВипущено під ліцензією GNU GPLv3.</string>
-
     <string name="app_incompatible">Несумісний</string>
     <string name="bluetooth_activity_not_found">Жодного методу надсилання по Bluetooth не знайдено, оберіть один з них!</string>
     <string name="choose_bt_send">Оберіть метод надсилання через Bluetooth</string>

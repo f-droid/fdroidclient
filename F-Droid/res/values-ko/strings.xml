@@ -31,8 +31,6 @@
   <string name="app_details">앱 상세정보</string>
   <string name="no_such_app">앱이 발견되지 않음</string>
   <string name="about_title">F-Droid 대하여</string>
-  <string name="about_desc">Aptoide에 기반합니다.
-GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="about_site">웹사이트:</string>
   <string name="about_mail">이메일:</string>
   <string name="about_version">버전:</string>

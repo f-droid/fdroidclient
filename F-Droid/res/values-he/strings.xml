@@ -34,8 +34,6 @@
     <string name="no_such_app">לא נמצאה אפליקציה.</string>
 
     <string name="about_title">אודות F-Droid</string>
-    <string name="about_desc">מבוססת במקור על Aptoide.\nמשוחררת תחת הרשיון
-        GNU GPLv3.</string>
     <string name="about_site">אתר רשת:</string>
     <string name="about_mail">דוא״ל:</string>
     <string name="about_version">גרסה:</string>

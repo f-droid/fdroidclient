@@ -31,9 +31,6 @@
   <string name="app_details">Sovelluksen tiedot</string>
   <string name="no_such_app">Sovellusta ei löytynyt</string>
   <string name="about_title">Tietoa F-Droidista</string>
-  <string name="about_desc">Pohjautuu alkujaan Aptoideen.
-Julkaistu GNU GPLv3 -lisenssin
-käyttöehtojen mukaisesti.</string>
   <string name="about_site">Verkkosivu:</string>
   <string name="about_mail">Sähköposti:</string>
   <string name="about_version">Versio:</string>

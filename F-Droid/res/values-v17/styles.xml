@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="CaptionTextV17" parent="CaptionTextBase">
+        <item name="android:textDirection">locale</item>
+    </style>
+    <style name="CaptionText" parent="CaptionTextV17" />
+
+    <style name="BodyTextV17" parent="BodyTextV16">
+        <item name="android:textDirection">locale</item>
+    </style>
+    <style name="BodyText" parent="BodyTextV17" />
+
+</resources>

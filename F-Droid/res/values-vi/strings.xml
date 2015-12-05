@@ -30,7 +30,6 @@
   <string name="app_details">Thông tin ứng dụng</string>
   <string name="no_such_app">Không tìm thấy ứng dụng.</string>
   <string name="about_title">Giới thiệu về F-Droid</string>
-  <string name="about_desc">Được xây dựng dựa trên Aptoide. Phát hành theo giấy phép GNU GPLv3.</string>
   <string name="about_site">Trang web:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Phiên bản:</string>

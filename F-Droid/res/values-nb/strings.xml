@@ -31,8 +31,6 @@
   <string name="app_details">Programdetaljer</string>
   <string name="no_such_app">Program ikke funnet.</string>
   <string name="about_title">Om F-Droid</string>
-  <string name="about_desc">Basert på Aptoide.
-Lisensiert GNU GPLv3.</string>
   <string name="about_site">Nettside:</string>
   <string name="about_mail">E-post:</string>
   <string name="about_version">Versjon:</string>

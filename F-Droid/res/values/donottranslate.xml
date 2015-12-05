@@ -4,6 +4,7 @@
     <string name="site_link">https://f-droid.org</string>
     <string name="source_link">https://gitlab.com/fdroid/fdroidclient</string>
     <string name="team_email">team@f-droid.org</string>
+    <string name="license_gplv3_later">GNU General Public License version\u00A03 or later</string>
 
     <string name="https">https://</string>
 
