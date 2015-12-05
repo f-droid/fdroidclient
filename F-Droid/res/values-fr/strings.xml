@@ -97,7 +97,7 @@
   <string name="search_hint">Rechercher des applications</string>
   <string name="appcompatibility">Compatibilité des applications</string>
   <string name="show_incompat_versions">Versions incompatibles</string>
-  <string name="show_incompat_versions_on">Afficher les versions d\'apps incompatibles avec l\'appareil</string>
+  <string name="show_incompat_versions_on">Afficher les versions d\'apps incompatibles avec cet appareil</string>
   <string name="rooted">Ignorer root</string>
   <string name="rooted_on">Ne pas griser les apps nécessitant les privilèges root</string>
   <string name="ignoreTouch">Ignorer l\'écran tactile</string>
@@ -166,7 +166,7 @@
   <string name="category_System">Système</string>
   <string name="requesting_root_access_body">Demande d\'accès aux privilèges root…</string>
   <string name="root_access_denied_title">Privilèges root refusés</string>
-  <string name="root_access_denied_body">Soit vous n\'avez pas accès aux privilèges root sur cet appareil Android, soit vous les avez refusés à F-Droid.</string>
+  <string name="root_access_denied_body">Soit vous n\'avez pas accès aux privilèges root sur ce système Android, soit vous les avez refusés à F-Droid.</string>
   <string name="system_install_denied_title">F-Droid - Extension des Privilèges n\'est pas disponible</string>
   <string name="system_install_denied_body">Cette option est seulement disponible quand F-Droid - Extension des Privilèges est installée.</string>
   <string name="app_description">F-Droid est un catalogue d\'applications libres et open source pour le système Android. Le client permet de facilement naviguer, installer et garder une trace des mises à jour sur votre appareil.</string>
@@ -281,7 +281,7 @@
     <string name="swap_qr_isnt_for_swap">Le code QR que vous avez scanné ne ressemble pas à un code d\'échange.</string>
     <string name="bluetooth_unavailable">Bluetooth indisponible</string>
     <string name="swap_cant_send_no_bluetooth">Impossible d\'envoyer F-Droid : le Bluetooth n\'est pas disponible sur cet appareil.</string>
-    <string name="swap_not_enabled_description">Votre appareil doit être visible avant de commencer l\'échange.</string>
+    <string name="swap_not_enabled_description">Votre appareil doit être visible avant de pouvoir commencer l\'échange.</string>
 
     <string name="interval_1h">Toutes les heures</string>
     <string name="perms_description_app">Fourni par %1$s.</string>
@@ -316,7 +316,7 @@
 
     <string name="swap_cant_find_peers">Vous n\'arrivez pas à trouver ce que vous cherchez ?</string>
     <string name="swap_attempt_install">Essayer d\'installer</string>
-    <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, on dirait que nous ne pouvons pas faire d\'échange avec.</string>
+    <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, il semblerait que nous ne puissions pas faire d\'échange avec.</string>
     <string name="swap_not_enabled">Échange désactivé</string>
     <string name="category_Time">Temps</string>
     <string name="more">Plus</string>
@@ -331,4 +331,6 @@
     <string name="repo_edit_credentials">Modifier le mot de passe</string>
     <string name="repo_error_empty_username">Utilisateur non renseigné, aucune modification n\'a été effectuée</string>
 
+    <string name="tab_installed_apps_count">Installé (%d)</string>
+    <string name="tab_updates_count">Mises à jour (%d)</string>
     </resources>

@@ -331,4 +331,6 @@ Intregadu cun sa litzèntzia
     <string name="repo_edit_credentials">Modìfica sa crae</string>
     <string name="repo_error_empty_username">Nùmene impreadore bòidu, credentziales non cambiadas</string>
 
+    <string name="tab_installed_apps_count">Installadas (%d)</string>
+    <string name="tab_updates_count">Agiornamentos (%d)</string>
     </resources>

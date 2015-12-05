@@ -330,4 +330,6 @@
     <string name="repo_edit_credentials">ﾊﾟｽﾜｰﾄﾞを変更</string>
     <string name="repo_error_empty_username">ﾕｰｻﾞｰ名が空です。資格情報は変更されていません</string>
 
+    <string name="tab_installed_apps_count">ｲﾝｽﾄｰﾙ済 (%d)</string>
+    <string name="tab_updates_count">更新 (%d)</string>
     </resources>

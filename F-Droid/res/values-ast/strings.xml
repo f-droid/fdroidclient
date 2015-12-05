@@ -331,4 +331,6 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="repo_edit_credentials">Camudar contraseña</string>
     <string name="repo_error_empty_username">Nome d\'usuariu baleru, nun se camudaron les credenciales</string>
 
+    <string name="tab_installed_apps_count">Instalaes (%d)</string>
+    <string name="tab_updates_count">Anovamientos (%d)</string>
     </resources>
