@@ -5,10 +5,12 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoPersister;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderFactory;
@@ -24,7 +26,6 @@ import java.net.URL;
 import java.security.CodeSigner;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.jar.JarEntry;
@@ -35,8 +36,11 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 /**
- * Handles getting the index metadata for an app repo, then verifying the
- * signature on the index metdata, implementing as a JAR signature.
+ * Responsible for updating an individual repository. This will:
+ *  * Download the index.jar
+ *  * Verify that it is signed correctly and by the correct certificate
+ *  * Parse the index.xml from the .jar file
+ *  * Save the resulting repo, apps, and apks to the database.
  *
  * <b>WARNING</b>: this class is the central piece of the entire security model of
  * FDroid!  Avoid modifying it when possible, if you absolutely must, be very,
@@ -47,23 +51,27 @@ public class RepoUpdater {
     private static final String TAG = "RepoUpdater";
 
     public static final String PROGRESS_TYPE_PROCESS_XML = "processingXml";
+    public static final String PROGRESS_COMMITTING = "committing";
     public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
 
     @NonNull protected final Context context;
     @NonNull protected final Repo repo;
-    private List<App> apps = new ArrayList<>();
-    private List<Apk> apks = new ArrayList<>();
-    private RepoUpdateRememberer rememberer;
     protected boolean hasChanged;
     @Nullable protected ProgressListener progressListener;
+    private String cacheTag;
+    private X509Certificate signingCertFromJar;
+
+    @NonNull private final RepoPersister persister;
 
     /**
      * Updates an app repo as read out of the database into a {@link Repo} instance.
+     *
      * @param repo A {@link Repo} read out of the local database
      */
     public RepoUpdater(@NonNull Context context, @NonNull Repo repo) {
         this.context = context;
         this.repo = repo;
+        this.persister = new RepoPersister(context, repo);
     }
 
     public void setProgressListener(@Nullable ProgressListener progressListener) {
@@ -74,15 +82,7 @@ public class RepoUpdater {
         return hasChanged;
     }
 
-    public List<App> getApps() {
-        return apps;
-    }
-
-    public List<Apk> getApks() {
-        return apks;
-    }
-
-    private URL getIndexAddress() throws MalformedURLException {
+    protected URL getIndexAddress() throws MalformedURLException {
         String urlString = repo.address + "/index.jar";
         String versionName = Utils.getVersionName(context);
         if (versionName != null) {
@@ -110,7 +110,9 @@ public class RepoUpdater {
 
         } catch (IOException e) {
             if (downloader != null && downloader.getFile() != null) {
-                downloader.getFile().delete();
+                if (!downloader.getFile().delete()) {
+                    Log.w(TAG, "Couldn't delete file: " + downloader.getFile().getAbsolutePath());
+                }
             }
 
             throw new UpdateException(repo, "Error getting index file", e);
@@ -133,11 +135,34 @@ public class RepoUpdater {
         if (hasChanged) {
             // Don't worry about checking the status code for 200. If it was a
             // successful download, then we will have a file ready to use:
-            processDownloadedFile(downloader.getFile(), downloader.getCacheTag());
+            cacheTag = downloader.getCacheTag();
+            processDownloadedFile(downloader.getFile());
         }
     }
 
-    protected void processDownloadedFile(File downloadedFile, String cacheTag) throws UpdateException {
+    private ContentValues repoDetailsToSave;
+    private String signingCertFromIndexXml;
+
+    private RepoXMLHandler.IndexReceiver createIndexReceiver() {
+        return new RepoXMLHandler.IndexReceiver() {
+            @Override
+            public void receiveRepo(String name, String description, String signingCert, int maxAge, int version) {
+                signingCertFromIndexXml = signingCert;
+                repoDetailsToSave = prepareRepoDetailsForSaving(name, description, maxAge, version);
+            }
+
+            @Override
+            public void receiveApp(App app, List<Apk> packages) {
+                try {
+                    persister.saveToDb(app, packages);
+                } catch (UpdateException e) {
+                    throw new RuntimeException("Error while saving repo details to database.", e);
+                }
+            }
+        };
+    }
+
+    public void processDownloadedFile(File downloadedFile) throws UpdateException {
         InputStream indexInputStream = null;
         try {
             if (downloadedFile == null || !downloadedFile.exists())
@@ -151,94 +176,84 @@ public class RepoUpdater {
             JarFile jarFile = new JarFile(downloadedFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                    progressListener, repo, (int) indexEntry.getSize());
+                progressListener, repo, (int) indexEntry.getSize());
 
             // Process the index...
             final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
             final XMLReader reader = parser.getXMLReader();
-            final RepoXMLHandler repoXMLHandler = new RepoXMLHandler(repo);
+            final RepoXMLHandler repoXMLHandler = new RepoXMLHandler(repo, createIndexReceiver());
             reader.setContentHandler(repoXMLHandler);
             reader.parse(new InputSource(indexInputStream));
 
-            /* JarEntry can only read certificates after the file represented by that JarEntry
-             * has been read completely, so verification cannot run until now... */
-            X509Certificate certFromJar = getSigningCertFromJar(indexEntry);
+            signingCertFromJar = getSigningCertFromJar(indexEntry);
 
-            String certFromIndexXml = repoXMLHandler.getSigningCertFromIndexXml();
-
-            // no signing cert read from database, this is the first use
-            if (repo.pubkey == null) {
-                verifyAndStoreTOFUCerts(certFromIndexXml, certFromJar);
-            }
-            verifyCerts(certFromIndexXml, certFromJar);
-
-            apps = repoXMLHandler.getApps();
-            apks = repoXMLHandler.getApks();
-
-            rememberer = new RepoUpdateRememberer();
-            rememberer.context = context;
-            rememberer.repo = repo;
-            rememberer.values = prepareRepoDetailsForSaving(repoXMLHandler, cacheTag);
+            // JarEntry can only read certificates after the file represented by that JarEntry
+            // has been read completely, so verification cannot run until now...
+            assertSigningCertFromXmlCorrect();
+            commitToDb();
         } catch (SAXException | ParserConfigurationException | IOException e) {
             throw new UpdateException(repo, "Error parsing index", e);
         } finally {
             FDroidApp.enableSpongyCastleOnLollipop();
             Utils.closeQuietly(indexInputStream);
             if (downloadedFile != null) {
-                downloadedFile.delete();
+                if (!downloadedFile.delete()) {
+                    Log.w(TAG, "Couldn't delete file: " + downloadedFile.getAbsolutePath());
+                }
             }
         }
+    }
+
+    private void commitToDb() throws UpdateException {
+        Log.i(TAG, "Repo signature verified, saving app metadata to database.");
+        if (progressListener != null) {
+            progressListener.onProgress(new ProgressListener.Event(PROGRESS_COMMITTING));
+        }
+        persister.commit(repoDetailsToSave);
+    }
+
+    private void assertSigningCertFromXmlCorrect() throws SigningException {
+
+        // no signing cert read from database, this is the first use
+        if (repo.pubkey == null) {
+            verifyAndStoreTOFUCerts(signingCertFromIndexXml, signingCertFromJar);
+        }
+        verifyCerts(signingCertFromIndexXml, signingCertFromJar);
+
     }
 
     /**
      * Update tracking data for the repo represented by this instance (index version, etag,
      * description, human-readable name, etc.
      */
-    private ContentValues prepareRepoDetailsForSaving(RepoXMLHandler handler, String etag) {
+    private ContentValues prepareRepoDetailsForSaving(String name, String description, int maxAge, int version) {
         ContentValues values = new ContentValues();
 
         values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatTime(new Date(), ""));
 
-        if (repo.lastetag == null || !repo.lastetag.equals(etag)) {
-            values.put(RepoProvider.DataColumns.LAST_ETAG, etag);
+        if (repo.lastetag == null || !repo.lastetag.equals(cacheTag)) {
+            values.put(RepoProvider.DataColumns.LAST_ETAG, cacheTag);
         }
 
-        if (handler.getVersion() != -1 && handler.getVersion() != repo.version) {
-            Utils.debugLog(TAG, "Repo specified a new version: from "
-                    + repo.version + " to " + handler.getVersion());
-            values.put(RepoProvider.DataColumns.VERSION, handler.getVersion());
+        if (version != -1 && version != repo.version) {
+            Utils.debugLog(TAG, "Repo specified a new version: from " + repo.version + " to " + version);
+            values.put(RepoProvider.DataColumns.VERSION, version);
         }
 
-        if (handler.getMaxAge() != -1 && handler.getMaxAge() != repo.maxage) {
+        if (maxAge != -1 && maxAge != repo.maxage) {
             Utils.debugLog(TAG, "Repo specified a new maximum age - updated");
-            values.put(RepoProvider.DataColumns.MAX_AGE, handler.getMaxAge());
+            values.put(RepoProvider.DataColumns.MAX_AGE, maxAge);
         }
 
-        if (handler.getDescription() != null && !handler.getDescription().equals(repo.description)) {
-            values.put(RepoProvider.DataColumns.DESCRIPTION, handler.getDescription());
+        if (description != null && !description.equals(repo.description)) {
+            values.put(RepoProvider.DataColumns.DESCRIPTION, description);
         }
 
-        if (handler.getName() != null && !handler.getName().equals(repo.name)) {
-            values.put(RepoProvider.DataColumns.NAME, handler.getName());
+        if (name != null && !name.equals(repo.name)) {
+            values.put(RepoProvider.DataColumns.NAME, name);
         }
 
         return values;
-    }
-
-    public RepoUpdateRememberer getRememberer() {
-        return rememberer;
-    }
-
-    public static class RepoUpdateRememberer {
-
-        private Context context;
-        private Repo repo;
-        private ContentValues values;
-
-        public void rememberUpdate() {
-            RepoProvider.Helper.update(context, repo, values);
-        }
-
     }
 
     public static class UpdateException extends Exception {
@@ -257,23 +272,29 @@ public class RepoUpdater {
         }
     }
 
+    public static class SigningException extends UpdateException {
+        public SigningException(Repo repo, String message) {
+            super(repo, "Repository was not signed correctly: " + message);
+        }
+    }
+
     /**
      * FDroid's index.jar is signed using a particular format and does not allow lots of
      * signing setups that would be valid for a regular jar.  This validates those
      * restrictions.
      */
-    private X509Certificate getSigningCertFromJar(JarEntry jarEntry) throws UpdateException {
+    private X509Certificate getSigningCertFromJar(JarEntry jarEntry) throws SigningException {
         final CodeSigner[] codeSigners = jarEntry.getCodeSigners();
         if (codeSigners == null || codeSigners.length == 0) {
-            throw new UpdateException(repo, "No signature found in index");
+            throw new SigningException(repo, "No signature found in index");
         }
         /* we could in theory support more than 1, but as of now we do not */
         if (codeSigners.length > 1) {
-            throw new UpdateException(repo, "index.jar must be signed by a single code signer!");
+            throw new SigningException(repo, "index.jar must be signed by a single code signer!");
         }
         List<? extends Certificate> certs = codeSigners[0].getSignerCertPath().getCertificates();
         if (certs.size() != 1) {
-            throw new UpdateException(repo, "index.jar code signers must only have a single certificate!");
+            throw new SigningException(repo, "index.jar code signers must only have a single certificate!");
         }
         return (X509Certificate) certs.get(0);
     }
@@ -285,7 +306,7 @@ public class RepoUpdater {
      * check that the signing certificate in the jar matches that fingerprint.
      */
     private void verifyAndStoreTOFUCerts(String certFromIndexXml, X509Certificate rawCertFromJar)
-            throws UpdateException {
+        throws SigningException {
         if (repo.pubkey != null)
             return; // there is a repo.pubkey already, nothing to TOFU
 
@@ -293,30 +314,20 @@ public class RepoUpdater {
          * fingerprint.  In that case, check that fingerprint against what is
          * actually in the index.jar itself.  If no fingerprint, just store the
          * signing certificate */
-        boolean trustNewSigningCertificate;
-        // If the fingerprint has never been set, it will be null (never "" or something else)
-        if (repo.fingerprint == null) {
-            // no info to check things are valid, so just Trust On First Use
-            trustNewSigningCertificate = true;
-        } else {
+        if (repo.fingerprint != null) {
             String fingerprintFromIndexXml = Utils.calcFingerprint(certFromIndexXml);
             String fingerprintFromJar = Utils.calcFingerprint(rawCertFromJar);
-            if (repo.fingerprint.equalsIgnoreCase(fingerprintFromIndexXml)
-                    && repo.fingerprint.equalsIgnoreCase(fingerprintFromJar)) {
-                trustNewSigningCertificate = true;
-            } else {
-                throw new UpdateException(repo, "Supplied certificate fingerprint does not match: '"
-                            + repo.fingerprint + "' '" + fingerprintFromIndexXml + "' '" + fingerprintFromJar + "'");
+            if (!repo.fingerprint.equalsIgnoreCase(fingerprintFromIndexXml)
+                || !repo.fingerprint.equalsIgnoreCase(fingerprintFromJar)) {
+                throw new SigningException(repo, "Supplied certificate fingerprint does not match!");
             }
-        }
+        } // else - no info to check things are valid, so just Trust On First Use
 
-        if (trustNewSigningCertificate) {
-            Utils.debugLog(TAG, "Saving new signing certificate in the database for " + repo.address);
-            ContentValues values = new ContentValues(2);
-            values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatTime(new Date(), ""));
-            values.put(RepoProvider.DataColumns.PUBLIC_KEY, Hasher.hex(rawCertFromJar));
-            RepoProvider.Helper.update(context, repo, values);
-        }
+        Utils.debugLog(TAG, "Saving new signing certificate in the database for " + repo.address);
+        ContentValues values = new ContentValues(2);
+        values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatDate(new Date(), ""));
+        values.put(RepoProvider.DataColumns.PUBLIC_KEY, Hasher.hex(rawCertFromJar));
+        RepoProvider.Helper.update(context, repo, values);
     }
 
     /**
@@ -331,24 +342,23 @@ public class RepoUpdater {
      * @param certFromIndexXml the cert written into the header of the index XML
      * @param rawCertFromJar   the {@link X509Certificate} embedded in the downloaded jar
      */
-    private void verifyCerts(String certFromIndexXml, X509Certificate rawCertFromJar) throws UpdateException {
+    private void verifyCerts(String certFromIndexXml, X509Certificate rawCertFromJar) throws SigningException {
         // convert binary data to string version that is used in FDroid's database
         String certFromJar = Hasher.hex(rawCertFromJar);
 
         // repo and repo.pubkey must be pre-loaded from the database
-        if (repo == null
-                || TextUtils.isEmpty(repo.pubkey)
-                || TextUtils.isEmpty(certFromJar)
-                || TextUtils.isEmpty(certFromIndexXml))
-            throw new UpdateException(repo, "A empty repo or signing certificate is invalid!");
+        if (TextUtils.isEmpty(repo.pubkey)
+            || TextUtils.isEmpty(certFromJar)
+            || TextUtils.isEmpty(certFromIndexXml))
+            throw new SigningException(repo, "A empty repo or signing certificate is invalid!");
 
         // though its called repo.pubkey, its actually a X509 certificate
         if (repo.pubkey.equals(certFromJar)
-                && repo.pubkey.equals(certFromIndexXml)
-                && certFromIndexXml.equals(certFromJar)) {
+            && repo.pubkey.equals(certFromIndexXml)
+            && certFromIndexXml.equals(certFromJar)) {
             return;  // we have a match!
         }
-        throw new UpdateException(repo, "Signing certificate does not match!");
+        throw new SigningException(repo, "Signing certificate does not match!");
     }
 
 }

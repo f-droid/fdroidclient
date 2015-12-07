@@ -20,9 +20,10 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.TempApkProvider;
+import org.fdroid.fdroid.data.TempAppProvider;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,7 +39,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     private RepoUpdater mainRepoUpdater;
     private RepoUpdater archiveRepoUpdater;
     private File testFilesDir;
-    private RepoPersister persister;
 
     private static final String PUB_KEY =
         "3082050b308202f3a003020102020420d8f212300d06092a864886f70d01010b050030363110300e0603" +
@@ -84,6 +84,8 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
             resolver.addProvider(AppProvider.getAuthority(), prepareProvider(new AppProvider()));
             resolver.addProvider(ApkProvider.getAuthority(), prepareProvider(new ApkProvider()));
             resolver.addProvider(RepoProvider.getAuthority(), prepareProvider(new RepoProvider()));
+            resolver.addProvider(TempAppProvider.getAuthority(), prepareProvider(new TempAppProvider()));
+            resolver.addProvider(TempApkProvider.getAuthority(), prepareProvider(new TempApkProvider()));
         }
 
         private ContentProvider prepareProvider(ContentProvider provider) {
@@ -136,8 +138,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         RepoProvider.Helper.remove(context, 2);
         RepoProvider.Helper.remove(context, 3);
         RepoProvider.Helper.remove(context, 4);
-
-        persister = new RepoPersister(context);
 
         conflictingRepoUpdater = createUpdater(REPO_CONFLICTING, context);
         mainRepoUpdater = createUpdater(REPO_MAIN, context);
@@ -285,7 +285,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
                 }
             }
 
-            assertTrue("Found app " + appId + ", v" + versionCode, found);
+            assertTrue("Couldn't find app " + appId + ", v" + versionCode, found);
         }
     }
 
@@ -303,10 +303,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         }
     }
 
-    private void persistData() {
-        persister.save(new ArrayList<Repo>(0));
-    }
-
     /* At time fo writing, the following tests did not pass. This is because the multi-repo support
        in F-Droid was not sufficient. When working on proper multi repo support than this should be
        ucommented and all these tests should pass:
@@ -314,7 +310,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testCorrectConflictingThenMainThenArchive() throws UpdateException {
         assertEmpty();
         if (updateConflicting() && updateMain() && updateArchive()) {
-            persistData();
             assertExpected();
         }
     }
@@ -322,7 +317,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testCorrectConflictingThenArchiveThenMain() throws UpdateException {
         assertEmpty();
         if (updateConflicting() && updateArchive() && updateMain()) {
-            persistData();
             assertExpected();
         }
     }
@@ -330,7 +324,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testCorrectArchiveThenMainThenConflicting() throws UpdateException {
         assertEmpty();
         if (updateArchive() && updateMain() && updateConflicting()) {
-            persistData();
             assertExpected();
         }
     }
@@ -338,7 +331,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testCorrectArchiveThenConflictingThenMain() throws UpdateException {
         assertEmpty();
         if (updateArchive() && updateConflicting() && updateMain()) {
-            persistData();
             assertExpected();
         }
     }
@@ -346,7 +338,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testCorrectMainThenArchiveThenConflicting() throws UpdateException {
         assertEmpty();
         if (updateMain() && updateArchive() && updateConflicting()) {
-            persistData();
             assertExpected();
         }
     }
@@ -354,7 +345,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testCorrectMainThenConflictingThenArchive() throws UpdateException {
         assertEmpty();
         if (updateMain() && updateConflicting() && updateArchive()) {
-            persistData();
             assertExpected();
         }
     }
@@ -364,7 +354,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testAcceptableConflictingThenMainThenArchive() throws UpdateException {
         assertEmpty();
         if (updateConflicting() && updateMain() && updateArchive()) {
-            persistData();
             assertSomewhatAcceptable();
         }
     }
@@ -372,7 +361,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testAcceptableConflictingThenArchiveThenMain() throws UpdateException {
         assertEmpty();
         if (updateConflicting() && updateArchive() && updateMain()) {
-            persistData();
             assertSomewhatAcceptable();
         }
     }
@@ -380,7 +368,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testAcceptableArchiveThenMainThenConflicting() throws UpdateException {
         assertEmpty();
         if (updateArchive() && updateMain() && updateConflicting()) {
-            persistData();
             assertSomewhatAcceptable();
         }
     }
@@ -388,7 +375,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testAcceptableArchiveThenConflictingThenMain() throws UpdateException {
         assertEmpty();
         if (updateArchive() && updateConflicting() && updateMain()) {
-            persistData();
             assertSomewhatAcceptable();
         }
     }
@@ -396,7 +382,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testAcceptableMainThenArchiveThenConflicting() throws UpdateException {
         assertEmpty();
         if (updateMain() && updateArchive() && updateConflicting()) {
-            persistData();
             assertSomewhatAcceptable();
         }
     }
@@ -404,7 +389,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     public void testAcceptableMainThenConflictingThenArchive() throws UpdateException {
         assertEmpty();
         if (updateMain() && updateConflicting() && updateArchive()) {
-            persistData();
             assertSomewhatAcceptable();
         }
     }
@@ -444,8 +428,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
             return false;
 
         File indexJar = TestUtils.copyAssetToDir(context, indexJarPath, testFilesDir);
-        updater.processDownloadedFile(indexJar, UUID.randomUUID().toString());
-        persister.queueUpdater(updater);
+        updater.processDownloadedFile(indexJar);
         return true;
     }
 

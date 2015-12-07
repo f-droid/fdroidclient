@@ -8,7 +8,6 @@ import org.fdroid.fdroid.RepoUpdater.UpdateException;
 import org.fdroid.fdroid.data.Repo;
 
 import java.io.File;
-import java.util.UUID;
 
 public class RepoUpdaterTest extends InstrumentationTestCase {
     private static final String TAG = "RepoUpdaterTest";
@@ -35,7 +34,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
 
         // these are supposed to succeed
         try {
-            repoUpdater.processDownloadedFile(simpleIndexJar, UUID.randomUUID().toString());
+            repoUpdater.processDownloadedFile(simpleIndexJar);
         } catch (UpdateException e) {
             e.printStackTrace();
             fail();
@@ -48,7 +47,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithoutSignature.jar", testFilesDir);
-            repoUpdater.processDownloadedFile(jarFile, UUID.randomUUID().toString());
+            repoUpdater.processDownloadedFile(jarFile);
             fail();
         } catch (UpdateException e) {
             // success!
@@ -61,7 +60,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedManifest.jar", testFilesDir);
-            repoUpdater.processDownloadedFile(jarFile, UUID.randomUUID().toString());
+            repoUpdater.processDownloadedFile(jarFile);
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -77,7 +76,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedSignature.jar", testFilesDir);
-            repoUpdater.processDownloadedFile(jarFile, UUID.randomUUID().toString());
+            repoUpdater.processDownloadedFile(jarFile);
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -93,7 +92,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedCertificate.jar", testFilesDir);
-            repoUpdater.processDownloadedFile(jarFile, UUID.randomUUID().toString());
+            repoUpdater.processDownloadedFile(jarFile);
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -109,7 +108,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedEverything.jar", testFilesDir);
-            repoUpdater.processDownloadedFile(jarFile, UUID.randomUUID().toString());
+            repoUpdater.processDownloadedFile(jarFile);
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -125,7 +124,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "masterKeyIndex.jar", testFilesDir);
-            repoUpdater.processDownloadedFile(jarFile, UUID.randomUUID().toString());
+            repoUpdater.processDownloadedFile(jarFile);
             fail();
         } catch (UpdateException | SecurityException e) {
             // success!
