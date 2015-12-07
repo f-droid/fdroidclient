@@ -125,7 +125,6 @@
   <string name="status_download">Baixando\n%2$s / %3$s (%4$d%%) de\n%1$s</string>
   <string name="status_connecting_to_repo">Conectando-se a\n%1$s</string>
   <string name="status_checking_compatibility">Verificando compatibilidade de aplicativos com o seu dispositivo…</string>
-  <string name="status_inserting">Salvando detalhes dos aplicativos (%1$d%%)</string>
   <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
   <string name="all_other_repos_fine">Todos os outros repositórios não geraram erros.</string>
   <string name="global_error_updating_repos">Erro durante a atualização: %s</string>

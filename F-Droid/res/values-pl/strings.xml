@@ -186,7 +186,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="status_download">Pobieranie\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
     <string name="update_notification_title">Aktualizowanie repozytoriów</string>
     <string name="status_processing_xml_percent">"Przetwarzanie  %2$s / %3$s (%4$d%%) z %1$s"</string>
-    <string name="status_inserting">Zapisywanie szczegółów aplikacji (%1$d%%)</string>
     <string name="no_permissions">Brak wymaganych uprawnień.</string>
     <string name="unsigned">Brak podpisu</string>
     <string name="unsigned_description">Oznacza to, że lista aplikacji nie mogła zostać zweryfikowana. Powinieneś być ostrożny podczas pobierania aplikacji z nieznanych źródeł.</string>

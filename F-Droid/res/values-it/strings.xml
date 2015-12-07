@@ -125,7 +125,6 @@
 %1$s</string>
   <string name="status_connecting_to_repo">Connessione a\n%1$s</string>
   <string name="status_checking_compatibility">Controllo compatibilità applicazioni con il tuo dispositivo…</string>
-  <string name="status_inserting">Salvataggio dettagli applicazioni (%1$d%%)</string>
   <string name="repos_unchanged">Repository aggiornate</string>
   <string name="all_other_repos_fine">Tutte le altre repo non hanno generato errori.</string>
   <string name="global_error_updating_repos">Errore nell\'aggiornamento:</string>

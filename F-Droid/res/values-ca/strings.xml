@@ -125,7 +125,6 @@
 %1$s</string>
   <string name="status_connecting_to_repo">S\'està connectant a\n%1$s</string>
   <string name="status_checking_compatibility">S\'està comprovant la compatibilitat de les aplicacions amb el vostre dispositiu…</string>
-  <string name="status_inserting">Desant els detalls de les applicacions (%1$d%%)</string>
   <string name="repos_unchanged">Tots els dipòsits estan actualitzats</string>
   <string name="all_other_repos_fine">Cap dels altres dipòsits ha donat errors.</string>
   <string name="global_error_updating_repos">S\'ha produït un error durant l\'actualització: %s</string>

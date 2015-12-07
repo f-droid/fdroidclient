@@ -128,7 +128,6 @@
   <string name="status_connecting_to_repo">%1$s konumuna
 bağlanılıyor</string>
   <string name="status_checking_compatibility">Uygulamaların cihazınızla uyumluluğu kontrol ediliyor…</string>
-  <string name="status_inserting">Uygulama detayları kaydediliyor (%1$d%%)</string>
   <string name="repos_unchanged">Hiçbir depoda paket güncellemesi yok</string>
   <string name="all_other_repos_fine">Diğer tüm depolar hata oluşturmadılar.</string>
   <string name="global_error_updating_repos">Güncelleme sırasında hata:</string>

@@ -99,7 +99,6 @@
 %1$s</string>
   <string name="status_connecting_to_repo">Σύνδεση με\n%1$s</string>
   <string name="status_checking_compatibility">Έλεγχος συμβατότητας εφαρμογών με τη συσκευή σας…</string>
-  <string name="status_inserting">Αποθήκευση λεπτομερειών των εφαρμογών (%1$d%%)</string>
   <string name="no_permissions">Δεν χρησιμοποιείται καμία άδεια.</string>
   <string name="no_handler_app">Δεν έχετε καμία διαθέσιμη εφαρμογή που μπορεί να χειριστεί %s.</string>
   <string name="theme">Θέμα</string>

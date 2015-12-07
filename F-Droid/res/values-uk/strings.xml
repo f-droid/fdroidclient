@@ -206,7 +206,6 @@
     <string name="copying_icons">Копіювання піктограми додатку до репозиторію…</string>
     <string name="icon">Піктограма</string>
     <string name="status_checking_compatibility">Перевірка додатків на сумісність із Вашим пристроєм…</string>
-    <string name="status_inserting">Збереження подробиць про додатки (%1$d%%)</string>
     <string name="no_permissions">Не потребує дозволів.</string>
     <string name="requires_features">Залежності: %1$s</string>
     <string name="empty_available_app_list">Відсутні додатки в даній категорії.\n\nСпробуйте обрати іншу категорію, або оновити Ваші репозиторії, аби отримати свіжий перелік додатків.</string>

@@ -125,7 +125,6 @@
   <string name="status_download">Laster ned\n%2$s / %3$s (%4$d%%) fra\n%1$s</string>
   <string name="status_connecting_to_repo">Kobler til\n%1$s</string>
   <string name="status_checking_compatibility">Sjekker programstøtte for din enhet…</string>
-  <string name="status_inserting">Lagrer programdata (%1$d%%)</string>
   <string name="repos_unchanged">Alle pakkebrønner ajourførte</string>
   <string name="all_other_repos_fine">Ingen andre pakkebrønner lagde noe krøll.</string>
   <string name="global_error_updating_repos">Feil under oppdatering: %s</string>

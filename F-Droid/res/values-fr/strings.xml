@@ -126,7 +126,6 @@
   <string name="status_connecting_to_repo">Connexion à
 \n%1$s</string>
   <string name="status_checking_compatibility">Vérification de la compatibilité des apps avec votre appareil…</string>
-  <string name="status_inserting">Enregistrement des détails de l\'application (%1$d%%)</string>
   <string name="repos_unchanged">Tous les dépôts sont à jour</string>
   <string name="all_other_repos_fine">Les autres dépôts n\'ont généré aucune erreur.</string>
   <string name="global_error_updating_repos">Erreur durant la mise à jour : %s</string>

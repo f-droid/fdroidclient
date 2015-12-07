@@ -126,7 +126,6 @@
 %2$s / %3$s (%4$d%%)</string>
   <string name="status_connecting_to_repo">%1$s에 접속중</string>
   <string name="status_checking_compatibility">장치와 응용프로그램의 호환성 확인중…</string>
-  <string name="status_inserting">앱 상세 정보 저장하는 중 (%1$d%%)</string>
   <string name="repos_unchanged">모든 저장소에는 업데이트 할 패키지가 없습니다</string>
   <string name="all_other_repos_fine">다른 저장소들은 오류를 일으키지 않았습니다.</string>
   <string name="global_error_updating_repos">업데이트 도중 오류:</string>

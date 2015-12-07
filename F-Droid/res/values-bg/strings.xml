@@ -113,7 +113,6 @@
 %1$s</string>
   <string name="status_connecting_to_repo">Свързване към\n%1$s</string>
   <string name="status_checking_compatibility">Проверка за съвместимост с устройството…</string>
-  <string name="status_inserting">Запазване на детайли за приложенията (%1$d%%)</string>
   <string name="repos_unchanged">Всички хранилищата са актуални</string>
   <string name="global_error_updating_repos">Грешка при актуализирането: %s</string>
   <string name="no_permissions">Не изисква разрешения.</string>

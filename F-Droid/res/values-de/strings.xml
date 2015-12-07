@@ -125,7 +125,6 @@
   <string name="status_download">%2$s / %3$s (%4$d%%) von\n%1$s\nwird heruntergeladen</string>
   <string name="status_connecting_to_repo">Mit %1$s\nwird verbunden</string>
   <string name="status_checking_compatibility">Kompatibilität der Anwendungen mit Ihrem Gerät wird überprüft …</string>
-  <string name="status_inserting">Anwendungsdetails werden gespeichert (%1$d%%)</string>
   <string name="repos_unchanged">Alle Paketquellen sind aktuell</string>
   <string name="all_other_repos_fine">Alle anderen Paketquellen erzeugten keine Fehler.</string>
   <string name="global_error_updating_repos">Fehler während der Aktualisierung: %s</string>

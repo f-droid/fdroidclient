@@ -103,7 +103,6 @@
   <string name="skip">略過</string>
   <string name="status_connecting_to_repo">正在連接至\n%1$s</string>
   <string name="status_checking_compatibility">正在檢查應用程式是否與裝置相容…</string>
-  <string name="status_inserting">正在儲存應用程式的詳情 (%1$d%%)</string>
   <string name="repos_unchanged">所有倉庫已更新至最新的版本</string>
   <string name="all_other_repos_fine">其他倉庫都沒有出現問題。</string>
   <string name="global_error_updating_repos">更新時出現問題：%s</string>

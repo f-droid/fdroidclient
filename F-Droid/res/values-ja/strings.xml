@@ -127,7 +127,6 @@
 %1$s</string>
   <string name="status_connecting_to_repo">接続中\n%1$s</string>
   <string name="status_checking_compatibility">お使いの端末とｱﾌﾟﾘの互換性を確認しています…</string>
-  <string name="status_inserting">ｱﾌﾟﾘｹｰｼｮﾝの詳細を保存しています (%1$d%%)</string>
   <string name="repos_unchanged">ﾘﾎﾟｼﾞﾄﾘは全て最新の状態です｡</string>
   <string name="all_other_repos_fine">他のﾘﾎﾟｼﾞﾄﾘに異常はありません｡</string>
   <string name="global_error_updating_repos">更新中に問題が発生しました: %s</string>

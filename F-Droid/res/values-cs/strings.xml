@@ -104,7 +104,6 @@
   <string name="proxy_port">Proxy port</string>
   <string name="status_connecting_to_repo">Připojování k\n%1$s</string>
   <string name="status_checking_compatibility">Kontrola kompatibility aplikací s tímto zařízením…</string>
-  <string name="status_inserting">Ukládání podrobností o aplikacích (%1$d%%)</string>
   <string name="repos_unchanged">Všechny repozitáře jsou aktuální</string>
   <string name="global_error_updating_repos">Chyba při aktualizaci: %s</string>
   <string name="no_permissions">Žádná oprávnění nejsou použita.</string>
