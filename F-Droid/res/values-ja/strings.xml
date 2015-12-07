@@ -31,9 +31,9 @@
   <string name="app_details">ｱﾌﾟﾘ詳細</string>
   <string name="no_such_app">該当するｱﾌﾟﾘｹｰｼｮﾝが存在しません｡</string>
   <string name="about_title">F-Droidについて</string>
-  <string name="about_site">Webｻｲﾄ:</string>
-  <string name="about_mail">電子ﾒｰﾙ:</string>
-  <string name="about_version">ﾊﾞｰｼﾞｮﾝ:</string>
+  <string name="about_site">Webｻｲﾄ</string>
+  <string name="about_mail">電子ﾒｰﾙ</string>
+  <string name="about_version">ﾊﾞｰｼﾞｮﾝ</string>
   <string name="app_installed">入手済</string>
   <string name="app_not_installed">未ｲﾝｽﾄｰﾙ</string>
   <string name="app_inst_known_source">ｲﾝｽﾄｰﾙ済 (%s から)</string>
@@ -289,7 +289,7 @@
 
     <string name="theme_light">明</string>
     <string name="theme_dark">暗</string>
-<string name="about_source">ｿｰｽ:</string>
+<string name="about_source">ｿｰｽｺｰﾄﾞ</string>
     <string name="category_Connectivity">接続</string>
     <string name="category_Graphics">ｸﾞﾗﾌｨｯｸ</string>
     <string name="category_Money">金融</string>
@@ -331,4 +331,7 @@
 
     <string name="tab_installed_apps_count">ｲﾝｽﾄｰﾙ済 (%d)</string>
     <string name="tab_updates_count">更新 (%d)</string>
+    <string name="about_license">ﾗｲｾﾝｽ</string>
+
+    <string name="status_inserting_apps">ｱﾌﾟﾘｹｰｼｮﾝの詳細を保存中</string>
     </resources>

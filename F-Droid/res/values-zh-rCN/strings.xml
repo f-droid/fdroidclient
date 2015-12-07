@@ -26,9 +26,9 @@
   <string name="app_details">应用程序详情</string>
   <string name="no_such_app">未找到此类应用程序。</string>
   <string name="about_title">关于 F-Droid</string>
-  <string name="about_site">网站:</string>
-  <string name="about_mail">邮件:</string>
-  <string name="about_version">版本:</string>
+  <string name="about_site">网址</string>
+  <string name="about_mail">邮箱</string>
+  <string name="about_version">版本</string>
   <string name="app_installed">已安装</string>
   <string name="app_not_installed">未安装</string>
   <string name="added_on">添加于 %s</string>
@@ -163,7 +163,7 @@
     <string name="repo_edit_credentials">更改密码</string>
     <string name="repo_error_empty_username">空用户名，认证信息未改变</string>
 
-    <string name="about_source">源：</string>
+    <string name="about_source">源码</string>
     <string name="app_incompatible">不兼容</string>
     <string name="app_inst_known_source">已安装（来自%s）</string>
     <string name="app_inst_unknown_source">已安装（来源未知）</string>
@@ -331,4 +331,7 @@
     <string name="theme_light">明亮</string>
     <string name="theme_dark">夜间</string>
     <string name="theme_night">黑暗</string>
-</resources>
+<string name="about_license">许可证类型</string>
+
+    <string name="status_inserting_apps">正在保存应用信息</string>
+    </resources>

@@ -31,9 +31,9 @@
   <string name="app_details">Detalhes do aplicativo</string>
   <string name="no_such_app">O aplicativo não foi encontrado.</string>
   <string name="about_title">Sobre o F-Droid</string>
-  <string name="about_site">Página web:</string>
-  <string name="about_mail">E-Mail:</string>
-  <string name="about_version">Versão:</string>
+  <string name="about_site">Página web</string>
+  <string name="about_mail">E-Mail</string>
+  <string name="about_version">Versão</string>
   <string name="app_installed">Instalado</string>
   <string name="app_not_installed">Não Instalado</string>
   <string name="app_inst_known_source">Instalado (a partir de %s)</string>
@@ -231,7 +231,7 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="swap_success">Permuta com sucesso!</string>
     <string name="swap_active_hotspot">%1$s (seu ponto de acesso)</string>
     <string name="swap_switch_to_wifi">Toque para mudar para uma rede Wi-Fi</string>
-    <string name="about_source">Fonte:</string>
+    <string name="about_source">Código fonte</string>
     <string name="category_Connectivity">Conectividade</string>
     <string name="category_Graphics">Gráficos</string>
     <string name="category_Money">Dinheiro</string>
@@ -323,4 +323,15 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="repo_url">Endereço</string>
     <string name="theme_night">Noite</string>
 <string name="menu_settings">Configurações</string>
+    <string name="login_title">Autenticação necessária</string>
+    <string name="login_name">Nome de usuário</string>
+    <string name="login_password">Senha</string>
+    <string name="repo_edit_credentials">Alterar senha</string>
+    <string name="repo_error_empty_username">Nome de usuário vazio, credenciais não alteradas</string>
+
+    <string name="about_license">Licença</string>
+
+    <string name="tab_installed_apps_count">Instalado (%d)</string>
+    <string name="tab_updates_count">Atualizações (%d)</string>
+    <string name="status_inserting_apps">Salvando detalhes dos aplicativos</string>
     </resources>

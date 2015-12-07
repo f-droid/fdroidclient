@@ -31,9 +31,9 @@
   <string name="app_details">Minujas/detallios aplicatzione</string>
   <string name="no_such_app">Peruna aplicatzione currispondente.</string>
   <string name="about_title">Informatziones</string>
-  <string name="about_site">Giassu/situ web:</string>
-  <string name="about_mail">Posta eletrònica:</string>
-  <string name="about_version">Versione:</string>
+  <string name="about_site">Giassu/situ web</string>
+  <string name="about_mail">Posta eletrònica</string>
+  <string name="about_version">Versione</string>
   <string name="app_installed">Installada</string>
   <string name="app_not_installed">Non installada</string>
   <string name="app_inst_known_source">Installada (dae %s)</string>
@@ -211,7 +211,7 @@
     <string name="unstable_updates_summary">Cussigia agiornamentos a versiones instàbiles</string>
     <string name="uninstall_system">Disinstalla s’estensione cun permissos de sistema</string>
     <string name="uninstall_system_summary">Aberi s’ischermada de sas minujas de s’estensione \"F-Droid cun permissos de sistema\" pro l’agiornare/disinstallare</string>
-    <string name="about_source">Mitza:</string>
+    <string name="about_source">Còdighe mitza</string>
     <string name="tab_installed_apps">Installadas</string>
     <string name="bad_fingerprint">Imprenta/arrastu isballiada</string>
     <string name="category_Connectivity">Connetividade</string>
@@ -330,4 +330,6 @@
 
     <string name="tab_installed_apps_count">Installadas (%d)</string>
     <string name="tab_updates_count">Agiornamentos (%d)</string>
+    <string name="about_license">Litzèntzia</string>
+
     </resources>

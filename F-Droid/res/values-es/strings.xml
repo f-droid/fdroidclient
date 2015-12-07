@@ -31,9 +31,9 @@
   <string name="app_details">Detalles de la aplicación</string>
   <string name="no_such_app">No se encontró la aplicación.</string>
   <string name="about_title">Acerca de F-Droid</string>
-  <string name="about_site">Sitio web:</string>
-  <string name="about_mail">Correo electrónico:</string>
-  <string name="about_version">Versión:</string>
+  <string name="about_site">Sitio web</string>
+  <string name="about_mail">Correo electrónico</string>
+  <string name="about_version">Versión</string>
   <string name="app_installed">Instalado</string>
   <string name="app_not_installed">No instalado</string>
   <string name="app_inst_known_source">Instalado (desde %s)</string>
@@ -75,7 +75,7 @@
   <string name="menu_uninstall">Desinstalar</string>
   <string name="menu_ignore_all">Ignorar todas las actualizaciones</string>
   <string name="menu_ignore_this">Ignorar esta actualización</string>
-  <string name="menu_website">Sitio web</string>
+  <string name="menu_website">Página web</string>
   <string name="menu_issues">Incidencias</string>
   <string name="menu_source">Código fuente</string>
   <string name="menu_upgrade">Actualización (a nueva versión)</string>
@@ -187,7 +187,7 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
   <string name="swap_confirm_connect">¿Quieres obtener aplicaciones desde %1$s ahora?</string>
 <string name="app_name">F-Droid</string>
 
-    <string name="about_source">Código fuente:</string>
+    <string name="about_source">Código fuente</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="links">Enlaces</string>
 
@@ -335,4 +335,7 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 
     <string name="tab_installed_apps_count">Instalado (%d)</string>
     <string name="tab_updates_count">Actualizaciones (%d)</string>
+    <string name="about_license">Licencia</string>
+
+    <string name="status_inserting_apps">Guardando los detalles de la aplicación</string>
     </resources>

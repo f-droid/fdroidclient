@@ -30,9 +30,9 @@
   <string name="app_details">Детаљи апликације</string>
   <string name="no_such_app">Нема такве апликације.</string>
   <string name="about_title">О Ф-дроиду</string>
-  <string name="about_site">Вебсајт:</string>
-  <string name="about_mail">Е-адреса:</string>
-  <string name="about_version">Издање:</string>
+  <string name="about_site">Вебсајт</string>
+  <string name="about_mail">Е-адреса</string>
+  <string name="about_version">Издање</string>
   <string name="app_installed">Инсталирано</string>
   <string name="app_not_installed">Није инсталирано</string>
   <string name="app_inst_known_source">Инсталирано (са %s)</string>
@@ -185,7 +185,7 @@
     <string name="unstable_updates_summary">Предлагање ажурирања на нестабилна издања</string>
     <string name="uninstall_system">Ажурирај/уклони повлашћено проширење</string>
     <string name="uninstall_system_summary">Отвара детаље повлашћеног проширења да бисте га ажурирали/уклонили</string>
-    <string name="about_source">Изворни кôд:</string>
+    <string name="about_source">Изворни кôд</string>
     <string name="app_incompatible">Некомпатибилно</string>
     <string name="links">Везе</string>
 
@@ -326,4 +326,6 @@
 
     <string name="tab_installed_apps_count">Инсталиране (%d)</string>
     <string name="tab_updates_count">Надоградње (%d)</string>
+    <string name="about_license">Лиценца</string>
+
     </resources>

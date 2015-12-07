@@ -20,8 +20,8 @@
   <string name="app_details">Szczegóły aplikacji</string>
   <string name="no_such_app">Nie znaleziono takiej aplikacji.</string>
   <string name="about_title">O F-Droid</string>
-  <string name="about_site">Strona internetowa:</string>
-  <string name="about_version">Wersja:</string>
+  <string name="about_site">Strona internetowa</string>
+  <string name="about_version">Wersja</string>
   <string name="app_not_installed">Nie zainstalowano</string>
   <string name="added_on">Dodano %s</string>
   <string name="ok">OK</string>
@@ -155,7 +155,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="notify_on">Wyświetlaj powiadomienie gdy znalezione zostaną nowe aktualizacje</string>
     <string name="uninstall_system">Aktualizuj/Odinstaluj Uprzywilejowany dodatek F-Droida</string>
     <string name="uninstall_system_summary">Pokaż szczegóły Uprzywilejowanego dodatku</string>
-    <string name="about_mail">Email:</string>
+    <string name="about_mail">Email</string>
     <string name="app_incompatible">Niekompatybilne</string>
     <string name="app_installed">Zainstalowano</string>
     <string name="app_inst_known_source">Zainstalowano (z %s)</string>
@@ -230,7 +230,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="swap_active_hotspot">%1$s (Twój hostpot)</string>
     <string name="swap_switch_to_wifi">Dotknij by połączyć się z tą inną siecią Wi-Fi</string>
     <string name="update_interval_zero">Wyłącz automatyczne aktualizacje</string>
-    <string name="about_source">Kod źródłowy:</string>
+    <string name="about_source">Kod źródłowy</string>
     <string name="not_on_same_wifi">Twoje urządzenie nie jest w tej samej sieci Wi-Fi co lokalne repozytorium które zostało dodane! Spróbuj połączyć się z siecią %s</string>
     <string name="category_Connectivity">Łączność</string>
     <string name="category_Graphics">Grafika</string>
@@ -330,4 +330,8 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="repo_edit_credentials">Zmień hasło</string>
     <string name="repo_error_empty_username">Pusta nazwa użytkownika, poświadczenia nie zmienione</string>
 
+    <string name="about_license">Licencja</string>
+
+    <string name="tab_installed_apps_count">Zainstalowano (%d)</string>
+    <string name="tab_updates_count">Aktualizacje (%d)</string>
     </resources>

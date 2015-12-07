@@ -31,9 +31,9 @@
   <string name="app_details">Detalles d\'aplicación</string>
   <string name="no_such_app">Nun s\'alcontraron aplicaciones.</string>
   <string name="about_title">Tocante a F-Droid</string>
-  <string name="about_site">Sitiu web:</string>
-  <string name="about_mail">Corréu:</string>
-  <string name="about_version">Versión:</string>
+  <string name="about_site">Sitiu web</string>
+  <string name="about_mail">Corréu</string>
+  <string name="about_version">Versión</string>
   <string name="app_installed">Instaláu</string>
   <string name="app_not_installed">Non instaláu</string>
   <string name="app_inst_known_source">Instaláu (dende %s)</string>
@@ -215,7 +215,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
 <string name="theme_light">Claru</string>
     <string name="uninstall_system">Anovar/Instalar estensión con privilexos</string>
     <string name="uninstall_system_summary">Abre la pantalla de detalles de la estensión con privilexos p\'anovala/desinstalala</string>
-    <string name="about_source">Fonte:</string>
+    <string name="about_source">Códigu fonte</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="links">Enllaces</string>
 
@@ -331,4 +331,6 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
 
     <string name="tab_installed_apps_count">Instalaes (%d)</string>
     <string name="tab_updates_count">Anovamientos (%d)</string>
+    <string name="about_license">Llicencia</string>
+
     </resources>

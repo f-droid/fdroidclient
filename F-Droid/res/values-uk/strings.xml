@@ -337,4 +337,6 @@
     <string name="repo_edit_credentials">Змінити пароль</string>
     <string name="repo_error_empty_username">Відсутнє ім\'я користувача, облікові дані не змінено</string>
 
+    <string name="tab_installed_apps_count">Встановлено (%d)</string>
+    <string name="perms_description_app">"Надано  %1$s."</string>
     </resources>
