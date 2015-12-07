@@ -79,6 +79,9 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
     @Nullable
     private MenuItem searchMenuItem;
 
+    @Nullable
+    private String pendingSearchQuery;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -123,7 +126,8 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     private void performSearch(String query) {
         if (searchMenuItem == null) {
-            Log.e(TAG, "Tried to search, but search view has not yet been created.");
+            // Store this for later when we do actually have a search menu ready to use.
+            pendingSearchQuery = query;
             return;
         }
 
@@ -287,6 +291,11 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
         // LayoutParams.MATCH_PARENT does not work, use a big value instead
         searchView.setMaxWidth(1000000);
         searchView.setOnQueryTextListener(this);
+
+        if (pendingSearchQuery != null) {
+            performSearch(pendingSearchQuery);
+            pendingSearchQuery = null;
+        }
 
         return super.onCreateOptionsMenu(menu);
     }
