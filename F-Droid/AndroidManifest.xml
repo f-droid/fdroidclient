@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.fdroid.fdroid"
     android:installLocation="auto"
-    android:versionCode="98001"
-    android:versionName="0.98-alpha1"
+    android:versionCode="98002"
+    android:versionName="0.98-alpha2"
     >
 
     <uses-sdk
