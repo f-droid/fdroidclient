@@ -145,14 +145,14 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
     }
 
     private void handleSearchOrAppViewIntent(Intent intent) {
-        final Uri data = intent.getData();
-        if (data == null) {
-            return;
-        }
-
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             performSearch(query);
+            return;
+        }
+
+        final Uri data = intent.getData();
+        if (data == null) {
             return;
         }
 
@@ -225,18 +225,14 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
                 query = query.split(":")[1];
         }
 
-        Intent call = null;
         if (!TextUtils.isEmpty(appId)) {
             Utils.debugLog(TAG, "FDroid launched via app link for '" + appId + "'");
-            call = new Intent(this, AppDetails.class);
-            call.putExtra(AppDetails.EXTRA_APPID, appId);
+            Intent intentToInvoke = new Intent(this, AppDetails.class);
+            intentToInvoke.putExtra(AppDetails.EXTRA_APPID, appId);
+            startActivity(intentToInvoke);
         } else if (!TextUtils.isEmpty(query)) {
             Utils.debugLog(TAG, "FDroid launched via search link for '" + query + "'");
             performSearch(query);
-        }
-
-        if (call != null) {
-            startActivity(call);
         }
     }
 
@@ -285,6 +281,8 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
         searchView.setMaxWidth(1000000);
         searchView.setOnQueryTextListener(this);
 
+        // If we were asked to execute a search before getting around to building the options
+        // menu, then we should deal with that now that the options menu is all sorted out.
         if (pendingSearchQuery != null) {
             performSearch(pendingSearchQuery);
             pendingSearchQuery = null;
@@ -376,8 +374,8 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     private void createViews() {
         viewPager = (ViewPager) findViewById(R.id.main_pager);
-        this.adapter = new AppListFragmentPagerAdapter(this);
-        viewPager.setAdapter(this.adapter);
+        adapter = new AppListFragmentPagerAdapter(this);
+        viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -414,7 +412,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        adapter.updateSearchQuery(newText, getTabManager().getSelectedIndex());
+        adapter.updateSearchQuery(newText);
         return true;
     }
 

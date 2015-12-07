@@ -20,22 +20,13 @@ import org.fdroid.fdroid.views.fragments.InstalledAppsFragment;
  */
 public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    @NonNull
-    private final FDroid parent;
+    @NonNull private final FDroid parent;
 
-    @NonNull
-    private final AppListFragment availableFragment;
-    
-    @NonNull
-    private final AppListFragment installedFragment;
-    
-    @NonNull
-    private final AppListFragment canUpdateFragment;
-    
-    @Nullable
-    private String searchQuery;
+    @NonNull private final AppListFragment availableFragment;
+    @NonNull private final AppListFragment installedFragment;
+    @NonNull private final AppListFragment canUpdateFragment;
 
-    public AppListFragmentPagerAdapter(FDroid parent) {
+    public AppListFragmentPagerAdapter(@NonNull FDroid parent) {
         super(parent.getSupportFragmentManager());
         this.parent = parent;
 
@@ -54,8 +45,7 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
         return parent.getString(R.string.tab_updates_count, updateCount);
     }
 
-    public void updateSearchQuery(@Nullable String query, int tabIndex) {
-		searchQuery = query;
+    public void updateSearchQuery(@Nullable String query) {
         availableFragment.updateSearchQuery(query);
         installedFragment.updateSearchQuery(query);
         canUpdateFragment.updateSearchQuery(query);

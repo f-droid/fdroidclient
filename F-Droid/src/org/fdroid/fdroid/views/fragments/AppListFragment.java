@@ -54,8 +54,7 @@ public abstract class AppListFragment extends ListFragment implements
 
     protected AppListAdapter appAdapter;
 
-    @Nullable
-    private String searchQuery;
+    @Nullable private String searchQuery;
 
     protected abstract AppListAdapter getAppListAdapter();
 
@@ -157,7 +156,7 @@ public abstract class AppListFragment extends ListFragment implements
     }
 
     public void updateSearchQuery(@Nullable String query) {
-        this.searchQuery = query;
+        searchQuery = query;
         if (isAdded()) {
             getLoaderManager().restartLoader(0, null, this);
         }

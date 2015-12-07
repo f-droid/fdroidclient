@@ -1,5 +1,9 @@
 #!/bin/sh
 
+echo "A helper script to send all of the various intents that F-droid should be able to handle via ADB."
+echo "Use this to ensure that things which should trigger searches, do trigger searches, and those which should bring up the app details screen, do bring it up."
+echo ""
+
 function view {
 	DESCRIPTION=$1
 	DATA=$2
