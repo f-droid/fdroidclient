@@ -328,14 +328,12 @@ public class BluetoothServer extends Thread {
 
         // Announce that the file server accepts partial content requests
         private Response createResponse(NanoHTTPD.Response.Status status, String mimeType, String content) {
-            Response res = new Response(status.getRequestStatus(), mimeType, content);
-            return res;
+            return new Response(status.getRequestStatus(), mimeType, content);
         }
 
         // Announce that the file server accepts partial content requests
         private Response createResponse(NanoHTTPD.Response.Status status, String mimeType, InputStream content) {
-            Response res = new Response(status.getRequestStatus(), mimeType, content);
-            return res;
+            return new Response(status.getRequestStatus(), mimeType, content);
         }
 
         public static String getMimeTypeForFile(String uri) {

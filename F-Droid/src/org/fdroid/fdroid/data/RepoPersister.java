@@ -268,12 +268,11 @@ public class RepoPersister {
             }
         }
 
-        if (toDelete.size() > 0) {
-            Uri uri = TempApkProvider.getApksUri(repo, toDelete);
-            return ContentProviderOperation.newDelete(uri).build();
-        } else {
+        if (toDelete.size() == 0) {
             return null;
         }
+        Uri uri = TempApkProvider.getApksUri(repo, toDelete);
+        return ContentProviderOperation.newDelete(uri).build();
     }
 
     /**

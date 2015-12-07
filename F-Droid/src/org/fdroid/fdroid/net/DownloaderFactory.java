@@ -53,9 +53,11 @@ public class DownloaderFactory {
         if (isBluetoothAddress(url)) {
             String macAddress = url.getHost().replace("-", ":");
             return new BluetoothDownloader(context, macAddress, url, destFile);
-        } else if (isOnionAddress(url)) {
+        }
+        if (isOnionAddress(url)) {
             return new TorHttpDownloader(context, url, destFile);
-        } else if (isLocalFile(url)) {
+        }
+        if (isLocalFile(url)) {
             return new LocalFileDownloader(context, url, destFile);
         }
         return new HttpDownloader(context, url, destFile, username, password);
