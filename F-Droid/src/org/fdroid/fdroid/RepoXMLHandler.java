@@ -65,7 +65,7 @@ public class RepoXMLHandler extends DefaultHandler {
         void receiveApp(App app, List<Apk> packages);
     }
 
-    private IndexReceiver receiver;
+    private final IndexReceiver receiver;
 
     public RepoXMLHandler(Repo repo, @NonNull IndexReceiver receiver) {
         this.repo = repo;
