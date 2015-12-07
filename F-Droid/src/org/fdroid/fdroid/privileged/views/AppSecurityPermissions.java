@@ -77,7 +77,6 @@ public class AppSecurityPermissions {
     private final PermissionGroupInfoComparator mPermGroupComparator = new PermissionGroupInfoComparator();
     private final PermissionInfoComparator mPermComparator = new PermissionInfoComparator();
     private final CharSequence mNewPermPrefix;
-    private String mPackageName;
 
     static class MyPermissionGroupInfo extends PermissionGroupInfo {
         CharSequence mLabel;
@@ -238,7 +237,6 @@ public class AppSecurityPermissions {
         if (info == null) {
             return;
         }
-        mPackageName = info.packageName;
 
         final Set<MyPermissionInfo> permSet = new HashSet<>();
         PackageInfo installedPkgInfo = null;

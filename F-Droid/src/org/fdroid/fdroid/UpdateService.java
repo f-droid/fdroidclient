@@ -353,17 +353,12 @@ public class UpdateService extends IntentService implements ProgressListener {
             //List<Repo> swapRepos = new ArrayList<>();
             List<Repo> unchangedRepos = new ArrayList<>();
             List<Repo> updatedRepos = new ArrayList<>();
-            List<Repo> disabledRepos = new ArrayList<>();
             List<CharSequence> errorRepos = new ArrayList<>();
             ArrayList<CharSequence> repoErrors = new ArrayList<>();
             boolean changes = false;
             boolean singleRepoUpdate = !TextUtils.isEmpty(address);
             for (final Repo repo : repos) {
 
-                if (!repo.inuse) {
-                    disabledRepos.add(repo);
-                    continue;
-                }
                 if (singleRepoUpdate && !repo.address.equals(address)) {
                     unchangedRepos.add(repo);
                     continue;
