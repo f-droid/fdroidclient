@@ -1,3 +1,16 @@
+### 0.98 (upcoming release)
+
+* Add support for HTTP basic authentication of repos
+
+* Fix repo updating on devices with little memory by not growing memory
+  usage linearly with the number of apps
+
+* Add English to the list of languages to use in the settings
+
+* Replace search dialog with a search widget
+
+* Translation updates
+
 ### 0.97 (2015-11-07)
 
 * Add option to prompt for unstable updates globally
