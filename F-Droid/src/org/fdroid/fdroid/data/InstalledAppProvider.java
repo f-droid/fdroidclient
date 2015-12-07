@@ -12,8 +12,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Hasher;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 
 import java.security.NoSuchAlgorithmException;

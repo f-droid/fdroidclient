@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.apache.commons.net.util.Base64;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
@@ -21,7 +22,6 @@ import java.net.SocketAddress;
 import java.net.URL;
 
 import javax.net.ssl.SSLHandshakeException;
-import org.apache.commons.net.util.Base64;
 
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
