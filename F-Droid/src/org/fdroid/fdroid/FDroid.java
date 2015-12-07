@@ -31,7 +31,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -45,7 +44,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.fdroid.fdroid.compat.Compatibility;
 import org.fdroid.fdroid.compat.TabManager;
+import org.fdroid.fdroid.compat.UriCompat;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
@@ -75,6 +76,9 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     private AppListFragmentPagerAdapter adapter;
 
+    @Nullable
+    private MenuItem searchMenuItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -92,8 +96,9 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
         Intent intent = getIntent();
 
-        // If the intent can be handled via AppDetails or SearchResults, it
-        // will call finish() and the rest of the code won't execute
+        // If the intent can be handled via AppDetails it will call finish()
+        // and the rest of the code won't execute. If it looks like a search term,
+        // this will prompt the SearchView to update itself.
         handleIntent(intent);
 
         if (intent.hasExtra(EXTRA_TAB_UPDATE)) {
@@ -116,6 +121,17 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
         // }
     }
 
+    private void performSearch(String query) {
+        if (searchMenuItem == null) {
+            Log.e(TAG, "Tried to search, but search view has not yet been created.");
+            return;
+        }
+
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+        MenuItemCompat.expandActionView(searchMenuItem);
+        searchView.setQuery(query, true);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -124,11 +140,24 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
         checkForAddRepoIntent();
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleIntent(intent);
+    }
+
     private void handleIntent(Intent intent) {
         final Uri data = intent.getData();
         if (data == null) {
             return;
         }
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            performSearch(query);
+            return;
+        }
+
         final String scheme = data.getScheme();
         final String path = data.getPath();
         String appId = null;
@@ -140,11 +169,14 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
             }
             switch (host) {
                 case "f-droid.org":
-                    // http://f-droid.org/app/app.id
                     if (path.startsWith("/repository/browse")) {
+                        // http://f-droid.org/repository/browse?fdfilter=search+query
+                        query = UriCompat.getQueryParameter(data, "fdfilter");
+
                         // http://f-droid.org/repository/browse?fdid=app.id
-                        appId = data.getQueryParameter("fdid");
+                        appId = UriCompat.getQueryParameter(data, "fdid");
                     } else if (path.startsWith("/app")) {
+                        // http://f-droid.org/app/app.id
                         appId = data.getLastPathSegment();
                         if ("app".equals(appId)) {
                             appId = null;
@@ -153,28 +185,28 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
                     break;
                 case "details":
                     // market://details?id=app.id
-                    appId = data.getQueryParameter("id");
+                    appId = UriCompat.getQueryParameter(data, "id");
                     break;
                 case "search":
                     // market://search?q=query
-                    query = data.getQueryParameter("q");
+                    query = UriCompat.getQueryParameter(data, "q");
                     break;
                 case "play.google.com":
                     if (path.startsWith("/store/apps/details")) {
                         // http://play.google.com/store/apps/details?id=app.id
-                        appId = data.getQueryParameter("id");
+                        appId = UriCompat.getQueryParameter(data, "id");
                     } else if (path.startsWith("/store/search")) {
                         // http://play.google.com/store/search?q=foo
-                        query = data.getQueryParameter("q");
+                        query = UriCompat.getQueryParameter(data, "q");
                     }
                     break;
                 case "apps":
                 case "amazon.com":
                 case "www.amazon.com":
                     // amzn://apps/android?p=app.id
-                    // http://amazon.com/gp/mas/dl/android?p=app.id
-                    appId = data.getQueryParameter("p");
-                    query = data.getQueryParameter("s");
+                    // http://amazon.com/gp/mas/dl/android?s=app.id
+                    appId = UriCompat.getQueryParameter(data, "p");
+                    query = UriCompat.getQueryParameter(data, "s");
                     break;
             }
         } else if ("fdroid.app".equals(scheme)) {
@@ -182,7 +214,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
             appId = data.getSchemeSpecificPart();
         } else if ("fdroid.search".equals(scheme)) {
             // fdroid.search:query
-            query = data.getSchemeSpecificPart();
+            query = UriCompat.replacePlusWithSpace(data.getSchemeSpecificPart());
         }
 
         if (!TextUtils.isEmpty(query)) {
@@ -202,10 +234,9 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
             call.putExtra(AppDetails.EXTRA_APPID, appId);
         } else if (!TextUtils.isEmpty(query)) {
             Utils.debugLog(TAG, "FDroid launched via search link for '" + query + "'");
-            call = new Intent(this, SearchResults.class);
-            call.setAction(Intent.ACTION_SEARCH);
-            call.putExtra(SearchManager.QUERY, query);
+            performSearch(query);
         }
+
         if (call != null) {
             startActivity(call);
             finish();
@@ -250,8 +281,8 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
         }
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchMenuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         // LayoutParams.MATCH_PARENT does not work, use a big value instead
         searchView.setMaxWidth(1000000);
@@ -374,15 +405,14 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        return false;
+        // Do nothing, because we respond to the query being changed as it is updated
+        // via onQueryTextChange(...)
+        return true;
     }
-
-    private static final String SEARCH_CHANGED = "fdroid.SearchChanged";
-    private static final String SEARCH_QUERY = "fdroid.SearchQuery";
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        this.adapter.updateSearchQuery(newText, getTabManager().getSelectedIndex());
+        adapter.updateSearchQuery(newText, getTabManager().getSelectedIndex());
         return true;
     }
 
