@@ -44,7 +44,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.fdroid.fdroid.compat.Compatibility;
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.compat.UriCompat;
 import org.fdroid.fdroid.data.AppProvider;
@@ -52,7 +51,6 @@ import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
-import org.fdroid.fdroid.views.fragments.AppListFragment;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextListener {
@@ -98,11 +96,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
         Intent intent = getIntent();
-
-        // If the intent can be handled via AppDetails it will call finish()
-        // and the rest of the code won't execute. If it looks like a search term,
-        // this will prompt the SearchView to update itself.
-        handleIntent(intent);
+        handleSearchOrAppViewIntent(intent);
 
         if (intent.hasExtra(EXTRA_TAB_UPDATE)) {
             boolean showUpdateTab = intent.getBooleanExtra(EXTRA_TAB_UPDATE, false);
@@ -147,10 +141,10 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        handleIntent(intent);
+        handleSearchOrAppViewIntent(intent);
     }
 
-    private void handleIntent(Intent intent) {
+    private void handleSearchOrAppViewIntent(Intent intent) {
         final Uri data = intent.getData();
         if (data == null) {
             return;
@@ -243,7 +237,6 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
         if (call != null) {
             startActivity(call);
-            finish();
         }
     }
 
