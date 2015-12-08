@@ -351,9 +351,9 @@ public class UpdateService extends IntentService implements ProgressListener {
             List<Repo> repos = RepoProvider.Helper.all(this);
 
             //List<Repo> swapRepos = new ArrayList<>();
-            List<Repo> unchangedRepos = new ArrayList<>();
-            List<Repo> updatedRepos = new ArrayList<>();
-            List<CharSequence> errorRepos = new ArrayList<>();
+            int unchangedRepos = 0;
+            int updatedRepos = 0;
+            int errorRepos = 0;
             ArrayList<CharSequence> repoErrors = new ArrayList<>();
             boolean changes = false;
             boolean singleRepoUpdate = !TextUtils.isEmpty(address);
@@ -362,7 +362,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     continue;
                 }
                 if (singleRepoUpdate && !repo.address.equals(address)) {
-                    unchangedRepos.add(repo);
+                    unchangedRepos++;
                     continue;
                 }
                 if (!singleRepoUpdate && repo.isSwap) {
@@ -376,13 +376,13 @@ public class UpdateService extends IntentService implements ProgressListener {
                 try {
                     updater.update();
                     if (updater.hasChanged()) {
-                        updatedRepos.add(repo);
+                        updatedRepos++;
                         changes = true;
                     } else {
-                        unchangedRepos.add(repo);
+                        unchangedRepos++;
                     }
                 } catch (RepoUpdater.UpdateException e) {
-                    errorRepos.add(repo.address);
+                    errorRepos++;
                     repoErrors.add(e.getMessage());
                     Log.e(TAG, "Error updating repository " + repo.address, e);
                 }
@@ -403,14 +403,14 @@ public class UpdateService extends IntentService implements ProgressListener {
             e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
             e.commit();
 
-            if (errorRepos.isEmpty()) {
+            if (errorRepos == 0) {
                 if (changes) {
                     sendStatus(this, STATUS_COMPLETE_WITH_CHANGES);
                 } else {
                     sendStatus(this, STATUS_COMPLETE_AND_SAME);
                 }
             } else {
-                if (updatedRepos.size() + unchangedRepos.size() == 0) {
+                if (updatedRepos + unchangedRepos == 0) {
                     sendRepoErrorStatus(STATUS_ERROR_LOCAL, repoErrors);
                 } else {
                     sendRepoErrorStatus(STATUS_ERROR_LOCAL_SMALL, repoErrors);
