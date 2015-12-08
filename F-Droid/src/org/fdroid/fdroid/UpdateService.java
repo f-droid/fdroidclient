@@ -358,7 +358,9 @@ public class UpdateService extends IntentService implements ProgressListener {
             boolean changes = false;
             boolean singleRepoUpdate = !TextUtils.isEmpty(address);
             for (final Repo repo : repos) {
-
+                if (!repo.inuse) {
+                    continue;
+                }
                 if (singleRepoUpdate && !repo.address.equals(address)) {
                     unchangedRepos.add(repo);
                     continue;
