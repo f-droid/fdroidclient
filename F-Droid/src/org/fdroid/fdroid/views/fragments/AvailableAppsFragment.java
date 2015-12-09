@@ -164,14 +164,9 @@ public class AvailableAppsFragment extends AppListFragment implements
         return AppProvider.getCategoryUri(currentCategory);
     }
 
+    @Override
     protected Uri getDataUri(String query) {
-        if (currentCategory == null || currentCategory.equals(AppProvider.Helper.getCategoryAll(getActivity())))
-            return AppProvider.getSearchUri(query);
-        if (currentCategory.equals(AppProvider.Helper.getCategoryRecentlyUpdated(getActivity())))
-            return AppProvider.getSearchRecentlyUpdatedUri(query);
-        if (currentCategory.equals(AppProvider.Helper.getCategoryWhatsNew(getActivity())))
-            return AppProvider.getSearchNewlyAddedUri(query);
-        return AppProvider.getSearchCategoryUri(currentCategory, query);
+        return AppProvider.getSearchUri(query);
     }
 
     private void setCurrentCategory(String category) {
@@ -206,5 +201,19 @@ public class AvailableAppsFragment extends AppListFragment implements
         SharedPreferences.Editor e = p.edit();
         e.putString(CATEGORY_KEY, currentCategory);
         e.commit();
+    }
+
+    @Override
+    protected void onSearch() {
+        if (categorySpinner != null) {
+            categorySpinner.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    protected void onSearchStopped() {
+        if (categorySpinner != null) {
+            categorySpinner.setVisibility(View.VISIBLE);
+        }
     }
 }
