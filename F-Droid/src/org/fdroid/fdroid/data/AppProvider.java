@@ -650,7 +650,7 @@ public class AppProvider extends FDroidProvider {
                 getTableName() + ".description",
         };
 
-        // Remove duplicates, surround in % for case insensitive searching
+        // Remove duplicates, surround in % for wildcard searching
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(query.split("\\s")));
         final String[] keywords = new String[keywordSet.size()];
         int iKeyword = 0;
