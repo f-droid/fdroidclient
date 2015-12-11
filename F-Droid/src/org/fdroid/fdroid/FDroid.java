@@ -212,7 +212,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
             appId = data.getSchemeSpecificPart();
         } else if ("fdroid.search".equals(scheme)) {
             // fdroid.search:query
-            query = UriCompat.replacePlusWithSpace(data.getSchemeSpecificPart());
+            query = data.getSchemeSpecificPart();
         }
 
         if (!TextUtils.isEmpty(query)) {
