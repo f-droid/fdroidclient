@@ -62,9 +62,13 @@ public class RepoPersister {
     @NonNull
     private final Map<String, List<Apk>> apksToSave = new HashMap<>();
 
+    @NonNull
+    private final CompatibilityChecker checker;
+
     public RepoPersister(@NonNull Context context, @NonNull Repo repo) {
         this.repo = repo;
         this.context = context;
+        checker = new CompatibilityChecker(context);
     }
 
     public void saveToDb(App app, List<Apk> packages) throws RepoUpdater.UpdateException {
@@ -281,7 +285,6 @@ public class RepoPersister {
      * in order to see if, and why an apk is not compatible.
      */
     private void calcApkCompatibilityFlags(List<Apk> apks) {
-        final CompatibilityChecker checker = new CompatibilityChecker(context);
         for (final Apk apk : apks) {
             final List<String> reasons = checker.getIncompatibleReasons(apk);
             if (reasons.size() > 0) {
