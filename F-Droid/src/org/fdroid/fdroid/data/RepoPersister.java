@@ -78,8 +78,7 @@ public class RepoPersister {
 
     public void commit(ContentValues repoDetailsToSave) throws RepoUpdater.UpdateException {
         flushBufferToDb();
-        TempAppProvider.Helper.commit(context);
-        TempApkProvider.Helper.commit(context);
+        TempAppProvider.Helper.commitAppsAndApks(context);
         RepoProvider.Helper.update(context, repo, repoDetailsToSave);
     }
 
