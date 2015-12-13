@@ -114,6 +114,9 @@ public class TempAppProvider extends AppProvider {
     private void initTable() {
         write().execSQL("DROP TABLE IF EXISTS " + getTableName());
         write().execSQL("CREATE TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APP);
+        write().execSQL("CREATE INDEX IF NOT EXISTS app_id ON " + getTableName() + " (id);");
+        write().execSQL("CREATE INDEX IF NOT EXISTS app_upstreamVercode ON " + getTableName() + " (upstreamVercode);");
+        write().execSQL("CREATE INDEX IF NOT EXISTS app_compatible ON " + getTableName() + " (compatible);");
     }
 
     private void commitTable() {

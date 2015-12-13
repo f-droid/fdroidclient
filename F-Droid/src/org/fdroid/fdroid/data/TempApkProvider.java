@@ -123,6 +123,9 @@ public class TempApkProvider extends ApkProvider {
     private void initTable() {
         write().execSQL("DROP TABLE IF EXISTS " + getTableName());
         write().execSQL("CREATE TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APK);
+        write().execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + getTableName() + " (vercode);");
+        write().execSQL("CREATE INDEX IF NOT EXISTS apk_id on " + getTableName() + " (id);");
+        write().execSQL("CREATE INDEX IF NOT EXISTS apk_compatible ON " + getTableName() + " (compatible);");
     }
 
 }
