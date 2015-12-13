@@ -14,11 +14,11 @@ dependencies {
     compile 'com.android.support:support-annotations:22.2.1'
 
     compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.google.zxing:core:3.2.1'
     compile 'eu.chainfire:libsuperuser:1.0.0.201510071325'
     compile 'cc.mvdan.accesspoint:library:0.1.3'
-    compile 'commons-net:commons-net:3.3'
+    compile 'commons-net:commons-net:3.4'
     compile 'org.openhab.jmdns:jmdns:3.4.2'
 
     androidTestCompile 'commons-io:commons-io:2.2'
@@ -62,15 +62,15 @@ if (!hasProperty('sourceDeps')) {
             'com.android.support:appcompat-v7:4b5ccba8c4557ef04f99aa0a80f8aa7d50f05f926a709010a54afd5c878d3618',
             'com.android.support:support-annotations:104f353b53d5dd8d64b2f77eece4b37f6b961de9732eb6b706395e91033ec70a',
             'org.thoughtcrime.ssl.pinning:AndroidPinning:afa1d74e699257fa75cb109ff29bac50726ef269c6e306bdeffe8223cee06ef4',
-            'com.nostra13.universalimageloader:universal-image-loader:b99382c5536c7325ef8dc0a0fe9a6cad803cf3488942bea7e1cca4db3e5dec43',
+            'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
             'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
             'eu.chainfire:libsuperuser:a3ed4589e14f7d5ab255b3f31f7b79aaa1173a579035788f8db7c74215453a12',
             'cc.mvdan.accesspoint:library:dc89a085d6bc40381078b8dd7776b12bde0dbaf8ffbcddb17ec4ebc3edecc7ba',
+            'commons-net:commons-net:38cf2eca826b8bcdb236fc1f2e79e0c6dd8e7e0f5c44a3b8e839a1065b2fbe2e',
+            'org.openhab.jmdns:jmdns:7a4b34b5606bbd2aff7fdfe629edcb0416fccd367fb59a099f210b9aba4f0bce',
             'com.madgag.spongycastle:pkix:6aba9b2210907a3d46dd3dcac782bb3424185290468d102d5207ebdc9796a905',
             'com.madgag.spongycastle:prov:029f26cd6b67c06ffa05702d426d472c141789001bcb15b7262ed86c868e5643',
             'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
-            'commons-net:commons-net:b35ad597f17a6f221575df2f729a9de8f70390509e047680771e713bad713fb9',
-            'org.openhab.jmdns:jmdns:7a4b34b5606bbd2aff7fdfe629edcb0416fccd367fb59a099f210b9aba4f0bce',
         ]
     }
 
