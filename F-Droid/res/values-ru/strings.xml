@@ -239,4 +239,8 @@
     <string name="repo_added">Сохранен F-Droid репозиторий %1$s.</string>
     <string name="tab_installed_apps_count">Установлено (%d)</string>
     <string name="tab_updates_count">Обновления (%d)</string>
+    <string name="about_license">Лицензия</string>
+
+    <string name="status_inserting_apps">Сохранение информации о приложениях</string>
+    <string name="category_Connectivity">Связь</string>
     </resources>

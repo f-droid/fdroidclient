@@ -332,4 +332,5 @@
     <string name="tab_updates_count">Mises à jour (%d)</string>
     <string name="about_license">License</string>
 
+    <string name="status_inserting_apps">Enregistrement des détails de l\'application</string>
     </resources>

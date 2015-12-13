@@ -157,7 +157,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="uninstall_system_summary">Pokaż szczegóły Uprzywilejowanego dodatku</string>
     <string name="about_mail">Email</string>
     <string name="app_incompatible">Niekompatybilne</string>
-    <string name="app_installed">Zainstalowano</string>
+    <string name="app_installed">Zainstalowane</string>
     <string name="app_inst_known_source">Zainstalowano (z %s)</string>
     <string name="app_inst_unknown_source">Zainstalowano (z nieznanego źródła)</string>
 
@@ -333,4 +333,5 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
     <string name="tab_installed_apps_count">Zainstalowano (%d)</string>
     <string name="tab_updates_count">Aktualizacje (%d)</string>
+    <string name="status_inserting_apps">Zapisywanie danych aplikacji</string>
     </resources>

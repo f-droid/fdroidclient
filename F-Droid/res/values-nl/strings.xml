@@ -31,9 +31,9 @@
   <string name="app_details">App-details</string>
   <string name="no_such_app">Geen dergelijke app gevonden.</string>
   <string name="about_title">Over F-Droid</string>
-  <string name="about_site">Website:</string>
-  <string name="about_mail">E-Mail:</string>
-  <string name="about_version">Versie:</string>
+  <string name="about_site">Website</string>
+  <string name="about_mail">Email</string>
+  <string name="about_version">Versie</string>
   <string name="app_installed">Geïnstalleerd</string>
   <string name="app_not_installed">Niet geïnstalleerd</string>
   <string name="app_inst_known_source">Geïnstalleerd (van %s)</string>
@@ -218,7 +218,7 @@
     <string name="swap_dont_show_again">Toon dit niet opnieuw</string>
     <string name="app_name">F-Droid</string>
 
-    <string name="about_source">Bron:</string>
+    <string name="about_source">Broncode</string>
     <string name="category_Connectivity">Connectiviteit</string>
     <string name="category_Graphics">Grafisch</string>
     <string name="category_Money">Geld</string>
@@ -321,4 +321,15 @@
 
     <string name="theme_night">Nacht</string>
 <string name="menu_settings">Instellingen</string>
+    <string name="login_name">Gebruikersnaam</string>
+    <string name="login_password">Wachtwoord</string>
+    <string name="repo_edit_credentials">Wachtwoord wijzigen</string>
+    <string name="about_license">Licentie</string>
+
+    <string name="tab_installed_apps_count">Geïnstalleerd (%s)</string>
+    <string name="tab_updates_count">Updates (%d)</string>
+    <string name="status_inserting_apps">Toepassingsdetails opslaan</string>
+    <string name="login_title">Verificatie vereist</string>
+    <string name="repo_error_empty_username">Lege gebruikersnaam, referenties niet gewijzigd</string>
+
     </resources>

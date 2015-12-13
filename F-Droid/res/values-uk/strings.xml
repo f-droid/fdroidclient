@@ -9,9 +9,9 @@
   <string name="updates">Оновлення</string>
   <string name="notify">Сповіщення про оновлення</string>
   <string name="about_title">Про F-Droid</string>
-  <string name="about_site">Сайт:</string>
-  <string name="about_mail">Пошта:</string>
-  <string name="about_version">Версія:</string>
+  <string name="about_site">Сайт</string>
+  <string name="about_mail">Електронна пошта</string>
+  <string name="about_version">Версія</string>
   <string name="app_installed">Встановлено</string>
   <string name="app_not_installed">Не встановлено</string>
   <string name="ok">Гаразд</string>
@@ -81,7 +81,7 @@
     <string name="app_details">Деталі додатку</string>
     <string name="no_such_app">Не знайдено додатку.</string>
 
-    <string name="about_source">Джерельний код:</string>
+    <string name="about_source">Джерельний код</string>
     <string name="app_inst_known_source">Встановлено (з %s)</string>
     <string name="app_inst_unknown_source">Встановлено (з невідомого джерела)</string>
 
@@ -300,7 +300,7 @@
     <string name="install_confirm_update_system">Бажаєте встановити оновлення на вбудований додаток? Ваші наявні дані не буде втрачено. Оновлений додаток матиме доступ до:</string>
     <string name="install_confirm_update_no_perms">Бажаєте встановити оновлення на наявний додаток? Ваші наявні дані не буде втрачено. Оновлений додаток не потребує спеціальних дозволів.</string>
     <string name="install_confirm_update_system_no_perms">Бажаєте встановити оновлення на вбудований додаток? Ваші наявні дані не буде втрачено. Оновлений додаток не потребує спеціальних дозволів.</string>
-    <string name="uninstall_update_confirm">Бажаєте замінити цей додаток заволзькою версією?</string>
+    <string name="uninstall_update_confirm">Бажаєте замінити цей додаток заводською версією?</string>
     <string name="perms_new_perm_prefix">"Нові: "</string>
     <string name="empty_installed_app_list">Жодного додатку не встановлено.\n\nДодатки, які встановлені на вашому пристрої, не доступні через F-Droid. Можливо вам слід оновити репозиторії, або ж ваші репозиторії не містять такі додатки.</string>
     <string name="system_install_first_time_notification_message">Торкніться, аби встановити привілейоване розширення F-Droid, інтегруючи його до операційної системи Android. Це дозволить додатку F-Droid власними засобами встановлювати, оновлювати чи видаляти додатки.\nВи також можете зробити це пізніше через налаштування F-Droid.</string>
@@ -337,5 +337,9 @@
     <string name="repo_error_empty_username">Відсутнє ім\'я користувача, облікові дані не змінено</string>
 
     <string name="tab_installed_apps_count">Встановлено (%d)</string>
-    <string name="perms_description_app">"Надано  %1$s."</string>
+    <string name="perms_description_app">Надано %1$s.</string>
+    <string name="about_license">Ліцензія</string>
+
+    <string name="tab_updates_count">Оновлення (%d)</string>
+    <string name="status_inserting_apps">Збереження подробиць по додаткам</string>
     </resources>

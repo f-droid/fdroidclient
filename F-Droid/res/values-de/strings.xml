@@ -3,9 +3,9 @@
   <string name="searchres_napps">%1$d Anwendungen mit »%2$s« gefunden:</string>
   <string name="searchres_oneapp">Eine Anwendung mit »%s« gefunden:</string>
   <string name="searchres_noapps">Keine Anwendung mit »%s« gefunden</string>
-  <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die Alte. Um die neue Version zu installieren, muss zunächst die Alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: Beim Entfernen werden alle intern gespeicherten Daten dieser Anwendung gelöscht.)</string>
-  <string name="installIncompatible">Es sieht so aus, als sei dieses Paket mit Ihrem Gerät nicht kompatibel. Möchten Sie trotzdem versuchen es zu installieren?</string>
-  <string name="installDowngrade">Sie versuchen eine vorherige Version einer bereits installierten Anwendung zu installieren. Dies kann zu Fehlverhalten der Anwendung und gegebenenfalls zu Datenverlust führen. Möchten Sie dennoch fortfahren?</string>
+  <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren, muss zunächst die alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: Beim Entfernen werden alle intern gespeicherten Daten dieser Anwendung gelöscht.)</string>
+  <string name="installIncompatible">Es sieht so aus, als sei dieses Paket mit Ihrem Gerät nicht kompatibel. Möchten Sie trotzdem versuchen, es zu installieren?</string>
+  <string name="installDowngrade">Sie versuchen, eine vorherige Version einer bereits installierten Anwendung zu installieren. Dies kann zu Fehlverhalten der Anwendung und gegebenenfalls zu Datenverlust führen. Möchten Sie dennoch fortfahren?</string>
   <string name="version">Version</string>
   <string name="delete">Löschen</string>
   <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
@@ -31,9 +31,9 @@
   <string name="app_details">Anwendungsdetails</string>
   <string name="no_such_app">Keine solche Anwendung gefunden.</string>
   <string name="about_title">Über F-Droid</string>
-  <string name="about_site">Internetseite:</string>
-  <string name="about_mail">E-Mail:</string>
-  <string name="about_version">Version:</string>
+  <string name="about_site">Internetseite</string>
+  <string name="about_mail">E-Mail</string>
+  <string name="about_version">Version</string>
   <string name="app_installed">Installiert</string>
   <string name="app_not_installed">Nicht installiert</string>
   <string name="app_inst_known_source">Installiert (aus %s)</string>
@@ -181,7 +181,7 @@
   <string name="open_qr_code_scanner">QR-Code-Scanner öffnen</string>
   <string name="swap_welcome">Willkommen bei F-Droid!</string>
   <string name="swap_confirm_connect">Möchten Sie jetzt Apps von %1$s erhalten?</string>
-<string name="about_source">Quelle:</string>
+<string name="about_source">Quelltext</string>
     <string name="app_incompatible">Inkompatibel</string>
     <string name="links">Verweise</string>
     <string name="back">Zurück</string>
@@ -296,7 +296,7 @@
     <string name="system_install_first_time_message">Es sieht so aus, als wenn Sie root-Zugriff auf Ihrem Gerät haben. Sie können jetzt »privilegierte F-Droid Erweiterung« installieren, die sehr eng mit dem Android-Betriebssystem gekoppelt ist. Das erlaubt F-Droid, selbständig Anwendungen zu installieren, aktualisieren und zu entfernen.</string>
     <string name="swap_join_same_wifi_desc">Um über WLAN zu tauschen müssen Sie sich im selben Netzwerk befinden. Wenn Sie keinen gemeinsamen Netzwerkzugang haben kann einer von Ihnen einen WLAN-Hotspot einrichten.</string>
     <string name="swap_nearby">Tausch in der Nähe</string>
-    <string name="swap_cant_send_no_bluetooth">F-Droid kann nicht gesendet werden, da auf diesem Gerät kein Bluetooth verfügbar ist.</string>
+    <string name="swap_cant_send_no_bluetooth">F-Droid kann nicht gesendet werden, da Bluetooth auf diesem Gerät nicht verfügbar ist.</string>
     <string name="loading">Ladevorgang …</string>
     <string name="swap_attempt_install">Installation versuchen</string>
     <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich.</string>
@@ -328,4 +328,9 @@
     <string name="repo_edit_credentials">Passwort ändern</string>
     <string name="repo_error_empty_username">Leerer Benutzername, Anmeldeinformationen nicht geändert</string>
 
+    <string name="about_license">Lizenz</string>
+
+    <string name="tab_installed_apps_count">Installiert (%d)</string>
+    <string name="tab_updates_count">Aktualisierungen (%d)</string>
+    <string name="status_inserting_apps">Anwendungsdetails werden gespeichert</string>
     </resources>

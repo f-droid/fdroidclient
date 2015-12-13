@@ -30,9 +30,9 @@
   <string name="app_details">Detalls de l\'aplicació</string>
   <string name="no_such_app">No s\'ha trobat l\'aplicació.</string>
   <string name="about_title">Quant a l\'F-Droid</string>
-  <string name="about_site">Pàgina web:</string>
-  <string name="about_mail">Correu:</string>
-  <string name="about_version">Versió:</string>
+  <string name="about_site">Pàgina web</string>
+  <string name="about_mail">Correu</string>
+  <string name="about_version">Versió</string>
   <string name="app_installed">Instal·lat</string>
   <string name="app_not_installed">No està instal·lat</string>
   <string name="app_inst_known_source">Instal·lat (des de %s)</string>
@@ -167,7 +167,7 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
   <string name="root_access_denied_title">Accés com a administrador rebutjat</string>
   <string name="root_access_denied_body">Aquest dispositiu Android no permet actuar com a administrador o bé no heu donat privilegis d\'administrador a l\'F-Droid.</string>
   <string name="system_install_denied_body">Només disponible quan F-Droid és instal·lat com una aplicació al sistema.</string>
-  <string name="app_description">F-Droid és un catàleg instal·lable d\'aplicacions lliures per a la plataforma Android. El client facilita la cerca, l\'instal·lació i l\'actualització d\'aplicacions al vostre dispositiu.</string>
+  <string name="app_description">F-Droid és un catàleg instal·lable d\'aplicacions lliures per a la plataforma Android. El client facilita la cerca, la instal·lació i l\'actualització d\'aplicacions al vostre dispositiu.</string>
   <string name="swap_join_same_wifi">Uniu-vos a la Wi-Fi del vostre amic</string>
   <string name="menu_swap">Intercanvi d\'aplicacions</string>
   <string name="swap">Intercanvieu aplicacions</string>
@@ -178,7 +178,7 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
   <string name="swap_confirm_connect">Voleu baixar aplicacions des de %1$s ara?</string>
 <string name="app_name">F-Droid</string>
 
-    <string name="about_source">Codi font:</string>
+    <string name="about_source">Codi font</string>
     <string name="app_incompatible">Incompatible</string>
     <string name="links">Enllaços</string>
 
@@ -262,8 +262,8 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="system_install_denied_title">L\'Extensió Privilegiada d\'F-Droid no està disponible</string>
     <string name="empty_can_update_app_list">Totes les aplicacions estan actualitzades.\n\nFelicitats! Totes les vostres aplicacions estan actualitzades (o els repositoris no ho estan).</string>
 
-    <string name="system_install_denied_signature">La signatura de l\'extensió és incorrecta! Si podeu, informeu d\'aquest error.</string>
-    <string name="system_install_denied_permissions">No s\'han concedit els permisos de sistema a l\'extensió! Si podeu, informeu d\'aquest error.</string>
+    <string name="system_install_denied_signature">La signatura de l\'extensió és incorrecta! Si podeu, informeu d\'aquest error!</string>
+    <string name="system_install_denied_permissions">No s\'han concedit els permisos de sistema a l\'extensió! Si podeu, informeu d\'aquest error!</string>
     <string name="system_install_button_open">Obre l\'extensió</string>
     <string name="system_install_first_time_notification">Voleu instal·lar l\'Extensió Privilegiada d\'F-Droid?</string>
     <string name="system_install_first_time_notification_message_short">Toqueu per obtenir més informació.</string>
@@ -321,4 +321,15 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="install_confirm_update_system">Voleu instal·lar una actualització d\'aquesta aplicació integrada? No perdreu les dades existents. L\'aplicació actualitzada tindrà accés a:</string>
     <string name="install_confirm_update_no_perms">Voleu instal·lar una actualització d\'aquesta aplicació? Les dades existents no es perdran. No requereix cap accés especial.</string>
     <string name="install_confirm_update_system_no_perms">Voleu instal·lar una actualització d\'aquesta aplicació integrada? Les dades existents no es perdran. L\'aplicació no requereix cap accés especial.</string>
+    <string name="login_title">Es requereix autenticació</string>
+    <string name="login_name">Nom d\'usuari</string>
+    <string name="login_password">Contrasenya</string>
+    <string name="repo_edit_credentials">Canvieu la contrasenya</string>
+    <string name="repo_error_empty_username">El nom d\'usuari és buit, les credencials no s\'han canviat</string>
+
+    <string name="about_license">Llicència</string>
+
+    <string name="tab_installed_apps_count">(%d) instal·lat</string>
+    <string name="tab_updates_count">Actualitzacions (%d)</string>
+    <string name="status_inserting_apps">Desant els detalls de l\'aplicació</string>
     </resources>

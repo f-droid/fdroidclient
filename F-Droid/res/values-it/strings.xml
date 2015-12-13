@@ -9,8 +9,8 @@
   <string name="version">Versione</string>
   <string name="delete">Elimina</string>
   <string name="enable_nfc_send">Attiva Invio NFC…</string>
-  <string name="cache_downloaded">Cache applicazioni</string>
-  <string name="cache_downloaded_on">Conserva i file apk scaricati sulla scheda SD</string>
+  <string name="cache_downloaded">Cache pacchetti</string>
+  <string name="cache_downloaded_on">Conserva sul dispositivo i file dei pacchetti scaricati</string>
   <string name="updates">Aggiornamenti</string>
   <string name="other">Altro</string>
   <string name="update_interval">Intervallo degli aggiornamenti automatici</string>
@@ -21,8 +21,8 @@
   <string name="notify_on">Notifica gli aggiornamenti disponibili</string>
   <string name="update_history">Aggiorna i repository</string>
   <string name="update_history_summ">Numero di giorni per considerare le applicazioni nuove o recenti: %s</string>
-  <string name="system_installer">Installa usando i permessi di sistema</string>
-  <string name="system_installer_on">Usa i permessi di sistema per installare,aggiornare e rimuovere i pacchetti</string>
+  <string name="system_installer">Estensione Priviliegiata</string>
+  <string name="system_installer_on">Usa l\'Estensione Privilegiata di F-Droid per installare, aggiornare e rimuovere i pacchetti</string>
   <string name="local_repo_name">Nome della tua Repo Locale</string>
   <string name="local_repo_name_summary">Il titolo visualizzato della tua repo: %s</string>
   <string name="local_repo_https">Usa una Connessione Privata</string>
@@ -246,4 +246,6 @@ Prova a collegarti a questa rete: %s</string>
     <string name="theme_dark">Scuro</string>
     <string name="theme_night">Notte</string>
 <string name="permissions">Permessi</string>
+    <string name="unstable_updates_summary">Suggerisci aggiornamenti a versioni non stabili</string>
+    <string name="uninstall_system">Aggiorna/Disinstalla l\'Estensione Privilegiata</string>
     </resources>

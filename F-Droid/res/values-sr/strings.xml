@@ -327,4 +327,5 @@
     <string name="tab_updates_count">Надоградње (%d)</string>
     <string name="about_license">Лиценца</string>
 
+    <string name="status_inserting_apps">Уписујем детаље апликација</string>
     </resources>

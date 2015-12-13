@@ -30,9 +30,9 @@
   <string name="app_details">Thông tin ứng dụng</string>
   <string name="no_such_app">Không tìm thấy ứng dụng.</string>
   <string name="about_title">Giới thiệu về F-Droid</string>
-  <string name="about_site">Trang web:</string>
-  <string name="about_mail">E-Mail:</string>
-  <string name="about_version">Phiên bản:</string>
+  <string name="about_site">Trang web</string>
+  <string name="about_mail">Email</string>
+  <string name="about_version">Phiên bản</string>
   <string name="app_installed">Đã cài đặt</string>
   <string name="app_not_installed">Chưa cài đặt</string>
   <string name="app_inst_known_source">Đã cài đặt (từ %s)</string>
@@ -155,7 +155,7 @@
   <string name="system_install_denied_title">Bị từ chối quyền hệ thống</string>
   <string name="system_install_denied_body">Chỉ có tuỳ chọn này khi F-Droid được cài làm ứng dụng hệ thống.</string>
   <string name="app_description">F-Droid là một kho ứng dụng FOSS (tự do và mã nguồn mở) cài đặt được trên nền tảng Android. Ứng dụng F-Droid giúp bạn tìm kiếm, cài đặt và theo dõi cập nhật dễ dàng hơn.</string>
-  <string name="swap_nfc_description">Nếu bạn của bạn có NFC, hãy chạm hai điện thoại vào nhau.</string>
+  <string name="swap_nfc_description">Nếu bạn của bạn có F-Droid và đã bật NFC, hãy chạm hai thiết bị vào nhau.</string>
   <string name="swap_join_same_wifi">Vào cùng một mạng Wi-Fi với bạn của bạn</string>
   <string name="menu_swap">Trao đổi ứng dụng</string>
   <string name="swap">Trao đổi ứng dụng</string>
@@ -174,7 +174,7 @@
 
     <string name="back">Quay lại</string>
     <string name="local_repo_name_summary">Tên kho phần mềm nội bộ của bạn: %s</string>
-    <string name="about_source">Mã nguồn:</string>
+    <string name="about_source">Mã nguồn</string>
     <string name="app_incompatible">Không tương thích</string>
     <string name="tab_installed_apps">Đã cài đặt</string>
     <string name="update_notification_more">+%1$d ứng dụng khác…</string>
@@ -319,4 +319,15 @@
     <string name="system_install_denied_signature">Mã kiểm tra của phần mở rộng sai. Xin hãy báo lại lỗi này cho nhóm phát triển!</string>
     <string name="repo_add_fingerprint">Mã kiểm tra (không bắt buộc)</string>
     <string name="bad_fingerprint">Mã kiểm tra sai</string>
+    <string name="login_title">Yêu cầu xác thực</string>
+    <string name="login_name">Tên đăng nhập</string>
+    <string name="login_password">Mật khẩu</string>
+    <string name="repo_edit_credentials">Đổi mật khẩu</string>
+    <string name="repo_error_empty_username">Tên người dùng trống, không đổi được mật khẩu</string>
+
+    <string name="about_license">Giấy phép</string>
+
+    <string name="tab_installed_apps_count">Đã cài đặt (%d)</string>
+    <string name="tab_updates_count">Cập nhật (%d)</string>
+    <string name="status_inserting_apps">Đang lưu thông tin ứng dụng</string>
     </resources>
