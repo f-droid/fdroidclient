@@ -391,7 +391,6 @@ public class UpdateService extends IntentService implements ProgressListener {
             if (!changes) {
                 Utils.debugLog(TAG, "Not checking app details or compatibility, because all repos were up to date.");
             } else {
-                sendStatus(this, STATUS_INFO, getString(R.string.status_checking_compatibility));
                 notifyContentProviders();
 
                 if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, true)) {

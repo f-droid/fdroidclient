@@ -3,8 +3,11 @@ package org.fdroid.fdroid.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
+
+import org.fdroid.fdroid.Utils;
 
 /**
  * This class does all of its operations in a temporary sqlite table.
@@ -15,7 +18,7 @@ public class TempAppProvider extends AppProvider {
 
     private static final String PROVIDER_NAME = "TempAppProvider";
 
-    private static final String TABLE_TEMP_APP = "temp_fdroid_app";
+    private static final String TABLE_TEMP_APP = "temp_" + DBHelper.TABLE_APP;
 
     private static final String PATH_INIT = "init";
     private static final String PATH_COMMIT = "commit";
@@ -63,11 +66,10 @@ public class TempAppProvider extends AppProvider {
          * Saves data from the temp table to the apk table, by removing _EVERYTHING_ from the real
          * apk table and inserting all of the records from here. The temporary table is then removed.
          */
-        public static void commit(Context context) {
+        public static void commitAppsAndApks(Context context) {
             Uri uri = Uri.withAppendedPath(getContentUri(), PATH_COMMIT);
             context.getContentResolver().insert(uri, new ContentValues());
         }
-
     }
 
     @Override
@@ -112,12 +114,31 @@ public class TempAppProvider extends AppProvider {
     private void initTable() {
         write().execSQL("DROP TABLE IF EXISTS " + getTableName());
         write().execSQL("CREATE TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APP);
+        write().execSQL("CREATE INDEX IF NOT EXISTS app_id ON " + getTableName() + " (id);");
+        write().execSQL("CREATE INDEX IF NOT EXISTS app_upstreamVercode ON " + getTableName() + " (upstreamVercode);");
+        write().execSQL("CREATE INDEX IF NOT EXISTS app_compatible ON " + getTableName() + " (compatible);");
     }
 
     private void commitTable() {
-        Log.i(TAG, "Deleting all apks from " + DBHelper.TABLE_APP + " so they can be copied from " + getTableName());
-        write().execSQL("DELETE FROM " + DBHelper.TABLE_APP);
-        write().execSQL("INSERT INTO " + DBHelper.TABLE_APP + " SELECT * FROM " + getTableName());
-        getContext().getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+        final SQLiteDatabase db = write();
+        try {
+            db.beginTransaction();
+
+            Log.i(TAG, "Renaming " + TABLE_TEMP_APP + " to " + DBHelper.TABLE_APP);
+            db.execSQL("DROP TABLE " + DBHelper.TABLE_APP);
+            db.execSQL("ALTER TABLE " + TABLE_TEMP_APP + " RENAME TO " + DBHelper.TABLE_APP);
+
+            Log.i(TAG, "Renaming " + TempApkProvider.TABLE_TEMP_APK + " to " + DBHelper.TABLE_APK);
+            db.execSQL("DROP TABLE " + DBHelper.TABLE_APK);
+            db.execSQL("ALTER TABLE " + TempApkProvider.TABLE_TEMP_APK + " RENAME TO " + DBHelper.TABLE_APK);
+
+            Utils.debugLog(TAG, "Successfully renamed both tables, will commit transaction");
+            db.setTransactionSuccessful();
+
+            getContext().getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+            getContext().getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
+        } finally {
+            db.endTransaction();
+        }
     }
 }
