@@ -4,27 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/category_spinner"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:paddingBottom="1dp" />
+        android:layout_height="wrap_content"
+        android:id="@+id/category_wrapper"
+        android:layout_alignParentTop="true">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_alignBottom="@id/category_spinner"
-        android:background="@color/fdroid_green" />
+        <Spinner
+            android:id="@+id/category_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:paddingBottom="1dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignBottom="@id/category_spinner"
+            android:background="@color/fdroid_green" />
+
+    </RelativeLayout>
 
     <ListView
         style="@style/AppList"
-        android:layout_below="@id/category_spinner" />
+        android:layout_below="@id/category_wrapper" />
 
     <TextView
         style="@style/AppListEmptyText"
-        android:layout_below="@id/category_spinner"
+        android:layout_below="@id/category_wrapper"
         android:text="@string/empty_available_app_list" />
 
 </RelativeLayout>

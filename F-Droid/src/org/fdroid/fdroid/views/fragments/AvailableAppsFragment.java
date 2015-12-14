@@ -8,6 +8,7 @@ import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,11 @@ public class AvailableAppsFragment extends AppListFragment implements
     private static String defaultCategory;
 
     private List<String> categories;
+
+    @Nullable
+    private View categoryWrapper;
+
+    @Nullable
     private Spinner categorySpinner;
     private String currentCategory;
     private AppListAdapter adapter;
@@ -147,6 +153,7 @@ public class AvailableAppsFragment extends AppListFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.available_app_list, container, false);
 
+        categoryWrapper = view.findViewById(R.id.category_wrapper);
         setupCategorySpinner((Spinner) view.findViewById(R.id.category_spinner));
         defaultCategory = AppProvider.Helper.getCategoryWhatsNew(getActivity());
 
@@ -180,15 +187,18 @@ public class AvailableAppsFragment extends AppListFragment implements
         super.onResume();
         /* restore the saved Category Spinner position */
         Activity activity = getActivity();
-        SharedPreferences p = activity.getSharedPreferences(PREFERENCES_FILE,
-                Context.MODE_PRIVATE);
+        SharedPreferences p = activity.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
         currentCategory = p.getString(CATEGORY_KEY, defaultCategory);
-        for (int i = 0; i < categorySpinner.getCount(); i++) {
-            if (currentCategory.equals(categorySpinner.getItemAtPosition(i).toString())) {
-                categorySpinner.setSelection(i);
-                break;
+
+        if (categorySpinner != null) {
+            for (int i = 0; i < categorySpinner.getCount(); i++) {
+                if (currentCategory.equals(categorySpinner.getItemAtPosition(i).toString())) {
+                    categorySpinner.setSelection(i);
+                    break;
+                }
             }
         }
+
         setCurrentCategory(currentCategory);
     }
 
@@ -205,15 +215,15 @@ public class AvailableAppsFragment extends AppListFragment implements
 
     @Override
     protected void onSearch() {
-        if (categorySpinner != null) {
-            categorySpinner.setVisibility(View.GONE);
+        if (categoryWrapper != null) {
+            categoryWrapper.setVisibility(View.GONE);
         }
     }
 
     @Override
     protected void onSearchStopped() {
-        if (categorySpinner != null) {
-            categorySpinner.setVisibility(View.VISIBLE);
+        if (categoryWrapper != null) {
+            categoryWrapper.setVisibility(View.VISIBLE);
         }
     }
 }
