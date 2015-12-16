@@ -326,7 +326,7 @@
     <string name="repo_edit_credentials">Wachtwoord wijzigen</string>
     <string name="about_license">Licentie</string>
 
-    <string name="tab_installed_apps_count">Geïnstalleerd (%s)</string>
+    <string name="tab_installed_apps_count">Geïnstalleerd (%d)</string>
     <string name="tab_updates_count">Updates (%d)</string>
     <string name="status_inserting_apps">Toepassingsdetails opslaan</string>
     <string name="login_title">Verificatie vereist</string>
