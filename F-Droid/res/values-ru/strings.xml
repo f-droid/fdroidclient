@@ -78,7 +78,7 @@
   <string name="menu_website">Сайт</string>
   <string name="menu_issues">Ошибки</string>
   <string name="menu_source">Исходный код</string>
-  <string name="menu_upgrade">Обновление</string>
+  <string name="menu_upgrade">Обновить</string>
   <string name="menu_donate">Пожертвовать</string>
   <string name="details_installed">Версия %s установлена</string>
   <string name="details_notinstalled">Не установлено</string>
@@ -243,4 +243,28 @@
 
     <string name="status_inserting_apps">Сохранение информации о приложениях</string>
     <string name="category_Connectivity">Связь</string>
+    <string name="login_title">Требуется аутентификация</string>
+    <string name="login_name">Имя пользователя</string>
+    <string name="login_password">Пароль</string>
+    <string name="repo_edit_credentials">Изменить пароль</string>
+    <string name="repo_error_empty_username">Не задано имя пользователя, учётные данные не изменены</string>
+
+    <string name="repo_searching_address">Поиск репозитория F-Droid на\n%1$s</string>
+    <string name="wifi_ap">Точка доступа</string>
+
+    <string name="category_Theming">Темы</string>
+    <string name="system_install_denied_signature">Неправильная подпись расширения! Пожалуйста, отправьте сообщение об ошибке.</string>
+    <string name="system_install_denied_permissions">Расширению не был предоставлен привилегированный доступ! Пожалуйста, отправьте сообщение об ошибке.</string>
+    <string name="system_install_button_install">Установить</string>
+    <string name="system_install_button_open">Открыть расширение</string>
+    <string name="system_install_first_time_notification">Установить привилегированное расширение F-Droid?</string>
+    <string name="system_install_post_success">Привелигированное расширение F-Droid успешно установлено</string>
+    <string name="system_install_post_fail">Установка привилегированного расширения F-Droid не удалась</string>
+    <string name="system_install_installing">Установка…</string>
+    <string name="system_install_installing_rebooting">Установка и перезагрузка…</string>
+    <string name="system_install_uninstalling">Удаление…</string>
+    <string name="downloading">Загрузка…</string>
+
+    <string name="system_uninstall_button">Удалить</string>
+
     </resources>

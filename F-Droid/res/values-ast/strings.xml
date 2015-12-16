@@ -332,4 +332,5 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="tab_updates_count">Anovamientos (%d)</string>
     <string name="about_license">Llicencia</string>
 
+    <string name="status_inserting_apps">Guardando detalles d\'aplicaciones</string>
     </resources>

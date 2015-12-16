@@ -13,7 +13,7 @@
   <string name="cache_downloaded_on">Heruntergeladene Programmpakete auf dem Gerät behalten</string>
   <string name="updates">Aktualisierungen</string>
   <string name="other">Andere</string>
-  <string name="update_interval">Automatisches Aktualisierungsintervall</string>
+  <string name="update_interval">Autom. Aktualisierungsabstand</string>
   <string name="update_interval_zero">Keine automatischen Aktualisierungen der Anwendungsliste</string>
   <string name="automatic_scan_wifi">Nur über WLAN</string>
   <string name="automatic_scan_wifi_on">Anwendungsliste nur über WLAN automatisch aktualisieren</string>
