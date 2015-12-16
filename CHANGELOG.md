@@ -2,12 +2,17 @@
 
 * Add support for HTTP basic authentication of repos
 
-* Fix repo updating on devices with little memory by not growing memory
-  usage linearly with the number of apps
+* Fix repo updating on older devices with little memory
+
+* Rework search to be incremental and without a separate activity
 
 * Add English to the list of languages to use in the settings
 
-* Replace search dialog with a search widget
+* Cache installed app information in the database
+
+* Add counter to the installed tab
+
+* Improve repo update test coverage
 
 * Translation updates
 
