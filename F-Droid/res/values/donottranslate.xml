@@ -71,4 +71,51 @@
         <item>zh-rHK</item>
     </string-array>
 
+    <string-array name="languageNames">
+        <item>@string/pref_language_default</item>
+        <item>English</item>
+        <item>ﺎﻠﻋﺮﺒﻳﺓ</item>
+        <item>Asturian</item>
+        <item>Български</item>
+        <item>Català</item>
+        <item>Čeština</item>
+        <item>Dansk</item>
+        <item>Deutsch</item>
+        <item>Ελληνικά</item>
+        <item>Esperanto</item>
+        <item>Español</item>
+        <item>Euskara</item>
+        <item>ﻑﺍﺮﺳی</item>
+        <item>Suomi</item>
+        <item>Français</item>
+        <item>Galego</item>
+        <item>עברית</item>
+        <item>Magyar</item>
+        <item>Bahasa Indonesia</item>
+        <item>Italiano</item>
+        <item>日本語</item>
+        <item>한국어</item>
+        <item>Lietuvių</item>
+        <item>Latviešu</item>
+        <item>Norsk bokmål</item>
+        <item>Nederlands</item>
+        <item>Polski</item>
+        <item>Português (Brasil)</item>
+        <item>Português (Portugal)</item>
+        <item>Română</item>
+        <item>Русский</item>
+        <item>Sardinian</item>
+        <item>Slovenčina</item>
+        <item>Slovenščina</item>
+        <item>Shqip</item>
+        <item>Српски</item>
+        <item>Svenska</item>
+        <item>Türkçe</item>
+        <item>ﺉۇﻲﻏۇﺭچە</item>
+        <item>Українська</item>
+        <item>Tiếng Việt</item>
+        <item>中文 (中国)</item>
+        <item>中文 (香港)</item>
+    </string-array>
+
 </resources>

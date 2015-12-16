@@ -19,10 +19,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
-
-import java.util.Locale;
 
 public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -127,7 +124,6 @@ public class PreferencesFragment extends PreferenceFragment
                 break;
 
             case Preferences.PREF_LANGUAGE:
-                langSpinner(key);
                 entrySummary(key);
                 if (changing) {
                     result |= PreferencesActivity.RESULT_RESTART;
@@ -267,31 +263,6 @@ public class PreferencesFragment extends PreferenceFragment
                 return true;
             }
         });
-    }
-
-    private String localeDisplayName(Locale locale, String defName) {
-        if (locale == null) {
-            return defName;
-        }
-        String name = locale.getDisplayName(locale);
-        if (name.length() < 2) {
-            return name;
-        }
-        // In some cases (e.g. "català" or "français") the display name isn't
-        // capitalized, so make sure it is.
-        return Character.toUpperCase(name.charAt(0)) + name.substring(1);
-    }
-
-    private void langSpinner(String key) {
-        final ListPreference pref = (ListPreference) findPreference(key);
-        final String[] langValues = getResources().getStringArray(R.array.languageValues);
-        String[] langNames = new String[langValues.length];
-        langNames[0] = getString(R.string.pref_language_default);
-        for (int i = 1; i < langValues.length; i++) {
-            Locale locale = Utils.getLocaleFromAndroidLangTag(langValues[i]);
-            langNames[i] = localeDisplayName(locale, langValues[i]);
-        }
-        pref.setEntries(langNames);
     }
 
     @Override

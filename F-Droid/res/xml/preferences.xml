@@ -23,6 +23,7 @@
         <ListPreference android:title="@string/pref_language"
             android:key="language"
             android:defaultValue=""
+            android:entries="@array/languageNames"
             android:entryValues="@array/languageValues" />
         <ListPreference android:title="@string/theme"
             android:key="theme"
