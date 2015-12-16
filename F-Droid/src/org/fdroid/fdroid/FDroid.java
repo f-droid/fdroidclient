@@ -29,10 +29,12 @@ import android.content.res.Configuration;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -43,6 +45,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.fdroid.fdroid.compat.TabManager;
+import org.fdroid.fdroid.compat.UriCompat;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
@@ -50,7 +53,7 @@ import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
-public class FDroid extends ActionBarActivity {
+public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     private static final String TAG = "FDroid";
 
@@ -66,7 +69,16 @@ public class FDroid extends ActionBarActivity {
 
     private ViewPager viewPager;
 
+    @Nullable
     private TabManager tabManager;
+
+    private AppListFragmentPagerAdapter adapter;
+
+    @Nullable
+    private MenuItem searchMenuItem;
+
+    @Nullable
+    private String pendingSearchQuery;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +96,7 @@ public class FDroid extends ActionBarActivity {
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
         Intent intent = getIntent();
-
-        // If the intent can be handled via AppDetails or SearchResults, it
-        // will call finish() and the rest of the code won't execute
-        handleIntent(intent);
+        handleSearchOrAppViewIntent(intent);
 
         if (intent.hasExtra(EXTRA_TAB_UPDATE)) {
             boolean showUpdateTab = intent.getBooleanExtra(EXTRA_TAB_UPDATE, false);
@@ -109,6 +118,18 @@ public class FDroid extends ActionBarActivity {
         // }
     }
 
+    private void performSearch(String query) {
+        if (searchMenuItem == null) {
+            // Store this for later when we do actually have a search menu ready to use.
+            pendingSearchQuery = query;
+            return;
+        }
+
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+        MenuItemCompat.expandActionView(searchMenuItem);
+        searchView.setQuery(query, true);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -117,11 +138,24 @@ public class FDroid extends ActionBarActivity {
         checkForAddRepoIntent();
     }
 
-    private void handleIntent(Intent intent) {
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleSearchOrAppViewIntent(intent);
+    }
+
+    private void handleSearchOrAppViewIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            performSearch(query);
+            return;
+        }
+
         final Uri data = intent.getData();
         if (data == null) {
             return;
         }
+
         final String scheme = data.getScheme();
         final String path = data.getPath();
         String appId = null;
@@ -133,11 +167,14 @@ public class FDroid extends ActionBarActivity {
             }
             switch (host) {
                 case "f-droid.org":
-                    // http://f-droid.org/app/app.id
                     if (path.startsWith("/repository/browse")) {
+                        // http://f-droid.org/repository/browse?fdfilter=search+query
+                        query = UriCompat.getQueryParameter(data, "fdfilter");
+
                         // http://f-droid.org/repository/browse?fdid=app.id
-                        appId = data.getQueryParameter("fdid");
+                        appId = UriCompat.getQueryParameter(data, "fdid");
                     } else if (path.startsWith("/app")) {
+                        // http://f-droid.org/app/app.id
                         appId = data.getLastPathSegment();
                         if ("app".equals(appId)) {
                             appId = null;
@@ -146,28 +183,28 @@ public class FDroid extends ActionBarActivity {
                     break;
                 case "details":
                     // market://details?id=app.id
-                    appId = data.getQueryParameter("id");
+                    appId = UriCompat.getQueryParameter(data, "id");
                     break;
                 case "search":
                     // market://search?q=query
-                    query = data.getQueryParameter("q");
+                    query = UriCompat.getQueryParameter(data, "q");
                     break;
                 case "play.google.com":
                     if (path.startsWith("/store/apps/details")) {
                         // http://play.google.com/store/apps/details?id=app.id
-                        appId = data.getQueryParameter("id");
+                        appId = UriCompat.getQueryParameter(data, "id");
                     } else if (path.startsWith("/store/search")) {
                         // http://play.google.com/store/search?q=foo
-                        query = data.getQueryParameter("q");
+                        query = UriCompat.getQueryParameter(data, "q");
                     }
                     break;
                 case "apps":
                 case "amazon.com":
                 case "www.amazon.com":
                     // amzn://apps/android?p=app.id
-                    // http://amazon.com/gp/mas/dl/android?p=app.id
-                    appId = data.getQueryParameter("p");
-                    query = data.getQueryParameter("s");
+                    // http://amazon.com/gp/mas/dl/android?s=app.id
+                    appId = UriCompat.getQueryParameter(data, "p");
+                    query = UriCompat.getQueryParameter(data, "s");
                     break;
             }
         } else if ("fdroid.app".equals(scheme)) {
@@ -188,20 +225,14 @@ public class FDroid extends ActionBarActivity {
                 query = query.split(":")[1];
         }
 
-        Intent call = null;
         if (!TextUtils.isEmpty(appId)) {
             Utils.debugLog(TAG, "FDroid launched via app link for '" + appId + "'");
-            call = new Intent(this, AppDetails.class);
-            call.putExtra(AppDetails.EXTRA_APPID, appId);
+            Intent intentToInvoke = new Intent(this, AppDetails.class);
+            intentToInvoke.putExtra(AppDetails.EXTRA_APPID, appId);
+            startActivity(intentToInvoke);
         } else if (!TextUtils.isEmpty(query)) {
             Utils.debugLog(TAG, "FDroid launched via search link for '" + query + "'");
-            call = new Intent(this, SearchResults.class);
-            call.setAction(Intent.ACTION_SEARCH);
-            call.putExtra(SearchManager.QUERY, query);
-        }
-        if (call != null) {
-            startActivity(call);
-            finish();
+            performSearch(query);
         }
     }
 
@@ -243,11 +274,19 @@ public class FDroid extends ActionBarActivity {
         }
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchMenuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         // LayoutParams.MATCH_PARENT does not work, use a big value instead
         searchView.setMaxWidth(1000000);
+        searchView.setOnQueryTextListener(this);
+
+        // If we were asked to execute a search before getting around to building the options
+        // menu, then we should deal with that now that the options menu is all sorted out.
+        if (pendingSearchQuery != null) {
+            performSearch(pendingSearchQuery);
+            pendingSearchQuery = null;
+        }
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -335,8 +374,8 @@ public class FDroid extends ActionBarActivity {
 
     private void createViews() {
         viewPager = (ViewPager) findViewById(R.id.main_pager);
-        AppListFragmentPagerAdapter viewPagerAdapter = new AppListFragmentPagerAdapter(this);
-        viewPager.setAdapter(viewPagerAdapter);
+        adapter = new AppListFragmentPagerAdapter(this);
+        viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -345,6 +384,7 @@ public class FDroid extends ActionBarActivity {
         });
     }
 
+    @NonNull
     private TabManager getTabManager() {
         if (tabManager == null) {
             tabManager = new TabManager(this, viewPager);
@@ -361,6 +401,19 @@ public class FDroid extends ActionBarActivity {
         NotificationManager nMgr = (NotificationManager) getBaseContext()
             .getSystemService(Context.NOTIFICATION_SERVICE);
         nMgr.cancel(id);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        // Do nothing, because we respond to the query being changed as it is updated
+        // via onQueryTextChange(...)
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.updateSearchQuery(newText);
+        return true;
     }
 
     private class AppObserver extends ContentObserver {

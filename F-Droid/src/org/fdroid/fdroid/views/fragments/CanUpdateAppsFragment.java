@@ -28,6 +28,10 @@ public class CanUpdateAppsFragment extends AppListFragment {
         return AppProvider.getCanUpdateUri();
     }
 
+    protected Uri getDataUri(String query) {
+        return AppProvider.getSearchCanUpdateUri(query);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.can_update_app_list, container, false);

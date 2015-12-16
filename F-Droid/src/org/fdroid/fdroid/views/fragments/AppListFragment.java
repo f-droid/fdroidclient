@@ -6,10 +6,12 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -52,11 +54,35 @@ public abstract class AppListFragment extends ListFragment implements
 
     protected AppListAdapter appAdapter;
 
+    @Nullable private String searchQuery;
+
     protected abstract AppListAdapter getAppListAdapter();
 
     protected abstract String getFromTitle();
 
     protected abstract Uri getDataUri();
+
+    protected abstract Uri getDataUri(String query);
+
+    /**
+     * Subclasses can choose to do different things based on when a user begins searching.
+     * For example, the "Available" tab chooses to hide its category spinner to make it clear
+     * that it is searching all apps, not the current category.
+     * NOTE: This will get called <em>multiple</em> times, every time the user changes the
+     * search query.
+     */
+    protected void onSearch() {
+        // Do nothing by default.
+    }
+
+    /**
+     * Alerts the child class that the user is no longer performing a search.
+     * This is triggered every time the search query is blank.
+     * @see AppListFragment#onSearch()
+     */
+    protected void onSearchStopped() {
+        // Do nothing by default.
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -144,9 +170,30 @@ public abstract class AppListFragment extends ListFragment implements
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Uri uri = getDataUri();
+        Uri uri = updateSearchStatus() ? getDataUri(searchQuery) : getDataUri();
         return new CursorLoader(
                 getActivity(), uri, APP_PROJECTION, null, null, APP_SORT);
     }
 
+    /**
+     * Notifies the subclass via {@link AppListFragment#onSearch()} and {@link AppListFragment#onSearchStopped()}
+     * about whether or not a search is taking place.
+     * @return True if a user is searching.
+     */
+    private boolean updateSearchStatus() {
+        if (TextUtils.isEmpty(searchQuery)) {
+            onSearchStopped();
+            return false;
+        } else {
+            onSearch();
+            return true;
+        }
+    }
+
+    public void updateSearchQuery(@Nullable String query) {
+        searchQuery = query;
+        if (isAdded()) {
+            getLoaderManager().restartLoader(0, null, this);
+        }
+    }
 }

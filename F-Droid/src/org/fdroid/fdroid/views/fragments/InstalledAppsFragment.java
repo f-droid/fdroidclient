@@ -28,6 +28,10 @@ public class InstalledAppsFragment extends AppListFragment {
         return AppProvider.getInstalledUri();
     }
 
+    protected Uri getDataUri(String query) {
+        return AppProvider.getSearchInstalledUri(query);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.installed_app_list, container, false);
