@@ -35,7 +35,7 @@ public abstract class AppListFragment extends ListFragment implements
 
     public static final String[] APP_PROJECTION = {
         AppProvider.DataColumns._ID, // Required for cursor loader to work.
-        AppProvider.DataColumns.APP_ID,
+        AppProvider.DataColumns.PACKAGE_NAME,
         AppProvider.DataColumns.NAME,
         AppProvider.DataColumns.SUMMARY,
         AppProvider.DataColumns.IS_COMPATIBLE,

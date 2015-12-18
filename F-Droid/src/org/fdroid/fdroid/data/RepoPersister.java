@@ -161,7 +161,7 @@ public class RepoPersister {
      */
     private ArrayList<ContentProviderOperation> insertOrUpdateApks(List<Apk> packages) {
         String[] projection = new String[]{
-            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.PACKAGE_NAME,
             ApkProvider.DataColumns.VERSION_CODE,
         };
         List<Apk> existingApks = ApkProvider.Helper.knownApks(context, packages, projection);
@@ -216,7 +216,7 @@ public class RepoPersister {
      * array.
      */
     private boolean isAppInDatabase(App app) {
-        String[] fields = {AppProvider.DataColumns.APP_ID};
+        String[] fields = {AppProvider.DataColumns.PACKAGE_NAME};
         App found = AppProvider.Helper.findById(context.getContentResolver(), app.id, fields);
         return found != null;
     }
@@ -247,7 +247,7 @@ public class RepoPersister {
      */
     @Nullable
     private ContentProviderOperation deleteOrphanedApks(List<App> apps, Map<String, List<Apk>> packages) {
-        String[] projection = new String[]{ApkProvider.DataColumns.APK_ID, ApkProvider.DataColumns.VERSION_CODE};
+        String[] projection = new String[]{ApkProvider.DataColumns.PACKAGE_NAME, ApkProvider.DataColumns.VERSION_CODE};
         List<Apk> existing = ApkProvider.Helper.find(context, repo, apps, projection);
         List<Apk> toDelete = new ArrayList<>();
 

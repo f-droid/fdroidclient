@@ -194,7 +194,7 @@ public class ApkProvider extends FDroidProvider {
 
         String _COUNT_DISTINCT_ID = "countDistinct";
 
-        String APK_ID          = "id";
+        String PACKAGE_NAME    = "id";
         String VERSION         = "version";
         String REPO_ID         = "repo";
         String HASH            = "hash";
@@ -216,7 +216,7 @@ public class ApkProvider extends FDroidProvider {
         String REPO_ADDRESS    = "repoAddress";
 
         String[] ALL = {
-            _ID, APK_ID, VERSION, REPO_ID, HASH, VERSION_CODE, NAME, SIZE,
+            _ID, PACKAGE_NAME, VERSION, REPO_ID, HASH, VERSION_CODE, NAME, SIZE,
             SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, MAX_SDK_VERSION,
             PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
             IS_COMPATIBLE, REPO_VERSION, REPO_ADDRESS, INCOMPATIBLE_REASONS,
@@ -395,7 +395,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     private QuerySelection queryApp(String appId) {
-        final String selection = DataColumns.APK_ID + " = ? ";
+        final String selection = DataColumns.PACKAGE_NAME + " = ? ";
         final String[] args = {appId};
         return new QuerySelection(selection, args);
     }
@@ -418,7 +418,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     private QuerySelection queryRepoApps(long repoId, String appIds) {
-        return queryRepo(repoId).add(AppProvider.queryApps(appIds, DataColumns.APK_ID));
+        return queryRepo(repoId).add(AppProvider.queryApps(appIds, DataColumns.PACKAGE_NAME));
     }
 
     protected QuerySelection queryApks(String apkKeys) {
@@ -512,7 +512,7 @@ public class ApkProvider extends FDroidProvider {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return getContentUri(
-            values.getAsString(DataColumns.APK_ID),
+            values.getAsString(DataColumns.PACKAGE_NAME),
             values.getAsInteger(DataColumns.VERSION_CODE));
 
     }

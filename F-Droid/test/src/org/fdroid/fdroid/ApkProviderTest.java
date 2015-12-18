@@ -251,7 +251,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
 
         // And now we should be able to recover these values from the apk
         // value object (because the queryAllApks() helper asks for VERSION_CODE and
-        // APK_ID.
+        // PACKAGE_NAME.
         cursor.moveToFirst();
         Apk toCheck = new Apk(cursor);
         cursor.close();

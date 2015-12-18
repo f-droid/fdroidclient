@@ -37,7 +37,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     @Override
     protected String[] getMinimalProjection() {
         return new String[] {
-            AppProvider.DataColumns.APP_ID,
+            AppProvider.DataColumns.PACKAGE_NAME,
             AppProvider.DataColumns.NAME,
         };
     }
@@ -209,7 +209,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         assertResultCount(10, AppProvider.getContentUri());
 
-        String[] projection = {AppProvider.DataColumns.APP_ID};
+        String[] projection = {AppProvider.DataColumns.PACKAGE_NAME};
         List<App> ignoredApps = AppProvider.Helper.findIgnored(getMockContext(), projection);
 
         String[] expectedIgnored = {
@@ -278,7 +278,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         // And now we should be able to recover these values from the app
         // value object (because the queryAllApps() helper asks for NAME and
-        // APP_ID.
+        // PACKAGE_NAME.
         cursor.moveToFirst();
         App app = new App(cursor);
         cursor.close();

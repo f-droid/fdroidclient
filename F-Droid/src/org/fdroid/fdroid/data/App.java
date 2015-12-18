@@ -124,7 +124,7 @@ public class App extends ValueObject implements Comparable<App> {
                 case AppProvider.DataColumns.IS_COMPATIBLE:
                     compatible = cursor.getInt(i) == 1;
                     break;
-                case AppProvider.DataColumns.APP_ID:
+                case AppProvider.DataColumns.PACKAGE_NAME:
                     id = cursor.getString(i);
                     break;
                 case AppProvider.DataColumns.NAME:
@@ -369,7 +369,7 @@ public class App extends ValueObject implements Comparable<App> {
     public ContentValues toContentValues() {
 
         final ContentValues values = new ContentValues();
-        values.put(AppProvider.DataColumns.APP_ID, id);
+        values.put(AppProvider.DataColumns.PACKAGE_NAME, id);
         values.put(AppProvider.DataColumns.NAME, name);
         values.put(AppProvider.DataColumns.SUMMARY, summary);
         values.put(AppProvider.DataColumns.ICON, icon);

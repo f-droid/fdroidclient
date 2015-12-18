@@ -56,7 +56,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         Collections.addAll(apksToCheck, unknown);
 
         String[] projection = {
-            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.PACKAGE_NAME,
             ApkProvider.DataColumns.VERSION_CODE,
         };
 
@@ -183,7 +183,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         assertEquals("a hash type", apk.hashType);
 
         String[] projection = {
-            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.PACKAGE_NAME,
             ApkProvider.DataColumns.HASH,
         };
 

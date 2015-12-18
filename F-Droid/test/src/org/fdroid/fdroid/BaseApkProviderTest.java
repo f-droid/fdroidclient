@@ -26,7 +26,7 @@ abstract class BaseApkProviderTest extends FDroidProviderTest<ApkProvider> {
     @Override
     protected String[] getMinimalProjection() {
         return new String[] {
-            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.PACKAGE_NAME,
             ApkProvider.DataColumns.VERSION_CODE,
             ApkProvider.DataColumns.NAME,
             ApkProvider.DataColumns.REPO_ID,

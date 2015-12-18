@@ -64,7 +64,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
                 case ApkProvider.DataColumns.FEATURES:
                     features = Utils.CommaSeparatedList.make(cursor.getString(i));
                     break;
-                case ApkProvider.DataColumns.APK_ID:
+                case ApkProvider.DataColumns.PACKAGE_NAME:
                     id = cursor.getString(i);
                     break;
                 case ApkProvider.DataColumns.IS_COMPATIBLE:
@@ -123,7 +123,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
-        values.put(ApkProvider.DataColumns.APK_ID, id);
+        values.put(ApkProvider.DataColumns.PACKAGE_NAME, id);
         values.put(ApkProvider.DataColumns.VERSION, version);
         values.put(ApkProvider.DataColumns.VERSION_CODE, vercode);
         values.put(ApkProvider.DataColumns.REPO_ID, repo);

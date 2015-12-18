@@ -71,7 +71,7 @@ public class InstalledAppCacheTest extends FDroidProviderTest<InstalledAppProvid
 
     private String[] getInstalledAppIdsFromProvider() {
         Uri uri = InstalledAppProvider.getContentUri();
-        String[] projection = { InstalledAppProvider.DataColumns.APP_ID };
+        String[] projection = { InstalledAppProvider.DataColumns.PACKAGE_NAME };
         Cursor result = getMockContext().getContentResolver().query(uri, projection, null, null, null);
         if (result == null) {
             return new String[0];
@@ -81,7 +81,7 @@ public class InstalledAppCacheTest extends FDroidProviderTest<InstalledAppProvid
         result.moveToFirst();
         int i = 0;
         while (!result.isAfterLast()) {
-            installedAppIds[i] = result.getString(result.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
+            installedAppIds[i] = result.getString(result.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME));
             result.moveToNext();
             i ++;
         }
