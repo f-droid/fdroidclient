@@ -105,6 +105,7 @@
         <activity
             android:name=".FDroid"
             android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize"
             android:configChanges="layoutDirection|locale|keyboardHidden|orientation|screenSize" >
 
             <!-- App URLs -->

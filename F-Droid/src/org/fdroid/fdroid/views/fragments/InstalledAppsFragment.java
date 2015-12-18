@@ -28,8 +28,19 @@ public class InstalledAppsFragment extends AppListFragment {
         return AppProvider.getInstalledUri();
     }
 
+    @Override
     protected Uri getDataUri(String query) {
         return AppProvider.getSearchInstalledUri(query);
+    }
+
+    @Override
+    protected int getEmptyMessage() {
+        return R.string.empty_installed_app_list;
+    }
+
+    @Override
+    protected int getNoSearchResultsMessage() {
+        return R.string.empty_search_installed_app_list;
     }
 
     @Override

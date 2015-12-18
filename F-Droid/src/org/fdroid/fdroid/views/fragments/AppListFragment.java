@@ -14,6 +14,7 @@ import android.support.v4.content.Loader;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.Preferences;
@@ -64,6 +65,10 @@ public abstract class AppListFragment extends ListFragment implements
 
     protected abstract Uri getDataUri(String query);
 
+    protected abstract int getEmptyMessage();
+
+    protected abstract int getNoSearchResultsMessage();
+
     /**
      * Subclasses can choose to do different things based on when a user begins searching.
      * For example, the "Available" tab chooses to hide its category spinner to make it clear
@@ -82,6 +87,14 @@ public abstract class AppListFragment extends ListFragment implements
      */
     protected void onSearchStopped() {
         // Do nothing by default.
+    }
+
+    /**
+     * Utility function to set empty view text which should be different
+     * depending on whether search is active or not.
+     */
+    private void setEmptyText(int resId) {
+        ((TextView) getListView().getEmptyView()).setText(resId);
     }
 
     @Override
@@ -177,15 +190,18 @@ public abstract class AppListFragment extends ListFragment implements
 
     /**
      * Notifies the subclass via {@link AppListFragment#onSearch()} and {@link AppListFragment#onSearchStopped()}
-     * about whether or not a search is taking place.
+     * about whether or not a search is taking place and changes empty message
+     * appropriately.
      * @return True if a user is searching.
      */
     private boolean updateSearchStatus() {
         if (TextUtils.isEmpty(searchQuery)) {
             onSearchStopped();
+            setEmptyText(getEmptyMessage());
             return false;
         } else {
             onSearch();
+            setEmptyText(getNoSearchResultsMessage());
             return true;
         }
     }

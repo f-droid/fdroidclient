@@ -176,6 +176,16 @@ public class AvailableAppsFragment extends AppListFragment implements
         return AppProvider.getSearchUri(query);
     }
 
+    @Override
+    protected int getEmptyMessage() {
+        return R.string.empty_available_app_list;
+    }
+
+    @Override
+    protected int getNoSearchResultsMessage() {
+        return R.string.empty_search_available_app_list;
+    }
+
     private void setCurrentCategory(String category) {
         currentCategory = category;
         Utils.debugLog(TAG, "Category '" + currentCategory + "' selected.");
