@@ -28,8 +28,19 @@ public class CanUpdateAppsFragment extends AppListFragment {
         return AppProvider.getCanUpdateUri();
     }
 
+    @Override
     protected Uri getDataUri(String query) {
         return AppProvider.getSearchCanUpdateUri(query);
+    }
+
+    @Override
+    protected int getEmptyMessage() {
+        return R.string.empty_can_update_app_list;
+    }
+
+    @Override
+    protected int getNoSearchResultsMessage() {
+        return R.string.empty_search_can_update_app_list;
     }
 
     @Override
