@@ -22,7 +22,7 @@ public class ApkProvider extends FDroidProvider {
 
     /**
      * SQLite has a maximum of 999 parameters in a query. Each apk we add
-     * requires two (id and vercode) so we can only query half of that. Then,
+     * requires two (packageName and vercode) so we can only query half of that. Then,
      * we may want to add additional constraints, so we give our self some
      * room by saying only 450 apks can be queried at once.
      */
@@ -62,7 +62,7 @@ public class ApkProvider extends FDroidProvider {
 
         public static void deleteApksByApp(Context context, App app) {
             ContentResolver resolver = context.getContentResolver();
-            final Uri uri = getAppUri(app.id);
+            final Uri uri = getAppUri(app.packageName);
             resolver.delete(uri, null, null);
         }
 
@@ -135,7 +135,7 @@ public class ApkProvider extends FDroidProvider {
         }
 
         /**
-         * Returns apks in the database, which have the same id and version as
+         * Returns apks in the database, which have the same packageName and version as
          * one of the apks in the "apks" argument.
          */
         public static List<Apk> knownApks(Context context, List<Apk> apks, String[] fields) {
@@ -340,7 +340,7 @@ public class ApkProvider extends FDroidProvider {
             if (i != 0) {
                 builder.append(',');
             }
-            builder.append(apks.get(i).id);
+            builder.append(apks.get(i).packageName);
         }
         return builder.toString();
     }

@@ -596,7 +596,7 @@ public class RepoXMLHandlerTest extends AndroidTestCase {
         for (String id : expctedAppIds) {
             boolean thisAppMissing = true;
             for (App app : actualApps) {
-                if (TextUtils.equals(app.id, id)) {
+                if (TextUtils.equals(app.packageName, id)) {
                     thisAppMissing = false;
                     break;
                 }

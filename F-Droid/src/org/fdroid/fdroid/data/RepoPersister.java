@@ -73,7 +73,7 @@ public class RepoPersister {
 
     public void saveToDb(App app, List<Apk> packages) throws RepoUpdater.UpdateException {
         appsToSave.add(app);
-        apksToSave.put(app.id, packages);
+        apksToSave.put(app.packageName, packages);
 
         if (appsToSave.size() >= MAX_APP_BUFFER) {
             flushBufferToDb();
@@ -217,7 +217,7 @@ public class RepoPersister {
      */
     private boolean isAppInDatabase(App app) {
         String[] fields = {AppProvider.DataColumns.PACKAGE_NAME};
-        App found = AppProvider.Helper.findById(context.getContentResolver(), app.id, fields);
+        App found = AppProvider.Helper.findById(context.getContentResolver(), app.packageName, fields);
         return found != null;
     }
 

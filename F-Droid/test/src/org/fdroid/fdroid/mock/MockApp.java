@@ -9,7 +9,7 @@ public class MockApp extends App {
     }
 
     public MockApp(String id, String name) {
-        this.id = id;
+        this.packageName = id;
         this.name = name;
     }
 

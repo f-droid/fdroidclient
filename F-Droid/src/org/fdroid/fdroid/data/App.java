@@ -31,7 +31,7 @@ public class App extends ValueObject implements Comparable<App> {
     // True if compatible with the device (i.e. if at least one apk is)
     public boolean compatible;
 
-    public String id = "unknown";
+    public String packageName = "unknown";
     public String name = "Unknown";
     public String summary = "Unknown application";
     public String icon;
@@ -125,7 +125,7 @@ public class App extends ValueObject implements Comparable<App> {
                     compatible = cursor.getInt(i) == 1;
                     break;
                 case AppProvider.DataColumns.PACKAGE_NAME:
-                    id = cursor.getString(i);
+                    packageName = cursor.getString(i);
                     break;
                 case AppProvider.DataColumns.NAME:
                     name = cursor.getString(i);
@@ -252,7 +252,7 @@ public class App extends ValueObject implements Comparable<App> {
             this.summary = "(installed by " + installerPackageLabel + ")";
         else
             this.summary = (String) appDescription.subSequence(0, 40);
-        this.id = appInfo.packageName;
+        this.packageName = appInfo.packageName;
         this.added = new Date(packageInfo.firstInstallTime);
         this.lastUpdated = new Date(packageInfo.lastUpdateTime);
         this.description = "<p>";
@@ -273,7 +273,7 @@ public class App extends ValueObject implements Comparable<App> {
         apk.added = this.added;
         apk.minSdkVersion = Utils.getMinSdkVersion(context, packageName);
         apk.maxSdkVersion = Utils.getMaxSdkVersion(context, packageName);
-        apk.id = this.id;
+        apk.id = this.packageName;
         apk.installedFile = apkFile;
         apk.permissions = Utils.CommaSeparatedList.make(packageInfo.requestedPermissions);
         apk.apkName = apk.id + "_" + apk.vercode + ".apk";
@@ -352,7 +352,7 @@ public class App extends ValueObject implements Comparable<App> {
 
     public boolean isValid() {
         if (TextUtils.isEmpty(this.name)
-                || TextUtils.isEmpty(this.id))
+                || TextUtils.isEmpty(this.packageName))
             return false;
 
         if (this.installedApk == null)
@@ -369,7 +369,7 @@ public class App extends ValueObject implements Comparable<App> {
     public ContentValues toContentValues() {
 
         final ContentValues values = new ContentValues();
-        values.put(AppProvider.DataColumns.PACKAGE_NAME, id);
+        values.put(AppProvider.DataColumns.PACKAGE_NAME, packageName);
         values.put(AppProvider.DataColumns.NAME, name);
         values.put(AppProvider.DataColumns.SUMMARY, summary);
         values.put(AppProvider.DataColumns.ICON, icon);

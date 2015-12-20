@@ -282,8 +282,8 @@ public final class LocalRepoManager {
         for (final App app : apps.values()) {
             if (app.installedApk != null) {
                 try {
-                    appInfo = pm.getApplicationInfo(app.id, PackageManager.GET_META_DATA);
-                    copyIconToRepo(appInfo.loadIcon(pm), app.id, app.installedApk.vercode);
+                    appInfo = pm.getApplicationInfo(app.packageName, PackageManager.GET_META_DATA);
+                    copyIconToRepo(appInfo.loadIcon(pm), app.packageName, app.installedApk.vercode);
                 } catch (PackageManager.NameNotFoundException e) {
                     Log.e(TAG, "Error getting app icon", e);
                 }
@@ -413,9 +413,9 @@ public final class LocalRepoManager {
 
         private void tagApplication(App app) throws IOException {
             serializer.startTag("", "application");
-            serializer.attribute("", "id", app.id);
+            serializer.attribute("", "id", app.packageName);
 
-            tag("id", app.id);
+            tag("id", app.packageName);
             tag("added", app.added);
             tag("lastupdated", app.lastUpdated);
             tag("name", app.name);

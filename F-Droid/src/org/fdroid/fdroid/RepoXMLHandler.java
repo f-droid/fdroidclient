@@ -222,7 +222,7 @@ public class RepoXMLHandler extends DefaultHandler {
         receiver.receiveApp(curapp, apksList);
         curapp = null;
         apksList = new ArrayList<>();
-        // If the app id is already present in this apps list, then it
+        // If the app packageName is already present in this apps list, then it
         // means the same index file has a duplicate app, which should
         // not be allowed.
         // However, I'm thinking that it should be undefined behaviour,
@@ -249,10 +249,10 @@ public class RepoXMLHandler extends DefaultHandler {
             repoDescription = cleanWhiteSpace(attributes.getValue("", "description"));
         } else if ("application".equals(localName) && curapp == null) {
             curapp = new App();
-            curapp.id = attributes.getValue("", "id");
+            curapp.packageName = attributes.getValue("", "id");
         } else if ("package".equals(localName) && curapp != null && curapk == null) {
             curapk = new Apk();
-            curapk.id = curapp.id;
+            curapk.id = curapp.packageName;
             curapk.repo = repo.getId();
             currentApkHashType = null;
 

@@ -93,7 +93,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         assertValidUri(AppProvider.getCanUpdateUri());
 
         App app = new App();
-        app.id = "org.fdroid.fdroid";
+        app.packageName = "org.fdroid.fdroid";
 
         List<App> apps = new ArrayList<>(1);
         apps.add(app);
@@ -178,7 +178,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         canUpdateCursor.moveToFirst();
         List<String> canUpdateIds = new ArrayList<>(canUpdateCursor.getCount());
         while (!canUpdateCursor.isAfterLast()) {
-            canUpdateIds.add(new App(canUpdateCursor).id);
+            canUpdateIds.add(new App(canUpdateCursor).packageName);
             canUpdateCursor.moveToNext();
         }
         canUpdateCursor.close();
@@ -230,7 +230,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     private void assertContainsOnlyIds(List<App> actualApps, String[] expectedIds) {
         List<String> actualIds = new ArrayList<>(actualApps.size());
         for (App app : actualApps) {
-            actualIds.add(app.id);
+            actualIds.add(app.packageName);
         }
         TestUtils.assertContainsOnly(actualIds, expectedIds);
     }
@@ -282,7 +282,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         cursor.moveToFirst();
         App app = new App(cursor);
         cursor.close();
-        assertEquals("org.fdroid.fdroid", app.id);
+        assertEquals("org.fdroid.fdroid", app.packageName);
         assertEquals("F-Droid", app.name);
     }
 

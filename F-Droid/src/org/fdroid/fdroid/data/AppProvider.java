@@ -523,7 +523,7 @@ public class AppProvider extends FDroidProvider {
             if (i != 0) {
                 builder.append(',');
             }
-            builder.append(apps.get(i).id);
+            builder.append(apps.get(i).packageName);
         }
         return getContentUri().buildUpon()
             .appendPath(PATH_APPS)
@@ -532,7 +532,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     public static Uri getContentUri(App app) {
-        return getContentUri(app.id);
+        return getContentUri(app.packageName);
     }
 
     public static Uri getContentUri(String appId) {

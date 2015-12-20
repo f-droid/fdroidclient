@@ -156,7 +156,7 @@ public abstract class AppListFragment extends ListFragment implements
         if (cursor != null) {
             final App app = new App(cursor);
             Intent intent = getAppDetailsIntent();
-            intent.putExtra(AppDetails.EXTRA_APPID, app.id);
+            intent.putExtra(AppDetails.EXTRA_APPID, app.packageName);
             intent.putExtra(AppDetails.EXTRA_FROM, getFromTitle());
             startActivityForResult(intent, REQUEST_APPDETAILS);
         }
