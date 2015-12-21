@@ -332,4 +332,8 @@
     <string name="about_license">Litzèntzia</string>
 
     <string name="status_inserting_apps">Sarbende sas minujas de sas aplicatziones</string>
+    <string name="empty_search_installed_app_list">Peruna aplicatzione currispondente installada.</string>
+    <string name="empty_search_available_app_list">Peruna aplicatzione currispondente disponìbile.</string>
+    <string name="empty_search_can_update_app_list">Perunu agiornamentu currispondente disponìbile.</string>
+
     </resources>

@@ -39,10 +39,10 @@
     <string name="no_such_app">Aplicação não encontrada.</string>
 
     <string name="about_title">Sobre o F-Droid</string>
-    <string name="about_version">Versão:</string>
-    <string name="about_site">Sítio web:</string>
-    <string name="about_source">Fonte:</string>
-    <string name="about_mail">E-Mail:</string>
+    <string name="about_version">Versão</string>
+    <string name="about_site">Sítio web</string>
+    <string name="about_source">Código fonte</string>
+    <string name="about_mail">E-mail</string>
     <string name="app_incompatible">Incompatível</string>
     <string name="app_installed">Instaladas</string>
     <string name="app_not_installed">Não instaladas</string>
@@ -336,4 +336,19 @@
 
     <string name="theme_night">Noite</string>
 <string name="menu_settings">Definições</string>
+    <string name="login_title">Requer autenticação</string>
+    <string name="login_name">Nome de utilizador</string>
+    <string name="login_password">Palavra-passe</string>
+    <string name="repo_edit_credentials">Mudar palavra-passe</string>
+    <string name="repo_error_empty_username">Nome de utilizador vazio, credenciais não alteradas</string>
+
+    <string name="about_license">Licença</string>
+
+    <string name="tab_installed_apps_count">Instaladas (%d)</string>
+    <string name="tab_updates_count">Atualizações (%d)</string>
+    <string name="status_inserting_apps">A guardar detalhes das aplicações</string>
+    <string name="empty_search_installed_app_list">Nenhuma aplicação instalada coincidente.</string>
+    <string name="empty_search_available_app_list">Nenhuma aplicação disponível coincidente.</string>
+    <string name="empty_search_can_update_app_list">Nenhuma aplicação coincidente para atualização.</string>
+
     </resources>

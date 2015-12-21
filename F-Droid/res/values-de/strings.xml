@@ -333,4 +333,8 @@
     <string name="tab_installed_apps_count">Installiert (%d)</string>
     <string name="tab_updates_count">Aktualisierungen (%d)</string>
     <string name="status_inserting_apps">Anwendungsdetails werden gespeichert</string>
+    <string name="empty_search_can_update_app_list">Keine passenden Anwendungen zum Aktualisieren.</string>
+
+    <string name="empty_search_available_app_list">Keine passenden Anwendungen verfügbar.</string>
+    <string name="empty_search_installed_app_list">Keine passenden Anwendungen installiert.</string>
     </resources>

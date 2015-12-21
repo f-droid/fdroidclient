@@ -328,4 +328,8 @@
     <string name="about_license">Лиценца</string>
 
     <string name="status_inserting_apps">Уписујем детаље апликација</string>
+    <string name="empty_search_installed_app_list">Нема поклапајућих инсталираних апликација.</string>
+    <string name="empty_search_available_app_list">Нема поклапајућих апликација.</string>
+    <string name="empty_search_can_update_app_list">Нема поклапајућих апликација за надоградњу.</string>
+
     </resources>

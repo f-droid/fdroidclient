@@ -34,9 +34,9 @@
     <string name="no_such_app">לא נמצאה אפליקציה.</string>
 
     <string name="about_title">אודות F-Droid</string>
-    <string name="about_site">אתר רשת:</string>
-    <string name="about_mail">דוא״ל:</string>
-    <string name="about_version">גרסה:</string>
+    <string name="about_site">אתר רשת</string>
+    <string name="about_mail">דוא״ל</string>
+    <string name="about_version">גרסה</string>
     <string name="app_installed">מותקנת</string>
     <string name="app_not_installed">לא מותקנת</string>
     <string name="app_inst_known_source">מותקנת (מתוך %s)</string>
@@ -148,14 +148,14 @@
     <string name="status_processing_xml_percent">כעת מעבד %2$s / %3$s (%4$d%%) מתוך %1$s</string>
     <string name="status_connecting_to_repo">כעת מתחבר אל\n%1$s</string>
     <string name="status_checking_compatibility">כעת בודק תאימות אפליקציות עם מכשירך…</string>
-    <string name="repos_unchanged">כל המאגרים הינם מותקנים</string>
+    <string name="repos_unchanged">כל המאגרים הינם מעודכנים</string>
         <string name="all_other_repos_fine">כל שאר המאגרים לא יצרו שגיאות.</string>
         <string name="global_error_updating_repos">שגיאה במהלך עדכון: %s</string>
     <string name="no_permissions">אין הרשאות בשימוש.</string>
     <string name="no_handler_app">אין לך שום אפליקציה זמינה אשר מסוגלת להתמודד עם %s.</string>
-    <string name="theme">מוטיב</string>
+    <string name="theme">ערכת עיצוב</string>
     <string name="unsigned">לא חתום</string>
-    <string name="unverified">לא בדוק</string>
+    <string name="unverified">לא מאומת</string>
     <string name="repo_num_apps">מספר של אפליקציות</string>
     <string name="repo_description">תיאור</string>
     <string name="repo_last_update">עדכון אחרון</string>
@@ -177,12 +177,12 @@
     <string name="category_Internet">אינטרנט</string>
     <string name="category_Multimedia">מולטימדיה</string>
     <string name="category_Navigation">ניווט</string>
-    <string name="category_Phone_SMS">SMS וטלפון</string>
+    <string name="category_Phone_SMS">‏SMS וטלפון</string>
     <string name="category_Reading">קריאה</string>
     <string name="category_Science_Education">חינוך ומדע</string>
     <string name="category_Security">אבטחה</string>
     <string name="category_System">מערכת</string>
-    <string name="empty_installed_app_list">אין אפליקציות מותקנות.\n\nאין אפליקציות מותקנות על מכשירך, אך אלו אינן זמינות מתוך F-Droid. אפשרי כי זה כך מפני שעליך לעדכן את המאגרים שלך, או שלמאגרים באמת אין את האפליקציות שלך זמינות.</string>
+    <string name="empty_installed_app_list">אין אפליקציות מותקנות.\n\nאין אפליקציות מותקנות על מכשירך, אך אלו אינן זמינות מתוך F-Droid. זה אפשרי מפני שעליך לעדכן את המאגרים שלך, או שלמאגרים באמת אין את האפליקציות שלך זמינות.</string>
     <string name="empty_available_app_list">אין אפליקציות בתוך קטגוריה זו.\n\nנסה לבחור קטגוריה אחרת או לעדכן את המאגרים שלך כדי להשיג רשימה רעננה של אפליקציות.</string>
     <string name="empty_can_update_app_list">כל האפליקציות מעודכנות.\n\nברכותינו! כל האפליקציות שלך הינן מעודכנות (או שהמאגרים שלך אינם מעודכנים).</string>
 
@@ -197,7 +197,7 @@
     <string name="system_install_denied_body">אפשרות זו הינה זמינה רק כאשר F-Droid הינה מותקנת בתור אפליקציה מועדפת.</string>
     <string name="system_install_first_time_notification">להתקין הרחבת F-Droid מועדף?</string>
     <string name="system_install_first_time_notification_message_short">גע למידע נוסף.</string>
-    <string name="system_install_first_time_notification_message">גע כדי להתקין הרחבת F-Droid מועדף, מקושרת בחוזקה עם מערכת הפעלה Android. דבר זה מתיר לאפליקציה F-Droid להתקין, לשדרג ולהסיר התקנת אפליקציות בכוחות עצמה.\nבאפשרותך לעשות זאת מאוחר יותר מתוך העדפות F-Droid.</string>
+    <string name="system_install_first_time_notification_message">גע כדי להתקין הרחבת F-Droid מועדף, מקושרת בחוזקה עם מערכת הפעלה Android. דבר זה מתיר לאפליקציה F-Droid להתקין, לשדרג ולהסיר התקנת אפליקציות בכוחות עצמה.\nבאפשרותך לעשות זאת מאוחר יותר מתוך הגדרות F-Droid.</string>
     <string name="system_install_post_success">התקין בהצלחה הרחבת F-Droid מועדף</string>
     <string name="system_install_post_fail">התקנת הרחבת F-Droid מועדף נכשלה</string>
     <string name="system_install_post_success_message">הרחבת F-Droid מועדף הותקנה בהצלחה בתור אפליקציה מועדפת. דבר זה מתיר לאפליקציה F-Droid להתקין, לשדרג ולהסיר התקנת אפליקציות בכוחות עצמה.</string>
@@ -211,7 +211,7 @@
     <string name="system_uninstall_button">בטל התקנה</string>
 
     <string name="app_description">‏F-Droid הינו קטלוג בר התקנה של אפליקציות FOSS (תוכניות קוד פתוח וחופשיות) עבור הפלטפורמה Android. הלקוח מקל על עיון, התקנה, וממשיך לעקוב אחר עדכונים במכשירך.</string>
-    <string name="swap_nfc_description">אם לחברך יש F-Droid וגם NFC פועלים געו יחד בטלפונים שלכם.</string>
+    <string name="swap_nfc_description">אם לחברך יש F-Droid וגם NFC פועלים געו יחד במכשירים שלכם.</string>
     <string name="swap_join_same_wifi">הצטרף לאותו Wi-Fi כמו חברך</string>
     <string name="swap_join_this_hotspot">עזור לחברך להצטרף לנקודה חמה</string>
     <string name="menu_swap">הֶחְלֵף אפליקציות</string>
@@ -288,7 +288,7 @@
     <string name="theme_dark">אפל</string>
 <string name="unstable_updates">עדכונים לא יציבים</string>
     <string name="unstable_updates_summary">הצע עדכונים לגרסאות לא יציבות</string>
-    <string name="about_source">מקור:</string>
+    <string name="about_source">קוד מקור</string>
     <string name="tab_installed_apps">מותקנות</string>
     <string name="swap_nfc_title">גע כדי להחליף</string>
     <string name="swap_nearby">הֶחְלֵף בקרבת מקום</string>
@@ -307,7 +307,7 @@
     <string name="repo_exists_add_fingerprint">מאגר זה כבר מותקן, זה יוסיף מידע מפתח חדש.</string>
     <string name="repo_exists_enable">מאגר זה כבר מותקן, אמת כי ברצונך לאפשרו שוב.</string>
     <string name="repo_exists_and_enabled">המאגר הנכנס הינו מותקן ומאופשר כבר.</string>
-    <string name="repo_fingerprint">טביעת אצבע של המפתח חתימה (SHA-256)</string>
+    <string name="repo_fingerprint">טביעת אצבע של מפתח החתימה (SHA-256)</string>
     <string name="unsigned_description">משמעות הדבר היא שלא היתה אפשרות לאמת את הרשימה של האפליקציות. עליך להיזהר מן אפליקציות אשר מורדות מתוך אינדקסים לא חתומים.</string>
     <string name="repo_not_yet_updated">מאגר זה לא נמצא בשימוש עדיין. עליך לאפשרו כדי לצפות לצפות באפליקציות אשר מאגר זה מציע.</string>
     <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי אפליקציות מתוכו לא יהיו זמינים עוד מתוך F-Droid.\n\nהערה: כל אפליקציות אשר הותקנו בעבר יישארו על המכשיר שלך.</string>
@@ -341,4 +341,15 @@
     <string name="system_install_warning">פעולה זו לוקחת עד 10 שניות.</string>
     <string name="theme_night">לילה</string>
 <string name="system_install_denied_permissions">ההרשאות המיוחדות לא הוענקו להרחבה! אנא צור bug report!</string>
+    <string name="login_title">נדרש אימות</string>
+    <string name="login_name">שם משתמש</string>
+    <string name="login_password">סיסמה</string>
+    <string name="repo_edit_credentials">שנה סיסמה</string>
+    <string name="about_license">רשיון</string>
+
+    <string name="tab_installed_apps_count">מותקנות (%d)</string>
+    <string name="tab_updates_count">עדכונים (%d)</string>
+    <string name="status_inserting_apps">כעת שומר פרטי אפליקציה</string>
+    <string name="repo_error_empty_username">נקה שם משתמש, פרטי התחברות לא שונו</string>
+
     </resources>

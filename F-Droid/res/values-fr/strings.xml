@@ -333,4 +333,8 @@
     <string name="about_license">Licence</string>
 
     <string name="status_inserting_apps">Enregistrement des détails de l\'application</string>
+    <string name="empty_search_installed_app_list">Aucune application correspondante installée.</string>
+    <string name="empty_search_available_app_list">Aucune application correspondante disponible.</string>
+    <string name="empty_search_can_update_app_list">Aucune mise à jour correspondante disponible.</string>
+
     </resources>

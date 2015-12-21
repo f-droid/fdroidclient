@@ -333,4 +333,8 @@
 <string name="about_license">许可证类型</string>
 
     <string name="status_inserting_apps">正在保存应用信息</string>
+    <string name="empty_search_installed_app_list">没找到符合的已安装应用。</string>
+    <string name="empty_search_available_app_list">已安装应用列表为空。</string>
+    <string name="empty_search_can_update_app_list">未能从可更新应用中找到符合的结果。</string>
+
     </resources>

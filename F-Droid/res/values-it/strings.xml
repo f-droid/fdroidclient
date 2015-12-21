@@ -171,7 +171,7 @@
   <string name="swap">Invia apps</string>
   <string name="swap_no_wifi_network">Nessuna rete disponibile</string>
   <string name="swap_view_available_networks">(Tocca per mostrare le reti disponibili)</string>
-  <string name="open_qr_code_scanner">Apri lo scanner per codici QR</string>
+  <string name="open_qr_code_scanner">Apri lo scanner per QR Code</string>
   <string name="swap_welcome">Benvenuto in F-Droid!</string>
   <string name="swap_confirm_connect">Vuoi ricevere le app da %1$s?</string>
 <string name="app_name">F-Droid</string>
@@ -224,7 +224,7 @@
     <string name="swap_dont_show_again">Non mostrare più</string>
     <string name="swap_switch_to_wifi">Tocca per passare ad una rete Wi-Fi</string>
     <string name="swap_choose_apps">Scegli le applicazioni</string>
-    <string name="swap_scan_qr">Scansiona il codice QR</string>
+    <string name="swap_scan_qr">Scansiona il QR Code</string>
     <string name="swap_intro">Connettiti e scambia applicazioni con le persone vicine.</string>
     <string name="swap_no_peers_nearby">Non sono state trovate persone nelle vicinanze con cui scambiare applicazioni.</string>
     <string name="interval_1w">Settimanale</string>
@@ -262,7 +262,7 @@
 
 
     <string name="update_notification_title">Aggiornamento dei depositi</string>
-    <string name="status_processing_xml_percent">Processando %2$s / %3$s (%4$d%%) di %1$s</string>
+    <string name="status_processing_xml_percent">Elaborazione %2$s / %3$s (%4$d%%) di %1$s</string>
     <string name="status_inserting_apps">Salvataggio dettagli applicazioni</string>
     <string name="repo_details">Deposito</string>
     <string name="repo_url">Indirizzo</string>
@@ -319,7 +319,7 @@
     <string name="swap_success">Scambio avvenuto con successo!</string>
     <string name="swap_active_hotspot">%1$s (il tuo hotspot)</string>
     <string name="swap_scan_or_type_url">Una persona deve scansionare il codice, o inserire l\'URL dell\'altro in un browser.</string>
-    <string name="swap_send_fdroid">Invia F-Droid</string>
+    <string name="swap_send_fdroid">Invia a F-Droid</string>
     <string name="swap_cant_send_no_bluetooth">Impossibile inviare F-Droid, perché il Bluetooth non è disponibile su questo dispositivo.</string>
     <string name="swap_attempt_install">Prova a installare</string>
     <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra possibile effettuare lo scambio.</string>

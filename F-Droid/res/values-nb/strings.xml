@@ -5,7 +5,7 @@
   <string name="searchres_noapps">Fant ingen program som samsvarer med \'%s\'</string>
   <string name="SignatureMismatch">Den nye versjonen er signert med en annen nøkkel enn den gamle. For å installere en ny versjon må du først avinstallere den gamle. (Avinstallering vil medfører sletting av all intern data lagret av programmet)</string>
   <string name="installIncompatible">Det ser ut til at denne pakken ikke er kompatibel med ditt utstyr. Vil du prøve å installere det likevel?</string>
-  <string name="installDowngrade">Du prøver å nedgradere denne applikasjonen. Dette kan føre til at programmet henger, og du kan til og med miste dataene dine. Bekreft nedgradering.</string>
+  <string name="installDowngrade">Du prøver å nedgradere denne applikasjonen. Dette kan føre til at programmet henger, og du kan til og med miste dataene dine. Nedgradere uansett ?</string>
   <string name="version">Versjon</string>
   <string name="delete">Slett</string>
   <string name="enable_nfc_send">Skru på NFC-sending…</string>
@@ -31,9 +31,9 @@
   <string name="app_details">Programdetaljer</string>
   <string name="no_such_app">Program ikke funnet.</string>
   <string name="about_title">Om F-Droid</string>
-  <string name="about_site">Nettside:</string>
-  <string name="about_mail">E-post:</string>
-  <string name="about_version">Versjon:</string>
+  <string name="about_site">Nettside</string>
+  <string name="about_mail">E-post</string>
+  <string name="about_version">Versjon</string>
   <string name="app_installed">Installert</string>
   <string name="app_not_installed">Ikke installert</string>
   <string name="app_inst_known_source">Installert (fra %s)</string>
@@ -53,7 +53,7 @@
   <string name="one_update_available">1 oppdatering tilgjengelig.</string>
   <string name="many_updates_available">%d oppdateringer tilgjengelig.</string>
   <string name="fdroid_updates_available">F-Droid: Oppdateringer tilgjengelig</string>
-  <string name="bluetooth_activity_not_found">Ingen forsendelsesmåte for Blåtann funnet, velg en.</string>
+  <string name="bluetooth_activity_not_found">Ingen forsendelsesmåte for Blåtann funnet, velg en!</string>
   <string name="choose_bt_send">Velg forsendelsesmåte for Blåtann</string>
   <string name="send_via_bluetooth">Send via Blåtann</string>
   <string name="repo_add_url">Pakkebrønnsadresse</string>
@@ -169,7 +169,7 @@
   <string name="system_install_denied_title">F-Droid priviligert tillegg er ikke tilgjengelig</string>
   <string name="system_install_denied_body">Dette valget er bare tilgjengelig når F-Droid er installert som priviligert tillegg.</string>
   <string name="app_description">F-droid er en ansamling fri programvare som kan installeres på Android-plattformen. Klienten gjør det enkelt å sjekke ut og installere, samt holde øye med oppdateringer på din enhet.</string>
-  <string name="swap_nfc_description">Hvis du og din venn holder telefonene deres sammen.</string>
+  <string name="swap_nfc_description">Hvis din venn har F-Droid og NFC påslått, sammenfør enhetene.</string>
   <string name="swap_join_same_wifi">Koble til samme Wi-Fi-nett som din venn</string>
   <string name="menu_swap">Sirkuler programvare</string>
   <string name="swap">Sirkuler programvare</string>
@@ -183,13 +183,13 @@
     <string name="theme_dark">Mørkt</string>
 <string name="unstable_updates">Ustabile oppdateringer</string>
     <string name="unstable_updates_summary">Foreslå oppdatering til ustabile versjoner</string>
-    <string name="about_source">Kildekode:</string>
+    <string name="about_source">Kildekode</string>
     <string name="app_incompatible">Ukompatibel</string>
     <string name="links">Lenker</string>
 
     <string name="back">Tilbake</string>
     <string name="tab_installed_apps">Installert</string>
-    <string name="update_notification_more">+%1$d flere…</string>
+    <string name="update_notification_more">+%1$d mer…</string>
     <string name="bad_fingerprint">Feil i fingeravtrykk</string>
     <string name="invalid_url">Dette er ikke en gyldig nettadresse.</string>
     <string name="menu_changelog">Endringslogg</string>
@@ -319,4 +319,15 @@
     <string name="install_confirm_update_no_perms">Ønsker du å installere en oppdatering til dette eksisterende programmet? Dataen din vil ikke gå tapt. Det krever ingen spesiell tilgang.</string>
     <string name="install_confirm_update_system_no_perms">Ønsker du å installere en oppdatering til dette innebygde programmet? Dataen din vil ikke gå tapt. Det krever ingen spesiell tilgang.</string>
     <string name="theme_night">Nattsvart</string>
-</resources>
+<string name="login_name">Brukernavn</string>
+    <string name="login_password">Passord</string>
+    <string name="repo_edit_credentials">Bytt Passord</string>
+    <string name="repo_error_empty_username">Tomt brukernavn, personlige data uendret</string>
+
+    <string name="about_license">Lisens</string>
+
+    <string name="login_title">Identifikasjon påkrevet</string>
+    <string name="tab_installed_apps_count">Installert (%d)</string>
+    <string name="tab_updates_count">Oppdateringer (%d)</string>
+    <string name="status_inserting_apps">Lagrer program detaljer</string>
+    </resources>

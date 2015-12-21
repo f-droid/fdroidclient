@@ -333,4 +333,8 @@
     <string name="about_license">ﾗｲｾﾝｽ</string>
 
     <string name="status_inserting_apps">ｱﾌﾟﾘｹｰｼｮﾝの詳細を保存中</string>
+    <string name="empty_search_installed_app_list">一致するｲﾝｽﾄｰﾙ済ｱﾌﾟﾘｹｰｼｮﾝはありません。</string>
+    <string name="empty_search_available_app_list">一致する利用可能なｱﾌﾟﾘｹｰｼｮﾝはありません。</string>
+    <string name="empty_search_can_update_app_list">一致する更新のｱﾌﾟﾘｹｰｼｮﾝはありません。</string>
+
     </resources>
