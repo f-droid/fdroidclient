@@ -273,10 +273,10 @@ public class App extends ValueObject implements Comparable<App> {
         apk.added = this.added;
         apk.minSdkVersion = Utils.getMinSdkVersion(context, packageName);
         apk.maxSdkVersion = Utils.getMaxSdkVersion(context, packageName);
-        apk.id = this.packageName;
+        apk.packageName = this.packageName;
         apk.installedFile = apkFile;
         apk.permissions = Utils.CommaSeparatedList.make(packageInfo.requestedPermissions);
-        apk.apkName = apk.id + "_" + apk.vercode + ".apk";
+        apk.apkName = apk.packageName + "_" + apk.vercode + ".apk";
 
         final FeatureInfo[] features = packageInfo.reqFeatures;
         if (features != null && features.length > 0) {

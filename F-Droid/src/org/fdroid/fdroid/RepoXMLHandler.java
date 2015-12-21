@@ -252,7 +252,7 @@ public class RepoXMLHandler extends DefaultHandler {
             curapp.packageName = attributes.getValue("", "id");
         } else if ("package".equals(localName) && curapp != null && curapk == null) {
             curapk = new Apk();
-            curapk.id = curapp.packageName;
+            curapk.packageName = curapp.packageName;
             curapk.repo = repo.getId();
             currentApkHashType = null;
 

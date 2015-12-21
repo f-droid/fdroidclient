@@ -127,9 +127,9 @@ public class ApkProviderTest extends BaseApkProviderTest {
 
         assertTotalApkCount(5);
 
-        assertEquals("com.example.one", one.id);
-        assertEquals("com.example.two", two.id);
-        assertEquals("com.example.five", five.id);
+        assertEquals("com.example.one", one.packageName);
+        assertEquals("com.example.two", two.packageName);
+        assertEquals("com.example.five", five.packageName);
 
         String[] expectedIds = {
             "com.example.one",
@@ -142,7 +142,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         List<Apk> all = ApkProvider.Helper.findByRepo(getSwappableContext(), new MockRepo(10), ApkProvider.DataColumns.ALL);
         List<String> actualIds = new ArrayList<>();
         for (Apk apk : all) {
-            actualIds.add(apk.id);
+            actualIds.add(apk.packageName);
         }
 
         TestUtils.assertContainsOnly(actualIds, expectedIds);
@@ -158,7 +158,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         List<Apk> allRemaining = ApkProvider.Helper.findByRepo(getSwappableContext(), new MockRepo(10), ApkProvider.DataColumns.ALL);
         List<String> actualRemainingIds = new ArrayList<>();
         for (Apk apk : allRemaining) {
-            actualRemainingIds.add(apk.id);
+            actualRemainingIds.add(apk.packageName);
         }
 
         String[] expectedRemainingIds = {
@@ -232,7 +232,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         Apk apk = new MockApk("org.fdroid.fdroid", 13);
 
         // Insert a new record...
-        Uri newUri = TestUtils.insertApk(this, apk.id, apk.vercode);
+        Uri newUri = TestUtils.insertApk(this, apk.packageName, apk.vercode);
         assertEquals(ApkProvider.getContentUri(apk).toString(), newUri.toString());
         cursor = queryAllApks();
         assertNotNull(cursor);
@@ -255,7 +255,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         cursor.moveToFirst();
         Apk toCheck = new Apk(cursor);
         cursor.close();
-        assertEquals("org.fdroid.fdroid", toCheck.id);
+        assertEquals("org.fdroid.fdroid", toCheck.packageName);
         assertEquals(13, toCheck.vercode);
     }
 
@@ -328,7 +328,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
 
         // But this should have saved correctly...
         assertEquals("Some features", apk.features.toString());
-        assertEquals("com.example.com", apk.id);
+        assertEquals("com.example.com", apk.packageName);
         assertEquals(1, apk.vercode);
         assertEquals(10, apk.repo);
     }
