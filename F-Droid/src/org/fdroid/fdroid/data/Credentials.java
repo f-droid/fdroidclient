@@ -32,5 +32,5 @@ public interface Credentials {
      * Implement this method to provide authentication for the given connection.
      * @param connection the HTTP connection to authenticate
      */
-    public void authenticate(final HttpURLConnection connection);
+    void authenticate(final HttpURLConnection connection);
 }
