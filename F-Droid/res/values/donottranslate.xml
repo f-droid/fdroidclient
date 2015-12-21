@@ -69,6 +69,7 @@
         <item>vi</item>
         <item>zh-rCN</item>
         <item>zh-rHK</item>
+        <item>zh-rTW</item>
     </string-array>
 
     <string-array name="languageNames">
@@ -116,6 +117,7 @@
         <item>Tiếng Việt</item>
         <item>中文 (中国)</item>
         <item>中文 (香港)</item>
+        <item>中文 (台湾)</item>
     </string-array>
 
 </resources>
