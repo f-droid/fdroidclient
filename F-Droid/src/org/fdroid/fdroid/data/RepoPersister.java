@@ -243,26 +243,19 @@ public class RepoPersister {
      */
     @Nullable
     private ContentProviderOperation deleteOrphanedApks(List<App> apps, Map<String, List<Apk>> packages) {
-
         String[] projection = new String[]{ApkProvider.DataColumns.APK_ID, ApkProvider.DataColumns.VERSION_CODE};
         List<Apk> existing = ApkProvider.Helper.find(context, repo, apps, projection);
-
         List<Apk> toDelete = new ArrayList<>();
 
         for (Apk existingApk : existing) {
-
             boolean shouldStay = false;
 
-            for (Map.Entry<String, List<Apk>> entry : packages.entrySet()) {
-                for (Apk newApk : entry.getValue()) {
+            if (packages.containsKey(existingApk.id)) {
+                for (Apk newApk : packages.get(existingApk.id)) {
                     if (newApk.vercode == existingApk.vercode) {
                         shouldStay = true;
                         break;
                     }
-                }
-
-                if (shouldStay) {
-                    break;
                 }
             }
 

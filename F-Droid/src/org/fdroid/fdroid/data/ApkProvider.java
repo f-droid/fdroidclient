@@ -340,7 +340,7 @@ public class ApkProvider extends FDroidProvider {
             if (i != 0) {
                 builder.append(',');
             }
-            builder.append(apks.get(0).id);
+            builder.append(apks.get(i).id);
         }
         return builder.toString();
     }
