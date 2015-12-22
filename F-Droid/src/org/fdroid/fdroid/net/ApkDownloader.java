@@ -39,6 +39,7 @@ import org.fdroid.fdroid.data.SanitizedFile;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import org.fdroid.fdroid.data.Credentials;
 
 /**
  * Downloads and verifies (against the Apk.hash) the apk file.
@@ -77,6 +78,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
 
     private ProgressListener listener;
     private AsyncDownloader dlWrapper;
+    private Credentials credentials;
     private boolean isComplete;
 
     private final long id = ++downloadIdCounter;
@@ -195,7 +197,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
         Utils.debugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
-            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, app.name + " " + curApk.version, curApk.id, this);
+            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, app.name + " " + curApk.version, curApk.id, credentials, this);
             dlWrapper.download();
             return true;
         } catch (IOException e) {
@@ -291,5 +293,9 @@ public class ApkDownloader implements AsyncDownloader.Listener {
 
     public int getTotalBytes() {
         return dlWrapper != null ? dlWrapper.getTotalBytes() : 0;
+    }
+
+    public void setCredentials(final Credentials credentials) {
+        this.credentials = credentials;
     }
 }

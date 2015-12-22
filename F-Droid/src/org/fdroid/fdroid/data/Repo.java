@@ -9,6 +9,7 @@ import org.fdroid.fdroid.Utils;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
+import org.fdroid.fdroid.net.auth.HttpBasicCredentials;
 
 public class Repo extends ValueObject {
 
@@ -146,6 +147,21 @@ public class Repo extends ValueObject {
             return 0;
         }
         return value;
+    }
+
+    /**
+     * Returns the credentials for this repo, or null of no authentication
+     * method is configured.
+     * @return the credentials or null
+     */
+    public Credentials getCredentials() {
+
+        // return the only credentials implementation we have right now
+        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
+            return new HttpBasicCredentials(username, password);
+        }
+
+        return null;
     }
 
     public void setValues(ContentValues values) {

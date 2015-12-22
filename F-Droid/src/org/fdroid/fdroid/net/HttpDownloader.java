@@ -1,10 +1,9 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.util.Log;
+import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
-import org.apache.commons.net.util.Base64;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
@@ -22,6 +21,7 @@ import java.net.SocketAddress;
 import java.net.URL;
 
 import javax.net.ssl.SSLHandshakeException;
+import org.fdroid.fdroid.data.Credentials;
 
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
@@ -30,21 +30,19 @@ public class HttpDownloader extends Downloader {
     protected static final String HEADER_FIELD_ETAG = "ETag";
 
     protected HttpURLConnection connection;
-    private final String username;
-    private final String password;
+    private Credentials credentials;
     private int statusCode  = -1;
 
     HttpDownloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
-        this(context, url, destFile, null, null);
+        this(context, url, destFile, null);
     }
 
-    HttpDownloader(Context context, URL url, File destFile, final String username, final String password)
+    HttpDownloader(Context context, URL url, File destFile, final Credentials credentials)
             throws FileNotFoundException, MalformedURLException {
         super(context, url, destFile);
 
-        this.username = username;
-        this.password = password;
+        this.credentials = credentials;
     }
 
     /**
@@ -100,9 +98,8 @@ public class HttpDownloader extends Downloader {
         } else {
 
             connection = (HttpURLConnection) sourceUrl.openConnection();
-            if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
-                // add authorization header from username / password if set
-                connection.setRequestProperty("Authorization", "Basic " + Base64.encodeBase64String((username + ":" + password).getBytes()));
+            if (credentials != null) {
+                credentials.authenticate((HttpURLConnection) connection);
             }
         }
     }

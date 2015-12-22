@@ -11,6 +11,7 @@ import org.fdroid.fdroid.Utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import org.fdroid.fdroid.data.Credentials;
 
 public class DownloaderFactory {
 
@@ -45,10 +46,10 @@ public class DownloaderFactory {
 
     public static Downloader create(Context context, URL url, File destFile)
             throws IOException {
-        return create(context, url, destFile, null, null);
+        return create(context, url, destFile, null);
     }
 
-    public static Downloader create(Context context, URL url, File destFile, final String username, final String password)
+    public static Downloader create(Context context, URL url, File destFile, Credentials credentials)
             throws IOException {
         if (isBluetoothAddress(url)) {
             String macAddress = url.getHost().replace("-", ":");
@@ -60,7 +61,7 @@ public class DownloaderFactory {
         if (isLocalFile(url)) {
             return new LocalFileDownloader(context, url, destFile);
         }
-        return new HttpDownloader(context, url, destFile, username, password);
+        return new HttpDownloader(context, url, destFile, credentials);
     }
 
     private static boolean isBluetoothAddress(URL url) {
@@ -71,11 +72,11 @@ public class DownloaderFactory {
         return "file".equalsIgnoreCase(url.getProtocol());
     }
 
-    public static AsyncDownloader createAsync(Context context, String urlString, File destFile, String title, String id, AsyncDownloader.Listener listener) throws IOException {
-        return createAsync(context, new URL(urlString), destFile, title, id, listener);
+    public static AsyncDownloader createAsync(Context context, String urlString, File destFile, String title, String id, Credentials credentials, AsyncDownloader.Listener listener) throws IOException {
+        return createAsync(context, new URL(urlString), destFile, title, id, credentials, listener);
     }
 
-    public static AsyncDownloader createAsync(Context context, URL url, File destFile, String title, String id, AsyncDownloader.Listener listener)
+    public static AsyncDownloader createAsync(Context context, URL url, File destFile, String title, String id, Credentials credentials, AsyncDownloader.Listener listener)
             throws IOException {
         // To re-enable, fix the following:
         // * https://gitlab.com/fdroid/fdroidclient/issues/445
@@ -85,7 +86,7 @@ public class DownloaderFactory {
             return new AsyncDownloaderFromAndroid(context, listener, title, id, url.toString(), destFile);
         }
         Utils.debugLog(TAG, "Using AsyncDownloadWrapper");
-        return new AsyncDownloadWrapper(create(context, url, destFile), listener);
+        return new AsyncDownloadWrapper(create(context, url, destFile, credentials), listener);
     }
 
     static boolean isOnionAddress(URL url) {
