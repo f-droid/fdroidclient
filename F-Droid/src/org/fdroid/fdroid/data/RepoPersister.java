@@ -160,12 +160,16 @@ public class RepoPersister {
      * will queue up an update or an insert {@link ContentProviderOperation} for each package.
      */
     private ArrayList<ContentProviderOperation> insertOrUpdateApks(List<Apk> packages) {
-        List<Apk> existingApks = ApkProvider.Helper.knownApks(context, packages, new String[]{ApkProvider.DataColumns.VERSION_CODE});
+        String[] projection = new String[]{
+            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.VERSION_CODE,
+        };
+        List<Apk> existingApks = ApkProvider.Helper.knownApks(context, packages, projection);
         ArrayList<ContentProviderOperation> operations = new ArrayList<>(packages.size());
         for (Apk apk : packages) {
             boolean exists = false;
             for (Apk existing : existingApks) {
-                if (existing.vercode == apk.vercode) {
+                if (existing.id.equals(apk.id) && existing.vercode == apk.vercode) {
                     exists = true;
                     break;
                 }
