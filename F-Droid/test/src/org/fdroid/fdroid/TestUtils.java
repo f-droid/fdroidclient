@@ -101,7 +101,7 @@ public class TestUtils {
     public static void insertApp(ContentResolver resolver, String id, String name, ContentValues additionalValues) {
 
         ContentValues values = new ContentValues();
-        values.put(AppProvider.DataColumns.APP_ID, id);
+        values.put(AppProvider.DataColumns.PACKAGE_NAME, id);
         values.put(AppProvider.DataColumns.NAME, name);
 
         // Required fields (NOT NULL in the database).
@@ -127,7 +127,7 @@ public class TestUtils {
 
         ContentValues values = new ContentValues();
 
-        values.put(ApkProvider.DataColumns.APK_ID, id);
+        values.put(ApkProvider.DataColumns.PACKAGE_NAME, id);
         values.put(ApkProvider.DataColumns.VERSION_CODE, versionCode);
 
         // Required fields (NOT NULL in the database).

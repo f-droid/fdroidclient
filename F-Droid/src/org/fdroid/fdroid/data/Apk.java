@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class Apk extends ValueObject implements Comparable<Apk> {
 
-    public String id;
+    public String packageName;
     public String version;
     public int vercode;
     public int size; // Size in bytes - 0 means we don't know!
@@ -64,8 +64,8 @@ public class Apk extends ValueObject implements Comparable<Apk> {
                 case ApkProvider.DataColumns.FEATURES:
                     features = Utils.CommaSeparatedList.make(cursor.getString(i));
                     break;
-                case ApkProvider.DataColumns.APK_ID:
-                    id = cursor.getString(i);
+                case ApkProvider.DataColumns.PACKAGE_NAME:
+                    packageName = cursor.getString(i);
                     break;
                 case ApkProvider.DataColumns.IS_COMPATIBLE:
                     compatible = cursor.getInt(i) == 1;
@@ -118,12 +118,12 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     @Override
     public String toString() {
-        return id + " (version " + vercode + ")";
+        return packageName + " (version " + vercode + ")";
     }
 
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
-        values.put(ApkProvider.DataColumns.APK_ID, id);
+        values.put(ApkProvider.DataColumns.PACKAGE_NAME, packageName);
         values.put(ApkProvider.DataColumns.VERSION, version);
         values.put(ApkProvider.DataColumns.VERSION_CODE, vercode);
         values.put(ApkProvider.DataColumns.REPO_ID, repo);

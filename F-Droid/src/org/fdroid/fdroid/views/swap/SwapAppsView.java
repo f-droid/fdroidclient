@@ -125,7 +125,7 @@ public class SwapAppsView extends ListView implements
 
     private void pollForUpdates() {
         if (adapter.getCount() > 1 ||
-                (adapter.getCount() == 1 && !new App((Cursor) adapter.getItem(0)).id.equals("org.fdroid.fdroid"))) {
+                (adapter.getCount() == 1 && !new App((Cursor) adapter.getItem(0)).packageName.equals("org.fdroid.fdroid"))) {
             Utils.debugLog(TAG, "Not polling for new apps from swap repo, because we already have more than one.");
             return;
         }
@@ -333,7 +333,7 @@ public class SwapAppsView extends ListView implements
                 public void onChange(boolean selfChange) {
                     Activity activity = getActivity();
                     if (activity != null) {
-                        app = AppProvider.Helper.findById(getActivity().getContentResolver(), app.id);
+                        app = AppProvider.Helper.findById(getActivity().getContentResolver(), app.packageName);
                         apkToInstall = null; // Force lazy loading to fetch correct apk next time.
                         resetView();
                     }
@@ -350,7 +350,7 @@ public class SwapAppsView extends ListView implements
             }
 
             public void setApp(@NonNull App app) {
-                if (this.app == null || !this.app.id.equals(app.id)) {
+                if (this.app == null || !this.app.packageName.equals(app.packageName)) {
                     this.app = app;
                     apkToInstall = null; // Force lazy loading to fetch the correct apk next time.
 
@@ -361,7 +361,7 @@ public class SwapAppsView extends ListView implements
                     // implemented on API-16, so leaving like this for now.
                     getActivity().getContentResolver().unregisterContentObserver(appObserver);
                     getActivity().getContentResolver().registerContentObserver(
-                            AppProvider.getContentUri(this.app.id), true, appObserver);
+                            AppProvider.getContentUri(this.app.packageName), true, appObserver);
                 }
                 resetView();
             }
@@ -372,7 +372,7 @@ public class SwapAppsView extends ListView implements
              */
             private Apk getApkToInstall() {
                 if (apkToInstall == null) {
-                    apkToInstall = ApkProvider.Helper.find(getActivity(), app.id, app.suggestedVercode);
+                    apkToInstall = ApkProvider.Helper.find(getActivity(), app.packageName, app.suggestedVercode);
                 }
                 return apkToInstall;
             }

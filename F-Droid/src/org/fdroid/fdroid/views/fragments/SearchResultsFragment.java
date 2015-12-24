@@ -110,7 +110,7 @@ public class SearchResultsFragment extends ListFragment implements LoaderManager
         final App app = new App((Cursor) adapter.getItem(position));
 
         Intent intent = new Intent(getActivity(), AppDetails.class);
-        intent.putExtra(AppDetails.EXTRA_APPID, app.id);
+        intent.putExtra(AppDetails.EXTRA_APPID, app.packageName);
         intent.putExtra(AppDetails.EXTRA_HINT_SEARCHING, true);
         startActivityForResult(intent, REQUEST_APPDETAILS);
         super.onListItemClick(l, v, position, id);

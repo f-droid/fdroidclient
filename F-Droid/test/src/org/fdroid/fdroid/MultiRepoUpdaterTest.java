@@ -279,7 +279,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         for (int versionCode : versionCodes) {
             boolean found = false;
             for (Apk apk : apksToCheck) {
-                if (apk.vercode == versionCode && apk.id.equals(appId)) {
+                if (apk.vercode == versionCode && apk.packageName.equals(appId)) {
                     found = true;
                     break;
                 }

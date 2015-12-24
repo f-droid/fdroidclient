@@ -48,7 +48,7 @@ public class TempAppProvider extends AppProvider {
     }
 
     public static Uri getAppUri(App app) {
-        return Uri.withAppendedPath(getContentUri(), app.id);
+        return Uri.withAppendedPath(getContentUri(), app.packageName);
     }
 
     public static class Helper {

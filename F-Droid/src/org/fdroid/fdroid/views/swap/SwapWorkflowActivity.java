@@ -781,14 +781,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void install(@NonNull final App app) {
-        final Apk apkToInstall = ApkProvider.Helper.find(this, app.id, app.suggestedVercode);
+        final Apk apkToInstall = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode);
         final ApkDownloader downloader = new ApkDownloader(this, app, apkToInstall, apkToInstall.repoAddress);
         downloader.setProgressListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {
                 switch (event.type) {
                     case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
-                        handleDownloadComplete(downloader.localFile(), app.id);
+                        handleDownloadComplete(downloader.localFile(), app.packageName);
                         break;
                     case ApkDownloader.EVENT_ERROR:
                         break;

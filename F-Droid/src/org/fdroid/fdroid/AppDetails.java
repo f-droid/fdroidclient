@@ -171,7 +171,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         ApkListAdapter(Context context, App app) {
             super(context, 0);
-            final List<Apk> apks = ApkProvider.Helper.findByApp(context, app.id);
+            final List<Apk> apks = ApkProvider.Helper.findByApp(context, app.packageName);
             for (final Apk apk : apks) {
                 if (apk.compatible || Preferences.get().showIncompatibleVersions()) {
                     add(apk);
@@ -192,9 +192,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             // Installed the same version, but from someplace else.
             final String installerPkgName;
             try {
-                installerPkgName = mPm.getInstallerPackageName(app.id);
+                installerPkgName = mPm.getInstallerPackageName(app.packageName);
             } catch (IllegalArgumentException e) {
-                Log.w(TAG, "Application " + app.id + " is not installed anymore");
+                Log.w(TAG, "Application " + app.packageName + " is not installed anymore");
                 return getString(R.string.app_not_installed);
             }
             if (TextUtils.isEmpty(installerPkgName)) {
@@ -431,13 +431,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
         // Check if a download is running for this app
-        if (AsyncDownloaderFromAndroid.isDownloading(this, app.id) >= 0) {
+        if (AsyncDownloaderFromAndroid.isDownloading(this, app.packageName) >= 0) {
             // call install() to re-setup the listeners and downloaders
             // the AsyncDownloader will not restart the download since the download is running,
             // and thus the version we pass to install() is not important
             refreshHeader();
             refreshApkList();
-            final Apk apkToInstall = ApkProvider.Helper.find(this, app.id, app.suggestedVercode);
+            final Apk apkToInstall = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode);
             install(apkToInstall);
         }
 
@@ -449,7 +449,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         // register observer to know when install status changes
         myAppObserver = new AppObserver(new Handler());
         getContentResolver().registerContentObserver(
-                AppProvider.getContentUri(app.id),
+                AppProvider.getContentUri(app.packageName),
                 true,
                 myAppObserver);
     }
@@ -510,7 +510,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
                 || app.ignoreThisUpdate != startingIgnoreThis)) {
             Utils.debugLog(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
-            setIgnoreUpdates(app.id, app.ignoreAllUpdates, app.ignoreThisUpdate);
+            setIgnoreUpdates(app.packageName, app.ignoreAllUpdates, app.ignoreThisUpdate);
         }
 
         localBroadcastManager.unregisterReceiver(downloaderProgressReceiver);
@@ -531,7 +531,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     };
 
     private void onAppChanged() {
-        if (!reset(app.id)) {
+        if (!reset(app.packageName)) {
             AppDetails.this.finish();
             return;
         }
@@ -622,7 +622,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         if (app == null)
             return true;
 
-        if (mPm.getLaunchIntentForPackage(app.id) != null && app.canAndWantToUpdate()) {
+        if (mPm.getLaunchIntentForPackage(app.packageName) != null && app.canAndWantToUpdate()) {
             MenuItemCompat.setShowAsAction(menu.add(
                             Menu.NONE, LAUNCH, 1, R.string.menu_launch)
                             .setIcon(R.drawable.ic_play_arrow_white),
@@ -749,7 +749,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return true;
 
             case LAUNCH:
-                launchApk(app.id);
+                launchApk(app.packageName);
                 return true;
 
             case SHARE:
@@ -759,13 +759,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             case INSTALL:
                 // Note that this handles updating as well as installing.
                 if (app.suggestedVercode > 0) {
-                    final Apk apkToInstall = ApkProvider.Helper.find(this, app.id, app.suggestedVercode);
+                    final Apk apkToInstall = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode);
                     install(apkToInstall);
                 }
                 return true;
 
             case UNINSTALL:
-                removeApk(app.id);
+                removeApk(app.packageName);
                 return true;
 
             case IGNOREALL:
@@ -880,7 +880,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     private void installApk(File file) {
         try {
-            installer.installPackage(file, app.id);
+            installer.installPackage(file, app.packageName);
         } catch (AndroidNotCompatibleException e) {
             Log.e(TAG, "Android not compatible with this Installer!", e);
         }
@@ -903,7 +903,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 @Override
                 public void run() {
                     if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
-                        PackageManagerCompat.setInstaller(mPm, app.id);
+                        PackageManagerCompat.setInstaller(mPm, app.packageName);
                     }
 
                     onAppChanged();
@@ -962,7 +962,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         shareIntent.setType("text/plain");
 
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary + ") - https://f-droid.org/app/" + app.id);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary + ") - https://f-droid.org/app/" + app.packageName);
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }
@@ -1016,7 +1016,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         switch (requestCode) {
             case REQUEST_ENABLE_BLUETOOTH:
-                fdroidApp.sendViaBluetooth(this, resultCode, app.id);
+                fdroidApp.sendViaBluetooth(this, resultCode, app.packageName);
                 break;
         }
     }
@@ -1210,7 +1210,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             // App ID
             final TextView appIdView = (TextView) view.findViewById(R.id.appid);
             if (prefs.expertMode())
-                appIdView.setText(app.id);
+                appIdView.setText(app.packageName);
             else
                 appIdView.setVisibility(View.GONE);
 
@@ -1567,13 +1567,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             } else if (app.isInstalled()) {
                 installed = true;
                 statusView.setText(getString(R.string.details_installed, app.installedVersionName));
-                NfcHelper.setAndroidBeam(activity, app.id);
+                NfcHelper.setAndroidBeam(activity, app.packageName);
                 if (app.canAndWantToUpdate()) {
                     updateWanted = true;
                     btMain.setText(R.string.menu_upgrade);
                 } else {
                     updateWanted = false;
-                    if (activity.mPm.getLaunchIntentForPackage(app.id) != null) {
+                    if (activity.mPm.getLaunchIntentForPackage(app.packageName) != null) {
                         btMain.setText(R.string.menu_launch);
                     } else {
                         btMain.setText(R.string.menu_uninstall);
@@ -1601,7 +1601,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 AppDetails activity = (AppDetails) getActivity();
                 if (updateWanted) {
                     if (app.suggestedVercode > 0) {
-                        final Apk apkToInstall = ApkProvider.Helper.find(activity, app.id, app.suggestedVercode);
+                        final Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVercode);
                         activity.install(apkToInstall);
                         return;
                     }
@@ -1609,16 +1609,16 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 // If installed
                 if (installed) {
                     // If "launchable", launch
-                    if (activity.mPm.getLaunchIntentForPackage(app.id) != null) {
-                        activity.launchApk(app.id);
+                    if (activity.mPm.getLaunchIntentForPackage(app.packageName) != null) {
+                        activity.launchApk(app.packageName);
                     } else {
-                        activity.removeApk(app.id);
+                        activity.removeApk(app.packageName);
                     }
                 // If not installed, install
                 } else if (app.suggestedVercode > 0) {
                     btMain.setEnabled(false);
                     btMain.setText(R.string.system_install_installing);
-                    final Apk apkToInstall = ApkProvider.Helper.find(activity, app.id, app.suggestedVercode);
+                    final Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVercode);
                     activity.install(apkToInstall);
                 }
             }
@@ -1647,7 +1647,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         protected void remove() {
-            installListener.removeApk(getApp().id);
+            installListener.removeApk(getApp().packageName);
         }
 
         protected App getApp() {

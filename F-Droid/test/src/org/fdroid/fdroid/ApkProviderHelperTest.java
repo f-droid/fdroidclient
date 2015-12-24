@@ -56,7 +56,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         Collections.addAll(apksToCheck, unknown);
 
         String[] projection = {
-            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.PACKAGE_NAME,
             ApkProvider.DataColumns.VERSION_CODE,
         };
 
@@ -112,7 +112,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         Apk apk = new Apk(cursor);
         cursor.close();
 
-        assertEquals("com.example", apk.id);
+        assertEquals("com.example", apk.packageName);
         assertEquals(10, apk.vercode);
 
         assertNull(apk.features);
@@ -138,7 +138,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         Apk updatedApk = new Apk(updatedCursor);
         updatedCursor.close();
 
-        assertEquals("com.example", updatedApk.id);
+        assertEquals("com.example", updatedApk.packageName);
         assertEquals(10, updatedApk.vercode);
 
         assertNotNull(updatedApk.features);
@@ -176,14 +176,14 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
 
         // The find() method populates ALL fields if you don't specify any,
         // so we expect to find each of the ones we inserted above...
-        assertEquals("com.example", apk.id);
+        assertEquals("com.example", apk.packageName);
         assertEquals(11, apk.vercode);
         assertEquals("v1.1", apk.version);
         assertEquals("xxxxyyyy", apk.hash);
         assertEquals("a hash type", apk.hashType);
 
         String[] projection = {
-            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.PACKAGE_NAME,
             ApkProvider.DataColumns.HASH,
         };
 
@@ -191,7 +191,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
 
         assertNotNull(apkLessFields);
 
-        assertEquals("com.example", apkLessFields.id);
+        assertEquals("com.example", apkLessFields.packageName);
         assertEquals("xxxxyyyy", apkLessFields.hash);
 
         // Didn't ask for these fields, so should be their default values...

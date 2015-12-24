@@ -26,7 +26,7 @@ abstract class BaseApkProviderTest extends FDroidProviderTest<ApkProvider> {
     @Override
     protected String[] getMinimalProjection() {
         return new String[] {
-            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.PACKAGE_NAME,
             ApkProvider.DataColumns.VERSION_CODE,
             ApkProvider.DataColumns.NAME,
             ApkProvider.DataColumns.REPO_ID,
@@ -40,7 +40,7 @@ abstract class BaseApkProviderTest extends FDroidProviderTest<ApkProvider> {
     protected void assertContains(List<Apk> apks, Apk apk) {
         boolean found = false;
         for (Apk a : apks) {
-            if (a.vercode == apk.vercode && a.id.equals(apk.id)) {
+            if (a.vercode == apk.vercode && a.packageName.equals(apk.packageName)) {
                 found = true;
                 break;
             }
@@ -56,7 +56,7 @@ abstract class BaseApkProviderTest extends FDroidProviderTest<ApkProvider> {
 
     protected void assertBelongsToApp(List<Apk> apks, String appId) {
         for (Apk apk : apks) {
-            assertEquals(appId, apk.id);
+            assertEquals(appId, apk.packageName);
         }
     }
 

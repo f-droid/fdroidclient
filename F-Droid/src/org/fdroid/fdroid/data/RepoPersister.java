@@ -73,7 +73,7 @@ public class RepoPersister {
 
     public void saveToDb(App app, List<Apk> packages) throws RepoUpdater.UpdateException {
         appsToSave.add(app);
-        apksToSave.put(app.id, packages);
+        apksToSave.put(app.packageName, packages);
 
         if (appsToSave.size() >= MAX_APP_BUFFER) {
             flushBufferToDb();
@@ -161,7 +161,7 @@ public class RepoPersister {
      */
     private ArrayList<ContentProviderOperation> insertOrUpdateApks(List<Apk> packages) {
         String[] projection = new String[]{
-            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.PACKAGE_NAME,
             ApkProvider.DataColumns.VERSION_CODE,
         };
         List<Apk> existingApks = ApkProvider.Helper.knownApks(context, packages, projection);
@@ -169,7 +169,7 @@ public class RepoPersister {
         for (Apk apk : packages) {
             boolean exists = false;
             for (Apk existing : existingApks) {
-                if (existing.id.equals(apk.id) && existing.vercode == apk.vercode) {
+                if (existing.packageName.equals(apk.packageName) && existing.vercode == apk.vercode) {
                     exists = true;
                     break;
                 }
@@ -216,8 +216,8 @@ public class RepoPersister {
      * array.
      */
     private boolean isAppInDatabase(App app) {
-        String[] fields = {AppProvider.DataColumns.APP_ID};
-        App found = AppProvider.Helper.findById(context.getContentResolver(), app.id, fields);
+        String[] fields = {AppProvider.DataColumns.PACKAGE_NAME};
+        App found = AppProvider.Helper.findById(context.getContentResolver(), app.packageName, fields);
         return found != null;
     }
 
@@ -247,15 +247,15 @@ public class RepoPersister {
      */
     @Nullable
     private ContentProviderOperation deleteOrphanedApks(List<App> apps, Map<String, List<Apk>> packages) {
-        String[] projection = new String[]{ApkProvider.DataColumns.APK_ID, ApkProvider.DataColumns.VERSION_CODE};
+        String[] projection = new String[]{ApkProvider.DataColumns.PACKAGE_NAME, ApkProvider.DataColumns.VERSION_CODE};
         List<Apk> existing = ApkProvider.Helper.find(context, repo, apps, projection);
         List<Apk> toDelete = new ArrayList<>();
 
         for (Apk existingApk : existing) {
             boolean shouldStay = false;
 
-            if (packages.containsKey(existingApk.id)) {
-                for (Apk newApk : packages.get(existingApk.id)) {
+            if (packages.containsKey(existingApk.packageName)) {
+                for (Apk newApk : packages.get(existingApk.packageName)) {
                     if (newApk.vercode == existingApk.vercode) {
                         shouldStay = true;
                         break;

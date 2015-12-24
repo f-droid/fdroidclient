@@ -173,7 +173,7 @@ public class AppProvider extends FDroidProvider {
         String _ID = "rowid as _id"; // Required for CursorLoaders
         String _COUNT = "_count";
         String IS_COMPATIBLE = "compatible";
-        String APP_ID = "id";
+        String PACKAGE_NAME = "id";
         String NAME = "name";
         String SUMMARY = "summary";
         String ICON = "icon";
@@ -211,7 +211,7 @@ public class AppProvider extends FDroidProvider {
         }
 
         String[] ALL = {
-            _ID, IS_COMPATIBLE, APP_ID, NAME, SUMMARY, ICON, DESCRIPTION,
+            _ID, IS_COMPATIBLE, PACKAGE_NAME, NAME, SUMMARY, ICON, DESCRIPTION,
             LICENSE, WEB_URL, TRACKER_URL, SOURCE_URL, CHANGELOG_URL, DONATE_URL,
             BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
             UPSTREAM_VERSION, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
@@ -523,7 +523,7 @@ public class AppProvider extends FDroidProvider {
             if (i != 0) {
                 builder.append(',');
             }
-            builder.append(apps.get(i).id);
+            builder.append(apps.get(i).packageName);
         }
         return getContentUri().buildUpon()
             .appendPath(PATH_APPS)
@@ -532,7 +532,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     public static Uri getContentUri(App app) {
-        return getContentUri(app.id);
+        return getContentUri(app.packageName);
     }
 
     public static Uri getContentUri(String appId) {
@@ -851,7 +851,7 @@ public class AppProvider extends FDroidProvider {
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
-        return getContentUri(values.getAsString(DataColumns.APP_ID));
+        return getContentUri(values.getAsString(DataColumns.PACKAGE_NAME));
     }
 
     @Override
