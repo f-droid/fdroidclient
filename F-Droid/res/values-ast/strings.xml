@@ -333,4 +333,8 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="about_license">Llicencia</string>
 
     <string name="status_inserting_apps">Guardando detalles d\'aplicaciones</string>
+    <string name="empty_search_installed_app_list">Nun hai aplicaciones instalaes que concasen.</string>
+    <string name="empty_search_available_app_list">Nun aplicaciones disponibles que concasen.</string>
+    <string name="empty_search_can_update_app_list">Nun hai aplicaciones p\'anovar que concasen.</string>
+
     </resources>
