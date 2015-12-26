@@ -35,12 +35,12 @@ abstract class PackageReceiver extends BroadcastReceiver {
 
     protected abstract boolean toDiscard(Intent intent);
 
-    protected abstract void handle(Context context, String appId);
+    protected abstract void handle(Context context, String packageName);
 
-    protected PackageInfo getPackageInfo(Context context, String appId) {
+    protected PackageInfo getPackageInfo(Context context, String packageName) {
         PackageInfo info = null;
         try {
-            info = context.getPackageManager().getPackageInfo(appId, PackageManager.GET_SIGNATURES);
+            info = context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
         } catch (PackageManager.NameNotFoundException e) {
             // ignore
         }
@@ -53,10 +53,10 @@ abstract class PackageReceiver extends BroadcastReceiver {
         if (toDiscard(intent)) {
             return;
         }
-        String appId = intent.getData().getSchemeSpecificPart();
-        handle(context, appId);
-        context.getContentResolver().notifyChange(AppProvider.getContentUri(appId), null);
-        context.getContentResolver().notifyChange(ApkProvider.getAppUri(appId), null);
+        String packageName = intent.getData().getSchemeSpecificPart();
+        handle(context, packageName);
+        context.getContentResolver().notifyChange(AppProvider.getContentUri(packageName), null);
+        context.getContentResolver().notifyChange(ApkProvider.getAppUri(packageName), null);
     }
 
 }

@@ -140,7 +140,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
     @Override
     protected String[] getMinimalProjection() {
         return new String[] {
-            InstalledAppProvider.DataColumns.APP_ID,
+            InstalledAppProvider.DataColumns.PACKAGE_NAME,
             InstalledAppProvider.DataColumns.VERSION_CODE,
             InstalledAppProvider.DataColumns.VERSION_NAME,
         };
@@ -153,7 +153,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
     private ContentValues createContentValues(String appId, int versionCode, String versionNumber) {
         ContentValues values = new ContentValues(3);
         if (appId != null) {
-            values.put(InstalledAppProvider.DataColumns.APP_ID, appId);
+            values.put(InstalledAppProvider.DataColumns.PACKAGE_NAME, appId);
         }
         values.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL, "Mock app: " + appId);
         values.put(InstalledAppProvider.DataColumns.VERSION_CODE, versionCode);

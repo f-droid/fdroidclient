@@ -41,22 +41,22 @@ public class PackageAddedReceiver extends PackageReceiver {
     }
 
     @Override
-    protected void handle(Context context, String appId) {
-        PackageInfo info = getPackageInfo(context, appId);
+    protected void handle(Context context, String packageName) {
+        PackageInfo info = getPackageInfo(context, packageName);
         if (info == null) {
-            Utils.debugLog(TAG, "Could not get package info on '" + appId + "' - skipping.");
+            Utils.debugLog(TAG, "Could not get package info on '" + packageName + "' - skipping.");
             return;
         }
 
-        Utils.debugLog(TAG, "Inserting installed app info for '" + appId + "' (v" + info.versionCode + ")");
+        Utils.debugLog(TAG, "Inserting installed app info for '" + packageName + "' (v" + info.versionCode + ")");
 
         Uri uri = InstalledAppProvider.getContentUri();
         ContentValues values = new ContentValues(4);
-        values.put(InstalledAppProvider.DataColumns.APP_ID, appId);
+        values.put(InstalledAppProvider.DataColumns.PACKAGE_NAME, packageName);
         values.put(InstalledAppProvider.DataColumns.VERSION_CODE, info.versionCode);
         values.put(InstalledAppProvider.DataColumns.VERSION_NAME, info.versionName);
         values.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL,
-                InstalledAppProvider.getApplicationLabel(context, appId));
+                InstalledAppProvider.getApplicationLabel(context, packageName));
         values.put(InstalledAppProvider.DataColumns.SIGNATURE,
                 InstalledAppProvider.getPackageSig(info));
         context.getContentResolver().insert(uri, values);

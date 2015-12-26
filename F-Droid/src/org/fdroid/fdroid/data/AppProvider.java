@@ -121,13 +121,13 @@ public class AppProvider extends FDroidProvider {
             return categories;
         }
 
-        public static App findById(ContentResolver resolver, String appId) {
-            return findById(resolver, appId, DataColumns.ALL);
+        public static App findByPackageName(ContentResolver resolver, String packageName) {
+            return findByPackageName(resolver, packageName, DataColumns.ALL);
         }
 
-        public static App findById(ContentResolver resolver, String appId,
-                                   String[] projection) {
-            final Uri uri = getContentUri(appId);
+        public static App findByPackageName(ContentResolver resolver, String packageName,
+                                            String[] projection) {
+            final Uri uri = getContentUri(packageName);
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             App app = null;
             if (cursor != null) {
@@ -327,7 +327,7 @@ public class AppProvider extends FDroidProvider {
                 join(
                     DBHelper.TABLE_INSTALLED_APP,
                     "installed",
-                    "installed." + InstalledAppProvider.DataColumns.APP_ID + " = " + getTableName() + ".id");
+                    "installed." + InstalledAppProvider.DataColumns.PACKAGE_NAME + " = " + getTableName() + ".id");
                 requiresInstalledTable = true;
             }
         }
@@ -337,7 +337,7 @@ public class AppProvider extends FDroidProvider {
                 leftJoin(
                     DBHelper.TABLE_INSTALLED_APP,
                     "installed",
-                    "installed." + InstalledAppProvider.DataColumns.APP_ID + " = " + getTableName() + ".id");
+                    "installed." + InstalledAppProvider.DataColumns.PACKAGE_NAME + " = " + getTableName() + ".id");
                 requiresInstalledTable = true;
             }
         }
@@ -535,8 +535,8 @@ public class AppProvider extends FDroidProvider {
         return getContentUri(app.packageName);
     }
 
-    public static Uri getContentUri(String appId) {
-        return Uri.withAppendedPath(getContentUri(), appId);
+    public static Uri getContentUri(String packageName) {
+        return Uri.withAppendedPath(getContentUri(), packageName);
     }
 
     public static Uri getSearchUri(String query) {
@@ -656,9 +656,9 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection.toString(), selectionKeywords);
     }
 
-    protected AppQuerySelection querySingle(String id) {
+    protected AppQuerySelection querySingle(String packageName) {
         final String selection = getTableName() + ".id = ?";
-        final String[] args = {id};
+        final String[] args = {packageName};
         return new AppQuerySelection(selection, args);
     }
 
@@ -712,14 +712,14 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection);
     }
 
-    static AppQuerySelection queryApps(String appIds, String idField) {
-        String[] args = appIds.split(",");
+    static AppQuerySelection queryApps(String packageNames, String idField) {
+        String[] args = packageNames.split(",");
         String selection = idField + " IN (" + generateQuestionMarksForInClause(args.length) + ")";
         return new AppQuerySelection(selection, args);
     }
 
-    private AppQuerySelection queryApps(String appIds) {
-        return queryApps(appIds, getTableName() + ".id");
+    private AppQuerySelection queryApps(String packageNames) {
+        return queryApps(packageNames, getTableName() + ".id");
     }
 
     @Override

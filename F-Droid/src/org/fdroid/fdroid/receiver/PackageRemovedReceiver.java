@@ -39,11 +39,11 @@ public class PackageRemovedReceiver extends PackageReceiver {
     }
 
     @Override
-    protected void handle(Context context, String appId) {
+    protected void handle(Context context, String packageName) {
 
-        Utils.debugLog(TAG, "Removing installed app info for '" + appId + "'");
+        Utils.debugLog(TAG, "Removing installed app info for '" + packageName + "'");
 
-        Uri uri = InstalledAppProvider.getAppUri(appId);
+        Uri uri = InstalledAppProvider.getAppUri(packageName);
         context.getContentResolver().delete(uri, null, null);
     }
 

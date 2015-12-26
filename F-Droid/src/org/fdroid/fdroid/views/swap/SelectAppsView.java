@@ -140,7 +140,7 @@ public class SelectAppsView extends ListView implements
 
     private void toggleAppSelected(int position) {
         Cursor c = (Cursor) adapter.getItem(position);
-        String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
+        String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME));
         if (getState().hasSelectedPackage(packageName)) {
             getState().deselectPackage(packageName);
             adapter.updateCheckedIndicatorView(position, false);
@@ -174,7 +174,7 @@ public class SelectAppsView extends ListView implements
 
         for (int i = 0; i < getCount(); i++) {
             Cursor c = (Cursor) getItemAtPosition(i);
-            String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
+            String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME));
             getState().ensureFDroidSelected();
             for (String selected : getState().getAppsToSwap()) {
                 if (TextUtils.equals(packageName, selected)) {
@@ -258,7 +258,7 @@ public class SelectAppsView extends ListView implements
             TextView labelView = (TextView) view.findViewById(R.id.application_label);
             ImageView iconView = (ImageView) view.findViewById(android.R.id.icon);
 
-            String packageName = cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
+            String packageName = cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME));
             String appLabel = cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APPLICATION_LABEL));
 
             Drawable icon;

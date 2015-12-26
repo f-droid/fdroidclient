@@ -174,7 +174,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     }
 
     private void assertApp(String packageName, int[] versionCodes) {
-        List<Apk> apks = ApkProvider.Helper.findByApp(context, packageName, ApkProvider.DataColumns.ALL);
+        List<Apk> apks = ApkProvider.Helper.findByPackageName(context, packageName, ApkProvider.DataColumns.ALL);
         assertApksExist(apks, packageName, versionCodes);
     }
 
@@ -299,7 +299,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         };
 
         for (String id : packages) {
-            assertEquals("No apks for " + id, 0, ApkProvider.Helper.findByApp(context, id).size());
+            assertEquals("No apks for " + id, 0, ApkProvider.Helper.findByPackageName(context, id).size());
         }
     }
 

@@ -79,7 +79,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     }
 
     public void testCantFindApp() {
-        assertNull(AppProvider.Helper.findById(getMockContentResolver(), "com.example.doesnt-exist"));
+        assertNull(AppProvider.Helper.findByPackageName(getMockContentResolver(), "com.example.doesnt-exist"));
     }
 
     public void testUris() {
@@ -149,14 +149,14 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         ContentResolver r = getMockContentResolver();
 
         // Can't "update", although can "install"...
-        App notInstalled = AppProvider.Helper.findById(r, "not installed");
+        App notInstalled = AppProvider.Helper.findByPackageName(r, "not installed");
         assertFalse(notInstalled.canAndWantToUpdate());
 
-        App installedOnlyOneVersionAvailable   = AppProvider.Helper.findById(r, "installed, only one version available");
-        App installedAlreadyLatestNoIgnore     = AppProvider.Helper.findById(r, "installed, already latest, no ignore");
-        App installedAlreadyLatestIgnoreAll    = AppProvider.Helper.findById(r, "installed, already latest, ignore all");
-        App installedAlreadyLatestIgnoreLatest = AppProvider.Helper.findById(r, "installed, already latest, ignore latest");
-        App installedAlreadyLatestIgnoreOld    = AppProvider.Helper.findById(r, "installed, already latest, ignore old");
+        App installedOnlyOneVersionAvailable   = AppProvider.Helper.findByPackageName(r, "installed, only one version available");
+        App installedAlreadyLatestNoIgnore     = AppProvider.Helper.findByPackageName(r, "installed, already latest, no ignore");
+        App installedAlreadyLatestIgnoreAll    = AppProvider.Helper.findByPackageName(r, "installed, already latest, ignore all");
+        App installedAlreadyLatestIgnoreLatest = AppProvider.Helper.findByPackageName(r, "installed, already latest, ignore latest");
+        App installedAlreadyLatestIgnoreOld    = AppProvider.Helper.findByPackageName(r, "installed, already latest, ignore old");
 
         assertFalse(installedOnlyOneVersionAvailable.canAndWantToUpdate());
         assertFalse(installedAlreadyLatestNoIgnore.canAndWantToUpdate());
@@ -164,10 +164,10 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         assertFalse(installedAlreadyLatestIgnoreLatest.canAndWantToUpdate());
         assertFalse(installedAlreadyLatestIgnoreOld.canAndWantToUpdate());
 
-        App installedOldNoIgnore             = AppProvider.Helper.findById(r, "installed, old version, no ignore");
-        App installedOldIgnoreAll            = AppProvider.Helper.findById(r, "installed, old version, ignore all");
-        App installedOldIgnoreLatest         = AppProvider.Helper.findById(r, "installed, old version, ignore latest");
-        App installedOldIgnoreNewerNotLatest = AppProvider.Helper.findById(r, "installed, old version, ignore newer, but not latest");
+        App installedOldNoIgnore             = AppProvider.Helper.findByPackageName(r, "installed, old version, no ignore");
+        App installedOldIgnoreAll            = AppProvider.Helper.findByPackageName(r, "installed, old version, ignore all");
+        App installedOldIgnoreLatest         = AppProvider.Helper.findByPackageName(r, "installed, old version, ignore latest");
+        App installedOldIgnoreNewerNotLatest = AppProvider.Helper.findByPackageName(r, "installed, old version, ignore newer, but not latest");
 
         assertTrue(installedOldNoIgnore.canAndWantToUpdate());
         assertFalse(installedOldIgnoreAll.canAndWantToUpdate());
