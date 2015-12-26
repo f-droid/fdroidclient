@@ -376,6 +376,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FDroid" />
         </activity>
+        <activity android:name="org.acra.CrashReportDialog"
+            android:theme="@style/AlertDialogThemeDark"
+            android:process=":error_report"
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
+            android:finishOnTaskLaunch="true" />
         <activity
             android:label="@string/menu_swap"
             android:name=".views.swap.SwapWorkflowActivity"

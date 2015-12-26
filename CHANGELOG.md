@@ -1,5 +1,7 @@
 ### 0.98 (upcoming release)
 
+* Add opt-in crash reporting via ACRA
+
 * Add support for HTTP basic authentication of repos
 
 * Fix repo updating on older devices with little memory

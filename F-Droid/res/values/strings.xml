@@ -379,4 +379,10 @@
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_night">Night</string>
+
+    <string name="crash_dialog_title">F-Droid has crashed</string>
+    <string name="crash_dialog_text">An unexpected error occurred
+            forcing the application to stop. Would you like to e-mail the
+            details to help fix the issue?</string>
+    <string name="crash_dialog_comment_prompt">You can add extra information and comments here:</string>
 </resources>
