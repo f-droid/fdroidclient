@@ -171,7 +171,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         ApkListAdapter(Context context, App app) {
             super(context, 0);
-            final List<Apk> apks = ApkProvider.Helper.findByApp(context, app.packageName);
+            final List<Apk> apks = ApkProvider.Helper.findByPackageName(context, app.packageName);
             for (final Apk apk : apks) {
                 if (apk.compatible || Preferences.get().showIncompatibleVersions()) {
                     add(apk);
@@ -353,14 +353,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     private boolean inProcessOfChangingConfiguration;
 
     /**
-     * Attempt to extract the appId from the intent which launched this activity.
-     * @return May return null, if we couldn't find the appId. This should
+     * Attempt to extract the packageName from the intent which launched this activity.
+     * @return May return null, if we couldn't find the packageName. This should
      * never happen as AppDetails is only to be called by the FDroid activity
      * and not externally.
      */
-    private String getAppIdFromIntent(Intent intent) {
+    private String getPackageNameFromIntent(Intent intent) {
         if (!intent.hasExtra(EXTRA_APPID)) {
-            Log.e(TAG, "No application ID found in the intent!");
+            Log.e(TAG, "No package name found in the intent!");
             return null;
         }
 
@@ -399,7 +399,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             app = previousData.app;
             setApp(app);
         } else {
-            if (!reset(getAppIdFromIntent(intent))) {
+            if (!reset(getPackageNameFromIntent(intent))) {
                 finish();
                 return;
             }
@@ -541,9 +541,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         supportInvalidateOptionsMenu();
     }
 
-    private void setIgnoreUpdates(String appId, boolean ignoreAll, int ignoreVersionCode) {
+    private void setIgnoreUpdates(String packageName, boolean ignoreAll, int ignoreVersionCode) {
 
-        Uri uri = AppProvider.getContentUri(appId);
+        Uri uri = AppProvider.getContentUri(packageName);
 
         ContentValues values = new ContentValues(2);
         values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, ignoreAll ? 1 : 0);
@@ -574,13 +574,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     // Reset the display and list contents. Used when entering the activity, and
     // also when something has been installed/uninstalled.
     // Return true if the app was found, false otherwise.
-    private boolean reset(String appId) {
+    private boolean reset(String packageName) {
 
-        Utils.debugLog(TAG, "Getting application details for " + appId);
+        Utils.debugLog(TAG, "Getting application details for " + packageName);
         App newApp = null;
 
-        if (!TextUtils.isEmpty(appId)) {
-            newApp = AppProvider.Helper.findById(getContentResolver(), appId);
+        if (!TextUtils.isEmpty(packageName)) {
+            newApp = AppProvider.Helper.findByPackageName(getContentResolver(), packageName);
         }
 
         setApp(newApp);
@@ -952,8 +952,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
     };
 
-    private void launchApk(String id) {
-        Intent intent = mPm.getLaunchIntentForPackage(id);
+    private void launchApk(String packageName) {
+        Intent intent = mPm.getLaunchIntentForPackage(packageName);
         startActivity(intent);
     }
 
@@ -1208,11 +1208,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             });
 
             // App ID
-            final TextView appIdView = (TextView) view.findViewById(R.id.appid);
+            final TextView packageNameView = (TextView) view.findViewById(R.id.package_name);
             if (prefs.expertMode())
-                appIdView.setText(app.packageName);
+                packageNameView.setText(app.packageName);
             else
-                appIdView.setVisibility(View.GONE);
+                packageNameView.setVisibility(View.GONE);
 
             // Summary
             final TextView summaryView = (TextView) view.findViewById(R.id.summary);

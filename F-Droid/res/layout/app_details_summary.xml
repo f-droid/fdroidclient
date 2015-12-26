@@ -36,7 +36,7 @@
         tools:text="Application manager" />
 
     <TextView
-        android:id="@+id/appid"
+        android:id="@+id/package_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="12sp"

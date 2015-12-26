@@ -158,7 +158,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
         final String scheme = data.getScheme();
         final String path = data.getPath();
-        String appId = null;
+        String packageName = null;
         String query = null;
         if (data.isHierarchical()) {
             final String host = data.getHost();
@@ -171,19 +171,19 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
                         // http://f-droid.org/repository/browse?fdfilter=search+query
                         query = UriCompat.getQueryParameter(data, "fdfilter");
 
-                        // http://f-droid.org/repository/browse?fdid=app.id
-                        appId = UriCompat.getQueryParameter(data, "fdid");
+                        // http://f-droid.org/repository/browse?fdid=packageName
+                        packageName = UriCompat.getQueryParameter(data, "fdid");
                     } else if (path.startsWith("/app")) {
-                        // http://f-droid.org/app/app.id
-                        appId = data.getLastPathSegment();
-                        if ("app".equals(appId)) {
-                            appId = null;
+                        // http://f-droid.org/app/packageName
+                        packageName = data.getLastPathSegment();
+                        if ("app".equals(packageName)) {
+                            packageName = null;
                         }
                     }
                     break;
                 case "details":
                     // market://details?id=app.id
-                    appId = UriCompat.getQueryParameter(data, "id");
+                    packageName = UriCompat.getQueryParameter(data, "id");
                     break;
                 case "search":
                     // market://search?q=query
@@ -192,7 +192,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
                 case "play.google.com":
                     if (path.startsWith("/store/apps/details")) {
                         // http://play.google.com/store/apps/details?id=app.id
-                        appId = UriCompat.getQueryParameter(data, "id");
+                        packageName = UriCompat.getQueryParameter(data, "id");
                     } else if (path.startsWith("/store/search")) {
                         // http://play.google.com/store/search?q=foo
                         query = UriCompat.getQueryParameter(data, "q");
@@ -203,13 +203,13 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
                 case "www.amazon.com":
                     // amzn://apps/android?p=app.id
                     // http://amazon.com/gp/mas/dl/android?s=app.id
-                    appId = UriCompat.getQueryParameter(data, "p");
+                    packageName = UriCompat.getQueryParameter(data, "p");
                     query = UriCompat.getQueryParameter(data, "s");
                     break;
             }
         } else if ("fdroid.app".equals(scheme)) {
             // fdroid.app:app.id
-            appId = data.getSchemeSpecificPart();
+            packageName = data.getSchemeSpecificPart();
         } else if ("fdroid.search".equals(scheme)) {
             // fdroid.search:query
             query = data.getSchemeSpecificPart();
@@ -218,17 +218,17 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
         if (!TextUtils.isEmpty(query)) {
             // an old format for querying via packageName
             if (query.startsWith("pname:"))
-                appId = query.split(":")[1];
+                packageName = query.split(":")[1];
 
             // sometimes, search URLs include pub: or other things before the query string
             if (query.contains(":"))
                 query = query.split(":")[1];
         }
 
-        if (!TextUtils.isEmpty(appId)) {
-            Utils.debugLog(TAG, "FDroid launched via app link for '" + appId + "'");
+        if (!TextUtils.isEmpty(packageName)) {
+            Utils.debugLog(TAG, "FDroid launched via app link for '" + packageName + "'");
             Intent intentToInvoke = new Intent(this, AppDetails.class);
-            intentToInvoke.putExtra(AppDetails.EXTRA_APPID, appId);
+            intentToInvoke.putExtra(AppDetails.EXTRA_APPID, packageName);
             startActivity(intentToInvoke);
         } else if (!TextUtils.isEmpty(query)) {
             Utils.debugLog(TAG, "FDroid launched via search link for '" + query + "'");

@@ -134,7 +134,7 @@ public class InstalledAppCacheUpdater {
             Uri uri = InstalledAppProvider.getContentUri();
             for (PackageInfo info : appsToInsert) {
                 ContentProviderOperation op = ContentProviderOperation.newInsert(uri)
-                    .withValue(InstalledAppProvider.DataColumns.APP_ID, info.packageName)
+                    .withValue(InstalledAppProvider.DataColumns.PACKAGE_NAME, info.packageName)
                     .withValue(InstalledAppProvider.DataColumns.VERSION_CODE, info.versionCode)
                     .withValue(InstalledAppProvider.DataColumns.VERSION_NAME, info.versionName)
                     .withValue(InstalledAppProvider.DataColumns.APPLICATION_LABEL,
@@ -148,12 +148,12 @@ public class InstalledAppCacheUpdater {
         return ops;
     }
 
-    private List<ContentProviderOperation> deleteFromCache(List<String> appIds) {
-        List<ContentProviderOperation> ops = new ArrayList<>(appIds.size());
-        if (appIds.size() > 0) {
-            Utils.debugLog(TAG, "Preparing to remove " + appIds.size() + " apps from the installed app cache.");
-            for (final String appId : appIds) {
-                Uri uri = InstalledAppProvider.getAppUri(appId);
+    private List<ContentProviderOperation> deleteFromCache(List<String> packageNames) {
+        List<ContentProviderOperation> ops = new ArrayList<>(packageNames.size());
+        if (packageNames.size() > 0) {
+            Utils.debugLog(TAG, "Preparing to remove " + packageNames.size() + " apps from the installed app cache.");
+            for (final String packageName : packageNames) {
+                Uri uri = InstalledAppProvider.getAppUri(packageName);
                 ops.add(ContentProviderOperation.newDelete(uri).build());
             }
         }

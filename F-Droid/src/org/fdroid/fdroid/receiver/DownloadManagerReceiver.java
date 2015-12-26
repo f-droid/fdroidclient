@@ -23,11 +23,11 @@ import org.fdroid.fdroid.net.AsyncDownloaderFromAndroid;
 public class DownloadManagerReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        // work out the app Id to send to the AppDetails Screen
+        // work out the package name to send to the AppDetails Screen
         long downloadId = AsyncDownloaderFromAndroid.getDownloadId(intent);
-        String appId = AsyncDownloaderFromAndroid.getDownloadId(context, downloadId);
+        String packageName = AsyncDownloaderFromAndroid.getDownloadId(context, downloadId);
 
-        if (appId == null) {
+        if (packageName == null) {
             // bogus broadcast (e.g. download cancelled, but system sent a DOWNLOAD_COMPLETE)
             return;
         }
@@ -36,10 +36,10 @@ public class DownloadManagerReceiver extends BroadcastReceiver {
             int status = AsyncDownloaderFromAndroid.validDownload(context, downloadId);
             if (status == 0) {
                 // successful download
-                showNotification(context, appId, intent, downloadId, R.string.tap_to_install);
+                showNotification(context, packageName, intent, downloadId, R.string.tap_to_install);
             } else {
                 // download failed!
-                showNotification(context, appId, intent, downloadId, R.string.download_error);
+                showNotification(context, packageName, intent, downloadId, R.string.download_error);
 
                 // clear the download to allow user to download again
                 DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
@@ -51,19 +51,19 @@ public class DownloadManagerReceiver extends BroadcastReceiver {
             appDetails.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             appDetails.setAction(intent.getAction());
             appDetails.putExtras(intent.getExtras());
-            appDetails.putExtra(AppDetails.EXTRA_APPID, appId);
+            appDetails.putExtra(AppDetails.EXTRA_APPID, packageName);
             context.startActivity(appDetails);
         }
     }
 
-    private void showNotification(Context context, String appId, Intent intent, long downloadId,
+    private void showNotification(Context context, String packageName, Intent intent, long downloadId,
                                   @StringRes int messageResId) {
         // show a notification the user can click to install the app
         Intent appDetails = new Intent(context, AppDetails.class);
         appDetails.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         appDetails.setAction(intent.getAction());
         appDetails.putExtra(DownloadManager.EXTRA_DOWNLOAD_ID, downloadId);
-        appDetails.putExtra(AppDetails.EXTRA_APPID, appId);
+        appDetails.putExtra(AppDetails.EXTRA_APPID, packageName);
 
         // set separate pending intents per download id
         PendingIntent pi = PendingIntent.getActivity(

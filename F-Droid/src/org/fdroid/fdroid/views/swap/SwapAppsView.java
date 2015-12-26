@@ -333,7 +333,7 @@ public class SwapAppsView extends ListView implements
                 public void onChange(boolean selfChange) {
                     Activity activity = getActivity();
                     if (activity != null) {
-                        app = AppProvider.Helper.findById(getActivity().getContentResolver(), app.packageName);
+                        app = AppProvider.Helper.findByPackageName(getActivity().getContentResolver(), app.packageName);
                         apkToInstall = null; // Force lazy loading to fetch correct apk next time.
                         resetView();
                     }

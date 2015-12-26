@@ -42,7 +42,7 @@ public class InstalledAppProvider extends FDroidProvider {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
                         cachedInfo.put(
-                            cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID)),
+                            cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)),
                             cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE))
                         );
                         cursor.moveToNext();
@@ -59,14 +59,14 @@ public class InstalledAppProvider extends FDroidProvider {
     public interface DataColumns {
 
         String _ID = "rowid as _id"; // Required for CursorLoaders
-        String APP_ID = "appId";
+        String PACKAGE_NAME = "appId";
         String VERSION_CODE = "versionCode";
         String VERSION_NAME = "versionName";
         String APPLICATION_LABEL = "applicationLabel";
         String SIGNATURE = "sig";
 
         String[] ALL = {
-            _ID, APP_ID, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
+            _ID, PACKAGE_NAME, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
             SIGNATURE,
         };
 
@@ -89,8 +89,8 @@ public class InstalledAppProvider extends FDroidProvider {
         return Uri.parse("content://" + getAuthority());
     }
 
-    public static Uri getAppUri(String appId) {
-        return Uri.withAppendedPath(getContentUri(), appId);
+    public static Uri getAppUri(String packageName) {
+        return Uri.withAppendedPath(getContentUri(), packageName);
     }
 
     public static Uri getSearchUri(String keywords) {
@@ -146,8 +146,8 @@ public class InstalledAppProvider extends FDroidProvider {
         return matcher;
     }
 
-    private QuerySelection queryApp(String appId) {
-        return new QuerySelection("appId = ?", new String[]{appId});
+    private QuerySelection queryApp(String packageName) {
+        return new QuerySelection("appId = ?", new String[]{packageName});
     }
 
     private QuerySelection querySearch(String query) {
@@ -214,7 +214,7 @@ public class InstalledAppProvider extends FDroidProvider {
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
-        return getAppUri(values.getAsString(DataColumns.APP_ID));
+        return getAppUri(values.getAsString(DataColumns.PACKAGE_NAME));
     }
 
     @Override

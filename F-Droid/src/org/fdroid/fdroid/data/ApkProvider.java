@@ -84,8 +84,8 @@ public class ApkProvider extends FDroidProvider {
             resolver.delete(uri, null, null);
         }
 
-        public static Apk find(Context context, String id, int versionCode) {
-            return find(context, id, versionCode, DataColumns.ALL);
+        public static Apk find(Context context, String packageName, int versionCode) {
+            return find(context, packageName, versionCode, DataColumns.ALL);
         }
 
         /**
@@ -106,9 +106,9 @@ public class ApkProvider extends FDroidProvider {
             return find(context, repo, apps, DataColumns.ALL);
         }
 
-        public static Apk find(Context context, String id, int versionCode, String[] projection) {
+        public static Apk find(Context context, String packageName, int versionCode, String[] projection) {
             ContentResolver resolver = context.getContentResolver();
-            final Uri uri = getContentUri(id, versionCode);
+            final Uri uri = getContentUri(packageName, versionCode);
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             Apk apk = null;
             if (cursor != null) {
@@ -121,14 +121,14 @@ public class ApkProvider extends FDroidProvider {
             return apk;
         }
 
-        public static List<Apk> findByApp(Context context, String appId) {
-            return findByApp(context, appId, ApkProvider.DataColumns.ALL);
+        public static List<Apk> findByPackageName(Context context, String packageName) {
+            return findByPackageName(context, packageName, ApkProvider.DataColumns.ALL);
         }
 
-        public static List<Apk> findByApp(Context context,
-                                          String appId, String[] projection) {
+        public static List<Apk> findByPackageName(Context context,
+                                                  String packageName, String[] projection) {
             ContentResolver resolver = context.getContentResolver();
-            final Uri uri = getAppUri(appId);
+            final Uri uri = getAppUri(packageName);
             final String sort = ApkProvider.DataColumns.VERSION_CODE + " DESC";
             Cursor cursor = resolver.query(uri, projection, null, null, sort);
             return cursorToList(cursor);
@@ -262,11 +262,11 @@ public class ApkProvider extends FDroidProvider {
         return Uri.parse("content://" + getAuthority());
     }
 
-    public static Uri getAppUri(String appId) {
+    public static Uri getAppUri(String packageName) {
         return getContentUri()
             .buildUpon()
             .appendPath(PATH_APP)
-            .appendPath(appId)
+            .appendPath(packageName)
             .build();
     }
 
@@ -282,12 +282,12 @@ public class ApkProvider extends FDroidProvider {
         return getContentUri(apk.packageName, apk.vercode);
     }
 
-    public static Uri getContentUri(String id, int versionCode) {
+    public static Uri getContentUri(String packageName, int versionCode) {
         return getContentUri()
             .buildUpon()
             .appendPath(PATH_APK)
             .appendPath(Integer.toString(versionCode))
-            .appendPath(id)
+            .appendPath(packageName)
             .build();
     }
 
@@ -394,9 +394,9 @@ public class ApkProvider extends FDroidProvider {
 
     }
 
-    private QuerySelection queryApp(String appId) {
+    private QuerySelection queryApp(String packageName) {
         final String selection = DataColumns.PACKAGE_NAME + " = ? ";
-        final String[] args = {appId};
+        final String[] args = {packageName};
         return new QuerySelection(selection, args);
     }
 
@@ -417,8 +417,8 @@ public class ApkProvider extends FDroidProvider {
         return new QuerySelection(selection, args);
     }
 
-    private QuerySelection queryRepoApps(long repoId, String appIds) {
-        return queryRepo(repoId).add(AppProvider.queryApps(appIds, DataColumns.PACKAGE_NAME));
+    private QuerySelection queryRepoApps(long repoId, String packageNames) {
+        return queryRepo(repoId).add(AppProvider.queryApps(packageNames, DataColumns.PACKAGE_NAME));
     }
 
     protected QuerySelection queryApks(String apkKeys) {
@@ -432,9 +432,9 @@ public class ApkProvider extends FDroidProvider {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < apkDetails.length; i++) {
             String[] parts = apkDetails[i].split(":");
-            String id = parts[0];
+            String packageName = parts[0];
             String verCode = parts[1];
-            args[i * 2] = id;
+            args[i * 2] = packageName;
             args[i * 2 + 1] = verCode;
             if (i != 0) {
                 sb.append(" OR ");

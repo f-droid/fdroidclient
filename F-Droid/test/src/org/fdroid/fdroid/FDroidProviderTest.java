@@ -156,7 +156,7 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
         Uri uri = InstalledAppProvider.getAppUri(appId);
 
         String[] projection = {
-            InstalledAppProvider.DataColumns.APP_ID,
+            InstalledAppProvider.DataColumns.PACKAGE_NAME,
             InstalledAppProvider.DataColumns.VERSION_CODE,
             InstalledAppProvider.DataColumns.VERSION_NAME,
             InstalledAppProvider.DataColumns.APPLICATION_LABEL,
@@ -169,7 +169,7 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
 
         cursor.moveToFirst();
 
-        assertEquals(appId, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID)));
+        assertEquals(appId, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)));
         assertEquals(versionCode, cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE)));
         assertEquals(versionName, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_NAME)));
         cursor.close();

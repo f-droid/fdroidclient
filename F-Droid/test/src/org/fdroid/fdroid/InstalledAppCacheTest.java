@@ -28,7 +28,7 @@ public class InstalledAppCacheTest extends FDroidProviderTest<InstalledAppProvid
     @Override
     protected String[] getMinimalProjection() {
         return new String[] {
-            InstalledAppProvider.DataColumns.APP_ID,
+            InstalledAppProvider.DataColumns.PACKAGE_NAME,
         };
     }
 

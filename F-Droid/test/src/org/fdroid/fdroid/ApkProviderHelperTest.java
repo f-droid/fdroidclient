@@ -83,19 +83,19 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
 
         assertTotalApkCount(7 + 9 + 3 + 1);
 
-        List<Apk> fdroidApks = ApkProvider.Helper.findByApp(getMockContext(), "org.fdroid.fdroid");
+        List<Apk> fdroidApks = ApkProvider.Helper.findByPackageName(getMockContext(), "org.fdroid.fdroid");
         assertResultCount(7, fdroidApks);
         assertBelongsToApp(fdroidApks, "org.fdroid.fdroid");
 
-        List<Apk> exampleApks = ApkProvider.Helper.findByApp(getMockContext(), "org.example");
+        List<Apk> exampleApks = ApkProvider.Helper.findByPackageName(getMockContext(), "org.example");
         assertResultCount(9, exampleApks);
         assertBelongsToApp(exampleApks, "org.example");
 
-        List<Apk> exampleApks2 = ApkProvider.Helper.findByApp(getMockContext(), "com.example");
+        List<Apk> exampleApks2 = ApkProvider.Helper.findByPackageName(getMockContext(), "com.example");
         assertResultCount(3, exampleApks2);
         assertBelongsToApp(exampleApks2, "com.example");
 
-        List<Apk> thingoApks = ApkProvider.Helper.findByApp(getMockContext(), "com.apk.thingo");
+        List<Apk> thingoApks = ApkProvider.Helper.findByPackageName(getMockContext(), "com.apk.thingo");
         assertResultCount(1, thingoApks);
         assertBelongsToApp(thingoApks, "com.apk.thingo");
     }
