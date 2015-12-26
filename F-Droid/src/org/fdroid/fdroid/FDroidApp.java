@@ -43,6 +43,9 @@ import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import org.acra.ACRA;
+import org.acra.ReportingInteractionMode;
+import org.acra.annotation.ReportsCrashes;
 
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.Preferences.ChangeListener;
@@ -62,6 +65,12 @@ import java.util.Locale;
 
 import sun.net.www.protocol.bluetooth.Handler;
 
+@ReportsCrashes(mailTo = "team@f-droid.org",
+                mode = ReportingInteractionMode.DIALOG,
+                resDialogTitle = R.string.crash_dialog_title,
+                resDialogText = R.string.crash_dialog_text,
+                resDialogCommentPrompt = R.string.crash_dialog_comment_prompt
+                )
 public class FDroidApp extends Application {
 
     private static final String TAG = "FDroidApp";
@@ -183,6 +192,7 @@ public class FDroidApp extends Application {
         }
         updateLanguage();
         super.onCreate();
+        ACRA.init(this);
 
         // Needs to be setup before anything else tries to access it.
         // Perhaps the constructor is a better place, but then again,
