@@ -1373,6 +1373,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                     return getString(R.string.antinonfreedeplist);
                 case "UpstreamNonFree":
                     return getString(R.string.antiupstreamnonfreelist);
+                case "NonFreeAssets":
+                    return getString(R.string.antinonfreeassetslist);
                 default:
                     return af;
             }
