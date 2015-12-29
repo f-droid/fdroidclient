@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 // Call getIncompatibleReasons(apk) on an instance of this class to
-    // find reasons why an apk may be incompatible with the user's device.
+// find reasons why an apk may be incompatible with the user's device.
 public class CompatibilityChecker extends Compatibility {
 
     private static final String TAG = "Compatibility";

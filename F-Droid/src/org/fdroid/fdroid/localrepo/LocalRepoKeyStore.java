@@ -165,8 +165,8 @@ public final class LocalRepoKeyStore {
             };
         } catch (UnrecoverableKeyException | KeyStoreException | NoSuchAlgorithmException | CertificateException | OperatorCreationException | IOException e) {
             Log.e(TAG, "Error loading keystore", e);
-        // TODO: Remove once we have a proper fix for #334
         } catch (IllegalArgumentException e) {
+            // TODO: Remove once we have a proper fix for #334
             Log.e(TAG, "Error loading keystore", e);
             Log.e(TAG, "See https://gitlab.com/fdroid/fdroidclient/issues/334");
         }

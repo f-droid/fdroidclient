@@ -1553,10 +1553,10 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             if (activity.downloadHandler != null) {
                 btMain.setText(R.string.downloading);
                 btMain.setEnabled(false);
-            // Check count > 0 due to incompatible apps resulting in an empty list.
-            // If App isn't installed
             } else if (!app.isInstalled() && app.suggestedVercode > 0 &&
                     activity.adapter.getCount() > 0) {
+                // Check count > 0 due to incompatible apps resulting in an empty list.
+                // If App isn't installed
                 installed = false;
                 statusView.setText(R.string.details_notinstalled);
                 NfcHelper.disableAndroidBeam(activity);
@@ -1564,8 +1564,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 btMain.setText(R.string.menu_install);
                 btMain.setOnClickListener(mOnClickListener);
                 btMain.setEnabled(true);
-            // If App is installed
             } else if (app.isInstalled()) {
+                // If App is installed
                 installed = true;
                 statusView.setText(getString(R.string.details_installed, app.installedVersionName));
                 NfcHelper.setAndroidBeam(activity, app.packageName);
@@ -1607,16 +1607,16 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                         return;
                     }
                 }
-                // If installed
                 if (installed) {
-                    // If "launchable", launch
+                    // If installed
                     if (activity.mPm.getLaunchIntentForPackage(app.packageName) != null) {
+                        // If "launchable", launch
                         activity.launchApk(app.packageName);
                     } else {
                         activity.removeApk(app.packageName);
                     }
-                // If not installed, install
                 } else if (app.suggestedVercode > 0) {
+                    // If not installed, install
                     btMain.setEnabled(false);
                     btMain.setText(R.string.system_install_installing);
                     final Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVercode);

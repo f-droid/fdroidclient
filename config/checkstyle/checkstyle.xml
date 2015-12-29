@@ -49,6 +49,7 @@
             <property name="lineWrappingIndentation" value="8"/>
             <property name="arrayInitIndent" value="4"/>
         </module>
+        <module name="CommentsIndentation"/>
         <module name="EmptyLineSeparator">
             <property name="allowNoEmptyLineBetweenFields" value="true" />
             <property name="allowMultipleEmptyLines" value="false" />
