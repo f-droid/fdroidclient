@@ -65,7 +65,7 @@ import java.util.Locale;
 
 import sun.net.www.protocol.bluetooth.Handler;
 
-@ReportsCrashes(mailTo = "team@f-droid.org",
+@ReportsCrashes(mailTo = "reports@f-droid.org",
                 mode = ReportingInteractionMode.DIALOG,
                 resDialogTitle = R.string.crash_dialog_title,
                 resDialogText = R.string.crash_dialog_text,
