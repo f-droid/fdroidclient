@@ -67,7 +67,7 @@ public class TestUtils {
     public static <T extends Comparable> void assertContainsOnly(List<T> actualList, List<T> expectedContains) {
         if (actualList.size() != expectedContains.size()) {
             String message =
-                "List sizes don't match.\n" +
+                    "List sizes don't match.\n" +
                     "Expected: " +
                     listToString(expectedContains) + "\n" +
                     "Actual:   " +
@@ -84,7 +84,7 @@ public class TestUtils {
             }
             if (!containsRequired) {
                 String message =
-                    "List doesn't contain \"" + required + "\".\n" +
+                        "List doesn't contain \"" + required + "\".\n" +
                         "Expected: " +
                         listToString(expectedContains) + "\n" +
                         "Actual:   " +
@@ -150,9 +150,9 @@ public class TestUtils {
      * {@link org.fdroid.fdroid.receiver.PackageAddedReceiver}. This will in turn update the
      * "installed apps" table in the database.
      */
-    public static void installAndBroadcast(
-        MockContextSwappableComponents context, MockInstallablePackageManager pm,
-        String appId, int versionCode, String versionName) {
+    public static void installAndBroadcast(MockContextSwappableComponents context,
+                    MockInstallablePackageManager pm, String appId,
+                    int versionCode, String versionName) {
 
         context.setPackageManager(pm);
         pm.install(appId, versionCode, versionName);
@@ -165,9 +165,9 @@ public class TestUtils {
     /**
      * @see org.fdroid.fdroid.TestUtils#installAndBroadcast(mock.MockContextSwappableComponents, mock.MockInstallablePackageManager, String, int, String)
      */
-    public static void upgradeAndBroadcast(
-        MockContextSwappableComponents context, MockInstallablePackageManager pm,
-        String appId, int versionCode, String versionName) {
+    public static void upgradeAndBroadcast(MockContextSwappableComponents context,
+                    MockInstallablePackageManager pm, String appId,
+                    int versionCode, String versionName) {
         /*
         removeAndBroadcast(context, pm, appId);
         installAndBroadcast(context, pm, appId, versionCode, versionName);

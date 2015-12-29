@@ -201,7 +201,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return getString(R.string.app_inst_unknown_source);
             }
             final String installerLabel = InstalledAppProvider
-                .getApplicationLabel(mctx, installerPkgName);
+                    .getApplicationLabel(mctx, installerPkgName);
             return getString(R.string.app_inst_known_source, installerLabel);
         }
 
@@ -283,9 +283,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
             if (apk.incompatibleReasons != null) {
                 holder.incompatibleReasons.setText(
-                    getResources().getString(
-                        R.string.requires_features,
-                        apk.incompatibleReasons.toPrettyString()));
+                        getResources().getString(
+                            R.string.requires_features,
+                            apk.incompatibleReasons.toPrettyString()));
                 holder.incompatibleReasons.setVisibility(View.VISIBLE);
             } else {
                 holder.incompatibleReasons.setVisibility(View.GONE);

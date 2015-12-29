@@ -317,7 +317,7 @@ public class RepoUpdater {
             String fingerprintFromIndexXml = Utils.calcFingerprint(certFromIndexXml);
             String fingerprintFromJar = Utils.calcFingerprint(rawCertFromJar);
             if (!repo.fingerprint.equalsIgnoreCase(fingerprintFromIndexXml)
-                || !repo.fingerprint.equalsIgnoreCase(fingerprintFromJar)) {
+                    || !repo.fingerprint.equalsIgnoreCase(fingerprintFromJar)) {
                 throw new SigningException(repo, "Supplied certificate fingerprint does not match!");
             }
         } // else - no info to check things are valid, so just Trust On First Use
@@ -347,14 +347,14 @@ public class RepoUpdater {
 
         // repo and repo.pubkey must be pre-loaded from the database
         if (TextUtils.isEmpty(repo.pubkey)
-            || TextUtils.isEmpty(certFromJar)
-            || TextUtils.isEmpty(certFromIndexXml))
+                || TextUtils.isEmpty(certFromJar)
+                || TextUtils.isEmpty(certFromIndexXml))
             throw new SigningException(repo, "A empty repo or signing certificate is invalid!");
 
         // though its called repo.pubkey, its actually a X509 certificate
         if (repo.pubkey.equals(certFromJar)
-            && repo.pubkey.equals(certFromIndexXml)
-            && certFromIndexXml.equals(certFromJar)) {
+                && repo.pubkey.equals(certFromIndexXml)
+                && certFromIndexXml.equals(certFromJar)) {
             return;  // we have a match!
         }
         throw new SigningException(repo, "Signing certificate does not match!");

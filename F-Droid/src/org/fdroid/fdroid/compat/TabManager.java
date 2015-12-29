@@ -48,26 +48,27 @@ public class TabManager {
         for (int i = 0; i < pager.getAdapter().getCount(); i++) {
             CharSequence label = pager.getAdapter().getPageTitle(i);
             actionBar.addTab(
-                actionBar.newTab()
-                    .setText(label)
-                    .setTabListener(new ActionBar.TabListener() {
-                        @Override
-                        public void onTabSelected(ActionBar.Tab tab,
-                                                  FragmentTransaction ft) {
-                            int pos = tab.getPosition();
-                            pager.setCurrentItem(pos);
-                            if (pos == INDEX_CAN_UPDATE)
-                                removeNotification(1);
-                        }
+                    actionBar.newTab()
+                        .setText(label)
+                        .setTabListener(new ActionBar.TabListener() {
+                            @Override
+                            public void onTabSelected(ActionBar.Tab tab,
+                                                      FragmentTransaction ft) {
+                                int pos = tab.getPosition();
+                                pager.setCurrentItem(pos);
+                                if (pos == INDEX_CAN_UPDATE)
+                                    removeNotification(1);
+                            }
 
-                        @Override
-                        public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                        }
+                            @Override
+                            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+                            }
 
-                        @Override
-                        public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                        }
-                    }));
+                            @Override
+                            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+                            }
+                        })
+            );
         }
     }
 

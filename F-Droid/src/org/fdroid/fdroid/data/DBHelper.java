@@ -198,53 +198,53 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_REPO);
 
         insertRepo(
-            db,
-            context.getString(R.string.fdroid_repo_name),
-            context.getString(R.string.fdroid_repo_address),
-            context.getString(R.string.fdroid_repo_description),
-            context.getString(R.string.fdroid_repo_pubkey),
-            context.getResources().getInteger(R.integer.fdroid_repo_version),
-            context.getResources().getInteger(R.integer.fdroid_repo_inuse),
-            context.getResources().getInteger(R.integer.fdroid_repo_priority)
+                db,
+                context.getString(R.string.fdroid_repo_name),
+                context.getString(R.string.fdroid_repo_address),
+                context.getString(R.string.fdroid_repo_description),
+                context.getString(R.string.fdroid_repo_pubkey),
+                context.getResources().getInteger(R.integer.fdroid_repo_version),
+                context.getResources().getInteger(R.integer.fdroid_repo_inuse),
+                context.getResources().getInteger(R.integer.fdroid_repo_priority)
         );
 
         insertRepo(
-            db,
-            context.getString(R.string.fdroid_archive_name),
-            context.getString(R.string.fdroid_archive_address),
-            context.getString(R.string.fdroid_archive_description),
-            context.getString(R.string.fdroid_archive_pubkey),
-            context.getResources().getInteger(R.integer.fdroid_archive_version),
-            context.getResources().getInteger(R.integer.fdroid_archive_inuse),
-            context.getResources().getInteger(R.integer.fdroid_archive_priority)
+                db,
+                context.getString(R.string.fdroid_archive_name),
+                context.getString(R.string.fdroid_archive_address),
+                context.getString(R.string.fdroid_archive_description),
+                context.getString(R.string.fdroid_archive_pubkey),
+                context.getResources().getInteger(R.integer.fdroid_archive_version),
+                context.getResources().getInteger(R.integer.fdroid_archive_inuse),
+                context.getResources().getInteger(R.integer.fdroid_archive_priority)
         );
 
         insertRepo(
-            db,
-            context.getString(R.string.guardianproject_repo_name),
-            context.getString(R.string.guardianproject_repo_address),
-            context.getString(R.string.guardianproject_repo_description),
-            context.getString(R.string.guardianproject_repo_pubkey),
-            context.getResources().getInteger(R.integer.guardianproject_repo_version),
-            context.getResources().getInteger(R.integer.guardianproject_repo_inuse),
-            context.getResources().getInteger(R.integer.guardianproject_repo_priority)
+                db,
+                context.getString(R.string.guardianproject_repo_name),
+                context.getString(R.string.guardianproject_repo_address),
+                context.getString(R.string.guardianproject_repo_description),
+                context.getString(R.string.guardianproject_repo_pubkey),
+                context.getResources().getInteger(R.integer.guardianproject_repo_version),
+                context.getResources().getInteger(R.integer.guardianproject_repo_inuse),
+                context.getResources().getInteger(R.integer.guardianproject_repo_priority)
         );
 
         insertRepo(
-            db,
-            context.getString(R.string.guardianproject_archive_name),
-            context.getString(R.string.guardianproject_archive_address),
-            context.getString(R.string.guardianproject_archive_description),
-            context.getString(R.string.guardianproject_archive_pubkey),
-            context.getResources().getInteger(R.integer.guardianproject_archive_version),
-            context.getResources().getInteger(R.integer.guardianproject_archive_inuse),
-            context.getResources().getInteger(R.integer.guardianproject_archive_priority)
+                db,
+                context.getString(R.string.guardianproject_archive_name),
+                context.getString(R.string.guardianproject_archive_address),
+                context.getString(R.string.guardianproject_archive_description),
+                context.getString(R.string.guardianproject_archive_pubkey),
+                context.getResources().getInteger(R.integer.guardianproject_archive_version),
+                context.getResources().getInteger(R.integer.guardianproject_archive_inuse),
+                context.getResources().getInteger(R.integer.guardianproject_archive_priority)
         );
     }
 
-    private void insertRepo(
-        SQLiteDatabase db, String name, String address, String description,
-        String pubKey, int version, int inUse, int priority) {
+    private void insertRepo(SQLiteDatabase db, String name, String address,
+            String description, String pubKey, int version, int inUse,
+            int priority) {
 
         ContentValues values = new ContentValues();
         values.put(RepoProvider.DataColumns.ADDRESS, address);

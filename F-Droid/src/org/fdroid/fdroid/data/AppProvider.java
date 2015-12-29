@@ -325,9 +325,9 @@ public class AppProvider extends FDroidProvider {
         public void naturalJoinToInstalledTable() {
             if (!requiresInstalledTable) {
                 join(
-                    DBHelper.TABLE_INSTALLED_APP,
-                    "installed",
-                    "installed." + InstalledAppProvider.DataColumns.PACKAGE_NAME + " = " + getTableName() + ".id");
+                        DBHelper.TABLE_INSTALLED_APP,
+                        "installed",
+                        "installed." + InstalledAppProvider.DataColumns.PACKAGE_NAME + " = " + getTableName() + ".id");
                 requiresInstalledTable = true;
             }
         }
@@ -335,9 +335,9 @@ public class AppProvider extends FDroidProvider {
         public void leftJoinToInstalledTable() {
             if (!requiresInstalledTable) {
                 leftJoin(
-                    DBHelper.TABLE_INSTALLED_APP,
-                    "installed",
-                    "installed." + InstalledAppProvider.DataColumns.PACKAGE_NAME + " = " + getTableName() + ".id");
+                        DBHelper.TABLE_INSTALLED_APP,
+                        "installed",
+                        "installed." + InstalledAppProvider.DataColumns.PACKAGE_NAME + " = " + getTableName() + ".id");
                 requiresInstalledTable = true;
             }
         }
@@ -376,16 +376,16 @@ public class AppProvider extends FDroidProvider {
 
         private void addSuggestedApkVersionField() {
             addSuggestedApkField(
-                ApkProvider.DataColumns.VERSION,
-                DataColumns.SuggestedApk.VERSION);
+                    ApkProvider.DataColumns.VERSION,
+                    DataColumns.SuggestedApk.VERSION);
         }
 
         private void addSuggestedApkField(String fieldName, String alias) {
             if (!isSuggestedApkTableAdded) {
                 isSuggestedApkTableAdded = true;
                 leftJoin(
-                    getApkTableName(),
-                    "suggestedApk",
+                        getApkTableName(),
+                        "suggestedApk",
                         getTableName() + ".suggestedVercode = suggestedApk.vercode AND " + getTableName() + ".id = suggestedApk.id");
             }
             appendField(fieldName, "suggestedApk", alias);
@@ -393,8 +393,8 @@ public class AppProvider extends FDroidProvider {
 
         private void addInstalledAppVersionName() {
             addInstalledAppField(
-                InstalledAppProvider.DataColumns.VERSION_NAME,
-                DataColumns.InstalledApp.VERSION_NAME
+                    InstalledAppProvider.DataColumns.VERSION_NAME,
+                    DataColumns.InstalledApp.VERSION_NAME
             );
         }
 
@@ -904,7 +904,7 @@ public class AppProvider extends FDroidProvider {
         final String app = getTableName();
 
         String updateSql =
-            "UPDATE " + app + " SET compatible = ( " +
+                "UPDATE " + app + " SET compatible = ( " +
                 " SELECT TOTAL( " + apk + ".compatible ) > 0 " +
                 " FROM " + apk +
                 " WHERE " + apk + ".id = " + app + ".id );";
@@ -941,14 +941,14 @@ public class AppProvider extends FDroidProvider {
         final boolean unstableUpdates = Preferences.get().getUnstableUpdates();
         String restrictToStable = unstableUpdates ? "" : (apk + ".vercode <= " + app + ".upstreamVercode AND ");
         String updateSql =
-            "UPDATE " + app + " SET suggestedVercode = ( " +
+                "UPDATE " + app + " SET suggestedVercode = ( " +
                 " SELECT MAX( " + apk + ".vercode ) " +
                 " FROM " + apk +
                 " WHERE " +
                     app + ".id = " + apk + ".id AND " +
                     restrictToStable +
                     " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
-            " WHERE upstreamVercode > 0 ";
+                " WHERE upstreamVercode > 0 ";
 
         write().execSQL(updateSql);
     }
@@ -980,13 +980,13 @@ public class AppProvider extends FDroidProvider {
         final String app = getTableName();
 
         String updateSql =
-            "UPDATE " + app + " SET suggestedVercode = ( " +
+                "UPDATE " + app + " SET suggestedVercode = ( " +
                 " SELECT MAX( " + apk + ".vercode ) " +
                 " FROM " + apk +
                 " WHERE " +
                     app + ".id = " + apk + ".id AND " +
                     " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
-            " WHERE upstreamVercode = 0 OR upstreamVercode IS NULL OR suggestedVercode IS NULL ";
+                " WHERE upstreamVercode = 0 OR upstreamVercode IS NULL OR suggestedVercode IS NULL ";
 
         write().execSQL(updateSql);
     }
@@ -1022,7 +1022,7 @@ public class AppProvider extends FDroidProvider {
         final String repo = DBHelper.TABLE_REPO;
 
         final String iconUrlQuery =
-            " SELECT " +
+                " SELECT " +
 
                 // Concatenate (using the "||" operator) the address, the
                 // icons directory (bound to the ? as the second parameter
@@ -1039,10 +1039,10 @@ public class AppProvider extends FDroidProvider {
                     " || " +
                     app + ".icon " +
                 ") " +
-            " FROM " +
+                " FROM " +
                 apk +
                 " JOIN " + repo + " ON (" + repo + "._id = " + apk + ".repo) " +
-            " WHERE " +
+                " WHERE " +
                 app + ".id = " + apk + ".id AND " +
                 apk + ".vercode = ( " +
 

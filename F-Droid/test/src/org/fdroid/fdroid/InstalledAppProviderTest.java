@@ -64,9 +64,9 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
 
         try {
             getMockContentResolver().update(
-                InstalledAppProvider.getAppUri("com.example.app2"),
-                createContentValues(11, "1.1"),
-                null, null
+                    InstalledAppProvider.getAppUri("com.example.app2"),
+                    createContentValues(11, "1.1"),
+                    null, null
             );
             fail();
         } catch (UnsupportedOperationException e) {
@@ -74,8 +74,8 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         }
 
         getMockContentResolver().insert(
-            InstalledAppProvider.getContentUri(),
-            createContentValues("com.example.app2", 11, "1.1")
+                InstalledAppProvider.getContentUri(),
+                createContentValues("com.example.app2", 11, "1.1")
         );
 
         assertResultCount(2, InstalledAppProvider.getContentUri());
@@ -140,9 +140,9 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
     @Override
     protected String[] getMinimalProjection() {
         return new String[] {
-            InstalledAppProvider.DataColumns.PACKAGE_NAME,
-            InstalledAppProvider.DataColumns.VERSION_CODE,
-            InstalledAppProvider.DataColumns.VERSION_NAME,
+                InstalledAppProvider.DataColumns.PACKAGE_NAME,
+                InstalledAppProvider.DataColumns.VERSION_CODE,
+                InstalledAppProvider.DataColumns.VERSION_NAME,
         };
     }
 

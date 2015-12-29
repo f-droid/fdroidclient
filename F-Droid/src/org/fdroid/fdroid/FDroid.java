@@ -399,7 +399,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     public void removeNotification(int id) {
         NotificationManager nMgr = (NotificationManager) getBaseContext()
-            .getSystemService(Context.NOTIFICATION_SERVICE);
+                .getSystemService(Context.NOTIFICATION_SERVICE);
         nMgr.cancel(id);
     }
 

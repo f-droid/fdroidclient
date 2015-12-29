@@ -439,7 +439,7 @@ public class AppSecurityPermissions {
         // Dangerous and normal permissions are always shown to the user if the permission
         // is required, or it was previously granted
         if ((isNormal || isDangerous) && (isRequired || wasGranted || isGranted ||
-            Build.VERSION.SDK_INT < 16)) {
+                Build.VERSION.SDK_INT < 16)) {
             return true;
         }
 

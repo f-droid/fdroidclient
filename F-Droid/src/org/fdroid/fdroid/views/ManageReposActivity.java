@@ -230,13 +230,13 @@ public class ManageReposActivity extends ActionBarActivity {
 
             addRepoDialog.setTitle(R.string.repo_add_title);
             addRepoDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
-                getString(R.string.cancel),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
+                    getString(R.string.cancel),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
 
             // HACK:
             // After adding a new repo, need to show feedback to the user.
@@ -252,58 +252,58 @@ public class ManageReposActivity extends ActionBarActivity {
             //
             // Thus, the hack described at http://stackoverflow.com/a/15619098 is implemented.
             addRepoDialog.setButton(DialogInterface.BUTTON_POSITIVE,
-                getString(R.string.repo_add_add),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
+                    getString(R.string.repo_add_add),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
 
             addRepoDialog.show();
 
             // This must be *after* addRepoDialog.show() otherwise getButtion() returns null:
             // https://code.google.com/p/android/issues/detail?id=6360
             addRepoDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-                        String url = uriEditText.getText().toString();
+                            String url = uriEditText.getText().toString();
 
-                        try {
-                            url = normalizeUrl(url);
-                        } catch (URISyntaxException e) {
-                            invalidUrl();
-                            return;
-                        }
+                            try {
+                                url = normalizeUrl(url);
+                            } catch (URISyntaxException e) {
+                                invalidUrl();
+                                return;
+                            }
 
-                        String fp = fingerprintEditText.getText().toString();
+                            String fp = fingerprintEditText.getText().toString();
 
-                        switch (addRepoState) {
-                            case DOESNT_EXIST:
-                                prepareToCreateNewRepo(url, fp);
-                                break;
+                            switch (addRepoState) {
+                                case DOESNT_EXIST:
+                                    prepareToCreateNewRepo(url, fp);
+                                    break;
 
-                            case IS_SWAP:
-                                Utils.debugLog(TAG, "Removing existing swap repo " + url + " before adding new repo.");
-                                Repo repo = RepoProvider.Helper.findByAddress(context, url);
-                                RepoProvider.Helper.remove(context, repo.getId());
-                                prepareToCreateNewRepo(url, fp);
-                                break;
+                                case IS_SWAP:
+                                    Utils.debugLog(TAG, "Removing existing swap repo " + url + " before adding new repo.");
+                                    Repo repo = RepoProvider.Helper.findByAddress(context, url);
+                                    RepoProvider.Helper.remove(context, repo.getId());
+                                    prepareToCreateNewRepo(url, fp);
+                                    break;
 
-                            case EXISTS_DISABLED:
-                            case EXISTS_UPGRADABLE_TO_SIGNED:
-                            case EXISTS_FINGERPRINT_MATCH:
-                                updateAndEnableExistingRepo(url, fp);
-                                finishedAddingRepo();
-                                break;
+                                case EXISTS_DISABLED:
+                                case EXISTS_UPGRADABLE_TO_SIGNED:
+                                case EXISTS_FINGERPRINT_MATCH:
+                                    updateAndEnableExistingRepo(url, fp);
+                                    finishedAddingRepo();
+                                    break;
 
-                            default:
-                                finishedAddingRepo();
-                                break;
+                                default:
+                                    finishedAddingRepo();
+                                    break;
+                            }
                         }
                     }
-                }
             );
 
             addButton = addRepoDialog.getButton(DialogInterface.BUTTON_POSITIVE);

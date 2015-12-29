@@ -270,23 +270,23 @@ public class FDroidApp extends Application {
         bluetoothAdapter = getBluetoothAdapter();
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
-            .imageDownloader(new IconDownloader(getApplicationContext()))
-            .diskCache(new LimitedAgeDiskCache(
-                    new File(StorageUtils.getCacheDirectory(getApplicationContext(), true),
-                        "icons"),
-                    null,
-                    new FileNameGenerator() {
-                        @Override
-                        public String generate(String imageUri) {
-                            return imageUri.substring(
-                                imageUri.lastIndexOf('/') + 1);
-                        } },
-                    // 30 days in secs: 30*24*60*60 = 2592000
-                    2592000)
-                )
-            .threadPoolSize(4)
-            .threadPriority(Thread.NORM_PRIORITY - 2) // Default is NORM_PRIORITY - 1
-            .build();
+                .imageDownloader(new IconDownloader(getApplicationContext()))
+                .diskCache(new LimitedAgeDiskCache(
+                        new File(StorageUtils.getCacheDirectory(getApplicationContext(), true),
+                            "icons"),
+                        null,
+                        new FileNameGenerator() {
+                            @Override
+                            public String generate(String imageUri) {
+                                return imageUri.substring(
+                                    imageUri.lastIndexOf('/') + 1);
+                            } },
+                        // 30 days in secs: 30*24*60*60 = 2592000
+                        2592000)
+                    )
+                .threadPoolSize(4)
+                .threadPriority(Thread.NORM_PRIORITY - 2) // Default is NORM_PRIORITY - 1
+                .build();
         ImageLoader.getInstance().init(config);
 
         // TODO reintroduce PinningTrustManager and MemorizingTrustManager

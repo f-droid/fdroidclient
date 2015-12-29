@@ -112,7 +112,7 @@ public class InstalledAppCacheUpdater {
         Map<String, Integer> cachedInfo = InstalledAppProvider.Helper.all(context);
 
         List<PackageInfo> installedPackages = context.getPackageManager()
-            .getInstalledPackages(PackageManager.GET_SIGNATURES);
+                .getInstalledPackages(PackageManager.GET_SIGNATURES);
         for (PackageInfo appInfo : installedPackages) {
             toInsert.add(appInfo);
             if (cachedInfo.containsKey(appInfo.packageName)) {
@@ -134,14 +134,14 @@ public class InstalledAppCacheUpdater {
             Uri uri = InstalledAppProvider.getContentUri();
             for (PackageInfo info : appsToInsert) {
                 ContentProviderOperation op = ContentProviderOperation.newInsert(uri)
-                    .withValue(InstalledAppProvider.DataColumns.PACKAGE_NAME, info.packageName)
-                    .withValue(InstalledAppProvider.DataColumns.VERSION_CODE, info.versionCode)
-                    .withValue(InstalledAppProvider.DataColumns.VERSION_NAME, info.versionName)
-                    .withValue(InstalledAppProvider.DataColumns.APPLICATION_LABEL,
-                            InstalledAppProvider.getApplicationLabel(context, info.packageName))
-                    .withValue(InstalledAppProvider.DataColumns.SIGNATURE,
-                            InstalledAppProvider.getPackageSig(info))
-                    .build();
+                        .withValue(InstalledAppProvider.DataColumns.PACKAGE_NAME, info.packageName)
+                        .withValue(InstalledAppProvider.DataColumns.VERSION_CODE, info.versionCode)
+                        .withValue(InstalledAppProvider.DataColumns.VERSION_NAME, info.versionName)
+                        .withValue(InstalledAppProvider.DataColumns.APPLICATION_LABEL,
+                                InstalledAppProvider.getApplicationLabel(context, info.packageName))
+                        .withValue(InstalledAppProvider.DataColumns.SIGNATURE,
+                                InstalledAppProvider.getPackageSig(info))
+                        .build();
                 ops.add(op);
             }
         }

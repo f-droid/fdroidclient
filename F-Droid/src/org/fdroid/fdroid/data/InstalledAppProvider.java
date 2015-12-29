@@ -42,8 +42,8 @@ public class InstalledAppProvider extends FDroidProvider {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
                         cachedInfo.put(
-                            cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)),
-                            cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE))
+                                cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)),
+                                cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE))
                         );
                         cursor.moveToNext();
                     }

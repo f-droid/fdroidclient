@@ -101,7 +101,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     public static void schedule(Context ctx) {
 
         SharedPreferences prefs = PreferenceManager
-            .getDefaultSharedPreferences(ctx);
+                .getDefaultSharedPreferences(ctx);
         String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
         int interval = Integer.parseInt(sint);
 
@@ -109,12 +109,12 @@ public class UpdateService extends IntentService implements ProgressListener {
         PendingIntent pending = PendingIntent.getService(ctx, 0, intent, 0);
 
         AlarmManager alarm = (AlarmManager) ctx
-            .getSystemService(Context.ALARM_SERVICE);
+                .getSystemService(Context.ALARM_SERVICE);
         alarm.cancel(pending);
         if (interval > 0) {
             alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
-                SystemClock.elapsedRealtime() + 5000,
-                AlarmManager.INTERVAL_HOUR, pending);
+                    SystemClock.elapsedRealtime() + 5000,
+                    AlarmManager.INTERVAL_HOUR, pending);
             Utils.debugLog(TAG, "Update scheduler alarm set");
         } else {
             Utils.debugLog(TAG, "Update scheduler alarm not set");
@@ -128,17 +128,17 @@ public class UpdateService extends IntentService implements ProgressListener {
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.registerReceiver(downloadProgressReceiver,
-            new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
+                new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
         localBroadcastManager.registerReceiver(updateStatusReceiver,
-            new IntentFilter(LOCAL_ACTION_STATUS));
+                new IntentFilter(LOCAL_ACTION_STATUS));
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationBuilder = new NotificationCompat.Builder(this)
-            .setSmallIcon(R.drawable.ic_refresh_white)
-            .setOngoing(true)
-            .setCategory(NotificationCompat.CATEGORY_SERVICE)
-            .setContentTitle(getString(R.string.update_notification_title));
+                .setSmallIcon(R.drawable.ic_refresh_white)
+                .setOngoing(true)
+                .setCategory(NotificationCompat.CATEGORY_SERVICE)
+                .setContentTitle(getString(R.string.update_notification_title));
 
         // Android docs are a little sketchy, however it seems that Gingerbread is the last
         // sdk that made a content intent mandatory:
@@ -302,7 +302,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         long elapsed = System.currentTimeMillis() - lastUpdate;
         if (elapsed < interval * 60 * 60 * 1000) {
             Log.i(TAG, "Skipping update - done " + elapsed
-                + "ms ago, interval is " + interval + " hours");
+                    + "ms ago, interval is " + interval + " hours");
             return false;
         }
 
@@ -322,7 +322,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         if (activeNetwork.getType() != ConnectivityManager.TYPE_WIFI
-            && prefs.getBoolean(Preferences.PREF_UPD_WIFI_ONLY, false)) {
+                && prefs.getBoolean(Preferences.PREF_UPD_WIFI_ONLY, false)) {
             Log.i(TAG, "Skipping update - wifi not available");
             return false;
         }
@@ -431,9 +431,9 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     private void performUpdateNotification() {
         Cursor cursor = getContentResolver().query(
-            AppProvider.getCanUpdateUri(),
-            AppProvider.DataColumns.ALL,
-            null, null, null);
+                AppProvider.getCanUpdateUri(),
+                AppProvider.DataColumns.ALL,
+                null, null, null);
         if (cursor != null) {
             if (cursor.getCount() > 0) {
                 showAppUpdatesNotification(cursor);
@@ -445,8 +445,8 @@ public class UpdateService extends IntentService implements ProgressListener {
     private PendingIntent createNotificationIntent() {
         Intent notifyIntent = new Intent(this, FDroid.class).putExtra(FDroid.EXTRA_TAB_UPDATE, true);
         TaskStackBuilder stackBuilder = TaskStackBuilder
-            .create(this).addParentStack(FDroid.class)
-            .addNextIntent(notifyIntent);
+                .create(this).addParentStack(FDroid.class)
+                .addNextIntent(notifyIntent);
         return stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
@@ -455,8 +455,8 @@ public class UpdateService extends IntentService implements ProgressListener {
     private NotificationCompat.Style createNotificationBigStyle(Cursor hasUpdates) {
 
         final String contentText = hasUpdates.getCount() > 1
-            ? getString(R.string.many_updates_available, hasUpdates.getCount())
-            : getString(R.string.one_update_available);
+                ? getString(R.string.many_updates_available, hasUpdates.getCount())
+                : getString(R.string.one_update_available);
 
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
         inboxStyle.setBigContentTitle(contentText);
@@ -481,17 +481,17 @@ public class UpdateService extends IntentService implements ProgressListener {
         final int icon = Build.VERSION.SDK_INT >= 11 ? R.drawable.ic_stat_notify_updates : R.drawable.ic_launcher;
 
         final String contentText = hasUpdates.getCount() > 1
-            ? getString(R.string.many_updates_available, hasUpdates.getCount())
-            : getString(R.string.one_update_available);
+                ? getString(R.string.many_updates_available, hasUpdates.getCount())
+                : getString(R.string.one_update_available);
 
         NotificationCompat.Builder builder =
-            new NotificationCompat.Builder(this)
-                .setAutoCancel(true)
-                .setContentTitle(getString(R.string.fdroid_updates_available))
-                .setSmallIcon(icon)
-                .setContentIntent(createNotificationIntent())
-                .setContentText(contentText)
-                .setStyle(createNotificationBigStyle(hasUpdates));
+                new NotificationCompat.Builder(this)
+                    .setAutoCancel(true)
+                    .setContentTitle(getString(R.string.fdroid_updates_available))
+                    .setSmallIcon(icon)
+                    .setContentIntent(createNotificationIntent())
+                    .setContentText(contentText)
+                    .setStyle(createNotificationBigStyle(hasUpdates));
 
         notificationManager.notify(NOTIFY_ID_UPDATES_AVAILABLE, builder.build());
     }

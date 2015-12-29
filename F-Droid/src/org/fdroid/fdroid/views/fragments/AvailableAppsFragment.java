@@ -127,12 +127,12 @@ public class AvailableAppsFragment extends AppListFragment implements
         categories = AppProvider.Helper.categories(getActivity());
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
-            getActivity(), android.R.layout.simple_spinner_item, translateCategories(categories));
+                getActivity(), android.R.layout.simple_spinner_item, translateCategories(categories));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
 
         getActivity().getContentResolver().registerContentObserver(
-            AppProvider.getContentUri(), false, new CategoryObserver(adapter));
+                AppProvider.getContentUri(), false, new CategoryObserver(adapter));
 
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

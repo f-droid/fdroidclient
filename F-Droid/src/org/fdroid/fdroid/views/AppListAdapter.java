@@ -90,7 +90,7 @@ public abstract class AppListAdapter extends CursorAdapter {
         holder.summary.setText(app.summary);
 
         ImageLoader.getInstance().displayImage(app.iconUrl, holder.icon,
-            displayImageOptions);
+                displayImageOptions);
 
         holder.status.setText(getVersionInfo(app));
         holder.license.setText(app.license);

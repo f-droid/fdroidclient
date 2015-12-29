@@ -197,7 +197,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         assertTotalApkCount(20);
 
         Cursor cursor = getMockContentResolver().query(
-            ApkProvider.getRepoUri(REPO_DELETE), getMinimalProjection(), null, null, null);
+                ApkProvider.getRepoUri(REPO_DELETE), getMinimalProjection(), null, null, null);
         assertResultCount(10, cursor);
         assertBelongsToRepo(cursor, REPO_DELETE);
         cursor.close();
@@ -207,7 +207,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
 
         assertTotalApkCount(10);
         cursor = getMockContentResolver().query(
-            ApkProvider.getRepoUri(REPO_DELETE), getMinimalProjection(), null, null, null);
+                ApkProvider.getRepoUri(REPO_DELETE), getMinimalProjection(), null, null, null);
         assertResultCount(0, cursor);
         cursor.close();
 
