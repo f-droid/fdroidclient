@@ -1314,11 +1314,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             final TextView antiFeaturesView = (TextView) view.findViewById(R.id.antifeatures);
             if (app.antiFeatures != null) {
                 StringBuilder sb = new StringBuilder();
-                for (final String af : app.antiFeatures) {
-                    final String afdesc = descAntiFeature(af);
-                    if (afdesc != null) {
-                        sb.append("\t• ").append(afdesc).append('\n');
-                    }
+                for (String af : app.antiFeatures) {
+                    String afdesc = descAntiFeature(af);
+                    sb.append("\t• ").append(afdesc).append('\n');
                 }
                 if (sb.length() > 0) {
                     sb.setLength(sb.length() - 1);
@@ -1375,8 +1373,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                     return getString(R.string.antinonfreedeplist);
                 case "UpstreamNonFree":
                     return getString(R.string.antiupstreamnonfreelist);
+                default:
+                    return af;
             }
-            return null;
         }
 
         public void updateViews(View view) {
