@@ -342,4 +342,11 @@
 
     <string name="tab_updates_count">Оновлення (%d)</string>
     <string name="status_inserting_apps">Збереження подробиць по додаткам</string>
-    </resources>
+    <string name="empty_search_installed_app_list">Не має збігів серед встановлених програм.</string>
+    <string name="empty_search_available_app_list">Не має збігів серед доступних програм.</string>
+    <string name="empty_search_can_update_app_list">Не має збігів серед програм для оновлення.</string>
+
+    <string name="crash_dialog_title">F-Droid зазнав збою</string>
+    <string name="crash_dialog_text">Несподівана помилка припинила роботу програми. Хочете надіслати листа з подробицями, які допоможуть нам усунути цю ваду?</string>
+    <string name="crash_dialog_comment_prompt">Можете ввести додаткову інформацію та коментарі тут:</string>
+</resources>

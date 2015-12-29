@@ -15,10 +15,10 @@
   <string name="other">Muu</string>
   <string name="update_interval">Automaattisen päivityksen tiheys</string>
   <string name="update_interval_zero">Ei automaattisia sovellusluetteloiden päivityksiä</string>
-  <string name="automatic_scan_wifi">Vain wifi-yhteydellä</string>
-  <string name="automatic_scan_wifi_on">Päivitä sovelluslistat automaattisesti vain WiFi-yhteydellä</string>
+  <string name="automatic_scan_wifi">Vain Wi-Fi -yhteydellä</string>
+  <string name="automatic_scan_wifi_on">Päivitä sovelluslistat automaattisesti vain Wi-Fi -yhteydellä</string>
   <string name="notify">Huomauta</string>
-  <string name="notify_on">Ilmoita, kun päivityksiä on saatavissa</string>
+  <string name="notify_on">Näytä iIlmoitus, kun päivityksiä on saatavissa</string>
   <string name="update_history">Päivityshistoria</string>
   <string name="update_history_summ">Päivien määrä, jolloin sovellus näytetään uutena: %s</string>
   <string name="system_installer">Asenna käytäen järjestelmän oikeuksia</string>
@@ -158,4 +158,24 @@ Sinun pitää
   <string name="swap_welcome">Tervetuloa F-Droidiin!</string>
   <string name="swap_confirm_connect">Haluatko saada sovellukset kohteesta %1$s nyt?</string>
 <string name="unstable_updates_summary">Ehdota päivityksiä epävakaisiin versioihin</string>
+    <string name="app_name">F-Droid</string>
+
+    <string name="login_password">Salasana</string>
+    <string name="login_name">Käyttäjätunnus</string>
+    <string name="repo_edit_credentials">Vaihda salasana</string>
+    <string name="unstable_updates">Epävakaat päivitykset</string>
+    <string name="interval_1d">Päivittäin</string>
+    <string name="interval_1w">Viikoittain</string>
+    <string name="interval_2w">2 viikon välein</string>
+
+    <string name="crash_dialog_title">F-Droid kaatui</string>
+    <string name="crash_dialog_comment_prompt">Voit lisätä lisätietoja ja kommentteja tähän:</string>
+<string name="interval_12h">12 tunnin välein</string>
+    <string name="interval_4h">4 tunnin välein</string>
+    <string name="interval_never">Ei koskaan</string>
+    <string name="downloading">Ladataan…</string>
+
+    <string name="perms_new_perm_prefix">"Uusi: "</string>
+    <string name="download_error">Lataaminen epäonnistui</string>
+
     </resources>

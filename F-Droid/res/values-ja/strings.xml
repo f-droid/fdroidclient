@@ -337,4 +337,7 @@
     <string name="empty_search_available_app_list">一致する利用可能なｱﾌﾟﾘｹｰｼｮﾝはありません。</string>
     <string name="empty_search_can_update_app_list">一致する更新のｱﾌﾟﾘｹｰｼｮﾝはありません。</string>
 
-    </resources>
+    <string name="crash_dialog_title">F-Droid がｸﾗｯｼｭしました</string>
+    <string name="crash_dialog_text">ｱﾌﾟﾘｹｰｼｮﾝを強制的に停止させる、予期しないｴﾗｰが発生しました。問題を修正するため、詳細をﾒｰﾙしますか?</string>
+    <string name="crash_dialog_comment_prompt">ここに追加の情報やｺﾒﾝﾄを追加できます:</string>
+</resources>

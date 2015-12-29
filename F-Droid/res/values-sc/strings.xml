@@ -336,4 +336,6 @@
     <string name="empty_search_available_app_list">Peruna aplicatzione currispondente disponìbile.</string>
     <string name="empty_search_can_update_app_list">Perunu agiornamentu currispondente disponìbile.</string>
 
-    </resources>
+    <string name="crash_dialog_text">Un’errore imprevistu at fatu serrare s’aplicatzione. Boles imbiare sas minujas pro mèdiu de posta eletrònica pro agiudare a isòlvere su problema?</string>
+    <string name="crash_dialog_comment_prompt">Podes annanghere àteras informatziones e cummentos inoghe:</string>
+</resources>

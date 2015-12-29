@@ -330,4 +330,11 @@
     <string name="tab_installed_apps_count">Installert (%d)</string>
     <string name="tab_updates_count">Oppdateringer (%d)</string>
     <string name="status_inserting_apps">Lagrer program detaljer</string>
-    </resources>
+    <string name="empty_search_installed_app_list">Samsvarer ikke med noen installerte programmer.</string>
+    <string name="empty_search_available_app_list">Samsvarer ikke med noen tilgjengelige programmer.</string>
+    <string name="empty_search_can_update_app_list">Ingen samsvarende programmer for oppdatering.</string>
+
+    <string name="crash_dialog_title">F-Droid har kræsjet</string>
+    <string name="crash_dialog_text">Uventet feil forårsaket stopp av programmet. Ønsker du å sende detaljer om dette i en e-post for å fikse problemet?</string>
+    <string name="crash_dialog_comment_prompt">Du kan legge til ekstra informasjon og kommentarer her:</string>
+</resources>

@@ -333,4 +333,8 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="tab_installed_apps_count">Instalado (%d)</string>
     <string name="tab_updates_count">Atualizações (%d)</string>
     <string name="status_inserting_apps">Salvando detalhes dos aplicativos</string>
+    <string name="empty_search_installed_app_list">Nenhum aplicativo correspondente instalado.</string>
+    <string name="empty_search_available_app_list">Nenhum aplicativo correspondente disponível.</string>
+    <string name="empty_search_can_update_app_list">Nenhum aplicativo correspondente para atualização.</string>
+
     </resources>
