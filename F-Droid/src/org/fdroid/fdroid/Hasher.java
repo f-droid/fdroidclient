@@ -72,14 +72,16 @@ public class Hasher {
                     digest.update(buffer, 0, read);
                 }
             } catch (Exception e) {
-                return hashCache = "";
+                hashCache = "";
+                return hashCache;
             } finally {
                 Utils.closeQuietly(input);
             }
         } else {
             digest.update(array);
         }
-        return hashCache = hex(digest.digest());
+        hashCache = hex(digest.digest());
+        return hashCache;
     }
 
     // Compare the calculated hash to another string, ignoring case,

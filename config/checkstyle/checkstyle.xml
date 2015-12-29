@@ -89,7 +89,7 @@
         <module name="EmptyStatement" />
         <!--<module name="HiddenField" />-->
         <module name="IllegalInstantiation" />
-        <!--<module name="InnerAssignment" />-->
+        <module name="InnerAssignment" />
         <module name="DefaultComesLast" />
         <!--<module name="MissingSwitchDefault" />-->
         <module name="FallThrough" />

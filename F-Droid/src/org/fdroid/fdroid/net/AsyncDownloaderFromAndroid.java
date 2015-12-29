@@ -83,7 +83,8 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
         }
 
         // Check if the download is complete
-        if ((downloadManagerId = isDownloadComplete(context, uniqueDownloadId)) > 0) {
+        downloadManagerId = isDownloadComplete(context, uniqueDownloadId);
+        if (downloadManagerId > 0) {
             // clear the download
             dm.remove(downloadManagerId);
 
