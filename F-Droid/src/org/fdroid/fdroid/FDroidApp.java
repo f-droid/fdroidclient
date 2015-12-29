@@ -280,7 +280,8 @@ public class FDroidApp extends Application {
                             public String generate(String imageUri) {
                                 return imageUri.substring(
                                     imageUri.lastIndexOf('/') + 1);
-                            } },
+                            }
+                        },
                         // 30 days in secs: 30*24*60*60 = 2592000
                         2592000)
                     )
