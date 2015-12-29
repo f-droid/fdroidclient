@@ -14,14 +14,6 @@
         <property name="severity" value="info" />
     </module>
 
-    <module name="RegexpMultiline">
-        <property name="format" value="\n\n\n" />
-        <property name="minimum" value="0" />
-        <property name="maximum" value="0" />
-        <property name="message" value="Multiple empty lines found." />
-        <property name="severity" value="info" />
-    </module>
-
     <module name="TreeWalker">
 
         <!--<module name="ConstantName" />-->
