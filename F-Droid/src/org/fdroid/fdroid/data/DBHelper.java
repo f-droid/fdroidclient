@@ -17,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";
 
-    public static final String DATABASE_NAME = "fdroid";
+    private static final String DATABASE_NAME = "fdroid";
 
     public static final String TABLE_REPO = "fdroid_repo";
 

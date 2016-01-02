@@ -107,7 +107,7 @@ public class Hasher {
         return hex(encoded);
     }
 
-    public static String hex(byte[] sig) {
+    private static String hex(byte[] sig) {
         byte[] csig = new byte[sig.length * 2];
         for (int j = 0; j < sig.length; j++) {
             byte v = sig[j];

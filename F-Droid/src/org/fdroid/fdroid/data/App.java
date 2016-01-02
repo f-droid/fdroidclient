@@ -102,9 +102,6 @@ public class App extends ValueObject implements Comparable<App> {
 
     public String installedSig;
 
-    public boolean system;
-    public boolean updatedSystemApp;
-
     public boolean uninstallable;
 
     @Override
@@ -345,9 +342,9 @@ public class App extends ValueObject implements Comparable<App> {
         apk.sig = Utils.hashBytes(fdroidSig, "md5");
 
         this.installedApk = apk;
-        this.system = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-        this.updatedSystemApp = (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
-        this.uninstallable = !this.system || this.updatedSystemApp;
+        boolean system = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
+        boolean updatedSystemApp = (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
+        this.uninstallable = !system || updatedSystemApp;
     }
 
     public boolean isValid() {
