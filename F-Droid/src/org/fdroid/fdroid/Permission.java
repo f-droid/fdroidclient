@@ -3,7 +3,6 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
-import android.graphics.drawable.Drawable;
 
 public class Permission {
 
