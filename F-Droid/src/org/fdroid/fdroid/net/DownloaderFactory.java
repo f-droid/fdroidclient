@@ -7,11 +7,11 @@ import android.database.Cursor;
 import android.os.Build;
 
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Credentials;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import org.fdroid.fdroid.data.Credentials;
 
 public class DownloaderFactory {
 

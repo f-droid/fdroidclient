@@ -2,11 +2,13 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.util.Log;
+
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Credentials;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -21,7 +23,6 @@ import java.net.SocketAddress;
 import java.net.URL;
 
 import javax.net.ssl.SSLHandshakeException;
-import org.fdroid.fdroid.data.Credentials;
 
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";

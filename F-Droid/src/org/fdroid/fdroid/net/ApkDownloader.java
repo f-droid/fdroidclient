@@ -34,12 +34,12 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.Credentials;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import org.fdroid.fdroid.data.Credentials;
 
 /**
  * Downloads and verifies (against the Apk.hash) the apk file.

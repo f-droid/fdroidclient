@@ -5,11 +5,11 @@ import android.database.Cursor;
 import android.text.TextUtils;
 
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.net.auth.HttpBasicCredentials;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
-import org.fdroid.fdroid.net.auth.HttpBasicCredentials;
 
 public class Repo extends ValueObject {
 

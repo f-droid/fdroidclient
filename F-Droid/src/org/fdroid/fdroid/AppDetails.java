@@ -84,6 +84,7 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Credentials;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -97,7 +98,6 @@ import org.fdroid.fdroid.net.Downloader;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
-import org.fdroid.fdroid.data.Credentials;
 
 interface AppDetailsData {
     App getApp();

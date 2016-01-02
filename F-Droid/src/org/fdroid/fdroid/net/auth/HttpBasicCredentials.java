@@ -20,9 +20,11 @@
 package org.fdroid.fdroid.net.auth;
 
 import android.text.TextUtils;
-import java.net.HttpURLConnection;
+
 import org.apache.commons.net.util.Base64;
 import org.fdroid.fdroid.data.Credentials;
+
+import java.net.HttpURLConnection;
 
 /**
  * Credentials implementation for HTTP Basic Authentication.
