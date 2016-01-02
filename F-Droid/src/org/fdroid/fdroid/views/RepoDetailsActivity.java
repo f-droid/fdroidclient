@@ -42,7 +42,6 @@ import java.util.Locale;
 public class RepoDetailsActivity extends ActionBarActivity {
     private static final String TAG = "RepoDetailsActivity";
 
-    public static final String MIME_TYPE = "application/vnd.org.fdroid.fdroid.repo";
     public static final String ARG_REPO_ID = "repo_id";
 
     /**

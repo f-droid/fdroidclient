@@ -100,7 +100,7 @@ public class HttpDownloader extends Downloader {
 
             connection = (HttpURLConnection) sourceUrl.openConnection();
             if (credentials != null) {
-                credentials.authenticate((HttpURLConnection) connection);
+                credentials.authenticate(connection);
             }
         }
     }

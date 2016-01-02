@@ -32,12 +32,4 @@ public class Permission {
         return Character.toUpperCase(label.charAt(0)) + label.substring(1);
     }
 
-    public CharSequence getDescription() {
-        return this.permissionInfo.loadDescription(this.packageManager);
-    }
-
-    public Drawable getIcon() {
-        return this.permissionInfo.loadIcon(this.packageManager);
-    }
-
 }

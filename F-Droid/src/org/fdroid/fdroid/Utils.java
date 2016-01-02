@@ -414,10 +414,6 @@ public final class Utils {
         return new Locale(languageTag);
     }
 
-    public static String getApkUrl(Apk apk) {
-        return getApkUrl(apk.repoAddress, apk);
-    }
-
     public static String getApkUrl(String repoAddress, Apk apk) {
         return repoAddress + "/" + apk.apkName.replace(" ", "%20");
     }

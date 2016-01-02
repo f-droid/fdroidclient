@@ -115,10 +115,6 @@ public class FDroidApp extends Application {
         activity.setTheme(getCurThemeResId());
     }
 
-    public static Theme getCurTheme() {
-        return curTheme;
-    }
-
     public static int getCurThemeResId() {
         switch (curTheme) {
             case light:
