@@ -376,7 +376,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FDroid" />
         </activity>
-        <activity android:name="org.acra.CrashReportDialog"
+        <activity
+            android:name="org.fdroid.fdroid.CrashReportActivity"
             android:theme="@style/AlertDialogThemeDark"
             android:process=":error_report"
             android:launchMode="singleInstance"
