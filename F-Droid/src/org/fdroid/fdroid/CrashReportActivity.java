@@ -15,7 +15,6 @@ public class CrashReportActivity extends BaseCrashReportDialog implements Dialog
 
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.crash_dialog_title)
-                .setIcon(android.R.drawable.ic_dialog_alert)
                 .setView(R.layout.crash_report_dialog)
                 .setPositiveButton(R.string.ok, this)
                 .setNegativeButton(R.string.cancel, this)
