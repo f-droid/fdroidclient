@@ -185,8 +185,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return getString(R.string.app_not_installed);
             }
             // Definitely installed this version.
-            if (app.installedSig != null && apk.sig != null
-                    && apk.sig.equals(app.installedSig)) {
+            if (apk.sig != null && apk.sig.equals(app.installedSig)) {
                 return getString(R.string.app_installed);
             }
             // Installed the same version, but from someplace else.
@@ -561,11 +560,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     @Override
     protected void onDestroy() {
-        if (downloadHandler != null) {
-            if (!inProcessOfChangingConfiguration) {
-                downloadHandler.cancel(false);
-                cleanUpFinishedDownload();
-            }
+        if (downloadHandler != null && !inProcessOfChangingConfiguration) {
+            downloadHandler.cancel(false);
+            cleanUpFinishedDownload();
         }
         inProcessOfChangingConfiguration = false;
         super.onDestroy();
@@ -1600,12 +1597,10 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             public void onClick(View v) {
                 App app = getApp();
                 AppDetails activity = (AppDetails) getActivity();
-                if (updateWanted) {
-                    if (app.suggestedVercode > 0) {
-                        final Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVercode);
-                        activity.install(apkToInstall);
-                        return;
-                    }
+                if (updateWanted && app.suggestedVercode > 0) {
+                    Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVercode);
+                    activity.install(apkToInstall);
+                    return;
                 }
                 if (installed) {
                     // If installed
