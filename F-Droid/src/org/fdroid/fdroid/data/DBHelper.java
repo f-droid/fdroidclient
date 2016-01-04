@@ -70,6 +70,8 @@ public class DBHelper extends SQLiteOpenHelper {
             + "icon text, "
             + "description text not null, "
             + "license text not null, "
+            + "author text, "
+            + "email text, "
             + "webURL text, "
             + "trackerURL text, "
             + "sourceURL text, "
@@ -104,7 +106,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + TABLE_INSTALLED_APP + ";";
 
-    private static final int DB_VERSION = 52;
+    private static final int DB_VERSION = 53;
 
     private final Context context;
 
@@ -288,6 +290,7 @@ public class DBHelper extends SQLiteOpenHelper {
         updateIconUrlLarge(db, oldVersion);
         recreateInstalledCache(db, oldVersion);
         addCredentialsToRepo(db, oldVersion);
+        addAuthorToApp(db, oldVersion);
     }
 
     /**
@@ -455,6 +458,17 @@ public class DBHelper extends SQLiteOpenHelper {
             Utils.debugLog(TAG, "Recalculating app icon URLs so that the newly added large icons will get updated.");
             AppProvider.UpgradeHelper.updateIconUrls(context, db);
             clearRepoEtags(db);
+        }
+    }
+
+    private void addAuthorToApp(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 53 && !columnExists(db, TABLE_APP, "author")) {
+            Utils.debugLog(TAG, "Adding author column to " + TABLE_APP);
+            db.execSQL("alter table " + TABLE_APP + " add column author text");
+        }
+        if (oldVersion < 53 && !columnExists(db, TABLE_APP, "email")) {
+            Utils.debugLog(TAG, "Adding email column to " + TABLE_APP);
+            db.execSQL("alter table " + TABLE_APP + " add column email text");
         }
     }
 

@@ -18,6 +18,8 @@
 
 * Translation updates
 
+* Display license and author information in app details where appropriate
+
 ### 0.97 (2015-11-07)
 
 * Add option to prompt for unstable updates globally

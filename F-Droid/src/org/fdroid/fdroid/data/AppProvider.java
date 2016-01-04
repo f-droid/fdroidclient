@@ -179,6 +179,8 @@ public class AppProvider extends FDroidProvider {
         String ICON = "icon";
         String DESCRIPTION = "description";
         String LICENSE = "license";
+        String AUTHOR = "author";
+        String EMAIL = "email";
         String WEB_URL = "webURL";
         String TRACKER_URL = "trackerURL";
         String SOURCE_URL = "sourceURL";
@@ -212,8 +214,8 @@ public class AppProvider extends FDroidProvider {
 
         String[] ALL = {
             _ID, IS_COMPATIBLE, PACKAGE_NAME, NAME, SUMMARY, ICON, DESCRIPTION,
-            LICENSE, WEB_URL, TRACKER_URL, SOURCE_URL, CHANGELOG_URL, DONATE_URL,
-            BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
+            LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
+            CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
             UPSTREAM_VERSION, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
             CATEGORIES, ANTI_FEATURES, REQUIREMENTS, IGNORE_ALLUPDATES,
             IGNORE_THISUPDATE, ICON_URL, ICON_URL_LARGE,

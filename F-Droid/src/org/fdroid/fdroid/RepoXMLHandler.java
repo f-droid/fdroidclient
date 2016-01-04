@@ -167,6 +167,12 @@ public class RepoXMLHandler extends DefaultHandler {
                 case "license":
                     curapp.license = str;
                     break;
+                case "author":
+                    curapp.author = str;
+                    break;
+                case "email":
+                    curapp.email = str;
+                    break;
                 case "source":
                     curapp.sourceURL = str;
                     break;

@@ -170,6 +170,13 @@ Changelog" />
                 android:text="@string/menu_website" />
 
             <TextView
+                android:id="@+id/email"
+                style="@style/AppDetailsLink"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawableStart="@drawable/ic_email"
+                android:text="@string/menu_email" />
+
+            <TextView
                 android:id="@+id/donate"
                 style="@style/AppDetailsLink"
                 android:drawableLeft="@drawable/ic_donate"

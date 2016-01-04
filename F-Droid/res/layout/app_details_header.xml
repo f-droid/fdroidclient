@@ -74,6 +74,19 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:singleLine="true"
+                    android:textAlignment="viewStart"
+                    android:textSize="13sp"
+                    android:visibility="gone"
+                    tools:text="F-Droid Authors" />
+
+                <TextView
                     android:id="@+id/current_version"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -40,6 +40,9 @@ public class App extends ValueObject implements Comparable<App> {
 
     public String license = "Unknown";
 
+    public String author;
+    public String email;
+
     public String webURL;
 
     public String trackerURL;
@@ -138,6 +141,12 @@ public class App extends ValueObject implements Comparable<App> {
                     break;
                 case AppProvider.DataColumns.LICENSE:
                     license = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.AUTHOR:
+                    author = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.EMAIL:
+                    email = cursor.getString(i);
                     break;
                 case AppProvider.DataColumns.WEB_URL:
                     webURL = cursor.getString(i);
@@ -374,6 +383,8 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.ICON_URL_LARGE, iconUrlLarge);
         values.put(AppProvider.DataColumns.DESCRIPTION, description);
         values.put(AppProvider.DataColumns.LICENSE, license);
+        values.put(AppProvider.DataColumns.AUTHOR, author);
+        values.put(AppProvider.DataColumns.EMAIL, email);
         values.put(AppProvider.DataColumns.WEB_URL, webURL);
         values.put(AppProvider.DataColumns.TRACKER_URL, trackerURL);
         values.put(AppProvider.DataColumns.SOURCE_URL, sourceURL);

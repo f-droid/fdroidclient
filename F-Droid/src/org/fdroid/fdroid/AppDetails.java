@@ -1135,6 +1135,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                     case R.id.website:
                         url = app.webURL;
                         break;
+                    case R.id.email:
+                        url = "mailto:" + app.email;
+                        break;
                     case R.id.source:
                         url = app.sourceURL;
                         break;
@@ -1227,6 +1230,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             // Website button
             View tv = view.findViewById(R.id.website);
             if (!TextUtils.isEmpty(app.webURL))
+                tv.setOnClickListener(mOnClickListener);
+            else
+                tv.setVisibility(View.GONE);
+
+            // Email button
+            tv = view.findViewById(R.id.email);
+            if (!TextUtils.isEmpty(app.email))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
@@ -1586,9 +1596,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 btMain.setOnClickListener(mOnClickListener);
                 btMain.setEnabled(true);
             }
+            TextView author = (TextView) view.findViewById(R.id.author);
+            if (!TextUtils.isEmpty(app.author)) {
+                author.setText(getString(R.string.by_author) + " " + app.author);
+                author.setVisibility(View.VISIBLE);
+            }
             TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
             if (!getApks().isEmpty()) {
-                currentVersion.setText(getApks().getItem(0).version);
+                currentVersion.setText(getApks().getItem(0).version + " (" + app.license + ")");
             } else {
                 currentVersion.setVisibility(View.GONE);
                 btMain.setVisibility(View.GONE);
