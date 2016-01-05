@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.ViewGroup;
 
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
@@ -17,22 +18,34 @@ import org.fdroid.fdroid.views.fragments.InstalledAppsFragment;
 /**
  * Used by the FDroid activity in conjunction with its ViewPager to support
  * swiping of tabs for both old devices (< 3.0) and new devices.
+ *
+ * See http://stackoverflow.com/a/15261142 for how to obtain references
+ * to fragments in order to update them in response to search queries.
  */
 public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @NonNull private final FDroid parent;
+    @Nullable private String searchQuery;
 
-    @NonNull private final AppListFragment availableFragment;
-    @NonNull private final AppListFragment installedFragment;
-    @NonNull private final AppListFragment canUpdateFragment;
+    private final AppListFragment[] registeredFragments = new AppListFragment[TabManager.INDEX_COUNT];
 
     public AppListFragmentPagerAdapter(@NonNull FDroid parent) {
         super(parent.getSupportFragmentManager());
         this.parent = parent;
+    }
 
-        availableFragment = new AvailableAppsFragment();
-        installedFragment = new InstalledAppsFragment();
-        canUpdateFragment = new CanUpdateAppsFragment();
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        AppListFragment fragment = (AppListFragment) super.instantiateItem(container, position);
+        fragment.updateSearchQuery(searchQuery);
+        registeredFragments[position] = fragment;
+        return fragment;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        registeredFragments[position] = null;
+        super.destroyItem(container, position, object);
     }
 
     private String getInstalledTabTitle() {
@@ -46,20 +59,23 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
     }
 
     public void updateSearchQuery(@Nullable String query) {
-        availableFragment.updateSearchQuery(query);
-        installedFragment.updateSearchQuery(query);
-        canUpdateFragment.updateSearchQuery(query);
+        searchQuery = query;
+        for (AppListFragment fragment : registeredFragments) {
+            if (fragment != null) {
+                fragment.updateSearchQuery(query);
+            }
+        }
     }
 
     @Override
     public Fragment getItem(int i) {
         switch (i) {
             case TabManager.INDEX_AVAILABLE:
-                return availableFragment;
+                return new AvailableAppsFragment();
             case TabManager.INDEX_INSTALLED:
-                return installedFragment;
+                return new InstalledAppsFragment();
             default:
-                return canUpdateFragment;
+                return new CanUpdateAppsFragment();
         }
     }
 
