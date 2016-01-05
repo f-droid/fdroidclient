@@ -340,4 +340,6 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="crash_dialog_title">F-Droid cascó</string>
     <string name="crash_dialog_text">Asocedió un fallu inesperáu forciando\'l paru de l\'aplicación. ¿Prestaríate unviar un corréu colos detalles p\'ayudar a iguar esti problema?</string>
     <string name="crash_dialog_comment_prompt">Equí pues amestar información y comentarios estra:</string>
-</resources>
+<string name="antinonfreeassetslist">Esta aplicación contién activos non llibres</string>
+
+    </resources>

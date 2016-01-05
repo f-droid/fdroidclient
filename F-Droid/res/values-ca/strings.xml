@@ -339,4 +339,6 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="crash_dialog_title">L\'F-Droid ha fallat</string>
     <string name="crash_dialog_text">L\'aplicació s\'ha aturat degut a un error inesperat. Voldríeu enviar-ne els detalls per correu-e per tal d\'ajudar a resoldre la incidència?</string>
     <string name="crash_dialog_comment_prompt">Podeu afegir informació addicional i comentaris aquí:</string>
-</resources>
+<string name="antinonfreeassetslist">Aquesta aplicació conté parts no lliures</string>
+
+    </resources>

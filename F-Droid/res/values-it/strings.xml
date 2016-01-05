@@ -332,4 +332,5 @@
     <string name="update_notification_more">+%1$d rimanente…</string>
     <string name="swap_nearby">Scambio Ravvicinato</string>
     <string name="empty_search_installed_app_list">Nessuna applicazione installata corrispondente.</string>
-    </resources>
+    <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>
+</resources>

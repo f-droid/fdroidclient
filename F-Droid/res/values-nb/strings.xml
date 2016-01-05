@@ -337,4 +337,6 @@
     <string name="crash_dialog_title">F-Droid har kræsjet</string>
     <string name="crash_dialog_text">Uventet feil forårsaket stopp av programmet. Ønsker du å sende detaljer om dette i en e-post for å fikse problemet?</string>
     <string name="crash_dialog_comment_prompt">Du kan legge til ekstra informasjon og kommentarer her:</string>
-</resources>
+<string name="antinonfreeassetslist">Dette programmet inneholder ufrie gjenstander</string>
+
+    </resources>

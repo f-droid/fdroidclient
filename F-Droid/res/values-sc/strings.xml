@@ -338,4 +338,5 @@
 
     <string name="crash_dialog_text">Un’errore imprevistu at fatu serrare s’aplicatzione. Boles imbiare sas minujas pro mèdiu de posta eletrònica pro agiudare a isòlvere su problema?</string>
     <string name="crash_dialog_comment_prompt">Podes annanghere àteras informatziones e cummentos inoghe:</string>
-</resources>
+<string name="crash_dialog_title">F-Droid s\'est serradu</string>
+    </resources>

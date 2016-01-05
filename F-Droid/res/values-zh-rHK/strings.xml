@@ -27,9 +27,9 @@
   <string name="app_details">應用程式詳細資料</string>
   <string name="no_such_app">找不到這樣的應用程式。</string>
   <string name="about_title">關於 F-Droid</string>
-  <string name="about_site">網站：</string>
-  <string name="about_mail">電郵：</string>
-  <string name="about_version">版本：</string>
+  <string name="about_site">網站</string>
+  <string name="about_mail">電郵</string>
+  <string name="about_version">版本</string>
   <string name="app_installed">已安裝</string>
   <string name="app_not_installed">沒有安裝</string>
   <string name="app_inst_known_source">已安裝 (來自 %s)</string>
@@ -43,13 +43,13 @@
   <string name="cancel">取消</string>
   <string name="enable">啟用</string>
   <string name="add_key">添加鑰匙</string>
-  <string name="overwrite">蓋寫</string>
-  <string name="tab_available_apps">可用</string>
+  <string name="overwrite">覆寫</string>
+  <string name="tab_available_apps">可安裝</string>
   <string name="tab_updates">更新</string>
   <string name="one_update_available">有 1 個更新。</string>
   <string name="many_updates_available">有 %d 個更新。</string>
-  <string name="fdroid_updates_available">您有 F-Droid 更新</string>
-  <string name="bluetooth_activity_not_found">找不到任何藍牙傳送的方式，請選擇！</string>
+  <string name="fdroid_updates_available">F-Droid 更新版本可供下載</string>
+  <string name="bluetooth_activity_not_found">請選擇一個藍牙傳送的方式！</string>
   <string name="choose_bt_send">選擇藍牙的傳送方式</string>
   <string name="send_via_bluetooth">透過藍牙傳送</string>
   <string name="repo_add_url">軟件倉庫網址</string>
@@ -87,7 +87,7 @@
   <string name="appcompatibility">應用程式相容性</string>
   <string name="show_incompat_versions">不相容的版本</string>
   <string name="show_incompat_versions_on">顯示與裝置不相容的應用程式版本</string>
-  <string name="rooted">忽略 root</string>
+  <string name="rooted">略過 root</string>
   <string name="ignoreTouch">略過觸碰屏幕</string>
   <string name="ignoreTouch_on">永遠顯示需要觸碰屏幕的應用程式</string>
   <string name="category_All">所有</string>
@@ -148,7 +148,7 @@
 
     <string name="unstable_updates">不穩定的更新</string>
     <string name="unstable_updates_summary">建議更新至不穩定的版本</string>
-    <string name="about_source">原始碼：</string>
+    <string name="about_source">原始碼</string>
     <string name="app_incompatible">不相容</string>
     <string name="links">連結</string>
 
@@ -234,7 +234,7 @@
     <string name="next">下一步</string>
     <string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
     <string name="SignatureMismatch">新版本的應用程式使用了不同的鑰匙簽署。若要安裝新版本，必須先解除安裝舊版本。請這樣做之後再重新嘗試。(注意：解除安裝將會把應用應程的內存資料刪除)</string>
-    <string name="installDowngrade">你正在嘗試將應用程式降級。這樣做可能會導致運作不正常甚至資料損失。你肯定要嘗試降級嗎？</string>
+    <string name="installDowngrade">您正在嘗試將應用程式降級。這樣做可能會導致運作不正常甚至資料損失。您肯定要嘗試降級嗎？</string>
     <string name="download_error">下載失敗</string>
 
     <string name="more">顯示更多</string>
@@ -254,12 +254,12 @@
     <string name="swap_confirm">確定交換</string>
     <string name="swap_no_peers_nearby">找不到附近的人來進行交換。</string>
     <string name="swap_cant_find_peers">找不到您想找的人?</string>
-    <string name="swap_not_visible_wifi">在 Wi-Fi 上不可被偵測</string>
+    <string name="swap_not_visible_wifi">不可在 Wi-Fi 上被偵測</string>
     <string name="swap_setting_up_wifi">正在設定 Wi-Fi…</string>
-    <string name="swap_visible_wifi">在 Wi-Fi 上可被偵測</string>
-    <string name="swap_not_visible_bluetooth">在藍牙上不可被偵測</string>
+    <string name="swap_visible_wifi">可在 Wi-Fi 上被偵測</string>
+    <string name="swap_not_visible_bluetooth">不可在藍牙上被偵測</string>
     <string name="swap_setting_up_bluetooth">正在設定藍牙…</string>
-    <string name="swap_visible_bluetooth">在藍牙上可被偵測</string>
+    <string name="swap_visible_bluetooth">可在藍牙上被偵測</string>
     <string name="swap_intro">與您附近的人交換應用程式。</string>
     <string name="swap_nearby">近距交換</string>
     <string name="swap_scan_or_type_url">其中一人需掃描 QR 碼或在瀏覽器中輸入另一人的網址。</string>
@@ -280,7 +280,7 @@
     <string name="login_name">使用者名稱</string>
     <string name="login_password">密碼</string>
     <string name="repo_edit_credentials">更改密碼</string>
-    <string name="repo_error_empty_username">因使用者名稱未填妥，個人資料維持不變</string>
+    <string name="repo_error_empty_username">因使用者名稱未填妥，沒有更改個人資料</string>
 
     <string name="repo_exists_and_enabled">正被戴入的倉庫已設置好並在啟用中。</string>
     <string name="bad_fingerprint">指紋無效</string>
@@ -306,4 +306,38 @@
     <string name="swap_join_this_hotspot">協助您的朋友加入您的熱點</string>
     <string name="swap_active_hotspot">%1$s (您的熱點)</string>
     <string name="devicePerms">裝置權限</string>
+    <string name="about_license">特許條款</string>
+
+    <string name="tab_installed_apps_count">已安裝 (%d)</string>
+    <string name="tab_updates_count">更新 (%d)</string>
+    <string name="enable_proxy_summary">為所有網絡請求設置 HTTP 代理</string>
+    <string name="status_inserting_apps">正在儲存應用程式的詳細資料</string>
+    <string name="empty_installed_app_list">沒有安裝任何應用程式。\n\nF-Droid 並不提供您裝置上的應用程式。您可以嘗試更新您的軟件倉庫，但若更新後此頁還沒有顯示任何應用程式，您的倉庫的確不提供裝置現有的程式。</string>
+    <string name="empty_search_installed_app_list">沒有符合搜尋字詞的應用程式。</string>
+    <string name="empty_search_available_app_list">沒有符合搜尋字詞的應用程式。</string>
+    <string name="empty_search_can_update_app_list">沒有符合搜尋字詞的更新。</string>
+
+    <string name="root_access_denied_body">您的 Android 裝置還未取得 root 權限或 F-Droid 被拒絕取得 root 權限。</string>
+    <string name="system_install_denied_body">此選項只在安裝 F-Droid 系統權限套件後適用。</string>
+    <string name="system_install_denied_signature">套件的簽署並不正確！請建立一份錯誤報告！</string>
+    <string name="system_install_denied_permissions">套件尚未得到系統權限！請建立一份錯誤報告！</string>
+    <string name="system_install_first_time_notification_message">觸碰以安裝 F-Droid 系統權限套件，以使 F-Droid 更融入 Android 作業系統。套件能讓 F-Droid 自行安裝、更新及卸載應用程式。\n您也可稍後在 F-Droid 的設置中安裝套件。</string>
+    <string name="perm_costs_money">此權限可能需要您花費</string>
+    <string name="crash_dialog_title">F-Droid 已崩潰</string>
+    <string name="crash_dialog_comment_prompt">您可以在此加入額外的資料及評論：</string>
+<string name="login_title">需要認證</string>
+    <string name="antinonfreeassetslist">此應用程式含有非自由的資源</string>
+
+    <string name="system_install_post_fail_message">F-Droid 系統權限套件安裝失敗。此安裝方式並不支援所有的 Android 版本，請參見 F-Droid 的 bug tracker 以取得更多資訊。</string>
+    <string name="system_install_first_time_message">看來您在此裝置上有 root 權限。您現在可以安裝 F-Droid 系統權限套件，以使 F-Droid 更融入 Android 作業系統。套件能讓 F-Droid 自行安裝、更新及卸載應用程式。</string>
+    <string name="install_confirm_update_no_perms">您是否要更新此應用程式？您不會遺失現有的資料，也不需要提供任何特別權限。</string>
+    <string name="uninstall_update_confirm">你確定要原始版本取代此應用程式嗎？</string>
+    <string name="crash_dialog_text">因發生了未預料到的錯誤，應用程式已停止運作。您願意透過電郵提供關於問題的更多資料嗎？</string>
+    <string name="repo_fingerprint">鑰匙指紋 (SHA-256)</string>
+    <string name="writing_index_jar">寫入已簽署的目錄檔案 (index.jar) 中…</string>
+    <string name="rooted_on">需要 root 權限的應用程式不要以灰字顯示</string>
+    <string name="repo_delete_to_overwrite">在加入含有不同鑰匙的軟件倉庫前，您先要刪除此倉庫。</string>
+    <string name="install_error_cannot_parse">閱讀軟件包時發生了錯誤</string>
+    <string name="update_history_summ">最新的程式及更新均要在 %s 天內加入程式目錄</string>
+    <string name="repo_exists_add_fingerprint">由於此倉庫已經設置好，此動作將會加入新的鑰匙數據。</string>
     </resources>

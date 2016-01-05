@@ -337,4 +337,9 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="empty_search_available_app_list">Nenhum aplicativo correspondente disponível.</string>
     <string name="empty_search_can_update_app_list">Nenhum aplicativo correspondente para atualização.</string>
 
-    </resources>
+    <string name="antinonfreeassetslist">Este aplicativo contém conteúdo não-livre</string>
+
+    <string name="crash_dialog_title">O F-Droid travou</string>
+    <string name="crash_dialog_text">Ocorreu um erro inesperado, forçando a parada do aplicativo. Gostaria de enviar um e-mail com os detalhes para ajudar a corrigir o problema?</string>
+    <string name="crash_dialog_comment_prompt">Você pode adicionar informações extras e comentários aqui:</string>
+</resources>
