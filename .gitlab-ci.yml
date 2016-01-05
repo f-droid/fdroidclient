@@ -19,9 +19,9 @@ before_script:
   - echo " == Installing Android emulator images"
   - echo y | android -s update sdk --no-ui -a -t android-10
   - echo " == Installing Gradle"
-  - wget -q -O gradle.zip https://services.gradle.org/distributions/gradle-2.8-bin.zip
+  - wget -q -O gradle.zip https://services.gradle.org/distributions/gradle-2.9-bin.zip
   - unzip -q gradle.zip
-  - export PATH="$PWD/gradle-2.8/bin:$PATH"
+  - export PATH="$PWD/gradle-2.9/bin:$PATH"
 
 test:
   script:

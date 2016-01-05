@@ -8,7 +8,7 @@ for Android.
 ## Building with Gradle
 
 The only requirements are the [Android SDK](https://developer.android.com/sdk/)
-and [Gradle](http://gradle.org/) 2.8:
+and [Gradle](http://gradle.org/) 2.9:
 
     cd F-Droid
     gradle assembleRelease
