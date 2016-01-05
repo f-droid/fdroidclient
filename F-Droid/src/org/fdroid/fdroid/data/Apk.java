@@ -146,7 +146,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     @Override
     public int compareTo(Apk apk) {
-        return Integer.valueOf(vercode).compareTo(apk.vercode);
+        return Integer.compare(vercode, apk.vercode);
     }
 
 }

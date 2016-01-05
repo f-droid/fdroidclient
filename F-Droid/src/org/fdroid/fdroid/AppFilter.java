@@ -29,10 +29,9 @@ public class AppFilter {
             return false;
         }
 
-        if (!Preferences.get().filterAppsRequiringRoot()) {
-            if (app.requirements.contains("root")) {
-                return true;
-            }
+        if (!Preferences.get().filterAppsRequiringRoot() &&
+                app.requirements.contains("root")) {
+            return true;
         }
 
         return false;
