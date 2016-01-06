@@ -40,7 +40,6 @@
     <string name="repo_edit_credentials">Ændr Adgangskode</string>
     <string name="repo_error_empty_username">Tomt brugernavn, akkreditiver uændret</string>
 
-    <string name="search_results">Søgeresultater</string>
     <string name="app_details">Programdetaljer</string>
     <string name="no_such_app">Intet sådan program fundet.</string>
 
@@ -175,7 +174,6 @@
     <string name="update_notification_title">Opdaterer depoter</string>
     <string name="status_processing_xml_percent">Behandler %2$s / %3$s (%4$d%%) fra %1$s</string>
     <string name="status_connecting_to_repo">Forbinder til\n%1$s</string>
-    <string name="status_checking_compatibility">Tjekker programmets kompatibilitet med din enhed…</string>
     <string name="status_inserting_apps">Gemmer programdetaljer</string>
     <string name="repos_unchanged">Alle depoter er opdaterede</string>
         <string name="all_other_repos_fine">Alle andre depoter gav ingen fejl.</string>

@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">El título que se publicita para el repo local: %s</string>
   <string name="local_repo_https">Usar conexión privada</string>
   <string name="local_repo_https_on">Utilizar conexión HTTPS:// cifrada para el repositorio local</string>
-  <string name="search_results">Resultados de la búsqueda</string>
   <string name="app_details">Detalles de la aplicación</string>
   <string name="no_such_app">No se encontró la aplicación.</string>
   <string name="about_title">Acerca de F-Droid</string>
@@ -126,7 +125,6 @@
 \n%1$s</string>
   <string name="status_connecting_to_repo">Conectando a
 \n%1$s</string>
-  <string name="status_checking_compatibility">Comprobando la compatibilidad de las aplicaciones con tu dispositivo…</string>
   <string name="repos_unchanged">Todos los repositorios están actualizados</string>
   <string name="all_other_repos_fine">El resto de los repos no crearon errores.</string>
   <string name="global_error_updating_repos">Error en la actualización: %s</string>

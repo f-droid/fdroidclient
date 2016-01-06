@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">Yerel deponun duyrulan adı: %s</string>
   <string name="local_repo_https">Özel Bağlantı Kullan</string>
   <string name="local_repo_https_on">Yerel depo için güvenli HTTPS:// bağlantı kullan</string>
-  <string name="search_results">Arama Sonuçları</string>
   <string name="app_details">Uygulama Detayları</string>
   <string name="no_such_app">Böyle bir uygulama bulunamadı.</string>
   <string name="about_title">F-Droid Hakkında</string>
@@ -127,7 +126,6 @@
 %1$s</string>
   <string name="status_connecting_to_repo">%1$s konumuna
 bağlanılıyor</string>
-  <string name="status_checking_compatibility">Uygulamaların cihazınızla uyumluluğu kontrol ediliyor…</string>
   <string name="repos_unchanged">Tüm depolar günceldir</string>
   <string name="all_other_repos_fine">Diğer tüm depolar hata oluşturmadılar.</string>
   <string name="global_error_updating_repos">Güncelleme sırasında hata: %s</string>

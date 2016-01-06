@@ -42,5 +42,4 @@
   <string name="appcompatibility">Združljivost aplikacij</string>
   <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
   <string name="rooted">Skrbnik</string>
-  <string name="status_checking_compatibility">.</string>
-</resources>
+  </resources>

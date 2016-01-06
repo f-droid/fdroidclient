@@ -26,7 +26,6 @@
   <string name="local_repo_name_summary">Títol per difondre el vostre dipòsit local: %s</string>
   <string name="local_repo_https">Utilitza una connexió privada</string>
   <string name="local_repo_https_on">Connexió encriptada (HTTPS://) per els dipòsits locals</string>
-  <string name="search_results">Resultats de la cerca</string>
   <string name="app_details">Detalls de l\'aplicació</string>
   <string name="no_such_app">No s\'ha trobat l\'aplicació.</string>
   <string name="about_title">Quant a l\'F-Droid</string>
@@ -124,7 +123,6 @@
 %2$s / %3$s (%4$d%%) des de
 %1$s</string>
   <string name="status_connecting_to_repo">S\'està connectant a\n%1$s</string>
-  <string name="status_checking_compatibility">S\'està comprovant la compatibilitat de les aplicacions amb el vostre dispositiu…</string>
   <string name="repos_unchanged">Tots els dipòsits estan actualitzats</string>
   <string name="all_other_repos_fine">Cap dels altres dipòsits ha donat errors.</string>
   <string name="global_error_updating_repos">S\'ha produït un error durant l\'actualització: %s</string>

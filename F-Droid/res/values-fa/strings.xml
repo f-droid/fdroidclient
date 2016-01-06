@@ -13,7 +13,6 @@
   <string name="automatic_scan_wifi_on">به‌روز رسانی خودکار فهرست کاره‌ها روی وای‌فای</string>
   <string name="notify_on">نمایش یک آگهی هنگام موجود بودن به‌روز رسانی‌ها</string>
   <string name="update_history">به‌روزرسانی تاریخچه</string>
-  <string name="search_results">جستجوی نتایج</string>
   <string name="no_such_app">چنین کاره‌ای پیدا نشد.</string>
   <string name="about_title">دربارهٔ F-Droid</string>
   <string name="about_mail">رایانامه</string>
@@ -62,7 +61,6 @@
   <string name="category_All">همه</string>
   <string name="status_download">در حال بارگیری\n%2$s / %3$s (%4$Id%%) از\n%1$s</string>
   <string name="status_connecting_to_repo">درحال اتّصال به\n%1$s</string>
-  <string name="status_checking_compatibility">در حال بررسی سازگاری کاره‌ها با افزاره‌تان…</string>
   <string name="no_permissions">اجازه‌ای استفاده نشده است.</string>
   <string name="theme">زمینه</string>
   <string name="unsigned">امضا نشده</string>

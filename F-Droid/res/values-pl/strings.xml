@@ -16,7 +16,6 @@
   <string name="local_repo_name_summary">Wyświetlana nazwa repozytorium lokalnego: %s</string>
   <string name="local_repo_https">Użyj zabezpieczonego połączenia</string>
   <string name="local_repo_https_on">Korzystaj z zabezpieczonego połączenia HTTPS</string>
-  <string name="search_results">Wyniki wyszukiwania</string>
   <string name="app_details">Szczegóły aplikacji</string>
   <string name="no_such_app">Nie znaleziono takiej aplikacji.</string>
   <string name="about_title">O F-Droid</string>
@@ -94,7 +93,6 @@
   <string name="proxy_port">Port proxy</string>
   <string name="proxy_port_summary">Skonfiguruj port proxy</string>
   <string name="status_connecting_to_repo">Łączenie z\n%1$s</string>
-  <string name="status_checking_compatibility">Sprawdzanie kompatybilności aplikacji z urządzeniem…</string>
   <string name="repos_unchanged">Brak aktualizacji w repozytoriach</string>
   <string name="all_other_repos_fine">Żadne inne repozytorium nie zgłosiło błędów.</string>
   <string name="global_error_updating_repos">Błąd podczas aktualizacji: %s</string>

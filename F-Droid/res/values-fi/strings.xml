@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">Paikallisen säilösi mainostettava otsikko: %s</string>
   <string name="local_repo_https">Käytä yksityistä yhteyttä</string>
   <string name="local_repo_https_on">Käytä salattua HTTPS:// -yhteyttä paikalliselle säilölle</string>
-  <string name="search_results">Hakutulokset</string>
   <string name="app_details">Sovelluksen tiedot</string>
   <string name="no_such_app">Sovellusta ei löytynyt.</string>
   <string name="about_title">Tietoa F-Droidista</string>
@@ -110,7 +109,6 @@
   <string name="proxy_host_summary">Määritä välityspalvelimesi isäntänimi (esimm. 127.0.0.1)</string>
   <string name="proxy_port">Välityspalvelimen portti</string>
   <string name="proxy_port_summary">Määritä välityspalvelimesi porttinumero (esim. 8118)</string>
-  <string name="status_checking_compatibility">Tarkistetaan ohjelman yhteensopivuutta laitteesi kanssa…</string>
   <string name="repos_unchanged">Yhdessäkään säilössä ei ole pakettipäivityksiä</string>
   <string name="all_other_repos_fine">Muut säilöt eivät luoneet virheitä.</string>
   <string name="global_error_updating_repos">Päivityksenaikainen virhe:</string>

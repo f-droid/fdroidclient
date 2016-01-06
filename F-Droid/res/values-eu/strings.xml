@@ -15,7 +15,6 @@
   <string name="notify">Eguneraketen jakinarazpenak</string>
   <string name="notify_on">Bistarazi jakinarazpena eguneraketak eskuragarri daudenean</string>
   <string name="update_history">Eguneratu historia</string>
-  <string name="search_results">Bilaketaren emaitzak</string>
   <string name="app_details">Aplikazioaren xehetasunak</string>
   <string name="no_such_app">Ez da aplikazio hori aurkitu.</string>
   <string name="about_title">F-Droid-i buruz</string>
@@ -72,7 +71,6 @@
   <string name="category_Recently_Updated">Azkenaldian eguneratua</string>
   <string name="status_connecting_to_repo">%1$s(e)ra
 konektatzen</string>
-  <string name="status_checking_compatibility">Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen…</string>
   <string name="no_permissions">Ez da baimenik erabiltzen.</string>
   <string name="theme">Gaia</string>
   <string name="unsigned">Sinatu gabea</string>

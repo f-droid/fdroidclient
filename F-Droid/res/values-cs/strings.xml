@@ -24,7 +24,6 @@
   <string name="local_repo_name_summary">Oznamovaný název místního repozitáře: %s</string>
   <string name="local_repo_https">Použít soukromé připojení</string>
   <string name="local_repo_https_on">Použít šifrované HTTPS spojení pro místní repozitář</string>
-  <string name="search_results">Výsledky hledání</string>
   <string name="app_details">Detaily aplikace</string>
   <string name="no_such_app">Žádná taková aplikace nebyla nalezena.</string>
   <string name="about_title">O aplikaci F-Droid</string>
@@ -103,7 +102,6 @@
   <string name="proxy_host_summary">Nakonfigurovat hostname proxy (např. 127.0.0.1)</string>
   <string name="proxy_port">Proxy port</string>
   <string name="status_connecting_to_repo">Připojování k\n%1$s</string>
-  <string name="status_checking_compatibility">Kontrola kompatibility aplikací s tímto zařízením…</string>
   <string name="repos_unchanged">Všechny repozitáře jsou aktuální</string>
   <string name="global_error_updating_repos">Chyba při aktualizaci: %s</string>
   <string name="no_permissions">Žádná oprávnění nejsou použita.</string>

@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">Título anunciado do seu repositório local: %s</string>
   <string name="local_repo_https">Usar conexão privada</string>
   <string name="local_repo_https_on">Usar conexão HTTPS:// criptografada para o repositório local</string>
-  <string name="search_results">Resultados da busca</string>
   <string name="app_details">Detalhes do aplicativo</string>
   <string name="no_such_app">O aplicativo não foi encontrado.</string>
   <string name="about_title">Sobre o F-Droid</string>
@@ -124,7 +123,6 @@
   <string name="proxy_port_summary">Configurar o número da porta do seu proxy (ex. 8118)</string>
   <string name="status_download">Baixando\n%2$s / %3$s (%4$d%%) de\n%1$s</string>
   <string name="status_connecting_to_repo">Conectando-se a\n%1$s</string>
-  <string name="status_checking_compatibility">Verificando compatibilidade de aplicativos com o seu dispositivo…</string>
   <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
   <string name="all_other_repos_fine">Todos os outros repositórios não geraram erros.</string>
   <string name="global_error_updating_repos">Erro durante a atualização: %s</string>

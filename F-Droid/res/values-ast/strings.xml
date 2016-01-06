@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">El títulu alvertíu del to repositoriu llocal: %s</string>
   <string name="local_repo_https">Usar conexón privada</string>
   <string name="local_repo_https_on">Usar conexón HTTPS:// cifrada pal to repositoriu llocal</string>
-  <string name="search_results">Resultaos de gueta</string>
   <string name="app_details">Detalles d\'aplicación</string>
   <string name="no_such_app">Nun s\'alcontraron aplicaciones.</string>
   <string name="about_title">Tocante a F-Droid</string>
@@ -125,7 +124,6 @@
   <string name="status_download">Baxando
 \n%2$s / %3$s (%4$d%%)\ndende %1$s</string>
   <string name="status_connecting_to_repo">Coneutándose a\n%1$s</string>
-  <string name="status_checking_compatibility">Comprobando la compatibilidá d\'aplicaciones col to preséu…</string>
   <string name="repos_unchanged">Tán anovaos tolos repositorios</string>
   <string name="all_other_repos_fine">Tolos otros repositorios nun crearon fallos.</string>
   <string name="global_error_updating_repos">Fallu nel anovamientu: %s</string>

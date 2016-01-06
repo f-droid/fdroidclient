@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">Der werbende Titel Ihrer lokalen Paketquelle: %s</string>
   <string name="local_repo_https">Gesicherte Verbindung verwenden</string>
   <string name="local_repo_https_on">Verschlüsselte HTTPS://-Verbindung zur lokalen Paketquelle verwenden</string>
-  <string name="search_results">Suchergebnisse</string>
   <string name="app_details">Anwendungsdetails</string>
   <string name="no_such_app">Keine solche Anwendung gefunden.</string>
   <string name="about_title">Über F-Droid</string>
@@ -124,7 +123,6 @@
   <string name="proxy_port_summary">Bitte Ihren Proxy-Port konfigurieren (z.B. 8818)</string>
   <string name="status_download">%2$s / %3$s (%4$d%%) von\n%1$s\nwird heruntergeladen</string>
   <string name="status_connecting_to_repo">Mit %1$s\nwird verbunden</string>
-  <string name="status_checking_compatibility">Kompatibilität der Anwendungen mit Ihrem Gerät wird überprüft …</string>
   <string name="repos_unchanged">Alle Paketquellen sind aktuell</string>
   <string name="all_other_repos_fine">Alle anderen Paketquellen erzeugten keine Fehler.</string>
   <string name="global_error_updating_repos">Fehler während der Aktualisierung: %s</string>

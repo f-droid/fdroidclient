@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">De geadverteerde titel van jouw collectie gedeelde apps: %s</string>
   <string name="local_repo_https">Gebruik beveiligde verbinding</string>
   <string name="local_repo_https_on">Gebruik versleutelde HTTPS:// verbinding voor gedeelde apps</string>
-  <string name="search_results">Zoekresultaten</string>
   <string name="app_details">App-details</string>
   <string name="no_such_app">Geen dergelijke app gevonden.</string>
   <string name="about_title">Over F-Droid</string>
@@ -126,7 +125,6 @@
 %2$s / %3$s (%4$d%%) van
 %1$s</string>
   <string name="status_connecting_to_repo">Verbinden met\n%1$s</string>
-  <string name="status_checking_compatibility">Applicaties controleren op compatibiliteit met uw apparaat…</string>
   <string name="repos_unchanged">Alle bronnen zijn up-to-date</string>
   <string name="all_other_repos_fine">Alle andere bronnen hebben geen fouten veroorzaakt.</string>
   <string name="global_error_updating_repos">Fout tijdens update: %s</string>

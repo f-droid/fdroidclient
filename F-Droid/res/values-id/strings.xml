@@ -32,7 +32,6 @@
     <string name="local_repo_https">Gunakan Sambungan Privat</string>
     <string name="local_repo_https_on">Gunakan sambungan HTTPS:// terenkripsi untuk repo lokal</string>
 
-    <string name="search_results">Hasil Pencarian</string>
     <string name="app_details">Detail Apl</string>
     <string name="no_such_app">Aplikasi tersebut tidak ditemukan.</string>
 
@@ -159,7 +158,6 @@
     <string name="update_notification_title">Memperbarui repositori</string>
     <string name="status_processing_xml_percent">Memproses %2$s / %3$s (%4$d%%) dari %1$s</string>
     <string name="status_connecting_to_repo">Menyambung ke\n%1$s</string>
-    <string name="status_checking_compatibility">Memeriksa kompatibilitas aplikasi dengan perangkat Anda…</string>
     <string name="repos_unchanged">Semua repositori telah diperbarui</string>
         <string name="global_error_updating_repos">Galat saat memperbarui: %s</string>
     <string name="no_permissions">Tidak memerlukan izin apapun.</string>

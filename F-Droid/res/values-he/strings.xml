@@ -29,7 +29,6 @@
     <string name="local_repo_https">השתמש בחיבור פרטי</string>
     <string name="local_repo_https_on">השתמש בחיבור //:HTTPS עבור מאגר מקומי</string>
 
-    <string name="search_results">תוצאות חיפוש</string>
     <string name="app_details">פרטי אפליקציה</string>
     <string name="no_such_app">לא נמצאה אפליקציה.</string>
 
@@ -147,7 +146,6 @@
     <string name="update_notification_title">כעת מעדכן מאגרים</string>
     <string name="status_processing_xml_percent">כעת מעבד %2$s / %3$s (%4$d%%) מתוך %1$s</string>
     <string name="status_connecting_to_repo">כעת מתחבר אל\n%1$s</string>
-    <string name="status_checking_compatibility">כעת בודק תאימות אפליקציות עם מכשירך…</string>
     <string name="repos_unchanged">כל המאגרים הינם מעודכנים</string>
         <string name="all_other_repos_fine">כל שאר המאגרים לא יצרו שגיאות.</string>
         <string name="global_error_updating_repos">שגיאה במהלך עדכון: %s</string>

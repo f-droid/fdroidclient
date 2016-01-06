@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">公開するﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘの題名: %s</string>
   <string name="local_repo_https">保護された接続を使用する</string>
   <string name="local_repo_https_on">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘに暗号化されたHTTPS://接続を使用する</string>
-  <string name="search_results">検索結果</string>
   <string name="app_details">ｱﾌﾟﾘ詳細</string>
   <string name="no_such_app">該当するｱﾌﾟﾘｹｰｼｮﾝが存在しません｡</string>
   <string name="about_title">F-Droidについて</string>
@@ -126,7 +125,6 @@
 %2$s / %3$s (%4$d%%) ﾀﾞｳﾝﾛｰﾄﾞ元
 %1$s</string>
   <string name="status_connecting_to_repo">接続中\n%1$s</string>
-  <string name="status_checking_compatibility">お使いの端末とｱﾌﾟﾘの互換性を確認しています…</string>
   <string name="repos_unchanged">ﾘﾎﾟｼﾞﾄﾘは全て最新の状態です｡</string>
   <string name="all_other_repos_fine">他のﾘﾎﾟｼﾞﾄﾘに異常はありません｡</string>
   <string name="global_error_updating_repos">更新中に問題が発生しました: %s</string>

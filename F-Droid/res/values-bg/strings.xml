@@ -26,7 +26,6 @@
   <string name="local_repo_name">Име на локалното хранилище</string>
   <string name="local_repo_name_summary">Обявява хранилището под името: %s</string>
   <string name="local_repo_https_on">Ползва криптирана HTTPS:// връзка за комуникацията с локалното хранилище</string>
-  <string name="search_results">Резултат от търсенето</string>
   <string name="app_details">Детайли за приложението</string>
   <string name="no_such_app">Не е намерено такова приложение.</string>
   <string name="about_title">Относно F-Droid</string>
@@ -112,7 +111,6 @@
 %2$s / %3$s (%4$d%%) от
 %1$s</string>
   <string name="status_connecting_to_repo">Свързване към\n%1$s</string>
-  <string name="status_checking_compatibility">Проверка за съвместимост с устройството…</string>
   <string name="repos_unchanged">Всички хранилищата са актуални</string>
   <string name="global_error_updating_repos">Грешка при актуализирането: %s</string>
   <string name="no_permissions">Не изисква разрешения.</string>

@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">로컬 저장소의 광고 제목: %s</string>
   <string name="local_repo_https">비공개 연결 사용</string>
   <string name="local_repo_https_on">로컬 저장소에 암호화된 HTTPS:// 연결을 사용</string>
-  <string name="search_results">검색 결과</string>
   <string name="app_details">앱 상세정보</string>
   <string name="no_such_app">앱이 발견되지 않음.</string>
   <string name="about_title">F-Droid 대하여</string>
@@ -125,7 +124,6 @@
   <string name="status_download">%1$s 에서 다운로드 중입니다.
 %2$s / %3$s (%4$d%%)</string>
   <string name="status_connecting_to_repo">%1$s에\n접속 중</string>
-  <string name="status_checking_compatibility">장치와 앱의 호환성 확인 중…</string>
   <string name="repos_unchanged">모든 저장소가 최신 상태입니다</string>
   <string name="all_other_repos_fine">다른 저장소들은 오류를 일으키지 않았습니다.</string>
   <string name="global_error_updating_repos">업데이트 도중 오류 발생: %s</string>

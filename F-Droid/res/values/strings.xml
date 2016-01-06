@@ -42,7 +42,6 @@
     <string name="repo_edit_credentials">Change Password</string>
     <string name="repo_error_empty_username">Empty username, credentials not changed</string>
 
-    <string name="search_results">Search Results</string>
     <string name="app_details">App Details</string>
     <string name="no_such_app">No such app found.</string>
 
@@ -191,7 +190,6 @@
     <string name="update_notification_title">Updating repositories</string>
     <string name="status_processing_xml_percent">Processing %2$s / %3$s (%4$d%%) from %1$s</string>
     <string name="status_connecting_to_repo">Connecting to\n%1$s</string>
-    <string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
     <string name="status_inserting_apps">Saving application details</string>
     <string name="repos_unchanged">All repositories are up to date</string>
         <string name="all_other_repos_fine">All other repos didn\'t create errors.</string>

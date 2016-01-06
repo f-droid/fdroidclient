@@ -26,7 +26,6 @@
   <string name="local_repo_name">Tên kho ứng dụng nội bộ</string>
   <string name="local_repo_https">Dùng kết nối riêng tư</string>
   <string name="local_repo_https_on">Dùng kết nối HTTPS:// mã hoá cho kho nội bộ</string>
-  <string name="search_results">Kết quả tìm kiếm</string>
   <string name="app_details">Thông tin ứng dụng</string>
   <string name="no_such_app">Không tìm thấy ứng dụng.</string>
   <string name="about_title">Giới thiệu về F-Droid</string>
@@ -114,7 +113,6 @@
   <string name="status_download">Đang tải %2$s / %3$s (%4$d%%) từ %1$s</string>
   <string name="status_connecting_to_repo">Đang kết nối đến
 \n%1$s</string>
-  <string name="status_checking_compatibility">Đang kiểm tra tính tương thích của các ứng dụng với thiết bị của bạn…</string>
   <string name="repos_unchanged">Tất cả các kho ứng dụng đã được cập nhật</string>
   <string name="global_error_updating_repos">Lỗi khi cập nhật: %s</string>
   <string name="no_permissions">Không sử dụng quyền nào.</string>

@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">Ваш локальный репозиторий рекламируется под именем: %s</string>
   <string name="local_repo_https">Использовать частное соединение</string>
   <string name="local_repo_https_on">Использовать защищённое HTTPS:// соединение для локального репозитория</string>
-  <string name="search_results">Результаты поиска</string>
   <string name="app_details">Описание приложения</string>
   <string name="no_such_app">Приложение не найдено.</string>
   <string name="about_title">О F-Droid</string>
@@ -125,7 +124,6 @@
 %2$s / %3$s (%4$d%%) из
 %1$s</string>
   <string name="status_connecting_to_repo">Соединение с\n%1$s</string>
-  <string name="status_checking_compatibility">Проверка совместимости приложений с вашим устройством…</string>
   <string name="repos_unchanged">Все репозитории обновлены</string>
   <string name="all_other_repos_fine">Остальные репозитории не привели к ошибкам.</string>
   <string name="global_error_updating_repos">Ошибка во время обновления: %s</string>

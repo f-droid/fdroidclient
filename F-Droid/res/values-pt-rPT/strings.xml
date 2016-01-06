@@ -34,7 +34,6 @@
     <string name="local_repo_https">Utilizar ligação privada</string>
     <string name="local_repo_https_on">Utilizar ligação HTTPS:// para o repositório local</string>
 
-    <string name="search_results">Resultados da pesquisa</string>
     <string name="app_details">Detalhes da aplicação</string>
     <string name="no_such_app">Aplicação não encontrada.</string>
 
@@ -163,7 +162,6 @@
     <string name="update_notification_title">A atualizar repositórios</string>
     <string name="status_processing_xml_percent">A processar %2$s/%3$s (%4$d%%) de %1$s</string>
     <string name="status_connecting_to_repo">Estabelecendo\nligação a %1$s</string>
-    <string name="status_checking_compatibility">A verificar compatibilidade com o seu dispositivo…</string>
     <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
         <string name="all_other_repos_fine">Nenhum dos repositórios gerou erros.</string>
         <string name="global_error_updating_repos">Erro ao atualizar: %s</string>

@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">Zverejnený názov miestneho repozitára: %s</string>
   <string name="local_repo_https">Použiť bezpečné pripojenie</string>
   <string name="local_repo_https_on">Použiť zašifrované HTTPS:// pripojenie pre miestny repozitár</string>
-  <string name="search_results">Výsledky hľadania</string>
   <string name="app_details">Detaily aplikácie</string>
   <string name="no_such_app">Aplikácia sa nenašla.</string>
   <string name="about_title">O F-Droide</string>
@@ -122,7 +121,6 @@
   <string name="status_download">Sťahuje sa %2$s / %3$s (%4$d%%) z
 %1$s</string>
   <string name="status_connecting_to_repo">Pripájanie na\n%1$s</string>
-  <string name="status_checking_compatibility">Kontroluje sa kompatibilita aplikácií s vašim zariadením…</string>
   <string name="repos_unchanged">Všetky repozitáre sú aktuálne</string>
   <string name="all_other_repos_fine">Ostatné repozitáre nevytvorili chyby.</string>
   <string name="global_error_updating_repos">Chyba počas aktualizácie: %s</string>

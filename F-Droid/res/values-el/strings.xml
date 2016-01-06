@@ -21,7 +21,6 @@
   <string name="notify_on">Ειδοποίηση όταν υπάρχουν διαθέσιμες ενημερώσεις</string>
   <string name="update_history">Ιστορικό ενημερώσεων</string>
   <string name="update_history_summ">Ημέρες που θα θεωρούνται οι εφαρμογές νέες ή πρόσφατες: %s</string>
-  <string name="search_results">Αποτελέσματα Αναζήτησης</string>
   <string name="app_details">Λεπτομέρειες Εφαρμογής</string>
   <string name="no_such_app">Δεν βρέθηκε τέτοια εφαρμογή.</string>
   <string name="about_title">Σχετικά με το F-Droid</string>
@@ -98,7 +97,6 @@
 %2$s / %3$s (%4$d%%) από
 %1$s</string>
   <string name="status_connecting_to_repo">Σύνδεση με\n%1$s</string>
-  <string name="status_checking_compatibility">Έλεγχος συμβατότητας εφαρμογών με τη συσκευή σας…</string>
   <string name="no_permissions">Δεν χρησιμοποιείται καμία άδεια.</string>
   <string name="no_handler_app">Δεν έχετε καμία διαθέσιμη εφαρμογή που μπορεί να χειριστεί %s.</string>
   <string name="theme">Θέμα</string>

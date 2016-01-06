@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">Annonserad titel på ditt lokala förråd: %s</string>
   <string name="local_repo_https">Använd privat anslutning</string>
   <string name="local_repo_https_on">Använd krypterad HTTPs://-anslutning för lokalt förråd</string>
-  <string name="search_results">Sökresultat</string>
   <string name="app_details">Detaljer för app</string>
   <string name="no_such_app">Hittade ingen sådan app.</string>
   <string name="about_title">Om F-Droid</string>
@@ -126,7 +125,6 @@
 %2$s / %3$s (%4$d%%) från
 %1$s</string>
   <string name="status_connecting_to_repo">Ansluter till\n%1$s</string>
-  <string name="status_checking_compatibility">Kontrollerar apparnas kompatibilitet med din enhet…</string>
   <string name="repos_unchanged">Alla fil-förråd är uppdaterade</string>
   <string name="all_other_repos_fine">Inget annat förråd skapade fel.</string>
   <string name="global_error_updating_repos">Fel vid uppdatering: %s</string>

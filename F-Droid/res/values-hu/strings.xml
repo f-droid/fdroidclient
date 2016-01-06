@@ -19,7 +19,6 @@
   <string name="notify_on">Értesít ha frissítés érhető el</string>
   <string name="update_history">Frissítési előzmények</string>
   <string name="update_history_summ">Hány napig tekintse az appot frissnek vagy újnak: %s</string>
-  <string name="search_results">Keresési előzmények</string>
   <string name="app_details">App részletei</string>
   <string name="no_such_app">Nem található ilyen app</string>
   <string name="about_title">Az F-Droid</string>
@@ -93,7 +92,6 @@
 %1$s\"</string>
   <string name="status_connecting_to_repo">\"Kapcsolódás
 %1$s\"</string>
-  <string name="status_checking_compatibility">Alkalmazások eszközkompatibilitási ellenőrzése…</string>
   <string name="no_permissions">Nincsenek engedélyei.</string>
   <string name="no_handler_app">\"Nincs semmilyen app, ami képes ezt kezelni %s\"</string>
   <string name="theme">Téma</string>

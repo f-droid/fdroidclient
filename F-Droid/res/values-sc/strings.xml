@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">Su nùmene pùblicu de su depòsitu locale tuo: %s</string>
   <string name="local_repo_https">Imprea una cunnessione privada</string>
   <string name="local_repo_https_on">Imprea sa cunnessione criptada HTTPS:// pro sos depòsitu locale</string>
-  <string name="search_results">Resultados de sa chirca</string>
   <string name="app_details">Minujas/detallios aplicatzione</string>
   <string name="no_such_app">Peruna aplicatzione currispondente.</string>
   <string name="about_title">Informatziones</string>
@@ -124,7 +123,6 @@
   <string name="proxy_port_summary">Cunfigura su nùmeru de sa ghenna de su proxy tuo (es. 8118)</string>
   <string name="status_download">Iscarrighende %2$s / %3$s (%4$d%%) dae %1$s</string>
   <string name="status_connecting_to_repo">Cunnessione a\n%1$s</string>
-  <string name="status_checking_compatibility">Verifichende sa cumpatibilidade cun su dispositivu tuo…</string>
   <string name="repos_unchanged">Totu sos depòsitos sunt agiornados</string>
   <string name="all_other_repos_fine">Totu sos àteros depòsitos no ant creadu faddinas.</string>
   <string name="global_error_updating_repos">Faddina durante s\'agiornamentu: %s</string>

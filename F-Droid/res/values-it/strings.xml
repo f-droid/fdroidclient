@@ -27,7 +27,6 @@
   <string name="local_repo_name_summary">Il titolo visualizzato della tua repo: %s</string>
   <string name="local_repo_https">Usa una Connessione Privata</string>
   <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per le repo locali</string>
-  <string name="search_results">Risultati Ricerca</string>
   <string name="app_details">Dettagli App</string>
   <string name="no_such_app">Nessuna app corrispondente trovata.</string>
   <string name="about_title">Informazioni</string>
@@ -124,7 +123,6 @@
 %2$s / %3$s (%4$d%%) da
 %1$s</string>
   <string name="status_connecting_to_repo">Connessione a\n%1$s</string>
-  <string name="status_checking_compatibility">Controllo compatibilità applicazioni con il tuo dispositivo…</string>
   <string name="repos_unchanged">Tutti i depositi sono aggiornati</string>
   <string name="all_other_repos_fine">Tutte gli altri depositi non hanno generato errori.</string>
   <string name="global_error_updating_repos">Errore durante l\'aggiornamento: %s</string>
