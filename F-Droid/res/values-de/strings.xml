@@ -228,7 +228,7 @@
 
     <string name="empty_installed_app_list">Keine Anwendungen installiert.\n\nEs sind Anwendungen auf deinem Gerät installiert, aber keine davon ist in F-Droid erhältlich. Das könnte daran liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Anwendungen beinhalten.</string>
     <string name="empty_available_app_list">Keine Anwendungen in dieser Kategorie.\n\nBitte eine anderen Kategorie versuchen oder die Paketquellen aktualisieren.</string>
-    <string name="empty_can_update_app_list">Alle Anwendungen sind auf dem neuesten Stand.\n\nGratulation! Alle Ihre Apps sind auf dem neuesten Stand (oder Ihre Paketquellen sind veraltet).</string>
+    <string name="empty_can_update_app_list">Alle Anwendungen sind auf dem neuesten Stand.\n\nGlückwunsch! Alle Ihre Apps sind auf dem neuesten Stand (oder Ihre Paketquellen sind veraltet).</string>
 
     <string name="swap_send_fdroid">F-Droid senden</string>
     <string name="swap_connecting">Verbindungsaufbau</string>
@@ -331,7 +331,7 @@
     <string name="about_license">Lizenz</string>
 
     <string name="tab_installed_apps_count">Installiert (%d)</string>
-    <string name="tab_updates_count">Aktualisierungen (%d)</string>
+    <string name="tab_updates_count">Aktualisierung (%d)</string>
     <string name="status_inserting_apps">Anwendungsdetails werden gespeichert</string>
     <string name="empty_search_can_update_app_list">Keine passenden Anwendungen zum Aktualisieren.</string>
 

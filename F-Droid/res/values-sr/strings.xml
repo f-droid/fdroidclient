@@ -337,4 +337,6 @@
     <string name="crash_dialog_title">Ф-дроид се срушио</string>
     <string name="crash_dialog_text">Неочекивана грешка је присилила програм да се заустави. Желите ли да пошаљете детаље е-поштом и тиме помогнете у решавању проблема?</string>
     <string name="crash_dialog_comment_prompt">Можете да унесете додатне податке и коментаре овде:</string>
-</resources>
+<string name="antinonfreeassetslist">Ова апликација садржи неслободне ресурсе</string>
+
+    </resources>

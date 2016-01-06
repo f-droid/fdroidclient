@@ -340,4 +340,6 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="crash_dialog_title">F-Droid se ha detenido</string>
     <string name="crash_dialog_text">Un errror inesperado ha obligado a la aplicación a cerrarse. ¿Podrías mandarnos un correo electrónico con los detalles para ayudarnos a arreglarlo?</string>
     <string name="crash_dialog_comment_prompt">Puedes añadir información extra y comentarios aquí:</string>
-</resources>
+<string name="antinonfreeassetslist">Esta aplicación contiene recursos que no son libres</string>
+
+    </resources>
