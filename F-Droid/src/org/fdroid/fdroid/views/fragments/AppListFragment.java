@@ -207,9 +207,11 @@ public abstract class AppListFragment extends ListFragment implements
     }
 
     public void updateSearchQuery(@Nullable String query) {
-        searchQuery = query;
-        if (isAdded()) {
-            getLoaderManager().restartLoader(0, null, this);
+        if (!TextUtils.equals(query, searchQuery)) {
+            searchQuery = query;
+            if (isAdded()) {
+                getLoaderManager().restartLoader(0, null, this);
+            }
         }
     }
 }
