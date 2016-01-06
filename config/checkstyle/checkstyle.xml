@@ -10,10 +10,7 @@
 
     <module name="RegexpSingleline">
         <property name="format" value="\s+$" />
-        <property name="minimum" value="0" />
-        <property name="maximum" value="0" />
         <property name="message" value="Line has trailing spaces." />
-        <property name="severity" value="info" />
     </module>
 
     <module name="TreeWalker">
@@ -97,18 +94,12 @@
         </module>
 
         <module name="EmptyStatement" />
-        <!--<module name="HiddenField" />-->
         <module name="IllegalInstantiation" />
         <module name="InnerAssignment" />
         <module name="DefaultComesLast" />
-        <!--<module name="MissingSwitchDefault" />-->
         <module name="FallThrough" />
 
         <module name="FinalClass" />
-
-        <!--<module name="HideUtilityClassConstructor" />-->
-        <!--<module name="InterfaceIsType" />-->
-        <!--<module name="VisibilityModifier" />-->
 
         <module name="ArrayTypeStyle" />
         <module name="ArrayTrailingComma" />
@@ -116,7 +107,6 @@
 
         <module name="StringLiteralEquality" />
         <module name="EqualsAvoidNull" />
-        <!--<module name="EqualsHashCode" />-->
 
         <module name="IllegalTokenText">
             <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
