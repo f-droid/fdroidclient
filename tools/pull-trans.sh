@@ -23,7 +23,7 @@ if ! git ls-remote --exit-code $REMOTE >/dev/null 2>/dev/null; then
 fi
 
 ref="${REMOTE}/${REMOTE_BRANCH}"
-diff="HEAD..$ref -- */values-*/strings.xml"
+diff="HEAD...$ref -- */values-*/strings.xml"
 
 authors=$(git log --format="%s %an" $diff | \
 	sed 's/Translated using Weblate (\(.*\)) \(.*\)/\2||\1/' | sort -f -u | column -s '||' -t)
