@@ -86,7 +86,7 @@
     <string name="unstable_updates">به‌روز رسانی‌های ناپایدار</string>
     <string name="unstable_updates_summary">پیشنهاد به‌روز رسانی به نگارش‌های ناپایدار</string>
     <string name="notify">آگهی‌های به‌روز رسانی</string>
-    <string name="update_history_summ">روزهایی که کاره حدید یا اخیر محسوب شود: %Is</string>
+    <string name="update_history_summ">روزهایی که کاره حدید یا اخیر محسوب شود: %s</string>
     <string name="system_installer">افزونهٔ ممتاز</string>
     <string name="system_installer_on">استفاده از افزونهٔ ممتاز اف‌دروید برای نصب، به‌روز رسانی و حذف بسته‌ها</string>
     <string name="uninstall_system">به‌روز رسانی/حذف افزونهٔ ممتاز</string>
@@ -119,11 +119,11 @@
     <string name="back">بازگشت</string>
     <string name="tab_available_apps">موجود</string>
     <string name="tab_installed_apps">نصب شده</string>
-    <string name="tab_installed_apps_count">نصب شده (%Id)</string>
-    <string name="tab_updates_count">به‌روز رسانی‌ها (%Id)</string>
+    <string name="tab_installed_apps_count">نصب شده (%d)</string>
+    <string name="tab_updates_count">به‌روز رسانی‌ها (%d)</string>
     <string name="one_update_available">۱ به‌روز رسانی موجود است.</string>
-    <string name="many_updates_available">%Id به روز رسانی موجود است.</string>
-    <string name="update_notification_more">+%!$Id بیش‌تر…</string>
+    <string name="many_updates_available">%d به روز رسانی موجود است.</string>
+    <string name="update_notification_more">+%1$d بیش‌تر…</string>
     <string name="send_via_bluetooth">ارسال با بلوتوث</string>
 
     <string name="repo_exists_add_fingerprint">این مخزن از پیش برپا شده است. این کار، اظّلاعات کلید جدیدی را می‌افزاید.</string>
@@ -145,7 +145,7 @@
     <string name="menu_flattr">فلتر</string>
 
 
-    <string name="details_installed">نگارش %Is نصب شده</string>
+    <string name="details_installed">نگارش %s نصب شده</string>
     <string name="expert">حالت حرفه‌ای</string>
     <string name="show_incompat_versions">نگارش‌های ناسازگار</string>
     <string name="show_incompat_versions_on">نمایش نگارش‌های ناساگار کاره با این افزاره</string>
