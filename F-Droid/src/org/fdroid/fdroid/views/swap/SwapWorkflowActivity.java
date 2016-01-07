@@ -81,7 +81,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      * Ensure that we don't try to handle specific intents more than once in onResume()
      * (e.g. the "Do you want to swap back with ..." intent).
      */
-    public static final String EXTRA_HANDLED = "handled";
+    public static final String EXTRA_SWAP_INTENT_HANDLED = "swapIntentHandled";
 
     private ViewGroup container;
 
@@ -209,10 +209,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private void checkIncomingIntent() {
         Intent intent = getIntent();
-        if (intent.getBooleanExtra(EXTRA_CONFIRM, false) && !intent.getBooleanExtra(EXTRA_HANDLED, false)) {
+        if (intent.getBooleanExtra(EXTRA_CONFIRM, false) && !intent.getBooleanExtra(EXTRA_SWAP_INTENT_HANDLED, false)) {
             // Storing config in this variable will ensure that when showRelevantView() is next
             // run, it will show the connect swap view (if the service is available).
-            intent.putExtra(EXTRA_HANDLED, true);
+            intent.putExtra(EXTRA_SWAP_INTENT_HANDLED, true);
             confirmSwapConfig = new NewRepoConfig(this, intent);
         }
     }
