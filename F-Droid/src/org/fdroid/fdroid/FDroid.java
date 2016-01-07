@@ -65,6 +65,8 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     public static final String ACTION_ADD_REPO = "org.fdroid.fdroid.FDroid.ACTION_ADD_REPO";
 
+    private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
+
     private FDroidApp fdroidApp;
 
     private ViewPager viewPager;
@@ -135,13 +137,24 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
         super.onResume();
         // AppDetails and RepoDetailsActivity set different NFC actions, so reset here
         NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
-        checkForAddRepoIntent();
+        checkForAddRepoIntent(getIntent());
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         handleSearchOrAppViewIntent(intent);
+
+        // This is called here as well as onResume(), because onNewIntent() is not called the first
+        // time the activity is created. An alternative option to make sure that the add repo intent
+        // is always handled is to call setIntent(intent) here. However, after this good read:
+        // http://stackoverflow.com/a/7749347 it seems that adding a repo is not really more
+        // important than the original intent which caused the activity to start (even though it
+        // could technically have been an add repo intent itself).
+        // The end result is that this method will be called twice for one add repo intent. Once
+        // here and once in onResume(). However, the method deals with this by ensuring it only
+        // handles the same intent once.
+        checkForAddRepoIntent(intent);
     }
 
     private void handleSearchOrAppViewIntent(Intent intent) {
@@ -236,14 +249,13 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
         }
     }
 
-    private void checkForAddRepoIntent() {
+    private void checkForAddRepoIntent(Intent intent) {
         // Don't handle the intent after coming back to this view (e.g. after hitting the back button)
         // http://stackoverflow.com/a/14820849
-        Intent intent = getIntent();
-        if (!intent.hasExtra("handled")) {
+        if (!intent.hasExtra(ADD_REPO_INTENT_HANDLED)) {
             NewRepoConfig parser = new NewRepoConfig(this, intent);
             if (parser.isValidRepo()) {
-                intent.putExtra("handled", true);
+                intent.putExtra(ADD_REPO_INTENT_HANDLED, true);
                 if (parser.isFromSwap()) {
                     Intent confirmIntent = new Intent(this, SwapWorkflowActivity.class);
                     confirmIntent.putExtra(SwapWorkflowActivity.EXTRA_CONFIRM, true);
