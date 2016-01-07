@@ -9,6 +9,7 @@ import org.acra.BaseCrashReportDialog;
 
 public class CrashReportActivity extends BaseCrashReportDialog implements DialogInterface.OnDismissListener, DialogInterface.OnClickListener {
 
+    private static final String STATE_COMMENT = "comment";
     private EditText comment;
 
     @Override
@@ -27,6 +28,9 @@ public class CrashReportActivity extends BaseCrashReportDialog implements Dialog
         dialog.show();
 
         comment = (EditText) dialog.findViewById(android.R.id.input);
+        if (savedInstanceState != null) {
+            comment.setText(savedInstanceState.getString(STATE_COMMENT));
+        }
     }
 
     @Override
@@ -44,4 +48,9 @@ public class CrashReportActivity extends BaseCrashReportDialog implements Dialog
         finish();
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString(STATE_COMMENT, comment.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
 }
