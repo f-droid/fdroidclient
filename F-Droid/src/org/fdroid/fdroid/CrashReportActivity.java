@@ -9,6 +9,8 @@ import org.acra.BaseCrashReportDialog;
 
 public class CrashReportActivity extends BaseCrashReportDialog implements DialogInterface.OnDismissListener, DialogInterface.OnClickListener {
 
+    private EditText comment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,8 @@ public class CrashReportActivity extends BaseCrashReportDialog implements Dialog
         dialog.setCanceledOnTouchOutside(false);
         dialog.setOnDismissListener(this);
         dialog.show();
+
+        comment = (EditText) dialog.findViewById(android.R.id.input);
     }
 
     @Override
@@ -33,8 +37,7 @@ public class CrashReportActivity extends BaseCrashReportDialog implements Dialog
     @Override
     public void onClick(DialogInterface dialog, int which) {
         if (which == DialogInterface.BUTTON_POSITIVE) {
-            final String comment = ((EditText) findViewById(android.R.id.input)).getText().toString();
-            sendCrash(comment, "");
+            sendCrash(comment.getText().toString(), "");
         } else {
             cancelReports();
         }
