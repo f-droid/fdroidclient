@@ -76,7 +76,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      */
     public static final String EXTRA_PREVENT_FURTHER_SWAP_REQUESTS = "preventFurtherSwap";
     public static final String EXTRA_CONFIRM = "EXTRA_CONFIRM";
-    public static final String EXTRA_REPO_ID = "repoId";
 
     /**
      * Ensure that we don't try to handle specific intents more than once in onResume()
