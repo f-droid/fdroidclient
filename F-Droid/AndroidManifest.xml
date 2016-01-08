@@ -378,7 +378,7 @@
         </activity>
         <activity
             android:name="org.fdroid.fdroid.CrashReportActivity"
-            android:theme="@style/AlertDialogThemeDark"
+            android:theme="@style/AppThemeDark"
             android:process=":error_report"
             android:launchMode="singleInstance"
             android:excludeFromRecents="true"
