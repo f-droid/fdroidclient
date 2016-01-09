@@ -10,6 +10,7 @@
     <string name="installIncompatible">It seems like this package is not compatible with your device. Do you want to try and install it anyway?</string>
     <string name="installDowngrade">You are trying to downgrade this application. Doing so might get it to malfunction and even lose your data. Do you want to try and downgrade it anyway?</string>
     <string name="version">Version</string>
+    <string name="by_author">by</string>
     <string name="delete">Delete</string>
     <string name="enable_nfc_send">Enable NFC Send…</string>
     <string name="cache_downloaded">Cache packages</string>
@@ -114,6 +115,7 @@
     <string name="menu_ignore_all">Ignore All Updates</string>
     <string name="menu_ignore_this">Ignore This Update</string>
     <string name="menu_website">Website</string>
+    <string name="menu_email">E-Mail Author</string>
     <string name="menu_issues">Issues</string>
     <string name="menu_changelog">Changelog</string>
     <string name="menu_source">Source Code</string>
