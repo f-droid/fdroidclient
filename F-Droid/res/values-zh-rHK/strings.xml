@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">找到%1$d個符合「%2$s」的應用程式：</string>
-  <string name="searchres_oneapp">找到一個符合「%s」的應用程式：</string>
+  <string name="searchres_napps">找到 %1$d 個符合「%2$s」的應用程式：</string>
+  <string name="searchres_oneapp">找到 1 個符合「%s」的應用程式：</string>
   <string name="searchres_noapps">找不到任何符合「%s」的應用程式</string>
   <string name="version">版本</string>
   <string name="delete">刪除</string>
   <string name="enable_nfc_send">啟用 NFC 傳送…</string>
   <string name="cache_downloaded">軟件包快取</string>
-  <string name="cache_downloaded_on">保留已下載的軟件包檔案在裝置上</string>
+  <string name="cache_downloaded_on">在裝置上保留已下載的軟件包檔案</string>
   <string name="updates">更新</string>
   <string name="other">其他</string>
   <string name="update_interval">自動更新頻率</string>
-  <string name="update_interval_zero">不要自動更新應用程式清單</string>
+  <string name="update_interval_zero">不要自動更新應用程式目錄</string>
   <string name="automatic_scan_wifi">只透過 Wi-Fi 更新</string>
-  <string name="automatic_scan_wifi_on">只透過 Wi-Fi 自動更新應用程式清單</string>
+  <string name="automatic_scan_wifi_on">只透過 Wi-Fi 自動更新應用程式目錄</string>
   <string name="notify">更新通知</string>
   <string name="notify_on">應用程式發佈更新時通知我</string>
   <string name="update_history">更新記錄</string>
@@ -34,7 +34,7 @@
   <string name="app_inst_known_source">已安裝 (來自 %s)</string>
   <string name="app_inst_unknown_source">已安裝 (來源不明)</string>
   <string name="added_on">於 %s 添置</string>
-  <string name="ok">OK</string>
+  <string name="ok">明白</string>
   <string name="yes">是</string>
   <string name="no">否</string>
   <string name="repo_add_title">添加軟件倉庫</string>
@@ -70,7 +70,7 @@
   <string name="menu_source">原始碼</string>
   <string name="menu_upgrade">升級</string>
   <string name="menu_donate">捐款</string>
-  <string name="details_installed">已安裝版本%s</string>
+  <string name="details_installed">已安裝版本 %s</string>
   <string name="details_notinstalled">沒有安裝</string>
   <string name="corrupt_download">下載的檔案已損毀。</string>
   <string name="antiadslist">此應用程式含有廣告</string>
@@ -116,7 +116,7 @@
   <string name="repo_confirm_delete_title">刪除軟件倉庫？</string>
   <string name="repo_disabled_notification">已停用 %1$s。\n\n您需重新啟用此軟件倉庫才能安裝其中的應用程式。</string>
   <string name="repo_added">已儲存 F-Droid 軟件倉庫 %1$s。</string>
-  <string name="repo_searching_address">在 %1$s 尋找 F-Droid 軟件倉庫</string>
+  <string name="repo_searching_address">在 %1$s\n搜索 F-Droid 軟件倉庫</string>
   <string name="minsdk_or_later">%s 或以後</string>
   <string name="up_to_maxsdk">直至 %s</string>
   <string name="not_on_same_wifi">您剛才添加的本地倉庫與您的裝置並不在同一個 Wi-Fi 網絡上！請嘗試加入以下網絡：%s</string>
@@ -172,7 +172,7 @@
     <string name="category_Time">時間</string>
     <string name="category_Writing">文書</string>
 
-    <string name="empty_available_app_list">此分類沒有任何應用程式。\n\n請選擇另一個分類或嘗試更新您的軟件倉庫以取得最新的程式清單。</string>
+    <string name="empty_available_app_list">此分類沒有任何應用程式。\n\n請選擇另一個分類或嘗試更新您的軟件倉庫以取得最新的程式目錄。</string>
     <string name="empty_can_update_app_list">所有應用程式都是最新的。\n\n恭喜您！所有的應用程式已更新至最新的版本 (或許您的軟件倉庫已過期)。</string>
 
     <string name="install_error_title">安裝錯誤</string>
@@ -214,7 +214,7 @@
     <string name="swap_scanning_for_peers">正在尋找附近的人…</string>
     <string name="swap_choose_apps">選擇程式</string>
     <string name="swap_dont_show_again">不要再顯示</string>
-    <string name="installIncompatible">此軟件包與您的裝置不相容，您還要安裝它嗎？</string>
+    <string name="installIncompatible">此軟件包與您的裝置並不相容，您確定要安裝嗎？</string>
     <string name="proxy">代理伺服器</string>
     <string name="enable_proxy_title">啟用 HTTP 代理伺服器</string>
     <string name="proxy_host">Proxy Host</string>
@@ -231,8 +231,8 @@
     <string name="update_notification_more">還有 +%1$d 個…</string>
     <string name="next">下一步</string>
     <string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
-    <string name="SignatureMismatch">新版本的應用程式使用了不同的鑰匙簽署。若要安裝新版本，必須先解除安裝舊版本。請這樣做之後再重新嘗試。(注意：解除安裝將會把應用應程的內存資料刪除)</string>
-    <string name="installDowngrade">您正在嘗試將應用程式降級。這樣做可能會導致運作不正常甚至資料損失。您肯定要嘗試降級嗎？</string>
+    <string name="SignatureMismatch">應用程式的新版本使用了不同的鑰匙簽署。若要安裝新版本，您必須先將舊版本卸載，然後再嘗試安裝。(注意：卸載將會把應用程式內的資料刪除)</string>
+    <string name="installDowngrade">此舉會將應用程式降級。這樣做可能會導致程式異常運作甚至損失資料。您肯定要降級嗎？</string>
     <string name="download_error">下載失敗</string>
 
     <string name="more">顯示更多</string>
@@ -315,7 +315,7 @@
     <string name="empty_search_available_app_list">沒有符合搜尋字詞的應用程式。</string>
     <string name="empty_search_can_update_app_list">沒有符合搜尋字詞的更新。</string>
 
-    <string name="root_access_denied_body">您的 Android 裝置還未取得 root 權限或 F-Droid 被拒絕取得 root 權限。</string>
+    <string name="root_access_denied_body">您的 Android 裝置還未取得 root 權限或 F-Droid 被拒 root 權限。</string>
     <string name="system_install_denied_body">此選項只在安裝 F-Droid 系統權限套件後適用。</string>
     <string name="system_install_denied_signature">套件的簽署並不正確！請建立一份錯誤報告！</string>
     <string name="system_install_denied_permissions">套件尚未得到系統權限！請建立一份錯誤報告！</string>
@@ -323,7 +323,7 @@
     <string name="perm_costs_money">此權限可能需要您花費</string>
     <string name="crash_dialog_title">F-Droid 已崩潰</string>
     <string name="crash_dialog_comment_prompt">您可以在此加入額外的資料及評論：</string>
-<string name="login_title">需要認證</string>
+<string name="login_title">需要驗證</string>
     <string name="antinonfreeassetslist">此應用程式含有非自由的資源</string>
 
     <string name="system_install_post_fail_message">F-Droid 系統權限套件安裝失敗。此安裝方式並不支援所有的 Android 版本，請參見 F-Droid 的 bug tracker 以取得更多資訊。</string>
@@ -338,4 +338,6 @@
     <string name="install_error_cannot_parse">閱讀軟件包時發生了錯誤</string>
     <string name="update_history_summ">最新的程式及更新均要在 %s 天內加入程式目錄</string>
     <string name="repo_exists_add_fingerprint">由於此倉庫已經設置好，此動作將會加入新的鑰匙數據。</string>
+    <string name="menu_email">電郵作者</string>
+    <string name="unsigned_description">這表示應用程式清單不可被驗證。您要小心使用來自未簽署的索引的應用程式。</string>
     </resources>

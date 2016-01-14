@@ -328,4 +328,5 @@
     <string name="tab_installed_apps_count">Đã cài đặt (%d)</string>
     <string name="tab_updates_count">Cập nhật (%d)</string>
     <string name="status_inserting_apps">Đang lưu thông tin ứng dụng</string>
+    <string name="by_author">bởi</string>
     </resources>

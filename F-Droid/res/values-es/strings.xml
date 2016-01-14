@@ -340,4 +340,10 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="crash_dialog_comment_prompt">Puedes añadir información extra y comentarios aquí:</string>
 <string name="antinonfreeassetslist">Esta aplicación contiene recursos que no son libres</string>
 
+    <string name="empty_search_installed_app_list">Ninguna de las aplicaciones instaladas coincide.</string>
+    <string name="empty_search_available_app_list">No hay coincidencias con las aplicaciones disponibles.</string>
+    <string name="empty_search_can_update_app_list">No hay ninguna coincidencia con ninguna aplicación a actualizar.</string>
+
+    <string name="by_author">por</string>
+    <string name="menu_email">Correo electrónico al autor</string>
     </resources>

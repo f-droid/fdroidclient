@@ -339,4 +339,6 @@
 <string name="crash_dialog_title">F-Droid s\'est serradu</string>
     <string name="antinonfreeassetslist">Custa aplicatzione cuntennit còdighe non lìberu</string>
 
+    <string name="by_author">de</string>
+    <string name="menu_email">Iscrie a s’autore</string>
     </resources>

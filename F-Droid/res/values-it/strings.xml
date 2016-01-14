@@ -331,4 +331,5 @@
     <string name="swap_nearby">Scambio Ravvicinato</string>
     <string name="empty_search_installed_app_list">Nessuna applicazione installata corrispondente.</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>
-</resources>
+<string name="by_author">di</string>
+    </resources>

@@ -265,4 +265,42 @@
 
     <string name="system_uninstall_button">Удалить</string>
 
+    <string name="menu_email">Написать автору</string>
+    <string name="antinonfreeassetslist">Это приложение содержит несвободные ресурсы</string>
+
+    <string name="category_Writing">Работа с текстом</string>
+
+    <string name="empty_search_installed_app_list">Нет совпадений среди установленных приложений.</string>
+    <string name="empty_search_available_app_list">Нет совпадений среди доступных приложений.</string>
+    <string name="empty_search_can_update_app_list">Нет совпадений среди доступных обновлений.</string>
+
+    <string name="system_install_warning">Это займёт до 10 секунд.</string>
+    <string name="system_install_warning_lollipop">Это займёт до 10 секунд, после чего устройство будет <b>перезагружено</b>.</string>
+    <string name="swap_dont_show_again">Больше не показывать</string>
+    <string name="swap_choose_apps">Выберите приложения</string>
+    <string name="swap_scan_qr">Сканировать QR-код</string>
+    <string name="swap_wifi_device_name">Имя устройства</string>
+    <string name="swap_connecting">Подключение</string>
+    <string name="loading">Загрузка…</string>
+    <string name="install_confirm">Хотите установить это приложение? Оно получит доступ к:</string>
+    <string name="install_confirm_no_perms">Хотите установить это приложение? Оно не требует особых разрешений.</string>
+    <string name="install_confirm_update">Хотите обновить установленное приложение? Существующие данные не будут потеряны. Обновлённое приложение получит доступ к:</string>
+    <string name="install_confirm_update_system">Хотите обновить встроенное приложение? Существующие данные не будут потеряны. Обновлённое приложение получит доступ к:</string>
+    <string name="install_confirm_update_no_perms">Хотите обновить установленное приложение? Существующие данные не будут потеряны. Оно не требует особых разрешений.</string>
+    <string name="install_confirm_update_system_no_perms">Хотите обновить встроенное приложение? Существующие данные не будут потеряны. Оно не требует особых разрешений.</string>
+    <string name="newPerms">Новые</string>
+    <string name="allPerms">Все</string>
+    <string name="privacyPerms">Конфиденциальность</string>
+    <string name="devicePerms">Доступ к устройству</string>
+    <string name="perm_costs_money">Это может стоить вам денег</string>
+    <string name="uninstall_update_confirm">Хотите заменить это приложение заводской версией?</string>
+    <string name="uninstall_confirm">Хотите удалить это приложение?</string>
+    <string name="tap_to_install">Загрузка закончена, нажмите для установки</string>
+    <string name="download_error">Загрузка не удалась</string>
+
+    <string name="perms_new_perm_prefix">"Новые: "</string>
+    <string name="crash_dialog_title">Произошёл сбой F-Droid</string>
+    <string name="crash_dialog_text">Непредвиденная ошибка привела к остановке приложения. Хотите отправить письмо с подробностями, чтобы помочь исправить эту ошибку?</string>
+    <string name="crash_dialog_comment_prompt">Можете добавить дополнительную информацию и комментарии:</string>
+<string name="by_author">от</string>
     </resources>

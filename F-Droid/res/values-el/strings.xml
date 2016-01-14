@@ -325,4 +325,12 @@
     <string name="swap_join_this_hotspot">Βοηθήστε το φίλο σας να συνδεθεί στο σημείο πρόσβασής σας</string>
     <string name="swap_intro">Συνδεθείτε και ανταλλάξτε εφαρμογές με τους ανθρώπους κοντά σας.</string>
     <string name="swap_no_peers_nearby">Αδύνατη η εύρεση ανθρώπων κοντά για ανταλλαγή εφαρμογών.</string>
+    <string name="crash_dialog_comment_prompt">Μπορείτε να προσθέσετε περισσότερες πληροφορίες και σχόλια εδώ:</string>
+<string name="status_inserting_apps">Αποθήκευση λεπτομερειών εφαρμογής</string>
+    <string name="about_license">Άδεια</string>
+
+    <string name="login_name">Όνομα χρήστη</string>
+    <string name="login_password">Συνθηματικό</string>
+    <string name="repo_edit_credentials">Τροποποίηση Συνθηματικού</string>
+    <string name="login_title">Απαιτείται πιστοποίηση</string>
     </resources>

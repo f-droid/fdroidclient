@@ -349,4 +349,9 @@
     <string name="empty_search_available_app_list">Nenhuma aplicação disponível coincidente.</string>
     <string name="empty_search_can_update_app_list">Nenhuma aplicação coincidente para atualização.</string>
 
-    </resources>
+    <string name="antinonfreeassetslist">Esta aplicação contém recursos não livres</string>
+
+    <string name="crash_dialog_title">O F-Droid terminou abruptamente</string>
+    <string name="crash_dialog_text">Ocorreu um erro inesperado que obrigou o encerramento da aplicação. Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
+    <string name="crash_dialog_comment_prompt">Pode adicionar algumas informações e comentários aqui:</string>
+</resources>

@@ -347,4 +347,6 @@
     <string name="crash_dialog_title">F-Droid зазнав збою</string>
     <string name="crash_dialog_text">Несподівана помилка припинила роботу програми. Хочете надіслати листа з подробицями, які допоможуть нам усунути цю ваду?</string>
     <string name="crash_dialog_comment_prompt">Можете ввести додаткову інформацію та коментарі тут:</string>
-</resources>
+<string name="antinonfreeassetslist">Цей додаток містить не вільний вміст</string>
+
+    </resources>

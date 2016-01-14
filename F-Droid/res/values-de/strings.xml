@@ -340,4 +340,6 @@
 <string name="antinonfreeassetslist">Diese Anwendung enthält nicht freie Bestandteile</string>
 
     <string name="crash_dialog_text">Die Anwendung wurde durch einen unerwarteten Fehler beendet. Möchten Sie die Details als E-Mail versenden, um eine Fehlerbehebung zu unterstützen?</string>
+    <string name="by_author">von</string>
+    <string name="menu_email">E-Mail an Autor</string>
     </resources>

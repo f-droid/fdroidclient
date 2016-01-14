@@ -341,4 +341,6 @@ bağlanılıyor</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi ile takas yapmak istiyorsanız, aynı ağda bulunduğunuzdan emin olun. Eğer aynı ağa erişiminiz yoksa, biriniz bir Wi-Fi hotspot\'u oluşturabilir.</string>
     <string name="swap_join_this_hotspot">Arkadaşınızın hotspot\'unuza bağlanmasına yardım edin</string>
     <string name="swap_active_hotspot">%1$s (hotspot\'unuz)</string>
+    <string name="by_author">şu tarafından</string>
+    <string name="menu_email">Geliştiriciye e-posta</string>
     </resources>
