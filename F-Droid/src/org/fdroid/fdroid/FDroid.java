@@ -243,6 +243,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
             Intent intentToInvoke = new Intent(this, AppDetails.class);
             intentToInvoke.putExtra(AppDetails.EXTRA_APPID, packageName);
             startActivity(intentToInvoke);
+            finish();
         } else if (!TextUtils.isEmpty(query)) {
             Utils.debugLog(TAG, "FDroid launched via search link for '" + query + "'");
             performSearch(query);
@@ -253,9 +254,9 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
         // Don't handle the intent after coming back to this view (e.g. after hitting the back button)
         // http://stackoverflow.com/a/14820849
         if (!intent.hasExtra(ADD_REPO_INTENT_HANDLED)) {
+            intent.putExtra(ADD_REPO_INTENT_HANDLED, true);
             NewRepoConfig parser = new NewRepoConfig(this, intent);
             if (parser.isValidRepo()) {
-                intent.putExtra(ADD_REPO_INTENT_HANDLED, true);
                 if (parser.isFromSwap()) {
                     Intent confirmIntent = new Intent(this, SwapWorkflowActivity.class);
                     confirmIntent.putExtra(SwapWorkflowActivity.EXTRA_CONFIRM, true);
