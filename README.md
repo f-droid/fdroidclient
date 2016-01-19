@@ -28,6 +28,22 @@ issues, translate the app into your language or help with development.
 We are on `#fdroid` and `#fdroid-dev` on Freenode. We hold weekly dev meetings
 on `#fdroid-dev` on Tuesdays at 20h UTC, which usually last half an hour.
 
+## FAQ
+
+* Why does F-Droid require "Unknown Sources" to install apps by default?
+
+Because a regular Android app cannot act as a package manager on its
+own. To do so, it would require system privileges (see below), similar
+to what Google Play does.
+
+* Can I avoid enabling "Unknown Sources" by installing F-Droid as a
+  privileged system app?
+
+This used to be the case, but no longer is. Now the [Privileged
+Extension](Privileged-Extension/) is the one that should be placed in
+the system. It can be bundled with a ROM or installed via a zip, or
+alternatively F-Droid can install it as a system app using root.
+
 ## License
 
 This program is Free Software: You can use, study share and improve it at your
