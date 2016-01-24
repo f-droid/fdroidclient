@@ -305,8 +305,7 @@ public class RepoProvider extends FDroidProvider {
                 throw new UnsupportedOperationException("Invalid URI for repo content provider: " + uri);
         }
 
-        Cursor cursor = read().query(getTableName(), projection, selection,
-                selectionArgs, null, null, sortOrder);
+        Cursor cursor = db().query(getTableName(), projection, selection, selectionArgs, null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
@@ -342,7 +341,7 @@ public class RepoProvider extends FDroidProvider {
             values.put(DataColumns.NAME, Repo.addressToName(address));
         }
 
-        long id = write().insertOrThrow(getTableName(), null, values);
+        long id = db().insertOrThrow(getTableName(), null, values);
         Utils.debugLog(TAG, "Inserted repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return getContentUri(id);
@@ -366,7 +365,7 @@ public class RepoProvider extends FDroidProvider {
                 throw new UnsupportedOperationException("Invalid URI for repo content provider: " + uri);
         }
 
-        int rowsAffected = write().delete(getTableName(), where, whereArgs);
+        int rowsAffected = db().delete(getTableName(), where, whereArgs);
         Utils.debugLog(TAG, "Deleted repos. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return rowsAffected;
@@ -374,7 +373,7 @@ public class RepoProvider extends FDroidProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        int numRows = write().update(getTableName(), values, where, whereArgs);
+        int numRows = db().update(getTableName(), values, where, whereArgs);
         Utils.debugLog(TAG, "Updated repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return numRows;

@@ -822,7 +822,7 @@ public class AppProvider extends FDroidProvider {
         query.addFields(projection); // TODO: Make the order of addFields/addSelection not dependent on each other...
         query.addOrderBy(sortOrder);
 
-        Cursor cursor = read().rawQuery(query.toString(), selection.getArgs());
+        Cursor cursor = db().rawQuery(query.toString(), selection.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
@@ -842,14 +842,14 @@ public class AppProvider extends FDroidProvider {
 
         }
 
-        int count = write().delete(getTableName(), query.getSelection(), query.getArgs());
+        int count = db().delete(getTableName(), query.getSelection(), query.getArgs());
         getContext().getContentResolver().notifyChange(uri, null);
         return count;
     }
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        write().insertOrThrow(getTableName(), null, values);
+        db().insertOrThrow(getTableName(), null, values);
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
@@ -873,7 +873,7 @@ public class AppProvider extends FDroidProvider {
                 throw new UnsupportedOperationException("Update not supported for " + uri + ".");
 
         }
-        int count = write().update(getTableName(), values, query.getSelection(), query.getArgs());
+        int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
@@ -884,7 +884,7 @@ public class AppProvider extends FDroidProvider {
         updateCompatibleFlags();
         updateSuggestedFromUpstream();
         updateSuggestedFromLatest();
-        updateIconUrls(getContext(), write(), getTableName(), getApkTableName());
+        updateIconUrls(getContext(), db(), getTableName(), getApkTableName());
     }
 
     /**
@@ -911,7 +911,7 @@ public class AppProvider extends FDroidProvider {
                 " FROM " + apk +
                 " WHERE " + apk + ".id = " + app + ".id );";
 
-        write().execSQL(updateSql);
+        db().execSQL(updateSql);
     }
 
     /**
@@ -952,7 +952,7 @@ public class AppProvider extends FDroidProvider {
                     " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
                 " WHERE upstreamVercode > 0 ";
 
-        write().execSQL(updateSql);
+        db().execSQL(updateSql);
     }
 
     /**
@@ -990,7 +990,7 @@ public class AppProvider extends FDroidProvider {
                     " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
                 " WHERE upstreamVercode = 0 OR upstreamVercode IS NULL OR suggestedVercode IS NULL ";
 
-        write().execSQL(updateSql);
+        db().execSQL(updateSql);
     }
 
     /**

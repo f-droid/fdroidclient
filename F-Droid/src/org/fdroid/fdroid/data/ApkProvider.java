@@ -486,7 +486,7 @@ public class ApkProvider extends FDroidProvider {
         queryBuilder.addSelection(query.getSelection());
         queryBuilder.addOrderBy(sortOrder);
 
-        Cursor cursor = read().rawQuery(queryBuilder.toString(), query.getArgs());
+        Cursor cursor = db().rawQuery(queryBuilder.toString(), query.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
@@ -507,7 +507,7 @@ public class ApkProvider extends FDroidProvider {
     public Uri insert(Uri uri, ContentValues values) {
         removeRepoFields(values);
         validateFields(DataColumns.ALL, values);
-        write().insertOrThrow(getTableName(), null, values);
+        db().insertOrThrow(getTableName(), null, values);
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
@@ -553,7 +553,7 @@ public class ApkProvider extends FDroidProvider {
                 throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
         }
 
-        int rowsAffected = write().delete(getTableName(), query.getSelection(), query.getArgs());
+        int rowsAffected = db().delete(getTableName(), query.getSelection(), query.getArgs());
         getContext().getContentResolver().notifyChange(uri, null);
         return rowsAffected;
 
@@ -574,7 +574,7 @@ public class ApkProvider extends FDroidProvider {
         QuerySelection query = new QuerySelection(where, whereArgs);
         query = query.add(querySingle(uri));
 
-        int numRows = write().update(getTableName(), values, query.getSelection(), query.getArgs());
+        int numRows = db().update(getTableName(), values, query.getSelection(), query.getArgs());
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }

@@ -5,11 +5,14 @@ import android.content.ContentProvider;
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.OperationApplicationException;
 import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
+
+import org.fdroid.fdroid.Utils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,12 +21,14 @@ import java.util.Set;
 
 public abstract class FDroidProvider extends ContentProvider {
 
+    private static final String TAG = "FDroidProvider";
+
     public static final String AUTHORITY = "org.fdroid.fdroid.data";
 
     protected static final int CODE_LIST   = 1;
     protected static final int CODE_SINGLE = 2;
 
-    private DBHelper dbHelper;
+    private static DBHelper dbHelper;
 
     private boolean isApplyingBatch;
 
@@ -53,33 +58,33 @@ public abstract class FDroidProvider extends ContentProvider {
         throws OperationApplicationException {
         ContentProviderResult[] result = null;
         isApplyingBatch = true;
-        write().beginTransaction();
+        final SQLiteDatabase db = db();
+        db.beginTransaction();
         try {
             result = super.applyBatch(operations);
-            write().setTransactionSuccessful();
+            db.setTransactionSuccessful();
         } finally {
-            write().endTransaction();
+            db.endTransaction();
             isApplyingBatch = false;
         }
         return result;
     }
 
-    @Override
-    public boolean onCreate() {
-        dbHelper = new DBHelper(getContext());
-        return true;
-    }
-
-    protected final DBHelper db() {
+    private static synchronized DBHelper getOrCreateDb(Context context) {
+        if (dbHelper == null) {
+            Utils.debugLog(TAG, "First time accessing database, creating new helper");
+            dbHelper = new DBHelper(context);
+        }
         return dbHelper;
     }
 
-    protected final SQLiteDatabase read() {
-        return db().getReadableDatabase();
+    @Override
+    public boolean onCreate() {
+        return true;
     }
 
-    protected final SQLiteDatabase write() {
-        return db().getWritableDatabase();
+    protected final synchronized SQLiteDatabase db() {
+        return getOrCreateDb(getContext()).getWritableDatabase();
     }
 
     @Override

@@ -104,7 +104,7 @@ public class TempAppProvider extends AppProvider {
                 throw new UnsupportedOperationException("Update not supported for " + uri + ".");
         }
 
-        int count = write().update(getTableName(), values, query.getSelection(), query.getArgs());
+        int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
@@ -112,15 +112,16 @@ public class TempAppProvider extends AppProvider {
     }
 
     private void initTable() {
-        write().execSQL("DROP TABLE IF EXISTS " + getTableName());
-        write().execSQL("CREATE TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APP);
-        write().execSQL("CREATE INDEX IF NOT EXISTS app_id ON " + getTableName() + " (id);");
-        write().execSQL("CREATE INDEX IF NOT EXISTS app_upstreamVercode ON " + getTableName() + " (upstreamVercode);");
-        write().execSQL("CREATE INDEX IF NOT EXISTS app_compatible ON " + getTableName() + " (compatible);");
+        final SQLiteDatabase db = db();
+        db.execSQL("DROP TABLE IF EXISTS " + getTableName());
+        db.execSQL("CREATE TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APP);
+        db.execSQL("CREATE INDEX IF NOT EXISTS app_id ON " + getTableName() + " (id);");
+        db.execSQL("CREATE INDEX IF NOT EXISTS app_upstreamVercode ON " + getTableName() + " (upstreamVercode);");
+        db.execSQL("CREATE INDEX IF NOT EXISTS app_compatible ON " + getTableName() + " (compatible);");
     }
 
     private void commitTable() {
-        final SQLiteDatabase db = write();
+        final SQLiteDatabase db = db();
         try {
             db.beginTransaction();
 
