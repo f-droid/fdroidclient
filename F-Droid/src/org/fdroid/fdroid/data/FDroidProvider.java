@@ -11,6 +11,7 @@ import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.NonNull;
 
 import org.fdroid.fdroid.Utils;
 
@@ -53,8 +54,9 @@ public abstract class FDroidProvider extends ContentProvider {
         return this.isApplyingBatch;
     }
 
+    @NonNull
     @Override
-    public ContentProviderResult[] applyBatch(ArrayList<ContentProviderOperation> operations)
+    public ContentProviderResult[] applyBatch(@NonNull ArrayList<ContentProviderOperation> operations)
         throws OperationApplicationException {
         ContentProviderResult[] result = null;
         isApplyingBatch = true;
@@ -88,7 +90,7 @@ public abstract class FDroidProvider extends ContentProvider {
     }
 
     @Override
-    public String getType(Uri uri) {
+    public String getType(@NonNull Uri uri) {
         String type;
         switch (getMatcher().match(uri)) {
             case CODE_LIST:
