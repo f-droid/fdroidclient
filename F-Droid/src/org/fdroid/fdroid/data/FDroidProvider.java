@@ -86,7 +86,7 @@ public abstract class FDroidProvider extends ContentProvider {
     }
 
     protected final synchronized SQLiteDatabase db() {
-        return getOrCreateDb(getContext()).getWritableDatabase();
+        return getOrCreateDb(getContext().getApplicationContext()).getWritableDatabase();
     }
 
     @Override
