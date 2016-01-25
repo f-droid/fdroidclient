@@ -13,18 +13,18 @@
   <string name="cache_downloaded_on">Heruntergeladene Programmpakete auf dem Gerät behalten</string>
   <string name="updates">Aktualisierungen</string>
   <string name="other">Andere</string>
-  <string name="update_interval">Autom. Aktualisierungsabstand</string>
+  <string name="update_interval">Automatisches Aktualisierungsintervall</string>
   <string name="update_interval_zero">Keine automatischen Aktualisierungen der Anwendungsliste</string>
   <string name="automatic_scan_wifi">Nur über WLAN</string>
   <string name="automatic_scan_wifi_on">Anwendungsliste nur über WLAN automatisch aktualisieren</string>
-  <string name="notify">Aktualisierungsbenachrichtigen</string>
+  <string name="notify">Aktualisierungsbenachrichtigungen</string>
   <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
   <string name="update_history">Aktualisierungsverlauf</string>
   <string name="update_history_summ">Anzahl in Tagen, an denen neue oder kürzlich geänderte Anwendungen angezeigt werden: %s</string>
   <string name="system_installer">Privilegierte Erweiterung</string>
   <string name="system_installer_on">Privilegierte F-Droid-Erweiterung verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
   <string name="local_repo_name">Name Ihrer lokalen Paketquelle</string>
-  <string name="local_repo_name_summary">Der werbende Titel Ihrer lokalen Paketquelle: %s</string>
+  <string name="local_repo_name_summary">Der verwendete Titel Ihrer lokalen Paketquelle: %s</string>
   <string name="local_repo_https">Gesicherte Verbindung verwenden</string>
   <string name="local_repo_https_on">Verschlüsselte HTTPS://-Verbindung zur lokalen Paketquelle verwenden</string>
   <string name="app_details">Anwendungsdetails</string>
@@ -58,7 +58,7 @@
   <string name="repo_add_url">Adresse der Paketquelle</string>
   <string name="repo_add_fingerprint">Fingerabdruck (optional)</string>
   <string name="repo_exists_add_fingerprint">Diese Paketquelle ist bereits eingerichtet, dieses wird neue Schlüsselinformationen hinzuzufügen.</string>
-  <string name="repo_exists_enable">Diese Paketquelle ist bereits eingerichtet, bestätigen, dass Sie diese wieder aktivieren möchten.</string>
+  <string name="repo_exists_enable">Diese Paketquelle ist bereits eingerichtet, bestätigen Sie, dass Sie diese wieder aktivieren möchten.</string>
   <string name="repo_exists_and_enabled">Die eingehende Paketquelle ist bereits eingerichtet und aktiviert.</string>
   <string name="repo_delete_to_overwrite">Sie müssen diese Paketquelle zuerst löschen, bevor Sie eine mit einem anderen Schlüssel hinzuzufügen.</string>
   <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse wird übergangen: %s</string>
@@ -96,9 +96,9 @@
   <string name="show_incompat_versions">Inkompatible Versionen</string>
   <string name="show_incompat_versions_on">Mit diesem Gerät inkompatible Anwendungsversionen anzeigen</string>
   <string name="rooted">Root ignorieren</string>
-  <string name="rooted_on">Anwendungen, die Root-Rechte verlangen, nicht ausgrauen</string>
+  <string name="rooted_on">Anwendungen, die Root-Rechte verlangen nicht ausgrauen</string>
   <string name="ignoreTouch">Touchscreen ignorieren</string>
-  <string name="ignoreTouch_on">Anwendungen, die einen Touchscreen benötigen, anzeigen</string>
+  <string name="ignoreTouch_on">Anwendungen, die einen Touchscreen benötigen anzeigen</string>
   <string name="category_All">Alle</string>
   <string name="category_Whats_New">Was gibt es Neues</string>
   <string name="category_Recently_Updated">Kürzlich Aktualisiert</string>
@@ -136,10 +136,7 @@
   <string name="repo_description">Beschreibung</string>
   <string name="repo_last_update">Letzte Aktualisierung</string>
   <string name="repo_name">Name</string>
-  <string name="unsigned_description">Das bedeutet, dass die Liste von
-        Anwendungen nicht verifiziert werden konnte. 
-        Sie sollten sorgsam mit Anwendungen, heruntergeladen 
-        aus nicht nicht signierten Quellen, sein.</string>
+  <string name="unsigned_description">Das bedeutet, dass die Liste von Anwendungen nicht verifiziert werden konnte. Sie sollten vorsichtig sein mit heruntergeladenen Anwendungen aus nicht signierten Quellen.</string>
   <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht benutzt. Um beinhaltende Anwendungen anzuzeigen, muss sie zuvor aktiviert werden.</string>
   <string name="unknown">Unbekannt</string>
   <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
@@ -169,13 +166,13 @@
   <string name="root_access_denied_body">Entweder ist Ihr Android-Gerät nicht gerootet oder Sie haben den Root-Zugriff für F-Droid verweigert.</string>
   <string name="system_install_denied_title">F-Droid privilegierte Erweiterung ist nicht verfügbar</string>
   <string name="system_install_denied_body">Diese Option ist nur verfügbar, wenn F-Droid als System-App installiert wurde.</string>
-  <string name="app_description">F-Droid ist ein installierbarer App-Store für FOSS (Freie und Quelloffene Software) Anwendungen für die Android-Plattform. Durch das Programm ist es einfach Apps zu durchsuchen, zu installieren und zu aktualisieren.</string>
+  <string name="app_description">F-Droid ist ein installierbarer App-Store für FOSS Anwendungen (Freie und Quelloffene Software) für die Android-Plattform. Durch das Programm ist es einfach Apps zu suchen, zu installieren und zu aktualisieren.</string>
   <string name="swap_nfc_description">Wenn Ihr Freund F-Droid und NFC aktiviert hat, bitte die Geräte aneinander halten.</string>
   <string name="swap_join_same_wifi">Bitte mit dem gleichen WLAN-Netzwerk wie Ihr Freund verbinden</string>
   <string name="menu_swap">Apps tauschen</string>
   <string name="swap">Apps tauschen</string>
   <string name="swap_no_wifi_network">Noch kein Netzwerk</string>
-  <string name="swap_view_available_networks">(Antippen, um verfügbare Netzwerke zu öffnen)</string>
+  <string name="swap_view_available_networks">Antippen, um verfügbare Netzwerke zu öffnen</string>
   <string name="open_qr_code_scanner">QR-Code-Scanner öffnen</string>
   <string name="swap_welcome">Willkommen bei F-Droid!</string>
   <string name="swap_confirm_connect">Möchten Sie jetzt Apps von %1$s erhalten?</string>
@@ -225,7 +222,7 @@
     <string name="less">Weniger</string>
 
     <string name="empty_installed_app_list">Keine Anwendungen installiert.\n\nEs sind Anwendungen auf deinem Gerät installiert, aber keine davon ist in F-Droid erhältlich. Das könnte daran liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Anwendungen beinhalten.</string>
-    <string name="empty_available_app_list">Keine Anwendungen in dieser Kategorie.\n\nBitte eine anderen Kategorie versuchen oder die Paketquellen aktualisieren.</string>
+    <string name="empty_available_app_list">Keine Anwendungen in dieser Kategorie.\n\nBitte eine andere Kategorie versuchen oder die Paketquellen aktualisieren.</string>
     <string name="empty_can_update_app_list">Alle Anwendungen sind auf dem neuesten Stand.\n\nGlückwunsch! Alle Ihre Apps sind auf dem neuesten Stand (oder Ihre Paketquellen sind veraltet).</string>
 
     <string name="swap_send_fdroid">F-Droid senden</string>
@@ -236,7 +233,7 @@
     <string name="theme_light">Hell</string>
     <string name="theme_dark">Dunkel</string>
     <string name="uninstall_system">Privilegierte Erweiterung aktualisieren oder deinstallieren</string>
-    <string name="uninstall_system_summary">Detailansicht öffen, um die privilegierte Erweiterung zu aktualisieren oder deinstallieren</string>
+    <string name="uninstall_system_summary">Detailansicht öffnen, um die privilegierte Erweiterung zu aktualisieren oder deinstallieren</string>
     <string name="menu_settings">Einstellungen</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -255,12 +252,12 @@
     <string name="system_install_first_time_notification">Soll die privilegierte F-Droid-Erweiterung installiert werden?</string>
     <string name="system_install_first_time_notification_message_short">Für weitere Informationen berühren.</string>
     <string name="system_install_post_success">Privilegierte F-Droid-Erweiterung erfolgreich installiert</string>
-    <string name="system_install_post_fail">Installation der privilegierten F-Droid-Erweiterung fehgeschlagen</string>
+    <string name="system_install_post_fail">Installation der privilegierten F-Droid-Erweiterung fehlgeschlagen</string>
     <string name="system_install_installing">Installation läuft …</string>
     <string name="system_install_installing_rebooting">Installation und Neustart läuft …</string>
     <string name="system_install_uninstalling">Wird deinstalliert …</string>
     <string name="system_install_warning">Das wird bis zu 10 Sekunden dauern.</string>
-    <string name="system_install_warning_lollipop">Das wird bis zu 10 Sekunden dauern und das Gerät wird anschließend <b>neu gestartet</b>.</string>
+    <string name="system_install_warning_lollipop">Das wird bis zu 10 Sekunden dauern und das Gerät wird anschliessend <b>neu gestartet</b>.</string>
     <string name="swap_nfc_title">Berühren, um zu tauschen</string>
     <string name="swap_join_this_hotspot">Ihrem Freund helfen, Ihrem Hotspot beizutreten</string>
     <string name="swap_success">Tausch erfolgreich!</string>
@@ -287,12 +284,12 @@
     <string name="swap_scan_or_type_url">Eine Person muss den Code scannen oder die Adresse der anderen in einen Browser eingeben.</string>
     <string name="swap_intro">Mit Leuten in der Nähe verbinden und Anwendungen tauschen.</string>
     <string name="swap_wifi_device_name">Gerätename</string>
-    <string name="swap_cant_find_peers">Nicht den gesuchten gefunden?</string>
+    <string name="swap_cant_find_peers">Nicht den Gesuchten gefunden?</string>
     <string name="swap_no_peers_nearby">Keine Leute in der Nähe zum Tauschen gefunden.</string>
     <string name="swap_confirm">Tausch bestätigen</string>
     <string name="swap_qr_isnt_for_swap">Der QR-Code, den Sie eingelesen haben, sieht nicht wie ein Tauschcode aus.</string>
-    <string name="system_install_first_time_message">Es sieht so aus, als wenn Sie root-Zugriff auf Ihrem Gerät haben. Sie können jetzt »privilegierte F-Droid Erweiterung« installieren, die sehr eng mit dem Android-Betriebssystem gekoppelt ist. Das erlaubt F-Droid, selbständig Anwendungen zu installieren, aktualisieren und zu entfernen.</string>
-    <string name="swap_join_same_wifi_desc">Um über WLAN zu tauschen müssen Sie sich im selben Netzwerk befinden. Wenn Sie keinen gemeinsamen Netzwerkzugang haben kann einer von Ihnen einen WLAN-Hotspot einrichten.</string>
+    <string name="system_install_first_time_message">Es sieht so aus, als wenn Sie Root-Zugriff auf Ihrem Gerät haben. Sie können jetzt die privilegierte F-Droid Erweiterung installieren, die sehr eng mit dem Android-Betriebssystem gekoppelt ist. Das erlaubt F-Droid, selbständig Anwendungen zu installieren, aktualisieren und zu entfernen.</string>
+    <string name="swap_join_same_wifi_desc">Um über WLAN zu tauschen, müssen Sie sich im selben Netzwerk befinden. Wenn Sie keinen gemeinsamen Netzwerkzugang haben, kann einer von Ihnen einen WLAN-Hotspot einrichten.</string>
     <string name="swap_nearby">Tausch in der Nähe</string>
     <string name="swap_cant_send_no_bluetooth">F-Droid kann nicht gesendet werden, da Bluetooth auf diesem Gerät nicht verfügbar ist.</string>
     <string name="loading">Ladevorgang …</string>
@@ -305,7 +302,7 @@
     <string name="install_confirm_no_perms">Wollen Sie diese Anwendung installieren? Es werden keine besonderen Zugriffsrechte erfordert.</string>
     <string name="install_confirm_update">Wollen Sie eine Aktualisierung dieser bestehenden Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Anwendung wird folgenden Zugriff erhalten:</string>
     <string name="install_confirm_update_no_perms">Wollen Sie eine Aktualisierung dieser vorinstallierten Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Es werden keine besonderen Zugriffsrechte erfordert.</string>
-    <string name="install_confirm_update_system">Wollen Sie eine Aktualisierung dieser vorinstallierten Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Anwendung wird folgende Zugriff erhalten:</string>
+    <string name="install_confirm_update_system">Wollen Sie eine Aktualisierung dieser vorinstallierten Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Anwendung wird folgenden Zugriff erhalten:</string>
     <string name="install_confirm_update_system_no_perms">Wollen Sie eine Aktualisierung dieser vorinstallierten Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Es werden keine besonderen Zugriffsrechte erfordert.</string>
     <string name="allPerms">Alle</string>
     <string name="privacyPerms">Datenschutz</string>
