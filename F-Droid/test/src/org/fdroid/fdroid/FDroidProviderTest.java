@@ -45,6 +45,8 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
     public void setUp() throws Exception {
         super.setUp();
 
+        FDroidProvider.clearDbHelperSingleton();
+
         // Instantiate all providers other than the one which was already created by the base class.
         // This is because F-Droid providers tend to perform joins onto tables managed by other
         // providers, and so we need to be able to insert into those other providers for these

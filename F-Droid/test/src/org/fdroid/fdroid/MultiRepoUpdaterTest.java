@@ -18,6 +18,7 @@ import org.fdroid.fdroid.RepoUpdater.UpdateException;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.FDroidProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.TempApkProvider;
@@ -122,11 +123,19 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         public File getDatabasePath(String name) {
             return new File(getInstrumentation().getContext().getFilesDir(), "fdroid_test.db");
         }
+
+        @Override
+        public Context getApplicationContext() {
+            // Used by the DBHelper singleton instance.
+            return this;
+        }
     }
 
     @Override
     public void setUp() throws Exception {
         super.setUp();
+
+        FDroidProvider.clearDbHelperSingleton();
 
         context = new TestContext();
 

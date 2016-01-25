@@ -72,6 +72,13 @@ public abstract class FDroidProvider extends ContentProvider {
         return result;
     }
 
+    /**
+     * Only used for testing. Not quite sure how to mock a singleton variable like this.
+     */
+    public static void clearDbHelperSingleton() {
+        dbHelper = null;
+    }
+
     private static synchronized DBHelper getOrCreateDb(Context context) {
         if (dbHelper == null) {
             Utils.debugLog(TAG, "First time accessing database, creating new helper");
