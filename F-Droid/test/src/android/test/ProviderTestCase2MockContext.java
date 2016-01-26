@@ -20,6 +20,7 @@ import android.annotation.TargetApi;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.res.Resources;
 import android.database.DatabaseUtils;
 import android.os.Build;
@@ -136,12 +137,20 @@ public abstract class ProviderTestCase2MockContext<T extends ContentProvider> ex
 
         mResolver = new MockContentResolver();
         final String filenamePrefix = "test.";
-        RenamingDelegatingContext targetContextWrapper = new
+        final RenamingDelegatingContext targetContextWrapper = new
                 RenamingDelegatingContext(
                 createMockContext(new MockContext2()), // The context that most methods are delegated to
                 getContext(), // The context that file methods are delegated to
                 filenamePrefix);
-        mProviderContext = new IsolatedContext(mResolver, targetContextWrapper);
+
+        mProviderContext = new IsolatedContext(mResolver, new ContextWrapper(targetContextWrapper) {
+            // The FDroidProvider class needs access to an application context in order to initialize
+            // the singleton DBHelper instance.
+            @Override
+            public Context getApplicationContext() {
+                return targetContextWrapper;
+            }
+        });
 
         mProvider = mProviderClass.newInstance();
         mProvider.attachInfo(mProviderContext, null);

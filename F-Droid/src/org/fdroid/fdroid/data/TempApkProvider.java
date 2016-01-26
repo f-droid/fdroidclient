@@ -3,6 +3,7 @@ package org.fdroid.fdroid.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
@@ -112,7 +113,7 @@ public class TempApkProvider extends ApkProvider {
                 throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
         }
 
-        int rowsAffected = write().delete(getTableName(), query.getSelection(), query.getArgs());
+        int rowsAffected = db().delete(getTableName(), query.getSelection(), query.getArgs());
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
@@ -121,11 +122,12 @@ public class TempApkProvider extends ApkProvider {
     }
 
     private void initTable() {
-        write().execSQL("DROP TABLE IF EXISTS " + getTableName());
-        write().execSQL("CREATE TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APK);
-        write().execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + getTableName() + " (vercode);");
-        write().execSQL("CREATE INDEX IF NOT EXISTS apk_id on " + getTableName() + " (id);");
-        write().execSQL("CREATE INDEX IF NOT EXISTS apk_compatible ON " + getTableName() + " (compatible);");
+        final SQLiteDatabase db = db();
+        db.execSQL("DROP TABLE IF EXISTS " + getTableName());
+        db.execSQL("CREATE TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APK);
+        db.execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + getTableName() + " (vercode);");
+        db.execSQL("CREATE INDEX IF NOT EXISTS apk_id on " + getTableName() + " (id);");
+        db.execSQL("CREATE INDEX IF NOT EXISTS apk_compatible ON " + getTableName() + " (compatible);");
     }
 
 }

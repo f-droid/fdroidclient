@@ -180,7 +180,7 @@ public class InstalledAppProvider extends FDroidProvider {
                 throw new UnsupportedOperationException(message);
         }
 
-        Cursor cursor = read().query(getTableName(), projection, selection.getSelection(), selection.getArgs(), null, null, sortOrder);
+        Cursor cursor = db().query(getTableName(), projection, selection.getSelection(), selection.getArgs(), null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
@@ -195,7 +195,7 @@ public class InstalledAppProvider extends FDroidProvider {
         QuerySelection query = new QuerySelection(where, whereArgs);
         query = query.add(queryApp(uri.getLastPathSegment()));
 
-        int count = write().delete(getTableName(), query.getSelection(), query.getArgs());
+        int count = db().delete(getTableName(), query.getSelection(), query.getArgs());
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
@@ -210,7 +210,7 @@ public class InstalledAppProvider extends FDroidProvider {
         }
 
         verifyVersionNameNotNull(values);
-        write().replaceOrThrow(getTableName(), null, values);
+        db().replaceOrThrow(getTableName(), null, values);
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
