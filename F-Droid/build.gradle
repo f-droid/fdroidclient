@@ -22,6 +22,8 @@ dependencies {
     compile('ch.acra:acra:4.8.0') {
         exclude module: 'support-v4'
     }
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'io.reactivex:rxandroid:0.23.0'
 
     androidTestCompile 'commons-io:commons-io:2.2'
 }
@@ -73,6 +75,8 @@ if (!hasProperty('sourceDeps')) {
             'com.madgag.spongycastle:prov:029f26cd6b67c06ffa05702d426d472c141789001bcb15b7262ed86c868e5643',
             'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
             'ch.acra:acra:d8ef3b76760e3faf7fe0ea0231fbe98e57f8f06ed3b86c877e6aa95bbc188aac',
+            'io.reactivex:rxjava:2c162afd78eba217cdfee78b60e85d3bfb667db61e12bc95e3cf2ddc5beeadf6',
+            'io.reactivex:rxandroid:35c1a90f8c1f499db3c1f3d608e1f191ac8afddb10c02dd91ef04c03a0a4bcda',
         ]
     }
 
