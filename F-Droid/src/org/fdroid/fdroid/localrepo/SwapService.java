@@ -34,9 +34,8 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.localrepo.peers.BluetoothFinder;
-import org.fdroid.fdroid.localrepo.peers.BonjourFinder;
 import org.fdroid.fdroid.localrepo.peers.Peer;
+import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 import org.fdroid.fdroid.localrepo.type.SwapType;
 import org.fdroid.fdroid.localrepo.type.WifiSwap;
@@ -54,6 +53,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import rx.Observable;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Central service which manages all of the different moving parts of swap which are required
@@ -105,15 +109,31 @@ public class SwapService extends Service {
     //                 Search for peers to swap
     // ==========================================================
 
-    public void scanForPeers() {
-        Utils.debugLog(TAG, "Scanning for nearby devices to swap with...");
-        bonjourFinder.scan();
-        bluetoothFinder.scan();
-    }
+    private Observable<Peer> peerFinder;
 
-    public void stopScanningForPeers() {
-        bonjourFinder.cancel();
-        bluetoothFinder.cancel();
+    /**
+     * Call {@link Observable#subscribe()} on this in order to be notified of peers
+     * which are found. Call {@link Subscription#unsubscribe()} on the resulting
+     * subscription when finished and you no longer want to scan for peers.
+     *
+     * The returned object will scan for peers on a background thread, and emit
+     * found peers on the mian thread.
+     *
+     * Invoking this in multiple places will return the same, cached, peer finder.
+     * That is, if in the past it already found some peers, then you subscribe
+     * to it in the future, the future subscriber will still receive the peers
+     * that were found previously.
+     * TODO: What about removing peers that no longer are present?
+     */
+    public Observable<Peer> scanForPeers() {
+        Utils.debugLog(TAG, "Scanning for nearby devices to swap with...");
+        if (peerFinder == null) {
+            peerFinder = PeerFinder.createObservable(getApplicationContext())
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .distinct();
+        }
+        return peerFinder;
     }
 
     // ==========================================================
@@ -442,24 +462,12 @@ public class SwapService extends Service {
     //    Interacting with Bluetooth adapter
     // ==========================================
 
-    public BonjourFinder getBonjourFinder() {
-        return bonjourFinder;
-    }
-
-    public BluetoothFinder getBluetoothFinder() {
-        return bluetoothFinder;
-    }
-
     public boolean isBluetoothDiscoverable() {
         return bluetoothSwap.isDiscoverable();
     }
 
     public boolean isBonjourDiscoverable() {
         return wifiSwap.isConnected() && wifiSwap.getBonjour().isConnected();
-    }
-
-    public boolean isScanningForPeers() {
-        return bonjourFinder.isScanning() || bluetoothFinder.isScanning();
     }
 
     public static final String ACTION_PEER_FOUND = "org.fdroid.fdroid.SwapManager.ACTION_PEER_FOUND";
@@ -481,9 +489,6 @@ public class SwapService extends Service {
     private final Binder binder = new Binder();
     private SwapType bluetoothSwap;
     private WifiSwap wifiSwap;
-
-    private BonjourFinder bonjourFinder;
-    private BluetoothFinder bluetoothFinder;
 
     private static final int TIMEOUT = 900000; // 15 mins
 
@@ -517,8 +522,6 @@ public class SwapService extends Service {
         appsToSwap.addAll(deserializePackages(preferences.getString(KEY_APPS_TO_SWAP, "")));
         bluetoothSwap = BluetoothSwap.create(this);
         wifiSwap = new WifiSwap(this);
-        bonjourFinder = new BonjourFinder(this);
-        bluetoothFinder = new BluetoothFinder(this);
 
         Preferences.get().registerLocalRepoHttpsListeners(httpsEnabledListener);
 

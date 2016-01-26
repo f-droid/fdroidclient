@@ -39,6 +39,8 @@ import org.fdroid.fdroid.net.WifiStateChangeService;
 import java.util.ArrayList;
 
 import cc.mvdan.accesspoint.WifiApControl;
+import rx.Subscriber;
+import rx.Subscription;
 
 public class StartSwapView extends ScrollView implements SwapWorkflowActivity.InnerView {
 
@@ -107,17 +109,56 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
     private ListView peopleNearbyList;
     private ProgressBar peopleNearbyProgress;
 
+    private PeopleNearbyAdapter peopleNearbyAdapter;
+
+    /**
+     * When peers are emitted by the peer finder, add them to the adapter
+     * so that they will show up in the list of peers.
+     */
+    private Subscriber<Peer> onPeerFound = new Subscriber<Peer>() {
+
+        @Override
+        public void onCompleted() {
+            uiShowNotSearchingForPeers();
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            uiShowNotSearchingForPeers();
+        }
+
+        @Override
+        public void onNext(Peer peer) {
+            Utils.debugLog(TAG, "Found peer: " + peer + ", adding to list of peers in UI.");
+            peopleNearbyAdapter.add(peer);
+        }
+    };
+
+    private Subscription peerFinderSubscription;
+
+    // TODO: Not sure if this is the best place to handle being removed from the view.
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (peerFinderSubscription != null) {
+            peerFinderSubscription.unsubscribe();
+            peerFinderSubscription = null;
+        }
+    }
+
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        getManager().scanForPeers();
+        if (peerFinderSubscription == null) {
+            peerFinderSubscription = getManager().scanForPeers().subscribe(onPeerFound);
+        }
 
         uiInitPeers();
         uiInitBluetooth();
         uiInitWifi();
         uiInitButtons();
-        uiUpdatePeersInfo();
+        uiShowSearchingForPeers();
 
         // TODO: Unregister this receiver at some point.
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
@@ -157,48 +198,30 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         peopleNearbyList = (ListView) findViewById(R.id.list_people_nearby);
         peopleNearbyProgress = (ProgressBar) findViewById(R.id.searching_people_nearby);
 
-        final PeopleNearbyAdapter adapter = new PeopleNearbyAdapter(getContext());
-        peopleNearbyList.setAdapter(adapter);
-        uiUpdatePeersInfo();
+        peopleNearbyAdapter = new PeopleNearbyAdapter(getContext());
+        peopleNearbyList.setAdapter(peopleNearbyAdapter);
 
         peopleNearbyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Peer peer = adapter.getItem(position);
+                Peer peer = peopleNearbyAdapter.getItem(position);
                 onPeerSelected(peer);
             }
         });
-
-        // TODO: Unregister this receiver at the right time.
-        LocalBroadcastManager.getInstance(getContext()).registerReceiver(new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                Peer peer = intent.getParcelableExtra(SwapService.EXTRA_PEER);
-                if (adapter.getPosition(peer) >= 0) {
-                    Utils.debugLog(TAG, "Found peer: " + peer + ", ignoring though, because it is already in our list.");
-                } else {
-                    Utils.debugLog(TAG, "Found peer: " + peer + ", adding to list of peers in UI.");
-                    adapter.add(peer);
-                    uiUpdatePeersInfo();
-                }
-            }
-        }, new IntentFilter(SwapService.ACTION_PEER_FOUND));
-
     }
 
-    private void uiUpdatePeersInfo() {
-        if (getManager().isScanningForPeers()) {
-            peopleNearbyText.setText(getContext().getString(R.string.swap_scanning_for_peers));
-            peopleNearbyProgress.setVisibility(View.VISIBLE);
-        } else {
-            peopleNearbyProgress.setVisibility(View.GONE);
-            if (peopleNearbyList.getAdapter().getCount() > 0) {
-                peopleNearbyText.setText(getContext().getString(R.string.swap_people_nearby));
-            } else {
-                peopleNearbyText.setText(getContext().getString(R.string.swap_no_peers_nearby));
-            }
-        }
+    private void uiShowSearchingForPeers() {
+        peopleNearbyText.setText(getContext().getString(R.string.swap_scanning_for_peers));
+        peopleNearbyProgress.setVisibility(View.VISIBLE);
+    }
 
+    private void uiShowNotSearchingForPeers() {
+        peopleNearbyProgress.setVisibility(View.GONE);
+        if (peopleNearbyList.getAdapter().getCount() > 0) {
+            peopleNearbyText.setText(getContext().getString(R.string.swap_people_nearby));
+        } else {
+            peopleNearbyText.setText(getContext().getString(R.string.swap_no_peers_nearby));
+        }
     }
 
     private void uiInitBluetooth() {
@@ -224,7 +247,6 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                         getActivity().startBluetoothSwap();
                         textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
                         viewBluetoothId.setVisibility(View.VISIBLE);
-                        uiUpdatePeersInfo();
                         Utils.debugLog(TAG, "Received onCheckChanged(true) for Bluetooth swap (prompting user or setup Bluetooth complete)");
                         // TODO: When they deny the request for enabling bluetooth, we need to disable this switch...
                     } else {
@@ -232,7 +254,6 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                         getManager().getBluetoothSwap().stop();
                         textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
                         viewBluetoothId.setVisibility(View.GONE);
-                        uiUpdatePeersInfo();
                         Utils.debugLog(TAG, "Received onCheckChanged(false) for Bluetooth swap, Bluetooth swap disabled successfully.");
                     }
                 }
@@ -285,7 +306,6 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                     getManager().getWifiSwap().stop();
                     Utils.debugLog(TAG, "Received onCheckChanged(false) for WiFi swap, WiFi swap disabled successfully.");
                 }
-                uiUpdatePeersInfo();
                 uiUpdateWifiNetwork();
             }
         });

@@ -44,7 +44,6 @@ import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
-import org.fdroid.fdroid.localrepo.peers.BluetoothFinder;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.ApkDownloader;
 
@@ -375,7 +374,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (!getService().isEnabled()) {
             prepareInitialRepo();
         }
-        getService().scanForPeers();
+
         inflateInnerView(R.layout.swap_blank);
     }
 
@@ -511,7 +510,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void swapWith(Peer peer) {
-        getService().stopScanningForPeers();
         getService().swapWith(peer);
         showSelectApps();
     }
@@ -623,9 +621,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             // TODO: Listen for BluetoothAdapter.ACTION_SCAN_MODE_CHANGED and respond if discovery
             // is cancelled prematurely.
 
+            // 3600 is new maximum! TODO: What about when this expires? What if user manually disables discovery?
+            final int discoverableTimeout = 3600;
+
             Utils.debugLog(TAG, "Not currently in discoverable mode, so prompting user to enable.");
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, BluetoothFinder.DISCOVERABLE_TIMEOUT); // 3600 is new maximum! TODO: What about when this expires? What if user manually disables discovery?
+            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, discoverableTimeout);
             startActivityForResult(intent, REQUEST_BLUETOOTH_DISCOVERABLE);
         }
 
@@ -761,7 +762,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     bluetooth = "\"" + adapter.getName() + "\" - " + scanModes.get(adapter.getScanMode());
                 }
 
-                wifi = service.getBonjourFinder().isScanning() ? "Y" : " N";
+                // wifi = service.getBonjourFinder().isScanning() ? "Y" : " N";
                 message += "Find { BT: " + bluetooth + ", WiFi: " + wifi + "}";
             }
 
