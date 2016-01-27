@@ -59,7 +59,7 @@
   <string name="rooted">نادیده گرفتن ریشه</string>
   <string name="ignoreTouch">نادیده گرفتن صفحه‌لمسی</string>
   <string name="category_All">همه</string>
-  <string name="status_download">در حال بارگیری\n%2$s / %3$s (%4$Id%%) از\n%1$s</string>
+  <string name="status_download">در حال بارگیری\n%2$s / %3$s (%4$d%%) از\n%1$s</string>
   <string name="status_connecting_to_repo">درحال اتّصال به\n%1$s</string>
   <string name="no_permissions">اجازه‌ای استفاده نشده است.</string>
   <string name="theme">زمینه</string>
@@ -75,7 +75,7 @@
   <string name="requires_features">نیاز دارد: %1$s</string>
 <string name="app_name">اف‌دروید</string>
 
-    <string name="searchres_napps">%1$Id کارهٔ مطابق با «%2$s» پیدا شد:</string>
+    <string name="searchres_napps">%1$d کارهٔ مطابق با «%2$s» پیدا شد:</string>
     <string name="searchres_oneapp">یک کارهٔ مطابق با «%s» پیدا شد:</string>
     <string name="searchres_noapps">هیچ کارهٔ مطابق با «%s» پیدا نشد</string>
     <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید حذف نصب، تمام داده‌های درونی دخیره شدهٔ کاره را پاک می‌کند)</string>
@@ -173,7 +173,7 @@
 
     <string name="status_download_unknown_size">در حال بارگیری\n%2$s از\n%1$s</string>
     <string name="update_notification_title">در حال به‌روز رسانی مخزن‌ها</string>
-    <string name="status_processing_xml_percent">در حال پردازش %2$s / %3$s (%4$Id%%) از %1$s</string>
+    <string name="status_processing_xml_percent">در حال پردازش %2$s / %3$s (%4$d%%) از %1$s</string>
     <string name="status_inserting_apps">در حال ذخیرهٔ جزییات برنامه</string>
     <string name="repos_unchanged">تمام مخزن‌ها به‌روز هستند</string>
         <string name="global_error_updating_repos">خطا هنگام به‌روز رسانی: %s</string>
