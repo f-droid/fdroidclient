@@ -16,7 +16,7 @@ dependencies {
     compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.google.zxing:core:3.2.1'
-    compile 'eu.chainfire:libsuperuser:1.0.0.201510071325'
+    compile 'eu.chainfire:libsuperuser:1.0.0.201602011018'
     compile 'cc.mvdan.accesspoint:library:0.1.3'
     compile 'commons-net:commons-net:3.4'
     compile 'org.openhab.jmdns:jmdns:3.4.2'
@@ -67,7 +67,7 @@ if (!hasProperty('sourceDeps')) {
             'org.thoughtcrime.ssl.pinning:AndroidPinning:afa1d74e699257fa75cb109ff29bac50726ef269c6e306bdeffe8223cee06ef4',
             'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
             'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
-            'eu.chainfire:libsuperuser:a3ed4589e14f7d5ab255b3f31f7b79aaa1173a579035788f8db7c74215453a12',
+            'eu.chainfire:libsuperuser:952c5fc82f9c31d31d2b6a7054ee267dac1685fb037a254888c73c48de661eaf',
             'cc.mvdan.accesspoint:library:dc89a085d6bc40381078b8dd7776b12bde0dbaf8ffbcddb17ec4ebc3edecc7ba',
             'commons-net:commons-net:38cf2eca826b8bcdb236fc1f2e79e0c6dd8e7e0f5c44a3b8e839a1065b2fbe2e',
             'org.openhab.jmdns:jmdns:7a4b34b5606bbd2aff7fdfe629edcb0416fccd367fb59a099f210b9aba4f0bce',
