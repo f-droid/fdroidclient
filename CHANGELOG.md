@@ -10,6 +10,8 @@
 
 * Add English to the list of languages to use in the settings
 
+* Fix "database is locked" seemingly random crash
+
 * Cache installed app information in the database
 
 * Add counter to the installed tab
