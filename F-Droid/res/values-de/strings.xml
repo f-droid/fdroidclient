@@ -166,7 +166,7 @@
   <string name="root_access_denied_body">Entweder ist Ihr Android-Gerät nicht gerootet oder Sie haben den Root-Zugriff für F-Droid verweigert.</string>
   <string name="system_install_denied_title">F-Droid privilegierte Erweiterung ist nicht verfügbar</string>
   <string name="system_install_denied_body">Diese Option ist nur verfügbar, wenn F-Droid als System-App installiert wurde.</string>
-  <string name="app_description">F-Droid ist ein installierbarer App-Store für FOSS Anwendungen (Freie und Quelloffene Software) für die Android-Plattform. Durch das Programm ist es einfach Apps zu suchen, zu installieren und zu aktualisieren.</string>
+  <string name="app_description">F-Droid ist ein installierbarer App-Store für FOSS-Anwendungen (freie und quelloffene Programme) für die Android-Plattform. Durch das Programm ist es einfach Apps zu suchen, zu installieren und zu aktualisieren.</string>
   <string name="swap_nfc_description">Wenn Ihr Freund F-Droid und NFC aktiviert hat, bitte die Geräte aneinander halten.</string>
   <string name="swap_join_same_wifi">Bitte mit dem gleichen WLAN-Netzwerk wie Ihr Freund verbinden</string>
   <string name="menu_swap">Apps tauschen</string>
@@ -257,7 +257,7 @@
     <string name="system_install_installing_rebooting">Installation und Neustart läuft …</string>
     <string name="system_install_uninstalling">Wird deinstalliert …</string>
     <string name="system_install_warning">Das wird bis zu 10 Sekunden dauern.</string>
-    <string name="system_install_warning_lollipop">Das wird bis zu 10 Sekunden dauern und das Gerät wird anschliessend <b>neu gestartet</b>.</string>
+    <string name="system_install_warning_lollipop">Das wird bis zu 10 Sekunden dauern und das Gerät wird anschließend <b>neu gestartet</b>.</string>
     <string name="swap_nfc_title">Berühren, um zu tauschen</string>
     <string name="swap_join_this_hotspot">Ihrem Freund helfen, Ihrem Hotspot beizutreten</string>
     <string name="swap_success">Tausch erfolgreich!</string>

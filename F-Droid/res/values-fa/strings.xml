@@ -334,4 +334,15 @@
     <string name="install_confirm_update_system_no_perms">می‌خواهید به‌روزرسانی‌ای برای این برنامهٔ داخلی نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. نیاز به هیچ دسترسی خاصّی ندارد.</string>
     <string name="uninstall_update_confirm">می‌خواهید این کاره را با نگارش کارخانه عوض کنید؟</string>
     <string name="uninstall_confirm">می‌خواهید این کاره را حذف کنید؟</string>
-    </resources>
+    <string name="by_author">توسّط</string>
+    <string name="menu_email">رایانامه به نویسنده</string>
+    <string name="antinonfreeassetslist">این کاره شامل ابزارهای غیرآزاد است</string>
+
+    <string name="empty_search_installed_app_list">هیچ برنامهٔ نصب شدهٔ مطابقی وجود ندارد.</string>
+    <string name="empty_search_available_app_list">هیچ برنامهٔ مطابقی وجود ندارد.</string>
+    <string name="empty_search_can_update_app_list">هیچ برنامهٔ مطابقی برای به‌روز رسانی وجود ندارد.</string>
+
+    <string name="crash_dialog_title">اف‌دروید از کار افتاد</string>
+    <string name="crash_dialog_text">خطایی پیش‌بینی نشده رخ داد که برنامه را وادار به توقّف کرد. می‌خواهید جزئیات را برای کمک به حل کردن مشکل رایانامه کنید؟</string>
+    <string name="crash_dialog_comment_prompt">در این‌جا می‌توانید اطّلاعات اضافی و نظرها را بیفزایید:</string>
+</resources>

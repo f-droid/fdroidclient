@@ -349,4 +349,6 @@
     <string name="crash_dialog_comment_prompt">Можете ввести додаткову інформацію та коментарі тут:</string>
 <string name="antinonfreeassetslist">Цей додаток містить не вільний вміст</string>
 
+    <string name="by_author">від</string>
+    <string name="menu_email">Написати листа автору</string>
     </resources>

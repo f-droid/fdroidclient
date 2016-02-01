@@ -2,35 +2,35 @@
 <resources>
   <string name="searchres_napps">Trovate %1$d applicazioni corrispondenti a \'%2$s\':</string>
   <string name="searchres_oneapp">Trovata un\'applicazione corrispondente a \'%s\':</string>
-  <string name="searchres_noapps">Non è stata trovata nessuna applicazione corrispondente a \'%s\'</string>
-  <string name="SignatureMismatch">La nuova versione è firmata con una chiave differente rispetto alla vecchia. Per installare la nuova versione occorre prima disinstallare la precedente. Riprovare dopo aver disinstallato. (Attenzione! Disistallando si cancellerà qualsiasi dato salvato dall\'applicazione)</string>
+  <string name="searchres_noapps">Non è stata trovata nessun\'applicazione corrispondente a \'%s\'</string>
+  <string name="SignatureMismatch">La nuova versione è firmata con una chiave differente rispetto alla vecchia. Per installare la nuova versione occorre prima disinstallare la precedente. Riprovare dopo averla disinstallata (Attenzione! disistallando si cancellerà qualsiasi dato salvato dall\'applicazione)</string>
   <string name="installIncompatible">Sembra che questo pacchetto non sia compatibile con il tuo dispositivo. Vuoi provare comunque ad installarlo?</string>
-  <string name="installDowngrade">Stai provando a passare ad una versione precedente di questa applicazione. Potresti avere malfunzionamenti e perdita di dati. Vuoi installarla comunque?</string>
+  <string name="installDowngrade">Stai provando a passare ad una versione precedente di questa applicazione. Potresti avere malfunzionamenti e perdite di dati. Vuoi installarla comunque?</string>
   <string name="version">Versione</string>
   <string name="delete">Elimina</string>
-  <string name="enable_nfc_send">Attiva Invio NFC…</string>
-  <string name="cache_downloaded">Cache pacchetti</string>
+  <string name="enable_nfc_send">Attiva invio NFC…</string>
+  <string name="cache_downloaded">Cache dei pacchetti</string>
   <string name="cache_downloaded_on">Conserva sul dispositivo i file dei pacchetti scaricati</string>
   <string name="updates">Aggiornamenti</string>
   <string name="other">Altro</string>
   <string name="update_interval">Intervallo degli aggiornamenti automatici</string>
   <string name="update_interval_zero">Non aggiornare automaticamente l\'elenco delle applicazioni</string>
   <string name="automatic_scan_wifi">Solo su Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Aggiorna automaticamente gli elenchi di applicazioni solo su Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Aggiorna automaticamente gli elenchi applicazioni solo su Wi-Fi</string>
   <string name="notify">Notifiche aggiornamenti</string>
   <string name="notify_on">Notifica gli aggiornamenti disponibili</string>
   <string name="update_history">Aggiorna i repository</string>
   <string name="update_history_summ">Numero di giorni per considerare le applicazioni nuove o recenti: %s</string>
   <string name="system_installer">Estensione Priviliegiata</string>
   <string name="system_installer_on">Usa l\'Estensione Privilegiata di F-Droid per installare, aggiornare e rimuovere i pacchetti</string>
-  <string name="local_repo_name">Nome della tua Repo Locale</string>
+  <string name="local_repo_name">Nome della tua Repo locale</string>
   <string name="local_repo_name_summary">Il titolo visualizzato della tua repo: %s</string>
-  <string name="local_repo_https">Usa una Connessione Privata</string>
+  <string name="local_repo_https">Usa una connessione privata</string>
   <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per le repo locali</string>
-  <string name="app_details">Dettagli App</string>
+  <string name="app_details">Dettagli app</string>
   <string name="no_such_app">Nessuna app corrispondente trovata.</string>
   <string name="about_title">Informazioni</string>
-  <string name="about_site">Sito Web</string>
+  <string name="about_site">Sito web</string>
   <string name="about_mail">Email</string>
   <string name="about_version">Versione</string>
   <string name="app_installed">Installato</string>
@@ -39,7 +39,7 @@
   <string name="ok">OK</string>
   <string name="yes">Sì</string>
   <string name="no">No</string>
-  <string name="repo_add_title">Aggiungi nuovo repository</string>
+  <string name="repo_add_title">Aggiungi nuova repository</string>
   <string name="repo_add_add">Aggiungi</string>
   <string name="cancel">Annulla</string>
   <string name="enable">Abilita</string>
@@ -49,8 +49,8 @@
   <string name="tab_updates">Aggiornamenti</string>
   <string name="one_update_available">1 aggiornamento disponibile.</string>
   <string name="many_updates_available">%d aggiornamenti disponibili.</string>
-  <string name="fdroid_updates_available">Aggiornamenti per F-Droid Disponibili</string>
-  <string name="bluetooth_activity_not_found">Nessun metodo d\'invio via Bluetooth trovato, scegline uno!</string>
+  <string name="fdroid_updates_available">Aggiornamenti per F-Droid disponibili</string>
+  <string name="bluetooth_activity_not_found">Non è possibile inviare via Bluetooth!</string>
   <string name="choose_bt_send">Scegli il metodo di invio Bluetooth</string>
   <string name="send_via_bluetooth">Invia via Bluetooth</string>
   <string name="repo_add_url">Indirizzo repository</string>
@@ -58,9 +58,9 @@
   <string name="repo_exists_add_fingerprint">Questo repository è già configurato, una nuova informazione chiave verrà aggiunta.</string>
   <string name="repo_exists_enable">Questo repository è già configurato, conferma di volerlo abilitare nuovamente.</string>
   <string name="repo_exists_and_enabled">Il nuovo deposito è già configurato e abilitato.</string>
-  <string name="repo_delete_to_overwrite">È necessario eliminare questo deposito prima di poter aggiungerne uno con una chiave differente.</string>
-  <string name="malformed_repo_uri">Ignoro URI repo malformati: %s</string>
-  <string name="menu_update_repo">Aggiorna i Repository</string>
+  <string name="repo_delete_to_overwrite">È necessario eliminare questo repository prima di poter aggiungerne uno con una chiave differente.</string>
+  <string name="malformed_repo_uri">Ignora URI repo malformati: %s</string>
+  <string name="menu_update_repo">Aggiorna i repository</string>
   <string name="menu_manage">Gestione dei repository</string>
   <string name="menu_send_apk_bt">Condividi F-Droid via Bluetooth</string>
   <string name="menu_about">Informazioni</string>
@@ -70,9 +70,9 @@
   <string name="menu_share">Condividi</string>
   <string name="menu_install">Installa</string>
   <string name="menu_uninstall">Disinstalla</string>
-  <string name="menu_ignore_all">Ignora Tutti gli Aggiornamenti</string>
-  <string name="menu_ignore_this">Ignora Questo Aggiornamento</string>
-  <string name="menu_website">Sito Web</string>
+  <string name="menu_ignore_all">Ignora tutti gli aggiornamenti</string>
+  <string name="menu_ignore_this">Ignora questo aggiornamento</string>
+  <string name="menu_website">Sito web</string>
   <string name="menu_issues">Problemi</string>
   <string name="menu_source">Codice sorgente</string>
   <string name="menu_upgrade">Aggiorna</string>
@@ -88,7 +88,7 @@
   <string name="antiupstreamnonfreelist">Il codice sorgente a monte non è completamente libero</string>
   <string name="display">Mostra</string>
   <string name="expert">Modalità esperto</string>
-  <string name="expert_on">Mostra le informazioni ulteriori e abilita le impostazioni avanzate</string>
+  <string name="expert_on">Mostra ulteriori informazioni e abilita le impostazioni avanzate</string>
   <string name="search_hint">Ricerca applicazioni</string>
   <string name="appcompatibility">Compatibilità applicazioni</string>
   <string name="show_incompat_versions">Versioni incompatibili</string>
@@ -99,11 +99,11 @@
   <string name="ignoreTouch_on">Includi sempre le applicazioni con touchscreen obbligatorio</string>
   <string name="category_All">Tutte</string>
   <string name="category_Whats_New">Novità</string>
-  <string name="category_Recently_Updated">Aggiornate di Recente</string>
-  <string name="local_repo">Repo Locale</string>
+  <string name="category_Recently_Updated">Aggiornate di recente</string>
+  <string name="local_repo">Repo locale</string>
   <string name="local_repo_running">F-Droid è pronto per inviare con swap</string>
   <string name="touch_to_configure_local_repo">Tocca per vedere i dettagli e permettere agli altri di ricevere le tue app.</string>
-  <string name="deleting_repo">Cancello la repo corrente…</string>
+  <string name="deleting_repo">Cancellazione la repo corrente…</string>
   <string name="adding_apks_format">Aggiungo %s alla repo…</string>
   <string name="writing_index_jar">Scrivo il file di indice fimrato (index.jar)…</string>
   <string name="failed_to_create_index">Creazione dell\'indice della repo fallita!</string>
@@ -113,7 +113,7 @@
   <string name="next">Prossimo</string>
   <string name="skip">Salta</string>
   <string name="proxy">Proxy</string>
-  <string name="enable_proxy_title">Abilita Proxy HTTP</string>
+  <string name="enable_proxy_title">Abilita proxy HTTP</string>
   <string name="enable_proxy_summary">Configura il proxy HTTP per tutte le richieste di rete</string>
   <string name="proxy_host">Host Proxy</string>
   <string name="proxy_host_summary">Configura l\'hostname del tuo proxy (es. 127.0.0.1)</string>
@@ -147,7 +147,7 @@
   <string name="minsdk_up_to_maxsdk">da %1$s fino a %2$s</string>
   <string name="not_on_same_wifi">Il tuo dispositivo non è nella stessa rete Wi-Fi del deposito locale che hai aggiunto! Prova a collegarti a questa rete: %s</string>
   <string name="requires_features">Richiede: %1$s</string>
-  <string name="app_icon">Icona App</string>
+  <string name="app_icon">Icona della app</string>
   <string name="category_Development">Sviluppo</string>
   <string name="category_Games">Giochi</string>
   <string name="category_Internet">Internet</string>
@@ -226,10 +226,10 @@
     <string name="swap_intro">Connettiti e scambia applicazioni con le persone vicine.</string>
     <string name="swap_no_peers_nearby">Non sono state trovate persone nelle vicinanze con cui scambiare applicazioni.</string>
     <string name="interval_1w">Settimanale</string>
-    <string name="interval_1d">Giornaliero</string>
+    <string name="interval_1d">Giornalmente</string>
     <string name="interval_never">Mai</string>
     <string name="uninstall_update_confirm">Vuoi sostituire questa applicazione con la sua versione originale?</string>
-    <string name="perm_costs_money">Questo potrebbe costare soldi</string>
+    <string name="perm_costs_money">Questo potrebbe essere a pagamento</string>
     <string name="newPerms">Nuovo</string>
     <string name="swap_not_enabled_description">Prima dello scambio, il tuo dispositivo deve essere visibile.</string>
 
@@ -267,7 +267,7 @@
     <string name="repo_added">Salvato il deposito F-Droid %1$s.</string>
     <string name="repo_searching_address">Cerco il deposito F-Droid a\n%1$s</string>
     <string name="pref_language">Lingua</string>
-    <string name="pref_language_default">Predefinite di sistema</string>
+    <string name="pref_language_default">Predefinita di sistema</string>
 
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
@@ -292,7 +292,7 @@
     <string name="system_install_denied_signature">La firma dell\'estensione è sbagliata! Per favore segnala questo problema!</string>
     <string name="system_install_denied_permissions">I privilegi non sono stati concessi all\'estensione! Per favore segnala questo problema!</string>
     <string name="system_install_button_install">Installa</string>
-    <string name="system_install_button_open">Apri l\'Estensione</string>
+    <string name="system_install_button_open">Apri l\'estensione</string>
     <string name="system_install_first_time_notification">Installare l\'Estensione Privilegiata di F-Droid?</string>
     <string name="system_install_first_time_notification_message_short">Tocca per maggiori informazioni.</string>
     <string name="system_install_first_time_notification_message">Tocca per installare l\'Estensione Privilegiata di F-Droid, fortemente legata al sistema operativo Android. Questo permette a F-Droid di installare, aggiornare e disinstallare le applicazioni indipendentemente.\nPuoi anche farlo dopo delle impostazioni di F-Droid.</string>
@@ -328,8 +328,16 @@
     <string name="allPerms">Tutte</string>
     <string name="devicePerms">Accesso al dispositivo</string>
     <string name="update_notification_more">+%1$d rimanente…</string>
-    <string name="swap_nearby">Scambio Ravvicinato</string>
+    <string name="swap_nearby">Scambio ravvicinato</string>
     <string name="empty_search_installed_app_list">Nessuna applicazione installata corrispondente.</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>
 <string name="by_author">di</string>
+    <string name="menu_email">Indirizzo email dell\'autore</string>
+    <string name="crash_dialog_text">Un errore inaspettato ha provocato il blocco dell\'applicazione. Vuoi inviare una e-mail con i dettagli, per aiutarci a sistemare il problema?</string>
+    <string name="crash_dialog_title">F-Droid si è bloccato</string>
+    <string name="antinonfreeassetslist">Questa app contiene risorse non gratuite</string>
+
+    <string name="empty_search_available_app_list">Non è disponibile nessuna applicazione corrispondente.</string>
+    <string name="empty_search_can_update_app_list">Nessuna applicazione corrispondente è disponibile per l\'aggiornamento.</string>
+
     </resources>

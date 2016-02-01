@@ -274,12 +274,12 @@
     <string name="swap_not_enabled_description">Před výměnou je třeba zviditelnit přístroj.</string>
 
     <string name="install_confirm">Chcete instalovat tuto aplikaci? Bude mít přístup k:</string>
-    <string name="system_install_post_success">Privilegované rozšíření F-Droid úspěšně nainstalováno</string>
+    <string name="system_install_post_success">Oprávněné rozšíření F-Droidu úspěšně nainstalováno</string>
     <string name="system_install_post_fail">Instalace prigilegovaného rozšíření F-Droid selhala</string>
     <string name="system_install_installing">Instalace…</string>
     <string name="system_install_installing_rebooting">Instalace a restart…</string>
     <string name="system_install_uninstalling">Deinstalace…</string>
-    <string name="system_install_question">Chcete instalovat privilegované rozšíření F-Droid?</string>
+    <string name="system_install_question">Chcete instalovat oprávněné rozšíření F-Droidu?</string>
     <string name="system_install_warning">To může trvat až 10 vteřin.</string>
     <string name="system_install_warning_lollipop">To může trvat až 10 vteřin a poté bude přístroj <b>restartován</b>.</string>
     <string name="system_uninstall">Chcete odinstalovat privilegované rozšíření F-Droid?</string>
@@ -313,4 +313,17 @@
     <string name="theme_night">Noc</string>
 <string name="update_interval_zero">Bez automatických aktualizací seznamu aplikací</string>
     <string name="system_install_denied_permissions">Privilegovaná oprávnění nebyla tomuto rozšíření udělena! Nahlašte prosím jako chybu!</string>
+    <string name="by_author">od</string>
+    <string name="cache_downloaded">Uchovat balíčky</string>
+    <string name="menu_email">Odeslat e-mail autorovi</string>
+    <string name="antinonfreeassetslist">Tato aplikace obsahuje nesvobodné části</string>
+
+    <string name="status_inserting_apps">Ukládání detailů aplikace</string>
+    <string name="empty_search_installed_app_list">Žádné odpovídající nainstalované aplikace.</string>
+    <string name="empty_search_available_app_list">Žádné odpovídající aplikace nejsou dostupné.</string>
+    <string name="empty_search_can_update_app_list">Žádné odpovídající aplikace k aktualizaci.</string>
+
+    <string name="system_install_first_time_notification_message">Stiskněte pro instalaci oprávněné rozšíření F-Droid, které je pevně provázáno s operačním systémem Android. Toto dovolí F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.\nTuto operaci lze také provést později z nastavení F-Droidu.</string>
+    <string name="system_install_post_success_message">Oprávněné rozšíření F-Droidu bylo úspěšně nainstalováno. Toto dovoluje F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.</string>
+    <string name="system_install_post_fail_message">Instalace oprávněného rozšíření F-Droidu selhala. Tato instalační metoda není podporována všemi distribucemi Androidu. Pro více informací se podívejte na bug tracker F-Droidu.</string>
     </resources>

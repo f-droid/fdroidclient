@@ -335,4 +335,11 @@
     <string name="empty_search_available_app_list">已安装应用列表为空。</string>
     <string name="empty_search_can_update_app_list">未能从可更新应用中找到符合的结果。</string>
 
-    </resources>
+    <string name="by_author">by</string>
+    <string name="menu_email">E-Mail 作者</string>
+    <string name="antinonfreeassetslist">该此应用包括非自由资产</string>
+
+    <string name="crash_dialog_title">F-Droid 已崩溃</string>
+    <string name="crash_dialog_text">发生了一个意料之外的错误导致应用程序停止。你愿意邮件发送问题的细节以便修复吗？</string>
+    <string name="crash_dialog_comment_prompt">你可以在此添加额外的信息或者评论:</string>
+</resources>

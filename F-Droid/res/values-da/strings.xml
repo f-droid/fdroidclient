@@ -344,4 +344,15 @@
     <string name="theme_light">Lys</string>
     <string name="theme_dark">Mørk</string>
     <string name="theme_night">Nat</string>
+<string name="by_author">af</string>
+    <string name="menu_email">E-Mail forfatter</string>
+    <string name="antinonfreeassetslist">Denne app indeholder ikke-frie aktiver</string>
+
+    <string name="empty_search_installed_app_list">Ingen matches blandt installerede programmer.</string>
+    <string name="empty_search_available_app_list">Ingen matchninger blandt programmer.</string>
+    <string name="empty_search_can_update_app_list">Ingen matchninger blandt programmer som kan opdateres.</string>
+
+    <string name="crash_dialog_title">F-Droid er gået ned</string>
+    <string name="crash_dialog_text">En uventet fejl har tvunget programmet til at stoppe. Vil du sende en e-mail med detaljer som hjælper med at ordne problemet?</string>
+    <string name="crash_dialog_comment_prompt">Du kan tilføje ekstra information og kommentarer her:</string>
 </resources>
