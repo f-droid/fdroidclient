@@ -1,4 +1,4 @@
-### 0.98 (upcoming release)
+### 0.98 (2016-02-01)
 
 * Add opt-in crash reporting via ACRA
 
