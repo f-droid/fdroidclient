@@ -125,7 +125,7 @@ public abstract class FDroidProvider extends ContentProvider {
     }
 
     @TargetApi(11)
-    protected Set<String> getKeySet(ContentValues values) {
+    private Set<String> getKeySet(ContentValues values) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             return values.keySet();

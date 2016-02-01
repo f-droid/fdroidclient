@@ -135,7 +135,7 @@ public abstract class AppListFragment extends ListFragment implements
      * it automatically again, because the repos or internet connection may
      * be bad.
      */
-    public boolean updateEmptyRepos() {
+    private boolean updateEmptyRepos() {
         final String triedEmptyUpdate = "triedEmptyUpdate";
         SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
         boolean hasTriedEmptyUpdate = prefs.getBoolean(triedEmptyUpdate, false);

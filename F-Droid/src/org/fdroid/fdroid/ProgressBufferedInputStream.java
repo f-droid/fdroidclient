@@ -11,12 +11,12 @@ import java.io.InputStream;
 public class ProgressBufferedInputStream extends BufferedInputStream {
     private static final String TAG = "ProgressBufferedInputSt";
 
-    final Repo repo;
-    final ProgressListener progressListener;
-    final Bundle data;
-    final int totalBytes;
+    private final Repo repo;
+    private final ProgressListener progressListener;
+    private final Bundle data;
+    private final int totalBytes;
 
-    int currentBytes;
+    private int currentBytes;
 
     /**
      * Reports progress to the specified {@link ProgressListener}, with the

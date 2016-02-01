@@ -312,7 +312,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     /**
      * If we are to update the repos only on wifi, make sure that connection is active
      */
-    public static boolean isNetworkAvailableForUpdate(Context context) {
+    private static boolean isNetworkAvailableForUpdate(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         // this could be cellular or wifi

@@ -78,7 +78,7 @@ public abstract class SwapType {
         }.start();
     }
 
-    public void ensureRunning() {
+    private void ensureRunning() {
         if (!isConnected()) {
             start();
         }

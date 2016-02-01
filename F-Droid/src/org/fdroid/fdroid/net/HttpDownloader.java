@@ -81,7 +81,7 @@ public class HttpDownloader extends Downloader {
         }
     }
 
-    boolean isSwapUrl() {
+    private boolean isSwapUrl() {
         String host = sourceUrl.getHost();
         return sourceUrl.getPort() > 1023 // only root can use <= 1023, so never a swap repo
                 && host.matches("[0-9.]+") // host must be an IP address

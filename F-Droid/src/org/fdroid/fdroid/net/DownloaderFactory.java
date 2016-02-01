@@ -68,7 +68,7 @@ public class DownloaderFactory {
         return "bluetooth".equalsIgnoreCase(url.getProtocol());
     }
 
-    static boolean isLocalFile(URL url) {
+    private static boolean isLocalFile(URL url) {
         return "file".equalsIgnoreCase(url.getProtocol());
     }
 
@@ -89,7 +89,7 @@ public class DownloaderFactory {
         return new AsyncDownloadWrapper(create(context, url, destFile, credentials), listener);
     }
 
-    static boolean isOnionAddress(URL url) {
+    private static boolean isOnionAddress(URL url) {
         return url.getHost().endsWith(".onion");
     }
 

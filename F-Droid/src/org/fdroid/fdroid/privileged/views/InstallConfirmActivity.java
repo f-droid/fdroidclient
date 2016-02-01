@@ -47,16 +47,16 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
 
     private Intent intent;
 
-    PackageManager mPm;
+    private PackageManager mPm;
 
-    AppDiff mAppDiff;
+    private AppDiff mAppDiff;
 
     // View for install progress
-    View mInstallConfirm;
+    private View mInstallConfirm;
     // Buttons to indicate user acceptance
     private Button mOk;
     private Button mCancel;
-    CaffeinatedScrollView mScrollView;
+    private CaffeinatedScrollView mScrollView;
     private boolean mOkCanInstall;
 
     private static final String TAB_ID_ALL = "all";

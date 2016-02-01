@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FDroidCertPins {
-    public static final String[] DEFAULT_PINS = {
+    private static final String[] DEFAULT_PINS = {
 
         // OU=PositiveSSL, CN=f-droid.org
         // Fingerprint: 84B91CDF2312CB9BA7F3BE803783302F8D8C299F
@@ -57,7 +57,7 @@ public class FDroidCertPins {
         "87e3bf322427c1405d2736c381e01d1a71d4a039",
     };
 
-    public static List<String> pinList;
+    private static List<String> pinList;
 
     public static String[] getPinList() {
         if (pinList == null) {

@@ -359,7 +359,7 @@ public final class Utils {
         }
     }
 
-    public static String calcFingerprint(byte[] key) {
+    private static String calcFingerprint(byte[] key) {
         if (key == null)
             return null;
         if (key.length < 256) {
@@ -545,7 +545,7 @@ public final class Utils {
      * @param bytes an array of bytes.
      * @return the bytes represented as a string of hexadecimal digits.
      */
-    public static String toHexString(byte[] bytes) {
+    private static String toHexString(byte[] bytes) {
         BigInteger bi = new BigInteger(1, bytes);
         return String.format("%0" + (bytes.length << 1) + "X", bi);
     }

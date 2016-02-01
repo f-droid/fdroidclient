@@ -18,7 +18,7 @@ public class BluetoothConnection {
 
     private InputStream input;
     private OutputStream output;
-    protected final BluetoothSocket socket;
+    private final BluetoothSocket socket;
 
     public BluetoothConnection(BluetoothSocket socket) throws IOException {
         this.socket = socket;

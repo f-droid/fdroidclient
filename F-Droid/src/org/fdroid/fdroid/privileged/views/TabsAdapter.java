@@ -41,7 +41,7 @@ import java.util.List;
  * care of switch to the correct paged in the ViewPager whenever the selected
  * tab changes.
  */
-public class TabsAdapter extends PagerAdapter
+class TabsAdapter extends PagerAdapter
         implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
     private final Context mContext;
     private final TabHost mTabHost;
@@ -66,7 +66,7 @@ public class TabsAdapter extends PagerAdapter
         }
     }
 
-    public TabsAdapter(Activity activity, TabHost tabHost, ViewPager pager) {
+    TabsAdapter(Activity activity, TabHost tabHost, ViewPager pager) {
         mContext = activity;
         mTabHost = tabHost;
         mViewPager = pager;

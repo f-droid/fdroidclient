@@ -81,15 +81,15 @@ public final class LocalRepoManager {
 
     private final Map<String, App> apps = new HashMap<>();
 
-    public final SanitizedFile xmlIndex;
+    private final SanitizedFile xmlIndex;
     private final SanitizedFile xmlIndexJar;
     private final SanitizedFile xmlIndexJarUnsigned;
-    public final SanitizedFile webRoot;
-    public final SanitizedFile fdroidDir;
-    public final SanitizedFile fdroidDirCaps;
-    public final SanitizedFile repoDir;
-    public final SanitizedFile repoDirCaps;
-    public final SanitizedFile iconsDir;
+    private final SanitizedFile webRoot;
+    private final SanitizedFile fdroidDir;
+    private final SanitizedFile fdroidDirCaps;
+    private final SanitizedFile repoDir;
+    private final SanitizedFile repoDirCaps;
+    private final SanitizedFile iconsDir;
 
     @Nullable
     private static LocalRepoManager localRepoManager;
@@ -243,7 +243,7 @@ public final class LocalRepoManager {
         copyApksToRepo(new ArrayList<>(apps.keySet()));
     }
 
-    public void copyApksToRepo(List<String> appsToCopy) {
+    private void copyApksToRepo(List<String> appsToCopy) {
         for (final String packageName : appsToCopy) {
             final App app = apps.get(packageName);
 
@@ -294,7 +294,7 @@ public final class LocalRepoManager {
     /**
      * Extracts the icon from an APK and writes it to the repo as a PNG
      */
-    public void copyIconToRepo(Drawable drawable, String packageName, int versionCode) {
+    private void copyIconToRepo(Drawable drawable, String packageName, int versionCode) {
         Bitmap bitmap;
         if (drawable instanceof BitmapDrawable) {
             bitmap = ((BitmapDrawable) drawable).getBitmap();

@@ -49,22 +49,22 @@ public class PreferencesFragment extends PreferenceFragment
         addPreferencesFromResource(R.xml.preferences);
     }
 
-    protected void checkSummary(String key, int resId) {
+    private void checkSummary(String key, int resId) {
         CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);
         pref.setSummary(resId);
     }
 
-    protected void entrySummary(String key) {
+    private void entrySummary(String key) {
         ListPreference pref = (ListPreference) findPreference(key);
         pref.setSummary(pref.getEntry());
     }
 
-    protected void textSummary(String key, int resId) {
+    private void textSummary(String key, int resId) {
         EditTextPreference pref = (EditTextPreference) findPreference(key);
         pref.setSummary(getString(resId, pref.getText()));
     }
 
-    protected void updateSummary(String key, boolean changing) {
+    private void updateSummary(String key, boolean changing) {
 
         int result = 0;
 
@@ -174,7 +174,7 @@ public class PreferencesFragment extends PreferenceFragment
     /**
      * Initializes SystemInstaller preference, which can only be enabled when F-Droid is installed as a system-app
      */
-    protected void initPrivilegedInstallerPreference() {
+    private void initPrivilegedInstallerPreference() {
         CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
 
         // we are handling persistence ourself!
@@ -246,7 +246,7 @@ public class PreferencesFragment extends PreferenceFragment
         });
     }
 
-    protected void initManagePrivilegedAppPreference() {
+    private void initManagePrivilegedAppPreference() {
         Preference pref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
         pref.setPersistent(false);
 
