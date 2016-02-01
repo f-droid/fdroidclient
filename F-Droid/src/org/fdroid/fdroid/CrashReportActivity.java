@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.widget.EditText;
 
-import org.acra.BaseCrashReportDialog;
+import org.acra.dialog.BaseCrashReportDialog;
 
 public class CrashReportActivity extends BaseCrashReportDialog implements DialogInterface.OnDismissListener, DialogInterface.OnClickListener {
 
