@@ -583,9 +583,12 @@ public class ManageReposActivity extends ActionBarActivity {
             }
 
             uri = uri.normalize();
-            String path = uri.getPath().replaceAll("//*/", "/"); // Collapse multiple forward slashes into 1.
-            if (path.length() > 0 && path.charAt(path.length() - 1) == '/') {
-                path = path.substring(0, path.length() - 1);
+            String path = uri.getPath();
+            if (path != null) {
+                path = path.replaceAll("//*/", "/"); // Collapse multiple forward slashes into 1.
+                if (path.length() > 0 && path.charAt(path.length() - 1) == '/') {
+                    path = path.substring(0, path.length() - 1);
+                }
             }
 
             return new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(),
