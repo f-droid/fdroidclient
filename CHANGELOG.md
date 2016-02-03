@@ -1,3 +1,7 @@
+### Upcoming Release
+
+* Fix bug when entering only a space into the search dialog.
+
 ### 0.98 (2015-02-02)
 
 * Add opt-in crash reporting via ACRA
