@@ -131,6 +131,11 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
         cursor.close();
     }
 
+    protected void assertValidUri(Uri actualUri, String expectedUri) {
+        assertValidUri(actualUri);
+        assertEquals(expectedUri, actualUri.toString());
+    }
+
     /**
      * Many queries need at least some sort of projection in order to produce
      * valid SQL. As such, we also need to know about that, so we can provide
