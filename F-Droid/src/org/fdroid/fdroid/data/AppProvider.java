@@ -614,21 +614,27 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection querySearch(String query) {
-        final String[] columns = {
-                getTableName() + ".id",
-                getTableName() + ".name",
-                getTableName() + ".summary",
-                getTableName() + ".description",
-        };
-
-        // Remove duplicates, surround in % for wildcard searching
+        // Put in a Set to remove duplicates
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(query.split("\\s")));
+
+        if (keywordSet.size() == 0) {
+            return new AppQuerySelection();
+        }
+
+        // Surround each keyword in % for wildcard searching
         final String[] keywords = new String[keywordSet.size()];
         int iKeyword = 0;
         for (final String keyword : keywordSet) {
             keywords[iKeyword] = "%" + keyword + "%";
             iKeyword++;
         }
+
+        final String[] columns = {
+            getTableName() + ".id",
+            getTableName() + ".name",
+            getTableName() + ".summary",
+            getTableName() + ".description",
+        };
 
         // Build selection string and fill out keyword arguments
         final StringBuilder selection = new StringBuilder();
