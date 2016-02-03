@@ -58,7 +58,22 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
         return parent.getString(R.string.tab_updates_count, updateCount);
     }
 
+    /**
+     * Changing the search query is quite an expensive operation, so this does some rudimentary
+     * checking to see if the two queries are meaningfully different. At present, it trims the
+     * strings and does a case insensitive comparison.
+     */
+    private boolean isSearchQuerySame(String newQuery) {
+        String oldValueTrimmed = searchQuery == null ? "" : searchQuery.trim();
+        String newValueTrimmed = newQuery == null ? "" : newQuery.trim();
+        return oldValueTrimmed.equalsIgnoreCase(newValueTrimmed);
+    }
+
     public void updateSearchQuery(@Nullable String query) {
+        if (isSearchQuerySame(query)) {
+            return;
+        }
+
         searchQuery = query;
         for (AppListFragment fragment : registeredFragments) {
             if (fragment != null) {
