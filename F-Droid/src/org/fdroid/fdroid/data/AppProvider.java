@@ -7,6 +7,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
@@ -542,17 +543,22 @@ public class AppProvider extends FDroidProvider {
     }
 
     public static Uri getSearchUri(String query) {
-        return getContentUri().buildUpon()
-            .appendPath(PATH_SEARCH)
-            .appendEncodedPath(query)
-            .build();
+        if (TextUtils.isEmpty(query)) {
+            // Return all the things for an empty search.
+            return getContentUri();
+        } else {
+            return getContentUri().buildUpon()
+                    .appendPath(PATH_SEARCH)
+                    .appendPath(query)
+                    .build();
+        }
     }
 
     public static Uri getSearchInstalledUri(String query) {
         return getContentUri()
             .buildUpon()
             .appendPath(PATH_SEARCH_INSTALLED)
-            .appendEncodedPath(query)
+            .appendPath(query)
             .build();
     }
 
@@ -560,7 +566,7 @@ public class AppProvider extends FDroidProvider {
         return getContentUri()
             .buildUpon()
             .appendPath(PATH_SEARCH_CAN_UPDATE)
-            .appendEncodedPath(query)
+            .appendPath(query)
             .build();
     }
 
@@ -568,7 +574,7 @@ public class AppProvider extends FDroidProvider {
         return getContentUri().buildUpon()
             .appendPath(PATH_SEARCH_REPO)
             .appendPath(repo.id + "")
-            .appendEncodedPath(query)
+            .appendPath(query)
             .build();
     }
 
