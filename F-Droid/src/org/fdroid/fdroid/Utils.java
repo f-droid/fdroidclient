@@ -304,9 +304,9 @@ public final class Utils {
         b.scheme(localRepoUri.getScheme().replaceFirst("http", "fdroidrepo"));
         b.appendQueryParameter("swap", "1");
         if (!TextUtils.isEmpty(FDroidApp.bssid)) {
-            b.appendQueryParameter("bssid", Uri.encode(FDroidApp.bssid));
+            b.appendQueryParameter("bssid", FDroidApp.bssid);
             if (!TextUtils.isEmpty(FDroidApp.ssid))
-                b.appendQueryParameter("ssid", Uri.encode(FDroidApp.ssid));
+                b.appendQueryParameter("ssid", FDroidApp.ssid);
         }
         return b.build();
     }
