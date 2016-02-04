@@ -88,6 +88,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         assertValidUri(AppProvider.getContentUri(), "content://org.fdroid.fdroid.data.AppProvider");
         assertValidUri(AppProvider.getSearchUri("'searching!'"), "content://org.fdroid.fdroid.data.AppProvider/search/'searching!'");
+        assertValidUri(AppProvider.getSearchUri("/"), "content://org.fdroid.fdroid.data.AppProvider/search/%2F");
         assertValidUri(AppProvider.getSearchUri(""), "content://org.fdroid.fdroid.data.AppProvider");
         assertValidUri(AppProvider.getSearchUri(null), "content://org.fdroid.fdroid.data.AppProvider");
         assertValidUri(AppProvider.getNoApksUri());
