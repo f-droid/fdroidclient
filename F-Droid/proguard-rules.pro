@@ -33,3 +33,10 @@
 -keep public class * extends android.support.v4.view.ActionProvider {
     public <init>(android.content.Context);
 }
+
+# The rxjava library depends on sun.misc.Unsafe, which is unavailable on Android
+# The rxjava team is aware of this, and mention in the docs that they only use
+# the unsafe functionality if the platform supports it.
+#  - https://github.com/ReactiveX/RxJava/issues/1415#issuecomment-48390883
+#  - https://github.com/ReactiveX/RxJava/blob/1.x/src/main/java/rx/internal/util/unsafe/UnsafeAccess.java#L23
+-dontwarn rx.internal.util.**
