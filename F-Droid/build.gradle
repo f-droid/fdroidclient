@@ -19,7 +19,7 @@ dependencies {
     compile 'cc.mvdan.accesspoint:library:0.1.3'
     compile 'commons-net:commons-net:3.4'
     compile 'org.openhab.jmdns:jmdns:3.4.2'
-    compile('ch.acra:acra:4.8.0') {
+    compile('ch.acra:acra:4.8.1') {
         exclude module: 'support-v4'
     }
     compile 'io.reactivex:rxjava:1.1.0'
@@ -74,7 +74,7 @@ if (!hasProperty('sourceDeps')) {
             'com.madgag.spongycastle:pkix:6aba9b2210907a3d46dd3dcac782bb3424185290468d102d5207ebdc9796a905',
             'com.madgag.spongycastle:prov:029f26cd6b67c06ffa05702d426d472c141789001bcb15b7262ed86c868e5643',
             'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
-            'ch.acra:acra:d8ef3b76760e3faf7fe0ea0231fbe98e57f8f06ed3b86c877e6aa95bbc188aac',
+            'ch.acra:acra:f9f9b2d153d10e09811dae93e3a795709de3bc446ccd434f5b796fe9df85fc84',
             'io.reactivex:rxjava:2c162afd78eba217cdfee78b60e85d3bfb667db61e12bc95e3cf2ddc5beeadf6',
             'io.reactivex:rxandroid:35c1a90f8c1f499db3c1f3d608e1f191ac8afddb10c02dd91ef04c03a0a4bcda',
         ]
