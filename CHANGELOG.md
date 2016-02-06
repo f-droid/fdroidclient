@@ -1,6 +1,10 @@
 ### Upcoming Release
 
-* Fix bug when entering only a space into the search dialog.
+* Fix crash when entering only a space into the search dialog.
+
+* Fix potential fragment crash when installing/removing a package
+
+* Fix crash when adding malformed URIs as repos
 
 ### 0.98 (2015-02-02)
 
