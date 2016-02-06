@@ -490,7 +490,7 @@ public class SwapService extends Service {
     private SwapType bluetoothSwap;
     private WifiSwap wifiSwap;
 
-    private static final int TIMEOUT = 900000; // 15 mins
+    private static final int TIMEOUT = 15 * 60 * 1000; // 15 mins
 
     /**
      * Used to automatically turn of swapping after a defined amount of time (15 mins).

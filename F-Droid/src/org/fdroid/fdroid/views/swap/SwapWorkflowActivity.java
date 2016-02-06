@@ -762,7 +762,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     bluetooth = "\"" + adapter.getName() + "\" - " + scanModes.get(adapter.getScanMode());
                 }
 
-                // wifi = service.getBonjourFinder().isScanning() ? "Y" : " N";
                 message += "Find { BT: " + bluetooth + ", WiFi: " + wifi + "}";
             }
 
