@@ -609,7 +609,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     private void refreshHeader() {
         mHeaderFragment = (AppDetailsHeaderFragment)
                 getSupportFragmentManager().findFragmentById(R.id.header);
-        mHeaderFragment.updateViews();
+        if (mHeaderFragment != null) {
+            mHeaderFragment.updateViews();
+        }
     }
 
     @Override
