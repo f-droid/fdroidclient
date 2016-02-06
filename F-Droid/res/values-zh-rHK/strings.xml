@@ -45,9 +45,9 @@
   <string name="overwrite">覆寫</string>
   <string name="tab_available_apps">可安裝</string>
   <string name="tab_updates">更新</string>
-  <string name="one_update_available">有 1 個更新。</string>
-  <string name="many_updates_available">有 %d 個更新。</string>
-  <string name="fdroid_updates_available">F-Droid 更新版本可供下載</string>
+  <string name="one_update_available">您有 1 個更新。</string>
+  <string name="many_updates_available">您有 %d 個更新。</string>
+  <string name="fdroid_updates_available">有尚未安裝的 F-Droid 更新</string>
   <string name="bluetooth_activity_not_found">請選擇一個藍牙傳送的方式！</string>
   <string name="choose_bt_send">選擇藍牙的傳送方式</string>
   <string name="send_via_bluetooth">透過藍牙傳送</string>

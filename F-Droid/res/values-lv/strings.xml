@@ -20,11 +20,11 @@
   <string name="local_repo_https">Izmantot privātu savienojumu</string>
   <string name="local_repo_https_on">Izmantot kriptētu HTTPS:// savienojumu</string>
   <string name="app_details">Programmas detaļas</string>
-  <string name="no_such_app">Nav atrasts</string>
+  <string name="no_such_app">Nav atrasts.</string>
   <string name="about_title">Par F-Droid</string>
-  <string name="about_site">Mājaslapa:</string>
-  <string name="about_mail">Epasts:</string>
-  <string name="about_version">Versija:</string>
+  <string name="about_site">Mājaslapa</string>
+  <string name="about_mail">Epasts</string>
+  <string name="about_version">Versija</string>
   <string name="app_installed">Intstalēts</string>
   <string name="app_not_installed">Nav instalēts</string>
   <string name="app_inst_known_source">Instalēts (no %s)</string>
@@ -49,13 +49,13 @@
   <string name="repo_add_url">Repozitorija adrese</string>
   <string name="repo_add_fingerprint">Nospiedums (opcionāli)</string>
   <string name="repo_exists_add_fingerprint">Repozitorijs jau iestatīts, šis pievienos jaunu atslēgas info.</string>
-  <string name="repo_exists_enable">Reozitroris jau iestatīts, apstiprini atkārtotu ieslēgšanu.</string>
+  <string name="repo_exists_enable">Repozitorijs jau iestatīts, apstiprini atkārtotu ieslēgšanu.</string>
   <string name="repo_exists_and_enabled">Ienākošais Repozitorijs jau iestatīts un ieslēgts.</string>
   <string name="repo_delete_to_overwrite">Vispirms jāizdzēš Repozitorijs, pirms pievienošanas ar citu atslēgu.</string>
   <string name="malformed_repo_uri">Ignorē nepareizu Repozitorija URI: %s</string>
   <string name="menu_update_repo">Atjauno Repozitorijus</string>
   <string name="menu_manage">Repozitoriji</string>
-  <string name="menu_send_apk_bt">Bluesūta FDroid.apk…</string>
+  <string name="menu_send_apk_bt">Bluesūta F-Droid</string>
   <string name="menu_about">Par</string>
   <string name="menu_search">Meklēt</string>
   <string name="menu_add_repo">Jauns Repozitorijs</string>
@@ -71,7 +71,39 @@
   <string name="menu_donate">Ziedot</string>
   <string name="details_installed">versija %s instalēta</string>
   <string name="details_notinstalled">Nav instalēts</string>
-  <string name="corrupt_download">Novilktais fails nav derīgs</string>
+  <string name="corrupt_download">Novilktais fails nav derīgs.</string>
   <string name="antiadslist">Programma satur reklāmu</string>
   <string name="antitracklist">Programma seko tavām aktivitātēm un ziņo par tām</string>
-</resources>
+<string name="login_password">Parole</string>
+    <string name="about_source">Pirmkods</string>
+    <string name="about_license">Licence</string>
+
+    <string name="tab_updates_count">Atjauninājumi (%d)</string>
+    <string name="menu_settings">Iestatījumi</string>
+    <string name="menu_email">Autora Epasts</string>
+    <string name="menu_issues">Issues</string>
+    <string name="menu_bitcoin">Bitmonētas</string>
+    <string name="menu_litecoin">Laitmonētas</string>
+    <string name="menu_flattr">Flattr</string>
+
+
+    <string name="proxy">Starpniekserveris</string>
+    <string name="proxy_port">Starpniekservera ports</string>
+    <string name="no_permissions">Ši aplikācija neizmanto nekādu īpašu privilēģiju.</string>
+    <string name="permissions">Privilēģija</string>
+    <string name="repo_details">Repozitorijs</string>
+    <string name="repo_description">Apraksts</string>
+    <string name="repo_name">Vārds</string>
+    <string name="repo_confirm_delete_title">Dzēst repozitoriju?</string>
+    <string name="pref_language">Valoda</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="category_Internet">Internets</string>
+    <string name="category_Money">Nauda</string>
+    <string name="category_Multimedia">Multivides</string>
+    <string name="category_Games">Spēles</string>
+    <string name="category_Graphics">Grafika</string>
+    <string name="category_Phone_SMS">Tālrunis &amp; īsziņa</string>
+    <string name="category_Navigation">Navigācija</string>
+    <string name="category_Reading">Lasījums</string>
+    <string name="category_Time">Laiks</string>
+    </resources>

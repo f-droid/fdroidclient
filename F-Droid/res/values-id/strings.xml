@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources><string name="app_name">F-Droid</string>
 
     <string name="searchres_napps">Menemukan %1$d aplikasi yang cocok dengan \'%2$s\':</string>
@@ -8,7 +8,7 @@
     <string name="installDowngrade">Anda mencoba untuk memasang versi yang lebih rendah dari aplikasi ini. Tetap memasangnya mungkin dapat meyebabkan aplikasi tidak bekerja dengan baik. Apakah Anda tetap ingin memasang dan mencobanya?</string>
     <string name="version">Versi</string>
     <string name="delete">Hapus</string>
-    <string name="enable_nfc_send">Aktifkan NFC Send…</string>
+    <string name="enable_nfc_send">Aktifkan Pengirimian NFC…</string>
     <string name="cache_downloaded">Tembolok paket</string>
     <string name="cache_downloaded_on">Simpan berkas paket terunduh di dalam perangkat</string>
     <string name="updates">Pembaruan</string>
@@ -36,10 +36,10 @@
     <string name="no_such_app">Aplikasi tersebut tidak ditemukan.</string>
 
     <string name="about_title">Tentang F-Droid</string>
-    <string name="about_version">Versi:</string>
-    <string name="about_site">Situs Web:</string>
-    <string name="about_source">Sumber:</string>
-    <string name="about_mail">Surel:</string>
+    <string name="about_version">Versi</string>
+    <string name="about_site">Situs Web</string>
+    <string name="about_source">Sumber kode</string>
+    <string name="about_mail">Email</string>
     <string name="app_incompatible">Tidak kompatibel</string>
     <string name="app_installed">Terpasang</string>
     <string name="app_not_installed">Tidak Terpasang</string>
@@ -180,4 +180,19 @@
     <string name="repo_not_yet_updated">Repositori ini belum digunakan. Anda harus mengaktifkannya untuk melihat aplikasi yang tersedia.</string>
     <string name="repo_confirm_delete_title">Hapus Repositori?</string>
     <string name="repo_confirm_delete_body">Menghapus repositori artinya aplikasi dari repositori tersebut tidak lagi tersedia dari F-Droid.\n\nCatatan: Semua aplikasi yang sebelumnya dipasang dari repositori ini akan tetap ada di perangkat Anda.</string>
+    <string name="by_author">oleh</string>
+    <string name="SignatureMismatch">Versi baru telah ditandatangani dengan kunci yang berbeda dengan versi yang lama. Untuk menginstal versi baru, versi lama harus dihapus terlebih dahulu. Silakan melakukan ini dan coba lagi. (Perhatikan bahwa mencopot pemasangan akan menghapus data internal apapun yang disimpan oleh aplikasi tersebut)</string>
+    <string name="interval_12h">Setiap 12 jam</string>
+    <string name="downloading">Mengunduh…</string>
+
+    <string name="login_title">Diperlukan autentikasi</string>
+    <string name="login_name">Nama pengguna</string>
+    <string name="login_password">Kata sandi</string>
+    <string name="repo_edit_credentials">Ubah kata sandi</string>
+    <string name="repo_error_empty_username">Kosongkan nama pengguna, kredensial tidak berubah</string>
+
+    <string name="about_license">Lisensi</string>
+
+    <string name="tab_installed_apps_count">Terinstal (%d)</string>
+    <string name="tab_updates_count">Pembaruan (%d)</string>
     </resources>

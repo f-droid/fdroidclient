@@ -2,8 +2,8 @@
 <resources>
   <string name="searchres_napps">Trovate %1$d applicazioni corrispondenti a \'%2$s\':</string>
   <string name="searchres_oneapp">Trovata un\'applicazione corrispondente a \'%s\':</string>
-  <string name="searchres_noapps">Non è stata trovata nessun\'applicazione corrispondente a \'%s\'</string>
-  <string name="SignatureMismatch">La nuova versione è firmata con una chiave differente rispetto alla vecchia. Per installare la nuova versione occorre prima disinstallare la precedente. Riprovare dopo averla disinstallata (Attenzione! disistallando si cancellerà qualsiasi dato salvato dall\'applicazione)</string>
+  <string name="searchres_noapps">Non è stata trovata nessuna applicazione corrispondente a \'%s\'</string>
+  <string name="SignatureMismatch">La nuova versione è firmata con una chiave differente rispetto alla vecchia. Per installare la nuova versione occorre prima disinstallare la precedente. Riprovare dopo averla disinstallata (Attenzione! La disinstallazione cancellerà qualsiasi dato salvato dall\'applicazione)</string>
   <string name="installIncompatible">Sembra che questo pacchetto non sia compatibile con il tuo dispositivo. Vuoi provare comunque ad installarlo?</string>
   <string name="installDowngrade">Stai provando a passare ad una versione precedente di questa applicazione. Potresti avere malfunzionamenti e perdite di dati. Vuoi installarla comunque?</string>
   <string name="version">Versione</string>
@@ -19,17 +19,17 @@
   <string name="automatic_scan_wifi_on">Aggiorna automaticamente gli elenchi applicazioni solo su Wi-Fi</string>
   <string name="notify">Notifiche aggiornamenti</string>
   <string name="notify_on">Notifica gli aggiornamenti disponibili</string>
-  <string name="update_history">Aggiorna i repository</string>
+  <string name="update_history">Aggiorna la cronologia</string>
   <string name="update_history_summ">Numero di giorni per considerare le applicazioni nuove o recenti: %s</string>
   <string name="system_installer">Estensione Priviliegiata</string>
   <string name="system_installer_on">Usa l\'Estensione Privilegiata di F-Droid per installare, aggiornare e rimuovere i pacchetti</string>
-  <string name="local_repo_name">Nome della tua Repo locale</string>
-  <string name="local_repo_name_summary">Il titolo visualizzato della tua repo: %s</string>
+  <string name="local_repo_name">Nome del tuo Repo locale</string>
+  <string name="local_repo_name_summary">Il titolo visualizzato del tuo repo: %s</string>
   <string name="local_repo_https">Usa una connessione privata</string>
-  <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per le repo locali</string>
+  <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per i repo locali</string>
   <string name="app_details">Dettagli app</string>
   <string name="no_such_app">Nessuna app corrispondente trovata.</string>
-  <string name="about_title">Informazioni</string>
+  <string name="about_title">Informazioni su F-Droid</string>
   <string name="about_site">Sito web</string>
   <string name="about_mail">Email</string>
   <string name="about_version">Versione</string>
@@ -39,7 +39,7 @@
   <string name="ok">OK</string>
   <string name="yes">Sì</string>
   <string name="no">No</string>
-  <string name="repo_add_title">Aggiungi nuova repository</string>
+  <string name="repo_add_title">Aggiungi nuovo repository</string>
   <string name="repo_add_add">Aggiungi</string>
   <string name="cancel">Annulla</string>
   <string name="enable">Abilita</string>
@@ -50,7 +50,7 @@
   <string name="one_update_available">1 aggiornamento disponibile.</string>
   <string name="many_updates_available">%d aggiornamenti disponibili.</string>
   <string name="fdroid_updates_available">Aggiornamenti per F-Droid disponibili</string>
-  <string name="bluetooth_activity_not_found">Non è possibile inviare via Bluetooth!</string>
+  <string name="bluetooth_activity_not_found">Non è possibile inviare via Bluetooth, scegliere un altro metodo!</string>
   <string name="choose_bt_send">Scegli il metodo di invio Bluetooth</string>
   <string name="send_via_bluetooth">Invia via Bluetooth</string>
   <string name="repo_add_url">Indirizzo repository</string>
@@ -61,7 +61,7 @@
   <string name="repo_delete_to_overwrite">È necessario eliminare questo repository prima di poter aggiungerne uno con una chiave differente.</string>
   <string name="malformed_repo_uri">Ignora URI repo malformati: %s</string>
   <string name="menu_update_repo">Aggiorna i repository</string>
-  <string name="menu_manage">Gestione dei repository</string>
+  <string name="menu_manage">Repository</string>
   <string name="menu_send_apk_bt">Condividi F-Droid via Bluetooth</string>
   <string name="menu_about">Informazioni</string>
   <string name="menu_search">Cerca</string>
@@ -184,7 +184,7 @@
 
     <string name="tab_installed_apps">Installate</string>
     <string name="bad_fingerprint">Impronta digitale non corrispondente</string>
-    <string name="invalid_url">Questo non è un valido URL.</string>
+    <string name="invalid_url">Questo non è un URL valido.</string>
     <string name="menu_settings">Impostazioni</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="status_download_unknown_size">Scaricamento\n%2$s da\n%1$s</string>
@@ -244,8 +244,8 @@
     <string name="uninstall_system_summary">Apri la schermata dell\'Estensione Privilegiata per aggiornarla o disinstallarla</string>
     <string name="login_title">Autenticazione richiesta</string>
     <string name="login_name">Nome utente</string>
-    <string name="login_password">Parola d\'ordine</string>
-    <string name="repo_edit_credentials">Cambia la parola d\'ordine</string>
+    <string name="login_password">Passoword</string>
+    <string name="repo_edit_credentials">Cambia la password</string>
     <string name="repo_error_empty_username">Nome utente vuoto, credenziali non cambiate</string>
 
     <string name="about_source">Codice sorgente</string>
@@ -254,7 +254,7 @@
     <string name="links">Collegamenti</string>
     <string name="tab_installed_apps_count">Installate (%d)</string>
     <string name="tab_updates_count">Aggiornamenti (%d)</string>
-    <string name="menu_changelog">Registro cambiamenti</string>
+    <string name="menu_changelog">Changelog</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
 
