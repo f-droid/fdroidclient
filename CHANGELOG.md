@@ -6,7 +6,9 @@
 
 * Fix crash when adding malformed URIs as repos
 
-### 0.98 (2015-02-02)
+* Fix Android.mk build when the output dir is a relative path
+
+### 0.98 (2016-02-01)
 
 * Add opt-in crash reporting via ACRA
 
