@@ -2,8 +2,6 @@ package org.fdroid.fdroid.localrepo.peers;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
-import android.os.AsyncTask;
-import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
@@ -16,7 +14,30 @@ import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
 
-public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceListener {
+import rx.Observable;
+import rx.Subscriber;
+import rx.functions.Action0;
+import rx.subscriptions.Subscriptions;
+
+class BonjourFinder extends PeerFinder implements ServiceListener {
+
+    public static Observable<Peer> createBonjourObservable(final Context context) {
+        return Observable.create(new Observable.OnSubscribe<Peer>() {
+            @Override
+            public void call(Subscriber<? super Peer> subscriber) {
+                final BonjourFinder finder = new BonjourFinder(context, subscriber);
+
+                subscriber.add(Subscriptions.create(new Action0() {
+                    @Override
+                    public void call() {
+                        finder.cancel();
+                    }
+                }));
+
+                finder.scan();
+            }
+        });
+    }
 
     private static final String TAG = "BonjourFinder";
 
@@ -27,12 +48,11 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
     private WifiManager wifiManager;
     private WifiManager.MulticastLock mMulticastLock;
 
-    public BonjourFinder(Context context) {
-        super(context);
+    BonjourFinder(Context context, Subscriber<? super Peer> subscriber) {
+        super(context, subscriber);
     }
 
-    @Override
-    public void scan() {
+    private void scan() {
 
         Utils.debugLog(TAG, "Requested Bonjour (mDNS) scan for peers.");
 
@@ -44,55 +64,30 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
 
         if (isScanning) {
             Utils.debugLog(TAG, "Requested Bonjour scan, but already scanning. But we will still try to explicitly scan for services.");
-            // listServices();
             return;
         }
 
         isScanning = true;
         mMulticastLock.acquire();
-        new AsyncTask<Void, Void, Void>() {
 
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
-                    Utils.debugLog(TAG, "Searching for Bonjour (mDNS) clients...");
-                    jmdns = JmDNS.create(InetAddress.getByName(FDroidApp.ipAddressString));
-                } catch (IOException e) {
-                    Log.e(TAG, "", e);
-                }
-                return null;
-            }
+        try {
+            Utils.debugLog(TAG, "Searching for Bonjour (mDNS) clients...");
+            jmdns = JmDNS.create(InetAddress.getByName(FDroidApp.ipAddressString));
+        } catch (IOException e) {
+            subscriber.onError(e);
+            return;
+        }
 
-            @Override
-            protected void onPostExecute(Void result) {
-                // TODO: This is not threadsafe - cancelling the discovery will make jmdns null, but it could happen after this check and before call to addServiceListener().
-                if (jmdns != null) {
-                    Utils.debugLog(TAG, "Adding mDNS service listeners for " + HTTP_SERVICE_TYPE + " and " + HTTPS_SERVICE_TYPE);
-                    jmdns.addServiceListener(HTTP_SERVICE_TYPE, BonjourFinder.this);
-                    jmdns.addServiceListener(HTTPS_SERVICE_TYPE, BonjourFinder.this);
-                    listServices();
-                }
-            }
-        }.execute();
-
+        Utils.debugLog(TAG, "Adding mDNS service listeners for " + HTTP_SERVICE_TYPE + " and " + HTTPS_SERVICE_TYPE);
+        jmdns.addServiceListener(HTTP_SERVICE_TYPE, BonjourFinder.this);
+        jmdns.addServiceListener(HTTPS_SERVICE_TYPE, BonjourFinder.this);
+        listServices();
     }
 
     private void listServices() {
-
-        // The member variable is likely to get set to null if a swap process starts, thus we hold
-        // a reference for the benefit of the background task so it doesn't have to synchronoize on it.
-        final JmDNS mdns = jmdns;
-
-        new AsyncTask<Void, Void, Void>() {
-
-            @Override
-            protected Void doInBackground(Void... params) {
-                Utils.debugLog(TAG, "Explicitly querying for services, in addition to waiting for notifications.");
-                addFDroidServices(mdns.list(HTTP_SERVICE_TYPE));
-                addFDroidServices(mdns.list(HTTPS_SERVICE_TYPE));
-                return null;
-            }
-        }.execute();
+        Utils.debugLog(TAG, "Explicitly querying for services, in addition to waiting for notifications.");
+        addFDroidServices(jmdns.list(HTTP_SERVICE_TYPE));
+        addFDroidServices(jmdns.list(HTTPS_SERVICE_TYPE));
     }
 
     @Override
@@ -111,16 +106,8 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
         //    If so, when is the old one removed?
         addFDroidService(event.getInfo());
 
-        // The member variable is likely to get set to null if a swap process starts, thus we hold
-        // a reference for the benefit of the background task so it doesn't have to synchronoize on it.
-        final JmDNS mdns = jmdns;
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                mdns.requestServiceInfo(event.getType(), event.getName(), true);
-                return null;
-            }
-        }.execute();
+        Utils.debugLog(TAG, "Found JmDNS service, now requesting further details of service");
+        jmdns.requestServiceInfo(event.getType(), event.getName(), true);
     }
 
     @Override
@@ -146,7 +133,7 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
         final boolean isSelf = FDroidApp.repo != null && fingerprint != null && fingerprint.equalsIgnoreCase(FDroidApp.repo.fingerprint);
         if (isFDroid && !isSelf) {
             Utils.debugLog(TAG, "Found F-Droid swap Bonjour service:\n" + serviceInfo);
-            foundPeer(new BonjourPeer(serviceInfo));
+            subscriber.onNext(new BonjourPeer(serviceInfo));
         } else {
             if (isSelf) {
                 Utils.debugLog(TAG, "Ignoring Bonjour service because it belongs to this device:\n" + serviceInfo);
@@ -156,8 +143,9 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
         }
     }
 
-    @Override
-    public void cancel() {
+    private void cancel() {
+        Utils.debugLog(TAG, "Cancelling BonjourFinder, releasing multicast lock, removing jmdns service listeners");
+
         if (mMulticastLock != null) {
             mMulticastLock.release();
         }

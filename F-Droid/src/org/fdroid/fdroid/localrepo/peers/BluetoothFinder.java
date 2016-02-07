@@ -11,24 +11,44 @@ import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
 
-public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
+import rx.Observable;
+import rx.Subscriber;
+import rx.functions.Action0;
+import rx.subscriptions.Subscriptions;
+
+class BluetoothFinder extends PeerFinder {
+
+    public static Observable<Peer> createBluetoothObservable(final Context context) {
+        return Observable.create(new Observable.OnSubscribe<Peer>() {
+            @Override
+            public void call(Subscriber<? super Peer> subscriber) {
+                final BluetoothFinder finder = new BluetoothFinder(context, subscriber);
+
+                subscriber.add(Subscriptions.create(new Action0() {
+                    @Override
+                    public void call() {
+                        finder.cancel();
+                    }
+                }));
+
+                finder.scan();
+            }
+        });
+    }
 
     private static final String TAG = "BluetoothFinder";
 
-    public static final int DISCOVERABLE_TIMEOUT = 3600;
-
     private final BluetoothAdapter adapter;
 
-    public BluetoothFinder(Context context) {
-        super(context);
+    BluetoothFinder(Context context, Subscriber<? super Peer> subscriber) {
+        super(context, subscriber);
         adapter = BluetoothAdapter.getDefaultAdapter();
     }
 
     private BroadcastReceiver deviceFoundReceiver;
     private BroadcastReceiver scanCompleteReceiver;
 
-    @Override
-    public void scan() {
+    private void scan() {
 
         if (adapter == null) {
             Log.i(TAG, "Not scanning for bluetooth peers to swap with, couldn't find a bluetooth adapter on this device.");
@@ -84,7 +104,6 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
 
     }
 
-    @Override
     public void cancel() {
         if (adapter != null) {
             Utils.debugLog(TAG, "Stopping bluetooth discovery.");
@@ -95,12 +114,11 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
     }
 
     private void onDeviceFound(BluetoothDevice device) {
-
         if (device != null && device.getName() != null &&
                 (device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.COMPUTER_HANDHELD_PC_PDA ||
                 device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.COMPUTER_PALM_SIZE_PC_PDA ||
                 device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.PHONE_SMART)) {
-            foundPeer(new BluetoothPeer(device));
+            subscriber.onNext(new BluetoothPeer(device));
         }
     }
 
