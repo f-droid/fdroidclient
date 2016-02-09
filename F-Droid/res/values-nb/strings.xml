@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="searchres_napps">Fant %1$d programmer som samsvarer med \'%2$s\':</string>
   <string name="searchres_oneapp">Fant ett program som samsvarer med \'%s\':</string>
@@ -327,7 +327,7 @@
     <string name="login_title">Identifikasjon påkrevet</string>
     <string name="tab_installed_apps_count">Installert (%d)</string>
     <string name="tab_updates_count">Oppdateringer (%d)</string>
-    <string name="status_inserting_apps">Lagrer program detaljer</string>
+    <string name="status_inserting_apps">Lagrer programdetaljer</string>
     <string name="empty_search_installed_app_list">Samsvarer ikke med noen installerte programmer.</string>
     <string name="empty_search_available_app_list">Samsvarer ikke med noen tilgjengelige programmer.</string>
     <string name="empty_search_can_update_app_list">Ingen samsvarende programmer for oppdatering.</string>
@@ -337,4 +337,6 @@
     <string name="crash_dialog_comment_prompt">Du kan legge til ekstra informasjon og kommentarer her:</string>
 <string name="antinonfreeassetslist">Dette programmet inneholder ufrie gjenstander</string>
 
+    <string name="by_author">av</string>
+    <string name="menu_email">E-postens avsender</string>
     </resources>
