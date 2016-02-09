@@ -199,11 +199,10 @@ public abstract class AppListFragment extends ListFragment implements
             onSearchStopped();
             setEmptyText(getEmptyMessage());
             return false;
-        } else {
-            onSearch();
-            setEmptyText(getNoSearchResultsMessage());
-            return true;
         }
+        onSearch();
+        setEmptyText(getNoSearchResultsMessage());
+        return true;
     }
 
     public void updateSearchQuery(@Nullable String query) {

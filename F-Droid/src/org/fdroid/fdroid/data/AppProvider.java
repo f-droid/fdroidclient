@@ -546,12 +546,11 @@ public class AppProvider extends FDroidProvider {
         if (TextUtils.isEmpty(query)) {
             // Return all the things for an empty search.
             return getContentUri();
-        } else {
-            return getContentUri().buildUpon()
-                    .appendPath(PATH_SEARCH)
-                    .appendPath(query)
-                    .build();
         }
+        return getContentUri().buildUpon()
+                .appendPath(PATH_SEARCH)
+                .appendPath(query)
+                .build();
     }
 
     public static Uri getSearchInstalledUri(String query) {
