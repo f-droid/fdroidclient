@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.net.DhcpInfo;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -84,7 +85,11 @@ public class WifiStateChangeService extends Service {
                     if (wifiState == WifiManager.WIFI_STATE_ENABLED) {
                         wifiInfo = wifiManager.getConnectionInfo();
                         FDroidApp.ipAddressString = formatIpAddress(wifiInfo.getIpAddress());
-                        String netmask = formatIpAddress(wifiManager.getDhcpInfo().netmask);
+                        DhcpInfo dhcpInfo = wifiManager.getDhcpInfo();
+                        if (dhcpInfo == null) {
+                            return null;
+                        }
+                        String netmask = formatIpAddress(dhcpInfo.netmask);
                         if (!TextUtils.isEmpty(FDroidApp.ipAddressString) && netmask != null)
                             FDroidApp.subnetInfo = new SubnetUtils(FDroidApp.ipAddressString, netmask).getInfo();
                     } else if (wifiState == WifiManager.WIFI_STATE_DISABLED
