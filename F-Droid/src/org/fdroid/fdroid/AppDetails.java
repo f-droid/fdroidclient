@@ -798,6 +798,10 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     // Install the version of this app denoted by 'app.curApk'.
     @Override
     public void install(final Apk apk) {
+        if (isFinishing()) {
+            return;
+        }
+
         // Ignore call if another download is running.
         if (downloadHandler != null && !downloadHandler.isComplete())
             return;
