@@ -1,4 +1,4 @@
-### Upcoming Release
+### 0.98.1 (2016-02-14)
 
 * Fix crash when entering only a space into the search dialog
 
