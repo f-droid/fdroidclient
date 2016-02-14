@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="installIncompatible">به‌نظر می‌رسد این بسته با دستگاه شما هماهنگ نیست. آیا می‌خواهید آن را به هر قیمتی آزمایش و نصب کنید؟</string>
   <string name="installDowngrade">شما در حال قدیمی‌کردن و کاهش درجهٔ این برنامه هستید. انجام چنین کاری ممکن منجر به خرابی یا از دست رفتن داده‌های شما شود. آیا می‌خواهید سعی کنید این برنامه را به هر قیمتی قدیمی کنید؟</string>
@@ -285,7 +285,7 @@
     <string name="all_other_repos_fine">تمام مخزن‌های دیگر خطایی ایاد نکردند.</string>
         <string name="repo_not_yet_updated">این مخزن هنوز استفاده نشده است. برای دیدن کاره‌هایی که فراهم می‌کند، باید فعّالش کنید.</string>
     <string name="repo_confirm_delete_body">حذف یک مخزن به این معناست که کاره‌هایش دیگر در اف‌دروید موجود نخواهند بود.\n\nتوجّه: تمام کاره‌های نصب شدهٔ پیشین، روی افزاره‌تان باقی خواهند ماند.</string>
-    <string name="repo_disabled_notification">$1$s غیرفعّال شد.\n\nبرای نصب کاره‌ها از آن باید دوباره فعّالش کنید.</string>
+    <string name="repo_disabled_notification">%1$s غیرفعّال شد.\n\nبرای نصب کاره‌ها از آن باید دوباره فعّالش کنید.</string>
     <string name="repo_added">مخزن اف‌دروید %1$s ذخیره شد.</string>
     <string name="repo_searching_address">در حال گشتن به دنبال مخزن اف‌دروید در\n%1$s</string>
     <string name="empty_installed_app_list">هیچ کاره‌ای نصب نشده است.\n\nکاره‌هایی روی افزاره‌تان وجود دارند، ولی در اف‌دروید موجود نیستند. دلیل این امر می‌تواند این دلیل باشد که مخازنتان کاره‌هایتان را موجود ندارند یا باید به‌روز شوند.</string>

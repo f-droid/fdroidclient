@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="searchres_napps">נמצאו %1$d אפליקציות תואמות \'%2$s\':</string>
     <string name="searchres_oneapp">נמצאה אפליקציה אחת תואמת \'%s\':</string>
@@ -350,4 +350,15 @@
     <string name="status_inserting_apps">כעת שומר פרטי אפליקציה</string>
     <string name="repo_error_empty_username">נקה שם משתמש, פרטי התחברות לא שונו</string>
 
-    </resources>
+    <string name="by_author">מאת</string>
+    <string name="menu_email">שלח דוא״ל למחבר</string>
+    <string name="antinonfreeassetslist">אפליקציה זו מכילה נכסים לא חופשיים</string>
+
+    <string name="empty_search_installed_app_list">אין אפליקציות מותקנות תואמות.</string>
+    <string name="empty_search_available_app_list">אין אפליקציות תואמות זמינות.</string>
+    <string name="empty_search_can_update_app_list">אין אפליקציות מותקנות תואמות לצורך עדכון.</string>
+
+    <string name="crash_dialog_title">‏F-Droid קרסה</string>
+    <string name="crash_dialog_text">אירעה שגיאה לא פצויה אשר אילצה את עצירת האפליקציה. האם ברצונך לדוור בדוא״ל את הפרטים כדי לעזור לפתור את הבעיה?</string>
+    <string name="crash_dialog_comment_prompt">באפשרותך להוסיף מידע והערות נוספים כאן:</string>
+</resources>

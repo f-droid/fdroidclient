@@ -6,7 +6,7 @@
   <string name="version">Versiune</string>
   <string name="delete">Sterge</string>
   <string name="cache_downloaded">Pastreaza pachete</string>
-  <string name="updates">Actualizari</string>
+  <string name="updates">Actualizat</string>
   <string name="other">Altele</string>
   <string name="notify">Notificare actualizari</string>
   <string name="app_details">Detalii aplicatie</string>
@@ -68,7 +68,7 @@
     <string name="local_repo_https">Foloseste conexiune privata</string>
     <string name="system_installer">Extensie privilegiata</string>
     <string name="cache_downloaded_on">Pastreaza pachetele aplicatiilor descarcate</string>
-    <string name="unstable_updates_summary">Sugereaza actulizari si la versiunile instabile</string>
+    <string name="unstable_updates_summary">Sugereaza actualizari si la versiunile instabile</string>
     <string name="update_interval_zero">Nu actualiza automat lista de pachete</string>
     <string name="repo_error_empty_username">Nume utilizator gol, autentificare neschimbata</string>
 
@@ -134,7 +134,7 @@
     <string name="antinonfreenetlist">Aplicatia promoveaza servicii de retea ce nu sunt accesibile la liber</string>
     <string name="antinonfreeadlist">Aplicatia promoveaza anexe ce nu sunt software liber</string>
     <string name="antitracklist">Aplicatia iti inregistreaza si raporteaza activitatea undeva</string>
-    <string name="details_installed">Versiunea %s este instalata</string>
+    <string name="details_installed">Vers. %s instalata</string>
     <string name="menu_flattr">Flattr</string>
 
 
@@ -207,7 +207,7 @@
     <string name="pref_language">Limba</string>
     <string name="antiupstreamnonfreelist">Codul sursa originar nu este in totalitatea lui software liber</string>
     <string name="unsigned">Nesemnat</string>
-    <string name="repo_fingerprint">Amprenta cheii e semnat (SHA-256)</string>
+    <string name="repo_fingerprint">Amprenta cheii de semnatura (SHA-256)</string>
     <string name="app_icon">Iconita aplicatie</string>
     <string name="category_Connectivity">Conectivitate</string>
     <string name="category_Money">Finante</string>
@@ -269,14 +269,14 @@
     <string name="crash_dialog_title">F-Droid s-a oprit</string>
     <string name="theme_light">Luminoasa</string>
     <string name="theme_dark">Intunecata</string>
-    <string name="interval_1h">Odata pe ora</string>
+    <string name="interval_1h">O data pe ora</string>
     <string name="perms_new_perm_prefix">"Nou: "</string>
     <string name="allPerms">Toate</string>
     <string name="devicePerms">Acces dispozitiv</string>
     <string name="uninstall_update_confirm">Vrei sa inlocuiesti aceasta aplicatie cu versiunea din fabrica?</string>
     <string name="download_error">Descarcare finalizata cu eroare</string>
 
-    <string name="interval_2w">Odata la 2 saptamani</string>
+    <string name="interval_2w">O data la 2 saptamani</string>
 
     <string name="interval_4h">La fiecare 4 ore</string>
     <string name="tap_to_install">Descarcare completa, atinge pentru a instala</string>
@@ -297,4 +297,6 @@
     <string name="enable_proxy_summary">Configureaza proxy HTTP pentru toate conexiunile de retea</string>
     <string name="repos_unchanged">Toate depozitele sunt actualizate</string>
         <string name="loading">Se incarca…</string>
+    <string name="category_Navigation">Navigatie</string>
+    <string name="category_Games">Jocuri</string>
     </resources>

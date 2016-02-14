@@ -1,11 +1,11 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="searchres_napps">%1$d applications contenant \"%2$s\" ont été trouvées :</string>
   <string name="searchres_oneapp">Une application contenant \"%s\" a été trouvée :</string>
   <string name="searchres_noapps">Aucune application contenant \"%s\" n\'a été trouvée</string>
   <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez de nouveau après avoir désinstallé l\'ancienne application. (Veuillez noter que la désinstallation effacera les données stockées par l\'application)</string>
-  <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous quand même tenter de l\'installer ?</string>
-  <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous tout de même revenir à une ancienne version ?</string>
+  <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous quand même essayer de l\'installer ?</string>
+  <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous tout de même essayer de désinstaller les mises à jour ?</string>
   <string name="version">Version</string>
   <string name="delete">Supprimer</string>
   <string name="enable_nfc_send">Activer l\'envoi via NFC…</string>
@@ -57,8 +57,8 @@
   <string name="send_via_bluetooth">Envoyer par Bluetooth</string>
   <string name="repo_add_url">Adresse du dépôt</string>
   <string name="repo_add_fingerprint">Empreinte (facultatif)</string>
-  <string name="repo_exists_add_fingerprint">Ce dépôt est déjà configuré ; cela va ajouter les informations des nouvelles clés.</string>
-  <string name="repo_exists_enable">Ce dépôt est déjà configuré ; confirmez que vous voulez le réactiver.</string>
+  <string name="repo_exists_add_fingerprint">Ce dépôt est déjà configuré, les informations de la nouvelle clé seront ajoutées.</string>
+  <string name="repo_exists_enable">Ce dépôt est déjà configuré, confirmez que vous voulez le réactiver.</string>
   <string name="repo_exists_and_enabled">Le dépôt entrant est déjà configuré et activé.</string>
   <string name="repo_delete_to_overwrite">Vous devez d\'abord supprimer ce dépôt avant d\'en ajouter avec une clé différente.</string>
   <string name="malformed_repo_uri">URI de dépôt malformé ignoré : %s</string>
@@ -99,7 +99,7 @@
   <string name="rooted_on">Ne pas griser les applis nécessitant les privilèges root</string>
   <string name="ignoreTouch">Ignorer l\'écran tactile</string>
   <string name="ignoreTouch_on">Toujours inclure les applis nécessitant un écran tactile</string>
-  <string name="category_All">Tout</string>
+  <string name="category_All">Toutes</string>
   <string name="category_Whats_New">Nouveautés</string>
   <string name="category_Recently_Updated">Mises à jour récentes</string>
   <string name="local_repo">Dépôt local</string>
@@ -186,7 +186,7 @@
     <string name="tab_installed_apps">Installées</string>
     <string name="bad_fingerprint">Mauvaise empreinte</string>
     <string name="invalid_url">Ceci n\'est pas une URL valide.</string>
-    <string name="menu_changelog">Liste des modifications</string>
+    <string name="menu_changelog">Modifications</string>
     <string name="update_notification_title">Mise à jour des dépôts</string>
     <string name="pref_language">Langue</string>
     <string name="pref_language_default">Langue du système</string>
@@ -321,16 +321,16 @@
     <string name="theme_night">Nuit</string>
 <string name="menu_settings">Paramètres</string>
     <string name="login_title">Connexion requise</string>
-    <string name="login_name">Utilisateur</string>
+    <string name="login_name">Nom d\'utilisateur</string>
     <string name="login_password">Mot de passe</string>
     <string name="repo_edit_credentials">Modifier le mot de passe</string>
-    <string name="repo_error_empty_username">Utilisateur non renseigné, aucune modification n\'a été effectuée</string>
+    <string name="repo_error_empty_username">Nom d\'utilisateur vide, aucune modification effectuée</string>
 
     <string name="tab_installed_apps_count">Installées (%d)</string>
     <string name="tab_updates_count">Mises à jour (%d)</string>
     <string name="about_license">Licence</string>
 
-    <string name="status_inserting_apps">Enregistrement des détails de l\'application</string>
+    <string name="status_inserting_apps">Enregistrement des détails d\'applications</string>
     <string name="empty_search_installed_app_list">Aucune application correspondante installée.</string>
     <string name="empty_search_available_app_list">Aucune application correspondante disponible.</string>
     <string name="empty_search_can_update_app_list">Aucune mise à jour correspondante disponible.</string>

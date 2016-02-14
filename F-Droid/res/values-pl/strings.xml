@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="installIncompatible">Wygląda na to, że ta aplikacja nie jest kompatybilna z twoim urządzeniem. Zainstalować mimo to?</string>
   <string name="version">Wersja</string>
@@ -332,4 +332,15 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="tab_installed_apps_count">Zainstalowano (%d)</string>
     <string name="tab_updates_count">Aktualizacje (%d)</string>
     <string name="status_inserting_apps">Zapisywanie danych aplikacji</string>
+    <string name="by_author">od</string>
+    <string name="menu_email">E-mail do twórcy</string>
+    <string name="antinonfreeassetslist">Ta aplikacja zawiera niewolną zawartość</string>
+
+    <string name="crash_dialog_title">F-Droid zawiesił się</string>
+    <string name="crash_dialog_text">Nieoczekiwany błąd spowodował zamknięcie aplikacji. Czy chciałbyś przesłać e-mailem szczegóły aby pomóc naprawić błąd?</string>
+    <string name="crash_dialog_comment_prompt">Możesz dodać dodatkowe informacje i komentarze tutaj:</string>
+<string name="empty_search_installed_app_list">Brak pasujących zainstalowanych aplikacji.</string>
+    <string name="empty_search_available_app_list">Brak pasujących dostępnych aplikacji.</string>
+    <string name="empty_search_can_update_app_list">Brak pasujących aplikacji do zaktualizowania.</string>
+
     </resources>
