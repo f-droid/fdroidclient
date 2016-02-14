@@ -1,3 +1,15 @@
+### 0.98.1 (2016-02-14)
+
+* Fix crash when entering only a space into the search dialog
+
+* Fix crash when entering slashes into the search dialog
+
+* Fix potential fragment crash when installing/removing a package
+
+* Fix crash when adding malformed URIs as repos
+
+* Fix Android.mk build when the output dir is a relative path
+
 ### 0.98 (2016-02-01)
 
 * Add opt-in crash reporting via ACRA
