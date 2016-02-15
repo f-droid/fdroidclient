@@ -17,12 +17,6 @@ build.xml
 .gradle/
 build/
 
-# Gradle wrapper
-gradlew
-gradlew.bat
-gradle-wrapper.jar
-gradle-wrapper.properties
-
 # Local configuration file (sdk path, etc)
 local.properties
 
