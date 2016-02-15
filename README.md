@@ -7,11 +7,8 @@ for Android.
 
 ## Building with Gradle
 
-You will need the [Android SDK](https://developer.android.com/sdk/) and
-[Gradle](http://gradle.org/) 2.9:
-
     cd F-Droid
-    gradle assembleRelease
+    ./gradlew assembleRelease
 
 ## Direct download
 
