@@ -18,17 +18,13 @@ before_script:
   - export PATH="$ANDROID_HOME/build-tools/23.0.2:$PATH"
   - echo " == Installing Android emulator images"
   - echo y | android -s update sdk --no-ui -a -t android-10
-  - echo " == Installing Gradle"
-  - wget -q -O gradle.zip https://services.gradle.org/distributions/gradle-2.9-bin.zip
-  - unzip -q gradle.zip
-  - export PATH="$PWD/gradle-2.9/bin:$PATH"
 
 test:
   script:
     - echo " == Running build"
-    - gradle build
+    - ./gradlew build
     - echo " == Running checkstyle"
-    - gradle checkstyle
+    - ./gradlew checkstyle
     - echo " == Creating Android 2.3.7 emulator"
     - echo no | android create avd --force -n fcl-test -t android-10 -b armeabi
     - echo " == Starting Android 2.3.7 emulator"
@@ -36,6 +32,6 @@ test:
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82
     - echo " == Running Android tests on the 2.3.7 emulator"
-    - ADB_INSTALL_TIMEOUT=8 gradle connectedCheck || { adb logcat -d '*:W'; exit 1; }
+    - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedCheck || { adb logcat -d '*:W'; exit 1; }
     - echo " == Stopping Android 2.3.7 emulator"
     - kill $!
