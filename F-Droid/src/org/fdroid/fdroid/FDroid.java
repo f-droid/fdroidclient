@@ -69,6 +69,8 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     private FDroidApp fdroidApp;
 
+    private SearchView searchView;
+
     private ViewPager viewPager;
 
     @Nullable
@@ -288,7 +290,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchMenuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+        searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         // LayoutParams.MATCH_PARENT does not work, use a big value instead
         searchView.setMaxWidth(1000000);
@@ -418,8 +420,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        // Do nothing, because we respond to the query being changed as it is updated
-        // via onQueryTextChange(...)
+        searchView.clearFocus();
         return true;
     }
 
