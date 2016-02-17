@@ -275,38 +275,44 @@ public final class Utils {
     public static String formatFingerprint(Context context, String fingerprint) {
         if (TextUtils.isEmpty(fingerprint)
                 || fingerprint.length() != 64  // SHA-256 is 64 hex chars
-                || fingerprint.matches(".*[^0-9a-fA-F].*")) // its a hex string
+                || fingerprint.matches(".*[^0-9a-fA-F].*")) { // its a hex string
             return context.getString(R.string.bad_fingerprint);
+        }
         String displayFP = fingerprint.substring(0, 2);
-        for (int i = 2; i < fingerprint.length(); i = i + 2)
+        for (int i = 2; i < fingerprint.length(); i = i + 2) {
             displayFP += " " + fingerprint.substring(i, i + 2);
+        }
         return displayFP;
     }
 
     @NonNull
     public static Uri getLocalRepoUri(Repo repo) {
-        if (TextUtils.isEmpty(repo.address))
+        if (TextUtils.isEmpty(repo.address)) {
             return Uri.parse("http://wifi-not-enabled");
+        }
         Uri uri = Uri.parse(repo.address);
         Uri.Builder b = uri.buildUpon();
-        if (!TextUtils.isEmpty(repo.fingerprint))
+        if (!TextUtils.isEmpty(repo.fingerprint)) {
             b.appendQueryParameter("fingerprint", repo.fingerprint);
+        }
         String scheme = Preferences.get().isLocalRepoHttpsEnabled() ? "https" : "http";
         b.scheme(scheme);
         return b.build();
     }
 
     public static Uri getSharingUri(Repo repo) {
-        if (TextUtils.isEmpty(repo.address))
+        if (TextUtils.isEmpty(repo.address)) {
             return Uri.parse("http://wifi-not-enabled");
+        }
         Uri localRepoUri = getLocalRepoUri(repo);
         Uri.Builder b = localRepoUri.buildUpon();
         b.scheme(localRepoUri.getScheme().replaceFirst("http", "fdroidrepo"));
         b.appendQueryParameter("swap", "1");
         if (!TextUtils.isEmpty(FDroidApp.bssid)) {
             b.appendQueryParameter("bssid", FDroidApp.bssid);
-            if (!TextUtils.isEmpty(FDroidApp.ssid))
+            if (!TextUtils.isEmpty(FDroidApp.ssid)) {
                 b.appendQueryParameter("ssid", FDroidApp.ssid);
+            }
         }
         return b.build();
     }
@@ -350,8 +356,9 @@ public final class Utils {
     }
 
     public static String calcFingerprint(Certificate cert) {
-        if (cert == null)
+        if (cert == null) {
             return null;
+        }
         try {
             return calcFingerprint(cert.getEncoded());
         } catch (CertificateEncodingException e) {
@@ -360,8 +367,9 @@ public final class Utils {
     }
 
     private static String calcFingerprint(byte[] key) {
-        if (key == null)
+        if (key == null) {
             return null;
+        }
         if (key.length < 256) {
             Log.e(TAG, "key was shorter than 256 bytes (" + key.length + "), cannot be valid!");
             return null;
@@ -426,8 +434,9 @@ public final class Utils {
         }
 
         public static CommaSeparatedList make(List<String> list) {
-            if (list == null || list.isEmpty())
+            if (list == null || list.isEmpty()) {
                 return null;
+            }
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < list.size(); i++) {
                 if (i > 0) {
@@ -439,8 +448,9 @@ public final class Utils {
         }
 
         public static CommaSeparatedList make(String[] list) {
-            if (list == null || list.length == 0)
+            if (list == null || list.length == 0) {
                 return null;
+            }
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < list.length; i++) {
                 if (i > 0) {
@@ -453,8 +463,9 @@ public final class Utils {
 
         @Nullable
         public static CommaSeparatedList make(@Nullable String list) {
-            if (TextUtils.isEmpty(list))
+            if (TextUtils.isEmpty(list)) {
                 return null;
+            }
             return new CommaSeparatedList(list);
         }
 
@@ -480,8 +491,9 @@ public final class Utils {
 
         public boolean contains(String v) {
             for (final String s : this) {
-                if (s.equals(v))
+                if (s.equals(v)) {
                     return true;
+                }
             }
             return false;
         }
@@ -522,8 +534,9 @@ public final class Utils {
 
             byte[] dataBytes = new byte[524288];
             int nread;
-            while ((nread = bis.read(dataBytes)) != -1)
+            while ((nread = bis.read(dataBytes)) != -1) {
                 md.update(dataBytes, 0, nread);
+            }
 
             byte[] mdbytes = md.digest();
             return toHexString(mdbytes);
@@ -609,16 +622,18 @@ public final class Utils {
                 XMLReader reader) {
             switch (tag) {
                 case "ul":
-                    if (opening)
+                    if (opening) {
                         listNum = -1;
-                    else
+                    } else {
                         output.append('\n');
+                    }
                     break;
                 case "ol":
-                    if (opening)
+                    if (opening) {
                         listNum = 1;
-                    else
+                    } else {
                         output.append('\n');
+                    }
                     break;
                 case "li":
                     if (opening) {

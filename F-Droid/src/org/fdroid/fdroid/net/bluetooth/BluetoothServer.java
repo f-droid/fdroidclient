@@ -135,8 +135,9 @@ public class BluetoothServer extends Thread {
                     break;
                 }
 
-                if (isInterrupted())
+                if (isInterrupted()) {
                     break;
+                }
             }
 
             connection.closeQuietly();
@@ -183,8 +184,9 @@ public class BluetoothServer extends Thread {
 
                 Log.e(TAG, "error processing request; sending 500 response", e);
 
-                if (builder == null)
+                if (builder == null) {
                     builder = new Response.Builder();
+                }
 
                 return builder
                         .setStatusCode(500)

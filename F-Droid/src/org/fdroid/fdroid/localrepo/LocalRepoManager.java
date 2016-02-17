@@ -96,8 +96,9 @@ public final class LocalRepoManager {
 
     @NonNull
     public static LocalRepoManager get(Context context) {
-        if (localRepoManager == null)
+        if (localRepoManager == null) {
             localRepoManager = new LocalRepoManager(context);
+        }
         return localRepoManager;
     }
 
@@ -118,17 +119,23 @@ public final class LocalRepoManager {
         xmlIndexJar = new SanitizedFile(repoDir, "index.jar");
         xmlIndexJarUnsigned = new SanitizedFile(repoDir, "index.unsigned.jar");
 
-        if (!fdroidDir.exists())
-            if (!fdroidDir.mkdir())
+        if (!fdroidDir.exists()) {
+            if (!fdroidDir.mkdir()) {
                 Log.e(TAG, "Unable to create empty base: " + fdroidDir);
+            }
+        }
 
-        if (!repoDir.exists())
-            if (!repoDir.mkdir())
+        if (!repoDir.exists()) {
+            if (!repoDir.mkdir()) {
                 Log.e(TAG, "Unable to create empty repo: " + repoDir);
+            }
+        }
 
-        if (!iconsDir.exists())
-            if (!iconsDir.mkdir())
+        if (!iconsDir.exists()) {
+            if (!iconsDir.mkdir()) {
                 Log.e(TAG, "Unable to create icons folder: " + iconsDir);
+            }
+        }
     }
 
     private String writeFdroidApkToWebroot() {
@@ -140,8 +147,9 @@ public final class LocalRepoManager {
             SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
             SanitizedFile fdroidApkLink = new SanitizedFile(webRoot, "fdroid.client.apk");
             attemptToDelete(fdroidApkLink);
-            if (Utils.symlinkOrCopyFileQuietly(apkFile, fdroidApkLink))
+            if (Utils.symlinkOrCopyFileQuietly(apkFile, fdroidApkLink)) {
                 fdroidClientURL = "/" + fdroidApkLink.getName();
+            }
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Could not set up F-Droid apk in the webroot", e);
         }
@@ -249,8 +257,9 @@ public final class LocalRepoManager {
 
             if (app.installedApk != null) {
                 SanitizedFile outFile = new SanitizedFile(repoDir, app.installedApk.apkName);
-                if (Utils.symlinkOrCopyFileQuietly(app.installedApk.installedFile, outFile))
+                if (Utils.symlinkOrCopyFileQuietly(app.installedApk.installedFile, outFile)) {
                     continue;
+                }
             }
             // if we got here, something went wrong
             throw new IllegalStateException("Unable to copy APK");
@@ -261,8 +270,9 @@ public final class LocalRepoManager {
         App app;
         try {
             app = new App(context.getApplicationContext(), pm, packageName);
-            if (!app.isValid())
+            if (!app.isValid()) {
                 return;
+            }
             PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_META_DATA);
             app.icon = getIconFile(packageName, packageInfo.versionCode).getName();
         } catch (PackageManager.NameNotFoundException | CertificateEncodingException | IOException e) {
@@ -464,16 +474,18 @@ public final class LocalRepoManager {
                     buff.append(',');
                 }
                 String out = buff.toString();
-                if (!TextUtils.isEmpty(out))
+                if (!TextUtils.isEmpty(out)) {
                     serializer.text(out.substring(0, out.length() - 1));
+                }
             }
             serializer.endTag("", "permissions");
         }
 
         private void tagFeatures(App app) throws IOException {
             serializer.startTag("", "features");
-            if (app.installedApk.features != null)
+            if (app.installedApk.features != null) {
                 serializer.text(Utils.CommaSeparatedList.str(app.installedApk.features));
+            }
             serializer.endTag("", "features");
         }
 

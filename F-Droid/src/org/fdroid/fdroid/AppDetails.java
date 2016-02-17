@@ -468,10 +468,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                         new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
                 downloadHandler.setProgressListener(this);
 
-                if (downloadHandler.getTotalBytes() == 0)
+                if (downloadHandler.getTotalBytes() == 0) {
                     mHeaderFragment.startProgress();
-                else
+                } else {
                     mHeaderFragment.updateProgress(downloadHandler.getBytesRead(), downloadHandler.getTotalBytes());
+                }
             }
         }
     }
@@ -523,9 +524,10 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     private final BroadcastReceiver downloaderProgressReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (mHeaderFragment != null)
+            if (mHeaderFragment != null) {
                 mHeaderFragment.updateProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
-                    intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1));
+                        intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1));
+            }
         }
     };
 
@@ -618,8 +620,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         menu.clear();
-        if (app == null)
+        if (app == null) {
             return true;
+        }
 
         if (mPm.getLaunchIntentForPackage(app.packageName) != null && app.canAndWantToUpdate()) {
             MenuItemCompat.setShowAsAction(menu.add(
@@ -773,10 +776,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return true;
 
             case IGNORETHIS:
-                if (app.ignoreThisUpdate >= app.suggestedVercode)
+                if (app.ignoreThisUpdate >= app.suggestedVercode) {
                     app.ignoreThisUpdate = 0;
-                else
+                } else {
                     app.ignoreThisUpdate = app.suggestedVercode;
+                }
                 item.setChecked(app.ignoreThisUpdate > 0);
                 return true;
 
@@ -803,8 +807,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         // Ignore call if another download is running.
-        if (downloadHandler != null && !downloadHandler.isComplete())
+        if (downloadHandler != null && !downloadHandler.isComplete()) {
             return;
+        }
 
         final String repoaddress = getRepoAddress(apk);
         if (repoaddress == null) return;
@@ -988,10 +993,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         switch (event.type) {
             case ApkDownloader.EVENT_ERROR:
                 final int res;
-                if (event.getData().getInt(ApkDownloader.EVENT_DATA_ERROR_TYPE) == ApkDownloader.ERROR_HASH_MISMATCH)
+                if (event.getData().getInt(ApkDownloader.EVENT_DATA_ERROR_TYPE) == ApkDownloader.ERROR_HASH_MISMATCH) {
                     res = R.string.corrupt_download;
-                else
+                } else {
                     res = R.string.details_notinstalled;
+                }
                 // this must be on the main UI thread
                 Toast.makeText(this, res, Toast.LENGTH_LONG).show();
                 cleanUpFinishedDownload();
@@ -1004,8 +1010,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         if (finished) {
-            if (mHeaderFragment != null)
+            if (mHeaderFragment != null) {
                 mHeaderFragment.removeProgress();
+            }
             downloadHandler = null;
         }
     }
@@ -1215,10 +1222,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
             // App ID
             final TextView packageNameView = (TextView) view.findViewById(R.id.package_name);
-            if (prefs.expertMode())
+            if (prefs.expertMode()) {
                 packageNameView.setText(app.packageName);
-            else
+            } else {
                 packageNameView.setVisibility(View.GONE);
+            }
 
             // Summary
             final TextView summaryView = (TextView) view.findViewById(R.id.summary);
@@ -1232,73 +1240,83 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
             // Website button
             View tv = view.findViewById(R.id.website);
-            if (!TextUtils.isEmpty(app.webURL))
+            if (!TextUtils.isEmpty(app.webURL)) {
                 tv.setOnClickListener(mOnClickListener);
-            else
+            } else {
                 tv.setVisibility(View.GONE);
+            }
 
             // Email button
             tv = view.findViewById(R.id.email);
-            if (!TextUtils.isEmpty(app.email))
+            if (!TextUtils.isEmpty(app.email)) {
                 tv.setOnClickListener(mOnClickListener);
-            else
+            } else {
                 tv.setVisibility(View.GONE);
+            }
 
             // Source button
             tv = view.findViewById(R.id.source);
-            if (!TextUtils.isEmpty(app.sourceURL))
+            if (!TextUtils.isEmpty(app.sourceURL)) {
                 tv.setOnClickListener(mOnClickListener);
-            else
+            } else {
                 tv.setVisibility(View.GONE);
+            }
 
             // Issues button
             tv = view.findViewById(R.id.issues);
-            if (!TextUtils.isEmpty(app.trackerURL))
+            if (!TextUtils.isEmpty(app.trackerURL)) {
                 tv.setOnClickListener(mOnClickListener);
-            else
+            } else {
                 tv.setVisibility(View.GONE);
+            }
 
             // Changelog button
             tv = view.findViewById(R.id.changelog);
-            if (!TextUtils.isEmpty(app.changelogURL))
+            if (!TextUtils.isEmpty(app.changelogURL)) {
                 tv.setOnClickListener(mOnClickListener);
-            else
+            } else {
                 tv.setVisibility(View.GONE);
+            }
 
             // Donate button
             tv = view.findViewById(R.id.donate);
-            if (!TextUtils.isEmpty(app.donateURL))
+            if (!TextUtils.isEmpty(app.donateURL)) {
                 tv.setOnClickListener(mOnClickListener);
-            else
+            } else {
                 tv.setVisibility(View.GONE);
+            }
 
             // Bitcoin
             tv = view.findViewById(R.id.bitcoin);
-            if (!TextUtils.isEmpty(app.bitcoinAddr))
+            if (!TextUtils.isEmpty(app.bitcoinAddr)) {
                 tv.setOnClickListener(mOnClickListener);
-            else
+            } else {
                 tv.setVisibility(View.GONE);
+            }
 
             // Litecoin
             tv = view.findViewById(R.id.litecoin);
-            if (!TextUtils.isEmpty(app.litecoinAddr))
+            if (!TextUtils.isEmpty(app.litecoinAddr)) {
                 tv.setOnClickListener(mOnClickListener);
-            else
+            } else {
                 tv.setVisibility(View.GONE);
+            }
 
             // Flattr
             tv = view.findViewById(R.id.flattr);
-            if (!TextUtils.isEmpty(app.flattrID))
+            if (!TextUtils.isEmpty(app.flattrID)) {
                 tv.setOnClickListener(mOnClickListener);
-            else
+            } else {
                 tv.setVisibility(View.GONE);
+            }
 
             // Categories TextView
             final TextView categories = (TextView) view.findViewById(R.id.categories);
-            if (prefs.expertMode() && app.categories != null)
+            if (prefs.expertMode() && app.categories != null) {
                 categories.setText(app.categories.toString().replaceAll(",", ", "));
-            else
+            } else {
                 categories.setVisibility(View.GONE);
+            }
 
             Apk curApk = null;
             for (int i = 0; i < getApks().getCount(); i++) {
@@ -1544,8 +1562,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         @Override
         public void onClick(View view) {
             AppDetails activity = (AppDetails) getActivity();
-            if (activity == null || activity.downloadHandler == null)
+            if (activity == null || activity.downloadHandler == null) {
                 return;
+            }
 
             activity.downloadHandler.cancel(true);
             activity.cleanUpFinishedDownload();

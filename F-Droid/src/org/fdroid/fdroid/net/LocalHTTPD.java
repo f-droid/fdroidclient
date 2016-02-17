@@ -40,8 +40,9 @@ public class LocalHTTPD extends NanoHTTPD {
         super(hostname, port);
         this.webRoot = webRoot;
         this.context = context.getApplicationContext();
-        if (useHttps)
+        if (useHttps) {
             enableHTTPS();
+        }
     }
 
     /**

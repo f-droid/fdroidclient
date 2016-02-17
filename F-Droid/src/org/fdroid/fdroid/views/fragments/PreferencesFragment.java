@@ -153,19 +153,21 @@ public class PreferencesFragment extends PreferenceFragment
             case Preferences.PREF_PROXY_HOST:
                 EditTextPreference textPref = (EditTextPreference) findPreference(key);
                 String text = Preferences.get().getProxyHost();
-                if (TextUtils.isEmpty(text) || text.equals(Preferences.DEFAULT_PROXY_HOST))
+                if (TextUtils.isEmpty(text) || text.equals(Preferences.DEFAULT_PROXY_HOST)) {
                     textPref.setSummary(R.string.proxy_host_summary);
-                else
+                } else {
                     textPref.setSummary(text);
+                }
                 break;
 
             case Preferences.PREF_PROXY_PORT:
                 EditTextPreference textPref2 = (EditTextPreference) findPreference(key);
                 int port = Preferences.get().getProxyPort();
-                if (port == Preferences.DEFAULT_PROXY_PORT)
+                if (port == Preferences.DEFAULT_PROXY_PORT) {
                     textPref2.setSummary(R.string.proxy_port_summary);
-                else
+                } else {
                     textPref2.setSummary(String.valueOf(port));
+                }
                 break;
 
         }

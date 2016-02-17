@@ -118,8 +118,9 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
 
     private void setUIFromWifi() {
 
-        if (TextUtils.isEmpty(FDroidApp.repo.address))
+        if (TextUtils.isEmpty(FDroidApp.repo.address)) {
             return;
+        }
 
         String scheme = Preferences.get().isLocalRepoHttpsEnabled() ? "https://" : "http://";
 

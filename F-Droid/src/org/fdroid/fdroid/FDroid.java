@@ -232,12 +232,14 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
         if (!TextUtils.isEmpty(query)) {
             // an old format for querying via packageName
-            if (query.startsWith("pname:"))
+            if (query.startsWith("pname:")) {
                 packageName = query.split(":")[1];
+            }
 
             // sometimes, search URLs include pub: or other things before the query string
-            if (query.contains(":"))
+            if (query.contains(":")) {
                 query = query.split(":")[1];
+            }
         }
 
         if (!TextUtils.isEmpty(packageName)) {

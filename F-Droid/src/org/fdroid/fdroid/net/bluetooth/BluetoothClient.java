@@ -32,8 +32,9 @@ public class BluetoothClient {
             return connection;
         } catch (IOException e1) {
 
-            if (connection != null)
+            if (connection != null) {
                 connection.closeQuietly();
+            }
 
             throw e1;
 

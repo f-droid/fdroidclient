@@ -80,8 +80,9 @@ public class WifiStateChangeService extends Service {
                 wifiState = wifiManager.getWifiState();
 
                 while (FDroidApp.ipAddressString == null) {
-                    if (isCancelled())  // can be canceled by a change via WifiStateChangeReceiver
+                    if (isCancelled()) { // can be canceled by a change via WifiStateChangeReceiver
                         return null;
+                    }
                     if (wifiState == WifiManager.WIFI_STATE_ENABLED) {
                         wifiInfo = wifiManager.getConnectionInfo();
                         FDroidApp.ipAddressString = formatIpAddress(wifiInfo.getIpAddress());
@@ -90,14 +91,16 @@ public class WifiStateChangeService extends Service {
                             return null;
                         }
                         String netmask = formatIpAddress(dhcpInfo.netmask);
-                        if (!TextUtils.isEmpty(FDroidApp.ipAddressString) && netmask != null)
+                        if (!TextUtils.isEmpty(FDroidApp.ipAddressString) && netmask != null) {
                             FDroidApp.subnetInfo = new SubnetUtils(FDroidApp.ipAddressString, netmask).getInfo();
+                        }
                     } else if (wifiState == WifiManager.WIFI_STATE_DISABLED
                             || wifiState == WifiManager.WIFI_STATE_DISABLING) {
                         // try once to see if its a hotspot
                         setIpInfoFromNetworkInterface();
-                        if (FDroidApp.ipAddressString == null)
+                        if (FDroidApp.ipAddressString == null) {
                             return null;
+                        }
                     } else {  // a hotspot can be active during WIFI_STATE_UNKNOWN
                         setIpInfoFromNetworkInterface();
                     }
@@ -107,8 +110,9 @@ public class WifiStateChangeService extends Service {
                         Utils.debugLog(TAG, "waiting for an IP address...");
                     }
                 }
-                if (isCancelled())  // can be canceled by a change via WifiStateChangeReceiver
+                if (isCancelled()) { // can be canceled by a change via WifiStateChangeReceiver
                     return null;
+                }
 
                 if (wifiInfo != null) {
                     String ssid = wifiInfo.getSSID();
@@ -124,23 +128,26 @@ public class WifiStateChangeService extends Service {
 
                 // TODO: Can this be moved to the swap service instead?
                 String scheme;
-                if (Preferences.get().isLocalRepoHttpsEnabled())
+                if (Preferences.get().isLocalRepoHttpsEnabled()) {
                     scheme = "https";
-                else
+                } else {
                     scheme = "http";
+                }
                 FDroidApp.repo.name = Preferences.get().getLocalRepoName();
                 FDroidApp.repo.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
                         scheme, FDroidApp.ipAddressString, FDroidApp.port);
 
-                if (isCancelled())  // can be canceled by a change via WifiStateChangeReceiver
+                if (isCancelled()) { // can be canceled by a change via WifiStateChangeReceiver
                     return null;
+                }
 
                 Context context = WifiStateChangeService.this.getApplicationContext();
                 LocalRepoManager lrm = LocalRepoManager.get(context);
                 lrm.writeIndexPage(Utils.getSharingUri(FDroidApp.repo).toString());
 
-                if (isCancelled())  // can be canceled by a change via WifiStateChangeReceiver
+                if (isCancelled()) { // can be canceled by a change via WifiStateChangeReceiver
                     return null;
+                }
 
                 // the fingerprint for the local repo's signing key
                 LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
@@ -154,8 +161,9 @@ public class WifiStateChangeService extends Service {
                  * because if this is the first time the singleton is run, it
                  * can take a while to instantiate.
                  */
-                if (Preferences.get().isLocalRepoHttpsEnabled())
+                if (Preferences.get().isLocalRepoHttpsEnabled()) {
                     localRepoKeyStore.setupHTTPSCertificate();
+                }
 
             } catch (LocalRepoKeyStore.InitException | InterruptedException e) {
                 Log.e(TAG, "Unable to configure a fingerprint or HTTPS for the local repo", e);
@@ -204,8 +212,9 @@ public class WifiStateChangeService extends Service {
                             || netIf.getDisplayName().contains("eth0")
                             || netIf.getDisplayName().contains("ap0")) {
                         FDroidApp.ipAddressString = inetAddress.getHostAddress();
-                        if (Build.VERSION.SDK_INT < 9)
+                        if (Build.VERSION.SDK_INT < 9) {
                             return;
+                        }
                         // the following methods were not added until android-9/Gingerbread
                         for (InterfaceAddress address : netIf.getInterfaceAddresses()) {
                             if (inetAddress.equals(address.getAddress()) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {

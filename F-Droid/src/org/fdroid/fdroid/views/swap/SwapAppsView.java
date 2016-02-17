@@ -379,14 +379,16 @@ public class SwapAppsView extends ListView implements
 
             private void resetView() {
 
-                if (app == null)
+                if (app == null) {
                     return;
+                }
 
                 progressView.setVisibility(View.GONE);
                 progressView.setIndeterminate(true);
 
-                if (app.name != null)
+                if (app.name != null) {
                     nameView.setText(app.name);
+                }
 
                 ImageLoader.getInstance().displayImage(app.iconUrl, iconView, displayImageOptions);
 

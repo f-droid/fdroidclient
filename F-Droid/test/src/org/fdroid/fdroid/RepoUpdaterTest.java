@@ -28,8 +28,9 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
     }
 
     public void testExtractIndexFromJar() {
-        if (!testFilesDir.canWrite())
+        if (!testFilesDir.canWrite()) {
             return;
+        }
         File simpleIndexJar = TestUtils.copyAssetToDir(context, "simpleIndex.jar", testFilesDir);
 
         // these are supposed to succeed
@@ -42,8 +43,9 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
     }
 
     public void testExtractIndexFromJarWithoutSignatureJar() {
-        if (!testFilesDir.canWrite())
+        if (!testFilesDir.canWrite()) {
             return;
+        }
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithoutSignature.jar", testFilesDir);
@@ -55,8 +57,9 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
     }
 
     public void testExtractIndexFromJarWithCorruptedManifestJar() {
-        if (!testFilesDir.canWrite())
+        if (!testFilesDir.canWrite()) {
             return;
+        }
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedManifest.jar", testFilesDir);
@@ -71,8 +74,9 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
     }
 
     public void testExtractIndexFromJarWithCorruptedSignature() {
-        if (!testFilesDir.canWrite())
+        if (!testFilesDir.canWrite()) {
             return;
+        }
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedSignature.jar", testFilesDir);
@@ -87,8 +91,9 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
     }
 
     public void testExtractIndexFromJarWithCorruptedCertificate() {
-        if (!testFilesDir.canWrite())
+        if (!testFilesDir.canWrite()) {
             return;
+        }
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedCertificate.jar", testFilesDir);
@@ -103,8 +108,9 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
     }
 
     public void testExtractIndexFromJarWithCorruptedEverything() {
-        if (!testFilesDir.canWrite())
+        if (!testFilesDir.canWrite()) {
             return;
+        }
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedEverything.jar", testFilesDir);
@@ -119,8 +125,9 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
     }
 
     public void testExtractIndexFromMasterKeyIndexJar() {
-        if (!testFilesDir.canWrite())
+        if (!testFilesDir.canWrite()) {
             return;
+        }
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "masterKeyIndex.jar", testFilesDir);

@@ -48,10 +48,11 @@ public class QrGenAsyncTask extends AsyncTask<String, Void, Void> {
             x = display.getWidth();
             y = display.getHeight();
         }
-        if (x < y)
+        if (x < y) {
             qrCodeDimension = x;
-        else
+        } else {
             qrCodeDimension = y;
+        }
         Utils.debugLog(TAG, "generating QRCode Bitmap of " + qrCodeDimension + "x" + qrCodeDimension);
         QRCodeEncoder qrCodeEncoder = new QRCodeEncoder(qrData, null,
                 Contents.Type.TEXT, BarcodeFormat.QR_CODE.toString(), qrCodeDimension);

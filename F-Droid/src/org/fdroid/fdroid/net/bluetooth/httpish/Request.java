@@ -91,14 +91,16 @@ public final class Request {
 
         String requestLine = readLine();
 
-        if (requestLine == null || requestLine.trim().length() == 0)
+        if (requestLine == null || requestLine.trim().length() == 0) {
             return false;
+        }
 
         String[] parts = requestLine.split("\\s+");
 
         // First part is the method (GET/HEAD), second is the path (/fdroid/repo/index.jar)
-        if (parts.length < 2)
+        if (parts.length < 2) {
             return false;
+        }
 
         method  = parts[0].toUpperCase(Locale.ENGLISH);
         path    = parts[1];
@@ -143,8 +145,9 @@ public final class Request {
                 int b = input.read();
 
                 if (((char) b) == '\n') {
-                    if (baos.size() > 0)
+                    if (baos.size() > 0) {
                         line = new String(baos.toByteArray());
+                    }
 
                     return line;
                 }
@@ -180,10 +183,11 @@ public final class Request {
                 headers.put(header, value);
             }
 
-            if (input.available() > 0)
+            if (input.available() > 0) {
                 responseLine = readLine();
-            else
+            } else {
                 break;
+            }
 
         }
         return headers;

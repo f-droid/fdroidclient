@@ -603,7 +603,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         Utils.debugLog(TAG, "Initiating Bluetooth swap, will ensure the Bluetooth devices is enabled and discoverable before starting server.");
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
 
-        if (adapter != null)
+        if (adapter != null) {
             if (adapter.isEnabled()) {
                 Utils.debugLog(TAG, "Bluetooth enabled, will check if device is discoverable with device.");
                 ensureBluetoothDiscoverableThenStart();
@@ -612,6 +612,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_BLUETOOTH_ENABLE_FOR_SWAP);
             }
+        }
     }
 
     private void ensureBluetoothDiscoverableThenStart() {

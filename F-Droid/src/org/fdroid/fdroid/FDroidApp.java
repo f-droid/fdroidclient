@@ -309,8 +309,9 @@ public class FDroidApp extends Application {
     }
 
     public void sendViaBluetooth(Activity activity, int resultCode, String packageName) {
-        if (resultCode == Activity.RESULT_CANCELED)
+        if (resultCode == Activity.RESULT_CANCELED) {
             return;
+        }
         String bluetoothPackageName = null;
         String className = null;
         boolean found = false;

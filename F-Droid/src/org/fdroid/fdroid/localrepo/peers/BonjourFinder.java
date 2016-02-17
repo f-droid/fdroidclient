@@ -152,8 +152,9 @@ class BonjourFinder extends PeerFinder implements ServiceListener {
 
         isScanning = false;
 
-        if (jmdns == null)
+        if (jmdns == null) {
             return;
+        }
         jmdns.removeServiceListener(HTTP_SERVICE_TYPE, this);
         jmdns.removeServiceListener(HTTPS_SERVICE_TYPE, this);
         jmdns = null;

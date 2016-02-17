@@ -18,8 +18,9 @@ public class NfcHelper {
 
     @TargetApi(14)
     private static NfcAdapter getAdapter(Context context) {
-        if (Build.VERSION.SDK_INT < 14)
+        if (Build.VERSION.SDK_INT < 14) {
             return null;
+        }
 
         return NfcAdapter.getDefaultAdapter(context.getApplicationContext());
     }
@@ -38,8 +39,9 @@ public class NfcHelper {
 
     @TargetApi(16)
     static void setAndroidBeam(Activity activity, String packageName) {
-        if (Build.VERSION.SDK_INT < 16)
+        if (Build.VERSION.SDK_INT < 16) {
             return;
+        }
         PackageManager pm = activity.getPackageManager();
         NfcAdapter nfcAdapter = getAdapter(activity);
         if (nfcAdapter != null) {
@@ -58,11 +60,13 @@ public class NfcHelper {
 
     @TargetApi(16)
     static void disableAndroidBeam(Activity activity) {
-        if (Build.VERSION.SDK_INT < 16)
+        if (Build.VERSION.SDK_INT < 16) {
             return;
+        }
         NfcAdapter nfcAdapter = getAdapter(activity);
-        if (nfcAdapter != null)
+        if (nfcAdapter != null) {
             nfcAdapter.setBeamPushUris(null, activity);
+        }
     }
 
 }

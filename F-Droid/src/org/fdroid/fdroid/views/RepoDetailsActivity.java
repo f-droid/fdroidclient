@@ -156,8 +156,9 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
     @TargetApi(9)
     void processIntent(Intent i) {
-        if (Build.VERSION.SDK_INT < 9)
+        if (Build.VERSION.SDK_INT < 9) {
             return;
+        }
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(i.getAction())) {
             Parcelable[] rawMsgs =
                     i.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
@@ -176,8 +177,9 @@ public class RepoDetailsActivity extends ActionBarActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
-            if (statusCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES)
+            if (statusCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
                 updateRepoView();
+            }
         }
     };
 

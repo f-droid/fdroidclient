@@ -250,20 +250,23 @@ public class App extends ValueObject implements Comparable<App> {
                 Log.w(TAG, "Could not get app info: " + installerPackageName, e);
             }
         }
-        if (TextUtils.isEmpty(installerPackageLabel))
+        if (TextUtils.isEmpty(installerPackageLabel)) {
             installerPackageLabel = installerPackageName;
+        }
 
         final CharSequence appDescription = appInfo.loadDescription(pm);
-        if (TextUtils.isEmpty(appDescription))
+        if (TextUtils.isEmpty(appDescription)) {
             this.summary = "(installed by " + installerPackageLabel + ")";
-        else
+        } else {
             this.summary = (String) appDescription.subSequence(0, 40);
+        }
         this.packageName = appInfo.packageName;
         this.added = new Date(packageInfo.firstInstallTime);
         this.lastUpdated = new Date(packageInfo.lastUpdateTime);
         this.description = "<p>";
-        if (!TextUtils.isEmpty(appDescription))
+        if (!TextUtils.isEmpty(appDescription)) {
             this.description += appDescription + "\n";
+        }
         this.description += "(installed by " + installerPackageLabel
                 + ", first installed on " + this.added
                 + ", last updated on " + this.lastUpdated + ")</p>";
@@ -358,14 +361,17 @@ public class App extends ValueObject implements Comparable<App> {
 
     public boolean isValid() {
         if (TextUtils.isEmpty(this.name)
-                || TextUtils.isEmpty(this.packageName))
+                || TextUtils.isEmpty(this.packageName)) {
             return false;
+        }
 
-        if (this.installedApk == null)
+        if (this.installedApk == null) {
             return false;
+        }
 
-        if (TextUtils.isEmpty(this.installedApk.sig))
+        if (TextUtils.isEmpty(this.installedApk.sig)) {
             return false;
+        }
 
         final File apkFile = this.installedApk.installedFile;
         return !(apkFile == null || !apkFile.canRead());

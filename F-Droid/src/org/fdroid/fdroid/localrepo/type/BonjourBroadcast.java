@@ -40,8 +40,9 @@ public class BonjourBroadcast extends SwapType {
          * of JmDNS, and there is only ever a single LocalHTTPD port to
          * advertise anyway.
          */
-        if (pairService != null || jmdns != null)
+        if (pairService != null || jmdns != null) {
             clearCurrentMDNSService();
+        }
         String repoName = Preferences.get().getLocalRepoName();
         HashMap<String, String> values = new HashMap<>();
         values.put("path", "/fdroid/repo");
