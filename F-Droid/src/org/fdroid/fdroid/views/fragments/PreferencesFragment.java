@@ -24,7 +24,7 @@ import org.fdroid.fdroid.installer.PrivilegedInstaller;
 public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private static final String[] summariesToUpdate = {
+    private static final String[] SUMMARIES_TO_UPDATE = {
         Preferences.PREF_UPD_INTERVAL,
         Preferences.PREF_UPD_WIFI_ONLY,
         Preferences.PREF_UPD_NOTIFY,
@@ -273,7 +273,7 @@ public class PreferencesFragment extends PreferenceFragment
 
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
-        for (final String key : summariesToUpdate) {
+        for (final String key : SUMMARIES_TO_UPDATE) {
             updateSummary(key, false);
         }
 

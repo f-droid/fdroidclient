@@ -221,7 +221,7 @@ public class SwapService extends Service {
             @Override
             protected Void doInBackground(Void... args) {
                 Uri repoUri = Uri.parse(address);
-                String swapBackUri = Utils.getLocalRepoUri(FDroidApp.repo).toString();
+                String swapBackUri = Utils.getLocalRepoUri(FDroidApp.REPO).toString();
 
                 AndroidHttpClient client = AndroidHttpClient.newInstance("F-Droid", SwapService.this);
                 HttpPost request = new HttpPost("/request-swap");

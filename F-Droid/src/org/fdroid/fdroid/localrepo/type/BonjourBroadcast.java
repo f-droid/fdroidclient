@@ -47,7 +47,7 @@ public class BonjourBroadcast extends SwapType {
         HashMap<String, String> values = new HashMap<>();
         values.put("path", "/fdroid/repo");
         values.put("name", repoName);
-        values.put("fingerprint", FDroidApp.repo.fingerprint);
+        values.put("fingerprint", FDroidApp.REPO.fingerprint);
         String type;
         if (Preferences.get().isLocalRepoHttpsEnabled()) {
             values.put("type", "fdroidrepos");

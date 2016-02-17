@@ -77,12 +77,12 @@ public class InstalledAppProvider extends FDroidProvider {
     private static final String PATH_SEARCH = "search";
     private static final int    CODE_SEARCH = CODE_SINGLE + 1;
 
-    private static final UriMatcher matcher = new UriMatcher(-1);
+    private static final UriMatcher MATCHER = new UriMatcher(-1);
 
     static {
-        matcher.addURI(getAuthority(), null, CODE_LIST);
-        matcher.addURI(getAuthority(), PATH_SEARCH + "/*", CODE_SEARCH);
-        matcher.addURI(getAuthority(), "*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), null, CODE_LIST);
+        MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*", CODE_SEARCH);
+        MATCHER.addURI(getAuthority(), "*", CODE_SINGLE);
     }
 
     public static Uri getContentUri() {
@@ -143,7 +143,7 @@ public class InstalledAppProvider extends FDroidProvider {
 
     @Override
     protected UriMatcher getMatcher() {
-        return matcher;
+        return MATCHER;
     }
 
     private QuerySelection queryApp(String packageName) {
@@ -162,7 +162,7 @@ public class InstalledAppProvider extends FDroidProvider {
         }
 
         QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
             case CODE_LIST:
                 break;
 
@@ -188,7 +188,7 @@ public class InstalledAppProvider extends FDroidProvider {
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
 
-        if (matcher.match(uri) != CODE_SINGLE) {
+        if (MATCHER.match(uri) != CODE_SINGLE) {
             throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
         }
 
@@ -205,7 +205,7 @@ public class InstalledAppProvider extends FDroidProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
 
-        if (matcher.match(uri) != CODE_LIST) {
+        if (MATCHER.match(uri) != CODE_LIST) {
             throw new UnsupportedOperationException("Insert not supported for " + uri + ".");
         }
 

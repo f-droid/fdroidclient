@@ -202,7 +202,7 @@ public final class Utils {
         return String.format(FRIENDLY_SIZE_FORMAT[i], s);
     }
 
-    private static final String[] androidVersionNames = {
+    private static final String[] ANDROID_VERSION_NAMES = {
         "?",     // 0, undefined
         "1.0",   // 1
         "1.1",   // 2
@@ -231,12 +231,12 @@ public final class Utils {
 
     public static String getAndroidVersionName(int sdkLevel) {
         if (sdkLevel < 0) {
-            return androidVersionNames[0];
+            return ANDROID_VERSION_NAMES[0];
         }
-        if (sdkLevel >= androidVersionNames.length) {
+        if (sdkLevel >= ANDROID_VERSION_NAMES.length) {
             return String.format(Locale.ENGLISH, "v%d", sdkLevel);
         }
-        return androidVersionNames[sdkLevel];
+        return ANDROID_VERSION_NAMES[sdkLevel];
     }
 
     /* PackageManager doesn't give us the min and max sdk versions, so we have

@@ -81,16 +81,16 @@ public class FDroidApp extends Application {
     public static SubnetUtils.SubnetInfo subnetInfo;
     public static String ssid;
     public static String bssid;
-    public static final Repo repo = new Repo();
+    public static final Repo REPO = new Repo();
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
-    private static final org.spongycastle.jce.provider.BouncyCastleProvider spongyCastleProvider;
+    private static final org.spongycastle.jce.provider.BouncyCastleProvider SPONGYCASTLE_PROVIDER;
 
     @SuppressWarnings("unused")
     BluetoothAdapter bluetoothAdapter;
 
     static {
-        spongyCastleProvider = new org.spongycastle.jce.provider.BouncyCastleProvider();
+        SPONGYCASTLE_PROVIDER = new org.spongycastle.jce.provider.BouncyCastleProvider();
         enableSpongyCastle();
     }
 
@@ -127,18 +127,18 @@ public class FDroidApp extends Application {
     }
 
     public static void enableSpongyCastle() {
-        Security.addProvider(spongyCastleProvider);
+        Security.addProvider(SPONGYCASTLE_PROVIDER);
     }
 
     public static void enableSpongyCastleOnLollipop() {
         if (Build.VERSION.SDK_INT == 21) {
-            Security.addProvider(spongyCastleProvider);
+            Security.addProvider(SPONGYCASTLE_PROVIDER);
         }
     }
 
     public static void disableSpongyCastleOnLollipop() {
         if (Build.VERSION.SDK_INT == 21) {
-            Security.removeProvider(spongyCastleProvider.getName());
+            Security.removeProvider(SPONGYCASTLE_PROVIDER.getName());
         }
     }
 

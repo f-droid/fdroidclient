@@ -133,8 +133,8 @@ public class WifiStateChangeService extends Service {
                 } else {
                     scheme = "http";
                 }
-                FDroidApp.repo.name = Preferences.get().getLocalRepoName();
-                FDroidApp.repo.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
+                FDroidApp.REPO.name = Preferences.get().getLocalRepoName();
+                FDroidApp.REPO.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
                         scheme, FDroidApp.ipAddressString, FDroidApp.port);
 
                 if (isCancelled()) { // can be canceled by a change via WifiStateChangeReceiver
@@ -143,7 +143,7 @@ public class WifiStateChangeService extends Service {
 
                 Context context = WifiStateChangeService.this.getApplicationContext();
                 LocalRepoManager lrm = LocalRepoManager.get(context);
-                lrm.writeIndexPage(Utils.getSharingUri(FDroidApp.repo).toString());
+                lrm.writeIndexPage(Utils.getSharingUri(FDroidApp.REPO).toString());
 
                 if (isCancelled()) { // can be canceled by a change via WifiStateChangeReceiver
                     return null;
@@ -152,7 +152,7 @@ public class WifiStateChangeService extends Service {
                 // the fingerprint for the local repo's signing key
                 LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
                 Certificate localCert = localRepoKeyStore.getCertificate();
-                FDroidApp.repo.fingerprint = Utils.calcFingerprint(localCert);
+                FDroidApp.REPO.fingerprint = Utils.calcFingerprint(localCert);
 
                 /*
                  * Once the IP address is known we need to generate a self

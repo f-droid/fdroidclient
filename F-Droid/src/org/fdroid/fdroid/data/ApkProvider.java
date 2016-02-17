@@ -237,7 +237,7 @@ public class ApkProvider extends FDroidProvider {
     private static final String PATH_REPO_APPS = "repo-apps";
     protected static final String PATH_REPO_APK  = "repo-apk";
 
-    private static final UriMatcher matcher = new UriMatcher(-1);
+    private static final UriMatcher MATCHER = new UriMatcher(-1);
 
     private static final Map<String, String> REPO_FIELDS = new HashMap<>();
 
@@ -245,13 +245,13 @@ public class ApkProvider extends FDroidProvider {
         REPO_FIELDS.put(DataColumns.REPO_VERSION, RepoProvider.DataColumns.VERSION);
         REPO_FIELDS.put(DataColumns.REPO_ADDRESS, RepoProvider.DataColumns.ADDRESS);
 
-        matcher.addURI(getAuthority(), PATH_REPO + "/#", CODE_REPO);
-        matcher.addURI(getAuthority(), PATH_APK + "/#/*", CODE_SINGLE);
-        matcher.addURI(getAuthority(), PATH_APKS + "/*", CODE_APKS);
-        matcher.addURI(getAuthority(), PATH_APP + "/*", CODE_APP);
-        matcher.addURI(getAuthority(), PATH_REPO_APPS + "/#/*", CODE_REPO_APPS);
-        matcher.addURI(getAuthority(), PATH_REPO_APK + "/#/*", CODE_REPO_APK);
-        matcher.addURI(getAuthority(), null, CODE_LIST);
+        MATCHER.addURI(getAuthority(), PATH_REPO + "/#", CODE_REPO);
+        MATCHER.addURI(getAuthority(), PATH_APK + "/#/*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), PATH_APKS + "/*", CODE_APKS);
+        MATCHER.addURI(getAuthority(), PATH_APP + "/*", CODE_APP);
+        MATCHER.addURI(getAuthority(), PATH_REPO_APPS + "/#/*", CODE_REPO_APPS);
+        MATCHER.addURI(getAuthority(), PATH_REPO_APK + "/#/*", CODE_REPO_APK);
+        MATCHER.addURI(getAuthority(), null, CODE_LIST);
     }
 
     public static String getAuthority() {
@@ -357,7 +357,7 @@ public class ApkProvider extends FDroidProvider {
 
     @Override
     protected UriMatcher getMatcher() {
-        return matcher;
+        return MATCHER;
     }
 
     private static class Query extends QueryBuilder {
@@ -449,7 +449,7 @@ public class ApkProvider extends FDroidProvider {
 
         QuerySelection query = new QuerySelection(selection, selectionArgs);
 
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
             case CODE_LIST:
                 break;
 
@@ -522,7 +522,7 @@ public class ApkProvider extends FDroidProvider {
 
         QuerySelection query = new QuerySelection(where, whereArgs);
 
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
 
             case CODE_REPO:
                 query = query.add(queryRepo(Long.parseLong(uri.getLastPathSegment())));
@@ -561,7 +561,7 @@ public class ApkProvider extends FDroidProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        if (matcher.match(uri) != CODE_SINGLE) {
+        if (MATCHER.match(uri) != CODE_SINGLE) {
             throw new UnsupportedOperationException("Cannot update anything other than a single apk.");
         }
         return performUpdateUnchecked(uri, values, where, whereArgs);
