@@ -350,10 +350,12 @@ public class DBHelper extends SQLiteOpenHelper {
         boolean nameExists = columnExists(db, TABLE_REPO, "name");
         boolean descriptionExists = columnExists(db, TABLE_REPO, "description");
         if (oldVersion < 21 && !(nameExists && descriptionExists)) {
-            if (!nameExists)
+            if (!nameExists) {
                 db.execSQL("alter table " + TABLE_REPO + " add column name text");
-            if (!descriptionExists)
+            }
+            if (!descriptionExists) {
                 db.execSQL("alter table " + TABLE_REPO + " add column description text");
+            }
             insertNameAndDescription(db, R.string.fdroid_repo_address,
                     R.string.fdroid_repo_name, R.string.fdroid_repo_description);
             insertNameAndDescription(db, R.string.fdroid_archive_address,
@@ -372,8 +374,9 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     private void addFingerprintToRepo(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 44) {
-            if (!columnExists(db, TABLE_REPO, "fingerprint"))
+            if (!columnExists(db, TABLE_REPO, "fingerprint")) {
                 db.execSQL("alter table " + TABLE_REPO + " add column fingerprint text");
+            }
             List<Repo> oldrepos = new ArrayList<>();
             Cursor cursor = db.query(TABLE_REPO,
                     new String[] {"address", "pubkey"},

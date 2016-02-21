@@ -56,8 +56,9 @@ public class TabManager {
                                                       FragmentTransaction ft) {
                                 int pos = tab.getPosition();
                                 pager.setCurrentItem(pos);
-                                if (pos == INDEX_CAN_UPDATE)
+                                if (pos == INDEX_CAN_UPDATE) {
                                     removeNotification(1);
+                                }
                             }
 
                             @Override
@@ -78,8 +79,9 @@ public class TabManager {
         if (actionBarSpinner != null) {
             actionBarSpinner.setSelection(index);
         }
-        if (index == INDEX_CAN_UPDATE)
+        if (index == INDEX_CAN_UPDATE) {
             removeNotification(1);
+        }
     }
 
     public void refreshTabLabel(int index) {

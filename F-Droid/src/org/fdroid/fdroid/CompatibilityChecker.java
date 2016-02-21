@@ -59,10 +59,11 @@ public class CompatibilityChecker extends Compatibility {
         StringBuilder builder = new StringBuilder();
         boolean first = true;
         for (final String abi : cpuAbis) {
-            if (first)
+            if (first) {
                 first = false;
-            else
+            } else {
                 builder.append(", ");
+            }
             builder.append(abi);
         }
         cpuAbisDesc = builder.toString();

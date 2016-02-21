@@ -89,8 +89,9 @@ public class HttpDownloader extends Downloader {
     }
 
     protected void setupConnection() throws IOException {
-        if (connection != null)
+        if (connection != null) {
             return;
+        }
         Preferences prefs = Preferences.get();
         if (prefs.isProxyEnabled() && !isSwapUrl()) {
             SocketAddress sa = new InetSocketAddress(prefs.getProxyHost(), prefs.getProxyPort());

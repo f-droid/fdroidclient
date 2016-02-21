@@ -182,8 +182,9 @@ public class ManageReposActivity extends ActionBarActivity {
                 Uri uri = Uri.parse(text);
                 fingerprint = uri.getQueryParameter("fingerprint");
                 // uri might contain a QR-style, all uppercase URL:
-                if (TextUtils.isEmpty(fingerprint))
+                if (TextUtils.isEmpty(fingerprint)) {
                     fingerprint = uri.getQueryParameter("FINGERPRINT");
+                }
                 text = NewRepoConfig.sanitizeRepoUri(uri);
             } catch (MalformedURLException e) {
                 text = null;
@@ -683,8 +684,9 @@ public class ManageReposActivity extends ActionBarActivity {
             WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             String bssid = wifiInfo.getBSSID();
-            if (TextUtils.isEmpty(bssid)) /* not all devices have wifi */
+            if (TextUtils.isEmpty(bssid)) { /* not all devices have wifi */
                 return;
+            }
             bssid = bssid.toLowerCase(Locale.ENGLISH);
             String newRepoBssid = Uri.decode(newRepo.getBssid()).toLowerCase(Locale.ENGLISH);
             if (!bssid.equals(newRepoBssid)) {

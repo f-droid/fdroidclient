@@ -24,12 +24,12 @@ public class TempApkProvider extends ApkProvider {
 
     private static final int CODE_INIT = 10000;
 
-    private static final UriMatcher matcher = new UriMatcher(-1);
+    private static final UriMatcher MATCHER = new UriMatcher(-1);
 
     static {
-        matcher.addURI(getAuthority(), PATH_INIT, CODE_INIT);
-        matcher.addURI(getAuthority(), PATH_APK + "/#/*", CODE_SINGLE);
-        matcher.addURI(getAuthority(), PATH_REPO_APK + "/#/*", CODE_REPO_APK);
+        MATCHER.addURI(getAuthority(), PATH_INIT, CODE_INIT);
+        MATCHER.addURI(getAuthority(), PATH_APK + "/#/*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), PATH_REPO_APK + "/#/*", CODE_REPO_APK);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class TempApkProvider extends ApkProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
             case CODE_INIT:
                 initTable();
                 return null;
@@ -90,7 +90,7 @@ public class TempApkProvider extends ApkProvider {
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
 
-        if (matcher.match(uri) != CODE_SINGLE) {
+        if (MATCHER.match(uri) != CODE_SINGLE) {
             throw new UnsupportedOperationException("Cannot update anything other than a single apk.");
         }
 
@@ -102,7 +102,7 @@ public class TempApkProvider extends ApkProvider {
 
         QuerySelection query = new QuerySelection(where, whereArgs);
 
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
             case CODE_REPO_APK:
                 List<String> pathSegments = uri.getPathSegments();
                 query = query.add(queryRepo(Long.parseLong(pathSegments.get(1)))).add(queryApks(pathSegments.get(2)));

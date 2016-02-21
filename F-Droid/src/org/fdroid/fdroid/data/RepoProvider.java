@@ -238,12 +238,12 @@ public class RepoProvider extends FDroidProvider {
 
     private static final int CODE_ALL_EXCEPT_SWAP = CODE_SINGLE + 1;
 
-    private static final UriMatcher matcher = new UriMatcher(-1);
+    private static final UriMatcher MATCHER = new UriMatcher(-1);
 
     static {
-        matcher.addURI(AUTHORITY + "." + PROVIDER_NAME, null, CODE_LIST);
-        matcher.addURI(AUTHORITY + "." + PROVIDER_NAME, PATH_ALL_EXCEPT_SWAP, CODE_ALL_EXCEPT_SWAP);
-        matcher.addURI(AUTHORITY + "." + PROVIDER_NAME, "#", CODE_SINGLE);
+        MATCHER.addURI(AUTHORITY + "." + PROVIDER_NAME, null, CODE_LIST);
+        MATCHER.addURI(AUTHORITY + "." + PROVIDER_NAME, PATH_ALL_EXCEPT_SWAP, CODE_ALL_EXCEPT_SWAP);
+        MATCHER.addURI(AUTHORITY + "." + PROVIDER_NAME, "#", CODE_SINGLE);
     }
 
     public static String getAuthority() {
@@ -276,7 +276,7 @@ public class RepoProvider extends FDroidProvider {
 
     @Override
     protected UriMatcher getMatcher() {
-        return matcher;
+        return MATCHER;
     }
 
     @Override
@@ -286,7 +286,7 @@ public class RepoProvider extends FDroidProvider {
             sortOrder = "_ID ASC";
         }
 
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
             case CODE_LIST:
                 // Do nothing (don't restrict query)
                 break;
@@ -350,7 +350,7 @@ public class RepoProvider extends FDroidProvider {
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
 
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
             case CODE_LIST:
                 // Don't support deleting of multiple repos.
                 return 0;

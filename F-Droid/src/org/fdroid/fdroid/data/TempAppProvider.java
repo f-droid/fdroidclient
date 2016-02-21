@@ -26,12 +26,12 @@ public class TempAppProvider extends AppProvider {
     private static final int CODE_INIT = 10000;
     private static final int CODE_COMMIT = CODE_INIT + 1;
 
-    private static final UriMatcher matcher = new UriMatcher(-1);
+    private static final UriMatcher MATCHER = new UriMatcher(-1);
 
     static {
-        matcher.addURI(getAuthority(), PATH_INIT, CODE_INIT);
-        matcher.addURI(getAuthority(), PATH_COMMIT, CODE_COMMIT);
-        matcher.addURI(getAuthority(), "*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), PATH_INIT, CODE_INIT);
+        MATCHER.addURI(getAuthority(), PATH_COMMIT, CODE_COMMIT);
+        MATCHER.addURI(getAuthority(), "*", CODE_SINGLE);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class TempAppProvider extends AppProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
             case CODE_INIT:
                 initTable();
                 return null;
@@ -95,7 +95,7 @@ public class TempAppProvider extends AppProvider {
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
         QuerySelection query = new QuerySelection(where, whereArgs);
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
             case CODE_SINGLE:
                 query = query.add(querySingle(uri.getLastPathSegment()));
                 break;

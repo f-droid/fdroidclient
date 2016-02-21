@@ -17,14 +17,17 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
 
     public void testKnownApks() {
 
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 7; i++) {
             TestUtils.insertApk(this, "org.fdroid.fdroid", i);
+        }
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 9; i++) {
             TestUtils.insertApk(this, "org.example", i);
+        }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++) {
             TestUtils.insertApk(this, "com.example", i);
+        }
 
         TestUtils.insertApk(this, "com.apk.thingo", 1);
 
@@ -64,20 +67,24 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
 
         assertResultCount(known.length, knownApks);
 
-        for (Apk knownApk : knownApks)
+        for (Apk knownApk : knownApks) {
             assertContains(knownApks, knownApk);
+        }
     }
 
     public void testFindByApp() {
 
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 7; i++) {
             TestUtils.insertApk(this, "org.fdroid.fdroid", i);
+        }
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 9; i++) {
             TestUtils.insertApk(this, "org.example", i);
+        }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++) {
             TestUtils.insertApk(this, "com.example", i);
+        }
 
         TestUtils.insertApk(this, "com.apk.thingo", 1);
 
@@ -157,8 +164,9 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         // Insert some random apks either side of the "com.example", so that
         // the Helper.find() method doesn't stumble upon the app we are interested
         // in by shear dumb luck...
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++) {
             TestUtils.insertApk(this, "org.fdroid.apk." + i, i);
+        }
 
         ContentValues values = new ContentValues();
         values.put(ApkProvider.DataColumns.VERSION, "v1.1");
@@ -167,8 +175,9 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         TestUtils.insertApk(this, "com.example", 11, values);
 
         // ...and a few more for good measure...
-        for (int i = 15; i < 20; i++)
+        for (int i = 15; i < 20; i++) {
             TestUtils.insertApk(this, "com.other.thing." + i, i);
+        }
 
         Apk apk = ApkProvider.Helper.find(getMockContext(), "com.example", 11);
 

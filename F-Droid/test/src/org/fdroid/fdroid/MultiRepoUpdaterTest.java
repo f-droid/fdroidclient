@@ -433,8 +433,9 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     }
 
     private boolean updateRepo(RepoUpdater updater, String indexJarPath) throws UpdateException {
-        if (!testFilesDir.canWrite())
+        if (!testFilesDir.canWrite()) {
             return false;
+        }
 
         File indexJar = TestUtils.copyAssetToDir(context, indexJarPath, testFilesDir);
         updater.processDownloadedFile(indexJar);

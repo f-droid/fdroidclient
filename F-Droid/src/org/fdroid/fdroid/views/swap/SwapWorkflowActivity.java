@@ -500,7 +500,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         // Even if they opted to skip the message which says "Touch devices to swap",
         // we still want to actually enable the feature, so that they could touch
         // during the wifi qr code being shown too.
-        boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(FDroidApp.repo));
+        boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(FDroidApp.REPO));
 
         if (Preferences.get().showNfcDuringSwap() && nfcMessageReady) {
             inflateInnerView(R.layout.swap_nfc);
@@ -603,7 +603,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         Utils.debugLog(TAG, "Initiating Bluetooth swap, will ensure the Bluetooth devices is enabled and discoverable before starting server.");
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
 
-        if (adapter != null)
+        if (adapter != null) {
             if (adapter.isEnabled()) {
                 Utils.debugLog(TAG, "Bluetooth enabled, will check if device is discoverable with device.");
                 ensureBluetoothDiscoverableThenStart();
@@ -612,6 +612,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_BLUETOOTH_ENABLE_FOR_SWAP);
             }
+        }
     }
 
     private void ensureBluetoothDiscoverableThenStart() {
@@ -667,7 +668,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         PrepareSwapRepo(@NonNull Set<String> apps) {
             context = SwapWorkflowActivity.this;
             selectedApps = apps;
-            sharingUri = Utils.getSharingUri(FDroidApp.repo);
+            sharingUri = Utils.getSharingUri(FDroidApp.REPO);
         }
 
         private void broadcast(int type) {

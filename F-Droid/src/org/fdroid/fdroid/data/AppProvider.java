@@ -423,7 +423,7 @@ public class AppProvider extends FDroidProvider {
 
     private static final String PROVIDER_NAME = "AppProvider";
 
-    private static final UriMatcher matcher = new UriMatcher(-1);
+    private static final UriMatcher MATCHER = new UriMatcher(-1);
 
     private static final String PATH_INSTALLED = "installed";
     private static final String PATH_CAN_UPDATE = "canUpdate";
@@ -456,22 +456,22 @@ public class AppProvider extends FDroidProvider {
     private static final int SEARCH_CAN_UPDATE = SEARCH_INSTALLED + 1;
 
     static {
-        matcher.addURI(getAuthority(), null, CODE_LIST);
-        matcher.addURI(getAuthority(), PATH_CALC_APP_DETAILS_FROM_INDEX, CALC_APP_DETAILS_FROM_INDEX);
-        matcher.addURI(getAuthority(), PATH_IGNORED, IGNORED);
-        matcher.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
-        matcher.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
-        matcher.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
-        matcher.addURI(getAuthority(), PATH_SEARCH + "/*", SEARCH);
-        matcher.addURI(getAuthority(), PATH_SEARCH_INSTALLED + "/*", SEARCH_INSTALLED);
-        matcher.addURI(getAuthority(), PATH_SEARCH_CAN_UPDATE + "/*", SEARCH_CAN_UPDATE);
-        matcher.addURI(getAuthority(), PATH_SEARCH_REPO + "/*/*", SEARCH_REPO);
-        matcher.addURI(getAuthority(), PATH_REPO + "/#", REPO);
-        matcher.addURI(getAuthority(), PATH_CAN_UPDATE, CAN_UPDATE);
-        matcher.addURI(getAuthority(), PATH_INSTALLED, INSTALLED);
-        matcher.addURI(getAuthority(), PATH_NO_APKS, NO_APKS);
-        matcher.addURI(getAuthority(), PATH_APPS + "/*", APPS);
-        matcher.addURI(getAuthority(), "*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), null, CODE_LIST);
+        MATCHER.addURI(getAuthority(), PATH_CALC_APP_DETAILS_FROM_INDEX, CALC_APP_DETAILS_FROM_INDEX);
+        MATCHER.addURI(getAuthority(), PATH_IGNORED, IGNORED);
+        MATCHER.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
+        MATCHER.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
+        MATCHER.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
+        MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*", SEARCH);
+        MATCHER.addURI(getAuthority(), PATH_SEARCH_INSTALLED + "/*", SEARCH_INSTALLED);
+        MATCHER.addURI(getAuthority(), PATH_SEARCH_CAN_UPDATE + "/*", SEARCH_CAN_UPDATE);
+        MATCHER.addURI(getAuthority(), PATH_SEARCH_REPO + "/*/*", SEARCH_REPO);
+        MATCHER.addURI(getAuthority(), PATH_REPO + "/#", REPO);
+        MATCHER.addURI(getAuthority(), PATH_CAN_UPDATE, CAN_UPDATE);
+        MATCHER.addURI(getAuthority(), PATH_INSTALLED, INSTALLED);
+        MATCHER.addURI(getAuthority(), PATH_NO_APKS, NO_APKS);
+        MATCHER.addURI(getAuthority(), PATH_APPS + "/*", APPS);
+        MATCHER.addURI(getAuthority(), "*", CODE_SINGLE);
     }
 
     public static Uri getContentUri() {
@@ -597,7 +597,7 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     protected UriMatcher getMatcher() {
-        return matcher;
+        return MATCHER;
     }
 
     private AppQuerySelection queryCanUpdate() {
@@ -742,7 +742,7 @@ public class AppProvider extends FDroidProvider {
         // Queries which are for the main list of apps should not include swap apps.
         boolean includeSwap = true;
 
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
             case CODE_LIST:
                 includeSwap = false;
                 break;
@@ -842,7 +842,7 @@ public class AppProvider extends FDroidProvider {
     public int delete(Uri uri, String where, String[] whereArgs) {
 
         QuerySelection query = new QuerySelection(where, whereArgs);
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
 
             case NO_APKS:
                 query = query.add(queryNoApks());
@@ -870,7 +870,7 @@ public class AppProvider extends FDroidProvider {
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
         QuerySelection query = new QuerySelection(where, whereArgs);
-        switch (matcher.match(uri)) {
+        switch (MATCHER.match(uri)) {
 
             case CALC_APP_DETAILS_FROM_INDEX:
                 updateAppDetails();

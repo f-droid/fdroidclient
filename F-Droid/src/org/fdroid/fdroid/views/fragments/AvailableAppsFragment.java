@@ -83,8 +83,9 @@ public class AvailableAppsFragment extends AppListFragment implements
             // hierarchy can touch its views."
             final Activity activity = getActivity();
             // this nullguard is temporary, this Fragment really needs to merged into the Activity
-            if (activity == null)
+            if (activity == null) {
                 return;
+            }
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -162,12 +163,15 @@ public class AvailableAppsFragment extends AppListFragment implements
 
     @Override
     protected Uri getDataUri() {
-        if (currentCategory == null || currentCategory.equals(AppProvider.Helper.getCategoryAll(getActivity())))
+        if (currentCategory == null || currentCategory.equals(AppProvider.Helper.getCategoryAll(getActivity()))) {
             return AppProvider.getContentUri();
-        if (currentCategory.equals(AppProvider.Helper.getCategoryRecentlyUpdated(getActivity())))
+        }
+        if (currentCategory.equals(AppProvider.Helper.getCategoryRecentlyUpdated(getActivity()))) {
             return AppProvider.getRecentlyUpdatedUri();
-        if (currentCategory.equals(AppProvider.Helper.getCategoryWhatsNew(getActivity())))
+        }
+        if (currentCategory.equals(AppProvider.Helper.getCategoryWhatsNew(getActivity()))) {
             return AppProvider.getNewlyAddedUri();
+        }
         return AppProvider.getCategoryUri(currentCategory);
     }
 

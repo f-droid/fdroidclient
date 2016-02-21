@@ -164,8 +164,9 @@ public class RepoUpdater {
     public void processDownloadedFile(File downloadedFile) throws UpdateException {
         InputStream indexInputStream = null;
         try {
-            if (downloadedFile == null || !downloadedFile.exists())
+            if (downloadedFile == null || !downloadedFile.exists()) {
                 throw new UpdateException(repo, downloadedFile + " does not exist!");
+            }
 
             // Due to a bug in Android 5.0 Lollipop, the inclusion of spongycastle causes
             // breakage when verifying the signature of the downloaded .jar. For more
@@ -306,8 +307,9 @@ public class RepoUpdater {
      */
     private void verifyAndStoreTOFUCerts(String certFromIndexXml, X509Certificate rawCertFromJar)
         throws SigningException {
-        if (repo.pubkey != null)
+        if (repo.pubkey != null) {
             return; // there is a repo.pubkey already, nothing to TOFU
+        }
 
         /* The first time a repo is added, it can be added with the signing certificate's
          * fingerprint.  In that case, check that fingerprint against what is
@@ -348,8 +350,9 @@ public class RepoUpdater {
         // repo and repo.pubkey must be pre-loaded from the database
         if (TextUtils.isEmpty(repo.pubkey)
                 || TextUtils.isEmpty(certFromJar)
-                || TextUtils.isEmpty(certFromIndexXml))
+                || TextUtils.isEmpty(certFromIndexXml)) {
             throw new SigningException(repo, "A empty repo or signing certificate is invalid!");
+        }
 
         // though its called repo.pubkey, its actually a X509 certificate
         if (repo.pubkey.equals(certFromJar)

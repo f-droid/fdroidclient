@@ -177,19 +177,19 @@ public final class PRNGFixes extends Compatibility {
          * Linux PRNG.
          *
          * Concurrency: Read requests to the underlying Linux PRNG are
-         * serialized (on sLock) to ensure that multiple threads do not get
+         * serialized (on S_LOCK) to ensure that multiple threads do not get
          * duplicated PRNG output.
          */
 
         private static final File URANDOM_FILE = new File("/dev/urandom");
 
-        private static final Object sLock = new Object();
+        private static final Object S_LOCK = new Object();
 
         /**
          * Input stream for reading from Linux PRNG or {@code null} if not yet
          * opened.
          *
-         * @GuardedBy("sLock")
+         * @GuardedBy("S_LOCK")
          */
         private static DataInputStream sUrandomIn;
 
@@ -197,7 +197,7 @@ public final class PRNGFixes extends Compatibility {
          * Output stream for writing to Linux PRNG or {@code null} if not yet
          * opened.
          *
-         * @GuardedBy("sLock")
+         * @GuardedBy("S_LOCK")
          */
         private static OutputStream sUrandomOut;
 
@@ -212,7 +212,7 @@ public final class PRNGFixes extends Compatibility {
         protected void engineSetSeed(byte[] bytes) {
             try {
                 OutputStream out;
-                synchronized (sLock) {
+                synchronized (S_LOCK) {
                     out = getUrandomOutputStream();
                 }
                 out.write(bytes);
@@ -235,7 +235,7 @@ public final class PRNGFixes extends Compatibility {
 
             try {
                 DataInputStream in;
-                synchronized (sLock) {
+                synchronized (S_LOCK) {
                     in = getUrandomInputStream();
                 }
                 synchronized (in) {
@@ -255,7 +255,7 @@ public final class PRNGFixes extends Compatibility {
         }
 
         private DataInputStream getUrandomInputStream() {
-            synchronized (sLock) {
+            synchronized (S_LOCK) {
                 if (sUrandomIn == null) {
                     // NOTE: Consider inserting a BufferedInputStream between
                     // DataInputStream and FileInputStream if you need higher
@@ -274,7 +274,7 @@ public final class PRNGFixes extends Compatibility {
         }
 
         private OutputStream getUrandomOutputStream() throws IOException {
-            synchronized (sLock) {
+            synchronized (S_LOCK) {
                 if (sUrandomOut == null) {
                     sUrandomOut = new FileOutputStream(URANDOM_FILE);
                 }

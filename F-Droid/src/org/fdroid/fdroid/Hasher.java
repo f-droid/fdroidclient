@@ -124,14 +124,15 @@ public class Hasher {
         for (int i = 0; i < data.length(); i++) {
             char halfbyte = data.charAt(i);
             int value;
-            if ('0' <= halfbyte && halfbyte <= '9')
+            if ('0' <= halfbyte && halfbyte <= '9') {
                 value = halfbyte - '0';
-            else if ('a' <= halfbyte && halfbyte <= 'f')
+            } else if ('a' <= halfbyte && halfbyte <= 'f') {
                 value = halfbyte - 'a' + 10;
-            else if ('A' <= halfbyte && halfbyte <= 'F')
+            } else if ('A' <= halfbyte && halfbyte <= 'F') {
                 value = halfbyte - 'A' + 10;
-            else
+            } else {
                 throw new IllegalArgumentException("Bad hex digit");
+            }
             rawdata[i / 2] += (byte) (i % 2 == 0 ? value << 4 : value);
         }
         return rawdata;

@@ -73,8 +73,9 @@ public final class LocalRepoKeyStore {
     private File keyStoreFile;
 
     public static LocalRepoKeyStore get(Context context) throws InitException {
-        if (localRepoKeyStore == null)
+        if (localRepoKeyStore == null) {
             localRepoKeyStore = new LocalRepoKeyStore(context);
+        }
         return localRepoKeyStore;
     }
 
@@ -240,8 +241,9 @@ public final class LocalRepoKeyStore {
     public Certificate getCertificate() {
         try {
             Key key = keyStore.getKey(INDEX_CERT_ALIAS, "".toCharArray());
-            if (key instanceof PrivateKey)
+            if (key instanceof PrivateKey) {
                 return keyStore.getCertificate(INDEX_CERT_ALIAS);
+            }
         } catch (GeneralSecurityException e) {
             Log.e(TAG, "Unable to get certificate for local repo", e);
         }

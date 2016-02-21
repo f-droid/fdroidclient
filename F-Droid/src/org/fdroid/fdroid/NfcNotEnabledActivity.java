@@ -24,10 +24,11 @@ public class NfcNotEnabledActivity extends ActionBarActivity {
         if (nfcAdapter == null) {
             return;
         }
-        if (nfcAdapter.isEnabled())
+        if (nfcAdapter.isEnabled()) {
             intent.setAction(Settings.ACTION_NFCSHARING_SETTINGS);
-        else
+        } else {
             intent.setAction(Settings.ACTION_NFC_SETTINGS);
+        }
     }
 
     // this API was added in 4.0 aka Ice Cream Sandwich

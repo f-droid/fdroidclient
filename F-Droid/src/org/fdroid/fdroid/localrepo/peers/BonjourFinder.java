@@ -130,7 +130,7 @@ class BonjourFinder extends PeerFinder implements ServiceListener {
         final String type = serviceInfo.getPropertyString("type");
         final String fingerprint = serviceInfo.getPropertyString("fingerprint");
         final boolean isFDroid = type != null && type.startsWith("fdroidrepo");
-        final boolean isSelf = FDroidApp.repo != null && fingerprint != null && fingerprint.equalsIgnoreCase(FDroidApp.repo.fingerprint);
+        final boolean isSelf = FDroidApp.REPO != null && fingerprint != null && fingerprint.equalsIgnoreCase(FDroidApp.REPO.fingerprint);
         if (isFDroid && !isSelf) {
             Utils.debugLog(TAG, "Found F-Droid swap Bonjour service:\n" + serviceInfo);
             subscriber.onNext(new BonjourPeer(serviceInfo));
@@ -152,8 +152,9 @@ class BonjourFinder extends PeerFinder implements ServiceListener {
 
         isScanning = false;
 
-        if (jmdns == null)
+        if (jmdns == null) {
             return;
+        }
         jmdns.removeServiceListener(HTTP_SERVICE_TYPE, this);
         jmdns.removeServiceListener(HTTPS_SERVICE_TYPE, this);
         jmdns = null;

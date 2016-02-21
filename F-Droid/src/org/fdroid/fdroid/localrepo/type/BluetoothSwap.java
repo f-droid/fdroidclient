@@ -35,8 +35,9 @@ public final class BluetoothSwap extends SwapType {
         if (adapter == null) {
             return new NoBluetoothType(context);
         }
-        if (mInstance == null)
+        if (mInstance == null) {
             mInstance = new BluetoothSwap(context, adapter);
+        }
 
         return mInstance;
     }
@@ -59,8 +60,9 @@ public final class BluetoothSwap extends SwapType {
     @Override
     public synchronized void start() {
 
-        if (isConnected())
+        if (isConnected()) {
             return;
+        }
 
         receiver = new BroadcastReceiver() {
             @Override
@@ -90,8 +92,9 @@ public final class BluetoothSwap extends SwapType {
             server = null;
         }*/
 
-        if (server == null)
+        if (server == null) {
             server = new BluetoothServer(this, context.getFilesDir());
+        }
 
         sendBroadcast(SwapService.EXTRA_STARTING);
 
@@ -100,8 +103,9 @@ public final class BluetoothSwap extends SwapType {
 
         /*
         Utils.debugLog(TAG, "Prefixing Bluetooth adapter name with " + BLUETOOTH_NAME_TAG + " to make it identifiable as a swap device.");
-        if (!deviceBluetoothName.startsWith(BLUETOOTH_NAME_TAG))
+        if (!deviceBluetoothName.startsWith(BLUETOOTH_NAME_TAG)) {
             adapter.setName(BLUETOOTH_NAME_TAG + deviceBluetoothName);
+        }
 
         if (!adapter.getName().startsWith(BLUETOOTH_NAME_TAG)) {
             Log.e(TAG, "Couldn't change the name of the Bluetooth adapter, it will not get recognized by other swap clients.");

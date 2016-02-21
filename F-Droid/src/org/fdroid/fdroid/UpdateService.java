@@ -173,8 +173,9 @@ public class UpdateService extends IntentService implements ProgressListener {
     protected static void sendStatus(Context context, int statusCode, String message, int progress) {
         Intent intent = new Intent(LOCAL_ACTION_STATUS);
         intent.putExtra(EXTRA_STATUS_CODE, statusCode);
-        if (!TextUtils.isEmpty(message))
+        if (!TextUtils.isEmpty(message)) {
             intent.putExtra(EXTRA_MESSAGE, message);
+        }
         intent.putExtra(EXTRA_PROGRESS, progress);
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
@@ -190,11 +191,13 @@ public class UpdateService extends IntentService implements ProgressListener {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (TextUtils.isEmpty(action))
+            if (TextUtils.isEmpty(action)) {
                 return;
+            }
 
-            if (!action.equals(Downloader.LOCAL_ACTION_PROGRESS))
+            if (!action.equals(Downloader.LOCAL_ACTION_PROGRESS)) {
                 return;
+            }
 
             String repoAddress = intent.getStringExtra(Downloader.EXTRA_ADDRESS);
             int downloadedSize = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1);
@@ -220,11 +223,13 @@ public class UpdateService extends IntentService implements ProgressListener {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (TextUtils.isEmpty(action))
+            if (TextUtils.isEmpty(action)) {
                 return;
+            }
 
-            if (!action.equals(LOCAL_ACTION_STATUS))
+            if (!action.equals(LOCAL_ACTION_STATUS)) {
                 return;
+            }
 
             final String message = intent.getStringExtra(EXTRA_MESSAGE);
             int resultCode = intent.getIntExtra(EXTRA_STATUS_CODE, -1);
@@ -317,8 +322,9 @@ public class UpdateService extends IntentService implements ProgressListener {
 
         // this could be cellular or wifi
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (activeNetwork == null)
+        if (activeNetwork == null) {
             return false;
+        }
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         if (activeNetwork.getType() != ConnectivityManager.TYPE_WIFI

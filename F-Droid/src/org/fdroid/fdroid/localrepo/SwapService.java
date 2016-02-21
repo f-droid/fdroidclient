@@ -221,7 +221,7 @@ public class SwapService extends Service {
             @Override
             protected Void doInBackground(Void... args) {
                 Uri repoUri = Uri.parse(address);
-                String swapBackUri = Utils.getLocalRepoUri(FDroidApp.repo).toString();
+                String swapBackUri = Utils.getLocalRepoUri(FDroidApp.REPO).toString();
 
                 AndroidHttpClient client = AndroidHttpClient.newInstance("F-Droid", SwapService.this);
                 HttpPost request = new HttpPost("/request-swap");
@@ -279,8 +279,9 @@ public class SwapService extends Service {
             values.put(RepoProvider.DataColumns.ADDRESS, peer.getRepoAddress());
             values.put(RepoProvider.DataColumns.DESCRIPTION, "");
             String fingerprint = peer.getFingerprint();
-            if (!TextUtils.isEmpty(fingerprint))
+            if (!TextUtils.isEmpty(fingerprint)) {
                 values.put(RepoProvider.DataColumns.FINGERPRINT, peer.getFingerprint());
+            }
             values.put(RepoProvider.DataColumns.IN_USE, true);
             values.put(RepoProvider.DataColumns.IS_SWAP, true);
             Uri uri = RepoProvider.Helper.insert(this, values);
