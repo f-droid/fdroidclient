@@ -26,7 +26,7 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:0.23.0'
 
-    androidTestCompile 'commons-io:commons-io:2.2'
+    androidTestCompile 'commons-io:commons-io:2.4'
 }
 
 if (!hasProperty('sourceDeps')) {
