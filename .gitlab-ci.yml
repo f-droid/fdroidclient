@@ -33,5 +33,3 @@ test:
     - adb shell input keyevent 82
     - echo " == Running Android tests on the 2.3.7 emulator"
     - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedCheck || { adb logcat -d '*:W'; exit 1; }
-    - echo " == Stopping Android 2.3.7 emulator"
-    - kill $!
