@@ -1,7 +1,13 @@
 image: mvdan/fdroid-ci:latest
 
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+
 test:
   script:
+    - export GRADLE_USER_HOME=$PWD/.gradle
     - cd F-Droid
     - ./tools/langs-list-check.py
     - ./tools/check-string-format.py
