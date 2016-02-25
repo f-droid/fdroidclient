@@ -302,9 +302,8 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                     Utils.debugLog(TAG, "Received onCheckChanged(true) for WiFi swap, asking in background thread to ensure WiFi swap is running.");
                     getManager().getWifiSwap().ensureRunningInBackground();
                 } else {
-                    Utils.debugLog(TAG, "Received onCheckChanged(false) for WiFi swap, disabling WiFi swap.");
-                    getManager().getWifiSwap().stop();
-                    Utils.debugLog(TAG, "Received onCheckChanged(false) for WiFi swap, WiFi swap disabled successfully.");
+                    Utils.debugLog(TAG, "Received onCheckChanged(false) for WiFi swap, disabling WiFi swap in background thread.");
+                    getManager().getWifiSwap().stopInBackground();
                 }
                 uiUpdateWifiNetwork();
             }
