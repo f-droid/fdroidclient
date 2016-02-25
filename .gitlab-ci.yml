@@ -1,7 +1,7 @@
 before_script:
   - apt-get -q update -y
   - echo " == Installing packages required by this CI script"
-  - apt-get -q install -y wget tar unzip
+  - apt-get -q install -y wget tar unzip python3
   - echo " == Installing OpenJDK 7"
   - apt-get -q install -y openjdk-7-jdk
   - echo " == Installing packages required by the 32-bit SDK"
@@ -21,6 +21,11 @@ before_script:
 
 test:
   script:
+    - echo " == Running F-Droid tool checks"
+    - cd F-Droid
+    - ./tools/langs-list-check.py
+    - ./tools/check-string-format.py
+    - cd ..
     - echo " == Running build"
     - ./gradlew build
     - echo " == Running checkstyle"
