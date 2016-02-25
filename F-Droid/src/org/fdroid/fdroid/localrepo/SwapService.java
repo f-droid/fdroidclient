@@ -487,6 +487,7 @@ public class SwapService extends Service {
     public static final String WIFI_STATE_CHANGE = "org.fdroid.fdroid.WIFI_STATE_CHANGE";
     public static final String EXTRA_STARTING = "STARTING";
     public static final String EXTRA_STARTED = "STARTED";
+    public static final String EXTRA_STOPPING = "STOPPING";
     public static final String EXTRA_STOPPED = "STOPPED";
 
     private static final int NOTIFICATION = 1;

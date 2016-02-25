@@ -91,6 +91,7 @@ public class WifiSwap extends SwapType {
 
     @Override
     public void stop() {
+        sendBroadcast(SwapService.EXTRA_STOPPING);
         if (webServerThreadHandler == null) {
             Log.i(TAG, "null handler in stopWebServer");
         } else {
