@@ -78,12 +78,9 @@ public class BonjourBroadcast extends SwapType {
 
     private void clearCurrentMDNSService() {
         if (jmdns != null) {
-            if (pairService != null) {
-                jmdns.unregisterService(pairService);
-                pairService = null;
-            }
             jmdns.unregisterAllServices();
             Utils.closeQuietly(jmdns);
+            pairService = null;
             jmdns = null;
         }
     }
