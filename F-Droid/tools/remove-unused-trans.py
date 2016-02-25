@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 # Remove extra translations
 
@@ -31,7 +31,7 @@ for d in glob.glob(os.path.join('res', 'values-*')):
             if not e.text:
                 root.remove(e)
 
-        result = re.sub(r' />', r'/>', ElementTree.tostring(root, encoding='utf-8'))
+        result = re.sub(r' />', r'/>', ElementTree.tostring(root, encoding='utf-8').decode('utf-8'))
 
         with open(str_path, 'w+') as f:
             f.write(header)
