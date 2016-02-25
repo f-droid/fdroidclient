@@ -8,9 +8,8 @@ before_script:
   - apt-get -q install -y lib32stdc++6 lib32z1
   - echo " == Installing the Android SDK"
   - wget -q -O android-sdk.tgz https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
-  - tar -x -z -f android-sdk.tgz
-  - mv android-sdk-linux android-sdk
-  - export ANDROID_HOME=$PWD/android-sdk
+  - tar -xzf android-sdk.tgz
+  - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH="$ANDROID_HOME/tools:$PATH"
   - echo " == Installing Android SDK components"
   - echo y | android -s update sdk --no-ui -a -t platform-tools,tools,build-tools-23.0.2,android-22,extra-android-m2repository
@@ -33,5 +32,3 @@ test:
     - adb shell input keyevent 82
     - echo " == Running Android tests on the 2.3.7 emulator"
     - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedCheck || { adb logcat -d '*:W'; exit 1; }
-    - echo " == Stopping Android 2.3.7 emulator"
-    - kill $!
