@@ -219,7 +219,6 @@
     <string name="system_install_warning_lollipop">Ez akár 10 másodpercet is igénybe vehet, és az eszköz <b>újra lesz indítva</b> utána.</string>
     <string name="system_uninstall_button">Eltávolítás</string>
 
-    <string name="app_description">Az F-Droid FOSS- (Free and Open Source Software, szabad és nyílt forráskódú szoftver) alkalmazások katalógusa Androidra. A kliens egyszerűsíti a böngészést, telepítést és a frissítések nyomon követését az eszközön.</string>
     <string name="loading">Betöltés…</string>
     <string name="install_confirm">Szeretné telepíteni ezt az alkalmazást? A következőkhöz kap hozzáférést:</string>
     <string name="install_confirm_no_perms">Szeretné telepíteni ezt az alkalmazást? Nem igényel semmilyen különleges hozzáférést.</string>

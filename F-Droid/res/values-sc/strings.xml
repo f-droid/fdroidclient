@@ -167,7 +167,6 @@
   <string name="root_access_denied_body">Su dispositivu tuo non tenet sos permissos de root o non los as datu a F-droid.</string>
   <string name="system_install_denied_title">Permissos de sistema dennegados</string>
   <string name="system_install_denied_body">Custa optzione est disponìbile petzi cando F-Droid est installadu comente aplicatzione de sistema.</string>
-  <string name="app_description">F-Droid est unu catàlogu installàbile de FOSS (Free and Open Source Software - Aplicatziones lìberas e a mitza aberta) pro Android. S\'aplicatzione-client permitit de chircare, installare, e compidare sos agiornamentos in su dispositivu tuo.</string>
   <string name="swap_nfc_description">Si s\'amigu tuo tenet F-Droid e s’NFC allutos pone a cuntatu sos duos dispositivos.</string>
   <string name="swap_join_same_wifi">Intra in sa matessi retza Wi-Fi de s\'amigu tuo</string>
   <string name="menu_swap">Imbia aplicatziones</string>

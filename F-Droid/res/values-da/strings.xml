@@ -268,7 +268,6 @@
     <string name="system_uninstall">Vil du afinstallere F-Droid Privilegeret Udvidelse?</string>
     <string name="system_uninstall_button">Afinstaller</string>
 
-    <string name="app_description">F-Droid er et katalog af FOSS (Free and Open Source Software) som kan installeres til Android platformen. Klienten gør det nemt at søge i, installere, og holde styr på opdateringer til din enhed.</string>
     <string name="swap_nfc_title">Rør for at udveksle</string>
     <string name="swap_nfc_description">Hvis din ven har F-Droid og NFC slået til, lad da jeres enheder røre hinanden.</string>
     <string name="swap_join_same_wifi">Tilslut dig samme Wi-Fi som din ven</string>

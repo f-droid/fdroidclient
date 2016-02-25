@@ -253,7 +253,6 @@
     <string name="system_uninstall">确定要缷载F-Droid特权扩展？</string>
     <string name="system_uninstall_button">缷载</string>
 
-    <string name="app_description">F-Droid提供Android平台上的FOSS（自由和开放源码软件）应用程序兼容列表。客户端可以方便地浏览，安装，并跟踪更新到您的设备上。</string>
     <string name="swap_nfc_title">点击开始交换</string>
     <string name="swap_nfc_description">如果您朋友的设备上有F-Droid及开启的NFC，把你们的设备贴在一起。</string>
     <string name="swap_join_same_wifi">与你的朋友连上同一个Wi-Fi</string>

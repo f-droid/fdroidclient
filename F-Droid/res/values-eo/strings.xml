@@ -265,7 +265,6 @@
     <string name="system_uninstall">Ĉu vi certe volas malinstali na F-Droid Privilegia Aldonaĵo?</string>
     <string name="system_uninstall_button">Malinstali</string>
 
-    <string name="app_description">F-Droid estas instalebla katalogo de liberaj kaj malfermkodaj aplikaĵoj (angle FOSS) por Android operaciumo. La programa foliumilo ebligas facile foliumi, instali, kaj spuri ĝisdatigojn en cia aparato.</string>
     <string name="swap_nfc_title">Tuŝu por interŝanĝi</string>
     <string name="swap_nfc_description">Se via kolego havas na F-Droid kaj na NFC ŝaltita por tuŝi viajn aparatojn kune.</string>
     <string name="swap_join_same_wifi">Konektu la saman vifion kiu via kolego</string>

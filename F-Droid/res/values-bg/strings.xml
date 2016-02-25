@@ -256,7 +256,6 @@
     <string name="system_uninstall">Желаете ли F-Droid да бъде деинсталиран като привилегировано приложение?</string>
     <string name="system_uninstall_button">Деинсталиране</string>
 
-    <string name="app_description">F-Droid предоставя каталог от FOSS (Free and Open Source Software - безплатен софтуер и с отворен код) приложения за Android. Клиентът позволява лесно преглеждане на наличните приложения, инсталиране и следене за актуализации.</string>
     <string name="uninstall_system">Деинсталиране на привилегирован F-Droid</string>
     <string name="uninstall_system_summary">Деинсталиране на допълното привилегировано F-Droid приложение</string>
     <string name="root_access_denied_body">Или вашето устройство не е root-нато или на F-Droid е отказан root достъп.</string>

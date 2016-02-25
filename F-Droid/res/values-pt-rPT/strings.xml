@@ -253,7 +253,6 @@
     <string name="system_uninstall">Deseja desinstalar a extensão privilegiada F-Droid?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
-    <string name="app_description">O F-Droid é um repositório de aplicações FOSS (Free and Open Source Software) para a plataforma Android. Esta aplicação permite explorar, instalar e monitorizar as atualizações das suas aplicações.</string>
     <string name="swap_nfc_title">Toque para trocar</string>
     <string name="swap_nfc_description">Se o seu amigo(a) possui o F-Droid e o NFC ativo, juntem os vossos dispositivos.</string>
     <string name="swap_join_same_wifi">Entre na mesma rede Wi-fi do seu amigo(a)</string>

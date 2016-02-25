@@ -42,7 +42,10 @@
         android:orientation="vertical"
         android:layout_toRightOf="@id/icon"
         android:paddingLeft="16dp"
-        android:paddingStart="16dp">
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        >
 
         <TextView
             android:id="@+id/title"
