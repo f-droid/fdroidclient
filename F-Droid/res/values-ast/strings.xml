@@ -168,7 +168,6 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
   <string name="root_access_denied_body">O\'l to preséu Android nun ta rootexáu o refuguesti l\'accesu root pa F-Droid.</string>
   <string name="system_install_denied_title">Nun ta disponible F-Droid privilexáu</string>
   <string name="system_install_denied_body">Esta opción ta namái disponible cuando s\'instale F-Droid como una aplicación del sistema.</string>
-  <string name="app_description">F-Droid ye un catálogu de software FOSS (software llibre y de baldre) instalable pa la plataforma Android. El veceru fai cenciello restolar, instalar y caltener el rastrexu d\'anovamientos nel to preséu.</string>
   <string name="swap_nfc_description">Si\'l to collaciu tien F-Droid y NFC activáu, axuntái los vuesos preseos pela parte d\'atras.</string>
   <string name="swap_join_same_wifi">Xúnite a la mesma Wi-Fi que\'l to collaciu</string>
   <string name="menu_swap">Intercambiar aplicaciones</string>

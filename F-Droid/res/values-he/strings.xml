@@ -208,7 +208,6 @@
     <string name="system_uninstall">האם ברצונך לבטל את התקנת הרחבת F-Droid מועדף?</string>
     <string name="system_uninstall_button">בטל התקנה</string>
 
-    <string name="app_description">‏F-Droid הינו קטלוג בר התקנה של אפליקציות FOSS (תוכניות קוד פתוח וחופשיות) עבור הפלטפורמה Android. הלקוח מקל על עיון, התקנה, וממשיך לעקוב אחר עדכונים במכשירך.</string>
     <string name="swap_nfc_description">אם לחברך יש F-Droid וגם NFC פועלים געו יחד במכשירים שלכם.</string>
     <string name="swap_join_same_wifi">הצטרף לאותו Wi-Fi כמו חברך</string>
     <string name="swap_join_this_hotspot">עזור לחברך להצטרף לנקודה חמה</string>

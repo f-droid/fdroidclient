@@ -294,7 +294,6 @@
     <string name="system_uninstall">Do you want to uninstall F-Droid Privileged Extension?</string>
     <string name="system_uninstall_button">Uninstall</string>
 
-    <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The client makes it easy to browse, install, and keep track of updates on your device.</string>
     <string name="swap_nfc_title">Touch to swap</string>
     <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.</string>
     <string name="swap_join_same_wifi">Join the same Wi-Fi as your friend</string>

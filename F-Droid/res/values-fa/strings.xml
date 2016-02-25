@@ -221,7 +221,6 @@
     <string name="install_error_title">خطای نصب</string>
     <string name="system_uninstall_button">حذف نصب</string>
 
-    <string name="app_description">اف‌دروید یک فهرست قابل تصب از برنامه‌های نرم‌افزارهای آزاد برای بن‌سازهٔ اندروید است. کارخواه اف‌دروید، مرور، نصب و دنال کردن آمار به روز رسانی‌ها را روی افزاره‌تان راحت می‌کند.</string>
     <string name="swap_nfc_title">برای تبادل، لمس کنید</string>
     <string name="swap_join_same_wifi">به همان وای‌فای دوستتان بپیوندید</string>
     <string name="swap_join_this_hotspot">دوستتان را در پیوستن به نقطهٔ داغتان راهنمایی کنید</string>

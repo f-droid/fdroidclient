@@ -164,7 +164,6 @@
   <string name="root_access_denied_body">Soit vous n\'avez pas accès aux privilèges root sur ce système Android, soit vous les avez refusés à F-Droid.</string>
   <string name="system_install_denied_title">F-Droid - Permissions Étendues n\'est pas disponible</string>
   <string name="system_install_denied_body">Cette option est disponible uniquement quand F-Droid - Permissions Étendues est installée.</string>
-  <string name="app_description">F-Droid est un catalogue d\'applications libres et open source pour le système Android. Le client permet de facilement naviguer, installer et garder une trace des mises à jour sur votre appareil.</string>
   <string name="swap_join_same_wifi">Connectez-vous au même Wi-Fi que votre ami</string>
   <string name="menu_swap">Échanger des applis</string>
   <string name="swap">Échanger des applis</string>

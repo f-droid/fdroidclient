@@ -318,8 +318,7 @@
     <string name="theme_light">Φωτεινό</string>
     <string name="theme_dark">Σκοτεινό</string>
     <string name="theme_night">Νυχτερινό</string>
-<string name="app_description">Το F-Droid είναι ένας κατάλογος εφαρμογών ΕΛ/ΛΑΚ (Ελεύθερο Λογισμικό και Λογισμικό Ανοικτού Κώδικα) για την πλατφόρμα Android. Η εφαρμογή το καθιστά εύκολο να περιηγηθείτε, να εγκαταστήσετε και να παρακολουθείτε τις ενημερώσεις στη συσκευή σας.</string>
-    <string name="swap_nfc_title">Αγγίξτε για να μοιραστείτε</string>
+<string name="swap_nfc_title">Αγγίξτε για να μοιραστείτε</string>
     <string name="swap_nfc_description">Αν ο φίλος σας έχει ενεργοποιημένα το F-Droid και το NFC αγγίξτε μεταξύ τους τα τηλέφωνά σας.</string>
     <string name="swap_join_same_wifi_desc">Για να ανταλλάξετε χρησιμοποιώντας Wi-Fi, βεβαιωθείτε ότι είσαστε στο ίδιο δίκτυο. Αν δεν έχετε πρόσβαση στο ίδιο δίκτυο, ένας από εσάς μπορεί να δημιουργήσει ένα σημείο πρόσβασης Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Βοηθήστε το φίλο σας να συνδεθεί στο σημείο πρόσβασής σας</string>

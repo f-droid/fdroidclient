@@ -298,7 +298,6 @@ konektatzen</string>
     <string name="swap_nfc_title">Ukitu partekatzeko</string>
     <string name="swap_nfc_description">Zure adiskideak F-Droid eta NFC piztuta baditu ukitu telefonoak elkarrekin.</string>
     <string name="swap_join_same_wifi">Batu zure adiskidearen Wi-Fi sare berera</string>
-    <string name="app_description">F-Droid Android plataformarako aplikazio libreen katalogo instalagarri bat da. Bezeroak aplikazioak bilatu, instalatu eta egunean mantentzea errazten du.</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi bidez partekatzeko, egiaztatu biak sare berean zaudetela. Ez baduzue sare berera konektatzerik zuetako batek Wi-Fi gune bat sor dezake.</string>
     <string name="swap_qr_isnt_for_swap">Eskaneatu duzun QR kodea ez diruri truke kode bat.</string>
     <string name="bluetooth_unavailable">Bluetooth ez dago eskuragarri</string>
