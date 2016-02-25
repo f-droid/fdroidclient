@@ -12,7 +12,7 @@
   <string name="about_version">الإصدار:</string>
   <string name="app_installed">مثبت</string>
   <string name="app_not_installed">غير مثبت</string>
-  <string name="app_inst_known_source">مثبت (من s%)</string>
+  <string name="app_inst_known_source">مثبت (من %s)</string>
   <string name="app_inst_unknown_source">مثبت ( من مصدر غير معروف)</string>
   <string name="ok">موافق</string>
   <string name="yes">نعم</string>
