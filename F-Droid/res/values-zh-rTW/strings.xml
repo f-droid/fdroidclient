@@ -203,4 +203,9 @@
     <string name="empty_can_update_app_list">所有應用程式都是最新的。\n\n恭喜您！所有應用程式都是最新的 (或者是您的儲存庫已過期)。</string>
     <string name="uninstall_error_unknown">不明的錯誤導致解除安裝失敗</string>
     <string name="system_install_first_time_notification_message_short">點擊查看更多訊息。</string>
+    <string name="update_history">更新記錄</string>
+    <string name="add_key">加入金鑰</string>
+    <string name="repo_exists_add_fingerprint">此儲存庫已經設定，此動作將會加入新的金鑰資訊。</string>
+    <string name="repo_delete_to_overwrite">在加入含有不同金鑰的儲存庫前，您需要先刪除此儲存庫。</string>
+    <string name="repo_fingerprint">金鑰指紋 (SHA-256)</string>
     </resources>

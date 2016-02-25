@@ -5,7 +5,7 @@
   <string name="cache_downloaded_on">Konservi elŝutitajn apk dosierojn sur la memorejo</string>
   <string name="updates">Ĝisdatigoj</string>
   <string name="other">Aliaj</string>
-  <string name="automatic_scan_wifi">Nur tra vifio</string>
+  <string name="automatic_scan_wifi">Nur per sendrata reto</string>
   <string name="notify">Sciigoj pri ĝisdatigoj</string>
   <string name="notify_on">Sciigas kiam ĝisdatigoj estas disponeblaj</string>
   <string name="update_history">Ĝisdatiga historio</string>
@@ -128,8 +128,8 @@
     <string name="automatic_scan_wifi_on">Ĝisdatigas listojn aŭtomate nur tra vifio</string>
     <string name="update_history_summ">Traktas aplikaĵojn kiel novaj aŭ ĵus-ĝisdatigaj por: %s tagoj</string>
     <string name="system_installer">Privilegia Aldonaĵo</string>
-    <string name="system_installer_on">Uzas na F-Droid Privilegia Aldonaĵo por instali, ĝisdatigi, kaj forigi pakaĵojn</string>
-    <string name="uninstall_system">Ĝisdatigi/Malinstali na Privilegia Aldonaĵo</string>
+    <string name="system_installer_on">Uzas Privilegian F-Droid-aldonaĵon por instali, ĝisdatigi, kaj forigi pakaĵojn</string>
+    <string name="uninstall_system">Ĝisdatigi/Malinstali Privilegian Aldonaĵon</string>
     <string name="uninstall_system_summary">Malfermas detalan ekranon de Privilegia Aldonaĵo por ĝisdatigi/malinstali ĝin</string>
     <string name="local_repo_name">Nomo de Loka Deponejo</string>
     <string name="local_repo_name_summary">La anoncata nomo de via loka deponejo: %s</string>
@@ -242,7 +242,7 @@
     <string name="install_error_cannot_parse">Okazis eraro dum prilaborado de pakaĵo</string>
     <string name="uninstall_error_title">Malinstala eraro</string>
     <string name="uninstall_error_unknown">Malsukcesis malinstali pro nekonata eraro</string>
-    <string name="system_install_denied_title">F-Droid Privilegia Aldonaĵo ne disponebla</string>
+    <string name="system_install_denied_title">Privilegia F-Droid-aldonaĵo ne disponebla</string>
     <string name="system_install_denied_body">Tiu ĉi agordo estas nur disponebla kiam F-Droid Privilegia Aldonaĵo estas instalita.</string>
     <string name="system_install_denied_signature">La subskribo de aldonaĵo malkorektas! Bonvolu krei cimraporton!</string>
     <string name="system_install_button_install">Instali</string>
@@ -265,7 +265,7 @@
     <string name="system_uninstall">Ĉu vi certe volas malinstali na F-Droid Privilegia Aldonaĵo?</string>
     <string name="system_uninstall_button">Malinstali</string>
 
-    <string name="app_description">F-Droid estas instalebla katalogo de liberaj kaj malfermikodaj aplikaĵoj (angle FOSS) por Android operaciumo. La programa foliumilo ebligas facile foliumi, instali, kaj spuri ĝisdatigojn en cia aparato.</string>
+    <string name="app_description">F-Droid estas instalebla katalogo de liberaj kaj malfermkodaj aplikaĵoj (angle FOSS) por Android operaciumo. La programa foliumilo ebligas facile foliumi, instali, kaj spuri ĝisdatigojn en cia aparato.</string>
     <string name="swap_nfc_title">Tuŝu por interŝanĝi</string>
     <string name="swap_nfc_description">Se via kolego havas na F-Droid kaj na NFC ŝaltita por tuŝi viajn aparatojn kune.</string>
     <string name="swap_join_same_wifi">Konektu la saman vifion kiu via kolego</string>
