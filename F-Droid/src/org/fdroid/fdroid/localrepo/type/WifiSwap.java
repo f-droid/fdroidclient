@@ -110,7 +110,13 @@ public class WifiSwap extends SwapType {
             msg.obj = webServerThreadHandler.getLooper().getThread().getName() + " says stop";
             webServerThreadHandler.sendMessage(msg);
         }
+
+        // Stop the Bonjour stuff after asking the webserver to stop. This is not required in this
+        // order, but it helps. In practice, the Bonjour stuff takes a second or two to stop. This
+        // should give enough time for the message we posted above to reach the web server thread
+        // and for the webserver to thus be stopped.
         bonjourBroadcast.stop();
+        setConnected(false);
     }
 
 }
