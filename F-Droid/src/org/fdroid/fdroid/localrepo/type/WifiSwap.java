@@ -42,10 +42,14 @@ public class WifiSwap extends SwapType {
 
     @Override
     public void start() {
-
         Utils.debugLog(TAG, "Preparing swap webserver.");
         sendBroadcast(SwapService.EXTRA_STARTING);
 
+        if (FDroidApp.ipAddressString == null) {
+            Log.e(TAG, "Not starting swap webserver, because we don't seem to be connected to a network.");
+            setConnected(false);
+        }
+        
         Runnable webServer = new Runnable() {
             // Tell Eclipse this is not a leak because of Looper use.
             @SuppressLint("HandlerLeak")
