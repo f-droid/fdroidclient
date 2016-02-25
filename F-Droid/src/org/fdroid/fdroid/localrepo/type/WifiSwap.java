@@ -19,6 +19,13 @@ import java.io.IOException;
 import java.net.BindException;
 import java.util.Random;
 
+import rx.Single;
+import rx.SingleSubscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.functions.Func2;
+import rx.schedulers.Schedulers;
+
 public class WifiSwap extends SwapType {
 
     private static final String TAG = "WifiSwap";
@@ -49,54 +56,103 @@ public class WifiSwap extends SwapType {
             Log.e(TAG, "Not starting swap webserver, because we don't seem to be connected to a network.");
             setConnected(false);
         }
-        
-        Runnable webServer = new Runnable() {
-            // Tell Eclipse this is not a leak because of Looper use.
-            @SuppressLint("HandlerLeak")
-            @Override
-            public void run() {
-                localHttpd = new LocalHTTPD(
-                        context,
-                        FDroidApp.ipAddressString,
-                        FDroidApp.port,
-                        context.getFilesDir(),
-                        Preferences.get().isLocalRepoHttpsEnabled());
 
-                Looper.prepare(); // must be run before creating a Handler
-                webServerThreadHandler = new Handler() {
+        Single.zip(
+                Single.create(getWebServerTask()),
+                Single.create(getBonjourTask()),
+                new Func2<Boolean, Boolean, Boolean>() {
                     @Override
-                    public void handleMessage(Message msg) {
-                        Log.i(TAG, "we've been asked to stop the webserver: " + msg.obj);
-                        setConnected(false);
-                        localHttpd.stop();
-                        Looper looper = Looper.myLooper();
-                        if (looper == null) {
-                            Log.e(TAG, "Looper.myLooper() was null for sum reason while shutting down the swap webserver.");
-                        } else {
-                            looper.quit();
-                        }
+                    public Boolean call(Boolean webServerTask, Boolean bonjourServiceTask) {
+                        return bonjourServiceTask && webServerTask;
                     }
-                };
-                try {
-                    Utils.debugLog(TAG, "Starting swap webserver...");
-                    localHttpd.start();
-                    setConnected(true);
-                    Utils.debugLog(TAG, "Swap webserver started.");
-                } catch (BindException e) {
-                    int prev = FDroidApp.port;
-                    FDroidApp.port = FDroidApp.port + new Random().nextInt(1111);
-                    setConnected(false);
-                    Log.w(TAG, "port " + prev + " occupied, trying on " + FDroidApp.port + "!");
-                    context.startService(new Intent(context, WifiStateChangeService.class));
-                } catch (IOException e) {
-                    setConnected(false);
-                    Log.e(TAG, "Could not start local repo HTTP server", e);
-                }
-                Looper.loop(); // start the message receiving loop
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Action1<Boolean>() {
+                        @Override
+                        public void call(Boolean success) {
+                            setConnected(success);
+                        }
+                    },
+                    new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            setConnected(false);
+                        }
+                    });
+    }
+
+    /**
+     * A task which starts the {@link WifiSwap#bonjourBroadcast} and then emits a `true` value at
+     * the end.
+     */
+    private Single.OnSubscribe<Boolean> getBonjourTask() {
+        return new Single.OnSubscribe<Boolean>() {
+            @Override
+            public void call(SingleSubscriber<? super Boolean> singleSubscriber) {
+                bonjourBroadcast.start();
+
+                // TODO: Be more intelligent about failures here so that we can invoke
+                // singleSubscriber.onError() in the appropriate circumstances.
+                singleSubscriber.onSuccess(true);
             }
         };
-        new Thread(webServer).start();
-        bonjourBroadcast.start();
+    }
+
+    /**
+     * Constructs a new {@link Thread} for the webserver to run on. If successful, it will also
+     * populate the webServerThreadHandler property and bind it to that particular thread. This
+     * allows messages to be sent to the webserver thread by posting messages to that handler.
+     */
+    private Single.OnSubscribe<Boolean> getWebServerTask() {
+        return new Single.OnSubscribe<Boolean>() {
+            @Override
+            public void call(final SingleSubscriber<? super Boolean> singleSubscriber) {
+                new Thread(new Runnable() {
+                    // Tell Eclipse this is not a leak because of Looper use.
+                    @SuppressLint("HandlerLeak")
+                    @Override
+                    public void run() {
+                        localHttpd = new LocalHTTPD(
+                            context,
+                            FDroidApp.ipAddressString,
+                            FDroidApp.port,
+                            context.getFilesDir(),
+                            Preferences.get().isLocalRepoHttpsEnabled());
+
+                        Looper.prepare(); // must be run before creating a Handler
+                        webServerThreadHandler = new Handler() {
+                            @Override
+                            public void handleMessage(Message msg) {
+                                Log.i(TAG, "we've been asked to stop the webserver: " + msg.obj);
+                                localHttpd.stop();
+                                Looper looper = Looper.myLooper();
+                                if (looper == null) {
+                                    Log.e(TAG, "Looper.myLooper() was null for sum reason while shutting down the swap webserver.");
+                                } else {
+                                    looper.quit();
+                                }
+                            }
+                        };
+                        try {
+                            Utils.debugLog(TAG, "Starting swap webserver...");
+                            localHttpd.start();
+                            Utils.debugLog(TAG, "Swap webserver started.");
+                            singleSubscriber.onSuccess(true);
+                        } catch (BindException e) {
+                            int prev = FDroidApp.port;
+                            FDroidApp.port = FDroidApp.port + new Random().nextInt(1111);
+                            context.startService(new Intent(context, WifiStateChangeService.class));
+                            singleSubscriber.onError(new Exception("port " + prev + " occupied, trying on " + FDroidApp.port + "!"));
+                        } catch (IOException e) {
+                            Log.e(TAG, "Could not start local repo HTTP server", e);
+                            singleSubscriber.onError(e);
+                        }
+                        Looper.loop(); // start the message receiving loop
+                    }
+                }).start();
+            }
+        };
     }
 
     @Override
