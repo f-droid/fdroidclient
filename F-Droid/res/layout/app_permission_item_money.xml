@@ -29,7 +29,9 @@
         android:id="@+id/perm_icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginRight="8dp"
         android:layout_marginEnd="8dp"
         android:scaleType="fitCenter" />
 
@@ -41,19 +43,23 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp">
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        >
         <TextView
             android:id="@+id/perm_name"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true" />
         <ImageView
             android:id="@+id/perm_money_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/perm_money_label"
             android:scaleType="fitCenter"
@@ -67,8 +73,10 @@
             android:textColor="@color/perms_costs_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/perm_money_icon"
             android:layout_toEndOf="@id/perm_money_icon"
             android:layout_below="@id/perm_name"
+            android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:text="@string/perm_costs_money" />
     </RelativeLayout>
