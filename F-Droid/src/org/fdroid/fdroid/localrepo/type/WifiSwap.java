@@ -69,6 +69,12 @@ public class WifiSwap extends SwapType {
                         Log.i(TAG, "we've been asked to stop the webserver: " + msg.obj);
                         setConnected(false);
                         localHttpd.stop();
+                        Looper looper = Looper.myLooper();
+                        if (looper == null) {
+                            Log.e(TAG, "Looper.myLooper() was null for sum reason while shutting down the swap webserver.");
+                        } else {
+                            looper.quit();
+                        }
                     }
                 };
                 try {
