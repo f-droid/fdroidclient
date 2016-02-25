@@ -329,11 +329,11 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
     <string name="about_license">Licencja</string>
 
-    <string name="tab_installed_apps_count">Zainstalowano (%d)</string>
+    <string name="tab_installed_apps_count">Zainstalowane (%d)</string>
     <string name="tab_updates_count">Aktualizacje (%d)</string>
     <string name="status_inserting_apps">Zapisywanie danych aplikacji</string>
     <string name="by_author">od</string>
-    <string name="menu_email">E-mail do twórcy</string>
+    <string name="menu_email">E-mail do autora</string>
     <string name="antinonfreeassetslist">Ta aplikacja zawiera niewolną zawartość</string>
 
     <string name="crash_dialog_title">F-Droid zawiesił się</string>

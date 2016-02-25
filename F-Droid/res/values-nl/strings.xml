@@ -1,26 +1,26 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="searchres_napps">%1$d applicaties gevonden die voldoen aan \'%2$s\':</string>
   <string name="searchres_oneapp">Eén applicatie gevonden die voldoet aan \'%s\':</string>
   <string name="searchres_noapps">Geen applicaties gevonden die voldoen aan \'%s\'</string>
-  <string name="SignatureMismatch">De nieuwe versie is gesigneerd met een andere sleutel dan de oude. Om de nieuwe versie te installeren moet eerst de oude verwijderd worden. Probeer het daarna nogmaals. (Let op dat bij het verwijderen de data van de applicatie ook verwijderd wordt)</string>
-  <string name="installIncompatible">Dit pakket is niet verenigbaar met uw apparaat. Wilt u het alsnog proberen te installeren?</string>
-  <string name="installDowngrade">U probeert deze applicatie te degraderen naar een oudere versie. Als u dit doet kan uw data corrupt of verloren raken. Wilt u dit alsnog uitvoeren?</string>
+  <string name="SignatureMismatch">De nieuwe versie is met een andere sleutel ondertekend dan de oude versie. Om de nieuwe versie te installeren, moet de oude eerst verwijderd worden. Probeer het daarna opnieuw. (Let op dat bij het verwijderen de data van de applicatie ook verwijderd wordt)</string>
+  <string name="installIncompatible">Dit pakket is niet compatibel met uw apparaat. Wilt u het alsnog proberen te installeren?</string>
+  <string name="installDowngrade">U probeert deze app te downgraden naar een oudere versie. Als u dit doet, functioneert de app mogelijk niet goed meer en kunt u zelfs uw data verliezen. Wilt u het alsnog proberen en de app downgraden?</string>
   <string name="version">Versie</string>
   <string name="delete">Verwijderen</string>
   <string name="enable_nfc_send">Versturen via NFC aanzetten…</string>
-  <string name="cache_downloaded">Sla gedownloade apps op</string>
-  <string name="cache_downloaded_on">Bewaar gedownloade apps op apparaat</string>
+  <string name="cache_downloaded">Bewaar gedownloade apps</string>
+  <string name="cache_downloaded_on">Bewaar gedownloade appbestanden op apparaat</string>
   <string name="updates">Updates</string>
-  <string name="other">Andere</string>
-  <string name="update_interval">Automatische update interval</string>
-  <string name="update_interval_zero">Geen automatische app-lijst updates</string>
-  <string name="automatic_scan_wifi">Alleen op Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Update app-lijsten automatisch alleen via Wi-Fi-verbinding</string>
+  <string name="other">Overig</string>
+  <string name="update_interval">Automatische vernieuwingsinterval</string>
+  <string name="update_interval_zero">Applijsten worden niet automatisch vernieuwd</string>
+  <string name="automatic_scan_wifi">Alleen via Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Vernieuw applijsten alleen automatisch bij Wi-Fi-verbinding</string>
   <string name="notify">Updatemeldingen</string>
-  <string name="notify_on">Toon een melding wanneer updates beschikbaar zijn</string>
-  <string name="update_history">Vernieuw historie</string>
-  <string name="update_history_summ">Dagen om een app als nieuw of recent te zien: %s</string>
+  <string name="notify_on">Toon een melding wanneer er updates beschikbaar zijn</string>
+  <string name="update_history">Updategeschiedenis</string>
+  <string name="update_history_summ">Dagen om apps als nieuw/recent weer te geven: %s</string>
   <string name="system_installer">Extensie voor systeemrechten</string>
   <string name="system_installer_on">Gebruik extensie voor systeemrechten om pakketten te installeren, updaten en verwijderen</string>
   <string name="local_repo_name">Naam van collectie gedeelde apps</string>
@@ -71,9 +71,9 @@
   <string name="menu_launch">Start</string>
   <string name="menu_share">Delen</string>
   <string name="menu_install">Installeren</string>
-  <string name="menu_uninstall">Deinstalleren</string>
-  <string name="menu_ignore_all">Negeer Alle Updates</string>
-  <string name="menu_ignore_this">Negeer Deze Update</string>
+  <string name="menu_uninstall">Deïnstalleren</string>
+  <string name="menu_ignore_all">Negeer alle updates</string>
+  <string name="menu_ignore_this">Negeer deze update</string>
   <string name="menu_website">Website</string>
   <string name="menu_issues">Problemen</string>
   <string name="menu_source">Broncode</string>
@@ -282,8 +282,8 @@
 
     <string name="theme_light">Licht</string>
     <string name="theme_dark">Donker</string>
-<string name="unstable_updates">Testversies</string>
-    <string name="unstable_updates_summary">Geef updatemeldingen voor testversies</string>
+<string name="unstable_updates">Instabiele versies</string>
+    <string name="unstable_updates_summary">Geef updates weer voor instabiele versies</string>
     <string name="uninstall_system">Update/verwijder extensie voor systeemrechten</string>
     <string name="uninstall_system_summary">Open detailscherm van Extensie Voor Systeemrechten om deze te updaten of te verwijderen</string>
     <string name="more">Meer</string>
@@ -330,4 +330,15 @@
     <string name="login_title">Verificatie vereist</string>
     <string name="repo_error_empty_username">Lege gebruikersnaam, referenties niet gewijzigd</string>
 
-    </resources>
+    <string name="by_author">van</string>
+    <string name="menu_email">E-mail de auteur</string>
+    <string name="antinonfreeassetslist">Deze app bevat niet-vrije assets</string>
+
+    <string name="empty_search_installed_app_list">Geen overeenkomende geïnstalleerde apps.</string>
+    <string name="empty_search_available_app_list">Geen overeenkomende apps beschikbaar.</string>
+    <string name="empty_search_can_update_app_list">Geen overeenkomende apps om te updaten.</string>
+
+    <string name="crash_dialog_title">F-Droid is gecrasht</string>
+    <string name="crash_dialog_text">Een onverwachte fout is opgetreden waardoor de app is gestopt. Wilt u de details over deze fout e-mailen om zo het probleem in de toekomst te helpen voorkomen?</string>
+    <string name="crash_dialog_comment_prompt">U kunt extra informatie en commentaar hier toevoegen:</string>
+</resources>

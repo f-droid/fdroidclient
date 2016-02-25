@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 # List supported languages missing from the preference array
 
@@ -32,8 +32,8 @@ for d in glob.glob(os.path.join('res', 'values-*')):
         continue
     trans.add(lang)
 
-print "In the settings array: %s" % ' '.join(prefs)
-print "Actually translated:   %s" % ' '.join(trans)
+print("In the settings array: %s" % ' '.join(prefs))
+print("Actually translated:   %s" % ' '.join(trans))
 
 missing = []
 for lang in trans:
@@ -41,9 +41,9 @@ for lang in trans:
         missing.append(lang)
 
 if missing:
-    print "Missing:"
+    print("Missing:")
     for lang in missing:
-        print "  %s" % lang
+        print("  %s" % lang)
 
 extra = []
 for lang in prefs:
@@ -51,11 +51,11 @@ for lang in prefs:
         extra.append(lang)
 
 if extra:
-    print "Extra:"
+    print("Extra:")
     for lang in extra:
-        print "  %s" % lang
+        print("  %s" % lang)
 
 if not missing and not extra:
-    print "All good."
+    print("All good.")
 else:
     sys.exit(1)
