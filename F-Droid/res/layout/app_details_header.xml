@@ -41,6 +41,7 @@
         android:baselineAligned="false"
         android:orientation="vertical"
         android:layout_toRightOf="@id/icon"
+        android:layout_toEndOf="@id/icon"
         android:paddingLeft="16dp"
         android:paddingStart="16dp"
         android:paddingRight="16dp"
