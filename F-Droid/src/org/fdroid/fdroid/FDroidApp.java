@@ -63,6 +63,8 @@ import java.net.URLStreamHandlerFactory;
 import java.security.Security;
 import java.util.Locale;
 
+import info.guardianproject.netcipher.NetCipher;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
 import sun.net.www.protocol.bluetooth.Handler;
 
 @ReportsCrashes(mailTo = "reports@f-droid.org",
@@ -296,6 +298,8 @@ public class FDroidApp extends Application {
                 startService(new Intent(FDroidApp.this, WifiStateChangeService.class));
             }
         });
+
+        configureTor(Preferences.get().isTorEnabled());
     }
 
     @TargetApi(18)
@@ -351,5 +355,29 @@ public class FDroidApp extends Application {
                 activity.startActivity(Intent.createChooser(sendBt, getString(R.string.choose_bt_send)));
             }
         }
+    }
+
+    private static boolean useTor;
+
+    /**
+     * Set the proxy settings based on whether Tor should be enabled or not.
+     */
+    public static void configureTor(boolean enabled) {
+        useTor = enabled;
+        if (useTor) {
+            NetCipher.useTor();
+        } else {
+            NetCipher.clearProxy();
+        }
+    }
+
+    public static void checkStartTor(Context context) {
+        if (useTor) {
+            OrbotHelper.requestStartTor(context);
+        }
+    }
+
+    public static boolean isUsingTor() {
+        return useTor;
     }
 }

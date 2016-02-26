@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
@@ -22,7 +23,10 @@ import java.net.Proxy;
 import java.net.SocketAddress;
 import java.net.URL;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLHandshakeException;
+
+import info.guardianproject.netcipher.NetCipher;
 
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
@@ -32,7 +36,7 @@ public class HttpDownloader extends Downloader {
 
     protected HttpURLConnection connection;
     private Credentials credentials;
-    private int statusCode  = -1;
+    private int statusCode = -1;
 
     HttpDownloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
@@ -52,6 +56,7 @@ public class HttpDownloader extends Downloader {
      * checking out that follows redirects up to a certain point. I guess though the correct way
      * is probably to check for a loop (keep a list of all URLs redirected to and if you hit the
      * same one twice, bail with an exception).
+     *
      * @throws IOException
      */
     @Override
@@ -92,17 +97,29 @@ public class HttpDownloader extends Downloader {
         if (connection != null) {
             return;
         }
-        Preferences prefs = Preferences.get();
-        if (prefs.isProxyEnabled() && !isSwapUrl()) {
-            SocketAddress sa = new InetSocketAddress(prefs.getProxyHost(), prefs.getProxyPort());
-            Proxy proxy = new Proxy(Proxy.Type.HTTP, sa);
-            connection = (HttpURLConnection) sourceUrl.openConnection(proxy);
-        } else {
-
+        if (isSwapUrl()) {
+            // swap never works with a proxy, its unrouted IP on the same subnet
             connection = (HttpURLConnection) sourceUrl.openConnection();
-            if (credentials != null) {
-                credentials.authenticate(connection);
+        } else {
+            Preferences prefs = Preferences.get();
+            if (prefs.isProxyEnabled()) {
+                // if "Use Tor" is set, NetCipher will ignore these proxy settings
+                SocketAddress sa = new InetSocketAddress(prefs.getProxyHost(), prefs.getProxyPort());
+                NetCipher.setProxy(new Proxy(Proxy.Type.HTTP, sa));
             }
+            connection = NetCipher.getHttpURLConnection(sourceUrl);
+        }
+
+        // workaround until NetCipher supports HTTPS SNI
+        // https://gitlab.com/fdroid/fdroidclient/issues/431
+        if (connection instanceof HttpsURLConnection
+                && !TextUtils.equals(sourceUrl.getHost(), "f-droid.org")
+                && !TextUtils.equals(sourceUrl.getHost(), "guardianproject.info")) {
+            ((HttpsURLConnection) connection).setSSLSocketFactory(HttpsURLConnection.getDefaultSSLSocketFactory());
+        }
+
+        if (credentials != null) {
+            credentials.authenticate(connection);
         }
     }
 

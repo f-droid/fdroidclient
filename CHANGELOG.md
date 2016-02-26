@@ -1,3 +1,8 @@
+
+* add simple "Use Tor" preference
+
+* Enable TLS v1.2 for officials repo on all devices that support it
+
 ### 0.98.1 (2016-02-14)
 
 * Fix crash when entering only a space into the search dialog

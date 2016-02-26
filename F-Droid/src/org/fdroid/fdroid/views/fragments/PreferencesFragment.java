@@ -21,6 +21,9 @@ import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
+import info.guardianproject.netcipher.NetCipher;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
+
 public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -43,10 +46,16 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.PREF_PROXY_PORT,
     };
 
+    private static final int REQUEST_INSTALL_ORBOT = 0x1234;
+    private CheckBoxPreference enableProxyCheckPref;
+    private CheckBoxPreference useTorCheckPref;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
+        useTorCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_USE_TOR);
+        enableProxyCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
     }
 
     private void checkSummary(String key, int resId) {
@@ -279,6 +288,29 @@ public class PreferencesFragment extends PreferenceFragment
 
         initPrivilegedInstallerPreference();
         initManagePrivilegedAppPreference();
+        // this pref's default is dynamically set based on whether Orbot is installed
+        boolean useTor = Preferences.get().isTorEnabled();
+        useTorCheckPref.setDefaultValue(useTor);
+        useTorCheckPref.setChecked(useTor);
+        useTorCheckPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object enabled) {
+                if ((Boolean) enabled) {
+                    final Activity activity = getActivity();
+                    enableProxyCheckPref.setEnabled(false);
+                    if (OrbotHelper.isOrbotInstalled(activity)) {
+                        NetCipher.useTor();
+                    } else {
+                        Intent intent = OrbotHelper.getOrbotInstallIntent(activity);
+                        activity.startActivityForResult(intent, REQUEST_INSTALL_ORBOT);
+                    }
+                } else {
+                    enableProxyCheckPref.setEnabled(true);
+                    NetCipher.clearProxy();
+                }
+                return true;
+            }
+        });
     }
 
     @Override
