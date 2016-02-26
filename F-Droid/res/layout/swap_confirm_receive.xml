@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <org.fdroid.fdroid.views.swap.ConfirmReceive xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -57,7 +56,6 @@
                 android:id="@+id/no_button"
                 android:text="@string/no"
                 android:backgroundTint="@color/swap_deny"
-                app:backgroundTint="@color/swap_deny"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="25dp"
@@ -69,7 +67,6 @@
                 android:id="@+id/yes_button"
                 android:text="@string/yes"
                 android:backgroundTint="@color/swap_light_blue"
-                app:backgroundTint="@color/swap_light_blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:ignore="UnusedAttribute" />
