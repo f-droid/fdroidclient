@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/listPreferredItemHeight"
     android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+    android:paddingStart="?attr/listPreferredItemPaddingLeft"
     android:paddingRight="?attr/listPreferredItemPaddingRight"
+    android:paddingEnd="?attr/listPreferredItemPaddingRight"
     android:baselineAligned="false">
 
     <ImageView
@@ -38,7 +40,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+                android:paddingStart="?attr/listPreferredItemPaddingLeft"
                 android:paddingRight="?attr/listPreferredItemPaddingRight"
+                android:paddingEnd="?attr/listPreferredItemPaddingRight"
                 android:layout_gravity="center_vertical"
                 android:gravity="start"
                 android:textAlignment="viewStart"
@@ -74,7 +78,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+                android:paddingStart="?attr/listPreferredItemPaddingLeft"
                 android:paddingRight="?attr/listPreferredItemPaddingRight"
+                android:paddingEnd="?attr/listPreferredItemPaddingRight"
                 android:gravity="start"
                 android:textAlignment="viewStart"
                 tools:text="Application manager" />

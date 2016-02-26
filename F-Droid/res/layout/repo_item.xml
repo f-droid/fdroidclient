@@ -5,7 +5,9 @@
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+    android:paddingStart="?attr/listPreferredItemPaddingLeft"
     android:paddingRight="?attr/listPreferredItemPaddingRight"
+    android:paddingEnd="?attr/listPreferredItemPaddingRight"
     android:descendantFocusability="blocksDescendants">
     <!--
      descendantFocusability is here because if you have a child that responds
