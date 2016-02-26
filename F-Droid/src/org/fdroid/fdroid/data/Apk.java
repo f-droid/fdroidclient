@@ -1,7 +1,9 @@
 package org.fdroid.fdroid.data;
 
+import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.os.Build;
 
 import org.fdroid.fdroid.Utils;
 
@@ -145,7 +147,11 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     }
 
     @Override
+    @TargetApi(19)
     public int compareTo(Apk apk) {
+        if (Build.VERSION.SDK_INT < 19) {
+            return Integer.valueOf(vercode).compareTo(apk.vercode);
+        }
         return Integer.compare(vercode, apk.vercode);
     }
 
