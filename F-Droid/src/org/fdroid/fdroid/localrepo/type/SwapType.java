@@ -2,6 +2,7 @@ package org.fdroid.fdroid.localrepo.type;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 
@@ -70,12 +71,13 @@ public abstract class SwapType {
     }
 
     public void startInBackground() {
-        new Thread() {
+        new AsyncTask<Void, Void, Void>() {
             @Override
-            public void run() {
-                SwapType.this.start();
+            protected Void doInBackground(Void... params) {
+                start();
+                return null;
             }
-        }.start();
+        }.execute();
     }
 
     private void ensureRunning() {
@@ -85,21 +87,23 @@ public abstract class SwapType {
     }
 
     public void ensureRunningInBackground() {
-        new Thread() {
+        new AsyncTask<Void, Void, Void>() {
             @Override
-            public void run() {
+            protected Void doInBackground(Void... params) {
                 ensureRunning();
+                return null;
             }
-        }.start();
+        }.execute();
     }
 
     public void stopInBackground() {
-        new Thread() {
+        new AsyncTask<Void, Void, Void>() {
             @Override
-            public void run() {
-                SwapType.this.stop();
+            protected Void doInBackground(Void... params) {
+                stop();
+                return null;
             }
-        }.start();
+        }.execute();
     }
 
 }
