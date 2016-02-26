@@ -104,7 +104,6 @@
             android:showDividers="beginning">
 
         <LinearLayout
-                style="?android:attr/buttonBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -124,7 +123,7 @@
                     android:layout_weight="1"
                     android:text="@string/cancel"
                     android:maxLines="2"
-                    style="?android:attr/buttonBarButtonStyle" />
+                    />
 
             <Button android:id="@+id/ok_button"
                     android:layout_width="0dip"
@@ -134,7 +133,7 @@
                     android:text="@string/next"
                     android:maxLines="2"
                     android:filterTouchesWhenObscured="true"
-                    style="?android:attr/buttonBarButtonStyle" />
+                    />
 
             <LinearLayout android:id="@+id/rightSpacer"
                     android:layout_width="0dip"
