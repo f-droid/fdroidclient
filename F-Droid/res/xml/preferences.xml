@@ -49,6 +49,10 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/proxy" >
         <CheckBoxPreference
+            android:key="useTor"
+            android:summary="@string/useTorSummary"
+            android:title="@string/useTor" />
+        <CheckBoxPreference
             android:defaultValue="false"
             android:key="enableProxy"
             android:title="@string/enable_proxy_title"

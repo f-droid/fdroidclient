@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.net.bluetooth;
 
+import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
@@ -61,6 +62,7 @@ public class BluetoothServer extends Thread {
         }
     }
 
+    @TargetApi(10)
     @Override
     public void run() {
 

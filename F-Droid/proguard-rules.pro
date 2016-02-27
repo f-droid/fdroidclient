@@ -10,6 +10,10 @@
 -dontnote android.support.**
 -dontnote **ILicensingService
 
+# StrongHttpsClient and its support classes are totally unused, so the
+# ch.boye.httpclientandroidlib.** classes are also unneeded
+-dontwarn info.guardianproject.netcipher.client.**
+
 # These libraries are known to break if minification is enabled on them. They
 # use reflection to instantiate classes, for example. If the keep flags are
 # removed, proguard will strip classes which are required, which may result in

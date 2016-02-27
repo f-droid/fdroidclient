@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.net.bluetooth;
 
+import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -21,6 +22,7 @@ public class BluetoothClient {
         device = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(macAddress);
     }
 
+    @TargetApi(10)
     public BluetoothConnection openConnection() throws IOException {
 
         BluetoothSocket socket = null;

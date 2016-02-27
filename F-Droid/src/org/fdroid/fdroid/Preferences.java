@@ -25,9 +25,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private static final String TAG = "Preferences";
 
+    private final Context context;
     private final SharedPreferences preferences;
 
     private Preferences(Context context) {
+        this.context = context;
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         preferences.registerOnSharedPreferenceChangeListener(this);
         if (preferences.getString(PREF_LOCAL_REPO_NAME, null) == null) {
@@ -54,6 +56,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
     public static final String PREF_LOCAL_REPO_HTTPS = "localRepoHttps";
     public static final String PREF_LANGUAGE = "language";
+    public static final String PREF_USE_TOR = "useTor";
     public static final String PREF_ENABLE_PROXY = "enableProxy";
     public static final String PREF_PROXY_HOST = "proxyHost";
     public static final String PREF_PROXY_PORT = "proxyPort";
@@ -159,6 +162,16 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public String getLocalRepoName() {
         return preferences.getString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName());
+    }
+
+    /**
+     * This preference's default is set dynamically based on whether Orbot is
+     * installed. If Orbot is installed, default to using Tor, the user can still override
+     */
+    public boolean isTorEnabled() {
+        // TODO enable once Orbot can auto-start after first install
+        //return preferences.getBoolean(PREF_USE_TOR, OrbotHelper.requestStartTor(context));
+        return preferences.getBoolean(PREF_USE_TOR, false);
     }
 
     public boolean isProxyEnabled() {

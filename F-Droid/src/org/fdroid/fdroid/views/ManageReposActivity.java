@@ -127,6 +127,7 @@ public class ManageReposActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        FDroidApp.checkStartTor(this);
 
         /* let's see if someone is trying to send us a new repo */
         addRepoFromIntent(getIntent());
