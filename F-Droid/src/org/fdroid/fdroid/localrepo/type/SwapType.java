@@ -99,7 +99,7 @@ public abstract class SwapType {
             public void run() {
                 SwapType.this.stop();
             }
-        }.run();
+        }.start();
     }
 
 }

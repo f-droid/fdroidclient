@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.localrepo.type;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -10,6 +11,7 @@ import org.fdroid.fdroid.localrepo.SwapService;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 
 import javax.jmdns.JmDNS;
@@ -31,9 +33,14 @@ public class BonjourBroadcast extends SwapType {
 
     @Override
     public void start() {
-
         Utils.debugLog(TAG, "Preparing to start Bonjour service.");
         sendBroadcast(SwapService.EXTRA_STARTING);
+
+        InetAddress address = getDeviceAddress();
+        if (address == null) {
+            Log.e(TAG, "Starting Bonjour service, but couldn't ascertain IP address. Seems we are not connected to a network.");
+            return;
+        }
 
         /*
          * a ServiceInfo can only be registered with a single instance
@@ -43,6 +50,7 @@ public class BonjourBroadcast extends SwapType {
         if (pairService != null || jmdns != null) {
             clearCurrentMDNSService();
         }
+
         String repoName = Preferences.get().getLocalRepoName();
         HashMap<String, String> values = new HashMap<>();
         values.put("path", "/fdroid/repo");
@@ -59,7 +67,7 @@ public class BonjourBroadcast extends SwapType {
         try {
             Utils.debugLog(TAG, "Starting bonjour service...");
             pairService = ServiceInfo.create(type, repoName, FDroidApp.port, 0, 0, values);
-            jmdns = JmDNS.create(InetAddress.getByName(FDroidApp.ipAddressString));
+            jmdns = JmDNS.create(address);
             jmdns.registerService(pairService);
             setConnected(true);
             Utils.debugLog(TAG, "... Bounjour service started.");
@@ -78,12 +86,9 @@ public class BonjourBroadcast extends SwapType {
 
     private void clearCurrentMDNSService() {
         if (jmdns != null) {
-            if (pairService != null) {
-                jmdns.unregisterService(pairService);
-                pairService = null;
-            }
             jmdns.unregisterAllServices();
             Utils.closeQuietly(jmdns);
+            pairService = null;
             jmdns = null;
         }
     }
@@ -91,6 +96,17 @@ public class BonjourBroadcast extends SwapType {
     @Override
     public String getBroadcastAction() {
         return SwapService.BONJOUR_STATE_CHANGE;
+    }
+
+    @Nullable
+    private InetAddress getDeviceAddress() {
+        if (FDroidApp.ipAddressString != null) {
+            try {
+                return InetAddress.getByName(FDroidApp.ipAddressString);
+            } catch (UnknownHostException e) { }
+        }
+
+        return null;
     }
 
 }

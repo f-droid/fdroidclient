@@ -441,14 +441,18 @@ public class SwapService extends Service {
     /**
      * Handles checking if the {@link SwapService} is running, and only restarts it if it was running.
      */
-    public void restartWifiIfEnabled() {
+    public void stopWifiIfEnabled(final boolean restartAfterStopping) {
         if (wifiSwap.isConnected()) {
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... params) {
-                    Utils.debugLog(TAG, "Restarting WiFi swap service");
+                    Utils.debugLog(TAG, "Stopping the currently running WiFi swap service (on background thread)");
                     wifiSwap.stop();
-                    wifiSwap.start();
+
+                    if (restartAfterStopping) {
+                        Utils.debugLog(TAG, "Restarting WiFi swap service after stopping (still on background thread)");
+                        wifiSwap.start();
+                    }
                     return null;
                 }
             }.execute();
@@ -483,6 +487,7 @@ public class SwapService extends Service {
     public static final String WIFI_STATE_CHANGE = "org.fdroid.fdroid.WIFI_STATE_CHANGE";
     public static final String EXTRA_STARTING = "STARTING";
     public static final String EXTRA_STARTED = "STARTED";
+    public static final String EXTRA_STOPPING = "STOPPING";
     public static final String EXTRA_STOPPED = "STOPPED";
 
     private static final int NOTIFICATION = 1;
@@ -632,7 +637,7 @@ public class SwapService extends Service {
         @Override
         public void onPreferenceChange() {
             Log.i(TAG, "Swap over HTTPS preference changed.");
-            restartWifiIfEnabled();
+            stopWifiIfEnabled(true);
         }
     };
 
@@ -640,7 +645,8 @@ public class SwapService extends Service {
     private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent i) {
-            restartWifiIfEnabled();
+            boolean hasIp = FDroidApp.ipAddressString != null;
+            stopWifiIfEnabled(hasIp);
         }
     };
 

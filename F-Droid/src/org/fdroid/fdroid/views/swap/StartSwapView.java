@@ -302,9 +302,8 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                     Utils.debugLog(TAG, "Received onCheckChanged(true) for WiFi swap, asking in background thread to ensure WiFi swap is running.");
                     getManager().getWifiSwap().ensureRunningInBackground();
                 } else {
-                    Utils.debugLog(TAG, "Received onCheckChanged(false) for WiFi swap, disabling WiFi swap.");
-                    getManager().getWifiSwap().stop();
-                    Utils.debugLog(TAG, "Received onCheckChanged(false) for WiFi swap, WiFi swap disabled successfully.");
+                    Utils.debugLog(TAG, "Received onCheckChanged(false) for WiFi swap, disabling WiFi swap in background thread.");
+                    getManager().getWifiSwap().stopInBackground();
                 }
                 uiUpdateWifiNetwork();
             }
@@ -323,10 +322,15 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (intent.hasExtra(SwapService.EXTRA_STARTING)) {
-                    Utils.debugLog(TAG, "WiFi service is starting (setting toggle to visible, but disabled).");
+                    Utils.debugLog(TAG, "WiFi service is starting (setting toggle to checked, but disabled).");
                     textWifiVisible.setText(R.string.swap_setting_up_wifi);
                     wifiSwitch.setEnabled(false);
                     wifiSwitch.setChecked(true);
+                } else if (intent.hasExtra(SwapService.EXTRA_STOPPING)) {
+                    Utils.debugLog(TAG, "WiFi service is stopping (setting toggle to unchecked and disabled).");
+                    textWifiVisible.setText(R.string.swap_stopping_wifi);
+                    wifiSwitch.setEnabled(false);
+                    wifiSwitch.setChecked(false);
                 } else {
                     wifiSwitch.setEnabled(true);
                     if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
