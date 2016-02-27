@@ -1,7 +1,14 @@
+### Upcoming release
 
-* add simple "Use Tor" preference
+* Add simple "Use Tor" setting
 
-* Enable TLS v1.2 for officials repo on all devices that support it
+* Enable TLS v1.2 for HTTPS on all devices that support it
+
+* Fix a series of Swap crashes, including a background crash
+
+* Fix most Android lint errors and some warnings
+
+* Translation updates
 
 ### 0.98.1 (2016-02-14)
 
