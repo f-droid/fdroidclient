@@ -1043,7 +1043,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     public static class AppDetailsSummaryFragment extends Fragment {
 
-        protected final Preferences prefs;
+        final Preferences prefs;
         private AppDetailsData data;
         private static final int MAX_LINES = 5;
         private static boolean viewAllDescription;
@@ -1076,11 +1076,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             data = (AppDetailsData) activity;
         }
 
-        protected App getApp() {
+        App getApp() {
             return data.getApp();
         }
 
-        protected ApkListAdapter getApks() {
+        ApkListAdapter getApks() {
             return data.getApks();
         }
 
@@ -1436,7 +1436,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private TextView progressSize;
         private TextView progressPercent;
         private ImageButton cancelButton;
-        protected final DisplayImageOptions displayImageOptions;
+        final DisplayImageOptions displayImageOptions;
         public static boolean installed;
         public static boolean updateWanted;
 
@@ -1678,19 +1678,19 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             installListener = (AppInstallListener) activity;
         }
 
-        protected void install(final Apk apk) {
+        void install(final Apk apk) {
             installListener.install(apk);
         }
 
-        protected void remove() {
+        void remove() {
             installListener.removeApk(getApp().packageName);
         }
 
-        protected App getApp() {
+        App getApp() {
             return data.getApp();
         }
 
-        protected ApkListAdapter getApks() {
+        ApkListAdapter getApks() {
             return data.getApks();
         }
 

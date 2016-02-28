@@ -59,7 +59,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
     public static final String ACTION_POST_INSTALL = "post_install";
     public static final String ACTION_FIRST_TIME = "first_time";
 
-    String apkFile;
+    private String apkFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +113,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
         }
     }
 
-    public static void runFirstTime(final Context context) {
+    private static void runFirstTime(final Context context) {
         // don't do a "real" root access, just look up if "su" is present and has a version!
         // a real check would annoy the user
         AsyncTask<Void, Void, Boolean> checkRoot = new AsyncTask<Void, Void, Boolean>() {
@@ -202,7 +202,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
         builder.create().show();
     }
 
-    public void askBeforeInstall() {
+    private void askBeforeInstall() {
         // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
@@ -229,7 +229,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
     /**
      * 1. Check for root access
      */
-    public final AsyncTask<Void, Void, Boolean> checkRootTask = new AsyncTask<Void, Void, Boolean>() {
+    private final AsyncTask<Void, Void, Boolean> checkRootTask = new AsyncTask<Void, Void, Boolean>() {
         ProgressDialog mProgressDialog;
 
         @Override
@@ -299,7 +299,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
     /**
      * 2. Install into system
      */
-    final AsyncTask<Void, Void, Void> installTask = new AsyncTask<Void, Void, Void>() {
+    private final AsyncTask<Void, Void, Void> installTask = new AsyncTask<Void, Void, Void>() {
         ProgressDialog mProgressDialog;
 
         @Override
@@ -413,7 +413,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
         }
     }
 
-    final AsyncTask<Void, Void, Void> uninstallTask = new AsyncTask<Void, Void, Void>() {
+    private final AsyncTask<Void, Void, Void> uninstallTask = new AsyncTask<Void, Void, Void>() {
         ProgressDialog mProgressDialog;
 
         @Override

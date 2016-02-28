@@ -37,9 +37,9 @@ import java.util.List;
  * instantiate a working Installer based on F-Droids granted permissions.
  */
 public abstract class Installer {
-    protected final Context mContext;
-    protected final PackageManager mPm;
-    protected final InstallerCallback mCallback;
+    final Context mContext;
+    final PackageManager mPm;
+    final InstallerCallback mCallback;
 
     private static final String TAG = "Installer";
 
@@ -88,7 +88,7 @@ public abstract class Installer {
         void onError(int operation, int errorCode);
     }
 
-    public Installer(Context context, PackageManager pm, InstallerCallback callback)
+    Installer(Context context, PackageManager pm, InstallerCallback callback)
             throws AndroidNotCompatibleException {
         this.mContext = context;
         this.mPm = pm;

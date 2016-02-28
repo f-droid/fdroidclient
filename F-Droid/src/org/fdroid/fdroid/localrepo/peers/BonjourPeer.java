@@ -59,7 +59,7 @@ public class BonjourPeer extends WifiPeer {
         dest.writeParcelable(serviceInfo, flags);
     }
 
-    protected BonjourPeer(Parcel in) {
+    private BonjourPeer(Parcel in) {
         this((ServiceInfo) in.readParcelable(FDroidServiceInfo.class.getClassLoader()));
     }
 

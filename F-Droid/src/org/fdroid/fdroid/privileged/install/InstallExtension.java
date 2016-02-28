@@ -38,7 +38,7 @@ import eu.chainfire.libsuperuser.Shell;
  */
 abstract class InstallExtension {
 
-    protected final Context context;
+    final Context context;
 
     private static final String APK_FILE_NAME = "FDroidPrivileged.apk";
 
@@ -67,7 +67,7 @@ abstract class InstallExtension {
 
     protected abstract String getSystemFolder();
 
-    protected void onPreInstall() {
+    void onPreInstall() {
         // To be overridden by relevant base class[es]
     }
 
@@ -79,7 +79,7 @@ abstract class InstallExtension {
         return context.getString(R.string.system_install_installing);
     }
 
-    protected String getInstallPath() {
+    String getInstallPath() {
         return getSystemFolder() + APK_FILE_NAME;
     }
 
@@ -95,14 +95,14 @@ abstract class InstallExtension {
         return commands;
     }
 
-    protected List<String> getCopyToSystemCommands(String apkPath) {
+    List<String> getCopyToSystemCommands(String apkPath) {
         final List<String> commands = new ArrayList<>(2);
         commands.add("cat " + apkPath + " > " + getInstallPath() + ".tmp");
         commands.add("chmod 644 " + getInstallPath() + ".tmp");
         return commands;
     }
 
-    protected List<String> getPostInstallCommands() {
+    List<String> getPostInstallCommands() {
         final List<String> commands = new ArrayList<>(1);
         commands.add("am start -n org.fdroid.fdroid/.privileged.install.InstallExtensionDialogActivity --ez "
                 + InstallExtensionDialogActivity.ACTION_POST_INSTALL + " true");
@@ -121,13 +121,13 @@ abstract class InstallExtension {
         return commands;
     }
 
-    protected List<String> getCleanUninstallCommands() {
+    List<String> getCleanUninstallCommands() {
         final List<String> commands = new ArrayList<>(1);
         commands.add("rm -f " + getInstallPath());
         return commands;
     }
 
-    protected List<String> getPostUninstallCommands() {
+    List<String> getPostUninstallCommands() {
         return new ArrayList<>(0);
     }
 

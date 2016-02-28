@@ -32,7 +32,7 @@ public class InstalledAppCacheUpdater {
     private final List<PackageInfo> toInsert = new ArrayList<>();
     private final List<String>      toDelete = new ArrayList<>();
 
-    protected InstalledAppCacheUpdater(Context context) {
+    private InstalledAppCacheUpdater(Context context) {
         this.context = context;
     }
 
@@ -59,7 +59,7 @@ public class InstalledAppCacheUpdater {
         updater.startBackgroundWorker();
     }
 
-    protected boolean update() {
+    private boolean update() {
 
         long startTime = System.currentTimeMillis();
 
@@ -72,13 +72,13 @@ public class InstalledAppCacheUpdater {
         return hasChanged();
     }
 
-    protected void notifyProviders() {
+    private void notifyProviders() {
         Utils.debugLog(TAG, "Installed app cache has changed, notifying content providers (so they can update the relevant views).");
         context.getContentResolver().notifyChange(AppProvider.getContentUri(), null);
         context.getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
     }
 
-    protected void startBackgroundWorker() {
+    private void startBackgroundWorker() {
         new PostponedWorker().execute();
     }
 

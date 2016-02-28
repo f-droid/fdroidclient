@@ -33,8 +33,8 @@ public abstract class Downloader {
 
     protected final URL sourceUrl;
     protected String cacheTag;
-    protected int bytesRead;
-    protected int totalBytes;
+    private int bytesRead;
+    private int totalBytes;
 
     protected abstract InputStream getDownloadersInputStream() throws IOException;
 
@@ -84,7 +84,7 @@ public abstract class Downloader {
 
     public abstract boolean hasChanged();
 
-    public abstract int totalDownloadSize();
+    protected abstract int totalDownloadSize();
 
     /**
      * Helper function for synchronous downloads (i.e. those *not* using AsyncDownloadWrapper),
@@ -149,7 +149,7 @@ public abstract class Downloader {
      * keeping track of the number of bytes that have flowed through for the
      * progress counter.
      */
-    protected void copyInputToOutputStream(InputStream input, int bufferSize) throws IOException, InterruptedException {
+    private void copyInputToOutputStream(InputStream input, int bufferSize) throws IOException, InterruptedException {
 
         int bytesRead = 0;
         this.totalBytes = totalDownloadSize();
@@ -186,7 +186,7 @@ public abstract class Downloader {
         outputStream.close();
     }
 
-    protected void sendProgress(int bytesRead, int totalBytes) {
+    private void sendProgress(int bytesRead, int totalBytes) {
         this.bytesRead = bytesRead;
         Intent intent = new Intent(LOCAL_ACTION_PROGRESS);
         intent.putExtra(EXTRA_ADDRESS, sourceUrl.toString());

@@ -103,7 +103,7 @@ public class BonjourBroadcast extends SwapType {
         if (FDroidApp.ipAddressString != null) {
             try {
                 return InetAddress.getByName(FDroidApp.ipAddressString);
-            } catch (UnknownHostException e) { }
+            } catch (UnknownHostException ignored) { }
         }
 
         return null;

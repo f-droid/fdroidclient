@@ -119,7 +119,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
      * When peers are emitted by the peer finder, add them to the adapter
      * so that they will show up in the list of peers.
      */
-    private Subscriber<Peer> onPeerFound = new Subscriber<Peer>() {
+    private final Subscriber<Peer> onPeerFound = new Subscriber<Peer>() {
 
         @Override
         public void onCompleted() {
@@ -185,7 +185,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                 onWifiNetworkChanged, new IntentFilter(WifiStateChangeService.BROADCAST));
     }
 
-    private BroadcastReceiver onWifiNetworkChanged = new BroadcastReceiver() {
+    private final BroadcastReceiver onWifiNetworkChanged = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             uiUpdateWifiNetwork();
@@ -271,7 +271,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
     /**
      * @see StartSwapView#onWifiSwapStateChanged
      */
-    private BroadcastReceiver onBluetoothSwapStateChanged = new BroadcastReceiver() {
+    private final BroadcastReceiver onBluetoothSwapStateChanged = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.hasExtra(SwapService.EXTRA_STARTING)) {

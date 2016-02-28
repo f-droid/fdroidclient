@@ -54,10 +54,13 @@ public class RepoUpdater {
     public static final String PROGRESS_COMMITTING = "committing";
     public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
 
-    @NonNull protected final Context context;
-    @NonNull protected final Repo repo;
-    protected boolean hasChanged;
-    @Nullable protected ProgressListener progressListener;
+    @NonNull
+    private final Context context;
+    @NonNull
+    private final Repo repo;
+    private boolean hasChanged;
+    @Nullable
+    private ProgressListener progressListener;
     private String cacheTag;
     private X509Certificate signingCertFromJar;
 
@@ -82,7 +85,7 @@ public class RepoUpdater {
         return hasChanged;
     }
 
-    protected URL getIndexAddress() throws MalformedURLException {
+    private URL getIndexAddress() throws MalformedURLException {
         String urlString = repo.address + "/index.jar";
         String versionName = Utils.getVersionName(context);
         if (versionName != null) {
@@ -91,7 +94,7 @@ public class RepoUpdater {
         return new URL(urlString);
     }
 
-    Downloader downloadIndex() throws UpdateException {
+    private Downloader downloadIndex() throws UpdateException {
         Downloader downloader = null;
         try {
             downloader = DownloaderFactory.create(context,

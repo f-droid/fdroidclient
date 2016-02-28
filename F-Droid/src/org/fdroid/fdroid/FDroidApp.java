@@ -362,7 +362,7 @@ public class FDroidApp extends Application {
     /**
      * Set the proxy settings based on whether Tor should be enabled or not.
      */
-    public static void configureTor(boolean enabled) {
+    private static void configureTor(boolean enabled) {
         useTor = enabled;
         if (useTor) {
             NetCipher.useTor();

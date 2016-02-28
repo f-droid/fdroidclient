@@ -13,7 +13,7 @@ import org.fdroid.fdroid.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBHelper extends SQLiteOpenHelper {
+class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";
 

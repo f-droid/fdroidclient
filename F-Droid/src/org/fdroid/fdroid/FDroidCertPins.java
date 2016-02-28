@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FDroidCertPins {
+class FDroidCertPins {
     private static final String[] DEFAULT_PINS = {
 
         // OU=PositiveSSL, CN=f-droid.org
