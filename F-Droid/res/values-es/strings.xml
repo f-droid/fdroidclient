@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar la nueva versión, la antigua debe de ser desinstalada primero. Por favor, hazlo y prueba de nuevo. (Ten en cuenta que la desinstalación borrará cualquier dato interno guardado por la aplicación)</string>
   <string name="installIncompatible">Parece que este paquete no es compatible con el dispositivo. ¿Quieres probar e instalarlo de todos modos?</string>
@@ -342,4 +342,7 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 
     <string name="by_author">por</string>
     <string name="menu_email">Correo electrónico al autor</string>
+    <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>
+    <string name="useTor">Usar Tor</string>
+    <string name="useTorSummary">Forzar el tráfico de bajada a través de Tor para mejorar la privacidad</string>
     </resources>

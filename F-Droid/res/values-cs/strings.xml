@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Nová verze je podepsána jiným klíčem, než ta stará. Před instalací nové verze je nutné starou odinstalovat. Poté zopakujte instalaci. (Nezapomeňte, že při odinstalování aplikace budou všechna její data v interním úložišti smazána.)</string>
   <string name="installIncompatible">Zdá se, že balíček není kompatibilní s tímto zařízením. Chcete ho přesto zkusit nainstalovat?</string>
@@ -323,4 +323,5 @@
     <string name="system_install_first_time_notification_message">Stiskněte pro instalaci oprávněné rozšíření F-Droid, které je pevně provázáno s operačním systémem Android. Toto dovolí F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.\nTuto operaci lze také provést později z nastavení F-Droidu.</string>
     <string name="system_install_post_success_message">Oprávněné rozšíření F-Droidu bylo úspěšně nainstalováno. Toto dovoluje F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.</string>
     <string name="system_install_post_fail_message">Instalace oprávněného rozšíření F-Droidu selhala. Tato instalační metoda není podporována všemi distribucemi Androidu. Pro více informací se podívejte na bug tracker F-Droidu.</string>
+    <string name="swap_nfc_description">Pokud má váš přítel F-Droid a zapnuté NFC, dotkněte se jeho zařízení.</string>
     </resources>

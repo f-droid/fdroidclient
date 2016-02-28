@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Sa versione noa est firmada cun una crae diferente dae sa bècia. Pro la installare, sa bècia depet èssere istada disinstallada in antis. Pro piaghere fàghe·lu e torra a proare. (Sa disinstallatzione as a burrare totu sos datos sarbados in s\'aplicatzione)</string>
   <string name="installIncompatible">Paret chi custu pachete non siat cumpatìbile cun su dispositivu tuo. Boles a proare a lu installare su matessi?</string>
@@ -333,8 +333,11 @@
     <string name="crash_dialog_text">Un’errore imprevistu at fatu serrare s’aplicatzione. Boles imbiare sas minujas pro mèdiu de posta eletrònica pro agiudare a isòlvere su problema?</string>
     <string name="crash_dialog_comment_prompt">Podes annanghere àteras informatziones e cummentos inoghe:</string>
 <string name="crash_dialog_title">F-Droid s\'est serradu</string>
-    <string name="antinonfreeassetslist">Custa aplicatzione cuntennit còdighe non lìberu</string>
+    <string name="antinonfreeassetslist">Custa aplicatzione cuntennit cantos non lìberos</string>
 
     <string name="by_author">de</string>
     <string name="menu_email">Iscrie a s’autore</string>
+    <string name="useTor">Imprea Tor</string>
+    <string name="useTorSummary">Iscàrriga pro mèdiu de Tor pro una privadesa prus manna</string>
+    <string name="swap_stopping_wifi">Firmende su Wi-Fi…</string>
     </resources>

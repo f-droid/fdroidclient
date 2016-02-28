@@ -339,4 +339,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="empty_search_available_app_list">Brak pasujących dostępnych aplikacji.</string>
     <string name="empty_search_can_update_app_list">Brak pasujących aplikacji do zaktualizowania.</string>
 
+    <string name="useTor">Użyj Tora</string>
+    <string name="useTorSummary">Wymuś pobieranie przez Tora aby zwiększyć prywatność</string>
+    <string name="swap_stopping_wifi">Zatrzymywanie Wi-Fi…</string>
     </resources>

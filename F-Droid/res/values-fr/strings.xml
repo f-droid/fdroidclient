@@ -338,4 +338,7 @@
 
     <string name="by_author">par</string>
     <string name="menu_email">Écrire à l\'auteur</string>
+    <string name="useTor">Utiliser Tor</string>
+    <string name="useTorSummary">Télécharger anonymement grâce à Tor</string>
+    <string name="swap_stopping_wifi">Arrêt du Wi-Fi en cours…</string>
     </resources>

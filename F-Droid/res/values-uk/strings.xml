@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Нова версія підписана не тим ключем, що стара. Перш ніж встановити нову версію, самостійно зітріть стару. (Зауважте, що стирання програми призведе до знищення всіх даних цієї програми)</string>
   <string name="version">Версія</string>
@@ -347,4 +347,7 @@
 
     <string name="by_author">від</string>
     <string name="menu_email">Написати листа автору</string>
+    <string name="useTor">Використовувати Tor</string>
+    <string name="useTorSummary">Форсоване завантаження трафіку через мережу Tor для підвищення приватності</string>
+    <string name="swap_stopping_wifi">Зупинка Wi-Fi…</string>
     </resources>

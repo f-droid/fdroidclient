@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Η καινούργια έκδοση είναι υπογεγραμμένη με διαφορετικό κλειδί από την παλιά. Για να γίνει η εγκατάσταση της καινούργιας έκδοσης, πρέπει να γίνει πρώτα η απεγκατάσταση της παλιάς έκδοσης. Παρακαλώ όπως το κάνετε αυτό και προσπαθήστε ξανά. (Σημειώστε ότι η απεγκατάσταση θα διαγράψει οποιαδήποτε εσωτερικά δεδομένα που αποθηκεύονται από την εφαρμογή)</string>
   <string name="installIncompatible">Φαίνεται ότι αυτό το πακέτο δεν είναι συμβατό με τη συσκευή σας. Θα θέλατε να δοκιμάσετε να το εγκαταστήσετε ούτως ή άλλως;</string>
@@ -21,9 +21,9 @@
   <string name="app_details">Λεπτομέρειες Εφαρμογής</string>
   <string name="no_such_app">Δεν βρέθηκε τέτοια εφαρμογή.</string>
   <string name="about_title">Σχετικά με το F-Droid</string>
-  <string name="about_site">Ιστοσελίδα:</string>
+  <string name="about_site">Ιστοσελίδα</string>
   <string name="about_mail">Ηλ. ταχυδρομείο:</string>
-  <string name="about_version">Έκδοση:</string>
+  <string name="about_version">Έκδοση</string>
   <string name="app_installed">Εγκατεστημένο</string>
   <string name="app_not_installed">Δεν είναι εγκατεστημένο</string>
   <string name="added_on">Προστέθηκε στις %s</string>

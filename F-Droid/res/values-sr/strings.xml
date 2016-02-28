@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Ново издање је потписано другачијим кључем од старог. Да бисте инсталирали ново издање, најпре уклоните старо. (Имајте на уму да уклањањем такође бришете унутрашње податке апликације.)</string>
   <string name="installIncompatible">Изгледа да овај пакет не одговара вашем уређају. Желите ли свеједно да га инсталирате?</string>
@@ -335,4 +335,7 @@
 
     <string name="by_author">од</string>
     <string name="menu_email">Пошаљи е-пошту аутору</string>
+    <string name="useTor">Користи Тор</string>
+    <string name="useTorSummary">Присили саобраћај кроз Тор за бољу приватност</string>
+    <string name="swap_stopping_wifi">Заустављам бежични…</string>
     </resources>

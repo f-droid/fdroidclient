@@ -2,7 +2,7 @@
 <resources>
   <string name="version">Versio</string>
   <string name="delete">Forigi</string>
-  <string name="cache_downloaded_on">Konservi elŝutitajn apk dosierojn sur la memorejo</string>
+  <string name="cache_downloaded_on">Konservas elŝutitajn apk dosierojn sur la memorejo</string>
   <string name="updates">Ĝisdatigoj</string>
   <string name="other">Aliaj</string>
   <string name="automatic_scan_wifi">Nur per sendrata reto</string>
@@ -65,7 +65,7 @@
   <string name="search_hint">Serĉi aplikaĵojn</string>
   <string name="appcompatibility">Aplikaĵa kongrueco</string>
   <string name="show_incompat_versions">Malkongruaj versioj</string>
-  <string name="show_incompat_versions_on">Montri aplikaĵversiojn malkongruajn por la aparato</string>
+  <string name="show_incompat_versions_on">Montras aplikaĵversiojn malkongruajn por la aparato</string>
   <string name="rooted">Ĉefuzanto</string>
   <string name="rooted_on">Ne grizigas aplikaĵojn, kiuj postulas ĉefuzantajn privilegiojn</string>
   <string name="ignoreTouch">Ignori tuŝekranon</string>
@@ -101,7 +101,7 @@
   <string name="category_Internet">Interreto</string>
   <string name="category_Multimedia">Plurmedio</string>
   <string name="category_Navigation">Navigado</string>
-  <string name="category_Phone_SMS">Telefono &amp; tekstmesaĝo</string>
+  <string name="category_Phone_SMS">Telefono &amp; Tekstmesaĝo</string>
   <string name="category_Reading">Legado</string>
   <string name="category_Science_Education">Scienco &amp; Edukado</string>
   <string name="category_Security">Sekureco</string>
@@ -120,7 +120,7 @@
     <string name="by_author">de</string>
     <string name="enable_nfc_send">Aktivigi sendadon tra NFC…</string>
     <string name="cache_downloaded">Kaŝmemorigi pakaĵojn</string>
-    <string name="unstable_updates_summary">Proponi ĝisdatigojn al nestabilaj versioj</string>
+    <string name="unstable_updates_summary">Proponas ĝisdatigojn al nestabilaj versioj</string>
     <string name="update_interval_zero">Nenia aŭtomata listo de ĝisdatigoj</string>
     <string name="automatic_scan_wifi_on">Ĝisdatigas listojn aŭtomate nur tra vifio</string>
     <string name="update_history_summ">Traktas aplikaĵojn kiel novaj aŭ ĵus-ĝisdatigaj por: %s tagoj</string>
@@ -220,7 +220,7 @@
     <string name="category_Graphics">Grafiko</string>
     <string name="category_Money">Mono</string>
     <string name="category_Sports_Health">Sportoj kaj Saneco</string>
-    <string name="category_Theming">Etosoj kaj aspekto</string>
+    <string name="category_Theming">Etosoj kaj Aspekto</string>
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Skribado</string>
 
@@ -337,4 +337,7 @@
     <string name="crash_dialog_title">F-Droid kolapsis</string>
     <string name="crash_dialog_text">Senatenda eraro okazis kaj devigis al aplikaĵo halti. Ĉu vi volas retmesaĝi detalojn por helpi ripari la eraron?</string>
     <string name="crash_dialog_comment_prompt">Vi povas aldoni ekstrajn informojn kaj komentojn tie ĉi:</string>
-</resources>
+<string name="useTor">Uzi na Tor</string>
+    <string name="useTorSummary">Devigas elŝuti per Tor-reto por plibonigi privatecon</string>
+    <string name="swap_stopping_wifi">Ĉesanta vifion…</string>
+    </resources>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">新しいﾊﾞｰｼﾞｮﾝは､以前のものと異なる暗号鍵で署名されています｡新しいﾊﾞｰｼﾞｮﾝをｲﾝｽﾄｰﾙするには､まず以前のﾊﾞｰｼﾞｮﾝをｱﾝｲﾝｽﾄｰﾙする必要があります｡その後で再度実行してください｡(ｱﾌﾟﾘｹｰｼｮﾝをｱﾝｲﾝｽﾄｰﾙすると保存したﾃﾞｰﾀｰが消えることに注意してください)</string>
   <string name="installIncompatible">このﾊﾟｯｹｰｼﾞはあなたの端末と互換性がないようです｡それでもｲﾝｽﾄｰﾙを続行しますか?</string>
@@ -338,4 +338,7 @@
 
     <string name="by_author">作者</string>
     <string name="menu_email">ﾒｰﾙ作者</string>
+    <string name="useTor">Tor を使用する</string>
+    <string name="useTorSummary">強制的に Tor を通じたﾄﾗﾌｨｯｸでﾀﾞｳﾝﾛｰﾄﾞして、プライバシーを高めます</string>
+    <string name="swap_stopping_wifi">Wi-Fiの停止中…</string>
     </resources>

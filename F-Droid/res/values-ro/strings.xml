@@ -296,4 +296,10 @@
         <string name="loading">Se incarca…</string>
     <string name="category_Navigation">Navigatie</string>
     <string name="category_Games">Jocuri</string>
+    <string name="local_repo_running">F-Droid este gata de schimb</string>
+    <string name="adding_apks_format">Adaug %s la depozit…</string>
+    <string name="useTor">Foloseste Tor</string>
+    <string name="repo_details">Depozit</string>
+    <string name="swap_stopping_wifi">Oprire Wi-Fi…</string>
+    <string name="bluetooth_unavailable">Bluetooth indisponibil</string>
     </resources>
