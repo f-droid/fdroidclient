@@ -102,7 +102,10 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
     @Nullable /* Emulators typically don't have bluetooth adapters */
     private final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
 
+    private SwitchCompat wifiSwitch;
+    private SwitchCompat bluetoothSwitch;
     private TextView viewBluetoothId;
+    private TextView textBluetoothVisible;
     private TextView viewWifiId;
     private TextView viewWifiNetwork;
     private TextView peopleNearbyText;
@@ -136,13 +139,26 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
 
     private Subscription peerFinderSubscription;
 
-    // TODO: Not sure if this is the best place to handle being removed from the view.
+    /**
+     * Remove relevant listeners/subscriptions/etc so that they do not receive and process events
+     * when this view is not in use.
+     *
+     * TODO: Not sure if this is the best place to handle being removed from the view.
+     */
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         if (peerFinderSubscription != null) {
             peerFinderSubscription.unsubscribe();
             peerFinderSubscription = null;
+        }
+
+        if (wifiSwitch != null) {
+            wifiSwitch.setOnCheckedChangeListener(null);
+        }
+
+        if (bluetoothSwitch != null) {
+            bluetoothSwitch.setOnCheckedChangeListener(null);
         }
     }
 
@@ -227,7 +243,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
     private void uiInitBluetooth() {
         if (bluetooth != null) {
 
-            final TextView textBluetoothVisible = (TextView) findViewById(R.id.bluetooth_visible);
+            textBluetoothVisible = (TextView) findViewById(R.id.bluetooth_visible);
 
             viewBluetoothId = (TextView) findViewById(R.id.device_id_bluetooth);
             viewBluetoothId.setText(bluetooth.getName());
@@ -236,28 +252,10 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
             int textResource = getManager().isBluetoothDiscoverable() ? R.string.swap_visible_bluetooth : R.string.swap_not_visible_bluetooth;
             textBluetoothVisible.setText(textResource);
 
-            final SwitchCompat bluetoothSwitch = (SwitchCompat) findViewById(R.id.switch_bluetooth);
+            bluetoothSwitch = (SwitchCompat) findViewById(R.id.switch_bluetooth);
             Utils.debugLog(TAG, getManager().isBluetoothDiscoverable() ? "Initially marking switch as checked, because Bluetooth is discoverable." : "Initially marking switch as not-checked, because Bluetooth is not discoverable.");
             bluetoothSwitch.setChecked(getManager().isBluetoothDiscoverable());
-            bluetoothSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        Utils.debugLog(TAG, "Received onCheckChanged(true) for Bluetooth swap, prompting user as to whether they want to enable Bluetooth.");
-                        getActivity().startBluetoothSwap();
-                        textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
-                        viewBluetoothId.setVisibility(View.VISIBLE);
-                        Utils.debugLog(TAG, "Received onCheckChanged(true) for Bluetooth swap (prompting user or setup Bluetooth complete)");
-                        // TODO: When they deny the request for enabling bluetooth, we need to disable this switch...
-                    } else {
-                        Utils.debugLog(TAG, "Received onCheckChanged(false) for Bluetooth swap, disabling Bluetooth swap.");
-                        getManager().getBluetoothSwap().stop();
-                        textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
-                        viewBluetoothId.setVisibility(View.GONE);
-                        Utils.debugLog(TAG, "Received onCheckChanged(false) for Bluetooth swap, Bluetooth swap disabled successfully.");
-                    }
-                }
-            });
+            bluetoothSwitch.setOnCheckedChangeListener(onBluetoothSwitchToggled);
 
             // TODO: Unregister receiver correctly...
             LocalBroadcastManager.getInstance(getContext()).registerReceiver(new BroadcastReceiver() {
@@ -288,26 +286,34 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         }
     }
 
+    private final CompoundButton.OnCheckedChangeListener onBluetoothSwitchToggled = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isChecked) {
+                Utils.debugLog(TAG, "Received onCheckChanged(true) for Bluetooth swap, prompting user as to whether they want to enable Bluetooth.");
+                getActivity().startBluetoothSwap();
+                textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
+                viewBluetoothId.setVisibility(View.VISIBLE);
+                Utils.debugLog(TAG, "Received onCheckChanged(true) for Bluetooth swap (prompting user or setup Bluetooth complete)");
+                // TODO: When they deny the request for enabling bluetooth, we need to disable this switch...
+            } else {
+                Utils.debugLog(TAG, "Received onCheckChanged(false) for Bluetooth swap, disabling Bluetooth swap.");
+                getManager().getBluetoothSwap().stop();
+                textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
+                viewBluetoothId.setVisibility(View.GONE);
+                Utils.debugLog(TAG, "Received onCheckChanged(false) for Bluetooth swap, Bluetooth swap disabled successfully.");
+            }
+        }
+    };
+
     private void uiInitWifi() {
 
         viewWifiId = (TextView) findViewById(R.id.device_id_wifi);
         viewWifiNetwork = (TextView) findViewById(R.id.wifi_network);
 
-        final SwitchCompat wifiSwitch = (SwitchCompat) findViewById(R.id.switch_wifi);
+        wifiSwitch = (SwitchCompat) findViewById(R.id.switch_wifi);
         wifiSwitch.setChecked(getManager().isBonjourDiscoverable());
-        wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    Utils.debugLog(TAG, "Received onCheckChanged(true) for WiFi swap, asking in background thread to ensure WiFi swap is running.");
-                    getManager().getWifiSwap().ensureRunningInBackground();
-                } else {
-                    Utils.debugLog(TAG, "Received onCheckChanged(false) for WiFi swap, disabling WiFi swap in background thread.");
-                    getManager().getWifiSwap().stopInBackground();
-                }
-                uiUpdateWifiNetwork();
-            }
-        });
+        wifiSwitch.setOnCheckedChangeListener(onWifiSwitchToggled);
 
         final TextView textWifiVisible = (TextView) findViewById(R.id.wifi_visible);
         int textResource = getManager().isBonjourDiscoverable() ? R.string.swap_visible_wifi : R.string.swap_not_visible_wifi;
@@ -356,6 +362,29 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
 
         uiUpdateWifiNetwork();
     }
+
+    /**
+     * When the wifi switch is:
+     *
+     * Toggled on: Ask the swap service to ensure wifi swap is running.
+     * Toggled off: Ask the swap service to prevent the wifi swap service from running.
+     *
+     * Both of these actions will be performed in a background thread which will send broadcast
+     * intents when they are completed.
+     */
+    private final CompoundButton.OnCheckedChangeListener onWifiSwitchToggled = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isChecked) {
+                Utils.debugLog(TAG, "Received onCheckChanged(true) for WiFi swap, asking in background thread to ensure WiFi swap is running.");
+                getManager().getWifiSwap().ensureRunningInBackground();
+            } else {
+                Utils.debugLog(TAG, "Received onCheckChanged(false) for WiFi swap, disabling WiFi swap in background thread.");
+                getManager().getWifiSwap().stopInBackground();
+            }
+            uiUpdateWifiNetwork();
+        }
+    };
 
     private void uiUpdateWifiNetwork() {
 
