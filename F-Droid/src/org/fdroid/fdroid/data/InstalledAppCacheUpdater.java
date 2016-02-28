@@ -23,7 +23,7 @@ import java.util.Map;
  * TODO: The content providers are not thread safe, so it is possible we will be writing
  * to the database at the same time we respond to a broadcasted intent.
  */
-public class InstalledAppCacheUpdater {
+public final class InstalledAppCacheUpdater {
 
     private static final String TAG = "InstalledAppCache";
 

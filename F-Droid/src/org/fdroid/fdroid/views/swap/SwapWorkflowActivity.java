@@ -774,8 +774,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     public void run() {
                         new SwapDebug().logStatus();
                     }
-                },
-                1000
+                }, 1000
             );
         }
     }
