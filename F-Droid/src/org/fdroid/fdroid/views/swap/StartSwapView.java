@@ -254,8 +254,8 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
 
             bluetoothSwitch = (SwitchCompat) findViewById(R.id.switch_bluetooth);
             Utils.debugLog(TAG, getManager().isBluetoothDiscoverable() ? "Initially marking switch as checked, because Bluetooth is discoverable." : "Initially marking switch as not-checked, because Bluetooth is not discoverable.");
-            bluetoothSwitch.setChecked(getManager().isBluetoothDiscoverable());
             bluetoothSwitch.setOnCheckedChangeListener(onBluetoothSwitchToggled);
+            setBluetoothSwitchState(getManager().isBluetoothDiscoverable(), true);
 
             // TODO: Unregister receiver correctly...
             LocalBroadcastManager.getInstance(getContext()).registerReceiver(new BroadcastReceiver() {
@@ -267,15 +267,15 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                         textBluetoothVisible.setText(R.string.swap_setting_up_bluetooth);
                         // bluetoothSwitch.setChecked(true);
                     } else {
-                        bluetoothSwitch.setEnabled(true);
                         if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
                             Utils.debugLog(TAG, "Bluetooth service has started (updating text to visible, but not marking as checked).");
                             textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
+                            bluetoothSwitch.setEnabled(true);
                             // bluetoothSwitch.setChecked(true);
                         } else {
                             Utils.debugLog(TAG, "Bluetooth service has stopped (setting switch to not-visible).");
                             textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
-                            bluetoothSwitch.setChecked(false);
+                            setBluetoothSwitchState(false, true);
                         }
                     }
                 }
@@ -286,6 +286,19 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         }
     }
 
+    /**
+     * @see StartSwapView#setWifiSwitchState(boolean, boolean)
+     */
+    private void setBluetoothSwitchState(boolean isChecked, boolean isEnabled) {
+        bluetoothSwitch.setOnCheckedChangeListener(null);
+        bluetoothSwitch.setChecked(isChecked);
+        bluetoothSwitch.setEnabled(isEnabled);
+        bluetoothSwitch.setOnCheckedChangeListener(onBluetoothSwitchToggled);
+    }
+
+    /**
+     * @see StartSwapView#onWifiSwitchToggled
+     */
     private final CompoundButton.OnCheckedChangeListener onBluetoothSwitchToggled = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -312,8 +325,8 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         viewWifiNetwork = (TextView) findViewById(R.id.wifi_network);
 
         wifiSwitch = (SwitchCompat) findViewById(R.id.switch_wifi);
-        wifiSwitch.setChecked(getManager().isBonjourDiscoverable());
         wifiSwitch.setOnCheckedChangeListener(onWifiSwitchToggled);
+        setWifiSwitchState(getManager().isBonjourDiscoverable(), true);
 
         final TextView textWifiVisible = (TextView) findViewById(R.id.wifi_visible);
         int textResource = getManager().isBonjourDiscoverable() ? R.string.swap_visible_wifi : R.string.swap_not_visible_wifi;
@@ -330,23 +343,20 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                 if (intent.hasExtra(SwapService.EXTRA_STARTING)) {
                     Utils.debugLog(TAG, "WiFi service is starting (setting toggle to checked, but disabled).");
                     textWifiVisible.setText(R.string.swap_setting_up_wifi);
-                    wifiSwitch.setEnabled(false);
-                    wifiSwitch.setChecked(true);
+                    setWifiSwitchState(true, false);
                 } else if (intent.hasExtra(SwapService.EXTRA_STOPPING)) {
                     Utils.debugLog(TAG, "WiFi service is stopping (setting toggle to unchecked and disabled).");
                     textWifiVisible.setText(R.string.swap_stopping_wifi);
-                    wifiSwitch.setEnabled(false);
-                    wifiSwitch.setChecked(false);
+                    setWifiSwitchState(false, false);
                 } else {
-                    wifiSwitch.setEnabled(true);
                     if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
                         Utils.debugLog(TAG, "WiFi service has started (setting toggle to visible).");
                         textWifiVisible.setText(R.string.swap_visible_wifi);
-                        wifiSwitch.setChecked(true);
+                        setWifiSwitchState(true, true);
                     } else {
                         Utils.debugLog(TAG, "WiFi service has stopped (setting toggle to not-visible).");
                         textWifiVisible.setText(R.string.swap_not_visible_wifi);
-                        wifiSwitch.setChecked(false);
+                        setWifiSwitchState(false, true);
                     }
                 }
                 uiUpdateWifiNetwork();
@@ -361,6 +371,25 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         });
 
         uiUpdateWifiNetwork();
+    }
+
+    /**
+     * Helper function to set the "enable wifi" switch, but prevents the listeners from
+     * being notified. This enables the UI to be updated without triggering further enable/disable
+     * events being queued.
+     *
+     * This is required because the SwitchCompat and its parent classes will always try to notify
+     * their listeners if there is one (e.g. http://stackoverflow.com/a/15523518).
+     *
+     * The fact that this method also deals with enabling/disabling the switch is more of a convenience
+     * Nigh on all times this UI wants to change the state of the switch, it is also interested in
+     * ensuring the enabled state of the switch.
+     */
+    private void setWifiSwitchState(boolean isChecked, boolean isEnabled) {
+        wifiSwitch.setOnCheckedChangeListener(null);
+        wifiSwitch.setChecked(isChecked);
+        wifiSwitch.setEnabled(isEnabled);
+        wifiSwitch.setOnCheckedChangeListener(onWifiSwitchToggled);
     }
 
     /**
