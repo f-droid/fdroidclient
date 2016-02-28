@@ -1199,7 +1199,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             final Spanned desc = Html.fromHtml(app.description, null, new Utils.HtmlTagHandler());
             description.setMovementMethod(SafeLinkMovementMethod.getInstance(getActivity()));
             description.setText(trimNewlines(desc));
-            final View viewMoreDescription =  view.findViewById(R.id.view_more_description);
+            final View viewMoreDescription = view.findViewById(R.id.view_more_description);
             description.post(new Runnable() {
                 @Override
                 public void run() {

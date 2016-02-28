@@ -175,7 +175,7 @@ class DBHelper extends SQLiteOpenHelper {
 
                 db.execSQL(createTableDdl);
 
-                String nonIdFields = "address,  name, description, inuse, priority, " +
+                String nonIdFields = "address, name, description, inuse, priority, " +
                         "pubkey, fingerprint, maxage, version, lastetag, lastUpdated";
 
                 String insertSql = "INSERT INTO " + TABLE_REPO +

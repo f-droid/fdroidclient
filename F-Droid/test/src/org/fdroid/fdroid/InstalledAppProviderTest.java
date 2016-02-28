@@ -114,7 +114,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         assertResultCount(1, InstalledAppProvider.getContentUri());
         assertIsInstalledVersionInDb("com.example.toUpgrade", 1, "v0.1");
 
-        upgradeAndBroadcast("com.example.toUpgrade", 2,  "v0.2");
+        upgradeAndBroadcast("com.example.toUpgrade", 2, "v0.2");
 
         assertResultCount(1, InstalledAppProvider.getContentUri());
         assertIsInstalledVersionInDb("com.example.toUpgrade", 2, "v0.2");

@@ -103,7 +103,7 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
             }
             adapter.addTab(tabHost.newTabSpec(TAB_ID_NEW).setIndicator(
                     getText(R.string.newPerms)), mScrollView);
-        } else  {
+        } else {
             findViewById(R.id.tabscontainer).setVisibility(View.GONE);
             findViewById(R.id.divider).setVisibility(View.VISIBLE);
         }
