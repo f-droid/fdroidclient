@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">\'%2$s\' に適合する %1$d ｱﾌﾟﾘｹｰｼｮﾝが見つかりました:</string>
-  <string name="searchres_oneapp">\'%s\' に適合する 1 ｱﾌﾟﾘｹｰｼｮﾝが見つかりました:</string>
-  <string name="searchres_noapps">\'%s\' に適合するｱﾌﾟﾘｹｰｼｮﾝは見つかりませんでした</string>
   <string name="SignatureMismatch">新しいﾊﾞｰｼﾞｮﾝは､以前のものと異なる暗号鍵で署名されています｡新しいﾊﾞｰｼﾞｮﾝをｲﾝｽﾄｰﾙするには､まず以前のﾊﾞｰｼﾞｮﾝをｱﾝｲﾝｽﾄｰﾙする必要があります｡その後で再度実行してください｡(ｱﾌﾟﾘｹｰｼｮﾝをｱﾝｲﾝｽﾄｰﾙすると保存したﾃﾞｰﾀｰが消えることに注意してください)</string>
   <string name="installIncompatible">このﾊﾟｯｹｰｼﾞはあなたの端末と互換性がないようです｡それでもｲﾝｽﾄｰﾙを続行しますか?</string>
   <string name="installDowngrade">このｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝｸﾞﾚｰﾄﾞしようとしています｡これにより不具合を発生させたりﾃﾞｰﾀを失ったりする場合があります｡それでもﾀﾞｳﾝｸﾞﾚｰﾄﾞを続行しますか?</string>

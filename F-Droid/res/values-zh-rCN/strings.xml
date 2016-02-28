@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">找到 %1$d 个符合关键词 \'%2$s\' 的应用：</string>
-  <string name="searchres_oneapp">找到 1 个符合关键词 \'%s\' 的应用：</string>
-  <string name="searchres_noapps">没有找到符合 \'%s\' 的应用</string>
   <string name="SignatureMismatch">新版本签名与旧版本不同，请先卸载旧版本应用再安装新版本。（注意：卸载旧版本会清除该应用的所有已储存数据）</string>
   <string name="installIncompatible">该应用程序好像与您的设备不兼容。您仍然要尝试安装吗？</string>
   <string name="installDowngrade">您正在降级该应用程序。这样做可能会使该程序无法工作，甚至丢失您的数据。您仍然要尝试降级吗？</string>

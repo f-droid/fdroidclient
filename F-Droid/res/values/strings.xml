@@ -3,9 +3,6 @@
 
     <string name="app_name">F-Droid</string>
 
-    <string name="searchres_napps">Found %1$d applications matching \'%2$s\':</string>
-    <string name="searchres_oneapp">Found one application matching \'%s\':</string>
-    <string name="searchres_noapps">No applications were found matching \'%s\'</string>
     <string name="SignatureMismatch">The new version is signed with a different key to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
     <string name="installIncompatible">It seems like this package is not compatible with your device. Do you want to try and install it anyway?</string>
     <string name="installDowngrade">You are trying to downgrade this application. Doing so might get it to malfunction and even lose your data. Do you want to try and downgrade it anyway?</string>

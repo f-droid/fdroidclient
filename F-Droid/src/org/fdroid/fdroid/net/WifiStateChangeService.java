@@ -197,7 +197,7 @@ public class WifiStateChangeService extends Service {
     }
 
     @TargetApi(9)
-    public void setIpInfoFromNetworkInterface() {
+    private void setIpInfoFromNetworkInterface() {
         try {
             for (Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces(); networkInterfaces.hasMoreElements();) {
                 NetworkInterface netIf = networkInterfaces.nextElement();

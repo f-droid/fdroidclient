@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">\'%2$s\' ile eşleşen %1$d uygulama bulundu:</string>
-  <string name="searchres_oneapp">\'%s\' ile eşleşen bir uygulama bulundu:</string>
-  <string name="searchres_noapps">\'%s\' ile eşleşen hiçbir uygulama bulunamadı</string>
   <string name="SignatureMismatch">Bu yeni sürüm farklı bir anahtar ile imzalanmıştır. Yeni sürümü kurmak için önce eski sürümü kaldırmanız gerekir. Lütfen bunu yapın ve tekrar deneyin. (Not: bu, uygulama tarafından saklanan tüm dahili verileri silecektir)</string>
   <string name="installIncompatible">Bu paket cihazınızla uyumlu değil gibi görünüyor. Yine de kurmayı denemek istiyor musunuz?</string>
   <string name="installDowngrade">Bu uygulamanın eski bir sürümüne dönmek üzeresiniz. Bu, uygulamanın yanlış çalışmasına ve hatta veri kaybına neden olabilir. Devam etmek istiyor musunuz?</string>

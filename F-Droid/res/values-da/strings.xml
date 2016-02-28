@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources><string name="app_name">F-Droid</string>
 
-    <string name="searchres_napps">Fandt %1$d programmer som matcher \'%2$s\':</string>
-    <string name="searchres_oneapp">Fandt et program som matcher \'%s\':</string>
-    <string name="searchres_noapps">Fandt ingen programmer som matcher \'%s\'</string>
     <string name="SignatureMismatch">Den nye version er signeret med en nøgle som er forskellig fra den gamle nøgle. Den gamle version skal afinstalleres, før den nye version kan installeres. Gør venligst det, og prøv igen. (Bemærk at afinstallation sletter al data programmet har lagret internt)</string>
     <string name="installIncompatible">Det ser ud til at denne pakke er inkompatibel med din enhed. Vil du forsøge at installere den alligevel?</string>
     <string name="installDowngrade">Du forsøger at nedgradere dette program. Gøres dette vil programmet måske blive defekt og endda tabe dine data. Vil du alligevel forsøge at nedgradere programmet?</string>

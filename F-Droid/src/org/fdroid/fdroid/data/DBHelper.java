@@ -13,7 +13,7 @@ import org.fdroid.fdroid.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBHelper extends SQLiteOpenHelper {
+class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";
 
@@ -110,7 +110,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private final Context context;
 
-    public DBHelper(Context context) {
+    DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DB_VERSION);
         this.context = context;
     }
@@ -175,7 +175,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 db.execSQL(createTableDdl);
 
-                String nonIdFields = "address,  name, description, inuse, priority, " +
+                String nonIdFields = "address, name, description, inuse, priority, " +
                         "pubkey, fingerprint, maxage, version, lastetag, lastUpdated";
 
                 String insertSql = "INSERT INTO " + TABLE_REPO +

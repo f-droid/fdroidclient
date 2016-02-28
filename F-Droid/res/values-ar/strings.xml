@@ -1,7 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="searchres_oneapp">عثر على تطبيق واحد يوافق \'%s\':</string>
-  <string name="searchres_noapps">لم يعثر على أي تطبيق يوافق \'%s\'</string>
   <string name="version">الإصدار</string>
   <string name="delete">حذف</string>
   <string name="updates">التحديثات</string>
@@ -67,7 +65,6 @@
   <string name="category_System">النظام</string>
   <string name="app_name">F-Droid</string>
 
-    <string name="searchres_napps">العثور على%1$d من التطبيقات مطابقة \'%2$s\':</string>
     <string name="SignatureMismatch">توقيع الإصدار الجديد مع مفتاح مختلفة إلى واحدة من العمر. لتثبيت الإصدار الجديد، القديم يجب أن يتم إلغاء تثبيت أولا. يرجى القيام بذلك وحاول مرة أخرى. (لاحظ أن ذلك إلغاء تثبيت محو أي بيانات داخلية تخزينها من قبل التطبيق)</string>
     <string name="installIncompatible">يبدو مثل هذه الحزمة غير متوافق مع جهازك. هل ترغب في محاولة لتثبيته على أي حال؟</string>
     </resources>

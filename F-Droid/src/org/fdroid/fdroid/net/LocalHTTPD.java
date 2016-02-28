@@ -216,7 +216,7 @@ public class LocalHTTPD extends NanoHTTPD {
      * Serves file from homeDir and its' subdirectories (only). Uses only URI,
      * ignores all headers and HTTP parameters.
      */
-    Response serveFile(String uri, Map<String, String> header, File file, String mime) {
+    private Response serveFile(String uri, Map<String, String> header, File file, String mime) {
         Response res;
         try {
             // Calculate etag
@@ -306,7 +306,7 @@ public class LocalHTTPD extends NanoHTTPD {
         return res;
     }
 
-    public static String getMimeTypeForFile(String uri) {
+    private static String getMimeTypeForFile(String uri) {
         String type = null;
         String extension = MimeTypeMap.getFileExtensionFromUrl(uri);
         if (extension != null) {

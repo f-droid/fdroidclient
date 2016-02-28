@@ -4,7 +4,7 @@ import android.database.Cursor;
 
 class ValueObject {
 
-    protected void checkCursorPosition(Cursor cursor) throws IllegalArgumentException {
+    void checkCursorPosition(Cursor cursor) throws IllegalArgumentException {
         if (cursor.getPosition() == -1) {
             throw new IllegalArgumentException(
                 "Cursor position is -1. " +

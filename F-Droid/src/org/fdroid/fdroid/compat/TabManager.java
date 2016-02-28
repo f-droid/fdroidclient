@@ -35,11 +35,11 @@ public class TabManager {
         this.pager = pager;
     }
 
-    protected CharSequence getLabel(int index) {
+    private CharSequence getLabel(int index) {
         return pager.getAdapter().getPageTitle(index);
     }
 
-    public void removeNotification(int id) {
+    private void removeNotification(int id) {
         parent.removeNotification(id);
     }
 

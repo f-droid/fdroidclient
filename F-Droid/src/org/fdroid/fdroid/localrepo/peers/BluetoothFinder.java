@@ -104,7 +104,7 @@ class BluetoothFinder extends PeerFinder {
 
     }
 
-    public void cancel() {
+    private void cancel() {
         if (adapter != null) {
             Utils.debugLog(TAG, "Stopping bluetooth discovery.");
             adapter.cancelDiscovery();

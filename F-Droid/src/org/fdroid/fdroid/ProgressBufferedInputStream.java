@@ -11,7 +11,6 @@ import java.io.InputStream;
 public class ProgressBufferedInputStream extends BufferedInputStream {
     private static final String TAG = "ProgressBufferedInputSt";
 
-    private final Repo repo;
     private final ProgressListener progressListener;
     private final Bundle data;
     private final int totalBytes;
@@ -26,7 +25,6 @@ public class ProgressBufferedInputStream extends BufferedInputStream {
             throws IOException {
         super(in);
         this.progressListener = progressListener;
-        this.repo = repo;
         this.data = new Bundle(1);
         this.data.putString(RepoUpdater.PROGRESS_DATA_REPO_ADDRESS, repo.address);
         this.totalBytes = totalBytes;

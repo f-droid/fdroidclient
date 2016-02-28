@@ -191,7 +191,7 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
         return 0;
     }
 
-    protected void sendProgress(int bytesRead, int totalBytes) {
+    private void sendProgress(int bytesRead, int totalBytes) {
         Intent intent = new Intent(Downloader.LOCAL_ACTION_PROGRESS);
         intent.putExtra(Downloader.EXTRA_ADDRESS, remoteAddress);
         intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
@@ -321,7 +321,7 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
      * Check if a specific download is complete.
      * @return -1 if download is not complete, otherwise the download id
      */
-    public static long isDownloadComplete(Context context, String uniqueDownloadId) {
+    private static long isDownloadComplete(Context context, String uniqueDownloadId) {
         DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Query query = new DownloadManager.Query();
         query.setFilterByStatus(DownloadManager.STATUS_SUCCESSFUL);
