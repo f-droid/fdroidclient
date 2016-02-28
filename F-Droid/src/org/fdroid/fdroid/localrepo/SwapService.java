@@ -82,7 +82,7 @@ import rx.schedulers.Schedulers;
  */
 public class SwapService extends Service {
 
-    private static final String TAG = "SwapManager";
+    private static final String TAG = "SwapService";
     public static final String SHARED_PREFERENCES = "swap-state";
     private static final String KEY_APPS_TO_SWAP = "appsToSwap";
     private static final String KEY_BLUETOOTH_ENABLED = "bluetoothEnabled";
