@@ -1,4 +1,4 @@
-### Upcoming release
+### 0.99 (2016-02-29)
 
 * Add simple "Use Tor" setting
 
