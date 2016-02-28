@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="searchres_napps">S-au gasit %1$d aplicatii ce se potrivesc cu \'%2$s\':</string>
-  <string name="searchres_oneapp">S-a gasit o aplicatie ce se potriveste cu \'%s\':</string>
-  <string name="searchres_noapps">Nici o aplicatie nu se potriveste cu \'%s\'</string>
   <string name="version">Versiune</string>
   <string name="delete">Sterge</string>
   <string name="cache_downloaded">Pastreaza pachete</string>

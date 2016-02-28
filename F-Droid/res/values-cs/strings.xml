@@ -1,7 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_oneapp">Nalezena jedna aplikace odpovídající \'%s\':</string>
-  <string name="searchres_noapps">Nenalezeny žádné aplikace odpovídající \'%s\'</string>
   <string name="SignatureMismatch">Nová verze je podepsána jiným klíčem, než ta stará. Před instalací nové verze je nutné starou odinstalovat. Poté zopakujte instalaci. (Nezapomeňte, že při odinstalování aplikace budou všechna její data v interním úložišti smazána.)</string>
   <string name="installIncompatible">Zdá se, že balíček není kompatibilní s tímto zařízením. Chcete ho přesto zkusit nainstalovat?</string>
   <string name="installDowngrade">Pokoušíte se instalovat starší verzi než je nyní nainstalována. To nemusí fungovat a může to vést i ke ztrátě dat. Opravdu chcete starší verzi nainstalovat?</string>
@@ -143,7 +141,6 @@
   <string name="open_qr_code_scanner">Otevřít čtečku QR kódů</string>
   <string name="swap_welcome">Vítejte v aplikaci F-Droid!</string>
   <string name="swap_confirm_connect">Chceš nyní stáhnout aplikace z %1$s?</string>
-<string name="searchres_napps">Nalezeno %1$d aplikací odpovídajících \"%2$s\":</string>
     <string name="uninstall_system">Aktualizovat/odinstalovat privilegovaná rozšíření</string>
     <string name="uninstall_system_summary">Otevřít obrazovku detailů privilegovaných rozšíření pro aktualizaci/deinstalaci</string>
     <string name="about_source">Zdrojový kód</string>

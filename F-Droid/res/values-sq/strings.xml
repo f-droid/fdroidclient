@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources><string name="app_name">F-Droid</string>
 
-    <string name="searchres_napps">U gjetën %1$d aplikacione që përputhem me \'%2$s\':</string>
-    <string name="searchres_oneapp">U gjet një aplikacion që përputhet me \'%s\':</string>
-    <string name="searchres_noapps">Nuk u gjetën aplikacione që përputhen me \'%s\'</string>
     <string name="SignatureMismatch">Versioni i ri është i nënshkruar me një çelës të ndryshëm nga ai i vjetri. Për të instaluar versionin e ri, së pari duhet të çinstalohet versioni i vjetër. Ju lutem provojeni dhe provoni përsëri.\n(Vini re që çinstalimi do të fshijë çdo të dhënë të brendshme të ruajtur nga aplikacioni)</string>
     <string name="installIncompatible">Mesa duket kjo paketë nuk përputhet me pajisjen tuaj. Dëshironi të provoni ta instaloni sidoqoftë?</string>
     <string name="version">Versioni</string>

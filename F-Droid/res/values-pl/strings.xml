@@ -140,9 +140,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
   <string name="swap_confirm_connect">Czy wymienić aplikacje z %1$s?</string>
 <string name="app_name">F-Droid</string>
 
-    <string name="searchres_napps">Znaleziono %1$d wyników pasujących do zapytania \'%2$s\':</string>
-    <string name="searchres_oneapp">Znaleziono jedną aplikację pasującą do zapytania \'%s\':</string>
-    <string name="searchres_noapps">Nie znaleziono żadnych wyników dla zapytania \'%s\'</string>
     <string name="SignatureMismatch">Nowa wersja jest podpisana cyfrowo z innym kluczem niż obecna wersja. Aby zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (odinstalowanie aplikacji spowoduje usunięcie jej danych i ustawień)</string>
     <string name="installDowngrade">Próbujesz zainstalować starszą wersję tej aplikacji. Wykonanie tej operacji może powodować błędy w jej działaniu lub utratę danych. Czy chcesz kontynuować?</string>
     <string name="cache_downloaded_on">Trzymaj pobrane pliki .apk na urządzeniu by móc ich potem używać w trybie offline</string>

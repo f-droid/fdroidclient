@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">Löydettiin %1$d sovellusta, jotka täsmäävät \'%2$s\':</string>
-  <string name="searchres_oneapp">Löydettiin yksi sovellus, joka täsmää \'%s\':</string>
-  <string name="searchres_noapps">Sovelluksia, jotka täsmäävät \'%s\' ei löytynyt</string>
   <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri avaimella kuin vanha. Asentaaksesi uuden version, vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen. (Huomaa, että poistaminen poistaa kaiken sovelluksen sisäisen datan)</string>
   <string name="installIncompatible">Tämä paketti ei näytä olevan yhteensopiva laitteesi kanssa. Haluatko silti asentaa sen?</string>
   <string name="installDowngrade">Sovellusta päivitetään vanhempaan versioon. Sovellus voi toimia väärin tai kadottaa tietojasi. Haluatko päivittää vanhempaan versioon?</string>

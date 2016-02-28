@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">%1$d alkalmazástalálat ehhez: \'%2$s\':</string>
-  <string name="searchres_oneapp">Egy alkalmazástalálat ehhez: \'%s\':</string>
-  <string name="searchres_noapps">\"Nincs ezzel \'%s\' egyező alkalmazás\"</string>
   <string name="SignatureMismatch">Az új verzió a régitől eltérő kulccsal van aláírva. Az új verzió telepítéséhez először el kell távolítani a régit. Kérem tegye meg ezt és próbálja újra. (Megjegyzendő, hogy az eltávolítás törli az alkalmazás minden tárolt adatát)</string>
   <string name="installIncompatible">Úgy tűnik, ez a csomag nem kompatibilis a készülékkel. Ennek ellenére is megpróbálja telepíteni?</string>
   <string name="installDowngrade">Ön megpróbálta régebbivel felülírni az alkalmazást. Ez hibás működést és az adatok elvesztését okozhatja. Ennek ellenére is megpróbálja telepíteni?</string>

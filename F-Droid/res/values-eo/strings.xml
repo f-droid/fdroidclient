@@ -116,10 +116,7 @@
     <string name="unstable_updates">Nestabilaj ĝisdatigoj</string>
     <string name="update_interval">Intervalo de aŭtomata ĝisdatigo</string>
     <string name="installDowngrade">Vi klopodas malpromocii ĉi tiun aplikaĵon. Fari tion eble malfunkciigos ĝin kaj eĉ perdigos viajn datumojn. Ĉu vi volas klopodi malpromocii ĝin ĉiaokaze?</string>
-    <string name="searchres_napps">Trovitaj %1$d aplikaĵojn kongruante \'%2$s\':</string>
-    <string name="searchres_oneapp">Trovita unu aplikaĵon kongruante \'%s\':</string>
     <string name="SignatureMismatch">La nova versio estas subskribita per diferenca ŝlosilo. Por instali la novan version, la malnova devas esti malinstalita unue. Bonvolu fari tion ĉi kaj reprovi. (Rigardu ke malinstalado forigos ĉiujn internan datumon konservitan de la aplikaĵo)</string>
-    <string name="searchres_noapps">Neniu aplikaĵo trovita kongruante \'%s\'</string>
     <string name="by_author">de</string>
     <string name="enable_nfc_send">Aktivigi sendadon tra NFC…</string>
     <string name="cache_downloaded">Kaŝmemorigi pakaĵojn</string>

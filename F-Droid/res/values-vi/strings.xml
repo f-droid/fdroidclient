@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">Tìm thấy %1$d ứng dụng với từ khoá \'%2$s\':</string>
-  <string name="searchres_oneapp">Tìm thấy một ứng dụng với từ khoá \'%s\':</string>
-  <string name="searchres_noapps">Không tìm thấy ứng dụng với từ khoá \'%s\'</string>
   <string name="SignatureMismatch">Phiên bản mới có mã khoá khác với phiên bản cũ. Để cài đặt phiên bản mới phải xoá phiên bản cũ trước. Hãy xoá phiên bản cũ và thử lại. (Chú ý rằng khi xoá ứng dụng, dữ liệu ứng dụng sẽ bị mất)</string>
   <string name="installIncompatible">Ứng dụng này có khả năng không tương thích với thiết bị của bạn. Bạn vẫn muốn thử cài đặt?</string>
   <string name="installDowngrade">Bạn đang cài đè phiên bản cũ hơn của ứng dụng này. Làm như vậy có thể khiến cho ứng dụng không hoạt động được và thậm chí làm mất dữ liệu. Bạn vẫn muốn tiếp tục?</string>

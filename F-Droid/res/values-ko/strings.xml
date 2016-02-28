@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">\'%2$s\' 검색결과 (%1$d개)</string>
-  <string name="searchres_oneapp">\'%s\' 검색결과:</string>
-  <string name="searchres_noapps">\'%s\' 와 일치하는 응용프로그램을 찾을 수 없습니다.</string>
   <string name="SignatureMismatch">새 버전은 기존 버전과 다른 키로 서명되어 있습니다. 새 버전을 설치하려면 기존 버전을 반드시 먼저 삭제해야 합니다. 그 다음에 다시 시도하세요. (참고로, 삭제를 할 경우 앱이 저장한 모든 내부 자료도 같이 삭제됩니다)</string>
   <string name="installIncompatible">이 패키지가 기기와 호환되지 않는 것 같습니다. 계속 설치를 진행할까요?</string>
   <string name="installDowngrade">이 응용 프로그램의 다운그레이드 하려고 합니다. 이전 버전을 설치할 경우, 응용 프로그램에 데이터가 손상되거나 오작동이 발생할 수 있습니다. 정말로 다운그레이드하시겠습니까?</string>

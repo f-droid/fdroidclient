@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="searchres_napps">%1$d applications contenant \"%2$s\" ont été trouvées :</string>
-  <string name="searchres_oneapp">Une application contenant \"%s\" a été trouvée :</string>
-  <string name="searchres_noapps">Aucune application contenant \"%s\" n\'a été trouvée</string>
   <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez de nouveau après avoir désinstallé l\'ancienne application. (Veuillez noter que la désinstallation effacera les données stockées par l\'application)</string>
   <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous quand même essayer de l\'installer ?</string>
   <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous tout de même essayer de désinstaller les mises à jour ?</string>

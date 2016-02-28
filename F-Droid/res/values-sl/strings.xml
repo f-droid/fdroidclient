@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">Najdenih %1$d applikacij, ki ustrezajo \'%2$s\':</string>
-  <string name="searchres_oneapp">Najdena ena aplikacija, ki ustreza \'%s\':</string>
-  <string name="searchres_noapps">Nobena aplikacija ne ustreza \'%s\'</string>
   <string name="SignatureMismatch">Nova različica je overovljena z drugim ključem kot starejša. V primeru, da želite namestiti novejšo različico morate najprej odstraniti staro. Poskusite ponovno, ko ste to naredili. (Bodite pozorni na dejstvo, da bodo zaradi odstranitve izbrisani vsi notranji podatki shranjeni v aplikaciji)</string>
   <string name="version">Različica</string>
   <string name="cache_downloaded">Predpomnilnik naloženih aplikacij</string>

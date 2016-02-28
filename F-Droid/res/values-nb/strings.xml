@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="searchres_napps">Fant %1$d programmer som samsvarer med \'%2$s\':</string>
-  <string name="searchres_oneapp">Fant ett program som samsvarer med \'%s\':</string>
-  <string name="searchres_noapps">Fant ingen program som samsvarer med \'%s\'</string>
   <string name="SignatureMismatch">Den nye versjonen er signert med en annen nøkkel enn den gamle. For å installere en ny versjon må du først avinstallere den gamle. (Avinstallering vil medfører sletting av all intern data lagret av programmet)</string>
   <string name="installIncompatible">Det ser ut til at denne pakken ikke er kompatibel med ditt utstyr. Vil du prøve å installere det likevel?</string>
   <string name="installDowngrade">Du prøver å nedgradere denne applikasjonen. Dette kan føre til at programmet henger, og du kan til og med miste dataene dine. Nedgradere uansett ?</string>
