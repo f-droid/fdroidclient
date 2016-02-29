@@ -1,3 +1,5 @@
+image: mvdan/fdroid-ci:latest
+
 before_script:
   - apt-get -q update -y
   - echo " == Installing packages required by this CI script"
