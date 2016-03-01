@@ -1,40 +1,16 @@
 image: mvdan/fdroid-ci:latest
 
-before_script:
-  - apt-get -q update -y
-  - echo " == Installing packages required by this CI script"
-  - apt-get -q install -y wget tar unzip python3
-  - echo " == Installing OpenJDK 7"
-  - apt-get -q install -y openjdk-7-jdk
-  - test -z "$ANDROID_HOME" &&
-        echo " == Installing Android SDK" &&
-        apt-get -q install -y lib32stdc++6 lib32z1 &&
-        wget -q -O android-sdk.tgz https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz &&
-        tar -xzf android-sdk.tgz &&
-        export ANDROID_HOME=$PWD/android-sdk-linux &&
-        export PATH="$ANDROID_HOME/tools:$PATH" &&
-        echo y | android -s update sdk --no-ui -a -t platform-tools,tools,build-tools-23.0.2,android-23,extra-android-m2repository &&
-        export PATH="$ANDROID_HOME/platform-tools:$PATH" &&
-        export PATH="$ANDROID_HOME/build-tools/23.0.2:$PATH" &&
-        echo y | android -s update sdk --no-ui -a -t android-10
-
 test:
   script:
-    - echo " == Running F-Droid tool checks"
     - cd F-Droid
     - ./tools/langs-list-check.py
     - ./tools/check-string-format.py
     - cd ..
-    - echo " == Running build"
     - ./gradlew build
-    - echo " == Running checkstyle"
     - ./gradlew checkstyle
-    - echo " == Creating Android 2.3.7 emulator"
     - echo no | android create avd --force -n fcl-test -t android-10 -b armeabi
-    - echo " == Starting Android 2.3.7 emulator"
     - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82
-    - echo " == Running Android tests"
     - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedCheck || { adb logcat -d '*:W'; exit 1; }
     - sed -n 's/.*"ctr2">\([0-9]*\)%<.*/Coverage - \1.0% covered\n/p' F-Droid/build/reports/coverage/debug/index.html
