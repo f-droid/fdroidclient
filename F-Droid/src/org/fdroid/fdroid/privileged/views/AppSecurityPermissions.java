@@ -429,17 +429,11 @@ public class AppSecurityPermissions {
         final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
         final boolean isNormal = base == PermissionInfo.PROTECTION_NORMAL;
         final boolean isDangerous = base == PermissionInfo.PROTECTION_DANGEROUS;
-        final boolean isRequired =
-                (newReqFlags & PackageInfo.REQUESTED_PERMISSION_REQUIRED) != 0;
         final boolean wasGranted =
                 (existingReqFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0;
-        final boolean isGranted =
-                (newReqFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0;
 
-        // Dangerous and normal permissions are always shown to the user if the permission
-        // is required, or it was previously granted
-        if ((isNormal || isDangerous) && (isRequired || wasGranted || isGranted ||
-                Build.VERSION.SDK_INT < 16)) {
+        // Dangerous and normal permissions are always shown to the user
+        if (isNormal || isDangerous) {
             return true;
         }
 
