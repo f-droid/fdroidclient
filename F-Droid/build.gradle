@@ -217,6 +217,7 @@ task pmd(type: Pmd, dependsOn: assembleDebug) {
     ruleSets = [
         //'java-basic',
         //'java-unusedcode',
+        'java-android',
     ]
     source 'src'
     include '**/org/fdroid/**/*.java'
