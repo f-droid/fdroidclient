@@ -218,6 +218,10 @@ task pmd(type: Pmd, dependsOn: assembleDebug) {
         //'java-basic',
         //'java-unusedcode',
         'java-android',
+        'java-clone',
+        'java-finalizers',
+        'java-imports',
+        'java-migrating',
     ]
     source 'src'
     include '**/org/fdroid/**/*.java'
