@@ -205,4 +205,53 @@
     <string name="repo_exists_add_fingerprint">此儲存庫已經設定，此動作將會加入新的金鑰資訊。</string>
     <string name="repo_delete_to_overwrite">在加入含有不同金鑰的儲存庫前，您需要先刪除此儲存庫。</string>
     <string name="repo_fingerprint">金鑰指紋 (SHA-256)</string>
+    <string name="by_author">由</string>
+    <string name="system_installer">特權延伸</string>
+    <string name="category_Navigation">導航</string>
+    <string name="category_Connectivity">連接</string>
+    <string name="theme">主題</string>
+    <string name="category_Theming">主題</string>
+    <string name="permissions">存取權</string>
+    <string name="no_permissions">不需要任何權限。</string>
+    <string name="downloading">下載中…</string>
+
+    <string name="interval_never">從不</string>
+    <string name="interval_1h">每小時</string>
+    <string name="interval_4h">每四小時</string>
+    <string name="interval_12h">每十二小時</string>
+    <string name="interval_1d">每天</string>
+    <string name="interval_1w">每星期</string>
+    <string name="interval_2w">每兩星期</string>
+
+    <string name="theme_light">亮</string>
+    <string name="crash_dialog_title">F-Droid 已當機</string>
+    <string name="bad_fingerprint">指紋無效</string>
+    <string name="status_inserting_apps">正在儲存應用程式的詳細資料</string>
+    <string name="unsigned">未簽署</string>
+    <string name="repo_url">網址</string>
+    <string name="root_access_denied_title">Root 權限被拒絕</string>
+    <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
+    <string name="swap_join_this_hotspot">幫助您的朋友加入您的熱點</string>
+    <string name="menu_swap">交換應用程式</string>
+    <string name="swap">交換應用程式</string>
+    <string name="swap_success">交換成功！</string>
+    <string name="swap_active_hotspot">%1$s (您的熱點)</string>
+    <string name="swap_choose_apps">選擇應用程式</string>
+    <string name="swap_people_nearby">附近的人</string>
+    <string name="swap_scanning_for_peers">正在搜尋附近的人…</string>
+    <string name="swap_setting_up_bluetooth">正在設定藍牙…</string>
+    <string name="swap_setting_up_wifi">正在設定 Wi-Fi…</string>
+    <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
+    <string name="swap_wifi_device_name">裝置名稱</string>
+    <string name="swap_cant_find_peers">找不到您想找的人?</string>
+    <string name="swap_send_fdroid">傳送 F-Droid</string>
+    <string name="swap_no_peers_nearby">找不到附近的人來進行交換。</string>
+    <string name="swap_confirm">確認交換</string>
+    <string name="bluetooth_unavailable">藍牙不可用</string>
+    <string name="swap_cant_send_no_bluetooth">無法傳送 F-Droid，因為此裝置沒有藍牙功能。</string>
+    <string name="swap_attempt_install">嘗試安裝</string>
+    <string name="swap_not_enabled">沒有啟用交換功能</string>
+    <string name="uninstall_confirm">您想要解除安裝此應用程式嗎？</string>
+    <string name="download_error">下載失敗</string>
+
     </resources>

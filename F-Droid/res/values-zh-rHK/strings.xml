@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="version">版本</string>
   <string name="delete">刪除</string>
@@ -336,4 +336,8 @@
     <string name="repo_exists_add_fingerprint">由於此倉庫已經設置好，此動作將會加入新的鑰匙數據。</string>
     <string name="menu_email">電郵作者</string>
     <string name="unsigned_description">這表示應用程式清單不可被驗證。您要小心使用來自未簽署的索引的應用程式。</string>
+    <string name="useTor">使用 Tor</string>
+    <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
+    <string name="by_author">作者：</string>
+    <string name="useTorSummary">為了加強對私隱的保障，強迫下載流量經過 Tor</string>
     </resources>

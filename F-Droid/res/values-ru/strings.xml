@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте ещё раз. (При удалении приложения все его данные будут потеряны)</string>
   <string name="installIncompatible">Похоже, этот пакет несовместим с вашим устройством. Всё равно установить?</string>
@@ -299,4 +299,6 @@
     <string name="crash_dialog_text">Непредвиденная ошибка привела к остановке приложения. Хотите отправить письмо с подробностями, чтобы помочь исправить эту ошибку?</string>
     <string name="crash_dialog_comment_prompt">Можете добавить дополнительную информацию и комментарии:</string>
 <string name="by_author">от</string>
+    <string name="useTor">Использовать Tor</string>
+    <string name="useTorSummary">Перенаправлять входящий трафик через Tor для улучшения конфиденциальности</string>
     </resources>

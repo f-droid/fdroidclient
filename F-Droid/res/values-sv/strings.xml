@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. Den gamla versionen måste först avinstalleras. Försök sedan igen. (Observera att data som tillhör programmet kommer att raderas när det avinstalleras.)</string>
   <string name="installIncompatible">Det verkar som att det här paketet inte är kompatibelt med din enhet. Vill du testa att installera det ändå?</string>
@@ -14,7 +14,7 @@
   <string name="update_interval_zero">Inga automatiska uppdateringar av applistor</string>
   <string name="automatic_scan_wifi">Endast via Wi-Fi</string>
   <string name="automatic_scan_wifi_on">Uppdatera applistor automatiskt endast över Wi-Fi</string>
-  <string name="notify">Aviseringar om uppdatering</string>
+  <string name="notify">Avisering vid uppdatering</string>
   <string name="notify_on">Visa en avisering när det finns uppdateringar tillgängliga</string>
   <string name="update_history">Uppdateringshistorik</string>
   <string name="update_history_summ">Antalet dagar som appar ska betraktas som nya eller färsk: %s</string>
@@ -173,8 +173,8 @@
   <string name="swap_confirm_connect">Vill du ta emot appar från %1$s nu?</string>
 <string name="app_name">F-Droid</string>
 
-    <string name="unstable_updates">Instabila uppdateringar</string>
-    <string name="unstable_updates_summary">Föreslå uppdateringar till instabila versioner</string>
+    <string name="unstable_updates">Insrabila uppdateringar</string>
+    <string name="unstable_updates_summary">Föreslå uppdatering till instabil version</string>
     <string name="app_incompatible">Ej kompatibel</string>
     <string name="links">Länkar</string>
     <string name="uninstall_system">Uppdatera/Avinstallera priviligerat tilläggsprogram</string>
@@ -204,4 +204,42 @@
     <string name="pref_language_default">Systemets standard</string>
 
     <string name="wifi">Trådlöst</string>
+    <string name="by_author">av</string>
+    <string name="login_title">Tillstånd krävs</string>
+    <string name="login_name">Användarnamn</string>
+    <string name="login_password">Lösenord</string>
+    <string name="repo_edit_credentials">Ändra lösenord</string>
+    <string name="repo_error_empty_username">Tomt användarnamn, oförändrade användaruppgifter</string>
+
+    <string name="about_license">Licens</string>
+
+    <string name="tab_installed_apps_count">Installerat (%d)</string>
+    <string name="tab_updates_count">Uppdateringar (%d)</string>
+    <string name="menu_email">E-postskapare</string>
+    <string name="antinonfreeassetslist">Denna app innehåller icke-fria tillgångar</string>
+
+    <string name="useTor">Använd Tor</string>
+    <string name="useTorSummary">Tvinga nedladdningstrafik genom Tor för ökad integritet</string>
+    <string name="status_processing_xml_percent">Bearbetar %2$s / %3$s (%4$d%%) från %1$s</string>
+    <string name="status_inserting_apps">Sparar applikationsdetaljer</string>
+    <string name="repo_added">Sparade F-Droidförråd %1$s.</string>
+    <string name="wifi_ap">Hotspot</string>
+
+    <string name="category_Connectivity">Anslutbarhet</string>
+    <string name="category_Graphics">Grafik</string>
+    <string name="category_Money">Pengar</string>
+    <string name="category_Sports_Health">Sport &amp; hälsa</string>
+    <string name="category_Theming">Teman</string>
+    <string name="category_Time">Tid</string>
+    <string name="category_Writing">Skrivande</string>
+
+    <string name="empty_installed_app_list">Inga appar har installerats.\n\nDet finns appar på din enhet, men de är inte tillgängliga från F-Droid. Detta kan bero på att du behöver uppdatera dina förråd, eller så har förråden verkligen inte dina appar tillgängliga.</string>
+    <string name="empty_available_app_list">Inga appar i denna kategori.\n\nProva att välja en annan kategori eller att uppdatera dina förråd för att få en färsk lista med appar.</string>
+    <string name="empty_can_update_app_list">Alla appar är uppdaterade.\n\nGrattis! Alla dina appar är uppdaterade (eller så behöver dina förråd uppdateras).</string>
+    <string name="empty_search_installed_app_list">Inga installerade applikationer matchar.</string>
+    <string name="empty_search_available_app_list">Inga matchande program är tillgängliga.</string>
+    <string name="empty_search_can_update_app_list">Inga matchande app-uppdateringar.</string>
+
+    <string name="install_error_title">Installations fel</string>
+    <string name="install_error_unknown">Misslyckades att installera på grund av ett okänt problem.</string>
     </resources>

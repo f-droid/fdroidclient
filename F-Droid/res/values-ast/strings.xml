@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">La versión nueva ta roblada con una clave diferente. Pa instalar la versión nueva, tien de desinstalase primero la vieya. Por favor, failo ya inténtalo de nueves. (Decátate que la desinstalación desaniciará cualesquier datu internu atroxáu pola aplicación)</string>
   <string name="installIncompatible">Paez qu\'esti paquete nun ye compatible col to preséu. ¿Quies intentar instalalu de toes toes?</string>
@@ -337,4 +337,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
 <string name="antinonfreeassetslist">Esta aplicación contién activos non llibres</string>
 
     <string name="by_author">por</string>
+    <string name="useTor">Usar Tor</string>
+    <string name="useTorSummary">Forcia la descaga\'l tráficu pente Tor pa una privacidá aumentada</string>
+    <string name="swap_stopping_wifi">Parando Wi-Fi…</string>
     </resources>
