@@ -595,12 +595,12 @@ public class SwapService extends Service {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         Utils.debugLog(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
         disableAllSwapping();
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(receiveSwapStatusChanged);
+        super.onDestroy();
     }
 
     private Notification createNotification() {

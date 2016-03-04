@@ -8,6 +8,7 @@ test:
     - cd ..
     - ./gradlew build
     - ./gradlew checkstyle
+    - ./gradlew pmd
     - echo no | android create avd --force -n fcl-test -t android-10 -b armeabi
     - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator

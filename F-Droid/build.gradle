@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'witness'
 apply plugin: 'checkstyle'
+apply plugin: 'pmd'
 
 repositories {
     jcenter()
@@ -203,9 +204,27 @@ task checkstyle(type: Checkstyle) {
     configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
     source 'src', 'test/src'
     include '**/*.java'
-    exclude '**/gen/**'
 
     classpath = files()
+}
+
+pmd {
+    toolVersion = '5.4.1'
+    consoleOutput = true
+}
+
+task pmd(type: Pmd, dependsOn: assembleDebug) {
+    ruleSets = [
+        //'java-basic',
+        //'java-unusedcode',
+        'java-android',
+        'java-clone',
+        'java-finalizers',
+        'java-imports',
+        'java-migrating',
+    ]
+    source 'src'
+    include '**/org/fdroid/**/*.java'
 }
 
 // This person took the example code below from another blogpost online, however

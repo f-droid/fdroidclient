@@ -176,6 +176,7 @@ public class FDroidApp extends Application {
     @TargetApi(9)
     @Override
     public void onCreate() {
+        super.onCreate();
         if (Build.VERSION.SDK_INT >= 9 && BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                     .detectAll()
@@ -187,7 +188,6 @@ public class FDroidApp extends Application {
                     .build());
         }
         updateLanguage();
-        super.onCreate();
         ACRA.init(this);
 
         // Needs to be setup before anything else tries to access it.
