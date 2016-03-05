@@ -8,7 +8,7 @@ for Android.
 ## Building with Gradle
 
     cd F-Droid
-    ./gradlew assembleRelease
+    ../gradlew assembleRelease
 
 ## Direct download
 

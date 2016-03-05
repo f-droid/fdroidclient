@@ -55,7 +55,7 @@ To get all the logcat messages by F-Droid, you can run:
 
 ## Building tips
 
-* Use `gradle --daemon` if you are going to build F-Droid multiple times.
+* Use gradle with `--daemon` if you are going to build F-Droid multiple times.
 * If you get a message like `Could not find com.android.support:support-...`,
   make sure that you have the latest Android support maven repository.
 
@@ -65,7 +65,7 @@ In order to run the F-Droid test suite, you will need to have either a real devi
 connected via `adb`, or an emulator running. Then, execute the following from the
 command line:
 
-    gradle connectedCheck
+    ./gradlew connectedCheck
 
 Note that the CI already runs the tests on an emulator, so you don't
 necessarily have to do this yourself if you open a merge request as the tests
