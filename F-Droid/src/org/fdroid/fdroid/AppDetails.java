@@ -135,6 +135,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     private static class ViewHolder {
         TextView version;
         TextView status;
+        TextView repository;
         TextView size;
         TextView api;
         TextView incompatibleReasons;
@@ -217,6 +218,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 holder = new ViewHolder();
                 holder.version = (TextView) convertView.findViewById(R.id.version);
                 holder.status = (TextView) convertView.findViewById(R.id.status);
+                holder.repository = (TextView) convertView.findViewById(R.id.repository);
                 holder.size = (TextView) convertView.findViewById(R.id.size);
                 holder.api = (TextView) convertView.findViewById(R.id.api);
                 holder.incompatibleReasons = (TextView) convertView.findViewById(R.id.incompatible_reasons);
@@ -234,6 +236,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                     + (apk.vercode == app.suggestedVercode ? "  ☆" : ""));
 
             holder.status.setText(getInstalledStatus(apk));
+
+            holder.repository.setText(getString(R.string.repo_provider,
+                    RepoProvider.Helper.findById(getContext(), apk.repo).getName()));
 
             if (apk.size > 0) {
                 holder.size.setText(Utils.getFriendlySize(apk.size));

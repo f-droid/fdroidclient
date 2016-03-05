@@ -29,11 +29,20 @@
             android:layout_width="wrap_content"
             tools:text="Installed" />
 
-      <LinearLayout
+      <TextView android:id="@+id/repository"
+            android:textSize="13sp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_below="@id/status"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            tools:text="Provided By F-Droid archive" />
+
+    <LinearLayout
             android:id="@+id/container_added_nativecode"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_below="@id/status"
+            android:layout_below="@id/repository"
             android:orientation="horizontal">
 
           <TextView android:id="@+id/added"
