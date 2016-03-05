@@ -6,7 +6,7 @@
     <LinearLayout
         android:id="@+id/repoView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingLeft="?attr/listPreferredItemPaddingLeft"
         android:paddingStart="?attr/listPreferredItemPaddingLeft"
         android:paddingRight="?attr/listPreferredItemPaddingRight"

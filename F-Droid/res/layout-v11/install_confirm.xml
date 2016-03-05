@@ -70,7 +70,7 @@
                 android:background="@drawable/tab_unselected_holo"
                 android:fillViewport="true"
                 android:scrollbars="none">
-                <FrameLayout android:layout_width="match_parent"
+                <FrameLayout android:layout_width="wrap_content"
                              android:layout_height="wrap_content">
                     <TabWidget
                         android:id="@android:id/tabs"
