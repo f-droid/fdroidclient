@@ -1,3 +1,11 @@
+### Upcoming release
+
+* Show what repository each apk comes from
+
+* Better support for Android 6.0
+
+* Translation updates
+
 ### 0.99 (2016-02-29)
 
 * Add simple "Use Tor" setting
