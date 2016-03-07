@@ -7,7 +7,10 @@ import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.view.LayoutInflater;
@@ -72,27 +75,34 @@ public class AvailableAppsFragment extends AppListFragment implements
         private final ArrayAdapter<String> adapter;
 
         CategoryObserver(ArrayAdapter<String> adapter) {
-            super(null);
+            // Using Looper.getMainLooper() ensures that the onChange method is run on the main thread.
+            super(new Handler(Looper.getMainLooper()));
             this.adapter = adapter;
         }
 
         @Override
         public void onChange(boolean selfChange) {
-            // Wanted to just do this update here, but android tells
-            // me that "Only the original thread that created a view
-            // hierarchy can touch its views."
             final Activity activity = getActivity();
             if (!isAdded() || adapter == null || activity == null) {
                 return;
             }
-            activity.runOnUiThread(new Runnable() {
+
+            // Because onChange is always invoked on the main thread (see constructor), we want to
+            // run the database query on a background thread. Afterwards, the UI is updated
+            // on a foreground thread.
+            new AsyncTask<Void, Void, List<String>>() {
                 @Override
-                public void run() {
-                    adapter.clear();
-                    categories = AppProvider.Helper.categories(activity);
-                    ArrayAdapterCompat.addAll(adapter, translateCategories(categories));
+                protected List<String> doInBackground(Void... params) {
+                    return AppProvider.Helper.categories(activity);
                 }
-            });
+
+                @Override
+                protected void onPostExecute(List<String> loadedCategories) {
+                    adapter.clear();
+                    categories = loadedCategories;
+                    ArrayAdapterCompat.addAll(adapter, translateCategories(loadedCategories));
+                }
+            }.execute();
         }
 
         @Override
