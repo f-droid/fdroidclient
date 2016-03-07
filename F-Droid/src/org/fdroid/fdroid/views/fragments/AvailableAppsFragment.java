@@ -82,18 +82,14 @@ public class AvailableAppsFragment extends AppListFragment implements
             // me that "Only the original thread that created a view
             // hierarchy can touch its views."
             final Activity activity = getActivity();
-            // this nullguard is temporary, this Fragment really needs to merged into the Activity
-            if (activity == null) {
+            if (!isAdded() || adapter == null || activity == null) {
                 return;
             }
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    if (adapter == null) {
-                        return;
-                    }
                     adapter.clear();
-                    categories = AppProvider.Helper.categories(getActivity());
+                    categories = AppProvider.Helper.categories(activity);
                     ArrayAdapterCompat.addAll(adapter, translateCategories(categories));
                 }
             });
