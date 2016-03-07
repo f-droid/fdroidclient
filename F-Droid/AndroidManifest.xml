@@ -8,7 +8,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="22"
+        android:targetSdkVersion="23"
         />
 
     <supports-screens
@@ -62,6 +62,7 @@
         android:label="@string/app_name"
         android:description="@string/app_description"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:theme="@style/AppThemeLight"
         android:supportsRtl="true"
         >
