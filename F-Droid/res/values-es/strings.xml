@@ -345,4 +345,6 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>
     <string name="useTor">Usar Tor</string>
     <string name="useTorSummary">Forzar el tráfico de bajada a través de Tor para mejorar la privacidad</string>
+    <string name="repo_provider">Repositorio: %s</string>
+
     </resources>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Phiên bản mới có mã khoá khác với phiên bản cũ. Để cài đặt phiên bản mới phải xoá phiên bản cũ trước. Hãy xoá phiên bản cũ và thử lại. (Chú ý rằng khi xoá ứng dụng, dữ liệu ứng dụng sẽ bị mất)</string>
   <string name="installIncompatible">Ứng dụng này có khả năng không tương thích với thiết bị của bạn. Bạn vẫn muốn thử cài đặt?</string>
@@ -325,4 +325,9 @@
     <string name="tab_updates_count">Cập nhật (%d)</string>
     <string name="status_inserting_apps">Đang lưu thông tin ứng dụng</string>
     <string name="by_author">bởi</string>
+    <string name="menu_email">E-mail tác giả</string>
+    <string name="antinonfreeassetslist"/>
+
+    <string name="useTor">Sử dụng Tor</string>
+    <string name="useTorSummary">Tải xuống thông qua Tor để tăng tính riêng tư</string>
     </resources>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren, muss zunächst die alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: Beim Entfernen werden alle intern gespeicherten Daten dieser Anwendung gelöscht.)</string>
   <string name="installIncompatible">Es sieht so aus, als sei dieses Paket mit Ihrem Gerät nicht kompatibel. Möchten Sie trotzdem versuchen, es zu installieren?</string>
@@ -335,4 +335,9 @@
     <string name="crash_dialog_text">Die Anwendung wurde durch einen unerwarteten Fehler beendet. Möchten Sie die Details als E-Mail versenden, um eine Fehlerbehebung zu unterstützen?</string>
     <string name="by_author">von</string>
     <string name="menu_email">E-Mail an Autor</string>
+    <string name="repo_provider">Paketquelle: %s</string>
+
+    <string name="useTor">Tor verwenden</string>
+    <string name="useTorSummary">Herunterladen über Tor erzwingen; zur Erhöhung der Privatsphäre</string>
+    <string name="swap_stopping_wifi">WLAN wird angehalten …</string>
     </resources>

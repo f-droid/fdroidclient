@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">La nuova versione è firmata con una chiave differente rispetto alla vecchia. Per installare la nuova versione occorre prima disinstallare la precedente. Riprovare dopo averla disinstallata (Attenzione! La disinstallazione cancellerà qualsiasi dato salvato dall\'applicazione)</string>
   <string name="installIncompatible">Sembra che questo pacchetto non sia compatibile con il tuo dispositivo. Vuoi provare comunque ad installarlo?</string>
@@ -336,4 +336,7 @@
     <string name="empty_search_available_app_list">Non è disponibile nessuna applicazione corrispondente.</string>
     <string name="empty_search_can_update_app_list">Nessuna applicazione corrispondente è disponibile per l\'aggiornamento.</string>
 
+    <string name="useTor">Usa Tor</string>
+    <string name="useTorSummary">Forza lo scaricamento attraverso Tor per incrementare la privacy</string>
+    <string name="swap_stopping_wifi">Arresto del Wi-Fi…</string>
     </resources>

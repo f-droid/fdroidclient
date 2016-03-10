@@ -340,4 +340,6 @@
 <string name="useTor">Uzi na Tor</string>
     <string name="useTorSummary">Devigas elŝuti per Tor-reto por plibonigi privatecon</string>
     <string name="swap_stopping_wifi">Ĉesanta vifion…</string>
+    <string name="repo_provider">Deponejo: %s</string>
+
     </resources>

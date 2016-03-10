@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">A nova versão é assinada com uma chave diferente da antiga. Para instalar a nova versão, desinstale primeiro a antiga. Por favor, faça isso e tente novamente. (Note que a desinstalação apaga todos os dados internos armazenados pelo aplicativo)</string>
   <string name="installIncompatible">Aparentemente este pacote não é compatível com o seu dispositivo. Quer tentar instalá-lo mesmo assim?</string>
@@ -338,4 +338,9 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="crash_dialog_comment_prompt">Você pode adicionar informações extras e comentários aqui:</string>
 <string name="by_author">por</string>
     <string name="menu_email">E-mail ao autor</string>
+    <string name="useTor">Usar o Tor</string>
+    <string name="useTorSummary">Força tráfego de download através do Tor para maior privacidade</string>
+    <string name="swap_stopping_wifi">Parando o Wi-Fi…</string>
+    <string name="repo_provider">Repositório: %s</string>
+
     </resources>

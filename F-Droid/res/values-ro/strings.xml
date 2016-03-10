@@ -302,4 +302,6 @@
     <string name="repo_details">Depozit</string>
     <string name="swap_stopping_wifi">Oprire Wi-Fi…</string>
     <string name="bluetooth_unavailable">Bluetooth indisponibil</string>
+    <string name="repo_provider">Depozit: %s</string>
+
     </resources>

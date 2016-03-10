@@ -186,10 +186,11 @@
     <string name="login_name">Nama pengguna</string>
     <string name="login_password">Kata sandi</string>
     <string name="repo_edit_credentials">Ubah kata sandi</string>
-    <string name="repo_error_empty_username">Kosongkan nama pengguna, kredensial tidak berubah</string>
+    <string name="repo_error_empty_username">Nama pengguna kosong, kredensial tidak berubah</string>
 
     <string name="about_license">Lisensi</string>
 
     <string name="tab_installed_apps_count">Terinstal (%d)</string>
     <string name="tab_updates_count">Pembaruan (%d)</string>
+    <string name="local_repo_running">F--Droid siap untuk ditukar</string>
     </resources>

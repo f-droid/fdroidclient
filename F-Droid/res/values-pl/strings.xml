@@ -342,4 +342,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="useTor">Użyj Tora</string>
     <string name="useTorSummary">Wymuś pobieranie przez Tora aby zwiększyć prywatność</string>
     <string name="swap_stopping_wifi">Zatrzymywanie Wi-Fi…</string>
+    <string name="repo_provider">Repozytorium: %s</string>
+
     </resources>

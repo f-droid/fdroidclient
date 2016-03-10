@@ -340,4 +340,6 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="swap_stopping_wifi">Aurant la Wi-Fi…</string>
     <string name="useTor">Usi Tor</string>
     <string name="useTorSummary">Forçar el tràfic de baixada a través de Tor per millorar la privadesa</string>
+    <string name="repo_provider">Repositori: %s</string>
+
     </resources>

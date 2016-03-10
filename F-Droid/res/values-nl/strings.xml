@@ -337,4 +337,9 @@
     <string name="crash_dialog_title">F-Droid is gecrasht</string>
     <string name="crash_dialog_text">Een onverwachte fout is opgetreden waardoor de app is gestopt. Wilt u de details over deze fout e-mailen om zo het probleem in de toekomst te helpen voorkomen?</string>
     <string name="crash_dialog_comment_prompt">U kunt extra informatie en commentaar hier toevoegen:</string>
-</resources>
+<string name="repo_provider">Bron: %s</string>
+
+    <string name="useTor">Gebruik Tor</string>
+    <string name="useTorSummary">Forceer downloadverkeer door Tor heen voor betere privacy</string>
+    <string name="swap_stopping_wifi">Stop Wi-Fi…</string>
+    </resources>
