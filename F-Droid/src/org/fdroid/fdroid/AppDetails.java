@@ -167,7 +167,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     class ApkListAdapter extends ArrayAdapter<Apk> {
 
-        private final LayoutInflater mInflater = (LayoutInflater) mctx.getSystemService(
+        private final LayoutInflater mInflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
         ApkListAdapter(Context context, App app) {
@@ -192,7 +192,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             // Installed the same version, but from someplace else.
             final String installerPkgName;
             try {
-                installerPkgName = mPm.getInstallerPackageName(app.packageName);
+                installerPkgName = packageManager.getInstallerPackageName(app.packageName);
             } catch (IllegalArgumentException e) {
                 Log.w(TAG, "Application " + app.packageName + " is not installed anymore");
                 return getString(R.string.app_not_installed);
@@ -201,14 +201,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return getString(R.string.app_inst_unknown_source);
             }
             final String installerLabel = InstalledAppProvider
-                    .getApplicationLabel(mctx, installerPkgName);
+                    .getApplicationLabel(context, installerPkgName);
             return getString(R.string.app_inst_known_source, installerLabel);
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            java.text.DateFormat df = DateFormat.getDateFormat(mctx);
+            java.text.DateFormat df = DateFormat.getDateFormat(context);
             final Apk apk = getItem(position);
             ViewHolder holder;
 
@@ -324,17 +324,17 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     private static final int SEND_VIA_BLUETOOTH = Menu.FIRST + 6;
 
     private App app;
-    private PackageManager mPm;
+    private PackageManager packageManager;
     private ApkDownloader downloadHandler;
     private LocalBroadcastManager localBroadcastManager;
 
     private boolean startingIgnoreAll;
     private int startingIgnoreThis;
 
-    private final Context mctx = this;
+    private final Context context = this;
     private Installer installer;
 
-    private AppDetailsHeaderFragment mHeaderFragment;
+    private AppDetailsHeaderFragment headerFragment;
 
     /**
      * Stores relevant data that we want to keep track of when destroying the activity
@@ -388,9 +388,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             setTitle(intent.getStringExtra(EXTRA_FROM));
         }
 
-        mPm = getPackageManager();
+        packageManager = getPackageManager();
 
-        installer = Installer.getActivityInstaller(this, mPm, myInstallerCallback);
+        installer = Installer.getActivityInstaller(this, packageManager, myInstallerCallback);
 
         // Get the preferences we're going to use in this Activity...
         ConfigurationChangeHelper previousData = (ConfigurationChangeHelper) getLastCustomNonConfigurationInstance();
@@ -474,9 +474,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 downloadHandler.setProgressListener(this);
 
                 if (downloadHandler.getTotalBytes() == 0) {
-                    mHeaderFragment.startProgress();
+                    headerFragment.startProgress();
                 } else {
-                    mHeaderFragment.updateProgress(downloadHandler.getBytesRead(), downloadHandler.getTotalBytes());
+                    headerFragment.updateProgress(downloadHandler.getBytesRead(), downloadHandler.getTotalBytes());
                 }
             }
         }
@@ -488,7 +488,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     private void cleanUpFinishedDownload() {
         if (downloadHandler != null) {
             downloadHandler.removeProgressListener();
-            mHeaderFragment.removeProgress();
+            headerFragment.removeProgress();
             downloadHandler = null;
         }
     }
@@ -523,14 +523,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             downloadHandler.removeProgressListener();
         }
 
-        mHeaderFragment.removeProgress();
+        headerFragment.removeProgress();
     }
 
     private final BroadcastReceiver downloaderProgressReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (mHeaderFragment != null) {
-                mHeaderFragment.updateProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
+            if (headerFragment != null) {
+                headerFragment.updateProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
                         intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1));
             }
         }
@@ -614,10 +614,10 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     }
 
     private void refreshHeader() {
-        mHeaderFragment = (AppDetailsHeaderFragment)
+        headerFragment = (AppDetailsHeaderFragment)
                 getSupportFragmentManager().findFragmentById(R.id.header);
-        if (mHeaderFragment != null) {
-            mHeaderFragment.updateViews();
+        if (headerFragment != null) {
+            headerFragment.updateViews();
         }
     }
 
@@ -629,7 +629,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             return true;
         }
 
-        if (mPm.getLaunchIntentForPackage(app.packageName) != null && app.canAndWantToUpdate()) {
+        if (packageManager.getLaunchIntentForPackage(app.packageName) != null && app.canAndWantToUpdate()) {
             MenuItemCompat.setShowAsAction(menu.add(
                             Menu.NONE, LAUNCH, 1, R.string.menu_launch)
                             .setIcon(R.drawable.ic_play_arrow_white),
@@ -673,7 +673,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     private void tryOpenUri(String s) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
-        if (intent.resolveActivity(mPm) == null) {
+        if (intent.resolveActivity(packageManager) == null) {
             Toast.makeText(this,
                     getString(R.string.no_handler_app, intent.getDataString()),
                     Toast.LENGTH_LONG).show();
@@ -887,7 +887,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
         downloadHandler.setProgressListener(this);
         if (downloadHandler.download()) {
-            mHeaderFragment.startProgress();
+            headerFragment.startProgress();
         }
     }
 
@@ -916,7 +916,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 @Override
                 public void run() {
                     if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
-                        PackageManagerCompat.setInstaller(mPm, app.packageName);
+                        PackageManagerCompat.setInstaller(packageManager, app.packageName);
                     }
 
                     onAppChanged();
@@ -966,7 +966,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     };
 
     private void launchApk(String packageName) {
-        Intent intent = mPm.getLaunchIntentForPackage(packageName);
+        Intent intent = packageManager.getLaunchIntentForPackage(packageName);
         startActivity(intent);
     }
 
@@ -1015,8 +1015,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         if (finished) {
-            if (mHeaderFragment != null) {
-                mHeaderFragment.removeProgress();
+            if (headerFragment != null) {
+                headerFragment.removeProgress();
             }
             downloadHandler = null;
         }
@@ -1611,7 +1611,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                     btMain.setText(R.string.menu_upgrade);
                 } else {
                     updateWanted = false;
-                    if (activity.mPm.getLaunchIntentForPackage(app.packageName) != null) {
+                    if (activity.packageManager.getLaunchIntentForPackage(app.packageName) != null) {
                         btMain.setText(R.string.menu_launch);
                     } else {
                         btMain.setText(R.string.menu_uninstall);
@@ -1649,7 +1649,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 }
                 if (installed) {
                     // If installed
-                    if (activity.mPm.getLaunchIntentForPackage(app.packageName) != null) {
+                    if (activity.packageManager.getLaunchIntentForPackage(app.packageName) != null) {
                         // If "launchable", launch
                         activity.launchApk(app.packageName);
                     } else {
