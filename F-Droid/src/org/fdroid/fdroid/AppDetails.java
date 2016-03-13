@@ -300,6 +300,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 convertView,
                 holder.version,
                 holder.status,
+                holder.repository,
                 holder.size,
                 holder.api,
                 holder.buildtype,
