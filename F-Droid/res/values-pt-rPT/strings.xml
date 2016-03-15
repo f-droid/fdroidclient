@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources><string name="app_name">F-Droid</string>
 
     <string name="SignatureMismatch">A nova versão está assinada com uma chave diferente da antiga. Para instalar a nova versão, tem que desinstalar a antiga. Remova a aplicação e tente novamente. (Tenha em atenção que irá apagar todos os dados guardados pela aplicação)</string>
@@ -352,4 +352,9 @@
     <string name="crash_dialog_comment_prompt">Pode adicionar algumas informações e comentários aqui:</string>
 <string name="by_author">de</string>
     <string name="menu_email">E-mail do autor</string>
+    <string name="repo_provider">Repositório: %s</string>
+
+    <string name="useTor">Utilizar Tor</string>
+    <string name="useTorSummary">Descarregar aplicações através da rede Tor para melhorar a privacidade</string>
+    <string name="swap_stopping_wifi">A parar Wi-Fi…</string>
     </resources>

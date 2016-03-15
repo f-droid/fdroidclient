@@ -350,4 +350,6 @@
     <string name="useTor">Використовувати Tor</string>
     <string name="useTorSummary">Форсоване завантаження трафіку через мережу Tor для підвищення приватності</string>
     <string name="swap_stopping_wifi">Зупинка Wi-Fi…</string>
+    <string name="repo_provider">Репозиторій: %s</string>
+
     </resources>

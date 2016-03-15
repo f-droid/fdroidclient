@@ -329,4 +329,6 @@
     <string name="login_password">Συνθηματικό</string>
     <string name="repo_edit_credentials">Τροποποίηση Συνθηματικού</string>
     <string name="login_title">Απαιτείται πιστοποίηση</string>
+    <string name="useTor">Χρήση Tor</string>
+    <string name="empty_search_installed_app_list">Καμία εγκαταστημένη εφαρμογή δεν ταιριάζει.</string>
     </resources>

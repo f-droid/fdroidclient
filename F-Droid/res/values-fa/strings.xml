@@ -81,7 +81,7 @@
     <string name="unstable_updates">به‌روز رسانی‌های ناپایدار</string>
     <string name="unstable_updates_summary">پیشنهاد به‌روز رسانی به نگارش‌های ناپایدار</string>
     <string name="notify">آگهی‌های به‌روز رسانی</string>
-    <string name="update_history_summ">روزهایی که کاره حدید یا اخیر محسوب شود: %s</string>
+    <string name="update_history_summ">روزهایی که کاره جدید یا اخیر محسوب شود: %s</string>
     <string name="system_installer">افزونهٔ ممتاز</string>
     <string name="system_installer_on">استفاده از افزونهٔ ممتاز اف‌دروید برای نصب، به‌روز رسانی و حذف بسته‌ها</string>
     <string name="uninstall_system">به‌روز رسانی/حذف افزونهٔ ممتاز</string>
@@ -344,4 +344,6 @@
 <string name="useTor">استفاده از تور</string>
     <string name="useTorSummary">اجبار ترافیک بارگیری به استفاده از تور برای محرمانگی بیش‌تر</string>
     <string name="swap_stopping_wifi">در حال توقّف وای‌فای…</string>
+    <string name="repo_provider">مخزن: %s</string>
+
     </resources>

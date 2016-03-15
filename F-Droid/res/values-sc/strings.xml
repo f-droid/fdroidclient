@@ -340,4 +340,6 @@
     <string name="useTor">Imprea Tor</string>
     <string name="useTorSummary">Iscàrriga pro mèdiu de Tor pro una privadesa prus manna</string>
     <string name="swap_stopping_wifi">Firmende su Wi-Fi…</string>
+    <string name="repo_provider">Depòsitu: %s</string>
+
     </resources>
