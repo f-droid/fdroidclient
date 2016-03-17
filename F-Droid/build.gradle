@@ -10,9 +10,9 @@ repositories {
 dependencies {
     compile project(':privileged-api-lib')
 
-    compile 'com.android.support:support-v4:23.2.0'
-    compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'com.android.support:support-annotations:23.2.0'
+    compile 'com.android.support:support-v4:23.2.1'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:support-annotations:23.2.1'
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.google.zxing:core:3.2.1'
@@ -65,9 +65,9 @@ if (!hasProperty('sourceDeps')) {
     // source code don't need to be here.
     dependencyVerification {
         verify = [
-            'com.android.support:support-v4:992666398b80724a2f95ea3d7bf7c3d94fb810dcba7ae1aa6e38c0d6120d2603',
-            'com.android.support:appcompat-v7:14ab04eb2e3f302a082b79c308f6283d21909d1feb831a4e117cdacdad70adb7',
-            'com.android.support:support-annotations:7f21659b084da073b77b6f7fe7ab250c4f23346238d4efdbbbb937e017ae4693',
+            'com.android.support:support-v4:81ce890f26d35c75ad17d0f998a7e3230330c3b41e0b629566bc744bee89e448',
+            'com.android.support:appcompat-v7:00f9d93acacd6731f309724054bf51492814b4b2869f16d7d5c0038dcb8c9a0d',
+            'com.android.support:support-annotations:786ab0d060774fb95cfdaf4878771e14b85733b1af9d72a4aae762dc7c1dff9f',
             'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
             'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
             'eu.chainfire:libsuperuser:018344ff19ee94d252c14b4a503ee8b519184db473a5af83513f5837c413b128',
