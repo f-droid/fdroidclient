@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.database.Cursor;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,7 +31,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -110,12 +108,6 @@ public class SwapAppsView extends ListView implements
         // either reconnect with an existing loader or start a new one
         getActivity().getSupportLoaderManager().initLoader(LOADER_SWAPABLE_APPS, null, this);
 
-        setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                showAppDetails(position);
-            }
-        });
-
         displayImageOptions = Utils.getImageLoadingOptions().build();
 
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
@@ -191,12 +183,6 @@ public class SwapAppsView extends ListView implements
     @Override
     public String getToolbarTitle() {
         return getResources().getString(R.string.swap_success);
-    }
-
-    private void showAppDetails(int position) {
-        Cursor c = (Cursor) adapter.getItem(position);
-        App app = new App(c);
-        // TODO: Show app details screen.
     }
 
     @Override
@@ -335,10 +321,10 @@ public class SwapAppsView extends ListView implements
                     this.app = app;
                     apkToInstall = null; // Force lazy loading to fetch the correct apk next time.
 
-                    // NOTE: Instead of continually unregistering and reregistering the observer
+                    // NOTE: Instead of continually unregistering and re-registering the observer
                     // (with a different URI), this could equally be done by only having one
                     // registration in the constructor, and using the ContentObserver.onChange(boolean, URI)
-                    // method and inspecting the URI to see if it maches. However, this was only
+                    // method and inspecting the URI to see if it matches. However, this was only
                     // implemented on API-16, so leaving like this for now.
                     getActivity().getContentResolver().unregisterContentObserver(appObserver);
                     getActivity().getContentResolver().registerContentObserver(
@@ -418,9 +404,6 @@ public class SwapAppsView extends ListView implements
         @Nullable
         private LayoutInflater inflater;
 
-        @Nullable
-        private Drawable defaultAppIcon;
-
         AppListAdapter(@NonNull Context context, @Nullable Cursor c) {
             super(context, c, FLAG_REGISTER_CONTENT_OBSERVER);
         }
@@ -431,13 +414,6 @@ public class SwapAppsView extends ListView implements
                 inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             }
             return inflater;
-        }
-
-        private Drawable getDefaultAppIcon(Context context) {
-            if (defaultAppIcon == null) {
-                defaultAppIcon = context.getResources().getDrawable(android.R.drawable.sym_def_app_icon);
-            }
-            return defaultAppIcon;
         }
 
         @Override
