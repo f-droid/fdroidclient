@@ -100,7 +100,7 @@ public class AvailableAppsFragment extends AppListFragment implements
                 protected void onPostExecute(List<String> loadedCategories) {
                     adapter.clear();
                     categories = loadedCategories;
-                    ArrayAdapterCompat.addAll(adapter, translateCategories(loadedCategories));
+                    ArrayAdapterCompat.addAll(adapter, translateCategories(activity, loadedCategories));
                 }
             }.execute();
         }
@@ -114,14 +114,14 @@ public class AvailableAppsFragment extends AppListFragment implements
     /**
      * Attempt to translate category names with fallback to default name if no translation available
      */
-    private List<String> translateCategories(List<String> categories) {
+    private static List<String> translateCategories(Context context, List<String> categories) {
         List<String> translatedCategories = new ArrayList<>(categories.size());
-        Resources res = getResources();
-        String pkgName = getActivity().getPackageName();
+        Resources res = context.getResources();
+        String pkgName = context.getPackageName();
         for (String category : categories) {
             String resId = category.replace(" & ", "_").replace(" ", "_").replace("'", "");
             int id = res.getIdentifier("category_" + resId, "string", pkgName);
-            translatedCategories.add(id == 0 ? category : getString(id));
+            translatedCategories.add(id == 0 ? category : context.getString(id));
         }
         return translatedCategories;
     }
@@ -134,7 +134,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         categories = AppProvider.Helper.categories(getActivity());
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                getActivity(), android.R.layout.simple_spinner_item, translateCategories(categories));
+                getActivity(), android.R.layout.simple_spinner_item, translateCategories(getActivity(), categories));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
 
