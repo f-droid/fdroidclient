@@ -118,10 +118,22 @@ public class SwapAppsView extends ListView implements
 
         displayImageOptions = Utils.getImageLoadingOptions().build();
 
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
+                pollForUpdatesReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+
         schedulePollForUpdates();
     }
 
-    private BroadcastReceiver pollForUpdatesReceiver;
+    /**
+     * Remove relevant listeners/receivers/etc so that they do not receive and process events
+     * when this view is not in use.
+     */
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
+    }
 
     private void pollForUpdates() {
         if (adapter.getCount() > 1 ||
@@ -132,37 +144,6 @@ public class SwapAppsView extends ListView implements
 
         Utils.debugLog(TAG, "Polling swap repo to see if it has any updates.");
         getActivity().getService().refreshSwap();
-        if (pollForUpdatesReceiver != null) {
-            pollForUpdatesReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
-                    switch (statusCode) {
-                        case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
-                            Utils.debugLog(TAG, "Swap repo has updates, notifying the list adapter.");
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    adapter.notifyDataSetChanged();
-                                }
-                            });
-                            LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
-                            break;
-
-                        case UpdateService.STATUS_ERROR_GLOBAL:
-                            // TODO: Well, if we can't get the index, we probably can't swapp apps.
-                            // Tell the user somethign helpful?
-                            break;
-
-                        case UpdateService.STATUS_COMPLETE_AND_SAME:
-                            schedulePollForUpdates();
-                            break;
-                    }
-                }
-            };
-            // TODO: Unregister this properly, not just when successful (see swithc statement above)
-            LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
-        }
     }
 
     private void schedulePollForUpdates() {
@@ -485,5 +466,32 @@ public class SwapAppsView extends ListView implements
             holder.setApp(app);
         }
     }
+
+    private final BroadcastReceiver pollForUpdatesReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
+            switch (statusCode) {
+                case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
+                    Utils.debugLog(TAG, "Swap repo has updates, notifying the list adapter.");
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                    break;
+
+                case UpdateService.STATUS_ERROR_GLOBAL:
+                    // TODO: Well, if we can't get the index, we probably can't swapp apps.
+                    // Tell the user something helpful?
+                    break;
+
+                case UpdateService.STATUS_COMPLETE_AND_SAME:
+                    schedulePollForUpdates();
+                    break;
+            }
+        }
+    };
 
 }
