@@ -176,11 +176,11 @@
 <string name="app_name">F-Droid</string>
 
     <string name="app_incompatible">Non cumpatìbile</string>
-    <string name="links">Ligòngios</string>
+    <string name="links">Ligàmenes</string>
 
     <string name="back">In dae segus</string>
     <string name="update_notification_more">+%1$d àteru(os)…</string>
-    <string name="invalid_url">Custu no est unu ligòngiu vàlidu.</string>
+    <string name="invalid_url">Custu no est unu ligàmene vàlidu.</string>
     <string name="menu_changelog">Lista modìficas</string>
     <string name="update_notification_title">Agiornende sos depòsitos</string>
     <string name="status_processing_xml_percent">Protzessende %2$s / %3$s (%4$d%%) dae %1$s</string>

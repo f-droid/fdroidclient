@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="by_author">द्वारा</string>
+    <string name="delete">नष्ट करे</string>
+    <string name="enable_nfc_send">NFC द्वारा भेजे …</string>
+    <string name="version">संस्करण</string>
+    <string name="cache_downloaded_on">दौन्लोदिद फ़ाइलें यंत्र पर रखे</string>
+    <string name="updates">नवीनतम बनाये</string>
+    <string name="unstable_updates">अस्थिर अपडेट</string>
+    <string name="unstable_updates_summary">अस्थिर अपडेट के सुझाव दे</string>
+    <string name="other">अन्य</string>
+
+    <string name="update_interval">स्वचालित अद्यतन अंतराल</string>
+    <string name="update_interval_zero">कोई स्वचालित एप्लिकेशन अद्यतन नहीं</string>
+    <string name="automatic_scan_wifi">केवल Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">एप्लिकेशन सूचि स्वतः नवीनतम बनाये केवल Wi-Fi पे</string>
+    <string name="notify">नवीनतम सूचनाएं</string>
+    <string name="notify_on">सूचित कर्रे जब नवीनतम उपलब्ध हो</string>
+    <string name="update_history">अद्यतन इतिहास</string>
+    <string name="update_history_summ">दिन जब तक एप्लिकेशन को नया या हाल का माने : %s</string>
+    <string name="local_repo_name">स्थानीय कोष का नाम</string>
+    <string name="local_repo_name_summary">विज्ञापित शीर्षक स्थानीय कोष का : %s</string>
+    <string name="local_repo_https">गुप्त संपर्क इस्तेमाल करे</string>
+    <string name="local_repo_https_on">HTTPS:// इस्तेमाल करे स्थानीय कोष से संपर्क के लिए</string>
+
+    <string name="login_title">प्रमाणीकरण अपेक्षित</string>
+    <string name="login_name">उपयोगकर्ता नाम</string>
+    <string name="login_password">पासवर्ड</string>
+    <string name="repo_edit_credentials">पासवर्ड बदले</string>
+    <string name="repo_error_empty_username">खली उपयोगकर्ता नाम, सूचनाये नहीं बदली</string>
+
+    <string name="app_details">एप्लिकेशन विस्तार</string>
+    <string name="no_such_app">कोई ऐसा एप्लिकेशन नहीं मिला |</string>
+
+    <string name="about_title">F-Droid के बारे मैं</string>
+    <string name="about_version">संस्करण</string>
+    <string name="about_site">वेबसाइट</string>
+    <string name="about_source">सोर्स कोड</string>
+    <string name="about_mail">ईमेल</string>
+    <string name="about_license">लाइसेंस</string>
+
+    <string name="app_incompatible">बेमेल</string>
+    <string name="app_installed">स्थापित</string>
+    <string name="app_not_installed">स्थापित नहीं है</string>
+    <string name="app_inst_known_source">स्थपित (द्वारा %s)</string>
+    <string name="app_inst_unknown_source">स्थापित (अनजान सोत्र द्वारा)</string>
+
+    <string name="added_on">%s पर जोड़ा</string>
+
+    <string name="ok">ठीक</string>
+
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="repo_add_title">नया कोष जोड़े</string>
+    <string name="repo_add_add">जोड़े</string>
+    <string name="links">संधियां</string>
+    <string name="more">ज्यादा</string>
+    <string name="less">कम</string>
+
+    <string name="back">वापस</string>
+    <string name="cancel">रद्द करे</string>
+    <string name="enable">सक्षम करे</string>
+    <string name="add_key">कुंजी जोड़े</string>
+    <string name="overwrite">ऊपर लिखना</string>
+
+    <string name="tab_available_apps">उपलब्ध</string>
+    <string name="tab_installed_apps">स्थापित</string>
+    <string name="tab_updates">अपडेट</string>
+    <string name="tab_installed_apps_count">स्थापित (%d)</string>
+    <string name="tab_updates_count">अपडेट (%d)</string>
+    </resources>

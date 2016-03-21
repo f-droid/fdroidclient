@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">新版本签名与旧版本不同，请先卸载旧版本应用再安装新版本。（注意：卸载旧版本会清除该应用的所有已储存数据）</string>
   <string name="installIncompatible">该应用程序好像与您的设备不兼容。您仍然要尝试安装吗？</string>
@@ -332,10 +332,15 @@
     <string name="empty_search_can_update_app_list">未能从可更新应用中找到符合的结果。</string>
 
     <string name="by_author">by</string>
-    <string name="menu_email">E-Mail 作者</string>
+    <string name="menu_email">发邮件给作者</string>
     <string name="antinonfreeassetslist">该此应用包括非自由资产</string>
 
     <string name="crash_dialog_title">F-Droid 已崩溃</string>
     <string name="crash_dialog_text">发生了一个意料之外的错误导致应用程序停止。你愿意邮件发送问题的细节以便修复吗？</string>
     <string name="crash_dialog_comment_prompt">你可以在此添加额外的信息或者评论:</string>
-</resources>
+<string name="repo_provider">代码库: %s</string>
+
+    <string name="useTor">使用 Tor</string>
+    <string name="useTorSummary">强制下载流量使用 Tor 以增强隐私保障</string>
+    <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
+    </resources>

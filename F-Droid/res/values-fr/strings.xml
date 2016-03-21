@@ -341,4 +341,6 @@
     <string name="useTor">Utiliser Tor</string>
     <string name="useTorSummary">Télécharger anonymement grâce à Tor</string>
     <string name="swap_stopping_wifi">Arrêt du Wi-Fi en cours…</string>
+    <string name="repo_provider">Dépôt : %s</string>
+
     </resources>
