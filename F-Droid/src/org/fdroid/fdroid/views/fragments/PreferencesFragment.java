@@ -317,6 +317,7 @@ public class PreferencesFragment extends PreferenceFragment
     public void onPause() {
         super.onPause();
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+        Preferences.get().configureProxy();
     }
 
     @Override

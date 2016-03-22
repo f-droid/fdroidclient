@@ -206,6 +206,9 @@ public class FDroidApp extends Application {
         // the database is locked due to the database updater.
         InstalledAppCacheUpdater.updateInBackground(getApplicationContext());
 
+        // make sure the current proxy stuff is configured
+        Preferences.get().configureProxy();
+
         // If the user changes the preference to do with filtering rooted apps,
         // it is easier to just notify a change in the app provider,
         // so that the newly updated list will correctly filter relevant apps.

@@ -95,12 +95,6 @@ public class HttpDownloader extends Downloader {
             // swap never works with a proxy, its unrouted IP on the same subnet
             connection = (HttpURLConnection) sourceUrl.openConnection();
         } else {
-            Preferences prefs = Preferences.get();
-            if (prefs.isProxyEnabled()) {
-                // if "Use Tor" is set, NetCipher will ignore these proxy settings
-                SocketAddress sa = new InetSocketAddress(prefs.getProxyHost(), prefs.getProxyPort());
-                NetCipher.setProxy(new Proxy(Proxy.Type.HTTP, sa));
-            }
             connection = NetCipher.getHttpURLConnection(sourceUrl);
         }
 

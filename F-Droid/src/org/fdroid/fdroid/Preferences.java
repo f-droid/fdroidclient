@@ -6,6 +6,9 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import info.guardianproject.netcipher.NetCipher;
 
 /**
  * Handles shared preferences for FDroid, looking after the names of
@@ -176,6 +181,18 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public boolean isProxyEnabled() {
         return preferences.getBoolean(PREF_ENABLE_PROXY, DEFAULT_ENABLE_PROXY);
+    }
+
+    /**
+     * Configure the proxy settings based on whether its enabled and set up. This must be
+     * run once at app startup, then whenever any of these settings changes.
+     */
+    public void configureProxy() {
+        if (isProxyEnabled()) {
+            // if "Use Tor" is set, NetCipher will ignore these proxy settings
+            SocketAddress sa = new InetSocketAddress(getProxyHost(), getProxyPort());
+            NetCipher.setProxy(new Proxy(Proxy.Type.HTTP, sa));
+        }
     }
 
     public String getProxyHost() {
