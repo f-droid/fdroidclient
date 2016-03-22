@@ -167,6 +167,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 
+    testOptions {
+        // prevent tests from dying on android.util.Log calls
+        unitTests.returnDefaultValues = true
+    }
+
     lintOptions {
         checkReleaseBuilds false
         abortOnError false

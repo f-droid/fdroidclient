@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.net;
 
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
@@ -108,8 +107,8 @@ public class HttpDownloader extends Downloader {
         // workaround until NetCipher supports HTTPS SNI
         // https://gitlab.com/fdroid/fdroidclient/issues/431
         if (connection instanceof HttpsURLConnection
-                && !TextUtils.equals(sourceUrl.getHost(), "f-droid.org")
-                && !TextUtils.equals(sourceUrl.getHost(), "guardianproject.info")) {
+                && "f-droid.org".equals(sourceUrl.getHost())
+                && "guardianproject.info".equals(sourceUrl.getHost())) {
             ((HttpsURLConnection) connection).setSSLSocketFactory(HttpsURLConnection.getDefaultSSLSocketFactory());
         }
 
