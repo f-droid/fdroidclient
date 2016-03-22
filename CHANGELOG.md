@@ -1,3 +1,7 @@
+### 0.99.1 (2016-03-22)
+
+* Re-enable SNI support on Guardian Project repo
+
 ### 0.99 (2016-02-29)
 
 * Add simple "Use Tor" setting
