@@ -1,7 +1,5 @@
 package org.fdroid.fdroid.net;
 
-import android.content.Context;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,8 +10,8 @@ import java.net.URL;
 
 public class LocalFileDownloader extends Downloader {
 
-    LocalFileDownloader(Context context, URL url, File destFile) throws FileNotFoundException, MalformedURLException {
-        super(context, url, destFile);
+    LocalFileDownloader(URL url, File destFile) throws FileNotFoundException, MalformedURLException {
+        super(url, destFile);
     }
 
     private File getFileToDownload() {

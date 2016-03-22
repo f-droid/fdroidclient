@@ -1,13 +1,11 @@
 package org.fdroid.fdroid.net;
 
-import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Credentials;
 
@@ -17,10 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.SocketAddress;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -38,14 +33,14 @@ public class HttpDownloader extends Downloader {
     private Credentials credentials;
     private int statusCode = -1;
 
-    HttpDownloader(Context context, URL url, File destFile)
+    HttpDownloader(URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
-        this(context, url, destFile, null);
+        this(url, destFile, null);
     }
 
-    HttpDownloader(Context context, URL url, File destFile, final Credentials credentials)
+    HttpDownloader(URL url, File destFile, final Credentials credentials)
             throws FileNotFoundException, MalformedURLException {
-        super(context, url, destFile);
+        super(url, destFile);
 
         this.credentials = credentials;
     }

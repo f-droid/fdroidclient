@@ -1,9 +1,6 @@
 package org.fdroid.fdroid.net;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v4.content.LocalBroadcastManager;
 
 import org.fdroid.fdroid.Utils;
 
@@ -28,7 +25,6 @@ public abstract class Downloader {
 
     private final OutputStream outputStream;
 
-    private final LocalBroadcastManager localBroadcastManager;
     private final File outputFile;
 
     protected final URL sourceUrl;
@@ -36,20 +32,29 @@ public abstract class Downloader {
     private int bytesRead;
     private int totalBytes;
 
+    interface DownloaderProgressListener {
+        void sendProgress(URL sourceUrl, int bytesRead, int totalBytes);
+    }
+
+    private DownloaderProgressListener downloaderProgressListener;
+
     protected abstract InputStream getDownloadersInputStream() throws IOException;
 
     protected abstract void close() throws IOException;
 
-    Downloader(Context context, URL url, File destFile)
+    Downloader(URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
         this.sourceUrl = url;
         outputFile = destFile;
         outputStream = new FileOutputStream(outputFile);
-        localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 
     public final InputStream getInputStream() throws IOException {
         return new WrappedInputStream(getDownloadersInputStream());
+    }
+
+    public void setListener(DownloaderProgressListener listener) {
+        this.downloaderProgressListener = listener;
     }
 
     /**
@@ -188,11 +193,9 @@ public abstract class Downloader {
 
     private void sendProgress(int bytesRead, int totalBytes) {
         this.bytesRead = bytesRead;
-        Intent intent = new Intent(LOCAL_ACTION_PROGRESS);
-        intent.putExtra(EXTRA_ADDRESS, sourceUrl.toString());
-        intent.putExtra(EXTRA_BYTES_READ, bytesRead);
-        intent.putExtra(EXTRA_TOTAL_BYTES, totalBytes);
-        localBroadcastManager.sendBroadcast(intent);
+        if (downloaderProgressListener != null) {
+            downloaderProgressListener.sendProgress(sourceUrl, bytesRead, totalBytes);
+        }
     }
 
     public int getBytesRead() {

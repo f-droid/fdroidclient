@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.net;
 
-import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -25,8 +24,8 @@ public class BluetoothDownloader extends Downloader {
     private FileDetails fileDetails;
     private final String sourcePath;
 
-    public BluetoothDownloader(Context context, String macAddress, URL sourceUrl, File destFile) throws IOException {
-        super(context, sourceUrl, destFile);
+    public BluetoothDownloader(String macAddress, URL sourceUrl, File destFile) throws IOException {
+        super(sourceUrl, destFile);
         this.connection = new BluetoothClient(macAddress).openConnection();
         this.sourcePath = sourceUrl.getPath();
     }
