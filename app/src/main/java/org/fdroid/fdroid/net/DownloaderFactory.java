@@ -22,29 +22,9 @@ public class DownloaderFactory {
      */
     public static Downloader create(Context context, String urlString)
             throws IOException {
-        return create(context, new URL(urlString));
-    }
-
-    /**
-     * Downloads to a temporary file, which *you must delete yourself when
-     * you are done.  It is stored in {@link Context#getCacheDir()} and starts
-     * with the prefix {@code dl-}.
-     */
-    public static Downloader create(Context context, URL url)
-            throws IOException {
         File destFile = File.createTempFile("dl-", "", context.getCacheDir());
         destFile.deleteOnExit(); // this probably does nothing, but maybe...
-        return create(context, url, destFile);
-    }
-
-    public static Downloader create(Context context, String urlString, File destFile)
-            throws IOException {
-        return create(context, new URL(urlString), destFile);
-    }
-
-    public static Downloader create(Context context, URL url, File destFile)
-            throws IOException {
-        return create(context, url, destFile, null);
+        return create(context, new URL(urlString), destFile, null);
     }
 
     public static Downloader create(Context context, URL url, File destFile, Credentials credentials)
@@ -84,7 +64,8 @@ public class DownloaderFactory {
         return "file".equalsIgnoreCase(url.getProtocol());
     }
 
-    public static AsyncDownloader createAsync(Context context, String urlString, File destFile, String title, String id, Credentials credentials, AsyncDownloader.Listener listener) throws IOException {
+    public static AsyncDownloader createAsync(Context context, String urlString, File destFile, Credentials credentials, AsyncDownloader.Listener listener)
+            throws IOException {
         URL url = new URL(urlString);
         return new AsyncDownloadWrapper(create(context, url, destFile, credentials), listener);
     }

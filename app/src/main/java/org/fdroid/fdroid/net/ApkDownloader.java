@@ -197,7 +197,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
         Utils.debugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
-            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, app.name + " " + curApk.version, curApk.packageName, credentials, this);
+            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, credentials, this);
             dlWrapper.download();
             return true;
         } catch (IOException e) {
