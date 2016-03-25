@@ -2,7 +2,7 @@
 package org.fdroid.fdroid;
 
 import android.support.annotation.NonNull;
-import android.test.AndroidTestCase;
+import android.support.test.runner.AndroidJUnit4;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -10,6 +10,8 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.mock.MockRepo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -24,20 +26,18 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
-public class RepoXMLHandlerTest extends AndroidTestCase {
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
+@RunWith(AndroidJUnit4.class)
+public class RepoXMLHandlerTest {
     private static final String TAG = "RepoXMLHandlerTest";
 
     private static final String FAKE_PUBKEY = "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345";
 
-    public RepoXMLHandlerTest() {
-    }
-
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-    }
-
+    @Test
     public void testSimpleIndex() {
         Repo expectedRepo = new Repo();
         expectedRepo.name = "F-Droid";
@@ -47,6 +47,7 @@ public class RepoXMLHandlerTest extends AndroidTestCase {
         handlerTestSuite(expectedRepo, actualDetails, 0, 0, -1, 12);
     }
 
+    @Test
     public void testSmallRepo() {
         Repo expectedRepo = new Repo();
         expectedRepo.name = "Android-Nexus-7-20139453 on UNSET";
@@ -70,6 +71,7 @@ public class RepoXMLHandlerTest extends AndroidTestCase {
         });
     }
 
+    @Test
     public void testMediumRepo() {
         Repo expectedRepo = new Repo();
         expectedRepo.name = "Guardian Project Official Releases";
@@ -96,6 +98,7 @@ public class RepoXMLHandlerTest extends AndroidTestCase {
         });
     }
 
+    @Test
     public void testLargeRepo() {
         Repo expectedRepo = new Repo();
         expectedRepo.name = "F-Droid";
