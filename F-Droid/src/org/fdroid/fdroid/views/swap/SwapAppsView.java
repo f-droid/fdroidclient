@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.database.Cursor;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,7 +31,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -110,18 +108,24 @@ public class SwapAppsView extends ListView implements
         // either reconnect with an existing loader or start a new one
         getActivity().getSupportLoaderManager().initLoader(LOADER_SWAPABLE_APPS, null, this);
 
-        setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                showAppDetails(position);
-            }
-        });
-
         displayImageOptions = Utils.getImageLoadingOptions().build();
+
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
+                pollForUpdatesReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
 
         schedulePollForUpdates();
     }
 
-    private BroadcastReceiver pollForUpdatesReceiver;
+    /**
+     * Remove relevant listeners/receivers/etc so that they do not receive and process events
+     * when this view is not in use.
+     */
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
+    }
 
     private void pollForUpdates() {
         if (adapter.getCount() > 1 ||
@@ -132,37 +136,6 @@ public class SwapAppsView extends ListView implements
 
         Utils.debugLog(TAG, "Polling swap repo to see if it has any updates.");
         getActivity().getService().refreshSwap();
-        if (pollForUpdatesReceiver != null) {
-            pollForUpdatesReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
-                    switch (statusCode) {
-                        case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
-                            Utils.debugLog(TAG, "Swap repo has updates, notifying the list adapter.");
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    adapter.notifyDataSetChanged();
-                                }
-                            });
-                            LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
-                            break;
-
-                        case UpdateService.STATUS_ERROR_GLOBAL:
-                            // TODO: Well, if we can't get the index, we probably can't swapp apps.
-                            // Tell the user somethign helpful?
-                            break;
-
-                        case UpdateService.STATUS_COMPLETE_AND_SAME:
-                            schedulePollForUpdates();
-                            break;
-                    }
-                }
-            };
-            // TODO: Unregister this properly, not just when successful (see swithc statement above)
-            LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
-        }
     }
 
     private void schedulePollForUpdates() {
@@ -210,12 +183,6 @@ public class SwapAppsView extends ListView implements
     @Override
     public String getToolbarTitle() {
         return getResources().getString(R.string.swap_success);
-    }
-
-    private void showAppDetails(int position) {
-        Cursor c = (Cursor) adapter.getItem(position);
-        App app = new App(c);
-        // TODO: Show app details screen.
     }
 
     @Override
@@ -354,10 +321,10 @@ public class SwapAppsView extends ListView implements
                     this.app = app;
                     apkToInstall = null; // Force lazy loading to fetch the correct apk next time.
 
-                    // NOTE: Instead of continually unregistering and reregistering the observer
+                    // NOTE: Instead of continually unregistering and re-registering the observer
                     // (with a different URI), this could equally be done by only having one
                     // registration in the constructor, and using the ContentObserver.onChange(boolean, URI)
-                    // method and inspecting the URI to see if it maches. However, this was only
+                    // method and inspecting the URI to see if it matches. However, this was only
                     // implemented on API-16, so leaving like this for now.
                     getActivity().getContentResolver().unregisterContentObserver(appObserver);
                     getActivity().getContentResolver().registerContentObserver(
@@ -437,9 +404,6 @@ public class SwapAppsView extends ListView implements
         @Nullable
         private LayoutInflater inflater;
 
-        @Nullable
-        private Drawable defaultAppIcon;
-
         AppListAdapter(@NonNull Context context, @Nullable Cursor c) {
             super(context, c, FLAG_REGISTER_CONTENT_OBSERVER);
         }
@@ -450,13 +414,6 @@ public class SwapAppsView extends ListView implements
                 inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             }
             return inflater;
-        }
-
-        private Drawable getDefaultAppIcon(Context context) {
-            if (defaultAppIcon == null) {
-                defaultAppIcon = context.getResources().getDrawable(android.R.drawable.sym_def_app_icon);
-            }
-            return defaultAppIcon;
         }
 
         @Override
@@ -485,5 +442,32 @@ public class SwapAppsView extends ListView implements
             holder.setApp(app);
         }
     }
+
+    private final BroadcastReceiver pollForUpdatesReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
+            switch (statusCode) {
+                case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
+                    Utils.debugLog(TAG, "Swap repo has updates, notifying the list adapter.");
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                    break;
+
+                case UpdateService.STATUS_ERROR_GLOBAL:
+                    // TODO: Well, if we can't get the index, we probably can't swapp apps.
+                    // Tell the user something helpful?
+                    break;
+
+                case UpdateService.STATUS_COMPLETE_AND_SAME:
+                    schedulePollForUpdates();
+                    break;
+            }
+        }
+    };
 
 }

@@ -61,11 +61,22 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
             }
         });
 
-        // TODO: Unregister correctly, not just when being notified of completion or errors.
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 repoUpdateReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 prepareSwapReceiver, new IntentFilter(SwapWorkflowActivity.PrepareSwapRepo.ACTION));
+    }
+
+    /**
+     * Remove relevant listeners/receivers/etc so that they do not receive and process events
+     * when this view is not in use.
+     */
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(repoUpdateReceiver);
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(prepareSwapReceiver);
     }
 
     private final BroadcastReceiver repoUpdateReceiver = new ConnectSwapReceiver();
