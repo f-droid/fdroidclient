@@ -102,7 +102,7 @@ public class RepoUpdater {
                 repo.getCredentials()
             );
             downloader.setCacheTag(repo.lastetag);
-            downloader.downloadUninterrupted();
+            downloader.download();
 
             if (downloader.isCached()) {
                 // The index is unchanged since we last read it. We just mark
@@ -118,6 +118,9 @@ public class RepoUpdater {
             }
 
             throw new UpdateException(repo, "Error getting index file", e);
+        } catch (InterruptedException e) {
+            // ignored if canceled, the local database just won't be updated
+            e.printStackTrace();
         }
         return downloader;
     }
