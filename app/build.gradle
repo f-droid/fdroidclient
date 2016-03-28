@@ -123,29 +123,6 @@ android {
     buildToolsVersion '23.0.2'
     useLibrary 'org.apache.http.legacy'
 
-    sourceSets {
-        main {
-            manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = ['src']
-            resources.srcDirs = ['src']
-            aidl.srcDirs = ['src']
-            renderscript.srcDirs = ['src']
-            res.srcDirs = ['res']
-            assets.srcDirs = ['assets']
-        }
-
-        androidTest.setRoot('test')
-        androidTest {
-            manifest.srcFile 'test/AndroidManifest.xml'
-            java.srcDirs = ['test/src']
-            resources.srcDirs = ['test/src']
-            aidl.srcDirs = ['test/src']
-            renderscript.srcDirs = ['test/src']
-            res.srcDirs = ['test/res']
-            assets.srcDirs = ['test/assets']
-        }
-    }
-
     buildTypes {
         // use proguard on debug too since we have unknowingly broken
         // release builds before.

@@ -9,7 +9,7 @@ from xml.etree import ElementTree
 
 strings = set()
 
-for e in ElementTree.parse(os.path.join('res', 'values', 'strings.xml')).getroot().findall('.//string'):
+for e in ElementTree.parse(os.path.join('src', 'main', 'res', 'values', 'strings.xml')).getroot().findall('.//string'):
     name = e.attrib['name']
     strings.add(name)
 
