@@ -84,7 +84,6 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Credentials;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -857,19 +856,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         return repo.address;
     }
 
-    @Nullable
-    private Credentials getRepoCredentials(Apk apk) {
-        final String[] projection = {RepoProvider.DataColumns.USERNAME, RepoProvider.DataColumns.PASSWORD};
-        Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
-        if (repo == null || repo.username == null || repo.password == null) {
-            return null;
-        }
-        return repo.getCredentials();
-    }
-
     private void startDownload(Apk apk, String repoAddress) {
         downloadHandler = new ApkDownloader(getBaseContext(), app, apk, repoAddress);
-        downloadHandler.setCredentials(getRepoCredentials(apk));
 
         localBroadcastManager.registerReceiver(downloaderProgressReceiver,
                 new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));

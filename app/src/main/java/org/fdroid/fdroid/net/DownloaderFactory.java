@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
 
-import org.fdroid.fdroid.data.Credentials;
+import org.apache.commons.io.FilenameUtils;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,10 +25,10 @@ public class DownloaderFactory {
             throws IOException {
         File destFile = File.createTempFile("dl-", "", context.getCacheDir());
         destFile.deleteOnExit(); // this probably does nothing, but maybe...
-        return create(context, new URL(urlString), destFile, null);
+        return create(context, new URL(urlString), destFile);
     }
 
-    public static Downloader create(Context context, URL url, File destFile, Credentials credentials)
+    public static Downloader create(Context context, URL url, File destFile)
             throws IOException {
         Downloader downloader = null;
         if (localBroadcastManager == null) {
@@ -39,7 +41,14 @@ public class DownloaderFactory {
         } else if (isLocalFile(url)) {
             downloader = new LocalFileDownloader(url, destFile);
         } else {
-            downloader = new HttpDownloader(url, destFile, credentials);
+            final String[] projection = {RepoProvider.DataColumns.USERNAME, RepoProvider.DataColumns.PASSWORD};
+            String repoUrlString = FilenameUtils.getBaseName(url.toString());
+            Repo repo = RepoProvider.Helper.findByAddress(context, repoUrlString, projection);
+            if (repo == null) {
+                downloader = new HttpDownloader(url, destFile);
+            } else {
+                downloader = new HttpDownloader(url, destFile, repo.username, repo.password);
+            }
         }
 
         downloader.setListener(new Downloader.DownloaderProgressListener() {
@@ -63,9 +72,9 @@ public class DownloaderFactory {
         return "file".equalsIgnoreCase(url.getProtocol());
     }
 
-    public static AsyncDownloader createAsync(Context context, String urlString, File destFile, Credentials credentials, AsyncDownloader.Listener listener)
+    public static AsyncDownloader createAsync(Context context, String urlString, File destFile, AsyncDownloader.Listener listener)
             throws IOException {
         URL url = new URL(urlString);
-        return new AsyncDownloadWrapper(create(context, url, destFile, credentials), listener);
+        return new AsyncDownloadWrapper(create(context, url, destFile), listener);
     }
 }

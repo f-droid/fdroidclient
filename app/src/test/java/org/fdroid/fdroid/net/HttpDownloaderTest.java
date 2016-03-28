@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -32,7 +33,7 @@ public class HttpDownloaderTest {
             URL url = new URL(urlString);
             File destFile = File.createTempFile("dl-", "");
             destFile.deleteOnExit(); // this probably does nothing, but maybe...
-            HttpDownloader httpDownloader = new HttpDownloader(url, destFile, null);
+            HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
             httpDownloader.download();
             assertTrue(destFile.exists());
             assertTrue(destFile.canRead());
@@ -46,7 +47,7 @@ public class HttpDownloaderTest {
             URL url = new URL(urlString);
             File destFile = File.createTempFile("dl-", "");
             destFile.deleteOnExit(); // this probably does nothing, but maybe...
-            HttpDownloader httpDownloader = new HttpDownloader(url, destFile, null);
+            HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
             httpDownloader.setListener(new Downloader.DownloaderProgressListener() {
                 @Override
                 public void sendProgress(URL sourceUrl, int bytesRead, int totalBytes) {
@@ -61,12 +62,43 @@ public class HttpDownloaderTest {
     }
 
     @Test
+    public void downloadHttpBasicAuth() throws IOException, InterruptedException {
+        URL url = new URL("https://httpbin.org/basic-auth/myusername/supersecretpassword");
+        File destFile = File.createTempFile("dl-", "");
+        destFile.deleteOnExit(); // this probably does nothing, but maybe...
+        HttpDownloader httpDownloader = new HttpDownloader(url, destFile, "myusername", "supersecretpassword");
+        httpDownloader.download();
+        assertTrue(destFile.exists());
+        assertTrue(destFile.canRead());
+    }
+
+    @Test(expected = IOException.class)
+    public void downloadHttpBasicAuthWrongPassword() throws IOException, InterruptedException {
+        URL url = new URL("https://httpbin.org/basic-auth/myusername/supersecretpassword");
+        File destFile = File.createTempFile("dl-", "");
+        destFile.deleteOnExit(); // this probably does nothing, but maybe...
+        HttpDownloader httpDownloader = new HttpDownloader(url, destFile, "myusername", "wrongpassword");
+        httpDownloader.download();
+        assertFalse(destFile.exists());
+    }
+
+    @Test(expected = IOException.class)
+    public void downloadHttpBasicAuthWrongUsername() throws IOException, InterruptedException {
+        URL url = new URL("https://httpbin.org/basic-auth/myusername/supersecretpassword");
+        File destFile = File.createTempFile("dl-", "");
+        destFile.deleteOnExit(); // this probably does nothing, but maybe...
+        HttpDownloader httpDownloader = new HttpDownloader(url, destFile, "wrongusername", "supersecretpassword");
+        httpDownloader.download();
+        assertFalse(destFile.exists());
+    }
+
+    @Test
     public void downloadThenCancel() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(5);
         URL url = new URL("https://f-droid.org/repo/index.jar");
         File destFile = File.createTempFile("dl-", "");
         destFile.deleteOnExit(); // this probably does nothing, but maybe...
-        final HttpDownloader httpDownloader = new HttpDownloader(url, destFile, null);
+        final HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
         httpDownloader.setListener(new Downloader.DownloaderProgressListener() {
             @Override
             public void sendProgress(URL sourceUrl, int bytesRead, int totalBytes) {
@@ -75,7 +107,7 @@ public class HttpDownloaderTest {
                 latch.countDown();
             }
         });
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 try {

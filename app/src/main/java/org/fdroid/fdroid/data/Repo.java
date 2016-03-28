@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.text.TextUtils;
 
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.net.auth.HttpBasicCredentials;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -147,21 +146,6 @@ public class Repo extends ValueObject {
             return 0;
         }
         return value;
-    }
-
-    /**
-     * Returns the credentials for this repo, or null of no authentication
-     * method is configured.
-     * @return the credentials or null
-     */
-    public Credentials getCredentials() {
-
-        // return the only credentials implementation we have right now
-        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
-            return new HttpBasicCredentials(username, password);
-        }
-
-        return null;
     }
 
     public void setValues(ContentValues values) {

@@ -36,7 +36,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Credentials;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
@@ -69,7 +68,6 @@ public class ApkDownloader implements AsyncDownloader.Listener {
 
     private ProgressListener listener;
     private AsyncDownloader dlWrapper;
-    private Credentials credentials;
     private boolean isComplete;
 
     private final long id = ++downloadIdCounter;
@@ -188,7 +186,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
         Utils.debugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
-            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, credentials, this);
+            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, this);
             dlWrapper.download();
             return true;
         } catch (IOException e) {
@@ -270,9 +268,5 @@ public class ApkDownloader implements AsyncDownloader.Listener {
 
     public int getTotalBytes() {
         return dlWrapper != null ? dlWrapper.getTotalBytes() : 0;
-    }
-
-    public void setCredentials(final Credentials credentials) {
-        this.credentials = credentials;
     }
 }

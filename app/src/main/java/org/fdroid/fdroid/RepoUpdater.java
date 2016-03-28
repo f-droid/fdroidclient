@@ -98,9 +98,7 @@ public class RepoUpdater {
         Downloader downloader = null;
         try {
             downloader = DownloaderFactory.create(context,
-                getIndexAddress(), File.createTempFile("index-", "-downloaded", context.getCacheDir()),
-                repo.getCredentials()
-            );
+                getIndexAddress(), File.createTempFile("index-", "-downloaded", context.getCacheDir()));
             downloader.setCacheTag(repo.lastetag);
             downloader.download();
 
