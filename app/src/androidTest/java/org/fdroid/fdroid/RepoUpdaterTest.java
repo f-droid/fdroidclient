@@ -9,6 +9,7 @@ import org.fdroid.fdroid.data.Repo;
 
 import java.io.File;
 
+@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class RepoUpdaterTest extends InstrumentationTestCase {
     private static final String TAG = "RepoUpdaterTest";
 

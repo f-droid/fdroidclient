@@ -14,6 +14,7 @@ import org.fdroid.fdroid.mock.MockRepo;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class ApkProviderTest extends BaseApkProviderTest {
 
     /**

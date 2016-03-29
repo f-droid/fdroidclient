@@ -22,6 +22,7 @@ import mock.MockContextEmptyComponents;
 import mock.MockContextSwappableComponents;
 import mock.MockFDroidResources;
 
+@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public abstract class FDroidProviderTest<T extends FDroidProvider> extends ProviderTestCase2MockContext<T> {
 
     private FDroidProvider[] allProviders = {

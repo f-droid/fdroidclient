@@ -24,6 +24,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class RepoXMLHandlerTest extends AndroidTestCase {
     private static final String TAG = "RepoXMLHandlerTest";
 

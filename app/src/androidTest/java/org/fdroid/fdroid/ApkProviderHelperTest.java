@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class ApkProviderHelperTest extends BaseApkProviderTest {
 
     public void testKnownApks() {

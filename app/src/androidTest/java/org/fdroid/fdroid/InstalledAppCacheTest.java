@@ -10,6 +10,7 @@ import mock.MockInstallablePackageManager;
  * For practical reasons, it extends FDroidProviderTest<InstalledAppProvider>, although there is also a
  * separate test for the InstalledAppProvider which tests the CRUD operations in more detail.
  */
+@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class InstalledAppCacheTest extends FDroidProviderTest<InstalledAppProvider> {
 
     private MockInstallablePackageManager packageManager;

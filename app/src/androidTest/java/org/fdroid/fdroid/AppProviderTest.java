@@ -17,6 +17,7 @@ import mock.MockCategoryResources;
 import mock.MockContextSwappableComponents;
 import mock.MockInstallablePackageManager;
 
+@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
     public AppProviderTest() {

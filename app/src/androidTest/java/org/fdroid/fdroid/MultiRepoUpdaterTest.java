@@ -28,6 +28,7 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
+@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     private static final String TAG = "RepoUpdaterTest";
 

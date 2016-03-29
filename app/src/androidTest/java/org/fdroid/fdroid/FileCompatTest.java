@@ -10,6 +10,7 @@ import org.fdroid.fdroid.data.SanitizedFile;
 import java.io.File;
 import java.util.UUID;
 
+@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class FileCompatTest extends InstrumentationTestCase {
 
     private static final String TAG = "FileCompatTest";

@@ -6,6 +6,7 @@ import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
 
+@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class SanitizedFileTest extends AndroidTestCase {
 
     public void testSanitizedFile() {

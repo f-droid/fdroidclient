@@ -9,6 +9,7 @@ import org.fdroid.fdroid.data.RepoProvider;
 
 import mock.MockInstallablePackageManager;
 
+@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppProvider> {
 
     private MockInstallablePackageManager packageManager;
