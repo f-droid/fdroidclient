@@ -59,7 +59,6 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     public static final String EXTRA_URL = "apkDownloadUrl";
 
     public static final int ERROR_HASH_MISMATCH = 101;
-    public static final int ERROR_DOWNLOAD_FAILED = 102;
 
     private static final String EVENT_SOURCE_ID = "sourceId";
     private static long downloadIdCounter;
@@ -236,7 +235,6 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     @Override
     public void onErrorDownloading(String localisedExceptionDetails) {
         Log.e(TAG, "Download failed: " + localisedExceptionDetails);
-        sendError(ERROR_DOWNLOAD_FAILED);
         delete(localFile);
     }
 
