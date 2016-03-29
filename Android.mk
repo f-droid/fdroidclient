@@ -7,7 +7,7 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_PACKAGE_NAME := F-Droid
 
 fdroid_root  := $(LOCAL_PATH)
-fdroid_dir   := F-Droid
+fdroid_dir   := app
 fdroid_out   := $(PWD)/$(OUT_DIR)/target/common/obj/APPS/$(LOCAL_MODULE)_intermediates
 fdroid_build := $(fdroid_root)/$(fdroid_dir)/build
 fdroid_apk   := build/outputs/apk/F-Droid-release-unsigned.apk

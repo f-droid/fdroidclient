@@ -10,14 +10,14 @@ gradle:
     - export GRADLE_USER_HOME=$PWD/.gradle
     - ./gradlew assemble
     # always report on lint errors to the build log
-    - sed -i -e 's,textReport .*,textReport true,' F-Droid/build.gradle
+    - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
     - ./gradlew check
     - echo no | android create avd --force -n fcl-test -t android-10 -b armeabi
     - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82
     - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedCheck || { adb logcat -d '*:W'; exit 1; }
-    - sed -n 's/.*"ctr2">\([0-9]*\)%<.*/Coverage - \1.0% covered\n/p' F-Droid/build/reports/coverage/debug/index.html
+    - sed -n 's/.*"ctr2">\([0-9]*\)%<.*/Coverage - \1.0% covered\n/p' app/build/reports/coverage/debug/index.html
 
 pmd:
   script:
@@ -31,6 +31,6 @@ checkstyle:
 
 tools:
   script:
-    - cd F-Droid
+    - cd app
     - ./tools/langs-list-check.py
     - ./tools/check-string-format.py
