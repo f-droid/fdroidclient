@@ -51,15 +51,12 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     private static final String TAG = "ApkDownloader";
 
     public static final String EVENT_APK_DOWNLOAD_COMPLETE = "apkDownloadComplete";
-    public static final String EVENT_APK_DOWNLOAD_CANCELLED = "apkDownloadCancelled";
     public static final String EVENT_ERROR = "apkDownloadError";
 
     public static final String ACTION_STATUS = "apkDownloadStatus";
-    public static final String EXTRA_TYPE = "apkDownloadStatusType";
     public static final String EXTRA_URL = "apkDownloadUrl";
 
     public static final int ERROR_HASH_MISMATCH = 101;
-    public static final int ERROR_DOWNLOAD_FAILED = 102;
 
     private static final String EVENT_SOURCE_ID = "sourceId";
     private static long downloadIdCounter;
@@ -197,7 +194,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
         Utils.debugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
-            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, app.name + " " + curApk.version, curApk.packageName, credentials, this);
+            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, credentials, this);
             dlWrapper.download();
             return true;
         } catch (IOException e) {
@@ -228,7 +225,6 @@ public class ApkDownloader implements AsyncDownloader.Listener {
 
         Intent intent = new Intent(ACTION_STATUS);
         intent.putExtras(event.getData());
-        intent.putExtra(EXTRA_TYPE, event.type);
         intent.putExtra(EXTRA_URL, Utils.getApkUrl(repoAddress, curApk));
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
@@ -236,7 +232,6 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     @Override
     public void onErrorDownloading(String localisedExceptionDetails) {
         Log.e(TAG, "Download failed: " + localisedExceptionDetails);
-        sendError(ERROR_DOWNLOAD_FAILED);
         delete(localFile);
     }
 
@@ -259,11 +254,6 @@ public class ApkDownloader implements AsyncDownloader.Listener {
 
         Utils.debugLog(TAG, "Download finished: " + localFile);
         prepareApkFileAndSendCompleteMessage();
-    }
-
-    @Override
-    public void onDownloadCancelled() {
-        sendMessage(EVENT_APK_DOWNLOAD_CANCELLED);
     }
 
     @Override

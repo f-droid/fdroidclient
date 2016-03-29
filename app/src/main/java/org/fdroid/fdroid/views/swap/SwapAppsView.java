@@ -279,18 +279,8 @@ public class SwapAppsView extends ListView implements
                     // apkToInstall. This way, we can wait until we receive an incoming intent (if
                     // at all) and then lazily load the apk to install.
                     String broadcastUrl = intent.getStringExtra(ApkDownloader.EXTRA_URL);
-                    if (!TextUtils.equals(Utils.getApkUrl(apk.repoAddress, apk), broadcastUrl)) {
-                        return;
-                    }
-
-                    switch (intent.getStringExtra(ApkDownloader.EXTRA_TYPE)) {
-                        // Fallthrough for each of these "downloader no longer going" events...
-                        case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
-                        case ApkDownloader.EVENT_APK_DOWNLOAD_CANCELLED:
-                        case ApkDownloader.EVENT_ERROR:
-                        case ApkDownloader.EVENT_DATA_ERROR_TYPE:
-                            resetView();
-                            break;
+                    if (TextUtils.equals(Utils.getApkUrl(apk.repoAddress, apk), broadcastUrl)) {
+                        resetView();
                     }
                 }
             };

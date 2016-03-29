@@ -92,7 +92,6 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
 import org.fdroid.fdroid.net.ApkDownloader;
-import org.fdroid.fdroid.net.AsyncDownloaderFromAndroid;
 import org.fdroid.fdroid.net.Downloader;
 
 import java.io.File;
@@ -434,18 +433,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
-
-        // Check if a download is running for this app
-        if (AsyncDownloaderFromAndroid.isDownloading(this, app.packageName) >= 0) {
-            // call install() to re-setup the listeners and downloaders
-            // the AsyncDownloader will not restart the download since the download is running,
-            // and thus the version we pass to install() is not important
-            refreshHeader();
-            refreshApkList();
-            final Apk apkToInstall = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode);
-            install(apkToInstall);
-        }
-
     }
 
     @Override

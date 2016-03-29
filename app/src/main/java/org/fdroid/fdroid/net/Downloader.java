@@ -91,20 +91,6 @@ public abstract class Downloader {
 
     protected abstract int totalDownloadSize();
 
-    /**
-     * Helper function for synchronous downloads (i.e. those *not* using AsyncDownloadWrapper),
-     * which don't really want to bother dealing with an InterruptedException.
-     * The InterruptedException thrown from download() is there to enable cancelling asynchronous
-     * downloads, but regular synchronous downloads cannot be cancelled because download() will
-     * block until completed.
-     * @throws IOException
-     */
-    public void downloadUninterrupted() throws IOException {
-        try {
-            download();
-        } catch (InterruptedException ignored) { }
-    }
-
     public abstract void download() throws IOException, InterruptedException;
 
     public abstract boolean isCached();

@@ -789,8 +789,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
                         handleDownloadComplete(downloader.localFile(), app.packageName);
                         break;
-                    case ApkDownloader.EVENT_ERROR:
-                        break;
                 }
             }
         });
