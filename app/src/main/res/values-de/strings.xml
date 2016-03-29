@@ -98,7 +98,7 @@
   <string name="ignoreTouch_on">Anwendungen, die einen Touchscreen benötigen anzeigen</string>
   <string name="category_All">Alle</string>
   <string name="category_Whats_New">Was gibt es Neues</string>
-  <string name="category_Recently_Updated">Kürzlich Aktualisiert</string>
+  <string name="category_Recently_Updated">Kürzlich aktualisiert</string>
   <string name="local_repo">Lokale Paketquelle</string>
   <string name="local_repo_running">F-Droid ist bereit zum Tauschen</string>
   <string name="touch_to_configure_local_repo">Berühren, um Details zu sehen und es anderen erlauben Ihre Anwendungen zu tauschen.</string>
@@ -133,7 +133,7 @@
   <string name="repo_description">Beschreibung</string>
   <string name="repo_last_update">Letzte Aktualisierung</string>
   <string name="repo_name">Name</string>
-  <string name="unsigned_description">Das bedeutet, dass die Liste von Anwendungen nicht verifiziert werden konnte. Sie sollten vorsichtig sein mit heruntergeladenen Anwendungen aus nicht signierten Quellen.</string>
+  <string name="unsigned_description">Das bedeutet, dass die Liste von Anwendungen nicht überprüft werden konnte. Sie sollten vorsichtig sein, mit heruntergeladenen Anwendungen aus nicht signierten Quellen.</string>
   <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht benutzt. Um beinhaltende Anwendungen anzuzeigen, muss sie zuvor aktiviert werden.</string>
   <string name="unknown">Unbekannt</string>
   <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
@@ -284,7 +284,7 @@
     <string name="swap_no_peers_nearby">Keine Leute in der Nähe zum Tauschen gefunden.</string>
     <string name="swap_confirm">Tausch bestätigen</string>
     <string name="swap_qr_isnt_for_swap">Der QR-Code, den Sie eingelesen haben, sieht nicht wie ein Tauschcode aus.</string>
-    <string name="system_install_first_time_message">Es sieht so aus, als wenn Sie Root-Zugriff auf Ihrem Gerät haben. Sie können jetzt die privilegierte F-Droid Erweiterung installieren, die sehr eng mit dem Android-Betriebssystem gekoppelt ist. Das erlaubt F-Droid, selbständig Anwendungen zu installieren, aktualisieren und zu entfernen.</string>
+    <string name="system_install_first_time_message">Es sieht so aus, als wenn Sie root-Zugriff auf Ihrem Gerät haben. Sie können jetzt die privilegierte F-Droid-Erweiterung installieren, die sehr eng mit dem Android-Betriebssystem gekoppelt ist. Das erlaubt F-Droid selbständig Anwendungen zu installieren, zu aktualisieren und zu entfernen.</string>
     <string name="swap_join_same_wifi_desc">Um über WLAN zu tauschen, müssen Sie sich im selben Netzwerk befinden. Wenn Sie keinen gemeinsamen Netzwerkzugang haben, kann einer von Ihnen einen WLAN-Hotspot einrichten.</string>
     <string name="swap_nearby">Tausch in der Nähe</string>
     <string name="swap_cant_send_no_bluetooth">F-Droid kann nicht gesendet werden, da Bluetooth auf diesem Gerät nicht verfügbar ist.</string>

@@ -103,7 +103,7 @@
   <string name="adding_apks_format">Pridávam %s do repozitára…</string>
   <string name="writing_index_jar">Zapisujem podpísaný súbor indexu (index.jar)…</string>
   <string name="failed_to_create_index">Nepodarilo sa vytvoriť index repozitára!</string>
-  <string name="linking_apks">Odkazujem súbory APK do repa…</string>
+  <string name="linking_apks">Linkujem APK do repozitára…</string>
   <string name="copying_icons">Kopírujem ikony do repozitára…</string>
   <string name="icon">Ikona</string>
   <string name="next">Ďalej</string>
@@ -336,4 +336,9 @@
     <string name="crash_dialog_text">Neočakávaná chyba spôsobila násilné ukončenie aplikácie. Chcete poslať e-mail s detailami a pomôť tak vyriešiť problém?</string>
     <string name="crash_dialog_comment_prompt">Sem môžete poskytnúť extra informácie a pripomienky:</string>
 <string name="swap_scan_or_type_url">Naskenujte kód alebo zadajte URL v prehliadači.</string>
+    <string name="repo_provider">Repozitár: %s</string>
+
+    <string name="useTor">Použiť Tor</string>
+    <string name="useTorSummary">Vyžadovať preberanie cez Tor pre zabezpečenie súkromia</string>
+    <string name="swap_stopping_wifi">Vypínanie Wi-Fi…</string>
     </resources>

@@ -275,4 +275,8 @@
     <string name="system_install_question">Anda ingin memasang Ekstensi Istimewa F-Droid?</string>
     <string name="system_install_warning">Ini memakan waktu hingga 10 detik.</string>
     <string name="system_install_warning_lollipop">Ini memakan waktu 10 detik dan perangkat akan <b>booting ulang</b> setelah itu.</string>
+    <string name="system_install_first_time_message">Sepertinya anda memiliki akses root diperangkat anda. Anda sekarang dapat memasang Ekstensi Istimewa F-Droid, berhubungan erat dengan sistem operasi Android. Ini mengijinkan F-Droid memasang, meningkatkan dan mencopot pemasangan app sendiri.</string>
+    <string name="system_uninstall">Anda ingin mencopot pemasangan Ekstensi Istimewa F-Droid?</string>
+    <string name="system_uninstall_button">Copot pemasangan</string>
+
     </resources>
