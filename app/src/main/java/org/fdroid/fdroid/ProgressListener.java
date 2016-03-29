@@ -29,10 +29,6 @@ public interface ProgressListener {
             this(type, NO_VALUE, NO_VALUE, null);
         }
 
-        public Event(String type, Bundle data) {
-            this(type, NO_VALUE, NO_VALUE, data);
-        }
-
         public Event(String type, int progress, int total, Bundle data) {
             this.type = type;
             this.progress = progress;

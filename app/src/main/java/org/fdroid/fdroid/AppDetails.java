@@ -985,14 +985,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         boolean finished = false;
         switch (event.type) {
             case ApkDownloader.EVENT_ERROR:
-                final int res;
-                if (event.getData().getInt(ApkDownloader.EVENT_DATA_ERROR_TYPE) == ApkDownloader.ERROR_HASH_MISMATCH) {
-                    res = R.string.corrupt_download;
-                } else {
-                    res = R.string.details_notinstalled;
-                }
                 // this must be on the main UI thread
-                Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
                 cleanUpFinishedDownload();
                 finished = true;
                 break;
