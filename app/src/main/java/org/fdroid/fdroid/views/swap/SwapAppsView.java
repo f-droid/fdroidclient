@@ -278,7 +278,7 @@ public class SwapAppsView extends ListView implements
                     // once for each ViewHolder in order to get the repository address for the
                     // apkToInstall. This way, we can wait until we receive an incoming intent (if
                     // at all) and then lazily load the apk to install.
-                    String broadcastUrl = intent.getStringExtra(ApkDownloader.EXTRA_URL);
+                    String broadcastUrl = intent.getDataString();
                     if (TextUtils.equals(Utils.getApkUrl(apk.repoAddress, apk), broadcastUrl)) {
                         resetView();
                     }

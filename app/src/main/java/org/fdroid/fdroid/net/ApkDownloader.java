@@ -22,6 +22,7 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
@@ -54,7 +55,6 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     public static final String EVENT_ERROR = "apkDownloadError";
 
     public static final String ACTION_STATUS = "apkDownloadStatus";
-    public static final String EXTRA_URL = "apkDownloadUrl";
 
     public static final int ERROR_HASH_MISMATCH = 101;
 
@@ -224,8 +224,8 @@ public class ApkDownloader implements AsyncDownloader.Listener {
         }
 
         Intent intent = new Intent(ACTION_STATUS);
+        intent.setData(Uri.parse(Utils.getApkUrl(repoAddress, curApk)));
         intent.putExtras(event.getData());
-        intent.putExtra(EXTRA_URL, Utils.getApkUrl(repoAddress, curApk));
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
