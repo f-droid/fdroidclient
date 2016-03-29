@@ -181,7 +181,7 @@ android {
 }
 
 checkstyle {
-    toolVersion = '6.16'
+    toolVersion = '6.17'
 }
 
 task checkstyle(type: Checkstyle) {
