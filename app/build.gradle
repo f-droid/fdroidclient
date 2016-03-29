@@ -98,10 +98,10 @@ if (!hasProperty('sourceDeps')) {
         compile project(':extern:zipsigner')
     }
 
-    task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
+    task binaryDeps(type: Copy, dependsOn: ':app:prepareReleaseDependencies') {
 
         enabled = project.hasProperty('sourceDeps')
-        description = "Copies .jar and .aar files from subproject dependencies in extern/ to F-Droid/libs. Requires the sourceDeps property to be set (\"gradle -PsourceDeps binaryDeps\")"
+        description = "Copies .jar and .aar files from subproject dependencies in extern/ to app/libs. Requires the sourceDeps property to be set (\"gradle -PsourceDeps binaryDeps\")"
 
         from('../extern/') {
             include 'support-v4-preferencefragment/build/outputs/aar/support-v4-preferencefragment-release.aar'
