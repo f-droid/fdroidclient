@@ -702,16 +702,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 lrm.copyApksToRepo();
                 broadcast(TYPE_STATUS, getString(R.string.copying_icons));
                 // run the icon copy without progress, its not a blocker
-                // TODO: Fix lint error about this being run from a worker thread, says it should be
-                // run on a main thread.
-                new AsyncTask<Void, Void, Void>() {
-
+                new Thread() {
                     @Override
-                    protected Void doInBackground(Void... params) {
+                    public void run() {
+                        android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
                         lrm.copyIconsToRepo();
-                        return null;
                     }
-                }.execute();
+                }.start();
 
                 broadcast(TYPE_COMPLETE);
             } catch (Exception e) {
