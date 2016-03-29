@@ -8,8 +8,6 @@ public interface AsyncDownloader {
         void onErrorDownloading(String localisedExceptionDetails);
 
         void onDownloadComplete();
-
-        void onDownloadCancelled();
     }
 
     int getBytesRead();

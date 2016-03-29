@@ -12,7 +12,6 @@ class AsyncDownloadWrapper extends Handler implements AsyncDownloader {
     private static final String TAG = "AsyncDownloadWrapper";
 
     private static final int MSG_DOWNLOAD_COMPLETE  = 2;
-    private static final int MSG_DOWNLOAD_CANCELLED = 3;
     private static final int MSG_ERROR              = 4;
     private static final String MSG_DATA            = "data";
 
@@ -61,9 +60,6 @@ class AsyncDownloadWrapper extends Handler implements AsyncDownloader {
             case MSG_DOWNLOAD_COMPLETE:
                 listener.onDownloadComplete();
                 break;
-            case MSG_DOWNLOAD_CANCELLED:
-                listener.onDownloadCancelled();
-                break;
             case MSG_ERROR:
                 listener.onErrorDownloading(message.getData().getString(MSG_DATA));
                 break;
@@ -77,7 +73,7 @@ class AsyncDownloadWrapper extends Handler implements AsyncDownloader {
                 downloader.download();
                 sendMessage(MSG_DOWNLOAD_COMPLETE);
             } catch (InterruptedException e) {
-                sendMessage(MSG_DOWNLOAD_CANCELLED);
+                // ignored
             } catch (IOException e) {
                 Log.e(TAG, "I/O exception in download thread", e);
                 Bundle data = new Bundle(1);

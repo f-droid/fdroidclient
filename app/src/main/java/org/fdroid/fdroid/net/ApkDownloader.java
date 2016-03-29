@@ -51,7 +51,6 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     private static final String TAG = "ApkDownloader";
 
     public static final String EVENT_APK_DOWNLOAD_COMPLETE = "apkDownloadComplete";
-    public static final String EVENT_APK_DOWNLOAD_CANCELLED = "apkDownloadCancelled";
     public static final String EVENT_ERROR = "apkDownloadError";
 
     public static final String ACTION_STATUS = "apkDownloadStatus";
@@ -255,11 +254,6 @@ public class ApkDownloader implements AsyncDownloader.Listener {
 
         Utils.debugLog(TAG, "Download finished: " + localFile);
         prepareApkFileAndSendCompleteMessage();
-    }
-
-    @Override
-    public void onDownloadCancelled() {
-        sendMessage(EVENT_APK_DOWNLOAD_CANCELLED);
     }
 
     @Override
