@@ -43,9 +43,9 @@ class AsyncDownloadWrapper extends Handler implements AsyncDownloader {
         downloadThread.start();
     }
 
-    public void attemptCancel(boolean userRequested) {
-        if (downloadThread != null) {
-            downloadThread.interrupt();
+    public void attemptCancel() {
+        if (downloader != null) {
+            downloader.cancelDownload();
         }
     }
 

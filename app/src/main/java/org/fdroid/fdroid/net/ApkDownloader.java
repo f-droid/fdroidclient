@@ -253,12 +253,10 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     /**
      * Attempts to cancel the download (if in progress) and also removes the progress
      * listener
-     *
-     * @param userRequested - true if the user requested the cancel (via button click), otherwise false.
      */
-    public void cancel(boolean userRequested) {
+    public void cancel() {
         if (dlWrapper != null) {
-            dlWrapper.attemptCancel(userRequested);
+            dlWrapper.attemptCancel();
         }
     }
 

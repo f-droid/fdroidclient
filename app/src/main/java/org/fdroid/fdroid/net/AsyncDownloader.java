@@ -16,6 +16,6 @@ public interface AsyncDownloader {
 
     void download();
 
-    void attemptCancel(boolean userRequested);
+    void attemptCancel();
 
 }

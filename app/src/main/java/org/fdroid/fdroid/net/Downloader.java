@@ -23,6 +23,8 @@ public abstract class Downloader {
     public static final String EXTRA_BYTES_READ = "extraBytesRead";
     public static final String EXTRA_TOTAL_BYTES = "extraTotalBytes";
 
+    private volatile boolean cancelled = false;
+
     private final OutputStream outputStream;
 
     private final File outputFile;
@@ -124,10 +126,17 @@ public abstract class Downloader {
      * @throws InterruptedException
      */
     private void throwExceptionIfInterrupted() throws InterruptedException {
-        if (Thread.interrupted()) {
+        if (cancelled) {
             Utils.debugLog(TAG, "Received interrupt, cancelling download");
             throw new InterruptedException();
         }
+    }
+
+    /**
+     * Cancel a running download, triggering an {@link InterruptedException}
+     */
+    public void cancelDownload() {
+        cancelled = true;
     }
 
     /**
