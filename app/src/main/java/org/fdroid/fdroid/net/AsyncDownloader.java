@@ -5,7 +5,7 @@ import org.fdroid.fdroid.ProgressListener;
 public interface AsyncDownloader {
 
     interface Listener extends ProgressListener {
-        void onErrorDownloading(String localisedExceptionDetails);
+        void onErrorDownloading();
 
         void onDownloadComplete();
     }

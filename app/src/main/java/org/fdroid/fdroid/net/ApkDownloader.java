@@ -23,7 +23,6 @@ package org.fdroid.fdroid.net;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -193,7 +192,8 @@ public class ApkDownloader implements AsyncDownloader.Listener {
             dlWrapper.download();
             return true;
         } catch (IOException e) {
-            onErrorDownloading(e.getLocalizedMessage());
+            e.printStackTrace();
+            onErrorDownloading();
         }
 
         return false;
@@ -219,8 +219,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     }
 
     @Override
-    public void onErrorDownloading(String localisedExceptionDetails) {
-        Log.e(TAG, "Download failed: " + localisedExceptionDetails);
+    public void onErrorDownloading() {
         delete(localFile);
     }
 
