@@ -20,6 +20,7 @@ public abstract class AppListAdapter extends CursorAdapter {
 
     private LayoutInflater mInflater;
     private DisplayImageOptions displayImageOptions;
+    private String upgradeFromTo;
 
     public AppListAdapter(Context context, Cursor c) {
         super(context, c);
@@ -45,7 +46,7 @@ public abstract class AppListAdapter extends CursorAdapter {
         mInflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         displayImageOptions = Utils.getImageLoadingOptions().build();
-
+        upgradeFromTo = context.getResources().getString(R.string.upgrade_from_to);
     }
 
     protected abstract boolean showStatusUpdate();
@@ -122,7 +123,8 @@ public abstract class AppListAdapter extends CursorAdapter {
         final String installedVersionString = app.installedVersionName;
 
         if (app.canAndWantToUpdate() && showStatusUpdate()) {
-            return installedVersionString + " → " + app.getSuggestedVersion();
+            return String.format(upgradeFromTo,
+                    installedVersionString, app.getSuggestedVersion());
         }
 
         if (app.installedVersionCode > 0 && showStatusInstalled()) {

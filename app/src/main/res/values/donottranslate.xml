@@ -9,6 +9,7 @@
     <string name="license_gplv3_later">GNU General Public License version\u00A03 or later</string>
 
     <string name="https">https://</string>
+    <string name="upgrade_from_to">%1$s → %2$s</string>
 
     <string-array name="updateIntervalValues">
         <item>0</item>

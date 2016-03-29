@@ -28,6 +28,8 @@ for d in glob.glob(os.path.join('src', 'main', 'res', 'values-*')):
         continue
     if re.match('^v[0-9]+$', lang):
         continue
+    if lang == 'ldrtl':
+        continue
     if os.path.islink(d):
         continue
     trans.add(lang)
