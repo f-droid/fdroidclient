@@ -22,7 +22,7 @@ dependencies {
     compile 'commons-io:commons-io:2.4'
     compile 'commons-net:commons-net:3.4'
     compile 'org.openhab.jmdns:jmdns:3.4.2'
-    compile('ch.acra:acra:4.8.2') {
+    compile('ch.acra:acra:4.8.5') {
         exclude module: 'support-v4'
         exclude module: 'support-annotations'
     }
@@ -80,7 +80,7 @@ if (!hasProperty('sourceDeps')) {
             'com.madgag.spongycastle:pkix:6aba9b2210907a3d46dd3dcac782bb3424185290468d102d5207ebdc9796a905',
             'com.madgag.spongycastle:prov:029f26cd6b67c06ffa05702d426d472c141789001bcb15b7262ed86c868e5643',
             'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
-            'ch.acra:acra:bc12400f7fe0c86d238c0daa269bff2b785e5403d601d6874622d87e8be64771',
+            'ch.acra:acra:afd5b28934d5166b55f261c85685ad59e8a4ebe9ca1960906afaa8c76d8dc9eb',
             'io.reactivex:rxjava:2c162afd78eba217cdfee78b60e85d3bfb667db61e12bc95e3cf2ddc5beeadf6',
             'io.reactivex:rxandroid:35c1a90f8c1f499db3c1f3d608e1f191ac8afddb10c02dd91ef04c03a0a4bcda',
         ]
@@ -98,10 +98,10 @@ if (!hasProperty('sourceDeps')) {
         compile project(':extern:zipsigner')
     }
 
-    task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
+    task binaryDeps(type: Copy, dependsOn: ':app:prepareReleaseDependencies') {
 
         enabled = project.hasProperty('sourceDeps')
-        description = "Copies .jar and .aar files from subproject dependencies in extern/ to F-Droid/libs. Requires the sourceDeps property to be set (\"gradle -PsourceDeps binaryDeps\")"
+        description = "Copies .jar and .aar files from subproject dependencies in extern/ to app/libs. Requires the sourceDeps property to be set (\"gradle -PsourceDeps binaryDeps\")"
 
         from('../extern/') {
             include 'support-v4-preferencefragment/build/outputs/aar/support-v4-preferencefragment-release.aar'
@@ -181,7 +181,7 @@ android {
 }
 
 checkstyle {
-    toolVersion = '6.16'
+    toolVersion = '6.17'
 }
 
 task checkstyle(type: Checkstyle) {
