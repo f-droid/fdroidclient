@@ -459,12 +459,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 localBroadcastManager.registerReceiver(downloaderProgressReceiver,
                         new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
                 downloadHandler.setProgressListener(this);
-
-                if (downloadHandler.getTotalBytes() == 0) {
-                    headerFragment.startProgress();
-                } else {
-                    headerFragment.updateProgress(downloadHandler.getBytesRead(), downloadHandler.getTotalBytes());
-                }
+                headerFragment.startProgress();
             }
         }
     }

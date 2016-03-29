@@ -30,14 +30,6 @@ class AsyncDownloadWrapper extends Handler implements AsyncDownloader {
         this.listener = listener;
     }
 
-    public int getBytesRead() {
-        return downloader.getBytesRead();
-    }
-
-    public int getTotalBytes() {
-        return downloader.getTotalBytes();
-    }
-
     public void download() {
         downloadThread = new DownloadThread();
         downloadThread.start();

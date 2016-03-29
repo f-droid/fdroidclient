@@ -10,10 +10,6 @@ public interface AsyncDownloader {
         void onDownloadComplete();
     }
 
-    int getBytesRead();
-
-    int getTotalBytes();
-
     void download();
 
     void attemptCancel();
