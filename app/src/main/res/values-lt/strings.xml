@@ -63,7 +63,7 @@
   <string name="status_connecting_to_repo">Jungiamasi prie
 %1$s</string>
   <string name="repos_unchanged">Įjungtose saugyklose nėra nieko naujo</string>
-  <string name="global_error_updating_repos">Klaida naujinant:</string>
+  <string name="global_error_updating_repos">Klaida naujinant: %s</string>
   <string name="theme">Tema</string>
   <string name="repo_num_apps">Programų kiekis</string>
   <string name="repo_description">Aprašymas</string>

@@ -184,7 +184,7 @@
 
     <string name="local_repo_running">F-Droid已准备好交换应用</string>
     <string name="touch_to_configure_local_repo">触摸可查看详细信息以及允许其他人与你交换应用程序。</string>
-    <string name="adding_apks_format">正在添加 ％s 到软件源…</string>
+    <string name="adding_apks_format">正在添加 %s 到软件源…</string>
     <string name="writing_index_jar">正在写入已签名的索引文件（index.jar）…</string>
     <string name="failed_to_create_index">创建软件源索引失败！</string>
     <string name="linking_apks">正在链接APK到软件源……</string>
