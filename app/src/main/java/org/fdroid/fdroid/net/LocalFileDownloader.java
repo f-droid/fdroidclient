@@ -24,8 +24,9 @@ public class LocalFileDownloader extends Downloader {
     }
 
     @Override
-    protected void close() throws IOException {
+    protected void close() {
         // Do nothing.
+        // TODO this should close the InputStream from getDownloadersInputStream()
     }
 
     @Override

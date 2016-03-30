@@ -40,7 +40,7 @@ public abstract class Downloader {
 
     protected abstract InputStream getDownloadersInputStream() throws IOException;
 
-    protected abstract void close() throws IOException;
+    protected abstract void close();
 
     Downloader(URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
