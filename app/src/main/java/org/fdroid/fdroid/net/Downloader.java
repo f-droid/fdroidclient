@@ -117,11 +117,6 @@ public abstract class Downloader {
     }
 
     /**
-     * In a synchronous download (the usual usage of the Downloader interface),
-     * you will not be able to interrupt this because the thread will block
-     * after you have called download(). However if you use the AsyncDownloadWrapper,
-     * then it will use this mechanism to cancel the download.
-     *
      * After every network operation that could take a while, we will check if an
      * interrupt occured during that blocking operation. The goal is to ensure we
      * don't move onto another slow, network operation if we have cancelled the
