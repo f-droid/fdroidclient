@@ -15,7 +15,7 @@ public class InstalledAppsFragment extends AppListFragment {
 
     @Override
     protected AppListAdapter getAppListAdapter() {
-        return new InstalledAppListAdapter(getActivity(), null);
+        return InstalledAppListAdapter.create(getActivity(), null, 0);
     }
 
     @Override

@@ -58,7 +58,7 @@ public class AvailableAppsFragment extends AppListFragment implements
     @Override
     protected AppListAdapter getAppListAdapter() {
         if (adapter == null) {
-            final AppListAdapter a = new AvailableAppListAdapter(getActivity(), null);
+            final AppListAdapter a = AvailableAppListAdapter.create(getActivity(), null, 0);
             Preferences.get().registerUpdateHistoryListener(new Preferences.ChangeListener() {
                 @Override
                 public void onPreferenceChange() {
