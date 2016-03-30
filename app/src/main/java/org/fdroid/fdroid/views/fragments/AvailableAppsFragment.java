@@ -230,7 +230,7 @@ public class AvailableAppsFragment extends AppListFragment implements
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor e = p.edit();
         e.putString(CATEGORY_KEY, currentCategory);
-        e.commit();
+        e.apply();
     }
 
     @Override

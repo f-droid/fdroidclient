@@ -40,7 +40,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         if (preferences.getString(PREF_LOCAL_REPO_NAME, null) == null) {
             preferences.edit()
                     .putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName())
-                    .commit();
+                    .apply();
         }
     }
 
@@ -113,7 +113,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public void setPrivilegedInstallerEnabled(boolean enable) {
-        preferences.edit().putBoolean(PREF_PRIVILEGED_INSTALLER, enable).commit();
+        preferences.edit().putBoolean(PREF_PRIVILEGED_INSTALLER, enable).apply();
     }
 
     public boolean isFirstTime() {
@@ -121,7 +121,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public void setFirstTime(boolean firstTime) {
-        preferences.edit().putBoolean(PREF_FIRST_TIME, firstTime).commit();
+        preferences.edit().putBoolean(PREF_FIRST_TIME, firstTime).apply();
     }
 
     public boolean isPostPrivilegedInstall() {
@@ -129,7 +129,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public void setPostPrivilegedInstall(boolean postInstall) {
-        preferences.edit().putBoolean(PREF_POST_PRIVILEGED_INSTALL, postInstall).commit();
+        preferences.edit().putBoolean(PREF_POST_PRIVILEGED_INSTALL, postInstall).apply();
     }
 
     public boolean shouldCacheApks() {
@@ -149,7 +149,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public void setShowNfcDuringSwap(boolean show) {
-        preferences.edit().putBoolean(PREF_SHOW_NFC_DURING_SWAP, show).commit();
+        preferences.edit().putBoolean(PREF_SHOW_NFC_DURING_SWAP, show).apply();
     }
 
     public boolean expertMode() {
