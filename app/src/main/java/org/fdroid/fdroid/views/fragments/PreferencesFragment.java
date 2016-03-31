@@ -204,13 +204,13 @@ public class PreferencesFragment extends PreferenceFragment
                         // privileged permission are granted, i.e. the extension is installed correctly
                         SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                         editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, true);
-                        editor.commit();
+                        editor.apply();
                         pref.setChecked(true);
                     } else {
                         // privileged permission not available
                         SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                         editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
-                        editor.commit();
+                        editor.apply();
                         pref.setChecked(false);
 
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
@@ -248,7 +248,7 @@ public class PreferencesFragment extends PreferenceFragment
                 } else {
                     SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                     editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
-                    editor.commit();
+                    editor.apply();
                     pref.setChecked(false);
                 }
 

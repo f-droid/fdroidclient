@@ -141,7 +141,7 @@ public abstract class AppListFragment extends ListFragment implements
         boolean hasTriedEmptyUpdate = prefs.getBoolean(triedEmptyUpdate, false);
         if (!hasTriedEmptyUpdate) {
             Utils.debugLog(TAG, "Empty app list, and we haven't done an update yet. Forcing repo update.");
-            prefs.edit().putBoolean(triedEmptyUpdate, true).commit();
+            prefs.edit().putBoolean(triedEmptyUpdate, true).apply();
             UpdateService.updateNow(getActivity());
             return true;
         }

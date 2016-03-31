@@ -406,7 +406,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             SharedPreferences.Editor e = prefs.edit();
             e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
-            e.commit();
+            e.apply();
 
             if (errorRepos == 0) {
                 if (changes) {

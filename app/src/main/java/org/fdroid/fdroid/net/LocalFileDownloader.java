@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.net;
 
+import org.fdroid.fdroid.Utils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,22 +12,23 @@ import java.net.URL;
 
 public class LocalFileDownloader extends Downloader {
 
+    private InputStream inputStream;
+
     LocalFileDownloader(URL url, File destFile) throws FileNotFoundException, MalformedURLException {
         super(url, destFile);
     }
 
-    private File getFileToDownload() {
-        return new File(sourceUrl.getPath());
-    }
-
     @Override
     protected InputStream getDownloadersInputStream() throws IOException {
-        return new FileInputStream(getFileToDownload());
+        inputStream = new FileInputStream(new File(sourceUrl.getPath()));
+        return inputStream;
     }
 
     @Override
-    protected void close() throws IOException {
-        // Do nothing.
+    protected void close() {
+        if (inputStream != null) {
+            Utils.closeQuietly(inputStream);
+        }
     }
 
     @Override

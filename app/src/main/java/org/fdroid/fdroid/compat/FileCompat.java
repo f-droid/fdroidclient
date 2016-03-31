@@ -11,6 +11,12 @@ import org.fdroid.fdroid.data.SanitizedFile;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+/**
+ * This class works only with {@link SanitizedFile} instances to enforce
+ * filtering of the file names from files downloaded from the internet.
+ * This helps prevent things like SQL injection, shell command injection
+ * and other attacks based on putting various characters into filenames.
+ */
 public class FileCompat extends Compatibility {
 
     private static final String TAG = "FileCompat";
