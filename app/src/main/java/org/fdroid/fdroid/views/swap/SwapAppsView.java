@@ -290,7 +290,7 @@ public class SwapAppsView extends ListView implements
                 localBroadcastManager.registerReceiver(appListViewResetReceiver,
                         DownloaderService.getIntentFilter(url, Downloader.ACTION_STARTED));
                 localBroadcastManager.registerReceiver(downloadProgressReceiver,
-                        DownloaderService.getIntentFilter(url, Downloader.LOCAL_ACTION_PROGRESS));
+                        DownloaderService.getIntentFilter(url, Downloader.ACTION_PROGRESS));
                 localBroadcastManager.registerReceiver(appListViewResetReceiver,
                         DownloaderService.getIntentFilter(url, Downloader.ACTION_COMPLETE));
                 localBroadcastManager.registerReceiver(appListViewResetReceiver,

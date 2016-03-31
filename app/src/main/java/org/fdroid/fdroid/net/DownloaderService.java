@@ -186,7 +186,7 @@ public class DownloaderService extends Service {
                 @Override
                 public void sendProgress(URL sourceUrl, int bytesRead, int totalBytes) {
                     //Log.i(TAG, "sendProgress " + sourceUrl + " " + bytesRead + " / " + totalBytes);
-                    Intent intent = new Intent(Downloader.LOCAL_ACTION_PROGRESS);
+                    Intent intent = new Intent(Downloader.ACTION_PROGRESS);
                     intent.setData(uri);
                     intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
                     intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
@@ -261,7 +261,7 @@ public class DownloaderService extends Service {
      * Get a prepared {@link IntentFilter} for use for matching this service's action events.
      *
      * @param urlString The full file URL to match.
-     * @param action    {@link Downloader#ACTION_STARTED}, {@link Downloader#LOCAL_ACTION_PROGRESS},
+     * @param action    {@link Downloader#ACTION_STARTED}, {@link Downloader#ACTION_PROGRESS},
      *                  {@link Downloader#ACTION_INTERRUPTED}, or {@link Downloader#ACTION_COMPLETE},
      * @return
      */

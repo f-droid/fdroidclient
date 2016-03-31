@@ -474,7 +474,7 @@ public class AppDetails extends AppCompatActivity {
             localBroadcastManager.registerReceiver(startedReceiver,
                     DownloaderService.getIntentFilter(url, Downloader.ACTION_STARTED));
             localBroadcastManager.registerReceiver(progressReceiver,
-                    DownloaderService.getIntentFilter(url, Downloader.LOCAL_ACTION_PROGRESS));
+                    DownloaderService.getIntentFilter(url, Downloader.ACTION_PROGRESS));
             localBroadcastManager.registerReceiver(completeReceiver,
                     DownloaderService.getIntentFilter(url, Downloader.ACTION_COMPLETE));
             localBroadcastManager.registerReceiver(interruptedReceiver,

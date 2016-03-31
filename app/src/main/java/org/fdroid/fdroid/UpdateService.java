@@ -48,6 +48,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.Downloader;
+import org.fdroid.fdroid.net.DownloaderService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,8 +130,6 @@ public class UpdateService extends IntentService implements ProgressListener {
         super.onCreate();
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
-        localBroadcastManager.registerReceiver(downloadProgressReceiver,
-                new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
         localBroadcastManager.registerReceiver(updateStatusReceiver,
                 new IntentFilter(LOCAL_ACTION_STATUS));
 
@@ -192,16 +191,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     private final BroadcastReceiver downloadProgressReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (TextUtils.isEmpty(action)) {
-                return;
-            }
-
-            if (!action.equals(Downloader.LOCAL_ACTION_PROGRESS)) {
-                return;
-            }
-
-            String repoAddress = intent.getStringExtra(Downloader.EXTRA_ADDRESS);
+            String repoAddress = intent.getDataString();
             int downloadedSize = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1);
             String downloadedSizeFriendly = Utils.getFriendlySize(downloadedSize);
             int totalSize = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1);
@@ -381,6 +371,8 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
                 RepoUpdater updater = new RepoUpdater(getBaseContext(), repo);
+                localBroadcastManager.registerReceiver(downloadProgressReceiver,
+                        DownloaderService.getIntentFilter(updater.indexUrl, Downloader.ACTION_PROGRESS));
                 updater.setProgressListener(this);
                 try {
                     updater.update();
@@ -395,6 +387,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     repoErrors.add(e.getMessage());
                     Log.e(TAG, "Error updating repository " + repo.address, e);
                 }
+                localBroadcastManager.unregisterReceiver(downloadProgressReceiver);
             }
 
             if (!changes) {

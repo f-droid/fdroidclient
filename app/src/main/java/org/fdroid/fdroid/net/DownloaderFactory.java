@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.content.LocalBroadcastManager;
 
@@ -57,17 +56,6 @@ public class DownloaderFactory {
                 downloader = new HttpDownloader(url, destFile, repo.username, repo.password);
             }
         }
-
-        downloader.setListener(new Downloader.DownloaderProgressListener() {
-            @Override
-            public void sendProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                Intent intent = new Intent(Downloader.LOCAL_ACTION_PROGRESS);
-                intent.putExtra(Downloader.EXTRA_ADDRESS, sourceUrl.toString());
-                intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
-                intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
-                localBroadcastManager.sendBroadcast(intent);
-            }
-        });
         return downloader;
     }
 
