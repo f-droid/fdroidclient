@@ -184,7 +184,7 @@ checkstyle {
 
 task checkstyle(type: Checkstyle) {
     configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
-    source 'src', 'test/src'
+    source 'src/main/java', 'src/test/java', 'src/androidTest/java'
     include '**/*.java'
 
     classpath = files()
@@ -205,7 +205,7 @@ task pmd(type: Pmd, dependsOn: assembleDebug) {
         'java-imports',
         'java-migrating',
     ]
-    source 'src'
+    source 'src/main/java'
     include '**/org/fdroid/**/*.java'
 }
 
