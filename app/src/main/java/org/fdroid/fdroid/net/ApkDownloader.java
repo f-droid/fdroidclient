@@ -22,14 +22,16 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Apk;
@@ -54,17 +56,9 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     public static final String EVENT_ERROR = "apkDownloadError";
 
     public static final String ACTION_STATUS = "apkDownloadStatus";
-    public static final String EXTRA_URL = "apkDownloadUrl";
-
-    public static final int ERROR_HASH_MISMATCH = 101;
 
     private static final String EVENT_SOURCE_ID = "sourceId";
     private static long downloadIdCounter;
-
-    /**
-     * Used as a key to pass data through with an error event, explaining the type of event.
-     */
-    public static final String EVENT_DATA_ERROR_TYPE = "apkDownloadErrorType";
 
     @NonNull private final App app;
     @NonNull private final Apk curApk;
@@ -198,7 +192,8 @@ public class ApkDownloader implements AsyncDownloader.Listener {
             dlWrapper.download();
             return true;
         } catch (IOException e) {
-            onErrorDownloading(e.getLocalizedMessage());
+            e.printStackTrace();
+            onErrorDownloading();
         }
 
         return false;
@@ -206,12 +201,6 @@ public class ApkDownloader implements AsyncDownloader.Listener {
 
     private void sendMessage(String type) {
         sendProgressEvent(new ProgressListener.Event(type));
-    }
-
-    private void sendError(int errorType) {
-        Bundle data = new Bundle(1);
-        data.putInt(EVENT_DATA_ERROR_TYPE, errorType);
-        sendProgressEvent(new Event(EVENT_ERROR, data));
     }
 
     // TODO: Completely remove progress listener, only use broadcasts...
@@ -224,14 +213,13 @@ public class ApkDownloader implements AsyncDownloader.Listener {
         }
 
         Intent intent = new Intent(ACTION_STATUS);
+        intent.setData(Uri.parse(Utils.getApkUrl(repoAddress, curApk)));
         intent.putExtras(event.getData());
-        intent.putExtra(EXTRA_URL, Utils.getApkUrl(repoAddress, curApk));
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     @Override
-    public void onErrorDownloading(String localisedExceptionDetails) {
-        Log.e(TAG, "Download failed: " + localisedExceptionDetails);
+    public void onErrorDownloading() {
         delete(localFile);
     }
 
@@ -246,7 +234,8 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     public void onDownloadComplete() {
 
         if (!verifyOrDelete(localFile)) {
-            sendError(ERROR_HASH_MISMATCH);
+            sendProgressEvent(new Event(EVENT_ERROR));
+            Toast.makeText(context, R.string.corrupt_download, Toast.LENGTH_LONG).show();
             return;
         }
 

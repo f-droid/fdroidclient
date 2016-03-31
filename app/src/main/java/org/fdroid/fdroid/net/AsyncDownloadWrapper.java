@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.net;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -13,7 +12,6 @@ class AsyncDownloadWrapper extends Handler implements AsyncDownloader {
 
     private static final int MSG_DOWNLOAD_COMPLETE  = 2;
     private static final int MSG_ERROR              = 4;
-    private static final String MSG_DATA            = "data";
 
     private final Downloader downloader;
     private DownloadThread downloadThread;
@@ -61,7 +59,7 @@ class AsyncDownloadWrapper extends Handler implements AsyncDownloader {
                 listener.onDownloadComplete();
                 break;
             case MSG_ERROR:
-                listener.onErrorDownloading(message.getData().getString(MSG_DATA));
+                listener.onErrorDownloading();
                 break;
         }
     }
@@ -76,12 +74,7 @@ class AsyncDownloadWrapper extends Handler implements AsyncDownloader {
                 // ignored
             } catch (IOException e) {
                 Log.e(TAG, "I/O exception in download thread", e);
-                Bundle data = new Bundle(1);
-                data.putString(MSG_DATA, e.getLocalizedMessage());
-                Message message = new Message();
-                message.arg1 = MSG_ERROR;
-                message.setData(data);
-                AsyncDownloadWrapper.this.sendMessage(message);
+                sendMessage(MSG_ERROR);
             }
         }
 
