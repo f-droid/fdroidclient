@@ -206,7 +206,7 @@ public class LocalHTTPD extends NanoHTTPD {
             }
         }
 
-        Response response = serveFile(uri, headers, f, getMimeTypeForFile(uri));
+        Response response = serveFile(headers, f, getMimeTypeForFile(uri));
         return response != null ? response :
                 createResponse(Response.Status.NOT_FOUND, NanoHTTPD.MIME_PLAINTEXT,
                         "Error 404, file not found.");
@@ -216,7 +216,7 @@ public class LocalHTTPD extends NanoHTTPD {
      * Serves file from homeDir and its' subdirectories (only). Uses only URI,
      * ignores all headers and HTTP parameters.
      */
-    private Response serveFile(String uri, Map<String, String> header, File file, String mime) {
+    private Response serveFile(Map<String, String> header, File file, String mime) {
         Response res;
         try {
             // Calculate etag

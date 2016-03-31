@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class ProgressBufferedInputStream extends BufferedInputStream {
-    private static final String TAG = "ProgressBufferedInputSt";
 
     private final ProgressListener progressListener;
     private final Bundle data;

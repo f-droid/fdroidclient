@@ -32,10 +32,6 @@ public class InitialLoadingView extends RelativeLayout implements SwapWorkflowAc
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    private SwapWorkflowActivity getActivity() {
-        return (SwapWorkflowActivity) getContext();
-    }
-
     @Override
     public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
         return true;

@@ -211,9 +211,6 @@ public class SelectAppsView extends ListView implements
 
     private class AppListAdapter extends CursorAdapter {
 
-        @SuppressWarnings("UnusedDeclaration")
-        private static final String TAG = "AppListAdapter";
-
         @Nullable
         private LayoutInflater inflater;
 
