@@ -16,10 +16,14 @@ public abstract class Downloader {
     private static final String TAG = "Downloader";
 
     public static final String LOCAL_ACTION_PROGRESS = "Downloader.PROGRESS";
+    public static final String ACTION_STARTED = "org.fdroid.fdroid.net.Downloader.action.STARTED";
+    public static final String ACTION_INTERRUPTED = "org.fdroid.fdroid.net.Downloader.action.INTERRUPTED";
+    public static final String ACTION_COMPLETE = "org.fdroid.fdroid.net.Downloader.action.COMPLETE";
 
     public static final String EXTRA_ADDRESS = "extraAddress";
-    public static final String EXTRA_BYTES_READ = "extraBytesRead";
-    public static final String EXTRA_TOTAL_BYTES = "extraTotalBytes";
+    public static final String EXTRA_DOWNLOAD_PATH = "org.fdroid.fdroid.net.Downloader.extra.DOWNLOAD_PATH";
+    public static final String EXTRA_BYTES_READ = "org.fdroid.fdroid.net.Downloader.extra.BYTES_READ";
+    public static final String EXTRA_TOTAL_BYTES = "org.fdroid.fdroid.net.Downloader.extra.TOTAL_BYTES";
 
     private volatile boolean cancelled = false;
 

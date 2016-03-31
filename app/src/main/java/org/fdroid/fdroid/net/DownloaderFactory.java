@@ -2,6 +2,7 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.content.LocalBroadcastManager;
 
 import org.apache.commons.io.FilenameUtils;
@@ -25,11 +26,17 @@ public class DownloaderFactory {
             throws IOException {
         File destFile = File.createTempFile("dl-", "", context.getCacheDir());
         destFile.deleteOnExit(); // this probably does nothing, but maybe...
-        return create(context, new URL(urlString), destFile);
+        return create(context, urlString, destFile);
     }
 
-    public static Downloader create(Context context, URL url, File destFile)
+    public static Downloader create(Context context, Uri uri, File destFile)
             throws IOException {
+        return create(context, uri.toString(), destFile);
+    }
+
+    public static Downloader create(Context context, String urlString, File destFile)
+            throws IOException {
+        URL url = new URL(urlString);
         Downloader downloader = null;
         if (localBroadcastManager == null) {
             localBroadcastManager = LocalBroadcastManager.getInstance(context);
@@ -70,11 +77,5 @@ public class DownloaderFactory {
 
     private static boolean isLocalFile(URL url) {
         return "file".equalsIgnoreCase(url.getProtocol());
-    }
-
-    public static AsyncDownloader createAsync(Context context, String urlString, File destFile, AsyncDownloader.Listener listener)
-            throws IOException {
-        URL url = new URL(urlString);
-        return new AsyncDownloadWrapper(create(context, url, destFile), listener);
     }
 }

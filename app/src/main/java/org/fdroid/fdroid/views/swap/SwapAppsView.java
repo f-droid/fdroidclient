@@ -49,8 +49,8 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.localrepo.SwapService;
-import org.fdroid.fdroid.net.ApkDownloader;
 import org.fdroid.fdroid.net.Downloader;
+import org.fdroid.fdroid.net.DownloaderService;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -231,6 +231,7 @@ public class SwapAppsView extends ListView implements
 
         private class ViewHolder {
 
+            private final LocalBroadcastManager localBroadcastManager;
             private App app;
 
             @Nullable
@@ -247,13 +248,6 @@ public class SwapAppsView extends ListView implements
             private final BroadcastReceiver downloadProgressReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
-                    Apk apk = getApkToInstall();
-                    String broadcastUrl = intent.getStringExtra(Downloader.EXTRA_ADDRESS);
-
-                    if (apk != null && apk.repoAddress != null && !TextUtils.equals(Utils.getApkUrl(apk.repoAddress, apk), broadcastUrl)) {
-                        return;
-                    }
-
                     int read = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
                     int total = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
                     if (total > 0) {
@@ -267,21 +261,10 @@ public class SwapAppsView extends ListView implements
                 }
             };
 
-            private final BroadcastReceiver apkDownloadReceiver = new BroadcastReceiver() {
+            private final BroadcastReceiver appListViewResetReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
-                    Apk apk = getApkToInstall();
-
-                    // Note: This can also be done by using the build in IntentFilter.matchData()
-                    // functionality, matching against the Intent.getData() of the incoming intent.
-                    // I've chosen to do this way, because otherwise we need to query the database
-                    // once for each ViewHolder in order to get the repository address for the
-                    // apkToInstall. This way, we can wait until we receive an incoming intent (if
-                    // at all) and then lazily load the apk to install.
-                    String broadcastUrl = intent.getDataString();
-                    if (TextUtils.equals(Utils.getApkUrl(apk.repoAddress, apk), broadcastUrl)) {
-                        resetView();
-                    }
+                    resetView();
                 }
             };
 
@@ -299,11 +282,19 @@ public class SwapAppsView extends ListView implements
 
             ViewHolder() {
                 // TODO: Unregister receivers correctly...
-                IntentFilter apkFilter = new IntentFilter(ApkDownloader.ACTION_STATUS);
-                LocalBroadcastManager.getInstance(getActivity()).registerReceiver(apkDownloadReceiver, apkFilter);
 
-                IntentFilter progressFilter = new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS);
-                LocalBroadcastManager.getInstance(getActivity()).registerReceiver(downloadProgressReceiver, progressFilter);
+                Apk apk = getApkToInstall();
+                String url = Utils.getApkUrl(apk.repoAddress, apk);
+
+                localBroadcastManager = LocalBroadcastManager.getInstance(getActivity());
+                localBroadcastManager.registerReceiver(appListViewResetReceiver,
+                        DownloaderService.getIntentFilter(url, Downloader.ACTION_STARTED));
+                localBroadcastManager.registerReceiver(downloadProgressReceiver,
+                        DownloaderService.getIntentFilter(url, Downloader.LOCAL_ACTION_PROGRESS));
+                localBroadcastManager.registerReceiver(appListViewResetReceiver,
+                        DownloaderService.getIntentFilter(url, Downloader.ACTION_COMPLETE));
+                localBroadcastManager.registerReceiver(appListViewResetReceiver,
+                        DownloaderService.getIntentFilter(url, Downloader.ACTION_INTERRUPTED));
             }
 
             public void setApp(@NonNull App app) {

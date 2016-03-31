@@ -20,6 +20,7 @@
 
 package org.fdroid.fdroid.net;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -30,16 +31,13 @@ import android.widget.Toast;
 
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 /**
@@ -47,62 +45,24 @@ import java.security.NoSuchAlgorithmException;
  * If the file has previously been downloaded, it will make use of that
  * instead, without going to the network to download a new one.
  */
-public class ApkDownloader implements AsyncDownloader.Listener {
+public class ApkDownloader {
 
     private static final String TAG = "ApkDownloader";
 
-    public static final String EVENT_APK_DOWNLOAD_COMPLETE = "apkDownloadComplete";
-    public static final String EVENT_ERROR = "apkDownloadError";
+    public final String urlString;
 
-    public static final String ACTION_STATUS = "apkDownloadStatus";
-
-    private static final String EVENT_SOURCE_ID = "sourceId";
-    private static long downloadIdCounter;
-
-    @NonNull private final App app;
     @NonNull private final Apk curApk;
     @NonNull private final Context context;
-    @NonNull private final String repoAddress;
-    @NonNull private final SanitizedFile localFile;
+    @NonNull private SanitizedFile localFile;
     @NonNull private final SanitizedFile potentiallyCachedFile;
-
-    private ProgressListener listener;
-    private AsyncDownloader dlWrapper;
-    private boolean isComplete;
-
-    private final long id = ++downloadIdCounter;
-
-    public void setProgressListener(ProgressListener listener) {
-        this.listener = listener;
-    }
-
-    public void removeProgressListener() {
-        setProgressListener(null);
-    }
+    private final LocalBroadcastManager localBroadcastManager;
 
     public ApkDownloader(@NonNull final Context context, @NonNull final App app, @NonNull final Apk apk, @NonNull final String repoAddress) {
         this.context = context;
-        this.app = app;
         curApk = apk;
-        this.repoAddress = repoAddress;
-        localFile = new SanitizedFile(Utils.getApkDownloadDir(context), apk.apkName);
         potentiallyCachedFile = new SanitizedFile(Utils.getApkCacheDir(context), apk.apkName);
-    }
-
-    /**
-     * The downloaded APK. Valid only when getStatus() has returned STATUS.DONE.
-     */
-    public SanitizedFile localFile() {
-        return localFile;
-    }
-
-    /**
-     * When stopping/starting downloaders multiple times (on different threads), it can
-     * get weird whereby different threads are sending progress events. It is important
-     * to be able to see which downloader these progress events are coming from.
-     */
-    public boolean isEventFromThis(Event event) {
-        return event.getData().containsKey(EVENT_SOURCE_ID) && event.getData().getLong(EVENT_SOURCE_ID) == id;
+        urlString = Utils.getApkUrl(repoAddress, apk);
+        localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 
     private Hasher createHasher(File apkFile) {
@@ -150,115 +110,51 @@ public class ApkDownloader implements AsyncDownloader.Listener {
         }
     }
 
-    private void prepareApkFileAndSendCompleteMessage() {
-
-        // Need the apk to be world readable, so that the installer is able to read it.
-        // Note that saving it into external storage for the purpose of letting the installer
-        // have access is insecure, because apps with permission to write to the external
-        // storage can overwrite the app between F-Droid asking for it to be installed and
-        // the installer actually installing it.
-        FileCompat.setReadable(localFile, true, false);
-
-        isComplete = true;
-        sendMessage(EVENT_APK_DOWNLOAD_COMPLETE);
+    private void sendDownloadComplete() {
+        Utils.debugLog(TAG, "Download finished: " + localFile);
+        localBroadcastManager.unregisterReceiver(downloadCompleteReceiver);
     }
 
-    public boolean isComplete() {
-        return this.isComplete;
-    }
-
-    /**
-     * If the download successfully spins up a new thread to start downloading, then we return
-     * true, otherwise false. This is useful, e.g. when we use a cached version, and so don't
-     * want to bother with progress dialogs et al.
-     */
-    public boolean download() {
-
+    public void download() {
         // Can we use the cached version?
         if (verifyOrDelete(potentiallyCachedFile)) {
             delete(localFile);
             Utils.copyQuietly(potentiallyCachedFile, localFile);
-            prepareApkFileAndSendCompleteMessage();
-            return false;
-        }
-
-        String remoteAddress = Utils.getApkUrl(repoAddress, curApk);
-        Utils.debugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
-
-        try {
-            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, this);
-            dlWrapper.download();
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            onErrorDownloading();
-        }
-
-        return false;
-    }
-
-    private void sendMessage(String type) {
-        sendProgressEvent(new ProgressListener.Event(type));
-    }
-
-    // TODO: Completely remove progress listener, only use broadcasts...
-    private void sendProgressEvent(Event event) {
-
-        event.getData().putLong(EVENT_SOURCE_ID, id);
-
-        if (listener != null) {
-            listener.onProgress(event);
-        }
-
-        Intent intent = new Intent(ACTION_STATUS);
-        intent.setData(Uri.parse(Utils.getApkUrl(repoAddress, curApk)));
-        intent.putExtras(event.getData());
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
-    }
-
-    @Override
-    public void onErrorDownloading() {
-        delete(localFile);
-    }
-
-    private void cacheIfRequired() {
-        if (Preferences.get().shouldCacheApks()) {
-            Utils.debugLog(TAG, "Copying .apk file to cache at " + potentiallyCachedFile.getAbsolutePath());
-            Utils.copyQuietly(localFile, potentiallyCachedFile);
-        }
-    }
-
-    @Override
-    public void onDownloadComplete() {
-
-        if (!verifyOrDelete(localFile)) {
-            sendProgressEvent(new Event(EVENT_ERROR));
-            Toast.makeText(context, R.string.corrupt_download, Toast.LENGTH_LONG).show();
+            sendDownloadComplete();
             return;
         }
 
-        cacheIfRequired();
+        Utils.debugLog(TAG, "Downloading apk from " + urlString + " to " + localFile);
+        localBroadcastManager.registerReceiver(downloadCompleteReceiver,
+                DownloaderService.getIntentFilter(urlString, Downloader.ACTION_COMPLETE));
 
-        Utils.debugLog(TAG, "Download finished: " + localFile);
-        prepareApkFileAndSendCompleteMessage();
+        DownloaderService.queue(context, urlString);
     }
 
-    @Override
-    public void onProgress(Event event) {
-        sendProgressEvent(event);
+    private void sendProgressEvent(String status) {
+        Intent intent = new Intent(status);
+        intent.setData(Uri.parse(urlString));
+        intent.putExtra(Downloader.EXTRA_DOWNLOAD_PATH, localFile.getAbsolutePath());
+        localBroadcastManager.sendBroadcast(intent);
     }
 
-    /**
-     * Attempts to cancel the download (if in progress) and also removes the progress
-     * listener
-     */
-    public void cancel() {
-        if (dlWrapper != null) {
-            dlWrapper.attemptCancel();
+    // TODO move this code to somewhere more appropriate
+    BroadcastReceiver downloadCompleteReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            localFile = SanitizedFile.knownSanitized(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
+            if (!verifyOrDelete(localFile)) {
+                sendProgressEvent(Downloader.ACTION_INTERRUPTED);
+                Toast.makeText(context, R.string.corrupt_download, Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (Preferences.get().shouldCacheApks()) {
+                Utils.debugLog(TAG, "Copying .apk file to cache at " + potentiallyCachedFile.getAbsolutePath());
+                Utils.copyQuietly(localFile, potentiallyCachedFile);
+            }
+
+            sendDownloadComplete();
         }
-    }
-
-    public Apk getApk() {
-        return curApk;
-    }
+    };
 }

@@ -29,7 +29,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
@@ -92,6 +91,7 @@ import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
 import org.fdroid.fdroid.net.ApkDownloader;
 import org.fdroid.fdroid.net.Downloader;
+import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
 import java.util.Iterator;
@@ -106,7 +106,7 @@ interface AppDetailsData {
 /**
  * Interface which allows the apk list fragment to communicate with the activity when
  * a user requests to install/remove an apk by clicking on an item in the list.
- *
+ * <p/>
  * NOTE: This is <em>not</em> to do with with the sudo/packagemanager/other installer
  * stuff which allows multiple ways to install apps. It is only here to make fragment-
  * activity communication possible.
@@ -117,7 +117,7 @@ interface AppInstallListener {
     void removeApk(String packageName);
 }
 
-public class AppDetails extends AppCompatActivity implements ProgressListener, AppDetailsData, AppInstallListener {
+public class AppDetails extends AppCompatActivity implements AppDetailsData, AppInstallListener {
 
     private static final String TAG = "AppDetails";
 
@@ -451,17 +451,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         refreshApkList();
         refreshHeader();
         supportInvalidateOptionsMenu();
-
-        if (downloadHandler != null) {
-            if (downloadHandler.isComplete()) {
-                downloadCompleteInstallApk();
-            } else {
-                localBroadcastManager.registerReceiver(downloaderProgressReceiver,
-                        new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
-                downloadHandler.setProgressListener(this);
-                headerFragment.startProgress();
-            }
-        }
+        registerDownloaderReceivers();
     }
 
     /**
@@ -469,20 +459,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
      */
     private void cleanUpFinishedDownload() {
         if (downloadHandler != null) {
-            downloadHandler.removeProgressListener();
             headerFragment.removeProgress();
             downloadHandler = null;
-        }
-    }
-
-    /**
-     * Once the download completes successfully, call this method to start the install process
-     * with the file that was downloaded.
-     */
-    private void downloadCompleteInstallApk() {
-        if (downloadHandler != null) {
-            installApk(downloadHandler.localFile());
-            cleanUpFinishedDownload();
         }
     }
 
@@ -499,22 +477,64 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             Utils.debugLog(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
             setIgnoreUpdates(app.packageName, app.ignoreAllUpdates, app.ignoreThisUpdate);
         }
-
-        localBroadcastManager.unregisterReceiver(downloaderProgressReceiver);
-        if (downloadHandler != null) {
-            downloadHandler.removeProgressListener();
-        }
-
+        unregisterDownloaderReceivers();
         headerFragment.removeProgress();
     }
 
-    private final BroadcastReceiver downloaderProgressReceiver = new BroadcastReceiver() {
+    private void unregisterDownloaderReceivers() {
+        localBroadcastManager.unregisterReceiver(startedReceiver);
+        localBroadcastManager.unregisterReceiver(progressReceiver);
+        localBroadcastManager.unregisterReceiver(completeReceiver);
+        localBroadcastManager.unregisterReceiver(interruptedReceiver);
+    }
+
+    private void registerDownloaderReceivers() {
+        if (downloadHandler != null) { // if a download is active
+            String url = downloadHandler.urlString;
+            localBroadcastManager.registerReceiver(startedReceiver,
+                    DownloaderService.getIntentFilter(url, Downloader.ACTION_STARTED));
+            localBroadcastManager.registerReceiver(progressReceiver,
+                    DownloaderService.getIntentFilter(url, Downloader.LOCAL_ACTION_PROGRESS));
+            localBroadcastManager.registerReceiver(completeReceiver,
+                    DownloaderService.getIntentFilter(url, Downloader.ACTION_COMPLETE));
+            localBroadcastManager.registerReceiver(interruptedReceiver,
+                    DownloaderService.getIntentFilter(url, Downloader.ACTION_INTERRUPTED));
+        }
+    }
+
+    private final BroadcastReceiver startedReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (headerFragment != null) {
+                headerFragment.startProgress();
+            }
+        }
+    };
+
+    private final BroadcastReceiver progressReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (headerFragment != null) {
                 headerFragment.updateProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
                         intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1));
             }
+        }
+    };
+
+    private final BroadcastReceiver completeReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
+            installApk(localFile);
+            cleanUpFinishedDownload();
+        }
+    };
+
+    private final BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
+            cleanUpFinishedDownload();
         }
     };
 
@@ -550,7 +570,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     @Override
     protected void onDestroy() {
         if (downloadHandler != null && !inProcessOfChangingConfiguration) {
-            downloadHandler.cancel();
+            DownloaderService.cancel(context, downloadHandler.urlString);
             cleanUpFinishedDownload();
         }
         inProcessOfChangingConfiguration = false;
@@ -793,11 +813,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             return;
         }
 
-        // Ignore call if another download is running.
-        if (downloadHandler != null && !downloadHandler.isComplete()) {
-            return;
-        }
-
         final String repoaddress = getRepoAddress(apk);
         if (repoaddress == null) return;
 
@@ -853,13 +868,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     private void startDownload(Apk apk, String repoAddress) {
         downloadHandler = new ApkDownloader(getBaseContext(), app, apk, repoAddress);
-
-        localBroadcastManager.registerReceiver(downloaderProgressReceiver,
-                new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
-        downloadHandler.setProgressListener(this);
-        if (downloadHandler.download()) {
-            headerFragment.startProgress();
-        }
+        registerDownloaderReceivers();
+        downloadHandler.download();
+        headerFragment.startProgress();
     }
 
     private void installApk(File file) {
@@ -949,42 +960,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary + ") - https://f-droid.org/app/" + app.packageName);
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
-    }
-
-    @Override
-    public void onProgress(Event event) {
-        if (downloadHandler == null || !downloadHandler.isEventFromThis(event)) {
-            // Choose not to respond to events from previous downloaders.
-            // We don't even care if we receive "cancelled" events or the like, because
-            // we dealt with cancellations in the onCancel listener of the dialog,
-            // rather than waiting to receive the event here. We try and be careful in
-            // the download thread to make sure that we check for cancellations before
-            // sending events, but it is not possible to be perfect, because the interruption
-            // which triggers the download can happen after the check to see if
-            Utils.debugLog(TAG, "Discarding downloader event \"" + event.type + "\" as it is from an old (probably cancelled) downloader.");
-            return;
-        }
-
-        boolean finished = false;
-        switch (event.type) {
-            case ApkDownloader.EVENT_ERROR:
-                // this must be on the main UI thread
-                Toast.makeText(this, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
-                cleanUpFinishedDownload();
-                finished = true;
-                break;
-            case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
-                downloadCompleteInstallApk();
-                finished = true;
-                break;
-        }
-
-        if (finished) {
-            if (headerFragment != null) {
-                headerFragment.removeProgress();
-            }
-            downloadHandler = null;
-        }
     }
 
     @Override
@@ -1536,7 +1511,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return;
             }
 
-            activity.downloadHandler.cancel();
+            DownloaderService.cancel(getContext(), activity.downloadHandler.urlString);
             activity.cleanUpFinishedDownload();
             setProgressVisible(false);
             updateViews();
