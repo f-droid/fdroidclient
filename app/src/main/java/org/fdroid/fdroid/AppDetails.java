@@ -526,7 +526,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     private void onAppChanged() {
         if (!reset(app.packageName)) {
-            AppDetails.this.finish();
+            this.finish();
             return;
         }
 

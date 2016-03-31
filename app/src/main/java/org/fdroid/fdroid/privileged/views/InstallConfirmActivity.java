@@ -197,11 +197,6 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
         startInstallConfirm();
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
     // Generic handling when pressing back key
     public void onCancel(DialogInterface dialog) {
         finish();

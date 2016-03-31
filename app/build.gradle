@@ -204,6 +204,7 @@ task pmd(type: Pmd, dependsOn: assembleDebug) {
         'java-finalizers',
         'java-imports',
         'java-migrating',
+        //'java-unnecessary', // too nitpicky with parenthesis
     ]
     source 'src/main/java'
     include '**/org/fdroid/**/*.java'
