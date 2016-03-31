@@ -64,7 +64,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     public static final String EXTRA_TAB_UPDATE = "extraTab";
 
-    public static final String ACTION_ADD_REPO = "org.fdroid.fdroid.FDroid.ACTION_ADD_REPO";
+    private static final String ACTION_ADD_REPO = "org.fdroid.fdroid.FDroid.ACTION_ADD_REPO";
 
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
 

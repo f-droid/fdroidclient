@@ -170,7 +170,7 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
 
     }
 
-    private BroadcastReceiver onWifiStateChanged = new BroadcastReceiver() {
+    private final BroadcastReceiver onWifiStateChanged = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             setUIFromWifi();
