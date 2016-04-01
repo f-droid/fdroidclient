@@ -49,11 +49,15 @@ public abstract class Installer {
      * RootInstaller or due to an incompatible Android version in case of
      * SystemPermissionInstaller
      */
-    public static class AndroidNotCompatibleException extends Exception {
+    public static class InstallFailedException extends Exception {
 
         private static final long serialVersionUID = -8343133906463328027L;
 
-        public AndroidNotCompatibleException(Throwable cause) {
+        public InstallFailedException(String message) {
+            super(message);
+        }
+
+        public InstallFailedException(Throwable cause) {
             super(cause);
         }
     }
@@ -78,7 +82,7 @@ public abstract class Installer {
     }
 
     Installer(Context context, PackageManager pm, InstallerCallback callback)
-            throws AndroidNotCompatibleException {
+            throws InstallFailedException {
         this.mContext = context;
         this.mPm = pm;
         this.mCallback = callback;
@@ -104,7 +108,7 @@ public abstract class Installer {
 
                 try {
                     return new PrivilegedInstaller(activity, pm, callback);
-                } catch (AndroidNotCompatibleException e) {
+                } catch (InstallFailedException e) {
                     Log.e(TAG, "Android not compatible with SystemInstaller!", e);
                 }
             } else {
@@ -119,7 +123,7 @@ public abstract class Installer {
                 Utils.debugLog(TAG, "try default installer for Android >= 4");
 
                 return new DefaultSdk14Installer(activity, pm, callback);
-            } catch (AndroidNotCompatibleException e) {
+            } catch (InstallFailedException e) {
                 Log.e(TAG, "Android not compatible with DefaultInstallerSdk14!", e);
             }
         } else {
@@ -128,7 +132,7 @@ public abstract class Installer {
                 Utils.debugLog(TAG, "try default installer for Android < 4");
 
                 return new DefaultInstaller(activity, pm, callback);
-            } catch (AndroidNotCompatibleException e) {
+            } catch (InstallFailedException e) {
                 Log.e(TAG, "Android not compatible with DefaultInstaller!", e);
             }
         }
@@ -137,7 +141,7 @@ public abstract class Installer {
         return null;
     }
 
-    public void installPackage(File apkFile, String packageName) throws AndroidNotCompatibleException {
+    public void installPackage(File apkFile, String packageName) throws InstallFailedException {
         // check if file exists...
         if (!apkFile.exists()) {
             Log.e(TAG, "Couldn't find file " + apkFile + " to install.");
@@ -172,7 +176,7 @@ public abstract class Installer {
         installPackageInternal(apkFile);
     }
 
-    public void deletePackage(String packageName) throws AndroidNotCompatibleException {
+    public void deletePackage(String packageName) throws InstallFailedException {
         // check if package exists before proceeding...
         try {
             mPm.getPackageInfo(packageName, 0);
@@ -201,10 +205,10 @@ public abstract class Installer {
     }
 
     protected abstract void installPackageInternal(File apkFile)
-            throws AndroidNotCompatibleException;
+            throws InstallFailedException;
 
     protected abstract void deletePackageInternal(String packageName)
-            throws AndroidNotCompatibleException;
+            throws InstallFailedException;
 
     public abstract boolean handleOnActivityResult(int requestCode, int resultCode, Intent data);
 }

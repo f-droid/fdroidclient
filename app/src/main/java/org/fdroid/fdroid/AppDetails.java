@@ -87,7 +87,7 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
+import org.fdroid.fdroid.installer.Installer.InstallFailedException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
 import org.fdroid.fdroid.net.ApkDownloader;
 import org.fdroid.fdroid.net.Downloader;
@@ -501,11 +501,18 @@ public class AppDetails extends AppCompatActivity {
         }
     };
 
+    /**
+     * Starts the install process one the download is complete.
+     */
     private final BroadcastReceiver completeReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
-            installApk(localFile);
+            try {
+                installer.installPackage(localFile, app.packageName);
+            } catch (InstallFailedException e) {
+                Log.e(TAG, "Android not compatible with this Installer!", e);
+            }
             cleanUpFinishedDownload();
         }
     };
@@ -852,18 +859,10 @@ public class AppDetails extends AppCompatActivity {
         headerFragment.startProgress();
     }
 
-    private void installApk(File file) {
-        try {
-            installer.installPackage(file, app.packageName);
-        } catch (AndroidNotCompatibleException e) {
-            Log.e(TAG, "Android not compatible with this Installer!", e);
-        }
-    }
-
     public void removeApk(String packageName) {
         try {
             installer.deletePackage(packageName);
-        } catch (AndroidNotCompatibleException e) {
+        } catch (InstallFailedException e) {
             Log.e(TAG, "Android not compatible with this Installer!", e);
         }
     }

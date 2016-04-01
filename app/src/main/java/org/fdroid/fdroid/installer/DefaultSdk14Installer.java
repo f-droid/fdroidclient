@@ -42,7 +42,7 @@ public class DefaultSdk14Installer extends Installer {
     private final Activity mActivity;
 
     public DefaultSdk14Installer(Activity activity, PackageManager pm, InstallerCallback callback)
-            throws AndroidNotCompatibleException {
+            throws InstallFailedException {
         super(activity, pm, callback);
         this.mActivity = activity;
     }
@@ -52,7 +52,7 @@ public class DefaultSdk14Installer extends Installer {
 
     @SuppressWarnings("deprecation")
     @Override
-    protected void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
+    protected void installPackageInternal(File apkFile) throws InstallFailedException {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
         intent.setData(Uri.fromFile(apkFile));
@@ -68,12 +68,12 @@ public class DefaultSdk14Installer extends Installer {
         try {
             mActivity.startActivityForResult(intent, REQUEST_CODE_INSTALL);
         } catch (ActivityNotFoundException e) {
-            throw new AndroidNotCompatibleException(e);
+            throw new InstallFailedException(e);
         }
     }
 
     @Override
-    protected void deletePackageInternal(String packageName) throws AndroidNotCompatibleException {
+    protected void deletePackageInternal(String packageName) throws InstallFailedException {
         try {
             PackageInfo pkgInfo = mPm.getPackageInfo(packageName, 0);
 
@@ -83,7 +83,7 @@ public class DefaultSdk14Installer extends Installer {
             try {
                 mActivity.startActivityForResult(intent, REQUEST_CODE_DELETE);
             } catch (ActivityNotFoundException e) {
-                throw new AndroidNotCompatibleException(e);
+                throw new InstallFailedException(e);
             }
         } catch (PackageManager.NameNotFoundException e) {
             // already checked in super class

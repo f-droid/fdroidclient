@@ -814,7 +814,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 }
             }).installPackage(apkFile, packageName);
             localBroadcastManager.unregisterReceiver(downloadCompleteReceiver);
-        } catch (Installer.AndroidNotCompatibleException e) {
+        } catch (Installer.InstallFailedException e) {
             // TODO: Handle exception properly
         }
     }
