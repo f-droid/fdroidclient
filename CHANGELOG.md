@@ -6,6 +6,10 @@
 
 * Translation updates
 
+### 0.99.2 (2016-04-01)
+
+* Stability fixes for app swap
+
 ### 0.99.1 (2016-03-22)
 
 * Re-enable SNI support on Guardian Project repo
