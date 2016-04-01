@@ -123,11 +123,6 @@ public class AppSecurityPermissions {
         CharSequence mLabel;
 
         /**
-         * PackageInfo.requestedPermissionsFlags for the new package being installed.
-         */
-        int mNewReqFlags;
-
-        /**
          * PackageInfo.requestedPermissionsFlags for the currently installed
          * package, if it is installed.
          */
@@ -298,7 +293,7 @@ public class AppSecurityPermissions {
                     final int[] instFlagsList = getRequestedPermissionFlags(installedPkgInfo);
                     existingFlags = instFlagsList[existingIndex];
                 }
-                if (!isDisplayablePermission(tmpPermInfo, flagsList[i], existingFlags)) {
+                if (!isDisplayablePermission(tmpPermInfo, existingFlags)) {
                     // This is not a permission that is interesting for the user
                     // to see, so skip it.
                     continue;
@@ -333,7 +328,6 @@ public class AppSecurityPermissions {
                 final boolean newPerm = installedPkgInfo != null
                         && (existingFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0;
                 MyPermissionInfo myPerm = new MyPermissionInfo(tmpPermInfo);
-                myPerm.mNewReqFlags = flagsList[i];
                 myPerm.mExistingReqFlags = existingFlags;
                 // This is a new permission if the app is already installed and
                 // doesn't currently hold this permission.
@@ -424,8 +418,7 @@ public class AppSecurityPermissions {
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private boolean isDisplayablePermission(PermissionInfo pInfo, int newReqFlags,
-            int existingReqFlags) {
+    private boolean isDisplayablePermission(PermissionInfo pInfo, int existingReqFlags) {
         final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
         final boolean isNormal = base == PermissionInfo.PROTECTION_NORMAL;
         final boolean isDangerous = base == PermissionInfo.PROTECTION_DANGEROUS;
@@ -492,7 +485,7 @@ public class AppSecurityPermissions {
         if (permList != null) {
             // First pass to group permissions
             for (MyPermissionInfo pInfo : permList) {
-                if (!isDisplayablePermission(pInfo, pInfo.mNewReqFlags, pInfo.mExistingReqFlags)) {
+                if (!isDisplayablePermission(pInfo, pInfo.mExistingReqFlags)) {
                     continue;
                 }
                 MyPermissionGroupInfo group = mPermGroups.get(pInfo.group);

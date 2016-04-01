@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.net.URL;
 
 public class DownloaderFactory {
-    private static final String TAG = "DownloaderFactory";
 
     private static LocalBroadcastManager localBroadcastManager;
 
@@ -68,9 +67,5 @@ public class DownloaderFactory {
             throws IOException {
         URL url = new URL(urlString);
         return new AsyncDownloadWrapper(create(context, url, destFile, credentials), listener);
-    }
-
-    private static boolean isOnionAddress(URL url) {
-        return url.getHost().endsWith(".onion");
     }
 }

@@ -28,8 +28,6 @@ dependencies {
     }
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:0.23.0'
-
-    androidTestCompile 'commons-io:commons-io:2.4'
 }
 
 if (!hasProperty('sourceDeps')) {
@@ -186,7 +184,7 @@ checkstyle {
 
 task checkstyle(type: Checkstyle) {
     configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
-    source 'src', 'test/src'
+    source 'src/main/java', 'src/test/java', 'src/androidTest/java'
     include '**/*.java'
 
     classpath = files()
@@ -206,8 +204,9 @@ task pmd(type: Pmd, dependsOn: assembleDebug) {
         'java-finalizers',
         'java-imports',
         'java-migrating',
+        //'java-unnecessary', // too nitpicky with parenthesis
     ]
-    source 'src'
+    source 'src/main/java'
     include '**/org/fdroid/**/*.java'
 }
 

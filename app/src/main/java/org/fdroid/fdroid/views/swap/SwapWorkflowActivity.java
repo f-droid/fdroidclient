@@ -795,7 +795,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void handleDownloadComplete(File apkFile, String packageName) {
 
         try {
-            Installer.getActivityInstaller(SwapWorkflowActivity.this, new Installer.InstallerCallback() {
+            Installer.getActivityInstaller(this, new Installer.InstallerCallback() {
                 @Override
                 public void onSuccess(int operation) {
                     // TODO: Don't reload the view weely-neely, but rather get the view to listen

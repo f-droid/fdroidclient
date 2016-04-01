@@ -105,12 +105,10 @@ public final class PRNGFixes extends Compatibility {
 
         // Install a Linux PRNG-based SecureRandom implementation as the
         // default, if not yet installed.
-        Provider[] secureRandomProviders =
-                Security.getProviders("SecureRandom.SHA1PRNG");
-        if ((secureRandomProviders == null)
-                || (secureRandomProviders.length < 1)
-                || (!LinuxPRNGSecureRandomProvider.class.equals(
-                        secureRandomProviders[0].getClass()))) {
+        Provider[] secureRandomProviders = Security.getProviders("SecureRandom.SHA1PRNG");
+        if (secureRandomProviders == null
+                || secureRandomProviders.length < 1
+                || !LinuxPRNGSecureRandomProvider.class.equals(secureRandomProviders[0].getClass())) {
             Security.insertProviderAt(new LinuxPRNGSecureRandomProvider(), 1);
         }
 

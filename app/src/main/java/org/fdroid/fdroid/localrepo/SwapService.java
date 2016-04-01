@@ -404,9 +404,11 @@ public class SwapService extends Service {
             .commit();
     }
 
+    /*
     private boolean wasBluetoothEnabled() {
         return persistence().getBoolean(KEY_BLUETOOTH_ENABLED, false);
     }
+    */
 
     private boolean wasWifiEnabled() {
         return persistence().getBoolean(KEY_WIFI_ENABLED, false);
@@ -537,11 +539,12 @@ public class SwapService extends Service {
         filter.addAction(WIFI_STATE_CHANGE);
         LocalBroadcastManager.getInstance(this).registerReceiver(receiveSwapStatusChanged, filter);
 
-        /**
+        /*
         if (wasBluetoothEnabled()) {
             Utils.debugLog(TAG, "Previously the user enabled Bluetooth swap, so enabling again automatically.");
             bluetoothSwap.startInBackground();
-        }*/
+        }
+        */
 
         if (wasWifiEnabled()) {
             Utils.debugLog(TAG, "Previously the user enabled WiFi swap, so enabling again automatically.");

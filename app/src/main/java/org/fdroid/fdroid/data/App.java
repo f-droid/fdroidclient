@@ -313,6 +313,7 @@ public class App extends ValueObject implements Comparable<App> {
             FDroidApp.disableSpongyCastleOnLollipop();
             final InputStream tmpIn = apkJar.getInputStream(aSignedEntry);
             byte[] buff = new byte[2048];
+            //noinspection StatementWithEmptyBody
             while (tmpIn.read(buff, 0, buff.length) != -1) {
                 /*
                  * NOP - apparently have to READ from the JarEntry before you can

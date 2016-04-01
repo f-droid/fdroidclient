@@ -199,7 +199,7 @@ public class AvailableAppsFragment extends AppListFragment implements
     private void setCurrentCategory(String category) {
         currentCategory = category;
         Utils.debugLog(TAG, "Category '" + currentCategory + "' selected.");
-        getLoaderManager().restartLoader(0, null, AvailableAppsFragment.this);
+        getLoaderManager().restartLoader(0, null, this);
     }
 
     @Override

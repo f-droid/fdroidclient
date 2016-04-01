@@ -79,8 +79,8 @@ class BonjourFinder extends PeerFinder implements ServiceListener {
         }
 
         Utils.debugLog(TAG, "Adding mDNS service listeners for " + HTTP_SERVICE_TYPE + " and " + HTTPS_SERVICE_TYPE);
-        jmdns.addServiceListener(HTTP_SERVICE_TYPE, BonjourFinder.this);
-        jmdns.addServiceListener(HTTPS_SERVICE_TYPE, BonjourFinder.this);
+        jmdns.addServiceListener(HTTP_SERVICE_TYPE, this);
+        jmdns.addServiceListener(HTTPS_SERVICE_TYPE, this);
         listServices();
     }
 

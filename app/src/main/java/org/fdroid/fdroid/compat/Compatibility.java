@@ -14,7 +14,7 @@ public abstract class Compatibility {
         return apiLevel < 1 || getApi() <= apiLevel;
     }
 
-    protected static int getApi() {
+    static int getApi() {
         return Build.VERSION.SDK_INT;
     }
 

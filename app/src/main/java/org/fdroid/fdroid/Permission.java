@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
 
-public class Permission {
+class Permission {
 
     private final PackageManager packageManager;
     private final PermissionInfo permissionInfo;
 
-    public Permission(Context context, String permission)
+    Permission(Context context, String permission)
             throws PackageManager.NameNotFoundException {
         this.packageManager = context.getPackageManager();
         this.permissionInfo = this.packageManager.getPermissionInfo(

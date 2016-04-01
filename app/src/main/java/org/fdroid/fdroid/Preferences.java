@@ -30,11 +30,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private static final String TAG = "Preferences";
 
-    private final Context context;
     private final SharedPreferences preferences;
 
     private Preferences(Context context) {
-        this.context = context;
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         preferences.registerOnSharedPreferenceChangeListener(this);
         if (preferences.getString(PREF_LOCAL_REPO_NAME, null) == null) {
@@ -72,10 +70,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_ROOTED = true;
     private static final int DEFAULT_UPD_HISTORY = 14;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = false;
-    private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
+    //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final boolean DEFAULT_CACHE_APK = false;
     private static final boolean DEFAULT_UNSTABLE_UPDATES = false;
-    private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
+    //private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
     private static final boolean DEFAULT_INCOMP_VER = false;
     private static final boolean DEFAULT_EXPERT = false;
     private static final boolean DEFAULT_ENABLE_PROXY = false;
