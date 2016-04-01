@@ -60,17 +60,21 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
         });
         refreshWifiState();
 
-        // TODO: This is effectively swap state management code, shouldn't be isolated to the
-        // WifiStateChangeService, but should be bundled with the main swap state handling code.
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
-                new BroadcastReceiver() {
-                    @Override
-                    public void onReceive(Context context, Intent intent) {
-                        refreshWifiState();
-                    }
-                },
+                onWifiStateChange,
                 new IntentFilter(WifiStateChangeService.BROADCAST)
         );
+    }
+
+    /**
+     * Remove relevant listeners/receivers/etc so that they do not receive and process events
+     * when this view is not in use.
+     */
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(onWifiStateChange);
     }
 
     // TODO: Listen for "Connecting..." state and reflect that in the view too.
@@ -138,4 +142,11 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
     public String getToolbarTitle() {
         return getResources().getString(R.string.swap_join_same_wifi);
     }
+
+    private final BroadcastReceiver onWifiStateChange = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            refreshWifiState();
+        }
+    };
 }

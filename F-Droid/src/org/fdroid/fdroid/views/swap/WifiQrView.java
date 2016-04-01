@@ -78,16 +78,19 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
             }
         });
 
-        // TODO: Unregister this receiver properly.
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
-                new BroadcastReceiver() {
-                    @Override
-                    public void onReceive(Context context, Intent intent) {
-                        setUIFromWifi();
-                    }
-                },
-                new IntentFilter(WifiStateChangeService.BROADCAST)
-        );
+                onWifiStateChanged, new IntentFilter(WifiStateChangeService.BROADCAST));
+    }
+
+    /**
+     * Remove relevant listeners/receivers/etc so that they do not receive and process events
+     * when this view is not in use.
+     */
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(onWifiStateChanged);
     }
 
     @Override
@@ -166,5 +169,12 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         new QrGenAsyncTask(getActivity(), R.id.wifi_qr_code).execute(qrUriString);
 
     }
+
+    private BroadcastReceiver onWifiStateChanged = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            setUIFromWifi();
+        }
+    };
 
 }
