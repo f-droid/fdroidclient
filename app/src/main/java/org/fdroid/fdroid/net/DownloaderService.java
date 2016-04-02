@@ -170,6 +170,10 @@ public class DownloaderService extends Service {
      * the same DownloaderService, but it will not hold up anything else.
      * When all requests have been handled, the DownloaderService stops itself,
      * so you should not ever call {@link #stopSelf}.
+     * <p>
+     * Downloads are put into subdirectories based on hostname/port of each repo
+     * to prevent files with the same names from conflicting.  Each repo enforces
+     * unique APK file names on the server side.
      *
      * @param intent The {@link Intent} passed via {@link
      *               android.content.Context#startService(Intent)}.
@@ -177,7 +181,9 @@ public class DownloaderService extends Service {
     protected void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
         Log.i(TAG, "handleIntent " + uri);
-        final SanitizedFile localFile = new SanitizedFile(Utils.getApkDownloadDir(this), uri.getLastPathSegment());
+        File downloadDir = new File(Utils.getApkCacheDir(this), uri.getHost() + "-" + uri.getPort());
+        downloadDir.mkdirs();
+        final SanitizedFile localFile = new SanitizedFile(downloadDir, uri.getLastPathSegment());
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile);
         try {
             downloader = DownloaderFactory.create(this, uri, localFile);
