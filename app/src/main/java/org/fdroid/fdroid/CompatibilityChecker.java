@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.preference.PreferenceManager;
 
-import org.fdroid.fdroid.compat.Compatibility;
 import org.fdroid.fdroid.compat.SupportedArchitectures;
 import org.fdroid.fdroid.data.Apk;
 
@@ -18,7 +18,7 @@ import java.util.Set;
 
 // Call getIncompatibleReasons(apk) on an instance of this class to
 // find reasons why an apk may be incompatible with the user's device.
-public class CompatibilityChecker extends Compatibility {
+public class CompatibilityChecker {
 
     private static final String TAG = "Compatibility";
 
@@ -85,11 +85,11 @@ public class CompatibilityChecker extends Compatibility {
 
         List<String> incompatibleReasons = new ArrayList<>();
 
-        if (!hasApi(apk.minSdkVersion)) {
+        if (Build.VERSION.SDK_INT < apk.minSdkVersion) {
             incompatibleReasons.add(context.getString(
                     R.string.minsdk_or_later,
                     Utils.getAndroidVersionName(apk.minSdkVersion)));
-        } else if (!upToApi(apk.maxSdkVersion)) {
+        } else if (Build.VERSION.SDK_INT > apk.maxSdkVersion) {
             incompatibleReasons.add(context.getString(
                     R.string.up_to_maxsdk,
                     Utils.getAndroidVersionName(apk.maxSdkVersion)));

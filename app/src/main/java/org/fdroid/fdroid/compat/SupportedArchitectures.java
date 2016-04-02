@@ -3,7 +3,7 @@ package org.fdroid.fdroid.compat;
 import android.annotation.TargetApi;
 import android.os.Build;
 
-public class SupportedArchitectures extends Compatibility {
+public class SupportedArchitectures {
 
     /**
      * The most preferred ABI is the first element in the list.
@@ -11,7 +11,7 @@ public class SupportedArchitectures extends Compatibility {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @SuppressWarnings("deprecation")
     public static String[] getAbis() {
-        if (hasApi(21)) {
+        if (Build.VERSION.SDK_INT >= 21) {
             return Build.SUPPORTED_ABIS;
         }
         return new String[]{Build.CPU_ABI, Build.CPU_ABI2};

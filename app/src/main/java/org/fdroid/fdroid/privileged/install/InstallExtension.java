@@ -47,10 +47,10 @@ abstract class InstallExtension {
     }
 
     public static InstallExtension create(final Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= 21) {
             return new LollipopImpl(context);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT >= 19) {
             return new KitKatToLollipopImpl(context);
         }
         return new PreKitKatImpl(context);

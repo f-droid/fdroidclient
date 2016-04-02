@@ -4,13 +4,14 @@ import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.os.Build;
 
-public abstract class ClipboardCompat extends Compatibility {
+public abstract class ClipboardCompat {
 
     public abstract String getText();
 
     public static ClipboardCompat create(Context context) {
-        if (hasApi(11)) {
+        if (Build.VERSION.SDK_INT >= 11) {
             return new HoneycombClipboard(context);
         }
         return new OldClipboard();

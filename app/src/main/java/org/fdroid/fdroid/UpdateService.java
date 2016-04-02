@@ -40,6 +40,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.fdroid.fdroid.compat.PreferencesCompat;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -145,7 +146,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         //
         //   http://stackoverflow.com/a/20032920
         //
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD_MR1) {
+        if (Build.VERSION.SDK_INT <= 10) {
             Intent pendingIntent = new Intent(this, FDroid.class);
             pendingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             notificationBuilder.setContentIntent(PendingIntent.getActivity(this, 0, pendingIntent, PendingIntent.FLAG_UPDATE_CURRENT));
@@ -406,7 +407,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             SharedPreferences.Editor e = prefs.edit();
             e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
-            e.apply();
+            PreferencesCompat.apply(e);
 
             if (errorRepos == 0) {
                 if (changes) {

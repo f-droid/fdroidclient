@@ -124,7 +124,7 @@ public abstract class Installer {
         }
 
         // else -> DefaultInstaller
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+        if (android.os.Build.VERSION.SDK_INT >= 14) {
             // Default installer on Android >= 4.0
             try {
                 Utils.debugLog(TAG, "try default installer for Android >= 4");

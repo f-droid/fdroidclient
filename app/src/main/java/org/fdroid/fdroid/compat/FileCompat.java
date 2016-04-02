@@ -17,15 +17,15 @@ import java.lang.reflect.Method;
  * This helps prevent things like SQL injection, shell command injection
  * and other attacks based on putting various characters into filenames.
  */
-public class FileCompat extends Compatibility {
+public class FileCompat {
 
     private static final String TAG = "FileCompat";
 
     public static boolean symlink(SanitizedFile source, SanitizedFile dest) {
 
-        if (hasApi(21)) {
+        if (Build.VERSION.SDK_INT >= 21) {
             symlinkOs(source, dest);
-        } else if (hasApi(15)) {
+        } else if (Build.VERSION.SDK_INT >= 15) {
             symlinkLibcore(source, dest);
         } else {
             symlinkRuntime(source, dest);
@@ -88,7 +88,7 @@ public class FileCompat extends Compatibility {
     @TargetApi(9)
     public static boolean setReadable(SanitizedFile file, boolean readable, boolean ownerOnly) {
 
-        if (hasApi(9)) {
+        if (Build.VERSION.SDK_INT >= 9) {
             return file.setReadable(readable, ownerOnly);
         }
         String mode;
@@ -126,7 +126,7 @@ public class FileCompat extends Compatibility {
     @TargetApi(9)
     public static boolean setExecutable(SanitizedFile file, boolean executable, boolean ownerOnly) {
 
-        if (hasApi(9)) {
+        if (Build.VERSION.SDK_INT >= 9) {
             return file.setExecutable(executable, ownerOnly);
         }
         String mode;
