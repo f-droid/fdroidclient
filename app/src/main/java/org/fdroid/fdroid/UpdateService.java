@@ -40,6 +40,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.fdroid.fdroid.compat.PreferencesCompat;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -406,7 +407,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             SharedPreferences.Editor e = prefs.edit();
             e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
-            e.apply();
+            PreferencesCompat.apply(e);
 
             if (errorRepos == 0) {
                 if (changes) {
