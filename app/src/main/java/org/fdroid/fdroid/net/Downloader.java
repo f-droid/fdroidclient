@@ -27,7 +27,7 @@ public abstract class Downloader {
 
     private final OutputStream outputStream;
 
-    private final File outputFile;
+    public final File outputFile;
 
     protected final URL sourceUrl;
     protected String cacheTag;
@@ -76,15 +76,6 @@ public abstract class Downloader {
 
     protected boolean wantToCheckCache() {
         return cacheTag != null;
-    }
-
-    /**
-     * Only available if you passed a context object into the constructor
-     * (rather than an outputStream, which may or  may not be associated with
-     * a file).
-     */
-    public File getFile() {
-        return outputFile;
     }
 
     public abstract boolean hasChanged();
