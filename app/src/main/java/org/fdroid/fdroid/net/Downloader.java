@@ -31,8 +31,6 @@ public abstract class Downloader {
     private volatile int totalBytes;
     private Timer timer;
 
-    private final OutputStream outputStream;
-
     public final File outputFile;
 
     protected final URL sourceUrl;
@@ -60,7 +58,6 @@ public abstract class Downloader {
             throws FileNotFoundException, MalformedURLException {
         this.sourceUrl = url;
         outputFile = destFile;
-        outputStream = new FileOutputStream(outputFile);
     }
 
     public final InputStream getInputStream() throws IOException {
@@ -100,9 +97,10 @@ public abstract class Downloader {
 
     public abstract boolean isCached();
 
-    protected void downloadFromStream(int bufferSize) throws IOException, InterruptedException {
+    protected void downloadFromStream(int bufferSize, boolean resumable) throws IOException, InterruptedException {
         Utils.debugLog(TAG, "Downloading from stream");
         InputStream input = null;
+        OutputStream outputStream = new FileOutputStream(outputFile, resumable);
         try {
             input = getInputStream();
 
@@ -110,7 +108,7 @@ public abstract class Downloader {
             // we were interrupted before proceeding to the download.
             throwExceptionIfInterrupted();
 
-            copyInputToOutputStream(input, bufferSize);
+            copyInputToOutputStream(input, bufferSize, outputStream);
         } finally {
             Utils.closeQuietly(outputStream);
             Utils.closeQuietly(input);
@@ -126,6 +124,7 @@ public abstract class Downloader {
      * interrupt occured during that blocking operation. The goal is to ensure we
      * don't move onto another slow, network operation if we have cancelled the
      * download.
+     *
      * @throws InterruptedException
      */
     private void throwExceptionIfInterrupted() throws InterruptedException {
@@ -150,7 +149,7 @@ public abstract class Downloader {
      * keeping track of the number of bytes that have flowed through for the
      * progress counter.
      */
-    private void copyInputToOutputStream(InputStream input, int bufferSize) throws IOException, InterruptedException {
+    private void copyInputToOutputStream(InputStream input, int bufferSize, OutputStream output) throws IOException, InterruptedException {
         bytesRead = 0;
         totalBytes = totalDownloadSize();
         byte[] buffer = new byte[bufferSize];
@@ -178,14 +177,13 @@ public abstract class Downloader {
                 Utils.debugLog(TAG, "Finished downloading from stream");
                 break;
             }
-
             bytesRead += count;
-            outputStream.write(buffer, 0, count);
+            output.write(buffer, 0, count);
         }
         timer.cancel();
         timer.purge();
-        outputStream.flush();
-        outputStream.close();
+        output.flush();
+        output.close();
     }
 
     /**

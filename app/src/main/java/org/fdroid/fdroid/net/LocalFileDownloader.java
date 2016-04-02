@@ -43,7 +43,7 @@ public class LocalFileDownloader extends Downloader {
 
     @Override
     public void download() throws IOException, InterruptedException {
-        downloadFromStream(1024 * 50);
+        downloadFromStream(1024 * 50, false);
     }
 
     @Override
