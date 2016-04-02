@@ -172,7 +172,7 @@ public abstract class ProviderTestCase2MockContext<T extends ContentProvider> ex
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void shutdownProvider() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+        if (Build.VERSION.SDK_INT >= 11) {
             mProvider.shutdown();
         }
     }

@@ -146,7 +146,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         //
         //   http://stackoverflow.com/a/20032920
         //
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD_MR1) {
+        if (Build.VERSION.SDK_INT <= 10) {
             Intent pendingIntent = new Intent(this, FDroid.class);
             pendingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             notificationBuilder.setContentIntent(PendingIntent.getActivity(this, 0, pendingIntent, PendingIntent.FLAG_UPDATE_CURRENT));

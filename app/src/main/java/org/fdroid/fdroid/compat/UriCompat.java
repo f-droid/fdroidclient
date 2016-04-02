@@ -12,7 +12,7 @@ public class UriCompat {
      */
     public static String getQueryParameter(Uri uri, String key) {
         String value = uri.getQueryParameter(key);
-        if (value != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+        if (value != null && Build.VERSION.SDK_INT < 14) {
             value = value.replaceAll("\\+", " ");
         }
         return value;

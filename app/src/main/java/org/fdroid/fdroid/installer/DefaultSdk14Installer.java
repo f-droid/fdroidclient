@@ -62,7 +62,7 @@ public class DefaultSdk14Installer extends Installer {
         // following extras only work when being installed as system-app
         // https://code.google.com/p/android/issues/detail?id=42253
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+        if (android.os.Build.VERSION.SDK_INT < 16) {
             // deprecated in Android 4.1
             intent.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
         }
