@@ -13,7 +13,7 @@ for e in ElementTree.parse(os.path.join('src', 'main', 'res', 'values', 'strings
     name = e.attrib['name']
     strings.add(name)
 
-for d in glob.glob(os.path.join('res', 'values-*')):
+for d in glob.glob(os.path.join('src', 'main', 'res', 'values-*')):
 
     str_path = os.path.join(d, 'strings.xml')
     if os.path.exists(str_path):
