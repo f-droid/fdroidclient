@@ -341,7 +341,7 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="empty_search_can_update_app_list">No hay ninguna coincidencia con ninguna aplicación a actualizar.</string>
 
     <string name="by_author">por</string>
-    <string name="menu_email">Correo electrónico al autor</string>
+    <string name="menu_email">Correo electrónico del autor</string>
     <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>
     <string name="useTor">Usar Tor</string>
     <string name="useTorSummary">Forzar el tráfico de bajada a través de Tor para mejorar la privacidad</string>
