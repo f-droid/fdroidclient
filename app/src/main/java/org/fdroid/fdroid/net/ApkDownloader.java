@@ -36,7 +36,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Credentials;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
@@ -69,7 +68,6 @@ public class ApkDownloader implements AsyncDownloader.Listener {
 
     private ProgressListener listener;
     private AsyncDownloader dlWrapper;
-    private Credentials credentials;
     private boolean isComplete;
 
     private final long id = ++downloadIdCounter;
@@ -188,7 +186,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
         Utils.debugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
-            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, credentials, this);
+            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, this);
             dlWrapper.download();
             return true;
         } catch (IOException e) {
@@ -253,28 +251,14 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     /**
      * Attempts to cancel the download (if in progress) and also removes the progress
      * listener
-     *
-     * @param userRequested - true if the user requested the cancel (via button click), otherwise false.
      */
-    public void cancel(boolean userRequested) {
+    public void cancel() {
         if (dlWrapper != null) {
-            dlWrapper.attemptCancel(userRequested);
+            dlWrapper.attemptCancel();
         }
     }
 
     public Apk getApk() {
         return curApk;
-    }
-
-    public int getBytesRead() {
-        return dlWrapper != null ? dlWrapper.getBytesRead() : 0;
-    }
-
-    public int getTotalBytes() {
-        return dlWrapper != null ? dlWrapper.getTotalBytes() : 0;
-    }
-
-    public void setCredentials(final Credentials credentials) {
-        this.credentials = credentials;
     }
 }

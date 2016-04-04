@@ -1,14 +1,14 @@
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.data;
 
-import android.test.AndroidTestCase;
-
-import org.fdroid.fdroid.data.SanitizedFile;
+import org.junit.Test;
 
 import java.io.File;
 
-@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
-public class SanitizedFileTest extends AndroidTestCase {
+import static org.junit.Assert.assertEquals;
 
+public class SanitizedFileTest {
+
+    @Test
     public void testSanitizedFile() {
 
         File directory = new File("/tmp/blah");

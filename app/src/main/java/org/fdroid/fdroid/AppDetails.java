@@ -84,7 +84,6 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Credentials;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -460,12 +459,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 localBroadcastManager.registerReceiver(downloaderProgressReceiver,
                         new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
                 downloadHandler.setProgressListener(this);
-
-                if (downloadHandler.getTotalBytes() == 0) {
-                    headerFragment.startProgress();
-                } else {
-                    headerFragment.updateProgress(downloadHandler.getBytesRead(), downloadHandler.getTotalBytes());
-                }
+                headerFragment.startProgress();
             }
         }
     }
@@ -556,7 +550,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     @Override
     protected void onDestroy() {
         if (downloadHandler != null && !inProcessOfChangingConfiguration) {
-            downloadHandler.cancel(false);
+            downloadHandler.cancel();
             cleanUpFinishedDownload();
         }
         inProcessOfChangingConfiguration = false;
@@ -857,19 +851,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         return repo.address;
     }
 
-    @Nullable
-    private Credentials getRepoCredentials(Apk apk) {
-        final String[] projection = {RepoProvider.DataColumns.USERNAME, RepoProvider.DataColumns.PASSWORD};
-        Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
-        if (repo == null || repo.username == null || repo.password == null) {
-            return null;
-        }
-        return repo.getCredentials();
-    }
-
     private void startDownload(Apk apk, String repoAddress) {
         downloadHandler = new ApkDownloader(getBaseContext(), app, apk, repoAddress);
-        downloadHandler.setCredentials(getRepoCredentials(apk));
 
         localBroadcastManager.registerReceiver(downloaderProgressReceiver,
                 new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
@@ -1553,7 +1536,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return;
             }
 
-            activity.downloadHandler.cancel(true);
+            activity.downloadHandler.cancel();
             activity.cleanUpFinishedDownload();
             setProgressVisible(false);
             updateViews();

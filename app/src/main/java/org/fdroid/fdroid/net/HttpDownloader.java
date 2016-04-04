@@ -6,7 +6,7 @@ import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Credentials;
+import org.spongycastle.util.encoders.Base64;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -28,20 +28,33 @@ public class HttpDownloader extends Downloader {
     protected static final String HEADER_IF_NONE_MATCH = "If-None-Match";
     protected static final String HEADER_FIELD_ETAG = "ETag";
 
+    public final String username;
+    public final String password;
     protected HttpURLConnection connection;
-    private Credentials credentials;
     private int statusCode = -1;
 
     HttpDownloader(URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
-        this(url, destFile, null);
+        this(url, destFile, null, null);
     }
 
-    HttpDownloader(URL url, File destFile, final Credentials credentials)
+    /**
+     * Create a downloader that can authenticate via HTTP Basic Auth using the supplied
+     * {@code username} and {@code password}.
+     *
+     * @param url      The file to download
+     * @param destFile Where the download is saved
+     * @param username Username for HTTP Basic Auth, use {@code null} to ignore
+     * @param password Password for HTTP Basic Auth, use {@code null} to ignore
+     * @throws FileNotFoundException
+     * @throws MalformedURLException
+     */
+    HttpDownloader(URL url, File destFile, String username, String password)
             throws FileNotFoundException, MalformedURLException {
         super(url, destFile);
 
-        this.credentials = credentials;
+        this.username = username;
+        this.password = password;
     }
 
     /**
@@ -106,8 +119,10 @@ public class HttpDownloader extends Downloader {
             ((HttpsURLConnection) connection).setSSLSocketFactory(HttpsURLConnection.getDefaultSSLSocketFactory());
         }
 
-        if (credentials != null) {
-            credentials.authenticate(connection);
+        if (username != null && password != null) {
+            // add authorization header from username / password if set
+            String authString = username + ":" + password;
+            connection.setRequestProperty("Authorization", "Basic " + Base64.toBase64String(authString.getBytes()));
         }
     }
 

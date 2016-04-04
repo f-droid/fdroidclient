@@ -21,8 +21,6 @@ import org.xml.sax.XMLReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.security.CodeSigner;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
@@ -54,6 +52,8 @@ public class RepoUpdater {
     public static final String PROGRESS_COMMITTING = "committing";
     public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
 
+    public final String indexUrl;
+
     @NonNull
     private final Context context;
     @NonNull
@@ -75,6 +75,13 @@ public class RepoUpdater {
         this.context = context;
         this.repo = repo;
         this.persister = new RepoPersister(context, repo);
+
+        String url = repo.address + "/index.jar";
+        String versionName = Utils.getVersionName(context);
+        if (versionName != null) {
+            url += "?client_version=" + versionName;
+        }
+        this.indexUrl = url;
     }
 
     public void setProgressListener(@Nullable ProgressListener progressListener) {
@@ -85,29 +92,17 @@ public class RepoUpdater {
         return hasChanged;
     }
 
-    private URL getIndexAddress() throws MalformedURLException {
-        String urlString = repo.address + "/index.jar";
-        String versionName = Utils.getVersionName(context);
-        if (versionName != null) {
-            urlString += "?client_version=" + versionName;
-        }
-        return new URL(urlString);
-    }
-
     private Downloader downloadIndex() throws UpdateException {
         Downloader downloader = null;
         try {
-            downloader = DownloaderFactory.create(context,
-                getIndexAddress(), File.createTempFile("index-", "-downloaded", context.getCacheDir()),
-                repo.getCredentials()
-            );
+            downloader = DownloaderFactory.create(context, indexUrl);
             downloader.setCacheTag(repo.lastetag);
             downloader.download();
 
             if (downloader.isCached()) {
                 // The index is unchanged since we last read it. We just mark
                 // everything that came from this repo as being updated.
-                Utils.debugLog(TAG, "Repo index for " + getIndexAddress() + " is up to date (by etag)");
+                Utils.debugLog(TAG, "Repo index for " + indexUrl + " is up to date (by etag)");
             }
 
         } catch (IOException e) {

@@ -23,14 +23,14 @@ public abstract class Downloader {
     public static final String EXTRA_BYTES_READ = "extraBytesRead";
     public static final String EXTRA_TOTAL_BYTES = "extraTotalBytes";
 
+    private volatile boolean cancelled = false;
+
     private final OutputStream outputStream;
 
     private final File outputFile;
 
     protected final URL sourceUrl;
     protected String cacheTag;
-    private int bytesRead;
-    private int totalBytes;
 
     interface DownloaderProgressListener {
         void sendProgress(URL sourceUrl, int bytesRead, int totalBytes);
@@ -124,10 +124,17 @@ public abstract class Downloader {
      * @throws InterruptedException
      */
     private void throwExceptionIfInterrupted() throws InterruptedException {
-        if (Thread.interrupted()) {
+        if (cancelled) {
             Utils.debugLog(TAG, "Received interrupt, cancelling download");
             throw new InterruptedException();
         }
+    }
+
+    /**
+     * Cancel a running download, triggering an {@link InterruptedException}
+     */
+    public void cancelDownload() {
+        cancelled = true;
     }
 
     /**
@@ -138,7 +145,7 @@ public abstract class Downloader {
     private void copyInputToOutputStream(InputStream input, int bufferSize) throws IOException, InterruptedException {
 
         int bytesRead = 0;
-        this.totalBytes = totalDownloadSize();
+        int totalBytes = totalDownloadSize();
         byte[] buffer = new byte[bufferSize];
 
         // Getting the total download size could potentially take time, depending on how
@@ -173,18 +180,9 @@ public abstract class Downloader {
     }
 
     private void sendProgress(int bytesRead, int totalBytes) {
-        this.bytesRead = bytesRead;
         if (downloaderProgressListener != null) {
             downloaderProgressListener.sendProgress(sourceUrl, bytesRead, totalBytes);
         }
-    }
-
-    public int getBytesRead() {
-        return bytesRead;
-    }
-
-    public int getTotalBytes() {
-        return totalBytes;
     }
 
     /**
