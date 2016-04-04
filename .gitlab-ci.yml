@@ -7,17 +7,37 @@ cache:
 
 gradle:
   script:
+    - apt-get -y update
+    - apt-get -y install curl
     - export GRADLE_USER_HOME=$PWD/.gradle
-    - ./gradlew assemble
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
-    - ./gradlew check
+    # 'build' means assemble and check
+    - ./gradlew build || {
+          for log in app/build/reports/*ests/*/*ml; do
+              echo "read $log here:"
+              cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
+          done;
+          exit 1;
+      }
     - echo no | android create avd --force -n fcl-test -t android-10 -b armeabi
     - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82
-    - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedCheck || { adb logcat -d '*:W'; exit 1; }
+    - export EXITVALUE=0
+    - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedCheck || {
+        adb -e logcat -d '*:E';
+        echo "get the full logcat here:";
+        adb -e logcat -d | curl --silent -F 'clbin=<-' https://clbin.com;
+        export EXITVALUE=1;
+      }
+    - for log in app/build/reports/*ests/*/*ml
+                 app/build/outputs/*results*/connected/*.xml; do
+        echo "read $log here:";
+        cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
+      done
     - sed -n 's/.*"ctr2">\([0-9]*\)%<.*/Coverage - \1.0% covered\n/p' app/build/reports/coverage/debug/index.html
+    - exit $EXITVALUE
 
 pmd:
   script:
