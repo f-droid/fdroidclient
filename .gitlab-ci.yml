@@ -38,7 +38,7 @@ gradle:
         --target android-$AVD_SDK
     - emulator64-arm -avd fcl-test -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
-    - adb shell input keyevent 82
+    - adb shell input keyevent 82 &
     - export EXITVALUE=0
     - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedCheck -PdisablePreDex || {
         adb -e logcat -d '*:E';
