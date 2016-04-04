@@ -5,19 +5,56 @@ cache:
     - .gradle/wrapper
     - .gradle/caches
 
+variables:
+  AVD_SDK: "17"
+  SKIN: "QVGA"
+
 gradle:
   script:
+    - apt-get -y update
+    - apt-get -y install curl
+    - echo y | android update sdk --no-ui --filter android-$AVD_SDK
+    - echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-$AVD_SDK
     - export GRADLE_USER_HOME=$PWD/.gradle
-    - ./gradlew assemble
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
-    - ./gradlew check
-    - echo no | android create avd --force -n fcl-test -t android-10 -b armeabi
+    # 'build' means assemble and check
+    - ./gradlew build || {
+          for log in app/build/reports/*ests/*/*ml; do
+              echo "read $log here:"
+              cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
+          done;
+          exit 1;
+      }
+    # emulators will only start if they have tiny amounts of RAM
+    - sed -i -e 's,^hw.ramSize=.*,hw.ramSize=384,'
+             -e 's,^vm.heapSize=.*,vm.heapSize=48,'
+             -e 's,^hw.gpu.enabled.*,hw.gpu.enabled = false,'
+             $ANDROID_HOME/platforms/android-$AVD_SDK/skins/$SKIN/hardware.ini
+    - echo "hw.gpu.enabled = false" >>
+             $ANDROID_HOME/platforms/android-$AVD_SDK/skins/$SKIN/hardware.ini
+    - echo no | android --verbose create avd
+        --force
+        --name fcl-test
+        --skin $SKIN
+        --target android-$AVD_SDK
     - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82
-    - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedCheck || { adb logcat -d '*:W'; exit 1; }
+    - export EXITVALUE=0
+    - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedCheck || {
+        adb -e logcat -d '*:E';
+        echo "get the full logcat here:";
+        adb -e logcat -d | curl --silent -F 'clbin=<-' https://clbin.com;
+        export EXITVALUE=1;
+      }
+    - for log in app/build/reports/*ests/*/*ml
+                 app/build/outputs/*results*/connected/*.xml; do
+        echo "read $log here:";
+        cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
+      done
     - sed -n 's/.*"ctr2">\([0-9]*\)%<.*/Coverage - \1.0% covered\n/p' app/build/reports/coverage/debug/index.html
+    - exit $EXITVALUE
 
 pmd:
   script:
