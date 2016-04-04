@@ -8,6 +8,8 @@ cache:
 variables:
   AVD_SDK: "17"
   SKIN: "QVGA"
+  # switch glibc to a memory conserving mode
+  MALLOC_ARENA_MAX: "2"
 
 gradle:
   script:
