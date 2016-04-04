@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.util.Pair;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +21,7 @@ import android.widget.TextView;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PreferencesCompat;
@@ -159,7 +163,17 @@ public abstract class AppListFragment extends ListFragment implements
             Intent intent = getAppDetailsIntent();
             intent.putExtra(AppDetails.EXTRA_APPID, app.packageName);
             intent.putExtra(AppDetails.EXTRA_FROM, getFromTitle());
-            startActivityForResult(intent, REQUEST_APPDETAILS);
+            if (Build.VERSION.SDK_INT >= 21) {
+                Pair<View, String> iconTransitionPair = Pair.create(view.findViewById(R.id.icon),
+                        getString(R.string.transition_app_item_icon));
+                Bundle bundle = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation(getActivity(),
+                                iconTransitionPair)
+                                .toBundle();
+                startActivityForResult(intent, REQUEST_APPDETAILS, bundle);
+            } else {
+                startActivityForResult(intent, REQUEST_APPDETAILS);
+            }
         }
     }
 
