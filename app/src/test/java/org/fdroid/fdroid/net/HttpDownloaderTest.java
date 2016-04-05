@@ -32,11 +32,11 @@ public class HttpDownloaderTest {
         for (String urlString : urls) {
             URL url = new URL(urlString);
             File destFile = File.createTempFile("dl-", "");
-            destFile.deleteOnExit(); // this probably does nothing, but maybe...
             HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
             httpDownloader.download();
             assertTrue(destFile.exists());
             assertTrue(destFile.canRead());
+            destFile.deleteOnExit();
         }
     }
 
@@ -46,7 +46,6 @@ public class HttpDownloaderTest {
             receivedProgress = false;
             URL url = new URL(urlString);
             File destFile = File.createTempFile("dl-", "");
-            destFile.deleteOnExit(); // this probably does nothing, but maybe...
             HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
             httpDownloader.setListener(new Downloader.DownloaderProgressListener() {
                 @Override
@@ -58,6 +57,7 @@ public class HttpDownloaderTest {
             assertTrue(destFile.exists());
             assertTrue(destFile.canRead());
             assertTrue(receivedProgress);
+            destFile.deleteOnExit();
         }
     }
 
@@ -65,39 +65,38 @@ public class HttpDownloaderTest {
     public void downloadHttpBasicAuth() throws IOException, InterruptedException {
         URL url = new URL("https://httpbin.org/basic-auth/myusername/supersecretpassword");
         File destFile = File.createTempFile("dl-", "");
-        destFile.deleteOnExit(); // this probably does nothing, but maybe...
         HttpDownloader httpDownloader = new HttpDownloader(url, destFile, "myusername", "supersecretpassword");
         httpDownloader.download();
         assertTrue(destFile.exists());
         assertTrue(destFile.canRead());
+        destFile.deleteOnExit();
     }
 
     @Test(expected = IOException.class)
     public void downloadHttpBasicAuthWrongPassword() throws IOException, InterruptedException {
         URL url = new URL("https://httpbin.org/basic-auth/myusername/supersecretpassword");
         File destFile = File.createTempFile("dl-", "");
-        destFile.deleteOnExit(); // this probably does nothing, but maybe...
         HttpDownloader httpDownloader = new HttpDownloader(url, destFile, "myusername", "wrongpassword");
         httpDownloader.download();
         assertFalse(destFile.exists());
+        destFile.deleteOnExit();
     }
 
     @Test(expected = IOException.class)
     public void downloadHttpBasicAuthWrongUsername() throws IOException, InterruptedException {
         URL url = new URL("https://httpbin.org/basic-auth/myusername/supersecretpassword");
         File destFile = File.createTempFile("dl-", "");
-        destFile.deleteOnExit(); // this probably does nothing, but maybe...
         HttpDownloader httpDownloader = new HttpDownloader(url, destFile, "wrongusername", "supersecretpassword");
         httpDownloader.download();
         assertFalse(destFile.exists());
+        destFile.deleteOnExit();
     }
 
     @Test
     public void downloadThenCancel() throws IOException, InterruptedException {
-        final CountDownLatch latch = new CountDownLatch(5);
+        final CountDownLatch latch = new CountDownLatch(2);
         URL url = new URL("https://f-droid.org/repo/index.jar");
         File destFile = File.createTempFile("dl-", "");
-        destFile.deleteOnExit(); // this probably does nothing, but maybe...
         final HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
         httpDownloader.setListener(new Downloader.DownloaderProgressListener() {
             @Override
@@ -121,8 +120,9 @@ public class HttpDownloaderTest {
                 }
             }
         }.start();
-        latch.await(100, TimeUnit.SECONDS); // either 5 progress reports or 100 seconds
+        latch.await(100, TimeUnit.SECONDS); // either 2 progress reports or 100 seconds
         httpDownloader.cancelDownload();
         assertTrue(receivedProgress);
+        destFile.deleteOnExit();
     }
 }
