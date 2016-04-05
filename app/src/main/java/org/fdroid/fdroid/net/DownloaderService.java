@@ -180,7 +180,6 @@ public class DownloaderService extends Service {
      */
     protected void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
-        Log.i(TAG, "handleIntent " + uri);
         File downloadDir = new File(Utils.getApkCacheDir(this), uri.getHost() + "-" + uri.getPort());
         downloadDir.mkdirs();
         final SanitizedFile localFile = new SanitizedFile(downloadDir, uri.getLastPathSegment());
@@ -190,7 +189,6 @@ public class DownloaderService extends Service {
             downloader.setListener(new Downloader.DownloaderProgressListener() {
                 @Override
                 public void sendProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                    //Log.i(TAG, "sendProgress " + sourceUrl + " " + bytesRead + " / " + totalBytes);
                     Intent intent = new Intent(Downloader.ACTION_PROGRESS);
                     intent.setData(uri);
                     intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
@@ -203,22 +201,28 @@ public class DownloaderService extends Service {
         } catch (InterruptedException e) {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile);
         } catch (IOException e) {
-            sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile);
             e.printStackTrace();
+            sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile,
+                    e.getLocalizedMessage());
         } finally {
             if (downloader != null) {
                 downloader.close();
             }
         }
         downloader = null;
-        Log.i(TAG, "handleIntent DONE " + uri);
     }
 
     private void sendBroadcast(Uri uri, String action, File file) {
-        Log.i(TAG, "sendBroadcast " + uri + " " + action + " " + file);
+        sendBroadcast(uri, action, file, null);
+    }
+
+    private void sendBroadcast(Uri uri, String action, File file, String errorMessage) {
         Intent intent = new Intent(action);
         intent.setData(uri);
         intent.putExtra(Downloader.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
+        if (!TextUtils.isEmpty(errorMessage)) {
+            intent.putExtra(Downloader.EXTRA_ERROR_MESSAGE, errorMessage);
+        }
         localBroadcastManager.sendBroadcast(intent);
     }
 

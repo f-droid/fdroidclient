@@ -515,7 +515,14 @@ public class AppDetails extends AppCompatActivity {
     private final BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
+            if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
+                String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
+                        + " " + intent.getDataString();
+                Toast.makeText(context, R.string.download_error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+            } else { // user canceled
+                Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
+            }
             cleanUpFinishedDownload();
         }
     };

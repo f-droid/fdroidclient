@@ -36,6 +36,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -268,6 +269,21 @@ public class SwapAppsView extends ListView implements
                 }
             };
 
+            private final BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
+                        String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
+                                + " " + intent.getDataString();
+                        Toast.makeText(context, R.string.download_error, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+                    } else { // user canceled
+                        Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
+                    }
+                    resetView();
+                }
+            };
+
             private final ContentObserver appObserver = new ContentObserver(new Handler()) {
                 @Override
                 public void onChange(boolean selfChange) {
@@ -293,7 +309,7 @@ public class SwapAppsView extends ListView implements
                         DownloaderService.getIntentFilter(url, Downloader.ACTION_PROGRESS));
                 localBroadcastManager.registerReceiver(appListViewResetReceiver,
                         DownloaderService.getIntentFilter(url, Downloader.ACTION_COMPLETE));
-                localBroadcastManager.registerReceiver(appListViewResetReceiver,
+                localBroadcastManager.registerReceiver(interruptedReceiver,
                         DownloaderService.getIntentFilter(url, Downloader.ACTION_INTERRUPTED));
             }
 
