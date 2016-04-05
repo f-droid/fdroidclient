@@ -27,7 +27,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 
 import java.io.File;
-import java.util.List;
 
 /**
  * For Android < 4: Default Installer using the public PackageManager API of
@@ -59,11 +58,6 @@ public class DefaultInstaller extends Installer {
         } catch (ActivityNotFoundException e) {
             throw new AndroidNotCompatibleException(e);
         }
-    }
-
-    @Override
-    protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
-        // not used
     }
 
     @Override
@@ -103,10 +97,4 @@ public class DefaultInstaller extends Installer {
                 return false;
         }
     }
-
-    @Override
-    public boolean supportsUnattendedOperations() {
-        return false;
-    }
-
 }

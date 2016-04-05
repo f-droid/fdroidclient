@@ -106,9 +106,9 @@ public class RepoUpdater {
             }
 
         } catch (IOException e) {
-            if (downloader != null && downloader.getFile() != null) {
-                if (!downloader.getFile().delete()) {
-                    Log.w(TAG, "Couldn't delete file: " + downloader.getFile().getAbsolutePath());
+            if (downloader != null && downloader.outputFile != null) {
+                if (!downloader.outputFile.delete()) {
+                    Log.w(TAG, "Couldn't delete file: " + downloader.outputFile.getAbsolutePath());
                 }
             }
 
@@ -136,7 +136,7 @@ public class RepoUpdater {
             // Don't worry about checking the status code for 200. If it was a
             // successful download, then we will have a file ready to use:
             cacheTag = downloader.getCacheTag();
-            processDownloadedFile(downloader.getFile());
+            processDownloadedFile(downloader.outputFile);
         }
     }
 

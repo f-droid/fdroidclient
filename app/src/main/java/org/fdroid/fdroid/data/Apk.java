@@ -19,7 +19,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     public String hash;
     public String hashType;
     public int minSdkVersion; // 0 if unknown
-    public int maxSdkVersion; // 0 if none
+    public int maxSdkVersion = Byte.MAX_VALUE; // "infinity" if not set
     public Date added;
     public Utils.CommaSeparatedList permissions; // null if empty or
     // unknown

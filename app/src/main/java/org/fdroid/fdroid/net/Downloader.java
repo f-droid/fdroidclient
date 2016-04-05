@@ -1,7 +1,5 @@
 package org.fdroid.fdroid.net;
 
-import android.support.annotation.NonNull;
-
 import org.fdroid.fdroid.Utils;
 
 import java.io.File;
@@ -27,11 +25,16 @@ public abstract class Downloader {
 
     private final OutputStream outputStream;
 
-    private final File outputFile;
+    public final File outputFile;
 
     protected final URL sourceUrl;
     protected String cacheTag;
 
+    /**
+     * This is meant only to send progress to {@link DownloaderService}. This
+     * also keeps this class pure Java so that it can be tested on the JVM,
+     * without requiring an Android device or emulator.
+     */
     interface DownloaderProgressListener {
         void sendProgress(URL sourceUrl, int bytesRead, int totalBytes);
     }
@@ -76,15 +79,6 @@ public abstract class Downloader {
 
     protected boolean wantToCheckCache() {
         return cacheTag != null;
-    }
-
-    /**
-     * Only available if you passed a context object into the constructor
-     * (rather than an outputStream, which may or  may not be associated with
-     * a file).
-     */
-    public File getFile() {
-        return outputFile;
     }
 
     public abstract boolean hasChanged();
@@ -222,12 +216,12 @@ public abstract class Downloader {
         }
 
         @Override
-        public int read(@NonNull byte[] buffer) throws IOException {
+        public int read(byte[] buffer) throws IOException {
             return toWrap.read(buffer);
         }
 
         @Override
-        public int read(@NonNull byte[] buffer, int byteOffset, int byteCount) throws IOException {
+        public int read(byte[] buffer, int byteOffset, int byteCount) throws IOException {
             return toWrap.read(buffer, byteOffset, byteCount);
         }
 

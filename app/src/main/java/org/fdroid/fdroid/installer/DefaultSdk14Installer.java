@@ -29,7 +29,6 @@ import android.net.Uri;
 import android.os.Build;
 
 import java.io.File;
-import java.util.List;
 
 /**
  * For Android >= 4.0: Default Installer using the public PackageManager API of
@@ -71,11 +70,6 @@ public class DefaultSdk14Installer extends Installer {
         } catch (ActivityNotFoundException e) {
             throw new AndroidNotCompatibleException(e);
         }
-    }
-
-    @Override
-    protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
-        // not used
     }
 
     @Override
@@ -129,10 +123,4 @@ public class DefaultSdk14Installer extends Installer {
                 return false;
         }
     }
-
-    @Override
-    public boolean supportsUnattendedOperations() {
-        return false;
-    }
-
 }
