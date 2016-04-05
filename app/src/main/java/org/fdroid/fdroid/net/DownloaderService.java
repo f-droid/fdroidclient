@@ -73,11 +73,11 @@ public class DownloaderService extends Service {
     private static final String ACTION_CANCEL = "org.fdroid.fdroid.net.DownloaderService.action.CANCEL";
 
     private volatile Looper serviceLooper;
-    private volatile ServiceHandler serviceHandler;
-    private volatile Downloader downloader;
+    private static volatile ServiceHandler serviceHandler;
+    private static volatile Downloader downloader;
     private LocalBroadcastManager localBroadcastManager;
 
-    private final HashMap<String, Integer> queueWhats = new HashMap<String, Integer>();
+    private static final HashMap<String, Integer> QUEUE_WHATS = new HashMap<String, Integer>();
     private int what;
 
     private final class ServiceHandler extends Handler {
@@ -117,7 +117,7 @@ public class DownloaderService extends Service {
         }
         if (ACTION_CANCEL.equals(intent.getAction())) {
             Log.i(TAG, "Removed " + intent);
-            Integer what = queueWhats.remove(uriString);
+            Integer what = QUEUE_WHATS.remove(uriString);
             if (what != null && serviceHandler.hasMessages(what)) {
                 // the URL is in the queue, remove it
                 serviceHandler.removeMessages(what);
@@ -134,8 +134,8 @@ public class DownloaderService extends Service {
             msg.obj = intent;
             msg.what = what++;
             serviceHandler.sendMessage(msg);
-            Log.i(TAG, "queueWhats.put(" + uriString + ", " + msg.what);
-            queueWhats.put(uriString, msg.what);
+            Log.i(TAG, "QUEUE_WHATS.put(" + uriString + ", " + msg.what);
+            QUEUE_WHATS.put(uriString, msg.what);
         } else {
             Log.e(TAG, "Received Intent with unknown action: " + intent);
         }
@@ -170,7 +170,7 @@ public class DownloaderService extends Service {
      * the same DownloaderService, but it will not hold up anything else.
      * When all requests have been handled, the DownloaderService stops itself,
      * so you should not ever call {@link #stopSelf}.
-     * <p>
+     * <p/>
      * Downloads are put into subdirectories based on hostname/port of each repo
      * to prevent files with the same names from conflicting.  Each repo enforces
      * unique APK file names on the server side.
@@ -258,6 +258,21 @@ public class DownloaderService extends Service {
         intent.setAction(ACTION_CANCEL);
         intent.setData(Uri.parse(urlString));
         context.startService(intent);
+    }
+
+    /**
+     * Check if a URL is waiting in the queue for downloading or if actively
+     * being downloaded.  This is useful for checking whether to re-register
+     * {@link android.content.BroadcastReceiver}s in
+     * {@link android.app.Activity#onResume()}
+     */
+    public static boolean isQueuedOrActive(String urlString) {
+        if (TextUtils.isEmpty(urlString)) {
+            return false;
+        }
+        Integer what = QUEUE_WHATS.get(urlString);
+        return (what != null && serviceHandler.hasMessages(what))
+                || (downloader != null && TextUtils.equals(urlString, downloader.sourceUrl.toString()));
     }
 
     /**

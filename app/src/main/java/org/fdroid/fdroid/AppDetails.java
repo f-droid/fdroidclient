@@ -79,6 +79,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import org.fdroid.fdroid.Utils.CommaSeparatedList;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
+import org.fdroid.fdroid.compat.PreferencesCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -428,7 +429,9 @@ public class AppDetails extends AppCompatActivity {
         refreshApkList();
         refreshHeader();
         supportInvalidateOptionsMenu();
-        registerDownloaderReceivers();
+        if (DownloaderService.isQueuedOrActive(activeDownloadUrlString)) {
+            registerDownloaderReceivers();
+        }
     }
 
     /**
@@ -448,6 +451,10 @@ public class AppDetails extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        // save the active URL for this app in case we come back
+        PreferencesCompat.apply(getPreferences(MODE_PRIVATE)
+                .edit()
+                .putString(getPackageNameFromIntent(getIntent()), activeDownloadUrlString));
         if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
                 || app.ignoreThisUpdate != startingIgnoreThis)) {
             Utils.debugLog(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
@@ -568,6 +575,14 @@ public class AppDetails extends AppCompatActivity {
 
         Utils.debugLog(TAG, "Getting application details for " + packageName);
         App newApp = null;
+
+        String urlString = getPreferences(MODE_PRIVATE).getString(packageName, null);
+        if (DownloaderService.isQueuedOrActive(urlString)) {
+            activeDownloadUrlString = urlString;
+        } else {
+            // this URL is no longer active, remove it
+            PreferencesCompat.apply(getPreferences(MODE_PRIVATE).edit().remove(packageName));
+        }
 
         if (!TextUtils.isEmpty(packageName)) {
             newApp = AppProvider.Helper.findByPackageName(getContentResolver(), packageName);
