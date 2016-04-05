@@ -1,7 +1,5 @@
 package org.fdroid.fdroid.net;
 
-import android.util.Log;
-
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -18,7 +16,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLHandshakeException;
 
 import info.guardianproject.netcipher.NetCipher;
 
@@ -72,25 +69,18 @@ public class HttpDownloader extends Downloader {
         return new BufferedInputStream(connection.getInputStream());
     }
 
-    // Get a remote file. Returns the HTTP response code.
-    // If 'etag' is not null, it's passed to the server as an If-None-Match
-    // header, in which case expect a 304 response if nothing changed.
-    // In the event of a 200 response ONLY, 'retag' (which should be passed
-    // empty) may contain an etag value for the response, or it may be left
-    // empty if none was available.
+    /**
+     * Get a remote file, checking the HTTP response code.  If 'etag' is not
+     * {@code null}, it's passed to the server as an If-None-Match header, in
+     * which case expect a 304 response if nothing changed. In the event of a
+     * 200 response ONLY, 'retag' (which should be passed empty) may contain
+     * an etag value for the response, or it may be left empty if none was
+     * available.
+     */
     @Override
     public void download() throws IOException, InterruptedException {
-        try {
-            setupConnection();
-            doDownload();
-        } catch (SSLHandshakeException e) {
-            // TODO this should be handled better, it is not internationalised here
-            throw new IOException(
-                    "A problem occurred while establishing an SSL " +
-                            "connection. If this problem persists, AND you have a " +
-                            "very old device, you could try using http instead of " +
-                            "https for the repo URL." + Log.getStackTraceString(e));
-        }
+        setupConnection();
+        doDownload();
     }
 
     private boolean isSwapUrl() {
