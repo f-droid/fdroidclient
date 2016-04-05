@@ -44,7 +44,6 @@ import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
 
 import java.io.File;
-import java.util.List;
 
 /**
  * Installer based on using internal hidden APIs of the Android OS, which are
@@ -238,12 +237,6 @@ public class PrivilegedInstaller extends Installer {
     }
 
     @Override
-    protected void installPackageInternal(List<File> apkFiles)
-            throws AndroidNotCompatibleException {
-        // not used
-    }
-
-    @Override
     protected void deletePackageInternal(final String packageName)
             throws AndroidNotCompatibleException {
         ApplicationInfo appInfo;
@@ -366,11 +359,6 @@ public class PrivilegedInstaller extends Installer {
             default:
                 return false;
         }
-    }
-
-    @Override
-    public boolean supportsUnattendedOperations() {
-        return false;
     }
 
     public static final int INSTALL_REPLACE_EXISTING = 2;

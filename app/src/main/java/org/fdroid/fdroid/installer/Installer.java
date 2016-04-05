@@ -30,7 +30,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
 
 import java.io.File;
-import java.util.List;
 
 /**
  * Abstract Installer class. Also provides static methods to automatically
@@ -53,19 +52,8 @@ public abstract class Installer {
 
         private static final long serialVersionUID = -8343133906463328027L;
 
-        public AndroidNotCompatibleException() {
-        }
-
-        public AndroidNotCompatibleException(String message) {
-            super(message);
-        }
-
         public AndroidNotCompatibleException(Throwable cause) {
             super(cause);
-        }
-
-        public AndroidNotCompatibleException(String message, Throwable cause) {
-            super(message, cause);
         }
     }
 
@@ -175,18 +163,6 @@ public abstract class Installer {
         installPackageInternal(apkFile);
     }
 
-    public void installPackage(List<File> apkFiles) throws AndroidNotCompatibleException {
-        // check if files exist...
-        for (File apkFile : apkFiles) {
-            if (!apkFile.exists()) {
-                Log.e(TAG, "Couldn't find file " + apkFile + " to install.");
-                return;
-            }
-        }
-
-        installPackageInternal(apkFiles);
-    }
-
     public void deletePackage(String packageName) throws AndroidNotCompatibleException {
         // check if package exists before proceeding...
         try {
@@ -218,13 +194,8 @@ public abstract class Installer {
     protected abstract void installPackageInternal(File apkFile)
             throws AndroidNotCompatibleException;
 
-    protected abstract void installPackageInternal(List<File> apkFiles)
-            throws AndroidNotCompatibleException;
-
     protected abstract void deletePackageInternal(String packageName)
             throws AndroidNotCompatibleException;
 
     public abstract boolean handleOnActivityResult(int requestCode, int resultCode, Intent data);
-
-    public abstract boolean supportsUnattendedOperations();
 }
