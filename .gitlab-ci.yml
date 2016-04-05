@@ -1,4 +1,4 @@
-image: mvdan/fdroid-ci:client-20160329
+image: mvdan/fdroid-ci:client-20160405
 
 cache:
   paths:
@@ -11,8 +11,6 @@ variables:
 
 gradle:
   script:
-    - apt-get -y update
-    - apt-get -y install curl
     - echo y | android update sdk --no-ui --filter android-$AVD_SDK
     - echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-$AVD_SDK
     - export GRADLE_USER_HOME=$PWD/.gradle
