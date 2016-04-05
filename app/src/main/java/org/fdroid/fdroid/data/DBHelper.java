@@ -106,7 +106,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + TABLE_INSTALLED_APP + ";";
 
-    private static final int DB_VERSION = 53;
+    private static final int DB_VERSION = 54;
 
     private final Context context;
 
@@ -291,6 +291,7 @@ class DBHelper extends SQLiteOpenHelper {
         recreateInstalledCache(db, oldVersion);
         addCredentialsToRepo(db, oldVersion);
         addAuthorToApp(db, oldVersion);
+        useMaxValueInMaxSdkVersion(db, oldVersion);
     }
 
     /**
@@ -472,6 +473,15 @@ class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 53 && !columnExists(db, TABLE_APP, "email")) {
             Utils.debugLog(TAG, "Adding email column to " + TABLE_APP);
             db.execSQL("alter table " + TABLE_APP + " add column email text");
+        }
+    }
+
+    private void useMaxValueInMaxSdkVersion(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 54) {
+            Utils.debugLog(TAG, "Converting maxSdkVersion value 0 to " + Byte.MAX_VALUE);
+            ContentValues values = new ContentValues();
+            values.put(ApkProvider.DataColumns.MAX_SDK_VERSION, Byte.MAX_VALUE);
+            db.update(TABLE_APK, values, ApkProvider.DataColumns.MAX_SDK_VERSION + " < 1", null);
         }
     }
 
