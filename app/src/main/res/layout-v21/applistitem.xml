@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/listPreferredItemHeight"
+    android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+    android:paddingStart="?attr/listPreferredItemPaddingLeft"
+    android:paddingRight="?attr/listPreferredItemPaddingRight"
+    android:paddingEnd="?attr/listPreferredItemPaddingRight"
+    android:baselineAligned="false"
+    >
+
+    <ImageView
+        android:id="@+id/icon"
+        android:contentDescription="@string/app_icon"
+        android:layout_width="48dip"
+        android:layout_height="48dip"
+        android:layout_gravity="center_vertical"
+        android:scaleType="fitCenter"
+        tools:src="@drawable/ic_launcher"
+        android:transitionName="@string/transition_app_item_icon" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false">
+
+            <TextView android:id="@+id/name"
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+                android:paddingStart="?attr/listPreferredItemPaddingLeft"
+                android:paddingRight="?attr/listPreferredItemPaddingRight"
+                android:paddingEnd="?attr/listPreferredItemPaddingRight"
+                android:layout_gravity="center_vertical"
+                android:gravity="start"
+                android:textAlignment="viewStart"
+                tools:text="F-Droid" />
+
+            <TextView android:id="@+id/status"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_weight="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="end"
+                android:textAlignment="viewEnd"
+                tools:text="Installed" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false">
+
+            <TextView android:id="@+id/summary"
+                android:textSize="14sp"
+                android:textColor="?android:attr/textColorSecondary"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+                android:paddingStart="?attr/listPreferredItemPaddingLeft"
+                android:paddingRight="?attr/listPreferredItemPaddingRight"
+                android:paddingEnd="?attr/listPreferredItemPaddingRight"
+                android:gravity="start"
+                android:textAlignment="viewStart"
+                tools:text="Application manager" />
+
+            <TextView android:id="@+id/license"
+                android:textSize="14sp"
+                android:textColor="?android:attr/textColorSecondary"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_weight="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="end"
+                android:textAlignment="viewEnd"
+                tools:text="GPLv3+" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
