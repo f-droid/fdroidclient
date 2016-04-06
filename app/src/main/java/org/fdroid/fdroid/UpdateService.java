@@ -42,6 +42,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import org.fdroid.fdroid.compat.PreferencesCompat;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -386,6 +387,11 @@ public class UpdateService extends IntentService implements ProgressListener {
                     Log.e(TAG, "Error updating repository " + repo.address, e);
                 }
                 localBroadcastManager.unregisterReceiver(downloadProgressReceiver);
+
+                // now that downloading the index is done, start downloading updates
+                if (changes && Preferences.get().isAutoDownloadEnabled()) {
+                    autoDownloadUpdates(repo.address);
+                }
             }
 
             if (!changes) {
@@ -474,6 +480,25 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
 
         return inboxStyle;
+    }
+
+    private void autoDownloadUpdates(String repoAddress) {
+        Cursor cursor = getContentResolver().query(
+                AppProvider.getCanUpdateUri(),
+                new String[]{
+                        AppProvider.DataColumns.PACKAGE_NAME,
+                        AppProvider.DataColumns.SUGGESTED_VERSION_CODE,
+                }, null, null, null);
+        cursor.moveToFirst();
+        for (int i = 0; i < cursor.getCount(); i++) {
+            App app = new App(cursor);
+            Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode, new String[]{
+                    ApkProvider.DataColumns.NAME,
+            });
+            String urlString = Utils.getApkUrl(repoAddress, apk);
+            DownloaderService.queue(this, urlString);
+            cursor.moveToNext();
+        }
     }
 
     private void showAppUpdatesNotification(Cursor hasUpdates) {

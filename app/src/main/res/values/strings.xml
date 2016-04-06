@@ -21,6 +21,8 @@
     <string name="update_interval_zero">No automatic app list updates</string>
     <string name="automatic_scan_wifi">Only on Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Update app lists automatically only on Wi-Fi</string>
+    <string name="update_auto_download">Automatically download updates</string>
+    <string name="update_auto_download_summary">Download the update files in the background</string>
     <string name="notify">Update notifications</string>
     <string name="notify_on">Show a notification when updates are available</string>
     <string name="update_history">Update history</string>
