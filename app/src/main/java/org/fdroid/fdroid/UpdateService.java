@@ -73,6 +73,8 @@ public class UpdateService extends IntentService implements ProgressListener {
     public static final int STATUS_ERROR_LOCAL_SMALL = 4;
     public static final int STATUS_INFO = 5;
 
+    private static final String STATE_LAST_UPDATED = "lastUpdateCheck";
+
     private LocalBroadcastManager localBroadcastManager;
 
     private static final int NOTIFY_ID_UPDATING = 0;
@@ -295,7 +297,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             Log.i(TAG, "Skipping update - disabled");
             return false;
         }
-        long lastUpdate = prefs.getLong(Preferences.PREF_UPD_LAST, 0);
+        long lastUpdate = prefs.getLong(STATE_LAST_UPDATED, 0);
         long elapsed = System.currentTimeMillis() - lastUpdate;
         if (elapsed < interval * 60 * 60 * 1000) {
             Log.i(TAG, "Skipping update - done " + elapsed
@@ -318,9 +320,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             return false;
         }
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        if (activeNetwork.getType() != ConnectivityManager.TYPE_WIFI
-                && prefs.getBoolean(Preferences.PREF_UPD_WIFI_ONLY, false)) {
+        if (activeNetwork.getType() != ConnectivityManager.TYPE_WIFI && Preferences.get().isUpdateOnlyOnWifi()) {
             Log.i(TAG, "Skipping update - wifi not available");
             return false;
         }
@@ -342,8 +342,6 @@ public class UpdateService extends IntentService implements ProgressListener {
             } else if (!verifyIsTimeForScheduledRun()) {
                 return;
             }
-
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
             // Grab some preliminary information, then we can release the
             // database while we do all the downloading, etc...
@@ -395,13 +393,14 @@ public class UpdateService extends IntentService implements ProgressListener {
             } else {
                 notifyContentProviders();
 
-                if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, true)) {
+                if (Preferences.get().isUpdateNotificationEnabled()) {
                     performUpdateNotification();
                 }
             }
 
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
             SharedPreferences.Editor e = prefs.edit();
-            e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
+            e.putLong(STATE_LAST_UPDATED, System.currentTimeMillis());
             PreferencesCompat.apply(e);
 
             if (errorRepos == 0) {
