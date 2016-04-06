@@ -29,10 +29,13 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PatternMatcher;
 import android.os.Process;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.SanitizedFile;
 
@@ -72,6 +75,8 @@ public class DownloaderService extends Service {
     private static final String ACTION_QUEUE = "org.fdroid.fdroid.net.DownloaderService.action.QUEUE";
     private static final String ACTION_CANCEL = "org.fdroid.fdroid.net.DownloaderService.action.CANCEL";
 
+    private static final int NOTIFY_DOWNLOADING = 0x2344;
+
     private volatile Looper serviceLooper;
     private static volatile ServiceHandler serviceHandler;
     private static volatile Downloader downloader;
@@ -87,7 +92,6 @@ public class DownloaderService extends Service {
 
         @Override
         public void handleMessage(Message msg) {
-            Log.i(TAG, "handleMessage " + msg);
             handleIntent((Intent) msg.obj);
             stopSelf(msg.arg1);
         }
@@ -128,6 +132,9 @@ public class DownloaderService extends Service {
                 Log.e(TAG, "CANCEL called on something not queued or running: " + startId + " " + intent);
             }
         } else if (ACTION_QUEUE.equals(intent.getAction())) {
+            if (Preferences.get().isUpdateNotificationEnabled()) {
+                createNotification(intent.getDataString());
+            }
             Log.i(TAG, "Queued " + intent);
             Message msg = serviceHandler.obtainMessage();
             msg.arg1 = startId;
@@ -141,6 +148,16 @@ public class DownloaderService extends Service {
         }
     }
 
+    private void createNotification(String urlString) {
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setAutoCancel(true)
+                        .setContentTitle(getString(R.string.downloading))
+                        .setSmallIcon(android.R.drawable.stat_sys_download)
+                        .setContentText(urlString);
+        startForeground(NOTIFY_DOWNLOADING, builder.build());
+    }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         onStart(intent, startId);
@@ -151,6 +168,7 @@ public class DownloaderService extends Service {
     @Override
     public void onDestroy() {
         Log.i(TAG, "onDestroy");
+        stopForeground(true);
         serviceLooper.quit(); //NOPMD - this is copied from IntentService, no super call needed
     }
 
