@@ -34,7 +34,7 @@ public class DownloaderServiceTest extends ServiceTestCase<DownloaderService> {
             }
         }, new IntentFilter(Downloader.ACTION_PROGRESS));
         for (String url : urls) {
-            DownloaderService.queue(getContext(), url);
+            DownloaderService.queue(getContext(), null, url);
         }
         Thread.sleep(30000);
     }

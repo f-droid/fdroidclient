@@ -66,6 +66,7 @@ import java.util.Formatter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.zip.Adler32;
 
 public final class Utils {
 
@@ -321,7 +322,7 @@ public final class Utils {
      * This location is only for caching, do not install directly from this location
      * because if the file is on the External Storage, any other app could swap out
      * the APK while the install was in process, allowing malware to install things.
-     * Using {@link org.fdroid.fdroid.installer.Installer#installPackage(File, String)}
+     * Using {@link org.fdroid.fdroid.installer.Installer#installPackage(File, String, String)}
      * is fine since that does the right thing.
      */
     public static SanitizedFile getApkCacheDir(Context context) {
@@ -410,6 +411,15 @@ public final class Utils {
 
     public static String getApkUrl(String repoAddress, Apk apk) {
         return repoAddress + "/" + apk.apkName.replace(" ", "%20");
+    }
+
+    /**
+     * This generates a unique, reproducible ID for notifications related to {@code urlString}
+     */
+    public static int getApkUrlNotificationId(String urlString) {
+        Adler32 checksum = new Adler32();
+        checksum.update(urlString.getBytes());
+        return (int) checksum.getValue();
     }
 
     public static final class CommaSeparatedList implements Iterable<String> {

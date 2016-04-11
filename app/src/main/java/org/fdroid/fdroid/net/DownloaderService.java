@@ -72,6 +72,8 @@ import java.util.HashMap;
 public class DownloaderService extends Service {
     public static final String TAG = "DownloaderService";
 
+    static final String EXTRA_PACKAGE_NAME = "org.fdroid.fdroid.net.DownloaderService.extra.PACKAGE_NAME";
+
     private static final String ACTION_QUEUE = "org.fdroid.fdroid.net.DownloaderService.action.QUEUE";
     private static final String ACTION_CANCEL = "org.fdroid.fdroid.net.DownloaderService.action.CANCEL";
 
@@ -216,6 +218,8 @@ public class DownloaderService extends Service {
             });
             downloader.download();
             sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile);
+            DownloadCompleteService.notify(this, intent.getStringExtra(EXTRA_PACKAGE_NAME),
+                    intent.getDataString());
         } catch (InterruptedException e) {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile);
         } catch (IOException e) {
@@ -250,14 +254,18 @@ public class DownloaderService extends Service {
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
      * @param context
-     * @param urlString The URL to add to the download queue
+     * @param packageName The packageName of the app being downloaded
+     * @param urlString   The URL to add to the download queue
      * @see #cancel(Context, String)
      */
-    public static void queue(Context context, String urlString) {
+    public static void queue(Context context, String packageName, String urlString) {
         Log.i(TAG, "queue " + urlString);
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
         intent.setData(Uri.parse(urlString));
+        if (!TextUtils.isEmpty(EXTRA_PACKAGE_NAME)) {
+            intent.putExtra(EXTRA_PACKAGE_NAME, packageName);
+        }
         context.startService(intent);
     }
 
@@ -268,7 +276,7 @@ public class DownloaderService extends Service {
      *
      * @param context
      * @param urlString The URL to remove from the download queue
-     * @see #queue(Context, String)
+     * @see #queue(Context, String, String)
      */
     public static void cancel(Context context, String urlString) {
         Log.i(TAG, "cancel " + urlString);

@@ -20,6 +20,7 @@
 package org.fdroid.fdroid.installer;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -170,7 +171,8 @@ public abstract class Installer {
     /**
      * This is the safe, single point of entry for submitting an APK file to be installed.
      */
-    public void installPackage(File apkFile, String packageName) throws InstallFailedException {
+    public void installPackage(File apkFile, String packageName, String urlString)
+            throws InstallFailedException {
         SanitizedFile apkToInstall = null;
         try {
             Map<String, Object> attributes = AndroidXMLDecompress.getManifestHeaderAttributes(apkFile.getAbsolutePath());
@@ -228,6 +230,9 @@ public abstract class Installer {
             FileCompat.setReadable(apkToInstall, true, false);
             installPackageInternal(apkToInstall);
 
+            NotificationManager nm = (NotificationManager)
+                    mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+            nm.cancel(Utils.getApkUrlNotificationId(urlString));
         } catch (NumberFormatException | NoSuchAlgorithmException | IOException e) {
             throw new InstallFailedException(e);
         } catch (ClassCastException e) {

@@ -788,15 +788,15 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String path = intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH);
-                handleDownloadComplete(new File(path), app.packageName);
+                handleDownloadComplete(new File(path), app.packageName, intent.getDataString());
             }
         };
         localBroadcastManager.registerReceiver(downloadCompleteReceiver,
                 DownloaderService.getIntentFilter(urlString, Downloader.ACTION_COMPLETE));
-        DownloaderService.queue(this, urlString);
+        DownloaderService.queue(this, app.packageName, urlString);
     }
 
-    private void handleDownloadComplete(File apkFile, String packageName) {
+    private void handleDownloadComplete(File apkFile, String packageName, String urlString) {
 
         try {
             Installer.getActivityInstaller(this, new Installer.InstallerCallback() {
@@ -811,7 +811,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 public void onError(int operation, int errorCode) {
                     // TODO: Boo!
                 }
-            }).installPackage(apkFile, packageName);
+            }).installPackage(apkFile, packageName, urlString);
             localBroadcastManager.unregisterReceiver(downloadCompleteReceiver);
         } catch (Installer.InstallFailedException e) {
             // TODO: Handle exception properly

@@ -496,7 +496,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     ApkProvider.DataColumns.NAME,
             });
             String urlString = Utils.getApkUrl(repoAddress, apk);
-            DownloaderService.queue(this, urlString);
+            DownloaderService.queue(this, app.packageName, urlString);
             cursor.moveToNext();
         }
     }

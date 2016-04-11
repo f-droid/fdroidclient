@@ -442,6 +442,9 @@
         <service
             android:name=".net.DownloaderService"
             android:exported="false" />
+        <service
+            android:name=".net.DownloadCompleteService"
+            android:exported="false" />
         <service android:name=".net.WifiStateChangeService" />
         <service android:name=".localrepo.SwapService" />
     </application>

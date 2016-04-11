@@ -511,7 +511,7 @@ public class AppDetails extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
             try {
-                installer.installPackage(localFile, app.packageName);
+                installer.installPackage(localFile, app.packageName, intent.getDataString());
             } catch (InstallFailedException e) {
                 Log.e(TAG, "Android not compatible with this Installer!", e);
             }
@@ -869,7 +869,7 @@ public class AppDetails extends AppCompatActivity {
         activeDownloadUrlString = urlString;
         registerDownloaderReceivers();
         headerFragment.startProgress();
-        DownloaderService.queue(this, activeDownloadUrlString);
+        DownloaderService.queue(this, apk.packageName, activeDownloadUrlString);
     }
 
     public void removeApk(String packageName) {
