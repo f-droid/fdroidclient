@@ -30,6 +30,10 @@ dependencies {
     compile 'io.reactivex:rxandroid:0.23.0'
 
     testCompile 'junit:junit:4.12'
+
+    androidTestCompile 'com.android.support:support-annotations:23.2.1'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
 }
 
 if (!hasProperty('sourceDeps')) {
@@ -145,6 +149,10 @@ android {
         // Use Java 1.7, requires minSdk 8
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    defaultConfig {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     testOptions {

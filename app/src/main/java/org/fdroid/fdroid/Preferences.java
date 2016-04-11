@@ -85,6 +85,13 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_FIRST_TIME = true;
     private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
 
+    public enum Theme {
+        light,
+        dark,
+        night,
+        lightWithDarkActionBar, // Obsolete
+    }
+
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
 
     private final Map<String, Boolean> initialized = new HashMap<>();
@@ -153,6 +160,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public boolean expertMode() {
         return preferences.getBoolean(PREF_EXPERT, DEFAULT_EXPERT);
+    }
+
+    public Theme getTheme() {
+        return Theme.valueOf(preferences.getString(Preferences.PREF_THEME, Preferences.DEFAULT_THEME));
     }
 
     public boolean isLocalRepoHttpsEnabled() {

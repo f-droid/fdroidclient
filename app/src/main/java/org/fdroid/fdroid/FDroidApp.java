@@ -49,6 +49,7 @@ import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.Preferences.ChangeListener;
+import org.fdroid.fdroid.Preferences.Theme;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
@@ -96,19 +97,10 @@ public class FDroidApp extends Application {
         enableSpongyCastle();
     }
 
-    public enum Theme {
-        light,
-        dark,
-        night,
-        lightWithDarkActionBar, // Obsolete
-    }
-
     private static Theme curTheme = Theme.light;
 
     public void reloadTheme() {
-        curTheme = Theme.valueOf(PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext())
-                .getString(Preferences.PREF_THEME, Preferences.DEFAULT_THEME));
+        curTheme = Preferences.get().getTheme();
     }
 
     public void applyTheme(Activity activity) {
@@ -194,6 +186,7 @@ public class FDroidApp extends Application {
         // Perhaps the constructor is a better place, but then again,
         // it is more deterministic as to when this gets called...
         Preferences.setup(this);
+        curTheme = Preferences.get().getTheme();
 
         // Apply the Google PRNG fixes to properly seed SecureRandom
         PRNGFixes.apply();
@@ -241,9 +234,6 @@ public class FDroidApp extends Application {
         // been installed, but this causes problems for proprietary gapps
         // users since the introduction of verification (on pre-4.2 Android),
         // because the install intent says it's finished when it hasn't.
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        curTheme = Theme.valueOf(prefs.getString(Preferences.PREF_THEME, Preferences.DEFAULT_THEME));
         Utils.deleteFiles(Utils.getApkDownloadDir(this), null, ".apk");
         if (!Preferences.get().shouldCacheApks()) {
             Utils.deleteFiles(Utils.getApkCacheDir(this), null, ".apk");

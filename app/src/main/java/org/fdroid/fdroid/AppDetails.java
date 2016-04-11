@@ -247,7 +247,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
             if (!Preferences.get().expertMode()) {
                 holder.api.setVisibility(View.GONE);
-            } else if (apk.minSdkVersion > 0 && apk.maxSdkVersion > 0) {
+            } else if (apk.minSdkVersion > 0 && apk.maxSdkVersion < Apk.SDK_VERSION_MAX_VALUE) {
                 holder.api.setText(getString(R.string.minsdk_up_to_maxsdk,
                             Utils.getAndroidVersionName(apk.minSdkVersion),
                             Utils.getAndroidVersionName(apk.maxSdkVersion)));

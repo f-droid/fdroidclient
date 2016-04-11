@@ -31,6 +31,7 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.os.Process;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
@@ -338,6 +339,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
 
         final long startTime = System.currentTimeMillis();
         String address = intent.getStringExtra(EXTRA_ADDRESS);
