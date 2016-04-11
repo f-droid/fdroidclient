@@ -54,6 +54,8 @@ gradle:
         cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
       done
     - sed -n 's/.*"ctr2">\([0-9]*\)%<.*/Coverage - \1.0% covered\n/p' app/build/reports/coverage/debug/index.html
+    # this file changes every time but should not be cached
+    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
     - exit $EXITVALUE
 
 pmd:
