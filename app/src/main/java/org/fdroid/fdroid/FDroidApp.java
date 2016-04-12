@@ -234,7 +234,6 @@ public class FDroidApp extends Application {
         // been installed, but this causes problems for proprietary gapps
         // users since the introduction of verification (on pre-4.2 Android),
         // because the install intent says it's finished when it hasn't.
-        Utils.deleteFiles(Utils.getApkDownloadDir(this), null, ".apk");
         if (!Preferences.get().shouldCacheApks()) {
             Utils.deleteFiles(Utils.getApkCacheDir(this), null, ".apk");
         }

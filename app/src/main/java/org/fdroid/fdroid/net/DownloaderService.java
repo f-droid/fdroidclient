@@ -34,7 +34,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
@@ -194,12 +193,6 @@ public class DownloaderService extends Service {
                 }
             });
             downloader.download();
-            // Need the apk to be world readable, so that the installer is able to read it.
-            // Note that saving it into external storage for the purpose of letting the installer
-            // have access is insecure, because apps with permission to write to the external
-            // storage can overwrite the app between F-Droid asking for it to be installed and
-            // the installer actually installing it.
-            FileCompat.setReadable(localFile, true, false);
             sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile);
         } catch (InterruptedException e) {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile);

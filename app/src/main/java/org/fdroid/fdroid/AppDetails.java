@@ -89,7 +89,6 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.InstallFailedException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
-import org.fdroid.fdroid.net.ApkDownloader;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
@@ -304,7 +303,7 @@ public class AppDetails extends AppCompatActivity {
 
     private App app;
     private PackageManager packageManager;
-    private ApkDownloader downloadHandler;
+    private String activeDownloadUrlString;
     private LocalBroadcastManager localBroadcastManager;
 
     private boolean startingIgnoreAll;
@@ -324,16 +323,14 @@ public class AppDetails extends AppCompatActivity {
      */
     private static class ConfigurationChangeHelper {
 
-        public final ApkDownloader downloader;
+        public final String urlString;
         public final App app;
 
-        ConfigurationChangeHelper(ApkDownloader downloader, App app) {
-            this.downloader = downloader;
+        ConfigurationChangeHelper(String urlString, App app) {
+            this.urlString = urlString;
             this.app = app;
         }
     }
-
-    private boolean inProcessOfChangingConfiguration;
 
     /**
      * Attempt to extract the packageName from the intent which launched this activity.
@@ -375,8 +372,8 @@ public class AppDetails extends AppCompatActivity {
         ConfigurationChangeHelper previousData = (ConfigurationChangeHelper) getLastCustomNonConfigurationInstance();
         if (previousData != null) {
             Utils.debugLog(TAG, "Recreating view after configuration change.");
-            downloadHandler = previousData.downloader;
-            if (downloadHandler != null) {
+            activeDownloadUrlString = previousData.urlString;
+            if (activeDownloadUrlString != null) {
                 Utils.debugLog(TAG, "Download was in progress before the configuration change, so we will start to listen to its events again.");
             }
             app = previousData.app;
@@ -438,10 +435,9 @@ public class AppDetails extends AppCompatActivity {
      * Remove progress listener, suppress progress bar, set downloadHandler to null.
      */
     private void cleanUpFinishedDownload() {
-        if (downloadHandler != null) {
-            headerFragment.removeProgress();
-            downloadHandler = null;
-        }
+        activeDownloadUrlString = null;
+        headerFragment.removeProgress();
+        unregisterDownloaderReceivers();
     }
 
     protected void onStop() {
@@ -458,7 +454,6 @@ public class AppDetails extends AppCompatActivity {
             setIgnoreUpdates(app.packageName, app.ignoreAllUpdates, app.ignoreThisUpdate);
         }
         unregisterDownloaderReceivers();
-        headerFragment.removeProgress();
     }
 
     private void unregisterDownloaderReceivers() {
@@ -469,8 +464,8 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void registerDownloaderReceivers() {
-        if (downloadHandler != null) { // if a download is active
-            String url = downloadHandler.urlString;
+        if (activeDownloadUrlString != null) { // if a download is active
+            String url = activeDownloadUrlString;
             localBroadcastManager.registerReceiver(startedReceiver,
                     DownloaderService.getIntentFilter(url, Downloader.ACTION_STARTED));
             localBroadcastManager.registerReceiver(progressReceiver,
@@ -550,17 +545,12 @@ public class AppDetails extends AppCompatActivity {
 
     @Override
     public Object onRetainCustomNonConfigurationInstance() {
-        inProcessOfChangingConfiguration = true;
-        return new ConfigurationChangeHelper(downloadHandler, app);
+        return new ConfigurationChangeHelper(activeDownloadUrlString, app);
     }
 
     @Override
     protected void onDestroy() {
-        if (downloadHandler != null && !inProcessOfChangingConfiguration) {
-            DownloaderService.cancel(context, downloadHandler.urlString);
-            cleanUpFinishedDownload();
-        }
-        inProcessOfChangingConfiguration = false;
+        cleanUpFinishedDownload();
         super.onDestroy();
     }
 
@@ -853,10 +843,11 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void startDownload(Apk apk, String repoAddress) {
-        downloadHandler = new ApkDownloader(getBaseContext(), app, apk, repoAddress);
+        String urlString = Utils.getApkUrl(repoAddress, apk);
+        activeDownloadUrlString = urlString;
         registerDownloaderReceivers();
-        downloadHandler.download();
         headerFragment.startProgress();
+        DownloaderService.queue(this, activeDownloadUrlString);
     }
 
     public void removeApk(String packageName) {
@@ -1466,14 +1457,11 @@ public class AppDetails extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             AppDetails appDetails = (AppDetails) getActivity();
-            if (appDetails == null || appDetails.downloadHandler == null) {
+            if (appDetails == null || appDetails.activeDownloadUrlString == null) {
                 return;
             }
 
-            DownloaderService.cancel(getContext(), appDetails.downloadHandler.urlString);
-            appDetails.cleanUpFinishedDownload();
-            setProgressVisible(false);
-            updateViews();
+            DownloaderService.cancel(getContext(), appDetails.activeDownloadUrlString);
         }
 
         public void updateViews() {
@@ -1485,7 +1473,7 @@ public class AppDetails extends AppCompatActivity {
             TextView statusView = (TextView) view.findViewById(R.id.status);
             btMain.setVisibility(View.VISIBLE);
 
-            if (appDetails.downloadHandler != null) {
+            if (appDetails.activeDownloadUrlString != null) {
                 btMain.setText(R.string.downloading);
                 btMain.setEnabled(false);
             } else if (!app.isInstalled() && app.suggestedVercode > 0 &&

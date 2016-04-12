@@ -23,14 +23,25 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import android.util.Log;
 
+import org.apache.commons.io.FileUtils;
+import org.fdroid.fdroid.AndroidXMLDecompress;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.compat.FileCompat;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
 
 import java.io.File;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Map;
 
 /**
  * Abstract Installer class. Also provides static methods to automatically
@@ -120,16 +131,16 @@ public abstract class Installer {
         if (android.os.Build.VERSION.SDK_INT >= 14) {
             // Default installer on Android >= 4.0
             try {
-                Utils.debugLog(TAG, "try default installer for Android >= 4");
+                Utils.debugLog(TAG, "try default installer for android >= 14");
 
                 return new DefaultSdk14Installer(activity, pm, callback);
             } catch (InstallFailedException e) {
                 Log.e(TAG, "Android not compatible with DefaultInstallerSdk14!", e);
             }
         } else {
-            // Default installer on Android < 4.0
+            // Default installer on Android < 4.0 (android-14)
             try {
-                Utils.debugLog(TAG, "try default installer for Android < 4");
+                Utils.debugLog(TAG, "try default installer for android < 14");
 
                 return new DefaultInstaller(activity, pm, callback);
             } catch (InstallFailedException e) {
@@ -141,39 +152,87 @@ public abstract class Installer {
         return null;
     }
 
-    public void installPackage(File apkFile, String packageName) throws InstallFailedException {
-        // check if file exists...
+    /**
+     * Checks the APK file against the provided hash, returning whether it is a match.
+     */
+    private static boolean verifyApkFile(File apkFile, String hash, String hashType)
+            throws NoSuchAlgorithmException {
         if (!apkFile.exists()) {
-            Log.e(TAG, "Couldn't find file " + apkFile + " to install.");
-            return;
+            return false;
         }
+        Hasher hasher = new Hasher(hashType, apkFile);
+        if (hasher != null && hasher.match(hash)) {
+            return true;
+        }
+        return false;
+    }
 
-        // special case: F-Droid Privileged Extension
-        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
+    /**
+     * This is the safe, single point of entry for submitting an APK file to be installed.
+     */
+    public void installPackage(File apkFile, String packageName) throws InstallFailedException {
+        SanitizedFile apkToInstall = null;
+        try {
+            Map<String, Object> attributes = AndroidXMLDecompress.getManifestHeaderAttributes(apkFile.getAbsolutePath());
 
-            // extension must be signed with the same public key as main F-Droid
-            // NOTE: Disabled for debug builds to be able to use official extension from repo
-            ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(mContext);
-            if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(apkFile)) {
-                throw new SecurityException("APK signature of extension not correct!");
+            /* This isn't really needed, but might as well since we have the data already */
+            if (attributes.containsKey("packageName")) {
+                if (!TextUtils.equals(packageName, (String) attributes.get("packageName"))) {
+                    throw new InstallFailedException(apkFile + " has packageName that clashes with " + packageName);
+                }
             }
 
-            Activity activity;
-            try {
-                activity = (Activity) mContext;
-            } catch (ClassCastException e) {
-                Utils.debugLog(TAG, "F-Droid Privileged can only be updated using an activity!");
+            if (!attributes.containsKey("versionCode")) {
+                throw new InstallFailedException(apkFile + " is missing versionCode!");
+            }
+            int versionCode = (Integer) attributes.get("versionCode");
+            Apk apk = ApkProvider.Helper.find(mContext, packageName, versionCode, new String[]{
+                    ApkProvider.DataColumns.HASH,
+                    ApkProvider.DataColumns.HASH_TYPE,
+            });
+            /* Always copy the APK to the safe location inside of the protected area
+             * of the app to prevent attacks based on other apps swapping the file
+             * out during the install process. Most likely, apkFile was just downloaded,
+             * so it should still be in the RAM disk cache */
+            apkToInstall = SanitizedFile.knownSanitized(File.createTempFile("install-", ".apk", mContext.getFilesDir()));
+            FileUtils.copyFile(apkFile, apkToInstall);
+            if (!verifyApkFile(apkToInstall, apk.hash, apk.hashType)) {
+                FileUtils.deleteQuietly(apkFile);
+                throw new InstallFailedException(apkFile + " failed to verify!");
+            }
+            apkFile = null; // ensure this is not used now that its copied to apkToInstall
+
+            // special case: F-Droid Privileged Extension
+            if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
+
+                // extension must be signed with the same public key as main F-Droid
+                // NOTE: Disabled for debug builds to be able to use official extension from repo
+                ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(mContext);
+                if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(apkToInstall)) {
+                    throw new InstallFailedException("APK signature of extension not correct!");
+                }
+
+                Activity activity = (Activity) mContext;
+                Intent installIntent = new Intent(activity, InstallExtensionDialogActivity.class);
+                installIntent.setAction(InstallExtensionDialogActivity.ACTION_INSTALL);
+                installIntent.putExtra(InstallExtensionDialogActivity.EXTRA_INSTALL_APK, apkToInstall.getAbsolutePath());
+                activity.startActivity(installIntent);
                 return;
             }
 
-            Intent installIntent = new Intent(activity, InstallExtensionDialogActivity.class);
-            installIntent.setAction(InstallExtensionDialogActivity.ACTION_INSTALL);
-            installIntent.putExtra(InstallExtensionDialogActivity.EXTRA_INSTALL_APK, apkFile.getAbsolutePath());
-            activity.startActivity(installIntent);
-            return;
-        }
+            // Need the apk to be world readable, so that the installer is able to read it.
+            // Note that saving it into external storage for the purpose of letting the installer
+            // have access is insecure, because apps with permission to write to the external
+            // storage can overwrite the app between F-Droid asking for it to be installed and
+            // the installer actually installing it.
+            FileCompat.setReadable(apkToInstall, true, false);
+            installPackageInternal(apkToInstall);
 
-        installPackageInternal(apkFile);
+        } catch (NumberFormatException | NoSuchAlgorithmException | IOException e) {
+            throw new InstallFailedException(e);
+        } catch (ClassCastException e) {
+            throw new InstallFailedException("F-Droid Privileged can only be updated using an activity!");
+        }
     }
 
     public void deletePackage(String packageName) throws InstallFailedException {

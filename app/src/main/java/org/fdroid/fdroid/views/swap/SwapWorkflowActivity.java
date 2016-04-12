@@ -45,7 +45,6 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
-import org.fdroid.fdroid.net.ApkDownloader;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
@@ -783,8 +782,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void install(@NonNull final App app) {
-        final Apk apkToInstall = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode);
-        final ApkDownloader downloader = new ApkDownloader(this, app, apkToInstall, apkToInstall.repoAddress);
+        final Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode);
+        String urlString = Utils.getApkUrl(apk.repoAddress, apk);
         downloadCompleteReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -793,8 +792,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         };
         localBroadcastManager.registerReceiver(downloadCompleteReceiver,
-                DownloaderService.getIntentFilter(downloader.urlString, Downloader.ACTION_COMPLETE));
-        downloader.download();
+                DownloaderService.getIntentFilter(urlString, Downloader.ACTION_COMPLETE));
+        DownloaderService.queue(this, urlString);
     }
 
     private void handleDownloadComplete(File apkFile, String packageName) {
