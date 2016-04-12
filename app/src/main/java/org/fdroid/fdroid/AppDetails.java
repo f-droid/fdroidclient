@@ -97,27 +97,7 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 
-interface AppDetailsData {
-    App getApp();
-
-    AppDetails.ApkListAdapter getApks();
-}
-
-/**
- * Interface which allows the apk list fragment to communicate with the activity when
- * a user requests to install/remove an apk by clicking on an item in the list.
- * <p/>
- * NOTE: This is <em>not</em> to do with with the sudo/packagemanager/other installer
- * stuff which allows multiple ways to install apps. It is only here to make fragment-
- * activity communication possible.
- */
-interface AppInstallListener {
-    void install(final Apk apk);
-
-    void removeApk(String packageName);
-}
-
-public class AppDetails extends AppCompatActivity implements AppDetailsData, AppInstallListener {
+public class AppDetails extends AppCompatActivity {
 
     private static final String TAG = "AppDetails";
 
@@ -807,7 +787,6 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
     }
 
     // Install the version of this app denoted by 'app.curApk'.
-    @Override
     public void install(final Apk apk) {
         if (isFinishing()) {
             return;
@@ -881,7 +860,6 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
         }
     }
 
-    @Override
     public void removeApk(String packageName) {
         try {
             installer.deletePackage(packageName);
@@ -976,12 +954,10 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
         }
     }
 
-    @Override
     public App getApp() {
         return app;
     }
 
-    @Override
     public ApkListAdapter getApks() {
         return adapter;
     }
@@ -989,7 +965,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
     public static class AppDetailsSummaryFragment extends Fragment {
 
         final Preferences prefs;
-        private AppDetailsData data;
+        private AppDetails appDetails;
         private static final int MAX_LINES = 5;
         private static boolean viewAllDescription;
         private static LinearLayout llViewMoreDescription;
@@ -1018,15 +994,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            data = (AppDetailsData) activity;
-        }
-
-        App getApp() {
-            return data.getApp();
-        }
-
-        ApkListAdapter getApks() {
-            return data.getApks();
+            appDetails = (AppDetails) activity;
         }
 
         @Override
@@ -1085,7 +1053,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
                 String url = null;
-                App app = getApp();
+                App app = appDetails.getApp();
                 switch (v.getId()) {
                     case R.id.website:
                         url = app.webURL;
@@ -1138,7 +1106,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
         };
 
         private void setupView(final View view) {
-            App app = getApp();
+            App app = appDetails.getApp();
             // Expandable description
             final TextView description = (TextView) view.findViewById(R.id.description);
             final Spanned desc = Html.fromHtml(app.description, null, new Utils.HtmlTagHandler());
@@ -1264,8 +1232,8 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
             }
 
             Apk curApk = null;
-            for (int i = 0; i < getApks().getCount(); i++) {
-                final Apk apk = getApks().getItem(i);
+            for (int i = 0; i < appDetails.getApks().getCount(); i++) {
+                final Apk apk = appDetails.getApks().getItem(i);
                 if (apk.vercode == app.suggestedVercode) {
                     curApk = apk;
                     break;
@@ -1277,7 +1245,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
             final TextView permissionHeader = (TextView) view.findViewById(R.id.permissions);
 
             final boolean curApkCompatible = curApk != null && curApk.compatible;
-            if (!getApks().isEmpty() && (curApkCompatible || prefs.showIncompatibleVersions())) {
+            if (!appDetails.getApks().isEmpty() && (curApkCompatible || prefs.showIncompatibleVersions())) {
                 // build and set the string once
                 buildPermissionInfo();
                 permissionHeader.setOnClickListener(expanderPermissions);
@@ -1310,7 +1278,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
         private void buildPermissionInfo() {
             final TextView permissionListView = (TextView) llViewMorePermissions.findViewById(R.id.permissions_list);
 
-            CommaSeparatedList permsList = getApks().getItem(0).permissions;
+            CommaSeparatedList permsList = appDetails.getApks().getItem(0).permissions;
             if (permsList == null) {
                 permissionListView.setText(R.string.no_permissions);
             } else {
@@ -1362,7 +1330,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
                 return;
             }
 
-            App app = getApp();
+            App app = appDetails.getApp();
             TextView signatureView = (TextView) view.findViewById(R.id.signature);
             if (prefs.expertMode() && !TextUtils.isEmpty(app.installedSig)) {
                 signatureView.setVisibility(View.VISIBLE);
@@ -1375,7 +1343,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
 
     public static class AppDetailsHeaderFragment extends Fragment implements View.OnClickListener {
 
-        private AppDetailsData data;
+        private AppDetails appDetails;
         private Button btMain;
         private ProgressBar progressBar;
         private TextView progressSize;
@@ -1396,14 +1364,6 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
                 .build();
         }
 
-        private App getApp() {
-            return data.getApp();
-        }
-
-        private ApkListAdapter getApks() {
-            return data.getApks();
-        }
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.app_details_header, container, false);
@@ -1414,11 +1374,11 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            data = (AppDetailsData) activity;
+            appDetails = (AppDetails) activity;
         }
 
         private void setupView(View view) {
-            App app = getApp();
+            App app = appDetails.getApp();
 
             // Set the icon...
             ImageView iv = (ImageView) view.findViewById(R.id.icon);
@@ -1506,13 +1466,13 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
          */
         @Override
         public void onClick(View view) {
-            AppDetails activity = (AppDetails) getActivity();
-            if (activity == null || activity.downloadHandler == null) {
+            AppDetails appDetails = (AppDetails) getActivity();
+            if (appDetails == null || appDetails.downloadHandler == null) {
                 return;
             }
 
-            DownloaderService.cancel(getContext(), activity.downloadHandler.urlString);
-            activity.cleanUpFinishedDownload();
+            DownloaderService.cancel(getContext(), appDetails.downloadHandler.urlString);
+            appDetails.cleanUpFinishedDownload();
             setProgressVisible(false);
             updateViews();
         }
@@ -1522,21 +1482,20 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
         }
 
         public void updateViews(View view) {
-            App app = getApp();
+            App app = appDetails.getApp();
             TextView statusView = (TextView) view.findViewById(R.id.status);
             btMain.setVisibility(View.VISIBLE);
 
-            AppDetails activity = (AppDetails) getActivity();
-            if (activity.downloadHandler != null) {
+            if (appDetails.downloadHandler != null) {
                 btMain.setText(R.string.downloading);
                 btMain.setEnabled(false);
             } else if (!app.isInstalled() && app.suggestedVercode > 0 &&
-                    activity.adapter.getCount() > 0) {
+                    appDetails.adapter.getCount() > 0) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
                 // If App isn't installed
                 installed = false;
                 statusView.setText(R.string.details_notinstalled);
-                NfcHelper.disableAndroidBeam(activity);
+                NfcHelper.disableAndroidBeam(appDetails);
                 // Set Install button and hide second button
                 btMain.setText(R.string.menu_install);
                 btMain.setOnClickListener(mOnClickListener);
@@ -1545,13 +1504,13 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
                 // If App is installed
                 installed = true;
                 statusView.setText(getString(R.string.details_installed, app.installedVersionName));
-                NfcHelper.setAndroidBeam(activity, app.packageName);
+                NfcHelper.setAndroidBeam(appDetails, app.packageName);
                 if (app.canAndWantToUpdate()) {
                     updateWanted = true;
                     btMain.setText(R.string.menu_upgrade);
                 } else {
                     updateWanted = false;
-                    if (activity.packageManager.getLaunchIntentForPackage(app.packageName) != null) {
+                    if (appDetails.packageManager.getLaunchIntentForPackage(app.packageName) != null) {
                         btMain.setText(R.string.menu_launch);
                     } else {
                         btMain.setText(R.string.menu_uninstall);
@@ -1569,8 +1528,8 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
                 author.setVisibility(View.VISIBLE);
             }
             TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
-            if (!getApks().isEmpty()) {
-                currentVersion.setText(getApks().getItem(0).version + " (" + app.license + ")");
+            if (!appDetails.getApks().isEmpty()) {
+                currentVersion.setText(appDetails.getApks().getItem(0).version + " (" + app.license + ")");
             } else {
                 currentVersion.setVisibility(View.GONE);
                 btMain.setVisibility(View.GONE);
@@ -1580,7 +1539,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
 
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
-                App app = getApp();
+                App app = appDetails.getApp();
                 AppDetails activity = (AppDetails) getActivity();
                 if (updateWanted && app.suggestedVercode > 0) {
                     Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVercode);
@@ -1610,8 +1569,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
 
         private static final String SUMMARY_TAG = "summary";
 
-        private AppDetailsData data;
-        private AppInstallListener installListener;
+        private AppDetails appDetails;
         private AppDetailsSummaryFragment summaryFragment;
 
         private FrameLayout headerView;
@@ -1619,24 +1577,11 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            data = (AppDetailsData) activity;
-            installListener = (AppInstallListener) activity;
-        }
-
-        void install(final Apk apk) {
-            installListener.install(apk);
+            appDetails = (AppDetails) activity;
         }
 
         void remove() {
-            installListener.removeApk(getApp().packageName);
-        }
-
-        App getApp() {
-            return data.getApp();
-        }
-
-        ApkListAdapter getApks() {
-            return data.getApks();
+            appDetails.removeApk(appDetails.getApp().packageName);
         }
 
         @Override
@@ -1658,13 +1603,13 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
 
             setListAdapter(null);
             getListView().addHeaderView(headerView);
-            setListAdapter(getApks());
+            setListAdapter(appDetails.getApks());
         }
 
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
-            App app = getApp();
-            final Apk apk = getApks().getItem(position - l.getHeaderViewsCount());
+            App app = appDetails.getApp();
+            final Apk apk = appDetails.getApks().getItem(position - l.getHeaderViewsCount());
             if (app.installedVersionCode == apk.vercode) {
                 remove();
             } else if (app.installedVersionCode > apk.vercode) {
@@ -1675,7 +1620,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
-                                install(apk);
+                                appDetails.install(apk);
                             }
                         });
                 builder.setNegativeButton(R.string.no,
@@ -1688,7 +1633,7 @@ public class AppDetails extends AppCompatActivity implements AppDetailsData, App
                 AlertDialog alert = builder.create();
                 alert.show();
             } else {
-                install(apk);
+                appDetails.install(apk);
             }
         }
 
