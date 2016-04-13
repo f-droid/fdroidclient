@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
@@ -145,6 +146,14 @@ public abstract class Installer {
 
         // special case: F-Droid Privileged Extension
         if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
+
+            // extension must be signed with the same public key as main F-Droid
+            // NOTE: Disabled for debug builds to be able to use official extension from repo
+            ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(mContext);
+            if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(apkFile)) {
+                throw new SecurityException("APK signature of extension not correct!");
+            }
+
             Activity activity;
             try {
                 activity = (Activity) mContext;
