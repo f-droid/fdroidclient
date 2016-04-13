@@ -222,7 +222,7 @@ public abstract class Installer {
             // have access is insecure, because apps with permission to write to the external
             // storage can overwrite the app between F-Droid asking for it to be installed and
             // the installer actually installing it.
-            FileCompat.setReadable(apkToInstall, true, false);
+            FileCompat.setReadable(apkToInstall, true);
             installPackageInternal(apkToInstall);
 
             NotificationManager nm = (NotificationManager)
