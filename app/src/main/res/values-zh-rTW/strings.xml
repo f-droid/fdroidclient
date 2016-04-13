@@ -70,7 +70,7 @@
     <string name="fdroid_updates_available">有可用的 F-Droid 更新</string>
     <string name="send_via_bluetooth">透過藍牙傳送</string>
 
-    <string name="repo_add_url">應用軟體倉庫網址</string>
+    <string name="repo_add_url">應用軟體儲存庫網址</string>
     <string name="repo_add_fingerprint">指紋（選填）</string>
     <string name="theme_night">夜晚</string>
 <string name="theme_dark">暗</string>
@@ -254,4 +254,37 @@
     <string name="uninstall_confirm">您想要解除安裝此應用程式嗎？</string>
     <string name="download_error">下載失敗</string>
 
+    <string name="system_installer_on">使用 F-Droid 特權延伸以安裝、更新和移除套裝軟體</string>
+    <string name="uninstall_system">更新/解除安裝特權延伸</string>
+    <string name="uninstall_system_summary">開啟特權延伸的詳情畫面來更新/解除安裝</string>
+    <string name="local_repo_https">使用私密連接</string>
+    <string name="repo_error_empty_username">空的使用者名稱，憑證未改變</string>
+
+    <string name="update_notification_more">+%1$d 更多…</string>
+    <string name="repo_exists_enable">此儲存庫已經設立。確認您要重新啟用它。</string>
+    <string name="repo_exists_and_enabled">進入的儲存庫已設立並已啟用。</string>
+    <string name="malformed_repo_uri">略過異常的儲存庫 URI：%s</string>
+    <string name="repo_provider">儲存庫：%s</string>
+
+    <string name="menu_email">E-Mail 作者</string>
+    <string name="menu_issues">問題</string>
+    <string name="local_repo_running">F-Droid 已準備好交換</string>
+    <string name="touch_to_configure_local_repo">觸碰以便檢視詳細資料並允許其他去交換您的應用程式。</string>
+    <string name="swap_nfc_title">觸碰以便交換</string>
+    <string name="writing_index_jar">寫入已簽署的索引檔案中 (index.jar)…</string>
+    <string name="linking_apks">正在連結 APK 到儲存庫裡…</string>
+    <string name="next">下一步</string>
+    <string name="useTor">使用 Tor</string>
+    <string name="useTorSummary">為了增強私隱保護，強制下載流量通過 Tor</string>
+    <string name="enable_proxy_summary">為所有網路要求組態 HTTP Proxy</string>
+    <string name="proxy_host">Proxy 主機</string>
+    <string name="proxy_host_summary">組態您的 proxy 主機名稱 (例如 127.0.0.1)</string>
+    <string name="proxy_port">Proxy 的埠號</string>
+    <string name="proxy_port_summary">組態您 proxy 的埠號 (例如 8118)</string>
+
+    <string name="status_download">正在下載\n%2$s / %3$s (%4$d%%) 來自\n%1$s</string>
+
+    <string name="status_download_unknown_size">正在下載\n%2$s 來自\n%1$s</string>
+    <string name="status_processing_xml_percent">正在處理來自 %1$s 的 %2$s / %3$s (%4$d%%)</string>
+    <string name="status_connecting_to_repo">正連線至\n%1$s</string>
     </resources>
