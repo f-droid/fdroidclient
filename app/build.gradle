@@ -218,7 +218,7 @@ task pmd(type: Pmd, dependsOn: assembleDebug) {
         //'java-unnecessary', // too nitpicky with parenthesis
     ]
     source 'src/main/java'
-    include '**/org/fdroid/**/*.java'
+    include '**/*.java'
 }
 
 // This person took the example code below from another blogpost online, however
