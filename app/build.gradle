@@ -10,14 +10,14 @@ repositories {
 dependencies {
     compile project(':privileged-api-lib')
 
-    compile 'com.android.support:support-v4:23.2.1'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:support-annotations:23.2.1'
+    compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:support-annotations:23.3.0'
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.google.zxing:core:3.2.1'
     compile 'eu.chainfire:libsuperuser:1.0.0.201602271131'
-    compile 'cc.mvdan.accesspoint:library:0.1.3'
+    compile 'cc.mvdan.accesspoint:library:0.2.0'
     compile 'info.guardianproject.netcipher:netcipher:1.2.1'
     compile 'commons-io:commons-io:2.4'
     compile 'commons-net:commons-net:3.4'
@@ -31,7 +31,7 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 
-    androidTestCompile 'com.android.support:support-annotations:23.2.1'
+    androidTestCompile 'com.android.support:support-annotations:23.3.0'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
 }
@@ -70,13 +70,13 @@ if (!hasProperty('sourceDeps')) {
     // source code don't need to be here.
     dependencyVerification {
         verify = [
-            'com.android.support:support-v4:81ce890f26d35c75ad17d0f998a7e3230330c3b41e0b629566bc744bee89e448',
-            'com.android.support:appcompat-v7:00f9d93acacd6731f309724054bf51492814b4b2869f16d7d5c0038dcb8c9a0d',
-            'com.android.support:support-annotations:786ab0d060774fb95cfdaf4878771e14b85733b1af9d72a4aae762dc7c1dff9f',
+            'com.android.support:support-v4:1e8b7cc1cb3d6f6a2fd913791a6313df6bbaa470be450384474e906bc234bd49',
+            'com.android.support:appcompat-v7:dce81c41f76d83fa315617f4bc8ef2f84c5aa54b686f37b559422b939f622490',
+            'com.android.support:support-annotations:e9e076f3ea4fb144387c6054a6f69a2f6150ad4b1907897aaf55d6e8f4b8b91e',
             'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
             'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
             'eu.chainfire:libsuperuser:018344ff19ee94d252c14b4a503ee8b519184db473a5af83513f5837c413b128',
-            'cc.mvdan.accesspoint:library:dc89a085d6bc40381078b8dd7776b12bde0dbaf8ffbcddb17ec4ebc3edecc7ba',
+            'cc.mvdan.accesspoint:library:0837b38adb48b66bb1385adb6ade8ecce7002ad815c55abf13517c82193458ea',
             'commons-io:commons-io:cc6a41dc3eaacc9e440a6bd0d2890b20d36b4ee408fe2d67122f328bb6e01581',
             'commons-net:commons-net:38cf2eca826b8bcdb236fc1f2e79e0c6dd8e7e0f5c44a3b8e839a1065b2fbe2e',
             'info.guardianproject.netcipher:netcipher:611ec5bde9d799fd57e1efec5c375f9f460de2cdda98918541decc9a7d02f2ad',
@@ -134,6 +134,7 @@ android {
         // release builds before.
         all {
             minifyEnabled true
+            useProguard true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
@@ -218,7 +219,7 @@ task pmd(type: Pmd, dependsOn: assembleDebug) {
         //'java-unnecessary', // too nitpicky with parenthesis
     ]
     source 'src/main/java'
-    include '**/org/fdroid/**/*.java'
+    include '**/*.java'
 }
 
 // This person took the example code below from another blogpost online, however
