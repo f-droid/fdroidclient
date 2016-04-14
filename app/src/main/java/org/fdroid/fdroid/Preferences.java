@@ -45,6 +45,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public static final String PREF_UPD_INTERVAL = "updateInterval";
     public static final String PREF_UPD_WIFI_ONLY = "updateOnWifiOnly";
+    public static final String PREF_UPD_AUTO_DOWNLOAD = "updateAutoDownload";
     public static final String PREF_UPD_NOTIFY = "updateNotify";
     public static final String PREF_UPD_HISTORY = "updateHistoryDays";
     public static final String PREF_ROOTED = "rooted";
@@ -54,7 +55,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_CACHE_APK = "cacheDownloaded";
     public static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
     public static final String PREF_EXPERT = "expert";
-    public static final String PREF_UPD_LAST = "lastUpdateCheck";
     public static final String PREF_PRIVILEGED_INSTALLER = "privilegedInstaller";
     public static final String PREF_UNINSTALL_PRIVILEGED_APP = "uninstallPrivilegedApp";
     public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
@@ -177,6 +177,18 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public String getLocalRepoName() {
         return preferences.getString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName());
+    }
+
+    public boolean isUpdateNotificationEnabled() {
+        return preferences.getBoolean(PREF_UPD_NOTIFY, true);
+    }
+
+    public boolean isAutoDownloadEnabled() {
+        return preferences.getBoolean(PREF_UPD_AUTO_DOWNLOAD, false);
+    }
+
+    public boolean isUpdateOnlyOnWifi() {
+        return preferences.getBoolean(PREF_UPD_WIFI_ONLY, false);
     }
 
     /**

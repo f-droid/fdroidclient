@@ -42,12 +42,14 @@ import android.util.Log;
 import android.widget.Toast;
 
 import org.fdroid.fdroid.compat.PreferencesCompat;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.Downloader;
+import org.fdroid.fdroid.net.DownloaderService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +73,8 @@ public class UpdateService extends IntentService implements ProgressListener {
     public static final int STATUS_ERROR_LOCAL = 3;
     public static final int STATUS_ERROR_LOCAL_SMALL = 4;
     public static final int STATUS_INFO = 5;
+
+    private static final String STATE_LAST_UPDATED = "lastUpdateCheck";
 
     private LocalBroadcastManager localBroadcastManager;
 
@@ -129,8 +133,6 @@ public class UpdateService extends IntentService implements ProgressListener {
         super.onCreate();
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
-        localBroadcastManager.registerReceiver(downloadProgressReceiver,
-                new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
         localBroadcastManager.registerReceiver(updateStatusReceiver,
                 new IntentFilter(LOCAL_ACTION_STATUS));
 
@@ -192,16 +194,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     private final BroadcastReceiver downloadProgressReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (TextUtils.isEmpty(action)) {
-                return;
-            }
-
-            if (!action.equals(Downloader.LOCAL_ACTION_PROGRESS)) {
-                return;
-            }
-
-            String repoAddress = intent.getStringExtra(Downloader.EXTRA_ADDRESS);
+            String repoAddress = intent.getDataString();
             int downloadedSize = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1);
             String downloadedSizeFriendly = Utils.getFriendlySize(downloadedSize);
             int totalSize = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1);
@@ -305,7 +298,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             Log.i(TAG, "Skipping update - disabled");
             return false;
         }
-        long lastUpdate = prefs.getLong(Preferences.PREF_UPD_LAST, 0);
+        long lastUpdate = prefs.getLong(STATE_LAST_UPDATED, 0);
         long elapsed = System.currentTimeMillis() - lastUpdate;
         if (elapsed < interval * 60 * 60 * 1000) {
             Log.i(TAG, "Skipping update - done " + elapsed
@@ -328,9 +321,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             return false;
         }
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        if (activeNetwork.getType() != ConnectivityManager.TYPE_WIFI
-                && prefs.getBoolean(Preferences.PREF_UPD_WIFI_ONLY, false)) {
+        if (activeNetwork.getType() != ConnectivityManager.TYPE_WIFI && Preferences.get().isUpdateOnlyOnWifi()) {
             Log.i(TAG, "Skipping update - wifi not available");
             return false;
         }
@@ -352,8 +343,6 @@ public class UpdateService extends IntentService implements ProgressListener {
             } else if (!verifyIsTimeForScheduledRun()) {
                 return;
             }
-
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
             // Grab some preliminary information, then we can release the
             // database while we do all the downloading, etc...
@@ -381,6 +370,8 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
                 RepoUpdater updater = new RepoUpdater(getBaseContext(), repo);
+                localBroadcastManager.registerReceiver(downloadProgressReceiver,
+                        DownloaderService.getIntentFilter(updater.indexUrl, Downloader.ACTION_PROGRESS));
                 updater.setProgressListener(this);
                 try {
                     updater.update();
@@ -395,6 +386,12 @@ public class UpdateService extends IntentService implements ProgressListener {
                     repoErrors.add(e.getMessage());
                     Log.e(TAG, "Error updating repository " + repo.address, e);
                 }
+                localBroadcastManager.unregisterReceiver(downloadProgressReceiver);
+
+                // now that downloading the index is done, start downloading updates
+                if (changes && Preferences.get().isAutoDownloadEnabled()) {
+                    autoDownloadUpdates(repo.address);
+                }
             }
 
             if (!changes) {
@@ -402,13 +399,14 @@ public class UpdateService extends IntentService implements ProgressListener {
             } else {
                 notifyContentProviders();
 
-                if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, true)) {
+                if (Preferences.get().isUpdateNotificationEnabled()) {
                     performUpdateNotification();
                 }
             }
 
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
             SharedPreferences.Editor e = prefs.edit();
-            e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
+            e.putLong(STATE_LAST_UPDATED, System.currentTimeMillis());
             PreferencesCompat.apply(e);
 
             if (errorRepos == 0) {
@@ -482,6 +480,25 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
 
         return inboxStyle;
+    }
+
+    private void autoDownloadUpdates(String repoAddress) {
+        Cursor cursor = getContentResolver().query(
+                AppProvider.getCanUpdateUri(),
+                new String[]{
+                        AppProvider.DataColumns.PACKAGE_NAME,
+                        AppProvider.DataColumns.SUGGESTED_VERSION_CODE,
+                }, null, null, null);
+        cursor.moveToFirst();
+        for (int i = 0; i < cursor.getCount(); i++) {
+            App app = new App(cursor);
+            Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode, new String[]{
+                    ApkProvider.DataColumns.NAME,
+            });
+            String urlString = Utils.getApkUrl(repoAddress, apk);
+            DownloaderService.queue(this, app.packageName, urlString);
+            cursor.moveToNext();
+        }
     }
 
     private void showAppUpdatesNotification(Cursor hasUpdates) {

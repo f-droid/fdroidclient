@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views.swap;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -34,7 +35,6 @@ import com.google.zxing.integration.android.IntentResult;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -45,7 +45,8 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
-import org.fdroid.fdroid.net.ApkDownloader;
+import org.fdroid.fdroid.net.Downloader;
+import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
 import java.util.Arrays;
@@ -116,6 +117,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private boolean hasPreparedLocalRepo;
     private PrepareSwapRepo updateSwappableAppsTask;
     private NewRepoConfig confirmSwapConfig;
+    private LocalBroadcastManager localBroadcastManager;
+    private BroadcastReceiver downloadCompleteReceiver;
 
     @NonNull
     private final ServiceConnection serviceConnection = new ServiceConnection() {
@@ -180,6 +183,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         container = (ViewGroup) findViewById(R.id.fragment_container);
+
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
         new SwapDebug().logStatus();
     }
@@ -777,22 +782,21 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void install(@NonNull final App app) {
-        final Apk apkToInstall = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode);
-        final ApkDownloader downloader = new ApkDownloader(this, app, apkToInstall, apkToInstall.repoAddress);
-        downloader.setProgressListener(new ProgressListener() {
+        final Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode);
+        String urlString = Utils.getApkUrl(apk.repoAddress, apk);
+        downloadCompleteReceiver = new BroadcastReceiver() {
             @Override
-            public void onProgress(Event event) {
-                switch (event.type) {
-                    case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
-                        handleDownloadComplete(downloader.localFile(), app.packageName);
-                        break;
-                }
+            public void onReceive(Context context, Intent intent) {
+                String path = intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH);
+                handleDownloadComplete(new File(path), app.packageName, intent.getDataString());
             }
-        });
-        downloader.download();
+        };
+        localBroadcastManager.registerReceiver(downloadCompleteReceiver,
+                DownloaderService.getIntentFilter(urlString, Downloader.ACTION_COMPLETE));
+        DownloaderService.queue(this, app.packageName, urlString);
     }
 
-    private void handleDownloadComplete(File apkFile, String packageName) {
+    private void handleDownloadComplete(File apkFile, String packageName, String urlString) {
 
         try {
             Installer.getActivityInstaller(this, new Installer.InstallerCallback() {
@@ -807,8 +811,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 public void onError(int operation, int errorCode) {
                     // TODO: Boo!
                 }
-            }).installPackage(apkFile, packageName);
-        } catch (Installer.AndroidNotCompatibleException e) {
+            }).installPackage(apkFile, packageName, urlString);
+            localBroadcastManager.unregisterReceiver(downloadCompleteReceiver);
+        } catch (Installer.InstallFailedException e) {
             // TODO: Handle exception properly
         }
     }

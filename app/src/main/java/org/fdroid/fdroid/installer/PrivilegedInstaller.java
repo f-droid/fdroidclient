@@ -86,7 +86,7 @@ public class PrivilegedInstaller extends Installer {
     public static final int IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM = 3;
 
     public PrivilegedInstaller(Activity activity, PackageManager pm,
-                               InstallerCallback callback) throws AndroidNotCompatibleException {
+                               InstallerCallback callback) throws InstallFailedException {
         super(activity, pm, callback);
         this.mActivity = activity;
     }
@@ -156,7 +156,7 @@ public class PrivilegedInstaller extends Installer {
     }
 
     @Override
-    protected void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
+    protected void installPackageInternal(File apkFile) throws InstallFailedException {
         Uri packageUri = Uri.fromFile(apkFile);
         int count = newPermissionCount(packageUri);
         if (count < 0) {
@@ -171,7 +171,7 @@ public class PrivilegedInstaller extends Installer {
         } else {
             try {
                 doInstallPackageInternal(packageUri);
-            } catch (AndroidNotCompatibleException e) {
+            } catch (InstallFailedException e) {
                 mCallback.onError(InstallerCallback.OPERATION_INSTALL,
                         InstallerCallback.ERROR_CODE_OTHER);
             }
@@ -194,7 +194,7 @@ public class PrivilegedInstaller extends Installer {
         return 1;
     }
 
-    private void doInstallPackageInternal(final Uri packageURI) throws AndroidNotCompatibleException {
+    private void doInstallPackageInternal(final Uri packageURI) throws InstallFailedException {
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
@@ -238,7 +238,7 @@ public class PrivilegedInstaller extends Installer {
 
     @Override
     protected void deletePackageInternal(final String packageName)
-            throws AndroidNotCompatibleException {
+            throws InstallFailedException {
         ApplicationInfo appInfo;
         try {
             appInfo = mPm.getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
@@ -273,7 +273,7 @@ public class PrivilegedInstaller extends Installer {
                     public void onClick(DialogInterface dialog, int which) {
                         try {
                             doDeletePackageInternal(packageName);
-                        } catch (AndroidNotCompatibleException e) {
+                        } catch (InstallFailedException e) {
                             mCallback.onError(InstallerCallback.OPERATION_DELETE,
                                     InstallerCallback.ERROR_CODE_OTHER);
                         }
@@ -293,7 +293,7 @@ public class PrivilegedInstaller extends Installer {
     }
 
     private void doDeletePackageInternal(final String packageName)
-            throws AndroidNotCompatibleException {
+            throws InstallFailedException {
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
@@ -344,7 +344,7 @@ public class PrivilegedInstaller extends Installer {
                     final Uri packageUri = data.getData();
                     try {
                         doInstallPackageInternal(packageUri);
-                    } catch (AndroidNotCompatibleException e) {
+                    } catch (InstallFailedException e) {
                         mCallback.onError(InstallerCallback.OPERATION_INSTALL,
                                 InstallerCallback.ERROR_CODE_OTHER);
                     }

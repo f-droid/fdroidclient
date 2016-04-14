@@ -66,6 +66,7 @@ import java.util.Formatter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.zip.Adler32;
 
 public final class Utils {
 
@@ -318,31 +319,17 @@ public final class Utils {
     }
 
     /**
-     * See {@link Utils#getApkDownloadDir(android.content.Context)} for why this is "unsafe".
+     * This location is only for caching, do not install directly from this location
+     * because if the file is on the External Storage, any other app could swap out
+     * the APK while the install was in process, allowing malware to install things.
+     * Using {@link org.fdroid.fdroid.installer.Installer#installPackage(File, String, String)}
+     * is fine since that does the right thing.
      */
     public static SanitizedFile getApkCacheDir(Context context) {
         final SanitizedFile apkCacheDir = new SanitizedFile(StorageUtils.getCacheDirectory(context, true), "apks");
         if (!apkCacheDir.exists()) {
             apkCacheDir.mkdir();
         }
-        return apkCacheDir;
-    }
-
-    /**
-     * The directory where .apk files are downloaded (and stored - if the relevant property is enabled).
-     * This must be on internal storage, to prevent other apps with "write external storage" from being
-     * able to change the .apk file between F-Droid requesting the Package Manger to install, and the
-     * Package Manager receiving that request.
-     */
-    public static File getApkDownloadDir(Context context) {
-        final SanitizedFile apkCacheDir = new SanitizedFile(StorageUtils.getCacheDirectory(context, false), "temp");
-        if (!apkCacheDir.exists()) {
-            apkCacheDir.mkdir();
-        }
-
-        // All parent directories of the .apk file need to be executable for the package installer
-        // to be able to have permission to read our world-readable .apk files.
-        FileCompat.setExecutable(apkCacheDir, true, false);
         return apkCacheDir;
     }
 
@@ -424,6 +411,15 @@ public final class Utils {
 
     public static String getApkUrl(String repoAddress, Apk apk) {
         return repoAddress + "/" + apk.apkName.replace(" ", "%20");
+    }
+
+    /**
+     * This generates a unique, reproducible ID for notifications related to {@code urlString}
+     */
+    public static int getApkUrlNotificationId(String urlString) {
+        Adler32 checksum = new Adler32();
+        checksum.update(urlString.getBytes());
+        return (int) checksum.getValue();
     }
 
     public static final class CommaSeparatedList implements Iterable<String> {

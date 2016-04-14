@@ -80,7 +80,7 @@ public class BluetoothDownloader extends Downloader {
 
     @Override
     public void download() throws IOException, InterruptedException {
-        downloadFromStream(1024);
+        downloadFromStream(1024, false);
         connection.closeQuietly();
     }
 

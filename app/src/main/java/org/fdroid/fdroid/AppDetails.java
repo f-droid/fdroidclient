@@ -29,7 +29,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
@@ -80,6 +79,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import org.fdroid.fdroid.Utils.CommaSeparatedList;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
+import org.fdroid.fdroid.compat.PreferencesCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -88,36 +88,16 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
+import org.fdroid.fdroid.installer.Installer.InstallFailedException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
-import org.fdroid.fdroid.net.ApkDownloader;
 import org.fdroid.fdroid.net.Downloader;
+import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 
-interface AppDetailsData {
-    App getApp();
-
-    AppDetails.ApkListAdapter getApks();
-}
-
-/**
- * Interface which allows the apk list fragment to communicate with the activity when
- * a user requests to install/remove an apk by clicking on an item in the list.
- *
- * NOTE: This is <em>not</em> to do with with the sudo/packagemanager/other installer
- * stuff which allows multiple ways to install apps. It is only here to make fragment-
- * activity communication possible.
- */
-interface AppInstallListener {
-    void install(final Apk apk);
-
-    void removeApk(String packageName);
-}
-
-public class AppDetails extends AppCompatActivity implements ProgressListener, AppDetailsData, AppInstallListener {
+public class AppDetails extends AppCompatActivity {
 
     private static final String TAG = "AppDetails";
 
@@ -324,7 +304,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     private App app;
     private PackageManager packageManager;
-    private ApkDownloader downloadHandler;
+    private String activeDownloadUrlString;
     private LocalBroadcastManager localBroadcastManager;
 
     private boolean startingIgnoreAll;
@@ -344,16 +324,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
      */
     private static class ConfigurationChangeHelper {
 
-        public final ApkDownloader downloader;
+        public final String urlString;
         public final App app;
 
-        ConfigurationChangeHelper(ApkDownloader downloader, App app) {
-            this.downloader = downloader;
+        ConfigurationChangeHelper(String urlString, App app) {
+            this.urlString = urlString;
             this.app = app;
         }
     }
-
-    private boolean inProcessOfChangingConfiguration;
 
     /**
      * Attempt to extract the packageName from the intent which launched this activity.
@@ -395,8 +373,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         ConfigurationChangeHelper previousData = (ConfigurationChangeHelper) getLastCustomNonConfigurationInstance();
         if (previousData != null) {
             Utils.debugLog(TAG, "Recreating view after configuration change.");
-            downloadHandler = previousData.downloader;
-            if (downloadHandler != null) {
+            activeDownloadUrlString = previousData.urlString;
+            if (activeDownloadUrlString != null) {
                 Utils.debugLog(TAG, "Download was in progress before the configuration change, so we will start to listen to its events again.");
             }
             app = previousData.app;
@@ -451,16 +429,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         refreshApkList();
         refreshHeader();
         supportInvalidateOptionsMenu();
-
-        if (downloadHandler != null) {
-            if (downloadHandler.isComplete()) {
-                downloadCompleteInstallApk();
-            } else {
-                localBroadcastManager.registerReceiver(downloaderProgressReceiver,
-                        new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
-                downloadHandler.setProgressListener(this);
-                headerFragment.startProgress();
-            }
+        if (DownloaderService.isQueuedOrActive(activeDownloadUrlString)) {
+            registerDownloaderReceivers();
         }
     }
 
@@ -468,22 +438,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
      * Remove progress listener, suppress progress bar, set downloadHandler to null.
      */
     private void cleanUpFinishedDownload() {
-        if (downloadHandler != null) {
-            downloadHandler.removeProgressListener();
-            headerFragment.removeProgress();
-            downloadHandler = null;
-        }
-    }
-
-    /**
-     * Once the download completes successfully, call this method to start the install process
-     * with the file that was downloaded.
-     */
-    private void downloadCompleteInstallApk() {
-        if (downloadHandler != null) {
-            installApk(downloadHandler.localFile());
-            cleanUpFinishedDownload();
-        }
+        activeDownloadUrlString = null;
+        headerFragment.removeProgress();
+        unregisterDownloaderReceivers();
     }
 
     protected void onStop() {
@@ -494,27 +451,86 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     @Override
     protected void onPause() {
         super.onPause();
+        // save the active URL for this app in case we come back
+        PreferencesCompat.apply(getPreferences(MODE_PRIVATE)
+                .edit()
+                .putString(getPackageNameFromIntent(getIntent()), activeDownloadUrlString));
         if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
                 || app.ignoreThisUpdate != startingIgnoreThis)) {
             Utils.debugLog(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
             setIgnoreUpdates(app.packageName, app.ignoreAllUpdates, app.ignoreThisUpdate);
         }
-
-        localBroadcastManager.unregisterReceiver(downloaderProgressReceiver);
-        if (downloadHandler != null) {
-            downloadHandler.removeProgressListener();
-        }
-
-        headerFragment.removeProgress();
+        unregisterDownloaderReceivers();
     }
 
-    private final BroadcastReceiver downloaderProgressReceiver = new BroadcastReceiver() {
+    private void unregisterDownloaderReceivers() {
+        localBroadcastManager.unregisterReceiver(startedReceiver);
+        localBroadcastManager.unregisterReceiver(progressReceiver);
+        localBroadcastManager.unregisterReceiver(completeReceiver);
+        localBroadcastManager.unregisterReceiver(interruptedReceiver);
+    }
+
+    private void registerDownloaderReceivers() {
+        if (activeDownloadUrlString != null) { // if a download is active
+            String url = activeDownloadUrlString;
+            localBroadcastManager.registerReceiver(startedReceiver,
+                    DownloaderService.getIntentFilter(url, Downloader.ACTION_STARTED));
+            localBroadcastManager.registerReceiver(progressReceiver,
+                    DownloaderService.getIntentFilter(url, Downloader.ACTION_PROGRESS));
+            localBroadcastManager.registerReceiver(completeReceiver,
+                    DownloaderService.getIntentFilter(url, Downloader.ACTION_COMPLETE));
+            localBroadcastManager.registerReceiver(interruptedReceiver,
+                    DownloaderService.getIntentFilter(url, Downloader.ACTION_INTERRUPTED));
+        }
+    }
+
+    private final BroadcastReceiver startedReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (headerFragment != null) {
+                headerFragment.startProgress();
+            }
+        }
+    };
+
+    private final BroadcastReceiver progressReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (headerFragment != null) {
                 headerFragment.updateProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
                         intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1));
             }
+        }
+    };
+
+    /**
+     * Starts the install process one the download is complete.
+     */
+    private final BroadcastReceiver completeReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
+            try {
+                installer.installPackage(localFile, app.packageName, intent.getDataString());
+            } catch (InstallFailedException e) {
+                Log.e(TAG, "Android not compatible with this Installer!", e);
+            }
+            cleanUpFinishedDownload();
+        }
+    };
+
+    private final BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
+                String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
+                        + " " + intent.getDataString();
+                Toast.makeText(context, R.string.download_error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+            } else { // user canceled
+                Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
+            }
+            cleanUpFinishedDownload();
         }
     };
 
@@ -543,17 +559,12 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     @Override
     public Object onRetainCustomNonConfigurationInstance() {
-        inProcessOfChangingConfiguration = true;
-        return new ConfigurationChangeHelper(downloadHandler, app);
+        return new ConfigurationChangeHelper(activeDownloadUrlString, app);
     }
 
     @Override
     protected void onDestroy() {
-        if (downloadHandler != null && !inProcessOfChangingConfiguration) {
-            downloadHandler.cancel();
-            cleanUpFinishedDownload();
-        }
-        inProcessOfChangingConfiguration = false;
+        cleanUpFinishedDownload();
         super.onDestroy();
     }
 
@@ -564,6 +575,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         Utils.debugLog(TAG, "Getting application details for " + packageName);
         App newApp = null;
+
+        String urlString = getPreferences(MODE_PRIVATE).getString(packageName, null);
+        if (DownloaderService.isQueuedOrActive(urlString)) {
+            activeDownloadUrlString = urlString;
+        } else {
+            // this URL is no longer active, remove it
+            PreferencesCompat.apply(getPreferences(MODE_PRIVATE).edit().remove(packageName));
+        }
 
         if (!TextUtils.isEmpty(packageName)) {
             newApp = AppProvider.Helper.findByPackageName(getContentResolver(), packageName);
@@ -787,14 +806,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     }
 
     // Install the version of this app denoted by 'app.curApk'.
-    @Override
     public void install(final Apk apk) {
         if (isFinishing()) {
-            return;
-        }
-
-        // Ignore call if another download is running.
-        if (downloadHandler != null && !downloadHandler.isComplete()) {
             return;
         }
 
@@ -852,29 +865,17 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     }
 
     private void startDownload(Apk apk, String repoAddress) {
-        downloadHandler = new ApkDownloader(getBaseContext(), app, apk, repoAddress);
-
-        localBroadcastManager.registerReceiver(downloaderProgressReceiver,
-                new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
-        downloadHandler.setProgressListener(this);
-        if (downloadHandler.download()) {
-            headerFragment.startProgress();
-        }
+        String urlString = Utils.getApkUrl(repoAddress, apk);
+        activeDownloadUrlString = urlString;
+        registerDownloaderReceivers();
+        headerFragment.startProgress();
+        DownloaderService.queue(this, apk.packageName, activeDownloadUrlString);
     }
 
-    private void installApk(File file) {
-        try {
-            installer.installPackage(file, app.packageName);
-        } catch (AndroidNotCompatibleException e) {
-            Log.e(TAG, "Android not compatible with this Installer!", e);
-        }
-    }
-
-    @Override
     public void removeApk(String packageName) {
         try {
             installer.deletePackage(packageName);
-        } catch (AndroidNotCompatibleException e) {
+        } catch (InstallFailedException e) {
             Log.e(TAG, "Android not compatible with this Installer!", e);
         }
     }
@@ -952,42 +953,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     }
 
     @Override
-    public void onProgress(Event event) {
-        if (downloadHandler == null || !downloadHandler.isEventFromThis(event)) {
-            // Choose not to respond to events from previous downloaders.
-            // We don't even care if we receive "cancelled" events or the like, because
-            // we dealt with cancellations in the onCancel listener of the dialog,
-            // rather than waiting to receive the event here. We try and be careful in
-            // the download thread to make sure that we check for cancellations before
-            // sending events, but it is not possible to be perfect, because the interruption
-            // which triggers the download can happen after the check to see if
-            Utils.debugLog(TAG, "Discarding downloader event \"" + event.type + "\" as it is from an old (probably cancelled) downloader.");
-            return;
-        }
-
-        boolean finished = false;
-        switch (event.type) {
-            case ApkDownloader.EVENT_ERROR:
-                // this must be on the main UI thread
-                Toast.makeText(this, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
-                cleanUpFinishedDownload();
-                finished = true;
-                break;
-            case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
-                downloadCompleteInstallApk();
-                finished = true;
-                break;
-        }
-
-        if (finished) {
-            if (headerFragment != null) {
-                headerFragment.removeProgress();
-            }
-            downloadHandler = null;
-        }
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // handle cases for install manager first
         if (installer.handleOnActivityResult(requestCode, resultCode, data)) {
@@ -1001,12 +966,10 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
     }
 
-    @Override
     public App getApp() {
         return app;
     }
 
-    @Override
     public ApkListAdapter getApks() {
         return adapter;
     }
@@ -1014,7 +977,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     public static class AppDetailsSummaryFragment extends Fragment {
 
         final Preferences prefs;
-        private AppDetailsData data;
+        private AppDetails appDetails;
         private static final int MAX_LINES = 5;
         private static boolean viewAllDescription;
         private static LinearLayout llViewMoreDescription;
@@ -1043,15 +1006,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            data = (AppDetailsData) activity;
-        }
-
-        App getApp() {
-            return data.getApp();
-        }
-
-        ApkListAdapter getApks() {
-            return data.getApks();
+            appDetails = (AppDetails) activity;
         }
 
         @Override
@@ -1110,7 +1065,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
                 String url = null;
-                App app = getApp();
+                App app = appDetails.getApp();
                 switch (v.getId()) {
                     case R.id.website:
                         url = app.webURL;
@@ -1163,7 +1118,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         };
 
         private void setupView(final View view) {
-            App app = getApp();
+            App app = appDetails.getApp();
             // Expandable description
             final TextView description = (TextView) view.findViewById(R.id.description);
             final Spanned desc = Html.fromHtml(app.description, null, new Utils.HtmlTagHandler());
@@ -1289,8 +1244,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             }
 
             Apk curApk = null;
-            for (int i = 0; i < getApks().getCount(); i++) {
-                final Apk apk = getApks().getItem(i);
+            for (int i = 0; i < appDetails.getApks().getCount(); i++) {
+                final Apk apk = appDetails.getApks().getItem(i);
                 if (apk.vercode == app.suggestedVercode) {
                     curApk = apk;
                     break;
@@ -1302,7 +1257,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             final TextView permissionHeader = (TextView) view.findViewById(R.id.permissions);
 
             final boolean curApkCompatible = curApk != null && curApk.compatible;
-            if (!getApks().isEmpty() && (curApkCompatible || prefs.showIncompatibleVersions())) {
+            if (!appDetails.getApks().isEmpty() && (curApkCompatible || prefs.showIncompatibleVersions())) {
                 // build and set the string once
                 buildPermissionInfo();
                 permissionHeader.setOnClickListener(expanderPermissions);
@@ -1335,7 +1290,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private void buildPermissionInfo() {
             final TextView permissionListView = (TextView) llViewMorePermissions.findViewById(R.id.permissions_list);
 
-            CommaSeparatedList permsList = getApks().getItem(0).permissions;
+            CommaSeparatedList permsList = appDetails.getApks().getItem(0).permissions;
             if (permsList == null) {
                 permissionListView.setText(R.string.no_permissions);
             } else {
@@ -1387,7 +1342,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return;
             }
 
-            App app = getApp();
+            App app = appDetails.getApp();
             TextView signatureView = (TextView) view.findViewById(R.id.signature);
             if (prefs.expertMode() && !TextUtils.isEmpty(app.installedSig)) {
                 signatureView.setVisibility(View.VISIBLE);
@@ -1400,7 +1355,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     public static class AppDetailsHeaderFragment extends Fragment implements View.OnClickListener {
 
-        private AppDetailsData data;
+        private AppDetails appDetails;
         private Button btMain;
         private ProgressBar progressBar;
         private TextView progressSize;
@@ -1421,14 +1376,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 .build();
         }
 
-        private App getApp() {
-            return data.getApp();
-        }
-
-        private ApkListAdapter getApks() {
-            return data.getApks();
-        }
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.app_details_header, container, false);
@@ -1439,11 +1386,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            data = (AppDetailsData) activity;
+            appDetails = (AppDetails) activity;
         }
 
         private void setupView(View view) {
-            App app = getApp();
+            App app = appDetails.getApp();
 
             // Set the icon...
             ImageView iv = (ImageView) view.findViewById(R.id.icon);
@@ -1531,15 +1478,12 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
          */
         @Override
         public void onClick(View view) {
-            AppDetails activity = (AppDetails) getActivity();
-            if (activity == null || activity.downloadHandler == null) {
+            AppDetails appDetails = (AppDetails) getActivity();
+            if (appDetails == null || appDetails.activeDownloadUrlString == null) {
                 return;
             }
 
-            activity.downloadHandler.cancel();
-            activity.cleanUpFinishedDownload();
-            setProgressVisible(false);
-            updateViews();
+            DownloaderService.cancel(getContext(), appDetails.activeDownloadUrlString);
         }
 
         public void updateViews() {
@@ -1547,21 +1491,20 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         public void updateViews(View view) {
-            App app = getApp();
+            App app = appDetails.getApp();
             TextView statusView = (TextView) view.findViewById(R.id.status);
             btMain.setVisibility(View.VISIBLE);
 
-            AppDetails activity = (AppDetails) getActivity();
-            if (activity.downloadHandler != null) {
+            if (appDetails.activeDownloadUrlString != null) {
                 btMain.setText(R.string.downloading);
                 btMain.setEnabled(false);
             } else if (!app.isInstalled() && app.suggestedVercode > 0 &&
-                    activity.adapter.getCount() > 0) {
+                    appDetails.adapter.getCount() > 0) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
                 // If App isn't installed
                 installed = false;
                 statusView.setText(R.string.details_notinstalled);
-                NfcHelper.disableAndroidBeam(activity);
+                NfcHelper.disableAndroidBeam(appDetails);
                 // Set Install button and hide second button
                 btMain.setText(R.string.menu_install);
                 btMain.setOnClickListener(mOnClickListener);
@@ -1570,13 +1513,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 // If App is installed
                 installed = true;
                 statusView.setText(getString(R.string.details_installed, app.installedVersionName));
-                NfcHelper.setAndroidBeam(activity, app.packageName);
+                NfcHelper.setAndroidBeam(appDetails, app.packageName);
                 if (app.canAndWantToUpdate()) {
                     updateWanted = true;
                     btMain.setText(R.string.menu_upgrade);
                 } else {
                     updateWanted = false;
-                    if (activity.packageManager.getLaunchIntentForPackage(app.packageName) != null) {
+                    if (appDetails.packageManager.getLaunchIntentForPackage(app.packageName) != null) {
                         btMain.setText(R.string.menu_launch);
                     } else {
                         btMain.setText(R.string.menu_uninstall);
@@ -1594,8 +1537,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 author.setVisibility(View.VISIBLE);
             }
             TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
-            if (!getApks().isEmpty()) {
-                currentVersion.setText(getApks().getItem(0).version + " (" + app.license + ")");
+            if (!appDetails.getApks().isEmpty()) {
+                currentVersion.setText(appDetails.getApks().getItem(0).version + " (" + app.license + ")");
             } else {
                 currentVersion.setVisibility(View.GONE);
                 btMain.setVisibility(View.GONE);
@@ -1605,7 +1548,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
-                App app = getApp();
+                App app = appDetails.getApp();
                 AppDetails activity = (AppDetails) getActivity();
                 if (updateWanted && app.suggestedVercode > 0) {
                     Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVercode);
@@ -1635,8 +1578,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         private static final String SUMMARY_TAG = "summary";
 
-        private AppDetailsData data;
-        private AppInstallListener installListener;
+        private AppDetails appDetails;
         private AppDetailsSummaryFragment summaryFragment;
 
         private FrameLayout headerView;
@@ -1644,24 +1586,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            data = (AppDetailsData) activity;
-            installListener = (AppInstallListener) activity;
-        }
-
-        void install(final Apk apk) {
-            installListener.install(apk);
+            appDetails = (AppDetails) activity;
         }
 
         void remove() {
-            installListener.removeApk(getApp().packageName);
-        }
-
-        App getApp() {
-            return data.getApp();
-        }
-
-        ApkListAdapter getApks() {
-            return data.getApks();
+            appDetails.removeApk(appDetails.getApp().packageName);
         }
 
         @Override
@@ -1683,13 +1612,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
             setListAdapter(null);
             getListView().addHeaderView(headerView);
-            setListAdapter(getApks());
+            setListAdapter(appDetails.getApks());
         }
 
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
-            App app = getApp();
-            final Apk apk = getApks().getItem(position - l.getHeaderViewsCount());
+            App app = appDetails.getApp();
+            final Apk apk = appDetails.getApks().getItem(position - l.getHeaderViewsCount());
             if (app.installedVersionCode == apk.vercode) {
                 remove();
             } else if (app.installedVersionCode > apk.vercode) {
@@ -1700,7 +1629,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
-                                install(apk);
+                                appDetails.install(apk);
                             }
                         });
                 builder.setNegativeButton(R.string.no,
@@ -1713,7 +1642,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 AlertDialog alert = builder.create();
                 alert.show();
             } else {
-                install(apk);
+                appDetails.install(apk);
             }
         }
 

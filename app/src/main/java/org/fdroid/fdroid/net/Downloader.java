@@ -10,20 +10,27 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public abstract class Downloader {
 
     private static final String TAG = "Downloader";
 
-    public static final String LOCAL_ACTION_PROGRESS = "Downloader.PROGRESS";
+    public static final String ACTION_STARTED = "org.fdroid.fdroid.net.Downloader.action.STARTED";
+    public static final String ACTION_PROGRESS = "org.fdroid.fdroid.net.Downloader.action.PROGRESS";
+    public static final String ACTION_INTERRUPTED = "org.fdroid.fdroid.net.Downloader.action.INTERRUPTED";
+    public static final String ACTION_COMPLETE = "org.fdroid.fdroid.net.Downloader.action.COMPLETE";
 
-    public static final String EXTRA_ADDRESS = "extraAddress";
-    public static final String EXTRA_BYTES_READ = "extraBytesRead";
-    public static final String EXTRA_TOTAL_BYTES = "extraTotalBytes";
+    public static final String EXTRA_DOWNLOAD_PATH = "org.fdroid.fdroid.net.Downloader.extra.DOWNLOAD_PATH";
+    public static final String EXTRA_BYTES_READ = "org.fdroid.fdroid.net.Downloader.extra.BYTES_READ";
+    public static final String EXTRA_TOTAL_BYTES = "org.fdroid.fdroid.net.Downloader.extra.TOTAL_BYTES";
+    public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MESSAGE";
 
     private volatile boolean cancelled = false;
-
-    private final OutputStream outputStream;
+    private volatile int bytesRead;
+    private volatile int totalBytes;
+    private Timer timer;
 
     public final File outputFile;
 
@@ -39,6 +46,9 @@ public abstract class Downloader {
         void sendProgress(URL sourceUrl, int bytesRead, int totalBytes);
     }
 
+    /**
+     * For sending download progress, should only be called in {@link #progressTask}
+     */
     private DownloaderProgressListener downloaderProgressListener;
 
     protected abstract InputStream getDownloadersInputStream() throws IOException;
@@ -49,7 +59,6 @@ public abstract class Downloader {
             throws FileNotFoundException, MalformedURLException {
         this.sourceUrl = url;
         outputFile = destFile;
-        outputStream = new FileOutputStream(outputFile);
     }
 
     public final InputStream getInputStream() throws IOException {
@@ -89,9 +98,10 @@ public abstract class Downloader {
 
     public abstract boolean isCached();
 
-    protected void downloadFromStream(int bufferSize) throws IOException, InterruptedException {
+    protected void downloadFromStream(int bufferSize, boolean resumable) throws IOException, InterruptedException {
         Utils.debugLog(TAG, "Downloading from stream");
         InputStream input = null;
+        OutputStream outputStream = new FileOutputStream(outputFile, resumable);
         try {
             input = getInputStream();
 
@@ -99,7 +109,7 @@ public abstract class Downloader {
             // we were interrupted before proceeding to the download.
             throwExceptionIfInterrupted();
 
-            copyInputToOutputStream(input, bufferSize);
+            copyInputToOutputStream(input, bufferSize, outputStream);
         } finally {
             Utils.closeQuietly(outputStream);
             Utils.closeQuietly(input);
@@ -115,11 +125,15 @@ public abstract class Downloader {
      * interrupt occured during that blocking operation. The goal is to ensure we
      * don't move onto another slow, network operation if we have cancelled the
      * download.
+     *
      * @throws InterruptedException
      */
     private void throwExceptionIfInterrupted() throws InterruptedException {
         if (cancelled) {
             Utils.debugLog(TAG, "Received interrupt, cancelling download");
+            if (timer != null) {
+                timer.cancel();
+            }
             throw new InterruptedException();
         }
     }
@@ -136,17 +150,18 @@ public abstract class Downloader {
      * keeping track of the number of bytes that have flowed through for the
      * progress counter.
      */
-    private void copyInputToOutputStream(InputStream input, int bufferSize) throws IOException, InterruptedException {
-
-        int bytesRead = 0;
-        int totalBytes = totalDownloadSize();
+    private void copyInputToOutputStream(InputStream input, int bufferSize, OutputStream output) throws IOException, InterruptedException {
+        bytesRead = 0;
+        totalBytes = totalDownloadSize();
         byte[] buffer = new byte[bufferSize];
+
+        timer = new Timer();
+        timer.scheduleAtFixedRate(progressTask, 0, 100);
 
         // Getting the total download size could potentially take time, depending on how
         // it is implemented, so we may as well check this before we proceed.
         throwExceptionIfInterrupted();
 
-        sendProgress(bytesRead, totalBytes);
         while (true) {
 
             int count;
@@ -163,21 +178,26 @@ public abstract class Downloader {
                 Utils.debugLog(TAG, "Finished downloading from stream");
                 break;
             }
-
             bytesRead += count;
-            sendProgress(bytesRead, totalBytes);
-            outputStream.write(buffer, 0, count);
-
+            output.write(buffer, 0, count);
         }
-        outputStream.flush();
-        outputStream.close();
+        timer.cancel();
+        timer.purge();
+        output.flush();
+        output.close();
     }
 
-    private void sendProgress(int bytesRead, int totalBytes) {
-        if (downloaderProgressListener != null) {
-            downloaderProgressListener.sendProgress(sourceUrl, bytesRead, totalBytes);
+    /**
+     * Send progress updates on a timer to avoid flooding receivers with pointless events.
+     */
+    private final TimerTask progressTask = new TimerTask() {
+        @Override
+        public void run() {
+            if (downloaderProgressListener != null) {
+                downloaderProgressListener.sendProgress(sourceUrl, bytesRead, totalBytes);
+            }
         }
-    }
+    };
 
     /**
      * Overrides every method in {@link InputStream} and delegates to the wrapped stream.

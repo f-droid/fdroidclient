@@ -2,6 +2,7 @@ package org.fdroid.fdroid.net;
 
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
+import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.spongycastle.util.encoders.Base64;
@@ -65,7 +66,7 @@ public class HttpDownloader extends Downloader {
      */
     @Override
     protected InputStream getDownloadersInputStream() throws IOException {
-        setupConnection();
+        setupConnection(false);
         return new BufferedInputStream(connection.getInputStream());
     }
 
@@ -79,8 +80,25 @@ public class HttpDownloader extends Downloader {
      */
     @Override
     public void download() throws IOException, InterruptedException {
-        setupConnection();
-        doDownload();
+        boolean resumable = false;
+        long fileLength = outputFile.length();
+
+        // get the file size from the server
+        HttpURLConnection tmpConn = getConnection();
+        int contentLength = -1;
+        if (tmpConn.getResponseCode() == 200) {
+            contentLength = tmpConn.getContentLength();
+        }
+        tmpConn.disconnect();
+        if (fileLength > contentLength) {
+            FileUtils.deleteQuietly(outputFile);
+        } else if (fileLength == contentLength && outputFile.isFile()) {
+            return; // already have it!
+        } else if (fileLength > 0) {
+            resumable = true;
+        }
+        setupConnection(resumable);
+        doDownload(resumable);
     }
 
     private boolean isSwapUrl() {
@@ -90,10 +108,8 @@ public class HttpDownloader extends Downloader {
                 && FDroidApp.subnetInfo.isInRange(host); // on the same subnet as we are
     }
 
-    protected void setupConnection() throws IOException {
-        if (connection != null) {
-            return;
-        }
+    private HttpURLConnection getConnection() throws IOException {
+        HttpURLConnection connection;
         if (isSwapUrl()) {
             // swap never works with a proxy, its unrouted IP on the same subnet
             connection = (HttpURLConnection) sourceUrl.openConnection();
@@ -113,9 +129,25 @@ public class HttpDownloader extends Downloader {
             String authString = username + ":" + password;
             connection.setRequestProperty("Authorization", "Basic " + Base64.toBase64String(authString.getBytes()));
         }
+        return connection;
     }
 
-    protected void doDownload() throws IOException, InterruptedException {
+    /**
+     * @return Whether the connection is resumable or not
+     */
+    protected void setupConnection(boolean resumable) throws IOException {
+        if (connection != null) {
+            return;
+        }
+        connection = getConnection();
+
+        if (resumable) {
+            // partial file exists, resume the download
+            connection.setRequestProperty("Range", "bytes=" + outputFile.length() + "-");
+        }
+    }
+
+    protected void doDownload(boolean resumable) throws IOException, InterruptedException {
         if (wantToCheckCache()) {
             setupCacheCheck();
             Utils.debugLog(TAG, "Checking cached status of " + sourceUrl);
@@ -125,8 +157,8 @@ public class HttpDownloader extends Downloader {
         if (isCached()) {
             Utils.debugLog(TAG, sourceUrl + " is cached, so not downloading (HTTP " + statusCode + ")");
         } else {
-            Utils.debugLog(TAG, "Downloading from " + sourceUrl);
-            downloadFromStream(4096);
+            Utils.debugLog(TAG, "doDownload for " + sourceUrl + " " + resumable);
+            downloadFromStream(8192, resumable);
             updateCacheCheck();
         }
     }
@@ -166,6 +198,8 @@ public class HttpDownloader extends Downloader {
 
     @Override
     public void close() {
-        connection.disconnect();
+        if (connection != null) {
+            connection.disconnect();
+        }
     }
 }
