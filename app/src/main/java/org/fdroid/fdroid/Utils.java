@@ -325,8 +325,11 @@ public final class Utils {
      * Using {@link org.fdroid.fdroid.installer.Installer#installPackage(File, String, String)}
      * is fine since that does the right thing.
      */
-    public static SanitizedFile getApkCacheDir(Context context) {
-        final SanitizedFile apkCacheDir = new SanitizedFile(StorageUtils.getCacheDirectory(context, true), "apks");
+    public static File getApkCacheDir(Context context) {
+        File apkCacheDir = new File(StorageUtils.getCacheDirectory(context, true), "apks");
+        if (apkCacheDir.isFile()) {
+            apkCacheDir.delete();
+        }
         if (!apkCacheDir.exists()) {
             apkCacheDir.mkdir();
         }
