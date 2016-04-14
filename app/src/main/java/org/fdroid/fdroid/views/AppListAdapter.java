@@ -22,6 +22,7 @@ public abstract class AppListAdapter extends CursorAdapter {
     private DisplayImageOptions displayImageOptions;
     private String upgradeFromTo;
 
+    @SuppressWarnings("deprecation")
     public AppListAdapter(Context context, Cursor c) {
         super(context, c);
         init(context);

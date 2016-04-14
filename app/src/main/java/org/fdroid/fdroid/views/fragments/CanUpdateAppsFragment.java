@@ -15,7 +15,7 @@ public class CanUpdateAppsFragment extends AppListFragment {
 
     @Override
     protected AppListAdapter getAppListAdapter() {
-        return new CanUpdateAppListAdapter(getActivity(), null);
+        return CanUpdateAppListAdapter.create(getActivity(), null, 0);
     }
 
     @Override

@@ -767,7 +767,7 @@ public class ManageReposActivity extends ActionBarActivity {
             setRetainInstance(true);
             setHasOptionsMenu(true);
 
-            repoAdapter = new RepoAdapter(getActivity(), null);
+            repoAdapter = RepoAdapter.create(getActivity(), null, 0);
             repoAdapter.setEnabledListener(this);
             setListAdapter(repoAdapter);
         }
