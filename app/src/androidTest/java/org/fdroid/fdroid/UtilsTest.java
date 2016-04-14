@@ -1,12 +1,17 @@
 
 package org.fdroid.fdroid;
 
+import android.app.Instrumentation;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.io.File;
+import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -137,4 +142,34 @@ public class UtilsTest {
     }
 
     // TODO write tests that work with a Certificate
+
+    @Test
+    public void testClearOldFiles() throws IOException, InterruptedException {
+        Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
+        File dir = new File(TestUtils.getWriteableDir(instrumentation), "clearOldFiles");
+        FileUtils.deleteQuietly(dir);
+        dir.mkdirs();
+        assertTrue(dir.isDirectory());
+
+        File first = new File(dir, "first");
+        File second = new File(dir, "second");
+        assertFalse(first.exists());
+        assertFalse(second.exists());
+
+        first.createNewFile();
+        assertTrue(first.exists());
+
+        Thread.sleep(7000);
+        second.createNewFile();
+        assertTrue(second.exists());
+
+        Utils.clearOldFiles(dir, 3);
+        assertFalse(first.exists());
+        assertTrue(second.exists());
+
+        Thread.sleep(7000);
+        Utils.clearOldFiles(dir, 3);
+        assertFalse(first.exists());
+        assertFalse(second.exists());
+    }
 }

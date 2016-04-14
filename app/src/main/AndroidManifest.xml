@@ -445,6 +445,9 @@
         <service
             android:name=".net.DownloadCompleteService"
             android:exported="false" />
+        <service
+            android:name=".CleanCacheService"
+            android:exported="false" />
         <service android:name=".net.WifiStateChangeService" />
         <service android:name=".localrepo.SwapService" />
     </application>
