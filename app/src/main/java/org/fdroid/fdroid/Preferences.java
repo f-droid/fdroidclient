@@ -347,6 +347,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private static Preferences instance;
 
+    /**
+     * Needs to be setup before anything else tries to access it.
+     */
     public static void setup(Context context) {
         if (instance != null) {
             final String error = "Attempted to reinitialize preferences after it " +

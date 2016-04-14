@@ -51,8 +51,13 @@ public final class InstalledAppCacheUpdater {
 
     /**
      * Ensure our database of installed apps is in sync with what the PackageManager tells us is installed.
-     * Once completed, the relevant ContentProviders will be notified of any changes to installed statuses.
-     * This method returns immediately, and will continue to work in an AsyncTask.
+     * The installed app cache hasn't gotten out of sync somehow, e.g. if we crashed/ran out of battery
+     * half way through responding to a package installed {@link android.content.Intent}. Once completed,
+     * the relevant {@link android.content.ContentProvider}s will be notified of any changes to installed
+     * statuses. This method returns immediately, and will continue to work in an AsyncTask.  It doesn't
+     * really matter where we put this in the bootstrap process, because it runs on a different thread,
+     * which will be delayed by some seconds to avoid an error where the database is locked due to the
+     * database updater.
      */
     public static void updateInBackground(Context context) {
         InstalledAppCacheUpdater updater = new InstalledAppCacheUpdater(context);

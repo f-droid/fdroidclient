@@ -136,6 +136,9 @@ public class FDroidApp extends Application {
         }
     }
 
+    /**
+     * Initialize the settings needed to run a local swap repo.
+     */
     public static void initWifiSettings() {
         port = 8888;
         ipAddressString = null;
@@ -182,25 +185,13 @@ public class FDroidApp extends Application {
         updateLanguage();
         ACRA.init(this);
 
-        // Needs to be setup before anything else tries to access it.
-        // Perhaps the constructor is a better place, but then again,
-        // it is more deterministic as to when this gets called...
-        Preferences.setup(this);
-        curTheme = Preferences.get().getTheme();
-
-        // Apply the Google PRNG fixes to properly seed SecureRandom
         PRNGFixes.apply();
 
-        // Check that the installed app cache hasn't gotten out of sync somehow.
-        // e.g. if we crashed/ran out of battery half way through responding
-        // to a package installed intent. It doesn't really matter where
-        // we put this in the bootstrap process, because it runs on a different
-        // thread, which will be delayed by some seconds to avoid an error where
-        // the database is locked due to the database updater.
-        InstalledAppCacheUpdater.updateInBackground(getApplicationContext());
-
-        // make sure the current proxy stuff is configured
+        Preferences.setup(this);
+        curTheme = Preferences.get().getTheme();
         Preferences.get().configureProxy();
+
+        InstalledAppCacheUpdater.updateInBackground(getApplicationContext());
 
         // If the user changes the preference to do with filtering rooted apps,
         // it is easier to just notify a change in the app provider,
@@ -278,9 +269,6 @@ public class FDroidApp extends Application {
                 .build();
         ImageLoader.getInstance().init(config);
 
-        // TODO reintroduce PinningTrustManager and MemorizingTrustManager
-
-        // initialized the local repo information
         FDroidApp.initWifiSettings();
         startService(new Intent(this, WifiStateChangeService.class));
         // if the HTTPS pref changes, then update all affected things
