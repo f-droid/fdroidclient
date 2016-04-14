@@ -23,6 +23,15 @@
         <item>336</item>
     </string-array>
 
+    <string-array name="keepCacheValues">
+        <item>3600</item>
+        <item>86400</item>
+        <item>604800</item>
+        <item>2592000</item>
+        <item>31449600</item>
+        <item>2147483647</item>
+    </string-array>
+
     <string-array name="themeValues">
         <item>light</item>
         <item>dark</item>

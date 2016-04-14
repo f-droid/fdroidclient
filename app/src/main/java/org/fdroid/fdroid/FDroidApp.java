@@ -221,7 +221,7 @@ public class FDroidApp extends Application {
             }
         });
 
-        CleanCacheService.start(this);
+        CleanCacheService.schedule(this);
 
         UpdateService.schedule(getApplicationContext());
         bluetoothAdapter = getBluetoothAdapter();

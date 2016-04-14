@@ -32,9 +32,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private static final String TAG = "Preferences";
 
+    private final Context context;
     private final SharedPreferences preferences;
 
     private Preferences(Context context) {
+        this.context = context;
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         preferences.registerOnSharedPreferenceChangeListener(this);
         if (preferences.getString(PREF_LOCAL_REPO_NAME, null) == null) {
@@ -52,7 +54,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_INCOMP_VER = "incompatibleVersions";
     public static final String PREF_THEME = "theme";
     public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
-    public static final String PREF_CACHE_APK = "cacheDownloaded";
+    public static final String PREF_KEEP_CACHE_TIME = "keepCacheFor";
     public static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_PRIVILEGED_INSTALLER = "privilegedInstaller";
@@ -72,7 +74,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final int DEFAULT_UPD_HISTORY = 14;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = false;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
-    private static final boolean DEFAULT_CACHE_APK = false;
+    private static final long DEFAULT_KEEP_CACHE_SECONDS = 86400;  // one day
     private static final boolean DEFAULT_UNSTABLE_UPDATES = false;
     //private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
     private static final boolean DEFAULT_INCOMP_VER = false;
@@ -139,8 +141,32 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         PreferencesCompat.apply(preferences.edit().putBoolean(PREF_POST_PRIVILEGED_INSTALL, postInstall));
     }
 
-    public boolean shouldCacheApks() {
-        return preferences.getBoolean(PREF_CACHE_APK, DEFAULT_CACHE_APK);
+    /**
+     * Old preference replaced by {@link #PREF_KEEP_CACHE_TIME}
+     */
+    private static final String PREF_CACHE_APK = "cacheDownloaded";
+
+    /**
+     * Time in seconds to keep cached files.  Anything that has been around longer will be deleted
+     */
+    public long getKeepCacheTime() {
+        String value = preferences.getString(PREF_KEEP_CACHE_TIME, String.valueOf(DEFAULT_KEEP_CACHE_SECONDS));
+
+        if (preferences.contains(PREF_CACHE_APK)) {
+            if (preferences.getBoolean(PREF_CACHE_APK, false)) {
+                value = context.getString(R.string.keep_forever);
+            }
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.remove(PREF_CACHE_APK);
+            editor.putString(PREF_KEEP_CACHE_TIME, value);
+            PreferencesCompat.apply(editor);
+        }
+
+        try {
+            return Long.parseLong(value);
+        } catch (NumberFormatException e) {
+            return DEFAULT_KEEP_CACHE_SECONDS;
+        }
     }
 
     public boolean getUnstableUpdates() {

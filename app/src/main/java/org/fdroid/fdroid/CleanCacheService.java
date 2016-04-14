@@ -1,9 +1,13 @@
 package org.fdroid.fdroid;
 
+import android.app.AlarmManager;
 import android.app.IntentService;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
+import android.os.SystemClock;
+import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
 
@@ -18,9 +22,26 @@ import java.io.File;
 public class CleanCacheService extends IntentService {
     public static final String TAG = "CleanCacheService";
 
-    public static void start(Context context) {
+    /**
+     * Schedule or cancel this service to update the app index, according to the
+     * current preferences. Should be called a) at boot, b) if the preference
+     * is changed, or c) on startup, in case we get upgraded.
+     */
+    public static void schedule(Context context) {
+        long keepTime = Preferences.get().getKeepCacheTime();
+        long interval = 604800000; // 1 day
+        if (keepTime < interval) {
+            interval = keepTime * 1000;
+        }
+        Log.i(TAG, "schedule " + keepTime + " " + interval);
+
         Intent intent = new Intent(context, CleanCacheService.class);
-        context.startService(intent);
+        PendingIntent pending = PendingIntent.getService(context, 0, intent, 0);
+
+        AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarm.cancel(pending);
+        alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
+                SystemClock.elapsedRealtime() + 5000, interval, pending);
     }
 
     public CleanCacheService() {
@@ -30,14 +51,7 @@ public class CleanCacheService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
-
-        int cachetime;
-        if (Preferences.get().shouldCacheApks()) {
-            cachetime = Integer.MAX_VALUE;
-        } else {
-            cachetime = 3600;  // keep for 1 hour to allow resumable downloads
-        }
-        Utils.clearOldFiles(Utils.getApkCacheDir(this), cachetime);
+        Utils.clearOldFiles(Utils.getApkCacheDir(this), Preferences.get().getKeepCacheTime());
         deleteStrayIndexFiles();
     }
 
