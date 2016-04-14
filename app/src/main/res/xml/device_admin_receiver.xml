@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device-admin>
+    <uses-policies>
+        <!-- no policies defined.
+        F-Droid is installed as a "device owner", not only "device admin" -->
+    </uses-policies>
+</device-admin>

@@ -34,6 +34,8 @@
     <string name="local_repo_name_summary">The advertised title of your local repo: %s</string>
     <string name="local_repo_https">Use Private Connection</string>
     <string name="local_repo_https_on">Use encrypted HTTPS:// connection for local repo</string>
+    <string name="device_owner">Disable device owner</string>
+    <string name="device_owner_summary">Disables F-Droid as device owner</string>
 
     <string name="login_title">Authentication required</string>
     <string name="login_name">Username</string>

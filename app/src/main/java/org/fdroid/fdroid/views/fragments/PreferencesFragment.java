@@ -19,8 +19,10 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PreferencesCompat;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
+import org.fdroid.fdroid.receiver.DeviceOwnerReceiver;
 
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
@@ -277,6 +279,27 @@ public class PreferencesFragment extends PreferenceFragment
         });
     }
 
+    private void initDeviceOwnerPreference() {
+        CheckBoxPreference pref = (CheckBoxPreference)
+                findPreference(Preferences.PREF_DEVICE_OWNER);
+        pref.setPersistent(false);
+
+        boolean isDeviceOwner = DeviceOwnerReceiver.isDeviceOwner(getContext());
+        pref.setChecked(isDeviceOwner);
+
+        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                final CheckBoxPreference pref = (CheckBoxPreference) preference;
+
+                Utils.debugLog("prefs", "test");
+                DeviceOwnerReceiver.disableDeviceOwner(getContext());
+                return true;
+            }
+        });
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -289,6 +312,7 @@ public class PreferencesFragment extends PreferenceFragment
 
         initPrivilegedInstallerPreference();
         initManagePrivilegedAppPreference();
+        initDeviceOwnerPreference();
         // this pref's default is dynamically set based on whether Orbot is installed
         boolean useTor = Preferences.get().isTorEnabled();
         useTorCheckPref.setDefaultValue(useTor);

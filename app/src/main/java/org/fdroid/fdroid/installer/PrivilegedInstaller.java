@@ -178,22 +178,6 @@ public class PrivilegedInstaller extends Installer {
         }
     }
 
-    private int newPermissionCount(Uri packageUri) {
-        AppDiff appDiff = new AppDiff(mContext.getPackageManager(), packageUri);
-        if (appDiff.mPkgInfo == null) {
-            // could not get diff because we couldn't parse the package
-            return -1;
-        }
-        AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.mPkgInfo);
-        if (appDiff.mInstalledAppInfo != null) {
-            // update to an existing app
-            return perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW);
-        }
-        // default: even if there aren't any permissions, we want to make the
-        // user always confirm installing new apps
-        return 1;
-    }
-
     private void doInstallPackageInternal(final Uri packageURI) throws InstallFailedException {
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {

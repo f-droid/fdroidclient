@@ -24,6 +24,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -38,6 +39,9 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
+import org.fdroid.fdroid.privileged.views.AppDiff;
+import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
+import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -110,6 +114,18 @@ public abstract class Installer {
      */
     public static Installer getActivityInstaller(Activity activity, PackageManager pm,
             InstallerCallback callback) {
+
+        // TODO: test
+        if (android.os.Build.VERSION.SDK_INT >= 23) {
+            // Default installer on Android >= 6.0
+            try {
+                Utils.debugLog(TAG, "try default installer for Android >= 6");
+
+                return new DeviceOwnerSdk23Installer(activity, pm, callback);
+            } catch (InstallFailedException e) {
+                Log.e(TAG, "Android not compatible with DefaultInstallerSdk14!", e);
+            }
+        }
 
         // system permissions and pref enabled -> SystemInstaller
         boolean isSystemInstallerEnabled = Preferences.get().isPrivilegedInstallerEnabled();
@@ -233,6 +249,22 @@ public abstract class Installer {
         } catch (ClassCastException e) {
             throw new InstallFailedException("F-Droid Privileged can only be updated using an activity!");
         }
+    }
+
+    protected int newPermissionCount(Uri packageUri) {
+        AppDiff appDiff = new AppDiff(mContext.getPackageManager(), packageUri);
+        if (appDiff.mPkgInfo == null) {
+            // could not get diff because we couldn't parse the package
+            return -1;
+        }
+        AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.mPkgInfo);
+        if (appDiff.mInstalledAppInfo != null) {
+            // update to an existing app
+            return perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW);
+        }
+        // default: even if there aren't any permissions, we want to make the
+        // user always confirm installing new apps
+        return 1;
     }
 
     public void deletePackage(String packageName) throws InstallFailedException {

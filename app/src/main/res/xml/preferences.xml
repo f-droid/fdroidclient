@@ -72,7 +72,9 @@
             android:summary="@string/proxy_port_summary"
             android:dependency="enableProxy" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/other">
+    <PreferenceCategory
+        android:key="other"
+        android:title="@string/other">
         <ListPreference android:title="@string/cache_downloaded"
             android:key="keepCacheFor"
             android:entries="@array/keepCacheNames"
@@ -93,6 +95,11 @@
         <Preference android:title="@string/uninstall_system"
             android:summary="@string/uninstall_system_summary"
             android:key="uninstallPrivilegedApp"
+            android:dependency="expert" />
+        <CheckBoxPreference android:title="@string/device_owner"
+            android:summary="@string/device_owner_summary"
+            android:key="deviceOwner"
+            android:persistent="false"
             android:dependency="expert" />
     </PreferenceCategory>
 </PreferenceScreen>
