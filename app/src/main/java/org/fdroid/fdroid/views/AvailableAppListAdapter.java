@@ -6,7 +6,7 @@ import android.os.Build;
 
 public class AvailableAppListAdapter extends AppListAdapter {
 
-    public static AvailableAppListAdapter create(Context context, Cursor cursor, int flags)   {
+    public static AvailableAppListAdapter create(Context context, Cursor cursor, int flags) {
         if (Build.VERSION.SDK_INT >= 11) {
             return new AvailableAppListAdapter(context, cursor, flags);
         }

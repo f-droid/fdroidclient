@@ -55,7 +55,7 @@ public class WifiStateChangeService extends Service {
                NetworkInfo is only passed via WifiStateChangeReceiver */
             Utils.debugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
             if (wifiState == WifiManager.WIFI_STATE_ENABLED
-                    || wifiState == WifiManager.WIFI_STATE_DISABLING   // might be switching to hotspot
+                    || wifiState == WifiManager.WIFI_STATE_DISABLING  // might be switching to hotspot
                     || wifiState == WifiManager.WIFI_STATE_DISABLED   // might be hotspot
                     || wifiState == WifiManager.WIFI_STATE_UNKNOWN) { // might be hotspot
                 if (asyncTask != null) {
@@ -100,7 +100,7 @@ public class WifiStateChangeService extends Service {
                         if (FDroidApp.ipAddressString == null) {
                             return null;
                         }
-                    } else {  // a hotspot can be active during WIFI_STATE_UNKNOWN
+                    } else { // a hotspot can be active during WIFI_STATE_UNKNOWN
                         setIpInfoFromNetworkInterface();
                     }
 

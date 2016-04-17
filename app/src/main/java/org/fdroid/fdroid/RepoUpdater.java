@@ -359,7 +359,7 @@ public class RepoUpdater {
         if (repo.signingCertificate.equals(certFromJar)
                 && repo.signingCertificate.equals(certFromIndexXml)
                 && certFromIndexXml.equals(certFromJar)) {
-            return;  // we have a match!
+            return; // we have a match!
         }
         throw new SigningException(repo, "Signing certificate does not match!");
     }
