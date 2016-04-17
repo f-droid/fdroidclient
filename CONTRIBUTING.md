@@ -65,7 +65,7 @@ In order to run the F-Droid test suite, you will need to have either a real devi
 connected via `adb`, or an emulator running. Then, execute the following from the
 command line:
 
-    ./gradlew connectedCheck
+    ./gradlew check
 
 Note that the CI already runs the tests on an emulator, so you don't
 necessarily have to do this yourself if you open a merge request as the tests
