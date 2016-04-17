@@ -210,7 +210,7 @@ pmd {
 task pmd(type: Pmd, dependsOn: assembleDebug) {
     ruleSets = [
         //'java-basic',
-        //'java-unusedcode',
+        'java-unusedcode',
         'java-android',
         'java-clone',
         'java-finalizers',
