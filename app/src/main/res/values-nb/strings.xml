@@ -335,4 +335,9 @@
 
     <string name="by_author">av</string>
     <string name="menu_email">E-postens avsender</string>
+    <string name="repo_provider">Pakkebrønn: %s</string>
+
+    <string name="useTor">Bruk Tor</string>
+    <string name="useTorSummary">Tving nedlasting av trafikk gjennom Tor for økt sikkerhet</string>
+    <string name="swap_stopping_wifi">Stopper Wi-Fi…</string>
     </resources>

@@ -340,4 +340,8 @@
     <string name="crash_dialog_comment_prompt">Du kan lägga till extra information och kommentarer här:</string>
 <string name="install_error_cannot_parse">Ett fel uppstod vid analysering av paketet</string>
     <string name="swap_nearby">Närliggande byte</string>
+    <string name="update_auto_download">Ladda ner uppdateringar automatiskt</string>
+    <string name="update_auto_download_summary">Ladda ner uppdateringsfilerna i bakgrunden</string>
+    <string name="tap_to_install_format">Knacka för att installera %s</string>
+    <string name="tap_to_update_format">Knacka för att uppdatera %s</string>
     </resources>

@@ -342,4 +342,8 @@
     <string name="useTor">Gebruik Tor</string>
     <string name="useTorSummary">Forceer downloadverkeer door Tor heen voor betere privacy</string>
     <string name="swap_stopping_wifi">Stop Wi-Fi…</string>
+    <string name="update_auto_download">Download automatisch updates</string>
+    <string name="update_auto_download_summary">Download de update in de achtergrond</string>
+    <string name="tap_to_install_format">Tap om %s te installeren</string>
+    <string name="tap_to_update_format">Tap om %s te updaten</string>
     </resources>

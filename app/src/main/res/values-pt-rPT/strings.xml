@@ -8,7 +8,7 @@
     <string name="delete">Apagar</string>
     <string name="enable_nfc_send">Ativar o envio NFC…</string>
     <string name="cache_downloaded">Pacotes em cache</string>
-    <string name="cache_downloaded_on">Manter os pacotes transferidos no dispositivo</string>
+    <string name="cache_downloaded_on">Manter pacotes descarregados no dispositivo</string>
     <string name="updates">Atualizações</string>
     <string name="unstable_updates">Atualizações instáveis</string>
     <string name="unstable_updates_summary">Sugerir atualizações para versões instáveis</string>
@@ -108,7 +108,7 @@
 
     <string name="details_installed">Versão %s instalada</string>
     <string name="details_notinstalled">Não instaladas</string>
-    <string name="corrupt_download">O ficheiro transferido está danificado.</string>
+    <string name="corrupt_download">O ficheiro descarregado está danificado.</string>
 
     <string name="antiadslist">Esta aplicação contém publicidade</string>
     <string name="antitracklist">Esta aplicação monitoriza e reporta a sua atividade</string>
@@ -153,9 +153,9 @@
     <string name="proxy_port">Porta do proxy</string>
     <string name="proxy_port_summary">Configure a porta do seu proxy (exemplo: 8118)</string>
 
-    <string name="status_download">A transferir\n%2$s/%3$s (%4$d%%) de\n%1$s</string>
+    <string name="status_download">A descarregar\n%2$s/%3$s (%4$d%%) de\n%1$s</string>
 
-    <string name="status_download_unknown_size">A transferir\n%2$s de\n%1$s</string>
+    <string name="status_download_unknown_size">A descarregar\n%2$s de\n%1$s</string>
     <string name="update_notification_title">A atualizar repositórios</string>
     <string name="status_processing_xml_percent">A processar %2$s/%3$s (%4$d%%) de %1$s</string>
     <string name="status_connecting_to_repo">Estabelecendo\nligação a %1$s</string>
@@ -174,7 +174,7 @@
     <string name="repo_description">Descrição</string>
     <string name="repo_last_update">Última atualização</string>
     <string name="repo_name">Nome</string>
-    <string name="unsigned_description">Isto significa que a lista de aplicações não pode ser verificada. Deve ter muito cuidado ao transferir aplicações de índices não assinados.</string>
+    <string name="unsigned_description">Isto significa que a lista de aplicações não pode ser verificada. Deve ter muito cuidado ao descarregar aplicações de índices não assinados.</string>
     <string name="repo_not_yet_updated">Este repositório ainda não foi utilizado. Tem que o ativar para ver as aplicações disponibilizadas.</string>
     <string name="unknown">Desconhecido</string>
     <string name="repo_confirm_delete_title">Apagar repositório?</string>
@@ -279,7 +279,7 @@
     <string name="perm_costs_money">Pode implicar gastos</string>
     <string name="perms_new_perm_prefix">"Novas: "</string>
     <string name="perms_description_app">Disponibilizada por %1$s.</string>
-    <string name="downloading">A transferir…</string>
+    <string name="downloading">A descarregar…</string>
 
     <string name="interval_never">Nunca</string>
     <string name="interval_1h">A cada 1 hora</string>
@@ -325,8 +325,8 @@
     <string name="install_confirm_update_system_no_perms">Deseja instalar uma atualização para esta aplicação do sistema? Os seus dados não serão perdidos. A aplicação atualizada não requer qualquer acesso especial.</string>
     <string name="uninstall_update_confirm">Deseja restaurar esta aplicação para a sua versão de fábrica?</string>
     <string name="uninstall_confirm">Deseja desinstalar esta aplicação?</string>
-    <string name="tap_to_install">Transferência terminada. Toque para instalar</string>
-    <string name="download_error">Transferência não efetuada</string>
+    <string name="tap_to_install">Descarga terminada. Toque para instalar.</string>
+    <string name="download_error">Descarga não efetuada</string>
 
     <string name="theme_night">Noite</string>
 <string name="menu_settings">Definições</string>
@@ -355,6 +355,10 @@
     <string name="repo_provider">Repositório: %s</string>
 
     <string name="useTor">Utilizar Tor</string>
-    <string name="useTorSummary">Descarregar aplicações através da rede Tor para melhorar a privacidade</string>
+    <string name="useTorSummary">Descarregar aplicações através da rede Tor para manter a privacidade</string>
     <string name="swap_stopping_wifi">A parar Wi-Fi…</string>
+    <string name="update_auto_download">Descarregar atualizações automaticamente</string>
+    <string name="update_auto_download_summary">Descarregar ficheiros de atualização em segundo plano</string>
+    <string name="tap_to_install_format">Toque para instalar %s</string>
+    <string name="tap_to_update_format">Toque para atualizar %s</string>
     </resources>

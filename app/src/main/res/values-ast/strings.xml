@@ -340,4 +340,10 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="useTor">Usar Tor</string>
     <string name="useTorSummary">Forcia la descaga\'l tráficu pente Tor pa una privacidá aumentada</string>
     <string name="swap_stopping_wifi">Parando Wi-Fi…</string>
+    <string name="update_auto_download">Auto-baxar anovamientos</string>
+    <string name="update_auto_download_summary">Baxa de fondu los anovamientos de ficheros</string>
+    <string name="repo_provider">Repositoriu: %s</string>
+
+    <string name="tap_to_install_format">Calca pa instalar %s</string>
+    <string name="tap_to_update_format">Calca p\'anovar %s</string>
     </resources>

@@ -91,7 +91,7 @@
 
     <string name="details_installed">גרסה %s מותקנת</string>
     <string name="details_notinstalled">לא מותקנת</string>
-    <string name="corrupt_download">קובץ מורד הינו פגום.</string>
+    <string name="corrupt_download">הקובץ שהתקבל פגום.</string>
     <string name="antiadslist">אפליקציה זו מכילה פרסום</string>
     <string name="antitracklist">אפליקציה זו עוקבת ומדווחת על פעילותך</string>
     <string name="antinonfreeadlist">אפליקציה זו מקדמת תוספים לא-חופשיים</string>
@@ -357,4 +357,13 @@
     <string name="crash_dialog_title">‏F-Droid קרסה</string>
     <string name="crash_dialog_text">אירעה שגיאה לא פצויה אשר אילצה את עצירת האפליקציה. האם ברצונך לדוור בדוא״ל את הפרטים כדי לעזור לפתור את הבעיה?</string>
     <string name="crash_dialog_comment_prompt">באפשרותך להוסיף מידע והערות נוספים כאן:</string>
-</resources>
+<string name="repo_provider">מאגר: %s</string>
+
+    <string name="useTor">שימוש ב־Tor</string>
+    <string name="useTorSummary">אילוץ העברת תעבורת העבודה דרך Tor להגברת הפרטיות</string>
+    <string name="swap_stopping_wifi">חיבור הרשת האלחוטי מופסק…</string>
+    <string name="update_auto_download">הורד עדכונים אוטומטית</string>
+    <string name="update_auto_download_summary">הורד את קבצי העדכון בתוך הרקע</string>
+    <string name="tap_to_install_format">הקש כדי להתקין %s</string>
+    <string name="tap_to_update_format">הקש כדי לעדכן %s</string>
+    </resources>

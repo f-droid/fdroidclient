@@ -182,7 +182,7 @@
     <string name="tab_installed_apps">Installées</string>
     <string name="bad_fingerprint">Mauvaise empreinte</string>
     <string name="invalid_url">Ceci n\'est pas une URL valide.</string>
-    <string name="menu_changelog">Modifications</string>
+    <string name="menu_changelog">Liste des changements</string>
     <string name="update_notification_title">Mise à jour des dépôts</string>
     <string name="pref_language">Langue</string>
     <string name="pref_language_default">Langue du système</string>
@@ -343,4 +343,8 @@
     <string name="swap_stopping_wifi">Arrêt du Wi-Fi en cours…</string>
     <string name="repo_provider">Dépôt : %s</string>
 
+    <string name="update_auto_download">Télécharger les mises à jour automatiquement</string>
+    <string name="update_auto_download_summary">Télécharger les mises à jour en arrière-plan</string>
+    <string name="tap_to_install_format">Appuyez pour installer %s</string>
+    <string name="tap_to_update_format">Appuyez pour mettre à jour %s</string>
     </resources>
