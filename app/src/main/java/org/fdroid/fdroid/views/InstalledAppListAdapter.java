@@ -9,9 +9,8 @@ public class InstalledAppListAdapter extends AppListAdapter {
     public static InstalledAppListAdapter create(Context context, Cursor cursor, int flags)  {
         if (Build.VERSION.SDK_INT >= 11) {
             return new InstalledAppListAdapter(context, cursor, flags);
-        } else {
-            return new InstalledAppListAdapter(context, cursor);
         }
+        return new InstalledAppListAdapter(context, cursor);
     }
 
     private InstalledAppListAdapter(Context context, Cursor c) {

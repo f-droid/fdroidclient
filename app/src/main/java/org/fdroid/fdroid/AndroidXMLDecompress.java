@@ -113,10 +113,9 @@ public class AndroidXMLDecompress {
                     attributes.put(attributeName, attributeValue);
                 }
                 return attributes;
-            } else {
-                // we only need the first <manifest> start tag
-                break;
             }
+            // we only need the first <manifest> start tag
+            break;
         }
         return new HashMap<String, Object>(0);
     }
