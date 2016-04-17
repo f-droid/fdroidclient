@@ -17,6 +17,8 @@
 
 package org.fdroid.fdroid.net;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -135,7 +137,7 @@ public class DownloaderService extends Service {
             }
         } else if (ACTION_QUEUE.equals(intent.getAction())) {
             if (Preferences.get().isUpdateNotificationEnabled()) {
-                createNotification(intent.getDataString());
+                startForeground(NOTIFY_DOWNLOADING, createNotification(intent.getDataString()).build());
             }
             Log.i(TAG, "Queued " + intent);
             Message msg = serviceHandler.obtainMessage();
@@ -150,14 +152,13 @@ public class DownloaderService extends Service {
         }
     }
 
-    private void createNotification(String urlString) {
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this)
-                        .setAutoCancel(true)
-                        .setContentTitle(getString(R.string.downloading))
-                        .setSmallIcon(android.R.drawable.stat_sys_download)
-                        .setContentText(urlString);
-        startForeground(NOTIFY_DOWNLOADING, builder.build());
+    private NotificationCompat.Builder createNotification(String urlString) {
+        return new NotificationCompat.Builder(this)
+                .setAutoCancel(true)
+                .setContentTitle(getString(R.string.downloading))
+                .setSmallIcon(android.R.drawable.stat_sys_download)
+                .setContentText(urlString)
+                .setProgress(100, 0, true);
     }
 
     @Override
@@ -214,6 +215,12 @@ public class DownloaderService extends Service {
                     intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
                     intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
                     localBroadcastManager.sendBroadcast(intent);
+
+                    NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                    Notification notification = createNotification(uri.toString())
+                            .setProgress(totalBytes, bytesRead, false)
+                            .build();
+                    nm.notify(NOTIFY_DOWNLOADING, notification);
                 }
             });
             downloader.download();
