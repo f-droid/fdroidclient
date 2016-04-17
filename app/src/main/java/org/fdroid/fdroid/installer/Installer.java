@@ -178,10 +178,8 @@ public abstract class Installer {
             Map<String, Object> attributes = AndroidXMLDecompress.getManifestHeaderAttributes(apkFile.getAbsolutePath());
 
             /* This isn't really needed, but might as well since we have the data already */
-            if (attributes.containsKey("packageName")) {
-                if (!TextUtils.equals(packageName, (String) attributes.get("packageName"))) {
-                    throw new InstallFailedException(apkFile + " has packageName that clashes with " + packageName);
-                }
+            if (attributes.containsKey("packageName") && !TextUtils.equals(packageName, (String) attributes.get("packageName"))) {
+                throw new InstallFailedException(apkFile + " has packageName that clashes with " + packageName);
             }
 
             if (!attributes.containsKey("versionCode")) {

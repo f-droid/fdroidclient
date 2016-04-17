@@ -269,10 +269,8 @@ public class AppSecurityPermissions {
             String permName = strList[i];
             // If we are only looking at an existing app, then we only
             // care about permissions that have actually been granted to it.
-            if (installedPkgInfo != null && info == installedPkgInfo) {
-                if ((flagsList[i] & PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0) {
-                    continue;
-                }
+            if (installedPkgInfo != null && info == installedPkgInfo && (flagsList[i] & PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0) {
+                continue;
             }
             try {
                 PermissionInfo tmpPermInfo = mPm.getPermissionInfo(permName, 0);

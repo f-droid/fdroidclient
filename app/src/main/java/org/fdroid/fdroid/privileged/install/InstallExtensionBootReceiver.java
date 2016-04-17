@@ -29,15 +29,13 @@ public class InstallExtensionBootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
-            if (Preferences.get().isPostPrivilegedInstall()) {
-                Preferences.get().setPostPrivilegedInstall(false);
+        if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED) && Preferences.get().isPostPrivilegedInstall()) {
+            Preferences.get().setPostPrivilegedInstall(false);
 
-                Intent postInstall = new Intent(context.getApplicationContext(), InstallExtensionDialogActivity.class);
-                postInstall.setAction(InstallExtensionDialogActivity.ACTION_POST_INSTALL);
-                postInstall.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(postInstall);
-            }
+            Intent postInstall = new Intent(context.getApplicationContext(), InstallExtensionDialogActivity.class);
+            postInstall.setAction(InstallExtensionDialogActivity.ACTION_POST_INSTALL);
+            postInstall.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(postInstall);
         }
     }
 }

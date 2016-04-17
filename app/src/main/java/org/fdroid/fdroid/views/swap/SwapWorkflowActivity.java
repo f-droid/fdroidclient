@@ -290,11 +290,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return;
         }
 
-        if (!forceReload) {
-            if (container.getVisibility() == View.GONE || currentView != null && currentView.getStep() == service.getStep()) {
-                // Already showing the correct step, so don't bother changing anything.
-                return;
-            }
+        if (!forceReload && (container.getVisibility() == View.GONE || currentView != null && currentView.getStep() == service.getStep())) {
+            // Already showing the correct step, so don't bother changing anything.
+            return;
         }
 
         switch (service.getStep()) {

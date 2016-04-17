@@ -119,22 +119,16 @@ public final class LocalRepoManager {
         xmlIndexJar = new SanitizedFile(repoDir, "index.jar");
         xmlIndexJarUnsigned = new SanitizedFile(repoDir, "index.unsigned.jar");
 
-        if (!fdroidDir.exists()) {
-            if (!fdroidDir.mkdir()) {
-                Log.e(TAG, "Unable to create empty base: " + fdroidDir);
-            }
+        if (!fdroidDir.exists() && !fdroidDir.mkdir()) {
+            Log.e(TAG, "Unable to create empty base: " + fdroidDir);
         }
 
-        if (!repoDir.exists()) {
-            if (!repoDir.mkdir()) {
-                Log.e(TAG, "Unable to create empty repo: " + repoDir);
-            }
+        if (!repoDir.exists() && !repoDir.mkdir()) {
+            Log.e(TAG, "Unable to create empty repo: " + repoDir);
         }
 
-        if (!iconsDir.exists()) {
-            if (!iconsDir.mkdir()) {
-                Log.e(TAG, "Unable to create icons folder: " + iconsDir);
-            }
+        if (!iconsDir.exists() && !iconsDir.mkdir()) {
+            Log.e(TAG, "Unable to create icons folder: " + iconsDir);
         }
     }
 

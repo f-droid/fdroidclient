@@ -673,11 +673,10 @@ public final class Utils {
         }
 
         for (File f : files) {
-            if ((startsWith != null && f.getName().startsWith(startsWith))
-                    || (endsWith != null && f.getName().endsWith(endsWith))) {
-                if (!f.delete()) {
-                    Log.w(TAG, "Couldn't delete cache file " + f);
-                }
+            if (((startsWith != null && f.getName().startsWith(startsWith))
+                        || (endsWith != null && f.getName().endsWith(endsWith)))
+                    && !f.delete()) {
+                Log.w(TAG, "Couldn't delete cache file " + f);
             }
         }
     }
