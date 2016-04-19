@@ -492,7 +492,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         cursor.moveToFirst();
         for (int i = 0; i < cursor.getCount(); i++) {
             App app = new App(cursor);
-            Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode, new String[]{
+            Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode, new String[]{
                     ApkProvider.DataColumns.NAME,
             });
             String urlString = Utils.getApkUrl(repoAddress, apk);

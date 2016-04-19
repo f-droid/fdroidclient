@@ -113,7 +113,7 @@ public abstract class AppListAdapter extends CursorAdapter {
 
     private String getVersionInfo(App app) {
 
-        if (app.suggestedVercode <= 0) {
+        if (app.suggestedVersionCode <= 0) {
             return null;
         }
 

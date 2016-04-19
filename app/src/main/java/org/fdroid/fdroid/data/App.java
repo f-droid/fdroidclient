@@ -65,11 +65,12 @@ public class App extends ValueObject implements Comparable<App> {
     /**
      * Unlike other public fields, this is only accessible via a getter, to
      * emphasise that setting it wont do anything. In order to change this,
-     * you need to change suggestedVercode to an apk which is in the apk table.
+     * you need to change suggestedVersionCode to an apk which is in the
+     * apk table.
      */
     private String suggestedVersion;
 
-    public int suggestedVercode;
+    public int suggestedVersionCode;
 
     public Date added;
     public Date lastUpdated;
@@ -176,7 +177,7 @@ public class App extends ValueObject implements Comparable<App> {
                     suggestedVersion = cursor.getString(i);
                     break;
                 case AppProvider.DataColumns.SUGGESTED_VERSION_CODE:
-                    suggestedVercode = cursor.getInt(i);
+                    suggestedVersionCode = cursor.getInt(i);
                     break;
                 case AppProvider.DataColumns.UPSTREAM_VERSION_CODE:
                     upstreamVercode = cursor.getInt(i);
@@ -402,7 +403,7 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.FLATTR_ID, flattrID);
         values.put(AppProvider.DataColumns.ADDED, Utils.formatDate(added, ""));
         values.put(AppProvider.DataColumns.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
-        values.put(AppProvider.DataColumns.SUGGESTED_VERSION_CODE, suggestedVercode);
+        values.put(AppProvider.DataColumns.SUGGESTED_VERSION_CODE, suggestedVersionCode);
         values.put(AppProvider.DataColumns.UPSTREAM_VERSION, upstreamVersion);
         values.put(AppProvider.DataColumns.UPSTREAM_VERSION_CODE, upstreamVercode);
         values.put(AppProvider.DataColumns.CATEGORIES, Utils.CommaSeparatedList.str(categories));
@@ -424,8 +425,8 @@ public class App extends ValueObject implements Comparable<App> {
      */
     public boolean hasUpdates() {
         boolean updates = false;
-        if (suggestedVercode > 0) {
-            updates = installedVersionCode > 0 && installedVersionCode < suggestedVercode;
+        if (suggestedVersionCode > 0) {
+            updates = installedVersionCode > 0 && installedVersionCode < suggestedVersionCode;
         }
         return updates;
     }
@@ -434,7 +435,7 @@ public class App extends ValueObject implements Comparable<App> {
     // to be notified about them
     public boolean canAndWantToUpdate() {
         boolean canUpdate = hasUpdates();
-        boolean wantsUpdate = !ignoreAllUpdates && ignoreThisUpdate < suggestedVercode;
+        boolean wantsUpdate = !ignoreAllUpdates && ignoreThisUpdate < suggestedVersionCode;
         return canUpdate && wantsUpdate && !isFiltered();
     }
 
