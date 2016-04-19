@@ -210,7 +210,7 @@ public class AppDetails extends AppCompatActivity {
             }
 
             holder.version.setText(getString(R.string.version)
-                    + " " + apk.version
+                    + " " + apk.versionName
                     + (apk.versionCode == app.suggestedVercode ? "  ☆" : ""));
 
             holder.status.setText(getInstalledStatus(apk));
@@ -1538,7 +1538,7 @@ public class AppDetails extends AppCompatActivity {
             }
             TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
             if (!appDetails.getApks().isEmpty()) {
-                currentVersion.setText(appDetails.getApks().getItem(0).version + " (" + app.license + ")");
+                currentVersion.setText(appDetails.getApks().getItem(0).versionName + " (" + app.license + ")");
             } else {
                 currentVersion.setVisibility(View.GONE);
                 btMain.setVisibility(View.GONE);

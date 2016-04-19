@@ -195,7 +195,7 @@ public class ApkProvider extends FDroidProvider {
         String _COUNT_DISTINCT_ID = "countDistinct";
 
         String PACKAGE_NAME    = "id";
-        String VERSION         = "version";
+        String VERSION_NAME    = "version";
         String REPO_ID         = "repo";
         String HASH            = "hash";
         String VERSION_CODE    = "vercode";
@@ -216,8 +216,8 @@ public class ApkProvider extends FDroidProvider {
         String REPO_ADDRESS    = "repoAddress";
 
         String[] ALL = {
-            _ID, PACKAGE_NAME, VERSION, REPO_ID, HASH, VERSION_CODE, NAME, SIZE,
-            SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, MAX_SDK_VERSION,
+            _ID, PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
+            SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, MAX_SDK_VERSION,
             PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
             IS_COMPATIBLE, REPO_VERSION, REPO_ADDRESS, INCOMPATIBLE_REASONS,
         };

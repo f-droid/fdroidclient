@@ -132,7 +132,7 @@ public class TestUtils {
 
         // Required fields (NOT NULL in the database).
         values.put(ApkProvider.DataColumns.REPO_ID, 1);
-        values.put(ApkProvider.DataColumns.VERSION, "The good one");
+        values.put(ApkProvider.DataColumns.VERSION_NAME, "The good one");
         values.put(ApkProvider.DataColumns.HASH, "11111111aaaaaaaa");
         values.put(ApkProvider.DataColumns.NAME, "Test Apk");
         values.put(ApkProvider.DataColumns.SIZE, 10000);

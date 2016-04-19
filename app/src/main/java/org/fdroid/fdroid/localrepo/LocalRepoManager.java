@@ -438,7 +438,7 @@ public final class LocalRepoManager {
             tag("web", "web");
             tag("source", "source");
             tag("tracker", "tracker");
-            tag("marketversion", app.installedApk.version);
+            tag("marketversion", app.installedApk.versionName);
             tag("marketvercode", app.installedApk.versionCode);
 
             tagPackage(app);
@@ -449,7 +449,7 @@ public final class LocalRepoManager {
         private void tagPackage(App app) throws IOException {
             serializer.startTag("", "package");
 
-            tag("version", app.installedApk.version);
+            tag("version", app.installedApk.versionName);
             tag("versioncode", app.installedApk.versionCode);
             tag("apkname", app.installedApk.apkName);
             tagHash(app);

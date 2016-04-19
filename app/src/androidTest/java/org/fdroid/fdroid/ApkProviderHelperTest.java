@@ -170,7 +170,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         }
 
         ContentValues values = new ContentValues();
-        values.put(ApkProvider.DataColumns.VERSION, "v1.1");
+        values.put(ApkProvider.DataColumns.VERSION_NAME, "v1.1");
         values.put(ApkProvider.DataColumns.HASH, "xxxxyyyy");
         values.put(ApkProvider.DataColumns.HASH_TYPE, "a hash type");
         TestUtils.insertApk(this, "com.example", 11, values);
@@ -188,7 +188,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
         // so we expect to find each of the ones we inserted above...
         assertEquals("com.example", apk.packageName);
         assertEquals(11, apk.versionCode);
-        assertEquals("v1.1", apk.version);
+        assertEquals("v1.1", apk.versionName);
         assertEquals("xxxxyyyy", apk.hash);
         assertEquals("a hash type", apk.hashType);
 
@@ -206,7 +206,7 @@ public class ApkProviderHelperTest extends BaseApkProviderTest {
 
         // Didn't ask for these fields, so should be their default values...
         assertNull(apkLessFields.hashType);
-        assertNull(apkLessFields.version);
+        assertNull(apkLessFields.versionName);
         assertEquals(0, apkLessFields.versionCode);
 
         Apk notFound = ApkProvider.Helper.find(getMockContext(), "com.doesnt.exist", 1000);

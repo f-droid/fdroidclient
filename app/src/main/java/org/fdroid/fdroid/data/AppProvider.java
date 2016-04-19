@@ -379,7 +379,7 @@ public class AppProvider extends FDroidProvider {
 
         private void addSuggestedApkVersionField() {
             addSuggestedApkField(
-                    ApkProvider.DataColumns.VERSION,
+                    ApkProvider.DataColumns.VERSION_NAME,
                     DataColumns.SuggestedApk.VERSION);
         }
 

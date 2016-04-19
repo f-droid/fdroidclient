@@ -275,7 +275,7 @@ public class App extends ValueObject implements Comparable<App> {
 
         final SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
         final Apk apk = new Apk();
-        apk.version = packageInfo.versionName;
+        apk.versionName = packageInfo.versionName;
         apk.versionCode = packageInfo.versionCode;
         apk.hashType = "sha256";
         apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);

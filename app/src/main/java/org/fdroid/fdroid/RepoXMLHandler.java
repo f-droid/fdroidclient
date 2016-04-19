@@ -96,7 +96,7 @@ public class RepoXMLHandler extends DefaultHandler {
         if (curapk != null) {
             switch (localName) {
                 case "version":
-                    curapk.version = str;
+                    curapk.versionName = str;
                     break;
                 case "versioncode":
                     curapk.versionCode = Utils.parseInt(str, -1);
