@@ -264,7 +264,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
         String repoFingerprint;
 
         // TODO show the current state of the signature check, not just whether there is a key or not
-        if (TextUtils.isEmpty(repo.fingerprint) && TextUtils.isEmpty(repo.pubkey)) {
+        if (TextUtils.isEmpty(repo.fingerprint) && TextUtils.isEmpty(repo.signingCertificate)) {
             repoFingerprint = getResources().getString(R.string.unsigned);
             repoFingerprintView.setTextColor(getResources().getColor(R.color.unsigned));
             repoFingerprintDescView.setVisibility(View.VISIBLE);

@@ -291,7 +291,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
             RepoProvider.DataColumns.ADDRESS,
             RepoProvider.DataColumns.FINGERPRINT,
             RepoProvider.DataColumns.NAME,
-            RepoProvider.DataColumns.PUBLIC_KEY,
+            RepoProvider.DataColumns.SIGNING_CERT,
         };
 
         for (String field : repoFields) {

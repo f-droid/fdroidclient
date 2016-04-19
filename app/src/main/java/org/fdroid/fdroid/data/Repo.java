@@ -24,7 +24,7 @@ public class Repo extends ValueObject {
     public boolean inuse;
     public int priority;
     /** The signing certificate, {@code null} for a newly added repo */
-    public String pubkey;
+    public String signingCertificate;
     /**
      * The SHA1 fingerprint of {@link #pubkey}, set to {@code null} when a
      * newly added repo did not include fingerprint. It should never be an
@@ -79,8 +79,8 @@ public class Repo extends ValueObject {
                 case RepoProvider.DataColumns.NAME:
                     name = cursor.getString(i);
                     break;
-                case RepoProvider.DataColumns.PUBLIC_KEY:
-                    pubkey = cursor.getString(i);
+                case RepoProvider.DataColumns.SIGNING_CERT:
+                    signingCertificate = cursor.getString(i);
                     break;
                 case RepoProvider.DataColumns.PRIORITY:
                     priority = cursor.getInt(i);
@@ -112,13 +112,13 @@ public class Repo extends ValueObject {
     }
 
     public boolean isSigned() {
-        return !TextUtils.isEmpty(this.pubkey);
+        return !TextUtils.isEmpty(this.signingCertificate);
     }
 
     // this happens when a repo is configed with a fingerprint, but the client
-    // has not connected to it yet to download its pubkey
+    // has not connected to it yet to download its signing certificate
     public boolean isSignedButUnverified() {
-        return TextUtils.isEmpty(this.pubkey) && !TextUtils.isEmpty(this.fingerprint);
+        return TextUtils.isEmpty(this.signingCertificate) && !TextUtils.isEmpty(this.fingerprint);
     }
 
     public boolean hasBeenUpdated() {
@@ -191,8 +191,8 @@ public class Repo extends ValueObject {
             name = values.getAsString(RepoProvider.DataColumns.NAME);
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.PUBLIC_KEY)) {
-            pubkey = values.getAsString(RepoProvider.DataColumns.PUBLIC_KEY);
+        if (values.containsKey(RepoProvider.DataColumns.SIGNING_CERT)) {
+            signingCertificate = values.getAsString(RepoProvider.DataColumns.SIGNING_CERT);
         }
 
         if (values.containsKey(RepoProvider.DataColumns.PRIORITY)) {

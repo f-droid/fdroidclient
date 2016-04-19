@@ -711,7 +711,7 @@ public class ManageReposActivity extends ActionBarActivity {
             final String[] projection = {
                 RepoProvider.DataColumns._ID,
                 RepoProvider.DataColumns.NAME,
-                RepoProvider.DataColumns.PUBLIC_KEY,
+                RepoProvider.DataColumns.SIGNING_CERT,
                 RepoProvider.DataColumns.FINGERPRINT,
                 RepoProvider.DataColumns.IN_USE,
             };
