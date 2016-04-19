@@ -27,6 +27,9 @@ import android.os.Build;
 import android.test.mock.MockContentResolver;
 import android.test.mock.MockContext;
 
+import org.junit.After;
+import org.junit.Before;
+
 import java.io.File;
 
 /**
@@ -132,6 +135,7 @@ public abstract class ProviderTestCase2MockContext<T extends ContentProvider> ex
      * @throws Exception
      */
     @Override
+    @Before
     protected void setUp() throws Exception {
         super.setUp();
 
@@ -165,6 +169,7 @@ public abstract class ProviderTestCase2MockContext<T extends ContentProvider> ex
      * {@link android.content.ContentProvider} represented by mProvider.
      */
     @Override
+    @After
     protected void tearDown() throws Exception {
         shutdownProvider();
         super.tearDown();

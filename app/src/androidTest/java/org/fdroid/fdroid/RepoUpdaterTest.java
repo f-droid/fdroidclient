@@ -18,7 +18,6 @@ import static org.junit.Assert.fail;
 
 @RunWith(AndroidJUnit4.class)
 public class RepoUpdaterTest {
-    private static final String TAG = "RepoUpdaterTest";
 
     private Context context;
     private RepoUpdater repoUpdater;
