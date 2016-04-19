@@ -471,7 +471,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         for (int i = 0; i < Math.min(hasUpdates.getCount(), MAX_UPDATES_TO_SHOW); i++) {
             App app = new App(hasUpdates);
             hasUpdates.moveToNext();
-            inboxStyle.addLine(app.name + " (" + app.installedVersionName + " → " + app.getSuggestedVersion() + ")");
+            inboxStyle.addLine(app.name + " (" + app.installedVersionName + " → " + app.getSuggestedVersionName() + ")");
         }
 
         if (hasUpdates.getCount() > MAX_UPDATES_TO_SHOW) {

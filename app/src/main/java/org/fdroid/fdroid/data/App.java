@@ -68,7 +68,7 @@ public class App extends ValueObject implements Comparable<App> {
      * you need to change suggestedVersionCode to an apk which is in the
      * apk table.
      */
-    private String suggestedVersion;
+    private String suggestedVersionName;
 
     public int suggestedVersionCode;
 
@@ -173,8 +173,8 @@ public class App extends ValueObject implements Comparable<App> {
                 case AppProvider.DataColumns.FLATTR_ID:
                     flattrID = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.SuggestedApk.VERSION:
-                    suggestedVersion = cursor.getString(i);
+                case AppProvider.DataColumns.SuggestedApk.VERSION_NAME:
+                    suggestedVersionName = cursor.getString(i);
                     break;
                 case AppProvider.DataColumns.SUGGESTED_VERSION_CODE:
                     suggestedVersionCode = cursor.getInt(i);
@@ -445,7 +445,7 @@ public class App extends ValueObject implements Comparable<App> {
         return new AppFilter().filter(this);
     }
 
-    public String getSuggestedVersion() {
-        return suggestedVersion;
+    public String getSuggestedVersionName() {
+        return suggestedVersionName;
     }
 }

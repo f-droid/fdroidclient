@@ -204,7 +204,7 @@ public class AppProvider extends FDroidProvider {
         String ICON_URL_LARGE = "iconUrlLarge";
 
         interface SuggestedApk {
-            String VERSION = "suggestedApkVersion";
+            String VERSION_NAME = "suggestedApkVersion";
         }
 
         interface InstalledApp {
@@ -220,7 +220,7 @@ public class AppProvider extends FDroidProvider {
             UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
             CATEGORIES, ANTI_FEATURES, REQUIREMENTS, IGNORE_ALLUPDATES,
             IGNORE_THISUPDATE, ICON_URL, ICON_URL_LARGE,
-            SUGGESTED_VERSION_CODE, SuggestedApk.VERSION,
+            SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
             InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
             InstalledApp.SIGNATURE,
         };
@@ -348,7 +348,7 @@ public class AppProvider extends FDroidProvider {
         @Override
         public void addField(String field) {
             switch (field) {
-                case DataColumns.SuggestedApk.VERSION:
+                case DataColumns.SuggestedApk.VERSION_NAME:
                     addSuggestedApkVersionField();
                     break;
                 case DataColumns.InstalledApp.VERSION_NAME:
@@ -380,7 +380,7 @@ public class AppProvider extends FDroidProvider {
         private void addSuggestedApkVersionField() {
             addSuggestedApkField(
                     ApkProvider.DataColumns.VERSION_NAME,
-                    DataColumns.SuggestedApk.VERSION);
+                    DataColumns.SuggestedApk.VERSION_NAME);
         }
 
         private void addSuggestedApkField(String fieldName, String alias) {
