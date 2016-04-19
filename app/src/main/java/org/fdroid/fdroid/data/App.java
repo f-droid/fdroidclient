@@ -59,8 +59,8 @@ public class App extends ValueObject implements Comparable<App> {
 
     public String flattrID;
 
-    public String upstreamVersion;
-    public int upstreamVercode;
+    public String upstreamVersionName;
+    public int upstreamVersionCode;
 
     /**
      * Unlike other public fields, this is only accessible via a getter, to
@@ -180,10 +180,10 @@ public class App extends ValueObject implements Comparable<App> {
                     suggestedVersionCode = cursor.getInt(i);
                     break;
                 case AppProvider.DataColumns.UPSTREAM_VERSION_CODE:
-                    upstreamVercode = cursor.getInt(i);
+                    upstreamVersionCode = cursor.getInt(i);
                     break;
-                case AppProvider.DataColumns.UPSTREAM_VERSION:
-                    upstreamVersion = cursor.getString(i);
+                case AppProvider.DataColumns.UPSTREAM_VERSION_NAME:
+                    upstreamVersionName = cursor.getString(i);
                     break;
                 case AppProvider.DataColumns.ADDED:
                     added = Utils.parseDate(cursor.getString(i), null);
@@ -404,8 +404,8 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.ADDED, Utils.formatDate(added, ""));
         values.put(AppProvider.DataColumns.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
         values.put(AppProvider.DataColumns.SUGGESTED_VERSION_CODE, suggestedVersionCode);
-        values.put(AppProvider.DataColumns.UPSTREAM_VERSION, upstreamVersion);
-        values.put(AppProvider.DataColumns.UPSTREAM_VERSION_CODE, upstreamVercode);
+        values.put(AppProvider.DataColumns.UPSTREAM_VERSION_NAME, upstreamVersionName);
+        values.put(AppProvider.DataColumns.UPSTREAM_VERSION_CODE, upstreamVersionCode);
         values.put(AppProvider.DataColumns.CATEGORIES, Utils.CommaSeparatedList.str(categories));
         values.put(AppProvider.DataColumns.ANTI_FEATURES, Utils.CommaSeparatedList.str(antiFeatures));
         values.put(AppProvider.DataColumns.REQUIREMENTS, Utils.CommaSeparatedList.str(requirements));

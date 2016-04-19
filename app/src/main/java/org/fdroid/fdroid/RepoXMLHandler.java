@@ -204,10 +204,10 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.lastUpdated = Utils.parseDate(str, null);
                     break;
                 case "marketversion":
-                    curapp.upstreamVersion = str;
+                    curapp.upstreamVersionName = str;
                     break;
                 case "marketvercode":
-                    curapp.upstreamVercode = Utils.parseInt(str, -1);
+                    curapp.upstreamVersionCode = Utils.parseInt(str, -1);
                     break;
                 case "categories":
                     curapp.categories = Utils.CommaSeparatedList.make(str);
