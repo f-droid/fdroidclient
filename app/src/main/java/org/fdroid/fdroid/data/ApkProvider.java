@@ -433,9 +433,9 @@ public class ApkProvider extends FDroidProvider {
         for (int i = 0; i < apkDetails.length; i++) {
             String[] parts = apkDetails[i].split(":");
             String packageName = parts[0];
-            String verCode = parts[1];
+            String versionCode = parts[1];
             args[i * 2] = packageName;
-            args[i * 2 + 1] = verCode;
+            args[i * 2 + 1] = versionCode;
             if (i != 0) {
                 sb.append(" OR ");
             }
