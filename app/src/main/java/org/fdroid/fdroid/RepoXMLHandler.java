@@ -99,7 +99,7 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapk.version = str;
                     break;
                 case "versioncode":
-                    curapk.vercode = Utils.parseInt(str, -1);
+                    curapk.versionCode = Utils.parseInt(str, -1);
                     break;
                 case "size":
                     curapk.size = Utils.parseInt(str, 0);

@@ -34,7 +34,7 @@ public class ApkProvider extends FDroidProvider {
 
         public static void update(Context context, Apk apk) {
             ContentResolver resolver = context.getContentResolver();
-            Uri uri = getContentUri(apk.packageName, apk.vercode);
+            Uri uri = getContentUri(apk.packageName, apk.versionCode);
             resolver.update(uri, apk.toContentValues(), null, null);
         }
 
@@ -279,7 +279,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     public static Uri getContentUri(Apk apk) {
-        return getContentUri(apk.packageName, apk.vercode);
+        return getContentUri(apk.packageName, apk.versionCode);
     }
 
     public static Uri getContentUri(String packageName, int versionCode) {
@@ -328,8 +328,8 @@ public class ApkProvider extends FDroidProvider {
             if (i != 0) {
                 builder.append(',');
             }
-            final Apk a = apks.get(i);
-            builder.append(a.packageName).append(':').append(a.vercode);
+            final Apk apk = apks.get(i);
+            builder.append(apk.packageName).append(':').append(apk.versionCode);
         }
         return builder.toString();
     }

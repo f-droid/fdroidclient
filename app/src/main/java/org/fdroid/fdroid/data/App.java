@@ -276,7 +276,7 @@ public class App extends ValueObject implements Comparable<App> {
         final SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
         final Apk apk = new Apk();
         apk.version = packageInfo.versionName;
-        apk.vercode = packageInfo.versionCode;
+        apk.versionCode = packageInfo.versionCode;
         apk.hashType = "sha256";
         apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
         apk.added = this.added;
@@ -285,7 +285,7 @@ public class App extends ValueObject implements Comparable<App> {
         apk.packageName = this.packageName;
         apk.installedFile = apkFile;
         apk.permissions = Utils.CommaSeparatedList.make(packageInfo.requestedPermissions);
-        apk.apkName = apk.packageName + "_" + apk.vercode + ".apk";
+        apk.apkName = apk.packageName + "_" + apk.versionCode + ".apk";
 
         final FeatureInfo[] features = packageInfo.reqFeatures;
         if (features != null && features.length > 0) {

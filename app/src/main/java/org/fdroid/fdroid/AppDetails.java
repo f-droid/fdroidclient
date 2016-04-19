@@ -160,7 +160,7 @@ public class AppDetails extends AppCompatActivity {
 
         private String getInstalledStatus(final Apk apk) {
             // Definitely not installed.
-            if (apk.vercode != app.installedVersionCode) {
+            if (apk.versionCode != app.installedVersionCode) {
                 return getString(R.string.app_not_installed);
             }
             // Definitely installed this version.
@@ -211,7 +211,7 @@ public class AppDetails extends AppCompatActivity {
 
             holder.version.setText(getString(R.string.version)
                     + " " + apk.version
-                    + (apk.vercode == app.suggestedVercode ? "  ☆" : ""));
+                    + (apk.versionCode == app.suggestedVercode ? "  ☆" : ""));
 
             holder.status.setText(getInstalledStatus(apk));
 
@@ -1246,7 +1246,7 @@ public class AppDetails extends AppCompatActivity {
             Apk curApk = null;
             for (int i = 0; i < appDetails.getApks().getCount(); i++) {
                 final Apk apk = appDetails.getApks().getItem(i);
-                if (apk.vercode == app.suggestedVercode) {
+                if (apk.versionCode == app.suggestedVercode) {
                     curApk = apk;
                     break;
                 }
@@ -1619,9 +1619,9 @@ public class AppDetails extends AppCompatActivity {
         public void onListItemClick(ListView l, View v, int position, long id) {
             App app = appDetails.getApp();
             final Apk apk = appDetails.getApks().getItem(position - l.getHeaderViewsCount());
-            if (app.installedVersionCode == apk.vercode) {
+            if (app.installedVersionCode == apk.versionCode) {
                 remove();
-            } else if (app.installedVersionCode > apk.vercode) {
+            } else if (app.installedVersionCode > apk.versionCode) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setMessage(R.string.installDowngrade);
                 builder.setPositiveButton(R.string.yes,
