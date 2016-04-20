@@ -252,7 +252,7 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(RepoProvider.DataColumns.ADDRESS, address);
         values.put(RepoProvider.DataColumns.NAME, name);
         values.put(RepoProvider.DataColumns.DESCRIPTION, description);
-        values.put(RepoProvider.DataColumns.PUBLIC_KEY, pubKey);
+        values.put(RepoProvider.DataColumns.SIGNING_CERT, pubKey);
         values.put(RepoProvider.DataColumns.FINGERPRINT, Utils.calcFingerprint(pubKey));
         values.put(RepoProvider.DataColumns.MAX_AGE, 0);
         values.put(RepoProvider.DataColumns.VERSION, version);
@@ -311,7 +311,7 @@ class DBHelper extends SQLiteOpenHelper {
                         Repo repo = new Repo();
                         repo.address = cursor.getString(0);
                         repo.inuse = cursor.getInt(1) == 1;
-                        repo.pubkey = cursor.getString(2);
+                        repo.signingCertificate = cursor.getString(2);
                         oldrepos.add(repo);
                         cursor.moveToNext();
                     }
@@ -325,7 +325,7 @@ class DBHelper extends SQLiteOpenHelper {
                 values.put("address", repo.address);
                 values.put("inuse", repo.inuse);
                 values.put("priority", 10);
-                values.put("pubkey", repo.pubkey);
+                values.put("pubkey", repo.signingCertificate);
                 values.put("lastetag", (String) null);
                 db.insert(TABLE_REPO, null, values);
             }
@@ -388,7 +388,7 @@ class DBHelper extends SQLiteOpenHelper {
                     while (!cursor.isAfterLast()) {
                         Repo repo = new Repo();
                         repo.address = cursor.getString(0);
-                        repo.pubkey = cursor.getString(1);
+                        repo.signingCertificate = cursor.getString(1);
                         oldrepos.add(repo);
                         cursor.moveToNext();
                     }
@@ -397,7 +397,7 @@ class DBHelper extends SQLiteOpenHelper {
             }
             for (final Repo repo : oldrepos) {
                 ContentValues values = new ContentValues();
-                values.put("fingerprint", Utils.calcFingerprint(repo.pubkey));
+                values.put("fingerprint", Utils.calcFingerprint(repo.signingCertificate));
                 db.update(TABLE_REPO, values, "address = ?", new String[] {repo.address});
             }
         }

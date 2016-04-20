@@ -169,7 +169,7 @@ public class RepoPersister {
         for (Apk apk : packages) {
             boolean exists = false;
             for (Apk existing : existingApks) {
-                if (existing.packageName.equals(apk.packageName) && existing.vercode == apk.vercode) {
+                if (existing.packageName.equals(apk.packageName) && existing.versionCode == apk.versionCode) {
                     exists = true;
                     break;
                 }
@@ -256,7 +256,7 @@ public class RepoPersister {
 
             if (packages.containsKey(existingApk.packageName)) {
                 for (Apk newApk : packages.get(existingApk.packageName)) {
-                    if (newApk.vercode == existingApk.vercode) {
+                    if (newApk.versionCode == existingApk.versionCode) {
                         shouldStay = true;
                         break;
                     }

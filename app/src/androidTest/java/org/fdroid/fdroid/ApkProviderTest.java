@@ -233,7 +233,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         Apk apk = new MockApk("org.fdroid.fdroid", 13);
 
         // Insert a new record...
-        Uri newUri = TestUtils.insertApk(this, apk.packageName, apk.vercode);
+        Uri newUri = TestUtils.insertApk(this, apk.packageName, apk.versionCode);
         assertEquals(ApkProvider.getContentUri(apk).toString(), newUri.toString());
         cursor = queryAllApks();
         assertNotNull(cursor);
@@ -257,7 +257,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         Apk toCheck = new Apk(cursor);
         cursor.close();
         assertEquals("org.fdroid.fdroid", toCheck.packageName);
-        assertEquals(13, toCheck.vercode);
+        assertEquals(13, toCheck.versionCode);
     }
 
     public void testCount() {
@@ -291,7 +291,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
             RepoProvider.DataColumns.ADDRESS,
             RepoProvider.DataColumns.FINGERPRINT,
             RepoProvider.DataColumns.NAME,
-            RepoProvider.DataColumns.PUBLIC_KEY,
+            RepoProvider.DataColumns.SIGNING_CERT,
         };
 
         for (String field : repoFields) {
@@ -330,7 +330,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         // But this should have saved correctly...
         assertEquals("Some features", apk.features.toString());
         assertEquals("com.example.com", apk.packageName);
-        assertEquals(1, apk.vercode);
+        assertEquals(1, apk.versionCode);
         assertEquals(10, apk.repo);
     }
 

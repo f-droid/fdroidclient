@@ -6,7 +6,7 @@ public class MockApk extends Apk {
 
     public MockApk(String id, int versionCode) {
         this.packageName = id;
-        this.vercode = versionCode;
+        this.versionCode = versionCode;
     }
 
 }

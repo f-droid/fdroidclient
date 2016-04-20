@@ -289,7 +289,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         for (int versionCode : versionCodes) {
             boolean found = false;
             for (Apk apk : apksToCheck) {
-                if (apk.vercode == versionCode && apk.packageName.equals(appId)) {
+                if (apk.versionCode == versionCode && apk.packageName.equals(appId)) {
                     found = true;
                     break;
                 }
@@ -405,12 +405,12 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
 
     private RepoUpdater createUpdater(String name, Context context) {
         Repo repo = new Repo();
-        repo.pubkey = PUB_KEY;
+        repo.signingCertificate = PUB_KEY;
         repo.address = UUID.randomUUID().toString();
         repo.name = name;
 
         ContentValues values = new ContentValues(2);
-        values.put(RepoProvider.DataColumns.PUBLIC_KEY, repo.pubkey);
+        values.put(RepoProvider.DataColumns.SIGNING_CERT, repo.signingCertificate);
         values.put(RepoProvider.DataColumns.ADDRESS, repo.address);
         values.put(RepoProvider.DataColumns.NAME, repo.name);
 

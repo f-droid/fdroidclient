@@ -49,7 +49,7 @@ public class TempApkProvider extends ApkProvider {
         return getContentUri()
                 .buildUpon()
                 .appendPath(PATH_APK)
-                .appendPath(Integer.toString(apk.vercode))
+                .appendPath(Integer.toString(apk.versionCode))
                 .appendPath(apk.packageName)
                 .build();
     }

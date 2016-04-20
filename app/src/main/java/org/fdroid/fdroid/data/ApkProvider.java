@@ -34,7 +34,7 @@ public class ApkProvider extends FDroidProvider {
 
         public static void update(Context context, Apk apk) {
             ContentResolver resolver = context.getContentResolver();
-            Uri uri = getContentUri(apk.packageName, apk.vercode);
+            Uri uri = getContentUri(apk.packageName, apk.versionCode);
             resolver.update(uri, apk.toContentValues(), null, null);
         }
 
@@ -195,7 +195,7 @@ public class ApkProvider extends FDroidProvider {
         String _COUNT_DISTINCT_ID = "countDistinct";
 
         String PACKAGE_NAME    = "id";
-        String VERSION         = "version";
+        String VERSION_NAME    = "version";
         String REPO_ID         = "repo";
         String HASH            = "hash";
         String VERSION_CODE    = "vercode";
@@ -216,8 +216,8 @@ public class ApkProvider extends FDroidProvider {
         String REPO_ADDRESS    = "repoAddress";
 
         String[] ALL = {
-            _ID, PACKAGE_NAME, VERSION, REPO_ID, HASH, VERSION_CODE, NAME, SIZE,
-            SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, MAX_SDK_VERSION,
+            _ID, PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
+            SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, MAX_SDK_VERSION,
             PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
             IS_COMPATIBLE, REPO_VERSION, REPO_ADDRESS, INCOMPATIBLE_REASONS,
         };
@@ -279,7 +279,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     public static Uri getContentUri(Apk apk) {
-        return getContentUri(apk.packageName, apk.vercode);
+        return getContentUri(apk.packageName, apk.versionCode);
     }
 
     public static Uri getContentUri(String packageName, int versionCode) {
@@ -328,8 +328,8 @@ public class ApkProvider extends FDroidProvider {
             if (i != 0) {
                 builder.append(',');
             }
-            final Apk a = apks.get(i);
-            builder.append(a.packageName).append(':').append(a.vercode);
+            final Apk apk = apks.get(i);
+            builder.append(apk.packageName).append(':').append(apk.versionCode);
         }
         return builder.toString();
     }
@@ -433,9 +433,9 @@ public class ApkProvider extends FDroidProvider {
         for (int i = 0; i < apkDetails.length; i++) {
             String[] parts = apkDetails[i].split(":");
             String packageName = parts[0];
-            String verCode = parts[1];
+            String versionCode = parts[1];
             args[i * 2] = packageName;
-            args[i * 2 + 1] = verCode;
+            args[i * 2 + 1] = versionCode;
             if (i != 0) {
                 sb.append(" OR ");
             }

@@ -59,17 +59,18 @@ public class App extends ValueObject implements Comparable<App> {
 
     public String flattrID;
 
-    public String upstreamVersion;
-    public int upstreamVercode;
+    public String upstreamVersionName;
+    public int upstreamVersionCode;
 
     /**
      * Unlike other public fields, this is only accessible via a getter, to
      * emphasise that setting it wont do anything. In order to change this,
-     * you need to change suggestedVercode to an apk which is in the apk table.
+     * you need to change suggestedVersionCode to an apk which is in the
+     * apk table.
      */
-    private String suggestedVersion;
+    private String suggestedVersionName;
 
-    public int suggestedVercode;
+    public int suggestedVersionCode;
 
     public Date added;
     public Date lastUpdated;
@@ -172,17 +173,17 @@ public class App extends ValueObject implements Comparable<App> {
                 case AppProvider.DataColumns.FLATTR_ID:
                     flattrID = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.SuggestedApk.VERSION:
-                    suggestedVersion = cursor.getString(i);
+                case AppProvider.DataColumns.SuggestedApk.VERSION_NAME:
+                    suggestedVersionName = cursor.getString(i);
                     break;
                 case AppProvider.DataColumns.SUGGESTED_VERSION_CODE:
-                    suggestedVercode = cursor.getInt(i);
+                    suggestedVersionCode = cursor.getInt(i);
                     break;
                 case AppProvider.DataColumns.UPSTREAM_VERSION_CODE:
-                    upstreamVercode = cursor.getInt(i);
+                    upstreamVersionCode = cursor.getInt(i);
                     break;
-                case AppProvider.DataColumns.UPSTREAM_VERSION:
-                    upstreamVersion = cursor.getString(i);
+                case AppProvider.DataColumns.UPSTREAM_VERSION_NAME:
+                    upstreamVersionName = cursor.getString(i);
                     break;
                 case AppProvider.DataColumns.ADDED:
                     added = Utils.parseDate(cursor.getString(i), null);
@@ -275,8 +276,8 @@ public class App extends ValueObject implements Comparable<App> {
 
         final SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
         final Apk apk = new Apk();
-        apk.version = packageInfo.versionName;
-        apk.vercode = packageInfo.versionCode;
+        apk.versionName = packageInfo.versionName;
+        apk.versionCode = packageInfo.versionCode;
         apk.hashType = "sha256";
         apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
         apk.added = this.added;
@@ -285,7 +286,7 @@ public class App extends ValueObject implements Comparable<App> {
         apk.packageName = this.packageName;
         apk.installedFile = apkFile;
         apk.permissions = Utils.CommaSeparatedList.make(packageInfo.requestedPermissions);
-        apk.apkName = apk.packageName + "_" + apk.vercode + ".apk";
+        apk.apkName = apk.packageName + "_" + apk.versionCode + ".apk";
 
         final FeatureInfo[] features = packageInfo.reqFeatures;
         if (features != null && features.length > 0) {
@@ -402,9 +403,9 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.FLATTR_ID, flattrID);
         values.put(AppProvider.DataColumns.ADDED, Utils.formatDate(added, ""));
         values.put(AppProvider.DataColumns.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
-        values.put(AppProvider.DataColumns.SUGGESTED_VERSION_CODE, suggestedVercode);
-        values.put(AppProvider.DataColumns.UPSTREAM_VERSION, upstreamVersion);
-        values.put(AppProvider.DataColumns.UPSTREAM_VERSION_CODE, upstreamVercode);
+        values.put(AppProvider.DataColumns.SUGGESTED_VERSION_CODE, suggestedVersionCode);
+        values.put(AppProvider.DataColumns.UPSTREAM_VERSION_NAME, upstreamVersionName);
+        values.put(AppProvider.DataColumns.UPSTREAM_VERSION_CODE, upstreamVersionCode);
         values.put(AppProvider.DataColumns.CATEGORIES, Utils.CommaSeparatedList.str(categories));
         values.put(AppProvider.DataColumns.ANTI_FEATURES, Utils.CommaSeparatedList.str(antiFeatures));
         values.put(AppProvider.DataColumns.REQUIREMENTS, Utils.CommaSeparatedList.str(requirements));
@@ -424,8 +425,8 @@ public class App extends ValueObject implements Comparable<App> {
      */
     public boolean hasUpdates() {
         boolean updates = false;
-        if (suggestedVercode > 0) {
-            updates = installedVersionCode > 0 && installedVersionCode < suggestedVercode;
+        if (suggestedVersionCode > 0) {
+            updates = installedVersionCode > 0 && installedVersionCode < suggestedVersionCode;
         }
         return updates;
     }
@@ -434,7 +435,7 @@ public class App extends ValueObject implements Comparable<App> {
     // to be notified about them
     public boolean canAndWantToUpdate() {
         boolean canUpdate = hasUpdates();
-        boolean wantsUpdate = !ignoreAllUpdates && ignoreThisUpdate < suggestedVercode;
+        boolean wantsUpdate = !ignoreAllUpdates && ignoreThisUpdate < suggestedVersionCode;
         return canUpdate && wantsUpdate && !isFiltered();
     }
 
@@ -444,7 +445,7 @@ public class App extends ValueObject implements Comparable<App> {
         return new AppFilter().filter(this);
     }
 
-    public String getSuggestedVersion() {
-        return suggestedVersion;
+    public String getSuggestedVersionName() {
+        return suggestedVersionName;
     }
 }

@@ -191,7 +191,7 @@ public class AppProvider extends FDroidProvider {
         String LITECOIN_ADDR = "litecoinAddr";
         String FLATTR_ID = "flattrID";
         String SUGGESTED_VERSION_CODE = "suggestedVercode";
-        String UPSTREAM_VERSION = "upstreamVersion";
+        String UPSTREAM_VERSION_NAME = "upstreamVersion";
         String UPSTREAM_VERSION_CODE = "upstreamVercode";
         String ADDED = "added";
         String LAST_UPDATED = "lastUpdated";
@@ -204,7 +204,7 @@ public class AppProvider extends FDroidProvider {
         String ICON_URL_LARGE = "iconUrlLarge";
 
         interface SuggestedApk {
-            String VERSION = "suggestedApkVersion";
+            String VERSION_NAME = "suggestedApkVersion";
         }
 
         interface InstalledApp {
@@ -217,10 +217,10 @@ public class AppProvider extends FDroidProvider {
             _ID, IS_COMPATIBLE, PACKAGE_NAME, NAME, SUMMARY, ICON, DESCRIPTION,
             LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
             CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
-            UPSTREAM_VERSION, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
+            UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
             CATEGORIES, ANTI_FEATURES, REQUIREMENTS, IGNORE_ALLUPDATES,
             IGNORE_THISUPDATE, ICON_URL, ICON_URL_LARGE,
-            SUGGESTED_VERSION_CODE, SuggestedApk.VERSION,
+            SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
             InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
             InstalledApp.SIGNATURE,
         };
@@ -348,7 +348,7 @@ public class AppProvider extends FDroidProvider {
         @Override
         public void addField(String field) {
             switch (field) {
-                case DataColumns.SuggestedApk.VERSION:
+                case DataColumns.SuggestedApk.VERSION_NAME:
                     addSuggestedApkVersionField();
                     break;
                 case DataColumns.InstalledApp.VERSION_NAME:
@@ -379,8 +379,8 @@ public class AppProvider extends FDroidProvider {
 
         private void addSuggestedApkVersionField() {
             addSuggestedApkField(
-                    ApkProvider.DataColumns.VERSION,
-                    DataColumns.SuggestedApk.VERSION);
+                    ApkProvider.DataColumns.VERSION_NAME,
+                    DataColumns.SuggestedApk.VERSION_NAME);
         }
 
         private void addSuggestedApkField(String fieldName, String alias) {

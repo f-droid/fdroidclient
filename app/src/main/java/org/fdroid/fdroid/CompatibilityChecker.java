@@ -102,7 +102,7 @@ public class CompatibilityChecker {
                 }
                 if (!features.contains(feat)) {
                     Collections.addAll(incompatibleReasons, feat.split(","));
-                    Utils.debugLog(TAG, apk.packageName + " vercode " + apk.vercode
+                    Utils.debugLog(TAG, apk.packageName + " vercode " + apk.versionCode
                             + " is incompatible based on lack of " + feat);
                 }
             }
@@ -111,7 +111,7 @@ public class CompatibilityChecker {
             for (final String code : apk.nativecode) {
                 incompatibleReasons.add(code);
             }
-            Utils.debugLog(TAG, apk.packageName + " vercode " + apk.vercode
+            Utils.debugLog(TAG, apk.packageName + " vercode " + apk.versionCode
                     + " only supports " + Utils.CommaSeparatedList.str(apk.nativecode)
                     + " while your architectures are " + cpuAbisDesc);
         }

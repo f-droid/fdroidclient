@@ -293,7 +293,7 @@ public final class LocalRepoManager {
             if (app.installedApk != null) {
                 try {
                     appInfo = pm.getApplicationInfo(app.packageName, PackageManager.GET_META_DATA);
-                    copyIconToRepo(appInfo.loadIcon(pm), app.packageName, app.installedApk.vercode);
+                    copyIconToRepo(appInfo.loadIcon(pm), app.packageName, app.installedApk.versionCode);
                 } catch (PackageManager.NameNotFoundException e) {
                     Log.e(TAG, "Error getting app icon", e);
                 }
@@ -438,8 +438,8 @@ public final class LocalRepoManager {
             tag("web", "web");
             tag("source", "source");
             tag("tracker", "tracker");
-            tag("marketversion", app.installedApk.version);
-            tag("marketvercode", app.installedApk.vercode);
+            tag("marketversion", app.installedApk.versionName);
+            tag("marketvercode", app.installedApk.versionCode);
 
             tagPackage(app);
 
@@ -449,8 +449,8 @@ public final class LocalRepoManager {
         private void tagPackage(App app) throws IOException {
             serializer.startTag("", "package");
 
-            tag("version", app.installedApk.version);
-            tag("versioncode", app.installedApk.vercode);
+            tag("version", app.installedApk.versionName);
+            tag("versioncode", app.installedApk.versionCode);
             tag("apkname", app.installedApk.apkName);
             tagHash(app);
             tag("sig", app.installedApk.sig.toLowerCase(Locale.US));

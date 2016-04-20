@@ -15,8 +15,8 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     public static final int SDK_VERSION_MAX_VALUE = Byte.MAX_VALUE;
 
     public String packageName;
-    public String version;
-    public int vercode;
+    public String versionName;
+    public int versionCode;
     public int size; // Size in bytes - 0 means we don't know!
     public long repo; // ID of the repo it comes from
     public String hash;
@@ -105,11 +105,11 @@ public class Apk extends ValueObject implements Comparable<Apk> {
                 case ApkProvider.DataColumns.SOURCE_NAME:
                     srcname = cursor.getString(i);
                     break;
-                case ApkProvider.DataColumns.VERSION:
-                    version = cursor.getString(i);
+                case ApkProvider.DataColumns.VERSION_NAME:
+                    versionName = cursor.getString(i);
                     break;
                 case ApkProvider.DataColumns.VERSION_CODE:
-                    vercode = cursor.getInt(i);
+                    versionCode = cursor.getInt(i);
                     break;
                 case ApkProvider.DataColumns.REPO_VERSION:
                     repoVersion = cursor.getInt(i);
@@ -123,14 +123,14 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     @Override
     public String toString() {
-        return packageName + " (version " + vercode + ")";
+        return packageName + " (version " + versionCode + ")";
     }
 
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
         values.put(ApkProvider.DataColumns.PACKAGE_NAME, packageName);
-        values.put(ApkProvider.DataColumns.VERSION, version);
-        values.put(ApkProvider.DataColumns.VERSION_CODE, vercode);
+        values.put(ApkProvider.DataColumns.VERSION_NAME, versionName);
+        values.put(ApkProvider.DataColumns.VERSION_CODE, versionCode);
         values.put(ApkProvider.DataColumns.REPO_ID, repo);
         values.put(ApkProvider.DataColumns.HASH, hash);
         values.put(ApkProvider.DataColumns.HASH_TYPE, hashType);
@@ -153,9 +153,9 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     @TargetApi(19)
     public int compareTo(Apk apk) {
         if (Build.VERSION.SDK_INT < 19) {
-            return Integer.valueOf(vercode).compareTo(apk.vercode);
+            return Integer.valueOf(versionCode).compareTo(apk.versionCode);
         }
-        return Integer.compare(vercode, apk.vercode);
+        return Integer.compare(versionCode, apk.versionCode);
     }
 
 }

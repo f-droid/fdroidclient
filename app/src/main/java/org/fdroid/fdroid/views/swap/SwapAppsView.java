@@ -336,7 +336,7 @@ public class SwapAppsView extends ListView implements
              */
             private Apk getApkToInstall() {
                 if (apkToInstall == null) {
-                    apkToInstall = ApkProvider.Helper.find(getActivity(), app.packageName, app.suggestedVercode);
+                    apkToInstall = ApkProvider.Helper.find(getActivity(), app.packageName, app.suggestedVersionCode);
                 }
                 return apkToInstall;
             }

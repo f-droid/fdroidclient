@@ -216,7 +216,7 @@ public class RepoUpdater {
     private void assertSigningCertFromXmlCorrect() throws SigningException {
 
         // no signing cert read from database, this is the first use
-        if (repo.pubkey == null) {
+        if (repo.signingCertificate == null) {
             verifyAndStoreTOFUCerts(signingCertFromIndexXml, signingCertFromJar);
         }
         verifyCerts(signingCertFromIndexXml, signingCertFromJar);
@@ -308,8 +308,8 @@ public class RepoUpdater {
      */
     private void verifyAndStoreTOFUCerts(String certFromIndexXml, X509Certificate rawCertFromJar)
         throws SigningException {
-        if (repo.pubkey != null) {
-            return; // there is a repo.pubkey already, nothing to TOFU
+        if (repo.signingCertificate != null) {
+            return; // there is a repo.signingCertificate already, nothing to TOFU
         }
 
         /* The first time a repo is added, it can be added with the signing certificate's
@@ -328,7 +328,7 @@ public class RepoUpdater {
         Utils.debugLog(TAG, "Saving new signing certificate in the database for " + repo.address);
         ContentValues values = new ContentValues(2);
         values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatDate(new Date(), ""));
-        values.put(RepoProvider.DataColumns.PUBLIC_KEY, Hasher.hex(rawCertFromJar));
+        values.put(RepoProvider.DataColumns.SIGNING_CERT, Hasher.hex(rawCertFromJar));
         RepoProvider.Helper.update(context, repo, values);
     }
 
@@ -348,16 +348,16 @@ public class RepoUpdater {
         // convert binary data to string version that is used in FDroid's database
         String certFromJar = Hasher.hex(rawCertFromJar);
 
-        // repo and repo.pubkey must be pre-loaded from the database
-        if (TextUtils.isEmpty(repo.pubkey)
+        // repo and repo.signingCertificate must be pre-loaded from the database
+        if (TextUtils.isEmpty(repo.signingCertificate)
                 || TextUtils.isEmpty(certFromJar)
                 || TextUtils.isEmpty(certFromIndexXml)) {
             throw new SigningException(repo, "A empty repo or signing certificate is invalid!");
         }
 
-        // though its called repo.pubkey, its actually a X509 certificate
-        if (repo.pubkey.equals(certFromJar)
-                && repo.pubkey.equals(certFromIndexXml)
+        // though its called repo.signingCertificate, its actually a X509 certificate
+        if (repo.signingCertificate.equals(certFromJar)
+                && repo.signingCertificate.equals(certFromIndexXml)
                 && certFromIndexXml.equals(certFromJar)) {
             return;  // we have a match!
         }

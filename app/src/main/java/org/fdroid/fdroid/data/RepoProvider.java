@@ -129,8 +129,8 @@ public class RepoProvider extends FDroidProvider {
              * make sure it is correct. If the fingerprint is empty, then store
              * the calculated one.
              */
-            if (values.containsKey(DataColumns.PUBLIC_KEY)) {
-                String publicKey = values.getAsString(DataColumns.PUBLIC_KEY);
+            if (values.containsKey(DataColumns.SIGNING_CERT)) {
+                String publicKey = values.getAsString(DataColumns.SIGNING_CERT);
                 String calcedFingerprint = Utils.calcFingerprint(publicKey);
                 if (values.containsKey(DataColumns.FINGERPRINT)) {
                     String fingerprint = values.getAsString(DataColumns.FINGERPRINT);
@@ -216,7 +216,7 @@ public class RepoProvider extends FDroidProvider {
         String DESCRIPTION  = "description";
         String IN_USE       = "inuse";
         String PRIORITY     = "priority";
-        String PUBLIC_KEY   = "pubkey";
+        String SIGNING_CERT = "pubkey";
         String FINGERPRINT  = "fingerprint";
         String MAX_AGE      = "maxage";
         String LAST_ETAG    = "lastetag";
@@ -227,7 +227,7 @@ public class RepoProvider extends FDroidProvider {
         String PASSWORD     = "password";
 
         String[] ALL = {
-            _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, PUBLIC_KEY,
+            _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, SIGNING_CERT,
             FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION, IS_SWAP,
             USERNAME, PASSWORD,
         };

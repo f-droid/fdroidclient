@@ -160,7 +160,7 @@ public class AppDetails extends AppCompatActivity {
 
         private String getInstalledStatus(final Apk apk) {
             // Definitely not installed.
-            if (apk.vercode != app.installedVersionCode) {
+            if (apk.versionCode != app.installedVersionCode) {
                 return getString(R.string.app_not_installed);
             }
             // Definitely installed this version.
@@ -210,8 +210,8 @@ public class AppDetails extends AppCompatActivity {
             }
 
             holder.version.setText(getString(R.string.version)
-                    + " " + apk.version
-                    + (apk.vercode == app.suggestedVercode ? "  ☆" : ""));
+                    + " " + apk.versionName
+                    + (apk.versionCode == app.suggestedVersionCode ? "  ☆" : ""));
 
             holder.status.setText(getInstalledStatus(apk));
 
@@ -661,7 +661,7 @@ public class AppDetails extends AppCompatActivity {
             menu.add(Menu.NONE, IGNORETHIS, 2, R.string.menu_ignore_this)
                     .setIcon(R.drawable.ic_do_not_disturb_white)
                     .setCheckable(true)
-                    .setChecked(app.ignoreThisUpdate >= app.suggestedVercode);
+                    .setChecked(app.ignoreThisUpdate >= app.suggestedVersionCode);
         }
 
         // Ignore on devices without Bluetooth
@@ -766,8 +766,8 @@ public class AppDetails extends AppCompatActivity {
 
             case INSTALL:
                 // Note that this handles updating as well as installing.
-                if (app.suggestedVercode > 0) {
-                    final Apk apkToInstall = ApkProvider.Helper.find(this, app.packageName, app.suggestedVercode);
+                if (app.suggestedVersionCode > 0) {
+                    final Apk apkToInstall = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode);
                     install(apkToInstall);
                 }
                 return true;
@@ -782,10 +782,10 @@ public class AppDetails extends AppCompatActivity {
                 return true;
 
             case IGNORETHIS:
-                if (app.ignoreThisUpdate >= app.suggestedVercode) {
+                if (app.ignoreThisUpdate >= app.suggestedVersionCode) {
                     app.ignoreThisUpdate = 0;
                 } else {
-                    app.ignoreThisUpdate = app.suggestedVercode;
+                    app.ignoreThisUpdate = app.suggestedVersionCode;
                 }
                 item.setChecked(app.ignoreThisUpdate > 0);
                 return true;
@@ -1246,7 +1246,7 @@ public class AppDetails extends AppCompatActivity {
             Apk curApk = null;
             for (int i = 0; i < appDetails.getApks().getCount(); i++) {
                 final Apk apk = appDetails.getApks().getItem(i);
-                if (apk.vercode == app.suggestedVercode) {
+                if (apk.versionCode == app.suggestedVersionCode) {
                     curApk = apk;
                     break;
                 }
@@ -1498,7 +1498,7 @@ public class AppDetails extends AppCompatActivity {
             if (appDetails.activeDownloadUrlString != null) {
                 btMain.setText(R.string.downloading);
                 btMain.setEnabled(false);
-            } else if (!app.isInstalled() && app.suggestedVercode > 0 &&
+            } else if (!app.isInstalled() && app.suggestedVersionCode > 0 &&
                     appDetails.adapter.getCount() > 0) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
                 // If App isn't installed
@@ -1538,7 +1538,7 @@ public class AppDetails extends AppCompatActivity {
             }
             TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
             if (!appDetails.getApks().isEmpty()) {
-                currentVersion.setText(appDetails.getApks().getItem(0).version + " (" + app.license + ")");
+                currentVersion.setText(appDetails.getApks().getItem(0).versionName + " (" + app.license + ")");
             } else {
                 currentVersion.setVisibility(View.GONE);
                 btMain.setVisibility(View.GONE);
@@ -1550,8 +1550,8 @@ public class AppDetails extends AppCompatActivity {
             public void onClick(View v) {
                 App app = appDetails.getApp();
                 AppDetails activity = (AppDetails) getActivity();
-                if (updateWanted && app.suggestedVercode > 0) {
-                    Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVercode);
+                if (updateWanted && app.suggestedVersionCode > 0) {
+                    Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVersionCode);
                     activity.install(apkToInstall);
                     return;
                 }
@@ -1563,11 +1563,11 @@ public class AppDetails extends AppCompatActivity {
                     } else {
                         activity.removeApk(app.packageName);
                     }
-                } else if (app.suggestedVercode > 0) {
+                } else if (app.suggestedVersionCode > 0) {
                     // If not installed, install
                     btMain.setEnabled(false);
                     btMain.setText(R.string.system_install_installing);
-                    final Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVercode);
+                    final Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVersionCode);
                     activity.install(apkToInstall);
                 }
             }
@@ -1619,9 +1619,9 @@ public class AppDetails extends AppCompatActivity {
         public void onListItemClick(ListView l, View v, int position, long id) {
             App app = appDetails.getApp();
             final Apk apk = appDetails.getApks().getItem(position - l.getHeaderViewsCount());
-            if (app.installedVersionCode == apk.vercode) {
+            if (app.installedVersionCode == apk.versionCode) {
                 remove();
-            } else if (app.installedVersionCode > apk.vercode) {
+            } else if (app.installedVersionCode > apk.versionCode) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setMessage(R.string.installDowngrade);
                 builder.setPositiveButton(R.string.yes,

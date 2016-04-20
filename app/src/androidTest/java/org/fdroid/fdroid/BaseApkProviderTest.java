@@ -40,7 +40,7 @@ abstract class BaseApkProviderTest extends FDroidProviderTest<ApkProvider> {
     protected void assertContains(List<Apk> apks, Apk apk) {
         boolean found = false;
         for (Apk a : apks) {
-            if (a.vercode == apk.vercode && a.packageName.equals(apk.packageName)) {
+            if (a.versionCode == apk.versionCode && a.packageName.equals(apk.packageName)) {
                 found = true;
                 break;
             }
