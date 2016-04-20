@@ -383,7 +383,7 @@
             android:excludeFromRecents="true"
             android:finishOnTaskLaunch="true" />
         <activity
-            android:label="@string/menu_swap"
+            android:label="@string/swap"
             android:name=".views.swap.SwapWorkflowActivity"
             android:parentActivityName=".FDroid"
             android:theme="@style/SwapTheme.Wizard"
