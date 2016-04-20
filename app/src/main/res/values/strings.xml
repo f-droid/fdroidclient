@@ -301,7 +301,6 @@
     <string name="swap_join_same_wifi">Join the same Wi-Fi as your friend</string>
     <string name="swap_join_same_wifi_desc">To swap using Wi-Fi, ensure you are on the same network. If you don\'t have access to the same network, one of you can create a Wi-Fi Hotspot.</string>
     <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
-    <string name="menu_swap">Swap apps</string>
     <string name="swap">Swap apps</string>
     <string name="swap_success">Swap success!</string>
     <string name="swap_no_wifi_network">No network yet</string>
