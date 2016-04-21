@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio berria instalatzeko, aurretik zaharra desinstalatu beharra dago.  Mesedez, egizu eta saiatu berriro. (Kontutan izan desinstalatzean aplikazioak gordetako barne datuak ezabatuko direla)</string>
   <string name="version">Bertsioa</string>
@@ -15,9 +15,9 @@
   <string name="app_details">Aplikazioaren xehetasunak</string>
   <string name="no_such_app">Ez da aplikazio hori aurkitu.</string>
   <string name="about_title">F-Droid-i buruz</string>
-  <string name="about_site">Webgunea:</string>
-  <string name="about_mail">E-posta:</string>
-  <string name="about_version">Bertsioa:</string>
+  <string name="about_site">Webgunea</string>
+  <string name="about_mail">E-posta</string>
+  <string name="about_version">Bertsioa</string>
   <string name="app_installed">Instalatuta</string>
   <string name="app_not_installed">Instalatu gabea</string>
   <string name="added_on">%s(e)an gehitua</string>
@@ -67,7 +67,7 @@
   <string name="category_Whats_New">Zer da berria</string>
   <string name="category_Recently_Updated">Azkenaldian eguneratua</string>
   <string name="status_connecting_to_repo">%1$s(e)ra
-konektatzen</string>
+\nkonektatzen</string>
   <string name="no_permissions">Ez da baimenik erabiltzen.</string>
   <string name="theme">Gaia</string>
   <string name="unsigned">Sinatu gabea</string>
@@ -93,7 +93,7 @@ konektatzen</string>
     <string name="uninstall_system">Eguneratu/Desinstalatu Pribilegiodun Luzapena</string>
     <string name="uninstall_system_summary">Ireki Pribilegiodun Luzapenaren xehetasunen pantaila berau eguneratu edo desinstalatzeko</string>
     <string name="local_repo_https">Erabili konexio pribatua</string>
-    <string name="about_source">Iturria:</string>
+    <string name="about_source">Iturburu kodea</string>
     <string name="app_incompatible">Bateraezina</string>
     <string name="app_inst_known_source">Instalatuta (%stik)</string>
     <string name="app_inst_unknown_source">Instalatuta (Iturri ezezagunetik)</string>
@@ -170,7 +170,7 @@ konektatzen</string>
     <string name="enable_proxy_summary">Konfiguratu HTTP Proxya sare eskari guztientzat</string>
     <string name="update_notification_title">Biltegiak eguneratzen</string>
     <string name="repos_unchanged">Biltegi guztiak egunean daude</string>
-        <string name="all_other_repos_fine">Beste biltegi guztiek ez dute errorerik sortu.</string>
+        <string name="all_other_repos_fine">Beste biltegiek ez dute errorerik sortu.</string>
         <string name="global_error_updating_repos">Errorea eguneratzean: %s</string>
     <string name="update_interval_zero">Ez eguneratu automatikoki aplikazio zerrenda</string>
     <string name="menu_bitcoin">Bitcoin</string>
@@ -186,7 +186,7 @@ konektatzen</string>
     <string name="proxy_port_summary">Konfiguratu zure proxyaren ataka zenbakia (adib. 8118)</string>
 
     <string name="status_download">Deskargatzen\n%2$s / %3$s (%4$d%%) hemendik:\n%1$s</string>
-    <string name="status_processing_xml_percent">Prozesatzen %2$s / %3$s (%4$d%%) hemendik: %1$s</string>
+    <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) prozesatzen %1$s(e)tik</string>
     <string name="no_handler_app">Ez duzu %s tratatu dezakeen aplikaziorik eskura.</string>
     <string name="unverified">Egiaztatu gabea</string>
     <string name="repo_details">Biltegia</string>
@@ -228,7 +228,7 @@ konektatzen</string>
 
     <string name="not_on_same_wifi">Zure gailua eta gehitu berri duzun biltegia ez daude Wi-Fi berean! Saiatu sare honetara sartzen: %s</string>
     <string name="requires_features">Behar du: %1$s</string>
-    <string name="empty_installed_app_list">Ez da aplikaziorik instalatu.\n\nAplikazioak daude zure gailuanm baina ez daude F-Droid bitartez eskuragarri. Biltegiak eguneratu behar dituzulako izan daiteke, edo benetan biltegiek ez dituzte zure aplikazioak eskuragarri.</string>
+    <string name="empty_installed_app_list">Ez da aplikaziorik instalatu.\n\nAplikazioak daude zure gailuan baina ez daude F-Droid bitartez eskuragarri. Biltegiak eguneratu behar dituzulako izan daiteke, edo benetan biltegiek ez dituzte zure aplikazioak eskuragarri.</string>
     <string name="empty_available_app_list">Ez dago aplikaziorik kategoria honetan.\n\nSaiatu beste kategoria bat aukeratzen edo eguneratu zure biltegiak aplikazioen zerrenda eguneratu bat jasotzeko.</string>
     <string name="empty_can_update_app_list">Aplikazio guztiak egunean.\n\nZorionak! Zure aplikazio guztiak egunean daude (edo zure biltegiak zaharkituta daude).</string>
 
@@ -285,7 +285,7 @@ konektatzen</string>
     <string name="swap_send_fdroid">Bidali F-Droid</string>
     <string name="swap_no_peers_nearby">Ezin izan da inguruan partekatzeko jenderik aurkitu.</string>
     <string name="swap_confirm">Berretsi trukea</string>
-    <string name="system_install_first_time_notification_message">Ukitu Pribilegiodun F-Droid Luzapena instalatzeko, Android sistemara estuki lotua. Honek F-Droidek bere kabuz aplikazioak instalatu, eguneratu eta desinstalatzea ahalbidetzen du.\nHau beranduago egin dezakezu ere F-Droiden hobespenen menutik.</string>
+    <string name="system_install_first_time_notification_message">Ukitu Pribilegiodun F-Droid Luzapena instalatzeko, Android sistemara estuki lotua. Honek F-Droidek bere kabuz aplikazioak instalatu, eguneratu eta desinstalatzea ahalbidetzen du.\nHau beranduago egin dezakezu ere F-Droiden ezarpenen menutik.</string>
     <string name="system_install_post_success">Ongi instalatu da Pribilegiodun F-Droid Luzapena</string>
     <string name="system_install_post_fail">Huts egin du Pribilegiodun F-Droid Luzapena instalatzea</string>
     <string name="system_install_post_success_message">Pribilegiodun F-Droid Luzapena ongi instalatu da. Honek F-Droidek bere kabuz aplikazioak instalatu, eguneratu eta desinstalatzea ahalbidetzen du.</string>
@@ -293,7 +293,7 @@ konektatzen</string>
     <string name="system_install_first_time_message">Badirudi baduzula root baimena zure gailuan. Orain Pribilegiodun F-Droid Luzapena instalatu dezakezu, Android sistema eragilera estuki lotua. Honek F-droidek bere kabuz aplikazioak instalatu, eguneratu, eta desinstalatzea ahalbidetzen du.</string>
     <string name="system_uninstall">Pribilegiodun F-Droid Luzapena desinstalatu nahi duzu?</string>
     <string name="swap_nfc_title">Ukitu partekatzeko</string>
-    <string name="swap_nfc_description">Zure adiskideak F-Droid eta NFC piztuta baditu ukitu telefonoak elkarrekin.</string>
+    <string name="swap_nfc_description">Zure adiskideak F-Droid eta NFC piztuta baditu ukitu gailuak elkarrekin.</string>
     <string name="swap_join_same_wifi">Batu zure adiskidearen Wi-Fi sare berera</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi bidez partekatzeko, egiaztatu biak sare berean zaudetela. Ez baduzue sare berera konektatzerik zuetako batek Wi-Fi gune bat sor dezake.</string>
     <string name="swap_qr_isnt_for_swap">Eskaneatu duzun QR kodea ez diruri truke kode bat.</string>
@@ -319,9 +319,40 @@ konektatzen</string>
     <string name="more">Gehiago</string>
     <string name="less">Gutxiago</string>
 
-    <string name="status_download_unknown_size">Deskargatzen\n%2$s
-\n%1$s(e)tik</string>
+    <string name="status_download_unknown_size">%2$s
+\ndeskargatzen\n%1$s(e)tik</string>
     <string name="permissions">Baimenak</string>
     <string name="theme_night">Gaua</string>
 <string name="menu_settings">Ezarpenak</string>
+    <string name="update_auto_download">Deskargatu eguneraketak automatikoki</string>
+    <string name="update_auto_download_summary">Deskargatu eguneraketaren fitxategiak bigarren planoan</string>
+    <string name="login_title">Autentifikazioa behar da</string>
+    <string name="login_name">Erabiltzaile-izena</string>
+    <string name="login_password">Pasahitza</string>
+    <string name="repo_edit_credentials">Aldatu pasahitza</string>
+    <string name="repo_error_empty_username">Erabiltzaile-izena hutsik, ez dira kredentzialak aldatu</string>
+
+    <string name="about_license">Lizentzia</string>
+
+    <string name="tab_installed_apps_count">Instalatuta (%d)</string>
+    <string name="tab_updates_count">Eguneraketak (%d)</string>
+    <string name="repo_provider">Biltegia: %s</string>
+
+    <string name="menu_email">Bidali e-posta egileari</string>
+    <string name="antinonfreeassetslist">Aplikazio honek libreak ez diren atalak ditu</string>
+
+    <string name="useTor">Erabili Tor</string>
+    <string name="status_inserting_apps">Aplikazioaren xehetasunak gordetzen</string>
+    <string name="empty_search_installed_app_list">Ez dago bat datorren instalatutako aplikaziorik.</string>
+    <string name="empty_search_available_app_list">Ez dago bat datorren aplikaziorik eskuragarri.</string>
+    <string name="empty_search_can_update_app_list">Ez dago bat datorren aplikaziorik eguneratzeke.</string>
+
+    <string name="swap_stopping_wifi">Wi-Fia gelditzen…</string>
+    <string name="tap_to_install_format">Sakatu %s instalatzeko</string>
+    <string name="tap_to_update_format">Sakatu %s eguneratzeko</string>
+    <string name="crash_dialog_title">F-droid kraskatu da</string>
+    <string name="useTorSummary">Behartu Tor bidezko deskarga pribatutasuna areagotzeko</string>
+    <string name="crash_dialog_text">Ustekabeko errorea gertatu da aplikazioa geldiaraztean. Xehetasunak e-posta bidez bidali nahi dituzu arazoa konpontzen laguntzeko?</string>
+    <string name="crash_dialog_comment_prompt">Informazio gehigarria eta iruzkinak sartu ditzakezu hemen:</string>
+<string name="by_author">egilea</string>
     </resources>

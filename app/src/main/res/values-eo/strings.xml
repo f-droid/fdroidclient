@@ -46,7 +46,7 @@
   <string name="menu_ignore_all">Ignori ĉiujn ĝisdatigojn</string>
   <string name="menu_ignore_this">Ignori ĉi tiun ĝisdatigon</string>
   <string name="menu_website">Retejo</string>
-  <string name="menu_issues">Cimoj</string>
+  <string name="menu_issues">Eraroj</string>
   <string name="menu_source">Fontkodo</string>
   <string name="menu_upgrade">Ĝisdatigi</string>
   <string name="menu_donate">Donaci</string>
@@ -211,7 +211,7 @@
     <string name="repo_disabled_notification">%1$s malaktiva.\n\nVi devos reaktivigi tiun ĉi deponejon por instali aplikaĵojn de ĝi.</string>
     <string name="not_on_same_wifi">Via aparato ne estas en la sama vifio, kie loka deponejo vi jam aldonis! Provu kuniĝi la reton: %s</string>
     <string name="pref_language">Lingvo</string>
-    <string name="pref_language_default">Sistema defaŭlta</string>
+    <string name="pref_language_default">Sistema implicita</string>
 
     <string name="wifi">Vifio</string>
     <string name="wifi_ap">Retkaptejo</string>
@@ -241,17 +241,17 @@
     <string name="uninstall_error_unknown">Malsukcesis malinstali pro nekonata eraro</string>
     <string name="system_install_denied_title">Privilegia F-Droid-aldonaĵo ne disponebla</string>
     <string name="system_install_denied_body">Tiu ĉi agordo estas nur disponebla kiam F-Droid Privilegia Aldonaĵo estas instalita.</string>
-    <string name="system_install_denied_signature">La subskribo de aldonaĵo malkorektas! Bonvolu krei cimraporton!</string>
+    <string name="system_install_denied_signature">La subskribo de aldonaĵo malkorektas! Bonvolu krei erar-raporton!</string>
     <string name="system_install_button_install">Instali</string>
     <string name="system_install_button_open">Malfermi Aldonaĵon</string>
     <string name="system_install_first_time_notification">Ĉu instali na F-Droid Privilegia Aldonaĵo?</string>
-    <string name="system_install_denied_permissions">La aldonaĵo ne aliris ĉefuzantan permeson! Bonvolu krei cimraporton!</string>
+    <string name="system_install_denied_permissions">La aldonaĵo ne aliris ĉefuzantan permeson! Bonvolu krei erar-raporton!</string>
     <string name="system_install_first_time_notification_message_short">Tuŝu por pli da informoj.</string>
     <string name="system_install_first_time_notification_message">Tuŝu por instali na F-Droid Privilegia Aldonaĵo, kiu estos ege bindita kun la Android operaciumo. Tiu ĉi permesos al F-Droid instali, ĝisdatigi, kaj malinstali aplikaĵojn ĝi mem.\nVi povas fari tion poste per F-Droida agordoj.</string>
     <string name="system_install_post_success">Sukcese instalis na F-Droid Privilegia Aldonaĵo</string>
     <string name="system_install_post_fail">Instalado de F-Droid Privilegia Aldonaĵo malsukcesis</string>
     <string name="system_install_post_success_message">F-Droid Privilegia Aldonaĵo estas instalita korekte. Tio ĉi ebligis al F-Droid instali, ĝisdatigi, kaj malinstali aplikaĵojn per ĝi mem.</string>
-    <string name="system_install_post_fail_message">La instalado de F-Droid Privilegia Aldonaĵo malsukcesis. La instala metodo ne estas subtenata de ĉiuj Androidaj distribuaĵoj, bonvolu konsiliĝi en la F-Droida cimspuradilo por pli informojn.</string>
+    <string name="system_install_post_fail_message">La instalado de F-Droid Privilegia Aldonaĵo malsukcesis. La instala metodo ne estas subtenata de ĉiuj Androidaj distribuaĵoj, bonvolu konsiliĝi en la F-Droida erar-spuradilo por pli informojn.</string>
     <string name="system_install_installing">Instalanta…</string>
     <string name="system_install_installing_rebooting">Instalanta kaj restartanta…</string>
     <string name="system_install_uninstalling">Malinstalanta…</string>

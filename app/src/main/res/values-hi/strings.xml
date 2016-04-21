@@ -67,4 +67,83 @@
     <string name="tab_updates">अपडेट</string>
     <string name="tab_installed_apps_count">स्थापित (%d)</string>
     <string name="tab_updates_count">अपडेट (%d)</string>
+    <string name="theme_light">रोशन</string>
+    <string name="theme_dark">अंधेरा</string>
+    <string name="theme_night">रात्रि</string>
+
+    <string name="crash_dialog_title">F-Droid दुर्घटनाग्रस्त हुआ है</string>
+    <string name="crash_dialog_text">अप्रत्याशित भूल के कारन एप्लीकेशन बंद हो गयी है| क्या ईमेल भेज कर इस समाधान को सुलझाने मैं मदद करना चाहते हैं?</string>
+    <string name="crash_dialog_comment_prompt">आप अन्य जानकारी और टिप्पणियाँ यहाँ लिख सकते हैं:</string>
+<string name="app_name">फ-द्रोइड</string>
+
+    <string name="installIncompatible">ऐसा ज्ञात होता है की पैकेज आपके यंत्र के लिए अनुकुल नहीं है| क्या आप इसे किसी न किसी प्रकार से इनस्टॉल करना चाहते हैं?</string>
+    <string name="installDowngrade">"आप एप्लीकेशन की अवनति करना चाहते हैं| ऐसा करने से येह काम करना बंद कर सकता है और आप अपना डाटा खो  सकते हैं| क्या आप येह करना चाहते हैं?"</string>
+    <string name="cache_downloaded">कैश पच्कगेस</string>
+    <string name="interval_1w">साप्ताहिक</string>
+    <string name="interval_2w">हर २ हफ्ते मैं</string>
+
+    <string name="interval_4h">हर ४ चार घंटे मैं</string>
+    <string name="interval_12h">हर १२ घंटे मैं</string>
+    <string name="interval_1d">रोजाना</string>
+    <string name="interval_1h">प्रति घंटा</string>
+    <string name="interval_never">कभी नहीँ</string>
+    <string name="downloading">डोव्न्लोअदिन्ग…</string>
+
+    <string name="perms_description_app">%1$s द्वारा उपलब्ध कराया गया|</string>
+    <string name="perms_new_perm_prefix">"नया: "</string>
+    <string name="download_error">डाउनलोड असफल</string>
+
+    <string name="tap_to_install">डाउनलोड सफल| स्थापित करने के लिए स्पर्श करे</string>
+    <string name="uninstall_confirm">क्या आप आप्लिकतिओन को हटाना चेहते हैं?</string>
+    <string name="uninstall_update_confirm">क्या आप एप्लीकेशन को फैक्ट्री संस्करण से बदलना चाहते हैं?</string>
+    <string name="perm_costs_money">यह तुम्हारे पैसे खर्च कर सकते हैं</string>
+    <string name="devicePerms">यन्त्र पवेश</string>
+    <string name="privacyPerms">गुप्तता</string>
+    <string name="allPerms">सब</string>
+    <string name="newPerms">नया</string>
+    <string name="tap_to_install_format">%s को इनस्टॉल करने के लिए स्पर्श करे</string>
+    <string name="tap_to_update_format">%s को अपडेट करने के लिए स्पर्श करे</string>
+    <string name="install_confirm">क्या आप यह एप्लीकेशन इनस्टॉल करना चाहते हैं? ये पहुंच मिल जाएगी:</string>
+    <string name="install_confirm_no_perms">क्या आप एप्लीकेशन इनस्टॉल करना चाहते हैं? इसे कोई विशेष अनुमति की आवश्यकता नहीं है|</string>
+    <string name="swap_not_enabled_description">अदला-बदली से पहले, आपका यन्त्र दिखाई देना चाइये|</string>
+
+    <string name="swap_not_enabled">अदला-बदली आसक्षम</string>
+    <string name="loading">लोड हो रहा है…</string>
+    <string name="swap_attempt_install">इनस्टॉल करने का प्रयास करे</string>
+    <string name="swap_connection_misc_error">यन्त्र को जोड़ने मैं एक समस्या आ गयी| यन्त्र से अदला-बदली नहीं हो सकती|</string>
+    <string name="bluetooth_unavailable">ब्लूटूथ अनुपलब्ध</string>
+    <string name="swap_cant_send_no_bluetooth">फ-द्रोइड नहीं भेज सकते, क्योंकि ब्लूटूथ इस यन्त्र पे उपलब्ध नहीं है|</string>
+    <string name="swap_connecting">जुड़ रहा है</string>
+    <string name="swap_confirm">अदला-बदली की पुष्टि करे</string>
+    <string name="swap_qr_isnt_for_swap">QR कोड जो अपने स्कैन किया है वह अदला-बदली का code नहीं है|</string>
+    <string name="swap_intro">जुडें और एप्लीकेशन का लेन-देन करें आपके समीप लोगो से|</string>
+    <string name="swap_visible_bluetooth">ब्लूटूथ के माध्यम से दिखाई दे</string>
+    <string name="swap_setting_up_bluetooth">ब्लूटूथ की स्तःपना हो रही है…</string>
+    <string name="swap_not_visible_bluetooth">Blutooth के माध्यम से दिखाई नहीं दे</string>
+    <string name="swap_visible_wifi">Wi-Fi के माध्यम से दिखाई दे</string>
+    <string name="swap_setting_up_wifi">Wi-Fi की स्तःपना हो रही है…</string>
+    <string name="swap_stopping_wifi">Wi-Fi को रोकना…</string>
+    <string name="swap_not_visible_wifi">Wi-Fi के माध्यम से दिखाई नहीं दे</string>
+    <string name="swap_wifi_device_name">यन्त्र का नाम</string>
+    <string name="swap_cant_find_peers">नहीं धुंद प् रहे जिसकी आप तलाश कर रहे है?</string>
+    <string name="swap_send_fdroid">F-Droid भेजे</string>
+    <string name="swap_no_peers_nearby">अदला-बदली के लिए आस पास लोग नहीं धुंद पाए|</string>
+    <string name="swap_join_this_hotspot">"हॉटस्पॉट  से जुडने मैं अपने दोस्त की सहयता करें"</string>
+    <string name="menu_swap">आपस की अदला-बदली</string>
+    <string name="swap">आपस की अदला-बदली</string>
+    <string name="swap_success">अदला-बदली सफल!</string>
+    <string name="swap_no_wifi_network">अभी तक कोई नेटवर्क नहीं</string>
+    <string name="swap_active_hotspot">%1$s (अप्प्का हॉटस्पॉट)</string>
+    <string name="swap_view_available_networks">उपलब्ध नेटवर्कस को खोलने के लिए स्पर्श करें</string>
+    <string name="swap_switch_to_wifi">Wi-Fi पर स्विच करने के लिए स्पर्श करें</string>
+    <string name="open_qr_code_scanner">QR स्कैनर खोले</string>
+    <string name="swap_welcome">F-Droid मैं आपका स्वागत है!</string>
+    <string name="swap_confirm_connect">क्या आप %1$s से आपस अभी लेना चाहते हैं?</string>
+    <string name="swap_dont_show_again">यह फिर से न दिखाएँ</string>
+    <string name="swap_scan_or_type_url">एक व्यक्ति को ये code स्कैन करना होगा या URL को ब्राउज़र मैं टाइप करना होगा|</string>
+    <string name="swap_choose_apps">अप्प्स चुने</string>
+    <string name="swap_scan_qr">QR कोड स्कैन करें</string>
+    <string name="swap_people_nearby">आसपास लोग</string>
+    <string name="swap_scanning_for_peers">आसपास लोगो को खोज रहे हैं…</string>
+    <string name="swap_nearby">आसपास अदला-बदली</string>
     </resources>

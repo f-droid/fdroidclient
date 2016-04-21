@@ -3,7 +3,7 @@
   <string name="installIncompatible">به‌نظر می‌رسد این بسته با دستگاه شما هماهنگ نیست. آیا می‌خواهید آن را به هر قیمتی آزمایش و نصب کنید؟</string>
   <string name="installDowngrade">شما در حال قدیمی‌کردن و کاهش درجهٔ این برنامه هستید. انجام چنین کاری ممکن منجر به خرابی یا از دست رفتن داده‌های شما شود. آیا می‌خواهید سعی کنید این برنامه را به هر قیمتی قدیمی کنید؟</string>
   <string name="delete">حذف</string>
-  <string name="cache_downloaded">بسته‌های انبار شده</string>
+  <string name="cache_downloaded">انباشت بسته‌ها</string>
   <string name="cache_downloaded_on">نگه‌داشتن پروندهٔ بسته‌های بارگیری شده، روی افزاره</string>
   <string name="updates">به‌روزرسانی‌ها</string>
   <string name="other">دیگر</string>
@@ -18,7 +18,7 @@
   <string name="about_mail">رایانامه</string>
   <string name="app_installed">نصب شده</string>
   <string name="app_not_installed">نصب نشده</string>
-  <string name="added_on">به %s افزوده شد</string>
+  <string name="added_on">در %s افزوده شد</string>
   <string name="ok">باشد</string>
   <string name="yes">بله</string>
   <string name="no">خیر</string>
@@ -75,7 +75,7 @@
   <string name="requires_features">نیاز دارد: %1$s</string>
 <string name="app_name">اف‌دروید</string>
 
-    <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید حذف نصب، تمام داده‌های درونی دخیره شدهٔ کاره را پاک می‌کند)</string>
+    <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید که حذف نصب، تمام داده‌های درونی ذخیره شدهٔ کاره را پاک می‌کند)</string>
     <string name="version">نگارش</string>
     <string name="enable_nfc_send">فعّال کردن ارسال NFC…</string>
     <string name="unstable_updates">به‌روز رسانی‌های ناپایدار</string>
@@ -346,4 +346,8 @@
     <string name="swap_stopping_wifi">در حال توقّف وای‌فای…</string>
     <string name="repo_provider">مخزن: %s</string>
 
+    <string name="update_auto_download">بارگیری خودکار به‌روز رسانی‌ها</string>
+    <string name="update_auto_download_summary">بارگیری پرونده‌های به‌روز رسانی در پس‌زمینه</string>
+    <string name="tap_to_install_format">برای نصب %s ضربه بزنید</string>
+    <string name="tap_to_update_format">برای به‌روز رسانی %s ضربه بزنید</string>
     </resources>
