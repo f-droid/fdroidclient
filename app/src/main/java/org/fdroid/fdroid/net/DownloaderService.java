@@ -45,6 +45,8 @@ import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
@@ -168,10 +170,27 @@ public class DownloaderService extends Service {
         return new NotificationCompat.Builder(this)
                 .setAutoCancel(true)
                 .setContentIntent(createAppDetailsIntent(this, 0, packageName))
-                .setContentTitle(getString(R.string.downloading))
+                .setContentTitle(getNotificationTitle(packageName))
                 .setSmallIcon(android.R.drawable.stat_sys_download)
                 .setContentText(urlString)
                 .setProgress(100, 0, true);
+    }
+
+    /**
+     * If downloading an apk (i.e. <code>packageName != null</code>) then the title will indicate
+     * the name of the app which the apk belongs to. Otherwise, it will be a generic "Downloading..."
+     * message.
+     */
+    private String getNotificationTitle(@Nullable String packageName) {
+        String title;
+        if (packageName != null) {
+            App app = AppProvider.Helper.findByPackageName(
+                    getContentResolver(), packageName, new String[] { AppProvider.DataColumns.NAME });
+            title = getString(R.string.downloading_apk, app.name);
+        } else {
+            title = getString(R.string.downloading);
+        }
+        return title;
     }
 
     public static PendingIntent createAppDetailsIntent(@NonNull Context context, int requestCode, @Nullable String packageName) {
