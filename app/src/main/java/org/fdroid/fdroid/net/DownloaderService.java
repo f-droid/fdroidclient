@@ -134,11 +134,9 @@ public class DownloaderService extends Service {
         if (ACTION_CANCEL.equals(intent.getAction())) {
             Log.i(TAG, "Removed " + intent);
             Integer what = QUEUE_WHATS.remove(uriString);
-            if (what != null && serviceHandler.hasMessages(what)) {
-                // the URL is in the queue, remove it
+            if (isQueued(uriString)) {
                 serviceHandler.removeMessages(what);
-            } else if (downloader != null && TextUtils.equals(uriString, downloader.sourceUrl.toString())) {
-                // the URL is being downloaded, cancel it
+            } else if (isActive(uriString)) {
                 downloader.cancelDownload();
             } else {
                 Log.e(TAG, "CANCEL called on something not queued or running: " + startId + " " + intent);
