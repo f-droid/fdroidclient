@@ -165,7 +165,6 @@
   <string name="system_install_denied_title">F-Droid extensie voor systeemrechten is niet beschikbaar</string>
   <string name="system_install_denied_body">Deze optie is alleen beschikbaar als F-Droid als systeemapp geïnstalleerd is.</string>
   <string name="swap_join_same_wifi">Verbind met hetzelfde Wi-Fi netwerk als jouw vriend</string>
-  <string name="menu_swap">Deel apps</string>
   <string name="swap">Deel apps</string>
   <string name="swap_no_wifi_network">Nog geen netwerkverbinding</string>
   <string name="swap_view_available_networks">(Raak aan om een lijst van beschikbare netwerken te openen)</string>

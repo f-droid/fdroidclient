@@ -135,7 +135,6 @@
   <string name="system_install_denied_title">Systémová oprávnění odepřena</string>
   <string name="system_install_denied_body">Tato volba je dostupná pouze, pokud je F-Droid nainstalován jako systémová aplikace.</string>
   <string name="swap_join_same_wifi">Připojte oba přístroje na stejnou Wi-Fi</string>
-  <string name="menu_swap">Přepnout aplikace</string>
   <string name="swap_no_wifi_network">Zatím žádná síť</string>
   <string name="swap_view_available_networks">(Dotykem zobraz dostupné sítě)</string>
   <string name="open_qr_code_scanner">Otevřít čtečku QR kódů</string>

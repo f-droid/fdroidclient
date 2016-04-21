@@ -162,7 +162,6 @@
   <string name="system_install_denied_title">F-Droid - Permissions Étendues n\'est pas disponible</string>
   <string name="system_install_denied_body">Cette option est disponible uniquement quand F-Droid - Permissions Étendues est installée.</string>
   <string name="swap_join_same_wifi">Connectez-vous au même Wi-Fi que votre ami</string>
-  <string name="menu_swap">Échanger des applis</string>
   <string name="swap">Échanger des applis</string>
   <string name="swap_no_wifi_network">Aucun réseau</string>
   <string name="swap_view_available_networks">(Appuyez pour voir les réseaux disponibles)</string>

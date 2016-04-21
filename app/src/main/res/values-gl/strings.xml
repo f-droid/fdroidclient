@@ -197,7 +197,6 @@
     <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Toca para intercambiar</string>
-    <string name="menu_swap">Intercambiar aplicativos</string>
     <string name="swap">Intercambiar aplicativos</string>
     <string name="swap_success">Intercambio exitoso!</string>
     <string name="swap_view_available_networks">Toca para abrir as redes dispoñíbles</string>

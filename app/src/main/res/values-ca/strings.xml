@@ -163,7 +163,6 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
   <string name="root_access_denied_body">Aquest dispositiu Android no permet actuar com a administrador o bé no heu donat privilegis d\'administrador a l\'F-Droid.</string>
   <string name="system_install_denied_body">Només disponible quan F-Droid és instal·lat com una aplicació al sistema.</string>
   <string name="swap_join_same_wifi">Uniu-vos a la Wi-Fi del vostre amic</string>
-  <string name="menu_swap">Intercanvi d\'aplicacions</string>
   <string name="swap">Intercanvieu aplicacions</string>
   <string name="swap_no_wifi_network">No esteu connectats a cap xarxa</string>
   <string name="swap_view_available_networks">(Toqueu per mostrar les xarxes disponibles)</string>

@@ -167,7 +167,6 @@
   <string name="system_install_denied_body">이 옵션은 F-Droid가 시스템 앱으로 설치된 경우에만 사용 가능합니다.</string>
   <string name="swap_nfc_description">만약 상대방이 F-Droid를 가지고 있고 NFC가 켜져 있다면 두 기기를 서로 맞대어 놓으세요.</string>
   <string name="swap_join_same_wifi">같은 Wi-Fi 네트워크에 접속하세요</string>
-  <string name="menu_swap">앱 교환</string>
   <string name="swap">앱 교환</string>
   <string name="swap_no_wifi_network">아직 네트워크 없음</string>
   <string name="swap_view_available_networks">(사용 가능한 네트워크를 열기 위해 누르기)</string>

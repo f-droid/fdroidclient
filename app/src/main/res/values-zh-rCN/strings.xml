@@ -255,7 +255,6 @@
     <string name="swap_join_same_wifi">与你的朋友连上同一个Wi-Fi</string>
     <string name="swap_join_same_wifi_desc">要通过Wi-Fi交换，确保你们在同一个网域中。如果你们没有接入同一个网域，你可以创建一个Wi-Fi热点。</string>
     <string name="swap_join_this_hotspot">帮助你的朋友加入你的热点</string>
-    <string name="menu_swap">交换应用程序</string>
     <string name="swap">交换应用程序</string>
     <string name="swap_success">交换成功！</string>
     <string name="swap_no_wifi_network">未连上网络</string>

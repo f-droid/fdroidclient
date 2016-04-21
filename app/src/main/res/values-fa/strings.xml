@@ -221,7 +221,6 @@
     <string name="swap_nfc_title">برای تبادل، لمس کنید</string>
     <string name="swap_join_same_wifi">به همان وای‌فای دوستتان بپیوندید</string>
     <string name="swap_join_this_hotspot">دوستتان را در پیوستن به نقطهٔ داغتان راهنمایی کنید</string>
-    <string name="menu_swap">تبادل کاره‌ها</string>
     <string name="swap">تبادل کاره‌ها</string>
     <string name="swap_success">تبادل موفّقیت‌آمیز!</string>
     <string name="swap_no_wifi_network">هنوز هیچ شبکه‌ای وجود ندارد</string>

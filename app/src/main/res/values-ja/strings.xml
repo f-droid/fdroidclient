@@ -167,7 +167,6 @@
   <string name="system_install_denied_body">この設定は､F-Droidがｼｽﾃﾑｱﾌﾟﾘとしてｲﾝｽﾄｰﾙされているときのみ有効です｡</string>
   <string name="swap_nfc_description">友達がF-DroidとNFCを持っていれば､一緒にお使いのﾃﾞﾊﾞｲｽをﾀｯﾁしてください｡</string>
   <string name="swap_join_same_wifi">友達として同じWi-Fiに参加</string>
-  <string name="menu_swap">ｱﾌﾟﾘの交換</string>
   <string name="swap">ｱﾌﾟﾘの交換</string>
   <string name="swap_no_wifi_network">まだﾈｯﾄﾜｰｸがありません</string>
   <string name="swap_view_available_networks">ﾀｯﾌﾟして有効なﾈｯﾄﾜｰｸを開く</string>

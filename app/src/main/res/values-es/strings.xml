@@ -171,7 +171,6 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
   <string name="system_install_denied_body">"Esta opción sólo está disponible cuando la extensión de  F-Droid con permisos de sistema está instalada."</string>
   <string name="swap_nfc_description">Si tu amigo tiene F-Droid y NFC activado, colocad los teléfonos dándose la espalda.</string>
   <string name="swap_join_same_wifi">Unirse a la misma Red Wi-Fi que tu amigo</string>
-  <string name="menu_swap">Intercambiar aplicaciones</string>
   <string name="swap">Intercambiar aplicaciones</string>
   <string name="swap_no_wifi_network">No hay red aún</string>
   <string name="swap_view_available_networks">(Toca para abrir las redes disponibles)</string>

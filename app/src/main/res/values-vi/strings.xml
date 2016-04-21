@@ -151,7 +151,6 @@
   <string name="system_install_denied_body">Chỉ có tuỳ chọn này khi F-Droid được cài làm ứng dụng hệ thống.</string>
   <string name="swap_nfc_description">Nếu bạn của bạn có F-Droid và đã bật NFC, hãy chạm hai thiết bị vào nhau.</string>
   <string name="swap_join_same_wifi">Vào cùng một mạng Wi-Fi với bạn của bạn</string>
-  <string name="menu_swap">Trao đổi ứng dụng</string>
   <string name="swap">Trao đổi ứng dụng</string>
   <string name="swap_no_wifi_network">Không có mạng</string>
   <string name="swap_view_available_networks">(Chạm để xem các mạng hiện có)</string>

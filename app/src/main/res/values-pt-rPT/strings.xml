@@ -255,7 +255,6 @@
     <string name="swap_join_same_wifi">Entre na mesma rede Wi-fi do seu amigo(a)</string>
     <string name="swap_join_same_wifi_desc">Para trocar através de Wi-Fi, certifique-se que estão ambos na mesma rede. Se não estiverem na mesma rede, um de vós pode criar um \'hotspot\' Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ajude o seu amigo a entrar no seu \'hotspot\'</string>
-    <string name="menu_swap">Trocar aplicações</string>
     <string name="swap">Trocar aplicações</string>
     <string name="swap_success">Troca efetuada!</string>
     <string name="swap_no_wifi_network">Ainda sem rede</string>

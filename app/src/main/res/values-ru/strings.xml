@@ -162,7 +162,6 @@
   <string name="system_install_denied_title">Запрос на системные привилегии отклонён</string>
   <string name="system_install_denied_body">Данная опция доступна только если F-Droid установлен как системное приложение.</string>
   <string name="swap_join_same_wifi">Подключиться к той же Wi-Fi сети, что и ваш друг</string>
-  <string name="menu_swap">Обмен приложениями</string>
   <string name="swap">Обмен файлами</string>
   <string name="swap_no_wifi_network">Нет сети в данный момент</string>
   <string name="swap_view_available_networks">(Нажмите чтобы открыть список доступных сетей)</string>

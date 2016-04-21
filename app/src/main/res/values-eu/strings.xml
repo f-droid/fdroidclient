@@ -257,7 +257,6 @@
     <string name="system_uninstall_button">Desinstalatu</string>
 
     <string name="swap_join_this_hotspot">Lagundu adiskideari zure Wi-Fi gunera konektatzen</string>
-    <string name="menu_swap">Partekatu aplikazioak</string>
     <string name="swap">Partekatu aplikazioak</string>
     <string name="swap_success">Partekatzea arrakastatsua!</string>
     <string name="swap_no_wifi_network">Ez dago sarerik oraindik</string>

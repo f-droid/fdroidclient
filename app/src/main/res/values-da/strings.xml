@@ -270,7 +270,6 @@
     <string name="swap_join_same_wifi">Tilslut dig samme Wi-Fi som din ven</string>
     <string name="swap_join_same_wifi_desc">For at bytte ved hjælp af Wi-Fi skal du sikre dig at I er på det samme netværk. Hvis I ikke har adgang til det samme netværk, kan en af jer oprette et Wi-Fi Hotspot.</string>
     <string name="swap_join_this_hotspot">Hjælp din ven med at tilslutte sig dit hotspot</string>
-    <string name="menu_swap">Byt programmer</string>
     <string name="swap">Byt programmer</string>
     <string name="swap_success">Udveksling succesfuld!</string>
     <string name="swap_no_wifi_network">Intet netværk endnu</string>

@@ -132,7 +132,6 @@
   <string name="requesting_root_access_body">要求 root 權限中…</string>
   <string name="root_access_denied_title">Root 權限被拒絕</string>
   <string name="system_install_denied_title">系統權限被拒絕</string>
-  <string name="menu_swap">交換應用程式</string>
   <string name="swap">交換應用程式</string>
   <string name="swap_no_wifi_network">沒有網絡連線</string>
   <string name="open_qr_code_scanner">開啟 QR 碼掃描器</string>

@@ -161,7 +161,6 @@
   <string name="system_install_denied_title">Permessi di sistema negati</string>
   <string name="system_install_denied_body">Questa opzione è disponibile solo quando F-Droid è installato come app di sistema.</string>
   <string name="swap_join_same_wifi">Collegati alla stessa Wi-Fi del tuo amico</string>
-  <string name="menu_swap">Invia apps</string>
   <string name="swap">Invia apps</string>
   <string name="swap_no_wifi_network">Nessuna rete disponibile</string>
   <string name="swap_view_available_networks">(Tocca per mostrare le reti disponibili)</string>

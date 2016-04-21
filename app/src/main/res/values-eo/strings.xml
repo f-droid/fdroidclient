@@ -267,7 +267,6 @@
     <string name="swap_join_same_wifi">Konektu la saman vifion kiu via kolego</string>
     <string name="swap_join_same_wifi_desc">Por interŝanĝi per vifio, certigu ke vi estas en la sama reto. Se vi ne havas aliron al la sama reto, unu de vi povas krei vifian retkaptejon.</string>
     <string name="swap_join_this_hotspot">Helpi al via kolego aligi vian retkaptejon</string>
-    <string name="menu_swap">Interŝanĝi aplikaĵojn</string>
     <string name="swap">Interŝanĝi aplikaĵojn</string>
     <string name="swap_success">Interŝanĝo sukcesis!</string>
     <string name="swap_active_hotspot">%1$s (via retkaptejo)</string>

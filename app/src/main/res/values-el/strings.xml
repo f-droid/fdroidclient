@@ -247,7 +247,6 @@
     <string name="system_uninstall_button">Απεγκατάσταση</string>
 
     <string name="swap_join_same_wifi">Γίνετε μέλος του ίδιου ασύρματου δικτύου με τον φίλο σας</string>
-    <string name="menu_swap">Ανταλλαγή εφαρμογών</string>
     <string name="swap">Ανταλλαγή εφαρμογών</string>
     <string name="swap_success">Ανταλλαγή επιτυχής!</string>
     <string name="swap_no_wifi_network">Κανένα δίκτυο ακόμα</string>

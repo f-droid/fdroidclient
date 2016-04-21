@@ -144,7 +144,6 @@ Sinun pitää
   <string name="system_install_denied_body">Tämä asetus on käytössä vain silloin, kun F-Droid on asennettu järjestelmäsovellukseksi.</string>
   <string name="swap_nfc_description">Jos ystävälläsi on  koskekaa puhelimianne yhtäaikaa.</string>
   <string name="swap_join_same_wifi">Liity ystäväsi kanssa samaan WiFi-verkkoon</string>
-  <string name="menu_swap">Vaihda sovelluksia</string>
   <string name="swap">Vaihda sovelluksia</string>
   <string name="swap_no_wifi_network">Ei vielä verkkoa</string>
   <string name="swap_view_available_networks">(Napauta avataksesi saatavissa olevat verkot)</string>

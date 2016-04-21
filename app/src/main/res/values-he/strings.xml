@@ -208,7 +208,6 @@
     <string name="swap_nfc_description">אם לחברך יש F-Droid וגם NFC פועלים געו יחד במכשירים שלכם.</string>
     <string name="swap_join_same_wifi">הצטרף לאותו Wi-Fi כמו חברך</string>
     <string name="swap_join_this_hotspot">עזור לחברך להצטרף לנקודה חמה</string>
-    <string name="menu_swap">הֶחְלֵף אפליקציות</string>
     <string name="swap">החלף אפליקציות</string>
     <string name="swap_success">הֶחְלֵף הצליח!</string>
     <string name="swap_no_wifi_network">אין רשת עדיין</string>

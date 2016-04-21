@@ -284,7 +284,6 @@
     <string name="swap_join_same_wifi">Gabung ke Wi-Fi yang sama dengan temanmu</string>
     <string name="swap_join_same_wifi_desc">Untuk swap menggunakan Wi-Fi, pastikan anda ada dijaringan yang sama. Jika anda tidak memiliki akses ke jaringan yang sama, satu diantara anda buatlah peranggitan Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Bantu teman anda bergabung ke hotspot anda</string>
-    <string name="menu_swap">Swap app</string>
     <string name="swap">Swap app</string>
     <string name="swap_success">Swap sukses!</string>
     <string name="swap_no_wifi_network">Tidak ada jaringan</string>

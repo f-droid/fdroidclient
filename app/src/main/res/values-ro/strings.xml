@@ -233,7 +233,6 @@
     <string name="system_uninstall_button">Dezinstalare</string>
 
     <string name="swap_join_same_wifi">Conecteaza la aceeasi retea Wi-Fi ca si prietenul tau</string>
-    <string name="menu_swap">Schimb de aplicatii</string>
     <string name="swap">Schimb de aplicatii</string>
     <string name="swap_active_hotspot">%1$s (hotspot-ul tau)</string>
     <string name="system_install_button_open">Deschide extensie</string>

@@ -162,7 +162,6 @@
   <string name="system_install_denied_body">Táto možnosť je dostupná iba ak je F-Droid inštalovaný ako systémová aplikácia.</string>
   <string name="swap_nfc_description">Ak má váš kamarát F-Droid a zapnuté NFC, dotknite sa zariadeniami.</string>
   <string name="swap_join_same_wifi">Pripojte sa na rovnaké Wi-fi ako kamarát</string>
-  <string name="menu_swap">Vymeniť aplikácie</string>
   <string name="swap">Vymeniť aplikácie</string>
   <string name="swap_no_wifi_network">Zatiaľ žiadna sieť</string>
   <string name="swap_view_available_networks">(Ťuknutím otvoríte dostupné siete)</string>

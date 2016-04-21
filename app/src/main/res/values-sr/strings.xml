@@ -163,7 +163,6 @@
   <string name="system_install_denied_body">Ова могућност је доступна само када је инсталирано повлашћено проширење за Ф-дроид.</string>
   <string name="swap_nfc_description">Ако ваш пријатељ има Ф-дроид и укључен НФЦ, додирните уређаје.</string>
   <string name="swap_join_same_wifi">Повежите се на исту бежичну мрежу на којој је ваш пријатељ</string>
-  <string name="menu_swap">Размена</string>
   <string name="swap">Размена апликација</string>
   <string name="swap_no_wifi_network">Још нема мреже</string>
   <string name="swap_view_available_networks">Тапните да отворите доступне мреже</string>

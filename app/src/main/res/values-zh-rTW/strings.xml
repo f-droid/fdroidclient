@@ -232,7 +232,6 @@
     <string name="root_access_denied_title">Root 權限被拒絕</string>
     <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
     <string name="swap_join_this_hotspot">幫助您的朋友加入您的熱點</string>
-    <string name="menu_swap">交換應用程式</string>
     <string name="swap">交換應用程式</string>
     <string name="swap_success">交換成功！</string>
     <string name="swap_active_hotspot">%1$s (您的熱點)</string>

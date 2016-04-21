@@ -170,7 +170,6 @@ bağlanılıyor</string>
   <string name="system_install_denied_body">Bu seçenek sadece F-Droid bir sistem uygulaması olarak kurulduğunda mevcuttur.</string>
   <string name="swap_nfc_description">Arkadaşınızda F-Droid ve etkinleştirilmiş NFC varsa cihazlarınızı birbirine dokundurun.</string>
   <string name="swap_join_same_wifi">Arkadaşınızla aynı kablosuz ağa katılın</string>
-  <string name="menu_swap">Değiş-Tokuş uygulamalar</string>
   <string name="swap">Değiş-Tokuş uygulamalar</string>
   <string name="swap_no_wifi_network">Henüz ağ yok</string>
   <string name="swap_view_available_networks">(Kullanılabilir ağları açmak için dokunun)</string>

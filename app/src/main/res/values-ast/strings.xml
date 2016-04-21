@@ -167,7 +167,6 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
   <string name="system_install_denied_body">Esta opción ta namái disponible cuando s\'instale F-Droid como una aplicación del sistema.</string>
   <string name="swap_nfc_description">Si\'l to collaciu tien F-Droid y NFC activáu, axuntái los vuesos preseos pela parte d\'atras.</string>
   <string name="swap_join_same_wifi">Xúnite a la mesma Wi-Fi que\'l to collaciu</string>
-  <string name="menu_swap">Intercambiar aplicaciones</string>
   <string name="swap">Intercambéu d\'aplicaciones</string>
   <string name="swap_no_wifi_network">Entá nun hai rede</string>
   <string name="swap_view_available_networks">(Calca p\'abrir les redes disponibles)</string>

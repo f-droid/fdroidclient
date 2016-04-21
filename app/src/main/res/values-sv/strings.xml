@@ -164,7 +164,6 @@
   <string name="system_install_denied_title">Systembehörigheter nekade</string>
   <string name="system_install_denied_body">Detta val är endast tillgängligt när F-Droid installerats som en system-app.</string>
   <string name="swap_join_same_wifi">Använd samma WiFi som din vän</string>
-  <string name="menu_swap">Byt appar</string>
   <string name="swap">Byt appar</string>
   <string name="swap_no_wifi_network">Inget nätverk ännu</string>
   <string name="swap_view_available_networks">(Tryck för att öppna tillgängliga nätverk)</string>

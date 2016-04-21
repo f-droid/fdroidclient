@@ -165,7 +165,6 @@
   <string name="system_install_denied_body">Dette valget er bare tilgjengelig når F-Droid er installert som priviligert tillegg.</string>
   <string name="swap_nfc_description">Hvis din venn har F-Droid og NFC påslått, sammenfør enhetene.</string>
   <string name="swap_join_same_wifi">Koble til samme Wi-Fi-nett som din venn</string>
-  <string name="menu_swap">Sirkuler programvare</string>
   <string name="swap">Sirkuler programvare</string>
   <string name="swap_no_wifi_network">Mangler nettverk</string>
   <string name="swap_view_available_networks">(Trykk for å vise tilgjengelige nettverk)</string>

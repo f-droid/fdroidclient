@@ -267,7 +267,6 @@
     <string name="system_install_question">Бажаєте встановити привілейоване розширення F-Droid?</string>
     <string name="system_uninstall">Бажаєте видалити привілейоване розширення F-Droid?</string>
     <string name="swap_nfc_title">Торкніться для обміну</string>
-    <string name="menu_swap">Обмінятися додатками</string>
     <string name="swap">Обмін додатками</string>
     <string name="swap_success">Обмін пройшов удало!</string>
     <string name="swap_switch_to_wifi">Торкніться для перемикання Wi-Fi мережі</string>
