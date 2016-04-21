@@ -328,18 +328,32 @@ public class DownloaderService extends Service {
     }
 
     /**
-     * Check if a URL is waiting in the queue for downloading or if actively
-     * being downloaded.  This is useful for checking whether to re-register
-     * {@link android.content.BroadcastReceiver}s in
-     * {@link android.app.Activity#onResume()}
+     * Check if a URL is waiting in the queue for downloading or if actively being downloaded.
+     * This is useful for checking whether to re-register {@link android.content.BroadcastReceiver}s
+     * in {@link android.app.Activity#onResume()}.
+     * @see DownloaderService#isQueued(String)
+     * @see DownloaderService#isActive(String)
      */
     public static boolean isQueuedOrActive(String urlString) {
+         return isQueued(urlString) || isActive(urlString);
+    }
+
+    /**
+     * Check if a URL is waiting in the queue for downloading.
+     */
+    public static boolean isQueued(String urlString) {
         if (TextUtils.isEmpty(urlString)) {
             return false;
         }
         Integer what = QUEUE_WHATS.get(urlString);
-        return (what != null && serviceHandler.hasMessages(what))
-                || (downloader != null && TextUtils.equals(urlString, downloader.sourceUrl.toString()));
+        return (what != null && serviceHandler.hasMessages(what));
+    }
+
+    /**
+     * Check if a URL is actively being downloaded.
+     */
+    public static boolean isActive(String urlString) {
+        return downloader != null && TextUtils.equals(urlString, downloader.sourceUrl.toString());
     }
 
     /**

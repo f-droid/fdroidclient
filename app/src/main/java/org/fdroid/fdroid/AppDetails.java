@@ -426,8 +426,8 @@ public class AppDetails extends AppCompatActivity {
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
+        headerFragment = (AppDetailsHeaderFragment)getSupportFragmentManager().findFragmentById(R.id.header);
         refreshApkList();
-        refreshHeader();
         supportInvalidateOptionsMenu();
         if (DownloaderService.isQueuedOrActive(activeDownloadUrlString)) {
             registerDownloaderReceivers();
@@ -615,8 +615,6 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void refreshHeader() {
-        headerFragment = (AppDetailsHeaderFragment)
-                getSupportFragmentManager().findFragmentById(R.id.header);
         if (headerFragment != null) {
             headerFragment.updateViews();
         }
@@ -1416,17 +1414,44 @@ public class AppDetails extends AppCompatActivity {
         public void onResume() {
             super.onResume();
             updateViews();
+            restoreProgressBarOnResume();
+        }
+
+        /**
+         * After resuming the fragment, decide whether or not we need to show the progress bar.
+         * Also, put an appropriate message depending on whether or not the download is active or
+         * just queued.
+         *
+         * NOTE: this can't be done in the `updateViews` method as it currently stands. The reason
+         * is because that method gets called all the time, for all sorts of reasons. The progress
+         * bar is updated with actual progress values in response to async broadcasts. If we always
+         * tried to force the progress bar in `updateViews`, it would override the values that were
+         * set by the async progress broadcasts.
+         */
+        private void restoreProgressBarOnResume() {
+            if (appDetails.activeDownloadUrlString != null) {
+                // We don't actually know what the current progress is, so this will show an indeterminate
+                // progress bar until the first progress/complete event we receive.
+                final String message = DownloaderService.isQueued(appDetails.activeDownloadUrlString)
+                        ? getString(R.string.download_pending)
+                        : "";
+                showIndeterminateProgress(message);
+            }
         }
 
         /**
          * Displays empty, indeterminate progress bar and related views.
          */
         public void startProgress() {
+            showIndeterminateProgress(getString(R.string.download_pending));
+            updateViews();
+        }
+
+        private void showIndeterminateProgress(String message) {
             setProgressVisible(true);
             progressBar.setIndeterminate(true);
-            progressSize.setText("");
+            progressSize.setText(message);
             progressPercent.setText("");
-            updateViews();
         }
 
         /**
