@@ -19,6 +19,7 @@ package org.fdroid.fdroid.net;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -31,11 +32,16 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PatternMatcher;
 import android.os.Process;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -137,7 +143,8 @@ public class DownloaderService extends Service {
             }
         } else if (ACTION_QUEUE.equals(intent.getAction())) {
             if (Preferences.get().isUpdateNotificationEnabled()) {
-                startForeground(NOTIFY_DOWNLOADING, createNotification(intent.getDataString()).build());
+                Notification notification = createNotification(intent.getDataString(), getPackageNameFromIntent(intent)).build();
+                startForeground(NOTIFY_DOWNLOADING, notification);
             }
             Log.i(TAG, "Queued " + intent);
             Message msg = serviceHandler.obtainMessage();
@@ -152,13 +159,40 @@ public class DownloaderService extends Service {
         }
     }
 
-    private NotificationCompat.Builder createNotification(String urlString) {
+    @Nullable
+    private static String getPackageNameFromIntent(@NonNull Intent intent) {
+        return intent.hasExtra(EXTRA_PACKAGE_NAME) ? intent.getStringExtra(EXTRA_PACKAGE_NAME) : null;
+    }
+
+    private NotificationCompat.Builder createNotification(String urlString, @Nullable String packageName) {
         return new NotificationCompat.Builder(this)
                 .setAutoCancel(true)
+                .setContentIntent(createAppDetailsIntent(this, 0, packageName))
                 .setContentTitle(getString(R.string.downloading))
                 .setSmallIcon(android.R.drawable.stat_sys_download)
                 .setContentText(urlString)
                 .setProgress(100, 0, true);
+    }
+
+    public static PendingIntent createAppDetailsIntent(@NonNull Context context, int requestCode, @Nullable String packageName) {
+        TaskStackBuilder stackBuilder;
+        if (packageName != null) {
+            Intent notifyIntent = new Intent(context.getApplicationContext(), AppDetails.class)
+                    .putExtra(AppDetails.EXTRA_APPID, packageName);
+
+            stackBuilder = TaskStackBuilder
+                    .create(context.getApplicationContext())
+                    .addParentStack(AppDetails.class)
+                    .addNextIntent(notifyIntent);
+        } else {
+            Intent notifyIntent = new Intent(context.getApplicationContext(), FDroid.class);
+            stackBuilder = TaskStackBuilder
+                    .create(context.getApplicationContext())
+                    .addParentStack(FDroid.class)
+                    .addNextIntent(notifyIntent);
+        }
+
+        return stackBuilder.getPendingIntent(requestCode, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     @Override
@@ -204,6 +238,7 @@ public class DownloaderService extends Service {
         File downloadDir = new File(Utils.getApkCacheDir(this), uri.getHost() + "-" + uri.getPort());
         downloadDir.mkdirs();
         final SanitizedFile localFile = new SanitizedFile(downloadDir, uri.getLastPathSegment());
+        final String packageName = getPackageNameFromIntent(intent);
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile);
         try {
             downloader = DownloaderFactory.create(this, uri, localFile);
@@ -217,7 +252,7 @@ public class DownloaderService extends Service {
                     localBroadcastManager.sendBroadcast(intent);
 
                     NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                    Notification notification = createNotification(uri.toString())
+                    Notification notification = createNotification(uri.toString(), packageName)
                             .setProgress(totalBytes, bytesRead, false)
                             .build();
                     nm.notify(NOTIFY_DOWNLOADING, notification);
@@ -225,8 +260,7 @@ public class DownloaderService extends Service {
             });
             downloader.download();
             sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile);
-            DownloadCompleteService.notify(this, intent.getStringExtra(EXTRA_PACKAGE_NAME),
-                    intent.getDataString());
+            DownloadCompleteService.notify(this, packageName, intent.getDataString());
         } catch (InterruptedException e) {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile);
         } catch (IOException e) {
