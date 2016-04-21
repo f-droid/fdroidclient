@@ -64,22 +64,13 @@ public class DownloadCompleteService extends IntentService {
                 title = String.format(getString(R.string.tap_to_install_format), app.name);
             }
 
-            Intent notifyIntent = new Intent(this, AppDetails.class);
-            notifyIntent.putExtra(AppDetails.EXTRA_APPID, packageName);
-            TaskStackBuilder stackBuilder = TaskStackBuilder
-                    .create(this)
-                    .addParentStack(AppDetails.class)
-                    .addNextIntent(notifyIntent);
             int requestCode = Utils.getApkUrlNotificationId(intent.getDataString());
-            PendingIntent pendingIntent = stackBuilder.getPendingIntent(requestCode,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
-
             NotificationCompat.Builder builder =
                     new NotificationCompat.Builder(this)
                             .setAutoCancel(true)
                             .setContentTitle(title)
                             .setSmallIcon(android.R.drawable.stat_sys_download_done)
-                            .setContentIntent(pendingIntent)
+                            .setContentIntent(DownloaderService.createAppDetailsIntent(this, requestCode, packageName))
                             .setContentText(getString(R.string.tap_to_install));
             NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             nm.notify(Utils.getApkUrlNotificationId(intent.getDataString()), builder.build());
