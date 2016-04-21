@@ -270,7 +270,7 @@ public class DownloaderService extends Service {
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
         intent.setData(Uri.parse(urlString));
-        if (!TextUtils.isEmpty(EXTRA_PACKAGE_NAME)) {
+        if (!TextUtils.isEmpty(packageName)) {
             intent.putExtra(EXTRA_PACKAGE_NAME, packageName);
         }
         context.startService(intent);
