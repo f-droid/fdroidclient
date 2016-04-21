@@ -564,7 +564,7 @@ public class AppDetails extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        cleanUpFinishedDownload();
+        unregisterDownloaderReceivers();
         super.onDestroy();
     }
 
