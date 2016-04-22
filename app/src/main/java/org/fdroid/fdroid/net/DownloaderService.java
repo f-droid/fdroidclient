@@ -146,10 +146,6 @@ public class DownloaderService extends Service {
                 stopForeground(true);
             }
         } else if (ACTION_QUEUE.equals(intent.getAction())) {
-            if (Preferences.get().isUpdateNotificationEnabled()) {
-                Notification notification = createNotification(intent.getDataString(), getPackageNameFromIntent(intent)).build();
-                startForeground(NOTIFY_DOWNLOADING, notification);
-            }
             Log.i(TAG, "Queued " + intent);
             Message msg = serviceHandler.obtainMessage();
             msg.arg1 = startId;
@@ -261,6 +257,12 @@ public class DownloaderService extends Service {
         final SanitizedFile localFile = new SanitizedFile(downloadDir, uri.getLastPathSegment());
         final String packageName = getPackageNameFromIntent(intent);
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile);
+
+        if (Preferences.get().isUpdateNotificationEnabled()) {
+            Notification notification = createNotification(intent.getDataString(), getPackageNameFromIntent(intent)).build();
+            startForeground(NOTIFY_DOWNLOADING, notification);
+        }
+
         try {
             downloader = DownloaderFactory.create(this, uri, localFile);
             downloader.setListener(new Downloader.DownloaderProgressListener() {
@@ -273,11 +275,13 @@ public class DownloaderService extends Service {
                         intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
                         localBroadcastManager.sendBroadcast(intent);
 
-                        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                        Notification notification = createNotification(uri.toString(), packageName)
-                                .setProgress(totalBytes, bytesRead, false)
-                                .build();
-                        nm.notify(NOTIFY_DOWNLOADING, notification);
+                        if (Preferences.get().isUpdateNotificationEnabled()) {
+                            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                            Notification notification = createNotification(uri.toString(), packageName)
+                                    .setProgress(totalBytes, bytesRead, false)
+                                    .build();
+                            nm.notify(NOTIFY_DOWNLOADING, notification);
+                        }
                     }
                 }
             });
@@ -297,6 +301,7 @@ public class DownloaderService extends Service {
             // May have already been removed in response to a cancel intent, but that wont cause
             // problems if we ask to remove it again.
             QUEUE_WHATS.remove(uri.toString());
+            stopForeground(true);
         }
         downloader = null;
     }
