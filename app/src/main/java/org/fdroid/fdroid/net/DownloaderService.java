@@ -133,13 +133,17 @@ public class DownloaderService extends Service {
         }
         if (ACTION_CANCEL.equals(intent.getAction())) {
             Log.i(TAG, "Removed " + intent);
-            Integer what = QUEUE_WHATS.remove(uriString);
             if (isQueued(uriString)) {
                 serviceHandler.removeMessages(what);
             } else if (isActive(uriString)) {
                 downloader.cancelDownload();
             } else {
                 Log.e(TAG, "CANCEL called on something not queued or running: " + startId + " " + intent);
+            }
+
+            QUEUE_WHATS.remove(uriString);
+            if (isQueueEmpty()) {
+                stopForeground(true);
             }
         } else if (ACTION_QUEUE.equals(intent.getAction())) {
             if (Preferences.get().isUpdateNotificationEnabled()) {
@@ -262,17 +266,19 @@ public class DownloaderService extends Service {
             downloader.setListener(new Downloader.DownloaderProgressListener() {
                 @Override
                 public void sendProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                    Intent intent = new Intent(Downloader.ACTION_PROGRESS);
-                    intent.setData(uri);
-                    intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
-                    intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
-                    localBroadcastManager.sendBroadcast(intent);
+                    if (isActive(uri.toString())) {
+                        Intent intent = new Intent(Downloader.ACTION_PROGRESS);
+                        intent.setData(uri);
+                        intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
+                        intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
+                        localBroadcastManager.sendBroadcast(intent);
 
-                    NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                    Notification notification = createNotification(uri.toString(), packageName)
-                            .setProgress(totalBytes, bytesRead, false)
-                            .build();
-                    nm.notify(NOTIFY_DOWNLOADING, notification);
+                        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                        Notification notification = createNotification(uri.toString(), packageName)
+                                .setProgress(totalBytes, bytesRead, false)
+                                .build();
+                        nm.notify(NOTIFY_DOWNLOADING, notification);
+                    }
                 }
             });
             downloader.download();
@@ -288,6 +294,9 @@ public class DownloaderService extends Service {
             if (downloader != null) {
                 downloader.close();
             }
+            // May have already been removed in response to a cancel intent, but that wont cause
+            // problems if we ask to remove it again.
+            QUEUE_WHATS.remove(uri.toString());
         }
         downloader = null;
     }
@@ -355,6 +364,10 @@ public class DownloaderService extends Service {
          return isQueued(urlString) || isActive(urlString);
     }
 
+    public static boolean isQueueEmpty() {
+        return QUEUE_WHATS.isEmpty();
+    }
+
     /**
      * Check if a URL is waiting in the queue for downloading.
      */
@@ -370,7 +383,7 @@ public class DownloaderService extends Service {
      * Check if a URL is actively being downloaded.
      */
     public static boolean isActive(String urlString) {
-        return downloader != null && TextUtils.equals(urlString, downloader.sourceUrl.toString());
+        return downloader != null && QUEUE_WHATS.containsKey(urlString) && TextUtils.equals(urlString, downloader.sourceUrl.toString());
     }
 
     /**
