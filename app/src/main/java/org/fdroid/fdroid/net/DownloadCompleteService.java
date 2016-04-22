@@ -42,12 +42,12 @@ public class DownloadCompleteService extends IntentService {
         if (intent != null) {
             final String action = intent.getAction();
             if (!ACTION_NOTIFY.equals(action)) {
-                Utils.debugLog(TAG, "intent action is not ACTION_NOTIFY");
+                Utils.debugLog(TAG, "Intent action is not ACTION_NOTIFY");
                 return;
             }
             String packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME);
             if (TextUtils.isEmpty(packageName)) {
-                Utils.debugLog(TAG, "intent is missing EXTRA_PACKAGE_NAME");
+                Utils.debugLog(TAG, "Intent is missing EXTRA_PACKAGE_NAME");
                 return;
             }
 

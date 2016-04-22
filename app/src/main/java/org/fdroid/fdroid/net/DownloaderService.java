@@ -112,7 +112,7 @@ public class DownloaderService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i(TAG, "onCreate");
+        Utils.debugLog(TAG, "Creating downloader service.");
 
         HandlerThread thread = new HandlerThread(TAG, Process.THREAD_PRIORITY_BACKGROUND);
         thread.start();
@@ -125,20 +125,20 @@ public class DownloaderService extends Service {
     @Override
     public void onStart(Intent intent, int startId) {
         super.onStart(intent, startId);
-        Log.i(TAG, "onStart " + startId + " " + intent);
+        Utils.debugLog(TAG, "Received Intent for downloading: " + intent + " (with a startId of " + startId + ")");
         String uriString = intent.getDataString();
         if (uriString == null) {
             Log.e(TAG, "Received Intent with no URI: " + intent);
             return;
         }
         if (ACTION_CANCEL.equals(intent.getAction())) {
-            Log.i(TAG, "Removed " + intent);
+            Utils.debugLog(TAG, "Cancelling download of " + uriString);
             if (isQueued(uriString)) {
                 serviceHandler.removeMessages(what);
             } else if (isActive(uriString)) {
                 downloader.cancelDownload();
             } else {
-                Log.e(TAG, "CANCEL called on something not queued or running: " + startId + " " + intent);
+                Log.e(TAG, "ACTION_CANCEL called on something not queued or running");
             }
 
             QUEUE_WHATS.remove(uriString);
@@ -146,14 +146,13 @@ public class DownloaderService extends Service {
                 stopForeground(true);
             }
         } else if (ACTION_QUEUE.equals(intent.getAction())) {
-            Log.i(TAG, "Queued " + intent);
             Message msg = serviceHandler.obtainMessage();
             msg.arg1 = startId;
             msg.obj = intent;
             msg.what = what++;
             serviceHandler.sendMessage(msg);
-            Log.i(TAG, "QUEUE_WHATS.put(" + uriString + ", " + msg.what);
             QUEUE_WHATS.put(uriString, msg.what);
+            Utils.debugLog(TAG, "Queued download of " + uriString + ". Now " + QUEUE_WHATS.size() + " downloads in the queue");
         } else {
             Log.e(TAG, "Received Intent with unknown action: " + intent);
         }
@@ -215,13 +214,13 @@ public class DownloaderService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         onStart(intent, startId);
-        Log.i(TAG, "onStartCommand " + intent);
+        Utils.debugLog(TAG, "onStartCommand " + intent);
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
     }
 
     @Override
     public void onDestroy() {
-        Log.i(TAG, "onDestroy");
+        Utils.debugLog(TAG, "Destroying downloader service. Will move to background and stop our Looper.");
         stopForeground(true);
         serviceLooper.quit(); //NOPMD - this is copied from IntentService, no super call needed
     }
@@ -331,7 +330,7 @@ public class DownloaderService extends Service {
      * @see #cancel(Context, String)
      */
     public static void queue(Context context, String packageName, String urlString) {
-        Log.i(TAG, "queue " + urlString);
+        Utils.debugLog(TAG, "Preparing " + urlString + " to go into the download queue");
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
         intent.setData(Uri.parse(urlString));
@@ -351,7 +350,7 @@ public class DownloaderService extends Service {
      * @see #queue(Context, String, String)
      */
     public static void cancel(Context context, String urlString) {
-        Log.i(TAG, "cancel " + urlString);
+        Utils.debugLog(TAG, "Preparing cancellation of " + urlString + " download");
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_CANCEL);
         intent.setData(Uri.parse(urlString));
