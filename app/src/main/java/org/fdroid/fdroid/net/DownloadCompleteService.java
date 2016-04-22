@@ -2,17 +2,14 @@ package org.fdroid.fdroid.net;
 
 import android.app.IntentService;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Process;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.text.TextUtils;
 
-import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
@@ -42,12 +39,12 @@ public class DownloadCompleteService extends IntentService {
         if (intent != null) {
             final String action = intent.getAction();
             if (!ACTION_NOTIFY.equals(action)) {
-                Utils.debugLog(TAG, "intent action is not ACTION_NOTIFY");
+                Utils.debugLog(TAG, "Intent action is not ACTION_NOTIFY");
                 return;
             }
             String packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME);
             if (TextUtils.isEmpty(packageName)) {
-                Utils.debugLog(TAG, "intent is missing EXTRA_PACKAGE_NAME");
+                Utils.debugLog(TAG, "Intent is missing EXTRA_PACKAGE_NAME");
                 return;
             }
 
@@ -64,22 +61,13 @@ public class DownloadCompleteService extends IntentService {
                 title = String.format(getString(R.string.tap_to_install_format), app.name);
             }
 
-            Intent notifyIntent = new Intent(this, AppDetails.class);
-            notifyIntent.putExtra(AppDetails.EXTRA_APPID, packageName);
-            TaskStackBuilder stackBuilder = TaskStackBuilder
-                    .create(this)
-                    .addParentStack(AppDetails.class)
-                    .addNextIntent(notifyIntent);
             int requestCode = Utils.getApkUrlNotificationId(intent.getDataString());
-            PendingIntent pendingIntent = stackBuilder.getPendingIntent(requestCode,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
-
             NotificationCompat.Builder builder =
                     new NotificationCompat.Builder(this)
                             .setAutoCancel(true)
                             .setContentTitle(title)
                             .setSmallIcon(android.R.drawable.stat_sys_download_done)
-                            .setContentIntent(pendingIntent)
+                            .setContentIntent(DownloaderService.createAppDetailsIntent(this, requestCode, packageName))
                             .setContentText(getString(R.string.tap_to_install));
             NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             nm.notify(Utils.getApkUrlNotificationId(intent.getDataString()), builder.build());

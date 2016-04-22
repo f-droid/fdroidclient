@@ -19,6 +19,7 @@ package org.fdroid.fdroid.net;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -31,14 +32,21 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PatternMatcher;
 import android.os.Process;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
@@ -104,7 +112,7 @@ public class DownloaderService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i(TAG, "onCreate");
+        Utils.debugLog(TAG, "Creating downloader service.");
 
         HandlerThread thread = new HandlerThread(TAG, Process.THREAD_PRIORITY_BACKGROUND);
         thread.start();
@@ -117,60 +125,102 @@ public class DownloaderService extends Service {
     @Override
     public void onStart(Intent intent, int startId) {
         super.onStart(intent, startId);
-        Log.i(TAG, "onStart " + startId + " " + intent);
+        Utils.debugLog(TAG, "Received Intent for downloading: " + intent + " (with a startId of " + startId + ")");
         String uriString = intent.getDataString();
         if (uriString == null) {
             Log.e(TAG, "Received Intent with no URI: " + intent);
             return;
         }
         if (ACTION_CANCEL.equals(intent.getAction())) {
-            Log.i(TAG, "Removed " + intent);
-            Integer what = QUEUE_WHATS.remove(uriString);
-            if (what != null && serviceHandler.hasMessages(what)) {
-                // the URL is in the queue, remove it
+            Utils.debugLog(TAG, "Cancelling download of " + uriString);
+            if (isQueued(uriString)) {
                 serviceHandler.removeMessages(what);
-            } else if (downloader != null && TextUtils.equals(uriString, downloader.sourceUrl.toString())) {
-                // the URL is being downloaded, cancel it
+            } else if (isActive(uriString)) {
                 downloader.cancelDownload();
             } else {
-                Log.e(TAG, "CANCEL called on something not queued or running: " + startId + " " + intent);
+                Log.e(TAG, "ACTION_CANCEL called on something not queued or running");
+            }
+
+            QUEUE_WHATS.remove(uriString);
+            if (isQueueEmpty()) {
+                stopForeground(true);
             }
         } else if (ACTION_QUEUE.equals(intent.getAction())) {
-            if (Preferences.get().isUpdateNotificationEnabled()) {
-                startForeground(NOTIFY_DOWNLOADING, createNotification(intent.getDataString()).build());
-            }
-            Log.i(TAG, "Queued " + intent);
             Message msg = serviceHandler.obtainMessage();
             msg.arg1 = startId;
             msg.obj = intent;
             msg.what = what++;
             serviceHandler.sendMessage(msg);
-            Log.i(TAG, "QUEUE_WHATS.put(" + uriString + ", " + msg.what);
             QUEUE_WHATS.put(uriString, msg.what);
+            Utils.debugLog(TAG, "Queued download of " + uriString + ". Now " + QUEUE_WHATS.size() + " downloads in the queue");
         } else {
             Log.e(TAG, "Received Intent with unknown action: " + intent);
         }
     }
 
-    private NotificationCompat.Builder createNotification(String urlString) {
+    @Nullable
+    private static String getPackageNameFromIntent(@NonNull Intent intent) {
+        return intent.hasExtra(EXTRA_PACKAGE_NAME) ? intent.getStringExtra(EXTRA_PACKAGE_NAME) : null;
+    }
+
+    private NotificationCompat.Builder createNotification(String urlString, @Nullable String packageName) {
         return new NotificationCompat.Builder(this)
                 .setAutoCancel(true)
-                .setContentTitle(getString(R.string.downloading))
+                .setContentIntent(createAppDetailsIntent(this, 0, packageName))
+                .setContentTitle(getNotificationTitle(packageName))
                 .setSmallIcon(android.R.drawable.stat_sys_download)
                 .setContentText(urlString)
                 .setProgress(100, 0, true);
     }
 
+    /**
+     * If downloading an apk (i.e. <code>packageName != null</code>) then the title will indicate
+     * the name of the app which the apk belongs to. Otherwise, it will be a generic "Downloading..."
+     * message.
+     */
+    private String getNotificationTitle(@Nullable String packageName) {
+        String title;
+        if (packageName != null) {
+            App app = AppProvider.Helper.findByPackageName(
+                    getContentResolver(), packageName, new String[] {AppProvider.DataColumns.NAME});
+            title = getString(R.string.downloading_apk, app.name);
+        } else {
+            title = getString(R.string.downloading);
+        }
+        return title;
+    }
+
+    public static PendingIntent createAppDetailsIntent(@NonNull Context context, int requestCode, @Nullable String packageName) {
+        TaskStackBuilder stackBuilder;
+        if (packageName != null) {
+            Intent notifyIntent = new Intent(context.getApplicationContext(), AppDetails.class)
+                    .putExtra(AppDetails.EXTRA_APPID, packageName);
+
+            stackBuilder = TaskStackBuilder
+                    .create(context.getApplicationContext())
+                    .addParentStack(AppDetails.class)
+                    .addNextIntent(notifyIntent);
+        } else {
+            Intent notifyIntent = new Intent(context.getApplicationContext(), FDroid.class);
+            stackBuilder = TaskStackBuilder
+                    .create(context.getApplicationContext())
+                    .addParentStack(FDroid.class)
+                    .addNextIntent(notifyIntent);
+        }
+
+        return stackBuilder.getPendingIntent(requestCode, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         onStart(intent, startId);
-        Log.i(TAG, "onStartCommand " + intent);
+        Utils.debugLog(TAG, "onStartCommand " + intent);
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
     }
 
     @Override
     public void onDestroy() {
-        Log.i(TAG, "onDestroy");
+        Utils.debugLog(TAG, "Destroying downloader service. Will move to background and stop our Looper.");
         stopForeground(true);
         serviceLooper.quit(); //NOPMD - this is copied from IntentService, no super call needed
     }
@@ -204,29 +254,39 @@ public class DownloaderService extends Service {
         File downloadDir = new File(Utils.getApkCacheDir(this), uri.getHost() + "-" + uri.getPort());
         downloadDir.mkdirs();
         final SanitizedFile localFile = new SanitizedFile(downloadDir, uri.getLastPathSegment());
+        final String packageName = getPackageNameFromIntent(intent);
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile);
+
+        if (Preferences.get().isUpdateNotificationEnabled()) {
+            Notification notification = createNotification(intent.getDataString(), getPackageNameFromIntent(intent)).build();
+            startForeground(NOTIFY_DOWNLOADING, notification);
+        }
+
         try {
             downloader = DownloaderFactory.create(this, uri, localFile);
             downloader.setListener(new Downloader.DownloaderProgressListener() {
                 @Override
                 public void sendProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                    Intent intent = new Intent(Downloader.ACTION_PROGRESS);
-                    intent.setData(uri);
-                    intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
-                    intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
-                    localBroadcastManager.sendBroadcast(intent);
+                    if (isActive(uri.toString())) {
+                        Intent intent = new Intent(Downloader.ACTION_PROGRESS);
+                        intent.setData(uri);
+                        intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
+                        intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
+                        localBroadcastManager.sendBroadcast(intent);
 
-                    NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                    Notification notification = createNotification(uri.toString())
-                            .setProgress(totalBytes, bytesRead, false)
-                            .build();
-                    nm.notify(NOTIFY_DOWNLOADING, notification);
+                        if (Preferences.get().isUpdateNotificationEnabled()) {
+                            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                            Notification notification = createNotification(uri.toString(), packageName)
+                                    .setProgress(totalBytes, bytesRead, false)
+                                    .build();
+                            nm.notify(NOTIFY_DOWNLOADING, notification);
+                        }
+                    }
                 }
             });
             downloader.download();
             sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile);
-            DownloadCompleteService.notify(this, intent.getStringExtra(EXTRA_PACKAGE_NAME),
-                    intent.getDataString());
+            DownloadCompleteService.notify(this, packageName, intent.getDataString());
         } catch (InterruptedException e) {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile);
         } catch (IOException e) {
@@ -237,6 +297,10 @@ public class DownloaderService extends Service {
             if (downloader != null) {
                 downloader.close();
             }
+            // May have already been removed in response to a cancel intent, but that wont cause
+            // problems if we ask to remove it again.
+            QUEUE_WHATS.remove(uri.toString());
+            stopForeground(true);
         }
         downloader = null;
     }
@@ -266,11 +330,11 @@ public class DownloaderService extends Service {
      * @see #cancel(Context, String)
      */
     public static void queue(Context context, String packageName, String urlString) {
-        Log.i(TAG, "queue " + urlString);
+        Utils.debugLog(TAG, "Preparing " + urlString + " to go into the download queue");
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
         intent.setData(Uri.parse(urlString));
-        if (!TextUtils.isEmpty(EXTRA_PACKAGE_NAME)) {
+        if (!TextUtils.isEmpty(packageName)) {
             intent.putExtra(EXTRA_PACKAGE_NAME, packageName);
         }
         context.startService(intent);
@@ -286,7 +350,7 @@ public class DownloaderService extends Service {
      * @see #queue(Context, String, String)
      */
     public static void cancel(Context context, String urlString) {
-        Log.i(TAG, "cancel " + urlString);
+        Utils.debugLog(TAG, "Preparing cancellation of " + urlString + " download");
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_CANCEL);
         intent.setData(Uri.parse(urlString));
@@ -294,18 +358,36 @@ public class DownloaderService extends Service {
     }
 
     /**
-     * Check if a URL is waiting in the queue for downloading or if actively
-     * being downloaded.  This is useful for checking whether to re-register
-     * {@link android.content.BroadcastReceiver}s in
-     * {@link android.app.Activity#onResume()}
+     * Check if a URL is waiting in the queue for downloading or if actively being downloaded.
+     * This is useful for checking whether to re-register {@link android.content.BroadcastReceiver}s
+     * in {@link android.app.Activity#onResume()}.
+     * @see DownloaderService#isQueued(String)
+     * @see DownloaderService#isActive(String)
      */
     public static boolean isQueuedOrActive(String urlString) {
+        return isQueued(urlString) || isActive(urlString);
+    }
+
+    public static boolean isQueueEmpty() {
+        return QUEUE_WHATS.isEmpty();
+    }
+
+    /**
+     * Check if a URL is waiting in the queue for downloading.
+     */
+    public static boolean isQueued(String urlString) {
         if (TextUtils.isEmpty(urlString)) {
             return false;
         }
         Integer what = QUEUE_WHATS.get(urlString);
-        return (what != null && serviceHandler.hasMessages(what))
-                || (downloader != null && TextUtils.equals(urlString, downloader.sourceUrl.toString()));
+        return what != null && serviceHandler.hasMessages(what);
+    }
+
+    /**
+     * Check if a URL is actively being downloaded.
+     */
+    public static boolean isActive(String urlString) {
+        return downloader != null && QUEUE_WHATS.containsKey(urlString) && TextUtils.equals(urlString, downloader.sourceUrl.toString());
     }
 
     /**
