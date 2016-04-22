@@ -182,7 +182,7 @@ public class DownloaderService extends Service {
         String title;
         if (packageName != null) {
             App app = AppProvider.Helper.findByPackageName(
-                    getContentResolver(), packageName, new String[] { AppProvider.DataColumns.NAME });
+                    getContentResolver(), packageName, new String[] {AppProvider.DataColumns.NAME});
             title = getString(R.string.downloading_apk, app.name);
         } else {
             title = getString(R.string.downloading);
@@ -365,7 +365,7 @@ public class DownloaderService extends Service {
      * @see DownloaderService#isActive(String)
      */
     public static boolean isQueuedOrActive(String urlString) {
-         return isQueued(urlString) || isActive(urlString);
+        return isQueued(urlString) || isActive(urlString);
     }
 
     public static boolean isQueueEmpty() {
@@ -380,7 +380,7 @@ public class DownloaderService extends Service {
             return false;
         }
         Integer what = QUEUE_WHATS.get(urlString);
-        return (what != null && serviceHandler.hasMessages(what));
+        return what != null && serviceHandler.hasMessages(what);
     }
 
     /**

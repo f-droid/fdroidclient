@@ -426,7 +426,7 @@ public class AppDetails extends AppCompatActivity {
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
-        headerFragment = (AppDetailsHeaderFragment)getSupportFragmentManager().findFragmentById(R.id.header);
+        headerFragment = (AppDetailsHeaderFragment) getSupportFragmentManager().findFragmentById(R.id.header);
         refreshApkList();
         supportInvalidateOptionsMenu();
         if (DownloaderService.isQueuedOrActive(activeDownloadUrlString)) {
