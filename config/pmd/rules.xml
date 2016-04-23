@@ -25,4 +25,5 @@
     <rule ref="rulesets/java/design.xml/NonCaseLabelInSwitchStatement"/>
     <rule ref="rulesets/java/design.xml/EqualsNull"/>
     <rule ref="rulesets/java/design.xml/IdempotentOperations"/>
+    <rule ref="rulesets/java/design.xml/ImmutableField"/>
 </ruleset>

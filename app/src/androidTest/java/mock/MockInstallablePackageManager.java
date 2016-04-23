@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MockInstallablePackageManager extends MockPackageManager {
 
-    private List<PackageInfo> info = new ArrayList<>();
+    private final List<PackageInfo> info = new ArrayList<>();
 
     @Override
     public List<PackageInfo> getInstalledPackages(int flags) {

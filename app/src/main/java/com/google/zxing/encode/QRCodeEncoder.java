@@ -37,7 +37,7 @@ public final class QRCodeEncoder {
     private static final int WHITE = 0xFFFFFFFF;
     private static final int BLACK = 0xFF000000;
 
-    private int dimension = Integer.MIN_VALUE;
+    private final int dimension;
     private String contents;
     private String displayContents;
     private String title;
