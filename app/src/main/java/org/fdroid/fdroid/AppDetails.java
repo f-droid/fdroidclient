@@ -439,7 +439,9 @@ public class AppDetails extends AppCompatActivity {
      */
     private void cleanUpFinishedDownload() {
         activeDownloadUrlString = null;
-        headerFragment.removeProgress();
+        if (headerFragment != null) {
+            headerFragment.removeProgress();
+        }
         unregisterDownloaderReceivers();
     }
 
