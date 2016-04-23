@@ -68,7 +68,7 @@ import java.util.zip.ZipFile;
  * @see <a href="https://stackoverflow.com/a/4761689">a binary XML parser</a>
  */
 public class AndroidXMLDecompress {
-    public static int startTag = 0x00100102;
+    public static final int START_TAG = 0x00100102;
 
     /**
      * Just get the XML attributes from the {@code <manifest>} element.
@@ -82,7 +82,7 @@ public class AndroidXMLDecompress {
         int stringTableOffset = stringIndexTableOffset + numbStrings * 4;
         int xmlTagOffset = littleEndianWord(binaryXml, 3 * 4);
         for (int i = xmlTagOffset; i < binaryXml.length - 4; i += 4) {
-            if (littleEndianWord(binaryXml, i) == startTag) {
+            if (littleEndianWord(binaryXml, i) == START_TAG) {
                 xmlTagOffset = i;
                 break;
             }
@@ -92,11 +92,11 @@ public class AndroidXMLDecompress {
         while (offset < binaryXml.length) {
             int tag0 = littleEndianWord(binaryXml, offset);
 
-            if (tag0 == startTag) {
+            if (tag0 == START_TAG) {
                 int numbAttrs = littleEndianWord(binaryXml, offset + 7 * 4);
                 offset += 9 * 4;
 
-                HashMap<String, Object> attributes = new HashMap<String, Object>(3);
+                HashMap<String, Object> attributes = new HashMap<>(3);
                 for (int i = 0; i < numbAttrs; i++) {
                     int attributeNameStringIndex = littleEndianWord(binaryXml, offset + 1 * 4);
                     int attributeValueStringIndex = littleEndianWord(binaryXml, offset + 2 * 4);
@@ -117,7 +117,7 @@ public class AndroidXMLDecompress {
             // we only need the first <manifest> start tag
             break;
         }
-        return new HashMap<String, Object>(0);
+        return new HashMap<>(0);
     }
 
     public static byte[] getManifestFromFilename(String filename) throws IOException {
@@ -137,9 +137,7 @@ public class AndroidXMLDecompress {
         is.read(buf);
 
         is.close();
-        if (zip != null) {
-            zip.close();
-        }
+        zip.close();
         return buf;
     }
 

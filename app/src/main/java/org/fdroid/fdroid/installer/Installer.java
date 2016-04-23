@@ -162,10 +162,7 @@ public abstract class Installer {
             return false;
         }
         Hasher hasher = new Hasher(hashType, apkFile);
-        if (hasher != null && hasher.match(hash)) {
-            return true;
-        }
-        return false;
+        return hasher.match(hash);
     }
 
     /**

@@ -865,8 +865,7 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void startDownload(Apk apk, String repoAddress) {
-        String urlString = Utils.getApkUrl(repoAddress, apk);
-        activeDownloadUrlString = urlString;
+        activeDownloadUrlString = Utils.getApkUrl(repoAddress, apk);
         registerDownloaderReceivers();
         headerFragment.startProgress();
         DownloaderService.queue(this, apk.packageName, activeDownloadUrlString);
