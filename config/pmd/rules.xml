@@ -16,4 +16,5 @@
         <exclude name="UselessParentheses"/> <!--Too nitpicky-->
     </rule>
     <rule ref="rulesets/java/optimizations.xml/PrematureDeclaration"/>
+    <rule ref="rulesets/java/optimizations.xml/AddEmptyString"/>
 </ruleset>
