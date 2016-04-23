@@ -40,6 +40,7 @@ public class CaffeinatedScrollView extends ScrollView {
     /**
      * Make this visible so we can call it
      */
+    @SuppressWarnings("PMD.UselessOverridingMethod")
     @Override
     public boolean awakenScrollBars() {
         return super.awakenScrollBars();

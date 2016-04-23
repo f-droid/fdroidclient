@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<ruleset name="Custom ruleset"
+        xmlns="http://pmd.sf.net/ruleset/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+        xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+    <!--<rule ref="rulesets/java/basic.xml"/>-->
+    <rule ref="rulesets/java/unusedcode.xml"/>
+    <rule ref="rulesets/java/android.xml"/>
+    <rule ref="rulesets/java/clone.xml"/>
+    <rule ref="rulesets/java/finalizers.xml"/>
+    <rule ref="rulesets/java/imports.xml"/>
+    <rule ref="rulesets/java/migrating.xml"/>
+    <rule ref="rulesets/java/unnecessary.xml">
+        <exclude name="UselessParentheses"/> <!--Too nitpicky-->
+    </rule>
+</ruleset>
