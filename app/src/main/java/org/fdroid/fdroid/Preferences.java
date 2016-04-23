@@ -79,6 +79,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_EXPERT = false;
     private static final boolean DEFAULT_ENABLE_PROXY = false;
     public static final String DEFAULT_THEME = "light";
+    @SuppressWarnings("PMD.AvoidUsingHardCodedIP")
     public static final String DEFAULT_PROXY_HOST = "127.0.0.1";
     public static final int DEFAULT_PROXY_PORT = 8118;
     private static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;

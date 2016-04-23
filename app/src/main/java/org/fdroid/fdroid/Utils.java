@@ -275,7 +275,7 @@ public final class Utils {
     // return a fingerprint formatted for display
     public static String formatFingerprint(Context context, String fingerprint) {
         if (TextUtils.isEmpty(fingerprint)
-                || fingerprint.length() != 64  // SHA-256 is 64 hex chars
+                || fingerprint.length() != 64 // SHA-256 is 64 hex chars
                 || fingerprint.matches(".*[^0-9a-fA-F].*")) { // its a hex string
             return context.getString(R.string.bad_fingerprint);
         }
@@ -673,11 +673,10 @@ public final class Utils {
         }
 
         for (File f : files) {
-            if ((startsWith != null && f.getName().startsWith(startsWith))
-                    || (endsWith != null && f.getName().endsWith(endsWith))) {
-                if (!f.delete()) {
-                    Log.w(TAG, "Couldn't delete cache file " + f);
-                }
+            if (((startsWith != null && f.getName().startsWith(startsWith))
+                        || (endsWith != null && f.getName().endsWith(endsWith)))
+                    && !f.delete()) {
+                Log.w(TAG, "Couldn't delete cache file " + f);
             }
         }
     }

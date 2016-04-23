@@ -9,9 +9,8 @@ public class CanUpdateAppListAdapter extends AppListAdapter {
     public static CanUpdateAppListAdapter create(Context context, Cursor cursor, int flags) {
         if (Build.VERSION.SDK_INT >= 11) {
             return new CanUpdateAppListAdapter(context, cursor, flags);
-        } else {
-            return new CanUpdateAppListAdapter(context, cursor);
         }
+        return new CanUpdateAppListAdapter(context, cursor);
     }
 
     private CanUpdateAppListAdapter(Context context, Cursor c) {
