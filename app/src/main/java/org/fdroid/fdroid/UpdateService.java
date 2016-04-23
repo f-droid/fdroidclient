@@ -489,15 +489,18 @@ public class UpdateService extends IntentService implements ProgressListener {
                         AppProvider.DataColumns.PACKAGE_NAME,
                         AppProvider.DataColumns.SUGGESTED_VERSION_CODE,
                 }, null, null, null);
-        cursor.moveToFirst();
-        for (int i = 0; i < cursor.getCount(); i++) {
-            App app = new App(cursor);
-            Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode, new String[]{
-                    ApkProvider.DataColumns.NAME,
-            });
-            String urlString = Utils.getApkUrl(repoAddress, apk);
-            DownloaderService.queue(this, app.packageName, urlString);
-            cursor.moveToNext();
+        if (cursor != null) {
+            cursor.moveToFirst();
+            for (int i = 0; i < cursor.getCount(); i++) {
+                App app = new App(cursor);
+                Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode, new String[]{
+                        ApkProvider.DataColumns.NAME,
+                });
+                String urlString = Utils.getApkUrl(repoAddress, apk);
+                DownloaderService.queue(this, app.packageName, urlString);
+                cursor.moveToNext();
+            }
+            cursor.close();
         }
     }
 
