@@ -15,4 +15,5 @@
     <rule ref="rulesets/java/unnecessary.xml">
         <exclude name="UselessParentheses"/> <!--Too nitpicky-->
     </rule>
+    <rule ref="rulesets/java/optimizations.xml/PrematureDeclaration"/>
 </ruleset>

@@ -328,9 +328,6 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
      * 3. Verify that install worked
      */
     private void postInstall() {
-        // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
-        ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
-
         int isInstalledCorrectly =
                 PrivilegedInstaller.isExtensionInstalledCorrectly(this);
 
@@ -366,6 +363,9 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
             default:
                 throw new RuntimeException("unhandled return");
         }
+
+        // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
+        ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(theme)
                 .setTitle(title)
