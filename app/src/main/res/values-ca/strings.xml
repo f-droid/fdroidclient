@@ -345,4 +345,8 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="update_auto_download_summary">Descarregueu els arxius de l\'actualització en segon pla</string>
     <string name="tap_to_install_format">Premeu per instal·lar %s</string>
     <string name="tap_to_update_format">Premeu per actualitzar %s</string>
+    <string name="download_pending">Esperant que comenci la descàrrega…</string>
+
+    <string name="downloading_apk">Descarregant %1$s</string>
+
     </resources>

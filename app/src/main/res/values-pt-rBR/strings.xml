@@ -345,5 +345,9 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="update_auto_download">Baixar automaticamente as atualizações</string>
     <string name="update_auto_download_summary">Baixar os arquivos de atualização em segundo plano</string>
     <string name="tap_to_install_format">Toque para instalar %s</string>
-    <string name="tap_to_update_format">Torneira para atualizar %s</string>
+    <string name="tap_to_update_format">Toque para atualizar %s</string>
+    <string name="download_pending">Esperando para iniciar o download…</string>
+
+    <string name="downloading_apk">Baixando %1$s</string>
+
     </resources>
