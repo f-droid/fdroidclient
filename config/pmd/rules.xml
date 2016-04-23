@@ -18,4 +18,11 @@
     <rule ref="rulesets/java/optimizations.xml/PrematureDeclaration"/>
     <rule ref="rulesets/java/optimizations.xml/AddEmptyString"/>
     <rule ref="rulesets/java/controversial.xml/UnnecessaryConstructor"/>
+    <rule ref="rulesets/java/design.xml/FinalFieldCouldBeStatic"/>
+    <rule ref="rulesets/java/design.xml/CloseResource"/>
+    <rule ref="rulesets/java/design.xml/DefaultLabelNotLastInSwitchStmt"/>
+    <rule ref="rulesets/java/design.xml/UnnecessaryLocalBeforeReturn"/>
+    <rule ref="rulesets/java/design.xml/NonCaseLabelInSwitchStatement"/>
+    <rule ref="rulesets/java/design.xml/EqualsNull"/>
+    <rule ref="rulesets/java/design.xml/IdempotentOperations"/>
 </ruleset>
