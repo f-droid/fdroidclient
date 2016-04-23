@@ -30,14 +30,13 @@ public class FileCompatTest {
 
     private static final String TAG = "FileCompatTest";
 
-    private File dir;
     private SanitizedFile sourceFile;
     private SanitizedFile destFile;
 
     @Before
     public void setUp() {
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
-        dir = TestUtils.getWriteableDir(instrumentation);
+        File dir = TestUtils.getWriteableDir(instrumentation);
         sourceFile = SanitizedFile.knownSanitized(TestUtils.copyAssetToDir(instrumentation.getContext(), "simpleIndex.jar", dir));
         destFile = new SanitizedFile(dir, "dest-" + UUID.randomUUID() + ".testproduct");
         assertFalse(destFile.exists());
