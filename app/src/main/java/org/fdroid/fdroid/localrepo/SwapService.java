@@ -91,10 +91,6 @@ public class SwapService extends Service {
     @NonNull
     private final Set<String> appsToSwap = new HashSet<>();
 
-    public SwapService() {
-        super();
-    }
-
     /**
      * Where relevant, the state of the swap process will be saved to disk using preferences.
      * Note that this is not always useful, for example saving the "current wifi network" is
