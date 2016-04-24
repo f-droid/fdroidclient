@@ -200,7 +200,7 @@ public class TestUtils {
         OutputStream output = null;
         try {
             tempFile = File.createTempFile(assetName + "-", ".testasset", directory);
-            Log.d(TAG, "Copying asset file " + assetName + " to directory " + directory);
+            Log.i(TAG, "Copying asset file " + assetName + " to directory " + directory);
             input = context.getAssets().open(assetName);
             output = new FileOutputStream(tempFile);
             Utils.copy(input, output);

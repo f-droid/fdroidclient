@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.RepoUpdater;
@@ -99,7 +98,7 @@ public class RepoPersister {
         }
 
         if (apksToSave.size() > 0 || appsToSave.size() > 0) {
-            Log.d(TAG, "Flushing details of up to " + MAX_APP_BUFFER + " apps and their packages to the database.");
+            Utils.debugLog(TAG, "Flushing details of up to " + MAX_APP_BUFFER + " apps and their packages to the database.");
             flushAppsToDbInBatch();
             flushApksToDbInBatch();
             apksToSave.clear();

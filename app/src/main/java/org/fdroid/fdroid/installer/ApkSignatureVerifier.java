@@ -24,8 +24,8 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
-import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
 import org.spongycastle.util.encoders.Hex;
 
 import java.io.ByteArrayOutputStream;
@@ -58,9 +58,9 @@ public class ApkSignatureVerifier {
             return true;
         }
 
-        Log.d(TAG, "Signature mismatch!");
-        Log.d(TAG, "APK sig: " + Hex.toHexString(getApkSignature(apkFile)));
-        Log.d(TAG, "F-Droid sig: " + Hex.toHexString(getFDroidSignature()));
+        Utils.debugLog(TAG, "Signature mismatch!");
+        Utils.debugLog(TAG, "APK sig: " + Hex.toHexString(getApkSignature(apkFile)));
+        Utils.debugLog(TAG, "F-Droid sig: " + Hex.toHexString(getFDroidSignature()));
         return false;
     }
 
