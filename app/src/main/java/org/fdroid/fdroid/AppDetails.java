@@ -466,6 +466,9 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void unregisterDownloaderReceivers() {
+        if (localBroadcastManager == null) {
+            return;
+        }
         localBroadcastManager.unregisterReceiver(startedReceiver);
         localBroadcastManager.unregisterReceiver(progressReceiver);
         localBroadcastManager.unregisterReceiver(completeReceiver);
