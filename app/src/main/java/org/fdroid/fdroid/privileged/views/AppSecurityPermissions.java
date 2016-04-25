@@ -420,16 +420,14 @@ public class AppSecurityPermissions {
         final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
         final boolean isNormal = base == PermissionInfo.PROTECTION_NORMAL;
         final boolean isDangerous = base == PermissionInfo.PROTECTION_DANGEROUS;
-        final boolean wasGranted =
-                (existingReqFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0;
 
         // Dangerous and normal permissions are always shown to the user
         if (isNormal || isDangerous) {
             return true;
         }
 
-        final boolean isDevelopment =
-                (pInfo.protectionLevel & PermissionInfo.PROTECTION_FLAG_DEVELOPMENT) != 0;
+        final boolean isDevelopment = (pInfo.protectionLevel & PermissionInfo.PROTECTION_FLAG_DEVELOPMENT) != 0;
+        final boolean wasGranted = (existingReqFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0;
 
         // Development permissions are only shown to the user if they are already
         // granted to the app -- if we are installing an app and they are not

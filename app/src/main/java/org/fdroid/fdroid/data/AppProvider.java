@@ -572,7 +572,7 @@ public class AppProvider extends FDroidProvider {
     public static Uri getSearchUri(Repo repo, String query) {
         return getContentUri().buildUpon()
             .appendPath(PATH_SEARCH_REPO)
-            .appendPath(repo.id + "")
+            .appendPath(String.valueOf(repo.id))
             .appendPath(query)
             .build();
     }

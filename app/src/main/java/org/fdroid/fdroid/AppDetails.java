@@ -439,7 +439,9 @@ public class AppDetails extends AppCompatActivity {
      */
     private void cleanUpFinishedDownload() {
         activeDownloadUrlString = null;
-        headerFragment.removeProgress();
+        if (headerFragment != null) {
+            headerFragment.removeProgress();
+        }
         unregisterDownloaderReceivers();
     }
 
@@ -464,6 +466,9 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void unregisterDownloaderReceivers() {
+        if (localBroadcastManager == null) {
+            return;
+        }
         localBroadcastManager.unregisterReceiver(startedReceiver);
         localBroadcastManager.unregisterReceiver(progressReceiver);
         localBroadcastManager.unregisterReceiver(completeReceiver);
@@ -863,8 +868,7 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void startDownload(Apk apk, String repoAddress) {
-        String urlString = Utils.getApkUrl(repoAddress, apk);
-        activeDownloadUrlString = urlString;
+        activeDownloadUrlString = Utils.getApkUrl(repoAddress, apk);
         registerDownloaderReceivers();
         headerFragment.startProgress();
         DownloaderService.queue(this, apk.packageName, activeDownloadUrlString);

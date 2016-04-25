@@ -268,7 +268,7 @@ public class RepoXMLHandler extends DefaultHandler {
         curchars.setLength(0);
     }
 
-    private String cleanWhiteSpace(@Nullable String str) {
+    private static String cleanWhiteSpace(@Nullable String str) {
         return str == null ? null : str.replaceAll("\\s", " ");
     }
 }

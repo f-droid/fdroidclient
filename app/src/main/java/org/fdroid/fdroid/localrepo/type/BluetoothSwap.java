@@ -22,7 +22,6 @@ public final class BluetoothSwap extends SwapType {
 
     @NonNull
     private final BluetoothAdapter adapter;
-    private BroadcastReceiver receiver;
     private boolean isDiscoverable;
 
     @Nullable
@@ -64,7 +63,7 @@ public final class BluetoothSwap extends SwapType {
             return;
         }
 
-        receiver = new BroadcastReceiver() {
+        BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 switch (intent.getIntExtra(BluetoothAdapter.EXTRA_SCAN_MODE, -1)) {

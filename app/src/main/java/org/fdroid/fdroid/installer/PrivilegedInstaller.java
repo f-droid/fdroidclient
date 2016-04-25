@@ -76,7 +76,7 @@ public class PrivilegedInstaller extends Installer {
     private static final String PRIVILEGED_EXTENSION_SERVICE_INTENT = "org.fdroid.fdroid.privileged.IPrivilegedService";
     public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME = "org.fdroid.fdroid.privileged";
 
-    private Activity mActivity;
+    private final Activity mActivity;
 
     private static final int REQUEST_CONFIRM_PERMS = 0;
 

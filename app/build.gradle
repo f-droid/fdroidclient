@@ -208,16 +208,8 @@ pmd {
 }
 
 task pmd(type: Pmd, dependsOn: assembleDebug) {
-    ruleSets = [
-        //'java-basic',
-        'java-unusedcode',
-        'java-android',
-        'java-clone',
-        'java-finalizers',
-        'java-imports',
-        'java-migrating',
-        //'java-unnecessary', // too nitpicky with parenthesis
-    ]
+    ruleSetFiles = files("${project.rootDir}/config/pmd/rules.xml")
+    ruleSets = [] // otherwise defaults clash with the list in rules.xml
     source 'src/main/java', 'src/test/java', 'src/androidTest/java'
     include '**/*.java'
 }

@@ -259,7 +259,7 @@ public class BluetoothServer extends Thread {
             try {
                 // Calculate etag
                 String etag = Integer
-                        .toHexString((file.getAbsolutePath() + file.lastModified() + "" + file.length())
+                        .toHexString((file.getAbsolutePath() + file.lastModified() + String.valueOf(file.length()))
                                 .hashCode());
 
                 // Support (simple) skipping:
@@ -306,7 +306,7 @@ public class BluetoothServer extends Thread {
                         fis.skip(startFrom);
 
                         res = createResponse(NanoHTTPD.Response.Status.PARTIAL_CONTENT, mime, fis);
-                        res.addHeader("Content-Length", "" + dataLen);
+                        res.addHeader("Content-Length", String.valueOf(dataLen));
                         res.addHeader("Content-Range", "bytes " + startFrom + "-" + endAt + "/"
                                 + fileLen);
                         res.addHeader("ETag", etag);
@@ -316,7 +316,7 @@ public class BluetoothServer extends Thread {
                         res = createResponse(NanoHTTPD.Response.Status.NOT_MODIFIED, mime, "");
                     } else {
                         res = createResponse(NanoHTTPD.Response.Status.OK, mime, new FileInputStream(file));
-                        res.addHeader("Content-Length", "" + fileLen);
+                        res.addHeader("Content-Length", String.valueOf(fileLen));
                         res.addHeader("ETag", etag);
                     }
                 }

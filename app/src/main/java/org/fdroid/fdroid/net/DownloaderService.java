@@ -94,7 +94,7 @@ public class DownloaderService extends Service {
     private static volatile Downloader downloader;
     private LocalBroadcastManager localBroadcastManager;
 
-    private static final HashMap<String, Integer> QUEUE_WHATS = new HashMap<String, Integer>();
+    private static final HashMap<String, Integer> QUEUE_WHATS = new HashMap<>();
     private int what;
 
     private final class ServiceHandler extends Handler {

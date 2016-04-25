@@ -58,6 +58,8 @@ To get all the logcat messages by F-Droid, you can run:
 * Use gradle with `--daemon` if you are going to build F-Droid multiple times.
 * If you get a message like `Could not find com.android.support:support-...`,
   make sure that you have the latest Android support maven repository.
+* When building as part of AOSP with `Android.mk`, make sure you have a
+  recent version of Gradle installed as `gradlew` will not be used.
 
 ## Running the test suite
 

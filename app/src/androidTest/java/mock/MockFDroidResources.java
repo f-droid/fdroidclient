@@ -7,7 +7,7 @@ import org.fdroid.fdroid.R;
 
 public class MockFDroidResources extends MockResources {
 
-    private Context getStringDelegatingContext;
+    private final Context getStringDelegatingContext;
 
     public MockFDroidResources(Context getStringDelegatingContext) {
         this.getStringDelegatingContext = getStringDelegatingContext;

@@ -160,7 +160,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
      * repository indeed contains the apks that it said it would provide.
      */
     private void assertExpected() {
-        Log.d(TAG, "Asserting all versions of each .apk are in index.");
+        Log.i(TAG, "Asserting all versions of each .apk are in index.");
         List<Repo> repos = RepoProvider.Helper.all(context);
         assertEquals("Repos", 3, repos.size());
 
@@ -173,7 +173,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
      *
      */
     private void assertSomewhatAcceptable() {
-        Log.d(TAG, "Asserting at least one versions of each .apk is in index.");
+        Log.i(TAG, "Asserting at least one versions of each .apk is in index.");
         List<Repo> repos = RepoProvider.Helper.all(context);
         assertEquals("Repos", 3, repos.size());
 

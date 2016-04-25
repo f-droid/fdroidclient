@@ -221,7 +221,7 @@ public class LocalHTTPD extends NanoHTTPD {
         try {
             // Calculate etag
             String etag = Integer
-                    .toHexString((file.getAbsolutePath() + file.lastModified() + "" + file.length())
+                    .toHexString((file.getAbsolutePath() + file.lastModified() + String.valueOf(file.length()))
                             .hashCode());
 
             // Support (simple) skipping:
@@ -268,7 +268,7 @@ public class LocalHTTPD extends NanoHTTPD {
                     fis.skip(startFrom);
 
                     res = createResponse(Response.Status.PARTIAL_CONTENT, mime, fis);
-                    res.addHeader("Content-Length", "" + dataLen);
+                    res.addHeader("Content-Length", String.valueOf(dataLen));
                     res.addHeader("Content-Range", "bytes " + startFrom + "-" + endAt + "/"
                             + fileLen);
                     res.addHeader("ETag", etag);
@@ -278,7 +278,7 @@ public class LocalHTTPD extends NanoHTTPD {
                     res = createResponse(Response.Status.NOT_MODIFIED, mime, "");
                 } else {
                     res = createResponse(Response.Status.OK, mime, new FileInputStream(file));
-                    res.addHeader("Content-Length", "" + fileLen);
+                    res.addHeader("Content-Length", String.valueOf(fileLen));
                     res.addHeader("ETag", etag);
                 }
             }
