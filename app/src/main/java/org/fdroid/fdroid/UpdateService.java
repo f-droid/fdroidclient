@@ -355,6 +355,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             ArrayList<CharSequence> repoErrors = new ArrayList<>();
             boolean changes = false;
             boolean singleRepoUpdate = !TextUtils.isEmpty(address);
+            final Preferences fdroidPrefs = Preferences.get();
             for (final Repo repo : repos) {
                 if (!repo.inuse) {
                     continue;
@@ -389,7 +390,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 localBroadcastManager.unregisterReceiver(downloadProgressReceiver);
 
                 // now that downloading the index is done, start downloading updates
-                if (changes && Preferences.get().isAutoDownloadEnabled()) {
+                if (changes && fdroidPrefs.isAutoDownloadEnabled()) {
                     autoDownloadUpdates(repo.address);
                 }
             }
@@ -399,7 +400,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             } else {
                 notifyContentProviders();
 
-                if (Preferences.get().isUpdateNotificationEnabled()) {
+                if (fdroidPrefs.isUpdateNotificationEnabled() && !fdroidPrefs.isAutoDownloadEnabled()) {
                     performUpdateNotification();
                 }
             }
