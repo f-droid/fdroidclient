@@ -168,6 +168,8 @@ public class DownloaderService extends Service {
                 .setAutoCancel(true)
                 .setContentIntent(createAppDetailsIntent(this, 0, packageName))
                 .setContentTitle(getNotificationTitle(packageName))
+                .addAction(R.drawable.ic_cancel_black_24dp, getString(R.string.cancel),
+                        createCancelDownloadIntent(this, 0, urlString))
                 .setSmallIcon(android.R.drawable.stat_sys_download)
                 .setContentText(urlString)
                 .setProgress(100, 0, true);
@@ -182,7 +184,7 @@ public class DownloaderService extends Service {
         String title;
         if (packageName != null) {
             App app = AppProvider.Helper.findByPackageName(
-                    getContentResolver(), packageName, new String[] {AppProvider.DataColumns.NAME});
+                    getContentResolver(), packageName, new String[]{AppProvider.DataColumns.NAME});
             title = getString(R.string.downloading_apk, app.name);
         } else {
             title = getString(R.string.downloading);
@@ -209,6 +211,17 @@ public class DownloaderService extends Service {
         }
 
         return stackBuilder.getPendingIntent(requestCode, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
+    public static PendingIntent createCancelDownloadIntent(@NonNull Context context, int
+            requestCode, @NonNull String urlString) {
+        Intent cancelIntent = new Intent(context.getApplicationContext(), DownloaderService.class)
+                .setData(Uri.parse(urlString))
+                .setAction(ACTION_CANCEL);
+        return PendingIntent.getService(context.getApplicationContext(),
+                requestCode,
+                cancelIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
     }
 
     @Override
@@ -361,6 +374,7 @@ public class DownloaderService extends Service {
      * Check if a URL is waiting in the queue for downloading or if actively being downloaded.
      * This is useful for checking whether to re-register {@link android.content.BroadcastReceiver}s
      * in {@link android.app.Activity#onResume()}.
+     *
      * @see DownloaderService#isQueued(String)
      * @see DownloaderService#isActive(String)
      */
