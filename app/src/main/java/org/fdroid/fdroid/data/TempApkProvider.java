@@ -68,12 +68,16 @@ public class TempApkProvider extends ApkProvider {
         /**
          * Deletes the old temporary table (if it exists). Then creates a new temporary apk provider
          * table and populates it with all the data from the real apk provider table.
+         *
+         * This is package local because it must be invoked after
+         * {@link org.fdroid.fdroid.data.TempAppProvider.Helper#init(Context)}. Due to this
+         * dependence, that method invokes this one itself, rather than leaving it to the
+         * {@link RepoPersister}.
          */
-        public static void init(Context context) {
+        static void init(Context context) {
             Uri uri = Uri.withAppendedPath(getContentUri(), PATH_INIT);
             context.getContentResolver().insert(uri, new ContentValues());
         }
-
     }
 
     @Override
@@ -123,11 +127,11 @@ public class TempApkProvider extends ApkProvider {
 
     private void initTable() {
         final SQLiteDatabase db = db();
-        db.execSQL("DROP TABLE IF EXISTS " + getTableName());
-        db.execSQL("CREATE TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APK);
-        db.execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + getTableName() + " (vercode);");
-        db.execSQL("CREATE INDEX IF NOT EXISTS apk_id on " + getTableName() + " (id);");
-        db.execSQL("CREATE INDEX IF NOT EXISTS apk_compatible ON " + getTableName() + " (compatible);");
+        final String memoryDbName = TempAppProvider.DB;
+        db.execSQL("CREATE TABLE " + memoryDbName + "." + getTableName() + " AS SELECT * FROM main." + DBHelper.TABLE_APK);
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_vercode on " + getTableName() + " (vercode);");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_id on " + getTableName() + " (id);");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_compatible ON " + getTableName() + " (compatible);");
     }
 
 }

@@ -91,9 +91,8 @@ public class RepoPersister {
             // end of the process. This is due to the fact that we can't verify the cert
             // the index was signed with until we've finished reading it - and we don't
             // want to put stuff in the real database until we are sure it is from a
-            // trusted source.
+            // trusted source. It also helps performance as it is done via an in-memory database.
             TempAppProvider.Helper.init(context);
-            TempApkProvider.Helper.init(context);
             hasBeenInitialized = true;
         }
 
