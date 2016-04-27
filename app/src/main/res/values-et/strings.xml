@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="app_name">F-Droid</string>
+
+    <string name="SignatureMismatch">Uus versioon on allkirjastatud vana versiooniga võrreldes erineva võtmega. Uue versiooni paigaldamiseks on vaja esmalt eemaldada vana. Palun tee seda ja proovi uuesti. (Tähelepanu: eemaldamisel kustutatakse programmiga seotud andmed.)</string>
+    <string name="installIncompatible">Tundub, et see pakett ei ühildu su seadmega. Kas sa soovid ikkagi proovida selle paigaldamist?</string>
+    <string name="installDowngrade">Sa proovid võtta kasutusele programmi varasemat versiooni. Sedasi võib programm töötada valesti või isegi kustutada su andmeid. Kas sa soovid ikkagi proovida varasema versiooni kasutamist?</string>
+    <string name="version">Versioon</string>
+    <string name="by_author">autoritelt</string>
+    <string name="delete">Kustuta</string>
+    <string name="enable_nfc_send">Luba NFC andmevahetus…</string>
+    <string name="cache_downloaded">Pakettide puhverdamine</string>
+    <string name="cache_downloaded_on">Talleta alla laaditud paketid seadmes</string>
+    <string name="updates">Uuendused</string>
+    <string name="unstable_updates">Ebastabiilsed uuendused</string>
+    <string name="unstable_updates_summary">Soovita uuendamist ebastabiilsetele versioonidele</string>
+    <string name="other">Muu</string>
+
+    <string name="update_interval">Automaatuuenduste intervall</string>
+    <string name="update_interval_zero">Ära uuenda programmide loendit automaatselt</string>
+    <string name="automatic_scan_wifi">Ainult Wi-Fi ühendusega</string>
+    <string name="automatic_scan_wifi_on">Uuenda rakenduste loendit automaatselt ainult Wi-Fi ühendusega</string>
+    </resources>

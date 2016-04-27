@@ -25,7 +25,7 @@
   <string name="local_repo_https">保護された接続を使用する</string>
   <string name="local_repo_https_on">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘに暗号化されたHTTPS://接続を使用する</string>
   <string name="app_details">ｱﾌﾟﾘ詳細</string>
-  <string name="no_such_app">該当するｱﾌﾟﾘｹｰｼｮﾝが存在しません｡</string>
+  <string name="no_such_app">該当するｱﾌﾟﾘが見つかりません.</string>
   <string name="about_title">F-Droidについて</string>
   <string name="about_site">Webｻｲﾄ</string>
   <string name="about_mail">電子ﾒｰﾙ</string>
@@ -46,8 +46,8 @@
   <string name="overwrite">上書き</string>
   <string name="tab_available_apps">入手可能</string>
   <string name="tab_updates">更新</string>
-  <string name="one_update_available">1つの更新があります｡</string>
-  <string name="many_updates_available">%d 個の更新があります｡</string>
+  <string name="one_update_available">1個の更新があります。</string>
+  <string name="many_updates_available">%d個の更新があります.</string>
   <string name="fdroid_updates_available">F-Droidの更新があります</string>
   <string name="bluetooth_activity_not_found">Bluetoothの送信方法がありません､選択してください!</string>
   <string name="choose_bt_send">Bluetoothの送信方法を選択してください</string>
@@ -106,7 +106,7 @@
   <string name="adding_apks_format">ﾘﾎﾟｼﾞﾄﾘに %s を追加中</string>
   <string name="writing_index_jar">署名された索引ﾌｧｲﾙを書き込み中(index.jar)…</string>
   <string name="failed_to_create_index">ﾘﾎﾟｼﾞﾄﾘの索引の作成に失敗しました｡</string>
-  <string name="linking_apks">ﾘﾎﾟｼﾞﾄﾘにAPKを関連付けています｡。。</string>
+  <string name="linking_apks">ﾘﾎﾟｼﾞﾄﾘにAPKを関連付けています…</string>
   <string name="copying_icons">ﾘﾎﾟｼﾞﾄﾘにｱﾌﾟﾘｹｰｼｮﾝのｱｲｺﾝを複製中…</string>
   <string name="icon">ｱｲｺﾝ</string>
   <string name="next">次へ</string>
@@ -172,7 +172,7 @@
   <string name="swap_view_available_networks">ﾀｯﾌﾟして有効なﾈｯﾄﾜｰｸを開く</string>
   <string name="open_qr_code_scanner">QRｺｰﾄﾞｽｷｬﾅｰを開く</string>
   <string name="swap_welcome">F-Droidへようこそ！</string>
-  <string name="swap_confirm_connect">今すぐ %1$s からｱﾌﾟﾘｹｰｼｮﾝを取得しますか。</string>
+  <string name="swap_confirm_connect">今すぐ%1$sからｱﾌﾟﾘを取得しますか?</string>
 <string name="uninstall_system">特権拡張をｲﾝｽﾄｰﾙ又はｱﾝｲﾝｽﾄｰﾙ</string>
     <string name="uninstall_system_summary">特権拡張の詳細画面を開い､ｱﾌﾟﾘをｲﾝｽﾄｰﾙ又はｱﾝｲﾝｽﾄｰﾙします｡</string>
     <string name="app_incompatible">非互換</string>
@@ -212,10 +212,10 @@
     <string name="system_install_post_fail_message">F-Droid 特権拡張のｲﾝｽﾄｰﾙに失敗しました｡全ての Android ﾃﾞｨｽﾄﾘﾋﾞｭｰｼｮﾝで､このｲﾝｽﾄｰﾙ方法が使用できる訳ではありません｡詳細については F-Droid の不具合追跡機能を参照してください｡</string>
     <string name="system_install_installing">ｲﾝｽﾄｰﾙ中…</string>
     <string name="system_install_uninstalling">ｱﾝｲﾝｽﾄｰﾙ中…</string>
-    <string name="system_install_question">F-Droid 特権拡張をｲﾝｽﾄｰﾙしますか。</string>
+    <string name="system_install_question">F-Droidの特権拡張をｲﾝｽﾄｰﾙしますか?</string>
     <string name="system_install_warning_lollipop">特権 F-Droid をｲﾝｽﾄｰﾙしますか\nこれには､約10 秒程かかりその後端末を再起動します｡<b>再起動</b> します｡</string>
     <string name="system_install_first_time_message">端末に管理者権限でｱｸｾｽできるようです｡Android のｵﾍﾟﾚｰﾃｨﾝｸﾞｼｽﾃﾑと密接に関連した F-Droid 特権拡張をｲﾝｽﾄｰﾙすることができます｡これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙとｱｯﾌﾟｸﾞﾚｰﾄﾞ､及びｱﾝｲﾝｽﾄｰﾙをすることができます｡</string>
-    <string name="system_uninstall">F-Droid 特権拡張をｱﾝｲﾝｽﾄｰﾙしますか。</string>
+    <string name="system_uninstall">F-Droidの特権拡張をｱﾝｲﾝｽﾄｰﾙしますか?</string>
     <string name="system_uninstall_button">ｱﾝｲﾝｽﾄｰﾙ</string>
 
     <string name="swap_success">正常に交換しました｡</string>
@@ -238,7 +238,7 @@
     <string name="swap_setting_up_wifi">Wi-Fi の設定中…</string>
     <string name="swap_not_visible_wifi">Wi-Fi 経由で表示できません</string>
     <string name="swap_wifi_device_name">端末名</string>
-    <string name="swap_cant_find_peers">探している人が見つかりませんか。</string>
+    <string name="swap_cant_find_peers">探している人が見つかりませんか?</string>
     <string name="swap_send_fdroid">F-Droidを送信</string>
     <string name="swap_no_peers_nearby">交換する近くの人が見つかりませんでした｡</string>
     <string name="swap_connecting">接続中</string>
@@ -346,4 +346,8 @@
     <string name="update_auto_download_summary">ﾊﾞｯｸｸﾞﾗｳﾝﾄﾞで更新をﾀﾞｳﾝﾛｰﾄﾞします</string>
     <string name="tap_to_install_format">ﾀｯﾌﾟして %s をｲﾝｽﾄｰﾙ</string>
     <string name="tap_to_update_format">ﾀｯﾌﾟして %s を更新</string>
+    <string name="download_pending">ﾀﾞｳﾝﾛｰﾄﾞの開始を待っています…</string>
+
+    <string name="downloading_apk">%1$s のﾀﾞｳﾝﾛｰﾄﾞ中</string>
+
     </resources>

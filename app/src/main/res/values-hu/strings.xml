@@ -1,10 +1,10 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Az új verzió a régitől eltérő kulccsal van aláírva. Az új verzió telepítéséhez először el kell távolítani a régit. Kérem tegye meg ezt és próbálja újra. (Megjegyzendő, hogy az eltávolítás törli az alkalmazás minden tárolt adatát)</string>
   <string name="installIncompatible">Úgy tűnik, ez a csomag nem kompatibilis a készülékkel. Ennek ellenére is megpróbálja telepíteni?</string>
   <string name="installDowngrade">Ön megpróbálta régebbivel felülírni az alkalmazást. Ez hibás működést és az adatok elvesztését okozhatja. Ennek ellenére is megpróbálja telepíteni?</string>
   <string name="version">Verzió</string>
-  <string name="cache_downloaded">App cache</string>
+  <string name="cache_downloaded">Csomagok gyorsítótárazása</string>
   <string name="cache_downloaded_on">A letöltött csomagfájlokat megtartja a készüléken</string>
   <string name="updates">Frissítések</string>
   <string name="other">egyéb</string>
@@ -66,7 +66,7 @@
   <string name="corrupt_download">A letöltött fájl hibás.</string>
   <string name="antiadslist">Az alkalmazás reklámot tartalmaz</string>
   <string name="antitracklist">Az alkalmazás nyomon követi és jelenti a tevékenységeit</string>
-  <string name="antinonfreeadlist">Az alkalmazás nem ingyenes kiegészítőket támogat</string>
+  <string name="antinonfreeadlist">Az alkalmazás nem szabad kiegészítőket támogat</string>
   <string name="antinonfreenetlist">Az alkalmazás nem ingyenes hálózati szolgáltatásokat támogat</string>
   <string name="antinonfreedeplist">Az alkalmazás egyéb, nem szabad alkalmazásoktól függ</string>
   <string name="antiupstreamnonfreelist">Az upstream forráskód nem teljesen szabad</string>
@@ -251,4 +251,22 @@
     <string name="crash_dialog_title">Az F-Droid összeomlott</string>
     <string name="crash_dialog_text">Egy váratlan hiba következtében az alkalmazásnak le kellett állnia. Szeretné elküldeni e-mailben a részleteket, hogy segítsen a probléma javításában?</string>
     <string name="crash_dialog_comment_prompt">Itt adhat meg további adatokat és megjegyzéseket:</string>
-</resources>
+<string name="update_auto_download">Frissítések automatikus letöltése</string>
+    <string name="update_auto_download_summary">Frissítések letöltése a háttérben</string>
+    <string name="choose_bt_send">Válassza ki a Bluetooth küldés módját</string>
+    <string name="repo_provider">Tároló: %s</string>
+
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
+
+
+    <string name="failed_to_create_index">Nem sikerült létrehozni a repo indexfájlt!</string>
+    <string name="copying_icons">App ikonok másolása a repóba…</string>
+    <string name="useTor">Tor használata</string>
+    <string name="wifi_ap">Hotspot</string>
+
+    <string name="requesting_root_access_body">Root hozzáférés kérése…</string>
+    <string name="root_access_denied_title">Root hozzáférés megtagadva</string>
+    <string name="root_access_denied_body">A készüléke vagy nem rootolt, vagy megtagadta az F-Droid root hozzáférését.</string>
+    </resources>

@@ -50,7 +50,7 @@
   <string name="antitracklist">این کاره، فعّالیت‌هایتان را ردیابی و گزارش می‌کند</string>
   <string name="antinonfreeadlist">این کاره، افزونه‌های غیر آزاد را تبلیغ می‌کند</string>
   <string name="antinonfreenetlist">این کاره، خدمات شبکه‌های غیر آزاد را تبلیغ می‌کند</string>
-  <string name="antinonfreedeplist">این کراه، به دیگر کاره‌های غیر آزاد وابسته است</string>
+  <string name="antinonfreedeplist">این کاره، به دیگر کاره‌های غیر آزاد وابسته است</string>
   <string name="antiupstreamnonfreelist">کد مبدأ بالادستی، کاملاً آزاد نیست</string>
   <string name="display">نمایش</string>
   <string name="expert_on">نمایش اطّلاعات و فعّال کردن تنظیمات اضافی</string>
@@ -349,4 +349,8 @@
     <string name="update_auto_download_summary">بارگیری پرونده‌های به‌روز رسانی در پس‌زمینه</string>
     <string name="tap_to_install_format">برای نصب %s ضربه بزنید</string>
     <string name="tap_to_update_format">برای به‌روز رسانی %s ضربه بزنید</string>
+    <string name="download_pending">در انتظار شروع بارگیری…</string>
+
+    <string name="downloading_apk">در حال بارگیری %1$s</string>
+
     </resources>

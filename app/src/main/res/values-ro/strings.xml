@@ -303,4 +303,21 @@
     <string name="bluetooth_unavailable">Bluetooth indisponibil</string>
     <string name="repo_provider">Depozit: %s</string>
 
+    <string name="update_auto_download">Descarca automat actualizarile</string>
+    <string name="update_auto_download_summary">Se descarca fisierele actualizate in fundal</string>
+    <string name="useTorSummary">Pentru a iti proteja intimitatea, forteaza folosirea Tor pentru descarcari</string>
+    <string name="no_handler_app">Nu exista nici o aplicatie disponibila care sa poata folosi %s.</string>
+    <string name="tap_to_install_format">Atinge pentru a instala %s</string>
+    <string name="tap_to_update_format">Atinge pentru a actualiza %s</string>
+    <string name="install_confirm">Sigur vrei sa instalezi aceasta aplicatie? Va primi acces la:</string>
+    <string name="install_confirm_no_perms">Sigur vrei sa instalezi aceasta aplicatie? Nu necesita vreun acces special.</string>
+    <string name="install_confirm_update">Sigur vrei sa instalezi o actualizare la o aplicatie existenta? Datele curente nu se vor pierde. Aplicatia odata actualizata va primi acces la:</string>
+    <string name="install_confirm_update_system">Sigur vrei sa instalezi o actualizare la o aplicatie inclusa in Android? Datele curente nu se vor pierde. Aplicatia odata actualizata va primi acces la:</string>
+    <string name="install_confirm_update_no_perms">Sigur vrei sa instalezi o actualizare la aceasta aplicatie existenta? Datele curente nu se vor pierde. Nu necesita vreun acces special.</string>
+    <string name="install_confirm_update_system_no_perms">Sigur vrei sa instalezi o actualizare la o aplicatie inclusa in Android? Datele curente nu se vor pierde. Nu necesita vreun acces special.</string>
+    <string name="crash_dialog_comment_prompt">Puteti adauga informatii si comentarii aici:</string>
+<string name="downloading_apk">Descarcare %1$s</string>
+
+    <string name="download_pending">Asteptare pornire descarcare…</string>
+
     </resources>
