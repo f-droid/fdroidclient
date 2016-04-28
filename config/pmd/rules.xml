@@ -39,4 +39,8 @@
     <rule ref="rulesets/java/design.xml/IdempotentOperations"/>
     <rule ref="rulesets/java/design.xml/ImmutableField"/>
     <rule ref="rulesets/java/design.xml/SingularField"/>
+    <rule ref="rulesets/java/design.xml/SimplifyBooleanReturns"/>
+    <rule ref="rulesets/java/design.xml/SimplifyBooleanExpressions"/>
+    <rule ref="rulesets/java/design.xml/LogicInversion"/>
+
 </ruleset>

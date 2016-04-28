@@ -29,12 +29,8 @@ public class AppFilter {
             return false;
         }
 
-        if (!Preferences.get().filterAppsRequiringRoot() &&
-                app.requirements.contains("root")) {
-            return true;
-        }
-
-        return false;
+        return !Preferences.get().filterAppsRequiringRoot()
+                && app.requirements.contains("root");
     }
 
 }
