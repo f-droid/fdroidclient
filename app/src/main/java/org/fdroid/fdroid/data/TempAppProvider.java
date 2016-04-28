@@ -3,20 +3,14 @@ package org.fdroid.fdroid.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.net.Uri;
-import android.text.TextUtils;
-import android.util.Log;
-
-import org.fdroid.fdroid.Utils;
 
 /**
  * This class does all of its operations in a temporary sqlite table.
  */
 public class TempAppProvider extends AppProvider {
-
-    private static final String TAG = "TempAppProvider";
 
     /**
      * The name of the in memory database used for updating.
@@ -120,18 +114,12 @@ public class TempAppProvider extends AppProvider {
     }
 
     private void ensureTempTableDetached(SQLiteDatabase db) {
-        Cursor cursor = db.rawQuery("PRAGMA database_list", null);
         try {
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                String name = cursor.getString(cursor.getColumnIndex("name"));
-                if (TextUtils.equals(name, DB)) {
-                    db.execSQL("DETACH DATABASE " + DB);
-                }
-                cursor.moveToNext();
-            }
-        } finally {
-            cursor.close();
+            db.execSQL("DETACH DATABASE " + DB);
+        } catch (SQLiteException e) {
+            // We expect that most of the time the database will not exist unless an error occurred
+            // midway through the last update, The resulting exception is:
+            //   android.database.sqlite.SQLiteException: no such database: temp_update_db (code 1)
         }
     }
 
