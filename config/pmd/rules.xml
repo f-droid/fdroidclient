@@ -20,6 +20,7 @@
     <rule ref="rulesets/java/optimizations.xml/UseArraysAsList"/>
 
     <rule ref="rulesets/java/controversial.xml/UnnecessaryConstructor"/>
+    <rule ref="rulesets/java/controversial.xml/UnnecessaryParentheses"/>
 
     <rule ref="rulesets/java/strictexception.xml/AvoidRethrowingException"/>
     <rule ref="rulesets/java/strictexception.xml/AvoidCatchingThrowable"/>
