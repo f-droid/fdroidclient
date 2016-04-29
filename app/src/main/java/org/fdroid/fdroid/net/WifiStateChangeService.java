@@ -219,7 +219,7 @@ public class WifiStateChangeService extends Service {
                             if (inetAddress.equals(address.getAddress()) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
                                 String cidr = String.format(Locale.ENGLISH, "%s/%d",
                                         FDroidApp.ipAddressString, address.getNetworkPrefixLength());
-                                FDroidApp.subnetInfo = (new SubnetUtils(cidr)).getInfo();
+                                FDroidApp.subnetInfo = new SubnetUtils(cidr).getInfo();
                                 break;
                             }
                         }

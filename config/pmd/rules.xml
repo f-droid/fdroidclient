@@ -17,7 +17,19 @@
     </rule>
     <rule ref="rulesets/java/optimizations.xml/PrematureDeclaration"/>
     <rule ref="rulesets/java/optimizations.xml/AddEmptyString"/>
+    <rule ref="rulesets/java/optimizations.xml/UseArraysAsList"/>
+
     <rule ref="rulesets/java/controversial.xml/UnnecessaryConstructor"/>
+    <rule ref="rulesets/java/controversial.xml/UnnecessaryParentheses"/>
+
+    <rule ref="rulesets/java/strictexception.xml/AvoidRethrowingException"/>
+    <rule ref="rulesets/java/strictexception.xml/AvoidCatchingThrowable"/>
+    <rule ref="rulesets/java/strictexception.xml/AvoidCatchingNPE"/>
+    <rule ref="rulesets/java/strictexception.xml/DoNotExtendJavaLangError"/>
+    <rule ref="rulesets/java/strictexception.xml/DoNotThrowExceptionInFinally"/>
+    <rule ref="rulesets/java/strictexception.xml/AvoidThrowingNewInstanceOfSameException"/>
+    <rule ref="rulesets/java/strictexception.xml/AvoidThrowingNullPointerException"/>
+
     <rule ref="rulesets/java/design.xml/FinalFieldCouldBeStatic"/>
     <rule ref="rulesets/java/design.xml/CloseResource"/>
     <rule ref="rulesets/java/design.xml/DefaultLabelNotLastInSwitchStmt"/>
@@ -27,4 +39,8 @@
     <rule ref="rulesets/java/design.xml/IdempotentOperations"/>
     <rule ref="rulesets/java/design.xml/ImmutableField"/>
     <rule ref="rulesets/java/design.xml/SingularField"/>
+    <rule ref="rulesets/java/design.xml/SimplifyBooleanReturns"/>
+    <rule ref="rulesets/java/design.xml/SimplifyBooleanExpressions"/>
+    <rule ref="rulesets/java/design.xml/LogicInversion"/>
+
 </ruleset>
