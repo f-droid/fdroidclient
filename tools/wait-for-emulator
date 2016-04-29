@@ -24,7 +24,7 @@ while true; do
 	if [[ $sec -ge $timeout ]]; then
 		err "Timeout ($timeout seconds) reached - Failed to start emulator"
 	fi
-	out=$(adb -e shell getprop init.svc.bootanim 2>&1)
+	out=$(adb -e shell getprop init.svc.bootanim 2>&1 | grep -v '^\*')
 	if [[ "$out" =~ "command not found" ]]; then
 		err "$out"
 	fi
