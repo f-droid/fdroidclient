@@ -145,4 +145,24 @@
     <string name="swap_people_nearby">आसपास लोग</string>
     <string name="swap_scanning_for_peers">आसपास लोगो को खोज रहे हैं…</string>
     <string name="swap_nearby">आसपास अदला-बदली</string>
+    <string name="status_processing_xml_percent">प्रक्रिया मैं है %2$s / %3$s (%4$d%%) से %1$s</string>
+    <string name="status_connecting_to_repo">%1$s
+\nको जोड़ रहा</string>
+    <string name="status_inserting_apps">आवेदन विवरण सम्हाल रखना</string>
+    <string name="repos_unchanged">सारी रेपोसितोरिएस नवीनतम हैं</string>
+        <string name="all_other_repos_fine">सभी दुसरे रेपो ने कोई गलती नहीं बनाई|</string>
+        <string name="global_error_updating_repos">अपडेट के दौरान एरर: %s</string>
+    <string name="one_update_available">१ अपडेट उपलब्ध है|</string>
+    <string name="many_updates_available">%d अपडेटस उपलब्ध हैं|</string>
+    <string name="fdroid_updates_available">F-Droid अपडेट उपलब्ध</string>
+    <string name="update_notification_more">+%1$d और…</string>
+    <string name="bluetooth_activity_not_found">Bluettoth से भेजने का तरीका उपलब नहीं है, एक चुने!</string>
+    <string name="choose_bt_send">Bluetooth से भेजने का तरीका चुने</string>
+    <string name="send_via_bluetooth">Bluetooth द्वारा भेजे</string>
+
+    <string name="repo_add_url">रिपॉजिटरी पता</string>
+    <string name="repo_add_fingerprint">अंगुली की छाप(वैकल्पिक)</string>
+    <string name="repo_exists_add_fingerprint">यह रेपो पहले से ही स्थापित है, इस से नयी कीय जानकारी जुड़ जायेगी|</string>
+    <string name="repo_exists_enable">यह रेपो पहले से ही स्थापित है, पुष्टि करे की आप इसे फिर से चालू करना चाहते हैं|</string>
+    <string name="repo_exists_and_enabled">आने वाली रेपो पहले से ही सैट उप और सक्षम है|</string>
     </resources>

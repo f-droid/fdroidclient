@@ -269,4 +269,7 @@
     <string name="requesting_root_access_body">Root hozzáférés kérése…</string>
     <string name="root_access_denied_title">Root hozzáférés megtagadva</string>
     <string name="root_access_denied_body">A készüléke vagy nem rootolt, vagy megtagadta az F-Droid root hozzáférését.</string>
+    <string name="menu_email">E-mail a készítőnek</string>
+    <string name="useTorSummary">Letöltési forgalom kényszerítése Tor használatára az adatvédelem növeléséért</string>
+    <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) feldolgozása, forrás: %1$s</string>
     </resources>
