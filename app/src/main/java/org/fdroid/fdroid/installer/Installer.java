@@ -170,7 +170,7 @@ public abstract class Installer {
      */
     public void installPackage(File apkFile, String packageName, String urlString)
             throws InstallFailedException {
-        SanitizedFile apkToInstall = null;
+        SanitizedFile apkToInstall;
         try {
             Map<String, Object> attributes = AndroidXMLDecompress.getManifestHeaderAttributes(apkFile.getAbsolutePath());
 

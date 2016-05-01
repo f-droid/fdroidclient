@@ -206,6 +206,21 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
         // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
+        // not support on Android >= 5.1
+        if (android.os.Build.VERSION.SDK_INT >= 22) {
+            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(theme);
+            alertBuilder.setMessage(R.string.system_install_not_supported);
+            alertBuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    InstallExtensionDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                    InstallExtensionDialogActivity.this.finish();
+                }
+            });
+            alertBuilder.create().show();
+            return;
+        }
+
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(theme);
         alertBuilder.setTitle(R.string.system_install_question);
         String message = InstallExtension.create(getApplicationContext()).getWarningString();
