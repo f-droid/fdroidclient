@@ -65,16 +65,19 @@ import java.util.Set;
 /**
  * NOTES:
  * Based on AOSP core/java/android/widget/AppSecurityPermissions
- * ec2d48b96d1f95fb266914df294a27c210f8c3f5
+ * latest included commit: a3f68ef2f6811cf72f1282214c0883db5a30901d
+ *
+ * To update this file:
+ * - Open https://github.com/android/platform_frameworks_base/commits/master/core/java/android/widget/AppSecurityPermissions.java
+ * - Start from latest included commit and include changes until the newest commit with care
  */
 @TargetApi(Build.VERSION_CODES.M)
 public class AppSecurityPermissions {
 
     private static final String TAG = "AppSecurityPermissions";
 
-    public static final int WHICH_PERSONAL = 1 << 0;
-    public static final int WHICH_DEVICE = 1 << 1;
-    public static final int WHICH_NEW = 1 << 2;
+    public static final int WHICH_NEW = 1<<2;
+    public static final int WHICH_ALL = 0xffff;
 
     private final Context mContext;
     private final LayoutInflater mInflater;
@@ -89,8 +92,6 @@ public class AppSecurityPermissions {
         CharSequence mLabel;
 
         final List<MyPermissionInfo> mNewPermissions = new ArrayList<>();
-        final List<MyPermissionInfo> mPersonalPermissions = new ArrayList<>();
-        final List<MyPermissionInfo> mDevicePermissions = new ArrayList<>();
         final List<MyPermissionInfo> mAllPermissions = new ArrayList<>();
 
         MyPermissionGroupInfo(PermissionInfo perm) {
@@ -102,17 +103,12 @@ public class AppSecurityPermissions {
             super(info);
         }
 
-        public Drawable loadGroupIcon(PackageManager pm) {
+        public Drawable loadGroupIcon(Context context, PackageManager pm) {
             if (icon != 0) {
                 return (Build.VERSION.SDK_INT < 22) ? loadIcon(pm) : loadUnbadgedIcon(pm);
+            } else {
+                return context.getDrawable(R.drawable.ic_perm_device_info);
             }
-            try {
-                ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
-                return (Build.VERSION.SDK_INT < 22) ? appInfo.loadIcon(pm) : appInfo.loadUnbadgedIcon(pm);
-            } catch (NameNotFoundException e) {
-                // ignore
-            }
-            return null;
         }
 
         public int flags() {
@@ -166,7 +162,7 @@ public class AppSecurityPermissions {
             PackageManager pm = getContext().getPackageManager();
             Drawable icon = null;
             if (first) {
-                icon = grp.loadGroupIcon(pm);
+                icon = grp.loadGroupIcon(getContext(), pm);
             }
             CharSequence label = perm.mLabel;
             if (perm.mNew && newPermPrefix != null) {
@@ -210,7 +206,7 @@ public class AppSecurityPermissions {
                             R.string.perms_description_app, appName) + "\n\n" + mPerm.name);
                 }
                 builder.setCancelable(true);
-                builder.setIcon(mGroup.loadGroupIcon(pm));
+                builder.setIcon(mGroup.loadGroupIcon(getContext(), pm));
                 mDialog = builder.show();
                 mDialog.setCanceledOnTouchOutside(true);
             }
@@ -254,7 +250,6 @@ public class AppSecurityPermissions {
         setPermissions(new ArrayList<>(permSet));
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private int[] getRequestedPermissionFlags(PackageInfo info) {
         if (Build.VERSION.SDK_INT < 16) {
             return new int[info.requestedPermissions.length];
@@ -262,7 +257,6 @@ public class AppSecurityPermissions {
         return info.requestedPermissionsFlags;
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void extractPerms(PackageInfo info, Set<MyPermissionInfo> permSet,
             PackageInfo installedPkgInfo) {
 
@@ -274,11 +268,6 @@ public class AppSecurityPermissions {
 
         for (int i = 0; i < strList.length; i++) {
             String permName = strList[i];
-            // If we are only looking at an existing app, then we only
-            // care about permissions that have actually been granted to it.
-            if (installedPkgInfo != null && info == installedPkgInfo && (flagsList[i] & PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0) {
-                continue;
-            }
             try {
                 PermissionInfo tmpPermInfo = mPm.getPermissionInfo(permName, 0);
                 if (tmpPermInfo == null) {
@@ -348,10 +337,6 @@ public class AppSecurityPermissions {
         switch (which) {
             case WHICH_NEW:
                 return grp.mNewPermissions;
-            case WHICH_PERSONAL:
-                return grp.mPersonalPermissions;
-            case WHICH_DEVICE:
-                return grp.mDevicePermissions;
             default:
                 return grp.mAllPermissions;
         }
@@ -422,11 +407,18 @@ public class AppSecurityPermissions {
         return permView;
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private boolean isDisplayablePermission(PermissionInfo pInfo, int existingReqFlags) {
         final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
         final boolean isNormal = base == PermissionInfo.PROTECTION_NORMAL;
-        final boolean isDangerous = base == PermissionInfo.PROTECTION_DANGEROUS;
+
+        // TODO: do we want this in F-Droid?
+//        // We do not show normal permissions in the UI.
+//        if (isNormal) {
+//            return false;
+//        }
+
+        final boolean isDangerous = base == PermissionInfo.PROTECTION_DANGEROUS
+                || ((pInfo.protectionLevel & PermissionInfo.PROTECTION_FLAG_PRE23) != 0);
 
         // Dangerous and normal permissions are always shown to the user
         if (isNormal || isDangerous) {
@@ -446,16 +438,7 @@ public class AppSecurityPermissions {
 
         private final Collator sCollator = Collator.getInstance();
 
-        PermissionGroupInfoComparator() {
-        }
-
         public final int compare(MyPermissionGroupInfo a, MyPermissionGroupInfo b) {
-            if (((a.flags() ^ b.flags()) & PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
-                return ((a.flags() & PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) ? -1 : 1;
-            }
-            if (a.priority() != b.priority()) {
-                return a.priority() > b.priority() ? -1 : 1;
-            }
             return sCollator.compare(a.mLabel, b.mLabel);
         }
     }
@@ -497,11 +480,6 @@ public class AppSecurityPermissions {
                     addPermToList(group.mAllPermissions, pInfo);
                     if (pInfo.mNew) {
                         addPermToList(group.mNewPermissions, pInfo);
-                    }
-                    if ((group.flags() & PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
-                        addPermToList(group.mPersonalPermissions, pInfo);
-                    } else {
-                        addPermToList(group.mDevicePermissions, pInfo);
                     }
                 }
             }
