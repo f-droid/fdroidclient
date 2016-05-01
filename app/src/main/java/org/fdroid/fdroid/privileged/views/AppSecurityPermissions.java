@@ -61,6 +61,13 @@ import java.util.Set;
  * To use this view define a LinearLayout or any ViewGroup and add this
  * view by instantiating AppSecurityPermissions and invoking getPermissionsView.
  */
+
+/**
+ * NOTES:
+ * Based on AOSP core/java/android/widget/AppSecurityPermissions
+ * ec2d48b96d1f95fb266914df294a27c210f8c3f5
+ */
+@TargetApi(Build.VERSION_CODES.M)
 public class AppSecurityPermissions {
 
     private static final String TAG = "AppSecurityPermissions";
@@ -97,11 +104,11 @@ public class AppSecurityPermissions {
 
         public Drawable loadGroupIcon(PackageManager pm) {
             if (icon != 0) {
-                return loadIcon(pm);
+                return (Build.VERSION.SDK_INT < 22) ? loadIcon(pm) : loadUnbadgedIcon(pm);
             }
             try {
                 ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
-                return appInfo.loadIcon(pm);
+                return (Build.VERSION.SDK_INT < 22) ? appInfo.loadIcon(pm) : appInfo.loadUnbadgedIcon(pm);
             } catch (NameNotFoundException e) {
                 // ignore
             }
