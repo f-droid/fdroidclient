@@ -237,4 +237,6 @@
     </style>
 
     <style name="AppDetailsSubheaderText" parent="AppDetailsSubheaderTextBase" />
+
+    <style name="AppThemeTransparent" parent="@android:style/Theme.NoDisplay" />
 </resources>

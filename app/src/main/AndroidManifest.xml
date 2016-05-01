@@ -393,10 +393,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FDroid" />
         </activity>
-        <!-- Note: Theme.NoDisplay, this activity shows dialogs only -->
+        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
         <activity
             android:name=".privileged.install.InstallExtensionDialogActivity"
-            android:theme="@android:style/Theme.NoDisplay" />
+            android:theme="@style/AppThemeTransparent" />
         <receiver
             android:name=".privileged.install.InstallExtensionBootReceiver" >
             <intent-filter>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- see http://stackoverflow.com/questions/32169303/activity-did-not-call-finish-api-23 -->
+    <style name="AppThemeTransparent" parent="@android:style/Theme.Translucent.NoTitleBar" />
+
+</resources>
