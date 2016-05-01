@@ -295,6 +295,7 @@
     <string name="system_install_first_time_message">Looks like you have root access on your device. You can now install F-Droid Privileged Extension, tightly coupled with the Android operating system. This allows F-Droid to install, upgrade and uninstall apps on its own.</string>
     <string name="system_uninstall">Do you want to uninstall F-Droid Privileged Extension?</string>
     <string name="system_uninstall_button">Uninstall</string>
+    <string name="system_install_not_supported">Installation of F-Droid Privileged Extension is currently not supported on Android 5.1 or later.</string>
 
     <string name="swap_nfc_title">Touch to swap</string>
     <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.</string>
