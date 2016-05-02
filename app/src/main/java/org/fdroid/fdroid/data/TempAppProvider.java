@@ -4,17 +4,18 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.net.Uri;
-import android.util.Log;
-
-import org.fdroid.fdroid.Utils;
 
 /**
  * This class does all of its operations in a temporary sqlite table.
  */
 public class TempAppProvider extends AppProvider {
 
-    private static final String TAG = "TempAppProvider";
+    /**
+     * The name of the in memory database used for updating.
+     */
+    static final String DB = "temp_update_db";
 
     private static final String PROVIDER_NAME = "TempAppProvider";
 
@@ -60,6 +61,7 @@ public class TempAppProvider extends AppProvider {
         public static void init(Context context) {
             Uri uri = Uri.withAppendedPath(getContentUri(), PATH_INIT);
             context.getContentResolver().insert(uri, new ContentValues());
+            TempApkProvider.Helper.init(context);
         }
 
         /**
@@ -111,13 +113,24 @@ public class TempAppProvider extends AppProvider {
         return count;
     }
 
+    private void ensureTempTableDetached(SQLiteDatabase db) {
+        try {
+            db.execSQL("DETACH DATABASE " + DB);
+        } catch (SQLiteException e) {
+            // We expect that most of the time the database will not exist unless an error occurred
+            // midway through the last update, The resulting exception is:
+            //   android.database.sqlite.SQLiteException: no such database: temp_update_db (code 1)
+        }
+    }
+
     private void initTable() {
         final SQLiteDatabase db = db();
-        db.execSQL("DROP TABLE IF EXISTS " + getTableName());
-        db.execSQL("CREATE TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APP);
-        db.execSQL("CREATE INDEX IF NOT EXISTS app_id ON " + getTableName() + " (id);");
-        db.execSQL("CREATE INDEX IF NOT EXISTS app_upstreamVercode ON " + getTableName() + " (upstreamVercode);");
-        db.execSQL("CREATE INDEX IF NOT EXISTS app_compatible ON " + getTableName() + " (compatible);");
+        ensureTempTableDetached(db);
+        db.execSQL("ATTACH DATABASE ':memory:' AS " + DB);
+        db.execSQL("CREATE TABLE " + DB + "." + getTableName() + " AS SELECT * FROM main." + DBHelper.TABLE_APP);
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (id);");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (upstreamVercode);");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (compatible);");
     }
 
     private void commitTable() {
@@ -125,21 +138,22 @@ public class TempAppProvider extends AppProvider {
         try {
             db.beginTransaction();
 
-            Log.i(TAG, "Renaming " + TABLE_TEMP_APP + " to " + DBHelper.TABLE_APP);
-            db.execSQL("DROP TABLE " + DBHelper.TABLE_APP);
-            db.execSQL("ALTER TABLE " + TABLE_TEMP_APP + " RENAME TO " + DBHelper.TABLE_APP);
+            final String tempApp = DB + "." + TempAppProvider.TABLE_TEMP_APP;
+            final String tempApk = DB + "." + TempApkProvider.TABLE_TEMP_APK;
 
-            Log.i(TAG, "Renaming " + TempApkProvider.TABLE_TEMP_APK + " to " + DBHelper.TABLE_APK);
-            db.execSQL("DROP TABLE " + DBHelper.TABLE_APK);
-            db.execSQL("ALTER TABLE " + TempApkProvider.TABLE_TEMP_APK + " RENAME TO " + DBHelper.TABLE_APK);
+            db.execSQL("DELETE FROM " + DBHelper.TABLE_APP + " WHERE 1");
+            db.execSQL("INSERT INTO " + DBHelper.TABLE_APP + " SELECT * FROM " + tempApp);
 
-            Utils.debugLog(TAG, "Successfully renamed both tables, will commit transaction");
+            db.execSQL("DELETE FROM " + DBHelper.TABLE_APK + " WHERE 1");
+            db.execSQL("INSERT INTO " + DBHelper.TABLE_APK + " SELECT * FROM " + tempApk);
+
             db.setTransactionSuccessful();
 
             getContext().getContentResolver().notifyChange(AppProvider.getContentUri(), null);
             getContext().getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
         } finally {
             db.endTransaction();
+            db.execSQL("DETACH DATABASE " + DB); // Can't be done in a transaction.
         }
     }
 }

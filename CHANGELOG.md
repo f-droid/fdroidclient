@@ -1,5 +1,7 @@
 ### Upcoming release
 
+* Significant performance improvements when updating repositories
+
 * Show what repository each apk comes from
 
 * Better support for Android 6.0
