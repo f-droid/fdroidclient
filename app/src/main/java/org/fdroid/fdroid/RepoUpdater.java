@@ -92,15 +92,6 @@ public class RepoUpdater {
         return hasChanged;
     }
 
-    private static void cleanupDownloader(Downloader d) {
-        if (d == null || d.outputFile == null) {
-            return;
-        }
-        if (!d.outputFile.delete()) {
-            Log.w(TAG, "Couldn't delete file: " + d.outputFile.getAbsolutePath());
-        }
-    }
-
     private Downloader downloadIndex() throws UpdateException {
         Downloader downloader = null;
         try {
@@ -115,7 +106,11 @@ public class RepoUpdater {
             }
 
         } catch (IOException e) {
-            cleanupDownloader(downloader);
+            if (downloader != null && downloader.outputFile != null) {
+                if (!downloader.outputFile.delete()) {
+                    Log.w(TAG, "Couldn't delete file: " + downloader.outputFile.getAbsolutePath());
+                }
+            }
 
             throw new UpdateException(repo, "Error getting index file", e);
         } catch (InterruptedException e) {
@@ -202,8 +197,10 @@ public class RepoUpdater {
         } finally {
             FDroidApp.enableSpongyCastleOnLollipop();
             Utils.closeQuietly(indexInputStream);
-            if (downloadedFile != null && !downloadedFile.delete()) {
-                Log.w(TAG, "Couldn't delete file: " + downloadedFile.getAbsolutePath());
+            if (downloadedFile != null) {
+                if (!downloadedFile.delete()) {
+                    Log.w(TAG, "Couldn't delete file: " + downloadedFile.getAbsolutePath());
+                }
             }
         }
     }
