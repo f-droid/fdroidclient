@@ -101,9 +101,11 @@ public class UpdateService extends IntentService implements ProgressListener {
         context.startService(intent);
     }
 
-    // Schedule (or cancel schedule for) this service, according to the
-    // current preferences. Should be called a) at boot, b) if the preference
-    // is changed, or c) on startup, in case we get upgraded.
+    /**
+     * Schedule or cancel this service to update the app index, according to the
+     * current preferences. Should be called a) at boot, b) if the preference
+     * is changed, or c) on startup, in case we get upgraded.
+     */
     public static void schedule(Context ctx) {
 
         SharedPreferences prefs = PreferenceManager

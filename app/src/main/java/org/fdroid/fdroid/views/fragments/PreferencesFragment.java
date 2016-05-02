@@ -39,7 +39,7 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.PREF_IGN_TOUCH,
         Preferences.PREF_LOCAL_REPO_NAME,
         Preferences.PREF_LANGUAGE,
-        Preferences.PREF_CACHE_APK,
+        Preferences.PREF_KEEP_CACHE_TIME,
         Preferences.PREF_EXPERT,
         Preferences.PREF_PRIVILEGED_INSTALLER,
         Preferences.PREF_ENABLE_PROXY,
@@ -143,8 +143,8 @@ public class PreferencesFragment extends PreferenceFragment
                 }
                 break;
 
-            case Preferences.PREF_CACHE_APK:
-                checkSummary(key, R.string.cache_downloaded_on);
+            case Preferences.PREF_KEEP_CACHE_TIME:
+                entrySummary(key);
                 break;
 
             case Preferences.PREF_EXPERT:

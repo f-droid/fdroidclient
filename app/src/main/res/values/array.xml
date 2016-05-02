@@ -10,6 +10,15 @@
         <item>@string/interval_2w</item>
     </string-array>
 
+    <string-array name="keepCacheNames">
+        <item>@string/keep_hour</item>
+        <item>@string/keep_day</item>
+        <item>@string/keep_week</item>
+        <item>@string/keep_month</item>
+        <item>@string/keep_year</item>
+        <item>@string/keep_forever</item>
+    </string-array>
+
     <string-array name="themeNames">
         <item>@string/theme_light</item>
         <item>@string/theme_dark</item>

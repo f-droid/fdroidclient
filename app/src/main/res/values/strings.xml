@@ -10,8 +10,8 @@
     <string name="by_author">by</string>
     <string name="delete">Delete</string>
     <string name="enable_nfc_send">Enable NFC Send…</string>
-    <string name="cache_downloaded">Cache packages</string>
-    <string name="cache_downloaded_on">Keep downloaded package files on device</string>
+    <string name="cache_downloaded">Keep cached apps</string>
+    <string name="cache_downloaded_on">Keep downloaded APK files on device</string>
     <string name="updates">Updates</string>
     <string name="unstable_updates">Unstable updates</string>
     <string name="unstable_updates_summary">Suggest updates to unstable versions</string>
@@ -382,6 +382,13 @@
     <string name="interval_1d">Daily</string>
     <string name="interval_1w">Weekly</string>
     <string name="interval_2w">Every 2 weeks</string>
+
+    <string name="keep_hour">1 Hour</string>
+    <string name="keep_day">1 Day</string>
+    <string name="keep_week">1 Week</string>
+    <string name="keep_month">1 Month</string>
+    <string name="keep_year">1 Year</string>
+    <string name="keep_forever">Forever</string>
 
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>

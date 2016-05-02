@@ -85,20 +85,21 @@ public class FileCompat {
         }
     }
 
+    /**
+     * Set a {@link SanitizedFile} readable by all if {@code readable} is {@code true}.
+     *
+     * @return {@code true} if the operation succeeded
+     */
     @TargetApi(9)
-    public static boolean setReadable(SanitizedFile file, boolean readable, boolean ownerOnly) {
-
+    public static boolean setReadable(SanitizedFile file, boolean readable) {
         if (Build.VERSION.SDK_INT >= 9) {
-            return file.setReadable(readable, ownerOnly);
+            return file.setReadable(readable, false);
         }
-        String mode;
         if (readable) {
-            mode = ownerOnly ? "0600" : "0644";
+            return setMode(file, "0644");
         } else {
-            mode = "0000";
+            return setMode(file, "0000");
         }
-        return setMode(file, mode);
-
     }
 
     private static boolean setMode(SanitizedFile file, String mode) {

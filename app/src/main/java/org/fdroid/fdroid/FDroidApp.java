@@ -136,6 +136,9 @@ public class FDroidApp extends Application {
         }
     }
 
+    /**
+     * Initialize the settings needed to run a local swap repo.
+     */
     public static void initWifiSettings() {
         port = 8888;
         ipAddressString = null;
@@ -182,25 +185,13 @@ public class FDroidApp extends Application {
         updateLanguage();
         ACRA.init(this);
 
-        // Needs to be setup before anything else tries to access it.
-        // Perhaps the constructor is a better place, but then again,
-        // it is more deterministic as to when this gets called...
-        Preferences.setup(this);
-        curTheme = Preferences.get().getTheme();
-
-        // Apply the Google PRNG fixes to properly seed SecureRandom
         PRNGFixes.apply();
 
-        // Check that the installed app cache hasn't gotten out of sync somehow.
-        // e.g. if we crashed/ran out of battery half way through responding
-        // to a package installed intent. It doesn't really matter where
-        // we put this in the bootstrap process, because it runs on a different
-        // thread, which will be delayed by some seconds to avoid an error where
-        // the database is locked due to the database updater.
-        InstalledAppCacheUpdater.updateInBackground(getApplicationContext());
-
-        // make sure the current proxy stuff is configured
+        Preferences.setup(this);
+        curTheme = Preferences.get().getTheme();
         Preferences.get().configureProxy();
+
+        InstalledAppCacheUpdater.updateInBackground(getApplicationContext());
 
         // If the user changes the preference to do with filtering rooted apps,
         // it is easier to just notify a change in the app provider,
@@ -230,29 +221,7 @@ public class FDroidApp extends Application {
             }
         });
 
-        // Clear cached apk files. We used to just remove them after they'd
-        // been installed, but this causes problems for proprietary gapps
-        // users since the introduction of verification (on pre-4.2 Android),
-        // because the install intent says it's finished when it hasn't.
-        if (!Preferences.get().shouldCacheApks()) {
-            Utils.deleteFiles(Utils.getApkCacheDir(this), null, ".apk");
-        }
-
-        // Index files which downloaded, but were not removed (e.g. due to F-Droid being force
-        // closed during processing of the file, before getting a chance to delete). This may
-        // include both "index-*-downloaded" and "index-*-extracted.xml" files. The first is from
-        // either signed or unsigned repos, and the later is from signed repos.
-        Utils.deleteFiles(getCacheDir(), "index-", null);
-
-        // As above, but for legacy F-Droid clients that downloaded under a different name, and
-        // extracted to the files directory rather than the cache directory.
-        // TODO: This can be removed in a a few months or a year (e.g. 2016) because people will
-        // have upgraded their clients, this code will have executed, and they will not have any
-        // left over files any more. Even if they do hold off upgrading until this code is removed,
-        // the only side effect is that they will have a few more MiB of storage taken up on their
-        // device until they uninstall and re-install F-Droid.
-        Utils.deleteFiles(getCacheDir(), "dl-", null);
-        Utils.deleteFiles(getFilesDir(), "index-", null);
+        CleanCacheService.schedule(this);
 
         UpdateService.schedule(getApplicationContext());
         bluetoothAdapter = getBluetoothAdapter();
@@ -278,9 +247,6 @@ public class FDroidApp extends Application {
                 .build();
         ImageLoader.getInstance().init(config);
 
-        // TODO reintroduce PinningTrustManager and MemorizingTrustManager
-
-        // initialized the local repo information
         FDroidApp.initWifiSettings();
         startService(new Intent(this, WifiStateChangeService.class));
         // if the HTTPS pref changes, then update all affected things

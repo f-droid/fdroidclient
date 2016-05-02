@@ -37,6 +37,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
+import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
@@ -325,12 +326,35 @@ public final class Utils {
      * Using {@link org.fdroid.fdroid.installer.Installer#installPackage(File, String, String)}
      * is fine since that does the right thing.
      */
-    public static SanitizedFile getApkCacheDir(Context context) {
-        final SanitizedFile apkCacheDir = new SanitizedFile(StorageUtils.getCacheDirectory(context, true), "apks");
+    public static File getApkCacheDir(Context context) {
+        File apkCacheDir = new File(StorageUtils.getCacheDirectory(context, true), "apks");
+        if (apkCacheDir.isFile()) {
+            apkCacheDir.delete();
+        }
         if (!apkCacheDir.exists()) {
             apkCacheDir.mkdir();
         }
         return apkCacheDir;
+    }
+
+    /**
+     * Recursively delete files in {@code dir} that were last modified
+     * {@code secondsAgo} seconds ago, e.g. when it was downloaded.
+     *
+     * @param dir        The directory to recurse in
+     * @param secondsAgo The number of seconds old that marks a file for deletion.
+     */
+    public static void clearOldFiles(File dir, long secondsAgo) {
+        long olderThan = System.currentTimeMillis() - (secondsAgo * 1000L);
+        for (File f : dir.listFiles()) {
+            if (f.isDirectory()) {
+                clearOldFiles(f, olderThan);
+                f.delete();
+            }
+            if (FileUtils.isFileOlder(f, olderThan)) {
+                f.delete();
+            }
+        }
     }
 
     public static String calcFingerprint(String keyHexString) {
@@ -643,40 +667,6 @@ public final class Utils {
                         output.append('\n');
                     }
                     break;
-            }
-        }
-    }
-
-    /**
-     * Remove all files from the {@param directory} either beginning with {@param startsWith}
-     * or ending with {@param endsWith}. Note that if the SD card is not ready, then the
-     * cache directory will probably not be available. In this situation no files will be
-     * deleted (and thus they may still exist after the SD card becomes available).
-     */
-    public static void deleteFiles(@Nullable File directory, @Nullable String startsWith, @Nullable String endsWith) {
-
-        if (directory == null) {
-            return;
-        }
-
-        final File[] files = directory.listFiles();
-        if (files == null) {
-            return;
-        }
-
-        if (startsWith != null) {
-            debugLog(TAG, "Cleaning up files in " + directory + " that start with \"" + startsWith + "\"");
-        }
-
-        if (endsWith != null) {
-            debugLog(TAG, "Cleaning up files in " + directory + " that end with \"" + endsWith + "\"");
-        }
-
-        for (File f : files) {
-            if (((startsWith != null && f.getName().startsWith(startsWith))
-                        || (endsWith != null && f.getName().endsWith(endsWith)))
-                    && !f.delete()) {
-                Log.w(TAG, "Couldn't delete cache file " + f);
             }
         }
     }

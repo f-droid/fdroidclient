@@ -73,9 +73,10 @@
             android:dependency="enableProxy" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/other">
-        <CheckBoxPreference android:title="@string/cache_downloaded"
-            android:defaultValue="false"
-            android:key="cacheDownloaded" />
+        <ListPreference android:title="@string/cache_downloaded"
+            android:key="keepCacheFor"
+            android:entries="@array/keepCacheNames"
+            android:entryValues="@array/keepCacheValues" />
         <CheckBoxPreference android:title="@string/expert"
             android:defaultValue="false"
             android:key="expert" />
