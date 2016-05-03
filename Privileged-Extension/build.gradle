@@ -36,14 +36,13 @@ android {
 }
 
 checkstyle {
-    toolVersion = '6.17'
+    toolVersion = '6.18'
 }
 
 task checkstyle(type: Checkstyle) {
     configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
-    source 'src'
+    source 'src/main/java'
     include '**/*.java'
-    exclude '**/gen/**'
 
     classpath = files()
 }
