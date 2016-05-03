@@ -349,4 +349,6 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
 
     <string name="downloading_apk">Descarregant %1$s</string>
 
+    <string name="system_install_not_supported">No es pot instal·lar F-Droid Privileged Extension actualment actualment en versions d\'Android 5.1 o posteriors.</string>
+
     </resources>

@@ -6,7 +6,7 @@
   <string name="version">Version</string>
   <string name="delete">Löschen</string>
   <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
-  <string name="cache_downloaded">Pakete zwischenspeichern</string>
+  <string name="cache_downloaded">Zwischengespeicherte Apps behalten</string>
   <string name="cache_downloaded_on">Heruntergeladene Programmpakete auf dem Gerät behalten</string>
   <string name="updates">Aktualisierungen</string>
   <string name="other">Andere</string>
@@ -347,4 +347,9 @@
 
     <string name="downloading_apk">%1$s wird heruntergeladen</string>
 
+    <string name="keep_hour">1 Stunde</string>
+    <string name="keep_day">1 Tag</string>
+    <string name="keep_week">1 Woche</string>
+    <string name="keep_month">1 Monat</string>
+    <string name="keep_year">1 Jahr</string>
     </resources>

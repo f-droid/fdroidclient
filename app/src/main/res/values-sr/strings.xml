@@ -6,8 +6,8 @@
   <string name="version">Издање</string>
   <string name="delete">Обриши</string>
   <string name="enable_nfc_send">Омогући слање преко НФЦ-а…</string>
-  <string name="cache_downloaded">Складишти пакете</string>
-  <string name="cache_downloaded_on">Чувај преузете пакете на уређају</string>
+  <string name="cache_downloaded">Чувај кеширане апликације</string>
+  <string name="cache_downloaded_on">Чувај преузете АПК фајлове на уређају</string>
   <string name="updates">Надоградње</string>
   <string name="other">Остало</string>
   <string name="update_interval">Међувреме самосталног освежавања</string>
@@ -346,5 +346,14 @@
     <string name="download_pending">Чекам на почетак преузимања…</string>
 
     <string name="downloading_apk">Преузимам %1$s</string>
+
+    <string name="system_install_not_supported">Инсталирање Повлашћеног проширење за Ф-дроид тренутно није подржано на Андроиду 5.1 и новијем.</string>
+
+    <string name="keep_hour">1 сат</string>
+    <string name="keep_day">1 дан</string>
+    <string name="keep_week">1 седмицу</string>
+    <string name="keep_month">1 месец</string>
+    <string name="keep_year">1 годину</string>
+    <string name="keep_forever">заувек</string>
 
     </resources>

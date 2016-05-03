@@ -349,4 +349,6 @@
 
     <string name="downloading_apk">Elŝutanta na %1$s</string>
 
+    <string name="system_install_not_supported">Instalado de Privilegia F-Droid-aldonaĵo ne estas nuntempe subtenata en Android 5.1 aŭ posta.</string>
+
     </resources>

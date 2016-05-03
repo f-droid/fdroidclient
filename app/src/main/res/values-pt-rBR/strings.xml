@@ -350,4 +350,6 @@ com aplicativos baixados a partir de índices não assinados.</string>
 
     <string name="downloading_apk">Baixando %1$s</string>
 
+    <string name="system_install_not_supported">A instalação da Extensão Privilegiada do F-Droid atualmente não é suportada no Android 5.1 ou posterior.</string>
+
     </resources>

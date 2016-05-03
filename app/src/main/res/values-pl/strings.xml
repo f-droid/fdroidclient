@@ -351,4 +351,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
     <string name="downloading_apk">Pobieranie %1$s</string>
 
+    <string name="system_install_not_supported">Instalacja Uprzywilejowanego Dodatku F-Droid nie jest obecnie wspierana na Androidzie 5.1 i nowszych.</string>
+
     </resources>

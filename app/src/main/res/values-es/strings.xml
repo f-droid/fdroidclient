@@ -354,4 +354,6 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 
     <string name="downloading_apk">Descargando %1$s</string>
 
+    <string name="system_install_not_supported">La instalación de la extensión con permisos de sistema de F-Droid no está actualmente disponible para Android 5.1 o superiores.</string>
+
     </resources>

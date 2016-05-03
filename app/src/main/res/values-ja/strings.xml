@@ -6,8 +6,8 @@
   <string name="version">ﾊﾞｰｼﾞｮﾝ</string>
   <string name="delete">削除</string>
   <string name="enable_nfc_send">NFC 送信を有効…</string>
-  <string name="cache_downloaded">ﾊﾟｯｹｰｼﾞのｷｬｯｼｭ</string>
-  <string name="cache_downloaded_on">ﾀﾞｳﾝﾛｰﾄﾞしたﾊﾟｯｹｰｼﾞ ﾌｧｲﾙを端末に残します</string>
+  <string name="cache_downloaded">ｷｬｯｼｭしたｱﾌﾟﾘを残す</string>
+  <string name="cache_downloaded_on">ﾀﾞｳﾝﾛｰﾄﾞしたAPKﾌｧｲﾙを端末に残します</string>
   <string name="updates">更新</string>
   <string name="other">その他</string>
   <string name="update_interval">自動更新間隔</string>
@@ -349,5 +349,14 @@
     <string name="download_pending">ﾀﾞｳﾝﾛｰﾄﾞの開始を待っています…</string>
 
     <string name="downloading_apk">%1$s のﾀﾞｳﾝﾛｰﾄﾞ中</string>
+
+    <string name="system_install_not_supported">F-Droidの特権拡張のｲﾝｽﾄｰﾙは、現在Android 5.1以降でｻﾎﾟｰﾄされていません。</string>
+
+    <string name="keep_hour">1時間</string>
+    <string name="keep_day">1日</string>
+    <string name="keep_week">1週間</string>
+    <string name="keep_month">1ヶ月</string>
+    <string name="keep_year">1年間</string>
+    <string name="keep_forever">永久</string>
 
     </resources>

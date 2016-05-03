@@ -6,8 +6,8 @@
   <string name="version">版本</string>
   <string name="delete">删除</string>
   <string name="enable_nfc_send">启用NFC发送…</string>
-  <string name="cache_downloaded">缓存安装包</string>
-  <string name="cache_downloaded_on">在本地保留已下载的安装包</string>
+  <string name="cache_downloaded">保留应用安装包</string>
+  <string name="cache_downloaded_on">在设备上保留已下载的 APK 文件</string>
   <string name="updates">升级</string>
   <string name="other">其它</string>
   <string name="update_interval">自动更新周期</string>
@@ -349,5 +349,14 @@
     <string name="download_pending">正在等待开始下载…</string>
 
     <string name="downloading_apk">正在下载 %1$s</string>
+
+    <string name="system_install_not_supported">F-Droid 特权扩展目前不支持安装在 Android 5.1 或更高版本上。</string>
+
+    <string name="keep_hour">1小时</string>
+    <string name="keep_day">1天</string>
+    <string name="keep_week">1周</string>
+    <string name="keep_month">1个月</string>
+    <string name="keep_year">1年</string>
+    <string name="keep_forever">永远</string>
 
     </resources>
