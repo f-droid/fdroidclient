@@ -24,6 +24,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -166,7 +167,7 @@ public class DownloaderService extends Service {
     private NotificationCompat.Builder createNotification(String urlString, @Nullable String packageName) {
         return new NotificationCompat.Builder(this)
                 .setAutoCancel(true)
-                .setContentIntent(createAppDetailsIntent(this, 0, packageName))
+                .setContentIntent(createAppDetailsIntent(0, packageName))
                 .setContentTitle(getNotificationTitle(packageName))
                 .addAction(R.drawable.ic_cancel_black_24dp, getString(R.string.cancel),
                         createCancelDownloadIntent(this, 0, urlString))
@@ -191,20 +192,20 @@ public class DownloaderService extends Service {
         return getString(R.string.downloading);
     }
 
-    public static PendingIntent createAppDetailsIntent(@NonNull Context context, int requestCode, @Nullable String packageName) {
+    private PendingIntent createAppDetailsIntent(int requestCode, String packageName) {
         TaskStackBuilder stackBuilder;
         if (packageName != null) {
-            Intent notifyIntent = new Intent(context.getApplicationContext(), AppDetails.class)
+            Intent notifyIntent = new Intent(getApplicationContext(), AppDetails.class)
                     .putExtra(AppDetails.EXTRA_APPID, packageName);
 
             stackBuilder = TaskStackBuilder
-                    .create(context.getApplicationContext())
+                    .create(getApplicationContext())
                     .addParentStack(AppDetails.class)
                     .addNextIntent(notifyIntent);
         } else {
-            Intent notifyIntent = new Intent(context.getApplicationContext(), FDroid.class);
+            Intent notifyIntent = new Intent(getApplicationContext(), FDroid.class);
             stackBuilder = TaskStackBuilder
-                    .create(context.getApplicationContext())
+                    .create(getApplicationContext())
                     .addParentStack(FDroid.class)
                     .addNextIntent(notifyIntent);
         }
@@ -298,7 +299,7 @@ public class DownloaderService extends Service {
             });
             downloader.download();
             sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile);
-            DownloadCompleteService.notify(this, packageName, intent.getDataString());
+            notifyDownloadComplete(packageName, intent.getDataString());
         } catch (InterruptedException e) {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile);
         } catch (IOException e) {
@@ -315,6 +316,32 @@ public class DownloaderService extends Service {
             stopForeground(true);
         }
         downloader = null;
+    }
+
+    private void notifyDownloadComplete(String packageName, String urlString) {
+        String title;
+        try {
+            PackageManager pm = getPackageManager();
+            title = String.format(getString(R.string.tap_to_update_format),
+                    pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0)));
+        } catch (PackageManager.NameNotFoundException e) {
+            App app = AppProvider.Helper.findByPackageName(getContentResolver(), packageName,
+                    new String[]{
+                            AppProvider.DataColumns.NAME,
+                    });
+            title = String.format(getString(R.string.tap_to_install_format), app.name);
+        }
+
+        int requestCode = Utils.getApkUrlNotificationId(urlString);
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setAutoCancel(true)
+                        .setContentTitle(title)
+                        .setSmallIcon(android.R.drawable.stat_sys_download_done)
+                        .setContentIntent(createAppDetailsIntent(requestCode, packageName))
+                        .setContentText(getString(R.string.tap_to_install));
+        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        nm.notify(Utils.getApkUrlNotificationId(urlString), builder.build());
     }
 
     private void sendBroadcast(Uri uri, String action, File file) {
