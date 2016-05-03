@@ -227,7 +227,7 @@ public abstract class Installer {
 
             NotificationManager nm = (NotificationManager)
                     mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-            nm.cancel(Utils.getApkUrlNotificationId(urlString));
+            nm.cancel(urlString.hashCode());
         } catch (NumberFormatException | NoSuchAlgorithmException | IOException e) {
             throw new InstallFailedException(e);
         } catch (ClassCastException e) {
