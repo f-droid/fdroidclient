@@ -21,7 +21,7 @@ gradle:
     # 'build' means assemble and check
     - ./gradlew build -PdisablePreDex || {
           for log in app/build/reports/*ests/*/*ml; do
-              echo "read $log here:"
+              echo "read $log here:";
               cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
           done;
           exit 1;
