@@ -280,20 +280,18 @@ public class DownloaderService extends Service {
             downloader.setListener(new Downloader.DownloaderProgressListener() {
                 @Override
                 public void sendProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                    if (isActive(uri.toString())) {
-                        Intent intent = new Intent(Downloader.ACTION_PROGRESS);
-                        intent.setData(uri);
-                        intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
-                        intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
-                        localBroadcastManager.sendBroadcast(intent);
+                    Intent intent = new Intent(Downloader.ACTION_PROGRESS);
+                    intent.setData(uri);
+                    intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
+                    intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
+                    localBroadcastManager.sendBroadcast(intent);
 
-                        if (Preferences.get().isUpdateNotificationEnabled()) {
-                            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                            Notification notification = createNotification(uri.toString(), packageName)
-                                    .setProgress(totalBytes, bytesRead, false)
-                                    .build();
-                            nm.notify(NOTIFY_DOWNLOADING, notification);
-                        }
+                    if (Preferences.get().isUpdateNotificationEnabled()) {
+                        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                        Notification notification = createNotification(uri.toString(), packageName)
+                                .setProgress(totalBytes, bytesRead, false)
+                                .build();
+                        nm.notify(NOTIFY_DOWNLOADING, notification);
                     }
                 }
             });
