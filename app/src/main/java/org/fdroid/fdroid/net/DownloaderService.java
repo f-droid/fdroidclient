@@ -154,11 +154,6 @@ public class DownloaderService extends Service {
         }
     }
 
-    @Nullable
-    private static String getPackageNameFromIntent(@NonNull Intent intent) {
-        return intent.hasExtra(EXTRA_PACKAGE_NAME) ? intent.getStringExtra(EXTRA_PACKAGE_NAME) : null;
-    }
-
     private NotificationCompat.Builder createNotification(String urlString, @Nullable String packageName) {
         return new NotificationCompat.Builder(this)
                 .setAutoCancel(true)
@@ -262,11 +257,11 @@ public class DownloaderService extends Service {
         File downloadDir = new File(Utils.getApkCacheDir(this), uri.getHost() + "-" + uri.getPort());
         downloadDir.mkdirs();
         final SanitizedFile localFile = new SanitizedFile(downloadDir, uri.getLastPathSegment());
-        final String packageName = getPackageNameFromIntent(intent);
+        final String packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME);
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile);
 
         if (Preferences.get().isUpdateNotificationEnabled()) {
-            Notification notification = createNotification(intent.getDataString(), getPackageNameFromIntent(intent)).build();
+            Notification notification = createNotification(intent.getDataString(), intent.getStringExtra(EXTRA_PACKAGE_NAME)).build();
             startForeground(NOTIFY_DOWNLOADING, notification);
         }
 
