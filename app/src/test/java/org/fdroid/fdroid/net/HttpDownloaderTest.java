@@ -16,13 +16,11 @@ import static org.junit.Assert.fail;
 public class HttpDownloaderTest {
 
     String[] urls = {
-            "https://www.google.com",
             "https://en.wikipedia.org/wiki/Index.html",
             "https://mirrors.kernel.org/debian/dists/stable/Release",
-            "https://f-droid.org/archive/de.we.acaldav_5.apk",
+            "https://f-droid.org/repo/index.jar",
             // sites that use SNI for HTTPS
             "https://guardianproject.info/fdroid/repo/index.jar",
-            "https://firstlook.org",
     };
 
     private boolean receivedProgress;
@@ -42,23 +40,38 @@ public class HttpDownloaderTest {
 
     @Test
     public void downloadUninterruptedTestWithProgress() throws IOException, InterruptedException {
-        for (String urlString : urls) {
-            receivedProgress = false;
-            URL url = new URL(urlString);
-            File destFile = File.createTempFile("dl-", "");
-            HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
-            httpDownloader.setListener(new Downloader.DownloaderProgressListener() {
-                @Override
-                public void sendProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                    receivedProgress = true;
+        final CountDownLatch latch = new CountDownLatch(1);
+        String urlString = "https://f-droid.org/repo/index.jar";
+        receivedProgress = false;
+        System.out.println("downloadUninterruptedTestWithProgress: " + urlString);
+        receivedProgress = false;
+        URL url = new URL(urlString);
+        File destFile = File.createTempFile("dl-", "");
+        final HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
+        httpDownloader.setListener(new Downloader.DownloaderProgressListener() {
+            @Override
+            public void sendProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+                System.out.println("DownloaderProgressListener.sendProgress " + sourceUrl + " " + bytesRead + " / " + totalBytes);
+                receivedProgress = true;
+            }
+        });
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    httpDownloader.download();
+                    latch.countDown();
+                } catch (IOException | InterruptedException e) {
+                    e.printStackTrace();
+                    fail();
                 }
-            });
-            httpDownloader.download();
-            assertTrue(destFile.exists());
-            assertTrue(destFile.canRead());
-            assertTrue(receivedProgress);
-            destFile.deleteOnExit();
-        }
+            }
+        }.start();
+        latch.await(100, TimeUnit.SECONDS); // either 2 progress reports or 100 seconds
+        assertTrue(destFile.exists());
+        assertTrue(destFile.canRead());
+        assertTrue(receivedProgress);
+        destFile.deleteOnExit();
     }
 
     @Test
