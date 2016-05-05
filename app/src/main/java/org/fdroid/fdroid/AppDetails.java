@@ -33,6 +33,7 @@ import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -1112,7 +1113,10 @@ public class AppDetails extends AppCompatActivity {
                     viewMorePermissions.setText(getString(R.string.less));
                 } else {
                     description.setMaxLines(MAX_LINES);
-                    description.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                    if (Build.VERSION.SDK_INT > 10) {
+                        // ellipsizing doesn't work properly here on 2.X
+                        description.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                    }
                     viewMorePermissions.setText(R.string.more);
                 }
                 viewAllDescription ^= true;
@@ -1133,7 +1137,10 @@ public class AppDetails extends AppCompatActivity {
                     // If description has more than five lines
                     if (description.getLineCount() > MAX_LINES) {
                         description.setMaxLines(MAX_LINES);
-                        description.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                        if (Build.VERSION.SDK_INT > 10) {
+                            // ellipsizing doesn't work properly here on 2.X
+                            description.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                        }
                         description.setOnClickListener(expanderDescription);
                         viewAllDescription = true;
 
