@@ -426,7 +426,12 @@ public class AppDetails extends AppCompatActivity {
 
     @Override
     protected void onResumeFragments() {
+        // Must be called before super.onResumeFragments(), as the fragments depend on the active
+        // url being correctly set in order to know whether or not to show the download progress bar.
+        calcActiveDownloadUrlString(app.packageName);
+
         super.onResumeFragments();
+
         headerFragment = (AppDetailsHeaderFragment) getSupportFragmentManager().findFragmentById(R.id.header);
         refreshApkList();
         supportInvalidateOptionsMenu();
@@ -582,13 +587,7 @@ public class AppDetails extends AppCompatActivity {
         Utils.debugLog(TAG, "Getting application details for " + packageName);
         App newApp = null;
 
-        String urlString = getPreferences(MODE_PRIVATE).getString(packageName, null);
-        if (DownloaderService.isQueuedOrActive(urlString)) {
-            activeDownloadUrlString = urlString;
-        } else {
-            // this URL is no longer active, remove it
-            PreferencesCompat.apply(getPreferences(MODE_PRIVATE).edit().remove(packageName));
-        }
+        calcActiveDownloadUrlString(packageName);
 
         if (!TextUtils.isEmpty(packageName)) {
             newApp = AppProvider.Helper.findByPackageName(getContentResolver(), packageName);
@@ -597,6 +596,16 @@ public class AppDetails extends AppCompatActivity {
         setApp(newApp);
 
         return this.app != null;
+    }
+
+    private void calcActiveDownloadUrlString(String packageName) {
+        String urlString = getPreferences(MODE_PRIVATE).getString(packageName, null);
+        if (DownloaderService.isQueuedOrActive(urlString)) {
+            activeDownloadUrlString = urlString;
+        } else {
+            // this URL is no longer active, remove it
+            PreferencesCompat.apply(getPreferences(MODE_PRIVATE).edit().remove(packageName));
+        }
     }
 
     /**

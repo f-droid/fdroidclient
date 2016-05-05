@@ -389,6 +389,9 @@ public class DownloaderService extends Service {
         if (TextUtils.isEmpty(urlString)) { //NOPMD - suggests unreadable format
             return false;
         }
+        if (serviceHandler == null) {
+            return false; // this service is not even running
+        }
         return serviceHandler.hasMessages(urlString.hashCode()) || isActive(urlString);
     }
 
