@@ -157,7 +157,7 @@ public class HttpDownloader extends Downloader {
         if (isCached()) {
             Utils.debugLog(TAG, sourceUrl + " is cached, so not downloading (HTTP " + statusCode + ")");
         } else {
-            Utils.debugLog(TAG, "doDownload for " + sourceUrl + " " + resumable);
+            Utils.debugLog(TAG, "Need to download " + sourceUrl + " (is resumable: " + resumable + ")");
             downloadFromStream(8192, resumable);
             updateCacheCheck();
         }
