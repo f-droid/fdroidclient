@@ -778,7 +778,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     public void install(@NonNull final App app) {
         final Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode);
-        String urlString = Utils.getApkUrl(apk.repoAddress, apk);
+        String urlString = apk.getUrl();
         downloadCompleteReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {

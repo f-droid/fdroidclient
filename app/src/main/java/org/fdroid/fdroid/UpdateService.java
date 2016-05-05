@@ -393,7 +393,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 // now that downloading the index is done, start downloading updates
                 if (changes && fdroidPrefs.isAutoDownloadEnabled()) {
-                    autoDownloadUpdates(repo.address);
+                    autoDownloadUpdates();
                 }
             }
 
@@ -485,7 +485,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         return inboxStyle;
     }
 
-    private void autoDownloadUpdates(String repoAddress) {
+    private void autoDownloadUpdates() {
         Cursor cursor = getContentResolver().query(
                 AppProvider.getCanUpdateUri(),
                 new String[]{
@@ -496,10 +496,8 @@ public class UpdateService extends IntentService implements ProgressListener {
             cursor.moveToFirst();
             for (int i = 0; i < cursor.getCount(); i++) {
                 App app = new App(cursor);
-                Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode, new String[]{
-                        ApkProvider.DataColumns.NAME,
-                });
-                String urlString = Utils.getApkUrl(repoAddress, apk);
+                Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode);
+                String urlString = apk.getUrl();
                 DownloaderService.queue(this, app.packageName, urlString);
                 cursor.moveToNext();
             }

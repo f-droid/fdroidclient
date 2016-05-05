@@ -815,9 +815,6 @@ public class AppDetails extends AppCompatActivity {
             return;
         }
 
-        final String repoaddress = getRepoAddress(apk);
-        if (repoaddress == null) return;
-
         if (!apk.compatible) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.installIncompatible);
@@ -826,7 +823,7 @@ public class AppDetails extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            startDownload(apk, repoaddress);
+                            startDownload(apk);
                         }
                     });
             builder.setNegativeButton(R.string.no,
@@ -855,21 +852,11 @@ public class AppDetails extends AppCompatActivity {
             alert.show();
             return;
         }
-        startDownload(apk, repoaddress);
+        startDownload(apk);
     }
 
-    @Nullable
-    private String getRepoAddress(Apk apk) {
-        final String[] projection = {RepoProvider.DataColumns.ADDRESS};
-        Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
-        if (repo == null || repo.address == null) {
-            return null;
-        }
-        return repo.address;
-    }
-
-    private void startDownload(Apk apk, String repoAddress) {
-        activeDownloadUrlString = Utils.getApkUrl(repoAddress, apk);
+    private void startDownload(Apk apk) {
+        activeDownloadUrlString = apk.getUrl();
         registerDownloaderReceivers();
         headerFragment.startProgress();
         DownloaderService.queue(this, apk.packageName, activeDownloadUrlString);

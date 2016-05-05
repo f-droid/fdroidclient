@@ -121,6 +121,13 @@ public class Apk extends ValueObject implements Comparable<Apk> {
         }
     }
 
+    public String getUrl() {
+        if (repoAddress == null || apkName == null) {
+            throw new IllegalStateException("Apk needs to have both ApkProvider.DataColumns.REPO_ADDRESS and ApkProvider.DataColumns.NAME set in order to calculate URL.");
+        }
+        return repoAddress + "/" + apkName.replace(" ", "%20");
+    }
+
     @Override
     public String toString() {
         return packageName + " (version " + versionCode + ")";
