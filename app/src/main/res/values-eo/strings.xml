@@ -2,7 +2,7 @@
 <resources>
   <string name="version">Versio</string>
   <string name="delete">Forigi</string>
-  <string name="cache_downloaded_on">Konservas elŝutitajn apk dosierojn sur la memorejo</string>
+  <string name="cache_downloaded_on">Konservas elŝutitajn apk-dosierojn en la memorejo</string>
   <string name="updates">Ĝisdatigoj</string>
   <string name="other">Aliaj</string>
   <string name="automatic_scan_wifi">Nur per sendrata reto</string>
@@ -119,7 +119,7 @@
     <string name="SignatureMismatch">La nova versio estas subskribita per diferenca ŝlosilo. Por instali la novan version, la malnova devas esti malinstalita unue. Bonvolu fari tion ĉi kaj reprovi. (Rigardu ke malinstalado forigos ĉiujn internan datumon konservitan de la aplikaĵo)</string>
     <string name="by_author">de</string>
     <string name="enable_nfc_send">Aktivigi sendadon tra NFC…</string>
-    <string name="cache_downloaded">Kaŝmemorigi pakaĵojn</string>
+    <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>
     <string name="unstable_updates_summary">Proponas ĝisdatigojn al nestabilaj versioj</string>
     <string name="update_interval_zero">Nenia aŭtomata listo de ĝisdatigoj</string>
     <string name="automatic_scan_wifi_on">Ĝisdatigas listojn aŭtomate nur tra vifio</string>
@@ -156,7 +156,7 @@
     <string name="update_notification_more">ankoraŭ +%1$d…</string>
     <string name="bluetooth_activity_not_found">Nenia Bludenta metodo de sendo trovita, elektu iun!</string>
     <string name="choose_bt_send">Elektu Bludentan metodon de sendo</string>
-    <string name="repo_add_fingerprint">Fingrospuro (malnepre)</string>
+    <string name="repo_add_fingerprint">Fingrospuro (malnepra)</string>
     <string name="repo_exists_add_fingerprint">Tiu ĉi deponejo estas jam instalita, tio ĉi aldonos novan informon pri ŝlosilo.</string>
     <string name="repo_exists_enable">Tiu ĉi deponejo estas jam instalita, konfirmu ke vi volas reaktivigi ĝin.</string>
     <string name="repo_exists_and_enabled">La deponejo estas jam instalita kaj aktiva.</string>
@@ -350,5 +350,12 @@
     <string name="downloading_apk">Elŝutanta na %1$s</string>
 
     <string name="system_install_not_supported">Instalado de Privilegia F-Droid-aldonaĵo ne estas nuntempe subtenata en Android 5.1 aŭ posta.</string>
+
+    <string name="keep_hour">1 horo</string>
+    <string name="keep_day">1 tago</string>
+    <string name="keep_week">1 semajno</string>
+    <string name="keep_month">1 monato</string>
+    <string name="keep_year">1 jaro</string>
+    <string name="keep_forever">Por ĉiam</string>
 
     </resources>

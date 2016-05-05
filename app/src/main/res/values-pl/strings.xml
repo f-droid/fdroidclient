@@ -4,7 +4,7 @@
   <string name="version">Wersja</string>
   <string name="delete">Usuń</string>
   <string name="enable_nfc_send">Włącz przesył NFC…</string>
-  <string name="cache_downloaded">Zapisuj pobrane pliki instalacyjne</string>
+  <string name="cache_downloaded">Zapisuj pobrane pliki aplikacji</string>
   <string name="updates">Aktualizacje</string>
   <string name="other">Inne</string>
   <string name="notify">Powiadomienia o aktualizacjach</string>
@@ -141,7 +141,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
     <string name="SignatureMismatch">Nowa wersja jest podpisana cyfrowo z innym kluczem niż obecna wersja. Aby zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (odinstalowanie aplikacji spowoduje usunięcie jej danych i ustawień)</string>
     <string name="installDowngrade">Próbujesz zainstalować starszą wersję tej aplikacji. Wykonanie tej operacji może powodować błędy w jej działaniu lub utratę danych. Czy chcesz kontynuować?</string>
-    <string name="cache_downloaded_on">Trzymaj pobrane pliki .apk na urządzeniu by móc ich potem używać w trybie offline</string>
+    <string name="cache_downloaded_on">Trzyma pobrane pliki .apk na urządzeniu by móc je potem używać w trybie offline</string>
     <string name="update_interval">Okres pomiędzy sprawdzaniem aktualizacji</string>
     <string name="automatic_scan_wifi">Aktualizuj tylko przez Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Aktualizuj listę aplikacji tylko przez Wi-Fi (oszczędza dane mobilne)</string>
@@ -352,5 +352,12 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="downloading_apk">Pobieranie %1$s</string>
 
     <string name="system_install_not_supported">Instalacja Uprzywilejowanego Dodatku F-Droid nie jest obecnie wspierana na Androidzie 5.1 i nowszych.</string>
+
+    <string name="keep_hour">1 godzinę</string>
+    <string name="keep_day">1 dzień</string>
+    <string name="keep_week">1 tydzień</string>
+    <string name="keep_month">1 miesiąc</string>
+    <string name="keep_year">1 rok</string>
+    <string name="keep_forever">Na zawsze</string>
 
     </resources>

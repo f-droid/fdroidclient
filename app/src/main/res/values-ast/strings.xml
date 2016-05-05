@@ -6,8 +6,8 @@
   <string name="version">Versión</string>
   <string name="delete">Desaniciar</string>
   <string name="enable_nfc_send">Habilitar unviu per NFC…</string>
-  <string name="cache_downloaded">Caché de paquetes</string>
-  <string name="cache_downloaded_on">Caltién nel preséu los paquetes baxaos</string>
+  <string name="cache_downloaded">Caltener aplicaciones na caché</string>
+  <string name="cache_downloaded_on">Caltién nel preséu los ficheros APK baxaos</string>
   <string name="updates">Anovamientos</string>
   <string name="other">Otru</string>
   <string name="update_interval">Intervalu automáticu d\'anovaminetu</string>
@@ -345,4 +345,17 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
 
     <string name="tap_to_install_format">Calca pa instalar %s</string>
     <string name="tap_to_update_format">Calca p\'anovar %s</string>
+    <string name="system_install_not_supported">Anguaño la instalación de la estensión con privilexos de F-Droid nun ta sofitada n\'Android 5.1 o mayor.</string>
+
+    <string name="download_pending">Esperando p\'aniciar al descarga…</string>
+
+    <string name="downloading_apk">Baxando %1$s</string>
+
+    <string name="keep_hour">1 hora</string>
+    <string name="keep_day">1 día</string>
+    <string name="keep_week">1 selmana</string>
+    <string name="keep_month">1 mes</string>
+    <string name="keep_year">1 añu</string>
+    <string name="keep_forever">Dafechu</string>
+
     </resources>

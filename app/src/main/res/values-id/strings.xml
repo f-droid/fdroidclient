@@ -6,8 +6,8 @@
     <string name="version">Versi</string>
     <string name="delete">Hapus</string>
     <string name="enable_nfc_send">Aktifkan Pengirimian NFC…</string>
-    <string name="cache_downloaded">Tembolok paket</string>
-    <string name="cache_downloaded_on">Simpan berkas paket terunduh di dalam perangkat</string>
+    <string name="cache_downloaded">Simpan hasil unduhan</string>
+    <string name="cache_downloaded_on">Simpan berkas APK terunduh diperangkat</string>
     <string name="updates">Pembaruan</string>
     <string name="unstable_updates">Pembaruan tidak stabil</string>
     <string name="unstable_updates_summary">Sarankan pembaruan ke versi tidak stabil</string>
@@ -362,5 +362,14 @@
     <string name="download_pending">Menunggu untuk mulai unduhan…</string>
 
     <string name="downloading_apk">Mengunduh %1$s</string>
+
+    <string name="system_install_not_supported">Pemasangan F-Droid Privileged Extension saat ini tidak tersedia di Android 5.1 atau lebih baru.</string>
+
+    <string name="keep_hour">1 Jam</string>
+    <string name="keep_day">1 Hari</string>
+    <string name="keep_week">1 Minggu</string>
+    <string name="keep_month">1 Bulan</string>
+    <string name="keep_year">1 Tahun</string>
+    <string name="keep_forever">Selamanya</string>
 
     </resources>

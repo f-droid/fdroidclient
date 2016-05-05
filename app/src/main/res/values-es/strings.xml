@@ -6,8 +6,8 @@
   <string name="version">Versión</string>
   <string name="delete">Borrar</string>
   <string name="enable_nfc_send">Habilitar envío NFC…</string>
-  <string name="cache_downloaded">Caché de paquetes</string>
-  <string name="cache_downloaded_on">Mantener los paquetes descargados en el dispositivo</string>
+  <string name="cache_downloaded">Mantener las aplicaciones en caché</string>
+  <string name="cache_downloaded_on">Mantener los paquetes APK descargados en el dispositivo</string>
   <string name="updates">Actualizaciones</string>
   <string name="other">Otros</string>
   <string name="update_interval">Intervalo de actualización automática</string>
@@ -331,8 +331,8 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 
     <string name="status_inserting_apps">Guardando los detalles de la aplicación</string>
     <string name="crash_dialog_title">F-Droid se ha detenido</string>
-    <string name="crash_dialog_text">Un errror inesperado ha obligado a la aplicación a cerrarse. ¿Podrías mandarnos un correo electrónico con los detalles para ayudarnos a arreglarlo?</string>
-    <string name="crash_dialog_comment_prompt">Puedes añadir información extra y comentarios aquí:</string>
+    <string name="crash_dialog_text">La aplicación se ha cerrado debido a un error inesperado. ¿Querría enviarnos un correo electrónico con los detalles para ayudarnos a arreglar el problema?</string>
+    <string name="crash_dialog_comment_prompt">Puede añadir información extra y comentarios aquí:</string>
 <string name="antinonfreeassetslist">Esta aplicación contiene recursos que no son libres</string>
 
     <string name="empty_search_installed_app_list">Ninguna de las aplicaciones instaladas coincide.</string>
@@ -356,4 +356,11 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 
     <string name="system_install_not_supported">La instalación de la extensión con permisos de sistema de F-Droid no está actualmente disponible para Android 5.1 o superiores.</string>
 
+    <string name="keep_day">1 día</string>
+    <string name="keep_week">1 semana</string>
+    <string name="keep_month">1 mes</string>
+    <string name="keep_year">1 año</string>
+    <string name="keep_forever">Siempre</string>
+
+    <string name="keep_hour">1 hora</string>
     </resources>

@@ -6,8 +6,8 @@
   <string name="version">Versão</string>
   <string name="delete">Apagar</string>
   <string name="enable_nfc_send">Habilitar envio NFC…</string>
-  <string name="cache_downloaded">Pacotes de cache</string>
-  <string name="cache_downloaded_on">Manter os arquivos de pacote baixados no dispositivo</string>
+  <string name="cache_downloaded">Manter aplicativos em cache</string>
+  <string name="cache_downloaded_on">Manter os arquivos APK baixados no dispositivo</string>
   <string name="updates">Atualizações</string>
   <string name="other">Outros</string>
   <string name="update_interval">Intervalo de atualização automática</string>
@@ -350,6 +350,13 @@ com aplicativos baixados a partir de índices não assinados.</string>
 
     <string name="downloading_apk">Baixando %1$s</string>
 
-    <string name="system_install_not_supported">A instalação da Extensão Privilegiada do F-Droid atualmente não é suportada no Android 5.1 ou posterior.</string>
+    <string name="system_install_not_supported">A instalação da extensão privilegiada do F-Droid atualmente não é suportada no Android 5.1 ou posterior.</string>
+
+    <string name="keep_hour">1 hora</string>
+    <string name="keep_day">1 dia</string>
+    <string name="keep_week">1 semana</string>
+    <string name="keep_month">1 mês</string>
+    <string name="keep_year">1 ano</string>
+    <string name="keep_forever">Para sempre</string>
 
     </resources>

@@ -3,8 +3,8 @@
   <string name="installIncompatible">به‌نظر می‌رسد این بسته با دستگاه شما هماهنگ نیست. آیا می‌خواهید آن را به هر قیمتی آزمایش و نصب کنید؟</string>
   <string name="installDowngrade">شما در حال قدیمی‌کردن و کاهش درجهٔ این برنامه هستید. انجام چنین کاری ممکن منجر به خرابی یا از دست رفتن داده‌های شما شود. آیا می‌خواهید سعی کنید این برنامه را به هر قیمتی قدیمی کنید؟</string>
   <string name="delete">حذف</string>
-  <string name="cache_downloaded">انباشت بسته‌ها</string>
-  <string name="cache_downloaded_on">نگه‌داشتن پروندهٔ بسته‌های بارگیری شده، روی افزاره</string>
+  <string name="cache_downloaded">نگه‌داری کاره‌های انبار شده</string>
+  <string name="cache_downloaded_on">نگه‌داشتن پروندهٔ apk بارگیری شده، روی افزاره</string>
   <string name="updates">به‌روزرسانی‌ها</string>
   <string name="other">دیگر</string>
   <string name="update_interval">به‌روزرسانی دوره‌ای خودکار</string>
@@ -352,5 +352,14 @@
     <string name="download_pending">در انتظار شروع بارگیری…</string>
 
     <string name="downloading_apk">در حال بارگیری %1$s</string>
+
+    <string name="system_install_not_supported">در حال حاضر نصب افزونهٔ ممتاز اف‌دروید روی اندروید ۵.۱ یا بالاتر پشتیبانی نمی‌شود.</string>
+
+    <string name="keep_hour">۱ ساعت</string>
+    <string name="keep_day">۱ روز</string>
+    <string name="keep_week">۱ هفته</string>
+    <string name="keep_month">۱ ماه</string>
+    <string name="keep_year">۱ سال</string>
+    <string name="keep_forever">برای همیشه</string>
 
     </resources>
