@@ -43,7 +43,6 @@ import android.util.Log;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.FDroid;
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
@@ -260,10 +259,8 @@ public class DownloaderService extends Service {
         final String packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME);
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile);
 
-        if (Preferences.get().isUpdateNotificationEnabled()) {
-            Notification notification = createNotification(intent.getDataString(), intent.getStringExtra(EXTRA_PACKAGE_NAME)).build();
-            startForeground(NOTIFY_DOWNLOADING, notification);
-        }
+        Notification notification = createNotification(intent.getDataString(), packageName).build();
+        startForeground(NOTIFY_DOWNLOADING, notification);
 
         try {
             downloader = DownloaderFactory.create(this, uri, localFile);
@@ -276,13 +273,11 @@ public class DownloaderService extends Service {
                     intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
                     localBroadcastManager.sendBroadcast(intent);
 
-                    if (Preferences.get().isUpdateNotificationEnabled()) {
-                        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                        Notification notification = createNotification(uri.toString(), packageName)
-                                .setProgress(totalBytes, bytesRead, false)
-                                .build();
-                        nm.notify(NOTIFY_DOWNLOADING, notification);
-                    }
+                    NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                    Notification notification = createNotification(uri.toString(), packageName)
+                            .setProgress(totalBytes, bytesRead, false)
+                            .build();
+                    nm.notify(NOTIFY_DOWNLOADING, notification);
                 }
             });
             downloader.download();
@@ -298,6 +293,7 @@ public class DownloaderService extends Service {
             if (downloader != null) {
                 downloader.close();
             }
+            stopForeground(true);
         }
         downloader = null;
     }
