@@ -17,6 +17,7 @@
 
 package org.fdroid.fdroid.privileged.views;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -86,6 +87,8 @@ public class AppSecurityPermissions {
     private final PermissionInfoComparator mPermComparator = new PermissionInfoComparator();
     private final CharSequence mNewPermPrefix;
 
+    // PermissionGroupInfo implements Parcelable but its Parcel constructor is private and thus cannot be extended.
+    @SuppressLint("ParcelCreator")
     static class MyPermissionGroupInfo extends PermissionGroupInfo {
         CharSequence mLabel;
 
@@ -120,6 +123,8 @@ public class AppSecurityPermissions {
         }
     }
 
+    // PermissionInfo implements Parcelable but its Parcel constructor is private and thus cannot be extended.
+    @SuppressLint("ParcelCreator")
     private static class MyPermissionInfo extends PermissionInfo {
         CharSequence mLabel;
 
