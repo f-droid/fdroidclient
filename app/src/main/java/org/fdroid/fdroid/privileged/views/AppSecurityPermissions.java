@@ -60,9 +60,7 @@ import java.util.Set;
  * extended information consisting of all groups and permissions.
  * To use this view define a LinearLayout or any ViewGroup and add this
  * view by instantiating AppSecurityPermissions and invoking getPermissionsView.
- */
-
-/**
+ *
  * NOTES:
  * Based on AOSP core/java/android/widget/AppSecurityPermissions
  * latest included commit: a3f68ef2f6811cf72f1282214c0883db5a30901d
