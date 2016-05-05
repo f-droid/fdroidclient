@@ -71,7 +71,6 @@ import java.util.zip.Adler32;
 
 public final class Utils {
 
-    @SuppressWarnings("UnusedDeclaration")
     private static final String TAG = "Utils";
 
     private static final int BUFFER_SIZE = 4096;
