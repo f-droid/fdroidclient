@@ -302,6 +302,10 @@ public class DownloaderService extends Service {
         downloader = null;
     }
 
+    /**
+     * Post a notification about a completed download.  {@code packageName} must be a valid
+     * and currently in the app index database.
+     */
     private void notifyDownloadComplete(String packageName, String urlString) {
         String title;
         try {
