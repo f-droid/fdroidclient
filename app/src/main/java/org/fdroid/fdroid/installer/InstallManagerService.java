@@ -56,7 +56,6 @@ public class InstallManagerService extends Service {
     public static final String TAG = "InstallManagerService";
 
     private static final String ACTION_INSTALL = "org.fdroid.fdroid.InstallManagerService.action.INSTALL";
-    private static final int NOTIFY_DOWNLOADING = 0x2344;
 
     /**
      * The collection of {@link Apk}s that are actively going through this whole process,
@@ -78,7 +77,20 @@ public class InstallManagerService extends Service {
      */
     private final HashMap<String, BroadcastReceiver[]> receivers = new HashMap<String, BroadcastReceiver[]>(3);
 
+    /**
+     * Get the app name based on a {@code urlString} key. The app name needs
+     * to be kept around for the final notification update, but {@link App}
+     * and {@link Apk} instances have already removed by the time that final
+     * notification update comes around.  Once there is a proper
+     * {@code InstallerService} and its integrated here, this must go away,
+     * since the {@link App} and {@link Apk} instances will be available.
+     * <p>
+     * TODO <b>delete me once InstallerService exists</b>
+     */
+    private static final HashMap<String, String> TEMP_HACK_APP_NAMES = new HashMap<String, String>(3);
+
     private LocalBroadcastManager localBroadcastManager;
+    private NotificationManager notificationManager;
 
     /**
      * This service does not use binding, so no need to implement this method
@@ -93,6 +105,7 @@ public class InstallManagerService extends Service {
         super.onCreate();
         Utils.debugLog(TAG, "creating Service");
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     }
 
     @Override
@@ -102,7 +115,7 @@ public class InstallManagerService extends Service {
         Apk apk = ACTIVE_APKS.get(urlString);
 
         Notification notification = createNotification(intent.getDataString(), apk).build();
-        startForeground(NOTIFY_DOWNLOADING, notification);
+        notificationManager.notify(urlString.hashCode(), notification);
 
         registerDownloaderReceivers(urlString);
 
@@ -149,17 +162,17 @@ public class InstallManagerService extends Service {
                 Apk apk = ACTIVE_APKS.get(urlString);
                 int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
                 int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
-                NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                 Notification notification = createNotification(urlString, apk)
                         .setProgress(totalBytes, bytesRead, false)
                         .build();
-                nm.notify(NOTIFY_DOWNLOADING, notification);
+                notificationManager.notify(urlString.hashCode(), notification);
             }
         };
         BroadcastReceiver completeReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String urlString = intent.getDataString();
+                // TODO these need to be removed based on whether they are fed to InstallerService or not
                 Apk apk = ACTIVE_APKS.remove(urlString);
                 ACTIVE_APPS.remove(apk.packageName);
                 notifyDownloadComplete(apk, urlString);
@@ -203,9 +216,13 @@ public class InstallManagerService extends Service {
 
     private String getAppName(String urlString, Apk apk) {
         App app = ACTIVE_APPS.get(apk.packageName);
-        if (TextUtils.isEmpty(app.name)) {
-            // this is ugly, but its better than nothing as a failsafe
-            return getString(R.string.downloading_apk, urlString);
+        if (app == null || TextUtils.isEmpty(app.name)) {
+            if (TEMP_HACK_APP_NAMES.containsKey(urlString)) {
+                return getString(R.string.downloading_apk, TEMP_HACK_APP_NAMES.get(urlString));
+            } else {
+                // this is ugly, but its better than nothing as a failsafe
+                return getString(R.string.downloading_apk, urlString);
+            }
         } else {
             return getString(R.string.downloading_apk, app.name);
         }
@@ -263,6 +280,7 @@ public class InstallManagerService extends Service {
         Utils.debugLog(TAG, "queue " + app.packageName + " " + apk.versionCode + " from " + urlString);
         ACTIVE_APKS.put(urlString, apk);
         ACTIVE_APPS.put(app.packageName, app);
+        TEMP_HACK_APP_NAMES.put(urlString, app.name);  // TODO delete me once InstallerService exists
         Intent intent = new Intent(context, InstallManagerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(Uri.parse(urlString));

@@ -158,7 +158,6 @@ public class DownloaderService extends Service {
     @Override
     public void onDestroy() {
         Utils.debugLog(TAG, "Destroying downloader service. Will move to background and stop our Looper.");
-        stopForeground(true);
         serviceLooper.quit(); //NOPMD - this is copied from IntentService, no super call needed
     }
 
@@ -215,7 +214,6 @@ public class DownloaderService extends Service {
             if (downloader != null) {
                 downloader.close();
             }
-            stopForeground(true);
         }
         downloader = null;
     }
