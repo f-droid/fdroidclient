@@ -17,6 +17,7 @@
 
 package org.fdroid.fdroid.privileged.views;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -60,14 +61,22 @@ import java.util.Set;
  * extended information consisting of all groups and permissions.
  * To use this view define a LinearLayout or any ViewGroup and add this
  * view by instantiating AppSecurityPermissions and invoking getPermissionsView.
+ * <p/>
+ * NOTES:
+ * Based on AOSP core/java/android/widget/AppSecurityPermissions
+ * latest included commit: a3f68ef2f6811cf72f1282214c0883db5a30901d
+ * <p/>
+ * To update this file:
+ * - Open https://github.com/android/platform_frameworks_base/commits/master/core/java/android/widget/AppSecurityPermissions.java
+ * - Start from latest included commit and include changes until the newest commit with care
  */
+@TargetApi(Build.VERSION_CODES.M)
 public class AppSecurityPermissions {
 
     private static final String TAG = "AppSecurityPermissions";
 
-    public static final int WHICH_PERSONAL = 1 << 0;
-    public static final int WHICH_DEVICE = 1 << 1;
     public static final int WHICH_NEW = 1 << 2;
+    public static final int WHICH_ALL = 0xffff;
 
     private final Context mContext;
     private final LayoutInflater mInflater;
@@ -78,12 +87,12 @@ public class AppSecurityPermissions {
     private final PermissionInfoComparator mPermComparator = new PermissionInfoComparator();
     private final CharSequence mNewPermPrefix;
 
+    // PermissionGroupInfo implements Parcelable but its Parcel constructor is private and thus cannot be extended.
+    @SuppressLint("ParcelCreator")
     static class MyPermissionGroupInfo extends PermissionGroupInfo {
         CharSequence mLabel;
 
         final List<MyPermissionInfo> mNewPermissions = new ArrayList<>();
-        final List<MyPermissionInfo> mPersonalPermissions = new ArrayList<>();
-        final List<MyPermissionInfo> mDevicePermissions = new ArrayList<>();
         final List<MyPermissionInfo> mAllPermissions = new ArrayList<>();
 
         MyPermissionGroupInfo(PermissionInfo perm) {
@@ -95,17 +104,11 @@ public class AppSecurityPermissions {
             super(info);
         }
 
-        public Drawable loadGroupIcon(PackageManager pm) {
+        public Drawable loadGroupIcon(Context context, PackageManager pm) {
             if (icon != 0) {
-                return loadIcon(pm);
+                return (Build.VERSION.SDK_INT < 22) ? loadIcon(pm) : loadUnbadgedIcon(pm);
             }
-            try {
-                ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
-                return appInfo.loadIcon(pm);
-            } catch (NameNotFoundException e) {
-                // ignore
-            }
-            return null;
+            return context.getDrawable(R.drawable.ic_perm_device_info);
         }
 
         public int flags() {
@@ -119,6 +122,8 @@ public class AppSecurityPermissions {
         }
     }
 
+    // PermissionInfo implements Parcelable but its Parcel constructor is private and thus cannot be extended.
+    @SuppressLint("ParcelCreator")
     private static class MyPermissionInfo extends PermissionInfo {
         CharSequence mLabel;
 
@@ -159,7 +164,7 @@ public class AppSecurityPermissions {
             PackageManager pm = getContext().getPackageManager();
             Drawable icon = null;
             if (first) {
-                icon = grp.loadGroupIcon(pm);
+                icon = grp.loadGroupIcon(getContext(), pm);
             }
             CharSequence label = perm.mLabel;
             if (perm.mNew && newPermPrefix != null) {
@@ -203,7 +208,7 @@ public class AppSecurityPermissions {
                             R.string.perms_description_app, appName) + "\n\n" + mPerm.name);
                 }
                 builder.setCancelable(true);
-                builder.setIcon(mGroup.loadGroupIcon(pm));
+                builder.setIcon(mGroup.loadGroupIcon(getContext(), pm));
                 mDialog = builder.show();
                 mDialog.setCanceledOnTouchOutside(true);
             }
@@ -240,14 +245,13 @@ public class AppSecurityPermissions {
                 installedPkgInfo = mPm.getPackageInfo(info.packageName,
                         PackageManager.GET_PERMISSIONS);
             } catch (NameNotFoundException e) {
-                // ignore
+                throw new RuntimeException("NameNotFoundException during GET_PERMISSIONS!");
             }
             extractPerms(info, permSet, installedPkgInfo);
         }
         setPermissions(new ArrayList<>(permSet));
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private int[] getRequestedPermissionFlags(PackageInfo info) {
         if (Build.VERSION.SDK_INT < 16) {
             return new int[info.requestedPermissions.length];
@@ -255,23 +259,15 @@ public class AppSecurityPermissions {
         return info.requestedPermissionsFlags;
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void extractPerms(PackageInfo info, Set<MyPermissionInfo> permSet,
-            PackageInfo installedPkgInfo) {
+                              PackageInfo installedPkgInfo) {
 
         final String[] strList = info.requestedPermissions;
         if (strList == null || strList.length == 0) {
             return;
         }
-        final int[] flagsList = getRequestedPermissionFlags(info);
 
-        for (int i = 0; i < strList.length; i++) {
-            String permName = strList[i];
-            // If we are only looking at an existing app, then we only
-            // care about permissions that have actually been granted to it.
-            if (installedPkgInfo != null && info == installedPkgInfo && (flagsList[i] & PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0) {
-                continue;
-            }
+        for (String permName : strList) {
             try {
                 PermissionInfo tmpPermInfo = mPm.getPermissionInfo(permName, 0);
                 if (tmpPermInfo == null) {
@@ -341,10 +337,6 @@ public class AppSecurityPermissions {
         switch (which) {
             case WHICH_NEW:
                 return grp.mNewPermissions;
-            case WHICH_PERSONAL:
-                return grp.mPersonalPermissions;
-            case WHICH_DEVICE:
-                return grp.mDevicePermissions;
             default:
                 return grp.mAllPermissions;
         }
@@ -376,7 +368,7 @@ public class AppSecurityPermissions {
      * list of permission descriptions.
      */
     private void displayPermissions(List<MyPermissionGroupInfo> groups,
-            LinearLayout permListView, int which) {
+                                    LinearLayout permListView, int which) {
         permListView.removeAllViews();
 
         int spacing = (int) (8 * mContext.getResources().getDisplayMetrics().density);
@@ -405,21 +397,28 @@ public class AppSecurityPermissions {
     }
 
     private PermissionItemView getPermissionItemView(MyPermissionGroupInfo grp,
-            MyPermissionInfo perm, boolean first, CharSequence newPermPrefix) {
+                                                     MyPermissionInfo perm, boolean first, CharSequence newPermPrefix) {
         PermissionItemView permView = (PermissionItemView) mInflater.inflate(
                 Build.VERSION.SDK_INT >= 17 &&
-                (perm.flags & PermissionInfo.FLAG_COSTS_MONEY) != 0
-                ? R.layout.app_permission_item_money : R.layout.app_permission_item,
+                        (perm.flags & PermissionInfo.FLAG_COSTS_MONEY) != 0
+                        ? R.layout.app_permission_item_money : R.layout.app_permission_item,
                 null);
         permView.setPermission(grp, perm, first, newPermPrefix);
         return permView;
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private boolean isDisplayablePermission(PermissionInfo pInfo, int existingReqFlags) {
         final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
         final boolean isNormal = base == PermissionInfo.PROTECTION_NORMAL;
-        final boolean isDangerous = base == PermissionInfo.PROTECTION_DANGEROUS;
+
+        // TODO: do we want this in F-Droid?
+        // We do not show normal permissions in the UI.
+        //if (isNormal) {
+        //    return false;
+        //}
+
+        final boolean isDangerous = base == PermissionInfo.PROTECTION_DANGEROUS
+                || ((pInfo.protectionLevel & PermissionInfo.PROTECTION_FLAG_PRE23) != 0);
 
         // Dangerous and normal permissions are always shown to the user
         if (isNormal || isDangerous) {
@@ -439,16 +438,7 @@ public class AppSecurityPermissions {
 
         private final Collator sCollator = Collator.getInstance();
 
-        PermissionGroupInfoComparator() {
-        }
-
         public final int compare(MyPermissionGroupInfo a, MyPermissionGroupInfo b) {
-            if (((a.flags() ^ b.flags()) & PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
-                return ((a.flags() & PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) ? -1 : 1;
-            }
-            if (a.priority() != b.priority()) {
-                return a.priority() > b.priority() ? -1 : 1;
-            }
             return sCollator.compare(a.mLabel, b.mLabel);
         }
     }
@@ -466,7 +456,7 @@ public class AppSecurityPermissions {
     }
 
     private void addPermToList(List<MyPermissionInfo> permList,
-            MyPermissionInfo pInfo) {
+                               MyPermissionInfo pInfo) {
         if (pInfo.mLabel == null) {
             pInfo.mLabel = pInfo.loadLabel(mPm);
         }
@@ -490,11 +480,6 @@ public class AppSecurityPermissions {
                     addPermToList(group.mAllPermissions, pInfo);
                     if (pInfo.mNew) {
                         addPermToList(group.mNewPermissions, pInfo);
-                    }
-                    if ((group.flags() & PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
-                        addPermToList(group.mPersonalPermissions, pInfo);
-                    } else {
-                        addPermToList(group.mDevicePermissions, pInfo);
                     }
                 }
             }

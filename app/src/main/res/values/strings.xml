@@ -361,8 +361,6 @@
             be lost. It does not require any special access.</string>
     <string name="newPerms">New</string>
     <string name="allPerms">All</string>
-    <string name="privacyPerms">Privacy</string>
-    <string name="devicePerms">Device Access</string>
     <string name="perm_costs_money">This may cost you money</string>
     <string name="uninstall_update_confirm">Do you want to replace this app with the factory version?</string>
     <string name="uninstall_confirm">Do you want to uninstall this app?</string>

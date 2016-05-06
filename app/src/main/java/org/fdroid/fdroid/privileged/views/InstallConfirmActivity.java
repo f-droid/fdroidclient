@@ -41,6 +41,11 @@ import android.widget.TextView;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 
+/**
+ * NOTES:
+ * Parts are based on AOSP src/com/android/packageinstaller/PackageInstallerActivity.java
+ * latest included commit: c23d802958158d522e7350321ad9ac6d43013883
+ */
 public class InstallConfirmActivity extends Activity implements OnCancelListener, OnClickListener {
 
     public static final int RESULT_CANNOT_PARSE = RESULT_FIRST_USER + 1;
@@ -107,9 +112,8 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
             findViewById(R.id.tabscontainer).setVisibility(View.GONE);
             findViewById(R.id.divider).setVisibility(View.VISIBLE);
         }
-        final int np = perms.getPermissionCount(AppSecurityPermissions.WHICH_PERSONAL);
-        final int nd = perms.getPermissionCount(AppSecurityPermissions.WHICH_DEVICE);
-        if (np > 0 || nd > 0) {
+        final int n = perms.getPermissionCount(AppSecurityPermissions.WHICH_ALL);
+        if (n > 0) {
             permVisible = true;
             LayoutInflater inflater = (LayoutInflater) getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
@@ -117,18 +121,8 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
             if (mScrollView == null) {
                 mScrollView = (CaffeinatedScrollView) root.findViewById(R.id.scrollview);
             }
-            final ViewGroup privacyList = (ViewGroup) root.findViewById(R.id.privacylist);
-            if (np > 0) {
-                privacyList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_PERSONAL));
-            } else {
-                privacyList.setVisibility(View.GONE);
-            }
-            final ViewGroup deviceList = (ViewGroup) root.findViewById(R.id.devicelist);
-            if (nd > 0) {
-                deviceList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_DEVICE));
-            } else {
-                root.findViewById(R.id.devicelist).setVisibility(View.GONE);
-            }
+            final ViewGroup permList = (ViewGroup) root.findViewById(R.id.permission_list);
+            permList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
             adapter.addTab(tabHost.newTabSpec(TAB_ID_ALL).setIndicator(
                     getText(R.string.allPerms)), root);
         }
