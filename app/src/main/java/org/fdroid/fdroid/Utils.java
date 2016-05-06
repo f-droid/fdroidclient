@@ -335,6 +335,17 @@ public final class Utils {
     }
 
     /**
+     * Get the full path for where an APK URL will be downloaded into.
+     */
+    public static SanitizedFile getApkDownloadPath(Context context, Uri uri) {
+        File dir = new File(Utils.getApkCacheDir(context), uri.getHost() + "-" + uri.getPort());
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        return new SanitizedFile(dir, uri.getLastPathSegment());
+    }
+
+    /**
      * Recursively delete files in {@code dir} that were last modified
      * {@code secondsAgo} seconds ago, e.g. when it was downloaded.
      *

@@ -37,7 +37,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.NavUtils;
@@ -86,8 +85,8 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.InstallFailedException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
@@ -868,7 +867,7 @@ public class AppDetails extends AppCompatActivity {
         activeDownloadUrlString = apk.getUrl();
         registerDownloaderReceivers();
         headerFragment.startProgress();
-        DownloaderService.queue(this, apk.packageName, activeDownloadUrlString);
+        InstallManagerService.queue(this, app, apk);
     }
 
     private void removeApk(String packageName) {

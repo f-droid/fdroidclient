@@ -48,6 +48,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
@@ -497,8 +498,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             for (int i = 0; i < cursor.getCount(); i++) {
                 App app = new App(cursor);
                 Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode);
-                String urlString = apk.getUrl();
-                DownloaderService.queue(this, app.packageName, urlString);
+                InstallManagerService.queue(this, app, apk);
                 cursor.moveToNext();
             }
             cursor.close();

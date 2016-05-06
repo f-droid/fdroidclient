@@ -253,9 +253,7 @@ public class DownloaderService extends Service {
      */
     protected void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
-        File downloadDir = new File(Utils.getApkCacheDir(this), uri.getHost() + "-" + uri.getPort());
-        downloadDir.mkdirs();
-        final SanitizedFile localFile = new SanitizedFile(downloadDir, uri.getLastPathSegment());
+        final SanitizedFile localFile = Utils.getApkDownloadPath(this, uri);
         final String packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME);
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile);
 
