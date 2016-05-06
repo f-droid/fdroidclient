@@ -20,12 +20,12 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Manages the whole process when a background update triggers an install or the user
@@ -59,9 +59,18 @@ public class InstallManagerService extends Service {
     private static final int NOTIFY_DOWNLOADING = 0x2344;
 
     /**
-     * The collection of APKs that are actively going through this whole process.
+     * The collection of {@link Apk}s that are actively going through this whole process,
+     * matching the {@link App}s in {@code ACTIVE_APPS}. The key is the download URL, as
+     * in {@link Apk#getUrl()} or {@code urlString}.
      */
     private static final HashMap<String, Apk> ACTIVE_APKS = new HashMap<String, Apk>(3);
+
+    /**
+     * The collection of {@link App}s that are actively going through this whole process,
+     * matching the {@link Apk}s in {@code ACTIVE_APKS}. The key is the
+     * {@code packageName} of the app.
+     */
+    private static final HashMap<String, App> ACTIVE_APPS = new HashMap<String, App>(3);
 
     /**
      * The array of active {@link BroadcastReceiver}s for each active APK. The key is the
@@ -152,6 +161,7 @@ public class InstallManagerService extends Service {
             public void onReceive(Context context, Intent intent) {
                 String urlString = intent.getDataString();
                 Apk apk = ACTIVE_APKS.remove(urlString);
+                ACTIVE_APPS.remove(apk.packageName);
                 notifyDownloadComplete(apk, urlString);
                 unregisterDownloaderReceivers(urlString);
             }
@@ -160,7 +170,8 @@ public class InstallManagerService extends Service {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String urlString = intent.getDataString();
-                ACTIVE_APKS.remove(urlString);
+                Apk apk = ACTIVE_APKS.remove(urlString);
+                ACTIVE_APPS.remove(apk.packageName);
                 unregisterDownloaderReceivers(urlString);
             }
         };
@@ -182,7 +193,7 @@ public class InstallManagerService extends Service {
         return new NotificationCompat.Builder(this)
                 .setAutoCancel(true)
                 .setContentIntent(getAppDetailsIntent(downloadUrlId, apk))
-                .setContentTitle(getNotificationTitle(urlString, apk))
+                .setContentTitle(getString(R.string.downloading_apk, getAppName(urlString, apk)))
                 .addAction(R.drawable.ic_cancel_black_24dp, getString(R.string.cancel),
                         DownloaderService.getCancelPendingIntent(this, urlString))
                 .setSmallIcon(android.R.drawable.stat_sys_download)
@@ -190,23 +201,13 @@ public class InstallManagerService extends Service {
                 .setProgress(100, 0, true);
     }
 
-    private String getAppName(Apk apk) {
-        App app = AppProvider.Helper.findByPackageName(
-                getContentResolver(), apk.packageName, new String[]{AppProvider.DataColumns.NAME});
-        if (app != null && !TextUtils.isEmpty(app.name)) {
-            return app.name;
-        } else {
-            return null;
-        }
-    }
-
-    private String getNotificationTitle(String urlString, Apk apk) {
-        String name = getAppName(apk);
-        if (TextUtils.isEmpty(name)) {
+    private String getAppName(String urlString, Apk apk) {
+        App app = ACTIVE_APPS.get(apk.packageName);
+        if (TextUtils.isEmpty(app.name)) {
             // this is ugly, but its better than nothing as a failsafe
             return getString(R.string.downloading_apk, urlString);
         } else {
-            return getString(R.string.downloading_apk, name);
+            return getString(R.string.downloading_apk, app.name);
         }
     }
 
@@ -236,7 +237,7 @@ public class InstallManagerService extends Service {
             title = String.format(getString(R.string.tap_to_update_format),
                     pm.getApplicationLabel(pm.getApplicationInfo(apk.packageName, 0)));
         } catch (PackageManager.NameNotFoundException e) {
-            title = String.format(getString(R.string.tap_to_install_format), getAppName(apk));
+            title = String.format(getString(R.string.tap_to_install_format), getAppName(urlString, apk));
         }
 
         int downloadUrlId = urlString.hashCode();
@@ -261,9 +262,29 @@ public class InstallManagerService extends Service {
         String urlString = apk.getUrl();
         Utils.debugLog(TAG, "queue " + app.packageName + " " + apk.versionCode + " from " + urlString);
         ACTIVE_APKS.put(urlString, apk);
+        ACTIVE_APPS.put(app.packageName, app);
         Intent intent = new Intent(context, InstallManagerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(Uri.parse(urlString));
         context.startService(intent);
+    }
+
+    /**
+     * Returns a {@link Set} of the {@code urlString}s that are currently active.
+     * {@code urlString}s are used as unique IDs throughout the
+     * {@code InstallManagerService} process, either as a {@code String} or as an
+     * {@code int} from {@link String#hashCode()}.
+     */
+    public static Set<String> getActiveDownloadUrls() {
+        return ACTIVE_APKS.keySet();
+    }
+
+    /**
+     * Returns a {@link Set} of the {@code packageName}s that are currently active.
+     * {@code packageName}s are used as unique IDs for apps throughout all of
+     * Android, F-Droid, and other apps stores.
+     */
+    public static Set<String> getActivePackageNames() {
+        return ACTIVE_APPS.keySet();
     }
 }
