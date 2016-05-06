@@ -197,7 +197,6 @@
     <string name="perms_new_perm_prefix">"Nuovo: "</string>
     <string name="perms_description_app">Fornito da %1$s.</string>
     <string name="uninstall_confirm">Vuoi rimuovere questa applicazione?</string>
-    <string name="privacyPerms">Privacy</string>
     <string name="install_confirm">Vuoi installare questa applicazione? Avrà accesso a:</string>
     <string name="install_confirm_update_system">Vuoi installare un aggiornamento per questa applicazione integrata? I dati esistenti non saranno eliminati. Dopo l\'aggiornamento l\'applicazione avrà accesso a:</string>
     <string name="install_confirm_update">Vuoi installare un aggiornamento per questa applicazione? I dati presenti non saranno rimossi. L\'applicazione dopo l\'aggiornamento avrà accesso a:</string>
@@ -321,7 +320,6 @@
     <string name="install_confirm_update_no_perms">Vuoi installare una versione aggiornata di questa applicazione? I dati esistenti non verranno rimossi. Non è richiesto alcun accesso speciale.</string>
     <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata? I tuoi dati esistenti non verranno persi. Non richiede alcun permesso speciale.</string>
     <string name="allPerms">Tutte</string>
-    <string name="devicePerms">Accesso al dispositivo</string>
     <string name="update_notification_more">+%1$d rimanente…</string>
     <string name="swap_nearby">Scambio ravvicinato</string>
     <string name="empty_search_installed_app_list">Nessuna applicazione installata corrispondente.</string>

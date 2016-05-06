@@ -198,7 +198,6 @@
     <string name="interval_1w">每星期</string>
     <string name="perms_description_app">由 %1$s 提供。</string>
     <string name="uninstall_confirm">您想卸載此應用程式嗎？</string>
-    <string name="privacyPerms">私隱權</string>
     <string name="allPerms">所有</string>
     <string name="newPerms">新權限</string>
     <string name="swap_connecting">正在連線</string>
@@ -298,7 +297,6 @@
     <string name="swap_join_same_wifi_desc">若要透過 Wi-Fi 進行交換，請確保雙方都加入了同一個網絡。如果您不能加入同一個網絡，您可以建立一個 Wi-Fi 熱點。</string>
     <string name="swap_join_this_hotspot">協助您的朋友加入您的熱點</string>
     <string name="swap_active_hotspot">%1$s (您的熱點)</string>
-    <string name="devicePerms">裝置權限</string>
     <string name="about_license">特許條款</string>
 
     <string name="tab_installed_apps_count">已安裝 (%d)</string>

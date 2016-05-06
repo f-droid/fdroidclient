@@ -256,8 +256,6 @@
     <string name="install_confirm_update_system_no_perms">Wil je een update voor deze ingebouwde applicatie installeren? De bestaande data zal niet verloren gaan. Het heeft geen speciale toegang nodig.</string>
     <string name="newPerms">Nieuw</string>
     <string name="allPerms">Alle</string>
-    <string name="privacyPerms">Privacy</string>
-    <string name="devicePerms">Apparaattoegang</string>
     <string name="perm_costs_money">Dit kan geld kosten</string>
     <string name="uninstall_update_confirm">Wil je deze app vervangen door de fabrieksversie?</string>
     <string name="uninstall_confirm">Wil je deze app verwijderen?</string>

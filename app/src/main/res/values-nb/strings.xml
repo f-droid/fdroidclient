@@ -244,8 +244,6 @@
     <string name="install_confirm_no_perms">Ønsker du å installere dette programmet? Ingen spesielle rettigheter påkrevd.</string>
     <string name="newPerms">Ny</string>
     <string name="allPerms">Alle</string>
-    <string name="privacyPerms">Personvern</string>
-    <string name="devicePerms">Enhetstilgang</string>
     <string name="perm_costs_money">Dette kan koste penger</string>
     <string name="uninstall_update_confirm">Ønsker du å erstatte dette programmet med fabrikkversjonen?</string>
     <string name="uninstall_confirm">Ønsker du å avinstallere dette programmet?</string>

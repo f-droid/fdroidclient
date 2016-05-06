@@ -225,8 +225,6 @@
     <string name="install_confirm_update_system_no_perms">Szeretne telepíteni egy frissítést ehhez a beépített alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a nem igényel semmilyen különleges hozzáférést.</string>
     <string name="newPerms">Új</string>
     <string name="allPerms">Összes</string>
-    <string name="privacyPerms">Biztonság</string>
-    <string name="devicePerms">Eszközhozzáférés</string>
     <string name="perm_costs_money">Ez pénzbe kerülhet Önnek</string>
     <string name="uninstall_update_confirm">Szeretné lecserélni ezt az appot a gyári verzióra?</string>
     <string name="uninstall_confirm">Szeretné eltávolítani ezt az appot?</string>

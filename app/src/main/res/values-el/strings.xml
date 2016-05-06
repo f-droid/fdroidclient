@@ -291,8 +291,6 @@
     <string name="install_confirm_update_system_no_perms">Θέλετε να ενημερώσετε αυτήν την ενσωματωμένη εφαρμογή; Τα υπάρχοντα δεδομένα δεν θα χαθούν. Δεν απαιτεί οποιαδήποτε ειδική πρόσβαση.</string>
     <string name="newPerms">Νέες εφαρμογές</string>
     <string name="allPerms">Όλες οι εφαρμογές</string>
-    <string name="privacyPerms">Ιδιωτικότητα</string>
-    <string name="devicePerms">Πρόσβαση συσκευής</string>
     <string name="perm_costs_money">Αυτό μπορεί να σας κοστίσει χρήματα</string>
     <string name="uninstall_update_confirm">Θέλετε να αντικαταστήσετε αυτή την εφαρμογή με την εργοστασιακή έκδοση;</string>
     <string name="uninstall_confirm">Θέλετε να απεγκαταστήσετε αυτή την εφαρμογή;</string>

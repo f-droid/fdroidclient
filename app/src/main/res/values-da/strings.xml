@@ -316,8 +316,6 @@
     <string name="install_confirm_update_system_no_perms">Vil du installere en opdatering til dette indbyggede program? Dine eksisterende data vil ikke gå tabt. Det kræver ingen speciel adgang.</string>
     <string name="newPerms">Ny</string>
     <string name="allPerms">Alle</string>
-    <string name="privacyPerms">Privatliv</string>
-    <string name="devicePerms">Enhedsadgang</string>
     <string name="perm_costs_money">Dette koster dig muligvis penge</string>
     <string name="uninstall_update_confirm">Vil du erstatte dette program med fabriksversionen?</string>
     <string name="uninstall_confirm">Vil du afinstallere dette program?</string>

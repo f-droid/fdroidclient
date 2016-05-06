@@ -264,8 +264,6 @@
     <string name="install_confirm_update_system_no_perms">この組み込みｱﾌﾟﾘｹｰｼｮﾝに更新ﾌﾟﾛｸﾞﾗﾑをｲﾝｽﾄｰﾙしますか? 既存のﾃﾞｰﾀは失われません。特別なｱｸｾｽ許可は不要です。</string>
     <string name="newPerms">新規</string>
     <string name="allPerms">全て</string>
-    <string name="privacyPerms">個人情報</string>
-    <string name="devicePerms">端末ｱｸｾｽ</string>
     <string name="perm_costs_money">お金がかかることがあります</string>
     <string name="uninstall_update_confirm">このｱﾌﾟﾘｹｰｼｮﾝを出荷時のものに置き換えますか｡</string>
     <string name="uninstall_confirm">このｱﾌﾟﾘｹｰｼｮﾝをｱﾝｲﾝｽﾄｰﾙしますか｡</string>

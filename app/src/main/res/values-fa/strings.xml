@@ -252,8 +252,6 @@
     <string name="swap_confirm">تأیید تبادل</string>
     <string name="newPerms">جدید</string>
     <string name="allPerms">همه</string>
-    <string name="privacyPerms">محرمانگی</string>
-    <string name="devicePerms">دسترسی افزاره</string>
     <string name="perm_costs_money">ممکن است این کار برایتان خرج داشته باشد</string>
     <string name="tap_to_install">بارگیری کامل شد، برای نصب ضربه بزنید</string>
     <string name="download_error">بارگیری موفّق نبود</string>

@@ -269,8 +269,6 @@
     <string name="install_confirm_update_system_no_perms">Bạn có muốn cập nhật ứng dụng hệ thống này không? Dữ liệu đã có sẽ không bị mất. Ứng dụng không đòi hỏi quyền truy cập đặc biệt nào.</string>
     <string name="newPerms">Mới</string>
     <string name="allPerms">Tất cả</string>
-    <string name="privacyPerms">Quyền riêng tư</string>
-    <string name="devicePerms">Truy cập thiết bị</string>
     <string name="perm_costs_money">Việc này có thể mất phí</string>
     <string name="uninstall_update_confirm">Bạn có muốn thay thế ứng dụng này bằng phiên bản xuất xưởng không?</string>
     <string name="uninstall_confirm">Bạn có muốn gỡ bỏ ứng dụng này không?</string>

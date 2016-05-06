@@ -278,8 +278,6 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="install_confirm_update_system_no_perms">¿Quies instalar un anovamientu pa esta aplicación integrada? Nun va perdese dal datu esistente. L\'aplicación nun rique dal accesu especial.</string>
     <string name="newPerms">Nuevu</string>
     <string name="allPerms">Too</string>
-    <string name="privacyPerms">Privacidá</string>
-    <string name="devicePerms">Accesu al preséu</string>
     <string name="uninstall_confirm">¿Quies desinstalar esta aplicación?</string>
     <string name="tap_to_install">Descarga completada, toca pa instalar</string>
 

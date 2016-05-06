@@ -290,8 +290,6 @@ bağlanılıyor</string>
     <string name="install_confirm_update_system_no_perms">Bu gömülü uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolmayacaktır. Herhangi özel bir erişim gerektirmemektedir.</string>
     <string name="newPerms">Yeni</string>
     <string name="allPerms">Tümü</string>
-    <string name="privacyPerms">Gizlilik</string>
-    <string name="devicePerms">Cihaz Erişimi</string>
     <string name="perm_costs_money">Bu, paraya mal olabilir</string>
     <string name="uninstall_update_confirm">Bu uygulamayı fabrika sürümü ile değiştirmek istiyor musunuz?</string>
     <string name="uninstall_confirm">Bu uygulamayı kaldırmak istiyor musunuz?</string>

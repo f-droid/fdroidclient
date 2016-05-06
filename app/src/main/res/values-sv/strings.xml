@@ -310,8 +310,6 @@
     <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering till detta inbyggda program? Befintlig data försvinner inte. Det kräver inte någon särskild tillgång.</string>
     <string name="newPerms">Ny</string>
     <string name="allPerms">Alla</string>
-    <string name="privacyPerms">Integritet</string>
-    <string name="devicePerms">Enhetsåtkomst</string>
     <string name="perm_costs_money">Detta kan kosta pengar</string>
     <string name="uninstall_update_confirm">Vill du byta ut den här appen med fabriksversionen?</string>
     <string name="uninstall_confirm">Vill du avinstallera den här appen?</string>

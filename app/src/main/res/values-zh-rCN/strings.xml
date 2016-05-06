@@ -300,8 +300,6 @@
     <string name="install_confirm_update_system_no_perms">确定要为这个内置应用安装更新吗？你的已有数据会保留。该应用未请求任何权限。</string>
     <string name="newPerms">新建</string>
     <string name="allPerms">所有</string>
-    <string name="privacyPerms">隐私</string>
-    <string name="devicePerms">设备访问</string>
     <string name="perm_costs_money">这可能会产生费用</string>
     <string name="uninstall_update_confirm">你要把这个程序换成出厂版本？</string>
     <string name="uninstall_confirm">确定要卸载此应用程序吗？</string>

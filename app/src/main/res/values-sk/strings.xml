@@ -241,7 +241,6 @@
     <string name="install_confirm">Chcete nainštalovať túto aplikáciu? Bude mať prístup k nasledujúcemu:</string>
     <string name="allPerms">Všetky</string>
     <string name="newPerms">Nové</string>
-    <string name="privacyPerms">Súkromie</string>
     <string name="uninstall_update_confirm">Chcete nahradiť túto aplikáciu továreňskou verziou?</string>
     <string name="uninstall_confirm">Chcete odinštalovať túto aplikáciu?</string>
     <string name="perms_new_perm_prefix">"Nové: "</string>
@@ -324,7 +323,6 @@
     <string name="install_confirm_update_system">Chcete nainštalovať aktualizáciu k tejto vstavanej aplikácií? Dáta aplikácie nebudú prepísané. Aktualizovaná aplikácia bude mať prístup k:</string>
     <string name="install_confirm_update_no_perms">Chcete nainštalovať aktualizáciu k tejto existujúcej aplikácií? Dáta aplikácie nebudú prepísané. Aplikácia nevyžaduje špeciálny prístup.</string>
     <string name="install_confirm_update_system_no_perms">Chcete nainštalovať aktualizáciu k tejto vstavanej aplikácií? Dáta aplikácie nebudú prepísané. Aplikácia nevyžaduje špeciálny prístup.</string>
-    <string name="devicePerms">Prístup k zariadeniu</string>
     <string name="tap_to_install">Preberanie dokončené, dotykom nainštalovať</string>
     <string name="download_error">Prevzatie neúspešné</string>
 

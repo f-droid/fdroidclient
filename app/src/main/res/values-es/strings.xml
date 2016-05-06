@@ -269,8 +269,6 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="install_confirm_update_no_perms">¿Quieres instalar una actualización para esta aplicación? Los datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="newPerms">Nuevo</string>
     <string name="allPerms">Todo</string>
-    <string name="privacyPerms">Privacidad</string>
-    <string name="devicePerms">Acceso a dispositivo</string>
     <string name="perm_costs_money">Esto puede costar dinero</string>
     <string name="uninstall_update_confirm">¿Deseas reemplazar esta aplicación con la versión de fábrica?</string>
     <string name="uninstall_confirm">¿Quieres desinstalar esta aplicación?</string>

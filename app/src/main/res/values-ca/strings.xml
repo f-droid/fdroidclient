@@ -234,8 +234,6 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="theme_night">Nit</string>
 <string name="newPerms">Nous</string>
     <string name="allPerms">Tots</string>
-    <string name="privacyPerms">Privadesa</string>
-    <string name="devicePerms">Accés al dispositiu</string>
     <string name="perm_costs_money">Això pot costat-li diners</string>
     <string name="uninstall_update_confirm">Voleu canviar aquesta aplicació per la versió de fàbrica?</string>
     <string name="uninstall_confirm">Voleu eliminar aquesta aplicació?</string>

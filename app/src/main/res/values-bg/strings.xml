@@ -171,7 +171,6 @@
     <string name="swap_connecting">Свързване</string>
     <string name="loading">Зареждане…</string>
     <string name="allPerms">Всички</string>
-    <string name="privacyPerms">Поверителност</string>
     <string name="perm_costs_money">Може да ви струва пари</string>
     <string name="interval_never">Никога</string>
     <string name="interval_1h">Всеки час</string>
@@ -285,7 +284,6 @@
     <string name="swap_attempt_install">Опит за инсталиране</string>
     <string name="swap_connection_misc_error">Възникна грешка при свързването с устройството, размяната не може да се осъществи.</string>
     <string name="newPerms">Нови</string>
-    <string name="devicePerms">Достъп до устройството</string>
     <string name="uninstall_update_confirm">Желаете ли приложението да бъде заменено от фабричната му версия?</string>
     <string name="download_error">Свалянето се провали</string>
 

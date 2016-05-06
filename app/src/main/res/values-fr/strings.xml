@@ -211,8 +211,6 @@
     <string name="install_confirm_update_system_no_perms">Voulez-vous mettre à jour cette application système ? Vos données ne seront pas perdues. Elle ne requiert aucune autorisation particulière.</string>
     <string name="newPerms">Nouvelles</string>
     <string name="allPerms">Toutes</string>
-    <string name="privacyPerms">Vie privée</string>
-    <string name="devicePerms">Accès à l\'appareil</string>
     <string name="perm_costs_money">Peut vous coûter de l\'argent</string>
     <string name="uninstall_update_confirm">Voulez-vous remplacer cette appli avec la version pré-installée ?</string>
     <string name="uninstall_confirm">Voulez-vous désinstaller cette appli ?</string>

@@ -269,8 +269,6 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="install_confirm_update_system_no_perms">Você quer instalar uma atualização para este aplicativo incorporado? Os dados existentes não serão perdidos. Ele não exige nenhum acesso especial.</string>
     <string name="newPerms">Novo</string>
     <string name="allPerms">Tudo</string>
-    <string name="privacyPerms">Privacidade</string>
-    <string name="devicePerms">Acesso ao dispositivo</string>
     <string name="perm_costs_money">Isto pode custar-lhe dinheiro</string>
     <string name="uninstall_update_confirm">Você quer substituir este aplicativo com a versão de fábrica?</string>
     <string name="uninstall_confirm">Você quer desinstalar este aplicativo?</string>

@@ -228,8 +228,6 @@
     <string name="swap_not_enabled">Размена није укључена</string>
     <string name="newPerms">Ново</string>
     <string name="allPerms">Све</string>
-    <string name="privacyPerms">Приватност</string>
-    <string name="devicePerms">Приступ уређају</string>
     <string name="perms_new_perm_prefix">"Ново: "</string>
     <string name="downloading">Преузимам…</string>
 

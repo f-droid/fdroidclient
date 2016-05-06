@@ -271,8 +271,6 @@
     <string name="install_confirm_update_no_perms">Boles installare un’agiornamentu a custa aplicatzione esistente? Sos datos tuos giai in cuddae non s\'ant a pèrdere. S\'aplicatzione agiornada non tenet bisòngiu de permissos ispetziales.</string>
     <string name="newPerms">Nou</string>
     <string name="allPerms">Totu</string>
-    <string name="privacyPerms">Privadesa</string>
-    <string name="devicePerms">Atzessu a su dispositivu</string>
     <string name="perm_costs_money">Custu ti diat pòdere costare dinare</string>
     <string name="uninstall_update_confirm">Boles remplasare custa aplicatzione cun sa versione de fàbrica?</string>
     <string name="uninstall_confirm">Boles disinstallare custa aplicatzione?</string>

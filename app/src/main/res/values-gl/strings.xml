@@ -218,8 +218,6 @@
     <string name="loading">Cargando…</string>
     <string name="newPerms">Novo</string>
     <string name="allPerms">Todo</string>
-    <string name="privacyPerms">Privacidade</string>
-    <string name="devicePerms">Acceso ó dispositivo</string>
     <string name="perm_costs_money">Esto pode costarlle cartos</string>
     <string name="uninstall_update_confirm">Desexas sustituir éste aplicativo pola versión de fábrica?</string>
     <string name="uninstall_confirm">Desexas desinstalar este aplicativo?</string>

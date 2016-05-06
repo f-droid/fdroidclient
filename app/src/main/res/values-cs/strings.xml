@@ -285,7 +285,6 @@
     <string name="swap_switch_to_wifi">Dotykem přepnout síť Wi-Fi</string>
     <string name="newPerms">Nová</string>
     <string name="allPerms">Všechna</string>
-    <string name="privacyPerms">Soukromí</string>
     <string name="perm_costs_money">Toto může stát peníze</string>
     <string name="uninstall_update_confirm">Má být aplikace nahrazena verzí z výroby?</string>
     <string name="uninstall_confirm">Odinstalovat tuto aplikaci?</string>

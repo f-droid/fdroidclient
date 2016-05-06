@@ -269,8 +269,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="install_confirm_update_system_no_perms">Czy chcesz zaktualizować tą systemową aplikację? Aktualizacja nie wymaga żadnych specjalnych uprawnień.</string>
     <string name="newPerms">Nowe</string>
     <string name="allPerms">Wszystkie</string>
-    <string name="privacyPerms">Prywatność</string>
-    <string name="devicePerms">Dostęp do urządzenia</string>
     <string name="perm_costs_money">To może Cię kosztować</string>
     <string name="uninstall_update_confirm">Czy chcesz zastąpić tą aplikację pierwotną wersją?</string>
     <string name="uninstall_confirm">Czy chcesz odinstalować tą aplikację?</string>

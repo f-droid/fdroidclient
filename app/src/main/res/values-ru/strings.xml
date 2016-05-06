@@ -285,8 +285,6 @@
     <string name="install_confirm_update_system_no_perms">Хотите обновить встроенное приложение? Существующие данные не будут потеряны. Оно не требует особых разрешений.</string>
     <string name="newPerms">Новые</string>
     <string name="allPerms">Все</string>
-    <string name="privacyPerms">Конфиденциальность</string>
-    <string name="devicePerms">Доступ к устройству</string>
     <string name="perm_costs_money">Это может стоить вам денег</string>
     <string name="uninstall_update_confirm">Хотите заменить это приложение заводской версией?</string>
     <string name="uninstall_confirm">Хотите удалить это приложение?</string>

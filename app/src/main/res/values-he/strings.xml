@@ -226,8 +226,6 @@
             זו לא דורשת שום גישה מיוחדת.</string>
     <string name="newPerms">חדש</string>
     <string name="allPerms">הכל</string>
-    <string name="privacyPerms">פרטיות</string>
-    <string name="devicePerms">גישת התקן</string>
     <string name="perm_costs_money">זה עשוי לעלות לך כסף</string>
     <string name="uninstall_update_confirm">האם ברצונך להחליף את אפליקציה זו בגרסת היצרן?</string>
     <string name="uninstall_confirm">האם ברצונך לבטל את התקנת אפליקציה זו?</string>

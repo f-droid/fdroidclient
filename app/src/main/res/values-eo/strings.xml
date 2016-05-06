@@ -309,8 +309,6 @@
     <string name="install_confirm_update_system_no_perms">Ĉu vi volas instali ĝisdatigon al tiu ĉi integrita aplikaĵo? Viaj nunaj datumoj ne foriĝos. Ĝi ne bezonas iun ajn specialan aliron.</string>
     <string name="newPerms">Novaj</string>
     <string name="allPerms">Ĉiuj</string>
-    <string name="privacyPerms">Privateco</string>
-    <string name="devicePerms">Aliro al aparato</string>
     <string name="perm_costs_money">Tio ĉi povas elspezi vian monon</string>
     <string name="uninstall_update_confirm">Ĉu vi volas anstataŭigi tiun ĉi aplikaĵon per antaŭinstalita versio?</string>
     <string name="uninstall_confirm">Ĉu vi volas malinstali tiun ĉi aplikaĵon?</string>

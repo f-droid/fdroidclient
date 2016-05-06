@@ -331,8 +331,6 @@
     <string name="install_confirm_update_system_no_perms">Anda ingin memasang pembaruan aplikasi bawaan ini? Data anda tidak akan hilang. App tidak membutuhkan akses spesial apapun.</string>
     <string name="newPerms">Baru</string>
     <string name="allPerms">Semua</string>
-    <string name="privacyPerms">Privasi</string>
-    <string name="devicePerms">Akses Perangkat</string>
     <string name="perm_costs_money">Ini mungkin akan memakan biaya</string>
     <string name="uninstall_update_confirm">Anda ingin mengganti app ini dengan versi pabrik?</string>
     <string name="uninstall_confirm">Anda ingin mencopot pemasangan app ini?</string>

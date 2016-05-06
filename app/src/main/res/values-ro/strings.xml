@@ -268,7 +268,6 @@
     <string name="interval_1h">O data pe ora</string>
     <string name="perms_new_perm_prefix">"Nou: "</string>
     <string name="allPerms">Toate</string>
-    <string name="devicePerms">Acces dispozitiv</string>
     <string name="uninstall_update_confirm">Vrei sa inlocuiesti aceasta aplicatie cu versiunea din fabrica?</string>
     <string name="download_error">Descarcare finalizata cu eroare</string>
 
@@ -278,7 +277,6 @@
     <string name="tap_to_install">Descarcare completa, atinge pentru a instala</string>
     <string name="uninstall_confirm">Vrei sa dezinstalezi aceasta aplicatie?</string>
     <string name="perm_costs_money">Aceasta s-ar putea sa coste bani</string>
-    <string name="privacyPerms">Intimitate</string>
     <string name="newPerms">Nou</string>
     <string name="downloading">Descarcare…</string>
 
