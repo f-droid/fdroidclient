@@ -10,13 +10,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 
 import org.fdroid.fdroid.AppDetails;
-import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -93,7 +92,7 @@ public class InstallManagerService extends Service {
         String urlString = intent.getDataString();
         Apk apk = ACTIVE_APKS.get(urlString);
 
-        Notification notification = createNotification(intent.getDataString(), apk.packageName).build();
+        Notification notification = createNotification(intent.getDataString(), apk).build();
         startForeground(NOTIFY_DOWNLOADING, notification);
 
         registerDownloaderReceivers(urlString);
@@ -142,7 +141,7 @@ public class InstallManagerService extends Service {
                 int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
                 int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
                 NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                Notification notification = createNotification(urlString, apk.packageName)
+                Notification notification = createNotification(urlString, apk)
                         .setProgress(totalBytes, bytesRead, false)
                         .build();
                 nm.notify(NOTIFY_DOWNLOADING, notification);
@@ -153,7 +152,7 @@ public class InstallManagerService extends Service {
             public void onReceive(Context context, Intent intent) {
                 String urlString = intent.getDataString();
                 Apk apk = ACTIVE_APKS.remove(urlString);
-                notifyDownloadComplete(apk.packageName, intent.getDataString());
+                notifyDownloadComplete(apk, urlString);
                 unregisterDownloaderReceivers(urlString);
             }
         };
@@ -178,12 +177,12 @@ public class InstallManagerService extends Service {
         });
     }
 
-    private NotificationCompat.Builder createNotification(String urlString, @Nullable String packageName) {
+    private NotificationCompat.Builder createNotification(String urlString, Apk apk) {
         int downloadUrlId = urlString.hashCode();
         return new NotificationCompat.Builder(this)
                 .setAutoCancel(true)
-                .setContentIntent(getAppDetailsIntent(downloadUrlId, apk.packageName))
-                .setContentTitle(getNotificationTitle(packageName))
+                .setContentIntent(getAppDetailsIntent(downloadUrlId, apk))
+                .setContentTitle(getNotificationTitle(urlString, apk))
                 .addAction(R.drawable.ic_cancel_black_24dp, getString(R.string.cancel),
                         DownloaderService.getCancelPendingIntent(this, urlString))
                 .setSmallIcon(android.R.drawable.stat_sys_download)
@@ -191,60 +190,53 @@ public class InstallManagerService extends Service {
                 .setProgress(100, 0, true);
     }
 
-    /**
-     * If downloading an apk (i.e. <code>packageName != null</code>) then the title will indicate
-     * the name of the app which the apk belongs to. Otherwise, it will be a generic "Downloading..."
-     * message.
-     */
-    private String getNotificationTitle(@Nullable String packageName) {
-        String title;
-        if (packageName != null) {
-            App app = AppProvider.Helper.findByPackageName(
-                    getContentResolver(), packageName, new String[]{AppProvider.DataColumns.NAME});
-            title = getString(R.string.downloading_apk, app.name);
+    private String getAppName(Apk apk) {
+        App app = AppProvider.Helper.findByPackageName(
+                getContentResolver(), apk.packageName, new String[]{AppProvider.DataColumns.NAME});
+        if (app != null && !TextUtils.isEmpty(app.name)) {
+            return app.name;
         } else {
-            title = getString(R.string.downloading);
+            return null;
         }
-        return title;
     }
 
-    private PendingIntent getAppDetailsIntent(int requestCode, String packageName) {
-        TaskStackBuilder stackBuilder;
-        if (packageName != null) {
-            Intent notifyIntent = new Intent(getApplicationContext(), AppDetails.class)
-                    .putExtra(AppDetails.EXTRA_APPID, packageName);
-
-            stackBuilder = TaskStackBuilder
-                    .create(getApplicationContext())
-                    .addParentStack(AppDetails.class)
-                    .addNextIntent(notifyIntent);
+    private String getNotificationTitle(String urlString, Apk apk) {
+        String name = getAppName(apk);
+        if (TextUtils.isEmpty(name)) {
+            // this is ugly, but its better than nothing as a failsafe
+            return getString(R.string.downloading_apk, urlString);
         } else {
-            Intent notifyIntent = new Intent(getApplicationContext(), FDroid.class);
-            stackBuilder = TaskStackBuilder
-                    .create(getApplicationContext())
-                    .addParentStack(FDroid.class)
-                    .addNextIntent(notifyIntent);
+            return getString(R.string.downloading_apk, name);
         }
+    }
 
-        return stackBuilder.getPendingIntent(requestCode, PendingIntent.FLAG_UPDATE_CURRENT);
+    /**
+     * Get a {@link PendingIntent} for a {@link Notification} to send when it
+     * is clicked.  {@link AppDetails} handles {@code Intent}s that are missing
+     * or bad {@link AppDetails#EXTRA_APPID}, so it does not need to be checked
+     * here.
+     */
+    private PendingIntent getAppDetailsIntent(int requestCode, Apk apk) {
+        Intent notifyIntent = new Intent(getApplicationContext(), AppDetails.class)
+                .putExtra(AppDetails.EXTRA_APPID, apk.packageName);
+        return TaskStackBuilder.create(getApplicationContext())
+                .addParentStack(AppDetails.class)
+                .addNextIntent(notifyIntent)
+                .getPendingIntent(requestCode, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     /**
      * Post a notification about a completed download.  {@code packageName} must be a valid
      * and currently in the app index database.
      */
-    private void notifyDownloadComplete(String packageName, String urlString) {
+    private void notifyDownloadComplete(Apk apk, String urlString) {
         String title;
         try {
             PackageManager pm = getPackageManager();
             title = String.format(getString(R.string.tap_to_update_format),
-                    pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0)));
+                    pm.getApplicationLabel(pm.getApplicationInfo(apk.packageName, 0)));
         } catch (PackageManager.NameNotFoundException e) {
-            App app = AppProvider.Helper.findByPackageName(getContentResolver(), packageName,
-                    new String[]{
-                            AppProvider.DataColumns.NAME,
-                    });
-            title = String.format(getString(R.string.tap_to_install_format), app.name);
+            title = String.format(getString(R.string.tap_to_install_format), getAppName(apk));
         }
 
         int downloadUrlId = urlString.hashCode();
@@ -253,7 +245,7 @@ public class InstallManagerService extends Service {
                         .setAutoCancel(true)
                         .setContentTitle(title)
                         .setSmallIcon(android.R.drawable.stat_sys_download_done)
-                        .setContentIntent(getAppDetailsIntent(downloadUrlId, packageName))
+                        .setContentIntent(getAppDetailsIntent(downloadUrlId, apk))
                         .setContentText(getString(R.string.tap_to_install));
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         nm.notify(downloadUrlId, builder.build());
