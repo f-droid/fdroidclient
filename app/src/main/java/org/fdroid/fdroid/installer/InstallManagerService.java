@@ -179,12 +179,13 @@ public class InstallManagerService extends Service {
     }
 
     private NotificationCompat.Builder createNotification(String urlString, @Nullable String packageName) {
+        int downloadUrlId = urlString.hashCode();
         return new NotificationCompat.Builder(this)
                 .setAutoCancel(true)
-                .setContentIntent(createAppDetailsIntent(0, packageName))
+                .setContentIntent(getAppDetailsIntent(downloadUrlId, apk.packageName))
                 .setContentTitle(getNotificationTitle(packageName))
                 .addAction(R.drawable.ic_cancel_black_24dp, getString(R.string.cancel),
-                        DownloaderService.createCancelDownloadIntent(this, 0, urlString))
+                        DownloaderService.getCancelPendingIntent(this, urlString))
                 .setSmallIcon(android.R.drawable.stat_sys_download)
                 .setContentText(urlString)
                 .setProgress(100, 0, true);
@@ -207,7 +208,7 @@ public class InstallManagerService extends Service {
         return title;
     }
 
-    private PendingIntent createAppDetailsIntent(int requestCode, String packageName) {
+    private PendingIntent getAppDetailsIntent(int requestCode, String packageName) {
         TaskStackBuilder stackBuilder;
         if (packageName != null) {
             Intent notifyIntent = new Intent(getApplicationContext(), AppDetails.class)
@@ -252,7 +253,7 @@ public class InstallManagerService extends Service {
                         .setAutoCancel(true)
                         .setContentTitle(title)
                         .setSmallIcon(android.R.drawable.stat_sys_download_done)
-                        .setContentIntent(createAppDetailsIntent(downloadUrlId, packageName))
+                        .setContentIntent(getAppDetailsIntent(downloadUrlId, packageName))
                         .setContentText(getString(R.string.tap_to_install));
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         nm.notify(downloadUrlId, builder.build());

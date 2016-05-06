@@ -30,7 +30,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PatternMatcher;
 import android.os.Process;
-import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -138,13 +137,12 @@ public class DownloaderService extends Service {
         }
     }
 
-    public static PendingIntent createCancelDownloadIntent(@NonNull Context context, int
-            requestCode, @NonNull String urlString) {
+    public static PendingIntent getCancelPendingIntent(Context context, String urlString) {
         Intent cancelIntent = new Intent(context.getApplicationContext(), DownloaderService.class)
                 .setData(Uri.parse(urlString))
                 .setAction(ACTION_CANCEL);
         return PendingIntent.getService(context.getApplicationContext(),
-                requestCode,
+                urlString.hashCode(),
                 cancelIntent,
                 PendingIntent.FLAG_CANCEL_CURRENT);
     }
