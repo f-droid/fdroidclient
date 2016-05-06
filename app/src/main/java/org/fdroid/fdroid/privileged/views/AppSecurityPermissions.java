@@ -61,11 +61,11 @@ import java.util.Set;
  * extended information consisting of all groups and permissions.
  * To use this view define a LinearLayout or any ViewGroup and add this
  * view by instantiating AppSecurityPermissions and invoking getPermissionsView.
- *
+ * <p/>
  * NOTES:
  * Based on AOSP core/java/android/widget/AppSecurityPermissions
  * latest included commit: a3f68ef2f6811cf72f1282214c0883db5a30901d
- *
+ * <p/>
  * To update this file:
  * - Open https://github.com/android/platform_frameworks_base/commits/master/core/java/android/widget/AppSecurityPermissions.java
  * - Start from latest included commit and include changes until the newest commit with care
@@ -75,7 +75,7 @@ public class AppSecurityPermissions {
 
     private static final String TAG = "AppSecurityPermissions";
 
-    public static final int WHICH_NEW = 1<<2;
+    public static final int WHICH_NEW = 1 << 2;
     public static final int WHICH_ALL = 0xffff;
 
     private final Context mContext;
@@ -107,9 +107,8 @@ public class AppSecurityPermissions {
         public Drawable loadGroupIcon(Context context, PackageManager pm) {
             if (icon != 0) {
                 return (Build.VERSION.SDK_INT < 22) ? loadIcon(pm) : loadUnbadgedIcon(pm);
-            } else {
-                return context.getDrawable(R.drawable.ic_perm_device_info);
             }
+            return context.getDrawable(R.drawable.ic_perm_device_info);
         }
 
         public int flags() {
@@ -261,7 +260,7 @@ public class AppSecurityPermissions {
     }
 
     private void extractPerms(PackageInfo info, Set<MyPermissionInfo> permSet,
-            PackageInfo installedPkgInfo) {
+                              PackageInfo installedPkgInfo) {
 
         final String[] strList = info.requestedPermissions;
         if (strList == null || strList.length == 0) {
@@ -369,7 +368,7 @@ public class AppSecurityPermissions {
      * list of permission descriptions.
      */
     private void displayPermissions(List<MyPermissionGroupInfo> groups,
-            LinearLayout permListView, int which) {
+                                    LinearLayout permListView, int which) {
         permListView.removeAllViews();
 
         int spacing = (int) (8 * mContext.getResources().getDisplayMetrics().density);
@@ -398,11 +397,11 @@ public class AppSecurityPermissions {
     }
 
     private PermissionItemView getPermissionItemView(MyPermissionGroupInfo grp,
-            MyPermissionInfo perm, boolean first, CharSequence newPermPrefix) {
+                                                     MyPermissionInfo perm, boolean first, CharSequence newPermPrefix) {
         PermissionItemView permView = (PermissionItemView) mInflater.inflate(
                 Build.VERSION.SDK_INT >= 17 &&
-                (perm.flags & PermissionInfo.FLAG_COSTS_MONEY) != 0
-                ? R.layout.app_permission_item_money : R.layout.app_permission_item,
+                        (perm.flags & PermissionInfo.FLAG_COSTS_MONEY) != 0
+                        ? R.layout.app_permission_item_money : R.layout.app_permission_item,
                 null);
         permView.setPermission(grp, perm, first, newPermPrefix);
         return permView;
@@ -413,10 +412,10 @@ public class AppSecurityPermissions {
         final boolean isNormal = base == PermissionInfo.PROTECTION_NORMAL;
 
         // TODO: do we want this in F-Droid?
-//        // We do not show normal permissions in the UI.
-//        if (isNormal) {
-//            return false;
-//        }
+        // We do not show normal permissions in the UI.
+        //if (isNormal) {
+        //    return false;
+        //}
 
         final boolean isDangerous = base == PermissionInfo.PROTECTION_DANGEROUS
                 || ((pInfo.protectionLevel & PermissionInfo.PROTECTION_FLAG_PRE23) != 0);
@@ -457,7 +456,7 @@ public class AppSecurityPermissions {
     }
 
     private void addPermToList(List<MyPermissionInfo> permList,
-            MyPermissionInfo pInfo) {
+                               MyPermissionInfo pInfo) {
         if (pInfo.mLabel == null) {
             pInfo.mLabel = pInfo.loadLabel(mPm);
         }

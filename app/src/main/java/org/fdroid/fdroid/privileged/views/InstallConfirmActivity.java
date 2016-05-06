@@ -112,8 +112,8 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
             findViewById(R.id.tabscontainer).setVisibility(View.GONE);
             findViewById(R.id.divider).setVisibility(View.VISIBLE);
         }
-        final int N = perms.getPermissionCount(AppSecurityPermissions.WHICH_ALL);
-        if (N > 0) {
+        final int n = perms.getPermissionCount(AppSecurityPermissions.WHICH_ALL);
+        if (n > 0) {
             permVisible = true;
             LayoutInflater inflater = (LayoutInflater) getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
