@@ -17,14 +17,11 @@
 
 package org.fdroid.fdroid.net;
 
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -34,19 +31,11 @@ import android.os.Message;
 import android.os.PatternMatcher;
 import android.os.Process;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.fdroid.fdroid.AppDetails;
-import org.fdroid.fdroid.FDroid;
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
@@ -85,12 +74,8 @@ import java.net.URL;
 public class DownloaderService extends Service {
     private static final String TAG = "DownloaderService";
 
-    private static final String EXTRA_PACKAGE_NAME = "org.fdroid.fdroid.net.DownloaderService.extra.PACKAGE_NAME";
-
     private static final String ACTION_QUEUE = "org.fdroid.fdroid.net.DownloaderService.action.QUEUE";
     private static final String ACTION_CANCEL = "org.fdroid.fdroid.net.DownloaderService.action.CANCEL";
-
-    private static final int NOTIFY_DOWNLOADING = 0x2344;
 
     private volatile Looper serviceLooper;
     private static volatile ServiceHandler serviceHandler;
@@ -153,55 +138,6 @@ public class DownloaderService extends Service {
         }
     }
 
-    private NotificationCompat.Builder createNotification(String urlString, @Nullable String packageName) {
-        return new NotificationCompat.Builder(this)
-                .setAutoCancel(true)
-                .setContentIntent(createAppDetailsIntent(0, packageName))
-                .setContentTitle(getNotificationTitle(packageName))
-                .addAction(R.drawable.ic_cancel_black_24dp, getString(R.string.cancel),
-                        createCancelDownloadIntent(this, 0, urlString))
-                .setSmallIcon(android.R.drawable.stat_sys_download)
-                .setContentText(urlString)
-                .setProgress(100, 0, true);
-    }
-
-    /**
-     * If downloading an apk (i.e. <code>packageName != null</code>) then the title will indicate
-     * the name of the app which the apk belongs to. Otherwise, it will be a generic "Downloading..."
-     * message.
-     */
-    private String getNotificationTitle(@Nullable String packageName) {
-        if (packageName != null) {
-            final App app = AppProvider.Helper.findByPackageName(
-                    getContentResolver(), packageName, new String[]{AppProvider.DataColumns.NAME});
-            if (app != null) {
-                return getString(R.string.downloading_apk, app.name);
-            }
-        }
-        return getString(R.string.downloading);
-    }
-
-    private PendingIntent createAppDetailsIntent(int requestCode, String packageName) {
-        TaskStackBuilder stackBuilder;
-        if (packageName != null) {
-            Intent notifyIntent = new Intent(getApplicationContext(), AppDetails.class)
-                    .putExtra(AppDetails.EXTRA_APPID, packageName);
-
-            stackBuilder = TaskStackBuilder
-                    .create(getApplicationContext())
-                    .addParentStack(AppDetails.class)
-                    .addNextIntent(notifyIntent);
-        } else {
-            Intent notifyIntent = new Intent(getApplicationContext(), FDroid.class);
-            stackBuilder = TaskStackBuilder
-                    .create(getApplicationContext())
-                    .addParentStack(FDroid.class)
-                    .addNextIntent(notifyIntent);
-        }
-
-        return stackBuilder.getPendingIntent(requestCode, PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-
     public static PendingIntent createCancelDownloadIntent(@NonNull Context context, int
             requestCode, @NonNull String urlString) {
         Intent cancelIntent = new Intent(context.getApplicationContext(), DownloaderService.class)
@@ -254,11 +190,7 @@ public class DownloaderService extends Service {
     protected void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
         final SanitizedFile localFile = Utils.getApkDownloadPath(this, uri);
-        final String packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME);
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile);
-
-        Notification notification = createNotification(intent.getDataString(), packageName).build();
-        startForeground(NOTIFY_DOWNLOADING, notification);
 
         try {
             downloader = DownloaderFactory.create(this, uri, localFile);
@@ -270,17 +202,10 @@ public class DownloaderService extends Service {
                     intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
                     intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
                     localBroadcastManager.sendBroadcast(intent);
-
-                    NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                    Notification notification = createNotification(uri.toString(), packageName)
-                            .setProgress(totalBytes, bytesRead, false)
-                            .build();
-                    nm.notify(NOTIFY_DOWNLOADING, notification);
                 }
             });
             downloader.download();
             sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile);
-            notifyDownloadComplete(packageName, intent.getDataString());
         } catch (InterruptedException e) {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile);
         } catch (IOException e) {
@@ -294,36 +219,6 @@ public class DownloaderService extends Service {
             stopForeground(true);
         }
         downloader = null;
-    }
-
-    /**
-     * Post a notification about a completed download.  {@code packageName} must be a valid
-     * and currently in the app index database.
-     */
-    private void notifyDownloadComplete(String packageName, String urlString) {
-        String title;
-        try {
-            PackageManager pm = getPackageManager();
-            title = String.format(getString(R.string.tap_to_update_format),
-                    pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0)));
-        } catch (PackageManager.NameNotFoundException e) {
-            App app = AppProvider.Helper.findByPackageName(getContentResolver(), packageName,
-                    new String[]{
-                            AppProvider.DataColumns.NAME,
-                    });
-            title = String.format(getString(R.string.tap_to_install_format), app.name);
-        }
-
-        int downloadUrlId = urlString.hashCode();
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this)
-                        .setAutoCancel(true)
-                        .setContentTitle(title)
-                        .setSmallIcon(android.R.drawable.stat_sys_download_done)
-                        .setContentIntent(createAppDetailsIntent(downloadUrlId, packageName))
-                        .setContentText(getString(R.string.tap_to_install));
-        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        nm.notify(downloadUrlId, builder.build());
     }
 
     private void sendBroadcast(Uri uri, String action, File file) {
@@ -345,19 +240,15 @@ public class DownloaderService extends Service {
      * <p/>
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
-     * @param context     this app's {@link Context}
-     * @param packageName The packageName of the app being downloaded
-     * @param urlString   The URL to add to the download queue
+     * @param context   this app's {@link Context}
+     * @param urlString The URL to add to the download queue
      * @see #cancel(Context, String)
      */
-    public static void queue(Context context, String packageName, String urlString) {
+    public static void queue(Context context, String urlString) {
         Utils.debugLog(TAG, "Preparing " + urlString + " to go into the download queue");
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
         intent.setData(Uri.parse(urlString));
-        if (!TextUtils.isEmpty(packageName)) {
-            intent.putExtra(EXTRA_PACKAGE_NAME, packageName);
-        }
         context.startService(intent);
     }
 
@@ -368,7 +259,7 @@ public class DownloaderService extends Service {
      *
      * @param context   this app's {@link Context}
      * @param urlString The URL to remove from the download queue
-     * @see #queue(Context, String, String)
+     * @see #queue(Context, String)
      */
     public static void cancel(Context context, String urlString) {
         Utils.debugLog(TAG, "Preparing cancellation of " + urlString + " download");
