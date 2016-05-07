@@ -26,8 +26,8 @@ public class HttpDownloader extends Downloader {
     protected static final String HEADER_IF_NONE_MATCH = "If-None-Match";
     protected static final String HEADER_FIELD_ETAG = "ETag";
 
-    public final String username;
-    public final String password;
+    private final String username;
+    private final String password;
     protected HttpURLConnection connection;
     private int statusCode = -1;
 

@@ -875,7 +875,7 @@ public class AppDetails extends AppCompatActivity {
         DownloaderService.queue(this, apk.packageName, activeDownloadUrlString);
     }
 
-    public void removeApk(String packageName) {
+    private void removeApk(String packageName) {
         try {
             installer.deletePackage(packageName);
         } catch (InstallFailedException e) {
@@ -969,11 +969,11 @@ public class AppDetails extends AppCompatActivity {
         }
     }
 
-    public App getApp() {
+    private App getApp() {
         return app;
     }
 
-    public ApkListAdapter getApks() {
+    private ApkListAdapter getApks() {
         return adapter;
     }
 

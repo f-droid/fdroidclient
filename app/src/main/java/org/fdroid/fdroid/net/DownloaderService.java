@@ -80,9 +80,9 @@ import java.util.HashMap;
  * @see android.os.AsyncTask
  */
 public class DownloaderService extends Service {
-    public static final String TAG = "DownloaderService";
+    private static final String TAG = "DownloaderService";
 
-    static final String EXTRA_PACKAGE_NAME = "org.fdroid.fdroid.net.DownloaderService.extra.PACKAGE_NAME";
+    private static final String EXTRA_PACKAGE_NAME = "org.fdroid.fdroid.net.DownloaderService.extra.PACKAGE_NAME";
 
     private static final String ACTION_QUEUE = "org.fdroid.fdroid.net.DownloaderService.action.QUEUE";
     private static final String ACTION_CANCEL = "org.fdroid.fdroid.net.DownloaderService.action.CANCEL";
