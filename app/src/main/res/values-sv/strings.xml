@@ -7,7 +7,6 @@
   <string name="delete">Ta bort</string>
   <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
   <string name="cache_downloaded">Cachade appar</string>
-  <string name="cache_downloaded_on">Behåll hämtade paket på enheten</string>
   <string name="updates">Uppdateringar</string>
   <string name="other">Andra</string>
   <string name="update_interval">Automatiskt uppdateringsintervall</string>

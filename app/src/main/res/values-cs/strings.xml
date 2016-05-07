@@ -6,7 +6,6 @@
   <string name="version">Verze</string>
   <string name="delete">Smazat</string>
   <string name="enable_nfc_send">Povolit posílání po NFC…</string>
-  <string name="cache_downloaded_on">Ponechat stažené apk soubory na SD kartě</string>
   <string name="updates">Aktualizace</string>
   <string name="other">Ostatní</string>
   <string name="update_interval">Interval automatických aktualizací</string>

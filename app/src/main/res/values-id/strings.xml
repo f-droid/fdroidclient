@@ -7,7 +7,6 @@
     <string name="delete">Hapus</string>
     <string name="enable_nfc_send">Aktifkan Pengirimian NFC…</string>
     <string name="cache_downloaded">Simpan hasil unduhan</string>
-    <string name="cache_downloaded_on">Simpan berkas APK terunduh diperangkat</string>
     <string name="updates">Pembaruan</string>
     <string name="unstable_updates">Pembaruan tidak stabil</string>
     <string name="unstable_updates_summary">Sarankan pembaruan ke versi tidak stabil</string>

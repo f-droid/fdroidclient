@@ -9,7 +9,6 @@
     <string name="delete">Kustuta</string>
     <string name="enable_nfc_send">Luba NFC andmevahetus…</string>
     <string name="cache_downloaded">Jäta alles puhverdatud paketid</string>
-    <string name="cache_downloaded_on">Talleta alla laaditud APK failid seadmes</string>
     <string name="updates">Uuendused</string>
     <string name="unstable_updates">Ebastabiilsed uuendused</string>
     <string name="unstable_updates_summary">Soovita uuendamist ebastabiilsetele versioonidele</string>

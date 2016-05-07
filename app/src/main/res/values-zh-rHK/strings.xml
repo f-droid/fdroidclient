@@ -4,7 +4,6 @@
   <string name="delete">刪除</string>
   <string name="enable_nfc_send">啟用 NFC 傳送…</string>
   <string name="cache_downloaded">軟件包快取</string>
-  <string name="cache_downloaded_on">在裝置上保留已下載的軟件包檔案</string>
   <string name="updates">更新</string>
   <string name="other">其他</string>
   <string name="update_interval">自動更新頻率</string>

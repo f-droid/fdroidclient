@@ -7,7 +7,6 @@
   <string name="delete">削除</string>
   <string name="enable_nfc_send">NFC 送信を有効…</string>
   <string name="cache_downloaded">ｷｬｯｼｭしたｱﾌﾟﾘを残す</string>
-  <string name="cache_downloaded_on">ﾀﾞｳﾝﾛｰﾄﾞしたAPKﾌｧｲﾙを端末に残します</string>
   <string name="updates">更新</string>
   <string name="other">その他</string>
   <string name="update_interval">自動更新間隔</string>

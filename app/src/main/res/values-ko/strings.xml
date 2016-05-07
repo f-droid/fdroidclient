@@ -7,7 +7,6 @@
   <string name="delete">삭제</string>
   <string name="enable_nfc_send">NFC 전송 사용…</string>
   <string name="cache_downloaded">패키지 보관</string>
-  <string name="cache_downloaded_on">다운로드된 패키지 파일을 기기에 보관</string>
   <string name="updates">업데이트</string>
   <string name="other">기타</string>
   <string name="update_interval">자동 업데이트 간격</string>

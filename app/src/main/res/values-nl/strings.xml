@@ -7,7 +7,6 @@
   <string name="delete">Verwijderen</string>
   <string name="enable_nfc_send">Versturen via NFC aanzetten…</string>
   <string name="cache_downloaded">Bewaar gedownloade apps</string>
-  <string name="cache_downloaded_on">Bewaar gedownloade appbestanden op apparaat</string>
   <string name="updates">Updates</string>
   <string name="other">Overig</string>
   <string name="update_interval">Automatische vernieuwingsinterval</string>

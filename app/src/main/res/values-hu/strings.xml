@@ -5,7 +5,6 @@
   <string name="installDowngrade">Ön megpróbálta régebbivel felülírni az alkalmazást. Ez hibás működést és az adatok elvesztését okozhatja. Ennek ellenére is megpróbálja telepíteni?</string>
   <string name="version">Verzió</string>
   <string name="cache_downloaded">Csomagok gyorsítótárazása</string>
-  <string name="cache_downloaded_on">A letöltött csomagfájlokat megtartja a készüléken</string>
   <string name="updates">Frissítések</string>
   <string name="other">egyéb</string>
   <string name="update_interval">Auto. frissítés intervalluma</string>

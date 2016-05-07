@@ -4,7 +4,6 @@
   <string name="delete">Dzēst</string>
   <string name="enable_nfc_send">Ieslēgt sūtīšanu caur NFC…</string>
   <string name="cache_downloaded">Programmu kešs</string>
-  <string name="cache_downloaded_on">Saglabāt novilktos apk failus SD kartē</string>
   <string name="updates">Atjauninājumi</string>
   <string name="other">Cits</string>
   <string name="update_interval">Atjauninājumu intervāls</string>

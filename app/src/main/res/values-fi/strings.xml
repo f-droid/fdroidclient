@@ -7,7 +7,6 @@
   <string name="delete">Poista</string>
   <string name="enable_nfc_send">Ota NFC-lähetys käyttöön…</string>
   <string name="cache_downloaded">Säilytä ladatut sovellukset välimuistissa</string>
-  <string name="cache_downloaded_on">Säilytä ladatut pakettitiedostot laitteessa</string>
   <string name="updates">Päivitykset</string>
   <string name="other">Muu</string>
   <string name="update_interval">Automaattisen päivityksen tiheys</string>

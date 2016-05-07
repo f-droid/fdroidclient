@@ -7,7 +7,6 @@
   <string name="delete">Διαγραφή</string>
   <string name="enable_nfc_send">Ενεργοποίηση Αποστολής NFC…</string>
   <string name="cache_downloaded">Αποθήκευση πακέτων</string>
-  <string name="cache_downloaded_on">Διατήρηση ληφθέντων αρχείων εφαρμογών στην συσκευή</string>
   <string name="updates">Ενημερώσεις</string>
   <string name="other">Άλλα</string>
   <string name="update_interval">Συχνότητα ενημέρωσης</string>

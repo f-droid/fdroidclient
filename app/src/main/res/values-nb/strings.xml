@@ -7,7 +7,6 @@
   <string name="delete">Slett</string>
   <string name="enable_nfc_send">Skru på NFC-sending…</string>
   <string name="cache_downloaded">Lagre nedlastede programmer i mellomlager</string>
-  <string name="cache_downloaded_on">Behold nedlastede apk-filer på enheten</string>
   <string name="updates">Oppdateringer</string>
   <string name="other">Andre</string>
   <string name="update_interval">Intervall for automatisk oppdatering</string>

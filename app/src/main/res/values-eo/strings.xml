@@ -2,7 +2,6 @@
 <resources>
   <string name="version">Versio</string>
   <string name="delete">Forigi</string>
-  <string name="cache_downloaded_on">Konservas elŝutitajn apk-dosierojn en la memorejo</string>
   <string name="updates">Ĝisdatigoj</string>
   <string name="other">Aliaj</string>
   <string name="automatic_scan_wifi">Nur per sendrata reto</string>

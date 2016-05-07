@@ -6,7 +6,6 @@
   <string name="version">Versió</string>
   <string name="delete">Esborrar</string>
   <string name="cache_downloaded">Memòria cau de paquets</string>
-  <string name="cache_downloaded_on">Manté els paquets descarregats al dispositiu</string>
   <string name="updates">Actualitzacions</string>
   <string name="other">Altres</string>
   <string name="update_interval">Període d\'actualització automàtica</string>

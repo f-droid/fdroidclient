@@ -7,7 +7,6 @@
   <string name="delete">Borrar</string>
   <string name="enable_nfc_send">Habilitar envío NFC…</string>
   <string name="cache_downloaded">Mantener las aplicaciones en caché</string>
-  <string name="cache_downloaded_on">Mantener los paquetes APK descargados en el dispositivo</string>
   <string name="updates">Actualizaciones</string>
   <string name="other">Otros</string>
   <string name="update_interval">Intervalo de actualización automática</string>
