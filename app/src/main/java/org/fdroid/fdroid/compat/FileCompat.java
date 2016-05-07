@@ -124,20 +124,4 @@ public class FileCompat {
 
     }
 
-    @TargetApi(9)
-    public static boolean setExecutable(SanitizedFile file, boolean executable, boolean ownerOnly) {
-
-        if (Build.VERSION.SDK_INT >= 9) {
-            return file.setExecutable(executable, ownerOnly);
-        }
-        String mode;
-        if (executable) {
-            mode = ownerOnly ? "0700" : "0711";
-        } else {
-            mode = ownerOnly ? "0600" : "0600";
-        }
-        return setMode(file, mode);
-
-    }
-
 }
