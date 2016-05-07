@@ -656,9 +656,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         public static final int TYPE_COMPLETE = 1;
         public static final int TYPE_ERROR = 2;
 
-        @SuppressWarnings("UnusedDeclaration")
-        private static final String TAG = "UpdateAsyncTask";
-
         @NonNull
         protected final Set<String> selectedApps;
 

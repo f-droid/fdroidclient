@@ -181,15 +181,14 @@ public class DownloaderService extends Service {
      * message.
      */
     private String getNotificationTitle(@Nullable String packageName) {
-        String title;
         if (packageName != null) {
-            App app = AppProvider.Helper.findByPackageName(
+            final App app = AppProvider.Helper.findByPackageName(
                     getContentResolver(), packageName, new String[]{AppProvider.DataColumns.NAME});
-            title = getString(R.string.downloading_apk, app.name);
-        } else {
-            title = getString(R.string.downloading);
+            if (app != null) {
+                return getString(R.string.downloading_apk, app.name);
+            }
         }
-        return title;
+        return getString(R.string.downloading);
     }
 
     public static PendingIntent createAppDetailsIntent(@NonNull Context context, int requestCode, @Nullable String packageName) {

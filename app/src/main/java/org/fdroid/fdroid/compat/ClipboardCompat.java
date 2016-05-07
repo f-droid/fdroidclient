@@ -17,34 +17,33 @@ public abstract class ClipboardCompat {
         return new OldClipboard();
     }
 
-}
+    @TargetApi(11)
+    private static class HoneycombClipboard extends ClipboardCompat {
 
-@TargetApi(11)
-class HoneycombClipboard extends ClipboardCompat {
+        private final ClipboardManager manager;
 
-    private final ClipboardManager manager;
-
-    HoneycombClipboard(Context context) {
-        this.manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-    }
-
-    @Override
-    public String getText() {
-        CharSequence text = null;
-        if (manager.hasPrimaryClip()) {
-            ClipData data = manager.getPrimaryClip();
-            if (data.getItemCount() > 0) {
-                text = data.getItemAt(0).getText();
-            }
+        HoneycombClipboard(Context context) {
+            this.manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         }
-        return text != null ? text.toString() : null;
+
+        @Override
+        public String getText() {
+            CharSequence text = null;
+            if (manager.hasPrimaryClip()) {
+                ClipData data = manager.getPrimaryClip();
+                if (data.getItemCount() > 0) {
+                    text = data.getItemAt(0).getText();
+                }
+            }
+            return text != null ? text.toString() : null;
+        }
     }
-}
 
-class OldClipboard extends ClipboardCompat {
+    private static class OldClipboard extends ClipboardCompat {
 
-    @Override
-    public String getText() {
-        return null;
+        @Override
+        public String getText() {
+            return null;
+        }
     }
 }

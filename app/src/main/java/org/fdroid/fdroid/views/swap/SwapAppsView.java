@@ -227,9 +227,6 @@ public class SwapAppsView extends ListView implements
 
     private class AppListAdapter extends CursorAdapter {
 
-        @SuppressWarnings("UnusedDeclaration")
-        private static final String TAG = "AppListAdapter";
-
         private class ViewHolder {
 
             private final LocalBroadcastManager localBroadcastManager;
