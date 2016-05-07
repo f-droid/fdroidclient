@@ -1527,6 +1527,10 @@ public class AppDetails extends AppCompatActivity {
         }
 
         public void updateViews(View view) {
+            if (view == null) {
+                Log.e(TAG, "AppDetailsHeaderFragment.updateViews(): view == null. Oops.");
+                return;
+            }
             App app = appDetails.getApp();
             TextView statusView = (TextView) view.findViewById(R.id.status);
             btMain.setVisibility(View.VISIBLE);
