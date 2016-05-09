@@ -3,7 +3,6 @@
   <string name="version">Versija</string>
   <string name="delete">Šalinti</string>
   <string name="cache_downloaded">Atsiųstų programų podėlis</string>
-  <string name="cache_downloaded_on">Laikyti atsiųstus apk failus SD kortelėje</string>
   <string name="updates">Atnaujinimai</string>
   <string name="other">Kita</string>
   <string name="update_interval">Automatinis programų sąrašų naujinimas</string>

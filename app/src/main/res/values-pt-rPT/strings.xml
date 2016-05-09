@@ -8,7 +8,6 @@
     <string name="delete">Apagar</string>
     <string name="enable_nfc_send">Ativar o envio NFC…</string>
     <string name="cache_downloaded">Pacotes em cache</string>
-    <string name="cache_downloaded_on">Manter pacotes descarregados no dispositivo</string>
     <string name="updates">Atualizações</string>
     <string name="unstable_updates">Atualizações instáveis</string>
     <string name="unstable_updates_summary">Sugerir atualizações para versões instáveis</string>

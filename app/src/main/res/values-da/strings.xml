@@ -8,7 +8,6 @@
     <string name="delete">Slet</string>
     <string name="enable_nfc_send">Aktiver NFC Send…</string>
     <string name="cache_downloaded">Cache pakker</string>
-    <string name="cache_downloaded_on">Behold hentede pakkefiler på enheden</string>
     <string name="updates">Opdateringer</string>
     <string name="unstable_updates">Ustabile opdateringer</string>
     <string name="unstable_updates_summary">Foreslå opdateringer til ustabile versioner</string>

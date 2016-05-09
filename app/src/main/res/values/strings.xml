@@ -11,7 +11,6 @@
     <string name="delete">Delete</string>
     <string name="enable_nfc_send">Enable NFC Send…</string>
     <string name="cache_downloaded">Keep cached apps</string>
-    <string name="cache_downloaded_on">Keep downloaded APK files on device</string>
     <string name="updates">Updates</string>
     <string name="unstable_updates">Unstable updates</string>
     <string name="unstable_updates_summary">Suggest updates to unstable versions</string>

@@ -7,7 +7,6 @@
   <string name="delete">Изтриване</string>
   <string name="enable_nfc_send">Активирай NFC изпращане…</string>
   <string name="cache_downloaded">Кеширане на приложенията</string>
-  <string name="cache_downloaded_on">Записва свалените .apk файлове на устройствто</string>
   <string name="updates">Актуализации</string>
   <string name="other">Други</string>
   <string name="update_interval">Проверка за актуализации</string>

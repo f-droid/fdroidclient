@@ -7,7 +7,6 @@
   <string name="delete">Xoá</string>
   <string name="enable_nfc_send">Kích hoạt gửi qua NFC…</string>
   <string name="cache_downloaded">Lưu tập tin gói</string>
-  <string name="cache_downloaded_on">Lưu các tập tin gói đã tải trong thẻ nhớ</string>
   <string name="updates">Cập nhật</string>
   <string name="other">Khác</string>
   <string name="update_interval">Tự động cập nhật định kì</string>

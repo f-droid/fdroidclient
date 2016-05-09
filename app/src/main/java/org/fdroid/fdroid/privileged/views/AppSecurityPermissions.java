@@ -111,15 +111,6 @@ public class AppSecurityPermissions {
             return context.getDrawable(R.drawable.ic_perm_device_info);
         }
 
-        public int flags() {
-            if (Build.VERSION.SDK_INT < 17) return 0;
-            return flags;
-        }
-
-        public int priority() {
-            if (Build.VERSION.SDK_INT < 17) return 0;
-            return priority;
-        }
     }
 
     // PermissionInfo implements Parcelable but its Parcel constructor is private and thus cannot be extended.

@@ -344,6 +344,9 @@ public final class Utils {
      * @param secondsAgo The number of seconds old that marks a file for deletion.
      */
     public static void clearOldFiles(File dir, long secondsAgo) {
+        if (dir == null) {
+            return;
+        }
         long olderThan = System.currentTimeMillis() - (secondsAgo * 1000L);
         for (File f : dir.listFiles()) {
             if (f.isDirectory()) {

@@ -6,7 +6,6 @@
     <string name="delete">מחק</string>
     <string name="enable_nfc_send">אפשר NFC Send…</string>
     <string name="cache_downloaded">הטמן חבילות</string>
-    <string name="cache_downloaded_on">שמור קבצי חבילה מורדים על גבי התקן</string>
     <string name="updates">עדכונים</string>
     <string name="other">אחר</string>
 

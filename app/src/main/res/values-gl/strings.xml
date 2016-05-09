@@ -77,7 +77,6 @@
 
     <string name="delete">Eliminar</string>
     <string name="enable_nfc_send">Activar envío NFC…</string>
-    <string name="cache_downloaded_on">Manter os ficheiros dos paquetes descargados no dispositivo</string>
     <string name="unstable_updates">Actualizacións inestables</string>
     <string name="update_interval">Intervalo de actualización automática</string>
     <string name="automatic_scan_wifi_on">Actualizar automáticamente o listado de apps só mediante Wi-Fi</string>

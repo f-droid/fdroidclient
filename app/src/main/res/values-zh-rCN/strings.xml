@@ -7,7 +7,6 @@
   <string name="delete">删除</string>
   <string name="enable_nfc_send">启用NFC发送…</string>
   <string name="cache_downloaded">保留应用安装包</string>
-  <string name="cache_downloaded_on">在设备上保留已下载的 APK 文件</string>
   <string name="updates">升级</string>
   <string name="other">其它</string>
   <string name="update_interval">自动更新周期</string>

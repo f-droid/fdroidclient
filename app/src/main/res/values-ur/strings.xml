@@ -9,7 +9,6 @@
     <string name="delete">حذف کریں</string>
     <string name="enable_nfc_send">این ایف سی ارسال فعال کریں…</string>
     <string name="cache_downloaded">کیشے پیکج</string>
-    <string name="cache_downloaded_on">ڈاؤن لوڈ کیے گئے پیکج آلے پر محفوظ رکھیں</string>
     <string name="updates">تازہ کاریاں</string>
     <string name="unstable_updates">غیر مستحکم اپ ڈیٹس</string>
     <string name="unstable_updates_summary">غیر مستحکم ورژن کی تازہ کاریاں تجویز کریں</string>

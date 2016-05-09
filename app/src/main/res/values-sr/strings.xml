@@ -7,7 +7,6 @@
   <string name="delete">Обриши</string>
   <string name="enable_nfc_send">Омогући слање преко НФЦ-а…</string>
   <string name="cache_downloaded">Чувај кеширане апликације</string>
-  <string name="cache_downloaded_on">Чувај преузете АПК фајлове на уређају</string>
   <string name="updates">Надоградње</string>
   <string name="other">Остало</string>
   <string name="update_interval">Међувреме самосталног освежавања</string>

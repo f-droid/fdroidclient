@@ -7,7 +7,6 @@
   <string name="delete">Удалить</string>
   <string name="enable_nfc_send">Включить отправку по NFC…</string>
   <string name="cache_downloaded">Кэшировать пакеты</string>
-  <string name="cache_downloaded_on">Хранить загруженные файлы пакетов на устройстве</string>
   <string name="updates">Обновления</string>
   <string name="other">Прочее</string>
   <string name="update_interval">Интервал автоматического обновления</string>

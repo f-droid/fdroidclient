@@ -7,7 +7,6 @@
   <string name="delete">Elimina</string>
   <string name="enable_nfc_send">Attiva invio NFC…</string>
   <string name="cache_downloaded">Cache dei pacchetti</string>
-  <string name="cache_downloaded_on">Conserva sul dispositivo i file dei pacchetti scaricati</string>
   <string name="updates">Aggiornamenti</string>
   <string name="other">Altro</string>
   <string name="update_interval">Intervallo degli aggiornamenti automatici</string>

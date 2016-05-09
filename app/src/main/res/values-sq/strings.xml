@@ -5,7 +5,6 @@
     <string name="installIncompatible">Mesa duket kjo paketë nuk përputhet me pajisjen tuaj. Dëshironi të provoni ta instaloni sidoqoftë?</string>
     <string name="version">Versioni</string>
     <string name="delete">Fshi</string>
-    <string name="cache_downloaded_on">Mbaj në pajisje skedarët e paketave të shkarkuara</string>
     <string name="updates">Përditësime</string>
     <string name="other">Tjetër</string>
 

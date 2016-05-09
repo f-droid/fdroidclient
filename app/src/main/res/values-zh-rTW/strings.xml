@@ -8,7 +8,6 @@
     <string name="delete">刪除</string>
     <string name="enable_nfc_send">啟用 NFC 傳送功能……</string>
     <string name="cache_downloaded">對下載下來的軟體包進行快取</string>
-    <string name="cache_downloaded_on">將下載下來的軟體包檔案保留在裝置上</string>
     <string name="updates">更新</string>
     <string name="unstable_updates">非穩定版本的軟體更新</string>
     <string name="unstable_updates_summary">建議更新至不穩定的應用軟體版本</string>

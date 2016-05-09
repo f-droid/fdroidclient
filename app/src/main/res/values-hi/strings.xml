@@ -3,7 +3,6 @@
     <string name="delete">नष्ट करे</string>
     <string name="enable_nfc_send">NFC द्वारा भेजे …</string>
     <string name="version">संस्करण</string>
-    <string name="cache_downloaded_on">दौन्लोदिद फ़ाइलें यंत्र पर रखे</string>
     <string name="updates">नवीनतम बनाये</string>
     <string name="unstable_updates">अस्थिर अपडेट</string>
     <string name="unstable_updates_summary">अस्थिर अपडेट के सुझाव दे</string>

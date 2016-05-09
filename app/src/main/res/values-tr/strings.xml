@@ -7,7 +7,6 @@
   <string name="delete">Sil</string>
   <string name="enable_nfc_send">NFC göndermesini etkinleştir…</string>
   <string name="cache_downloaded">Uygulamaları önbelleğe kaydet</string>
-  <string name="cache_downloaded_on">İndirilen uygulama dosyalarını cihazda tut</string>
   <string name="updates">Güncellemeler</string>
   <string name="other">Diğer</string>
   <string name="update_interval">Otomatik güncelleme aralığı</string>

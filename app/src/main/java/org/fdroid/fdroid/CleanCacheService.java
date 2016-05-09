@@ -20,7 +20,7 @@ import java.io.File;
  * {@link FDroidApp#onCreate()}
  */
 public class CleanCacheService extends IntentService {
-    public static final String TAG = "CleanCacheService";
+    private static final String TAG = "CleanCacheService";
 
     /**
      * Schedule or cancel this service to update the app index, according to the
