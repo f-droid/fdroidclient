@@ -349,4 +349,8 @@
     <string name="keep_week">1 Woche</string>
     <string name="keep_month">1 Monat</string>
     <string name="keep_year">1 Jahr</string>
+    <string name="system_install_not_supported">Die Installation der privilegierten F-Droid-Erweiterung wird auf Android 5.1 oder höher derzeit nicht unterstützt.</string>
+
+    <string name="keep_forever">Immer</string>
+
     </resources>

@@ -348,4 +348,10 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
 
     <string name="system_install_not_supported">No es pot instal·lar F-Droid Privileged Extension actualment actualment en versions d\'Android 5.1 o posteriors.</string>
 
+    <string name="keep_forever">Per sempre</string>
+
+    <string name="keep_day">1 dia</string>
+    <string name="keep_week">1 setmana</string>
+    <string name="keep_month">1 mes</string>
+    <string name="keep_year">1 any</string>
     </resources>
