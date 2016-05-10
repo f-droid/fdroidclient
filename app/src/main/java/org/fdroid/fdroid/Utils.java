@@ -67,7 +67,6 @@ import java.util.Formatter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.zip.Adler32;
 
 public final class Utils {
 
@@ -437,15 +436,6 @@ public final class Utils {
 
     public static String getApkUrl(String repoAddress, Apk apk) {
         return repoAddress + "/" + apk.apkName.replace(" ", "%20");
-    }
-
-    /**
-     * This generates a unique, reproducible ID for notifications related to {@code urlString}
-     */
-    public static int getApkUrlNotificationId(String urlString) {
-        Adler32 checksum = new Adler32();
-        checksum.update(urlString.getBytes());
-        return (int) checksum.getValue();
     }
 
     public static final class CommaSeparatedList implements Iterable<String> {

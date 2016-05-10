@@ -120,7 +120,7 @@ public class HttpDownloader extends Downloader {
         // workaround until NetCipher supports HTTPS SNI
         // https://gitlab.com/fdroid/fdroidclient/issues/431
         if (connection instanceof HttpsURLConnection
-                && "f-droid.org".equals(sourceUrl.getHost())) {
+                && !"f-droid.org".equals(sourceUrl.getHost())) {
             ((HttpsURLConnection) connection).setSSLSocketFactory(HttpsURLConnection.getDefaultSSLSocketFactory());
         }
 

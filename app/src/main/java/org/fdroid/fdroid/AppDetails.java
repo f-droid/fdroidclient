@@ -1443,10 +1443,11 @@ public class AppDetails extends AppCompatActivity {
             if (appDetails.activeDownloadUrlString != null) {
                 // We don't actually know what the current progress is, so this will show an indeterminate
                 // progress bar until the first progress/complete event we receive.
-                final String message = DownloaderService.isQueued(appDetails.activeDownloadUrlString)
-                        ? getString(R.string.download_pending)
-                        : "";
-                showIndeterminateProgress(message);
+                if (DownloaderService.isQueuedOrActive(appDetails.activeDownloadUrlString)) {
+                    showIndeterminateProgress(getString(R.string.download_pending));
+                } else {
+                    showIndeterminateProgress("");
+                }
             }
         }
 

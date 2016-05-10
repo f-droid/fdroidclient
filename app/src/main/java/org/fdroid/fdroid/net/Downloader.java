@@ -30,7 +30,6 @@ public abstract class Downloader {
     private volatile boolean cancelled = false;
     private volatile int bytesRead;
     private volatile int totalBytes;
-    private Timer timer;
 
     public final File outputFile;
 
@@ -49,7 +48,7 @@ public abstract class Downloader {
     /**
      * For sending download progress, should only be called in {@link #progressTask}
      */
-    private DownloaderProgressListener downloaderProgressListener;
+    private volatile DownloaderProgressListener downloaderProgressListener;
 
     protected abstract InputStream getDownloadersInputStream() throws IOException;
 
@@ -131,9 +130,6 @@ public abstract class Downloader {
     private void throwExceptionIfInterrupted() throws InterruptedException {
         if (cancelled) {
             Utils.debugLog(TAG, "Received interrupt, cancelling download");
-            if (timer != null) {
-                timer.cancel();
-            }
             throw new InterruptedException();
         }
     }
@@ -151,40 +147,44 @@ public abstract class Downloader {
      * progress counter.
      */
     private void copyInputToOutputStream(InputStream input, int bufferSize, OutputStream output) throws IOException, InterruptedException {
-        bytesRead = 0;
-        totalBytes = totalDownloadSize();
-        byte[] buffer = new byte[bufferSize];
+        Timer timer = new Timer();
+        try {
+            bytesRead = 0;
+            totalBytes = totalDownloadSize();
+            byte[] buffer = new byte[bufferSize];
 
-        timer = new Timer();
-        timer.scheduleAtFixedRate(progressTask, 0, 100);
+            timer.scheduleAtFixedRate(progressTask, 0, 100);
 
-        // Getting the total download size could potentially take time, depending on how
-        // it is implemented, so we may as well check this before we proceed.
-        throwExceptionIfInterrupted();
-
-        while (true) {
-
-            int count;
-            if (input.available() > 0) {
-                int readLength = Math.min(input.available(), buffer.length);
-                count = input.read(buffer, 0, readLength);
-            } else {
-                count = input.read(buffer);
-            }
-
+            // Getting the total download size could potentially take time, depending on how
+            // it is implemented, so we may as well check this before we proceed.
             throwExceptionIfInterrupted();
 
-            if (count == -1) {
-                Utils.debugLog(TAG, "Finished downloading from stream");
-                break;
+            while (true) {
+
+                int count;
+                if (input.available() > 0) {
+                    int readLength = Math.min(input.available(), buffer.length);
+                    count = input.read(buffer, 0, readLength);
+                } else {
+                    count = input.read(buffer);
+                }
+
+                throwExceptionIfInterrupted();
+
+                if (count == -1) {
+                    Utils.debugLog(TAG, "Finished downloading from stream");
+                    break;
+                }
+                bytesRead += count;
+                output.write(buffer, 0, count);
             }
-            bytesRead += count;
-            output.write(buffer, 0, count);
+        } finally {
+            downloaderProgressListener = null;
+            timer.cancel();
+            timer.purge();
+            output.flush();
+            output.close();
         }
-        timer.cancel();
-        timer.purge();
-        output.flush();
-        output.close();
     }
 
     /**
