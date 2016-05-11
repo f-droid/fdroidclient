@@ -35,6 +35,11 @@ public class BluetoothPeer implements Peer {
     }
 
     @Override
+    public int hashCode() {
+        return device.getAddress().hashCode();
+    }
+
+    @Override
     public String getRepoAddress() {
         return "bluetooth://" + device.getAddress().replace(':', '-') + "/fdroid/repo";
     }
