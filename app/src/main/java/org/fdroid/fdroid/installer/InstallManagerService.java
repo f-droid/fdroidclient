@@ -175,7 +175,11 @@ public class InstallManagerService extends Service {
                 // TODO these need to be removed based on whether they are fed to InstallerService or not
                 Apk apk = ACTIVE_APKS.remove(urlString);
                 ACTIVE_APPS.remove(apk.packageName);
-                notifyDownloadComplete(apk, urlString);
+                if (AppDetails.isAppVisible(apk.packageName)) {
+                    cancelNotification(urlString);
+                } else {
+                    notifyDownloadComplete(apk, urlString);
+                }
                 unregisterDownloaderReceivers(urlString);
             }
         };
@@ -186,6 +190,9 @@ public class InstallManagerService extends Service {
                 Apk apk = ACTIVE_APKS.remove(urlString);
                 ACTIVE_APPS.remove(apk.packageName);
                 unregisterDownloaderReceivers(urlString);
+                if (AppDetails.isAppVisible(apk.packageName)) {
+                    cancelNotification(urlString);
+                }
             }
         };
         localBroadcastManager.registerReceiver(startedReceiver,
@@ -267,6 +274,15 @@ public class InstallManagerService extends Service {
                         .setContentText(getString(R.string.tap_to_install));
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         nm.notify(downloadUrlId, builder.build());
+    }
+
+    /**
+     * Cancel the {@link Notification} tied to {@code urlString}, which is the
+     * unique ID used to represent a given APK file. {@link String#hashCode()}
+     * converts {@code urlString} to the required {@code int}.
+     */
+    private void cancelNotification(String urlString) {
+        notificationManager.cancel(urlString.hashCode());
     }
 
     /**

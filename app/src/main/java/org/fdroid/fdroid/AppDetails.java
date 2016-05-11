@@ -110,6 +110,15 @@ public class AppDetails extends AppCompatActivity {
     private FDroidApp fdroidApp;
     private ApkListAdapter adapter;
 
+    /**
+     * Check if {@code packageName} is currently visible to the user.
+     */
+    public static boolean isAppVisible(String packageName) {
+        return packageName != null && packageName.equals(visiblePackageName);
+    }
+
+    private static String visiblePackageName;
+
     private static class ViewHolder {
         TextView version;
         TextView status;
@@ -437,6 +446,7 @@ public class AppDetails extends AppCompatActivity {
         if (DownloaderService.isQueuedOrActive(activeDownloadUrlString)) {
             registerDownloaderReceivers();
         }
+        visiblePackageName = app.packageName;
     }
 
     /**
@@ -458,6 +468,7 @@ public class AppDetails extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        visiblePackageName = null;
         // save the active URL for this app in case we come back
         PreferencesCompat.apply(getPreferences(MODE_PRIVATE)
                 .edit()
