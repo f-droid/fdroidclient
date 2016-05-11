@@ -121,6 +121,7 @@ public class DownloaderService extends Service {
             Integer whatToRemove = uriString.hashCode();
             if (serviceHandler.hasMessages(whatToRemove)) {
                 serviceHandler.removeMessages(whatToRemove);
+                sendBroadcast(intent.getData(), Downloader.ACTION_INTERRUPTED);
             } else if (isActive(uriString)) {
                 downloader.cancelDownload();
             } else {
@@ -218,6 +219,10 @@ public class DownloaderService extends Service {
         downloader = null;
     }
 
+    private void sendBroadcast(Uri uri, String action) {
+        sendBroadcast(uri, action, null, null);
+    }
+
     private void sendBroadcast(Uri uri, String action, File file) {
         sendBroadcast(uri, action, file, null);
     }
@@ -225,7 +230,9 @@ public class DownloaderService extends Service {
     private void sendBroadcast(Uri uri, String action, File file, String errorMessage) {
         Intent intent = new Intent(action);
         intent.setData(uri);
-        intent.putExtra(Downloader.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
+        if (file != null) {
+            intent.putExtra(Downloader.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
+        }
         if (!TextUtils.isEmpty(errorMessage)) {
             intent.putExtra(Downloader.EXTRA_ERROR_MESSAGE, errorMessage);
         }
