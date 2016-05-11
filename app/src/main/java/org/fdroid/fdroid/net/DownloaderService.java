@@ -142,17 +142,18 @@ public class DownloaderService extends Service {
     public static PendingIntent getCancelPendingIntent(Context context, String urlString) {
         Intent cancelIntent = new Intent(context.getApplicationContext(), DownloaderService.class)
                 .setData(Uri.parse(urlString))
-                .setAction(ACTION_CANCEL);
+                .setAction(ACTION_CANCEL)
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         return PendingIntent.getService(context.getApplicationContext(),
                 urlString.hashCode(),
                 cancelIntent,
-                PendingIntent.FLAG_CANCEL_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        onStart(intent, startId);
         Utils.debugLog(TAG, "onStartCommand " + intent);
+        onStart(intent, startId);
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
     }
 
