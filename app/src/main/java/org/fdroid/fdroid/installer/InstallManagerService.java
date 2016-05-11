@@ -7,6 +7,7 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.IBinder;
@@ -25,6 +26,7 @@ import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -106,6 +108,24 @@ public class InstallManagerService extends Service {
         Utils.debugLog(TAG, "creating Service");
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        BroadcastReceiver br = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String packageName = intent.getData().getSchemeSpecificPart();
+                for (Map.Entry<String, Apk> entry : ACTIVE_APKS.entrySet()) {
+                    if (TextUtils.equals(packageName, entry.getValue().packageName)) {
+                        String urlString = entry.getKey();
+                        cancelNotification(urlString);
+                        break;
+                    }
+                }
+            }
+        };
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
+        intentFilter.addDataScheme("package");
+        registerReceiver(br, intentFilter);
     }
 
     @Override
