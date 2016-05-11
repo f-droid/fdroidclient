@@ -30,7 +30,7 @@ import java.util.UUID;
 
 @SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class MultiRepoUpdaterTest extends InstrumentationTestCase {
-    private static final String TAG = "RepoUpdaterTest";
+    private static final String TAG = "MultiRepoUpdaterTest";
 
     private static final String REPO_MAIN = "Test F-Droid repo";
     private static final String REPO_ARCHIVE = "Test F-Droid repo (Archive)";
@@ -406,7 +406,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     private RepoUpdater createUpdater(String name, Context context) {
         Repo repo = new Repo();
         repo.signingCertificate = PUB_KEY;
-        repo.address = UUID.randomUUID().toString();
+        repo.address = "https://fake.url/" + UUID.randomUUID().toString() + "/fdroid/repo";
         repo.name = name;
 
         ContentValues values = new ContentValues(2);

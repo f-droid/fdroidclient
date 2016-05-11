@@ -1,17 +1,14 @@
 package org.fdroid.fdroid;
 
-import android.os.Bundle;
-
-import org.fdroid.fdroid.data.Repo;
-
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
 public class ProgressBufferedInputStream extends BufferedInputStream {
 
     private final ProgressListener progressListener;
-    private final Bundle data;
+    private final URL sourceUrl;
     private final int totalBytes;
 
     private int currentBytes;
@@ -20,12 +17,10 @@ public class ProgressBufferedInputStream extends BufferedInputStream {
      * Reports progress to the specified {@link ProgressListener}, with the
      * progress based on the {@code totalBytes}.
      */
-    public ProgressBufferedInputStream(InputStream in, ProgressListener progressListener, Repo repo, int totalBytes)
-            throws IOException {
+    public ProgressBufferedInputStream(InputStream in, ProgressListener progressListener, URL sourceUrl, int totalBytes) {
         super(in);
         this.progressListener = progressListener;
-        this.data = new Bundle(1);
-        this.data.putString(RepoUpdater.PROGRESS_DATA_REPO_ADDRESS, repo.address);
+        this.sourceUrl = sourceUrl;
         this.totalBytes = totalBytes;
     }
 
@@ -37,10 +32,7 @@ public class ProgressBufferedInputStream extends BufferedInputStream {
              * the digits changing because it looks pretty, < 9000 since the reads won't
              * line up exactly */
             if (currentBytes % 333333 < 9000) {
-                progressListener.onProgress(
-                        new ProgressListener.Event(
-                                RepoUpdater.PROGRESS_TYPE_PROCESS_XML,
-                                currentBytes, totalBytes, data));
+                progressListener.onProgress(sourceUrl, currentBytes, totalBytes);
             }
         }
         return super.read(buffer, byteOffset, byteCount);

@@ -21,6 +21,8 @@ import org.xml.sax.XMLReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.CodeSigner;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
@@ -48,10 +50,6 @@ public class RepoUpdater {
 
     private static final String TAG = "RepoUpdater";
 
-    public static final String PROGRESS_TYPE_PROCESS_XML = "processingXml";
-    public static final String PROGRESS_COMMITTING = "committing";
-    public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
-
     public final String indexUrl;
 
     @NonNull
@@ -60,7 +58,8 @@ public class RepoUpdater {
     private final Repo repo;
     private boolean hasChanged;
     @Nullable
-    private ProgressListener progressListener;
+    private ProgressListener committingProgressListener;
+    private ProgressListener processXmlProgressListener;
     private String cacheTag;
     private X509Certificate signingCertFromJar;
 
@@ -84,8 +83,12 @@ public class RepoUpdater {
         this.indexUrl = url;
     }
 
-    public void setProgressListener(@Nullable ProgressListener progressListener) {
-        this.progressListener = progressListener;
+    public void setProcessXmlProgressListener(ProgressListener progressListener) {
+        this.processXmlProgressListener = progressListener;
+    }
+
+    public void setCommittingProgressListener(ProgressListener progressListener) {
+        this.committingProgressListener = progressListener;
     }
 
     public boolean hasChanged() {
@@ -177,7 +180,7 @@ public class RepoUpdater {
             JarFile jarFile = new JarFile(downloadedFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                progressListener, repo, (int) indexEntry.getSize());
+                processXmlProgressListener, new URL(repo.address), (int) indexEntry.getSize());
 
             // Process the index...
             final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
@@ -207,8 +210,13 @@ public class RepoUpdater {
 
     private void commitToDb() throws UpdateException {
         Log.i(TAG, "Repo signature verified, saving app metadata to database.");
-        if (progressListener != null) {
-            progressListener.onProgress(new ProgressListener.Event(PROGRESS_COMMITTING));
+        if (committingProgressListener != null) {
+            try {
+                //TODO this should be an event, not a progress listener
+                committingProgressListener.onProgress(new URL(indexUrl), 0, -1);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
         persister.commit(repoDetailsToSave);
     }

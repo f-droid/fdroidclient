@@ -115,26 +115,12 @@ public final class Utils {
         return "/icons-120/";
     }
 
-    public static void copy(InputStream input, OutputStream output)
-            throws IOException {
-        copy(input, output, null, null);
-    }
-
-    public static void copy(InputStream input, OutputStream output,
-                    ProgressListener progressListener,
-                    ProgressListener.Event templateProgressEvent)
-    throws IOException {
+    public static void copy(InputStream input, OutputStream output) throws IOException {
         byte[] buffer = new byte[BUFFER_SIZE];
-        int bytesRead = 0;
         while (true) {
             int count = input.read(buffer);
             if (count == -1) {
                 break;
-            }
-            if (progressListener != null) {
-                bytesRead += count;
-                templateProgressEvent.progress = bytesRead;
-                progressListener.onProgress(templateProgressEvent);
             }
             output.write(buffer, 0, count);
         }
