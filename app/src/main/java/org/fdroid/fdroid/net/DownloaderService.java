@@ -34,6 +34,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.SanitizedFile;
 
@@ -192,9 +193,9 @@ public class DownloaderService extends Service {
 
         try {
             downloader = DownloaderFactory.create(this, uri, localFile);
-            downloader.setListener(new Downloader.DownloaderProgressListener() {
+            downloader.setListener(new ProgressListener() {
                 @Override
-                public void sendProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+                public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
                     Intent intent = new Intent(Downloader.ACTION_PROGRESS);
                     intent.setData(uri);
                     intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);

@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.net;
 
+import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 
 import java.io.File;
@@ -37,18 +38,9 @@ public abstract class Downloader {
     protected String cacheTag;
 
     /**
-     * This is meant only to send progress to {@link DownloaderService}. This
-     * also keeps this class pure Java so that it can be tested on the JVM,
-     * without requiring an Android device or emulator.
-     */
-    interface DownloaderProgressListener {
-        void sendProgress(URL sourceUrl, int bytesRead, int totalBytes);
-    }
-
-    /**
      * For sending download progress, should only be called in {@link #progressTask}
      */
-    private volatile DownloaderProgressListener downloaderProgressListener;
+    private volatile ProgressListener downloaderProgressListener;
 
     protected abstract InputStream getDownloadersInputStream() throws IOException;
 
@@ -64,7 +56,7 @@ public abstract class Downloader {
         return new WrappedInputStream(getDownloadersInputStream());
     }
 
-    public void setListener(DownloaderProgressListener listener) {
+    public void setListener(ProgressListener listener) {
         this.downloaderProgressListener = listener;
     }
 
@@ -194,7 +186,7 @@ public abstract class Downloader {
         @Override
         public void run() {
             if (downloaderProgressListener != null) {
-                downloaderProgressListener.sendProgress(sourceUrl, bytesRead, totalBytes);
+                downloaderProgressListener.onProgress(sourceUrl, bytesRead, totalBytes);
             }
         }
     };
