@@ -59,10 +59,13 @@ public class CleanCacheService extends IntentService {
      * Delete index files which were downloaded, but not removed (e.g. due to F-Droid being
      * force closed during processing of the file, before getting a chance to delete). This
      * may include both "index-*-downloaded" and "index-*-extracted.xml" files.
-     * <p/>
+     * <p>
      * Note that if the SD card is not ready, then the cache directory will probably not be
      * available. In this situation no files will be deleted (and thus they may still exist
      * after the SD card becomes available).
+     * <p>
+     * This also deletes temp files that are created by
+     * {@link org.fdroid.fdroid.net.DownloaderFactory#create(Context, String)}, e.g. "dl-*"
      */
     private void deleteStrayIndexFiles() {
         File cacheDir = getCacheDir();
@@ -77,6 +80,9 @@ public class CleanCacheService extends IntentService {
 
         for (File f : files) {
             if (f.getName().startsWith("index-")) {
+                FileUtils.deleteQuietly(f);
+            }
+            if (f.getName().startsWith("dl-")) {
                 FileUtils.deleteQuietly(f);
             }
         }
