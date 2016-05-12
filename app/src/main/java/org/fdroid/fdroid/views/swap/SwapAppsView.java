@@ -234,9 +234,6 @@ public class SwapAppsView extends ListView implements
             private final LocalBroadcastManager localBroadcastManager;
             private App app;
 
-            @Nullable
-            private Apk apkToInstall;
-
             ProgressBar progressView;
             TextView nameView;
             ImageView iconView;
@@ -289,33 +286,32 @@ public class SwapAppsView extends ListView implements
                     Activity activity = getActivity();
                     if (activity != null) {
                         app = AppProvider.Helper.findByPackageName(getActivity().getContentResolver(), app.packageName);
-                        apkToInstall = null; // Force lazy loading to fetch correct apk next time.
                         resetView();
                     }
                 }
             };
 
             ViewHolder() {
-                // TODO: Unregister receivers correctly...
-
-                Apk apk = getApkToInstall();
-                String url = apk.getUrl();
-
-                localBroadcastManager = LocalBroadcastManager.getInstance(getActivity());
-                localBroadcastManager.registerReceiver(appListViewResetReceiver,
-                        DownloaderService.getIntentFilter(url, Downloader.ACTION_STARTED));
-                localBroadcastManager.registerReceiver(downloadProgressReceiver,
-                        DownloaderService.getIntentFilter(url, Downloader.ACTION_PROGRESS));
-                localBroadcastManager.registerReceiver(appListViewResetReceiver,
-                        DownloaderService.getIntentFilter(url, Downloader.ACTION_COMPLETE));
-                localBroadcastManager.registerReceiver(interruptedReceiver,
-                        DownloaderService.getIntentFilter(url, Downloader.ACTION_INTERRUPTED));
+                localBroadcastManager = LocalBroadcastManager.getInstance(getContext());
             }
 
             public void setApp(@NonNull App app) {
                 if (this.app == null || !this.app.packageName.equals(app.packageName)) {
                     this.app = app;
-                    apkToInstall = null; // Force lazy loading to fetch the correct apk next time.
+
+                    Context context = getContext();
+                    Apk apk = ApkProvider.Helper.find(context, app.packageName, app.suggestedVersionCode);
+                    String urlString = apk.getUrl();
+
+                    // TODO unregister receivers? or will they just die with this instance
+                    localBroadcastManager.registerReceiver(appListViewResetReceiver,
+                            DownloaderService.getIntentFilter(urlString, Downloader.ACTION_STARTED));
+                    localBroadcastManager.registerReceiver(downloadProgressReceiver,
+                            DownloaderService.getIntentFilter(urlString, Downloader.ACTION_PROGRESS));
+                    localBroadcastManager.registerReceiver(appListViewResetReceiver,
+                            DownloaderService.getIntentFilter(urlString, Downloader.ACTION_COMPLETE));
+                    localBroadcastManager.registerReceiver(interruptedReceiver,
+                            DownloaderService.getIntentFilter(urlString, Downloader.ACTION_INTERRUPTED));
 
                     // NOTE: Instead of continually unregistering and re-registering the observer
                     // (with a different URI), this could equally be done by only having one
@@ -327,17 +323,6 @@ public class SwapAppsView extends ListView implements
                             AppProvider.getContentUri(this.app.packageName), true, appObserver);
                 }
                 resetView();
-            }
-
-            /**
-             * Lazily load the apk from the database the first time it is requested. Means it wont
-             * be loaded unless we receive a download event from the {@link ApkDownloader}.
-             */
-            private Apk getApkToInstall() {
-                if (apkToInstall == null) {
-                    apkToInstall = ApkProvider.Helper.find(getActivity(), app.packageName, app.suggestedVersionCode);
-                }
-                return apkToInstall;
             }
 
             private void resetView() {
