@@ -436,7 +436,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         viewWifiId.setVisibility(TextUtils.isEmpty(FDroidApp.ipAddressString) ? View.GONE : View.VISIBLE);
 
         WifiApControl wifiAp = WifiApControl.getInstance(getActivity());
-        if (wifiAp.isWifiApEnabled()) {
+        if (wifiAp != null && wifiAp.isWifiApEnabled()) {
             WifiConfiguration config = wifiAp.getConfiguration();
             viewWifiNetwork.setText(getContext().getString(R.string.swap_active_hotspot, config.SSID));
         } else if (TextUtils.isEmpty(FDroidApp.ssid)) {

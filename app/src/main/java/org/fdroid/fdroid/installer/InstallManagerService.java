@@ -209,8 +209,7 @@ public class InstallManagerService extends Service {
             public void onReceive(Context context, Intent intent) {
                 String urlString = intent.getDataString();
                 // TODO these need to be removed based on whether they are fed to InstallerService or not
-                Apk apk = ACTIVE_APKS.remove(urlString);
-                ACTIVE_APPS.remove(apk.packageName);
+                Apk apk = removeFromActive(urlString);
                 if (AppDetails.isAppVisible(apk.packageName)) {
                     cancelNotification(urlString);
                 } else {
@@ -223,8 +222,7 @@ public class InstallManagerService extends Service {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String urlString = intent.getDataString();
-                Apk apk = ACTIVE_APKS.remove(urlString);
-                ACTIVE_APPS.remove(apk.packageName);
+                Apk apk = removeFromActive(urlString);
                 unregisterDownloaderReceivers(urlString);
                 cancelNotification(urlString);
             }
@@ -319,6 +317,18 @@ public class InstallManagerService extends Service {
         notificationManager.cancel(urlString.hashCode());
     }
 
+    private static void addToActive(String urlString, App app, Apk apk) {
+        ACTIVE_APKS.put(urlString, apk);
+        ACTIVE_APPS.put(app.packageName, app);
+        TEMP_HACK_APP_NAMES.put(urlString, app.name);  // TODO delete me once InstallerService exists
+    }
+
+    private static Apk removeFromActive(String urlString) {
+        Apk apk = ACTIVE_APKS.remove(urlString);
+        ACTIVE_APPS.remove(apk.packageName);
+        return apk;
+    }
+
     /**
      * Install an APK, checking the cache and downloading if necessary before starting the process.
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
@@ -328,9 +338,7 @@ public class InstallManagerService extends Service {
     public static void queue(Context context, App app, Apk apk) {
         String urlString = apk.getUrl();
         Utils.debugLog(TAG, "queue " + app.packageName + " " + apk.versionCode + " from " + urlString);
-        ACTIVE_APKS.put(urlString, apk);
-        ACTIVE_APPS.put(app.packageName, app);
-        TEMP_HACK_APP_NAMES.put(urlString, app.name);  // TODO delete me once InstallerService exists
+        addToActive(urlString, app, apk);
         Intent intent = new Intent(context, InstallManagerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(Uri.parse(urlString));
