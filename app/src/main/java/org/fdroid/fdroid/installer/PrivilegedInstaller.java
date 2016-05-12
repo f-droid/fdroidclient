@@ -241,6 +241,7 @@ public class PrivilegedInstaller extends Installer {
             throws InstallFailedException {
         ApplicationInfo appInfo;
         try {
+            //noinspection WrongConstant (lint is actually wrong here!)
             appInfo = mPm.getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
         } catch (PackageManager.NameNotFoundException e) {
             Log.w(TAG, "Failed to get ApplicationInfo for uninstalling");
