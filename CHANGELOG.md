@@ -1,6 +1,12 @@
-### Upcoming release
+### 0.100 (2016-05-??)
+
+* Ability to download apps in the background
 
 * Significant performance improvements when updating repositories
+
+* Add setting to enable automatic downloading of updates
+
+* Apks can now be kept on disk for various amounts of time
 
 * Show what repository each apk comes from
 
