@@ -20,6 +20,8 @@ package org.fdroid.fdroid;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
@@ -183,7 +185,16 @@ public class FDroidApp extends Application {
                     .build());
         }
         updateLanguage();
+
         ACRA.init(this);
+        // if this is the ACRA process, do not run the rest of onCreate()
+        int pid = android.os.Process.myPid();
+        ActivityManager manager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
+        for (RunningAppProcessInfo processInfo : manager.getRunningAppProcesses()) {
+            if (processInfo.pid == pid && "org.fdroid.fdroid:acra".equals(processInfo.processName)) {
+                return;
+            }
+        }
 
         PRNGFixes.apply();
 
