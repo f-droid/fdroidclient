@@ -89,7 +89,8 @@ public class AndroidXMLDecompress {
         }
         int offset = xmlTagOffset;
 
-        while (offset < binaryXml.length) {
+        // we only need the first <manifest> start tag
+        if (offset < binaryXml.length) {
             int tag0 = littleEndianWord(binaryXml, offset);
 
             if (tag0 == START_TAG) {
@@ -114,8 +115,6 @@ public class AndroidXMLDecompress {
                 }
                 return attributes;
             }
-            // we only need the first <manifest> start tag
-            break;
         }
         return new HashMap<>(0);
     }

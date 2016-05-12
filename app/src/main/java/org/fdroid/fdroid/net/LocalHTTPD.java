@@ -265,7 +265,10 @@ public class LocalHTTPD extends NanoHTTPD {
                             return (int) dataLen;
                         }
                     };
-                    fis.skip(startFrom);
+                    long skipped = fis.skip(startFrom);
+                    if (skipped != startFrom) {
+                        throw new IOException("unable to skip the required " + startFrom + " bytes.");
+                    }
 
                     res = createResponse(Response.Status.PARTIAL_CONTENT, mime, fis);
                     res.addHeader("Content-Length", String.valueOf(dataLen));

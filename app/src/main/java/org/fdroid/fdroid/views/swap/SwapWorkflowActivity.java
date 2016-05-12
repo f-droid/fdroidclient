@@ -740,7 +740,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         public void logStatus() {
 
-            if (true) return;
+            if (true) return; // NOPMD
 
             String message = "";
             if (service == null) {
