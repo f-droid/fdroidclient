@@ -5,11 +5,6 @@ cache:
     - .gradle/wrapper
     - .gradle/caches
 
-variables:
-  AVD_SDK: "17"
-  # switch glibc to a memory conserving mode
-  MALLOC_ARENA_MAX: "2"
-
 build:
   script:
     - export GRADLE_USER_HOME=$PWD/.gradle
@@ -25,6 +20,10 @@ build:
       }
 
 connectedCheck:
+  variables:
+    AVD_SDK: "17"
+    # switch glibc to a memory conserving mode
+    MALLOC_ARENA_MAX: "2"
   script:
     - export GRADLE_USER_HOME=$PWD/.gradle
     - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
