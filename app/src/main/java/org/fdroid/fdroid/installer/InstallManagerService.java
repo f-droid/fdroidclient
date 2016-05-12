@@ -15,6 +15,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
@@ -132,6 +133,12 @@ public class InstallManagerService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Utils.debugLog(TAG, "onStartCommand " + intent);
+
+        if (!ACTION_INSTALL.equals(intent.getAction())) {
+            Log.i(TAG, "Ignoring " + intent + " as it is not an " + ACTION_INSTALL + " intent");
+            return START_NOT_STICKY;
+        }
+
         String urlString = intent.getDataString();
         Apk apk = ACTIVE_APKS.get(urlString);
 
