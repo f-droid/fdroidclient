@@ -89,6 +89,7 @@ public class DownloaderService extends Service {
 
         @Override
         public void handleMessage(Message msg) {
+            Utils.debugLog(TAG, "Handling download message with ID of " + msg.what);
             handleIntent((Intent) msg.obj);
             stopSelf(msg.arg1);
         }
@@ -120,12 +121,13 @@ public class DownloaderService extends Service {
             Utils.debugLog(TAG, "Cancelling download of " + uriString);
             Integer whatToRemove = uriString.hashCode();
             if (serviceHandler.hasMessages(whatToRemove)) {
+                Utils.debugLog(TAG, "Removing download with ID of " + whatToRemove + " from service handler, then sending interrupted event.");
                 serviceHandler.removeMessages(whatToRemove);
                 sendBroadcast(intent.getData(), Downloader.ACTION_INTERRUPTED);
             } else if (isActive(uriString)) {
                 downloader.cancelDownload();
             } else {
-                Log.e(TAG, "ACTION_CANCEL called on something not queued or running");
+                Log.e(TAG, "ACTION_CANCEL called on something not queued or running (expected to find message with ID of " + whatToRemove + " in queue).");
             }
         } else if (ACTION_QUEUE.equals(intent.getAction())) {
             Message msg = serviceHandler.obtainMessage();

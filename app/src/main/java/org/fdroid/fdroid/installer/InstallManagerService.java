@@ -226,9 +226,7 @@ public class InstallManagerService extends Service {
                 Apk apk = ACTIVE_APKS.remove(urlString);
                 ACTIVE_APPS.remove(apk.packageName);
                 unregisterDownloaderReceivers(urlString);
-                if (AppDetails.isAppVisible(apk.packageName)) {
-                    cancelNotification(urlString);
-                }
+                cancelNotification(urlString);
             }
         };
         localBroadcastManager.registerReceiver(startedReceiver,
