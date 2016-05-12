@@ -199,7 +199,7 @@ public class PrivilegedInstaller extends Installer {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
 
-                IPrivilegedCallback callback = new IPrivilegedCallback() {
+                IPrivilegedCallback callback = new IPrivilegedCallback.Stub() {
                     @Override
                     public void handleResult(String packageName, int returnCode) throws RemoteException {
                         // TODO: propagate other return codes?
@@ -211,11 +211,6 @@ public class PrivilegedInstaller extends Installer {
                             mCallback.onError(InstallerCallback.OPERATION_INSTALL,
                                     InstallerCallback.ERROR_CODE_OTHER);
                         }
-                    }
-
-                    @Override
-                    public IBinder asBinder() {
-                        return null;
                     }
                 };
 
@@ -298,7 +293,7 @@ public class PrivilegedInstaller extends Installer {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
 
-                IPrivilegedCallback callback = new IPrivilegedCallback() {
+                IPrivilegedCallback callback = new IPrivilegedCallback.Stub() {
                     @Override
                     public void handleResult(String packageName, int returnCode) throws RemoteException {
                         // TODO: propagate other return codes?
@@ -311,11 +306,6 @@ public class PrivilegedInstaller extends Installer {
                             mCallback.onError(InstallerCallback.OPERATION_DELETE,
                                     InstallerCallback.ERROR_CODE_OTHER);
                         }
-                    }
-
-                    @Override
-                    public IBinder asBinder() {
-                        return null;
                     }
                 };
 
