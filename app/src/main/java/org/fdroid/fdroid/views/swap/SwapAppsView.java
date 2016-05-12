@@ -96,10 +96,12 @@ public class SwapAppsView extends ListView implements
         super.onFinishInflate();
         repo = getActivity().getState().getPeerRepo();
 
+        /*
         if (repo == null) {
-            // TODO: Uh oh, something stuffed up for this to happen.
-            // TODO: What is the best course of action from here?
+            TODO: Uh oh, something stuffed up for this to happen.
+            TODO: What is the best course of action from here?
         }
+        */
 
         adapter = new AppListAdapter(getContext(), getContext().getContentResolver().query(
                 AppProvider.getRepoUri(repo), AppProvider.DataColumns.ALL, null, null, null));
