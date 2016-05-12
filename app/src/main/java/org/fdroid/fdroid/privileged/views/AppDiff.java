@@ -66,6 +66,7 @@ public class AppDiff {
             // This is a little convoluted because we want to get all uninstalled
             // apps, but this may include apps with just data, and if it is just
             // data we still want to count it as "installed".
+            //noinspection WrongConstant (lint is actually wrong here!)
             mInstalledAppInfo = mPm.getApplicationInfo(pkgName,
                     PackageManager.GET_UNINSTALLED_PACKAGES);
             if ((mInstalledAppInfo.flags & ApplicationInfo.FLAG_INSTALLED) == 0) {
