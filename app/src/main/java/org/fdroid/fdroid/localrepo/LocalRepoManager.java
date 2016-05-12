@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.localrepo;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
@@ -11,7 +10,6 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -64,9 +62,6 @@ import java.util.jar.JarOutputStream;
  */
 public final class LocalRepoManager {
     private static final String TAG = "LocalRepoManager";
-
-    // For ref, official F-droid repo presently uses a maxage of 14 days
-    private static final String DEFAULT_REPO_MAX_AGE_DAYS = "14";
 
     private final Context context;
     private final PackageManager pm;
@@ -354,43 +349,27 @@ public final class LocalRepoManager {
             Writer output = new FileWriter(file);
             serializer.setOutput(output);
             serializer.startDocument(null, null);
-            tagFdroid();
-            serializer.endDocument();
-            output.close();
-        }
-
-        private void tagFdroid() throws IOException, LocalRepoKeyStore.InitException {
             serializer.startTag("", "fdroid");
-            tagRepo();
-            for (Map.Entry<String, App> entry : apps.entrySet()) {
-                tagApplication(entry.getValue());
-            }
-            serializer.endTag("", "fdroid");
-        }
 
-        private void tagRepo() throws IOException, LocalRepoKeyStore.InitException {
-
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
-            // max age is an EditTextPreference, which is always a String
-            // TODO: This pref is probably never being set. Also, why
-            // are we mixing floats and ints?
-            int repoMaxAge = Float.valueOf(prefs.getString("max_repo_age_days", DEFAULT_REPO_MAX_AGE_DAYS)).intValue(); // NOPMD
-
+            // <repo> block
             serializer.startTag("", "repo");
-
             serializer.attribute("", "icon", "blah.png");
-            serializer.attribute("", "maxage", String.valueOf(repoMaxAge));
             serializer.attribute("", "name", Preferences.get().getLocalRepoName() + " on " + FDroidApp.ipAddressString);
             serializer.attribute("", "pubkey", Hasher.hex(LocalRepoKeyStore.get(context).getCertificate()));
             long timestamp = System.currentTimeMillis() / 1000L;
             serializer.attribute("", "timestamp", String.valueOf(timestamp));
             serializer.attribute("", "version", "10");
-
             tag("description", "A local FDroid repo generated from apps installed on " + Preferences.get().getLocalRepoName());
-
             serializer.endTag("", "repo");
 
+            // <application> blocks
+            for (Map.Entry<String, App> entry : apps.entrySet()) {
+                tagApplication(entry.getValue());
+            }
+
+            serializer.endTag("", "fdroid");
+            serializer.endDocument();
+            output.close();
         }
 
         /**
