@@ -6,7 +6,7 @@
   <string name="version">Версия</string>
   <string name="delete">Удалить</string>
   <string name="enable_nfc_send">Включить отправку по NFC…</string>
-  <string name="cache_downloaded">Кэшировать пакеты</string>
+  <string name="cache_downloaded">Хранить кэшированные приложения</string>
   <string name="updates">Обновления</string>
   <string name="other">Прочее</string>
   <string name="update_interval">Интервал автоматического обновления</string>
@@ -338,4 +338,21 @@
     <string name="swap_not_enabled_description">Для выполнения обмена следует сделать ваше устройство видимым.</string>
 
     <string name="perms_description_app">Предоставлено %1$s.</string>
+    <string name="update_auto_download">Автоматически скачивать обновления</string>
+    <string name="update_auto_download_summary">Скачивать файлы обновлений в фоне</string>
+    <string name="system_install_not_supported">"Установка F-Droid Privileged Extension в настоящее время не поддерживается на  Android 5.1 или более поздних версиях."</string>
+
+    <string name="download_pending">Ожидание начала загрузки…</string>
+
+    <string name="downloading_apk">Загрузка %1$s</string>
+
+    <string name="keep_hour">1 час</string>
+    <string name="keep_day">1 день</string>
+    <string name="keep_week">1 неделя</string>
+    <string name="keep_month">1 месяц</string>
+    <string name="keep_year">1 год</string>
+    <string name="keep_forever">Всегда</string>
+
+    <string name="tap_to_install_format">Нажмите, чтобы установить %s</string>
+    <string name="tap_to_update_format">Нажмите, чтобы обновить %s</string>
     </resources>

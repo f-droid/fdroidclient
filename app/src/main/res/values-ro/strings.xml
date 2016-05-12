@@ -317,4 +317,12 @@
 
     <string name="download_pending">Asteptare pornire descarcare…</string>
 
+    <string name="keep_hour">O ora</string>
+    <string name="keep_day">O zi</string>
+    <string name="keep_week">O saptamana</string>
+    <string name="keep_month">O luna</string>
+    <string name="keep_year">Un an</string>
+    <string name="keep_forever">Totdeauna</string>
+
+    <string name="crash_dialog_text">O eroare neasteptata s-a produs fortand oprirea aplicatiei. Doriti sa trimite-ti un e-mail cu detalii, pentru a putea ajuta la rezolvarea acestei probleme?</string>
     </resources>

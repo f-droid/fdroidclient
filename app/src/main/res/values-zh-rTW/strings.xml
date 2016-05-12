@@ -7,7 +7,7 @@
     <string name="version">版本</string>
     <string name="delete">刪除</string>
     <string name="enable_nfc_send">啟用 NFC 傳送功能……</string>
-    <string name="cache_downloaded">對下載下來的軟體包進行快取</string>
+    <string name="cache_downloaded">保留快取應用程式</string>
     <string name="updates">更新</string>
     <string name="unstable_updates">非穩定版本的軟體更新</string>
     <string name="unstable_updates_summary">建議更新至不穩定的應用軟體版本</string>
@@ -205,7 +205,7 @@
     <string name="repo_delete_to_overwrite">在加入含有不同金鑰的儲存庫前，您需要先刪除此儲存庫。</string>
     <string name="repo_fingerprint">金鑰指紋 (SHA-256)</string>
     <string name="by_author">由</string>
-    <string name="system_installer">特權延伸</string>
+    <string name="system_installer">特權擴充</string>
     <string name="category_Navigation">導航</string>
     <string name="category_Connectivity">連接</string>
     <string name="theme">主題</string>
@@ -252,9 +252,9 @@
     <string name="uninstall_confirm">您想要解除安裝此應用程式嗎？</string>
     <string name="download_error">下載失敗</string>
 
-    <string name="system_installer_on">使用 F-Droid 特權延伸以安裝、更新和移除套裝軟體</string>
-    <string name="uninstall_system">更新/解除安裝特權延伸</string>
-    <string name="uninstall_system_summary">開啟特權延伸的詳情畫面來更新/解除安裝</string>
+    <string name="system_installer_on">使用 F-Droid 特權擴充以安裝、更新和移除套裝軟體</string>
+    <string name="uninstall_system">更新/解除安裝特權擴充</string>
+    <string name="uninstall_system_summary">開啟特權擴充的詳情畫面來更新/解除安裝</string>
     <string name="local_repo_https">使用私密連接</string>
     <string name="repo_error_empty_username">空的使用者名稱，憑證未改變</string>
 
@@ -301,13 +301,25 @@
     <string name="empty_available_app_list">此類別沒有應用程式。\n\n試著選擇不同的類別或是更新您的儲存庫來取得應用程式最新的清單。</string>
     <string name="root_access_denied_body">或許您的 Android 裝置還未取得 root 又或您已拒絕 F-Droid 存取 root。</string>
     <string name="install_error_cannot_parse">剖析套裝軟體時發生了錯誤</string>
-    <string name="system_install_denied_title">F-Droid 特權延伸無法利用</string>
-    <string name="system_install_denied_body">此選項只能用在已有安裝 F-Droid 的特權延伸。</string>
-    <string name="system_install_denied_signature">該延伸簽署錯誤！請建立一份錯誤報告！</string>
-    <string name="system_install_denied_permissions">延伸未被授予特權權限！請建立一份錯誤報告！</string>
-    <string name="system_install_button_open">開啟延伸</string>
-    <string name="system_install_first_time_notification">安裝 F-Droid 特權延伸嗎？</string>
-    <string name="system_install_first_time_notification_message">觸碰以安裝 F-Droid 特權延伸，使之與 Android 作業系統緊密結合。這能允許 F-Droid 自行的安裝、更新及解除安裝應用程式。\n您也可在以後從 F-Droid 的設定做。</string>
-    <string name="system_install_post_success">成功的安裝了 F-Droid 特權延伸</string>
-    <string name="system_install_post_fail">安裝的 F-Droid 特權延伸失敗</string>
+    <string name="system_install_denied_title">F-Droid 特權擴充無法利用</string>
+    <string name="system_install_denied_body">此選項只能用在已有安裝 F-Droid 的特權擴充。</string>
+    <string name="system_install_denied_signature">該擴充簽署錯誤！請建立一份錯誤報告！</string>
+    <string name="system_install_denied_permissions">擴充未被授予特權權限！請建立一份錯誤報告！</string>
+    <string name="system_install_button_open">開啟擴充</string>
+    <string name="system_install_first_time_notification">安裝 F-Droid 特權擴充嗎？</string>
+    <string name="system_install_first_time_notification_message">觸碰以安裝 F-Droid 特權擴充，使之與 Android 作業系統緊密結合。這能允許 F-Droid 自行的安裝、更新及解除安裝應用程式。\n您也可在以後從 F-Droid 的設定做。</string>
+    <string name="system_install_post_success">成功的安裝了 F-Droid 特權擴充</string>
+    <string name="system_install_post_fail">安裝的 F-Droid 特權擴充失敗</string>
+    <string name="system_install_question">您想要安裝 F-Droid 特權擴充嗎？</string>
+    <string name="system_uninstall">您想要解除安裝 F-Droid 特權擴充嗎？</string>
+    <string name="system_install_not_supported">目前 FDroid 還不支援在 Android5.1 或更高的版本安裝特權擴充。</string>
+
+    <string name="system_install_warning">這需要 10 秒以上的時間。</string>
+    <string name="system_install_warning_lollipop">這需要 10 秒以上的時間而且該裝置將在之後<b>重新開機</b>。</string>
+    <string name="swap_nfc_description">如果您的朋友有 F-Droid 並且已開啟NFC，那把你們的裝置相互貼近。</string>
+    <string name="swap_join_same_wifi">將您朋友加入相同的 Wi-Fi</string>
+    <string name="swap_no_wifi_network">尚沒有網路</string>
+    <string name="swap_view_available_networks">點擊打開可用的網路</string>
+    <string name="swap_switch_to_wifi">點擊以切換到一個 Wi-Fi 網路</string>
+    <string name="swap_confirm_connect">您現在想要從 %1$s 取得應用程式嗎？</string>
     </resources>

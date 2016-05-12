@@ -340,4 +340,17 @@
     <string name="update_auto_download_summary">Ladda ner uppdateringsfilerna i bakgrunden</string>
     <string name="tap_to_install_format">Knacka för att installera %s</string>
     <string name="tap_to_update_format">Knacka för att uppdatera %s</string>
+    <string name="system_install_not_supported">Installation av F-Droid\'s Priviligerade Tilläggsprogram stöds för närvarande inte i Android 5.1 eller senare.</string>
+
+    <string name="download_pending">Väntar på att påbörja nerladdningen…</string>
+
+    <string name="downloading_apk">Laddar ner %1$s</string>
+
+    <string name="keep_hour">1 timma</string>
+    <string name="keep_day">1 dag</string>
+    <string name="keep_week">1 vecka</string>
+    <string name="keep_month">1 månad</string>
+    <string name="keep_year">1 år</string>
+    <string name="keep_forever">För evigt</string>
+
     </resources>
