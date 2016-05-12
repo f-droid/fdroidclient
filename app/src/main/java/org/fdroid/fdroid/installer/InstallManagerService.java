@@ -25,6 +25,7 @@ import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -144,7 +145,7 @@ public class InstallManagerService extends Service {
         if (!apkFilePath.exists() || apkFileSize < apk.size) {
             Utils.debugLog(TAG, "download " + urlString + " " + apkFilePath);
             DownloaderService.queue(this, urlString);
-        } else if (apkFileSize == apk.size) {
+        } else if (apkIsCached(apkFilePath, apk)) {
             Utils.debugLog(TAG, "skip download, we have it, straight to install " + urlString + " " + apkFilePath);
             sendBroadcast(intent.getData(), Downloader.ACTION_STARTED, apkFilePath);
             sendBroadcast(intent.getData(), Downloader.ACTION_COMPLETE, apkFilePath);
@@ -154,6 +155,21 @@ public class InstallManagerService extends Service {
             DownloaderService.queue(this, urlString);
         }
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
+    }
+
+    /**
+     * Verifies the size of the file on disk matches, and then hashes the file to compare with what
+     * we received from the signed repo (i.e. {@link Apk#hash} and {@link Apk#hashType}).
+     * Bails out if the file sizes don't match to prevent having to do the work of hashing the file.
+     */
+    private static boolean apkIsCached(File apkFile, Apk apkToCheck) {
+        try {
+            return apkFile.length() == apkToCheck.size &&
+                    Installer.verifyApkFile(apkFile, apkToCheck.hash, apkToCheck.hashType);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private void sendBroadcast(Uri uri, String action, File file) {
