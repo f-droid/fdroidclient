@@ -156,7 +156,7 @@ public abstract class Installer {
     /**
      * Checks the APK file against the provided hash, returning whether it is a match.
      */
-    private static boolean verifyApkFile(File apkFile, String hash, String hashType)
+    public static boolean verifyApkFile(File apkFile, String hash, String hashType)
             throws NoSuchAlgorithmException {
         if (!apkFile.exists()) {
             return false;
