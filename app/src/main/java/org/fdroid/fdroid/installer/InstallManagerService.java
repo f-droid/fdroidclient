@@ -245,13 +245,13 @@ public class InstallManagerService extends Service {
         App app = ACTIVE_APPS.get(apk.packageName);
         if (app == null || TextUtils.isEmpty(app.name)) {
             if (TEMP_HACK_APP_NAMES.containsKey(urlString)) {
-                return getString(R.string.downloading_apk, TEMP_HACK_APP_NAMES.get(urlString));
+                return TEMP_HACK_APP_NAMES.get(urlString);
             } else {
                 // this is ugly, but its better than nothing as a failsafe
-                return getString(R.string.downloading_apk, urlString);
+                return urlString;
             }
         } else {
-            return getString(R.string.downloading_apk, app.name);
+            return app.name;
         }
     }
 
