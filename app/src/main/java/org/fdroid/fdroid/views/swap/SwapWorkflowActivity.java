@@ -41,6 +41,7 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
@@ -778,7 +779,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     public void install(@NonNull final App app) {
         final Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode);
-        String urlString = Utils.getApkUrl(apk.repoAddress, apk);
+        String urlString = apk.getUrl();
         downloadCompleteReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -788,7 +789,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         };
         localBroadcastManager.registerReceiver(downloadCompleteReceiver,
                 DownloaderService.getIntentFilter(urlString, Downloader.ACTION_COMPLETE));
-        DownloaderService.queue(this, app.packageName, urlString);
+        InstallManagerService.queue(this, app, apk);
     }
 
     private void handleDownloadComplete(File apkFile, String packageName, String urlString) {

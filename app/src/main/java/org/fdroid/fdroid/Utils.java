@@ -39,7 +39,6 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.compat.FileCompat;
-import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.xml.sax.XMLReader;
@@ -116,26 +115,12 @@ public final class Utils {
         return "/icons-120/";
     }
 
-    public static void copy(InputStream input, OutputStream output)
-            throws IOException {
-        copy(input, output, null, null);
-    }
-
-    public static void copy(InputStream input, OutputStream output,
-                    ProgressListener progressListener,
-                    ProgressListener.Event templateProgressEvent)
-    throws IOException {
+    public static void copy(InputStream input, OutputStream output) throws IOException {
         byte[] buffer = new byte[BUFFER_SIZE];
-        int bytesRead = 0;
         while (true) {
             int count = input.read(buffer);
             if (count == -1) {
                 break;
-            }
-            if (progressListener != null) {
-                bytesRead += count;
-                templateProgressEvent.progress = bytesRead;
-                progressListener.onProgress(templateProgressEvent);
             }
             output.write(buffer, 0, count);
         }
@@ -336,6 +321,17 @@ public final class Utils {
     }
 
     /**
+     * Get the full path for where an APK URL will be downloaded into.
+     */
+    public static SanitizedFile getApkDownloadPath(Context context, Uri uri) {
+        File dir = new File(Utils.getApkCacheDir(context), uri.getHost() + "-" + uri.getPort());
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        return new SanitizedFile(dir, uri.getLastPathSegment());
+    }
+
+    /**
      * Recursively delete files in {@code dir} that were last modified
      * {@code secondsAgo} seconds ago, e.g. when it was downloaded.
      *
@@ -432,10 +428,6 @@ public final class Utils {
         }
         Log.e(TAG, "Locale could not be parsed from language tag: " + languageTag);
         return new Locale(languageTag);
-    }
-
-    public static String getApkUrl(String repoAddress, Apk apk) {
-        return repoAddress + "/" + apk.apkName.replace(" ", "%20");
     }
 
     public static final class CommaSeparatedList implements Iterable<String> {

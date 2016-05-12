@@ -48,13 +48,15 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpdateService extends IntentService implements ProgressListener {
+public class UpdateService extends IntentService {
 
     private static final String TAG = "UpdateService";
 
@@ -375,7 +377,8 @@ public class UpdateService extends IntentService implements ProgressListener {
                 RepoUpdater updater = new RepoUpdater(getBaseContext(), repo);
                 localBroadcastManager.registerReceiver(downloadProgressReceiver,
                         DownloaderService.getIntentFilter(updater.indexUrl, Downloader.ACTION_PROGRESS));
-                updater.setProgressListener(this);
+                updater.setProcessXmlProgressListener(processXmlProgressListener);
+                updater.setCommittingProgressListener(committingProgressListener);
                 try {
                     updater.update();
                     if (updater.hasChanged()) {
@@ -393,7 +396,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 // now that downloading the index is done, start downloading updates
                 if (changes && fdroidPrefs.isAutoDownloadEnabled()) {
-                    autoDownloadUpdates(repo.address);
+                    autoDownloadUpdates();
                 }
             }
 
@@ -485,7 +488,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         return inboxStyle;
     }
 
-    private void autoDownloadUpdates(String repoAddress) {
+    private void autoDownloadUpdates() {
         Cursor cursor = getContentResolver().query(
                 AppProvider.getCanUpdateUri(),
                 new String[]{
@@ -496,11 +499,8 @@ public class UpdateService extends IntentService implements ProgressListener {
             cursor.moveToFirst();
             for (int i = 0; i < cursor.getCount(); i++) {
                 App app = new App(cursor);
-                Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode, new String[]{
-                        ApkProvider.DataColumns.NAME,
-                });
-                String urlString = Utils.getApkUrl(repoAddress, apk);
-                DownloaderService.queue(this, app.packageName, urlString);
+                Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode);
+                InstallManagerService.queue(this, app, apk);
                 cursor.moveToNext();
             }
             cursor.close();
@@ -528,25 +528,25 @@ public class UpdateService extends IntentService implements ProgressListener {
         notificationManager.notify(NOTIFY_ID_UPDATES_AVAILABLE, builder.build());
     }
 
-    /**
-     * Received progress event from the RepoXMLHandler. It could be progress
-     * downloading from the repo, or perhaps processing the info from the repo.
-     */
-    @Override
-    public void onProgress(ProgressListener.Event event) {
-        String message = "";
-        String repoAddress = event.getData().getString(RepoUpdater.PROGRESS_DATA_REPO_ADDRESS);
-        String downloadedSize = Utils.getFriendlySize(event.progress);
-        String totalSize = Utils.getFriendlySize(event.total);
-        int percent = event.total > 0 ? (int) ((double) event.progress / event.total * 100) : -1;
-        switch (event.type) {
-            case RepoUpdater.PROGRESS_TYPE_PROCESS_XML:
-                message = getString(R.string.status_processing_xml_percent, repoAddress, downloadedSize, totalSize, percent);
-                break;
-            case RepoUpdater.PROGRESS_COMMITTING:
-                message = getString(R.string.status_inserting_apps);
-                break;
+    private final ProgressListener processXmlProgressListener = new ProgressListener() {
+        @Override
+        public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+            String downloadedSize = Utils.getFriendlySize(bytesRead);
+            String totalSize = Utils.getFriendlySize(totalBytes);
+            int percent = -1;
+            if (totalBytes > 0) {
+                percent = (int) ((double) bytesRead / totalBytes * 100);
+            }
+            String message = getString(R.string.status_processing_xml_percent, sourceUrl, downloadedSize, totalSize, percent);
+            sendStatus(getApplicationContext(), STATUS_INFO, message, percent);
         }
-        sendStatus(this, STATUS_INFO, message, percent);
-    }
+    };
+
+    private final ProgressListener committingProgressListener = new ProgressListener() {
+        @Override
+        public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+            String message = getString(R.string.status_inserting_apps);
+            sendStatus(getApplicationContext(), STATUS_INFO, message);
+        }
+    };
 }

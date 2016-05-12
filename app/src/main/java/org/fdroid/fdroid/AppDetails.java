@@ -37,7 +37,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.NavUtils;
@@ -86,8 +85,8 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.InstallFailedException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
@@ -110,6 +109,15 @@ public class AppDetails extends AppCompatActivity {
 
     private FDroidApp fdroidApp;
     private ApkListAdapter adapter;
+
+    /**
+     * Check if {@code packageName} is currently visible to the user.
+     */
+    public static boolean isAppVisible(String packageName) {
+        return packageName != null && packageName.equals(visiblePackageName);
+    }
+
+    private static String visiblePackageName;
 
     private static class ViewHolder {
         TextView version;
@@ -426,13 +434,19 @@ public class AppDetails extends AppCompatActivity {
 
     @Override
     protected void onResumeFragments() {
+        // Must be called before super.onResumeFragments(), as the fragments depend on the active
+        // url being correctly set in order to know whether or not to show the download progress bar.
+        calcActiveDownloadUrlString(app.packageName);
+
         super.onResumeFragments();
+
         headerFragment = (AppDetailsHeaderFragment) getSupportFragmentManager().findFragmentById(R.id.header);
         refreshApkList();
         supportInvalidateOptionsMenu();
         if (DownloaderService.isQueuedOrActive(activeDownloadUrlString)) {
             registerDownloaderReceivers();
         }
+        visiblePackageName = app.packageName;
     }
 
     /**
@@ -454,6 +468,7 @@ public class AppDetails extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        visiblePackageName = null;
         // save the active URL for this app in case we come back
         PreferencesCompat.apply(getPreferences(MODE_PRIVATE)
                 .edit()
@@ -582,13 +597,7 @@ public class AppDetails extends AppCompatActivity {
         Utils.debugLog(TAG, "Getting application details for " + packageName);
         App newApp = null;
 
-        String urlString = getPreferences(MODE_PRIVATE).getString(packageName, null);
-        if (DownloaderService.isQueuedOrActive(urlString)) {
-            activeDownloadUrlString = urlString;
-        } else {
-            // this URL is no longer active, remove it
-            PreferencesCompat.apply(getPreferences(MODE_PRIVATE).edit().remove(packageName));
-        }
+        calcActiveDownloadUrlString(packageName);
 
         if (!TextUtils.isEmpty(packageName)) {
             newApp = AppProvider.Helper.findByPackageName(getContentResolver(), packageName);
@@ -597,6 +606,16 @@ public class AppDetails extends AppCompatActivity {
         setApp(newApp);
 
         return this.app != null;
+    }
+
+    private void calcActiveDownloadUrlString(String packageName) {
+        String urlString = getPreferences(MODE_PRIVATE).getString(packageName, null);
+        if (DownloaderService.isQueuedOrActive(urlString)) {
+            activeDownloadUrlString = urlString;
+        } else {
+            // this URL is no longer active, remove it
+            PreferencesCompat.apply(getPreferences(MODE_PRIVATE).edit().remove(packageName));
+        }
     }
 
     /**
@@ -815,9 +834,6 @@ public class AppDetails extends AppCompatActivity {
             return;
         }
 
-        final String repoaddress = getRepoAddress(apk);
-        if (repoaddress == null) return;
-
         if (!apk.compatible) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.installIncompatible);
@@ -826,7 +842,7 @@ public class AppDetails extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            startDownload(apk, repoaddress);
+                            startDownload(apk);
                         }
                     });
             builder.setNegativeButton(R.string.no,
@@ -855,24 +871,14 @@ public class AppDetails extends AppCompatActivity {
             alert.show();
             return;
         }
-        startDownload(apk, repoaddress);
+        startDownload(apk);
     }
 
-    @Nullable
-    private String getRepoAddress(Apk apk) {
-        final String[] projection = {RepoProvider.DataColumns.ADDRESS};
-        Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
-        if (repo == null || repo.address == null) {
-            return null;
-        }
-        return repo.address;
-    }
-
-    private void startDownload(Apk apk, String repoAddress) {
-        activeDownloadUrlString = Utils.getApkUrl(repoAddress, apk);
+    private void startDownload(Apk apk) {
+        activeDownloadUrlString = apk.getUrl();
         registerDownloaderReceivers();
         headerFragment.startProgress();
-        DownloaderService.queue(this, apk.packageName, activeDownloadUrlString);
+        InstallManagerService.queue(this, app, apk);
     }
 
     private void removeApk(String packageName) {

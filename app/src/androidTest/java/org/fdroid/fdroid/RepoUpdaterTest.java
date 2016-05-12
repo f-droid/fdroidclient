@@ -31,6 +31,7 @@ public class RepoUpdaterTest {
         context = instrumentation.getContext();
         testFilesDir = TestUtils.getWriteableDir(instrumentation);
         Repo repo = new Repo();
+        repo.address = "https://fake.url/fdroid/repo";
         repo.signingCertificate = this.simpleIndexSigningCert;
         repoUpdater = new RepoUpdater(context, repo);
     }

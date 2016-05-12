@@ -297,7 +297,7 @@ public class SwapAppsView extends ListView implements
                 // TODO: Unregister receivers correctly...
 
                 Apk apk = getApkToInstall();
-                String url = Utils.getApkUrl(apk.repoAddress, apk);
+                String url = apk.getUrl();
 
                 localBroadcastManager = LocalBroadcastManager.getInstance(getActivity());
                 localBroadcastManager.registerReceiver(appListViewResetReceiver,
