@@ -18,6 +18,8 @@ build:
           done;
           exit 1;
       }
+    # this file changes every time but should not be cached
+    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
 
 connectedCheck:
   variables:
@@ -49,11 +51,15 @@ pmd:
   script:
     - export GRADLE_USER_HOME=$PWD/.gradle
     - ./gradlew pmd -PdisablePreDex
+    # this file changes every time but should not be cached
+    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
 
 checkstyle:
   script:
     - export GRADLE_USER_HOME=$PWD/.gradle
     - ./gradlew checkstyle -PdisablePreDex
+    # this file changes every time but should not be cached
+    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
 
 tools:
   script:
