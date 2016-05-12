@@ -1,4 +1,4 @@
-image: mvdan/fdroid-ci:client-20160429
+image: mvdan/fdroid-ci:client-20160512
 
 cache:
   paths:
@@ -7,14 +7,11 @@ cache:
 
 variables:
   AVD_SDK: "17"
-  SKIN: "QVGA"
   # switch glibc to a memory conserving mode
   MALLOC_ARENA_MAX: "2"
 
 gradle:
   script:
-    - echo y | android update sdk --no-ui --filter android-$AVD_SDK
-    - echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-$AVD_SDK
     - export GRADLE_USER_HOME=$PWD/.gradle
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
@@ -26,19 +23,7 @@ gradle:
           done;
           exit 1;
       }
-    # emulators will only start if they have tiny amounts of RAM
-    - sed -i -e 's,^hw.ramSize=.*,hw.ramSize=384,'
-             -e 's,^vm.heapSize=.*,vm.heapSize=48,'
-             -e 's,^hw.gpu.enabled.*,hw.gpu.enabled = false,'
-             $ANDROID_HOME/platforms/android-$AVD_SDK/skins/$SKIN/hardware.ini
-    - echo "hw.gpu.enabled = false" >>
-             $ANDROID_HOME/platforms/android-$AVD_SDK/skins/$SKIN/hardware.ini
-    - echo no | android --verbose create avd
-        --force
-        --name fcl-test
-        --skin $SKIN
-        --target android-$AVD_SDK
-    - emulator64-arm -avd fcl-test -no-skin -no-audio -no-window &
+    - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &
     - export EXITVALUE=0
