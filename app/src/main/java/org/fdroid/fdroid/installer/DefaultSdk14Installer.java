@@ -56,12 +56,16 @@ public class DefaultSdk14Installer extends Installer {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
         intent.setData(Uri.fromFile(apkFile));
-        intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+        // EXTRA_RETURN_RESULT throws a RuntimeException on N
+        // https://gitlab.com/fdroid/fdroidclient/issues/631
+        if (!"N".equals(Build.VERSION.CODENAME)) {
+            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+        }
 
         // following extras only work when being installed as system-app
         // https://code.google.com/p/android/issues/detail?id=42253
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-        if (android.os.Build.VERSION.SDK_INT < 16) {
+        if (Build.VERSION.SDK_INT < 16) {
             // deprecated in Android 4.1
             intent.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
         }
@@ -102,6 +106,10 @@ public class DefaultSdk14Installer extends Installer {
                 } else {
                     mCallback.onError(InstallerCallback.OPERATION_INSTALL,
                             InstallerCallback.ERROR_CODE_OTHER);
+                }
+                // Fallback on N for https://gitlab.com/fdroid/fdroidclient/issues/631
+                if ("N".equals(Build.VERSION.CODENAME)) {
+                    mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
                 }
 
                 return true;
