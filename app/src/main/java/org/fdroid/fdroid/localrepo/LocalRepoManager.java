@@ -372,7 +372,9 @@ public final class LocalRepoManager {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
             // max age is an EditTextPreference, which is always a String
-            int repoMaxAge = Float.valueOf(prefs.getString("max_repo_age_days", DEFAULT_REPO_MAX_AGE_DAYS)).intValue();
+            // TODO: This pref is probably never being set. Also, why
+            // are we mixing floats and ints?
+            int repoMaxAge = Float.valueOf(prefs.getString("max_repo_age_days", DEFAULT_REPO_MAX_AGE_DAYS)).intValue(); // NOPMD
 
             serializer.startTag("", "repo");
 

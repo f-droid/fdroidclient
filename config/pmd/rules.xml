@@ -17,9 +17,14 @@
     <rule ref="rulesets/java/unnecessary.xml">
         <exclude name="UselessParentheses"/> <!--Too nitpicky-->
     </rule>
+    <rule ref="rulesets/java/empty.xml">
+        <exclude name="EmptyCatchBlock"/> <!--Ignoring an exception-->
+        <exclude name="EmptyWhileStmt"/> <!--Can be useful sometimes-->
+    </rule>
     <rule ref="rulesets/java/optimizations.xml/PrematureDeclaration"/>
     <rule ref="rulesets/java/optimizations.xml/AddEmptyString"/>
     <rule ref="rulesets/java/optimizations.xml/UseArraysAsList"/>
+    <rule ref="rulesets/java/optimizations.xml/UnnecessaryWrapperObjectCreation"/>
 
     <rule ref="rulesets/java/controversial.xml/UnnecessaryConstructor"/>
     <rule ref="rulesets/java/controversial.xml/UnnecessaryParentheses"/>
