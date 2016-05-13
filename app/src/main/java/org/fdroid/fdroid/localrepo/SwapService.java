@@ -31,7 +31,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.localrepo.peers.Peer;
@@ -208,16 +207,12 @@ public class SwapService extends Service {
         askServerToSwapWithUs(repo.address);
     }
 
-    public void askServerToSwapWithUs(final NewRepoConfig config) {
-        askServerToSwapWithUs(config.getRepoUriString());
-    }
-
     private void askServerToSwapWithUs(final String address) {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... args) {
                 Uri repoUri = Uri.parse(address);
-                String swapBackUri = Utils.getLocalRepoUri(FDroidApp.REPO).toString();
+                String swapBackUri = Utils.getLocalRepoUri(FDroidApp.repo).toString();
 
                 AndroidHttpClient client = AndroidHttpClient.newInstance("F-Droid", SwapService.this);
                 HttpPost request = new HttpPost("/request-swap");

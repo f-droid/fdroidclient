@@ -17,6 +17,7 @@ import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 
@@ -135,8 +136,9 @@ public class WifiStateChangeService extends IntentService {
                 } else {
                     scheme = "http";
                 }
-                FDroidApp.REPO.name = Preferences.get().getLocalRepoName();
-                FDroidApp.REPO.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
+                Repo repo = new Repo();
+                repo.name = Preferences.get().getLocalRepoName();
+                repo.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
                         scheme, FDroidApp.ipAddressString, FDroidApp.port);
 
                 if (isInterrupted()) { // can be canceled by a change via WifiStateChangeReceiver
@@ -145,7 +147,7 @@ public class WifiStateChangeService extends IntentService {
 
                 Context context = WifiStateChangeService.this.getApplicationContext();
                 LocalRepoManager lrm = LocalRepoManager.get(context);
-                lrm.writeIndexPage(Utils.getSharingUri(FDroidApp.REPO).toString());
+                lrm.writeIndexPage(Utils.getSharingUri(FDroidApp.repo).toString());
 
                 if (isInterrupted()) { // can be canceled by a change via WifiStateChangeReceiver
                     return;
@@ -154,7 +156,9 @@ public class WifiStateChangeService extends IntentService {
                 // the fingerprint for the local repo's signing key
                 LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
                 Certificate localCert = localRepoKeyStore.getCertificate();
-                FDroidApp.REPO.fingerprint = Utils.calcFingerprint(localCert);
+                repo.fingerprint = Utils.calcFingerprint(localCert);
+
+                FDroidApp.repo = repo;
 
                 /*
                  * Once the IP address is known we need to generate a self

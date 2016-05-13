@@ -81,12 +81,12 @@ public class FDroidApp extends Application {
     private static Locale locale;
 
     // for the local repo on this device, all static since there is only one
-    public static int port;
-    public static String ipAddressString;
-    public static SubnetUtils.SubnetInfo subnetInfo;
-    public static String ssid;
-    public static String bssid;
-    public static final Repo REPO = new Repo();
+    public static volatile int port;
+    public static volatile String ipAddressString;
+    public static volatile SubnetUtils.SubnetInfo subnetInfo;
+    public static volatile String ssid;
+    public static volatile String bssid;
+    public static volatile Repo repo = new Repo();
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
     private static final org.spongycastle.jce.provider.BouncyCastleProvider SPONGYCASTLE_PROVIDER;
@@ -147,6 +147,7 @@ public class FDroidApp extends Application {
         subnetInfo = new SubnetUtils("0.0.0.0/32").getInfo();
         ssid = "";
         bssid = "";
+        repo = new Repo();
     }
 
     public void updateLanguage() {

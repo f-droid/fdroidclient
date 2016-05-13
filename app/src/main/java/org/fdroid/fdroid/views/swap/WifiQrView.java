@@ -121,7 +121,7 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
 
     private void setUIFromWifi() {
 
-        if (TextUtils.isEmpty(FDroidApp.REPO.address)) {
+        if (TextUtils.isEmpty(FDroidApp.repo.address)) {
             return;
         }
 
@@ -139,7 +139,7 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
          * wifi AP to join. Lots of QR Scanners are buggy and do not respect
          * custom URI schemes, so we have to use http:// or https:// :-(
          */
-        Uri sharingUri = Utils.getSharingUri(FDroidApp.REPO);
+        Uri sharingUri = Utils.getSharingUri(FDroidApp.repo);
         String qrUriString = (scheme + sharingUri.getHost()).toUpperCase(Locale.ENGLISH);
         if (sharingUri.getPort() != 80) {
             qrUriString += ":" + sharingUri.getPort();
