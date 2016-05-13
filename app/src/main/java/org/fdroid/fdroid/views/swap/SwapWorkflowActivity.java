@@ -504,7 +504,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         // Even if they opted to skip the message which says "Touch devices to swap",
         // we still want to actually enable the feature, so that they could touch
         // during the wifi qr code being shown too.
-        boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(FDroidApp.REPO));
+        boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(FDroidApp.repo));
 
         if (Preferences.get().showNfcDuringSwap() && nfcMessageReady) {
             inflateInnerView(R.layout.swap_nfc);
@@ -669,7 +669,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         PrepareSwapRepo(@NonNull Set<String> apps) {
             context = SwapWorkflowActivity.this;
             selectedApps = apps;
-            sharingUri = Utils.getSharingUri(FDroidApp.REPO);
+            sharingUri = Utils.getSharingUri(FDroidApp.repo);
         }
 
         private void broadcast(int type) {

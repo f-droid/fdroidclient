@@ -1,18 +1,14 @@
 package org.fdroid.fdroid.net;
 
 import android.annotation.TargetApi;
-import android.app.Service;
-import android.content.ComponentName;
+import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.net.DhcpInfo;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.AsyncTask;
 import android.os.Build;
-import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -21,9 +17,9 @@ import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
-import org.fdroid.fdroid.localrepo.SwapService;
 
 import java.net.Inet6Address;
 import java.net.InetAddress;
@@ -34,54 +30,63 @@ import java.security.cert.Certificate;
 import java.util.Enumeration;
 import java.util.Locale;
 
-public class WifiStateChangeService extends Service {
+/**
+ * Handle state changes to the device's wifi, storing the required bits.
+ * The {@link Intent} that starts it either has no extras included,
+ * which is how it can be triggered by code, or it came in from the system
+ * via {@link  org.fdroid.fdroid.receiver.WifiStateChangeReceiver}, in
+ * which case an instance of {@link NetworkInfo} is included.
+ */
+public class WifiStateChangeService extends IntentService {
     private static final String TAG = "WifiStateChangeService";
 
     public static final String BROADCAST = "org.fdroid.fdroid.action.WIFI_CHANGE";
 
     private WifiManager wifiManager;
-    private static WaitForWifiAsyncTask asyncTask;
-    private int wifiState;
+    private static WifiInfoThread wifiInfoThread;
+
+    public WifiStateChangeService() {
+        super("WifiStateChangeService");
+    }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    protected void onHandleIntent(Intent intent) {
+        android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
         Utils.debugLog(TAG, "WiFi change service started, clearing info about wifi state until we have figured it out again.");
         FDroidApp.initWifiSettings();
         NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
-        wifiState = wifiManager.getWifiState();
+        int wifiState = wifiManager.getWifiState();
         if (ni == null || ni.isConnected()) {
-            /* started on app start or from WifiStateChangeReceiver,
-               NetworkInfo is only passed via WifiStateChangeReceiver */
             Utils.debugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
             if (wifiState == WifiManager.WIFI_STATE_ENABLED
                     || wifiState == WifiManager.WIFI_STATE_DISABLING  // might be switching to hotspot
                     || wifiState == WifiManager.WIFI_STATE_DISABLED   // might be hotspot
                     || wifiState == WifiManager.WIFI_STATE_UNKNOWN) { // might be hotspot
-                if (asyncTask != null) {
-                    asyncTask.cancel(true);
+                if (wifiInfoThread != null) {
+                    wifiInfoThread.interrupt();
                 }
-                asyncTask = new WaitForWifiAsyncTask();
-                asyncTask.execute();
+                wifiInfoThread = new WifiInfoThread();
+                wifiInfoThread.start();
             }
         }
-        return START_NOT_STICKY;
     }
 
-    public class WaitForWifiAsyncTask extends AsyncTask<Void, Void, Void> {
-        private static final String TAG = "WaitForWifiAsyncTask";
+    public class WifiInfoThread extends Thread {
+        private static final String TAG = "WifiInfoThread";
 
         @Override
-        protected Void doInBackground(Void... params) {
+        public void run() {
+            android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
             try {
                 Utils.debugLog(TAG, "Checking wifi state (in background thread).");
                 WifiInfo wifiInfo = null;
 
-                wifiState = wifiManager.getWifiState();
+                int wifiState = wifiManager.getWifiState();
 
                 while (FDroidApp.ipAddressString == null) {
-                    if (isCancelled()) { // can be canceled by a change via WifiStateChangeReceiver
-                        return null;
+                    if (isInterrupted()) { // can be canceled by a change via WifiStateChangeReceiver
+                        return;
                     }
                     if (wifiState == WifiManager.WIFI_STATE_ENABLED) {
                         wifiInfo = wifiManager.getConnectionInfo();
@@ -98,7 +103,7 @@ public class WifiStateChangeService extends Service {
                         // try once to see if its a hotspot
                         setIpInfoFromNetworkInterface();
                         if (FDroidApp.ipAddressString == null) {
-                            return null;
+                            return;
                         }
                     } else { // a hotspot can be active during WIFI_STATE_UNKNOWN
                         setIpInfoFromNetworkInterface();
@@ -109,8 +114,8 @@ public class WifiStateChangeService extends Service {
                         Utils.debugLog(TAG, "waiting for an IP address...");
                     }
                 }
-                if (isCancelled()) { // can be canceled by a change via WifiStateChangeReceiver
-                    return null;
+                if (isInterrupted()) { // can be canceled by a change via WifiStateChangeReceiver
+                    return;
                 }
 
                 if (wifiInfo != null) {
@@ -125,33 +130,35 @@ public class WifiStateChangeService extends Service {
                     }
                 }
 
-                // TODO: Can this be moved to the swap service instead?
                 String scheme;
                 if (Preferences.get().isLocalRepoHttpsEnabled()) {
                     scheme = "https";
                 } else {
                     scheme = "http";
                 }
-                FDroidApp.REPO.name = Preferences.get().getLocalRepoName();
-                FDroidApp.REPO.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
+                Repo repo = new Repo();
+                repo.name = Preferences.get().getLocalRepoName();
+                repo.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
                         scheme, FDroidApp.ipAddressString, FDroidApp.port);
 
-                if (isCancelled()) { // can be canceled by a change via WifiStateChangeReceiver
-                    return null;
+                if (isInterrupted()) { // can be canceled by a change via WifiStateChangeReceiver
+                    return;
                 }
 
                 Context context = WifiStateChangeService.this.getApplicationContext();
                 LocalRepoManager lrm = LocalRepoManager.get(context);
-                lrm.writeIndexPage(Utils.getSharingUri(FDroidApp.REPO).toString());
+                lrm.writeIndexPage(Utils.getSharingUri(FDroidApp.repo).toString());
 
-                if (isCancelled()) { // can be canceled by a change via WifiStateChangeReceiver
-                    return null;
+                if (isInterrupted()) { // can be canceled by a change via WifiStateChangeReceiver
+                    return;
                 }
 
                 // the fingerprint for the local repo's signing key
                 LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
                 Certificate localCert = localRepoKeyStore.getCertificate();
-                FDroidApp.REPO.fingerprint = Utils.calcFingerprint(localCert);
+                repo.fingerprint = Utils.calcFingerprint(localCert);
+
+                FDroidApp.repo = repo;
 
                 /*
                  * Once the IP address is known we need to generate a self
@@ -164,36 +171,15 @@ public class WifiStateChangeService extends Service {
                     localRepoKeyStore.setupHTTPSCertificate();
                 }
 
-            } catch (LocalRepoKeyStore.InitException | InterruptedException e) {
+            } catch (LocalRepoKeyStore.InitException e) {
                 Log.e(TAG, "Unable to configure a fingerprint or HTTPS for the local repo", e);
+            } catch (InterruptedException e) {
+                Utils.debugLog(TAG, "interrupted");
+                return;
             }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
             Intent intent = new Intent(BROADCAST);
             LocalBroadcastManager.getInstance(WifiStateChangeService.this).sendBroadcast(intent);
-            WifiStateChangeService.this.stopSelf();
-
-            Intent swapService = new Intent(WifiStateChangeService.this, SwapService.class);
-            getApplicationContext().bindService(swapService, new ServiceConnection() {
-                @Override
-                public void onServiceConnected(ComponentName name, IBinder service) {
-                    ((SwapService.Binder) service).getService().stopWifiIfEnabled(true);
-                    getApplicationContext().unbindService(this);
-                }
-
-                @Override
-                public void onServiceDisconnected(ComponentName name) {
-                }
-            }, BIND_AUTO_CREATE);
         }
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
     }
 
     @TargetApi(9)
