@@ -30,6 +30,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PatternMatcher;
 import android.os.Process;
+import android.support.v4.content.IntentCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -109,14 +110,14 @@ public class DownloaderService extends Service {
     }
 
     @Override
-    public void onStart(Intent intent, int startId) {
-        super.onStart(intent, startId);
+    public int onStartCommand(Intent intent, int flags, int startId) {
         Utils.debugLog(TAG, "Received Intent for downloading: " + intent + " (with a startId of " + startId + ")");
         String uriString = intent.getDataString();
         if (uriString == null) {
             Log.e(TAG, "Received Intent with no URI: " + intent);
-            return;
+            return START_STICKY;
         }
+
         if (ACTION_CANCEL.equals(intent.getAction())) {
             Utils.debugLog(TAG, "Cancelling download of " + uriString);
             Integer whatToRemove = uriString.hashCode();
@@ -139,24 +140,19 @@ public class DownloaderService extends Service {
         } else {
             Log.e(TAG, "Received Intent with unknown action: " + intent);
         }
+
+        return START_REDELIVER_INTENT; // if killed before completion, retry Intent
     }
 
     public static PendingIntent getCancelPendingIntent(Context context, String urlString) {
         Intent cancelIntent = new Intent(context.getApplicationContext(), DownloaderService.class)
                 .setData(Uri.parse(urlString))
                 .setAction(ACTION_CANCEL)
-                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
         return PendingIntent.getService(context.getApplicationContext(),
                 urlString.hashCode(),
                 cancelIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Utils.debugLog(TAG, "onStartCommand " + intent);
-        onStart(intent, startId);
-        return START_REDELIVER_INTENT; // if killed before completion, retry Intent
     }
 
     @Override

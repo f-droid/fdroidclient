@@ -842,7 +842,7 @@ public class AppDetails extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            startDownload(apk);
+                            initiateInstall(apk);
                         }
                     });
             builder.setNegativeButton(R.string.no,
@@ -871,10 +871,10 @@ public class AppDetails extends AppCompatActivity {
             alert.show();
             return;
         }
-        startDownload(apk);
+        initiateInstall(apk);
     }
 
-    private void startDownload(Apk apk) {
+    private void initiateInstall(Apk apk) {
         activeDownloadUrlString = apk.getUrl();
         registerDownloaderReceivers();
         headerFragment.startProgress();

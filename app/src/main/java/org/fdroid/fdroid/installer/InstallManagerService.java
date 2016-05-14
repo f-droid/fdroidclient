@@ -15,6 +15,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
@@ -65,20 +66,20 @@ public class InstallManagerService extends Service {
      * matching the {@link App}s in {@code ACTIVE_APPS}. The key is the download URL, as
      * in {@link Apk#getUrl()} or {@code urlString}.
      */
-    private static final HashMap<String, Apk> ACTIVE_APKS = new HashMap<String, Apk>(3);
+    private static final HashMap<String, Apk> ACTIVE_APKS = new HashMap<>(3);
 
     /**
      * The collection of {@link App}s that are actively going through this whole process,
      * matching the {@link Apk}s in {@code ACTIVE_APKS}. The key is the
      * {@code packageName} of the app.
      */
-    private static final HashMap<String, App> ACTIVE_APPS = new HashMap<String, App>(3);
+    private static final HashMap<String, App> ACTIVE_APPS = new HashMap<>(3);
 
     /**
      * The array of active {@link BroadcastReceiver}s for each active APK. The key is the
      * download URL, as in {@link Apk#getUrl()} or {@code urlString}.
      */
-    private final HashMap<String, BroadcastReceiver[]> receivers = new HashMap<String, BroadcastReceiver[]>(3);
+    private final HashMap<String, BroadcastReceiver[]> receivers = new HashMap<>(3);
 
     /**
      * Get the app name based on a {@code urlString} key. The app name needs
@@ -90,7 +91,7 @@ public class InstallManagerService extends Service {
      * <p>
      * TODO <b>delete me once InstallerService exists</b>
      */
-    private static final HashMap<String, String> TEMP_HACK_APP_NAMES = new HashMap<String, String>(3);
+    private static final HashMap<String, String> TEMP_HACK_APP_NAMES = new HashMap<>(3);
 
     private LocalBroadcastManager localBroadcastManager;
     private NotificationManager notificationManager;
@@ -132,6 +133,12 @@ public class InstallManagerService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Utils.debugLog(TAG, "onStartCommand " + intent);
+
+        if (!ACTION_INSTALL.equals(intent.getAction())) {
+            Log.i(TAG, "Ignoring " + intent + " as it is not an " + ACTION_INSTALL + " intent");
+            return START_NOT_STICKY;
+        }
+
         String urlString = intent.getDataString();
         Apk apk = ACTIVE_APKS.get(urlString);
 
