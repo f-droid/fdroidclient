@@ -66,20 +66,20 @@ public class InstallManagerService extends Service {
      * matching the {@link App}s in {@code ACTIVE_APPS}. The key is the download URL, as
      * in {@link Apk#getUrl()} or {@code urlString}.
      */
-    private static final HashMap<String, Apk> ACTIVE_APKS = new HashMap<String, Apk>(3);
+    private static final HashMap<String, Apk> ACTIVE_APKS = new HashMap<>(3);
 
     /**
      * The collection of {@link App}s that are actively going through this whole process,
      * matching the {@link Apk}s in {@code ACTIVE_APKS}. The key is the
      * {@code packageName} of the app.
      */
-    private static final HashMap<String, App> ACTIVE_APPS = new HashMap<String, App>(3);
+    private static final HashMap<String, App> ACTIVE_APPS = new HashMap<>(3);
 
     /**
      * The array of active {@link BroadcastReceiver}s for each active APK. The key is the
      * download URL, as in {@link Apk#getUrl()} or {@code urlString}.
      */
-    private final HashMap<String, BroadcastReceiver[]> receivers = new HashMap<String, BroadcastReceiver[]>(3);
+    private final HashMap<String, BroadcastReceiver[]> receivers = new HashMap<>(3);
 
     /**
      * Get the app name based on a {@code urlString} key. The app name needs
@@ -91,7 +91,7 @@ public class InstallManagerService extends Service {
      * <p>
      * TODO <b>delete me once InstallerService exists</b>
      */
-    private static final HashMap<String, String> TEMP_HACK_APP_NAMES = new HashMap<String, String>(3);
+    private static final HashMap<String, String> TEMP_HACK_APP_NAMES = new HashMap<>(3);
 
     private LocalBroadcastManager localBroadcastManager;
     private NotificationManager notificationManager;
