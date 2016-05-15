@@ -26,7 +26,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -42,7 +42,7 @@ import cc.mvdan.accesspoint.WifiApControl;
 import rx.Subscriber;
 import rx.Subscription;
 
-public class StartSwapView extends ScrollView implements SwapWorkflowActivity.InnerView {
+public class StartSwapView extends RelativeLayout implements SwapWorkflowActivity.InnerView {
 
     private static final String TAG = "StartSwapView";
 
