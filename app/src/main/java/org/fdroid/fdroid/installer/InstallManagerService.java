@@ -243,7 +243,8 @@ public class InstallManagerService extends Service {
     private NotificationCompat.Builder createNotification(String urlString, Apk apk) {
         int downloadUrlId = urlString.hashCode();
         return new NotificationCompat.Builder(this)
-                .setAutoCancel(true)
+                .setAutoCancel(false)
+                .setOngoing(true)
                 .setContentIntent(getAppDetailsIntent(downloadUrlId, apk))
                 .setContentTitle(getString(R.string.downloading_apk, getAppName(urlString, apk)))
                 .addAction(R.drawable.ic_cancel_black_24dp, getString(R.string.cancel),
