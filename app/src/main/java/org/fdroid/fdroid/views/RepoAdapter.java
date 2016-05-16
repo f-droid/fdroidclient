@@ -2,7 +2,6 @@ package org.fdroid.fdroid.views;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.os.Build;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,14 +22,7 @@ public class RepoAdapter extends CursorAdapter {
 
     private EnabledListener enabledListener;
 
-    public static RepoAdapter create(Context context, Cursor cursor, int flags) {
-        if (Build.VERSION.SDK_INT >= 11) {
-            return new RepoAdapter(context, cursor, flags);
-        }
-        return new RepoAdapter(context, cursor);
-    }
-
-    private RepoAdapter(Context context, Cursor c, int flags) {
+    public RepoAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
         inflater = LayoutInflater.from(context);
     }
@@ -40,8 +32,7 @@ public class RepoAdapter extends CursorAdapter {
         inflater = LayoutInflater.from(context);
     }
 
-    @SuppressWarnings("deprecation")
-    private RepoAdapter(Context context, Cursor c) {
+    public RepoAdapter(Context context, Cursor c) {
         super(context, c);
         inflater = LayoutInflater.from(context);
     }

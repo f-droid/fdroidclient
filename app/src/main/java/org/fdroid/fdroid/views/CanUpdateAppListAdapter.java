@@ -2,18 +2,10 @@ package org.fdroid.fdroid.views;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.os.Build;
 
 public class CanUpdateAppListAdapter extends AppListAdapter {
 
-    public static CanUpdateAppListAdapter create(Context context, Cursor cursor, int flags) {
-        if (Build.VERSION.SDK_INT >= 11) {
-            return new CanUpdateAppListAdapter(context, cursor, flags);
-        }
-        return new CanUpdateAppListAdapter(context, cursor);
-    }
-
-    private CanUpdateAppListAdapter(Context context, Cursor c) {
+    public CanUpdateAppListAdapter(Context context, Cursor c) {
         super(context, c);
     }
 
@@ -21,7 +13,7 @@ public class CanUpdateAppListAdapter extends AppListAdapter {
         super(context, c, autoRequery);
     }
 
-    private CanUpdateAppListAdapter(Context context, Cursor c, int flags) {
+    public CanUpdateAppListAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
     }
 
