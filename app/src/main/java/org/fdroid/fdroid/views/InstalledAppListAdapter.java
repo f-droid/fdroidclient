@@ -2,18 +2,10 @@ package org.fdroid.fdroid.views;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.os.Build;
 
 public class InstalledAppListAdapter extends AppListAdapter {
 
-    public static InstalledAppListAdapter create(Context context, Cursor cursor, int flags) {
-        if (Build.VERSION.SDK_INT >= 11) {
-            return new InstalledAppListAdapter(context, cursor, flags);
-        }
-        return new InstalledAppListAdapter(context, cursor);
-    }
-
-    private InstalledAppListAdapter(Context context, Cursor c) {
+    public InstalledAppListAdapter(Context context, Cursor c) {
         super(context, c);
     }
 
@@ -21,7 +13,7 @@ public class InstalledAppListAdapter extends AppListAdapter {
         super(context, c, autoRequery);
     }
 
-    private InstalledAppListAdapter(Context context, Cursor c, int flags) {
+    public InstalledAppListAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
     }
 
