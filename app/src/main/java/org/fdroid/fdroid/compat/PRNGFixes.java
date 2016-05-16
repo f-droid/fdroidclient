@@ -300,28 +300,13 @@ public final class PRNGFixes {
         }
     }
 
-    /**
-     * Gets the hardware serial number of this device.
-     *
-     * @return serial number or {@code null} if not available.
-     */
-    private static String getDeviceSerialNumber() {
-        // We're using the Reflection API because Build.SERIAL is only available
-        // since API Level 9 (Gingerbread, Android 2.3).
-        try {
-            return (String) Build.class.getField("SERIAL").get(null);
-        } catch (Exception ignored) {
-            return null;
-        }
-    }
-
     private static byte[] getBuildFingerprintAndDeviceSerial() {
         StringBuilder result = new StringBuilder();
         String fingerprint = Build.FINGERPRINT;
         if (fingerprint != null) {
             result.append(fingerprint);
         }
-        String serial = getDeviceSerialNumber();
+        String serial = Build.SERIAL;
         if (serial != null) {
             result.append(serial);
         }

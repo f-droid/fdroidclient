@@ -19,7 +19,6 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.compat.PreferencesCompat;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 import info.guardianproject.netcipher.NetCipher;
@@ -205,13 +204,13 @@ public class PreferencesFragment extends PreferenceFragment
                         // privileged permission are granted, i.e. the extension is installed correctly
                         SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                         editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, true);
-                        PreferencesCompat.apply(editor);
+                        editor.apply();
                         pref.setChecked(true);
                     } else {
                         // privileged permission not available
                         SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                         editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
-                        PreferencesCompat.apply(editor);
+                        editor.apply();
                         pref.setChecked(false);
 
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
@@ -249,7 +248,7 @@ public class PreferencesFragment extends PreferenceFragment
                 } else {
                     SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                     editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
-                    PreferencesCompat.apply(editor);
+                    editor.apply();
                     pref.setChecked(false);
                 }
 

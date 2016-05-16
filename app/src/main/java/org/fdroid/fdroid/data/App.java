@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.data;
 
-import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -272,7 +271,6 @@ public class App extends ValueObject implements Comparable<App> {
         initApkFromApkFile(context, this.installedApk, packageInfo, apkFile);
     }
 
-    @TargetApi(9)
     private void setFromPackageInfo(PackageManager pm, PackageInfo packageInfo)
             throws CertificateEncodingException, IOException, PackageManager.NameNotFoundException {
 

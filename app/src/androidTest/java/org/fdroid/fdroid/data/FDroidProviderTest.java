@@ -1,12 +1,10 @@
 package org.fdroid.fdroid.data;
 
-import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.ContactsContract;
 import android.test.ProviderTestCase2MockContext;
 
@@ -64,7 +62,6 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
 
     }
 
-    @TargetApi(Build.VERSION_CODES.ECLAIR)
     public void testObviouslyInvalidUris() {
         assertInvalidUri("http://www.google.com");
         assertInvalidUri(ContactsContract.AUTHORITY_URI);

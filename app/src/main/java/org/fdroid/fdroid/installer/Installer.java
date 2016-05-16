@@ -33,7 +33,6 @@ import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
@@ -222,7 +221,7 @@ public abstract class Installer {
             // have access is insecure, because apps with permission to write to the external
             // storage can overwrite the app between F-Droid asking for it to be installed and
             // the installer actually installing it.
-            FileCompat.setReadable(apkToInstall, true);
+            apkToInstall.setReadable(true, false);
             installPackageInternal(apkToInstall);
 
             NotificationManager nm = (NotificationManager)
