@@ -5,7 +5,7 @@ cache:
     - .gradle/wrapper
     - .gradle/caches
 
-build:
+test:
   script:
     - export GRADLE_USER_HOME=$PWD/.gradle
     - ./gradlew assemble -PdisablePreDex
