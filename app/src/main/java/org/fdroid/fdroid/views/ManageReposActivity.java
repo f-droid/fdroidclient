@@ -60,6 +60,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.ClipboardCompat;
+import org.fdroid.fdroid.compat.CursorAdapterCompat;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -767,7 +768,7 @@ public class ManageReposActivity extends ActionBarActivity {
             setRetainInstance(true);
             setHasOptionsMenu(true);
 
-            repoAdapter = RepoAdapter.create(getActivity(), null, 0);
+            repoAdapter = RepoAdapter.create(getActivity(), null, CursorAdapterCompat.FLAG_AUTO_REQUERY);
             repoAdapter.setEnabledListener(this);
             setListAdapter(repoAdapter);
         }

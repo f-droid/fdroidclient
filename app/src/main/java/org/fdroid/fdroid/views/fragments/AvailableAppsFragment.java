@@ -24,6 +24,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.ArrayAdapterCompat;
+import org.fdroid.fdroid.compat.CursorAdapterCompat;
 import org.fdroid.fdroid.compat.PreferencesCompat;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
@@ -59,7 +60,7 @@ public class AvailableAppsFragment extends AppListFragment implements
     @Override
     protected AppListAdapter getAppListAdapter() {
         if (adapter == null) {
-            final AppListAdapter a = AvailableAppListAdapter.create(getActivity(), null, 0);
+            final AppListAdapter a = AvailableAppListAdapter.create(getActivity(), null, CursorAdapterCompat.FLAG_AUTO_REQUERY);
             Preferences.get().registerUpdateHistoryListener(new Preferences.ChangeListener() {
                 @Override
                 public void onPreferenceChange() {
