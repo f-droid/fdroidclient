@@ -139,7 +139,9 @@ public class FDroidApp extends Application {
     }
 
     /**
-     * Initialize the settings needed to run a local swap repo.
+     * Initialize the settings needed to run a local swap repo. This should
+     * only ever be called in {@link org.fdroid.fdroid.net.WifiStateChangeService.WifiInfoThread},
+     * after the single init call in {@link FDroidApp#onCreate()}.
      */
     public static void initWifiSettings() {
         port = 8888;

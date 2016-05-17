@@ -53,7 +53,6 @@ public class WifiStateChangeService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
         Utils.debugLog(TAG, "WiFi change service started, clearing info about wifi state until we have figured it out again.");
-        FDroidApp.initWifiSettings();
         NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
         int wifiState = wifiManager.getWifiState();
@@ -79,6 +78,7 @@ public class WifiStateChangeService extends IntentService {
         public void run() {
             android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
             try {
+                FDroidApp.initWifiSettings();
                 Utils.debugLog(TAG, "Checking wifi state (in background thread).");
                 WifiInfo wifiInfo = null;
 
