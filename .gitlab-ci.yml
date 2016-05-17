@@ -1,11 +1,11 @@
-image: mvdan/fdroid-ci:client-20160512
+image: mvdan/fdroid-ci:client-20160516
 
 cache:
   paths:
     - .gradle/wrapper
     - .gradle/caches
 
-build:
+test:
   script:
     - export GRADLE_USER_HOME=$PWD/.gradle
     - ./gradlew assemble -PdisablePreDex
@@ -22,7 +22,33 @@ build:
     # this file changes every time but should not be cached
     - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
 
-connectedCheck:
+connected10:
+  variables:
+    AVD_SDK: "10"
+    # switch glibc to a memory conserving mode
+    MALLOC_ARENA_MAX: "2"
+  script:
+    - export GRADLE_USER_HOME=$PWD/.gradle
+    - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
+    - ./tools/wait-for-emulator
+    - adb shell input keyevent 82 &
+    - export EXITVALUE=0
+    - ./gradlew connectedCheck -PdisablePreDex || {
+        adb -e logcat -d '*:E';
+        echo "get the full logcat here:";
+        adb -e logcat -d | curl --silent -F 'clbin=<-' https://clbin.com;
+        export EXITVALUE=1;
+      }
+    - for log in app/build/reports/*ests/*/*ml
+                 app/build/outputs/*results*/connected/*.xml; do
+        echo "read $log here:";
+        cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
+      done
+    # this file changes every time but should not be cached
+    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
+    - exit $EXITVALUE
+
+connected17:
   variables:
     AVD_SDK: "17"
     # switch glibc to a memory conserving mode
