@@ -3,7 +3,6 @@ package org.fdroid.fdroid.localrepo;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -274,8 +273,6 @@ public final class LocalRepoManager {
             if (!app.isValid()) {
                 return;
             }
-            PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_META_DATA);
-            app.icon = getIconFile(packageName, packageInfo.versionCode).getName();
         } catch (PackageManager.NameNotFoundException | CertificateEncodingException | IOException e) {
             Log.e(TAG, "Error adding app to local repo", e);
             return;
@@ -324,7 +321,7 @@ public final class LocalRepoManager {
     }
 
     private File getIconFile(String packageName, int versionCode) {
-        return new File(iconsDir, packageName + "_" + versionCode + ".png");
+        return new File(iconsDir, App.getIconName(packageName, versionCode));
     }
 
     /**
