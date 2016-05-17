@@ -456,6 +456,7 @@ public final class LocalRepoManager {
             tag("added", app.installedApk.added);
             tagFeatures(app);
             tagPermissions(app);
+            tagNativecode(app);
 
             serializer.endTag("", "package");
         }
@@ -483,6 +484,14 @@ public final class LocalRepoManager {
                 serializer.text(Utils.CommaSeparatedList.str(app.installedApk.features));
             }
             serializer.endTag("", "features");
+        }
+
+        private void tagNativecode(App app) throws IOException {
+            if (app.installedApk.nativecode != null) {
+                serializer.startTag("", "nativecode");
+                serializer.text(Utils.CommaSeparatedList.str(app.installedApk.nativecode));
+                serializer.endTag("", "nativecode");
+            }
         }
 
         private void tagHash(App app) throws IOException {
