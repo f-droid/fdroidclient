@@ -112,6 +112,10 @@ public class App extends ValueObject implements Comparable<App> {
 
     public boolean uninstallable;
 
+    public static String getIconName(String packageName, int versionCode) {
+        return packageName + "_" + versionCode + ".png";
+    }
+
     @Override
     public int compareTo(App app) {
         return name.compareToIgnoreCase(app.name);
@@ -278,6 +282,7 @@ public class App extends ValueObject implements Comparable<App> {
                 + ", last updated on " + this.lastUpdated + ")</p>";
 
         this.name = (String) appInfo.loadLabel(pm);
+        this.icon = getIconName(packageName, packageInfo.versionCode);
 
         final Apk apk = new Apk();
         apk.versionName = packageInfo.versionName;
