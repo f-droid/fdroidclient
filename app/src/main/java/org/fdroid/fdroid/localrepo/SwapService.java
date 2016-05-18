@@ -80,6 +80,11 @@ public class SwapService extends Service {
      */
     private static final ConcurrentHashMap<String, App> INSTALLED_APPS = new ConcurrentHashMap<>();
 
+    public static void stop(Context context) {
+        Intent intent = new Intent(context, SwapService.class);
+        context.stopService(intent);
+    }
+
     static App getAppFromCache(String packageName) {
         return INSTALLED_APPS.get(packageName);
     }
@@ -384,14 +389,17 @@ public class SwapService extends Service {
     //   Remember which swap technologies a user used in the past
     // =============================================================
 
-    private void persistPreferredSwapTypes() {
-        Utils.debugLog(TAG, "Remembering that Bluetooth swap " + (bluetoothSwap.isConnected() ? "IS" : "is NOT") +
-                " connected and WiFi swap " + (wifiSwap.isConnected() ? "IS" : "is NOT") + " connected.");
-        persistence().edit()
-            .putBoolean(KEY_BLUETOOTH_ENABLED, bluetoothSwap.isConnected())
-            .putBoolean(KEY_WIFI_ENABLED, wifiSwap.isConnected())
-            .commit();
-    }
+    private final BroadcastReceiver receiveSwapStatusChanged = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Utils.debugLog(TAG, "Remembering that Bluetooth swap " + (bluetoothSwap.isConnected() ? "IS" : "is NOT") +
+                    " connected and WiFi swap " + (wifiSwap.isConnected() ? "IS" : "is NOT") + " connected.");
+            persistence().edit()
+                    .putBoolean(KEY_BLUETOOTH_ENABLED, bluetoothSwap.isConnected())
+                    .putBoolean(KEY_WIFI_ENABLED, wifiSwap.isConnected())
+                    .commit();
+        }
+    };
 
     /*
     private boolean wasBluetoothEnabled() {
@@ -401,32 +409,6 @@ public class SwapService extends Service {
 
     private boolean wasWifiEnabled() {
         return persistence().getBoolean(KEY_WIFI_ENABLED, false);
-    }
-
-    // ==========================================
-    //   Local repo stop/start/restart handling
-    // ==========================================
-
-    /**
-     * Moves the service to the forground and [re]starts the timeout timer.
-     */
-    private void attachService() {
-        Utils.debugLog(TAG, "Moving SwapService to foreground so that it hangs around even when F-Droid is closed (may already be foregrounded).");
-        startForeground(NOTIFICATION, createNotification());
-
-        // Regardless of whether it was previously enabled, start the timer again. This ensures that
-        // if, e.g. a person views the swap activity again, it will attempt to enable swapping if
-        // appropriate, and thus restart this timer.
-        initTimer();
-    }
-
-    private void detachService() {
-        if (timer != null) {
-            timer.cancel();
-        }
-
-        Utils.debugLog(TAG, "Moving SwapService to background so that it can be GC'ed if required.");
-        stopForeground(true);
     }
 
     /**
@@ -513,6 +495,7 @@ public class SwapService extends Service {
         super.onCreate();
 
         Utils.debugLog(TAG, "Creating swap service.");
+        startForeground(NOTIFICATION, createNotification());
 
         CacheSwapAppsService.startCaching(this);
 
@@ -545,55 +528,33 @@ public class SwapService extends Service {
         }
     }
 
-    /**
-     * Responsible for moving the service into the foreground or the background, depending on
-     * whether or not there are any swap services (i.e. bluetooth or wifi) running or not.
-     */
-    private final BroadcastReceiver receiveSwapStatusChanged = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.hasExtra(EXTRA_STARTED)) {
-                if (getWifiSwap().isConnected() || getBluetoothSwap().isConnected()) {
-                    attachService();
-                }
-            } else if (intent.hasExtra(EXTRA_STOPPED)) {
-                if (!getWifiSwap().isConnected() && !getBluetoothSwap().isConnected()) {
-                    detachService();
-                }
-            }
-            persistPreferredSwapTypes();
-        }
-    };
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
         return START_STICKY;
     }
 
     @Override
     public IBinder onBind(Intent intent) {
+        // reset the timer on each new connect, the user has come back
+        initTimer();
         return binder;
-    }
-
-    public void disableAllSwapping() {
-        Log.i(TAG, "Asked to stop swapping, will stop bluetooth, wifi, and move service to BG for GC.");
-        //getBluetoothSwap().stopInBackground();
-        getWifiSwap().stopInBackground();
-
-        // Ensure the user is sent back go the first screen when returning if we have just forceably
-        // cancelled all swapping.
-        setStep(STEP_INTRO);
-        detachService();
     }
 
     @Override
     public void onDestroy() {
         Utils.debugLog(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
-        disableAllSwapping();
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(receiveSwapStatusChanged);
+
+        //TODO getBluetoothSwap().stopInBackground();
+        getWifiSwap().stopInBackground();
+
+        if (timer != null) {
+            timer.cancel();
+        }
+        stopForeground(true);
+
         super.onDestroy();
     }
 
@@ -621,7 +582,7 @@ public class SwapService extends Service {
             @Override
             public void run() {
                 Utils.debugLog(TAG, "Disabling swap because " + TIMEOUT + "ms passed.");
-                disableAllSwapping();
+                stop(SwapService.this);
             }
         }, TIMEOUT);
     }
