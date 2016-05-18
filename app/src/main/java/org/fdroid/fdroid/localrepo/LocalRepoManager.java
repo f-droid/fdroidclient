@@ -237,6 +237,13 @@ public final class LocalRepoManager {
         }
     }
 
+    /**
+     * Get the {@code index.jar} file that represents the local swap repo.
+     */
+    public File getIndexJar() {
+        return xmlIndexJar;
+    }
+
     public void deleteRepo() {
         deleteContents(repoDir);
     }
@@ -275,10 +282,6 @@ public final class LocalRepoManager {
         }
         Utils.debugLog(TAG, "apps.put: " + packageName);
         apps.put(packageName, app);
-    }
-
-    public List<String> getApps() {
-        return new ArrayList<>(apps.keySet());
     }
 
     public void copyIconsToRepo() {

@@ -376,7 +376,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         getService().swapWith(null);
 
         if (!getService().isEnabled()) {
-            prepareInitialRepo();
+            if (!LocalRepoManager.get(this).getIndexJar().exists()) {
+                Utils.debugLog(TAG, "Preparing initial repo with only F-Droid, until we have allowed the user to configure their own repo.");
+                new PrepareInitialSwapRepo().execute();
+            }
         }
 
         inflateInnerView(R.layout.swap_blank);
@@ -450,16 +453,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         } else {
             onLocalRepoPrepared();
         }
-    }
-
-    private void prepareInitialRepo() {
-        // TODO: Make it so that this and updateSwappableAppsTask (the _real_ swap repo task)
-        // don't stomp on eachothers toes. The other one should wait for this to finish, or cancel
-        // this, but this should never take precedence over the other.
-        // TODO: Also don't allow this to run multiple times (e.g. if a user keeps navigating back
-        // to the main screen.
-        Utils.debugLog(TAG, "Preparing initial repo with only F-Droid, until we have allowed the user to configure their own repo.");
-        new PrepareInitialSwapRepo().execute();
     }
 
     /**
