@@ -55,13 +55,6 @@
             android:textColor="@color/swap_incompatible"
             android:text="@string/app_incompatible" />
 
-        <TextView
-            android:id="@+id/btn_attempt_install"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/swap_light_blue"
-            android:text="@string/swap_attempt_install" />
-
     </LinearLayout>
 
     <TextView
