@@ -13,6 +13,8 @@
     <string name="https">https://</string>
     <string name="upgrade_from_to">%1$s → %2$s</string>
 
+    <string name="app_details_subject">%1$s on F-Droid</string>
+
     <string-array name="updateIntervalValues">
         <item>0</item>
         <item>1</item>
