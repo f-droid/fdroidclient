@@ -57,7 +57,9 @@ public class RepoUpdater {
     @NonNull
     private final Repo repo;
     private boolean hasChanged;
+
     @Nullable
+    private ProgressListener downloadProgressListener;
     private ProgressListener committingProgressListener;
     private ProgressListener processXmlProgressListener;
     private String cacheTag;
@@ -83,6 +85,10 @@ public class RepoUpdater {
         this.indexUrl = url;
     }
 
+    public void setDownloadProgressListener(ProgressListener progressListener) {
+        this.downloadProgressListener = progressListener;
+    }
+
     public void setProcessXmlProgressListener(ProgressListener progressListener) {
         this.processXmlProgressListener = progressListener;
     }
@@ -100,6 +106,7 @@ public class RepoUpdater {
         try {
             downloader = DownloaderFactory.create(context, indexUrl);
             downloader.setCacheTag(repo.lastetag);
+            downloader.setListener(downloadProgressListener);
             downloader.download();
 
             if (downloader.isCached()) {
