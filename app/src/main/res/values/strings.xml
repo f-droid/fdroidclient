@@ -370,6 +370,8 @@
     <string name="perms_description_app">Provided by %1$s.</string>
     <string name="downloading">Downloading…</string>
     <string name="downloading_apk">Downloading %1$s</string>
+    <string name="installing">Installing…</string>
+    <string name="uninstalling">Uninstalling…</string>
 
     <string name="interval_never">Never</string>
     <string name="interval_1h">Hourly</string>

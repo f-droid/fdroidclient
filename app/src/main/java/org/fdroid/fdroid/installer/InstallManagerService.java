@@ -85,18 +85,6 @@ public class InstallManagerService extends Service {
      */
     private final HashMap<String, BroadcastReceiver[]> receivers = new HashMap<>(3);
 
-    /**
-     * Get the app name based on a {@code urlString} key. The app name needs
-     * to be kept around for the final notification update, but {@link App}
-     * and {@link Apk} instances have already removed by the time that final
-     * notification update comes around.  Once there is a proper
-     * {@code InstallerService} and its integrated here, this must go away,
-     * since the {@link App} and {@link Apk} instances will be available.
-     * <p>
-     * TODO <b>delete me once InstallerService exists</b>
-     */
-    private static final HashMap<String, String> TEMP_HACK_APP_NAMES = new HashMap<>(3);
-
     private LocalBroadcastManager localBroadcastManager;
     private NotificationManager notificationManager;
 
@@ -234,15 +222,18 @@ public class InstallManagerService extends Service {
         BroadcastReceiver completeReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                String urlString = intent.getDataString();
-                // TODO these need to be removed based on whether they are fed to InstallerService or not
-                Apk apk = removeFromActive(urlString);
-                if (AppDetails.isAppVisible(apk.packageName)) {
-                    cancelNotification(urlString);
-                } else {
-                    notifyDownloadComplete(urlString, apk);
-                }
-                unregisterDownloaderReceivers(urlString);
+                // elsewhere called urlString
+                Uri originatingUri = intent.getData();
+                File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
+                Uri localUri = Uri.fromFile(localFile);
+
+                Utils.debugLog(TAG, "download completed of " + originatingUri
+                        + " to " + localUri);
+
+                unregisterDownloaderReceivers(intent.getDataString());
+
+                registerInstallerReceivers(localUri);
+                InstallerService.install(context, localUri, originatingUri);
             }
         };
         BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {
@@ -265,6 +256,69 @@ public class InstallManagerService extends Service {
         receivers.put(urlString, new BroadcastReceiver[]{
                 startedReceiver, progressReceiver, completeReceiver, interruptedReceiver,
         });
+
+
+    }
+
+    private void registerInstallerReceivers(Uri uri) {
+
+        BroadcastReceiver installReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                switch (intent.getAction()) {
+                    case InstallHelper.ACTION_INSTALL_STARTED: {
+                        Utils.debugLog(TAG, "ACTION_INSTALL_STARTED");
+
+                        break;
+                    }
+                    case InstallHelper.ACTION_INSTALL_COMPLETE: {
+                        Utils.debugLog(TAG, "ACTION_INSTALL_COMPLETE");
+
+                        Uri originatingUri =
+                                intent.getParcelableExtra(InstallHelper.EXTRA_ORIGINATING_URI);
+                        String urlString = originatingUri.toString();
+                        removeFromActive(urlString);
+
+                        localBroadcastManager.unregisterReceiver(this);
+
+                        break;
+                    }
+                    case InstallHelper.ACTION_INSTALL_INTERRUPTED: {
+                        Utils.debugLog(TAG, "ACTION_INSTALL_INTERRUPTED");
+
+                        localBroadcastManager.unregisterReceiver(this);
+
+                        break;
+                    }
+                    case InstallHelper.ACTION_INSTALL_USER_INTERACTION: {
+                        Utils.debugLog(TAG, "ACTION_INSTALL_USER_INTERACTION");
+
+                        Uri originatingUri =
+                                intent.getParcelableExtra(InstallHelper.EXTRA_ORIGINATING_URI);
+                        PendingIntent installPendingIntent =
+                                intent.getParcelableExtra(InstallHelper.EXTRA_USER_INTERACTION_PI);
+                        // TODO
+                        String urlString = originatingUri.toString();
+                        Apk apk = getFromActive(urlString);
+                        Utils.debugLog(TAG, "urlString: " + urlString);
+
+                        if (AppDetails.isAppVisible(apk.packageName)) {
+                            cancelNotification(urlString);
+                        } else {
+                            notifyDownloadComplete(apk, urlString, installPendingIntent);
+                        }
+
+                        break;
+                    }
+                    default: {
+                        throw new RuntimeException("intent action not handled!");
+                    }
+                }
+            }
+        };
+
+        localBroadcastManager.registerReceiver(installReceiver,
+                InstallerService.getInstallIntentFilter(uri));
     }
 
     private NotificationCompat.Builder createNotificationBuilder(String urlString, Apk apk) {
@@ -283,16 +337,7 @@ public class InstallManagerService extends Service {
 
     private String getAppName(String urlString, Apk apk) {
         App app = ACTIVE_APPS.get(apk.packageName);
-        if (app == null || TextUtils.isEmpty(app.name)) {
-            if (TEMP_HACK_APP_NAMES.containsKey(urlString)) {
-                return TEMP_HACK_APP_NAMES.get(urlString);
-            } else {
-                // this is ugly, but its better than nothing as a failsafe
-                return urlString;
-            }
-        } else {
-            return app.name;
-        }
+        return app.name;
     }
 
     /**
@@ -319,7 +364,7 @@ public class InstallManagerService extends Service {
      * Removing the progress bar from a notification should cause the notification's content
      * text to return to normal size</a>
      */
-    private void notifyDownloadComplete(String urlString, Apk apk) {
+    private void notifyDownloadComplete(Apk apk, String urlString, PendingIntent installPendingIntent) {
         String title;
         try {
             PackageManager pm = getPackageManager();
@@ -335,7 +380,7 @@ public class InstallManagerService extends Service {
                 .setAutoCancel(true)
                 .setOngoing(false)
                 .setContentTitle(title)
-                .setContentIntent(getAppDetailsIntent(downloadUrlId, apk))
+                .setContentIntent(installPendingIntent)
                 .setSmallIcon(android.R.drawable.stat_sys_download_done)
                 .setContentText(getString(R.string.tap_to_install))
                 .build();
@@ -354,7 +399,10 @@ public class InstallManagerService extends Service {
     private static void addToActive(String urlString, App app, Apk apk) {
         ACTIVE_APKS.put(urlString, apk);
         ACTIVE_APPS.put(app.packageName, app);
-        TEMP_HACK_APP_NAMES.put(urlString, app.name);  // TODO delete me once InstallerService exists
+    }
+
+    private static Apk getFromActive(String urlString) {
+        return ACTIVE_APKS.get(urlString);
     }
 
     /**

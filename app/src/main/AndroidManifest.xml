@@ -401,6 +401,9 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        <activity
+            android:name=".installer.AndroidInstallerActivity"
+            android:theme="@style/AppThemeTransparent" />
 
         <receiver android:name=".receiver.StartupReceiver" >
             <intent-filter>
@@ -439,6 +442,9 @@
         <service android:name=".UpdateService" />
         <service
             android:name=".net.DownloaderService"
+            android:exported="false" />
+        <service
+            android:name=".installer.InstallerService"
             android:exported="false" />
         <service
             android:name=".CleanCacheService"
