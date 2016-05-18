@@ -245,6 +245,9 @@ public class SwapAppsView extends ListView implements
             private final BroadcastReceiver downloadProgressReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
+                    if (progressView.getVisibility() != View.VISIBLE) {
+                        showProgress();
+                    }
                     int read = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
                     int total = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
                     if (total > 0) {
