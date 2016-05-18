@@ -292,8 +292,10 @@ public class App extends ValueObject implements Comparable<App> {
 
         this.name = (String) appInfo.loadLabel(pm);
         this.icon = getIconName(packageName, packageInfo.versionCode);
+        this.compatible = true;
 
         final Apk apk = new Apk();
+        apk.compatible = true;
         apk.versionName = packageInfo.versionName;
         apk.versionCode = packageInfo.versionCode;
         apk.added = this.added;
