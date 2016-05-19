@@ -225,11 +225,12 @@ public class RepoProvider extends FDroidProvider {
         String IS_SWAP      = "isSwap";
         String USERNAME     = "username";
         String PASSWORD     = "password";
+        String TIMESTAMP    = "timestamp";
 
         String[] ALL = {
             _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, SIGNING_CERT,
             FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION, IS_SWAP,
-            USERNAME, PASSWORD,
+            USERNAME, PASSWORD, TIMESTAMP,
         };
     }
 

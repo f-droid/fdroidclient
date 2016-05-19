@@ -20,6 +20,7 @@ import static org.junit.Assert.fail;
 public class RepoUpdaterTest {
 
     private Context context;
+    private Repo repo;
     private RepoUpdater repoUpdater;
     private File testFilesDir;
 
@@ -30,10 +31,9 @@ public class RepoUpdaterTest {
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
         context = instrumentation.getContext();
         testFilesDir = TestUtils.getWriteableDir(instrumentation);
-        Repo repo = new Repo();
+        repo = new Repo();
         repo.address = "https://fake.url/fdroid/repo";
         repo.signingCertificate = this.simpleIndexSigningCert;
-        repoUpdater = new RepoUpdater(context, repo);
     }
 
     @Test
@@ -42,6 +42,7 @@ public class RepoUpdaterTest {
             return;
         }
         File simpleIndexJar = TestUtils.copyAssetToDir(context, "simpleIndex.jar", testFilesDir);
+        repoUpdater = new RepoUpdater(context, repo);
 
         // these are supposed to succeed
         try {
@@ -53,13 +54,27 @@ public class RepoUpdaterTest {
     }
 
     @Test(expected = UpdateException.class)
+    public void testExtractIndexFromOutdatedJar() throws UpdateException {
+        File simpleIndexJar = TestUtils.copyAssetToDir(context, "simpleIndex.jar", testFilesDir);
+        repo.version = 10;
+        repo.timestamp = System.currentTimeMillis() / 1000L;
+        repoUpdater = new RepoUpdater(context, repo);
+
+        // these are supposed to fail
+        repoUpdater.processDownloadedFile(simpleIndexJar);
+        fail();
+    }
+
+    @Test(expected = UpdateException.class)
     public void testExtractIndexFromJarWithoutSignatureJar() throws UpdateException {
         if (!testFilesDir.canWrite()) {
             return;
         }
         // this is supposed to fail
         File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithoutSignature.jar", testFilesDir);
+        repoUpdater = new RepoUpdater(context, repo);
         repoUpdater.processDownloadedFile(jarFile);
+        fail();
     }
 
     @Test
@@ -70,6 +85,7 @@ public class RepoUpdaterTest {
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedManifest.jar", testFilesDir);
+            repoUpdater = new RepoUpdater(context, repo);
             repoUpdater.processDownloadedFile(jarFile);
             fail();
         } catch (UpdateException e) {
@@ -88,6 +104,7 @@ public class RepoUpdaterTest {
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedSignature.jar", testFilesDir);
+            repoUpdater = new RepoUpdater(context, repo);
             repoUpdater.processDownloadedFile(jarFile);
             fail();
         } catch (UpdateException e) {
@@ -106,6 +123,7 @@ public class RepoUpdaterTest {
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedCertificate.jar", testFilesDir);
+            repoUpdater = new RepoUpdater(context, repo);
             repoUpdater.processDownloadedFile(jarFile);
             fail();
         } catch (UpdateException e) {
@@ -124,6 +142,7 @@ public class RepoUpdaterTest {
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedEverything.jar", testFilesDir);
+            repoUpdater = new RepoUpdater(context, repo);
             repoUpdater.processDownloadedFile(jarFile);
             fail();
         } catch (UpdateException e) {
@@ -142,6 +161,7 @@ public class RepoUpdaterTest {
         // this is supposed to fail
         try {
             File jarFile = TestUtils.copyAssetToDir(context, "masterKeyIndex.jar", testFilesDir);
+            repoUpdater = new RepoUpdater(context, repo);
             repoUpdater.processDownloadedFile(jarFile);
             fail();  //NOPMD
         } catch (UpdateException e) {

@@ -35,7 +35,8 @@ class DBHelper extends SQLiteOpenHelper {
             + "version integer not null default 0, "
             + "lastetag text, lastUpdated string,"
             + "isSwap integer boolean default 0,"
-            + "username string, password string"
+            + "username string, password string,"
+            + "timestamp integer not null default 0"
             + ");";
 
     private static final String CREATE_TABLE_APK =
@@ -106,7 +107,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + TABLE_INSTALLED_APP + ";";
 
-    private static final int DB_VERSION = 54;
+    private static final int DB_VERSION = 55;
 
     private final Context context;
 
@@ -261,6 +262,7 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(RepoProvider.DataColumns.IN_USE, inUse);
         values.put(RepoProvider.DataColumns.PRIORITY, priority);
         values.put(RepoProvider.DataColumns.LAST_ETAG, (String) null);
+        values.put(RepoProvider.DataColumns.TIMESTAMP, 0);
 
         Utils.debugLog(TAG, "Adding repository " + name);
         db.insert(TABLE_REPO, null, values);
@@ -294,6 +296,7 @@ class DBHelper extends SQLiteOpenHelper {
         addCredentialsToRepo(db, oldVersion);
         addAuthorToApp(db, oldVersion);
         useMaxValueInMaxSdkVersion(db, oldVersion);
+        requireTimestampInRepos(db, oldVersion);
     }
 
     /**
@@ -500,6 +503,21 @@ class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(ApkProvider.DataColumns.MAX_SDK_VERSION, Byte.MAX_VALUE);
         db.update(TABLE_APK, values, ApkProvider.DataColumns.MAX_SDK_VERSION + " < 1", null);
+    }
+
+    /**
+     * The {@code <repo timestamp="">} value was in the metadata for a long time,
+     * but it was not being used in the client until now.
+     */
+    private void requireTimestampInRepos(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 55) {
+            return;
+        }
+        if (!columnExists(db, TABLE_REPO, RepoProvider.DataColumns.TIMESTAMP)) {
+            Utils.debugLog(TAG, "Adding " + RepoProvider.DataColumns.TIMESTAMP + " column to " + TABLE_REPO);
+            db.execSQL("alter table " + TABLE_REPO + " add column "
+                    + RepoProvider.DataColumns.TIMESTAMP + " integer not null default 0");
+        }
     }
 
     /**

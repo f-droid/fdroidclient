@@ -26,7 +26,7 @@ public class Repo extends ValueObject {
     /** The signing certificate, {@code null} for a newly added repo */
     public String signingCertificate;
     /**
-     * The SHA1 fingerprint of {@link #pubkey}, set to {@code null} when a
+     * The SHA1 fingerprint of {@link #signingCertificate}, set to {@code null} when a
      * newly added repo did not include fingerprint. It should never be an
      * empty {@link String}, i.e. {@code ""} */
     public String fingerprint;
@@ -39,6 +39,9 @@ public class Repo extends ValueObject {
 
     public String username;
     public String password;
+
+    /** When the signed repo index was generated, used to protect against replay attacks */
+    public long timestamp;
 
     public Repo() {
     }
@@ -93,6 +96,9 @@ public class Repo extends ValueObject {
                     break;
                 case RepoProvider.DataColumns.PASSWORD:
                     password = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.TIMESTAMP:
+                    timestamp = cursor.getLong(i);
                     break;
             }
         }
@@ -209,6 +215,10 @@ public class Repo extends ValueObject {
 
         if (values.containsKey(RepoProvider.DataColumns.PASSWORD)) {
             password = values.getAsString(RepoProvider.DataColumns.PASSWORD);
+        }
+
+        if (values.containsKey(RepoProvider.DataColumns.TIMESTAMP)) {
+            timestamp = toInt(values.getAsInteger(RepoProvider.DataColumns.TIMESTAMP));
         }
     }
 }
