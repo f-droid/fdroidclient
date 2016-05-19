@@ -3,6 +3,16 @@ apply plugin: 'witness'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 
+/* gets the version name from the latest Git tag, stripping the leading v off */
+def getVersionName = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'describe', '--tags', '--always'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim().substring(1)
+}
+
 repositories {
     jcenter()
 }
@@ -150,6 +160,7 @@ android {
     }
 
     defaultConfig {
+        versionName getVersionName()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
