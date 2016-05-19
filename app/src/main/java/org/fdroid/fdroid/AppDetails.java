@@ -1080,7 +1080,8 @@ public class AppDetails extends AppCompatActivity {
                         url = app.webURL;
                         break;
                     case R.id.email:
-                        url = "mailto:" + app.email;
+                        final String subject = Uri.encode(getString(R.string.app_details_subject, app.name));
+                        url = "mailto:" + app.email + "?subject=" + subject;
                         break;
                     case R.id.source:
                         url = app.sourceURL;
