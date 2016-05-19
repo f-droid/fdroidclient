@@ -34,6 +34,7 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -77,6 +78,8 @@ import sun.net.www.protocol.bluetooth.Handler;
 public class FDroidApp extends Application {
 
     private static final String TAG = "FDroidApp";
+
+    public static final String SYSTEM_DIR_NAME = Environment.getRootDirectory().getAbsolutePath();
 
     private static Locale locale;
 
