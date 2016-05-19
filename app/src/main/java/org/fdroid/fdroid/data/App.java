@@ -21,8 +21,12 @@ import java.io.InputStream;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class App extends ValueObject implements Comparable<App> {
 
@@ -108,12 +112,17 @@ public class App extends ValueObject implements Comparable<App> {
 
     public boolean uninstallable;
 
+    public static String getIconName(String packageName, int versionCode) {
+        return packageName + "_" + versionCode + ".png";
+    }
+
     @Override
     public int compareTo(App app) {
         return name.compareToIgnoreCase(app.name);
     }
 
-    public App() { }
+    public App() {
+    }
 
     public App(Cursor cursor) {
 
@@ -273,20 +282,34 @@ public class App extends ValueObject implements Comparable<App> {
                 + ", last updated on " + this.lastUpdated + ")</p>";
 
         this.name = (String) appInfo.loadLabel(pm);
+        this.icon = getIconName(packageName, packageInfo.versionCode);
 
-        final SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
         final Apk apk = new Apk();
         apk.versionName = packageInfo.versionName;
         apk.versionCode = packageInfo.versionCode;
-        apk.hashType = "sha256";
-        apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
         apk.added = this.added;
         apk.minSdkVersion = Utils.getMinSdkVersion(context, packageName);
         apk.maxSdkVersion = Utils.getMaxSdkVersion(context, packageName);
         apk.packageName = this.packageName;
-        apk.installedFile = apkFile;
         apk.permissions = Utils.CommaSeparatedList.make(packageInfo.requestedPermissions);
         apk.apkName = apk.packageName + "_" + apk.versionCode + ".apk";
+
+        final SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
+        apk.hashType = "sha256";
+        apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
+        apk.installedFile = apkFile;
+
+        JarFile jarFile = new JarFile(apkFile);
+        HashSet<String> abis = new HashSet<>(3);
+        Pattern pattern = Pattern.compile("^lib/([a-z0-9-]+)/.*");
+        for (Enumeration<JarEntry> jarEntries = jarFile.entries(); jarEntries.hasMoreElements();) {
+            JarEntry jarEntry = jarEntries.nextElement();
+            Matcher matcher = pattern.matcher(jarEntry.getName());
+            if (matcher.matches()) {
+                abis.add(matcher.group(1));
+            }
+        }
+        apk.nativecode = Utils.CommaSeparatedList.make(abis.toArray(new String[abis.size()]));
 
         final FeatureInfo[] features = packageInfo.reqFeatures;
         if (features != null && features.length > 0) {

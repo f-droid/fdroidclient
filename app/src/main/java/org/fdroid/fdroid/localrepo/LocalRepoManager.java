@@ -3,7 +3,6 @@ package org.fdroid.fdroid.localrepo;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -237,6 +236,13 @@ public final class LocalRepoManager {
         }
     }
 
+    /**
+     * Get the {@code index.jar} file that represents the local swap repo.
+     */
+    public File getIndexJar() {
+        return xmlIndexJar;
+    }
+
     public void deleteRepo() {
         deleteContents(repoDir);
     }
@@ -267,18 +273,12 @@ public final class LocalRepoManager {
             if (!app.isValid()) {
                 return;
             }
-            PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_META_DATA);
-            app.icon = getIconFile(packageName, packageInfo.versionCode).getName();
         } catch (PackageManager.NameNotFoundException | CertificateEncodingException | IOException e) {
             Log.e(TAG, "Error adding app to local repo", e);
             return;
         }
         Utils.debugLog(TAG, "apps.put: " + packageName);
         apps.put(packageName, app);
-    }
-
-    public List<String> getApps() {
-        return new ArrayList<>(apps.keySet());
     }
 
     public void copyIconsToRepo() {
@@ -321,7 +321,7 @@ public final class LocalRepoManager {
     }
 
     private File getIconFile(String packageName, int versionCode) {
-        return new File(iconsDir, packageName + "_" + versionCode + ".png");
+        return new File(iconsDir, App.getIconName(packageName, versionCode));
     }
 
     /**
@@ -456,6 +456,7 @@ public final class LocalRepoManager {
             tag("added", app.installedApk.added);
             tagFeatures(app);
             tagPermissions(app);
+            tagNativecode(app);
 
             serializer.endTag("", "package");
         }
@@ -483,6 +484,14 @@ public final class LocalRepoManager {
                 serializer.text(Utils.CommaSeparatedList.str(app.installedApk.features));
             }
             serializer.endTag("", "features");
+        }
+
+        private void tagNativecode(App app) throws IOException {
+            if (app.installedApk.nativecode != null) {
+                serializer.startTag("", "nativecode");
+                serializer.text(Utils.CommaSeparatedList.str(app.installedApk.nativecode));
+                serializer.endTag("", "nativecode");
+            }
         }
 
         private void tagHash(App app) throws IOException {
