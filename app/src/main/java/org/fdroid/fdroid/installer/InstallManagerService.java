@@ -15,7 +15,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-import android.util.Log;
+import android.widget.Toast;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
@@ -135,12 +135,23 @@ public class InstallManagerService extends Service {
         Utils.debugLog(TAG, "onStartCommand " + intent);
 
         if (!ACTION_INSTALL.equals(intent.getAction())) {
-            Log.i(TAG, "Ignoring " + intent + " as it is not an " + ACTION_INSTALL + " intent");
+            Utils.debugLog(TAG, "Ignoring " + intent + " as it is not an " + ACTION_INSTALL + " intent");
             return START_NOT_STICKY;
         }
 
         String urlString = intent.getDataString();
+        if (TextUtils.isEmpty(urlString)) {
+            Utils.debugLog(TAG, "empty urlString, nothing to do");
+            return START_NOT_STICKY;
+        }
+
         Apk apk = ACTIVE_APKS.get(urlString);
+        if (apk == null) {
+            Utils.debugLog(TAG, urlString + " is not in ACTIVE_APKS, why are we trying to download it?");
+            Toast.makeText(this, urlString + " failed with an imcomplete download request!",
+                    Toast.LENGTH_LONG).show();
+            return START_NOT_STICKY;
+        }
 
         Notification notification = createNotification(intent.getDataString(), apk).build();
         notificationManager.notify(urlString.hashCode(), notification);
