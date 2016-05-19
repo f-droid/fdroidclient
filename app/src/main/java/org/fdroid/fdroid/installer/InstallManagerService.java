@@ -15,7 +15,6 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
@@ -36,10 +35,12 @@ import java.util.Set;
  * requests an APK to be installed.  It handles checking whether the APK is cached,
  * downloading it, putting up and maintaining a {@link Notification}, and more.
  * <p>
- * Data is sent via {@link Intent}s so that Android handles the message queuing
- * and {@link Service} lifecycle for us, although it adds one layer of redirection
- * between the static method to send the {@code Intent} and the method to
- * actually process it.
+ * The {@link App} and {@link Apk} instances are sent via
+ * {@link Intent#putExtra(String, android.os.Bundle)}
+ * so that Android handles the message queuing and {@link Service} lifecycle for us.
+ * For example, if this {@code InstallManagerService} gets killed, Android will cache
+ * and then redeliver the {@link Intent} for us, which includes all of the data needed
+ * for {@code InstallManagerService} to do its job for the whole lifecycle of an install.
  * <p>
  * The full URL for the APK file to download is also used as the unique ID to
  * represent the download itself throughout F-Droid.  This follows the model
@@ -59,7 +60,10 @@ import java.util.Set;
 public class InstallManagerService extends Service {
     public static final String TAG = "InstallManagerService";
 
-    private static final String ACTION_INSTALL = "org.fdroid.fdroid.InstallManagerService.action.INSTALL";
+    private static final String ACTION_INSTALL = "org.fdroid.fdroid.installer.action.INSTALL";
+
+    private static final String EXTRA_APP = "org.fdroid.fdroid.installer.extra.APP";
+    private static final String EXTRA_APK = "org.fdroid.fdroid.installer.extra.APK";
 
     /**
      * The collection of {@link Apk}s that are actively going through this whole process,
@@ -145,13 +149,20 @@ public class InstallManagerService extends Service {
             return START_NOT_STICKY;
         }
 
-        Apk apk = ACTIVE_APKS.get(urlString);
-        if (apk == null) {
-            Utils.debugLog(TAG, urlString + " is not in ACTIVE_APKS, why are we trying to download it?");
-            Toast.makeText(this, urlString + " failed with an imcomplete download request!",
-                    Toast.LENGTH_LONG).show();
+        if (!intent.hasExtra(EXTRA_APP) || !intent.hasExtra(EXTRA_APK)) {
+            Utils.debugLog(TAG, urlString + " did not include both an App and Apk instance, ignoring");
             return START_NOT_STICKY;
         }
+
+        if (!DownloaderService.isQueuedOrActive(urlString)) {
+            Utils.debugLog(TAG, urlString + " finished downloading while InstallManagerService was killed.");
+            cancelNotification(urlString);
+            return START_NOT_STICKY;
+        }
+
+        App app = new App(intent.getParcelableExtra(EXTRA_APP));
+        Apk apk = new Apk(intent.getParcelableExtra(EXTRA_APK));
+        addToActive(urlString, app, apk);
 
         Notification notification = createNotification(intent.getDataString(), apk).build();
         notificationManager.notify(urlString.hashCode(), notification);
@@ -357,10 +368,11 @@ public class InstallManagerService extends Service {
     public static void queue(Context context, App app, Apk apk) {
         String urlString = apk.getUrl();
         Utils.debugLog(TAG, "queue " + app.packageName + " " + apk.versionCode + " from " + urlString);
-        addToActive(urlString, app, apk);
         Intent intent = new Intent(context, InstallManagerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(Uri.parse(urlString));
+        intent.putExtra(EXTRA_APP, app.toContentValues());
+        intent.putExtra(EXTRA_APK, apk.toContentValues());
         context.startService(intent);
     }
 

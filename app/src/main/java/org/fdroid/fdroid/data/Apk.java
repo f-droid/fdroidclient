@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Build;
+import android.os.Parcelable;
 
 import org.fdroid.fdroid.Utils;
 
@@ -49,7 +50,12 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     public String repoAddress;
     public Utils.CommaSeparatedList incompatibleReasons;
 
-    public Apk() { }
+    public Apk() {
+    }
+
+    public Apk(Parcelable parcelable) {
+        this(new ContentValuesCursor((ContentValues) parcelable));
+    }
 
     public Apk(Cursor cursor) {
 

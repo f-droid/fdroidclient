@@ -8,6 +8,7 @@ import android.content.pm.FeatureInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -122,6 +123,10 @@ public class App extends ValueObject implements Comparable<App> {
     }
 
     public App() {
+    }
+
+    public App(Parcelable parcelable) {
+        this(new ContentValuesCursor((ContentValues) parcelable));
     }
 
     public App(Cursor cursor) {
