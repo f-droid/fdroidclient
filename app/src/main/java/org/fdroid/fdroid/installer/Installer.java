@@ -170,7 +170,7 @@ public abstract class Installer {
      */
     public void installPackage(File apkFile, String packageName, String urlString)
             throws InstallFailedException {
-        SanitizedFile apkToInstall;
+        SanitizedFile apkToInstall = null;
         try {
             Map<String, Object> attributes = AndroidXMLDecompress.getManifestHeaderAttributes(apkFile.getAbsolutePath());
 
@@ -232,6 +232,22 @@ public abstract class Installer {
             throw new InstallFailedException(e);
         } catch (ClassCastException e) {
             throw new InstallFailedException("F-Droid Privileged can only be updated using an activity!");
+        } finally {
+            // 20 minutes the start of the install process, delete the file
+            final File apkToDelete = apkToInstall;
+            new Thread() {
+                @Override
+                public void run() {
+                    android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
+                    try {
+                        Thread.sleep(1200000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } finally {
+                        FileUtils.deleteQuietly(apkToDelete);
+                    }
+                }
+            }.start();
         }
     }
 
