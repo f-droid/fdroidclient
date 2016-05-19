@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
 import android.os.SystemClock;
-import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
 
@@ -20,7 +19,6 @@ import java.io.File;
  * {@link FDroidApp#onCreate()}
  */
 public class CleanCacheService extends IntentService {
-    private static final String TAG = "CleanCacheService";
 
     /**
      * Schedule or cancel this service to update the app index, according to the
@@ -33,7 +31,6 @@ public class CleanCacheService extends IntentService {
         if (keepTime < interval) {
             interval = keepTime * 1000;
         }
-        Log.i(TAG, "schedule " + keepTime + " " + interval);
 
         Intent intent = new Intent(context, CleanCacheService.class);
         PendingIntent pending = PendingIntent.getService(context, 0, intent, 0);
@@ -53,6 +50,29 @@ public class CleanCacheService extends IntentService {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         Utils.clearOldFiles(Utils.getApkCacheDir(this), Preferences.get().getKeepCacheTime());
         deleteStrayIndexFiles();
+        deleteOldInstallerFiles();
+    }
+
+    /**
+     * {@link org.fdroid.fdroid.installer.Installer} instances copy the APK into
+     * a safe place before installing.  It doesn't clean up them reliably yet.
+     */
+    private void deleteOldInstallerFiles() {
+        File filesDir = getFilesDir();
+        if (filesDir == null) {
+            return;
+        }
+
+        final File[] files = filesDir.listFiles();
+        if (files == null) {
+            return;
+        }
+
+        for (File f : files) {
+            if (f.getName().startsWith("install-")) {
+                FileUtils.deleteQuietly(f);
+            }
+        }
     }
 
     /**
