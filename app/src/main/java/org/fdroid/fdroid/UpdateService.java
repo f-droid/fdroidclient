@@ -512,7 +512,10 @@ public class UpdateService extends IntentService {
             public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
                 Log.i(TAG, "downloadProgressReceiver " + sourceUrl);
                 String downloadedSizeFriendly = Utils.getFriendlySize(bytesRead);
-                int percent = (int) ((double) bytesRead / totalBytes * 100);
+                int percent = -1;
+                if (totalBytes > 0) {
+                    percent = (int) ((double) bytesRead / totalBytes * 100);
+                }
                 String message;
                 if (totalBytes == -1) {
                     message = getString(R.string.status_download_unknown_size, sourceUrl, downloadedSizeFriendly);
