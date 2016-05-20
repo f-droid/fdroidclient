@@ -10,9 +10,9 @@ repositories {
 dependencies {
     compile project(':privileged-api-lib')
 
-    compile 'com.android.support:support-v4:23.3.0'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:support-annotations:23.3.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:support-annotations:23.4.0'
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.google.zxing:core:3.2.1'
@@ -31,7 +31,7 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 
-    androidTestCompile 'com.android.support:support-annotations:23.3.0'
+    androidTestCompile 'com.android.support:support-annotations:23.4.0'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
 }
@@ -70,9 +70,9 @@ if (!hasProperty('sourceDeps')) {
     // source code don't need to be here.
     dependencyVerification {
         verify = [
-            'com.android.support:support-v4:1e8b7cc1cb3d6f6a2fd913791a6313df6bbaa470be450384474e906bc234bd49',
-            'com.android.support:appcompat-v7:dce81c41f76d83fa315617f4bc8ef2f84c5aa54b686f37b559422b939f622490',
-            'com.android.support:support-annotations:e9e076f3ea4fb144387c6054a6f69a2f6150ad4b1907897aaf55d6e8f4b8b91e',
+            'com.android.support:support-v4:a0d002465c0f611eedaaef2b2530707d2e9fb3a5c7ed66f53c556a12f714f43a',
+            'com.android.support:appcompat-v7:d3d96637b0e8e61046567b8c87b667dcf3cd31c7447f651cb58d6e6e744adfba',
+            'com.android.support:support-annotations:e91a88dd0c5e99069b7f09d4a46b5e06f1e9c4c72fc0a8e987e25d86af480f01',
             'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
             'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
             'eu.chainfire:libsuperuser:018344ff19ee94d252c14b4a503ee8b519184db473a5af83513f5837c413b128',
