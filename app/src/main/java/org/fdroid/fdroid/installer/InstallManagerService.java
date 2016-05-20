@@ -154,7 +154,8 @@ public class InstallManagerService extends Service {
             return START_NOT_STICKY;
         }
 
-        if (!DownloaderService.isQueuedOrActive(urlString)) {
+        if ((flags & START_FLAG_REDELIVERY) == START_FLAG_REDELIVERY
+                && !DownloaderService.isQueuedOrActive(urlString)) {
             Utils.debugLog(TAG, urlString + " finished downloading while InstallManagerService was killed.");
             cancelNotification(urlString);
             return START_NOT_STICKY;
