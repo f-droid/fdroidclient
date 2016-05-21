@@ -156,9 +156,9 @@ public class RepoUpdater {
     private RepoXMLHandler.IndexReceiver createIndexReceiver() {
         return new RepoXMLHandler.IndexReceiver() {
             @Override
-            public void receiveRepo(String name, String description, String signingCert, int maxAge, int version) {
+            public void receiveRepo(String name, String description, String signingCert, int maxAge, int version, long timestamp) {
                 signingCertFromIndexXml = signingCert;
-                repoDetailsToSave = prepareRepoDetailsForSaving(name, description, maxAge, version);
+                repoDetailsToSave = prepareRepoDetailsForSaving(name, description, maxAge, version, timestamp);
             }
 
             @Override
@@ -195,6 +195,12 @@ public class RepoUpdater {
             final RepoXMLHandler repoXMLHandler = new RepoXMLHandler(repo, createIndexReceiver());
             reader.setContentHandler(repoXMLHandler);
             reader.parse(new InputSource(indexInputStream));
+
+            long timestamp = repoDetailsToSave.getAsLong("timestamp");
+            if (timestamp < repo.timestamp) {
+                throw new UpdateException(repo, "index.jar is older that current index! "
+                        + timestamp + " < " + repo.timestamp);
+            }
 
             signingCertFromJar = getSigningCertFromJar(indexEntry);
 
@@ -242,7 +248,7 @@ public class RepoUpdater {
      * Update tracking data for the repo represented by this instance (index version, etag,
      * description, human-readable name, etc.
      */
-    private ContentValues prepareRepoDetailsForSaving(String name, String description, int maxAge, int version) {
+    private ContentValues prepareRepoDetailsForSaving(String name, String description, int maxAge, int version, long timestamp) {
         ContentValues values = new ContentValues();
 
         values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatTime(new Date(), ""));
@@ -267,6 +273,10 @@ public class RepoUpdater {
 
         if (name != null && !name.equals(repo.name)) {
             values.put(RepoProvider.DataColumns.NAME, name);
+        }
+
+        if (timestamp != repo.timestamp) {
+            values.put(RepoProvider.DataColumns.TIMESTAMP, timestamp);
         }
 
         return values;

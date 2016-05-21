@@ -51,6 +51,7 @@ public class RepoXMLHandler extends DefaultHandler {
     // them - otherwise it will be the value specified.
     private int repoMaxAge = -1;
     private int repoVersion;
+    private long repoTimestamp;
     private String repoDescription;
     private String repoName;
 
@@ -60,7 +61,7 @@ public class RepoXMLHandler extends DefaultHandler {
     private final StringBuilder curchars = new StringBuilder();
 
     interface IndexReceiver {
-        void receiveRepo(String name, String description, String signingCert, int maxage, int version);
+        void receiveRepo(String name, String description, String signingCert, int maxage, int version, long timestamp);
 
         void receiveApp(App app, List<Apk> packages);
     }
@@ -79,7 +80,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName)
-        throws SAXException {
+            throws SAXException {
 
         if ("application".equals(localName) && curapp != null) {
             onApplicationParsed();
@@ -239,7 +240,7 @@ public class RepoXMLHandler extends DefaultHandler {
     }
 
     private void onRepoParsed() {
-        receiver.receiveRepo(repoName, repoDescription, repoSigningCert, repoMaxAge, repoVersion);
+        receiver.receiveRepo(repoName, repoDescription, repoSigningCert, repoMaxAge, repoVersion, repoTimestamp);
     }
 
     @Override
@@ -253,6 +254,7 @@ public class RepoXMLHandler extends DefaultHandler {
             repoVersion = Utils.parseInt(attributes.getValue("", "version"), -1);
             repoName = cleanWhiteSpace(attributes.getValue("", "name"));
             repoDescription = cleanWhiteSpace(attributes.getValue("", "description"));
+            repoTimestamp = parseLong(attributes.getValue("", "timestamp"), 0);
         } else if ("application".equals(localName) && curapp == null) {
             curapp = new App();
             curapp.packageName = attributes.getValue("", "id");
@@ -270,5 +272,18 @@ public class RepoXMLHandler extends DefaultHandler {
 
     private static String cleanWhiteSpace(@Nullable String str) {
         return str == null ? null : str.replaceAll("\\s", " ");
+    }
+
+    private static long parseLong(String str, long fallback) {
+        if (str == null || str.length() == 0) {
+            return fallback;
+        }
+        long result;
+        try {
+            result = Long.parseLong(str);
+        } catch (NumberFormatException e) {
+            result = fallback;
+        }
+        return result;
     }
 }

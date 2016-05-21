@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.fdroid.fdroid"
-    android:installLocation="auto"
-    android:versionCode="100007"
-    android:versionName="0.100-alpha7"
-    >
+    android:installLocation="auto">
 
     <uses-sdk
         android:minSdkVersion="8"

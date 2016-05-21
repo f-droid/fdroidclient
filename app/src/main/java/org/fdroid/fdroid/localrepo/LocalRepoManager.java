@@ -384,6 +384,7 @@ public final class LocalRepoManager {
             serializer.attribute("", "pubkey", Hasher.hex(LocalRepoKeyStore.get(context).getCertificate()));
             long timestamp = System.currentTimeMillis() / 1000L;
             serializer.attribute("", "timestamp", String.valueOf(timestamp));
+            serializer.attribute("", "version", "10");
 
             tag("description", "A local FDroid repo generated from apps installed on " + Preferences.get().getLocalRepoName());
 

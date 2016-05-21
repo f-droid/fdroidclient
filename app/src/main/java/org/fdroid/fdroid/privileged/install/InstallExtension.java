@@ -22,6 +22,7 @@ package org.fdroid.fdroid.privileged.install;
 import android.content.Context;
 import android.os.Build;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
@@ -85,11 +86,11 @@ abstract class InstallExtension {
 
     private List<String> getInstallCommands(String apkPath) {
         final List<String> commands = new ArrayList<>();
-        commands.add("mount -o rw,remount /system"); // remount as read-write
+        commands.add("mount -o rw,remount " + FDroidApp.SYSTEM_DIR_NAME); // remount as read-write
         commands.addAll(getCopyToSystemCommands(apkPath));
         commands.add("mv " + getInstallPath() + ".tmp " + getInstallPath());
         commands.add("sleep 5"); // wait until the app is really installed
-        commands.add("mount -o ro,remount /system"); // remount as read-only
+        commands.add("mount -o ro,remount " + FDroidApp.SYSTEM_DIR_NAME); // remount as read-only
         commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.addAll(getPostInstallCommands());
         return commands;
@@ -113,10 +114,10 @@ abstract class InstallExtension {
         final List<String> commands = new ArrayList<>();
         commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.add("pm clear " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
-        commands.add("mount -o rw,remount /system");
+        commands.add("mount -o rw,remount " + FDroidApp.SYSTEM_DIR_NAME);
         commands.addAll(getCleanUninstallCommands());
         commands.add("sleep 5");
-        commands.add("mount -o ro,remount /system");
+        commands.add("mount -o ro,remount " + FDroidApp.SYSTEM_DIR_NAME);
         commands.addAll(getPostUninstallCommands());
         return commands;
     }
@@ -139,7 +140,7 @@ abstract class InstallExtension {
 
         @Override
         protected String getSystemFolder() {
-            return "/system/app/";
+            return FDroidApp.SYSTEM_DIR_NAME + "/app/";
         }
 
     }
@@ -156,7 +157,7 @@ abstract class InstallExtension {
          */
         @Override
         protected String getSystemFolder() {
-            return "/system/priv-app/";
+            return FDroidApp.SYSTEM_DIR_NAME + "/priv-app/";
         }
 
     }
@@ -190,7 +191,7 @@ abstract class InstallExtension {
          */
         @Override
         protected String getSystemFolder() {
-            return "/system/priv-app/FDroidPrivileged/";
+            return FDroidApp.SYSTEM_DIR_NAME + "/priv-app/FDroidPrivileged/";
         }
 
         /**

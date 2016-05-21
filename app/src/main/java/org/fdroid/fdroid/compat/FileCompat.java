@@ -5,6 +5,7 @@ import android.os.Build;
 import android.system.ErrnoException;
 import android.util.Log;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.SanitizedFile;
 
@@ -59,7 +60,7 @@ public class FileCompat {
 
     protected static void symlinkRuntime(SanitizedFile source, SanitizedFile dest) {
         String[] commands = {
-            "/system/bin/ln",
+            FDroidApp.SYSTEM_DIR_NAME + "/bin/ln",
             source.getAbsolutePath(),
             dest.getAbsolutePath(),
         };
@@ -107,7 +108,7 @@ public class FileCompat {
         // The "file" must be a sanitized file, and hence only contain A-Za-z0-9.-_ already,
         // but it makes no assurances about the parent directory.
         final String[] args = {
-            "/system/bin/chmod",
+            FDroidApp.SYSTEM_DIR_NAME + "/bin/chmod",
             mode,
             file.getAbsolutePath(),
         };
