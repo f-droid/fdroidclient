@@ -145,7 +145,7 @@ public abstract class Downloader {
             totalBytes = totalDownloadSize();
             byte[] buffer = new byte[bufferSize];
 
-            timer.scheduleAtFixedRate(progressTask, 0, 100);
+            timer.scheduleAtFixedRate(progressTask, 0, 500);
 
             // Getting the total download size could potentially take time, depending on how
             // it is implemented, so we may as well check this before we proceed.

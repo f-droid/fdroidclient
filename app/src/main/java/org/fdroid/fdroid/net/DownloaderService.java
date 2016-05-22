@@ -147,8 +147,7 @@ public class DownloaderService extends Service {
     public static PendingIntent getCancelPendingIntent(Context context, String urlString) {
         Intent cancelIntent = new Intent(context.getApplicationContext(), DownloaderService.class)
                 .setData(Uri.parse(urlString))
-                .setAction(ACTION_CANCEL)
-                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+                .setAction(ACTION_CANCEL);
         return PendingIntent.getService(context.getApplicationContext(),
                 urlString.hashCode(),
                 cancelIntent,
