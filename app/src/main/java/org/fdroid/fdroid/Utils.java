@@ -20,8 +20,6 @@ package org.fdroid.fdroid;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
-import android.content.res.XmlResourceParser;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -39,12 +37,9 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.compat.FileCompat;
-import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.xml.sax.XMLReader;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.BufferedInputStream;
 import java.io.Closeable;
@@ -223,38 +218,6 @@ public final class Utils {
             return String.format(Locale.ENGLISH, "v%d", sdkLevel);
         }
         return ANDROID_VERSION_NAMES[sdkLevel];
-    }
-
-    /* PackageManager doesn't give us the min and max sdk versions, so we have
-     * to parse it */
-    private static int getSdkVersion(Context context, String packageName,
-                                     String attrName, final int defaultValue) {
-        try {
-            AssetManager am = context.createPackageContext(packageName, 0).getAssets();
-            XmlResourceParser xml = am.openXmlResourceParser("AndroidManifest.xml");
-            int eventType = xml.getEventType();
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_TAG && "uses-sdk".equals(xml.getName())) {
-                    for (int j = 0; j < xml.getAttributeCount(); j++) {
-                        if (xml.getAttributeName(j).equals(attrName)) {
-                            return Integer.parseInt(xml.getAttributeValue(j));
-                        }
-                    }
-                }
-                eventType = xml.nextToken();
-            }
-        } catch (PackageManager.NameNotFoundException | IOException | XmlPullParserException e) {
-            Log.e(TAG, "Could not get min/max sdk version", e);
-        }
-        return defaultValue;
-    }
-
-    public static int getMinSdkVersion(Context context, String packageName) {
-        return getSdkVersion(context, packageName, "minSdkVersion", Apk.SDK_VERSION_MIN_VALUE);
-    }
-
-    public static int getMaxSdkVersion(Context context, String packageName) {
-        return getSdkVersion(context, packageName, "maxSdkVersion", Apk.SDK_VERSION_MAX_VALUE);
     }
 
     // return a fingerprint formatted for display

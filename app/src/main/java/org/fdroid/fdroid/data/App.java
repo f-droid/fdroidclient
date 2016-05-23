@@ -7,6 +7,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.os.Parcelable;
 import android.text.TextUtils;
@@ -15,6 +17,8 @@ import android.util.Log;
 import org.fdroid.fdroid.AppFilter;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;
 import java.io.IOException;
@@ -293,8 +297,9 @@ public class App extends ValueObject implements Comparable<App> {
         apk.versionName = packageInfo.versionName;
         apk.versionCode = packageInfo.versionCode;
         apk.added = this.added;
-        apk.minSdkVersion = Utils.getMinSdkVersion(context, packageName);
-        apk.maxSdkVersion = Utils.getMaxSdkVersion(context, packageName);
+        int[] minMaxSdkVersions = getMinMaxSdkVersions(context, packageName);
+        apk.minSdkVersion = minMaxSdkVersions[0];
+        apk.maxSdkVersion = minMaxSdkVersions[1];
         apk.packageName = this.packageName;
         apk.permissions = Utils.CommaSeparatedList.make(packageInfo.requestedPermissions);
         apk.apkName = apk.packageName + "_" + apk.versionCode + ".apk";
@@ -475,5 +480,35 @@ public class App extends ValueObject implements Comparable<App> {
 
     public String getSuggestedVersionName() {
         return suggestedVersionName;
+    }
+
+    /**
+     * {@link PackageManager} doesn't give us {@code minSdkVersion} and {@code maxSdkVersion},
+     * so we have to parse it straight from {@code <uses-sdk>} in {@code AndroidManifest.xml}.
+     */
+    private static int[] getMinMaxSdkVersions(Context context, String packageName) {
+        int minSdkVersion = Apk.SDK_VERSION_MIN_VALUE;
+        int maxSdkVersion = Apk.SDK_VERSION_MAX_VALUE;
+        try {
+            AssetManager am = context.createPackageContext(packageName, 0).getAssets();
+            XmlResourceParser xml = am.openXmlResourceParser("AndroidManifest.xml");
+            int eventType = xml.getEventType();
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                if (eventType == XmlPullParser.START_TAG && "uses-sdk".equals(xml.getName())) {
+                    for (int j = 0; j < xml.getAttributeCount(); j++) {
+                        if (xml.getAttributeName(j).equals("minSdkVersion")) {
+                            minSdkVersion = Integer.parseInt(xml.getAttributeValue(j));
+                        } else if (xml.getAttributeName(j).equals("maxSdkVersion")) {
+                            maxSdkVersion = Integer.parseInt(xml.getAttributeValue(j));
+                        }
+                    }
+                    break;
+                }
+                eventType = xml.nextToken();
+            }
+        } catch (PackageManager.NameNotFoundException | IOException | XmlPullParserException e) {
+            Log.e(TAG, "Could not get min/max sdk version", e);
+        }
+        return new int[]{minSdkVersion, maxSdkVersion};
     }
 }
