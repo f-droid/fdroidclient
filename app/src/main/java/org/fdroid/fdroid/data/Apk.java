@@ -14,6 +14,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     // Using only byte-range keeps it only 8-bits in the SQLite database
     public static final int SDK_VERSION_MAX_VALUE = Byte.MAX_VALUE;
+    public static final int SDK_VERSION_MIN_VALUE = 0;
 
     public String packageName;
     public String versionName;
@@ -22,7 +23,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     public long repo; // ID of the repo it comes from
     public String hash;
     public String hashType;
-    public int minSdkVersion; // 0 if unknown
+    public int minSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown
     public int maxSdkVersion = SDK_VERSION_MAX_VALUE; // "infinity" if not set
     public Date added;
     public Utils.CommaSeparatedList permissions; // null if empty or

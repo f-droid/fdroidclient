@@ -125,10 +125,14 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapk.apkName = str;
                     break;
                 case "sdkver":
-                    curapk.minSdkVersion = Utils.parseInt(str, 0);
+                    curapk.minSdkVersion = Utils.parseInt(str, Apk.SDK_VERSION_MIN_VALUE);
                     break;
                 case "maxsdkver":
-                    curapk.maxSdkVersion = Utils.parseInt(str, 0);
+                    curapk.maxSdkVersion = Utils.parseInt(str, Apk.SDK_VERSION_MAX_VALUE);
+                    if (curapk.maxSdkVersion == 0) {
+                        // before fc0df0dcf4dd0d5f13de82d7cd9254b2b48cb62d, this could be 0
+                        curapk.maxSdkVersion = Apk.SDK_VERSION_MAX_VALUE;
+                    }
                     break;
                 case "added":
                     curapk.added = Utils.parseDate(str, null);
