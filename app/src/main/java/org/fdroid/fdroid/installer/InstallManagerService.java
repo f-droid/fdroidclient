@@ -240,7 +240,7 @@ public class InstallManagerService extends Service {
                 if (AppDetails.isAppVisible(apk.packageName)) {
                     cancelNotification(urlString);
                 } else {
-                    notifyDownloadComplete(urlString, builder, apk);
+                    notifyDownloadComplete(urlString, apk);
                 }
                 unregisterDownloaderReceivers(urlString);
             }
@@ -312,9 +312,14 @@ public class InstallManagerService extends Service {
 
     /**
      * Post a notification about a completed download.  {@code packageName} must be a valid
-     * and currently in the app index database.
+     * and currently in the app index database.  This must create a new {@code Builder}
+     * instance otherwise the progress/cancel stuff does not go away.
+     *
+     * @see <a href=https://code.google.com/p/android/issues/detail?id=47809> Issue 47809:
+     * Removing the progress bar from a notification should cause the notification's content
+     * text to return to normal size</a>
      */
-    private void notifyDownloadComplete(String urlString, NotificationCompat.Builder builder, Apk apk) {
+    private void notifyDownloadComplete(String urlString, Apk apk) {
         String title;
         try {
             PackageManager pm = getPackageManager();
@@ -325,12 +330,16 @@ public class InstallManagerService extends Service {
         }
 
         int downloadUrlId = urlString.hashCode();
-        builder.setAutoCancel(true)
+        notificationManager.cancel(downloadUrlId);
+        Notification notification = new NotificationCompat.Builder(this)
+                .setAutoCancel(true)
                 .setOngoing(false)
                 .setContentTitle(title)
+                .setContentIntent(getAppDetailsIntent(downloadUrlId, apk))
                 .setSmallIcon(android.R.drawable.stat_sys_download_done)
-                .setContentText(getString(R.string.tap_to_install));
-        notificationManager.notify(downloadUrlId, builder.build());
+                .setContentText(getString(R.string.tap_to_install))
+                .build();
+        notificationManager.notify(downloadUrlId, notification);
     }
 
     /**
