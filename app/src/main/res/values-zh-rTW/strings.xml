@@ -322,4 +322,6 @@
     <string name="swap_view_available_networks">點擊打開可用的網路</string>
     <string name="swap_switch_to_wifi">點擊以切換到一個 Wi-Fi 網路</string>
     <string name="swap_confirm_connect">您現在想要從 %1$s 取得應用程式嗎？</string>
+    <string name="swap_nearby">近距交換</string>
+    <string name="swap_intro">與您附近的人連結並且交換應用程式。</string>
     </resources>

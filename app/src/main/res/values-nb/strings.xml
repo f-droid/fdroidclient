@@ -6,7 +6,7 @@
   <string name="version">Versjon</string>
   <string name="delete">Slett</string>
   <string name="enable_nfc_send">Skru på NFC-sending…</string>
-  <string name="cache_downloaded">Lagre nedlastede programmer i mellomlager</string>
+  <string name="cache_downloaded">Behold mellomlagrede programmer</string>
   <string name="updates">Oppdateringer</string>
   <string name="other">Andre</string>
   <string name="update_interval">Intervall for automatisk oppdatering</string>
@@ -343,5 +343,12 @@
     <string name="download_pending">Venter på at nedlastingen skal starte…</string>
 
     <string name="downloading_apk">Laster ned %1$s</string>
+
+    <string name="keep_hour">én time</string>
+    <string name="keep_day">én dag</string>
+    <string name="keep_week">ei uke</string>
+    <string name="keep_month">én måned</string>
+    <string name="keep_year">ett år</string>
+    <string name="keep_forever">For alltid</string>
 
     </resources>

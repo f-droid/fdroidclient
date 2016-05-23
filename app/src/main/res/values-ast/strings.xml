@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="SignatureMismatch">La versión nueva ta roblada con una clave diferente. Pa instalar la versión nueva, tien de desinstalase primero la vieya. Por favor, failo ya inténtalo de nueves. (Decátate que la desinstalación desaniciará cualesquier datu internu atroxáu pola aplicación)</string>
-  <string name="installIncompatible">Paez qu\'esti paquete nun ye compatible col to preséu. ¿Quies intentar instalalu de toes toes?</string>
-  <string name="installDowngrade">Tas intentando baxar de versión esta aplicación. Eso quiciabes faiga que l\'aplicación furrule mal o incluso, pierdas los tos datos. ¿Quies intentalo y baxala de versión de toes toes?</string>
+  <string name="SignatureMismatch">La versión nueva ta roblada con una clave diferente. Pa instalar la versión nueva, tien de desinstalase primero la vieya. Por favor, failo y volvi tentalo. (Decátate que la desinstalación desaniciará cualesquier datu internu atroxáu pola aplicación)</string>
+  <string name="installIncompatible">Paez qu\'esti paquete nun ye compatible col to preséu. ¿Quies tentar d\'instalalu de toes toes?</string>
+  <string name="installDowngrade">Tas tentando de baxar de versión esta aplicación. Eso quiciabes faiga que l\'aplicación furrule mal o incluso, pierdas los tos datos. ¿Quies tentalo y baxala de versión de toes toes?</string>
   <string name="version">Versión</string>
   <string name="delete">Desaniciar</string>
   <string name="enable_nfc_send">Habilitar unviu per NFC…</string>
@@ -135,18 +135,18 @@
   <string name="repo_name">Nome</string>
   <string name="unsigned_description">Esto quier dicir que nun pudo verificase\'l llistáu d\'aplicaciones.
 Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</string>
-  <string name="repo_not_yet_updated">Entá nun s\'usó esti repositoriu. Necesites anovalu pa ver les aplicaciones que forne.</string>
+  <string name="repo_not_yet_updated">Entá nun s\'usó esti repositoriu. Precises anovalu pa ver les aplicaciones que forne.</string>
   <string name="unknown">Desconocíu</string>
   <string name="repo_confirm_delete_title">¿Desaniciar repositoriu?</string>
   <string name="repo_confirm_delete_body">Desaniciar un repositoriu quier dicir que les aplicaciones d\'elli nun tarán disponibles dende F-Droid.
 \n\nNota: Toles aplicaciones instalaes d\'enantes quedaránse nel preséu.</string>
-  <string name="repo_disabled_notification">Deshabilitóse %1$s.\n\nNecesitarás rehabilitar esti repositoriu pa instalar aplicaciones dende elli.</string>
+  <string name="repo_disabled_notification">Deshabilitóse %1$s.\n\nPrecisarás rehabilitar esti repositoriu pa instalar aplicaciones dende elli.</string>
   <string name="repo_added">Guardóse\'l repositoriu F-Droid %1$s.</string>
   <string name="repo_searching_address">Guetando repositorios F-Droid en\n%1$s</string>
   <string name="minsdk_or_later">%s ó posterior</string>
   <string name="up_to_maxsdk">Fasta %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s fasta %2$s</string>
-  <string name="not_on_same_wifi">¡El to preséu nun ta na mesma rede Wi-Fi que\'l repositoriu llocal que tas acabante d\'amestar! Intenta xunite a esta rede: %s</string>
+  <string name="not_on_same_wifi">¡El to preséu nun ta na mesma rede Wi-Fi que\'l repositoriu llocal que tas acabante d\'amestar! Tenta de xunite a esta rede: %s</string>
   <string name="requires_features">Rique: %1$s</string>
   <string name="app_icon">Iconu d\'aplicación</string>
   <string name="category_Development">Desendolcu</string>
@@ -229,9 +229,9 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="category_Time">Tiempu</string>
     <string name="category_Writing">Escritura</string>
 
-    <string name="empty_installed_app_list">Nun hai aplicaciones instalaes.\n\nHai aplicaciones nel to preséu pero nun tán disponibles dende F-Droid. Esto quiciabes sía porque necesites anovar los tos repositorios o porque los repositorios nun tengan daveres les tos aplicaciones disponibles.</string>
-    <string name="empty_available_app_list">Nun hai aplicaciones nesta estaya.\n\nIntenta esbillar una estaya distinta o anovar los tos repositorios pa consiguir un llistáu frescu d\'aplicaciones.</string>
-    <string name="empty_can_update_app_list">Tán anovaes toles aplicaciones.\n\n¡Norabona! Toles tos aplicaciones tán anovaes (o los tos repositorios tán ensin anovar).</string>
+    <string name="empty_installed_app_list">Nun hai aplicaciones instalaes.\n\nHai aplicaciones nel to preséu pero nun tán disponibles dende F-Droid. Esto quiciabes sía porque precises anovar los tos repositorios o porque los repositorios nun tengan daveres les tos aplicaciones disponibles.</string>
+    <string name="empty_available_app_list">Nun hai aplicaciones nesta estaya.\n\nTenta d\'esbillar una estaya distinta o anovar los tos repositorios pa consiguir un llistáu frescu d\'aplicaciones.</string>
+    <string name="empty_can_update_app_list">Anováronse toles aplicaciones.\n\n¡Norabona! Toles tos aplicaciones tán anovaes (o los tos repositorios tán ensin anovar).</string>
 
     <string name="install_error_title">Fallu d\'instalación</string>
     <string name="install_error_unknown">Fallu al instalar pola mor d\'un fallu desconocíu</string>
@@ -255,7 +255,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="swap_nfc_title">Toca pa intercambiar</string>
     <string name="swap_join_same_wifi_desc">Pa intercambiar usando W-FI asegúrate que tais na mesma rede. Si nun tienéis accesu a la mesma rede, ún de vós pues crear una fastera Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ayuda al to collaciu a coneutalu cola to fastera Wi-Fi</string>
-    <string name="swap_scan_or_type_url">Una persona necesita escaniar el códigu o escribir la URL nel restolador d\'otru.</string>
+    <string name="swap_scan_or_type_url">Una persona precisa escaniar el códigu o escribir la URL nel restolador d\'otru.</string>
     <string name="swap_choose_apps">Escoyer aplicaciones</string>
     <string name="swap_scan_qr">Escaniar códigu QR</string>
     <string name="swap_people_nearby">Xente averao</string>
@@ -266,7 +266,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="swap_setting_up_wifi">Configurando Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Nun ye visible pente Wi-Fi</string>
     <string name="swap_no_peers_nearby">Nun pudo alcontrase xente averao cola qu\'intercambiar.</string>
-    <string name="swap_attempt_install">Intentar instalación</string>
+    <string name="swap_attempt_install">Tentar d\'instalar</string>
     <string name="swap_not_enabled_description">Enantes d\'intercambiar, el to preséu ha tar visible.</string>
 
     <string name="install_confirm">¿Quies instalar esta aplicación? Tendrá accesu a:</string>

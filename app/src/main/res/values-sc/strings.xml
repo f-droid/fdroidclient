@@ -6,7 +6,7 @@
   <string name="version">Versione</string>
   <string name="delete">Burra</string>
   <string name="enable_nfc_send">Abìlita imbiu NFC…</string>
-  <string name="cache_downloaded">Pachetos cache</string>
+  <string name="cache_downloaded">Mantènne sas aplicatziones in sa cache</string>
   <string name="updates">Agiornamentos</string>
   <string name="other">Àteru</string>
   <string name="update_interval">Intervallu agiornamentu automàticu</string>
@@ -345,5 +345,14 @@
     <string name="download_pending">Isetende pro incumintzare s\'iscarrigamentu…</string>
 
     <string name="downloading_apk">Iscarrighende %1$s</string>
+
+    <string name="system_install_not_supported">S\'installatzione de s\'estensione F-Droid cun permissos de sistema no est, pro como, suportada pro Android 5.1 o prus nou.</string>
+
+    <string name="keep_hour">1 Ora</string>
+    <string name="keep_day">1 Die</string>
+    <string name="keep_week">1 Chida</string>
+    <string name="keep_month">1 Mese</string>
+    <string name="keep_year">1 Annu</string>
+    <string name="keep_forever">Pro semper</string>
 
     </resources>
