@@ -154,7 +154,8 @@ public class InstallManagerService extends Service {
             return START_NOT_STICKY;
         }
 
-        if (!DownloaderService.isQueuedOrActive(urlString)) {
+        if ((flags & START_FLAG_REDELIVERY) == START_FLAG_REDELIVERY
+                && !DownloaderService.isQueuedOrActive(urlString)) {
             Utils.debugLog(TAG, urlString + " finished downloading while InstallManagerService was killed.");
             cancelNotification(urlString);
             return START_NOT_STICKY;
@@ -164,10 +165,10 @@ public class InstallManagerService extends Service {
         Apk apk = new Apk(intent.getParcelableExtra(EXTRA_APK));
         addToActive(urlString, app, apk);
 
-        Notification notification = createNotification(intent.getDataString(), apk).build();
-        notificationManager.notify(urlString.hashCode(), notification);
+        NotificationCompat.Builder builder = createNotificationBuilder(intent.getDataString(), apk);
+        notificationManager.notify(urlString.hashCode(), builder.build());
 
-        registerDownloaderReceivers(urlString);
+        registerDownloaderReceivers(urlString, builder);
 
         File apkFilePath = Utils.getApkDownloadPath(this, intent.getData());
         long apkFileSize = apkFilePath.length();
@@ -214,7 +215,7 @@ public class InstallManagerService extends Service {
         }
     }
 
-    private void registerDownloaderReceivers(String urlString) {
+    private void registerDownloaderReceivers(String urlString, final NotificationCompat.Builder builder) {
         BroadcastReceiver startedReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -224,13 +225,10 @@ public class InstallManagerService extends Service {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String urlString = intent.getDataString();
-                Apk apk = ACTIVE_APKS.get(urlString);
                 int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
                 int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
-                Notification notification = createNotification(urlString, apk)
-                        .setProgress(totalBytes, bytesRead, false)
-                        .build();
-                notificationManager.notify(urlString.hashCode(), notification);
+                builder.setProgress(totalBytes, bytesRead, false);
+                notificationManager.notify(urlString.hashCode(), builder.build());
             }
         };
         BroadcastReceiver completeReceiver = new BroadcastReceiver() {
@@ -242,7 +240,7 @@ public class InstallManagerService extends Service {
                 if (AppDetails.isAppVisible(apk.packageName)) {
                     cancelNotification(urlString);
                 } else {
-                    notifyDownloadComplete(apk, urlString);
+                    notifyDownloadComplete(urlString, builder, apk);
                 }
                 unregisterDownloaderReceivers(urlString);
             }
@@ -269,7 +267,7 @@ public class InstallManagerService extends Service {
         });
     }
 
-    private NotificationCompat.Builder createNotification(String urlString, Apk apk) {
+    private NotificationCompat.Builder createNotificationBuilder(String urlString, Apk apk) {
         int downloadUrlId = urlString.hashCode();
         return new NotificationCompat.Builder(this)
                 .setAutoCancel(false)
@@ -316,7 +314,7 @@ public class InstallManagerService extends Service {
      * Post a notification about a completed download.  {@code packageName} must be a valid
      * and currently in the app index database.
      */
-    private void notifyDownloadComplete(Apk apk, String urlString) {
+    private void notifyDownloadComplete(String urlString, NotificationCompat.Builder builder, Apk apk) {
         String title;
         try {
             PackageManager pm = getPackageManager();
@@ -327,15 +325,12 @@ public class InstallManagerService extends Service {
         }
 
         int downloadUrlId = urlString.hashCode();
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this)
-                        .setAutoCancel(true)
-                        .setContentTitle(title)
-                        .setSmallIcon(android.R.drawable.stat_sys_download_done)
-                        .setContentIntent(getAppDetailsIntent(downloadUrlId, apk))
-                        .setContentText(getString(R.string.tap_to_install));
-        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        nm.notify(downloadUrlId, builder.build());
+        builder.setAutoCancel(true)
+                .setOngoing(false)
+                .setContentTitle(title)
+                .setSmallIcon(android.R.drawable.stat_sys_download_done)
+                .setContentText(getString(R.string.tap_to_install));
+        notificationManager.notify(downloadUrlId, builder.build());
     }
 
     /**
