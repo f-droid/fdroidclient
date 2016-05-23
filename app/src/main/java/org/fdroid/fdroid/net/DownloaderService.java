@@ -30,7 +30,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PatternMatcher;
 import android.os.Process;
-import android.support.v4.content.IntentCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
