@@ -4,6 +4,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
@@ -21,21 +22,17 @@ public class DefaultInstaller extends Installer {
 
     @Override
     protected void installPackage(Uri uri, Uri originatingUri, String packageName) {
-
         sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_STARTED);
 
         Utils.debugLog(TAG, "ACTION_INSTALL uri: " + uri + " file: " + new File(uri.getPath()));
 
-        // TODO: rework for uri
-        File sanitizedFile = null;
+        Uri sanitizedUri;
         try {
-            sanitizedFile = Installer.prepareApkFile(mContext, new File(uri.getPath()), packageName);
+            sanitizedUri = Installer.prepareApkFile(mContext, uri, packageName);
         } catch (Installer.InstallFailedException e) {
-            e.printStackTrace();
+            Log.e(TAG, "prepareApkFile failed", e);
+            return;
         }
-        Uri sanitizedUri = Uri.fromFile(sanitizedFile);
-
-        Utils.debugLog(TAG, "ACTION_INSTALL sanitizedUri: " + sanitizedUri);
 
         Intent installIntent;
         // special case: F-Droid Privileged Extension
@@ -44,14 +41,13 @@ public class DefaultInstaller extends Installer {
             // extension must be signed with the same public key as main F-Droid
             // NOTE: Disabled for debug builds to be able to use official extension from repo
             ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(mContext);
-            if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(sanitizedFile)) {
+            if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(new File(sanitizedUri.getPath()))) {
                 throw new RuntimeException("APK signature of extension not correct!");
             }
 
             installIntent = new Intent(mContext, InstallExtensionDialogActivity.class);
             installIntent.setAction(InstallExtensionDialogActivity.ACTION_INSTALL);
-            installIntent.putExtra(InstallExtensionDialogActivity.EXTRA_INSTALL_APK,
-                    sanitizedFile.getAbsolutePath());
+            installIntent.setData(sanitizedUri);
         } else {
             installIntent = new Intent(mContext, AndroidInstallerActivity.class);
             installIntent.setAction(AndroidInstallerActivity.ACTION_INSTALL_PACKAGE);

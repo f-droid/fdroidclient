@@ -43,6 +43,8 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
+import java.io.File;
+
 import eu.chainfire.libsuperuser.Shell;
 
 /**
@@ -53,7 +55,6 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
     private static final String TAG = "InstallIntoSystem";
 
     public static final String ACTION_INSTALL = "install";
-    public static final String EXTRA_INSTALL_APK = "apk_file";
 
     public static final String ACTION_UNINSTALL = "uninstall";
     public static final String ACTION_POST_INSTALL = "post_install";
@@ -73,7 +74,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
             return;
         }
 
-        apkFile = getIntent().getStringExtra(EXTRA_INSTALL_APK);
+        apkFile = (new File(getIntent().getData().getPath())).getAbsolutePath();
 
         switch (getIntent().getAction()) {
             case ACTION_UNINSTALL:

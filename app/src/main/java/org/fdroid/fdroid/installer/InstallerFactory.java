@@ -40,6 +40,7 @@ public class InstallerFactory {
                 installer = new PrivilegedInstaller(context);
             } else {
                 Log.e(TAG, "PrivilegedInstaller is enabled in prefs, but permissions are not granted!");
+                // TODO: better error handling?
 
                 // fallback to default installer
                 installer = new DefaultInstaller(context);

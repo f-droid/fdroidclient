@@ -37,7 +37,6 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
-import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -81,44 +80,28 @@ public abstract class Installer {
         }
     }
 
-    /**
-     * Callback from Installer. NOTE: This callback can be in a different thread
-     * than the UI thread
-     */
-//    public interface InstallerCallback {
-//
-//        int OPERATION_INSTALL = 1;
-//        int OPERATION_DELETE = 2;
-//
-//        // Avoid using [-1,1] as they may conflict with Activity.RESULT_*
-//        int ERROR_CODE_CANCELED = 2;
-//        int ERROR_CODE_OTHER = 3;
-//        int ERROR_CODE_CANNOT_PARSE = 4;
-//
-//        void onSuccess(int operation);
-//
-//        void onError(int operation, int errorCode);
-//    }
-
     Installer(Context context) {
         this.mContext = context;
         this.mPm = context.getPackageManager();
         localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 
-    public static SanitizedFile prepareApkFile(Context context, File apkFile, String packageName)
+    public static Uri prepareApkFile(Context context, Uri uri, String packageName)
             throws InstallFailedException {
-        SanitizedFile apkToInstall = null;
+
+        File apkFile = new File(uri.getPath());
+
+        SanitizedFile sanitizedApkFile = null;
         try {
             Map<String, Object> attributes = AndroidXMLDecompress.getManifestHeaderAttributes(apkFile.getAbsolutePath());
 
             /* This isn't really needed, but might as well since we have the data already */
             if (attributes.containsKey("packageName") && !TextUtils.equals(packageName, (String) attributes.get("packageName"))) {
-                throw new InstallFailedException(apkFile + " has packageName that clashes with " + packageName);
+                throw new InstallFailedException(uri + " has packageName that clashes with " + packageName);
             }
 
             if (!attributes.containsKey("versionCode")) {
-                throw new InstallFailedException(apkFile + " is missing versionCode!");
+                throw new InstallFailedException(uri + " is missing versionCode!");
             }
             int versionCode = (Integer) attributes.get("versionCode");
             Apk apk = ApkProvider.Helper.find(context, packageName, versionCode, new String[]{
@@ -129,10 +112,10 @@ public abstract class Installer {
              * of the app to prevent attacks based on other apps swapping the file
              * out during the install process. Most likely, apkFile was just downloaded,
              * so it should still be in the RAM disk cache */
-            apkToInstall = SanitizedFile.knownSanitized(File.createTempFile("install-", ".apk",
+            sanitizedApkFile = SanitizedFile.knownSanitized(File.createTempFile("install-", ".apk",
                     context.getFilesDir()));
-            FileUtils.copyFile(apkFile, apkToInstall);
-            if (!verifyApkFile(apkToInstall, apk.hash, apk.hashType)) {
+            FileUtils.copyFile(apkFile, sanitizedApkFile);
+            if (!verifyApkFile(sanitizedApkFile, apk.hash, apk.hashType)) {
                 FileUtils.deleteQuietly(apkFile);
                 throw new InstallFailedException(apkFile + " failed to verify!");
             }
@@ -143,7 +126,7 @@ public abstract class Installer {
             // have access is insecure, because apps with permission to write to the external
             // storage can overwrite the app between F-Droid asking for it to be installed and
             // the installer actually installing it.
-            apkToInstall.setReadable(true, false);
+            sanitizedApkFile.setReadable(true, false);
 
         } catch (NumberFormatException | IOException | NoSuchAlgorithmException e) {
             throw new InstallFailedException(e);
@@ -151,7 +134,7 @@ public abstract class Installer {
             throw new InstallFailedException("F-Droid Privileged can only be updated using an activity!");
         } finally {
             // 20 minutes the start of the install process, delete the file
-            final File apkToDelete = apkToInstall;
+            final File apkToDelete = sanitizedApkFile;
             new Thread() {
                 @Override
                 public void run() {
@@ -167,7 +150,7 @@ public abstract class Installer {
             }.start();
         }
 
-        return apkToInstall;
+        return Uri.fromFile(sanitizedApkFile);
     }
 
     public PendingIntent getPermissionScreen(Apk apk) {
