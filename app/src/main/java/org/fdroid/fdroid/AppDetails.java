@@ -86,7 +86,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.installer.InstallHelper;
+import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.net.Downloader;
@@ -532,7 +532,7 @@ public class AppDetails extends AppCompatActivity {
             Uri localUri =
                     Uri.fromFile(new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH)));
             localBroadcastManager.registerReceiver(installReceiver,
-                    InstallerService.getInstallIntentFilter(localUri));
+                    Installer.getInstallIntentFilter(localUri));
         }
     };
 
@@ -555,12 +555,12 @@ public class AppDetails extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
-                case InstallHelper.ACTION_INSTALL_STARTED: {
+                case Installer.ACTION_INSTALL_STARTED: {
                     headerFragment.startProgress();
                     headerFragment.showIndeterminateProgress(getString(R.string.installing));
                     break;
                 }
-                case InstallHelper.ACTION_INSTALL_COMPLETE: {
+                case Installer.ACTION_INSTALL_COMPLETE: {
                     headerFragment.removeProgress();
                     localBroadcastManager.unregisterReceiver(this);
 
@@ -569,7 +569,7 @@ public class AppDetails extends AppCompatActivity {
                     onAppChanged();
                     break;
                 }
-                case InstallHelper.ACTION_INSTALL_INTERRUPTED: {
+                case Installer.ACTION_INSTALL_INTERRUPTED: {
                     headerFragment.removeProgress();
                     localBroadcastManager.unregisterReceiver(this);
 
@@ -613,9 +613,9 @@ public class AppDetails extends AppCompatActivity {
 //                    });
                     break;
                 }
-                case InstallHelper.ACTION_INSTALL_USER_INTERACTION: {
+                case Installer.ACTION_INSTALL_USER_INTERACTION: {
                     PendingIntent installPendingIntent =
-                            intent.getParcelableExtra(InstallHelper.EXTRA_USER_INTERACTION_PI);
+                            intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
 
                     try {
                         installPendingIntent.send();
@@ -636,19 +636,19 @@ public class AppDetails extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
-                case InstallHelper.ACTION_UNINSTALL_STARTED: {
+                case Installer.ACTION_UNINSTALL_STARTED: {
                     headerFragment.startProgress();
                     headerFragment.showIndeterminateProgress(getString(R.string.uninstalling));
                     break;
                 }
-                case InstallHelper.ACTION_UNINSTALL_COMPLETE: {
+                case Installer.ACTION_UNINSTALL_COMPLETE: {
                     headerFragment.removeProgress();
                     localBroadcastManager.unregisterReceiver(this);
 
                     onAppChanged();
                     break;
                 }
-                case InstallHelper.ACTION_UNINSTALL_INTERRUPTED: {
+                case Installer.ACTION_UNINSTALL_INTERRUPTED: {
                     headerFragment.removeProgress();
                     localBroadcastManager.unregisterReceiver(this);
 
@@ -691,9 +691,9 @@ public class AppDetails extends AppCompatActivity {
 //                    });
                     break;
                 }
-                case InstallHelper.ACTION_UNINSTALL_USER_INTERACTION: {
+                case Installer.ACTION_UNINSTALL_USER_INTERACTION: {
                     PendingIntent uninstallPendingIntent =
-                            intent.getParcelableExtra(InstallHelper.EXTRA_USER_INTERACTION_PI);
+                            intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
 
                     try {
                         uninstallPendingIntent.send();
@@ -1038,7 +1038,7 @@ public class AppDetails extends AppCompatActivity {
 
     private void uninstallApk(String packageName) {
         localBroadcastManager.registerReceiver(uninstallReceiver,
-                InstallerService.getUninstallIntentFilter(packageName));
+                Installer.getUninstallIntentFilter(packageName));
         InstallerService.uninstall(context, packageName);
     }
 

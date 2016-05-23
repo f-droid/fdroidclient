@@ -270,7 +270,7 @@ public final class Utils {
      * This location is only for caching, do not install directly from this location
      * because if the file is on the External Storage, any other app could swap out
      * the APK while the install was in process, allowing malware to install things.
-     * Using {@link org.fdroid.fdroid.installer.Installer#installPackage(File, String, String)}
+     * Using {@link Installer#installPackage(File, String, String)}
      * is fine since that does the right thing.
      */
     public static File getApkCacheDir(Context context) {

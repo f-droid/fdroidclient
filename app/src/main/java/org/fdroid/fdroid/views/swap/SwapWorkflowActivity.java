@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -37,12 +38,14 @@ import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
@@ -786,25 +789,49 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void handleDownloadComplete(File apkFile, String packageName, String urlString) {
+        Uri originatingUri = Uri.parse(urlString);
+        Uri localUri = Uri.fromFile(apkFile);
 
-        try {
-            Installer.getActivityInstaller(this, new Installer.InstallerCallback() {
-                @Override
-                public void onSuccess(int operation) {
-                    // TODO: Don't reload the view weely-neely, but rather get the view to listen
-                    // for broadcasts that say the install was complete.
-                    showRelevantView(true);
-                }
-
-                @Override
-                public void onError(int operation, int errorCode) {
-                    // TODO: Boo!
-                }
-            }).installPackage(apkFile, packageName, urlString);
-            localBroadcastManager.unregisterReceiver(downloadCompleteReceiver);
-        } catch (Installer.InstallFailedException e) {
-            // TODO: Handle exception properly
-        }
+        localBroadcastManager.registerReceiver(installReceiver,
+                Installer.getInstallIntentFilter(Uri.fromFile(apkFile)));
+        InstallerService.install(this, localUri, originatingUri, packageName);
     }
+
+    private final BroadcastReceiver installReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+        switch (intent.getAction()) {
+            case Installer.ACTION_INSTALL_STARTED: {
+                break;
+            }
+            case Installer.ACTION_INSTALL_COMPLETE: {
+                localBroadcastManager.unregisterReceiver(this);
+
+                showRelevantView(true);
+                break;
+            }
+            case Installer.ACTION_INSTALL_INTERRUPTED: {
+                localBroadcastManager.unregisterReceiver(this);
+                // TODO: handle errors!
+                break;
+            }
+            case Installer.ACTION_INSTALL_USER_INTERACTION: {
+                PendingIntent installPendingIntent =
+                        intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+
+                try {
+                    installPendingIntent.send();
+                } catch (PendingIntent.CanceledException e) {
+                    Log.e(TAG, "PI canceled", e);
+                }
+
+                break;
+            }
+            default: {
+                throw new RuntimeException("intent action not handled!");
+            }
+        }
+        }
+    };
 
 }

@@ -168,7 +168,7 @@ public class InstallManagerService extends Service {
             sendBroadcast(intent.getData(), Downloader.ACTION_STARTED, apkFilePath);
             sendBroadcast(intent.getData(), Downloader.ACTION_COMPLETE, apkFilePath);
         } else {
-            Utils.debugLog(TAG, " delete and download again " + urlString + " " + apkFilePath);
+            Utils.debugLog(TAG, "delete and download again " + urlString + " " + apkFilePath);
             apkFilePath.delete();
             DownloaderService.queue(this, urlString);
         }
@@ -233,14 +233,15 @@ public class InstallManagerService extends Service {
                 unregisterDownloaderReceivers(intent.getDataString());
 
                 registerInstallerReceivers(localUri);
-                InstallerService.install(context, localUri, originatingUri);
+                Apk apk = ACTIVE_APKS.get(originatingUri.toString());
+                InstallerService.install(context, localUri, originatingUri, apk.packageName);
             }
         };
         BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String urlString = intent.getDataString();
-                Apk apk = removeFromActive(urlString);
+                removeFromActive(urlString);
                 unregisterDownloaderReceivers(urlString);
                 cancelNotification(urlString);
             }
@@ -266,16 +267,12 @@ public class InstallManagerService extends Service {
             @Override
             public void onReceive(Context context, Intent intent) {
                 switch (intent.getAction()) {
-                    case InstallHelper.ACTION_INSTALL_STARTED: {
-                        Utils.debugLog(TAG, "ACTION_INSTALL_STARTED");
-
+                    case Installer.ACTION_INSTALL_STARTED: {
                         break;
                     }
-                    case InstallHelper.ACTION_INSTALL_COMPLETE: {
-                        Utils.debugLog(TAG, "ACTION_INSTALL_COMPLETE");
-
+                    case Installer.ACTION_INSTALL_COMPLETE: {
                         Uri originatingUri =
-                                intent.getParcelableExtra(InstallHelper.EXTRA_ORIGINATING_URI);
+                                intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
                         String urlString = originatingUri.toString();
                         removeFromActive(urlString);
 
@@ -283,29 +280,24 @@ public class InstallManagerService extends Service {
 
                         break;
                     }
-                    case InstallHelper.ACTION_INSTALL_INTERRUPTED: {
-                        Utils.debugLog(TAG, "ACTION_INSTALL_INTERRUPTED");
-
+                    case Installer.ACTION_INSTALL_INTERRUPTED: {
                         localBroadcastManager.unregisterReceiver(this);
 
                         break;
                     }
-                    case InstallHelper.ACTION_INSTALL_USER_INTERACTION: {
-                        Utils.debugLog(TAG, "ACTION_INSTALL_USER_INTERACTION");
-
+                    case Installer.ACTION_INSTALL_USER_INTERACTION: {
                         Uri originatingUri =
-                                intent.getParcelableExtra(InstallHelper.EXTRA_ORIGINATING_URI);
+                                intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
                         PendingIntent installPendingIntent =
-                                intent.getParcelableExtra(InstallHelper.EXTRA_USER_INTERACTION_PI);
-                        // TODO
-                        String urlString = originatingUri.toString();
-                        Apk apk = getFromActive(urlString);
-                        Utils.debugLog(TAG, "urlString: " + urlString);
+                                intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                        Utils.debugLog(TAG, "originatingUri: " + originatingUri);
 
+                        Apk apk = getFromActive(originatingUri.toString());
+                        // show notification if app details is not visible
                         if (AppDetails.isAppVisible(apk.packageName)) {
-                            cancelNotification(urlString);
+                            cancelNotification(originatingUri.toString());
                         } else {
-                            notifyDownloadComplete(apk, urlString, installPendingIntent);
+                            notifyDownloadComplete(apk, originatingUri.toString(), installPendingIntent);
                         }
 
                         break;
@@ -318,7 +310,7 @@ public class InstallManagerService extends Service {
         };
 
         localBroadcastManager.registerReceiver(installReceiver,
-                InstallerService.getInstallIntentFilter(uri));
+                Installer.getInstallIntentFilter(uri));
     }
 
     private NotificationCompat.Builder createNotificationBuilder(String urlString, Apk apk) {
@@ -327,7 +319,7 @@ public class InstallManagerService extends Service {
                 .setAutoCancel(false)
                 .setOngoing(true)
                 .setContentIntent(getAppDetailsIntent(downloadUrlId, apk))
-                .setContentTitle(getString(R.string.downloading_apk, getAppName(urlString, apk)))
+                .setContentTitle(getString(R.string.downloading_apk, getAppName(apk)))
                 .addAction(R.drawable.ic_cancel_black_24dp, getString(R.string.cancel),
                         DownloaderService.getCancelPendingIntent(this, urlString))
                 .setSmallIcon(android.R.drawable.stat_sys_download)
@@ -335,7 +327,7 @@ public class InstallManagerService extends Service {
                 .setProgress(100, 0, true);
     }
 
-    private String getAppName(String urlString, Apk apk) {
+    private String getAppName(Apk apk) {
         App app = ACTIVE_APPS.get(apk.packageName);
         return app.name;
     }
@@ -371,7 +363,7 @@ public class InstallManagerService extends Service {
             title = String.format(getString(R.string.tap_to_update_format),
                     pm.getApplicationLabel(pm.getApplicationInfo(apk.packageName, 0)));
         } catch (PackageManager.NameNotFoundException e) {
-            title = String.format(getString(R.string.tap_to_install_format), getAppName(urlString, apk));
+            title = String.format(getString(R.string.tap_to_install_format), getAppName(apk));
         }
 
         int downloadUrlId = urlString.hashCode();

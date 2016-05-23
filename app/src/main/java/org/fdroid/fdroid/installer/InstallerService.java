@@ -18,26 +18,20 @@
 
 package org.fdroid.fdroid.installer;
 
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import android.os.PatternMatcher;
 import android.os.Process;
 import android.support.v4.content.LocalBroadcastManager;
-import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
-
-import java.io.File;
 
 /**
  * InstallerService based on DownloaderService
@@ -51,6 +45,7 @@ public class InstallerService extends Service {
     private volatile Looper serviceLooper;
     private static volatile ServiceHandler serviceHandler;
     private LocalBroadcastManager localBroadcastManager;
+    private Installer installer;
 
     private final class ServiceHandler extends Handler {
         ServiceHandler(Looper looper) {
@@ -76,6 +71,7 @@ public class InstallerService extends Service {
         serviceLooper = thread.getLooper();
         serviceHandler = new ServiceHandler(serviceLooper);
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        installer = InstallerFactory.create(this);
     }
 
     @Override
@@ -92,7 +88,7 @@ public class InstallerService extends Service {
             serviceHandler.sendMessage(msg);
             Utils.debugLog(TAG, "Start install of " + uri.toString());
         } else if (ACTION_UNINSTALL.equals(intent.getAction())) {
-            String packageName = intent.getStringExtra(InstallHelper.EXTRA_UNINSTALL_PACKAGE_NAME);
+            String packageName = intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
 
             Message msg = serviceHandler.obtainMessage();
             msg.arg1 = startId;
@@ -125,140 +121,37 @@ public class InstallerService extends Service {
         switch (intent.getAction()) {
             case ACTION_INSTALL: {
                 Uri uri = intent.getData();
-                Uri originatingUri = intent.getParcelableExtra(InstallHelper.EXTRA_ORIGINATING_URI);
-                sendBroadcastInstall(uri, originatingUri, InstallHelper.ACTION_INSTALL_STARTED);
+                Uri originatingUri = intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
+                String packageName = intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
 
-                Utils.debugLog(TAG, "ACTION_INSTALL uri: " + uri + " file: " + new File(uri.getPath()));
-
-                // TODO: rework for uri
-                Uri sanitizedUri = null;
-                try {
-                    File file = InstallHelper.preparePackage(this, new File(uri.getPath()), null,
-                            originatingUri.toString());
-                    sanitizedUri = Uri.fromFile(file);
-                } catch (Installer.InstallFailedException e) {
-                    e.printStackTrace();
-                }
-                Utils.debugLog(TAG, "ACTION_INSTALL sanitizedUri: " + sanitizedUri);
-
-
-                Intent installIntent = new Intent(this, AndroidInstallerActivity.class);
-                installIntent.setAction(AndroidInstallerActivity.ACTION_INSTALL_PACKAGE);
-                installIntent.putExtra(AndroidInstallerActivity.EXTRA_ORIGINATING_URI, originatingUri);
-                installIntent.setData(sanitizedUri);
-                PendingIntent installPendingIntent = PendingIntent.getActivity(this.getApplicationContext(),
-                        uri.hashCode(),
-                        installIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT);
-
-                sendBroadcastInstall(uri, originatingUri, InstallHelper.ACTION_INSTALL_USER_INTERACTION,
-                        installPendingIntent);
-
+                installer.installPackage(uri, originatingUri, packageName);
                 break;
             }
 
             case ACTION_UNINSTALL: {
                 String packageName =
-                        intent.getStringExtra(InstallHelper.EXTRA_UNINSTALL_PACKAGE_NAME);
-                sendBroadcastUninstall(packageName, InstallHelper.ACTION_UNINSTALL_STARTED);
+                        intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
 
-
-                Intent installIntent = new Intent(this, AndroidInstallerActivity.class);
-                installIntent.setAction(AndroidInstallerActivity.ACTION_UNINSTALL_PACKAGE);
-                installIntent.putExtra(
-                        AndroidInstallerActivity.EXTRA_UNINSTALL_PACKAGE_NAME, packageName);
-                PendingIntent uninstallPendingIntent = PendingIntent.getActivity(this.getApplicationContext(),
-                        packageName.hashCode(),
-                        installIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT);
-
-                sendBroadcastUninstall(packageName, InstallHelper.ACTION_UNINSTALL_USER_INTERACTION,
-                        uninstallPendingIntent);
-
-
+                installer.uninstallPackage(packageName);
                 break;
             }
         }
     }
 
-    private void sendBroadcastInstall(Uri uri, Uri originatingUri, String action,
-                                      PendingIntent pendingIntent) {
-        sendBroadcastInstall(uri, originatingUri, action, pendingIntent, null);
-    }
-
-    private void sendBroadcastInstall(Uri uri, Uri originatingUri, String action) {
-        sendBroadcastInstall(uri, originatingUri, action, null, null);
-    }
-
-    private void sendBroadcastInstall(Uri uri, Uri originatingUri, String action,
-                                      PendingIntent pendingIntent, String errorMessage) {
-        Intent intent = new Intent(action);
-        intent.setData(uri);
-        intent.putExtra(InstallHelper.EXTRA_ORIGINATING_URI, originatingUri);
-        intent.putExtra(InstallHelper.EXTRA_USER_INTERACTION_PI, pendingIntent);
-        if (!TextUtils.isEmpty(errorMessage)) {
-            intent.putExtra(InstallHelper.EXTRA_ERROR_MESSAGE, errorMessage);
-        }
-        localBroadcastManager.sendBroadcast(intent);
-    }
-
-    private void sendBroadcastUninstall(String packageName, String action) {
-        sendBroadcastUninstall(packageName, action, null, null);
-    }
-
-    private void sendBroadcastUninstall(String packageName, String action,
-                                        PendingIntent pendingIntent) {
-        sendBroadcastUninstall(packageName, action, pendingIntent, null);
-    }
-
-    private void sendBroadcastUninstall(String packageName, String action,
-                                        PendingIntent pendingIntent, String errorMessage) {
-        Uri uri = Uri.fromParts("package", packageName, null);
-
-        Intent intent = new Intent(action);
-        intent.setData(uri); // for broadcast filtering
-        intent.putExtra(InstallHelper.EXTRA_UNINSTALL_PACKAGE_NAME, packageName);
-        intent.putExtra(InstallHelper.EXTRA_USER_INTERACTION_PI, pendingIntent);
-        if (!TextUtils.isEmpty(errorMessage)) {
-            intent.putExtra(InstallHelper.EXTRA_ERROR_MESSAGE, errorMessage);
-        }
-        localBroadcastManager.sendBroadcast(intent);
-    }
-
-    public static void install(Context context, Uri uri, Uri originatingUri) {
+    public static void install(Context context, Uri uri, Uri originatingUri, String packageName) {
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(uri);
-        intent.putExtra(InstallHelper.EXTRA_ORIGINATING_URI, originatingUri);
+        intent.putExtra(Installer.EXTRA_ORIGINATING_URI, originatingUri);
+        intent.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
         context.startService(intent);
     }
 
     public static void uninstall(Context context, String packageName) {
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_UNINSTALL);
-        intent.putExtra(InstallHelper.EXTRA_UNINSTALL_PACKAGE_NAME, packageName);
+        intent.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
         context.startService(intent);
     }
 
-    public static IntentFilter getInstallIntentFilter(Uri uri) {
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(InstallHelper.ACTION_INSTALL_STARTED);
-        intentFilter.addAction(InstallHelper.ACTION_INSTALL_COMPLETE);
-        intentFilter.addAction(InstallHelper.ACTION_INSTALL_INTERRUPTED);
-        intentFilter.addAction(InstallHelper.ACTION_INSTALL_USER_INTERACTION);
-        intentFilter.addDataScheme(uri.getScheme());
-        intentFilter.addDataPath(uri.getPath(), PatternMatcher.PATTERN_LITERAL);
-        return intentFilter;
-    }
-
-    public static IntentFilter getUninstallIntentFilter(String packageName) {
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(InstallHelper.ACTION_UNINSTALL_STARTED);
-        intentFilter.addAction(InstallHelper.ACTION_UNINSTALL_COMPLETE);
-        intentFilter.addAction(InstallHelper.ACTION_UNINSTALL_INTERRUPTED);
-        intentFilter.addAction(InstallHelper.ACTION_UNINSTALL_USER_INTERACTION);
-        intentFilter.addDataScheme("package");
-        intentFilter.addDataPath(packageName, PatternMatcher.PATTERN_LITERAL);
-        return intentFilter;
-    }
 }

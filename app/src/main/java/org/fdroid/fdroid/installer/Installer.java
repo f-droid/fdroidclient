@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Dominik Schürmann <dominik@dominikschuermann.de>
+ * Copyright (C) 2016 Dominik Schürmann <dominik@dominikschuermann.de>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,47 +19,55 @@
 
 package org.fdroid.fdroid.installer;
 
-import android.app.Activity;
-import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.PatternMatcher;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.AndroidXMLDecompress;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Hasher;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
-import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
+import org.fdroid.fdroid.privileged.views.AppDiff;
+import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
+import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
 
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
-/**
- * Abstract Installer class. Also provides static methods to automatically
- * instantiate a working Installer based on F-Droids granted permissions.
- */
 public abstract class Installer {
     final Context mContext;
     final PackageManager mPm;
-    final InstallerCallback mCallback;
+    private LocalBroadcastManager localBroadcastManager;
 
-    private static final String TAG = "Installer";
+    public static final String ACTION_INSTALL_STARTED = "org.fdroid.fdroid.installer.Installer.action.INSTALL_STARTED";
+    public static final String ACTION_INSTALL_COMPLETE = "org.fdroid.fdroid.installer.Installer.action.INSTALL_COMPLETE";
+    public static final String ACTION_INSTALL_INTERRUPTED = "org.fdroid.fdroid.installer.Installer.action.INSTALL_INTERRUPTED";
+    public static final String ACTION_INSTALL_USER_INTERACTION = "org.fdroid.fdroid.installer.Installer.action.INSTALL_USER_INTERACTION";
+
+    public static final String ACTION_UNINSTALL_STARTED = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_STARTED";
+    public static final String ACTION_UNINSTALL_COMPLETE = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_COMPLETE";
+    public static final String ACTION_UNINSTALL_INTERRUPTED = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_INTERRUPTED";
+    public static final String ACTION_UNINSTALL_USER_INTERACTION = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_USER_INTERACTION";
 
     /**
-     * This is thrown when an Installer is not compatible with the Android OS it
-     * is running on. This could be due to a broken superuser in case of
-     * RootInstaller or due to an incompatible Android version in case of
-     * SystemPermissionInstaller
+     * Same as http://developer.android.com/reference/android/content/Intent.html#EXTRA_ORIGINATING_URI
+     * In InstallManagerService often called urlString
      */
+    public static final String EXTRA_ORIGINATING_URI = "org.fdroid.fdroid.installer.InstallerService.extra.ORIGINATING_URI";
+    public static final String EXTRA_PACKAGE_NAME = "org.fdroid.fdroid.installer.InstallerService.extra.PACKAGE_NAME";
+    public static final String EXTRA_USER_INTERACTION_PI = "org.fdroid.fdroid.installer.InstallerService.extra.USER_INTERACTION_PI";
+    public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MESSAGE";
+
     public static class InstallFailedException extends Exception {
 
         private static final long serialVersionUID = -8343133906463328027L;
@@ -77,97 +85,28 @@ public abstract class Installer {
      * Callback from Installer. NOTE: This callback can be in a different thread
      * than the UI thread
      */
-    public interface InstallerCallback {
+//    public interface InstallerCallback {
+//
+//        int OPERATION_INSTALL = 1;
+//        int OPERATION_DELETE = 2;
+//
+//        // Avoid using [-1,1] as they may conflict with Activity.RESULT_*
+//        int ERROR_CODE_CANCELED = 2;
+//        int ERROR_CODE_OTHER = 3;
+//        int ERROR_CODE_CANNOT_PARSE = 4;
+//
+//        void onSuccess(int operation);
+//
+//        void onError(int operation, int errorCode);
+//    }
 
-        int OPERATION_INSTALL = 1;
-        int OPERATION_DELETE  = 2;
-
-        // Avoid using [-1,1] as they may conflict with Activity.RESULT_*
-        int ERROR_CODE_CANCELED     = 2;
-        int ERROR_CODE_OTHER        = 3;
-        int ERROR_CODE_CANNOT_PARSE = 4;
-
-        void onSuccess(int operation);
-
-        void onError(int operation, int errorCode);
-    }
-
-    Installer(Context context, PackageManager pm, InstallerCallback callback)
-            throws InstallFailedException {
+    Installer(Context context) {
         this.mContext = context;
-        this.mPm = pm;
-        this.mCallback = callback;
+        this.mPm = context.getPackageManager();
+        localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 
-    public static Installer getActivityInstaller(Activity activity, InstallerCallback callback) {
-        return getActivityInstaller(activity, activity.getPackageManager(), callback);
-    }
-
-    /**
-     * Creates a new Installer for installing/deleting processes starting from
-     * an Activity
-     */
-    public static Installer getActivityInstaller(Activity activity, PackageManager pm,
-            InstallerCallback callback) {
-
-        // system permissions and pref enabled -> SystemInstaller
-        boolean isSystemInstallerEnabled = Preferences.get().isPrivilegedInstallerEnabled();
-        if (isSystemInstallerEnabled) {
-            if (PrivilegedInstaller.isExtensionInstalledCorrectly(activity)
-                    == PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES) {
-                Utils.debugLog(TAG, "system permissions -> SystemInstaller");
-
-                try {
-                    return new PrivilegedInstaller(activity, pm, callback);
-                } catch (InstallFailedException e) {
-                    Log.e(TAG, "Android not compatible with SystemInstaller!", e);
-                }
-            } else {
-                Log.e(TAG, "SystemInstaller is enabled in prefs, but system-perms are not granted!");
-            }
-        }
-
-        // else -> DefaultInstaller
-        if (android.os.Build.VERSION.SDK_INT >= 14) {
-            // Default installer on Android >= 4.0
-            try {
-                Utils.debugLog(TAG, "try default installer for android >= 14");
-
-                return new DefaultSdk14Installer(activity, pm, callback);
-            } catch (InstallFailedException e) {
-                Log.e(TAG, "Android not compatible with DefaultInstallerSdk14!", e);
-            }
-        } else {
-            // Default installer on Android < 4.0 (android-14)
-            try {
-                Utils.debugLog(TAG, "try default installer for android < 14");
-
-                return new DefaultInstaller(activity, pm, callback);
-            } catch (InstallFailedException e) {
-                Log.e(TAG, "Android not compatible with DefaultInstaller!", e);
-            }
-        }
-
-        // this should not happen!
-        return null;
-    }
-
-    /**
-     * Checks the APK file against the provided hash, returning whether it is a match.
-     */
-    public static boolean verifyApkFile(File apkFile, String hash, String hashType)
-            throws NoSuchAlgorithmException {
-        if (!apkFile.exists()) {
-            return false;
-        }
-        Hasher hasher = new Hasher(hashType, apkFile);
-        return hasher.match(hash);
-    }
-
-    /**
-     * This is the safe, single point of entry for submitting an APK file to be installed.
-     */
-    public void installPackage(File apkFile, String packageName, String urlString)
+    public static SanitizedFile prepareApkFile(Context context, File apkFile, String packageName)
             throws InstallFailedException {
         SanitizedFile apkToInstall = null;
         try {
@@ -182,7 +121,7 @@ public abstract class Installer {
                 throw new InstallFailedException(apkFile + " is missing versionCode!");
             }
             int versionCode = (Integer) attributes.get("versionCode");
-            Apk apk = ApkProvider.Helper.find(mContext, packageName, versionCode, new String[]{
+            Apk apk = ApkProvider.Helper.find(context, packageName, versionCode, new String[]{
                     ApkProvider.DataColumns.HASH,
                     ApkProvider.DataColumns.HASH_TYPE,
             });
@@ -190,7 +129,8 @@ public abstract class Installer {
              * of the app to prevent attacks based on other apps swapping the file
              * out during the install process. Most likely, apkFile was just downloaded,
              * so it should still be in the RAM disk cache */
-            apkToInstall = SanitizedFile.knownSanitized(File.createTempFile("install-", ".apk", mContext.getFilesDir()));
+            apkToInstall = SanitizedFile.knownSanitized(File.createTempFile("install-", ".apk",
+                    context.getFilesDir()));
             FileUtils.copyFile(apkFile, apkToInstall);
             if (!verifyApkFile(apkToInstall, apk.hash, apk.hashType)) {
                 FileUtils.deleteQuietly(apkFile);
@@ -198,36 +138,14 @@ public abstract class Installer {
             }
             apkFile = null; // ensure this is not used now that its copied to apkToInstall
 
-            // special case: F-Droid Privileged Extension
-            if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
-
-                // extension must be signed with the same public key as main F-Droid
-                // NOTE: Disabled for debug builds to be able to use official extension from repo
-                ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(mContext);
-                if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(apkToInstall)) {
-                    throw new InstallFailedException("APK signature of extension not correct!");
-                }
-
-                Activity activity = (Activity) mContext;
-                Intent installIntent = new Intent(activity, InstallExtensionDialogActivity.class);
-                installIntent.setAction(InstallExtensionDialogActivity.ACTION_INSTALL);
-                installIntent.putExtra(InstallExtensionDialogActivity.EXTRA_INSTALL_APK, apkToInstall.getAbsolutePath());
-                activity.startActivity(installIntent);
-                return;
-            }
-
             // Need the apk to be world readable, so that the installer is able to read it.
             // Note that saving it into external storage for the purpose of letting the installer
             // have access is insecure, because apps with permission to write to the external
             // storage can overwrite the app between F-Droid asking for it to be installed and
             // the installer actually installing it.
             apkToInstall.setReadable(true, false);
-            installPackageInternal(apkToInstall);
 
-            NotificationManager nm = (NotificationManager)
-                    mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-            nm.cancel(urlString.hashCode());
-        } catch (NumberFormatException | NoSuchAlgorithmException | IOException e) {
+        } catch (NumberFormatException | IOException | NoSuchAlgorithmException e) {
             throw new InstallFailedException(e);
         } catch (ClassCastException e) {
             throw new InstallFailedException("F-Droid Privileged can only be updated using an activity!");
@@ -248,41 +166,139 @@ public abstract class Installer {
                 }
             }.start();
         }
+
+        return apkToInstall;
     }
 
-    public void deletePackage(String packageName) throws InstallFailedException {
-        // check if package exists before proceeding...
-        try {
-            mPm.getPackageInfo(packageName, 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, "Couldn't find package " + packageName + " to delete.");
-            return;
-        }
-
-        // special case: F-Droid Privileged Extension
-        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
-            Activity activity;
-            try {
-                activity = (Activity) mContext;
-            } catch (ClassCastException e) {
-                Utils.debugLog(TAG, "F-Droid Privileged can only be uninstalled using an activity!");
-                return;
-            }
-
-            Intent uninstallIntent = new Intent(activity, InstallExtensionDialogActivity.class);
-            uninstallIntent.setAction(InstallExtensionDialogActivity.ACTION_UNINSTALL);
-            activity.startActivity(uninstallIntent);
-            return;
-        }
-
-        deletePackageInternal(packageName);
+    public PendingIntent getPermissionScreen(Apk apk) {
+        // old code:
+//        Uri packageUri = Uri.fromFile(apkFile);
+//        int count = newPermissionCount(packageUri);
+//        if (count < 0) {
+//            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+//                    InstallerCallback.ERROR_CODE_CANNOT_PARSE);
+//            return;
+//        }
+//        if (count > 0) {
+//            Intent intent = new Intent(mContext, InstallConfirmActivity.class);
+//            intent.setData(packageUri);
+//            mActivity.startActivityForResult(intent, REQUEST_CONFIRM_PERMS);
+//        } else {
+//            try {
+//                doInstallPackageInternal(packageUri);
+//            } catch (InstallFailedException e) {
+//                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+//                        InstallerCallback.ERROR_CODE_OTHER);
+//            }
+//        }
+        return null;
     }
 
-    protected abstract void installPackageInternal(File apkFile)
-            throws InstallFailedException;
 
-    protected abstract void deletePackageInternal(String packageName)
-            throws InstallFailedException;
+    private int newPermissionCount(Uri packageUri) {
+        AppDiff appDiff = new AppDiff(mContext.getPackageManager(), packageUri);
+        if (appDiff.mPkgInfo == null) {
+            // could not get diff because we couldn't parse the package
+            return -1;
+        }
+        AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.mPkgInfo);
+        if (appDiff.mInstalledAppInfo != null) {
+            // update to an existing app
+            return perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW);
+        }
+        // default: even if there aren't any permissions, we want to make the
+        // user always confirm installing new apps
+        return 1;
+    }
 
-    public abstract boolean handleOnActivityResult(int requestCode, int resultCode, Intent data);
+    /**
+     * Checks the APK file against the provided hash, returning whether it is a match.
+     */
+    public static boolean verifyApkFile(File apkFile, String hash, String hashType)
+            throws NoSuchAlgorithmException {
+        if (!apkFile.exists()) {
+            return false;
+        }
+        Hasher hasher = new Hasher(hashType, apkFile);
+        return hasher.match(hash);
+    }
+
+    public void sendBroadcastInstall(Uri uri, Uri originatingUri, String action,
+                                     PendingIntent pendingIntent) {
+        sendBroadcastInstall(uri, originatingUri, action, pendingIntent, null);
+    }
+
+    public void sendBroadcastInstall(Uri uri, Uri originatingUri, String action) {
+        sendBroadcastInstall(uri, originatingUri, action, null, null);
+    }
+
+    public void sendBroadcastInstall(Uri uri, Uri originatingUri, String action, String errorMessage) {
+        sendBroadcastInstall(uri, originatingUri, action, null, errorMessage);
+    }
+
+    public void sendBroadcastInstall(Uri uri, Uri originatingUri, String action,
+                                     PendingIntent pendingIntent, String errorMessage) {
+        Intent intent = new Intent(action);
+        intent.setData(uri);
+        intent.putExtra(Installer.EXTRA_ORIGINATING_URI, originatingUri);
+        intent.putExtra(Installer.EXTRA_USER_INTERACTION_PI, pendingIntent);
+        if (!TextUtils.isEmpty(errorMessage)) {
+            intent.putExtra(Installer.EXTRA_ERROR_MESSAGE, errorMessage);
+        }
+        localBroadcastManager.sendBroadcast(intent);
+    }
+
+    public void sendBroadcastUninstall(String packageName, String action, String errorMessage) {
+        sendBroadcastUninstall(packageName, action, null, errorMessage);
+    }
+
+    public void sendBroadcastUninstall(String packageName, String action) {
+        sendBroadcastUninstall(packageName, action, null, null);
+    }
+
+    public void sendBroadcastUninstall(String packageName, String action,
+                                       PendingIntent pendingIntent) {
+        sendBroadcastUninstall(packageName, action, pendingIntent, null);
+    }
+
+    public void sendBroadcastUninstall(String packageName, String action,
+                                       PendingIntent pendingIntent, String errorMessage) {
+        Uri uri = Uri.fromParts("package", packageName, null);
+
+        Intent intent = new Intent(action);
+        intent.setData(uri); // for broadcast filtering
+        intent.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
+        intent.putExtra(Installer.EXTRA_USER_INTERACTION_PI, pendingIntent);
+        if (!TextUtils.isEmpty(errorMessage)) {
+            intent.putExtra(Installer.EXTRA_ERROR_MESSAGE, errorMessage);
+        }
+        localBroadcastManager.sendBroadcast(intent);
+    }
+
+    public static IntentFilter getInstallIntentFilter(Uri uri) {
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Installer.ACTION_INSTALL_STARTED);
+        intentFilter.addAction(Installer.ACTION_INSTALL_COMPLETE);
+        intentFilter.addAction(Installer.ACTION_INSTALL_INTERRUPTED);
+        intentFilter.addAction(Installer.ACTION_INSTALL_USER_INTERACTION);
+        intentFilter.addDataScheme(uri.getScheme());
+        intentFilter.addDataPath(uri.getPath(), PatternMatcher.PATTERN_LITERAL);
+        return intentFilter;
+    }
+
+    public static IntentFilter getUninstallIntentFilter(String packageName) {
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Installer.ACTION_UNINSTALL_STARTED);
+        intentFilter.addAction(Installer.ACTION_UNINSTALL_COMPLETE);
+        intentFilter.addAction(Installer.ACTION_UNINSTALL_INTERRUPTED);
+        intentFilter.addAction(Installer.ACTION_UNINSTALL_USER_INTERACTION);
+        intentFilter.addDataScheme("package");
+        intentFilter.addDataPath(packageName, PatternMatcher.PATTERN_LITERAL);
+        return intentFilter;
+    }
+
+    protected abstract void installPackage(Uri uri, Uri originatingUri, String packageName);
+
+    protected abstract void uninstallPackage(String packageName);
+
 }

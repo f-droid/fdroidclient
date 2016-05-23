@@ -28,8 +28,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.LocalBroadcastManager;
-import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
@@ -49,18 +47,19 @@ public class AndroidInstallerActivity extends FragmentActivity {
     private static final int REQUEST_CODE_INSTALL = 0;
     private static final int REQUEST_CODE_UNINSTALL = 1;
 
-    private LocalBroadcastManager localBroadcastManager;
-
     private Uri mInstallOriginatingUri;
     private Uri mInstallUri;
 
     private String mUninstallPackageName;
 
+    // for the broadcasts
+    private DefaultInstaller installer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        installer = new DefaultInstaller(this);
 
         Intent intent = getIntent();
         String action = intent.getAction();
@@ -131,12 +130,12 @@ public class AndroidInstallerActivity extends FragmentActivity {
             startActivityForResult(intent, REQUEST_CODE_INSTALL);
         } catch (ActivityNotFoundException e) {
             Log.e(TAG, "ActivityNotFoundException", e);
-            sendBroadcastInstall(uri, originatingUri, InstallHelper.ACTION_INSTALL_INTERRUPTED,
+            installer.sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
                     "This Android rom does not support ACTION_INSTALL_PACKAGE!");
             finish();
         }
-        sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
-                InstallHelper.ACTION_INSTALL_STARTED);
+        installer.sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
+                Installer.ACTION_INSTALL_STARTED);
     }
 
     protected void uninstallPackage(String packageName) {
@@ -147,7 +146,7 @@ public class AndroidInstallerActivity extends FragmentActivity {
             getPackageManager().getPackageInfo(packageName, 0);
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "NameNotFoundException", e);
-            sendBroadcastUninstall(packageName, InstallHelper.ACTION_UNINSTALL_INTERRUPTED,
+            installer.sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_INTERRUPTED,
                     "Package that is scheduled for uninstall is not installed!");
             finish();
             return;
@@ -167,7 +166,7 @@ public class AndroidInstallerActivity extends FragmentActivity {
             startActivityForResult(intent, REQUEST_CODE_UNINSTALL);
         } catch (ActivityNotFoundException e) {
             Log.e(TAG, "ActivityNotFoundException", e);
-            sendBroadcastUninstall(packageName, InstallHelper.ACTION_UNINSTALL_INTERRUPTED,
+            installer.sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_INTERRUPTED,
                     "This Android rom does not support ACTION_UNINSTALL_PACKAGE!");
             finish();
         }
@@ -183,34 +182,34 @@ public class AndroidInstallerActivity extends FragmentActivity {
                  * never executed on Androids < 4.0
                  */
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                    sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
-                            InstallHelper.ACTION_INSTALL_COMPLETE);
+                    installer.sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
+                            Installer.ACTION_INSTALL_COMPLETE);
                     break;
                 }
 
                 // Fallback on N for https://gitlab.com/fdroid/fdroidclient/issues/631
                 if ("N".equals(Build.VERSION.CODENAME)) {
-                    sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
-                            InstallHelper.ACTION_INSTALL_COMPLETE);
+                    installer.sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
+                            Installer.ACTION_INSTALL_COMPLETE);
                     break;
                 }
 
                 switch (resultCode) {
                     case Activity.RESULT_OK: {
-                        sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
-                                InstallHelper.ACTION_INSTALL_COMPLETE);
+                        installer.sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
+                                Installer.ACTION_INSTALL_COMPLETE);
                         break;
                     }
                     case Activity.RESULT_CANCELED: {
-                        sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
-                                InstallHelper.ACTION_INSTALL_INTERRUPTED);
+                        installer.sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
+                                Installer.ACTION_INSTALL_INTERRUPTED);
                         break;
                     }
                     default:
                     case Activity.RESULT_FIRST_USER: {
                         // AOSP actually returns Activity.RESULT_FIRST_USER if something breaks
-                        sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
-                                InstallHelper.ACTION_INSTALL_INTERRUPTED, "error");
+                        installer.sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
+                                Installer.ACTION_INSTALL_INTERRUPTED, "error");
                         break;
                     }
                 }
@@ -220,28 +219,28 @@ public class AndroidInstallerActivity extends FragmentActivity {
             case REQUEST_CODE_UNINSTALL: {
                 // resultCode is always 0 on Android < 4.0.
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                    sendBroadcastUninstall(mUninstallPackageName,
-                            InstallHelper.ACTION_UNINSTALL_COMPLETE);
+                    installer.sendBroadcastUninstall(mUninstallPackageName,
+                            Installer.ACTION_UNINSTALL_COMPLETE);
                     break;
                 }
 
                 switch (resultCode) {
                     case Activity.RESULT_OK: {
-                        sendBroadcastUninstall(mUninstallPackageName,
-                                InstallHelper.ACTION_UNINSTALL_COMPLETE);
+                        installer.sendBroadcastUninstall(mUninstallPackageName,
+                                Installer.ACTION_UNINSTALL_COMPLETE);
                         break;
                     }
                     case Activity.RESULT_CANCELED: {
-                        sendBroadcastUninstall(mUninstallPackageName,
-                                InstallHelper.ACTION_UNINSTALL_INTERRUPTED);
+                        installer.sendBroadcastUninstall(mUninstallPackageName,
+                                Installer.ACTION_UNINSTALL_INTERRUPTED);
                         break;
                     }
                     default:
                     case Activity.RESULT_FIRST_USER: {
                         // AOSP UninstallAppProgress actually returns
                         // Activity.RESULT_FIRST_USER if something breaks
-                        sendBroadcastUninstall(mUninstallPackageName,
-                                InstallHelper.ACTION_UNINSTALL_INTERRUPTED,
+                        installer.sendBroadcastUninstall(mUninstallPackageName,
+                                Installer.ACTION_UNINSTALL_INTERRUPTED,
                                 "error");
                         break;
                     }
@@ -256,36 +255,6 @@ public class AndroidInstallerActivity extends FragmentActivity {
 
         // after doing the broadcasts, finish this transparent wrapper activity
         finish();
-    }
-
-    private void sendBroadcastInstall(Uri uri, Uri originatingUri, String action) {
-        sendBroadcastInstall(uri, originatingUri, action, null);
-    }
-
-    private void sendBroadcastInstall(Uri uri, Uri originatingUri, String action, String errorMessage) {
-        Intent intent = new Intent(action);
-        intent.setData(uri);
-        intent.putExtra(InstallHelper.EXTRA_ORIGINATING_URI, originatingUri);
-        if (!TextUtils.isEmpty(errorMessage)) {
-            intent.putExtra(InstallHelper.EXTRA_ERROR_MESSAGE, errorMessage);
-        }
-        localBroadcastManager.sendBroadcast(intent);
-    }
-
-    private void sendBroadcastUninstall(String packageName, String action) {
-        sendBroadcastUninstall(packageName, action, null);
-    }
-
-    private void sendBroadcastUninstall(String packageName, String action, String errorMessage) {
-        Uri uri = Uri.fromParts("package", packageName, null);
-
-        Intent intent = new Intent(action);
-        intent.setData(uri); // for broadcast filter
-        intent.putExtra(InstallHelper.EXTRA_UNINSTALL_PACKAGE_NAME, packageName);
-        if (!TextUtils.isEmpty(errorMessage)) {
-            intent.putExtra(InstallHelper.EXTRA_ERROR_MESSAGE, errorMessage);
-        }
-        localBroadcastManager.sendBroadcast(intent);
     }
 
 }

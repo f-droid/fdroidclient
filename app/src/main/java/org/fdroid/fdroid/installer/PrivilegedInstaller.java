@@ -20,7 +20,6 @@
 
 package org.fdroid.fdroid.installer;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -39,9 +38,6 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
 import org.fdroid.fdroid.privileged.IPrivilegedService;
-import org.fdroid.fdroid.privileged.views.AppDiff;
-import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
-import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
 
 import java.io.File;
 
@@ -52,7 +48,7 @@ import java.io.File;
  * <li>android.permission.INSTALL_PACKAGES</li>
  * <li>android.permission.DELETE_PACKAGES</li>
  * </ul>
- *
+ * <p/>
  * Both permissions are protected by systemOrSignature (in newer versions:
  * system|signature) and only granted on F-Droid's install in the following
  * cases:
@@ -62,7 +58,7 @@ import java.io.File;
  * <li>On Android < 4.4 also when moved into /system/app/</li>
  * <li>On Android >= 4.4 also when moved into /system/priv-app/</li>
  * </ul>
- *
+ * <p/>
  * Sources for Android 4.4 change:
  * https://groups.google.com/forum/#!msg/android-
  * security-discuss/r7uL_OEMU5c/LijNHvxeV80J
@@ -76,19 +72,13 @@ public class PrivilegedInstaller extends Installer {
     private static final String PRIVILEGED_EXTENSION_SERVICE_INTENT = "org.fdroid.fdroid.privileged.IPrivilegedService";
     public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME = "org.fdroid.fdroid.privileged";
 
-    private final Activity mActivity;
-
-    private static final int REQUEST_CONFIRM_PERMS = 0;
-
     public static final int IS_EXTENSION_INSTALLED_NO = 0;
     public static final int IS_EXTENSION_INSTALLED_YES = 1;
     public static final int IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM = 2;
     public static final int IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM = 3;
 
-    public PrivilegedInstaller(Activity activity, PackageManager pm,
-                               InstallerCallback callback) throws InstallFailedException {
-        super(activity, pm, callback);
-        this.mActivity = activity;
+    public PrivilegedInstaller(Context context) {
+        super(context);
     }
 
     public static boolean isExtensionInstalled(Context context) {
@@ -155,46 +145,10 @@ public class PrivilegedInstaller extends Installer {
         return IS_EXTENSION_INSTALLED_YES;
     }
 
+
     @Override
-    protected void installPackageInternal(File apkFile) throws InstallFailedException {
-        Uri packageUri = Uri.fromFile(apkFile);
-        int count = newPermissionCount(packageUri);
-        if (count < 0) {
-            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                    InstallerCallback.ERROR_CODE_CANNOT_PARSE);
-            return;
-        }
-        if (count > 0) {
-            Intent intent = new Intent(mContext, InstallConfirmActivity.class);
-            intent.setData(packageUri);
-            mActivity.startActivityForResult(intent, REQUEST_CONFIRM_PERMS);
-        } else {
-            try {
-                doInstallPackageInternal(packageUri);
-            } catch (InstallFailedException e) {
-                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                        InstallerCallback.ERROR_CODE_OTHER);
-            }
-        }
-    }
+    protected void installPackage(final Uri uri, Uri originatingUri, String packageName) {
 
-    private int newPermissionCount(Uri packageUri) {
-        AppDiff appDiff = new AppDiff(mContext.getPackageManager(), packageUri);
-        if (appDiff.mPkgInfo == null) {
-            // could not get diff because we couldn't parse the package
-            return -1;
-        }
-        AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.mPkgInfo);
-        if (appDiff.mInstalledAppInfo != null) {
-            // update to an existing app
-            return perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW);
-        }
-        // default: even if there aren't any permissions, we want to make the
-        // user always confirm installing new apps
-        return 1;
-    }
-
-    private void doInstallPackageInternal(final Uri packageURI) throws InstallFailedException {
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
@@ -205,17 +159,17 @@ public class PrivilegedInstaller extends Installer {
                         // TODO: propagate other return codes?
                         if (returnCode == INSTALL_SUCCEEDED) {
                             Utils.debugLog(TAG, "Install succeeded");
-                            mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
+//                            mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
                         } else {
                             Log.e(TAG, "Install failed with returnCode " + returnCode);
-                            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                                    InstallerCallback.ERROR_CODE_OTHER);
+//                            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+//                                    InstallerCallback.ERROR_CODE_OTHER);
                         }
                     }
                 };
 
                 try {
-                    privService.installPackage(packageURI, INSTALL_REPLACE_EXISTING, null, callback);
+                    privService.installPackage(uri, INSTALL_REPLACE_EXISTING, null, callback);
                 } catch (RemoteException e) {
                     Log.e(TAG, "RemoteException", e);
                 }
@@ -232,8 +186,7 @@ public class PrivilegedInstaller extends Installer {
     }
 
     @Override
-    protected void deletePackageInternal(final String packageName)
-            throws InstallFailedException {
+    protected void uninstallPackage(final String packageName) {
         ApplicationInfo appInfo;
         try {
             //noinspection WrongConstant (lint is actually wrong here!)
@@ -248,8 +201,8 @@ public class PrivilegedInstaller extends Installer {
 
         if (isSystem && !isUpdate) {
             // Cannot remove system apps unless we're uninstalling updates
-            mCallback.onError(InstallerCallback.OPERATION_DELETE,
-                    InstallerCallback.ERROR_CODE_OTHER);
+//            mCallback.onError(InstallerCallback.OPERATION_DELETE,
+//                    InstallerCallback.ERROR_CODE_OTHER);
             return;
         }
 
@@ -270,8 +223,8 @@ public class PrivilegedInstaller extends Installer {
                         try {
                             doDeletePackageInternal(packageName);
                         } catch (InstallFailedException e) {
-                            mCallback.onError(InstallerCallback.OPERATION_DELETE,
-                                    InstallerCallback.ERROR_CODE_OTHER);
+//                            mCallback.onError(InstallerCallback.OPERATION_DELETE,
+//                                    InstallerCallback.ERROR_CODE_OTHER);
                         }
                     }
                 });
@@ -280,8 +233,8 @@ public class PrivilegedInstaller extends Installer {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        mCallback.onError(InstallerCallback.OPERATION_DELETE,
-                                InstallerCallback.ERROR_CODE_CANCELED);
+//                        mCallback.onError(InstallerCallback.OPERATION_DELETE,
+//                                InstallerCallback.ERROR_CODE_CANCELED);
                     }
                 });
         builder.setMessage(messageId);
@@ -301,11 +254,11 @@ public class PrivilegedInstaller extends Installer {
                         if (returnCode == DELETE_SUCCEEDED) {
                             Utils.debugLog(TAG, "Delete succeeded");
 
-                            mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
+//                            mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
                         } else {
                             Log.e(TAG, "Delete failed with returnCode " + returnCode);
-                            mCallback.onError(InstallerCallback.OPERATION_DELETE,
-                                    InstallerCallback.ERROR_CODE_OTHER);
+//                            mCallback.onError(InstallerCallback.OPERATION_DELETE,
+//                                    InstallerCallback.ERROR_CODE_OTHER);
                         }
                     }
                 };
@@ -327,30 +280,30 @@ public class PrivilegedInstaller extends Installer {
                 Context.BIND_AUTO_CREATE);
     }
 
-    @Override
-    public boolean handleOnActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case REQUEST_CONFIRM_PERMS:
-                if (resultCode == Activity.RESULT_OK) {
-                    final Uri packageUri = data.getData();
-                    try {
-                        doInstallPackageInternal(packageUri);
-                    } catch (InstallFailedException e) {
-                        mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                                InstallerCallback.ERROR_CODE_OTHER);
-                    }
-                } else if (resultCode == InstallConfirmActivity.RESULT_CANNOT_PARSE) {
-                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                            InstallerCallback.ERROR_CODE_CANNOT_PARSE);
-                } else { // Activity.RESULT_CANCELED
-                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                            InstallerCallback.ERROR_CODE_CANCELED);
-                }
-                return true;
-            default:
-                return false;
-        }
-    }
+//    @Override
+//    public boolean handleOnActivityResult(int requestCode, int resultCode, Intent data) {
+//        switch (requestCode) {
+//            case REQUEST_CONFIRM_PERMS:
+//                if (resultCode == Activity.RESULT_OK) {
+//                    final Uri packageUri = data.getData();
+//                    try {
+//                        doInstallPackageInternal(packageUri);
+//                    } catch (InstallFailedException e) {
+//                        mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+//                                InstallerCallback.ERROR_CODE_OTHER);
+//                    }
+//                } else if (resultCode == InstallConfirmActivity.RESULT_CANNOT_PARSE) {
+//                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+//                            InstallerCallback.ERROR_CODE_CANNOT_PARSE);
+//                } else { // Activity.RESULT_CANCELED
+//                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+//                            InstallerCallback.ERROR_CODE_CANCELED);
+//                }
+//                return true;
+//            default:
+//                return false;
+//        }
+//    }
 
     public static final int INSTALL_REPLACE_EXISTING = 2;
 
@@ -644,7 +597,7 @@ public class PrivilegedInstaller extends Installer {
      * {@link #installPackage(android.net.Uri, IPackageInstallObserver, int)}
      * if the system failed to install the package because it is attempting to define a
      * permission that is already defined by some existing package.
-     *
+     * <p/>
      * The package name of the app which has already defined the permission is passed to
      * a {@link PackageInstallObserver}, if any, as the {@link #EXTRA_EXISTING_PACKAGE}
      * string extra; and the name of the permission being redefined is passed in the
