@@ -23,6 +23,7 @@ import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.xmlpull.v1.XmlPullParserException;
@@ -452,9 +453,13 @@ public final class LocalRepoManager {
             tagHash(app);
             tag("sig", app.installedApk.sig.toLowerCase(Locale.US));
             tag("size", app.installedApk.installedFile.length());
-            tag("sdkver", app.installedApk.minSdkVersion);
-            tag("maxsdkver", app.installedApk.maxSdkVersion);
             tag("added", app.installedApk.added);
+            if (app.installedApk.minSdkVersion > Apk.SDK_VERSION_MIN_VALUE) {
+                tag("sdkver", app.installedApk.minSdkVersion);
+            }
+            if (app.installedApk.maxSdkVersion < Apk.SDK_VERSION_MAX_VALUE) {
+                tag("maxsdkver", app.installedApk.maxSdkVersion);
+            }
             tagFeatures(app);
             tagPermissions(app);
             tagNativecode(app);
