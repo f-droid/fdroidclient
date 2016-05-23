@@ -39,6 +39,7 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.compat.FileCompat;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.xml.sax.XMLReader;
@@ -226,8 +227,8 @@ public final class Utils {
 
     /* PackageManager doesn't give us the min and max sdk versions, so we have
      * to parse it */
-    private static int getMinMaxSdkVersion(Context context, String packageName,
-            String attrName) {
+    private static int getSdkVersion(Context context, String packageName,
+                                     String attrName, final int defaultValue) {
         try {
             AssetManager am = context.createPackageContext(packageName, 0).getAssets();
             XmlResourceParser xml = am.openXmlResourceParser("AndroidManifest.xml");
@@ -245,15 +246,15 @@ public final class Utils {
         } catch (PackageManager.NameNotFoundException | IOException | XmlPullParserException e) {
             Log.e(TAG, "Could not get min/max sdk version", e);
         }
-        return 0;
+        return defaultValue;
     }
 
     public static int getMinSdkVersion(Context context, String packageName) {
-        return getMinMaxSdkVersion(context, packageName, "minSdkVersion");
+        return getSdkVersion(context, packageName, "minSdkVersion", Apk.SDK_VERSION_MIN_VALUE);
     }
 
     public static int getMaxSdkVersion(Context context, String packageName) {
-        return getMinMaxSdkVersion(context, packageName, "maxSdkVersion");
+        return getSdkVersion(context, packageName, "maxSdkVersion", Apk.SDK_VERSION_MAX_VALUE);
     }
 
     // return a fingerprint formatted for display
