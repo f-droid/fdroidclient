@@ -354,9 +354,18 @@ public class InstallManagerService extends Service {
         TEMP_HACK_APP_NAMES.put(urlString, app.name);  // TODO delete me once InstallerService exists
     }
 
+    /**
+     * Remove the {@link App} and {@Apk} instances that are associated with
+     * {@code urlString} from the {@link Map} of active apps.  This can be
+     * called after this service has been destroyed and recreated based on the
+     * {@link BroadcastReceiver}s, in which case {@code urlString} would not
+     * find anything in the active maps.
+     */
     private static Apk removeFromActive(String urlString) {
         Apk apk = ACTIVE_APKS.remove(urlString);
-        ACTIVE_APPS.remove(apk.packageName);
+        if (apk != null) {
+            ACTIVE_APPS.remove(apk.packageName);
+        }
         return apk;
     }
 
