@@ -34,7 +34,7 @@ public class BluetoothConnection {
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public void open() throws IOException {
-        if (!socket.isConnected()) {
+        if (Build.VERSION.SDK_INT >= 14 && !socket.isConnected()) {
             // Server sockets will already be connected when they are passed to us,
             // client sockets require us to call connect().
             socket.connect();
