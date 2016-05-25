@@ -58,7 +58,7 @@ public class CacheSwapAppsService extends IntentService {
             if (!indexJarFile.exists()
                     || FileUtils.isFileNewer(new File(applicationInfo.sourceDir), indexJarFile)) {
                 Intent intent = new Intent();
-                intent.setData(Uri.parse("package:" + applicationInfo.packageName));
+                intent.setData(Utils.getPackageUri(applicationInfo.packageName));
                 parseApp(context, intent);
             }
         }

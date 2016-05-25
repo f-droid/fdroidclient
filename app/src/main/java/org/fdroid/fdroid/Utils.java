@@ -268,6 +268,13 @@ public final class Utils {
     }
 
     /**
+     * Create a standard {@link PackageManager} {@link Uri} for pointing to an app.
+     */
+    public static Uri getPackageUri(String packageName) {
+        return Uri.parse("package:" + packageName);
+    }
+
+    /**
      * This location is only for caching, do not install directly from this location
      * because if the file is on the External Storage, any other app could swap out
      * the APK while the install was in process, allowing malware to install things.

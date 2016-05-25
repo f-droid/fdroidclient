@@ -158,7 +158,7 @@ public class TestUtils {
         context.setPackageManager(pm);
         pm.install(appId, versionCode, versionName);
         Intent installIntent = new Intent(Intent.ACTION_PACKAGE_ADDED);
-        installIntent.setData(Uri.parse("package:" + appId));
+        installIntent.setData(Utils.getPackageUri(appId));
         new PackageAddedReceiver().onReceive(context, installIntent);
 
     }
@@ -176,7 +176,7 @@ public class TestUtils {
         context.setPackageManager(pm);
         pm.install(appId, versionCode, versionName);
         Intent installIntent = new Intent(Intent.ACTION_PACKAGE_CHANGED);
-        installIntent.setData(Uri.parse("package:" + appId));
+        installIntent.setData(Utils.getPackageUri(appId));
         new PackageUpgradedReceiver().onReceive(context, installIntent);
 
     }
@@ -189,7 +189,7 @@ public class TestUtils {
         context.setPackageManager(pm);
         pm.remove(appId);
         Intent installIntent = new Intent(Intent.ACTION_PACKAGE_REMOVED);
-        installIntent.setData(Uri.parse("package:" + appId));
+        installIntent.setData(Utils.getPackageUri(appId));
         new PackageRemovedReceiver().onReceive(context, installIntent);
 
     }
