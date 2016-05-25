@@ -250,14 +250,21 @@ public class App extends ValueObject implements Comparable<App> {
     /**
      * Instantiate from a locally installed package.
      */
-    @TargetApi(9)
     public App(Context context, PackageManager pm, String packageName)
             throws CertificateEncodingException, IOException, PackageManager.NameNotFoundException {
-        final ApplicationInfo appInfo = pm.getApplicationInfo(packageName,
-                PackageManager.GET_META_DATA);
-        final PackageInfo packageInfo = pm.getPackageInfo(packageName,
-                PackageManager.GET_SIGNATURES | PackageManager.GET_PERMISSIONS);
 
+        PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
+        setFromPackageInfo(pm, packageInfo);
+        this.installedApk = new Apk();
+        SanitizedFile apkFile = SanitizedFile.knownSanitized(packageInfo.applicationInfo.publicSourceDir);
+        initApkFromApkFile(context, this.installedApk, packageInfo, apkFile);
+    }
+
+    @TargetApi(9)
+    private void setFromPackageInfo(PackageManager pm, PackageInfo packageInfo)
+            throws CertificateEncodingException, IOException, PackageManager.NameNotFoundException {
+
+        this.packageName = packageInfo.packageName;
         final String installerPackageName = pm.getInstallerPackageName(packageName);
         CharSequence installerPackageLabel = null;
         if (!TextUtils.isEmpty(installerPackageName)) {
@@ -273,13 +280,13 @@ public class App extends ValueObject implements Comparable<App> {
             installerPackageLabel = installerPackageName;
         }
 
+        ApplicationInfo appInfo = packageInfo.applicationInfo;
         final CharSequence appDescription = appInfo.loadDescription(pm);
         if (TextUtils.isEmpty(appDescription)) {
             this.summary = "(installed by " + installerPackageLabel + ")";
         } else {
             this.summary = (String) appDescription.subSequence(0, 40);
         }
-        this.packageName = appInfo.packageName;
         this.added = new Date(packageInfo.firstInstallTime);
         this.lastUpdated = new Date(packageInfo.lastUpdateTime);
         this.description = "<p>";
@@ -293,8 +300,21 @@ public class App extends ValueObject implements Comparable<App> {
         this.name = (String) appInfo.loadLabel(pm);
         this.icon = getIconName(packageName, packageInfo.versionCode);
         this.compatible = true;
+        boolean system = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
+        boolean updatedSystemApp = (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
+        this.uninstallable = !system || updatedSystemApp;
+    }
 
-        final Apk apk = new Apk();
+    private void initApkFromApkFile(Context context, Apk apk, PackageInfo packageInfo, SanitizedFile apkFile)
+            throws IOException, CertificateEncodingException {
+        // TODO include signature hash calculation here
+        apk.hashType = "sha256";
+        apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
+        initInstalledApk(context, apk, packageInfo, apkFile);
+    }
+
+    private void initInstalledApk(Context context, Apk apk, PackageInfo packageInfo, SanitizedFile apkFile)
+            throws IOException, CertificateEncodingException {
         apk.compatible = true;
         apk.versionName = packageInfo.versionName;
         apk.versionCode = packageInfo.versionCode;
@@ -305,16 +325,12 @@ public class App extends ValueObject implements Comparable<App> {
         apk.packageName = this.packageName;
         apk.permissions = Utils.CommaSeparatedList.make(packageInfo.requestedPermissions);
         apk.apkName = apk.packageName + "_" + apk.versionCode + ".apk";
-
-        final SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
-        apk.hashType = "sha256";
-        apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
         apk.installedFile = apkFile;
 
-        JarFile jarFile = new JarFile(apkFile);
+        JarFile apkJar = new JarFile(apkFile);
         HashSet<String> abis = new HashSet<>(3);
         Pattern pattern = Pattern.compile("^lib/([a-z0-9-]+)/.*");
-        for (Enumeration<JarEntry> jarEntries = jarFile.entries(); jarEntries.hasMoreElements();) {
+        for (Enumeration<JarEntry> jarEntries = apkJar.entries(); jarEntries.hasMoreElements();) {
             JarEntry jarEntry = jarEntries.nextElement();
             Matcher matcher = pattern.matcher(jarEntry.getName());
             if (matcher.matches()) {
@@ -332,7 +348,6 @@ public class App extends ValueObject implements Comparable<App> {
             apk.features = Utils.CommaSeparatedList.make(featureNames);
         }
 
-        final JarFile apkJar = new JarFile(apkFile);
         final JarEntry aSignedEntry = (JarEntry) apkJar.getEntry("AndroidManifest.xml");
 
         if (aSignedEntry == null) {
@@ -389,11 +404,6 @@ public class App extends ValueObject implements Comparable<App> {
             fdroidSig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
         }
         apk.sig = Utils.hashBytes(fdroidSig, "md5");
-
-        this.installedApk = apk;
-        boolean system = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-        boolean updatedSystemApp = (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
-        this.uninstallable = !system || updatedSystemApp;
     }
 
     public boolean isValid() {
