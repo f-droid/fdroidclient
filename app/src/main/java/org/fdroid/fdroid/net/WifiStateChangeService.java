@@ -36,6 +36,12 @@ import java.util.Locale;
  * which is how it can be triggered by code, or it came in from the system
  * via {@link  org.fdroid.fdroid.receiver.WifiStateChangeReceiver}, in
  * which case an instance of {@link NetworkInfo} is included.
+ *
+ * The work is done in a {@link Thread} so that new incoming {@code Intents}
+ * are not blocked by processing. A new {@code Intent} immediately nullifies
+ * the current state because it means that something about the wifi has
+ * changed.  Having the {@code Thread} also makes it easy to kill work
+ * that is in progress.
  */
 public class WifiStateChangeService extends IntentService {
     private static final String TAG = "WifiStateChangeService";
@@ -202,9 +208,15 @@ public class WifiStateChangeService extends IntentService {
                         }
                         // the following methods were not added until android-9/Gingerbread
                         for (InterfaceAddress address : netIf.getInterfaceAddresses()) {
+                            short networkPrefixLength = address.getNetworkPrefixLength();
+                            if (networkPrefixLength > 32) {
+                                // something is giving a "/64" netmask, IPv6?
+                                // java.lang.IllegalArgumentException: Value [64] not in range [0,32]
+                                continue;
+                            }
                             if (inetAddress.equals(address.getAddress()) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
                                 String cidr = String.format(Locale.ENGLISH, "%s/%d",
-                                        FDroidApp.ipAddressString, address.getNetworkPrefixLength());
+                                        FDroidApp.ipAddressString, networkPrefixLength);
                                 FDroidApp.subnetInfo = new SubnetUtils(cidr).getInfo();
                                 break;
                             }
