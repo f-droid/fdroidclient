@@ -117,7 +117,7 @@ public abstract class AppListFragment extends ListFragment implements
         super.onResume();
 
         //Starts a new or restarts an existing Loader in this manager
-        getLoaderManager().restartLoader(0, null, this);
+        getLoaderManager().initLoader(0, null, this);
     }
 
     @Override
