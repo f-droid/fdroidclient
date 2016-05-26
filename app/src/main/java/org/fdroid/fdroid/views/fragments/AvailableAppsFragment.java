@@ -206,7 +206,6 @@ public class AvailableAppsFragment extends AppListFragment implements
 
     @Override
     public void onResume() {
-        super.onResume();
         /* restore the saved Category Spinner position */
         Activity activity = getActivity();
         SharedPreferences p = activity.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
@@ -222,6 +221,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         }
 
         setCurrentCategory(currentCategory);
+        super.onResume();
     }
 
     @Override
