@@ -55,7 +55,7 @@ import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.Preferences.Theme;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
+import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
@@ -224,7 +224,7 @@ public class FDroidApp extends Application {
         curTheme = Preferences.get().getTheme();
         Preferences.get().configureProxy();
 
-        InstalledAppCacheUpdater.updateInBackground(getApplicationContext());
+        InstalledAppProviderService.compareToPackageManager(this);
 
         // If the user changes the preference to do with filtering rooted apps,
         // it is easier to just notify a change in the app provider,

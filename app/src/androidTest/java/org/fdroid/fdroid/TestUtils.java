@@ -4,7 +4,6 @@ import android.app.Instrumentation;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -15,9 +14,6 @@ import junit.framework.AssertionFailedError;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.FDroidProviderTest;
-import org.fdroid.fdroid.receiver.PackageAddedReceiver;
-import org.fdroid.fdroid.receiver.PackageRemovedReceiver;
-import org.fdroid.fdroid.receiver.PackageUpgradedReceiver;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -27,9 +23,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import mock.MockContextSwappableComponents;
-import mock.MockInstallablePackageManager;
 
 public class TestUtils {
 
@@ -144,54 +137,6 @@ public class TestUtils {
         Uri uri = ApkProvider.getContentUri();
 
         return providerTest.getMockContentResolver().insert(uri, values);
-    }
-
-    /**
-     * Will tell {@code pm} that we are installing {@code appId}, and then alert the
-     * {@link org.fdroid.fdroid.receiver.PackageAddedReceiver}. This will in turn update the
-     * "installed apps" table in the database.
-     */
-    public static void installAndBroadcast(MockContextSwappableComponents context,
-                    MockInstallablePackageManager pm, String appId,
-                    int versionCode, String versionName) {
-
-        context.setPackageManager(pm);
-        pm.install(appId, versionCode, versionName);
-        Intent installIntent = new Intent(Intent.ACTION_PACKAGE_ADDED);
-        installIntent.setData(Utils.getPackageUri(appId));
-        new PackageAddedReceiver().onReceive(context, installIntent);
-
-    }
-
-    /**
-     * @see org.fdroid.fdroid.TestUtils#installAndBroadcast(mock.MockContextSwappableComponents, mock.MockInstallablePackageManager, String, int, String)
-     */
-    public static void upgradeAndBroadcast(MockContextSwappableComponents context,
-                    MockInstallablePackageManager pm, String appId,
-                    int versionCode, String versionName) {
-        /*
-        removeAndBroadcast(context, pm, appId);
-        installAndBroadcast(context, pm, appId, versionCode, versionName);
-        */
-        context.setPackageManager(pm);
-        pm.install(appId, versionCode, versionName);
-        Intent installIntent = new Intent(Intent.ACTION_PACKAGE_CHANGED);
-        installIntent.setData(Utils.getPackageUri(appId));
-        new PackageUpgradedReceiver().onReceive(context, installIntent);
-
-    }
-
-    /**
-     * @see org.fdroid.fdroid.TestUtils#installAndBroadcast(mock.MockContextSwappableComponents, mock.MockInstallablePackageManager, String, int, String)
-     */
-    public static void removeAndBroadcast(MockContextSwappableComponents context, MockInstallablePackageManager pm, String appId) {
-
-        context.setPackageManager(pm);
-        pm.remove(appId);
-        Intent installIntent = new Intent(Intent.ACTION_PACKAGE_REMOVED);
-        installIntent.setData(Utils.getPackageUri(appId));
-        new PackageRemovedReceiver().onReceive(context, installIntent);
-
     }
 
     @Nullable

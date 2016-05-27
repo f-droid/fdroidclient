@@ -423,22 +423,10 @@
                 <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".receiver.PackageAddedReceiver" >
+        <receiver android:name=".receiver.PackageManagerReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".receiver.PackageUpgradedReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REPLACED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".receiver.PackageRemovedReceiver" >
-            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
 
                 <data android:scheme="package" />
@@ -467,6 +455,9 @@
             android:exported="false" />
         <service
             android:name=".localrepo.CacheSwapAppsService"
+            android:exported="false" />
+        <service
+            android:name=".data.InstalledAppProviderService"
             android:exported="false" />
     </application>
 

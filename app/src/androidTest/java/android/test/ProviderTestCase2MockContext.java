@@ -98,6 +98,11 @@ public abstract class ProviderTestCase2MockContext<T extends ContentProvider> ex
         public Context getApplicationContext() {
             return this;
         }
+
+        @Override
+        public String getPackageName() {
+            return "org.fdroid.fdroid";
+        }
     }
 
     /**
