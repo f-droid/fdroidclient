@@ -32,19 +32,25 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     public Utils.CommaSeparatedList nativecode; // null if empty or unknown
 
-    // ID (md5 sum of public key) of signature. Might be null, in the
-    // transition to this field existing.
+    /**
+     * ID (md5 sum of public key) of signature. Might be null, in the
+     * transition to this field existing.
+     */
     public String sig;
 
-    // True if compatible with the device.
+    /**
+     * True if compatible with the device.
+     */
     public boolean compatible;
 
     public String apkName; // F-Droid style APK name
     public SanitizedFile installedFile; // the .apk file on this device's filesystem
 
-    // If not null, this is the name of the source tarball for the
-    // application. Null indicates that it's a developer's binary
-    // build - otherwise it's built from source.
+    /**
+     * If not null, this is the name of the source tarball for the
+     * application. Null indicates that it's a developer's binary
+     * build - otherwise it's built from source.
+     */
     public String srcname;
 
     public int repoVersion;

@@ -37,7 +37,9 @@ public class App extends ValueObject implements Comparable<App> {
 
     private static final String TAG = "App";
 
-    // True if compatible with the device (i.e. if at least one apk is)
+    /**
+     * True if compatible with the device (i.e. if at least one apk is)
+     */
     public boolean compatible;
 
     public String packageName = "unknown";
@@ -84,27 +86,39 @@ public class App extends ValueObject implements Comparable<App> {
     public Date added;
     public Date lastUpdated;
 
-    // List of categories (as defined in the metadata
-    // documentation) or null if there aren't any.
+    /**
+     * List of categories (as defined in the metadata documentation) or null if there aren't any.
+     */
     public Utils.CommaSeparatedList categories;
 
-    // List of anti-features (as defined in the metadata
-    // documentation) or null if there aren't any.
+    /**
+     * List of anti-features (as defined in the metadata documentation) or null if there aren't any.
+     */
     public Utils.CommaSeparatedList antiFeatures;
 
-    // List of special requirements (such as root privileges) or
-    // null if there aren't any.
+    /**
+     * List of special requirements (such as root privileges) or null if there aren't any.
+     */
     public Utils.CommaSeparatedList requirements;
 
-    // True if all updates for this app are to be ignored
+    /**
+     * True if all updates for this app are to be ignored
+     */
     public boolean ignoreAllUpdates;
 
-    // True if the current update for this app is to be ignored
+    /**
+     * True if the current update for this app is to be ignored
+     */
     public int ignoreThisUpdate;
 
-    // To be displayed at 48dp (x1.0)
+    /**
+     * To be displayed at 48dp (x1.0)
+     */
     public String iconUrl;
-    // To be displayed at 72dp (x1.5)
+
+    /**
+     * To be displayed at 72dp (x1.5)
+     */
     public String iconUrlLarge;
 
     public String installedVersionName;
@@ -476,16 +490,20 @@ public class App extends ValueObject implements Comparable<App> {
         return updates;
     }
 
-    // True if there are new versions (apks) available and the user wants
-    // to be notified about them
+    /**
+     * True if there are new versions (apks) available and the user wants
+     * to be notified about them
+     */
     public boolean canAndWantToUpdate() {
         boolean canUpdate = hasUpdates();
         boolean wantsUpdate = !ignoreAllUpdates && ignoreThisUpdate < suggestedVersionCode;
         return canUpdate && wantsUpdate && !isFiltered();
     }
 
-    // Whether the app is filtered or not based on AntiFeatures and root
-    // permission (set in the Settings page)
+    /**
+     * Whether the app is filtered or not based on AntiFeatures and root
+     * permission (set in the Settings page)
+     */
     public boolean isFiltered() {
         return new AppFilter().filter(this);
     }
