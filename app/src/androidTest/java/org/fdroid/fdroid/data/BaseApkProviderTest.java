@@ -1,11 +1,10 @@
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.TestUtils;
 
 import java.util.List;
 

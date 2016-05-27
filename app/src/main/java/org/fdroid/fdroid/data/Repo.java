@@ -121,8 +121,10 @@ public class Repo extends ValueObject {
         return !TextUtils.isEmpty(this.signingCertificate);
     }
 
-    // this happens when a repo is configed with a fingerprint, but the client
-    // has not connected to it yet to download its signing certificate
+    /**
+     * This happens when a repo is configed with a fingerprint, but the client
+     * has not connected to it yet to download its signing certificate
+     */
     public boolean isSignedButUnverified() {
         return TextUtils.isEmpty(this.signingCertificate) && !TextUtils.isEmpty(this.fingerprint);
     }

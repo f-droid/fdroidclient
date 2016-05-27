@@ -1,11 +1,9 @@
-package org.fdroid.fdroid;
-
-import org.fdroid.fdroid.data.InstalledAppProvider;
+package org.fdroid.fdroid.data;
 
 import mock.MockInstallablePackageManager;
 
 /**
- * Tests the ability of the {@link  org.fdroid.fdroid.data.InstalledAppCacheUpdater} to stay in sync with
+ * Tests the ability of the {@link  InstalledAppCacheUpdater} to stay in sync with
  * the {@link android.content.pm.PackageManager}.
  * For practical reasons, it extends FDroidProviderTest<InstalledAppProvider>, although there is also a
  * separate test for the InstalledAppProvider which tests the CRUD operations in more detail.

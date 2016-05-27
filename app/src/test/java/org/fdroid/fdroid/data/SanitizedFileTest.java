@@ -5,11 +5,13 @@ import org.junit.Test;
 import java.io.File;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assume.assumeTrue;
 
 public class SanitizedFileTest {
 
     @Test
     public void testSanitizedFile() {
+        assumeTrue("/".equals(System.getProperty("file.separator")));
 
         File directory = new File("/tmp/blah");
 

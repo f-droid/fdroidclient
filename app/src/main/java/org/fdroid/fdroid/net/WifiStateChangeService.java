@@ -229,7 +229,7 @@ public class WifiStateChangeService extends IntentService {
         }
     }
 
-    private String formatIpAddress(int ipAddress) {
+    static String formatIpAddress(int ipAddress) {
         if (ipAddress == 0) {
             return null;
         }

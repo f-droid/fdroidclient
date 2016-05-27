@@ -238,7 +238,6 @@ public class SwapAppsView extends ListView implements
             TextView nameView;
             ImageView iconView;
             Button btnInstall;
-            TextView btnAttemptInstall;
             TextView statusInstalled;
             TextView statusIncompatible;
 
@@ -343,22 +342,24 @@ public class SwapAppsView extends ListView implements
 
                 ImageLoader.getInstance().displayImage(app.iconUrl, iconView, displayImageOptions);
 
-                btnInstall.setVisibility(View.GONE);
-                btnAttemptInstall.setVisibility(View.GONE);
-                statusInstalled.setVisibility(View.GONE);
-                statusIncompatible.setVisibility(View.GONE);
-
                 if (app.hasUpdates()) {
                     btnInstall.setText(R.string.menu_upgrade);
                     btnInstall.setVisibility(View.VISIBLE);
+                    statusIncompatible.setVisibility(View.GONE);
+                    statusInstalled.setVisibility(View.GONE);
                 } else if (app.isInstalled()) {
+                    btnInstall.setVisibility(View.GONE);
+                    statusIncompatible.setVisibility(View.GONE);
                     statusInstalled.setVisibility(View.VISIBLE);
                 } else if (!app.compatible) {
-                    btnAttemptInstall.setVisibility(View.VISIBLE);
+                    btnInstall.setVisibility(View.GONE);
                     statusIncompatible.setVisibility(View.VISIBLE);
+                    statusInstalled.setVisibility(View.GONE);
                 } else {
                     btnInstall.setText(R.string.menu_install);
                     btnInstall.setVisibility(View.VISIBLE);
+                    statusIncompatible.setVisibility(View.GONE);
+                    statusInstalled.setVisibility(View.GONE);
                 }
 
                 OnClickListener installListener = new OnClickListener() {
@@ -372,14 +373,11 @@ public class SwapAppsView extends ListView implements
                 };
 
                 btnInstall.setOnClickListener(installListener);
-                btnAttemptInstall.setOnClickListener(installListener);
-
             }
 
             private void showProgress() {
                 progressView.setVisibility(View.VISIBLE);
                 btnInstall.setVisibility(View.GONE);
-                btnAttemptInstall.setVisibility(View.GONE);
                 statusInstalled.setVisibility(View.GONE);
                 statusIncompatible.setVisibility(View.GONE);
             }
@@ -410,7 +408,6 @@ public class SwapAppsView extends ListView implements
             holder.nameView = (TextView) view.findViewById(R.id.name);
             holder.iconView = (ImageView) view.findViewById(android.R.id.icon);
             holder.btnInstall = (Button) view.findViewById(R.id.btn_install);
-            holder.btnAttemptInstall = (TextView) view.findViewById(R.id.btn_attempt_install);
             holder.statusInstalled = (TextView) view.findViewById(R.id.status_installed);
             holder.statusIncompatible = (TextView) view.findViewById(R.id.status_incompatible);
 

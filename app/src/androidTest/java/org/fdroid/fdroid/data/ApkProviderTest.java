@@ -1,12 +1,10 @@
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.mock.MockApk;
 import org.fdroid.fdroid.mock.MockApp;
 import org.fdroid.fdroid.mock.MockRepo;
@@ -333,5 +331,4 @@ public class ApkProviderTest extends BaseApkProviderTest {
         assertEquals(1, apk.versionCode);
         assertEquals(10, apk.repo);
     }
-
 }

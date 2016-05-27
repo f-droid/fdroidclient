@@ -1,4 +1,4 @@
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.data;
 
 import android.annotation.TargetApi;
 import android.content.ContentValues;
@@ -9,12 +9,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.ContactsContract;
 import android.test.ProviderTestCase2MockContext;
-
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.FDroidProvider;
-import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.data.RepoProvider;
 
 import java.util.List;
 
