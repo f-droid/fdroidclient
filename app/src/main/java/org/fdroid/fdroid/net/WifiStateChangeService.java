@@ -192,7 +192,11 @@ public class WifiStateChangeService extends IntentService {
 
     private void setIpInfoFromNetworkInterface() {
         try {
-            for (Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces(); networkInterfaces.hasMoreElements();) {
+            Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
+            if (networkInterfaces == null) {
+                return;
+            }
+            while (networkInterfaces.hasMoreElements()) {
                 NetworkInterface netIf = networkInterfaces.nextElement();
 
                 for (Enumeration<InetAddress> inetAddresses = netIf.getInetAddresses(); inetAddresses.hasMoreElements();) {
