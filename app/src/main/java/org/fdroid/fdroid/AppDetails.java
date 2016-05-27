@@ -1571,9 +1571,6 @@ public class AppDetails extends AppCompatActivity {
                         btMain.setText(R.string.menu_launch);
                     } else {
                         btMain.setText(R.string.menu_uninstall);
-                        if (!app.uninstallable) {
-                            btMain.setVisibility(View.GONE);
-                        }
                     }
                 }
                 btMain.setOnClickListener(mOnClickListener);

@@ -129,8 +129,6 @@ public class App extends ValueObject implements Comparable<App> {
 
     public String installedSig;
 
-    public boolean uninstallable;
-
     public static String getIconName(String packageName, int versionCode) {
         return packageName + "_" + versionCode + ".png";
     }
@@ -314,9 +312,6 @@ public class App extends ValueObject implements Comparable<App> {
         this.name = (String) appInfo.loadLabel(pm);
         this.icon = getIconName(packageName, packageInfo.versionCode);
         this.compatible = true;
-        boolean system = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-        boolean updatedSystemApp = (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
-        this.uninstallable = !system || updatedSystemApp;
     }
 
     private void initApkFromApkFile(Context context, Apk apk, PackageInfo packageInfo, SanitizedFile apkFile)
