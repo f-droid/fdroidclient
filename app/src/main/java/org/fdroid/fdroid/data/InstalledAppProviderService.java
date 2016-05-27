@@ -155,6 +155,12 @@ public class InstalledAppProviderService extends IntentService {
                 InstalledAppProvider.getApplicationLabel(context, packageInfo.packageName));
         contentValues.put(InstalledAppProvider.DataColumns.SIGNATURE,
                 InstalledAppProvider.getPackageSig(packageInfo));
+        contentValues.put(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME, packageInfo.lastUpdateTime);
+
+        String hashType = "sha256";
+        String hash = Utils.getBinaryHash(new File(packageInfo.applicationInfo.publicSourceDir), hashType);
+        contentValues.put(InstalledAppProvider.DataColumns.HASH_TYPE, hashType);
+        contentValues.put(InstalledAppProvider.DataColumns.HASH, hash);
 
         context.getContentResolver().insert(uri, contentValues);
     }

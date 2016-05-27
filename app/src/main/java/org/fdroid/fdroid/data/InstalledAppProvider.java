@@ -64,10 +64,13 @@ public class InstalledAppProvider extends FDroidProvider {
         String VERSION_NAME = "versionName";
         String APPLICATION_LABEL = "applicationLabel";
         String SIGNATURE = "sig";
+        String LAST_UPDATE_TIME = "lastUpdateTime";
+        String HASH_TYPE = "hashType";
+        String HASH = "hash";
 
         String[] ALL = {
             _ID, PACKAGE_NAME, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
-            SIGNATURE,
+            SIGNATURE, LAST_UPDATE_TIME, HASH_TYPE, HASH,
         };
 
     }
@@ -89,6 +92,9 @@ public class InstalledAppProvider extends FDroidProvider {
         return Uri.parse("content://" + getAuthority());
     }
 
+    /**
+     * @return the {@link Uri} that points to a specific installed app
+     */
     public static Uri getAppUri(String packageName) {
         return Uri.withAppendedPath(getContentUri(), packageName);
     }

@@ -2,6 +2,8 @@ package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
 import android.content.pm.PackageInfo;
+import android.database.Cursor;
+import android.net.Uri;
 
 import mock.MockContextSwappableComponents;
 import mock.MockInstallablePackageManager;
@@ -81,6 +83,39 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
 
     }
 
+    public void testLastUpdateTime() {
+        String packageName = "com.example.app";
+
+        insertInstalledApp(packageName, 10, "1.0");
+        assertResultCount(1, InstalledAppProvider.getContentUri());
+        assertIsInstalledVersionInDb(packageName, 10, "1.0");
+
+        Uri uri = InstalledAppProvider.getAppUri(packageName);
+
+        String[] projection = {
+                InstalledAppProvider.DataColumns.PACKAGE_NAME,
+                InstalledAppProvider.DataColumns.LAST_UPDATE_TIME,
+        };
+
+        Cursor cursor = getMockContentResolver().query(uri, projection, null, null, null);
+        assertNotNull(cursor);
+        assertEquals("App \"" + packageName + "\" not installed", 1, cursor.getCount());
+        cursor.moveToFirst();
+        assertEquals(packageName, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)));
+        long lastUpdateTime = cursor.getLong(cursor.getColumnIndex(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME));
+        assertTrue(lastUpdateTime > 0);
+        assertTrue(lastUpdateTime < System.currentTimeMillis());
+        cursor.close();
+
+        insertInstalledApp(packageName, 11, "1.1");
+        cursor = getMockContentResolver().query(uri, projection, null, null, null);
+        assertNotNull(cursor);
+        assertEquals("App \"" + packageName + "\" not installed", 1, cursor.getCount());
+        cursor.moveToFirst();
+        assertTrue(lastUpdateTime < cursor.getLong(cursor.getColumnIndex(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME)));
+        cursor.close();
+    }
+
     public void testDelete() {
 
         insertInstalledApp("com.example.app1", 10, "1.0");
@@ -156,6 +191,9 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         values.put(InstalledAppProvider.DataColumns.VERSION_CODE, versionCode);
         values.put(InstalledAppProvider.DataColumns.VERSION_NAME, versionNumber);
         values.put(InstalledAppProvider.DataColumns.SIGNATURE, "");
+        values.put(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME, System.currentTimeMillis());
+        values.put(InstalledAppProvider.DataColumns.HASH_TYPE, "sha256");
+        values.put(InstalledAppProvider.DataColumns.HASH, "cafecafecafecafecafecafecafecafecafecafecafecafecafecafecafecafe");
         return values;
     }
 
