@@ -14,6 +14,7 @@ import junit.framework.AssertionFailedError;
 
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.FDroidProviderTest;
 import org.fdroid.fdroid.receiver.PackageAddedReceiver;
 import org.fdroid.fdroid.receiver.PackageRemovedReceiver;
 import org.fdroid.fdroid.receiver.PackageUpgradedReceiver;

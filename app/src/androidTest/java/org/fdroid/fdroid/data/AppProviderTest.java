@@ -1,14 +1,12 @@
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.data;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.res.Resources;
 import android.database.Cursor;
 
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.TestUtils;
 
 import java.util.ArrayList;
 import java.util.List;

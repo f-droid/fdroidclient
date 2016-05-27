@@ -1,11 +1,8 @@
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
 
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.TestUtils;
 
 import mock.MockInstallablePackageManager;
 
