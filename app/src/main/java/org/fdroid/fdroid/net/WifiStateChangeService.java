@@ -58,6 +58,10 @@ public class WifiStateChangeService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
+        if (intent == null) {
+            Utils.debugLog(TAG, "received null Intent, ignoring");
+            return;
+        }
         Utils.debugLog(TAG, "WiFi change service started, clearing info about wifi state until we have figured it out again.");
         NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
