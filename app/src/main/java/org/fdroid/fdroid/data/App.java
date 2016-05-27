@@ -309,6 +309,8 @@ public class App extends ValueObject implements Comparable<App> {
 
         this.name = (String) appInfo.loadLabel(pm);
         this.icon = getIconName(packageName, packageInfo.versionCode);
+        this.installedVersionName = packageInfo.versionName;
+        this.installedVersionCode = packageInfo.versionCode;
         this.compatible = true;
     }
 

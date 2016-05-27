@@ -465,6 +465,9 @@
         <service
             android:name=".installer.InstallManagerService"
             android:exported="false" />
+        <service
+            android:name=".localrepo.CacheSwapAppsService"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -31,6 +31,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.localrepo.peers.Peer;
@@ -52,6 +53,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ConcurrentHashMap;
 
 import rx.Observable;
 import rx.Subscription;
@@ -61,23 +63,6 @@ import rx.schedulers.Schedulers;
 /**
  * Central service which manages all of the different moving parts of swap which are required
  * to enable p2p swapping of apps.
- *
- * The following UI elements don't do anything:
- *  + TODO: Be notified of changes to wifi state correctly, particularly from the WiFi AP (https://github.com/mvdan/accesspoint/issues/5)
- *  + TODO: The "?" button in the top right of the swap start screen doesn't do anything
- *          (This has been commented out for now, but it is still preferable to have a working help mechanism)
- *
- * TODO: Show "Waiting for other device to finish setting up swap" when only F-Droid shown in swap
- * TODO: Handle "not connected to wifi" more gracefully. For example, Bonjour discovery falls over.
- * TODO: When unable to reach the swap repo, but viewing apps to swap, show relevant feedback when attempting to download and install.
- * TODO: Remove peers from list of peers when no longer "visible".
- * TODO: Feedback for "Setting up (wifi|bluetooth)" in start swap view is not as immediate as I had hoped.
- * TODO: Turn off bluetooth after cancelling/timing out if we turned it on.
- * TODO: Disable the Scan QR button unless visible via something. Could equally show relevant feedback.
- *
- * TODO: Starting wifi after cancelling swap and beginning again doesn't work properly
- * TODO: Scan QR hangs when updating repoo. Swapper was 2.3.3 and Swappee was 5.0
- * TODO: Showing the progress bar during install doesn't work when the view is inflated again, or when the adapter is scrolled off screen and back again.
  */
 public class SwapService extends Service {
 
@@ -89,6 +74,19 @@ public class SwapService extends Service {
 
     @NonNull
     private final Set<String> appsToSwap = new HashSet<>();
+
+    /**
+     * A cache of parsed APKs from the file system.
+     */
+    private static final ConcurrentHashMap<String, App> INSTALLED_APPS = new ConcurrentHashMap<>();
+
+    static App getAppFromCache(String packageName) {
+        return INSTALLED_APPS.get(packageName);
+    }
+
+    static void putAppInCache(String packageName, App app) {
+        INSTALLED_APPS.put(packageName, app);
+    }
 
     /**
      * Where relevant, the state of the swap process will be saved to disk using preferences.
@@ -515,6 +513,8 @@ public class SwapService extends Service {
         super.onCreate();
 
         Utils.debugLog(TAG, "Creating swap service.");
+
+        CacheSwapAppsService.startCaching(this);
 
         SharedPreferences preferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
 

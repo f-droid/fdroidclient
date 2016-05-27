@@ -257,7 +257,10 @@ public final class LocalRepoManager {
     public void addApp(Context context, String packageName) {
         App app;
         try {
-            app = new App(context.getApplicationContext(), pm, packageName);
+            app = SwapService.getAppFromCache(packageName);
+            if (app == null) {
+                app = new App(context.getApplicationContext(), pm, packageName);
+            }
             if (!app.isValid()) {
                 return;
             }
