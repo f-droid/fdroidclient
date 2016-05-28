@@ -30,9 +30,16 @@ public class InstallerFactory {
     private static final String TAG = "InstallerFactory";
 
     public static Installer create(Context context) {
+        return create(context, null);
+    }
+
+    public static Installer create(Context context, String packageName) {
         Installer installer;
 
-        if (isPrivilegedInstallerEnabled()) {
+        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
+            // special case: F-Droid Privileged Extension
+            installer = new ExtensionInstaller(context);
+        } else if (isPrivilegedInstallerEnabled()) {
             if (PrivilegedInstaller.isExtensionInstalledCorrectly(context)
                     == PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES) {
                 Utils.debugLog(TAG, "privileged extension correctly installed -> PrivilegedInstaller");

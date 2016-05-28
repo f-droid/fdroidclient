@@ -402,7 +402,7 @@
             </intent-filter>
         </receiver>
         <activity
-            android:name=".installer.AndroidInstallerActivity"
+            android:name=".installer.DefaultInstallerActivity"
             android:theme="@style/AppThemeTransparent" />
 
         <receiver android:name=".receiver.StartupReceiver" >

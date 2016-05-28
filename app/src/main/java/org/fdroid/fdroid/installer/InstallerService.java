@@ -71,7 +71,6 @@ public class InstallerService extends Service {
         serviceLooper = thread.getLooper();
         serviceHandler = new ServiceHandler(serviceLooper);
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
-        installer = InstallerFactory.create(this);
     }
 
     @Override
@@ -118,20 +117,19 @@ public class InstallerService extends Service {
     }
 
     protected void handleIntent(Intent intent) {
+        String packageName = intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
+        installer = InstallerFactory.create(this, packageName);
+
         switch (intent.getAction()) {
             case ACTION_INSTALL: {
                 Uri uri = intent.getData();
                 Uri originatingUri = intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
-                String packageName = intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
 
                 installer.installPackage(uri, originatingUri, packageName);
                 break;
             }
 
             case ACTION_UNINSTALL: {
-                String packageName =
-                        intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
-
                 installer.uninstallPackage(packageName);
                 break;
             }
