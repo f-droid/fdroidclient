@@ -25,9 +25,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
 
 import java.io.File;
 
@@ -43,36 +41,22 @@ public class DefaultInstaller extends Installer {
     protected void installPackage(Uri uri, Uri originatingUri, String packageName) {
         sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_STARTED);
 
-        Utils.debugLog(TAG, "ACTION_INSTALL uri: " + uri + " file: " + new File(uri.getPath()));
+        Utils.debugLog(TAG, "DefaultInstaller uri: " + uri + " file: " + new File(uri.getPath()));
 
         Uri sanitizedUri;
         try {
             sanitizedUri = Installer.prepareApkFile(mContext, uri, packageName);
         } catch (Installer.InstallFailedException e) {
             Log.e(TAG, "prepareApkFile failed", e);
+            sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
+                    e.getMessage());
             return;
         }
 
-        Intent installIntent;
-        // special case: F-Droid Privileged Extension
-        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
-
-            // extension must be signed with the same public key as main F-Droid
-            // NOTE: Disabled for debug builds to be able to use official extension from repo
-            ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(mContext);
-            if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(new File(sanitizedUri.getPath()))) {
-                throw new RuntimeException("APK signature of extension not correct!");
-            }
-
-            installIntent = new Intent(mContext, InstallExtensionDialogActivity.class);
-            installIntent.setAction(InstallExtensionDialogActivity.ACTION_INSTALL);
-            installIntent.setData(sanitizedUri);
-        } else {
-            installIntent = new Intent(mContext, DefaultInstallerActivity.class);
-            installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);
-            installIntent.putExtra(DefaultInstallerActivity.EXTRA_ORIGINATING_URI, originatingUri);
-            installIntent.setData(sanitizedUri);
-        }
+        Intent installIntent = new Intent(mContext, DefaultInstallerActivity.class);
+        installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);
+        installIntent.putExtra(DefaultInstallerActivity.EXTRA_ORIGINATING_URI, originatingUri);
+        installIntent.setData(sanitizedUri);
 
         PendingIntent installPendingIntent = PendingIntent.getActivity(
                 mContext.getApplicationContext(),
@@ -88,17 +72,10 @@ public class DefaultInstaller extends Installer {
     protected void uninstallPackage(String packageName) {
         sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_STARTED);
 
-        Intent uninstallIntent;
-        // special case: F-Droid Privileged Extension
-        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
-            uninstallIntent = new Intent(mContext, InstallExtensionDialogActivity.class);
-            uninstallIntent.setAction(InstallExtensionDialogActivity.ACTION_UNINSTALL);
-        } else {
-            uninstallIntent = new Intent(mContext, DefaultInstallerActivity.class);
-            uninstallIntent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
-            uninstallIntent.putExtra(
-                    DefaultInstallerActivity.EXTRA_UNINSTALL_PACKAGE_NAME, packageName);
-        }
+        Intent uninstallIntent = new Intent(mContext, DefaultInstallerActivity.class);
+        uninstallIntent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
+        uninstallIntent.putExtra(
+                DefaultInstallerActivity.EXTRA_UNINSTALL_PACKAGE_NAME, packageName);
         PendingIntent uninstallPendingIntent = PendingIntent.getActivity(
                 mContext.getApplicationContext(),
                 packageName.hashCode(),

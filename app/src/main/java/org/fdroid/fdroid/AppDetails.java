@@ -562,55 +562,28 @@ public class AppDetails extends AppCompatActivity {
                 }
                 case Installer.ACTION_INSTALL_COMPLETE: {
                     headerFragment.removeProgress();
+
                     localBroadcastManager.unregisterReceiver(this);
-
-                    PackageManagerCompat.setInstaller(packageManager, app.packageName);
-
-                    onAppChanged();
                     break;
                 }
                 case Installer.ACTION_INSTALL_INTERRUPTED: {
                     headerFragment.removeProgress();
+                    onAppChanged();
+
+                    String errorMessage =
+                            intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
+
+                    if (!TextUtils.isEmpty(errorMessage)) {
+                        Log.e(TAG, "Installer aborted with errorMessage: " + errorMessage);
+
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
+                        alertBuilder.setTitle(R.string.install_error_notify_title);
+                        alertBuilder.setMessage(errorMessage);
+                        alertBuilder.setNeutralButton(android.R.string.ok, null);
+                        alertBuilder.create().show();
+                    }
+
                     localBroadcastManager.unregisterReceiver(this);
-
-
-                    // TODO: old error handling code:
-//                    if (errorCode == InstallerCallback.ERROR_CODE_CANCELED) {
-//                        return;
-//                    }
-//                    final int title, body;
-//                    if (operation == InstallerCallback.OPERATION_INSTALL) {
-//                        title = R.string.install_error_title;
-//                        switch (errorCode) {
-//                            case ERROR_CODE_CANNOT_PARSE:
-//                                body = R.string.install_error_cannot_parse;
-//                                break;
-//                            default: // ERROR_CODE_OTHER
-//                                body = R.string.install_error_unknown;
-//                                break;
-//                        }
-//                    } else { // InstallerCallback.OPERATION_DELETE
-//                        title = R.string.uninstall_error_title;
-//                        switch (errorCode) {
-//                            default: // ERROR_CODE_OTHER
-//                                body = R.string.uninstall_error_unknown;
-//                                break;
-//                        }
-//                    }
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            onAppChanged();
-//
-//                            Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
-//
-//                            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
-//                            alertBuilder.setTitle(title);
-//                            alertBuilder.setMessage(body);
-//                            alertBuilder.setNeutralButton(android.R.string.ok, null);
-//                            alertBuilder.create().show();
-//                        }
-//                    });
                     break;
                 }
                 case Installer.ACTION_INSTALL_USER_INTERACTION: {
@@ -643,52 +616,28 @@ public class AppDetails extends AppCompatActivity {
                 }
                 case Installer.ACTION_UNINSTALL_COMPLETE: {
                     headerFragment.removeProgress();
-                    localBroadcastManager.unregisterReceiver(this);
-
                     onAppChanged();
+
+                    localBroadcastManager.unregisterReceiver(this);
                     break;
                 }
                 case Installer.ACTION_UNINSTALL_INTERRUPTED: {
                     headerFragment.removeProgress();
-                    localBroadcastManager.unregisterReceiver(this);
 
-                    // TODO: old error handling code:
-//                    if (errorCode == InstallerCallback.ERROR_CODE_CANCELED) {
-//                        return;
-//                    }
-//                    final int title, body;
-//                    if (operation == InstallerCallback.OPERATION_INSTALL) {
-//                        title = R.string.install_error_title;
-//                        switch (errorCode) {
-//                            case ERROR_CODE_CANNOT_PARSE:
-//                                body = R.string.install_error_cannot_parse;
-//                                break;
-//                            default: // ERROR_CODE_OTHER
-//                                body = R.string.install_error_unknown;
-//                                break;
-//                        }
-//                    } else { // InstallerCallback.OPERATION_DELETE
-//                        title = R.string.uninstall_error_title;
-//                        switch (errorCode) {
-//                            default: // ERROR_CODE_OTHER
-//                                body = R.string.uninstall_error_unknown;
-//                                break;
-//                        }
-//                    }
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            onAppChanged();
-//
-//                            Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
-//
-//                            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
-//                            alertBuilder.setTitle(title);
-//                            alertBuilder.setMessage(body);
-//                            alertBuilder.setNeutralButton(android.R.string.ok, null);
-//                            alertBuilder.create().show();
-//                        }
-//                    });
+                    String errorMessage =
+                            intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
+
+                    if (!TextUtils.isEmpty(errorMessage)) {
+                        Log.e(TAG, "Installer aborted with errorMessage: " + errorMessage);
+
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
+                        alertBuilder.setTitle(R.string.uninstall_error_notify_title);
+                        alertBuilder.setMessage(errorMessage);
+                        alertBuilder.setNeutralButton(android.R.string.ok, null);
+                        alertBuilder.create().show();
+                    }
+
+                    localBroadcastManager.unregisterReceiver(this);
                     break;
                 }
                 case Installer.ACTION_UNINSTALL_USER_INTERACTION: {

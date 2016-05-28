@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 
 /**
@@ -207,9 +208,10 @@ public class DefaultInstallerActivity extends FragmentActivity {
                     }
                     default:
                     case Activity.RESULT_FIRST_USER: {
-                        // AOSP actually returns Activity.RESULT_FIRST_USER if something breaks
+                        // AOSP returns Activity.RESULT_FIRST_USER on error
                         installer.sendBroadcastInstall(mInstallUri, mInstallOriginatingUri,
-                                Installer.ACTION_INSTALL_INTERRUPTED, "error");
+                                Installer.ACTION_INSTALL_INTERRUPTED,
+                                getString(R.string.install_error_unknown));
                         break;
                     }
                 }
@@ -237,11 +239,10 @@ public class DefaultInstallerActivity extends FragmentActivity {
                     }
                     default:
                     case Activity.RESULT_FIRST_USER: {
-                        // AOSP UninstallAppProgress actually returns
-                        // Activity.RESULT_FIRST_USER if something breaks
+                        // AOSP UninstallAppProgress returns RESULT_FIRST_USER on error
                         installer.sendBroadcastUninstall(mUninstallPackageName,
                                 Installer.ACTION_UNINSTALL_INTERRUPTED,
-                                "error");
+                                getString(R.string.uninstall_error_unknown));
                         break;
                     }
                 }

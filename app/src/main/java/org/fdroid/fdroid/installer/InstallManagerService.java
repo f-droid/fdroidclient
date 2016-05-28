@@ -19,6 +19,7 @@ import android.text.TextUtils;
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.net.Downloader;
@@ -274,15 +275,26 @@ public class InstallManagerService extends Service {
                         Uri originatingUri =
                                 intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
                         String urlString = originatingUri.toString();
-                        removeFromActive(urlString);
+                        Apk apk = removeFromActive(urlString);
+
+                        PackageManagerCompat.setInstaller(getPackageManager(), apk.packageName);
 
                         localBroadcastManager.unregisterReceiver(this);
-
                         break;
                     }
                     case Installer.ACTION_INSTALL_INTERRUPTED: {
-                        localBroadcastManager.unregisterReceiver(this);
+                        Uri originatingUri =
+                                intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
+                        String urlString = originatingUri.toString();
+                        String errorMessage =
+                                intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
+                        if (!TextUtils.isEmpty(errorMessage)) {
+                            App app = getAppFromActive(urlString);
+                            notifyError(app, urlString, errorMessage, false);
+                        }
+
+                        localBroadcastManager.unregisterReceiver(this);
                         break;
                     }
                     case Installer.ACTION_INSTALL_USER_INTERACTION: {
@@ -292,7 +304,7 @@ public class InstallManagerService extends Service {
                                 intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
                         Utils.debugLog(TAG, "originatingUri: " + originatingUri);
 
-                        Apk apk = getFromActive(originatingUri.toString());
+                        Apk apk = getApkFromActive(originatingUri.toString());
                         // show notification if app details is not visible
                         if (AppDetails.isAppVisible(apk.packageName)) {
                             cancelNotification(originatingUri.toString());
@@ -379,6 +391,25 @@ public class InstallManagerService extends Service {
         notificationManager.notify(downloadUrlId, notification);
     }
 
+    private void notifyError(App app, String urlString, String text, boolean uninstall) {
+        String title;
+        if (uninstall) {
+            title = String.format(getString(R.string.uninstall_error_notify_title), app.name);
+        } else {
+            title = String.format(getString(R.string.install_error_notify_title), app.name);
+        }
+
+        int downloadUrlId = urlString.hashCode();
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setAutoCancel(true)
+                        .setContentTitle(title)
+                        .setSmallIcon(R.drawable.ic_issues)
+                        .setContentText(text);
+        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        nm.notify(downloadUrlId, builder.build());
+    }
+
     /**
      * Cancel the {@link Notification} tied to {@code urlString}, which is the
      * unique ID used to represent a given APK file. {@link String#hashCode()}
@@ -393,7 +424,7 @@ public class InstallManagerService extends Service {
         ACTIVE_APPS.put(app.packageName, app);
     }
 
-    private static Apk getFromActive(String urlString) {
+    private static Apk getApkFromActive(String urlString) {
         return ACTIVE_APKS.get(urlString);
     }
 
@@ -404,6 +435,10 @@ public class InstallManagerService extends Service {
      * {@link BroadcastReceiver}s, in which case {@code urlString} would not
      * find anything in the active maps.
      */
+    private static App getAppFromActive(String urlString) {
+        return ACTIVE_APPS.get(getApkFromActive(urlString).packageName);
+    }
+
     private static Apk removeFromActive(String urlString) {
         Apk apk = ACTIVE_APKS.remove(urlString);
         if (apk != null) {

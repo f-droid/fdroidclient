@@ -160,6 +160,9 @@ public abstract class Installer {
 //        if (count < 0) {
 //            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
 //                    InstallerCallback.ERROR_CODE_CANNOT_PARSE);
+
+//        install_error_cannot_parse
+
 //            return;
 //        }
 //        if (count > 0) {

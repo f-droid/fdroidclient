@@ -151,6 +151,8 @@ public class PrivilegedInstaller extends Installer {
             sanitizedUri = Installer.prepareApkFile(mContext, uri, packageName);
         } catch (Installer.InstallFailedException e) {
             Log.e(TAG, "prepareApkFile failed", e);
+            sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
+                    e.getMessage());
             return;
         }
 
@@ -299,6 +301,9 @@ public class PrivilegedInstaller extends Installer {
 //                } else if (resultCode == InstallConfirmActivity.RESULT_CANNOT_PARSE) {
 //                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
 //                            InstallerCallback.ERROR_CODE_CANNOT_PARSE);
+
+//    install_error_cannot_parse
+
 //                } else { // Activity.RESULT_CANCELED
 //                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
 //                            InstallerCallback.ERROR_CODE_CANCELED);

@@ -43,13 +43,13 @@ public class ExtensionInstaller extends Installer {
 
     @Override
     protected void installPackage(Uri uri, Uri originatingUri, String packageName) {
-        sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_STARTED);
-
         Uri sanitizedUri;
         try {
             sanitizedUri = Installer.prepareApkFile(mContext, uri, packageName);
         } catch (InstallFailedException e) {
             Log.e(TAG, "prepareApkFile failed", e);
+            sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
+                    e.getMessage());
             return;
         }
 
@@ -57,10 +57,10 @@ public class ExtensionInstaller extends Installer {
         // NOTE: Disabled for debug builds to be able to use official extension from repo
         ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(mContext);
         if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(new File(sanitizedUri.getPath()))) {
-            throw new RuntimeException("APK signature of extension not correct!");
+            sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
+                    "APK signature of extension not correct!");
         }
-        Intent installIntent;
-        installIntent = new Intent(mContext, InstallExtensionDialogActivity.class);
+        Intent installIntent = new Intent(mContext, InstallExtensionDialogActivity.class);
         installIntent.setAction(InstallExtensionDialogActivity.ACTION_INSTALL);
         installIntent.setData(sanitizedUri);
 
@@ -72,14 +72,16 @@ public class ExtensionInstaller extends Installer {
 
         sendBroadcastInstall(uri, originatingUri,
                 Installer.ACTION_INSTALL_USER_INTERACTION, installPendingIntent);
+
+        // don't use broadcasts for the rest of this special installer
+        sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_COMPLETE);
     }
 
     @Override
     protected void uninstallPackage(String packageName) {
         sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_STARTED);
 
-        Intent uninstallIntent;
-        uninstallIntent = new Intent(mContext, InstallExtensionDialogActivity.class);
+        Intent uninstallIntent = new Intent(mContext, InstallExtensionDialogActivity.class);
         uninstallIntent.setAction(InstallExtensionDialogActivity.ACTION_UNINSTALL);
 
         PendingIntent uninstallPendingIntent = PendingIntent.getActivity(
@@ -90,5 +92,8 @@ public class ExtensionInstaller extends Installer {
 
         sendBroadcastUninstall(packageName,
                 Installer.ACTION_UNINSTALL_USER_INTERACTION, uninstallPendingIntent);
+
+        // don't use broadcasts for the rest of this special installer
+        sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_COMPLETE);
     }
 }
