@@ -35,7 +35,7 @@ import org.fdroid.fdroid.Utils;
 /**
  * A transparent activity as a wrapper around AOSP's PackageInstaller Intents
  */
-public class AndroidInstallerActivity extends FragmentActivity {
+public class DefaultInstallerActivity extends FragmentActivity {
     public static final String TAG = "AndroidInstallerAct";
 
     public static final String ACTION_INSTALL_PACKAGE = "org.fdroid.fdroid.INSTALL_PACKAGE";

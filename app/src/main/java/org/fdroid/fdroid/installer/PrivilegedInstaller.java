@@ -39,8 +39,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
 import org.fdroid.fdroid.privileged.IPrivilegedService;
 
-import java.io.File;
-
 /**
  * Installer based on using internal hidden APIs of the Android OS, which are
  * protected by the permissions
@@ -133,8 +131,7 @@ public class PrivilegedInstaller extends Installer {
         synchronized (mutex) {
             try {
                 mutex.wait(3000);
-            } catch (InterruptedException e) {
-                // don't care
+            } catch (InterruptedException ignored) {
             }
         }
 
@@ -147,7 +144,15 @@ public class PrivilegedInstaller extends Installer {
 
 
     @Override
-    protected void installPackage(final Uri uri, Uri originatingUri, String packageName) {
+    protected void installPackage(final Uri uri, final Uri originatingUri, String packageName) {
+
+        final Uri sanitizedUri;
+        try {
+            sanitizedUri = Installer.prepareApkFile(mContext, uri, packageName);
+        } catch (Installer.InstallFailedException e) {
+            Log.e(TAG, "prepareApkFile failed", e);
+            return;
+        }
 
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
@@ -156,20 +161,20 @@ public class PrivilegedInstaller extends Installer {
                 IPrivilegedCallback callback = new IPrivilegedCallback.Stub() {
                     @Override
                     public void handleResult(String packageName, int returnCode) throws RemoteException {
-                        // TODO: propagate other return codes?
+                        // TODO: propagate other return codes!
                         if (returnCode == INSTALL_SUCCEEDED) {
                             Utils.debugLog(TAG, "Install succeeded");
-//                            mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
+                            sendBroadcastInstall(uri, originatingUri, ACTION_INSTALL_COMPLETE);
                         } else {
                             Log.e(TAG, "Install failed with returnCode " + returnCode);
-//                            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-//                                    InstallerCallback.ERROR_CODE_OTHER);
+                            sendBroadcastInstall(uri, originatingUri, ACTION_INSTALL_INTERRUPTED,
+                                    "Install failed with returnCode " + returnCode);
                         }
                     }
                 };
 
                 try {
-                    privService.installPackage(uri, INSTALL_REPLACE_EXISTING, null, callback);
+                    privService.installPackage(sanitizedUri, INSTALL_REPLACE_EXISTING, null, callback);
                 } catch (RemoteException e) {
                     Log.e(TAG, "RemoteException", e);
                 }
@@ -201,8 +206,8 @@ public class PrivilegedInstaller extends Installer {
 
         if (isSystem && !isUpdate) {
             // Cannot remove system apps unless we're uninstalling updates
-//            mCallback.onError(InstallerCallback.OPERATION_DELETE,
-//                    InstallerCallback.ERROR_CODE_OTHER);
+            sendBroadcastUninstall(packageName, ACTION_UNINSTALL_INTERRUPTED,
+                    "Cannot remove system apps unless we're uninstalling updates");
             return;
         }
 
@@ -213,6 +218,7 @@ public class PrivilegedInstaller extends Installer {
             messageId = R.string.uninstall_confirm;
         }
 
+        // TODO: move this to methods in activity/ Installer with activity context!
         final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setTitle(appInfo.loadLabel(mPm));
         builder.setIcon(appInfo.loadIcon(mPm));
@@ -223,8 +229,8 @@ public class PrivilegedInstaller extends Installer {
                         try {
                             doDeletePackageInternal(packageName);
                         } catch (InstallFailedException e) {
-//                            mCallback.onError(InstallerCallback.OPERATION_DELETE,
-//                                    InstallerCallback.ERROR_CODE_OTHER);
+                            sendBroadcastUninstall(packageName, ACTION_UNINSTALL_INTERRUPTED,
+                                    "uninstall failed");
                         }
                     }
                 });
@@ -233,8 +239,7 @@ public class PrivilegedInstaller extends Installer {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-//                        mCallback.onError(InstallerCallback.OPERATION_DELETE,
-//                                InstallerCallback.ERROR_CODE_CANCELED);
+                        sendBroadcastUninstall(packageName, ACTION_UNINSTALL_INTERRUPTED);
                     }
                 });
         builder.setMessage(messageId);
@@ -253,12 +258,11 @@ public class PrivilegedInstaller extends Installer {
                         // TODO: propagate other return codes?
                         if (returnCode == DELETE_SUCCEEDED) {
                             Utils.debugLog(TAG, "Delete succeeded");
-
-//                            mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
+                            sendBroadcastUninstall(packageName, ACTION_UNINSTALL_COMPLETE);
                         } else {
                             Log.e(TAG, "Delete failed with returnCode " + returnCode);
-//                            mCallback.onError(InstallerCallback.OPERATION_DELETE,
-//                                    InstallerCallback.ERROR_CODE_OTHER);
+                            sendBroadcastUninstall(packageName, ACTION_UNINSTALL_INTERRUPTED,
+                                    "Uninstall failed with returnCode " + returnCode);
                         }
                     }
                 };
