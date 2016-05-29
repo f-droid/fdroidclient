@@ -175,11 +175,11 @@ public abstract class Installer {
 
     private int newPermissionCount(Apk apk) {
         // TODO: requires targetSdk in Apk class/database
-//        boolean supportsRuntimePermissions = mPkgInfo.applicationInfo.targetSdkVersion
-//                >= Build.VERSION_CODES.M;
-//        if (supportsRuntimePermissions) {
-//            return 0;
-//        }
+        //boolean supportsRuntimePermissions = mPkgInfo.applicationInfo.targetSdkVersion
+        //        >= Build.VERSION_CODES.M;
+        //if (supportsRuntimePermissions) {
+        //    return 0;
+        //}
 
         AppDiff appDiff = new AppDiff(mContext.getPackageManager(), apk);
         if (appDiff.mPkgInfo == null) {
