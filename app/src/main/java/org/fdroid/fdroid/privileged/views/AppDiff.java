@@ -18,17 +18,47 @@
 
 package org.fdroid.fdroid.privileged.views;
 
+import android.annotation.TargetApi;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 
+import org.fdroid.fdroid.data.Apk;
+
+import java.util.ArrayList;
+
+@TargetApi(Build.VERSION_CODES.M)
 public class AppDiff {
 
     private final PackageManager mPm;
     public final PackageInfo mPkgInfo;
 
     public ApplicationInfo mInstalledAppInfo;
+
+    /**
+     * Constructor based on F-Droids Apk object
+     */
+    public AppDiff(PackageManager mPm, Apk apk) {
+        this.mPm = mPm;
+
+        if (apk.permissions == null) {
+            throw new RuntimeException("apk.permissions is null");
+        }
+        mPkgInfo = new PackageInfo();
+        mPkgInfo.packageName = apk.packageName;
+        mPkgInfo.applicationInfo = new ApplicationInfo();
+
+        // TODO: duplicate code with Permission.fdroidToAndroid
+        ArrayList<String> permissionsFixed = new ArrayList<>();
+        for (String perm : apk.permissions.toArrayList()) {
+            permissionsFixed.add("android.permission." + perm);
+        }
+        mPkgInfo.requestedPermissions = permissionsFixed.toArray(new String[permissionsFixed.size()]);
+
+        init();
+    }
 
     public AppDiff(PackageManager mPm, Uri mPackageURI) {
         this.mPm = mPm;
@@ -55,7 +85,7 @@ public class AppDiff {
         String pkgName = mPkgInfo.packageName;
         // Check if there is already a package on the device with this name
         // but it has been renamed to something else.
-        final String[] oldName = mPm.canonicalToCurrentPackageNames(new String[] {pkgName});
+        final String[] oldName = mPm.canonicalToCurrentPackageNames(new String[]{pkgName});
         if (oldName != null && oldName.length > 0 && oldName[0] != null) {
             pkgName = oldName[0];
             mPkgInfo.packageName = pkgName;

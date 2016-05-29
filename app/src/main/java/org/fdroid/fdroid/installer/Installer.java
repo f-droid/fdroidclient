@@ -37,6 +37,8 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
+import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
+import org.fdroid.fdroid.privileged.views.UninstallDialogActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -153,48 +155,55 @@ public abstract class Installer {
         return Uri.fromFile(sanitizedApkFile);
     }
 
-    public PendingIntent getPermissionScreen(Apk apk) {
-        // old code:
-//        Uri packageUri = Uri.fromFile(apkFile);
-//        int count = newPermissionCount(packageUri);
-//        if (count < 0) {
-//            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-//                    InstallerCallback.ERROR_CODE_CANNOT_PARSE);
+    public Intent getPermissionScreen(Apk apk) {
+        if (!isUnattended()) {
+            return null;
+        }
 
-//        install_error_cannot_parse
+        int count = newPermissionCount(apk);
+        if (count > 0) {
+            Uri uri = ApkProvider.getContentUri(apk);
+            Intent intent = new Intent(mContext, InstallConfirmActivity.class);
+            intent.setData(uri);
 
-//            return;
-//        }
-//        if (count > 0) {
-//            Intent intent = new Intent(mContext, InstallConfirmActivity.class);
-//            intent.setData(packageUri);
-//            mActivity.startActivityForResult(intent, REQUEST_CONFIRM_PERMS);
-//        } else {
-//            try {
-//                doInstallPackageInternal(packageUri);
-//            } catch (InstallFailedException e) {
-//                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-//                        InstallerCallback.ERROR_CODE_OTHER);
-//            }
-//        }
-        return null;
+            return intent;
+        } else {
+            // no permission screen needed!
+            return null;
+        }
     }
 
+    private int newPermissionCount(Apk apk) {
+        // TODO: requires targetSdk in Apk class/database
+//        boolean supportsRuntimePermissions = mPkgInfo.applicationInfo.targetSdkVersion
+//                >= Build.VERSION_CODES.M;
+//        if (supportsRuntimePermissions) {
+//            return 0;
+//        }
 
-    private int newPermissionCount(Uri packageUri) {
-        AppDiff appDiff = new AppDiff(mContext.getPackageManager(), packageUri);
+        AppDiff appDiff = new AppDiff(mContext.getPackageManager(), apk);
         if (appDiff.mPkgInfo == null) {
             // could not get diff because we couldn't parse the package
-            return -1;
+            throw new RuntimeException("cannot parse!");
         }
         AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.mPkgInfo);
         if (appDiff.mInstalledAppInfo != null) {
             // update to an existing app
             return perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW);
         }
-        // default: even if there aren't any permissions, we want to make the
-        // user always confirm installing new apps
-        return 1;
+        // new app install
+        return perms.getPermissionCount(AppSecurityPermissions.WHICH_ALL);
+    }
+
+    public Intent getUninstallScreen(String packageName) {
+        if (!isUnattended()) {
+            return null;
+        }
+
+        Intent intent = new Intent(mContext, UninstallDialogActivity.class);
+        intent.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
+
+        return intent;
     }
 
     /**
@@ -286,5 +295,7 @@ public abstract class Installer {
     protected abstract void installPackage(Uri uri, Uri originatingUri, String packageName);
 
     protected abstract void uninstallPackage(String packageName);
+
+    protected abstract boolean isUnattended();
 
 }

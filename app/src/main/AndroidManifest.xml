@@ -316,12 +316,18 @@
         <activity
             android:name=".privileged.views.InstallConfirmActivity"
             android:label="@string/menu_install"
+            android:theme="@style/MinWithDialogBaseThemeLight"
+            android:excludeFromRecents="true"
             android:parentActivityName=".FDroid"
             android:configChanges="layoutDirection|locale" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FDroid" />
         </activity>
+        <activity
+            android:name=".privileged.views.UninstallDialogActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/AppThemeTransparent" />
         <activity
             android:name=".views.ManageReposActivity"
             android:label="@string/app_name"

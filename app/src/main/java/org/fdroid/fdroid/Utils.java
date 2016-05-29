@@ -57,6 +57,7 @@ import java.security.cert.CertificateEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.Iterator;
@@ -455,6 +456,19 @@ public final class Utils {
             TextUtils.SimpleStringSplitter splitter = new TextUtils.SimpleStringSplitter(',');
             splitter.setString(value);
             return splitter.iterator();
+        }
+
+        public ArrayList<String> toArrayList() {
+            ArrayList<String> out = new ArrayList<>();
+            for (String element : this) {
+                out.add(element);
+            }
+            return out;
+        }
+
+        public String[] toArray() {
+            ArrayList<String> list = toArrayList();
+            return list.toArray(new String[list.size()]);
         }
 
         public boolean contains(String v) {

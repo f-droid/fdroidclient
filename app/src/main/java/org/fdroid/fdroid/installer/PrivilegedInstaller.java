@@ -238,7 +238,7 @@ public class PrivilegedInstaller extends Installer {
     private static final HashMap<Integer, String> sUninstallReturnCodes;
 
     static {
-        // Descriptions extrgacted from the source code comments in AOSP
+        // Descriptions extracted from the source code comments in AOSP
         sUninstallReturnCodes = new HashMap<>();
         sUninstallReturnCodes.put(DELETE_SUCCEEDED,
                 "Success");
@@ -324,6 +324,7 @@ public class PrivilegedInstaller extends Installer {
 
     @Override
     protected void installPackage(final Uri uri, final Uri originatingUri, String packageName) {
+        sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_STARTED);
 
         final Uri sanitizedUri;
         try {
@@ -374,6 +375,8 @@ public class PrivilegedInstaller extends Installer {
 
     @Override
     protected void uninstallPackage(final String packageName) {
+        sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_STARTED);
+
         ApplicationInfo appInfo;
         try {
             //noinspection WrongConstant (lint is actually wrong here!)
@@ -466,33 +469,9 @@ public class PrivilegedInstaller extends Installer {
                 Context.BIND_AUTO_CREATE);
     }
 
-//    @Override
-//    public boolean handleOnActivityResult(int requestCode, int resultCode, Intent data) {
-//        switch (requestCode) {
-//            case REQUEST_CONFIRM_PERMS:
-//                if (resultCode == Activity.RESULT_OK) {
-//                    final Uri packageUri = data.getData();
-//                    try {
-//                        doInstallPackageInternal(packageUri);
-//                    } catch (InstallFailedException e) {
-//                        mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-//                                InstallerCallback.ERROR_CODE_OTHER);
-//                    }
-//                } else if (resultCode == InstallConfirmActivity.RESULT_CANNOT_PARSE) {
-//                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-//                            InstallerCallback.ERROR_CODE_CANNOT_PARSE);
-
-//    install_error_cannot_parse
-
-//                } else { // Activity.RESULT_CANCELED
-//                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-//                            InstallerCallback.ERROR_CODE_CANCELED);
-//                }
-//                return true;
-//            default:
-//                return false;
-//        }
-//    }
-
+    @Override
+    protected boolean isUnattended() {
+        return true;
+    }
 
 }

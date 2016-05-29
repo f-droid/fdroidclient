@@ -48,6 +48,20 @@
         <item name="colorAccent">@color/fdroid_green</item>
     </style>
 
+    <style name="MinWithDialogBaseThemeDark" parent="Theme.AppCompat.Dialog.MinWidth">
+        <item name="colorAccent">@color/fdroid_green</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MinWithDialogBaseThemeLight" parent="Theme.AppCompat.Light.Dialog.MinWidth">
+        <item name="colorAccent">@color/fdroid_green</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="TextViewStyle" parent="android:Widget.TextView">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>

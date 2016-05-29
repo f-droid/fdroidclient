@@ -235,8 +235,7 @@ public class AppSecurityPermissions {
             try {
                 installedPkgInfo = mPm.getPackageInfo(info.packageName,
                         PackageManager.GET_PERMISSIONS);
-            } catch (NameNotFoundException e) {
-                throw new RuntimeException("NameNotFoundException during GET_PERMISSIONS!");
+            } catch (NameNotFoundException ignored) {
             }
             extractPerms(info, permSet, installedPkgInfo);
         }

@@ -79,7 +79,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import org.fdroid.fdroid.Utils.CommaSeparatedList;
-import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -88,6 +87,7 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
@@ -101,6 +101,8 @@ public class AppDetails extends AppCompatActivity {
     private static final String TAG = "AppDetails";
 
     private static final int REQUEST_ENABLE_BLUETOOTH = 2;
+    private static final int REQUEST_PERMISSION_DIALOG = 3;
+    private static final int REQUEST_UNINSTALL_DIALOG = 4;
 
     public static final String EXTRA_APPID = "appid";
     public static final String EXTRA_FROM = "from";
@@ -983,6 +985,19 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void initiateInstall(Apk apk) {
+        Installer installer = InstallerFactory.create(this);
+        Intent intent = installer.getPermissionScreen(apk);
+        if (intent != null) {
+            // permission screen required
+            Utils.debugLog(TAG, "permission screen required");
+            startActivityForResult(intent, REQUEST_PERMISSION_DIALOG);
+            return;
+        }
+
+        startInstall(apk);
+    }
+
+    private void startInstall(Apk apk) {
         activeDownloadUrlString = apk.getUrl();
         registerDownloaderReceivers();
         headerFragment.startProgress();
@@ -990,9 +1005,22 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void uninstallApk(String packageName) {
+        Installer installer = InstallerFactory.create(this);
+        Intent intent = installer.getUninstallScreen(packageName);
+        if (intent != null) {
+            // uninstall screen required
+            Utils.debugLog(TAG, "screen screen required");
+            startActivityForResult(intent, REQUEST_UNINSTALL_DIALOG);
+            return;
+        }
+
+        startUninstall();
+    }
+
+    private void startUninstall() {
         localBroadcastManager.registerReceiver(uninstallReceiver,
-                Installer.getUninstallIntentFilter(packageName));
-        InstallerService.uninstall(context, packageName);
+                Installer.getUninstallIntentFilter(app.packageName));
+        InstallerService.uninstall(context, app.packageName);
     }
 
     private void launchApk(String packageName) {
@@ -1015,6 +1043,18 @@ public class AppDetails extends AppCompatActivity {
         switch (requestCode) {
             case REQUEST_ENABLE_BLUETOOTH:
                 fdroidApp.sendViaBluetooth(this, resultCode, app.packageName);
+                break;
+            case REQUEST_PERMISSION_DIALOG:
+                if (resultCode == Activity.RESULT_OK) {
+                    Uri uri = data.getData();
+                    Apk apk = ApkProvider.Helper.find(this, uri, ApkProvider.DataColumns.ALL);
+                    startInstall(apk);
+                }
+                break;
+            case REQUEST_UNINSTALL_DIALOG:
+                if (resultCode == Activity.RESULT_OK) {
+                    startUninstall();
+                }
                 break;
         }
     }

@@ -85,4 +85,9 @@ public class DefaultInstaller extends Installer {
         sendBroadcastUninstall(packageName,
                 Installer.ACTION_UNINSTALL_USER_INTERACTION, uninstallPendingIntent);
     }
+
+    @Override
+    protected boolean isUnattended() {
+        return false;
+    }
 }

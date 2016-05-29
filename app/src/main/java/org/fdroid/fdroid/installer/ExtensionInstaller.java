@@ -96,4 +96,9 @@ public class ExtensionInstaller extends Installer {
         // don't use broadcasts for the rest of this special installer
         sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_COMPLETE);
     }
+
+    @Override
+    protected boolean isUnattended() {
+        return false;
+    }
 }
