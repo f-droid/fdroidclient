@@ -576,8 +576,12 @@ public class AppDetails extends AppCompatActivity {
                     if (!TextUtils.isEmpty(errorMessage)) {
                         Log.e(TAG, "Installer aborted with errorMessage: " + errorMessage);
 
+                        String title = String.format(
+                                getString(R.string.install_error_notify_title),
+                                app.name);
+
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
-                        alertBuilder.setTitle(R.string.install_error_notify_title);
+                        alertBuilder.setTitle(title);
                         alertBuilder.setMessage(errorMessage);
                         alertBuilder.setNeutralButton(android.R.string.ok, null);
                         alertBuilder.create().show();
