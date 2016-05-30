@@ -28,7 +28,6 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
@@ -44,8 +43,6 @@ public class InstallerService extends Service {
 
     private volatile Looper serviceLooper;
     private static volatile ServiceHandler serviceHandler;
-    private LocalBroadcastManager localBroadcastManager;
-    private Installer installer;
 
     private final class ServiceHandler extends Handler {
         ServiceHandler(Looper looper) {
@@ -70,7 +67,6 @@ public class InstallerService extends Service {
 
         serviceLooper = thread.getLooper();
         serviceHandler = new ServiceHandler(serviceLooper);
-        localBroadcastManager = LocalBroadcastManager.getInstance(this);
     }
 
     @Override
@@ -118,7 +114,7 @@ public class InstallerService extends Service {
 
     protected void handleIntent(Intent intent) {
         String packageName = intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
-        installer = InstallerFactory.create(this, packageName);
+        Installer installer = InstallerFactory.create(this, packageName);
 
         switch (intent.getAction()) {
             case ACTION_INSTALL: {

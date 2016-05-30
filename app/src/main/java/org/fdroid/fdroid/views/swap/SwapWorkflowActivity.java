@@ -38,7 +38,6 @@ import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -122,7 +121,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private PrepareSwapRepo updateSwappableAppsTask;
     private NewRepoConfig confirmSwapConfig;
     private LocalBroadcastManager localBroadcastManager;
-    private BroadcastReceiver downloadCompleteReceiver;
 
     @NonNull
     private final ServiceConnection serviceConnection = new ServiceConnection() {
@@ -776,7 +774,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     public void install(@NonNull final App app) {
         final Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode);
         String urlString = apk.getUrl();
-        downloadCompleteReceiver = new BroadcastReceiver() {
+        BroadcastReceiver downloadCompleteReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String path = intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH);

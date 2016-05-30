@@ -45,7 +45,7 @@ public class ExtensionInstaller extends Installer {
     protected void installPackage(Uri uri, Uri originatingUri, String packageName) {
         Uri sanitizedUri;
         try {
-            sanitizedUri = Installer.prepareApkFile(mContext, uri, packageName);
+            sanitizedUri = Installer.prepareApkFile(context, uri, packageName);
         } catch (InstallFailedException e) {
             Log.e(TAG, "prepareApkFile failed", e);
             sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
@@ -55,17 +55,17 @@ public class ExtensionInstaller extends Installer {
 
         // extension must be signed with the same public key as main F-Droid
         // NOTE: Disabled for debug builds to be able to use official extension from repo
-        ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(mContext);
+        ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(context);
         if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(new File(sanitizedUri.getPath()))) {
             sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
                     "APK signature of extension not correct!");
         }
-        Intent installIntent = new Intent(mContext, InstallExtensionDialogActivity.class);
+        Intent installIntent = new Intent(context, InstallExtensionDialogActivity.class);
         installIntent.setAction(InstallExtensionDialogActivity.ACTION_INSTALL);
         installIntent.setData(sanitizedUri);
 
         PendingIntent installPendingIntent = PendingIntent.getActivity(
-                mContext.getApplicationContext(),
+                context.getApplicationContext(),
                 uri.hashCode(),
                 installIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
@@ -81,11 +81,11 @@ public class ExtensionInstaller extends Installer {
     protected void uninstallPackage(String packageName) {
         sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_STARTED);
 
-        Intent uninstallIntent = new Intent(mContext, InstallExtensionDialogActivity.class);
+        Intent uninstallIntent = new Intent(context, InstallExtensionDialogActivity.class);
         uninstallIntent.setAction(InstallExtensionDialogActivity.ACTION_UNINSTALL);
 
         PendingIntent uninstallPendingIntent = PendingIntent.getActivity(
-                mContext.getApplicationContext(),
+                context.getApplicationContext(),
                 packageName.hashCode(),
                 uninstallIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);

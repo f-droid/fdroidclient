@@ -326,7 +326,7 @@ public class PrivilegedInstaller extends Installer {
 
         final Uri sanitizedUri;
         try {
-            sanitizedUri = Installer.prepareApkFile(mContext, uri, packageName);
+            sanitizedUri = Installer.prepareApkFile(context, uri, packageName);
         } catch (Installer.InstallFailedException e) {
             Log.e(TAG, "prepareApkFile failed", e);
             sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
@@ -367,7 +367,7 @@ public class PrivilegedInstaller extends Installer {
 
         Intent serviceIntent = new Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT);
         serviceIntent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME);
-        mContext.getApplicationContext().bindService(serviceIntent, mServiceConnection,
+        context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
                 Context.BIND_AUTO_CREATE);
     }
 
@@ -378,7 +378,7 @@ public class PrivilegedInstaller extends Installer {
         ApplicationInfo appInfo;
         try {
             //noinspection WrongConstant (lint is actually wrong here!)
-            appInfo = mPm.getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
+            appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
         } catch (PackageManager.NameNotFoundException e) {
             Log.w(TAG, "Failed to get ApplicationInfo for uninstalling");
             return;
@@ -402,9 +402,9 @@ public class PrivilegedInstaller extends Installer {
         }
 
         // TODO: move this to methods in activity/ Installer with activity context!
-        final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setTitle(appInfo.loadLabel(mPm));
-        builder.setIcon(appInfo.loadIcon(mPm));
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(appInfo.loadLabel(pm));
+        builder.setIcon(appInfo.loadIcon(pm));
         builder.setPositiveButton(android.R.string.ok,
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -463,7 +463,7 @@ public class PrivilegedInstaller extends Installer {
 
         Intent serviceIntent = new Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT);
         serviceIntent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME);
-        mContext.getApplicationContext().bindService(serviceIntent, mServiceConnection,
+        context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
                 Context.BIND_AUTO_CREATE);
     }
 

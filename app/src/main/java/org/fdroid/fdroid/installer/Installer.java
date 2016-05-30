@@ -46,9 +46,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 public abstract class Installer {
-    final Context mContext;
-    final PackageManager mPm;
-    private LocalBroadcastManager localBroadcastManager;
+    final Context context;
+    final PackageManager pm;
+    final LocalBroadcastManager localBroadcastManager;
 
     public static final String ACTION_INSTALL_STARTED = "org.fdroid.fdroid.installer.Installer.action.INSTALL_STARTED";
     public static final String ACTION_INSTALL_COMPLETE = "org.fdroid.fdroid.installer.Installer.action.INSTALL_COMPLETE";
@@ -83,8 +83,8 @@ public abstract class Installer {
     }
 
     Installer(Context context) {
-        this.mContext = context;
-        this.mPm = context.getPackageManager();
+        this.context = context;
+        this.pm = context.getPackageManager();
         localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 
@@ -163,7 +163,7 @@ public abstract class Installer {
         int count = newPermissionCount(apk);
         if (count > 0) {
             Uri uri = ApkProvider.getContentUri(apk);
-            Intent intent = new Intent(mContext, InstallConfirmActivity.class);
+            Intent intent = new Intent(context, InstallConfirmActivity.class);
             intent.setData(uri);
 
             return intent;
@@ -181,12 +181,12 @@ public abstract class Installer {
         //    return 0;
         //}
 
-        AppDiff appDiff = new AppDiff(mContext.getPackageManager(), apk);
+        AppDiff appDiff = new AppDiff(context.getPackageManager(), apk);
         if (appDiff.mPkgInfo == null) {
             // could not get diff because we couldn't parse the package
             throw new RuntimeException("cannot parse!");
         }
-        AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.mPkgInfo);
+        AppSecurityPermissions perms = new AppSecurityPermissions(context, appDiff.mPkgInfo);
         if (appDiff.mInstalledAppInfo != null) {
             // update to an existing app
             return perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW);
@@ -200,7 +200,7 @@ public abstract class Installer {
             return null;
         }
 
-        Intent intent = new Intent(mContext, UninstallDialogActivity.class);
+        Intent intent = new Intent(context, UninstallDialogActivity.class);
         intent.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
 
         return intent;

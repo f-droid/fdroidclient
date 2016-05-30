@@ -340,8 +340,7 @@ public class InstallManagerService extends Service {
     }
 
     private String getAppName(Apk apk) {
-        App app = ACTIVE_APPS.get(apk.packageName);
-        return app.name;
+        return ACTIVE_APPS.get(apk.packageName).name;
     }
 
     /**

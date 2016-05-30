@@ -45,7 +45,7 @@ public class DefaultInstaller extends Installer {
 
         Uri sanitizedUri;
         try {
-            sanitizedUri = Installer.prepareApkFile(mContext, uri, packageName);
+            sanitizedUri = Installer.prepareApkFile(context, uri, packageName);
         } catch (Installer.InstallFailedException e) {
             Log.e(TAG, "prepareApkFile failed", e);
             sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
@@ -53,13 +53,13 @@ public class DefaultInstaller extends Installer {
             return;
         }
 
-        Intent installIntent = new Intent(mContext, DefaultInstallerActivity.class);
+        Intent installIntent = new Intent(context, DefaultInstallerActivity.class);
         installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);
         installIntent.putExtra(DefaultInstallerActivity.EXTRA_ORIGINATING_URI, originatingUri);
         installIntent.setData(sanitizedUri);
 
         PendingIntent installPendingIntent = PendingIntent.getActivity(
-                mContext.getApplicationContext(),
+                context.getApplicationContext(),
                 uri.hashCode(),
                 installIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
@@ -72,12 +72,12 @@ public class DefaultInstaller extends Installer {
     protected void uninstallPackage(String packageName) {
         sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_STARTED);
 
-        Intent uninstallIntent = new Intent(mContext, DefaultInstallerActivity.class);
+        Intent uninstallIntent = new Intent(context, DefaultInstallerActivity.class);
         uninstallIntent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
         uninstallIntent.putExtra(
                 DefaultInstallerActivity.EXTRA_UNINSTALL_PACKAGE_NAME, packageName);
         PendingIntent uninstallPendingIntent = PendingIntent.getActivity(
-                mContext.getApplicationContext(),
+                context.getApplicationContext(),
                 packageName.hashCode(),
                 uninstallIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);

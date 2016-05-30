@@ -60,7 +60,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
     public static final String ACTION_POST_INSTALL = "post_install";
     public static final String ACTION_FIRST_TIME = "first_time";
 
-    private String apkFile;
+    private String apkPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,8 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
             return;
         }
 
-        apkFile = (new File(getIntent().getData().getPath())).getAbsolutePath();
+        File apkFile = new File(getIntent().getData().getPath());
+        apkPath = apkFile.getAbsolutePath();
 
         switch (getIntent().getAction()) {
             case ACTION_UNINSTALL:
@@ -335,7 +336,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallExtension.create(getApplicationContext()).runInstall(apkFile);
+            InstallExtension.create(getApplicationContext()).runInstall(apkPath);
             return null;
         }
     };
