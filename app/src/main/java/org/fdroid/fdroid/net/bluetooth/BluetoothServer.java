@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.net.bluetooth;
 
-import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
@@ -62,7 +61,6 @@ public class BluetoothServer extends Thread {
         }
     }
 
-    @TargetApi(10)
     @Override
     public void run() {
 
@@ -175,14 +173,7 @@ public class BluetoothServer extends Thread {
                         .build();
 
             } catch (Exception e) {
-                /*
-                if (Build.VERSION.SDK_INT <= 9) {
-                    // Would like to use the specific IOException below with a "cause", but it is
-                    // only supported on SDK 9, so I guess this is the next most useful thing.
-                    throw e;
-                } else {
-                    throw new IOException("Error getting file " + request.getPath() + " from local repo proxy - " + e.getMessage(), e);
-                }*/
+                // throw new IOException("Error getting file " + request.getPath() + " from local repo proxy - " + e.getMessage(), e);
 
                 Log.e(TAG, "error processing request; sending 500 response", e);
 

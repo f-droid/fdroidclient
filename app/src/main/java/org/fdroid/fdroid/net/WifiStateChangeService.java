@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.net;
 
-import android.annotation.TargetApi;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +7,6 @@ import android.net.DhcpInfo;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -188,7 +186,6 @@ public class WifiStateChangeService extends IntentService {
         }
     }
 
-    @TargetApi(9)
     private void setIpInfoFromNetworkInterface() {
         try {
             for (Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces(); networkInterfaces.hasMoreElements();) {
@@ -203,10 +200,6 @@ public class WifiStateChangeService extends IntentService {
                             || netIf.getDisplayName().contains("eth0")
                             || netIf.getDisplayName().contains("ap0")) {
                         FDroidApp.ipAddressString = inetAddress.getHostAddress();
-                        if (Build.VERSION.SDK_INT < 9) {
-                            return;
-                        }
-                        // the following methods were not added until android-9/Gingerbread
                         for (InterfaceAddress address : netIf.getInterfaceAddresses()) {
                             short networkPrefixLength = address.getNetworkPrefixLength();
                             if (networkPrefixLength > 32) {

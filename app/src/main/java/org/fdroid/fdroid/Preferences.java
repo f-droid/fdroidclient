@@ -6,8 +6,6 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import org.fdroid.fdroid.compat.PreferencesCompat;
-
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.SocketAddress;
@@ -40,8 +38,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         preferences.registerOnSharedPreferenceChangeListener(this);
         if (preferences.getString(PREF_LOCAL_REPO_NAME, null) == null) {
-            PreferencesCompat.apply(preferences.edit()
-                    .putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName()));
+            preferences.edit()
+                .putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName())
+                .apply();
         }
     }
 
@@ -122,7 +121,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public void setPrivilegedInstallerEnabled(boolean enable) {
-        PreferencesCompat.apply(preferences.edit().putBoolean(PREF_PRIVILEGED_INSTALLER, enable));
+        preferences.edit().putBoolean(PREF_PRIVILEGED_INSTALLER, enable).apply();
     }
 
     public boolean isFirstTime() {
@@ -130,7 +129,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public void setFirstTime(boolean firstTime) {
-        PreferencesCompat.apply(preferences.edit().putBoolean(PREF_FIRST_TIME, firstTime));
+        preferences.edit().putBoolean(PREF_FIRST_TIME, firstTime).apply();
     }
 
     public boolean isPostPrivilegedInstall() {
@@ -138,7 +137,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public void setPostPrivilegedInstall(boolean postInstall) {
-        PreferencesCompat.apply(preferences.edit().putBoolean(PREF_POST_PRIVILEGED_INSTALL, postInstall));
+        preferences.edit().putBoolean(PREF_POST_PRIVILEGED_INSTALL, postInstall).apply();
     }
 
     /**
@@ -159,7 +158,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
             SharedPreferences.Editor editor = preferences.edit();
             editor.remove(PREF_CACHE_APK);
             editor.putString(PREF_KEEP_CACHE_TIME, value);
-            PreferencesCompat.apply(editor);
+            editor.apply();
         }
 
         try {
@@ -182,7 +181,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public void setShowNfcDuringSwap(boolean show) {
-        PreferencesCompat.apply(preferences.edit().putBoolean(PREF_SHOW_NFC_DURING_SWAP, show));
+        preferences.edit().putBoolean(PREF_SHOW_NFC_DURING_SWAP, show).apply();
     }
 
     public boolean expertMode() {

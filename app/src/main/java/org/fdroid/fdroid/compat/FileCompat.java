@@ -86,43 +86,4 @@ public class FileCompat {
         }
     }
 
-    /**
-     * Set a {@link SanitizedFile} readable by all if {@code readable} is {@code true}.
-     *
-     * @return {@code true} if the operation succeeded
-     */
-    @TargetApi(9)
-    public static boolean setReadable(SanitizedFile file, boolean readable) {
-        if (Build.VERSION.SDK_INT >= 9) {
-            return file.setReadable(readable, false);
-        }
-        if (readable) {
-            return setMode(file, "0644");
-        } else {
-            return setMode(file, "0000");
-        }
-    }
-
-    private static boolean setMode(SanitizedFile file, String mode) {
-
-        // The "file" must be a sanitized file, and hence only contain A-Za-z0-9.-_ already,
-        // but it makes no assurances about the parent directory.
-        final String[] args = {
-            FDroidApp.SYSTEM_DIR_NAME + "/bin/chmod",
-            mode,
-            file.getAbsolutePath(),
-        };
-
-        try {
-            Utils.debugLog(TAG, "Executing following command: " + args[0] + " " + args[1] + " " + args[2]);
-            Process proc = Runtime.getRuntime().exec(args);
-            Utils.consumeStream(proc.getInputStream());
-            Utils.consumeStream(proc.getErrorStream());
-            return true;
-        } catch (IOException e) {
-            return false;
-        }
-
-    }
-
 }

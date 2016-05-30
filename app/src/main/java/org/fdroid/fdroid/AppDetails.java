@@ -79,7 +79,6 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import org.fdroid.fdroid.Utils.CommaSeparatedList;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
-import org.fdroid.fdroid.compat.PreferencesCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -470,9 +469,10 @@ public class AppDetails extends AppCompatActivity {
         super.onPause();
         visiblePackageName = null;
         // save the active URL for this app in case we come back
-        PreferencesCompat.apply(getPreferences(MODE_PRIVATE)
-                .edit()
-                .putString(getPackageNameFromIntent(getIntent()), activeDownloadUrlString));
+        getPreferences(MODE_PRIVATE)
+            .edit()
+            .putString(getPackageNameFromIntent(getIntent()), activeDownloadUrlString)
+            .apply();
         if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
                 || app.ignoreThisUpdate != startingIgnoreThis)) {
             Utils.debugLog(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
@@ -614,7 +614,7 @@ public class AppDetails extends AppCompatActivity {
             activeDownloadUrlString = urlString;
         } else {
             // this URL is no longer active, remove it
-            PreferencesCompat.apply(getPreferences(MODE_PRIVATE).edit().remove(packageName));
+            getPreferences(MODE_PRIVATE).edit().remove(packageName).apply();
         }
     }
 

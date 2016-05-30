@@ -25,7 +25,6 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.ArrayAdapterCompat;
 import org.fdroid.fdroid.compat.CursorAdapterCompat;
-import org.fdroid.fdroid.compat.PreferencesCompat;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
@@ -232,7 +231,7 @@ public class AvailableAppsFragment extends AppListFragment implements
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor e = p.edit();
         e.putString(CATEGORY_KEY, currentCategory);
-        PreferencesCompat.apply(e);
+        e.apply();
     }
 
     @Override

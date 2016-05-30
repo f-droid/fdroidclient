@@ -41,7 +41,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.fdroid.fdroid.compat.PreferencesCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -386,7 +385,7 @@ public class UpdateService extends IntentService {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
             SharedPreferences.Editor e = prefs.edit();
             e.putLong(STATE_LAST_UPDATED, System.currentTimeMillis());
-            PreferencesCompat.apply(e);
+            e.apply();
 
             if (errorRepos == 0) {
                 if (changes) {

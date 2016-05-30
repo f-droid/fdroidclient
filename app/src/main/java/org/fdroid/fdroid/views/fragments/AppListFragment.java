@@ -24,7 +24,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.PreferencesCompat;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
@@ -146,7 +145,7 @@ public abstract class AppListFragment extends ListFragment implements
         boolean hasTriedEmptyUpdate = prefs.getBoolean(triedEmptyUpdate, false);
         if (!hasTriedEmptyUpdate) {
             Utils.debugLog(TAG, "Empty app list, and we haven't done an update yet. Forcing repo update.");
-            PreferencesCompat.apply(prefs.edit().putBoolean(triedEmptyUpdate, true));
+            prefs.edit().putBoolean(triedEmptyUpdate, true).apply();
             UpdateService.updateNow(getActivity());
             return true;
         }
