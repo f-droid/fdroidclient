@@ -47,6 +47,9 @@ public class CleanCacheService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        if (intent == null) {
+            return;
+        }
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         Utils.clearOldFiles(Utils.getApkCacheDir(this), Preferences.get().getKeepCacheTime());
         deleteStrayIndexFiles();

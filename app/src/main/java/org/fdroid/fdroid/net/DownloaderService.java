@@ -33,7 +33,6 @@ import android.os.Process;
 import android.support.v4.content.IntentCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
@@ -46,9 +45,14 @@ import java.net.URL;
 /**
  * DownloaderService is a service that handles asynchronous download requests
  * (expressed as {@link Intent}s) on demand.  Clients send download requests
- * through {@link android.content.Context#startService(Intent)} calls; the
- * service is started as needed, handles each Intent in turn using a worker
- * thread, and stops itself when it runs out of work.
+ * through {@link #queue(Context, String)} calls.  The
+ * service is started as needed, it handles each {@code Intent} using a worker
+ * thread, and stops itself when it runs out of work.  Requests can be canceled
+ * using {@link #cancel(Context, String)}.  If this service is killed during
+ * operation, it will receive the queued {@link #queue(Context, String)} and
+ * {@link #cancel(Context, String)} requests again due to
+ * {@link Service#START_REDELIVER_INTENT}.  Bad requests will be ignored,
+ * including on restart after killing via {@link Service#START_NOT_STICKY}.
  * <p>
  * This "work queue processor" pattern is commonly used to offload tasks
  * from an application's main thread.  The DownloaderService class exists to
@@ -112,10 +116,15 @@ public class DownloaderService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Utils.debugLog(TAG, "Received Intent for downloading: " + intent + " (with a startId of " + startId + ")");
+
+        if (intent == null) {
+            return START_NOT_STICKY;
+        }
+
         String uriString = intent.getDataString();
         if (uriString == null) {
-            Log.e(TAG, "Received Intent with no URI: " + intent);
-            return START_STICKY;
+            Utils.debugLog(TAG, "Received Intent with no URI: " + intent);
+            return START_NOT_STICKY;
         }
 
         if (ACTION_CANCEL.equals(intent.getAction())) {
@@ -128,7 +137,7 @@ public class DownloaderService extends Service {
             } else if (isActive(uriString)) {
                 downloader.cancelDownload();
             } else {
-                Log.e(TAG, "ACTION_CANCEL called on something not queued or running (expected to find message with ID of " + whatToRemove + " in queue).");
+                Utils.debugLog(TAG, "ACTION_CANCEL called on something not queued or running (expected to find message with ID of " + whatToRemove + " in queue).");
             }
         } else if (ACTION_QUEUE.equals(intent.getAction())) {
             Message msg = serviceHandler.obtainMessage();
@@ -138,7 +147,7 @@ public class DownloaderService extends Service {
             serviceHandler.sendMessage(msg);
             Utils.debugLog(TAG, "Queued download of " + uriString);
         } else {
-            Log.e(TAG, "Received Intent with unknown action: " + intent);
+            Utils.debugLog(TAG, "Received Intent with unknown action: " + intent);
         }
 
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
