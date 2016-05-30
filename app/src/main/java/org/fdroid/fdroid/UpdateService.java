@@ -314,8 +314,12 @@ public class UpdateService extends IntentService {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
 
         final long startTime = System.currentTimeMillis();
-        String address = intent.getStringExtra(EXTRA_ADDRESS);
-        boolean manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
+        boolean manualUpdate = false;
+        String address = null;
+        if (intent != null) {
+            address = intent.getStringExtra(EXTRA_ADDRESS);
+            manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
+        }
 
         try {
             // See if it's time to actually do anything yet...
