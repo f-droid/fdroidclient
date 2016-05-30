@@ -332,7 +332,7 @@ public class RepoUpdater {
      * check that the signing certificate in the jar matches that fingerprint.
      */
     private void verifyAndStoreTOFUCerts(String certFromIndexXml, X509Certificate rawCertFromJar)
-        throws SigningException {
+            throws SigningException {
         if (repo.signingCertificate != null) {
             return; // there is a repo.signingCertificate already, nothing to TOFU
         }

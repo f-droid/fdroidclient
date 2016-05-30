@@ -57,7 +57,7 @@ public abstract class FDroidProvider extends ContentProvider {
     @NonNull
     @Override
     public ContentProviderResult[] applyBatch(@NonNull ArrayList<ContentProviderOperation> operations)
-        throws OperationApplicationException {
+            throws OperationApplicationException {
         ContentProviderResult[] result = null;
         isApplyingBatch = true;
         final SQLiteDatabase db = db();
@@ -141,7 +141,7 @@ public abstract class FDroidProvider extends ContentProvider {
     }
 
     protected void validateFields(String[] validFields, ContentValues values)
-        throws IllegalArgumentException {
+            throws IllegalArgumentException {
         for (final String key : getKeySet(values)) {
             boolean isValid = false;
             for (final String validKey : validFields) {
