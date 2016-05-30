@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  * versus what Android says is installed, or processing {@link Intent}s that come
  * from {@link android.content.BroadcastReceiver}s for {@link Intent#ACTION_PACKAGE_ADDED}
  * and {@link Intent#ACTION_PACKAGE_REMOVED}
- * <p>
+ * <p/>
  * Since {@link android.content.ContentProvider#insert(Uri, ContentValues)} does not check
  * for duplicate records, it is entirely the job of this service to ensure that it is not
  * inserting duplicate versions of the same installed APK. On that note,
@@ -94,7 +94,7 @@ public class InstalledAppProviderService extends IntentService {
      * is in sync with what the {@link PackageManager} tells us is installed. Once
      * completed, the relevant {@link android.content.ContentProvider}s will be
      * notified of any changes to installed statuses.
-     * <p>
+     * <p/>
      * The installed app cache could get out of sync, e.g. if F-Droid crashed/ or
      * ran out of battery half way through responding to {@link Intent#ACTION_PACKAGE_ADDED}.
      * This method returns immediately, and will continue to work in an
@@ -103,15 +103,18 @@ public class InstalledAppProviderService extends IntentService {
      * {@link Process#THREAD_PRIORITY_LOWEST}.
      */
     public static void compareToPackageManager(Context context) {
-        Map<String, Integer> cachedInfo = InstalledAppProvider.Helper.all(context);
+        Map<String, Long> cachedInfo = InstalledAppProvider.Helper.all(context);
 
         List<PackageInfo> packageInfoList = context.getPackageManager()
                 .getInstalledPackages(PackageManager.GET_SIGNATURES);
-        // TODO check packageInfo.lastUpdateTime for freshness
         for (PackageInfo packageInfo : packageInfoList) {
-            insert(context, packageInfo);
             if (cachedInfo.containsKey(packageInfo.packageName)) {
+                if (packageInfo.lastUpdateTime > cachedInfo.get(packageInfo.packageName)) {
+                    insert(context, packageInfo);
+                }
                 cachedInfo.remove(packageInfo.packageName);
+            } else {
+                insert(context, packageInfo);
             }
         }
 
