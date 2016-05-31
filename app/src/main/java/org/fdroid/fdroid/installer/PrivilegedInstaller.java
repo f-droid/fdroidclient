@@ -22,19 +22,15 @@ package org.fdroid.fdroid.installer;
 
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
 import org.fdroid.fdroid.privileged.IPrivilegedService;
 
@@ -379,62 +375,6 @@ public class PrivilegedInstaller extends Installer {
     protected void uninstallPackage(final String packageName) {
         sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_STARTED);
 
-        ApplicationInfo appInfo;
-        try {
-            //noinspection WrongConstant (lint is actually wrong here!)
-            appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.w(TAG, "Failed to get ApplicationInfo for uninstalling");
-            return;
-        }
-
-        final boolean isSystem = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-        final boolean isUpdate = (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
-
-        if (isSystem && !isUpdate) {
-            // Cannot remove system apps unless we're uninstalling updates
-            sendBroadcastUninstall(packageName, ACTION_UNINSTALL_INTERRUPTED,
-                    "Cannot remove system apps unless we're uninstalling updates");
-            return;
-        }
-
-        int messageId;
-        if (isUpdate) {
-            messageId = R.string.uninstall_update_confirm;
-        } else {
-            messageId = R.string.uninstall_confirm;
-        }
-
-        // TODO: move this to methods in activity/ Installer with activity context!
-        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(appInfo.loadLabel(pm));
-        builder.setIcon(appInfo.loadIcon(pm));
-        builder.setPositiveButton(android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        try {
-                            doDeletePackageInternal(packageName);
-                        } catch (InstallFailedException e) {
-                            sendBroadcastUninstall(packageName, ACTION_UNINSTALL_INTERRUPTED,
-                                    "uninstall failed");
-                        }
-                    }
-                });
-        builder.setNegativeButton(android.R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                        sendBroadcastUninstall(packageName, ACTION_UNINSTALL_INTERRUPTED);
-                    }
-                });
-        builder.setMessage(messageId);
-        builder.create().show();
-    }
-
-    private void doDeletePackageInternal(final String packageName)
-            throws InstallFailedException {
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
