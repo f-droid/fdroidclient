@@ -209,7 +209,7 @@ android {
 }
 
 checkstyle {
-    toolVersion = '6.18'
+    toolVersion = '6.19'
 }
 
 task checkstyle(type: Checkstyle) {
@@ -221,7 +221,7 @@ task checkstyle(type: Checkstyle) {
 }
 
 pmd {
-    toolVersion = '5.4.1'
+    toolVersion = '5.4.2'
     consoleOutput = true
 }
 
