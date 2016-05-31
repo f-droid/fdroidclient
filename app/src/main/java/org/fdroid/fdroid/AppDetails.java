@@ -980,7 +980,7 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void initiateInstall(Apk apk) {
-        Installer installer = InstallerFactory.create(this);
+        Installer installer = InstallerFactory.create(this, apk.packageName);
         Intent intent = installer.getPermissionScreen(apk);
         if (intent != null) {
             // permission screen required
@@ -1000,7 +1000,7 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void uninstallApk(String packageName) {
-        Installer installer = InstallerFactory.create(this);
+        Installer installer = InstallerFactory.create(this, packageName);
         Intent intent = installer.getUninstallScreen(packageName);
         if (intent != null) {
             // uninstall screen required
