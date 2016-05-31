@@ -267,56 +267,45 @@ public class InstallManagerService extends Service {
         BroadcastReceiver installReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                switch (intent.getAction()) {
-                    case Installer.ACTION_INSTALL_STARTED: {
-                        break;
-                    }
-                    case Installer.ACTION_INSTALL_COMPLETE: {
-                        Uri originatingUri =
-                                intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
-                        String urlString = originatingUri.toString();
-                        Apk apk = removeFromActive(urlString);
+                Uri originatingUri = intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
 
-                        PackageManagerCompat.setInstaller(getPackageManager(), apk.packageName);
+                switch (intent.getAction()) {
+                    case Installer.ACTION_INSTALL_STARTED:
+                        // nothing to do
+                        break;
+                    case Installer.ACTION_INSTALL_COMPLETE:
+                        Apk apkComplete = removeFromActive(originatingUri.toString());
+
+                        PackageManagerCompat.setInstaller(getPackageManager(), apkComplete.packageName);
 
                         localBroadcastManager.unregisterReceiver(this);
                         break;
-                    }
-                    case Installer.ACTION_INSTALL_INTERRUPTED: {
-                        Uri originatingUri =
-                                intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
-                        String urlString = originatingUri.toString();
+                    case Installer.ACTION_INSTALL_INTERRUPTED:
                         String errorMessage =
                                 intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
                         if (!TextUtils.isEmpty(errorMessage)) {
-                            App app = getAppFromActive(urlString);
-                            notifyError(app, urlString, errorMessage, false);
+                            App app = getAppFromActive(originatingUri.toString());
+                            notifyError(app, originatingUri.toString(), errorMessage, false);
                         }
 
                         localBroadcastManager.unregisterReceiver(this);
                         break;
-                    }
-                    case Installer.ACTION_INSTALL_USER_INTERACTION: {
-                        Uri originatingUri =
-                                intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
+                    case Installer.ACTION_INSTALL_USER_INTERACTION:
                         PendingIntent installPendingIntent =
                                 intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
-                        Utils.debugLog(TAG, "originatingUri: " + originatingUri);
 
-                        Apk apk = getApkFromActive(originatingUri.toString());
+                        Apk apkUserInteraction = getApkFromActive(originatingUri.toString());
                         // show notification if app details is not visible
-                        if (AppDetails.isAppVisible(apk.packageName)) {
+                        if (AppDetails.isAppVisible(apkUserInteraction.packageName)) {
                             cancelNotification(originatingUri.toString());
                         } else {
-                            notifyDownloadComplete(apk, originatingUri.toString(), installPendingIntent);
+                            notifyDownloadComplete(apkUserInteraction, originatingUri.toString(), installPendingIntent);
                         }
 
                         break;
-                    }
-                    default: {
+                    default:
                         throw new RuntimeException("intent action not handled!");
-                    }
                 }
             }
         };

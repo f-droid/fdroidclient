@@ -557,18 +557,16 @@ public class AppDetails extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
-                case Installer.ACTION_INSTALL_STARTED: {
+                case Installer.ACTION_INSTALL_STARTED:
                     headerFragment.startProgress();
                     headerFragment.showIndeterminateProgress(getString(R.string.installing));
                     break;
-                }
-                case Installer.ACTION_INSTALL_COMPLETE: {
+                case Installer.ACTION_INSTALL_COMPLETE:
                     headerFragment.removeProgress();
 
                     localBroadcastManager.unregisterReceiver(this);
                     break;
-                }
-                case Installer.ACTION_INSTALL_INTERRUPTED: {
+                case Installer.ACTION_INSTALL_INTERRUPTED:
                     headerFragment.removeProgress();
                     onAppChanged();
 
@@ -591,8 +589,7 @@ public class AppDetails extends AppCompatActivity {
 
                     localBroadcastManager.unregisterReceiver(this);
                     break;
-                }
-                case Installer.ACTION_INSTALL_USER_INTERACTION: {
+                case Installer.ACTION_INSTALL_USER_INTERACTION:
                     PendingIntent installPendingIntent =
                             intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
 
@@ -603,10 +600,8 @@ public class AppDetails extends AppCompatActivity {
                     }
 
                     break;
-                }
-                default: {
+                default:
                     throw new RuntimeException("intent action not handled!");
-                }
             }
         }
     };

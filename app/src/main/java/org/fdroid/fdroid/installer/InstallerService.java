@@ -116,19 +116,13 @@ public class InstallerService extends Service {
         String packageName = intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
         Installer installer = InstallerFactory.create(this, packageName);
 
-        switch (intent.getAction()) {
-            case ACTION_INSTALL: {
-                Uri uri = intent.getData();
-                Uri originatingUri = intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
+        if (ACTION_INSTALL.equals(intent.getAction())) {
+            Uri uri = intent.getData();
+            Uri originatingUri = intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
 
-                installer.installPackage(uri, originatingUri, packageName);
-                break;
-            }
-
-            case ACTION_UNINSTALL: {
-                installer.uninstallPackage(packageName);
-                break;
-            }
+            installer.installPackage(uri, originatingUri, packageName);
+        } else if (ACTION_UNINSTALL.equals(intent.getAction())) {
+            installer.uninstallPackage(packageName);
         }
     }
 
