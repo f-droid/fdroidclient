@@ -111,7 +111,6 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
                     runFirstTime(context);
                     break;
 
-                case PrivilegedInstaller.IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
                 case PrivilegedInstaller.IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
                 default:
                     // do nothing
@@ -373,12 +372,6 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
                 title = getString(R.string.system_install_post_fail);
                 message = getString(R.string.system_install_post_fail_message) +
                         "\n\n" + getString(R.string.system_install_denied_signature);
-                result = Activity.RESULT_CANCELED;
-                break;
-            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
-                title = getString(R.string.system_install_post_fail);
-                message = getString(R.string.system_install_post_fail_message) +
-                        "\n\n" + getString(R.string.system_install_denied_permissions);
                 result = Activity.RESULT_CANCELED;
                 break;
             default:

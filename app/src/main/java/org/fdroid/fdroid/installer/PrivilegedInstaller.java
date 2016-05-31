@@ -26,11 +26,11 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
 import org.fdroid.fdroid.privileged.IPrivilegedService;
 
@@ -69,7 +69,6 @@ public class PrivilegedInstaller extends Installer {
     public static final int IS_EXTENSION_INSTALLED_NO = 0;
     public static final int IS_EXTENSION_INSTALLED_YES = 1;
     public static final int IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM = 2;
-    public static final int IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM = 3;
 
     // From AOSP source code
     public static final int ACTION_INSTALL_REPLACE_EXISTING = 2;
@@ -275,23 +274,8 @@ public class PrivilegedInstaller extends Installer {
             return IS_EXTENSION_INSTALLED_NO;
         }
 
-        // check if it has the privileged permissions granted
-        final Object mutex = new Object();
-        final Bundle returnBundle = new Bundle();
-        ServiceConnection mServiceConnection = new ServiceConnection() {
+        ServiceConnection serviceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
-                IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
-
-                try {
-                    boolean hasPermissions = privService.hasPrivilegedPermissions();
-                    returnBundle.putBoolean("has_permissions", hasPermissions);
-                } catch (RemoteException e) {
-                    Log.e(TAG, "RemoteException", e);
-                }
-
-                synchronized (mutex) {
-                    mutex.notify();
-                }
             }
 
             public void onServiceDisconnected(ComponentName name) {
@@ -300,26 +284,15 @@ public class PrivilegedInstaller extends Installer {
         Intent serviceIntent = new Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT);
         serviceIntent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME);
 
+        // try to connect to check for signature
         try {
-            context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
+            context.getApplicationContext().bindService(serviceIntent, serviceConnection,
                     Context.BIND_AUTO_CREATE);
         } catch (SecurityException e) {
             Log.e(TAG, "IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM", e);
             return IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM;
         }
 
-        synchronized (mutex) {
-            try {
-                mutex.wait(3000);
-            } catch (InterruptedException ignored) {
-            }
-        }
-
-        boolean hasPermissions = returnBundle.getBoolean("has_permissions", false);
-        if (!hasPermissions) {
-            Log.e(TAG, "IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM");
-            return IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM;
-        }
         return IS_EXTENSION_INSTALLED_YES;
     }
 
@@ -355,6 +328,13 @@ public class PrivilegedInstaller extends Installer {
                 };
 
                 try {
+                    boolean hasPermissions = privService.hasPrivilegedPermissions();
+                    if (!hasPermissions) {
+                        sendBroadcastInstall(uri, originatingUri, ACTION_INSTALL_INTERRUPTED,
+                                context.getString(R.string.system_install_denied_permissions));
+                        return;
+                    }
+
                     privService.installPackage(sanitizedUri, ACTION_INSTALL_REPLACE_EXISTING,
                             null, callback);
                 } catch (RemoteException e) {
@@ -396,6 +376,13 @@ public class PrivilegedInstaller extends Installer {
                 };
 
                 try {
+                    boolean hasPermissions = privService.hasPrivilegedPermissions();
+                    if (!hasPermissions) {
+                        sendBroadcastUninstall(packageName, ACTION_UNINSTALL_INTERRUPTED,
+                                context.getString(R.string.system_install_denied_permissions));
+                        return;
+                    }
+
                     privService.deletePackage(packageName, 0, callback);
                 } catch (RemoteException e) {
                     Log.e(TAG, "RemoteException", e);
