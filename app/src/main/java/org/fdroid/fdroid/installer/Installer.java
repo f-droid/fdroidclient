@@ -45,6 +45,9 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
+/**
+ *
+ */
 public abstract class Installer {
     final Context context;
     final PackageManager pm;
@@ -64,10 +67,10 @@ public abstract class Installer {
      * Same as http://developer.android.com/reference/android/content/Intent.html#EXTRA_ORIGINATING_URI
      * In InstallManagerService often called urlString
      */
-    public static final String EXTRA_ORIGINATING_URI = "org.fdroid.fdroid.installer.InstallerService.extra.ORIGINATING_URI";
-    public static final String EXTRA_PACKAGE_NAME = "org.fdroid.fdroid.installer.InstallerService.extra.PACKAGE_NAME";
-    public static final String EXTRA_USER_INTERACTION_PI = "org.fdroid.fdroid.installer.InstallerService.extra.USER_INTERACTION_PI";
-    public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MESSAGE";
+    public static final String EXTRA_ORIGINATING_URI = "org.fdroid.fdroid.installer.Installer.extra.ORIGINATING_URI";
+    public static final String EXTRA_PACKAGE_NAME = "org.fdroid.fdroid.installer.Installer.extra.PACKAGE_NAME";
+    public static final String EXTRA_USER_INTERACTION_PI = "org.fdroid.fdroid.installer.Installer.extra.USER_INTERACTION_PI";
+    public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.installer.Installer.extra.ERROR_MESSAGE";
 
     public static class InstallFailedException extends Exception {
 
@@ -155,6 +158,14 @@ public abstract class Installer {
         return Uri.fromFile(sanitizedApkFile);
     }
 
+    /**
+     * Returns permission screen for given apk.
+     *
+     * @param apk instance of Apk
+     * @return Intent with Activity to show required permissions.
+     * Returns null if Installer handles that on itself, e.g., with DefaultInstaller,
+     * or if no new permissions have been introduced during an update
+     */
     public Intent getPermissionScreen(Apk apk) {
         if (!isUnattended()) {
             return null;
@@ -195,6 +206,15 @@ public abstract class Installer {
         return perms.getPermissionCount(AppSecurityPermissions.WHICH_ALL);
     }
 
+    /**
+     * Returns an Intent to start a dialog wrapped in an activity
+     * for uninstall confirmation.
+     *
+     * @param packageName packageName of app to uninstall
+     * @return Intent with activity for uninstall confirmation
+     * Returns null if Installer handles that on itself, e.g.,
+     * with DefaultInstaller.
+     */
     public Intent getUninstallScreen(String packageName) {
         if (!isUnattended()) {
             return null;

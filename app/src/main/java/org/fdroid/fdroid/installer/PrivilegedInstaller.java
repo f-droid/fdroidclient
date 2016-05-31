@@ -41,16 +41,21 @@ import org.fdroid.fdroid.privileged.IPrivilegedService;
 import java.util.HashMap;
 
 /**
- * Installer based on using internal hidden APIs of the Android OS, which are
- * protected by the permissions
- * <ul>
- * <li>android.permission.INSTALL_PACKAGES</li>
- * <li>android.permission.DELETE_PACKAGES</li>
- * </ul>
+ * Installer that only works if the "F-Droid Privileged
+ * Extension" is installed as a privileged app.
  * <p/>
+ * "F-Droid Privileged Extension" provides a service that exposes
+ * internal Android APIs for install/uninstall which are protected
+ * by INSTALL_PACKAGES, DELETE_PACKAGES permissions.
  * Both permissions are protected by systemOrSignature (in newer versions:
- * system|signature). Thus, this installer works only when the "F-Droid Privileged
- * Extension" is installed into the system.
+ * system|signature) and cannot be used directly by F-Droid.
+ * <p/>
+ * Instead, this installer binds to the service of
+ * "F-Droid Privileged Extension" and then executes the appropriate methods
+ * inside the privileged context of the privileged extension.
+ * <p/>
+ * This installer makes unattended installs/uninstalls possible.
+ * Thus no PendingIntents are returned.
  * <p/>
  * Sources for Android 4.4 change:
  * https://groups.google.com/forum/#!msg/android-
@@ -268,7 +273,6 @@ public class PrivilegedInstaller extends Installer {
     }
 
     public static int isExtensionInstalledCorrectly(Context context) {
-
         // check if installed
         if (!isExtensionInstalled(context)) {
             return IS_EXTENSION_INSTALLED_NO;

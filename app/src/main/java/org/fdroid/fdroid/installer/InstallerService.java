@@ -24,6 +24,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+/**
+ * This service handles the install process of apk files and
+ * uninstall process of apps.
+ * <p/>
+ * This service is based on an IntentService because:
+ * - no parallel installs/uninstalls should be allowed,
+ * i.e., runs sequentially
+ * - no cancel operation is needed. Cancelling an installation
+ * would be the same as starting uninstall afterwards
+ */
 public class InstallerService extends IntentService {
 
     private static final String ACTION_INSTALL = "org.fdroid.fdroid.installer.InstallerService.action.INSTALL";
@@ -48,6 +58,14 @@ public class InstallerService extends IntentService {
         }
     }
 
+    /**
+     * Install an apk from {@link Uri}
+     *
+     * @param context        this app's {@link Context}
+     * @param uri            {@link Uri} pointing to (downloaded) local apk file
+     * @param originatingUri {@link Uri} where the apk has been downloaded from
+     * @param packageName    package name of the app that should be installed
+     */
     public static void install(Context context, Uri uri, Uri originatingUri, String packageName) {
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_INSTALL);
@@ -57,6 +75,12 @@ public class InstallerService extends IntentService {
         context.startService(intent);
     }
 
+    /**
+     * Uninstall an app
+     *
+     * @param context     this app's {@link Context}
+     * @param packageName package name of the app that will be uninstalled
+     */
     public static void uninstall(Context context, String packageName) {
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_UNINSTALL);

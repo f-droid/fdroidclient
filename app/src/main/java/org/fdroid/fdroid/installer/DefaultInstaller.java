@@ -29,6 +29,13 @@ import org.fdroid.fdroid.Utils;
 
 import java.io.File;
 
+/**
+ * The default installer of F-Droid. It uses the normal Intents APIs of Android
+ * to install apks. Its main inner workings are encapsulated in DefaultInstallerActivity.
+ * <p/>
+ * This is installer requires user interaction and thus install/uninstall directly
+ * return PendingIntents.
+ */
 public class DefaultInstaller extends Installer {
 
     private static final String TAG = "DefaultInstaller";

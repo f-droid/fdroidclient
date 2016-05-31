@@ -33,7 +33,7 @@ import android.util.Log;
 import org.fdroid.fdroid.R;
 
 /**
- * A transparent activity as a wrapper around AOSP's PackageInstaller Intents
+ * A transparent activity as a wrapper around Android's PackageInstaller Intents
  */
 public class DefaultInstallerActivity extends FragmentActivity {
     public static final String TAG = "AndroidInstallerAct";

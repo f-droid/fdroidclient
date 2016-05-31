@@ -32,6 +32,10 @@ import java.io.File;
 
 /**
  * Special Installer that is only useful to install the Privileged Extension apk
+ * as a privileged app into the system partition of Android.
+ * <p/>
+ * This is installer requires user interaction and thus install/uninstall directly
+ * return PendingIntents.
  */
 public class ExtensionInstaller extends Installer {
 

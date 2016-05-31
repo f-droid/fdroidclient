@@ -29,15 +29,23 @@ public class InstallerFactory {
 
     private static final String TAG = "InstallerFactory";
 
-    public static Installer create(Context context) {
-        return create(context, null);
-    }
-
+    /**
+     * Returns an instance of an appropriate installer.
+     * Either DefaultInstaller, PrivilegedInstaller, or in the special
+     * case to install the "F-Droid Privileged Extension" ExtensionInstaller.
+     *
+     * @param context     current {@link Context}
+     * @param packageName package name of apk to be installed. Required to select
+     *                    the ExtensionInstaller.
+     *                    If this is null, the ExtensionInstaller will never be returned.
+     * @return instance of an Installer
+     */
     public static Installer create(Context context, String packageName) {
         Installer installer;
 
-        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
-            // special case: F-Droid Privileged Extension
+        if (packageName != null
+                && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
+            // special case for "F-Droid Privileged Extension"
             installer = new ExtensionInstaller(context);
         } else if (isPrivilegedInstallerEnabled()) {
             if (PrivilegedInstaller.isExtensionInstalledCorrectly(context)
