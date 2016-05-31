@@ -574,7 +574,7 @@ public class AppDetails extends AppCompatActivity {
                             intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
                     if (!TextUtils.isEmpty(errorMessage)) {
-                        Log.e(TAG, "Installer aborted with errorMessage: " + errorMessage);
+                        Log.e(TAG, "install aborted with errorMessage: " + errorMessage);
 
                         String title = String.format(
                                 getString(R.string.install_error_notify_title),
@@ -629,7 +629,7 @@ public class AppDetails extends AppCompatActivity {
                             intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
                     if (!TextUtils.isEmpty(errorMessage)) {
-                        Log.e(TAG, "Installer aborted with errorMessage: " + errorMessage);
+                        Log.e(TAG, "uninstall aborted with errorMessage: " + errorMessage);
 
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
                         alertBuilder.setTitle(R.string.uninstall_error_notify_title);

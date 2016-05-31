@@ -407,8 +407,13 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
         <activity
             android:name=".installer.DefaultInstallerActivity"
+            android:theme="@style/AppThemeTransparent" />
+        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
+        <activity
+            android:name=".installer.ErrorDialogActivity"
             android:theme="@style/AppThemeTransparent" />
 
         <receiver android:name=".receiver.StartupReceiver" >

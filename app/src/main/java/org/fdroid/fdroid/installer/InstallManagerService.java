@@ -284,9 +284,19 @@ public class InstallManagerService extends Service {
                         String errorMessage =
                                 intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
+                        // show notification if app details is not visible
                         if (!TextUtils.isEmpty(errorMessage)) {
                             App app = getAppFromActive(originatingUri.toString());
-                            notifyError(app, originatingUri.toString(), errorMessage, false);
+                            String title = String.format(
+                                    getString(R.string.install_error_notify_title),
+                                    app.name);
+
+                            // show notification if app details is not visible
+                            if (AppDetails.isAppVisible(app.packageName)) {
+                                cancelNotification(originatingUri.toString());
+                            } else {
+                                notifyError(originatingUri.toString(), title, errorMessage);
+                            }
                         }
 
                         localBroadcastManager.unregisterReceiver(this);
@@ -379,19 +389,25 @@ public class InstallManagerService extends Service {
         notificationManager.notify(downloadUrlId, notification);
     }
 
-    private void notifyError(App app, String urlString, String text, boolean uninstall) {
-        String title;
-        if (uninstall) {
-            title = String.format(getString(R.string.uninstall_error_notify_title), app.name);
-        } else {
-            title = String.format(getString(R.string.install_error_notify_title), app.name);
-        }
-
+    private void notifyError(String urlString, String title, String text) {
         int downloadUrlId = urlString.hashCode();
+
+        Intent errorDialogIntent = new Intent(this, ErrorDialogActivity.class);
+        errorDialogIntent.putExtra(
+                ErrorDialogActivity.EXTRA_TITLE, title);
+        errorDialogIntent.putExtra(
+                ErrorDialogActivity.EXTRA_MESSAGE, text);
+        PendingIntent errorDialogPendingIntent = PendingIntent.getActivity(
+                getApplicationContext(),
+                downloadUrlId,
+                errorDialogIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this)
                         .setAutoCancel(true)
                         .setContentTitle(title)
+                        .setContentIntent(errorDialogPendingIntent)
                         .setSmallIcon(R.drawable.ic_issues)
                         .setContentText(text);
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
