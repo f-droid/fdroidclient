@@ -271,6 +271,7 @@ public class PrivilegedInstaller extends Installer {
     public static int isExtensionInstalledCorrectly(Context context) {
         // check if installed
         if (!isExtensionInstalled(context)) {
+            Log.e(TAG, "IS_EXTENSION_INSTALLED_NO");
             return IS_EXTENSION_INSTALLED_NO;
         }
 
@@ -303,6 +304,7 @@ public class PrivilegedInstaller extends Installer {
             context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
                     Context.BIND_AUTO_CREATE);
         } catch (SecurityException e) {
+            Log.e(TAG, "IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM", e);
             return IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM;
         }
 
@@ -315,6 +317,7 @@ public class PrivilegedInstaller extends Installer {
 
         boolean hasPermissions = returnBundle.getBoolean("has_permissions", false);
         if (!hasPermissions) {
+            Log.e(TAG, "IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM");
             return IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM;
         }
         return IS_EXTENSION_INSTALLED_YES;
