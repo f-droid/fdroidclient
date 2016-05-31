@@ -27,6 +27,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -74,8 +75,11 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
             return;
         }
 
-        File apkFile = new File(getIntent().getData().getPath());
-        apkPath = apkFile.getAbsolutePath();
+        Uri dataUri = getIntent().getData();
+        if (dataUri != null) {
+            File apkFile = new File(dataUri.getPath());
+            apkPath = apkFile.getAbsolutePath();
+        }
 
         switch (getIntent().getAction()) {
             case ACTION_UNINSTALL:
