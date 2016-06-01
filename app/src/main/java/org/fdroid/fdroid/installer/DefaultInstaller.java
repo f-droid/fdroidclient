@@ -45,34 +45,34 @@ public class DefaultInstaller extends Installer {
     }
 
     @Override
-    protected void installPackage(Uri uri, Uri originatingUri, String packageName) {
-        sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_STARTED);
+    protected void installPackage(Uri localApkUri, Uri downloadUri, String packageName) {
+        sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
 
-        Utils.debugLog(TAG, "DefaultInstaller uri: " + uri + " file: " + new File(uri.getPath()));
+        Utils.debugLog(TAG, "DefaultInstaller uri: " + localApkUri + " file: " + new File(localApkUri.getPath()));
 
         Uri sanitizedUri;
         try {
-            sanitizedUri = Installer.prepareApkFile(context, uri, packageName);
+            sanitizedUri = Installer.prepareApkFile(context, localApkUri, packageName);
         } catch (Installer.InstallFailedException e) {
             Log.e(TAG, "prepareApkFile failed", e);
-            sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
+            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
                     e.getMessage());
             return;
         }
 
         Intent installIntent = new Intent(context, DefaultInstallerActivity.class);
         installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);
-        installIntent.putExtra(DefaultInstallerActivity.EXTRA_ORIGINATING_URI, originatingUri);
+        installIntent.putExtra(Installer.EXTRA_DOWNLOAD_URI, downloadUri);
         installIntent.setData(sanitizedUri);
 
         PendingIntent installPendingIntent = PendingIntent.getActivity(
                 context.getApplicationContext(),
-                uri.hashCode(),
+                localApkUri.hashCode(),
                 installIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
-        sendBroadcastInstall(uri, originatingUri,
-                Installer.ACTION_INSTALL_USER_INTERACTION, installPendingIntent);
+        sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_USER_INTERACTION,
+                installPendingIntent);
     }
 
     @Override

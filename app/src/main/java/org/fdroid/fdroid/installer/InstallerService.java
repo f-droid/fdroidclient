@@ -33,6 +33,10 @@ import android.net.Uri;
  * i.e., runs sequentially
  * - no cancel operation is needed. Cancelling an installation
  * would be the same as starting uninstall afterwards
+ * <p/>
+ * The download URL is only used as the unique ID that represents this
+ * particular apk throughout the whole install process in
+ * {@link InstallManagerService}.
  */
 public class InstallerService extends IntentService {
 
@@ -50,9 +54,8 @@ public class InstallerService extends IntentService {
 
         if (ACTION_INSTALL.equals(intent.getAction())) {
             Uri uri = intent.getData();
-            Uri originatingUri = intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
-
-            installer.installPackage(uri, originatingUri, packageName);
+            Uri downloadUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
+            installer.installPackage(uri, downloadUri, packageName);
         } else if (ACTION_UNINSTALL.equals(intent.getAction())) {
             installer.uninstallPackage(packageName);
         }
@@ -61,16 +64,16 @@ public class InstallerService extends IntentService {
     /**
      * Install an apk from {@link Uri}
      *
-     * @param context        this app's {@link Context}
-     * @param uri            {@link Uri} pointing to (downloaded) local apk file
-     * @param originatingUri {@link Uri} where the apk has been downloaded from
-     * @param packageName    package name of the app that should be installed
+     * @param context     this app's {@link Context}
+     * @param localApkUri {@link Uri} pointing to (downloaded) local apk file
+     * @param downloadUri {@link Uri} where the apk has been downloaded from
+     * @param packageName package name of the app that should be installed
      */
-    public static void install(Context context, Uri uri, Uri originatingUri, String packageName) {
+    public static void install(Context context, Uri localApkUri, Uri downloadUri, String packageName) {
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_INSTALL);
-        intent.setData(uri);
-        intent.putExtra(Installer.EXTRA_ORIGINATING_URI, originatingUri);
+        intent.setData(localApkUri);
+        intent.putExtra(Installer.EXTRA_DOWNLOAD_URI, downloadUri);
         intent.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
         context.startService(intent);
     }

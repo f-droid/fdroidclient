@@ -55,8 +55,10 @@ import java.util.Set;
  * <li>for a {@link Uri} ID, use {@code Uri}, {@link Intent#getData()}
  * <li>for a {@code String} ID, use {@code urlString}, {@link Uri#toString()}, or
  * {@link Intent#getDataString()}
- * <li>for an {@code int} ID, use {@link String#hashCode()}
+ * <li>for an {@code int} ID, use {@link String#hashCode()} or {@link Uri#hashCode()}
  * </ul></p>
+ * The implementations of {@link Uri#toString()} and {@link Intent#getDataString()} both
+ * include caching of the generated {@code String}, so it should be plenty fast.
  */
 public class InstallManagerService extends Service {
     public static final String TAG = "InstallManagerService";
@@ -154,7 +156,7 @@ public class InstallManagerService extends Service {
         Apk apk = new Apk(intent.getParcelableExtra(EXTRA_APK));
         addToActive(urlString, app, apk);
 
-        NotificationCompat.Builder builder = createNotificationBuilder(intent.getDataString(), apk);
+        NotificationCompat.Builder builder = createNotificationBuilder(urlString, apk);
         notificationManager.notify(urlString.hashCode(), builder.build());
 
         registerDownloaderReceivers(urlString, builder);
@@ -224,18 +226,18 @@ public class InstallManagerService extends Service {
             @Override
             public void onReceive(Context context, Intent intent) {
                 // elsewhere called urlString
-                Uri originatingUri = intent.getData();
+                Uri downloadUri = intent.getData();
+                String urlString = downloadUri.toString();
                 File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
-                Uri localUri = Uri.fromFile(localFile);
+                Uri localApkUri = Uri.fromFile(localFile);
 
-                Utils.debugLog(TAG, "download completed of " + originatingUri
-                        + " to " + localUri);
+                Utils.debugLog(TAG, "download completed of " + urlString + " to " + localApkUri);
 
-                unregisterDownloaderReceivers(intent.getDataString());
+                unregisterDownloaderReceivers(urlString);
+                registerInstallerReceivers(downloadUri);
 
-                registerInstallerReceivers(localUri);
-                Apk apk = ACTIVE_APKS.get(originatingUri.toString());
-                InstallerService.install(context, localUri, originatingUri, apk.packageName);
+                Apk apk = ACTIVE_APKS.get(urlString);
+                InstallerService.install(context, localApkUri, downloadUri, apk.packageName);
             }
         };
         BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {
@@ -262,19 +264,18 @@ public class InstallManagerService extends Service {
 
     }
 
-    private void registerInstallerReceivers(Uri uri) {
+    private void registerInstallerReceivers(Uri downloadUri) {
 
         BroadcastReceiver installReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Uri originatingUri = intent.getParcelableExtra(Installer.EXTRA_ORIGINATING_URI);
-
+                String downloadUrl = intent.getDataString();
                 switch (intent.getAction()) {
                     case Installer.ACTION_INSTALL_STARTED:
                         // nothing to do
                         break;
                     case Installer.ACTION_INSTALL_COMPLETE:
-                        Apk apkComplete = removeFromActive(originatingUri.toString());
+                        Apk apkComplete = removeFromActive(downloadUrl);
 
                         PackageManagerCompat.setInstaller(getPackageManager(), apkComplete.packageName);
 
@@ -286,16 +287,16 @@ public class InstallManagerService extends Service {
 
                         // show notification if app details is not visible
                         if (!TextUtils.isEmpty(errorMessage)) {
-                            App app = getAppFromActive(originatingUri.toString());
+                            App app = getAppFromActive(downloadUrl);
                             String title = String.format(
                                     getString(R.string.install_error_notify_title),
                                     app.name);
 
                             // show notification if app details is not visible
                             if (AppDetails.isAppVisible(app.packageName)) {
-                                cancelNotification(originatingUri.toString());
+                                cancelNotification(downloadUrl);
                             } else {
-                                notifyError(originatingUri.toString(), title, errorMessage);
+                                notifyError(downloadUrl, title, errorMessage);
                             }
                         }
 
@@ -305,12 +306,12 @@ public class InstallManagerService extends Service {
                         PendingIntent installPendingIntent =
                                 intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
 
-                        Apk apkUserInteraction = getApkFromActive(originatingUri.toString());
+                        Apk apkUserInteraction = getApkFromActive(downloadUrl);
                         // show notification if app details is not visible
                         if (AppDetails.isAppVisible(apkUserInteraction.packageName)) {
-                            cancelNotification(originatingUri.toString());
+                            cancelNotification(downloadUrl);
                         } else {
-                            notifyDownloadComplete(apkUserInteraction, originatingUri.toString(), installPendingIntent);
+                            notifyDownloadComplete(apkUserInteraction, downloadUrl, installPendingIntent);
                         }
 
                         break;
@@ -321,7 +322,7 @@ public class InstallManagerService extends Service {
         };
 
         localBroadcastManager.registerReceiver(installReceiver,
-                Installer.getInstallIntentFilter(uri));
+                Installer.getInstallIntentFilter(downloadUri));
     }
 
     private NotificationCompat.Builder createNotificationBuilder(String urlString, Apk apk) {

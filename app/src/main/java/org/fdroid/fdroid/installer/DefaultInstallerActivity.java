@@ -42,14 +42,11 @@ public class DefaultInstallerActivity extends FragmentActivity {
     public static final String ACTION_UNINSTALL_PACKAGE = "org.fdroid.fdroid.UNINSTALL_PACKAGE";
 
     public static final String EXTRA_UNINSTALL_PACKAGE_NAME = "uninstallPackageName";
-    public static final String EXTRA_ORIGINATING_URI = "originatingUri";
 
     private static final int REQUEST_CODE_INSTALL = 0;
     private static final int REQUEST_CODE_UNINSTALL = 1;
 
-    private Uri installOriginatingUri;
-    private Uri installUri;
-
+    private Uri downloadUri;
     private String uninstallPackageName;
 
     // for the broadcasts
@@ -64,10 +61,9 @@ public class DefaultInstallerActivity extends FragmentActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         if (ACTION_INSTALL_PACKAGE.equals(action)) {
-            installUri = intent.getData();
-            installOriginatingUri = intent.getParcelableExtra(EXTRA_ORIGINATING_URI);
-
-            installPackage(installUri, installOriginatingUri);
+            Uri localApkUri = intent.getData();
+            downloadUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
+            installPackage(localApkUri);
         } else if (ACTION_UNINSTALL_PACKAGE.equals(action)) {
             uninstallPackageName = intent.getStringExtra(EXTRA_UNINSTALL_PACKAGE_NAME);
 
@@ -78,7 +74,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
     }
 
     @SuppressLint("InlinedApi")
-    private void installPackage(Uri uri, Uri originatingUri) {
+    private void installPackage(Uri uri) {
         if (uri == null) {
             throw new RuntimeException("Set the data uri to point to an apk location!");
         }
@@ -121,12 +117,11 @@ public class DefaultInstallerActivity extends FragmentActivity {
             startActivityForResult(intent, REQUEST_CODE_INSTALL);
         } catch (ActivityNotFoundException e) {
             Log.e(TAG, "ActivityNotFoundException", e);
-            installer.sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
+            installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
                     "This Android rom does not support ACTION_INSTALL_PACKAGE!");
             finish();
         }
-        installer.sendBroadcastInstall(installUri, installOriginatingUri,
-                Installer.ACTION_INSTALL_STARTED);
+        installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
     }
 
     protected void uninstallPackage(String packageName) {
@@ -172,31 +167,29 @@ public class DefaultInstallerActivity extends FragmentActivity {
                  * never executed on Androids < 4.0
                  */
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                    installer.sendBroadcastInstall(installUri, installOriginatingUri,
-                            Installer.ACTION_INSTALL_COMPLETE);
+                    installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_COMPLETE);
                     break;
                 }
 
                 // Fallback on N for https://gitlab.com/fdroid/fdroidclient/issues/631
                 if ("N".equals(Build.VERSION.CODENAME)) {
-                    installer.sendBroadcastInstall(installUri, installOriginatingUri,
-                            Installer.ACTION_INSTALL_COMPLETE);
+                    installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_COMPLETE);
                     break;
                 }
 
                 switch (resultCode) {
                     case Activity.RESULT_OK:
-                        installer.sendBroadcastInstall(installUri, installOriginatingUri,
+                        installer.sendBroadcastInstall(downloadUri,
                                 Installer.ACTION_INSTALL_COMPLETE);
                         break;
                     case Activity.RESULT_CANCELED:
-                        installer.sendBroadcastInstall(installUri, installOriginatingUri,
+                        installer.sendBroadcastInstall(downloadUri,
                                 Installer.ACTION_INSTALL_INTERRUPTED);
                         break;
                     case Activity.RESULT_FIRST_USER:
                     default:
                         // AOSP returns Activity.RESULT_FIRST_USER on error
-                        installer.sendBroadcastInstall(installUri, installOriginatingUri,
+                        installer.sendBroadcastInstall(downloadUri,
                                 Installer.ACTION_INSTALL_INTERRUPTED,
                                 getString(R.string.install_error_unknown));
                         break;

@@ -46,14 +46,13 @@ public class ExtensionInstaller extends Installer {
     }
 
     @Override
-    protected void installPackage(Uri uri, Uri originatingUri, String packageName) {
+    protected void installPackage(Uri localApkUri, Uri downloadUri, String packageName) {
         Uri sanitizedUri;
         try {
-            sanitizedUri = Installer.prepareApkFile(context, uri, packageName);
+            sanitizedUri = Installer.prepareApkFile(context, localApkUri, packageName);
         } catch (InstallFailedException e) {
             Log.e(TAG, "prepareApkFile failed", e);
-            sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
-                    e.getMessage());
+            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
             return;
         }
 
@@ -61,7 +60,7 @@ public class ExtensionInstaller extends Installer {
         // NOTE: Disabled for debug builds to be able to use official extension from repo
         ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(context);
         if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(new File(sanitizedUri.getPath()))) {
-            sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
+            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
                     "APK signature of extension not correct!");
         }
         Intent installIntent = new Intent(context, InstallExtensionDialogActivity.class);
@@ -70,15 +69,15 @@ public class ExtensionInstaller extends Installer {
 
         PendingIntent installPendingIntent = PendingIntent.getActivity(
                 context.getApplicationContext(),
-                uri.hashCode(),
+                localApkUri.hashCode(),
                 installIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
-        sendBroadcastInstall(uri, originatingUri,
+        sendBroadcastInstall(downloadUri,
                 Installer.ACTION_INSTALL_USER_INTERACTION, installPendingIntent);
 
         // don't use broadcasts for the rest of this special installer
-        sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_COMPLETE);
+        sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_COMPLETE);
     }
 
     @Override

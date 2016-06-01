@@ -791,7 +791,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         Uri localUri = Uri.fromFile(apkFile);
 
         localBroadcastManager.registerReceiver(installReceiver,
-                Installer.getInstallIntentFilter(Uri.fromFile(apkFile)));
+                Installer.getInstallIntentFilter(originatingUri));
         InstallerService.install(this, localUri, originatingUri, packageName);
     }
 
