@@ -288,18 +288,18 @@ public class InstallManagerService extends Service {
                         // show notification if app details is not visible
                         if (!TextUtils.isEmpty(errorMessage)) {
                             App app = getAppFromActive(downloadUrl);
-                            String title = String.format(
-                                    getString(R.string.install_error_notify_title),
-                                    app.name);
 
                             // show notification if app details is not visible
                             if (AppDetails.isAppVisible(app.packageName)) {
                                 cancelNotification(downloadUrl);
                             } else {
+                                String title = String.format(
+                                        getString(R.string.install_error_notify_title),
+                                        app.name);
                                 notifyError(downloadUrl, title, errorMessage);
                             }
                         }
-
+                        removeFromActive(downloadUrl);
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     case Installer.ACTION_INSTALL_USER_INTERACTION:
