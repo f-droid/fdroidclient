@@ -38,10 +38,10 @@ import org.fdroid.fdroid.R;
 public class DefaultInstallerActivity extends FragmentActivity {
     public static final String TAG = "AndroidInstallerAct";
 
-    public static final String ACTION_INSTALL_PACKAGE = "org.fdroid.fdroid.INSTALL_PACKAGE";
-    public static final String ACTION_UNINSTALL_PACKAGE = "org.fdroid.fdroid.UNINSTALL_PACKAGE";
+    static final String ACTION_INSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.INSTALL_PACKAGE";
+    static final String ACTION_UNINSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.UNINSTALL_PACKAGE";
 
-    public static final String EXTRA_UNINSTALL_PACKAGE_NAME = "uninstallPackageName";
+    static final String EXTRA_UNINSTALL_PACKAGE_NAME = "org.fdroid.fdroid.installer.DefaultInstaller.extra.UNINSTALL_PACKAGE_NAME";
 
     private static final int REQUEST_CODE_INSTALL = 0;
     private static final int REQUEST_CODE_UNINSTALL = 1;

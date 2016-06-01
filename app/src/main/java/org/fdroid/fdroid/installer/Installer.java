@@ -95,7 +95,7 @@ public abstract class Installer {
         localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 
-    public static Uri prepareApkFile(Context context, Uri uri, String packageName)
+    static Uri prepareApkFile(Context context, Uri uri, String packageName)
             throws InstallFailedException {
 
         File apkFile = new File(uri.getPath());
@@ -233,7 +233,7 @@ public abstract class Installer {
     /**
      * Checks the APK file against the provided hash, returning whether it is a match.
      */
-    public static boolean verifyApkFile(File apkFile, String hash, String hashType)
+    static boolean verifyApkFile(File apkFile, String hash, String hashType)
             throws NoSuchAlgorithmException {
         if (!apkFile.exists()) {
             return false;
@@ -242,20 +242,20 @@ public abstract class Installer {
         return hasher.match(hash);
     }
 
-    public void sendBroadcastInstall(Uri downloadUri, String action,
+    void sendBroadcastInstall(Uri downloadUri, String action,
                                      PendingIntent pendingIntent) {
         sendBroadcastInstall(downloadUri, action, pendingIntent, null);
     }
 
-    public void sendBroadcastInstall(Uri downloadUri, String action) {
+    void sendBroadcastInstall(Uri downloadUri, String action) {
         sendBroadcastInstall(downloadUri, action, null, null);
     }
 
-    public void sendBroadcastInstall(Uri downloadUri, String action, String errorMessage) {
+    void sendBroadcastInstall(Uri downloadUri, String action, String errorMessage) {
         sendBroadcastInstall(downloadUri, action, null, errorMessage);
     }
 
-    public void sendBroadcastInstall(Uri downloadUri, String action,
+    void sendBroadcastInstall(Uri downloadUri, String action,
                                      PendingIntent pendingIntent, String errorMessage) {
         Intent intent = new Intent(action);
         intent.setData(downloadUri);
@@ -266,20 +266,20 @@ public abstract class Installer {
         localBroadcastManager.sendBroadcast(intent);
     }
 
-    public void sendBroadcastUninstall(String packageName, String action, String errorMessage) {
+    void sendBroadcastUninstall(String packageName, String action, String errorMessage) {
         sendBroadcastUninstall(packageName, action, null, errorMessage);
     }
 
-    public void sendBroadcastUninstall(String packageName, String action) {
+    void sendBroadcastUninstall(String packageName, String action) {
         sendBroadcastUninstall(packageName, action, null, null);
     }
 
-    public void sendBroadcastUninstall(String packageName, String action,
+    void sendBroadcastUninstall(String packageName, String action,
                                        PendingIntent pendingIntent) {
         sendBroadcastUninstall(packageName, action, pendingIntent, null);
     }
 
-    public void sendBroadcastUninstall(String packageName, String action,
+    void sendBroadcastUninstall(String packageName, String action,
                                        PendingIntent pendingIntent, String errorMessage) {
         Uri uri = Uri.fromParts("package", packageName, null);
 
