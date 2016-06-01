@@ -300,6 +300,7 @@ public abstract class Installer {
         intentFilter.addAction(Installer.ACTION_INSTALL_INTERRUPTED);
         intentFilter.addAction(Installer.ACTION_INSTALL_USER_INTERACTION);
         intentFilter.addDataScheme(uri.getScheme());
+        intentFilter.addDataAuthority(uri.getHost(), String.valueOf(uri.getPort()));
         intentFilter.addDataPath(uri.getPath(), PatternMatcher.PATTERN_LITERAL);
         return intentFilter;
     }
