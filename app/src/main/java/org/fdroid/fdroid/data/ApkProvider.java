@@ -107,8 +107,12 @@ public class ApkProvider extends FDroidProvider {
         }
 
         public static Apk find(Context context, String packageName, int versionCode, String[] projection) {
-            ContentResolver resolver = context.getContentResolver();
             final Uri uri = getContentUri(packageName, versionCode);
+            return find(context, uri, projection);
+        }
+
+        public static Apk find(Context context, Uri uri, String[] projection) {
+            ContentResolver resolver = context.getContentResolver();
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             Apk apk = null;
             if (cursor != null) {

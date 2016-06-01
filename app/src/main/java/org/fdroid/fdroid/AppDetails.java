@@ -22,6 +22,7 @@
 package org.fdroid.fdroid;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -78,17 +79,16 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import org.fdroid.fdroid.Utils.CommaSeparatedList;
-import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.installer.Installer.InstallFailedException;
-import org.fdroid.fdroid.installer.Installer.InstallerCallback;
+import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.installer.InstallerFactory;
+import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
@@ -101,6 +101,8 @@ public class AppDetails extends AppCompatActivity {
     private static final String TAG = "AppDetails";
 
     private static final int REQUEST_ENABLE_BLUETOOTH = 2;
+    private static final int REQUEST_PERMISSION_DIALOG = 3;
+    private static final int REQUEST_UNINSTALL_DIALOG = 4;
 
     public static final String EXTRA_APPID = "appid";
     public static final String EXTRA_FROM = "from";
@@ -319,7 +321,6 @@ public class AppDetails extends AppCompatActivity {
     private int startingIgnoreThis;
 
     private final Context context = this;
-    private Installer installer;
 
     private AppDetailsHeaderFragment headerFragment;
 
@@ -374,8 +375,6 @@ public class AppDetails extends AppCompatActivity {
         }
 
         packageManager = getPackageManager();
-
-        installer = Installer.getActivityInstaller(this, packageManager, myInstallerCallback);
 
         // Get the preferences we're going to use in this Activity...
         ConfigurationChangeHelper previousData = (ConfigurationChangeHelper) getLastCustomNonConfigurationInstance();
@@ -530,13 +529,12 @@ public class AppDetails extends AppCompatActivity {
     private final BroadcastReceiver completeReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
-            try {
-                installer.installPackage(localFile, app.packageName, intent.getDataString());
-            } catch (InstallFailedException e) {
-                Log.e(TAG, "Android not compatible with this Installer!", e);
-            }
             cleanUpFinishedDownload();
+
+            Uri localUri =
+                    Uri.fromFile(new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH)));
+            localBroadcastManager.registerReceiver(installReceiver,
+                    Installer.getInstallIntentFilter(localUri));
         }
     };
 
@@ -552,6 +550,108 @@ public class AppDetails extends AppCompatActivity {
                 Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
             }
             cleanUpFinishedDownload();
+        }
+    };
+
+    private final BroadcastReceiver installReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (intent.getAction()) {
+                case Installer.ACTION_INSTALL_STARTED:
+                    headerFragment.startProgress();
+                    headerFragment.showIndeterminateProgress(getString(R.string.installing));
+                    break;
+                case Installer.ACTION_INSTALL_COMPLETE:
+                    headerFragment.removeProgress();
+
+                    localBroadcastManager.unregisterReceiver(this);
+                    break;
+                case Installer.ACTION_INSTALL_INTERRUPTED:
+                    headerFragment.removeProgress();
+                    onAppChanged();
+
+                    String errorMessage =
+                            intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
+
+                    if (!TextUtils.isEmpty(errorMessage)) {
+                        Log.e(TAG, "install aborted with errorMessage: " + errorMessage);
+
+                        String title = String.format(
+                                getString(R.string.install_error_notify_title),
+                                app.name);
+
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
+                        alertBuilder.setTitle(title);
+                        alertBuilder.setMessage(errorMessage);
+                        alertBuilder.setNeutralButton(android.R.string.ok, null);
+                        alertBuilder.create().show();
+                    }
+
+                    localBroadcastManager.unregisterReceiver(this);
+                    break;
+                case Installer.ACTION_INSTALL_USER_INTERACTION:
+                    PendingIntent installPendingIntent =
+                            intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+
+                    try {
+                        installPendingIntent.send();
+                    } catch (PendingIntent.CanceledException e) {
+                        Log.e(TAG, "PI canceled", e);
+                    }
+
+                    break;
+                default:
+                    throw new RuntimeException("intent action not handled!");
+            }
+        }
+    };
+
+    private final BroadcastReceiver uninstallReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (intent.getAction()) {
+                case Installer.ACTION_UNINSTALL_STARTED:
+                    headerFragment.startProgress();
+                    headerFragment.showIndeterminateProgress(getString(R.string.uninstalling));
+                    break;
+                case Installer.ACTION_UNINSTALL_COMPLETE:
+                    headerFragment.removeProgress();
+                    onAppChanged();
+
+                    localBroadcastManager.unregisterReceiver(this);
+                    break;
+                case Installer.ACTION_UNINSTALL_INTERRUPTED:
+                    headerFragment.removeProgress();
+
+                    String errorMessage =
+                            intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
+
+                    if (!TextUtils.isEmpty(errorMessage)) {
+                        Log.e(TAG, "uninstall aborted with errorMessage: " + errorMessage);
+
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
+                        alertBuilder.setTitle(R.string.uninstall_error_notify_title);
+                        alertBuilder.setMessage(errorMessage);
+                        alertBuilder.setNeutralButton(android.R.string.ok, null);
+                        alertBuilder.create().show();
+                    }
+
+                    localBroadcastManager.unregisterReceiver(this);
+                    break;
+                case Installer.ACTION_UNINSTALL_USER_INTERACTION:
+                    PendingIntent uninstallPendingIntent =
+                            intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+
+                    try {
+                        uninstallPendingIntent.send();
+                    } catch (PendingIntent.CanceledException e) {
+                        Log.e(TAG, "PI canceled", e);
+                    }
+
+                    break;
+                default:
+                    throw new RuntimeException("intent action not handled!");
+            }
         }
     };
 
@@ -796,7 +896,7 @@ public class AppDetails extends AppCompatActivity {
                 return true;
 
             case UNINSTALL:
-                removeApk(app.packageName);
+                uninstallApk(app.packageName);
                 return true;
 
             case IGNOREALL:
@@ -875,76 +975,43 @@ public class AppDetails extends AppCompatActivity {
     }
 
     private void initiateInstall(Apk apk) {
+        Installer installer = InstallerFactory.create(this, apk.packageName);
+        Intent intent = installer.getPermissionScreen(apk);
+        if (intent != null) {
+            // permission screen required
+            Utils.debugLog(TAG, "permission screen required");
+            startActivityForResult(intent, REQUEST_PERMISSION_DIALOG);
+            return;
+        }
+
+        startInstall(apk);
+    }
+
+    private void startInstall(Apk apk) {
         activeDownloadUrlString = apk.getUrl();
         registerDownloaderReceivers();
         headerFragment.startProgress();
         InstallManagerService.queue(this, app, apk);
     }
 
-    private void removeApk(String packageName) {
-        try {
-            installer.deletePackage(packageName);
-        } catch (InstallFailedException e) {
-            Log.e(TAG, "Android not compatible with this Installer!", e);
+    private void uninstallApk(String packageName) {
+        Installer installer = InstallerFactory.create(this, packageName);
+        Intent intent = installer.getUninstallScreen(packageName);
+        if (intent != null) {
+            // uninstall screen required
+            Utils.debugLog(TAG, "screen screen required");
+            startActivityForResult(intent, REQUEST_UNINSTALL_DIALOG);
+            return;
         }
+
+        startUninstall();
     }
 
-    private final Installer.InstallerCallback myInstallerCallback = new Installer.InstallerCallback() {
-
-        @Override
-        public void onSuccess(final int operation) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
-                        PackageManagerCompat.setInstaller(packageManager, app.packageName);
-                    }
-
-                    onAppChanged();
-                }
-            });
-        }
-
-        @Override
-        public void onError(int operation, final int errorCode) {
-            if (errorCode == InstallerCallback.ERROR_CODE_CANCELED) {
-                return;
-            }
-            final int title, body;
-            if (operation == InstallerCallback.OPERATION_INSTALL) {
-                title = R.string.install_error_title;
-                switch (errorCode) {
-                    case ERROR_CODE_CANNOT_PARSE:
-                        body = R.string.install_error_cannot_parse;
-                        break;
-                    default: // ERROR_CODE_OTHER
-                        body = R.string.install_error_unknown;
-                        break;
-                }
-            } else { // InstallerCallback.OPERATION_DELETE
-                title = R.string.uninstall_error_title;
-                switch (errorCode) {
-                    default: // ERROR_CODE_OTHER
-                        body = R.string.uninstall_error_unknown;
-                        break;
-                }
-            }
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    onAppChanged();
-
-                    Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
-
-                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
-                    alertBuilder.setTitle(title);
-                    alertBuilder.setMessage(body);
-                    alertBuilder.setNeutralButton(android.R.string.ok, null);
-                    alertBuilder.create().show();
-                }
-            });
-        }
-    };
+    private void startUninstall() {
+        localBroadcastManager.registerReceiver(uninstallReceiver,
+                Installer.getUninstallIntentFilter(app.packageName));
+        InstallerService.uninstall(context, app.packageName);
+    }
 
     private void launchApk(String packageName) {
         Intent intent = packageManager.getLaunchIntentForPackage(packageName);
@@ -963,14 +1030,21 @@ public class AppDetails extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // handle cases for install manager first
-        if (installer.handleOnActivityResult(requestCode, resultCode, data)) {
-            return;
-        }
-
         switch (requestCode) {
             case REQUEST_ENABLE_BLUETOOTH:
                 fdroidApp.sendViaBluetooth(this, resultCode, app.packageName);
+                break;
+            case REQUEST_PERMISSION_DIALOG:
+                if (resultCode == Activity.RESULT_OK) {
+                    Uri uri = data.getData();
+                    Apk apk = ApkProvider.Helper.find(this, uri, ApkProvider.DataColumns.ALL);
+                    startInstall(apk);
+                }
+                break;
+            case REQUEST_UNINSTALL_DIALOG:
+                if (resultCode == Activity.RESULT_OK) {
+                    startUninstall();
+                }
                 break;
         }
     }
@@ -1606,7 +1680,7 @@ public class AppDetails extends AppCompatActivity {
                         // If "launchable", launch
                         activity.launchApk(app.packageName);
                     } else {
-                        activity.removeApk(app.packageName);
+                        activity.uninstallApk(app.packageName);
                     }
                 } else if (app.suggestedVersionCode > 0) {
                     // If not installed, install
@@ -1635,7 +1709,7 @@ public class AppDetails extends AppCompatActivity {
         }
 
         void remove() {
-            appDetails.removeApk(appDetails.getApp().packageName);
+            appDetails.uninstallApk(appDetails.getApp().packageName);
         }
 
         @Override

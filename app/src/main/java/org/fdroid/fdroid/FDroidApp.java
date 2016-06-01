@@ -125,6 +125,23 @@ public class FDroidApp extends Application {
         }
     }
 
+    public void applyDialogTheme(Activity activity) {
+        activity.setTheme(getCurDialogThemeResId());
+    }
+
+    public static int getCurDialogThemeResId() {
+        switch (curTheme) {
+            case light:
+                return R.style.MinWithDialogBaseThemeLight;
+            case dark:
+                return R.style.MinWithDialogBaseThemeDark;
+            case night:
+                return R.style.MinWithDialogBaseThemeDark;
+            default:
+                return R.style.MinWithDialogBaseThemeLight;
+        }
+    }
+
     public static void enableSpongyCastle() {
         Security.addProvider(SPONGYCASTLE_PROVIDER);
     }

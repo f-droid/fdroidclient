@@ -25,44 +25,47 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
-import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
 
 import java.io.File;
 
 /**
- * The default installer of F-Droid. It uses the normal Intents APIs of Android
- * to install apks. Its main inner workings are encapsulated in DefaultInstallerActivity.
+ * Special Installer that is only useful to install the Privileged Extension apk
+ * as a privileged app into the system partition of Android.
  * <p/>
  * This is installer requires user interaction and thus install/uninstall directly
  * return PendingIntents.
  */
-public class DefaultInstaller extends Installer {
+public class ExtensionInstaller extends Installer {
 
-    private static final String TAG = "DefaultInstaller";
+    private static final String TAG = "ExtensionInstaller";
 
-    DefaultInstaller(Context context) {
+    ExtensionInstaller(Context context) {
         super(context);
     }
 
     @Override
     protected void installPackage(Uri uri, Uri originatingUri, String packageName) {
-        sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_STARTED);
-
-        Utils.debugLog(TAG, "DefaultInstaller uri: " + uri + " file: " + new File(uri.getPath()));
-
         Uri sanitizedUri;
         try {
             sanitizedUri = Installer.prepareApkFile(context, uri, packageName);
-        } catch (Installer.InstallFailedException e) {
+        } catch (InstallFailedException e) {
             Log.e(TAG, "prepareApkFile failed", e);
             sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
                     e.getMessage());
             return;
         }
 
-        Intent installIntent = new Intent(context, DefaultInstallerActivity.class);
-        installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);
-        installIntent.putExtra(DefaultInstallerActivity.EXTRA_ORIGINATING_URI, originatingUri);
+        // extension must be signed with the same public key as main F-Droid
+        // NOTE: Disabled for debug builds to be able to use official extension from repo
+        ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(context);
+        if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(new File(sanitizedUri.getPath()))) {
+            sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
+                    "APK signature of extension not correct!");
+        }
+        Intent installIntent = new Intent(context, InstallExtensionDialogActivity.class);
+        installIntent.setAction(InstallExtensionDialogActivity.ACTION_INSTALL);
         installIntent.setData(sanitizedUri);
 
         PendingIntent installPendingIntent = PendingIntent.getActivity(
@@ -73,16 +76,18 @@ public class DefaultInstaller extends Installer {
 
         sendBroadcastInstall(uri, originatingUri,
                 Installer.ACTION_INSTALL_USER_INTERACTION, installPendingIntent);
+
+        // don't use broadcasts for the rest of this special installer
+        sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_COMPLETE);
     }
 
     @Override
     protected void uninstallPackage(String packageName) {
         sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_STARTED);
 
-        Intent uninstallIntent = new Intent(context, DefaultInstallerActivity.class);
-        uninstallIntent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
-        uninstallIntent.putExtra(
-                DefaultInstallerActivity.EXTRA_UNINSTALL_PACKAGE_NAME, packageName);
+        Intent uninstallIntent = new Intent(context, InstallExtensionDialogActivity.class);
+        uninstallIntent.setAction(InstallExtensionDialogActivity.ACTION_UNINSTALL);
+
         PendingIntent uninstallPendingIntent = PendingIntent.getActivity(
                 context.getApplicationContext(),
                 packageName.hashCode(),
@@ -91,6 +96,9 @@ public class DefaultInstaller extends Installer {
 
         sendBroadcastUninstall(packageName,
                 Installer.ACTION_UNINSTALL_USER_INTERACTION, uninstallPendingIntent);
+
+        // don't use broadcasts for the rest of this special installer
+        sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_COMPLETE);
     }
 
     @Override

@@ -267,10 +267,7 @@
     <string name="requesting_root_access_body">Requesting root access…</string>
     <string name="root_access_denied_title">Root access denied</string>
     <string name="root_access_denied_body">Either your Android device is not rooted or you have denied root access for F-Droid.</string>
-    <string name="install_error_title">Install error</string>
     <string name="install_error_unknown">Failed to install due to an unknown error</string>
-    <string name="install_error_cannot_parse">An error occurred while parsing the package</string>
-    <string name="uninstall_error_title">Uninstall error</string>
     <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
     <string name="system_install_denied_title">F-Droid Privileged Extension is not available</string>
     <string name="system_install_denied_body">This option is only available when F-Droid Privileged Extension is installed.</string>
@@ -341,10 +338,7 @@
 
     <string name="tap_to_install_format">Tap to install %s</string>
     <string name="tap_to_update_format">Tap to update %s</string>
-    <string name="install_confirm">Do you want to install this application?
-            It will get access to:</string>
-    <string name="install_confirm_no_perms">Do you want to install this application?
-            It does not require any special access.</string>
+    <string name="install_confirm">needs access to</string>
     <string name="install_confirm_update">Do you want to install an update
             to this existing application?  Your existing data will not
             be lost. The updated application will get access to:</string>
@@ -365,11 +359,16 @@
     <string name="tap_to_install">Download completed, tap to install</string>
     <string name="download_error">Download unsuccessful</string>
     <string name="download_pending">Waiting to start download…</string>
+    <string name="install_error_notify_title">Error installing %s</string>
+    <string name="uninstall_error_notify_title">Error uninstalling %s</string>
+
 
     <string name="perms_new_perm_prefix">New: </string>
     <string name="perms_description_app">Provided by %1$s.</string>
     <string name="downloading">Downloading…</string>
     <string name="downloading_apk">Downloading %1$s</string>
+    <string name="installing">Installing…</string>
+    <string name="uninstalling">Uninstalling…</string>
 
     <string name="interval_never">Never</string>
     <string name="interval_1h">Hourly</string>

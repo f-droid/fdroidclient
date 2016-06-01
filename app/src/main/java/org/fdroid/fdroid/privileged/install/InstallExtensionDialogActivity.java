@@ -27,6 +27,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -43,6 +44,8 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
+import java.io.File;
+
 import eu.chainfire.libsuperuser.Shell;
 
 /**
@@ -53,13 +56,12 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
     private static final String TAG = "InstallIntoSystem";
 
     public static final String ACTION_INSTALL = "install";
-    public static final String EXTRA_INSTALL_APK = "apk_file";
 
     public static final String ACTION_UNINSTALL = "uninstall";
     public static final String ACTION_POST_INSTALL = "post_install";
     public static final String ACTION_FIRST_TIME = "first_time";
 
-    private String apkFile;
+    private String apkPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +75,11 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
             return;
         }
 
-        apkFile = getIntent().getStringExtra(EXTRA_INSTALL_APK);
+        Uri dataUri = getIntent().getData();
+        if (dataUri != null) {
+            File apkFile = new File(dataUri.getPath());
+            apkPath = apkFile.getAbsolutePath();
+        }
 
         switch (getIntent().getAction()) {
             case ACTION_UNINSTALL:
@@ -105,7 +111,6 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
                     runFirstTime(context);
                     break;
 
-                case PrivilegedInstaller.IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
                 case PrivilegedInstaller.IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
                 default:
                     // do nothing
@@ -334,7 +339,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallExtension.create(getApplicationContext()).runInstall(apkFile);
+            InstallExtension.create(getApplicationContext()).runInstall(apkPath);
             return null;
         }
     };
@@ -367,12 +372,6 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
                 title = getString(R.string.system_install_post_fail);
                 message = getString(R.string.system_install_post_fail_message) +
                         "\n\n" + getString(R.string.system_install_denied_signature);
-                result = Activity.RESULT_CANCELED;
-                break;
-            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
-                title = getString(R.string.system_install_post_fail);
-                message = getString(R.string.system_install_post_fail_message) +
-                        "\n\n" + getString(R.string.system_install_denied_permissions);
                 result = Activity.RESULT_CANCELED;
                 break;
             default:

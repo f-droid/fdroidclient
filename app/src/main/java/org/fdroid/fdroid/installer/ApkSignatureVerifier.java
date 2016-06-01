@@ -42,12 +42,12 @@ public class ApkSignatureVerifier {
 
     private static final String TAG = "ApkSignatureVerifier";
 
-    private final Context mContext;
-    private final PackageManager mPm;
+    private final Context context;
+    private final PackageManager pm;
 
     ApkSignatureVerifier(Context context) {
-        mContext = context;
-        mPm = context.getPackageManager();
+        this.context = context;
+        pm = context.getPackageManager();
     }
 
     public boolean hasFDroidSignature(File apkFile) {
@@ -66,7 +66,7 @@ public class ApkSignatureVerifier {
 
     private byte[] getApkSignature(File apkFile) {
         final String pkgPath = apkFile.getAbsolutePath();
-        PackageInfo pkgInfo = mPm.getPackageArchiveInfo(pkgPath, PackageManager.GET_SIGNATURES);
+        PackageInfo pkgInfo = pm.getPackageArchiveInfo(pkgPath, PackageManager.GET_SIGNATURES);
         return signatureToBytes(pkgInfo.signatures);
     }
 
@@ -74,7 +74,7 @@ public class ApkSignatureVerifier {
         try {
             // we do check the byte array of *all* signatures
             @SuppressLint("PackageManagerGetSignatures")
-            PackageInfo pkgInfo = mPm.getPackageInfo(mContext.getPackageName(),
+            PackageInfo pkgInfo = pm.getPackageInfo(context.getPackageName(),
                     PackageManager.GET_SIGNATURES);
             return signatureToBytes(pkgInfo.signatures);
         } catch (PackageManager.NameNotFoundException e) {

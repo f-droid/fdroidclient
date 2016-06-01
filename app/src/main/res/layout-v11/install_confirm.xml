@@ -21,37 +21,35 @@
   user before it is installed.
 -->
 
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-            android:id="@+id/install_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/install_confirm"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="4dip" />
+        android:id="@+id/install_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="4dip"
+        android:text="@string/install_confirm"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="?android:attr/dividerHorizontal"
-            android:visibility="gone" />
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/dividerHorizontal"
+        android:visibility="gone" />
 
     <FrameLayout
         android:id="@+id/filler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:visibility="gone">
-    </FrameLayout>
+        android:visibility="gone"></FrameLayout>
 
     <TabHost
         android:id="@android:id/tabhost"
@@ -60,24 +58,28 @@
         android:layout_weight="1">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <HorizontalScrollView android:id="@+id/tabscontainer"
+            <HorizontalScrollView
+                android:id="@+id/tabscontainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/tab_unselected_holo"
                 android:fillViewport="true"
                 android:scrollbars="none">
-                <FrameLayout android:layout_width="wrap_content"
-                             android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
                     <TabWidget
                         android:id="@android:id/tabs"
-                        android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:orientation="horizontal" />
                 </FrameLayout>
             </HorizontalScrollView>
 
@@ -85,64 +87,68 @@
                 android:id="@android:id/tabcontent"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="0"/>
+                android:layout_weight="0" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
         </LinearLayout>
     </TabHost>
 
     <!-- OK confirm and cancel buttons.  -->
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:divider="?android:attr/dividerHorizontal"
-            android:showDividers="beginning">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="?android:attr/dividerHorizontal"
+        android:orientation="vertical"
+        android:showDividers="beginning">
 
         <LinearLayout
-                style="?android:attr/buttonBarStyle"
-                android:layout_width="match_parent"
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:measureWithLargestChild="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/leftSpacer"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.25"
                 android:orientation="horizontal"
-                android:measureWithLargestChild="true">
+                android:visibility="gone" />
 
-            <LinearLayout android:id="@+id/leftSpacer"
-                    android:layout_weight="0.25"
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:visibility="gone" />
+            <Button
+                android:id="@+id/cancel_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="@string/cancel" />
 
-            <Button android:id="@+id/cancel_button"
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_weight="1"
-                    android:text="@string/cancel"
-                    android:maxLines="2"
-                    style="?android:attr/buttonBarButtonStyle" />
+            <Button
+                android:id="@+id/ok_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="1"
+                android:filterTouchesWhenObscured="true"
+                android:maxLines="2"
+                android:text="@string/next" />
 
-            <Button android:id="@+id/ok_button"
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_weight="1"
-                    android:text="@string/next"
-                    android:maxLines="2"
-                    android:filterTouchesWhenObscured="true"
-                    style="?android:attr/buttonBarButtonStyle" />
-
-            <LinearLayout android:id="@+id/rightSpacer"
-                    android:layout_width="0dip"
-                    android:layout_weight="0.25"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:visibility="gone" />
+            <LinearLayout
+                android:id="@+id/rightSpacer"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:orientation="horizontal"
+                android:visibility="gone" />
 
         </LinearLayout>
     </LinearLayout>

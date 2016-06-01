@@ -18,16 +18,15 @@
 
 package org.fdroid.fdroid.privileged.views;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,45 +37,62 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
 
 /**
  * NOTES:
  * Parts are based on AOSP src/com/android/packageinstaller/PackageInstallerActivity.java
  * latest included commit: c23d802958158d522e7350321ad9ac6d43013883
  */
-public class InstallConfirmActivity extends Activity implements OnCancelListener, OnClickListener {
+public class InstallConfirmActivity extends FragmentActivity implements OnCancelListener, OnClickListener {
 
     public static final int RESULT_CANNOT_PARSE = RESULT_FIRST_USER + 1;
 
     private Intent intent;
 
-    private PackageManager mPm;
-
-    private AppDiff mAppDiff;
+    private AppDiff appDiff;
 
     // View for install progress
-    private View mInstallConfirm;
+    private View installConfirm;
     // Buttons to indicate user acceptance
-    private Button mOk;
-    private Button mCancel;
-    private CaffeinatedScrollView mScrollView;
-    private boolean mOkCanInstall;
+    private Button okButton;
+    private Button cancelButton;
+    private CaffeinatedScrollView scrollView;
+    private boolean okCanInstall;
 
     private static final String TAB_ID_ALL = "all";
     private static final String TAB_ID_NEW = "new";
 
+    private App mApp;
+
+    private final DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder()
+            .cacheInMemory(true)
+            .cacheOnDisk(true)
+            .imageScaleType(ImageScaleType.NONE)
+            .showImageOnLoading(R.drawable.ic_repo_app_default)
+            .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
+
     private void startInstallConfirm() {
-
-        final Drawable appIcon = mAppDiff.mPkgInfo.applicationInfo.loadIcon(mPm);
-        final String appLabel = (String) mAppDiff.mPkgInfo.applicationInfo.loadLabel(mPm);
-
         View appSnippet = findViewById(R.id.app_snippet);
-        ((ImageView) appSnippet.findViewById(R.id.app_icon)).setImageDrawable(appIcon);
-        ((TextView) appSnippet.findViewById(R.id.app_name)).setText(appLabel);
-
+        TextView appName = (TextView) appSnippet.findViewById(R.id.app_name);
+        ImageView appIcon = (ImageView) appSnippet.findViewById(R.id.app_icon);
         TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
+
+        appName.setText(mApp.name);
+        ImageLoader.getInstance().displayImage(mApp.iconUrlLarge, appIcon,
+                displayImageOptions);
+
         tabHost.setup();
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         TabsAdapter adapter = new TabsAdapter(this, tabHost, viewPager);
@@ -87,27 +103,27 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
         });
 
         boolean permVisible = false;
-        mScrollView = null;
-        mOkCanInstall = false;
+        scrollView = null;
+        okCanInstall = false;
         int msg = 0;
-        AppSecurityPermissions perms = new AppSecurityPermissions(this, mAppDiff.mPkgInfo);
-        if (mAppDiff.mInstalledAppInfo != null) {
-            msg = (mAppDiff.mInstalledAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+        AppSecurityPermissions perms = new AppSecurityPermissions(this, appDiff.mPkgInfo);
+        if (appDiff.mInstalledAppInfo != null) {
+            msg = (appDiff.mInstalledAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                     ? R.string.install_confirm_update_system
                     : R.string.install_confirm_update;
-            mScrollView = new CaffeinatedScrollView(this);
-            mScrollView.setFillViewport(true);
+            scrollView = new CaffeinatedScrollView(this);
+            scrollView.setFillViewport(true);
             final boolean newPermissionsFound =
                     perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW) > 0;
             if (newPermissionsFound) {
                 permVisible = true;
-                mScrollView.addView(perms.getPermissionsView(
+                scrollView.addView(perms.getPermissionsView(
                         AppSecurityPermissions.WHICH_NEW));
             } else {
                 throw new RuntimeException("This should not happen. No new permissions were found but InstallConfirmActivity has been started!");
             }
             adapter.addTab(tabHost.newTabSpec(TAB_ID_NEW).setIndicator(
-                    getText(R.string.newPerms)), mScrollView);
+                    getText(R.string.newPerms)), scrollView);
         } else {
             findViewById(R.id.tabscontainer).setVisibility(View.GONE);
             findViewById(R.id.divider).setVisibility(View.VISIBLE);
@@ -118,8 +134,8 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
             LayoutInflater inflater = (LayoutInflater) getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
             View root = inflater.inflate(R.layout.permissions_list, null);
-            if (mScrollView == null) {
-                mScrollView = (CaffeinatedScrollView) root.findViewById(R.id.scrollview);
+            if (scrollView == null) {
+                scrollView = (CaffeinatedScrollView) root.findViewById(R.id.scrollview);
             }
             final ViewGroup permList = (ViewGroup) root.findViewById(R.id.permission_list);
             permList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
@@ -128,40 +144,40 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
         }
 
         if (!permVisible) {
-            if (mAppDiff.mInstalledAppInfo != null) {
+            if (appDiff.mInstalledAppInfo != null) {
                 // This is an update to an application, but there are no
                 // permissions at all.
-                msg = (mAppDiff.mInstalledAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+                msg = (appDiff.mInstalledAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                         ? R.string.install_confirm_update_system_no_perms
                         : R.string.install_confirm_update_no_perms;
             } else {
                 // This is a new application with no permissions.
-                msg = R.string.install_confirm_no_perms;
+                throw new RuntimeException("no permissions requested. This screen should not appear!");
             }
             tabHost.setVisibility(View.GONE);
             findViewById(R.id.filler).setVisibility(View.VISIBLE);
             findViewById(R.id.divider).setVisibility(View.GONE);
-            mScrollView = null;
+            scrollView = null;
         }
         if (msg != 0) {
             ((TextView) findViewById(R.id.install_confirm)).setText(msg);
         }
-        mInstallConfirm.setVisibility(View.VISIBLE);
-        mOk = (Button) findViewById(R.id.ok_button);
-        mCancel = (Button) findViewById(R.id.cancel_button);
-        mOk.setOnClickListener(this);
-        mCancel.setOnClickListener(this);
-        if (mScrollView == null) {
+        installConfirm.setVisibility(View.VISIBLE);
+        okButton = (Button) findViewById(R.id.ok_button);
+        cancelButton = (Button) findViewById(R.id.cancel_button);
+        okButton.setOnClickListener(this);
+        cancelButton.setOnClickListener(this);
+        if (scrollView == null) {
             // There is nothing to scroll view, so the ok button is immediately
             // set to install.
-            mOk.setText(R.string.menu_install);
-            mOkCanInstall = true;
+            okButton.setText(R.string.menu_install);
+            okCanInstall = true;
         } else {
-            mScrollView.setFullScrollAction(new Runnable() {
+            scrollView.setFullScrollAction(new Runnable() {
                 @Override
                 public void run() {
-                    mOk.setText(R.string.menu_install);
-                    mOkCanInstall = true;
+                    okButton.setText(R.string.menu_install);
+                    okCanInstall = true;
                 }
             });
         }
@@ -171,22 +187,28 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        ((FDroidApp) getApplication()).applyTheme(this);
-
-        mPm = getPackageManager();
+        ((FDroidApp) getApplication()).applyDialogTheme(this);
 
         intent = getIntent();
-        Uri packageURI = intent.getData();
+        Uri uri = intent.getData();
+        Apk apk = ApkProvider.Helper.find(this, uri, ApkProvider.DataColumns.ALL);
+        mApp = AppProvider.Helper.findByPackageName(getContentResolver(), apk.packageName);
 
-        mAppDiff = new AppDiff(mPm, packageURI);
-        if (mAppDiff.mPkgInfo == null) {
+        appDiff = new AppDiff(getPackageManager(), apk);
+        if (appDiff.mPkgInfo == null) {
             setResult(RESULT_CANNOT_PARSE, intent);
             finish();
         }
 
         setContentView(R.layout.install_start);
-        mInstallConfirm = findViewById(R.id.install_confirm_panel);
-        mInstallConfirm.setVisibility(View.INVISIBLE);
+
+        // increase dialog to full width for now
+        // TODO: create a better design and minimum width for tablets
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        installConfirm = findViewById(R.id.install_confirm_panel);
+        installConfirm.setVisibility(View.INVISIBLE);
 
         startInstallConfirm();
     }
@@ -197,14 +219,14 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
     }
 
     public void onClick(View v) {
-        if (v == mOk) {
-            if (mOkCanInstall || mScrollView == null) {
+        if (v == okButton) {
+            if (okCanInstall || scrollView == null) {
                 setResult(RESULT_OK, intent);
                 finish();
             } else {
-                mScrollView.pageScroll(View.FOCUS_DOWN);
+                scrollView.pageScroll(View.FOCUS_DOWN);
             }
-        } else if (v == mCancel) {
+        } else if (v == cancelButton) {
             setResult(RESULT_CANCELED, intent);
             finish();
         }

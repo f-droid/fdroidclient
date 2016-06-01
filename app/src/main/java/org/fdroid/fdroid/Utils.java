@@ -57,6 +57,7 @@ import java.security.cert.CertificateEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.Iterator;
@@ -270,7 +271,7 @@ public final class Utils {
      * This location is only for caching, do not install directly from this location
      * because if the file is on the External Storage, any other app could swap out
      * the APK while the install was in process, allowing malware to install things.
-     * Using {@link org.fdroid.fdroid.installer.Installer#installPackage(File, String, String)}
+     * Using {@link Installer#installPackage(File, String, String)}
      * is fine since that does the right thing.
      */
     public static File getApkCacheDir(Context context) {
@@ -455,6 +456,19 @@ public final class Utils {
             TextUtils.SimpleStringSplitter splitter = new TextUtils.SimpleStringSplitter(',');
             splitter.setString(value);
             return splitter.iterator();
+        }
+
+        public ArrayList<String> toArrayList() {
+            ArrayList<String> out = new ArrayList<>();
+            for (String element : this) {
+                out.add(element);
+            }
+            return out;
+        }
+
+        public String[] toArray() {
+            ArrayList<String> list = toArrayList();
+            return list.toArray(new String[list.size()]);
         }
 
         public boolean contains(String v) {

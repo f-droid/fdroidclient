@@ -225,9 +225,6 @@ public class PreferencesFragment extends PreferenceFragment
                             case PrivilegedInstaller.IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
                                 message = getActivity().getString(R.string.system_install_denied_signature);
                                 break;
-                            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
-                                message = getActivity().getString(R.string.system_install_denied_permissions);
-                                break;
                             default:
                                 throw new RuntimeException("unhandled return");
                         }
