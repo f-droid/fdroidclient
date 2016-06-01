@@ -43,19 +43,20 @@ public class AppDiff {
     public AppDiff(PackageManager mPm, Apk apk) {
         this.mPm = mPm;
 
-        if (apk.permissions == null) {
-            throw new RuntimeException("apk.permissions is null");
-        }
         mPkgInfo = new PackageInfo();
         mPkgInfo.packageName = apk.packageName;
         mPkgInfo.applicationInfo = new ApplicationInfo();
 
-        // TODO: duplicate code with Permission.fdroidToAndroid
-        ArrayList<String> permissionsFixed = new ArrayList<>();
-        for (String perm : apk.permissions.toArrayList()) {
-            permissionsFixed.add("android.permission." + perm);
+        if (apk.permissions == null) {
+            mPkgInfo.requestedPermissions = null;
+        } else {
+            // TODO: duplicate code with Permission.fdroidToAndroid
+            ArrayList<String> permissionsFixed = new ArrayList<>();
+            for (String perm : apk.permissions.toArrayList()) {
+                permissionsFixed.add("android.permission." + perm);
+            }
+            mPkgInfo.requestedPermissions = permissionsFixed.toArray(new String[permissionsFixed.size()]);
         }
-        mPkgInfo.requestedPermissions = permissionsFixed.toArray(new String[permissionsFixed.size()]);
 
         init();
     }
