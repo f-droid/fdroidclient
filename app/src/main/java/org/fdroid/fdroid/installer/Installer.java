@@ -46,7 +46,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 /**
- *
+ * Handles the actual install process.  Subclasses implement the details.
  */
 public abstract class Installer {
     final Context context;
@@ -293,6 +293,10 @@ public abstract class Installer {
         localBroadcastManager.sendBroadcast(intent);
     }
 
+    /**
+     * Gets an {@link IntentFilter} for matching events from the install
+     * process based on the original download URL as a {@link Uri}.
+     */
     public static IntentFilter getInstallIntentFilter(Uri uri) {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Installer.ACTION_INSTALL_STARTED);
