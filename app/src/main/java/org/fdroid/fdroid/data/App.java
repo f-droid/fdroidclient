@@ -294,8 +294,10 @@ public class App extends ValueObject implements Comparable<App> {
         final CharSequence appDescription = appInfo.loadDescription(pm);
         if (TextUtils.isEmpty(appDescription)) {
             this.summary = "(installed by " + installerPackageLabel + ")";
-        } else {
+        } else if (appDescription.length() > 40) {
             this.summary = (String) appDescription.subSequence(0, 40);
+        } else {
+            this.summary = (String) appDescription;
         }
         this.added = new Date(packageInfo.firstInstallTime);
         this.lastUpdated = new Date(packageInfo.lastUpdateTime);
