@@ -798,37 +798,32 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final BroadcastReceiver installReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-        switch (intent.getAction()) {
-            case Installer.ACTION_INSTALL_STARTED: {
-                break;
-            }
-            case Installer.ACTION_INSTALL_COMPLETE: {
-                localBroadcastManager.unregisterReceiver(this);
+            switch (intent.getAction()) {
+                case Installer.ACTION_INSTALL_STARTED:
+                    break;
+                case Installer.ACTION_INSTALL_COMPLETE:
+                    localBroadcastManager.unregisterReceiver(this);
 
-                showRelevantView(true);
-                break;
-            }
-            case Installer.ACTION_INSTALL_INTERRUPTED: {
-                localBroadcastManager.unregisterReceiver(this);
-                // TODO: handle errors!
-                break;
-            }
-            case Installer.ACTION_INSTALL_USER_INTERACTION: {
-                PendingIntent installPendingIntent =
-                        intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                    showRelevantView(true);
+                    break;
+                case Installer.ACTION_INSTALL_INTERRUPTED:
+                    localBroadcastManager.unregisterReceiver(this);
+                    // TODO: handle errors!
+                    break;
+                case Installer.ACTION_INSTALL_USER_INTERACTION:
+                    PendingIntent installPendingIntent =
+                            intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
 
-                try {
-                    installPendingIntent.send();
-                } catch (PendingIntent.CanceledException e) {
-                    Log.e(TAG, "PI canceled", e);
-                }
+                    try {
+                        installPendingIntent.send();
+                    } catch (PendingIntent.CanceledException e) {
+                        Log.e(TAG, "PI canceled", e);
+                    }
 
-                break;
+                    break;
+                default:
+                    throw new RuntimeException("intent action not handled!");
             }
-            default: {
-                throw new RuntimeException("intent action not handled!");
-            }
-        }
         }
     };
 

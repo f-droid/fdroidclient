@@ -610,19 +610,17 @@ public class AppDetails extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
-                case Installer.ACTION_UNINSTALL_STARTED: {
+                case Installer.ACTION_UNINSTALL_STARTED:
                     headerFragment.startProgress();
                     headerFragment.showIndeterminateProgress(getString(R.string.uninstalling));
                     break;
-                }
-                case Installer.ACTION_UNINSTALL_COMPLETE: {
+                case Installer.ACTION_UNINSTALL_COMPLETE:
                     headerFragment.removeProgress();
                     onAppChanged();
 
                     localBroadcastManager.unregisterReceiver(this);
                     break;
-                }
-                case Installer.ACTION_UNINSTALL_INTERRUPTED: {
+                case Installer.ACTION_UNINSTALL_INTERRUPTED:
                     headerFragment.removeProgress();
 
                     String errorMessage =
@@ -640,8 +638,7 @@ public class AppDetails extends AppCompatActivity {
 
                     localBroadcastManager.unregisterReceiver(this);
                     break;
-                }
-                case Installer.ACTION_UNINSTALL_USER_INTERACTION: {
+                case Installer.ACTION_UNINSTALL_USER_INTERACTION:
                     PendingIntent uninstallPendingIntent =
                             intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
 
@@ -652,10 +649,8 @@ public class AppDetails extends AppCompatActivity {
                     }
 
                     break;
-                }
-                default: {
+                default:
                     throw new RuntimeException("intent action not handled!");
-                }
             }
         }
     };
