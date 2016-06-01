@@ -85,14 +85,13 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
-import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 
@@ -530,11 +529,8 @@ public class AppDetails extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             cleanUpFinishedDownload();
-
-            Uri localUri =
-                    Uri.fromFile(new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH)));
             localBroadcastManager.registerReceiver(installReceiver,
-                    Installer.getInstallIntentFilter(localUri));
+                    Installer.getInstallIntentFilter(intent.getData()));
         }
     };
 

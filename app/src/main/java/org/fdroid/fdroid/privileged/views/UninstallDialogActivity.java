@@ -34,6 +34,13 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.Installer;
 
+/**
+ * This class provides the confirmation prompt for when the user chooses to
+ * uninstall an app.  This has to be implemented here for the privileged
+ * extension, it is only shown for {@link Installer} instances that can do
+ * installs and uninstalls without user prompts, which is detected via
+ * {@link Installer#isUnattended()}.
+ */
 public class UninstallDialogActivity extends FragmentActivity {
 
     @Override

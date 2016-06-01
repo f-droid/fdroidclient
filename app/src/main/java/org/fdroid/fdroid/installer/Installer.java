@@ -46,7 +46,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 /**
- *
+ * Handles the actual install process.  Subclasses implement the details.
  */
 public abstract class Installer {
     final Context context;
@@ -64,10 +64,14 @@ public abstract class Installer {
     public static final String ACTION_UNINSTALL_USER_INTERACTION = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_USER_INTERACTION";
 
     /**
-     * Same as http://developer.android.com/reference/android/content/Intent.html#EXTRA_ORIGINATING_URI
-     * In InstallManagerService often called urlString
+     * The URI where the APK was originally downloaded from. This is also used
+     * as the unique ID representing this in the whole install process in
+     * {@link InstallManagerService}, there is is generally known as the
+     * "download URL" since it is the URL used to download the APK.
+     *
+     * @see Intent#EXTRA_ORIGINATING_URI
      */
-    public static final String EXTRA_ORIGINATING_URI = "org.fdroid.fdroid.installer.Installer.extra.ORIGINATING_URI";
+    static final String EXTRA_DOWNLOAD_URI = "org.fdroid.fdroid.installer.Installer.extra.DOWNLOAD_URI";
     public static final String EXTRA_PACKAGE_NAME = "org.fdroid.fdroid.installer.Installer.extra.PACKAGE_NAME";
     public static final String EXTRA_USER_INTERACTION_PI = "org.fdroid.fdroid.installer.Installer.extra.USER_INTERACTION_PI";
     public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.installer.Installer.extra.ERROR_MESSAGE";
@@ -91,7 +95,7 @@ public abstract class Installer {
         localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 
-    public static Uri prepareApkFile(Context context, Uri uri, String packageName)
+    static Uri prepareApkFile(Context context, Uri uri, String packageName)
             throws InstallFailedException {
 
         File apkFile = new File(uri.getPath());
@@ -229,7 +233,7 @@ public abstract class Installer {
     /**
      * Checks the APK file against the provided hash, returning whether it is a match.
      */
-    public static boolean verifyApkFile(File apkFile, String hash, String hashType)
+    static boolean verifyApkFile(File apkFile, String hash, String hashType)
             throws NoSuchAlgorithmException {
         if (!apkFile.exists()) {
             return false;
@@ -238,24 +242,23 @@ public abstract class Installer {
         return hasher.match(hash);
     }
 
-    public void sendBroadcastInstall(Uri uri, Uri originatingUri, String action,
+    void sendBroadcastInstall(Uri downloadUri, String action,
                                      PendingIntent pendingIntent) {
-        sendBroadcastInstall(uri, originatingUri, action, pendingIntent, null);
+        sendBroadcastInstall(downloadUri, action, pendingIntent, null);
     }
 
-    public void sendBroadcastInstall(Uri uri, Uri originatingUri, String action) {
-        sendBroadcastInstall(uri, originatingUri, action, null, null);
+    void sendBroadcastInstall(Uri downloadUri, String action) {
+        sendBroadcastInstall(downloadUri, action, null, null);
     }
 
-    public void sendBroadcastInstall(Uri uri, Uri originatingUri, String action, String errorMessage) {
-        sendBroadcastInstall(uri, originatingUri, action, null, errorMessage);
+    void sendBroadcastInstall(Uri downloadUri, String action, String errorMessage) {
+        sendBroadcastInstall(downloadUri, action, null, errorMessage);
     }
 
-    public void sendBroadcastInstall(Uri uri, Uri originatingUri, String action,
+    void sendBroadcastInstall(Uri downloadUri, String action,
                                      PendingIntent pendingIntent, String errorMessage) {
         Intent intent = new Intent(action);
-        intent.setData(uri);
-        intent.putExtra(Installer.EXTRA_ORIGINATING_URI, originatingUri);
+        intent.setData(downloadUri);
         intent.putExtra(Installer.EXTRA_USER_INTERACTION_PI, pendingIntent);
         if (!TextUtils.isEmpty(errorMessage)) {
             intent.putExtra(Installer.EXTRA_ERROR_MESSAGE, errorMessage);
@@ -263,20 +266,20 @@ public abstract class Installer {
         localBroadcastManager.sendBroadcast(intent);
     }
 
-    public void sendBroadcastUninstall(String packageName, String action, String errorMessage) {
+    void sendBroadcastUninstall(String packageName, String action, String errorMessage) {
         sendBroadcastUninstall(packageName, action, null, errorMessage);
     }
 
-    public void sendBroadcastUninstall(String packageName, String action) {
+    void sendBroadcastUninstall(String packageName, String action) {
         sendBroadcastUninstall(packageName, action, null, null);
     }
 
-    public void sendBroadcastUninstall(String packageName, String action,
+    void sendBroadcastUninstall(String packageName, String action,
                                        PendingIntent pendingIntent) {
         sendBroadcastUninstall(packageName, action, pendingIntent, null);
     }
 
-    public void sendBroadcastUninstall(String packageName, String action,
+    void sendBroadcastUninstall(String packageName, String action,
                                        PendingIntent pendingIntent, String errorMessage) {
         Uri uri = Uri.fromParts("package", packageName, null);
 
@@ -290,6 +293,10 @@ public abstract class Installer {
         localBroadcastManager.sendBroadcast(intent);
     }
 
+    /**
+     * Gets an {@link IntentFilter} for matching events from the install
+     * process based on the original download URL as a {@link Uri}.
+     */
     public static IntentFilter getInstallIntentFilter(Uri uri) {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Installer.ACTION_INSTALL_STARTED);
@@ -297,6 +304,7 @@ public abstract class Installer {
         intentFilter.addAction(Installer.ACTION_INSTALL_INTERRUPTED);
         intentFilter.addAction(Installer.ACTION_INSTALL_USER_INTERACTION);
         intentFilter.addDataScheme(uri.getScheme());
+        intentFilter.addDataAuthority(uri.getHost(), String.valueOf(uri.getPort()));
         intentFilter.addDataPath(uri.getPath(), PatternMatcher.PATTERN_LITERAL);
         return intentFilter;
     }
@@ -312,10 +320,20 @@ public abstract class Installer {
         return intentFilter;
     }
 
-    protected abstract void installPackage(Uri uri, Uri originatingUri, String packageName);
+    /**
+     * @param localApkUri points to the local copy of the APK to be installed
+     * @param downloadUri serves as the unique ID for all actions related to the
+     *                    installation of that specific APK
+     * @param packageName package name of the app that should be installed
+     */
+    protected abstract void installPackage(Uri localApkUri, Uri downloadUri, String packageName);
 
     protected abstract void uninstallPackage(String packageName);
 
+    /**
+     * This {@link Installer} instance is capable of "unattended" install and
+     * uninstall activities, without the system enforcing a user prompt.
+     */
     protected abstract boolean isUnattended();
 
 }

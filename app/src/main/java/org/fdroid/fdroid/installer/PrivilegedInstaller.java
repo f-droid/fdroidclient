@@ -297,15 +297,15 @@ public class PrivilegedInstaller extends Installer {
     }
 
     @Override
-    protected void installPackage(final Uri uri, final Uri originatingUri, String packageName) {
-        sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_STARTED);
+    protected void installPackage(final Uri localApkUri, final Uri downloadUri, String packageName) {
+        sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
 
         final Uri sanitizedUri;
         try {
-            sanitizedUri = Installer.prepareApkFile(context, uri, packageName);
+            sanitizedUri = Installer.prepareApkFile(context, localApkUri, packageName);
         } catch (Installer.InstallFailedException e) {
             Log.e(TAG, "prepareApkFile failed", e);
-            sendBroadcastInstall(uri, originatingUri, Installer.ACTION_INSTALL_INTERRUPTED,
+            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
                     e.getMessage());
             return;
         }
@@ -318,9 +318,9 @@ public class PrivilegedInstaller extends Installer {
                     @Override
                     public void handleResult(String packageName, int returnCode) throws RemoteException {
                         if (returnCode == INSTALL_SUCCEEDED) {
-                            sendBroadcastInstall(uri, originatingUri, ACTION_INSTALL_COMPLETE);
+                            sendBroadcastInstall(downloadUri, ACTION_INSTALL_COMPLETE);
                         } else {
-                            sendBroadcastInstall(uri, originatingUri, ACTION_INSTALL_INTERRUPTED,
+                            sendBroadcastInstall(downloadUri, ACTION_INSTALL_INTERRUPTED,
                                     "Error " + returnCode + ": "
                                             + INSTALL_RETURN_CODES.get(returnCode));
                         }
@@ -330,7 +330,7 @@ public class PrivilegedInstaller extends Installer {
                 try {
                     boolean hasPermissions = privService.hasPrivilegedPermissions();
                     if (!hasPermissions) {
-                        sendBroadcastInstall(uri, originatingUri, ACTION_INSTALL_INTERRUPTED,
+                        sendBroadcastInstall(downloadUri, ACTION_INSTALL_INTERRUPTED,
                                 context.getString(R.string.system_install_denied_permissions));
                         return;
                     }
@@ -339,7 +339,7 @@ public class PrivilegedInstaller extends Installer {
                             null, callback);
                 } catch (RemoteException e) {
                     Log.e(TAG, "RemoteException", e);
-                    sendBroadcastInstall(uri, originatingUri, ACTION_INSTALL_INTERRUPTED,
+                    sendBroadcastInstall(downloadUri, ACTION_INSTALL_INTERRUPTED,
                             "connecting to privileged service failed");
                 }
             }

@@ -44,14 +44,10 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
-import org.fdroid.fdroid.net.Downloader;
-import org.fdroid.fdroid.net.DownloaderService;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -773,26 +769,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     public void install(@NonNull final App app) {
         final Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode);
-        String urlString = apk.getUrl();
-        BroadcastReceiver downloadCompleteReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String path = intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH);
-                handleDownloadComplete(new File(path), app.packageName, intent.getDataString());
-            }
-        };
-        localBroadcastManager.registerReceiver(downloadCompleteReceiver,
-                DownloaderService.getIntentFilter(urlString, Downloader.ACTION_COMPLETE));
-        InstallManagerService.queue(this, app, apk);
-    }
-
-    private void handleDownloadComplete(File apkFile, String packageName, String urlString) {
-        Uri originatingUri = Uri.parse(urlString);
-        Uri localUri = Uri.fromFile(apkFile);
-
+        Uri downloadUri = Uri.parse(apk.getUrl());
         localBroadcastManager.registerReceiver(installReceiver,
-                Installer.getInstallIntentFilter(Uri.fromFile(apkFile)));
-        InstallerService.install(this, localUri, originatingUri, packageName);
+                Installer.getInstallIntentFilter(downloadUri));
+        InstallManagerService.queue(this, app, apk);
     }
 
     private final BroadcastReceiver installReceiver = new BroadcastReceiver() {
