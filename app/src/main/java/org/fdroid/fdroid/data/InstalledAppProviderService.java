@@ -14,9 +14,11 @@ import org.fdroid.fdroid.Utils;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
+import rx.subjects.PublishSubject;
 
 /**
  * Handles all updates to {@link InstalledAppProvider}, whether checking the contents
@@ -39,11 +41,32 @@ public class InstalledAppProviderService extends IntentService {
 
     private static final String EXTRA_PACKAGE_INFO = "org.fdroid.fdroid.data.extra.PACKAGE_INFO";
 
-    private ScheduledExecutorService worker;
-    private boolean notifyChangeNeedsSending;
+    /**
+     * This is for notifing the users of this {@link android.content.ContentProvider}
+     * that the contents has changed.  Since {@link Intent}s can come in slow
+     * or fast, and this can trigger a lot of UI updates, the actual
+     * notifications are rate limited to one per second.
+     */
+    private PublishSubject<Void> notifyEvents;
 
     public InstalledAppProviderService() {
         super("InstalledAppProviderService");
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        notifyEvents = PublishSubject.create();
+        notifyEvents.debounce(1, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Action1<Void>() {
+                        @Override
+                        public void call(Void voidArg) {
+                            Utils.debugLog(TAG, "Notifying content providers (so they can update the relevant views).");
+                            getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+                            getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
+                        }
+                });
     }
 
     /**
@@ -134,7 +157,7 @@ public class InstalledAppProviderService extends IntentService {
             } else if (ACTION_DELETE.equals(action)) {
                 deleteAppFromDb(this, packageName);
             }
-            notifyChange();
+            notifyEvents.onNext(null);
         }
     }
 
@@ -171,33 +194,5 @@ public class InstalledAppProviderService extends IntentService {
     static void deleteAppFromDb(Context context, String packageName) {
         Uri uri = InstalledAppProvider.getAppUri(packageName);
         context.getContentResolver().delete(uri, null, null);
-    }
-
-    /**
-     * This notifies the users of this {@link android.content.ContentProvider}
-     * that the contents has changed.  Since {@link Intent}s can come in slow
-     * or fast, and this can trigger a lot of UI updates, the actual
-     * notifications are rate limited to one per second.
-     */
-    private void notifyChange() {
-        notifyChangeNeedsSending = true;
-        Runnable task = new Runnable() {
-            @Override
-            public void run() {
-                if (notifyChangeNeedsSending) {
-                    Utils.debugLog(TAG, "Notifying content providers (so they can update the relevant views).");
-                    getContentResolver().notifyChange(AppProvider.getContentUri(), null);
-                    getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
-                    notifyChangeNeedsSending = false;
-                } else {
-                    worker.shutdown();
-                    worker = null;
-                }
-            }
-        };
-        if (worker == null || worker.isShutdown()) {
-            worker = Executors.newSingleThreadScheduledExecutor();
-            worker.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
-        }
     }
 }
