@@ -317,7 +317,7 @@ public class AppProvider extends FDroidProvider {
         }
 
         public void addSelection(AppQuerySelection selection) {
-            addSelection(selection.getSelection());
+            super.addSelection(selection);
             if (selection.naturalJoinToInstalled()) {
                 naturalJoinToInstalledTable();
             }
@@ -828,12 +828,11 @@ public class AppProvider extends FDroidProvider {
         }
 
         Query query = new Query();
-
         query.addSelection(selection);
         query.addFields(projection); // TODO: Make the order of addFields/addSelection not dependent on each other...
         query.addOrderBy(sortOrder);
 
-        Cursor cursor = db().rawQuery(query.toString(), selection.getArgs());
+        Cursor cursor = db().rawQuery(query.toString(), query.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }

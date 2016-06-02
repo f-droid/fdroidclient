@@ -19,7 +19,7 @@ public class QuerySelection {
 
     public QuerySelection(String selection) {
         this.selection = selection;
-        this.args = null;
+        this.args = new String[] {};
     }
 
     public QuerySelection(String selection, String[] args) {
