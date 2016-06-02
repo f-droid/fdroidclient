@@ -6,17 +6,14 @@ import android.content.UriMatcher;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
-import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -118,21 +115,6 @@ public class InstalledAppProvider extends FDroidProvider {
         return packageName; // all else fails, return packageName
     }
 
-    public static String getPackageSig(PackageInfo info) {
-        if (info == null || info.signatures == null || info.signatures.length < 1) {
-            return "";
-        }
-        Signature sig = info.signatures[0];
-        String sigHash = "";
-        try {
-            Hasher hash = new Hasher("MD5", sig.toCharsString().getBytes());
-            sigHash = hash.getHash();
-        } catch (NoSuchAlgorithmException e) {
-            // ignore
-        }
-        return sigHash;
-    }
-
     @Override
     protected String getTableName() {
         return DBHelper.TABLE_INSTALLED_APP;
@@ -201,11 +183,7 @@ public class InstalledAppProvider extends FDroidProvider {
         QuerySelection query = new QuerySelection(where, whereArgs);
         query = query.add(queryApp(uri.getLastPathSegment()));
 
-        int count = db().delete(getTableName(), query.getSelection(), query.getArgs());
-        if (!isApplyingBatch()) {
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
-        return count;
+        return db().delete(getTableName(), query.getSelection(), query.getArgs());
     }
 
     @Override
@@ -217,9 +195,6 @@ public class InstalledAppProvider extends FDroidProvider {
 
         verifyVersionNameNotNull(values);
         db().replaceOrThrow(getTableName(), null, values);
-        if (!isApplyingBatch()) {
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
         return getAppUri(values.getAsString(DataColumns.PACKAGE_NAME));
     }
 

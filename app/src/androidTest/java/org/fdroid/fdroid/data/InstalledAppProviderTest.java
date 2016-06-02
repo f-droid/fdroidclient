@@ -11,21 +11,8 @@ import mock.MockInstallablePackageManager;
 @SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
 public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppProvider> {
 
-    private MockInstallablePackageManager packageManager;
-
     public InstalledAppProviderTest() {
         super(InstalledAppProvider.class, InstalledAppProvider.getAuthority());
-    }
-
-    @Override
-    public void setUp() throws Exception {
-        super.setUp();
-        packageManager = new MockInstallablePackageManager();
-        getSwappableContext().setPackageManager(packageManager);
-    }
-
-    protected MockInstallablePackageManager getPackageManager() {
-        return packageManager;
     }
 
     public void testUris() {
@@ -130,45 +117,6 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
 
     }
 
-    public void testInsertWithBroadcast() {
-        install("com.example.broadcasted1", 10, "v1.0");
-        install("com.example.broadcasted2", 105, "v1.05");
-
-        assertResultCount(2, InstalledAppProvider.getContentUri());
-        assertIsInstalledVersionInDb("com.example.broadcasted1", 10, "v1.0");
-        assertIsInstalledVersionInDb("com.example.broadcasted2", 105, "v1.05");
-    }
-
-    public void testUpdateWithBroadcast() {
-
-        install("com.example.toUpgrade", 1, "v0.1");
-
-        assertResultCount(1, InstalledAppProvider.getContentUri());
-        assertIsInstalledVersionInDb("com.example.toUpgrade", 1, "v0.1");
-
-        install("com.example.toUpgrade", 2, "v0.2");
-
-        assertResultCount(1, InstalledAppProvider.getContentUri());
-        assertIsInstalledVersionInDb("com.example.toUpgrade", 2, "v0.2");
-
-    }
-
-    public void testDeleteWithBroadcast() {
-
-        install("com.example.toKeep", 1, "v0.1");
-        install("com.example.toDelete", 1, "v0.1");
-
-        assertResultCount(2, InstalledAppProvider.getContentUri());
-        assertIsInstalledVersionInDb("com.example.toKeep", 1, "v0.1");
-        assertIsInstalledVersionInDb("com.example.toDelete", 1, "v0.1");
-
-        remove("com.example.toDelete");
-
-        assertResultCount(1, InstalledAppProvider.getContentUri());
-        assertIsInstalledVersionInDb("com.example.toKeep", 1, "v0.1");
-
-    }
-
     @Override
     protected String[] getMinimalProjection() {
         return new String[]{
@@ -202,14 +150,6 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         getMockContentResolver().insert(InstalledAppProvider.getContentUri(), values);
     }
 
-    private void remove(String packageName) {
-        remove(getSwappableContext(), getPackageManager(), packageName);
-    }
-
-    private void install(String appId, int versionCode, String versionName) {
-        install(getSwappableContext(), getPackageManager(), appId, versionCode, versionName);
-    }
-
     /**
      * Will tell {@code pm} that we are installing {@code packageName}, and then update the
      * "installed apps" table in the database.
@@ -222,16 +162,6 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         pm.install(packageName, versionCode, versionName);
         PackageInfo packageInfo = pm.getPackageInfo(packageName, 0);
         InstalledAppProviderService.insertAppIntoDb(context, packageName, packageInfo);
-    }
-
-    /**
-     * @see #install(mock.MockContextSwappableComponents, mock.MockInstallablePackageManager, String, int, String)
-     */
-    public static void remove(MockContextSwappableComponents context, MockInstallablePackageManager pm, String packageName) {
-
-        context.setPackageManager(pm);
-        pm.remove(packageName);
-        InstalledAppProviderService.deleteAppFromDb(context, packageName);
     }
 
 }

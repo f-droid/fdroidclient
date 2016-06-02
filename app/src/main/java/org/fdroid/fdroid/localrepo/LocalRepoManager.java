@@ -319,16 +319,6 @@ public final class LocalRepoManager {
      * Helper class to aid in constructing index.xml file.
      */
     public static final class IndexXmlBuilder {
-
-        private static IndexXmlBuilder indexXmlBuilder;
-
-        public static IndexXmlBuilder get() throws XmlPullParserException {
-            if (indexXmlBuilder == null) {
-                indexXmlBuilder = new IndexXmlBuilder();
-            }
-            return indexXmlBuilder;
-        }
-
         @NonNull
         private final XmlSerializer serializer;
 
@@ -487,7 +477,7 @@ public final class LocalRepoManager {
         JarOutputStream jo = new JarOutputStream(bo);
         JarEntry je = new JarEntry("index.xml");
         jo.putNextEntry(je);
-        IndexXmlBuilder.get().build(context, apps, jo);
+        new IndexXmlBuilder().build(context, apps, jo);
         jo.close();
         bo.close();
 
