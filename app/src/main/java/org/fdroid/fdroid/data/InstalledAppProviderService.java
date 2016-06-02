@@ -6,12 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Process;
 
+import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;
 
 import java.io.File;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -179,8 +182,7 @@ public class InstalledAppProviderService extends IntentService {
         contentValues.put(InstalledAppProvider.DataColumns.VERSION_NAME, packageInfo.versionName);
         contentValues.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL,
                 InstalledAppProvider.getApplicationLabel(context, packageInfo.packageName));
-        contentValues.put(InstalledAppProvider.DataColumns.SIGNATURE,
-                InstalledAppProvider.getPackageSig(packageInfo));
+        contentValues.put(InstalledAppProvider.DataColumns.SIGNATURE, getPackageSig(packageInfo));
         contentValues.put(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME, packageInfo.lastUpdateTime);
 
         String hashType = "sha256";
@@ -195,4 +197,20 @@ public class InstalledAppProviderService extends IntentService {
         Uri uri = InstalledAppProvider.getAppUri(packageName);
         context.getContentResolver().delete(uri, null, null);
     }
+
+    private static String getPackageSig(PackageInfo info) {
+        if (info == null || info.signatures == null || info.signatures.length < 1) {
+            return "";
+        }
+        Signature sig = info.signatures[0];
+        String sigHash = "";
+        try {
+            Hasher hash = new Hasher("MD5", sig.toCharsString().getBytes());
+            sigHash = hash.getHash();
+        } catch (NoSuchAlgorithmException e) {
+            // ignore
+        }
+        return sigHash;
+    }
+
 }
