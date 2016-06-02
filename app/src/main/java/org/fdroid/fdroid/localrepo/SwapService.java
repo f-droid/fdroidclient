@@ -31,6 +31,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.localrepo.peers.Peer;
@@ -52,6 +53,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ConcurrentHashMap;
 
 import rx.Observable;
 import rx.Subscription;
@@ -61,23 +63,6 @@ import rx.schedulers.Schedulers;
 /**
  * Central service which manages all of the different moving parts of swap which are required
  * to enable p2p swapping of apps.
- *
- * The following UI elements don't do anything:
- *  + TODO: Be notified of changes to wifi state correctly, particularly from the WiFi AP (https://github.com/mvdan/accesspoint/issues/5)
- *  + TODO: The "?" button in the top right of the swap start screen doesn't do anything
- *          (This has been commented out for now, but it is still preferable to have a working help mechanism)
- *
- * TODO: Show "Waiting for other device to finish setting up swap" when only F-Droid shown in swap
- * TODO: Handle "not connected to wifi" more gracefully. For example, Bonjour discovery falls over.
- * TODO: When unable to reach the swap repo, but viewing apps to swap, show relevant feedback when attempting to download and install.
- * TODO: Remove peers from list of peers when no longer "visible".
- * TODO: Feedback for "Setting up (wifi|bluetooth)" in start swap view is not as immediate as I had hoped.
- * TODO: Turn off bluetooth after cancelling/timing out if we turned it on.
- * TODO: Disable the Scan QR button unless visible via something. Could equally show relevant feedback.
- *
- * TODO: Starting wifi after cancelling swap and beginning again doesn't work properly
- * TODO: Scan QR hangs when updating repoo. Swapper was 2.3.3 and Swappee was 5.0
- * TODO: Showing the progress bar during install doesn't work when the view is inflated again, or when the adapter is scrolled off screen and back again.
  */
 public class SwapService extends Service {
 
@@ -89,6 +74,24 @@ public class SwapService extends Service {
 
     @NonNull
     private final Set<String> appsToSwap = new HashSet<>();
+
+    /**
+     * A cache of parsed APKs from the file system.
+     */
+    private static final ConcurrentHashMap<String, App> INSTALLED_APPS = new ConcurrentHashMap<>();
+
+    public static void stop(Context context) {
+        Intent intent = new Intent(context, SwapService.class);
+        context.stopService(intent);
+    }
+
+    static App getAppFromCache(String packageName) {
+        return INSTALLED_APPS.get(packageName);
+    }
+
+    static void putAppInCache(String packageName, App app) {
+        INSTALLED_APPS.put(packageName, app);
+    }
 
     /**
      * Where relevant, the state of the swap process will be saved to disk using preferences.
@@ -386,14 +389,17 @@ public class SwapService extends Service {
     //   Remember which swap technologies a user used in the past
     // =============================================================
 
-    private void persistPreferredSwapTypes() {
-        Utils.debugLog(TAG, "Remembering that Bluetooth swap " + (bluetoothSwap.isConnected() ? "IS" : "is NOT") +
-                " connected and WiFi swap " + (wifiSwap.isConnected() ? "IS" : "is NOT") + " connected.");
-        persistence().edit()
-            .putBoolean(KEY_BLUETOOTH_ENABLED, bluetoothSwap.isConnected())
-            .putBoolean(KEY_WIFI_ENABLED, wifiSwap.isConnected())
-            .commit();
-    }
+    private final BroadcastReceiver receiveSwapStatusChanged = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Utils.debugLog(TAG, "Remembering that Bluetooth swap " + (bluetoothSwap.isConnected() ? "IS" : "is NOT") +
+                    " connected and WiFi swap " + (wifiSwap.isConnected() ? "IS" : "is NOT") + " connected.");
+            persistence().edit()
+                    .putBoolean(KEY_BLUETOOTH_ENABLED, bluetoothSwap.isConnected())
+                    .putBoolean(KEY_WIFI_ENABLED, wifiSwap.isConnected())
+                    .commit();
+        }
+    };
 
     /*
     private boolean wasBluetoothEnabled() {
@@ -403,32 +409,6 @@ public class SwapService extends Service {
 
     private boolean wasWifiEnabled() {
         return persistence().getBoolean(KEY_WIFI_ENABLED, false);
-    }
-
-    // ==========================================
-    //   Local repo stop/start/restart handling
-    // ==========================================
-
-    /**
-     * Moves the service to the forground and [re]starts the timeout timer.
-     */
-    private void attachService() {
-        Utils.debugLog(TAG, "Moving SwapService to foreground so that it hangs around even when F-Droid is closed (may already be foregrounded).");
-        startForeground(NOTIFICATION, createNotification());
-
-        // Regardless of whether it was previously enabled, start the timer again. This ensures that
-        // if, e.g. a person views the swap activity again, it will attempt to enable swapping if
-        // appropriate, and thus restart this timer.
-        initTimer();
-    }
-
-    private void detachService() {
-        if (timer != null) {
-            timer.cancel();
-        }
-
-        Utils.debugLog(TAG, "Moving SwapService to background so that it can be GC'ed if required.");
-        stopForeground(true);
     }
 
     /**
@@ -515,6 +495,9 @@ public class SwapService extends Service {
         super.onCreate();
 
         Utils.debugLog(TAG, "Creating swap service.");
+        startForeground(NOTIFICATION, createNotification());
+
+        CacheSwapAppsService.startCaching(this);
 
         SharedPreferences preferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
 
@@ -545,55 +528,33 @@ public class SwapService extends Service {
         }
     }
 
-    /**
-     * Responsible for moving the service into the foreground or the background, depending on
-     * whether or not there are any swap services (i.e. bluetooth or wifi) running or not.
-     */
-    private final BroadcastReceiver receiveSwapStatusChanged = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.hasExtra(EXTRA_STARTED)) {
-                if (getWifiSwap().isConnected() || getBluetoothSwap().isConnected()) {
-                    attachService();
-                }
-            } else if (intent.hasExtra(EXTRA_STOPPED)) {
-                if (!getWifiSwap().isConnected() && !getBluetoothSwap().isConnected()) {
-                    detachService();
-                }
-            }
-            persistPreferredSwapTypes();
-        }
-    };
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
         return START_STICKY;
     }
 
     @Override
     public IBinder onBind(Intent intent) {
+        // reset the timer on each new connect, the user has come back
+        initTimer();
         return binder;
-    }
-
-    public void disableAllSwapping() {
-        Log.i(TAG, "Asked to stop swapping, will stop bluetooth, wifi, and move service to BG for GC.");
-        //getBluetoothSwap().stopInBackground();
-        getWifiSwap().stopInBackground();
-
-        // Ensure the user is sent back go the first screen when returning if we have just forceably
-        // cancelled all swapping.
-        setStep(STEP_INTRO);
-        detachService();
     }
 
     @Override
     public void onDestroy() {
         Utils.debugLog(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
-        disableAllSwapping();
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(receiveSwapStatusChanged);
+
+        //TODO getBluetoothSwap().stopInBackground();
+        getWifiSwap().stopInBackground();
+
+        if (timer != null) {
+            timer.cancel();
+        }
+        stopForeground(true);
+
         super.onDestroy();
     }
 
@@ -621,7 +582,7 @@ public class SwapService extends Service {
             @Override
             public void run() {
                 Utils.debugLog(TAG, "Disabling swap because " + TIMEOUT + "ms passed.");
-                disableAllSwapping();
+                stop(SwapService.this);
             }
         }, TIMEOUT);
     }

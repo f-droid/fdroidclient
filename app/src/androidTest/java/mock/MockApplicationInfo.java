@@ -5,6 +5,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import java.io.File;
+import java.io.IOException;
+
 @SuppressLint("ParcelCreator")
 public class MockApplicationInfo extends ApplicationInfo {
 
@@ -12,6 +15,11 @@ public class MockApplicationInfo extends ApplicationInfo {
 
     public MockApplicationInfo(PackageInfo info) {
         this.info = info;
+        try {
+            this.publicSourceDir = File.createTempFile(info.packageName, "apk").getAbsolutePath();
+        } catch (IOException e) {
+            this.publicSourceDir = "/data/app/" + info.packageName + "-4.apk";
+        }
     }
 
     @Override

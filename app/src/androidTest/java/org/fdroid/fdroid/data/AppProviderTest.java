@@ -2,6 +2,7 @@ package org.fdroid.fdroid.data;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.pm.PackageInfo;
 import android.content.res.Resources;
 import android.database.Cursor;
 
@@ -56,24 +57,27 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         insertApp("com.example.app1000", "App 1000");
 
         for (int i = 0; i < 50; i++) {
-            pm.install("com.example.app" + i, 1, "v" + 1);
+            String packageName = "com.example.app" + i;
+            pm.install(packageName, 1, "v" + 1);
+            PackageInfo packageInfo = pm.getPackageInfo(packageName, 0);
+            InstalledAppProviderService.insertAppIntoDb(getSwappableContext(), packageName, packageInfo);
         }
-        InstalledAppCacheUpdater.updateInForeground(getMockContext());
-
         assertResultCount(1, AppProvider.getInstalledUri());
 
         for (int i = 50; i < 500; i++) {
-            pm.install("com.example.app" + i, 1, "v" + 1);
+            String packageName = "com.example.app" + i;
+            pm.install(packageName, 1, "v" + 1);
+            PackageInfo packageInfo = pm.getPackageInfo(packageName, 0);
+            InstalledAppProviderService.insertAppIntoDb(getSwappableContext(), packageName, packageInfo);
         }
-        InstalledAppCacheUpdater.updateInForeground(getMockContext());
-
         assertResultCount(2, AppProvider.getInstalledUri());
 
         for (int i = 500; i < 1100; i++) {
-            pm.install("com.example.app" + i, 1, "v" + 1);
+            String packageName = "com.example.app" + i;
+            pm.install(packageName, 1, "v" + 1);
+            PackageInfo packageInfo = pm.getPackageInfo(packageName, 0);
+            InstalledAppProviderService.insertAppIntoDb(getSwappableContext(), packageName, packageInfo);
         }
-        InstalledAppCacheUpdater.updateInForeground(getMockContext());
-
         assertResultCount(3, AppProvider.getInstalledUri());
     }
 
@@ -127,7 +131,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, ignoreVercode);
         insertApp(id, "App: " + id, values);
 
-        TestUtils.installAndBroadcast(getSwappableContext(), packageManager, id, installedVercode, "v" + installedVercode);
+        InstalledAppProviderTest.install(getSwappableContext(), packageManager, id, installedVercode, "v" + installedVercode);
     }
 
     public void testCanUpdate() {
@@ -247,7 +251,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         assertResultCount(0, AppProvider.getInstalledUri());
 
         for (int i = 10; i < 20; i++) {
-            TestUtils.installAndBroadcast(getSwappableContext(), pm, "com.example.test." + i, i, "v1");
+            InstalledAppProviderTest.install(getSwappableContext(), pm, "com.example.test." + i, i, "v1");
         }
 
         assertResultCount(10, AppProvider.getInstalledUri());

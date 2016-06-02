@@ -1,9 +1,11 @@
 package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
+import android.content.pm.PackageInfo;
+import android.database.Cursor;
+import android.net.Uri;
 
-import org.fdroid.fdroid.TestUtils;
-
+import mock.MockContextSwappableComponents;
 import mock.MockInstallablePackageManager;
 
 @SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
@@ -81,6 +83,39 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
 
     }
 
+    public void testLastUpdateTime() {
+        String packageName = "com.example.app";
+
+        insertInstalledApp(packageName, 10, "1.0");
+        assertResultCount(1, InstalledAppProvider.getContentUri());
+        assertIsInstalledVersionInDb(packageName, 10, "1.0");
+
+        Uri uri = InstalledAppProvider.getAppUri(packageName);
+
+        String[] projection = {
+                InstalledAppProvider.DataColumns.PACKAGE_NAME,
+                InstalledAppProvider.DataColumns.LAST_UPDATE_TIME,
+        };
+
+        Cursor cursor = getMockContentResolver().query(uri, projection, null, null, null);
+        assertNotNull(cursor);
+        assertEquals("App \"" + packageName + "\" not installed", 1, cursor.getCount());
+        cursor.moveToFirst();
+        assertEquals(packageName, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)));
+        long lastUpdateTime = cursor.getLong(cursor.getColumnIndex(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME));
+        assertTrue(lastUpdateTime > 0);
+        assertTrue(lastUpdateTime < System.currentTimeMillis());
+        cursor.close();
+
+        insertInstalledApp(packageName, 11, "1.1");
+        cursor = getMockContentResolver().query(uri, projection, null, null, null);
+        assertNotNull(cursor);
+        assertEquals("App \"" + packageName + "\" not installed", 1, cursor.getCount());
+        cursor.moveToFirst();
+        assertTrue(lastUpdateTime < cursor.getLong(cursor.getColumnIndex(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME)));
+        cursor.close();
+    }
+
     public void testDelete() {
 
         insertInstalledApp("com.example.app1", 10, "1.0");
@@ -96,9 +131,8 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
     }
 
     public void testInsertWithBroadcast() {
-
-        installAndBroadcast("com.example.broadcasted1", 10, "v1.0");
-        installAndBroadcast("com.example.broadcasted2", 105, "v1.05");
+        install("com.example.broadcasted1", 10, "v1.0");
+        install("com.example.broadcasted2", 105, "v1.05");
 
         assertResultCount(2, InstalledAppProvider.getContentUri());
         assertIsInstalledVersionInDb("com.example.broadcasted1", 10, "v1.0");
@@ -107,12 +141,12 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
 
     public void testUpdateWithBroadcast() {
 
-        installAndBroadcast("com.example.toUpgrade", 1, "v0.1");
+        install("com.example.toUpgrade", 1, "v0.1");
 
         assertResultCount(1, InstalledAppProvider.getContentUri());
         assertIsInstalledVersionInDb("com.example.toUpgrade", 1, "v0.1");
 
-        upgradeAndBroadcast("com.example.toUpgrade", 2, "v0.2");
+        install("com.example.toUpgrade", 2, "v0.2");
 
         assertResultCount(1, InstalledAppProvider.getContentUri());
         assertIsInstalledVersionInDb("com.example.toUpgrade", 2, "v0.2");
@@ -121,14 +155,14 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
 
     public void testDeleteWithBroadcast() {
 
-        installAndBroadcast("com.example.toKeep", 1, "v0.1");
-        installAndBroadcast("com.example.toDelete", 1, "v0.1");
+        install("com.example.toKeep", 1, "v0.1");
+        install("com.example.toDelete", 1, "v0.1");
 
         assertResultCount(2, InstalledAppProvider.getContentUri());
         assertIsInstalledVersionInDb("com.example.toKeep", 1, "v0.1");
         assertIsInstalledVersionInDb("com.example.toDelete", 1, "v0.1");
 
-        removeAndBroadcast("com.example.toDelete");
+        remove("com.example.toDelete");
 
         assertResultCount(1, InstalledAppProvider.getContentUri());
         assertIsInstalledVersionInDb("com.example.toKeep", 1, "v0.1");
@@ -137,7 +171,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
 
     @Override
     protected String[] getMinimalProjection() {
-        return new String[] {
+        return new String[]{
                 InstalledAppProvider.DataColumns.PACKAGE_NAME,
                 InstalledAppProvider.DataColumns.VERSION_CODE,
                 InstalledAppProvider.DataColumns.VERSION_NAME,
@@ -157,6 +191,9 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         values.put(InstalledAppProvider.DataColumns.VERSION_CODE, versionCode);
         values.put(InstalledAppProvider.DataColumns.VERSION_NAME, versionNumber);
         values.put(InstalledAppProvider.DataColumns.SIGNATURE, "");
+        values.put(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME, System.currentTimeMillis());
+        values.put(InstalledAppProvider.DataColumns.HASH_TYPE, "sha256");
+        values.put(InstalledAppProvider.DataColumns.HASH, "cafecafecafecafecafecafecafecafecafecafecafecafecafecafecafecafe");
         return values;
     }
 
@@ -165,16 +202,36 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         getMockContentResolver().insert(InstalledAppProvider.getContentUri(), values);
     }
 
-    private void removeAndBroadcast(String appId) {
-        TestUtils.removeAndBroadcast(getSwappableContext(), getPackageManager(), appId);
+    private void remove(String packageName) {
+        remove(getSwappableContext(), getPackageManager(), packageName);
     }
 
-    private void upgradeAndBroadcast(String appId, int versionCode, String versionName) {
-        TestUtils.upgradeAndBroadcast(getSwappableContext(), getPackageManager(), appId, versionCode, versionName);
+    private void install(String appId, int versionCode, String versionName) {
+        install(getSwappableContext(), getPackageManager(), appId, versionCode, versionName);
     }
 
-    private void installAndBroadcast(String appId, int versionCode, String versionName) {
-        TestUtils.installAndBroadcast(getSwappableContext(), getPackageManager(), appId, versionCode, versionName);
+    /**
+     * Will tell {@code pm} that we are installing {@code packageName}, and then update the
+     * "installed apps" table in the database.
+     */
+    public static void install(MockContextSwappableComponents context,
+                               MockInstallablePackageManager pm, String packageName,
+                               int versionCode, String versionName) {
+
+        context.setPackageManager(pm);
+        pm.install(packageName, versionCode, versionName);
+        PackageInfo packageInfo = pm.getPackageInfo(packageName, 0);
+        InstalledAppProviderService.insertAppIntoDb(context, packageName, packageInfo);
+    }
+
+    /**
+     * @see #install(mock.MockContextSwappableComponents, mock.MockInstallablePackageManager, String, int, String)
+     */
+    public static void remove(MockContextSwappableComponents context, MockInstallablePackageManager pm, String packageName) {
+
+        context.setPackageManager(pm);
+        pm.remove(packageName);
+        InstalledAppProviderService.deleteAppFromDb(context, packageName);
     }
 
 }

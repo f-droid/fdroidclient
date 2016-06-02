@@ -151,9 +151,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (currentView.getStep() == SwapService.STEP_INTRO) {
-            if (service != null) {
-                service.disableAllSwapping();
-            }
+            SwapService.stop(this);
             finish();
         } else {
             int nextStep = currentView.getPreviousStep();
@@ -359,7 +357,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void onToolbarCancel() {
-        getService().disableAllSwapping();
+        SwapService.stop(this);
         finish();
     }
 

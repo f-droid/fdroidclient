@@ -37,6 +37,8 @@ public class MockInstallablePackageManager extends MockPackageManager {
             p.packageName = id;
             p.versionCode = version;
             p.versionName = versionName;
+            p.applicationInfo = new MockApplicationInfo(p);
+            p.lastUpdateTime = System.currentTimeMillis();
             info.add(p);
         }
     }

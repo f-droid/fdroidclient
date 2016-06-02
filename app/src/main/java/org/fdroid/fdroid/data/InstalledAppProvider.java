@@ -27,12 +27,12 @@ public class InstalledAppProvider extends FDroidProvider {
     public static class Helper {
 
         /**
-         * @return The keys are the app ids (package names), and their corresponding values are
-         * the version code which is installed.
+         * @return The keys are the package names, and their corresponding values are
+         * the {@link PackageInfo#lastUpdateTime last update time} in milliseconds.
          */
-        public static Map<String, Integer> all(Context context) {
+        public static Map<String, Long> all(Context context) {
 
-            Map<String, Integer> cachedInfo = new HashMap<>();
+            Map<String, Long> cachedInfo = new HashMap<>();
 
             final Uri uri = InstalledAppProvider.getContentUri();
             final String[] projection = InstalledAppProvider.DataColumns.ALL;
@@ -43,7 +43,7 @@ public class InstalledAppProvider extends FDroidProvider {
                     while (!cursor.isAfterLast()) {
                         cachedInfo.put(
                                 cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)),
-                                cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE))
+                                cursor.getLong(cursor.getColumnIndex(DataColumns.LAST_UPDATE_TIME))
                         );
                         cursor.moveToNext();
                     }
@@ -64,10 +64,13 @@ public class InstalledAppProvider extends FDroidProvider {
         String VERSION_NAME = "versionName";
         String APPLICATION_LABEL = "applicationLabel";
         String SIGNATURE = "sig";
+        String LAST_UPDATE_TIME = "lastUpdateTime";
+        String HASH_TYPE = "hashType";
+        String HASH = "hash";
 
         String[] ALL = {
             _ID, PACKAGE_NAME, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
-            SIGNATURE,
+            SIGNATURE, LAST_UPDATE_TIME, HASH_TYPE, HASH,
         };
 
     }
@@ -89,6 +92,9 @@ public class InstalledAppProvider extends FDroidProvider {
         return Uri.parse("content://" + getAuthority());
     }
 
+    /**
+     * @return the {@link Uri} that points to a specific installed app
+     */
     public static Uri getAppUri(String packageName) {
         return Uri.withAppendedPath(getContentUri(), packageName);
     }
@@ -217,6 +223,11 @@ public class InstalledAppProvider extends FDroidProvider {
         return getAppUri(values.getAsString(DataColumns.PACKAGE_NAME));
     }
 
+    /**
+     * Update is not supported for {@code InstalledAppProvider}. Instead, use
+     * {@link #insert(Uri, ContentValues)}, and it will overwrite the relevant
+     * row, if one exists.  This just throws {@link UnsupportedOperationException}
+     */
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
         throw new UnsupportedOperationException("\"Update' not supported for installed appp provider. Instead, you should insert, and it will overwrite the relevant rows if one exists.");

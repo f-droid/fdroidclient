@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.localrepo;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
@@ -11,17 +10,14 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -30,20 +26,16 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 import org.xmlpull.v1.XmlSerializer;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.security.cert.CertificateEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -65,23 +57,19 @@ import java.util.jar.JarOutputStream;
 public final class LocalRepoManager {
     private static final String TAG = "LocalRepoManager";
 
-    // For ref, official F-droid repo presently uses a maxage of 14 days
-    private static final String DEFAULT_REPO_MAX_AGE_DAYS = "14";
-
     private final Context context;
     private final PackageManager pm;
     private final AssetManager assetManager;
     private final String fdroidPackageName;
 
     private static final String[] WEB_ROOT_ASSET_FILES = {
-        "swap-icon.png",
-        "swap-tick-done.png",
-        "swap-tick-not-done.png",
+            "swap-icon.png",
+            "swap-tick-done.png",
+            "swap-tick-not-done.png",
     };
 
     private final Map<String, App> apps = new HashMap<>();
 
-    private final SanitizedFile xmlIndex;
     private final SanitizedFile xmlIndexJar;
     private final SanitizedFile xmlIndexJarUnsigned;
     private final SanitizedFile webRoot;
@@ -115,7 +103,6 @@ public final class LocalRepoManager {
         repoDir = new SanitizedFile(fdroidDir, "repo");
         repoDirCaps = new SanitizedFile(fdroidDirCaps, "REPO");
         iconsDir = new SanitizedFile(repoDir, "icons");
-        xmlIndex = new SanitizedFile(repoDir, "index.xml");
         xmlIndexJar = new SanitizedFile(repoDir, "index.jar");
         xmlIndexJarUnsigned = new SanitizedFile(repoDir, "index.unsigned.jar");
 
@@ -270,7 +257,10 @@ public final class LocalRepoManager {
     public void addApp(Context context, String packageName) {
         App app;
         try {
-            app = new App(context.getApplicationContext(), pm, packageName);
+            app = SwapService.getAppFromCache(packageName);
+            if (app == null) {
+                app = new App(context.getApplicationContext(), pm, packageName);
+            }
             if (!app.isValid()) {
                 return;
             }
@@ -327,70 +317,52 @@ public final class LocalRepoManager {
 
     /**
      * Helper class to aid in constructing index.xml file.
-     * It uses the PullParser API, because the DOM api is only able to be serialized from
-     * API 8 upwards, but we support 7 at time of implementation.
      */
-    public static class IndexXmlBuilder {
+    public static final class IndexXmlBuilder {
+
+        private static IndexXmlBuilder indexXmlBuilder;
+
+        public static IndexXmlBuilder get() throws XmlPullParserException {
+            if (indexXmlBuilder == null) {
+                indexXmlBuilder = new IndexXmlBuilder();
+            }
+            return indexXmlBuilder;
+        }
 
         @NonNull
         private final XmlSerializer serializer;
 
         @NonNull
-        private final Map<String, App> apps;
-
-        @NonNull
-        private final Context context;
-
-        @NonNull
         private final DateFormat dateToStr = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 
-        public IndexXmlBuilder(@NonNull Context context, @NonNull Map<String, App> apps) throws XmlPullParserException, IOException {
-            this.context = context;
-            this.apps = apps;
+        private IndexXmlBuilder() throws XmlPullParserException {
             serializer = XmlPullParserFactory.newInstance().newSerializer();
         }
 
-        public void build(File file) throws IOException, LocalRepoKeyStore.InitException {
-            Writer output = new FileWriter(file);
-            serializer.setOutput(output);
+        public void build(Context context, Map<String, App> apps, OutputStream output) throws IOException, LocalRepoKeyStore.InitException {
+            serializer.setOutput(output, "UTF-8");
             serializer.startDocument(null, null);
-            tagFdroid();
-            serializer.endDocument();
-            output.close();
-        }
-
-        private void tagFdroid() throws IOException, LocalRepoKeyStore.InitException {
             serializer.startTag("", "fdroid");
-            tagRepo();
-            for (Map.Entry<String, App> entry : apps.entrySet()) {
-                tagApplication(entry.getValue());
-            }
-            serializer.endTag("", "fdroid");
-        }
 
-        private void tagRepo() throws IOException, LocalRepoKeyStore.InitException {
-
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
-            // max age is an EditTextPreference, which is always a String
-            // TODO: This pref is probably never being set. Also, why
-            // are we mixing floats and ints?
-            int repoMaxAge = Float.valueOf(prefs.getString("max_repo_age_days", DEFAULT_REPO_MAX_AGE_DAYS)).intValue(); // NOPMD
-
+            // <repo> block
             serializer.startTag("", "repo");
-
             serializer.attribute("", "icon", "blah.png");
-            serializer.attribute("", "maxage", String.valueOf(repoMaxAge));
             serializer.attribute("", "name", Preferences.get().getLocalRepoName() + " on " + FDroidApp.ipAddressString);
             serializer.attribute("", "pubkey", Hasher.hex(LocalRepoKeyStore.get(context).getCertificate()));
             long timestamp = System.currentTimeMillis() / 1000L;
             serializer.attribute("", "timestamp", String.valueOf(timestamp));
             serializer.attribute("", "version", "10");
-
             tag("description", "A local FDroid repo generated from apps installed on " + Preferences.get().getLocalRepoName());
-
             serializer.endTag("", "repo");
 
+            // <application> blocks
+            for (Map.Entry<String, App> entry : apps.entrySet()) {
+                tagApplication(entry.getValue());
+            }
+
+            serializer.endTag("", "fdroid");
+            serializer.endDocument();
+            output.close();
         }
 
         /**
@@ -404,6 +376,7 @@ public final class LocalRepoManager {
         /**
          * Alias for {@link org.fdroid.fdroid.localrepo.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
          * That accepts a number instead of string.
+         *
          * @see IndexXmlBuilder#tag(String, String)
          */
         private void tag(String name, long number) throws IOException {
@@ -413,6 +386,7 @@ public final class LocalRepoManager {
         /**
          * Alias for {@link org.fdroid.fdroid.localrepo.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
          * that accepts a date instead of a string.
+         *
          * @see IndexXmlBuilder#tag(String, String)
          */
         private void tag(String name, Date date) throws IOException {
@@ -508,32 +482,12 @@ public final class LocalRepoManager {
         }
     }
 
-    public void writeIndexJar() throws IOException {
-
-        try {
-            new IndexXmlBuilder(context, apps).build(xmlIndex);
-        } catch (Exception e) {
-            Log.e(TAG, "Could not write index jar", e);
-            Toast.makeText(context, R.string.failed_to_create_index, Toast.LENGTH_LONG).show();
-            return;
-        }
-
+    public void writeIndexJar() throws IOException, XmlPullParserException, LocalRepoKeyStore.InitException {
         BufferedOutputStream bo = new BufferedOutputStream(new FileOutputStream(xmlIndexJarUnsigned));
         JarOutputStream jo = new JarOutputStream(bo);
-
-        BufferedInputStream bi = new BufferedInputStream(new FileInputStream(xmlIndex));
-
         JarEntry je = new JarEntry("index.xml");
         jo.putNextEntry(je);
-
-        byte[] buf = new byte[1024];
-        int bytesRead;
-
-        while ((bytesRead = bi.read(buf)) != -1) {
-            jo.write(buf, 0, bytesRead);
-        }
-
-        bi.close();
+        IndexXmlBuilder.get().build(context, apps, jo);
         jo.close();
         bo.close();
 
