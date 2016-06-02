@@ -37,7 +37,9 @@ public class CacheSwapAppsService extends IntentService {
      * Parse the locally installed APK for {@code packageName} and save its XML
      * to the APK XML cache.
      */
-    public static void parseApp(Context context, Intent intent) {
+    private static void parseApp(Context context, String packageName) {
+        Intent intent = new Intent();
+        intent.setData(Utils.getPackageUri(packageName));
         intent.setClass(context, CacheSwapAppsService.class);
         intent.setAction(ACTION_PARSE_APP);
         context.startService(intent);
@@ -57,9 +59,7 @@ public class CacheSwapAppsService extends IntentService {
             }
             if (!indexJarFile.exists()
                     || FileUtils.isFileNewer(new File(applicationInfo.sourceDir), indexJarFile)) {
-                Intent intent = new Intent();
-                intent.setData(Utils.getPackageUri(applicationInfo.packageName));
-                parseApp(context, intent);
+                parseApp(context, applicationInfo.packageName);
             }
         }
     }
