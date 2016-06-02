@@ -554,7 +554,7 @@ public class AppDetails extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_INSTALL_STARTED:
-                    headerFragment.startProgress();
+                    headerFragment.startProgress(false);
                     headerFragment.showIndeterminateProgress(getString(R.string.installing));
                     break;
                 case Installer.ACTION_INSTALL_COMPLETE:
@@ -607,7 +607,7 @@ public class AppDetails extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_UNINSTALL_STARTED:
-                    headerFragment.startProgress();
+                    headerFragment.startProgress(false);
                     headerFragment.showIndeterminateProgress(getString(R.string.uninstalling));
                     break;
                 case Installer.ACTION_UNINSTALL_COMPLETE:
@@ -986,7 +986,6 @@ public class AppDetails extends AppCompatActivity {
     private void startInstall(Apk apk) {
         activeDownloadUrlString = apk.getUrl();
         registerDownloaderReceivers();
-        headerFragment.startProgress();
         InstallManagerService.queue(this, app, apk);
     }
 
@@ -1532,6 +1531,11 @@ public class AppDetails extends AppCompatActivity {
          * Displays empty, indeterminate progress bar and related views.
          */
         public void startProgress() {
+            startProgress(true);
+        }
+
+        public void startProgress(boolean allowCancel) {
+            cancelButton.setVisibility(allowCancel ? View.VISIBLE : View.GONE);
             showIndeterminateProgress(getString(R.string.download_pending));
             updateViews();
         }
@@ -1576,7 +1580,6 @@ public class AppDetails extends AppCompatActivity {
             progressBar.setVisibility(state);
             progressSize.setVisibility(state);
             progressPercent.setVisibility(state);
-            cancelButton.setVisibility(state);
         }
 
         /**
@@ -1584,6 +1587,7 @@ public class AppDetails extends AppCompatActivity {
          */
         public void removeProgress() {
             setProgressVisible(false);
+            cancelButton.setVisibility(View.GONE);
             updateViews();
         }
 
