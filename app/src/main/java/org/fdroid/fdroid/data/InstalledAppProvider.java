@@ -183,11 +183,7 @@ public class InstalledAppProvider extends FDroidProvider {
         QuerySelection query = new QuerySelection(where, whereArgs);
         query = query.add(queryApp(uri.getLastPathSegment()));
 
-        int count = db().delete(getTableName(), query.getSelection(), query.getArgs());
-        if (!isApplyingBatch()) {
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
-        return count;
+        return db().delete(getTableName(), query.getSelection(), query.getArgs());
     }
 
     @Override
@@ -199,9 +195,6 @@ public class InstalledAppProvider extends FDroidProvider {
 
         verifyVersionNameNotNull(values);
         db().replaceOrThrow(getTableName(), null, values);
-        if (!isApplyingBatch()) {
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
         return getAppUri(values.getAsString(DataColumns.PACKAGE_NAME));
     }
 
