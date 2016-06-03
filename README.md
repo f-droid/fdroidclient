@@ -1,6 +1,6 @@
 # F-Droid Client
 
-[![build status](https://gitlab.com/fdroid/fdroidclient/badges/HEAD/build.svg)](https://gitlab.com/fdroid/fdroidclient/builds) [![Translation status](https://hosted.weblate.org/widgets/f-droid/-/svg-badge.svg)](https://hosted.weblate.org/engage/f-droid/)
+[![build status](https://gitlab.com/fdroid/fdroidclient/badges/master/build.svg)](https://gitlab.com/fdroid/fdroidclient/builds) [![Translation status](https://hosted.weblate.org/widgets/f-droid/-/svg-badge.svg)](https://hosted.weblate.org/engage/f-droid/)
 
 Client for [F-Droid](https://f-droid.org), the Free Software repository system
 for Android.
