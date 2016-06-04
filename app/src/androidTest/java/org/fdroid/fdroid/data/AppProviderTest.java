@@ -131,7 +131,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, ignoreVercode);
         insertApp(id, "App: " + id, values);
 
-        InstalledAppProviderTest.install(getSwappableContext(), packageManager, id, installedVercode, "v" + installedVercode);
+        InstalledAppTestUtils.install(getSwappableContext(), packageManager, id, installedVercode, "v" + installedVercode);
     }
 
     public void testCanUpdate() {
@@ -251,7 +251,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         assertResultCount(0, AppProvider.getInstalledUri());
 
         for (int i = 10; i < 20; i++) {
-            InstalledAppProviderTest.install(getSwappableContext(), pm, "com.example.test." + i, i, "v1");
+            InstalledAppTestUtils.install(getSwappableContext(), pm, "com.example.test." + i, i, "v1");
         }
 
         assertResultCount(10, AppProvider.getInstalledUri());

@@ -1,0 +1,200 @@
+package org.fdroid.fdroid.data;
+
+import android.app.Application;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.net.Uri;
+
+import org.fdroid.fdroid.BuildConfig;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RuntimeEnvironment;
+import org.robolectric.Shadows;
+import org.robolectric.annotation.Config;
+import org.robolectric.shadows.ShadowContentResolver;
+
+import static org.fdroid.fdroid.data.ProviderTestUtils.assertIsInstalledVersionInDb;
+import static org.fdroid.fdroid.data.ProviderTestUtils.assertResultCount;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.util.Map;
+
+@Config(constants = BuildConfig.class, application = Application.class)
+@RunWith(RobolectricGradleTestRunner.class)
+public class InstalledAppProviderTest {
+
+    private ShadowContentResolver contentResolver;
+
+    @Before
+    public void setup() {
+        contentResolver = Shadows.shadowOf(RuntimeEnvironment.application.getContentResolver());
+        ShadowContentResolver.registerProvider(InstalledAppProvider.getAuthority(), new InstalledAppProvider());
+    }
+
+    @After
+    public void teardown() {
+        FDroidProvider.clearDbHelperSingleton();
+    }
+
+    @Test
+    public void insertSingleApp() {
+        Map<String, Long> foundBefore = InstalledAppProvider.Helper.all(RuntimeEnvironment.application);
+        assertEquals(foundBefore.size(), 0);
+
+        ContentValues values = new ContentValues();
+        values.put(InstalledAppProvider.DataColumns.PACKAGE_NAME, "org.example.test-app");
+        values.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL, "Test App");
+        values.put(InstalledAppProvider.DataColumns.VERSION_CODE, 1021);
+        values.put(InstalledAppProvider.DataColumns.VERSION_NAME, "Longhorn");
+        values.put(InstalledAppProvider.DataColumns.HASH, "has of test app");
+        values.put(InstalledAppProvider.DataColumns.HASH_TYPE, "fake hash type");
+        values.put(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME, 100000000L);
+        values.put(InstalledAppProvider.DataColumns.SIGNATURE, "000111222333444555666777888999aaabbbcccdddeeefff");
+        contentResolver.insert(InstalledAppProvider.getContentUri(), values);
+
+        Map<String, Long> foundAfter = InstalledAppProvider.Helper.all(RuntimeEnvironment.application);
+        assertEquals(1, foundAfter.size());
+        assertEquals(100000000L, foundAfter.get("org.example.test-app").longValue());
+
+        Cursor cursor = contentResolver.query(InstalledAppProvider.getAppUri("org.example.test-app"), InstalledAppProvider.DataColumns.ALL, null, null, null);
+        assertEquals(cursor.getCount(), 1);
+
+        cursor.moveToFirst();
+        assertEquals("org.example.test-app", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)));
+        assertEquals("Test App", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APPLICATION_LABEL)));
+        assertEquals(1021, cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE)));
+        assertEquals("Longhorn", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_NAME)));
+        assertEquals("has of test app", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.HASH)));
+        assertEquals("fake hash type", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.HASH_TYPE)));
+        assertEquals(100000000L, cursor.getLong(cursor.getColumnIndex(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME)));
+        assertEquals("000111222333444555666777888999aaabbbcccdddeeefff", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.SIGNATURE)));
+
+        cursor.close();
+    }
+
+    @Test
+    public void testInsert() {
+
+        assertResultCount(contentResolver, 0, InstalledAppProvider.getContentUri());
+
+        insertInstalledApp("com.example.com1", 1, "v1");
+        insertInstalledApp("com.example.com2", 2, "v2");
+        insertInstalledApp("com.example.com3", 3, "v3");
+
+        assertResultCount(contentResolver, 3, InstalledAppProvider.getContentUri());
+        assertIsInstalledVersionInDb(contentResolver, "com.example.com1", 1, "v1");
+        assertIsInstalledVersionInDb(contentResolver, "com.example.com2", 2, "v2");
+        assertIsInstalledVersionInDb(contentResolver, "com.example.com3", 3, "v3");
+    }
+
+    @Test
+    public void testUpdate() {
+
+        insertInstalledApp("com.example.app1", 10, "1.0");
+        insertInstalledApp("com.example.app2", 10, "1.0");
+
+        assertResultCount(contentResolver, 2, InstalledAppProvider.getContentUri());
+        assertIsInstalledVersionInDb(contentResolver, "com.example.app2", 10, "1.0");
+
+        try {
+            contentResolver.update(
+                    InstalledAppProvider.getAppUri("com.example.app2"),
+                    createContentValues(11, "1.1"),
+                    null, null
+            );
+            fail();
+        } catch (UnsupportedOperationException e) {
+            // We expect this to happen, because we should be using insert() instead.
+        }
+
+        contentResolver.insert(
+                InstalledAppProvider.getContentUri(),
+                createContentValues("com.example.app2", 11, "1.1")
+        );
+
+        assertResultCount(contentResolver, 2, InstalledAppProvider.getContentUri());
+        assertIsInstalledVersionInDb(contentResolver, "com.example.app2", 11, "1.1");
+
+    }
+
+    @Test
+    public void testLastUpdateTime() {
+        String packageName = "com.example.app";
+
+        insertInstalledApp(packageName, 10, "1.0");
+        assertResultCount(contentResolver, 1, InstalledAppProvider.getContentUri());
+        assertIsInstalledVersionInDb(contentResolver, packageName, 10, "1.0");
+
+        Uri uri = InstalledAppProvider.getAppUri(packageName);
+
+        String[] projection = {
+                InstalledAppProvider.DataColumns.PACKAGE_NAME,
+                InstalledAppProvider.DataColumns.LAST_UPDATE_TIME,
+        };
+
+        Cursor cursor = contentResolver.query(uri, projection, null, null, null);
+        assertNotNull(cursor);
+        assertEquals("App \"" + packageName + "\" not installed", 1, cursor.getCount());
+        cursor.moveToFirst();
+        assertEquals(packageName, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)));
+        long lastUpdateTime = cursor.getLong(cursor.getColumnIndex(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME));
+        assertTrue(lastUpdateTime > 0);
+        assertTrue(lastUpdateTime < System.currentTimeMillis());
+        cursor.close();
+
+        insertInstalledApp(packageName, 11, "1.1");
+        cursor = contentResolver.query(uri, projection, null, null, null);
+        assertNotNull(cursor);
+        assertEquals("App \"" + packageName + "\" not installed", 1, cursor.getCount());
+        cursor.moveToFirst();
+        assertTrue(lastUpdateTime < cursor.getLong(cursor.getColumnIndex(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME)));
+        cursor.close();
+    }
+
+    @Test
+    public void testDelete() {
+
+        insertInstalledApp("com.example.app1", 10, "1.0");
+        insertInstalledApp("com.example.app2", 10, "1.0");
+
+        assertResultCount(contentResolver, 2, InstalledAppProvider.getContentUri());
+
+        contentResolver.delete(InstalledAppProvider.getAppUri("com.example.app1"), null, null);
+
+        assertResultCount(contentResolver, 1, InstalledAppProvider.getContentUri());
+        assertIsInstalledVersionInDb(contentResolver, "com.example.app2", 10, "1.0");
+
+    }
+
+    private ContentValues createContentValues(int versionCode, String versionNumber) {
+        return createContentValues(null, versionCode, versionNumber);
+    }
+
+    private ContentValues createContentValues(String appId, int versionCode, String versionNumber) {
+        ContentValues values = new ContentValues(3);
+        if (appId != null) {
+            values.put(InstalledAppProvider.DataColumns.PACKAGE_NAME, appId);
+        }
+        values.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL, "Mock app: " + appId);
+        values.put(InstalledAppProvider.DataColumns.VERSION_CODE, versionCode);
+        values.put(InstalledAppProvider.DataColumns.VERSION_NAME, versionNumber);
+        values.put(InstalledAppProvider.DataColumns.SIGNATURE, "");
+        values.put(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME, System.currentTimeMillis());
+        values.put(InstalledAppProvider.DataColumns.HASH_TYPE, "sha256");
+        values.put(InstalledAppProvider.DataColumns.HASH, "cafecafecafecafecafecafecafecafecafecafecafecafecafecafecafecafe");
+        return values;
+    }
+
+    private void insertInstalledApp(String appId, int versionCode, String versionNumber) {
+        ContentValues values = createContentValues(appId, versionCode, versionNumber);
+        contentResolver.insert(InstalledAppProvider.getContentUri(), values);
+    }
+}
+
+// https://github.com/robolectric/robolectric/wiki/2.4-to-3.0-Upgrade-Guide
