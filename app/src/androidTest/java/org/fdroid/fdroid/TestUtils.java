@@ -13,7 +13,7 @@ import junit.framework.AssertionFailedError;
 
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.FDroidProviderTest;
+import org.fdroid.fdroid.data.FDroidProviderTestOld;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -113,11 +113,11 @@ public class TestUtils {
         resolver.insert(uri, values);
     }
 
-    public static Uri insertApk(FDroidProviderTest<ApkProvider> providerTest, String id, int versionCode) {
+    public static Uri insertApk(FDroidProviderTestOld<ApkProvider> providerTest, String id, int versionCode) {
         return insertApk(providerTest, id, versionCode, new ContentValues());
     }
 
-    public static Uri insertApk(FDroidProviderTest<ApkProvider> providerTest, String id, int versionCode, ContentValues additionalValues) {
+    public static Uri insertApk(FDroidProviderTestOld<ApkProvider> providerTest, String id, int versionCode, ContentValues additionalValues) {
 
         ContentValues values = new ContentValues();
 

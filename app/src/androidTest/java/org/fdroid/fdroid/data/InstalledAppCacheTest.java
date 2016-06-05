@@ -5,11 +5,11 @@ import mock.MockInstallablePackageManager;
 /**
  * Tests the ability of the {@link  InstalledAppCacheUpdater} to stay in sync with
  * the {@link android.content.pm.PackageManager}.
- * For practical reasons, it extends FDroidProviderTest<InstalledAppProvider>, although there is also a
+ * For practical reasons, it extends FDroidProviderTestOld<InstalledAppProvider>, although there is also a
  * separate test for the InstalledAppProvider which tests the CRUD operations in more detail.
  */
 @SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
-public class InstalledAppCacheTest extends FDroidProviderTest<InstalledAppProvider> {
+public class InstalledAppCacheTest extends FDroidProviderTestOld<InstalledAppProvider> {
 
     private MockInstallablePackageManager packageManager;
 

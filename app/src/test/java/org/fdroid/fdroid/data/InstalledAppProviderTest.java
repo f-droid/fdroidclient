@@ -6,13 +6,11 @@ import android.database.Cursor;
 import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowContentResolver;
 
@@ -27,19 +25,11 @@ import java.util.Map;
 
 @Config(constants = BuildConfig.class, application = Application.class)
 @RunWith(RobolectricGradleTestRunner.class)
-public class InstalledAppProviderTest {
-
-    private ShadowContentResolver contentResolver;
+public class InstalledAppProviderTest extends FDroidProviderTest{
 
     @Before
     public void setup() {
-        contentResolver = Shadows.shadowOf(RuntimeEnvironment.application.getContentResolver());
         ShadowContentResolver.registerProvider(InstalledAppProvider.getAuthority(), new InstalledAppProvider());
-    }
-
-    @After
-    public void teardown() {
-        FDroidProvider.clearDbHelperSingleton();
     }
 
     @Test

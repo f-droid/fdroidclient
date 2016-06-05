@@ -11,6 +11,9 @@ import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowContentResolver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.fdroid.fdroid.data.ProviderTestUtils.assertInvalidUri;
 import static org.fdroid.fdroid.data.ProviderTestUtils.assertValidUri;
 
@@ -64,6 +67,36 @@ public class ProviderUriTests {
         assertValidUri(resolver, RepoProvider.getContentUri(10000L), projection);
         assertValidUri(resolver, RepoProvider.allExceptSwapUri(), projection);
     }
+
+    @Test
+    public void invalidAppProviderUris() {
+        ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
+        assertInvalidUri(resolver, AppProvider.getAuthority());
+        assertInvalidUri(resolver, "blah");
+    }
+
+    @Test
+    public void validAppProviderUris() {
+        ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
+        String[] projection = new String[] { AppProvider.DataColumns._ID };
+        assertValidUri(resolver, AppProvider.getContentUri(), "content://org.fdroid.fdroid.data.AppProvider", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("'searching!'"), "content://org.fdroid.fdroid.data.AppProvider/search/'searching!'", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("/"), "content://org.fdroid.fdroid.data.AppProvider/search/%2F", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri(""), "content://org.fdroid.fdroid.data.AppProvider", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri(null), "content://org.fdroid.fdroid.data.AppProvider", projection);
+        assertValidUri(resolver, AppProvider.getNoApksUri(), "content://org.fdroid.fdroid.data.AppProvider/noApks", projection);
+        assertValidUri(resolver, AppProvider.getInstalledUri(), "content://org.fdroid.fdroid.data.AppProvider/installed", projection);
+        assertValidUri(resolver, AppProvider.getCanUpdateUri(), "content://org.fdroid.fdroid.data.AppProvider/canUpdate", projection);
+
+        App app = new App();
+        app.packageName = "org.fdroid.fdroid";
+
+        List<App> apps = new ArrayList<>(1);
+        apps.add(app);
+
+        assertValidUri(resolver, AppProvider.getContentUri(app), "content://org.fdroid.fdroid.data.AppProvider/org.fdroid.fdroid", projection);
+        assertValidUri(resolver, AppProvider.getContentUri(apps), "content://org.fdroid.fdroid.data.AppProvider/apps/org.fdroid.fdroid", projection);
+        assertValidUri(resolver, AppProvider.getContentUri("org.fdroid.fdroid"), "content://org.fdroid.fdroid.data.AppProvider/org.fdroid.fdroid", projection);
     }
 
 }

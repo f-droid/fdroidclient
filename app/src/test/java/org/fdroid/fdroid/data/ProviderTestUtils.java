@@ -4,8 +4,12 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
+import junit.framework.AssertionFailedError;
+
 import org.robolectric.shadows.ShadowContentResolver;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -14,6 +18,66 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
 public class ProviderTestUtils {
+
+    public static <T extends Comparable> void assertContainsOnly(List<T> actualList, T[] expectedArray) {
+        List<T> expectedList = new ArrayList<>(expectedArray.length);
+        Collections.addAll(expectedList, expectedArray);
+        assertContainsOnly(actualList, expectedList);
+    }
+
+    public static <T extends Comparable> void assertContainsOnly(T[] actualArray, List<T> expectedList) {
+        List<T> actualList = new ArrayList<>(actualArray.length);
+        Collections.addAll(actualList, actualArray);
+        assertContainsOnly(actualList, expectedList);
+    }
+
+    public static <T extends Comparable> void assertContainsOnly(T[] actualArray, T[] expectedArray) {
+        List<T> expectedList = new ArrayList<>(expectedArray.length);
+        Collections.addAll(expectedList, expectedArray);
+        assertContainsOnly(actualArray, expectedList);
+    }
+
+    public static <T> String listToString(List<T> list) {
+        String string = "[";
+        for (int i = 0; i < list.size(); i++) {
+            if (i > 0) {
+                string += ", ";
+            }
+            string += "'" + list.get(i) + "'";
+        }
+        string += "]";
+        return string;
+    }
+
+    public static <T extends Comparable> void assertContainsOnly(List<T> actualList, List<T> expectedContains) {
+        if (actualList.size() != expectedContains.size()) {
+            String message =
+                    "List sizes don't match.\n" +
+                            "Expected: " +
+                            listToString(expectedContains) + "\n" +
+                            "Actual:   " +
+                            listToString(actualList);
+            throw new AssertionFailedError(message);
+        }
+        for (T required : expectedContains) {
+            boolean containsRequired = false;
+            for (T itemInList : actualList) {
+                if (required.equals(itemInList)) {
+                    containsRequired = true;
+                    break;
+                }
+            }
+            if (!containsRequired) {
+                String message =
+                        "List doesn't contain \"" + required + "\".\n" +
+                                "Expected: " +
+                                listToString(expectedContains) + "\n" +
+                                "Actual:   " +
+                                listToString(actualList);
+                throw new AssertionFailedError(message);
+            }
+        }
+    }
 
     public static void assertCantDelete(ShadowContentResolver resolver, Uri uri) {
         try {
@@ -62,7 +126,11 @@ public class ProviderTestUtils {
     }
 
     public static void assertResultCount(ShadowContentResolver resolver, int expectedCount, Uri uri) {
-        Cursor cursor = resolver.query(uri, new String[] {}, null, null, null);
+        assertResultCount(resolver, expectedCount, uri, new String[] {});
+    }
+
+    public static void assertResultCount(ShadowContentResolver resolver, int expectedCount, Uri uri, String[] projection) {
+        Cursor cursor = resolver.query(uri, projection, null, null, null);
         assertResultCount(expectedCount, cursor);
         cursor.close();
     }

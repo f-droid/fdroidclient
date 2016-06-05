@@ -16,7 +16,7 @@ import java.util.List;
  * This should not contain any test methods, or else they get executed
  * once for every concrete subclass.
  */
-abstract class BaseApkProviderTest extends FDroidProviderTest<ApkProvider> {
+abstract class BaseApkProviderTest extends FDroidProviderTestOld<ApkProvider> {
 
     BaseApkProviderTest() {
         super(ApkProvider.class, ApkProvider.getAuthority());

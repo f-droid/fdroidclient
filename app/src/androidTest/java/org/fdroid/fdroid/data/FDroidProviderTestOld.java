@@ -15,7 +15,7 @@ import mock.MockContextSwappableComponents;
 import mock.MockFDroidResources;
 
 @SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
-public abstract class FDroidProviderTest<T extends FDroidProvider> extends ProviderTestCase2MockContext<T> {
+public abstract class FDroidProviderTestOld<T extends FDroidProvider> extends ProviderTestCase2MockContext<T> {
 
     private FDroidProvider[] allProviders = {
         new AppProvider(),
@@ -26,7 +26,7 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
 
     private MockContextSwappableComponents swappableContext;
 
-    public FDroidProviderTest(Class<T> providerClass, String providerAuthority) {
+    public FDroidProviderTestOld(Class<T> providerClass, String providerAuthority) {
         super(providerClass, providerAuthority);
     }
 
