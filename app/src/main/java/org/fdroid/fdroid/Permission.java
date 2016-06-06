@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
 
-class Permission {
+public class Permission {
 
     private final PackageManager packageManager;
     private final PermissionInfo permissionInfo;
@@ -13,17 +13,7 @@ class Permission {
             throws PackageManager.NameNotFoundException {
         this.packageManager = context.getPackageManager();
         this.permissionInfo = this.packageManager.getPermissionInfo(
-                fdroidToAndroid(permission), PackageManager.GET_META_DATA);
-    }
-
-    /**
-     * It appears that all of the permissions in android.Manifest.permissions
-     * are prefixed with "android.permission." and then the constant name.
-     * FDroid just includes the constant name in the apk list, so we prefix it
-     * with "android.permission."
-     */
-    private static String fdroidToAndroid(String permission) {
-        return "android.permission." + permission;
+                permission, PackageManager.GET_META_DATA);
     }
 
     public CharSequence getName() {

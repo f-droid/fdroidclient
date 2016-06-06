@@ -24,6 +24,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
+import org.fdroid.fdroid.Permission;
 import org.fdroid.fdroid.data.Apk;
 
 import java.util.ArrayList;
@@ -45,17 +46,7 @@ public class AppDiff {
         mPkgInfo = new PackageInfo();
         mPkgInfo.packageName = apk.packageName;
         mPkgInfo.applicationInfo = new ApplicationInfo();
-
-        if (apk.permissions == null) {
-            mPkgInfo.requestedPermissions = null;
-        } else {
-            // TODO: duplicate code with Permission.fdroidToAndroid
-            ArrayList<String> permissionsFixed = new ArrayList<>();
-            for (String perm : apk.permissions.toArrayList()) {
-                permissionsFixed.add("android.permission." + perm);
-            }
-            mPkgInfo.requestedPermissions = permissionsFixed.toArray(new String[permissionsFixed.size()]);
-        }
+        mPkgInfo.requestedPermissions = apk.getFullPermissionsArray();
 
         init();
     }
