@@ -15,6 +15,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
@@ -186,7 +187,7 @@ public class InstallManagerService extends Service {
     private static boolean apkIsCached(File apkFile, Apk apkToCheck) {
         try {
             return apkFile.length() == apkToCheck.size &&
-                    Installer.verifyApkFile(apkFile, apkToCheck.hash, apkToCheck.hashType);
+                    ApkVerifier.verifyApkFile(apkFile, apkToCheck.hash, apkToCheck.hashType);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             return false;
@@ -225,7 +226,6 @@ public class InstallManagerService extends Service {
         BroadcastReceiver completeReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                // elsewhere called urlString
                 Uri downloadUri = intent.getData();
                 String urlString = downloadUri.toString();
                 File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
@@ -237,7 +237,22 @@ public class InstallManagerService extends Service {
                 registerInstallerReceivers(downloadUri);
 
                 Apk apk = ACTIVE_APKS.get(urlString);
-                InstallerService.install(context, localApkUri, downloadUri, apk.packageName);
+
+                Uri sanitizedUri;
+                try {
+                    ApkVerifier apkVerifier = new ApkVerifier(context, localApkUri, apk);
+                    apkVerifier.basicVerify();
+                    sanitizedUri = apkVerifier.getSafeUri();
+                } catch (ApkVerifier.ApkVerificationException e) {
+                    Log.e(TAG, "ApkVerifier failed", e);
+                    String title = String.format(
+                            getString(R.string.install_error_notify_title),
+                            apk.packageName);
+                    notifyError(urlString, title, e.getMessage());
+                    return;
+                }
+
+                InstallerService.install(context, sanitizedUri, downloadUri, apk.packageName);
             }
         };
         BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {

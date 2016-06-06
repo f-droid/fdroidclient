@@ -23,7 +23,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
@@ -47,25 +46,17 @@ public class ExtensionInstaller extends Installer {
 
     @Override
     protected void installPackage(Uri localApkUri, Uri downloadUri, String packageName) {
-        Uri sanitizedUri;
-        try {
-            sanitizedUri = Installer.prepareApkFile(context, localApkUri, packageName);
-        } catch (InstallFailedException e) {
-            Log.e(TAG, "prepareApkFile failed", e);
-            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
-            return;
-        }
-
         // extension must be signed with the same public key as main F-Droid
-        // NOTE: Disabled for debug builds to be able to use official extension from repo
+        // NOTE: Disabled for debug builds to be able to test official extension from repo
         ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(context);
-        if (!BuildConfig.DEBUG && !signatureVerifier.hasFDroidSignature(new File(sanitizedUri.getPath()))) {
+        if (!BuildConfig.DEBUG &&
+                !signatureVerifier.hasFDroidSignature(new File(localApkUri.getPath()))) {
             sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
                     "APK signature of extension not correct!");
         }
         Intent installIntent = new Intent(context, InstallExtensionDialogActivity.class);
         installIntent.setAction(InstallExtensionDialogActivity.ACTION_INSTALL);
-        installIntent.setData(sanitizedUri);
+        installIntent.setData(localApkUri);
 
         PendingIntent installPendingIntent = PendingIntent.getActivity(
                 context.getApplicationContext(),
