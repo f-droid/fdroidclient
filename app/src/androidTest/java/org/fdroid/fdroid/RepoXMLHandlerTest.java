@@ -9,7 +9,7 @@ import android.util.Log;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.mock.MockRepo;
+import org.fdroid.fdroid.mock.MockRepoOld;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xml.sax.InputSource;
@@ -678,7 +678,7 @@ public class RepoXMLHandlerTest {
             parser = SAXParserFactory.newInstance().newSAXParser();
             XMLReader reader = parser.getXMLReader();
             RepoDetails repoDetails = new RepoDetails();
-            RepoXMLHandler handler = new RepoXMLHandler(new MockRepo(100), repoDetails);
+            RepoXMLHandler handler = new RepoXMLHandler(new MockRepoOld(100), repoDetails);
             reader.setContentHandler(handler);
             String resName = "assets/" + indexFilename;
             Log.i(TAG, "test file: " + getClass().getClassLoader().getResource(resName));

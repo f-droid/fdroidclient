@@ -26,7 +26,7 @@ public class ApkProvider extends FDroidProvider {
      * we may want to add additional constraints, so we give our self some
      * room by saying only 450 apks can be queried at once.
      */
-    protected static final int MAX_APKS_TO_QUERY = 450;
+    static final int MAX_APKS_TO_QUERY = 450;
 
     public static final class Helper {
 
@@ -319,7 +319,7 @@ public class ApkProvider extends FDroidProvider {
      * this directly, think about using
      * {@link org.fdroid.fdroid.data.ApkProvider.Helper#knownApks(android.content.Context, java.util.List, String[])}
      */
-    protected static Uri getContentUri(List<Apk> apks) {
+    static Uri getContentUri(List<Apk> apks) {
         return getContentUri().buildUpon()
                 .appendPath(PATH_APKS)
                 .appendPath(buildApkString(apks))

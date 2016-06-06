@@ -168,4 +168,55 @@ public class ProviderTestUtils {
         cursor.close();
     }
 
+    public static void insertApp(ShadowContentResolver resolver, String appId, String name) {
+        insertApp(resolver, appId, name, new ContentValues());
+    }
+
+    public static void insertApp(ShadowContentResolver resolver, String id, String name, ContentValues additionalValues) {
+
+        ContentValues values = new ContentValues();
+        values.put(AppProvider.DataColumns.PACKAGE_NAME, id);
+        values.put(AppProvider.DataColumns.NAME, name);
+
+        // Required fields (NOT NULL in the database).
+        values.put(AppProvider.DataColumns.SUMMARY, "test summary");
+        values.put(AppProvider.DataColumns.DESCRIPTION, "test description");
+        values.put(AppProvider.DataColumns.LICENSE, "GPL?");
+        values.put(AppProvider.DataColumns.IS_COMPATIBLE, 1);
+        values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, 0);
+        values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, 0);
+
+        values.putAll(additionalValues);
+
+        Uri uri = AppProvider.getContentUri();
+
+        resolver.insert(uri, values);
+    }
+
+    public static Uri insertApk(ShadowContentResolver resolver, String id, int versionCode) {
+        return insertApk(resolver, id, versionCode, new ContentValues());
+    }
+
+    public static Uri insertApk(ShadowContentResolver resolver, String id, int versionCode, ContentValues additionalValues) {
+
+        ContentValues values = new ContentValues();
+
+        values.put(ApkProvider.DataColumns.PACKAGE_NAME, id);
+        values.put(ApkProvider.DataColumns.VERSION_CODE, versionCode);
+
+        // Required fields (NOT NULL in the database).
+        values.put(ApkProvider.DataColumns.REPO_ID, 1);
+        values.put(ApkProvider.DataColumns.VERSION_NAME, "The good one");
+        values.put(ApkProvider.DataColumns.HASH, "11111111aaaaaaaa");
+        values.put(ApkProvider.DataColumns.NAME, "Test Apk");
+        values.put(ApkProvider.DataColumns.SIZE, 10000);
+        values.put(ApkProvider.DataColumns.IS_COMPATIBLE, 1);
+
+        values.putAll(additionalValues);
+
+        Uri uri = ApkProvider.getContentUri();
+
+        return resolver.insert(uri, values);
+    }
+
 }
