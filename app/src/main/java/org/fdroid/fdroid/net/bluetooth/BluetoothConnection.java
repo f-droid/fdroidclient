@@ -20,7 +20,7 @@ public class BluetoothConnection {
     private OutputStream output;
     private final BluetoothSocket socket;
 
-    public BluetoothConnection(BluetoothSocket socket) throws IOException {
+    public BluetoothConnection(BluetoothSocket socket) {
         this.socket = socket;
     }
 

@@ -4,12 +4,10 @@ import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -46,8 +44,7 @@ public abstract class Downloader {
 
     protected abstract void close();
 
-    Downloader(URL url, File destFile)
-            throws FileNotFoundException, MalformedURLException {
+    Downloader(URL url, File destFile) {
         this.sourceUrl = url;
         outputFile = destFile;
     }
