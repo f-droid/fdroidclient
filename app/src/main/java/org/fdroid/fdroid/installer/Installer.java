@@ -23,7 +23,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.PatternMatcher;
 import android.support.v4.content.LocalBroadcastManager;
@@ -50,7 +49,6 @@ import java.util.Map;
  */
 public abstract class Installer {
     final Context context;
-    private final PackageManager pm;
     private final LocalBroadcastManager localBroadcastManager;
 
     public static final String ACTION_INSTALL_STARTED = "org.fdroid.fdroid.installer.Installer.action.INSTALL_STARTED";
@@ -91,7 +89,6 @@ public abstract class Installer {
 
     Installer(Context context) {
         this.context = context;
-        this.pm = context.getPackageManager();
         localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 

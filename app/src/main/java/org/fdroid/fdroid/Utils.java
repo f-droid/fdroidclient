@@ -473,11 +473,6 @@ public final class Utils {
             return out;
         }
 
-        public String[] toArray() {
-            ArrayList<String> list = toArrayList();
-            return list.toArray(new String[list.size()]);
-        }
-
         public boolean contains(String v) {
             for (final String s : this) {
                 if (s.equals(v)) {
