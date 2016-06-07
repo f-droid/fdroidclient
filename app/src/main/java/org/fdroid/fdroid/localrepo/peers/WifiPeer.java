@@ -20,7 +20,7 @@ public class WifiPeer implements Peer {
         this(config.getRepoUri(), config.getHost(), !config.preventFurtherSwaps());
     }
 
-    protected WifiPeer(Uri uri, String name, boolean shouldPromptForSwapBack) {
+    private WifiPeer(Uri uri, String name, boolean shouldPromptForSwapBack) {
         this.name = name;
         this.uri = uri;
         this.shouldPromptForSwapBack = shouldPromptForSwapBack;
@@ -63,7 +63,7 @@ public class WifiPeer implements Peer {
         dest.writeByte(shouldPromptForSwapBack ? (byte) 1 : (byte) 0);
     }
 
-    protected WifiPeer(Parcel in) {
+    private WifiPeer(Parcel in) {
         this(Uri.parse(in.readString()), in.readString(), in.readByte() == 1);
     }
 

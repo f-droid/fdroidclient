@@ -50,8 +50,8 @@ import java.util.Map;
  */
 public abstract class Installer {
     final Context context;
-    final PackageManager pm;
-    final LocalBroadcastManager localBroadcastManager;
+    private final PackageManager pm;
+    private final LocalBroadcastManager localBroadcastManager;
 
     public static final String ACTION_INSTALL_STARTED = "org.fdroid.fdroid.installer.Installer.action.INSTALL_STARTED";
     public static final String ACTION_INSTALL_COMPLETE = "org.fdroid.fdroid.installer.Installer.action.INSTALL_COMPLETE";

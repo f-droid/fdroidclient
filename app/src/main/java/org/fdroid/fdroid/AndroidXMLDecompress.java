@@ -68,7 +68,7 @@ import java.util.zip.ZipFile;
  * @see <a href="https://stackoverflow.com/a/4761689">a binary XML parser</a>
  */
 public class AndroidXMLDecompress {
-    public static final int START_TAG = 0x00100102;
+    private static final int START_TAG = 0x00100102;
 
     /**
      * Just get the XML attributes from the {@code <manifest>} element.
@@ -119,7 +119,7 @@ public class AndroidXMLDecompress {
         return new HashMap<>(0);
     }
 
-    public static byte[] getManifestFromFilename(String filename) throws IOException {
+    private static byte[] getManifestFromFilename(String filename) throws IOException {
         InputStream is = null;
         ZipFile zip = null;
         int size = 0;
@@ -140,7 +140,7 @@ public class AndroidXMLDecompress {
         return buf;
     }
 
-    public static String getString(byte[] bytes, int stringIndexTableOffset, int stringTableOffset, int stringIndex) {
+    private static String getString(byte[] bytes, int stringIndexTableOffset, int stringTableOffset, int stringIndex) {
         if (stringIndex < 0) {
             return null;
         }
@@ -148,7 +148,7 @@ public class AndroidXMLDecompress {
         return getStringAt(bytes, stringOffset);
     }
 
-    public static String getStringAt(byte[] bytes, int stringOffset) {
+    private static String getStringAt(byte[] bytes, int stringOffset) {
         int length = bytes[stringOffset + 1] << 8 & 0xff00 | bytes[stringOffset] & 0xff;
         byte[] chars = new byte[length];
         for (int i = 0; i < length; i++) {
@@ -160,7 +160,7 @@ public class AndroidXMLDecompress {
     /**
      * Return the little endian 32-bit word from the byte array at offset
      */
-    public static int littleEndianWord(byte[] bytes, int offset) {
+    private static int littleEndianWord(byte[] bytes, int offset) {
         return bytes[offset + 3]
                 << 24 & 0xff000000
                 | bytes[offset + 2]

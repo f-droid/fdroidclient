@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
-public class ProgressBufferedInputStream extends BufferedInputStream {
+class ProgressBufferedInputStream extends BufferedInputStream {
 
     private final ProgressListener progressListener;
     private final URL sourceUrl;
@@ -17,7 +17,7 @@ public class ProgressBufferedInputStream extends BufferedInputStream {
      * Reports progress to the specified {@link ProgressListener}, with the
      * progress based on the {@code totalBytes}.
      */
-    public ProgressBufferedInputStream(InputStream in, ProgressListener progressListener, URL sourceUrl, int totalBytes) {
+    ProgressBufferedInputStream(InputStream in, ProgressListener progressListener, URL sourceUrl, int totalBytes) {
         super(in);
         this.progressListener = progressListener;
         this.sourceUrl = sourceUrl;

@@ -50,7 +50,7 @@ public class RepoUpdater {
 
     private static final String TAG = "RepoUpdater";
 
-    public final String indexUrl;
+    private final String indexUrl;
 
     @NonNull
     private final Context context;

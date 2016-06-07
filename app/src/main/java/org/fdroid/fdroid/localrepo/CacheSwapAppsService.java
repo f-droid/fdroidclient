@@ -25,7 +25,7 @@ import java.security.cert.CertificateEncodingException;
  * {@link org.fdroid.fdroid.data.Apk} instances.
  */
 public class CacheSwapAppsService extends IntentService {
-    public static final String TAG = "CacheSwapAppsService";
+    private static final String TAG = "CacheSwapAppsService";
 
     private static final String ACTION_PARSE_APP = "org.fdroid.fdroid.localrepo.action.PARSE_APP";
 

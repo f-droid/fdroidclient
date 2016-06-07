@@ -61,7 +61,7 @@ import java.util.Set;
  * include caching of the generated {@code String}, so it should be plenty fast.
  */
 public class InstallManagerService extends Service {
-    public static final String TAG = "InstallManagerService";
+    private static final String TAG = "InstallManagerService";
 
     private static final String ACTION_INSTALL = "org.fdroid.fdroid.installer.action.INSTALL";
 
