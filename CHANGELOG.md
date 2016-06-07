@@ -1,4 +1,8 @@
-### 0.100 (2016-05-??)
+### Upcoming release
+
+* Support for Android 2.2 is dropped, 2.3.3 or later is now required
+
+### 0.100 (2016-06-07)
 
 * Ability to download apps in the background
 
