@@ -1,4 +1,4 @@
-### 0.100 (2016-05-??)
+### 0.100 (2016-06-07)
 
 * Ability to download apps in the background
 
