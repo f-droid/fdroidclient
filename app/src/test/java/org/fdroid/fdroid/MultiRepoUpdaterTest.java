@@ -1,16 +1,9 @@
 
 package org.fdroid.fdroid;
 
-import android.content.ContentProvider;
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.support.annotation.NonNull;
-import android.test.InstrumentationTestCase;
-import android.test.RenamingDelegatingContext;
-import android.test.mock.MockContentResolver;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -18,29 +11,37 @@ import org.fdroid.fdroid.RepoUpdater.UpdateException;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.FDroidProvider;
+import org.fdroid.fdroid.data.FDroidProviderTest;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.TempApkProvider;
-import org.fdroid.fdroid.data.TempAppProvider;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.annotation.Config;
 
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
-@SuppressWarnings("PMD")  // TODO port this to JUnit 4 semantics
-public class MultiRepoUpdaterTest extends InstrumentationTestCase {
+import static org.fdroid.fdroid.TestUtils.copyResourceToTempFile;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+@Config(constants = BuildConfig.class)
+@RunWith(RobolectricGradleTestRunner.class)
+public class MultiRepoUpdaterTest extends FDroidProviderTest {
     private static final String TAG = "MultiRepoUpdaterTest";
 
     private static final String REPO_MAIN = "Test F-Droid repo";
     private static final String REPO_ARCHIVE = "Test F-Droid repo (Archive)";
     private static final String REPO_CONFLICTING = "Test F-Droid repo with different apps";
 
-    private Context context;
     private RepoUpdater conflictingRepoUpdater;
     private RepoUpdater mainRepoUpdater;
     private RepoUpdater archiveRepoUpdater;
-    private File testFilesDir;
 
     private static final String PUB_KEY =
             "3082050b308202f3a003020102020420d8f212300d06092a864886f70d01010b050030363110300e0603" +
@@ -75,73 +76,8 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
             "98f848e0dbfce5a0f2da0198c47e6935a47fda12c518ef45adfb66ddf5aebaab13948a66c004b8592d22" +
             "e8af60597c4ae2977977cf61dc715a572e241ae717cafdb4f71781943945ac52e0f50b";
 
-    public class TestContext extends RenamingDelegatingContext {
-
-        private MockContentResolver resolver;
-
-        public TestContext() {
-            super(getInstrumentation().getTargetContext(), "test.");
-
-            resolver = new MockContentResolver();
-            resolver.addProvider(AppProvider.getAuthority(), prepareProvider(new AppProvider()));
-            resolver.addProvider(ApkProvider.getAuthority(), prepareProvider(new ApkProvider()));
-            resolver.addProvider(RepoProvider.getAuthority(), prepareProvider(new RepoProvider()));
-            resolver.addProvider(TempAppProvider.getAuthority(), prepareProvider(new TempAppProvider()));
-            resolver.addProvider(TempApkProvider.getAuthority(), prepareProvider(new TempApkProvider()));
-        }
-
-        private ContentProvider prepareProvider(ContentProvider provider) {
-            provider.attachInfo(this, null);
-            provider.onCreate();
-            return provider;
-        }
-
-        @Override
-        public File getFilesDir() {
-            return getInstrumentation().getTargetContext().getFilesDir();
-        }
-
-        /**
-         * String resources used during testing (e.g. when bootstraping the database) are from
-         * the real org.fdroid.fdroid app, not the test org.fdroid.fdroid.test app.
-         */
-        @Override
-        public Resources getResources() {
-            return getInstrumentation().getTargetContext().getResources();
-        }
-
-        @Override
-        public ContentResolver getContentResolver() {
-            return resolver;
-        }
-
-        @Override
-        public AssetManager getAssets() {
-            return getInstrumentation().getContext().getAssets();
-        }
-
-        @Override
-        public File getDatabasePath(String name) {
-            return new File(getInstrumentation().getContext().getFilesDir(), "fdroid_test.db");
-        }
-
-        @Override
-        public Context getApplicationContext() {
-            // Used by the DBHelper singleton instance.
-            return this;
-        }
-    }
-
-    @Override
-    public void setUp() throws Exception {
-        super.setUp();
-
-        FDroidProvider.clearDbHelperSingleton();
-
-        context = new TestContext();
-
-        testFilesDir = TestUtils.getWriteableDir(getInstrumentation());
-
+    @Before
+    public void setup() throws Exception {
         // On a fresh database install, there will be F-Droid + GP repos, including their Archive
         // repos that we are not interested in.
         RepoProvider.Helper.remove(context, 1);
@@ -152,6 +88,13 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         conflictingRepoUpdater = createUpdater(REPO_CONFLICTING, context);
         mainRepoUpdater = createUpdater(REPO_MAIN, context);
         archiveRepoUpdater = createUpdater(REPO_ARCHIVE, context);
+
+        Preferences.setup(context);
+    }
+
+    @After
+    public void tearDown() {
+        Preferences.clearSingletonForTesting();
     }
 
     /**
@@ -169,9 +112,6 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         assertConflictingRepo(repos);
     }
 
-    /**
-     *
-     */
     private void assertSomewhatAcceptable() {
         Log.i(TAG, "Asserting at least one versions of each .apk is in index.");
         List<Repo> repos = RepoProvider.Helper.all(context);
@@ -361,6 +301,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
 
     */
 
+    @Test
     public void testAcceptableConflictingThenMainThenArchive() throws UpdateException {
         assertEmpty();
         if (updateConflicting() && updateMain() && updateArchive()) {
@@ -368,6 +309,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         }
     }
 
+    @Test
     public void testAcceptableConflictingThenArchiveThenMain() throws UpdateException {
         assertEmpty();
         if (updateConflicting() && updateArchive() && updateMain()) {
@@ -375,6 +317,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         }
     }
 
+    @Test
     public void testAcceptableArchiveThenMainThenConflicting() throws UpdateException {
         assertEmpty();
         if (updateArchive() && updateMain() && updateConflicting()) {
@@ -382,6 +325,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         }
     }
 
+    @Test
     public void testAcceptableArchiveThenConflictingThenMain() throws UpdateException {
         assertEmpty();
         if (updateArchive() && updateConflicting() && updateMain()) {
@@ -389,6 +333,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         }
     }
 
+    @Test
     public void testAcceptableMainThenArchiveThenConflicting() throws UpdateException {
         assertEmpty();
         if (updateMain() && updateArchive() && updateConflicting()) {
@@ -396,6 +341,7 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
         }
     }
 
+    @Test
     public void testAcceptableMainThenConflictingThenArchive() throws UpdateException {
         assertEmpty();
         if (updateMain() && updateConflicting() && updateArchive()) {
@@ -434,12 +380,14 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
     }
 
     private boolean updateRepo(RepoUpdater updater, String indexJarPath) throws UpdateException {
-        if (!testFilesDir.canWrite()) {
-            return false;
+        File indexJar = copyResourceToTempFile(indexJarPath);
+        try {
+            updater.processDownloadedFile(indexJar);
+        } finally {
+            if (indexJar != null && indexJar.exists()) {
+                indexJar.delete();
+            }
         }
-
-        File indexJar = TestUtils.copyAssetToDir(context, indexJarPath, testFilesDir);
-        updater.processDownloadedFile(indexJar);
         return true;
     }
 

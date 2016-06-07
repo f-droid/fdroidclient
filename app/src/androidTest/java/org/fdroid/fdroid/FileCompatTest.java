@@ -36,8 +36,8 @@ public class FileCompatTest {
     @Before
     public void setUp() {
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
-        File dir = TestUtils.getWriteableDir(instrumentation);
-        sourceFile = SanitizedFile.knownSanitized(TestUtils.copyAssetToDir(instrumentation.getContext(), "simpleIndex.jar", dir));
+        File dir = TestUtilsOld.getWriteableDir(instrumentation);
+        sourceFile = SanitizedFile.knownSanitized(TestUtilsOld.copyAssetToDir(instrumentation.getContext(), "simpleIndex.jar", dir));
         destFile = new SanitizedFile(dir, "dest-" + UUID.randomUUID() + ".testproduct");
         assertFalse(destFile.exists());
         assertTrue(sourceFile.getAbsolutePath() + " should exist.", sourceFile.exists());

@@ -146,7 +146,7 @@ public class UtilsTest {
     @Test
     public void testClearOldFiles() throws IOException, InterruptedException {
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
-        File dir = new File(TestUtils.getWriteableDir(instrumentation), "clearOldFiles");
+        File dir = new File(TestUtilsOld.getWriteableDir(instrumentation), "clearOldFiles");
         FileUtils.deleteQuietly(dir);
         dir.mkdirs();
         assertTrue(dir.isDirectory());

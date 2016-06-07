@@ -190,7 +190,9 @@ public class RepoUpdater {
                 processXmlProgressListener, new URL(repo.address), (int) indexEntry.getSize());
 
             // Process the index...
-            final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            factory.setNamespaceAware(true);
+            final SAXParser parser = factory.newSAXParser();
             final XMLReader reader = parser.getXMLReader();
             final RepoXMLHandler repoXMLHandler = new RepoXMLHandler(repo, createIndexReceiver());
             reader.setContentHandler(repoXMLHandler);

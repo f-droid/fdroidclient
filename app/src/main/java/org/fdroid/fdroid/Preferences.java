@@ -373,6 +373,17 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static Preferences instance;
 
     /**
+     * Should only be used for unit testing, whereby separate tests are required to invoke `setup()`.
+     * The reason we don't instead ask for the singleton to be lazily loaded in the {@link Preferences#get()}
+     * method is because that would require each call to that method to require a {@link Context}.
+     * While it is likely that most places asking for preferences have access to a {@link Context},
+     * it is a minor convenience to be able to ask for preferences without.
+     */
+    public static void clearSingletonForTesting() {
+        instance = null;
+    }
+
+    /**
      * Needs to be setup before anything else tries to access it.
      */
     public static void setup(Context context) {

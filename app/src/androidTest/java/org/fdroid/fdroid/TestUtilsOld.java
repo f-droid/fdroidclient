@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class TestUtils {
+public class TestUtilsOld {
 
-    private static final String TAG = "TestUtils";
+    private static final String TAG = "TestUtilsOld";
 
     @Nullable
     public static File copyAssetToDir(Context context, String assetName, File directory) {
