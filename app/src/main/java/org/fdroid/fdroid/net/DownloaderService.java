@@ -37,6 +37,7 @@ import android.text.TextUtils;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.SanitizedFile;
+import org.fdroid.fdroid.installer.ApkCache;
 
 import java.io.File;
 import java.io.IOException;
@@ -196,7 +197,7 @@ public class DownloaderService extends Service {
      */
     protected void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
-        final SanitizedFile localFile = Utils.getApkDownloadPath(this, uri);
+        final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, uri);
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile);
 
         try {

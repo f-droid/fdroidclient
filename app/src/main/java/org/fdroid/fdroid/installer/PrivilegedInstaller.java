@@ -31,6 +31,7 @@ import android.os.RemoteException;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
 import org.fdroid.fdroid.privileged.IPrivilegedService;
 
@@ -297,7 +298,7 @@ public class PrivilegedInstaller extends Installer {
     }
 
     @Override
-    protected void installPackage(final Uri localApkUri, final Uri downloadUri, String packageName) {
+    protected void installPackageInternal(final Uri localApkUri, final Uri downloadUri, Apk apk) {
         sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
 
         ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -396,4 +397,9 @@ public class PrivilegedInstaller extends Installer {
         return true;
     }
 
+    @Override
+    protected boolean supportsContentUri() {
+        // TODO: correct?
+        return false;
+    }
 }

@@ -28,6 +28,7 @@ import android.os.Build;
 import android.os.PatternMatcher;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -36,12 +37,16 @@ import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
 import org.fdroid.fdroid.privileged.views.UninstallDialogActivity;
 
+import java.io.IOException;
+
 /**
  * Handles the actual install process.  Subclasses implement the details.
  */
 public abstract class Installer {
     final Context context;
     private final LocalBroadcastManager localBroadcastManager;
+
+    private static final String TAG = "Installer";
 
     public static final String ACTION_INSTALL_STARTED = "org.fdroid.fdroid.installer.Installer.action.INSTALL_STARTED";
     public static final String ACTION_INSTALL_COMPLETE = "org.fdroid.fdroid.installer.Installer.action.INSTALL_COMPLETE";
@@ -62,22 +67,10 @@ public abstract class Installer {
      * @see Intent#EXTRA_ORIGINATING_URI
      */
     static final String EXTRA_DOWNLOAD_URI = "org.fdroid.fdroid.installer.Installer.extra.DOWNLOAD_URI";
+    public static final String EXTRA_APK = "org.fdroid.fdroid.installer.Installer.extra.APK";
     public static final String EXTRA_PACKAGE_NAME = "org.fdroid.fdroid.installer.Installer.extra.PACKAGE_NAME";
     public static final String EXTRA_USER_INTERACTION_PI = "org.fdroid.fdroid.installer.Installer.extra.USER_INTERACTION_PI";
     public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.installer.Installer.extra.ERROR_MESSAGE";
-
-    public static class InstallFailedException extends Exception {
-
-        private static final long serialVersionUID = -8343133906463328027L;
-
-        public InstallFailedException(String message) {
-            super(message);
-        }
-
-        public InstallFailedException(Throwable cause) {
-            super(cause);
-        }
-    }
 
     Installer(Context context) {
         this.context = context;
@@ -150,8 +143,7 @@ public abstract class Installer {
         return intent;
     }
 
-    void sendBroadcastInstall(Uri downloadUri, String action,
-                                     PendingIntent pendingIntent) {
+    void sendBroadcastInstall(Uri downloadUri, String action, PendingIntent pendingIntent) {
         sendBroadcastInstall(downloadUri, action, pendingIntent, null);
     }
 
@@ -164,7 +156,7 @@ public abstract class Installer {
     }
 
     void sendBroadcastInstall(Uri downloadUri, String action,
-                                     PendingIntent pendingIntent, String errorMessage) {
+                              PendingIntent pendingIntent, String errorMessage) {
         Intent intent = new Intent(action);
         intent.setData(downloadUri);
         intent.putExtra(Installer.EXTRA_USER_INTERACTION_PI, pendingIntent);
@@ -182,13 +174,12 @@ public abstract class Installer {
         sendBroadcastUninstall(packageName, action, null, null);
     }
 
-    void sendBroadcastUninstall(String packageName, String action,
-                                       PendingIntent pendingIntent) {
+    void sendBroadcastUninstall(String packageName, String action, PendingIntent pendingIntent) {
         sendBroadcastUninstall(packageName, action, pendingIntent, null);
     }
 
     void sendBroadcastUninstall(String packageName, String action,
-                                       PendingIntent pendingIntent, String errorMessage) {
+                                PendingIntent pendingIntent, String errorMessage) {
         Uri uri = Uri.fromParts("package", packageName, null);
 
         Intent intent = new Intent(action);
@@ -229,13 +220,40 @@ public abstract class Installer {
     }
 
     /**
+     * Install apk
+     *
      * @param localApkUri points to the local copy of the APK to be installed
      * @param downloadUri serves as the unique ID for all actions related to the
      *                    installation of that specific APK
-     * @param packageName package name of the app that should be installed
+     * @param apk         apk object of the app that should be installed
      */
-    protected abstract void installPackage(Uri localApkUri, Uri downloadUri, String packageName);
+    public void installPackage(Uri localApkUri, Uri downloadUri, Apk apk) {
+        Uri sanitizedUri;
+        try {
+            // verify that permissions of the apk file match the ones from the apk object
+            ApkVerifier apkVerifier = new ApkVerifier(context, localApkUri, apk);
+            apkVerifier.verifyApk();
 
+            // move apk file to private directory for installation and check hash
+            sanitizedUri = ApkFileProvider.getSafeUri(
+                    context, localApkUri, apk, supportsContentUri());
+        } catch (ApkVerifier.ApkVerificationException | IOException e) {
+            Log.e(TAG, "ApkVerifier / ApkFileProvider failed", e);
+            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
+                    e.getMessage());
+            return;
+        }
+
+        installPackageInternal(sanitizedUri, downloadUri, apk);
+    }
+
+    protected abstract void installPackageInternal(Uri localApkUri, Uri downloadUri, Apk apk);
+
+    /**
+     * Uninstall app
+     *
+     * @param packageName package name of the app that should be uninstalled
+     */
     protected abstract void uninstallPackage(String packageName);
 
     /**
@@ -243,5 +261,10 @@ public abstract class Installer {
      * uninstall activities, without the system enforcing a user prompt.
      */
     protected abstract boolean isUnattended();
+
+    /**
+     * @return true if the Installer supports content Uris and not just file Uris
+     */
+    protected abstract boolean supportsContentUri();
 
 }

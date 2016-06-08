@@ -24,6 +24,7 @@ import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Apk;
 
 public class InstallerFactory {
 
@@ -34,17 +35,16 @@ public class InstallerFactory {
      * Either DefaultInstaller, PrivilegedInstaller, or in the special
      * case to install the "F-Droid Privileged Extension" ExtensionInstaller.
      *
-     * @param context     current {@link Context}
-     * @param packageName package name of apk to be installed. Required to select
-     *                    the ExtensionInstaller.
-     *                    If this is null, the ExtensionInstaller will never be returned.
+     * @param context current {@link Context}
+     * @param apk     apk to be installed. Required to select the ExtensionInstaller.
+     *                If this is null, the ExtensionInstaller will never be returned.
      * @return instance of an Installer
      */
-    public static Installer create(Context context, String packageName) {
+    public static Installer create(Context context, Apk apk) {
         Installer installer;
 
-        if (packageName != null
-                && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
+        if (apk != null
+                && apk.packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
             // special case for "F-Droid Privileged Extension"
             installer = new ExtensionInstaller(context);
         } else if (isPrivilegedInstallerEnabled()) {
@@ -54,9 +54,7 @@ public class InstallerFactory {
 
                 installer = new PrivilegedInstaller(context);
             } else {
-                Log.e(TAG, "PrivilegedInstaller is enabled in prefs, but permissions are not granted!");
-                // TODO: better error handling?
-
+                Log.e(TAG, "PrivilegedInstaller is enabled in prefs, but not working correctly!");
                 // fallback to default installer
                 installer = new DefaultInstaller(context);
             }

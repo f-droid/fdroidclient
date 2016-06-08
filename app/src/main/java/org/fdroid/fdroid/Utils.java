@@ -33,9 +33,7 @@ import android.util.Log;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.utils.StorageUtils;
 
-import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
@@ -272,58 +270,6 @@ public final class Utils {
      */
     public static Uri getPackageUri(String packageName) {
         return Uri.parse("package:" + packageName);
-    }
-
-    /**
-     * This location is only for caching, do not install directly from this location
-     * because if the file is on the External Storage, any other app could swap out
-     * the APK while the install was in process, allowing malware to install things.
-     * Using {@link Installer#installPackage(File, String, String)}
-     * is fine since that does the right thing.
-     */
-    public static File getApkCacheDir(Context context) {
-        File apkCacheDir = new File(StorageUtils.getCacheDirectory(context, true), "apks");
-        if (apkCacheDir.isFile()) {
-            apkCacheDir.delete();
-        }
-        if (!apkCacheDir.exists()) {
-            apkCacheDir.mkdir();
-        }
-        return apkCacheDir;
-    }
-
-    /**
-     * Get the full path for where an APK URL will be downloaded into.
-     */
-    public static SanitizedFile getApkDownloadPath(Context context, Uri uri) {
-        File dir = new File(Utils.getApkCacheDir(context), uri.getHost() + "-" + uri.getPort());
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        return new SanitizedFile(dir, uri.getLastPathSegment());
-    }
-
-    /**
-     * Recursively delete files in {@code dir} that were last modified
-     * {@code secondsAgo} seconds ago, e.g. when it was downloaded.
-     *
-     * @param dir        The directory to recurse in
-     * @param secondsAgo The number of seconds old that marks a file for deletion.
-     */
-    public static void clearOldFiles(File dir, long secondsAgo) {
-        if (dir == null) {
-            return;
-        }
-        long olderThan = System.currentTimeMillis() - (secondsAgo * 1000L);
-        for (File f : dir.listFiles()) {
-            if (f.isDirectory()) {
-                clearOldFiles(f, olderThan);
-                f.delete();
-            }
-            if (FileUtils.isFileOlder(f, olderThan)) {
-                f.delete();
-            }
-        }
     }
 
     public static String calcFingerprint(String keyHexString) {

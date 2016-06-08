@@ -95,6 +95,16 @@
             android:name="org.fdroid.fdroid.data.InstalledAppProvider"
             android:exported="false"/>
 
+        <provider
+            android:name="org.fdroid.fdroid.installer.ApkFileProvider"
+            android:authorities="org.fdroid.fdroid.installer.ApkFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/apk_file_provider" />
+        </provider>
+
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".FDroid" />

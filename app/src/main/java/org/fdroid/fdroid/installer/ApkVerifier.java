@@ -26,15 +26,9 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.apache.commons.io.FileUtils;
-import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.SanitizedFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -47,13 +41,11 @@ public class ApkVerifier {
 
     private static final String TAG = "ApkVerifier";
 
-    private final Context context;
     private final Uri localApkUri;
     private final Apk expectedApk;
     private final PackageManager pm;
 
     ApkVerifier(Context context, Uri localApkUri, Apk expectedApk) {
-        this.context = context;
         this.localApkUri = localApkUri;
         this.expectedApk = expectedApk;
         this.pm = context.getPackageManager();
@@ -105,67 +97,6 @@ public class ApkVerifier {
         }
 
         return new HashSet<>(Arrays.asList(localApkInfo.requestedPermissions));
-    }
-
-    public Uri getSafeUri() throws ApkVerificationException {
-        File apkFile = new File(localApkUri.getPath());
-
-        SanitizedFile sanitizedApkFile = null;
-        try {
-
-            /* Always copy the APK to the safe location inside of the protected area
-             * of the app to prevent attacks based on other apps swapping the file
-             * out during the install process. Most likely, apkFile was just downloaded,
-             * so it should still be in the RAM disk cache */
-            sanitizedApkFile = SanitizedFile.knownSanitized(File.createTempFile("install-", ".apk",
-                    context.getFilesDir()));
-            FileUtils.copyFile(apkFile, sanitizedApkFile);
-            if (!verifyApkFile(sanitizedApkFile, expectedApk.hash, expectedApk.hashType)) {
-                FileUtils.deleteQuietly(apkFile);
-                throw new ApkVerificationException(apkFile + " failed to verify!");
-            }
-            apkFile = null; // ensure this is not used now that its copied to apkToInstall
-
-            // Need the apk to be world readable, so that the installer is able to read it.
-            // Note that saving it into external storage for the purpose of letting the installer
-            // have access is insecure, because apps with permission to write to the external
-            // storage can overwrite the app between F-Droid asking for it to be installed and
-            // the installer actually installing it.
-            sanitizedApkFile.setReadable(true, false);
-
-        } catch (IOException | NoSuchAlgorithmException e) {
-            throw new ApkVerificationException(e);
-        } finally {
-            // 20 minutes the start of the install process, delete the file
-            final File apkToDelete = sanitizedApkFile;
-            new Thread() {
-                @Override
-                public void run() {
-                    android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
-                    try {
-                        Thread.sleep(1200000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } finally {
-                        FileUtils.deleteQuietly(apkToDelete);
-                    }
-                }
-            }.start();
-        }
-
-        return Uri.fromFile(sanitizedApkFile);
-    }
-
-    /**
-     * Checks the APK file against the provided hash, returning whether it is a match.
-     */
-    static boolean verifyApkFile(File apkFile, String hash, String hashType)
-            throws NoSuchAlgorithmException {
-        if (!apkFile.exists()) {
-            return false;
-        }
-        Hasher hasher = new Hasher(hashType, apkFile);
-        return hasher.match(hash);
     }
 
     public static class ApkVerificationException extends Exception {
