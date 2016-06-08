@@ -23,7 +23,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.util.Log;
+import android.text.TextUtils;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Hasher;
@@ -37,14 +37,19 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashSet;
 
+/**
+ * This ApkVerifier verifies that the downloaded apk corresponds to the Apk information
+ * displayed to the user. This is especially important in case an unattended installer
+ * has been used which displays permissions before download.
+ */
 public class ApkVerifier {
 
     private static final String TAG = "ApkVerifier";
 
-    Context context;
-    Uri localApkUri;
-    Apk expectedApk;
-    PackageManager pm;
+    private final Context context;
+    private final Uri localApkUri;
+    private final Apk expectedApk;
+    private final PackageManager pm;
 
     ApkVerifier(Context context, Uri localApkUri, Apk expectedApk) {
         this.context = context;
@@ -54,14 +59,15 @@ public class ApkVerifier {
     }
 
     public void verifyApk() throws ApkVerificationException {
+        // parse downloaded apk file locally
         PackageInfo localApkInfo = pm.getPackageArchiveInfo(
                 localApkUri.getPath(), PackageManager.GET_PERMISSIONS);
         if (localApkInfo == null) {
-            throw new ApkVerificationException("parsing apk failed!");
+            throw new ApkVerificationException("parsing apk file failed!");
         }
 
         // check if the apk has the expected packageName
-        if (localApkInfo.packageName == null || !localApkInfo.packageName.equals(expectedApk.packageName)) {
+        if (!TextUtils.equals(localApkInfo.packageName, expectedApk.packageName)) {
             throw new ApkVerificationException("apk has unexpected packageName!");
         }
 
@@ -78,7 +84,10 @@ public class ApkVerifier {
             throw new ApkVerificationException("permissions of apk not equals expected permissions!");
         }
 
+        int localTargetSdkVersion = localApkInfo.applicationInfo.targetSdkVersion;
+        Utils.debugLog(TAG, "localTargetSdkVersion: " + localTargetSdkVersion);
         // TODO: check target sdk
+
     }
 
     private HashSet<String> getLocalPermissionsSet(PackageInfo localApkInfo) {

@@ -18,18 +18,12 @@
 
 package org.fdroid.fdroid.privileged.views;
 
-import android.annotation.TargetApi;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
 
-import org.fdroid.fdroid.Permission;
 import org.fdroid.fdroid.data.Apk;
 
-import java.util.ArrayList;
-
-@TargetApi(Build.VERSION_CODES.M)
 public class AppDiff {
 
     private final PackageManager mPm;

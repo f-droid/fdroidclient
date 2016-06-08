@@ -38,8 +38,6 @@ import java.io.File;
  */
 public class ExtensionInstaller extends Installer {
 
-    private static final String TAG = "ExtensionInstaller";
-
     ExtensionInstaller(Context context) {
         super(context);
     }
