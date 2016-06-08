@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * We need some shared information between the client and the server app.
  */
-public class BluetoothConstants {
+class BluetoothConstants {
 
     public static UUID fdroidUuid() {
         // TODO: Generate a UUID deterministically from, e.g. "org.fdroid.fdroid.net.Bluetooth";

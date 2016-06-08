@@ -71,7 +71,7 @@ public class BluetoothPeer implements Peer {
         dest.writeParcelable(this.device, 0);
     }
 
-    protected BluetoothPeer(Parcel in) {
+    private BluetoothPeer(Parcel in) {
         this.device = in.readParcelable(BluetoothDevice.class.getClassLoader());
     }
 

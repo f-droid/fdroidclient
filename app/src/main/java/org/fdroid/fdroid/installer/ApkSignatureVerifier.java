@@ -38,7 +38,7 @@ import java.util.Arrays;
  * Thus, we are comparing certificates (including the public key) used to sign an APK,
  * not the actual APK signature.
  */
-public class ApkSignatureVerifier {
+class ApkSignatureVerifier {
 
     private static final String TAG = "ApkSignatureVerifier";
 

@@ -129,7 +129,7 @@ public class FDroidApp extends Application {
         activity.setTheme(getCurDialogThemeResId());
     }
 
-    public static int getCurDialogThemeResId() {
+    private static int getCurDialogThemeResId() {
         switch (curTheme) {
             case light:
                 return R.style.MinWithDialogBaseThemeLight;

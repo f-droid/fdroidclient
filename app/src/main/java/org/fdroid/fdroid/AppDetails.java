@@ -925,7 +925,7 @@ public class AppDetails extends AppCompatActivity {
     }
 
     // Install the version of this app denoted by 'app.curApk'.
-    public void install(final Apk apk) {
+    private void install(final Apk apk) {
         if (isFinishing()) {
             return;
         }

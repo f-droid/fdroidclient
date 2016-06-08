@@ -36,7 +36,7 @@ import org.fdroid.fdroid.R;
  * A transparent activity as a wrapper around Android's PackageInstaller Intents
  */
 public class DefaultInstallerActivity extends FragmentActivity {
-    public static final String TAG = "AndroidInstallerAct";
+    private static final String TAG = "AndroidInstallerAct";
 
     static final String ACTION_INSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.INSTALL_PACKAGE";
     static final String ACTION_UNINSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.UNINSTALL_PACKAGE";
@@ -124,7 +124,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
         installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
     }
 
-    protected void uninstallPackage(String packageName) {
+    private void uninstallPackage(String packageName) {
         // check that the package is installed
         try {
             getPackageManager().getPackageInfo(packageName, 0);

@@ -54,7 +54,7 @@ public class BluetoothDownloader extends Downloader {
      * May return null if an error occurred while getting file details.
      */
     @Nullable
-    public FileDetails getFileDetails() {
+    private FileDetails getFileDetails() {
         if (fileDetails == null) {
             Utils.debugLog(TAG, "Going to Bluetooth \"server\" to get file details.");
             try {

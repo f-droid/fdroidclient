@@ -37,7 +37,7 @@ public abstract class AppListFragment extends ListFragment implements
 
     private static final int REQUEST_APPDETAILS = 0;
 
-    public static final String[] APP_PROJECTION = {
+    private static final String[] APP_PROJECTION = {
         AppProvider.DataColumns._ID, // Required for cursor loader to work.
         AppProvider.DataColumns.PACKAGE_NAME,
         AppProvider.DataColumns.NAME,
@@ -55,9 +55,9 @@ public abstract class AppListFragment extends ListFragment implements
         AppProvider.DataColumns.REQUIREMENTS, // Needed for filtering apps that require root.
     };
 
-    public static final String APP_SORT = AppProvider.DataColumns.NAME;
+    private static final String APP_SORT = AppProvider.DataColumns.NAME;
 
-    protected AppListAdapter appAdapter;
+    private AppListAdapter appAdapter;
 
     @Nullable private String searchQuery;
 
@@ -80,7 +80,7 @@ public abstract class AppListFragment extends ListFragment implements
      * NOTE: This will get called <em>multiple</em> times, every time the user changes the
      * search query.
      */
-    protected void onSearch() {
+    void onSearch() {
         // Do nothing by default.
     }
 
@@ -176,7 +176,7 @@ public abstract class AppListFragment extends ListFragment implements
         }
     }
 
-    protected Intent getAppDetailsIntent() {
+    private Intent getAppDetailsIntent() {
         return new Intent(getActivity(), AppDetails.class);
     }
 

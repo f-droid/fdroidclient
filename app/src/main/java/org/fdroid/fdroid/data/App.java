@@ -271,8 +271,7 @@ public class App extends ValueObject implements Comparable<App> {
         initApkFromApkFile(context, this.installedApk, packageInfo, apkFile);
     }
 
-    private void setFromPackageInfo(PackageManager pm, PackageInfo packageInfo)
-            throws CertificateEncodingException, IOException, PackageManager.NameNotFoundException {
+    private void setFromPackageInfo(PackageManager pm, PackageInfo packageInfo) {
 
         this.packageName = packageInfo.packageName;
         final String installerPackageName = pm.getInstallerPackageName(packageName);

@@ -16,7 +16,7 @@ import rx.Subscriber;
 import rx.functions.Action0;
 import rx.subscriptions.Subscriptions;
 
-class BluetoothFinder extends PeerFinder {
+final class BluetoothFinder extends PeerFinder {
 
     public static Observable<Peer> createBluetoothObservable(final Context context) {
         return Observable.create(new Observable.OnSubscribe<Peer>() {
@@ -40,7 +40,7 @@ class BluetoothFinder extends PeerFinder {
 
     private final BluetoothAdapter adapter;
 
-    BluetoothFinder(Context context, Subscriber<? super Peer> subscriber) {
+    private BluetoothFinder(Context context, Subscriber<? super Peer> subscriber) {
         super(context, subscriber);
         adapter = BluetoothAdapter.getDefaultAdapter();
     }

@@ -23,12 +23,12 @@ import info.guardianproject.netcipher.NetCipher;
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
 
-    protected static final String HEADER_IF_NONE_MATCH = "If-None-Match";
-    protected static final String HEADER_FIELD_ETAG = "ETag";
+    private static final String HEADER_IF_NONE_MATCH = "If-None-Match";
+    private static final String HEADER_FIELD_ETAG = "ETag";
 
     private final String username;
     private final String password;
-    protected HttpURLConnection connection;
+    private HttpURLConnection connection;
     private int statusCode = -1;
 
     HttpDownloader(URL url, File destFile)
@@ -135,7 +135,7 @@ public class HttpDownloader extends Downloader {
     /**
      * @return Whether the connection is resumable or not
      */
-    protected void setupConnection(boolean resumable) throws IOException {
+    private void setupConnection(boolean resumable) throws IOException {
         if (connection != null) {
             return;
         }
@@ -147,7 +147,7 @@ public class HttpDownloader extends Downloader {
         }
     }
 
-    protected void doDownload(boolean resumable) throws IOException, InterruptedException {
+    private void doDownload(boolean resumable) throws IOException, InterruptedException {
         if (wantToCheckCache()) {
             setupCacheCheck();
             Utils.debugLog(TAG, "Checking cached status of " + sourceUrl);

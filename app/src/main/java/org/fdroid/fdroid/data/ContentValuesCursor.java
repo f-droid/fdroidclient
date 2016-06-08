@@ -20,12 +20,12 @@ import java.util.Map;
  * means only types used in {@link App#toContentValues()} and
  * {@link Apk#toContentValues()} are implemented.
  */
-public class ContentValuesCursor extends AbstractCursor {
+class ContentValuesCursor extends AbstractCursor {
 
     private final String[] keys;
     private final Object[] values;
 
-    public ContentValuesCursor(ContentValues contentValues) {
+    ContentValuesCursor(ContentValues contentValues) {
         super();
         keys = new String[contentValues.size()];
         values = new Object[contentValues.size()];

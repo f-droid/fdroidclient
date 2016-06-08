@@ -24,10 +24,10 @@ public abstract class FDroidProvider extends ContentProvider {
 
     private static final String TAG = "FDroidProvider";
 
-    public static final String AUTHORITY = "org.fdroid.fdroid.data";
+    static final String AUTHORITY = "org.fdroid.fdroid.data";
 
-    protected static final int CODE_LIST   = 1;
-    protected static final int CODE_SINGLE = 2;
+    static final int CODE_LIST   = 1;
+    static final int CODE_SINGLE = 2;
 
     private static DBHelper dbHelper;
 

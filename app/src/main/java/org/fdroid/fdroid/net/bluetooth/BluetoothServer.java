@@ -144,7 +144,7 @@ public class BluetoothServer extends Thread {
 
         }
 
-        private Response handleRequest(Request request) throws IOException {
+        private Response handleRequest(Request request) {
 
             Utils.debugLog(TAG, "Received Bluetooth request from client, will process it now.");
 

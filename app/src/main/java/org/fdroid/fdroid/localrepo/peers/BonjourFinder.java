@@ -19,7 +19,7 @@ import rx.Subscriber;
 import rx.functions.Action0;
 import rx.subscriptions.Subscriptions;
 
-class BonjourFinder extends PeerFinder implements ServiceListener {
+final class BonjourFinder extends PeerFinder implements ServiceListener {
 
     public static Observable<Peer> createBonjourObservable(final Context context) {
         return Observable.create(new Observable.OnSubscribe<Peer>() {
@@ -41,14 +41,14 @@ class BonjourFinder extends PeerFinder implements ServiceListener {
 
     private static final String TAG = "BonjourFinder";
 
-    public static final String HTTP_SERVICE_TYPE = "_http._tcp.local.";
-    public static final String HTTPS_SERVICE_TYPE = "_https._tcp.local.";
+    private static final String HTTP_SERVICE_TYPE = "_http._tcp.local.";
+    private static final String HTTPS_SERVICE_TYPE = "_https._tcp.local.";
 
     private JmDNS jmdns;
     private WifiManager wifiManager;
     private WifiManager.MulticastLock mMulticastLock;
 
-    BonjourFinder(Context context, Subscriber<? super Peer> subscriber) {
+    private BonjourFinder(Context context, Subscriber<? super Peer> subscriber) {
         super(context, subscriber);
     }
 

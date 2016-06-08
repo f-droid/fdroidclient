@@ -8,7 +8,6 @@ import org.fdroid.fdroid.net.bluetooth.FileDetails;
 import org.fdroid.fdroid.net.bluetooth.httpish.headers.Header;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
@@ -128,23 +127,6 @@ public class Response {
 
         output.flush();
 
-    }
-
-    public String readContents() throws IOException {
-        int size = getFileSize();
-        if (contentStream == null || size <= 0) {
-            return null;
-        }
-
-        int pos = 0;
-        byte[] buffer = new byte[4096];
-        ByteArrayOutputStream contents = new ByteArrayOutputStream(size);
-        while (pos < size) {
-            int read = contentStream.read(buffer);
-            pos += read;
-            contents.write(buffer, 0, read);
-        }
-        return contents.toString();
     }
 
     public static class Builder {
