@@ -209,10 +209,7 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="empty_available_app_list">No hay aplicaciones en esta categoría.\n\nPrueba a seleccionar una categoría diferente o actualizar los repositorios para obtener una lista reciente de aplicaciones.</string>
     <string name="empty_can_update_app_list">Todas las aplicaciones están actualizadas.\n\n¡Felicidades! Todas tus aplicaciones están actualizadas (o los repositorios están desactualizados).</string>
 
-    <string name="install_error_title">Error de instalación</string>
     <string name="install_error_unknown">Fallo al instalar, debido a un error desconocido</string>
-    <string name="install_error_cannot_parse">Ha ocurrido un error al analizar el paquete</string>
-    <string name="uninstall_error_title">Error de desinstalación</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>
     <string name="system_install_first_time_notification">¿Instalar la extensión de F-Droid con permisos de sistema?</string>
     <string name="system_install_first_time_notification_message_short">Toque para más información.</string>
@@ -257,13 +254,11 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="bluetooth_unavailable">Bluetooth no disponible</string>
     <string name="swap_cant_send_no_bluetooth">No se puede enviar F-Droid porque Bluetooth no está disponible en este dispositivo.</string>
     <string name="loading">Cargando…</string>
-    <string name="swap_attempt_install">Intentar instalar</string>
     <string name="swap_connection_misc_error">Ocurrió un error mientras se conectaba al dispositivo. Parece que no podemos intercambiar con él.</string>
     <string name="swap_not_enabled">Intercambio no activado</string>
     <string name="swap_not_enabled_description">Antes de intercambiar, el dispositivo debe ser visible.</string>
 
     <string name="install_confirm">¿Quiere instalar esta aplicación? Tendrá acceso a</string>
-    <string name="install_confirm_no_perms">¿Quieres instalar esta aplicación? No requiere ningún acceso especial.</string>
     <string name="install_confirm_update">¿Quieres instalar una actualización de esta aplicación? Los datos no se perderán. La aplicación actualizada tendrá acceso a:</string>
     <string name="install_confirm_update_no_perms">¿Quieres instalar una actualización para esta aplicación? Los datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="newPerms">Nuevo</string>

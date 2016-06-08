@@ -180,8 +180,6 @@
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Escrita</string>
 
-    <string name="install_error_title">Erro de instalación</string>
-    <string name="uninstall_error_title">Erro de desinstalación</string>
     <string name="uninstall_error_unknown">Fallou ao desinstalar por un erro descoñecido</string>
     <string name="system_install_denied_title">F-Droid Privileged Extension non está dispoñíbel</string>
     <string name="system_install_button_install">Instalar</string>
@@ -272,7 +270,6 @@
     <string name="root_access_denied_title">Acceso root denegado</string>
     <string name="root_access_denied_body">Pode que o teu dispositivo Android non esté rooteado ou que denegases o acceso root para F-Droid.</string>
     <string name="install_error_unknown">Fallou a instalación debido a un error descoñecido</string>
-    <string name="install_error_cannot_parse">Ocurriu un erro durante a análise do paquete</string>
     <string name="system_install_denied_body">Esta opción sólo está dispoñible cando F-Droid Privileged Extension está instalado.</string>
     <string name="system_install_denied_signature">A firma da extensión é errónea! Por favor, crea unha incidencia!</string>
     <string name="system_install_denied_permissions">Os permisos con privilexios non foron garantizados para a extensión! Por favor, crea unha incidencia!</string>
@@ -298,13 +295,11 @@
     <string name="swap_no_peers_nearby">Non se atopou a ninguén cerca para intercambios.</string>
     <string name="swap_qr_isnt_for_swap">O código QR que escaneaches non parece corresponder a un código de intercambio.</string>
     <string name="swap_cant_send_no_bluetooth">Non se pode enviar, porque o Bluetooth non está dispoñible neste dispositivo.</string>
-    <string name="swap_attempt_install">Intentar instalar</string>
     <string name="swap_connection_misc_error">Ocurriu un erro durante a conexión co dispositivo, non se pode realizar o intercambio.</string>
     <string name="swap_not_enabled">Intercambio non dispoñible</string>
     <string name="swap_not_enabled_description">Antes do intercambio, o teu dispositivo debe estar visible.</string>
 
     <string name="install_confirm">Desexas instalar este aplicativo? Terá acceso a:</string>
-    <string name="install_confirm_no_perms">Desexas instalar este aplicativo? Non require ningún privilexio especial.</string>
     <string name="install_confirm_update">Desexas instalar unha actualización de este aplicativo? Os teus datos existentes non se perderán. A actualización require acceso a:</string>
     <string name="install_confirm_update_system">Desexas instalar unha actualización para este aplicativo do sistema? Os teus datos existentes non se perderán. A actualización require acceso a:</string>
     <string name="install_confirm_update_no_perms">Desexas instalar unha actualización de este aplicativo? Os teus datos existentes non se perderán. A actualización non require privilexios especiais.</string>

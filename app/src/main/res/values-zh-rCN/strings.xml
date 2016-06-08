@@ -221,10 +221,7 @@
     <string name="empty_can_update_app_list">所有软件已更新。\n\n好棒！你的应用都是最新的（或者你该更新软件库了）。</string>
 
     <string name="root_access_denied_body">你的设备未ROOT，或者你拒绝了ROOT请求。</string>
-    <string name="install_error_title">安装失败</string>
     <string name="install_error_unknown">由于未知原因导致安装失败</string>
-    <string name="install_error_cannot_parse">解析安装包时出现错误</string>
-    <string name="uninstall_error_title">缷载失败</string>
     <string name="uninstall_error_unknown">由于未知原因导致缷载失败</string>
     <string name="system_install_denied_title">F-Droid特权扩展不可用</string>
     <string name="system_install_denied_body">请先安装特权扩展，然后该选项才可用。</string>
@@ -286,13 +283,11 @@
     <string name="bluetooth_unavailable">蓝牙不可用</string>
     <string name="swap_cant_send_no_bluetooth">不能发送F-Droid，因为该设备蓝牙不可用。</string>
     <string name="loading">加载中…</string>
-    <string name="swap_attempt_install">尝试安装</string>
     <string name="swap_connection_misc_error">连接到设备时发生错误，我们似乎无法与它交换。</string>
     <string name="swap_not_enabled">示启用交换功能</string>
     <string name="swap_not_enabled_description">交换之前，你的设备必须是可见的。</string>
 
     <string name="install_confirm">确定要安装这个应用吗？它将有以下权限：</string>
-    <string name="install_confirm_no_perms">确定要安装这个应用吗？它未请求任何权限。</string>
     <string name="install_confirm_update">确定要为这个应用安装更新吗？你的已有数据会保留。更新后的应用程序将有下权限：</string>
     <string name="install_confirm_update_system">确定要为这个内置应用安装更新吗？你的已有数据会保留。更新后的应用程序将有下权限：</string>
     <string name="install_confirm_update_no_perms">确定要为这个应用安装更新吗？你的已有数据会保留。该应用未请求任何权限。</string>

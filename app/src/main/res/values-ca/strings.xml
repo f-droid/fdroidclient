@@ -244,10 +244,7 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="downloading">S\'està baixant…</string>
 
     <string name="empty_installed_app_list">Cap aplicació instal·lada\n\nTeniu aplicacions al vostre dispositiu, però no estan disponibles a F-Droid. Això podria ser perquè necessiteu actualitzar els repositoris o perquè els repositoris no contenen les vostres aplicacions.</string>
-    <string name="install_error_title">Error d\'instal·lació</string>
     <string name="install_error_unknown">La instal·lació ha fallat per un error desconegut</string>
-    <string name="install_error_cannot_parse">Ha ocurregut un error al analitzar el paquet</string>
-    <string name="uninstall_error_title">Error de desinstal·lació</string>
     <string name="uninstall_error_unknown">La desinstal·lació ha fallat per un error desconegut</string>
     <string name="system_install_denied_title">L\'Extensió Privilegiada d\'F-Droid no està disponible</string>
     <string name="empty_can_update_app_list">Totes les aplicacions estan actualitzades.\n\nFelicitats! Totes les vostres aplicacions estan actualitzades (o els repositoris no ho estan).</string>
@@ -299,14 +296,12 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="bluetooth_unavailable">El Bluetooth no està disponible</string>
     <string name="swap_cant_send_no_bluetooth">No s\'ha pogut enviar F-Droid perquè el Bluetooth no està disponible en aquest dispositiu.</string>
     <string name="loading">Carregant…</string>
-    <string name="swap_attempt_install">Intenteu instal·lar</string>
     <string name="empty_available_app_list">Cap aplicació en aquesta categoria.\n\nProveu triant una altra categoria o actualitzeu els repositoris per obtenir una llista recent d\'aplicacions.</string>
     <string name="swap_connection_misc_error">S\'ha produït un error al connectar-se al dispositiu. Sembla que no ens hi podem connectar.</string>
     <string name="swap_not_enabled">Intercanvi no activat</string>
     <string name="swap_not_enabled_description">Abans d\'intercanviar heu de fer visible el dispositiu.</string>
 
     <string name="install_confirm">necessita accés a</string>
-    <string name="install_confirm_no_perms">Voleu instal·lar aquesta aplicació? No requereix cap accés especial.</string>
     <string name="install_confirm_update">Voleu instal·lar una actualització d\'aquesta aplicació? Les dades existents no es perdran. L\'aplicació actualitzada tindrà accés a:</string>
     <string name="install_confirm_update_system">Voleu instal·lar una actualització d\'aquesta aplicació integrada? No perdreu les dades existents. L\'aplicació actualitzada tindrà accés a:</string>
     <string name="install_confirm_update_no_perms">Voleu instal·lar una actualització d\'aquesta aplicació? Les dades existents no es perdran. No requereix cap accés especial.</string>

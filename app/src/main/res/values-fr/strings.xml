@@ -193,8 +193,6 @@
     <string name="empty_available_app_list">Aucune appli dans cette catégorie.\n\nEssayez de sélectionner une autre catégorie ou de mettre à jour vos dépôts pour avoir une liste d\'applis récente.</string>
     <string name="empty_can_update_app_list">Toutes les applis sont à jour.\n\nFélicitations ! Toutes vos applis sont à jour (ou vos dépôts ne le sont pas).</string>
 
-    <string name="install_error_title">Erreur d\'installation</string>
-    <string name="uninstall_error_title">Erreur de désinstallation</string>
     <string name="system_install_first_time_notification_message_short">Appuyez pour plus d\'informations.</string>
     <string name="system_install_installing">Installation…</string>
     <string name="system_install_uninstalling">Désinstallation…</string>
@@ -203,7 +201,6 @@
     <string name="swap_dont_show_again">Ne plus afficher</string>
     <string name="loading">Chargement…</string>
     <string name="install_confirm">Voulez-vous installer cette application ? Elle aura accès à :</string>
-    <string name="install_confirm_no_perms">Voulez-vous installer cette application ? Elle ne requiert aucune autorisation particulière.</string>
     <string name="install_confirm_update">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Une fois mise à jour, l\'application aura accès à :</string>
     <string name="install_confirm_update_system">Voulez-vous mettre à jour cette application système ? Vos données ne seront pas perdues. Une fois mise à jour, l\'application aura accès à :</string>
     <string name="install_confirm_update_no_perms">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Elle ne requiert aucune autorisation particulière.</string>
@@ -240,7 +237,6 @@
     <string name="category_Graphics">Graphiques</string>
     <string name="empty_installed_app_list">Aucune appli installée.\n\nIl y a des applis sur votre appareil, mais aucune n\'est disponible sur F-Droid. Vous devriez peut-être mettre à jour vos dépôts, ou vos applis ne sont pas disponibles dans ces dépôts.</string>
     <string name="install_error_unknown">L\'installation a échoué pour une raison inconnue</string>
-    <string name="install_error_cannot_parse">Une erreur s\'est produite pendant l\'analyse du paquet</string>
     <string name="uninstall_error_unknown">La désinstallation a échoué pour une raison inconnue</string>
     <string name="swap_nfc_title">Rapprochez vos appareils pour commencer</string>
     <string name="swap_join_same_wifi_desc">Pour échanger via Wi-Fi, assurez-vous d\'être sur le même réseau Wi-Fi. Si vous n\'avez pas accès au même réseau, l\'un d\'entre vous peut créer un point d\'accès Wi-Fi.</string>
@@ -302,7 +298,6 @@
     <string name="system_uninstall_button">Désinstaller</string>
 
     <string name="swap_cant_find_peers">Vous n\'arrivez pas à trouver ce que vous cherchez ?</string>
-    <string name="swap_attempt_install">Essayer d\'installer</string>
     <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, il semblerait que nous ne puissions pas faire d\'échange avec.</string>
     <string name="swap_not_enabled">Échange désactivé</string>
     <string name="category_Time">Temps</string>

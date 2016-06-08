@@ -206,10 +206,7 @@
     <string name="empty_available_app_list">Không có ứng dụng trong mục này.\n\nHãy thử chọn mục khác hoặc cập nhật kho ứng dụng để có danh sách ứng dụng mới.</string>
     <string name="empty_can_update_app_list">Tất cả ứng dụng đã được cập nhật.\n\nChúc mừng! Bạn đang có những phiên bản mới nhất (nhưng cũng có thể các kho ứng dụng chưa được cập nhật).</string>
 
-    <string name="install_error_title">Lỗi cài đặt</string>
     <string name="install_error_unknown">Không thể cài đặt do có lỗi xảy ra</string>
-    <string name="install_error_cannot_parse">Xảy ra lỗi khi phân tích gói</string>
-    <string name="uninstall_error_title">Lỗi khi xoá bỏ</string>
     <string name="uninstall_error_unknown">Không thể xoá ứng dụng do có lỗi xảy ra</string>
     <string name="system_install_first_time_notification">Cài đặt phần mở rộng F-Droid được cấp quyền?</string>
     <string name="system_install_first_time_notification_message_short">Chạm để xem thêm thông tin.</string>
@@ -257,11 +254,9 @@
     <string name="loading">Đang tải…</string>
     <string name="swap_not_enabled">Trao đổi đang tắt</string>
     <string name="swap_connection_misc_error">Đã xảy ra lỗi khi kết nối, vì vậy không thể trao đổi ứng dụng được.</string>
-    <string name="swap_attempt_install">Thử cài đặt</string>
     <string name="swap_not_enabled_description">Trước khi trao đổi, máy của bạn phải nhìn thấy được qua mạng.</string>
 
     <string name="install_confirm">Bạn có muốn cài đặt ứng dụng này không? Nó sẽ có quyền truy cập vào:</string>
-    <string name="install_confirm_no_perms">Bạn có muốn cài đặt ứng dụng này không? Nó không đòi hỏi quyền truy cập đặc biệt nào.</string>
     <string name="install_confirm_update">Bạn có muốn cập nhật ứng dụng đã có này không? Dữ liệu đã có sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
     <string name="install_confirm_update_system">Bạn có muốn cập nhật ứng dụng hệ thống này không? Dữ liệu đã có sẽ không bị mất. Ứng dụng được cập nhật sẽ có quyền truy cập vào:</string>
     <string name="install_confirm_update_no_perms">Bạn có muốn cập nhật ứng dụng đã có này không? Dữ liệu đã có sẽ không bị mất. Ứng dụng không đòi hỏi quyền truy cập đặc biệt nào.</string>

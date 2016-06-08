@@ -197,10 +197,7 @@
     <string name="empty_available_app_list">この欄にｱﾌﾟﾘｹｰｼｮﾝはありません｡\n\n別の欄を選択するか､ﾘﾎﾟｼﾞﾄﾘを更新して新しいｱﾌﾟﾘｹｰｼｮﾝの一覧を取得してみてください｡</string>
     <string name="empty_can_update_app_list">全てのｱﾌﾟﾘｹｰｼｮﾝが最新の状態であるか､又はﾘﾎﾟｼﾞﾄﾘが更新されていません。</string>
 
-    <string name="install_error_title">ｲﾝｽﾄｰﾙｴﾗｰ</string>
     <string name="install_error_unknown">不明なｴﾗｰのためｲﾝｽﾄｰﾙに失敗しました</string>
-    <string name="install_error_cannot_parse">ﾊﾟｯｹｰｼﾞの解析中にｴﾗｰが発生しました</string>
-    <string name="uninstall_error_title">ｱﾝｲﾝｽﾄｰﾙｴﾗｰ</string>
     <string name="uninstall_error_unknown">不明なｴﾗｰのためｱﾝｲﾝｽﾄｰﾙに失敗しました</string>
     <string name="system_install_first_time_notification">F-Droidの特権拡張をｲﾝｽﾄｰﾙしますか?</string>
     <string name="system_install_first_time_notification_message_short">詳細はﾀｯﾁしてください｡</string>
@@ -250,13 +247,11 @@
 
     <string name="downloading">ﾀﾞｳﾝﾛｰﾄﾞ中…</string>
 
-    <string name="swap_attempt_install">ｲﾝｽﾄｰﾙしてみる</string>
     <string name="swap_connection_misc_error">端末への接続中にｴﾗｰが発生しました｡交換できないようです｡</string>
     <string name="swap_not_enabled">交換は有効ではありません</string>
     <string name="swap_not_enabled_description">交換する前に､お使いの端末が表示されている必要があります｡</string>
 
     <string name="install_confirm">必要なｱｸｾｽ許可</string>
-    <string name="install_confirm_no_perms">このｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙしますか｡特別なｱｸｾｽ許可は不要です。</string>
     <string name="install_confirm_update">既存のｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか｡既存のﾃﾞｰﾀｰは失われません｡更新されたｱﾌﾟﾘｹｰｼｮﾝのｱｸｾｽ許可:</string>
     <string name="install_confirm_update_system">この組み込みｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか｡既存のﾃﾞｰﾀｰは失われません｡更新されたｱﾌﾟﾘｹｰｼｮﾝのｱｸｾｽ許可:</string>
     <string name="install_confirm_update_no_perms">既存のｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか｡既存のﾃﾞｰﾀｰは失われません｡特別なｱｸｾｽ許可は不要です｡</string>

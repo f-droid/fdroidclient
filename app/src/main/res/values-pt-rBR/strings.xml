@@ -196,10 +196,7 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="empty_available_app_list">Nenhum aplicativo nesta categoria.\n\nTente selecionar uma categoria diferente ou atualizar seus repositórios para obter uma nova lista de aplicativos.</string>
     <string name="empty_can_update_app_list">Todos aplicativos atualizados.\n\nParabéns! Todos os seus aplicativos estão atualizados (ou os seus repositórios estão desatualizados).</string>
 
-    <string name="install_error_title">Erro ao instalar</string>
     <string name="install_error_unknown">Falha ao instalar devido a um erro desconhecido</string>
-    <string name="install_error_cannot_parse">Ocorreu um erro ao analisar o pacote</string>
-    <string name="uninstall_error_title">Error ao desinstalar</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
     <string name="system_install_first_time_notification">Instalar extensão privilegiada do F-Droid?</string>
     <string name="system_install_first_time_notification_message_short">Toque para obter mais informações.</string>
@@ -255,13 +252,11 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="bluetooth_unavailable">Bluetooth não está disponível</string>
     <string name="swap_cant_send_no_bluetooth">Não é possível enviar F-Droid, porque o Bluetooth não está disponível neste dispositivo.</string>
     <string name="loading">Carregando…</string>
-    <string name="swap_attempt_install">Tente instalar</string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao conectar o dispositivo, não conseguimos permutar com ele.</string>
     <string name="swap_not_enabled">Permuta não habilitada</string>
     <string name="swap_not_enabled_description">Antes de permutar, seu dispositivo deve estar visível.</string>
 
     <string name="install_confirm">necessário acesso à</string>
-    <string name="install_confirm_no_perms">Você quer instalar este aplicativo? Ele não exige de nenhum acesso especial.</string>
     <string name="install_confirm_update">Você quer instalar uma atualização para este aplicativo existente? Os dados existentes não serão perdidos. O aplicativo atualizado terá acesso a:</string>
     <string name="install_confirm_update_system">Você quer instalar uma atualização para este aplicativo incorporado? Os dados existentes não serão perdidos. O aplicativo atualizado terá acesso a:</string>
     <string name="install_confirm_update_no_perms">Você quer instalar uma atualização para este aplicativo existente? Os dados existentes não serão perdidos. Ele não exige nenhum acesso especial.</string>

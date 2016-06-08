@@ -195,8 +195,6 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_settings">Setari</string>
     <string name="menu_manage">Depozite</string>
-    <string name="install_error_cannot_parse">Eroare la procesarea pachetului</string>
-    <string name="uninstall_error_title">Eroare la dezinstalare</string>
     <string name="repo_added">Depozit F-Droid salvat %1$s.</string>
     <string name="minsdk_or_later">%s sau mai nou</string>
     <string name="minsdk_up_to_maxsdk">%1$s pana la %2$s</string>
@@ -220,7 +218,6 @@
     <string name="empty_search_installed_app_list">Nici o aplicatie instalata nu se potriveste.</string>
     <string name="empty_search_can_update_app_list">Nici o aplicatie nu se potriveste cu actualizarea.</string>
 
-    <string name="install_error_title">Eroare la instalare</string>
     <string name="uninstall_error_unknown">O eroare necunoscuta a impiedicat instalarea</string>
     <string name="system_install_denied_title">Extensia privilegiata F-Droid nu este disponibila</string>
     <string name="system_install_installing_rebooting">Instalare si repornire dispozitiv…</string>
@@ -284,7 +281,6 @@
     <string name="interval_1w">Saptamanal</string>
     <string name="interval_1d">Zilnic</string>
     <string name="interval_12h">La fiecare 12 ore</string>
-    <string name="swap_attempt_install">Incearca sa instalezi</string>
     <string name="swap_not_enabled">Schimbul nu este activat</string>
     <string name="swap_not_visible_wifi">Nu este vizibil prin Wi-Fi</string>
     <string name="enable_proxy_summary">Configureaza proxy HTTP pentru toate conexiunile de retea</string>
@@ -307,7 +303,6 @@
     <string name="tap_to_install_format">Atinge pentru a instala %s</string>
     <string name="tap_to_update_format">Atinge pentru a actualiza %s</string>
     <string name="install_confirm">Sigur vrei sa instalezi aceasta aplicatie? Va primi acces la:</string>
-    <string name="install_confirm_no_perms">Sigur vrei sa instalezi aceasta aplicatie? Nu necesita vreun acces special.</string>
     <string name="install_confirm_update">Sigur vrei sa instalezi o actualizare la o aplicatie existenta? Datele curente nu se vor pierde. Aplicatia odata actualizata va primi acces la:</string>
     <string name="install_confirm_update_system">Sigur vrei sa instalezi o actualizare la o aplicatie inclusa in Android? Datele curente nu se vor pierde. Aplicatia odata actualizata va primi acces la:</string>
     <string name="install_confirm_update_no_perms">Sigur vrei sa instalezi o actualizare la aceasta aplicatie existenta? Datele curente nu se vor pierde. Nu necesita vreun acces special.</string>

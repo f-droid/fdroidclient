@@ -163,8 +163,6 @@
     <string name="category_Time">Час</string>
     <string name="category_Writing">Писане</string>
 
-    <string name="install_error_title">Грешка при инсталирането</string>
-    <string name="uninstall_error_title">Грешка при деинсталирането</string>
     <string name="system_install_installing">Инсталиране…</string>
     <string name="system_install_uninstalling">Деинсталиране…</string>
     <string name="swap_connecting">Свързване</string>
@@ -205,7 +203,6 @@
     <string name="empty_can_update_app_list">Всички приложения са актуализирани до последните налични версии.\n\nПоздравления! Ползвате актуалните версии на приложенията (или хранилищата не са актуализирани).</string>
 
     <string name="install_confirm">Желаете ли приложението да бъде инсталирано? Ще има достъп до:</string>
-    <string name="install_confirm_no_perms">Желаете ли приложението да бъде инсталирано? Няма специални изисквания за достъп.</string>
     <string name="install_confirm_update">Желаете ли актуализацията за съществуващото приложение да бъде инсталирана? Вашата информация няма да бъде загубена. Актуализираната версия ще има достъп до:</string>
     <string name="install_confirm_update_system">Желаете ли актуализацията за за вграденото приложение да бъде инсталирана? Вашата информация няма да бъде загубена. Актуализираната версия ще има достъп до:</string>
     <string name="install_confirm_update_no_perms">Желаете ли актуализацията за съществуващото приложение да бъде инсталирана? Вашата информация няма да бъде загубена. Актуализираната версия няма специални изисквания за достъп.</string>
@@ -280,7 +277,6 @@
     <string name="unsigned">Неподписано</string>
     <string name="system_install_button_install">Инсталиране</string>
     <string name="swap_confirm">Потвърдете размяната</string>
-    <string name="swap_attempt_install">Опит за инсталиране</string>
     <string name="swap_connection_misc_error">Възникна грешка при свързването с устройството, размяната не може да се осъществи.</string>
     <string name="newPerms">Нови</string>
     <string name="uninstall_update_confirm">Желаете ли приложението да бъде заменено от фабричната му версия?</string>
@@ -319,7 +315,6 @@
     <string name="minsdk_or_later">%s или по-късно</string>
     <string name="wifi_ap">Хотспот</string>
 
-    <string name="install_error_cannot_parse">Възникна грешка при обработката на файла</string>
     <string name="system_install_denied_title">F-Droid Privileged Extension не е достъпно</string>
     <string name="system_install_first_time_message">Явно имате администраторски достъп на устройството си. Сега можете да инсталирате F-Droid Privileged Extension, тясно интегрирано в операционната система Андроид. Този плъгин позволява на F-Droid самостоятелно да актуализира или изтрива приложения.</string>
     <string name="swap_join_this_hotspot">Помогнете на приятеля Ви да се включи към хотспота Ви</string>

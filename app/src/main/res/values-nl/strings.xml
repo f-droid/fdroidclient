@@ -190,10 +190,7 @@
     <string name="empty_available_app_list">Geen apps in deze categorie.\n\nProbeer een andere categorie of werk je bronnen bij om de lijst van apps te verversen.</string>
     <string name="empty_can_update_app_list">Alle apps zijn up-to-date.\n\nGefeliciteerd! Al jouw apps zijn up-to-date (of je bronnen zijn verouderd).</string>
 
-    <string name="install_error_title">Installatiefout</string>
     <string name="install_error_unknown">Kon de app niet installeren door een onbekende fout</string>
-    <string name="install_error_cannot_parse">Een fout trad op tijdens het lezen van het pakket</string>
-    <string name="uninstall_error_title">Verwijderingsfout</string>
     <string name="uninstall_error_unknown">Kon de app niet verwijderen door een onbekende fout</string>
     <string name="system_install_first_time_notification_message_short">Raak aan voor meer informatie.</string>
     <string name="system_install_installing">Installeren…</string>
@@ -242,13 +239,11 @@
     <string name="bluetooth_unavailable">Bluetooth niet beschikbaar</string>
     <string name="swap_cant_send_no_bluetooth">Kon F-Droid niet verzenden, omdat Bluetooth niet beschikbaar is op dit apparaat.</string>
     <string name="loading">Laden…</string>
-    <string name="swap_attempt_install">Probeer te installeren</string>
     <string name="swap_connection_misc_error">Een fout trad op bij het verbinden met het apparaat, dus het lijkt erop dat we er niet mee kunnen swappen.</string>
     <string name="swap_not_enabled">Swap niet ingeschakeld</string>
     <string name="swap_not_enabled_description">Voordat we kunnen swappen, moet het apparaat zichtbaar gemaakt worden.</string>
 
     <string name="install_confirm">Wil je deze applicatie installeren? Het zal toegang krijgen tot:</string>
-    <string name="install_confirm_no_perms">Wil je deze applicatie installeren? Het heeft geen speciale toegang nodig.</string>
     <string name="install_confirm_update">Wil je een update voor deze bestaande applicatie installeren? De bestaande data zal niet verloren gaan. De nieuwe versie van de applicatie zal toegang krijgen tot:</string>
     <string name="install_confirm_update_system">Wil je een update voor deze ingebouwde applicatie installeren? De bestaande data zal niet verloren gaan. De nieuwe versie van de applicatie zal toegang krijgen tot:</string>
     <string name="install_confirm_update_no_perms">Wil je een update voor deze bestaande applicatie installeren? De bestaande data zal niet verloren gaan. Het heeft geen speciale toegang nodig.</string>

@@ -170,9 +170,6 @@
     <string name="category_Sports_Health">Спорт та здоров\'я</string>
     <string name="category_System">Система</string>
     <string name="category_Time">Час</string>
-    <string name="install_error_title">Помилка встановлення</string>
-    <string name="install_error_cannot_parse">Трапилася помилка під час обробки пакунку</string>
-    <string name="uninstall_error_title">Помилка видалення</string>
     <string name="uninstall_error_unknown">На вдалося видалити через невідому помилку</string>
     <string name="system_install_button_install">Встановити</string>
     <string name="system_install_first_time_notification_message_short">Торкніться, для отримання додаткової інформації.</string>
@@ -215,7 +212,6 @@
     <string name="swap_visible_bluetooth">Видимий через Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Налаштування Bluetooth…</string>
     <string name="install_confirm">потребує доступ до</string>
-    <string name="install_confirm_no_perms">Бажаєте встановити цей додаток? Він не потребує спеціальних дозволів.</string>
     <string name="perm_costs_money">Це може вам коштувати грошей</string>
     <string name="unstable_updates_summary">Пропонувати оновлення до нестабільних версій</string>
     <string name="local_repo_name_summary">Ваш локальний репозиторії пропонується під назвою: %s</string>
@@ -273,7 +269,6 @@
     <string name="swap_setting_up_wifi">Налаштування Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Не видимий через Wi-Fi</string>
     <string name="swap_confirm">Підтвердіть обмін</string>
-    <string name="swap_attempt_install">Спробуйте встановити</string>
     <string name="swap_not_enabled">Обмін не увімкнено</string>
     <string name="wifi_ap">Точка доступу</string>
 

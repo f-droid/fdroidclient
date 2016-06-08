@@ -235,10 +235,7 @@
     <string name="requesting_root_access_body">Anmoder om root-adgang…</string>
     <string name="root_access_denied_title">Root-adgang nægtet</string>
     <string name="root_access_denied_body">Enten er din Android-enhed ikke rooted eller også har du nægtet F-Droid root-adgang.</string>
-    <string name="install_error_title">Installationsfejl</string>
     <string name="install_error_unknown">Kunne ikke installere på grund af en ukendt fejl</string>
-    <string name="install_error_cannot_parse">En fejl opstod under parsning af pakken</string>
-    <string name="uninstall_error_title">Afinstallationsfejl</string>
     <string name="linking_apks">Kobler APK\'er sammen med depotet…</string>
     <string name="uninstall_error_unknown">Afinstallation mislykkedes grundet en ukendt fejl</string>
     <string name="system_install_denied_title">F-Droid Privilegeret Udvidelse er ikke tilgængelig</string>
@@ -302,13 +299,11 @@
     <string name="bluetooth_unavailable">Bluetooth utilgængelig</string>
     <string name="swap_cant_send_no_bluetooth">Kan ikke sende F-Droid fordi Bluetooth er utilgængeligt på denne enhed.</string>
     <string name="loading">Indlæser…</string>
-    <string name="swap_attempt_install">Prøv at installere</string>
     <string name="swap_connection_misc_error">Der forekom en fejl under forbindelsen til enheden, det ser ud til at vi ikke kan udveksle med den.</string>
     <string name="swap_not_enabled">Udveksling ikke aktiveret</string>
     <string name="swap_not_enabled_description">Inden udveksling skal din enhed gøres synlig.</string>
 
     <string name="install_confirm">Vil du installere dette program? Det vil få adgang til:</string>
-    <string name="install_confirm_no_perms">Vil du installere dette program? Det kræver ingen speciel adgang.</string>
     <string name="install_confirm_update">Vil du installere en opdatering til dette eksisterende program? Dine eksisterende data vil ikke gå tabt. Det opdaterede program vil få adgang til:</string>
     <string name="install_confirm_update_system">Vil du installere en opdatering til dette indbyggede program? Dine eksisterende data vil ikke gå tabt. Det opdaterede program vil få adgang til:</string>
     <string name="install_confirm_update_no_perms">Vil du installere en opdatering til dette eksisterende program? Dine eksisterende data vil ikke gå tabt. Det kræver ingen speciel adgang.</string>

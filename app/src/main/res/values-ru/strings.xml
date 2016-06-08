@@ -192,10 +192,7 @@
     <string name="tab_installed_apps">Установлено</string>
     <string name="update_notification_title">Обновление репозиториев</string>
     <string name="status_processing_xml_percent">Обработка %2$s / %3$s (%4$d%%) из %1$s</string>
-    <string name="install_error_title">Ошибка установки</string>
     <string name="install_error_unknown">Установка не удалась из-за неизвестной ошибки</string>
-    <string name="install_error_cannot_parse">При разборе пакета произошла ошибка</string>
-    <string name="uninstall_error_title">Ошибка удаления</string>
     <string name="uninstall_error_unknown">Удаление не удалось из-за неизвестной ошибки</string>
     <string name="repo_details">Репозиторий</string>
     <string name="repo_url">Адрес</string>
@@ -277,7 +274,6 @@
     <string name="swap_connecting">Подключение</string>
     <string name="loading">Загрузка…</string>
     <string name="install_confirm">Хотите установить это приложение? Оно получит доступ к:</string>
-    <string name="install_confirm_no_perms">Хотите установить это приложение? Оно не требует особых разрешений.</string>
     <string name="install_confirm_update">Хотите обновить установленное приложение? Существующие данные не будут потеряны. Обновлённое приложение получит доступ к:</string>
     <string name="install_confirm_update_system">Хотите обновить встроенное приложение? Существующие данные не будут потеряны. Обновлённое приложение получит доступ к:</string>
     <string name="install_confirm_update_no_perms">Хотите обновить установленное приложение? Существующие данные не будут потеряны. Оно не требует особых разрешений.</string>
@@ -332,7 +328,6 @@
     <string name="swap_qr_isnt_for_swap">QR-код, который вы отсканировали, не похож на код обмена.</string>
     <string name="bluetooth_unavailable">Bluetooth не доступен</string>
     <string name="swap_cant_send_no_bluetooth">Не удаётся отправить F-Droid, так как Bluetooth не доступен на данном устройстве.</string>
-    <string name="swap_attempt_install">Попробовать установить</string>
     <string name="swap_connection_misc_error">При подключении к устройству возникли ошибки, вы не можете провести обмен с этим устройством.</string>
     <string name="swap_not_enabled">Обмен не включен</string>
     <string name="swap_not_enabled_description">Для выполнения обмена следует сделать ваше устройство видимым.</string>

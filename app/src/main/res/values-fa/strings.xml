@@ -214,7 +214,6 @@
 
     <string name="root_access_denied_title">دسترسی ریشه داده نشد</string>
     <string name="root_access_denied_body">یا افزارهٔ اندرویدیتان روت شده نیست، یا درخواست ریشه برای اف‌دروید را رد کردید.</string>
-    <string name="install_error_title">خطای نصب</string>
     <string name="system_uninstall_button">حذف نصب</string>
 
     <string name="swap_nfc_title">برای تبادل، لمس کنید</string>
@@ -283,8 +282,6 @@
     <string name="empty_installed_app_list">هیچ کاره‌ای نصب نشده است.\n\nکاره‌هایی روی افزاره‌تان وجود دارند، ولی در اف‌دروید موجود نیستند. دلیل این امر می‌تواند این دلیل باشد که مخازنتان کاره‌هایتان را موجود ندارند یا باید به‌روز شوند.</string>
     <string name="empty_available_app_list">هیچ کاره‌ای در این دسته نیست.\n\nتلاش کنید دسته‌ای دیگر برگزیده یا مخازنتان را برای گرفتن فهرست تازه‌ای از کاره‌ها به‌روز کنید.</string>
     <string name="install_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
-    <string name="install_error_cannot_parse">هنگام تجزیهٔ بسته، خطایی رخ داد</string>
-    <string name="uninstall_error_title">خطای حذف نصب</string>
     <string name="uninstall_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
     <string name="system_install_denied_title">افزونهٔ ممتاز اف‌دروید موجود نیست</string>
     <string name="system_install_denied_body">این گزینه فقط هنگام نصب بودن افزونهٔ ممتاز اف‌دروید، موجود است.</string>
@@ -313,13 +310,11 @@
     <string name="bluetooth_unavailable">بلوتوث موجود نیست</string>
     <string name="swap_cant_send_no_bluetooth">نمی‌توان اف‌دروید را فرستاد، زیرا بلوتوث روی این افزاره موحود نیست.</string>
     <string name="loading">در حال بار کردن…</string>
-    <string name="swap_attempt_install">تلاش برای نصب</string>
     <string name="swap_connection_misc_error">هنگام اتّصال به افزاره خطایی رخ داد. به نظر می‌رسد با این وضع نمی‌توانیم تبادل کنیم.</string>
     <string name="swap_not_enabled">تبادل فعّال نیست</string>
     <string name="swap_not_enabled_description">پیش از تبادل، افزاره‌تان باید قابل مشاهده باشد.</string>
 
     <string name="install_confirm">می‌خواهید این برنامه را نصب کنید؟ این دسترسی‌ها را خواهد داشت:</string>
-    <string name="install_confirm_no_perms">می‌خواهید این برنامه را نصب کنید؟ نیاز به هیچ دسترسی خاصّی ندارد.</string>
     <string name="install_confirm_update">می‌خواهید به‌روزرسانی‌ای برای این برنامه نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. برنامهٔ به‌روز شده دسترسی‌های زیر را خواهد داشت:</string>
     <string name="install_confirm_update_system">می‌خواهید به‌روزرسانی‌ای برای این برنامهٔ داخلی نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. برنامهٔ به‌روز شده دسترسی‌های زیر را خواهد داشت:</string>
     <string name="install_confirm_update_no_perms">می‌خواهید به‌روزرسانی‌ای برای این برنامه نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. نیاز به هیچ دسترسی خاصّی ندارد.</string>

@@ -157,8 +157,6 @@
     <string name="category_Sports_Health">體育與健康</string>
     <string name="category_System">系統</string>
     <string name="category_Time">時間</string>
-    <string name="install_error_title">安裝錯誤</string>
-    <string name="uninstall_error_title">解除安裝錯誤</string>
     <string name="system_install_button_install">安裝</string>
     <string name="system_install_installing">安裝中…</string>
     <string name="system_install_installing_rebooting">正在安裝和重新啟動…</string>
@@ -247,7 +245,6 @@
     <string name="swap_confirm">確認交換</string>
     <string name="bluetooth_unavailable">藍牙不可用</string>
     <string name="swap_cant_send_no_bluetooth">無法傳送 F-Droid，因為此裝置沒有藍牙功能。</string>
-    <string name="swap_attempt_install">嘗試安裝</string>
     <string name="swap_not_enabled">沒有啟用交換功能</string>
     <string name="uninstall_confirm">您想要解除安裝此應用程式嗎？</string>
     <string name="download_error">下載失敗</string>
@@ -300,7 +297,6 @@
     <string name="empty_installed_app_list">未安裝應用程式。\n\nF-Droid 並無您裝置上可用的應用程式。這可能是因為您需要更新您的儲存庫，或是儲存庫真的沒有您可用的應用程式。</string>
     <string name="empty_available_app_list">此類別沒有應用程式。\n\n試著選擇不同的類別或是更新您的儲存庫來取得應用程式最新的清單。</string>
     <string name="root_access_denied_body">或許您的 Android 裝置還未取得 root 又或您已拒絕 F-Droid 存取 root。</string>
-    <string name="install_error_cannot_parse">剖析套裝軟體時發生了錯誤</string>
     <string name="system_install_denied_title">F-Droid 特權擴充無法利用</string>
     <string name="system_install_denied_body">此選項只能用在已有安裝 F-Droid 的特權擴充。</string>
     <string name="system_install_denied_signature">該擴充簽署錯誤！請建立一份錯誤報告！</string>

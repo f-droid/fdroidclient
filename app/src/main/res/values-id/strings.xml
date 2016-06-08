@@ -250,10 +250,7 @@
     <string name="requesting_root_access_body">Meminta akses root…</string>
     <string name="root_access_denied_title">Akses root ditolak</string>
     <string name="root_access_denied_body">Mungkin perangkat Android anda yang belum diroot atau anda telah menolak akses root untuk F-Droid.</string>
-    <string name="install_error_title">Pemasangan galat</string>
     <string name="install_error_unknown">Gagal memasang karena galat yang tidak diketahui</string>
-    <string name="install_error_cannot_parse">Galat terjadi ketika mengurai paket</string>
-    <string name="uninstall_error_title">Copot pemasangan galat</string>
     <string name="uninstall_error_unknown">Gagal mencopot pemasangan karena galat yang tidak diketahui</string>
     <string name="system_install_denied_title">Ekstensi Istimewa F-Droid tidak tersedia</string>
     <string name="system_install_denied_body">Opsi ini tidak tersedia ketika F-Droid Privileged Extension terpasang.</string>
@@ -317,13 +314,11 @@
     <string name="bluetooth_unavailable">Bluetooth tidak tersedia</string>
     <string name="swap_cant_send_no_bluetooth">Tidak dapat mengirim F-Droid, karena Bluetooth tidak tersedia diperangkat ini.</string>
     <string name="loading">Memuat…</string>
-    <string name="swap_attempt_install">Coba untuk memasang</string>
     <string name="swap_connection_misc_error">Galat terjadi ketika menyambungkan ke perangkat, kami sepertinya tidak dapat swap dengannya.</string>
     <string name="swap_not_enabled">Swap dinonaktifkan</string>
     <string name="swap_not_enabled_description">Sebelum swap, perangkat anda harus dibuat terlihat.</string>
 
     <string name="install_confirm">Anda ingin memasang aplikasi ini? App akan mendapatkan akses ke:</string>
-    <string name="install_confirm_no_perms">Anda ingin memasang aplikasi ini? App tidak membutuhkan akses spesial apapun.</string>
     <string name="install_confirm_update">Anda ingin memasang pembaruan ke aplikasi yang sudah ada ini? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
     <string name="install_confirm_update_system">Anda ingin memasang pembaruan aplikasi bawaan ini? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
     <string name="install_confirm_update_no_perms">Anda ingin memasang pembaruan ke aplikasi yang sudah ada ini? Data anda tidak akan hilang. App tidak membutuhkan akses spesial apapun.</string>

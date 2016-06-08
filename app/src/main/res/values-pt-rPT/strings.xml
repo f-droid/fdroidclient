@@ -221,10 +221,7 @@
     <string name="requesting_root_access_body">A solicitar acesso \'root\'…</string>
     <string name="root_access_denied_title">Acesso \'root\' recusado</string>
     <string name="root_access_denied_body">O dispositivo Android não está \'rooted\' ou você recusou o acesso \'root\' solicitado pelo F-Droid.</string>
-    <string name="install_error_title">Erro de instalação</string>
     <string name="install_error_unknown">Falha de instalação devido a um erro desconhecido</string>
-    <string name="install_error_cannot_parse">Ocorreu um erro ao processar o pacote</string>
-    <string name="uninstall_error_title">Erro ao desinstalar</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
     <string name="system_install_denied_title">A extensão privilegiada do F-Droid não está disponível</string>
     <string name="system_install_denied_body">Esta opção só está disponível se a extensão privilegiada do F-Droid estiver instalada.</string>
@@ -269,7 +266,6 @@
     <string name="swap_send_fdroid">Enviar F-Droid</string>
     <string name="swap_connecting">A estabelecer ligação</string>
     <string name="loading">A carregar…</string>
-    <string name="swap_attempt_install">Tente a instalação</string>
     <string name="newPerms">Novas</string>
     <string name="allPerms">Todas</string>
     <string name="perm_costs_money">Pode implicar gastos</string>
@@ -310,7 +306,6 @@
     <string name="swap_not_enabled_description">Antes de trocar, o seu dispositivo tem que estar disponível.</string>
 
     <string name="install_confirm">requer acesso a</string>
-    <string name="install_confirm_no_perms">Deseja instalar esta aplicação? A aplicação não requer qualquer acesso especial.</string>
     <string name="more">Mais</string>
     <string name="less">Menos</string>
 

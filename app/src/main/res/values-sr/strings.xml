@@ -200,9 +200,6 @@
     <string name="category_Time">Време</string>
     <string name="category_Writing">Писање</string>
 
-    <string name="install_error_title">Грешка при инсталацији</string>
-    <string name="install_error_cannot_parse">Десила се грешка приликом рашчлањивања пакета</string>
-    <string name="uninstall_error_title">Грешка при уклањању</string>
     <string name="system_install_first_time_notification">Да инсталирам повлашћено проширење за Ф-дроид?</string>
     <string name="system_install_first_time_notification_message_short">Тапните за још података.</string>
     <string name="system_install_post_success">Успешно инсталирано повлашћено проширење за Ф-дроид</string>
@@ -248,7 +245,6 @@
     <string name="system_uninstall">Желите ли да уклоните повлашћено проширење Ф-дроида?</string>
     <string name="swap_qr_isnt_for_swap">Бар-кôд који сте очитали не изгледа као кôд размене.</string>
     <string name="install_confirm">захтева приступ следећем</string>
-    <string name="install_confirm_no_perms">Желите ли да инсталирате ову апликацију? Не захтева посебан приступ.</string>
     <string name="perm_costs_money">Ово може да вас кошта</string>
     <string name="uninstall_update_confirm">Желите ли да замените ову апликацију фабрички уграђеном?</string>
     <string name="uninstall_confirm">Желите ли да уклоните ову аликацију?</string>
@@ -272,7 +268,6 @@
     <string name="empty_available_app_list">Нема апликација у овој категорији.\n\nИзаберите другу категорију или освежите ризнице да бисте добили свеж списак апликација.</string>
     <string name="swap_join_this_hotspot">Помозите пријатељу да се придружи вашој врућој тачки</string>
     <string name="swap_cant_find_peers">Не можете да нађете кога тражите?</string>
-    <string name="swap_attempt_install">Покушај да инсталираш</string>
     <string name="system_install_first_time_message">Чини се да имате корени приступ на вашем уређају. Сада можете да инсталирате повлашћено проширење Ф-дроида, уско повезано са Андроид оперативним системом. Ово омогућује Ф-дроиду да сам инсталира, надограђује и уклања апликације.</string>
     <string name="swap_nearby">Оближња размена</string>
     <string name="swap_intro">Повежите се са људима у близини и размењујте апликације.</string>

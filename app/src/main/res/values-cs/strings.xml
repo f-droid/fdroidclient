@@ -229,10 +229,7 @@
     <string name="empty_available_app_list">Žádné aplikace v této kategorii.\n\nZkuste vybrat jinou kategorii nebo aktualizovat data repozitářů pro aktuální seznam aplikací.</string>
     <string name="empty_can_update_app_list">Všechny aplikace jsou aktualizované.\n\nGratulujeme! Všechny nainstalované aplikace jsou aktuální (nebo nejsou repozitáře aktualizovány).</string>
 
-    <string name="install_error_title">Chyba instalace</string>
     <string name="install_error_unknown">Instalace selhala kvůli neznámé chybě</string>
-    <string name="install_error_cannot_parse">Došlo k chybě při parsování balíčku</string>
-    <string name="uninstall_error_title">Chyba deinstalace</string>
     <string name="uninstall_error_unknown">Chyba deinstalace kvůli neznámé chybě</string>
     <string name="system_install_denied_signature">Podpis rozšíření je chybný! Nahlašte prosím chybu!</string>
     <string name="system_install_button_install">Instalovat</string>
@@ -264,7 +261,6 @@
     <string name="bluetooth_unavailable">Bluetooth nedostupné</string>
     <string name="swap_cant_send_no_bluetooth">F-Droid nelze odeslat, protože na tomto přístroji není Bluetooth dostupné.</string>
     <string name="loading">Načítání…</string>
-    <string name="swap_attempt_install">Pokus o instalaci</string>
     <string name="swap_not_enabled">Výměna není povolena</string>
     <string name="swap_not_enabled_description">Před výměnou je třeba zviditelnit přístroj.</string>
 

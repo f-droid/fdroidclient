@@ -199,10 +199,7 @@
     <string name="empty_search_available_app_list">Nincs találat az elérhető alkalmazások között.</string>
     <string name="empty_search_can_update_app_list">Nincs találat a frissítések között.</string>
 
-    <string name="install_error_title">Telepítési hiba</string>
     <string name="install_error_unknown">A telepítés ismeretlen hiba miatt nem sikerült</string>
-    <string name="install_error_cannot_parse">Hiba lépett fel a csomag feldolgozása közben</string>
-    <string name="uninstall_error_title">Eltávolítási hiba</string>
     <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt nem sikerült</string>
     <string name="system_install_denied_signature">A kiterjesztés aláírása hibás! Készíts egy hibajelentést!</string>
     <string name="system_install_button_install">Telepítés</string>
@@ -217,7 +214,6 @@
 
     <string name="loading">Betöltés…</string>
     <string name="install_confirm">Szeretné telepíteni ezt az alkalmazást? A következőkhöz kap hozzáférést:</string>
-    <string name="install_confirm_no_perms">Szeretné telepíteni ezt az alkalmazást? Nem igényel semmilyen különleges hozzáférést.</string>
     <string name="install_confirm_update">Szeretne telepíteni egy frissítést a meglévő alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a következőkhöz kap hozzáférést:</string>
     <string name="install_confirm_update_system">Szeretne telepíteni egy frissítést ehhez a beépített alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a következőkhöz kap hozzáférést:</string>
     <string name="install_confirm_update_no_perms">Szeretne telepíteni egy frissítést a meglévő alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a nem igényel semmilyen különleges hozzáférést.</string>

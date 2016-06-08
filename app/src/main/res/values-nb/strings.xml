@@ -204,9 +204,7 @@
     <string name="category_Time">Tid</string>
     <string name="category_Writing">Skriving</string>
 
-    <string name="install_error_title">Installasjonsfeil</string>
     <string name="install_error_unknown">Som følge av ukjent feil gikk installasjonen i vasken</string>
-    <string name="uninstall_error_title">Avinstallasjonsfeil</string>
     <string name="uninstall_error_unknown">Klarte ikke å installere grunnet ukjent feil</string>
     <string name="system_install_button_install">Installer</string>
     <string name="system_install_button_open">Åpne tillegg</string>
@@ -238,9 +236,7 @@
     <string name="bluetooth_unavailable">Blåtann utilgjengelig</string>
     <string name="swap_cant_send_no_bluetooth">Kan ikke sende F-Droid siden Blåtann ikke er tilgjengelig på denne enheten.</string>
     <string name="loading">Laster inn…</string>
-    <string name="swap_attempt_install">Prøv installasjon</string>
     <string name="install_confirm">Ønsker du å installere dette programmet? Du får tilgang til:</string>
-    <string name="install_confirm_no_perms">Ønsker du å installere dette programmet? Ingen spesielle rettigheter påkrevd.</string>
     <string name="newPerms">Ny</string>
     <string name="allPerms">Alle</string>
     <string name="perm_costs_money">Dette kan koste penger</string>
@@ -278,7 +274,6 @@
     <string name="empty_available_app_list">Ingen programmer i denne kategorien.\n\nVelg en annen kategori eller oppdater pakkebrønnene dine for en fersk programopplisting.</string>
     <string name="empty_can_update_app_list">Alle programmer oppdatert.\n\nAlle dine programmer er av nyeste dato (eller så er pakkebrønnene dine foreldet).</string>
 
-    <string name="install_error_cannot_parse">En feil inntraff under fortolkning av pakken</string>
     <string name="system_install_denied_signature">Signaturen til tillegget er feil! Send inn en feilrapport om dette omgående!</string>
     <string name="system_install_denied_permissions">Tillegget har ikke blitt gitt priviligert tilgang. Send en feilrapport om dette omgående!</string>
     <string name="system_install_first_time_notification">Installer F-Droid som priviligert tillegg?</string>

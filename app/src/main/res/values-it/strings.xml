@@ -277,10 +277,7 @@
     <string name="empty_available_app_list">Nessuna applicazione in questa categoria.\n\nProva a selezionare un\'altra categoria o aggiorna i tuoi repository per ottenere una lista di applicazioni aggiornata.</string>
     <string name="empty_can_update_app_list">Tutte le applicazioni sono aggiornate.\n\nCongratulazioni! Tutte le tue applicazioni sono aggiornate (o i tuoi repository non sono aggiornati).</string>
 
-    <string name="install_error_title">Errore di installazione</string>
     <string name="install_error_unknown">Installazione fallita a causa di un errore sconosciuto</string>
-    <string name="install_error_cannot_parse">È avvenuto un errore nell\'analizzare il pacchetto</string>
-    <string name="uninstall_error_title">Errore di disinstallazione</string>
     <string name="uninstall_error_unknown">Fallimento dell\'installazione a causa di un errore sconosciuto</string>
     <string name="system_install_denied_signature">La firma dell\'estensione è sbagliata! Per favore segnala questo problema!</string>
     <string name="system_install_denied_permissions">I privilegi non sono stati concessi all\'estensione! Per favore segnala questo problema!</string>
@@ -312,10 +309,8 @@
     <string name="swap_scan_or_type_url">Una persona deve scansionare il codice, o inserire l\'URL dell\'altro in un browser.</string>
     <string name="swap_send_fdroid">Invia a F-Droid</string>
     <string name="swap_cant_send_no_bluetooth">Impossibile inviare F-Droid, perché il Bluetooth non è disponibile su questo dispositivo.</string>
-    <string name="swap_attempt_install">Prova a installare</string>
     <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra possibile effettuare lo scambio.</string>
     <string name="swap_not_enabled">Scambio non abilitato</string>
-    <string name="install_confirm_no_perms">Vuoi installare questa applicazione? Non richiede nessun privilegio speciale.</string>
     <string name="install_confirm_update_no_perms">Vuoi installare una versione aggiornata di questa applicazione? I dati esistenti non verranno rimossi. Non è richiesto alcun accesso speciale.</string>
     <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata? I tuoi dati esistenti non verranno persi. Non richiede alcun permesso speciale.</string>
     <string name="allPerms">Tutte</string>

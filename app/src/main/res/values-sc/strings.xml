@@ -192,10 +192,7 @@
     <string name="empty_available_app_list">Peruna aplicatzione in custa categoria.\n\nProa a ischertare una categoria diferente o a agiornare sos depòsitos tuos pro tènnere una lista noa de aplicatziones.</string>
     <string name="empty_can_update_app_list">Totu sas aplicatziones sunt agiornadas.\n\nBene meda! Totu sas aplicatziones tuas sunt agiornadas (o sos depòsitos tuos non lu sunt).</string>
 
-    <string name="install_error_title">Faddina de installatzione</string>
     <string name="install_error_unknown">Installatzione faddida pro cajone de una faddina disconnota</string>
-    <string name="install_error_cannot_parse">B\'est istada una faddina durante s\'anàlisi de su pachete</string>
-    <string name="uninstall_error_title">Faddina de disinstallatzione</string>
     <string name="uninstall_error_unknown">Disinstallatzione faddida pro cajone de una faddina disconnota</string>
     <string name="swap_connection_misc_error">B\'est istada una faddina durante sa cunnessione a su dispositivu, non resessimus a cumpartzire sas aplicatziones.</string>
     <string name="unstable_updates">Agiornamentos instàbiles</string>
@@ -258,12 +255,10 @@
     <string name="bluetooth_unavailable">Bluetooth non disponìbile</string>
     <string name="swap_cant_send_no_bluetooth">Impossìbile imbiare F-Droid, ca su Bluetooth no est disponìbile in custu dispositivu.</string>
     <string name="loading">Carrighende…</string>
-    <string name="swap_attempt_install">Proande a installare</string>
     <string name="swap_not_enabled">Cumpartzidura non abilitada</string>
     <string name="swap_not_enabled_description">In antis de cumpartzire, su dispositivu depet èssere postu visìbile.</string>
 
     <string name="install_confirm">at a tènnere atzessu a</string>
-    <string name="install_confirm_no_perms">Boles installare custa aplicatzione? Non pedit perunu atzessu ispetziale.</string>
     <string name="install_confirm_update">Boles installare un’agiornamentu a custa aplicatzione esistente? Sos datos tuos giai in cuddae non s\'ant a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
     <string name="install_confirm_update_system">Boles installare un’agiornamentu a custa aplicatzione incluida in su sistema? Sos datos tuos giai in cuddae non s\'ant a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
     <string name="install_confirm_update_system_no_perms">Boles installare un’agiornamentu a custa aplicatzione incluida in su sistema? Sos datos tuos giai in cuddae non s\'ant a pèrdere. S\'aplicatzione agiornada non tenet bisòngiu de permissos ispetziales.</string>

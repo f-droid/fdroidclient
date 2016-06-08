@@ -185,7 +185,6 @@ Sinun pitää
     <string name="uninstall_confirm">Haluatko poistaa tämän sovelluksen?</string>
     <string name="allPerms">Kaikki</string>
     <string name="newPerms">Uusi</string>
-    <string name="install_confirm_no_perms">Haluatko asentaa tämän sovelluksen? Se ei vaadi mitään erityisoikeuksia.</string>
     <string name="swap_send_fdroid">Lähetä F-Droid</string>
     <string name="swap_wifi_device_name">Laitteen nimi</string>
     <string name="swap_choose_apps">Valitse sovellukset</string>

@@ -195,10 +195,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="empty_available_app_list">Brak aplikacji w tej kategorii.\n\nSpróbuj wybrać inną kategorię lub zaktualizować swoje repozytoria.</string>
     <string name="empty_can_update_app_list">Wszystkie aplikacje są w najnowszych wersjach.\n\nGratulacje! Wszystkie Twoje aplikacje są w najnowszych wersjach (lub repozytoria nie mają najnowszych wersji).</string>
 
-    <string name="install_error_title">Błąd instalacji</string>
     <string name="install_error_unknown">Instalacja nie powiodła się przez nieznany nam problem</string>
-    <string name="install_error_cannot_parse">Wystąpił błąd podczas odczytywania paczki</string>
-    <string name="uninstall_error_title">Błąd odinstalowywania</string>
     <string name="uninstall_error_unknown">Odinstalowywanie nie powiodło się przez nieznany nam problem</string>
     <string name="system_install_first_time_notification">Zainstalować Uprzywilejowany dodatek?</string>
     <string name="system_install_first_time_notification_message_short">Dotknij czy dowiedzieć się więcej.</string>
@@ -255,13 +252,11 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="bluetooth_unavailable">Bluetooth nie jest dostępny</string>
     <string name="swap_cant_send_no_bluetooth">Nie udało się wysłać F-Droida ponieważ Bluetooth nie jest dostępny na Twoim urządzeniu.</string>
     <string name="loading">Ładowanie…</string>
-    <string name="swap_attempt_install">Spróbuj zainstalować</string>
     <string name="swap_connection_misc_error">Wystąpił błąd podczas łączenia się z urządzeniem. Wymiana nie powiodła się.</string>
     <string name="swap_not_enabled">Wymiana nie jest włączona</string>
     <string name="swap_not_enabled_description">Przed wymiana, musisz ustawić swoje urządzenie jako widoczne.</string>
 
     <string name="install_confirm">wymaga dostępu do</string>
-    <string name="install_confirm_no_perms">Czy chcesz zainstalować tą aplikację? Nie wymaga ona żadnych specjalnych uprawnień.</string>
     <string name="install_confirm_update">Czy chcesz zaktualizować tą aplikację? Aktualizacja dostanie dostęp do:</string>
     <string name="install_confirm_update_system">Czy chcesz zaktualizować tą systemową aplikację? Aktualizacja dostanie dostęp do:</string>
     <string name="install_confirm_update_no_perms">Czy chcesz zaktualizować tą aplikację? Aktualizacja nie wymaga żadnych specjalnych uprawnień.</string>

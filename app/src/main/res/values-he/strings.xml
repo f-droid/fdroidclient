@@ -183,9 +183,7 @@
     <string name="requesting_root_access_body">כעת מבקש גישת שורש…</string>
     <string name="root_access_denied_title">גישת שורש נאסרה</string>
     <string name="root_access_denied_body">או שמכשיר Android אינו מושרש או שאסרת גישת שורש עבור F-Droid.</string>
-    <string name="install_error_title">שגיאת התקנה</string>
     <string name="install_error_unknown">נכשל להתקין בשל שגיאה לא מוכרת</string>
-    <string name="uninstall_error_title">שגיאת ביטול התקנה</string>
     <string name="uninstall_error_unknown">נכשל לבטל התקנה בשל שגיאה לא מוכרת</string>
     <string name="system_install_denied_title">הרשאות מערכת נאסרו</string>
     <string name="system_install_denied_body">אפשרות זו הינה זמינה רק כאשר F-Droid הינה מותקנת בתור אפליקציה מועדפת.</string>
@@ -221,8 +219,6 @@
 
     <string name="install_confirm">האם ברצונך להתקין את אפליקציה זו?
             זו תקבל גישה אל:</string>
-    <string name="install_confirm_no_perms">האם ברצונך להתקין את אפליקציה זו?
-            זו לא דורשת שום גישה מיוחדת.</string>
     <string name="newPerms">חדש</string>
     <string name="allPerms">הכל</string>
     <string name="perm_costs_money">זה עשוי לעלות לך כסף</string>
@@ -248,7 +244,6 @@
     <string name="category_Time">זמן</string>
     <string name="category_Writing">כתיבה</string>
 
-    <string name="install_error_cannot_parse">אירעה שגיאה במהלך פענוח החבילה</string>
     <string name="swap_choose_apps">בחר אפליקציות</string>
     <string name="swap_scan_qr">סרוק קוד QR</string>
     <string name="swap_people_nearby">אנשים בקרבת מקום</string>
@@ -263,7 +258,6 @@
     <string name="swap_connecting">כעת מתחבר</string>
     <string name="bluetooth_unavailable">‏Bluetooth לא זמין</string>
     <string name="loading">כעת טוען…</string>
-    <string name="swap_attempt_install">נסה להתקין</string>
     <string name="tap_to_install">הורדה הושלמה, הקש כדי להתקין</string>
 
     <string name="interval_never">אף פעם</string>

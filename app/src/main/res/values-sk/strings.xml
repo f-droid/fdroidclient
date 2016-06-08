@@ -200,9 +200,6 @@
     <string name="category_Sports_Health">Šport &amp; Zdravie</string>
     <string name="empty_can_update_app_list">Všetky aplikácie sú aktuálne.\n\nGratulujeme! Všetky vaše aplikácie sú aktuálne (jedine žeby vaše repozitáre boli neaktuálne).</string>
 
-    <string name="install_error_title">Chyba pri inštalácií</string>
-    <string name="install_error_cannot_parse">Nastala chyba pri spracovávaní balíka</string>
-    <string name="uninstall_error_title">Chyba pri odinštalácií</string>
     <string name="system_install_first_time_notification">Inštalovať Oprávnené Rozšírenie F-Droidu?</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -236,7 +233,6 @@
     <string name="swap_connecting">Pripájam</string>
     <string name="bluetooth_unavailable">Bluetooth nedostupný</string>
     <string name="loading">Načítavam…</string>
-    <string name="install_confirm_no_perms">Chcete nainštalovať túto aplikáciu? Nepotrebuje žiadne špeciálne oprávnenia.</string>
     <string name="install_confirm">Chcete nainštalovať túto aplikáciu? Bude mať prístup k nasledujúcemu:</string>
     <string name="allPerms">Všetky</string>
     <string name="newPerms">Nové</string>
@@ -313,7 +309,6 @@
     <string name="swap_no_peers_nearby">Nemožno nájsť ľudí v okolí na výmenu.</string>
     <string name="swap_confirm">Potvrdiť výmenu</string>
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevyzerá ako kód na výmenu.</string>
-    <string name="swap_attempt_install">Pokus o inštaláciu</string>
     <string name="swap_connection_misc_error">Pri pokuse o pripojenie došlo k chybe, zdá sa, že výmena sa neuskutoční.</string>
     <string name="swap_not_enabled">Výmena nie je povolená</string>
     <string name="swap_not_enabled_description">Pred výmenou musí byť zariadenie viditeľné.</string>

@@ -233,10 +233,7 @@
     <string name="requesting_root_access_body">Petas pri ĉefuzanta aliro…</string>
     <string name="root_access_denied_title">Ĉefuzanta aliro malpermesita</string>
     <string name="root_access_denied_body">Aŭ via Androida aparato ne havas ĉefuzantan aliron, aŭ vi malpermesis ĉefuzantan aliron al F-Droid.</string>
-    <string name="install_error_title">Instala eraro</string>
     <string name="install_error_unknown">Malsukcesis instali pro nekonata eraro</string>
-    <string name="install_error_cannot_parse">Okazis eraro dum prilaborado de pakaĵo</string>
-    <string name="uninstall_error_title">Malinstala eraro</string>
     <string name="uninstall_error_unknown">Malsukcesis malinstali pro nekonata eraro</string>
     <string name="system_install_denied_title">Privilegia F-Droid-aldonaĵo ne disponebla</string>
     <string name="system_install_denied_body">Tiu ĉi agordo estas nur disponebla kiam F-Droid Privilegia Aldonaĵo estas instalita.</string>
@@ -295,13 +292,11 @@
     <string name="bluetooth_unavailable">Bludento disponebla</string>
     <string name="swap_cant_send_no_bluetooth">Ne povas sendi na F-Droid, ĉar Bludento ne estas disponebla en via aparato.</string>
     <string name="loading">Prilaboranta…</string>
-    <string name="swap_attempt_install">Provi instali</string>
     <string name="swap_connection_misc_error">Eraro okazis dum konektado al aparato, verŝajne ne povas interŝanĝi kun ĝi.</string>
     <string name="swap_not_enabled">Interŝanĝo malaktiva</string>
     <string name="swap_not_enabled_description">Antaŭ interŝanĝo via aparato devas esti videbla.</string>
 
     <string name="install_confirm">postulas aliron al</string>
-    <string name="install_confirm_no_perms">Ĉu vi volas instali tiun ĉi aplikaĵon? Ĝi ne bezonas iun ajn specialan aliron.</string>
     <string name="install_confirm_update">Ĉu vi volas instali ĝisdatigon al tiu ĉi aplikaĵo? Viaj nunaj datumoj ne foriĝos. La ĝisdatiga aplikaĵo eblos aliri:</string>
     <string name="install_confirm_update_system">Ĉu vi volas instali ĝisdatigon al tiu ĉi integrita aplikaĵo? Viaj nunaj datumoj ne foriĝos. La ĝisdatiga aplikaĵo eblos aliri:</string>
     <string name="install_confirm_update_no_perms">Ĉu vi volas instali ĝisdatigon al tiu ĉi estanta aplikaĵo? Viaj nunaj datumoj ne foriĝos. Ĝi ne bezonas iun ajn specialan aliron.</string>

@@ -235,10 +235,7 @@ bağlanılıyor</string>
     <string name="empty_search_available_app_list">Eşleşen hiçbir uygulama mevcut değildir.</string>
     <string name="empty_search_can_update_app_list">Güncelleme için hiçbir eşleşen uygulama yoktur.</string>
 
-    <string name="install_error_title">Kurulum hatası</string>
     <string name="install_error_unknown">Kurulum bilinmeyen bir hata nedeniyle başarısız oldu</string>
-    <string name="install_error_cannot_parse">Paketin ayrıştırılması sırasında bir hata meydana geldi</string>
-    <string name="uninstall_error_title">Kaldırma hatası</string>
     <string name="uninstall_error_unknown">Kaldırma bilinmeyen bir hata nedeniyle başarısız oldu</string>
     <string name="system_install_button_install">Kur</string>
     <string name="system_install_first_time_notification_message_short">Daha fazla bilgi için dokunun.</string>
@@ -276,13 +273,11 @@ bağlanılıyor</string>
     <string name="bluetooth_unavailable">Bluetooth mevcut değil</string>
     <string name="swap_cant_send_no_bluetooth">F-Droid gönderilemedi, çünkü Bluetooth bu cihazda mevcut değil.</string>
     <string name="loading">Yükleniyor…</string>
-    <string name="swap_attempt_install">Kurmayı dene</string>
     <string name="swap_connection_misc_error">Cihaza bağlanılırken bir hata meydana geldi, onunla takas yapamayacağız gibi görünüyor.</string>
     <string name="swap_not_enabled">Takas etkinleştirilmemiş</string>
     <string name="swap_not_enabled_description">Takas yapmadan önce cihazınızın görünebilir olması gerekmektedir.</string>
 
     <string name="install_confirm">Bu uygulamayı kurmak istiyor musunuz? Şunlara erişimi olacaktır:</string>
-    <string name="install_confirm_no_perms">Bu uygulamayı kurmak istiyor musunuz? Herhangi özel bir erişim gerektirmemektedir.</string>
     <string name="install_confirm_update">Bu mevcut uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolmayacaktır. Güncellenmiş uygulamanın şunlara erişimi olacaktır:</string>
     <string name="install_confirm_update_system">Bu gömülü uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolamayacaktır. Güncellenmiş uygulamanın şunlara erişimi olacaktır:</string>
     <string name="install_confirm_update_no_perms">Bu mevcut uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolmayacaktır. Herhangi özel bir erişim gerektirmemektedir.</string>

@@ -185,10 +185,7 @@
     <string name="category_Graphics">Grafik</string>
     <string name="category_Money">Geld</string>
     <string name="category_Time">Zeit</string>
-    <string name="install_error_title">Installationsfehler</string>
     <string name="install_error_unknown">Installation wegen unbekanntem Fehler fehlgeschlagen</string>
-    <string name="install_error_cannot_parse">Es ist ein Fehler beim Auslesen des Pakets aufgetreten</string>
-    <string name="uninstall_error_title">Deinstallationsfehler</string>
     <string name="uninstall_error_unknown">Deinstallation wegen unbekanntem Fehler fehlgeschlagen</string>
     <string name="app_name">F-Droid</string>
 
@@ -287,13 +284,11 @@
     <string name="swap_nearby">Tausch in der Nähe</string>
     <string name="swap_cant_send_no_bluetooth">F-Droid kann nicht gesendet werden, da Bluetooth auf diesem Gerät nicht verfügbar ist.</string>
     <string name="loading">Ladevorgang …</string>
-    <string name="swap_attempt_install">Installation versuchen</string>
     <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich.</string>
     <string name="swap_not_enabled">Tauschen ist nicht aktiviert</string>
     <string name="swap_not_enabled_description">Vor dem Tausch muss Ihr Gerät sichtbar gemacht werden.</string>
 
     <string name="install_confirm">benötigt Zugriff auf</string>
-    <string name="install_confirm_no_perms">Wollen Sie diese Anwendung installieren? Es werden keine besonderen Zugriffsrechte erfordert.</string>
     <string name="install_confirm_update">Wollen Sie eine Aktualisierung dieser bestehenden Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Anwendung wird folgenden Zugriff erhalten:</string>
     <string name="install_confirm_update_no_perms">Wollen Sie eine Aktualisierung dieser vorinstallierten Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Es werden keine besonderen Zugriffsrechte erfordert.</string>
     <string name="install_confirm_update_system">Wollen Sie eine Aktualisierung dieser vorinstallierten Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Anwendung wird folgenden Zugriff erhalten:</string>

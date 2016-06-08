@@ -169,9 +169,7 @@
     <string name="empty_available_app_list">此分類沒有任何應用程式。\n\n請選擇另一個分類或嘗試更新您的軟件倉庫以取得最新的程式目錄。</string>
     <string name="empty_can_update_app_list">所有應用程式都是最新的。\n\n恭喜您！所有的應用程式已更新至最新的版本 (或許您的軟件倉庫已過期)。</string>
 
-    <string name="install_error_title">安裝錯誤</string>
     <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
-    <string name="uninstall_error_title">卸載錯誤</string>
     <string name="uninstall_error_unknown">不明的錯誤導致卸載失敗</string>
     <string name="system_install_first_time_notification_message_short">觸碰以得到更多資訊。</string>
     <string name="system_install_installing">安裝中…</string>
@@ -216,7 +214,6 @@
     <string name="proxy_port_summary">設置您的代理伺服器通訊埠號碼 (如 8118)</string>
 
     <string name="status_download">正在從 %1$s\n下載\n%2$s / %3$s (%4$d%%)</string>
-    <string name="install_confirm_no_perms">您想安裝此應用程式嗎？它不需要任何特別的存取權。</string>
     <string name="install_confirm">您想安裝此應用程式嗎？它需要以下的存取權：</string>
     <string name="install_confirm_update">您想更新此應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
     <string name="install_confirm_update_system">您想更新此內置的應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
@@ -237,7 +234,6 @@
 
     <string name="swap_not_enabled">沒有啟用交換功能</string>
     <string name="swap_connection_misc_error">與裝置連接的時候發生錯誤，未能與它進行交換。</string>
-    <string name="swap_attempt_install">嘗試安裝</string>
     <string name="loading">正在載入…</string>
     <string name="swap_cant_send_no_bluetooth">未能傳送 F-Droid，因為此裝置沒有藍牙功能。</string>
     <string name="bluetooth_unavailable">藍牙不可用</string>
@@ -327,7 +323,6 @@
     <string name="writing_index_jar">寫入已簽署的目錄檔案 (index.jar) 中…</string>
     <string name="rooted_on">不要以灰字顯示需要 root 權限的應用程式</string>
     <string name="repo_delete_to_overwrite">在加入含有不同鑰匙的軟件倉庫前，您先要刪除此倉庫。</string>
-    <string name="install_error_cannot_parse">閱讀軟件包時發生了錯誤</string>
     <string name="update_history_summ">在 %s 天內添置於目錄的程式方可算為「最新」</string>
     <string name="repo_exists_add_fingerprint">由於此倉庫已經設置好，此動作將會加入新的鑰匙數據。</string>
     <string name="menu_email">電郵作者</string>

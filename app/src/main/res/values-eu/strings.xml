@@ -156,7 +156,6 @@
     <string name="newPerms">Berria</string>
     <string name="allPerms">Guztiak</string>
     <string name="perms_new_perm_prefix">"Berria: "</string>
-    <string name="swap_attempt_install">Saiatu instalatzen</string>
     <string name="loading">Kargatzen…</string>
     <string name="swap_connecting">Konektatzen</string>
     <string name="swap_wifi_device_name">Gailuaren izena</string>
@@ -233,10 +232,7 @@
     <string name="requesting_root_access_body">Root baimena eskatzen…</string>
     <string name="root_access_denied_title">Root baimena ukatu da</string>
     <string name="root_access_denied_body">Bietako bat, zure Android gailuan ez dago root baimena eskuratzea edo zuk ukatu diozu F-Droid aplikazioari root baimena.</string>
-    <string name="install_error_title">Instalazio errorea</string>
     <string name="install_error_unknown">Instalazioak huts egin du errore ezezagun bat dela eta</string>
-    <string name="install_error_cannot_parse">Errore bat gertatu da paketea prozesatzean</string>
-    <string name="uninstall_error_title">Desinstalatzean errorea</string>
     <string name="uninstall_error_unknown">Ezin izan da desinstalatu errore ezezagun bat dela eta</string>
     <string name="system_install_denied_title">Pribilegiodun F-Droid Luzapena ez dago eskuragarri</string>
     <string name="system_install_denied_body">Aukera hau Pribilegiodun F-Droid Luzapena instalatuta dagoenean dago eskuragarri.</string>
@@ -301,7 +297,6 @@
     <string name="swap_not_enabled_description">Trukatu aurretik, gailua ikusgarri jarri behar duzu.</string>
 
     <string name="install_confirm">Aplikazio hau instalatu nahi duzu? Honako baimenak behar ditu:</string>
-    <string name="install_confirm_no_perms">Aplikazio hau instalatu nahi duzu? Ez du baimen berezirik behar.</string>
     <string name="install_confirm_update">Aurretik dagoen aplikazio honen bertsio berriagoa instalatu nahi duzu? Oraingo datuak ez dituzu galduko. Eguneratutako aplikazioak honako baimenak behar ditu:</string>
     <string name="install_confirm_update_system">Sistemarekin zetorren aplikazio honen bertsio berriagoa instalatu nahi duzu? Oraingo datuak ez dituzu galduko. Eguneratutako aplikazioak honako baimenak behar ditu:</string>
     <string name="install_confirm_update_no_perms">Aurretik dagoen aplikazio honen bertsio berriagoa instalatu nahi duzu? Oraingo datuak ez dituzu galduko. Ez du baimen berezirik behar.</string>
