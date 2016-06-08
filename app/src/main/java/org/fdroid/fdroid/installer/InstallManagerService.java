@@ -241,7 +241,7 @@ public class InstallManagerService extends Service {
                 Uri sanitizedUri;
                 try {
                     ApkVerifier apkVerifier = new ApkVerifier(context, localApkUri, apk);
-                    apkVerifier.basicVerify();
+                    apkVerifier.verifyApk();
                     sanitizedUri = apkVerifier.getSafeUri();
                 } catch (ApkVerifier.ApkVerificationException e) {
                     Log.e(TAG, "ApkVerifier failed", e);

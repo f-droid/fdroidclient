@@ -23,31 +23,37 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Hasher;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.HashSet;
 
 public class ApkVerifier {
 
+    private static final String TAG = "ApkVerifier";
+
     Context context;
     Uri localApkUri;
-    Apk apk;
+    Apk expectedApk;
     PackageManager pm;
 
-    ApkVerifier(Context context, Uri localApkUri, Apk apk) {
+    ApkVerifier(Context context, Uri localApkUri, Apk expectedApk) {
         this.context = context;
         this.localApkUri = localApkUri;
-        this.apk = apk;
+        this.expectedApk = expectedApk;
         this.pm = context.getPackageManager();
     }
 
-    public void basicVerify() throws ApkVerificationException {
+    public void verifyApk() throws ApkVerificationException {
         PackageInfo localApkInfo = pm.getPackageArchiveInfo(
                 localApkUri.getPath(), PackageManager.GET_PERMISSIONS);
         if (localApkInfo == null) {
@@ -55,13 +61,33 @@ public class ApkVerifier {
         }
 
         // check if the apk has the expected packageName
-        if (localApkInfo.packageName == null || !apk.packageName.equals(localApkInfo.packageName)) {
+        if (localApkInfo.packageName == null || !localApkInfo.packageName.equals(expectedApk.packageName)) {
             throw new ApkVerificationException("apk has unexpected packageName!");
         }
 
         if (localApkInfo.versionCode < 0) {
             throw new ApkVerificationException("apk has no valid versionCode!");
         }
+
+        // verify permissions, important for unattended installer
+        HashSet<String> localPermissions = getLocalPermissionsSet(localApkInfo);
+        HashSet<String> expectedPermissions = expectedApk.getFullPermissionsSet();
+        Utils.debugLog(TAG, "localPermissions: " + localPermissions);
+        Utils.debugLog(TAG, "expectedPermissions: " + expectedPermissions);
+        if (!localPermissions.equals(expectedPermissions)) {
+            throw new ApkVerificationException("permissions of apk not equals expected permissions!");
+        }
+
+        // TODO: check target sdk
+    }
+
+    private HashSet<String> getLocalPermissionsSet(PackageInfo localApkInfo) {
+        String[] localPermissions = localApkInfo.requestedPermissions;
+        if (localPermissions == null) {
+            return new HashSet<>();
+        }
+
+        return new HashSet<>(Arrays.asList(localApkInfo.requestedPermissions));
     }
 
     public Uri getSafeUri() throws ApkVerificationException {
@@ -77,7 +103,7 @@ public class ApkVerifier {
             sanitizedApkFile = SanitizedFile.knownSanitized(File.createTempFile("install-", ".apk",
                     context.getFilesDir()));
             FileUtils.copyFile(apkFile, sanitizedApkFile);
-            if (!verifyApkFile(sanitizedApkFile, apk.hash, apk.hashType)) {
+            if (!verifyApkFile(sanitizedApkFile, expectedApk.hash, expectedApk.hashType)) {
                 FileUtils.deleteQuietly(apkFile);
                 throw new ApkVerificationException(apkFile + " failed to verify!");
             }

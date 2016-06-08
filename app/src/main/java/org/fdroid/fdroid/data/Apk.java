@@ -5,12 +5,12 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Parcelable;
-import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 public class Apk extends ValueObject implements Comparable<Apk> {
 
@@ -145,7 +145,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     public ArrayList<String> getFullPermissionList() {
         if (this.permissions == null) {
-            return null;
+            return new ArrayList<>();
         }
 
         ArrayList<String> permissionsFull = new ArrayList<>();
@@ -157,11 +157,11 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     public String[] getFullPermissionsArray() {
         ArrayList<String> fullPermissions = getFullPermissionList();
-        if (fullPermissions == null) {
-            return null;
-        }
-
         return fullPermissions.toArray(new String[fullPermissions.size()]);
+    }
+
+    public HashSet<String> getFullPermissionsSet() {
+        return new HashSet<>(getFullPermissionList());
     }
 
     /**
