@@ -7,7 +7,7 @@
     <string name="version">Versão</string>
     <string name="delete">Apagar</string>
     <string name="enable_nfc_send">Ativar o envio NFC…</string>
-    <string name="cache_downloaded">Pacotes em cache</string>
+    <string name="cache_downloaded">Manter aplicações em cache</string>
     <string name="updates">Atualizações</string>
     <string name="unstable_updates">Atualizações instáveis</string>
     <string name="unstable_updates_summary">Sugerir atualizações para versões instáveis</string>
@@ -309,7 +309,7 @@
     <string name="swap_not_enabled">Troca não ativa</string>
     <string name="swap_not_enabled_description">Antes de trocar, o seu dispositivo tem que estar disponível.</string>
 
-    <string name="install_confirm">Deseja instalar esta aplicação? A aplicação terá acesso a:</string>
+    <string name="install_confirm">requer acesso a</string>
     <string name="install_confirm_no_perms">Deseja instalar esta aplicação? A aplicação não requer qualquer acesso especial.</string>
     <string name="more">Mais</string>
     <string name="less">Menos</string>
@@ -360,5 +360,21 @@
     <string name="download_pending">À espera da descarga…</string>
 
     <string name="downloading_apk">A descarregar %1$s</string>
+
+    <string name="system_install_not_supported">Atualmente, ainda não é possível instalar a F-Droid Privileged Extension em sistemas Android &gt; 5.1.</string>
+
+    <string name="install_error_notify_title">Erro ao instalar %s</string>
+    <string name="uninstall_error_notify_title">Erro ao desinstalar %s</string>
+
+
+    <string name="installing">A instalar…</string>
+    <string name="uninstalling">A desinstalar…</string>
+
+    <string name="keep_hour">1 hora</string>
+    <string name="keep_day">1 dia</string>
+    <string name="keep_week">1 semana</string>
+    <string name="keep_month">1 mês</string>
+    <string name="keep_year">1 ano</string>
+    <string name="keep_forever">Eternamente</string>
 
     </resources>

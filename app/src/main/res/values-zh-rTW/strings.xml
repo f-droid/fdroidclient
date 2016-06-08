@@ -212,7 +212,7 @@
     <string name="category_Theming">主題</string>
     <string name="permissions">存取權</string>
     <string name="no_permissions">不需要任何權限。</string>
-    <string name="downloading">下載中…</string>
+    <string name="downloading">正在下載…</string>
 
     <string name="interval_never">從不</string>
     <string name="interval_1h">每小時</string>
@@ -324,4 +324,42 @@
     <string name="swap_confirm_connect">您現在想要從 %1$s 取得應用程式嗎？</string>
     <string name="swap_nearby">近距交換</string>
     <string name="swap_intro">與您附近的人連結並且交換應用程式。</string>
+    <string name="swap_scan_or_type_url">一個人要掃描 QR 碼或在瀏覽器鍵入另一個的網址。</string>
+    <string name="swap_visible_bluetooth">經由藍牙可看見</string>
+    <string name="swap_not_visible_bluetooth">經由藍牙不可看見</string>
+    <string name="swap_visible_wifi">經由 Wi-Fi 可看見</string>
+    <string name="swap_not_visible_wifi">經由 Wi-Fi 不可看見</string>
+    <string name="swap_connecting">連接</string>
+    <string name="system_install_post_success_message">F-Droid 特權擴充已成功安裝。這允許 F-Droid 安裝、更新以及解除安裝其擁有的應用程式。</string>
+    <string name="system_install_post_fail_message">F-Droid 特權擴充安裝失敗。此安裝方式並不支援所有發行的 Android 版本，請查閱 F-Droid 的 bug 追蹤以取得詳細資訊。</string>
+    <string name="keep_forever">永遠</string>
+
+    <string name="keep_hour">一小時</string>
+    <string name="keep_day">一天</string>
+    <string name="keep_week">一星期</string>
+    <string name="keep_month">一個月</string>
+    <string name="keep_year">一年</string>
+    <string name="installing">正在安裝…</string>
+    <string name="uninstalling">解除安裝中…</string>
+
+    <string name="downloading_apk">正在下載 %1$s</string>
+    <string name="perms_new_perm_prefix">"新的： "</string>
+    <string name="perms_description_app">由 %1$s 提供。</string>
+    <string name="tap_to_install">下載完成，輕點以安裝</string>
+    <string name="newPerms">新的</string>
+    <string name="allPerms">全部</string>
+    <string name="perm_costs_money">這可能會花費您的錢</string>
+    <string name="download_pending">等待開始下載…</string>
+    <string name="tap_to_install_format">輕點以安裝 %s</string>
+    <string name="tap_to_update_format">輕點以更新 %s</string>
+    <string name="install_confirm">需要存取</string>
+    <string name="loading">正在載入…</string>
+    <string name="swap_not_enabled_description">在交換之前，您的裝置必須可以被看見。</string>
+
+    <string name="uninstall_update_confirm">您確定要以原始版本替換這個應用程式嗎？</string>
+    <string name="install_error_notify_title">%s 安裝時錯誤</string>
+    <string name="uninstall_error_notify_title">%s 解除安裝時錯誤</string>
+
+
+    <string name="system_install_first_time_message">看起來在您的裝置上您有 root 存取權。您現在可以安裝 F-Droid 特權擴充，與 Android 作業系統緊密結合。這允許 F-Droid 安裝、更新以及解除安裝其擁有的應用程式。</string>
     </resources>

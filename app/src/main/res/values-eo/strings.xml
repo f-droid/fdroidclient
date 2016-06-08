@@ -300,7 +300,7 @@
     <string name="swap_not_enabled">Interŝanĝo malaktiva</string>
     <string name="swap_not_enabled_description">Antaŭ interŝanĝo via aparato devas esti videbla.</string>
 
-    <string name="install_confirm">Ĉu vi volas instali tiun ci aplikaĵon? Ĝi eblos aliri:</string>
+    <string name="install_confirm">postulas aliron al</string>
     <string name="install_confirm_no_perms">Ĉu vi volas instali tiun ĉi aplikaĵon? Ĝi ne bezonas iun ajn specialan aliron.</string>
     <string name="install_confirm_update">Ĉu vi volas instali ĝisdatigon al tiu ĉi aplikaĵo? Viaj nunaj datumoj ne foriĝos. La ĝisdatiga aplikaĵo eblos aliri:</string>
     <string name="install_confirm_update_system">Ĉu vi volas instali ĝisdatigon al tiu ĉi integrita aplikaĵo? Viaj nunaj datumoj ne foriĝos. La ĝisdatiga aplikaĵo eblos aliri:</string>
@@ -354,5 +354,12 @@
     <string name="keep_month">1 monato</string>
     <string name="keep_year">1 jaro</string>
     <string name="keep_forever">Por ĉiam</string>
+
+    <string name="install_error_notify_title">Eraro dum instalado de %s</string>
+    <string name="uninstall_error_notify_title">Eraro dum malinstalado de %s</string>
+
+
+    <string name="installing">Instalanta…</string>
+    <string name="uninstalling">Malinstalanta…</string>
 
     </resources>

@@ -262,7 +262,7 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="swap_not_enabled">Intercambio no activado</string>
     <string name="swap_not_enabled_description">Antes de intercambiar, el dispositivo debe ser visible.</string>
 
-    <string name="install_confirm">¿Quieres instalar esta aplicación? Tendrá acceso a:</string>
+    <string name="install_confirm">¿Quiere instalar esta aplicación? Tendrá acceso a</string>
     <string name="install_confirm_no_perms">¿Quieres instalar esta aplicación? No requiere ningún acceso especial.</string>
     <string name="install_confirm_update">¿Quieres instalar una actualización de esta aplicación? Los datos no se perderán. La aplicación actualizada tendrá acceso a:</string>
     <string name="install_confirm_update_no_perms">¿Quieres instalar una actualización para esta aplicación? Los datos no se perderán. No requiere ningún acceso especial.</string>
@@ -360,4 +360,11 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="keep_forever">Siempre</string>
 
     <string name="keep_hour">1 hora</string>
+    <string name="install_error_notify_title">Error instalando %s</string>
+    <string name="uninstall_error_notify_title">Error instalando %s</string>
+
+
+    <string name="installing">Instalando…</string>
+    <string name="uninstalling">Instalando…</string>
+
     </resources>

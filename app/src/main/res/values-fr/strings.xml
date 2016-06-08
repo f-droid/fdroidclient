@@ -6,7 +6,7 @@
   <string name="version">Version</string>
   <string name="delete">Supprimer</string>
   <string name="enable_nfc_send">Activer l\'envoi via NFC…</string>
-  <string name="cache_downloaded">Stockage des paquets</string>
+  <string name="cache_downloaded">Garder en cache les applications</string>
   <string name="updates">Mises à jour</string>
   <string name="other">Autres</string>
   <string name="update_interval">Intervalle de mise à jour automatique</string>
@@ -343,8 +343,17 @@
     <string name="update_auto_download_summary">Télécharger les mises à jour en arrière-plan</string>
     <string name="tap_to_install_format">Appuyez pour installer %s</string>
     <string name="tap_to_update_format">Appuyez pour mettre à jour %s</string>
-    <string name="download_pending">En attente du démarrage du téléchargement…</string>
+    <string name="download_pending">Téléchargement en attente…</string>
 
     <string name="downloading_apk">Téléchargement de %1$s</string>
+
+    <string name="system_install_not_supported">L\'installation de F-Droid - Permissions Étendues n\'est pas supportée pour l\'instant sur Android 5.1 et plus.</string>
+
+    <string name="keep_hour">1 heure</string>
+    <string name="keep_day">1 jour</string>
+    <string name="keep_week">1 semaine</string>
+    <string name="keep_month">1 mois</string>
+    <string name="keep_year">1 an</string>
+    <string name="keep_forever">Pour toujours</string>
 
     </resources>

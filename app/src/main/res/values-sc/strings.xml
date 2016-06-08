@@ -262,7 +262,7 @@
     <string name="swap_not_enabled">Cumpartzidura non abilitada</string>
     <string name="swap_not_enabled_description">In antis de cumpartzire, su dispositivu depet èssere postu visìbile.</string>
 
-    <string name="install_confirm">Boles installare custa aplicatzione? At a tènnere atzessu a:</string>
+    <string name="install_confirm">at a tènnere atzessu a</string>
     <string name="install_confirm_no_perms">Boles installare custa aplicatzione? Non pedit perunu atzessu ispetziale.</string>
     <string name="install_confirm_update">Boles installare un’agiornamentu a custa aplicatzione esistente? Sos datos tuos giai in cuddae non s\'ant a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
     <string name="install_confirm_update_system">Boles installare un’agiornamentu a custa aplicatzione incluida in su sistema? Sos datos tuos giai in cuddae non s\'ant a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
@@ -354,5 +354,12 @@
     <string name="keep_month">1 Mese</string>
     <string name="keep_year">1 Annu</string>
     <string name="keep_forever">Pro semper</string>
+
+    <string name="install_error_notify_title">Errore installende %s</string>
+    <string name="uninstall_error_notify_title">Errore disinstallende %s</string>
+
+
+    <string name="installing">Installende…</string>
+    <string name="uninstalling">Disinstallende…</string>
 
     </resources>

@@ -6,7 +6,7 @@
   <string name="version">Version</string>
   <string name="delete">Ta bort</string>
   <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
-  <string name="cache_downloaded">Cachade appar</string>
+  <string name="cache_downloaded">Behåll cachade appar</string>
   <string name="updates">Uppdateringar</string>
   <string name="other">Andra</string>
   <string name="update_interval">Automatiskt uppdateringsintervall</string>
@@ -48,7 +48,7 @@
   <string name="one_update_available">1 uppdatering finns tillgänglig.</string>
   <string name="many_updates_available">%d uppdateringar finns tillgängliga.</string>
   <string name="fdroid_updates_available">Uppdateringar för F-Droid tillgängliga</string>
-  <string name="bluetooth_activity_not_found">Kunde inte hitta en sändningsmetod för Bluetooth, välj en!</string>
+  <string name="bluetooth_activity_not_found">Ingen metod för att kunna skicka med Bluetooth kunde hittas, välj en!</string>
   <string name="choose_bt_send">Välj en sändningsmetod för Bluetooth</string>
   <string name="send_via_bluetooth">Skicka via Bluetooth</string>
   <string name="repo_add_url">Adress till repository</string>
@@ -227,7 +227,7 @@
     <string name="category_Graphics">Grafik</string>
     <string name="category_Money">Pengar</string>
     <string name="category_Sports_Health">Sport &amp; hälsa</string>
-    <string name="category_Theming">Teman</string>
+    <string name="category_Theming">Temasättning</string>
     <string name="category_Time">Tid</string>
     <string name="category_Writing">Skrivande</string>
 

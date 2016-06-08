@@ -247,7 +247,7 @@
     <string name="system_install_question">Желите ли да инсталирате повлашћено проширење Ф-дроида?</string>
     <string name="system_uninstall">Желите ли да уклоните повлашћено проширење Ф-дроида?</string>
     <string name="swap_qr_isnt_for_swap">Бар-кôд који сте очитали не изгледа као кôд размене.</string>
-    <string name="install_confirm">Желите ли да инсталирате ову апликацију? Имаће приступ следећем:</string>
+    <string name="install_confirm">захтева приступ следећем</string>
     <string name="install_confirm_no_perms">Желите ли да инсталирате ову апликацију? Не захтева посебан приступ.</string>
     <string name="perm_costs_money">Ово може да вас кошта</string>
     <string name="uninstall_update_confirm">Желите ли да замените ову апликацију фабрички уграђеном?</string>
@@ -352,5 +352,12 @@
     <string name="keep_month">1 месец</string>
     <string name="keep_year">1 годину</string>
     <string name="keep_forever">заувек</string>
+
+    <string name="install_error_notify_title">Грешка уградње %s</string>
+    <string name="uninstall_error_notify_title">Грешка уклањања %s</string>
+
+
+    <string name="installing">Уграђујем…</string>
+    <string name="uninstalling">Уклањам…</string>
 
     </resources>

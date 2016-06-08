@@ -325,4 +325,13 @@
     <string name="keep_forever">Totdeauna</string>
 
     <string name="crash_dialog_text">O eroare neasteptata s-a produs fortand oprirea aplicatiei. Doriti sa trimite-ti un e-mail cu detalii, pentru a putea ajuta la rezolvarea acestei probleme?</string>
+    <string name="uninstalling">Dezinstalare…</string>
+
+    <string name="installIncompatible">Se pare ca acest pachet nu este compatibil cu dispozitivul dumneavoastra. Doriti sa se incerce instalarea lui oricum?</string>
+    <string name="installDowngrade">Incercati sa instalati o versiune mai veche. Facand asta s-ar putea sa nu functioneze corect si chiar sa va pierdeti datele. Doriti sa se incerce instalarea oricum?</string>
+    <string name="installing">Instalare…</string>
+    <string name="uninstall_error_notify_title">Eroare la dezinstalarea %s</string>
+
+
+    <string name="install_error_notify_title">Eroare la instalarea %s</string>
     </resources>

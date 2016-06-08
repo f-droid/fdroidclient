@@ -255,7 +255,7 @@
     <string name="swap_not_enabled">交換は有効ではありません</string>
     <string name="swap_not_enabled_description">交換する前に､お使いの端末が表示されている必要があります｡</string>
 
-    <string name="install_confirm">このｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙしますか｡必要なｱｸｾｽ許可:</string>
+    <string name="install_confirm">必要なｱｸｾｽ許可</string>
     <string name="install_confirm_no_perms">このｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙしますか｡特別なｱｸｾｽ許可は不要です。</string>
     <string name="install_confirm_update">既存のｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか｡既存のﾃﾞｰﾀｰは失われません｡更新されたｱﾌﾟﾘｹｰｼｮﾝのｱｸｾｽ許可:</string>
     <string name="install_confirm_update_system">この組み込みｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか｡既存のﾃﾞｰﾀｰは失われません｡更新されたｱﾌﾟﾘｹｰｼｮﾝのｱｸｾｽ許可:</string>
@@ -355,5 +355,12 @@
     <string name="keep_month">1ヶ月</string>
     <string name="keep_year">1年間</string>
     <string name="keep_forever">永久</string>
+
+    <string name="install_error_notify_title">%s のｲﾝｽﾄｰﾙ時にｴﾗｰ</string>
+    <string name="uninstall_error_notify_title">%s のｱﾝｲﾝｽﾄｰﾙ時にｴﾗｰ</string>
+
+
+    <string name="installing">ｲﾝｽﾄｰﾙ中…</string>
+    <string name="uninstalling">ｱﾝｲﾝｽﾄｰﾙ中…</string>
 
     </resources>

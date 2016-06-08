@@ -260,7 +260,7 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="swap_not_enabled">Permuta não habilitada</string>
     <string name="swap_not_enabled_description">Antes de permutar, seu dispositivo deve estar visível.</string>
 
-    <string name="install_confirm">Você quer instalar este aplicativo? Ele terá acesso a:</string>
+    <string name="install_confirm">necessário acesso à</string>
     <string name="install_confirm_no_perms">Você quer instalar este aplicativo? Ele não exige de nenhum acesso especial.</string>
     <string name="install_confirm_update">Você quer instalar uma atualização para este aplicativo existente? Os dados existentes não serão perdidos. O aplicativo atualizado terá acesso a:</string>
     <string name="install_confirm_update_system">Você quer instalar uma atualização para este aplicativo incorporado? Os dados existentes não serão perdidos. O aplicativo atualizado terá acesso a:</string>
@@ -355,5 +355,12 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="keep_month">1 mês</string>
     <string name="keep_year">1 ano</string>
     <string name="keep_forever">Para sempre</string>
+
+    <string name="install_error_notify_title">Erro instalando %s</string>
+    <string name="uninstall_error_notify_title">Erro desinstalando %s</string>
+
+
+    <string name="installing">Instalando…</string>
+    <string name="uninstalling">Desinstalando…</string>
 
     </resources>

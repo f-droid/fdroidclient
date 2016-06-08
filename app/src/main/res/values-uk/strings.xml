@@ -214,7 +214,7 @@
     <string name="swap_dont_show_again">Не показувати це знову</string>
     <string name="swap_visible_bluetooth">Видимий через Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Налаштування Bluetooth…</string>
-    <string name="install_confirm">Бажаєте встановити цей додаток? Він отримає доступ до:</string>
+    <string name="install_confirm">потребує доступ до</string>
     <string name="install_confirm_no_perms">Бажаєте встановити цей додаток? Він не потребує спеціальних дозволів.</string>
     <string name="perm_costs_money">Це може вам коштувати грошей</string>
     <string name="unstable_updates_summary">Пропонувати оновлення до нестабільних версій</string>
@@ -362,5 +362,14 @@
     <string name="keep_month">1 місяць</string>
     <string name="keep_year">1 рік</string>
     <string name="keep_forever">Завжди</string>
+
+    <string name="system_install_not_supported">На поточний момент встановлення привілейованого розширення F-Droid не підтримується системами Android 5.1 чи старше.</string>
+
+    <string name="install_error_notify_title">Помилка встановлення %s</string>
+    <string name="uninstall_error_notify_title">Помилка видалення %s</string>
+
+
+    <string name="installing">Встановлення…</string>
+    <string name="uninstalling">Видалення…</string>
 
     </resources>

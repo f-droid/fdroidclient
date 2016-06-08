@@ -5,7 +5,7 @@
   <string name="installDowngrade">Aneu a desactualitzar aquesta aplicació. Això podria fer que l\'aplicació no funcionés o inclús es perdessin les vostres dades. Esteu segur que ho voleu fer?</string>
   <string name="version">Versió</string>
   <string name="delete">Esborrar</string>
-  <string name="cache_downloaded">Memòria cau de paquets</string>
+  <string name="cache_downloaded">Mantenir les apps a la caché</string>
   <string name="updates">Actualitzacions</string>
   <string name="other">Altres</string>
   <string name="update_interval">Període d\'actualització automàtica</string>
@@ -305,7 +305,7 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="swap_not_enabled">Intercanvi no activat</string>
     <string name="swap_not_enabled_description">Abans d\'intercanviar heu de fer visible el dispositiu.</string>
 
-    <string name="install_confirm">Voleu instal·lar aquesta aplicació? Tindrà accés a:</string>
+    <string name="install_confirm">necessita accés a</string>
     <string name="install_confirm_no_perms">Voleu instal·lar aquesta aplicació? No requereix cap accés especial.</string>
     <string name="install_confirm_update">Voleu instal·lar una actualització d\'aquesta aplicació? Les dades existents no es perdran. L\'aplicació actualitzada tindrà accés a:</string>
     <string name="install_confirm_update_system">Voleu instal·lar una actualització d\'aquesta aplicació integrada? No perdreu les dades existents. L\'aplicació actualitzada tindrà accés a:</string>
@@ -354,4 +354,12 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="keep_week">1 setmana</string>
     <string name="keep_month">1 mes</string>
     <string name="keep_year">1 any</string>
+    <string name="install_error_notify_title">Error instal·lant %s</string>
+    <string name="uninstall_error_notify_title">Error desinstal·lant %s</string>
+
+
+    <string name="installing">Instal·lant…</string>
+    <string name="uninstalling">Desinstal·lant…</string>
+
+    <string name="keep_hour">1 hora</string>
     </resources>

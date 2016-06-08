@@ -292,7 +292,7 @@
     <string name="swap_not_enabled">Tauschen ist nicht aktiviert</string>
     <string name="swap_not_enabled_description">Vor dem Tausch muss Ihr Gerät sichtbar gemacht werden.</string>
 
-    <string name="install_confirm">Wollen Sie diese Anwendung installieren? Sie wird Zugriff erhalten auf:</string>
+    <string name="install_confirm">benötigt Zugriff auf</string>
     <string name="install_confirm_no_perms">Wollen Sie diese Anwendung installieren? Es werden keine besonderen Zugriffsrechte erfordert.</string>
     <string name="install_confirm_update">Wollen Sie eine Aktualisierung dieser bestehenden Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Die aktualisierte Anwendung wird folgenden Zugriff erhalten:</string>
     <string name="install_confirm_update_no_perms">Wollen Sie eine Aktualisierung dieser vorinstallierten Anwendung installieren? Ihre bestehenden Daten gehen nicht verloren. Es werden keine besonderen Zugriffsrechte erfordert.</string>
@@ -338,8 +338,8 @@
     <string name="swap_stopping_wifi">WLAN wird angehalten …</string>
     <string name="update_auto_download">Aktualisierungen automatisch herunterladen</string>
     <string name="update_auto_download_summary">Die Aktualisierungsdateien im Hintergrund herunterladen</string>
-    <string name="tap_to_install_format">Antippen, um %s zu installieren</string>
-    <string name="tap_to_update_format">Antippen, um %s zu aktualisieren</string>
+    <string name="tap_to_install_format">%s installieren</string>
+    <string name="tap_to_update_format">%s aktualisieren</string>
     <string name="download_pending">Auf den Start der Übertragung wird gewartet …</string>
 
     <string name="downloading_apk">%1$s wird heruntergeladen</string>
@@ -352,5 +352,12 @@
     <string name="system_install_not_supported">Die Installation der privilegierten F-Droid-Erweiterung wird auf Android 5.1 oder höher derzeit nicht unterstützt.</string>
 
     <string name="keep_forever">Immer</string>
+
+    <string name="install_error_notify_title">Fehler beim Installieren von %s</string>
+    <string name="uninstall_error_notify_title">Fehler beim Deinstallieren von %s</string>
+
+
+    <string name="installing">Installation läuft …</string>
+    <string name="uninstalling">Deinstallation läuft …</string>
 
     </resources>

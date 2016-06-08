@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="installIncompatible">நீங்கள் நிறுவ விரும்பும் இச்செயலி உங்கள் சாதனத்திற்கு ஏற்புடையதாக தெரியவில்லை. எனினும் நீங்கள் இதை நிறுவ முயற்சி செய்ய விரும்புகிறீர்களா?</string>
+    <string name="installDowngrade">நீங்கள் இச்செயலியை இதன் முந்தைய பதிப்பிற்கு இறக்கம் செய்ய முயச்சி செய்கிறீர்கள். இவ்வாறு செய்வதன் விளைவாக ஒருவேளை நீங்கள் எதிர்பார்ப்பது போல் செயல்படாமலோ அல்லது உங்களுடைய தரவுகள் அழிந்து போகவும் வாய்ப்பு உள்ளது. எனினும் இதனை செய்ய விரும்புகிறீர்களா?</string>
+    <string name="version">பதிப்பு</string>
+    <string name="delete">அழி</string>
+    <string name="cache_downloaded">தற்காலிகமாக சேமிக்கப்பட்ட செயலிகளை வைத்திரு</string>
+    <string name="updates">மேம்படுத்தல்கள்</string>
+    <string name="unstable_updates">உறுதியற்ற மேம்பாடுகள்</string>
+    <string name="other">பிற</string>
+
+    <string name="automatic_scan_wifi">Wi-Fi-யில் மட்டும்</string>
+    <string name="automatic_scan_wifi_on">செயலி பட்டியலை Wi-Fi-யில் மட்டும் தானாக புதுப்பி</string>
+    <string name="update_auto_download">மேம்பாடுகளை தானாக தறவிறக்கு</string>
+    </resources>
