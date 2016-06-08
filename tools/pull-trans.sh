@@ -26,7 +26,7 @@ ref="${REMOTE}/${REMOTE_BRANCH}"
 diff="HEAD...$ref -- */values-*/strings.xml"
 
 authors=$(git log --format="%s %an" $diff | \
-	sed 's/Translated using Weblate (\(.*\)) \(.*\)/\2||\1/' | sort -f -u | column -s '||' -t)
+	sed 's/.* using Weblate (\(.*\)) \(.*\)/\2||\1/' | sort -f -u | column -s '||' -t)
 
 git diff $diff | git apply
 
