@@ -25,7 +25,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 @Config(constants = BuildConfig.class, application = Application.class)
 @RunWith(RobolectricGradleTestRunner.class)
@@ -224,17 +223,6 @@ public class AppProviderTest extends FDroidProviderTest {
         assertNotNull(cursor);
         assertEquals(1, cursor.getCount());
 
-        // We intentionally throw an IllegalArgumentException if you haven't
-        // yet called cursor.move*()...
-        try {
-            new App(cursor);
-            fail();
-        } catch (IllegalArgumentException e) {
-            // Success!
-        } catch (Exception e) {
-            fail();
-        }
-
         // And now we should be able to recover these values from the app
         // value object (because the queryAllApps() helper asks for NAME and
         // PACKAGE_NAME.
@@ -248,6 +236,17 @@ public class AppProviderTest extends FDroidProviderTest {
         assertNotNull(otherApp);
         assertEquals("org.fdroid.fdroid", otherApp.packageName);
         assertEquals("F-Droid", otherApp.name);
+    }
+
+    /**
+     * We intentionally throw an IllegalArgumentException if you haven't
+     * yet called cursor.move*().
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testCursorMustMoveToFirst() {
+        insertApp("org.fdroid.fdroid", "F-Droid");
+        Cursor cursor = queryAllApps();
+        new App(cursor);
     }
 
     private Cursor queryAllApps() {

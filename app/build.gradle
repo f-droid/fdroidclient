@@ -230,12 +230,21 @@ pmd {
     consoleOutput = true
 }
 
-task pmd(type: Pmd, dependsOn: assembleDebug) {
-    ruleSetFiles = files("${project.rootDir}/config/pmd/rules.xml")
+task pmdMain(type: Pmd, dependsOn: assembleDebug) {
+    ruleSetFiles = files("${project.rootDir}/config/pmd/rules.xml", "${project.rootDir}/config/pmd/rules-main.xml")
     ruleSets = [] // otherwise defaults clash with the list in rules.xml
-    source 'src/main/java', 'src/test/java', 'src/androidTest/java'
+    source 'src/main/java'
     include '**/*.java'
 }
+
+task pmdTest(type: Pmd, dependsOn: assembleDebug) {
+    ruleSetFiles = files("${project.rootDir}/config/pmd/rules.xml", "${project.rootDir}/config/pmd/rules-test.xml")
+    ruleSets = [] // otherwise defaults clash with the list in rules.xml
+    source 'src/test/java', 'src/androidTest/java'
+    include '**/*.java'
+}
+
+task pmd(dependsOn: [pmdMain, pmdTest]) {}
 
 // This person took the example code below from another blogpost online, however
 // I lost the reference to it:

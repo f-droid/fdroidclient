@@ -6,11 +6,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 public class TestUtils {
 
-    private static final String TAG = "TestUtils";
+    @SuppressWarnings("unused")
+    private static final String TAG = "TestUtils"; // NOPMD
 
     public static File copyResourceToTempFile(String resourceName) {
         File tempFile = null;
@@ -24,7 +26,7 @@ public class TestUtils {
         } catch (IOException e) {
             e.printStackTrace();
             if (tempFile != null && tempFile.exists()) {
-                tempFile.delete();
+                assertTrue(tempFile.delete());
             }
             fail();
             return null;

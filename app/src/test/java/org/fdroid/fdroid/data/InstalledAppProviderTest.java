@@ -19,7 +19,6 @@ import static org.fdroid.fdroid.data.ProviderTestUtils.assertResultCount;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.Map;
 
@@ -85,23 +84,11 @@ public class InstalledAppProviderTest extends FDroidProviderTest{
 
     @Test
     public void testUpdate() {
-
         insertInstalledApp("com.example.app1", 10, "1.0");
         insertInstalledApp("com.example.app2", 10, "1.0");
 
         assertResultCount(contentResolver, 2, InstalledAppProvider.getContentUri());
         assertIsInstalledVersionInDb(contentResolver, "com.example.app2", 10, "1.0");
-
-        try {
-            contentResolver.update(
-                    InstalledAppProvider.getAppUri("com.example.app2"),
-                    createContentValues(11, "1.1"),
-                    null, null
-            );
-            fail();
-        } catch (UnsupportedOperationException e) {
-            // We expect this to happen, because we should be using insert() instead.
-        }
 
         contentResolver.insert(
                 InstalledAppProvider.getContentUri(),
@@ -110,7 +97,19 @@ public class InstalledAppProviderTest extends FDroidProviderTest{
 
         assertResultCount(contentResolver, 2, InstalledAppProvider.getContentUri());
         assertIsInstalledVersionInDb(contentResolver, "com.example.app2", 11, "1.1");
+    }
 
+    /**
+     * We expect this to happen, because we should be using insert() instead as it will
+     * do an insert/replace query.
+     */
+    @Test(expected = UnsupportedOperationException.class)
+    public void testUpdateFails() {
+        contentResolver.update(
+                InstalledAppProvider.getAppUri("com.example.app2"),
+                createContentValues(11, "1.1"),
+                null, null
+        );
     }
 
     @Test

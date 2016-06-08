@@ -17,7 +17,6 @@ import java.util.List;
 
 import static org.fdroid.fdroid.data.ProviderTestUtils.assertInvalidUri;
 import static org.fdroid.fdroid.data.ProviderTestUtils.assertValidUri;
-import static org.junit.Assert.fail;
 
 @Config(constants = BuildConfig.class)
 @RunWith(RobolectricGradleTestRunner.class)
@@ -124,6 +123,11 @@ public class ProviderUriTests {
         assertValidUri(resolver, ApkProvider.getContentUri(apks), projection);
         assertValidUri(resolver, ApkProvider.getContentUri("org.fdroid.fdroid", 100), "content://org.fdroid.fdroid.data.ApkProvider/apk/100/org.fdroid.fdroid", projection);
         assertValidUri(resolver, ApkProvider.getRepoUri(1000), "content://org.fdroid.fdroid.data.ApkProvider/repo/1000", projection);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void invalidApkUrisWithTooManyApks() {
+        String[] projection = ApkProvider.DataColumns.ALL;
 
         List<Apk> manyApks = new ArrayList<>(ApkProvider.MAX_APKS_TO_QUERY - 5);
         for (int i = 0; i < ApkProvider.MAX_APKS_TO_QUERY - 1; i++) {
@@ -133,18 +137,12 @@ public class ProviderUriTests {
 
         manyApks.add(new MockApk("org.fdroid.fdroid.1", 1));
         manyApks.add(new MockApk("org.fdroid.fdroid.2", 2));
-        try {
-            // Technically, it is a valid URI, because it doesn't
-            // throw an UnsupportedOperationException. However it
-            // is still not okay (we run out of bindable parameters
-            // in the sqlite query.
-            assertValidUri(resolver, ApkProvider.getContentUri(manyApks), projection);
-            fail();
-        } catch (IllegalArgumentException e) {
-            // This is the expected error behaviour.
-        } catch (Exception e) {
-            fail();
-        }
+
+        // Technically, it is a valid URI, because it doesn't
+        // throw an UnsupportedOperationException. However it
+        // is still not okay (we run out of bindable parameters
+        // in the sqlite query.
+        assertValidUri(resolver, ApkProvider.getContentUri(manyApks), projection);
     }
 
 }
