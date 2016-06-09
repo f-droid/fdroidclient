@@ -1,14 +1,14 @@
 
 package org.fdroid.fdroid;
 
-import android.app.Instrumentation;
 import android.content.Context;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.Config;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +17,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(AndroidJUnit4.class)
+@Config(constants = BuildConfig.class)
+@RunWith(RobolectricGradleTestRunner.class)
 public class UtilsTest {
 
     String fdroidFingerprint = "43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB";
@@ -50,7 +51,7 @@ public class UtilsTest {
 
     @Test
     public void testFormatFingerprint() {
-        Context context = InstrumentationRegistry.getTargetContext();
+        Context context = RuntimeEnvironment.application;
         String badResult = Utils.formatFingerprint(context, "");
         // real fingerprints
         String formatted;
@@ -145,22 +146,29 @@ public class UtilsTest {
 
     @Test
     public void testClearOldFiles() throws IOException, InterruptedException {
-        Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
-        File dir = new File(TestUtils.getWriteableDir(instrumentation), "clearOldFiles");
+        File tempDir = new File(System.getProperty("java.io.tmpdir"));
+        assertTrue(tempDir.isDirectory());
+        assertTrue(tempDir.canWrite());
+
+        File dir = new File(tempDir, "F-Droid-test.clearOldFiles");
         FileUtils.deleteQuietly(dir);
-        dir.mkdirs();
+        assertTrue(dir.mkdirs());
         assertTrue(dir.isDirectory());
 
         File first = new File(dir, "first");
+        first.deleteOnExit();
+
         File second = new File(dir, "second");
+        second.deleteOnExit();
+
         assertFalse(first.exists());
         assertFalse(second.exists());
 
-        first.createNewFile();
+        assertTrue(first.createNewFile());
         assertTrue(first.exists());
 
         Thread.sleep(7000);
-        second.createNewFile();
+        assertTrue(second.createNewFile());
         assertTrue(second.exists());
 
         Utils.clearOldFiles(dir, 3);

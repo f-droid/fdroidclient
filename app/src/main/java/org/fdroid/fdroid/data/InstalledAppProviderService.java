@@ -156,7 +156,10 @@ public class InstalledAppProviderService extends IntentService {
             String packageName = intent.getData().getSchemeSpecificPart();
             final String action = intent.getAction();
             if (ACTION_INSERT.equals(action)) {
-                insertAppIntoDb(this, packageName, (PackageInfo) intent.getParcelableExtra(EXTRA_PACKAGE_INFO));
+                PackageInfo packageInfo = intent.getParcelableExtra(EXTRA_PACKAGE_INFO);
+                String hashType = "sha256";
+                String hash = Utils.getBinaryHash(new File(packageInfo.applicationInfo.publicSourceDir), hashType);
+                insertAppIntoDb(this, packageName, packageInfo, hashType, hash);
             } else if (ACTION_DELETE.equals(action)) {
                 deleteAppFromDb(this, packageName);
             }
@@ -164,7 +167,13 @@ public class InstalledAppProviderService extends IntentService {
         }
     }
 
-    static void insertAppIntoDb(Context context, String packageName, PackageInfo packageInfo) {
+    /**
+     * @param hash Although the has could be calculated within this function, it is helpful to inject
+     *             the hash so as to be able to use this method during testing. Otherwise, the
+     *             hashing method will try to hash a non-existent .apk file and try to insert NULL
+     *             into the database when under test.
+     */
+    static void insertAppIntoDb(Context context, String packageName, PackageInfo packageInfo, String hashType, String hash) {
         if (packageInfo == null) {
             try {
                 packageInfo = context.getPackageManager().getPackageInfo(packageName,
@@ -185,8 +194,6 @@ public class InstalledAppProviderService extends IntentService {
         contentValues.put(InstalledAppProvider.DataColumns.SIGNATURE, getPackageSig(packageInfo));
         contentValues.put(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME, packageInfo.lastUpdateTime);
 
-        String hashType = "sha256";
-        String hash = Utils.getBinaryHash(new File(packageInfo.applicationInfo.publicSourceDir), hashType);
         contentValues.put(InstalledAppProvider.DataColumns.HASH_TYPE, hashType);
         contentValues.put(InstalledAppProvider.DataColumns.HASH, hash);
 

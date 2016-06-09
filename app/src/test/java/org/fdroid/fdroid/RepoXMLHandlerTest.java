@@ -2,7 +2,6 @@
 package org.fdroid.fdroid;
 
 import android.support.annotation.NonNull;
-import android.support.test.runner.AndroidJUnit4;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -12,6 +11,8 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.mock.MockRepo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.annotation.Config;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -31,7 +32,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
-@RunWith(AndroidJUnit4.class)
+@Config(constants = BuildConfig.class)
+@RunWith(RobolectricGradleTestRunner.class)
 public class RepoXMLHandlerTest {
     private static final String TAG = "RepoXMLHandlerTest";
 
@@ -673,16 +675,16 @@ public class RepoXMLHandlerTest {
 
     @NonNull
     private RepoDetails getFromFile(String indexFilename) {
-        SAXParser parser;
         try {
-            parser = SAXParserFactory.newInstance().newSAXParser();
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            factory.setNamespaceAware(true);
+            SAXParser parser = factory.newSAXParser();
             XMLReader reader = parser.getXMLReader();
             RepoDetails repoDetails = new RepoDetails();
             RepoXMLHandler handler = new RepoXMLHandler(new MockRepo(100), repoDetails);
             reader.setContentHandler(handler);
-            String resName = "assets/" + indexFilename;
-            Log.i(TAG, "test file: " + getClass().getClassLoader().getResource(resName));
-            InputStream input = getClass().getClassLoader().getResourceAsStream(resName);
+            Log.i(TAG, "test file: " + getClass().getClassLoader().getResource(indexFilename));
+            InputStream input = getClass().getClassLoader().getResourceAsStream(indexFilename);
             InputSource is = new InputSource(new BufferedInputStream(input));
             reader.parse(is);
             return repoDetails;
