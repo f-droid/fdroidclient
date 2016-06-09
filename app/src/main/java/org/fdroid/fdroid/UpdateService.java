@@ -467,10 +467,8 @@ public class UpdateService extends IntentService {
     private void autoDownloadUpdates() {
         Cursor cursor = getContentResolver().query(
                 AppProvider.getCanUpdateUri(),
-                new String[]{
-                        AppProvider.DataColumns.PACKAGE_NAME,
-                        AppProvider.DataColumns.SUGGESTED_VERSION_CODE,
-                }, null, null, null);
+                AppProvider.DataColumns.ALL,
+                null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
             for (int i = 0; i < cursor.getCount(); i++) {
