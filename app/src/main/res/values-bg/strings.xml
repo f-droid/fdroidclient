@@ -186,7 +186,6 @@
     <string name="update_notification_title">Актуализиране на хранилищата</string>
     <string name="install_error_unknown">Инсталирането се провали поради неизвестна грешка</string>
     <string name="uninstall_error_unknown">Деинсталирането се провали поради неизвестна грешка</string>
-    <string name="system_install_first_time_notification_message_short">Натиснете за повече информация.</string>
     <string name="swap_choose_apps">Изберете приложения</string>
     <string name="swap_wifi_device_name">Име на устройството</string>
     <string name="swap_cant_find_peers">Не можете да откриете тези, които търсите?</string>
@@ -239,7 +238,6 @@
     <string name="copying_icons">Копиране иконите на приложенията в хранилището…</string>
     <string name="app_incompatible">Несъвместимо</string>
     <string name="all_other_repos_fine">Всички останали хранилища са наред.</string>
-    <string name="system_install_first_time_notification_message">Натиснете за инсталиране на F-Droid като привилегировано приложение, тясно интегрирано с Android. Това позволява на F-Droid да инсталира, актуализира и деинсталира приложения самостоятелно. Можете да направите инсталацията и по-късно от меню \"Предпочитания\".</string>
     <string name="system_install_post_success">F-Droid е инсталиран като привилегировано приложение</string>
     <string name="system_install_post_fail">Инсталирането като привилегировано приложение се провали</string>
     <string name="system_install_question">Желаете ли F-Droid да бъде инсталирано като привилегировано приложение?</string>
@@ -250,7 +248,6 @@
     <string name="uninstall_system">Деинсталиране/актуализиране на привилегирован F-Droid</string>
     <string name="uninstall_system_summary">Отворете екрана с подробности на привилегированото F-Droid приложение за да го деинсталирате</string>
     <string name="root_access_denied_body">Или вашето устройство не е root-нато или на F-Droid е отказан root достъп.</string>
-    <string name="system_install_first_time_notification">Инсталиране като привилегировано приложение?</string>
     <string name="system_install_post_success_message">F-Droid е инсталиран като привилегировано приложение. Това позволява на F-Droid да инсталира, актуализира и деинсталира приложения самостоятелно.</string>
     <string name="more">Повече</string>
     <string name="less">По-малко</string>
@@ -316,7 +313,6 @@
     <string name="wifi_ap">Хотспот</string>
 
     <string name="system_install_denied_title">F-Droid Privileged Extension не е достъпно</string>
-    <string name="system_install_first_time_message">Явно имате администраторски достъп на устройството си. Сега можете да инсталирате F-Droid Privileged Extension, тясно интегрирано в операционната система Андроид. Този плъгин позволява на F-Droid самостоятелно да актуализира или изтрива приложения.</string>
     <string name="swap_join_this_hotspot">Помогнете на приятеля Ви да се включи към хотспота Ви</string>
     <string name="swap_active_hotspot">%1$s (Вашия хотспот)</string>
     <string name="swap_scan_or_type_url">Единия човек трябва да сканира кода, или да въведе URL адреса на другия в браузер.</string>

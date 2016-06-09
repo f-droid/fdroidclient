@@ -246,9 +246,6 @@
     <string name="system_install_denied_permissions">De privilegierade tillstånden har inte beviljats tillbyggnad! Skapa en felrapport!</string>
     <string name="system_install_button_install">Installera</string>
     <string name="system_install_button_open">Öppna tillbyggnad</string>
-    <string name="system_install_first_time_notification">Installera F-Droid privilegierad tillbyggnad?</string>
-    <string name="system_install_first_time_notification_message_short">Tryck för mer information.</string>
-    <string name="system_install_first_time_notification_message">Tryck här för att installera F-Droid privilegierade tillbyggnad, tätt kopplad med operativsystemet Android. Detta tillåter F-Droid att installera, uppgradera och avinstallera appar på egen hand.\nDu kan även göra detta senare från F-Droid inställningar.</string>
     <string name="system_install_post_success">Installerat F-Droid privilegierade tillbyggnad</string>
     <string name="system_install_post_fail">Installationen av F-Droid privilegierad tillbyggnad misslyckades</string>
     <string name="system_install_post_success_message">F-Droid privilegierad tillbyggnad har installerats. Detta tillåter F-Droid att installera, uppgradera och avinstallera appar på egen hand.</string>
@@ -259,7 +256,6 @@
     <string name="system_install_question">Vill du installera F-Droid privilegierade tillbyggnad?</string>
     <string name="system_install_warning">Detta tar upp till 10 sekunder.</string>
     <string name="system_install_warning_lollipop">Detta tar upp till 10 sekunder och enheten kommer att <b>startas om</b> efteråt.</string>
-    <string name="system_install_first_time_message">Ser ut som du har rot-tillgång på enheten. Nu kan du installera F-Droid privilegierad tillbyggnad, tätt kopplad med operativsystemet Android. Detta tillåter F-Droid att installera, uppgradera och avinstallera appar på egen hand.</string>
     <string name="system_uninstall">Vill du avinstallera F-Droid privilegierade tillbyggnad?</string>
     <string name="system_uninstall_button">Avinstallera</string>
 

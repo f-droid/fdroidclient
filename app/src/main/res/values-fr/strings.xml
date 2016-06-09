@@ -193,7 +193,6 @@
     <string name="empty_available_app_list">Aucune appli dans cette catégorie.\n\nEssayez de sélectionner une autre catégorie ou de mettre à jour vos dépôts pour avoir une liste d\'applis récente.</string>
     <string name="empty_can_update_app_list">Toutes les applis sont à jour.\n\nFélicitations ! Toutes vos applis sont à jour (ou vos dépôts ne le sont pas).</string>
 
-    <string name="system_install_first_time_notification_message_short">Appuyez pour plus d\'informations.</string>
     <string name="system_install_installing">Installation…</string>
     <string name="system_install_uninstalling">Désinstallation…</string>
     <string name="swap_nfc_description">Si votre ami possède F-Droid, activez les communications NFC et rapprochez vos appareils.</string>
@@ -283,8 +282,6 @@
     <string name="system_install_denied_permissions">Les autorisations privilégiées n\'ont pas été accordée à l\'application ! Veuillez créer un rapport de bug !</string>
     <string name="system_install_button_install">Installer</string>
     <string name="system_install_button_open">Lancer l\'appli Extension des Privilèges</string>
-    <string name="system_install_first_time_notification">Installer F-Droid - Permissions Étendues ?</string>
-    <string name="system_install_first_time_notification_message">Appuyez pour installer F-Droid - Permissions Étendues. Étroitement liée au système d\'exploitation Android, elle permet à F-Droid installer, mettre à jour et désinstaller des applis de son propre chef.\nVous pouvez également le faire plus tard, depuis les paramètres de F-Droid.</string>
     <string name="system_install_post_success">F-Droid - Permissions Étendues a été installée avec succès</string>
     <string name="system_install_post_fail">Échec de l\'installation de F-Droid - Permissions Étendues</string>
     <string name="system_install_post_success_message">F-Droid - Permissions Étendues a été installée avec succès. Elle permet à F-Droid d\'installer, mettre à jour et désinstaller des applis de son propre chef.</string>
@@ -293,7 +290,6 @@
     <string name="system_install_question">Voulez-vous installer F-Droid - Permissions Étendues ?</string>
     <string name="system_install_warning">Ceci peut prendre jusqu\'à 10 secondes.</string>
     <string name="system_install_warning_lollipop">Ceci peut prendre jusqu\'à 10 secondes et l\'appareil sera ensuite <b>redémarré</b>.</string>
-    <string name="system_install_first_time_message">On dirait que vous avez accès aux privilèges root de votre appareil. Vous pouvez maintenant installer F-Droid - Permissions Étendues. Étroitement lié au système d\'exploitation Android, elle permet à F-Droid d\'installer, mettre à jour et désinstaller des applis de son propre chef.</string>
     <string name="system_uninstall">Voulez-vous désinstaller F-Droid - Permissions Étendues ?</string>
     <string name="system_uninstall_button">Désinstaller</string>
 

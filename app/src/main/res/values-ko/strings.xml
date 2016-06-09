@@ -237,9 +237,6 @@
     <string name="system_install_denied_permissions">특별 권한이 확장에 부여되지 않았습니다! 오류 보고서를 작성해주세요!</string>
     <string name="system_install_button_install">설치</string>
     <string name="system_install_button_open">확장 열기</string>
-    <string name="system_install_first_time_notification">F-Droid 권한 확장을 설치할까요?</string>
-    <string name="system_install_first_time_notification_message_short">더 자세한 정보를 보려면 여기를 누르세요.</string>
-    <string name="system_install_first_time_notification_message">여기를 눌러 Android 운영체제와 긴밀하게 작동하는 F-Droid 특별 권한 확장을 설치하세요. 이는 F-Droid가 자체적으로 앱을 설치, 업그레이드, 삭제할 수 있게 합니다.\nF-Droid 설정 메뉴에서 나중에 할 수도 있습니다.</string>
     <string name="system_install_post_success">F-Droid 특별 권한 확장을 성공적으로 설치했습니다</string>
     <string name="system_install_post_fail">F-Droid 특별 권한 확장 설치 실패</string>
     <string name="system_install_post_success_message">F-Droid 특별 권한 확장이 설치되었습니다. 이는 F-Droid가 자체적으로 앱을 설치, 업그레이드, 삭제할 수 있게 합니다.</string>
@@ -250,7 +247,6 @@
     <string name="system_install_question">F-Droid 특별 권한 확장을 설치하시겠습니까?</string>
     <string name="system_install_warning">최대 10초가 소요됩니다.</string>
     <string name="system_install_warning_lollipop">최대 10초가 소요되며 이후 기기가 <b>재시작</b>됩니다.</string>
-    <string name="system_install_first_time_message">기기가 루트 권한을 가지고 있는 것으로 파악됩니다. 이제 Android 운영체제와 긴밀하게 작동하는 F-Droid 특별 권한 확장을 설치할 수 있습니다. 이는 F-Droid가 자체적으로 앱을 설치, 업그레이드, 삭제할 수 있게 합니다.</string>
     <string name="system_uninstall">F-Droid 특별 권한 확장을 삭제할까요?</string>
     <string name="system_uninstall_button">삭제</string>
 

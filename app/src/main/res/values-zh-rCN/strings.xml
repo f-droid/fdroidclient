@@ -229,9 +229,6 @@
     <string name="system_install_denied_permissions">该扩展没有获得超级权限！请报BUG！</string>
     <string name="system_install_button_install">安装</string>
     <string name="system_install_button_open">打开扩展</string>
-    <string name="system_install_first_time_notification">是否安装F-Droid特权扩展？</string>
-    <string name="system_install_first_time_notification_message_short">点击查看更多信息。</string>
-    <string name="system_install_first_time_notification_message">点击安装与Android操作系统紧密融合的F-Droid特权扩展。这将允许F-Droid安装，升级和卸载自己的应用程序。\n您也可以稍后从F-Droid的设置中完成这些。</string>
     <string name="system_install_post_success">安装F-Droid特权扩展成功</string>
     <string name="system_install_post_fail">安装F-Droid特权扩展失败</string>
     <string name="system_install_post_success_message">F-Droid特权扩展已成功安装。将允许F-Droid安装，升级和卸载自己的应用程序。</string>
@@ -242,7 +239,6 @@
     <string name="system_install_question">你确定要安装F-Droid的特权扩展吗？</string>
     <string name="system_install_warning">这最多需要10秒。</string>
     <string name="system_install_warning_lollipop">这最多需要10秒，设备之后将 <b>重新启动</b>。</string>
-    <string name="system_install_first_time_message">你的设备似乎已经ROOT，可以安装与Android操作系统紧密融合的F-Droid特权扩展，这将允许F-Droid安装，升级和卸载自己的应用程序。</string>
     <string name="system_uninstall">确定要缷载F-Droid特权扩展？</string>
     <string name="system_uninstall_button">缷载</string>
 

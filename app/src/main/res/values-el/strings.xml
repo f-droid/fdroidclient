@@ -225,9 +225,6 @@
     <string name="system_install_denied_permissions">Τα δικαιώματα συστήματος δεν έχουν χορηγηθεί στην επέκταση! Παρακαλώ δημιουργήστε μια αναφορά σφάλματος!</string>
     <string name="system_install_button_install">Εγκατάσταση</string>
     <string name="system_install_button_open">Άνοιγμα Επέκτασης</string>
-    <string name="system_install_first_time_notification">Εγκατάσταση της Επέκτασης του F-Droid με δικαιώματα συστήματος;</string>
-    <string name="system_install_first_time_notification_message_short">Αγγίξτε για περισσότερες πληροφορίες.</string>
-    <string name="system_install_first_time_notification_message">Αγγίξτε για να εγκαταστήσετε τη επέκταση του F-Droid με δικαιώματα συστήματος, στενά συνδεδεμένη με το λειτουργικό σύστημα Android. Αυτό επιτρέπει το F-Droid να εγκαθιστά, αναβαθμίζει και απεγκαθιστά εφαρμογές από μόνο του.\nΜπορείτε επίσης να κάνετε αυτό αργότερα από τις ρυθμίσεις του F-Droid.</string>
     <string name="system_install_post_success">Επιτυχής εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος</string>
     <string name="system_install_post_fail">Απέτυχε η εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος</string>
     <string name="system_install_post_success_message">Επιτυχής εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος. Αυτό επιτρέπει στο F-Droid να εγκαθιστά, αναβαθμίζει και απεγκαθιστά εφαρμογές από μόνο του.</string>
@@ -238,7 +235,6 @@
     <string name="system_install_question">Θέλετε να εγκαταστήσετε την επέκταση του F-Droid με δικαιώματα συστήματος;</string>
     <string name="system_install_warning">Αυτό διαρκεί έως 10 δευτερόλεπτα.</string>
     <string name="system_install_warning_lollipop">Αυτό διαρκεί έως 10 δευτερόλεπτα και η συσκευή θα <b>επανεκκινηθεί</b> κατόπιν.</string>
-    <string name="system_install_first_time_message">Φαίνεται ότι έχετε πρόσβαση υπερχρήστη στη συσκευή σας. Τώρα μπορείτε να εγκαταστήσετε την επέκταση του F-Droid με δικαιώματα συστήματος, στενά συνδεδεμένη με το λειτουργικό σύστημα Android. Αυτό επιτρέπει στο F-Droid να εγκαθιστά, αναβαθμίζει και απεγκαθιστά εφαρμογές από μόνο του.</string>
     <string name="system_uninstall">Θέλετε να απεγκαταστήσετε την επέκταση του F-Droid με δικαιώματα συστήματος;</string>
     <string name="system_uninstall_button">Απεγκατάσταση</string>
 

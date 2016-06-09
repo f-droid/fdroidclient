@@ -232,10 +232,8 @@
     <string name="swap">Schimb de aplicatii</string>
     <string name="swap_active_hotspot">%1$s (hotspot-ul tau)</string>
     <string name="system_install_button_open">Deschide extensie</string>
-    <string name="system_install_first_time_notification_message_short">Atinge pentru mai multe informatii.</string>
     <string name="swap_no_wifi_network">Nici o retea inca</string>
     <string name="system_install_button_install">Instalare</string>
-    <string name="system_install_first_time_notification">Instaleaza extensia privilegiata F-Droid?</string>
     <string name="swap_dont_show_again">Nu mai arata asta</string>
     <string name="swap_people_nearby">Persoane in preajma</string>
     <string name="swap_nearby">Schimb in preajma</string>

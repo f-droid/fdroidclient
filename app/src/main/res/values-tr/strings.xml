@@ -238,7 +238,6 @@ bağlanılıyor</string>
     <string name="install_error_unknown">Kurulum bilinmeyen bir hata nedeniyle başarısız oldu</string>
     <string name="uninstall_error_unknown">Kaldırma bilinmeyen bir hata nedeniyle başarısız oldu</string>
     <string name="system_install_button_install">Kur</string>
-    <string name="system_install_first_time_notification_message_short">Daha fazla bilgi için dokunun.</string>
     <string name="system_install_installing">Kuruluyor…</string>
     <string name="system_install_installing_rebooting">Kuruluyor ve cihaz yeniden başlatılıyor…</string>
     <string name="system_install_uninstalling">Kaldırılıyor…</string>
@@ -316,14 +315,11 @@ bağlanılıyor</string>
     <string name="system_install_denied_signature">Uzantının imzası yanlıştır! Lütfen bir hata raporu oluşturun!</string>
     <string name="system_install_denied_permissions">Uzantıya ayrıcalıklı izinler verilmemiştir! Lütfen bir hata raporu oluşturun!</string>
     <string name="system_install_button_open">Uzantıyı Aç</string>
-    <string name="system_install_first_time_notification">F-Droid Ayrıcalıklı Uzantı kurulsun mu?</string>
-    <string name="system_install_first_time_notification_message">Android işletim sistemi ile sıkıca birleşmiş olan F-Droid Ayrıcalıklı Uzantıyı kurmak için dokunun. Bu, F-Droid\'in kendi başına uygulama kurmasına, güncellemesine ve kaldırmasına izin verir.\nBunu daha sonra F-Droid\'in ayarlarından da yapabilirsiniz.</string>
     <string name="system_install_post_success">F-Droid Ayrıcalıklı Uzantı başarılı bir şekilde kurulmuştur</string>
     <string name="system_install_post_fail">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu başarısız oldu</string>
     <string name="system_install_post_success_message">F-Droid Ayrıcalıklı Uzantı başarılı bir şekilde kuruldu. Bu, F-Droid\'in kendi başına uygulama kurmasına, güncellemesine ve kaldırmasına izin verir.</string>
     <string name="system_install_post_fail_message">F-Droid Ayrıcalıklı Uzantı\'nın kurulması başarısız oldu. Kurulum metodu her Android dağıtımı tarafından desteklenmeyebilir, daha fazla bilgi için lütfen F-Droid hata izleyicisini okuyun.</string>
     <string name="system_install_question">F-Droid Ayrıcalıklı Uzantı\'yı kurmak istiyor musunuz?</string>
-    <string name="system_install_first_time_message">Cihazınızda root erişiminiz var gibi görünüyor. Şimdi Android işletim sistemi ile sıkıca birleşen F-Droid Ayrıcalıklı Uzantı\'yı kurabilirsiniz. Bu, F-Droid\'in kendi başına uygulama kurmasına, güncellemesine ve kaldırmasına izin verir.</string>
     <string name="system_uninstall">F-Droid Ayrıcalıklı Uzantı\'yı kaldırmak istiyor musunuz?</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi ile takas yapmak istiyorsanız, aynı ağda bulunduğunuzdan emin olun. Eğer aynı ağa erişiminiz yoksa, biriniz bir Wi-Fi hotspot\'u oluşturabilir.</string>
     <string name="swap_join_this_hotspot">Arkadaşınızın hotspot\'unuza bağlanmasına yardım edin</string>

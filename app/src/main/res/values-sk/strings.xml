@@ -200,7 +200,6 @@
     <string name="category_Sports_Health">Šport &amp; Zdravie</string>
     <string name="empty_can_update_app_list">Všetky aplikácie sú aktuálne.\n\nGratulujeme! Všetky vaše aplikácie sú aktuálne (jedine žeby vaše repozitáre boli neaktuálne).</string>
 
-    <string name="system_install_first_time_notification">Inštalovať Oprávnené Rozšírenie F-Droidu?</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="category_Time">Čas</string>
@@ -208,7 +207,6 @@
     <string name="empty_available_app_list">Žiadne aplikácie v tejto kategórií\n\nSkúste inú kategóriu alebo aktualizujte repozitáre pre najnovší zoznam aplikácií.</string>
     <string name="install_error_unknown">Nenainštalované vďaka neznámej chybe</string>
     <string name="uninstall_error_unknown">Neodinštalované vďaka neznámej chybe</string>
-    <string name="system_install_first_time_notification_message_short">Klikni pre viac informácií.</string>
     <string name="system_install_post_success">Úspešne bolo nainštalované Oprávnené Rozšírenie F-Droidu</string>
     <string name="system_install_post_fail">Inštalácia Oprávneného Rozšírenia F-Droidu zlyhala</string>
     <string name="system_install_installing">Inštalujem…</string>
@@ -265,7 +263,6 @@
     <string name="system_install_denied_permissions">Oprávnené povolenia neboli rozšíreniu udelené! Prosím vytvorte hlásenie chýb!</string>
     <string name="system_install_button_install">Inštalovať</string>
     <string name="system_install_button_open">Otvoriť rozšírenie</string>
-    <string name="system_install_first_time_notification_message">Dotykom nainštalujte Oprávnené Rozšírenie F-Droidu, pevne spojené s operačným systémom Android. To umožňuje F-Droidu samostatne inštalovať, aktualizovať, a odinštalovať aplikácie.\nMôžete to urobiť aj neskôr v nastaveniach F-Droidu.</string>
     <string name="system_install_post_success_message">Úspešne bolo nainštalované Oprávnené Rozšírenie F-Droidu. To umožňuje F-Droidu samostatne inštalovať, aktualizovať, a odinštalovať aplikácie.</string>
     <string name="by_author">od</string>
     <string name="login_title">Vyžaduje sa overenie</string>
@@ -297,7 +294,6 @@
     <string name="system_install_post_fail_message">Inštalácia F-Droidu ako systémovej aplikácie zlyhala. Táto inštalačná metóda nie je podporovaná všetkými distribúciami Androidu. Pre viac informácií navśívte bug tracker F-Droidu.</string>
     <string name="system_install_installing_rebooting">Inštalácia a reštart…</string>
     <string name="system_install_warning">Može to trvať až 10 sekúnd.</string>
-    <string name="system_install_first_time_message">Vyzerá, že máte root práva na vašom zariadení. Môžete nainštalovat F-Droid ako systémovú aplikáciu, zviazanú s Androidom. Toto umožní F-Droidu nezávisle inštalovať, aktualizovat a odinštalovať aplikácie.</string>
     <string name="swap_nfc_title">Vymeniť dotykom</string>
     <string name="swap_join_same_wifi_desc">Pre výmenu cez wifi sa uistite, že ste v rovnakej sieti. Ak nemáte prístup do rovnakej siete, možete vytvoriť na jednom zo zariadení Wi-Fi Hotspot.</string>
     <string name="swap_join_this_hotspot">Pomôžte kamarátovi pripojiť sa k vášmu hotspotu</string>

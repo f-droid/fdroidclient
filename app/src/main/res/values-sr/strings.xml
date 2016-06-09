@@ -200,8 +200,6 @@
     <string name="category_Time">Време</string>
     <string name="category_Writing">Писање</string>
 
-    <string name="system_install_first_time_notification">Да инсталирам повлашћено проширење за Ф-дроид?</string>
-    <string name="system_install_first_time_notification_message_short">Тапните за још података.</string>
     <string name="system_install_post_success">Успешно инсталирано повлашћено проширење за Ф-дроид</string>
     <string name="system_install_post_fail">Инсталација повлашћеног проширења за Ф-дроид није успела</string>
     <string name="system_install_installing">Инсталирам…</string>
@@ -268,7 +266,6 @@
     <string name="empty_available_app_list">Нема апликација у овој категорији.\n\nИзаберите другу категорију или освежите ризнице да бисте добили свеж списак апликација.</string>
     <string name="swap_join_this_hotspot">Помозите пријатељу да се придружи вашој врућој тачки</string>
     <string name="swap_cant_find_peers">Не можете да нађете кога тражите?</string>
-    <string name="system_install_first_time_message">Чини се да имате корени приступ на вашем уређају. Сада можете да инсталирате повлашћено проширење Ф-дроида, уско повезано са Андроид оперативним системом. Ово омогућује Ф-дроиду да сам инсталира, надограђује и уклања апликације.</string>
     <string name="swap_nearby">Оближња размена</string>
     <string name="swap_intro">Повежите се са људима у близини и размењујте апликације.</string>
     <string name="swap_no_peers_nearby">Нисам нашао никога у близини за размену.</string>
@@ -294,7 +291,6 @@
     <string name="menu_flattr">Флатр</string>
 
 
-    <string name="system_install_first_time_notification_message">Тапните да инсталирате повлашћено проширење за Ф-дроид, уско повезано са Андроид оперативним системом. Ово омогућује Ф-дроиду да сам инсталира, надограђује и уклања апликације.\nОво можете такође да урадите и касније у поставкама Ф-дроида.</string>
     <string name="system_install_post_success_message">Повлашћено проширење Ф-дроида је успешно инсталирано. Оно омогућује Ф-дроиду да сам инсталира, надограђује и уклања програме.</string>
     <string name="system_install_post_fail_message">Инсталација повлашћеног проширења Ф-дроида није успела. Овај начин инсталације не подржавају све дистрибуције Андроида, посаветујте се са пратиоцем грешака Ф-дроида за више података.</string>
     <string name="menu_settings">Поставке</string>

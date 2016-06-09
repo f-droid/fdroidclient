@@ -252,9 +252,6 @@
     <string name="system_install_denied_permissions">لم يتم منح ضوابط مميزة للتمديد! يرجى إنشاء تقرير الأخطاء!</string>
     <string name="system_install_button_install">تثبيت</string>
     <string name="system_install_button_open">فتح تمديد</string>
-    <string name="system_install_first_time_notification">تثبيت اف-درويد مميز تمديد؟</string>
-    <string name="system_install_first_time_notification_message_short">إختر باللمس لمزيد من المعلومات.</string>
-    <string name="system_install_first_time_notification_message">إختر باللمس لتثبيت اف-درويد مميز تمديد، المقرون بإحكام مع نظام التشغيل أندرويد. وهذا يسمح اف-درويد لتثبيت وتحديث وإلغاء تثبيت التطبيقات من تلقاء نفسها.\nيمكنك أيضا القيام بذلك في وقت لاحق في إعدادات اف-درويد.</string>
     <string name="system_install_post_success">تم تثبيت اف-درويد مميز التمديد بنجاح</string>
     <string name="system_install_post_fail">فشل تثبيت اف-درويد مميز التمديد</string>
     <string name="system_install_post_success_message">تم تثبيت اف-درويد مميز التمديد بنجاح. وهذا يسمح اف-درويد لتثبيت وتحديث وإلغاء تثبيت التطبيقات من تلقاء نفسها.</string>
@@ -265,7 +262,6 @@
     <string name="system_install_question">هل تريد تثبيت اف-درويد مميز التمديد؟</string>
     <string name="system_install_warning">ذلك سيستغرق فترة تصل إلى 10 ثانية.</string>
     <string name="system_install_warning_lollipop">ذلك سيستغرق فترة تصل إلى 10 ثانية، وسوف يتم <b>إعادة تشغيل</b> بعد ذلك.</string>
-    <string name="system_install_first_time_message">يبدو أن لديك صلاحية للوصول الى النواة على الجهاز الخاص بك. يمكنك الآن تثبيت اف-درويد مميز التمديد، المقرون بإحكام مع نظام التشغيل أندرويد. وهذا يسمح اف-درويد لتثبيت وتحديث وإلغاء تثبيت التطبيقات من تلقاء نفسها.</string>
     <string name="system_uninstall">هل تريد إلغاء تثبيت اف-درويد مميز التمديد؟</string>
     <string name="system_uninstall_button">الغاء التثبيت</string>
     <string name="system_install_not_supported">اف-درويد مميز التمديد غير مدعوم حاليا تثبيته على الأندرويد الإصدار 5.1 و بعد.</string>

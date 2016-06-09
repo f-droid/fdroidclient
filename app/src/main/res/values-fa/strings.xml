@@ -289,9 +289,6 @@
     <string name="system_install_denied_permissions">اجازه‌های ممتاز به افزونه داده نشده است! لطفاً یک گزارش خطا ایجاد کنید!</string>
     <string name="system_install_button_install">نصب</string>
     <string name="system_install_button_open">گشودن افزونه</string>
-    <string name="system_install_first_time_notification">نصب افزونهٔ ممتاز اف‌دروید؟</string>
-    <string name="system_install_first_time_notification_message_short">برای اطّلاعات بیش‌تر، لمس کنید.</string>
-    <string name="system_install_first_time_notification_message">برای نصب افزونهٔ ممتاز اف‌دروید که به صورت محکمی با سیستم‌عامل اندروید جفت شده است، لمس کنید. این کار به اف‌دروید اجازه می‌دهد کاره‌ها را توسّط خودش نصب کرده، ارتقا دهد و حذف کند.\nهم‌چنین می‌توانید این کار را بعداً از تنظیمات اف‌دروید انجام دهید.</string>
     <string name="system_install_post_success">افزونهٔ ممتاز اف‌دروید با موفّقیت نصب شد</string>
     <string name="system_install_post_fail">نصب افزونهٔ ممتاز اف‌دروید شکست خورد</string>
     <string name="system_install_post_success_message">افزونهٔ ممتاز اف‌دروید با موفّقیت نصب شد. این مار به اف‌دروید اجازه می‌دهد کاره‌ها را توسّط خودش نصب کرده، ارتفا دهد و حدف کند.</string>
@@ -302,7 +299,6 @@
     <string name="system_install_question">می‌خواهید افزونهٔ ممتاز اف‌دروید را نصب کنید؟</string>
     <string name="system_install_warning">این کار بیش از ۱۰ ثانیه زمان می‌برد.</string>
     <string name="system_install_warning_lollipop">این کار بیش از ۱۰ ثانیه زمان برده و پس از آن، افزاره <b>راه‌اندازی مجدّد</b> خواهد شد.</string>
-    <string name="system_install_first_time_message">به نظر می‌رسد روی افزاره‌تان دسترسی ریشه دارید. می‌توانید افزونهٔ ممتاز اف‌دروید را که به صورت محکم با سیستم‌عامل اندروید جفت شده است را نصب کنید. این کار به اف‌دروید اجازه می‌دهد کاره‌ها را توسّط خودش نصب کرده، ارتقا دهد و حذف کند.</string>
     <string name="system_uninstall">می‌خواهید افزونهٔ ممتاز اف‌دروید را حذف کنید؟</string>
     <string name="swap_nfc_description">اگر دوستتان اف‌دروید داشته و NFC اش روشن است، افزاره‌هایتان را با هم تماس بدهید.</string>
     <string name="swap_join_same_wifi_desc">برای تبادل با استفاده از وای‌فای، مطمئن شوید که روی شبکهٔ یک‌سانی هستید. اگر به شبکهٔ یک‌سان دسترسی ندارید، یکی از شما می‌تواند یک نقطهٔ داغ وای‌فای ایجاد کند.</string>

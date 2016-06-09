@@ -208,7 +208,6 @@
     <string name="uninstall_error_unknown">Klarte ikke å installere grunnet ukjent feil</string>
     <string name="system_install_button_install">Installer</string>
     <string name="system_install_button_open">Åpne tillegg</string>
-    <string name="system_install_first_time_notification_message_short">Trykk for mer informasjon.</string>
     <string name="system_install_installing">Installerer…</string>
     <string name="system_install_installing_rebooting">Installerer og starter på ny…</string>
     <string name="system_install_uninstalling">Avinstallerer…</string>
@@ -276,14 +275,11 @@
 
     <string name="system_install_denied_signature">Signaturen til tillegget er feil! Send inn en feilrapport om dette omgående!</string>
     <string name="system_install_denied_permissions">Tillegget har ikke blitt gitt priviligert tilgang. Send en feilrapport om dette omgående!</string>
-    <string name="system_install_first_time_notification">Installer F-Droid som priviligert tillegg?</string>
-    <string name="system_install_first_time_notification_message">Trykk for å installere F-Droid som priviligert tillegg, nært forbundet med Android-operativsystemet. Dette lar F-Droid installere, oppgradere og avinstallere programmer på egenhånd.\nDu kan også gjøre dette senere i innstillingspanelet.</string>
     <string name="system_install_post_success">Vellykket installasjon av F-Droid som priviligert tillegg</string>
     <string name="system_install_post_fail">Installasjon av F-Droid som priviligert tillegg feilet</string>
     <string name="system_install_post_success_message">Vellykket installasjon av F-Droid som priviligert tillegg. Dette lar F-droid installere, oppgradere og avinstallere programmer på egenhånd.</string>
     <string name="system_install_post_fail_message">Installasjon av F-droid som priviligert tillegg feilet. Installasjonsmetoden støttes ikke av alle Android-distribusjoner, henvend deg til feilrettingsoversikten for ytterligere informasjon.</string>
     <string name="system_install_question">Ønsker du å installere F-Droid som priviligert tillegg?</string>
-    <string name="system_install_first_time_message">Det ser ut til at du har root-tilgang på din enhet. Du kan nå installere F-Droid som priviligert tillegg, nært knyttet til Android-operativsystemet. Dette lar F-Droid installere, oppgradere og avinstallere programmer på egenhånd.</string>
     <string name="system_uninstall">Ønsker du å avinstallere F-Droid som priviligert tillegg?</string>
     <string name="swap_nfc_title">Trykk for å sirkulere</string>
     <string name="swap_join_same_wifi_desc">For å sirkulere ved bruk av Wi-Fi, forsikre deg om at dere er på samme nettverk. Hvis så ikke er tilfelle, kan du sette opp ditt eget mobiltrådløsnett.</string>

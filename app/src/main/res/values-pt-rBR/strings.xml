@@ -198,9 +198,6 @@ com aplicativos baixados a partir de índices não assinados.</string>
 
     <string name="install_error_unknown">Falha ao instalar devido a um erro desconhecido</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
-    <string name="system_install_first_time_notification">Instalar extensão privilegiada do F-Droid?</string>
-    <string name="system_install_first_time_notification_message_short">Toque para obter mais informações.</string>
-    <string name="system_install_first_time_notification_message">Toque para instalar a extensão privilegiada do F-Droid, integrada fortemente com o sistema operacional Android. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.\nVocê também pode fazer isso depois nas configurações do F-Droid.</string>
     <string name="system_install_post_success">A extensão privilegiada do F-Droid foi instalada com sucesso</string>
     <string name="system_install_post_fail">Falha na instalação da extensão privilegiada do F-Droid</string>
     <string name="system_install_post_success_message">A extensão privilegiada do F-Droid foi instalada com sucesso. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.</string>
@@ -209,7 +206,6 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">Você quer instalar a extensão privilegiada do F-Droid?</string>
     <string name="system_install_warning_lollipop">Você quer instalar o F-Droid privilegiado?\nIsto leva até 10 segundos e o dispositivo será reinicializado depois.<b>reinicializado</b> depois.</string>
-    <string name="system_install_first_time_message">Parece que você tem acesso root no seu dispositivo. Agora você pode instalar a extensão privilegiada do F-Droid, fortemente integrada com o sistema operacional Android. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.</string>
     <string name="system_uninstall">Você quer desinstalar a extensão privilegiada do F-Droid?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 

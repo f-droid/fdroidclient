@@ -210,9 +210,6 @@
     <string name="category_Time">Tempus</string>
     <string name="category_Writing">Iscritura</string>
 
-    <string name="system_install_first_time_notification">Installare s’estensione F-Droid cun permissos de sistema?</string>
-    <string name="system_install_first_time_notification_message_short">Toca pro àteras informatziones.</string>
-    <string name="system_install_first_time_notification_message">Toca pro installare s\'estensione F-Droid cun permissos de sistema, ligadu a forte cun su sistema operativu Android. Custu at a permìtere a F-Droid de installare, agiornare e disinstallare aplicationes pro contu suo.\nL\'as a podes fàghere fintzas prus a tardu, dae sas impostatziones de F-Droid.</string>
     <string name="system_install_post_success">S’estensione F-Droid cun sos permissos de sistema est istada intallada curretamente</string>
     <string name="system_install_post_fail">Installatzione de s’estensione F-Droid cun permissos de sistema faddida</string>
     <string name="system_install_post_success_message">S’estensione F-Droid cun permissos de sistema est istada installada curretamente. Custu at a permìtere a F-Droid de installare, agiornare e disinstallare aplicatziones pro contu suo.</string>
@@ -221,7 +218,6 @@
     <string name="system_install_uninstalling">Disinstallende…</string>
     <string name="system_install_question">Boles installare s’estensione F-Droid cun permissos de sistema?</string>
     <string name="system_install_warning_lollipop">Custu podet durare finas a 10 segundos e su dispositivu, a pustis, at a èssere <b>torradu a allùere</b>.</string>
-    <string name="system_install_first_time_message">Paret chi tenes atzessu \"root\" in su dispositivu tuo. Como podes installare s’estensione F-Droid cun permissos de sistema, ligada a forte cun su sistema operativu Android. Custu at a permìtere a F-Droid de installare, agiornare e disinstallare aplicatziones pro contu suo.</string>
     <string name="system_uninstall">Boles disinstallare s’estensione F-Droid cun permissos de sistema?</string>
     <string name="system_uninstall_button">Disinstalla</string>
 

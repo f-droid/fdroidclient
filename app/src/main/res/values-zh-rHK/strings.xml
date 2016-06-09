@@ -171,7 +171,6 @@
 
     <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
     <string name="uninstall_error_unknown">不明的錯誤導致卸載失敗</string>
-    <string name="system_install_first_time_notification_message_short">觸碰以得到更多資訊。</string>
     <string name="system_install_installing">安裝中…</string>
     <string name="system_install_uninstalling">卸載中…</string>
     <string name="system_uninstall_button">卸載</string>
@@ -279,7 +278,6 @@
     <string name="repo_not_yet_updated">此軟件倉庫還未被啟用。您先需要啟用倉庫才可以檢視其中的應用程式。</string>
     <string name="system_install_button_install">安裝</string>
     <string name="system_install_button_open">開啟套件</string>
-    <string name="system_install_first_time_notification">安裝 F-Droid 系統權限套件？</string>
     <string name="system_install_post_success">成功安裝 F-Droid 系統權限套件</string>
     <string name="system_install_post_fail">F-Droid 系統權限套件安裝失敗</string>
     <string name="system_install_post_success_message">F-Droid 系統權限套件已成功安裝。今後，F-Droid 可以自行安裝、更新及卸載應用程式。</string>
@@ -307,7 +305,6 @@
     <string name="system_install_denied_body">此選項只在安裝 F-Droid 系統權限套件後適用。</string>
     <string name="system_install_denied_signature">套件的簽署並不正確！請建立一份錯誤報告！</string>
     <string name="system_install_denied_permissions">套件尚未得到系統權限！請建立一份錯誤報告！</string>
-    <string name="system_install_first_time_notification_message">觸碰以安裝 F-Droid 系統權限套件，以使 F-Droid 更融入 Android 作業系統。套件能讓 F-Droid 自行安裝、更新及卸載應用程式。\n您也可稍後在 F-Droid 的設置中安裝套件。</string>
     <string name="perm_costs_money">此權限可能需要您花費</string>
     <string name="crash_dialog_title">F-Droid 已崩潰</string>
     <string name="crash_dialog_comment_prompt">您可以在此加入額外的資料及評論：</string>
@@ -315,7 +312,6 @@
     <string name="antinonfreeassetslist">此應用程式含有非自由的資源</string>
 
     <string name="system_install_post_fail_message">F-Droid 系統權限套件安裝失敗。此安裝方式並不支援所有的 Android 版本，請參見 F-Droid 的 bug tracker 以取得更多資訊。</string>
-    <string name="system_install_first_time_message">看來您在此裝置上有 root 權限。您現在可以安裝 F-Droid 系統權限套件，以使 F-Droid 更融入 Android 作業系統。套件能讓 F-Droid 自行安裝、更新及卸載應用程式。</string>
     <string name="install_confirm_update_no_perms">您是否要更新此應用程式？您不會遺失現有的資料，也不需要提供任何特別權限。</string>
     <string name="uninstall_update_confirm">你確定要原始版本取代此應用程式嗎？</string>
     <string name="crash_dialog_text">因發生了未預料到的錯誤，應用程式已停止運作。您願意透過電郵提供關於問題的更多資料嗎？</string>

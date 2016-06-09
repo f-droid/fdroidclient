@@ -208,9 +208,6 @@
 
     <string name="install_error_unknown">Không thể cài đặt do có lỗi xảy ra</string>
     <string name="uninstall_error_unknown">Không thể xoá ứng dụng do có lỗi xảy ra</string>
-    <string name="system_install_first_time_notification">Cài đặt phần mở rộng F-Droid được cấp quyền?</string>
-    <string name="system_install_first_time_notification_message_short">Chạm để xem thêm thông tin.</string>
-    <string name="system_install_first_time_notification_message">Chạm vào đây để cài đặt phần mở rộng được cấp quyền của F-Droid, tích hợp sâu vào hệ điều hành Android. Nó cho phép F-Droid tự cài đặt, nâng cấp và gỡ bỏ ứng dụng.\nBạn cũng có thể vào phần tuỳ chọn của F-Droid để cài đặt.</string>
     <string name="system_install_post_success">Cài đặt phần mở rộng F-Droid được cấp quyền thành công</string>
     <string name="system_install_post_fail">Cài đặt phần mở rộng F-Droid được cấp quyền thất bại</string>
     <string name="system_install_post_success_message">Phần mở rộng F-Droid được cấp quyền đã được cài đặt thành công. Nó cho phép F-Droid tự cài đặt, nâng cấp và gỡ bỏ ứng dụng.</string>
@@ -219,7 +216,6 @@
     <string name="system_install_uninstalling">Đang gỡ bỏ…</string>
     <string name="system_install_question">Bạn có muốn cài đặt phần mở rộng F-Droid được cấp quyền không?</string>
     <string name="system_install_warning_lollipop">Bạn có muốn cài ứng dụng F-Droid được cấp quyền không?\nViệc cài đặt sẽ mất tối đa 10 giây, sau đó máy bạn sẽ <b>khởi động lại</b>.</string>
-    <string name="system_install_first_time_message">Có vẻ bạn không có quyền root. Bây giờ bạn có thể cài phần mở rộng F-Droid được cấp quyền, tích hợp sâu vào hệ điều hành Android. Nó cho phép F-Droid tự cài đặt, cập nhật và gỡ bỏ ứng dụng.</string>
     <string name="system_uninstall">Bạn có muốn gỡ bỏ phần mở rộng F-Droid được cấp quyền không?</string>
     <string name="system_uninstall_button">Gỡ bỏ</string>
 

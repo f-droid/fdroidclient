@@ -240,10 +240,7 @@
     <string name="system_install_denied_signature">La subskribo de aldonaĵo malkorektas! Bonvolu krei erar-raporton!</string>
     <string name="system_install_button_install">Instali</string>
     <string name="system_install_button_open">Malfermi Aldonaĵon</string>
-    <string name="system_install_first_time_notification">Ĉu instali na F-Droid Privilegia Aldonaĵo?</string>
     <string name="system_install_denied_permissions">La aldonaĵo ne aliris ĉefuzantan permeson! Bonvolu krei erar-raporton!</string>
-    <string name="system_install_first_time_notification_message_short">Tuŝu por pli da informoj.</string>
-    <string name="system_install_first_time_notification_message">Tuŝu por instali na F-Droid Privilegia Aldonaĵo, kiu estos ege bindita kun la Android operaciumo. Tiu ĉi permesos al F-Droid instali, ĝisdatigi, kaj malinstali aplikaĵojn ĝi mem.\nVi povas fari tion poste per F-Droida agordoj.</string>
     <string name="system_install_post_success">Sukcese instalis na F-Droid Privilegia Aldonaĵo</string>
     <string name="system_install_post_fail">Instalado de F-Droid Privilegia Aldonaĵo malsukcesis</string>
     <string name="system_install_post_success_message">F-Droid Privilegia Aldonaĵo estas instalita korekte. Tio ĉi ebligis al F-Droid instali, ĝisdatigi, kaj malinstali aplikaĵojn per ĝi mem.</string>
@@ -254,7 +251,6 @@
     <string name="system_install_question">Ĉu vi volas instali na F-Droid Privilegia Aldonaĵo?</string>
     <string name="system_install_warning">Tio ĉi daŭros maksimume 10 sekundojn.</string>
     <string name="system_install_warning_lollipop">Tio ĉi daŭros maksimume 10 sekundojn kaj la aparato <b>restartos</b> poste.</string>
-    <string name="system_install_first_time_message">Verŝajne vi havas ĉefuzanta aliron en via aparato. Vi povas nun instali na F-Droid Privilegia Aldonaĵo, ege binditan kun la Android operaciumo. Tio ĉi ebligis al F-Droid instali, ĝisdatigi, kaj malinstali aplikaĵojn per ĝi mem.</string>
     <string name="system_uninstall">Ĉu vi certe volas malinstali na F-Droid Privilegia Aldonaĵo?</string>
     <string name="system_uninstall_button">Malinstali</string>
 

@@ -246,7 +246,6 @@
     <string name="system_install_denied_permissions">Расширению не был предоставлен привилегированный доступ! Пожалуйста, отправьте сообщение об ошибке!</string>
     <string name="system_install_button_install">Установить</string>
     <string name="system_install_button_open">Открыть расширение</string>
-    <string name="system_install_first_time_notification">Установить привилегированное расширение F-Droid?</string>
     <string name="system_install_post_success">Привелигированное расширение F-Droid успешно установлено</string>
     <string name="system_install_post_fail">Установка привилегированного расширения F-Droid не удалась</string>
     <string name="system_install_installing">Установка…</string>
@@ -295,12 +294,9 @@
     <string name="useTorSummary">Перенаправлять входящий трафик через Tor для улучшения конфиденциальности</string>
     <string name="repo_provider">Репозиторий: %s</string>
 
-    <string name="system_install_first_time_notification_message_short">Нажмите для получения дополнительной информации.</string>
-    <string name="system_install_first_time_notification_message">Нажмите, чтобы установить привилегированное расширение F-Droid, которое будет интегрировано в операционную систему Android. Эта позволит F-Droid самостоятельно устанавливать, обновлять и удалять приложения.\nТакже вы можете сделать это позже в настройках F-Droid.</string>
     <string name="system_install_post_success_message">Привилегированное дополнение F-Droid успешно установлено. Оно позволяет F-Droid самостоятельно устанавливать, обновить и удалять приложения.</string>
     <string name="system_install_post_fail_message">Установка привилегированного приложения F-Droid не удалась. Используемый метод установки поддерживается не всеми дистрибутивами Android, за дополнительной информацией обратитесь к системе отслеживания ошибок F-Droid.</string>
     <string name="system_install_question">Желаете установить привилегированное дополнение F-Droid?</string>
-    <string name="system_install_first_time_message">Похоже, у вас есть доступ к устройству с правами суперпользователя. Вы можете установить привилегированное дополнение F-Droid, которое будет интегрировано с операционной системой Android. Это позволит F-Droid самостоятельно устанавливать, обновлять и удалять приложения.</string>
     <string name="system_uninstall">Желаете удалить привилегированное дополнение F-Droid?</string>
     <string name="swap_nfc_description">Если у вашего друга есть F-Droid, а на ваших устройствах включен NFC.</string>
     <string name="swap_join_this_hotspot">Помогите своему другу подключиться к вашей временной сети</string>

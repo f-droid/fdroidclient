@@ -240,8 +240,6 @@
     <string name="system_install_denied_permissions">Ez zaizkio pribilegiodun baimenak eman luzapenari! Mesedez eman akatsaren berri!</string>
     <string name="system_install_button_install">Instalatu</string>
     <string name="system_install_button_open">Ireki Luzapena</string>
-    <string name="system_install_first_time_notification">Instalatu Pribilegiodun F-Droid Luzapena?</string>
-    <string name="system_install_first_time_notification_message_short">Ukitu informazio gehiagorako.</string>
     <string name="system_install_installing">Instalatzen…</string>
     <string name="system_install_installing_rebooting">Instalatzen eta berrabiarazten…</string>
     <string name="system_install_uninstalling">Desinstalatzen…</string>
@@ -278,12 +276,10 @@
     <string name="swap_send_fdroid">Bidali F-Droid</string>
     <string name="swap_no_peers_nearby">Ezin izan da inguruan partekatzeko jenderik aurkitu.</string>
     <string name="swap_confirm">Berretsi trukea</string>
-    <string name="system_install_first_time_notification_message">Ukitu Pribilegiodun F-Droid Luzapena instalatzeko, Android sistemara estuki lotua. Honek F-Droidek bere kabuz aplikazioak instalatu, eguneratu eta desinstalatzea ahalbidetzen du.\nHau beranduago egin dezakezu ere F-Droiden ezarpenen menutik.</string>
     <string name="system_install_post_success">Ongi instalatu da Pribilegiodun F-Droid Luzapena</string>
     <string name="system_install_post_fail">Huts egin du Pribilegiodun F-Droid Luzapena instalatzea</string>
     <string name="system_install_post_success_message">Pribilegiodun F-Droid Luzapena ongi instalatu da. Honek F-Droidek bere kabuz aplikazioak instalatu, eguneratu eta desinstalatzea ahalbidetzen du.</string>
     <string name="system_install_post_fail_message">Pribilegiodun F-Droid Luzapenaren instalazioak huts egin du. Instalazio metodoa ez dabil Android banaketa guztietan, Kontsultatu F-Droid Bug Trackerra informazio gehiagorako.</string>
-    <string name="system_install_first_time_message">Badirudi baduzula root baimena zure gailuan. Orain Pribilegiodun F-Droid Luzapena instalatu dezakezu, Android sistema eragilera estuki lotua. Honek F-droidek bere kabuz aplikazioak instalatu, eguneratu, eta desinstalatzea ahalbidetzen du.</string>
     <string name="system_uninstall">Pribilegiodun F-Droid Luzapena desinstalatu nahi duzu?</string>
     <string name="swap_nfc_title">Ukitu partekatzeko</string>
     <string name="swap_nfc_description">Zure adiskideak F-Droid eta NFC piztuta baditu ukitu gailuak elkarrekin.</string>

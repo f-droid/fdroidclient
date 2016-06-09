@@ -244,9 +244,6 @@
     <string name="system_install_denied_permissions">De privilegerede tilladelser er ikke blevet givet til udvidelsen! Opret venligst en fejlrapport!</string>
     <string name="system_install_button_install">Installer</string>
     <string name="system_install_button_open">Åbn Udvidelse</string>
-    <string name="system_install_first_time_notification">Installer Privilegeret F-Droid Udvidelse?</string>
-    <string name="system_install_first_time_notification_message_short">Rør for mere information.</string>
-    <string name="system_install_first_time_notification_message">Rør for at installere Privilegeret F-Droid Udvidelse, koblet tæt med Android styresystemet. Dette tillader F-Droid at installere, opgradere og afinstallere programmer af sig selv.\nDu kan også gøre det senere fra F-Droids indstillinger.</string>
     <string name="system_install_post_success">Installation af F-Droid Privilegeret Udvidelse succesfuld</string>
     <string name="system_install_post_fail">Installation af F-Droid Privilegeret Udvidelse fejlede</string>
     <string name="system_install_post_success_message">F-Droid Privilegeret Udvidelse blev installeret succesfuldt. Dette tillader F-Droid at installere, opgradere og afinstallere programmer af sig selv.</string>
@@ -257,7 +254,6 @@
     <string name="system_install_question">Vil du installere F-Droid Privilegeret Udvidelse?</string>
     <string name="system_install_warning">Dette tager op til 10 sekunder.</string>
     <string name="system_install_warning_lollipop">Dette tager op til 10 sekunder og enheden vil <b>genstarte</b> bagefter.</string>
-    <string name="system_install_first_time_message">Det ser ud til at du har root-adgang på din enhed. Du kan nu installere F-Droid Privilegeret Udvidelse, tæt koblet med Android styresystemet. Dette tillader F-Droid at installere, opgradere og afinstallere programmer af sig selv.</string>
     <string name="system_uninstall">Vil du afinstallere F-Droid Privilegeret Udvidelse?</string>
     <string name="system_uninstall_button">Afinstaller</string>
 

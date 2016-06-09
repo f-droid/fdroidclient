@@ -197,9 +197,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
     <string name="install_error_unknown">Instalacja nie powiodła się przez nieznany nam problem</string>
     <string name="uninstall_error_unknown">Odinstalowywanie nie powiodło się przez nieznany nam problem</string>
-    <string name="system_install_first_time_notification">Zainstalować Uprzywilejowany dodatek?</string>
-    <string name="system_install_first_time_notification_message_short">Dotknij czy dowiedzieć się więcej.</string>
-    <string name="system_install_first_time_notification_message">Dotknij by zainstalować Uprzywilejowany dodatek F-Droida. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.\nMożesz ustawić to później w ustawieniach F-Droida.</string>
     <string name="system_install_post_success">Instalacja Uprzywilejowanego dodatku powiodła się</string>
     <string name="system_install_post_fail">Instalacja Uprzywilejowanego dodatku nie powiodła się</string>
     <string name="system_install_post_success_message">Instalacja Uprzywilejowanego dodatku powiodła się. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.</string>
@@ -207,7 +204,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="system_install_installing">Instalowanie…</string>
     <string name="system_install_uninstalling">Deinstalacja…</string>
     <string name="system_install_question">Czy chcesz zainstalować Uprzywilejowany dodatek?</string>
-    <string name="system_install_first_time_message">Wygląda na to, że masz dostęp do roota na swoim urządzeniu. Możesz zainstalować Uprzywilejowany dodatek. Pozwala to na automatyczne instalowanie, aktualizowanie i odinstalowywanie aplikacji przez F-Droida.</string>
     <string name="system_uninstall">Czy chcesz odinstalować Uprzywilejowany dodatek?</string>
     <string name="system_uninstall_button">Odinstaluj</string>
 

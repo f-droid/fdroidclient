@@ -234,8 +234,6 @@
     <string name="system_install_denied_signature">Podpis rozšíření je chybný! Nahlašte prosím chybu!</string>
     <string name="system_install_button_install">Instalovat</string>
     <string name="system_install_button_open">Spustit rozšíření</string>
-    <string name="system_install_first_time_notification">Instalovat privilegované rozšíření F-Droid?</string>
-    <string name="system_install_first_time_notification_message_short">Ťuknout pro více informací.</string>
     <string name="swap_join_this_hotspot">Pomoz příteli s připojením k hotspotu</string>
     <string name="swap">Vyměnit aplikace</string>
     <string name="swap_success">Výměna úspěšná!</string>
@@ -313,7 +311,6 @@
     <string name="empty_search_available_app_list">Žádné odpovídající aplikace nejsou dostupné.</string>
     <string name="empty_search_can_update_app_list">Žádné odpovídající aplikace k aktualizaci.</string>
 
-    <string name="system_install_first_time_notification_message">Stiskněte pro instalaci oprávněné rozšíření F-Droid, které je pevně provázáno s operačním systémem Android. Toto dovolí F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.\nTuto operaci lze také provést později z nastavení F-Droidu.</string>
     <string name="system_install_post_success_message">Oprávněné rozšíření F-Droidu bylo úspěšně nainstalováno. Toto dovoluje F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.</string>
     <string name="system_install_post_fail_message">Instalace oprávněného rozšíření F-Droidu selhala. Tato instalační metoda není podporována všemi distribucemi Androidu. Pro více informací se podívejte na bug tracker F-Droidu.</string>
     <string name="swap_nfc_description">Pokud má váš přítel F-Droid a zapnuté NFC, dotkněte se jeho zařízení.</string>

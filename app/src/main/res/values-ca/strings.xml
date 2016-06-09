@@ -252,9 +252,6 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="system_install_denied_signature">La signatura de l\'extensió és incorrecta! Si podeu, informeu d\'aquest error!</string>
     <string name="system_install_denied_permissions">No s\'han concedit els permisos de sistema a l\'extensió! Si podeu, informeu d\'aquest error!</string>
     <string name="system_install_button_open">Obre l\'extensió</string>
-    <string name="system_install_first_time_notification">Voleu instal·lar l\'Extensió Privilegiada d\'F-Droid?</string>
-    <string name="system_install_first_time_notification_message_short">Toqueu per obtenir més informació.</string>
-    <string name="system_install_first_time_notification_message">Toqueu per instal·lar l\'Extensió Privilegiada d\'F-Droid, fortament integrada amb el sistema operatiu Android. Això permet que F-Droid instal·li, actualitzi i elimini aplicacions per si sol.\nTambé podeu fer la instal·lació més tard des de la configuració d\'F-Droid.</string>
     <string name="system_install_post_success">L\'Extensió Privilegiada d\'F-Droid s\'ha instal·lat correctament</string>
     <string name="system_install_post_fail">La instal·lació de l\'Extensió Privilegiada d\'F-Droid ha fallat</string>
     <string name="system_install_post_success_message">L\'Extensió Privilegiada d\'F-Droid s\'ha instal·lat correctament. Això permet a F-Droid instal·lar, actualitzar i eliminar aplicacions per si sol.</string>
@@ -263,7 +260,6 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="system_install_question">Voleu instal·lar l\'Extensió Privilegiada d\'F-Droid?</string>
     <string name="system_install_warning">Això pot trigar fins a 10 segons.</string>
     <string name="system_install_warning_lollipop">Això pot trigar fins a 10 segons ii a continuació el dispositiu es <b>reiniciarà</b>.</string>
-    <string name="system_install_first_time_message">Sembla que teniu accés d\'administrador «root» al vostre dispositiu. Podeu instal·lar l\'Extensió Privilegiada d\'F-Droid, fortament integrada amb el sistema operatiu Android. Això permet a F-Droid instal·lar, actualitzar i eliminar aplicacions per si sol.</string>
     <string name="system_uninstall">Desitgeu desinstal·lar l\'Extensió Privilegiada d\'F-Droid?</string>
     <string name="swap_nfc_title">Toqueu per intercanviar</string>
     <string name="swap_nfc_description">Si el vostre amic té l\'F-Droid i l\'NFC encesos feu que els dispositius es toquin.</string>

@@ -204,7 +204,6 @@
     <string name="system_install_denied_signature">A kiterjesztés aláírása hibás! Készíts egy hibajelentést!</string>
     <string name="system_install_button_install">Telepítés</string>
     <string name="system_install_button_open">Kiterjesztés megnyitása</string>
-    <string name="system_install_first_time_notification_message_short">Érintse meg további információkért.</string>
     <string name="system_install_installing">Telepítés…</string>
     <string name="system_install_installing_rebooting">Telepítés és újraindítás…</string>
     <string name="system_install_uninstalling">Eltávolítás…</string>

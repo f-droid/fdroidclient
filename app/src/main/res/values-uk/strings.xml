@@ -172,7 +172,6 @@
     <string name="category_Time">Час</string>
     <string name="uninstall_error_unknown">На вдалося видалити через невідому помилку</string>
     <string name="system_install_button_install">Встановити</string>
-    <string name="system_install_first_time_notification_message_short">Торкніться, для отримання додаткової інформації.</string>
     <string name="system_install_installing">Встановлення…</string>
     <string name="system_install_installing_rebooting">Встановлення та перезавантаження…</string>
     <string name="system_install_uninstalling">Видалення…</string>
@@ -255,7 +254,6 @@
     <string name="system_install_denied_title">Привілейоване розширення F-Droid не доступне</string>
     <string name="system_install_denied_body">Цей параметр активний, якщо встановлено привілейоване розширення F-Droid.</string>
     <string name="system_install_denied_signature">Підпис розширення не сходиться! Будь ласка, повідомте про помилку!</string>
-    <string name="system_install_first_time_notification">Встановити привілейоване розширення F-Droid?</string>
     <string name="system_install_post_success">Привілейоване розширення F-Droid успішно встановлено</string>
     <string name="system_install_post_fail">Виникла посилка під час встановлення привілейованого розширення F-Droid</string>
     <string name="system_install_question">Бажаєте встановити привілейоване розширення F-Droid?</string>
@@ -290,7 +288,6 @@
     <string name="uninstall_update_confirm">Бажаєте замінити цей додаток заводською версією?</string>
     <string name="perms_new_perm_prefix">"Нові: "</string>
     <string name="empty_installed_app_list">Жодного додатку не встановлено.\n\nДодатки, які встановлені на вашому пристрої, не доступні через F-Droid. Можливо вам слід оновити репозиторії, або ж ваші репозиторії не містять такі додатки.</string>
-    <string name="system_install_first_time_notification_message">Торкніться, аби встановити привілейоване розширення F-Droid, інтегруючи його до операційної системи Android. Це дозволить додатку F-Droid власними засобами встановлювати, оновлювати чи видаляти додатки.\nВи також можете зробити це пізніше через налаштування F-Droid.</string>
     <string name="system_install_post_fail_message">Не вдалося встановити привілейоване розширення F-Droid. Метод встановлення не підтримується постачальником системи Android, будь ласка, проконсультуйтеся на форумі F-Droid з приводу отримання додаткової інформації.</string>
     <string name="swap_join_same_wifi_desc">Для обміну через Wi-Fi, переконайтеся, що ви знаходитесь в одній й тій самій мережі. Якщо ж ви не маєте доступу до тієї ж мережі, єдине що лишається, це створити власну Wi-Fi точку доступу.</string>
     <string name="swap_join_this_hotspot">Допоможіть вашим друзям приєднатись до вашої точки доступу</string>
@@ -302,7 +299,6 @@
     <string name="repo_added">F-Droid ропозиторій %1$s збережено.</string>
     <string name="category_Theming">Графічні теми</string>
     <string name="swap_connection_misc_error">Трапилася помилка під час доступу до пристрою, не можливо продовжити обмін з ним.</string>
-    <string name="system_install_first_time_message">Схоже, що у вас є root доступ на вашому пристрою. Ви можете встановити привілейоване розширення F-Droid, що інтегрується з операційною системою Android. Це дозволить додатку F-Droid встановлювати, оновлювати та видаляти додатки своїми засобами.</string>
     <string name="repo_details">Репозиторій</string>
     <string name="repo_url">Адреса</string>
     <string name="status_download_unknown_size">Завантаження\n%2$s з\n%1$s</string>
