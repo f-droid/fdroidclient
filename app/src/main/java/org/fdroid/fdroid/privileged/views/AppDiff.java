@@ -26,34 +26,33 @@ import org.fdroid.fdroid.data.Apk;
 
 public class AppDiff {
 
-    private final PackageManager mPm;
-    public final PackageInfo mPkgInfo;
-
-    public ApplicationInfo mInstalledAppInfo;
+    private final PackageManager pm;
+    public final PackageInfo pkgInfo;
+    public ApplicationInfo installedAppInfo;
 
     /**
      * Constructor based on F-Droids Apk object
      */
-    public AppDiff(PackageManager mPm, Apk apk) {
-        this.mPm = mPm;
+    public AppDiff(PackageManager pm, Apk apk) {
+        this.pm = pm;
 
-        mPkgInfo = new PackageInfo();
-        mPkgInfo.packageName = apk.packageName;
-        mPkgInfo.applicationInfo = new ApplicationInfo();
-        mPkgInfo.requestedPermissions = apk.getFullPermissionsArray();
+        pkgInfo = new PackageInfo();
+        pkgInfo.packageName = apk.packageName;
+        pkgInfo.applicationInfo = new ApplicationInfo();
+        pkgInfo.requestedPermissions = apk.getFullPermissionsArray();
 
         init();
     }
 
     private void init() {
-        String pkgName = mPkgInfo.packageName;
+        String pkgName = pkgInfo.packageName;
         // Check if there is already a package on the device with this name
         // but it has been renamed to something else.
-        final String[] oldName = mPm.canonicalToCurrentPackageNames(new String[]{pkgName});
+        final String[] oldName = pm.canonicalToCurrentPackageNames(new String[]{pkgName});
         if (oldName != null && oldName.length > 0 && oldName[0] != null) {
             pkgName = oldName[0];
-            mPkgInfo.packageName = pkgName;
-            mPkgInfo.applicationInfo.packageName = pkgName;
+            pkgInfo.packageName = pkgName;
+            pkgInfo.applicationInfo.packageName = pkgName;
         }
         // Check if package is already installed
         try {
@@ -61,13 +60,13 @@ public class AppDiff {
             // apps, but this may include apps with just data, and if it is just
             // data we still want to count it as "installed".
             //noinspection WrongConstant (lint is actually wrong here!)
-            mInstalledAppInfo = mPm.getApplicationInfo(pkgName,
+            installedAppInfo = pm.getApplicationInfo(pkgName,
                     PackageManager.GET_UNINSTALLED_PACKAGES);
-            if ((mInstalledAppInfo.flags & ApplicationInfo.FLAG_INSTALLED) == 0) {
-                mInstalledAppInfo = null;
+            if ((installedAppInfo.flags & ApplicationInfo.FLAG_INSTALLED) == 0) {
+                installedAppInfo = null;
             }
         } catch (PackageManager.NameNotFoundException e) {
-            mInstalledAppInfo = null;
+            installedAppInfo = null;
         }
     }
 }
