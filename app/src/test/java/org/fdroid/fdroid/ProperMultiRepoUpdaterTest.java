@@ -3,12 +3,10 @@ package org.fdroid.fdroid;
 
 import android.util.Log;
 
-import org.fdroid.fdroid.RepoUpdater.UpdateException;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.junit.Test;
 
 import java.util.List;
 
@@ -22,10 +20,11 @@ uncommented and all these tests will be required to pass:
 @Config(constants = BuildConfig.class)
 @RunWith(RobolectricGradleTestRunner.class)
 */
+@SuppressWarnings("unused")
 public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     private static final String TAG = "ProperMultiRepoSupport";
 
-    @Test
+    /*@Test
     public void testCorrectConflictingThenMainThenArchive() throws UpdateException {
         assertEmpty();
         if (updateConflicting() && updateMain() && updateArchive()) {
@@ -71,7 +70,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         if (updateMain() && updateConflicting() && updateArchive()) {
             assertExpected();
         }
-    }
+    }*/
 
     /**
      * Check that all of the expected apps and apk versions are available in the database. This
