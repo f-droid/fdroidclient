@@ -48,7 +48,6 @@ import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.compat.UriCompat;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
-import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
@@ -111,8 +110,6 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
         Uri uri = AppProvider.getContentUri();
         getContentResolver().registerContentObserver(uri, true, new AppObserver());
-
-        InstallExtensionDialogActivity.firstTime(this);
 
         // Re-enable once it can be disabled via a setting
         // See https://gitlab.com/fdroid/fdroidclient/issues/435
