@@ -66,7 +66,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PROXY_HOST = "proxyHost";
     public static final String PREF_PROXY_PORT = "proxyPort";
     public static final String PREF_SHOW_NFC_DURING_SWAP = "showNfcDuringSwap";
-    public static final String PREF_FIRST_TIME = "firstTime";
     public static final String PREF_POST_PRIVILEGED_INSTALL = "postPrivilegedInstall";
 
     private static final boolean DEFAULT_ROOTED = true;
@@ -84,7 +83,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String DEFAULT_PROXY_HOST = "127.0.0.1";
     public static final int DEFAULT_PROXY_PORT = 8118;
     private static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;
-    private static final boolean DEFAULT_FIRST_TIME = true;
     private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
 
     public enum Theme {
@@ -122,14 +120,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public void setPrivilegedInstallerEnabled(boolean enable) {
         preferences.edit().putBoolean(PREF_PRIVILEGED_INSTALLER, enable).apply();
-    }
-
-    public boolean isFirstTime() {
-        return preferences.getBoolean(PREF_FIRST_TIME, DEFAULT_FIRST_TIME);
-    }
-
-    public void setFirstTime(boolean firstTime) {
-        preferences.edit().putBoolean(PREF_FIRST_TIME, firstTime).apply();
     }
 
     public boolean isPostPrivilegedInstall() {
