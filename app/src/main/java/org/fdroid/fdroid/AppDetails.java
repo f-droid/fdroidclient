@@ -90,8 +90,9 @@ import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
+import org.fdroid.fdroid.privileged.views.AppDiff;
+import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AppDetails extends AppCompatActivity {
@@ -1062,7 +1063,7 @@ public class AppDetails extends AppCompatActivity {
         private final View.OnClickListener expanderPermissions = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final TextView permissionListView = (TextView) llViewMorePermissions.findViewById(R.id.permissions_list);
+                final View permissionListView = llViewMorePermissions.findViewById(R.id.permission_list);
                 final TextView permissionHeader = (TextView) llViewMorePermissions.findViewById(R.id.permissions);
 
                 if (permissionListView.getVisibility() == View.GONE) {
@@ -1372,29 +1373,11 @@ public class AppDetails extends AppCompatActivity {
         }
 
         private void buildPermissionInfo() {
-            final TextView permissionListView = (TextView) llViewMorePermissions.findViewById(R.id.permissions_list);
+            AppDiff appDiff = new AppDiff(appDetails.getPackageManager(), appDetails.getApks().getItem(0));
+            AppSecurityPermissions perms = new AppSecurityPermissions(appDetails, appDiff.pkgInfo);
 
-            ArrayList<String> permsList = appDetails.getApks().getItem(0).getFullPermissionList();
-            if (permsList == null) {
-                permissionListView.setText(R.string.no_permissions);
-            } else {
-                StringBuilder sb = new StringBuilder();
-                for (String permissionName : permsList) {
-                    try {
-                        final Permission permission = new Permission(getActivity(), permissionName);
-                        // TODO: Make this list RTL friendly
-                        sb.append("\t• ").append(permission.getName()).append('\n');
-                    } catch (PackageManager.NameNotFoundException e) {
-                        Log.e(TAG, "Permission not yet available: " + permissionName);
-                    }
-                }
-                if (sb.length() > 0) {
-                    sb.setLength(sb.length() - 1);
-                    permissionListView.setText(sb.toString());
-                } else {
-                    permissionListView.setText(R.string.no_permissions);
-                }
-            }
+            final ViewGroup permList = (ViewGroup) llViewMorePermissions.findViewById(R.id.permission_list);
+            permList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
         }
 
         private String descAntiFeature(String af) {
