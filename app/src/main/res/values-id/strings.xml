@@ -318,7 +318,7 @@
     <string name="swap_not_enabled">Swap dinonaktifkan</string>
     <string name="swap_not_enabled_description">Sebelum swap, perangkat anda harus dibuat terlihat.</string>
 
-    <string name="install_confirm">Anda ingin memasang aplikasi ini? App akan mendapatkan akses ke:</string>
+    <string name="install_confirm">butuh akses ke</string>
     <string name="install_confirm_update">Anda ingin memasang pembaruan ke aplikasi yang sudah ada ini? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
     <string name="install_confirm_update_system">Anda ingin memasang pembaruan aplikasi bawaan ini? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
     <string name="install_confirm_update_no_perms">Anda ingin memasang pembaruan ke aplikasi yang sudah ada ini? Data anda tidak akan hilang. App tidak membutuhkan akses spesial apapun.</string>
@@ -363,5 +363,12 @@
     <string name="keep_month">1 Bulan</string>
     <string name="keep_year">1 Tahun</string>
     <string name="keep_forever">Selamanya</string>
+
+    <string name="install_error_notify_title">Galat memasang %s</string>
+    <string name="uninstall_error_notify_title">Galat mencopot pemasanagan %s</string>
+
+
+    <string name="installing">Memasang…</string>
+    <string name="uninstalling">Mencopot pemasangan…</string>
 
     </resources>
