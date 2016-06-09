@@ -23,7 +23,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
 
@@ -50,20 +49,10 @@ public class DefaultInstaller extends Installer {
 
         Utils.debugLog(TAG, "DefaultInstaller uri: " + localApkUri + " file: " + new File(localApkUri.getPath()));
 
-        Uri sanitizedUri;
-        try {
-            sanitizedUri = Installer.prepareApkFile(context, localApkUri, packageName);
-        } catch (Installer.InstallFailedException e) {
-            Log.e(TAG, "prepareApkFile failed", e);
-            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
-                    e.getMessage());
-            return;
-        }
-
         Intent installIntent = new Intent(context, DefaultInstallerActivity.class);
         installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);
         installIntent.putExtra(Installer.EXTRA_DOWNLOAD_URI, downloadUri);
-        installIntent.setData(sanitizedUri);
+        installIntent.setData(localApkUri);
 
         PendingIntent installPendingIntent = PendingIntent.getActivity(
                 context.getApplicationContext(),

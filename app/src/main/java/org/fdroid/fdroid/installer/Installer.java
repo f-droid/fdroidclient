@@ -28,21 +28,12 @@ import android.os.PatternMatcher;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
-import org.apache.commons.io.FileUtils;
-import org.fdroid.fdroid.AndroidXMLDecompress;
-import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
 import org.fdroid.fdroid.privileged.views.UninstallDialogActivity;
-
-import java.io.File;
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.util.Map;
 
 /**
  * Handles the actual install process.  Subclasses implement the details.
@@ -90,73 +81,6 @@ public abstract class Installer {
     Installer(Context context) {
         this.context = context;
         localBroadcastManager = LocalBroadcastManager.getInstance(context);
-    }
-
-    static Uri prepareApkFile(Context context, Uri uri, String packageName)
-            throws InstallFailedException {
-
-        File apkFile = new File(uri.getPath());
-
-        SanitizedFile sanitizedApkFile = null;
-        try {
-            Map<String, Object> attributes = AndroidXMLDecompress.getManifestHeaderAttributes(apkFile.getAbsolutePath());
-
-            /* This isn't really needed, but might as well since we have the data already */
-            if (attributes.containsKey("packageName") && !TextUtils.equals(packageName, (String) attributes.get("packageName"))) {
-                throw new InstallFailedException(uri + " has packageName that clashes with " + packageName);
-            }
-
-            if (!attributes.containsKey("versionCode")) {
-                throw new InstallFailedException(uri + " is missing versionCode!");
-            }
-            int versionCode = (Integer) attributes.get("versionCode");
-            Apk apk = ApkProvider.Helper.find(context, packageName, versionCode, new String[]{
-                    ApkProvider.DataColumns.HASH,
-                    ApkProvider.DataColumns.HASH_TYPE,
-            });
-            /* Always copy the APK to the safe location inside of the protected area
-             * of the app to prevent attacks based on other apps swapping the file
-             * out during the install process. Most likely, apkFile was just downloaded,
-             * so it should still be in the RAM disk cache */
-            sanitizedApkFile = SanitizedFile.knownSanitized(File.createTempFile("install-", ".apk",
-                    context.getFilesDir()));
-            FileUtils.copyFile(apkFile, sanitizedApkFile);
-            if (!verifyApkFile(sanitizedApkFile, apk.hash, apk.hashType)) {
-                FileUtils.deleteQuietly(apkFile);
-                throw new InstallFailedException(apkFile + " failed to verify!");
-            }
-            apkFile = null; // ensure this is not used now that its copied to apkToInstall
-
-            // Need the apk to be world readable, so that the installer is able to read it.
-            // Note that saving it into external storage for the purpose of letting the installer
-            // have access is insecure, because apps with permission to write to the external
-            // storage can overwrite the app between F-Droid asking for it to be installed and
-            // the installer actually installing it.
-            sanitizedApkFile.setReadable(true, false);
-
-        } catch (NumberFormatException | IOException | NoSuchAlgorithmException e) {
-            throw new InstallFailedException(e);
-        } catch (ClassCastException e) {
-            throw new InstallFailedException("F-Droid Privileged can only be updated using an activity!");
-        } finally {
-            // 20 minutes the start of the install process, delete the file
-            final File apkToDelete = sanitizedApkFile;
-            new Thread() {
-                @Override
-                public void run() {
-                    android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
-                    try {
-                        Thread.sleep(1200000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } finally {
-                        FileUtils.deleteQuietly(apkToDelete);
-                    }
-                }
-            }.start();
-        }
-
-        return Uri.fromFile(sanitizedApkFile);
     }
 
     /**
@@ -225,18 +149,6 @@ public abstract class Installer {
         intent.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
 
         return intent;
-    }
-
-    /**
-     * Checks the APK file against the provided hash, returning whether it is a match.
-     */
-    static boolean verifyApkFile(File apkFile, String hash, String hashType)
-            throws NoSuchAlgorithmException {
-        if (!apkFile.exists()) {
-            return false;
-        }
-        Hasher hasher = new Hasher(hashType, apkFile);
-        return hasher.match(hash);
     }
 
     void sendBroadcastInstall(Uri downloadUri, String action,

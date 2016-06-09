@@ -8,7 +8,9 @@ import android.os.Parcelable;
 
 import org.fdroid.fdroid.Utils;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 public class Apk extends ValueObject implements Comparable<Apk> {
 
@@ -139,6 +141,43 @@ public class Apk extends ValueObject implements Comparable<Apk> {
             throw new IllegalStateException("Apk needs to have both ApkProvider.DataColumns.REPO_ADDRESS and ApkProvider.DataColumns.NAME set in order to calculate URL.");
         }
         return repoAddress + "/" + apkName.replace(" ", "%20");
+    }
+
+    public ArrayList<String> getFullPermissionList() {
+        if (this.permissions == null) {
+            return new ArrayList<>();
+        }
+
+        ArrayList<String> permissionsFull = new ArrayList<>();
+        for (String perm : this.permissions) {
+            permissionsFull.add(fdroidToAndroidPermission(perm));
+        }
+        return permissionsFull;
+    }
+
+    public String[] getFullPermissionsArray() {
+        ArrayList<String> fullPermissions = getFullPermissionList();
+        return fullPermissions.toArray(new String[fullPermissions.size()]);
+    }
+
+    public HashSet<String> getFullPermissionsSet() {
+        return new HashSet<>(getFullPermissionList());
+    }
+
+    /**
+     * It appears that the default Android permissions in android.Manifest.permissions
+     * are prefixed with "android.permission." and then the constant name.
+     * FDroid just includes the constant name in the apk list, so we prefix it
+     * with "android.permission."
+     *
+     * see https://gitlab.com/fdroid/fdroidserver/blob/master/fdroidserver/update.py#L535#
+     */
+    public static String fdroidToAndroidPermission(String permission) {
+        if (!permission.contains(".")) {
+            return "android.permission." + permission;
+        }
+
+        return permission;
     }
 
     @Override

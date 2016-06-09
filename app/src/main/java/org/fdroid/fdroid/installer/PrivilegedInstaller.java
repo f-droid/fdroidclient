@@ -300,16 +300,6 @@ public class PrivilegedInstaller extends Installer {
     protected void installPackage(final Uri localApkUri, final Uri downloadUri, String packageName) {
         sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
 
-        final Uri sanitizedUri;
-        try {
-            sanitizedUri = Installer.prepareApkFile(context, localApkUri, packageName);
-        } catch (Installer.InstallFailedException e) {
-            Log.e(TAG, "prepareApkFile failed", e);
-            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
-                    e.getMessage());
-            return;
-        }
-
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
@@ -335,7 +325,7 @@ public class PrivilegedInstaller extends Installer {
                         return;
                     }
 
-                    privService.installPackage(sanitizedUri, ACTION_INSTALL_REPLACE_EXISTING,
+                    privService.installPackage(localApkUri, ACTION_INSTALL_REPLACE_EXISTING,
                             null, callback);
                 } catch (RemoteException e) {
                     Log.e(TAG, "RemoteException", e);
