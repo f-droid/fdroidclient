@@ -14,8 +14,8 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowContentResolver;
 
-import static org.fdroid.fdroid.data.ProviderTestUtils.assertIsInstalledVersionInDb;
-import static org.fdroid.fdroid.data.ProviderTestUtils.assertResultCount;
+import static org.fdroid.fdroid.Assert.assertIsInstalledVersionInDb;
+import static org.fdroid.fdroid.Assert.assertResultCount;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -24,7 +24,7 @@ import java.util.Map;
 
 @Config(constants = BuildConfig.class, application = Application.class)
 @RunWith(RobolectricGradleTestRunner.class)
-public class InstalledAppProviderTest extends FDroidProviderTest{
+public class InstalledAppProviderTest extends FDroidProviderTest {
 
     @Before
     public void setup() {

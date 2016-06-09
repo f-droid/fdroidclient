@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.fdroid.fdroid;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -6,6 +6,9 @@ import android.net.Uri;
 
 import junit.framework.AssertionFailedError;
 
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.robolectric.shadows.ShadowContentResolver;
 
 import java.util.ArrayList;
@@ -17,7 +20,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
-public class ProviderTestUtils {
+public class Assert {
 
     public static <T extends Comparable> void assertContainsOnly(List<T> actualList, T[] expectedArray) {
         List<T> expectedList = new ArrayList<>(expectedArray.length);

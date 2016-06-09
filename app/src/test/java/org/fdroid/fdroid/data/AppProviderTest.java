@@ -18,8 +18,8 @@ import org.robolectric.shadows.ShadowContentResolver;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.fdroid.fdroid.data.ProviderTestUtils.assertContainsOnly;
-import static org.fdroid.fdroid.data.ProviderTestUtils.assertResultCount;
+import static org.fdroid.fdroid.Assert.assertContainsOnly;
+import static org.fdroid.fdroid.Assert.assertResultCount;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -253,7 +253,7 @@ public class AppProviderTest extends FDroidProviderTest {
         String[] projection = new String[] {
                 AppProvider.DataColumns._ID,
                 AppProvider.DataColumns.NAME,
-                AppProvider.DataColumns.PACKAGE_NAME
+                AppProvider.DataColumns.PACKAGE_NAME,
         };
         return contentResolver.query(AppProvider.getContentUri(), projection, null, null, null);
     }
@@ -366,8 +366,4 @@ public class AppProviderTest extends FDroidProviderTest {
 
         contentResolver.insert(uri, values);
     }
-
-
 }
-
-// https://github.com/robolectric/robolectric/wiki/2.4-to-3.0-Upgrade-Guide

@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
+import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.mock.MockApk;
@@ -20,9 +21,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import static org.fdroid.fdroid.data.ProviderTestUtils.assertCantDelete;
-import static org.fdroid.fdroid.data.ProviderTestUtils.assertContainsOnly;
-import static org.fdroid.fdroid.data.ProviderTestUtils.assertResultCount;
+import static org.fdroid.fdroid.Assert.assertCantDelete;
+import static org.fdroid.fdroid.Assert.assertContainsOnly;
+import static org.fdroid.fdroid.Assert.assertResultCount;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -37,8 +38,8 @@ public class ApkProviderTest extends FDroidProviderTest {
     @Test
     public void testAppApks() {
         for (int i = 1; i <= 10; i++) {
-            ProviderTestUtils.insertApk(contentResolver, "org.fdroid.fdroid", i);
-            ProviderTestUtils.insertApk(contentResolver, "com.example", i);
+            Assert.insertApk(contentResolver, "org.fdroid.fdroid", i);
+            Assert.insertApk(contentResolver, "com.example", i);
         }
 
         assertTotalApkCount(20);
@@ -186,7 +187,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         Apk apk = new MockApk("org.fdroid.fdroid", 13);
 
         // Insert a new record...
-        Uri newUri = ProviderTestUtils.insertApk(contentResolver, apk.packageName, apk.versionCode);
+        Uri newUri = Assert.insertApk(contentResolver, apk.packageName, apk.versionCode);
         assertEquals(ApkProvider.getContentUri(apk).toString(), newUri.toString());
         cursor = queryAllApks();
         assertNotNull(cursor);
@@ -204,7 +205,7 @@ public class ApkProviderTest extends FDroidProviderTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testCursorMustMoveToFirst() {
-        ProviderTestUtils.insertApk(contentResolver, "org.example.test", 12);
+        Assert.insertApk(contentResolver, "org.example.test", 12);
         Cursor cursor = queryAllApks();
         new Apk(cursor);
     }
@@ -214,7 +215,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         String[] projectionCount = new String[] {ApkProvider.DataColumns._COUNT};
 
         for (int i = 0; i < 13; i++) {
-            ProviderTestUtils.insertApk(contentResolver, "com.example", i);
+            Assert.insertApk(contentResolver, "com.example", i);
         }
 
         Uri all = ApkProvider.getContentUri();
@@ -259,7 +260,7 @@ public class ApkProviderTest extends FDroidProviderTest {
     public void assertInvalidExtraField(String field) {
         ContentValues invalidRepo = new ContentValues();
         invalidRepo.put(field, "Test data");
-        ProviderTestUtils.insertApk(contentResolver, "org.fdroid.fdroid", 10, invalidRepo);
+        Assert.insertApk(contentResolver, "org.fdroid.fdroid", 10, invalidRepo);
     }
 
     @Test
@@ -272,7 +273,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         values.put(ApkProvider.DataColumns.REPO_ADDRESS, "http://example.com");
         values.put(ApkProvider.DataColumns.REPO_VERSION, 3);
         values.put(ApkProvider.DataColumns.FEATURES, "Some features");
-        Uri uri = ProviderTestUtils.insertApk(contentResolver, "com.example.com", 1, values);
+        Uri uri = Assert.insertApk(contentResolver, "com.example.com", 1, values);
 
         assertResultCount(1, queryAllApks());
 
@@ -298,18 +299,18 @@ public class ApkProviderTest extends FDroidProviderTest {
     public void testKnownApks() {
 
         for (int i = 0; i < 7; i++) {
-            ProviderTestUtils.insertApk(contentResolver, "org.fdroid.fdroid", i);
+            Assert.insertApk(contentResolver, "org.fdroid.fdroid", i);
         }
 
         for (int i = 0; i < 9; i++) {
-            ProviderTestUtils.insertApk(contentResolver, "org.example", i);
+            Assert.insertApk(contentResolver, "org.example", i);
         }
 
         for (int i = 0; i < 3; i++) {
-            ProviderTestUtils.insertApk(contentResolver, "com.example", i);
+            Assert.insertApk(contentResolver, "com.example", i);
         }
 
-        ProviderTestUtils.insertApk(contentResolver, "com.apk.thingo", 1);
+        Assert.insertApk(contentResolver, "com.apk.thingo", 1);
 
         Apk[] known = {
             new MockApk("org.fdroid.fdroid", 1),
@@ -356,18 +357,18 @@ public class ApkProviderTest extends FDroidProviderTest {
     public void testFindByApp() {
 
         for (int i = 0; i < 7; i++) {
-            ProviderTestUtils.insertApk(contentResolver, "org.fdroid.fdroid", i);
+            Assert.insertApk(contentResolver, "org.fdroid.fdroid", i);
         }
 
         for (int i = 0; i < 9; i++) {
-            ProviderTestUtils.insertApk(contentResolver, "org.example", i);
+            Assert.insertApk(contentResolver, "org.example", i);
         }
 
         for (int i = 0; i < 3; i++) {
-            ProviderTestUtils.insertApk(contentResolver, "com.example", i);
+            Assert.insertApk(contentResolver, "com.example", i);
         }
 
-        ProviderTestUtils.insertApk(contentResolver, "com.apk.thingo", 1);
+        Assert.insertApk(contentResolver, "com.apk.thingo", 1);
 
         assertTotalApkCount(7 + 9 + 3 + 1);
 
@@ -391,7 +392,7 @@ public class ApkProviderTest extends FDroidProviderTest {
     @Test
     public void testUpdate() {
 
-        Uri apkUri = ProviderTestUtils.insertApk(contentResolver, "com.example", 10);
+        Uri apkUri = Assert.insertApk(contentResolver, "com.example", 10);
 
         String[] allFields = ApkProvider.DataColumns.ALL;
         Cursor cursor = contentResolver.query(apkUri, allFields, null, null, null);
@@ -447,18 +448,18 @@ public class ApkProviderTest extends FDroidProviderTest {
         // the Helper.find() method doesn't stumble upon the app we are interested
         // in by shear dumb luck...
         for (int i = 0; i < 10; i++) {
-            ProviderTestUtils.insertApk(contentResolver, "org.fdroid.apk." + i, i);
+            Assert.insertApk(contentResolver, "org.fdroid.apk." + i, i);
         }
 
         ContentValues values = new ContentValues();
         values.put(ApkProvider.DataColumns.VERSION_NAME, "v1.1");
         values.put(ApkProvider.DataColumns.HASH, "xxxxyyyy");
         values.put(ApkProvider.DataColumns.HASH_TYPE, "a hash type");
-        ProviderTestUtils.insertApk(contentResolver, "com.example", 11, values);
+        Assert.insertApk(contentResolver, "com.example", 11, values);
 
         // ...and a few more for good measure...
         for (int i = 15; i < 20; i++) {
-            ProviderTestUtils.insertApk(contentResolver, "com.other.thing." + i, i);
+            Assert.insertApk(contentResolver, "com.other.thing." + i, i);
         }
 
         Apk apk = ApkProvider.Helper.find(context, "com.example", 11);
@@ -507,7 +508,7 @@ public class ApkProviderTest extends FDroidProviderTest {
             }
         }
         if (!found) {
-            fail("Apk [" + apk + "] not found in " + ProviderTestUtils.listToString(apks));
+            fail("Apk [" + apk + "] not found in " + Assert.listToString(apks));
         }
     }
 
@@ -534,7 +535,7 @@ public class ApkProviderTest extends FDroidProviderTest {
     protected Apk insertApkForRepo(String id, int versionCode, long repoId) {
         ContentValues additionalValues = new ContentValues();
         additionalValues.put(ApkProvider.DataColumns.REPO_ID, repoId);
-        Uri uri = ProviderTestUtils.insertApk(contentResolver, id, versionCode, additionalValues);
+        Uri uri = Assert.insertApk(contentResolver, id, versionCode, additionalValues);
         return ApkProvider.Helper.get(context, uri);
     }
 }

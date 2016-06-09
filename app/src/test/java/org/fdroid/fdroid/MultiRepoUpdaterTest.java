@@ -20,12 +20,12 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
-import static org.fdroid.fdroid.TestUtils.copyResourceToTempFile;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
+    @SuppressWarnings("unused")
     private static final String TAG = "AcceptableMultiRepoUpdaterTest"; // NOPMD
 
     protected static final String REPO_MAIN = "Test F-Droid repo";
@@ -187,7 +187,7 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
     }
 
     private boolean updateRepo(RepoUpdater updater, String indexJarPath) throws UpdateException {
-        File indexJar = copyResourceToTempFile(indexJarPath);
+        File indexJar = TestUtils.copyResourceToTempFile(indexJarPath);
         try {
             updater.processDownloadedFile(indexJar);
         } finally {

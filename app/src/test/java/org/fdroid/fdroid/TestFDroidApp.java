@@ -8,4 +8,6 @@ import android.app.Application;
  * {@link Application} instead of {@link FDroidApp}. It intentionally doesn't extends {@link FDroidApp}
  * so that the static initialization in {@link FDroidApp#onCreate()} is not executed.
  */
-public class TestFDroidApp extends Application {}
+public class TestFDroidApp extends Application {
+
+}
