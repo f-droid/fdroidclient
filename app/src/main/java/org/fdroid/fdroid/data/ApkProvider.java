@@ -208,6 +208,7 @@ public class ApkProvider extends FDroidProvider {
         String SIGNATURE       = "sig";
         String SOURCE_NAME     = "srcname";
         String MIN_SDK_VERSION = "minSdkVersion";
+        String TARGET_SDK_VERSION = "targetSdkVersion";
         String MAX_SDK_VERSION = "maxSdkVersion";
         String PERMISSIONS     = "permissions";
         String FEATURES        = "features";
@@ -221,7 +222,7 @@ public class ApkProvider extends FDroidProvider {
 
         String[] ALL = {
             _ID, PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
-            SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, MAX_SDK_VERSION,
+            SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
             PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
             IS_COMPATIBLE, REPO_VERSION, REPO_ADDRESS, INCOMPATIBLE_REASONS,
         };

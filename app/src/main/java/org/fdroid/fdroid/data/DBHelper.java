@@ -51,6 +51,7 @@ class DBHelper extends SQLiteOpenHelper {
             + "sig string, "
             + "srcname string, "
             + "minSdkVersion integer, "
+            + "targetSdkVersion integer, "
             + "maxSdkVersion integer, "
             + "permissions string, "
             + "features string, "
@@ -110,7 +111,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + TABLE_INSTALLED_APP + ";";
 
-    private static final int DB_VERSION = 56;
+    private static final int DB_VERSION = 57;
 
     private final Context context;
 
@@ -299,6 +300,7 @@ class DBHelper extends SQLiteOpenHelper {
         useMaxValueInMaxSdkVersion(db, oldVersion);
         requireTimestampInRepos(db, oldVersion);
         recreateInstalledAppTable(db, oldVersion);
+        addTargetSdkVersionToApk(db, oldVersion);
     }
 
     /**
@@ -570,6 +572,16 @@ class DBHelper extends SQLiteOpenHelper {
         Utils.debugLog(TAG, "(re)creating 'installed app' database table.");
         db.execSQL(DROP_TABLE_INSTALLED_APP);
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
+    }
+
+    private void addTargetSdkVersionToApk(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 57) {
+            return;
+        }
+        Utils.debugLog(TAG, "Adding " + ApkProvider.DataColumns.TARGET_SDK_VERSION
+                + " columns to " + TABLE_APK);
+        db.execSQL("alter table " + TABLE_APK + " add column "
+                + ApkProvider.DataColumns.TARGET_SDK_VERSION + " integer");
     }
 
     private static boolean columnExists(SQLiteDatabase db,
