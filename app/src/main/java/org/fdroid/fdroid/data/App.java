@@ -329,9 +329,10 @@ public class App extends ValueObject implements Comparable<App> {
         apk.versionName = packageInfo.versionName;
         apk.versionCode = packageInfo.versionCode;
         apk.added = this.added;
-        int[] minMaxSdkVersions = getMinMaxSdkVersions(context, packageName);
-        apk.minSdkVersion = minMaxSdkVersions[0];
-        apk.maxSdkVersion = minMaxSdkVersions[1];
+        int[] minTargetMax = getMinTargetMaxSdkVersions(context, packageName);
+        apk.minSdkVersion = minTargetMax[0];
+        apk.targetSdkVersion = minTargetMax[1];
+        apk.maxSdkVersion = minTargetMax[2];
         apk.packageName = this.packageName;
         apk.permissions = Utils.CommaSeparatedList.make(packageInfo.requestedPermissions);
         apk.apkName = apk.packageName + "_" + apk.versionCode + ".apk";
@@ -509,11 +510,16 @@ public class App extends ValueObject implements Comparable<App> {
     }
 
     /**
-     * {@link PackageManager} doesn't give us {@code minSdkVersion} and {@code maxSdkVersion},
-     * so we have to parse it straight from {@code <uses-sdk>} in {@code AndroidManifest.xml}.
+     * {@link PackageManager} doesn't give us {@code minSdkVersion}, {@code targetSdkVersion},
+     * and {@code maxSdkVersion}, so we have to parse it straight from {@code <uses-sdk>} in
+     * {@code AndroidManifest.xml}.  If {@code targetSdkVersion} is not set, then it is
+     * equal to {@code minSdkVersion}
+     *
+     * @see <a href="https://developer.android.com/guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt; element</a>
      */
-    private static int[] getMinMaxSdkVersions(Context context, String packageName) {
+    private static int[] getMinTargetMaxSdkVersions(Context context, String packageName) {
         int minSdkVersion = Apk.SDK_VERSION_MIN_VALUE;
+        int targetSdkVersion = Apk.SDK_VERSION_MIN_VALUE;
         int maxSdkVersion = Apk.SDK_VERSION_MAX_VALUE;
         try {
             AssetManager am = context.createPackageContext(packageName, 0).getAssets();
@@ -524,6 +530,8 @@ public class App extends ValueObject implements Comparable<App> {
                     for (int j = 0; j < xml.getAttributeCount(); j++) {
                         if (xml.getAttributeName(j).equals("minSdkVersion")) {
                             minSdkVersion = Integer.parseInt(xml.getAttributeValue(j));
+                        } else if (xml.getAttributeName(j).equals("targetSdkVersion")) {
+                            targetSdkVersion = Integer.parseInt(xml.getAttributeValue(j));
                         } else if (xml.getAttributeName(j).equals("maxSdkVersion")) {
                             maxSdkVersion = Integer.parseInt(xml.getAttributeValue(j));
                         }
@@ -535,6 +543,9 @@ public class App extends ValueObject implements Comparable<App> {
         } catch (PackageManager.NameNotFoundException | IOException | XmlPullParserException e) {
             Log.e(TAG, "Could not get min/max sdk version", e);
         }
-        return new int[]{minSdkVersion, maxSdkVersion};
+        if (targetSdkVersion < minSdkVersion) {
+            targetSdkVersion = minSdkVersion;
+        }
+        return new int[]{minSdkVersion, targetSdkVersion, maxSdkVersion};
     }
 }

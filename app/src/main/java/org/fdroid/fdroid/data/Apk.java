@@ -26,6 +26,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     public String hash;
     public String hashType;
     public int minSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown
+    public int targetSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown
     public int maxSdkVersion = SDK_VERSION_MAX_VALUE; // "infinity" if not set
     public Date added;
     public Utils.CommaSeparatedList permissions; // null if empty or
@@ -92,6 +93,9 @@ public class Apk extends ValueObject implements Comparable<Apk> {
                     break;
                 case ApkProvider.DataColumns.MIN_SDK_VERSION:
                     minSdkVersion = cursor.getInt(i);
+                    break;
+                case ApkProvider.DataColumns.TARGET_SDK_VERSION:
+                    targetSdkVersion = cursor.getInt(i);
                     break;
                 case ApkProvider.DataColumns.MAX_SDK_VERSION:
                     maxSdkVersion = cursor.getInt(i);
@@ -198,6 +202,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
         values.put(ApkProvider.DataColumns.SIZE, size);
         values.put(ApkProvider.DataColumns.NAME, apkName);
         values.put(ApkProvider.DataColumns.MIN_SDK_VERSION, minSdkVersion);
+        values.put(ApkProvider.DataColumns.TARGET_SDK_VERSION, targetSdkVersion);
         values.put(ApkProvider.DataColumns.MAX_SDK_VERSION, maxSdkVersion);
         values.put(ApkProvider.DataColumns.ADDED_DATE, Utils.formatDate(added, ""));
         values.put(ApkProvider.DataColumns.PERMISSIONS, Utils.CommaSeparatedList.str(permissions));

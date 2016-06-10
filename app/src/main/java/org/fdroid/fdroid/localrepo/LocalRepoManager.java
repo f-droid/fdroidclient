@@ -421,6 +421,9 @@ public final class LocalRepoManager {
             if (app.installedApk.minSdkVersion > Apk.SDK_VERSION_MIN_VALUE) {
                 tag("sdkver", app.installedApk.minSdkVersion);
             }
+            if (app.installedApk.targetSdkVersion > app.installedApk.minSdkVersion) {
+                tag("targetSdkVersion", app.installedApk.targetSdkVersion);
+            }
             if (app.installedApk.maxSdkVersion < Apk.SDK_VERSION_MAX_VALUE) {
                 tag("maxsdkver", app.installedApk.maxSdkVersion);
             }
