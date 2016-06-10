@@ -24,6 +24,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Hasher;
@@ -85,8 +86,15 @@ public class ApkVerifier {
         }
 
         int localTargetSdkVersion = localApkInfo.applicationInfo.targetSdkVersion;
+        int expectedTargetSdkVersion = expectedApk.targetSdkVersion;
         Utils.debugLog(TAG, "localTargetSdkVersion: " + localTargetSdkVersion);
-        // TODO: check target sdk
+        Utils.debugLog(TAG, "expectedTargetSdkVersion: " + expectedTargetSdkVersion);
+        if (expectedTargetSdkVersion == Apk.SDK_VERSION_MIN_VALUE) {
+            // NOTE: In old fdroidserver versions, targetSdkVersion was not stored inside the repo!
+            Log.w(TAG, "Skipping check for targetSdkVersion, not available in this repo!");
+        } else if (localTargetSdkVersion != expectedTargetSdkVersion) {
+            throw new ApkVerificationException("targetSdkVersion of apk not equals expected targetSdkVersion!");
+        }
 
     }
 
