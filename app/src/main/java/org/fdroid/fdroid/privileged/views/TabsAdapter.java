@@ -43,23 +43,23 @@ import java.util.List;
  */
 class TabsAdapter extends PagerAdapter
         implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
-    private final Context mContext;
-    private final TabHost mTabHost;
-    private final ViewPager mViewPager;
-    private final List<View> mTabs = new ArrayList<>();
-    private final Rect mTempRect = new Rect();
-    private TabHost.OnTabChangeListener mOnTabChangeListener;
+    private final Context context;
+    private final TabHost tabHost;
+    private final ViewPager viewPager;
+    private final List<View> tabs = new ArrayList<>();
+    private final Rect tempRect = new Rect();
+    private TabHost.OnTabChangeListener onTabChangeListener;
 
     static class DummyTabFactory implements TabHost.TabContentFactory {
-        private final Context mContext;
+        private final Context context;
 
         DummyTabFactory(Context context) {
-            mContext = context;
+            this.context = context;
         }
 
         @Override
         public View createTabContent(String tag) {
-            View v = new View(mContext);
+            View v = new View(context);
             v.setMinimumWidth(0);
             v.setMinimumHeight(0);
             return v;
@@ -67,29 +67,29 @@ class TabsAdapter extends PagerAdapter
     }
 
     TabsAdapter(Activity activity, TabHost tabHost, ViewPager pager) {
-        mContext = activity;
-        mTabHost = tabHost;
-        mViewPager = pager;
-        mTabHost.setOnTabChangedListener(this);
-        mViewPager.setAdapter(this);
-        mViewPager.setOnPageChangeListener(this);
+        context = activity;
+        this.tabHost = tabHost;
+        viewPager = pager;
+        this.tabHost.setOnTabChangedListener(this);
+        viewPager.setAdapter(this);
+        viewPager.setOnPageChangeListener(this);
     }
 
     public void addTab(TabHost.TabSpec tabSpec, View view) {
-        tabSpec.setContent(new DummyTabFactory(mContext));
-        mTabs.add(view);
-        mTabHost.addTab(tabSpec);
+        tabSpec.setContent(new DummyTabFactory(context));
+        tabs.add(view);
+        tabHost.addTab(tabSpec);
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return mTabs.size();
+        return tabs.size();
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View view = mTabs.get(position);
+        View view = tabs.get(position);
         container.addView(view);
         return view;
     }
@@ -105,15 +105,15 @@ class TabsAdapter extends PagerAdapter
     }
 
     public void setOnTabChangedListener(TabHost.OnTabChangeListener listener) {
-        mOnTabChangeListener = listener;
+        onTabChangeListener = listener;
     }
 
     @Override
     public void onTabChanged(String tabId) {
-        int position = mTabHost.getCurrentTab();
-        mViewPager.setCurrentItem(position);
-        if (mOnTabChangeListener != null) {
-            mOnTabChangeListener.onTabChanged(tabId);
+        int position = tabHost.getCurrentTab();
+        viewPager.setCurrentItem(position);
+        if (onTabChangeListener != null) {
+            onTabChangeListener.onTabChanged(tabId);
         }
     }
 
@@ -128,19 +128,19 @@ class TabsAdapter extends PagerAdapter
         // The jerk.
         // This hack tries to prevent this from pulling focus out of our
         // ViewPager.
-        TabWidget widget = mTabHost.getTabWidget();
+        TabWidget widget = tabHost.getTabWidget();
         int oldFocusability = widget.getDescendantFocusability();
         widget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
-        mTabHost.setCurrentTab(position);
+        tabHost.setCurrentTab(position);
         widget.setDescendantFocusability(oldFocusability);
 
         // Scroll the current tab into visibility if needed.
         View tab = widget.getChildTabViewAt(position);
-        mTempRect.set(tab.getLeft(), tab.getTop(), tab.getRight(), tab.getBottom());
-        widget.requestRectangleOnScreen(mTempRect, false);
+        tempRect.set(tab.getLeft(), tab.getTop(), tab.getRight(), tab.getBottom());
+        widget.requestRectangleOnScreen(tempRect, false);
 
         // Make sure the scrollbars are visible for a moment after selection
-        final View contentView = mTabs.get(position);
+        final View contentView = tabs.get(position);
         if (contentView instanceof CaffeinatedScrollView) {
             ((CaffeinatedScrollView) contentView).awakenScrollBars();
         }

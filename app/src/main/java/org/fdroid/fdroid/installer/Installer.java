@@ -111,19 +111,19 @@ public abstract class Installer {
 
     private int newPermissionCount(Apk apk) {
         // TODO: requires targetSdk in Apk class/database
-        //boolean supportsRuntimePermissions = mPkgInfo.applicationInfo.targetSdkVersion
+        //boolean supportsRuntimePermissions = pkgInfo.applicationInfo.targetSdkVersion
         //        >= Build.VERSION_CODES.M;
         //if (supportsRuntimePermissions) {
         //    return 0;
         //}
 
         AppDiff appDiff = new AppDiff(context.getPackageManager(), apk);
-        if (appDiff.mPkgInfo == null) {
+        if (appDiff.pkgInfo == null) {
             // could not get diff because we couldn't parse the package
             throw new RuntimeException("cannot parse!");
         }
-        AppSecurityPermissions perms = new AppSecurityPermissions(context, appDiff.mPkgInfo);
-        if (appDiff.mInstalledAppInfo != null) {
+        AppSecurityPermissions perms = new AppSecurityPermissions(context, appDiff.pkgInfo);
+        if (appDiff.installedAppInfo != null) {
             // update to an existing app
             return perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW);
         }

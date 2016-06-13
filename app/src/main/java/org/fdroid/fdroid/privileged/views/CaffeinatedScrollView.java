@@ -26,8 +26,8 @@ import android.widget.ScrollView;
  * It's a ScrollView that knows how to stay awake.
  */
 public class CaffeinatedScrollView extends ScrollView {
-    private Runnable mFullScrollAction;
-    private int mBottomSlop;
+    private Runnable fullScrollAction;
+    private int bottomSlop;
 
     public CaffeinatedScrollView(Context context) {
         super(context);
@@ -47,8 +47,8 @@ public class CaffeinatedScrollView extends ScrollView {
     }
 
     public void setFullScrollAction(Runnable action) {
-        mFullScrollAction = action;
-        mBottomSlop = (int) (4 * getResources().getDisplayMetrics().density);
+        fullScrollAction = action;
+        bottomSlop = (int) (4 * getResources().getDisplayMetrics().density);
     }
 
     @Override
@@ -64,12 +64,12 @@ public class CaffeinatedScrollView extends ScrollView {
     }
 
     private void checkFullScrollAction() {
-        if (mFullScrollAction != null) {
+        if (fullScrollAction != null) {
             int daBottom = getChildAt(0).getBottom();
             int screenBottom = getScrollY() + getHeight() - getPaddingBottom();
-            if ((daBottom - screenBottom) < mBottomSlop) {
-                mFullScrollAction.run();
-                mFullScrollAction = null;
+            if ((daBottom - screenBottom) < bottomSlop) {
+                fullScrollAction.run();
+                fullScrollAction = null;
             }
         }
     }

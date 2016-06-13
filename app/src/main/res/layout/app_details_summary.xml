@@ -225,28 +225,17 @@ Changelog" />
             android:drawableRight="@drawable/ic_expand_more_grey600"
             android:drawableEnd="@drawable/ic_expand_more_grey600" />
 
-        <TextView
-            android:id="@+id/permissions_list"
+        <LinearLayout
+            android:id="@+id/permission_list"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:singleLine="false"
+            android:orientation="vertical"
             android:fontFamily="sans-serif-light"
             android:textSize="14sp"
             android:visibility="gone"
-            android:layout_marginLeft="@dimen/layout_horizontal_margin"
-            android:layout_marginStart="@dimen/layout_horizontal_margin"
-            tools:text="    * Full network access
-    * View network connections
-    * View Wi-Fi connections
-    * Connect and disconnect from Wi-Fi
-    * Pair with Bluetooth devices
-    * Run at startup
-    * Modify or delete the contents of your USB storage
-    * Control Near Field Communication
-    * Directly install apps
-    * Delete apps
-    * Full permission to all device features and storage
-    * Test access to protected storage" />
+            android:paddingEnd="4dp"
+            android:paddingRight="4dp"
+            tools:ignore="RtlSymmetry" />
 
     </LinearLayout>
 

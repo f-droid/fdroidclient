@@ -72,7 +72,7 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
     private static final String TAB_ID_ALL = "all";
     private static final String TAB_ID_NEW = "new";
 
-    private App mApp;
+    private App app;
 
     private final DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder()
             .cacheInMemory(true)
@@ -89,8 +89,8 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         ImageView appIcon = (ImageView) appSnippet.findViewById(R.id.app_icon);
         TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
 
-        appName.setText(mApp.name);
-        ImageLoader.getInstance().displayImage(mApp.iconUrlLarge, appIcon,
+        appName.setText(app.name);
+        ImageLoader.getInstance().displayImage(app.iconUrlLarge, appIcon,
                 displayImageOptions);
 
         tabHost.setup();
@@ -106,9 +106,9 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         scrollView = null;
         okCanInstall = false;
         int msg = 0;
-        AppSecurityPermissions perms = new AppSecurityPermissions(this, appDiff.mPkgInfo);
-        if (appDiff.mInstalledAppInfo != null) {
-            msg = (appDiff.mInstalledAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+        AppSecurityPermissions perms = new AppSecurityPermissions(this, appDiff.pkgInfo);
+        if (appDiff.installedAppInfo != null) {
+            msg = (appDiff.installedAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                     ? R.string.install_confirm_update_system
                     : R.string.install_confirm_update;
             scrollView = new CaffeinatedScrollView(this);
@@ -144,10 +144,10 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         }
 
         if (!permVisible) {
-            if (appDiff.mInstalledAppInfo != null) {
+            if (appDiff.installedAppInfo != null) {
                 // This is an update to an application, but there are no
                 // permissions at all.
-                msg = (appDiff.mInstalledAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+                msg = (appDiff.installedAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                         ? R.string.install_confirm_update_system_no_perms
                         : R.string.install_confirm_update_no_perms;
             } else {
@@ -192,18 +192,17 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         intent = getIntent();
         Uri uri = intent.getData();
         Apk apk = ApkProvider.Helper.find(this, uri, ApkProvider.DataColumns.ALL);
-        mApp = AppProvider.Helper.findByPackageName(getContentResolver(), apk.packageName);
+        app = AppProvider.Helper.findByPackageName(getContentResolver(), apk.packageName);
 
         appDiff = new AppDiff(getPackageManager(), apk);
-        if (appDiff.mPkgInfo == null) {
+        if (appDiff.pkgInfo == null) {
             setResult(RESULT_CANNOT_PARSE, intent);
             finish();
         }
 
         setContentView(R.layout.install_start);
 
-        // increase dialog to full width for now
-        // TODO: create a better design and minimum width for tablets
+        // increase dialog to full width
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
 
