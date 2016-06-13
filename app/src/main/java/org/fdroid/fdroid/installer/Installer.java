@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Build;
 import android.os.PatternMatcher;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
@@ -110,12 +111,10 @@ public abstract class Installer {
     }
 
     private int newPermissionCount(Apk apk) {
-        // TODO: requires targetSdk in Apk class/database
-        //boolean supportsRuntimePermissions = pkgInfo.applicationInfo.targetSdkVersion
-        //        >= Build.VERSION_CODES.M;
-        //if (supportsRuntimePermissions) {
-        //    return 0;
-        //}
+        boolean supportsRuntimePermissions = apk.targetSdkVersion >= Build.VERSION_CODES.M;
+        if (supportsRuntimePermissions) {
+            return 0;
+        }
 
         AppDiff appDiff = new AppDiff(context.getPackageManager(), apk);
         if (appDiff.pkgInfo == null) {
