@@ -261,7 +261,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="swap_no_peers_nearby">Nun pudo alcontrase xente averao cola qu\'intercambiar.</string>
     <string name="swap_not_enabled_description">Enantes d\'intercambiar, el to preséu ha tar visible.</string>
 
-    <string name="install_confirm">¿Quies instalar esta aplicación? Tendrá accesu a:</string>
+    <string name="install_confirm">precisa accesu a</string>
     <string name="install_confirm_update">¿Quies instalar un anovamientu pa esta aplicación? Nun va perdese dal datu esistente. L\'aplicación anovada tendrá accesu a:</string>
     <string name="install_confirm_update_system">¿Quies instalar un anovamientu pa esta aplicación integrada? Nun va perdese dal datu esistente. L\'aplicación anovada tendrá accesu a:</string>
     <string name="install_confirm_update_no_perms">¿Quies instalar un anovamientu pa esta aplicación? Nun va perdese dal datu esistente. L\'aplicación nun rique dal accesu especial.</string>
@@ -345,5 +345,12 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="keep_month">1 mes</string>
     <string name="keep_year">1 añu</string>
     <string name="keep_forever">Dafechu</string>
+
+    <string name="install_error_notify_title">Fallu instalando %s</string>
+    <string name="uninstall_error_notify_title">Fallu desinstalando %s</string>
+
+
+    <string name="installing">Instalando…</string>
+    <string name="uninstalling">Desinstalando…</string>
 
     </resources>

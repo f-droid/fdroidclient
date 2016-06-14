@@ -72,7 +72,7 @@
   <string name="up_to_maxsdk">تا %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s تا %2$s</string>
   <string name="requires_features">نیاز دارد: %1$s</string>
-<string name="app_name">اف‌دروید</string>
+<string name="app_name">اِف‌-دروید</string>
 
     <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید که حذف نصب، تمام داده‌های درونی ذخیره شدهٔ کاره را پاک می‌کند)</string>
     <string name="version">نگارش</string>
@@ -310,13 +310,13 @@
     <string name="swap_not_enabled">تبادل فعّال نیست</string>
     <string name="swap_not_enabled_description">پیش از تبادل، افزاره‌تان باید قابل مشاهده باشد.</string>
 
-    <string name="install_confirm">می‌خواهید این برنامه را نصب کنید؟ این دسترسی‌ها را خواهد داشت:</string>
+    <string name="install_confirm">نیاز به دسترسی به</string>
     <string name="install_confirm_update">می‌خواهید به‌روزرسانی‌ای برای این برنامه نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. برنامهٔ به‌روز شده دسترسی‌های زیر را خواهد داشت:</string>
     <string name="install_confirm_update_system">می‌خواهید به‌روزرسانی‌ای برای این برنامهٔ داخلی نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. برنامهٔ به‌روز شده دسترسی‌های زیر را خواهد داشت:</string>
     <string name="install_confirm_update_no_perms">می‌خواهید به‌روزرسانی‌ای برای این برنامه نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. نیاز به هیچ دسترسی خاصّی ندارد.</string>
     <string name="install_confirm_update_system_no_perms">می‌خواهید به‌روزرسانی‌ای برای این برنامهٔ داخلی نصب کنید؟ داده‌های موجودتان از بین نخواهند رفت. نیاز به هیچ دسترسی خاصّی ندارد.</string>
-    <string name="uninstall_update_confirm">می‌خواهید این کاره را با نگارش کارخانه عوض کنید؟</string>
-    <string name="uninstall_confirm">می‌خواهید این کاره را حذف کنید؟</string>
+    <string name="uninstall_update_confirm">مایلید این نرم‌افزار را جایگزین نسخه کارخانه کنید؟</string>
+    <string name="uninstall_confirm">می‌خواهید این نرم‌افزار را حذف کنید؟</string>
     <string name="by_author">توسّط</string>
     <string name="menu_email">رایانامه به نویسنده</string>
     <string name="antinonfreeassetslist">این کاره شامل ابزارهای غیرآزاد است</string>
@@ -349,5 +349,12 @@
     <string name="keep_month">۱ ماه</string>
     <string name="keep_year">۱ سال</string>
     <string name="keep_forever">برای همیشه</string>
+
+    <string name="uninstalling">درحال حذف نصب…</string>
+
+    <string name="installing">درحال نصب…</string>
+    <string name="install_error_notify_title">خطای نصب %s</string>
+    <string name="uninstall_error_notify_title">%s خطا در حذف نصب</string>
+
 
     </resources>

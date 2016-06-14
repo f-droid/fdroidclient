@@ -5,7 +5,7 @@
   <string name="installDowngrade">Aneu a desactualitzar aquesta aplicació. Això podria fer que l\'aplicació no funcionés o inclús es perdessin les vostres dades. Esteu segur que ho voleu fer?</string>
   <string name="version">Versió</string>
   <string name="delete">Esborrar</string>
-  <string name="cache_downloaded">Mantenir les apps a la caché</string>
+  <string name="cache_downloaded">Conservar les apps en memòria cau</string>
   <string name="updates">Actualitzacions</string>
   <string name="other">Altres</string>
   <string name="update_interval">Període d\'actualització automàtica</string>
@@ -97,7 +97,7 @@
   <string name="category_Whats_New">Novetats</string>
   <string name="category_Recently_Updated">S\'ha actualitzat fa poc</string>
   <string name="local_repo">Dipòsit local</string>
-  <string name="local_repo_running">F-Droid és llest per a l\'intercanvi</string>
+  <string name="local_repo_running">F-Droid està a punt per a l\'intercanvi</string>
   <string name="touch_to_configure_local_repo">Toqueu per veure més detalls i permetre l\'intercanvi d\'aplicacions.</string>
   <string name="deleting_repo">S\'està esborrant el dipòsit actual…</string>
   <string name="adding_apks_format">Afegint %s al dipòsit…</string>
@@ -137,10 +137,10 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
   <string name="repo_not_yet_updated">Encara no heu utilitzat aquest dipòsit. Per veure les seves aplicacions heu d\'activar-lo.</string>
   <string name="unknown">Desconegut</string>
   <string name="repo_confirm_delete_title">Esborrar dipòsit?</string>
-  <string name="repo_confirm_delete_body">Eliminar un dipòsit implica que les seves aplicacions ja no seran accessibles via F-Droid.\n\nNota: No es perdran les aplicacions ja instal·lades.</string>
+  <string name="repo_confirm_delete_body">Eliminar un dipòsit implica que les seves aplicacions ja no seran accessibles des de l\'F-Droid.\n\nNota: No perdreu les aplicacions ja instal·lades.</string>
   <string name="repo_disabled_notification">\"%1$s\" Inhabilitat.\n\nHeu de tornar a habilitar el dipòsit per instal·lar aplicacions d\'aquest.</string>
-  <string name="repo_added">S\'ha desat el dipòsit F-Droid %1$s.</string>
-  <string name="repo_searching_address">S\'està cercant un dipòsit d\'F-Droid a %1$s</string>
+  <string name="repo_added">S\'ha desat el dipòsit d\'F-Droid %1$s.</string>
+  <string name="repo_searching_address">S\'està cercant un dipòsit d\'F-Droid a\n%1$s</string>
   <string name="minsdk_or_later">%s o més recent</string>
   <string name="up_to_maxsdk">Fins a %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s fins a %2$s</string>
@@ -160,7 +160,7 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
   <string name="requesting_root_access_body">S\'estan demanant privilegis d\'administrador…</string>
   <string name="root_access_denied_title">Accés com a administrador rebutjat</string>
   <string name="root_access_denied_body">Aquest dispositiu Android no permet actuar com a administrador o bé no heu donat privilegis d\'administrador a l\'F-Droid.</string>
-  <string name="system_install_denied_body">Només disponible quan F-Droid és instal·lat com una aplicació al sistema.</string>
+  <string name="system_install_denied_body">Només disponible quan l\'Extensió Privilegiada d\'F-Droid està instal·lada.</string>
   <string name="swap_join_same_wifi">Uniu-vos a la Wi-Fi del vostre amic</string>
   <string name="swap">Intercanvieu aplicacions</string>
   <string name="swap_no_wifi_network">No esteu connectats a cap xarxa</string>

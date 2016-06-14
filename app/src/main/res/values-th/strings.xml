@@ -251,7 +251,7 @@
     <string name="update_history_summ">ถือว่าโปรแกรมที่เพิ่งมีใน %s วัน เป็นโปรแกรมใหม่</string>
     <string name="local_repo_name_summary">ฃื่อของแหล่งโปรแกรมในเครื่องที่แสดงสู่ภายนอก: %s</string>
     <string name="local_repo_https">ใช้การเชื่อมต่อที่เป็นส่วนตัว</string>
-    <string name="local_repo_https_on">ใช้การเชื่อมต่อ HTTPPS:// ที่เข้ารหัส กับแหล่งโปรแกรมจากในเครื่อง</string>
+    <string name="local_repo_https_on">ใช้การเชื่อมต่อ HTTPS:// ที่เข้ารหัส กับแหล่งโปรแกรมจากในเครื่อง</string>
 
     <string name="login_title">ต้องใช้รหัสผ่าน</string>
     <string name="system_installer">ส่วนขยายเพื่อช่วยติดตั้ง</string>

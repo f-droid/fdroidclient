@@ -213,7 +213,7 @@
 
     <string name="tab_installed_apps_count">Installerade (%d)</string>
     <string name="tab_updates_count">Uppdateringar (%d)</string>
-    <string name="menu_email">E-post skapare</string>
+    <string name="menu_email">E-post författare</string>
     <string name="antinonfreeassetslist">Denna app innehåller icke-fria tillgångar</string>
 
     <string name="useTor">Använd Tor</string>
@@ -294,7 +294,7 @@
     <string name="swap_not_enabled">Utbyte inte aktiverat</string>
     <string name="swap_not_enabled_description">Innan utbyte, måste enheten synliggöras.</string>
 
-    <string name="install_confirm">Vill du installera det här programmet? Det kommer att få tillgång till:</string>
+    <string name="install_confirm">behöver tillgång till</string>
     <string name="install_confirm_update">Vill du installera en uppdatering till denna befintlig applikation? Befintlig data försvinner inte. Den uppdaterade programmet kommer att få tillgång till:</string>
     <string name="install_confirm_update_system">Vill du installera en uppdatering till detta inbyggda program? Befintlig data försvinner inte. Det uppdaterade programmet kommer att få tillgång till:</string>
     <string name="install_confirm_update_no_perms">Vill du installera en uppdatering till denna befintlig applikation? Befintlig data försvinner inte. Det kräver inte någon särskild tillgång.</string>
@@ -343,5 +343,12 @@
     <string name="keep_month">1 månad</string>
     <string name="keep_year">1 år</string>
     <string name="keep_forever">För evigt</string>
+
+    <string name="install_error_notify_title">Fel vid installation %s</string>
+    <string name="uninstall_error_notify_title">Fel vid installation %s</string>
+
+
+    <string name="installing">Installerar…</string>
+    <string name="uninstalling">Avinstallera…</string>
 
     </resources>
