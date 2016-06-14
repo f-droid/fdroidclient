@@ -77,7 +77,6 @@
   <string name="menu_donate">Donera</string>
   <string name="details_installed">Versionen %s är installerad</string>
   <string name="details_notinstalled">Inte installerad</string>
-  <string name="corrupt_download">Den nedladdade filen är korrupt.</string>
   <string name="antiadslist">Denna app innehåller reklam</string>
   <string name="antitracklist">Den här appen spårar och rapporterar om din aktivitet</string>
   <string name="antinonfreeadlist">Den här appen uppmuntrar icke-fria tillägg</string>
@@ -104,7 +103,6 @@
   <string name="deleting_repo">Tar bort aktuellt förråd…</string>
   <string name="adding_apks_format">Lägger till %s till förråd…</string>
   <string name="writing_index_jar">Skriver signerad indexfil (index.jar)…</string>
-  <string name="failed_to_create_index">Kunde inte skapa förrådsindex!</string>
   <string name="linking_apks">Länkar APK:er till förrådet…</string>
   <string name="copying_icons">Kopierar appikoner till förrådet…</string>
   <string name="icon">Ikon</string>

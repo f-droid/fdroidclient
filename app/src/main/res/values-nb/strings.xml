@@ -77,7 +77,6 @@
   <string name="menu_donate">Doner</string>
   <string name="details_installed">Versjon %s installert</string>
   <string name="details_notinstalled">Ikke installert</string>
-  <string name="corrupt_download">Nedlastet fil er korrupt.</string>
   <string name="antiadslist">Dette programmet inneholder reklame</string>
   <string name="antitracklist">Dette programmet sporer din aktivitet</string>
   <string name="antinonfreeadlist">Dette programmet promoterer ufrie utvidelser</string>
@@ -104,7 +103,6 @@
   <string name="deleting_repo">Sletter gjeldende pakkebrønn…</string>
   <string name="adding_apks_format">Legger til %s til pakkebrønn…</string>
   <string name="writing_index_jar">Skriver signert indekseringsfil (index.jar)…</string>
-  <string name="failed_to_create_index">Klarte ikke å indeksere pakkebrønn!</string>
   <string name="linking_apks">Lenker APK-er inn i pakkebrønn…</string>
   <string name="copying_icons">Kopierer program-miniatyrbilder til pakkebrønnen…</string>
   <string name="icon">Miniatyrbilde</string>

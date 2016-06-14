@@ -70,7 +70,6 @@
   <string name="menu_donate">Lahjoita</string>
   <string name="details_installed">Versio %s asennettu</string>
   <string name="details_notinstalled">Ei asennettu</string>
-  <string name="corrupt_download">Ladattu tiedosto on viallinen</string>
   <string name="antiadslist">Tämä sovellus sisältää mainoksia</string>
   <string name="antitracklist">Tämä sovellus tarkkailee ja raportoi toimintaasi</string>
   <string name="antinonfreeadlist">Tämä sovellus suosittelee ei-avoimia lisäosia</string>
@@ -92,7 +91,6 @@
   <string name="deleting_repo">Poistetaan nykyistä säilöä…</string>
   <string name="adding_apks_format">Lisätään kohdetta %s säilöön…</string>
   <string name="writing_index_jar">Kirjoitetan allekirjoitettua hakemistotiedostoa (index.jar)…</string>
-  <string name="failed_to_create_index">Säilöhakemiston luonti epäonnistui!</string>
   <string name="linking_apks">Linkitetään AKP-tiedostoja säilöön…</string>
   <string name="copying_icons">Kopioidaan sovelluskuvakkeita säilöön…</string>
   <string name="icon">kuvake</string>

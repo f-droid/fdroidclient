@@ -34,7 +34,6 @@
   <string name="menu_donate">Пожертва</string>
   <string name="details_installed">Встановлена версія %s</string>
   <string name="details_notinstalled">Не встановлено</string>
-  <string name="corrupt_download">Отриманий файл пошкоджений.</string>
   <string name="expert">Експертний режим</string>
   <string name="search_hint">Пошук програм</string>
   <string name="appcompatibility">Сумісність</string>
@@ -233,7 +232,6 @@
     <string name="show_incompat_versions_on">Показувати версії додатків, які не сумісні з пристроєм</string>
     <string name="local_repo_running">F-Droid готовий до обміну</string>
     <string name="writing_index_jar">Запис підписаного файлу індексу (index.jar)…</string>
-    <string name="failed_to_create_index">Не вдалося створити індекс репозиторію!</string>
     <string name="linking_apks">Включення APK-файлів до репозиторію…</string>
     <string name="all_other_repos_fine">Всі інші репозиторії не містять помилок.</string>
         <string name="no_handler_app">Ви не маєте додатку для обробки «%s».</string>

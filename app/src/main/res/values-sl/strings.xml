@@ -31,7 +31,6 @@
   <string name="menu_donate">Prispevek</string>
   <string name="details_installed">Nameščena različica %s</string>
   <string name="details_notinstalled">Ni nameščeno</string>
-  <string name="corrupt_download">Prejeta datoteka je poškodovana</string>
   <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
   <string name="expert">Napredno</string>
   <string name="search_hint">Iskanje aplikacij</string>

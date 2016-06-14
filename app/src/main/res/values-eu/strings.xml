@@ -53,7 +53,6 @@
   <string name="menu_donate">Egin dohaintza</string>
   <string name="details_installed">%s bertsioa instalatuta</string>
   <string name="details_notinstalled">Instalatu gabe</string>
-  <string name="corrupt_download">Deskargatutako fitxategia hondatuta dago.</string>
   <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
   <string name="display">Bistaratu</string>
   <string name="expert">Modu aditua</string>
@@ -160,7 +159,6 @@
     <string name="swap_connecting">Konektatzen</string>
     <string name="swap_wifi_device_name">Gailuaren izena</string>
     <string name="writing_index_jar">Sinatutako aurkibide fitxategia idazten (index.jar)…</string>
-    <string name="failed_to_create_index">Ezin izan da aurkibide fitxategia sortu!</string>
     <string name="linking_apks">APK fitxategiak biltegira lotzen…</string>
     <string name="copying_icons">Aplikazioen ikonoak biltegira kopiatzen…</string>
     <string name="proxy_host">Proxy ostalaria</string>

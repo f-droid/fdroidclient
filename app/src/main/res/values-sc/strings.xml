@@ -77,7 +77,6 @@
   <string name="menu_donate">Dona</string>
   <string name="details_installed">Versione %s installada</string>
   <string name="details_notinstalled">Non installada</string>
-  <string name="corrupt_download">Su documentu iscarrigadu est corrùmpidu.</string>
   <string name="antiadslist">Custa aplicatzione cuntènnidi publitzidade</string>
   <string name="antitracklist">Custa aplicatzione compidat e riferit a àteros de sas atividades tuas</string>
   <string name="antinonfreeadlist">Custa aplicatzione promovet estensiones (add-ons) non lìberas</string>
@@ -104,7 +103,6 @@
   <string name="deleting_repo">Burrende su depòsitu atuale…</string>
   <string name="adding_apks_format">Annanghende %s a su depòsitu…</string>
   <string name="writing_index_jar">Iscriende su documentu de ìnditze firmadu (index.jar)…</string>
-  <string name="failed_to_create_index">Sa creatzione de s\'inditze de sos depòsitos est faddida!</string>
   <string name="linking_apks">Culleghende sos APK in su depòsitu…</string>
   <string name="copying_icons">Copiende sas iconas de sas aplicatziones in su depòsitu…</string>
   <string name="icon">Icona</string>

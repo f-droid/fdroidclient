@@ -106,8 +106,6 @@
 
     <string name="details_installed">Versi %s terpasang</string>
     <string name="details_notinstalled">Tidak terpasang</string>
-    <string name="corrupt_download">Berkas terunduh rusak.</string>
-
     <string name="antiadslist">Aplikasi ini berisi iklan</string>
     <string name="antitracklist">Aplikasi ini melacak dan melaporkan aktivitas Anda</string>
     <string name="antinonfreeadlist">Aplikasi ini mempromosikan pengaya berbayar</string>
@@ -133,7 +131,6 @@
     <string name="deleting_repo">Menghapus repo saat ini…</string>
     <string name="adding_apks_format">Menambahkan %s ke repo…</string>
     <string name="writing_index_jar">Menulis berkas indeks yang ditanda tangani (index.jar)…</string>
-    <string name="failed_to_create_index">Gagal membuat indeks repo!</string>
     <string name="linking_apks">Menautkan APK ke dalam repo…</string>
     <string name="copying_icons">Menyalin ikon aplikasi ke dalam repo…</string>
     <string name="icon">Ikon</string>

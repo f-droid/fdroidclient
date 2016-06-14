@@ -70,7 +70,6 @@
   <string name="menu_donate">Ziedot</string>
   <string name="details_installed">versija %s instalēta</string>
   <string name="details_notinstalled">Nav instalēts</string>
-  <string name="corrupt_download">Novilktais fails nav derīgs.</string>
   <string name="antiadslist">Programma satur reklāmu</string>
   <string name="antitracklist">Programma seko tavām aktivitātēm un ziņo par tām</string>
 <string name="login_password">Parole</string>

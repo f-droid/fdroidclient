@@ -77,7 +77,6 @@
   <string name="menu_donate">Donar</string>
   <string name="details_installed">Versión %s instalada</string>
   <string name="details_notinstalled">Non instaláu</string>
-  <string name="corrupt_download">Ta toyíu\'l ficheru baxáu.</string>
   <string name="antiadslist">Esta aplicación contién publicidá</string>
   <string name="antitracklist">Esta aplicación rastrexa ya informa de la to actividá</string>
   <string name="antinonfreeadlist">Esta aplicación da puxu a amiestos non llibres</string>
@@ -104,7 +103,6 @@
   <string name="deleting_repo">Desaniciando\'l repositoriu actual…</string>
   <string name="adding_apks_format">Amestando %s al repositoriu…</string>
   <string name="writing_index_jar">Escribiendo\'l ficheru d\'índiz robláu (index.jar)…</string>
-  <string name="failed_to_create_index">¡Fallu al crear l\'índiz del repositoriu!</string>
   <string name="linking_apks">Enllazando APKs nel repositoriu…</string>
   <string name="copying_icons">Copiando iconos d\'aplicaciones al repositoriu…</string>
   <string name="icon">Iconu</string>

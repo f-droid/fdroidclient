@@ -49,7 +49,6 @@
   <string name="menu_donate">Paaukoti</string>
   <string name="details_installed">Įdiegta %s versija</string>
   <string name="details_notinstalled">Neįdiegta</string>
-  <string name="corrupt_download">Atsiųstas failas yra sugadintas</string>
   <string name="display">Rodymas</string>
   <string name="show_incompat_versions">Nesuderintos versijos</string>
   <string name="show_incompat_versions_on">Rodyti programų laidas, netinkamas šiam įrenginiui</string>

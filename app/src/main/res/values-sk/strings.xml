@@ -74,7 +74,6 @@
   <string name="menu_donate">Darovať peniaze</string>
   <string name="details_installed">Verzia %s nainštalovaná</string>
   <string name="details_notinstalled">Nie je nainštalované</string>
-  <string name="corrupt_download">Stiahnutý súbor je poškodený.</string>
   <string name="antiadslist">Táto aplikácia obsahuje reklamy</string>
   <string name="antitracklist">Táto aplikácia zaznamenáva a hlási vaše aktivity</string>
   <string name="antinonfreeadlist">Táto aplikácia propaguje neslobodné doplnky</string>
@@ -101,7 +100,6 @@
   <string name="deleting_repo">Mažem súčasný repozitár…</string>
   <string name="adding_apks_format">Pridávam %s do repozitára…</string>
   <string name="writing_index_jar">Zapisujem podpísaný súbor indexu (index.jar)…</string>
-  <string name="failed_to_create_index">Nepodarilo sa vytvoriť index repozitára!</string>
   <string name="linking_apks">Linkujem APK do repozitára…</string>
   <string name="copying_icons">Kopírujem ikony do repozitára…</string>
   <string name="icon">Ikona</string>

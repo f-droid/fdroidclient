@@ -68,7 +68,6 @@
   <string name="menu_donate">捐款</string>
   <string name="details_installed">已安裝版本 %s</string>
   <string name="details_notinstalled">沒有安裝</string>
-  <string name="corrupt_download">下載的檔案已損毀。</string>
   <string name="antiadslist">此應用程式含有廣告</string>
   <string name="antitracklist">此應用程式會跟蹤及彙報您的行為</string>
   <string name="antinonfreeadlist">此應用程式推廣非自由的附加元件</string>
@@ -148,7 +147,6 @@
     <string name="tab_installed_apps">已安裝</string>
     <string name="invalid_url">這不是有效的網址。</string>
     <string name="menu_changelog">更新日誌</string>
-    <string name="failed_to_create_index">建立軟件倉庫引首失敗！</string>
     <string name="update_notification_title">正在更新軟件倉庫</string>
     <string name="no_handler_app">您沒有任何應用程式可以開啟 %s。</string>
     <string name="repo_confirm_delete_body">軟件倉庫被刪除後，倉庫中的應用程式將不會在 F-Droid 出現。\n\n註：之前所安裝的應用程式均會保留在您的裝置上。</string>

@@ -77,7 +77,6 @@
   <string name="menu_donate">寄付</string>
   <string name="details_installed">ﾊﾞｰｼﾞｮﾝ %s がｲﾝｽﾄｰﾙ済</string>
   <string name="details_notinstalled">ｲﾝｽﾄｰﾙされていません</string>
-  <string name="corrupt_download">ﾀﾞｳﾝﾛｰﾄﾞしたﾌｧｲﾙが正しくありません｡</string>
   <string name="antiadslist">このｱﾌﾟﾘｹｰｼｮﾝは広告を含んでいます｡</string>
   <string name="antitracklist">このｱﾌﾟﾘｹｰｼｮﾝはあなたの操作を記録し報告します｡</string>
   <string name="antinonfreeadlist">このｱﾌﾟﾘｹｰｼｮﾝは有償ｱﾄﾞｵﾝを推奨します｡</string>
@@ -104,7 +103,6 @@
   <string name="deleting_repo">現在のﾘﾎﾟｼﾞﾄﾘを削除中</string>
   <string name="adding_apks_format">ﾘﾎﾟｼﾞﾄﾘに %s を追加中</string>
   <string name="writing_index_jar">署名された索引ﾌｧｲﾙを書き込み中(index.jar)…</string>
-  <string name="failed_to_create_index">ﾘﾎﾟｼﾞﾄﾘの索引の作成に失敗しました｡</string>
   <string name="linking_apks">ﾘﾎﾟｼﾞﾄﾘにAPKを関連付けています…</string>
   <string name="copying_icons">ﾘﾎﾟｼﾞﾄﾘにｱﾌﾟﾘｹｰｼｮﾝのｱｲｺﾝを複製中…</string>
   <string name="icon">ｱｲｺﾝ</string>

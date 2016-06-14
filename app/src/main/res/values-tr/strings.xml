@@ -77,7 +77,6 @@
   <string name="menu_donate">Bağış</string>
   <string name="details_installed">%s sürümü kurulu</string>
   <string name="details_notinstalled">Kurulu değil</string>
-  <string name="corrupt_download">İndirilen dosya bozuk.</string>
   <string name="antiadslist">Bu uygulama reklam içerir</string>
   <string name="antitracklist">Bu uygulama etkinliklerinizi izleyip rapor eder</string>
   <string name="antinonfreeadlist">Bu uygulama özgür olmayan eklentiler tavsiye eder</string>
@@ -104,7 +103,6 @@
   <string name="deleting_repo">Mevcut depo siliniyor…</string>
   <string name="adding_apks_format">%s depoya ekleniyor…</string>
   <string name="writing_index_jar">İmzalanmış endeks dosyası yazılıyor (index.jar)…</string>
-  <string name="failed_to_create_index">Depo endeksinin oluşturulmasında hata meydana geldi!</string>
   <string name="linking_apks">APK\'ler depo içine bağlanıyor…</string>
   <string name="copying_icons">Uygulama ikonları depoya kopyalanıyor…</string>
   <string name="icon">İkon</string>

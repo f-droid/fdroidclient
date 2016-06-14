@@ -69,7 +69,6 @@
   <string name="menu_donate">捐赠</string>
   <string name="details_installed">已安装版本 %s</string>
   <string name="details_notinstalled">未安装</string>
-  <string name="corrupt_download">下载的文件已损坏。</string>
   <string name="antiadslist">该应用程序包含广告</string>
   <string name="antitracklist">该应用程序会跟踪并报告您的活动</string>
   <string name="antinonfreeadlist">该应用程序会推广非自由免费的插件或扩展</string>
@@ -185,7 +184,6 @@
     <string name="touch_to_configure_local_repo">触摸可查看详细信息以及允许其他人与你交换应用程序。</string>
     <string name="adding_apks_format">正在添加 %s 到软件源…</string>
     <string name="writing_index_jar">正在写入已签名的索引文件（index.jar）…</string>
-    <string name="failed_to_create_index">创建软件源索引失败！</string>
     <string name="linking_apks">正在链接APK到软件源……</string>
     <string name="copying_icons">正在复制应用程序图标到软件源…</string>
     <string name="next">下一个</string>

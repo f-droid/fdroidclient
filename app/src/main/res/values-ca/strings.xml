@@ -75,7 +75,6 @@
   <string name="menu_donate">Feu una donació</string>
   <string name="details_installed">Versió instal·lada %s</string>
   <string name="details_notinstalled">No està instal·lat</string>
-  <string name="corrupt_download">El fitxer baixat ha arribat en mal estat.</string>
   <string name="antiadslist">Aquesta aplicació conté publicitat</string>
   <string name="antitracklist">Aquesta aplicació segueix i informa sobre la vostra activitat</string>
   <string name="antinonfreeadlist">Aquesta aplicació promou complements no lliures</string>
@@ -102,7 +101,6 @@
   <string name="deleting_repo">S\'està esborrant el dipòsit actual…</string>
   <string name="adding_apks_format">Afegint %s al dipòsit…</string>
   <string name="writing_index_jar">S\'està escribint la llista d\'aplicacions (index.jar)…</string>
-  <string name="failed_to_create_index">S\'ha produït un error en crear la llista d\'aplicacions del dipòsit!</string>
   <string name="linking_apks">S\'estan enllaçant paquets APK al dipòsit…</string>
   <string name="copying_icons">Copiant les icones de les aplicacions al dipòsit…</string>
   <string name="icon">Icona</string>

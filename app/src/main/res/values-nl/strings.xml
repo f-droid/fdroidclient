@@ -77,7 +77,6 @@
   <string name="menu_donate">Doneer</string>
   <string name="details_installed">Versie %s geïnstalleerd</string>
   <string name="details_notinstalled">Niet geïnstalleerd</string>
-  <string name="corrupt_download">Gedownloade bestand is corrupt.</string>
   <string name="antiadslist">Deze app bevat advertenties</string>
   <string name="antitracklist">Deze app houdt je activiteiten bij en rapporteert deze</string>
   <string name="antinonfreeadlist">Deze app promoot niet-vrije add-ons</string>
@@ -104,7 +103,6 @@
   <string name="deleting_repo">Bron verwijderen…</string>
   <string name="adding_apks_format">%s aan gedeelde app collectie toevoegen…</string>
   <string name="writing_index_jar">Gesigneerd index bestand (index.jar) aan het schrijven…</string>
-  <string name="failed_to_create_index">Kon indexbestand voor gedeelde apps niet aanmaken!</string>
   <string name="linking_apks">APKs aan collectie toevoegen…</string>
   <string name="copying_icons">App iconen aan collectie toevoegen…</string>
   <string name="icon">Icoon</string>

@@ -33,7 +33,6 @@
   <string name="menu_website">Site web</string>
   <string name="menu_donate">Donează</string>
   <string name="details_notinstalled">Nu e instalat</string>
-  <string name="corrupt_download">Fisierul descarcat e corupt.</string>
   <string name="display">Afişează</string>
   <string name="expert">Setari expert</string>
   <string name="rooted">Ignora aplicatiile ce necesita root</string>
@@ -111,7 +110,6 @@
 
     <string name="proxy">Proxy</string>
     <string name="linking_apks">Se asociaza APK-urile in depozit…</string>
-    <string name="failed_to_create_index">Eroare la crearea indexului depozitului!</string>
     <string name="writing_index_jar">Scriere index semnat (index.jar)…</string>
     <string name="deleting_repo">Se sterge depozitul curent…</string>
     <string name="local_repo">Depozit local</string>

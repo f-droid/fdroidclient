@@ -90,7 +90,6 @@
 
     <string name="details_installed">גרסה %s מותקנת</string>
     <string name="details_notinstalled">לא מותקנת</string>
-    <string name="corrupt_download">הקובץ שהתקבל פגום.</string>
     <string name="antiadslist">אפליקציה זו מכילה פרסום</string>
     <string name="antitracklist">אפליקציה זו עוקבת ומדווחת על פעילותך</string>
     <string name="antinonfreeadlist">אפליקציה זו מקדמת תוספים לא-חופשיים</string>
@@ -123,7 +122,6 @@
     <string name="deleting_repo">כעת מוחק מאגר נוכחי…</string>
     <string name="adding_apks_format">הוסף את %s למאגר…</string>
     <string name="writing_index_jar">כעת כותב קובץ אינדקס חתום (index.jar)…</string>
-    <string name="failed_to_create_index">נכשל ליצור אינדקס מאגר!</string>
     <string name="linking_apks">כעת מקשר APK לתוך המאגר…</string>
     <string name="copying_icons">כעת מעתיק סמלי אפליקציה לתוך המאגר…</string>
     <string name="icon">סמל</string>

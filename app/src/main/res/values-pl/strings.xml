@@ -54,7 +54,6 @@
   <string name="menu_upgrade">Uaktualnij</string>
   <string name="details_installed">Wersja %s została zainstalowana</string>
   <string name="details_notinstalled">Nie zainstalowano</string>
-  <string name="corrupt_download">Pobrany plik jest uszkodzony.</string>
   <string name="antiadslist">Ta aplikacja zawiera reklamy</string>
   <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
   <string name="antinonfreenetlist">Ta aplikacja promuje niewolne usługi sieciowe</string>
@@ -79,7 +78,6 @@
   <string name="deleting_repo">Usuwanie aktualnego repozytorium…</string>
   <string name="adding_apks_format">Dodawanie %s do repozytorium…</string>
   <string name="writing_index_jar">Zapisywanie podpisanego pliku pakietów (index.jar)…</string>
-  <string name="failed_to_create_index">Błąd przy tworzeniu indeksu repozytorium!</string>
   <string name="linking_apks">Linkowanie APK do repozytorium…</string>
   <string name="copying_icons">Kopiowanie ikon aplikacji do repozytorium…</string>
   <string name="icon">Ikona</string>

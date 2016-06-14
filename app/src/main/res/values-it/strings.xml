@@ -75,7 +75,6 @@
   <string name="menu_donate">Dona</string>
   <string name="details_installed">Versione %s installata</string>
   <string name="details_notinstalled">Non installato</string>
-  <string name="corrupt_download">Il file scaricato è corrotto.</string>
   <string name="antiadslist">Questa app contiene pubblicità</string>
   <string name="antitracklist">Questa app monitora e riferisce sulle tue attività</string>
   <string name="antinonfreeadlist">Questa app promuove add-on non liberi</string>
@@ -102,7 +101,6 @@
   <string name="deleting_repo">Cancellazione la repo corrente…</string>
   <string name="adding_apks_format">Aggiungo %s alla repo…</string>
   <string name="writing_index_jar">Scrivo il file di indice fimrato (index.jar)…</string>
-  <string name="failed_to_create_index">Creazione dell\'indice della repo fallita!</string>
   <string name="linking_apks">Aggiungo gli APK nella repo…</string>
   <string name="copying_icons">Copio le icone delle app nella repo…</string>
   <string name="icon">Icona</string>

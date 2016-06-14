@@ -89,8 +89,6 @@
 
     <string name="details_installed">ติดตั้งอยู่รุ่น %s</string>
     <string name="details_notinstalled">ไม่ได้ติดตั้งอยู่</string>
-    <string name="corrupt_download">ไฟล์ที่ดาวน์โหลดมาเสียหาย</string>
-
     <string name="antiadslist">โปรแกรมนี้มีโฆษณา</string>
     <string name="antitracklist">โปรแกรมนี้ติดตามและส่งต่อข้อมูลกิจกรรมของคุณให้บุคคลภายนอก</string>
     <string name="antinonfreeadlist">โปรแกรมนี้สนับสนุนส่วนขยายที่ไม่เสรี</string>

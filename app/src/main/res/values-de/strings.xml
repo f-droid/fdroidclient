@@ -77,7 +77,6 @@
   <string name="menu_donate">Spenden</string>
   <string name="details_installed">Version %s installiert</string>
   <string name="details_notinstalled">Nicht Installiert</string>
-  <string name="corrupt_download">Heruntergeladene Datei ist fehlerhaft.</string>
   <string name="antiadslist">Diese Anwendung enthält Werbung</string>
   <string name="antitracklist">Diese Anwendung verfolgt und versendet Ihre Aktivitäten</string>
   <string name="antinonfreeadlist">Diese Anwendung bewirbt nicht freie Erweiterungen</string>
@@ -104,7 +103,6 @@
   <string name="deleting_repo">Aktuelle Paketquelle wird gelöscht …</string>
   <string name="adding_apks_format">%s wird zur Paketquelle hinzugefügt …</string>
   <string name="writing_index_jar">Signierte Indexdatei (index.jar) wird geschrieben …</string>
-  <string name="failed_to_create_index">Paketquellenverzeichnis konnte nicht erstellt werden!</string>
   <string name="linking_apks">APKs werden mit der Paketquelle verknüpft …</string>
   <string name="copying_icons">Anwendungssymbole werden in die Paketquelle kopiert …</string>
   <string name="icon">Symbol</string>

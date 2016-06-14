@@ -77,7 +77,6 @@
   <string name="menu_donate">Пожертвовать</string>
   <string name="details_installed">Версия %s установлена</string>
   <string name="details_notinstalled">Не установлено</string>
-  <string name="corrupt_download">Загруженный файл повреждён.</string>
   <string name="antiadslist">Это приложение содержит рекламу</string>
   <string name="antitracklist">Это приложение будет отслеживать ваши действия и сообщать о вашей деятельности</string>
   <string name="antinonfreeadlist">Это приложение предлагает использовать несвободные дополнения</string>
@@ -103,7 +102,6 @@
   <string name="deleting_repo">Удаление текущего репозитория…</string>
   <string name="adding_apks_format">Добавление %s в репозиторий…</string>
   <string name="writing_index_jar">Запись подписанного файла индекса (index.jar)…</string>
-  <string name="failed_to_create_index">Произошла ошибка во время формирования индекса репозитория!</string>
   <string name="linking_apks">Включение APK-файлов в репозиторий…</string>
   <string name="copying_icons">Копирование иконок приложений в репозиторий…</string>
   <string name="icon">Иконка</string>

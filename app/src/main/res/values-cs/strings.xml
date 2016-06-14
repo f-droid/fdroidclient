@@ -66,7 +66,6 @@
   <string name="menu_donate">Přispět</string>
   <string name="details_installed">Verze %s nainstalována</string>
   <string name="details_notinstalled">Nenainstalováno</string>
-  <string name="corrupt_download">Stažený soubor je poškozen.</string>
   <string name="antiadslist">Tato aplikace obsahuje reklamu</string>
   <string name="antitracklist">Tato aplikace zaznamenává a hlásí vaše aktivity</string>
   <string name="expert">Expertní mód</string>
@@ -86,7 +85,6 @@
   <string name="deleting_repo">Odstraňuji místní repozitář…</string>
   <string name="adding_apks_format">Přidávám %s do repozitáře…</string>
   <string name="writing_index_jar">Zapisuji podepsaný soubor s indexem (index.jar)…</string>
-  <string name="failed_to_create_index">Nezdařilo se vytvořit index repozitáře!</string>
   <string name="linking_apks">Linkuji APK do repozitáře…</string>
   <string name="copying_icons">Kopíruji ikony aplikací do repozitáře…</string>
   <string name="icon">Ikona</string>

@@ -120,8 +120,6 @@
 
     <string name="details_installed">Version %s installeret</string>
     <string name="details_notinstalled">Ikke installeret</string>
-    <string name="corrupt_download">Hentede fil er korrupt.</string>
-
     <string name="antiadslist">Programmet indeholder annoncering</string>
     <string name="antitracklist">Programmet sporer og indberetter din aktivitet</string>
     <string name="antinonfreeadlist">Programmet fremmer ikke-frie tilføjelser</string>
@@ -150,7 +148,6 @@
     <string name="deleting_repo">Sletter aktuelle depot…</string>
     <string name="adding_apks_format">Tilføjer %s til depot…</string>
     <string name="writing_index_jar">Skriver signeret indeksfil (inden.jar)…</string>
-    <string name="failed_to_create_index">Ude af stand til at lave depotindeks!</string>
     <string name="copying_icons">Kopierer programikoner ind i depotet…</string>
     <string name="icon">Ikon</string>
     <string name="next">Næste</string>

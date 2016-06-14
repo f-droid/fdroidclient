@@ -127,7 +127,6 @@
 
     <string name="details_installed">Version %s installed</string>
     <string name="details_notinstalled">Not installed</string>
-    <string name="corrupt_download">Downloaded file is corrupt.</string>
 
     <string name="antiadslist">This app contains advertising</string>
     <string name="antitracklist">This app tracks and reports your activity</string>
@@ -158,7 +157,6 @@
     <string name="deleting_repo">Deleting current repo…</string>
     <string name="adding_apks_format">Adding %s to repo…</string>
     <string name="writing_index_jar">Writing signed index file (index.jar)…</string>
-    <string name="failed_to_create_index">Failed to create the repo index!</string>
     <string name="linking_apks">Linking APKs into the repo…</string>
     <string name="copying_icons">Copying app icons into the repo…</string>
     <string name="icon">Icon</string>

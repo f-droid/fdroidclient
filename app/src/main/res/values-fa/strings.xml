@@ -44,7 +44,6 @@
   <string name="menu_source">کد مبدأ</string>
   <string name="menu_donate">اعانه</string>
   <string name="details_notinstalled">نصب نشده</string>
-  <string name="corrupt_download">پروندهٔ دریافتی خراب است.</string>
   <string name="antiadslist">این کاره دارای تبلیغات است</string>
   <string name="antitracklist">این کاره، فعّالیت‌هایتان را ردیابی و گزارش می‌کند</string>
   <string name="antinonfreeadlist">این کاره، افزونه‌های غیر آزاد را تبلیغ می‌کند</string>
@@ -152,7 +151,6 @@
     <string name="deleting_repo">در حال حذف مخزن جاری…</string>
     <string name="adding_apks_format">در حال افزودن %s به مخزن…</string>
     <string name="writing_index_jar">در حال نوشتن پروندهٔ شاخص امضا شده (index.jar)…</string>
-    <string name="failed_to_create_index">شکست در ایحاد شاخص مخزن!</string>
     <string name="icon">نقشک</string>
     <string name="linking_apks">در حال پیوند دادن apkها در مخزن…</string>
     <string name="copying_icons">در حال رونوشت نقشک کاره‌ها در مخزن…</string>

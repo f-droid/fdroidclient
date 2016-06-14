@@ -72,7 +72,6 @@
   <string name="menu_donate">Ủng hộ</string>
   <string name="details_installed">Đã cài đặt phiên bản %s</string>
   <string name="details_notinstalled">Chưa cài đặt</string>
-  <string name="corrupt_download">Tập tin đã tải bị hỏng.</string>
   <string name="antiadslist">Ứng dụng này có quảng cáo</string>
   <string name="antitracklist">Ứng dụng này theo dõi và báo cáo hoạt động của bạn</string>
   <string name="antinonfreeadlist">Ứng dụng này khuyến khích sử dụng phần mở rộng không tự do</string>
@@ -177,7 +176,6 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="failed_to_create_index">Không tạo được mục lục kho!</string>
     <string name="writing_index_jar">Đang ghi tập tin mục lục có chữ kí (index.jar)…</string>
     <string name="linking_apks">Đang kết nối các tập tin APK vào kho…</string>
     <string name="enable_proxy_summary">Thiết lập proxy HTTP cho tất cả các yêu cầu nối mạng</string>

@@ -148,8 +148,6 @@
 
     <string name="details_installed">الإصدار %s مثبت</string>
     <string name="details_notinstalled">لم يتم التثبيت</string>
-    <string name="corrupt_download">الملف الذي تم تنزيله تالف.</string>
-
     <string name="antiadslist">يحتوي هذا التطبيق على إعلانات</string>
     <string name="antitracklist">هذا التطبيق يراقب ويوثق النشاطات الخاص بك</string>
     <string name="antinonfreeadlist">هذا التطبيق يحمل إضافات غير حرة</string>
@@ -177,7 +175,6 @@
     <string name="touch_to_configure_local_repo">إستخدم اللمس لعرض تفاصيل والسماح للآخرين لمبادلة التطبيقات الخاصة بك.</string>
     <string name="adding_apks_format">إضافة %s إلى مستودع…</string>
     <string name="writing_index_jar">كتابة توقيع ملف الفهرس (index.jar) …</string>
-    <string name="failed_to_create_index">فشل في إنشاء فهرس المستودعات!</string>
     <string name="linking_apks">ربط ملفات APK التي في المستودعات…</string>
     <string name="copying_icons">نسخ ايقونات التطبيق في المستودعات …</string>
     <string name="icon">ايقونة</string>

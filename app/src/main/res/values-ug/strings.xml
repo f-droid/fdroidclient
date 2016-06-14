@@ -49,7 +49,6 @@
   <string name="menu_donate">ئىئانە</string>
   <string name="details_installed">%s نەشرى ئورنىتىلدى</string>
   <string name="details_notinstalled">ئورنىتىلمىدى</string>
-  <string name="corrupt_download">چۈشۈرگەن ھۆججەت بۇرۇق</string>
   <string name="antiadslist">بۇ ئەپتە ئېلان بار</string>
   <string name="antitracklist">بۇ ئەپ پائالىيەتلىرىڭىزنى ئىزلاپ، دوكلات قىلىدۇ</string>
   <string name="antinonfreeadlist">بۇ ئەپ ھەقسىز بولمىغان قىستۇرمىلارنى تەۋسىيە قىلىدۇ</string>

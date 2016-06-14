@@ -69,7 +69,6 @@
   <string name="menu_donate">Направете дарение</string>
   <string name="details_installed">Инсталирана версия: %s</string>
   <string name="details_notinstalled">Не е инсталирано</string>
-  <string name="corrupt_download">Сваленият файл е повреден.</string>
   <string name="antiadslist">Приложението съдържа реклами</string>
   <string name="antitracklist">Приложението следи и докладва активността ви</string>
   <string name="antinonfreeadlist">Приложението промотира не-безплатни добавки</string>
@@ -302,7 +301,6 @@
     <string name="antinonfreeassetslist">Това приложение съдържа несвободни елементи</string>
 
     <string name="writing_index_jar">Записва се засекретеният индекс файл (index.jar)…</string>
-    <string name="failed_to_create_index">Неуспешно създаване на хранилищен индекс!</string>
     <string name="useTor">Да се използва Tor</string>
     <string name="useTorSummary">С цел увеличаване на сигурността нека възходящия трафик минава през Tor</string>
     <string name="status_inserting_apps">Записване на данните на приложенията</string>

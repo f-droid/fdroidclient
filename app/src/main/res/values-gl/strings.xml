@@ -49,7 +49,6 @@
   <string name="menu_donate">Doar</string>
   <string name="details_installed">Instalada a versión %s</string>
   <string name="details_notinstalled">Non instalada</string>
-  <string name="corrupt_download">O ficheiro descargado está corrupto.</string>
   <string name="antiadslist">Esta ap contén publicidade</string>
   <string name="antitracklist">Esta ap rexistra e informa da súa actividade</string>
   <string name="antinonfreeadlist">Esta ap promociona engadidos que non son libres</string>
@@ -131,7 +130,6 @@
     <string name="touch_to_configure_local_repo">Toca para ver detalles e permitir ós demáis o intercambio dos teus aplicativos.</string>
     <string name="deleting_repo">Eliminando o repositorio actual…</string>
     <string name="adding_apks_format">Engadindo %s ó repositorio…</string>
-    <string name="failed_to_create_index">Fallou ao crear o índice do repositorio!</string>
     <string name="linking_apks">Ligando APKs ó repositorio…</string>
     <string name="copying_icons">Copiando iconas de aplicativos no repositorio…</string>
     <string name="icon">Icona</string>

@@ -51,7 +51,6 @@
   <string name="menu_donate">Donaci</string>
   <string name="details_installed">Versio %s instalita</string>
   <string name="details_notinstalled">Neinstalita</string>
-  <string name="corrupt_download">La elŝutita dosiero estas difektita.</string>
   <string name="antiadslist">Ĉi tiu aplikaĵo enhavas reklamojn</string>
   <string name="antitracklist">Ĉi tiu aplikaĵo spuras kaj raportas vian agadon</string>
   <string name="antinonfreeadlist">Ĉi tiu aplikaĵo favoras neliberajn aldonaĵojn</string>
@@ -178,7 +177,6 @@
     <string name="local_repo_running">F-Droid estas preta por interŝanĝo</string>
     <string name="touch_to_configure_local_repo">Tuŝu por rigardi detalojn kaj permesi aliajn interŝanĝi viajn aplikaĵojn.</string>
     <string name="writing_index_jar">Konservanta subskribitan indeksan dosieron (index.jar)…</string>
-    <string name="failed_to_create_index">Malsukcesis krei deponejan indekson!</string>
     <string name="proxy">Prokurilo</string>
     <string name="enable_proxy_title">Aktivigi HTTP prokurilon</string>
     <string name="enable_proxy_summary">Uzas HTTP prokurilon por ĉiuj retkonektoj</string>

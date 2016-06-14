@@ -76,7 +76,6 @@
   <string name="menu_donate">Донирај</string>
   <string name="details_installed">Инсталирано издање %s</string>
   <string name="details_notinstalled">Није инсталирано</string>
-  <string name="corrupt_download">Преузети фајл је оштећен.</string>
   <string name="antiadslist">Ова апликација садржи огласе</string>
   <string name="antitracklist">Ова апликација прати и пријављује ваше активности</string>
   <string name="antinonfreeadlist">Ова апликација предлаже неслободне додатке</string>
@@ -103,7 +102,6 @@
   <string name="deleting_repo">Бришем тренутну ризницу…</string>
   <string name="adding_apks_format">Додајем %s у ризницу…</string>
   <string name="writing_index_jar">Уписујем потписани фајл садржаја (index.jar)…</string>
-  <string name="failed_to_create_index">Нисам успео да створим садржај ризнице!</string>
   <string name="linking_apks">Повезујем АПК фајлове са ризницом…</string>
   <string name="copying_icons">Копирам иконе апликација у ризницу…</string>
   <string name="icon">Икона</string>

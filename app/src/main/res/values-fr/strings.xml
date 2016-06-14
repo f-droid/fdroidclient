@@ -77,7 +77,6 @@
   <string name="menu_donate">Faire un don</string>
   <string name="details_installed">Version %s installée</string>
   <string name="details_notinstalled">Non installée</string>
-  <string name="corrupt_download">Le fichier téléchargé est corrompu.</string>
   <string name="antiadslist">Cette appli contient des publicités</string>
   <string name="antitracklist">Cette appli piste et rapporte votre activité</string>
   <string name="antinonfreeadlist">Cette appli promeut des extensions qui ne sont pas libres/open source</string>
@@ -104,7 +103,6 @@
   <string name="deleting_repo">Supprimer le dépôt actuel…</string>
   <string name="adding_apks_format">Ajout de %s au dépôt…</string>
   <string name="writing_index_jar">Écriture d\'un fichier d\'index signé (index.jar)…</string>
-  <string name="failed_to_create_index">Échec de la création d\'un index de dépôt !</string>
   <string name="linking_apks">Création de liens pour les APKs dans le dépôt…</string>
   <string name="copying_icons">Copie des icônes des applis dans le dépôt…</string>
   <string name="icon">Icône</string>

@@ -77,7 +77,6 @@
   <string name="menu_donate">Donar</string>
   <string name="details_installed">Versión %s instalada</string>
   <string name="details_notinstalled">No instalado</string>
-  <string name="corrupt_download">El fichero descargado está corrupto.</string>
   <string name="antiadslist">Esta aplicación contiene publicidad</string>
   <string name="antitracklist">Esta aplicación rastrea e informa de tu actividad</string>
   <string name="antinonfreeadlist">Esta aplicación promueve complementos no libres</string>
@@ -104,7 +103,6 @@
   <string name="deleting_repo">Borrando repositorio actual…</string>
   <string name="adding_apks_format">Agregando %s al repositorio…</string>
   <string name="writing_index_jar">Escribiendo archivo firmado de índice (index.jar)…</string>
-  <string name="failed_to_create_index">¡Fallo al crear el índice de repositorios!</string>
   <string name="linking_apks">Enlazando APKs en el repositorio…</string>
   <string name="copying_icons">Copiando iconos de aplicaciones en el repositorio…</string>
   <string name="icon">Icono</string>

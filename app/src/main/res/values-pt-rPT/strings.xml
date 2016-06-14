@@ -107,8 +107,6 @@
 
     <string name="details_installed">Versão %s instalada</string>
     <string name="details_notinstalled">Não instaladas</string>
-    <string name="corrupt_download">O ficheiro descarregado está danificado.</string>
-
     <string name="antiadslist">Esta aplicação contém publicidade</string>
     <string name="antitracklist">Esta aplicação monitoriza e reporta a sua atividade</string>
     <string name="antinonfreeadlist">Esta aplicação promove extras não livres</string>
@@ -137,7 +135,6 @@
     <string name="deleting_repo">A apagar repositório local…</string>
     <string name="adding_apks_format">A adicionar %s ao repositório…</string>
     <string name="writing_index_jar">A escrever ficheiro de índice (index.jar)…</string>
-    <string name="failed_to_create_index">Falha ao criar o índice do repositório!</string>
     <string name="linking_apks">A associar as APK com o repositório…</string>
     <string name="copying_icons">A copiar ícones para o repositório…</string>
     <string name="icon">Ícone</string>

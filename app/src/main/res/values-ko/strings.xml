@@ -77,7 +77,6 @@
   <string name="menu_donate">기부</string>
   <string name="details_installed">%s 버전이 설치됨</string>
   <string name="details_notinstalled">설치되지 않음</string>
-  <string name="corrupt_download">다운로드된 파일이 손상되었습니다.</string>
   <string name="antiadslist">이 응용프로그램은 광고가 포함되어 있습니다.</string>
   <string name="antitracklist">이 응용프로그램은 활동을 추적하여 리포트를 보고합니다.</string>
   <string name="antinonfreeadlist">이 앱은 자유롭지 않은 애드온을 권장하고 있습니다</string>
@@ -104,7 +103,6 @@
   <string name="deleting_repo">현재의 저장소 삭제중…</string>
   <string name="adding_apks_format">%s 을(를) 저장소에 추가하는 중…</string>
   <string name="writing_index_jar">서명된 색인 파일(index.jar) 작성 중…</string>
-  <string name="failed_to_create_index">저장소 색인을 만드는 데 실패했습니다!</string>
   <string name="linking_apks">APK 파일을 저장소에 연결하는 중…</string>
   <string name="copying_icons">앱 아이콘을 저장소에 복사하는 중…</string>
   <string name="icon">아이콘</string>

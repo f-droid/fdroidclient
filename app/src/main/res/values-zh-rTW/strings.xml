@@ -101,8 +101,6 @@
 
     <string name="details_installed">已安裝版本 %s</string>
     <string name="details_notinstalled">未安裝</string>
-    <string name="corrupt_download">下載的檔案已損毀。</string>
-
     <string name="antiadslist">此應用程式含有廣告</string>
     <string name="antitracklist">此應用程式會跟蹤及彙報您的行為</string>
     <string name="antinonfreeadlist">此應用程式推廣非自由的附加元件</string>
@@ -174,7 +172,6 @@
     <string name="local_repo">本地儲存庫</string>
     <string name="deleting_repo">正在刪除目前的儲存庫…</string>
     <string name="adding_apks_format">正在加入 %s 到儲存庫…</string>
-    <string name="failed_to_create_index">建立儲存庫索引失敗！</string>
     <string name="copying_icons">正在複製應用程式圖示到儲存庫…</string>
     <string name="update_notification_title">正在更新儲存庫</string>
     <string name="repos_unchanged">所有儲存庫已更新至最新的版本</string>
