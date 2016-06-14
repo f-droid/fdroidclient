@@ -363,9 +363,10 @@ public class InstallManagerService extends Service {
      */
     private static Apk removeFromActive(String urlString) {
         Apk apk = ACTIVE_APKS.remove(urlString);
-        if (apk != null) {
-            ACTIVE_APPS.remove(apk.packageName);
+        if (apk == null) {
+            return new Apk();
         }
+        ACTIVE_APPS.remove(apk.packageName);
         return apk;
     }
 
