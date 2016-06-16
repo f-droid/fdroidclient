@@ -488,10 +488,10 @@ public class ApkProvider extends FDroidProvider {
         for (final String field : projection) {
             queryBuilder.addField(field);
         }
-        queryBuilder.addSelection(query.getSelection());
+        queryBuilder.addSelection(query);
         queryBuilder.addOrderBy(sortOrder);
 
-        Cursor cursor = db().rawQuery(queryBuilder.toString(), query.getArgs());
+        Cursor cursor = db().rawQuery(queryBuilder.toString(), queryBuilder.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }

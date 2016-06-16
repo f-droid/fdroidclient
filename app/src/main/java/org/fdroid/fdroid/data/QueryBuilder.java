@@ -1,5 +1,8 @@
 package org.fdroid.fdroid.data;
 
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +11,8 @@ abstract class QueryBuilder {
     private final List<String> fields = new ArrayList<>();
     private final StringBuilder tables = new StringBuilder(getRequiredTables());
     private String selection;
-    private String orderBy;
+    private String[] selectionArgs;
+    private final List<OrderClause> orderBys = new ArrayList<>();
 
     protected abstract String getRequiredTables();
 
@@ -58,12 +62,51 @@ abstract class QueryBuilder {
         fields.add(fieldBuilder.toString());
     }
 
-    public void addSelection(String selection) {
-        this.selection = selection;
+    public void addSelection(@Nullable QuerySelection selection) {
+        if (selection == null) {
+            this.selection = null;
+            this.selectionArgs = null;
+        } else {
+            this.selection = selection.getSelection();
+            this.selectionArgs = selection.getArgs();
+        }
     }
 
+    /**
+     * Add an order by, which includes an expression and optionally ASC or DESC afterward.
+     */
     public void addOrderBy(String orderBy) {
-        this.orderBy = orderBy;
+        if (orderBy != null) {
+            orderBys.add(new OrderClause(orderBy));
+        }
+    }
+
+    public void addOrderBy(@Nullable OrderClause orderClause) {
+        if (orderClause != null) {
+            orderBys.add(orderClause);
+        }
+    }
+
+    public String[] getArgs() {
+        List<String> args = new ArrayList<>();
+
+        if (selectionArgs != null) {
+            for (String arg : selectionArgs) {
+                args.add(arg);
+            }
+        }
+
+        for (OrderClause orderBy : orderBys) {
+            if (orderBy.getArgs() != null) {
+                for (String arg : orderBy.getArgs()) {
+                    args.add(arg);
+                }
+            }
+        }
+
+        String[] strings = new String[args.size()];
+        args.toArray(strings);
+        return strings;
     }
 
     protected final void leftJoin(String table, String alias, String condition) {
@@ -94,14 +137,7 @@ abstract class QueryBuilder {
     }
 
     private String fieldsSql() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < fields.size(); i++) {
-            if (i > 0) {
-                sb.append(',');
-            }
-            sb.append(fields.get(i));
-        }
-        return sb.toString();
+        return TextUtils.join(", ", fields);
     }
 
     private String whereSql() {
@@ -109,7 +145,11 @@ abstract class QueryBuilder {
     }
 
     private String orderBySql() {
-        return orderBy != null ? " ORDER BY " + orderBy : "";
+        if (orderBys.size() == 0) {
+            return "";
+        } else {
+            return " ORDER BY " + TextUtils.join(", ", orderBys);
+        }
     }
 
     private String groupBySql() {
