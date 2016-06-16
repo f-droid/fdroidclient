@@ -2,6 +2,8 @@
 <resources>
 
     <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorButtonNormal">@color/swap_bright_blue</item>
+        <item name="android:actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>
         <item name="android:actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
     </style>
 
