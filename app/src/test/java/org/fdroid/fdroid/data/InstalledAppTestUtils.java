@@ -21,7 +21,7 @@ public class InstalledAppTestUtils {
         info.applicationInfo.publicSourceDir = "/tmp/mock-location";
         String hashType = "sha256";
         String hash = "00112233445566778899aabbccddeeff";
-        InstalledAppProviderService.insertAppIntoDb(context, packageName, info, hashType, hash);
+        InstalledAppProviderService.insertAppIntoDb(context, info, hashType, hash);
     }
 
 }

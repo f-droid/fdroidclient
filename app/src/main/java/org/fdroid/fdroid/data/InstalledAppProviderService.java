@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Process;
+import android.support.annotation.Nullable;
 
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;
@@ -32,7 +33,7 @@ import rx.subjects.PublishSubject;
  * Since {@link android.content.ContentProvider#insert(Uri, ContentValues)} does not check
  * for duplicate records, it is entirely the job of this service to ensure that it is not
  * inserting duplicate versions of the same installed APK. On that note,
- * {@link #insertAppIntoDb(Context, String, PackageInfo)} and
+ * {@link #insertAppIntoDb(Context, PackageInfo, String, String)} and
  * {@link #deleteAppFromDb(Context, String)} are both static methods to enable easy testing
  * of this stuff.
  */
@@ -156,14 +157,41 @@ public class InstalledAppProviderService extends IntentService {
             String packageName = intent.getData().getSchemeSpecificPart();
             final String action = intent.getAction();
             if (ACTION_INSERT.equals(action)) {
-                PackageInfo packageInfo = intent.getParcelableExtra(EXTRA_PACKAGE_INFO);
-                String hashType = "sha256";
-                String hash = Utils.getBinaryHash(new File(packageInfo.applicationInfo.publicSourceDir), hashType);
-                insertAppIntoDb(this, packageName, packageInfo, hashType, hash);
+                PackageInfo packageInfo = getPackageInfo(intent, packageName);
+                if (packageInfo != null) {
+                    String hashType = "sha256";
+                    String hash = Utils.getBinaryHash(new File(packageInfo.applicationInfo.publicSourceDir), hashType);
+                    insertAppIntoDb(this, packageInfo, hashType, hash);
+                }
             } else if (ACTION_DELETE.equals(action)) {
                 deleteAppFromDb(this, packageName);
             }
             notifyEvents.onNext(null);
+        }
+    }
+
+    /**
+     * This class will either have received an intent from the {@link InstalledAppProviderService}
+     * itself, while iterating over installed apps, or from a {@link Intent#ACTION_PACKAGE_ADDED}
+     * broadcast. In the first case, it will already have a {@link PackageInfo} for us. However if
+     * it is from the later case, we'll need to query the {@link PackageManager} ourselves to get
+     * this info.
+     *
+     * Can still return null, as there is potentially race conditions to do with uninstalling apps
+     * such that querying the {@link PackageManager} for a given package may throw an exception.
+     */
+    @Nullable
+    private PackageInfo getPackageInfo(Intent intent, String packageName) {
+        PackageInfo packageInfo = intent.getParcelableExtra(EXTRA_PACKAGE_INFO);
+        if (packageInfo != null) {
+            return packageInfo;
+        }
+
+        try {
+            return getPackageManager().getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -173,17 +201,7 @@ public class InstalledAppProviderService extends IntentService {
      *             hashing method will try to hash a non-existent .apk file and try to insert NULL
      *             into the database when under test.
      */
-    static void insertAppIntoDb(Context context, String packageName, PackageInfo packageInfo, String hashType, String hash) {
-        if (packageInfo == null) {
-            try {
-                packageInfo = context.getPackageManager().getPackageInfo(packageName,
-                        PackageManager.GET_SIGNATURES);
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-                return;
-            }
-        }
-
+    static void insertAppIntoDb(Context context, PackageInfo packageInfo, String hashType, String hash) {
         Uri uri = InstalledAppProvider.getContentUri();
         ContentValues contentValues = new ContentValues();
         contentValues.put(InstalledAppProvider.DataColumns.PACKAGE_NAME, packageInfo.packageName);
