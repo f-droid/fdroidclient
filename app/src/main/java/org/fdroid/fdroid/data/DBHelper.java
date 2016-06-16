@@ -566,7 +566,7 @@ class DBHelper extends SQLiteOpenHelper {
      * table for the first time.
      */
     private void recreateInstalledAppTable(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 57) {
+        if (oldVersion >= 56) {
             return;
         }
         Utils.debugLog(TAG, "(re)creating 'installed app' database table.");

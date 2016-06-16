@@ -459,11 +459,17 @@ public class InstallManagerService extends Service {
         return ACTIVE_APPS.get(getApkFromActive(urlString).packageName);
     }
 
+    /**
+     * Remove the URL from this service, and return the {@link Apk}. This returns
+     * an empty {@code Apk} instance if we get a null one so the code doesn't need
+     * lots of null guards.
+     */
     private static Apk removeFromActive(String urlString) {
         Apk apk = ACTIVE_APKS.remove(urlString);
-        if (apk != null) {
-            ACTIVE_APPS.remove(apk.packageName);
+        if (apk == null) {
+            return new Apk();
         }
+        ACTIVE_APPS.remove(apk.packageName);
         return apk;
     }
 
