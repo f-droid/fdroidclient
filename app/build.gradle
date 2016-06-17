@@ -41,8 +41,7 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 
-    // 3.1-rc1 is required because it is the first to implements API v23.
-    testCompile "org.robolectric:robolectric:3.1-rc1"
+    testCompile "org.robolectric:robolectric:3.1"
 
     testCompile "org.mockito:mockito-core:1.10.19"
 
