@@ -30,7 +30,7 @@ dependencies {
     compile 'cc.mvdan.accesspoint:library:0.2.0'
     compile 'info.guardianproject.netcipher:netcipher:1.2.1'
     compile 'commons-io:commons-io:2.5'
-    compile 'commons-net:commons-net:3.4'
+    compile 'commons-net:commons-net:3.5'
     compile 'org.openhab.jmdns:jmdns:3.4.2'
     compile('ch.acra:acra:4.8.5') {
         exclude module: 'support-v4'
@@ -93,7 +93,7 @@ if (!hasProperty('sourceDeps')) {
             'eu.chainfire:libsuperuser:018344ff19ee94d252c14b4a503ee8b519184db473a5af83513f5837c413b128',
             'cc.mvdan.accesspoint:library:0837b38adb48b66bb1385adb6ade8ecce7002ad815c55abf13517c82193458ea',
             'commons-io:commons-io:a10418348d234968600ccb1d988efcbbd08716e1d96936ccc1880e7d22513474',
-            'commons-net:commons-net:38cf2eca826b8bcdb236fc1f2e79e0c6dd8e7e0f5c44a3b8e839a1065b2fbe2e',
+            'commons-net:commons-net:c25b0da668b3c5649f002d504def22d1b4cb30d206f05428d2fe168fa1a901c2',
             'info.guardianproject.netcipher:netcipher:611ec5bde9d799fd57e1efec5c375f9f460de2cdda98918541decc9a7d02f2ad',
             'org.openhab.jmdns:jmdns:7a4b34b5606bbd2aff7fdfe629edcb0416fccd367fb59a099f210b9aba4f0bce',
             'com.madgag.spongycastle:pkix:6aba9b2210907a3d46dd3dcac782bb3424185290468d102d5207ebdc9796a905',
