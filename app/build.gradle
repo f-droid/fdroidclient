@@ -185,7 +185,7 @@ android {
 
     lintOptions {
         checkReleaseBuilds false
-        abortOnError false
+        abortOnError true
 
         htmlReport true
         xmlReport false
@@ -200,6 +200,9 @@ android {
 
         // Like supportsRtl or parentActivityName. They are on purpose.
         disable 'UnusedAttribute'
+
+        // to make CI fail on errors until this is fixed https://github.com/rtyley/spongycastle/issues/7
+        disable 'InvalidPackage'
     }
 
     packagingOptions {
