@@ -79,13 +79,11 @@ public class DefaultInstallerActivity extends FragmentActivity {
             throw new RuntimeException("Set the data uri to point to an apk location!");
         }
         // https://code.google.com/p/android/issues/detail?id=205827
-        // TODO: re-enable after Android N release
-        //if ((Build.VERSION.SDK_INT <= Build.VERSION_CODES.M)
-        //        && (!uri.getScheme().equals("file"))) {
-        //    throw new RuntimeException("PackageInstaller <= Android 6 only supports file scheme!");
-        //}
-        // TODO: replace with proper version check after Android N release
-        if (("N".equals(Build.VERSION.CODENAME))
+        if ((Build.VERSION.SDK_INT < 24) // TODO: Use Build.VERSION_CODES.N
+                && (!uri.getScheme().equals("file"))) {
+            throw new RuntimeException("PackageInstaller < Android N only supports file scheme!");
+        }
+        if ((Build.VERSION.SDK_INT >= 24) // TODO: Use Build.VERSION_CODES.N
                 && (!uri.getScheme().equals("content"))) {
             throw new RuntimeException("PackageInstaller >= Android N only supports content scheme!");
         }
@@ -105,26 +103,13 @@ public class DefaultInstallerActivity extends FragmentActivity {
             intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
             intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
             intent.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
-        } else if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
+        } else if (Build.VERSION.SDK_INT < 24) { // TODO: Use Build.VERSION_CODES.N
             intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
             intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
             intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
         } else { // Android N
             intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
-            // EXTRA_RETURN_RESULT throws a RuntimeException on N
-            // https://gitlab.com/fdroid/fdroidclient/issues/631
-            //intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-            // grant READ permission for this content Uri
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        }
-
-        // TODO: remove whole block after Android N release
-        if ("N".equals(Build.VERSION.CODENAME)) {
-            intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
-            // EXTRA_RETURN_RESULT throws a RuntimeException on N
-            // https://gitlab.com/fdroid/fdroidclient/issues/631
-            intent.putExtra(Intent.EXTRA_RETURN_RESULT, false);
+            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
             intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
             // grant READ permission for this content Uri
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -184,13 +169,6 @@ public class DefaultInstallerActivity extends FragmentActivity {
                  * never executed on Androids < 4.0
                  */
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                    installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_COMPLETE);
-                    break;
-                }
-
-                // TODO: remove Android N hack after release
-                // Fallback on N for https://gitlab.com/fdroid/fdroidclient/issues/631
-                if ("N".equals(Build.VERSION.CODENAME)) {
                     installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_COMPLETE);
                     break;
                 }
