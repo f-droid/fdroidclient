@@ -57,11 +57,8 @@ import java.security.cert.CertificateEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Formatter;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Locale;
 
 public final class Utils {
@@ -402,87 +399,6 @@ public final class Utils {
         return new Locale(languageTag);
     }
 
-    public static final class CommaSeparatedList implements Iterable<String> {
-        private final String value;
-
-        private CommaSeparatedList(String list) {
-            value = list;
-        }
-
-        public static CommaSeparatedList make(List<String> list) {
-            if (list == null || list.isEmpty()) {
-                return null;
-            }
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < list.size(); i++) {
-                if (i > 0) {
-                    sb.append(',');
-                }
-                sb.append(list.get(i));
-            }
-            return new CommaSeparatedList(sb.toString());
-        }
-
-        public static CommaSeparatedList make(String[] list) {
-            if (list == null || list.length == 0) {
-                return null;
-            }
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < list.length; i++) {
-                if (i > 0) {
-                    sb.append(',');
-                }
-                sb.append(list[i]);
-            }
-            return new CommaSeparatedList(sb.toString());
-        }
-
-        @Nullable
-        public static CommaSeparatedList make(@Nullable String list) {
-            if (TextUtils.isEmpty(list)) {
-                return null;
-            }
-            return new CommaSeparatedList(list);
-        }
-
-        public static String str(CommaSeparatedList instance) {
-            return instance == null ? null : instance.toString();
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-
-        public String toPrettyString() {
-            return value.replaceAll(",", ", ");
-        }
-
-        @Override
-        public Iterator<String> iterator() {
-            TextUtils.SimpleStringSplitter splitter = new TextUtils.SimpleStringSplitter(',');
-            splitter.setString(value);
-            return splitter.iterator();
-        }
-
-        public ArrayList<String> toArrayList() {
-            ArrayList<String> out = new ArrayList<>();
-            for (String element : this) {
-                out.add(element);
-            }
-            return out;
-        }
-
-        public boolean contains(String v) {
-            for (final String s : this) {
-                if (s.equals(v)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-
     public static DisplayImageOptions.Builder getImageLoadingOptions() {
         return new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
@@ -558,6 +474,16 @@ public final class Utils {
             result = fallback;
         }
         return result;
+    }
+
+    @Nullable
+    public static String[] parseCommaSeparatedString(String values) {
+        return values == null || values.length() == 0 ? null : values.split(",");
+    }
+
+    @Nullable
+    public static String serializeCommaSeparatedString(@Nullable String[] values) {
+        return values == null || values.length == 0 ? null : TextUtils.join(",", values);
     }
 
     private static Date parseDateFormat(DateFormat format, String str, Date fallback) {

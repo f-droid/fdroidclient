@@ -266,7 +266,7 @@ public class AppDetails extends AppCompatActivity {
             }
 
             if (Preferences.get().expertMode() && apk.nativecode != null) {
-                holder.nativecode.setText(apk.nativecode.toString().replaceAll(",", " "));
+                holder.nativecode.setText(TextUtils.join(" ", apk.nativecode));
                 holder.nativecode.setVisibility(View.VISIBLE);
             } else {
                 holder.nativecode.setVisibility(View.GONE);
@@ -276,7 +276,7 @@ public class AppDetails extends AppCompatActivity {
                 holder.incompatibleReasons.setText(
                         getResources().getString(
                             R.string.requires_features,
-                            apk.incompatibleReasons.toPrettyString()));
+                            TextUtils.join(", ", apk.incompatibleReasons)));
                 holder.incompatibleReasons.setVisibility(View.VISIBLE);
             } else {
                 holder.incompatibleReasons.setVisibility(View.GONE);
@@ -1323,7 +1323,7 @@ public class AppDetails extends AppCompatActivity {
             // Categories TextView
             final TextView categories = (TextView) view.findViewById(R.id.categories);
             if (prefs.expertMode() && app.categories != null) {
-                categories.setText(app.categories.toString().replaceAll(",", ", "));
+                categories.setText(TextUtils.join(", ", app.categories));
             } else {
                 categories.setVisibility(View.GONE);
             }

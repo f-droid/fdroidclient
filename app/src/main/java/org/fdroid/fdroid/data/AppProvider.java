@@ -98,11 +98,9 @@ public class AppProvider extends FDroidProvider {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
                         final String categoriesString = cursor.getString(0);
-                        Utils.CommaSeparatedList categoriesList = Utils.CommaSeparatedList.make(categoriesString);
+                        String[] categoriesList = Utils.parseCommaSeparatedString(categoriesString);
                         if (categoriesList != null) {
-                            for (final String s : categoriesList) {
-                                categorySet.add(s);
-                            }
+                            Collections.addAll(categorySet, categoriesList);
                         }
                         cursor.moveToNext();
                     }
