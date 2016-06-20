@@ -208,7 +208,7 @@
     <string name="category_Writing">نوشتن</string>
 
     <string name="requesting_root_access_body">در حال درخواست دسترسی ریشه…</string>
-    <string name="empty_can_update_app_list">تمام کاره‌ها به‌روز هستند.\n\nتبریک! تمام کاره‌هایتن به روز هستند (یا مخزن‌هایتان منقضی شده‌اند).</string>
+    <string name="empty_can_update_app_list">تمام کاره‌ها به‌روز هستند.\n\nتبریک! تمام کاره‌هایتان به‌روز هستند (یا مخزن‌هایتان منقضی شده‌اند).</string>
 
     <string name="root_access_denied_title">دسترسی ریشه داده نشد</string>
     <string name="root_access_denied_body">یا افزارهٔ اندرویدیتان روت شده نیست، یا درخواست ریشه برای اف‌دروید را رد کردید.</string>
@@ -350,9 +350,9 @@
 
     <string name="uninstalling">درحال حذف نصب…</string>
 
-    <string name="installing">درحال نصب…</string>
+    <string name="installing">در حال نصب…</string>
     <string name="install_error_notify_title">خطای نصب %s</string>
-    <string name="uninstall_error_notify_title">%s خطا در حذف نصب</string>
+    <string name="uninstall_error_notify_title">خطا در حذف نصب %s</string>
 
 
     </resources>

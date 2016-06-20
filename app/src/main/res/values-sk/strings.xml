@@ -207,7 +207,7 @@
     <string name="uninstall_error_unknown">Neodinštalované vďaka neznámej chybe</string>
     <string name="system_install_post_success">Úspešne bolo nainštalované Oprávnené Rozšírenie F-Droidu</string>
     <string name="system_install_post_fail">Inštalácia Oprávneného Rozšírenia F-Droidu zlyhala</string>
-    <string name="system_install_installing">Inštalujem…</string>
+    <string name="system_install_installing">Inštalovanie…</string>
     <string name="system_install_uninstalling">Odinštalovávanie…</string>
     <string name="system_install_question">Chcete nainštalovať F-Droid ako systémovú aplikáciu?</string>
     <string name="system_install_warning_lollipop">Chcete nainštalovať privilegovaný F-Droid?\nTrvá to do 10s a zariadenie sa následne <b>reštartuje</b>.</string>
@@ -229,7 +229,7 @@
     <string name="swap_connecting">Pripájam</string>
     <string name="bluetooth_unavailable">Bluetooth nedostupný</string>
     <string name="loading">Načítavam…</string>
-    <string name="install_confirm">Chcete nainštalovať túto aplikáciu? Bude mať prístup k nasledujúcemu:</string>
+    <string name="install_confirm">vyžaduje prístup k</string>
     <string name="allPerms">Všetky</string>
     <string name="newPerms">Nové</string>
     <string name="uninstall_update_confirm">Chcete nahradiť túto aplikáciu továreňskou verziou?</string>
@@ -342,5 +342,12 @@
     <string name="keep_month">1 Mesiac</string>
     <string name="keep_year">1 Rok</string>
     <string name="keep_forever">Navždy</string>
+
+    <string name="install_error_notify_title">Chyba pri inštalácií %s</string>
+    <string name="uninstall_error_notify_title">Chyba pri odinštalovaní %s</string>
+
+
+    <string name="installing">Inštalácia…</string>
+    <string name="uninstalling">Odinštalovávanie…</string>
 
     </resources>

@@ -141,7 +141,7 @@
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">熱點</string>
 
-    <string name="category_All">所有</string>
+    <string name="category_All">全部</string>
     <string name="category_Whats_New">最新</string>
     <string name="category_Recently_Updated">最近更新</string>
     <string name="category_Development">開發</string>
@@ -175,7 +175,7 @@
     <string name="copying_icons">正在複製應用程式圖示到儲存庫…</string>
     <string name="update_notification_title">正在更新儲存庫</string>
     <string name="repos_unchanged">所有儲存庫已更新至最新的版本</string>
-        <string name="all_other_repos_fine">所有其他儲存庫都沒有出現問題。</string>
+        <string name="all_other_repos_fine">所有其它儲存庫都沒有出現錯誤。</string>
         <string name="global_error_updating_repos">更新時發生錯誤：%s</string>
     <string name="unverified">未驗證</string>
     <string name="repo_details">儲存庫</string>
@@ -201,7 +201,7 @@
     <string name="by_author">由</string>
     <string name="system_installer">特權擴充</string>
     <string name="category_Navigation">導航</string>
-    <string name="category_Connectivity">連接</string>
+    <string name="category_Connectivity">連線傳輸</string>
     <string name="theme">主題</string>
     <string name="category_Theming">主題</string>
     <string name="permissions">存取權</string>
@@ -248,7 +248,7 @@
     <string name="system_installer_on">使用 F-Droid 特權擴充以安裝、更新和移除套裝軟體</string>
     <string name="uninstall_system">更新/解除安裝特權擴充</string>
     <string name="uninstall_system_summary">開啟特權擴充的詳情畫面來更新/解除安裝</string>
-    <string name="local_repo_https">使用私密連接</string>
+    <string name="local_repo_https">使用私密連線</string>
     <string name="repo_error_empty_username">空的使用者名稱，憑證未改變</string>
 
     <string name="update_notification_more">+%1$d 更多…</string>
@@ -267,7 +267,7 @@
     <string name="next">下一步</string>
     <string name="useTor">使用 Tor</string>
     <string name="useTorSummary">為了增強私隱保護，強制下載流量通過 Tor</string>
-    <string name="enable_proxy_summary">為所有網路要求組態 HTTP Proxy</string>
+    <string name="enable_proxy_summary">為所有的網路要求組態 HTTP Proxy</string>
     <string name="proxy_host">Proxy 主機</string>
     <string name="proxy_host_summary">組態您的 proxy 主機名稱 (例如 127.0.0.1)</string>
     <string name="proxy_port">Proxy 的埠號</string>
@@ -319,7 +319,7 @@
     <string name="swap_not_visible_bluetooth">經由藍牙不可看見</string>
     <string name="swap_visible_wifi">經由 Wi-Fi 可看見</string>
     <string name="swap_not_visible_wifi">經由 Wi-Fi 不可看見</string>
-    <string name="swap_connecting">連接</string>
+    <string name="swap_connecting">連線</string>
     <string name="system_install_post_success_message">F-Droid 特權擴充已成功安裝。這允許 F-Droid 安裝、更新以及解除安裝其擁有的應用程式。</string>
     <string name="system_install_post_fail_message">F-Droid 特權擴充安裝失敗。此安裝方式並不支援所有發行的 Android 版本，請查閱 F-Droid 的 bug 追蹤以取得詳細資訊。</string>
     <string name="keep_forever">永遠</string>
@@ -358,5 +358,5 @@
     <string name="crash_dialog_text">出現意外的錯誤，迫使應用程序停止。您願意以電子郵件提供詳細資訊，以協助修復這個問題嗎？</string>
     <string name="swap_join_same_wifi_desc">要使用 Wi-Fi 進行交換，確保雙方是在同個一網路上。如果您不能存取同個網絡，你們之中的一個，可以建立一個 Wi-Fi 熱點。</string>
     <string name="swap_qr_isnt_for_swap">您掃描的 QR 碼看起來並不是一個交換碼。</string>
-    <string name="swap_connection_misc_error">連接到裝置時發生錯誤，似乎不能用它來進行交換。</string>
+    <string name="swap_connection_misc_error">連線到裝置時發生錯誤，似乎不能用它來進行交換。</string>
     </resources>
