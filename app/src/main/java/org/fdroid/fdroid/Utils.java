@@ -58,6 +58,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.Iterator;
@@ -402,84 +403,33 @@ public final class Utils {
         return new Locale(languageTag);
     }
 
-    public static final class CommaSeparatedList implements Iterable<String> {
-        private final String value;
-
-        private CommaSeparatedList(String list) {
-            value = list;
-        }
-
-        public static CommaSeparatedList make(List<String> list) {
+    public static final class CommaSeparatedList {
+        @Nullable
+        public static String[] make(List<String> list) {
             if (list == null || list.isEmpty()) {
                 return null;
             }
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < list.size(); i++) {
-                if (i > 0) {
-                    sb.append(',');
-                }
-                sb.append(list.get(i));
-            }
-            return new CommaSeparatedList(sb.toString());
-        }
-
-        public static CommaSeparatedList make(String[] list) {
-            if (list == null || list.length == 0) {
-                return null;
-            }
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < list.length; i++) {
-                if (i > 0) {
-                    sb.append(',');
-                }
-                sb.append(list[i]);
-            }
-            return new CommaSeparatedList(sb.toString());
+            return list.toArray(new String[list.size()]);
         }
 
         @Nullable
-        public static CommaSeparatedList make(@Nullable String list) {
+        public static String[] make(String[] list) {
+            if (list == null || list.length == 0) {
+                return null;
+            }
+            return list;
+        }
+
+        @Nullable
+        public static String[] make(@Nullable String list) {
             if (TextUtils.isEmpty(list)) {
                 return null;
             }
-            return new CommaSeparatedList(list);
+            return list.split(",");
         }
 
-        public static String str(CommaSeparatedList instance) {
-            return instance == null ? null : instance.toString();
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-
-        public String toPrettyString() {
-            return value.replaceAll(",", ", ");
-        }
-
-        @Override
-        public Iterator<String> iterator() {
-            TextUtils.SimpleStringSplitter splitter = new TextUtils.SimpleStringSplitter(',');
-            splitter.setString(value);
-            return splitter.iterator();
-        }
-
-        public ArrayList<String> toArrayList() {
-            ArrayList<String> out = new ArrayList<>();
-            for (String element : this) {
-                out.add(element);
-            }
-            return out;
-        }
-
-        public boolean contains(String v) {
-            for (final String s : this) {
-                if (s.equals(v)) {
-                    return true;
-                }
-            }
-            return false;
+        public static String str(@Nullable String[] values) {
+            return values == null ? null : TextUtils.join(",", values);
         }
     }
 

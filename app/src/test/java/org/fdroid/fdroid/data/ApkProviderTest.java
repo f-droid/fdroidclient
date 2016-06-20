@@ -289,7 +289,8 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertEquals(0, apk.repoVersion);
 
         // But this should have saved correctly...
-        assertEquals("Some features", apk.features.toString());
+        assertEquals(1, apk.features.length);
+        assertEquals("Some features", apk.features[0]);
         assertEquals("com.example.com", apk.packageName);
         assertEquals(1, apk.versionCode);
         assertEquals(10, apk.repo);
@@ -435,7 +436,10 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertNotNull(updatedApk.added);
         assertNotNull(updatedApk.hashType);
 
-        assertEquals("one,two,three", updatedApk.features.toString());
+        assertEquals(3, updatedApk.features.length);
+        assertEquals("one", updatedApk.features[0]);
+        assertEquals("two", updatedApk.features[1]);
+        assertEquals("three", updatedApk.features[2]);
         assertEquals(new Date(dateTimestamp).getYear(), updatedApk.added.getYear());
         assertEquals(new Date(dateTimestamp).getMonth(), updatedApk.added.getMonth());
         assertEquals(new Date(dateTimestamp).getDay(), updatedApk.added.getDay());

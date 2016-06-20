@@ -6,6 +6,7 @@ import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 
 import org.fdroid.fdroid.compat.SupportedArchitectures;
 import org.fdroid.fdroid.data.Apk;
@@ -69,13 +70,16 @@ public class CompatibilityChecker {
         cpuAbisDesc = builder.toString();
     }
 
-    private boolean compatibleApi(Utils.CommaSeparatedList nativecode) {
+    private boolean compatibleApi(@Nullable String[] nativecode) {
         if (nativecode == null) {
             return true;
         }
+
         for (final String cpuAbi : cpuAbis) {
-            if (nativecode.contains(cpuAbi)) {
-                return true;
+            for (String code : nativecode) {
+                if (code.equals(cpuAbi)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -108,9 +112,7 @@ public class CompatibilityChecker {
             }
         }
         if (!compatibleApi(apk.nativecode)) {
-            for (final String code : apk.nativecode) {
-                incompatibleReasons.add(code);
-            }
+            Collections.addAll(incompatibleReasons, apk.nativecode);
             Utils.debugLog(TAG, apk.packageName + " vercode " + apk.versionCode
                     + " only supports " + Utils.CommaSeparatedList.str(apk.nativecode)
                     + " while your architectures are " + cpuAbisDesc);

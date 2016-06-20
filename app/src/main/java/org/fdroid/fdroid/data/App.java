@@ -88,17 +88,17 @@ public class App extends ValueObject implements Comparable<App> {
     /**
      * List of categories (as defined in the metadata documentation) or null if there aren't any.
      */
-    public Utils.CommaSeparatedList categories;
+    public String[] categories;
 
     /**
      * List of anti-features (as defined in the metadata documentation) or null if there aren't any.
      */
-    public Utils.CommaSeparatedList antiFeatures;
+    public String[] antiFeatures;
 
     /**
      * List of special requirements (such as root privileges) or null if there aren't any.
      */
-    public Utils.CommaSeparatedList requirements;
+    public String[] requirements;
 
     /**
      * True if all updates for this app are to be ignored

@@ -29,11 +29,11 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     public int targetSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown
     public int maxSdkVersion = SDK_VERSION_MAX_VALUE; // "infinity" if not set
     public Date added;
-    public Utils.CommaSeparatedList permissions; // null if empty or
+    public String[] permissions; // null if empty or
     // unknown
-    public Utils.CommaSeparatedList features; // null if empty or unknown
+    public String[] features; // null if empty or unknown
 
-    public Utils.CommaSeparatedList nativecode; // null if empty or unknown
+    public String[] nativecode; // null if empty or unknown
 
     /**
      * ID (md5 sum of public key) of signature. Might be null, in the
@@ -58,7 +58,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     public int repoVersion;
     public String repoAddress;
-    public Utils.CommaSeparatedList incompatibleReasons;
+    public String[] incompatibleReasons;
 
     public Apk() {
     }

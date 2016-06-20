@@ -672,9 +672,7 @@ public class RepoXMLHandlerTest {
                     assertNull(app.antiFeatures);
                 } else {
                     List<String> actualAntiFeatures = new ArrayList<>();
-                    for (String antiFeature : app.antiFeatures) {
-                        actualAntiFeatures.add(antiFeature);
-                    }
+                    Collections.addAll(actualAntiFeatures, app.antiFeatures);
                     assertTrue(actualAntiFeatures.containsAll(antiFeatures));
                     assertTrue(antiFeatures.containsAll(actualAntiFeatures));
                 }
