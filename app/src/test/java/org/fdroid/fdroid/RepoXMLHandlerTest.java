@@ -21,7 +21,11 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -30,6 +34,8 @@ import javax.xml.parsers.SAXParserFactory;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 @Config(constants = BuildConfig.class)
@@ -112,6 +118,65 @@ public class RepoXMLHandlerTest {
         expectedRepo.timestamp = 1412746769;
         RepoDetails actualDetails = getFromFile("largeRepo.xml");
         handlerTestSuite(expectedRepo, actualDetails, 1211, 2381, 14, 12);
+
+        // Generated using something like the following:
+        // sed 's,<application,\n<application,g' largeRepo.xml | grep "antifeatures" | sed 's,.*id="\(.*\)".*<antifeatures>\(.*\)</antifeatures>.*,\1 \2,p' | sort | uniq
+        Map<String, List<String>> expectedAntiFeatures = new HashMap<>();
+        expectedAntiFeatures.put("org.fdroid.fdroid", new ArrayList<String>());
+        expectedAntiFeatures.put("org.adblockplus.android", Arrays.asList("Tracking", "Ads"));
+        expectedAntiFeatures.put("org.microg.nlp.backend.apple", Arrays.asList("Tracking", "NonFreeNet"));
+        expectedAntiFeatures.put("com.ds.avare", Collections.singletonList("NonFreeDep"));
+        expectedAntiFeatures.put("com.miracleas.bitcoin_spinner", Collections.singletonList("NonFreeAdd"));
+        expectedAntiFeatures.put("de.Cherubin7th.blackscreenpresentationremote", Collections.singletonList("Ads"));
+        expectedAntiFeatures.put("budo.budoist", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("no.rkkc.bysykkel", Collections.singletonList("NonFreeDep"));
+        expectedAntiFeatures.put("com.jadn.cc", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("org.atai.TessUI", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("org.zephyrsoft.checknetwork", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("de.bashtian.dashclocksunrise", Collections.singletonList("NonFreeDep"));
+        expectedAntiFeatures.put("org.geometerplus.zlibrary.ui.android", Collections.singletonList("NonFreeAdd"));
+        expectedAntiFeatures.put("org.mozilla.firefox", Arrays.asList("NonFreeAdd", "Tracking"));
+        expectedAntiFeatures.put("com.gmail.charleszq", Collections.singletonList("NonFreeDep"));
+        expectedAntiFeatures.put("it.andreascarpino.forvodroid", Arrays.asList("NonFreeNet", "NonFreeDep"));
+        expectedAntiFeatures.put("de.b0nk.fp1_epo_autoupdate", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("com.blogspot.tonyatkins.freespeech", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("com.frostwire.android", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("com.namsor.api.samples.gendre", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("com.github.mobile", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("com.cradle.iitc_mobile", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("com.matteopacini.katana", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("de.enaikoon.android.keypadmapper3", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("org.linphone", Collections.singletonList("NonFreeDep"));
+        expectedAntiFeatures.put("ch.rrelmy.android.locationcachemap", Collections.singletonList("NonFreeDep"));
+        expectedAntiFeatures.put("com.powerpoint45.lucidbrowser", Arrays.asList("Ads", "NonFreeDep"));
+        expectedAntiFeatures.put("org.mixare", Collections.singletonList("NonFreeDep"));
+        expectedAntiFeatures.put("apps.droidnotify", Collections.singletonList("NonFreeAdd"));
+        expectedAntiFeatures.put("com.numix.calculator", Collections.singletonList("NonFreeAdd"));
+        expectedAntiFeatures.put("com.numix.icons_circle", Collections.singletonList("NonFreeAdd"));
+        expectedAntiFeatures.put("com.gh4a", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("at.tomtasche.reader", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("de.uni_potsdam.hpi.openmensa", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("net.osmand.plus", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("byrne.utilities.pasteedroid", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("com.bwx.bequick", Collections.singletonList("NonFreeAdd"));
+        expectedAntiFeatures.put("be.geecko.QuickLyric", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("com.wanghaus.remembeer", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("cri.sanity", Collections.singletonList("Ads"));
+        expectedAntiFeatures.put("com.showmehills", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("com.akop.bach", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("org.dmfs.tasks", Collections.singletonList("NonFreeAdd"));
+        expectedAntiFeatures.put("org.telegram.messenger", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("com.danvelazco.fbwrapper", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("org.zephyrsoft.trackworktime", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("org.transdroid", Collections.singletonList("Tracking"));
+        expectedAntiFeatures.put("com.lonepulse.travisjr", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("com.twsitedapps.homemanager", Collections.singletonList("NonFreeAdd"));
+        expectedAntiFeatures.put("org.zeitgeist.movement", Collections.singletonList("NonFreeDep"));
+        expectedAntiFeatures.put("net.wigle.wigleandroid", Collections.singletonList("NonFreeNet"));
+        expectedAntiFeatures.put("org.nick.wwwjdic", Collections.singletonList("Tracking"));
+
+        checkAntiFeatures(actualDetails.apps, expectedAntiFeatures);
+
         /*
          * generated using: sed 's,<application,\n<application,g' largeRepo.xml
          * | sed -n 's,.*id="\(.[^"]*\)".*,"\1"\,,p'
@@ -597,6 +662,24 @@ public class RepoXMLHandlerTest {
                 "com.gimranov.zandy.app", "org.zirco", "org.smerty.zooborns", "org.qii.weiciyuan",
                 "com.googlecode.tcime",
         });
+    }
+
+    private void checkAntiFeatures(List<App> apps, Map<String, List<String>> expectedAntiFeatures) {
+        for (App app : apps) {
+            if (expectedAntiFeatures.containsKey(app.packageName)) {
+                List<String> antiFeatures = expectedAntiFeatures.get(app.packageName);
+                if (antiFeatures.size() == 0) {
+                    assertNull(app.antiFeatures);
+                } else {
+                    List<String> actualAntiFeatures = new ArrayList<>();
+                    for (String antiFeature : app.antiFeatures) {
+                        actualAntiFeatures.add(antiFeature);
+                    }
+                    assertTrue(actualAntiFeatures.containsAll(antiFeatures));
+                    assertTrue(antiFeatures.containsAll(actualAntiFeatures));
+                }
+            }
+        }
     }
 
     private void checkIncludedApps(List<App> actualApps, String[] expctedAppIds) {
