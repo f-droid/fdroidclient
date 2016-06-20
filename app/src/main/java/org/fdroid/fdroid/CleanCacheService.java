@@ -9,6 +9,7 @@ import android.os.Process;
 import android.os.SystemClock;
 
 import org.apache.commons.io.FileUtils;
+import org.fdroid.fdroid.installer.ApkCache;
 
 import java.io.File;
 
@@ -51,7 +52,7 @@ public class CleanCacheService extends IntentService {
             return;
         }
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
-        Utils.clearOldFiles(Utils.getApkCacheDir(this), Preferences.get().getKeepCacheTime());
+        ApkCache.clearApkCache(this);
         deleteStrayIndexFiles();
         deleteOldInstallerFiles();
     }

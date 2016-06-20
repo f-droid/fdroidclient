@@ -23,8 +23,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Apk;
 
 import java.io.File;
 
@@ -44,7 +46,7 @@ public class DefaultInstaller extends Installer {
     }
 
     @Override
-    protected void installPackage(Uri localApkUri, Uri downloadUri, String packageName) {
+    protected void installPackageInternal(Uri localApkUri, Uri downloadUri, Apk apk) {
         sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
 
         Utils.debugLog(TAG, "DefaultInstaller uri: " + localApkUri + " file: " + new File(localApkUri.getPath()));
@@ -85,5 +87,11 @@ public class DefaultInstaller extends Installer {
     @Override
     protected boolean isUnattended() {
         return false;
+    }
+
+    @Override
+    protected boolean supportsContentUri() {
+        // Android N only supports content Uris
+        return Build.VERSION.SDK_INT >= 24; // TODO: Use Build.VERSION_CODES.N
     }
 }

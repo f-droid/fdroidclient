@@ -23,6 +23,9 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Parcelable;
+
+import org.fdroid.fdroid.data.Apk;
 
 /**
  * This service handles the install process of apk files and
@@ -49,14 +52,17 @@ public class InstallerService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        String packageName = intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
-        Installer installer = InstallerFactory.create(this, packageName);
+        Parcelable apkParcel = intent.getParcelableExtra(Installer.EXTRA_APK);
+        Apk apk = apkParcel == null ? null : new Apk(apkParcel);
+
+        Installer installer = InstallerFactory.create(this, apk);
 
         if (ACTION_INSTALL.equals(intent.getAction())) {
             Uri uri = intent.getData();
             Uri downloadUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
-            installer.installPackage(uri, downloadUri, packageName);
+            installer.installPackage(uri, downloadUri, apk);
         } else if (ACTION_UNINSTALL.equals(intent.getAction())) {
+            String packageName = intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
             installer.uninstallPackage(packageName);
         }
     }
@@ -67,14 +73,14 @@ public class InstallerService extends IntentService {
      * @param context     this app's {@link Context}
      * @param localApkUri {@link Uri} pointing to (downloaded) local apk file
      * @param downloadUri {@link Uri} where the apk has been downloaded from
-     * @param packageName package name of the app that should be installed
+     * @param apk         apk object of app that should be installed
      */
-    public static void install(Context context, Uri localApkUri, Uri downloadUri, String packageName) {
+    public static void install(Context context, Uri localApkUri, Uri downloadUri, Apk apk) {
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(localApkUri);
         intent.putExtra(Installer.EXTRA_DOWNLOAD_URI, downloadUri);
-        intent.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
+        intent.putExtra(Installer.EXTRA_APK, apk.toContentValues());
         context.startService(intent);
     }
 

@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
 
 import java.io.File;
@@ -43,7 +44,7 @@ public class ExtensionInstaller extends Installer {
     }
 
     @Override
-    protected void installPackage(Uri localApkUri, Uri downloadUri, String packageName) {
+    protected void installPackageInternal(Uri localApkUri, Uri downloadUri, Apk apk) {
         // extension must be signed with the same public key as main F-Droid
         // NOTE: Disabled for debug builds to be able to test official extension from repo
         ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(context);
@@ -91,6 +92,11 @@ public class ExtensionInstaller extends Installer {
 
     @Override
     protected boolean isUnattended() {
+        return false;
+    }
+
+    @Override
+    protected boolean supportsContentUri() {
         return false;
     }
 }

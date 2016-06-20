@@ -15,7 +15,6 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
@@ -27,7 +26,6 @@ import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -162,12 +160,12 @@ public class InstallManagerService extends Service {
 
         registerDownloaderReceivers(urlString, builder);
 
-        File apkFilePath = Utils.getApkDownloadPath(this, intent.getData());
+        File apkFilePath = ApkCache.getApkDownloadPath(this, intent.getData());
         long apkFileSize = apkFilePath.length();
         if (!apkFilePath.exists() || apkFileSize < apk.size) {
             Utils.debugLog(TAG, "download " + urlString + " " + apkFilePath);
             DownloaderService.queue(this, urlString);
-        } else if (apkIsCached(apkFilePath, apk)) {
+        } else if (ApkCache.apkIsCached(apkFilePath, apk)) {
             Utils.debugLog(TAG, "skip download, we have it, straight to install " + urlString + " " + apkFilePath);
             sendBroadcast(intent.getData(), Downloader.ACTION_STARTED, apkFilePath);
             sendBroadcast(intent.getData(), Downloader.ACTION_COMPLETE, apkFilePath);
@@ -177,21 +175,6 @@ public class InstallManagerService extends Service {
             DownloaderService.queue(this, urlString);
         }
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
-    }
-
-    /**
-     * Verifies the size of the file on disk matches, and then hashes the file to compare with what
-     * we received from the signed repo (i.e. {@link Apk#hash} and {@link Apk#hashType}).
-     * Bails out if the file sizes don't match to prevent having to do the work of hashing the file.
-     */
-    private static boolean apkIsCached(File apkFile, Apk apkToCheck) {
-        try {
-            return apkFile.length() == apkToCheck.size &&
-                    ApkVerifier.verifyApkFile(apkFile, apkToCheck.hash, apkToCheck.hashType);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return false;
-        }
     }
 
     private void sendBroadcast(Uri uri, String action, File file) {
@@ -238,21 +221,7 @@ public class InstallManagerService extends Service {
 
                 Apk apk = ACTIVE_APKS.get(urlString);
 
-                Uri sanitizedUri;
-                try {
-                    ApkVerifier apkVerifier = new ApkVerifier(context, localApkUri, apk);
-                    apkVerifier.verifyApk();
-                    sanitizedUri = apkVerifier.getSafeUri();
-                } catch (ApkVerifier.ApkVerificationException e) {
-                    Log.e(TAG, "ApkVerifier failed", e);
-                    String title = String.format(
-                            getString(R.string.install_error_notify_title),
-                            apk.packageName);
-                    notifyError(urlString, title, e.getMessage());
-                    return;
-                }
-
-                InstallerService.install(context, sanitizedUri, downloadUri, apk.packageName);
+                InstallerService.install(context, localApkUri, downloadUri, apk);
             }
         };
         BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {

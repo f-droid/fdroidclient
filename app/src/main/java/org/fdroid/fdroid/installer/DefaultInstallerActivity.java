@@ -79,11 +79,11 @@ public class DefaultInstallerActivity extends FragmentActivity {
             throw new RuntimeException("Set the data uri to point to an apk location!");
         }
         // https://code.google.com/p/android/issues/detail?id=205827
-        if ((Build.VERSION.SDK_INT <= Build.VERSION_CODES.M)
+        if ((Build.VERSION.SDK_INT < 24) // TODO: Use Build.VERSION_CODES.N
                 && (!uri.getScheme().equals("file"))) {
-            throw new RuntimeException("PackageInstaller <= Android 6 only supports file scheme!");
+            throw new RuntimeException("PackageInstaller < Android N only supports file scheme!");
         }
-        if (("N".equals(Build.VERSION.CODENAME))
+        if ((Build.VERSION.SDK_INT >= 24) // TODO: Use Build.VERSION_CODES.N
                 && (!uri.getScheme().equals("content"))) {
             throw new RuntimeException("PackageInstaller >= Android N only supports content scheme!");
         }
@@ -91,26 +91,28 @@ public class DefaultInstallerActivity extends FragmentActivity {
         Intent intent = new Intent();
         intent.setData(uri);
 
+        // Note regarding EXTRA_NOT_UNKNOWN_SOURCE:
+        // works only when being installed as system-app
+        // https://code.google.com/p/android/issues/detail?id=42253
+
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             intent.setAction(Intent.ACTION_VIEW);
             intent.setType("application/vnd.android.package-archive");
-        } else {
+        } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
             intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
-
-            // EXTRA_RETURN_RESULT throws a RuntimeException on N
-            // https://gitlab.com/fdroid/fdroidclient/issues/631
-            if (!"N".equals(Build.VERSION.CODENAME)) {
-                intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-            }
-
-            // following extras only work when being installed as system-app
-            // https://code.google.com/p/android/issues/detail?id=42253
+            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
             intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-                // deprecated in Android 4.1
-                intent.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
-            }
+            intent.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
+        } else if (Build.VERSION.SDK_INT < 24) { // TODO: Use Build.VERSION_CODES.N
+            intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
+            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+        } else { // Android N
+            intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
+            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+            // grant READ permission for this content Uri
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         }
 
         try {
@@ -167,12 +169,6 @@ public class DefaultInstallerActivity extends FragmentActivity {
                  * never executed on Androids < 4.0
                  */
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                    installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_COMPLETE);
-                    break;
-                }
-
-                // Fallback on N for https://gitlab.com/fdroid/fdroidclient/issues/631
-                if ("N".equals(Build.VERSION.CODENAME)) {
                     installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_COMPLETE);
                     break;
                 }
