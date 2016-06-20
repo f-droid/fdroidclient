@@ -13,7 +13,8 @@ import java.io.IOException;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@Config(constants = BuildConfig.class)
+// TODO: Use sdk=24 when Robolectric supports this
+@Config(constants = BuildConfig.class, sdk = 23)
 @RunWith(RobolectricGradleTestRunner.class)
 public class ApkCacheTest {
 
