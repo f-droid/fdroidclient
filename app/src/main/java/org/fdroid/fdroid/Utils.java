@@ -57,12 +57,8 @@ import java.security.cert.CertificateEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Formatter;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Locale;
 
 public final class Utils {
@@ -403,36 +399,6 @@ public final class Utils {
         return new Locale(languageTag);
     }
 
-    public static final class CommaSeparatedList {
-        @Nullable
-        public static String[] make(List<String> list) {
-            if (list == null || list.isEmpty()) {
-                return null;
-            }
-            return list.toArray(new String[list.size()]);
-        }
-
-        @Nullable
-        public static String[] make(String[] list) {
-            if (list == null || list.length == 0) {
-                return null;
-            }
-            return list;
-        }
-
-        @Nullable
-        public static String[] make(@Nullable String list) {
-            if (TextUtils.isEmpty(list)) {
-                return null;
-            }
-            return list.split(",");
-        }
-
-        public static String str(@Nullable String[] values) {
-            return values == null ? null : TextUtils.join(",", values);
-        }
-    }
-
     public static DisplayImageOptions.Builder getImageLoadingOptions() {
         return new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
@@ -508,6 +474,16 @@ public final class Utils {
             result = fallback;
         }
         return result;
+    }
+
+    @Nullable
+    public static String[] parseCommaSeparatedString(String values) {
+        return values == null || values.length() == 0 ? null : values.split(",");
+    }
+
+    @Nullable
+    public static String serializeCommaSeparatedString(@Nullable String[] values) {
+        return values == null || values.length == 0 ? null : TextUtils.join(",", values);
     }
 
     private static Date parseDateFormat(DateFormat format, String str, Date fallback) {

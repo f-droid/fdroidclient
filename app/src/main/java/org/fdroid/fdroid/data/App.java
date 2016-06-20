@@ -221,13 +221,13 @@ public class App extends ValueObject implements Comparable<App> {
                     lastUpdated = Utils.parseDate(cursor.getString(i), null);
                     break;
                 case AppProvider.DataColumns.CATEGORIES:
-                    categories = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    categories = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case AppProvider.DataColumns.ANTI_FEATURES:
-                    antiFeatures = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    antiFeatures = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case AppProvider.DataColumns.REQUIREMENTS:
-                    requirements = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    requirements = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case AppProvider.DataColumns.IGNORE_ALLUPDATES:
                     ignoreAllUpdates = cursor.getInt(i) == 1;
@@ -334,7 +334,7 @@ public class App extends ValueObject implements Comparable<App> {
         apk.targetSdkVersion = minTargetMax[1];
         apk.maxSdkVersion = minTargetMax[2];
         apk.packageName = this.packageName;
-        apk.permissions = Utils.CommaSeparatedList.make(packageInfo.requestedPermissions);
+        apk.permissions = packageInfo.requestedPermissions;
         apk.apkName = apk.packageName + "_" + apk.versionCode + ".apk";
         apk.installedFile = apkFile;
 
@@ -348,15 +348,14 @@ public class App extends ValueObject implements Comparable<App> {
                 abis.add(matcher.group(1));
             }
         }
-        apk.nativecode = Utils.CommaSeparatedList.make(abis.toArray(new String[abis.size()]));
+        apk.nativecode = abis.toArray(new String[abis.size()]);
 
         final FeatureInfo[] features = packageInfo.reqFeatures;
         if (features != null && features.length > 0) {
-            final String[] featureNames = new String[features.length];
+            apk.features = new String[features.length];
             for (int i = 0; i < features.length; i++) {
-                featureNames[i] = features[i].name;
+                apk.features[i] = features[i].name;
             }
-            apk.features = Utils.CommaSeparatedList.make(featureNames);
         }
 
         final JarEntry aSignedEntry = (JarEntry) apkJar.getEntry("AndroidManifest.xml");
@@ -462,9 +461,9 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.SUGGESTED_VERSION_CODE, suggestedVersionCode);
         values.put(AppProvider.DataColumns.UPSTREAM_VERSION_NAME, upstreamVersionName);
         values.put(AppProvider.DataColumns.UPSTREAM_VERSION_CODE, upstreamVersionCode);
-        values.put(AppProvider.DataColumns.CATEGORIES, Utils.CommaSeparatedList.str(categories));
-        values.put(AppProvider.DataColumns.ANTI_FEATURES, Utils.CommaSeparatedList.str(antiFeatures));
-        values.put(AppProvider.DataColumns.REQUIREMENTS, Utils.CommaSeparatedList.str(requirements));
+        values.put(AppProvider.DataColumns.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
+        values.put(AppProvider.DataColumns.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
+        values.put(AppProvider.DataColumns.REQUIREMENTS, Utils.serializeCommaSeparatedString(requirements));
         values.put(AppProvider.DataColumns.IS_COMPATIBLE, compatible ? 1 : 0);
         values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, ignoreAllUpdates ? 1 : 0);
         values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, ignoreThisUpdate);

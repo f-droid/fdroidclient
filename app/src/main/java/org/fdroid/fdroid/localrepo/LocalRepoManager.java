@@ -454,7 +454,7 @@ public final class LocalRepoManager {
         private void tagFeatures(App app) throws IOException {
             serializer.startTag("", "features");
             if (app.installedApk.features != null) {
-                serializer.text(Utils.CommaSeparatedList.str(app.installedApk.features));
+                serializer.text(TextUtils.join(",", app.installedApk.features));
             }
             serializer.endTag("", "features");
         }
@@ -462,7 +462,7 @@ public final class LocalRepoManager {
         private void tagNativecode(App app) throws IOException {
             if (app.installedApk.nativecode != null) {
                 serializer.startTag("", "nativecode");
-                serializer.text(Utils.CommaSeparatedList.str(app.installedApk.nativecode));
+                serializer.text(TextUtils.join(",", app.installedApk.nativecode));
                 serializer.endTag("", "nativecode");
             }
         }

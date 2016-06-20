@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import org.fdroid.fdroid.compat.SupportedArchitectures;
 import org.fdroid.fdroid.data.Apk;
@@ -114,7 +115,7 @@ public class CompatibilityChecker {
         if (!compatibleApi(apk.nativecode)) {
             Collections.addAll(incompatibleReasons, apk.nativecode);
             Utils.debugLog(TAG, apk.packageName + " vercode " + apk.versionCode
-                    + " only supports " + Utils.CommaSeparatedList.str(apk.nativecode)
+                    + " only supports " + TextUtils.join(", ", apk.nativecode)
                     + " while your architectures are " + cpuAbisDesc);
         }
 

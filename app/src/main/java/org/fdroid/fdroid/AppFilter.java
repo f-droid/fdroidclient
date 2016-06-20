@@ -27,7 +27,7 @@ public class AppFilter {
     public boolean filter(App app) {
         if (app.requirements != null && !Preferences.get().filterAppsRequiringRoot()) {
             for (String requirement : app.requirements) {
-                if (requirement.equals("root")) {
+                if ("root".equals(requirement)) {
                     return true;
                 }
             }

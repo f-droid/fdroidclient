@@ -83,7 +83,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
                     added = Utils.parseDate(cursor.getString(i), null);
                     break;
                 case ApkProvider.DataColumns.FEATURES:
-                    features = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    features = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case ApkProvider.DataColumns.PACKAGE_NAME:
                     packageName = cursor.getString(i);
@@ -104,13 +104,13 @@ public class Apk extends ValueObject implements Comparable<Apk> {
                     apkName = cursor.getString(i);
                     break;
                 case ApkProvider.DataColumns.PERMISSIONS:
-                    permissions = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    permissions = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case ApkProvider.DataColumns.NATIVE_CODE:
-                    nativecode = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    nativecode = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case ApkProvider.DataColumns.INCOMPATIBLE_REASONS:
-                    incompatibleReasons = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    incompatibleReasons = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case ApkProvider.DataColumns.REPO_ID:
                     repo = cursor.getInt(i);
@@ -205,10 +205,10 @@ public class Apk extends ValueObject implements Comparable<Apk> {
         values.put(ApkProvider.DataColumns.TARGET_SDK_VERSION, targetSdkVersion);
         values.put(ApkProvider.DataColumns.MAX_SDK_VERSION, maxSdkVersion);
         values.put(ApkProvider.DataColumns.ADDED_DATE, Utils.formatDate(added, ""));
-        values.put(ApkProvider.DataColumns.PERMISSIONS, Utils.CommaSeparatedList.str(permissions));
-        values.put(ApkProvider.DataColumns.FEATURES, Utils.CommaSeparatedList.str(features));
-        values.put(ApkProvider.DataColumns.NATIVE_CODE, Utils.CommaSeparatedList.str(nativecode));
-        values.put(ApkProvider.DataColumns.INCOMPATIBLE_REASONS, Utils.CommaSeparatedList.str(incompatibleReasons));
+        values.put(ApkProvider.DataColumns.PERMISSIONS, Utils.serializeCommaSeparatedString(permissions));
+        values.put(ApkProvider.DataColumns.FEATURES, Utils.serializeCommaSeparatedString(features));
+        values.put(ApkProvider.DataColumns.NATIVE_CODE, Utils.serializeCommaSeparatedString(nativecode));
+        values.put(ApkProvider.DataColumns.INCOMPATIBLE_REASONS, Utils.serializeCommaSeparatedString(incompatibleReasons));
         values.put(ApkProvider.DataColumns.IS_COMPATIBLE, compatible ? 1 : 0);
         return values;
     }

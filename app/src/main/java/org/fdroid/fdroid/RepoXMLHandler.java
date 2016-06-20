@@ -142,13 +142,13 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapk.added = Utils.parseDate(str, null);
                     break;
                 case "permissions":
-                    curapk.permissions = Utils.CommaSeparatedList.make(str);
+                    curapk.permissions = Utils.parseCommaSeparatedString(str);
                     break;
                 case "features":
-                    curapk.features = Utils.CommaSeparatedList.make(str);
+                    curapk.features = Utils.parseCommaSeparatedString(str);
                     break;
                 case "nativecode":
-                    curapk.nativecode = Utils.CommaSeparatedList.make(str);
+                    curapk.nativecode = Utils.parseCommaSeparatedString(str);
                     break;
             }
         } else if (curapp != null) {
@@ -218,13 +218,13 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.upstreamVersionCode = Utils.parseInt(str, -1);
                     break;
                 case "categories":
-                    curapp.categories = Utils.CommaSeparatedList.make(str);
+                    curapp.categories = Utils.parseCommaSeparatedString(str);
                     break;
                 case "antifeatures":
-                    curapp.antiFeatures = Utils.CommaSeparatedList.make(str);
+                    curapp.antiFeatures = Utils.parseCommaSeparatedString(str);
                     break;
                 case "requirements":
-                    curapp.requirements = Utils.CommaSeparatedList.make(str);
+                    curapp.requirements = Utils.parseCommaSeparatedString(str);
                     break;
             }
         } else if ("description".equals(localName)) {
