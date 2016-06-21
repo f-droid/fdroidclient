@@ -194,15 +194,8 @@ android {
         // Our translations are crowd-sourced
         disable 'MissingTranslation'
 
-        // We have locale folders like "values-he" and "values-id" as symlinks
-        // since some devices ship deprecated locale codes
-        disable 'LocaleFolder'
-
-        // Like supportsRtl or parentActivityName. They are on purpose.
-        disable 'UnusedAttribute'
-
         // to make CI fail on errors until this is fixed https://github.com/rtyley/spongycastle/issues/7
-        disable 'InvalidPackage'
+        warning 'InvalidPackage'
     }
 
     packagingOptions {
