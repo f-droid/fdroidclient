@@ -75,8 +75,6 @@ public class UpdateService extends IntentService {
 
     private static final String STATE_LAST_UPDATED = "lastUpdateCheck";
 
-    private LocalBroadcastManager localBroadcastManager;
-
     private static final int NOTIFY_ID_UPDATING = 0;
     private static final int NOTIFY_ID_UPDATES_AVAILABLE = 1;
 
@@ -133,10 +131,6 @@ public class UpdateService extends IntentService {
     public void onCreate() {
         super.onCreate();
 
-        localBroadcastManager = LocalBroadcastManager.getInstance(this);
-        localBroadcastManager.registerReceiver(updateStatusReceiver,
-                new IntentFilter(LOCAL_ACTION_STATUS));
-
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationBuilder = new NotificationCompat.Builder(this)
@@ -155,15 +149,13 @@ public class UpdateService extends IntentService {
             pendingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             notificationBuilder.setContentIntent(PendingIntent.getActivity(this, 0, pendingIntent, PendingIntent.FLAG_UPDATE_CURRENT));
         }
-
-        notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         notificationManager.cancel(NOTIFY_ID_UPDATING);
-        localBroadcastManager.unregisterReceiver(updateStatusReceiver);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(updateStatusReceiver);
     }
 
     protected static void sendStatus(Context context, int statusCode) {
@@ -328,11 +320,14 @@ public class UpdateService extends IntentService {
                 return;
             }
 
+            notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
+            LocalBroadcastManager.getInstance(this).registerReceiver(updateStatusReceiver,
+                    new IntentFilter(LOCAL_ACTION_STATUS));
+
             // Grab some preliminary information, then we can release the
             // database while we do all the downloading, etc...
             List<Repo> repos = RepoProvider.Helper.all(this);
 
-            //List<Repo> swapRepos = new ArrayList<>();
             int unchangedRepos = 0;
             int updatedRepos = 0;
             int errorRepos = 0;
@@ -349,7 +344,6 @@ public class UpdateService extends IntentService {
                     continue;
                 }
                 if (!singleRepoUpdate && repo.isSwap) {
-                    //swapRepos.add(repo);
                     continue;
                 }
 
