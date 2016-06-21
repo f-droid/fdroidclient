@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.fdroid.fdroid"
     android:installLocation="auto"
-    android:versionCode="100050"
-    android:versionName="0.100"
+    android:versionCode="100150"
+    android:versionName="0.100.1"
     >
 
     <uses-sdk

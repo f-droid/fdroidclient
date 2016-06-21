@@ -1,3 +1,13 @@
+### 0.100.1 (2016-06-21)
+
+* Fix background crash after installing or updating apps
+
+* Fix crash if an app has a short description
+
+* Fix background crash in the wifi state change swap service
+
+* Fix crash if there is a problem listing the cached files to delete
+
 ### 0.100 (2016-06-07)
 
 * Ability to download apps in the background
