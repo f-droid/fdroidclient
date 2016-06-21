@@ -13,8 +13,8 @@ public class CrashReportActivity extends BaseCrashReportDialog implements Dialog
     private EditText comment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
 
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.crash_dialog_title)
