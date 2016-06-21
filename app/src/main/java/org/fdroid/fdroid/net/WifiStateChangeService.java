@@ -105,7 +105,12 @@ public class WifiStateChangeService extends IntentService {
                         if (dhcpInfo != null) {
                             String netmask = formatIpAddress(dhcpInfo.netmask);
                             if (!TextUtils.isEmpty(FDroidApp.ipAddressString) && netmask != null) {
-                                FDroidApp.subnetInfo = new SubnetUtils(FDroidApp.ipAddressString, netmask).getInfo();
+                                try {
+                                    FDroidApp.subnetInfo = new SubnetUtils(FDroidApp.ipAddressString, netmask).getInfo();
+                                } catch (IllegalArgumentException e) {
+                                    // catch this mystery error: "java.lang.IllegalArgumentException: Could not parse [null/24]"
+                                    e.printStackTrace();
+                                }
                             }
                         }
                     } else if (wifiState == WifiManager.WIFI_STATE_DISABLED
