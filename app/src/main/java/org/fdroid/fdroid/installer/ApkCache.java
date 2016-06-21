@@ -151,8 +151,12 @@ public class ApkCache {
         if (dir == null) {
             return;
         }
+        File[] files = dir.listFiles();
+        if (files == null) {
+            return;
+        }
         long olderThan = System.currentTimeMillis() - (secondsAgo * 1000L);
-        for (File f : dir.listFiles()) {
+        for (File f : files) {
             if (f.isDirectory()) {
                 clearOldFiles(f, olderThan);
                 f.delete();
