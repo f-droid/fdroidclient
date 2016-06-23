@@ -14,7 +14,12 @@ public interface Schema {
         String NAME = "fdroid_app";
 
         interface Cols {
-            String _ID = "rowid as _id"; // Required for CursorLoaders
+            /**
+             * Same as the primary key {@link Cols#ROW_ID}, except aliased as "_id" instead
+             * of "rowid". Required for {@link android.content.CursorLoader}s.
+             */
+            String _ID = "rowid as _id";
+            String ROW_ID = "rowid";
             String _COUNT = "_count";
             String IS_COMPATIBLE = "compatible";
             String PACKAGE_NAME = "id";
@@ -57,7 +62,7 @@ public interface Schema {
             }
 
             String[] ALL = {
-                    _ID, IS_COMPATIBLE, PACKAGE_NAME, NAME, SUMMARY, ICON, DESCRIPTION,
+                    _ID, ROW_ID, IS_COMPATIBLE, PACKAGE_NAME, NAME, SUMMARY, ICON, DESCRIPTION,
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
                     CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
@@ -82,6 +87,10 @@ public interface Schema {
         interface Cols extends BaseColumns {
             String _COUNT_DISTINCT = "countDistinct";
 
+            /**
+             * Foreign key to the {@link AppTable}.
+             */
+            String APP_ID          = "appId";
             String PACKAGE_NAME    = "id";
             String VERSION_NAME    = "version";
             String REPO_ID         = "repo";
@@ -101,14 +110,21 @@ public interface Schema {
             String ADDED_DATE      = "added";
             String IS_COMPATIBLE   = "compatible";
             String INCOMPATIBLE_REASONS = "incompatibleReasons";
-            String REPO_VERSION    = "repoVersion";
-            String REPO_ADDRESS    = "repoAddress";
+
+            interface Repo {
+                String VERSION = "repoVersion";
+                String ADDRESS = "repoAddress";
+            }
+
+            interface App {
+                String PACKAGE_NAME = "appPackageName";
+            }
 
             String[] ALL = {
-                    _ID, PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
+                    _ID, APP_ID, PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
                     SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
                     PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
-                    IS_COMPATIBLE, REPO_VERSION, REPO_ADDRESS, INCOMPATIBLE_REASONS,
+                    IS_COMPATIBLE, Repo.VERSION, Repo.ADDRESS, INCOMPATIBLE_REASONS,
             };
         }
     }

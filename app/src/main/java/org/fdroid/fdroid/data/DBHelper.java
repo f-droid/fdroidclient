@@ -47,6 +47,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_APK =
             "CREATE TABLE " + ApkTable.NAME + " ( "
             + ApkTable.Cols.PACKAGE_NAME + " text not null, "
+            + ApkTable.Cols.APP_ID + " text not null, "
             + ApkTable.Cols.VERSION_NAME + " text not null, "
             + ApkTable.Cols.REPO_ID + " integer not null, "
             + ApkTable.Cols.HASH + " text not null, "
@@ -114,7 +115,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 57;
+    private static final int DB_VERSION = 58;
 
     private final Context context;
 
@@ -315,7 +316,28 @@ class DBHelper extends SQLiteOpenHelper {
         requireTimestampInRepos(db, oldVersion);
         recreateInstalledAppTable(db, oldVersion);
         addTargetSdkVersionToApk(db, oldVersion);
+        migrateAppPrimaryKeyToRowId(db, oldVersion);
     }
+
+    private void migrateAppPrimaryKeyToRowId(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 58) {
+            final String alter = "ALTER TABLE " + ApkTable.NAME + " ADD COLUMN appId NUMERIC";
+            Log.i(TAG, "Adding appId foreign key to fdroid_apk.");
+            Utils.debugLog(TAG, alter);
+            db.execSQL(alter);
+
+            final String update =
+                "UPDATE " + ApkTable.NAME + " SET appId = ( " +
+                    "SELECT app.rowid " +
+                    "FROM " + ApkTable.NAME + " AS app " +
+                    "WHERE " + ApkTable.NAME + ".id = app.id " +
+                ")";
+            Log.i(TAG, "Updating foreign key from fdroid_apk to fdroid_app to use numeric foreign key.");
+            Utils.debugLog(TAG, update);
+            db.execSQL(update);
+        }
+    }
+
 
     /**
      * Migrate repo list to new structure. (No way to change primary
@@ -570,6 +592,7 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL("create index app_id on " + AppTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
         db.execSQL(CREATE_TABLE_APK);
         db.execSQL("create index apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");
+        db.execSQL("create index apk_appId on " + ApkTable.NAME + " (" + ApkTable.Cols.APP_ID + ");");
         db.execSQL("create index apk_id on " + ApkTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
     }
 

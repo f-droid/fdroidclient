@@ -39,6 +39,11 @@ public class TempApkProvider extends ApkProvider {
         return TABLE_TEMP_APK;
     }
 
+    @Override
+    protected String getAppTableName() {
+        return TempAppProvider.TABLE_TEMP_APP;
+    }
+
     public static String getAuthority() {
         return AUTHORITY + "." + PROVIDER_NAME;
     }
@@ -111,7 +116,7 @@ public class TempApkProvider extends ApkProvider {
         switch (MATCHER.match(uri)) {
             case CODE_REPO_APK:
                 List<String> pathSegments = uri.getPathSegments();
-                query = query.add(queryRepo(Long.parseLong(pathSegments.get(1)))).add(queryApks(pathSegments.get(2)));
+                query = query.add(queryRepo(Long.parseLong(pathSegments.get(1)), false)).add(queryApks(pathSegments.get(2), false));
                 break;
 
             default:

@@ -3,6 +3,7 @@ package org.fdroid.fdroid.data;
 import android.content.ContentResolver;
 import android.content.ContextWrapper;
 
+import org.fdroid.fdroid.TestUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.mockito.AdditionalAnswers;
@@ -20,13 +21,7 @@ public abstract class FDroidProviderTest {
     @Before
     public final void setupBase() {
         contentResolver = Shadows.shadowOf(RuntimeEnvironment.application.getContentResolver());
-        final ContentResolver resolver = mock(ContentResolver.class, AdditionalAnswers.delegatesTo(contentResolver));
-        context = new ContextWrapper(RuntimeEnvironment.application.getApplicationContext()) {
-            @Override
-            public ContentResolver getContentResolver() {
-                return resolver;
-            }
-        };
+        context = TestUtils.createContextWithContentResolver(contentResolver);
         ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
     }
 

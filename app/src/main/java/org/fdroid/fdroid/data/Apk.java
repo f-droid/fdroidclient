@@ -61,6 +61,11 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     public String repoAddress;
     public String[] incompatibleReasons;
 
+    /**
+     * The numeric primary key of the App table, which is used to join apks.
+     */
+    public long appId;
+
     public Apk() {
     }
 
@@ -74,6 +79,9 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
         for (int i = 0; i < cursor.getColumnCount(); i++) {
             switch (cursor.getColumnName(i)) {
+                case Cols.APP_ID:
+                    appId = cursor.getLong(i);
+                    break;
                 case Cols.HASH:
                     hash = cursor.getString(i);
                     break;
@@ -131,10 +139,10 @@ public class Apk extends ValueObject implements Comparable<Apk> {
                 case Cols.VERSION_CODE:
                     versionCode = cursor.getInt(i);
                     break;
-                case Cols.REPO_VERSION:
+                case Cols.Repo.VERSION:
                     repoVersion = cursor.getInt(i);
                     break;
-                case Cols.REPO_ADDRESS:
+                case Cols.Repo.ADDRESS:
                     repoAddress = cursor.getString(i);
                     break;
             }
@@ -192,6 +200,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
+        values.put(Cols.APP_ID, appId);
         values.put(Cols.PACKAGE_NAME, packageName);
         values.put(Cols.VERSION_NAME, versionName);
         values.put(Cols.VERSION_CODE, versionCode);
