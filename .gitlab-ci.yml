@@ -1,4 +1,4 @@
-image: mvdan/fdroid-ci:client-20160617
+image: mvdan/fdroid-ci:client-20160621
 
 cache:
   paths:
@@ -47,9 +47,9 @@ connected10:
     - exit $EXITVALUE
   allow_failure: true  # remove once install segfaults are gone
 
-connected17:
+connected23:
   variables:
-    AVD_SDK: "17"
+    AVD_SDK: "23"
   script:
     - export GRADLE_USER_HOME=$PWD/.gradle
     - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
