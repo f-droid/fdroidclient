@@ -43,7 +43,7 @@ public class FileCompat {
     private static class Symlink21 {
 
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-        public void symlink(SanitizedFile source, SanitizedFile dest) {
+        void symlink(SanitizedFile source, SanitizedFile dest) {
             try {
                 android.system.Os.symlink(source.getAbsolutePath(), dest.getAbsolutePath());
             } catch (ErrnoException e) {
@@ -54,13 +54,14 @@ public class FileCompat {
     }
 
     @TargetApi(21)
-    protected static void symlinkOs(SanitizedFile source, SanitizedFile dest) {
+    static void symlinkOs(SanitizedFile source, SanitizedFile dest) {
         new Symlink21().symlink(source, dest);
     }
 
-    protected static void symlinkRuntime(SanitizedFile source, SanitizedFile dest) {
+    static void symlinkRuntime(SanitizedFile source, SanitizedFile dest) {
         String[] commands = {
             FDroidApp.SYSTEM_DIR_NAME + "/bin/ln",
+            "-s",
             source.getAbsolutePath(),
             dest.getAbsolutePath(),
         };
@@ -74,7 +75,7 @@ public class FileCompat {
         }
     }
 
-    protected static void symlinkLibcore(SanitizedFile source, SanitizedFile dest) {
+    static void symlinkLibcore(SanitizedFile source, SanitizedFile dest) {
         try {
             Object os = Class.forName("libcore.io.Libcore").getField("os").get(null);
             Method symlink = os.getClass().getMethod("symlink", String.class, String.class);

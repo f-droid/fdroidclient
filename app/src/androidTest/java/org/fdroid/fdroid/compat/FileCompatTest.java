@@ -1,4 +1,4 @@
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.compat;
 
 import android.app.Instrumentation;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
-import org.fdroid.fdroid.compat.FileCompatForTest;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.junit.After;
 import org.junit.Before;
@@ -64,21 +64,21 @@ public class FileCompatTest {
 
     @Test
     public void testSymlinkRuntime() {
-        FileCompatForTest.symlinkRuntimeTest(sourceFile, destFile);
+        FileCompat.symlinkRuntime(sourceFile, destFile);
         assertTrue(destFile.getAbsolutePath() + " should exist after symlinking", destFile.exists());
     }
 
     @Test
     public void testSymlinkLibcore() {
         assumeTrue(Build.VERSION.SDK_INT >= 19);
-        FileCompatForTest.symlinkLibcoreTest(sourceFile, destFile);
+        FileCompat.symlinkLibcore(sourceFile, destFile);
         assertTrue(destFile.getAbsolutePath() + " should exist after symlinking", destFile.exists());
     }
 
     @Test
     public void testSymlinkOs() {
         assumeTrue(Build.VERSION.SDK_INT >= 21);
-        FileCompatForTest.symlinkOsTest(sourceFile, destFile);
+        FileCompat.symlinkOs(sourceFile, destFile);
         assertTrue(destFile.getAbsolutePath() + " should exist after symlinking", destFile.exists());
     }
 
