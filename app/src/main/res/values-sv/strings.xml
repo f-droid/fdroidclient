@@ -211,7 +211,7 @@
 
     <string name="tab_installed_apps_count">Installerade (%d)</string>
     <string name="tab_updates_count">Uppdateringar (%d)</string>
-    <string name="menu_email">E-post författare</string>
+    <string name="menu_email">E-postförfattare</string>
     <string name="antinonfreeassetslist">Denna app innehåller icke-fria tillgångar</string>
 
     <string name="useTor">Använd Tor</string>
@@ -343,7 +343,7 @@
     <string name="keep_forever">För evigt</string>
 
     <string name="install_error_notify_title">Fel vid installation %s</string>
-    <string name="uninstall_error_notify_title">Fel vid installation %s</string>
+    <string name="uninstall_error_notify_title">Fel vid avinstallation %s</string>
 
 
     <string name="installing">Installerar…</string>

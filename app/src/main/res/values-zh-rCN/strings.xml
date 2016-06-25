@@ -281,7 +281,7 @@
     <string name="swap_not_enabled">示启用交换功能</string>
     <string name="swap_not_enabled_description">交换之前，你的设备必须是可见的。</string>
 
-    <string name="install_confirm">确定要安装这个应用吗？它将有以下权限：</string>
+    <string name="install_confirm">确定要安装这个应用吗？它将有以下权限</string>
     <string name="install_confirm_update">确定要为这个应用安装更新吗？你的已有数据会保留。更新后的应用程序将有下权限：</string>
     <string name="install_confirm_update_system">确定要为这个内置应用安装更新吗？你的已有数据会保留。更新后的应用程序将有下权限：</string>
     <string name="install_confirm_update_no_perms">确定要为这个应用安装更新吗？你的已有数据会保留。该应用未请求任何权限。</string>
@@ -294,7 +294,7 @@
     <string name="tap_to_install">下载已完成，点击安装</string>
     <string name="download_error">下载失败</string>
 
-    <string name="perms_new_perm_prefix">"新 "</string>
+    <string name="perms_new_perm_prefix">"新的： "</string>
     <string name="perms_description_app">由 %1$s 提供。</string>
     <string name="downloading">下载中…</string>
 
@@ -344,5 +344,12 @@
     <string name="keep_month">1个月</string>
     <string name="keep_year">1年</string>
     <string name="keep_forever">永远</string>
+
+    <string name="install_error_notify_title">安装 %s 出错</string>
+    <string name="uninstall_error_notify_title">卸载 %s 时出错</string>
+
+
+    <string name="installing">安装中…</string>
+    <string name="uninstalling">卸载中…</string>
 
     </resources>

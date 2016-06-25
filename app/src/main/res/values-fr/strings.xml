@@ -231,7 +231,7 @@
     <string name="repo_added">Le dépôt F-Droid %1$s a été sauvegardé.</string>
     <string name="repo_searching_address">Recherche d\'un dépôt F-Droid sur
 \n%1$s</string>
-    <string name="category_Graphics">Graphiques</string>
+    <string name="category_Graphics">Graphisme</string>
     <string name="empty_installed_app_list">Aucune appli installée.\n\nIl y a des applis sur votre appareil, mais aucune n\'est disponible sur F-Droid. Vous devriez peut-être mettre à jour vos dépôts, ou vos applis ne sont pas disponibles dans ces dépôts.</string>
     <string name="install_error_unknown">L\'installation a échoué pour une raison inconnue</string>
     <string name="uninstall_error_unknown">La désinstallation a échoué pour une raison inconnue</string>

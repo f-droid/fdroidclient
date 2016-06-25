@@ -18,4 +18,84 @@
     <string name="update_interval_zero">Ära uuenda programmide loendit automaatselt</string>
     <string name="automatic_scan_wifi">Ainult Wi-Fi ühendusega</string>
     <string name="automatic_scan_wifi_on">Uuenda rakenduste loendit automaatselt ainult Wi-Fi ühendusega</string>
+    <string name="update_auto_download">Uuenduste automaatne allalaadimine</string>
+    <string name="update_auto_download_summary">Uuenduste failide taustal allalaadimine</string>
+    <string name="notify">Uuenduste teated</string>
+    <string name="notify_on">Kuva teade, kui uuendused on saadaval</string>
+    <string name="update_history">Uuenduste ajalugu</string>
+    <string name="update_history_summ">Päevade arv, mille jooksul kuvatakse rakendust uuena: %s</string>
+    <string name="system_installer">Priviligeeritud laiendus</string>
+    <string name="system_installer_on">Kasuta F-Droid priviligeeritud laiendust pakettide paigaldamiseks, uuendamiseks ja eemaldamiseks</string>
+    <string name="uninstall_system">Uuenda/eemalda priviligeeritud laiendus</string>
+    <string name="uninstall_system_summary">Priviligeeritud laienduste uuendamiseks/eemaldamiseks ava detailne vaade</string>
+    <string name="local_repo_name">Kohaliku repositooriumi nimi</string>
+    <string name="local_repo_name_summary">Kohaliku repositooriumi reklaamitud nimi: %s</string>
+    <string name="local_repo_https">Kasuta privaatset ühendust</string>
+    <string name="local_repo_https_on">Kasuta krüpteeritud HTTPS:// ühendust kohaliku repositooriumiga</string>
+
+    <string name="login_title">Autentimine on nõutav</string>
+    <string name="login_name">Kasutajanimi</string>
+    <string name="login_password">Salasõna</string>
+    <string name="repo_edit_credentials">Muuda salasõna</string>
+    <string name="repo_error_empty_username">Kasutajanimi on tühi, mandaati ei muudetud</string>
+
+    <string name="app_details">Rakenduse andmed</string>
+    <string name="no_such_app">Sellist rakendust ei leitud.</string>
+
+    <string name="about_title">Programmist F-Droid</string>
+    <string name="about_version">Versioon</string>
+    <string name="about_site">Veebileht</string>
+    <string name="about_source">Lähtekood</string>
+    <string name="about_mail">Meil</string>
+    <string name="about_license">Litsents</string>
+
+    <string name="app_incompatible">Ühildumatu</string>
+    <string name="app_installed">Paigaldatud</string>
+    <string name="app_not_installed">Paigaldamata</string>
+    <string name="app_inst_known_source">Paigaldatud (%s)</string>
+    <string name="app_inst_unknown_source">Paigaldatud (tundmatust allikast)</string>
+
+    <string name="added_on">Lisatud %s</string>
+
+    <string name="ok">Ok</string>
+
+    <string name="yes">Jah</string>
+    <string name="no">Ei</string>
+    <string name="repo_add_title">Lisa uus repositoorium</string>
+    <string name="repo_add_add">Lisa</string>
+    <string name="links">Lingid</string>
+    <string name="more">Rohkem</string>
+    <string name="less">Vähem</string>
+
+    <string name="back">Tagasi</string>
+    <string name="cancel">Loobu</string>
+    <string name="enable">Luba</string>
+    <string name="add_key">Lisa võti</string>
+    <string name="overwrite">Kirjuta üle</string>
+
+    <string name="tab_available_apps">Saadaval</string>
+    <string name="tab_installed_apps">Paigaldatud</string>
+    <string name="tab_updates">Uuendused</string>
+    <string name="tab_installed_apps_count">Paigaldatud (%d)</string>
+    <string name="tab_updates_count">Uuendused (%d)</string>
+    <string name="one_update_available">Üks uuendus on saadaval.</string>
+    <string name="many_updates_available">%d uuendust on saadaval.</string>
+    <string name="fdroid_updates_available">F-Droid: Uuendused saadaval</string>
+    <string name="update_notification_more">+%1$d veel…</string>
+    <string name="bluetooth_activity_not_found">Bluetoothiga saatmisviise ei leitud. Valige üks!</string>
+    <string name="choose_bt_send">Vali Bluetoothiga saatmise viis</string>
+    <string name="send_via_bluetooth">Saada Bluetoothiga</string>
+
+    <string name="repo_add_url">Repositooriumi aadress</string>
+    <string name="repo_add_fingerprint">Sõrmejälg (valikuline)</string>
+    <string name="repo_exists_add_fingerprint">See repositoorium on juba seadistatud, see lisab uue võtme teabe.</string>
+    <string name="repo_exists_enable">See repositoorium on juba seadistatud. Palun kinnita, et soovid ta uuesti lubada.</string>
+    <string name="repo_exists_and_enabled">Sissetulev repositoorium on juba seadistatud ja lubatud.</string>
+    <string name="repo_delete_to_overwrite">Sa pead kustutama selle repositooriumi enne erineva võtmega respositooriumi lisamist.</string>
+    <string name="bad_fingerprint">Halb sõrmejälg</string>
+    <string name="invalid_url">See ei ole kehtiv URL.</string>
+    <string name="install_confirm_update">Kas soovid paigaldada uuenduse sellele rakendusele? Olemasolevad andmed jäävad alles. Uuendatud rakendus saab ligipääsu:</string>
+    <string name="menu_email">Saada autorile meil</string>
+    <string name="empty_search_can_update_app_list">Puudub uuendusele vastav rakendus.</string>
+
     </resources>

@@ -3,7 +3,7 @@
   <string name="version">版本</string>
   <string name="delete">刪除</string>
   <string name="enable_nfc_send">啟用 NFC 傳送…</string>
-  <string name="cache_downloaded">軟件包快取</string>
+  <string name="cache_downloaded">保留快取中的程式</string>
   <string name="updates">更新</string>
   <string name="other">其他</string>
   <string name="update_interval">自動更新頻率</string>
@@ -211,7 +211,7 @@
     <string name="proxy_port_summary">設置您的代理伺服器通訊埠號碼 (如 8118)</string>
 
     <string name="status_download">正在從 %1$s\n下載\n%2$s / %3$s (%4$d%%)</string>
-    <string name="install_confirm">您想安裝此應用程式嗎？它需要以下的存取權：</string>
+    <string name="install_confirm">需要存取權</string>
     <string name="install_confirm_update">您想更新此應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
     <string name="install_confirm_update_system">您想更新此內置的應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
     <string name="install_confirm_update_system_no_perms">您想更新此應用程式嗎？您不會失去現有的數據。已更新的程式不需要任何特別的存取權。</string>
@@ -314,7 +314,7 @@
     <string name="uninstall_update_confirm">你確定要原始版本取代此應用程式嗎？</string>
     <string name="crash_dialog_text">因發生了未預料到的錯誤，應用程式已停止運作。您願意透過電郵提供關於問題的更多資料嗎？</string>
     <string name="repo_fingerprint">鑰匙指紋 (SHA-256)</string>
-    <string name="writing_index_jar">寫入已簽署的目錄檔案 (index.jar) 中…</string>
+    <string name="writing_index_jar">正在寫入已簽署的目錄檔案 (index.jar)…</string>
     <string name="rooted_on">不要以灰字顯示需要 root 權限的應用程式</string>
     <string name="repo_delete_to_overwrite">在加入含有不同鑰匙的軟件倉庫前，您先要刪除此倉庫。</string>
     <string name="update_history_summ">在 %s 天內添置於目錄的程式方可算為「最新」</string>
@@ -323,6 +323,30 @@
     <string name="unsigned_description">這表示應用程式清單不可被驗證。您要小心使用來自未簽署的索引的應用程式。</string>
     <string name="useTor">使用 Tor</string>
     <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
-    <string name="by_author">作者：</string>
-    <string name="useTorSummary">為了加強對私隱的保障，強迫下載流量經過 Tor</string>
+    <string name="by_author">作者為</string>
+    <string name="useTorSummary">要求下載流量經過 Tor ，以加強對私隱的保障</string>
+    <string name="update_auto_download">自動下載更新</string>
+    <string name="update_auto_download_summary">在背後下載更新檔案</string>
+    <string name="repo_provider">軟件倉庫：%s</string>
+
+    <string name="system_install_not_supported">F-Droid 系統權限套件不支援 Android 5.1 或更新的版本。</string>
+
+    <string name="tap_to_install_format">觸碰以安裝 %s</string>
+    <string name="tap_to_update_format">觸碰以更新 %s</string>
+    <string name="download_pending">正等待下載開始…</string>
+    <string name="install_error_notify_title">安裝 %s 時發生錯誤</string>
+    <string name="uninstall_error_notify_title">卸載 %s 時發生錯誤</string>
+
+
+    <string name="downloading_apk">正在下載 %1$s</string>
+    <string name="installing">安裝中…</string>
+    <string name="uninstalling">卸載中…</string>
+
+    <string name="keep_hour">一小時</string>
+    <string name="keep_day">一天</string>
+    <string name="keep_week">一週</string>
+    <string name="keep_month">一個月</string>
+    <string name="keep_year">一年</string>
+    <string name="keep_forever">永遠</string>
+
     </resources>
