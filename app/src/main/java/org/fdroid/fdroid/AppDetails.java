@@ -395,7 +395,7 @@ public class AppDetails extends AppCompatActivity {
         // Set up the list...
         adapter = new ApkListAdapter(this, app);
 
-        // Wait until all other intialization before doing this, because it will create the
+        // Wait until all other initialization before doing this, because it will create the
         // fragments, which rely on data from the activity that is set earlier in this method.
         setContentView(R.layout.app_details);
 
