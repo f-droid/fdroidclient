@@ -56,16 +56,16 @@ public class ApkVerifier {
         PackageInfo localApkInfo = pm.getPackageArchiveInfo(
                 localApkUri.getPath(), PackageManager.GET_PERMISSIONS);
         if (localApkInfo == null) {
-            throw new ApkVerificationException("parsing apk file failed!");
+            throw new ApkVerificationException("Parsing apk file failed!");
         }
 
         // check if the apk has the expected packageName
         if (!TextUtils.equals(localApkInfo.packageName, expectedApk.packageName)) {
-            throw new ApkVerificationException("apk has unexpected packageName!");
+            throw new ApkVerificationException("Apk file has unexpected packageName!");
         }
 
         if (localApkInfo.versionCode < 0) {
-            throw new ApkVerificationException("apk has no valid versionCode!");
+            throw new ApkVerificationException("Apk file has no valid versionCode!");
         }
 
         // verify permissions, important for unattended installer
@@ -73,8 +73,14 @@ public class ApkVerifier {
         HashSet<String> expectedPermissions = expectedApk.getFullPermissionsSet();
         Utils.debugLog(TAG, "localPermissions: " + localPermissions);
         Utils.debugLog(TAG, "expectedPermissions: " + expectedPermissions);
-        if (!localPermissions.equals(expectedPermissions)) {
-            throw new ApkVerificationException("permissions of apk not equals expected permissions!");
+        // NOTE: Some permissions could have a maxSdkVersion < current sdk version
+        // and are thus not parsed by pm.getPackageArchiveInfo().
+        // Thus, containsAll() instead of equals() is used!
+        // See also https://gitlab.com/fdroid/fdroidclient/issues/703
+        if (!expectedPermissions.containsAll(localPermissions)) {
+            throw new ApkVerificationException(
+                    "Permissions of the apk file are not a true subset of the permissions listed by the repo," +
+                    " i.e., some permissions have not been shown to the user!");
         }
 
         int localTargetSdkVersion = localApkInfo.applicationInfo.targetSdkVersion;
@@ -85,7 +91,7 @@ public class ApkVerifier {
             // NOTE: In old fdroidserver versions, targetSdkVersion was not stored inside the repo!
             Log.w(TAG, "Skipping check for targetSdkVersion, not available in this repo!");
         } else if (localTargetSdkVersion != expectedTargetSdkVersion) {
-            throw new ApkVerificationException("targetSdkVersion of apk not equals expected targetSdkVersion!");
+            throw new ApkVerificationException("TargetSdkVersion of apk file is not the expected targetSdkVersion!");
         }
 
     }
