@@ -25,7 +25,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public int versionCode;
     public int size; // Size in bytes - 0 means we don't know!
     public long repo; // ID of the repo it comes from
-    public String hash;
+    public String hash; // checksum of the APK, in lowercase hex
     public String hashType;
     public int minSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown
     public int targetSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown

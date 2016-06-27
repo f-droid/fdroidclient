@@ -470,7 +470,7 @@ public final class LocalRepoManager {
         private void tagHash(App app) throws IOException {
             serializer.startTag("", "hash");
             serializer.attribute("", "type", app.installedApk.hashType);
-            serializer.text(app.installedApk.hash.toLowerCase(Locale.US));
+            serializer.text(app.installedApk.hash);
             serializer.endTag("", "hash");
         }
     }
