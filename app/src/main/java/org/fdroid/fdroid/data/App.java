@@ -9,22 +9,27 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.XmlResourceParser;
 import android.database.Cursor;
+import android.os.Environment;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.fdroid.AppFilter;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -32,8 +37,6 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 
 public class App extends ValueObject implements Comparable<App>, Parcelable {
 
@@ -272,6 +275,17 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         initApkFromApkFile(context, this.installedApk, packageInfo, apkFile);
     }
 
+    /**
+     * Get the directory where APK Expansion Files aka OBB files are stored for the app as
+     * specified by {@code packageName}.
+     *
+     * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
+     */
+    public static File getObbDir(String packageName) {
+        return new File(Environment.getExternalStorageDirectory().getAbsolutePath()
+                + "/Android/obb/" + packageName);
+    }
+
     private void setFromPackageInfo(PackageManager pm, PackageInfo packageInfo) {
 
         this.packageName = packageInfo.packageName;
@@ -324,6 +338,29 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         initInstalledApk(context, apk, packageInfo, apkFile);
     }
 
+    public static void initInstalledObbFiles(Apk apk) {
+        File obbdir = getObbDir(apk.packageName);
+        FileFilter filter = new RegexFileFilter("(main|patch)\\.[0-9-][0-9]*\\." + apk.packageName + "\\.obb");
+        File[] files = obbdir.listFiles(filter);
+        if (files == null) {
+            return;
+        }
+        Arrays.sort(files);
+        for (File f : files) {
+            String filename = f.getName();
+            String[] segments = filename.split("\\.");
+            if (Integer.parseInt(segments[1]) <= apk.versionCode) {
+                if ("main".equals(segments[0])) {
+                    apk.obbMainFile = filename;
+                    apk.obbMainFileSha256 = Utils.getBinaryHash(f, apk.hashType);
+                } else if ("patch".equals(segments[0])) {
+                    apk.obbPatchFile = filename;
+                    apk.obbPatchFileSha256 = Utils.getBinaryHash(f, apk.hashType);
+                }
+            }
+        }
+    }
+
     private void initInstalledApk(Context context, Apk apk, PackageInfo packageInfo, SanitizedFile apkFile)
             throws IOException, CertificateEncodingException {
         apk.compatible = true;
@@ -338,6 +375,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         apk.permissions = packageInfo.requestedPermissions;
         apk.apkName = apk.packageName + "_" + apk.versionCode + ".apk";
         apk.installedFile = apkFile;
+
+        initInstalledObbFiles(apk);
 
         JarFile apkJar = new JarFile(apkFile);
         HashSet<String> abis = new HashSet<>(3);
