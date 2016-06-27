@@ -321,18 +321,21 @@ class DBHelper extends SQLiteOpenHelper {
 
     private void migrateAppPrimaryKeyToRowId(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 58) {
-            final String alter = "ALTER TABLE " + ApkTable.NAME + " ADD COLUMN appId NUMERIC";
-            Log.i(TAG, "Adding appId foreign key to fdroid_apk.");
+            db.execSQL("CREATE INDEX IF NOT EXISTS name ON " + AppTable.NAME + " (" + AppTable.Cols.NAME + ")");
+            db.execSQL("CREATE INDEX IF NOT EXISTS added ON " + AppTable.NAME + " (" + AppTable.Cols.ADDED + ")");
+
+            final String alter = "ALTER TABLE " + ApkTable.NAME + " ADD COLUMN " + ApkTable.Cols.APP_ID + " NUMERIC";
+            Log.i(TAG, "Adding appId foreign key to " + ApkTable.NAME);
             Utils.debugLog(TAG, alter);
             db.execSQL(alter);
 
             final String update =
                 "UPDATE " + ApkTable.NAME + " SET appId = ( " +
-                    "SELECT app.rowid " +
+                    "SELECT app." + AppTable.Cols.ROW_ID + " " +
                     "FROM " + ApkTable.NAME + " AS app " +
-                    "WHERE " + ApkTable.NAME + ".id = app.id " +
+                    "WHERE " + ApkTable.NAME + "." + ApkTable.Cols.PACKAGE_NAME + " = app." + AppTable.Cols.PACKAGE_NAME + " " +
                 ")";
-            Log.i(TAG, "Updating foreign key from fdroid_apk to fdroid_app to use numeric foreign key.");
+            Log.i(TAG, "Updating foreign key from " + ApkTable.NAME + " to " + AppTable.NAME + " to use numeric foreign key.");
             Utils.debugLog(TAG, update);
             db.execSQL(update);
         }
@@ -590,6 +593,8 @@ class DBHelper extends SQLiteOpenHelper {
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
         db.execSQL("create index app_id on " + AppTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
+        db.execSQL("create index name on " + AppTable.NAME + " (" + AppTable.Cols.NAME + ");"); // Used for sorting most lists
+        db.execSQL("create index added on " + AppTable.NAME + " (" + AppTable.Cols.ADDED + ");"); // Used for sorting "newly added"
         db.execSQL(CREATE_TABLE_APK);
         db.execSQL("create index apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");
         db.execSQL("create index apk_appId on " + ApkTable.NAME + " (" + ApkTable.Cols.APP_ID + ");");
