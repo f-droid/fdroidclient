@@ -201,10 +201,6 @@ public class AppProvider extends FDroidProvider {
             super(selection, args);
         }
 
-        AppQuerySelection(String selection, List<String> args) {
-            super(selection, args);
-        }
-
         public boolean naturalJoinToInstalled() {
             return naturalJoinToInstalled;
         }

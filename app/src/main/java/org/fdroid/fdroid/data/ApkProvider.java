@@ -102,13 +102,6 @@ public class ApkProvider extends FDroidProvider {
             return cursorToList(cursor);
         }
 
-        /**
-         * @see org.fdroid.fdroid.data.ApkProvider.Helper#find(Context, Repo, List, String[])
-         */
-        public static List<Apk> find(Context context, Repo repo, List<App> apps) {
-            return find(context, repo, apps, Cols.ALL);
-        }
-
         public static Apk find(Context context, String packageName, int versionCode, String[] projection) {
             final Uri uri = getContentUri(packageName, versionCode);
             return find(context, uri, projection);
@@ -273,15 +266,6 @@ public class ApkProvider extends FDroidProvider {
             .appendPath(PATH_REPO_APPS)
             .appendPath(Long.toString(repo.id))
             .appendPath(buildAppString(apps))
-            .build();
-    }
-
-    public static Uri getContentUriForApks(Repo repo, List<Apk> apks) {
-        return getContentUri()
-            .buildUpon()
-            .appendPath(PATH_REPO_APK)
-            .appendPath(Long.toString(repo.id))
-            .appendPath(buildApkString(apks))
             .build();
     }
 
