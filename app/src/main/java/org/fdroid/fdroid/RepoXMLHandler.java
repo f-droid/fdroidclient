@@ -26,6 +26,7 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoPushRequest;
+import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -140,6 +141,18 @@ public class RepoXMLHandler extends DefaultHandler {
                         // before fc0df0dcf4dd0d5f13de82d7cd9254b2b48cb62d, this could be 0
                         curapk.maxSdkVersion = Apk.SDK_VERSION_MAX_VALUE;
                     }
+                    break;
+                case ApkTable.Cols.OBB_MAIN_FILE:
+                    curapk.obbMainFile = str;
+                    break;
+                case ApkTable.Cols.OBB_MAIN_FILE_SHA256:
+                    curapk.obbMainFileSha256 = str;
+                    break;
+                case ApkTable.Cols.OBB_PATCH_FILE:
+                    curapk.obbPatchFile = str;
+                    break;
+                case ApkTable.Cols.OBB_PATCH_FILE_SHA256:
+                    curapk.obbPatchFileSha256 = str;
                     break;
                 case "added":
                     curapk.added = Utils.parseDate(str, null);

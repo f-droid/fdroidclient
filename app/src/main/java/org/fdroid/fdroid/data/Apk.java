@@ -10,6 +10,7 @@ import android.os.Parcelable;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -30,6 +31,10 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public int minSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown
     public int targetSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown
     public int maxSdkVersion = SDK_VERSION_MAX_VALUE; // "infinity" if not set
+    public String obbMainFile;
+    public String obbMainFileSha256;
+    public String obbPatchFile;
+    public String obbPatchFileSha256;
     public Date added;
     public String[] permissions; // null if empty or
     // unknown
@@ -106,6 +111,18 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                 case Cols.MAX_SDK_VERSION:
                     maxSdkVersion = cursor.getInt(i);
                     break;
+                case Cols.OBB_MAIN_FILE:
+                    obbMainFile = cursor.getString(i);
+                    break;
+                case Cols.OBB_MAIN_FILE_SHA256:
+                    obbMainFileSha256 = cursor.getString(i);
+                    break;
+                case Cols.OBB_PATCH_FILE:
+                    obbPatchFile = cursor.getString(i);
+                    break;
+                case Cols.OBB_PATCH_FILE_SHA256:
+                    obbPatchFileSha256 = cursor.getString(i);
+                    break;
                 case Cols.NAME:
                     apkName = cursor.getString(i);
                     break;
@@ -146,11 +163,71 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         }
     }
 
-    public String getUrl() {
+    private void checkRepoAddress() {
         if (repoAddress == null || apkName == null) {
             throw new IllegalStateException("Apk needs to have both Schema.ApkTable.Cols.REPO_ADDRESS and Schema.ApkTable.Cols.NAME set in order to calculate URL.");
         }
+    }
+
+    public String getUrl() {
+        checkRepoAddress();
         return repoAddress + "/" + apkName.replace(" ", "%20");
+    }
+
+    /**
+     * Get the URL to download the <i>main</i> expansion file, the primary
+     * expansion file for additional resources required by your application.
+     * The filename will always have the format:
+     * "main.<i>versionCode</i>.<i>packageName</i>.obb"
+     *
+     * @return a URL to download the OBB file that matches this APK
+     * @see #getPatchObbUrl()
+     * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
+     */
+    public String getMainObbUrl() {
+        if (repoAddress == null || obbMainFile == null) {
+            return null;
+        }
+        checkRepoAddress();
+        return repoAddress + "/" + obbMainFile;
+    }
+
+    /**
+     * Get the URL to download the optional <i>patch</i> expansion file, which
+     * is intended for small updates to the <i>main</i> expansion file.
+     * The filename will always have the format:
+     * "patch.<i>versionCode</i>.<i>packageName</i>.obb"
+     *
+     * @return a URL to download the OBB file that matches this APK
+     * @see #getMainObbUrl()
+     * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
+     */
+    public String getPatchObbUrl() {
+        if (repoAddress == null || obbPatchFile == null) {
+            return null;
+        }
+        checkRepoAddress();
+        return repoAddress + "/" + obbPatchFile;
+    }
+
+    /**
+     * Get the local {@link File} to the "main" OBB file.
+     */
+    public File getMainObbFile() {
+        if (obbMainFile == null) {
+            return null;
+        }
+        return new File(App.getObbDir(packageName), obbMainFile);
+    }
+
+    /**
+     * Get the local {@link File} to the "patch" OBB file.
+     */
+    public File getPatchObbFile() {
+        if (obbPatchFile == null) {
+            return null;
+        }
+        return new File(App.getObbDir(packageName), obbPatchFile);
     }
 
     public ArrayList<String> getFullPermissionList() {
@@ -180,7 +257,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      * FDroid just includes the constant name in the apk list, so we prefix it
      * with "android.permission."
      *
-     * see https://gitlab.com/fdroid/fdroidserver/blob/master/fdroidserver/update.py#L535#
+     * @see <a href="https://gitlab.com/fdroid/fdroidserver/blob/1afa8cfc/update.py#L91">
+     *     More info into index - size, permissions, features, sdk version</a>
      */
     private static String fdroidToAndroidPermission(String permission) {
         if (!permission.contains(".")) {
@@ -210,6 +288,10 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         values.put(Cols.MIN_SDK_VERSION, minSdkVersion);
         values.put(Cols.TARGET_SDK_VERSION, targetSdkVersion);
         values.put(Cols.MAX_SDK_VERSION, maxSdkVersion);
+        values.put(Cols.OBB_MAIN_FILE, obbMainFile);
+        values.put(Cols.OBB_MAIN_FILE_SHA256, obbMainFileSha256);
+        values.put(Cols.OBB_PATCH_FILE, obbPatchFile);
+        values.put(Cols.OBB_PATCH_FILE_SHA256, obbPatchFileSha256);
         values.put(Cols.ADDED_DATE, Utils.formatDate(added, ""));
         values.put(Cols.PERMISSIONS, Utils.serializeCommaSeparatedString(permissions));
         values.put(Cols.FEATURES, Utils.serializeCommaSeparatedString(features));
@@ -245,6 +327,10 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         dest.writeInt(this.minSdkVersion);
         dest.writeInt(this.targetSdkVersion);
         dest.writeInt(this.maxSdkVersion);
+        dest.writeString(this.obbMainFile);
+        dest.writeString(this.obbMainFileSha256);
+        dest.writeString(this.obbPatchFile);
+        dest.writeString(this.obbPatchFileSha256);
         dest.writeLong(this.added != null ? this.added.getTime() : -1);
         dest.writeStringArray(this.permissions);
         dest.writeStringArray(this.features);
@@ -271,6 +357,10 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         this.minSdkVersion = in.readInt();
         this.targetSdkVersion = in.readInt();
         this.maxSdkVersion = in.readInt();
+        this.obbMainFile = in.readString();
+        this.obbMainFileSha256 = in.readString();
+        this.obbPatchFile = in.readString();
+        this.obbPatchFileSha256 = in.readString();
         long tmpAdded = in.readLong();
         this.added = tmpAdded == -1 ? null : new Date(tmpAdded);
         this.permissions = in.createStringArray();

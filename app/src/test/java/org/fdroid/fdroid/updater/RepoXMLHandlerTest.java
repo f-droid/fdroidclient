@@ -26,6 +26,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.data.Apk;
@@ -33,15 +34,18 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoPushRequest;
 import org.fdroid.fdroid.mock.MockRepo;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.shadows.ShadowLog;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -69,6 +73,32 @@ public class RepoXMLHandlerTest {
     private static final String TAG = "RepoXMLHandlerTest";
 
     private static final String FAKE_SIGNING_CERT = "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345";
+
+    @Before
+    public void setUp() {
+        ShadowLog.stream = System.out;
+    }
+
+    @Test
+    public void testObbIndex() throws IOException {
+        writeResourceToObbDir("main.1101613.obb.main.twoversions.obb");
+        writeResourceToObbDir("main.1101615.obb.main.twoversions.obb");
+        writeResourceToObbDir("main.1434483388.obb.main.oldversion.obb");
+        writeResourceToObbDir("main.1619.obb.mainpatch.current.obb");
+        writeResourceToObbDir("patch.1619.obb.mainpatch.current.obb");
+        RepoDetails actualDetails = getFromFile("obbIndex.xml");
+        for (Apk indexApk : actualDetails.apks) {
+            Apk localApk = new Apk();
+            localApk.packageName = indexApk.packageName;
+            localApk.versionCode = indexApk.versionCode;
+            localApk.hashType = indexApk.hashType;
+            App.initInstalledObbFiles(localApk);
+            assertEquals(indexApk.obbMainFile, localApk.obbMainFile);
+            assertEquals(indexApk.obbMainFileSha256, localApk.obbMainFileSha256);
+            assertEquals(indexApk.obbPatchFile, localApk.obbPatchFile);
+            assertEquals(indexApk.obbPatchFileSha256, localApk.obbPatchFileSha256);
+        }
+    }
 
     @Test
     public void testSimpleIndex() {
@@ -871,4 +901,12 @@ public class RepoXMLHandlerTest {
         }
     }
 
+    private void writeResourceToObbDir(String assetName) throws IOException {
+        InputStream input = getClass().getClassLoader().getResourceAsStream(assetName);
+        String packageName = assetName.substring(assetName.indexOf("obb"),
+                assetName.lastIndexOf('.'));
+        File f = new File(App.getObbDir(packageName), assetName);
+        FileUtils.copyToFile(input, f);
+        input.close();
+    }
 }

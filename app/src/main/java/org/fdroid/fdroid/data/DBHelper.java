@@ -92,6 +92,10 @@ class DBHelper extends SQLiteOpenHelper {
             + ApkTable.Cols.MIN_SDK_VERSION + " integer, "
             + ApkTable.Cols.TARGET_SDK_VERSION + " integer, "
             + ApkTable.Cols.MAX_SDK_VERSION + " integer, "
+            + ApkTable.Cols.OBB_MAIN_FILE + " string, "
+            + ApkTable.Cols.OBB_MAIN_FILE_SHA256 + " string, "
+            + ApkTable.Cols.OBB_PATCH_FILE + " string, "
+            + ApkTable.Cols.OBB_PATCH_FILE_SHA256 + " string, "
             + ApkTable.Cols.PERMISSIONS + " string, "
             + ApkTable.Cols.FEATURES + " string, "
             + ApkTable.Cols.NATIVE_CODE + " string, "
@@ -154,7 +158,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 63;
+    private static final int DB_VERSION = 64;
 
     private final Context context;
 
@@ -354,6 +358,24 @@ class DBHelper extends SQLiteOpenHelper {
         lowerCaseApkHashes(db, oldVersion);
         supportRepoPushRequests(db, oldVersion);
         migrateToPackageTable(db, oldVersion);
+        addObbFiles(db, oldVersion);
+    }
+
+    private void addObbFiles(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 64) {
+            return;
+        }
+        Utils.debugLog(TAG, "Adding " + ApkTable.Cols.OBB_MAIN_FILE
+                + ", " + ApkTable.Cols.OBB_PATCH_FILE
+                + ", and hash columns to " + ApkTable.NAME);
+        db.execSQL("alter table " + ApkTable.NAME + " add column "
+                + ApkTable.Cols.OBB_MAIN_FILE + " string");
+        db.execSQL("alter table " + ApkTable.NAME + " add column "
+                + ApkTable.Cols.OBB_MAIN_FILE_SHA256 + " string");
+        db.execSQL("alter table " + ApkTable.NAME + " add column "
+                + ApkTable.Cols.OBB_PATCH_FILE + " string");
+        db.execSQL("alter table " + ApkTable.NAME + " add column "
+                + ApkTable.Cols.OBB_PATCH_FILE_SHA256 + " string");
     }
 
     private void migrateToPackageTable(SQLiteDatabase db, int oldVersion) {
@@ -477,6 +499,10 @@ class DBHelper extends SQLiteOpenHelper {
                         + ApkTable.Cols.MIN_SDK_VERSION + " integer, "
                         + ApkTable.Cols.TARGET_SDK_VERSION + " integer, "
                         + ApkTable.Cols.MAX_SDK_VERSION + " integer, "
+                        + ApkTable.Cols.OBB_MAIN_FILE + " string, "
+                        + ApkTable.Cols.OBB_MAIN_FILE_SHA256 + " string, "
+                        + ApkTable.Cols.OBB_PATCH_FILE + " string, "
+                        + ApkTable.Cols.OBB_PATCH_FILE_SHA256 + " string, "
                         + ApkTable.Cols.PERMISSIONS + " string, "
                         + ApkTable.Cols.FEATURES + " string, "
                         + ApkTable.Cols.NATIVE_CODE + " string, "
@@ -502,6 +528,10 @@ class DBHelper extends SQLiteOpenHelper {
                         ApkTable.Cols.MIN_SDK_VERSION,
                         ApkTable.Cols.TARGET_SDK_VERSION,
                         ApkTable.Cols.MAX_SDK_VERSION,
+                        ApkTable.Cols.OBB_MAIN_FILE,
+                        ApkTable.Cols.OBB_MAIN_FILE_SHA256,
+                        ApkTable.Cols.OBB_PATCH_FILE,
+                        ApkTable.Cols.OBB_PATCH_FILE_SHA256,
                         ApkTable.Cols.PERMISSIONS,
                         ApkTable.Cols.FEATURES,
                         ApkTable.Cols.NATIVE_CODE,

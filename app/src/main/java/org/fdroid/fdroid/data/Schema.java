@@ -165,6 +165,10 @@ public interface Schema {
             String MIN_SDK_VERSION = "minSdkVersion";
             String TARGET_SDK_VERSION = "targetSdkVersion";
             String MAX_SDK_VERSION = "maxSdkVersion";
+            String OBB_MAIN_FILE   = "obbMainFile";
+            String OBB_MAIN_FILE_SHA256 = "obbMainFileSha256";
+            String OBB_PATCH_FILE  = "obbPatchFile";
+            String OBB_PATCH_FILE_SHA256 = "obbPatchFileSha256";
             String PERMISSIONS     = "permissions";
             String FEATURES        = "features";
             String NATIVE_CODE     = "nativecode";
@@ -188,6 +192,7 @@ public interface Schema {
             String[] ALL_COLS = {
                     APP_ID, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
                     SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
+                    OBB_MAIN_FILE, OBB_MAIN_FILE_SHA256, OBB_PATCH_FILE, OBB_PATCH_FILE_SHA256,
                     PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
                     IS_COMPATIBLE, INCOMPATIBLE_REASONS,
             };
@@ -198,6 +203,7 @@ public interface Schema {
             String[] ALL = {
                     _ID, APP_ID, Package.PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
                     SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
+                    OBB_MAIN_FILE, OBB_MAIN_FILE_SHA256, OBB_PATCH_FILE, OBB_PATCH_FILE_SHA256,
                     PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
                     IS_COMPATIBLE, Repo.VERSION, Repo.ADDRESS, INCOMPATIBLE_REASONS,
             };
