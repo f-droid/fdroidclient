@@ -2,13 +2,13 @@
 package org.fdroid.fdroid;
 
 import android.content.ContentValues;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
 import org.fdroid.fdroid.RepoUpdater.UpdateException;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.Schema;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
@@ -127,7 +127,7 @@ public class AcceptableMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
 
     private void disableRepo(Repo repo) {
         ContentValues values = new ContentValues(1);
-        values.put(RepoProvider.DataColumns.IN_USE, 0);
+        values.put(Schema.RepoTable.Cols.IN_USE, 0);
         RepoProvider.Helper.update(context, repo, values);
     }
 

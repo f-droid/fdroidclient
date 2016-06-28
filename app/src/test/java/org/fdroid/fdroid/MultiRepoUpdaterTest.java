@@ -19,7 +19,6 @@ import org.junit.Before;
 
 import java.io.File;
 import java.util.List;
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

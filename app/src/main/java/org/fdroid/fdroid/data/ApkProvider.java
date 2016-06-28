@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
-import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 import org.fdroid.fdroid.data.Schema.AppTable;

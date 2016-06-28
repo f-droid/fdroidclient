@@ -329,12 +329,10 @@ class DBHelper extends SQLiteOpenHelper {
             Utils.debugLog(TAG, alter);
             db.execSQL(alter);
 
-            final String update =
-                "UPDATE " + ApkTable.NAME + " SET appId = ( " +
+            final String update = "UPDATE " + ApkTable.NAME + " SET " + ApkTable.Cols.APP_ID + " = ( " +
                     "SELECT app." + AppTable.Cols.ROW_ID + " " +
-                    "FROM " + ApkTable.NAME + " AS app " +
-                    "WHERE " + ApkTable.NAME + "." + ApkTable.Cols.PACKAGE_NAME + " = app." + AppTable.Cols.PACKAGE_NAME + " " +
-                ")";
+                    "FROM " + AppTable.NAME + " AS app " +
+                    "WHERE " + ApkTable.NAME + "." + ApkTable.Cols.PACKAGE_NAME + " = app." + AppTable.Cols.PACKAGE_NAME + ")";
             Log.i(TAG, "Updating foreign key from " + ApkTable.NAME + " to " + AppTable.NAME + " to use numeric foreign key.");
             Utils.debugLog(TAG, update);
             db.execSQL(update);

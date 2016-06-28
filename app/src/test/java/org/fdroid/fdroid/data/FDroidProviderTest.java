@@ -1,17 +1,13 @@
 package org.fdroid.fdroid.data;
 
-import android.content.ContentResolver;
 import android.content.ContextWrapper;
 
 import org.fdroid.fdroid.TestUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.mockito.AdditionalAnswers;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.Shadows;
 import org.robolectric.shadows.ShadowContentResolver;
-
-import static org.mockito.Mockito.mock;
 
 public abstract class FDroidProviderTest {
 
