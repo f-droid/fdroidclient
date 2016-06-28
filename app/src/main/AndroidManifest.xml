@@ -430,6 +430,8 @@
         <activity
             android:name=".privileged.install.InstallExtensionDialogActivity"
             android:theme="@style/AppThemeTransparent" />
+        <activity android:name=".data.ObbUrlActivity"
+            android:theme="@android:style/Theme.NoDisplay" />
         <receiver
             android:name=".privileged.install.InstallExtensionBootReceiver" >
             <intent-filter>
