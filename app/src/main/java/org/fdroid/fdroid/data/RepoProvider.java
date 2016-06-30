@@ -194,7 +194,7 @@ public class RepoProvider extends FDroidProvider {
 
         public static int countAppsForRepo(Context context, long repoId) {
             ContentResolver resolver = context.getContentResolver();
-            final String[] projection = {ApkProvider.DataColumns._COUNT_DISTINCT_ID};
+            final String[] projection = {Schema.ApkTable.Cols._COUNT_DISTINCT_ID};
             Uri apkUri = ApkProvider.getRepoUri(repoId);
             Cursor cursor = resolver.query(apkUri, projection, null, null, null);
             int count = 0;

@@ -110,7 +110,7 @@ public class ProviderUriTests {
     @Test
     public void validApkProviderUris() {
         ShadowContentResolver.registerProvider(ApkProvider.getAuthority(), new ApkProvider());
-        String[] projection = new String[] {ApkProvider.DataColumns._ID};
+        String[] projection = new String[] {Schema.ApkTable.Cols._ID};
 
         List<Apk> apks = new ArrayList<>(10);
         for (int i = 0; i < 10; i++) {
@@ -127,7 +127,7 @@ public class ProviderUriTests {
 
     @Test(expected = IllegalArgumentException.class)
     public void invalidApkUrisWithTooManyApks() {
-        String[] projection = ApkProvider.DataColumns.ALL;
+        String[] projection = Schema.ApkTable.Cols.ALL;
 
         List<Apk> manyApks = new ArrayList<>(ApkProvider.MAX_APKS_TO_QUERY - 5);
         for (int i = 0; i < ApkProvider.MAX_APKS_TO_QUERY - 1; i++) {

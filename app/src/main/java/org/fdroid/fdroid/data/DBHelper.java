@@ -9,6 +9,7 @@ import android.util.Log;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.ApkTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -505,8 +506,8 @@ class DBHelper extends SQLiteOpenHelper {
         }
         Utils.debugLog(TAG, "Converting maxSdkVersion value 0 to " + Byte.MAX_VALUE);
         ContentValues values = new ContentValues();
-        values.put(ApkProvider.DataColumns.MAX_SDK_VERSION, Byte.MAX_VALUE);
-        db.update(TABLE_APK, values, ApkProvider.DataColumns.MAX_SDK_VERSION + " < 1", null);
+        values.put(ApkTable.Cols.MAX_SDK_VERSION, Byte.MAX_VALUE);
+        db.update(TABLE_APK, values, ApkTable.Cols.MAX_SDK_VERSION + " < 1", null);
     }
 
     /**
@@ -578,10 +579,10 @@ class DBHelper extends SQLiteOpenHelper {
         if (oldVersion >= 57) {
             return;
         }
-        Utils.debugLog(TAG, "Adding " + ApkProvider.DataColumns.TARGET_SDK_VERSION
+        Utils.debugLog(TAG, "Adding " + ApkTable.Cols.TARGET_SDK_VERSION
                 + " columns to " + TABLE_APK);
         db.execSQL("alter table " + TABLE_APK + " add column "
-                + ApkProvider.DataColumns.TARGET_SDK_VERSION + " integer");
+                + ApkTable.Cols.TARGET_SDK_VERSION + " integer");
     }
 
     private static boolean columnExists(SQLiteDatabase db,

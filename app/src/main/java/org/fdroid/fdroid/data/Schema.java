@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.data;
 
+import android.provider.BaseColumns;
+
 /**
  * The authoritative reference to each table/column which should exist in the database.
  * Constants from this interface should be used in preference to string literals when referring to
@@ -70,7 +72,38 @@ public interface Schema {
 
     interface ApkTable {
         String NAME = DBHelper.TABLE_APK;
-        interface Cols extends ApkProvider.DataColumns {}
+        interface Cols extends BaseColumns {
+            String _COUNT_DISTINCT_ID = "countDistinct";
+
+            String PACKAGE_NAME    = "id";
+            String VERSION_NAME    = "version";
+            String REPO_ID         = "repo";
+            String HASH            = "hash";
+            String VERSION_CODE    = "vercode";
+            String NAME            = "apkName";
+            String SIZE            = "size";
+            String SIGNATURE       = "sig";
+            String SOURCE_NAME     = "srcname";
+            String MIN_SDK_VERSION = "minSdkVersion";
+            String TARGET_SDK_VERSION = "targetSdkVersion";
+            String MAX_SDK_VERSION = "maxSdkVersion";
+            String PERMISSIONS     = "permissions";
+            String FEATURES        = "features";
+            String NATIVE_CODE     = "nativecode";
+            String HASH_TYPE       = "hashType";
+            String ADDED_DATE      = "added";
+            String IS_COMPATIBLE   = "compatible";
+            String INCOMPATIBLE_REASONS = "incompatibleReasons";
+            String REPO_VERSION    = "repoVersion";
+            String REPO_ADDRESS    = "repoAddress";
+
+            String[] ALL = {
+                    _ID, PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
+                    SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
+                    PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
+                    IS_COMPATIBLE, REPO_VERSION, REPO_ADDRESS, INCOMPATIBLE_REASONS,
+            };
+        }
     }
 
     interface RepoTable {

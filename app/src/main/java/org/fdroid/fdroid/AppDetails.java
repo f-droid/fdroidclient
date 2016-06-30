@@ -1033,7 +1033,7 @@ public class AppDetails extends AppCompatActivity {
             case REQUEST_PERMISSION_DIALOG:
                 if (resultCode == Activity.RESULT_OK) {
                     Uri uri = data.getData();
-                    Apk apk = ApkProvider.Helper.find(this, uri, ApkProvider.DataColumns.ALL);
+                    Apk apk = ApkProvider.Helper.find(this, uri, Schema.ApkTable.Cols.ALL);
                     startInstall(apk);
                 }
                 break;

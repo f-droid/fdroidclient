@@ -7,6 +7,7 @@ import android.net.Uri;
 
 import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 import org.fdroid.fdroid.mock.MockApk;
 import org.fdroid.fdroid.mock.MockApp;
 import org.fdroid.fdroid.mock.MockRepo;
@@ -32,7 +33,7 @@ import static org.junit.Assert.fail;
 @RunWith(RobolectricGradleTestRunner.class)
 public class ApkProviderTest extends FDroidProviderTest {
 
-    private static final String[] PROJ = ApkProvider.DataColumns.ALL;
+    private static final String[] PROJ = Cols.ALL;
 
     @Test
     public void testAppApks() {
@@ -89,7 +90,7 @@ public class ApkProviderTest extends FDroidProviderTest {
             "com.example.five",
         };
 
-        List<Apk> all = ApkProvider.Helper.findByRepo(context, new MockRepo(10), ApkProvider.DataColumns.ALL);
+        List<Apk> all = ApkProvider.Helper.findByRepo(context, new MockRepo(10), Cols.ALL);
         List<String> actualIds = new ArrayList<>();
         for (Apk apk : all) {
             actualIds.add(apk.packageName);
@@ -105,7 +106,7 @@ public class ApkProviderTest extends FDroidProviderTest {
 
         assertTotalApkCount(2);
 
-        List<Apk> allRemaining = ApkProvider.Helper.findByRepo(context, new MockRepo(10), ApkProvider.DataColumns.ALL);
+        List<Apk> allRemaining = ApkProvider.Helper.findByRepo(context, new MockRepo(10), Cols.ALL);
         List<String> actualRemainingIds = new ArrayList<>();
         for (Apk apk : allRemaining) {
             actualRemainingIds.add(apk.packageName);
@@ -211,7 +212,7 @@ public class ApkProviderTest extends FDroidProviderTest {
 
     @Test
     public void testCount() {
-        String[] projectionCount = new String[] {ApkProvider.DataColumns._COUNT};
+        String[] projectionCount = new String[] {Cols._COUNT};
 
         for (int i = 0; i < 13; i++) {
             Assert.insertApk(contentResolver, "com.example", i);
@@ -226,7 +227,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertResultCount(1, allWithCount);
 
         allWithCount.moveToFirst();
-        int countColumn = allWithCount.getColumnIndex(ApkProvider.DataColumns._COUNT);
+        int countColumn = allWithCount.getColumnIndex(Cols._COUNT);
         assertEquals(13, allWithCount.getInt(countColumn));
         allWithCount.close();
     }
@@ -268,15 +269,15 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertResultCount(0, queryAllApks());
 
         ContentValues values = new ContentValues();
-        values.put(ApkProvider.DataColumns.REPO_ID, 10);
-        values.put(ApkProvider.DataColumns.REPO_ADDRESS, "http://example.com");
-        values.put(ApkProvider.DataColumns.REPO_VERSION, 3);
-        values.put(ApkProvider.DataColumns.FEATURES, "Some features");
+        values.put(Cols.REPO_ID, 10);
+        values.put(Cols.REPO_ADDRESS, "http://example.com");
+        values.put(Cols.REPO_VERSION, 3);
+        values.put(Cols.FEATURES, "Some features");
         Uri uri = Assert.insertApk(contentResolver, "com.example.com", 1, values);
 
         assertResultCount(1, queryAllApks());
 
-        String[] projections = ApkProvider.DataColumns.ALL;
+        String[] projections = Cols.ALL;
         Cursor cursor = contentResolver.query(uri, projections, null, null, null);
         cursor.moveToFirst();
         Apk apk = new Apk(cursor);
@@ -340,8 +341,8 @@ public class ApkProviderTest extends FDroidProviderTest {
         Collections.addAll(apksToCheck, unknown);
 
         String[] projection = {
-            ApkProvider.DataColumns.PACKAGE_NAME,
-            ApkProvider.DataColumns.VERSION_CODE,
+            Cols.PACKAGE_NAME,
+            Cols.VERSION_CODE,
         };
 
         List<Apk> knownApks = ApkProvider.Helper.knownApks(context, apksToCheck, projection);
@@ -394,7 +395,7 @@ public class ApkProviderTest extends FDroidProviderTest {
 
         Uri apkUri = Assert.insertApk(contentResolver, "com.example", 10);
 
-        String[] allFields = ApkProvider.DataColumns.ALL;
+        String[] allFields = Cols.ALL;
         Cursor cursor = contentResolver.query(apkUri, allFields, null, null, null);
         assertResultCount(1, cursor);
 
@@ -455,9 +456,9 @@ public class ApkProviderTest extends FDroidProviderTest {
         }
 
         ContentValues values = new ContentValues();
-        values.put(ApkProvider.DataColumns.VERSION_NAME, "v1.1");
-        values.put(ApkProvider.DataColumns.HASH, "xxxxyyyy");
-        values.put(ApkProvider.DataColumns.HASH_TYPE, "a hash type");
+        values.put(Cols.VERSION_NAME, "v1.1");
+        values.put(Cols.HASH, "xxxxyyyy");
+        values.put(Cols.HASH_TYPE, "a hash type");
         Assert.insertApk(contentResolver, "com.example", 11, values);
 
         // ...and a few more for good measure...
@@ -478,8 +479,8 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertEquals("a hash type", apk.hashType);
 
         String[] projection = {
-            ApkProvider.DataColumns.PACKAGE_NAME,
-            ApkProvider.DataColumns.HASH,
+            Cols.PACKAGE_NAME,
+            Cols.HASH,
         };
 
         Apk apkLessFields = ApkProvider.Helper.find(context, "com.example", 11, projection);
@@ -537,7 +538,7 @@ public class ApkProviderTest extends FDroidProviderTest {
 
     protected Apk insertApkForRepo(String id, int versionCode, long repoId) {
         ContentValues additionalValues = new ContentValues();
-        additionalValues.put(ApkProvider.DataColumns.REPO_ID, repoId);
+        additionalValues.put(Cols.REPO_ID, repoId);
         Uri uri = Assert.insertApk(contentResolver, id, versionCode, additionalValues);
         return ApkProvider.Helper.get(context, uri);
     }

@@ -91,7 +91,7 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
     }
 
     protected void assertApp(String packageName, int[] versionCodes) {
-        List<Apk> apks = ApkProvider.Helper.findByPackageName(context, packageName, ApkProvider.DataColumns.ALL);
+        List<Apk> apks = ApkProvider.Helper.findByPackageName(context, packageName);
         assertApksExist(apks, packageName, versionCodes);
     }
 

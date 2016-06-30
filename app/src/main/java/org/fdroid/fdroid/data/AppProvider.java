@@ -13,6 +13,7 @@ import android.util.Log;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppTable.Cols;
 
 import java.util.ArrayList;
@@ -321,7 +322,7 @@ public class AppProvider extends FDroidProvider {
 
         private void addSuggestedApkVersionField() {
             addSuggestedApkField(
-                    ApkProvider.DataColumns.VERSION_NAME,
+                    ApkTable.Cols.VERSION_NAME,
                     Cols.SuggestedApk.VERSION_NAME);
         }
 

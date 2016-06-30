@@ -10,6 +10,7 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppTable;
 import org.robolectric.shadows.ShadowContentResolver;
 
@@ -206,16 +207,16 @@ public class Assert {
 
         ContentValues values = new ContentValues();
 
-        values.put(ApkProvider.DataColumns.PACKAGE_NAME, id);
-        values.put(ApkProvider.DataColumns.VERSION_CODE, versionCode);
+        values.put(ApkTable.Cols.PACKAGE_NAME, id);
+        values.put(ApkTable.Cols.VERSION_CODE, versionCode);
 
         // Required fields (NOT NULL in the database).
-        values.put(ApkProvider.DataColumns.REPO_ID, 1);
-        values.put(ApkProvider.DataColumns.VERSION_NAME, "The good one");
-        values.put(ApkProvider.DataColumns.HASH, "11111111aaaaaaaa");
-        values.put(ApkProvider.DataColumns.NAME, "Test Apk");
-        values.put(ApkProvider.DataColumns.SIZE, 10000);
-        values.put(ApkProvider.DataColumns.IS_COMPATIBLE, 1);
+        values.put(ApkTable.Cols.REPO_ID, 1);
+        values.put(ApkTable.Cols.VERSION_NAME, "The good one");
+        values.put(ApkTable.Cols.HASH, "11111111aaaaaaaa");
+        values.put(ApkTable.Cols.NAME, "Test Apk");
+        values.put(ApkTable.Cols.SIZE, 10000);
+        values.put(ApkTable.Cols.IS_COMPATIBLE, 1);
 
         values.putAll(additionalValues);
 

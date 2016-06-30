@@ -7,6 +7,7 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.Schema;
 
 import java.util.List;
 
@@ -101,7 +102,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     private void assertMainRepo(List<Repo> allRepos) {
         Repo repo = findRepo(REPO_MAIN, allRepos);
 
-        List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, ApkProvider.DataColumns.ALL);
+        List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL);
         assertEquals("Apks for main repo", apks.size(), 6);
         assertApksExist(apks, "com.uberspot.a2048", new int[]{18, 19});
         assertApksExist(apks, "org.adaway", new int[]{52, 53, 54});
@@ -127,7 +128,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     private void assertMainArchiveRepo(List<Repo> allRepos) {
         Repo repo = findRepo(REPO_ARCHIVE, allRepos);
 
-        List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, ApkProvider.DataColumns.ALL);
+        List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL);
         assertEquals("Apks for main archive repo", 13, apks.size());
         assertApksExist(apks, "org.adaway", new int[]{35, 36, 37, 38, 40, 42, 45, 46, 47, 48, 49, 50, 51});
     }
@@ -145,7 +146,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     private void assertConflictingRepo(List<Repo> allRepos) {
         Repo repo = findRepo(REPO_CONFLICTING, allRepos);
 
-        List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, ApkProvider.DataColumns.ALL);
+        List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL);
         assertEquals("Apks for main repo", 6, apks.size());
         assertApksExist(apks, "org.adaway", new int[]{50, 51, 52, 53});
         assertApksExist(apks, "org.dgtale.icsimport", new int[]{2, 3});
