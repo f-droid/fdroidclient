@@ -10,6 +10,7 @@ import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -257,17 +258,17 @@ class DBHelper extends SQLiteOpenHelper {
             int priority) {
 
         ContentValues values = new ContentValues();
-        values.put(RepoProvider.DataColumns.ADDRESS, address);
-        values.put(RepoProvider.DataColumns.NAME, name);
-        values.put(RepoProvider.DataColumns.DESCRIPTION, description);
-        values.put(RepoProvider.DataColumns.SIGNING_CERT, pubKey);
-        values.put(RepoProvider.DataColumns.FINGERPRINT, Utils.calcFingerprint(pubKey));
-        values.put(RepoProvider.DataColumns.MAX_AGE, 0);
-        values.put(RepoProvider.DataColumns.VERSION, version);
-        values.put(RepoProvider.DataColumns.IN_USE, inUse);
-        values.put(RepoProvider.DataColumns.PRIORITY, priority);
-        values.put(RepoProvider.DataColumns.LAST_ETAG, (String) null);
-        values.put(RepoProvider.DataColumns.TIMESTAMP, 0);
+        values.put(RepoTable.Cols.ADDRESS, address);
+        values.put(RepoTable.Cols.NAME, name);
+        values.put(RepoTable.Cols.DESCRIPTION, description);
+        values.put(RepoTable.Cols.SIGNING_CERT, pubKey);
+        values.put(RepoTable.Cols.FINGERPRINT, Utils.calcFingerprint(pubKey));
+        values.put(RepoTable.Cols.MAX_AGE, 0);
+        values.put(RepoTable.Cols.VERSION, version);
+        values.put(RepoTable.Cols.IN_USE, inUse);
+        values.put(RepoTable.Cols.PRIORITY, priority);
+        values.put(RepoTable.Cols.LAST_ETAG, (String) null);
+        values.put(RepoTable.Cols.TIMESTAMP, 0);
 
         Utils.debugLog(TAG, "Adding repository " + name);
         db.insert(TABLE_REPO, null, values);
@@ -518,10 +519,10 @@ class DBHelper extends SQLiteOpenHelper {
         if (oldVersion >= 55) {
             return;
         }
-        if (!columnExists(db, TABLE_REPO, RepoProvider.DataColumns.TIMESTAMP)) {
-            Utils.debugLog(TAG, "Adding " + RepoProvider.DataColumns.TIMESTAMP + " column to " + TABLE_REPO);
+        if (!columnExists(db, TABLE_REPO, RepoTable.Cols.TIMESTAMP)) {
+            Utils.debugLog(TAG, "Adding " + RepoTable.Cols.TIMESTAMP + " column to " + TABLE_REPO);
             db.execSQL("alter table " + TABLE_REPO + " add column "
-                    + RepoProvider.DataColumns.TIMESTAMP + " integer not null default 0");
+                    + RepoTable.Cols.TIMESTAMP + " integer not null default 0");
         }
     }
 

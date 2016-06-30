@@ -8,6 +8,7 @@ import android.net.Uri;
 import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
+import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.mock.MockApk;
 import org.fdroid.fdroid.mock.MockApp;
 import org.fdroid.fdroid.mock.MockRepo;
@@ -234,27 +235,27 @@ public class ApkProviderTest extends FDroidProviderTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testInsertWithInvalidExtraFieldDescription() {
-        assertInvalidExtraField(RepoProvider.DataColumns.DESCRIPTION);
+        assertInvalidExtraField(RepoTable.Cols.DESCRIPTION);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInsertWithInvalidExtraFieldAddress() {
-        assertInvalidExtraField(RepoProvider.DataColumns.ADDRESS);
+        assertInvalidExtraField(RepoTable.Cols.ADDRESS);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInsertWithInvalidExtraFieldFingerprint() {
-        assertInvalidExtraField(RepoProvider.DataColumns.FINGERPRINT);
+        assertInvalidExtraField(RepoTable.Cols.FINGERPRINT);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInsertWithInvalidExtraFieldName() {
-        assertInvalidExtraField(RepoProvider.DataColumns.NAME);
+        assertInvalidExtraField(RepoTable.Cols.NAME);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInsertWithInvalidExtraFieldSigningCert() {
-        assertInvalidExtraField(RepoProvider.DataColumns.SIGNING_CERT);
+        assertInvalidExtraField(RepoTable.Cols.SIGNING_CERT);
     }
 
     public void assertInvalidExtraField(String field) {

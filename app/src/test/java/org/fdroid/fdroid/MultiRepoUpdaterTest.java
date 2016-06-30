@@ -13,6 +13,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.FDroidProviderTest;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.Schema;
 import org.junit.After;
 import org.junit.Before;
 
@@ -163,9 +164,9 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         repo.name = name;
 
         ContentValues values = new ContentValues(2);
-        values.put(RepoProvider.DataColumns.SIGNING_CERT, repo.signingCertificate);
-        values.put(RepoProvider.DataColumns.ADDRESS, repo.address);
-        values.put(RepoProvider.DataColumns.NAME, repo.name);
+        values.put(Schema.RepoTable.Cols.SIGNING_CERT, repo.signingCertificate);
+        values.put(Schema.RepoTable.Cols.ADDRESS, repo.address);
+        values.put(Schema.RepoTable.Cols.NAME, repo.name);
 
         RepoProvider.Helper.insert(context, values);
 

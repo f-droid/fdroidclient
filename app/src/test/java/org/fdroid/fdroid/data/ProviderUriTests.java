@@ -63,7 +63,7 @@ public class ProviderUriTests {
     @Test
     public void validRepoProviderUris() {
         ShadowContentResolver.registerProvider(RepoProvider.getAuthority(), new RepoProvider());
-        String[] projection = new String[] {RepoProvider.DataColumns._ID};
+        String[] projection = new String[] {Schema.RepoTable.Cols._ID};
         assertValidUri(resolver, RepoProvider.getContentUri(), projection);
         assertValidUri(resolver, RepoProvider.getContentUri(10000L), projection);
         assertValidUri(resolver, RepoProvider.allExceptSwapUri(), projection);

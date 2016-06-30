@@ -36,6 +36,7 @@ import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.Locale;
 
@@ -100,9 +101,9 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
         repoId = getIntent().getLongExtra(ARG_REPO_ID, 0);
         final String[] projection = {
-            RepoProvider.DataColumns.NAME,
-            RepoProvider.DataColumns.ADDRESS,
-            RepoProvider.DataColumns.FINGERPRINT,
+                RepoTable.Cols.NAME,
+                RepoTable.Cols.ADDRESS,
+                RepoTable.Cols.FINGERPRINT,
         };
         repo = RepoProvider.Helper.findById(this, repoId, projection);
 
@@ -390,8 +391,8 @@ public class RepoDetailsActivity extends ActionBarActivity {
                         if (!TextUtils.isEmpty(name)) {
 
                             final ContentValues values = new ContentValues(2);
-                            values.put(RepoProvider.DataColumns.USERNAME, name);
-                            values.put(RepoProvider.DataColumns.PASSWORD, password);
+                            values.put(RepoTable.Cols.USERNAME, name);
+                            values.put(RepoTable.Cols.PASSWORD, password);
 
                             RepoProvider.Helper.update(RepoDetailsActivity.this, repo, values);
 

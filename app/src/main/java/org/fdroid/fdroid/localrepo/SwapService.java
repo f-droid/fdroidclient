@@ -34,6 +34,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
@@ -269,15 +270,15 @@ public class SwapService extends Service {
             // "Manage repos" UI on other device. Doesn't hurt to put something there though,
             // on the off chance that somebody is looking through the sqlite database which
             // contains the repos...
-            values.put(RepoProvider.DataColumns.NAME, peer.getName());
-            values.put(RepoProvider.DataColumns.ADDRESS, peer.getRepoAddress());
-            values.put(RepoProvider.DataColumns.DESCRIPTION, "");
+            values.put(Schema.RepoTable.Cols.NAME, peer.getName());
+            values.put(Schema.RepoTable.Cols.ADDRESS, peer.getRepoAddress());
+            values.put(Schema.RepoTable.Cols.DESCRIPTION, "");
             String fingerprint = peer.getFingerprint();
             if (!TextUtils.isEmpty(fingerprint)) {
-                values.put(RepoProvider.DataColumns.FINGERPRINT, peer.getFingerprint());
+                values.put(Schema.RepoTable.Cols.FINGERPRINT, peer.getFingerprint());
             }
-            values.put(RepoProvider.DataColumns.IN_USE, true);
-            values.put(RepoProvider.DataColumns.IS_SWAP, true);
+            values.put(Schema.RepoTable.Cols.IN_USE, true);
+            values.put(Schema.RepoTable.Cols.IS_SWAP, true);
             Uri uri = RepoProvider.Helper.insert(this, values);
             repo = RepoProvider.Helper.findByUri(this, uri);
         }

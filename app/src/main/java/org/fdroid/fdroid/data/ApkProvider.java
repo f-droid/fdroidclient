@@ -10,6 +10,7 @@ import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
+import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -213,8 +214,8 @@ public class ApkProvider extends FDroidProvider {
     private static final Map<String, String> REPO_FIELDS = new HashMap<>();
 
     static {
-        REPO_FIELDS.put(Cols.REPO_VERSION, RepoProvider.DataColumns.VERSION);
-        REPO_FIELDS.put(Cols.REPO_ADDRESS, RepoProvider.DataColumns.ADDRESS);
+        REPO_FIELDS.put(Cols.REPO_VERSION, RepoTable.Cols.VERSION);
+        REPO_FIELDS.put(Cols.REPO_ADDRESS, RepoTable.Cols.ADDRESS);
 
         MATCHER.addURI(getAuthority(), PATH_REPO + "/#", CODE_REPO);
         MATCHER.addURI(getAuthority(), PATH_APK + "/#/*", CODE_SINGLE);
