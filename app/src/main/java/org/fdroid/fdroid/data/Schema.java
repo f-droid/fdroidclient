@@ -145,7 +145,7 @@ public interface Schema {
 
     interface InstalledAppTable {
 
-        String NAME = DBHelper.TABLE_INSTALLED_APP;
+        String NAME = "fdroid_installedApp";
 
         interface Cols {
             String _ID = "rowid as _id"; // Required for CursorLoaders

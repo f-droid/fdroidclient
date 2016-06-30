@@ -13,6 +13,7 @@ import android.util.Log;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
 
 import java.util.HashMap;
@@ -99,7 +100,7 @@ public class InstalledAppProvider extends FDroidProvider {
 
     @Override
     protected String getTableName() {
-        return DBHelper.TABLE_INSTALLED_APP;
+        return InstalledAppTable.NAME;
     }
 
     @Override

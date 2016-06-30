@@ -274,7 +274,7 @@ public class AppProvider extends FDroidProvider {
         public void naturalJoinToInstalledTable() {
             if (!requiresInstalledTable) {
                 join(
-                        DBHelper.TABLE_INSTALLED_APP,
+                        InstalledAppTable.NAME,
                         "installed",
                         "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + ".id");
                 requiresInstalledTable = true;
@@ -284,7 +284,7 @@ public class AppProvider extends FDroidProvider {
         public void leftJoinToInstalledTable() {
             if (!requiresInstalledTable) {
                 leftJoin(
-                        DBHelper.TABLE_INSTALLED_APP,
+                        InstalledAppTable.NAME,
                         "installed",
                         "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + ".id");
                 requiresInstalledTable = true;

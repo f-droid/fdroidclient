@@ -93,8 +93,7 @@ class DBHelper extends SQLiteOpenHelper {
             + "iconUrlLarge text, "
             + "primary key(id));";
 
-    public static final String TABLE_INSTALLED_APP = "fdroid_installedApp";
-    private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + TABLE_INSTALLED_APP
+    private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + InstalledAppTable.NAME
             + " ( "
             + InstalledAppTable.Cols.PACKAGE_NAME + " TEXT NOT NULL PRIMARY KEY, "
             + InstalledAppTable.Cols.VERSION_CODE + " INT NOT NULL, "
@@ -105,7 +104,7 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH_TYPE + " TEXT NOT NULL, "
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
-    private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + TABLE_INSTALLED_APP + ";";
+    private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
     private static final int DB_VERSION = 57;
 
