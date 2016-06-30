@@ -9,6 +9,8 @@ import junit.framework.AssertionFailedError;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
+import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.Schema.AppTable;
 import org.robolectric.shadows.ShadowContentResolver;
 
 import java.util.ArrayList;
@@ -178,16 +180,16 @@ public class Assert {
     public static void insertApp(ShadowContentResolver resolver, String id, String name, ContentValues additionalValues) {
 
         ContentValues values = new ContentValues();
-        values.put(AppProvider.DataColumns.PACKAGE_NAME, id);
-        values.put(AppProvider.DataColumns.NAME, name);
+        values.put(AppTable.Cols.PACKAGE_NAME, id);
+        values.put(AppTable.Cols.NAME, name);
 
         // Required fields (NOT NULL in the database).
-        values.put(AppProvider.DataColumns.SUMMARY, "test summary");
-        values.put(AppProvider.DataColumns.DESCRIPTION, "test description");
-        values.put(AppProvider.DataColumns.LICENSE, "GPL?");
-        values.put(AppProvider.DataColumns.IS_COMPATIBLE, 1);
-        values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, 0);
-        values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, 0);
+        values.put(AppTable.Cols.SUMMARY, "test summary");
+        values.put(AppTable.Cols.DESCRIPTION, "test description");
+        values.put(AppTable.Cols.LICENSE, "GPL?");
+        values.put(AppTable.Cols.IS_COMPATIBLE, 1);
+        values.put(AppTable.Cols.IGNORE_ALLUPDATES, 0);
+        values.put(AppTable.Cols.IGNORE_THISUPDATE, 0);
 
         values.putAll(additionalValues);
 

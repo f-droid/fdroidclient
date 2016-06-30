@@ -47,6 +47,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
 
 import java.net.URL;
@@ -415,7 +416,7 @@ public class UpdateService extends IntentService {
     private void performUpdateNotification() {
         Cursor cursor = getContentResolver().query(
                 AppProvider.getCanUpdateUri(),
-                AppProvider.DataColumns.ALL,
+                Schema.AppTable.Cols.ALL,
                 null, null, null);
         if (cursor != null) {
             if (cursor.getCount() > 0) {
@@ -461,7 +462,7 @@ public class UpdateService extends IntentService {
     private void autoDownloadUpdates() {
         Cursor cursor = getContentResolver().query(
                 AppProvider.getCanUpdateUri(),
-                AppProvider.DataColumns.ALL,
+                Schema.AppTable.Cols.ALL,
                 null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();

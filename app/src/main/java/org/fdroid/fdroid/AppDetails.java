@@ -84,6 +84,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
@@ -667,8 +668,8 @@ public class AppDetails extends AppCompatActivity {
         Uri uri = AppProvider.getContentUri(packageName);
 
         ContentValues values = new ContentValues(2);
-        values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, ignoreAll ? 1 : 0);
-        values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, ignoreVersionCode);
+        values.put(Schema.AppTable.Cols.IGNORE_ALLUPDATES, ignoreAll ? 1 : 0);
+        values.put(Schema.AppTable.Cols.IGNORE_THISUPDATE, ignoreVersionCode);
 
         getContentResolver().update(uri, values, null, null);
 

@@ -79,7 +79,7 @@ public class ProviderUriTests {
     @Test
     public void validAppProviderUris() {
         ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
-        String[] projection = new String[] {AppProvider.DataColumns._ID};
+        String[] projection = new String[] {Schema.AppTable.Cols._ID};
         assertValidUri(resolver, AppProvider.getContentUri(), "content://org.fdroid.fdroid.data.AppProvider", projection);
         assertValidUri(resolver, AppProvider.getSearchUri("'searching!'"), "content://org.fdroid.fdroid.data.AppProvider/search/'searching!'", projection);
         assertValidUri(resolver, AppProvider.getSearchUri("/"), "content://org.fdroid.fdroid.data.AppProvider/search/%2F", projection);

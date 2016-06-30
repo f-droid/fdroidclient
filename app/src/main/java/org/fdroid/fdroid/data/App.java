@@ -32,6 +32,8 @@ import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.fdroid.fdroid.data.Schema.AppTable.Cols;
+
 public class App extends ValueObject implements Comparable<App> {
 
     private static final String TAG = "App";
@@ -151,103 +153,103 @@ public class App extends ValueObject implements Comparable<App> {
         for (int i = 0; i < cursor.getColumnCount(); i++) {
             String n = cursor.getColumnName(i);
             switch (n) {
-                case AppProvider.DataColumns.IS_COMPATIBLE:
+                case Cols.IS_COMPATIBLE:
                     compatible = cursor.getInt(i) == 1;
                     break;
-                case AppProvider.DataColumns.PACKAGE_NAME:
+                case Cols.PACKAGE_NAME:
                     packageName = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.NAME:
+                case Cols.NAME:
                     name = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.SUMMARY:
+                case Cols.SUMMARY:
                     summary = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.ICON:
+                case Cols.ICON:
                     icon = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.DESCRIPTION:
+                case Cols.DESCRIPTION:
                     description = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.LICENSE:
+                case Cols.LICENSE:
                     license = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.AUTHOR:
+                case Cols.AUTHOR:
                     author = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.EMAIL:
+                case Cols.EMAIL:
                     email = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.WEB_URL:
+                case Cols.WEB_URL:
                     webURL = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.TRACKER_URL:
+                case Cols.TRACKER_URL:
                     trackerURL = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.SOURCE_URL:
+                case Cols.SOURCE_URL:
                     sourceURL = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.CHANGELOG_URL:
+                case Cols.CHANGELOG_URL:
                     changelogURL = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.DONATE_URL:
+                case Cols.DONATE_URL:
                     donateURL = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.BITCOIN_ADDR:
+                case Cols.BITCOIN_ADDR:
                     bitcoinAddr = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.LITECOIN_ADDR:
+                case Cols.LITECOIN_ADDR:
                     litecoinAddr = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.FLATTR_ID:
+                case Cols.FLATTR_ID:
                     flattrID = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.SuggestedApk.VERSION_NAME:
+                case Cols.SuggestedApk.VERSION_NAME:
                     suggestedVersionName = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.SUGGESTED_VERSION_CODE:
+                case Cols.SUGGESTED_VERSION_CODE:
                     suggestedVersionCode = cursor.getInt(i);
                     break;
-                case AppProvider.DataColumns.UPSTREAM_VERSION_CODE:
+                case Cols.UPSTREAM_VERSION_CODE:
                     upstreamVersionCode = cursor.getInt(i);
                     break;
-                case AppProvider.DataColumns.UPSTREAM_VERSION_NAME:
+                case Cols.UPSTREAM_VERSION_NAME:
                     upstreamVersionName = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.ADDED:
+                case Cols.ADDED:
                     added = Utils.parseDate(cursor.getString(i), null);
                     break;
-                case AppProvider.DataColumns.LAST_UPDATED:
+                case Cols.LAST_UPDATED:
                     lastUpdated = Utils.parseDate(cursor.getString(i), null);
                     break;
-                case AppProvider.DataColumns.CATEGORIES:
+                case Cols.CATEGORIES:
                     categories = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
-                case AppProvider.DataColumns.ANTI_FEATURES:
+                case Cols.ANTI_FEATURES:
                     antiFeatures = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
-                case AppProvider.DataColumns.REQUIREMENTS:
+                case Cols.REQUIREMENTS:
                     requirements = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
-                case AppProvider.DataColumns.IGNORE_ALLUPDATES:
+                case Cols.IGNORE_ALLUPDATES:
                     ignoreAllUpdates = cursor.getInt(i) == 1;
                     break;
-                case AppProvider.DataColumns.IGNORE_THISUPDATE:
+                case Cols.IGNORE_THISUPDATE:
                     ignoreThisUpdate = cursor.getInt(i);
                     break;
-                case AppProvider.DataColumns.ICON_URL:
+                case Cols.ICON_URL:
                     iconUrl = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.ICON_URL_LARGE:
+                case Cols.ICON_URL_LARGE:
                     iconUrlLarge = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.InstalledApp.VERSION_CODE:
+                case Cols.InstalledApp.VERSION_CODE:
                     installedVersionCode = cursor.getInt(i);
                     break;
-                case AppProvider.DataColumns.InstalledApp.VERSION_NAME:
+                case Cols.InstalledApp.VERSION_NAME:
                     installedVersionName = cursor.getString(i);
                     break;
-                case AppProvider.DataColumns.InstalledApp.SIGNATURE:
+                case Cols.InstalledApp.SIGNATURE:
                     installedSig = cursor.getString(i);
                     break;
                 case "_id":
@@ -438,35 +440,35 @@ public class App extends ValueObject implements Comparable<App> {
     public ContentValues toContentValues() {
 
         final ContentValues values = new ContentValues();
-        values.put(AppProvider.DataColumns.PACKAGE_NAME, packageName);
-        values.put(AppProvider.DataColumns.NAME, name);
-        values.put(AppProvider.DataColumns.SUMMARY, summary);
-        values.put(AppProvider.DataColumns.ICON, icon);
-        values.put(AppProvider.DataColumns.ICON_URL, iconUrl);
-        values.put(AppProvider.DataColumns.ICON_URL_LARGE, iconUrlLarge);
-        values.put(AppProvider.DataColumns.DESCRIPTION, description);
-        values.put(AppProvider.DataColumns.LICENSE, license);
-        values.put(AppProvider.DataColumns.AUTHOR, author);
-        values.put(AppProvider.DataColumns.EMAIL, email);
-        values.put(AppProvider.DataColumns.WEB_URL, webURL);
-        values.put(AppProvider.DataColumns.TRACKER_URL, trackerURL);
-        values.put(AppProvider.DataColumns.SOURCE_URL, sourceURL);
-        values.put(AppProvider.DataColumns.CHANGELOG_URL, changelogURL);
-        values.put(AppProvider.DataColumns.DONATE_URL, donateURL);
-        values.put(AppProvider.DataColumns.BITCOIN_ADDR, bitcoinAddr);
-        values.put(AppProvider.DataColumns.LITECOIN_ADDR, litecoinAddr);
-        values.put(AppProvider.DataColumns.FLATTR_ID, flattrID);
-        values.put(AppProvider.DataColumns.ADDED, Utils.formatDate(added, ""));
-        values.put(AppProvider.DataColumns.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
-        values.put(AppProvider.DataColumns.SUGGESTED_VERSION_CODE, suggestedVersionCode);
-        values.put(AppProvider.DataColumns.UPSTREAM_VERSION_NAME, upstreamVersionName);
-        values.put(AppProvider.DataColumns.UPSTREAM_VERSION_CODE, upstreamVersionCode);
-        values.put(AppProvider.DataColumns.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
-        values.put(AppProvider.DataColumns.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
-        values.put(AppProvider.DataColumns.REQUIREMENTS, Utils.serializeCommaSeparatedString(requirements));
-        values.put(AppProvider.DataColumns.IS_COMPATIBLE, compatible ? 1 : 0);
-        values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, ignoreAllUpdates ? 1 : 0);
-        values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, ignoreThisUpdate);
+        values.put(Cols.PACKAGE_NAME, packageName);
+        values.put(Cols.NAME, name);
+        values.put(Cols.SUMMARY, summary);
+        values.put(Cols.ICON, icon);
+        values.put(Cols.ICON_URL, iconUrl);
+        values.put(Cols.ICON_URL_LARGE, iconUrlLarge);
+        values.put(Cols.DESCRIPTION, description);
+        values.put(Cols.LICENSE, license);
+        values.put(Cols.AUTHOR, author);
+        values.put(Cols.EMAIL, email);
+        values.put(Cols.WEB_URL, webURL);
+        values.put(Cols.TRACKER_URL, trackerURL);
+        values.put(Cols.SOURCE_URL, sourceURL);
+        values.put(Cols.CHANGELOG_URL, changelogURL);
+        values.put(Cols.DONATE_URL, donateURL);
+        values.put(Cols.BITCOIN_ADDR, bitcoinAddr);
+        values.put(Cols.LITECOIN_ADDR, litecoinAddr);
+        values.put(Cols.FLATTR_ID, flattrID);
+        values.put(Cols.ADDED, Utils.formatDate(added, ""));
+        values.put(Cols.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
+        values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVersionCode);
+        values.put(Cols.UPSTREAM_VERSION_NAME, upstreamVersionName);
+        values.put(Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
+        values.put(Cols.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
+        values.put(Cols.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
+        values.put(Cols.REQUIREMENTS, Utils.serializeCommaSeparatedString(requirements));
+        values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);
+        values.put(Cols.IGNORE_ALLUPDATES, ignoreAllUpdates ? 1 : 0);
+        values.put(Cols.IGNORE_THISUPDATE, ignoreThisUpdate);
 
         return values;
     }

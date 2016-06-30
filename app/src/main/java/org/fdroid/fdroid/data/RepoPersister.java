@@ -32,8 +32,8 @@ public class RepoPersister {
      * is essentially completely transient, and can be nuked at any time.
      */
     private static final String[] APP_FIELDS_TO_IGNORE = {
-        AppProvider.DataColumns.IGNORE_ALLUPDATES,
-        AppProvider.DataColumns.IGNORE_THISUPDATE,
+        Schema.AppTable.Cols.IGNORE_ALLUPDATES,
+        Schema.AppTable.Cols.IGNORE_THISUPDATE,
     };
 
     /**
@@ -214,7 +214,7 @@ public class RepoPersister {
      * array.
      */
     private boolean isAppInDatabase(App app) {
-        String[] fields = {AppProvider.DataColumns.PACKAGE_NAME};
+        String[] fields = {Schema.AppTable.Cols.PACKAGE_NAME};
         App found = AppProvider.Helper.findByPackageName(context.getContentResolver(), app.packageName, fields);
         return found != null;
     }

@@ -8,6 +8,7 @@ import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.Schema.AppTable.Cols;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +31,7 @@ import static org.junit.Assert.assertTrue;
 @RunWith(RobolectricGradleTestRunner.class)
 public class AppProviderTest extends FDroidProviderTest {
 
-    private static final String[] PROJ = AppProvider.DataColumns.ALL;
+    private static final String[] PROJ = Cols.ALL;
 
     @Before
     public void setup() {
@@ -86,9 +87,9 @@ public class AppProviderTest extends FDroidProviderTest {
             String packageName, int installedVercode, int suggestedVercode,
             boolean ignoreAll, int ignoreVercode) {
         ContentValues values = new ContentValues(3);
-        values.put(AppProvider.DataColumns.SUGGESTED_VERSION_CODE, suggestedVercode);
-        values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, ignoreAll);
-        values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, ignoreVercode);
+        values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVercode);
+        values.put(Cols.IGNORE_ALLUPDATES, ignoreAll);
+        values.put(Cols.IGNORE_THISUPDATE, ignoreVercode);
         insertApp(packageName, "App: " + packageName, values);
 
         InstalledAppTestUtils.install(context, packageName, installedVercode, "v" + installedVercode);
@@ -135,7 +136,7 @@ public class AppProviderTest extends FDroidProviderTest {
         assertFalse(installedOldIgnoreLatest.canAndWantToUpdate());
         assertTrue(installedOldIgnoreNewerNotLatest.canAndWantToUpdate());
 
-        Cursor canUpdateCursor = r.query(AppProvider.getCanUpdateUri(), AppProvider.DataColumns.ALL, null, null, null);
+        Cursor canUpdateCursor = r.query(AppProvider.getCanUpdateUri(), Cols.ALL, null, null, null);
         assertNotNull(canUpdateCursor);
         canUpdateCursor.moveToFirst();
         List<String> canUpdateIds = new ArrayList<>(canUpdateCursor.getCount());
@@ -168,7 +169,7 @@ public class AppProviderTest extends FDroidProviderTest {
 
         assertResultCount(contentResolver, 10, AppProvider.getContentUri(), PROJ);
 
-        String[] projection = {AppProvider.DataColumns.PACKAGE_NAME};
+        String[] projection = {Cols.PACKAGE_NAME};
         List<App> ignoredApps = AppProvider.Helper.findIgnored(context, projection);
 
         String[] expectedIgnored = {
@@ -251,9 +252,9 @@ public class AppProviderTest extends FDroidProviderTest {
 
     private Cursor queryAllApps() {
         String[] projection = new String[] {
-                AppProvider.DataColumns._ID,
-                AppProvider.DataColumns.NAME,
-                AppProvider.DataColumns.PACKAGE_NAME,
+                Cols._ID,
+                Cols.NAME,
+                Cols.PACKAGE_NAME,
         };
         return contentResolver.query(AppProvider.getContentUri(), projection, null, null, null);
     }
@@ -342,23 +343,23 @@ public class AppProviderTest extends FDroidProviderTest {
 
     private void insertAppWithCategory(String id, String name, String categories) {
         ContentValues values = new ContentValues(1);
-        values.put(AppProvider.DataColumns.CATEGORIES, categories);
+        values.put(Cols.CATEGORIES, categories);
         insertApp(id, name, values);
     }
 
     public void insertApp(String id, String name, ContentValues additionalValues) {
 
         ContentValues values = new ContentValues();
-        values.put(AppProvider.DataColumns.PACKAGE_NAME, id);
-        values.put(AppProvider.DataColumns.NAME, name);
+        values.put(Cols.PACKAGE_NAME, id);
+        values.put(Cols.NAME, name);
 
         // Required fields (NOT NULL in the database).
-        values.put(AppProvider.DataColumns.SUMMARY, "test summary");
-        values.put(AppProvider.DataColumns.DESCRIPTION, "test description");
-        values.put(AppProvider.DataColumns.LICENSE, "GPL?");
-        values.put(AppProvider.DataColumns.IS_COMPATIBLE, 1);
-        values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, 0);
-        values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, 0);
+        values.put(Cols.SUMMARY, "test summary");
+        values.put(Cols.DESCRIPTION, "test description");
+        values.put(Cols.LICENSE, "GPL?");
+        values.put(Cols.IS_COMPATIBLE, 1);
+        values.put(Cols.IGNORE_ALLUPDATES, 0);
+        values.put(Cols.IGNORE_THISUPDATE, 0);
 
         values.putAll(additionalValues);
 
