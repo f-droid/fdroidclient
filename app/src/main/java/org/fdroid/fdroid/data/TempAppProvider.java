@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteException;
 import android.net.Uri;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.AppTable;
 
 /**
  * This class does all of its operations in a temporary sqlite table.
@@ -21,7 +22,7 @@ public class TempAppProvider extends AppProvider {
 
     private static final String PROVIDER_NAME = "TempAppProvider";
 
-    private static final String TABLE_TEMP_APP = "temp_" + DBHelper.TABLE_APP;
+    private static final String TABLE_TEMP_APP = "temp_" + AppTable.NAME;
 
     private static final String PATH_INIT = "init";
     private static final String PATH_COMMIT = "commit";
@@ -129,7 +130,7 @@ public class TempAppProvider extends AppProvider {
         final SQLiteDatabase db = db();
         ensureTempTableDetached(db);
         db.execSQL("ATTACH DATABASE ':memory:' AS " + DB);
-        db.execSQL("CREATE TABLE " + DB + "." + getTableName() + " AS SELECT * FROM main." + DBHelper.TABLE_APP);
+        db.execSQL("CREATE TABLE " + DB + "." + getTableName() + " AS SELECT * FROM main." + AppTable.NAME);
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (id);");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (upstreamVercode);");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (compatible);");
@@ -143,8 +144,8 @@ public class TempAppProvider extends AppProvider {
             final String tempApp = DB + "." + TempAppProvider.TABLE_TEMP_APP;
             final String tempApk = DB + "." + TempApkProvider.TABLE_TEMP_APK;
 
-            db.execSQL("DELETE FROM " + DBHelper.TABLE_APP + " WHERE 1");
-            db.execSQL("INSERT INTO " + DBHelper.TABLE_APP + " SELECT * FROM " + tempApp);
+            db.execSQL("DELETE FROM " + AppTable.NAME + " WHERE 1");
+            db.execSQL("INSERT INTO " + AppTable.NAME + " SELECT * FROM " + tempApp);
 
             db.execSQL("DELETE FROM " + ApkTable.NAME + " WHERE 1");
             db.execSQL("INSERT INTO " + ApkTable.NAME + " SELECT * FROM " + tempApk);

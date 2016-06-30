@@ -10,6 +10,7 @@ import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.AppTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
@@ -58,8 +59,7 @@ class DBHelper extends SQLiteOpenHelper {
             + "primary key(id, vercode)"
             + ");";
 
-    public static final String TABLE_APP = "fdroid_app";
-    private static final String CREATE_TABLE_APP = "CREATE TABLE " + TABLE_APP
+    private static final String CREATE_TABLE_APP = "CREATE TABLE " + AppTable.NAME
             + " ( "
             + "id text not null, "
             + "name text not null, "
@@ -456,19 +456,19 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void addChangelogToApp(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 48 || columnExists(db, TABLE_APP, "changelogURL")) {
+        if (oldVersion >= 48 || columnExists(db, AppTable.NAME, "changelogURL")) {
             return;
         }
-        Utils.debugLog(TAG, "Adding changelogURL column to " + TABLE_APP);
-        db.execSQL("alter table " + TABLE_APP + " add column changelogURL text");
+        Utils.debugLog(TAG, "Adding changelogURL column to " + AppTable.NAME);
+        db.execSQL("alter table " + AppTable.NAME + " add column changelogURL text");
     }
 
     private void addIconUrlLargeToApp(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 49 || columnExists(db, TABLE_APP, "iconUrlLarge")) {
+        if (oldVersion >= 49 || columnExists(db, AppTable.NAME, "iconUrlLarge")) {
             return;
         }
-        Utils.debugLog(TAG, "Adding iconUrlLarge columns to " + TABLE_APP);
-        db.execSQL("alter table " + TABLE_APP + " add column iconUrlLarge text");
+        Utils.debugLog(TAG, "Adding iconUrlLarge columns to " + AppTable.NAME);
+        db.execSQL("alter table " + AppTable.NAME + " add column iconUrlLarge text");
     }
 
     private void updateIconUrlLarge(SQLiteDatabase db, int oldVersion) {
@@ -484,13 +484,13 @@ class DBHelper extends SQLiteOpenHelper {
         if (oldVersion >= 53) {
             return;
         }
-        if (!columnExists(db, TABLE_APP, "author")) {
-            Utils.debugLog(TAG, "Adding author column to " + TABLE_APP);
-            db.execSQL("alter table " + TABLE_APP + " add column author text");
+        if (!columnExists(db, AppTable.NAME, "author")) {
+            Utils.debugLog(TAG, "Adding author column to " + AppTable.NAME);
+            db.execSQL("alter table " + AppTable.NAME + " add column author text");
         }
-        if (!columnExists(db, TABLE_APP, "email")) {
-            Utils.debugLog(TAG, "Adding email column to " + TABLE_APP);
-            db.execSQL("alter table " + TABLE_APP + " add column email text");
+        if (!columnExists(db, AppTable.NAME, "email")) {
+            Utils.debugLog(TAG, "Adding email column to " + AppTable.NAME);
+            db.execSQL("alter table " + AppTable.NAME + " add column email text");
         }
     }
 
@@ -540,7 +540,7 @@ class DBHelper extends SQLiteOpenHelper {
         }
         context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
                 .putBoolean("triedEmptyUpdate", false).commit();
-        db.execSQL("drop table " + TABLE_APP);
+        db.execSQL("drop table " + AppTable.NAME);
         db.execSQL("drop table " + ApkTable.NAME);
         clearRepoEtags(db);
         createAppApk(db);
@@ -548,7 +548,7 @@ class DBHelper extends SQLiteOpenHelper {
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
-        db.execSQL("create index app_id on " + TABLE_APP + " (id);");
+        db.execSQL("create index app_id on " + AppTable.NAME + " (id);");
         db.execSQL(CREATE_TABLE_APK);
         db.execSQL("create index apk_vercode on " + ApkTable.NAME + " (vercode);");
         db.execSQL("create index apk_id on " + ApkTable.NAME + " (id);");

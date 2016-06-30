@@ -11,7 +11,7 @@ public interface Schema {
 
     interface AppTable {
 
-        String NAME = DBHelper.TABLE_APP;
+        String NAME = "fdroid_app";
 
         interface Cols {
             String _ID = "rowid as _id"; // Required for CursorLoaders
@@ -76,7 +76,9 @@ public interface Schema {
      * This information is retrieved from the repositories.
      */
     interface ApkTable {
+
         String NAME = "fdroid_apk";
+
         interface Cols extends BaseColumns {
             String _COUNT_DISTINCT_ID = "countDistinct";
 
@@ -112,7 +114,9 @@ public interface Schema {
     }
 
     interface RepoTable {
+
         String NAME = "fdroid_repo";
+
         interface Cols extends BaseColumns {
 
             String ADDRESS      = "address";
