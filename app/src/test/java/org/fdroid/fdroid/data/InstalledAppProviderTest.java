@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,32 +38,32 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         assertEquals(foundBefore.size(), 0);
 
         ContentValues values = new ContentValues();
-        values.put(InstalledAppProvider.DataColumns.PACKAGE_NAME, "org.example.test-app");
-        values.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL, "Test App");
-        values.put(InstalledAppProvider.DataColumns.VERSION_CODE, 1021);
-        values.put(InstalledAppProvider.DataColumns.VERSION_NAME, "Longhorn");
-        values.put(InstalledAppProvider.DataColumns.HASH, "has of test app");
-        values.put(InstalledAppProvider.DataColumns.HASH_TYPE, "fake hash type");
-        values.put(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME, 100000000L);
-        values.put(InstalledAppProvider.DataColumns.SIGNATURE, "000111222333444555666777888999aaabbbcccdddeeefff");
+        values.put(Cols.PACKAGE_NAME, "org.example.test-app");
+        values.put(Cols.APPLICATION_LABEL, "Test App");
+        values.put(Cols.VERSION_CODE, 1021);
+        values.put(Cols.VERSION_NAME, "Longhorn");
+        values.put(Cols.HASH, "has of test app");
+        values.put(Cols.HASH_TYPE, "fake hash type");
+        values.put(Cols.LAST_UPDATE_TIME, 100000000L);
+        values.put(Cols.SIGNATURE, "000111222333444555666777888999aaabbbcccdddeeefff");
         contentResolver.insert(InstalledAppProvider.getContentUri(), values);
 
         Map<String, Long> foundAfter = InstalledAppProvider.Helper.all(RuntimeEnvironment.application);
         assertEquals(1, foundAfter.size());
         assertEquals(100000000L, foundAfter.get("org.example.test-app").longValue());
 
-        Cursor cursor = contentResolver.query(InstalledAppProvider.getAppUri("org.example.test-app"), InstalledAppProvider.DataColumns.ALL, null, null, null);
+        Cursor cursor = contentResolver.query(InstalledAppProvider.getAppUri("org.example.test-app"), Cols.ALL, null, null, null);
         assertEquals(cursor.getCount(), 1);
 
         cursor.moveToFirst();
-        assertEquals("org.example.test-app", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)));
-        assertEquals("Test App", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APPLICATION_LABEL)));
-        assertEquals(1021, cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE)));
-        assertEquals("Longhorn", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_NAME)));
-        assertEquals("has of test app", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.HASH)));
-        assertEquals("fake hash type", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.HASH_TYPE)));
-        assertEquals(100000000L, cursor.getLong(cursor.getColumnIndex(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME)));
-        assertEquals("000111222333444555666777888999aaabbbcccdddeeefff", cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.SIGNATURE)));
+        assertEquals("org.example.test-app", cursor.getString(cursor.getColumnIndex(Cols.PACKAGE_NAME)));
+        assertEquals("Test App", cursor.getString(cursor.getColumnIndex(Cols.APPLICATION_LABEL)));
+        assertEquals(1021, cursor.getInt(cursor.getColumnIndex(Cols.VERSION_CODE)));
+        assertEquals("Longhorn", cursor.getString(cursor.getColumnIndex(Cols.VERSION_NAME)));
+        assertEquals("has of test app", cursor.getString(cursor.getColumnIndex(Cols.HASH)));
+        assertEquals("fake hash type", cursor.getString(cursor.getColumnIndex(Cols.HASH_TYPE)));
+        assertEquals(100000000L, cursor.getLong(cursor.getColumnIndex(Cols.LAST_UPDATE_TIME)));
+        assertEquals("000111222333444555666777888999aaabbbcccdddeeefff", cursor.getString(cursor.getColumnIndex(Cols.SIGNATURE)));
 
         cursor.close();
     }
@@ -123,16 +124,16 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         Uri uri = InstalledAppProvider.getAppUri(packageName);
 
         String[] projection = {
-                InstalledAppProvider.DataColumns.PACKAGE_NAME,
-                InstalledAppProvider.DataColumns.LAST_UPDATE_TIME,
+                Cols.PACKAGE_NAME,
+                Cols.LAST_UPDATE_TIME,
         };
 
         Cursor cursor = contentResolver.query(uri, projection, null, null, null);
         assertNotNull(cursor);
         assertEquals("App \"" + packageName + "\" not installed", 1, cursor.getCount());
         cursor.moveToFirst();
-        assertEquals(packageName, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)));
-        long lastUpdateTime = cursor.getLong(cursor.getColumnIndex(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME));
+        assertEquals(packageName, cursor.getString(cursor.getColumnIndex(Cols.PACKAGE_NAME)));
+        long lastUpdateTime = cursor.getLong(cursor.getColumnIndex(Cols.LAST_UPDATE_TIME));
         assertTrue(lastUpdateTime > 0);
         assertTrue(lastUpdateTime < System.currentTimeMillis());
         cursor.close();
@@ -142,7 +143,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         assertNotNull(cursor);
         assertEquals("App \"" + packageName + "\" not installed", 1, cursor.getCount());
         cursor.moveToFirst();
-        assertTrue(lastUpdateTime < cursor.getLong(cursor.getColumnIndex(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME)));
+        assertTrue(lastUpdateTime < cursor.getLong(cursor.getColumnIndex(Cols.LAST_UPDATE_TIME)));
         cursor.close();
     }
 
@@ -168,15 +169,15 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
     private ContentValues createContentValues(String appId, int versionCode, String versionNumber) {
         ContentValues values = new ContentValues(3);
         if (appId != null) {
-            values.put(InstalledAppProvider.DataColumns.PACKAGE_NAME, appId);
+            values.put(Cols.PACKAGE_NAME, appId);
         }
-        values.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL, "Mock app: " + appId);
-        values.put(InstalledAppProvider.DataColumns.VERSION_CODE, versionCode);
-        values.put(InstalledAppProvider.DataColumns.VERSION_NAME, versionNumber);
-        values.put(InstalledAppProvider.DataColumns.SIGNATURE, "");
-        values.put(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME, System.currentTimeMillis());
-        values.put(InstalledAppProvider.DataColumns.HASH_TYPE, "sha256");
-        values.put(InstalledAppProvider.DataColumns.HASH, "cafecafecafecafecafecafecafecafecafecafecafecafecafecafecafecafe");
+        values.put(Cols.APPLICATION_LABEL, "Mock app: " + appId);
+        values.put(Cols.VERSION_CODE, versionCode);
+        values.put(Cols.VERSION_NAME, versionNumber);
+        values.put(Cols.SIGNATURE, "");
+        values.put(Cols.LAST_UPDATE_TIME, System.currentTimeMillis());
+        values.put(Cols.HASH_TYPE, "sha256");
+        values.put(Cols.HASH, "cafecafecafecafecafecafecafecafecafecafecafecafecafecafecafecafe");
         return values;
     }
 

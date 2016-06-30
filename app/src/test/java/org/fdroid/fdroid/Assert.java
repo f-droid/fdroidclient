@@ -11,6 +11,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppTable;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.robolectric.shadows.ShadowContentResolver;
 
 import java.util.ArrayList;
@@ -154,10 +155,10 @@ public class Assert {
         Uri uri = InstalledAppProvider.getAppUri(appId);
 
         String[] projection = {
-                InstalledAppProvider.DataColumns.PACKAGE_NAME,
-                InstalledAppProvider.DataColumns.VERSION_CODE,
-                InstalledAppProvider.DataColumns.VERSION_NAME,
-                InstalledAppProvider.DataColumns.APPLICATION_LABEL,
+                InstalledAppTable.Cols.PACKAGE_NAME,
+                InstalledAppTable.Cols.VERSION_CODE,
+                InstalledAppTable.Cols.VERSION_NAME,
+                InstalledAppTable.Cols.APPLICATION_LABEL,
         };
 
         Cursor cursor = resolver.query(uri, projection, null, null, null);
@@ -167,9 +168,9 @@ public class Assert {
 
         cursor.moveToFirst();
 
-        assertEquals(appId, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)));
-        assertEquals(versionCode, cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE)));
-        assertEquals(versionName, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_NAME)));
+        assertEquals(appId, cursor.getString(cursor.getColumnIndex(InstalledAppTable.Cols.PACKAGE_NAME)));
+        assertEquals(versionCode, cursor.getInt(cursor.getColumnIndex(InstalledAppTable.Cols.VERSION_CODE)));
+        assertEquals(versionName, cursor.getString(cursor.getColumnIndex(InstalledAppTable.Cols.VERSION_NAME)));
         cursor.close();
     }
 

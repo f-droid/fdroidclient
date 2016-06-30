@@ -143,4 +143,26 @@ public interface Schema {
         }
     }
 
+    interface InstalledAppTable {
+
+        String NAME = DBHelper.TABLE_INSTALLED_APP;
+
+        interface Cols {
+            String _ID = "rowid as _id"; // Required for CursorLoaders
+            String PACKAGE_NAME = "appId";
+            String VERSION_CODE = "versionCode";
+            String VERSION_NAME = "versionName";
+            String APPLICATION_LABEL = "applicationLabel";
+            String SIGNATURE = "sig";
+            String LAST_UPDATE_TIME = "lastUpdateTime";
+            String HASH_TYPE = "hashType";
+            String HASH = "hash";
+
+            String[] ALL = {
+                    _ID, PACKAGE_NAME, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
+                    SIGNATURE, LAST_UPDATE_TIME, HASH_TYPE, HASH,
+            };
+        }
+    }
+
 }

@@ -16,6 +16,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppTable;
 import org.fdroid.fdroid.data.Schema.AppTable.Cols;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
@@ -275,7 +276,7 @@ public class AppProvider extends FDroidProvider {
                 join(
                         DBHelper.TABLE_INSTALLED_APP,
                         "installed",
-                        "installed." + InstalledAppProvider.DataColumns.PACKAGE_NAME + " = " + getTableName() + ".id");
+                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + ".id");
                 requiresInstalledTable = true;
             }
         }
@@ -285,7 +286,7 @@ public class AppProvider extends FDroidProvider {
                 leftJoin(
                         DBHelper.TABLE_INSTALLED_APP,
                         "installed",
-                        "installed." + InstalledAppProvider.DataColumns.PACKAGE_NAME + " = " + getTableName() + ".id");
+                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + ".id");
                 requiresInstalledTable = true;
             }
         }
@@ -341,21 +342,21 @@ public class AppProvider extends FDroidProvider {
 
         private void addInstalledAppVersionName() {
             addInstalledAppField(
-                    InstalledAppProvider.DataColumns.VERSION_NAME,
+                    InstalledAppTable.Cols.VERSION_NAME,
                     Cols.InstalledApp.VERSION_NAME
             );
         }
 
         private void addInstalledAppVersionCode() {
             addInstalledAppField(
-                    InstalledAppProvider.DataColumns.VERSION_CODE,
+                    InstalledAppTable.Cols.VERSION_CODE,
                     Cols.InstalledApp.VERSION_CODE
             );
         }
 
         private void addInstalledSig() {
             addInstalledAppField(
-                    InstalledAppProvider.DataColumns.SIGNATURE,
+                    InstalledAppTable.Cols.SIGNATURE,
                     Cols.InstalledApp.SIGNATURE
             );
         }

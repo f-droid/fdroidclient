@@ -11,6 +11,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppTable;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
@@ -95,14 +96,14 @@ class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_INSTALLED_APP = "fdroid_installedApp";
     private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + TABLE_INSTALLED_APP
             + " ( "
-            + InstalledAppProvider.DataColumns.PACKAGE_NAME + " TEXT NOT NULL PRIMARY KEY, "
-            + InstalledAppProvider.DataColumns.VERSION_CODE + " INT NOT NULL, "
-            + InstalledAppProvider.DataColumns.VERSION_NAME + " TEXT NOT NULL, "
-            + InstalledAppProvider.DataColumns.APPLICATION_LABEL + " TEXT NOT NULL, "
-            + InstalledAppProvider.DataColumns.SIGNATURE + " TEXT NOT NULL, "
-            + InstalledAppProvider.DataColumns.LAST_UPDATE_TIME + " INTEGER NOT NULL DEFAULT 0, "
-            + InstalledAppProvider.DataColumns.HASH_TYPE + " TEXT NOT NULL, "
-            + InstalledAppProvider.DataColumns.HASH + " TEXT NOT NULL"
+            + InstalledAppTable.Cols.PACKAGE_NAME + " TEXT NOT NULL PRIMARY KEY, "
+            + InstalledAppTable.Cols.VERSION_CODE + " INT NOT NULL, "
+            + InstalledAppTable.Cols.VERSION_NAME + " TEXT NOT NULL, "
+            + InstalledAppTable.Cols.APPLICATION_LABEL + " TEXT NOT NULL, "
+            + InstalledAppTable.Cols.SIGNATURE + " TEXT NOT NULL, "
+            + InstalledAppTable.Cols.LAST_UPDATE_TIME + " INTEGER NOT NULL DEFAULT 0, "
+            + InstalledAppTable.Cols.HASH_TYPE + " TEXT NOT NULL, "
+            + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + TABLE_INSTALLED_APP + ";";
 

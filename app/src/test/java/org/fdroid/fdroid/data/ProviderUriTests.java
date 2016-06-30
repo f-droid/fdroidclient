@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.data;
 
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.mock.MockApk;
 import org.junit.After;
 import org.junit.Before;
@@ -44,7 +45,7 @@ public class ProviderUriTests {
     @Test
     public void validInstalledAppProviderUris() {
         ShadowContentResolver.registerProvider(InstalledAppProvider.getAuthority(), new InstalledAppProvider());
-        String[] projection = new String[] {InstalledAppProvider.DataColumns._ID};
+        String[] projection = new String[] {InstalledAppTable.Cols._ID};
         assertValidUri(resolver, InstalledAppProvider.getContentUri(), projection);
         assertValidUri(resolver, InstalledAppProvider.getAppUri("org.example.app"), projection);
         assertValidUri(resolver, InstalledAppProvider.getSearchUri("blah"), projection);

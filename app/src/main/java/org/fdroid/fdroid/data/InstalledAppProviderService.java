@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
@@ -204,16 +205,16 @@ public class InstalledAppProviderService extends IntentService {
     static void insertAppIntoDb(Context context, PackageInfo packageInfo, String hashType, String hash) {
         Uri uri = InstalledAppProvider.getContentUri();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(InstalledAppProvider.DataColumns.PACKAGE_NAME, packageInfo.packageName);
-        contentValues.put(InstalledAppProvider.DataColumns.VERSION_CODE, packageInfo.versionCode);
-        contentValues.put(InstalledAppProvider.DataColumns.VERSION_NAME, packageInfo.versionName);
-        contentValues.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL,
+        contentValues.put(InstalledAppTable.Cols.PACKAGE_NAME, packageInfo.packageName);
+        contentValues.put(InstalledAppTable.Cols.VERSION_CODE, packageInfo.versionCode);
+        contentValues.put(InstalledAppTable.Cols.VERSION_NAME, packageInfo.versionName);
+        contentValues.put(InstalledAppTable.Cols.APPLICATION_LABEL,
                 InstalledAppProvider.getApplicationLabel(context, packageInfo.packageName));
-        contentValues.put(InstalledAppProvider.DataColumns.SIGNATURE, getPackageSig(packageInfo));
-        contentValues.put(InstalledAppProvider.DataColumns.LAST_UPDATE_TIME, packageInfo.lastUpdateTime);
+        contentValues.put(InstalledAppTable.Cols.SIGNATURE, getPackageSig(packageInfo));
+        contentValues.put(InstalledAppTable.Cols.LAST_UPDATE_TIME, packageInfo.lastUpdateTime);
 
-        contentValues.put(InstalledAppProvider.DataColumns.HASH_TYPE, hashType);
-        contentValues.put(InstalledAppProvider.DataColumns.HASH, hash);
+        contentValues.put(InstalledAppTable.Cols.HASH_TYPE, hashType);
+        contentValues.put(InstalledAppTable.Cols.HASH, hash);
 
         context.getContentResolver().insert(uri, contentValues);
     }
