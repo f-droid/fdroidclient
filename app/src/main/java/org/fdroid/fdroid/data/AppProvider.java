@@ -165,7 +165,7 @@ public class AppProvider extends FDroidProvider {
     static final class UpgradeHelper {
 
         public static void updateIconUrls(Context context, SQLiteDatabase db) {
-            AppProvider.updateIconUrls(context, db, DBHelper.TABLE_APP, DBHelper.TABLE_APK);
+            AppProvider.updateIconUrls(context, db, DBHelper.TABLE_APP, ApkTable.NAME);
         }
 
     }
@@ -527,7 +527,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     protected String getApkTableName() {
-        return DBHelper.TABLE_APK;
+        return ApkTable.NAME;
     }
 
     @Override

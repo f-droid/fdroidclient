@@ -70,8 +70,13 @@ public interface Schema {
         }
     }
 
+    /**
+     * This table stores details of all the application versions we
+     * know about. Each relates directly back to an entry in TABLE_APP.
+     * This information is retrieved from the repositories.
+     */
     interface ApkTable {
-        String NAME = DBHelper.TABLE_APK;
+        String NAME = "fdroid_apk";
         interface Cols extends BaseColumns {
             String _COUNT_DISTINCT_ID = "countDistinct";
 

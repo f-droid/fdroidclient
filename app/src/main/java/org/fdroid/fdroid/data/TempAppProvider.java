@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
 
+import org.fdroid.fdroid.data.Schema.ApkTable;
+
 /**
  * This class does all of its operations in a temporary sqlite table.
  */
@@ -144,8 +146,8 @@ public class TempAppProvider extends AppProvider {
             db.execSQL("DELETE FROM " + DBHelper.TABLE_APP + " WHERE 1");
             db.execSQL("INSERT INTO " + DBHelper.TABLE_APP + " SELECT * FROM " + tempApp);
 
-            db.execSQL("DELETE FROM " + DBHelper.TABLE_APK + " WHERE 1");
-            db.execSQL("INSERT INTO " + DBHelper.TABLE_APK + " SELECT * FROM " + tempApk);
+            db.execSQL("DELETE FROM " + ApkTable.NAME + " WHERE 1");
+            db.execSQL("INSERT INTO " + ApkTable.NAME + " SELECT * FROM " + tempApk);
 
             db.setTransactionSuccessful();
 

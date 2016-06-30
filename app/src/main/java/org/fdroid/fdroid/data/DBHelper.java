@@ -21,11 +21,6 @@ class DBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "fdroid";
 
-    // The TABLE_APK table stores details of all the application versions we
-    // know about. Each relates directly back to an entry in TABLE_APP.
-    // This information is retrieved from the repositories.
-    public static final String TABLE_APK = "fdroid_apk";
-
     private static final String CREATE_TABLE_REPO = "create table "
             + RepoTable.NAME + " (_id integer primary key, "
             + "address text not null, "
@@ -40,7 +35,7 @@ class DBHelper extends SQLiteOpenHelper {
             + ");";
 
     private static final String CREATE_TABLE_APK =
-            "CREATE TABLE " + TABLE_APK + " ( "
+            "CREATE TABLE " + ApkTable.NAME + " ( "
             + "id text not null, "
             + "version text not null, "
             + "repo integer not null, "
@@ -506,7 +501,7 @@ class DBHelper extends SQLiteOpenHelper {
         Utils.debugLog(TAG, "Converting maxSdkVersion value 0 to " + Byte.MAX_VALUE);
         ContentValues values = new ContentValues();
         values.put(ApkTable.Cols.MAX_SDK_VERSION, Byte.MAX_VALUE);
-        db.update(TABLE_APK, values, ApkTable.Cols.MAX_SDK_VERSION + " < 1", null);
+        db.update(ApkTable.NAME, values, ApkTable.Cols.MAX_SDK_VERSION + " < 1", null);
     }
 
     /**
@@ -546,7 +541,7 @@ class DBHelper extends SQLiteOpenHelper {
         context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
                 .putBoolean("triedEmptyUpdate", false).commit();
         db.execSQL("drop table " + TABLE_APP);
-        db.execSQL("drop table " + TABLE_APK);
+        db.execSQL("drop table " + ApkTable.NAME);
         clearRepoEtags(db);
         createAppApk(db);
     }
@@ -555,8 +550,8 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_APP);
         db.execSQL("create index app_id on " + TABLE_APP + " (id);");
         db.execSQL(CREATE_TABLE_APK);
-        db.execSQL("create index apk_vercode on " + TABLE_APK + " (vercode);");
-        db.execSQL("create index apk_id on " + TABLE_APK + " (id);");
+        db.execSQL("create index apk_vercode on " + ApkTable.NAME + " (vercode);");
+        db.execSQL("create index apk_id on " + ApkTable.NAME + " (id);");
     }
 
     /**
@@ -579,8 +574,8 @@ class DBHelper extends SQLiteOpenHelper {
             return;
         }
         Utils.debugLog(TAG, "Adding " + ApkTable.Cols.TARGET_SDK_VERSION
-                + " columns to " + TABLE_APK);
-        db.execSQL("alter table " + TABLE_APK + " add column "
+                + " columns to " + ApkTable.NAME);
+        db.execSQL("alter table " + ApkTable.NAME + " add column "
                 + ApkTable.Cols.TARGET_SDK_VERSION + " integer");
     }
 

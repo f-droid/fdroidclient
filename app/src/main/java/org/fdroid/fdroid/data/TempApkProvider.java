@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
+import org.fdroid.fdroid.data.Schema.ApkTable;
+
 import java.util.List;
 
 /**
@@ -18,7 +20,7 @@ public class TempApkProvider extends ApkProvider {
 
     private static final String PROVIDER_NAME = "TempApkProvider";
 
-    static final String TABLE_TEMP_APK = "temp_" + DBHelper.TABLE_APK;
+    static final String TABLE_TEMP_APK = "temp_" + ApkTable.NAME;
 
     private static final String PATH_INIT = "init";
 
@@ -128,7 +130,7 @@ public class TempApkProvider extends ApkProvider {
     private void initTable() {
         final SQLiteDatabase db = db();
         final String memoryDbName = TempAppProvider.DB;
-        db.execSQL("CREATE TABLE " + memoryDbName + "." + getTableName() + " AS SELECT * FROM main." + DBHelper.TABLE_APK);
+        db.execSQL("CREATE TABLE " + memoryDbName + "." + getTableName() + " AS SELECT * FROM main." + ApkTable.NAME);
         db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_vercode on " + getTableName() + " (vercode);");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_id on " + getTableName() + " (id);");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_compatible ON " + getTableName() + " (compatible);");

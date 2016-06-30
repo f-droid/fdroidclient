@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
@@ -319,7 +320,7 @@ public class ApkProvider extends FDroidProvider {
 
     @Override
     protected String getTableName() {
-        return DBHelper.TABLE_APK;
+        return ApkTable.NAME;
     }
 
     @Override
@@ -338,7 +339,7 @@ public class ApkProvider extends FDroidProvider {
 
         @Override
         protected String getRequiredTables() {
-            return DBHelper.TABLE_APK + " AS apk";
+            return ApkTable.NAME + " AS apk";
         }
 
         @Override
