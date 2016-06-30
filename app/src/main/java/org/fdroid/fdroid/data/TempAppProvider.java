@@ -131,9 +131,9 @@ public class TempAppProvider extends AppProvider {
         ensureTempTableDetached(db);
         db.execSQL("ATTACH DATABASE ':memory:' AS " + DB);
         db.execSQL("CREATE TABLE " + DB + "." + getTableName() + " AS SELECT * FROM main." + AppTable.NAME);
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (id);");
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (upstreamVercode);");
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (compatible);");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (" + AppTable.Cols.PACKAGE_NAME + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (" + AppTable.Cols.UPSTREAM_VERSION_CODE + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (" + AppTable.Cols.IS_COMPATIBLE + ");");
     }
 
     private void commitTable() {
