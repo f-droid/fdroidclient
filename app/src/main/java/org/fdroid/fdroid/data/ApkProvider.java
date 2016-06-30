@@ -359,7 +359,7 @@ public class ApkProvider extends FDroidProvider {
         private void addRepoField(String field, String alias) {
             if (!repoTableRequired) {
                 repoTableRequired = true;
-                leftJoin(DBHelper.TABLE_REPO, "repo", "apk.repo = repo._id");
+                leftJoin(RepoTable.NAME, "repo", "apk.repo = repo._id");
             }
             appendField(field, "repo", alias);
         }

@@ -107,7 +107,7 @@ public interface Schema {
     }
 
     interface RepoTable {
-        String NAME = DBHelper.TABLE_REPO;
+        String NAME = "fdroid_repo";
         interface Cols extends BaseColumns {
 
             String ADDRESS      = "address";

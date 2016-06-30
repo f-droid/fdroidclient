@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 
 import java.util.ArrayList;
@@ -242,7 +243,7 @@ public class RepoProvider extends FDroidProvider {
 
     @Override
     protected String getTableName() {
-        return DBHelper.TABLE_REPO;
+        return RepoTable.NAME;
     }
 
     @Override

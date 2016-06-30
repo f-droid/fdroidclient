@@ -15,6 +15,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppTable.Cols;
+import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -241,7 +242,7 @@ public class AppProvider extends FDroidProvider {
         protected String getRequiredTables() {
             final String app  = getTableName();
             final String apk  = getApkTableName();
-            final String repo = DBHelper.TABLE_REPO;
+            final String repo = RepoTable.NAME;
 
             return app +
                 " LEFT JOIN " + apk + " ON ( " + apk + ".id = " + app + ".id ) " +
@@ -974,7 +975,7 @@ public class AppProvider extends FDroidProvider {
      */
     private static String getIconUpdateQuery(String app, String apk) {
 
-        final String repo = DBHelper.TABLE_REPO;
+        final String repo = RepoTable.NAME;
 
         final String iconUrlQuery =
                 " SELECT " +
