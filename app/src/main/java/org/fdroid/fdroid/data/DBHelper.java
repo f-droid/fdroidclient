@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
@@ -69,35 +70,35 @@ class DBHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_APP = "CREATE TABLE " + AppTable.NAME
             + " ( "
-            + AppTable.Cols.PACKAGE_NAME + "id text not null, "
-            + AppTable.Cols.NAME + "name text not null, "
-            + AppTable.Cols.SUMMARY + "summary text not null, "
-            + AppTable.Cols.ICON + "icon text, "
-            + AppTable.Cols.DESCRIPTION + "description text not null, "
-            + AppTable.Cols.LICENSE + "license text not null, "
-            + AppTable.Cols.AUTHOR + "author text, "
-            + AppTable.Cols.EMAIL + "email text, "
-            + AppTable.Cols.WEB_URL + "webURL text, "
-            + AppTable.Cols.TRACKER_URL + "trackerURL text, "
-            + AppTable.Cols.SOURCE_URL + "sourceURL text, "
-            + AppTable.Cols.CHANGELOG_URL + "changelogURL text, "
-            + AppTable.Cols.SUGGESTED_VERSION_CODE + "suggestedVercode text,"
-            + AppTable.Cols.UPSTREAM_VERSION_NAME + "upstreamVersion text,"
-            + AppTable.Cols.UPSTREAM_VERSION_CODE + "upstreamVercode integer,"
-            + AppTable.Cols.ANTI_FEATURES + "antiFeatures string,"
-            + AppTable.Cols.DONATE_URL + "donateURL string,"
-            + AppTable.Cols.BITCOIN_ADDR + "bitcoinAddr string,"
-            + AppTable.Cols.LITECOIN_ADDR + "litecoinAddr string,"
-            + AppTable.Cols.FLATTR_ID + "flattrID string,"
-            + AppTable.Cols.REQUIREMENTS + "requirements string,"
-            + AppTable.Cols.CATEGORIES + "categories string,"
-            + AppTable.Cols.ADDED + "added string,"
-            + AppTable.Cols.LAST_UPDATED + "lastUpdated string,"
-            + AppTable.Cols.IS_COMPATIBLE + "compatible int not null,"
-            + AppTable.Cols.IGNORE_ALLUPDATES + "ignoreAllUpdates int not null,"
-            + AppTable.Cols.IGNORE_THISUPDATE + "ignoreThisUpdate int not null,"
-            + AppTable.Cols.ICON_URL + "iconUrl text, "
-            + AppTable.Cols.ICON_URL_LARGE + "iconUrlLarge text, "
+            + AppTable.Cols.PACKAGE_NAME + " text not null, "
+            + AppTable.Cols.NAME + " text not null, "
+            + AppTable.Cols.SUMMARY + " text not null, "
+            + AppTable.Cols.ICON + " text, "
+            + AppTable.Cols.DESCRIPTION + " text not null, "
+            + AppTable.Cols.LICENSE + " text not null, "
+            + AppTable.Cols.AUTHOR + " text, "
+            + AppTable.Cols.EMAIL + " text, "
+            + AppTable.Cols.WEB_URL + " text, "
+            + AppTable.Cols.TRACKER_URL + " text, "
+            + AppTable.Cols.SOURCE_URL + " text, "
+            + AppTable.Cols.CHANGELOG_URL + " text, "
+            + AppTable.Cols.SUGGESTED_VERSION_CODE + " text,"
+            + AppTable.Cols.UPSTREAM_VERSION_NAME + " text,"
+            + AppTable.Cols.UPSTREAM_VERSION_CODE + " integer,"
+            + AppTable.Cols.ANTI_FEATURES + " string,"
+            + AppTable.Cols.DONATE_URL + " string,"
+            + AppTable.Cols.BITCOIN_ADDR + " string,"
+            + AppTable.Cols.LITECOIN_ADDR + " string,"
+            + AppTable.Cols.FLATTR_ID + " string,"
+            + AppTable.Cols.REQUIREMENTS + " string,"
+            + AppTable.Cols.CATEGORIES + " string,"
+            + AppTable.Cols.ADDED + " string,"
+            + AppTable.Cols.LAST_UPDATED + " string,"
+            + AppTable.Cols.IS_COMPATIBLE + " int not null,"
+            + AppTable.Cols.IGNORE_ALLUPDATES + " int not null,"
+            + AppTable.Cols.IGNORE_THISUPDATE + " int not null,"
+            + AppTable.Cols.ICON_URL + " text, "
+            + AppTable.Cols.ICON_URL_LARGE + " text, "
             + "primary key(" + AppTable.Cols.PACKAGE_NAME + "));";
 
     private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + InstalledAppTable.NAME
@@ -127,9 +128,9 @@ class DBHelper extends SQLiteOpenHelper {
             return;
         }
         Utils.debugLog(TAG, "Populating repo names from the url");
-        final String[] columns = {"address", "_id"};
+        final String[] columns = {RepoTable.Cols.ADDRESS, RepoTable.Cols._ID};
         Cursor cursor = db.query(RepoTable.NAME, columns,
-                "name IS NULL OR name = ''", null, null, null, null);
+                RepoTable.Cols.NAME + " IS NULL OR " + RepoTable.Cols.NAME + " = ''", null, null, null, null);
         if (cursor != null) {
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
@@ -138,10 +139,10 @@ class DBHelper extends SQLiteOpenHelper {
                     long id = cursor.getInt(1);
                     ContentValues values = new ContentValues(1);
                     String name = Repo.addressToName(address);
-                    values.put("name", name);
+                    values.put(RepoTable.Cols.NAME, name);
                     final String[] args = {Long.toString(id)};
                     Utils.debugLog(TAG, "Setting repo name to '" + name + "' for repo " + address);
-                    db.update(RepoTable.NAME, values, "_id = ?", args);
+                    db.update(RepoTable.NAME, values, RepoTable.Cols._ID + " = ?", args);
                     cursor.moveToNext();
                 }
             }
@@ -150,11 +151,11 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void renameRepoId(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 36 || columnExists(db, RepoTable.NAME, "_id")) {
+        if (oldVersion >= 36 || columnExists(db, RepoTable.NAME, RepoTable.Cols._ID)) {
             return;
         }
 
-        Utils.debugLog(TAG, "Renaming " + RepoTable.NAME + ".id to _id");
+        Utils.debugLog(TAG, "Renaming " + RepoTable.NAME + ".id to " + RepoTable.Cols._ID);
         db.beginTransaction();
 
         try {
@@ -170,33 +171,44 @@ class DBHelper extends SQLiteOpenHelper {
             // statement. Therefore, I've put a copy of CREATE_TABLE_REPO
             // here that is the same as it was at DBVersion 36.
             String createTableDdl = "create table " + RepoTable.NAME + " ("
-                    + "_id integer not null primary key, "
-                    + "address text not null, "
-                    + "name text, "
-                    + "description text, "
-                    + "inuse integer not null, "
-                    + "priority integer not null, "
-                    + "pubkey text, "
-                    + "fingerprint text, "
-                    + "maxage integer not null default 0, "
-                    + "version integer not null default 0, "
-                    + "lastetag text, "
-                    + "lastUpdated string);";
+                    + RepoTable.Cols._ID + " integer not null primary key, "
+                    + RepoTable.Cols.ADDRESS + " text not null, "
+                    + RepoTable.Cols.NAME + " text, "
+                    + RepoTable.Cols.DESCRIPTION + " text, "
+                    + RepoTable.Cols.IN_USE + " integer not null, "
+                    + RepoTable.Cols.PRIORITY + " integer not null, "
+                    + RepoTable.Cols.SIGNING_CERT + " text, "
+                    + RepoTable.Cols.FINGERPRINT + " text, "
+                    + RepoTable.Cols.MAX_AGE + " integer not null default 0, "
+                    + RepoTable.Cols.VERSION + " integer not null default 0, "
+                    + RepoTable.Cols.LAST_ETAG + " text, "
+                    + RepoTable.Cols.LAST_UPDATED + " string);";
 
             db.execSQL(createTableDdl);
 
-            String nonIdFields = "address, name, description, inuse, priority, " +
-                    "pubkey, fingerprint, maxage, version, lastetag, lastUpdated";
+            String nonIdFields = TextUtils.join(", ", new String[] {
+                    RepoTable.Cols.ADDRESS,
+                    RepoTable.Cols.NAME,
+                    RepoTable.Cols.DESCRIPTION,
+                    RepoTable.Cols.IN_USE,
+                    RepoTable.Cols.PRIORITY,
+                    RepoTable.Cols.SIGNING_CERT,
+                    RepoTable.Cols.FINGERPRINT,
+                    RepoTable.Cols.MAX_AGE,
+                    RepoTable.Cols.VERSION,
+                    RepoTable.Cols.LAST_ETAG,
+                    RepoTable.Cols.LAST_UPDATED,
+            });
 
             String insertSql = "INSERT INTO " + RepoTable.NAME +
-                    "(_id, " + nonIdFields + " ) " +
+                    "(" + RepoTable.Cols._ID + ", " + nonIdFields + " ) " +
                     "SELECT id, " + nonIdFields + " FROM " + tempTableName + ";";
 
             db.execSQL(insertSql);
             db.execSQL("DROP TABLE " + tempTableName + ";");
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            Log.e(TAG, "Error renaming id to _id", e);
+            Log.e(TAG, "Error renaming id to " + RepoTable.Cols._ID, e);
         }
         db.endTransaction();
     }
@@ -315,7 +327,7 @@ class DBHelper extends SQLiteOpenHelper {
         }
         List<Repo> oldrepos = new ArrayList<>();
         Cursor cursor = db.query(RepoTable.NAME,
-                new String[] {"address", "inuse", "pubkey"},
+                new String[] {RepoTable.Cols.ADDRESS, RepoTable.Cols.IN_USE, RepoTable.Cols.SIGNING_CERT},
                 null, null, null, null, null);
         if (cursor != null) {
             if (cursor.getCount() > 0) {
@@ -335,11 +347,11 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_REPO);
         for (final Repo repo : oldrepos) {
             ContentValues values = new ContentValues();
-            values.put("address", repo.address);
-            values.put("inuse", repo.inuse);
-            values.put("priority", 10);
-            values.put("pubkey", repo.signingCertificate);
-            values.put("lastetag", (String) null);
+            values.put(RepoTable.Cols.ADDRESS, repo.address);
+            values.put(RepoTable.Cols.IN_USE, repo.inuse);
+            values.put(RepoTable.Cols.PRIORITY, 10);
+            values.put(RepoTable.Cols.SIGNING_CERT, repo.signingCertificate);
+            values.put(RepoTable.Cols.LAST_ETAG, (String) null);
             db.insert(RepoTable.NAME, null, values);
         }
     }
@@ -348,9 +360,9 @@ class DBHelper extends SQLiteOpenHelper {
             int addressResId, int nameResId, int descriptionResId) {
         ContentValues values = new ContentValues();
         values.clear();
-        values.put("name", context.getString(nameResId));
-        values.put("description", context.getString(descriptionResId));
-        db.update(RepoTable.NAME, values, "address = ?", new String[] {
+        values.put(RepoTable.Cols.NAME, context.getString(nameResId));
+        values.put(RepoTable.Cols.DESCRIPTION, context.getString(descriptionResId));
+        db.update(RepoTable.NAME, values, RepoTable.Cols.ADDRESS + " = ?", new String[] {
                 context.getString(addressResId),
         });
     }
@@ -360,16 +372,16 @@ class DBHelper extends SQLiteOpenHelper {
      * default repos with values from strings.xml.
      */
     private void addNameAndDescriptionToRepo(SQLiteDatabase db, int oldVersion) {
-        boolean nameExists = columnExists(db, RepoTable.NAME, "name");
-        boolean descriptionExists = columnExists(db, RepoTable.NAME, "description");
+        boolean nameExists = columnExists(db, RepoTable.NAME, RepoTable.Cols.NAME);
+        boolean descriptionExists = columnExists(db, RepoTable.NAME, RepoTable.Cols.DESCRIPTION);
         if (oldVersion >= 21 || (nameExists && descriptionExists)) {
             return;
         }
         if (!nameExists) {
-            db.execSQL("alter table " + RepoTable.NAME + " add column name text");
+            db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.NAME + " text");
         }
         if (!descriptionExists) {
-            db.execSQL("alter table " + RepoTable.NAME + " add column description text");
+            db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.DESCRIPTION + " text");
         }
         insertNameAndDescription(db, R.string.fdroid_repo_address,
                 R.string.fdroid_repo_name, R.string.fdroid_repo_description);
@@ -390,12 +402,12 @@ class DBHelper extends SQLiteOpenHelper {
         if (oldVersion >= 44) {
             return;
         }
-        if (!columnExists(db, RepoTable.NAME, "fingerprint")) {
-            db.execSQL("alter table " + RepoTable.NAME + " add column fingerprint text");
+        if (!columnExists(db, RepoTable.NAME, RepoTable.Cols.FINGERPRINT)) {
+            db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.FINGERPRINT + " text");
         }
         List<Repo> oldrepos = new ArrayList<>();
         Cursor cursor = db.query(RepoTable.NAME,
-                new String[] {"address", "pubkey"},
+                new String[] {RepoTable.Cols.ADDRESS, RepoTable.Cols.SIGNING_CERT},
                 null, null, null, null, null);
         if (cursor != null) {
             if (cursor.getCount() > 0) {
@@ -412,70 +424,70 @@ class DBHelper extends SQLiteOpenHelper {
         }
         for (final Repo repo : oldrepos) {
             ContentValues values = new ContentValues();
-            values.put("fingerprint", Utils.calcFingerprint(repo.signingCertificate));
-            db.update(RepoTable.NAME, values, "address = ?", new String[] {repo.address});
+            values.put(RepoTable.Cols.FINGERPRINT, Utils.calcFingerprint(repo.signingCertificate));
+            db.update(RepoTable.NAME, values, RepoTable.Cols.ADDRESS + " = ?", new String[] {repo.address});
         }
     }
 
     private void addMaxAgeToRepo(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 30 || columnExists(db, RepoTable.NAME, "maxage")) {
+        if (oldVersion >= 30 || columnExists(db, RepoTable.NAME, RepoTable.Cols.MAX_AGE)) {
             return;
         }
-        db.execSQL("alter table " + RepoTable.NAME + " add column maxage integer not null default 0");
+        db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.MAX_AGE + " integer not null default 0");
     }
 
     private void addVersionToRepo(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 33 || columnExists(db, RepoTable.NAME, "version")) {
+        if (oldVersion >= 33 || columnExists(db, RepoTable.NAME, RepoTable.Cols.VERSION)) {
             return;
         }
-        db.execSQL("alter table " + RepoTable.NAME + " add column version integer not null default 0");
+        db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.VERSION + " integer not null default 0");
     }
 
     private void addLastUpdatedToRepo(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 35 || columnExists(db, RepoTable.NAME, "lastUpdated")) {
+        if (oldVersion >= 35 || columnExists(db, RepoTable.NAME, RepoTable.Cols.LAST_UPDATED)) {
             return;
         }
-        Utils.debugLog(TAG, "Adding lastUpdated column to " + RepoTable.NAME);
-        db.execSQL("Alter table " + RepoTable.NAME + " add column lastUpdated string");
+        Utils.debugLog(TAG, "Adding " + RepoTable.Cols.LAST_UPDATED + " column to " + RepoTable.NAME);
+        db.execSQL("Alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.LAST_UPDATED + " string");
     }
 
     private void addIsSwapToRepo(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 47 || columnExists(db, RepoTable.NAME, "isSwap")) {
+        if (oldVersion >= 47 || columnExists(db, RepoTable.NAME, RepoTable.Cols.IS_SWAP)) {
             return;
         }
-        Utils.debugLog(TAG, "Adding isSwap field to " + RepoTable.NAME + " table in db.");
-        db.execSQL("alter table " + RepoTable.NAME + " add column isSwap boolean default 0;");
+        Utils.debugLog(TAG, "Adding " + RepoTable.Cols.IS_SWAP + " field to " + RepoTable.NAME + " table in db.");
+        db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.IS_SWAP + " boolean default 0;");
     }
 
     private void addCredentialsToRepo(SQLiteDatabase db, int oldVersion) {
         if (oldVersion >= 52) {
             return;
         }
-        if (!columnExists(db, Schema.RepoTable.NAME, "username")) {
-            Utils.debugLog(TAG, "Adding username field to " + RepoTable.NAME + " table in db.");
-            db.execSQL("alter table " + RepoTable.NAME + " add column username string;");
+        if (!columnExists(db, Schema.RepoTable.NAME, RepoTable.Cols.USERNAME)) {
+            Utils.debugLog(TAG, "Adding " + RepoTable.Cols.USERNAME + " field to " + RepoTable.NAME + " table in db.");
+            db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.USERNAME + " string;");
         }
 
-        if (!columnExists(db, RepoTable.NAME, "password")) {
-            Utils.debugLog(TAG, "Adding password field to " + RepoTable.NAME + " table in db.");
-            db.execSQL("alter table " + RepoTable.NAME + " add column password string;");
+        if (!columnExists(db, RepoTable.NAME, RepoTable.Cols.PASSWORD)) {
+            Utils.debugLog(TAG, "Adding " + RepoTable.Cols.PASSWORD + " field to " + RepoTable.NAME + " table in db.");
+            db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.PASSWORD + " string;");
         }
     }
 
     private void addChangelogToApp(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 48 || columnExists(db, AppTable.NAME, "changelogURL")) {
+        if (oldVersion >= 48 || columnExists(db, AppTable.NAME, AppTable.Cols.CHANGELOG_URL)) {
             return;
         }
-        Utils.debugLog(TAG, "Adding changelogURL column to " + AppTable.NAME);
-        db.execSQL("alter table " + AppTable.NAME + " add column changelogURL text");
+        Utils.debugLog(TAG, "Adding " + AppTable.Cols.CHANGELOG_URL + " column to " + AppTable.NAME);
+        db.execSQL("alter table " + AppTable.NAME + " add column " + AppTable.Cols.CHANGELOG_URL + " text");
     }
 
     private void addIconUrlLargeToApp(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 49 || columnExists(db, AppTable.NAME, "iconUrlLarge")) {
+        if (oldVersion >= 49 || columnExists(db, AppTable.NAME, AppTable.Cols.ICON_URL_LARGE)) {
             return;
         }
-        Utils.debugLog(TAG, "Adding iconUrlLarge columns to " + AppTable.NAME);
-        db.execSQL("alter table " + AppTable.NAME + " add column iconUrlLarge text");
+        Utils.debugLog(TAG, "Adding " + AppTable.Cols.ICON_URL_LARGE + " columns to " + AppTable.NAME);
+        db.execSQL("alter table " + AppTable.NAME + " add column " + AppTable.Cols.ICON_URL_LARGE + " text");
     }
 
     private void updateIconUrlLarge(SQLiteDatabase db, int oldVersion) {
@@ -491,13 +503,13 @@ class DBHelper extends SQLiteOpenHelper {
         if (oldVersion >= 53) {
             return;
         }
-        if (!columnExists(db, AppTable.NAME, "author")) {
-            Utils.debugLog(TAG, "Adding author column to " + AppTable.NAME);
-            db.execSQL("alter table " + AppTable.NAME + " add column author text");
+        if (!columnExists(db, AppTable.NAME, AppTable.Cols.AUTHOR)) {
+            Utils.debugLog(TAG, "Adding " + AppTable.Cols.AUTHOR + " column to " + AppTable.NAME);
+            db.execSQL("alter table " + AppTable.NAME + " add column " + AppTable.Cols.AUTHOR + " text");
         }
-        if (!columnExists(db, AppTable.NAME, "email")) {
-            Utils.debugLog(TAG, "Adding email column to " + AppTable.NAME);
-            db.execSQL("alter table " + AppTable.NAME + " add column email text");
+        if (!columnExists(db, AppTable.NAME, AppTable.Cols.EMAIL)) {
+            Utils.debugLog(TAG, "Adding " + AppTable.Cols.EMAIL + " column to " + AppTable.NAME);
+            db.execSQL("alter table " + AppTable.NAME + " add column " + AppTable.Cols.EMAIL + " text");
         }
     }
 
@@ -505,7 +517,7 @@ class DBHelper extends SQLiteOpenHelper {
         if (oldVersion >= 54) {
             return;
         }
-        Utils.debugLog(TAG, "Converting maxSdkVersion value 0 to " + Byte.MAX_VALUE);
+        Utils.debugLog(TAG, "Converting " + ApkTable.Cols.MAX_SDK_VERSION + " value 0 to " + Byte.MAX_VALUE);
         ContentValues values = new ContentValues();
         values.put(ApkTable.Cols.MAX_SDK_VERSION, Byte.MAX_VALUE);
         db.update(ApkTable.NAME, values, ApkTable.Cols.MAX_SDK_VERSION + " < 1", null);
@@ -533,7 +545,7 @@ class DBHelper extends SQLiteOpenHelper {
      */
     private void clearRepoEtags(SQLiteDatabase db) {
         Utils.debugLog(TAG, "Clearing repo etags, so next update will not be skipped with \"Repos up to date\".");
-        db.execSQL("update " + RepoTable.NAME + " set lastetag = NULL");
+        db.execSQL("update " + RepoTable.NAME + " set " + RepoTable.Cols.LAST_ETAG + " = NULL");
     }
 
     private void resetTransient(SQLiteDatabase db, int oldVersion) {
@@ -555,10 +567,10 @@ class DBHelper extends SQLiteOpenHelper {
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
-        db.execSQL("create index app_id on " + AppTable.NAME + " (id);");
+        db.execSQL("create index app_id on " + AppTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
         db.execSQL(CREATE_TABLE_APK);
-        db.execSQL("create index apk_vercode on " + ApkTable.NAME + " (vercode);");
-        db.execSQL("create index apk_id on " + ApkTable.NAME + " (id);");
+        db.execSQL("create index apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");
+        db.execSQL("create index apk_id on " + ApkTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
     }
 
     /**
