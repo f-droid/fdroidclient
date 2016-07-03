@@ -268,4 +268,50 @@
     <string name="choose_bt_send">เลือกวิธีการส่งต่อผ่านบลูทูธ</string>
     <string name="bluetooth_activity_not_found">ยังไม่ได้เลือกวิธีส่งต่อทางบลูทูธ, โปรดเลือกก่อน!</string>
     <string name="downloading_apk">กำลังดาวน์โหลด %1$s</string>
+    <string name="category_All">ทั้งหมด</string>
+    <string name="ignoreTouch">ไม่ต้องสนใจชนิดหน้าจอ</string>
+    <string name="ignoreTouch_on">แสดงโปรแกรมที่ต้องใช้จอสัมผัสด้วยเสมอ แม้ว่าเครื่องคุณจะไม่มีจอสัมผัส</string>
+
+    <string name="proxy_host_summary">ตั้งค่าที่อยู่เครื่องพรอกซีที่จะใช้ (เช่น 127.0.0.1)</string>
+    <string name="proxy_port_summary">ตั้งค่าพอร์ตของเครื่องพรอกซี่ที่จะใช้ (เช่น 8118)</string>
+
+    <string name="status_download">กำลังดาวน์โหลด\n%2$s / %3$s (%4$d%%) จาก\n%1$s</string>
+
+    <string name="status_download_unknown_size">กำลังดาวน์โหลด\n%2$s จาก\n%1$s</string>
+    <string name="update_notification_title">กำลังอัพเดตข้อมูลจากแหล่งโปรแกรม</string>
+    <string name="status_processing_xml_percent">กำลังประมวลผลข้อมูล %2$s / %3$s (%4$d%%) จาก %1$s</string>
+    <string name="requires_features">ต้องใช้: %1$s</string>
+    <string name="app_icon">ไอคอนโปรแกรม</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="empty_search_installed_app_list">ไม่มีโปรแกรมที่ติดตั้งอยู่ตรงตามที่ค้นหา</string>
+    <string name="empty_search_available_app_list">ไม่พบโปรแกรมตามที่ค้นหา</string>
+    <string name="empty_search_can_update_app_list">ไม่พบโปรแกรมมีอัพเดตตามที่ค้นหา</string>
+
+    <string name="install_error_unknown">การติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>
+    <string name="uninstall_error_unknown">การถอนการติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>
+    <string name="system_install_post_success">ติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid เสร็จสิ้น</string>
+    <string name="system_install_post_fail">การติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid ล้มเหลว</string>
+    <string name="system_install_installing_rebooting">กำลังติดตั้งและรีบูตเครื่อง…</string>
+    <string name="system_install_question">ต้องการติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid?</string>
+    <string name="system_install_warning">จะใช้เวลาสูงสุด 10 วินาที</string>
+    <string name="system_uninstall">ต้องการถอนส่วนขยายช่วยติดตั้งของ F-Droid?</string>
+    <string name="system_install_not_supported">ไม่รองรับการติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid บน Android รุ่น 5.1 หรือสูงกว่า</string>
+
+    <string name="swap_no_wifi_network">ยังไม่พบเครือข่าย</string>
+    <string name="swap_view_available_networks">แสดงเครือข่ายที่มีทั้งหมด</string>
+    <string name="swap_switch_to_wifi">เปลี่ยนไปใช้เครือข่าย Wi-Fi</string>
+    <string name="open_qr_code_scanner">เปิดตัวอ่าน QR Code</string>
+    <string name="swap_choose_apps">เลือกโปรแกรม</string>
+    <string name="swap_scan_qr">แสกน QR Code</string>
+    <string name="swap_people_nearby">ผู้คนข้างเคียง</string>
+    <string name="swap_scanning_for_peers">กำลังค้นหาผู้คนข้างเคียง…</string>
+    <string name="swap_intro">เชื่อมต่อและแลกเปลี่ยนโปรแกรมกับผู้คนรอบๆ คุณ</string>
+    <string name="swap_visible_bluetooth">แสดงตัวให้เห็นทางบลูทูธ</string>
+    <string name="swap_not_visible_bluetooth">ไม่แสดงตัวในบลูทูธ</string>
+    <string name="swap_visible_wifi">แสดงตัวให้เห็นทาง Wi-Fi</string>
+    <string name="swap_setting_up_wifi">กำลังตั้งค่า Wi-Fi…</string>
+    <string name="swap_stopping_wifi">กำลังปิด Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">ไม่แสดงตัวบน Wi-Fi</string>
+    <string name="swap_no_peers_nearby">ไม่พบคนรอบข้างที่สามารถจะแบ่งปันโปรแกรมด้วยได้</string>
+    <string name="swap_qr_isnt_for_swap">QR Code ที่อ่านได้ ไม่ใช่โค้ดที่ใช้แบ่งปันโปรแกรม</string>
     </resources>

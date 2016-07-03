@@ -150,7 +150,7 @@
   <string name="category_Navigation">Navigation</string>
   <string name="category_Phone_SMS">Téléphone &amp; SMS</string>
   <string name="category_Reading">Lecture</string>
-  <string name="category_Science_Education">Science &amp; éducation</string>
+  <string name="category_Science_Education">Science &amp; Éducation</string>
   <string name="category_Security">Sécurité</string>
   <string name="category_System">Système</string>
   <string name="requesting_root_access_body">Demande d\'accès aux privilèges root…</string>
@@ -187,7 +187,7 @@
     <string name="wifi_ap">Point d\'accès</string>
 
     <string name="category_Connectivity">Connectivité</string>
-    <string name="category_Sports_Health">Sports &amp; santé</string>
+    <string name="category_Sports_Health">Sport &amp; Santé</string>
     <string name="empty_available_app_list">Aucune appli dans cette catégorie.\n\nEssayez de sélectionner une autre catégorie ou de mettre à jour vos dépôts pour avoir une liste d\'applis récente.</string>
     <string name="empty_can_update_app_list">Toutes les applis sont à jour.\n\nFélicitations ! Toutes vos applis sont à jour (ou vos dépôts ne le sont pas).</string>
 
@@ -197,7 +197,7 @@
     <string name="swap_switch_to_wifi">Appuyez pour passer à un réseau Wi-Fi</string>
     <string name="swap_dont_show_again">Ne plus afficher</string>
     <string name="loading">Chargement…</string>
-    <string name="install_confirm">besoin d\'accéder à</string>
+    <string name="install_confirm">a besoin d\'accéder à</string>
     <string name="install_confirm_update">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Une fois mise à jour, l\'application aura accès à :</string>
     <string name="install_confirm_update_system">Voulez-vous mettre à jour cette application système ? Vos données ne seront pas perdues. Une fois mise à jour, l\'application aura accès à :</string>
     <string name="install_confirm_update_no_perms">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Elle ne requiert aucune autorisation particulière.</string>
