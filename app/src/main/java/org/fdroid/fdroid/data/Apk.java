@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Parcelable;
 
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -73,67 +74,67 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
         for (int i = 0; i < cursor.getColumnCount(); i++) {
             switch (cursor.getColumnName(i)) {
-                case ApkProvider.DataColumns.HASH:
+                case Cols.HASH:
                     hash = cursor.getString(i);
                     break;
-                case ApkProvider.DataColumns.HASH_TYPE:
+                case Cols.HASH_TYPE:
                     hashType = cursor.getString(i);
                     break;
-                case ApkProvider.DataColumns.ADDED_DATE:
+                case Cols.ADDED_DATE:
                     added = Utils.parseDate(cursor.getString(i), null);
                     break;
-                case ApkProvider.DataColumns.FEATURES:
+                case Cols.FEATURES:
                     features = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
-                case ApkProvider.DataColumns.PACKAGE_NAME:
+                case Cols.PACKAGE_NAME:
                     packageName = cursor.getString(i);
                     break;
-                case ApkProvider.DataColumns.IS_COMPATIBLE:
+                case Cols.IS_COMPATIBLE:
                     compatible = cursor.getInt(i) == 1;
                     break;
-                case ApkProvider.DataColumns.MIN_SDK_VERSION:
+                case Cols.MIN_SDK_VERSION:
                     minSdkVersion = cursor.getInt(i);
                     break;
-                case ApkProvider.DataColumns.TARGET_SDK_VERSION:
+                case Cols.TARGET_SDK_VERSION:
                     targetSdkVersion = cursor.getInt(i);
                     break;
-                case ApkProvider.DataColumns.MAX_SDK_VERSION:
+                case Cols.MAX_SDK_VERSION:
                     maxSdkVersion = cursor.getInt(i);
                     break;
-                case ApkProvider.DataColumns.NAME:
+                case Cols.NAME:
                     apkName = cursor.getString(i);
                     break;
-                case ApkProvider.DataColumns.PERMISSIONS:
+                case Cols.PERMISSIONS:
                     permissions = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
-                case ApkProvider.DataColumns.NATIVE_CODE:
+                case Cols.NATIVE_CODE:
                     nativecode = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
-                case ApkProvider.DataColumns.INCOMPATIBLE_REASONS:
+                case Cols.INCOMPATIBLE_REASONS:
                     incompatibleReasons = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
-                case ApkProvider.DataColumns.REPO_ID:
+                case Cols.REPO_ID:
                     repo = cursor.getInt(i);
                     break;
-                case ApkProvider.DataColumns.SIGNATURE:
+                case Cols.SIGNATURE:
                     sig = cursor.getString(i);
                     break;
-                case ApkProvider.DataColumns.SIZE:
+                case Cols.SIZE:
                     size = cursor.getInt(i);
                     break;
-                case ApkProvider.DataColumns.SOURCE_NAME:
+                case Cols.SOURCE_NAME:
                     srcname = cursor.getString(i);
                     break;
-                case ApkProvider.DataColumns.VERSION_NAME:
+                case Cols.VERSION_NAME:
                     versionName = cursor.getString(i);
                     break;
-                case ApkProvider.DataColumns.VERSION_CODE:
+                case Cols.VERSION_CODE:
                     versionCode = cursor.getInt(i);
                     break;
-                case ApkProvider.DataColumns.REPO_VERSION:
+                case Cols.REPO_VERSION:
                     repoVersion = cursor.getInt(i);
                     break;
-                case ApkProvider.DataColumns.REPO_ADDRESS:
+                case Cols.REPO_ADDRESS:
                     repoAddress = cursor.getString(i);
                     break;
             }
@@ -142,7 +143,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     public String getUrl() {
         if (repoAddress == null || apkName == null) {
-            throw new IllegalStateException("Apk needs to have both ApkProvider.DataColumns.REPO_ADDRESS and ApkProvider.DataColumns.NAME set in order to calculate URL.");
+            throw new IllegalStateException("Apk needs to have both Schema.ApkTable.Cols.REPO_ADDRESS and Schema.ApkTable.Cols.NAME set in order to calculate URL.");
         }
         return repoAddress + "/" + apkName.replace(" ", "%20");
     }
@@ -191,25 +192,25 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
-        values.put(ApkProvider.DataColumns.PACKAGE_NAME, packageName);
-        values.put(ApkProvider.DataColumns.VERSION_NAME, versionName);
-        values.put(ApkProvider.DataColumns.VERSION_CODE, versionCode);
-        values.put(ApkProvider.DataColumns.REPO_ID, repo);
-        values.put(ApkProvider.DataColumns.HASH, hash);
-        values.put(ApkProvider.DataColumns.HASH_TYPE, hashType);
-        values.put(ApkProvider.DataColumns.SIGNATURE, sig);
-        values.put(ApkProvider.DataColumns.SOURCE_NAME, srcname);
-        values.put(ApkProvider.DataColumns.SIZE, size);
-        values.put(ApkProvider.DataColumns.NAME, apkName);
-        values.put(ApkProvider.DataColumns.MIN_SDK_VERSION, minSdkVersion);
-        values.put(ApkProvider.DataColumns.TARGET_SDK_VERSION, targetSdkVersion);
-        values.put(ApkProvider.DataColumns.MAX_SDK_VERSION, maxSdkVersion);
-        values.put(ApkProvider.DataColumns.ADDED_DATE, Utils.formatDate(added, ""));
-        values.put(ApkProvider.DataColumns.PERMISSIONS, Utils.serializeCommaSeparatedString(permissions));
-        values.put(ApkProvider.DataColumns.FEATURES, Utils.serializeCommaSeparatedString(features));
-        values.put(ApkProvider.DataColumns.NATIVE_CODE, Utils.serializeCommaSeparatedString(nativecode));
-        values.put(ApkProvider.DataColumns.INCOMPATIBLE_REASONS, Utils.serializeCommaSeparatedString(incompatibleReasons));
-        values.put(ApkProvider.DataColumns.IS_COMPATIBLE, compatible ? 1 : 0);
+        values.put(Cols.PACKAGE_NAME, packageName);
+        values.put(Cols.VERSION_NAME, versionName);
+        values.put(Cols.VERSION_CODE, versionCode);
+        values.put(Cols.REPO_ID, repo);
+        values.put(Cols.HASH, hash);
+        values.put(Cols.HASH_TYPE, hashType);
+        values.put(Cols.SIGNATURE, sig);
+        values.put(Cols.SOURCE_NAME, srcname);
+        values.put(Cols.SIZE, size);
+        values.put(Cols.NAME, apkName);
+        values.put(Cols.MIN_SDK_VERSION, minSdkVersion);
+        values.put(Cols.TARGET_SDK_VERSION, targetSdkVersion);
+        values.put(Cols.MAX_SDK_VERSION, maxSdkVersion);
+        values.put(Cols.ADDED_DATE, Utils.formatDate(added, ""));
+        values.put(Cols.PERMISSIONS, Utils.serializeCommaSeparatedString(permissions));
+        values.put(Cols.FEATURES, Utils.serializeCommaSeparatedString(features));
+        values.put(Cols.NATIVE_CODE, Utils.serializeCommaSeparatedString(nativecode));
+        values.put(Cols.INCOMPATIBLE_REASONS, Utils.serializeCommaSeparatedString(incompatibleReasons));
+        values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);
         return values;
     }
 

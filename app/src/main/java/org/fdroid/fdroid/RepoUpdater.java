@@ -12,6 +12,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoPersister;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderFactory;
 import org.xml.sax.InputSource;
@@ -253,32 +254,32 @@ public class RepoUpdater {
     private ContentValues prepareRepoDetailsForSaving(String name, String description, int maxAge, int version, long timestamp) {
         ContentValues values = new ContentValues();
 
-        values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatTime(new Date(), ""));
+        values.put(RepoTable.Cols.LAST_UPDATED, Utils.formatTime(new Date(), ""));
 
         if (repo.lastetag == null || !repo.lastetag.equals(cacheTag)) {
-            values.put(RepoProvider.DataColumns.LAST_ETAG, cacheTag);
+            values.put(RepoTable.Cols.LAST_ETAG, cacheTag);
         }
 
         if (version != -1 && version != repo.version) {
             Utils.debugLog(TAG, "Repo specified a new version: from " + repo.version + " to " + version);
-            values.put(RepoProvider.DataColumns.VERSION, version);
+            values.put(RepoTable.Cols.VERSION, version);
         }
 
         if (maxAge != -1 && maxAge != repo.maxage) {
             Utils.debugLog(TAG, "Repo specified a new maximum age - updated");
-            values.put(RepoProvider.DataColumns.MAX_AGE, maxAge);
+            values.put(RepoTable.Cols.MAX_AGE, maxAge);
         }
 
         if (description != null && !description.equals(repo.description)) {
-            values.put(RepoProvider.DataColumns.DESCRIPTION, description);
+            values.put(RepoTable.Cols.DESCRIPTION, description);
         }
 
         if (name != null && !name.equals(repo.name)) {
-            values.put(RepoProvider.DataColumns.NAME, name);
+            values.put(RepoTable.Cols.NAME, name);
         }
 
         if (timestamp != repo.timestamp) {
-            values.put(RepoProvider.DataColumns.TIMESTAMP, timestamp);
+            values.put(RepoTable.Cols.TIMESTAMP, timestamp);
         }
 
         return values;
@@ -354,8 +355,8 @@ public class RepoUpdater {
 
         Utils.debugLog(TAG, "Saving new signing certificate in the database for " + repo.address);
         ContentValues values = new ContentValues(2);
-        values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatDate(new Date(), ""));
-        values.put(RepoProvider.DataColumns.SIGNING_CERT, Hasher.hex(rawCertFromJar));
+        values.put(RepoTable.Cols.LAST_UPDATED, Utils.formatDate(new Date(), ""));
+        values.put(RepoTable.Cols.SIGNING_CERT, Hasher.hex(rawCertFromJar));
         RepoProvider.Helper.update(context, repo, values);
     }
 

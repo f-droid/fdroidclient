@@ -32,8 +32,8 @@ public class RepoPersister {
      * is essentially completely transient, and can be nuked at any time.
      */
     private static final String[] APP_FIELDS_TO_IGNORE = {
-        AppProvider.DataColumns.IGNORE_ALLUPDATES,
-        AppProvider.DataColumns.IGNORE_THISUPDATE,
+        Schema.AppTable.Cols.IGNORE_ALLUPDATES,
+        Schema.AppTable.Cols.IGNORE_THISUPDATE,
     };
 
     /**
@@ -159,8 +159,8 @@ public class RepoPersister {
      */
     private ArrayList<ContentProviderOperation> insertOrUpdateApks(List<Apk> packages) {
         String[] projection = new String[]{
-            ApkProvider.DataColumns.PACKAGE_NAME,
-            ApkProvider.DataColumns.VERSION_CODE,
+                Schema.ApkTable.Cols.PACKAGE_NAME,
+                Schema.ApkTable.Cols.VERSION_CODE,
         };
         List<Apk> existingApks = ApkProvider.Helper.knownApks(context, packages, projection);
         ArrayList<ContentProviderOperation> operations = new ArrayList<>(packages.size());
@@ -214,7 +214,7 @@ public class RepoPersister {
      * array.
      */
     private boolean isAppInDatabase(App app) {
-        String[] fields = {AppProvider.DataColumns.PACKAGE_NAME};
+        String[] fields = {Schema.AppTable.Cols.PACKAGE_NAME};
         App found = AppProvider.Helper.findByPackageName(context.getContentResolver(), app.packageName, fields);
         return found != null;
     }
@@ -245,7 +245,7 @@ public class RepoPersister {
      */
     @Nullable
     private ContentProviderOperation deleteOrphanedApks(List<App> apps, Map<String, List<Apk>> packages) {
-        String[] projection = new String[]{ApkProvider.DataColumns.PACKAGE_NAME, ApkProvider.DataColumns.VERSION_CODE};
+        String[] projection = new String[]{Schema.ApkTable.Cols.PACKAGE_NAME, Schema.ApkTable.Cols.VERSION_CODE};
         List<Apk> existing = ApkProvider.Helper.find(context, repo, apps, projection);
         List<Apk> toDelete = new ArrayList<>();
 

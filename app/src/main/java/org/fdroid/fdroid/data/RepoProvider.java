@@ -7,11 +7,12 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import android.provider.BaseColumns;
 import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +29,12 @@ public class RepoProvider extends FDroidProvider {
 
         public static Repo findByUri(Context context, Uri uri) {
             ContentResolver resolver = context.getContentResolver();
-            Cursor cursor = resolver.query(uri, DataColumns.ALL, null, null, null);
+            Cursor cursor = resolver.query(uri, Cols.ALL, null, null, null);
             return cursorToRepo(cursor);
         }
 
         public static Repo findById(Context context, long repoId) {
-            return findById(context, repoId, DataColumns.ALL);
+            return findById(context, repoId, Cols.ALL);
         }
 
         public static Repo findById(Context context, long repoId,
@@ -45,18 +46,18 @@ public class RepoProvider extends FDroidProvider {
         }
 
         public static Repo findByAddress(Context context, String address) {
-            return findByAddress(context, address, DataColumns.ALL);
+            return findByAddress(context, address, Cols.ALL);
         }
 
         public static Repo findByAddress(Context context,
                                          String address, String[] projection) {
             List<Repo> repos = findBy(
-                    context, DataColumns.ADDRESS, address, projection);
+                    context, Cols.ADDRESS, address, projection);
             return repos.size() > 0 ? repos.get(0) : null;
         }
 
         public static List<Repo> all(Context context) {
-            return all(context, DataColumns.ALL);
+            return all(context, Cols.ALL);
         }
 
         public static List<Repo> all(Context context, String[] projection) {
@@ -113,10 +114,10 @@ public class RepoProvider extends FDroidProvider {
             // Change the name to the new address. Next time we update the repo
             // index file, it will populate the name field with the proper
             // name, but the best we can do is guess right now.
-            if (values.containsKey(DataColumns.ADDRESS) &&
-                    !values.containsKey(DataColumns.NAME)) {
-                String name = Repo.addressToName(values.getAsString(DataColumns.ADDRESS));
-                values.put(DataColumns.NAME, name);
+            if (values.containsKey(Cols.ADDRESS) &&
+                    !values.containsKey(Cols.NAME)) {
+                String name = Repo.addressToName(values.getAsString(Cols.ADDRESS));
+                values.put(Cols.NAME, name);
             }
 
             /*
@@ -129,14 +130,14 @@ public class RepoProvider extends FDroidProvider {
              * make sure it is correct. If the fingerprint is empty, then store
              * the calculated one.
              */
-            if (values.containsKey(DataColumns.SIGNING_CERT)) {
-                String publicKey = values.getAsString(DataColumns.SIGNING_CERT);
+            if (values.containsKey(Cols.SIGNING_CERT)) {
+                String publicKey = values.getAsString(Cols.SIGNING_CERT);
                 String calcedFingerprint = Utils.calcFingerprint(publicKey);
-                if (values.containsKey(DataColumns.FINGERPRINT)) {
-                    String fingerprint = values.getAsString(DataColumns.FINGERPRINT);
+                if (values.containsKey(Cols.FINGERPRINT)) {
+                    String fingerprint = values.getAsString(Cols.FINGERPRINT);
                     if (!TextUtils.isEmpty(publicKey)) {
                         if (TextUtils.isEmpty(fingerprint)) {
-                            values.put(DataColumns.FINGERPRINT, calcedFingerprint);
+                            values.put(Cols.FINGERPRINT, calcedFingerprint);
                         } else if (!fingerprint.equals(calcedFingerprint)) {
                             // TODO the UI should represent this error!
                             Log.e(TAG, "The stored and calculated fingerprints do not match!");
@@ -146,20 +147,20 @@ public class RepoProvider extends FDroidProvider {
                     }
                 } else if (!TextUtils.isEmpty(publicKey)) {
                     // no fingerprint in 'values', so put one there
-                    values.put(DataColumns.FINGERPRINT, calcedFingerprint);
+                    values.put(Cols.FINGERPRINT, calcedFingerprint);
                 }
             }
 
-            if (values.containsKey(DataColumns.IN_USE)) {
-                Integer inUse = values.getAsInteger(DataColumns.IN_USE);
+            if (values.containsKey(Cols.IN_USE)) {
+                Integer inUse = values.getAsInteger(Cols.IN_USE);
                 if (inUse != null && inUse == 0) {
-                    values.put(DataColumns.LAST_ETAG, (String) null);
+                    values.put(Cols.LAST_ETAG, (String) null);
                 }
             }
 
             final Uri uri = getContentUri(repo.getId());
             final String[] args = {Long.toString(repo.getId())};
-            resolver.update(uri, values, DataColumns._ID + " = ?", args);
+            resolver.update(uri, values, Cols._ID + " = ?", args);
             repo.setValues(values);
         }
 
@@ -194,7 +195,7 @@ public class RepoProvider extends FDroidProvider {
 
         public static int countAppsForRepo(Context context, long repoId) {
             ContentResolver resolver = context.getContentResolver();
-            final String[] projection = {ApkProvider.DataColumns._COUNT_DISTINCT_ID};
+            final String[] projection = {Schema.ApkTable.Cols._COUNT_DISTINCT_ID};
             Uri apkUri = ApkProvider.getRepoUri(repoId);
             Cursor cursor = resolver.query(apkUri, projection, null, null, null);
             int count = 0;
@@ -207,31 +208,6 @@ public class RepoProvider extends FDroidProvider {
             }
             return count;
         }
-    }
-
-    public interface DataColumns extends BaseColumns {
-
-        String ADDRESS      = "address";
-        String NAME         = "name";
-        String DESCRIPTION  = "description";
-        String IN_USE       = "inuse";
-        String PRIORITY     = "priority";
-        String SIGNING_CERT = "pubkey";
-        String FINGERPRINT  = "fingerprint";
-        String MAX_AGE      = "maxage";
-        String LAST_ETAG    = "lastetag";
-        String LAST_UPDATED = "lastUpdated";
-        String VERSION      = "version";
-        String IS_SWAP      = "isSwap";
-        String USERNAME     = "username";
-        String PASSWORD     = "password";
-        String TIMESTAMP    = "timestamp";
-
-        String[] ALL = {
-            _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, SIGNING_CERT,
-            FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION, IS_SWAP,
-            USERNAME, PASSWORD, TIMESTAMP,
-        };
     }
 
     private static final String PROVIDER_NAME = "RepoProvider";
@@ -267,7 +243,7 @@ public class RepoProvider extends FDroidProvider {
 
     @Override
     protected String getTableName() {
-        return DBHelper.TABLE_REPO;
+        return RepoTable.NAME;
     }
 
     @Override
@@ -294,11 +270,11 @@ public class RepoProvider extends FDroidProvider {
 
             case CODE_SINGLE:
                 selection = (selection == null ? "" : selection + " AND ") +
-                    DataColumns._ID + " = " + uri.getLastPathSegment();
+                    Cols._ID + " = " + uri.getLastPathSegment();
                 break;
 
             case CODE_ALL_EXCEPT_SWAP:
-                selection = DataColumns.IS_SWAP + " = 0 OR " + DataColumns.IS_SWAP + " IS NULL ";
+                selection = Cols.IS_SWAP + " = 0 OR " + Cols.IS_SWAP + " IS NULL ";
                 break;
 
             default:
@@ -314,32 +290,32 @@ public class RepoProvider extends FDroidProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
 
-        if (!values.containsKey(DataColumns.ADDRESS)) {
+        if (!values.containsKey(Cols.ADDRESS)) {
             throw new UnsupportedOperationException("Cannot add repo without an address.");
         }
 
         // The following fields have NOT NULL constraints in the DB, so need
         // to be present.
 
-        if (!values.containsKey(DataColumns.IN_USE)) {
-            values.put(DataColumns.IN_USE, 1);
+        if (!values.containsKey(Cols.IN_USE)) {
+            values.put(Cols.IN_USE, 1);
         }
 
-        if (!values.containsKey(DataColumns.PRIORITY)) {
-            values.put(DataColumns.PRIORITY, 10);
+        if (!values.containsKey(Cols.PRIORITY)) {
+            values.put(Cols.PRIORITY, 10);
         }
 
-        if (!values.containsKey(DataColumns.MAX_AGE)) {
-            values.put(DataColumns.MAX_AGE, 0);
+        if (!values.containsKey(Cols.MAX_AGE)) {
+            values.put(Cols.MAX_AGE, 0);
         }
 
-        if (!values.containsKey(DataColumns.VERSION)) {
-            values.put(DataColumns.VERSION, 0);
+        if (!values.containsKey(Cols.VERSION)) {
+            values.put(Cols.VERSION, 0);
         }
 
-        if (!values.containsKey(DataColumns.NAME)) {
-            final String address = values.getAsString(DataColumns.ADDRESS);
-            values.put(DataColumns.NAME, Repo.addressToName(address));
+        if (!values.containsKey(Cols.NAME)) {
+            final String address = values.getAsString(Cols.ADDRESS);
+            values.put(Cols.NAME, Repo.addressToName(address));
         }
 
         long id = db().insertOrThrow(getTableName(), null, values);

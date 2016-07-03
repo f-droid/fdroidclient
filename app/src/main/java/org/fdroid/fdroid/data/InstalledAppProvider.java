@@ -13,6 +13,8 @@ import android.util.Log;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,15 +34,15 @@ public class InstalledAppProvider extends FDroidProvider {
             Map<String, Long> cachedInfo = new HashMap<>();
 
             final Uri uri = InstalledAppProvider.getContentUri();
-            final String[] projection = InstalledAppProvider.DataColumns.ALL;
+            final String[] projection = Cols.ALL;
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             if (cursor != null) {
                 if (cursor.getCount() > 0) {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
                         cachedInfo.put(
-                                cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)),
-                                cursor.getLong(cursor.getColumnIndex(DataColumns.LAST_UPDATE_TIME))
+                                cursor.getString(cursor.getColumnIndex(Cols.PACKAGE_NAME)),
+                                cursor.getLong(cursor.getColumnIndex(Cols.LAST_UPDATE_TIME))
                         );
                         cursor.moveToNext();
                     }
@@ -50,25 +52,6 @@ public class InstalledAppProvider extends FDroidProvider {
 
             return cachedInfo;
         }
-
-    }
-
-    public interface DataColumns {
-
-        String _ID = "rowid as _id"; // Required for CursorLoaders
-        String PACKAGE_NAME = "appId";
-        String VERSION_CODE = "versionCode";
-        String VERSION_NAME = "versionName";
-        String APPLICATION_LABEL = "applicationLabel";
-        String SIGNATURE = "sig";
-        String LAST_UPDATE_TIME = "lastUpdateTime";
-        String HASH_TYPE = "hashType";
-        String HASH = "hash";
-
-        String[] ALL = {
-            _ID, PACKAGE_NAME, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
-            SIGNATURE, LAST_UPDATE_TIME, HASH_TYPE, HASH,
-        };
 
     }
 
@@ -117,7 +100,7 @@ public class InstalledAppProvider extends FDroidProvider {
 
     @Override
     protected String getTableName() {
-        return DBHelper.TABLE_INSTALLED_APP;
+        return InstalledAppTable.NAME;
     }
 
     @Override
@@ -146,7 +129,7 @@ public class InstalledAppProvider extends FDroidProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
         if (sortOrder == null) {
-            sortOrder = DataColumns.APPLICATION_LABEL;
+            sortOrder = Cols.APPLICATION_LABEL;
         }
 
         QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
@@ -195,7 +178,7 @@ public class InstalledAppProvider extends FDroidProvider {
 
         verifyVersionNameNotNull(values);
         db().replaceOrThrow(getTableName(), null, values);
-        return getAppUri(values.getAsString(DataColumns.PACKAGE_NAME));
+        return getAppUri(values.getAsString(Cols.PACKAGE_NAME));
     }
 
     /**
@@ -215,8 +198,8 @@ public class InstalledAppProvider extends FDroidProvider {
      * "versionName" is used.
      */
     private void verifyVersionNameNotNull(ContentValues values) {
-        if (values.containsKey(DataColumns.VERSION_NAME) && values.getAsString(DataColumns.VERSION_NAME) == null) {
-            values.put(DataColumns.VERSION_NAME, getContext().getString(R.string.unknown));
+        if (values.containsKey(Cols.VERSION_NAME) && values.getAsString(Cols.VERSION_NAME) == null) {
+            values.put(Cols.VERSION_NAME, getContext().getString(R.string.unknown));
         }
     }
 

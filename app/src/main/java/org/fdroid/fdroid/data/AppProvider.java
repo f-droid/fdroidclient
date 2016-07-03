@@ -13,6 +13,11 @@ import android.util.Log;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.AppTable;
+import org.fdroid.fdroid.data.Schema.AppTable.Cols;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable;
+import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +35,7 @@ public class AppProvider extends FDroidProvider {
         private Helper() { }
 
         public static int count(Context context, Uri uri) {
-            final String[] projection = {AppProvider.DataColumns._COUNT};
+            final String[] projection = {Cols._COUNT};
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             int count = 0;
             if (cursor != null) {
@@ -44,7 +49,7 @@ public class AppProvider extends FDroidProvider {
         }
 
         public static List<App> all(ContentResolver resolver) {
-            return all(resolver, DataColumns.ALL);
+            return all(resolver, Cols.ALL);
         }
 
         public static List<App> all(ContentResolver resolver, String[] projection) {
@@ -90,7 +95,7 @@ public class AppProvider extends FDroidProvider {
         public static List<String> categories(Context context) {
             final ContentResolver resolver = context.getContentResolver();
             final Uri uri = getContentUri();
-            final String[] projection = {DataColumns.CATEGORIES};
+            final String[] projection = {Cols.CATEGORIES};
             final Cursor cursor = resolver.query(uri, projection, null, null, null);
             final Set<String> categorySet = new HashSet<>();
             if (cursor != null) {
@@ -121,7 +126,7 @@ public class AppProvider extends FDroidProvider {
         }
 
         public static App findByPackageName(ContentResolver resolver, String packageName) {
-            return findByPackageName(resolver, packageName, DataColumns.ALL);
+            return findByPackageName(resolver, packageName, Cols.ALL);
         }
 
         public static App findByPackageName(ContentResolver resolver, String packageName,
@@ -162,66 +167,9 @@ public class AppProvider extends FDroidProvider {
     static final class UpgradeHelper {
 
         public static void updateIconUrls(Context context, SQLiteDatabase db) {
-            AppProvider.updateIconUrls(context, db, DBHelper.TABLE_APP, DBHelper.TABLE_APK);
+            AppProvider.updateIconUrls(context, db, AppTable.NAME, ApkTable.NAME);
         }
 
-    }
-
-    public interface DataColumns {
-
-        String _ID = "rowid as _id"; // Required for CursorLoaders
-        String _COUNT = "_count";
-        String IS_COMPATIBLE = "compatible";
-        String PACKAGE_NAME = "id";
-        String NAME = "name";
-        String SUMMARY = "summary";
-        String ICON = "icon";
-        String DESCRIPTION = "description";
-        String LICENSE = "license";
-        String AUTHOR = "author";
-        String EMAIL = "email";
-        String WEB_URL = "webURL";
-        String TRACKER_URL = "trackerURL";
-        String SOURCE_URL = "sourceURL";
-        String CHANGELOG_URL = "changelogURL";
-        String DONATE_URL = "donateURL";
-        String BITCOIN_ADDR = "bitcoinAddr";
-        String LITECOIN_ADDR = "litecoinAddr";
-        String FLATTR_ID = "flattrID";
-        String SUGGESTED_VERSION_CODE = "suggestedVercode";
-        String UPSTREAM_VERSION_NAME = "upstreamVersion";
-        String UPSTREAM_VERSION_CODE = "upstreamVercode";
-        String ADDED = "added";
-        String LAST_UPDATED = "lastUpdated";
-        String CATEGORIES = "categories";
-        String ANTI_FEATURES = "antiFeatures";
-        String REQUIREMENTS = "requirements";
-        String IGNORE_ALLUPDATES = "ignoreAllUpdates";
-        String IGNORE_THISUPDATE = "ignoreThisUpdate";
-        String ICON_URL = "iconUrl";
-        String ICON_URL_LARGE = "iconUrlLarge";
-
-        interface SuggestedApk {
-            String VERSION_NAME = "suggestedApkVersion";
-        }
-
-        interface InstalledApp {
-            String VERSION_CODE = "installedVersionCode";
-            String VERSION_NAME = "installedVersionName";
-            String SIGNATURE = "installedSig";
-        }
-
-        String[] ALL = {
-            _ID, IS_COMPATIBLE, PACKAGE_NAME, NAME, SUMMARY, ICON, DESCRIPTION,
-            LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
-            CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
-            UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
-            CATEGORIES, ANTI_FEATURES, REQUIREMENTS, IGNORE_ALLUPDATES,
-            IGNORE_THISUPDATE, ICON_URL, ICON_URL_LARGE,
-            SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
-            InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
-            InstalledApp.SIGNATURE,
-        };
     }
 
     /**
@@ -296,7 +244,7 @@ public class AppProvider extends FDroidProvider {
         protected String getRequiredTables() {
             final String app  = getTableName();
             final String apk  = getApkTableName();
-            final String repo = DBHelper.TABLE_REPO;
+            final String repo = RepoTable.NAME;
 
             return app +
                 " LEFT JOIN " + apk + " ON ( " + apk + ".id = " + app + ".id ) " +
@@ -326,9 +274,9 @@ public class AppProvider extends FDroidProvider {
         public void naturalJoinToInstalledTable() {
             if (!requiresInstalledTable) {
                 join(
-                        DBHelper.TABLE_INSTALLED_APP,
+                        InstalledAppTable.NAME,
                         "installed",
-                        "installed." + InstalledAppProvider.DataColumns.PACKAGE_NAME + " = " + getTableName() + ".id");
+                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + ".id");
                 requiresInstalledTable = true;
             }
         }
@@ -336,9 +284,9 @@ public class AppProvider extends FDroidProvider {
         public void leftJoinToInstalledTable() {
             if (!requiresInstalledTable) {
                 leftJoin(
-                        DBHelper.TABLE_INSTALLED_APP,
+                        InstalledAppTable.NAME,
                         "installed",
-                        "installed." + InstalledAppProvider.DataColumns.PACKAGE_NAME + " = " + getTableName() + ".id");
+                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + ".id");
                 requiresInstalledTable = true;
             }
         }
@@ -346,23 +294,23 @@ public class AppProvider extends FDroidProvider {
         @Override
         public void addField(String field) {
             switch (field) {
-                case DataColumns.SuggestedApk.VERSION_NAME:
+                case Cols.SuggestedApk.VERSION_NAME:
                     addSuggestedApkVersionField();
                     break;
-                case DataColumns.InstalledApp.VERSION_NAME:
+                case Cols.InstalledApp.VERSION_NAME:
                     addInstalledAppVersionName();
                     break;
-                case DataColumns.InstalledApp.VERSION_CODE:
+                case Cols.InstalledApp.VERSION_CODE:
                     addInstalledAppVersionCode();
                     break;
-                case DataColumns.InstalledApp.SIGNATURE:
+                case Cols.InstalledApp.SIGNATURE:
                     addInstalledSig();
                     break;
-                case DataColumns._COUNT:
+                case Cols._COUNT:
                     appendCountField();
                     break;
                 default:
-                    if (field.equals(DataColumns.CATEGORIES)) {
+                    if (field.equals(Cols.CATEGORIES)) {
                         categoryFieldAdded = true;
                     }
                     appendField(field, getTableName());
@@ -372,13 +320,13 @@ public class AppProvider extends FDroidProvider {
 
         private void appendCountField() {
             countFieldAppended = true;
-            appendField("COUNT( DISTINCT " + getTableName() + ".id ) AS " + DataColumns._COUNT);
+            appendField("COUNT( DISTINCT " + getTableName() + ".id ) AS " + Cols._COUNT);
         }
 
         private void addSuggestedApkVersionField() {
             addSuggestedApkField(
-                    ApkProvider.DataColumns.VERSION_NAME,
-                    DataColumns.SuggestedApk.VERSION_NAME);
+                    ApkTable.Cols.VERSION_NAME,
+                    Cols.SuggestedApk.VERSION_NAME);
         }
 
         private void addSuggestedApkField(String fieldName, String alias) {
@@ -394,22 +342,22 @@ public class AppProvider extends FDroidProvider {
 
         private void addInstalledAppVersionName() {
             addInstalledAppField(
-                    InstalledAppProvider.DataColumns.VERSION_NAME,
-                    DataColumns.InstalledApp.VERSION_NAME
+                    InstalledAppTable.Cols.VERSION_NAME,
+                    Cols.InstalledApp.VERSION_NAME
             );
         }
 
         private void addInstalledAppVersionCode() {
             addInstalledAppField(
-                    InstalledAppProvider.DataColumns.VERSION_CODE,
-                    DataColumns.InstalledApp.VERSION_CODE
+                    InstalledAppTable.Cols.VERSION_CODE,
+                    Cols.InstalledApp.VERSION_CODE
             );
         }
 
         private void addInstalledSig() {
             addInstalledAppField(
-                    InstalledAppProvider.DataColumns.SIGNATURE,
-                    DataColumns.InstalledApp.SIGNATURE
+                    InstalledAppTable.Cols.SIGNATURE,
+                    Cols.InstalledApp.SIGNATURE
             );
         }
 
@@ -577,11 +525,11 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     protected String getTableName() {
-        return DBHelper.TABLE_APP;
+        return AppTable.NAME;
     }
 
     protected String getApkTableName() {
-        return DBHelper.TABLE_APK;
+        return ApkTable.NAME;
     }
 
     @Override
@@ -602,7 +550,7 @@ public class AppProvider extends FDroidProvider {
         final String ignoreCurrent = getTableName() + ".ignoreThisUpdate != " + getTableName() + ".suggestedVercode ";
         final String ignoreAll = getTableName() + ".ignoreAllUpdates != 1 ";
         final String ignore = " ( " + ignoreCurrent + " AND " + ignoreAll + " ) ";
-        final String where = ignore + " AND " + getTableName() + "." + DataColumns.SUGGESTED_VERSION_CODE + " > installed.versionCode";
+        final String where = ignore + " AND " + getTableName() + "." + Cols.SUGGESTED_VERSION_CODE + " > installed.versionCode";
         return new AppQuerySelection(where).requireNaturalInstalledTable();
     }
 
@@ -821,7 +769,7 @@ public class AppProvider extends FDroidProvider {
             selection = selection.add(queryExcludeSwap());
         }
 
-        if (AppProvider.DataColumns.NAME.equals(sortOrder)) {
+        if (Cols.NAME.equals(sortOrder)) {
             sortOrder = getTableName() + "." + sortOrder + " COLLATE LOCALIZED ";
         }
 
@@ -861,7 +809,7 @@ public class AppProvider extends FDroidProvider {
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
-        return getContentUri(values.getAsString(DataColumns.PACKAGE_NAME));
+        return getContentUri(values.getAsString(Cols.PACKAGE_NAME));
     }
 
     @Override
@@ -1029,7 +977,7 @@ public class AppProvider extends FDroidProvider {
      */
     private static String getIconUpdateQuery(String app, String apk) {
 
-        final String repo = DBHelper.TABLE_REPO;
+        final String repo = RepoTable.NAME;
 
         final String iconUrlQuery =
                 " SELECT " +

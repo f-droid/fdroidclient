@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.text.TextUtils;
 
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -52,52 +53,52 @@ public class Repo extends ValueObject {
 
         for (int i = 0; i < cursor.getColumnCount(); i++) {
             switch (cursor.getColumnName(i)) {
-                case RepoProvider.DataColumns._ID:
+                case Cols._ID:
                     id = cursor.getInt(i);
                     break;
-                case RepoProvider.DataColumns.LAST_ETAG:
+                case Cols.LAST_ETAG:
                     lastetag = cursor.getString(i);
                     break;
-                case RepoProvider.DataColumns.ADDRESS:
+                case Cols.ADDRESS:
                     address = cursor.getString(i);
                     break;
-                case RepoProvider.DataColumns.DESCRIPTION:
+                case Cols.DESCRIPTION:
                     description = cursor.getString(i);
                     break;
-                case RepoProvider.DataColumns.FINGERPRINT:
+                case Cols.FINGERPRINT:
                     fingerprint = cursor.getString(i);
                     break;
-                case RepoProvider.DataColumns.IN_USE:
+                case Cols.IN_USE:
                     inuse = cursor.getInt(i) == 1;
                     break;
-                case RepoProvider.DataColumns.LAST_UPDATED:
+                case Cols.LAST_UPDATED:
                     lastUpdated = Utils.parseTime(cursor.getString(i), null);
                     break;
-                case RepoProvider.DataColumns.MAX_AGE:
+                case Cols.MAX_AGE:
                     maxage = cursor.getInt(i);
                     break;
-                case RepoProvider.DataColumns.VERSION:
+                case Cols.VERSION:
                     version = cursor.getInt(i);
                     break;
-                case RepoProvider.DataColumns.NAME:
+                case Cols.NAME:
                     name = cursor.getString(i);
                     break;
-                case RepoProvider.DataColumns.SIGNING_CERT:
+                case Cols.SIGNING_CERT:
                     signingCertificate = cursor.getString(i);
                     break;
-                case RepoProvider.DataColumns.PRIORITY:
+                case Cols.PRIORITY:
                     priority = cursor.getInt(i);
                     break;
-                case RepoProvider.DataColumns.IS_SWAP:
+                case Cols.IS_SWAP:
                     isSwap = cursor.getInt(i) == 1;
                     break;
-                case RepoProvider.DataColumns.USERNAME:
+                case Cols.USERNAME:
                     username = cursor.getString(i);
                     break;
-                case RepoProvider.DataColumns.PASSWORD:
+                case Cols.PASSWORD:
                     password = cursor.getString(i);
                     break;
-                case RepoProvider.DataColumns.TIMESTAMP:
+                case Cols.TIMESTAMP:
                     timestamp = cursor.getLong(i);
                     break;
             }
@@ -158,69 +159,69 @@ public class Repo extends ValueObject {
 
     public void setValues(ContentValues values) {
 
-        if (values.containsKey(RepoProvider.DataColumns._ID)) {
-            id = toInt(values.getAsInteger(RepoProvider.DataColumns._ID));
+        if (values.containsKey(Cols._ID)) {
+            id = toInt(values.getAsInteger(Cols._ID));
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.LAST_ETAG)) {
-            lastetag = values.getAsString(RepoProvider.DataColumns.LAST_ETAG);
+        if (values.containsKey(Cols.LAST_ETAG)) {
+            lastetag = values.getAsString(Cols.LAST_ETAG);
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.ADDRESS)) {
-            address = values.getAsString(RepoProvider.DataColumns.ADDRESS);
+        if (values.containsKey(Cols.ADDRESS)) {
+            address = values.getAsString(Cols.ADDRESS);
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.DESCRIPTION)) {
-            description = values.getAsString(RepoProvider.DataColumns.DESCRIPTION);
+        if (values.containsKey(Cols.DESCRIPTION)) {
+            description = values.getAsString(Cols.DESCRIPTION);
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.FINGERPRINT)) {
-            fingerprint = values.getAsString(RepoProvider.DataColumns.FINGERPRINT);
+        if (values.containsKey(Cols.FINGERPRINT)) {
+            fingerprint = values.getAsString(Cols.FINGERPRINT);
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.IN_USE)) {
-            inuse = toInt(values.getAsInteger(RepoProvider.DataColumns.IN_USE)) == 1;
+        if (values.containsKey(Cols.IN_USE)) {
+            inuse = toInt(values.getAsInteger(Cols.IN_USE)) == 1;
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.LAST_UPDATED)) {
-            final String dateString = values.getAsString(RepoProvider.DataColumns.LAST_UPDATED);
+        if (values.containsKey(Cols.LAST_UPDATED)) {
+            final String dateString = values.getAsString(Cols.LAST_UPDATED);
             lastUpdated = Utils.parseTime(dateString, null);
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.MAX_AGE)) {
-            maxage = toInt(values.getAsInteger(RepoProvider.DataColumns.MAX_AGE));
+        if (values.containsKey(Cols.MAX_AGE)) {
+            maxage = toInt(values.getAsInteger(Cols.MAX_AGE));
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.VERSION)) {
-            version = toInt(values.getAsInteger(RepoProvider.DataColumns.VERSION));
+        if (values.containsKey(Cols.VERSION)) {
+            version = toInt(values.getAsInteger(Cols.VERSION));
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.NAME)) {
-            name = values.getAsString(RepoProvider.DataColumns.NAME);
+        if (values.containsKey(Cols.NAME)) {
+            name = values.getAsString(Cols.NAME);
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.SIGNING_CERT)) {
-            signingCertificate = values.getAsString(RepoProvider.DataColumns.SIGNING_CERT);
+        if (values.containsKey(Cols.SIGNING_CERT)) {
+            signingCertificate = values.getAsString(Cols.SIGNING_CERT);
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.PRIORITY)) {
-            priority = toInt(values.getAsInteger(RepoProvider.DataColumns.PRIORITY));
+        if (values.containsKey(Cols.PRIORITY)) {
+            priority = toInt(values.getAsInteger(Cols.PRIORITY));
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.IS_SWAP)) {
-            isSwap = toInt(values.getAsInteger(RepoProvider.DataColumns.IS_SWAP)) == 1;
+        if (values.containsKey(Cols.IS_SWAP)) {
+            isSwap = toInt(values.getAsInteger(Cols.IS_SWAP)) == 1;
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.USERNAME)) {
-            username = values.getAsString(RepoProvider.DataColumns.USERNAME);
+        if (values.containsKey(Cols.USERNAME)) {
+            username = values.getAsString(Cols.USERNAME);
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.PASSWORD)) {
-            password = values.getAsString(RepoProvider.DataColumns.PASSWORD);
+        if (values.containsKey(Cols.PASSWORD)) {
+            password = values.getAsString(Cols.PASSWORD);
         }
 
-        if (values.containsKey(RepoProvider.DataColumns.TIMESTAMP)) {
-            timestamp = toInt(values.getAsInteger(RepoProvider.DataColumns.TIMESTAMP));
+        if (values.containsKey(Cols.TIMESTAMP)) {
+            timestamp = toInt(values.getAsInteger(Cols.TIMESTAMP));
         }
     }
 }

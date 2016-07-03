@@ -25,7 +25,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Schema.AppTable;
 import org.fdroid.fdroid.views.AppListAdapter;
 
 public abstract class AppListFragment extends ListFragment implements
@@ -38,24 +38,24 @@ public abstract class AppListFragment extends ListFragment implements
     private static final int REQUEST_APPDETAILS = 0;
 
     private static final String[] APP_PROJECTION = {
-        AppProvider.DataColumns._ID, // Required for cursor loader to work.
-        AppProvider.DataColumns.PACKAGE_NAME,
-        AppProvider.DataColumns.NAME,
-        AppProvider.DataColumns.SUMMARY,
-        AppProvider.DataColumns.IS_COMPATIBLE,
-        AppProvider.DataColumns.LICENSE,
-        AppProvider.DataColumns.ICON,
-        AppProvider.DataColumns.ICON_URL,
-        AppProvider.DataColumns.InstalledApp.VERSION_CODE,
-        AppProvider.DataColumns.InstalledApp.VERSION_NAME,
-        AppProvider.DataColumns.SuggestedApk.VERSION_NAME,
-        AppProvider.DataColumns.SUGGESTED_VERSION_CODE,
-        AppProvider.DataColumns.IGNORE_ALLUPDATES,
-        AppProvider.DataColumns.IGNORE_THISUPDATE,
-        AppProvider.DataColumns.REQUIREMENTS, // Needed for filtering apps that require root.
+            AppTable.Cols._ID, // Required for cursor loader to work.
+            AppTable.Cols.PACKAGE_NAME,
+            AppTable.Cols.NAME,
+            AppTable.Cols.SUMMARY,
+            AppTable.Cols.IS_COMPATIBLE,
+            AppTable.Cols.LICENSE,
+            AppTable.Cols.ICON,
+            AppTable.Cols.ICON_URL,
+            AppTable.Cols.InstalledApp.VERSION_CODE,
+            AppTable.Cols.InstalledApp.VERSION_NAME,
+            AppTable.Cols.SuggestedApk.VERSION_NAME,
+            AppTable.Cols.SUGGESTED_VERSION_CODE,
+            AppTable.Cols.IGNORE_ALLUPDATES,
+            AppTable.Cols.IGNORE_THISUPDATE,
+            AppTable.Cols.REQUIREMENTS, // Needed for filtering apps that require root.
     };
 
-    private static final String APP_SORT = AppProvider.DataColumns.NAME;
+    private static final String APP_SORT = AppTable.Cols.NAME;
 
     private AppListAdapter appAdapter;
 

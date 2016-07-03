@@ -49,6 +49,7 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
@@ -104,7 +105,7 @@ public class SwapAppsView extends ListView implements
         */
 
         adapter = new AppListAdapter(getContext(), getContext().getContentResolver().query(
-                AppProvider.getRepoUri(repo), AppProvider.DataColumns.ALL, null, null, null));
+                AppProvider.getRepoUri(repo), Schema.AppTable.Cols.ALL, null, null, null));
 
         setAdapter(adapter);
 
@@ -194,7 +195,7 @@ public class SwapAppsView extends ListView implements
                 ? AppProvider.getRepoUri(repo)
                 : AppProvider.getSearchUri(repo, mCurrentFilterString);
 
-        return new CursorLoader(getActivity(), uri, AppProvider.DataColumns.ALL, null, null, AppProvider.DataColumns.NAME);
+        return new CursorLoader(getActivity(), uri, Schema.AppTable.Cols.ALL, null, null, Schema.AppTable.Cols.NAME);
     }
 
     @Override

@@ -47,6 +47,7 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Schema;
 
 /**
  * NOTES:
@@ -191,7 +192,7 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
 
         intent = getIntent();
         Uri uri = intent.getData();
-        Apk apk = ApkProvider.Helper.find(this, uri, ApkProvider.DataColumns.ALL);
+        Apk apk = ApkProvider.Helper.find(this, uri, Schema.ApkTable.Cols.ALL);
         app = AppProvider.Helper.findByPackageName(getContentResolver(), apk.packageName);
 
         appDiff = new AppDiff(getPackageManager(), apk);

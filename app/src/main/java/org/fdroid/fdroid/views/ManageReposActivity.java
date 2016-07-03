@@ -64,6 +64,7 @@ import org.fdroid.fdroid.compat.CursorAdapterCompat;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -612,14 +613,14 @@ public class ManageReposActivity extends ActionBarActivity {
                 // Leave address as it was.
             }
             ContentValues values = new ContentValues(4);
-            values.put(RepoProvider.DataColumns.ADDRESS, address);
+            values.put(RepoTable.Cols.ADDRESS, address);
             if (!TextUtils.isEmpty(fingerprint)) {
-                values.put(RepoProvider.DataColumns.FINGERPRINT, fingerprint.toUpperCase(Locale.ENGLISH));
+                values.put(RepoTable.Cols.FINGERPRINT, fingerprint.toUpperCase(Locale.ENGLISH));
             }
 
             if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
-                values.put(RepoProvider.DataColumns.USERNAME, username);
-                values.put(RepoProvider.DataColumns.PASSWORD, password);
+                values.put(RepoTable.Cols.USERNAME, username);
+                values.put(RepoTable.Cols.PASSWORD, password);
             }
 
             RepoProvider.Helper.insert(context, values);
@@ -643,8 +644,8 @@ public class ManageReposActivity extends ActionBarActivity {
             Utils.debugLog(TAG, "Enabling existing repo: " + url);
             Repo repo = RepoProvider.Helper.findByAddress(context, url);
             ContentValues values = new ContentValues(2);
-            values.put(RepoProvider.DataColumns.IN_USE, 1);
-            values.put(RepoProvider.DataColumns.FINGERPRINT, fingerprint);
+            values.put(RepoTable.Cols.IN_USE, 1);
+            values.put(RepoTable.Cols.FINGERPRINT, fingerprint);
             RepoProvider.Helper.update(context, repo, values);
             listFragment.notifyDataSetChanged();
             finishedAddingRepo();
@@ -710,11 +711,11 @@ public class ManageReposActivity extends ActionBarActivity {
             Uri uri = RepoProvider.allExceptSwapUri();
             Utils.debugLog(TAG, "Creating repo loader '" + uri + "'.");
             final String[] projection = {
-                RepoProvider.DataColumns._ID,
-                RepoProvider.DataColumns.NAME,
-                RepoProvider.DataColumns.SIGNING_CERT,
-                RepoProvider.DataColumns.FINGERPRINT,
-                RepoProvider.DataColumns.IN_USE,
+                    RepoTable.Cols._ID,
+                    RepoTable.Cols.NAME,
+                    RepoTable.Cols.SIGNING_CERT,
+                    RepoTable.Cols.FINGERPRINT,
+                    RepoTable.Cols.IN_USE,
             };
             return new CursorLoader(getActivity(), uri, projection, null, null, null);
         }
@@ -748,7 +749,7 @@ public class ManageReposActivity extends ActionBarActivity {
         public void onSetEnabled(Repo repo, boolean isEnabled) {
             if (repo.inuse != isEnabled) {
                 ContentValues values = new ContentValues(1);
-                values.put(RepoProvider.DataColumns.IN_USE, isEnabled ? 1 : 0);
+                values.put(RepoTable.Cols.IN_USE, isEnabled ? 1 : 0);
                 RepoProvider.Helper.update(getActivity(), repo, values);
 
                 if (isEnabled) {

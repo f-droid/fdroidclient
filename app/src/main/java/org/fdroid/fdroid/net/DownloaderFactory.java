@@ -7,6 +7,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import org.apache.commons.io.FilenameUtils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.Schema;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,7 +48,7 @@ public class DownloaderFactory {
         } else if (isLocalFile(url)) {
             downloader = new LocalFileDownloader(url, destFile);
         } else {
-            final String[] projection = {RepoProvider.DataColumns.USERNAME, RepoProvider.DataColumns.PASSWORD};
+            final String[] projection = {Schema.RepoTable.Cols.USERNAME, Schema.RepoTable.Cols.PASSWORD};
             String repoUrlString = FilenameUtils.getBaseName(url.toString());
             Repo repo = RepoProvider.Helper.findByAddress(context, repoUrlString, projection);
             if (repo == null) {

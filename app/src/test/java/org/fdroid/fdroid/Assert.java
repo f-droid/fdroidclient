@@ -9,6 +9,9 @@ import junit.framework.AssertionFailedError;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
+import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.AppTable;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.robolectric.shadows.ShadowContentResolver;
 
 import java.util.ArrayList;
@@ -152,10 +155,10 @@ public class Assert {
         Uri uri = InstalledAppProvider.getAppUri(appId);
 
         String[] projection = {
-                InstalledAppProvider.DataColumns.PACKAGE_NAME,
-                InstalledAppProvider.DataColumns.VERSION_CODE,
-                InstalledAppProvider.DataColumns.VERSION_NAME,
-                InstalledAppProvider.DataColumns.APPLICATION_LABEL,
+                InstalledAppTable.Cols.PACKAGE_NAME,
+                InstalledAppTable.Cols.VERSION_CODE,
+                InstalledAppTable.Cols.VERSION_NAME,
+                InstalledAppTable.Cols.APPLICATION_LABEL,
         };
 
         Cursor cursor = resolver.query(uri, projection, null, null, null);
@@ -165,9 +168,9 @@ public class Assert {
 
         cursor.moveToFirst();
 
-        assertEquals(appId, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.PACKAGE_NAME)));
-        assertEquals(versionCode, cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE)));
-        assertEquals(versionName, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_NAME)));
+        assertEquals(appId, cursor.getString(cursor.getColumnIndex(InstalledAppTable.Cols.PACKAGE_NAME)));
+        assertEquals(versionCode, cursor.getInt(cursor.getColumnIndex(InstalledAppTable.Cols.VERSION_CODE)));
+        assertEquals(versionName, cursor.getString(cursor.getColumnIndex(InstalledAppTable.Cols.VERSION_NAME)));
         cursor.close();
     }
 
@@ -178,16 +181,16 @@ public class Assert {
     public static void insertApp(ShadowContentResolver resolver, String id, String name, ContentValues additionalValues) {
 
         ContentValues values = new ContentValues();
-        values.put(AppProvider.DataColumns.PACKAGE_NAME, id);
-        values.put(AppProvider.DataColumns.NAME, name);
+        values.put(AppTable.Cols.PACKAGE_NAME, id);
+        values.put(AppTable.Cols.NAME, name);
 
         // Required fields (NOT NULL in the database).
-        values.put(AppProvider.DataColumns.SUMMARY, "test summary");
-        values.put(AppProvider.DataColumns.DESCRIPTION, "test description");
-        values.put(AppProvider.DataColumns.LICENSE, "GPL?");
-        values.put(AppProvider.DataColumns.IS_COMPATIBLE, 1);
-        values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, 0);
-        values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, 0);
+        values.put(AppTable.Cols.SUMMARY, "test summary");
+        values.put(AppTable.Cols.DESCRIPTION, "test description");
+        values.put(AppTable.Cols.LICENSE, "GPL?");
+        values.put(AppTable.Cols.IS_COMPATIBLE, 1);
+        values.put(AppTable.Cols.IGNORE_ALLUPDATES, 0);
+        values.put(AppTable.Cols.IGNORE_THISUPDATE, 0);
 
         values.putAll(additionalValues);
 
@@ -204,16 +207,16 @@ public class Assert {
 
         ContentValues values = new ContentValues();
 
-        values.put(ApkProvider.DataColumns.PACKAGE_NAME, id);
-        values.put(ApkProvider.DataColumns.VERSION_CODE, versionCode);
+        values.put(ApkTable.Cols.PACKAGE_NAME, id);
+        values.put(ApkTable.Cols.VERSION_CODE, versionCode);
 
         // Required fields (NOT NULL in the database).
-        values.put(ApkProvider.DataColumns.REPO_ID, 1);
-        values.put(ApkProvider.DataColumns.VERSION_NAME, "The good one");
-        values.put(ApkProvider.DataColumns.HASH, "11111111aaaaaaaa");
-        values.put(ApkProvider.DataColumns.NAME, "Test Apk");
-        values.put(ApkProvider.DataColumns.SIZE, 10000);
-        values.put(ApkProvider.DataColumns.IS_COMPATIBLE, 1);
+        values.put(ApkTable.Cols.REPO_ID, 1);
+        values.put(ApkTable.Cols.VERSION_NAME, "The good one");
+        values.put(ApkTable.Cols.HASH, "11111111aaaaaaaa");
+        values.put(ApkTable.Cols.NAME, "Test Apk");
+        values.put(ApkTable.Cols.SIZE, 10000);
+        values.put(ApkTable.Cols.IS_COMPATIBLE, 1);
 
         values.putAll(additionalValues);
 

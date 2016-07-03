@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.data;
 
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.mock.MockApk;
 import org.junit.After;
 import org.junit.Before;
@@ -44,7 +45,7 @@ public class ProviderUriTests {
     @Test
     public void validInstalledAppProviderUris() {
         ShadowContentResolver.registerProvider(InstalledAppProvider.getAuthority(), new InstalledAppProvider());
-        String[] projection = new String[] {InstalledAppProvider.DataColumns._ID};
+        String[] projection = new String[] {InstalledAppTable.Cols._ID};
         assertValidUri(resolver, InstalledAppProvider.getContentUri(), projection);
         assertValidUri(resolver, InstalledAppProvider.getAppUri("org.example.app"), projection);
         assertValidUri(resolver, InstalledAppProvider.getSearchUri("blah"), projection);
@@ -63,7 +64,7 @@ public class ProviderUriTests {
     @Test
     public void validRepoProviderUris() {
         ShadowContentResolver.registerProvider(RepoProvider.getAuthority(), new RepoProvider());
-        String[] projection = new String[] {RepoProvider.DataColumns._ID};
+        String[] projection = new String[] {Schema.RepoTable.Cols._ID};
         assertValidUri(resolver, RepoProvider.getContentUri(), projection);
         assertValidUri(resolver, RepoProvider.getContentUri(10000L), projection);
         assertValidUri(resolver, RepoProvider.allExceptSwapUri(), projection);
@@ -79,7 +80,7 @@ public class ProviderUriTests {
     @Test
     public void validAppProviderUris() {
         ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
-        String[] projection = new String[] {AppProvider.DataColumns._ID};
+        String[] projection = new String[] {Schema.AppTable.Cols._ID};
         assertValidUri(resolver, AppProvider.getContentUri(), "content://org.fdroid.fdroid.data.AppProvider", projection);
         assertValidUri(resolver, AppProvider.getSearchUri("'searching!'"), "content://org.fdroid.fdroid.data.AppProvider/search/'searching!'", projection);
         assertValidUri(resolver, AppProvider.getSearchUri("/"), "content://org.fdroid.fdroid.data.AppProvider/search/%2F", projection);
@@ -110,7 +111,7 @@ public class ProviderUriTests {
     @Test
     public void validApkProviderUris() {
         ShadowContentResolver.registerProvider(ApkProvider.getAuthority(), new ApkProvider());
-        String[] projection = new String[] {ApkProvider.DataColumns._ID};
+        String[] projection = new String[] {Schema.ApkTable.Cols._ID};
 
         List<Apk> apks = new ArrayList<>(10);
         for (int i = 0; i < 10; i++) {
@@ -127,7 +128,7 @@ public class ProviderUriTests {
 
     @Test(expected = IllegalArgumentException.class)
     public void invalidApkUrisWithTooManyApks() {
-        String[] projection = ApkProvider.DataColumns.ALL;
+        String[] projection = Schema.ApkTable.Cols.ALL;
 
         List<Apk> manyApks = new ArrayList<>(ApkProvider.MAX_APKS_TO_QUERY - 5);
         for (int i = 0; i < ApkProvider.MAX_APKS_TO_QUERY - 1; i++) {
