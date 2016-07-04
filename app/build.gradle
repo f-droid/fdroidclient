@@ -221,7 +221,7 @@ task checkstyle(type: Checkstyle) {
 }
 
 pmd {
-    toolVersion = '5.4.2'
+    toolVersion = '5.5.0'
     consoleOutput = true
 }
 
