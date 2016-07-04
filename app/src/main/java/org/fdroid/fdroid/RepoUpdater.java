@@ -199,7 +199,7 @@ public class RepoUpdater {
             reader.setContentHandler(repoXMLHandler);
             reader.parse(new InputSource(indexInputStream));
 
-            long timestamp = repoDetailsToSave.getAsLong("timestamp");
+            long timestamp = repoDetailsToSave.getAsLong(RepoTable.Cols.TIMESTAMP);
             if (timestamp < repo.timestamp) {
                 throw new UpdateException(repo, "index.jar is older that current index! "
                         + timestamp + " < " + repo.timestamp);

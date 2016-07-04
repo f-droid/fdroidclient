@@ -118,11 +118,11 @@ public class InstalledAppProvider extends FDroidProvider {
     }
 
     private QuerySelection queryApp(String packageName) {
-        return new QuerySelection("appId = ?", new String[]{packageName});
+        return new QuerySelection(Cols.PACKAGE_NAME + " = ?", new String[]{packageName});
     }
 
     private QuerySelection querySearch(String query) {
-        return new QuerySelection("applicationLabel LIKE ?",
+        return new QuerySelection(Cols.APPLICATION_LABEL + " LIKE ?",
                 new String[]{"%" + query + "%"});
     }
 

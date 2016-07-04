@@ -141,8 +141,8 @@ public class RepoProvider extends FDroidProvider {
                         } else if (!fingerprint.equals(calcedFingerprint)) {
                             // TODO the UI should represent this error!
                             Log.e(TAG, "The stored and calculated fingerprints do not match!");
-                            Log.e(TAG, "stored: " + fingerprint);
-                            Log.e(TAG, "calced: " + calcedFingerprint);
+                            Log.e(TAG, "Stored: " + fingerprint);
+                            Log.e(TAG, "Calculated: " + calcedFingerprint);
                         }
                     }
                 } else if (!TextUtils.isEmpty(publicKey)) {
@@ -195,7 +195,7 @@ public class RepoProvider extends FDroidProvider {
 
         public static int countAppsForRepo(Context context, long repoId) {
             ContentResolver resolver = context.getContentResolver();
-            final String[] projection = {Schema.ApkTable.Cols._COUNT_DISTINCT_ID};
+            final String[] projection = {Schema.ApkTable.Cols._COUNT_DISTINCT};
             Uri apkUri = ApkProvider.getRepoUri(repoId);
             Cursor cursor = resolver.query(apkUri, projection, null, null, null);
             int count = 0;
@@ -327,14 +327,14 @@ public class RepoProvider extends FDroidProvider {
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
 
+        QuerySelection selection = new QuerySelection(where, whereArgs);
         switch (MATCHER.match(uri)) {
             case CODE_LIST:
                 // Don't support deleting of multiple repos.
                 return 0;
 
             case CODE_SINGLE:
-                where = (where == null ? "" : where + " AND ") +
-                    "_ID = " + uri.getLastPathSegment();
+                selection.add(Cols._ID + " = ?", new String[] {uri.getLastPathSegment()});
                 break;
 
             default:
@@ -342,7 +342,7 @@ public class RepoProvider extends FDroidProvider {
                 throw new UnsupportedOperationException("Invalid URI for repo content provider: " + uri);
         }
 
-        int rowsAffected = db().delete(getTableName(), where, whereArgs);
+        int rowsAffected = db().delete(getTableName(), selection.getSelection(), selection.getArgs());
         Utils.debugLog(TAG, "Deleted repos. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return rowsAffected;

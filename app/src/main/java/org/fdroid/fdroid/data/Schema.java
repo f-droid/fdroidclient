@@ -80,7 +80,7 @@ public interface Schema {
         String NAME = "fdroid_apk";
 
         interface Cols extends BaseColumns {
-            String _COUNT_DISTINCT_ID = "countDistinct";
+            String _COUNT_DISTINCT = "countDistinct";
 
             String PACKAGE_NAME    = "id";
             String VERSION_NAME    = "version";

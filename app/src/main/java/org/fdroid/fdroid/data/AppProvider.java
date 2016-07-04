@@ -247,8 +247,8 @@ public class AppProvider extends FDroidProvider {
             final String repo = RepoTable.NAME;
 
             return app +
-                " LEFT JOIN " + apk + " ON ( " + apk + ".id = " + app + ".id ) " +
-                " LEFT JOIN " + repo + " ON ( " + apk + ".repo = " + repo + "._id )";
+                " LEFT JOIN " + apk + " ON (" + apk + "." + ApkTable.Cols.PACKAGE_NAME + " = " + app + "." + Cols.PACKAGE_NAME + ") " +
+                " LEFT JOIN " + repo + " ON (" + apk + "." + ApkTable.Cols.REPO_ID + " = " + repo + "." + RepoTable.Cols._ID + ") ";
         }
 
         @Override
@@ -259,7 +259,7 @@ public class AppProvider extends FDroidProvider {
         @Override
         protected String groupBy() {
             // If the count field has been requested, then we want to group all rows together.
-            return countFieldAppended ? null : getTableName() + ".id";
+            return countFieldAppended ? null : getTableName() + "." + Cols.PACKAGE_NAME;
         }
 
         public void addSelection(AppQuerySelection selection) {
@@ -276,7 +276,7 @@ public class AppProvider extends FDroidProvider {
                 join(
                         InstalledAppTable.NAME,
                         "installed",
-                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + ".id");
+                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + "." + Cols.PACKAGE_NAME);
                 requiresInstalledTable = true;
             }
         }
@@ -286,7 +286,7 @@ public class AppProvider extends FDroidProvider {
                 leftJoin(
                         InstalledAppTable.NAME,
                         "installed",
-                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + ".id");
+                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + "." + Cols.PACKAGE_NAME);
                 requiresInstalledTable = true;
             }
         }
@@ -320,7 +320,7 @@ public class AppProvider extends FDroidProvider {
 
         private void appendCountField() {
             countFieldAppended = true;
-            appendField("COUNT( DISTINCT " + getTableName() + ".id ) AS " + Cols._COUNT);
+            appendField("COUNT( DISTINCT " + getTableName() + "." + Cols.PACKAGE_NAME + " ) AS " + Cols._COUNT);
         }
 
         private void addSuggestedApkVersionField() {
@@ -335,7 +335,7 @@ public class AppProvider extends FDroidProvider {
                 leftJoin(
                         getApkTableName(),
                         "suggestedApk",
-                        getTableName() + ".suggestedVercode = suggestedApk.vercode AND " + getTableName() + ".id = suggestedApk.id");
+                        getTableName() + "." + Cols.SUGGESTED_VERSION_CODE + " = suggestedApk." + ApkTable.Cols.VERSION_CODE + " AND " + getTableName() + "." + Cols.PACKAGE_NAME + " = suggestedApk." + ApkTable.Cols.PACKAGE_NAME);
             }
             appendField(fieldName, "suggestedApk", alias);
         }
@@ -547,15 +547,16 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryCanUpdate() {
-        final String ignoreCurrent = getTableName() + ".ignoreThisUpdate != " + getTableName() + ".suggestedVercode ";
-        final String ignoreAll = getTableName() + ".ignoreAllUpdates != 1 ";
-        final String ignore = " ( " + ignoreCurrent + " AND " + ignoreAll + " ) ";
-        final String where = ignore + " AND " + getTableName() + "." + Cols.SUGGESTED_VERSION_CODE + " > installed.versionCode";
+        final String app = getTableName();
+        final String ignoreCurrent = app + "." + Cols.IGNORE_THISUPDATE + "!= " + app + "." + Cols.SUGGESTED_VERSION_CODE;
+        final String ignoreAll = app + "." + Cols.IGNORE_ALLUPDATES + " != 1";
+        final String ignore = " (" + ignoreCurrent + " AND " + ignoreAll + ") ";
+        final String where = ignore + " AND " + app + "." + Cols.SUGGESTED_VERSION_CODE + " > installed." + InstalledAppTable.Cols.VERSION_CODE;
         return new AppQuerySelection(where).requireNaturalInstalledTable();
     }
 
     private AppQuerySelection queryRepo(long repoId) {
-        final String selection = getApkTableName() + ".repo = ? ";
+        final String selection = getApkTableName() + "." + ApkTable.Cols.REPO_ID + " = ? ";
         final String[] args = {String.valueOf(repoId)};
         return new AppQuerySelection(selection, args);
     }
@@ -580,11 +581,12 @@ public class AppProvider extends FDroidProvider {
             iKeyword++;
         }
 
+        final String app = getTableName();
         final String[] columns = {
-            getTableName() + ".id",
-            getTableName() + ".name",
-            getTableName() + ".summary",
-            getTableName() + ".description",
+                app + "." + Cols.PACKAGE_NAME,
+                app + "." + Cols.NAME,
+                app + "." + Cols.SUMMARY,
+                app + "." + Cols.DESCRIPTION,
         };
 
         // Build selection string and fill out keyword arguments
@@ -596,7 +598,7 @@ public class AppProvider extends FDroidProvider {
             if (firstColumn) {
                 firstColumn = false;
             } else {
-                selection.append("OR ");
+                selection.append(" OR ");
             }
             selection.append('(');
             boolean firstKeyword = true;
@@ -606,7 +608,7 @@ public class AppProvider extends FDroidProvider {
                 } else {
                     selection.append(" AND ");
                 }
-                selection.append(column).append(" like ?");
+                selection.append(column).append(" LIKE ?");
                 selectionKeywords[iKeyword] = keyword;
                 iKeyword++;
             }
@@ -616,15 +618,15 @@ public class AppProvider extends FDroidProvider {
     }
 
     protected AppQuerySelection querySingle(String packageName) {
-        final String selection = getTableName() + ".id = ?";
+        final String selection = getTableName() + "." + Cols.PACKAGE_NAME + " = ?";
         final String[] args = {packageName};
         return new AppQuerySelection(selection, args);
     }
 
     private AppQuerySelection queryIgnored() {
         final String table = getTableName();
-        final String selection = table + ".ignoreAllUpdates = 1 OR " +
-                table + ".ignoreThisUpdate >= " + table + ".suggestedVercode";
+        final String selection = table + "." + Cols.IGNORE_ALLUPDATES + " = 1 OR " +
+                table + "." + Cols.IGNORE_THISUPDATE + " >= " + table + "." + Cols.SUGGESTED_VERSION_CODE;
         return new AppQuerySelection(selection);
     }
 
@@ -632,19 +634,21 @@ public class AppProvider extends FDroidProvider {
         // fdroid_repo will have null fields if the LEFT JOIN didn't resolve, e.g. due to there
         // being no apks for the app in the result set. In that case, we can't tell if it is from
         // a swap repo or not.
-        final String selection = " fdroid_repo.isSwap = 0 OR fdroid_repo.isSwap is null ";
+        final String isSwap = RepoTable.NAME + "." + RepoTable.Cols.IS_SWAP;
+        final String selection = isSwap + " = 0 OR " + isSwap + " IS NULL";
         return new AppQuerySelection(selection);
     }
 
     private AppQuerySelection queryNewlyAdded() {
-        final String selection = getTableName() + ".added > ?";
+        final String selection = getTableName() + "." + Cols.ADDED + " > ?";
         final String[] args = {Utils.formatDate(Preferences.get().calcMaxHistory(), "")};
         return new AppQuerySelection(selection, args);
     }
 
     private AppQuerySelection queryRecentlyUpdated() {
         final String app = getTableName();
-        final String selection = app + ".added != " + app + ".lastUpdated AND " + app + ".lastUpdated > ?";
+        final String lastUpdated = app + "." + Cols.LAST_UPDATED;
+        final String selection = app + "." + Cols.ADDED + " != " + lastUpdated + " AND " + lastUpdated + " > ?";
         final String[] args = {Utils.formatDate(Preferences.get().calcMaxHistory(), "")};
         return new AppQuerySelection(selection, args);
     }
@@ -652,11 +656,12 @@ public class AppProvider extends FDroidProvider {
     private AppQuerySelection queryCategory(String category) {
         // TODO: In the future, add a new table for categories,
         // so we can join onto it.
+        final String app = getTableName();
         final String selection =
-                getTableName() + ".categories = ? OR " +    // Only category e.g. "internet"
-                getTableName() + ".categories LIKE ? OR " + // First category e.g. "internet,%"
-                getTableName() + ".categories LIKE ? OR " + // Last category e.g. "%,internet"
-                getTableName() + ".categories LIKE ? ";     // One of many categories e.g. "%,internet,%"
+                app + "." + Cols.CATEGORIES + " = ? OR " +    // Only category e.g. "internet"
+                app + "." + Cols.CATEGORIES + " LIKE ? OR " + // First category e.g. "internet,%"
+                app + "." + Cols.CATEGORIES + " LIKE ? OR " + // Last category e.g. "%,internet"
+                app + "." + Cols.CATEGORIES + " LIKE ? ";     // One of many categories e.g. "%,internet,%"
         final String[] args = {
             category,
             category + ",%",
@@ -667,18 +672,20 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryNoApks() {
-        String selection = "(SELECT COUNT(*) FROM " + getApkTableName() + " WHERE " + getApkTableName() + ".id = " + getTableName() + ".id) = 0";
+        final String apk = getApkTableName();
+        final String app = getTableName();
+        String selection = "(SELECT COUNT(*) FROM " + apk + " WHERE " + apk + "." + ApkTable.Cols.PACKAGE_NAME + " = " + app + "." + Cols.PACKAGE_NAME + ") = 0";
         return new AppQuerySelection(selection);
     }
 
-    static AppQuerySelection queryApps(String packageNames, String idField) {
+    static AppQuerySelection queryApps(String packageNames, String packageNameField) {
         String[] args = packageNames.split(",");
-        String selection = idField + " IN (" + generateQuestionMarksForInClause(args.length) + ")";
+        String selection = packageNameField + " IN (" + generateQuestionMarksForInClause(args.length) + ")";
         return new AppQuerySelection(selection, args);
     }
 
     private AppQuerySelection queryApps(String packageNames) {
-        return queryApps(packageNames, getTableName() + ".id");
+        return queryApps(packageNames, getTableName() + "." + Cols.PACKAGE_NAME);
     }
 
     @Override
@@ -749,13 +756,13 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             case RECENTLY_UPDATED:
-                sortOrder = getTableName() + ".lastUpdated DESC";
+                sortOrder = getTableName() + "." + Cols.LAST_UPDATED + " DESC";
                 selection = selection.add(queryRecentlyUpdated());
                 includeSwap = false;
                 break;
 
             case NEWLY_ADDED:
-                sortOrder = getTableName() + ".added DESC";
+                sortOrder = getTableName() + "." + Cols.ADDED + " DESC";
                 selection = selection.add(queryNewlyAdded());
                 includeSwap = false;
                 break;
@@ -846,26 +853,18 @@ public class AppProvider extends FDroidProvider {
     /**
      * For each app, we want to set the isCompatible flag to 1 if any of the apks we know
      * about are compatible, and 0 otherwise.
-     *
-     * Readable SQL code:
-     *
-     *  UPDATE fdroid_app SET compatible = (
-     *      SELECT TOTAL( fdroid_apk.compatible ) > 0
-     *      FROM fdroid_apk
-     *      WHERE fdroid_apk.id = fdroid_app.id );
      */
     private void updateCompatibleFlags() {
-
         Utils.debugLog(TAG, "Calculating whether apps are compatible, based on whether any of their apks are compatible");
 
         final String apk = getApkTableName();
         final String app = getTableName();
 
         String updateSql =
-                "UPDATE " + app + " SET compatible = ( " +
-                " SELECT TOTAL( " + apk + ".compatible ) > 0 " +
+                "UPDATE " + app + " SET " + Cols.IS_COMPATIBLE + " = ( " +
+                " SELECT TOTAL( " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + ") > 0 " +
                 " FROM " + apk +
-                " WHERE " + apk + ".id = " + app + ".id );";
+                " WHERE " + apk + "." + ApkTable.Cols.PACKAGE_NAME + " = " + app + "." + Cols.PACKAGE_NAME + " );";
 
         db().execSQL(updateSql);
     }
@@ -875,38 +874,24 @@ public class AppProvider extends FDroidProvider {
      * with the closest version code to that, without going over.
      * If the app is not compatible at all (i.e. no versions were compatible)
      * then we take the highest, otherwise we take the highest compatible version.
-     *
-     * Readable SQL code:
-     *
-     *   UPDATE fdroid_app
-     *   SET suggestedVercode = (
-     *       SELECT MAX(fdroid_apk.vercode)
-     *       FROM fdroid_apk
-     *       WHERE
-     *           fdroid_app.id = fdroid_apk.id AND
-     *           fdroid_apk.vercode <= fdroid_app.upstreamVercode AND
-     *           ( fdroid_app.compatible = 0 OR fdroid_apk.compatible = 1 )
-     *   )
-     *   WHERE upstreamVercode > 0
      */
     private void updateSuggestedFromUpstream() {
-
         Utils.debugLog(TAG, "Calculating suggested versions for all apps which specify an upstream version code.");
 
         final String apk = getApkTableName();
         final String app = getTableName();
 
         final boolean unstableUpdates = Preferences.get().getUnstableUpdates();
-        String restrictToStable = unstableUpdates ? "" : (apk + ".vercode <= " + app + ".upstreamVercode AND ");
+        String restrictToStable = unstableUpdates ? "" : (apk + "." + ApkTable.Cols.VERSION_CODE + " <= " + app + "." + Cols.UPSTREAM_VERSION_CODE + " AND ");
         String updateSql =
-                "UPDATE " + app + " SET suggestedVercode = ( " +
-                " SELECT MAX( " + apk + ".vercode ) " +
+                "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
+                " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
                 " WHERE " +
-                    app + ".id = " + apk + ".id AND " +
+                    app + "." + Cols.PACKAGE_NAME + " = " + apk + "." + ApkTable.Cols.PACKAGE_NAME + " AND " +
                     restrictToStable +
-                    " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
-                " WHERE upstreamVercode > 0 ";
+                    " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
+                " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 ";
 
         db().execSQL(updateSql);
     }
@@ -918,33 +903,21 @@ public class AppProvider extends FDroidProvider {
      * If the suggested version is null, it means that we could not figure it
      * out from the upstream vercode. In such a case, fall back to the simpler
      * algorithm as if upstreamVercode was 0.
-     *
-     * Readable SQL code:
-     *
-     *  UPDATE fdroid_app SET suggestedVercode = (
-     *      SELECT MAX(fdroid_apk.vercode)
-     *      FROM fdroid_apk
-     *      WHERE
-     *          fdroid_app.id = fdroid_apk.id AND
-     *          ( fdroid_app.compatible = 0 OR fdroid_apk.compatible = 1 )
-     *  )
-     *  WHERE upstreamVercode = 0 OR upstreamVercode IS NULL OR suggestedVercode IS NULL;
      */
     private void updateSuggestedFromLatest() {
-
         Utils.debugLog(TAG, "Calculating suggested versions for all apps which don't specify an upstream version code.");
 
         final String apk = getApkTableName();
         final String app = getTableName();
 
         String updateSql =
-                "UPDATE " + app + " SET suggestedVercode = ( " +
-                " SELECT MAX( " + apk + ".vercode ) " +
+                "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
+                " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
                 " WHERE " +
-                    app + ".id = " + apk + ".id AND " +
-                    " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
-                " WHERE upstreamVercode = 0 OR upstreamVercode IS NULL OR suggestedVercode IS NULL ";
+                    app + "." + Cols.PACKAGE_NAME + " = " + apk + "." + ApkTable.Cols.PACKAGE_NAME + " AND " +
+                    " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
+                " WHERE " + Cols.UPSTREAM_VERSION_CODE + " = 0 OR " + Cols.UPSTREAM_VERSION_CODE + " IS NULL OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
 
         db().execSQL(updateSql);
     }
@@ -958,8 +931,7 @@ public class AppProvider extends FDroidProvider {
         final String iconsDir = Utils.getIconsDir(context, 1.0);
         final String iconsDirLarge = Utils.getIconsDir(context, 1.5);
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
-        Utils.debugLog(TAG, "Updating icon paths for apps belonging to repos with version >= "
-                + repoVersion);
+        Utils.debugLog(TAG, "Updating icon paths for apps belonging to repos with version >= " + repoVersion);
         Utils.debugLog(TAG, "Using icons dir '" + iconsDir + "'");
         Utils.debugLog(TAG, "Using large icons dir '" + iconsDirLarge + "'");
         String query = getIconUpdateQuery(appTable, apkTable);
@@ -980,38 +952,33 @@ public class AppProvider extends FDroidProvider {
         final String repo = RepoTable.NAME;
 
         final String iconUrlQuery =
-                " SELECT " +
+                "SELECT " +
 
                 // Concatenate (using the "||" operator) the address, the
                 // icons directory (bound to the ? as the second parameter
                 // when executing the query) and the icon path.
-                " ( " +
-                    repo + ".address " +
+                "( " +
+                    repo + "." + RepoTable.Cols.ADDRESS +
                     " || " +
 
                     // If the repo has the relevant version, then use a more
                     // intelligent icons dir, otherwise revert to the default
                     // one
-                    " CASE WHEN " + repo + ".version >= ? THEN ? ELSE ? END " +
+                    " CASE WHEN " + repo + "." + RepoTable.Cols.VERSION + " >= ? THEN ? ELSE ? END " +
 
                     " || " +
-                    app + ".icon " +
+                    app + "." + Cols.ICON +
                 ") " +
                 " FROM " +
                 apk +
-                " JOIN " + repo + " ON (" + repo + "._id = " + apk + ".repo) " +
+                " JOIN " + repo + " ON (" + repo + "." + RepoTable.Cols._ID + " = " + apk + "." + ApkTable.Cols.REPO_ID + ") " +
                 " WHERE " +
-                app + ".id = " + apk + ".id AND " +
-                apk + ".vercode = " + app + ".suggestedVercode ";
+                app + "." + Cols.PACKAGE_NAME + " = " + apk + "." + ApkTable.Cols.PACKAGE_NAME + " AND " +
+                apk + "." + ApkTable.Cols.VERSION_CODE + " = " + app + "." + Cols.SUGGESTED_VERSION_CODE;
 
-        return
-            " UPDATE " + app + " SET " +
-            " iconUrl = ( " +
-                iconUrlQuery +
-            " ), " +
-            " iconUrlLarge = ( " +
-                iconUrlQuery +
-            " ) ";
+        return "UPDATE " + app + " SET "
+            + Cols.ICON_URL + " = ( " + iconUrlQuery + " ), "
+            + Cols.ICON_URL_LARGE + " = ( " + iconUrlQuery + " )";
     }
 
 }

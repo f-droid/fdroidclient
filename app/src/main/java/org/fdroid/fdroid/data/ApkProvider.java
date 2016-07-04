@@ -350,8 +350,8 @@ public class ApkProvider extends FDroidProvider {
                 appendField("rowid", "apk", "_id");
             } else if (field.equals(Cols._COUNT)) {
                 appendField("COUNT(*) AS " + Cols._COUNT);
-            } else if (field.equals(Cols._COUNT_DISTINCT_ID)) {
-                appendField("COUNT(DISTINCT apk.id) AS " + Cols._COUNT_DISTINCT_ID);
+            } else if (field.equals(Cols._COUNT_DISTINCT)) {
+                appendField("COUNT(DISTINCT apk." + Cols.PACKAGE_NAME + ") AS " + Cols._COUNT_DISTINCT);
             } else {
                 appendField(field, "apk");
             }
@@ -360,7 +360,7 @@ public class ApkProvider extends FDroidProvider {
         private void addRepoField(String field, String alias) {
             if (!repoTableRequired) {
                 repoTableRequired = true;
-                leftJoin(RepoTable.NAME, "repo", "apk.repo = repo._id");
+                leftJoin(RepoTable.NAME, "repo", "apk." + Cols.REPO_ID + " = repo." + RepoTable.Cols._ID);
             }
             appendField(field, "repo", alias);
         }
@@ -374,7 +374,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     private QuerySelection querySingle(Uri uri) {
-        final String selection = " vercode = ? and id = ? ";
+        final String selection = Cols.VERSION_CODE + " = ? and " + Cols.PACKAGE_NAME + " = ? ";
         final String[] args = {
             // First (0th) path segment is the word "apk",
             // and we are not interested in it.
@@ -412,7 +412,7 @@ public class ApkProvider extends FDroidProvider {
             if (i != 0) {
                 sb.append(" OR ");
             }
-            sb.append(" ( id = ? AND vercode = ? ) ");
+            sb.append(" ( " + Cols.PACKAGE_NAME + " = ? AND " + Cols.VERSION_CODE + " = ? ) ");
         }
         return new QuerySelection(sb.toString(), args);
     }
