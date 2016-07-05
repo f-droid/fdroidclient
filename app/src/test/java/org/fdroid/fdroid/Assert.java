@@ -229,7 +229,6 @@ public class Assert {
         ContentValues values = new ContentValues();
 
         values.put(ApkTable.Cols.APP_ID, app.getId());
-        values.put(ApkTable.Cols.PACKAGE_NAME, app.packageName);
         values.put(ApkTable.Cols.VERSION_CODE, versionCode);
 
         // Required fields (NOT NULL in the database).

@@ -653,7 +653,7 @@ public class AppProvider extends FDroidProvider {
     private AppQuerySelection queryNoApks() {
         final String apk = getApkTableName();
         final String app = getTableName();
-        String selection = "(SELECT COUNT(*) FROM " + apk + " WHERE " + apk + "." + ApkTable.Cols.PACKAGE_NAME + " = " + app + "." + Cols.PACKAGE_NAME + ") = 0";
+        String selection = "(SELECT COUNT(*) FROM " + apk + " WHERE " + apk + "." + ApkTable.Cols.APP_ID + " = " + app + "." + Cols.ROW_ID + ") = 0";
         return new AppQuerySelection(selection);
     }
 
@@ -843,7 +843,7 @@ public class AppProvider extends FDroidProvider {
                 "UPDATE " + app + " SET " + Cols.IS_COMPATIBLE + " = ( " +
                 " SELECT TOTAL( " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + ") > 0 " +
                 " FROM " + apk +
-                " WHERE " + apk + "." + ApkTable.Cols.PACKAGE_NAME + " = " + app + "." + Cols.PACKAGE_NAME + " );";
+                " WHERE " + apk + "." + ApkTable.Cols.APP_ID + " = " + app + "." + Cols.ROW_ID + " );";
 
         db().execSQL(updateSql);
     }
@@ -867,7 +867,7 @@ public class AppProvider extends FDroidProvider {
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
                 " WHERE " +
-                    app + "." + Cols.PACKAGE_NAME + " = " + apk + "." + ApkTable.Cols.PACKAGE_NAME + " AND " +
+                    app + "." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + " AND " +
                     restrictToStable +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 ";
@@ -894,7 +894,7 @@ public class AppProvider extends FDroidProvider {
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
                 " WHERE " +
-                    app + "." + Cols.PACKAGE_NAME + " = " + apk + "." + ApkTable.Cols.PACKAGE_NAME + " AND " +
+                    app + "." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + " AND " +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE " + Cols.UPSTREAM_VERSION_CODE + " = 0 OR " + Cols.UPSTREAM_VERSION_CODE + " IS NULL OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
 
