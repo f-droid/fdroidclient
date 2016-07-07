@@ -320,22 +320,28 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void migrateAppPrimaryKeyToRowId(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion < 58) {
-            db.execSQL("CREATE INDEX IF NOT EXISTS name ON " + AppTable.NAME + " (" + AppTable.Cols.NAME + ")");
-            db.execSQL("CREATE INDEX IF NOT EXISTS added ON " + AppTable.NAME + " (" + AppTable.Cols.ADDED + ")");
+        if (oldVersion < 58 && !columnExists(db, ApkTable.NAME, ApkTable.Cols.APP_ID)) {
+            db.beginTransaction();
+            try {
+                db.execSQL("CREATE INDEX IF NOT EXISTS name ON " + AppTable.NAME + " (" + AppTable.Cols.NAME + ")");
+                db.execSQL("CREATE INDEX IF NOT EXISTS added ON " + AppTable.NAME + " (" + AppTable.Cols.ADDED + ")");
 
-            final String alter = "ALTER TABLE " + ApkTable.NAME + " ADD COLUMN " + ApkTable.Cols.APP_ID + " NUMERIC";
-            Log.i(TAG, "Adding appId foreign key to " + ApkTable.NAME);
-            Utils.debugLog(TAG, alter);
-            db.execSQL(alter);
+                final String alter = "ALTER TABLE " + ApkTable.NAME + " ADD COLUMN " + ApkTable.Cols.APP_ID + " NUMERIC";
+                Log.i(TAG, "Adding appId foreign key to " + ApkTable.NAME);
+                Utils.debugLog(TAG, alter);
+                db.execSQL(alter);
 
-            final String update = "UPDATE " + ApkTable.NAME + " SET " + ApkTable.Cols.APP_ID + " = ( " +
-                    "SELECT app." + AppTable.Cols.ROW_ID + " " +
-                    "FROM " + AppTable.NAME + " AS app " +
-                    "WHERE " + ApkTable.NAME + "." + ApkTable.Cols.PACKAGE_NAME + " = app." + AppTable.Cols.PACKAGE_NAME + ")";
-            Log.i(TAG, "Updating foreign key from " + ApkTable.NAME + " to " + AppTable.NAME + " to use numeric foreign key.");
-            Utils.debugLog(TAG, update);
-            db.execSQL(update);
+                final String update = "UPDATE " + ApkTable.NAME + " SET " + ApkTable.Cols.APP_ID + " = ( " +
+                        "SELECT app." + AppTable.Cols.ROW_ID + " " +
+                        "FROM " + AppTable.NAME + " AS app " +
+                        "WHERE " + ApkTable.NAME + "." + ApkTable.Cols.PACKAGE_NAME + " = app." + AppTable.Cols.PACKAGE_NAME + ")";
+                Log.i(TAG, "Updating foreign key from " + ApkTable.NAME + " to " + AppTable.NAME + " to use numeric foreign key.");
+                Utils.debugLog(TAG, update);
+                db.execSQL(update);
+                db.setTransactionSuccessful();
+            } finally {
+                db.endTransaction();
+            }
         }
     }
 
