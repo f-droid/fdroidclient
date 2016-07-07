@@ -58,8 +58,8 @@ public final class LocalRepoKeyStore {
 
     private static final String TAG = "LocalRepoKeyStore";
 
-    public static final String INDEX_CERT_ALIAS = "fdroid";
-    public static final String HTTP_CERT_ALIAS = "https";
+    private static final String INDEX_CERT_ALIAS = "fdroid";
+    private static final String HTTP_CERT_ALIAS = "https";
 
     private static final String DEFAULT_SIG_ALG = "SHA1withRSA";
     private static final String DEFAULT_KEY_ALGO = "RSA";

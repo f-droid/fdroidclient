@@ -1,15 +1,15 @@
 package org.fdroid.fdroid.data;
 
-public class OrderClause {
+class OrderClause {
 
-    public final String expression;
+    private final String expression;
     private String[] args;
 
-    public OrderClause(String expression) {
+    OrderClause(String expression) {
         this.expression = expression;
     }
 
-    public OrderClause(String field, String[] args, boolean isAscending) {
+    OrderClause(String field, String[] args, boolean isAscending) {
         this.expression = field + " " + (isAscending ? "ASC" : "DESC");
         this.args = args;
     }

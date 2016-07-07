@@ -44,7 +44,7 @@ import java.io.IOException;
  */
 public class ApkFileProvider extends FileProvider {
 
-    public static final String AUTHORITY = "org.fdroid.fdroid.installer.ApkFileProvider";
+    private static final String AUTHORITY = "org.fdroid.fdroid.installer.ApkFileProvider";
 
     /**
      * Copies the APK into private data directory of F-Droid and returns a "file" or "content" Uri

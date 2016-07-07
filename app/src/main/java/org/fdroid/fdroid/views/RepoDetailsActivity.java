@@ -155,7 +155,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
         setIntent(i);
     }
 
-    void processIntent(Intent i) {
+    private void processIntent(Intent i) {
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(i.getAction())) {
             Parcelable[] rawMsgs =
                     i.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);

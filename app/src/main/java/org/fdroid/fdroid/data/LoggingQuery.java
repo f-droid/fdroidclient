@@ -32,7 +32,7 @@ import org.fdroid.fdroid.Utils;
  *     SEARCH TABLE fdroid_apk AS suggestedApk USING INDEX sqlite_autoindex_fdroid_apk_1 (appId=? AND vercode=?)
  *     USE TEMP B-TREE FOR ORDER BY
  */
-public class LoggingQuery {
+final class LoggingQuery {
 
     private static final long SLOW_QUERY_DURATION = 100;
     private static final String TAG = "Slow Query";
@@ -41,7 +41,7 @@ public class LoggingQuery {
     private final String query;
     private final String[] queryArgs;
 
-    public LoggingQuery(SQLiteDatabase db, String query, String[] queryArgs) {
+    private LoggingQuery(SQLiteDatabase db, String query, String[] queryArgs) {
         this.db = db;
         this.query = query;
         this.queryArgs = queryArgs;
@@ -51,7 +51,7 @@ public class LoggingQuery {
      * When running a debug build, this will log details (including query plans) for any query which
      * takes longer than {@link LoggingQuery#SLOW_QUERY_DURATION}.
      */
-    public Cursor rawQuery() {
+    private Cursor rawQuery() {
         if (BuildConfig.DEBUG) {
             long startTime = System.currentTimeMillis();
             Cursor cursor = db.rawQuery(query, queryArgs);

@@ -41,11 +41,11 @@ public class QuerySelection {
         return selection;
     }
 
-    public boolean hasSelection() {
+    private boolean hasSelection() {
         return !TextUtils.isEmpty(selection);
     }
 
-    public boolean hasArgs() {
+    private boolean hasArgs() {
         return args != null && args.length > 0;
     }
 
