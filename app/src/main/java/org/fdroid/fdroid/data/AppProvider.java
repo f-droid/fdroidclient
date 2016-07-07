@@ -785,7 +785,7 @@ public class AppProvider extends FDroidProvider {
         query.addFields(projection); // TODO: Make the order of addFields/addSelection not dependent on each other...
         query.addOrderBy(sortOrder);
 
-        Cursor cursor = db().rawQuery(query.toString(), query.getArgs());
+        Cursor cursor = LoggingQuery.query(db(), query.toString(), query.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
