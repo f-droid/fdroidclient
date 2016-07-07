@@ -195,7 +195,7 @@ public class DownloaderService extends Service {
      * @param intent The {@link Intent} passed via {@link
      *               android.content.Context#startService(Intent)}.
      */
-    protected void handleIntent(Intent intent) {
+    private void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
         final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, uri);
         sendBroadcast(uri, Downloader.ACTION_STARTED, localFile);
@@ -300,7 +300,7 @@ public class DownloaderService extends Service {
     /**
      * Check if a URL is actively being downloaded.
      */
-    public static boolean isActive(String urlString) {
+    private static boolean isActive(String urlString) {
         return downloader != null && TextUtils.equals(urlString, downloader.sourceUrl.toString());
     }
 

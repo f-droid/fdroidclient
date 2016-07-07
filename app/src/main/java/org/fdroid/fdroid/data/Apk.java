@@ -177,7 +177,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
      *
      * see https://gitlab.com/fdroid/fdroidserver/blob/master/fdroidserver/update.py#L535#
      */
-    public static String fdroidToAndroidPermission(String permission) {
+    private static String fdroidToAndroidPermission(String permission) {
         if (!permission.contains(".")) {
             return "android.permission." + permission;
         }

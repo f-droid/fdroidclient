@@ -56,7 +56,7 @@ import org.fdroid.fdroid.data.Schema;
  */
 public class InstallConfirmActivity extends FragmentActivity implements OnCancelListener, OnClickListener {
 
-    public static final int RESULT_CANNOT_PARSE = RESULT_FIRST_USER + 1;
+    private static final int RESULT_CANNOT_PARSE = RESULT_FIRST_USER + 1;
 
     private Intent intent;
 

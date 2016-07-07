@@ -37,7 +37,7 @@ import java.util.HashSet;
  * displayed to the user. This is especially important in case an unattended installer
  * has been used which displays permissions before download.
  */
-public class ApkVerifier {
+class ApkVerifier {
 
     private static final String TAG = "ApkVerifier";
 
@@ -107,11 +107,11 @@ public class ApkVerifier {
 
     public static class ApkVerificationException extends Exception {
 
-        public ApkVerificationException(String message) {
+        ApkVerificationException(String message) {
             super(message);
         }
 
-        public ApkVerificationException(Throwable cause) {
+        ApkVerificationException(Throwable cause) {
             super(cause);
         }
     }

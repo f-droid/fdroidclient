@@ -159,15 +159,15 @@ public class UpdateService extends IntentService {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(updateStatusReceiver);
     }
 
-    protected static void sendStatus(Context context, int statusCode) {
+    private static void sendStatus(Context context, int statusCode) {
         sendStatus(context, statusCode, null, -1);
     }
 
-    protected static void sendStatus(Context context, int statusCode, String message) {
+    private static void sendStatus(Context context, int statusCode, String message) {
         sendStatus(context, statusCode, message, -1);
     }
 
-    protected static void sendStatus(Context context, int statusCode, String message, int progress) {
+    private static void sendStatus(Context context, int statusCode, String message, int progress) {
         Intent intent = new Intent(LOCAL_ACTION_STATUS);
         intent.putExtra(EXTRA_STATUS_CODE, statusCode);
         if (!TextUtils.isEmpty(message)) {
@@ -177,7 +177,7 @@ public class UpdateService extends IntentService {
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
-    protected void sendRepoErrorStatus(int statusCode, ArrayList<CharSequence> repoErrors) {
+    private void sendRepoErrorStatus(int statusCode, ArrayList<CharSequence> repoErrors) {
         Intent intent = new Intent(LOCAL_ACTION_STATUS);
         intent.putExtra(EXTRA_STATUS_CODE, statusCode);
         intent.putExtra(EXTRA_REPO_ERRORS, repoErrors.toArray(new CharSequence[repoErrors.size()]));

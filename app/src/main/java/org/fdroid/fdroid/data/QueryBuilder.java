@@ -4,6 +4,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 abstract class QueryBuilder {
@@ -91,16 +92,12 @@ abstract class QueryBuilder {
         List<String> args = new ArrayList<>();
 
         if (selectionArgs != null) {
-            for (String arg : selectionArgs) {
-                args.add(arg);
-            }
+            Collections.addAll(args, selectionArgs);
         }
 
         for (OrderClause orderBy : orderBys) {
             if (orderBy.getArgs() != null) {
-                for (String arg : orderBy.getArgs()) {
-                    args.add(arg);
-                }
+                Collections.addAll(args, orderBy.getArgs());
             }
         }
 
@@ -147,9 +144,8 @@ abstract class QueryBuilder {
     private String orderBySql() {
         if (orderBys.size() == 0) {
             return "";
-        } else {
-            return " ORDER BY " + TextUtils.join(", ", orderBys);
         }
+        return " ORDER BY " + TextUtils.join(", ", orderBys);
     }
 
     private String groupBySql() {

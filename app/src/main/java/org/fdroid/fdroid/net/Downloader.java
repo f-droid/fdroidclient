@@ -32,8 +32,8 @@ public abstract class Downloader {
 
     public final File outputFile;
 
-    protected final URL sourceUrl;
-    protected String cacheTag;
+    final URL sourceUrl;
+    String cacheTag;
 
     /**
      * For sending download progress, should only be called in {@link #progressTask}
@@ -74,7 +74,7 @@ public abstract class Downloader {
         this.cacheTag = cacheTag;
     }
 
-    protected boolean wantToCheckCache() {
+    boolean wantToCheckCache() {
         return cacheTag != null;
     }
 
@@ -86,7 +86,7 @@ public abstract class Downloader {
 
     public abstract boolean isCached();
 
-    protected void downloadFromStream(int bufferSize, boolean resumable) throws IOException, InterruptedException {
+    void downloadFromStream(int bufferSize, boolean resumable) throws IOException, InterruptedException {
         Utils.debugLog(TAG, "Downloading from stream");
         InputStream input = null;
         OutputStream outputStream = new FileOutputStream(outputFile, resumable);
