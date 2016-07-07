@@ -47,7 +47,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_APK =
             "CREATE TABLE " + ApkTable.NAME + " ( "
             + ApkTable.Cols.PACKAGE_NAME + " text not null, "
-            + ApkTable.Cols.APP_ID + " text not null, "
+            + ApkTable.Cols.APP_ID + " integer not null, "
             + ApkTable.Cols.VERSION_NAME + " text not null, "
             + ApkTable.Cols.REPO_ID + " integer not null, "
             + ApkTable.Cols.HASH + " text not null, "
