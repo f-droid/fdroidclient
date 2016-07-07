@@ -319,6 +319,13 @@ class DBHelper extends SQLiteOpenHelper {
         removeApkPackageNameColumn(db, oldVersion);
     }
 
+    /**
+     * Ordinarily, if a column is no longer used, we'd err on the side of just leaving it in the
+     * database but stop referring to it in Java. However because it forms part of the primary
+     * key of this table, we need to change the primary key to something which _is_ used. Thus,
+     * this function will rename the old table, create the new table, and then insert all of the
+     * data from the old into the new with the new primary key.
+     */
     private void removeApkPackageNameColumn(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 59) {
 
@@ -383,6 +390,13 @@ class DBHelper extends SQLiteOpenHelper {
 
                 db.execSQL(insertSql);
                 db.execSQL("DROP TABLE " + tempTableName + ";");
+
+                // Now that the old table has been dropped, we can create indexes again.
+                // Attempting this before dropping the old table will not work, because the
+                // indexes exist on the _old_ table, and so are unable to be added (with the
+                // same name) to the _new_ table.
+                ensureIndexes(db);
+
                 db.setTransactionSuccessful();
             } finally {
                 db.endTransaction();
@@ -680,7 +694,7 @@ class DBHelper extends SQLiteOpenHelper {
         Utils.debugLog(TAG, "Ensuring indexes exist for " + ApkTable.NAME);
         db.execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS apk_appId on " + ApkTable.NAME + " (" + ApkTable.Cols.APP_ID + ");");
-        db.execSQL("CREATE INDEX IF NOT EXISTS apk_id on " + ApkTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS repoId ON " + ApkTable.NAME + " (" + ApkTable.Cols.REPO_ID + ");");
     }
 
     /**
