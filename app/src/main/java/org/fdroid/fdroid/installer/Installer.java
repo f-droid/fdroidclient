@@ -91,16 +91,15 @@ public abstract class Installer {
         }
 
         int count = newPermissionCount(apk);
-        if (count > 0) {
-            Uri uri = ApkProvider.getContentUri(apk);
-            Intent intent = new Intent(context, InstallConfirmActivity.class);
-            intent.setData(uri);
-
-            return intent;
-        } else {
+        if (count == 0) {
             // no permission screen needed!
             return null;
         }
+        Uri uri = ApkProvider.getContentUri(apk);
+        Intent intent = new Intent(context, InstallConfirmActivity.class);
+        intent.setData(uri);
+
+        return intent;
     }
 
     private int newPermissionCount(Apk apk) {

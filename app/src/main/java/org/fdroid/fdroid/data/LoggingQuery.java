@@ -61,9 +61,8 @@ public class LoggingQuery {
                 logSlowQuery(queryDuration);
             }
             return cursor;
-        } else {
-            return db.rawQuery(query, queryArgs);
         }
+        return db.rawQuery(query, queryArgs);
     }
 
     /**

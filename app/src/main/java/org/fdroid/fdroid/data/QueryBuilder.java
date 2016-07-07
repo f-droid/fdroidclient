@@ -147,9 +147,8 @@ abstract class QueryBuilder {
     private String orderBySql() {
         if (orderBys.size() == 0) {
             return "";
-        } else {
-            return " ORDER BY " + TextUtils.join(", ", orderBys);
         }
+        return " ORDER BY " + TextUtils.join(", ", orderBys);
     }
 
     private String groupBySql() {
