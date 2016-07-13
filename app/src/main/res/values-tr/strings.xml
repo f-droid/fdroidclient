@@ -6,7 +6,7 @@
   <string name="version">Sürüm</string>
   <string name="delete">Sil</string>
   <string name="enable_nfc_send">NFC göndermesini etkinleştir…</string>
-  <string name="cache_downloaded">Uygulamaları önbelleğe kaydet</string>
+  <string name="cache_downloaded">Önbellekteki uygulamaları sakla</string>
   <string name="updates">Güncellemeler</string>
   <string name="other">Diğer</string>
   <string name="update_interval">Otomatik güncelleme aralığı</string>
@@ -274,7 +274,7 @@ bağlanılıyor</string>
     <string name="swap_not_enabled">Takas etkinleştirilmemiş</string>
     <string name="swap_not_enabled_description">Takas yapmadan önce cihazınızın görünebilir olması gerekmektedir.</string>
 
-    <string name="install_confirm">Bu uygulamayı kurmak istiyor musunuz? Şunlara erişimi olacaktır:</string>
+    <string name="install_confirm">şunlara erişime ihtiyaç duyar:</string>
     <string name="install_confirm_update">Bu mevcut uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolmayacaktır. Güncellenmiş uygulamanın şunlara erişimi olacaktır:</string>
     <string name="install_confirm_update_system">Bu gömülü uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolamayacaktır. Güncellenmiş uygulamanın şunlara erişimi olacaktır:</string>
     <string name="install_confirm_update_no_perms">Bu mevcut uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolmayacaktır. Herhangi özel bir erişim gerektirmemektedir.</string>
@@ -336,5 +336,21 @@ bağlanılıyor</string>
     <string name="download_pending">İndirmenin başlaması bekleniyor…</string>
 
     <string name="downloading_apk">İndiriliyor %1$s</string>
+
+    <string name="system_install_not_supported">F-Droid Ayrıcalıklı Uzantısının kurulumu güncel olarak Android 5.1 ve sonraki sürümlerde desteklenmemektedir.</string>
+
+    <string name="install_error_notify_title">%s kurulumu sırasında hata</string>
+    <string name="uninstall_error_notify_title">%s kaldırılması sırasında hata</string>
+
+
+    <string name="installing">Kuruluyor…</string>
+    <string name="uninstalling">Kaldırılıyor…</string>
+
+    <string name="keep_hour">1 Saat</string>
+    <string name="keep_day">1 Gün</string>
+    <string name="keep_week">1 Hafta</string>
+    <string name="keep_month">1 Ay</string>
+    <string name="keep_year">1 Sene</string>
+    <string name="keep_forever">Daima</string>
 
     </resources>

@@ -240,7 +240,7 @@
     <string name="swap_not_enabled">Swap niet ingeschakeld</string>
     <string name="swap_not_enabled_description">Voordat we kunnen swappen, moet het apparaat zichtbaar gemaakt worden.</string>
 
-    <string name="install_confirm">Wil je deze applicatie installeren? Het zal toegang krijgen tot:</string>
+    <string name="install_confirm">heeft toegang nodig tot</string>
     <string name="install_confirm_update">Wil je een update voor deze bestaande applicatie installeren? De bestaande data zal niet verloren gaan. De nieuwe versie van de applicatie zal toegang krijgen tot:</string>
     <string name="install_confirm_update_system">Wil je een update voor deze ingebouwde applicatie installeren? De bestaande data zal niet verloren gaan. De nieuwe versie van de applicatie zal toegang krijgen tot:</string>
     <string name="install_confirm_update_no_perms">Wil je een update voor deze bestaande applicatie installeren? De bestaande data zal niet verloren gaan. Het heeft geen speciale toegang nodig.</string>
@@ -331,4 +331,22 @@
     <string name="update_auto_download_summary">Download de update in de achtergrond</string>
     <string name="tap_to_install_format">Tap om %s te installeren</string>
     <string name="tap_to_update_format">Tap om %s te updaten</string>
+    <string name="system_install_not_supported">Installatie van de F-Droid Privileged Exension wordt op het moment niet ondersteund op Android 5.1 of later.</string>
+
+    <string name="download_pending">Wachten om te beginnen met downloaden…</string>
+    <string name="install_error_notify_title">Fout bij het installeren van %s</string>
+    <string name="uninstall_error_notify_title">Fout bij het verwijderen van %s</string>
+
+
+    <string name="downloading_apk">%1$s downloaden</string>
+    <string name="installing">Installeren…</string>
+    <string name="uninstalling">Verwijderen…</string>
+
+    <string name="keep_hour">1 uur</string>
+    <string name="keep_day">1 dag</string>
+    <string name="keep_week">1 week</string>
+    <string name="keep_month">1 maand</string>
+    <string name="keep_year">1 jaar</string>
+    <string name="keep_forever">Voor altijd</string>
+
     </resources>

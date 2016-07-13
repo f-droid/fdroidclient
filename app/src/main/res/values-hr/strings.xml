@@ -1,0 +1,316 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="app_name">F-Droid</string>
+
+    <string name="SignatureMismatch">Nova verzija je potpisana ključem različitim od stare. Kako bi instalirali novu verziju, stara mora biti uklonjena. Molimo Vas, prvo uklonite staru verziju, a zatim pokušajte ponovno. (Napomena: Uklanjanje će obrisati sve interne podatke aplikacije)</string>
+    <string name="installIncompatible">Čini se da ovaj paket nije kompatibilan s Vašim uređajem. Želite li ga svejedno pokušati instalirati?</string>
+    <string name="installDowngrade">Pokušavate unazaditi aplikaciju na prošlu verziju. Ukoliko to napravite, aplikacija može prestati raditi ili čak izgubiti Vaše podatke. Želite li ju svejedno unazaditi?</string>
+    <string name="version">Verzija</string>
+    <string name="by_author">od</string>
+    <string name="delete">Obriši</string>
+    <string name="enable_nfc_send">Omogući NFC slanje…</string>
+    <string name="cache_downloaded">Zadrži keširane aplikacije</string>
+    <string name="updates">Ažuriranja</string>
+    <string name="unstable_updates">Nestabilna ažuriranja</string>
+    <string name="unstable_updates_summary">Predloži ažuriranja za nestabilne verzije</string>
+    <string name="other">Ostalo</string>
+
+    <string name="update_interval">Interval automatskog ažuriranja</string>
+    <string name="update_interval_zero">Bez automatski ažuriranja popisa aplikacija</string>
+    <string name="automatic_scan_wifi">Samo na Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Ažuriraj popis aplikacija automatski samo na Wi-Fi</string>
+    <string name="update_auto_download">Automatski preuzmi ažuriranja</string>
+    <string name="update_auto_download_summary">Preuzmi datoteke ažuriranja u pozadini</string>
+    <string name="notify">Obavijesti ažuriranja</string>
+    <string name="notify_on">Pokaži obavijest kad su dostupna ažuriranja</string>
+    <string name="update_history">Povijest ažuriranja</string>
+    <string name="update_history_summ">Dana koliko se aplikacije smatraju novima: %s</string>
+    <string name="system_installer">Povlašteno proširenje</string>
+    <string name="system_installer_on">Koristite F-Droidovo povlašteno proširenje kako bi instalirali, ažurirali i uklonili pakete.</string>
+    <string name="uninstall_system">Ažuriraj/ukloni povlašteno proširenje</string>
+    <string name="uninstall_system_summary">Otvori ekran sa detaljima o povlaštenom proširenju kako bi ga ažurirali/uklonili</string>
+    <string name="local_repo_name">Ime Vašeg lokalnog repozitorija</string>
+    <string name="local_repo_name_summary">Oglašeno ime Vašeg lokalnog repozitorija: %s</string>
+    <string name="local_repo_https">Koristi privatnu vezu</string>
+    <string name="local_repo_https_on">Koristi enkriptiranu HTTPS:// vezu za lokalni repozitorij</string>
+
+    <string name="login_title">Zahtjevana autentikacija</string>
+    <string name="login_name">Korisničko ime</string>
+    <string name="login_password">Lozinka</string>
+    <string name="repo_edit_credentials">Promjeni lozinku</string>
+    <string name="repo_error_empty_username">Prazno korisničko ime, podaci nisu promjenjeni</string>
+
+    <string name="app_details">Detalji aplikacije</string>
+    <string name="no_such_app">Nije pronađena takva aplikacija.</string>
+
+    <string name="about_title">O F-Droidu</string>
+    <string name="about_version">Verzija</string>
+    <string name="about_site">Web stranica</string>
+    <string name="about_source">Izvorni kod</string>
+    <string name="about_mail">Email</string>
+    <string name="about_license">Licenca</string>
+
+    <string name="app_incompatible">Nekompatibilno</string>
+    <string name="app_installed">Instalirano</string>
+    <string name="app_not_installed">Nije instalirano</string>
+    <string name="app_inst_known_source">Instalirano (sa %s)</string>
+    <string name="app_inst_unknown_source">Instalirano (sa nepoznatog izvora)</string>
+
+    <string name="added_on">Dodano %s</string>
+
+    <string name="ok">OK</string>
+
+    <string name="yes">Da</string>
+    <string name="no">Ne</string>
+    <string name="repo_add_title">Dodaj novi repozitorij</string>
+    <string name="repo_add_add">Dodaj</string>
+    <string name="links">Poveznice</string>
+    <string name="more">Više</string>
+    <string name="less">Manje</string>
+
+    <string name="back">Natrag</string>
+    <string name="cancel">Otkaži</string>
+    <string name="enable">Omogući</string>
+    <string name="add_key">Dodaj ključ</string>
+    <string name="overwrite">Prepiši</string>
+
+    <string name="tab_available_apps">Dostupno</string>
+    <string name="tab_installed_apps">Instalirano</string>
+    <string name="tab_updates">Ažuriranja</string>
+    <string name="tab_installed_apps_count">Instalirano (%d)</string>
+    <string name="tab_updates_count">Ažuriranja (%d)</string>
+    <string name="one_update_available">1 ažuriranje je dostupno.</string>
+    <string name="many_updates_available">%d ažuriranja je dostupno.</string>
+    <string name="fdroid_updates_available">Ažuriranja za F-Droid dostupna</string>
+    <string name="update_notification_more">+%1$d više…</string>
+    <string name="bluetooth_activity_not_found">Nije pronađena metoda slanja preko Bluetootha, odaberite jednu!</string>
+    <string name="choose_bt_send">Odaberi metodu slanja preko Bluetootha</string>
+    <string name="send_via_bluetooth">Pošalji preko Bluetootha</string>
+
+    <string name="repo_add_url">Adresa repozitorija</string>
+    <string name="repo_add_fingerprint">Otisak prsta (opcionalno)</string>
+    <string name="repo_exists_add_fingerprint">Ovaj repozitorij je već postavljen, dodat će se nove informacije o ključu.</string>
+    <string name="repo_exists_enable">Ovaj repozitorij je već postavljen, potvrdite da ga želite omogućiti.</string>
+    <string name="repo_exists_and_enabled">Repozitorij je već postavljen i omogućen.</string>
+    <string name="repo_delete_to_overwrite">Morate prvo obrisati ovaj repozitorij kako bi dodali drugi s različitim ključem.</string>
+    <string name="bad_fingerprint">Loš otisak prsta</string>
+    <string name="invalid_url">Ovo nije valajn URL.</string>
+    <string name="malformed_repo_uri">Ignoriram pogrešna URI repozitorija: %s</string>
+    <string name="repo_provider">Repozitorij: %s</string>
+
+    <string name="menu_update_repo">Ažuriraj repozitorije</string>
+    <string name="menu_manage">Repozitoriji</string>
+    <string name="menu_send_apk_bt">Podjeli F-Droid preko Bluetootha</string>
+    <string name="menu_settings">Postavke</string>
+    <string name="menu_about">O</string>
+    <string name="menu_search">Traži</string>
+    <string name="menu_add_repo">Novi repozitorij</string>
+
+    <string name="menu_launch">Pokreni</string>
+    <string name="menu_share">Djeli</string>
+    <string name="menu_install">Instaliraj</string>
+    <string name="menu_uninstall">Ukloni</string>
+    <string name="menu_ignore_all">Ignoriraj sva ažuriranja</string>
+    <string name="menu_ignore_this">Ignoriraj ovo ažuriranje</string>
+    <string name="menu_website">Web stranica</string>
+    <string name="menu_email">Pošalji email autoru</string>
+    <string name="menu_issues">Problemi</string>
+    <string name="menu_changelog">Zapis o promjenama</string>
+    <string name="menu_source">Izvorni kod</string>
+    <string name="menu_upgrade">Nadogradi</string>
+    <string name="menu_donate">Doniraj</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="menu_flattr">Flattr</string>
+
+
+    <string name="details_installed">Instalirana verzija %s</string>
+    <string name="details_notinstalled">Nije instalirano</string>
+
+    <string name="antiadslist">Ova aplikacija sadržava oglase</string>
+    <string name="antitracklist">Ova aplikacija prati i javlja Vašu aktivnost</string>
+    <string name="antinonfreeadlist">Ova aplikacija promovira dodatke koji se plaćaju</string>
+    <string name="antinonfreenetlist">Ova aplikacija promovira mrežne usluge koje se plaćaju</string>
+    <string name="antinonfreedeplist">Ova aplikacija ovisi o drugim aplikacijama koje se plaćaju</string>
+    <string name="antiupstreamnonfreelist">Uzvodni izvorni kod nije u potpunosti otvoren</string>
+    <string name="antinonfreeassetslist">Ova aplikacija sadrži zatvorene resurse</string>
+
+    <string name="display">Prikaz</string>
+
+    <string name="expert">Napredno</string>
+    <string name="expert_on">Prikaži dodatne informacije i omogući dodatne postavke</string>
+
+    <string name="search_hint">Pretraži aplikacije</string>
+
+    <string name="appcompatibility">Kompatibilnost aplikacija</string>
+    <string name="show_incompat_versions">Nekompatibilne verzije</string>
+    <string name="show_incompat_versions_on">Prikaži verzije nekompatibilne s ovim uređajem</string>
+    <string name="rooted">Ignoriraj root</string>
+    <string name="rooted_on">Nemoj zasiviti aplikacije koje zahtjevaju root ovlasti</string>
+    <string name="ignoreTouch">Ignoriraj dodirni zaslon</string>
+    <string name="ignoreTouch_on">Uvijek uključi aplikacije koje zahtjevaju dodirni zaslon</string>
+
+    <string name="local_repo">Lokalni repozitorij</string>
+    <string name="local_repo_running">F-Droid je spreman za razmjenu</string>
+    <string name="touch_to_configure_local_repo">Dodirnite za detalje i dopuštanje drugima da razmjenjuju Vaše aplikacije.</string>
+    <string name="deleting_repo">Brišem trenutni repozitorij…</string>
+    <string name="adding_apks_format">Dodajem %s u repozitorij…</string>
+    <string name="writing_index_jar">Pišem potpisanu datoteku indeksa (index.jar)…</string>
+    <string name="linking_apks">Povezujem APK-ove u repozitorij…</string>
+    <string name="copying_icons">Kopiram ikone aplikacija u repozitorij…</string>
+    <string name="icon">Ikona</string>
+    <string name="next">Sljedeće</string>
+    <string name="skip">Preskoči</string>
+
+    <string name="useTor">Koristi Tor</string>
+    <string name="useTorSummary">Prisili promet preuzimanja kroz Tor za povećanu privatnost</string>
+    <string name="proxy">Proxy</string>
+    <string name="enable_proxy_title">Omogući HTTP Proxy</string>
+    <string name="enable_proxy_summary">Postavi HTTP Proxy za sve mrežne zahtjeve</string>
+    <string name="proxy_host">Proxy domaćin</string>
+    <string name="proxy_host_summary">Postavi ime proxya (npr. 127.0.0.1)</string>
+    <string name="proxy_port">Proxy port</string>
+    <string name="proxy_port_summary">Postavi broj proxy porta (npr. 8118)</string>
+
+    <string name="status_download">Preuzimam\n%2$s / %3$s (%4$d%%) sa\n%1$s</string>
+
+    <string name="status_download_unknown_size">Preuzimam\n%2$s sa\n%1$s</string>
+    <string name="update_notification_title">Ažuriram repozitorije</string>
+    <string name="status_processing_xml_percent">Obrađujem %2$s / %3$s (%4$d%%) od %1$s</string>
+    <string name="status_connecting_to_repo">Spajam se na\n%1$s</string>
+    <string name="status_inserting_apps">Spremam detalje aplikacije</string>
+    <string name="repos_unchanged">Svi repozitoriji su ažurirani</string>
+        <string name="all_other_repos_fine">Ostali repozitoriji nisu stvorili probleme.</string>
+        <string name="global_error_updating_repos">Greška prilikom ažuriranja: %s</string>
+    <string name="no_permissions">Ne koriste se dozvole.</string>
+    <string name="permissions">Dozvole</string>
+    <string name="no_handler_app">Nemate nijednu dostupnu aplikaciju koja može obraditi %s.</string>
+    <string name="theme">Tema</string>
+    <string name="unsigned">Nepotpisano</string>
+    <string name="unverified">Neverificirano</string>
+    <string name="repo_details">Repozitorij</string>
+    <string name="repo_url">Adresa</string>
+    <string name="repo_num_apps">Broj aplikacija</string>
+    <string name="repo_fingerprint">Otisak potpisnog ključa (SHA-256)</string>
+    <string name="repo_description">Opis</string>
+    <string name="repo_last_update">Posljednje ažuriranje</string>
+    <string name="repo_name">Ime</string>
+    <string name="unsigned_description">Ovo znači da popis aplikacija nije mogao biti verificiran. Trebali bi biti oprezni s aplikacijama preuzetim sa nepotpisanih indeksa.</string>
+    <string name="repo_not_yet_updated">Ovaj repozitorij nije do sad korišten. Morate ga omogućiti kako bi vidjeli aplikacije na njemu.</string>
+    <string name="unknown">Nepoznato</string>
+    <string name="repo_confirm_delete_title">Obrisati repozitorij?</string>
+    <string name="repo_confirm_delete_body">Brisanje repozitorija znači da aplikacije sa njega više neće bit dostupne kroz F-Droid.\n\nNapomena: Sve instalirane aplikacije će ostati na Vašem uređaju.</string>
+    <string name="repo_disabled_notification">Onemogućeno %1$s.\n\nMorate ponovno omogućiti repozitorij kako bi instalirali aplikacije iz njega.</string>
+    <string name="repo_added">Spremljen F-Droid repozitorij %1$s.</string>
+    <string name="repo_searching_address">Tražim F-Drroid repozitorij na\n%1$s</string>
+    <string name="minsdk_or_later">%s ili kasnije</string>
+    <string name="up_to_maxsdk">Do %s</string>
+    <string name="minsdk_up_to_maxsdk">Od %1$s do %2$s</string>
+    <string name="not_on_same_wifi">Vaš uređaj nije na istoj Wi-Fi mreži kao i lokalni repozitorij koji ste upravo dodali! Probajte se spojiti na ovu mrežu: %s</string>
+    <string name="requires_features">Zahtjeva: %1$s</string>
+    <string name="pref_language">Jezik</string>
+    <string name="pref_language_default">Zadani jezik sustava</string>
+
+    <string name="app_icon">Ikona aplikacije</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="wifi_ap">Hotspot</string>
+
+    <string name="category_All">Sve</string>
+    <string name="category_Whats_New">Novo</string>
+    <string name="category_Recently_Updated">Nedavno ažurirano</string>
+    <string name="category_Connectivity">Povezivanje</string>
+    <string name="category_Development">Razvoj</string>
+    <string name="category_Games">Igre</string>
+    <string name="category_Graphics">Grafika</string>
+    <string name="category_Internet">Internet</string>
+    <string name="category_Money">Novac</string>
+    <string name="category_Multimedia">Multimedija</string>
+    <string name="category_Navigation">Navigacija</string>
+    <string name="category_Phone_SMS">Telefon i SMS</string>
+    <string name="category_Reading">Čitanje</string>
+    <string name="category_Science_Education">Znanost i edukacija</string>
+    <string name="category_Security">Sigurnost</string>
+    <string name="category_Sports_Health">Sport i zdravlje</string>
+    <string name="category_System">Sustav</string>
+    <string name="category_Theming">Teme</string>
+    <string name="category_Time">Vrijeme</string>
+    <string name="category_Writing">Pisanje</string>
+
+    <string name="empty_installed_app_list">Nema instaliranih aplikacija.\n\nPostoje aplikacije na Vašem uređaju, ali nisu dostupne iz F-Droida. Možda trebate ažurirati svoje repozitorije, ili ti repozitoriji stvarno nemaju Vaše aplikacije.</string>
+    <string name="empty_available_app_list">Nema aplikacija u ovoj kategoriji.\n\nProbajte odabrati drugu kategoriju ili ažurirati svoje repozitorije kako bi dobili novi popis aplikacija.</string>
+    <string name="empty_can_update_app_list">Sve aplikacije su ažurirane.\n\nČestitke! Sve aplikacije su ažurirane (ili su Vam repozitoriji zastarjeli).</string>
+    <string name="empty_search_installed_app_list">Nema odgovarajućih instaliranih aplikacija.</string>
+    <string name="empty_search_available_app_list">Nema dostupnih odgovarajućih aplikacija.</string>
+    <string name="empty_search_can_update_app_list">Nema odgovarajućih aplikacija za ažuriranje.</string>
+
+    <string name="requesting_root_access_body">Zahtjevam root pristup…</string>
+    <string name="root_access_denied_title">Root pristup odbijen</string>
+    <string name="root_access_denied_body">Ili Vaš Android uređaj nije rootan ili niste dali root pristup F-Droidu.</string>
+    <string name="install_error_unknown">Nije uspjelo instaliranje zbog nepoznate greške</string>
+    <string name="uninstall_error_unknown">Nije uspjelo instaliranje zbog nepoznate greške</string>
+    <string name="system_install_denied_title">F-Droid povlašteno proširenje nije dostupno</string>
+    <string name="system_install_denied_body">Ova opcija je dostupna samo kad je instalirano F-Droid povlašteno proširenje.</string>
+    <string name="system_install_denied_signature">Potpis proširenja je pogrešan! Molimo napravite zapis o greški!</string>
+    <string name="system_install_denied_permissions">Proširenju nisu dodjeljene privilegirane ovlasti! Molimo stvorite zapis o greški!</string>
+    <string name="system_install_button_install">Instaliraj</string>
+    <string name="system_install_button_open">Otvori proširenje</string>
+    <string name="system_install_post_success">Uspješno instalirano F-Droid privilegirano proširenje</string>
+    <string name="system_install_post_fail">Instalacija F-Droid privilegiranog proširenja nije uspjela</string>
+    <string name="system_install_post_success_message">F-Droid privilegirano proširenje je uspješno instalirano. Ono dopušta F-Droidu samostalnu instalaciju, nadogradnju i uklanjanje aplikacija.</string>
+    <string name="system_install_post_fail_message">Instalacija F-Droid privilegiranog proširenja nije uspjela. Instalacijska metoda nije podržana na svim Android verzijama, pogledajte F-Droid bug tracker za više informacija.</string>
+    <string name="system_install_installing">Instalacija…</string>
+    <string name="system_install_installing_rebooting">Instalacija i ponovno pokretanje…</string>
+    <string name="system_install_uninstalling">Uklanjanje…</string>
+    <string name="system_install_question">Želite li instalirati F-Droid privilegirano proširenje?</string>
+    <string name="system_install_warning">Ovo može potrajati desetak sekundi.</string>
+    <string name="system_install_warning_lollipop">Ovo može potrajati desetak sekundi, nakon čega će se Vaš uređaj <b>ponovno pokrenuti</b>.</string>
+    <string name="system_uninstall">Želite li ukloniti F-Droid privilegirano proširenje?</string>
+    <string name="system_uninstall_button">Ukloni</string>
+    <string name="system_install_not_supported">Instalacija F-Droid privilegiranog proširenja trenutno nije podržana na Android 5.1 ili kasnijem.</string>
+
+    <string name="swap_nfc_title">Dodirnite za razmjenu</string>
+    <string name="swap_nfc_description">Ako Vaš prijatelj ima F-Droid i uključen NFC, dodirnite se uređajima.</string>
+    <string name="swap_join_same_wifi">Spoji se na istu Wi-Fi mrežu kao i prijatelj</string>
+    <string name="swap_join_same_wifi_desc">Kako bi razmjenjivali preko Wi-Fi mreže, utvrdite da ste na istoj mreži. Ako nemate pristup istoj mreži, jedan od Vas može napraviti Wi-Fi Hotspot.</string>
+    <string name="swap_join_this_hotspot">Pomozite prijatelju da se pridruži Vašem hotspotu</string>
+    <string name="swap">Razmjeni aplikacije</string>
+    <string name="swap_success">Razmjena uspjela!</string>
+    <string name="swap_no_wifi_network">Još nema mreže</string>
+    <string name="swap_active_hotspot">%1$s (Vaš hotspot)</string>
+    <string name="swap_view_available_networks">Dodirnite za otvaranje dostupnih mreža</string>
+    <string name="swap_switch_to_wifi">Dodirnite za prebacivanje na Wi-Fi mrežu</string>
+    <string name="open_qr_code_scanner">Otvori QR skener</string>
+    <string name="swap_welcome">Dobrodošli u F-Droid!</string>
+    <string name="swap_confirm_connect">Želite li odmah dobaviti aplikacije iz %1$s?</string>
+    <string name="swap_dont_show_again">Ne prikazuj ovo opet</string>
+    <string name="swap_scan_or_type_url">Jedna osoba treba skenirati kod, ili upisati URL druge osobe u svoj preglednik.</string>
+    <string name="swap_choose_apps">Odaberi aplikacije</string>
+    <string name="swap_scan_qr">Skeniraj QR kod</string>
+    <string name="swap_people_nearby">Ljudi u blizini</string>
+    <string name="swap_scanning_for_peers">Tražim ljude u blizini…</string>
+    <string name="swap_nearby">Obližnja razmjena</string>
+    <string name="swap_intro">Spojite se i mjenjajte aplikacije s ljudima blizu Vas.</string>
+    <string name="swap_visible_bluetooth">Vidljiv preko Bluetootha</string>
+    <string name="swap_setting_up_bluetooth">Postavljam Bluetooth…</string>
+    <string name="swap_not_visible_bluetooth">Nije vidljivo preko Bluetootha</string>
+    <string name="swap_visible_wifi">Vidljivo preko Wi-Fi</string>
+    <string name="swap_setting_up_wifi">Postavljam Wi-Fi…</string>
+    <string name="swap_stopping_wifi">Zaustavljam Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">Nije vidljivo preko Wi-Fi</string>
+    <string name="swap_wifi_device_name">Ime uređja</string>
+    <string name="swap_cant_find_peers">Ne možete naći kog tražite?</string>
+    <string name="swap_send_fdroid">Pošalji F-Droid</string>
+    <string name="swap_no_peers_nearby">Nije uspjelo traženje ljudi u blizini.</string>
+    <string name="swap_connecting">Spajanje</string>
+    <string name="swap_confirm">Potvrdi razmjenu</string>
+    <string name="swap_qr_isnt_for_swap">Čini se da QR kod koji ste skenirali nije kod za razmjenu.</string>
+    <string name="bluetooth_unavailable">Bluetooth nedostupan</string>
+    <string name="swap_cant_send_no_bluetooth">Nije uspjelo slanje F-Droida, Bluetooth nije dostupan na ovom uređaju.</string>
+    <string name="loading">Učitavanje…</string>
+    <string name="swap_connection_misc_error">Došlo je do greške prilikom spajanja na uređaj, čini se da razmjena nije moguća.</string>
+    <string name="swap_not_enabled">Razmjena nije omogućena</string>
+    <string name="swap_not_enabled_description">Vaš uređaj mora biti vidljiv prije razmjene.</string>
+
+    <string name="tap_to_install_format">Dodirnite za instalaciju %s</string>
+    <string name="tap_to_update_format">Dodirnite za ažuriranje %s</string>
+    <string name="install_confirm">treba pristup</string>
+    </resources>

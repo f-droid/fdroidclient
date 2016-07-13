@@ -199,4 +199,7 @@
 
     <string name="status_download">Alla laadimine\n%2$s / %3$s (%4$d%%) masinast\n%1$s</string>
 
+    <string name="status_download_unknown_size">%2$s\nalla laadimine\nmasinast %1$s</string>
+    <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) kokku %1$s töödeldud</string>
+    <string name="status_connecting_to_repo">Ühenduse loomine\n%1$s</string>
     </resources>
