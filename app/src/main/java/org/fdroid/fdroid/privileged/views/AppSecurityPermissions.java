@@ -29,6 +29,7 @@ import android.content.pm.PermissionInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -70,7 +71,6 @@ import java.util.Set;
  * - Open https://github.com/android/platform_frameworks_base/commits/master/core/java/android/widget/AppSecurityPermissions.java
  * - Start from latest included commit and include changes until the newest commit with care
  */
-@TargetApi(Build.VERSION_CODES.M)
 public class AppSecurityPermissions {
 
     private static final String TAG = "AppSecurityPermissions";
@@ -104,11 +104,12 @@ public class AppSecurityPermissions {
             super(info);
         }
 
+        @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
         public Drawable loadGroupIcon(Context context, PackageManager pm) {
             if (icon != 0) {
-                return (Build.VERSION.SDK_INT < 22) ? loadIcon(pm) : loadUnbadgedIcon(pm);
+                return (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP_MR1) ? loadIcon(pm) : loadUnbadgedIcon(pm);
             }
-            return context.getDrawable(R.drawable.ic_perm_device_info);
+            return ContextCompat.getDrawable(context, R.drawable.ic_perm_device_info);
         }
 
     }
@@ -309,18 +310,28 @@ public class AppSecurityPermissions {
                     }
                     permGroups.put(tmpPermInfo.group, group);
                 }
-                final boolean newPerm = installedPkgInfo != null
-                        && (existingFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0;
                 MyPermissionInfo myPerm = new MyPermissionInfo(tmpPermInfo);
                 myPerm.existingReqFlags = existingFlags;
-                // This is a new permission if the app is already installed and
-                // doesn't currently hold this permission.
-                myPerm.newPerm = newPerm;
+                myPerm.newPerm = isNewPermission(installedPkgInfo, existingFlags);
                 permSet.add(myPerm);
             } catch (NameNotFoundException e) {
                 Log.i(TAG, "Ignoring unknown permission:" + permName);
             }
         }
+    }
+
+    /**
+     * A permission is a "new permission" if the app is already installed and
+     * doesn't currently hold this permission. On older devices that don't support
+     * this concept, permissions are never "new permissions".
+     */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private static boolean isNewPermission(PackageInfo installedPkgInfo, int existingFlags) {
+        if (installedPkgInfo == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+            return false;
+        }
+
+        return (existingFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0;
     }
 
     private List<MyPermissionInfo> getPermissionList(MyPermissionGroupInfo grp, int which) {
