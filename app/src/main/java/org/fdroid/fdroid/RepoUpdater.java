@@ -199,12 +199,10 @@ public class RepoUpdater {
             reader.setContentHandler(repoXMLHandler);
             reader.parse(new InputSource(indexInputStream));
 
-            if (repoDetailsToSave.containsKey(RepoTable.Cols.TIMESTAMP)) {
-                long timestamp = repoDetailsToSave.getAsLong(RepoTable.Cols.TIMESTAMP);
-                if (timestamp < repo.timestamp) {
-                    throw new UpdateException(repo, "index.jar is older that current index! "
-                            + timestamp + " < " + repo.timestamp);
-                }
+            long timestamp = repoDetailsToSave.getAsLong(RepoTable.Cols.TIMESTAMP);
+            if (timestamp < repo.timestamp) {
+                throw new UpdateException(repo, "index.jar is older that current index! "
+                        + timestamp + " < " + repo.timestamp);
             }
 
             signingCertFromJar = getSigningCertFromJar(indexEntry);
