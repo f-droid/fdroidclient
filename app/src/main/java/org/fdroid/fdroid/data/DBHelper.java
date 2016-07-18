@@ -323,9 +323,6 @@ class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 58 && !columnExists(db, ApkTable.NAME, ApkTable.Cols.APP_ID)) {
             db.beginTransaction();
             try {
-                db.execSQL("CREATE INDEX IF NOT EXISTS name ON " + AppTable.NAME + " (" + AppTable.Cols.NAME + ")");
-                db.execSQL("CREATE INDEX IF NOT EXISTS added ON " + AppTable.NAME + " (" + AppTable.Cols.ADDED + ")");
-
                 final String alter = "ALTER TABLE " + ApkTable.NAME + " ADD COLUMN " + ApkTable.Cols.APP_ID + " NUMERIC";
                 Log.i(TAG, "Adding appId foreign key to " + ApkTable.NAME);
                 Utils.debugLog(TAG, alter);
@@ -338,6 +335,7 @@ class DBHelper extends SQLiteOpenHelper {
                 Log.i(TAG, "Updating foreign key from " + ApkTable.NAME + " to " + AppTable.NAME + " to use numeric foreign key.");
                 Utils.debugLog(TAG, update);
                 db.execSQL(update);
+                ensureIndexes(db);
                 db.setTransactionSuccessful();
             } finally {
                 db.endTransaction();
@@ -596,13 +594,20 @@ class DBHelper extends SQLiteOpenHelper {
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
-        db.execSQL("create index app_id on " + AppTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
-        db.execSQL("create index name on " + AppTable.NAME + " (" + AppTable.Cols.NAME + ");"); // Used for sorting most lists
-        db.execSQL("create index added on " + AppTable.NAME + " (" + AppTable.Cols.ADDED + ");"); // Used for sorting "newly added"
         db.execSQL(CREATE_TABLE_APK);
-        db.execSQL("create index apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");
-        db.execSQL("create index apk_appId on " + ApkTable.NAME + " (" + ApkTable.Cols.APP_ID + ");");
-        db.execSQL("create index apk_id on " + ApkTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
+        ensureIndexes(db);
+    }
+
+    private static void ensureIndexes(SQLiteDatabase db) {
+        Utils.debugLog(TAG, "Ensuring indexes exist for " + AppTable.NAME);
+        db.execSQL("CREATE INDEX IF NOT EXISTS app_id on " + AppTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS name on " + AppTable.NAME + " (" + AppTable.Cols.NAME + ");"); // Used for sorting most lists
+        db.execSQL("CREATE INDEX IF NOT EXISTS added on " + AppTable.NAME + " (" + AppTable.Cols.ADDED + ");"); // Used for sorting "newly added"
+
+        Utils.debugLog(TAG, "Ensuring indexes exist for " + ApkTable.NAME);
+        db.execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS apk_appId on " + ApkTable.NAME + " (" + ApkTable.Cols.APP_ID + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS apk_id on " + ApkTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
     }
 
     /**
