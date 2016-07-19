@@ -47,6 +47,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_APK =
             "CREATE TABLE " + ApkTable.NAME + " ( "
             + ApkTable.Cols.PACKAGE_NAME + " text not null, "
+            + ApkTable.Cols.APP_ID + " integer not null, "
             + ApkTable.Cols.VERSION_NAME + " text not null, "
             + ApkTable.Cols.REPO_ID + " integer not null, "
             + ApkTable.Cols.HASH + " text not null, "
@@ -114,7 +115,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 57;
+    private static final int DB_VERSION = 58;
 
     private final Context context;
 
@@ -315,7 +316,33 @@ class DBHelper extends SQLiteOpenHelper {
         requireTimestampInRepos(db, oldVersion);
         recreateInstalledAppTable(db, oldVersion);
         addTargetSdkVersionToApk(db, oldVersion);
+        migrateAppPrimaryKeyToRowId(db, oldVersion);
     }
+
+    private void migrateAppPrimaryKeyToRowId(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 58 && !columnExists(db, ApkTable.NAME, ApkTable.Cols.APP_ID)) {
+            db.beginTransaction();
+            try {
+                final String alter = "ALTER TABLE " + ApkTable.NAME + " ADD COLUMN " + ApkTable.Cols.APP_ID + " NUMERIC";
+                Log.i(TAG, "Adding appId foreign key to " + ApkTable.NAME);
+                Utils.debugLog(TAG, alter);
+                db.execSQL(alter);
+
+                final String update = "UPDATE " + ApkTable.NAME + " SET " + ApkTable.Cols.APP_ID + " = ( " +
+                        "SELECT app." + AppTable.Cols.ROW_ID + " " +
+                        "FROM " + AppTable.NAME + " AS app " +
+                        "WHERE " + ApkTable.NAME + "." + ApkTable.Cols.PACKAGE_NAME + " = app." + AppTable.Cols.PACKAGE_NAME + ")";
+                Log.i(TAG, "Updating foreign key from " + ApkTable.NAME + " to " + AppTable.NAME + " to use numeric foreign key.");
+                Utils.debugLog(TAG, update);
+                db.execSQL(update);
+                ensureIndexes(db);
+                db.setTransactionSuccessful();
+            } finally {
+                db.endTransaction();
+            }
+        }
+    }
+
 
     /**
      * Migrate repo list to new structure. (No way to change primary
@@ -567,10 +594,20 @@ class DBHelper extends SQLiteOpenHelper {
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
-        db.execSQL("create index app_id on " + AppTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
         db.execSQL(CREATE_TABLE_APK);
-        db.execSQL("create index apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");
-        db.execSQL("create index apk_id on " + ApkTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
+        ensureIndexes(db);
+    }
+
+    private static void ensureIndexes(SQLiteDatabase db) {
+        Utils.debugLog(TAG, "Ensuring indexes exist for " + AppTable.NAME);
+        db.execSQL("CREATE INDEX IF NOT EXISTS app_id on " + AppTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS name on " + AppTable.NAME + " (" + AppTable.Cols.NAME + ");"); // Used for sorting most lists
+        db.execSQL("CREATE INDEX IF NOT EXISTS added on " + AppTable.NAME + " (" + AppTable.Cols.ADDED + ");"); // Used for sorting "newly added"
+
+        Utils.debugLog(TAG, "Ensuring indexes exist for " + ApkTable.NAME);
+        db.execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS apk_appId on " + ApkTable.NAME + " (" + ApkTable.Cols.APP_ID + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS apk_id on " + ApkTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
     }
 
     /**

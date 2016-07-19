@@ -3,9 +3,13 @@ package org.fdroid.fdroid.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
+import android.text.TextUtils;
+
+import java.util.List;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppTable;
@@ -22,19 +26,21 @@ public class TempAppProvider extends AppProvider {
 
     private static final String PROVIDER_NAME = "TempAppProvider";
 
-    private static final String TABLE_TEMP_APP = "temp_" + AppTable.NAME;
+    static final String TABLE_TEMP_APP = "temp_" + AppTable.NAME;
 
     private static final String PATH_INIT = "init";
     private static final String PATH_COMMIT = "commit";
 
     private static final int CODE_INIT = 10000;
     private static final int CODE_COMMIT = CODE_INIT + 1;
+    private static final int APPS = CODE_COMMIT + 1;
 
     private static final UriMatcher MATCHER = new UriMatcher(-1);
 
     static {
         MATCHER.addURI(getAuthority(), PATH_INIT, CODE_INIT);
         MATCHER.addURI(getAuthority(), PATH_COMMIT, CODE_COMMIT);
+        MATCHER.addURI(getAuthority(), PATH_APPS + "/*", APPS);
         MATCHER.addURI(getAuthority(), "*", CODE_SINGLE);
     }
 
@@ -55,6 +61,17 @@ public class TempAppProvider extends AppProvider {
         return Uri.withAppendedPath(getContentUri(), app.packageName);
     }
 
+    public static Uri getAppsUri(List<String> apps) {
+        return getContentUri().buildUpon()
+                .appendPath(PATH_APPS)
+                .appendPath(TextUtils.join(",", apps))
+                .build();
+    }
+
+    private AppQuerySelection queryApps(String packageNames) {
+        return queryApps(packageNames, getTableName() + ".id");
+    }
+
     public static class Helper {
 
         /**
@@ -65,6 +82,12 @@ public class TempAppProvider extends AppProvider {
             Uri uri = Uri.withAppendedPath(getContentUri(), PATH_INIT);
             context.getContentResolver().insert(uri, new ContentValues());
             TempApkProvider.Helper.init(context);
+        }
+
+        public static List<App> findByPackageNames(Context context, List<String> packageNames, String[] projection) {
+            Uri uri = getAppsUri(packageNames);
+            Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
+            return AppProvider.Helper.cursorToList(cursor);
         }
 
         /**
@@ -114,6 +137,18 @@ public class TempAppProvider extends AppProvider {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return count;
+    }
+
+    @Override
+    public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
+        AppQuerySelection selection = new AppQuerySelection(customSelection, selectionArgs);
+        switch (MATCHER.match(uri)) {
+            case APPS:
+                selection = selection.add(queryApps(uri.getLastPathSegment()));
+                break;
+        }
+
+        return super.runQuery(uri, selection, projection, true, sortOrder);
     }
 
     private void ensureTempTableDetached(SQLiteDatabase db) {

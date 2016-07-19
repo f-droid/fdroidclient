@@ -65,7 +65,10 @@ class ContentValuesCursor extends AbstractCursor {
 
     @Override
     public long getLong(int i) {
-        throw new IllegalArgumentException("unimplemented");
+        if (values[i] instanceof Long) {
+            return (Long) values[i];
+        }
+        throw new IllegalArgumentException("Value is not a Long");
     }
 
     @Override

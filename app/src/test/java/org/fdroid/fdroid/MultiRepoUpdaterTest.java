@@ -19,7 +19,6 @@ import org.junit.Before;
 
 import java.io.File;
 import java.util.List;
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -33,9 +32,9 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
     protected static final String REPO_ARCHIVE = "Test F-Droid repo (Archive)";
     protected static final String REPO_CONFLICTING = "Test F-Droid repo with different apps";
 
-    protected RepoUpdater conflictingRepoUpdater;
-    protected RepoUpdater mainRepoUpdater;
-    protected RepoUpdater archiveRepoUpdater;
+    protected static final String REPO_MAIN_URI = "https://f-droid.org/repo";
+    protected static final String REPO_ARCHIVE_URI = "https://f-droid.org/archive";
+    protected static final String REPO_CONFLICTING_URI = "https://example.com/conflicting/fdroid/repo";
 
     private static final String PUB_KEY =
             "3082050b308202f3a003020102020420d8f212300d06092a864886f70d01010b050030363110300e0603" +
@@ -78,10 +77,6 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         RepoProvider.Helper.remove(context, 2);
         RepoProvider.Helper.remove(context, 3);
         RepoProvider.Helper.remove(context, 4);
-
-        conflictingRepoUpdater = createUpdater(REPO_CONFLICTING, context);
-        mainRepoUpdater = createUpdater(REPO_MAIN, context);
-        archiveRepoUpdater = createUpdater(REPO_ARCHIVE, context);
 
         Preferences.setup(context);
     }
@@ -157,10 +152,10 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         }
     }
 
-    private RepoUpdater createUpdater(String name, Context context) {
+    private RepoUpdater createUpdater(String name, String uri, Context context) {
         Repo repo = new Repo();
         repo.signingCertificate = PUB_KEY;
-        repo.address = "https://fake.url/" + UUID.randomUUID().toString() + "/fdroid/repo";
+        repo.address = uri;
         repo.name = name;
 
         ContentValues values = new ContentValues(2);
@@ -176,15 +171,15 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
     }
 
     protected boolean updateConflicting() throws UpdateException {
-        return updateRepo(conflictingRepoUpdater, "multiRepo.conflicting.jar");
+        return updateRepo(createUpdater(REPO_CONFLICTING, REPO_CONFLICTING_URI, context), "multiRepo.conflicting.jar");
     }
 
     protected boolean updateMain() throws UpdateException {
-        return updateRepo(mainRepoUpdater, "multiRepo.normal.jar");
+        return updateRepo(createUpdater(REPO_MAIN, REPO_MAIN_URI, context), "multiRepo.normal.jar");
     }
 
     protected boolean updateArchive() throws UpdateException {
-        return updateRepo(archiveRepoUpdater, "multiRepo.archive.jar");
+        return updateRepo(createUpdater(REPO_ARCHIVE, REPO_ARCHIVE_URI, context), "multiRepo.archive.jar");
     }
 
     private boolean updateRepo(RepoUpdater updater, String indexJarPath) throws UpdateException {
