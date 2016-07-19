@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">Bu yeni sürüm farklı bir anahtar ile imzalanmıştır. Yeni sürümü kurmak için önce eski sürümü kaldırmanız gerekir. Lütfen bunu yapın ve tekrar deneyin. (Not: bu, uygulama tarafından saklanan tüm dahili verileri silecektir)</string>
-  <string name="installIncompatible">Bu paket cihazınızla uyumlu değil gibi görünüyor. Yine de kurmayı denemek istiyor musunuz?</string>
+  <string name="installIncompatible">Bu paket aygıtınızla uyumlu değil gibi görünüyor. Yine de kurmayı denemek istiyor musunuz?</string>
   <string name="installDowngrade">Bu uygulamanın eski bir sürümüne dönmek üzeresiniz. Bu, uygulamanın yanlış çalışmasına ve hatta veri kaybına neden olabilir. Devam etmek istiyor musunuz?</string>
   <string name="version">Sürüm</string>
   <string name="delete">Sil</string>
@@ -48,8 +48,8 @@
   <string name="one_update_available">1 güncelleme bulunmaktadır.</string>
   <string name="many_updates_available">%d güncelleme bulunmaktadır.</string>
   <string name="fdroid_updates_available">F-Droid güncellemeleri bulunmaktadır</string>
-  <string name="bluetooth_activity_not_found">Hiçbir Bluetooth gönderme metodu bulunamadı, birisini seçin!</string>
-  <string name="choose_bt_send">Bluetooth gönderme metodu seç</string>
+  <string name="bluetooth_activity_not_found">Hiçbir Bluetooth gönderme yöntemi bulunamadı, birisini seçin!</string>
+  <string name="choose_bt_send">Bluetooth gönderme yöntemi seç</string>
   <string name="send_via_bluetooth">Bluetooth ile Gönder</string>
   <string name="repo_add_url">Depo adresi</string>
   <string name="repo_add_fingerprint">Parmak izi (seçime dayalı)</string>
@@ -89,9 +89,9 @@
   <string name="search_hint">Uygulama ara</string>
   <string name="appcompatibility">Uygulama uyumu</string>
   <string name="show_incompat_versions">Uyumsuz sürümler</string>
-  <string name="show_incompat_versions_on">Cihazla uyumsuz uygulama sürümlerini göster</string>
-  <string name="rooted">Root\'u yok say</string>
-  <string name="rooted_on">Root yetkileri gerektiren uygulamaları gri yapma</string>
+  <string name="show_incompat_versions_on">Aygıtla uyumsuz uygulama sürümlerini göster</string>
+  <string name="rooted">Kökü yok say</string>
+  <string name="rooted_on">Kök yetkileri gerektiren uygulamaları gri yapma</string>
   <string name="ignoreTouch">Dokunmatik ekranı yok say</string>
   <string name="ignoreTouch_on">Dokunmatik ekran gerektiren uygulamaları daima dahil et</string>
   <string name="category_All">Tümü</string>
@@ -140,14 +140,14 @@ bağlanılıyor</string>
   <string name="repo_not_yet_updated">Bu depo henüz kullanılmamıştır. Sunduğu uygulamaları görmek için onu güncellemeniz gerekir.</string>
   <string name="unknown">Bilinmiyor</string>
   <string name="repo_confirm_delete_title">Depo silinsin mi?</string>
-  <string name="repo_confirm_delete_body">Bir depoyu silmek, ondan indirilen uygulamaların bundan böyle F-Droid vasıtasıyla elde edilemeyeceği anlamına gelir.\n\nNot: Tüm önceden kurulan uygulamalar cihazınızda kalacaktır.</string>
+  <string name="repo_confirm_delete_body">Bir depoyu silmek, ondan indirilen uygulamaların bundan böyle F-Droid vasıtasıyla elde edilemeyeceği anlamına gelir.\n\nNot: Tüm önceden kurulan uygulamalar aygıtınızda kalacaktır.</string>
   <string name="repo_disabled_notification">\"%1$s\" devre dışı bırakıldı.\n\nOndan uygulama indirmek için bu depoyu tekrar etkinleştirmeniz gerekecektir.</string>
   <string name="repo_added">F-Droid deposu %1$s kaydedildi.</string>
   <string name="repo_searching_address">%1$s konumunda F-Droid deposu aranıyor</string>
   <string name="minsdk_or_later">%s ya da sonrası</string>
   <string name="up_to_maxsdk">%s değerine kadar</string>
   <string name="minsdk_up_to_maxsdk">%1$s değerinden %2$s değerine kadar</string>
-  <string name="not_on_same_wifi">Cihazınız eklemiş olduğunuz yerel depoyla aynı Wi-Fi\'de değildir. Şu şebekeye katılmayı deneyin: %s</string>
+  <string name="not_on_same_wifi">Aygıtınız eklemiş olduğunuz yerel depoyla aynı Wi-Fi\'de değildir. Şu ağa katılmayı deneyin: %s</string>
   <string name="requires_features">Gerektirdiği: %1$s</string>
   <string name="app_icon">Uygulama ikonu</string>
   <string name="category_Development">Geliştirme</string>
@@ -160,18 +160,18 @@ bağlanılıyor</string>
   <string name="category_Science_Education">Bilim &amp; Eğitim</string>
   <string name="category_Security">Güvenlik</string>
   <string name="category_System">Sistem</string>
-  <string name="requesting_root_access_body">Root erişimi isteniyor…</string>
-  <string name="root_access_denied_title">Root erişimi engellendi</string>
-  <string name="root_access_denied_body">Ya Android cihazınız rootlu değil ya da F-Droid için root erişimini engellediniz.</string>
+  <string name="requesting_root_access_body">Kök erişimi isteniyor…</string>
+  <string name="root_access_denied_title">Kök erişimi engellendi</string>
+  <string name="root_access_denied_body">Ya Android aygıtınız köklü değil ya da F-Droid için kök erişimini engellediniz.</string>
   <string name="system_install_denied_title">Sistem izinleri reddedildi</string>
   <string name="system_install_denied_body">Bu seçenek sadece F-Droid bir sistem uygulaması olarak kurulduğunda mevcuttur.</string>
-  <string name="swap_nfc_description">Arkadaşınızda F-Droid ve etkinleştirilmiş NFC varsa cihazlarınızı birbirine dokundurun.</string>
+  <string name="swap_nfc_description">Arkadaşınızda F-Droid ve etkinleştirilmiş NFC varsa aygıtlarınızı birbirine dokundurun.</string>
   <string name="swap_join_same_wifi">Arkadaşınızla aynı kablosuz ağa katılın</string>
   <string name="swap">Değiş-Tokuş uygulamalar</string>
   <string name="swap_no_wifi_network">Henüz ağ yok</string>
-  <string name="swap_view_available_networks">(Kullanılabilir ağları açmak için dokunun)</string>
+  <string name="swap_view_available_networks">Kullanılabilir ağları açmak için dokunun</string>
   <string name="open_qr_code_scanner">QR Kod Tarayıcısını Aç</string>
-  <string name="swap_welcome">F-Droid\'e Hoşgeldin!</string>
+  <string name="swap_welcome">F-Droid\'e Hoş Geldin!</string>
   <string name="swap_confirm_connect">%1$s konumundan şimdi uygulama almak istiyor musunuz?</string>
 <string name="app_name">F-Droid</string>
 
@@ -226,7 +226,7 @@ bağlanılıyor</string>
     <string name="category_Time">Zaman</string>
     <string name="category_Writing">Yazım</string>
 
-    <string name="empty_installed_app_list">Hiçbir uygulama kurulu değil.\n\nCihazınızda uygulamalar bulunmaktadır ancak bunların F-Droid\'den elde edilmeleri mümkün değildir. Bunun sebebi depolarınızı güncellemeniz gerekliliği olabilir veya gerçekten depolarda sizin uygulamalarınız mevcut değildir.</string>
+    <string name="empty_installed_app_list">Hiçbir uygulama kurulu değil.\n\nAygıtınızda uygulamalar bulunmaktadır ancak bunların F-Droid\'den elde edilmeleri mümkün değildir. Bunun sebebi depolarınızı güncellemeniz gerekliliği olabilir veya gerçekten depolarda sizin uygulamalarınız mevcut değildir.</string>
     <string name="empty_available_app_list">Bu kategoride hiçbir uygulama yoktur.\n\nBaşka bir kategori seçmeyi veya taze bir uygulama listesi elde etmek için depolarınızı güncellemeyi deneyin.</string>
     <string name="empty_can_update_app_list">Tüm uygulamalar günceldir.\n\nTebrikler! Tüm uygulamalarınız günceldir (veya depolarınız güncel değildir).</string>
     <string name="empty_search_installed_app_list">Eşleşen hiçbir kurulu uygulama yoktur.</string>
@@ -237,10 +237,10 @@ bağlanılıyor</string>
     <string name="uninstall_error_unknown">Kaldırma bilinmeyen bir hata nedeniyle başarısız oldu</string>
     <string name="system_install_button_install">Kur</string>
     <string name="system_install_installing">Kuruluyor…</string>
-    <string name="system_install_installing_rebooting">Kuruluyor ve cihaz yeniden başlatılıyor…</string>
+    <string name="system_install_installing_rebooting">Kuruluyor ve aygıt yeniden başlatılıyor…</string>
     <string name="system_install_uninstalling">Kaldırılıyor…</string>
     <string name="system_install_warning">Bu 10 saniye kadar bir süre alır.</string>
-    <string name="system_install_warning_lollipop">Bu 10 saniye kadar bir süre alır ve ardından cihaz <b>yeniden başlatılacaktır</b>.</string>
+    <string name="system_install_warning_lollipop">Bu 10 saniye kadar bir süre alır ve ardından aygıt <b>yeniden başlatılacaktır</b>.</string>
     <string name="system_uninstall_button">Kaldır</string>
 
     <string name="swap_nfc_title">Takas yapmak için dokunun</string>
@@ -260,7 +260,7 @@ bağlanılıyor</string>
     <string name="swap_visible_wifi">Wi-Fi üzerinden görünür</string>
     <string name="swap_setting_up_wifi">Wi-Fi ayarlanıyor…</string>
     <string name="swap_not_visible_wifi">Wi-Fi üzerinden görünmez</string>
-    <string name="swap_wifi_device_name">Cihaz İsmi</string>
+    <string name="swap_wifi_device_name">Aygıt İsmi</string>
     <string name="swap_cant_find_peers">Aradığınız kişiyi bulamadınız mı?</string>
     <string name="swap_send_fdroid">F-Droid\'i gönder</string>
     <string name="swap_no_peers_nearby">Yakında takas yapılabilecek kimse bulunamadı.</string>
@@ -268,11 +268,11 @@ bağlanılıyor</string>
     <string name="swap_confirm">Takası teyit edin</string>
     <string name="swap_qr_isnt_for_swap">Taradığınız QR kodu bir takas kodu gibi görünmüyor.</string>
     <string name="bluetooth_unavailable">Bluetooth mevcut değil</string>
-    <string name="swap_cant_send_no_bluetooth">F-Droid gönderilemedi, çünkü Bluetooth bu cihazda mevcut değil.</string>
+    <string name="swap_cant_send_no_bluetooth">F-Droid gönderilemedi, çünkü Bluetooth bu aygıtta mevcut değil.</string>
     <string name="loading">Yükleniyor…</string>
-    <string name="swap_connection_misc_error">Cihaza bağlanılırken bir hata meydana geldi, onunla takas yapamayacağız gibi görünüyor.</string>
+    <string name="swap_connection_misc_error">Aygıta bağlanılırken bir hata meydana geldi, onunla takas yapamayacağız gibi görünüyor.</string>
     <string name="swap_not_enabled">Takas etkinleştirilmemiş</string>
-    <string name="swap_not_enabled_description">Takas yapmadan önce cihazınızın görünebilir olması gerekmektedir.</string>
+    <string name="swap_not_enabled_description">Takas yapmadan önce aygıtınızın görünebilir olması gerekmektedir.</string>
 
     <string name="install_confirm">şunlara erişime ihtiyaç duyar:</string>
     <string name="install_confirm_update">Bu mevcut uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolmayacaktır. Güncellenmiş uygulamanın şunlara erişimi olacaktır:</string>
@@ -304,8 +304,8 @@ bağlanılıyor</string>
     <string name="theme_night">Gece</string>
 
     <string name="crash_dialog_title">F-Droid çökmüştür</string>
-    <string name="crash_dialog_text">Beklenmedik bir hata meydana geldi be bu uygulamanın kapanmasını zorladı. Sorunun giderilmesine yardımcı olmak için ayrıntıları e-posta ile göndermek ister misiniz?</string>
-    <string name="crash_dialog_comment_prompt">Ekstra bilgi ve yorumlarınızı burada ekleyebilirsiniz:</string>
+    <string name="crash_dialog_text">Beklenmedik bir hata meydana geldi ve bu uygulamanın kapanmasını zorladı. Sorunun giderilmesine yardımcı olmak için ayrıntıları e-posta ile göndermek ister misiniz?</string>
+    <string name="crash_dialog_comment_prompt">Ek bilgi ve yorumlarınızı burada ekleyebilirsiniz:</string>
 <string name="uninstall_system">Ayrıcalıklı Uzantıyı Güncelle/Kaldır</string>
     <string name="uninstall_system_summary">Güncellemek/kaldırmak için Ayrıcalıklı Uzantı\'nın ayrıntılar ekranını açın</string>
     <string name="wifi_ap">Hotspot</string>
@@ -316,22 +316,22 @@ bağlanılıyor</string>
     <string name="system_install_post_success">F-Droid Ayrıcalıklı Uzantı başarılı bir şekilde kurulmuştur</string>
     <string name="system_install_post_fail">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu başarısız oldu</string>
     <string name="system_install_post_success_message">F-Droid Ayrıcalıklı Uzantı başarılı bir şekilde kuruldu. Bu, F-Droid\'in kendi başına uygulama kurmasına, güncellemesine ve kaldırmasına izin verir.</string>
-    <string name="system_install_post_fail_message">F-Droid Ayrıcalıklı Uzantı\'nın kurulması başarısız oldu. Kurulum metodu her Android dağıtımı tarafından desteklenmeyebilir, daha fazla bilgi için lütfen F-Droid hata izleyicisini okuyun.</string>
+    <string name="system_install_post_fail_message">F-Droid Ayrıcalıklı Uzantı\'nın kurulması başarısız oldu. Kurulum yöntemi her Android dağıtımı tarafından desteklenmeyebilir, daha fazla bilgi için lütfen F-Droid hata izleyicisini okuyun.</string>
     <string name="system_install_question">F-Droid Ayrıcalıklı Uzantı\'yı kurmak istiyor musunuz?</string>
     <string name="system_uninstall">F-Droid Ayrıcalıklı Uzantı\'yı kaldırmak istiyor musunuz?</string>
-    <string name="swap_join_same_wifi_desc">Wi-Fi ile takas yapmak istiyorsanız, aynı ağda bulunduğunuzdan emin olun. Eğer aynı ağa erişiminiz yoksa, biriniz bir Wi-Fi hotspot\'u oluşturabilir.</string>
-    <string name="swap_join_this_hotspot">Arkadaşınızın hotspot\'unuza bağlanmasına yardım edin</string>
-    <string name="swap_active_hotspot">%1$s (hotspot\'unuz)</string>
+    <string name="swap_join_same_wifi_desc">Wi-Fi ile takas yapmak istiyorsanız, aynı ağda bulunduğunuzdan emin olun. Eğer aynı ağa erişiminiz yoksa, biriniz bir Wi-Fi erişim noktası oluşturabilir.</string>
+    <string name="swap_join_this_hotspot">Arkadaşınızın erişim noktanıza bağlanmasına yardım edin</string>
+    <string name="swap_active_hotspot">%1$s (erişim noktanız)</string>
     <string name="by_author">şu tarafından</string>
-    <string name="menu_email">Geliştiriciye e-posta atın</string>
+    <string name="menu_email">Geliştiriciye e-posta at</string>
     <string name="update_auto_download">Güncellemeleri otomatik olarak indir</string>
     <string name="update_auto_download_summary">Güncelleme dosyalarını arkaplanda indir</string>
     <string name="repo_provider">Depo: %s</string>
 
     <string name="useTor">Tor Kullan</string>
-    <string name="swap_stopping_wifi">Wİ-Fİ Durduruluyor…</string>
-    <string name="tap_to_install_format">%s Yüklemek için tıkla</string>
-    <string name="tap_to_update_format">%s Güncellemek için tıkla</string>
+    <string name="swap_stopping_wifi">Wi-Fi durduruluyor…</string>
+    <string name="tap_to_install_format">%s yüklemek için tıkla</string>
+    <string name="tap_to_update_format">%s güncellemek için tıkla</string>
     <string name="useTorSummary">arttırılmış güvenlik için download trafiğini Tor üzerinden zorla</string>
     <string name="download_pending">İndirmenin başlaması bekleniyor…</string>
 

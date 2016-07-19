@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="SignatureMismatch">新版本签名与旧版本不同，请先卸载旧版本应用再安装新版本。（注意：卸载旧版本会清除该应用的所有已储存数据）</string>
+  <string name="SignatureMismatch">新版本签名与旧版本不同，请先卸载旧版本应用再安装新版本。（注意：卸载旧版本会清除该应用存储的所有内部数据）</string>
   <string name="installIncompatible">该应用程序好像与您的设备不兼容。您仍然要尝试安装吗？</string>
   <string name="installDowngrade">您正在降级该应用程序。这样做可能会使该程序无法工作，甚至丢失您的数据。您仍然要尝试降级吗？</string>
   <string name="version">版本</string>
@@ -11,8 +11,8 @@
   <string name="other">其它</string>
   <string name="update_interval">自动更新周期</string>
   <string name="update_interval_zero">不自动更新应用列表</string>
-  <string name="automatic_scan_wifi">仅使用wifi</string>
-  <string name="automatic_scan_wifi_on">仅当wifi可用时自动更新应用列表</string>
+  <string name="automatic_scan_wifi">仅使用Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">仅当Wi-Fi可用时自动更新应用列表</string>
   <string name="notify">通知更新</string>
   <string name="notify_on">当更新可用时显示通知</string>
   <string name="update_history">更新历史</string>
@@ -121,7 +121,7 @@
   <string name="minsdk_or_later">%s 或更新</string>
   <string name="up_to_maxsdk">最大 %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s 到 %2$s</string>
-  <string name="not_on_same_wifi">您的设备与刚刚添加的本地软件源不在同一个WiFi上！尝试加入该网络：%s</string>
+  <string name="not_on_same_wifi">您的设备与刚刚添加的本地软件源不在同一个Wi-Fi上！尝试加入该网络：%s</string>
   <string name="requires_features">需要：%1$s</string>
   <string name="app_icon">应用程序图标</string>
   <string name="category_Development">软件开发</string>
@@ -203,8 +203,8 @@
     <string name="pref_language">语言</string>
     <string name="pref_language_default">系统默认</string>
 
-    <string name="wifi">Fi-Fi</string>
-    <string name="wifi_ap">wifi热点</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="wifi_ap">Wi-Fi热点</string>
 
     <string name="category_Connectivity">连接</string>
     <string name="category_Graphics">图像</string>
@@ -218,7 +218,7 @@
     <string name="empty_available_app_list">该目录中未找到任何应用程序。\n\n试试其它目录或者更新软件库获取最新的应用列表。</string>
     <string name="empty_can_update_app_list">所有软件已更新。\n\n好棒！你的应用都是最新的（或者你该更新软件库了）。</string>
 
-    <string name="root_access_denied_body">你的设备未ROOT，或者你拒绝了ROOT请求。</string>
+    <string name="root_access_denied_body">你的设备未root，或者你拒绝了root请求。</string>
     <string name="install_error_unknown">由于未知原因导致安装失败</string>
     <string name="uninstall_error_unknown">由于未知原因导致缷载失败</string>
     <string name="system_install_denied_title">F-Droid特权扩展不可用</string>
@@ -289,7 +289,7 @@
     <string name="newPerms">新建</string>
     <string name="allPerms">所有</string>
     <string name="perm_costs_money">这可能会产生费用</string>
-    <string name="uninstall_update_confirm">你要把这个程序换成出厂版本？</string>
+    <string name="uninstall_update_confirm">你要把这个程序换成出厂版本吗？</string>
     <string name="uninstall_confirm">确定要卸载此应用程序吗？</string>
     <string name="tap_to_install">下载已完成，点击安装</string>
     <string name="download_error">下载失败</string>

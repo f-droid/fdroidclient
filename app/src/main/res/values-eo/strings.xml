@@ -74,7 +74,7 @@
   <string name="local_repo">Loka deponejo</string>
   <string name="deleting_repo">Foriganta la nunan deponejon…</string>
   <string name="adding_apks_format">Aldonanta %s al la deponejo…</string>
-  <string name="linking_apks">Ligantaj APK-ojn al la deponejo…</string>
+  <string name="linking_apks">Liganta APK-ojn al la deponejo…</string>
   <string name="copying_icons">Kopianta aplikaĵemblemojn al la deponejo…</string>
   <string name="icon">Piktogramo</string>
   <string name="next">Sekvi</string>
@@ -192,7 +192,7 @@
     <string name="status_processing_xml_percent">Prilaboranta %2$s / %3$s (%4$d%%) de %1$s</string>
     <string name="status_connecting_to_repo">Konektanta al\n%1$s</string>
     <string name="status_inserting_apps">Konservanta aplikaĵajn detalojn</string>
-    <string name="repos_unchanged">Ĉiuj deponejoj estas ĝisdatigaj</string>
+    <string name="repos_unchanged">Ĉiuj deponejoj estas ĝisdataj</string>
         <string name="all_other_repos_fine">En ĉiuj aliaj deponejoj ne okazis erarojn.</string>
         <string name="global_error_updating_repos">Eraro dum ĝisdatigo: %s</string>
     <string name="permissions">Permesoj</string>
@@ -239,21 +239,21 @@
     <string name="system_install_button_install">Instali</string>
     <string name="system_install_button_open">Malfermi Aldonaĵon</string>
     <string name="system_install_denied_permissions">La aldonaĵo ne aliris ĉefuzantan permeson! Bonvolu krei erar-raporton!</string>
-    <string name="system_install_post_success">Sukcese instalis na F-Droid Privilegia Aldonaĵo</string>
-    <string name="system_install_post_fail">Instalado de F-Droid Privilegia Aldonaĵo malsukcesis</string>
-    <string name="system_install_post_success_message">F-Droid Privilegia Aldonaĵo estas instalita korekte. Tio ĉi ebligis al F-Droid instali, ĝisdatigi, kaj malinstali aplikaĵojn per ĝi mem.</string>
-    <string name="system_install_post_fail_message">La instalado de F-Droid Privilegia Aldonaĵo malsukcesis. La instala metodo ne estas subtenata de ĉiuj Androidaj distribuaĵoj, bonvolu konsiliĝi en la F-Droida erar-spuradilo por pli informojn.</string>
+    <string name="system_install_post_success">Sukcese instalis Privilegian F-Droid-aldonaĵon</string>
+    <string name="system_install_post_fail">Instalado de Privilegia F-Droid-aldonaĵo malsukcesis</string>
+    <string name="system_install_post_success_message">Privilegia F-Droid-aldonaĵo estas instalita korekte. Tio ĉi ebligos al F-Droid instali, ĝisdatigi, kaj malinstali aplikaĵojn per ĝi mem.</string>
+    <string name="system_install_post_fail_message">La instalado de Privilegia F-Droid-aldonaĵo malsukcesis. La instala metodo ne estas subtenata de ĉiuj Androidaj distribuaĵoj, bonvolu konsiliĝi en la F-Droida erar-spuradilo por pli informojn.</string>
     <string name="system_install_installing">Instalanta…</string>
     <string name="system_install_installing_rebooting">Instalanta kaj restartanta…</string>
     <string name="system_install_uninstalling">Malinstalanta…</string>
-    <string name="system_install_question">Ĉu vi volas instali na F-Droid Privilegia Aldonaĵo?</string>
+    <string name="system_install_question">Ĉu vi volas instali Privilegian F-Droid-aldonaĵon?</string>
     <string name="system_install_warning">Tio ĉi daŭros maksimume 10 sekundojn.</string>
     <string name="system_install_warning_lollipop">Tio ĉi daŭros maksimume 10 sekundojn kaj la aparato <b>restartos</b> poste.</string>
-    <string name="system_uninstall">Ĉu vi certe volas malinstali na F-Droid Privilegia Aldonaĵo?</string>
+    <string name="system_uninstall">Ĉu vi certe volas malinstali Privilegian F-Droid-aldonaĵon?</string>
     <string name="system_uninstall_button">Malinstali</string>
 
     <string name="swap_nfc_title">Tuŝu por interŝanĝi</string>
-    <string name="swap_nfc_description">Se via kolego havas na F-Droid kaj na NFC ŝaltita por tuŝi viajn aparatojn kune.</string>
+    <string name="swap_nfc_description">Se via kolego havas F-Droid kaj ŝaltitan NFC-on por tuŝi viajn aparatojn kune.</string>
     <string name="swap_join_same_wifi">Konektu la saman vifion kiu via kolego</string>
     <string name="swap_join_same_wifi_desc">Por interŝanĝi per vifio, certigu ke vi estas en la sama reto. Se vi ne havas aliron al la sama reto, unu de vi povas krei vifian retkaptejon.</string>
     <string name="swap_join_this_hotspot">Helpi al via kolego aligi vian retkaptejon</string>
@@ -271,20 +271,20 @@
     <string name="swap_nearby">Proksima Interŝanĝo</string>
     <string name="swap_intro">Konekti kaj interŝanĝi aplikaĵojn kun proksimaj homoj.</string>
     <string name="swap_visible_bluetooth">Videbla tra Bludento</string>
-    <string name="swap_setting_up_bluetooth">"Agordanta  Bludenton…"</string>
+    <string name="swap_setting_up_bluetooth">Agordanta Bludenton…</string>
     <string name="swap_not_visible_bluetooth">Nevidebla tra Bludento</string>
     <string name="swap_visible_wifi">Videbla tra vifio</string>
     <string name="swap_setting_up_wifi">Agordanta vifion…</string>
     <string name="swap_not_visible_wifi">Nevidebla tra vifio</string>
     <string name="swap_wifi_device_name">Aparata nomo</string>
     <string name="swap_cant_find_peers">Ĉu vi ne povas trovi kiun tiun vi serĉas?</string>
-    <string name="swap_send_fdroid">Sendi na F-Droid</string>
+    <string name="swap_send_fdroid">Sendi F-Droid-on</string>
     <string name="swap_no_peers_nearby">Ne povas trovi homojn proksime por interŝanĝi.</string>
     <string name="swap_connecting">Konektanta</string>
     <string name="swap_confirm">Konfirmi interŝanĝon</string>
     <string name="swap_qr_isnt_for_swap">La skanita QR-kodo ne estas interŝanĝa kodo.</string>
-    <string name="bluetooth_unavailable">Bludento disponebla</string>
-    <string name="swap_cant_send_no_bluetooth">Ne povas sendi na F-Droid, ĉar Bludento ne estas disponebla en via aparato.</string>
+    <string name="bluetooth_unavailable">Bludento ne disponebla</string>
+    <string name="swap_cant_send_no_bluetooth">Ne povas sendi F-Droid-on, ĉar Bludento ne estas disponebla en via aparato.</string>
     <string name="loading">Prilaboranta…</string>
     <string name="swap_connection_misc_error">Eraro okazis dum konektado al aparato, verŝajne ne povas interŝanĝi kun ĝi.</string>
     <string name="swap_not_enabled">Interŝanĝo malaktiva</string>
@@ -333,7 +333,7 @@
     <string name="tap_to_update_format">Tuŝu por ĝisdatigi %s</string>
     <string name="download_pending">Atendanta elŝutadon…</string>
 
-    <string name="downloading_apk">Elŝutanta na %1$s</string>
+    <string name="downloading_apk">Elŝutanta %1$s</string>
 
     <string name="system_install_not_supported">Instalado de Privilegia F-Droid-aldonaĵo ne estas nuntempe subtenata en Android 5.1 aŭ posta.</string>
 
