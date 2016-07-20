@@ -334,7 +334,7 @@ public class RepoProvider extends FDroidProvider {
                 return 0;
 
             case CODE_SINGLE:
-                selection.add(Cols._ID + " = ?", new String[] {uri.getLastPathSegment()});
+                selection = selection.add(Cols._ID + " = ?", new String[] {uri.getLastPathSegment()});
                 break;
 
             default:
@@ -343,7 +343,7 @@ public class RepoProvider extends FDroidProvider {
         }
 
         int rowsAffected = db().delete(getTableName(), selection.getSelection(), selection.getArgs());
-        Utils.debugLog(TAG, "Deleted repos. Notifying provider change: '" + uri + "'.");
+        Utils.debugLog(TAG, "Deleted repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return rowsAffected;
     }
