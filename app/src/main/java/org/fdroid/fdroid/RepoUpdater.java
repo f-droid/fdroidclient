@@ -278,9 +278,13 @@ public class RepoUpdater {
             values.put(RepoTable.Cols.NAME, name);
         }
 
-        if (timestamp != repo.timestamp) {
-            values.put(RepoTable.Cols.TIMESTAMP, timestamp);
-        }
+        // Always put a timestamp here, even if it is the same. This is because we are dependent
+        // on it later on in the process. Specifically, when updating from a HTTP server that
+        // doesn't send out etags with its responses, it will trigger a full blown repo update
+        // every time, even if all the values in the index are the same (name, description, etc).
+        // In such a case, the remainder of the update process will proceed, and ask for this
+        // timestamp.
+        values.put(RepoTable.Cols.TIMESTAMP, timestamp);
 
         return values;
     }
