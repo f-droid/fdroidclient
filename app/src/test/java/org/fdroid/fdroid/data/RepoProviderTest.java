@@ -2,6 +2,7 @@ package org.fdroid.fdroid.data;
 
 import android.app.Application;
 import android.content.ContentValues;
+import android.net.Uri;
 import android.support.annotation.Nullable;
 
 import org.fdroid.fdroid.BuildConfig;
@@ -16,10 +17,60 @@ import org.robolectric.annotation.Config;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @Config(constants = BuildConfig.class, application = Application.class)
 @RunWith(RobolectricGradleTestRunner.class)
 public class RepoProviderTest extends FDroidProviderTest {
+
+    private static final String[] COLS = RepoTable.Cols.ALL;
+
+    @Test
+    public void findByUrl() {
+
+        Repo fdroidRepo = RepoProvider.Helper.findByAddress(context, "https://f-droid.org/repo");
+        Repo fdroidArchiveRepo = RepoProvider.Helper.findByAddress(context, "https://f-droid.org/archive");
+
+        String[] noRepos = {
+                "https://not-a-repo.example.com",
+                "https://f-droid.org",
+                "https://f-droid.org/",
+        };
+
+        for (String url : noRepos) {
+            assertNull(RepoProvider.Helper.findByUrl(context, Uri.parse(url), COLS));
+        }
+
+        String[] fdroidRepoUrls = {
+                "https://f-droid.org/repo/index.jar",
+                "https://f-droid.org/repo/index.jar?random-junk-in-query=yes",
+                "https://f-droid.org/repo/index.jar?random-junk-in-query=yes&more-junk",
+                "https://f-droid.org/repo/icons/org.fdroid.fdroid.100.png",
+                "https://f-droid.org/repo/icons-640/org.fdroid.fdroid.100.png",
+        };
+
+        assertUrlsBelongToRepo(fdroidRepoUrls, fdroidRepo);
+
+        String[] fdroidArchiveUrls = {
+                "https://f-droid.org/archive/index.jar",
+                "https://f-droid.org/archive/index.jar?random-junk-in-query=yes",
+                "https://f-droid.org/archive/index.jar?random-junk-in-query=yes&more-junk",
+                "https://f-droid.org/archive/icons/org.fdroid.fdroid.100.png",
+                "https://f-droid.org/archive/icons-640/org.fdroid.fdroid.100.png",
+        };
+
+        assertUrlsBelongToRepo(fdroidArchiveUrls, fdroidArchiveRepo);
+    }
+
+    private void assertUrlsBelongToRepo(String[] urls, Repo expectedRepo) {
+        for (String url : urls) {
+            Repo actualRepo = RepoProvider.Helper.findByUrl(context, Uri.parse(url), COLS);
+            assertNotNull("No repo matching URL " + url, actualRepo);
+            assertEquals("Invalid repo for URL [" + url + "]. Expected [" + expectedRepo.address + "] but got [" + actualRepo.address + "]", expectedRepo.id, actualRepo.id);
+        }
+
+    }
 
     /**
      * The {@link DBHelper} class populates four default repos when it first creates a database:

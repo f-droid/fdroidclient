@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -27,7 +28,10 @@ public class RepoProvider extends FDroidProvider {
 
         private Helper() { }
 
-        public static Repo findByUri(Context context, Uri uri) {
+        /**
+         * Find by the content URI of a repo ({@link RepoProvider#getContentUri(long)}).
+         */
+        public static Repo get(Context context, Uri uri) {
             ContentResolver resolver = context.getContentResolver();
             Cursor cursor = resolver.query(uri, Cols.ALL, null, null, null);
             return cursorToRepo(cursor);
@@ -43,6 +47,44 @@ public class RepoProvider extends FDroidProvider {
             Uri uri = RepoProvider.getContentUri(repoId);
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             return cursorToRepo(cursor);
+        }
+
+        /**
+         * This method decides what repo a URL belongs to by iteratively removing path fragments and
+         * checking if it belongs to a repo or not. It will match the most specific repository which
+         * could serve the file at the given URL.
+         *
+         * For any given HTTP resource requested by F-Droid, it should belong to a repository.
+         * Whether that resource is an index.jar, an icon, or a .apk file, they all belong to a
+         * repository. Therefore, that repository must exist in the database. The way to find out
+         * which repository a particular URL came from requires some consideration:
+         *  * Repositories can exist at particular paths on a server (e.g. /fdroid/repo)
+         *  * Individual files can exist at a more specific path on the repo (e.g. /fdroid/repo/icons/org.fdroid.fdroid.png)
+         *
+         * So for a given URL "/fdroid/repo/icons/org.fdroid.fdroid.png" we don't actually know
+         * whether it is for the file "org.fdroid.fdroid.png" at repository "/fdroid/repo/icons" or
+         * the file "icons/org.fdroid.fdroid.png" at the repository at "/fdroid/repo".
+         */
+        @Nullable
+        public static Repo findByUrl(Context context, Uri uri, String[] projection) {
+            Uri withoutQuery = uri.buildUpon().query(null).build();
+            Repo repo = findByAddress(context, withoutQuery.toString(), projection);
+
+            // Take a copy of this, because the result of getPathSegments() is an AbstractList
+            // which doesn't support the remove() operation.
+            List<String> pathSegments = new ArrayList<>(withoutQuery.getPathSegments());
+
+            boolean haveTriedWithoutPath = false;
+            while (repo == null && !haveTriedWithoutPath) {
+                if (pathSegments.size() == 0) {
+                    haveTriedWithoutPath = true;
+                } else {
+                    pathSegments.remove(pathSegments.size() - 1);
+                    withoutQuery = withoutQuery.buildUpon().path(TextUtils.join("/", pathSegments)).build();
+                }
+                repo = findByAddress(context, withoutQuery.toString(), projection);
+            }
+            return repo;
         }
 
         public static Repo findByAddress(Context context, String address) {

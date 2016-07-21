@@ -280,7 +280,7 @@ public class SwapService extends Service {
             values.put(Schema.RepoTable.Cols.IN_USE, true);
             values.put(Schema.RepoTable.Cols.IS_SWAP, true);
             Uri uri = RepoProvider.Helper.insert(this, values);
-            repo = RepoProvider.Helper.findByUri(this, uri);
+            repo = RepoProvider.Helper.get(this, uri);
         }
 
         return repo;
