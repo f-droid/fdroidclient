@@ -313,7 +313,7 @@ public class RepoProvider extends FDroidProvider {
             values.put(Cols.VERSION, 0);
         }
 
-        if (!values.containsKey(Cols.NAME)) {
+        if (!values.containsKey(Cols.NAME) || values.get(Cols.NAME) == null) {
             final String address = values.getAsString(Cols.ADDRESS);
             values.put(Cols.NAME, Repo.addressToName(address));
         }
