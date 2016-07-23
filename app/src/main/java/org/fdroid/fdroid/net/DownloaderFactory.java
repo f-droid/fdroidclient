@@ -4,7 +4,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.v4.content.LocalBroadcastManager;
 
-import org.apache.commons.io.FilenameUtils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
@@ -37,7 +36,7 @@ public class DownloaderFactory {
     public static Downloader create(Context context, String urlString, File destFile)
             throws IOException {
         URL url = new URL(urlString);
-        Downloader downloader = null;
+        Downloader downloader;
         if (localBroadcastManager == null) {
             localBroadcastManager = LocalBroadcastManager.getInstance(context);
         }
@@ -49,8 +48,7 @@ public class DownloaderFactory {
             downloader = new LocalFileDownloader(url, destFile);
         } else {
             final String[] projection = {Schema.RepoTable.Cols.USERNAME, Schema.RepoTable.Cols.PASSWORD};
-            String repoUrlString = FilenameUtils.getBaseName(url.toString());
-            Repo repo = RepoProvider.Helper.findByAddress(context, repoUrlString, projection);
+            Repo repo = RepoProvider.Helper.findByUrl(context, Uri.parse(url.toString()), projection);
             if (repo == null) {
                 downloader = new HttpDownloader(url, destFile);
             } else {
