@@ -25,7 +25,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Schema.AppTable;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.views.AppListAdapter;
 
 public abstract class AppListFragment extends ListFragment implements
@@ -38,22 +38,22 @@ public abstract class AppListFragment extends ListFragment implements
     private static final int REQUEST_APPDETAILS = 0;
 
     private static final String[] APP_PROJECTION = {
-            AppTable.Cols._ID, // Required for cursor loader to work.
-            AppTable.Cols.PACKAGE_NAME,
-            AppTable.Cols.NAME,
-            AppTable.Cols.SUMMARY,
-            AppTable.Cols.IS_COMPATIBLE,
-            AppTable.Cols.LICENSE,
-            AppTable.Cols.ICON,
-            AppTable.Cols.ICON_URL,
-            AppTable.Cols.InstalledApp.VERSION_CODE,
-            AppTable.Cols.InstalledApp.VERSION_NAME,
-            AppTable.Cols.SuggestedApk.VERSION_NAME,
-            AppTable.Cols.SUGGESTED_VERSION_CODE,
-            AppTable.Cols.REQUIREMENTS, // Needed for filtering apps that require root.
+            AppMetadataTable.Cols._ID, // Required for cursor loader to work.
+            AppMetadataTable.Cols.PACKAGE_NAME,
+            AppMetadataTable.Cols.NAME,
+            AppMetadataTable.Cols.SUMMARY,
+            AppMetadataTable.Cols.IS_COMPATIBLE,
+            AppMetadataTable.Cols.LICENSE,
+            AppMetadataTable.Cols.ICON,
+            AppMetadataTable.Cols.ICON_URL,
+            AppMetadataTable.Cols.InstalledApp.VERSION_CODE,
+            AppMetadataTable.Cols.InstalledApp.VERSION_NAME,
+            AppMetadataTable.Cols.SuggestedApk.VERSION_NAME,
+            AppMetadataTable.Cols.SUGGESTED_VERSION_CODE,
+            AppMetadataTable.Cols.REQUIREMENTS, // Needed for filtering apps that require root.
     };
 
-    private static final String APP_SORT = AppTable.Cols.NAME;
+    private static final String APP_SORT = AppMetadataTable.Cols.NAME;
 
     private AppListAdapter appAdapter;
 

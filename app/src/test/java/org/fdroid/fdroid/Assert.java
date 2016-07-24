@@ -12,7 +12,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Schema.ApkTable;
-import org.fdroid.fdroid.data.Schema.AppTable;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.robolectric.shadows.ShadowContentResolver;
 
@@ -183,14 +183,14 @@ public class Assert {
     public static App insertApp(Context context, String packageName, String name, ContentValues additionalValues) {
 
         ContentValues values = new ContentValues();
-        values.put(AppTable.Cols.PACKAGE_NAME, packageName);
-        values.put(AppTable.Cols.NAME, name);
+        values.put(AppMetadataTable.Cols.PACKAGE_NAME, packageName);
+        values.put(AppMetadataTable.Cols.NAME, name);
 
         // Required fields (NOT NULL in the database).
-        values.put(AppTable.Cols.SUMMARY, "test summary");
-        values.put(AppTable.Cols.DESCRIPTION, "test description");
-        values.put(AppTable.Cols.LICENSE, "GPL?");
-        values.put(AppTable.Cols.IS_COMPATIBLE, 1);
+        values.put(AppMetadataTable.Cols.SUMMARY, "test summary");
+        values.put(AppMetadataTable.Cols.DESCRIPTION, "test description");
+        values.put(AppMetadataTable.Cols.LICENSE, "GPL?");
+        values.put(AppMetadataTable.Cols.IS_COMPATIBLE, 1);
 
         values.putAll(additionalValues);
 

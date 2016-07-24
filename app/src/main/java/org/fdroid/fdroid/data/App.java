@@ -33,7 +33,7 @@ import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.fdroid.fdroid.data.Schema.AppTable.Cols;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 
 public class App extends ValueObject implements Comparable<App>, Parcelable {
 
