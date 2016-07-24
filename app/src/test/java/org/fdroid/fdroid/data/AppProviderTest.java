@@ -8,7 +8,7 @@ import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.Schema.AppTable.Cols;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

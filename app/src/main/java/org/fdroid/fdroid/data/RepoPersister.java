@@ -143,7 +143,7 @@ public class RepoPersister {
         for (App app : apps) {
             packageNames.add(app.packageName);
         }
-        String[] projection = {Schema.AppTable.Cols.ROW_ID, Schema.AppTable.Cols.PACKAGE_NAME};
+        String[] projection = {Schema.AppMetadataTable.Cols.ROW_ID, Schema.AppMetadataTable.Cols.PACKAGE_NAME};
         List<App> fromDb = TempAppProvider.Helper.findByPackageNames(context, packageNames, projection);
 
         Map<String, Long> ids = new HashMap<>(fromDb.size());
@@ -224,7 +224,7 @@ public class RepoPersister {
      * array.
      */
     private boolean isAppInDatabase(App app) {
-        String[] fields = {Schema.AppTable.Cols.PACKAGE_NAME};
+        String[] fields = {Schema.AppMetadataTable.Cols.PACKAGE_NAME};
         App found = AppProvider.Helper.findByPackageName(context.getContentResolver(), app.packageName, fields);
         return found != null;
     }

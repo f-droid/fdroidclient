@@ -82,7 +82,7 @@ public class ProviderUriTests {
     @Test
     public void validAppProviderUris() {
         ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
-        String[] projection = new String[] {Schema.AppTable.Cols._ID};
+        String[] projection = new String[] {Schema.AppMetadataTable.Cols._ID};
         assertValidUri(resolver, AppProvider.getContentUri(), "content://org.fdroid.fdroid.data.AppProvider", projection);
         assertValidUri(resolver, AppProvider.getSearchUri("'searching!'"), "content://org.fdroid.fdroid.data.AppProvider/search/'searching!'", projection);
         assertValidUri(resolver, AppProvider.getSearchUri("/"), "content://org.fdroid.fdroid.data.AppProvider/search/%2F", projection);
@@ -102,7 +102,7 @@ public class ProviderUriTests {
     @Test
     public void validTempAppProviderUris() {
         ShadowContentResolver.registerProvider(TempAppProvider.getAuthority(), new TempAppProvider());
-        String[] projection = new String[]{Schema.AppTable.Cols._ID};
+        String[] projection = new String[]{Schema.AppMetadataTable.Cols._ID};
 
         // Required so that the `assertValidUri` calls below will indeed have a real temp_fdroid_app
         // table to query.

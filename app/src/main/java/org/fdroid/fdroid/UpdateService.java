@@ -416,7 +416,7 @@ public class UpdateService extends IntentService {
     private void performUpdateNotification() {
         Cursor cursor = getContentResolver().query(
                 AppProvider.getCanUpdateUri(),
-                Schema.AppTable.Cols.ALL,
+                Schema.AppMetadataTable.Cols.ALL,
                 null, null, null);
         if (cursor != null) {
             if (cursor.getCount() > 0) {
@@ -462,7 +462,7 @@ public class UpdateService extends IntentService {
     private void autoDownloadUpdates() {
         Cursor cursor = getContentResolver().query(
                 AppProvider.getCanUpdateUri(),
-                Schema.AppTable.Cols.ALL,
+                Schema.AppMetadataTable.Cols.ALL,
                 null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();

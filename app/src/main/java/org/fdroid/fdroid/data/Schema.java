@@ -26,7 +26,7 @@ public interface Schema {
         }
     }
 
-    interface AppTable {
+    interface AppMetadataTable {
 
         String NAME = "fdroid_app";
 
@@ -102,7 +102,7 @@ public interface Schema {
             String _COUNT_DISTINCT = "countDistinct";
 
             /**
-             * Foreign key to the {@link AppTable}.
+             * Foreign key to the {@link AppMetadataTable}.
              */
             String APP_ID          = "appId";
             String ROW_ID          = "rowid";
