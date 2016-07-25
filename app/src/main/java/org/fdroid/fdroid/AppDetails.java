@@ -81,6 +81,8 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppPrefs;
+import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -317,8 +319,7 @@ public class AppDetails extends AppCompatActivity {
     private String activeDownloadUrlString;
     private LocalBroadcastManager localBroadcastManager;
 
-    private boolean startingIgnoreAll;
-    private int startingIgnoreThis;
+    private AppPrefs startingPrefs;
 
     private final Context context = this;
 
@@ -472,10 +473,9 @@ public class AppDetails extends AppCompatActivity {
             .edit()
             .putString(getPackageNameFromIntent(getIntent()), activeDownloadUrlString)
             .apply();
-        if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
-                || app.ignoreThisUpdate != startingIgnoreThis)) {
+        if (app != null && !app.getPrefs(this).equals(startingPrefs)) {
             Utils.debugLog(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
-            setIgnoreUpdates(app.packageName, app.ignoreAllUpdates, app.ignoreThisUpdate);
+            AppPrefsProvider.Helper.update(this, app, app.getPrefs(this));
         }
         unregisterDownloaderReceiver();
     }
@@ -646,18 +646,6 @@ public class AppDetails extends AppCompatActivity {
         supportInvalidateOptionsMenu();
     }
 
-    private void setIgnoreUpdates(String packageName, boolean ignoreAll, int ignoreVersionCode) {
-
-        Uri uri = AppProvider.getContentUri(packageName);
-
-        ContentValues values = new ContentValues(2);
-        values.put(Schema.AppTable.Cols.IGNORE_ALLUPDATES, ignoreAll ? 1 : 0);
-        values.put(Schema.AppTable.Cols.IGNORE_THISUPDATE, ignoreVersionCode);
-
-        getContentResolver().update(uri, values, null, null);
-
-    }
-
     @Override
     public Object onRetainCustomNonConfigurationInstance() {
         return new ConfigurationChangeHelper(activeDownloadUrlString, app);
@@ -711,8 +699,7 @@ public class AppDetails extends AppCompatActivity {
 
         app = newApp;
 
-        startingIgnoreAll = app.ignoreAllUpdates;
-        startingIgnoreThis = app.ignoreThisUpdate;
+        startingPrefs = app.getPrefs(this).createClone();
     }
 
     private void refreshApkList() {
@@ -733,7 +720,7 @@ public class AppDetails extends AppCompatActivity {
             return true;
         }
 
-        if (packageManager.getLaunchIntentForPackage(app.packageName) != null && app.canAndWantToUpdate()) {
+        if (packageManager.getLaunchIntentForPackage(app.packageName) != null && app.canAndWantToUpdate(this)) {
             MenuItemCompat.setShowAsAction(menu.add(
                             Menu.NONE, LAUNCH, 1, R.string.menu_launch)
                             .setIcon(R.drawable.ic_play_arrow_white),
@@ -758,13 +745,13 @@ public class AppDetails extends AppCompatActivity {
         menu.add(Menu.NONE, IGNOREALL, 2, R.string.menu_ignore_all)
                     .setIcon(R.drawable.ic_do_not_disturb_white)
                     .setCheckable(true)
-                    .setChecked(app.ignoreAllUpdates);
+                    .setChecked(app.getPrefs(context).ignoreAllUpdates);
 
         if (app.hasUpdates()) {
             menu.add(Menu.NONE, IGNORETHIS, 2, R.string.menu_ignore_this)
                     .setIcon(R.drawable.ic_do_not_disturb_white)
                     .setCheckable(true)
-                    .setChecked(app.ignoreThisUpdate >= app.suggestedVersionCode);
+                    .setChecked(app.getPrefs(context).ignoreThisUpdate >= app.suggestedVersionCode);
         }
 
         // Ignore on devices without Bluetooth
@@ -880,17 +867,17 @@ public class AppDetails extends AppCompatActivity {
                 return true;
 
             case IGNOREALL:
-                app.ignoreAllUpdates ^= true;
-                item.setChecked(app.ignoreAllUpdates);
+                app.getPrefs(this).ignoreAllUpdates ^= true;
+                item.setChecked(app.getPrefs(this).ignoreAllUpdates);
                 return true;
 
             case IGNORETHIS:
-                if (app.ignoreThisUpdate >= app.suggestedVersionCode) {
-                    app.ignoreThisUpdate = 0;
+                if (app.getPrefs(this).ignoreThisUpdate >= app.suggestedVersionCode) {
+                    app.getPrefs(this).ignoreThisUpdate = 0;
                 } else {
-                    app.ignoreThisUpdate = app.suggestedVersionCode;
+                    app.getPrefs(this).ignoreThisUpdate = app.suggestedVersionCode;
                 }
-                item.setChecked(app.ignoreThisUpdate > 0);
+                item.setChecked(app.getPrefs(this).ignoreThisUpdate > 0);
                 return true;
 
             case SEND_VIA_BLUETOOTH:
@@ -1600,7 +1587,7 @@ public class AppDetails extends AppCompatActivity {
                 installed = true;
                 statusView.setText(getString(R.string.details_installed, app.installedVersionName));
                 NfcHelper.setAndroidBeam(appDetails, app.packageName);
-                if (app.canAndWantToUpdate()) {
+                if (app.canAndWantToUpdate(appDetails)) {
                     updateWanted = true;
                     btMain.setText(R.string.menu_upgrade);
                 } else {

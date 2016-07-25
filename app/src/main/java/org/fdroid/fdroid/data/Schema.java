@@ -59,8 +59,6 @@ public interface Schema {
             String CATEGORIES = "categories";
             String ANTI_FEATURES = "antiFeatures";
             String REQUIREMENTS = "requirements";
-            String IGNORE_ALLUPDATES = "ignoreAllUpdates";
-            String IGNORE_THISUPDATE = "ignoreThisUpdate";
             String ICON_URL = "iconUrl";
             String ICON_URL_LARGE = "iconUrlLarge";
 
@@ -79,8 +77,7 @@ public interface Schema {
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
                     CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
-                    CATEGORIES, ANTI_FEATURES, REQUIREMENTS, IGNORE_ALLUPDATES,
-                    IGNORE_THISUPDATE, ICON_URL, ICON_URL_LARGE,
+                    CATEGORIES, ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
                     InstalledApp.SIGNATURE,

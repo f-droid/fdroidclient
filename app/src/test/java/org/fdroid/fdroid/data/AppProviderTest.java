@@ -89,9 +89,8 @@ public class AppProviderTest extends FDroidProviderTest {
             boolean ignoreAll, int ignoreVercode) {
         ContentValues values = new ContentValues(3);
         values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVercode);
-        values.put(Cols.IGNORE_ALLUPDATES, ignoreAll);
-        values.put(Cols.IGNORE_THISUPDATE, ignoreVercode);
-        insertApp(packageName, "App: " + packageName, values);
+        App app = insertApp(packageName, "App: " + packageName, values);
+        AppPrefsProvider.Helper.update(context, app, new AppPrefs(ignoreVercode, ignoreAll));
 
         InstalledAppTestUtils.install(context, packageName, installedVercode, "v" + installedVercode);
     }
@@ -113,7 +112,7 @@ public class AppProviderTest extends FDroidProviderTest {
 
         // Can't "update", although can "install"...
         App notInstalled = AppProvider.Helper.findByPackageName(r, "not installed");
-        assertFalse(notInstalled.canAndWantToUpdate());
+        assertFalse(notInstalled.canAndWantToUpdate(context));
 
         App installedOnlyOneVersionAvailable   = AppProvider.Helper.findByPackageName(r, "installed, only one version available");
         App installedAlreadyLatestNoIgnore     = AppProvider.Helper.findByPackageName(r, "installed, already latest, no ignore");
@@ -121,21 +120,21 @@ public class AppProviderTest extends FDroidProviderTest {
         App installedAlreadyLatestIgnoreLatest = AppProvider.Helper.findByPackageName(r, "installed, already latest, ignore latest");
         App installedAlreadyLatestIgnoreOld    = AppProvider.Helper.findByPackageName(r, "installed, already latest, ignore old");
 
-        assertFalse(installedOnlyOneVersionAvailable.canAndWantToUpdate());
-        assertFalse(installedAlreadyLatestNoIgnore.canAndWantToUpdate());
-        assertFalse(installedAlreadyLatestIgnoreAll.canAndWantToUpdate());
-        assertFalse(installedAlreadyLatestIgnoreLatest.canAndWantToUpdate());
-        assertFalse(installedAlreadyLatestIgnoreOld.canAndWantToUpdate());
+        assertFalse(installedOnlyOneVersionAvailable.canAndWantToUpdate(context));
+        assertFalse(installedAlreadyLatestNoIgnore.canAndWantToUpdate(context));
+        assertFalse(installedAlreadyLatestIgnoreAll.canAndWantToUpdate(context));
+        assertFalse(installedAlreadyLatestIgnoreLatest.canAndWantToUpdate(context));
+        assertFalse(installedAlreadyLatestIgnoreOld.canAndWantToUpdate(context));
 
         App installedOldNoIgnore             = AppProvider.Helper.findByPackageName(r, "installed, old version, no ignore");
         App installedOldIgnoreAll            = AppProvider.Helper.findByPackageName(r, "installed, old version, ignore all");
         App installedOldIgnoreLatest         = AppProvider.Helper.findByPackageName(r, "installed, old version, ignore latest");
         App installedOldIgnoreNewerNotLatest = AppProvider.Helper.findByPackageName(r, "installed, old version, ignore newer, but not latest");
 
-        assertTrue(installedOldNoIgnore.canAndWantToUpdate());
-        assertFalse(installedOldIgnoreAll.canAndWantToUpdate());
-        assertFalse(installedOldIgnoreLatest.canAndWantToUpdate());
-        assertTrue(installedOldIgnoreNewerNotLatest.canAndWantToUpdate());
+        assertTrue(installedOldNoIgnore.canAndWantToUpdate(context));
+        assertFalse(installedOldIgnoreAll.canAndWantToUpdate(context));
+        assertFalse(installedOldIgnoreLatest.canAndWantToUpdate(context));
+        assertTrue(installedOldIgnoreNewerNotLatest.canAndWantToUpdate(context));
 
         Cursor canUpdateCursor = r.query(AppProvider.getCanUpdateUri(), Cols.ALL, null, null, null);
         assertNotNull(canUpdateCursor);
@@ -348,7 +347,7 @@ public class AppProviderTest extends FDroidProviderTest {
         insertApp(id, name, values);
     }
 
-    public void insertApp(String id, String name, ContentValues additionalValues) {
+    public App insertApp(String id, String name, ContentValues additionalValues) {
 
         ContentValues values = new ContentValues();
         values.put(Cols.PACKAGE_NAME, id);
@@ -359,13 +358,12 @@ public class AppProviderTest extends FDroidProviderTest {
         values.put(Cols.DESCRIPTION, "test description");
         values.put(Cols.LICENSE, "GPL?");
         values.put(Cols.IS_COMPATIBLE, 1);
-        values.put(Cols.IGNORE_ALLUPDATES, 0);
-        values.put(Cols.IGNORE_THISUPDATE, 0);
 
         values.putAll(additionalValues);
 
         Uri uri = AppProvider.getContentUri();
 
         contentResolver.insert(uri, values);
+        return AppProvider.Helper.findByPackageName(context.getContentResolver(), id);
     }
 }

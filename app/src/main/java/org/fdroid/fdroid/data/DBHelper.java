@@ -96,8 +96,6 @@ class DBHelper extends SQLiteOpenHelper {
             + AppTable.Cols.ADDED + " string,"
             + AppTable.Cols.LAST_UPDATED + " string,"
             + AppTable.Cols.IS_COMPATIBLE + " int not null,"
-            + AppTable.Cols.IGNORE_ALLUPDATES + " int not null,"
-            + AppTable.Cols.IGNORE_THISUPDATE + " int not null,"
             + AppTable.Cols.ICON_URL + " text, "
             + AppTable.Cols.ICON_URL_LARGE + " text, "
             + "primary key(" + AppTable.Cols.PACKAGE_NAME + "));";

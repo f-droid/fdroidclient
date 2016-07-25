@@ -5,12 +5,12 @@ public class AppPrefs extends ValueObject {
     /**
      * True if all updates for this app are to be ignored
      */
-    public final boolean ignoreAllUpdates;
+    public boolean ignoreAllUpdates;
 
     /**
      * True if the current update for this app is to be ignored
      */
-    public final int ignoreThisUpdate;
+    public int ignoreThisUpdate;
 
     public AppPrefs(int ignoreThis, boolean ignoreAll) {
         ignoreThisUpdate = ignoreThis;
@@ -21,4 +21,14 @@ public class AppPrefs extends ValueObject {
         return new AppPrefs(0, false);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return o != null && o instanceof AppPrefs &&
+                ((AppPrefs)o).ignoreAllUpdates == ignoreAllUpdates &&
+                ((AppPrefs)o).ignoreThisUpdate == ignoreThisUpdate;
+    }
+
+    public AppPrefs createClone() {
+        return new AppPrefs(ignoreThisUpdate, ignoreAllUpdates);
+    }
 }

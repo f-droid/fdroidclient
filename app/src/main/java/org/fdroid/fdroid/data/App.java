@@ -103,15 +103,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     public String[] requirements;
 
-    /**
-     * True if all updates for this app are to be ignored
-     */
-    public boolean ignoreAllUpdates;
-
-    /**
-     * True if the current update for this app is to be ignored
-     */
-    public int ignoreThisUpdate;
+    private AppPrefs prefs;
 
     /**
      * To be displayed at 48dp (x1.0)
@@ -232,12 +224,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     break;
                 case Cols.REQUIREMENTS:
                     requirements = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.IGNORE_ALLUPDATES:
-                    ignoreAllUpdates = cursor.getInt(i) == 1;
-                    break;
-                case Cols.IGNORE_THISUPDATE:
-                    ignoreThisUpdate = cursor.getInt(i);
                     break;
                 case Cols.ICON_URL:
                     iconUrl = cursor.getString(i);
@@ -471,8 +457,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
         values.put(Cols.REQUIREMENTS, Utils.serializeCommaSeparatedString(requirements));
         values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);
-        values.put(Cols.IGNORE_ALLUPDATES, ignoreAllUpdates ? 1 : 0);
-        values.put(Cols.IGNORE_THISUPDATE, ignoreThisUpdate);
 
         return values;
     }
@@ -492,13 +476,21 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         return updates;
     }
 
+    public AppPrefs getPrefs(Context context) {
+        if (prefs == null) {
+            prefs = AppPrefsProvider.Helper.getPrefsOrDefault(context, this);
+        }
+        return prefs;
+    }
+
     /**
      * True if there are new versions (apks) available and the user wants
      * to be notified about them
      */
-    public boolean canAndWantToUpdate() {
+    public boolean canAndWantToUpdate(Context context) {
         boolean canUpdate = hasUpdates();
-        boolean wantsUpdate = !ignoreAllUpdates && ignoreThisUpdate < suggestedVersionCode;
+        AppPrefs prefs = getPrefs(context);
+        boolean wantsUpdate = !prefs.ignoreAllUpdates && prefs.ignoreThisUpdate < suggestedVersionCode;
         return canUpdate && wantsUpdate && !isFiltered();
     }
 
@@ -591,8 +583,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeStringArray(this.categories);
         dest.writeStringArray(this.antiFeatures);
         dest.writeStringArray(this.requirements);
-        dest.writeByte(this.ignoreAllUpdates ? (byte) 1 : (byte) 0);
-        dest.writeInt(this.ignoreThisUpdate);
         dest.writeString(this.iconUrl);
         dest.writeString(this.iconUrlLarge);
         dest.writeString(this.installedVersionName);
@@ -631,8 +621,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.categories = in.createStringArray();
         this.antiFeatures = in.createStringArray();
         this.requirements = in.createStringArray();
-        this.ignoreAllUpdates = in.readByte() != 0;
-        this.ignoreThisUpdate = in.readInt();
         this.iconUrl = in.readString();
         this.iconUrlLarge = in.readString();
         this.installedVersionName = in.readString();

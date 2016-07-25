@@ -14,6 +14,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppTable;
 import org.fdroid.fdroid.data.Schema.AppTable.Cols;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
@@ -186,6 +187,7 @@ public class AppProvider extends FDroidProvider {
     protected static class AppQuerySelection extends QuerySelection {
 
         private boolean naturalJoinToInstalled;
+        private boolean leftJoinPrefs;
 
         AppQuerySelection() {
             // The same as no selection, because "1" will always resolve to true when executing the SQL query.
@@ -217,11 +219,24 @@ public class AppProvider extends FDroidProvider {
             return this;
         }
 
+        public boolean leftJoinToPrefs() {
+            return leftJoinPrefs;
+        }
+
+        public AppQuerySelection requireLeftJoinPrefs() {
+            leftJoinPrefs = true;
+            return this;
+        }
+
         public AppQuerySelection add(AppQuerySelection query) {
             QuerySelection both = super.add(query);
             AppQuerySelection bothWithJoin = new AppQuerySelection(both.getSelection(), both.getArgs());
             if (this.naturalJoinToInstalled() || query.naturalJoinToInstalled()) {
                 bothWithJoin.requireNaturalInstalledTable();
+            }
+
+            if (this.leftJoinToPrefs() || query.leftJoinToPrefs()) {
+                bothWithJoin.requireLeftJoinPrefs();
             }
             return bothWithJoin;
         }
@@ -232,6 +247,7 @@ public class AppProvider extends FDroidProvider {
 
         private boolean isSuggestedApkTableAdded;
         private boolean requiresInstalledTable;
+        private boolean requiresLeftJoinToPrefs;
         private boolean categoryFieldAdded;
         private boolean countFieldAppended;
 
@@ -262,6 +278,9 @@ public class AppProvider extends FDroidProvider {
             if (selection.naturalJoinToInstalled()) {
                 naturalJoinToInstalledTable();
             }
+            if (selection.leftJoinToPrefs()) {
+                leftJoinToPrefs();
+            }
         }
 
         // TODO: What if the selection requires a natural join, but we first get a left join
@@ -273,6 +292,16 @@ public class AppProvider extends FDroidProvider {
                         "installed",
                         "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + "." + Cols.PACKAGE_NAME);
                 requiresInstalledTable = true;
+            }
+        }
+
+        public void leftJoinToPrefs() {
+            if (!requiresLeftJoinToPrefs) {
+                leftJoin(
+                        AppPrefsTable.NAME,
+                        "prefs",
+                        "prefs." + AppPrefsTable.Cols.APP_ID + " = " + getTableName() + "." + Cols.ROW_ID);
+                requiresLeftJoinToPrefs = true;
             }
         }
 
@@ -527,11 +556,16 @@ public class AppProvider extends FDroidProvider {
 
     private AppQuerySelection queryCanUpdate() {
         final String app = getTableName();
-        final String ignoreCurrent = app + "." + Cols.IGNORE_THISUPDATE + "!= " + app + "." + Cols.SUGGESTED_VERSION_CODE;
-        final String ignoreAll = app + "." + Cols.IGNORE_ALLUPDATES + " != 1";
+
+        // Need to use COALESCE because the prefs join may not resolve any rows, which means the
+        // ignore* fields will be NULL. In that case, we want to instead use a default value of 0.
+        final String ignoreCurrent = " COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", 0) != " + app + "." + Cols.SUGGESTED_VERSION_CODE;
+        final String ignoreAll = "COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + ", 0) != 1";
+
         final String ignore = " (" + ignoreCurrent + " AND " + ignoreAll + ") ";
         final String where = ignore + " AND " + app + "." + Cols.SUGGESTED_VERSION_CODE + " > installed." + InstalledAppTable.Cols.VERSION_CODE;
-        return new AppQuerySelection(where).requireNaturalInstalledTable();
+
+        return new AppQuerySelection(where).requireNaturalInstalledTable().requireLeftJoinPrefs();
     }
 
     private AppQuerySelection queryRepo(long repoId) {
@@ -604,9 +638,9 @@ public class AppProvider extends FDroidProvider {
 
     private AppQuerySelection queryIgnored() {
         final String table = getTableName();
-        final String selection = table + "." + Cols.IGNORE_ALLUPDATES + " = 1 OR " +
-                table + "." + Cols.IGNORE_THISUPDATE + " >= " + table + "." + Cols.SUGGESTED_VERSION_CODE;
-        return new AppQuerySelection(selection);
+        final String selection = "COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + ", 0) = 1 OR " +
+                "COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", 0) >= " + table + "." + Cols.SUGGESTED_VERSION_CODE;
+        return new AppQuerySelection(selection).requireLeftJoinPrefs();
     }
 
     private AppQuerySelection queryExcludeSwap() {

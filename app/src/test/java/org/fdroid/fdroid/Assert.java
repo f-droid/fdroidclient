@@ -191,8 +191,6 @@ public class Assert {
         values.put(AppTable.Cols.DESCRIPTION, "test description");
         values.put(AppTable.Cols.LICENSE, "GPL?");
         values.put(AppTable.Cols.IS_COMPATIBLE, 1);
-        values.put(AppTable.Cols.IGNORE_ALLUPDATES, 0);
-        values.put(AppTable.Cols.IGNORE_THISUPDATE, 0);
 
         values.putAll(additionalValues);
 
