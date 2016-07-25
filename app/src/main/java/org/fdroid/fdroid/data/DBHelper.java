@@ -222,10 +222,12 @@ class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        createAppApk(db);
+        db.execSQL(CREATE_TABLE_APP);
+        db.execSQL(CREATE_TABLE_APK);
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
         db.execSQL(CREATE_TABLE_REPO);
         db.execSQL(CREATE_TABLE_APP_PREFS);
+        ensureIndexes(db);
 
         insertRepo(
                 db,
@@ -683,10 +685,6 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL("drop table " + AppTable.NAME);
         db.execSQL("drop table " + ApkTable.NAME);
         clearRepoEtags(db);
-        createAppApk(db);
-    }
-
-    private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
         db.execSQL(CREATE_TABLE_APK);
         ensureIndexes(db);
@@ -702,6 +700,21 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS apk_appId on " + ApkTable.NAME + " (" + ApkTable.Cols.APP_ID + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS repoId ON " + ApkTable.NAME + " (" + ApkTable.Cols.REPO_ID + ");");
+
+        Utils.debugLog(TAG, "Ensuring indexes exist for " + AppPrefsTable.NAME);
+        db.execSQL("CREATE INDEX IF NOT EXISTS appPrefs_appId on " + AppPrefsTable.NAME + " (" + AppPrefsTable.Cols.APP_ID + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS appPrefs_appId_ignoreAll_ignoreThis on " + AppPrefsTable.NAME + " (" +
+                AppPrefsTable.Cols.APP_ID + ", " +
+                AppPrefsTable.Cols.IGNORE_ALL_UPDATES + ", " +
+                AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ");");
+
+        Utils.debugLog(TAG, "Ensuring indexes exist for " + InstalledAppTable.NAME);
+        db.execSQL("CREATE INDEX IF NOT EXISTS installedApp_appId_vercode on " + InstalledAppTable.NAME + " (" +
+                InstalledAppTable.Cols.PACKAGE_NAME + ", " + InstalledAppTable.Cols.VERSION_CODE + ");");
+
+        Utils.debugLog(TAG, "Ensuring indexes exist for " + RepoTable.NAME);
+        db.execSQL("CREATE INDEX IF NOT EXISTS repo_id_isSwap on " + RepoTable.NAME + " (" +
+                RepoTable.Cols._ID + ", " + RepoTable.Cols.IS_SWAP + ");");
     }
 
     /**
