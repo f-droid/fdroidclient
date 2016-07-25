@@ -38,8 +38,6 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
-import java.util.Locale;
-
 public class RepoDetailsActivity extends ActionBarActivity {
     private static final String TAG = "RepoDetailsActivity";
 
@@ -112,7 +110,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
         Uri uri = Uri.parse(repo.address);
         uri = uri.buildUpon().appendQueryParameter("fingerprint", repo.fingerprint).build();
-        String qrUriString = uri.toString().toUpperCase(Locale.ENGLISH);
+        String qrUriString = uri.toString();
         new QrGenAsyncTask(this, R.id.qr_code).execute(qrUriString);
     }
 

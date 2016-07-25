@@ -132,19 +132,12 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         TextView ipAddressView = (TextView) findViewById(R.id.device_ip_address);
         ipAddressView.setText(buttonLabel);
 
-        /*
-         * Set URL to UPPER for compact QR Code, FDroid will translate it back.
-         * Remove the SSID from the query string since SSIDs are case-sensitive.
-         * Instead the receiver will have to rely on the BSSID to find the right
-         * wifi AP to join. Lots of QR Scanners are buggy and do not respect
-         * custom URI schemes, so we have to use http:// or https:// :-(
-         */
         Uri sharingUri = Utils.getSharingUri(FDroidApp.repo);
-        String qrUriString = (scheme + sharingUri.getHost()).toUpperCase(Locale.ENGLISH);
+        String qrUriString = scheme + sharingUri.getHost();
         if (sharingUri.getPort() != 80) {
             qrUriString += ":" + sharingUri.getPort();
         }
-        qrUriString += sharingUri.getPath().toUpperCase(Locale.ENGLISH);
+        qrUriString += sharingUri.getPath();
         boolean first = true;
 
         // Andorid provides an API for getting the query parameters and iterating over them:
