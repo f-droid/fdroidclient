@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
-public class Apk extends ValueObject implements Comparable<Apk>,Parcelable {
+public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
     // Using only byte-range keeps it only 8-bits in the SQLite database
     public static final int SDK_VERSION_MAX_VALUE = Byte.MAX_VALUE;
@@ -68,10 +68,6 @@ public class Apk extends ValueObject implements Comparable<Apk>,Parcelable {
     public long appId;
 
     public Apk() {
-    }
-
-    public Apk(Parcelable parcelable) {
-        this(new ContentValuesCursor((ContentValues) parcelable));
     }
 
     public Apk(Cursor cursor) {

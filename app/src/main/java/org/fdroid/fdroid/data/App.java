@@ -35,7 +35,7 @@ import java.util.regex.Pattern;
 
 import org.fdroid.fdroid.data.Schema.AppTable.Cols;
 
-public class App extends ValueObject implements Comparable<App>,Parcelable {
+public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     private static final String TAG = "App";
 
@@ -143,10 +143,6 @@ public class App extends ValueObject implements Comparable<App>,Parcelable {
     }
 
     public App() {
-    }
-
-    public App(Parcelable parcelable) {
-        this(new ContentValuesCursor((ContentValues) parcelable));
     }
 
     public App(Cursor cursor) {

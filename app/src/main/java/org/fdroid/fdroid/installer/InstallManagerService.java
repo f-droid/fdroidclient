@@ -151,8 +151,8 @@ public class InstallManagerService extends Service {
             return START_NOT_STICKY;
         }
 
-        App app = new App(intent.getParcelableExtra(EXTRA_APP));
-        Apk apk = new Apk(intent.getParcelableExtra(EXTRA_APK));
+        App app = intent.getParcelableExtra(EXTRA_APP);
+        Apk apk = intent.getParcelableExtra(EXTRA_APK);
         addToActive(urlString, app, apk);
 
         NotificationCompat.Builder builder = createNotificationBuilder(urlString, apk);
@@ -454,8 +454,8 @@ public class InstallManagerService extends Service {
         Intent intent = new Intent(context, InstallManagerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(Uri.parse(urlString));
-        intent.putExtra(EXTRA_APP, app.toContentValues());
-        intent.putExtra(EXTRA_APK, apk.toContentValues());
+        intent.putExtra(EXTRA_APP, app);
+        intent.putExtra(EXTRA_APK, apk);
         context.startService(intent);
     }
 
