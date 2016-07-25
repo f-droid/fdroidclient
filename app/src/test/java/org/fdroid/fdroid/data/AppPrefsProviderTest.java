@@ -4,8 +4,6 @@ import android.app.Application;
 
 import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.TestUtils;
-import org.fdroid.fdroid.data.Schema.AppPrefsTable.Cols;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +11,7 @@ import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowContentResolver;
 
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
@@ -21,8 +19,6 @@ import static org.junit.Assert.assertNull;
 @Config(constants = BuildConfig.class, application = Application.class)
 @RunWith(RobolectricGradleTestRunner.class)
 public class AppPrefsProviderTest extends FDroidProviderTest {
-
-    private static final String[] PROJ = Cols.ALL;
 
     @Before
     public void setup() {

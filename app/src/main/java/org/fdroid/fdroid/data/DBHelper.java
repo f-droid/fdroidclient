@@ -103,7 +103,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_APP_PREFS = "CREATE TABLE " + AppPrefsTable.NAME
             + " ( "
             + AppPrefsTable.Cols.APP_ID + " INT REFERENCES " + AppTable.NAME + "(" + AppTable.Cols.ROW_ID + ") ON DELETE CASCADE, "
-            + AppPrefsTable.Cols.IGNORE_THIS_UPDATE+ " INT BOOLEAN NOT NULL, "
+            + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + " INT BOOLEAN NOT NULL, "
             + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + " INT NOT NULL "
             + " );";
 
@@ -305,7 +305,7 @@ class DBHelper extends SQLiteOpenHelper {
         // The other tables are transient and can just be reset. Do this after
         // the repo table changes though, because it also clears the lastetag
         // fields which didn't always exist.
-        resetTransient(db, oldVersion);
+        resetTransientPre42(db, oldVersion);
 
         addNameAndDescriptionToRepo(db, oldVersion);
         addFingerprintToRepo(db, oldVersion);
@@ -672,6 +672,17 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void resetTransient(SQLiteDatabase db, int oldVersion) {
+        context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
+                .putBoolean("triedEmptyUpdate", false).apply();
+        db.execSQL("drop table " + AppTable.NAME);
+        db.execSQL("drop table " + ApkTable.NAME);
+        clearRepoEtags(db);
+        db.execSQL(CREATE_TABLE_APP);
+        db.execSQL(CREATE_TABLE_APK);
+        ensureIndexes(db);
+    }
+
+    private void resetTransientPre42(SQLiteDatabase db, int oldVersion) {
         // Before version 42, only transient info was stored in here. As of some time
         // just before 42 (F-Droid 0.60ish) it now has "ignore this version" info which
         // was is specified by the user. We don't want to weely-neely nuke that data.
@@ -681,7 +692,7 @@ class DBHelper extends SQLiteOpenHelper {
             return;
         }
         context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
-                .putBoolean("triedEmptyUpdate", false).commit();
+                .putBoolean("triedEmptyUpdate", false).apply();
         db.execSQL("drop table " + AppTable.NAME);
         db.execSQL("drop table " + ApkTable.NAME);
         clearRepoEtags(db);

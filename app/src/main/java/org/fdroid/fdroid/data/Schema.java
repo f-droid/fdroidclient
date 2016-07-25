@@ -18,7 +18,7 @@ public interface Schema {
             String IGNORE_ALL_UPDATES = "ignoreAllUpdates";
             String IGNORE_THIS_UPDATE = "ignoreThisUpdate";
 
-            String[] ALL = {APP_ID, IGNORE_ALL_UPDATES, IGNORE_THIS_UPDATE,};
+            String[] ALL = {APP_ID, IGNORE_ALL_UPDATES, IGNORE_THIS_UPDATE};
         }
     }
 

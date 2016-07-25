@@ -24,8 +24,13 @@ public class AppPrefs extends ValueObject {
     @Override
     public boolean equals(Object o) {
         return o != null && o instanceof AppPrefs &&
-                ((AppPrefs)o).ignoreAllUpdates == ignoreAllUpdates &&
-                ((AppPrefs)o).ignoreThisUpdate == ignoreThisUpdate;
+                ((AppPrefs) o).ignoreAllUpdates == ignoreAllUpdates &&
+                ((AppPrefs) o).ignoreThisUpdate == ignoreThisUpdate;
+    }
+
+    @Override
+    public int hashCode() {
+        return (ignoreThisUpdate + "-" + ignoreAllUpdates).hashCode();
     }
 
     public AppPrefs createClone() {
