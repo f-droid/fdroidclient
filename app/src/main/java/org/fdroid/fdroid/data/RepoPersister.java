@@ -189,7 +189,7 @@ public class RepoPersister {
      */
     private ArrayList<ContentProviderOperation> insertOrUpdateApks(List<Apk> packages) {
         String[] projection = new String[]{
-                Schema.ApkTable.Cols.PACKAGE_NAME,
+                Schema.ApkTable.Cols.App.PACKAGE_NAME,
                 Schema.ApkTable.Cols.VERSION_CODE,
         };
         List<Apk> existingApks = ApkProvider.Helper.knownApks(context, packages, projection);
@@ -275,7 +275,7 @@ public class RepoPersister {
      */
     @Nullable
     private ContentProviderOperation deleteOrphanedApks(List<App> apps, Map<String, List<Apk>> packages) {
-        String[] projection = new String[]{Schema.ApkTable.Cols.PACKAGE_NAME, Schema.ApkTable.Cols.VERSION_CODE};
+        String[] projection = new String[]{Schema.ApkTable.Cols.App.PACKAGE_NAME, Schema.ApkTable.Cols.VERSION_CODE};
         List<Apk> existing = ApkProvider.Helper.find(context, repo, apps, projection);
         List<Apk> toDelete = new ArrayList<>();
 

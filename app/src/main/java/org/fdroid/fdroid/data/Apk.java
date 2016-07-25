@@ -94,7 +94,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
                 case Cols.FEATURES:
                     features = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
-                case Cols.PACKAGE_NAME:
+                case Cols.App.PACKAGE_NAME:
                     packageName = cursor.getString(i);
                     break;
                 case Cols.IS_COMPATIBLE:
@@ -201,7 +201,6 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
         values.put(Cols.APP_ID, appId);
-        values.put(Cols.PACKAGE_NAME, packageName);
         values.put(Cols.VERSION_NAME, versionName);
         values.put(Cols.VERSION_CODE, versionCode);
         values.put(Cols.REPO_ID, repo);

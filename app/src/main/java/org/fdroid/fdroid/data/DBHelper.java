@@ -46,7 +46,6 @@ class DBHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_APK =
             "CREATE TABLE " + ApkTable.NAME + " ( "
-            + ApkTable.Cols.PACKAGE_NAME + " text not null, "
             + ApkTable.Cols.APP_ID + " integer not null, "
             + ApkTable.Cols.VERSION_NAME + " text not null, "
             + ApkTable.Cols.REPO_ID + " integer not null, "
@@ -66,7 +65,7 @@ class DBHelper extends SQLiteOpenHelper {
             + ApkTable.Cols.ADDED_DATE + " string, "
             + ApkTable.Cols.IS_COMPATIBLE + " int not null, "
             + ApkTable.Cols.INCOMPATIBLE_REASONS + " text, "
-            + "primary key(" + ApkTable.Cols.PACKAGE_NAME + ", " + ApkTable.Cols.VERSION_CODE + ")"
+            + "PRIMARY KEY (" + ApkTable.Cols.APP_ID + ", " + ApkTable.Cols.VERSION_CODE + ", " + ApkTable.Cols.REPO_ID + ")"
             + ");";
 
     private static final String CREATE_TABLE_APP = "CREATE TABLE " + AppTable.NAME
@@ -115,7 +114,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 58;
+    private static final int DB_VERSION = 59;
 
     private final Context context;
 
@@ -317,6 +316,92 @@ class DBHelper extends SQLiteOpenHelper {
         recreateInstalledAppTable(db, oldVersion);
         addTargetSdkVersionToApk(db, oldVersion);
         migrateAppPrimaryKeyToRowId(db, oldVersion);
+        removeApkPackageNameColumn(db, oldVersion);
+    }
+
+    /**
+     * Ordinarily, if a column is no longer used, we'd err on the side of just leaving it in the
+     * database but stop referring to it in Java. However because it forms part of the primary
+     * key of this table, we need to change the primary key to something which _is_ used. Thus,
+     * this function will rename the old table, create the new table, and then insert all of the
+     * data from the old into the new with the new primary key.
+     */
+    private void removeApkPackageNameColumn(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 59) {
+
+            Utils.debugLog(TAG, "Changing primary key of " + ApkTable.NAME + " from package + vercode to app + vercode + repo");
+            db.beginTransaction();
+
+            try {
+                // http://stackoverflow.com/questions/805363/how-do-i-rename-a-column-in-a-sqlite-database-table#805508
+                String tempTableName = ApkTable.NAME + "__temp__";
+                db.execSQL("ALTER TABLE " + ApkTable.NAME + " RENAME TO " + tempTableName + ";");
+
+                String createTableDdl = "CREATE TABLE " + ApkTable.NAME + " ( "
+                        + ApkTable.Cols.APP_ID + " integer not null, "
+                        + ApkTable.Cols.VERSION_NAME + " text not null, "
+                        + ApkTable.Cols.REPO_ID + " integer not null, "
+                        + ApkTable.Cols.HASH + " text not null, "
+                        + ApkTable.Cols.VERSION_CODE + " int not null,"
+                        + ApkTable.Cols.NAME + " text not null, "
+                        + ApkTable.Cols.SIZE + " int not null, "
+                        + ApkTable.Cols.SIGNATURE + " string, "
+                        + ApkTable.Cols.SOURCE_NAME + " string, "
+                        + ApkTable.Cols.MIN_SDK_VERSION + " integer, "
+                        + ApkTable.Cols.TARGET_SDK_VERSION + " integer, "
+                        + ApkTable.Cols.MAX_SDK_VERSION + " integer, "
+                        + ApkTable.Cols.PERMISSIONS + " string, "
+                        + ApkTable.Cols.FEATURES + " string, "
+                        + ApkTable.Cols.NATIVE_CODE + " string, "
+                        + ApkTable.Cols.HASH_TYPE + " string, "
+                        + ApkTable.Cols.ADDED_DATE + " string, "
+                        + ApkTable.Cols.IS_COMPATIBLE + " int not null, "
+                        + ApkTable.Cols.INCOMPATIBLE_REASONS + " text, "
+                        + "PRIMARY KEY (" + ApkTable.Cols.APP_ID + ", " + ApkTable.Cols.VERSION_CODE + ", " + ApkTable.Cols.REPO_ID + ")"
+                        + ");";
+
+                db.execSQL(createTableDdl);
+
+                String nonPackageNameFields = TextUtils.join(", ", new String[] {
+                        ApkTable.Cols.APP_ID,
+                        ApkTable.Cols.VERSION_NAME,
+                        ApkTable.Cols.REPO_ID,
+                        ApkTable.Cols.HASH,
+                        ApkTable.Cols.VERSION_CODE,
+                        ApkTable.Cols.NAME,
+                        ApkTable.Cols.SIZE,
+                        ApkTable.Cols.SIGNATURE,
+                        ApkTable.Cols.SOURCE_NAME,
+                        ApkTable.Cols.MIN_SDK_VERSION,
+                        ApkTable.Cols.TARGET_SDK_VERSION,
+                        ApkTable.Cols.MAX_SDK_VERSION,
+                        ApkTable.Cols.PERMISSIONS,
+                        ApkTable.Cols.FEATURES,
+                        ApkTable.Cols.NATIVE_CODE,
+                        ApkTable.Cols.HASH_TYPE,
+                        ApkTable.Cols.ADDED_DATE,
+                        ApkTable.Cols.IS_COMPATIBLE,
+                        ApkTable.Cols.INCOMPATIBLE_REASONS,
+                });
+
+                String insertSql = "INSERT INTO " + ApkTable.NAME +
+                        "(" + nonPackageNameFields + " ) " +
+                        "SELECT " + nonPackageNameFields + " FROM " + tempTableName + ";";
+
+                db.execSQL(insertSql);
+                db.execSQL("DROP TABLE " + tempTableName + ";");
+
+                // Now that the old table has been dropped, we can create indexes again.
+                // Attempting this before dropping the old table will not work, because the
+                // indexes exist on the _old_ table, and so are unable to be added (with the
+                // same name) to the _new_ table.
+                ensureIndexes(db);
+
+                db.setTransactionSuccessful();
+            } finally {
+                db.endTransaction();
+            }
+        }
     }
 
     private void migrateAppPrimaryKeyToRowId(SQLiteDatabase db, int oldVersion) {
@@ -328,10 +413,12 @@ class DBHelper extends SQLiteOpenHelper {
                 Utils.debugLog(TAG, alter);
                 db.execSQL(alter);
 
+                // Hard coded the string literal ".id" as ApkTable.Cols.PACKAGE_NAME was removed in
+                // the subsequent migration (DB_VERSION 59)
                 final String update = "UPDATE " + ApkTable.NAME + " SET " + ApkTable.Cols.APP_ID + " = ( " +
                         "SELECT app." + AppTable.Cols.ROW_ID + " " +
                         "FROM " + AppTable.NAME + " AS app " +
-                        "WHERE " + ApkTable.NAME + "." + ApkTable.Cols.PACKAGE_NAME + " = app." + AppTable.Cols.PACKAGE_NAME + ")";
+                        "WHERE " + ApkTable.NAME + ".id = app." + AppTable.Cols.PACKAGE_NAME + ")";
                 Log.i(TAG, "Updating foreign key from " + ApkTable.NAME + " to " + AppTable.NAME + " to use numeric foreign key.");
                 Utils.debugLog(TAG, update);
                 db.execSQL(update);
@@ -607,7 +694,7 @@ class DBHelper extends SQLiteOpenHelper {
         Utils.debugLog(TAG, "Ensuring indexes exist for " + ApkTable.NAME);
         db.execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS apk_appId on " + ApkTable.NAME + " (" + ApkTable.Cols.APP_ID + ");");
-        db.execSQL("CREATE INDEX IF NOT EXISTS apk_id on " + ApkTable.NAME + " (" + AppTable.Cols.PACKAGE_NAME + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS repoId ON " + ApkTable.NAME + " (" + ApkTable.Cols.REPO_ID + ");");
     }
 
     /**

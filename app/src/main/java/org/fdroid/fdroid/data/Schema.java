@@ -91,7 +91,7 @@ public interface Schema {
              * Foreign key to the {@link AppTable}.
              */
             String APP_ID          = "appId";
-            String PACKAGE_NAME    = "id";
+            String ROW_ID          = "rowid";
             String VERSION_NAME    = "version";
             String REPO_ID         = "repo";
             String HASH            = "hash";
@@ -121,7 +121,7 @@ public interface Schema {
             }
 
             String[] ALL = {
-                    _ID, APP_ID, PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
+                    _ID, APP_ID, App.PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
                     SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
                     PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
                     IS_COMPATIBLE, Repo.VERSION, Repo.ADDRESS, INCOMPATIBLE_REASONS,

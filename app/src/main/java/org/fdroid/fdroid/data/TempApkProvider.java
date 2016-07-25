@@ -137,7 +137,6 @@ public class TempApkProvider extends ApkProvider {
         final String memoryDbName = TempAppProvider.DB;
         db.execSQL("CREATE TABLE " + memoryDbName + "." + getTableName() + " AS SELECT * FROM main." + ApkTable.NAME);
         db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_vercode on " + getTableName() + " (" + ApkTable.Cols.VERSION_CODE + ");");
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_id on " + getTableName() + " (" + ApkTable.Cols.PACKAGE_NAME + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_compatible ON " + getTableName() + " (" + ApkTable.Cols.IS_COMPATIBLE + ");");
     }
 

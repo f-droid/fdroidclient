@@ -191,8 +191,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         Apk apk = new MockApk("org.fdroid.fdroid", 13);
 
         // Insert a new record...
-        Uri newUri = Assert.insertApk(context, apk.packageName, apk.versionCode);
-        assertEquals(ApkProvider.getContentUri(apk).toString(), newUri.toString());
+        Assert.insertApk(context, apk.packageName, apk.versionCode);
         cursor = queryAllApks();
         assertNotNull(cursor);
         assertEquals(1, cursor.getCount());
@@ -345,7 +344,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         Collections.addAll(apksToCheck, unknown);
 
         String[] projection = {
-            Cols.PACKAGE_NAME,
+            Cols.App.PACKAGE_NAME,
             Cols.VERSION_CODE,
         };
 
@@ -485,7 +484,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertEquals("a hash type", apk.hashType);
 
         String[] projection = {
-            Cols.PACKAGE_NAME,
+            Cols.App.PACKAGE_NAME,
             Cols.HASH,
         };
 
