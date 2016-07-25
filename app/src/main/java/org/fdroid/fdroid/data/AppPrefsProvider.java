@@ -151,9 +151,7 @@ public class AppPrefsProvider extends FDroidProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         db().insertOrThrow(getTableName(), null, values);
-        if (!isApplyingBatch()) {
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
+        getContext().getContentResolver().notifyChange(AppProvider.getCanUpdateUri(), null);
         return getAppUri(values.getAsLong(Cols.APP_ID));
     }
 
@@ -163,7 +161,9 @@ public class AppPrefsProvider extends FDroidProvider {
             case CODE_SINGLE:
                 QuerySelection query = new QuerySelection(where, whereArgs)
                         .add(querySingle(Long.parseLong(uri.getLastPathSegment())));
-                return db().update(getTableName(), values, query.getSelection(), query.getArgs());
+                int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
+                getContext().getContentResolver().notifyChange(AppProvider.getCanUpdateUri(), null);
+                return count;
 
             default:
                 throw new UnsupportedOperationException("Update not supported for " + uri + ".");
