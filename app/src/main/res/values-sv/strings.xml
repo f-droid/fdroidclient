@@ -343,7 +343,7 @@
     <string name="keep_forever">För evigt</string>
 
     <string name="install_error_notify_title">Fel vid installation %s</string>
-    <string name="uninstall_error_notify_title">Fel vid avinstallation %s</string>
+    <string name="uninstall_error_notify_title">Fel vid avinstallation av %s</string>
 
 
     <string name="installing">Installerar…</string>

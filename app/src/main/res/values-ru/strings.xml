@@ -270,7 +270,7 @@
     <string name="swap_wifi_device_name">Имя устройства</string>
     <string name="swap_connecting">Подключение</string>
     <string name="loading">Загрузка…</string>
-    <string name="install_confirm">Хотите установить это приложение? Оно получит доступ к:</string>
+    <string name="install_confirm">требуется доступ к</string>
     <string name="install_confirm_update">Хотите обновить установленное приложение? Существующие данные не будут потеряны. Обновлённое приложение получит доступ к:</string>
     <string name="install_confirm_update_system">Хотите обновить встроенное приложение? Существующие данные не будут потеряны. Обновлённое приложение получит доступ к:</string>
     <string name="install_confirm_update_no_perms">Хотите обновить установленное приложение? Существующие данные не будут потеряны. Оно не требует особых разрешений.</string>
@@ -344,4 +344,11 @@
 
     <string name="tap_to_install_format">Нажмите, чтобы установить %s</string>
     <string name="tap_to_update_format">Нажмите, чтобы обновить %s</string>
+    <string name="install_error_notify_title">Ошибка установки %s</string>
+    <string name="uninstall_error_notify_title">Ошибка удаления %s</string>
+
+
+    <string name="installing">Установка…</string>
+    <string name="uninstalling">Удаление…</string>
+
     </resources>
