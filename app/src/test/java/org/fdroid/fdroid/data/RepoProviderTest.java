@@ -20,7 +20,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-@Config(constants = BuildConfig.class, application = Application.class)
+// TODO: Use sdk=24 when Robolectric supports this
+@Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
 @RunWith(RobolectricGradleTestRunner.class)
 public class RepoProviderTest extends FDroidProviderTest {
 
