@@ -79,11 +79,11 @@ public class DefaultInstallerActivity extends FragmentActivity {
             throw new RuntimeException("Set the data uri to point to an apk location!");
         }
         // https://code.google.com/p/android/issues/detail?id=205827
-        if ((Build.VERSION.SDK_INT < 24) // TODO: Use Build.VERSION_CODES.N
+        if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.N)
                 && (!uri.getScheme().equals("file"))) {
             throw new RuntimeException("PackageInstaller < Android N only supports file scheme!");
         }
-        if ((Build.VERSION.SDK_INT >= 24) // TODO: Use Build.VERSION_CODES.N
+        if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
                 && (!uri.getScheme().equals("content"))) {
             throw new RuntimeException("PackageInstaller >= Android N only supports content scheme!");
         }
@@ -103,7 +103,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
             intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
             intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
             intent.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
-        } else if (Build.VERSION.SDK_INT < 24) { // TODO: Use Build.VERSION_CODES.N
+        } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
             intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
             intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
             intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);

@@ -15,7 +15,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@Config(constants = BuildConfig.class)
+// TODO: Use sdk=24 when Robolectric supports this
+@Config(constants = BuildConfig.class, sdk = 23)
 @RunWith(RobolectricGradleTestRunner.class)
 public class UtilsTest {
 
