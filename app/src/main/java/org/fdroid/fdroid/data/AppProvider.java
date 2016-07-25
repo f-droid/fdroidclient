@@ -648,7 +648,7 @@ public class AppProvider extends FDroidProvider {
         // being no apks for the app in the result set. In that case, we can't tell if it is from
         // a swap repo or not.
         final String isSwap = RepoTable.NAME + "." + RepoTable.Cols.IS_SWAP;
-        final String selection = isSwap + " = 0 OR " + isSwap + " IS NULL";
+        final String selection = "COALESCE(" + isSwap + ", 0) = 0";
         return new AppQuerySelection(selection);
     }
 
@@ -930,7 +930,7 @@ public class AppProvider extends FDroidProvider {
                 " WHERE " +
                     app + "." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + " AND " +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
-                " WHERE " + Cols.UPSTREAM_VERSION_CODE + " = 0 OR " + Cols.UPSTREAM_VERSION_CODE + " IS NULL OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
+                " WHERE COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
 
         db().execSQL(updateSql);
     }
