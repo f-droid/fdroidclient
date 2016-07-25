@@ -25,10 +25,10 @@ public class AppPrefsProvider extends FDroidProvider {
             values.put(Cols.IGNORE_THIS_UPDATE, prefs.ignoreThisUpdate);
 
             if (getPrefsOrNull(context, app) == null) {
-                values.put(Cols.APP_ID, app.getId());
+                values.put(Cols.PACKAGE_NAME, app.packageName);
                 context.getContentResolver().insert(getContentUri(), values);
             } else {
-                context.getContentResolver().update(getAppUri(app.getId()), values, null, null);
+                context.getContentResolver().update(getAppUri(app.packageName), values, null, null);
             }
         }
 
@@ -40,7 +40,7 @@ public class AppPrefsProvider extends FDroidProvider {
 
         @Nullable
         public static AppPrefs getPrefsOrNull(Context context, App app) {
-            Cursor cursor = context.getContentResolver().query(getAppUri(app.getId()), Cols.ALL, null, null, null);
+            Cursor cursor = context.getContentResolver().query(getAppUri(app.packageName), Cols.ALL, null, null, null);
             if (cursor == null) {
                 return null;
             }
@@ -77,18 +77,18 @@ public class AppPrefsProvider extends FDroidProvider {
 
     private static final UriMatcher MATCHER = new UriMatcher(-1);
 
-    private static final String PATH_APP_ID = "appId";
+    private static final String PATH_PACKAGE_NAME = "packageName";
 
     static {
-        MATCHER.addURI(getAuthority(), PATH_APP_ID + "/#", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), PATH_PACKAGE_NAME + "/*", CODE_SINGLE);
     }
 
     private static Uri getContentUri() {
         return Uri.parse("content://" + getAuthority());
     }
 
-    public static Uri getAppUri(long appId) {
-        return getContentUri().buildUpon().appendPath(PATH_APP_ID).appendPath(Long.toString(appId)).build();
+    public static Uri getAppUri(String packageName) {
+        return getContentUri().buildUpon().appendPath(PATH_PACKAGE_NAME).appendPath(packageName).build();
     }
 
     @Override
@@ -110,9 +110,9 @@ public class AppPrefsProvider extends FDroidProvider {
         return MATCHER;
     }
 
-    protected QuerySelection querySingle(long appId) {
-        final String selection = getTableName() + "." + Cols.APP_ID + " = ?";
-        final String[] args = {Long.toString(appId)};
+    protected QuerySelection querySingle(String packageName) {
+        final String selection = getTableName() + "." + Cols.PACKAGE_NAME + " = ?";
+        final String[] args = {packageName};
         return new QuerySelection(selection, args);
     }
 
@@ -122,7 +122,7 @@ public class AppPrefsProvider extends FDroidProvider {
 
         switch (MATCHER.match(uri)) {
             case CODE_SINGLE:
-                selection = selection.add(querySingle(Long.parseLong(uri.getLastPathSegment())));
+                selection = selection.add(querySingle(uri.getLastPathSegment()));
                 break;
 
             default:
@@ -152,7 +152,7 @@ public class AppPrefsProvider extends FDroidProvider {
     public Uri insert(Uri uri, ContentValues values) {
         db().insertOrThrow(getTableName(), null, values);
         getContext().getContentResolver().notifyChange(AppProvider.getCanUpdateUri(), null);
-        return getAppUri(values.getAsLong(Cols.APP_ID));
+        return getAppUri(values.getAsString(Cols.PACKAGE_NAME));
     }
 
     @Override
@@ -160,7 +160,7 @@ public class AppPrefsProvider extends FDroidProvider {
         switch (MATCHER.match(uri)) {
             case CODE_SINGLE:
                 QuerySelection query = new QuerySelection(where, whereArgs)
-                        .add(querySingle(Long.parseLong(uri.getLastPathSegment())));
+                        .add(querySingle(uri.getLastPathSegment()));
                 int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
                 getContext().getContentResolver().notifyChange(AppProvider.getCanUpdateUri(), null);
                 return count;

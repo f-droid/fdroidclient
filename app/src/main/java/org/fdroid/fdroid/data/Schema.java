@@ -14,11 +14,15 @@ public interface Schema {
         String NAME = "fdroid_appPrefs";
 
         interface Cols extends BaseColumns {
-            String APP_ID = "appId";
+            // Join onto app table via packageName, not appId. The corresponding app row could
+            // be deleted and then re-added in the future with the same metadata but a different
+            // rowid. This should not cause us to forget the preferences specified by a user.
+            String PACKAGE_NAME = "packageName";
+
             String IGNORE_ALL_UPDATES = "ignoreAllUpdates";
             String IGNORE_THIS_UPDATE = "ignoreThisUpdate";
 
-            String[] ALL = {APP_ID, IGNORE_ALL_UPDATES, IGNORE_THIS_UPDATE};
+            String[] ALL = {PACKAGE_NAME, IGNORE_ALL_UPDATES, IGNORE_THIS_UPDATE};
         }
     }
 

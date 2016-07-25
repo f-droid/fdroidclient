@@ -300,7 +300,7 @@ public class AppProvider extends FDroidProvider {
                 leftJoin(
                         AppPrefsTable.NAME,
                         "prefs",
-                        "prefs." + AppPrefsTable.Cols.APP_ID + " = " + getTableName() + "." + Cols.ROW_ID);
+                        "prefs." + AppPrefsTable.Cols.PACKAGE_NAME + " = " + getTableName() + "." + Cols.PACKAGE_NAME);
                 requiresLeftJoinToPrefs = true;
             }
         }

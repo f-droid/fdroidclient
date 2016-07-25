@@ -102,7 +102,7 @@ class DBHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_APP_PREFS = "CREATE TABLE " + AppPrefsTable.NAME
             + " ( "
-            + AppPrefsTable.Cols.APP_ID + " INT REFERENCES " + AppTable.NAME + "(" + AppTable.Cols.ROW_ID + ") ON DELETE CASCADE, "
+            + AppPrefsTable.Cols.PACKAGE_NAME + " TEXT, "
             + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + " INT BOOLEAN NOT NULL, "
             + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + " INT NOT NULL "
             + " );";
@@ -120,7 +120,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 59;
+    private static final int DB_VERSION = 60;
 
     private final Context context;
 
@@ -326,6 +326,31 @@ class DBHelper extends SQLiteOpenHelper {
         addTargetSdkVersionToApk(db, oldVersion);
         migrateAppPrimaryKeyToRowId(db, oldVersion);
         removeApkPackageNameColumn(db, oldVersion);
+        addAppPrefsTable(db, oldVersion);
+    }
+
+    private void addAppPrefsTable(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 60) {
+
+            Utils.debugLog(TAG, "Creating app preferences table");
+            db.execSQL(CREATE_TABLE_APP_PREFS);
+
+            Utils.debugLog(TAG, "Migrating app preferences to separate table");
+            db.execSQL(
+                    "INSERT INTO " + AppPrefsTable.NAME + " ("
+                    + AppPrefsTable.Cols.PACKAGE_NAME + ", "
+                    + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", "
+                    + AppPrefsTable.Cols.IGNORE_ALL_UPDATES
+                    + ") SELECT "
+                    + AppTable.Cols.PACKAGE_NAME + ", "
+                    + "ignoreThisUpdate, "
+                    + "ignoreAllUpdates "
+                    + "FROM " + AppTable.NAME + " "
+                    + "WHERE ignoreThisUpdate > 0 OR ignoreAllUpdates > 0"
+            );
+
+            resetTransient(db);
+        }
     }
 
     /**
@@ -666,19 +691,23 @@ class DBHelper extends SQLiteOpenHelper {
      * their repos (either manually or on a scheduled task), they will update regardless of whether
      * they have changed since last update or not.
      */
-    private void clearRepoEtags(SQLiteDatabase db) {
+    private static void clearRepoEtags(SQLiteDatabase db) {
         Utils.debugLog(TAG, "Clearing repo etags, so next update will not be skipped with \"Repos up to date\".");
         db.execSQL("update " + RepoTable.NAME + " set " + RepoTable.Cols.LAST_ETAG + " = NULL");
     }
 
-    private void resetTransient(SQLiteDatabase db, int oldVersion) {
-        context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
-                .putBoolean("triedEmptyUpdate", false).apply();
-        db.execSQL("drop table " + AppTable.NAME);
-        db.execSQL("drop table " + ApkTable.NAME);
-        clearRepoEtags(db);
+    private void resetTransient(SQLiteDatabase db) {
+        Utils.debugLog(TAG, "Removing app + apk tables so they can be recreated. Next time F-Droid updates it should trigger an index update.");
+        context.getSharedPreferences("FDroid", Context.MODE_PRIVATE)
+                .edit()
+                .putBoolean("triedEmptyUpdate", false)
+                .apply();
+
+        db.execSQL("DROP TABLE " + AppTable.NAME);
+        db.execSQL("DROP TABLE " + ApkTable.NAME);
         db.execSQL(CREATE_TABLE_APP);
         db.execSQL(CREATE_TABLE_APK);
+        clearRepoEtags(db);
         ensureIndexes(db);
     }
 
@@ -712,12 +741,14 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE INDEX IF NOT EXISTS apk_appId on " + ApkTable.NAME + " (" + ApkTable.Cols.APP_ID + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS repoId ON " + ApkTable.NAME + " (" + ApkTable.Cols.REPO_ID + ");");
 
-        Utils.debugLog(TAG, "Ensuring indexes exist for " + AppPrefsTable.NAME);
-        db.execSQL("CREATE INDEX IF NOT EXISTS appPrefs_appId on " + AppPrefsTable.NAME + " (" + AppPrefsTable.Cols.APP_ID + ");");
-        db.execSQL("CREATE INDEX IF NOT EXISTS appPrefs_appId_ignoreAll_ignoreThis on " + AppPrefsTable.NAME + " (" +
-                AppPrefsTable.Cols.APP_ID + ", " +
-                AppPrefsTable.Cols.IGNORE_ALL_UPDATES + ", " +
-                AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ");");
+        if (tableExists(db, AppPrefsTable.NAME)) {
+            Utils.debugLog(TAG, "Ensuring indexes exist for " + AppPrefsTable.NAME);
+            db.execSQL("CREATE INDEX IF NOT EXISTS appPrefs_packageName on " + AppPrefsTable.NAME + " (" + AppPrefsTable.Cols.PACKAGE_NAME + ");");
+            db.execSQL("CREATE INDEX IF NOT EXISTS appPrefs_packageName_ignoreAll_ignoreThis on " + AppPrefsTable.NAME + " (" +
+                    AppPrefsTable.Cols.PACKAGE_NAME + ", " +
+                    AppPrefsTable.Cols.IGNORE_ALL_UPDATES + ", " +
+                    AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ");");
+        }
 
         Utils.debugLog(TAG, "Ensuring indexes exist for " + InstalledAppTable.NAME);
         db.execSQL("CREATE INDEX IF NOT EXISTS installedApp_appId_vercode on " + InstalledAppTable.NAME + " (" +
@@ -753,10 +784,14 @@ class DBHelper extends SQLiteOpenHelper {
                 + ApkTable.Cols.TARGET_SDK_VERSION + " integer");
     }
 
-    private static boolean columnExists(SQLiteDatabase db,
-            String table, String column) {
+    private static boolean columnExists(SQLiteDatabase db, String table, String column) {
         return db.rawQuery("select * from " + table + " limit 0,1", null)
                 .getColumnIndex(column) != -1;
+    }
+
+    private static boolean tableExists(SQLiteDatabase db, String table) {
+        return db.rawQuery("SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?",
+                new String[] {table}).getCount() > 0;
     }
 
 }
