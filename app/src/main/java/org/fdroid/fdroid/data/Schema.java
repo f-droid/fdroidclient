@@ -9,6 +9,19 @@ import android.provider.BaseColumns;
  */
 public interface Schema {
 
+    interface AppPrefsTable {
+
+        String NAME = "fdroid_appPrefs";
+
+        interface Cols extends BaseColumns {
+            String APP_ID = "appId";
+            String IGNORE_ALL_UPDATES = "ignoreAllUpdates";
+            String IGNORE_THIS_UPDATE = "ignoreThisUpdate";
+
+            String[] ALL = {APP_ID, IGNORE_ALL_UPDATES, IGNORE_THIS_UPDATE,};
+        }
+    }
+
     interface AppTable {
 
         String NAME = "fdroid_app";

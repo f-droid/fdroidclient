@@ -11,6 +11,7 @@ import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
@@ -100,6 +101,13 @@ class DBHelper extends SQLiteOpenHelper {
             + AppTable.Cols.ICON_URL + " text, "
             + AppTable.Cols.ICON_URL_LARGE + " text, "
             + "primary key(" + AppTable.Cols.PACKAGE_NAME + "));";
+
+    private static final String CREATE_TABLE_APP_PREFS = "CREATE TABLE " + AppPrefsTable.NAME
+            + " ( "
+            + AppPrefsTable.Cols.APP_ID + " INT REFERENCES " + AppTable.NAME + "(" + AppTable.Cols.ROW_ID + ") ON DELETE CASCADE, "
+            + AppPrefsTable.Cols.IGNORE_THIS_UPDATE+ " INT BOOLEAN NOT NULL, "
+            + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + " INT NOT NULL "
+            + " );";
 
     private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + InstalledAppTable.NAME
             + " ( "
@@ -219,6 +227,7 @@ class DBHelper extends SQLiteOpenHelper {
         createAppApk(db);
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
         db.execSQL(CREATE_TABLE_REPO);
+        db.execSQL(CREATE_TABLE_APP_PREFS);
 
         insertRepo(
                 db,
