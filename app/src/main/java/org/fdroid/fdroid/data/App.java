@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.XmlResourceParser;
 import android.database.Cursor;
+import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -34,7 +35,7 @@ import java.util.regex.Pattern;
 
 import org.fdroid.fdroid.data.Schema.AppTable.Cols;
 
-public class App extends ValueObject implements Comparable<App> {
+public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     private static final String TAG = "App";
 
@@ -142,10 +143,6 @@ public class App extends ValueObject implements Comparable<App> {
     }
 
     public App() {
-    }
-
-    public App(Parcelable parcelable) {
-        this(new ContentValuesCursor((ContentValues) parcelable));
     }
 
     public App(Cursor cursor) {
@@ -560,4 +557,100 @@ public class App extends ValueObject implements Comparable<App> {
     public long getId() {
         return id;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeByte(this.compatible ? (byte) 1 : (byte) 0);
+        dest.writeString(this.packageName);
+        dest.writeString(this.name);
+        dest.writeString(this.summary);
+        dest.writeString(this.icon);
+        dest.writeString(this.description);
+        dest.writeString(this.license);
+        dest.writeString(this.author);
+        dest.writeString(this.email);
+        dest.writeString(this.webURL);
+        dest.writeString(this.trackerURL);
+        dest.writeString(this.sourceURL);
+        dest.writeString(this.changelogURL);
+        dest.writeString(this.donateURL);
+        dest.writeString(this.bitcoinAddr);
+        dest.writeString(this.litecoinAddr);
+        dest.writeString(this.flattrID);
+        dest.writeString(this.upstreamVersionName);
+        dest.writeInt(this.upstreamVersionCode);
+        dest.writeString(this.suggestedVersionName);
+        dest.writeInt(this.suggestedVersionCode);
+        dest.writeLong(this.added != null ? this.added.getTime() : -1);
+        dest.writeLong(this.lastUpdated != null ? this.lastUpdated.getTime() : -1);
+        dest.writeStringArray(this.categories);
+        dest.writeStringArray(this.antiFeatures);
+        dest.writeStringArray(this.requirements);
+        dest.writeByte(this.ignoreAllUpdates ? (byte) 1 : (byte) 0);
+        dest.writeInt(this.ignoreThisUpdate);
+        dest.writeString(this.iconUrl);
+        dest.writeString(this.iconUrlLarge);
+        dest.writeString(this.installedVersionName);
+        dest.writeInt(this.installedVersionCode);
+        dest.writeParcelable(this.installedApk, flags);
+        dest.writeString(this.installedSig);
+        dest.writeLong(this.id);
+    }
+
+    protected App(Parcel in) {
+        this.compatible = in.readByte() != 0;
+        this.packageName = in.readString();
+        this.name = in.readString();
+        this.summary = in.readString();
+        this.icon = in.readString();
+        this.description = in.readString();
+        this.license = in.readString();
+        this.author = in.readString();
+        this.email = in.readString();
+        this.webURL = in.readString();
+        this.trackerURL = in.readString();
+        this.sourceURL = in.readString();
+        this.changelogURL = in.readString();
+        this.donateURL = in.readString();
+        this.bitcoinAddr = in.readString();
+        this.litecoinAddr = in.readString();
+        this.flattrID = in.readString();
+        this.upstreamVersionName = in.readString();
+        this.upstreamVersionCode = in.readInt();
+        this.suggestedVersionName = in.readString();
+        this.suggestedVersionCode = in.readInt();
+        long tmpAdded = in.readLong();
+        this.added = tmpAdded == -1 ? null : new Date(tmpAdded);
+        long tmpLastUpdated = in.readLong();
+        this.lastUpdated = tmpLastUpdated == -1 ? null : new Date(tmpLastUpdated);
+        this.categories = in.createStringArray();
+        this.antiFeatures = in.createStringArray();
+        this.requirements = in.createStringArray();
+        this.ignoreAllUpdates = in.readByte() != 0;
+        this.ignoreThisUpdate = in.readInt();
+        this.iconUrl = in.readString();
+        this.iconUrlLarge = in.readString();
+        this.installedVersionName = in.readString();
+        this.installedVersionCode = in.readInt();
+        this.installedApk = in.readParcelable(Apk.class.getClassLoader());
+        this.installedSig = in.readString();
+        this.id = in.readLong();
+    }
+
+    public static final Parcelable.Creator<App> CREATOR = new Parcelable.Creator<App>() {
+        @Override
+        public App createFromParcel(Parcel source) {
+            return new App(source);
+        }
+
+        @Override
+        public App[] newArray(int size) {
+            return new App[size];
+        }
+    };
 }

@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Build;
+import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.fdroid.fdroid.Utils;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
-public class Apk extends ValueObject implements Comparable<Apk> {
+public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
     // Using only byte-range keeps it only 8-bits in the SQLite database
     public static final int SDK_VERSION_MAX_VALUE = Byte.MAX_VALUE;
@@ -67,10 +68,6 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     public long appId;
 
     public Apk() {
-    }
-
-    public Apk(Parcelable parcelable) {
-        this(new ContentValuesCursor((ContentValues) parcelable));
     }
 
     public Apk(Cursor cursor) {
@@ -231,4 +228,74 @@ public class Apk extends ValueObject implements Comparable<Apk> {
         return Integer.compare(versionCode, apk.versionCode);
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.packageName);
+        dest.writeString(this.versionName);
+        dest.writeInt(this.versionCode);
+        dest.writeInt(this.size);
+        dest.writeLong(this.repo);
+        dest.writeString(this.hash);
+        dest.writeString(this.hashType);
+        dest.writeInt(this.minSdkVersion);
+        dest.writeInt(this.targetSdkVersion);
+        dest.writeInt(this.maxSdkVersion);
+        dest.writeLong(this.added != null ? this.added.getTime() : -1);
+        dest.writeStringArray(this.permissions);
+        dest.writeStringArray(this.features);
+        dest.writeStringArray(this.nativecode);
+        dest.writeString(this.sig);
+        dest.writeByte(this.compatible ? (byte) 1 : (byte) 0);
+        dest.writeString(this.apkName);
+        dest.writeSerializable(this.installedFile);
+        dest.writeString(this.srcname);
+        dest.writeInt(this.repoVersion);
+        dest.writeString(this.repoAddress);
+        dest.writeStringArray(this.incompatibleReasons);
+        dest.writeLong(this.appId);
+    }
+
+    protected Apk(Parcel in) {
+        this.packageName = in.readString();
+        this.versionName = in.readString();
+        this.versionCode = in.readInt();
+        this.size = in.readInt();
+        this.repo = in.readLong();
+        this.hash = in.readString();
+        this.hashType = in.readString();
+        this.minSdkVersion = in.readInt();
+        this.targetSdkVersion = in.readInt();
+        this.maxSdkVersion = in.readInt();
+        long tmpAdded = in.readLong();
+        this.added = tmpAdded == -1 ? null : new Date(tmpAdded);
+        this.permissions = in.createStringArray();
+        this.features = in.createStringArray();
+        this.nativecode = in.createStringArray();
+        this.sig = in.readString();
+        this.compatible = in.readByte() != 0;
+        this.apkName = in.readString();
+        this.installedFile = (SanitizedFile) in.readSerializable();
+        this.srcname = in.readString();
+        this.repoVersion = in.readInt();
+        this.repoAddress = in.readString();
+        this.incompatibleReasons = in.createStringArray();
+        this.appId = in.readLong();
+    }
+
+    public static final Parcelable.Creator<Apk> CREATOR = new Parcelable.Creator<Apk>() {
+        @Override
+        public Apk createFromParcel(Parcel source) {
+            return new Apk(source);
+        }
+
+        @Override
+        public Apk[] newArray(int size) {
+            return new Apk[size];
+        }
+    };
 }

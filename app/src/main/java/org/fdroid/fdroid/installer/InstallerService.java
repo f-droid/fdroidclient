@@ -23,7 +23,6 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Parcelable;
 
 import org.fdroid.fdroid.data.Apk;
 
@@ -52,8 +51,7 @@ public class InstallerService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Parcelable apkParcel = intent.getParcelableExtra(Installer.EXTRA_APK);
-        Apk apk = apkParcel == null ? null : new Apk(apkParcel);
+        Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
 
         Installer installer = InstallerFactory.create(this, apk);
 
@@ -80,7 +78,7 @@ public class InstallerService extends IntentService {
         intent.setAction(ACTION_INSTALL);
         intent.setData(localApkUri);
         intent.putExtra(Installer.EXTRA_DOWNLOAD_URI, downloadUri);
-        intent.putExtra(Installer.EXTRA_APK, apk.toContentValues());
+        intent.putExtra(Installer.EXTRA_APK, apk);
         context.startService(intent);
     }
 
