@@ -8,7 +8,7 @@ public class SupportedArchitectures {
     /**
      * The most preferred ABI is the first element in the list.
      */
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @TargetApi(21)
     @SuppressWarnings("deprecation")
     public static String[] getAbis() {
         if (Build.VERSION.SDK_INT >= 21) {

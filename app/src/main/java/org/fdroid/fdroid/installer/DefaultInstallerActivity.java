@@ -79,11 +79,11 @@ public class DefaultInstallerActivity extends FragmentActivity {
             throw new RuntimeException("Set the data uri to point to an apk location!");
         }
         // https://code.google.com/p/android/issues/detail?id=205827
-        if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.N)
+        if ((Build.VERSION.SDK_INT < 24)
                 && (!uri.getScheme().equals("file"))) {
             throw new RuntimeException("PackageInstaller < Android N only supports file scheme!");
         }
-        if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+        if ((Build.VERSION.SDK_INT >= 24)
                 && (!uri.getScheme().equals("content"))) {
             throw new RuntimeException("PackageInstaller >= Android N only supports content scheme!");
         }
@@ -94,16 +94,16 @@ public class DefaultInstallerActivity extends FragmentActivity {
         // works only when being installed as system-app
         // https://code.google.com/p/android/issues/detail?id=42253
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+        if (Build.VERSION.SDK_INT < 14) {
             intent.setAction(Intent.ACTION_VIEW);
             intent.setDataAndType(uri, "application/vnd.android.package-archive");
-        } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+        } else if (Build.VERSION.SDK_INT < 16) {
             intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
             intent.setData(uri);
             intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
             intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
             intent.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
-        } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+        } else if (Build.VERSION.SDK_INT < 24) {
             intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
             intent.setData(uri);
             intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
@@ -144,7 +144,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
         Intent intent = new Intent();
         intent.setData(uri);
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+        if (Build.VERSION.SDK_INT < 14) {
             intent.setAction(Intent.ACTION_DELETE);
         } else {
             intent.setAction(Intent.ACTION_UNINSTALL_PACKAGE);
@@ -170,7 +170,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
                  * com.android.packageinstaller.PackageInstallerActivity: setResult is
                  * never executed on Androids < 4.0
                  */
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                if (Build.VERSION.SDK_INT < 14) {
                     installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_COMPLETE);
                     break;
                 }
@@ -196,7 +196,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
                 break;
             case REQUEST_CODE_UNINSTALL:
                 // resultCode is always 0 on Android < 4.0.
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                if (Build.VERSION.SDK_INT < 14) {
                     installer.sendBroadcastUninstall(uninstallPackageName,
                             Installer.ACTION_UNINSTALL_COMPLETE);
                     break;

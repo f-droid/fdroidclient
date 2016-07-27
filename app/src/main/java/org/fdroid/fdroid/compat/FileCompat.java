@@ -42,7 +42,7 @@ public class FileCompat {
      */
     private static class Symlink21 {
 
-        @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+        @TargetApi(21)
         void symlink(SanitizedFile source, SanitizedFile dest) {
             try {
                 android.system.Os.symlink(source.getAbsolutePath(), dest.getAbsolutePath());

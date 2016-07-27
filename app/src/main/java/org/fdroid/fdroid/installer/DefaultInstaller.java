@@ -92,6 +92,6 @@ public class DefaultInstaller extends Installer {
     @Override
     protected boolean supportsContentUri() {
         // Android N only supports content Uris
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
+        return Build.VERSION.SDK_INT >= 24;
     }
 }

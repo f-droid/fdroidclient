@@ -104,10 +104,10 @@ public class AppSecurityPermissions {
             super(info);
         }
 
-        @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
+        @TargetApi(22)
         public Drawable loadGroupIcon(Context context, PackageManager pm) {
             if (icon != 0) {
-                return (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP_MR1) ? loadIcon(pm) : loadUnbadgedIcon(pm);
+                return (Build.VERSION.SDK_INT < 22) ? loadIcon(pm) : loadUnbadgedIcon(pm);
             }
             return ContextCompat.getDrawable(context, R.drawable.ic_perm_device_info);
         }
@@ -325,9 +325,9 @@ public class AppSecurityPermissions {
      * doesn't currently hold this permission. On older devices that don't support
      * this concept, permissions are never "new permissions".
      */
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @TargetApi(16)
     private static boolean isNewPermission(PackageInfo installedPkgInfo, int existingFlags) {
-        if (installedPkgInfo == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+        if (installedPkgInfo == null || Build.VERSION.SDK_INT < 16) {
             return false;
         }
 

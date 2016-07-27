@@ -2,7 +2,6 @@ package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
@@ -32,7 +31,7 @@ public class ConfirmReceive extends RelativeLayout implements SwapWorkflowActivi
         super(context, attrs, defStyleAttr);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @TargetApi(21)
     public ConfirmReceive(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
