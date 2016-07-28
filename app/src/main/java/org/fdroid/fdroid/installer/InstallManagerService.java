@@ -81,12 +81,6 @@ public class InstallManagerService extends Service {
      */
     private static final HashMap<String, App> ACTIVE_APPS = new HashMap<>(3);
 
-    /**
-     * The array of active {@link BroadcastReceiver}s for each active APK. The key is the
-     * download URL, as in {@link Apk#getUrl()} or {@code urlString}.
-     */
-    private final HashMap<String, BroadcastReceiver[]> receivers = new HashMap<>(3);
-
     private LocalBroadcastManager localBroadcastManager;
     private NotificationManager notificationManager;
 
@@ -184,68 +178,50 @@ public class InstallManagerService extends Service {
         localBroadcastManager.sendBroadcast(intent);
     }
 
-    private void unregisterDownloaderReceivers(String urlString) {
-        for (BroadcastReceiver receiver : receivers.get(urlString)) {
-            localBroadcastManager.unregisterReceiver(receiver);
-        }
-    }
-
     private void registerDownloaderReceivers(String urlString, final NotificationCompat.Builder builder) {
-        BroadcastReceiver startedReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-            }
-        };
-        BroadcastReceiver progressReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String urlString = intent.getDataString();
-                int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
-                int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
-                builder.setProgress(totalBytes, bytesRead, false);
-                notificationManager.notify(urlString.hashCode(), builder.build());
-            }
-        };
-        BroadcastReceiver completeReceiver = new BroadcastReceiver() {
+
+        BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 Uri downloadUri = intent.getData();
                 String urlString = downloadUri.toString();
-                File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
-                Uri localApkUri = Uri.fromFile(localFile);
 
-                Utils.debugLog(TAG, "download completed of " + urlString + " to " + localApkUri);
+                switch (intent.getAction()) {
+                    case Downloader.ACTION_STARTED:
+                        // nothing to do
+                        break;
+                    case Downloader.ACTION_PROGRESS:
+                        int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
+                        int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                        builder.setProgress(totalBytes, bytesRead, false);
+                        notificationManager.notify(urlString.hashCode(), builder.build());
+                        break;
+                    case Downloader.ACTION_COMPLETE:
+                        File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
+                        Uri localApkUri = Uri.fromFile(localFile);
 
-                unregisterDownloaderReceivers(urlString);
-                registerInstallerReceivers(downloadUri);
+                        Utils.debugLog(TAG, "download completed of " + urlString + " to " + localApkUri);
 
-                Apk apk = ACTIVE_APKS.get(urlString);
+                        localBroadcastManager.unregisterReceiver(this);
+                        registerInstallerReceivers(downloadUri);
 
-                InstallerService.install(context, localApkUri, downloadUri, apk);
+                        Apk apk = ACTIVE_APKS.get(urlString);
+
+                        InstallerService.install(context, localApkUri, downloadUri, apk);
+                        break;
+                    case Downloader.ACTION_INTERRUPTED:
+                        removeFromActive(urlString);
+                        localBroadcastManager.unregisterReceiver(this);
+                        cancelNotification(urlString);
+                        break;
+                    default:
+                        throw new RuntimeException("intent action not handled!");
+                }
             }
         };
-        BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String urlString = intent.getDataString();
-                removeFromActive(urlString);
-                unregisterDownloaderReceivers(urlString);
-                cancelNotification(urlString);
-            }
-        };
-        localBroadcastManager.registerReceiver(startedReceiver,
-                DownloaderService.getIntentFilter(urlString, Downloader.ACTION_STARTED));
-        localBroadcastManager.registerReceiver(progressReceiver,
-                DownloaderService.getIntentFilter(urlString, Downloader.ACTION_PROGRESS));
-        localBroadcastManager.registerReceiver(completeReceiver,
-                DownloaderService.getIntentFilter(urlString, Downloader.ACTION_COMPLETE));
-        localBroadcastManager.registerReceiver(interruptedReceiver,
-                DownloaderService.getIntentFilter(urlString, Downloader.ACTION_INTERRUPTED));
-        receivers.put(urlString, new BroadcastReceiver[]{
-                startedReceiver, progressReceiver, completeReceiver, interruptedReceiver,
-        });
 
-
+        localBroadcastManager.registerReceiver(downloadReceiver,
+                DownloaderService.getIntentFilter(urlString));
     }
 
     private void registerInstallerReceivers(Uri downloadUri) {
