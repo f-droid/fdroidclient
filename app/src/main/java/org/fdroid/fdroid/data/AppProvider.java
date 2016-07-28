@@ -59,12 +59,6 @@ public class AppProvider extends FDroidProvider {
             return cursorToList(cursor);
         }
 
-        public static List<App> findIgnored(Context context, String[] projection) {
-            final Uri uri = AppProvider.getIgnoredUri();
-            Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
-            return cursorToList(cursor);
-        }
-
         static List<App> cursorToList(Cursor cursor) {
             int knownAppCount = cursor != null ? cursor.getCount() : 0;
             List<App> apps = new ArrayList<>(knownAppCount);
@@ -153,6 +147,10 @@ public class AppProvider extends FDroidProvider {
         public static void calcDetailsFromIndex(Context context) {
             final Uri fromUpstream = calcAppDetailsFromIndexUri();
             context.getContentResolver().update(fromUpstream, null, null, null);
+        }
+
+        public static List<App> findCanUpdate(Context context, String[] projection) {
+            return cursorToList(context.getContentResolver().query(AppProvider.getCanUpdateUri(), projection, null, null, null));
         }
     }
 
@@ -406,7 +404,6 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
     private static final String PATH_NEWLY_ADDED = "newlyAdded";
     private static final String PATH_CATEGORY = "category";
-    private static final String PATH_IGNORED = "ignored";
     private static final String PATH_CALC_APP_DETAILS_FROM_INDEX = "calcDetailsFromIndex";
     private static final String PATH_REPO = "repo";
 
@@ -417,8 +414,7 @@ public class AppProvider extends FDroidProvider {
     private static final int RECENTLY_UPDATED = NO_APKS + 1;
     private static final int NEWLY_ADDED = RECENTLY_UPDATED + 1;
     private static final int CATEGORY = NEWLY_ADDED + 1;
-    private static final int IGNORED = CATEGORY + 1;
-    private static final int CALC_APP_DETAILS_FROM_INDEX = IGNORED + 1;
+    private static final int CALC_APP_DETAILS_FROM_INDEX = CATEGORY + 1;
     private static final int REPO = CALC_APP_DETAILS_FROM_INDEX + 1;
     private static final int SEARCH_REPO = REPO + 1;
     private static final int SEARCH_INSTALLED = SEARCH_REPO + 1;
@@ -427,7 +423,6 @@ public class AppProvider extends FDroidProvider {
     static {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
         MATCHER.addURI(getAuthority(), PATH_CALC_APP_DETAILS_FROM_INDEX, CALC_APP_DETAILS_FROM_INDEX);
-        MATCHER.addURI(getAuthority(), PATH_IGNORED, IGNORED);
         MATCHER.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
         MATCHER.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
         MATCHER.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
@@ -452,10 +447,6 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getNewlyAddedUri() {
         return Uri.withAppendedPath(getContentUri(), PATH_NEWLY_ADDED);
-    }
-
-    public static Uri getIgnoredUri() {
-        return Uri.withAppendedPath(getContentUri(), PATH_IGNORED);
     }
 
     private static Uri calcAppDetailsFromIndexUri() {
@@ -636,13 +627,6 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection, args);
     }
 
-    private AppQuerySelection queryIgnored() {
-        final String table = getTableName();
-        final String selection = "COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + ", 0) = 1 OR " +
-                "COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", 0) >= " + table + "." + Cols.SUGGESTED_VERSION_CODE;
-        return new AppQuerySelection(selection).requireLeftJoinPrefs();
-    }
-
     private AppQuerySelection queryExcludeSwap() {
         // fdroid_repo will have null fields if the LEFT JOIN didn't resolve, e.g. due to there
         // being no apks for the app in the result set. In that case, we can't tell if it is from
@@ -749,10 +733,6 @@ public class AppProvider extends FDroidProvider {
 
             case NO_APKS:
                 selection = selection.add(queryNoApks());
-                break;
-
-            case IGNORED:
-                selection = selection.add(queryIgnored());
                 break;
 
             case CATEGORY:

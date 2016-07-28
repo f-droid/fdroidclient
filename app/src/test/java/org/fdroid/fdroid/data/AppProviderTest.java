@@ -170,21 +170,27 @@ public class AppProviderTest extends FDroidProviderTest {
         assertResultCount(contentResolver, 10, AppProvider.getContentUri(), PROJ);
 
         String[] projection = {Cols.PACKAGE_NAME};
-        List<App> ignoredApps = AppProvider.Helper.findIgnored(context, projection);
+        List<App> canUpdateApps = AppProvider.Helper.findCanUpdate(context, projection);
 
-        String[] expectedIgnored = {
-                "installed, already latest, ignore all",
-                "installed, already latest, ignore latest",
-                // NOT "installed, already latest, ignore old" - because it
-                // is should only ignore if "ignored version" is >= suggested
+        String[] expectedCanUpdate = {
+                "installed, old version, no ignore",
+                "installed, old version, ignore newer, but not latest",
 
-                "installed, old version, ignore all",
-                "installed, old version, ignore latest",
-                // NOT "installed, old version, ignore newer, but not latest"
-                // for the same reason as above.
+                // These are ignored because they don't have updates available:
+                // "installed, only one version available",
+                // "installed, already latest, no ignore",
+                // "installed, already latest, ignore old",
+                // "not installed",
+
+                // These four should be ignored due to the app preferences:
+                // "installed, already latest, ignore all",
+                // "installed, already latest, ignore latest",
+                // "installed, old version, ignore all",
+                // "installed, old version, ignore latest",
+
         };
 
-        assertContainsOnlyIds(ignoredApps, expectedIgnored);
+        assertContainsOnlyIds(canUpdateApps, expectedCanUpdate);
     }
 
     private void assertContainsOnlyIds(List<App> actualApps, String[] expectedIds) {
