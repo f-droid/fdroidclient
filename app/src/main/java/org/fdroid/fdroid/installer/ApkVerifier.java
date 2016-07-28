@@ -45,6 +45,10 @@ class ApkVerifier {
     private final Apk expectedApk;
     private final PackageManager pm;
 
+    /**
+     * IMPORTANT: localApkUri must be available as a File on the file system with an absolute path
+     * to be readable by Android's internal PackageParser.
+     */
     ApkVerifier(Context context, Uri localApkUri, Apk expectedApk) {
         this.localApkUri = localApkUri;
         this.expectedApk = expectedApk;
@@ -52,11 +56,18 @@ class ApkVerifier {
     }
 
     public void verifyApk() throws ApkVerificationException, ApkPermissionUnequalException {
+        Utils.debugLog(TAG, "localApkUri.getPath: " + localApkUri.getPath());
+
         // parse downloaded apk file locally
         PackageInfo localApkInfo = pm.getPackageArchiveInfo(
                 localApkUri.getPath(), PackageManager.GET_PERMISSIONS);
         if (localApkInfo == null) {
-            throw new ApkVerificationException("Parsing apk file failed!");
+            // Unfortunately, more specific errors are not forwarded to us
+            // but the internal PackageParser sometimes shows warnings in logcat such as
+            // "Requires newer sdk version #14 (current version is #11)"
+            throw new ApkVerificationException("Parsing apk file failed!" +
+                    "Maybe minSdk of apk is lower than current Sdk?" +
+                    "Look into logcat for more specific warnings of Android's PackageParser");
         }
 
         // check if the apk has the expected packageName
