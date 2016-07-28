@@ -103,7 +103,8 @@ class DBHelper extends SQLiteOpenHelper {
 
     static final String CREATE_TABLE_APP_METADATA = "CREATE TABLE " + AppMetadataTable.NAME
             + " ( "
-            + AppMetadataTable.Cols.PACKAGE_NAME + " text not null, "
+            + AppMetadataTable.Cols.PACKAGE_ID + " integer not null, "
+            + AppMetadataTable.Cols.REPO_ID + " integer not null, "
             + AppMetadataTable.Cols.NAME + " text not null, "
             + AppMetadataTable.Cols.SUMMARY + " text not null, "
             + AppMetadataTable.Cols.ICON + " text, "
@@ -130,7 +131,7 @@ class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.IS_COMPATIBLE + " int not null,"
             + AppMetadataTable.Cols.ICON_URL + " text, "
             + AppMetadataTable.Cols.ICON_URL_LARGE + " text, "
-            + "primary key(" + AppMetadataTable.Cols.PACKAGE_NAME + "));";
+            + "primary key(" + AppMetadataTable.Cols.PACKAGE_ID + ", " + AppMetadataTable.Cols.REPO_ID + "));";
 
     private static final String CREATE_TABLE_APP_PREFS = "CREATE TABLE " + AppPrefsTable.NAME
             + " ( "
@@ -434,7 +435,7 @@ class DBHelper extends SQLiteOpenHelper {
                 + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", "
                 + AppPrefsTable.Cols.IGNORE_ALL_UPDATES
                 + ") SELECT "
-                + AppMetadataTable.Cols.PACKAGE_NAME + ", "
+                + "id, "
                 + "ignoreThisUpdate, "
                 + "ignoreAllUpdates "
                 + "FROM " + AppMetadataTable.NAME + " "
@@ -543,7 +544,7 @@ class DBHelper extends SQLiteOpenHelper {
                 final String update = "UPDATE " + ApkTable.NAME + " SET " + ApkTable.Cols.APP_ID + " = ( " +
                         "SELECT app." + AppMetadataTable.Cols.ROW_ID + " " +
                         "FROM " + AppMetadataTable.NAME + " AS app " +
-                        "WHERE " + ApkTable.NAME + ".id = app." + AppMetadataTable.Cols.PACKAGE_NAME + ")";
+                        "WHERE " + ApkTable.NAME + ".id = app.id)";
                 Log.i(TAG, "Updating foreign key from " + ApkTable.NAME + " to " + AppMetadataTable.NAME + " to use numeric foreign key.");
                 Utils.debugLog(TAG, update);
                 db.execSQL(update);
@@ -840,9 +841,16 @@ class DBHelper extends SQLiteOpenHelper {
         }
 
         Utils.debugLog(TAG, "Ensuring indexes exist for " + AppMetadataTable.NAME);
-        db.execSQL("CREATE INDEX IF NOT EXISTS app_id on " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.PACKAGE_NAME + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS name on " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.NAME + ");"); // Used for sorting most lists
         db.execSQL("CREATE INDEX IF NOT EXISTS added on " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.ADDED + ");"); // Used for sorting "newly added"
+
+        if (columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.PACKAGE_ID)) {
+            db.execSQL("CREATE INDEX IF NOT EXISTS metadata_packageId ON " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.PACKAGE_ID + ");");
+        }
+
+        if (columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.REPO_ID)) {
+            db.execSQL("CREATE INDEX IF NOT EXISTS metadata_repoId ON " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.REPO_ID + ");");
+        }
 
         Utils.debugLog(TAG, "Ensuring indexes exist for " + ApkTable.NAME);
         db.execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");

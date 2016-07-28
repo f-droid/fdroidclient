@@ -259,7 +259,7 @@ public class InstallManagerService extends Service {
                             App app = getAppFromActive(downloadUrl);
                             if (app == null) {
                                 ContentResolver resolver = context.getContentResolver();
-                                app = AppProvider.Helper.findByPackageName(resolver, apk.packageName);
+                                app = AppProvider.Helper.findByPackageName(resolver, apk.packageName, apk.repo);
                             }
                             // show notification if app details is not visible
                             if (app != null && AppDetails.isAppVisible(app.packageName)) {
@@ -346,7 +346,7 @@ public class InstallManagerService extends Service {
             String name = getAppName(apk);
             if (TextUtils.isEmpty(name) || name.equals(new App().name)) {
                 ContentResolver resolver = getContentResolver();
-                App app = AppProvider.Helper.findByPackageName(resolver, apk.packageName);
+                App app = AppProvider.Helper.findByPackageName(resolver, apk.packageName, apk.repo);
                 if (app == null || TextUtils.isEmpty(app.name)) {
                     return;  // do not have a name to display, so leave notification as is
                 }

@@ -18,6 +18,7 @@ import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
+import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
@@ -120,13 +121,17 @@ public class AppProvider extends FDroidProvider {
             return categories;
         }
 
-        public static App findByPackageName(ContentResolver resolver, String packageName) {
-            return findByPackageName(resolver, packageName, Cols.ALL);
+        public static App findHighestPriorityMetadata(ContentResolver resolver, String packageName) {
+            throw new UnsupportedOperationException("TODO: Pull back the metadata with the highest priority for packageName");
         }
 
-        public static App findByPackageName(ContentResolver resolver, String packageName,
+        public static App findByPackageName(ContentResolver resolver, String packageName, long repoId) {
+            return findByPackageName(resolver, packageName, repoId, Cols.ALL);
+        }
+
+        public static App findByPackageName(ContentResolver resolver, String packageName, long repoId,
                                             String[] projection) {
-            final Uri uri = getContentUri(packageName);
+            final Uri uri = getAppUri(packageName, repoId);
             return cursorToApp(resolver.query(uri, projection, null, null, null));
         }
 
@@ -254,11 +259,13 @@ public class AppProvider extends FDroidProvider {
 
         @Override
         protected String getRequiredTables() {
+            final String pkg  = PackageTable.NAME;
             final String app  = getTableName();
             final String apk  = getApkTableName();
             final String repo = RepoTable.NAME;
 
-            return app +
+            return pkg +
+                " JOIN " + app + " ON (" + app + "." + Cols.PACKAGE_ID + " = " + pkg + "." + PackageTable.Cols.ROW_ID + ") " +
                 " LEFT JOIN " + apk + " ON (" + apk + "." + ApkTable.Cols.APP_ID + " = " + app + "." + Cols.ROW_ID + ") " +
                 " LEFT JOIN " + repo + " ON (" + apk + "." + ApkTable.Cols.REPO_ID + " = " + repo + "." + RepoTable.Cols._ID + ") ";
         }
@@ -291,7 +298,7 @@ public class AppProvider extends FDroidProvider {
                 join(
                         InstalledAppTable.NAME,
                         "installed",
-                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + "." + Cols.PACKAGE_NAME);
+                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME);
                 requiresInstalledTable = true;
             }
         }
@@ -301,7 +308,7 @@ public class AppProvider extends FDroidProvider {
                 leftJoin(
                         AppPrefsTable.NAME,
                         "prefs",
-                        "prefs." + AppPrefsTable.Cols.PACKAGE_NAME + " = " + getTableName() + "." + Cols.PACKAGE_NAME);
+                        "prefs." + AppPrefsTable.Cols.PACKAGE_NAME + " = " + PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME);
                 requiresLeftJoinToPrefs = true;
             }
         }
@@ -311,7 +318,7 @@ public class AppProvider extends FDroidProvider {
                 leftJoin(
                         InstalledAppTable.NAME,
                         "installed",
-                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + "." + Cols.PACKAGE_NAME);
+                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME);
                 requiresInstalledTable = true;
             }
         }
@@ -319,6 +326,9 @@ public class AppProvider extends FDroidProvider {
         @Override
         public void addField(String field) {
             switch (field) {
+                case Cols.Package.PACKAGE_NAME:
+                    appendField(PackageTable.Cols.PACKAGE_NAME, PackageTable.NAME, Cols.Package.PACKAGE_NAME);
+                    break;
                 case Cols.SuggestedApk.VERSION_NAME:
                     addSuggestedApkVersionField();
                     break;
@@ -404,6 +414,7 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_SEARCH_REPO = "searchRepo";
     private static final String PATH_NO_APKS = "noApks";
     protected static final String PATH_APPS = "apps";
+    protected static final String PATH_APP = "app";
     private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
     private static final String PATH_NEWLY_ADDED = "newlyAdded";
     private static final String PATH_CATEGORY = "category";
@@ -437,7 +448,7 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_CAN_UPDATE, CAN_UPDATE);
         MATCHER.addURI(getAuthority(), PATH_INSTALLED, INSTALLED);
         MATCHER.addURI(getAuthority(), PATH_NO_APKS, NO_APKS);
-        MATCHER.addURI(getAuthority(), "*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), PATH_APP + "/#/*", CODE_SINGLE);
     }
 
     public static Uri getContentUri() {
@@ -484,6 +495,19 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getContentUri(App app) {
         return getContentUri(app.packageName);
+    }
+
+    public static Uri getAppUri(App app) {
+        return getAppUri(app.packageName, app.repoId);
+    }
+
+    public static Uri getAppUri(String packageName, long repoId) {
+        return getContentUri()
+                .buildUpon()
+                .appendPath(PATH_APP)
+                .appendPath(Long.toString(repoId))
+                .appendPath(packageName)
+                .build();
     }
 
     public static Uri getContentUri(String packageName) {
@@ -590,7 +614,7 @@ public class AppProvider extends FDroidProvider {
 
         final String app = getTableName();
         final String[] columns = {
-                app + "." + Cols.PACKAGE_NAME,
+                PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME,
                 app + "." + Cols.NAME,
                 app + "." + Cols.SUMMARY,
                 app + "." + Cols.DESCRIPTION,
@@ -624,9 +648,22 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection.toString(), selectionKeywords);
     }
 
-    protected AppQuerySelection querySingle(String packageName) {
-        final String selection = getTableName() + "." + Cols.PACKAGE_NAME + " = ?";
+    protected AppQuerySelection querySingle(String packageName, long repoId) {
+        final String selection = PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME + " = ?";
         final String[] args = {packageName};
+        return new AppQuerySelection(selection, args);
+    }
+
+    /**
+     * Same as {@link AppProvider#querySingle(String, long)} except it is used for the purpose
+     * of an UPDATE query rather than a SELECT query. This means that it must use a subquery to get
+     * the {@link Cols.Package#PACKAGE_ID} rather than the join which is already in place for that
+     * table.
+     */
+    protected AppQuerySelection querySingleForUpdate(String packageName, long repoId) {
+        final String selection = Cols.PACKAGE_ID + " = (" + getPackageIdFromPackageNameQuery() +
+                ") AND " + Cols.REPO_ID + " = ? ";
+        final String[] args = {packageName, Long.toString(repoId)};
         return new AppQuerySelection(selection, args);
     }
 
@@ -697,7 +734,10 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             case CODE_SINGLE:
-                selection = selection.add(querySingle(uri.getLastPathSegment()));
+                List<String> pathParts = uri.getPathSegments();
+                long repoId = Long.parseLong(pathParts.get(1));
+                String packageName = pathParts.get(2);
+                selection = selection.add(querySingle(packageName, repoId));
                 break;
 
             case CAN_UPDATE:
@@ -799,11 +839,15 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
+        long packageId = PackageProvider.Helper.ensureExists(getContext(), values.getAsString(Cols.Package.PACKAGE_NAME));
+        values.remove(Cols.Package.PACKAGE_NAME);
+        values.put(Cols.PACKAGE_ID, packageId);
+
         db().insertOrThrow(getTableName(), null, values);
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
-        return getContentUri(values.getAsString(Cols.PACKAGE_NAME));
+        return getAppUri(values.getAsString(PackageTable.Cols.PACKAGE_NAME), values.getAsLong(Cols.REPO_ID));
     }
 
     @Override
@@ -816,7 +860,10 @@ public class AppProvider extends FDroidProvider {
                 return 0;
 
             case CODE_SINGLE:
-                query = query.add(querySingle(uri.getLastPathSegment()));
+                List<String> pathParts = uri.getPathSegments();
+                long repoId = Long.parseLong(pathParts.get(1));
+                String packageName = pathParts.get(2);
+                query = query.add(querySingleForUpdate(packageName, repoId));
                 break;
 
             default:

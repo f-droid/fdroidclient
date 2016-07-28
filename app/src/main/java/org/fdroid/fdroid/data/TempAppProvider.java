@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.PackageTable;
 
 /**
  * This class does all of its operations in a temporary sqlite table.
@@ -41,7 +42,7 @@ public class TempAppProvider extends AppProvider {
         MATCHER.addURI(getAuthority(), PATH_INIT, CODE_INIT);
         MATCHER.addURI(getAuthority(), PATH_COMMIT, CODE_COMMIT);
         MATCHER.addURI(getAuthority(), PATH_APPS + "/*", APPS);
-        MATCHER.addURI(getAuthority(), "*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), PATH_APP + "/#/*", CODE_SINGLE);
     }
 
     @Override
@@ -57,8 +58,13 @@ public class TempAppProvider extends AppProvider {
         return Uri.parse("content://" + getAuthority());
     }
 
-    public static Uri getAppUri(App app) {
-        return Uri.withAppendedPath(getContentUri(), app.packageName);
+    public static Uri getAppUri(String packageName, long repoId) {
+        return getContentUri()
+                .buildUpon()
+                .appendPath(PATH_APP)
+                .appendPath(Long.toString(repoId))
+                .appendPath(packageName)
+                .build();
     }
 
     public static Uri getAppsUri(List<String> apps) {
@@ -69,7 +75,7 @@ public class TempAppProvider extends AppProvider {
     }
 
     private AppQuerySelection queryApps(String packageNames) {
-        return queryPackageNames(packageNames, getTableName() + "." + AppMetadataTable.Cols.PACKAGE_NAME);
+        return queryPackageNames(packageNames, PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME);
     }
 
     public static class Helper {
@@ -126,7 +132,13 @@ public class TempAppProvider extends AppProvider {
             throw new UnsupportedOperationException("Update not supported for " + uri + ".");
         }
 
-        QuerySelection query = new QuerySelection(where, whereArgs).add(querySingle(uri.getLastPathSegment()));
+        List<String> pathParts = uri.getPathSegments();
+        String packageName = pathParts.get(2);
+        long repoId = Long.parseLong(pathParts.get(1));
+        QuerySelection query = new QuerySelection(where, whereArgs).add(querySingleForUpdate(packageName, repoId));
+
+        // Package names for apps cannot change...
+        values.remove(AppMetadataTable.Cols.Package.PACKAGE_NAME);
 
         int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
         if (!isApplyingBatch()) {
@@ -163,7 +175,7 @@ public class TempAppProvider extends AppProvider {
         db.execSQL("ATTACH DATABASE ':memory:' AS " + DB);
         db.execSQL(DBHelper.CREATE_TABLE_APP_METADATA.replaceFirst(AppMetadataTable.NAME, DB + "." + getTableName()));
         db.execSQL(copyData(AppMetadataTable.Cols.ALL_COLS, AppMetadataTable.NAME, DB + "." + getTableName()));
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (" + AppMetadataTable.Cols.PACKAGE_NAME + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (" + AppMetadataTable.Cols.PACKAGE_ID + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (" + AppMetadataTable.Cols.UPSTREAM_VERSION_CODE + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (" + AppMetadataTable.Cols.IS_COMPATIBLE + ");");
     }

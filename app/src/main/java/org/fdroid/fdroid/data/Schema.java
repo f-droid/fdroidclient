@@ -53,7 +53,8 @@ public interface Schema {
             String ROW_ID = "rowid";
             String _COUNT = "_count";
             String IS_COMPATIBLE = "compatible";
-            String PACKAGE_NAME = "id";
+            String PACKAGE_ID = "packageId";
+            String REPO_ID = "repoId";
             String NAME = "name";
             String SUMMARY = "summary";
             String ICON = "icon";
@@ -90,13 +91,17 @@ public interface Schema {
                 String SIGNATURE = "installedSig";
             }
 
+            interface Package {
+                String PACKAGE_NAME = "package_packageName";
+            }
+
             /**
              * Each of the physical columns in the sqlite table. Differs from {@link Cols#ALL} in
              * that it doesn't include fields which are aliases of other fields (e.g. {@link Cols#_ID}
              * or which are from other related tables (e.g. {@link Cols.SuggestedApk#VERSION_NAME}).
              */
             String[] ALL_COLS = {
-                    ROW_ID, IS_COMPATIBLE, PACKAGE_NAME, NAME, SUMMARY, ICON, DESCRIPTION,
+                    ROW_ID, PACKAGE_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
                     CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
@@ -110,14 +115,14 @@ public interface Schema {
              * @see Cols#ALL_COLS
              */
             String[] ALL = {
-                    _ID, ROW_ID, IS_COMPATIBLE, PACKAGE_NAME, NAME, SUMMARY, ICON, DESCRIPTION,
+                    _ID, ROW_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
                     CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
                     CATEGORIES, ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
-                    InstalledApp.SIGNATURE,
+                    InstalledApp.SIGNATURE, Package.PACKAGE_NAME
             };
         }
     }
@@ -163,8 +168,8 @@ public interface Schema {
                 String ADDRESS = "repoAddress";
             }
 
-            interface App {
-                String PACKAGE_NAME = "appPackageName";
+            interface Package {
+                String PACKAGE_NAME = "package_packageName";
             }
 
             /**
@@ -181,7 +186,7 @@ public interface Schema {
              * @see AppMetadataTable.Cols#ALL
              */
             String[] ALL = {
-                    _ID, APP_ID, App.PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
+                    _ID, APP_ID, Package.PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
                     SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
                     PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
                     IS_COMPATIBLE, Repo.VERSION, Repo.ADDRESS, INCOMPATIBLE_REASONS,

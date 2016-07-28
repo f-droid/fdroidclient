@@ -157,4 +157,8 @@ public abstract class FDroidProvider extends ContentProvider {
             }
         }
     }
+
+    protected String getPackageIdFromPackageNameQuery() {
+        return "SELECT " + Schema.PackageTable.Cols.ROW_ID + " FROM " + Schema.PackageTable.NAME + " WHERE " + Schema.PackageTable.Cols.PACKAGE_NAME + " = ?";
+    }
 }

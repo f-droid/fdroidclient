@@ -11,6 +11,7 @@ import android.util.Log;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
@@ -189,7 +190,7 @@ public class ApkProvider extends FDroidProvider {
     static {
         REPO_FIELDS.put(Cols.Repo.VERSION, RepoTable.Cols.VERSION);
         REPO_FIELDS.put(Cols.Repo.ADDRESS, RepoTable.Cols.ADDRESS);
-        PACKAGE_FIELDS.put(Cols.App.PACKAGE_NAME, AppMetadataTable.Cols.PACKAGE_NAME);
+        PACKAGE_FIELDS.put(Cols.Package.PACKAGE_NAME, PackageTable.Cols.PACKAGE_NAME);
 
         MATCHER.addURI(getAuthority(), PATH_REPO + "/#", CODE_REPO);
         MATCHER.addURI(getAuthority(), PATH_APK + "/#/*", CODE_SINGLE);
@@ -317,9 +318,11 @@ public class ApkProvider extends FDroidProvider {
         protected String getRequiredTables() {
             final String apk = getTableName();
             final String app = getAppTableName();
+            final String pkg = PackageTable.NAME;
 
             return apk + " AS apk " +
-                " LEFT JOIN " + app + " AS app ON (app." + AppMetadataTable.Cols.ROW_ID + " = apk." + Cols.APP_ID + ")";
+                " LEFT JOIN " + app + " AS app ON (app." + AppMetadataTable.Cols.ROW_ID + " = apk." + Cols.APP_ID + ")" +
+                " LEFT JOIN " + pkg + " AS pkg ON (pkg." + PackageTable.Cols.ROW_ID + " = app." + AppMetadataTable.Cols.PACKAGE_ID + ")";
         }
 
         @Override
@@ -340,7 +343,7 @@ public class ApkProvider extends FDroidProvider {
         }
 
         private void addPackageField(String field, String alias) {
-            appendField(field, "app", alias);
+            appendField(field, "pkg", alias);
         }
 
         private void addRepoField(String field, String alias) {
@@ -354,12 +357,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     private QuerySelection queryPackage(String packageName) {
-        return queryPackage(packageName, true);
-    }
-
-    private QuerySelection queryPackage(String packageName, boolean includeTableAlias) {
-        String alias = includeTableAlias ? "apk." : "";
-        final String selection = alias + Cols.APP_ID + " = (" + getAppIdFromPackageNameQuery() + ")";
+        final String selection = "pkg." + PackageTable.Cols.PACKAGE_NAME + " = ?";
         final String[] args = {packageName};
         return new QuerySelection(selection, args);
     }
@@ -370,7 +368,9 @@ public class ApkProvider extends FDroidProvider {
 
     private QuerySelection querySingleFromAnyRepo(Uri uri, boolean includeAlias) {
         String alias = includeAlias ? "apk." : "";
-        final String selection = alias + Cols.VERSION_CODE + " = ? and " + alias + Cols.APP_ID + " = (" + getAppIdFromPackageNameQuery() + ")";
+
+        // TODO: Change the = to an IN to deal with multiple apps?
+        final String selection = alias + Cols.VERSION_CODE + " = ? and " + alias + Cols.APP_ID + " = (" + getMetadataIdFromPackageNameQuery() + ")";
         final String[] args = {
             // First (0th) path segment is the word "apk",
             // and we are not interested in it.
@@ -403,7 +403,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     private QuerySelection queryRepoApps(long repoId, String packageNames) {
-        return queryRepo(repoId).add(AppProvider.queryPackageNames(packageNames, "app." + AppMetadataTable.Cols.PACKAGE_NAME));
+        return queryRepo(repoId).add(AppProvider.queryPackageNames(packageNames, "pkg." + PackageTable.Cols.PACKAGE_NAME));
     }
 
     protected QuerySelection queryApks(String apkKeys) {
@@ -418,6 +418,7 @@ public class ApkProvider extends FDroidProvider {
                 "You tried to query " + apkDetails.length);
         }
         String alias = includeAlias ? "apk." : "";
+        String metadataAlias = includeAlias ? "app." : "";
         final String[] args = new String[apkDetails.length * 2];
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < apkDetails.length; i++) {
@@ -430,10 +431,10 @@ public class ApkProvider extends FDroidProvider {
                 sb.append(" OR ");
             }
             sb.append(" ( ")
-                    .append(alias)
-                    .append(Cols.APP_ID)
+                    .append(metadataAlias)
+                    .append(AppMetadataTable.Cols.PACKAGE_ID)
                     .append(" = (")
-                    .append(getAppIdFromPackageNameQuery())
+                    .append(getPackageIdFromPackageNameQuery())
                     .append(") AND ")
                     .append(alias)
                     .append(Cols.VERSION_CODE)
@@ -442,8 +443,13 @@ public class ApkProvider extends FDroidProvider {
         return new QuerySelection(sb.toString(), args);
     }
 
-    private String getAppIdFromPackageNameQuery() {
-        return "SELECT " + AppMetadataTable.Cols.ROW_ID + " FROM " + getAppTableName() + " WHERE " + AppMetadataTable.Cols.PACKAGE_NAME + " = ?";
+    // TODO: This could return many rows of app metadata
+    private String getMetadataIdFromPackageNameQuery() {
+        return "SELECT app." + AppMetadataTable.Cols.ROW_ID + " " +
+                "FROM " + AppMetadataTable.NAME + " AS app " +
+                "JOIN " + PackageTable.NAME + " AS pkg ON ( " +
+                "  app." + AppMetadataTable.Cols.PACKAGE_ID + " = pkg." + PackageTable.Cols.ROW_ID + " ) " +
+                "WHERE pkg." + PackageTable.Cols.PACKAGE_NAME + " = ?";
     }
 
     @Override
@@ -533,10 +539,6 @@ public class ApkProvider extends FDroidProvider {
 
             case CODE_REPO:
                 query = query.add(queryRepo(Long.parseLong(uri.getLastPathSegment()), false));
-                break;
-
-            case CODE_PACKAGE:
-                query = query.add(queryPackage(uri.getLastPathSegment(), false));
                 break;
 
             case CODE_APKS:
