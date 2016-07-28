@@ -89,7 +89,6 @@ public class DefaultInstallerActivity extends FragmentActivity {
         }
 
         Intent intent = new Intent();
-        intent.setData(uri);
 
         // Note regarding EXTRA_NOT_UNKNOWN_SOURCE:
         // works only when being installed as system-app
@@ -97,22 +96,25 @@ public class DefaultInstallerActivity extends FragmentActivity {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             intent.setAction(Intent.ACTION_VIEW);
-            intent.setType("application/vnd.android.package-archive");
+            intent.setDataAndType(uri, "application/vnd.android.package-archive");
         } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
             intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
+            intent.setData(uri);
             intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
             intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
             intent.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
         } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
             intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
+            intent.setData(uri);
             intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
             intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
         } else { // Android N
             intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
-            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+            intent.setData(uri);
             // grant READ permission for this content Uri
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
         }
 
         try {
