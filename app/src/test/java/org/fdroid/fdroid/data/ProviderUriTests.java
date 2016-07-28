@@ -93,10 +93,10 @@ public class ProviderUriTests {
         assertValidUri(resolver, AppProvider.getCanUpdateUri(), "content://org.fdroid.fdroid.data.AppProvider/canUpdate", projection);
 
         App app = new App();
+        app.repoId = 1;
         app.packageName = "org.fdroid.fdroid";
 
-        assertValidUri(resolver, AppProvider.getContentUri(app), "content://org.fdroid.fdroid.data.AppProvider/org.fdroid.fdroid", projection);
-        assertValidUri(resolver, AppProvider.getContentUri("org.fdroid.fdroid"), "content://org.fdroid.fdroid.data.AppProvider/org.fdroid.fdroid", projection);
+        assertValidUri(resolver, AppProvider.getAppUri(app), "content://org.fdroid.fdroid.data.AppProvider/app/1/org.fdroid.fdroid", projection);
     }
 
     @Test

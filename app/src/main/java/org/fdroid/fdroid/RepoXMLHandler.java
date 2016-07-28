@@ -280,6 +280,7 @@ public class RepoXMLHandler extends DefaultHandler {
             }
         } else if ("application".equals(localName) && curapp == null) {
             curapp = new App();
+            curapp.repoId = repo.getId();
             curapp.packageName = attributes.getValue("", "id");
 
             // To appease the NON NULL constraint in the DB. Usually there is a description, and it

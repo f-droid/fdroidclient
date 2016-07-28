@@ -183,7 +183,8 @@ public class Assert {
     public static App insertApp(Context context, String packageName, String name, ContentValues additionalValues) {
 
         ContentValues values = new ContentValues();
-        values.put(AppMetadataTable.Cols.PACKAGE_NAME, packageName);
+        values.put(AppMetadataTable.Cols.REPO_ID, 1);
+        values.put(AppMetadataTable.Cols.Package.PACKAGE_NAME, packageName);
         values.put(AppMetadataTable.Cols.NAME, name);
 
         // Required fields (NOT NULL in the database).
@@ -197,14 +198,14 @@ public class Assert {
         Uri uri = AppProvider.getContentUri();
 
         context.getContentResolver().insert(uri, values);
-        return AppProvider.Helper.findByPackageName(context.getContentResolver(), packageName);
+        return AppProvider.Helper.findByPackageName(context.getContentResolver(), packageName, 1);
     }
 
     private static App ensureApp(Context context, String packageName) {
-        App app = AppProvider.Helper.findByPackageName(context.getContentResolver(), packageName);
+        App app = AppProvider.Helper.findByPackageName(context.getContentResolver(), packageName, 1);
         if (app == null) {
             insertApp(context, packageName, packageName);
-            app = AppProvider.Helper.findByPackageName(context.getContentResolver(), packageName);
+            app = AppProvider.Helper.findByPackageName(context.getContentResolver(), packageName, 1);
         }
         assertNotNull(app);
         return app;

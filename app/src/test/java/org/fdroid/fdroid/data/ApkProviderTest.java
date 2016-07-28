@@ -284,7 +284,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         Collections.addAll(apksToCheck, unknown);
 
         String[] projection = {
-            Cols.App.PACKAGE_NAME,
+            Cols.Package.PACKAGE_NAME,
             Cols.VERSION_CODE,
         };
 
@@ -424,7 +424,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertEquals("a hash type", apk.hashType);
 
         String[] projection = {
-            Cols.App.PACKAGE_NAME,
+            Cols.Package.PACKAGE_NAME,
             Cols.HASH,
         };
 
