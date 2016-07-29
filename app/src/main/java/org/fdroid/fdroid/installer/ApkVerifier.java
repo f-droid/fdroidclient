@@ -51,7 +51,7 @@ class ApkVerifier {
         this.pm = context.getPackageManager();
     }
 
-    public void verifyApk() throws ApkVerificationException {
+    public void verifyApk() throws ApkVerificationException, ApkPermissionUnequalException {
         // parse downloaded apk file locally
         PackageInfo localApkInfo = pm.getPackageArchiveInfo(
                 localApkUri.getPath(), PackageManager.GET_PERMISSIONS);
@@ -78,9 +78,9 @@ class ApkVerifier {
         // Thus, containsAll() instead of equals() is used!
         // See also https://gitlab.com/fdroid/fdroidclient/issues/703
         if (!expectedPermissions.containsAll(localPermissions)) {
-            throw new ApkVerificationException(
+            throw new ApkPermissionUnequalException(
                     "Permissions of the apk file are not a true subset of the permissions listed by the repo," +
-                    " i.e., some permissions have not been shown to the user!");
+                            " i.e., some permissions have not been shown to the user!");
         }
 
         int localTargetSdkVersion = localApkInfo.applicationInfo.targetSdkVersion;
@@ -93,7 +93,6 @@ class ApkVerifier {
         } else if (localTargetSdkVersion != expectedTargetSdkVersion) {
             throw new ApkVerificationException("TargetSdkVersion of apk file is not the expected targetSdkVersion!");
         }
-
     }
 
     private HashSet<String> getLocalPermissionsSet(PackageInfo localApkInfo) {
@@ -112,6 +111,17 @@ class ApkVerifier {
         }
 
         ApkVerificationException(Throwable cause) {
+            super(cause);
+        }
+    }
+
+    public static class ApkPermissionUnequalException extends Exception {
+
+        ApkPermissionUnequalException(String message) {
+            super(message);
+        }
+
+        ApkPermissionUnequalException(Throwable cause) {
             super(cause);
         }
     }
