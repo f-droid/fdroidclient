@@ -442,7 +442,7 @@ public class AppDetails extends AppCompatActivity {
         refreshApkList();
         supportInvalidateOptionsMenu();
         if (DownloaderService.isQueuedOrActive(activeDownloadUrlString)) {
-            registerDownloaderReceivers();
+            registerDownloaderReceiver();
         }
         visiblePackageName = app.packageName;
     }
@@ -455,7 +455,7 @@ public class AppDetails extends AppCompatActivity {
         if (headerFragment != null) {
             headerFragment.removeProgress();
         }
-        unregisterDownloaderReceivers();
+        unregisterDownloaderReceiver();
     }
 
     protected void onStop() {
@@ -477,76 +477,59 @@ public class AppDetails extends AppCompatActivity {
             Utils.debugLog(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
             setIgnoreUpdates(app.packageName, app.ignoreAllUpdates, app.ignoreThisUpdate);
         }
-        unregisterDownloaderReceivers();
+        unregisterDownloaderReceiver();
     }
 
-    private void unregisterDownloaderReceivers() {
+    private void unregisterDownloaderReceiver() {
         if (localBroadcastManager == null) {
             return;
         }
-        localBroadcastManager.unregisterReceiver(startedReceiver);
-        localBroadcastManager.unregisterReceiver(progressReceiver);
-        localBroadcastManager.unregisterReceiver(completeReceiver);
-        localBroadcastManager.unregisterReceiver(interruptedReceiver);
+        localBroadcastManager.unregisterReceiver(downloadReceiver);
     }
 
-    private void registerDownloaderReceivers() {
+    private void registerDownloaderReceiver() {
         if (activeDownloadUrlString != null) { // if a download is active
             String url = activeDownloadUrlString;
-            localBroadcastManager.registerReceiver(startedReceiver,
-                    DownloaderService.getIntentFilter(url, Downloader.ACTION_STARTED));
-            localBroadcastManager.registerReceiver(progressReceiver,
-                    DownloaderService.getIntentFilter(url, Downloader.ACTION_PROGRESS));
-            localBroadcastManager.registerReceiver(completeReceiver,
-                    DownloaderService.getIntentFilter(url, Downloader.ACTION_COMPLETE));
-            localBroadcastManager.registerReceiver(interruptedReceiver,
-                    DownloaderService.getIntentFilter(url, Downloader.ACTION_INTERRUPTED));
+            localBroadcastManager.registerReceiver(downloadReceiver,
+                    DownloaderService.getIntentFilter(url));
         }
     }
 
-    private final BroadcastReceiver startedReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (headerFragment != null) {
-                headerFragment.startProgress();
+            switch (intent.getAction()) {
+                case Downloader.ACTION_STARTED:
+                    if (headerFragment != null) {
+                        headerFragment.startProgress();
+                    }
+                    break;
+                case Downloader.ACTION_PROGRESS:
+                    if (headerFragment != null) {
+                        headerFragment.updateProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
+                                intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1));
+                    }
+                    break;
+                case Downloader.ACTION_COMPLETE:
+                    // Starts the install process one the download is complete.
+                    cleanUpFinishedDownload();
+                    localBroadcastManager.registerReceiver(installReceiver,
+                            Installer.getInstallIntentFilter(intent.getData()));
+                    break;
+                case Downloader.ACTION_INTERRUPTED:
+                    if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
+                        String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
+                                + " " + intent.getDataString();
+                        Toast.makeText(context, R.string.download_error, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+                    } else { // user canceled
+                        Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
+                    }
+                    cleanUpFinishedDownload();
+                    break;
+                default:
+                    throw new RuntimeException("intent action not handled!");
             }
-        }
-    };
-
-    private final BroadcastReceiver progressReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (headerFragment != null) {
-                headerFragment.updateProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
-                        intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1));
-            }
-        }
-    };
-
-    /**
-     * Starts the install process one the download is complete.
-     */
-    private final BroadcastReceiver completeReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            cleanUpFinishedDownload();
-            localBroadcastManager.registerReceiver(installReceiver,
-                    Installer.getInstallIntentFilter(intent.getData()));
-        }
-    };
-
-    private final BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
-                String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
-                        + " " + intent.getDataString();
-                Toast.makeText(context, R.string.download_error, Toast.LENGTH_SHORT).show();
-                Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
-            } else { // user canceled
-                Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
-            }
-            cleanUpFinishedDownload();
         }
     };
 
@@ -682,7 +665,7 @@ public class AppDetails extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        unregisterDownloaderReceivers();
+        unregisterDownloaderReceiver();
         super.onDestroy();
     }
 
@@ -986,7 +969,7 @@ public class AppDetails extends AppCompatActivity {
 
     private void startInstall(Apk apk) {
         activeDownloadUrlString = apk.getUrl();
-        registerDownloaderReceivers();
+        registerDownloaderReceiver();
         InstallManagerService.queue(this, app, apk);
     }
 

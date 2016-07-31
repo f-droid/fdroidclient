@@ -241,44 +241,46 @@ public class SwapAppsView extends ListView implements
             TextView statusInstalled;
             TextView statusIncompatible;
 
-            private final BroadcastReceiver downloadProgressReceiver = new BroadcastReceiver() {
+            private final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
-                    if (progressView.getVisibility() != View.VISIBLE) {
-                        showProgress();
+                    switch (intent.getAction()) {
+                        case Downloader.ACTION_STARTED:
+                            resetView();
+                            break;
+                        case Downloader.ACTION_PROGRESS:
+                            if (progressView.getVisibility() != View.VISIBLE) {
+                                showProgress();
+                            }
+                            int read = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
+                            int total = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                            if (total > 0) {
+                                int progress = (int) ((double) read / total * 100);
+                                progressView.setIndeterminate(false);
+                                progressView.setMax(100);
+                                progressView.setProgress(progress);
+                            } else {
+                                progressView.setIndeterminate(true);
+                            }
+                            break;
+                        case Downloader.ACTION_COMPLETE:
+                            resetView();
+                            break;
+                        case Downloader.ACTION_INTERRUPTED:
+                            if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
+                                String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
+                                        + " " + intent.getDataString();
+                                Toast.makeText(context, R.string.download_error, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+                            } else { // user canceled
+                                Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
+                            }
+                            resetView();
+                            break;
+                        default:
+                            throw new RuntimeException("intent action not handled!");
                     }
-                    int read = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
-                    int total = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
-                    if (total > 0) {
-                        int progress = (int) ((double) read / total * 100);
-                        progressView.setIndeterminate(false);
-                        progressView.setMax(100);
-                        progressView.setProgress(progress);
-                    } else {
-                        progressView.setIndeterminate(true);
-                    }
-                }
-            };
 
-            private final BroadcastReceiver appListViewResetReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    resetView();
-                }
-            };
-
-            private final BroadcastReceiver interruptedReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
-                        String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
-                                + " " + intent.getDataString();
-                        Toast.makeText(context, R.string.download_error, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
-                    } else { // user canceled
-                        Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
-                    }
-                    resetView();
                 }
             };
 
@@ -306,14 +308,8 @@ public class SwapAppsView extends ListView implements
                     String urlString = apk.getUrl();
 
                     // TODO unregister receivers? or will they just die with this instance
-                    localBroadcastManager.registerReceiver(appListViewResetReceiver,
-                            DownloaderService.getIntentFilter(urlString, Downloader.ACTION_STARTED));
-                    localBroadcastManager.registerReceiver(downloadProgressReceiver,
-                            DownloaderService.getIntentFilter(urlString, Downloader.ACTION_PROGRESS));
-                    localBroadcastManager.registerReceiver(appListViewResetReceiver,
-                            DownloaderService.getIntentFilter(urlString, Downloader.ACTION_COMPLETE));
-                    localBroadcastManager.registerReceiver(interruptedReceiver,
-                            DownloaderService.getIntentFilter(urlString, Downloader.ACTION_INTERRUPTED));
+                    localBroadcastManager.registerReceiver(downloadReceiver,
+                            DownloaderService.getIntentFilter(urlString));
 
                     // NOTE: Instead of continually unregistering and re-registering the observer
                     // (with a different URI), this could equally be done by only having one

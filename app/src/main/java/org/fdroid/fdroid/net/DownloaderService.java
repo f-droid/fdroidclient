@@ -308,12 +308,14 @@ public class DownloaderService extends Service {
      * Get a prepared {@link IntentFilter} for use for matching this service's action events.
      *
      * @param urlString The full file URL to match.
-     * @param action    {@link Downloader#ACTION_STARTED}, {@link Downloader#ACTION_PROGRESS},
-     *                  {@link Downloader#ACTION_INTERRUPTED}, or {@link Downloader#ACTION_COMPLETE},
      */
-    public static IntentFilter getIntentFilter(String urlString, String action) {
+    public static IntentFilter getIntentFilter(String urlString) {
         Uri uri = Uri.parse(urlString);
-        IntentFilter intentFilter = new IntentFilter(action);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Downloader.ACTION_STARTED);
+        intentFilter.addAction(Downloader.ACTION_PROGRESS);
+        intentFilter.addAction(Downloader.ACTION_COMPLETE);
+        intentFilter.addAction(Downloader.ACTION_INTERRUPTED);
         intentFilter.addDataScheme(uri.getScheme());
         intentFilter.addDataAuthority(uri.getHost(), String.valueOf(uri.getPort()));
         intentFilter.addDataPath(uri.getPath(), PatternMatcher.PATTERN_LITERAL);
