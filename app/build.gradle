@@ -20,9 +20,9 @@ repositories {
 dependencies {
     compile project(':privileged-api-lib')
 
-    compile 'com.android.support:support-v4:24.0.0'
-    compile 'com.android.support:appcompat-v7:24.0.0'
-    compile 'com.android.support:support-annotations:24.0.0'
+    compile 'com.android.support:support-v4:24.1.1'
+    compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'com.android.support:support-annotations:24.1.1'
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.google.zxing:core:3.2.1'
@@ -45,7 +45,7 @@ dependencies {
 
     testCompile "org.mockito:mockito-core:1.10.19"
 
-    androidTestCompile 'com.android.support:support-annotations:24.0.0'
+    androidTestCompile 'com.android.support:support-annotations:24.1.1'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
 }
@@ -84,9 +84,9 @@ if (!hasProperty('sourceDeps')) {
     // source code don't need to be here.
     dependencyVerification {
         verify = [
-            'com.android.support:support-v4:b6d3994d4bdea0ef2a221ecf9e0ddf150b99af189211c36418c81e248f3fed99',
-            'com.android.support:appcompat-v7:a30898bbec4d506f821055a362d62820b18f29e9cf0c077817e46cb5a03cde94',
-            'com.android.support:support-annotations:0790aced70e3ce82a6e466f0d4908cdd9e21bd925b4107437441d201f595a908',
+            'com.android.support:support-v4:246c99385a84fe179d7b833c9ddaf2576f217b0abba5e74b5353cc78756f5880',
+            'com.android.support:appcompat-v7:bf8db89d678286043778990fc967346e94321cc8d8bad99e9b0db20588509156',
+            'com.android.support:support-annotations:bac4e534657165b0c4c362c97db389dcb152e43273435d2ccaa939a82e03f42c',
             'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
             'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
             'eu.chainfire:libsuperuser:018344ff19ee94d252c14b4a503ee8b519184db473a5af83513f5837c413b128',

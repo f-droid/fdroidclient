@@ -1,4 +1,4 @@
-image: mvdan/fdroid-ci:client-20160709
+image: mvdan/fdroid-ci:client-20160731
 
 cache:
   paths:
