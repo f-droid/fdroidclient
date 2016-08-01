@@ -20,12 +20,14 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.updater;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;

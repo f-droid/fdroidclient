@@ -1,12 +1,15 @@
 
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.RepoUpdater;
 import org.fdroid.fdroid.RepoUpdater.UpdateException;
+import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;

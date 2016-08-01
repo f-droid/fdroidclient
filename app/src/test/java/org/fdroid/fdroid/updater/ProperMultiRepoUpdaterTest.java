@@ -1,9 +1,11 @@
 
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.updater;
 
 import android.support.annotation.StringDef;
 import android.util.Log;
 
+import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.RepoUpdater;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -23,6 +25,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+// TODO: Use sdk=24 when Robolectric supports this
 @Config(constants = BuildConfig.class, sdk = 23)
 @RunWith(RobolectricGradleTestRunner.class)
 public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
