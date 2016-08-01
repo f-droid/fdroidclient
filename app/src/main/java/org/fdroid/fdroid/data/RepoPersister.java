@@ -177,13 +177,14 @@ public class RepoPersister {
         String[] projection = new String[]{
                 Schema.ApkTable.Cols.Package.PACKAGE_NAME,
                 Schema.ApkTable.Cols.VERSION_CODE,
+                Schema.ApkTable.Cols.REPO_ID,
         };
         List<Apk> existingApks = ApkProvider.Helper.knownApks(context, packages, projection);
         ArrayList<ContentProviderOperation> operations = new ArrayList<>(packages.size());
         for (Apk apk : packages) {
             boolean exists = false;
             for (Apk existing : existingApks) {
-                if (existing.packageName.equals(apk.packageName) && existing.versionCode == apk.versionCode) {
+                if (existing.repo == apk.repo && existing.packageName.equals(apk.packageName) && existing.versionCode == apk.versionCode) {
                     exists = true;
                     break;
                 }

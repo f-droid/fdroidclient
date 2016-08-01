@@ -649,8 +649,9 @@ public class AppProvider extends FDroidProvider {
     }
 
     protected AppQuerySelection querySingle(String packageName, long repoId) {
-        final String selection = PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME + " = ?";
-        final String[] args = {packageName};
+        final String selection = PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME + " = ? " +
+                " AND " + getTableName() + "." + Cols.REPO_ID + " = ? ";
+        final String[] args = {packageName, Long.toString(repoId)};
         return new AppQuerySelection(selection, args);
     }
 
