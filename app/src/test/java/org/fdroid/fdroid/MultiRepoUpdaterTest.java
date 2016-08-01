@@ -178,19 +178,19 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         return new RepoUpdater(context, createRepo(name, uri, context));
     }
 
-    protected boolean updateConflicting() throws UpdateException {
-        return updateRepo(createUpdater(REPO_CONFLICTING, REPO_CONFLICTING_URI, context), "multiRepo.conflicting.jar");
+    protected void updateConflicting() throws UpdateException {
+        updateRepo(createUpdater(REPO_CONFLICTING, REPO_CONFLICTING_URI, context), "multiRepo.conflicting.jar");
     }
 
-    protected boolean updateMain() throws UpdateException {
-        return updateRepo(createUpdater(REPO_MAIN, REPO_MAIN_URI, context), "multiRepo.normal.jar");
+    protected void updateMain() throws UpdateException {
+        updateRepo(createUpdater(REPO_MAIN, REPO_MAIN_URI, context), "multiRepo.normal.jar");
     }
 
-    protected boolean updateArchive() throws UpdateException {
-        return updateRepo(createUpdater(REPO_ARCHIVE, REPO_ARCHIVE_URI, context), "multiRepo.archive.jar");
+    protected void updateArchive() throws UpdateException {
+        updateRepo(createUpdater(REPO_ARCHIVE, REPO_ARCHIVE_URI, context), "multiRepo.archive.jar");
     }
 
-    protected boolean updateRepo(RepoUpdater updater, String indexJarPath) throws UpdateException {
+    protected void updateRepo(RepoUpdater updater, String indexJarPath) throws UpdateException {
         File indexJar = TestUtils.copyResourceToTempFile(indexJarPath);
         try {
             updater.processDownloadedFile(indexJar);
@@ -199,7 +199,6 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
                 indexJar.delete();
             }
         }
-        return true;
     }
 
 }

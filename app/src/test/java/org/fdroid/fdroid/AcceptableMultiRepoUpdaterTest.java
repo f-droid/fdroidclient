@@ -39,49 +39,67 @@ public class AcceptableMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     @Test
     public void testAcceptableConflictingThenMainThenArchive() throws UpdateException {
         assertEmpty();
-        if (updateConflicting() && updateMain() && updateArchive()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateConflicting();
+        updateMain();
+        updateArchive();
+
+        assertSomewhatAcceptable();
     }
 
     @Test
     public void testAcceptableConflictingThenArchiveThenMain() throws UpdateException {
         assertEmpty();
-        if (updateConflicting() && updateArchive() && updateMain()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateConflicting();
+        updateArchive();
+        updateMain();
+
+        assertSomewhatAcceptable();
     }
 
     @Test
     public void testAcceptableArchiveThenMainThenConflicting() throws UpdateException {
         assertEmpty();
-        if (updateArchive() && updateMain() && updateConflicting()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateArchive();
+        updateMain();
+        updateConflicting();
+
+        assertSomewhatAcceptable();
     }
 
     @Test
     public void testAcceptableArchiveThenConflictingThenMain() throws UpdateException {
         assertEmpty();
-        if (updateArchive() && updateConflicting() && updateMain()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateArchive();
+        updateConflicting();
+        updateMain();
+
+        assertSomewhatAcceptable();
     }
 
     @Test
     public void testAcceptableMainThenArchiveThenConflicting() throws UpdateException {
         assertEmpty();
-        if (updateMain() && updateArchive() && updateConflicting()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateMain();
+        updateArchive();
+        updateConflicting();
+
+        assertSomewhatAcceptable();
     }
 
     @Test
     public void testAcceptableMainThenConflictingThenArchive() throws UpdateException {
         assertEmpty();
-        if (updateMain() && updateConflicting() && updateArchive()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateMain();
+        updateConflicting();
+        updateArchive();
+
+        assertSomewhatAcceptable();
     }
 
     @NonNull
