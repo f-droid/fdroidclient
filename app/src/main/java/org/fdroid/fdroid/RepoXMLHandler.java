@@ -61,7 +61,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     private final StringBuilder curchars = new StringBuilder();
 
-    interface IndexReceiver {
+    public interface IndexReceiver {
         void receiveRepo(String name, String description, String signingCert, int maxage, int version, long timestamp);
 
         void receiveApp(App app, List<Apk> packages);
