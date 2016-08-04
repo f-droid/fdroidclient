@@ -26,6 +26,21 @@ public class AppPrefsProviderTest extends FDroidProviderTest {
         ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
     }
 
+    @SuppressWarnings({"PMD.EqualsNull", "EqualsWithItself", "EqualsBetweenInconvertibleTypes", "ObjectEqualsNull"})
+    @Test
+    public void prefEquality() {
+        AppPrefs original = new AppPrefs(101, true);
+
+        assertTrue(original.equals(new AppPrefs(101, true)));
+        assertTrue(original.equals(original));
+
+        assertFalse(original.equals(null));
+        assertFalse(original.equals("String"));
+        assertFalse(original.equals(new AppPrefs(102, true)));
+        assertFalse(original.equals(new AppPrefs(101, false)));
+        assertFalse(original.equals(new AppPrefs(100, false)));
+    }
+
     @Test
     public void newPreferences() {
         App withPrefs = Assert.insertApp(context, "com.example.withPrefs", "With Prefs");
