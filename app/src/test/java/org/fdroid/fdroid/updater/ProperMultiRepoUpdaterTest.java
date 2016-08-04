@@ -39,21 +39,53 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     public void mainRepo() throws RepoUpdater.UpdateException {
         assertEmpty();
         updateMain();
-        assertMainRepo(RepoProvider.Helper.all(context));
+        assertMainRepo();
     }
 
     @Test
     public void archiveRepo() throws RepoUpdater.UpdateException {
         assertEmpty();
         updateArchive();
-        assertMainArchiveRepo(RepoProvider.Helper.all(context));
+        assertMainArchiveRepoMetadata();
     }
 
     @Test
     public void conflictingRepo() throws RepoUpdater.UpdateException {
         assertEmpty();
         updateConflicting();
-        assertConflictingRepo(RepoProvider.Helper.all(context));
+        assertConflictingRepo();
+    }
+
+    @Test
+    public void conflictingMetadataTakesPriority() throws RepoUpdater.UpdateException {
+        updateConflicting();
+        updateMain();
+        updateArchive();
+
+        assertEquals(1, RepoProvider.Helper.findByAddress(context, REPO_CONFLICTING_URI).priority);
+        assertEquals(2, RepoProvider.Helper.findByAddress(context, REPO_MAIN_URI).priority);
+        assertEquals(3, RepoProvider.Helper.findByAddress(context, REPO_ARCHIVE_URI).priority);
+
+        assertMainRepo();
+        assertMainArchiveRepoMetadata();
+        assertConflictingRepo();
+
+        App a2048 = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "com.uberspot.a2048");
+        assert2048Metadata(a2048, "Conflicting");
+
+        // This is only provided by the "Conflicting" repo.
+        App calendar = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "org.dgtale.icsimport");
+        assertCalendarMetadata(calendar, "Conflicting");
+
+        // This is only provided by the "Main" or "Archive" repo. Both the main and archive repo both
+        // pull their metadata from the same build recipe in fdroidserver. The only difference is that
+        // the archive repository contains .apks from further back, but their metadata is the same.
+        App adAway = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "org.adaway");
+        assertAdAwayMetadata(adAway, "Normal");
+
+        // This is only provided by the "Main" repo.
+        App adb = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "siir.es.adbWireless");
+        assertAdAwayMetadata(adb, "Normal");
     }
 
     @Test
@@ -133,8 +165,12 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEquals("Repos", 3, repos.size());
 
         assertMainRepo(repos);
-        assertMainArchiveRepo(repos);
+        assertMainArchiveRepoMetadata(repos);
         assertConflictingRepo(repos);
+    }
+
+    private void assertMainRepo() {
+        assertMainRepo(RepoProvider.Helper.all(context));
     }
 
     /**
@@ -157,17 +193,21 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertApksExist(apks, "org.adaway", new int[]{52, 53, 54});
         assertApksExist(apks, "siir.es.adbWireless", new int[]{12});
 
-        assert2048(repo, "Normal");
-        assertAdAway(repo, "Normal");
-        assertAdb(repo, "Normal");
+        assert2048Metadata(repo, "Normal");
+        assertAdAwayMetadata(repo, "Normal");
+        assertAdbMetadata(repo, "Normal");
+    }
+
+    private void assert2048Metadata(Repo repo, @RepoIdentifier String id) {
+        App a2048 = AppProvider.Helper.findByPackageName(context.getContentResolver(), "com.uberspot.a2048", repo.getId());
+        assert2048Metadata(a2048, id);
     }
 
     /**
      * @param id An identifier that we've put in the metadata for each repo to ensure that
      *           we can identify the metadata is coming from the correct repo.
      */
-    private void assert2048(Repo repo, @RepoIdentifier String id) {
-        App a2048 = AppProvider.Helper.findByPackageName(context.getContentResolver(), "com.uberspot.a2048", repo.getId());
+    private void assert2048Metadata(App a2048, @RepoIdentifier String id) {
         assertNotNull(a2048);
         assertEquals("2048", a2048.name);
         assertEquals(String.format("<p>2048 from %s repo.</p>", id), a2048.description);
@@ -177,9 +217,13 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEquals(String.format("https://github.com/uberspot/2048-android/issues?%s", id), a2048.trackerURL);
     }
 
-    /** @see ProperMultiRepoUpdaterTest#assert2048(Repo, String) */
-    private void assertAdAway(Repo repo, @RepoIdentifier String id) {
+    private void assertAdAwayMetadata(Repo repo, @RepoIdentifier String id) {
         App adaway = AppProvider.Helper.findByPackageName(context.getContentResolver(), "org.adaway", repo.getId());
+        assertAdAwayMetadata(adaway, id);
+    }
+
+    /** @see ProperMultiRepoUpdaterTest#assert2048Metadata(Repo, String) */
+    private void assertAdAwayMetadata(App adaway, @RepoIdentifier String id) {
         assertNotNull(adaway);
         assertEquals(String.format("AdAway", id), adaway.name);
         assertEquals(String.format("<p>AdAway from %s repo.</p>", id), adaway.description);
@@ -192,9 +236,13 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEquals(String.format("369138", id), adaway.flattrID);
     }
 
-    /** @see ProperMultiRepoUpdaterTest#assert2048(Repo, String) */
-    private void assertAdb(Repo repo, @RepoIdentifier String id) {
+    private void assertAdbMetadata(Repo repo, @RepoIdentifier String id) {
         App adb = AppProvider.Helper.findByPackageName(context.getContentResolver(), "siir.es.adbWireless", repo.getId());
+        assertAdbMetadata(adb, id);
+    }
+
+    /** @see ProperMultiRepoUpdaterTest#assert2048Metadata(Repo, String) */
+    private void assertAdbMetadata(App adb, @RepoIdentifier String id) {
         assertNotNull(adb);
         assertEquals("adbWireless", adb.name);
         assertEquals(String.format("<p>adbWireless from %s repo.</p>", id), adb.description);
@@ -204,9 +252,13 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEquals(String.format("https://adbwireless.example.com/issues?%s", id), adb.trackerURL);
     }
 
-    /** @see ProperMultiRepoUpdaterTest#assert2048(Repo, String) */
-    private void assertCalendar(Repo repo, @RepoIdentifier String id) {
+    private void assertCalendarMetadata(Repo repo, @RepoIdentifier String id) {
         App calendar = AppProvider.Helper.findByPackageName(context.getContentResolver(), "org.dgtale.icsimport", repo.getId());
+        assertCalendarMetadata(calendar, id);
+    }
+
+    /** @see ProperMultiRepoUpdaterTest#assert2048Metadata(Repo, String) */
+    private void assertCalendarMetadata(App calendar, @RepoIdentifier String id) {
         assertNotNull(calendar);
         assertEquals("Add to calendar", calendar.name);
         assertEquals(String.format("<p>Add to calendar from %s repo.</p>", id), calendar.description);
@@ -215,6 +267,10 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEquals(String.format("https://github.com/danielegobbetti/ICSImport?%s", id), calendar.sourceURL);
         assertEquals(String.format("https://github.com/danielegobbetti/ICSImport/issues?%s", id), calendar.trackerURL);
         assertEquals("2225390", calendar.flattrID);
+    }
+
+    private void assertMainArchiveRepoMetadata() {
+        assertMainArchiveRepoMetadata(RepoProvider.Helper.all(context));
     }
 
     /**
@@ -233,14 +289,18 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
      * - Version 1.35 (36)
      * - Version 1.34 (35)
      */
-    private void assertMainArchiveRepo(List<Repo> allRepos) {
+    private void assertMainArchiveRepoMetadata(List<Repo> allRepos) {
         Repo repo = findRepo(REPO_ARCHIVE, allRepos);
 
         List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL);
         assertEquals("Apks for main archive repo", 13, apks.size());
         assertApksExist(apks, "org.adaway", new int[]{35, 36, 37, 38, 40, 42, 45, 46, 47, 48, 49, 50, 51});
 
-        assertAdAway(repo, "Normal");
+        assertAdAwayMetadata(repo, "Normal");
+    }
+
+    private void assertConflictingRepo() {
+        assertConflictingRepo(RepoProvider.Helper.all(context));
     }
 
     /**
@@ -261,8 +321,8 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertApksExist(apks, "org.adaway", new int[]{50, 51, 52, 53});
         assertApksExist(apks, "org.dgtale.icsimport", new int[]{2, 3});
 
-        assertAdAway(repo, "Conflicting");
-        assertCalendar(repo, "Conflicting");
+        assertAdAwayMetadata(repo, "Conflicting");
+        assertCalendarMetadata(repo, "Conflicting");
     }
 
 }
