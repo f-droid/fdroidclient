@@ -330,27 +330,28 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void addAppPrefsTable(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion < 60) {
-
-            Utils.debugLog(TAG, "Creating app preferences table");
-            db.execSQL(CREATE_TABLE_APP_PREFS);
-
-            Utils.debugLog(TAG, "Migrating app preferences to separate table");
-            db.execSQL(
-                    "INSERT INTO " + AppPrefsTable.NAME + " ("
-                    + AppPrefsTable.Cols.PACKAGE_NAME + ", "
-                    + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", "
-                    + AppPrefsTable.Cols.IGNORE_ALL_UPDATES
-                    + ") SELECT "
-                    + AppTable.Cols.PACKAGE_NAME + ", "
-                    + "ignoreThisUpdate, "
-                    + "ignoreAllUpdates "
-                    + "FROM " + AppTable.NAME + " "
-                    + "WHERE ignoreThisUpdate > 0 OR ignoreAllUpdates > 0"
-            );
-
-            resetTransient(db);
+        if (oldVersion >= 60) {
+            return;
         }
+
+        Utils.debugLog(TAG, "Creating app preferences table");
+        db.execSQL(CREATE_TABLE_APP_PREFS);
+
+        Utils.debugLog(TAG, "Migrating app preferences to separate table");
+        db.execSQL(
+                "INSERT INTO " + AppPrefsTable.NAME + " ("
+                + AppPrefsTable.Cols.PACKAGE_NAME + ", "
+                + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", "
+                + AppPrefsTable.Cols.IGNORE_ALL_UPDATES
+                + ") SELECT "
+                + AppTable.Cols.PACKAGE_NAME + ", "
+                + "ignoreThisUpdate, "
+                + "ignoreAllUpdates "
+                + "FROM " + AppTable.NAME + " "
+                + "WHERE ignoreThisUpdate > 0 OR ignoreAllUpdates > 0"
+        );
+
+        resetTransient(db);
     }
 
     /**

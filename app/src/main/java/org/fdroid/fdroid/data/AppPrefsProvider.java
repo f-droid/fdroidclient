@@ -7,14 +7,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppPrefsTable.Cols;
 
 public class AppPrefsProvider extends FDroidProvider {
-
-    private static final String TAG = "AppPrefsProvider";
 
     public static final class Helper {
         private Helper() { }
@@ -48,12 +45,12 @@ public class AppPrefsProvider extends FDroidProvider {
             try {
                 if (cursor.getCount() == 0) {
                     return null;
-                } else {
-                    cursor.moveToFirst();
-                    return new AppPrefs(
-                            cursor.getInt(cursor.getColumnIndexOrThrow(Cols.IGNORE_THIS_UPDATE)),
-                            cursor.getInt(cursor.getColumnIndexOrThrow(Cols.IGNORE_ALL_UPDATES)) > 0);
                 }
+
+                cursor.moveToFirst();
+                return new AppPrefs(
+                        cursor.getInt(cursor.getColumnIndexOrThrow(Cols.IGNORE_THIS_UPDATE)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(Cols.IGNORE_ALL_UPDATES)) > 0);
             } finally {
                 cursor.close();
             }
@@ -118,17 +115,12 @@ public class AppPrefsProvider extends FDroidProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
-        QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
-
-        switch (MATCHER.match(uri)) {
-            case CODE_SINGLE:
-                selection = selection.add(querySingle(uri.getLastPathSegment()));
-                break;
-
-            default:
-                Log.e(TAG, "Invalid URI for app content provider: " + uri);
-                throw new UnsupportedOperationException("Invalid URI for app content provider: " + uri);
+        if (MATCHER.match(uri) != CODE_SINGLE) {
+            throw new UnsupportedOperationException("Invalid URI for app content provider: " + uri);
         }
+
+        QuerySelection selection = new QuerySelection(customSelection, selectionArgs)
+                .add(querySingle(uri.getLastPathSegment()));
 
         Query query = new Query();
         query.addSelection(selection);
@@ -142,10 +134,7 @@ public class AppPrefsProvider extends FDroidProvider {
 
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
-        switch (MATCHER.match(uri)) {
-            default:
-                throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
-        }
+        throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
     }
 
     @Override
@@ -157,17 +146,13 @@ public class AppPrefsProvider extends FDroidProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        switch (MATCHER.match(uri)) {
-            case CODE_SINGLE:
-                QuerySelection query = new QuerySelection(where, whereArgs)
-                        .add(querySingle(uri.getLastPathSegment()));
-                int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
-                getContext().getContentResolver().notifyChange(AppProvider.getCanUpdateUri(), null);
-                return count;
-
-            default:
-                throw new UnsupportedOperationException("Update not supported for " + uri + ".");
-
+        if (MATCHER.match(uri) != CODE_SINGLE) {
+            throw new UnsupportedOperationException("Update not supported for " + uri + ".");
         }
+
+        QuerySelection query = new QuerySelection(where, whereArgs).add(querySingle(uri.getLastPathSegment()));
+        int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
+        getContext().getContentResolver().notifyChange(AppProvider.getCanUpdateUri(), null);
+        return count;
     }
 }
