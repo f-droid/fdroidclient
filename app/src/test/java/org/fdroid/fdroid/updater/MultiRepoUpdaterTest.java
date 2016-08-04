@@ -165,7 +165,7 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         repo.address = uri;
         repo.name = name;
 
-        ContentValues values = new ContentValues(2);
+        ContentValues values = new ContentValues(3);
         values.put(Schema.RepoTable.Cols.SIGNING_CERT, repo.signingCertificate);
         values.put(Schema.RepoTable.Cols.ADDRESS, repo.address);
         values.put(Schema.RepoTable.Cols.NAME, repo.name);

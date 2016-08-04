@@ -301,7 +301,7 @@ public class RepoProvider extends FDroidProvider {
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
         if (TextUtils.isEmpty(sortOrder)) {
-            sortOrder = "_ID ASC";
+            sortOrder = Cols.PRIORITY + " ASC";
         }
 
         switch (MATCHER.match(uri)) {
