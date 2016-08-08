@@ -29,7 +29,8 @@ public class PackageProvider extends FDroidProvider {
         }
 
         public static long getPackageId(Context context, String packageName) {
-            Cursor cursor = context.getContentResolver().query(getPackageUri(packageName), Cols.ALL, null, null, null);
+            String[] projection = new String[] {Cols.ROW_ID};
+            Cursor cursor = context.getContentResolver().query(getPackageUri(packageName), projection, null, null, null);
             if (cursor == null) {
                 return 0;
             }
@@ -39,7 +40,7 @@ public class PackageProvider extends FDroidProvider {
                     return 0;
                 } else {
                     cursor.moveToFirst();
-                    return cursor.getLong(cursor.getColumnIndexOrThrow(Cols.PACKAGE_NAME));
+                    return cursor.getLong(cursor.getColumnIndexOrThrow(Cols.ROW_ID));
                 }
             } finally {
                 cursor.close();
