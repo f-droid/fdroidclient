@@ -38,7 +38,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
 
     @Retention(RetentionPolicy.SOURCE)
     @StringDef({"Conflicting", "Normal"})
-    public @interface RepoIdentifier {}
+    public @interface RepoIdentifier { }
 
     /*
      *This test fails due to issue #568 (https://gitlab.com/fdroid/fdroidclient/issues/568).

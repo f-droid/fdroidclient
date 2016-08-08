@@ -9,7 +9,6 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.updater.MultiRepoUpdaterTest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
