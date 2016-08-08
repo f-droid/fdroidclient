@@ -1,6 +1,7 @@
 
 package org.fdroid.fdroid.updater;
 
+import android.content.ContentValues;
 import android.support.annotation.StringDef;
 import android.util.Log;
 
@@ -13,6 +14,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
@@ -20,7 +22,9 @@ import org.robolectric.annotation.Config;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -56,13 +60,24 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertConflictingRepo();
     }
 
+    private Map<String, App> allApps() {
+        List<App> apps = AppProvider.Helper.all(context.getContentResolver());
+        Map<String, App> appsIndexedByPackageName = new HashMap<>(apps.size());
+        for (App app : apps) {
+            appsIndexedByPackageName.put(app.packageName, app);
+        }
+        return appsIndexedByPackageName;
+    }
+
     @Test
-    public void conflictingMetadataTakesPriority() throws RepoUpdater.UpdateException {
+    public void metadataWithRepoPriority() throws RepoUpdater.UpdateException {
         updateConflicting();
         updateMain();
         updateArchive();
 
-        assertEquals(1, RepoProvider.Helper.findByAddress(context, REPO_CONFLICTING_URI).priority);
+        Repo conflictingRepo = RepoProvider.Helper.findByAddress(context, REPO_CONFLICTING_URI);
+
+        assertEquals(1, conflictingRepo.priority);
         assertEquals(2, RepoProvider.Helper.findByAddress(context, REPO_MAIN_URI).priority);
         assertEquals(3, RepoProvider.Helper.findByAddress(context, REPO_ARCHIVE_URI).priority);
 
@@ -70,22 +85,44 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertMainArchiveRepoMetadata();
         assertConflictingRepo();
 
-        App a2048 = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "com.uberspot.a2048");
-        assert2048Metadata(a2048, "Conflicting");
+        assertRepoTakesPriority("Conflicting");
 
-        // This is only provided by the "Conflicting" repo.
-        App calendar = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "org.dgtale.icsimport");
-        assertCalendarMetadata(calendar, "Conflicting");
+        // Make the conflicting repo less important than the main repo.
+        ContentValues values = new ContentValues(1);
+        values.put(Cols.PRIORITY, 5);
+        RepoProvider.Helper.update(context, conflictingRepo, values);
+        Repo updatedConflictingRepo = RepoProvider.Helper.findByAddress(context, REPO_CONFLICTING_URI);
+        assertEquals(5, updatedConflictingRepo.priority);
+
+        assertRepoTakesPriority("Normal");
+    }
+
+    private void assertRepoTakesPriority(@RepoIdentifier String higherPriority) {
+        Map<String, App> allApps = allApps();
+
+        // Provided by both the "Main" and "Conflicting" repo, so need to fetch metdata from the
+        // repo with the higher "Conflicting" repo has a higher priority.
+        App adAway = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "org.adaway");
+        assertAdAwayMetadata(adAway, higherPriority);
+        assertAdAwayMetadata(allApps.get("org.adaway"), higherPriority);
+
 
         // This is only provided by the "Main" or "Archive" repo. Both the main and archive repo both
         // pull their metadata from the same build recipe in fdroidserver. The only difference is that
         // the archive repository contains .apks from further back, but their metadata is the same.
-        App adAway = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "org.adaway");
-        assertAdAwayMetadata(adAway, "Normal");
+        App a2048 = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "com.uberspot.a2048");
+        assert2048Metadata(a2048, "Normal");
+        assert2048Metadata(allApps.get("com.uberspot.a2048"), "Normal");
+
+        // This is only provided by the "Conflicting" repo.
+        App calendar = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "org.dgtale.icsimport");
+        assertCalendarMetadata(calendar, "Conflicting");
+        assertCalendarMetadata(allApps.get("org.dgtale.icsimport"), "Conflicting");
 
         // This is only provided by the "Main" repo.
         App adb = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), "siir.es.adbWireless");
-        assertAdAwayMetadata(adb, "Normal");
+        assertAdbMetadata(adb, "Normal");
+        assertAdbMetadata(allApps.get("siir.es.adbWireless"), "Normal");
     }
 
     @Test

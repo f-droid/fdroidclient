@@ -115,7 +115,7 @@ public interface Schema {
              * @see Cols#ALL_COLS
              */
             String[] ALL = {
-                    _ID, ROW_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
+                    _ID, ROW_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
                     CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
