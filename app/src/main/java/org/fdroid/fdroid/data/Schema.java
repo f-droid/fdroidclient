@@ -132,7 +132,7 @@ public interface Schema {
                     CATEGORIES, ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
-                    InstalledApp.SIGNATURE, Package.PACKAGE_NAME
+                    InstalledApp.SIGNATURE, Package.PACKAGE_NAME,
             };
         }
     }
