@@ -50,8 +50,6 @@ public abstract class AppListFragment extends ListFragment implements
             AppTable.Cols.InstalledApp.VERSION_NAME,
             AppTable.Cols.SuggestedApk.VERSION_NAME,
             AppTable.Cols.SUGGESTED_VERSION_CODE,
-            AppTable.Cols.IGNORE_ALLUPDATES,
-            AppTable.Cols.IGNORE_THISUPDATE,
             AppTable.Cols.REQUIREMENTS, // Needed for filtering apps that require root.
     };
 

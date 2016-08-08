@@ -9,6 +9,23 @@ import android.provider.BaseColumns;
  */
 public interface Schema {
 
+    interface AppPrefsTable {
+
+        String NAME = "fdroid_appPrefs";
+
+        interface Cols extends BaseColumns {
+            // Join onto app table via packageName, not appId. The corresponding app row could
+            // be deleted and then re-added in the future with the same metadata but a different
+            // rowid. This should not cause us to forget the preferences specified by a user.
+            String PACKAGE_NAME = "packageName";
+
+            String IGNORE_ALL_UPDATES = "ignoreAllUpdates";
+            String IGNORE_THIS_UPDATE = "ignoreThisUpdate";
+
+            String[] ALL = {PACKAGE_NAME, IGNORE_ALL_UPDATES, IGNORE_THIS_UPDATE};
+        }
+    }
+
     interface AppTable {
 
         String NAME = "fdroid_app";
@@ -46,8 +63,6 @@ public interface Schema {
             String CATEGORIES = "categories";
             String ANTI_FEATURES = "antiFeatures";
             String REQUIREMENTS = "requirements";
-            String IGNORE_ALLUPDATES = "ignoreAllUpdates";
-            String IGNORE_THISUPDATE = "ignoreThisUpdate";
             String ICON_URL = "iconUrl";
             String ICON_URL_LARGE = "iconUrlLarge";
 
@@ -66,8 +81,7 @@ public interface Schema {
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
                     CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
-                    CATEGORIES, ANTI_FEATURES, REQUIREMENTS, IGNORE_ALLUPDATES,
-                    IGNORE_THISUPDATE, ICON_URL, ICON_URL_LARGE,
+                    CATEGORIES, ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
                     InstalledApp.SIGNATURE,

@@ -11,6 +11,7 @@ import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
@@ -95,11 +96,16 @@ class DBHelper extends SQLiteOpenHelper {
             + AppTable.Cols.ADDED + " string,"
             + AppTable.Cols.LAST_UPDATED + " string,"
             + AppTable.Cols.IS_COMPATIBLE + " int not null,"
-            + AppTable.Cols.IGNORE_ALLUPDATES + " int not null,"
-            + AppTable.Cols.IGNORE_THISUPDATE + " int not null,"
             + AppTable.Cols.ICON_URL + " text, "
             + AppTable.Cols.ICON_URL_LARGE + " text, "
             + "primary key(" + AppTable.Cols.PACKAGE_NAME + "));";
+
+    private static final String CREATE_TABLE_APP_PREFS = "CREATE TABLE " + AppPrefsTable.NAME
+            + " ( "
+            + AppPrefsTable.Cols.PACKAGE_NAME + " TEXT, "
+            + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + " INT BOOLEAN NOT NULL, "
+            + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + " INT NOT NULL "
+            + " );";
 
     private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + InstalledAppTable.NAME
             + " ( "
@@ -114,7 +120,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 59;
+    private static final int DB_VERSION = 60;
 
     private final Context context;
 
@@ -216,9 +222,12 @@ class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        createAppApk(db);
+        db.execSQL(CREATE_TABLE_APP);
+        db.execSQL(CREATE_TABLE_APK);
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
         db.execSQL(CREATE_TABLE_REPO);
+        db.execSQL(CREATE_TABLE_APP_PREFS);
+        ensureIndexes(db);
 
         insertRepo(
                 db,
@@ -296,7 +305,7 @@ class DBHelper extends SQLiteOpenHelper {
         // The other tables are transient and can just be reset. Do this after
         // the repo table changes though, because it also clears the lastetag
         // fields which didn't always exist.
-        resetTransient(db, oldVersion);
+        resetTransientPre42(db, oldVersion);
 
         addNameAndDescriptionToRepo(db, oldVersion);
         addFingerprintToRepo(db, oldVersion);
@@ -317,6 +326,32 @@ class DBHelper extends SQLiteOpenHelper {
         addTargetSdkVersionToApk(db, oldVersion);
         migrateAppPrimaryKeyToRowId(db, oldVersion);
         removeApkPackageNameColumn(db, oldVersion);
+        addAppPrefsTable(db, oldVersion);
+    }
+
+    private void addAppPrefsTable(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 60) {
+            return;
+        }
+
+        Utils.debugLog(TAG, "Creating app preferences table");
+        db.execSQL(CREATE_TABLE_APP_PREFS);
+
+        Utils.debugLog(TAG, "Migrating app preferences to separate table");
+        db.execSQL(
+                "INSERT INTO " + AppPrefsTable.NAME + " ("
+                + AppPrefsTable.Cols.PACKAGE_NAME + ", "
+                + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", "
+                + AppPrefsTable.Cols.IGNORE_ALL_UPDATES
+                + ") SELECT "
+                + AppTable.Cols.PACKAGE_NAME + ", "
+                + "ignoreThisUpdate, "
+                + "ignoreAllUpdates "
+                + "FROM " + AppTable.NAME + " "
+                + "WHERE ignoreThisUpdate > 0 OR ignoreAllUpdates > 0"
+        );
+
+        resetTransient(db);
     }
 
     /**
@@ -657,12 +692,27 @@ class DBHelper extends SQLiteOpenHelper {
      * their repos (either manually or on a scheduled task), they will update regardless of whether
      * they have changed since last update or not.
      */
-    private void clearRepoEtags(SQLiteDatabase db) {
+    private static void clearRepoEtags(SQLiteDatabase db) {
         Utils.debugLog(TAG, "Clearing repo etags, so next update will not be skipped with \"Repos up to date\".");
         db.execSQL("update " + RepoTable.NAME + " set " + RepoTable.Cols.LAST_ETAG + " = NULL");
     }
 
-    private void resetTransient(SQLiteDatabase db, int oldVersion) {
+    private void resetTransient(SQLiteDatabase db) {
+        Utils.debugLog(TAG, "Removing app + apk tables so they can be recreated. Next time F-Droid updates it should trigger an index update.");
+        context.getSharedPreferences("FDroid", Context.MODE_PRIVATE)
+                .edit()
+                .putBoolean("triedEmptyUpdate", false)
+                .apply();
+
+        db.execSQL("DROP TABLE " + AppTable.NAME);
+        db.execSQL("DROP TABLE " + ApkTable.NAME);
+        db.execSQL(CREATE_TABLE_APP);
+        db.execSQL(CREATE_TABLE_APK);
+        clearRepoEtags(db);
+        ensureIndexes(db);
+    }
+
+    private void resetTransientPre42(SQLiteDatabase db, int oldVersion) {
         // Before version 42, only transient info was stored in here. As of some time
         // just before 42 (F-Droid 0.60ish) it now has "ignore this version" info which
         // was is specified by the user. We don't want to weely-neely nuke that data.
@@ -672,14 +722,10 @@ class DBHelper extends SQLiteOpenHelper {
             return;
         }
         context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
-                .putBoolean("triedEmptyUpdate", false).commit();
+                .putBoolean("triedEmptyUpdate", false).apply();
         db.execSQL("drop table " + AppTable.NAME);
         db.execSQL("drop table " + ApkTable.NAME);
         clearRepoEtags(db);
-        createAppApk(db);
-    }
-
-    private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
         db.execSQL(CREATE_TABLE_APK);
         ensureIndexes(db);
@@ -695,6 +741,23 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS apk_appId on " + ApkTable.NAME + " (" + ApkTable.Cols.APP_ID + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS repoId ON " + ApkTable.NAME + " (" + ApkTable.Cols.REPO_ID + ");");
+
+        if (tableExists(db, AppPrefsTable.NAME)) {
+            Utils.debugLog(TAG, "Ensuring indexes exist for " + AppPrefsTable.NAME);
+            db.execSQL("CREATE INDEX IF NOT EXISTS appPrefs_packageName on " + AppPrefsTable.NAME + " (" + AppPrefsTable.Cols.PACKAGE_NAME + ");");
+            db.execSQL("CREATE INDEX IF NOT EXISTS appPrefs_packageName_ignoreAll_ignoreThis on " + AppPrefsTable.NAME + " (" +
+                    AppPrefsTable.Cols.PACKAGE_NAME + ", " +
+                    AppPrefsTable.Cols.IGNORE_ALL_UPDATES + ", " +
+                    AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ");");
+        }
+
+        Utils.debugLog(TAG, "Ensuring indexes exist for " + InstalledAppTable.NAME);
+        db.execSQL("CREATE INDEX IF NOT EXISTS installedApp_appId_vercode on " + InstalledAppTable.NAME + " (" +
+                InstalledAppTable.Cols.PACKAGE_NAME + ", " + InstalledAppTable.Cols.VERSION_CODE + ");");
+
+        Utils.debugLog(TAG, "Ensuring indexes exist for " + RepoTable.NAME);
+        db.execSQL("CREATE INDEX IF NOT EXISTS repo_id_isSwap on " + RepoTable.NAME + " (" +
+                RepoTable.Cols._ID + ", " + RepoTable.Cols.IS_SWAP + ");");
     }
 
     /**
@@ -722,10 +785,14 @@ class DBHelper extends SQLiteOpenHelper {
                 + ApkTable.Cols.TARGET_SDK_VERSION + " integer");
     }
 
-    private static boolean columnExists(SQLiteDatabase db,
-            String table, String column) {
+    private static boolean columnExists(SQLiteDatabase db, String table, String column) {
         return db.rawQuery("select * from " + table + " limit 0,1", null)
                 .getColumnIndex(column) != -1;
+    }
+
+    private static boolean tableExists(SQLiteDatabase db, String table) {
+        return db.rawQuery("SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?",
+                new String[] {table}).getCount() > 0;
     }
 
 }

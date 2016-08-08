@@ -14,6 +14,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppTable;
 import org.fdroid.fdroid.data.Schema.AppTable.Cols;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
@@ -55,12 +56,6 @@ public class AppProvider extends FDroidProvider {
         public static List<App> all(ContentResolver resolver, String[] projection) {
             final Uri uri = AppProvider.getContentUri();
             Cursor cursor = resolver.query(uri, projection, null, null, null);
-            return cursorToList(cursor);
-        }
-
-        public static List<App> findIgnored(Context context, String[] projection) {
-            final Uri uri = AppProvider.getIgnoredUri();
-            Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             return cursorToList(cursor);
         }
 
@@ -153,6 +148,10 @@ public class AppProvider extends FDroidProvider {
             final Uri fromUpstream = calcAppDetailsFromIndexUri();
             context.getContentResolver().update(fromUpstream, null, null, null);
         }
+
+        public static List<App> findCanUpdate(Context context, String[] projection) {
+            return cursorToList(context.getContentResolver().query(AppProvider.getCanUpdateUri(), projection, null, null, null));
+        }
     }
 
     /**
@@ -186,6 +185,7 @@ public class AppProvider extends FDroidProvider {
     protected static class AppQuerySelection extends QuerySelection {
 
         private boolean naturalJoinToInstalled;
+        private boolean leftJoinPrefs;
 
         AppQuerySelection() {
             // The same as no selection, because "1" will always resolve to true when executing the SQL query.
@@ -217,11 +217,24 @@ public class AppProvider extends FDroidProvider {
             return this;
         }
 
+        public boolean leftJoinToPrefs() {
+            return leftJoinPrefs;
+        }
+
+        public AppQuerySelection requireLeftJoinPrefs() {
+            leftJoinPrefs = true;
+            return this;
+        }
+
         public AppQuerySelection add(AppQuerySelection query) {
             QuerySelection both = super.add(query);
             AppQuerySelection bothWithJoin = new AppQuerySelection(both.getSelection(), both.getArgs());
             if (this.naturalJoinToInstalled() || query.naturalJoinToInstalled()) {
                 bothWithJoin.requireNaturalInstalledTable();
+            }
+
+            if (this.leftJoinToPrefs() || query.leftJoinToPrefs()) {
+                bothWithJoin.requireLeftJoinPrefs();
             }
             return bothWithJoin;
         }
@@ -232,6 +245,7 @@ public class AppProvider extends FDroidProvider {
 
         private boolean isSuggestedApkTableAdded;
         private boolean requiresInstalledTable;
+        private boolean requiresLeftJoinToPrefs;
         private boolean categoryFieldAdded;
         private boolean countFieldAppended;
 
@@ -262,6 +276,9 @@ public class AppProvider extends FDroidProvider {
             if (selection.naturalJoinToInstalled()) {
                 naturalJoinToInstalledTable();
             }
+            if (selection.leftJoinToPrefs()) {
+                leftJoinToPrefs();
+            }
         }
 
         // TODO: What if the selection requires a natural join, but we first get a left join
@@ -273,6 +290,16 @@ public class AppProvider extends FDroidProvider {
                         "installed",
                         "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + getTableName() + "." + Cols.PACKAGE_NAME);
                 requiresInstalledTable = true;
+            }
+        }
+
+        public void leftJoinToPrefs() {
+            if (!requiresLeftJoinToPrefs) {
+                leftJoin(
+                        AppPrefsTable.NAME,
+                        "prefs",
+                        "prefs." + AppPrefsTable.Cols.PACKAGE_NAME + " = " + getTableName() + "." + Cols.PACKAGE_NAME);
+                requiresLeftJoinToPrefs = true;
             }
         }
 
@@ -377,7 +404,6 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
     private static final String PATH_NEWLY_ADDED = "newlyAdded";
     private static final String PATH_CATEGORY = "category";
-    private static final String PATH_IGNORED = "ignored";
     private static final String PATH_CALC_APP_DETAILS_FROM_INDEX = "calcDetailsFromIndex";
     private static final String PATH_REPO = "repo";
 
@@ -388,8 +414,7 @@ public class AppProvider extends FDroidProvider {
     private static final int RECENTLY_UPDATED = NO_APKS + 1;
     private static final int NEWLY_ADDED = RECENTLY_UPDATED + 1;
     private static final int CATEGORY = NEWLY_ADDED + 1;
-    private static final int IGNORED = CATEGORY + 1;
-    private static final int CALC_APP_DETAILS_FROM_INDEX = IGNORED + 1;
+    private static final int CALC_APP_DETAILS_FROM_INDEX = CATEGORY + 1;
     private static final int REPO = CALC_APP_DETAILS_FROM_INDEX + 1;
     private static final int SEARCH_REPO = REPO + 1;
     private static final int SEARCH_INSTALLED = SEARCH_REPO + 1;
@@ -398,7 +423,6 @@ public class AppProvider extends FDroidProvider {
     static {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
         MATCHER.addURI(getAuthority(), PATH_CALC_APP_DETAILS_FROM_INDEX, CALC_APP_DETAILS_FROM_INDEX);
-        MATCHER.addURI(getAuthority(), PATH_IGNORED, IGNORED);
         MATCHER.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
         MATCHER.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
         MATCHER.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
@@ -423,10 +447,6 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getNewlyAddedUri() {
         return Uri.withAppendedPath(getContentUri(), PATH_NEWLY_ADDED);
-    }
-
-    public static Uri getIgnoredUri() {
-        return Uri.withAppendedPath(getContentUri(), PATH_IGNORED);
     }
 
     private static Uri calcAppDetailsFromIndexUri() {
@@ -527,11 +547,16 @@ public class AppProvider extends FDroidProvider {
 
     private AppQuerySelection queryCanUpdate() {
         final String app = getTableName();
-        final String ignoreCurrent = app + "." + Cols.IGNORE_THISUPDATE + "!= " + app + "." + Cols.SUGGESTED_VERSION_CODE;
-        final String ignoreAll = app + "." + Cols.IGNORE_ALLUPDATES + " != 1";
+
+        // Need to use COALESCE because the prefs join may not resolve any rows, which means the
+        // ignore* fields will be NULL. In that case, we want to instead use a default value of 0.
+        final String ignoreCurrent = " COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", 0) != " + app + "." + Cols.SUGGESTED_VERSION_CODE;
+        final String ignoreAll = "COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + ", 0) != 1";
+
         final String ignore = " (" + ignoreCurrent + " AND " + ignoreAll + ") ";
         final String where = ignore + " AND " + app + "." + Cols.SUGGESTED_VERSION_CODE + " > installed." + InstalledAppTable.Cols.VERSION_CODE;
-        return new AppQuerySelection(where).requireNaturalInstalledTable();
+
+        return new AppQuerySelection(where).requireNaturalInstalledTable().requireLeftJoinPrefs();
     }
 
     private AppQuerySelection queryRepo(long repoId) {
@@ -602,19 +627,12 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection, args);
     }
 
-    private AppQuerySelection queryIgnored() {
-        final String table = getTableName();
-        final String selection = table + "." + Cols.IGNORE_ALLUPDATES + " = 1 OR " +
-                table + "." + Cols.IGNORE_THISUPDATE + " >= " + table + "." + Cols.SUGGESTED_VERSION_CODE;
-        return new AppQuerySelection(selection);
-    }
-
     private AppQuerySelection queryExcludeSwap() {
         // fdroid_repo will have null fields if the LEFT JOIN didn't resolve, e.g. due to there
         // being no apks for the app in the result set. In that case, we can't tell if it is from
         // a swap repo or not.
         final String isSwap = RepoTable.NAME + "." + RepoTable.Cols.IS_SWAP;
-        final String selection = isSwap + " = 0 OR " + isSwap + " IS NULL";
+        final String selection = "COALESCE(" + isSwap + ", 0) = 0";
         return new AppQuerySelection(selection);
     }
 
@@ -715,10 +733,6 @@ public class AppProvider extends FDroidProvider {
 
             case NO_APKS:
                 selection = selection.add(queryNoApks());
-                break;
-
-            case IGNORED:
-                selection = selection.add(queryIgnored());
                 break;
 
             case CATEGORY:
@@ -896,7 +910,7 @@ public class AppProvider extends FDroidProvider {
                 " WHERE " +
                     app + "." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + " AND " +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
-                " WHERE " + Cols.UPSTREAM_VERSION_CODE + " = 0 OR " + Cols.UPSTREAM_VERSION_CODE + " IS NULL OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
+                " WHERE COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
 
         db().execSQL(updateSql);
     }
