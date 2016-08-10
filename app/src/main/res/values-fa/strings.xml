@@ -123,7 +123,6 @@
     <string name="repo_exists_enable">این مخزن از پیش برپا شده است. تأیید کنید که می‌خواهید دوباره فعّالش کنید.</string>
     <string name="bad_fingerprint">اثر انگشت بد</string>
     <string name="invalid_url">این یک نشانی اینترنتی معتیبر نیست.</string>
-
     <string name="menu_send_apk_bt">هم‌رسانی فروشگاه بِل با بلوتوث</string>
     <string name="menu_settings">تنظیمات</string>
     <string name="menu_add_repo">مخزن جدید</string>
@@ -147,7 +146,6 @@
     <string name="ignoreTouch_on">همواره شامل کاره‌هایی که نیازمند صفحه‌لمسی هستند</string>
 
     <string name="local_repo">مخزن محلّی</string>
-
     <string name="local_repo_running">فروشگاه بِل آمادهٔ تبادل است</string>
     <string name="touch_to_configure_local_repo">برای دیدن جزییات و اجازه به دیگرات برای تبادل کاره‌هایتان، لمس کنید.</string>
     <string name="deleting_repo">در حال حذف مخزن جاری…</string>
@@ -213,7 +211,10 @@
     <string name="empty_can_update_app_list">تمام کاره‌ها به‌روز هستند.\n\nتبریک! تمام کاره‌هایتان به‌روز هستند (یا مخزن‌هایتان منقضی شده‌اند).</string>
 
     <string name="root_access_denied_title">دسترسی ریشه داده نشد</string>
+<<<<<<< 55ca6129e849c11398c95bc7685498ad100fc61d
 
+=======
+>>>>>>> fix names and color
     <string name="root_access_denied_body">یا افزارهٔ اندرویدیتان روت شده نیست، یا درخواست ریشه برای فروشگاه بِل را رد کردید.</string>
     <string name="system_uninstall_button">حذف نصب</string>
 
@@ -227,7 +228,10 @@
     <string name="swap_view_available_networks">برای گشودن شبکه‌های موجود، ضربه بزنید</string>
     <string name="swap_switch_to_wifi">برای تعویض به یک شبکهٔ وای‌فای، ضربه بزنید</string>
     <string name="open_qr_code_scanner">گشودن پویشگر QR</string>
+<<<<<<< 55ca6129e849c11398c95bc7685498ad100fc61d
 
+=======
+>>>>>>> fix names and color
     <string name="swap_welcome">به فروشگاه بِل خوش آمدید!</string>
     <string name="swap_confirm_connect">می‌خواهید اکنون کاره‌ها را از %1$s بگیرید؟</string>
     <string name="swap_dont_show_again">دیگر این را نشان نده</string>
@@ -246,7 +250,10 @@
     <string name="swap_not_visible_wifi">غیرقابل مشاهده از طریق وای‌فای</string>
     <string name="swap_wifi_device_name">نام افزاره</string>
     <string name="swap_cant_find_peers">نمی‌توانید کسی که دنبالشید را پیدا کنید؟</string>
+<<<<<<< 55ca6129e849c11398c95bc7685498ad100fc61d
 
+=======
+>>>>>>> fix names and color
     <string name="swap_send_fdroid">ارسال فروشگاه بِل</string>
     <string name="swap_no_peers_nearby">نمی‌توان افراد نزدیک را برای تبادل با آن‌ها پیدا کرد.</string>
     <string name="swap_connecting">در حال اتّصال</string>
@@ -278,7 +285,10 @@
 
     <string name="all_other_repos_fine">تمام مخزن‌های دیگر خطایی ایاد نکردند.</string>
         <string name="repo_not_yet_updated">این مخزن هنوز استفاده نشده است. برای دیدن کاره‌هایی که فراهم می‌کند، باید فعّالش کنید.</string>
+<<<<<<< 55ca6129e849c11398c95bc7685498ad100fc61d
 
+=======
+>>>>>>> fix names and color
     <string name="repo_confirm_delete_body">حذف یک مخزن به این معناست که کاره‌هایش دیگر در فروشگاه بِل موجود نخواهند بود.\n\nتوجّه: تمام کاره‌های نصب شدهٔ پیشین، روی افزاره‌تان باقی خواهند ماند.</string>
     <string name="repo_disabled_notification">%1$s غیرفعّال شد.\n\nبرای نصب کاره‌ها از آن باید دوباره فعّالش کنید.</string>
     <string name="repo_added">مخزن فروشگاه بِل %1$s ذخیره شد.</string>
@@ -328,7 +338,6 @@
     <string name="empty_search_installed_app_list">هیچ برنامهٔ نصب شدهٔ مطابقی وجود ندارد.</string>
     <string name="empty_search_available_app_list">هیچ برنامهٔ مطابقی وجود ندارد.</string>
     <string name="empty_search_can_update_app_list">هیچ برنامهٔ مطابقی برای به‌روز رسانی وجود ندارد.</string>
-
 
     <string name="crash_dialog_title">فروشگاه بِل از کار افتاد</string>
     <string name="crash_dialog_text">خطایی پیش‌بینی نشده رخ داد که برنامه را وادار به توقّف کرد. می‌خواهید جزئیات را برای کمک به حل کردن مشکل رایانامه کنید؟</string>
