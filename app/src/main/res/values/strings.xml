@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">F-Droid</string>
+    <string name="app_name">Bel Market</string>
 
     <string name="SignatureMismatch">The new version is signed with a different key to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
     <string name="installIncompatible">It seems like this package is not compatible with your device. Do you want to try and install it anyway?</string>
@@ -27,7 +27,7 @@
     <string name="update_history">Update history</string>
     <string name="update_history_summ">Days to consider apps new or recent: %s</string>
     <string name="system_installer">Privileged Extension</string>
-    <string name="system_installer_on">Use F-Droid Privileged Extension to install, update, and remove packages</string>
+    <string name="system_installer_on">Use Bel Market Privileged Extension to install, update, and remove packages</string>
     <string name="uninstall_system">Update/Uninstall Privileged Extension</string>
     <string name="uninstall_system_summary">Open details screen of Privileged Extension to update/uninstall it</string>
     <string name="local_repo_name">Name of your Local Repo</string>
@@ -44,7 +44,7 @@
     <string name="app_details">App Details</string>
     <string name="no_such_app">No such app found.</string>
 
-    <string name="about_title">About F-Droid</string>
+    <string name="about_title">About Bel Market</string>
     <string name="about_version">Version</string>
     <string name="about_site">Website</string>
     <string name="about_source">Source code</string>
@@ -82,7 +82,7 @@
     <string name="tab_updates_count">Updates (%d)</string>
     <string name="one_update_available">1 update is available.</string>
     <string name="many_updates_available">%d updates are available.</string>
-    <string name="fdroid_updates_available">F-Droid Updates Available</string>
+    <string name="fdroid_updates_available">Bel Market Updates Available</string>
     <string name="update_notification_more">+%1$d more…</string>
     <string name="bluetooth_activity_not_found">No Bluetooth send method found, choose one!</string>
     <string name="choose_bt_send">Choose Bluetooth send method</string>
@@ -101,7 +101,7 @@
 
     <string name="menu_update_repo">Update Repos</string>
     <string name="menu_manage">Repositories</string>
-    <string name="menu_send_apk_bt">Share F-Droid by Bluetooth</string>
+    <string name="menu_send_apk_bt">Share Bel Market by Bluetooth</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_about">About</string>
     <string name="menu_search">Search</string>
@@ -152,7 +152,7 @@
     <string name="ignoreTouch_on">Always include apps that require touchscreen</string>
 
     <string name="local_repo">Local Repo</string>
-    <string name="local_repo_running">F-Droid is ready to swap</string>
+    <string name="local_repo_running">Bel Market is ready to swap</string>
     <string name="touch_to_configure_local_repo">Touch to view details and allow others to swap your apps.</string>
     <string name="deleting_repo">Deleting current repo…</string>
     <string name="adding_apks_format">Adding %s to repo…</string>
@@ -216,12 +216,12 @@
     <string name="unknown">Unknown</string>
     <string name="repo_confirm_delete_title">Delete Repository?</string>
     <string name="repo_confirm_delete_body">Deleting a repository means
-        apps from it will no longer be available from F-Droid.\n\nNote: All
+        apps from it will no longer be available from Bel Market.\n\nNote: All
         previously installed apps will remain on your device.</string>
     <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
         need to re-enable this repository to install apps from it.</string>
-    <string name="repo_added">Saved F-Droid repository %1$s.</string>
-    <string name="repo_searching_address">Looking for F-Droid repository at\n%1$s</string>
+    <string name="repo_added">Saved Bel Market repository %1$s.</string>
+    <string name="repo_searching_address">Looking for Bel Market repository at\n%1$s</string>
     <string name="minsdk_or_later">%s or later</string>
     <string name="up_to_maxsdk">Up to %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s up to %2$s</string>
@@ -255,7 +255,7 @@
     <string name="category_Time">Time</string>
     <string name="category_Writing">Writing</string>
 
-    <string name="empty_installed_app_list">No apps installed.\n\nThere are apps on your device, but they are not available from F-Droid. This could be because you need to update your repositories, or the repositories genuinely don\'t have your apps available.</string>
+    <string name="empty_installed_app_list">No apps installed.\n\nThere are apps on your device, but they are not available from Bel Market. This could be because you need to update your repositories, or the repositories genuinely don\'t have your apps available.</string>
     <string name="empty_available_app_list">No apps in this category.\n\nTry selecting a different category or updating your repositories to get a fresh list of apps.</string>
     <string name="empty_can_update_app_list">All apps up to date.\n\nCongratulations! All of your apps are up to date (or your repositories are out of date).</string>
     <string name="empty_search_installed_app_list">No matching installed applications.</string>
@@ -264,31 +264,31 @@
 
     <string name="requesting_root_access_body">Requesting root access…</string>
     <string name="root_access_denied_title">Root access denied</string>
-    <string name="root_access_denied_body">Either your Android device is not rooted or you have denied root access for F-Droid.</string>
+    <string name="root_access_denied_body">Either your Android device is not rooted or you have denied root access for Bel Market.</string>
     <string name="install_error_unknown">Failed to install due to an unknown error</string>
     <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
-    <string name="system_install_denied_title">F-Droid Privileged Extension is not available</string>
-    <string name="system_install_denied_body">This option is only available when F-Droid Privileged Extension is installed.</string>
+    <string name="system_install_denied_title">Bel Market Privileged Extension is not available</string>
+    <string name="system_install_denied_body">This option is only available when Bel Market Privileged Extension is installed.</string>
     <string name="system_install_denied_signature">The signature of the extension is wrong! Please create a bug report!</string>
     <string name="system_install_denied_permissions">The privileged permissions have not been granted to the extension! Please create a bug report!</string>
     <string name="system_install_button_install">Install</string>
     <string name="system_install_button_open">Open Extension</string>
-    <string name="system_install_post_success">Successfully installed F-Droid Privileged Extension</string>
-    <string name="system_install_post_fail">Installation of F-Droid Privileged Extension failed</string>
-    <string name="system_install_post_success_message">F-Droid Privileged Extension has been successfully installed. This allows F-Droid to install, upgrade and uninstall apps on its own.</string>
-    <string name="system_install_post_fail_message">The installation of F-Droid Privileged Extension has failed. The installation method is not supported by all Android distributions, please consult the F-Droid bug tracker for more information.</string>
+    <string name="system_install_post_success">Successfully installed Bel Market Privileged Extension</string>
+    <string name="system_install_post_fail">Installation of Bel Market Privileged Extension failed</string>
+    <string name="system_install_post_success_message">Bel Market Privileged Extension has been successfully installed. This allows Bel Market to install, upgrade and uninstall apps on its own.</string>
+    <string name="system_install_post_fail_message">The installation of Bel Market Privileged Extension has failed. The installation method is not supported by all Android distributions, please consult the Bel Market bug tracker for more information.</string>
     <string name="system_install_installing">Installing…</string>
     <string name="system_install_installing_rebooting">Installing and rebooting…</string>
     <string name="system_install_uninstalling">Uninstalling…</string>
-    <string name="system_install_question">Do you want to install F-Droid Privileged Extension?</string>
+    <string name="system_install_question">Do you want to install Bel Market Privileged Extension?</string>
     <string name="system_install_warning">This takes up to 10 seconds.</string>
     <string name="system_install_warning_lollipop">This takes up to 10 seconds and the device will be &lt;b>rebooted&lt;/b> afterwards.</string>
-    <string name="system_uninstall">Do you want to uninstall F-Droid Privileged Extension?</string>
+    <string name="system_uninstall">Do you want to uninstall Bel Market Privileged Extension?</string>
     <string name="system_uninstall_button">Uninstall</string>
-    <string name="system_install_not_supported">Installation of F-Droid Privileged Extension is currently not supported on Android 5.1 or later.</string>
+    <string name="system_install_not_supported">Installation of Bel Market Privileged Extension is currently not supported on Android 5.1 or later.</string>
 
     <string name="swap_nfc_title">Touch to swap</string>
-    <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.</string>
+    <string name="swap_nfc_description">If your friend has Bel Market and NFC turned on touch your devices together.</string>
     <string name="swap_join_same_wifi">Join the same Wi-Fi as your friend</string>
     <string name="swap_join_same_wifi_desc">To swap using Wi-Fi, ensure you are on the same network. If you don\'t have access to the same network, one of you can create a Wi-Fi Hotspot.</string>
     <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
@@ -299,7 +299,7 @@
     <string name="swap_view_available_networks">Tap to open available networks</string>
     <string name="swap_switch_to_wifi">Tap to switch to a Wi-Fi network</string>
     <string name="open_qr_code_scanner">Open QR Scanner</string>
-    <string name="swap_welcome">Welcome to F-Droid!</string>
+    <string name="swap_welcome">Welcome to Bel Market!</string>
     <string name="swap_confirm_connect">Do you want to get apps from %1$s now?</string>
     <string name="swap_dont_show_again">Don\'t show this again</string>
     <string name="swap_scan_or_type_url">One person needs to scan the code, or type the URL of the other in a browser.</string>
@@ -318,13 +318,13 @@
     <string name="swap_not_visible_wifi">Not visible via Wi-Fi</string>
     <string name="swap_wifi_device_name">Device Name</string>
     <string name="swap_cant_find_peers">Can\'t find who you\'re looking for?</string>
-    <string name="swap_send_fdroid">Send F-Droid</string>
+    <string name="swap_send_fdroid">Send Bel Market</string>
     <string name="swap_no_peers_nearby">Could not find people nearby to swap with.</string>
     <string name="swap_connecting">Connecting</string>
     <string name="swap_confirm">Confirm swap</string>
     <string name="swap_qr_isnt_for_swap">The QR code you scanned doesn\'t look like a swap code.</string>
     <string name="bluetooth_unavailable">Bluetooth unavailable</string>
-    <string name="swap_cant_send_no_bluetooth">Cannot send F-Droid, because Bluetooth is unavailable on this device.</string>
+    <string name="swap_cant_send_no_bluetooth">Cannot send Bel Market, because Bluetooth is unavailable on this device.</string>
     <string name="loading">Loading…</string>
     <string name="swap_connection_misc_error">An error occurred while connecting to device, we can\'t seem to swap with it.</string>
     <string name="swap_not_enabled">Swapping not enabled</string>
@@ -383,7 +383,7 @@
     <string name="theme_dark">Dark</string>
     <string name="theme_night">Night</string>
 
-    <string name="crash_dialog_title">F-Droid has crashed</string>
+    <string name="crash_dialog_title">Bel Market has crashed</string>
     <string name="crash_dialog_text">An unexpected error occurred
             forcing the application to stop. Would you like to e-mail the
             details to help fix the issue?</string>
