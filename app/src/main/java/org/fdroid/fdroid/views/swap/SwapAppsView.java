@@ -104,7 +104,7 @@ public class SwapAppsView extends ListView implements
         */
 
         adapter = new AppListAdapter(getContext(), getContext().getContentResolver().query(
-                AppProvider.getRepoUri(repo), Schema.AppTable.Cols.ALL, null, null, null));
+                AppProvider.getRepoUri(repo), Schema.AppMetadataTable.Cols.ALL, null, null, null));
 
         setAdapter(adapter);
 
@@ -194,7 +194,7 @@ public class SwapAppsView extends ListView implements
                 ? AppProvider.getRepoUri(repo)
                 : AppProvider.getSearchUri(repo, mCurrentFilterString);
 
-        return new CursorLoader(getActivity(), uri, Schema.AppTable.Cols.ALL, null, null, Schema.AppTable.Cols.NAME);
+        return new CursorLoader(getActivity(), uri, Schema.AppMetadataTable.Cols.ALL, null, null, Schema.AppMetadataTable.Cols.NAME);
     }
 
     @Override

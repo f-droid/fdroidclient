@@ -15,8 +15,8 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppPrefsTable;
-import org.fdroid.fdroid.data.Schema.AppTable;
-import org.fdroid.fdroid.data.Schema.AppTable.Cols;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
@@ -165,7 +165,7 @@ public class AppProvider extends FDroidProvider {
     static final class UpgradeHelper {
 
         public static void updateIconUrls(Context context, SQLiteDatabase db) {
-            AppProvider.updateIconUrls(context, db, AppTable.NAME, ApkTable.NAME);
+            AppProvider.updateIconUrls(context, db, AppMetadataTable.NAME, ApkTable.NAME);
         }
 
     }
@@ -524,7 +524,7 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     protected String getTableName() {
-        return AppTable.NAME;
+        return AppMetadataTable.NAME;
     }
 
     protected String getApkTableName() {

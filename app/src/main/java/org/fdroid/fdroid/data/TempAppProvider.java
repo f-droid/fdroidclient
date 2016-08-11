@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import java.util.List;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
-import org.fdroid.fdroid.data.Schema.AppTable;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 
 /**
  * This class does all of its operations in a temporary sqlite table.
@@ -26,7 +26,7 @@ public class TempAppProvider extends AppProvider {
 
     private static final String PROVIDER_NAME = "TempAppProvider";
 
-    static final String TABLE_TEMP_APP = "temp_" + AppTable.NAME;
+    static final String TABLE_TEMP_APP = "temp_" + AppMetadataTable.NAME;
 
     private static final String PATH_INIT = "init";
     private static final String PATH_COMMIT = "commit";
@@ -165,10 +165,10 @@ public class TempAppProvider extends AppProvider {
         final SQLiteDatabase db = db();
         ensureTempTableDetached(db);
         db.execSQL("ATTACH DATABASE ':memory:' AS " + DB);
-        db.execSQL("CREATE TABLE " + DB + "." + getTableName() + " AS SELECT * FROM main." + AppTable.NAME);
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (" + AppTable.Cols.PACKAGE_NAME + ");");
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (" + AppTable.Cols.UPSTREAM_VERSION_CODE + ");");
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (" + AppTable.Cols.IS_COMPATIBLE + ");");
+        db.execSQL("CREATE TABLE " + DB + "." + getTableName() + " AS SELECT * FROM main." + AppMetadataTable.NAME);
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (" + AppMetadataTable.Cols.PACKAGE_NAME + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (" + AppMetadataTable.Cols.UPSTREAM_VERSION_CODE + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (" + AppMetadataTable.Cols.IS_COMPATIBLE + ");");
     }
 
     private void commitTable() {
@@ -179,8 +179,8 @@ public class TempAppProvider extends AppProvider {
             final String tempApp = DB + "." + TempAppProvider.TABLE_TEMP_APP;
             final String tempApk = DB + "." + TempApkProvider.TABLE_TEMP_APK;
 
-            db.execSQL("DELETE FROM " + AppTable.NAME + " WHERE 1");
-            db.execSQL("INSERT INTO " + AppTable.NAME + " SELECT * FROM " + tempApp);
+            db.execSQL("DELETE FROM " + AppMetadataTable.NAME + " WHERE 1");
+            db.execSQL("INSERT INTO " + AppMetadataTable.NAME + " SELECT * FROM " + tempApp);
 
             db.execSQL("DELETE FROM " + ApkTable.NAME + " WHERE 1");
             db.execSQL("INSERT INTO " + ApkTable.NAME + " SELECT * FROM " + tempApk);
