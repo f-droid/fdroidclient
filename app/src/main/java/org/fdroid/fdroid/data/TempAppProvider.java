@@ -142,7 +142,7 @@ public class TempAppProvider extends AppProvider {
 
         int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
         if (!isApplyingBatch()) {
-            getContext().getContentResolver().notifyChange(uri, null);
+            getContext().getContentResolver().notifyChange(getHighestPriorityMetadataUri(packageName), null);
         }
         return count;
     }

@@ -319,7 +319,7 @@ public class SwapAppsView extends ListView implements
                     // implemented on API-16, so leaving like this for now.
                     getActivity().getContentResolver().unregisterContentObserver(appObserver);
                     getActivity().getContentResolver().registerContentObserver(
-                            AppProvider.getAppUri(this.app), true, appObserver);
+                            AppProvider.getSpecificAppUri(this.app.packageName, this.app.repoId), true, appObserver);
                 }
                 resetView();
             }

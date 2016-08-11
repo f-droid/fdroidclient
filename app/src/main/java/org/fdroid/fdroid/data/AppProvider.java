@@ -28,6 +28,23 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Each app has a bunch of metadata that it associates with a package name (such as org.fdroid.fdroid).
+ * Multiple repositories can host the same package, and provide different metadata for that app.
+ *
+ * As such, it is usually the case that you are interested in an {@link App} which has its metadata
+ * provided by "the repo with the best priority", rather than "specific repo X". This is important
+ * when asking for an apk, whereby the preferable way is likely using:
+ *
+ *  * {@link AppProvider.Helper#findHighestPriorityMetadata(ContentResolver, String)}
+ *
+ * rather than:
+ *
+ *  * {@link AppProvider.Helper#findSpecificApp(ContentResolver, String, long, String[])}
+ *
+ * The same can be said of retrieving a list of {@link App} objects, where the metadata for each app
+ * in the result set should be populated from the repository with the best priority.
+ */
 public class AppProvider extends FDroidProvider {
 
     private static final String TAG = "AppProvider";
@@ -126,13 +143,15 @@ public class AppProvider extends FDroidProvider {
             return cursorToApp(resolver.query(uri, Cols.ALL, null, null, null));
         }
 
-        public static App findByPackageName(ContentResolver resolver, String packageName, long repoId) {
-            return findByPackageName(resolver, packageName, repoId, Cols.ALL);
-        }
-
-        public static App findByPackageName(ContentResolver resolver, String packageName, long repoId,
-                                            String[] projection) {
-            final Uri uri = getAppUri(packageName, repoId);
+        /**
+         * Returns an {@link App} with metadata provided by a specific {@code repoId}. Keep in mind
+         * that most of the time we don't care which repo provides the metadata for a particular app,
+         * as long as it is the repo with the best priority. In those cases, you should instead use
+         * {@link AppProvider.Helper#findHighestPriorityMetadata(ContentResolver, String)}.
+         */
+        public static App findSpecificApp(ContentResolver resolver, String packageName, long repoId,
+                                          String[] projection) {
+            final Uri uri = getSpecificAppUri(packageName, repoId);
             return cursorToApp(resolver.query(uri, projection, null, null, null));
         }
 
@@ -501,11 +520,12 @@ public class AppProvider extends FDroidProvider {
         return getContentUri(app.packageName);
     }
 
-    public static Uri getAppUri(App app) {
-        return getAppUri(app.packageName, app.repoId);
-    }
-
-    public static Uri getAppUri(String packageName, long repoId) {
+    /**
+     * @see AppProvider.Helper#findSpecificApp(ContentResolver, String, long, String[]) for details
+     * of why you should usually prefer {@link AppProvider#getHighestPriorityMetadataUri(String)} to
+     * this method.
+     */
+    public static Uri getSpecificAppUri(String packageName, long repoId) {
         return getContentUri()
                 .buildUpon()
                 .appendPath(PATH_APP)
@@ -514,7 +534,7 @@ public class AppProvider extends FDroidProvider {
                 .build();
     }
 
-    private static Uri getHighestPriorityMetadataUri(String packageName) {
+    public static Uri getHighestPriorityMetadataUri(String packageName) {
         return getContentUri().buildUpon()
                 .appendPath(PATH_HIGHEST_PRIORITY)
                 .appendPath(packageName)
@@ -669,7 +689,7 @@ public class AppProvider extends FDroidProvider {
      * Same as {@link AppProvider#querySingle(String, long)} except it is used for the purpose
      * of an UPDATE query rather than a SELECT query. This means that it must use a subquery to get
      * the {@link Cols.Package#PACKAGE_ID} rather than the join which is already in place for that
-     * table.
+     * table. The reason is because UPDATE queries cannot include joins in SQLite.
      */
     protected AppQuerySelection querySingleForUpdate(String packageName, long repoId) {
         final String selection = Cols.PACKAGE_ID + " = (" + getPackageIdFromPackageNameQuery() +
@@ -693,6 +713,10 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection, args);
     }
 
+    /**
+     * Ensures that for each app metadata row with the same package name, only the one from the repo
+     * with the best priority is represented in the result set.
+     */
     private AppQuerySelection queryHighestPriority() {
         final String highestPriority =
                 "SELECT MIN(r." + RepoTable.Cols.PRIORITY + ") " +
@@ -895,34 +919,17 @@ public class AppProvider extends FDroidProvider {
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
-        return getAppUri(values.getAsString(PackageTable.Cols.PACKAGE_NAME), values.getAsLong(Cols.REPO_ID));
+        return getSpecificAppUri(values.getAsString(PackageTable.Cols.PACKAGE_NAME), values.getAsLong(Cols.REPO_ID));
     }
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        QuerySelection query = new QuerySelection(where, whereArgs);
-        switch (MATCHER.match(uri)) {
-
-            case CALC_APP_DETAILS_FROM_INDEX:
-                updateAppDetails();
-                return 0;
-
-            case CODE_SINGLE:
-                List<String> pathParts = uri.getPathSegments();
-                long repoId = Long.parseLong(pathParts.get(1));
-                String packageName = pathParts.get(2);
-                query = query.add(querySingleForUpdate(packageName, repoId));
-                break;
-
-            default:
-                throw new UnsupportedOperationException("Update not supported for " + uri + ".");
-
+        if (MATCHER.match(uri) != CALC_APP_DETAILS_FROM_INDEX) {
+            throw new UnsupportedOperationException("Update not supported for " + uri + ".");
         }
-        int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
-        if (!isApplyingBatch()) {
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
-        return count;
+
+        updateAppDetails();
+        return 0;
     }
 
     protected void updateAppDetails() {

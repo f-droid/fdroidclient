@@ -68,7 +68,7 @@ public class AppProviderTest extends FDroidProviderTest {
 
     @Test
     public void testCantFindApp() {
-        assertNull(AppProvider.Helper.findByPackageName(context.getContentResolver(), "com.example.doesnt-exist", 1));
+        assertNull(AppProvider.Helper.findSpecificApp(context.getContentResolver(), "com.example.doesnt-exist", 1, Cols.ALL));
     }
 
     @Test
@@ -111,14 +111,14 @@ public class AppProviderTest extends FDroidProviderTest {
         ContentResolver r = context.getContentResolver();
 
         // Can't "update", although can "install"...
-        App notInstalled = AppProvider.Helper.findByPackageName(r, "not installed", 1);
+        App notInstalled = AppProvider.Helper.findSpecificApp(r, "not installed", 1, Cols.ALL);
         assertFalse(notInstalled.canAndWantToUpdate(context));
 
-        App installedOnlyOneVersionAvailable   = AppProvider.Helper.findByPackageName(r, "installed, only one version available", 1);
-        App installedAlreadyLatestNoIgnore     = AppProvider.Helper.findByPackageName(r, "installed, already latest, no ignore", 1);
-        App installedAlreadyLatestIgnoreAll    = AppProvider.Helper.findByPackageName(r, "installed, already latest, ignore all", 1);
-        App installedAlreadyLatestIgnoreLatest = AppProvider.Helper.findByPackageName(r, "installed, already latest, ignore latest", 1);
-        App installedAlreadyLatestIgnoreOld    = AppProvider.Helper.findByPackageName(r, "installed, already latest, ignore old", 1);
+        App installedOnlyOneVersionAvailable   = AppProvider.Helper.findSpecificApp(r, "installed, only one version available", 1, Cols.ALL);
+        App installedAlreadyLatestNoIgnore     = AppProvider.Helper.findSpecificApp(r, "installed, already latest, no ignore", 1, Cols.ALL);
+        App installedAlreadyLatestIgnoreAll    = AppProvider.Helper.findSpecificApp(r, "installed, already latest, ignore all", 1, Cols.ALL);
+        App installedAlreadyLatestIgnoreLatest = AppProvider.Helper.findSpecificApp(r, "installed, already latest, ignore latest", 1, Cols.ALL);
+        App installedAlreadyLatestIgnoreOld    = AppProvider.Helper.findSpecificApp(r, "installed, already latest, ignore old", 1, Cols.ALL);
 
         assertFalse(installedOnlyOneVersionAvailable.canAndWantToUpdate(context));
         assertFalse(installedAlreadyLatestNoIgnore.canAndWantToUpdate(context));
@@ -126,10 +126,10 @@ public class AppProviderTest extends FDroidProviderTest {
         assertFalse(installedAlreadyLatestIgnoreLatest.canAndWantToUpdate(context));
         assertFalse(installedAlreadyLatestIgnoreOld.canAndWantToUpdate(context));
 
-        App installedOldNoIgnore             = AppProvider.Helper.findByPackageName(r, "installed, old version, no ignore", 1);
-        App installedOldIgnoreAll            = AppProvider.Helper.findByPackageName(r, "installed, old version, ignore all", 1);
-        App installedOldIgnoreLatest         = AppProvider.Helper.findByPackageName(r, "installed, old version, ignore latest", 1);
-        App installedOldIgnoreNewerNotLatest = AppProvider.Helper.findByPackageName(r, "installed, old version, ignore newer, but not latest", 1);
+        App installedOldNoIgnore             = AppProvider.Helper.findSpecificApp(r, "installed, old version, no ignore", 1, Cols.ALL);
+        App installedOldIgnoreAll            = AppProvider.Helper.findSpecificApp(r, "installed, old version, ignore all", 1, Cols.ALL);
+        App installedOldIgnoreLatest         = AppProvider.Helper.findSpecificApp(r, "installed, old version, ignore latest", 1, Cols.ALL);
+        App installedOldIgnoreNewerNotLatest = AppProvider.Helper.findSpecificApp(r, "installed, old version, ignore newer, but not latest", 1, Cols.ALL);
 
         assertTrue(installedOldNoIgnore.canAndWantToUpdate(context));
         assertFalse(installedOldIgnoreAll.canAndWantToUpdate(context));
@@ -239,7 +239,7 @@ public class AppProviderTest extends FDroidProviderTest {
         assertEquals("org.fdroid.fdroid", app.packageName);
         assertEquals("F-Droid", app.name);
 
-        App otherApp = AppProvider.Helper.findByPackageName(context.getContentResolver(), "org.fdroid.fdroid", 1);
+        App otherApp = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "org.fdroid.fdroid", 1, Cols.ALL);
         assertNotNull(otherApp);
         assertEquals("org.fdroid.fdroid", otherApp.packageName);
         assertEquals("F-Droid", otherApp.name);
@@ -371,6 +371,6 @@ public class AppProviderTest extends FDroidProviderTest {
         Uri uri = AppProvider.getContentUri();
 
         contentResolver.insert(uri, values);
-        return AppProvider.Helper.findByPackageName(context.getContentResolver(), id, 1);
+        return AppProvider.Helper.findSpecificApp(context.getContentResolver(), id, 1, Cols.ALL);
     }
 }

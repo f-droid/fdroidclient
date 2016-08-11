@@ -46,6 +46,13 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     public String packageName = "unknown";
     public String name = "Unknown";
+
+    /**
+     * This is primarily for the purpose of saving app metadata when parsing an index.xml file.
+     * At most other times, we don't particularly care which repo an {@link App} object came from.
+     * It is pretty much transparent, because the metadata will be populated from the repo with
+     * the highest priority. The UI doesn't care normally _which_ repo provided the metadata.
+     */
     public long repoId;
     public String summary = "Unknown application";
     public String icon;

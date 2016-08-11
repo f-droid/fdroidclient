@@ -198,14 +198,14 @@ public class Assert {
         Uri uri = AppProvider.getContentUri();
 
         context.getContentResolver().insert(uri, values);
-        return AppProvider.Helper.findByPackageName(context.getContentResolver(), packageName, 1);
+        return AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1, AppMetadataTable.Cols.ALL);
     }
 
     private static App ensureApp(Context context, String packageName) {
-        App app = AppProvider.Helper.findByPackageName(context.getContentResolver(), packageName, 1);
+        App app = AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1, AppMetadataTable.Cols.ALL);
         if (app == null) {
             insertApp(context, packageName, packageName);
-            app = AppProvider.Helper.findByPackageName(context.getContentResolver(), packageName, 1);
+            app = AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1, AppMetadataTable.Cols.ALL);
         }
         assertNotNull(app);
         return app;

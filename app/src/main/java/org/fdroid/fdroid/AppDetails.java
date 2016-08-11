@@ -425,7 +425,7 @@ public class AppDetails extends AppCompatActivity {
         // register observer to know when install status changes
         myAppObserver = new AppObserver(new Handler());
         getContentResolver().registerContentObserver(
-                AppProvider.getAppUri(app),
+                AppProvider.getHighestPriorityMetadataUri(app.packageName),
                 true,
                 myAppObserver);
     }
