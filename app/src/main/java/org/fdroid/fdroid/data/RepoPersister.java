@@ -226,7 +226,7 @@ public class RepoPersister {
      */
     private boolean isAppInDatabase(App app) {
         String[] fields = {Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME};
-        App found = AppProvider.Helper.findByPackageName(context.getContentResolver(), app.packageName, repo.id, fields);
+        App found = AppProvider.Helper.findSpecificApp(context.getContentResolver(), app.packageName, repo.id, fields);
         return found != null;
     }
 

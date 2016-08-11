@@ -14,6 +14,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -236,7 +237,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     }
 
     private void assert2048Metadata(Repo repo, @RepoIdentifier String id) {
-        App a2048 = AppProvider.Helper.findByPackageName(context.getContentResolver(), "com.uberspot.a2048", repo.getId());
+        App a2048 = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "com.uberspot.a2048", repo.getId(), AppMetadataTable.Cols.ALL);
         assert2048Metadata(a2048, id);
     }
 
@@ -255,7 +256,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     }
 
     private void assertAdAwayMetadata(Repo repo, @RepoIdentifier String id) {
-        App adaway = AppProvider.Helper.findByPackageName(context.getContentResolver(), "org.adaway", repo.getId());
+        App adaway = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "org.adaway", repo.getId(), AppMetadataTable.Cols.ALL);
         assertAdAwayMetadata(adaway, id);
     }
 
@@ -274,7 +275,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     }
 
     private void assertAdbMetadata(Repo repo, @RepoIdentifier String id) {
-        App adb = AppProvider.Helper.findByPackageName(context.getContentResolver(), "siir.es.adbWireless", repo.getId());
+        App adb = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "siir.es.adbWireless", repo.getId(), AppMetadataTable.Cols.ALL);
         assertAdbMetadata(adb, id);
     }
 
@@ -290,7 +291,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     }
 
     private void assertCalendarMetadata(Repo repo, @RepoIdentifier String id) {
-        App calendar = AppProvider.Helper.findByPackageName(context.getContentResolver(), "org.dgtale.icsimport", repo.getId());
+        App calendar = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "org.dgtale.icsimport", repo.getId(), AppMetadataTable.Cols.ALL);
         assertCalendarMetadata(calendar, id);
     }
 
