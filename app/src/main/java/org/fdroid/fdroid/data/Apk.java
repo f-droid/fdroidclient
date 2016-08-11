@@ -63,7 +63,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String[] incompatibleReasons;
 
     /**
-     * The numeric primary key of the Package table, which is used to join apks.
+     * The numeric primary key of the Metadata table, which is used to join apks.
      */
     public long appId;
 

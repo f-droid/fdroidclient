@@ -369,8 +369,14 @@ public class ApkProvider extends FDroidProvider {
     private QuerySelection querySingleFromAnyRepo(Uri uri, boolean includeAlias) {
         String alias = includeAlias ? "apk." : "";
 
-        // TODO: Change the = to an IN to deal with multiple apps?
-        final String selection = alias + Cols.VERSION_CODE + " = ? and " + alias + Cols.APP_ID + " = (" + getMetadataIdFromPackageNameQuery() + ")";
+        // TODO: Technically multiple repositories can provide the apk with this version code.
+        //       Therefore, in the very near future we'll need to change from calculating a
+        //       "suggested version code" to a "suggested apk" and join directly onto the apk table.
+        //       This way, we can take into account both repo priorities and signing keys of any
+        //       already installed apks to ensure that the best version is suggested to the user.
+        //       At this point, we may pull back the "wrong" apk in weird edge cases, but the user
+        //       wont be tricked into installing it, as it will (likely) have a different signing key.
+        final String selection = alias + Cols.VERSION_CODE + " = ? and " + alias + Cols.APP_ID + " IN (" + getMetadataIdFromPackageNameQuery() + ")";
         final String[] args = {
             // First (0th) path segment is the word "apk",
             // and we are not interested in it.
@@ -443,13 +449,12 @@ public class ApkProvider extends FDroidProvider {
         return new QuerySelection(sb.toString(), args);
     }
 
-    // TODO: This could return many rows of app metadata
     private String getMetadataIdFromPackageNameQuery() {
-        return "SELECT app." + AppMetadataTable.Cols.ROW_ID + " " +
-                "FROM " + AppMetadataTable.NAME + " AS app " +
-                "JOIN " + PackageTable.NAME + " AS pkg ON ( " +
-                "  app." + AppMetadataTable.Cols.PACKAGE_ID + " = pkg." + PackageTable.Cols.ROW_ID + " ) " +
-                "WHERE pkg." + PackageTable.Cols.PACKAGE_NAME + " = ?";
+        return "SELECT m." + AppMetadataTable.Cols.ROW_ID + " " +
+                "FROM " + AppMetadataTable.NAME + " AS m " +
+                "JOIN " + PackageTable.NAME + " AS p ON ( " +
+                "  m." + AppMetadataTable.Cols.PACKAGE_ID + " = p." + PackageTable.Cols.ROW_ID + " ) " +
+                "WHERE p." + PackageTable.Cols.PACKAGE_NAME + " = ?";
     }
 
     @Override
