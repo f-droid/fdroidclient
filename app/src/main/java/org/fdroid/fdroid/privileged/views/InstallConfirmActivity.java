@@ -56,8 +56,6 @@ import org.fdroid.fdroid.data.Schema;
  */
 public class InstallConfirmActivity extends FragmentActivity implements OnCancelListener, OnClickListener {
 
-    private static final int RESULT_CANNOT_PARSE = RESULT_FIRST_USER + 1;
-
     private Intent intent;
 
     private AppDiff appDiff;
@@ -196,10 +194,6 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         app = AppProvider.Helper.findByPackageName(getContentResolver(), apk.packageName);
 
         appDiff = new AppDiff(getPackageManager(), apk);
-        if (appDiff.pkgInfo == null) {
-            setResult(RESULT_CANNOT_PARSE, intent);
-            finish();
-        }
 
         setContentView(R.layout.install_start);
 
