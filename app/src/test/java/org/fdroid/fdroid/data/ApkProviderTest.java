@@ -10,7 +10,6 @@ import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.mock.MockApk;
-import org.fdroid.fdroid.mock.MockApp;
 import org.fdroid.fdroid.mock.MockRepo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +22,6 @@ import java.util.Date;
 import java.util.List;
 
 import static org.fdroid.fdroid.Assert.assertCantDelete;
-import static org.fdroid.fdroid.Assert.assertContainsOnly;
 import static org.fdroid.fdroid.Assert.assertResultCount;
 import static org.fdroid.fdroid.Assert.insertApp;
 import static org.junit.Assert.assertEquals;
@@ -64,65 +62,6 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertResultCount(10, exampleApks);
         assertBelongsToApp(exampleApks, "com.example");
         exampleApks.close();
-
-        ApkProvider.Helper.deleteApksByApp(context, new MockApp("com.example"));
-
-        Cursor all = queryAllApks();
-        assertResultCount(10, all);
-        assertBelongsToApp(all, "org.fdroid.fdroid");
-        all.close();
-    }
-
-    @Test
-    public void testDeleteArbitraryApks() {
-        Apk one   = insertApkForRepo("com.example.one", 1, 10);
-        Apk two   = insertApkForRepo("com.example.two", 1, 10);
-        Apk three = insertApkForRepo("com.example.three", 1, 10);
-        Apk four  = insertApkForRepo("com.example.four", 1, 10);
-        Apk five  = insertApkForRepo("com.example.five", 1, 10);
-
-        assertTotalApkCount(5);
-
-        assertEquals("com.example.one", one.packageName);
-        assertEquals("com.example.two", two.packageName);
-        assertEquals("com.example.five", five.packageName);
-
-        String[] expectedIds = {
-            "com.example.one",
-            "com.example.two",
-            "com.example.three",
-            "com.example.four",
-            "com.example.five",
-        };
-
-        List<Apk> all = ApkProvider.Helper.findByRepo(context, new MockRepo(10), Cols.ALL);
-        List<String> actualIds = new ArrayList<>();
-        for (Apk apk : all) {
-            actualIds.add(apk.packageName);
-        }
-
-        assertContainsOnly(actualIds, expectedIds);
-
-        List<Apk> toDelete = new ArrayList<>(3);
-        toDelete.add(two);
-        toDelete.add(three);
-        toDelete.add(four);
-        ApkProvider.Helper.deleteApks(context, toDelete);
-
-        assertTotalApkCount(2);
-
-        List<Apk> allRemaining = ApkProvider.Helper.findByRepo(context, new MockRepo(10), Cols.ALL);
-        List<String> actualRemainingIds = new ArrayList<>();
-        for (Apk apk : allRemaining) {
-            actualRemainingIds.add(apk.packageName);
-        }
-
-        String[] expectedRemainingIds = {
-            "com.example.one",
-            "com.example.five",
-        };
-
-        assertContainsOnly(actualRemainingIds, expectedRemainingIds);
     }
 
     @Test
