@@ -786,13 +786,19 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private static boolean columnExists(SQLiteDatabase db, String table, String column) {
-        return db.rawQuery("select * from " + table + " limit 0,1", null)
-                .getColumnIndex(column) != -1;
+        Cursor cursor = db.rawQuery("select * from " + table + " limit 0,1", null);
+        boolean exists = cursor.getColumnIndex(column) != -1;
+        cursor.close();
+        return exists;
     }
 
     private static boolean tableExists(SQLiteDatabase db, String table) {
-        return db.rawQuery("SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?",
-                new String[] {table}).getCount() > 0;
+        Cursor cursor = db.query("sqlite_master", new String[] {"name"},
+                "type = 'table' AND name = ?", new String[] {table}, null, null, null);
+
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        return exists;
     }
 
 }
