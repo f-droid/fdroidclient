@@ -785,22 +785,12 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
-
-        QuerySelection query = new QuerySelection(where, whereArgs);
-        switch (MATCHER.match(uri)) {
-
-            case NO_APKS:
-                query = query.add(queryNoApks());
-                break;
-
-            default:
-                throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
-
+        if (MATCHER.match(uri) != NO_APKS) {
+            throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
         }
 
-        int count = db().delete(getTableName(), query.getSelection(), query.getArgs());
-        getContext().getContentResolver().notifyChange(uri, null);
-        return count;
+        AppQuerySelection selection = new AppQuerySelection(where, whereArgs).add(queryNoApks());
+        return db().delete(getTableName(), selection.getSelection(), selection.getArgs());
     }
 
     @Override
