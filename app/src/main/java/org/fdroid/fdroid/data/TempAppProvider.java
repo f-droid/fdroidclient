@@ -122,15 +122,11 @@ public class TempAppProvider extends AppProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        QuerySelection query = new QuerySelection(where, whereArgs);
-        switch (MATCHER.match(uri)) {
-            case CODE_SINGLE:
-                query = query.add(querySingle(uri.getLastPathSegment()));
-                break;
-
-            default:
-                throw new UnsupportedOperationException("Update not supported for " + uri + ".");
+        if (MATCHER.match(uri) != CODE_SINGLE) {
+            throw new UnsupportedOperationException("Update not supported for " + uri + ".");
         }
+
+        QuerySelection query = new QuerySelection(where, whereArgs).add(querySingle(uri.getLastPathSegment()));
 
         int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
         if (!isApplyingBatch()) {
