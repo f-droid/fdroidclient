@@ -62,30 +62,6 @@ public class ApkProvider extends FDroidProvider {
             return resolver.delete(uri, null, null);
         }
 
-        public static void deleteApksByApp(Context context, App app) {
-            ContentResolver resolver = context.getContentResolver();
-            final Uri uri = getAppUri(app.packageName);
-            resolver.delete(uri, null, null);
-        }
-
-        public static void deleteApks(final Context context, final List<Apk> apks) {
-            if (apks.size() > ApkProvider.MAX_APKS_TO_QUERY) {
-                int middle = apks.size() / 2;
-                List<Apk> apks1 = apks.subList(0, middle);
-                List<Apk> apks2 = apks.subList(middle, apks.size());
-                deleteApks(context, apks1);
-                deleteApks(context, apks2);
-            } else {
-                deleteApksSafely(context, apks);
-            }
-        }
-
-        private static void deleteApksSafely(final Context context, final List<Apk> apks) {
-            ContentResolver resolver = context.getContentResolver();
-            final Uri uri = getContentUri(apks);
-            resolver.delete(uri, null, null);
-        }
-
         public static Apk find(Context context, String packageName, int versionCode) {
             return find(context, packageName, versionCode, Cols.ALL);
         }
