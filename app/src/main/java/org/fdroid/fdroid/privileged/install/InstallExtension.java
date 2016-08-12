@@ -41,7 +41,8 @@ abstract class InstallExtension {
 
     final Context context;
 
-    private static final String APK_FILE_NAME = "FDroidPrivileged.apk";
+    private static final String BASE_NAME = "FDroidPrivilegedExtension";
+    private static final String APK_FILE_NAME = BASE_NAME + ".apk";
 
     InstallExtension(final Context context) {
         this.context = context;
@@ -191,7 +192,7 @@ abstract class InstallExtension {
          */
         @Override
         protected String getSystemFolder() {
-            return FDroidApp.SYSTEM_DIR_NAME + "/priv-app/FDroidPrivileged/";
+            return FDroidApp.SYSTEM_DIR_NAME + "/priv-app/" + BASE_NAME + "/";
         }
 
         /**
