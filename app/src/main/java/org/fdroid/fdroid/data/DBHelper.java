@@ -120,7 +120,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 60;
+    private static final int DB_VERSION = 61;
 
     private final Context context;
 
@@ -327,6 +327,16 @@ class DBHelper extends SQLiteOpenHelper {
         migrateAppPrimaryKeyToRowId(db, oldVersion);
         removeApkPackageNameColumn(db, oldVersion);
         addAppPrefsTable(db, oldVersion);
+        lowerCaseApkHashes(db, oldVersion);
+    }
+
+    private void lowerCaseApkHashes(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 61) {
+            return;
+        }
+        Utils.debugLog(TAG, "Lowercasing all APK hashes");
+        db.execSQL("UPDATE " + InstalledAppTable.NAME + " SET " + InstalledAppTable.Cols.HASH
+                + " = lower(" + InstalledAppTable.Cols.HASH + ")");
     }
 
     private void addAppPrefsTable(SQLiteDatabase db, int oldVersion) {
