@@ -139,7 +139,7 @@ public class CleanCacheService extends IntentService {
         long olderThan = System.currentTimeMillis() - millisAgo;
         for (File f : files) {
             if (f.isDirectory()) {
-                clearOldFiles(f, olderThan);
+                clearOldFiles(f, millisAgo);
                 f.delete();
             }
             if (Build.VERSION.SDK_INT < 21) {
