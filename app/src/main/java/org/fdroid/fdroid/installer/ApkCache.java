@@ -141,12 +141,15 @@ public class ApkCache {
     }
 
     /**
-     * Recursively delete files in {@code dir} that were last modified
-     * {@code secondsAgo} seconds ago, e.g. when it was downloaded.
+     * Recursively delete files in {@code dir} that were last used
+     * {@code secondsAgo} seconds ago.  On {@code android-21} and newer, this
+     * is based on the last access of the file, on older Android versions, it is
+     * based on the last time the file was modified, e.g. downloaded.
      *
      * @param dir        The directory to recurse in
      * @param secondsAgo The number of seconds old that marks a file for deletion.
      */
+    @TargetApi(21)
     public static void clearOldFiles(File dir, long secondsAgo) {
         if (dir == null) {
             return;
@@ -161,8 +164,19 @@ public class ApkCache {
                 clearOldFiles(f, olderThan);
                 f.delete();
             }
-            if (FileUtils.isFileOlder(f, olderThan)) {
-                f.delete();
+            if (Build.VERSION.SDK_INT < 21) {
+                if (FileUtils.isFileOlder(f, olderThan)) {
+                    f.delete();
+                }
+            } else {
+                try {
+                    StructStat stat = Os.lstat(f.getAbsolutePath());
+                    if (stat.st_atime < olderThan) {
+                        f.delete();
+                    }
+                } catch (ErrnoException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
