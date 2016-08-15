@@ -1,12 +1,17 @@
 package org.fdroid.fdroid;
 
+import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.IntentService;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Process;
 import android.os.SystemClock;
+import android.system.ErrnoException;
+import android.system.Os;
+import android.system.StructStat;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
@@ -52,7 +57,7 @@ public class CleanCacheService extends IntentService {
             return;
         }
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
-        ApkCache.clearApkCache(this);
+        clearOldFiles(ApkCache.getApkCacheDir(getBaseContext()), Preferences.get().getKeepCacheTime());
         deleteStrayIndexFiles();
         deleteOldInstallerFiles();
     }
@@ -108,6 +113,47 @@ public class CleanCacheService extends IntentService {
             }
             if (f.getName().startsWith("dl-")) {
                 FileUtils.deleteQuietly(f);
+            }
+        }
+    }
+
+    /**
+     * Recursively delete files in {@code dir} that were last used
+     * {@code secondsAgo} seconds ago.  On {@code android-21} and newer, this
+     * is based on the last access of the file, on older Android versions, it is
+     * based on the last time the file was modified, e.g. downloaded.
+     *
+     * @param dir        The directory to recurse in
+     * @param secondsAgo The number of seconds old that marks a file for deletion.
+     */
+    @TargetApi(21)
+    public static void clearOldFiles(File dir, long secondsAgo) {
+        if (dir == null) {
+            return;
+        }
+        File[] files = dir.listFiles();
+        if (files == null) {
+            return;
+        }
+        long olderThan = System.currentTimeMillis() - (secondsAgo * 1000L);
+        for (File f : files) {
+            if (f.isDirectory()) {
+                clearOldFiles(f, olderThan);
+                f.delete();
+            }
+            if (Build.VERSION.SDK_INT < 21) {
+                if (FileUtils.isFileOlder(f, olderThan)) {
+                    f.delete();
+                }
+            } else {
+                try {
+                    StructStat stat = Os.lstat(f.getAbsolutePath());
+                    if (stat.st_atime < olderThan) {
+                        f.delete();
+                    }
+                } catch (ErrnoException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
