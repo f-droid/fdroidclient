@@ -71,7 +71,7 @@
   <string name="up_to_maxsdk">تا %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s تا %2$s</string>
   <string name="requires_features">نیاز دارد: %1$s</string>
-<string name="app_name">اِف‌-دروید</string>
+<string name="app_name">اف‌دروید</string>
 
     <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید که حذف نصب، تمام داده‌های درونی ذخیره شدهٔ کاره را پاک می‌کند)</string>
     <string name="version">نگارش</string>
