@@ -13,7 +13,11 @@
   <string name="notify_on">نمایش یک آگهی هنگام موجود بودن به‌روز رسانی‌ها</string>
   <string name="update_history">به‌روزرسانی تاریخچه</string>
   <string name="no_such_app">چنین کاره‌ای پیدا نشد.</string>
+<<<<<<< HEAD
   <string name="about_title">دربارهٔ فروشگاه بل</string>
+=======
+  <string name="about_title">دربارهٔ فروشگاه بِل</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
   <string name="about_mail">رایانامه</string>
   <string name="app_installed">نصب شده</string>
   <string name="app_not_installed">نصب نشده</string>
@@ -28,7 +32,11 @@
   <string name="add_key">افزودن کلید</string>
   <string name="overwrite">جانویسی</string>
   <string name="tab_updates">به‌روز رسانی‌ها</string>
+<<<<<<< HEAD
   <string name="fdroid_updates_available">به‌روزرسانی‌های فروشگاه بل موجودند</string>
+=======
+  <string name="fdroid_updates_available">به‌روزرسانی‌های فروشگاه بِل موجودند</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
   <string name="bluetooth_activity_not_found">هیچ روش ارسال با بلوتوثی پیدا نشد، یکی را برگزینید!</string>
   <string name="choose_bt_send">گزینش روش ارسال بلوتوث</string>
   <string name="repo_add_url">نشانی مخزن</string>
@@ -71,7 +79,11 @@
   <string name="up_to_maxsdk">تا %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s تا %2$s</string>
   <string name="requires_features">نیاز دارد: %1$s</string>
+<<<<<<< HEAD
 <string name="app_name">فروشگاه بل</string>
+=======
+<string name="app_name">فروشگاه بِل</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
 
     <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید که حذف نصب، تمام داده‌های درونی ذخیره شدهٔ کاره را پاک می‌کند)</string>
     <string name="version">نگارش</string>
@@ -81,7 +93,11 @@
     <string name="notify">آگهی‌های به‌روز رسانی</string>
     <string name="update_history_summ">روزهایی که کاره جدید یا اخیر محسوب شود: %s</string>
     <string name="system_installer">افزونهٔ ممتاز</string>
+<<<<<<< HEAD
     <string name="system_installer_on">استفاده از افزونهٔ ممتاز فروشگاه بل برای نصب، به‌روز رسانی و حذف بسته‌ها</string>
+=======
+    <string name="system_installer_on">استفاده از افزونهٔ ممتاز فروشگاه بِل برای نصب، به‌روز رسانی و حذف بسته‌ها</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
     <string name="uninstall_system">به‌روز رسانی/حذف افزونهٔ ممتاز</string>
     <string name="uninstall_system_summary">گشودن صفحهٔ جزییات افزونهٔ ممتاز برای به‌روز رسانی/حذف آن</string>
     <string name="local_repo_name">نام مخزن محلّی شما</string>
@@ -123,7 +139,11 @@
     <string name="repo_exists_enable">این مخزن از پیش برپا شده است. تأیید کنید که می‌خواهید دوباره فعّالش کنید.</string>
     <string name="bad_fingerprint">اثر انگشت بد</string>
     <string name="invalid_url">این یک نشانی اینترنتی معتیبر نیست.</string>
+<<<<<<< HEAD
     <string name="menu_send_apk_bt">هم‌رسانی فروشگاه بل با بلوتوث</string>
+=======
+    <string name="menu_send_apk_bt">هم‌رسانی فروشگاه بِل با بلوتوث</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
     <string name="menu_settings">تنظیمات</string>
     <string name="menu_add_repo">مخزن جدید</string>
 
@@ -146,7 +166,11 @@
     <string name="ignoreTouch_on">همواره شامل کاره‌هایی که نیازمند صفحه‌لمسی هستند</string>
 
     <string name="local_repo">مخزن محلّی</string>
+<<<<<<< HEAD
     <string name="local_repo_running">فروشگاه بل آمادهٔ تبادل است</string>
+=======
+    <string name="local_repo_running">فروشگاه بِل آمادهٔ تبادل است</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
     <string name="touch_to_configure_local_repo">برای دیدن جزییات و اجازه به دیگرات برای تبادل کاره‌هایتان، لمس کنید.</string>
     <string name="deleting_repo">در حال حذف مخزن جاری…</string>
     <string name="adding_apks_format">در حال افزودن %s به مخزن…</string>
@@ -211,7 +235,11 @@
     <string name="empty_can_update_app_list">تمام کاره‌ها به‌روز هستند.\n\nتبریک! تمام کاره‌هایتان به‌روز هستند (یا مخزن‌هایتان منقضی شده‌اند).</string>
 
     <string name="root_access_denied_title">دسترسی ریشه داده نشد</string>
+<<<<<<< HEAD
     <string name="root_access_denied_body">یا افزارهٔ اندرویدیتان روت شده نیست، یا درخواست ریشه برای فروشگاه بل را رد کردید.</string>
+=======
+    <string name="root_access_denied_body">یا افزارهٔ اندرویدیتان روت شده نیست، یا درخواست ریشه برای فروشگاه بِل را رد کردید.</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
     <string name="system_uninstall_button">حذف نصب</string>
 
     <string name="swap_nfc_title">برای تبادل، لمس کنید</string>
@@ -224,7 +252,11 @@
     <string name="swap_view_available_networks">برای گشودن شبکه‌های موجود، ضربه بزنید</string>
     <string name="swap_switch_to_wifi">برای تعویض به یک شبکهٔ وای‌فای، ضربه بزنید</string>
     <string name="open_qr_code_scanner">گشودن پویشگر QR</string>
+<<<<<<< HEAD
     <string name="swap_welcome">به فروشگاه بل خوش آمدید!</string>
+=======
+    <string name="swap_welcome">به فروشگاه بِل خوش آمدید!</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
     <string name="swap_confirm_connect">می‌خواهید اکنون کاره‌ها را از %1$s بگیرید؟</string>
     <string name="swap_dont_show_again">دیگر این را نشان نده</string>
     <string name="swap_scan_or_type_url">لازم است یک نفر رمز دیگری را پوییده، یا نشانی اینترنتیش را در مرورگری بنویسد.</string>
@@ -242,7 +274,11 @@
     <string name="swap_not_visible_wifi">غیرقابل مشاهده از طریق وای‌فای</string>
     <string name="swap_wifi_device_name">نام افزاره</string>
     <string name="swap_cant_find_peers">نمی‌توانید کسی که دنبالشید را پیدا کنید؟</string>
+<<<<<<< HEAD
     <string name="swap_send_fdroid">ارسال فروشگاه بل</string>
+=======
+    <string name="swap_send_fdroid">ارسال فروشگاه بِل</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
     <string name="swap_no_peers_nearby">نمی‌توان افراد نزدیک را برای تبادل با آن‌ها پیدا کرد.</string>
     <string name="swap_connecting">در حال اتّصال</string>
     <string name="swap_confirm">تأیید تبادل</string>
@@ -273,6 +309,7 @@
 
     <string name="all_other_repos_fine">تمام مخزن‌های دیگر خطایی ایاد نکردند.</string>
         <string name="repo_not_yet_updated">این مخزن هنوز استفاده نشده است. برای دیدن کاره‌هایی که فراهم می‌کند، باید فعّالش کنید.</string>
+<<<<<<< HEAD
     <string name="repo_confirm_delete_body">حذف یک مخزن به این معناست که کاره‌هایش دیگر در فروشگاه بل موجود نخواهند بود.\n\nتوجّه: تمام کاره‌های نصب شدهٔ پیشین، روی افزاره‌تان باقی خواهند ماند.</string>
     <string name="repo_disabled_notification">%1$s غیرفعّال شد.\n\nبرای نصب کاره‌ها از آن باید دوباره فعّالش کنید.</string>
     <string name="repo_added">مخزن فروشگاه بل %1$s ذخیره شد.</string>
@@ -283,10 +320,23 @@
     <string name="uninstall_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
     <string name="system_install_denied_title">افزونهٔ ممتاز فروشگاه بل موجود نیست</string>
     <string name="system_install_denied_body">این گزینه فقط هنگام نصب بودن افزونهٔ ممتاز فروشگاه بل، موجود است.</string>
+=======
+    <string name="repo_confirm_delete_body">حذف یک مخزن به این معناست که کاره‌هایش دیگر در فروشگاه بِل موجود نخواهند بود.\n\nتوجّه: تمام کاره‌های نصب شدهٔ پیشین، روی افزاره‌تان باقی خواهند ماند.</string>
+    <string name="repo_disabled_notification">%1$s غیرفعّال شد.\n\nبرای نصب کاره‌ها از آن باید دوباره فعّالش کنید.</string>
+    <string name="repo_added">مخزن فروشگاه بِل %1$s ذخیره شد.</string>
+    <string name="repo_searching_address">در حال گشتن به دنبال مخزن فروشگاه بِل در\n%1$s</string>
+    <string name="empty_installed_app_list">هیچ کاره‌ای نصب نشده است.\n\nکاره‌هایی روی افزاره‌تان وجود دارند، ولی در فروشگاه بِل موجود نیستند. دلیل این امر می‌تواند این دلیل باشد که مخازنتان کاره‌هایتان را موجود ندارند یا باید به‌روز شوند.</string>
+    <string name="empty_available_app_list">هیچ کاره‌ای در این دسته نیست.\n\nتلاش کنید دسته‌ای دیگر برگزیده یا مخازنتان را برای گرفتن فهرست تازه‌ای از کاره‌ها به‌روز کنید.</string>
+    <string name="install_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
+    <string name="uninstall_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
+    <string name="system_install_denied_title">افزونهٔ ممتاز فروشگاه بِل موجود نیست</string>
+    <string name="system_install_denied_body">این گزینه فقط هنگام نصب بودن افزونهٔ ممتاز فروشگاه بِل، موجود است.</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
     <string name="system_install_denied_signature">امضای افزونه اشتباه است! لطفاً یک گزارش خطا ایجاد کنید!</string>
     <string name="system_install_denied_permissions">اجازه‌های ممتاز به افزونه داده نشده است! لطفاً یک گزارش خطا ایجاد کنید!</string>
     <string name="system_install_button_install">نصب</string>
     <string name="system_install_button_open">گشودن افزونه</string>
+<<<<<<< HEAD
     <string name="system_install_post_success">افزونهٔ ممتاز فروشگاه بل با موفّقیت نصب شد</string>
     <string name="system_install_post_fail">نصب افزونهٔ ممتاز فروشگاه بل شکست خورد</string>
     <string name="system_install_post_success_message">افزونهٔ ممتاز فروشگاه بل با موفّقیت نصب شد. این مار به فروشگاه بل اجازه می‌دهد کاره‌ها را توسّط خودش نصب کرده، ارتفا دهد و حدف کند.</string>
@@ -303,6 +353,24 @@
     <string name="swap_qr_isnt_for_swap">رمز QR ای که پوییدید، شبیه یک رمز تبادل نیست.</string>
     <string name="bluetooth_unavailable">بلوتوث موجود نیست</string>
     <string name="swap_cant_send_no_bluetooth">نمی‌توان فروشگاه بل را فرستاد، زیرا بلوتوث روی این افزاره موحود نیست.</string>
+=======
+    <string name="system_install_post_success">افزونهٔ ممتاز فروشگاه بِل با موفّقیت نصب شد</string>
+    <string name="system_install_post_fail">نصب افزونهٔ ممتاز فروشگاه بِل شکست خورد</string>
+    <string name="system_install_post_success_message">افزونهٔ ممتاز فروشگاه بِل با موفّقیت نصب شد. این مار به فروشگاه بِل اجازه می‌دهد کاره‌ها را توسّط خودش نصب کرده، ارتفا دهد و حدف کند.</string>
+    <string name="system_install_post_fail_message">نصب افزونهٔ ممتاز فروشگاه بِل شکست خورد. روش نصب توسّط همهٔ توزیع‌های اندروید پشتیبانی نمی‌شود. لطفاً برای اطّلاعات بیش‌تر با ردیاب مشکل فروشگاه بِل مشاوره کنید.</string>
+    <string name="system_install_installing">در حال نصب…</string>
+    <string name="system_install_installing_rebooting">در حال نصب و راه‌انداری دوباره…</string>
+    <string name="system_install_uninstalling">در حال حذف نصب…</string>
+    <string name="system_install_question">می‌خواهید افزونهٔ ممتاز فروشگاه بِل را نصب کنید؟</string>
+    <string name="system_install_warning">این کار بیش از ۱۰ ثانیه زمان می‌برد.</string>
+    <string name="system_install_warning_lollipop">این کار بیش از ۱۰ ثانیه زمان برده و پس از آن، افزاره <b>راه‌اندازی مجدّد</b> خواهد شد.</string>
+    <string name="system_uninstall">می‌خواهید افزونهٔ ممتاز فروشگاه بِل را حذف کنید؟</string>
+    <string name="swap_nfc_description">اگر دوستتان فروشگاه بِل داشته و NFC اش روشن است، افزاره‌هایتان را با هم تماس بدهید.</string>
+    <string name="swap_join_same_wifi_desc">برای تبادل با استفاده از وای‌فای، مطمئن شوید که روی شبکهٔ یک‌سانی هستید. اگر به شبکهٔ یک‌سان دسترسی ندارید، یکی از شما می‌تواند یک نقطهٔ داغ وای‌فای ایجاد کند.</string>
+    <string name="swap_qr_isnt_for_swap">رمز QR ای که پوییدید، شبیه یک رمز تبادل نیست.</string>
+    <string name="bluetooth_unavailable">بلوتوث موجود نیست</string>
+    <string name="swap_cant_send_no_bluetooth">نمی‌توان فروشگاه بِل را فرستاد، زیرا بلوتوث روی این افزاره موحود نیست.</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
     <string name="loading">در حال بار کردن…</string>
     <string name="swap_connection_misc_error">هنگام اتّصال به افزاره خطایی رخ داد. به نظر می‌رسد با این وضع نمی‌توانیم تبادل کنیم.</string>
     <string name="swap_not_enabled">تبادل فعّال نیست</string>
@@ -323,7 +391,11 @@
     <string name="empty_search_available_app_list">هیچ برنامهٔ مطابقی وجود ندارد.</string>
     <string name="empty_search_can_update_app_list">هیچ برنامهٔ مطابقی برای به‌روز رسانی وجود ندارد.</string>
 
+<<<<<<< HEAD
     <string name="crash_dialog_title">فروشگاه بل از کار افتاد</string>
+=======
+    <string name="crash_dialog_title">فروشگاه بِل از کار افتاد</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
     <string name="crash_dialog_text">خطایی پیش‌بینی نشده رخ داد که برنامه را وادار به توقّف کرد. می‌خواهید جزئیات را برای کمک به حل کردن مشکل رایانامه کنید؟</string>
     <string name="crash_dialog_comment_prompt">در این‌جا می‌توانید اطّلاعات اضافی و نظرها را بیفزایید:</string>
 <string name="useTor">استفاده از تور</string>
@@ -339,7 +411,11 @@
 
     <string name="downloading_apk">در حال بارگیری %1$s</string>
 
+<<<<<<< HEAD
     <string name="system_install_not_supported">در حال حاضر نصب افزونهٔ ممتاز فروشگاه بل روی اندروید ۵.۱ یا بالاتر پشتیبانی نمی‌شود.</string>
+=======
+    <string name="system_install_not_supported">در حال حاضر نصب افزونهٔ ممتاز فروشگاه بِل روی اندروید ۵.۱ یا بالاتر پشتیبانی نمی‌شود.</string>
+>>>>>>> 1e8d7655bc355d2a3395ee254d0f6fbf4cf9294d
 
     <string name="keep_hour">۱ ساعت</string>
     <string name="keep_day">۱ روز</string>
