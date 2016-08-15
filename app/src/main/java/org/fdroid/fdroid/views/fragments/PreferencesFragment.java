@@ -15,6 +15,7 @@ import android.text.Html;
 import android.text.TextUtils;
 
 import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.CleanCacheService;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
@@ -49,6 +50,7 @@ public class PreferencesFragment extends PreferenceFragment
     private static final int REQUEST_INSTALL_ORBOT = 0x1234;
     private CheckBoxPreference enableProxyCheckPref;
     private CheckBoxPreference useTorCheckPref;
+    private long currentKeepCacheTime;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -144,6 +146,10 @@ public class PreferencesFragment extends PreferenceFragment
 
             case Preferences.PREF_KEEP_CACHE_TIME:
                 entrySummary(key);
+                if (changing
+                        && currentKeepCacheTime != Preferences.get().getKeepCacheTime()) {
+                    CleanCacheService.schedule(getContext());
+                }
                 break;
 
             case Preferences.PREF_EXPERT:
@@ -282,6 +288,8 @@ public class PreferencesFragment extends PreferenceFragment
         for (final String key : SUMMARIES_TO_UPDATE) {
             updateSummary(key, false);
         }
+
+        currentKeepCacheTime = Preferences.get().getKeepCacheTime();
 
         initPrivilegedInstallerPreference();
         initManagePrivilegedAppPreference();
