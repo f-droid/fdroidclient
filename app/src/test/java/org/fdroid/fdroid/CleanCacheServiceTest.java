@@ -1,7 +1,8 @@
-package org.fdroid.fdroid.installer;
+package org.fdroid.fdroid;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.CleanCacheService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
@@ -16,7 +17,7 @@ import static org.junit.Assert.assertTrue;
 // TODO: Use sdk=24 when Robolectric supports this
 @Config(constants = BuildConfig.class, sdk = 23)
 @RunWith(RobolectricGradleTestRunner.class)
-public class ApkCacheTest {
+public class CleanCacheServiceTest {
 
     @Test
     public void testClearOldFiles() throws IOException, InterruptedException {
@@ -45,12 +46,12 @@ public class ApkCacheTest {
         assertTrue(second.createNewFile());
         assertTrue(second.exists());
 
-        ApkCache.clearOldFiles(dir, 3);
+        CleanCacheService.clearOldFiles(dir, 3);
         assertFalse(first.exists());
         assertTrue(second.exists());
 
         Thread.sleep(7000);
-        ApkCache.clearOldFiles(dir, 3);
+        CleanCacheService.clearOldFiles(dir, 3);
         assertFalse(first.exists());
         assertFalse(second.exists());
     }

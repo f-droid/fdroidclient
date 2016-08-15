@@ -26,7 +26,6 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Hasher;
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.SanitizedFile;
 
@@ -117,19 +116,14 @@ public class ApkCache {
         }
     }
 
-    public static void clearApkCache(Context context) {
-        clearOldFiles(getApkCacheDir(context), Preferences.get().getKeepCacheTime());
-    }
-
-
     /**
      * This location is only for caching, do not install directly from this location
      * because if the file is on the External Storage, any other app could swap out
      * the APK while the install was in process, allowing malware to install things.
-     * Using {@link Installer#installPackage(Uri localApkUri, Uri downloadUri, String packageName)}
+     * Using {@link Installer#installPackage(Uri, Uri, Apk)}
      * is fine since that does the right thing.
      */
-    private static File getApkCacheDir(Context context) {
+    public static File getApkCacheDir(Context context) {
         File apkCacheDir = new File(StorageUtils.getCacheDirectory(context, true), CACHE_DIR);
         if (apkCacheDir.isFile()) {
             apkCacheDir.delete();
@@ -138,46 +132,5 @@ public class ApkCache {
             apkCacheDir.mkdir();
         }
         return apkCacheDir;
-    }
-
-    /**
-     * Recursively delete files in {@code dir} that were last used
-     * {@code secondsAgo} seconds ago.  On {@code android-21} and newer, this
-     * is based on the last access of the file, on older Android versions, it is
-     * based on the last time the file was modified, e.g. downloaded.
-     *
-     * @param dir        The directory to recurse in
-     * @param secondsAgo The number of seconds old that marks a file for deletion.
-     */
-    @TargetApi(21)
-    public static void clearOldFiles(File dir, long secondsAgo) {
-        if (dir == null) {
-            return;
-        }
-        File[] files = dir.listFiles();
-        if (files == null) {
-            return;
-        }
-        long olderThan = System.currentTimeMillis() - (secondsAgo * 1000L);
-        for (File f : files) {
-            if (f.isDirectory()) {
-                clearOldFiles(f, olderThan);
-                f.delete();
-            }
-            if (Build.VERSION.SDK_INT < 21) {
-                if (FileUtils.isFileOlder(f, olderThan)) {
-                    f.delete();
-                }
-            } else {
-                try {
-                    StructStat stat = Os.lstat(f.getAbsolutePath());
-                    if (stat.st_atime < olderThan) {
-                        f.delete();
-                    }
-                } catch (ErrnoException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 }
