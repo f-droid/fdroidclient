@@ -17,6 +17,7 @@ import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Handles cleaning up caches files that are not going to be used, and do not
@@ -33,9 +34,9 @@ public class CleanCacheService extends IntentService {
      */
     public static void schedule(Context context) {
         long keepTime = Preferences.get().getKeepCacheTime();
-        long interval = 604800000; // 1 day
+        long interval = TimeUnit.DAYS.toMillis(1);
         if (keepTime < interval) {
-            interval = keepTime * 1000;
+            interval = keepTime;
         }
 
         Intent intent = new Intent(context, CleanCacheService.class);
@@ -119,15 +120,15 @@ public class CleanCacheService extends IntentService {
 
     /**
      * Recursively delete files in {@code dir} that were last used
-     * {@code secondsAgo} seconds ago.  On {@code android-21} and newer, this
+     * {@code millisAgo} milliseconds ago.  On {@code android-21} and newer, this
      * is based on the last access of the file, on older Android versions, it is
      * based on the last time the file was modified, e.g. downloaded.
      *
      * @param dir        The directory to recurse in
-     * @param secondsAgo The number of seconds old that marks a file for deletion.
+     * @param millisAgo The number of milliseconds old that marks a file for deletion.
      */
     @TargetApi(21)
-    public static void clearOldFiles(File dir, long secondsAgo) {
+    public static void clearOldFiles(File dir, long millisAgo) {
         if (dir == null) {
             return;
         }
@@ -135,7 +136,7 @@ public class CleanCacheService extends IntentService {
         if (files == null) {
             return;
         }
-        long olderThan = System.currentTimeMillis() - (secondsAgo * 1000L);
+        long olderThan = System.currentTimeMillis() - millisAgo;
         for (File f : files) {
             if (f.isDirectory()) {
                 clearOldFiles(f, olderThan);
@@ -148,7 +149,7 @@ public class CleanCacheService extends IntentService {
             } else {
                 try {
                     StructStat stat = Os.lstat(f.getAbsolutePath());
-                    if (stat.st_atime < olderThan) {
+                    if ((stat.st_atime * 1000L) < olderThan) {
                         f.delete();
                     }
                 } catch (ErrnoException e) {
