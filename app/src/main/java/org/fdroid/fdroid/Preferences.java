@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import info.guardianproject.netcipher.NetCipher;
 
@@ -30,11 +31,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private static final String TAG = "Preferences";
 
-    private final Context context;
     private final SharedPreferences preferences;
 
     private Preferences(Context context) {
-        this.context = context;
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         preferences.registerOnSharedPreferenceChangeListener(this);
         if (preferences.getString(PREF_LOCAL_REPO_NAME, null) == null) {
@@ -72,7 +71,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final int DEFAULT_UPD_HISTORY = 14;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = false;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
-    private static final long DEFAULT_KEEP_CACHE_SECONDS = 86400;  // one day
+    private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);  // one day
     private static final boolean DEFAULT_UNSTABLE_UPDATES = false;
     //private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
     private static final boolean DEFAULT_INCOMP_VER = false;
@@ -136,14 +135,29 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final String PREF_CACHE_APK = "cacheDownloaded";
 
     /**
-     * Time in seconds to keep cached files.  Anything that has been around longer will be deleted
+     * Time in millis to keep cached files.  Anything that has been around longer will be deleted
      */
     public long getKeepCacheTime() {
-        String value = preferences.getString(PREF_KEEP_CACHE_TIME, String.valueOf(DEFAULT_KEEP_CACHE_SECONDS));
+        String value = preferences.getString(PREF_KEEP_CACHE_TIME,
+                String.valueOf(DEFAULT_KEEP_CACHE_TIME));
+
+        // the first time this was migrated, it was botched, so reset to default
+        switch (value) {
+            case "3600":
+            case "86400":
+            case "604800":
+            case "2592000":
+            case "31449600":
+            case "2147483647":
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.remove(PREF_KEEP_CACHE_TIME);
+                editor.apply();
+                return Preferences.DEFAULT_KEEP_CACHE_TIME;
+        }
 
         if (preferences.contains(PREF_CACHE_APK)) {
             if (preferences.getBoolean(PREF_CACHE_APK, false)) {
-                value = context.getString(R.string.keep_forever);
+                value = String.valueOf(Long.MAX_VALUE);
             }
             SharedPreferences.Editor editor = preferences.edit();
             editor.remove(PREF_CACHE_APK);
@@ -154,7 +168,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         try {
             return Long.parseLong(value);
         } catch (NumberFormatException e) {
-            return DEFAULT_KEEP_CACHE_SECONDS;
+            return DEFAULT_KEEP_CACHE_TIME;
         }
     }
 

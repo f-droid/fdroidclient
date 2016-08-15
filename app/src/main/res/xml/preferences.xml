@@ -75,7 +75,7 @@
     <PreferenceCategory android:title="@string/other">
         <ListPreference android:title="@string/cache_downloaded"
             android:key="keepCacheFor"
-            android:defaultValue="86400"
+            android:defaultValue="86400000"
             android:entries="@array/keepCacheNames"
             android:entryValues="@array/keepCacheValues" />
         <CheckBoxPreference android:title="@string/expert"

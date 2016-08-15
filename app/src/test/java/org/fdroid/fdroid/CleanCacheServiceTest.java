@@ -46,12 +46,12 @@ public class CleanCacheServiceTest {
         assertTrue(second.createNewFile());
         assertTrue(second.exists());
 
-        CleanCacheService.clearOldFiles(dir, 3);
+        CleanCacheService.clearOldFiles(dir, 3000);
         assertFalse(first.exists());
         assertTrue(second.exists());
 
         Thread.sleep(7000);
-        CleanCacheService.clearOldFiles(dir, 3);
+        CleanCacheService.clearOldFiles(dir, 3000);
         assertFalse(first.exists());
         assertFalse(second.exists());
     }
