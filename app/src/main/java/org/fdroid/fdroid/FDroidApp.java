@@ -45,7 +45,6 @@ import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.acra.ACRA;
 import org.acra.ReportingInteractionMode;
@@ -60,7 +59,6 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
-import java.io.File;
 import java.net.URL;
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
@@ -262,8 +260,7 @@ public class FDroidApp extends Application {
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .imageDownloader(new IconDownloader(getApplicationContext()))
                 .diskCache(new LimitedAgeDiskCache(
-                        new File(StorageUtils.getCacheDirectory(getApplicationContext(), true),
-                            "icons"),
+                        Utils.getIconsCacheDir(this),
                         null,
                         new FileNameGenerator() {
                             @Override

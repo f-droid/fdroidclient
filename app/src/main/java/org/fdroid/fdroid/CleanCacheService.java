@@ -61,6 +61,7 @@ public class CleanCacheService extends IntentService {
         clearOldFiles(ApkCache.getApkCacheDir(getBaseContext()), Preferences.get().getKeepCacheTime());
         deleteStrayIndexFiles();
         deleteOldInstallerFiles();
+        deleteOldIcons();
     }
 
     /**
@@ -116,6 +117,13 @@ public class CleanCacheService extends IntentService {
                 clearOldFiles(f, TimeUnit.HOURS.toMillis(1));
             }
         }
+    }
+
+    /**
+     * Delete cached icons that have not been accessed in over a year.
+     */
+    private void deleteOldIcons() {
+        clearOldFiles(Utils.getIconsCacheDir(this), TimeUnit.DAYS.toMillis(365));
     }
 
     /**
