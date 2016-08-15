@@ -80,7 +80,7 @@ public class CleanCacheService extends IntentService {
 
         for (File f : files) {
             if (f.getName().startsWith("install-")) {
-                FileUtils.deleteQuietly(f);
+                clearOldFiles(f, TimeUnit.HOURS.toMillis(1));
             }
         }
     }
@@ -110,51 +110,50 @@ public class CleanCacheService extends IntentService {
 
         for (File f : files) {
             if (f.getName().startsWith("index-")) {
-                FileUtils.deleteQuietly(f);
+                clearOldFiles(f, TimeUnit.HOURS.toMillis(1));
             }
             if (f.getName().startsWith("dl-")) {
-                FileUtils.deleteQuietly(f);
+                clearOldFiles(f, TimeUnit.HOURS.toMillis(1));
             }
         }
     }
 
     /**
-     * Recursively delete files in {@code dir} that were last used
+     * Recursively delete files in {@code f} that were last used
      * {@code millisAgo} milliseconds ago.  On {@code android-21} and newer, this
      * is based on the last access of the file, on older Android versions, it is
      * based on the last time the file was modified, e.g. downloaded.
      *
-     * @param dir        The directory to recurse in
+     * @param f         The file or directory to clean
      * @param millisAgo The number of milliseconds old that marks a file for deletion.
      */
     @TargetApi(21)
-    public static void clearOldFiles(File dir, long millisAgo) {
-        if (dir == null) {
-            return;
-        }
-        File[] files = dir.listFiles();
-        if (files == null) {
+    public static void clearOldFiles(File f, long millisAgo) {
+        if (f == null) {
             return;
         }
         long olderThan = System.currentTimeMillis() - millisAgo;
-        for (File f : files) {
-            if (f.isDirectory()) {
-                clearOldFiles(f, millisAgo);
+        if (f.isDirectory()) {
+            File[] files = f.listFiles();
+            if (files == null) {
+                return;
+            }
+            for (File file : files) {
+                clearOldFiles(file, millisAgo);
+            }
+            f.delete();
+        } else if (Build.VERSION.SDK_INT < 21) {
+            if (FileUtils.isFileOlder(f, olderThan)) {
                 f.delete();
             }
-            if (Build.VERSION.SDK_INT < 21) {
-                if (FileUtils.isFileOlder(f, olderThan)) {
+        } else {
+            try {
+                StructStat stat = Os.lstat(f.getAbsolutePath());
+                if ((stat.st_atime * 1000L) < olderThan) {
                     f.delete();
                 }
-            } else {
-                try {
-                    StructStat stat = Os.lstat(f.getAbsolutePath());
-                    if ((stat.st_atime * 1000L) < olderThan) {
-                        f.delete();
-                    }
-                } catch (ErrnoException e) {
-                    e.printStackTrace();
-                }
+            } catch (ErrnoException e) {
+                e.printStackTrace();
             }
         }
     }
