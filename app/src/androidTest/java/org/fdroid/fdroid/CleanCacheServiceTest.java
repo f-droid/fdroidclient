@@ -1,12 +1,10 @@
 package org.fdroid.fdroid;
 
+import android.support.test.runner.AndroidJUnit4;
+
 import org.apache.commons.io.FileUtils;
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.CleanCacheService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.annotation.Config;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,10 +12,10 @@ import java.io.IOException;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-// TODO: Use sdk=24 when Robolectric supports this
-@Config(constants = BuildConfig.class, sdk = 23)
-@RunWith(RobolectricGradleTestRunner.class)
+@RunWith(AndroidJUnit4.class)
 public class CleanCacheServiceTest {
+
+    public static final String TAG = "CleanCacheServiceTest";
 
     @Test
     public void testClearOldFiles() throws IOException, InterruptedException {
@@ -46,13 +44,18 @@ public class CleanCacheServiceTest {
         assertTrue(second.createNewFile());
         assertTrue(second.exists());
 
-        CleanCacheService.clearOldFiles(dir, 3000);
+        CleanCacheService.clearOldFiles(dir, 3000);  // check all in dir
         assertFalse(first.exists());
         assertTrue(second.exists());
 
         Thread.sleep(7000);
-        CleanCacheService.clearOldFiles(dir, 3000);
+        CleanCacheService.clearOldFiles(second, 3000);  // check just second file
         assertFalse(first.exists());
         assertFalse(second.exists());
+
+        // make sure it doesn't freak out on a non-existant file
+        File nonexistant = new File(tempDir, "nonexistant");
+        CleanCacheService.clearOldFiles(nonexistant, 1);
+        CleanCacheService.clearOldFiles(null, 1);
     }
 }
