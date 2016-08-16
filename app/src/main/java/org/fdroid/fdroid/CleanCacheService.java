@@ -23,7 +23,14 @@ import java.util.concurrent.TimeUnit;
  * Handles cleaning up caches files that are not going to be used, and do not
  * block the operation of the app itself.  For things that must happen before
  * F-Droid starts normal operation, that should go into
- * {@link FDroidApp#onCreate()}
+ * {@link FDroidApp#onCreate()}.
+ * <p>
+ * These files should only be deleted when they are at least an hour-ish old,
+ * in case they are actively in use while {@code CleanCacheService} is running.
+ * {@link #clearOldFiles(File, long)} checks the file age using access time from
+ * {@link StructStat#st_atime} on {@link android.os.Build.VERSION_CODES#LOLLIPOP}
+ * and newer.  On older Android, last modified time from {@link File#lastModified()}
+ * is used.
  */
 public class CleanCacheService extends IntentService {
 
@@ -58,10 +65,20 @@ public class CleanCacheService extends IntentService {
             return;
         }
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
-        clearOldFiles(ApkCache.getApkCacheDir(getBaseContext()), Preferences.get().getKeepCacheTime());
+        deleteExpiredApksFromCache();
         deleteStrayIndexFiles();
         deleteOldInstallerFiles();
         deleteOldIcons();
+    }
+
+    /**
+     * All downloaded APKs will be cached for a certain amount of time, which is
+     * specified by the user in the "Keep Cache Time" preference.  This removes
+     * any APK in the cache that is older than that preference specifies.
+     */
+    private void deleteExpiredApksFromCache() {
+        File cacheDir = ApkCache.getApkCacheDir(getBaseContext());
+        clearOldFiles(cacheDir, Preferences.get().getKeepCacheTime());
     }
 
     /**

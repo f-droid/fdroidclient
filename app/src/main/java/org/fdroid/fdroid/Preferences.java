@@ -71,7 +71,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final int DEFAULT_UPD_HISTORY = 14;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = false;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
-    private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);  // one day
+    private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);
     private static final boolean DEFAULT_UNSTABLE_UPDATES = false;
     //private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
     private static final boolean DEFAULT_INCOMP_VER = false;
