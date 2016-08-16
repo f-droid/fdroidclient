@@ -33,6 +33,7 @@ import android.util.Log;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Repo;
@@ -105,6 +106,14 @@ public final class Utils {
         }
 
         return "/icons-120/";
+    }
+
+    /**
+     * @return the directory where cached icons are stored
+     */
+    public static File getIconsCacheDir(Context context) {
+        File cacheDir = StorageUtils.getCacheDirectory(context.getApplicationContext(), true);
+        return new File(cacheDir, "icons");
     }
 
     public static void copy(InputStream input, OutputStream output) throws IOException {

@@ -26,12 +26,12 @@
     </string-array>
 
     <string-array name="keepCacheValues">
-        <item>3600</item>
-        <item>86400</item>
-        <item>604800</item>
-        <item>2592000</item>
-        <item>31449600</item>
-        <item>2147483647</item>
+        <item>3600000</item>
+        <item>86400000</item>
+        <item>604800000</item>
+        <item>2592000000</item>
+        <item>31536000000</item>
+        <item>9223372036854775807</item>
     </string-array>
 
     <string-array name="themeValues">

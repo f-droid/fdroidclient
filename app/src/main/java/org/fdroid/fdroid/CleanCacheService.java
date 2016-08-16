@@ -1,23 +1,36 @@
 package org.fdroid.fdroid;
 
+import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.IntentService;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Process;
 import android.os.SystemClock;
+import android.system.ErrnoException;
+import android.system.Os;
+import android.system.StructStat;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Handles cleaning up caches files that are not going to be used, and do not
  * block the operation of the app itself.  For things that must happen before
  * F-Droid starts normal operation, that should go into
- * {@link FDroidApp#onCreate()}
+ * {@link FDroidApp#onCreate()}.
+ * <p>
+ * These files should only be deleted when they are at least an hour-ish old,
+ * in case they are actively in use while {@code CleanCacheService} is running.
+ * {@link #clearOldFiles(File, long)} checks the file age using access time from
+ * {@link StructStat#st_atime} on {@link android.os.Build.VERSION_CODES#LOLLIPOP}
+ * and newer.  On older Android, last modified time from {@link File#lastModified()}
+ * is used.
  */
 public class CleanCacheService extends IntentService {
 
@@ -28,9 +41,9 @@ public class CleanCacheService extends IntentService {
      */
     public static void schedule(Context context) {
         long keepTime = Preferences.get().getKeepCacheTime();
-        long interval = 604800000; // 1 day
+        long interval = TimeUnit.DAYS.toMillis(1);
         if (keepTime < interval) {
-            interval = keepTime * 1000;
+            interval = keepTime;
         }
 
         Intent intent = new Intent(context, CleanCacheService.class);
@@ -52,9 +65,20 @@ public class CleanCacheService extends IntentService {
             return;
         }
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
-        ApkCache.clearApkCache(this);
+        deleteExpiredApksFromCache();
         deleteStrayIndexFiles();
         deleteOldInstallerFiles();
+        deleteOldIcons();
+    }
+
+    /**
+     * All downloaded APKs will be cached for a certain amount of time, which is
+     * specified by the user in the "Keep Cache Time" preference.  This removes
+     * any APK in the cache that is older than that preference specifies.
+     */
+    private void deleteExpiredApksFromCache() {
+        File cacheDir = ApkCache.getApkCacheDir(getBaseContext());
+        clearOldFiles(cacheDir, Preferences.get().getKeepCacheTime());
     }
 
     /**
@@ -74,7 +98,7 @@ public class CleanCacheService extends IntentService {
 
         for (File f : files) {
             if (f.getName().startsWith("install-")) {
-                FileUtils.deleteQuietly(f);
+                clearOldFiles(f, TimeUnit.HOURS.toMillis(1));
             }
         }
     }
@@ -104,10 +128,57 @@ public class CleanCacheService extends IntentService {
 
         for (File f : files) {
             if (f.getName().startsWith("index-")) {
-                FileUtils.deleteQuietly(f);
+                clearOldFiles(f, TimeUnit.HOURS.toMillis(1));
             }
             if (f.getName().startsWith("dl-")) {
-                FileUtils.deleteQuietly(f);
+                clearOldFiles(f, TimeUnit.HOURS.toMillis(1));
+            }
+        }
+    }
+
+    /**
+     * Delete cached icons that have not been accessed in over a year.
+     */
+    private void deleteOldIcons() {
+        clearOldFiles(Utils.getIconsCacheDir(this), TimeUnit.DAYS.toMillis(365));
+    }
+
+    /**
+     * Recursively delete files in {@code f} that were last used
+     * {@code millisAgo} milliseconds ago.  On {@code android-21} and newer, this
+     * is based on the last access of the file, on older Android versions, it is
+     * based on the last time the file was modified, e.g. downloaded.
+     *
+     * @param f         The file or directory to clean
+     * @param millisAgo The number of milliseconds old that marks a file for deletion.
+     */
+    @TargetApi(21)
+    public static void clearOldFiles(File f, long millisAgo) {
+        if (f == null) {
+            return;
+        }
+        long olderThan = System.currentTimeMillis() - millisAgo;
+        if (f.isDirectory()) {
+            File[] files = f.listFiles();
+            if (files == null) {
+                return;
+            }
+            for (File file : files) {
+                clearOldFiles(file, millisAgo);
+            }
+            f.delete();
+        } else if (Build.VERSION.SDK_INT < 21) {
+            if (FileUtils.isFileOlder(f, olderThan)) {
+                f.delete();
+            }
+        } else {
+            try {
+                StructStat stat = Os.lstat(f.getAbsolutePath());
+                if ((stat.st_atime * 1000L) < olderThan) {
+                    f.delete();
+                }
+            } catch (ErrnoException e) {
+                e.printStackTrace();
             }
         }
     }

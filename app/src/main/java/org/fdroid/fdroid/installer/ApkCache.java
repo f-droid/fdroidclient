@@ -26,7 +26,6 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Hasher;
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.SanitizedFile;
 
@@ -117,19 +116,14 @@ public class ApkCache {
         }
     }
 
-    public static void clearApkCache(Context context) {
-        clearOldFiles(getApkCacheDir(context), Preferences.get().getKeepCacheTime());
-    }
-
-
     /**
      * This location is only for caching, do not install directly from this location
      * because if the file is on the External Storage, any other app could swap out
      * the APK while the install was in process, allowing malware to install things.
-     * Using {@link Installer#installPackage(Uri localApkUri, Uri downloadUri, String packageName)}
+     * Using {@link Installer#installPackage(Uri, Uri, Apk)}
      * is fine since that does the right thing.
      */
-    private static File getApkCacheDir(Context context) {
+    public static File getApkCacheDir(Context context) {
         File apkCacheDir = new File(StorageUtils.getCacheDirectory(context, true), CACHE_DIR);
         if (apkCacheDir.isFile()) {
             apkCacheDir.delete();
@@ -138,32 +132,5 @@ public class ApkCache {
             apkCacheDir.mkdir();
         }
         return apkCacheDir;
-    }
-
-    /**
-     * Recursively delete files in {@code dir} that were last modified
-     * {@code secondsAgo} seconds ago, e.g. when it was downloaded.
-     *
-     * @param dir        The directory to recurse in
-     * @param secondsAgo The number of seconds old that marks a file for deletion.
-     */
-    public static void clearOldFiles(File dir, long secondsAgo) {
-        if (dir == null) {
-            return;
-        }
-        File[] files = dir.listFiles();
-        if (files == null) {
-            return;
-        }
-        long olderThan = System.currentTimeMillis() - (secondsAgo * 1000L);
-        for (File f : files) {
-            if (f.isDirectory()) {
-                clearOldFiles(f, olderThan);
-                f.delete();
-            }
-            if (FileUtils.isFileOlder(f, olderThan)) {
-                f.delete();
-            }
-        }
     }
 }
