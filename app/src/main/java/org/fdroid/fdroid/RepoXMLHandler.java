@@ -265,6 +265,11 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if ("application".equals(localName) && curapp == null) {
             curapp = new App();
             curapp.packageName = attributes.getValue("", "id");
+
+            // To appease the NON NULL constraint in the DB. Usually there is a description, and it
+            // is quite difficult to get an app to _not_ have a description when using fdroidserver.
+            // However, it shouldn't crash the client when this happens.
+            curapp.description = "";
         } else if ("package".equals(localName) && curapp != null && curapk == null) {
             curapk = new Apk();
             curapk.packageName = curapp.packageName;
