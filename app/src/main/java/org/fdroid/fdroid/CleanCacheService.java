@@ -1,6 +1,5 @@
 package org.fdroid.fdroid;
 
-import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.IntentService;
 import android.app.PendingIntent;
@@ -9,9 +8,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Process;
 import android.os.SystemClock;
-import android.system.ErrnoException;
-import android.system.Os;
-import android.system.StructStat;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
@@ -28,7 +24,7 @@ import java.util.concurrent.TimeUnit;
  * These files should only be deleted when they are at least an hour-ish old,
  * in case they are actively in use while {@code CleanCacheService} is running.
  * {@link #clearOldFiles(File, long)} checks the file age using access time from
- * {@link StructStat#st_atime} on {@link android.os.Build.VERSION_CODES#LOLLIPOP}
+ * {@link android.system.StructStat#st_atime} on {@link android.os.Build.VERSION_CODES#LOLLIPOP}
  * and newer.  On older Android, last modified time from {@link File#lastModified()}
  * is used.
  */
@@ -152,7 +148,6 @@ public class CleanCacheService extends IntentService {
      * @param f         The file or directory to clean
      * @param millisAgo The number of milliseconds old that marks a file for deletion.
      */
-    @TargetApi(21)
     public static void clearOldFiles(File f, long millisAgo) {
         if (f == null) {
             return;
@@ -172,14 +167,7 @@ public class CleanCacheService extends IntentService {
                 f.delete();
             }
         } else {
-            try {
-                StructStat stat = Os.lstat(f.getAbsolutePath());
-                if ((stat.st_atime * 1000L) < olderThan) {
-                    f.delete();
-                }
-            } catch (ErrnoException e) {
-                e.printStackTrace();
-            }
+            CleanCacheService21.deleteIfOld(f, millisAgo);
         }
     }
 }
