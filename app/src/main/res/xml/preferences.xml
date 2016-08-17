@@ -72,7 +72,8 @@
             android:summary="@string/proxy_port_summary"
             android:dependency="enableProxy" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/other">
+    <PreferenceCategory android:title="@string/other"
+        android:key="pref_category_other">
         <ListPreference android:title="@string/cache_downloaded"
             android:key="keepCacheFor"
             android:defaultValue="86400000"

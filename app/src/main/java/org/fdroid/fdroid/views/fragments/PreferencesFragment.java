@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.support.v4.preference.PreferenceFragment;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
@@ -50,6 +52,7 @@ public class PreferencesFragment extends PreferenceFragment
     private static final int REQUEST_INSTALL_ORBOT = 0x1234;
     private CheckBoxPreference enableProxyCheckPref;
     private CheckBoxPreference useTorCheckPref;
+    private Preference updatePrivilegedExtensionPref;
     private long currentKeepCacheTime;
 
     @Override
@@ -58,6 +61,7 @@ public class PreferencesFragment extends PreferenceFragment
         addPreferencesFromResource(R.xml.preferences);
         useTorCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_USE_TOR);
         enableProxyCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
+        updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
     }
 
     private void checkSummary(String key, int resId) {
@@ -260,11 +264,15 @@ public class PreferencesFragment extends PreferenceFragment
         });
     }
 
-    private void initManagePrivilegedAppPreference() {
-        Preference pref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
-        pref.setPersistent(false);
-
-        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+    private void initUpdatePrivilegedExtensionPreference() {
+        if (Build.VERSION.SDK_INT > 19) {
+            // this will never work on newer Android versions, so hide it
+            PreferenceCategory other = (PreferenceCategory) findPreference("pref_category_other");
+            other.removePreference(updatePrivilegedExtensionPref);
+            return;
+        }
+        updatePrivilegedExtensionPref.setPersistent(false);
+        updatePrivilegedExtensionPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -292,7 +300,7 @@ public class PreferencesFragment extends PreferenceFragment
         currentKeepCacheTime = Preferences.get().getKeepCacheTime();
 
         initPrivilegedInstallerPreference();
-        initManagePrivilegedAppPreference();
+        initUpdatePrivilegedExtensionPreference();
         // this pref's default is dynamically set based on whether Orbot is installed
         boolean useTor = Preferences.get().isTorEnabled();
         useTorCheckPref.setDefaultValue(useTor);
