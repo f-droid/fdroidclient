@@ -211,7 +211,7 @@
     <string name="system_uninstall_button">Eltávolítás</string>
 
     <string name="loading">Betöltés…</string>
-    <string name="install_confirm">Szeretné telepíteni ezt az alkalmazást? A következőkhöz kap hozzáférést:</string>
+    <string name="install_confirm">a következőkhöz szeretne hozzáférni:</string>
     <string name="install_confirm_update">Szeretne telepíteni egy frissítést a meglévő alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a következőkhöz kap hozzáférést:</string>
     <string name="install_confirm_update_system">Szeretne telepíteni egy frissítést ehhez a beépített alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a következőkhöz kap hozzáférést:</string>
     <string name="install_confirm_update_no_perms">Szeretne telepíteni egy frissítést a meglévő alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a nem igényel semmilyen különleges hozzáférést.</string>

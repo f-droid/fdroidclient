@@ -117,7 +117,7 @@
         <string name="repo_details">Hoidla</string>
     <string name="repo_not_yet_updated">Seda hoidlat ei ole veel kasutatud. Hoidla pakutavate rakenduste vaatamiseks kasutamiseks pead sa hoidla lubama.</string>
     <string name="repo_confirm_delete_title">Kas kustutada hoidla?</string>
-    <string name="repo_confirm_delete_body">Hoidla kustutamine tähendab, et hoidla pakutavad rakendused ei ole enam F-Droidist saadaval.\n\nMärkus: juba paigaldatud rakendused jäävad seadnesse alles.</string>
+    <string name="repo_confirm_delete_body">Hoidla kustutamine tähendab, et hoidla pakutavad rakendused ei ole enam F-Droidist saadaval.\n\nMärkus: paigaldatud rakendused jäävad seadmesse alles.</string>
     <string name="repo_disabled_notification">%1$s on keelatud.\n\nSellest hoidlast rakenduste paigaldamiseks pead sa hoidla lubama.</string>
     <string name="repo_added">Salvestatu F-Droidi hoidla %1$s.</string>
     <string name="repo_searching_address">Otsitakse F-Droidi hoidlat aadressil\n%1$s</string>
@@ -357,5 +357,6 @@
 <string name="root_access_denied_body">Su Android seade ei ole kas lahti lukustatud või sa oled keelanud F-Droidile juurkasutaja õigused.</string>
     <string name="swap_join_same_wifi_desc">WiFi kaudu vahetamiseks peate olema samas võrgus. Kui sul puudub ligipääs samasse võrku, siis saab teist üks luua WiFi tööpunkti.</string>
     <string name="swap_connection_misc_error">Seadmega ühendumine nurjus. Sellega vahetamine ei ole vist võimalik.</string>
-    <string name="crash_dialog_text">"Ootamatu viga  põhjustas rakenduse krahhi. Kas sa soovid saata selle detailid e-mailiga, et probleem parandada?"</string>
+    <string name="crash_dialog_text">Ootamatu viga põhjustas rakenduse krahhi.
+ Kas sa soovid saata selle detailid e-mailiga, et probleem parandada?</string>
     </resources>
