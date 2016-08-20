@@ -17,8 +17,8 @@
   <string name="notify_on">Näytä iIlmoitus, kun päivityksiä on saatavissa</string>
   <string name="update_history">Päivityshistoria</string>
   <string name="update_history_summ">Päivien määrä, jolloin sovellus näytetään uutena: %s</string>
-  <string name="system_installer">Asenna käytäen järjestelmän oikeuksia</string>
-  <string name="system_installer_on">Käytä järjestelmän oikeuksia asennuksiin, päivityksiin ja pakettien poistoihin.</string>
+  <string name="system_installer">Asenna käyttäen järjestelmäoikeuksia</string>
+  <string name="system_installer_on">Käytä järjestelmän oikeuksia asennuksiin, päivityksiin ja pakettien poistamiseen</string>
   <string name="local_repo_name">Paikallisen säilösi nimi</string>
   <string name="local_repo_name_summary">Paikallisen säilösi mainostettava otsikko: %s</string>
   <string name="local_repo_https">Käytä yksityistä yhteyttä</string>
@@ -36,7 +36,7 @@
   <string name="ok">OK</string>
   <string name="yes">Kyllä</string>
   <string name="no">Ei</string>
-  <string name="repo_add_title">Lisää uusi sovelluslähde</string>
+  <string name="repo_add_title">Lisää uusi ohjelmasäilö</string>
   <string name="repo_add_add">Lisää</string>
   <string name="cancel">Peruuta</string>
   <string name="enable">Ota käyttöön</string>
@@ -47,16 +47,16 @@
   <string name="one_update_available">1 päivitys saatavilla.</string>
   <string name="many_updates_available">%d päivitystä saatavilla.</string>
   <string name="fdroid_updates_available">F-Droid: Päivityksiä saatavilla</string>
-  <string name="bluetooth_activity_not_found">Bluetooth-läheystapaa ei löytynyt, valitse yksi!</string>
-  <string name="choose_bt_send">Valitse Bluetooth-lähetystapa</string>
+  <string name="bluetooth_activity_not_found">Bluetooth -lähetystapaa ei löytynyt, valitse yksi!</string>
+  <string name="choose_bt_send">Valitse Bluetooth -lähetystapa</string>
   <string name="send_via_bluetooth">Lähetä bluetoothilla</string>
-  <string name="repo_add_url">Sovelluslähteen osoite</string>
+  <string name="repo_add_url">Ojjelmasäilön osoite</string>
   <string name="repo_add_fingerprint">Sormenjälki (valinnainen)</string>
   <string name="menu_update_repo">Päivitä sovelluslähteet</string>
   <string name="menu_manage">Hallitse sovelluslähteitä</string>
   <string name="menu_about">Tietoja</string>
   <string name="menu_search">Etsi</string>
-  <string name="menu_add_repo">Uusi sovelluslähde</string>
+  <string name="menu_add_repo">Uusi ohjelmasäilö</string>
   <string name="menu_launch">Suorita</string>
   <string name="menu_share">Jaa</string>
   <string name="menu_install">Asenna</string>
@@ -103,25 +103,14 @@
   <string name="proxy_host_summary">Määritä välityspalvelimesi isäntänimi (esimm. 127.0.0.1)</string>
   <string name="proxy_port">Välityspalvelimen portti</string>
   <string name="proxy_port_summary">Määritä välityspalvelimesi porttinumero (esim. 8118)</string>
-  <string name="repos_unchanged">Yhdessäkään säilössä ei ole pakettipäivityksiä</string>
-  <string name="all_other_repos_fine">Muut säilöt eivät luoneet virheitä.</string>
+  <string name="repos_unchanged">Yhdessäkään ohjelmasäiliössä ei ole saatavilla päivityksiä</string>
+  <string name="all_other_repos_fine">Muut ohjelmasäilöt eivät luoneet virheitä.</string>
   <string name="global_error_updating_repos">Päivityksenaikainen virhe: %s</string>
   <string name="theme">Teema</string>
   <string name="unverified">Vahvistamaton</string>
-  <string name="repo_not_yet_updated">Tätä säilöä ei ole vielä käytetty.
-        Jotta näkisit sen sisältämät sovellukset, sinun pitää päivittää se.
-
-Kun päivitys on tehty, kuvaus ja muut tiedot
-        tulevat saatavillesi.</string>
-  <string name="repo_confirm_delete_body">Säilön poistaminen tarkoittaa,
-        että sieltä olevat sovellukset eivät ole enää saatavissa F-Droidin kautta.
-
-Huomio: Kaikki
-        aikaisemmin asentamasi sovellukset säilyvät laitteellasi.</string>
-  <string name="repo_disabled_notification">\"%1$s\" pois käytöstä.
-
-Sinun pitää
-        ottaa tämä säilö uudelleen käyttöön asentaaksesi sieltä sovelluksia.</string>
+  <string name="repo_not_yet_updated">Tätä ohjelmasäilöä ei ole vielä käytetty. Jotta näkisit sen sisältämät sovellukset, sinun pitää päivittää se. Kun päivitys on tehty, kuvaus ja muut tiedot tulevat saatavillesi.</string>
+  <string name="repo_confirm_delete_body">Ohjelmasäilön poistaminen tarkoittaa, että sieltä olevat sovellukset eivät ole enää saatavissa F-Droidin kautta. Huomio: Kaikki aikaisemmin asentamasi sovellukset säilyvät laitteellasi.</string>
+  <string name="repo_disabled_notification">\"%1$s\" pois käytöstä. Sinun pitää ottaa tämä ohjelmasäilö uudelleen käyttöön asentaaksesi sieltä sovelluksia.</string>
   <string name="requires_features">Vaatii: %1$s</string>
   <string name="app_icon">Sovelluskuvake</string>
   <string name="category_Development">Kehitys</string>
@@ -194,4 +183,37 @@ Sinun pitää
     <string name="tab_installed_apps_count">Asennettu (%d)</string>
     <string name="tab_updates_count">Päivitykset (%d)</string>
     <string name="update_notification_more">+%1$d lisää…</string>
+    <string name="update_auto_download">Lataa päivitykset automaattisesti</string>
+    <string name="update_auto_download_summary">Lataa päivitykset taustalla</string>
+    <string name="uninstall_system">Päivitä/Poista \"järjestelmäoikeudet\" -lisäosa</string>
+    <string name="uninstall_system_summary">Avaa \"järjestelmäoikeudet -lisäosan asetussivu päivittääksesi tai poistaaksesi sen</string>
+    <string name="repo_error_empty_username">Käyttäjätunnus tyhjä, käyttäjätietoja ei tallennettu</string>
+
+    <string name="repo_exists_enable">Tämä ohjelmasäilö on jo otettu käyttöön, vahvista että haluat ottaa sen käyttöön uudestaan.</string>
+    <string name="repo_exists_and_enabled">Tämä ohjelmasäilö on jo käytössä.</string>
+    <string name="repo_delete_to_overwrite">Sinun täytyy ensin poistaa tämä ohjelmasäilö, jotta voit lisätä toisen säilön eri avaimella.</string>
+    <string name="bad_fingerprint">Huono sormenjälki</string>
+    <string name="invalid_url">Tämä linkki ei toimi.</string>
+    <string name="menu_send_apk_bt">Jaa F-Droid Bluetoothilla</string>
+    <string name="menu_settings">Asetukset</string>
+    <string name="menu_email">Lähetä sähköpostia kehittäjälle</string>
+    <string name="menu_changelog">Muutosloki</string>
+    <string name="menu_bitcoin">Bitcoin</string>
+    <string name="menu_litecoin">Litecoin</string>
+    <string name="antiupstreamnonfreelist">Ylävirran lähdekoodi ei ole kokonaan ilmaista</string>
+    <string name="expert_on">Näytä lisää tietoa ja ota käyttöön lisäasetukset</string>
+
+    <string name="show_incompat_versions_on">Näytä versiot jotka eivät ole yhteensopivia laitteesi kanssa</string>
+    <string name="ignoreTouch_on">Sisällytä aina sovellukset jotka vaativat kosketusnäytön toimiakseen</string>
+
+    <string name="useTor">Käytä Toria</string>
+    <string name="useTorSummary">Pakota latausliikenne Torin kautta lisätäksesi yksityisyyttä</string>
+    <string name="update_notification_title">Päivitetään ohjelmasäiliöitä</string>
+    <string name="repo_exists_add_fingerprint">Tämö ohjelmasäiliö on jo asennettu, tämä lisää uuden avaimen.</string>
+    <string name="status_inserting_apps">Tallennetaan ohjelman lisätietoja</string>
+    <string name="no_permissions">Ohjelma ei käytä yhtään käyttöoikeutta.</string>
+    <string name="permissions">Käyttöoikeudet</string>
+    <string name="unsigned">Ei allekirjoitettu</string>
+    <string name="repo_details">Ohjelmasäilö</string>
+    <string name="repo_confirm_delete_title">Poistetaanko ohjelmasäilö?</string>
     </resources>
