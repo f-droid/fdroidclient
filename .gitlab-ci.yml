@@ -72,7 +72,6 @@ connected24:
     - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
     - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
     - exit $EXITVALUE
-  allow_failure: true  # remove once install it runs reliably
 
 pmd:
   script:
