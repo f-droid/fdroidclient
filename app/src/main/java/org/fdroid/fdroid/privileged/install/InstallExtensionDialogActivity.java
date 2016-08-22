@@ -34,7 +34,6 @@ import android.view.ContextThemeWrapper;
 
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
@@ -233,9 +232,6 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
                 title = getString(R.string.system_install_post_success);
                 message = getString(R.string.system_install_post_success_message);
                 result = Activity.RESULT_OK;
-
-                // enable system installer on installation success
-                Preferences.get().setPrivilegedInstallerEnabled(true);
                 break;
             case PrivilegedInstaller.IS_EXTENSION_INSTALLED_NO:
                 title = getString(R.string.system_install_post_fail);

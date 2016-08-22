@@ -38,8 +38,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         preferences.registerOnSharedPreferenceChangeListener(this);
         if (preferences.getString(PREF_LOCAL_REPO_NAME, null) == null) {
             preferences.edit()
-                .putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName())
-                .apply();
+                    .putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName())
+                    .apply();
         }
     }
 
@@ -69,7 +69,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private static final boolean DEFAULT_ROOTED = true;
     private static final int DEFAULT_UPD_HISTORY = 14;
-    private static final boolean DEFAULT_PRIVILEGED_INSTALLER = false;
+    private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);
     private static final boolean DEFAULT_UNSTABLE_UPDATES = false;
@@ -113,12 +113,16 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         initialized.put(key, false);
     }
 
+    /**
+     * Whether to use the Privileged Installer, based on if it is installed.  Only the disabled
+     * state is stored as a preference since the enabled state is based entirely on the presence
+     * of the Privileged Extension.  The preference provides a way to disable using the
+     * Privileged Extension even though its installed.
+     *
+     * @see org.fdroid.fdroid.views.fragments.PreferencesFragment#initPrivilegedInstallerPreference()
+     */
     public boolean isPrivilegedInstallerEnabled() {
         return preferences.getBoolean(PREF_PRIVILEGED_INSTALLER, DEFAULT_PRIVILEGED_INSTALLER);
-    }
-
-    public void setPrivilegedInstallerEnabled(boolean enable) {
-        preferences.edit().putBoolean(PREF_PRIVILEGED_INSTALLER, enable).apply();
     }
 
     public boolean isPostPrivilegedInstall() {

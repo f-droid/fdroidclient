@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.views.fragments;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -12,8 +11,6 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.support.v4.preference.PreferenceFragment;
-import android.support.v7.app.AlertDialog;
-import android.text.Html;
 import android.text.TextUtils;
 
 import org.fdroid.fdroid.AppDetails;
@@ -196,69 +193,25 @@ public class PreferencesFragment extends PreferenceFragment
      * Initializes SystemInstaller preference, which can only be enabled when F-Droid is installed as a system-app
      */
     private void initPrivilegedInstallerPreference() {
-        CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
-
-        // we are handling persistence ourself!
-        pref.setPersistent(false);
+        final CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
+        Preferences p = Preferences.get();
+        boolean enabled = p.isPrivilegedInstallerEnabled();
+        boolean installed = PrivilegedInstaller.isExtensionInstalledCorrectly(getActivity())
+                == PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES;
+        pref.setEnabled(installed);
+        pref.setDefaultValue(installed);
+        pref.setChecked(enabled && installed);
 
         pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                final CheckBoxPreference pref = (CheckBoxPreference) preference;
-
+                SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                 if (pref.isChecked()) {
-                    int isInstalledCorrectly =
-                            PrivilegedInstaller.isExtensionInstalledCorrectly(getActivity());
-                    if (isInstalledCorrectly == PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES) {
-                        // privileged permission are granted, i.e. the extension is installed correctly
-                        SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
-                        editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, true);
-                        editor.apply();
-                        pref.setChecked(true);
-                    } else {
-                        // privileged permission not available
-                        SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
-                        editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
-                        editor.apply();
-                        pref.setChecked(false);
-
-                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-                        alertBuilder.setTitle(R.string.system_install_denied_title);
-
-                        String message;
-                        switch (isInstalledCorrectly) {
-                            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_NO:
-                                message = getActivity().getString(R.string.system_install_denied_body) +
-                                        "<br/><br/>" + getActivity().getString(R.string.system_install_question);
-                                break;
-                            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
-                                message = getActivity().getString(R.string.system_install_denied_signature);
-                                break;
-                            default:
-                                throw new RuntimeException("unhandled return");
-                        }
-                        alertBuilder.setMessage(Html.fromHtml(message));
-                        alertBuilder.setPositiveButton(R.string.system_install_button_open, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Open details of F-Droid Privileged
-                                Intent intent = new Intent(getActivity(), AppDetails.class);
-                                intent.putExtra(AppDetails.EXTRA_APPID,
-                                        PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
-                                startActivity(intent);
-                            }
-                        });
-                        alertBuilder.setNegativeButton(R.string.cancel, null);
-                        alertBuilder.create().show();
-                    }
+                    editor.remove(Preferences.PREF_PRIVILEGED_INSTALLER);
                 } else {
-                    SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                     editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
-                    editor.apply();
-                    pref.setChecked(false);
                 }
-
+                editor.apply();
                 return true;
             }
         });
