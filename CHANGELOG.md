@@ -2,6 +2,10 @@
 
 * Support for Android 2.2 is dropped, 2.3.3 or later is now required
 
+* Fixed APK Cache bugs, requiring the cache time be reset to 1 day
+
+* Uses Privileged Extension by default, when its installed
+
 ### 0.100.1 (2016-06-21)
 
 * Fix background crash after installing or updating apps

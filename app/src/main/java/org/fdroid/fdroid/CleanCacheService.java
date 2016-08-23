@@ -167,7 +167,7 @@ public class CleanCacheService extends IntentService {
                 f.delete();
             }
         } else {
-            CleanCacheService21.deleteIfOld(f, millisAgo);
+            CleanCacheService21.deleteIfOld(f, olderThan);
         }
     }
 }
