@@ -160,9 +160,12 @@ public class InstalledAppProviderService extends IntentService {
             if (ACTION_INSERT.equals(action)) {
                 PackageInfo packageInfo = getPackageInfo(intent, packageName);
                 if (packageInfo != null) {
-                    String hashType = "sha256";
-                    String hash = Utils.getBinaryHash(new File(packageInfo.applicationInfo.publicSourceDir), hashType);
-                    insertAppIntoDb(this, packageInfo, hashType, hash);
+                    File apk = new File(packageInfo.applicationInfo.publicSourceDir);
+                    if (apk.exists() && apk.canRead()) {
+                        String hashType = "sha256";
+                        String hash = Utils.getBinaryHash(apk, hashType);
+                        insertAppIntoDb(this, packageInfo, hashType, hash);
+                    }
                 }
             } else if (ACTION_DELETE.equals(action)) {
                 deleteAppFromDb(this, packageName);
