@@ -74,48 +74,29 @@ public class RepoProviderTest extends FDroidProviderTest {
     }
 
     /**
-     * The {@link DBHelper} class populates four default repos when it first creates a database:
-     *  * F-Droid
-     *  * F-Droid (Archive)
-     *  * Guardian Project
-     *  * Guardian Project (Archive)
+     * The {@link DBHelper} class populates the default repos when it first creates a database.
      * The names/URLs/signing certificates for these repos are all hard coded in the source/res.
      */
     @Test
     public void defaultRepos() {
         List<Repo> defaultRepos = RepoProvider.Helper.all(context);
-        assertEquals(defaultRepos.size(), 4);
-        assertRepo(
-                defaultRepos.get(0),
-                context.getString(R.string.fdroid_repo_address),
-                context.getString(R.string.fdroid_repo_description),
-                Utils.calcFingerprint(context.getString(R.string.fdroid_repo_pubkey)),
-                context.getString(R.string.fdroid_repo_name)
-        );
+        assertEquals(defaultRepos.size(), 4); // based on app/src/main/res/default_repo.xml
 
-        assertRepo(
-                defaultRepos.get(1),
-                context.getString(R.string.fdroid_archive_address),
-                context.getString(R.string.fdroid_archive_description),
-                Utils.calcFingerprint(context.getString(R.string.fdroid_archive_pubkey)),
-                context.getString(R.string.fdroid_archive_name)
-        );
-
-        assertRepo(
-                defaultRepos.get(2),
-                context.getString(R.string.guardianproject_repo_address),
-                context.getString(R.string.guardianproject_repo_description),
-                Utils.calcFingerprint(context.getString(R.string.guardianproject_repo_pubkey)),
-                context.getString(R.string.guardianproject_repo_name)
-        );
-
-        assertRepo(
-                defaultRepos.get(3),
-                context.getString(R.string.guardianproject_archive_address),
-                context.getString(R.string.guardianproject_archive_description),
-                Utils.calcFingerprint(context.getString(R.string.guardianproject_archive_pubkey)),
-                context.getString(R.string.guardianproject_archive_name)
-        );
+        String[] reposFromXml = context.getResources().getStringArray(R.array.default_repos);
+        if (reposFromXml.length % DBHelper.REPO_XML_ARG_COUNT != 0) {
+            throw new IllegalArgumentException(
+                    "default_repo.xml array does not have the right number of elements");
+        }
+        for (int i = 0; i < reposFromXml.length / DBHelper.REPO_XML_ARG_COUNT; i++) {
+            int offset = i * DBHelper.REPO_XML_ARG_COUNT;
+            assertRepo(
+                    defaultRepos.get(i),
+                    reposFromXml[offset + 1], // address
+                    reposFromXml[offset + 2], // description
+                    Utils.calcFingerprint(reposFromXml[offset + 6]), // pubkey
+                    reposFromXml[offset]      // name
+            );
+        }
     }
 
     @Test

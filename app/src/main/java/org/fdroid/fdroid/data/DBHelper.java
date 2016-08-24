@@ -229,55 +229,29 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_APP_PREFS);
         ensureIndexes(db);
 
-        insertRepo(
-                db,
-                context.getString(R.string.fdroid_repo_name),
-                context.getString(R.string.fdroid_repo_address),
-                context.getString(R.string.fdroid_repo_description),
-                context.getString(R.string.fdroid_repo_pubkey),
-                context.getResources().getInteger(R.integer.fdroid_repo_version),
-                context.getResources().getInteger(R.integer.fdroid_repo_inuse),
-                context.getResources().getInteger(R.integer.fdroid_repo_priority)
-        );
-
-        insertRepo(
-                db,
-                context.getString(R.string.fdroid_archive_name),
-                context.getString(R.string.fdroid_archive_address),
-                context.getString(R.string.fdroid_archive_description),
-                context.getString(R.string.fdroid_archive_pubkey),
-                context.getResources().getInteger(R.integer.fdroid_archive_version),
-                context.getResources().getInteger(R.integer.fdroid_archive_inuse),
-                context.getResources().getInteger(R.integer.fdroid_archive_priority)
-        );
-
-        insertRepo(
-                db,
-                context.getString(R.string.guardianproject_repo_name),
-                context.getString(R.string.guardianproject_repo_address),
-                context.getString(R.string.guardianproject_repo_description),
-                context.getString(R.string.guardianproject_repo_pubkey),
-                context.getResources().getInteger(R.integer.guardianproject_repo_version),
-                context.getResources().getInteger(R.integer.guardianproject_repo_inuse),
-                context.getResources().getInteger(R.integer.guardianproject_repo_priority)
-        );
-
-        insertRepo(
-                db,
-                context.getString(R.string.guardianproject_archive_name),
-                context.getString(R.string.guardianproject_archive_address),
-                context.getString(R.string.guardianproject_archive_description),
-                context.getString(R.string.guardianproject_archive_pubkey),
-                context.getResources().getInteger(R.integer.guardianproject_archive_version),
-                context.getResources().getInteger(R.integer.guardianproject_archive_inuse),
-                context.getResources().getInteger(R.integer.guardianproject_archive_priority)
-        );
+        String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
+        if (defaultRepos.length % REPO_XML_ARG_COUNT != 0) {
+            throw new IllegalArgumentException(
+                    "default_repo.xml array does not have the right number of elements");
+        }
+        for (int i = 0; i < defaultRepos.length / REPO_XML_ARG_COUNT; i++) {
+            int offset = i * REPO_XML_ARG_COUNT;
+            insertRepo(
+                    db,
+                    defaultRepos[offset],     // name
+                    defaultRepos[offset + 1], // address
+                    defaultRepos[offset + 2], // description
+                    defaultRepos[offset + 3], // version
+                    defaultRepos[offset + 4], // enabled
+                    defaultRepos[offset + 5], // priority
+                    defaultRepos[offset + 6]  // pubkey
+            );
+        }
     }
 
     private void insertRepo(SQLiteDatabase db, String name, String address,
-            String description, String pubKey, int version, int inUse,
-            int priority) {
-
+                            String description, String version, String enabled,
+                            String priority, String pubKey) {
         ContentValues values = new ContentValues();
         values.put(RepoTable.Cols.ADDRESS, address);
         values.put(RepoTable.Cols.NAME, name);
@@ -285,9 +259,9 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(RepoTable.Cols.SIGNING_CERT, pubKey);
         values.put(RepoTable.Cols.FINGERPRINT, Utils.calcFingerprint(pubKey));
         values.put(RepoTable.Cols.MAX_AGE, 0);
-        values.put(RepoTable.Cols.VERSION, version);
-        values.put(RepoTable.Cols.IN_USE, inUse);
-        values.put(RepoTable.Cols.PRIORITY, priority);
+        values.put(RepoTable.Cols.VERSION, Utils.parseInt(version, 0));
+        values.put(RepoTable.Cols.IN_USE, Utils.parseInt(enabled, 0));
+        values.put(RepoTable.Cols.PRIORITY, Utils.parseInt(priority, Integer.MAX_VALUE));
         values.put(RepoTable.Cols.LAST_ETAG, (String) null);
         values.put(RepoTable.Cols.TIMESTAMP, 0);
 
@@ -542,15 +516,16 @@ class DBHelper extends SQLiteOpenHelper {
         if (!descriptionExists) {
             db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.DESCRIPTION + " text");
         }
-        insertNameAndDescription(db, R.string.fdroid_repo_address,
-                R.string.fdroid_repo_name, R.string.fdroid_repo_description);
-        insertNameAndDescription(db, R.string.fdroid_archive_address,
-                R.string.fdroid_archive_name, R.string.fdroid_archive_description);
-        insertNameAndDescription(db, R.string.guardianproject_repo_address,
-                R.string.guardianproject_repo_name, R.string.guardianproject_repo_description);
-        insertNameAndDescription(db, R.string.guardianproject_archive_address,
-                R.string.guardianproject_archive_name, R.string.guardianproject_archive_description);
 
+        String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
+        for (int i = 0; i < defaultRepos.length / REPO_XML_ARG_COUNT; i++) {
+            int offset = i * REPO_XML_ARG_COUNT;
+            insertNameAndDescription(db,
+                    defaultRepos[offset],     // name
+                    defaultRepos[offset + 1], // address
+                    defaultRepos[offset + 2] // description
+            );
+        }
     }
 
     /**
