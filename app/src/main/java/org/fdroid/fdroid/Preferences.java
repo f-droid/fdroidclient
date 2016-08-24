@@ -49,6 +49,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_UPD_NOTIFY = "updateNotify";
     public static final String PREF_UPD_HISTORY = "updateHistoryDays";
     public static final String PREF_ROOTED = "rooted";
+    public static final String PREF_ANTI_FEATURE_APPS = "hideAntiFeatureApps";
     public static final String PREF_INCOMP_VER = "incompatibleVersions";
     public static final String PREF_THEME = "theme";
     public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
@@ -68,6 +69,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_POST_PRIVILEGED_INSTALL = "postPrivilegedInstall";
 
     private static final boolean DEFAULT_ROOTED = true;
+    private static final boolean DEFAULT_ANTI_FEATURE_APPS = false;
     private static final int DEFAULT_UPD_HISTORY = 14;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
@@ -92,10 +94,12 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
+    private boolean filterAppsWithAntiFeatures = DEFAULT_ANTI_FEATURE_APPS;
 
     private final Map<String, Boolean> initialized = new HashMap<>();
 
     private final List<ChangeListener> filterAppsRequiringRootListeners = new ArrayList<>();
+    private final List<ChangeListener> filterAppsRequiringAntiFeaturesListeners = new ArrayList<>();
     private final List<ChangeListener> updateHistoryListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoNameListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoHttpsListeners = new ArrayList<>();
@@ -300,12 +304,34 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return filterAppsRequiringRoot;
     }
 
+    /**
+     * This is cached as it is called several times inside the AppListAdapter.
+     * Providing it here means the shared preferences file only needs to be
+     * read once, and we will keep our copy up to date by listening to changes
+     * in PREF_ANTI_FEATURE_APPS.
+     */
+    public boolean filterAppsWithAntiFeatures() {
+        if (!isInitialized(PREF_ANTI_FEATURE_APPS)) {
+            initialize(PREF_ANTI_FEATURE_APPS);
+            filterAppsWithAntiFeatures = preferences.getBoolean(PREF_ANTI_FEATURE_APPS, DEFAULT_ANTI_FEATURE_APPS);
+        }
+        return filterAppsWithAntiFeatures;
+    }
+
     public void registerAppsRequiringRootChangeListener(ChangeListener listener) {
         filterAppsRequiringRootListeners.add(listener);
     }
 
     public void unregisterAppsRequiringRootChangeListener(ChangeListener listener) {
         filterAppsRequiringRootListeners.remove(listener);
+    }
+
+    public void registerAppsRequiringAntiFeaturesChangeListener(ChangeListener listener) {
+        filterAppsRequiringAntiFeaturesListeners.add(listener);
+    }
+
+    public void unregisterAppsRequiringAntiFeaturesChangeListener(ChangeListener listener) {
+        filterAppsRequiringAntiFeaturesListeners.remove(listener);
     }
 
     public void registerUnstableUpdatesChangeListener(ChangeListener listener) {
@@ -324,6 +350,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         switch (key) {
             case PREF_ROOTED:
                 for (ChangeListener listener : filterAppsRequiringRootListeners) {
+                    listener.onPreferenceChange();
+                }
+                break;
+            case PREF_ANTI_FEATURE_APPS:
+                for (ChangeListener listener : filterAppsRequiringAntiFeaturesListeners) {
                     listener.onPreferenceChange();
                 }
                 break;
