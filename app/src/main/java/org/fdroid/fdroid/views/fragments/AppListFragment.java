@@ -51,13 +51,15 @@ public abstract class AppListFragment extends ListFragment implements
             AppMetadataTable.Cols.SuggestedApk.VERSION_NAME,
             AppMetadataTable.Cols.SUGGESTED_VERSION_CODE,
             AppMetadataTable.Cols.REQUIREMENTS, // Needed for filtering apps that require root.
+            AppMetadataTable.Cols.ANTI_FEATURES // Needed for filtering apps that require anti-features.
     };
 
     private static final String APP_SORT = AppMetadataTable.Cols.NAME;
 
     private AppListAdapter appAdapter;
 
-    @Nullable private String searchQuery;
+    @Nullable
+    private String searchQuery;
 
     protected abstract AppListAdapter getAppListAdapter();
 
@@ -85,6 +87,7 @@ public abstract class AppListFragment extends ListFragment implements
     /**
      * Alerts the child class that the user is no longer performing a search.
      * This is triggered every time the search query is blank.
+     *
      * @see AppListFragment#onSearch()
      */
     protected void onSearchStopped() {
@@ -166,7 +169,7 @@ public abstract class AppListFragment extends ListFragment implements
                 Bundle bundle = ActivityOptionsCompat
                         .makeSceneTransitionAnimation(getActivity(),
                                 iconTransitionPair)
-                                .toBundle();
+                        .toBundle();
                 startActivityForResult(intent, REQUEST_APPDETAILS, bundle);
             } else {
                 startActivityForResult(intent, REQUEST_APPDETAILS);
@@ -204,6 +207,7 @@ public abstract class AppListFragment extends ListFragment implements
      * Notifies the subclass via {@link AppListFragment#onSearch()} and {@link AppListFragment#onSearchStopped()}
      * about whether or not a search is taking place and changes empty message
      * appropriately.
+     *
      * @return True if a user is searching.
      */
     private boolean updateSearchStatus() {

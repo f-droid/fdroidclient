@@ -234,6 +234,16 @@ public class FDroidApp extends Application {
             }
         });
 
+        // If the user changes the preference to do with filtering anti-feature apps,
+        // it is easier to just notify a change in the app provider,
+        // so that the newly updated list will correctly filter relevant apps.
+        Preferences.get().registerAppsRequiringAntiFeaturesChangeListener(new Preferences.ChangeListener() {
+            @Override
+            public void onPreferenceChange() {
+                getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+            }
+        });
+
         // This is added so that the bluetooth:// scheme we use for URLs the BluetoothDownloader
         // understands is not treated as invalid by the java.net.URL class. The actual Handler does
         // nothing, but its presence is enough.
