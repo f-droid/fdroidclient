@@ -33,7 +33,7 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.PREF_UPD_NOTIFY,
         Preferences.PREF_UPD_HISTORY,
         Preferences.PREF_ROOTED,
-        Preferences.PREF_ANTI_FEATURE_APPS,
+        Preferences.PREF_HIDE_ANTI_FEATURE_APPS,
         Preferences.PREF_INCOMP_VER,
         Preferences.PREF_THEME,
         Preferences.PREF_IGN_TOUCH,
@@ -124,8 +124,8 @@ public class PreferencesFragment extends PreferenceFragment
                 checkSummary(key, R.string.rooted_on);
                 break;
 
-            case Preferences.PREF_ANTI_FEATURE_APPS:
-                checkSummary(key, R.string.anti_feature_apps_on);
+            case Preferences.PREF_HIDE_ANTI_FEATURE_APPS:
+                checkSummary(key, R.string.hide_anti_feature_apps_on);
                 break;
 
             case Preferences.PREF_IGN_TOUCH:

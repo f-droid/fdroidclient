@@ -49,7 +49,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_UPD_NOTIFY = "updateNotify";
     public static final String PREF_UPD_HISTORY = "updateHistoryDays";
     public static final String PREF_ROOTED = "rooted";
-    public static final String PREF_ANTI_FEATURE_APPS = "hideAntiFeatureApps";
+    public static final String PREF_HIDE_ANTI_FEATURE_APPS = "hideAntiFeatureApps";
     public static final String PREF_INCOMP_VER = "incompatibleVersions";
     public static final String PREF_THEME = "theme";
     public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
@@ -69,7 +69,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_POST_PRIVILEGED_INSTALL = "postPrivilegedInstall";
 
     private static final boolean DEFAULT_ROOTED = true;
-    private static final boolean DEFAULT_ANTI_FEATURE_APPS = false;
+    private static final boolean DEFAULT_HIDE_ANTI_FEATURE_APPS = false;
     private static final int DEFAULT_UPD_HISTORY = 14;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
@@ -94,7 +94,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
-    private boolean filterAppsWithAntiFeatures = DEFAULT_ANTI_FEATURE_APPS;
+    private boolean filterAppsWithAntiFeatures = DEFAULT_HIDE_ANTI_FEATURE_APPS;
 
     private final Map<String, Boolean> initialized = new HashMap<>();
 
@@ -308,12 +308,12 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * This is cached as it is called several times inside the AppListAdapter.
      * Providing it here means the shared preferences file only needs to be
      * read once, and we will keep our copy up to date by listening to changes
-     * in PREF_ANTI_FEATURE_APPS.
+     * in PREF_HIDE_ANTI_FEATURE_APPS.
      */
     public boolean filterAppsWithAntiFeatures() {
-        if (!isInitialized(PREF_ANTI_FEATURE_APPS)) {
-            initialize(PREF_ANTI_FEATURE_APPS);
-            filterAppsWithAntiFeatures = preferences.getBoolean(PREF_ANTI_FEATURE_APPS, DEFAULT_ANTI_FEATURE_APPS);
+        if (!isInitialized(PREF_HIDE_ANTI_FEATURE_APPS)) {
+            initialize(PREF_HIDE_ANTI_FEATURE_APPS);
+            filterAppsWithAntiFeatures = preferences.getBoolean(PREF_HIDE_ANTI_FEATURE_APPS, DEFAULT_HIDE_ANTI_FEATURE_APPS);
         }
         return filterAppsWithAntiFeatures;
     }
@@ -353,7 +353,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                     listener.onPreferenceChange();
                 }
                 break;
-            case PREF_ANTI_FEATURE_APPS:
+            case PREF_HIDE_ANTI_FEATURE_APPS:
                 for (ChangeListener listener : filterAppsRequiringAntiFeaturesListeners) {
                     listener.onPreferenceChange();
                 }
