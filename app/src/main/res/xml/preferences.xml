@@ -42,7 +42,7 @@
         <CheckBoxPreference android:title="@string/rooted"
             android:defaultValue="true"
             android:key="rooted" />
-        <CheckBoxPreference android:title="@string/anti_feature_apps"
+        <CheckBoxPreference android:title="@string/hide_anti_feature_apps"
             android:defaultValue="false"
             android:key="hideAntiFeatureApps" />
         <CheckBoxPreference android:title="@string/ignoreTouch"
