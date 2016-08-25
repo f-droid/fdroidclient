@@ -80,15 +80,18 @@ if (!hasProperty('sourceDeps')) {
     // Only do the libraries imported from maven repositories. Our own libraries
     // (like privileged-api-lib) and the prebuilt jars already checked into the
     // source code don't need to be here.
+    // generate using: `gradle -q calculateChecksums | sort -V`
     dependencyVerification {
         verify = [
                 'cc.mvdan.accesspoint:library:0837b38adb48b66bb1385adb6ade8ecce7002ad815c55abf13517c82193458ea',
                 'ch.acra:acra:98e71bd00a713b9f848abbae4874601533aaf8492bf9b508e14d07f844a53839',
                 'commons-io:commons-io:a10418348d234968600ccb1d988efcbbd08716e1d96936ccc1880e7d22513474',
                 'commons-net:commons-net:c25b0da668b3c5649f002d504def22d1b4cb30d206f05428d2fe168fa1a901c2',
+                'com.android.support:animated-vector-drawable:4fcd1fc36034a804200ef3e552b0f2f688a0a7a8a007de43201e40bfedda73b3',
                 'com.android.support:appcompat-v7:bf8db89d678286043778990fc967346e94321cc8d8bad99e9b0db20588509156',
                 'com.android.support:support-annotations:bac4e534657165b0c4c362c97db389dcb152e43273435d2ccaa939a82e03f42c',
                 'com.android.support:support-v4:246c99385a84fe179d7b833c9ddaf2576f217b0abba5e74b5353cc78756f5880',
+                'com.android.support:support-vector-drawable:45b1f180b437a750429f6c1457181c167ba211c17fcb992f83cdbefef5eb1519',
                 'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
                 'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
                 'com.madgag.spongycastle:pkix:6aba9b2210907a3d46dd3dcac782bb3424185290468d102d5207ebdc9796a905',
