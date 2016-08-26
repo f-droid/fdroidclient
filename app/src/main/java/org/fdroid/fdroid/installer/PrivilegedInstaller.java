@@ -271,7 +271,6 @@ public class PrivilegedInstaller extends Installer {
     public static int isExtensionInstalledCorrectly(Context context) {
         // check if installed
         if (!isExtensionInstalled(context)) {
-            Log.e(TAG, "IS_EXTENSION_INSTALLED_NO");
             return IS_EXTENSION_INSTALLED_NO;
         }
 
