@@ -21,9 +21,9 @@
   <string name="system_installer_on">Imprea sos permissos de sistema pro installare, agiornare, e remòvere pachetos</string>
   <string name="local_repo_name">Nùmene de su Depòsitu Locale tuo</string>
   <string name="local_repo_name_summary">Su nùmene pùblicu de su depòsitu locale tuo: %s</string>
-  <string name="local_repo_https">Imprea una cunnessione privada</string>
-  <string name="local_repo_https_on">Imprea sa cunnessione criptada HTTPS:// pro sos depòsitu locale</string>
-  <string name="app_details">Minujas/detallios aplicatzione</string>
+  <string name="local_repo_https">Imprea una connessione privada</string>
+  <string name="local_repo_https_on">Imprea sa connessione criptada HTTPS:// pro sos depòsitu locale</string>
+  <string name="app_details">Minujas aplicatzione</string>
   <string name="no_such_app">Peruna aplicatzione currispondente.</string>
   <string name="about_title">Informatziones</string>
   <string name="about_site">Giassu/situ web</string>
@@ -116,7 +116,8 @@
   <string name="proxy_port">Ghenna proxy</string>
   <string name="proxy_port_summary">Cunfigura su nùmeru de sa ghenna de su proxy tuo (es. 8118)</string>
   <string name="status_download">Iscarrighende %2$s / %3$s (%4$d%%) dae %1$s</string>
-  <string name="status_connecting_to_repo">Cunnessione a\n%1$s</string>
+  <string name="status_connecting_to_repo">Connessione a
+%1$s</string>
   <string name="repos_unchanged">Totu sos depòsitos sunt agiornados</string>
   <string name="all_other_repos_fine">Totu sos àteros depòsitos no ant creadu faddinas.</string>
   <string name="global_error_updating_repos">Faddina durante s\'agiornamentu: %s</string>
@@ -152,7 +153,7 @@
   <string name="category_Multimedia">Multimèdia</string>
   <string name="category_Navigation">Nàvigu</string>
   <string name="category_Phone_SMS">Telèfonu &amp; SMS</string>
-  <string name="category_Reading">Leghidura</string>
+  <string name="category_Reading">Letura</string>
   <string name="category_Science_Education">Iscièntzia e educatzione</string>
   <string name="category_Security">Seguràntzia</string>
   <string name="category_System">Sistema</string>
@@ -192,7 +193,7 @@
 
     <string name="install_error_unknown">Installatzione faddida pro cajone de una faddina disconnota</string>
     <string name="uninstall_error_unknown">Disinstallatzione faddida pro cajone de una faddina disconnota</string>
-    <string name="swap_connection_misc_error">B\'est istada una faddina durante sa cunnessione a su dispositivu, non resessimus a cumpartzire sas aplicatziones.</string>
+    <string name="swap_connection_misc_error">B\'est istada una faddina durante sa connessione a su dispositivu, non resessimus a cumpartzire sas aplicatziones.</string>
     <string name="unstable_updates">Agiornamentos instàbiles</string>
     <string name="unstable_updates_summary">Cussigia agiornamentos a versiones instàbiles</string>
     <string name="uninstall_system">Disinstalla s’estensione cun permissos de sistema</string>
