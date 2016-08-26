@@ -16,6 +16,7 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
+import org.acra.ACRA;
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -140,6 +141,7 @@ public class InstallManagerService extends Service {
 
         if ((flags & START_FLAG_REDELIVERY) == START_FLAG_REDELIVERY
                 && !DownloaderService.isQueuedOrActive(urlString)) {
+            // TODO is there a case where we should allow an active urlString to pass through?
             Utils.debugLog(TAG, urlString + " finished downloading while InstallManagerService was killed.");
             cancelNotification(urlString);
             return START_NOT_STICKY;
@@ -247,16 +249,22 @@ public class InstallManagerService extends Service {
 
                         // show notification if app details is not visible
                         if (!TextUtils.isEmpty(errorMessage)) {
-                            App app = getAppFromActive(downloadUrl);
+                            try {
+                                // temp setup to debug https://gitlab.com/fdroid/fdroidclient/issues/698
+                                App app = getAppFromActive(downloadUrl);
 
-                            // show notification if app details is not visible
-                            if (AppDetails.isAppVisible(app.packageName)) {
-                                cancelNotification(downloadUrl);
-                            } else {
-                                String title = String.format(
-                                        getString(R.string.install_error_notify_title),
-                                        app.name);
-                                notifyError(downloadUrl, title, errorMessage);
+                                // show notification if app details is not visible
+                                if (AppDetails.isAppVisible(app.packageName)) {
+                                    cancelNotification(downloadUrl);
+                                } else {
+                                    String title = String.format(
+                                            getString(R.string.install_error_notify_title),
+                                            app.name);
+                                    notifyError(downloadUrl, title, errorMessage);
+                                }
+                            } catch (NullPointerException e) {  //NOPMD
+                                ACRA.getErrorReporter().handleException(
+                                        new IllegalStateException(errorMessage, e));
                             }
                         }
                         removeFromActive(downloadUrl);
