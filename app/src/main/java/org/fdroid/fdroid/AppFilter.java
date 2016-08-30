@@ -32,7 +32,9 @@ public class AppFilter {
                 }
             }
         }
-
+        if (app.antiFeatures != null && app.antiFeatures.length > 0 && Preferences.get().filterAppsWithAntiFeatures()) { // NOPMD
+            return true;
+        }
         return false;
     }
 

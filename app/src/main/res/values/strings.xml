@@ -148,6 +148,8 @@
     <string name="show_incompat_versions_on">Show app versions incompatible with the device</string>
     <string name="rooted">Ignore root</string>
     <string name="rooted_on">Do not grey out apps requiring root privileges</string>
+    <string name="hide_anti_feature_apps">Grey out anti-feature apps</string>
+    <string name="hide_anti_feature_apps_on">Grey out apps requiring anti-features</string>
     <string name="ignoreTouch">Ignore touchscreen</string>
     <string name="ignoreTouch_on">Always include apps that require touchscreen</string>
 
