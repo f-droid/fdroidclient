@@ -395,7 +395,7 @@
                 android:value=".FDroid" />
         </activity>
         <activity
-            android:name="org.fdroid.fdroid.CrashReportActivity"
+            android:name=".acra.CrashReportActivity"
             android:theme="@style/AppThemeDark"
             android:process=":error_report"
             android:launchMode="singleInstance"
