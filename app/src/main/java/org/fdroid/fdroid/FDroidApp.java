@@ -70,9 +70,10 @@ import info.guardianproject.netcipher.proxy.OrbotHelper;
 import sun.net.www.protocol.bluetooth.Handler;
 
 @ReportsCrashes(mailTo = "reports@f-droid.org",
-                mode = ReportingInteractionMode.DIALOG,
-                reportDialogClass = CrashReportActivity.class
-                )
+        mode = ReportingInteractionMode.DIALOG,
+        reportDialogClass = CrashReportActivity.class,
+        reportSenderFactoryClasses = org.fdroid.fdroid.acra.CrashReportSenderFactory.class
+)
 public class FDroidApp extends Application {
 
     private static final String TAG = "FDroidApp";
@@ -276,12 +277,12 @@ public class FDroidApp extends Application {
                             @Override
                             public String generate(String imageUri) {
                                 return imageUri.substring(
-                                    imageUri.lastIndexOf('/') + 1);
+                                        imageUri.lastIndexOf('/') + 1);
                             }
                         },
                         // 30 days in secs: 30*24*60*60 = 2592000
                         2592000)
-                    )
+                )
                 .threadPoolSize(4)
                 .threadPriority(Thread.NORM_PRIORITY - 2) // Default is NORM_PRIORITY - 1
                 .build();
