@@ -71,7 +71,7 @@ import sun.net.www.protocol.bluetooth.Handler;
 
 @ReportsCrashes(mailTo = "reports@f-droid.org",
         mode = ReportingInteractionMode.DIALOG,
-        reportDialogClass = CrashReportActivity.class,
+        reportDialogClass = org.fdroid.fdroid.acra.CrashReportActivity.class,
         reportSenderFactoryClasses = org.fdroid.fdroid.acra.CrashReportSenderFactory.class
 )
 public class FDroidApp extends Application {
