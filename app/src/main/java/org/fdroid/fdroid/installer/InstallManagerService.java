@@ -16,7 +16,6 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
-import org.acra.ACRA;
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -249,22 +248,12 @@ public class InstallManagerService extends Service {
 
                         // show notification if app details is not visible
                         if (!TextUtils.isEmpty(errorMessage)) {
-                            try {
-                                // temp setup to debug https://gitlab.com/fdroid/fdroidclient/issues/698
-                                App app = getAppFromActive(downloadUrl);
-
-                                // show notification if app details is not visible
-                                if (AppDetails.isAppVisible(app.packageName)) {
-                                    cancelNotification(downloadUrl);
-                                } else {
-                                    String title = String.format(
-                                            getString(R.string.install_error_notify_title),
-                                            app.name);
-                                    notifyError(downloadUrl, title, errorMessage);
-                                }
-                            } catch (NullPointerException e) {  //NOPMD
-                                ACRA.getErrorReporter().handleException(
-                                        new IllegalStateException(errorMessage, e));
+                            App app = getAppFromActive(downloadUrl);
+                            // show notification if app details is not visible
+                            if (app != null && AppDetails.isAppVisible(app.packageName)) {
+                                cancelNotification(downloadUrl);
+                            } else {
+                                notifyError(downloadUrl, app, errorMessage);
                             }
                         }
                         removeFromActive(downloadUrl);
@@ -358,8 +347,18 @@ public class InstallManagerService extends Service {
         notificationManager.notify(downloadUrlId, notification);
     }
 
-    private void notifyError(String urlString, String title, String text) {
+    private void notifyError(String urlString, App app, String text) {
         int downloadUrlId = urlString.hashCode();
+
+        String name;
+        if (app == null) {
+            // if we have nothing else, show the APK filename
+            String path = Uri.parse(urlString).getPath();
+            name = path.substring(path.lastIndexOf('/'), path.length());
+        } else {
+            name = app.name;
+        }
+        String title = String.format(getString(R.string.install_error_notify_title), name);
 
         Intent errorDialogIntent = new Intent(this, ErrorDialogActivity.class);
         errorDialogIntent.putExtra(
@@ -397,8 +396,16 @@ public class InstallManagerService extends Service {
         ACTIVE_APPS.put(app.packageName, app);
     }
 
+    /**
+     * Always returns an {@link Apk} instance to avoid annoying null guards.
+     */
     private static Apk getApkFromActive(String urlString) {
-        return ACTIVE_APKS.get(urlString);
+        Apk apk = ACTIVE_APKS.get(urlString);
+        if (apk == null) {
+            return new Apk();
+        } else {
+            return apk;
+        }
     }
 
     /**
