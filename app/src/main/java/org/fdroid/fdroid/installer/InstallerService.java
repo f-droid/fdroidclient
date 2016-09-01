@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Blue Jay Wireless
  * Copyright (C) 2016 Dominik Schürmann <dominik@dominikschuermann.de>
  *
  * This program is free software; you can redistribute it and/or
@@ -65,8 +66,7 @@ public class InstallerService extends IntentService {
             Uri downloadUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
             installer.installPackage(uri, downloadUri, apk);
         } else if (ACTION_UNINSTALL.equals(intent.getAction())) {
-            String packageName = intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
-            installer.uninstallPackage(packageName);
+            installer.uninstallPackage();
         }
     }
 
@@ -90,13 +90,13 @@ public class InstallerService extends IntentService {
     /**
      * Uninstall an app
      *
-     * @param context     this app's {@link Context}
-     * @param packageName package name of the app that will be uninstalled
+     * @param context this app's {@link Context}
+     * @param apk     {@link Apk} instance of the app that will be uninstalled
      */
-    public static void uninstall(Context context, String packageName) {
+    public static void uninstall(Context context, Apk apk) {
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_UNINSTALL);
-        intent.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
+        intent.putExtra(Installer.EXTRA_APK, apk);
         context.startService(intent);
     }
 

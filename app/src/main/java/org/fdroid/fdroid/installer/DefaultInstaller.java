@@ -41,8 +41,8 @@ public class DefaultInstaller extends Installer {
 
     private static final String TAG = "DefaultInstaller";
 
-    DefaultInstaller(Context context) {
-        super(context);
+    DefaultInstaller(Context context, Apk apk) {
+        super(context, apk);
     }
 
     @Override
@@ -54,6 +54,7 @@ public class DefaultInstaller extends Installer {
         Intent installIntent = new Intent(context, DefaultInstallerActivity.class);
         installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);
         installIntent.putExtra(Installer.EXTRA_DOWNLOAD_URI, downloadUri);
+        installIntent.putExtra(Installer.EXTRA_APK, apk);
         installIntent.setData(localApkUri);
 
         PendingIntent installPendingIntent = PendingIntent.getActivity(
@@ -67,21 +68,19 @@ public class DefaultInstaller extends Installer {
     }
 
     @Override
-    protected void uninstallPackage(String packageName) {
-        sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_STARTED);
+    protected void uninstallPackage() {
+        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_STARTED);
 
         Intent uninstallIntent = new Intent(context, DefaultInstallerActivity.class);
         uninstallIntent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
-        uninstallIntent.putExtra(
-                DefaultInstallerActivity.EXTRA_UNINSTALL_PACKAGE_NAME, packageName);
+        uninstallIntent.putExtra(Installer.EXTRA_APK, apk);
         PendingIntent uninstallPendingIntent = PendingIntent.getActivity(
                 context.getApplicationContext(),
-                packageName.hashCode(),
+                apk.packageName.hashCode(),
                 uninstallIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
-        sendBroadcastUninstall(packageName,
-                Installer.ACTION_UNINSTALL_USER_INTERACTION, uninstallPendingIntent);
+        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_USER_INTERACTION, uninstallPendingIntent);
     }
 
     @Override

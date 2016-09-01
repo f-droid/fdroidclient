@@ -862,7 +862,7 @@ public class AppDetails extends AppCompatActivity {
                 return true;
 
             case UNINSTALL:
-                uninstallApk(app.packageName);
+                uninstallApk();
                 return true;
 
             case IGNOREALL:
@@ -959,9 +959,13 @@ public class AppDetails extends AppCompatActivity {
         InstallManagerService.queue(this, app, apk);
     }
 
-    private void uninstallApk(String packageName) {
-        Installer installer = InstallerFactory.create(this, null);
-        Intent intent = installer.getUninstallScreen(packageName);
+    /**
+     * Queue for uninstall based on the instance variable {@link #app}
+     */
+    private void uninstallApk() {
+        Apk apk = app.installedApk;
+        Installer installer = InstallerFactory.create(this, apk);
+        Intent intent = installer.getUninstallScreen(apk);
         if (intent != null) {
             // uninstall screen required
             Utils.debugLog(TAG, "screen screen required");
@@ -975,7 +979,7 @@ public class AppDetails extends AppCompatActivity {
     private void startUninstall() {
         localBroadcastManager.registerReceiver(uninstallReceiver,
                 Installer.getUninstallIntentFilter(app.packageName));
-        InstallerService.uninstall(context, app.packageName);
+        InstallerService.uninstall(context, app.installedApk);
     }
 
     private void launchApk(String packageName) {
@@ -1630,7 +1634,7 @@ public class AppDetails extends AppCompatActivity {
                         // If "launchable", launch
                         activity.launchApk(app.packageName);
                     } else {
-                        activity.uninstallApk(app.packageName);
+                        activity.uninstallApk();
                     }
                 } else if (app.suggestedVersionCode > 0) {
                     // If not installed, install
@@ -1656,10 +1660,6 @@ public class AppDetails extends AppCompatActivity {
         public void onAttach(Activity activity) {
             super.onAttach(activity);
             appDetails = (AppDetails) activity;
-        }
-
-        void remove() {
-            appDetails.uninstallApk(appDetails.getApp().packageName);
         }
 
         @Override
@@ -1689,7 +1689,7 @@ public class AppDetails extends AppCompatActivity {
             App app = appDetails.getApp();
             final Apk apk = appDetails.getApks().getItem(position - l.getHeaderViewsCount());
             if (app.installedVersionCode == apk.versionCode) {
-                remove();
+                appDetails.uninstallApk();
             } else if (app.installedVersionCode > apk.versionCode) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setMessage(R.string.installDowngrade);

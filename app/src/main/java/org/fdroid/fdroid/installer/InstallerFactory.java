@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Blue Jay Wireless
  * Copyright (C) 2016 Dominik Schürmann <dominik@dominikschuermann.de>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,6 +21,7 @@
 package org.fdroid.fdroid.installer;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -34,22 +36,23 @@ public class InstallerFactory {
      * case to install the "F-Droid Privileged Extension" ExtensionInstaller.
      *
      * @param context current {@link Context}
-     * @param apk     apk to be installed. Required to select the ExtensionInstaller.
-     *                If this is null, the ExtensionInstaller will never be returned.
+     * @param apk     to be installed, always required.
      * @return instance of an Installer
      */
     public static Installer create(Context context, Apk apk) {
-        Installer installer;
+        if (apk == null || TextUtils.isEmpty(apk.packageName)) {
+            throw new IllegalArgumentException("packageName must not be empty!");
+        }
 
-        if (apk != null
-                && apk.packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
+        Installer installer;
+        if (apk.packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
             // special case for "F-Droid Privileged Extension"
-            installer = new ExtensionInstaller(context);
+            installer = new ExtensionInstaller(context, apk);
         } else if (PrivilegedInstaller.isDefault(context)) {
             Utils.debugLog(TAG, "privileged extension correctly installed -> PrivilegedInstaller");
-            installer = new PrivilegedInstaller(context);
+            installer = new PrivilegedInstaller(context, apk);
         } else {
-            installer = new DefaultInstaller(context);
+            installer = new DefaultInstaller(context, apk);
         }
 
         return installer;

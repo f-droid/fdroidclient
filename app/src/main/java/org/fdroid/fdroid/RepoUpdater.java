@@ -483,7 +483,9 @@ public class RepoUpdater {
                 }
                 if (repoPushRequest.versionCode == null
                         || repoPushRequest.versionCode == packageInfo.versionCode) {
-                    InstallerService.uninstall(context, packageName);
+                    Apk apk = ApkProvider.Helper.find(context, repoPushRequest.packageName,
+                            packageInfo.versionCode);
+                    InstallerService.uninstall(context, apk);
                 } else {
                     Utils.debugLog(TAG, "ignoring request based on versionCode:" + repoPushRequest);
                 }
