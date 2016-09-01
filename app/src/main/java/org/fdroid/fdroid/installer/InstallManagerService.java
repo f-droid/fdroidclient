@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -22,6 +23,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
@@ -255,6 +257,10 @@ public class InstallManagerService extends Service {
                         // show notification if app details is not visible
                         if (!TextUtils.isEmpty(errorMessage)) {
                             App app = getAppFromActive(downloadUrl);
+                            if (app == null) {
+                                ContentResolver resolver = context.getContentResolver();
+                                app = AppProvider.Helper.findByPackageName(resolver, apk.packageName);
+                            }
                             // show notification if app details is not visible
                             if (app != null && AppDetails.isAppVisible(app.packageName)) {
                                 cancelNotification(downloadUrl);
@@ -337,10 +343,14 @@ public class InstallManagerService extends Service {
             title = String.format(getString(R.string.tap_to_update_format),
                     pm.getApplicationLabel(pm.getApplicationInfo(apk.packageName, 0)));
         } catch (PackageManager.NameNotFoundException e) {
-            // TODO use packageName to fetch App instance from database if not cached
             String name = getAppName(apk);
             if (TextUtils.isEmpty(name) || name.equals(new App().name)) {
-                return;  // do not have a name to display, so leave notification as is
+                ContentResolver resolver = getContentResolver();
+                App app = AppProvider.Helper.findByPackageName(resolver, apk.packageName);
+                if (app == null || TextUtils.isEmpty(app.name)) {
+                    return;  // do not have a name to display, so leave notification as is
+                }
+                name = app.name;
             }
             title = String.format(getString(R.string.tap_to_install_format), name);
         }
