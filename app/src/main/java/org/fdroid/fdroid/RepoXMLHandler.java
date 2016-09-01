@@ -25,6 +25,7 @@ import android.support.annotation.Nullable;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoPushRequest;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -64,6 +65,8 @@ public class RepoXMLHandler extends DefaultHandler {
         void receiveRepo(String name, String description, String signingCert, int maxage, int version, long timestamp);
 
         void receiveApp(App app, List<Apk> packages);
+
+        void receiveRepoPushRequest(RepoPushRequest repoPushRequest);
     }
 
     private final IndexReceiver receiver;
@@ -250,6 +253,10 @@ public class RepoXMLHandler extends DefaultHandler {
         receiver.receiveRepo(repoName, repoDescription, repoSigningCert, repoMaxAge, repoVersion, repoTimestamp);
     }
 
+    private void onRepoPushRequestParsed(RepoPushRequest repoPushRequest) {
+        receiver.receiveRepoPushRequest(repoPushRequest);
+    }
+
     @Override
     public void startElement(String uri, String localName, String qName,
                              Attributes attributes) throws SAXException {
@@ -262,6 +269,15 @@ public class RepoXMLHandler extends DefaultHandler {
             repoName = cleanWhiteSpace(attributes.getValue("", "name"));
             repoDescription = cleanWhiteSpace(attributes.getValue("", "description"));
             repoTimestamp = parseLong(attributes.getValue("", "timestamp"), 0);
+        } else if (RepoPushRequest.INSTALL.equals(localName)
+                || RepoPushRequest.UNINSTALL.equals(localName)) {
+            if (repo.pushRequests == Repo.PUSH_REQUEST_ACCEPT_ALWAYS) {
+                RepoPushRequest r = new RepoPushRequest(
+                        localName,
+                        attributes.getValue("packageName"),
+                        attributes.getValue("versionCode"));
+                onRepoPushRequestParsed(r);
+            }
         } else if ("application".equals(localName) && curapp == null) {
             curapp = new App();
             curapp.packageName = attributes.getValue("", "id");
