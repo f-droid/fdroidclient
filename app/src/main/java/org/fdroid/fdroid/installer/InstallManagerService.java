@@ -331,7 +331,12 @@ public class InstallManagerService extends Service {
             title = String.format(getString(R.string.tap_to_update_format),
                     pm.getApplicationLabel(pm.getApplicationInfo(apk.packageName, 0)));
         } catch (PackageManager.NameNotFoundException e) {
-            title = String.format(getString(R.string.tap_to_install_format), getAppName(apk));
+            // TODO use packageName to fetch App instance from database if not cached
+            String name = getAppName(apk);
+            if (TextUtils.isEmpty(name) || name.equals(new App().name)) {
+                return;  // do not have a name to display, so leave notification as is
+            }
+            title = String.format(getString(R.string.tap_to_install_format), name);
         }
 
         int downloadUrlId = urlString.hashCode();
