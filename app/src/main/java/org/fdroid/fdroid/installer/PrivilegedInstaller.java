@@ -30,6 +30,7 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
@@ -294,6 +295,14 @@ public class PrivilegedInstaller extends Installer {
         }
 
         return IS_EXTENSION_INSTALLED_YES;
+    }
+
+    /**
+     * Extension has privileged permissions and preference is enabled?
+     */
+    public static boolean isDefault(Context context) {
+        return Preferences.get().isPrivilegedInstallerEnabled()
+                && isExtensionInstalledCorrectly(context) == IS_EXTENSION_INSTALLED_YES;
     }
 
     @Override
