@@ -235,6 +235,7 @@ public class InstallManagerService extends Service {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String downloadUrl = intent.getDataString();
+                Apk apk;
                 switch (intent.getAction()) {
                     case Installer.ACTION_INSTALL_STARTED:
                         // nothing to do
@@ -247,6 +248,7 @@ public class InstallManagerService extends Service {
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     case Installer.ACTION_INSTALL_INTERRUPTED:
+                        apk = intent.getParcelableExtra(Installer.EXTRA_APK);
                         String errorMessage =
                                 intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
@@ -264,15 +266,15 @@ public class InstallManagerService extends Service {
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     case Installer.ACTION_INSTALL_USER_INTERACTION:
+                        apk = intent.getParcelableExtra(Installer.EXTRA_APK);
                         PendingIntent installPendingIntent =
                                 intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
 
-                        Apk apkUserInteraction = getApkFromActive(downloadUrl);
                         // show notification if app details is not visible
-                        if (AppDetails.isAppVisible(apkUserInteraction.packageName)) {
+                        if (AppDetails.isAppVisible(apk.packageName)) {
                             cancelNotification(downloadUrl);
                         } else {
-                            notifyDownloadComplete(apkUserInteraction, downloadUrl, installPendingIntent);
+                            notifyDownloadComplete(apk, downloadUrl, installPendingIntent);
                         }
 
                         break;

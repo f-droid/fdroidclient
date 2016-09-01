@@ -32,6 +32,7 @@ import android.view.ContextThemeWrapper;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.installer.Installer;
 
 /**
@@ -48,14 +49,15 @@ public class UninstallDialogActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         final Intent intent = getIntent();
-        final String packageName = intent.getStringExtra(Installer.EXTRA_PACKAGE_NAME);
+        final Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
 
         PackageManager pm = getPackageManager();
 
         ApplicationInfo appInfo;
         try {
             //noinspection WrongConstant (lint is actually wrong here!)
-            appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
+            appInfo = pm.getApplicationInfo(apk.packageName,
+                    PackageManager.GET_UNINSTALLED_PACKAGES);
         } catch (PackageManager.NameNotFoundException e) {
             throw new RuntimeException("Failed to get ApplicationInfo for uninstalling");
         }
@@ -86,7 +88,7 @@ public class UninstallDialogActivity extends FragmentActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent data = new Intent();
-                        data.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
+                        data.putExtra(Installer.EXTRA_APK, apk);
                         setResult(Activity.RESULT_OK, intent);
                         finish();
                     }
