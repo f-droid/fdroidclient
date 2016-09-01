@@ -45,7 +45,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public static final String PREF_UPD_INTERVAL = "updateInterval";
     public static final String PREF_UPD_WIFI_ONLY = "updateOnWifiOnly";
-    public static final String PREF_UPD_AUTO_DOWNLOAD = "updateAutoDownload";
+    public static final String PREF_AUTO_DOWNLOAD_INSTALL_UPDATES = "updateAutoDownload";
     public static final String PREF_UPD_NOTIFY = "updateNotify";
     public static final String PREF_UPD_HISTORY = "updateHistoryDays";
     public static final String PREF_ROOTED = "rooted";
@@ -222,7 +222,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean isAutoDownloadEnabled() {
-        return preferences.getBoolean(PREF_UPD_AUTO_DOWNLOAD, false);
+        return preferences.getBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, false);
     }
 
     public boolean isUpdateOnlyOnWifi() {

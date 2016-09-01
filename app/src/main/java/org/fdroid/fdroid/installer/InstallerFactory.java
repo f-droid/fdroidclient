@@ -21,7 +21,6 @@ package org.fdroid.fdroid.installer;
 
 import android.content.Context;
 
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 
@@ -46,9 +45,7 @@ public class InstallerFactory {
                 && apk.packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
             // special case for "F-Droid Privileged Extension"
             installer = new ExtensionInstaller(context);
-        } else if (isPrivilegedInstallerEnabled()
-                && PrivilegedInstaller.isExtensionInstalledCorrectly(context)
-                == PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES) {
+        } else if (PrivilegedInstaller.isDefault(context)) {
             Utils.debugLog(TAG, "privileged extension correctly installed -> PrivilegedInstaller");
             installer = new PrivilegedInstaller(context);
         } else {
@@ -57,12 +54,4 @@ public class InstallerFactory {
 
         return installer;
     }
-
-    /**
-     * Extension has privileged permissions and preference is enabled?
-     */
-    private static boolean isPrivilegedInstallerEnabled() {
-        return Preferences.get().isPrivilegedInstallerEnabled();
-    }
-
 }

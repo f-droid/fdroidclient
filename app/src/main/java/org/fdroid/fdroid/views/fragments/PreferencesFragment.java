@@ -50,6 +50,7 @@ public class PreferencesFragment extends PreferenceFragment
     private static final int REQUEST_INSTALL_ORBOT = 0x1234;
     private CheckBoxPreference enableProxyCheckPref;
     private CheckBoxPreference useTorCheckPref;
+    private Preference updateAutoDownloadPref;
     private Preference updatePrivilegedExtensionPref;
     private long currentKeepCacheTime;
 
@@ -59,6 +60,7 @@ public class PreferencesFragment extends PreferenceFragment
         addPreferencesFromResource(R.xml.preferences);
         useTorCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_USE_TOR);
         enableProxyCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
+        updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
         updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
     }
 
@@ -282,6 +284,11 @@ public class PreferencesFragment extends PreferenceFragment
                 return true;
             }
         });
+
+        if (PrivilegedInstaller.isDefault(getContext())) {
+            updateAutoDownloadPref.setTitle(R.string.update_auto_install);
+            updateAutoDownloadPref.setSummary(R.string.update_auto_install_summary);
+        }
     }
 
     @Override
