@@ -1,3 +1,26 @@
+/*
+ * Copyright (C) 2016 Blue Jay Wireless
+ * Copyright (C) 2014-2016 Daniel Martí <mvdan@mvdan.cc>
+ * Copyright (C) 2014-2016 Hans-Christoph Steiner <hans@eds.org>
+ * Copyright (C) 2014-2016 Peter Serwylo <peter@serwylo.com>
+ * Copyright (C) 2015 Christian Morgner
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
@@ -14,6 +37,10 @@ import java.util.Date;
 public class Repo extends ValueObject {
 
     public static final int VERSION_DENSITY_SPECIFIC_ICONS = 11;
+
+    public static final int PUSH_REQUEST_IGNORE = 0;
+    public static final int PUSH_REQUEST_PROMPT = 1;
+    public static final int PUSH_REQUEST_ACCEPT_ALWAYS = 2;
 
     protected long id;
 
@@ -43,6 +70,9 @@ public class Repo extends ValueObject {
 
     /** When the signed repo index was generated, used to protect against replay attacks */
     public long timestamp;
+
+    /** How to treat push requests included in this repo's index XML */
+    public int pushRequests = PUSH_REQUEST_IGNORE;
 
     public Repo() {
     }
@@ -100,6 +130,9 @@ public class Repo extends ValueObject {
                     break;
                 case Cols.TIMESTAMP:
                     timestamp = cursor.getLong(i);
+                    break;
+                case Cols.PUSH_REQUESTS:
+                    pushRequests = cursor.getInt(i);
                     break;
             }
         }
@@ -222,6 +255,10 @@ public class Repo extends ValueObject {
 
         if (values.containsKey(Cols.TIMESTAMP)) {
             timestamp = toInt(values.getAsInteger(Cols.TIMESTAMP));
+        }
+
+        if (values.containsKey(Cols.PUSH_REQUESTS)) {
+            pushRequests = toInt(values.getAsInteger(Cols.PUSH_REQUESTS));
         }
     }
 }
