@@ -2,7 +2,7 @@
 <resources>
   <string name="version">Versiune</string>
   <string name="delete">Sterge</string>
-  <string name="cache_downloaded">Pastreaza pachete</string>
+  <string name="cache_downloaded">Pastreaza aplicatiile descarcate</string>
   <string name="updates">Actualizat</string>
   <string name="other">Altele</string>
   <string name="notify">Notificare actualizari</string>
@@ -298,11 +298,19 @@
     <string name="no_handler_app">Nu exista nici o aplicatie disponibila care sa poata folosi %s.</string>
     <string name="tap_to_install_format">Atinge pentru a instala %s</string>
     <string name="tap_to_update_format">Atinge pentru a actualiza %s</string>
-    <string name="install_confirm">Sigur vrei sa instalezi aceasta aplicatie? Va primi acces la:</string>
-    <string name="install_confirm_update">Sigur vrei sa instalezi o actualizare la o aplicatie existenta? Datele curente nu se vor pierde. Aplicatia odata actualizata va primi acces la:</string>
-    <string name="install_confirm_update_system">Sigur vrei sa instalezi o actualizare la o aplicatie inclusa in Android? Datele curente nu se vor pierde. Aplicatia odata actualizata va primi acces la:</string>
-    <string name="install_confirm_update_no_perms">Sigur vrei sa instalezi o actualizare la aceasta aplicatie existenta? Datele curente nu se vor pierde. Nu necesita vreun acces special.</string>
-    <string name="install_confirm_update_system_no_perms">Sigur vrei sa instalezi o actualizare la o aplicatie inclusa in Android? Datele curente nu se vor pierde. Nu necesita vreun acces special.</string>
+    <string name="install_confirm">are nevoie de acces la</string>
+    <string name="install_confirm_update">Sigur vrei sa instalezi o actualizare
+ la o aplicatie existenta? Datele curente nu se vor pierde.
+Aplicatia odata actualizata va primi acces la:</string>
+    <string name="install_confirm_update_system">Sigur vrei sa instalezi o actualizare 
+la o aplicatie inclusa in Android? Datele curente nu se vor pierde. 
+Aplicatia odata actualizata va primi acces la:</string>
+    <string name="install_confirm_update_no_perms">Sigur vrei sa instalezi o actualizare 
+la aceasta aplicatie existenta? Datele curente nu se vor pierde. 
+Nu necesita vreun acces special.</string>
+    <string name="install_confirm_update_system_no_perms">Sigur vrei sa instalezi o actualizare
+ la o aplicatie inclusa in Android? Datele curente nu se vor pierde. 
+Nu necesita vreun acces special.</string>
     <string name="crash_dialog_comment_prompt">Puteti adauga informatii si comentarii aici:</string>
 <string name="downloading_apk">Descarcare %1$s</string>
 
@@ -315,7 +323,9 @@
     <string name="keep_year">Un an</string>
     <string name="keep_forever">Totdeauna</string>
 
-    <string name="crash_dialog_text">O eroare neasteptata s-a produs fortand oprirea aplicatiei. Doriti sa trimite-ti un e-mail cu detalii, pentru a putea ajuta la rezolvarea acestei probleme?</string>
+    <string name="crash_dialog_text">O eroare neasteptata s-a produs
+ fortand oprirea aplicatiei. Doriti sa trimite-ti un e-mail cu detalii, 
+pentru a putea ajuta la rezolvarea acestei probleme?</string>
     <string name="uninstalling">Dezinstalare…</string>
 
     <string name="installIncompatible">Se pare ca acest pachet nu este compatibil cu dispozitivul dumneavoastra. Doriti sa se incerce instalarea lui oricum?</string>

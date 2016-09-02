@@ -361,4 +361,6 @@ worden gedownload</string>
     <string name="keep_year">1 jaar</string>
     <string name="keep_forever">Voor altijd</string>
 
+    <string name="hide_anti_feature_apps">Maak apps met anti-functies grijs</string>
+    <string name="hide_anti_feature_apps_on">Toon apps met anti-functies in het grijs</string>
     </resources>

@@ -284,8 +284,8 @@
     <string name="install_confirm">确定要安装这个应用吗？它将有以下权限</string>
     <string name="install_confirm_update">确定要为这个应用安装更新吗？你的已有数据会保留。更新后的应用程序将有下权限：</string>
     <string name="install_confirm_update_system">确定要为这个内置应用安装更新吗？你的已有数据会保留。更新后的应用程序将有下权限：</string>
-    <string name="install_confirm_update_no_perms">确定要为这个应用安装更新吗？你的已有数据会保留。该应用未请求任何权限。</string>
-    <string name="install_confirm_update_system_no_perms">确定要为这个内置应用安装更新吗？你的已有数据会保留。该应用未请求任何权限。</string>
+    <string name="install_confirm_update_no_perms">确定要为这个应用安装更新吗？你的已有数据会保留。该应用不需要任何特殊权限。</string>
+    <string name="install_confirm_update_system_no_perms">确定要为这个内置应用安装更新吗？你的已有数据会保留。该应用不需要任何特殊权限。</string>
     <string name="newPerms">新建</string>
     <string name="allPerms">所有</string>
     <string name="perm_costs_money">这可能会产生费用</string>

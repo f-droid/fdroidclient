@@ -131,12 +131,22 @@
   <string name="repo_description">Description</string>
   <string name="repo_last_update">Dernière mise à jour</string>
   <string name="repo_name">Nom</string>
-  <string name="unsigned_description">Cela signifie que la liste des applications n\'a pas pu être vérifiée. Soyez prudent avec les applications téléchargées depuis des index non signés.</string>
-  <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé. Vous devez l\'activer pour voir la liste des applis qu\'il offre.</string>
+  <string name="unsigned_description">Cela signifie que la liste des
+applications n\'a pas pu être vérifiée. Soyez prudent
+avec les applications téléchargées depuis des index non signés.</string>
+  <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé.
+Vous devez l\'activer pour voir la liste des applis qu\'il offre.</string>
   <string name="unknown">Inconnu</string>
   <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
-  <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses applis ne seront plus disponibles via F-Droid.\n\nNote : toutes les applis précédemment installées vont rester sur votre appareil.</string>
-  <string name="repo_disabled_notification">%1$s a été désactivé.\n\nVous devez réactiver ce dépôt pour installer les applis qu\'il contient.</string>
+  <string name="repo_confirm_delete_body">Supprimer un dépôt signifie
+que ses applis ne seront plus disponibles via F-Droid.
+
+Note : toutes
+les applis précédemment installées vont rester sur votre appareil.</string>
+  <string name="repo_disabled_notification">%1$s a été désactivé.
+
+Vous devez
+réactiver ce dépôt pour installer les applis qu\'il contient.</string>
   <string name="minsdk_or_later">%s ou plus récent</string>
   <string name="up_to_maxsdk">Jusqu\'à %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s à %2$s</string>
@@ -198,10 +208,18 @@
     <string name="swap_dont_show_again">Ne plus afficher</string>
     <string name="loading">Chargement…</string>
     <string name="install_confirm">a besoin d\'accéder à</string>
-    <string name="install_confirm_update">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Une fois mise à jour, l\'application aura accès à :</string>
-    <string name="install_confirm_update_system">Voulez-vous mettre à jour cette application système ? Vos données ne seront pas perdues. Une fois mise à jour, l\'application aura accès à :</string>
-    <string name="install_confirm_update_no_perms">Voulez-vous mettre à jour cette application ? Vos données ne seront pas perdues. Elle ne requiert aucune autorisation particulière.</string>
-    <string name="install_confirm_update_system_no_perms">Voulez-vous mettre à jour cette application système ? Vos données ne seront pas perdues. Elle ne requiert aucune autorisation particulière.</string>
+    <string name="install_confirm_update">Voulez-vous mettre à jour
+cette application ? Vos données ne seront pas
+perdues. Une fois mise à jour, l\'application aura accès à :</string>
+    <string name="install_confirm_update_system">Voulez-vous mettre à jour
+cette application système ? Vos données ne seront pas
+perdues. Une fois mise à jour, l\'application aura accès à :</string>
+    <string name="install_confirm_update_no_perms">Voulez-vous mettre à jour
+cette application ? Vos données ne seront pas
+perdues. Elle ne requiert aucune autorisation particulière.</string>
+    <string name="install_confirm_update_system_no_perms">Voulez-vous mettre à jour
+cette application système ? Vos données ne seront pas
+perdues. Elle ne requiert aucune autorisation particulière.</string>
     <string name="newPerms">Nouvelles</string>
     <string name="allPerms">Toutes</string>
     <string name="perm_costs_money">Peut vous coûter de l\'argent</string>
@@ -318,7 +336,9 @@
 
     <string name="crash_dialog_title">F-Droid s\'est arrêté de manière inattendue</string>
     <string name="crash_dialog_comment_prompt">Vous pouvez ajouter des informations additionnelles :</string>
-<string name="crash_dialog_text">Une erreur inattendue s’est produite entraînant l\'arrêt de l\'application. Acceptez-vous d\'envoyer les détails des opérations en cours pour aider à résoudre ce problème ?</string>
+<string name="crash_dialog_text">Une erreur inattendue s’est produite
+entraînant l\'arrêt de l\'application. Acceptez-vous d\'envoyer les
+détails des opérations en cours pour aider à résoudre ce problème ?</string>
     <string name="antinonfreeassetslist">Cette appli comprend des parties qui ne sont pas libres/open-source</string>
 
     <string name="by_author">par</string>

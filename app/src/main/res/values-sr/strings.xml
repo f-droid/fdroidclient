@@ -90,7 +90,7 @@
   <string name="show_incompat_versions">Неодговарајућа издања</string>
   <string name="show_incompat_versions_on">Приказ неодговарајућих издања апликације са уређајем</string>
   <string name="rooted">Занемари корен</string>
-  <string name="rooted_on">Не затамњуј приказ апликација које захтевају корени приступ</string>
+  <string name="rooted_on">Не посивљуј приказ апликација које захтевају корени приступ</string>
   <string name="ignoreTouch">Занемари услов додирног екрана</string>
   <string name="ignoreTouch_on">Увек укључи апликације које захтевају додирни екран</string>
   <string name="category_All">Све</string>
@@ -129,12 +129,22 @@
   <string name="repo_description">Опис</string>
   <string name="repo_last_update">Последње освежавање</string>
   <string name="repo_name">Назив</string>
-  <string name="unsigned_description">Ово значи да списак апликација није могао бити оверен. Требате бити опрезни са преузетим апликацијама преко непотписаних садржаја.</string>
-  <string name="repo_not_yet_updated">Ова ризница још није коришћена. Омогућите је да бисте видели апликације које садржи.</string>
+  <string name="unsigned_description">Ово значи да списак
+апликација није могао бити оверен. Требате бити опрезни
+са преузетим апликацијама преко непотписаних садржаја.</string>
+  <string name="repo_not_yet_updated">Ова ризница још није коришћена.
+Омогућите је да бисте видели апликације које садржи.</string>
   <string name="unknown">Непознато</string>
   <string name="repo_confirm_delete_title">Обрисати ризницу?</string>
-  <string name="repo_confirm_delete_body">Брисање ризнице значи да њене апликације више неће бити доступне на Ф-дроиду.\n\nНапомена: Све претходно инсталиране апликације ће остати на уређају.</string>
-  <string name="repo_disabled_notification">Онемогућена „%1$s“.\n\nМораћете поново да омогућите ову ризницу да бисте инсталирали апликације са ње.</string>
+  <string name="repo_confirm_delete_body">Брисање ризнице значи
+да њене апликације више неће бити доступне на Ф-дроиду.
+
+Напомена: Све
+претходно инсталиране апликације ће остати на уређају.</string>
+  <string name="repo_disabled_notification">Онемогућена „%1$s“.
+
+Мораћете
+поново да омогућите ову ризницу да бисте инсталирали апликације са ње.</string>
   <string name="repo_added">Сачувана је ризница Ф-дроида %1$s.</string>
   <string name="repo_searching_address">Тражим ризницу Ф-дроида на\n%1$s</string>
   <string name="minsdk_or_later">%s или новији</string>
@@ -309,12 +319,22 @@
     <string name="empty_search_available_app_list">Нема одговарајућих апликација.</string>
     <string name="empty_search_can_update_app_list">Нема одговарајућих апликација за надоградњу.</string>
 
-    <string name="install_confirm_update">Желите ли да надоградите постојећу апликацију? Подаци неће бити изгубљени. Надограђена апликација ће добити приступ следећем:</string>
-    <string name="install_confirm_update_system">Желите ли да надоградите подразумевану апликацију? Подаци неће бити изгубљени. Надограђена апликација ће добити приступ следећем:</string>
-    <string name="install_confirm_update_no_perms">Желите ли да надоградите постојећу апликацију? Подаци неће бити изгубљени. Нису потребне дозволе за додатни приступ.</string>
-    <string name="install_confirm_update_system_no_perms">Желите ли да надоградите подразумевану апликацију? Подаци неће бити изгубљени. Нису потребна овлашћења за додатни приступ.</string>
+    <string name="install_confirm_update">Желите ли да надоградите постојећу
+апликацију? Подаци неће бити изгубљени.
+Надограђена апликација ће добити приступ следећем:</string>
+    <string name="install_confirm_update_system">Желите ли да надоградите
+подразумевану апликацију? Подаци неће бити
+изгубљени. Надограђена апликација ће добити приступ следећем:</string>
+    <string name="install_confirm_update_no_perms">Желите ли да надоградите постојећу
+апликацију? Подаци неће бити изгубљени. Нису
+потребне дозволе за додатни приступ.</string>
+    <string name="install_confirm_update_system_no_perms">Желите ли да надоградите
+подразумевану апликацију? Подаци неће бити
+изгубљени. Нису потребна овлашћења за додатни приступ.</string>
     <string name="crash_dialog_title">Ф-дроид се срушио</string>
-    <string name="crash_dialog_text">Неочекивана грешка је присилила програм да се заустави. Желите ли да пошаљете детаље е-поштом и тиме помогнете у решавању проблема?</string>
+    <string name="crash_dialog_text">Неочекивана грешка је присилила
+програм да се заустави. Желите ли да пошаљете детаље
+е-поштом и тиме помогнете у решавању проблема?</string>
     <string name="crash_dialog_comment_prompt">Можете да унесете додатне податке и коментаре овде:</string>
 <string name="antinonfreeassetslist">Ова апликација садржи неслободне ресурсе</string>
 
@@ -349,4 +369,6 @@
     <string name="installing">Уграђујем…</string>
     <string name="uninstalling">Уклањам…</string>
 
+    <string name="hide_anti_feature_apps">Посиви апликације са анти-карактеристикама</string>
+    <string name="hide_anti_feature_apps_on">Посивљује апликације које захтевају анти-карактеристике</string>
     </resources>
