@@ -187,10 +187,20 @@
     <string name="repo_details">Biltegia</string>
     <string name="repo_url">Helbidea</string>
     <string name="repo_fingerprint">Sinatzeko gakoaren hatz-marka (SHA-256)</string>
-    <string name="unsigned_description">Honek esan nahi du aplikazioen zerrenda ezin izan dela egiaztatu. Sinatu gabeko jatorrietatik deskargatutako aplikazioekin kontuz ibili behar zara.</string>
-    <string name="repo_not_yet_updated">Biltegi hau ez da erabili oraindik. Gaitu behar duzu dauzkan aplikazioak ikusteko.</string>
-    <string name="repo_confirm_delete_body">Biltegi bat ezabatzeak esan nahi du bertako aplikazioak ez direla F-Droiden eskuragarri izango.\n\nOharra: Aurretik instalatutako aplikazio guztiak gailuan jarraituko dute.</string>
-    <string name="repo_disabled_notification">%1$s desgaitu da.\n\nBertako aplikazioak instalatu ahal izateko gaitu egin beharko duzu.</string>
+    <string name="unsigned_description">Honek esan nahi du aplikazioen zerrenda 
+ezin izan dela egiaztatu. Sinatu gabeko jatorrietatik 
+deskargatutako aplikazioekin kontuz ibili behar zara.</string>
+    <string name="repo_not_yet_updated">Biltegi hau ez da erabili oraindik. 
+Gaitu behar duzu dauzkan aplikazioak ikusteko.</string>
+    <string name="repo_confirm_delete_body">Biltegi bat ezabatzeak esan nahi du bertako 
+aplikazioak ez direla F-Droiden eskuragarri izango.
+
+Oharra: Aurretik instalatutako aplikazio guztiak 
+gailuan jarraituko dute.</string>
+    <string name="repo_disabled_notification">%1$s desgaitu da.
+
+Bertako aplikazioak 
+instalatu ahal izateko gaitu egin beharko duzu.</string>
     <string name="repo_added">%1$s F-Droid biltegia gorde da.</string>
     <string name="repo_searching_address">F-Droid biltegia bilatzen hemen:\n%1$s</string>
     <string name="minsdk_or_later">%s edo berriagoa</string>
@@ -291,10 +301,18 @@
     <string name="swap_not_enabled_description">Trukatu aurretik, gailua ikusgarri jarri behar duzu.</string>
 
     <string name="install_confirm">baimen hauek behar ditu</string>
-    <string name="install_confirm_update">Aurretik dagoen aplikazio honen bertsio berriagoa instalatu nahi duzu? Oraingo datuak ez dituzu galduko. Eguneratutako aplikazioak honako baimenak behar ditu:</string>
-    <string name="install_confirm_update_system">Sistemarekin zetorren aplikazio honen bertsio berriagoa instalatu nahi duzu? Oraingo datuak ez dituzu galduko. Eguneratutako aplikazioak honako baimenak behar ditu:</string>
-    <string name="install_confirm_update_no_perms">Aurretik dagoen aplikazio honen bertsio berriagoa instalatu nahi duzu? Oraingo datuak ez dituzu galduko. Ez du baimen berezirik behar.</string>
-    <string name="install_confirm_update_system_no_perms">Sistemarekin zetorren aplikazio honen bertsio berriagoa instalatu nahi duzu? Oraingo datuak ez dituzu galduko. Ez du baimen berezirik behar.</string>
+    <string name="install_confirm_update">Aurretik dagoen aplikazio honen bertsio berriagoa 
+instalatu nahi duzu? Oraingo datuak ez dituzu galduko. 
+Eguneratutako aplikazioak honako baimenak behar ditu:</string>
+    <string name="install_confirm_update_system">Sistemarekin zetorren aplikazio honen bertsio berriagoa 
+instalatu nahi duzu? Oraingo datuak ez dituzu galduko. 
+Eguneratutako aplikazioak honako baimenak behar ditu:</string>
+    <string name="install_confirm_update_no_perms">Aurretik dagoen aplikazio honen bertsio berriagoa 
+instalatu nahi duzu? Oraingo datuak ez dituzu galduko. 
+Ez du baimen berezirik behar.</string>
+    <string name="install_confirm_update_system_no_perms">Sistemarekin zetorren aplikazio honen bertsio berriagoa
+instalatu nahi duzu? Oraingo datuak ez dituzu galduko. 
+Ez du baimen berezirik behar.</string>
     <string name="perm_costs_money">Honek dirua kosta dakizuke</string>
     <string name="uninstall_update_confirm">Lantegiko bertsiora bueltatu nahi duzu aplikazio hau?</string>
     <string name="uninstall_confirm">Aplikazio hau desinstalatu nahi duzu?</string>
@@ -337,7 +355,9 @@
     <string name="tap_to_update_format">Sakatu %s eguneratzeko</string>
     <string name="crash_dialog_title">F-droid kraskatu da</string>
     <string name="useTorSummary">Behartu Tor bidezko deskarga pribatutasuna areagotzeko</string>
-    <string name="crash_dialog_text">Ustekabeko errorea gertatu da aplikazioa geldiaraztean. Xehetasunak e-posta bidez bidali nahi dituzu arazoa konpontzen laguntzeko?</string>
+    <string name="crash_dialog_text">Ustekabeko errorea gertatu da aplikazioa geldiaraztean. 
+Xehetasunak e-posta bidez bidali nahi dituzu arazoa 
+konpontzen laguntzeko?</string>
     <string name="crash_dialog_comment_prompt">Informazio gehigarria eta iruzkinak sartu ditzakezu hemen:</string>
 <string name="by_author">egilea</string>
     <string name="download_pending">Deskarga hastearen zain…</string>
@@ -358,4 +378,6 @@
 
     <string name="system_install_not_supported">Android 5.1 bertsiotik aurrera ezin da Pribilegiodun F-Droid Luzapena instalatu.</string>
 
+    <string name="hide_anti_feature_apps">Ilundu ezaugarri zalantzagarriak</string>
+    <string name="hide_anti_feature_apps_on">Ilundu ezaugarri zalantzagarriak behar dituzten aplikazioak</string>
     </resources>

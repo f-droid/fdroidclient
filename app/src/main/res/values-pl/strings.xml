@@ -353,4 +353,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="installing">Instalowanie…</string>
     <string name="uninstalling">Deinstalacja…</string>
 
+    <string name="hide_anti_feature_apps">Przyciemniaj aplikacje z niepożądanymi cechami</string>
+    <string name="hide_anti_feature_apps_on">Przyciemnia aplikacje z niepożądanymi funkcjami</string>
     </resources>

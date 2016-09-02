@@ -130,12 +130,22 @@
   <string name="repo_description">Beschreibung</string>
   <string name="repo_last_update">Letzte Aktualisierung</string>
   <string name="repo_name">Name</string>
-  <string name="unsigned_description">Das bedeutet, dass die Liste von Anwendungen nicht überprüft werden konnte. Sie sollten vorsichtig sein, mit heruntergeladenen Anwendungen aus nicht signierten Quellen.</string>
-  <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht benutzt. Um beinhaltende Anwendungen anzuzeigen, muss sie zuvor aktiviert werden.</string>
+  <string name="unsigned_description">Das bedeutet, die Liste von Anwendungen konnte
+nicht überprüft werden. Sie sollten mit heruntergeladenen
+Anwendungen aus nicht signierten Quellen vorsichtig sein.</string>
+  <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht benutzt.
+Um darin bereitgestellte Anwendungen anzuzeigen, muss sie aktiviert werden.</string>
   <string name="unknown">Unbekannt</string>
   <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
-  <string name="repo_confirm_delete_body">Das Löschen einer Paketquelle bedeutet, dass die Anwendungen daraus nicht mehr in F-Droid verfügbar sein werden.\n\nHinweis: Alle zuvor installierten Anwendungen bleiben auf Ihrem Gerät.</string>
-  <string name="repo_disabled_notification">»%1$s« deaktiviert.\n\nSie müssen diese Paketquelle wieder aktivieren, um Anwendungen daraus installieren zu können.</string>
+  <string name="repo_confirm_delete_body">Das Löschen einer Paketquelle bedeutet,
+Anwendungen daraus werden nicht mehr in F-Droid verfügbar sein.
+
+Hinweis: Alle
+zuvor installierten Anwendungen bleiben auf Ihrem Gerät.</string>
+  <string name="repo_disabled_notification">»%1$s« deaktiviert.
+
+Sie müssen diese Paketquelle wieder aktivieren,
+um Anwendungen daraus installieren zu können.</string>
   <string name="repo_added">F-Droid-Paketquelle %1$s gespeichert.</string>
   <string name="repo_searching_address">Nach F-Droid-Paketquelle wird unter
 %1$s gesucht</string>
@@ -349,4 +359,6 @@
     <string name="installing">Installation läuft …</string>
     <string name="uninstalling">Deinstallation läuft …</string>
 
+    <string name="hide_anti_feature_apps">Apps mit nicht freien Funktionen ausgrauen</string>
+    <string name="hide_anti_feature_apps_on">Apps ausgrauen, die nicht freie Funktionen nutzen</string>
     </resources>

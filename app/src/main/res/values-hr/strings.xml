@@ -15,7 +15,7 @@
     <string name="other">Ostalo</string>
 
     <string name="update_interval">Interval automatskog ažuriranja</string>
-    <string name="update_interval_zero">Bez automatski ažuriranja popisa aplikacija</string>
+    <string name="update_interval_zero">Bez automatskog ažuriranja popisa aplikacija</string>
     <string name="automatic_scan_wifi">Samo na Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Ažuriraj popis aplikacija automatski samo na Wi-Fi</string>
     <string name="update_auto_download">Automatski preuzmi ažuriranja</string>
@@ -25,7 +25,7 @@
     <string name="update_history">Povijest ažuriranja</string>
     <string name="update_history_summ">Dana koliko se aplikacije smatraju novima: %s</string>
     <string name="system_installer">Povlašteno proširenje</string>
-    <string name="system_installer_on">Koristite F-Droidovo povlašteno proširenje kako bi instalirali, ažurirali i uklonili pakete.</string>
+    <string name="system_installer_on">Koristite F-Droidovo povlašteno proširenje kako bi instalirali, ažurirali i uklonili pakete</string>
     <string name="uninstall_system">Ažuriraj/ukloni povlašteno proširenje</string>
     <string name="uninstall_system_summary">Otvori ekran sa detaljima o povlaštenom proširenju kako bi ga ažurirali/uklonili</string>
     <string name="local_repo_name">Ime Vašeg lokalnog repozitorija</string>
@@ -36,7 +36,7 @@
     <string name="login_title">Zahtjevana autentikacija</string>
     <string name="login_name">Korisničko ime</string>
     <string name="login_password">Lozinka</string>
-    <string name="repo_edit_credentials">Promjeni lozinku</string>
+    <string name="repo_edit_credentials">Promijeni lozinku</string>
     <string name="repo_error_empty_username">Prazno korisničko ime, podaci nisu promjenjeni</string>
 
     <string name="app_details">Detalji aplikacije</string>
@@ -93,7 +93,7 @@
     <string name="repo_exists_and_enabled">Repozitorij je već postavljen i omogućen.</string>
     <string name="repo_delete_to_overwrite">Morate prvo obrisati ovaj repozitorij kako bi dodali drugi s različitim ključem.</string>
     <string name="bad_fingerprint">Loš otisak prsta</string>
-    <string name="invalid_url">Ovo nije valajn URL.</string>
+    <string name="invalid_url">Ovo nije valjan URL.</string>
     <string name="malformed_repo_uri">Ignoriram pogrešna URI repozitorija: %s</string>
     <string name="repo_provider">Repozitorij: %s</string>
 
@@ -106,7 +106,7 @@
     <string name="menu_add_repo">Novi repozitorij</string>
 
     <string name="menu_launch">Pokreni</string>
-    <string name="menu_share">Djeli</string>
+    <string name="menu_share">Dijeli</string>
     <string name="menu_install">Instaliraj</string>
     <string name="menu_uninstall">Ukloni</string>
     <string name="menu_ignore_all">Ignoriraj sva ažuriranja</string>
@@ -128,11 +128,11 @@
 
     <string name="antiadslist">Ova aplikacija sadržava oglase</string>
     <string name="antitracklist">Ova aplikacija prati i javlja Vašu aktivnost</string>
-    <string name="antinonfreeadlist">Ova aplikacija promovira dodatke koji se plaćaju</string>
-    <string name="antinonfreenetlist">Ova aplikacija promovira mrežne usluge koje se plaćaju</string>
-    <string name="antinonfreedeplist">Ova aplikacija ovisi o drugim aplikacijama koje se plaćaju</string>
-    <string name="antiupstreamnonfreelist">Uzvodni izvorni kod nije u potpunosti otvoren</string>
-    <string name="antinonfreeassetslist">Ova aplikacija sadrži zatvorene resurse</string>
+    <string name="antinonfreeadlist">Ova aplikacija promovira neslobodne dodatke</string>
+    <string name="antinonfreenetlist">Ova aplikacija promovira neslobodne mrežne usluge</string>
+    <string name="antinonfreedeplist">Ova aplikacija ovisi o drugim neslobodnim aplikacijama</string>
+    <string name="antiupstreamnonfreelist">Uzvodni izvorni kod nije u potpunosti otvoren/slobodan</string>
+    <string name="antinonfreeassetslist">Ova aplikacija sadrži neslobodne resurse</string>
 
     <string name="display">Prikaz</string>
 
@@ -166,7 +166,7 @@
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Omogući HTTP Proxy</string>
     <string name="enable_proxy_summary">Postavi HTTP Proxy za sve mrežne zahtjeve</string>
-    <string name="proxy_host">Proxy domaćin</string>
+    <string name="proxy_host">Proxy poslužitelj</string>
     <string name="proxy_host_summary">Postavi ime proxya (npr. 127.0.0.1)</string>
     <string name="proxy_port">Proxy port</string>
     <string name="proxy_port_summary">Postavi broj proxy porta (npr. 8118)</string>
@@ -177,7 +177,7 @@
     <string name="update_notification_title">Ažuriram repozitorije</string>
     <string name="status_processing_xml_percent">Obrađujem %2$s / %3$s (%4$d%%) od %1$s</string>
     <string name="status_connecting_to_repo">Spajam se na\n%1$s</string>
-    <string name="status_inserting_apps">Spremam detalje aplikacije</string>
+    <string name="status_inserting_apps">Spremam detalje aplikacija</string>
     <string name="repos_unchanged">Svi repozitoriji su ažurirani</string>
         <string name="all_other_repos_fine">Ostali repozitoriji nisu stvorili probleme.</string>
         <string name="global_error_updating_repos">Greška prilikom ažuriranja: %s</string>
@@ -195,7 +195,7 @@
     <string name="repo_last_update">Posljednje ažuriranje</string>
     <string name="repo_name">Ime</string>
     <string name="unsigned_description">Ovo znači da popis aplikacija nije mogao biti verificiran. Trebali bi biti oprezni s aplikacijama preuzetim sa nepotpisanih indeksa.</string>
-    <string name="repo_not_yet_updated">Ovaj repozitorij nije do sad korišten. Morate ga omogućiti kako bi vidjeli aplikacije na njemu.</string>
+    <string name="repo_not_yet_updated">Ovaj repozitorij nije do sad bio korišten. Morate ga omogućiti kako bi vidjeli aplikacije na njemu.</string>
     <string name="unknown">Nepoznato</string>
     <string name="repo_confirm_delete_title">Obrisati repozitorij?</string>
     <string name="repo_confirm_delete_body">Brisanje repozitorija znači da aplikacije sa njega više neće bit dostupne kroz F-Droid.\n\nNapomena: Sve instalirane aplikacije će ostati na Vašem uređaju.</string>
@@ -297,7 +297,7 @@
     <string name="swap_stopping_wifi">Zaustavljam Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Nije vidljivo preko Wi-Fi</string>
     <string name="swap_wifi_device_name">Ime uređja</string>
-    <string name="swap_cant_find_peers">Ne možete naći kog tražite?</string>
+    <string name="swap_cant_find_peers">Ne možete naći koga tražite?</string>
     <string name="swap_send_fdroid">Pošalji F-Droid</string>
     <string name="swap_no_peers_nearby">Nije uspjelo traženje ljudi u blizini.</string>
     <string name="swap_connecting">Spajanje</string>
@@ -313,4 +313,49 @@
     <string name="tap_to_install_format">Dodirnite za instalaciju %s</string>
     <string name="tap_to_update_format">Dodirnite za ažuriranje %s</string>
     <string name="install_confirm">treba pristup</string>
-    </resources>
+    <string name="install_confirm_update">Želite li instalirati ažuriranje na ovu postojeću aplikaciju? Vaši podaci neće biti izgubljeni. Ažurirana aplikacija će imati pristup:</string>
+    <string name="install_confirm_update_system">Želite li instalirati ažuriranje na ovu ugrađenu aplikaciju? Vaši podaci neće biti izgubljeni. Ažurirana aplikacija će imati pristup:</string>
+    <string name="install_confirm_update_no_perms">Želite li instalirati ažuriranje na ovu postojeću aplikaciju? Vaši podaci neće biti izgubljeni. Ne zahtijeva posebne dozvole.</string>
+    <string name="install_confirm_update_system_no_perms">Želite li instalirati ažuriranje na ovu ugrađenu aplikaciju? Vaši podaci neće biti izgubljeni. Ne zahtijeva posebne dozvole.</string>
+    <string name="newPerms">Novo</string>
+    <string name="allPerms">Sve</string>
+    <string name="perm_costs_money">Ovo se može naplaćivati</string>
+    <string name="uninstall_update_confirm">Želite li zamijeniti ovu aplikaciju sa tvorničkom verzijom?</string>
+    <string name="uninstall_confirm">Želite li ukloniti ovu aplikaciju?</string>
+    <string name="tap_to_install">Preuzimanje dovršeno, dodirnite za instalaciju</string>
+    <string name="download_error">Preuzimanje neuspješno</string>
+    <string name="download_pending">Čekanje na početak preuzimanja…</string>
+    <string name="install_error_notify_title">Greška pri instalaciji %s</string>
+    <string name="uninstall_error_notify_title">Greška pri uklanjanju %s</string>
+
+
+    <string name="perms_new_perm_prefix">"Novo: "</string>
+    <string name="perms_description_app">Pruža %1$s.</string>
+    <string name="downloading">Preuzimanje…</string>
+    <string name="downloading_apk">Preuzimam %1$s</string>
+    <string name="installing">Instaliram…</string>
+    <string name="uninstalling">Uklanjam…</string>
+
+    <string name="interval_never">Nikada</string>
+    <string name="interval_1h">Svako sat vremena</string>
+    <string name="interval_4h">Svaka 4 sata</string>
+    <string name="interval_12h">Svako 12 sati</string>
+    <string name="interval_1d">Dnevno</string>
+    <string name="interval_1w">Tjedno</string>
+    <string name="interval_2w">Svako 2 tjedna</string>
+
+    <string name="keep_hour">1 sat</string>
+    <string name="keep_day">1 dan</string>
+    <string name="keep_week">1 tjedan</string>
+    <string name="keep_month">1 mjesec</string>
+    <string name="keep_year">1 godina</string>
+    <string name="keep_forever">Zauvijek</string>
+
+    <string name="theme_light">Svijetla</string>
+    <string name="theme_dark">Tamna</string>
+    <string name="theme_night">Noćna</string>
+
+    <string name="crash_dialog_title">F-Droid se srušio</string>
+    <string name="crash_dialog_text">Neočekivana greška prilikom prisilnog zaustavljanja aplikacije. Želite li poslati detalje kvara putem e-maila kako bi ga popravili?</string>
+    <string name="crash_dialog_comment_prompt">Možete dodati dodatne informacije i komentare ovdje:</string>
+</resources>

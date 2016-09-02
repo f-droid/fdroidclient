@@ -133,12 +133,16 @@
   <string name="repo_name">Nome</string>
   <string name="unsigned_description">Esto quier dicir que nun pudo verificase\'l llistáu d\'aplicaciones.
 Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</string>
-  <string name="repo_not_yet_updated">Entá nun s\'usó esti repositoriu. Precises anovalu pa ver les aplicaciones que forne.</string>
+  <string name="repo_not_yet_updated">Entá nun s\'usó esti repositoriu.
+Precises anovalu pa ver les aplicaciones que forne.</string>
   <string name="unknown">Desconocíu</string>
   <string name="repo_confirm_delete_title">¿Desaniciar repositoriu?</string>
   <string name="repo_confirm_delete_body">Desaniciar un repositoriu quier dicir que les aplicaciones d\'elli nun tarán disponibles dende F-Droid.
 \n\nNota: Toles aplicaciones instalaes d\'enantes quedaránse nel preséu.</string>
-  <string name="repo_disabled_notification">Deshabilitóse %1$s.\n\nPrecisarás rehabilitar esti repositoriu pa instalar aplicaciones dende elli.</string>
+  <string name="repo_disabled_notification">Deshabilitóse %1$s.
+
+Precisarás
+rehabilitar esti repositoriu pa instalar aplicaciones dende elli.</string>
   <string name="repo_added">Guardóse\'l repositoriu F-Droid %1$s.</string>
   <string name="repo_searching_address">Guetando repositorios F-Droid en\n%1$s</string>
   <string name="minsdk_or_later">%s ó posterior</string>
@@ -260,10 +264,18 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="swap_not_enabled_description">Enantes d\'intercambiar, el to preséu ha tar visible.</string>
 
     <string name="install_confirm">precisa accesu a</string>
-    <string name="install_confirm_update">¿Quies instalar un anovamientu pa esta aplicación? Nun va perdese dal datu esistente. L\'aplicación anovada tendrá accesu a:</string>
-    <string name="install_confirm_update_system">¿Quies instalar un anovamientu pa esta aplicación integrada? Nun va perdese dal datu esistente. L\'aplicación anovada tendrá accesu a:</string>
-    <string name="install_confirm_update_no_perms">¿Quies instalar un anovamientu pa esta aplicación? Nun va perdese dal datu esistente. L\'aplicación nun rique dal accesu especial.</string>
-    <string name="install_confirm_update_system_no_perms">¿Quies instalar un anovamientu pa esta aplicación integrada? Nun va perdese dal datu esistente. L\'aplicación nun rique dal accesu especial.</string>
+    <string name="install_confirm_update">¿Quies instalar un anovamientu pa esta aplicación?
+Nun va perdese datu dalu esistente.
+L\'aplicación anovada tendrá accesu a:</string>
+    <string name="install_confirm_update_system">¿Quies instalar un anovamientu pa esta aplicación integrada?
+Nun va perdese datu dalu esistente.
+L\'aplicación anovada tendrá accesu a:</string>
+    <string name="install_confirm_update_no_perms">¿Quies instalar un anovamientu pa esta aplicación?
+Nun va perdese datu dalu esistente.
+L\'aplicación nun rique dal accesu especial.</string>
+    <string name="install_confirm_update_system_no_perms">¿Quies instalar un anovamientu pa esta aplicación integrada?
+Nun va perdese datu dalu esistente.
+L\'aplicación nun rique accesu especial dalu.</string>
     <string name="newPerms">Nuevu</string>
     <string name="allPerms">Too</string>
     <string name="uninstall_confirm">¿Quies desinstalar esta aplicación?</string>
@@ -317,7 +329,9 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="empty_search_can_update_app_list">Nun hai aplicaciones p\'anovar que concasen.</string>
 
     <string name="crash_dialog_title">F-Droid cascó</string>
-    <string name="crash_dialog_text">Asocedió un fallu inesperáu forciando\'l paru de l\'aplicación. ¿Prestaríate unviar un corréu colos detalles p\'ayudar a iguar esti problema?</string>
+    <string name="crash_dialog_text">Asocedió un fallu inesperáu
+forciando\'l paru de l\'aplicación. ¿Prestaríate unviar un
+corréu colos detalles p\'ayudar a iguar esti problema?</string>
     <string name="crash_dialog_comment_prompt">Equí pues amestar información y comentarios estra:</string>
 <string name="antinonfreeassetslist">Esta aplicación contién activos non llibres</string>
 

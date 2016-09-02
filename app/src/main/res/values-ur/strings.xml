@@ -8,7 +8,7 @@
     <string name="by_author">کی طرف سے</string>
     <string name="delete">حذف کریں</string>
     <string name="enable_nfc_send">این ایف سی ارسال فعال کریں…</string>
-    <string name="cache_downloaded">کیشے پیکج</string>
+    <string name="cache_downloaded">کیشے کردہ اطلاقیے محفوظ رکھیں</string>
     <string name="updates">تازہ کاریاں</string>
     <string name="unstable_updates">غیر مستحکم اپ ڈیٹس</string>
     <string name="unstable_updates_summary">غیر مستحکم ورژن کی تازہ کاریاں تجویز کریں</string>
@@ -26,4 +26,8 @@
     <string name="login_name">اسم صارف</string>
     <string name="login_password">پاس ورڈ</string>
     <string name="repo_edit_credentials">پاس ورڈ تبدیل کریں</string>
+    <string name="update_auto_download">خودکار اپڈیٹس ڈاؤنلوڈ کریں</string>
+    <string name="update_auto_download_summary">اپڈیٹ والی فائلوں کو پسِ منظر ڈاؤنلوڈ کریں</string>
+    <string name="update_history_summ">کتنے دن اطلاقیوں کو نیا یا حالیہ تصور کیا جائے: %s</string>
+    <string name="system_installer_on">F-Droid Privileged Extension کے ذریعے پیکج کو انسٹال، اپڈیٹ اور حذف کریں</string>
     </resources>

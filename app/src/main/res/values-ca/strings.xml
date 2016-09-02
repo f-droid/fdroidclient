@@ -132,11 +132,19 @@
   <string name="repo_name">Nom</string>
   <string name="unsigned_description">Això vol dir que la llista d\'aplicacions podria no estar verificada.
 Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.</string>
-  <string name="repo_not_yet_updated">Encara no heu utilitzat aquest dipòsit. Per veure les seves aplicacions heu d\'activar-lo.</string>
+  <string name="repo_not_yet_updated">Encara no heu utilitzat aquest dipòsit.
+Per veure les seves aplicacions heu d\'activar-lo.</string>
   <string name="unknown">Desconegut</string>
   <string name="repo_confirm_delete_title">Esborrar dipòsit?</string>
-  <string name="repo_confirm_delete_body">Eliminar un dipòsit implica que les seves aplicacions ja no seran accessibles des de l\'F-Droid.\n\nNota: No perdreu les aplicacions ja instal·lades.</string>
-  <string name="repo_disabled_notification">\"%1$s\" Inhabilitat.\n\nHeu de tornar a habilitar el dipòsit per instal·lar aplicacions d\'aquest.</string>
+  <string name="repo_confirm_delete_body">Eliminar un dipòsit implica 
+que les seves aplicacions ja no seran accessibles des de l\'F-Droid.
+
+Nota: No 
+perdreu les aplicacions ja instal·lades.</string>
+  <string name="repo_disabled_notification">\"%1$s\" Inhabilitat.
+
+Heu de 
+tornar a habilitar el dipòsit per instal·lar aplicacions d\'aquest.</string>
   <string name="repo_added">S\'ha desat el dipòsit d\'F-Droid %1$s.</string>
   <string name="repo_searching_address">S\'està cercant un dipòsit d\'F-Droid a\n%1$s</string>
   <string name="minsdk_or_later">%s o més recent</string>
@@ -296,10 +304,18 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="swap_not_enabled_description">Abans d\'intercanviar heu de fer visible el dispositiu.</string>
 
     <string name="install_confirm">necessita accés a</string>
-    <string name="install_confirm_update">Voleu instal·lar una actualització d\'aquesta aplicació? Les dades existents no es perdran. L\'aplicació actualitzada tindrà accés a:</string>
-    <string name="install_confirm_update_system">Voleu instal·lar una actualització d\'aquesta aplicació integrada? No perdreu les dades existents. L\'aplicació actualitzada tindrà accés a:</string>
-    <string name="install_confirm_update_no_perms">Voleu instal·lar una actualització d\'aquesta aplicació? Les dades existents no es perdran. No requereix cap accés especial.</string>
-    <string name="install_confirm_update_system_no_perms">Voleu instal·lar una actualització d\'aquesta aplicació integrada? Les dades existents no es perdran. L\'aplicació no requereix cap accés especial.</string>
+    <string name="install_confirm_update">Voleu instal·lar una actualització
+d\'aquesta aplicació? Les dades existents no es
+perdran. L\'aplicació actualitzada tindrà accés a:</string>
+    <string name="install_confirm_update_system">Voleu instal·lar una actualització
+d\'aquesta aplicació integrada? No perdreu les dades
+existents. L\'aplicació actualitzada tindrà accés a:</string>
+    <string name="install_confirm_update_no_perms">Voleu instal·lar una actualització
+d\'aquesta aplicació? Les dades existents no
+es perdran. No requereix cap accés especial.</string>
+    <string name="install_confirm_update_system_no_perms">Voleu instal·lar una actualització d\'aquesta
+aplicació integrada? Les dades existents no
+es perdran. L\'aplicació no requereix cap accés especial.</string>
     <string name="login_title">Es requereix autenticació</string>
     <string name="login_name">Nom d\'usuari</string>
     <string name="login_password">Contrasenya</string>
@@ -316,7 +332,9 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="empty_search_can_update_app_list">Cap coincidència amb les aplicacions per actualitzar.</string>
 
     <string name="crash_dialog_title">L\'F-Droid ha fallat</string>
-    <string name="crash_dialog_text">L\'aplicació s\'ha aturat degut a un error inesperat. Voldríeu enviar-ne els detalls per correu-e per tal d\'ajudar a resoldre la incidència?</string>
+    <string name="crash_dialog_text">L\'aplicació s\'ha aturat degut a un
+error inesperat. Voldríeu enviar-ne els detalls per correu-e
+per tal d\'ajudar a resoldre la incidència?</string>
     <string name="crash_dialog_comment_prompt">Podeu afegir informació addicional i comentaris aquí:</string>
 <string name="antinonfreeassetslist">Aquesta aplicació conté parts no lliures</string>
 
@@ -351,4 +369,6 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="uninstalling">Desinstal·lant…</string>
 
     <string name="keep_hour">1 hora</string>
+    <string name="hide_anti_feature_apps_on">Ombrejar les apps que sol·licitin «anti-features»</string>
+    <string name="hide_anti_feature_apps">Ombrejar les apps amb «anti-features»</string>
     </resources>

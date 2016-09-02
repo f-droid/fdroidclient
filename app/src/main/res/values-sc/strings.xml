@@ -134,11 +134,19 @@
   <string name="unsigned_description">Custu bolet nàrrere chi sa lista de
         sas aplicatziones no est istadu possìbile a la verificare. Depes istare atentu
         cun sas aplicatziones iscarrifìgadas dae ìnditzes non firmados.</string>
-  <string name="repo_not_yet_updated">Custu depòsitu no est istadu galu impreadu. Pro che bìdere sas aplicatziones in intro, lu depes abilitare.</string>
+  <string name="repo_not_yet_updated">Custu depòsitu no est istadu galu impreadu.
+ Pro bìdere sas aplicatziones in intro, lu depes abilitare.</string>
   <string name="unknown">Disconnotu</string>
   <string name="repo_confirm_delete_title">Burrare su depòsitu?</string>
-  <string name="repo_confirm_delete_body">Burrare unu depòsitu at a nàrrere chi sas aplicatziones in intro no ant a èssere prus disponìbiles tràmite F-Droid.\n\nNota: Totu sas aplicatziones giai installadas ant a abarrare in su dispositivu tuo.</string>
-  <string name="repo_disabled_notification">\"%1$s\" est disabilitadu.\n\nDepes torrare a abilitare custu depòsitu pro installare sas aplicatziones chi bi sunt in intro.</string>
+  <string name="repo_confirm_delete_body">Burrare unu depòsitu bolet nàrrere
+ chi sas aplicatziones in intro no ant a èssere prus disponìbiles tràmite F-Droid.
+
+Nota: Totu
+ sas aplicatziones giai installadas ant a abarrare in su dispositivu tuo.</string>
+  <string name="repo_disabled_notification">\"%1$s\" est disabilitadu.
+
+Depes
+ torrare a abilitare custu depòsitu pro installare sas aplicatziones chi bi sunt in intro.</string>
   <string name="repo_added">Sarbadu depòsitu F-Droid %1$s.</string>
   <string name="repo_searching_address">Chirchende unu depòsitu F-Droid in\n%1$s</string>
   <string name="minsdk_or_later">%s o imbeniente</string>
@@ -254,10 +262,18 @@
     <string name="swap_not_enabled_description">In antis de cumpartzire, su dispositivu depet èssere postu visìbile.</string>
 
     <string name="install_confirm">at a tènnere atzessu a</string>
-    <string name="install_confirm_update">Boles installare un’agiornamentu a custa aplicatzione esistente? Sos datos tuos giai in cuddae non s\'ant a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
-    <string name="install_confirm_update_system">Boles installare un’agiornamentu a custa aplicatzione incluida in su sistema? Sos datos tuos giai in cuddae non s\'ant a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
-    <string name="install_confirm_update_system_no_perms">Boles installare un’agiornamentu a custa aplicatzione incluida in su sistema? Sos datos tuos giai in cuddae non s\'ant a pèrdere. S\'aplicatzione agiornada non tenet bisòngiu de permissos ispetziales.</string>
-    <string name="install_confirm_update_no_perms">Boles installare un’agiornamentu a custa aplicatzione esistente? Sos datos tuos giai in cuddae non s\'ant a pèrdere. S\'aplicatzione agiornada non tenet bisòngiu de permissos ispetziales.</string>
+    <string name="install_confirm_update">Boles installare un’agiornamentu
+ a custa aplicatzione esistente? Sos datos tuos giai in cuddae non s\'ant
+ a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
+    <string name="install_confirm_update_system">Boles installare un’agiornamentu
+ pro custa aplicatzione incluida in su sistema? Sos datos tuos giai in cuddae non s\'ant
+ a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
+    <string name="install_confirm_update_system_no_perms">Boles installare un’agiornamentu
+ pro custa aplicatzione incluida in su sistema? Sos datos tuos giai in cuddae non s\'ant
+ a pèrdere. S\'aplicatzione agiornada non tenet bisòngiu de permissos ispetziales.</string>
+    <string name="install_confirm_update_no_perms">Boles installare un’agiornamentu
+ pro custa aplicatzione esistente? Sos datos tuos giai in cuddae non s\'ant
+ a pèrdere. S\'aplicatzione agiornada non tenet bisòngiu de permissos ispetziales.</string>
     <string name="newPerms">Nou</string>
     <string name="allPerms">Totu</string>
     <string name="perm_costs_money">Custu ti diat pòdere costare dinare</string>
@@ -316,7 +332,9 @@
     <string name="empty_search_available_app_list">Peruna aplicatzione currispondente disponìbile.</string>
     <string name="empty_search_can_update_app_list">Perunu agiornamentu currispondente disponìbile.</string>
 
-    <string name="crash_dialog_text">Un’errore imprevistu at fatu serrare s’aplicatzione. Boles imbiare sas minujas pro mèdiu de posta eletrònica pro agiudare a isòlvere su problema?</string>
+    <string name="crash_dialog_text">Un’errore imprevistu
+ at fatu serrare s’aplicatzione. Boles imbiare sas minujas
+ pro mèdiu de posta eletrònica pro agiudare a isòlvere su problema?</string>
     <string name="crash_dialog_comment_prompt">Podes annanghere àteras informatziones e cummentos inoghe:</string>
 <string name="crash_dialog_title">F-Droid s\'est serradu</string>
     <string name="antinonfreeassetslist">Custa aplicatzione cuntennit cantos non lìberos</string>
@@ -352,4 +370,6 @@
     <string name="installing">Installende…</string>
     <string name="uninstalling">Disinstallende…</string>
 
+    <string name="hide_anti_feature_apps">Marca in murru sas aplicatziones cun controidas</string>
+    <string name="hide_anti_feature_apps_on">Marca in murru sas aplicatziones cun caraterìsticas cun controidas</string>
     </resources>

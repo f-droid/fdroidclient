@@ -132,11 +132,16 @@
   <string name="repo_description">説明</string>
   <string name="repo_last_update">最終更新</string>
   <string name="repo_name">名前</string>
-  <string name="unsigned_description">ｱﾌﾟﾘｹｰｼｮﾝの一覧は検証されていません｡未署名の索引からｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝﾛｰﾄﾞする時は注意してください｡</string>
-  <string name="repo_not_yet_updated">このﾘﾎﾟｼﾞﾄﾘはまだ使用されていません｡ ｱﾌﾟﾘｹｰｼｮﾝを表示するには､ﾘﾎﾟｼﾞﾄﾘを有効にする必要があります｡</string>
+  <string name="unsigned_description">ｱﾌﾟﾘｹｰｼｮﾝの一覧は検証されていません｡
+未署名の索引からｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝﾛｰﾄﾞする時は注意してください｡</string>
+  <string name="repo_not_yet_updated">このﾘﾎﾟｼﾞﾄﾘはまだ使用されていません｡ 
+ｱﾌﾟﾘｹｰｼｮﾝを表示するには､ﾘﾎﾟｼﾞﾄﾘを有効にする必要があります｡</string>
   <string name="unknown">不明</string>
   <string name="repo_confirm_delete_title">ﾘﾎﾟｼﾞﾄﾘを削除しますか?</string>
-  <string name="repo_confirm_delete_body">ﾘﾎﾟｼﾞﾄﾘを削除するとｱﾌﾟﾘｹｰｼｮﾝはF-Droidからｲﾝｽﾄｰﾙできなくなります｡\n\n 注:これまでにｲﾝｽﾄｰﾙしたｱﾌﾟﾘｹｰｼｮﾝは端末に残ります｡</string>
+  <string name="repo_confirm_delete_body">ﾘﾎﾟｼﾞﾄﾘを削除すると
+ｱﾌﾟﾘｹｰｼｮﾝはF-Droidからｲﾝｽﾄｰﾙできなくなります｡
+
+注:これまでにｲﾝｽﾄｰﾙしたｱﾌﾟﾘｹｰｼｮﾝは端末に残ります｡</string>
   <string name="repo_disabled_notification">%1$s を無効にしました｡
 \n\nこのﾘﾎﾟｼﾞﾄﾘからｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙするには再度有効にする必要があります｡</string>
   <string name="repo_added">F-Droid ﾘﾎﾟｼﾞﾄﾘ %1$s を保存しました。</string>
@@ -246,10 +251,14 @@
     <string name="swap_not_enabled_description">交換する前に､お使いの端末が表示されている必要があります｡</string>
 
     <string name="install_confirm">必要なｱｸｾｽ許可</string>
-    <string name="install_confirm_update">既存のｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか｡既存のﾃﾞｰﾀｰは失われません｡更新されたｱﾌﾟﾘｹｰｼｮﾝのｱｸｾｽ許可:</string>
-    <string name="install_confirm_update_system">この組み込みｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか｡既存のﾃﾞｰﾀｰは失われません｡更新されたｱﾌﾟﾘｹｰｼｮﾝのｱｸｾｽ許可:</string>
-    <string name="install_confirm_update_no_perms">既存のｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか｡既存のﾃﾞｰﾀｰは失われません｡特別なｱｸｾｽ許可は不要です｡</string>
-    <string name="install_confirm_update_system_no_perms">この組み込みｱﾌﾟﾘｹｰｼｮﾝに更新ﾌﾟﾛｸﾞﾗﾑをｲﾝｽﾄｰﾙしますか? 既存のﾃﾞｰﾀは失われません。特別なｱｸｾｽ許可は不要です。</string>
+    <string name="install_confirm_update">既存のｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか?
+既存のﾃﾞｰﾀは失われません｡更新されたｱﾌﾟﾘｹｰｼｮﾝのｱｸｾｽ許可:</string>
+    <string name="install_confirm_update_system">この組み込みｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか?
+既存のﾃﾞｰﾀは失われません｡更新されたｱﾌﾟﾘｹｰｼｮﾝのｱｸｾｽ許可:</string>
+    <string name="install_confirm_update_no_perms">既存のｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか?
+既存のﾃﾞｰﾀは失われません｡特別なｱｸｾｽ許可は不要です｡</string>
+    <string name="install_confirm_update_system_no_perms">この組み込みｱﾌﾟﾘｹｰｼｮﾝに更新ﾌﾟﾛｸﾞﾗﾑをｲﾝｽﾄｰﾙしますか?
+既存のﾃﾞｰﾀは失われません。特別なｱｸｾｽ許可は不要です。</string>
     <string name="newPerms">新規</string>
     <string name="allPerms">全て</string>
     <string name="perm_costs_money">お金がかかることがあります</string>
@@ -317,7 +326,8 @@
     <string name="empty_search_can_update_app_list">一致する更新のｱﾌﾟﾘｹｰｼｮﾝはありません。</string>
 
     <string name="crash_dialog_title">F-Droid がｸﾗｯｼｭしました</string>
-    <string name="crash_dialog_text">ｱﾌﾟﾘｹｰｼｮﾝを強制的に停止させる、予期しないｴﾗｰが発生しました。問題を修正するため、詳細をﾒｰﾙしますか?</string>
+    <string name="crash_dialog_text">ｱﾌﾟﾘｹｰｼｮﾝを強制的に停止させる、予期しないｴﾗｰが発生しました。
+問題を修正するため、詳細をﾒｰﾙしますか?</string>
     <string name="crash_dialog_comment_prompt">ここに追加の情報やｺﾒﾝﾄを追加できます:</string>
 <string name="antinonfreeassetslist">このｱﾌﾟﾘには無料ではない資産が含まれています</string>
 
@@ -352,4 +362,6 @@
     <string name="installing">ｲﾝｽﾄｰﾙ中…</string>
     <string name="uninstalling">ｱﾝｲﾝｽﾄｰﾙ中…</string>
 
+    <string name="hide_anti_feature_apps">防止機能ｱﾌﾟﾘをｸﾞﾚｰｱｳﾄ</string>
+    <string name="hide_anti_feature_apps_on">防止機能を必要とするｱﾌﾟﾘをｸﾞﾚｰｱｳﾄします</string>
     </resources>
