@@ -152,9 +152,13 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         }
     }
 
-    private RepoUpdater createUpdater(String name, String uri, Context context) {
+    protected Repo createRepo(String name, String uri, Context context) {
+        return createRepo(name, uri, context, PUB_KEY);
+    }
+
+    protected Repo createRepo(String name, String uri, Context context, String signingCert) {
         Repo repo = new Repo();
-        repo.signingCertificate = PUB_KEY;
+        repo.signingCertificate = signingCert;
         repo.address = uri;
         repo.name = name;
 
@@ -167,7 +171,11 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
 
         // Need to reload the repo based on address so that it includes the primary key from
         // the database.
-        return new RepoUpdater(context, RepoProvider.Helper.findByAddress(context, repo.address));
+        return RepoProvider.Helper.findByAddress(context, repo.address);
+    }
+
+    protected RepoUpdater createUpdater(String name, String uri, Context context) {
+        return new RepoUpdater(context, createRepo(name, uri, context));
     }
 
     protected boolean updateConflicting() throws UpdateException {
@@ -182,13 +190,13 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         return updateRepo(createUpdater(REPO_ARCHIVE, REPO_ARCHIVE_URI, context), "multiRepo.archive.jar");
     }
 
-    private boolean updateRepo(RepoUpdater updater, String indexJarPath) throws UpdateException {
+    protected boolean updateRepo(RepoUpdater updater, String indexJarPath) throws UpdateException {
         File indexJar = TestUtils.copyResourceToTempFile(indexJarPath);
         try {
             updater.processDownloadedFile(indexJar);
         } finally {
             if (indexJar != null && indexJar.exists()) {
-                assertTrue(indexJar.delete());
+                indexJar.delete();
             }
         }
         return true;
