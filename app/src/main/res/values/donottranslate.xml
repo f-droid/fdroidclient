@@ -7,13 +7,15 @@
     <string name="source_link">https://gitlab.com/fdroid/fdroidclient</string>
     <string name="team_email">team@f-droid.org</string>
     <string name="license_gplv3_later">GNU General Public License version\u00A03 or later</string>
-    
+
     <string name="transition_app_item_icon">transition_app_item_icon</string>
 
     <string name="https">https://</string>
     <string name="upgrade_from_to">%1$s → %2$s</string>
 
     <string name="app_details_subject">%1$s on F-Droid</string>
+
+    <string name="install_history_log_file">all</string>
 
     <string-array name="updateIntervalValues">
         <item>0</item>

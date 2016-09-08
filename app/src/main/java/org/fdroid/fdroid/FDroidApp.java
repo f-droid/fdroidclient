@@ -56,6 +56,7 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
@@ -299,6 +300,9 @@ public class FDroidApp extends Application {
         });
 
         configureTor(Preferences.get().isTorEnabled());
+
+        // TODO enable this based on a preference
+        InstallHistoryService.register(this);
     }
 
     @TargetApi(18)
