@@ -469,6 +469,9 @@
             android:name=".installer.InstallManagerService"
             android:exported="false" />
         <service
+            android:name=".installer.InstallHistoryService"
+            android:exported="false" />
+        <service
             android:name=".localrepo.CacheSwapAppsService"
             android:exported="false" />
         <service
