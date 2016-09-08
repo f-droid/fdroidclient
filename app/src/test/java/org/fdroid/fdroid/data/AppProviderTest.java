@@ -193,7 +193,7 @@ public class AppProviderTest extends FDroidProviderTest {
         assertContainsOnlyIds(canUpdateApps, expectedCanUpdate);
     }
 
-    private void assertContainsOnlyIds(List<App> actualApps, String[] expectedIds) {
+    public static void assertContainsOnlyIds(List<App> actualApps, String[] expectedIds) {
         List<String> actualIds = new ArrayList<>(actualApps.size());
         for (App app : actualApps) {
             actualIds.add(app.packageName);

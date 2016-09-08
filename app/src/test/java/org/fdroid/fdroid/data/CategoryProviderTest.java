@@ -2,6 +2,8 @@ package org.fdroid.fdroid.data;
 
 import android.app.Application;
 import android.content.ContentValues;
+import android.database.Cursor;
+import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
@@ -16,6 +18,7 @@ import org.robolectric.shadows.ShadowContentResolver;
 import java.util.List;
 
 import static org.fdroid.fdroid.Assert.assertContainsOnly;
+import static org.junit.Assert.assertEquals;
 
 // TODO: Use sdk=24 when Robolectric supports this
 @Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
@@ -33,6 +36,56 @@ public class CategoryProviderTest extends FDroidProviderTest {
     //  like they are. That means that if we change the implementation to
     //  use a separate table in the future, these should still pass.
     // ========================================================================
+
+    @Test
+    public void queryAppsInCategories() {
+        insertAppWithCategory("com.dog", "Dog", "Animal");
+        insertAppWithCategory("com.cat", "Cat", "Animal");
+        insertAppWithCategory("com.crow", "Crow", "Animal,Bird");
+        insertAppWithCategory("com.chicken", "Chicken", "Animal,Bird,Food");
+        insertAppWithCategory("com.bird-statue", "Bird Statue", "Bird,Mineral");
+        insertAppWithCategory("com.rock", "Rock", "Mineral");
+        insertAppWithCategory("com.banana", "Banana", "Food");
+
+        assertPackagesInCategory("Animal", new String[] {
+                "com.dog",
+                "com.cat",
+                "com.crow",
+                "com.chicken",
+        });
+
+        assertPackagesInCategory("Bird", new String[]{
+                "com.crow",
+                "com.chicken",
+                "com.bird-statue",
+        });
+
+        assertPackagesInCategory("Food", new String[] {
+                "com.chicken",
+                "com.banana",
+        });
+
+        assertPackagesInCategory("Mineral", new String[] {
+                "com.rock",
+                "com.bird-statue",
+        });
+
+        assertNoPackagesInUri(AppProvider.getCategoryUri("Not a category"));
+    }
+
+    private void assertNoPackagesInUri(Uri uri) {
+        Cursor noApps = contentResolver.query(uri, Cols.ALL, null, null, null);
+        assertEquals(noApps.getCount(), 0);
+    }
+
+    private void assertPackagesInCategory(String category, String[] expectedPackages) {
+        assertPackagesInUri(AppProvider.getCategoryUri(category), expectedPackages);
+    }
+
+    private void assertPackagesInUri(Uri uri, String[] expectedPackages) {
+        List<App> apps = AppProvider.Helper.cursorToList(contentResolver.query(uri, Cols.ALL, null, null, null));
+        AppProviderTest.assertContainsOnlyIds(apps, expectedPackages);
+    }
 
     @Test
     public void testCategoriesSingle() {
@@ -104,5 +157,4 @@ public class CategoryProviderTest extends FDroidProviderTest {
         values.put(Cols.CATEGORIES, categories);
         AppProviderTest.insertApp(contentResolver, context, id, name, values);
     }
-
 }
