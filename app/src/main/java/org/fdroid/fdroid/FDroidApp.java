@@ -303,6 +303,17 @@ public class FDroidApp extends Application {
 
         // TODO enable this based on a preference
         InstallHistoryService.register(this);
+
+        String packageName = getString(R.string.install_history_reader_packageName);
+        String unset = getString(R.string.install_history_reader_packageName_UNSET);
+        if (!TextUtils.equals(packageName, unset)) {
+            int modeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
+            if (Build.VERSION.SDK_INT >= 19) {
+                modeFlags |= Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION;
+            }
+            grantUriPermission(packageName, InstallHistoryService.LOG_URI, modeFlags);
+        }
     }
 
     @TargetApi(18)

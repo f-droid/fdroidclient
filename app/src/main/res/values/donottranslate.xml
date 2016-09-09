@@ -15,7 +15,10 @@
 
     <string name="app_details_subject">%1$s on F-Droid</string>
 
-    <string name="install_history_log_file">all</string>
+    <!-- The unset value is set to a string that is impossible to be a valid Java package name. This
+     prevents abuse by creating malware with the same packageName as the unset string. -->
+    <string name="install_history_reader_packageName_UNSET">1-THIS MEANS NO APP IS GRANTED ACCESS!</string>
+    <string name="install_history_reader_packageName">@string/install_history_reader_packageName_UNSET</string>
 
     <string-array name="updateIntervalValues">
         <item>0</item>
