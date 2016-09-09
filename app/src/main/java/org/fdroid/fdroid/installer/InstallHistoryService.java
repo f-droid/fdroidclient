@@ -24,11 +24,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Process;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 
@@ -46,6 +46,8 @@ import java.util.List;
  */
 public class InstallHistoryService extends IntentService {
     public static final String TAG = "InstallHistoryService";
+
+    public static final Uri LOG_URI = Uri.parse("content://org.fdroid.fdroid.installer/install_history/all");
 
     private static BroadcastReceiver broadcastReceiver;
 
@@ -107,7 +109,9 @@ public class InstallHistoryService extends IntentService {
         values.add(String.valueOf(versionCode));
         values.add(intent.getAction());
 
-        File logFile = new File(getFilesDir(), getString(R.string.install_history_log_file));
+        File installHistoryDir = new File(getCacheDir(), "install_history");
+        installHistoryDir.mkdir();
+        File logFile = new File(installHistoryDir, "all");
         FileWriter fw = null;
         PrintWriter out = null;
         try {
