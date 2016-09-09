@@ -301,8 +301,9 @@ public class FDroidApp extends Application {
 
         configureTor(Preferences.get().isTorEnabled());
 
-        // TODO enable this based on a preference
-        InstallHistoryService.register(this);
+        if (Preferences.get().isKeepingInstallHistory()) {
+            InstallHistoryService.register(this);
+        }
 
         String packageName = getString(R.string.install_history_reader_packageName);
         String unset = getString(R.string.install_history_reader_packageName_UNSET);
