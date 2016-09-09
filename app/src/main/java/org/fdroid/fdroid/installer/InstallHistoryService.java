@@ -52,6 +52,9 @@ public class InstallHistoryService extends IntentService {
     private static BroadcastReceiver broadcastReceiver;
 
     public static void register(Context context) {
+        if (broadcastReceiver != null) {
+            return;  // already registered
+        }
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addDataScheme("http");
         intentFilter.addDataScheme("https");
@@ -78,6 +81,7 @@ public class InstallHistoryService extends IntentService {
     public static void unregister(Context context) {
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(context);
         localBroadcastManager.unregisterReceiver(broadcastReceiver);
+        broadcastReceiver = null;
     }
 
     public static void queue(Context context, Intent intent) {
