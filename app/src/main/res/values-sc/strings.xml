@@ -372,4 +372,6 @@ Depes
 
     <string name="hide_anti_feature_apps">Marca in murru sas aplicatziones cun controidas</string>
     <string name="hide_anti_feature_apps_on">Marca in murru sas aplicatziones cun caraterìsticas cun controidas</string>
+    <string name="update_auto_install">Installa sos agiornamentos automaticamente</string>
+    <string name="update_auto_install_summary">Iscàrriga e installa sos agiornamentos automaticamente</string>
     </resources>

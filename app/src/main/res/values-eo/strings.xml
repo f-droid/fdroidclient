@@ -353,4 +353,6 @@
 
     <string name="hide_anti_feature_apps">Grizigi aplikaĵojn kun fi-ebloj</string>
     <string name="hide_anti_feature_apps_on">Grizigas aplikaĵojn kun nedeziratajn eblojn (ekz. spurado)</string>
+    <string name="update_auto_install">Aŭtomate instali ĝisdatigojn</string>
+    <string name="update_auto_install_summary">Elŝutas kaj instalas ĝisdatigojn de aplikaĵoj fone</string>
     </resources>

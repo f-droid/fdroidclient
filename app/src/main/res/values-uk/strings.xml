@@ -237,10 +237,20 @@
         <string name="no_handler_app">Ви не маєте додатку для обробки «%s».</string>
     <string name="repo_num_apps">Кількість додатків</string>
     <string name="repo_fingerprint">Відбиток ключа підпису (SHA-256)</string>
-    <string name="unsigned_description">Це означає, що список додатків не може бути перевірено. Ви повинні бути обачними із додатками, які завантажуєте з не підписаних джерел.</string>
-    <string name="repo_not_yet_updated">Цей репозиторій ще не використовувався. Ввімкніть його, аби побачити додатки, які він містить.</string>
-    <string name="repo_confirm_delete_body">"Видалення репозиторію означає, що додатки з нього не будуть доступні з  F-Droid.\n\nПримітка: Всі раніше встановленні додатки залишаться на пристрої."</string>
-    <string name="repo_disabled_notification">%1$s відключено.\n\nНеобхідно ввімкнути його, аби встановлювати додатки з нього.</string>
+    <string name="unsigned_description">Це означає, що список додатків
+ не може бути перевірено. Ви повинні бути обачними
+ із додатками, які завантажуєте з не підписаних джерел.</string>
+    <string name="repo_not_yet_updated">Цей репозиторій ще не використовувався.
+ Ввімкніть його, аби побачити додатки, які він містить.</string>
+    <string name="repo_confirm_delete_body">"Видалення репозиторію означає,
+ що додатки з нього не будуть доступні з  F-Droid.
+
+Примітка: Всі раніше встановленні
+ додатки залишаться на пристрої."</string>
+    <string name="repo_disabled_notification">%1$s відключено.
+
+Необхідно ввімкнути його,
+ аби встановлювати додатки з нього.</string>
     <string name="minsdk_or_later">%s чи старше</string>
     <string name="up_to_maxsdk">До %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
@@ -279,10 +289,18 @@
     <string name="swap_not_visible_bluetooth">Не видимий через Bluetooth</string>
     <string name="swap_not_enabled_description">Перед обміном, ви повинні зробити пристрій видимим.</string>
 
-    <string name="install_confirm_update">Бажаєте встановити оновлення на наявний додаток? Це не видалить ваші наявні дані. Оновлений додаток матиме доступ до:</string>
-    <string name="install_confirm_update_system">Бажаєте встановити оновлення на вбудований додаток? Ваші наявні дані не буде втрачено. Оновлений додаток матиме доступ до:</string>
-    <string name="install_confirm_update_no_perms">Бажаєте встановити оновлення на наявний додаток? Ваші наявні дані не буде втрачено. Оновлений додаток не потребує спеціальних дозволів.</string>
-    <string name="install_confirm_update_system_no_perms">Бажаєте встановити оновлення на вбудований додаток? Ваші наявні дані не буде втрачено. Оновлений додаток не потребує спеціальних дозволів.</string>
+    <string name="install_confirm_update">Бажаєте встановити оновлення
+ на наявний додаток? Це не видалить ваші наявні дані.
+ Оновлений додаток матиме доступ до:</string>
+    <string name="install_confirm_update_system">Бажаєте встановити оновлення
+ на вбудований додаток? Ваші наявні дані не буде втрачено.
+ Оновлений додаток матиме доступ до:</string>
+    <string name="install_confirm_update_no_perms">Бажаєте встановити оновлення
+ на наявний додаток? Ваші наявні дані не буде втрачено.
+ Оновлений додаток не потребує спеціальних дозволів.</string>
+    <string name="install_confirm_update_system_no_perms">Бажаєте встановити оновлення на вбудований додаток?
+ Ваші наявні дані не буде втрачено.
+ Оновлений додаток не потребує спеціальних дозволів.</string>
     <string name="uninstall_update_confirm">Бажаєте замінити цей додаток заводською версією?</string>
     <string name="perms_new_perm_prefix">"Нові: "</string>
     <string name="empty_installed_app_list">Жодного додатку не встановлено.\n\nДодатки, які встановлені на вашому пристрої, не доступні через F-Droid. Можливо вам слід оновити репозиторії, або ж ваші репозиторії не містять такі додатки.</string>
@@ -326,7 +344,9 @@
     <string name="empty_search_can_update_app_list">Не має збігів серед програм для оновлення.</string>
 
     <string name="crash_dialog_title">F-Droid зазнав збою</string>
-    <string name="crash_dialog_text">Несподівана помилка припинила роботу програми. Хочете надіслати листа з подробицями, які допоможуть нам усунути цю ваду?</string>
+    <string name="crash_dialog_text">Несподівана помилка припинила роботу програми.
+ Хочете надіслати листа з подробицями,
+ які допоможуть нам усунути цю ваду?</string>
     <string name="crash_dialog_comment_prompt">Можете ввести додаткову інформацію та коментарі тут:</string>
 <string name="antinonfreeassetslist">Цей додаток містить не вільний вміст</string>
 
@@ -361,4 +381,6 @@
     <string name="installing">Встановлення…</string>
     <string name="uninstalling">Видалення…</string>
 
+    <string name="update_auto_install_summary">Завантажити та встановити оновлення в фоні</string>
+    <string name="update_auto_install">Автоматично встановлені оновлення</string>
     </resources>

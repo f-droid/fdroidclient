@@ -361,4 +361,6 @@ um Anwendungen daraus installieren zu können.</string>
 
     <string name="hide_anti_feature_apps">Apps mit nicht freien Funktionen ausgrauen</string>
     <string name="hide_anti_feature_apps_on">Apps ausgrauen, die nicht freie Funktionen nutzen</string>
+    <string name="update_auto_install">Aktualisierungen automatisch installieren</string>
+    <string name="update_auto_install_summary">Anwendungsaktualisierungen im Hintergrund herunterladen und installieren</string>
     </resources>

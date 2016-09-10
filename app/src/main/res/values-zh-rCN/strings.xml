@@ -352,4 +352,6 @@
     <string name="installing">安装中…</string>
     <string name="uninstalling">卸载中…</string>
 
+    <string name="update_auto_install">自动安装更新</string>
+    <string name="update_auto_install_summary">在后台下载和安装应用更新</string>
     </resources>

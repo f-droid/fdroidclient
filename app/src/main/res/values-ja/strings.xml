@@ -364,4 +364,6 @@
 
     <string name="hide_anti_feature_apps">防止機能ｱﾌﾟﾘをｸﾞﾚｰｱｳﾄ</string>
     <string name="hide_anti_feature_apps_on">防止機能を必要とするｱﾌﾟﾘをｸﾞﾚｰｱｳﾄします</string>
+    <string name="update_auto_install">自動的に更新をｲﾝｽﾄｰﾙ</string>
+    <string name="update_auto_install_summary">ﾊﾞｯｸｸﾞﾗｳﾝﾄﾞで更新ｱﾌﾟﾘをﾀﾞｳﾝﾛｰﾄﾞしてｲﾝｽﾄｰﾙします</string>
     </resources>

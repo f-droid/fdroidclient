@@ -380,4 +380,6 @@ konpontzen laguntzeko?</string>
 
     <string name="hide_anti_feature_apps">Ilundu ezaugarri zalantzagarriak</string>
     <string name="hide_anti_feature_apps_on">Ilundu ezaugarri zalantzagarriak behar dituzten aplikazioak</string>
+    <string name="update_auto_install">Instalatu eguneraketak automatikoki</string>
+    <string name="update_auto_install_summary">Deskargatu eta instalatu aplikazioen eguneraketak bigarren planoan</string>
     </resources>
