@@ -372,4 +372,6 @@ détails des opérations en cours pour aider à résoudre ce problème ?</string
     <string name="uninstall_error_notify_title">Erreur à la désinstallation de %s</string>
 
 
+    <string name="hide_anti_feature_apps">Griser les applications présentant des contre-indications</string>
+    <string name="hide_anti_feature_apps_on">Griser les applications dont certaines caractéristiques sont problématiques</string>
     </resources>

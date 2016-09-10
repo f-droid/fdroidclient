@@ -169,10 +169,17 @@
     <string name="update_notification_more">+%1$d lainnya…</string>
     <string name="menu_settings">Pengaturan</string>
     <string name="rooted_on">Jangan bedakan warna aplikasi yang membutuhkan izin root</string>
-    <string name="unsigned_description">Ini artinya daftar aplikasi tersebut tidak bisa diverifikasi. Anda harus berhati-hati dengan aplikasi yang diunduh dari daftar yang tidak terverifikasi.</string>
-    <string name="repo_not_yet_updated">Repositori ini belum digunakan. Anda harus mengaktifkannya untuk melihat aplikasi yang tersedia.</string>
+    <string name="unsigned_description">Ini artinya daftar 
+aplikasi tersebut tidak bisa diverifikasi. Anda harus berhati-hati 
+dengan aplikasi yang diunduh dari daftar yang tidak terverifikasi.</string>
+    <string name="repo_not_yet_updated">Repositori ini belum digunakan. 
+Anda harus mengaktifkannya untuk melihat aplikasi yang disediakan.</string>
     <string name="repo_confirm_delete_title">Hapus Repositori?</string>
-    <string name="repo_confirm_delete_body">Menghapus repositori artinya aplikasi dari repositori tersebut tidak lagi tersedia dari F-Droid.\n\nCatatan: Semua aplikasi yang sebelumnya dipasang dari repositori ini akan tetap ada di perangkat Anda.</string>
+    <string name="repo_confirm_delete_body">Menghapus repositori artinya 
+aplikasi dari repositori tersebut tidak lagi tersedia dari F-Droid.
+
+Catatan: Semua 
+apl yang sebelumnya dipasang dari repositori ini akan tetap ada di perangkat Anda.</string>
     <string name="by_author">oleh</string>
     <string name="SignatureMismatch">Versi baru telah ditandatangani dengan kunci yang berbeda dengan versi yang lama. Untuk menginstal versi baru, versi lama harus dihapus terlebih dahulu. Silakan melakukan ini dan coba lagi. (Perhatikan bahwa mencopot pemasangan akan menghapus data internal apapun yang disimpan oleh aplikasi tersebut)</string>
     <string name="interval_12h">Setiap 12 jam</string>
@@ -201,7 +208,10 @@
     <string name="status_inserting_apps">Menyimpan rincian aplikasi</string>
     <string name="all_other_repos_fine">Semua repo lainnya tidak membuat galat.</string>
         <string name="repo_fingerprint">Sidik jari kunci penandatanganan (SHA-256)</string>
-    <string name="repo_disabled_notification">Nonfungsi %1$s.\n\nAnda akan butuh untuk mengaktifkan ulang repo ini untuk memasang app darinya.</string>
+    <string name="repo_disabled_notification">Matikan %1$s.
+
+Anda akan 
+butuh untuk mengaktifkan ulang repo ini untuk memasang apl darinya.</string>
     <string name="repo_added">Repository F-Droid tersimpan %1$s.</string>
     <string name="repo_searching_address">Mencari repositori F-Droid di\n%1$s</string>
     <string name="minsdk_or_later">%s atau nanti</string>
@@ -312,10 +322,18 @@
     <string name="swap_not_enabled_description">Sebelum swap, perangkat anda harus dibuat terlihat.</string>
 
     <string name="install_confirm">butuh akses ke</string>
-    <string name="install_confirm_update">Anda ingin memasang pembaruan ke aplikasi yang sudah ada ini? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
-    <string name="install_confirm_update_system">Anda ingin memasang pembaruan aplikasi bawaan ini? Data yang ada tidak akan hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
-    <string name="install_confirm_update_no_perms">Anda ingin memasang pembaruan ke aplikasi yang sudah ada ini? Data anda tidak akan hilang. App tidak membutuhkan akses spesial apapun.</string>
-    <string name="install_confirm_update_system_no_perms">Anda ingin memasang pembaruan aplikasi bawaan ini? Data anda tidak akan hilang. App tidak membutuhkan akses spesial apapun.</string>
+    <string name="install_confirm_update">Anda ingin memasang pembaruan 
+ke aplikasi yang sudah ada ini? Data yang ada tidak akan 
+hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
+    <string name="install_confirm_update_system">Anda ingin memasang pembaruan
+aplikasi bawaan ini? Data yang ada tidak akan
+hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
+    <string name="install_confirm_update_no_perms">Anda ingin memasang pembaruan
+ ke aplikasi yang sudah ada ini? Data anda tidak akan
+ hilang. Apl tidak membutuhkan akses spesial apapun.</string>
+    <string name="install_confirm_update_system_no_perms">Anda ingin memasang pembaruan
+ aplikasi bawaan ini? Data anda tidak akan
+ hilang. Apl tidak membutuhkan akses spesial apapun.</string>
     <string name="newPerms">Baru</string>
     <string name="allPerms">Semua</string>
     <string name="perm_costs_money">Ini mungkin akan memakan biaya</string>
@@ -338,7 +356,9 @@
     <string name="theme_night">Malam</string>
 
     <string name="crash_dialog_title">F-Droid telah gagal</string>
-    <string name="crash_dialog_text">Galat yang tidak diduga terjadi memaksi aplikasi untuk berhenti. Apa anda ingin mengirim surel detail untuk membantu memperbaiki isu?</string>
+    <string name="crash_dialog_text">Galat yang tidak diduga terjadi 
+ memaksa aplikasi untuk berhenti. Apa anda ingin mengirim surel
+ detail untuk membantu memperbaiki isu?</string>
     <string name="crash_dialog_comment_prompt">Anda dapat menambahkan informasi ekstra dan komentar disini:</string>
 <string name="update_auto_download">Mengunduh pembaruan otomatis</string>
     <string name="update_auto_download_summary">Unduh berkas pembaruan dilatar belakang</string>
@@ -364,4 +384,6 @@
     <string name="installing">Memasang…</string>
     <string name="uninstalling">Mencopot pemasangan…</string>
 
+    <string name="hide_anti_feature_apps">Jadikan abu-abu apl anti-fitur</string>
+    <string name="hide_anti_feature_apps_on">Jadikan abu-abu apl yang butuh anti-fitur</string>
     </resources>

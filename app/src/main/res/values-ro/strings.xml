@@ -335,4 +335,8 @@ pentru a putea ajuta la rezolvarea acestei probleme?</string>
 
 
     <string name="install_error_notify_title">Eroare la instalarea %s</string>
+    <string name="update_auto_install">Instaleaza automat actualizarile</string>
+    <string name="update_auto_install_summary">Descarca si instaleaza actualizarile aplicatiilor in fundal</string>
+    <string name="hide_anti_feature_apps">Arata cu gri aplicatiile ce prezinta caracteristici periculoase</string>
+    <string name="hide_anti_feature_apps_on">Arata cu gri aplicatiile ce necesita caracteristici periculoase</string>
     </resources>

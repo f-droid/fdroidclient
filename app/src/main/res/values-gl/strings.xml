@@ -1,10 +1,10 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="SignatureMismatch">A nova versión está asinada cunha clave diferente da antiga. Para instalar a nova versión, antes débese desinstalar a anterior. Por favor, fágao e téntao de novo. (Ao desinstalar borrarase calquera dato interno gardado pola aplicación)</string>
   <string name="installIncompatible">Parece que este paquete non é compatíbel co seu dispositivo. Quere facer a proba e instalalo aínda así?</string>
   <string name="installDowngrade">Está tentando instalar unha versión anterior. Isto pode supoñer un mal funcionamento ou perda de datos. Quere tentalo de todas maneiras?</string>
   <string name="version">Versión</string>
-  <string name="cache_downloaded">Paquetes Caché</string>
+  <string name="cache_downloaded">Manter paquetes na caché</string>
   <string name="updates">Actualizacións</string>
   <string name="other">Outro</string>
   <string name="automatic_scan_wifi">Só mediante wifi</string>
@@ -307,4 +307,5 @@
     <string name="writing_index_jar">Escribindo índice firmado para o ficheiro (index.jar)…</string>
     <string name="system_install_post_success_message">F-Droid Privileged Extension instalouse correctamente. Esto permite á F-Droid instalar, actualizar e desinstalar aplicativos pola súa conta.</string>
     <string name="system_install_post_fail_message">A instalación de F-Droid Privileged Extension fallou. O método de instalación non está dispoñible para todas as distribucións Android, por favor, consulta o seguimento de erros de F-Droid para máis información.</string>
+    <string name="by_author">por</string>
     </resources>

@@ -355,4 +355,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
     <string name="hide_anti_feature_apps">Przyciemniaj aplikacje z niepożądanymi cechami</string>
     <string name="hide_anti_feature_apps_on">Przyciemnia aplikacje z niepożądanymi funkcjami</string>
+    <string name="update_auto_install">Automatycznie instaluj aktualizacje</string>
+    <string name="update_auto_install_summary">Pobiera i instaluje aktualizacje programów w tle</string>
     </resources>
