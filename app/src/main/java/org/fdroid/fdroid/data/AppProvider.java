@@ -740,20 +740,8 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryCategory(String category) {
-        // TODO: In the future, add a new table for categories,
-        // so we can join onto it.
-        final String app = getTableName();
-        final String selection =
-                app + "." + Cols.CATEGORIES + " = ? OR " +    // Only category e.g. "internet"
-                app + "." + Cols.CATEGORIES + " LIKE ? OR " + // First category e.g. "internet,%"
-                app + "." + Cols.CATEGORIES + " LIKE ? OR " + // Last category e.g. "%,internet"
-                app + "." + Cols.CATEGORIES + " LIKE ? ";     // One of many categories e.g. "%,internet,%"
-        final String[] args = {
-            category,
-            category + ",%",
-            "%," + category,
-            "%," + category + ",%",
-        };
+        final String selection = CategoryTable.NAME + "." + CategoryTable.Cols.NAME + " = ? ";
+        final String[] args = {category};
         return new AppQuerySelection(selection, args);
     }
 
