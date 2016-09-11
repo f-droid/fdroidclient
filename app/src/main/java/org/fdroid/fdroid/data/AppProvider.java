@@ -16,6 +16,8 @@ import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.data.Schema.CatJoinTable;
+import org.fdroid.fdroid.data.Schema.CategoryTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
@@ -275,10 +277,14 @@ public class AppProvider extends FDroidProvider {
             final String app  = getTableName();
             final String apk  = getApkTableName();
             final String repo = RepoTable.NAME;
+            final String cat  = CategoryTable.NAME;
+            final String catJoin = CatJoinTable.NAME;
 
             return pkg +
                 " JOIN " + app + " ON (" + app + "." + Cols.PACKAGE_ID + " = " + pkg + "." + PackageTable.Cols.ROW_ID + ") " +
                 " JOIN " + repo + " ON (" + app + "." + Cols.REPO_ID + " = " + repo + "." + RepoTable.Cols._ID + ") " +
+                " LEFT JOIN " + catJoin + " ON (" + app + "." + Cols.ROW_ID + " = " + catJoin + "." + CatJoinTable.Cols.APP_METADATA_ID + ") " +
+                " LEFT JOIN " + cat + " ON (" + cat + "." + CategoryTable.Cols.ROW_ID + " = " + catJoin + "." + CatJoinTable.Cols.CATEGORY_ID + ") " +
                 " LEFT JOIN " + apk + " ON (" + apk + "." + ApkTable.Cols.APP_ID + " = " + app + "." + Cols.ROW_ID + ") ";
         }
 
@@ -641,6 +647,7 @@ public class AppProvider extends FDroidProvider {
         final String app = getTableName();
         final String[] columns = {
                 PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME,
+                CategoryTable.NAME + "." + CategoryTable.Cols.NAME,
                 app + "." + Cols.NAME,
                 app + "." + Cols.SUMMARY,
                 app + "." + Cols.DESCRIPTION,
