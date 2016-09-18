@@ -282,6 +282,8 @@ public class ManageReposActivity extends ActionBarActivity {
                             }
 
                             String fp = fingerprintEditText.getText().toString();
+                            // remove any whitespace from fingerprint
+                            fp = fp.replaceAll("\\s", "");
 
                             switch (addRepoState) {
                                 case DOESNT_EXIST:
