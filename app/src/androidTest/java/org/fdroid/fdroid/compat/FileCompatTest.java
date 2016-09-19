@@ -80,7 +80,7 @@ public class FileCompatTest {
      * Prefer internal over external storage, because external tends to be FAT filesystems,
      * which don't support symlinks (which we test using this method).
      */
-    private static File getWriteableDir(Instrumentation instrumentation) {
+    public static File getWriteableDir(Instrumentation instrumentation) {
         Context context = instrumentation.getContext();
         Context targetContext = instrumentation.getTargetContext();
 

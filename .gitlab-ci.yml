@@ -46,7 +46,6 @@ connected10:
     # this file changes every time but should not be cached
     - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
     - exit $EXITVALUE
-  allow_failure: true  # remove once install segfaults are gone
 
 connected24:
   variables:
