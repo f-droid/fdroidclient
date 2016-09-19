@@ -25,15 +25,13 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.fdroid.fdroid.AssetUtils;
+import org.fdroid.fdroid.compat.FileCompatTest;
 import org.fdroid.fdroid.data.Apk;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 
 import java.io.File;
-import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -59,18 +57,12 @@ public class ApkVerifierTest {
     File sdk14Apk;
     File minMaxApk;
 
-    @Rule
-    public TemporaryFolder tempFolder = new TemporaryFolder();
-
     @Before
     public void setUp() {
         instrumentation = InstrumentationRegistry.getInstrumentation();
-        File dir = null;
-        try {
-            dir = tempFolder.newFolder("apks");
-        } catch (IOException e) {
-            fail(e.getMessage());
-        }
+        File dir = FileCompatTest.getWriteableDir(instrumentation);
+        assertTrue(dir.isDirectory());
+        assertTrue(dir.canWrite());
         sdk14Apk = AssetUtils.copyAssetToDir(instrumentation.getContext(),
                 "org.fdroid.permissions.sdk14.apk",
                 dir
