@@ -47,7 +47,6 @@ public abstract class Installer {
 
     final Context context;
     final Apk apk;
-    private final LocalBroadcastManager localBroadcastManager;
 
     public static final String ACTION_INSTALL_STARTED = "org.fdroid.fdroid.installer.Installer.action.INSTALL_STARTED";
     public static final String ACTION_INSTALL_COMPLETE = "org.fdroid.fdroid.installer.Installer.action.INSTALL_COMPLETE";
@@ -79,7 +78,6 @@ public abstract class Installer {
     Installer(Context context, Apk apk) {
         this.context = context;
         this.apk = apk;
-        localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 
     /**
@@ -148,19 +146,20 @@ public abstract class Installer {
     }
 
     void sendBroadcastInstall(Uri downloadUri, String action, PendingIntent pendingIntent) {
-        sendBroadcastInstall(downloadUri, action, pendingIntent, null);
+        sendBroadcastInstall(context, downloadUri, action, apk, pendingIntent, null);
     }
 
     void sendBroadcastInstall(Uri downloadUri, String action) {
-        sendBroadcastInstall(downloadUri, action, null, null);
+        sendBroadcastInstall(context, downloadUri, action, apk, null, null);
     }
 
     void sendBroadcastInstall(Uri downloadUri, String action, String errorMessage) {
-        sendBroadcastInstall(downloadUri, action, null, errorMessage);
+        sendBroadcastInstall(context, downloadUri, action, apk, null, errorMessage);
     }
 
-    void sendBroadcastInstall(Uri downloadUri, String action,
-                              PendingIntent pendingIntent, String errorMessage) {
+    static void sendBroadcastInstall(Context context,
+                                     Uri downloadUri, String action, Apk apk,
+                                     PendingIntent pendingIntent, String errorMessage) {
         Intent intent = new Intent(action);
         intent.setData(downloadUri);
         intent.putExtra(Installer.EXTRA_USER_INTERACTION_PI, pendingIntent);
@@ -168,7 +167,7 @@ public abstract class Installer {
         if (!TextUtils.isEmpty(errorMessage)) {
             intent.putExtra(Installer.EXTRA_ERROR_MESSAGE, errorMessage);
         }
-        localBroadcastManager.sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     void sendBroadcastUninstall(String action, String errorMessage) {
@@ -193,7 +192,7 @@ public abstract class Installer {
         if (!TextUtils.isEmpty(errorMessage)) {
             intent.putExtra(Installer.EXTRA_ERROR_MESSAGE, errorMessage);
         }
-        localBroadcastManager.sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     /**

@@ -462,10 +462,13 @@ public class InstallManagerService extends Service {
      */
     public static void queue(Context context, App app, Apk apk) {
         String urlString = apk.getUrl();
+        Uri downloadUri = Uri.parse(urlString);
+        Installer.sendBroadcastInstall(context, downloadUri, Installer.ACTION_INSTALL_STARTED, apk,
+                null, null);
         Utils.debugLog(TAG, "queue " + app.packageName + " " + apk.versionCode + " from " + urlString);
         Intent intent = new Intent(context, InstallManagerService.class);
         intent.setAction(ACTION_INSTALL);
-        intent.setData(Uri.parse(urlString));
+        intent.setData(downloadUri);
         intent.putExtra(EXTRA_APP, app);
         intent.putExtra(EXTRA_APK, apk);
         context.startService(intent);
