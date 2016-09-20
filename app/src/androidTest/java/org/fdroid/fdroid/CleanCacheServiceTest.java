@@ -1,8 +1,11 @@
 package org.fdroid.fdroid;
 
+import android.app.Instrumentation;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.apache.commons.io.FileUtils;
+import org.fdroid.fdroid.compat.FileCompatTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,7 +22,8 @@ public class CleanCacheServiceTest {
 
     @Test
     public void testClearOldFiles() throws IOException, InterruptedException {
-        File tempDir = new File(System.getProperty("java.io.tmpdir"));
+        Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
+        File tempDir = FileCompatTest.getWriteableDir(instrumentation);
         assertTrue(tempDir.isDirectory());
         assertTrue(tempDir.canWrite());
 
