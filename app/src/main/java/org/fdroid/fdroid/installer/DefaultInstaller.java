@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2016 Dominik Schürmann <dominik@dominikschuermann.de>
+ * Copyright (C) 2016 Blue Jay Wireless
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -25,10 +26,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 
-import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
-
-import java.io.File;
 
 /**
  * The default installer of F-Droid. It uses the normal Intents APIs of Android
@@ -39,7 +37,7 @@ import java.io.File;
  */
 public class DefaultInstaller extends Installer {
 
-    private static final String TAG = "DefaultInstaller";
+    public static final String TAG = "DefaultInstaller";
 
     DefaultInstaller(Context context, Apk apk) {
         super(context, apk);
@@ -47,9 +45,6 @@ public class DefaultInstaller extends Installer {
 
     @Override
     protected void installPackageInternal(Uri localApkUri, Uri downloadUri, Apk apk) {
-        sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
-
-        Utils.debugLog(TAG, "DefaultInstaller uri: " + localApkUri + " file: " + new File(localApkUri.getPath()));
 
         Intent installIntent = new Intent(context, DefaultInstallerActivity.class);
         installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);

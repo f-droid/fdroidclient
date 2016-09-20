@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014-2016 Dominik Schürmann <dominik@dominikschuermann.de>
+ * Copyright (C) 2016 Blue Jay Wireless
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -37,7 +38,7 @@ import org.fdroid.fdroid.data.Apk;
  * A transparent activity as a wrapper around Android's PackageInstaller Intents
  */
 public class DefaultInstallerActivity extends FragmentActivity {
-    private static final String TAG = "AndroidInstallerAct";
+    private static final String TAG = "DefaultInstallerActivit";
 
     static final String ACTION_INSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.INSTALL_PACKAGE";
     static final String ACTION_UNINSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.UNINSTALL_PACKAGE";
@@ -121,7 +122,6 @@ public class DefaultInstallerActivity extends FragmentActivity {
                     "This Android rom does not support ACTION_INSTALL_PACKAGE!");
             finish();
         }
-        installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
     }
 
     private void uninstallPackage(String packageName) {
