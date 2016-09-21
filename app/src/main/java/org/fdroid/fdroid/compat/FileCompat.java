@@ -66,7 +66,8 @@ public class FileCompat {
             dest.getAbsolutePath(),
         };
         try {
-            Utils.debugLog(TAG, "Executing command: " + commands[0] + " " + commands[1] + " " + commands[2]);
+            Utils.debugLog(TAG, "Executing command: " + commands[0] + " " + commands[1]
+                    + " " + commands[2] + " " + commands[3]);
             Process proc = Runtime.getRuntime().exec(commands);
             Utils.consumeStream(proc.getInputStream());
             Utils.consumeStream(proc.getErrorStream());
