@@ -76,6 +76,25 @@ public interface Schema {
                 String SIGNATURE = "installedSig";
             }
 
+            /**
+             * Each of the physical columns in the sqlite table. Differs from {@link Cols#ALL} in
+             * that it doesn't include fields which are aliases of other fields (e.g. {@link Cols#_ID}
+             * or which are from other related tables (e.g. {@link Cols.SuggestedApk#VERSION_NAME}).
+             */
+            String[] ALL_COLS = {
+                    ROW_ID, IS_COMPATIBLE, PACKAGE_NAME, NAME, SUMMARY, ICON, DESCRIPTION,
+                    LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
+                    CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
+                    UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
+                    CATEGORIES, ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
+                    SUGGESTED_VERSION_CODE,
+            };
+
+            /**
+             * Superset of {@link Cols#ALL_COLS} including fields from other tables and also an alias
+             * to satisfy the Android requirement for an "_ID" field.
+             * @see Cols#ALL_COLS
+             */
             String[] ALL = {
                     _ID, ROW_ID, IS_COMPATIBLE, PACKAGE_NAME, NAME, SUMMARY, ICON, DESCRIPTION,
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
@@ -134,6 +153,19 @@ public interface Schema {
                 String PACKAGE_NAME = "appPackageName";
             }
 
+            /**
+             * @see AppMetadataTable.Cols#ALL_COLS
+             */
+            String[] ALL_COLS = {
+                    APP_ID, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
+                    SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
+                    PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
+                    IS_COMPATIBLE, INCOMPATIBLE_REASONS,
+            };
+
+            /**
+             * @see AppMetadataTable.Cols#ALL
+             */
             String[] ALL = {
                     _ID, APP_ID, App.PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
                     SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
