@@ -69,7 +69,7 @@ class DBHelper extends SQLiteOpenHelper {
             + "PRIMARY KEY (" + ApkTable.Cols.APP_ID + ", " + ApkTable.Cols.VERSION_CODE + ", " + ApkTable.Cols.REPO_ID + ")"
             + ");";
 
-    private static final String CREATE_TABLE_APP = "CREATE TABLE " + AppMetadataTable.NAME
+    static final String CREATE_TABLE_APP = "CREATE TABLE " + AppMetadataTable.NAME
             + " ( "
             + AppMetadataTable.Cols.PACKAGE_NAME + " text not null, "
             + AppMetadataTable.Cols.NAME + " text not null, "
