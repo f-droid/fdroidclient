@@ -162,10 +162,19 @@ public class TempAppProvider extends AppProvider {
         ensureTempTableDetached(db);
         db.execSQL("ATTACH DATABASE ':memory:' AS " + DB);
         db.execSQL(DBHelper.CREATE_TABLE_APP.replaceFirst(AppMetadataTable.NAME, DB + "." + getTableName()));
-        db.execSQL("INSERT INTO " + DB + "." + getTableName() + " SELECT * FROM " + AppMetadataTable.NAME);
+        db.execSQL(copyData(AppMetadataTable.Cols.ALL_COLS, AppMetadataTable.NAME, DB + "." + getTableName()));
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (" + AppMetadataTable.Cols.PACKAGE_NAME + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (" + AppMetadataTable.Cols.UPSTREAM_VERSION_CODE + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (" + AppMetadataTable.Cols.IS_COMPATIBLE + ");");
+    }
+
+    /**
+     * Constructs an INSERT INTO ... SELECT statement as a means from getting data from one table
+     * into another. The list of columns to copy are explicitly specified using colsToCopy.
+     */
+    static String copyData(String[] colsToCopy, String fromTable, String toTable) {
+        String cols = TextUtils.join(", ", colsToCopy);
+        return "INSERT INTO " + toTable + " (" + cols + ") SELECT " + cols + " FROM " + fromTable;
     }
 
     private void commitTable() {
@@ -177,10 +186,10 @@ public class TempAppProvider extends AppProvider {
             final String tempApk = DB + "." + TempApkProvider.TABLE_TEMP_APK;
 
             db.execSQL("DELETE FROM " + AppMetadataTable.NAME + " WHERE 1");
-            db.execSQL("INSERT INTO " + AppMetadataTable.NAME + " SELECT * FROM " + tempApp);
+            db.execSQL(copyData(AppMetadataTable.Cols.ALL_COLS, tempApp, AppMetadataTable.NAME));
 
             db.execSQL("DELETE FROM " + ApkTable.NAME + " WHERE 1");
-            db.execSQL("INSERT INTO " + ApkTable.NAME + " SELECT * FROM " + tempApk);
+            db.execSQL(copyData(ApkTable.Cols.ALL_COLS, tempApk, ApkTable.NAME));
 
             db.setTransactionSuccessful();
 
