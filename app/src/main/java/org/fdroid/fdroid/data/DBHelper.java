@@ -53,7 +53,8 @@ class DBHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_PACKAGE = "CREATE TABLE " + PackageTable.NAME
             + " ( "
-            + PackageTable.Cols.PACKAGE_NAME + " text not null"
+            + PackageTable.Cols.PACKAGE_NAME + " text not null, "
+            + PackageTable.Cols.PREFERRED_METADATA + " integer"
             + ");";
 
     private static final String CREATE_TABLE_REPO = "create table "
@@ -838,6 +839,7 @@ class DBHelper extends SQLiteOpenHelper {
         if (tableExists(db, PackageTable.NAME)) {
             Utils.debugLog(TAG, "Ensuring indexes exist for " + PackageTable.NAME);
             db.execSQL("CREATE INDEX IF NOT EXISTS package_packageName on " + PackageTable.NAME + " (" + PackageTable.Cols.PACKAGE_NAME + ");");
+            db.execSQL("CREATE INDEX IF NOT EXISTS package_preferredMetadata on " + PackageTable.NAME + " (" + PackageTable.Cols.PREFERRED_METADATA + ");");
         }
 
         Utils.debugLog(TAG, "Ensuring indexes exist for " + AppMetadataTable.NAME);

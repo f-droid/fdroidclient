@@ -17,8 +17,18 @@ public interface Schema {
             String ROW_ID = "rowid";
             String PACKAGE_NAME = "packageName";
 
+            /**
+             * Metadata about a package (e.g. description, icon, etc) can come from multiple
+             * different repos. This is a foreign key to the row in {@link AppMetadataTable} for
+             * this package that comes from the repo with the best priority. Although it can be
+             * calculated at runtime using an SQL query, it is more efficient to figure out the
+             * preferred metadata once, after a repo update, rather than every time we need to know
+             * about a package.
+             */
+            String PREFERRED_METADATA = "preferredMetadata";
+
             String[] ALL = {
-                    ROW_ID, PACKAGE_NAME,
+                    ROW_ID, PACKAGE_NAME, PREFERRED_METADATA,
             };
         }
     }
@@ -101,7 +111,7 @@ public interface Schema {
              * or which are from other related tables (e.g. {@link Cols.SuggestedApk#VERSION_NAME}).
              */
             String[] ALL_COLS = {
-                    ROW_ID, PACKAGE_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
+                    ROW_ID, PACKAGE_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
                     CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,

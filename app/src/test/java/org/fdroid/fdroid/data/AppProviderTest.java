@@ -371,6 +371,9 @@ public class AppProviderTest extends FDroidProviderTest {
         Uri uri = AppProvider.getContentUri();
 
         contentResolver.insert(uri, values);
+
+        AppProvider.Helper.recalculatePreferredMetadata(context);
+
         return AppProvider.Helper.findSpecificApp(context.getContentResolver(), id, 1, Cols.ALL);
     }
 }
