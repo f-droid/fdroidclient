@@ -184,6 +184,11 @@ public class AppProvider extends FDroidProvider {
         public static List<App> findCanUpdate(Context context, String[] projection) {
             return cursorToList(context.getContentResolver().query(AppProvider.getCanUpdateUri(), projection, null, null, null));
         }
+
+        public static void recalculatePreferredMetadata(Context context) {
+            Uri uri = Uri.withAppendedPath(AppProvider.getContentUri(), PATH_CALC_PREFERRED_METADATA);
+            context.getContentResolver().query(uri, null, null, null, null);
+        }
     }
 
     /**
@@ -445,6 +450,7 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_CALC_APP_DETAILS_FROM_INDEX = "calcDetailsFromIndex";
     private static final String PATH_REPO = "repo";
     private static final String PATH_HIGHEST_PRIORITY = "highestPriority";
+    private static final String PATH_CALC_PREFERRED_METADATA = "calcPreferredMetadata";
 
     private static final int CAN_UPDATE = CODE_SINGLE + 1;
     private static final int INSTALLED = CAN_UPDATE + 1;
@@ -459,6 +465,7 @@ public class AppProvider extends FDroidProvider {
     private static final int SEARCH_INSTALLED = SEARCH_REPO + 1;
     private static final int SEARCH_CAN_UPDATE = SEARCH_INSTALLED + 1;
     private static final int HIGHEST_PRIORITY = SEARCH_CAN_UPDATE + 1;
+    private static final int CALC_PREFERRED_METADATA = HIGHEST_PRIORITY + 1;
 
     static {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
@@ -476,6 +483,7 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_NO_APKS, NO_APKS);
         MATCHER.addURI(getAuthority(), PATH_HIGHEST_PRIORITY + "/*", HIGHEST_PRIORITY);
         MATCHER.addURI(getAuthority(), PATH_SPECIFIC_APP + "/#/*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), PATH_CALC_PREFERRED_METADATA, CALC_PREFERRED_METADATA);
     }
 
     public static Uri getContentUri() {
@@ -719,16 +727,11 @@ public class AppProvider extends FDroidProvider {
 
     /**
      * Ensures that for each app metadata row with the same package name, only the one from the repo
-     * with the best priority is represented in the result set.
+     * with the best priority is represented in the result set. While possible to calculate this
+     * dynamically each time the query is run, we precalculate it during repo updates for performance.
      */
     private AppQuerySelection queryHighestPriority() {
-        final String highestPriority =
-                "SELECT MIN(r." + RepoTable.Cols.PRIORITY + ") " +
-                "FROM " + RepoTable.NAME + " AS r " +
-                "JOIN " + AppMetadataTable.NAME + " AS m ON (m." + Cols.REPO_ID + " = r." + RepoTable.Cols._ID + ") " +
-                "WHERE m." + Cols.PACKAGE_ID + " = " + getTableName() + "." + Cols.PACKAGE_ID;
-
-        final String selection = RepoTable.NAME + "." + RepoTable.Cols.PRIORITY + " = (" + highestPriority + ")";
+        final String selection = PackageTable.NAME + "." + PackageTable.Cols.PREFERRED_METADATA + " = " + getTableName() + "." + Cols.ROW_ID;
         return new AppQuerySelection(selection);
     }
 
@@ -793,6 +796,10 @@ public class AppProvider extends FDroidProvider {
         boolean repoIsKnown = false;
 
         switch (MATCHER.match(uri)) {
+            case CALC_PREFERRED_METADATA:
+                updatePreferredMetadata();
+                return null;
+
             case CODE_LIST:
                 includeSwap = false;
                 break;
@@ -937,10 +944,35 @@ public class AppProvider extends FDroidProvider {
     }
 
     protected void updateAppDetails() {
+        updatePreferredMetadata();
         updateCompatibleFlags();
         updateSuggestedFromUpstream();
         updateSuggestedFromLatest();
         updateIconUrls(getContext(), db(), getTableName(), getApkTableName());
+    }
+
+    private void updatePreferredMetadata() {
+        Utils.debugLog(TAG, "Deciding on which metadata should take priority for each package.");
+
+        final String app = getTableName();
+
+        final String highestPriority =
+                "SELECT MIN(r." + RepoTable.Cols.PRIORITY + ") " +
+                "FROM " + RepoTable.NAME + " AS r " +
+                "JOIN " + getTableName() + " AS m ON (m." + Cols.REPO_ID + " = r." + RepoTable.Cols._ID + ") " +
+                "WHERE m." + Cols.PACKAGE_ID + " = " + "metadata." + Cols.PACKAGE_ID;
+
+        String updateSql =
+                "UPDATE " + PackageTable.NAME + " " +
+                "SET " + PackageTable.Cols.PREFERRED_METADATA + " = ( " +
+                " SELECT metadata." + Cols.ROW_ID +
+                " FROM " + app + " AS metadata " +
+                " JOIN " + RepoTable.NAME + " AS repo ON (metadata." + Cols.REPO_ID + " = repo." + RepoTable.Cols._ID + ") " +
+                " WHERE metadata." + Cols.PACKAGE_ID + " = " + PackageTable.NAME + "." + PackageTable.Cols.ROW_ID +
+                " AND repo." + RepoTable.Cols.PRIORITY + " = (" + highestPriority + ")" +
+                ");";
+
+        db().execSQL(updateSql);
     }
 
     /**

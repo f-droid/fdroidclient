@@ -232,6 +232,8 @@ public class RepoProvider extends FDroidProvider {
             Uri appUri = AppProvider.getNoApksUri();
             int appCount = resolver.delete(appUri, null, null);
             Utils.debugLog(TAG, "Removed " + appCount + " apps with no apks.");
+
+            AppProvider.Helper.recalculatePreferredMetadata(context);
         }
 
         public static int countAppsForRepo(Context context, long repoId) {
@@ -399,7 +401,37 @@ public class RepoProvider extends FDroidProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+
+        // When the priority of a repo changes, we need to update the "preferred metadata" foreign
+        // key in the package table to point to the best possible record in the app metadata table.
+        // The full list of times when we need to recalculate the preferred metadata includes:
+        //  * After the priority of a repo changes
+        //  * After a repo is disabled
+        //  * After a repo is enabled
+        //  * After an update is performed
+        // This code only checks for the priority changing. All other occasions we can't do the
+        // recalculation right now, because we likely haven't added/removed the relevant apps
+        // from the metadata table yet. Usually the repo details are updated, then a request is
+        // made to do the heavier work (e.g. a repo update to get new list of apps from server).
+        // After the heavier work is complete, then that process can request the preferred metadata
+        // to be recalculated.
+        boolean priorityChanged = false;
+        if (values.containsKey(Cols.PRIORITY)) {
+            Cursor priorityCursor = db().query(getTableName(), new String[]{Cols.PRIORITY}, where, whereArgs, null, null, null);
+            if (priorityCursor.getCount() > 0) {
+                priorityCursor.moveToFirst();
+                int oldPriority = priorityCursor.getInt(priorityCursor.getColumnIndex(Cols.PRIORITY));
+                priorityChanged = oldPriority != values.getAsInteger(Cols.PRIORITY);
+            }
+            priorityCursor.close();
+        }
+
         int numRows = db().update(getTableName(), values, where, whereArgs);
+
+        if (priorityChanged) {
+            AppProvider.Helper.recalculatePreferredMetadata(getContext());
+        }
+
         Utils.debugLog(TAG, "Updated repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return numRows;
