@@ -26,7 +26,7 @@ dependencies {
     compile 'com.google.zxing:core:3.2.1'
     compile 'eu.chainfire:libsuperuser:1.0.0.201602271131'
     compile 'cc.mvdan.accesspoint:library:0.2.0'
-    compile 'info.guardianproject.netcipher:netcipher:1.2.1'
+    compile 'info.guardianproject.netcipher:netcipher:2.0.0-alpha1'
     compile 'commons-io:commons-io:2.5'
     compile 'commons-net:commons-net:3.5'
     compile 'org.openhab.jmdns:jmdns:3.4.2'
@@ -103,7 +103,7 @@ if (!hasProperty('sourceDeps')) {
                 'com.madgag.spongycastle:prov:029f26cd6b67c06ffa05702d426d472c141789001bcb15b7262ed86c868e5643',
                 'com.nostra13.universalimageloader:universal-image-loader:dbd5197ffec3a8317533190870a7c00ff3750dd6a31241448c6a5522d51b65b4',
                 'eu.chainfire:libsuperuser:018344ff19ee94d252c14b4a503ee8b519184db473a5af83513f5837c413b128',
-                'info.guardianproject.netcipher:netcipher:611ec5bde9d799fd57e1efec5c375f9f460de2cdda98918541decc9a7d02f2ad',
+                'info.guardianproject.netcipher:netcipher:eeeb5d0d95ccfe176b4296cbd71a9a24c6efb0bab5c4025a8c6bc36abdddfc75',
                 'io.reactivex:rxandroid:35c1a90f8c1f499db3c1f3d608e1f191ac8afddb10c02dd91ef04c03a0a4bcda',
                 'io.reactivex:rxjava:2c162afd78eba217cdfee78b60e85d3bfb667db61e12bc95e3cf2ddc5beeadf6',
                 'org.openhab.jmdns:jmdns:7a4b34b5606bbd2aff7fdfe629edcb0416fccd367fb59a099f210b9aba4f0bce',
