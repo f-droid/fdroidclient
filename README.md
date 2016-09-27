@@ -37,7 +37,7 @@ to what Google Play does.
   privileged system app?
 
 This used to be the case, but no longer is. Now the [Privileged
-Extension](Privileged-Extension/) is the one that should be placed in
+Extension](https://gitlab.com/fdroid/privileged-extension) is the one that should be placed in
 the system. It can be bundled with a ROM or installed via a zip, or
 alternatively F-Droid can install it as a system app using root.
 
