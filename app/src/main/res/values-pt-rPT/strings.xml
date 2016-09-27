@@ -365,4 +365,6 @@
     <string name="keep_year">1 ano</string>
     <string name="keep_forever">Eternamente</string>
 
+    <string name="update_auto_install">Instalar atualizações automaticamente</string>
+    <string name="update_auto_install_summary">Descarregar e instalar atualizações em segundo plano</string>
     </resources>

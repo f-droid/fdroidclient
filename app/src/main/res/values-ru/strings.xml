@@ -131,11 +131,13 @@
   <string name="repo_description">Описание</string>
   <string name="repo_last_update">Последнее обновление</string>
   <string name="repo_name">Название</string>
-  <string name="unsigned_description">Это означает, что список приложений не может быть верифицирован. Вы должны быть осторожны с приложениями, загруженными из неподписанных источников.</string>
-  <string name="repo_not_yet_updated">Этот репозиторий ещё не использовался. Включите его чтобы просмотреть содержащиеся в нём приложения.</string>
+  <string name="unsigned_description">Это означает, что список приложений не может быть верифицирован. Следует быть осторожным с приложениями, загруженными из неподписанных источников.</string>
+  <string name="repo_not_yet_updated">Этот репозиторий ещё не использовался. Включите его, чтобы просмотреть содержащиеся в нём приложения.</string>
   <string name="unknown">Неизвестно</string>
   <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
-  <string name="repo_confirm_delete_body">Удаление репозитория означает что приложения из него больше не будут доступны в F-Droid.\n\nПримечание: Все ранее установленные приложения останутся на вашем устройстве.</string>
+  <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него больше не будут доступны в F-Droid.
+
+Примечание: Все ранее установленные приложения останутся на вашем устройстве.</string>
   <string name="repo_disabled_notification">%1$s отключён.\n\nДля установки приложений из этого репозитория вам необходимо повторно включить его.</string>
   <string name="minsdk_or_later">%s или позднее</string>
   <string name="up_to_maxsdk">До %s</string>
@@ -329,11 +331,11 @@
     <string name="perms_description_app">Предоставлено %1$s.</string>
     <string name="update_auto_download">Автоматически скачивать обновления</string>
     <string name="update_auto_download_summary">Скачивать файлы обновлений в фоне</string>
-    <string name="system_install_not_supported">"Установка F-Droid Privileged Extension в настоящее время не поддерживается на  Android 5.1 или более поздних версиях."</string>
+    <string name="system_install_not_supported">"Установка Привилегированного расширения F-Droid в настоящее время не поддерживается на  Android 5.1 или более поздних версиях."</string>
 
     <string name="download_pending">Ожидание начала загрузки…</string>
 
-    <string name="downloading_apk">Загрузка %1$s</string>
+    <string name="downloading_apk">Загрузжается %1$s</string>
 
     <string name="keep_hour">1 час</string>
     <string name="keep_day">1 день</string>
@@ -342,8 +344,8 @@
     <string name="keep_year">1 год</string>
     <string name="keep_forever">Всегда</string>
 
-    <string name="tap_to_install_format">Нажмите, чтобы установить %s</string>
-    <string name="tap_to_update_format">Нажмите, чтобы обновить %s</string>
+    <string name="tap_to_install_format">Нажмите для установки %s</string>
+    <string name="tap_to_update_format">Нажмите для обновления %s</string>
     <string name="install_error_notify_title">Ошибка установки %s</string>
     <string name="uninstall_error_notify_title">Ошибка удаления %s</string>
 
@@ -351,4 +353,6 @@
     <string name="installing">Установка…</string>
     <string name="uninstalling">Удаление…</string>
 
+    <string name="update_auto_install">Устанавливать обновления автоматически</string>
+    <string name="update_auto_install_summary">Загружать и устанавливать обновления в фоне</string>
     </resources>
