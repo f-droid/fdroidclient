@@ -365,4 +365,6 @@ corréu colos detalles p\'ayudar a iguar esti problema?</string>
     <string name="installing">Instalando…</string>
     <string name="uninstalling">Desinstalando…</string>
 
+    <string name="update_auto_install_summary">Baxa ya instala de fondu anovamientos d\'aplicaciones</string>
+    <string name="update_auto_install">Instalar automáticamente anovamientos</string>
     </resources>

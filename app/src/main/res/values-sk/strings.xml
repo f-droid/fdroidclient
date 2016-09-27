@@ -128,12 +128,22 @@
   <string name="repo_description">Popis</string>
   <string name="repo_last_update">Posledná aktualizácia</string>
   <string name="repo_name">Názov</string>
-  <string name="unsigned_description">To znamená, že zoznam aplikácií nemohol byť overený. Buďte opatrný s aplikáciami z nepodpísaných indexov.</string>
-  <string name="repo_not_yet_updated">Tento repozitár ste ešte nepoužili. Pre zobrazenie aplikácií je nutné aktualizovať jeho obsah.</string>
+  <string name="unsigned_description">To znamená, že zoznam
+ aplikácií nemohol byť overený. Mali by ste byť opatrný
+ s aplikáciami prevzatými z nepodpísaných indexov.</string>
+  <string name="repo_not_yet_updated">Tento repozitár ešte nebol nepoužitý.
+Pre zobrazenie aplikácií je nutné aktualizovať jeho obsah.</string>
   <string name="unknown">Neznáme</string>
   <string name="repo_confirm_delete_title">Zmazať repozitár?</string>
-  <string name="repo_confirm_delete_body">Odstránenie repozitára znamená, že aplikácie z neho už nebudú prístupné z F-Droidu.\n\nPoznámka: Všetky predtým nainštalované aplikácie ostávajú v zariadení.</string>
-  <string name="repo_disabled_notification">Vypnuté \"%1$s\".\n\nBudete musieť znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.</string>
+  <string name="repo_confirm_delete_body">Odstránenie repozitára znamená,
+že aplikácie z neho už nebudú prístupné z F-Droidu.
+
+Poznámka: Všetky
+predtým nainštalované aplikácie zostávajú v zariadení.</string>
+  <string name="repo_disabled_notification">Vypnuté \"%1$s\".
+
+Budete musieť
+znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.</string>
   <string name="repo_added">Uložený F-Droid repozitár %1$s.</string>
   <string name="repo_searching_address">Hľadá sa repozitár F-Droidu na %1$s</string>
   <string name="minsdk_or_later">%s alebo neskôr</string>
@@ -307,10 +317,18 @@
     <string name="swap_not_enabled">Výmena nie je povolená</string>
     <string name="swap_not_enabled_description">Pred výmenou musí byť zariadenie viditeľné.</string>
 
-    <string name="install_confirm_update">Chcete nainštalovať aktualizáciu k tejto existujúcej aplikácií? Dáta aplikácie nebudú prepísané. Aktualizovaná aplikácia bude mať prístup k:</string>
-    <string name="install_confirm_update_system">Chcete nainštalovať aktualizáciu k tejto vstavanej aplikácií? Dáta aplikácie nebudú prepísané. Aktualizovaná aplikácia bude mať prístup k:</string>
-    <string name="install_confirm_update_no_perms">Chcete nainštalovať aktualizáciu k tejto existujúcej aplikácií? Dáta aplikácie nebudú prepísané. Aplikácia nevyžaduje špeciálny prístup.</string>
-    <string name="install_confirm_update_system_no_perms">Chcete nainštalovať aktualizáciu k tejto vstavanej aplikácií? Dáta aplikácie nebudú prepísané. Aplikácia nevyžaduje špeciálny prístup.</string>
+    <string name="install_confirm_update">Chcete nainštalovať aktualizáciu
+k tejto existujúcej aplikácií? Dáta aplikácie nebudú
+ prepísané. Aktualizovaná aplikácia bude mať prístup k:</string>
+    <string name="install_confirm_update_system">Chcete nainštalovať aktualizáciu
+k tejto vstavanej aplikácií? Dáta aplikácie nebudú prepísané.
+Aktualizovaná aplikácia bude mať prístup k:</string>
+    <string name="install_confirm_update_no_perms">Chcete nainštalovať aktualizáciu
+k tejto existujúcej aplikácií? Dáta aplikácie nebudú
+prepísané. Aplikácia nevyžaduje špeciálny prístup.</string>
+    <string name="install_confirm_update_system_no_perms">Chcete nainštalovať aktualizáciu
+k tejto vstavanej aplikácií? Dáta aplikácie nebudú
+prepísané. Aplikácia nevyžaduje špeciálny prístup.</string>
     <string name="tap_to_install">Preberanie dokončené, dotykom nainštalovať</string>
     <string name="download_error">Prevzatie neúspešné</string>
 
@@ -318,7 +336,9 @@
     <string name="theme_night">Noc</string>
 
     <string name="crash_dialog_title">F-Droid spadol</string>
-    <string name="crash_dialog_text">Neočakávaná chyba spôsobila násilné ukončenie aplikácie. Chcete poslať e-mail s detailami a pomôť tak vyriešiť problém?</string>
+    <string name="crash_dialog_text">Neočakávaná chyba spôsobila
+násilné ukončenie aplikácie. Chcete poslať e-mail s detailami
+a pomôť tak vyriešiť problém?</string>
     <string name="crash_dialog_comment_prompt">Sem môžete poskytnúť extra informácie a pripomienky:</string>
 <string name="swap_scan_or_type_url">Naskenujte kód alebo zadajte URL v prehliadači.</string>
     <string name="repo_provider">Repozitár: %s</string>
@@ -350,4 +370,8 @@
     <string name="installing">Inštalácia…</string>
     <string name="uninstalling">Odinštalovávanie…</string>
 
+    <string name="update_auto_install">Automaticky nainštalovať aktualizácie</string>
+    <string name="update_auto_install_summary">Prevziať a nainštalovať aktualizácie aplikácií na pozadí</string>
+    <string name="hide_anti_feature_apps">Vyšediť \"anti-feature\" aplikácie</string>
+    <string name="hide_anti_feature_apps_on">Vyšediť aplikácie vyžadujúje \"anti-features\"</string>
     </resources>

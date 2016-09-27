@@ -371,4 +371,6 @@
 
     <string name="hide_anti_feature_apps">Посиви апликације са анти-карактеристикама</string>
     <string name="hide_anti_feature_apps_on">Посивљује апликације које захтевају анти-карактеристике</string>
+    <string name="update_auto_install">Аутоматски уграђуј надоградње</string>
+    <string name="update_auto_install_summary">Преузимање и уградња апликација у позадини</string>
     </resources>

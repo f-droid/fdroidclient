@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="app_name">F-Droid</string>
+
+    <string name="version">Útgáfa</string>
+    <string name="by_author">frá</string>
+    <string name="delete">Eyða</string>
+    </resources>
