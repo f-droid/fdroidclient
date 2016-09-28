@@ -148,6 +148,10 @@ public class InstallManagerService extends Service {
 
         App app = intent.getParcelableExtra(EXTRA_APP);
         Apk apk = intent.getParcelableExtra(EXTRA_APK);
+        if (app == null || apk == null) {
+            Utils.debugLog(TAG, "Intent had null EXTRA_APP and/or EXTRA_APK: " + intent);
+            return START_NOT_STICKY;
+        }
         addToActive(urlString, app, apk);
 
         NotificationCompat.Builder builder = createNotificationBuilder(urlString, apk);

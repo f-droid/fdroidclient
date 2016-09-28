@@ -459,6 +459,11 @@ public class RepoUpdater {
             if (RepoPushRequest.INSTALL.equals(repoPushRequest.request)) {
                 ContentResolver cr = context.getContentResolver();
                 App app = AppProvider.Helper.findByPackageName(cr, packageName);
+                if (app == null) {
+                    Utils.debugLog(TAG, packageName + " not in local database, ignoring request to"
+                            + repoPushRequest.request);
+                    continue;
+                }
                 int versionCode;
                 if (repoPushRequest.versionCode == null) {
                     versionCode = app.suggestedVersionCode;
