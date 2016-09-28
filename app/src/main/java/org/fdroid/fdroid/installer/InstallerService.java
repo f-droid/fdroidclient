@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 
 /**
@@ -41,6 +42,7 @@ import org.fdroid.fdroid.data.Apk;
  * {@link InstallManagerService}.
  */
 public class InstallerService extends IntentService {
+    public static final String TAG = "InstallerService";
 
     private static final String ACTION_INSTALL = "org.fdroid.fdroid.installer.InstallerService.action.INSTALL";
     private static final String ACTION_UNINSTALL = "org.fdroid.fdroid.installer.InstallerService.action.UNINSTALL";
@@ -52,7 +54,10 @@ public class InstallerService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
-
+        if (apk == null) {
+            Utils.debugLog(TAG, "ignoring intent with null EXTRA_APK: " + intent);
+            return;
+        }
         Installer installer = InstallerFactory.create(this, apk);
 
         if (ACTION_INSTALL.equals(intent.getAction())) {
