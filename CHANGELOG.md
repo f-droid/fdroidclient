@@ -1,14 +1,14 @@
-### Upcoming release
+### 0.101 (2016-09-28)
 
 * Support for Android 2.2 is dropped, 2.3.3 or later is now required
 
 * Fixed APK Cache bugs, requiring the cache time be reset to 1 day
 
-* Uses Privileged Extension by default, when its installed
+* Use Privileged Extension by default if installed
 
 * Optionally grey out apps that require Anti-Features
 
-* New languages: Croatian, Icelandic, Myanmar
+* Translation updates
 
 ### 0.100.1 (2016-06-21)
 
