@@ -1,13 +1,17 @@
-image: mvdan/fdroid-ci:client-20160909
+image: fdroid/ci:client-20160927
 
 cache:
   paths:
     - .gradle/wrapper
     - .gradle/caches
 
+before_script:
+  - export GRADLE_USER_HOME=$PWD/.gradle
+  - printf 'y\n\n' | android --verbose update sdk --no-ui
+     --filter extra-android-m2repository
+
 test:
   script:
-    - export GRADLE_USER_HOME=$PWD/.gradle
     - ./gradlew assemble -PdisablePreDex
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
@@ -19,15 +23,11 @@ test:
           done;
           exit 1;
       }
-    # this file changes every time but should not be cached
-    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
-    - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
 
 connected10:
   variables:
     AVD_SDK: "10"
   script:
-    - export GRADLE_USER_HOME=$PWD/.gradle
     - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &
@@ -43,15 +43,12 @@ connected10:
         echo "read $log here:";
         cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
       done
-    # this file changes every time but should not be cached
-    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
-    - exit $EXITVALUE
+  allow_failure: true
 
 connected24:
   variables:
     AVD_SDK: "24"
   script:
-    - export GRADLE_USER_HOME=$PWD/.gradle
     - emulator64-x86 -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &
@@ -67,29 +64,27 @@ connected24:
         echo "read $log here:";
         cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
       done
-    # this file changes every time but should not be cached
-    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
-    - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
     - exit $EXITVALUE
 
 pmd:
   script:
-    - export GRADLE_USER_HOME=$PWD/.gradle
     - ./gradlew pmd -PdisablePreDex
-    # this file changes every time but should not be cached
-    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
-    - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
 
 checkstyle:
   script:
-    - export GRADLE_USER_HOME=$PWD/.gradle
     - ./gradlew checkstyle -PdisablePreDex
-    # this file changes every time but should not be cached
-    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
-    - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
 
 tools:
+  before_script:
+    - echo "ignored, no gradle needed"
   script:
     - cd app
     - ./tools/langs-list-check.py
     - ./tools/check-string-format.py
+  after_script:
+    - echo "ignored, no gradle needed"
+
+after_script:
+    # this file changes every time but should not be cached
+    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
+    - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
