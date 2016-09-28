@@ -231,14 +231,16 @@ pmd {
     consoleOutput = true
 }
 
-task pmdMain(type: Pmd, dependsOn: assembleDebug) {
+task pmdMain(type: Pmd) {
+    dependsOn 'assembleDebug'
     ruleSetFiles = files("${project.rootDir}/config/pmd/rules.xml", "${project.rootDir}/config/pmd/rules-main.xml")
     ruleSets = [] // otherwise defaults clash with the list in rules.xml
     source 'src/main/java'
     include '**/*.java'
 }
 
-task pmdTest(type: Pmd, dependsOn: assembleDebug) {
+task pmdTest(type: Pmd) {
+    dependsOn 'assembleDebug'
     ruleSetFiles = files("${project.rootDir}/config/pmd/rules.xml", "${project.rootDir}/config/pmd/rules-test.xml")
     ruleSets = [] // otherwise defaults clash with the list in rules.xml
     source 'src/test/java', 'src/androidTest/java'
