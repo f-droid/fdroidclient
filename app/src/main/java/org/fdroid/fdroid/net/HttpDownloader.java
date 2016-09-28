@@ -16,8 +16,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.net.ssl.HttpsURLConnection;
-
 import info.guardianproject.netcipher.NetCipher;
 
 public class HttpDownloader extends Downloader {
@@ -115,13 +113,6 @@ public class HttpDownloader extends Downloader {
             connection = (HttpURLConnection) sourceUrl.openConnection();
         } else {
             connection = NetCipher.getHttpURLConnection(sourceUrl);
-        }
-
-        // workaround until NetCipher supports HTTPS SNI
-        // https://gitlab.com/fdroid/fdroidclient/issues/431
-        if (connection instanceof HttpsURLConnection
-                && !"f-droid.org".equals(sourceUrl.getHost())) {
-            ((HttpsURLConnection) connection).setSSLSocketFactory(HttpsURLConnection.getDefaultSSLSocketFactory());
         }
 
         if (username != null && password != null) {

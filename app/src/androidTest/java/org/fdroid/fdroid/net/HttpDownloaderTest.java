@@ -22,6 +22,8 @@ public class HttpDownloaderTest {
             "https://f-droid.org/repo/index.jar",
             // sites that use SNI for HTTPS
             "https://guardianproject.info/fdroid/repo/index.jar",
+            //"https://microg.org/fdroid/repo/index.jar",
+            //"https://grobox.de/fdroid/repo/index.jar",
     };
 
     private boolean receivedProgress;
