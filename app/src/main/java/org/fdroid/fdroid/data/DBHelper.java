@@ -1,3 +1,26 @@
+/*
+ * Copyright (C) 2016 Blue Jay Wireless
+ * Copyright (C) 2015-2016 Daniel Martí <mvdan@mvdan.cc>
+ * Copyright (C) 2015 Christian Morgner
+ * Copyright (C) 2014-2016 Hans-Christoph Steiner <hans@eds.org>
+ * Copyright (C) 2013-2016 Peter Serwylo <peter@serwylo.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
@@ -23,6 +46,8 @@ class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";
 
+    public static final int REPO_XML_ARG_COUNT = 8;
+
     private static final String DATABASE_NAME = "fdroid";
 
     private static final String CREATE_TABLE_REPO = "create table "
@@ -42,7 +67,8 @@ class DBHelper extends SQLiteOpenHelper {
             + RepoTable.Cols.IS_SWAP + " integer boolean default 0,"
             + RepoTable.Cols.USERNAME + " string, "
             + RepoTable.Cols.PASSWORD + " string,"
-            + RepoTable.Cols.TIMESTAMP + " integer not null default 0"
+            + RepoTable.Cols.TIMESTAMP + " integer not null default 0, "
+            + RepoTable.Cols.PUSH_REQUESTS + " integer not null default " + Repo.PUSH_REQUEST_IGNORE
             + ");";
 
     static final String CREATE_TABLE_APK =
@@ -120,7 +146,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 61;
+    private static final int DB_VERSION = 62;
 
     private final Context context;
 
@@ -229,55 +255,30 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_APP_PREFS);
         ensureIndexes(db);
 
-        insertRepo(
-                db,
-                context.getString(R.string.fdroid_repo_name),
-                context.getString(R.string.fdroid_repo_address),
-                context.getString(R.string.fdroid_repo_description),
-                context.getString(R.string.fdroid_repo_pubkey),
-                context.getResources().getInteger(R.integer.fdroid_repo_version),
-                context.getResources().getInteger(R.integer.fdroid_repo_inuse),
-                context.getResources().getInteger(R.integer.fdroid_repo_priority)
-        );
-
-        insertRepo(
-                db,
-                context.getString(R.string.fdroid_archive_name),
-                context.getString(R.string.fdroid_archive_address),
-                context.getString(R.string.fdroid_archive_description),
-                context.getString(R.string.fdroid_archive_pubkey),
-                context.getResources().getInteger(R.integer.fdroid_archive_version),
-                context.getResources().getInteger(R.integer.fdroid_archive_inuse),
-                context.getResources().getInteger(R.integer.fdroid_archive_priority)
-        );
-
-        insertRepo(
-                db,
-                context.getString(R.string.guardianproject_repo_name),
-                context.getString(R.string.guardianproject_repo_address),
-                context.getString(R.string.guardianproject_repo_description),
-                context.getString(R.string.guardianproject_repo_pubkey),
-                context.getResources().getInteger(R.integer.guardianproject_repo_version),
-                context.getResources().getInteger(R.integer.guardianproject_repo_inuse),
-                context.getResources().getInteger(R.integer.guardianproject_repo_priority)
-        );
-
-        insertRepo(
-                db,
-                context.getString(R.string.guardianproject_archive_name),
-                context.getString(R.string.guardianproject_archive_address),
-                context.getString(R.string.guardianproject_archive_description),
-                context.getString(R.string.guardianproject_archive_pubkey),
-                context.getResources().getInteger(R.integer.guardianproject_archive_version),
-                context.getResources().getInteger(R.integer.guardianproject_archive_inuse),
-                context.getResources().getInteger(R.integer.guardianproject_archive_priority)
-        );
+        String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
+        if (defaultRepos.length % REPO_XML_ARG_COUNT != 0) {
+            throw new IllegalArgumentException(
+                    "default_repo.xml array does not have the right number of elements");
+        }
+        for (int i = 0; i < defaultRepos.length / REPO_XML_ARG_COUNT; i++) {
+            int offset = i * REPO_XML_ARG_COUNT;
+            insertRepo(
+                    db,
+                    defaultRepos[offset],     // name
+                    defaultRepos[offset + 1], // address
+                    defaultRepos[offset + 2], // description
+                    defaultRepos[offset + 3], // version
+                    defaultRepos[offset + 4], // enabled
+                    defaultRepos[offset + 5], // priority
+                    defaultRepos[offset + 6], // pushRequests
+                    defaultRepos[offset + 7]  // pubkey
+            );
+        }
     }
 
     private void insertRepo(SQLiteDatabase db, String name, String address,
-            String description, String pubKey, int version, int inUse,
-            int priority) {
-
+                            String description, String version, String enabled,
+                            String priority, String pushRequests, String pubKey) {
         ContentValues values = new ContentValues();
         values.put(RepoTable.Cols.ADDRESS, address);
         values.put(RepoTable.Cols.NAME, name);
@@ -285,13 +286,27 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(RepoTable.Cols.SIGNING_CERT, pubKey);
         values.put(RepoTable.Cols.FINGERPRINT, Utils.calcFingerprint(pubKey));
         values.put(RepoTable.Cols.MAX_AGE, 0);
-        values.put(RepoTable.Cols.VERSION, version);
-        values.put(RepoTable.Cols.IN_USE, inUse);
-        values.put(RepoTable.Cols.PRIORITY, priority);
+        values.put(RepoTable.Cols.VERSION, Utils.parseInt(version, 0));
+        values.put(RepoTable.Cols.IN_USE, Utils.parseInt(enabled, 0));
+        values.put(RepoTable.Cols.PRIORITY, Utils.parseInt(priority, Integer.MAX_VALUE));
         values.put(RepoTable.Cols.LAST_ETAG, (String) null);
         values.put(RepoTable.Cols.TIMESTAMP, 0);
 
-        Utils.debugLog(TAG, "Adding repository " + name);
+        switch (pushRequests) {
+            case "ignore":
+                values.put(RepoTable.Cols.PUSH_REQUESTS, Repo.PUSH_REQUEST_IGNORE);
+                break;
+            case "prompt":
+                values.put(RepoTable.Cols.PUSH_REQUESTS, Repo.PUSH_REQUEST_PROMPT);
+                break;
+            case "always":
+                values.put(RepoTable.Cols.PUSH_REQUESTS, Repo.PUSH_REQUEST_ACCEPT_ALWAYS);
+                break;
+            default:
+                throw new IllegalArgumentException(pushRequests + " is not a supported option!");
+        }
+
+        Utils.debugLog(TAG, "Adding repository " + name + " with push requests as " + pushRequests);
         db.insert(RepoTable.NAME, null, values);
     }
 
@@ -328,6 +343,7 @@ class DBHelper extends SQLiteOpenHelper {
         removeApkPackageNameColumn(db, oldVersion);
         addAppPrefsTable(db, oldVersion);
         lowerCaseApkHashes(db, oldVersion);
+        supportRepoPushRequests(db, oldVersion);
     }
 
     private void lowerCaseApkHashes(SQLiteDatabase db, int oldVersion) {
@@ -516,13 +532,13 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void insertNameAndDescription(SQLiteDatabase db,
-            int addressResId, int nameResId, int descriptionResId) {
+                                          String name, String address, String description) {
         ContentValues values = new ContentValues();
         values.clear();
-        values.put(RepoTable.Cols.NAME, context.getString(nameResId));
-        values.put(RepoTable.Cols.DESCRIPTION, context.getString(descriptionResId));
-        db.update(RepoTable.NAME, values, RepoTable.Cols.ADDRESS + " = ?", new String[] {
-                context.getString(addressResId),
+        values.put(RepoTable.Cols.NAME, name);
+        values.put(RepoTable.Cols.DESCRIPTION, description);
+        db.update(RepoTable.NAME, values, RepoTable.Cols.ADDRESS + " = ?", new String[]{
+                address,
         });
     }
 
@@ -542,15 +558,16 @@ class DBHelper extends SQLiteOpenHelper {
         if (!descriptionExists) {
             db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.DESCRIPTION + " text");
         }
-        insertNameAndDescription(db, R.string.fdroid_repo_address,
-                R.string.fdroid_repo_name, R.string.fdroid_repo_description);
-        insertNameAndDescription(db, R.string.fdroid_archive_address,
-                R.string.fdroid_archive_name, R.string.fdroid_archive_description);
-        insertNameAndDescription(db, R.string.guardianproject_repo_address,
-                R.string.guardianproject_repo_name, R.string.guardianproject_repo_description);
-        insertNameAndDescription(db, R.string.guardianproject_archive_address,
-                R.string.guardianproject_archive_name, R.string.guardianproject_archive_description);
 
+        String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
+        for (int i = 0; i < defaultRepos.length / REPO_XML_ARG_COUNT; i++) {
+            int offset = i * REPO_XML_ARG_COUNT;
+            insertNameAndDescription(db,
+                    defaultRepos[offset],     // name
+                    defaultRepos[offset + 1], // address
+                    defaultRepos[offset + 2] // description
+            );
+        }
     }
 
     /**
@@ -793,6 +810,17 @@ class DBHelper extends SQLiteOpenHelper {
                 + " columns to " + ApkTable.NAME);
         db.execSQL("alter table " + ApkTable.NAME + " add column "
                 + ApkTable.Cols.TARGET_SDK_VERSION + " integer");
+    }
+
+    private void supportRepoPushRequests(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 61) {
+            return;
+        }
+        Utils.debugLog(TAG, "Adding " + RepoTable.Cols.PUSH_REQUESTS
+                + " columns to " + RepoTable.NAME);
+        db.execSQL("alter table " + RepoTable.NAME + " add column "
+                + RepoTable.Cols.PUSH_REQUESTS + " integer not null default "
+                + Repo.PUSH_REQUEST_IGNORE);
     }
 
     private static boolean columnExists(SQLiteDatabase db, String table, String column) {

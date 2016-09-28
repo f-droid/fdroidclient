@@ -196,11 +196,12 @@ public interface Schema {
             String USERNAME     = "username";
             String PASSWORD     = "password";
             String TIMESTAMP    = "timestamp";
+            String PUSH_REQUESTS = "pushRequests";
 
             String[] ALL = {
                     _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, SIGNING_CERT,
                     FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION, IS_SWAP,
-                    USERNAME, PASSWORD, TIMESTAMP,
+                    USERNAME, PASSWORD, TIMESTAMP, PUSH_REQUESTS,
             };
         }
     }

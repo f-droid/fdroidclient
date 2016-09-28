@@ -1,18 +1,48 @@
+/*
+ * Copyright (C) 2016 Blue Jay Wireless
+ * Copyright (C) 2015-2016 Daniel Martí <mvdan@mvdan.cc>
+ * Copyright (C) 2014-2016 Hans-Christoph Steiner <hans@eds.org>
+ * Copyright (C) 2014-2016 Peter Serwylo <peter@serwylo.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.fdroid.fdroid;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoPersister;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.RepoPushRequest;
 import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderFactory;
 import org.xml.sax.InputSource;
@@ -27,6 +57,7 @@ import java.net.URL;
 import java.security.CodeSigner;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.jar.JarEntry;
@@ -37,12 +68,15 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 /**
- * Responsible for updating an individual repository. This will:
- *  * Download the index.jar
- *  * Verify that it is signed correctly and by the correct certificate
- *  * Parse the index.xml from the .jar file
- *  * Save the resulting repo, apps, and apks to the database.
- *
+ * Updates the local database with a repository's app/apk metadata and verifying
+ * the JAR signature on the file received from the repository. As an overview:
+ * <ul>
+ * <li>Download the {@code index.jar}
+ * <li>Verify that it is signed correctly and by the correct certificate
+ * <li>Parse the {@code index.xml} that is in {@code index.jar}
+ * <li>Save the resulting repo, apps, and apks to the database.
+ * <li>Process any push install/uninstall requests included in the repository
+ * </ul>
  * <b>WARNING</b>: this class is the central piece of the entire security model of
  * FDroid!  Avoid modifying it when possible, if you absolutely must, be very,
  * very careful with the changes that you are making!
@@ -66,7 +100,10 @@ public class RepoUpdater {
     private String cacheTag;
     private X509Certificate signingCertFromJar;
 
-    @NonNull private final RepoPersister persister;
+    @NonNull
+    private final RepoPersister persister;
+
+    private final List<RepoPushRequest> repoPushRequestList = new ArrayList<>();
 
     /**
      * Updates an app repo as read out of the database into a {@link Repo} instance.
@@ -148,6 +185,7 @@ public class RepoUpdater {
             // successful download, then we will have a file ready to use:
             cacheTag = downloader.getCacheTag();
             processDownloadedFile(downloader.outputFile);
+            processRepoPushRequests();
         }
     }
 
@@ -170,6 +208,11 @@ public class RepoUpdater {
                     throw new RuntimeException("Error while saving repo details to database.", e);
                 }
             }
+
+            @Override
+            public void receiveRepoPushRequest(RepoPushRequest repoPushRequest) {
+                repoPushRequestList.add(repoPushRequest);
+            }
         };
     }
 
@@ -188,7 +231,7 @@ public class RepoUpdater {
             JarFile jarFile = new JarFile(downloadedFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                processXmlProgressListener, new URL(repo.address), (int) indexEntry.getSize());
+                    processXmlProgressListener, new URL(repo.address), (int) indexEntry.getSize());
 
             // Process the index...
             SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -396,4 +439,57 @@ public class RepoUpdater {
         throw new SigningException(repo, "Signing certificate does not match!");
     }
 
+    /**
+     * Server index XML can include optional {@code install} and {@code uninstall}
+     * requests.  This processes those requests, figuring out whether the client
+     * should always accept, prompt the user, or ignore those requests on a
+     * per repo basis.
+     */
+    private void processRepoPushRequests() {
+        PackageManager pm = context.getPackageManager();
+
+        for (RepoPushRequest repoPushRequest : repoPushRequestList) {
+            String packageName = repoPushRequest.packageName;
+            PackageInfo packageInfo = null;
+            try {
+                packageInfo = pm.getPackageInfo(packageName, 0);
+            } catch (PackageManager.NameNotFoundException e) {
+                // ignored
+            }
+            if (RepoPushRequest.INSTALL.equals(repoPushRequest.request)) {
+                ContentResolver cr = context.getContentResolver();
+                App app = AppProvider.Helper.findByPackageName(cr, packageName);
+                if (app == null) {
+                    Utils.debugLog(TAG, packageName + " not in local database, ignoring request to"
+                            + repoPushRequest.request);
+                    continue;
+                }
+                int versionCode;
+                if (repoPushRequest.versionCode == null) {
+                    versionCode = app.suggestedVersionCode;
+                } else {
+                    versionCode = repoPushRequest.versionCode;
+                }
+                if (packageInfo != null && versionCode == packageInfo.versionCode) {
+                    Utils.debugLog(TAG, repoPushRequest + " already installed, ignoring");
+                } else {
+                    Apk apk = ApkProvider.Helper.find(context, packageName, versionCode);
+                    InstallManagerService.queue(context, app, apk);
+                }
+            } else if (RepoPushRequest.UNINSTALL.equals(repoPushRequest.request)) {
+                if (packageInfo == null) {
+                    Utils.debugLog(TAG, "ignoring request, not installed: " + repoPushRequest);
+                    continue;
+                }
+                if (repoPushRequest.versionCode == null
+                        || repoPushRequest.versionCode == packageInfo.versionCode) {
+                    InstallerService.uninstall(context, packageName);
+                } else {
+                    Utils.debugLog(TAG, "ignoring request based on versionCode:" + repoPushRequest);
+                }
+            } else {
+                Utils.debugLog(TAG, "Unknown Repo Push Request: " + repoPushRequest.request);
+            }
+        }
+    }
 }
