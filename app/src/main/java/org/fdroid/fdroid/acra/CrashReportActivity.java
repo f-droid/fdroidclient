@@ -1,4 +1,4 @@
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.acra;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -6,8 +6,10 @@ import android.support.v7.app.AlertDialog;
 import android.widget.EditText;
 
 import org.acra.dialog.BaseCrashReportDialog;
+import org.fdroid.fdroid.R;
 
-public class CrashReportActivity extends BaseCrashReportDialog implements DialogInterface.OnDismissListener, DialogInterface.OnClickListener {
+public class CrashReportActivity extends BaseCrashReportDialog
+        implements DialogInterface.OnDismissListener, DialogInterface.OnClickListener {
 
     private static final String STATE_COMMENT = "comment";
     private EditText comment;
