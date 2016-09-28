@@ -6,6 +6,10 @@
 
 * Uses Privileged Extension by default, when its installed
 
+* Optionally grey out apps that require Anti-Features
+
+* New languages: Croatian, Icelandic, Myanmar
+
 ### 0.100.1 (2016-06-21)
 
 * Fix background crash after installing or updating apps
