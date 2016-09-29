@@ -242,41 +242,45 @@ public class ApkProviderTest extends FDroidProviderTest {
     @Test
     public void testKnownApks() {
 
+        App fdroid = Assert.ensureApp(context, "org.fdroid.fdroid");
         for (int i = 0; i < 7; i++) {
-            Assert.insertApk(context, "org.fdroid.fdroid", i);
+            Assert.insertApk(context, fdroid, i);
         }
 
+        App exampleOrg = Assert.ensureApp(context, "org.example");
         for (int i = 0; i < 9; i++) {
-            Assert.insertApk(context, "org.example", i);
+            Assert.insertApk(context, exampleOrg, i);
         }
 
+        App exampleCom = Assert.ensureApp(context, "com.example");
         for (int i = 0; i < 3; i++) {
-            Assert.insertApk(context, "com.example", i);
+            Assert.insertApk(context, exampleCom, i);
         }
 
-        Assert.insertApk(context, "com.apk.thingo", 1);
+        App thingo = Assert.ensureApp(context, "com.apk.thingo");
+        Assert.insertApk(context, thingo, 1);
 
         Apk[] known = {
-            new MockApk("org.fdroid.fdroid", 1),
-            new MockApk("org.fdroid.fdroid", 3),
-            new MockApk("org.fdroid.fdroid", 5),
+            new MockApk(fdroid, 1),
+            new MockApk(fdroid, 3),
+            new MockApk(fdroid, 5),
 
-            new MockApk("com.example", 1),
-            new MockApk("com.example", 2),
+            new MockApk(exampleCom, 1),
+            new MockApk(exampleCom, 2),
         };
 
         Apk[] unknown = {
-            new MockApk("org.fdroid.fdroid", 7),
-            new MockApk("org.fdroid.fdroid", 9),
-            new MockApk("org.fdroid.fdroid", 11),
-            new MockApk("org.fdroid.fdroid", 13),
+            new MockApk(fdroid, 7),
+            new MockApk(fdroid, 9),
+            new MockApk(fdroid, 11),
+            new MockApk(fdroid, 13),
 
-            new MockApk("com.example", 3),
-            new MockApk("com.example", 4),
-            new MockApk("com.example", 5),
+            new MockApk(exampleCom, 3),
+            new MockApk(exampleCom, 4),
+            new MockApk(exampleCom, 5),
 
-            new MockApk("info.example", 1),
-            new MockApk("info.example", 2),
+            new MockApk(-10, 1),
+            new MockApk(-10, 2),
         };
 
         List<Apk> apksToCheck = new ArrayList<>(known.length + unknown.length);
@@ -285,6 +289,7 @@ public class ApkProviderTest extends FDroidProviderTest {
 
         String[] projection = {
             Cols.Package.PACKAGE_NAME,
+            Cols.APP_ID,
             Cols.VERSION_CODE,
         };
 

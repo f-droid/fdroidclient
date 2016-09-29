@@ -27,7 +27,8 @@ public class TempApkProvider extends ApkProvider {
 
     static {
         MATCHER.addURI(getAuthority(), PATH_INIT, CODE_INIT);
-        MATCHER.addURI(getAuthority(), PATH_APK + "/#/*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), PATH_APK_FROM_ANY_REPO + "/#/*", CODE_APK_FROM_ANY_REPO);
+        MATCHER.addURI(getAuthority(), PATH_APK_FROM_REPO + "/#/#", CODE_APK_FROM_REPO);
         MATCHER.addURI(getAuthority(), PATH_REPO_APK + "/#/*", CODE_REPO_APK);
     }
 
@@ -52,9 +53,9 @@ public class TempApkProvider extends ApkProvider {
     public static Uri getApkUri(Apk apk) {
         return getContentUri()
                 .buildUpon()
-                .appendPath(PATH_APK)
+                .appendPath(PATH_APK_FROM_REPO)
+                .appendPath(Long.toString(apk.appId))
                 .appendPath(Integer.toString(apk.versionCode))
-                .appendPath(apk.packageName)
                 .build();
     }
 
@@ -96,7 +97,7 @@ public class TempApkProvider extends ApkProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        if (MATCHER.match(uri) != CODE_SINGLE) {
+        if (MATCHER.match(uri) != CODE_APK_FROM_REPO) {
             throw new UnsupportedOperationException("Cannot update anything other than a single apk.");
         }
 
