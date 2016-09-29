@@ -258,7 +258,7 @@ public class RepoPersister {
     @Nullable
     private ContentProviderOperation deleteOrphanedApks(List<App> apps, Map<String, List<Apk>> packages) {
         String[] projection = new String[]{Schema.ApkTable.Cols.Package.PACKAGE_NAME, Schema.ApkTable.Cols.VERSION_CODE};
-        List<Apk> existing = ApkProvider.Helper.find(context, repo, apps, projection);
+        List<Apk> existing = ApkProvider.Helper.findByUri(context, repo, apps, projection);
         List<Apk> toDelete = new ArrayList<>();
 
         for (Apk existingApk : existing) {

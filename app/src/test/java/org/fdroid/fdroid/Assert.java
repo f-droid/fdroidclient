@@ -201,7 +201,7 @@ public class Assert {
         return AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1, AppMetadataTable.Cols.ALL);
     }
 
-    private static App ensureApp(Context context, String packageName) {
+    public static App ensureApp(Context context, String packageName) {
         App app = AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1, AppMetadataTable.Cols.ALL);
         if (app == null) {
             insertApp(context, packageName, packageName);
