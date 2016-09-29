@@ -64,7 +64,7 @@ public class InstallerService extends IntentService {
         if (ACTION_INSTALL.equals(intent.getAction())) {
             Uri uri = intent.getData();
             Uri downloadUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
-            installer.installPackage(uri, downloadUri, apk);
+            installer.installPackage(uri, downloadUri);
         } else if (ACTION_UNINSTALL.equals(intent.getAction())) {
             installer.uninstallPackage();
         }

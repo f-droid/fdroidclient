@@ -44,7 +44,7 @@ public class DefaultInstaller extends Installer {
     }
 
     @Override
-    protected void installPackageInternal(Uri localApkUri, Uri downloadUri, Apk apk) {
+    protected void installPackageInternal(Uri localApkUri, Uri downloadUri) {
 
         Intent installIntent = new Intent(context, DefaultInstallerActivity.class);
         installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);
