@@ -942,7 +942,7 @@ public class AppDetails extends AppCompatActivity {
 
     private void initiateInstall(Apk apk) {
         Installer installer = InstallerFactory.create(this, apk);
-        Intent intent = installer.getPermissionScreen(apk);
+        Intent intent = installer.getPermissionScreen();
         if (intent != null) {
             // permission screen required
             Utils.debugLog(TAG, "permission screen required");
@@ -965,7 +965,7 @@ public class AppDetails extends AppCompatActivity {
     private void uninstallApk() {
         Apk apk = app.installedApk;
         Installer installer = InstallerFactory.create(this, apk);
-        Intent intent = installer.getUninstallScreen(apk);
+        Intent intent = installer.getUninstallScreen();
         if (intent != null) {
             // uninstall screen required
             Utils.debugLog(TAG, "screen screen required");

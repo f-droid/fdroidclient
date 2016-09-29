@@ -307,7 +307,7 @@ public class PrivilegedInstaller extends Installer {
     }
 
     @Override
-    protected void installPackageInternal(final Uri localApkUri, final Uri downloadUri, Apk apk) {
+    protected void installPackageInternal(final Uri localApkUri, final Uri downloadUri) {
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);

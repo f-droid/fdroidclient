@@ -45,7 +45,7 @@ public class ExtensionInstaller extends Installer {
     }
 
     @Override
-    protected void installPackageInternal(Uri localApkUri, Uri downloadUri, Apk apk) {
+    protected void installPackageInternal(Uri localApkUri, Uri downloadUri) {
         // extension must be signed with the same public key as main F-Droid
         // NOTE: Disabled for debug builds to be able to test official extension from repo
         ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(context);

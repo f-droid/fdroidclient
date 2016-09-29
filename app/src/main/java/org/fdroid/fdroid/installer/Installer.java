@@ -83,17 +83,16 @@ public abstract class Installer {
     /**
      * Returns permission screen for given apk.
      *
-     * @param apk instance of Apk
      * @return Intent with Activity to show required permissions.
      * Returns null if Installer handles that on itself, e.g., with DefaultInstaller,
      * or if no new permissions have been introduced during an update
      */
-    public Intent getPermissionScreen(Apk apk) {
+    public Intent getPermissionScreen() {
         if (!isUnattended()) {
             return null;
         }
 
-        int count = newPermissionCount(apk);
+        int count = newPermissionCount();
         if (count == 0) {
             // no permission screen needed!
             return null;
@@ -105,7 +104,7 @@ public abstract class Installer {
         return intent;
     }
 
-    private int newPermissionCount(Apk apk) {
+    private int newPermissionCount() {
         boolean supportsRuntimePermissions = apk.targetSdkVersion >= 23;
         if (supportsRuntimePermissions) {
             return 0;
@@ -129,12 +128,11 @@ public abstract class Installer {
      * Returns an Intent to start a dialog wrapped in an activity
      * for uninstall confirmation.
      *
-     * @param apk {@link Apk} instance of app to uninstall
      * @return Intent with activity for uninstall confirmation
      * Returns null if Installer handles that on itself, e.g.,
      * with DefaultInstaller.
      */
-    public Intent getUninstallScreen(Apk apk) {
+    public Intent getUninstallScreen() {
         if (!isUnattended()) {
             return null;
         }
@@ -228,9 +226,8 @@ public abstract class Installer {
      * @param localApkUri points to the local copy of the APK to be installed
      * @param downloadUri serves as the unique ID for all actions related to the
      *                    installation of that specific APK
-     * @param apk         apk object of the app that should be installed
      */
-    public void installPackage(Uri localApkUri, Uri downloadUri, Apk apk) {
+    public void installPackage(Uri localApkUri, Uri downloadUri) {
         try {
             // verify that permissions of the apk file match the ones from the apk object
             ApkVerifier apkVerifier = new ApkVerifier(context, localApkUri, apk);
@@ -248,7 +245,7 @@ public abstract class Installer {
                 Log.e(TAG, e.getMessage(), e);
                 Log.e(TAG, "Falling back to AOSP DefaultInstaller!");
                 DefaultInstaller defaultInstaller = new DefaultInstaller(context, apk);
-                defaultInstaller.installPackageInternal(localApkUri, downloadUri, apk);
+                defaultInstaller.installPackageInternal(localApkUri, downloadUri);
                 return;
             }
         }
@@ -265,10 +262,10 @@ public abstract class Installer {
             return;
         }
 
-        installPackageInternal(sanitizedUri, downloadUri, apk);
+        installPackageInternal(sanitizedUri, downloadUri);
     }
 
-    protected abstract void installPackageInternal(Uri localApkUri, Uri downloadUri, Apk apk);
+    protected abstract void installPackageInternal(Uri localApkUri, Uri downloadUri);
 
     /**
      * Uninstall app as defined by {@link Installer#apk} in
