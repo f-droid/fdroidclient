@@ -275,7 +275,7 @@ public class ApkProvider extends FDroidProvider {
                 builder.append(',');
             }
             final Apk apk = apks.get(i);
-            builder.append(apk.packageName).append(':').append(apk.versionCode);
+            builder.append(apk.appId).append(':').append(apk.versionCode);
         }
         return builder.toString();
     }
@@ -428,35 +428,23 @@ public class ApkProvider extends FDroidProvider {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < apkDetails.length; i++) {
             String[] parts = apkDetails[i].split(":");
-            String packageName = parts[0];
+            String appId = parts[0];
             String versionCode = parts[1];
-            args[i * 2] = packageName;
+            args[i * 2] = appId;
             args[i * 2 + 1] = versionCode;
             if (i != 0) {
                 sb.append(" OR ");
             }
-            sb.append(" ( ");
 
-            if (includeAlias) {
-                // This is the simpler way to figure out the package name of a row in the apk table.
-                // It requires slightly less work for sqlite3 than the alternative below.
-                sb.append("app.")
-                        .append(AppMetadataTable.Cols.PACKAGE_ID)
-                        .append(" = (")
-                        .append(getPackageIdFromPackageNameQuery())
-                        .append(") ");
-            } else {
-                sb.append(Cols.APP_ID)
-                        .append(" IN (")
-                        .append(getMetadataIdFromPackageNameQuery())
-                        .append(")");
-            }
-
-            sb.append(" AND ")
+            sb.append(" ( ")
+                    .append(Cols.APP_ID)
+                    .append(" = ? ")
+                    .append(" AND ")
                     .append(alias)
                     .append(Cols.VERSION_CODE)
                     .append(" = ? ) ");
         }
+
         return new QuerySelection(sb.toString(), args);
     }
 

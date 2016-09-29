@@ -178,6 +178,7 @@ public class RepoPersister {
                 Schema.ApkTable.Cols.Package.PACKAGE_NAME,
                 Schema.ApkTable.Cols.VERSION_CODE,
                 Schema.ApkTable.Cols.REPO_ID,
+                Schema.ApkTable.Cols.APP_ID,
         };
         List<Apk> existingApks = ApkProvider.Helper.knownApks(context, packages, projection);
         ArrayList<ContentProviderOperation> operations = new ArrayList<>(packages.size());
