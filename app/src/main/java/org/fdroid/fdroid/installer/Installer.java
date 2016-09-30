@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Blue Jay Wireless
  * Copyright (C) 2016 Dominik Schürmann <dominik@dominikschuermann.de>
  *
  * This program is free software; you can redistribute it and/or
@@ -42,10 +43,10 @@ import java.io.IOException;
  * Handles the actual install process.  Subclasses implement the details.
  */
 public abstract class Installer {
-    final Context context;
-    private final LocalBroadcastManager localBroadcastManager;
-
     private static final String TAG = "Installer";
+
+    final Context context;
+    final Apk apk;
 
     public static final String ACTION_INSTALL_STARTED = "org.fdroid.fdroid.installer.Installer.action.INSTALL_STARTED";
     public static final String ACTION_INSTALL_COMPLETE = "org.fdroid.fdroid.installer.Installer.action.INSTALL_COMPLETE";
@@ -67,29 +68,31 @@ public abstract class Installer {
      */
     static final String EXTRA_DOWNLOAD_URI = "org.fdroid.fdroid.installer.Installer.extra.DOWNLOAD_URI";
     public static final String EXTRA_APK = "org.fdroid.fdroid.installer.Installer.extra.APK";
-    public static final String EXTRA_PACKAGE_NAME = "org.fdroid.fdroid.installer.Installer.extra.PACKAGE_NAME";
     public static final String EXTRA_USER_INTERACTION_PI = "org.fdroid.fdroid.installer.Installer.extra.USER_INTERACTION_PI";
     public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.installer.Installer.extra.ERROR_MESSAGE";
 
-    Installer(Context context) {
+    /**
+     * @param apk must be included so that all the phases of the install process
+     *            can get all the data about the app, even after F-Droid was killed
+     */
+    Installer(Context context, Apk apk) {
         this.context = context;
-        localBroadcastManager = LocalBroadcastManager.getInstance(context);
+        this.apk = apk;
     }
 
     /**
      * Returns permission screen for given apk.
      *
-     * @param apk instance of Apk
      * @return Intent with Activity to show required permissions.
      * Returns null if Installer handles that on itself, e.g., with DefaultInstaller,
      * or if no new permissions have been introduced during an update
      */
-    public Intent getPermissionScreen(Apk apk) {
+    public Intent getPermissionScreen() {
         if (!isUnattended()) {
             return null;
         }
 
-        int count = newPermissionCount(apk);
+        int count = newPermissionCount();
         if (count == 0) {
             // no permission screen needed!
             return null;
@@ -101,7 +104,7 @@ public abstract class Installer {
         return intent;
     }
 
-    private int newPermissionCount(Apk apk) {
+    private int newPermissionCount() {
         boolean supportsRuntimePermissions = apk.targetSdkVersion >= 23;
         if (supportsRuntimePermissions) {
             return 0;
@@ -125,69 +128,69 @@ public abstract class Installer {
      * Returns an Intent to start a dialog wrapped in an activity
      * for uninstall confirmation.
      *
-     * @param packageName packageName of app to uninstall
      * @return Intent with activity for uninstall confirmation
      * Returns null if Installer handles that on itself, e.g.,
      * with DefaultInstaller.
      */
-    public Intent getUninstallScreen(String packageName) {
+    public Intent getUninstallScreen() {
         if (!isUnattended()) {
             return null;
         }
 
         Intent intent = new Intent(context, UninstallDialogActivity.class);
-        intent.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
+        intent.putExtra(Installer.EXTRA_APK, apk);
 
         return intent;
     }
 
     void sendBroadcastInstall(Uri downloadUri, String action, PendingIntent pendingIntent) {
-        sendBroadcastInstall(downloadUri, action, pendingIntent, null);
+        sendBroadcastInstall(context, downloadUri, action, apk, pendingIntent, null);
     }
 
     void sendBroadcastInstall(Uri downloadUri, String action) {
-        sendBroadcastInstall(downloadUri, action, null, null);
+        sendBroadcastInstall(context, downloadUri, action, apk, null, null);
     }
 
     void sendBroadcastInstall(Uri downloadUri, String action, String errorMessage) {
-        sendBroadcastInstall(downloadUri, action, null, errorMessage);
+        sendBroadcastInstall(context, downloadUri, action, apk, null, errorMessage);
     }
 
-    void sendBroadcastInstall(Uri downloadUri, String action,
-                              PendingIntent pendingIntent, String errorMessage) {
+    static void sendBroadcastInstall(Context context,
+                                     Uri downloadUri, String action, Apk apk,
+                                     PendingIntent pendingIntent, String errorMessage) {
         Intent intent = new Intent(action);
         intent.setData(downloadUri);
         intent.putExtra(Installer.EXTRA_USER_INTERACTION_PI, pendingIntent);
+        intent.putExtra(Installer.EXTRA_APK, apk);
         if (!TextUtils.isEmpty(errorMessage)) {
             intent.putExtra(Installer.EXTRA_ERROR_MESSAGE, errorMessage);
         }
-        localBroadcastManager.sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
-    void sendBroadcastUninstall(String packageName, String action, String errorMessage) {
-        sendBroadcastUninstall(packageName, action, null, errorMessage);
+    void sendBroadcastUninstall(String action, String errorMessage) {
+        sendBroadcastUninstall(action, null, errorMessage);
     }
 
-    void sendBroadcastUninstall(String packageName, String action) {
-        sendBroadcastUninstall(packageName, action, null, null);
+    void sendBroadcastUninstall(String action) {
+        sendBroadcastUninstall(action, null, null);
     }
 
-    void sendBroadcastUninstall(String packageName, String action, PendingIntent pendingIntent) {
-        sendBroadcastUninstall(packageName, action, pendingIntent, null);
+    void sendBroadcastUninstall(String action, PendingIntent pendingIntent) {
+        sendBroadcastUninstall(action, pendingIntent, null);
     }
 
-    void sendBroadcastUninstall(String packageName, String action,
-                                PendingIntent pendingIntent, String errorMessage) {
-        Uri uri = Uri.fromParts("package", packageName, null);
+    void sendBroadcastUninstall(String action, PendingIntent pendingIntent, String errorMessage) {
+        Uri uri = Uri.fromParts("package", apk.packageName, null);
 
         Intent intent = new Intent(action);
         intent.setData(uri); // for broadcast filtering
-        intent.putExtra(Installer.EXTRA_PACKAGE_NAME, packageName);
+        intent.putExtra(Installer.EXTRA_APK, apk);
         intent.putExtra(Installer.EXTRA_USER_INTERACTION_PI, pendingIntent);
         if (!TextUtils.isEmpty(errorMessage)) {
             intent.putExtra(Installer.EXTRA_ERROR_MESSAGE, errorMessage);
         }
-        localBroadcastManager.sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     /**
@@ -223,9 +226,8 @@ public abstract class Installer {
      * @param localApkUri points to the local copy of the APK to be installed
      * @param downloadUri serves as the unique ID for all actions related to the
      *                    installation of that specific APK
-     * @param apk         apk object of the app that should be installed
      */
-    public void installPackage(Uri localApkUri, Uri downloadUri, Apk apk) {
+    public void installPackage(Uri localApkUri, Uri downloadUri) {
         try {
             // verify that permissions of the apk file match the ones from the apk object
             ApkVerifier apkVerifier = new ApkVerifier(context, localApkUri, apk);
@@ -242,8 +244,8 @@ public abstract class Installer {
             if (isUnattended()) {
                 Log.e(TAG, e.getMessage(), e);
                 Log.e(TAG, "Falling back to AOSP DefaultInstaller!");
-                DefaultInstaller defaultInstaller = new DefaultInstaller(context);
-                defaultInstaller.installPackageInternal(localApkUri, downloadUri, apk);
+                DefaultInstaller defaultInstaller = new DefaultInstaller(context, apk);
+                defaultInstaller.installPackageInternal(localApkUri, downloadUri);
                 return;
             }
         }
@@ -260,17 +262,16 @@ public abstract class Installer {
             return;
         }
 
-        installPackageInternal(sanitizedUri, downloadUri, apk);
+        installPackageInternal(sanitizedUri, downloadUri);
     }
 
-    protected abstract void installPackageInternal(Uri localApkUri, Uri downloadUri, Apk apk);
+    protected abstract void installPackageInternal(Uri localApkUri, Uri downloadUri);
 
     /**
-     * Uninstall app
-     *
-     * @param packageName package name of the app that should be uninstalled
+     * Uninstall app as defined by {@link Installer#apk} in
+     * {@link Installer#Installer(Context, Apk)}
      */
-    protected abstract void uninstallPackage(String packageName);
+    protected abstract void uninstallPackage();
 
     /**
      * This {@link Installer} instance is capable of "unattended" install and

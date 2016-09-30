@@ -56,6 +56,7 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
@@ -299,6 +300,21 @@ public class FDroidApp extends Application {
         });
 
         configureTor(Preferences.get().isTorEnabled());
+
+        if (Preferences.get().isKeepingInstallHistory()) {
+            InstallHistoryService.register(this);
+        }
+
+        String packageName = getString(R.string.install_history_reader_packageName);
+        String unset = getString(R.string.install_history_reader_packageName_UNSET);
+        if (!TextUtils.equals(packageName, unset)) {
+            int modeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
+            if (Build.VERSION.SDK_INT >= 19) {
+                modeFlags |= Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION;
+            }
+            grantUriPermission(packageName, InstallHistoryService.LOG_URI, modeFlags);
+        }
     }
 
     @TargetApi(18)

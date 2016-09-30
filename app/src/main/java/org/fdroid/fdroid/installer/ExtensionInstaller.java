@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Blue Jay Wireless
  * Copyright (C) 2016 Dominik Schürmann <dominik@dominikschuermann.de>
  *
  * This program is free software; you can redistribute it and/or
@@ -39,12 +40,12 @@ import java.io.File;
  */
 public class ExtensionInstaller extends Installer {
 
-    ExtensionInstaller(Context context) {
-        super(context);
+    ExtensionInstaller(Context context, Apk apk) {
+        super(context, apk);
     }
 
     @Override
-    protected void installPackageInternal(Uri localApkUri, Uri downloadUri, Apk apk) {
+    protected void installPackageInternal(Uri localApkUri, Uri downloadUri) {
         // extension must be signed with the same public key as main F-Droid
         // NOTE: Disabled for debug builds to be able to test official extension from repo
         ApkSignatureVerifier signatureVerifier = new ApkSignatureVerifier(context);
@@ -71,23 +72,22 @@ public class ExtensionInstaller extends Installer {
     }
 
     @Override
-    protected void uninstallPackage(String packageName) {
-        sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_STARTED);
+    protected void uninstallPackage() {
+        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_STARTED);
 
         Intent uninstallIntent = new Intent(context, InstallExtensionDialogActivity.class);
         uninstallIntent.setAction(InstallExtensionDialogActivity.ACTION_UNINSTALL);
 
         PendingIntent uninstallPendingIntent = PendingIntent.getActivity(
                 context.getApplicationContext(),
-                packageName.hashCode(),
+                apk.packageName.hashCode(),
                 uninstallIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
-        sendBroadcastUninstall(packageName,
-                Installer.ACTION_UNINSTALL_USER_INTERACTION, uninstallPendingIntent);
+        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_USER_INTERACTION, uninstallPendingIntent);
 
         // don't use broadcasts for the rest of this special installer
-        sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_COMPLETE);
+        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_COMPLETE);
     }
 
     @Override

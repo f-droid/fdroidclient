@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014-2016 Dominik Schürmann <dominik@dominikschuermann.de>
+ * Copyright (C) 2016 Blue Jay Wireless
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -31,23 +32,21 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.Apk;
 
 /**
  * A transparent activity as a wrapper around Android's PackageInstaller Intents
  */
 public class DefaultInstallerActivity extends FragmentActivity {
-    private static final String TAG = "AndroidInstallerAct";
+    private static final String TAG = "DefaultInstallerActivit";
 
     static final String ACTION_INSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.INSTALL_PACKAGE";
     static final String ACTION_UNINSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.UNINSTALL_PACKAGE";
-
-    static final String EXTRA_UNINSTALL_PACKAGE_NAME = "org.fdroid.fdroid.installer.DefaultInstaller.extra.UNINSTALL_PACKAGE_NAME";
 
     private static final int REQUEST_CODE_INSTALL = 0;
     private static final int REQUEST_CODE_UNINSTALL = 1;
 
     private Uri downloadUri;
-    private String uninstallPackageName;
 
     // for the broadcasts
     private DefaultInstaller installer;
@@ -56,18 +55,16 @@ public class DefaultInstallerActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        installer = new DefaultInstaller(this);
-
         Intent intent = getIntent();
         String action = intent.getAction();
+        Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
+        installer = new DefaultInstaller(this, apk);
         if (ACTION_INSTALL_PACKAGE.equals(action)) {
             Uri localApkUri = intent.getData();
             downloadUri = intent.getParcelableExtra(Installer.EXTRA_DOWNLOAD_URI);
             installPackage(localApkUri);
         } else if (ACTION_UNINSTALL_PACKAGE.equals(action)) {
-            uninstallPackageName = intent.getStringExtra(EXTRA_UNINSTALL_PACKAGE_NAME);
-
-            uninstallPackage(uninstallPackageName);
+            uninstallPackage(apk.packageName);
         } else {
             throw new IllegalStateException("Intent action not specified!");
         }
@@ -125,7 +122,6 @@ public class DefaultInstallerActivity extends FragmentActivity {
                     "This Android rom does not support ACTION_INSTALL_PACKAGE!");
             finish();
         }
-        installer.sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
     }
 
     private void uninstallPackage(String packageName) {
@@ -134,7 +130,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
             getPackageManager().getPackageInfo(packageName, 0);
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "NameNotFoundException", e);
-            installer.sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_INTERRUPTED,
+            installer.sendBroadcastUninstall(Installer.ACTION_UNINSTALL_INTERRUPTED,
                     "Package that is scheduled for uninstall is not installed!");
             finish();
             return;
@@ -155,7 +151,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
             startActivityForResult(intent, REQUEST_CODE_UNINSTALL);
         } catch (ActivityNotFoundException e) {
             Log.e(TAG, "ActivityNotFoundException", e);
-            installer.sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_INTERRUPTED,
+            installer.sendBroadcastUninstall(Installer.ACTION_UNINSTALL_INTERRUPTED,
                     "This Android rom does not support ACTION_UNINSTALL_PACKAGE!");
             finish();
         }
@@ -197,25 +193,21 @@ public class DefaultInstallerActivity extends FragmentActivity {
             case REQUEST_CODE_UNINSTALL:
                 // resultCode is always 0 on Android < 4.0.
                 if (Build.VERSION.SDK_INT < 14) {
-                    installer.sendBroadcastUninstall(uninstallPackageName,
-                            Installer.ACTION_UNINSTALL_COMPLETE);
+                    installer.sendBroadcastUninstall(Installer.ACTION_UNINSTALL_COMPLETE);
                     break;
                 }
 
                 switch (resultCode) {
                     case Activity.RESULT_OK:
-                        installer.sendBroadcastUninstall(uninstallPackageName,
-                                Installer.ACTION_UNINSTALL_COMPLETE);
+                        installer.sendBroadcastUninstall(Installer.ACTION_UNINSTALL_COMPLETE);
                         break;
                     case Activity.RESULT_CANCELED:
-                        installer.sendBroadcastUninstall(uninstallPackageName,
-                                Installer.ACTION_UNINSTALL_INTERRUPTED);
+                        installer.sendBroadcastUninstall(Installer.ACTION_UNINSTALL_INTERRUPTED);
                         break;
                     case Activity.RESULT_FIRST_USER:
                     default:
                         // AOSP UninstallAppProgress returns RESULT_FIRST_USER on error
-                        installer.sendBroadcastUninstall(uninstallPackageName,
-                                Installer.ACTION_UNINSTALL_INTERRUPTED,
+                        installer.sendBroadcastUninstall(Installer.ACTION_UNINSTALL_INTERRUPTED,
                                 getString(R.string.uninstall_error_unknown));
                         break;
                 }

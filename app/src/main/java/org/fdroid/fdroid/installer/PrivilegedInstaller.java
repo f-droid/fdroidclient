@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Blue Jay Wireless
  * Copyright (C) 2014-2016 Dominik Schürmann <dominik@dominikschuermann.de>
  * Copyright (C) 2015 Daniel Martí <mvdan@mvdan.cc>
  *
@@ -255,8 +256,8 @@ public class PrivilegedInstaller extends Installer {
                         "device owner has marked the package as uninstallable.");
     }
 
-    public PrivilegedInstaller(Context context) {
-        super(context);
+    public PrivilegedInstaller(Context context, Apk apk) {
+        super(context, apk);
     }
 
     public static boolean isExtensionInstalled(Context context) {
@@ -306,9 +307,7 @@ public class PrivilegedInstaller extends Installer {
     }
 
     @Override
-    protected void installPackageInternal(final Uri localApkUri, final Uri downloadUri, Apk apk) {
-        sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_STARTED);
-
+    protected void installPackageInternal(final Uri localApkUri, final Uri downloadUri) {
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
@@ -354,8 +353,8 @@ public class PrivilegedInstaller extends Installer {
     }
 
     @Override
-    protected void uninstallPackage(final String packageName) {
-        sendBroadcastUninstall(packageName, Installer.ACTION_UNINSTALL_STARTED);
+    protected void uninstallPackage() {
+        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_STARTED);
 
         ServiceConnection mServiceConnection = new ServiceConnection() {
             public void onServiceConnected(ComponentName name, IBinder service) {
@@ -365,9 +364,9 @@ public class PrivilegedInstaller extends Installer {
                     @Override
                     public void handleResult(String packageName, int returnCode) throws RemoteException {
                         if (returnCode == DELETE_SUCCEEDED) {
-                            sendBroadcastUninstall(packageName, ACTION_UNINSTALL_COMPLETE);
+                            sendBroadcastUninstall(ACTION_UNINSTALL_COMPLETE);
                         } else {
-                            sendBroadcastUninstall(packageName, ACTION_UNINSTALL_INTERRUPTED,
+                            sendBroadcastUninstall(ACTION_UNINSTALL_INTERRUPTED,
                                     "Error " + returnCode + ": "
                                             + UNINSTALL_RETURN_CODES.get(returnCode));
                         }
@@ -377,15 +376,15 @@ public class PrivilegedInstaller extends Installer {
                 try {
                     boolean hasPermissions = privService.hasPrivilegedPermissions();
                     if (!hasPermissions) {
-                        sendBroadcastUninstall(packageName, ACTION_UNINSTALL_INTERRUPTED,
+                        sendBroadcastUninstall(ACTION_UNINSTALL_INTERRUPTED,
                                 context.getString(R.string.system_install_denied_permissions));
                         return;
                     }
 
-                    privService.deletePackage(packageName, 0, callback);
+                    privService.deletePackage(apk.packageName, 0, callback);
                 } catch (RemoteException e) {
                     Log.e(TAG, "RemoteException", e);
-                    sendBroadcastUninstall(packageName, ACTION_UNINSTALL_INTERRUPTED,
+                    sendBroadcastUninstall(ACTION_UNINSTALL_INTERRUPTED,
                             "connecting to privileged service failed");
                 }
             }

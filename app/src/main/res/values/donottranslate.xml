@@ -7,13 +7,18 @@
     <string name="source_link">https://gitlab.com/fdroid/fdroidclient</string>
     <string name="team_email">team@f-droid.org</string>
     <string name="license_gplv3_later">GNU General Public License version\u00A03 or later</string>
-    
+
     <string name="transition_app_item_icon">transition_app_item_icon</string>
 
     <string name="https">https://</string>
     <string name="upgrade_from_to">%1$s → %2$s</string>
 
     <string name="app_details_subject">%1$s on F-Droid</string>
+
+    <!-- The unset value is set to a string that is impossible to be a valid Java package name. This
+     prevents abuse by creating malware with the same packageName as the unset string. -->
+    <string name="install_history_reader_packageName_UNSET">1-THIS MEANS NO APP IS GRANTED ACCESS!</string>
+    <string name="install_history_reader_packageName">@string/install_history_reader_packageName_UNSET</string>
 
     <string-array name="updateIntervalValues">
         <item>0</item>
