@@ -100,16 +100,16 @@ public class RepoXMLHandler extends DefaultHandler {
         final String str = curchars.toString().trim();
         if (curapk != null) {
             switch (localName) {
-                case "version":
+                case ApkTable.Cols.VERSION_NAME:
                     curapk.versionName = str;
                     break;
-                case "versioncode":
+                case "versioncode": // ApkTable.Cols.VERSION_CODE
                     curapk.versionCode = Utils.parseInt(str, -1);
                     break;
-                case "size":
+                case ApkTable.Cols.SIZE:
                     curapk.size = Utils.parseInt(str, 0);
                     break;
-                case "hash":
+                case ApkTable.Cols.HASH:
                     if (currentApkHashType == null || "md5".equals(currentApkHashType)) {
                         if (curapk.hash == null) {
                             curapk.hash = str;
@@ -120,22 +120,22 @@ public class RepoXMLHandler extends DefaultHandler {
                         curapk.hashType = "SHA-256";
                     }
                     break;
-                case "sig":
+                case ApkTable.Cols.SIGNATURE:
                     curapk.sig = str;
                     break;
-                case "srcname":
+                case ApkTable.Cols.SOURCE_NAME:
                     curapk.srcname = str;
                     break;
-                case "apkname":
+                case "apkname": // ApkTable.Cols.NAME
                     curapk.apkName = str;
                     break;
-                case "sdkver":
+                case "sdkver": // ApkTable.Cols.MIN_SDK_VERSION
                     curapk.minSdkVersion = Utils.parseInt(str, Apk.SDK_VERSION_MIN_VALUE);
                     break;
-                case "targetSdkVersion":
+                case ApkTable.Cols.TARGET_SDK_VERSION:
                     curapk.targetSdkVersion = Utils.parseInt(str, Apk.SDK_VERSION_MIN_VALUE);
                     break;
-                case "maxsdkver":
+                case "maxsdkver": // ApkTable.Cols.MAX_SDK_VERSION
                     curapk.maxSdkVersion = Utils.parseInt(str, Apk.SDK_VERSION_MAX_VALUE);
                     if (curapk.maxSdkVersion == 0) {
                         // before fc0df0dcf4dd0d5f13de82d7cd9254b2b48cb62d, this could be 0
@@ -154,16 +154,16 @@ public class RepoXMLHandler extends DefaultHandler {
                 case ApkTable.Cols.OBB_PATCH_FILE_SHA256:
                     curapk.obbPatchFileSha256 = str;
                     break;
-                case "added":
+                case ApkTable.Cols.ADDED_DATE:
                     curapk.added = Utils.parseDate(str, null);
                     break;
-                case "permissions":
+                case ApkTable.Cols.PERMISSIONS:
                     curapk.permissions = Utils.parseCommaSeparatedString(str);
                     break;
-                case "features":
+                case ApkTable.Cols.FEATURES:
                     curapk.features = Utils.parseCommaSeparatedString(str);
                     break;
-                case "nativecode":
+                case ApkTable.Cols.NATIVE_CODE:
                     curapk.nativecode = Utils.parseCommaSeparatedString(str);
                     break;
             }
