@@ -97,6 +97,21 @@ public class Hasher {
         return hashCache.equals(otherHash.toLowerCase(Locale.ENGLISH));
     }
 
+    /**
+     * Checks the file against the provided hash, returning whether it is a match.
+     */
+    public static boolean isFileMatchingHash(File file, String hash, String hashType) {
+        if (!file.exists()) {
+            return false;
+        }
+        try {
+            Hasher hasher = new Hasher(hashType, file);
+            return hasher.match(hash);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static String hex(Certificate cert) {
         byte[] encoded;
         try {
