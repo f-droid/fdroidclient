@@ -31,7 +31,6 @@ import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
 public class ApkCache {
 
@@ -45,50 +44,32 @@ public class ApkCache {
      */
     public static SanitizedFile copyApkFromCacheToFiles(Context context, File apkFile, Apk expectedApk)
             throws IOException {
-        SanitizedFile sanitizedApkFile = null;
+        SanitizedFile sanitizedApkFile = SanitizedFile.knownSanitized(
+                File.createTempFile("install-", ".apk", context.getFilesDir()));
+        FileUtils.copyFile(apkFile, sanitizedApkFile);
 
-        try {
-            sanitizedApkFile = SanitizedFile.knownSanitized(
-                    File.createTempFile("install-", ".apk", context.getFilesDir()));
-            FileUtils.copyFile(apkFile, sanitizedApkFile);
+        // verify copied file's hash with expected hash from Apk class
+        if (!Hasher.isFileMatchingHash(sanitizedApkFile, expectedApk.hash, expectedApk.hashType)) {
+            FileUtils.deleteQuietly(apkFile);
+            throw new IOException(apkFile + " failed to verify!");
+        }
 
-            // verify copied file's hash with expected hash from Apk class
-            if (!verifyApkFile(sanitizedApkFile, expectedApk.hash, expectedApk.hashType)) {
-                FileUtils.deleteQuietly(apkFile);
-                throw new IOException(apkFile + " failed to verify!");
-            }
-
-            return sanitizedApkFile;
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        } finally {
-            // 20 minutes the start of the install process, delete the file
-            final File apkToDelete = sanitizedApkFile;
-            new Thread() {
-                @Override
-                public void run() {
-                    android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
-                    try {
-                        Thread.sleep(1200000);
-                    } catch (InterruptedException ignored) {
-                    } finally {
-                        FileUtils.deleteQuietly(apkToDelete);
-                    }
+        // 20 minutes the start of the install process, delete the file
+        final File apkToDelete = sanitizedApkFile;
+        new Thread() {
+            @Override
+            public void run() {
+                android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
+                try {
+                    Thread.sleep(1200000);
+                } catch (InterruptedException ignored) {
+                } finally {
+                    FileUtils.deleteQuietly(apkToDelete);
                 }
-            }.start();
-        }
-    }
+            }
+        }.start();
 
-    /**
-     * Checks the APK file against the provided hash, returning whether it is a match.
-     */
-    private static boolean verifyApkFile(File apkFile, String hash, String hashType)
-            throws NoSuchAlgorithmException {
-        if (!apkFile.exists()) {
-            return false;
-        }
-        Hasher hasher = new Hasher(hashType, apkFile);
-        return hasher.match(hash);
+        return sanitizedApkFile;
     }
 
     /**
@@ -108,19 +89,15 @@ public class ApkCache {
      * Bails out if the file sizes don't match to prevent having to do the work of hashing the file.
      */
     public static boolean apkIsCached(File apkFile, Apk apkToCheck) {
-        try {
-            return apkFile.length() == apkToCheck.size &&
-                    verifyApkFile(apkFile, apkToCheck.hash, apkToCheck.hashType);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
+        return apkFile.length() == apkToCheck.size &&
+                Hasher.isFileMatchingHash(apkFile, apkToCheck.hash, apkToCheck.hashType);
     }
 
     /**
      * This location is only for caching, do not install directly from this location
      * because if the file is on the External Storage, any other app could swap out
      * the APK while the install was in process, allowing malware to install things.
-     * Using {@link Installer#installPackage(Uri, Uri, Apk)}
+     * Using {@link Installer#installPackage(Uri, Uri)}
      * is fine since that does the right thing.
      */
     public static File getApkCacheDir(Context context) {
