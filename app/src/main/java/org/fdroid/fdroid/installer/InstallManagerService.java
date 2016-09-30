@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.support.v4.content.IntentCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
@@ -77,6 +78,7 @@ public class InstallManagerService extends Service {
     private static final String TAG = "InstallManagerService";
 
     private static final String ACTION_INSTALL = "org.fdroid.fdroid.installer.action.INSTALL";
+    private static final String ACTION_CANCEL = "org.fdroid.fdroid.installer.action.CANCEL";
 
     private static final String EXTRA_APP = "org.fdroid.fdroid.installer.extra.APP";
     private static final String EXTRA_APK = "org.fdroid.fdroid.installer.extra.APK";
@@ -136,14 +138,22 @@ public class InstallManagerService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Utils.debugLog(TAG, "onStartCommand " + intent);
 
-        if (!ACTION_INSTALL.equals(intent.getAction())) {
-            Utils.debugLog(TAG, "Ignoring " + intent + " as it is not an " + ACTION_INSTALL + " intent");
-            return START_NOT_STICKY;
-        }
-
         String urlString = intent.getDataString();
         if (TextUtils.isEmpty(urlString)) {
             Utils.debugLog(TAG, "empty urlString, nothing to do");
+            return START_NOT_STICKY;
+        }
+
+        String action = intent.getAction();
+        if (ACTION_CANCEL.equals(action)) {
+            DownloaderService.cancel(this, urlString);
+            Apk apk = getApkFromActive(urlString);
+            DownloaderService.cancel(this, apk.getPatchObbUrl());
+            DownloaderService.cancel(this, apk.getMainObbUrl());
+            cancelNotification(urlString);
+            return START_NOT_STICKY;
+        } else if (!ACTION_INSTALL.equals(action)) {
+            Utils.debugLog(TAG, "Ignoring " + intent + " as it is not an " + ACTION_INSTALL + " intent");
             return START_NOT_STICKY;
         }
 
@@ -381,7 +391,7 @@ public class InstallManagerService extends Service {
                 .setContentIntent(getAppDetailsIntent(downloadUrlId, apk))
                 .setContentTitle(getString(R.string.downloading_apk, getAppName(apk)))
                 .addAction(R.drawable.ic_cancel_black_24dp, getString(R.string.cancel),
-                        DownloaderService.getCancelPendingIntent(this, urlString))
+                        getCancelPendingIntent(urlString))
                 .setSmallIcon(android.R.drawable.stat_sys_download)
                 .setContentText(urlString)
                 .setProgress(100, 0, true);
@@ -426,7 +436,7 @@ public class InstallManagerService extends Service {
             if (TextUtils.isEmpty(name) || name.equals(new App().name)) {
                 ContentResolver resolver = getContentResolver();
                 App app = AppProvider.Helper.findSpecificApp(resolver, apk.packageName, apk.repo,
-                        new String[] {Schema.AppMetadataTable.Cols.NAME});
+                        new String[]{Schema.AppMetadataTable.Cols.NAME});
                 if (app == null || TextUtils.isEmpty(app.name)) {
                     return;  // do not have a name to display, so leave notification as is
                 }
@@ -534,6 +544,17 @@ public class InstallManagerService extends Service {
         return apk;
     }
 
+    private PendingIntent getCancelPendingIntent(String urlString) {
+        Intent intent = new Intent(this, InstallManagerService.class)
+                .setData(Uri.parse(urlString))
+                .setAction(ACTION_CANCEL)
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+        return PendingIntent.getService(this,
+                urlString.hashCode(),
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
     /**
      * Install an APK, checking the cache and downloading if necessary before starting the process.
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
@@ -551,6 +572,13 @@ public class InstallManagerService extends Service {
         intent.setData(downloadUri);
         intent.putExtra(EXTRA_APP, app);
         intent.putExtra(EXTRA_APK, apk);
+        context.startService(intent);
+    }
+
+    public static void cancel(Context context, String urlString) {
+        Intent intent = new Intent(context, InstallManagerService.class);
+        intent.setAction(ACTION_CANCEL);
+        intent.setData(Uri.parse(urlString));
         context.startService(intent);
     }
 

@@ -1555,7 +1555,7 @@ public class AppDetails extends AppCompatActivity {
                 return;
             }
 
-            DownloaderService.cancel(getContext(), appDetails.activeDownloadUrlString);
+            InstallManagerService.cancel(getContext(), appDetails.activeDownloadUrlString);
         }
 
         public void updateViews() {
