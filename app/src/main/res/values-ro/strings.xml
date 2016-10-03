@@ -339,4 +339,6 @@ pentru a putea ajuta la rezolvarea acestei probleme?</string>
     <string name="update_auto_install_summary">Descarca si instaleaza actualizarile aplicatiilor in fundal</string>
     <string name="hide_anti_feature_apps">Arata cu gri aplicatiile ce prezinta caracteristici periculoase</string>
     <string name="hide_anti_feature_apps_on">Arata cu gri aplicatiile ce necesita caracteristici periculoase</string>
+    <string name="keep_install_history">Pastreaza istoricul instalarilor</string>
+    <string name="keep_install_history_summary">Toate instalarile si dezinstalarile se noteaza intr-un jurnal in F-Droid</string>
     </resources>

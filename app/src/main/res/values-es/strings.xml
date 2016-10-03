@@ -373,4 +373,6 @@ detalles para ayudarnos a arreglar el problema?</string>
     <string name="hide_anti_feature_apps_on">Marca en gris aplicaciones que tengan características indeseables</string>
     <string name="update_auto_install_summary">Descargar e instalar las actualizaciones en segundo plano</string>
     <string name="update_auto_install">Instalar las actualizaciones automáticamente</string>
+    <string name="keep_install_history">Mantener el historial de instalaciones</string>
+    <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones en F-Droid</string>
     </resources>

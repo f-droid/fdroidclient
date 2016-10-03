@@ -357,4 +357,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="hide_anti_feature_apps_on">Przyciemnia aplikacje z niepożądanymi funkcjami</string>
     <string name="update_auto_install">Automatycznie instaluj aktualizacje</string>
     <string name="update_auto_install_summary">Pobiera i instaluje aktualizacje programów w tle</string>
+    <string name="keep_install_history">Zachowaj historię instalacji</string>
+    <string name="keep_install_history_summary">Zapisuje w dzienniku F-Droida historię wszystkich instalacji i dezinstalacji</string>
     </resources>

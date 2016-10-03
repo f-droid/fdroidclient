@@ -371,4 +371,8 @@ per tal d\'ajudar a resoldre la incidència?</string>
     <string name="keep_hour">1 hora</string>
     <string name="hide_anti_feature_apps_on">Ombrejar les apps que sol·licitin «anti-features»</string>
     <string name="hide_anti_feature_apps">Ombrejar les apps amb «anti-features»</string>
+    <string name="keep_install_history">Mantingueu l\'historial d\'instal·lació</string>
+    <string name="keep_install_history_summary">Deseu un registre de totes les instal·lacions i desinstal·lacions fetes per l\'F-Droid</string>
+    <string name="update_auto_install">Instal·leu les actualitzacions automàticament</string>
+    <string name="update_auto_install_summary">Descarregueu i instal·leu les actualitzacions de les apps en segon pla</string>
     </resources>

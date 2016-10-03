@@ -366,4 +366,6 @@
     <string name="hide_anti_feature_apps_on">防止機能を必要とするｱﾌﾟﾘをｸﾞﾚｰｱｳﾄします</string>
     <string name="update_auto_install">自動的に更新をｲﾝｽﾄｰﾙ</string>
     <string name="update_auto_install_summary">ﾊﾞｯｸｸﾞﾗｳﾝﾄﾞで更新ｱﾌﾟﾘをﾀﾞｳﾝﾛｰﾄﾞしてｲﾝｽﾄｰﾙします</string>
+    <string name="keep_install_history">ｲﾝｽﾄｰﾙ履歴を保存する</string>
+    <string name="keep_install_history_summary">F-Droid内ですべてのｲﾝｽﾄｰﾙとｱﾝｲﾝｽﾄｰﾙのﾛｸﾞを保存します</string>
     </resources>
