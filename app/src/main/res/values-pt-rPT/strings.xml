@@ -170,12 +170,21 @@
     <string name="repo_description">Descrição</string>
     <string name="repo_last_update">Última atualização</string>
     <string name="repo_name">Nome</string>
-    <string name="unsigned_description">Isto significa que a lista de aplicações não pode ser verificada. Deve ter muito cuidado ao descarregar aplicações de índices não assinados.</string>
-    <string name="repo_not_yet_updated">Este repositório ainda não foi utilizado. Tem que o ativar para ver as aplicações disponibilizadas.</string>
+    <string name="unsigned_description">Isto significa que a lista de aplicações não pode
+ser verificada. Deve ter muito cuidado ao descarregar
+aplicações de índices não assinados.</string>
+    <string name="repo_not_yet_updated">Este repositório ainda não foi utilizado.
+Tem que o ativar para ver as aplicações disponibilizadas.</string>
     <string name="unknown">Desconhecido</string>
     <string name="repo_confirm_delete_title">Apagar repositório?</string>
-    <string name="repo_confirm_delete_body">Ao apagar um repositório, as aplicações por ele disponibilizadas não estarão disponíveis no F-Droid.\n\nNota: todas as aplicações instaladas deste repositório não serão afetadas.</string>
-    <string name="repo_disabled_notification">%1$s desativado.\n\nTem que o ativar novamente para poder instalar aplicações deste repositório.</string>
+    <string name="repo_confirm_delete_body">Ao apagar um repositório, as aplicações por ele
+disponibilizadas não estarão disponíveis no F-Droid.
+
+Nota:
+todas as aplicações instaladas não serão afetadas.</string>
+    <string name="repo_disabled_notification">%1$s desativado.
+
+Tem que ativar o repositório para poder instalar aplicações.</string>
     <string name="repo_added">Repositório %1$s guardado.</string>
     <string name="repo_searching_address">A procurar um repositório F-Droid em\n%1$s</string>
     <string name="minsdk_or_later">%s ou posterior</string>
@@ -303,10 +312,18 @@
     <string name="less">Menos</string>
 
     <string name="permissions">Permissões</string>
-    <string name="install_confirm_update">Deseja instalar uma atualização para esta aplicação? Os seus dados não serão perdidos. A aplicação atualizada terá acesso a:</string>
-    <string name="install_confirm_update_system">Deseja instalar uma atualização para esta aplicação do sistema? Os seus dados não serão perdidos. A aplicação atualizada terá acesso a:</string>
-    <string name="install_confirm_update_no_perms">Deseja instalar uma atualização para esta aplicação? Os seus dados não serão perdidos. A aplicação atualizada não requer acessos especiais.</string>
-    <string name="install_confirm_update_system_no_perms">Deseja instalar uma atualização para esta aplicação do sistema? Os seus dados não serão perdidos. A aplicação atualizada não requer qualquer acesso especial.</string>
+    <string name="install_confirm_update">Deseja instalar uma atualização para esta aplicação?
+Os seus dados não serão perdidos.
+A aplicação atualizada terá acesso a:</string>
+    <string name="install_confirm_update_system">Deseja instalar uma atualização para esta aplicação
+do sistema? Os seus dados não serão perdidos.
+A aplicação atualizada terá acesso a:</string>
+    <string name="install_confirm_update_no_perms">Deseja instalar uma atualização para esta aplicação?
+Os seus dados não serão perdidos.
+A aplicação atualizada não requer acessos especiais.</string>
+    <string name="install_confirm_update_system_no_perms">Deseja instalar uma atualização para esta aplicação
+do sistema? Os seus dados não serão perdidos.
+A aplicação atualizada não requer qualquer acesso especial.</string>
     <string name="uninstall_update_confirm">Deseja restaurar esta aplicação para a sua versão de fábrica?</string>
     <string name="uninstall_confirm">Deseja desinstalar esta aplicação?</string>
     <string name="tap_to_install">Descarga terminada. Toque para instalar.</string>
@@ -332,7 +349,9 @@
     <string name="antinonfreeassetslist">Esta aplicação contém recursos não livres</string>
 
     <string name="crash_dialog_title">O F-Droid terminou abruptamente</string>
-    <string name="crash_dialog_text">Ocorreu um erro inesperado que obrigou o encerramento da aplicação. Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
+    <string name="crash_dialog_text">Ocorreu um erro inesperado que obrigou
+ao encerramento da aplicação.
+Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
     <string name="crash_dialog_comment_prompt">Pode adicionar algumas informações e comentários aqui:</string>
 <string name="by_author">de</string>
     <string name="menu_email">E-mail do autor</string>

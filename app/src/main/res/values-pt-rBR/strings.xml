@@ -133,11 +133,19 @@
   <string name="unsigned_description">Isto significa que a lista de
 aplicativos não pôde ser verificada. Você deve ter cuidado
 com aplicativos baixados a partir de índices não assinados.</string>
-  <string name="repo_not_yet_updated">Este repositório não foi usado ainda. Você precisará habilitá-lo para ver os aplicativos que ele fornece.</string>
+  <string name="repo_not_yet_updated">Este repositório não foi usado ainda.
+Você tem que ativá-lo para ver os aplicativos que ele disponibiliza.</string>
   <string name="unknown">Desconhecido</string>
   <string name="repo_confirm_delete_title">Apagar repositório?</string>
-  <string name="repo_confirm_delete_body">A exclusão de um repositório significa que os aplicativos do mesmo não estarão mais disponíveis pelo F-Droid.\n\nNota: Todos os aplicativos previamente instalados permanecerão no seu dispositivo.</string>
-  <string name="repo_disabled_notification">\"%1$s\" desabilitado.\n\nVocê precisará reativar este repositório para instalar aplicativos a partir dele.</string>
+  <string name="repo_confirm_delete_body">A exclusão de um repositório significa que
+os aplicativos do mesmo não estarão mais disponíveis pelo F-Droid.
+
+Nota: Todos
+os aplicativos previamente instalados permanecerão no seu dispositivo.</string>
+  <string name="repo_disabled_notification">%1$s desativado.
+
+Você precisará
+reativar este repositório para instalar aplicativos a partir dele.</string>
   <string name="repo_added">Repositório F-Droid %1$s salvo.</string>
   <string name="repo_searching_address">Procurando por repositório F-Droid em
 %1$s</string>
@@ -251,10 +259,18 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="swap_not_enabled_description">Antes de permutar, seu dispositivo deve estar visível.</string>
 
     <string name="install_confirm">necessário acesso à</string>
-    <string name="install_confirm_update">Você quer instalar uma atualização para este aplicativo existente? Os dados existentes não serão perdidos. O aplicativo atualizado terá acesso a:</string>
-    <string name="install_confirm_update_system">Você quer instalar uma atualização para este aplicativo incorporado? Os dados existentes não serão perdidos. O aplicativo atualizado terá acesso a:</string>
-    <string name="install_confirm_update_no_perms">Você quer instalar uma atualização para este aplicativo existente? Os dados existentes não serão perdidos. Ele não exige nenhum acesso especial.</string>
-    <string name="install_confirm_update_system_no_perms">Você quer instalar uma atualização para este aplicativo incorporado? Os dados existentes não serão perdidos. Ele não exige nenhum acesso especial.</string>
+    <string name="install_confirm_update">Você quer instalar uma atualização
+para este aplicativo existente? Os dados existentes não
+serão perdidos. O aplicativo atualizado terá acesso a:</string>
+    <string name="install_confirm_update_system">Você quer instalar uma atualização
+para este aplicativo incorporado? Os dados existentes não
+serão perdidos. O aplicativo atualizado terá acesso a:</string>
+    <string name="install_confirm_update_no_perms">Você quer instalar uma atualização
+para este aplicativo existente? Os dados existentes não
+serão perdidos. Ele não exige nenhum acesso especial.</string>
+    <string name="install_confirm_update_system_no_perms">Você quer instalar uma atualização
+para este aplicativo incorporado? Os dados existentes não
+serão perdidos. Ele não exige nenhum acesso especial.</string>
     <string name="newPerms">Novo</string>
     <string name="allPerms">Tudo</string>
     <string name="perm_costs_money">Isto pode custar-lhe dinheiro</string>
@@ -319,7 +335,9 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="antinonfreeassetslist">Este aplicativo contém conteúdo não-livre</string>
 
     <string name="crash_dialog_title">O F-Droid travou</string>
-    <string name="crash_dialog_text">Ocorreu um erro inesperado, forçando a parada do aplicativo. Gostaria de enviar um e-mail com os detalhes para ajudar a corrigir o problema?</string>
+    <string name="crash_dialog_text">Ocorreu um erro inesperado,
+forçando a parada do aplicativo. Gostaria de enviar um e-mail
+com os detalhes para ajudar a corrigir o problema?</string>
     <string name="crash_dialog_comment_prompt">Você pode adicionar informações extras e comentários aqui:</string>
 <string name="by_author">por</string>
     <string name="menu_email">Enviar mensagem para o autor</string>
@@ -352,4 +370,10 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="installing">Instalando…</string>
     <string name="uninstalling">Desinstalando…</string>
 
+    <string name="keep_install_history">Manter o histórico de instalação</string>
+    <string name="keep_install_history_summary">Armazenar um registro de todas as instalações e desinstalações do F-Droid</string>
+    <string name="update_auto_install">Instalar atualizações automaticamente</string>
+    <string name="update_auto_install_summary">Baixar e instalar atualizações em segundo plano</string>
+    <string name="hide_anti_feature_apps">Marcar de cinza aplicativos com recursos indesejáveis</string>
+    <string name="hide_anti_feature_apps_on">Marcar de cinza aplicativos que exigem recursos indesejáveis</string>
     </resources>

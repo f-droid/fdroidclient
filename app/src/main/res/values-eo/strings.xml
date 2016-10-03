@@ -355,4 +355,6 @@
     <string name="hide_anti_feature_apps_on">Grizigas aplikaĵojn kun nedeziratajn eblojn (ekz. spurado)</string>
     <string name="update_auto_install">Aŭtomate instali ĝisdatigojn</string>
     <string name="update_auto_install_summary">Elŝutas kaj instalas ĝisdatigojn de aplikaĵoj fone</string>
+    <string name="keep_install_history">Konservi historion de instaladoj</string>
+    <string name="keep_install_history_summary">Memoras historion de instaladoj kaj malinstaladoj en F-Droid</string>
     </resources>

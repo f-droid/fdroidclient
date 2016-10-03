@@ -354,4 +354,6 @@
 
     <string name="update_auto_install">自动安装更新</string>
     <string name="update_auto_install_summary">在后台下载和安装应用更新</string>
+    <string name="keep_install_history">保持安装历史</string>
+    <string name="keep_install_history_summary">在 F-Droid 内存储日志，记录所有安装和卸载</string>
     </resources>

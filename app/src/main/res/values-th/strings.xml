@@ -10,7 +10,7 @@
     <string name="cache_downloaded">เก็บไฟล์โปรแกรมที่ดาวน์โหลดไว้</string>
     <string name="other">อื่นๆ</string>
 
-    <string name="update_interval">อัพเดตทุกๆ</string>
+    <string name="update_interval">อัพเดตข้อมูลอัตโนมัติทุกๆ</string>
     <string name="automatic_scan_wifi">เฉพาะตอนมีสัญญาณ WiFi</string>
     <string name="update_auto_download">ดาวน์โหลดอัพเดตโดยอัตโนมัติ</string>
     <string name="update_history">ประวัติการอัพเดต</string>
@@ -241,7 +241,7 @@
     <string name="updates">อัพเดต</string>
     <string name="unstable_updates">อัพเดตที่ไม่เสถียร</string>
     <string name="unstable_updates_summary">แนะนำการอัพเดตไปรุ่นที่ไม่เสถียร</string>
-    <string name="update_interval_zero">ไม่อัพเดตข้อมูลรายการโปรแกรม</string>
+    <string name="update_interval_zero">ไม่อัพเดตข้อมูลรายการโปรแกรมโดยอัตโนมัติ</string>
     <string name="automatic_scan_wifi_on">อัพเดตข้อมูลรายการโปรแกรมเฉพาะตอนที่ใช้ WiFi</string>
     <string name="update_auto_download_summary">ทำการดาวน์โหลดอัพเดตโปรแกรมแบบเบื้องหลัง</string>
     <string name="notify">การแจ้งเตือนอัพเดต</string>
@@ -302,7 +302,7 @@
     <string name="swap_switch_to_wifi">เปลี่ยนไปใช้เครือข่าย Wi-Fi</string>
     <string name="open_qr_code_scanner">เปิดตัวอ่าน QR Code</string>
     <string name="swap_choose_apps">เลือกโปรแกรม</string>
-    <string name="swap_scan_qr">แสกน QR Code</string>
+    <string name="swap_scan_qr">สแกน QR Code</string>
     <string name="swap_people_nearby">ผู้คนข้างเคียง</string>
     <string name="swap_scanning_for_peers">กำลังค้นหาผู้คนข้างเคียง…</string>
     <string name="swap_intro">เชื่อมต่อและแลกเปลี่ยนโปรแกรมกับผู้คนรอบๆ คุณ</string>
@@ -314,4 +314,38 @@
     <string name="swap_not_visible_wifi">ไม่แสดงตัวบน Wi-Fi</string>
     <string name="swap_no_peers_nearby">ไม่พบคนรอบข้างที่สามารถจะแบ่งปันโปรแกรมด้วยได้</string>
     <string name="swap_qr_isnt_for_swap">QR Code ที่อ่านได้ ไม่ใช่โค้ดที่ใช้แบ่งปันโปรแกรม</string>
+    <string name="update_notification_more">มีอีก +%1$d…</string>
+    <string name="perms_description_app">จัดให้โดย %1$s</string>
+    <string name="swap_cant_find_peers">ไม่เจอคนที่ตามหาหรือ?</string>
+    <string name="swap_nearby">แลกเปลี่ยนโปรแกรมกับคนข้างๆ</string>
+    <string name="swap_scan_or_type_url">คนหนึ่งจะต้องสแกนโค้ด, หรือพิมพ์ URL ของอีกคนลงในบราวเซอร์</string>
+    <string name="swap_active_hotspot">%1$s (เครื่องส่งของคุณ)</string>
+    <string name="swap_join_this_hotspot">บอกวิธีให้เพื่อนคุณเชื่อมต่อกับเครื่องส่งของคุณ</string>
+    <string name="swap_join_same_wifi">ต่อเข้าเครือข่าย WiFi เดียวกันกับเพื่อนของคุณ</string>
+    <string name="system_install_warning_lollipop">ขั้นตอนนี้จะใช้เวลาอย่างมาก 10 วินาที แล้วเครื่องของคุณจะทำการ<b>รีสตาร์ต</b></string>
+    <string name="system_install_button_open">เปิดดูข้อมูลส่วนขยาย</string>
+    <string name="empty_can_update_app_list">ทุกโปรแกรมเป็นรุ่นใหม่สุดแล้ว
+
+ยินดีด้วย! ทุกโปรแกรมที่คุณติดตั้งอยู่เป็นรุ่นล่าสุด (หรือไม่ก็ข้อมูลรายการโปรแกรมของคุณนั้นเก่าไปแล้ว)</string>
+    <string name="empty_available_app_list">ไม่มีโปรแกรมในหมวดนี้
+
+ลองเลือกดูโปรแกรมหมวดอื่น หรือทำการอัพเดตข้อมูลรายการโปรแกรมเผื่อจะมีโปรแกรมใหม่</string>
+    <string name="wifi_ap">เครื่องส่ง WiFi</string>
+
+    <string name="minsdk_up_to_maxsdk">%1$s ถึง %2$s</string>
+    <string name="repo_searching_address">กำลังค้นหาแหล่งโปรแกรม F-Droid ที่
+%1$s</string>
+    <string name="repo_added">บันทึกแหล่งโปรแกรม F-Droid %1$s แล้ว</string>
+    <string name="unverified">ตรวจสอบไม่ได้</string>
+    <string name="unsigned">ไม่มีลายเซ็นดิจิตอล</string>
+    <string name="no_handler_app">คุณไม่มีโปรแกรมที่รองรับการใช้งาน %s</string>
+    <string name="copying_icons">กำลังคัดลอกข้อมูลไอคอนลงไปในแหล่งโปรแกรม…</string>
+    <string name="linking_apks">กำลังเชื่อมโยงไฟล์ APK ในแหล่งโปรแกรม…</string>
+    <string name="touch_to_configure_local_repo">แตะเพื่อดูรายละเอียดแหล่งโปรแกรม หรืออนุญาตให้ผู้อื่นดาวน์โหลดโปรแกรม</string>
+    <string name="local_repo_running">F-Droid พร้อมจะแบ่งบันโปรแกรมแล้ว</string>
+    <string name="hide_anti_feature_apps_on">แสดงโปรแกรมที่มีฟังก์ชั่นไม่พึงประสงค์เป็นสีเทา</string>
+    <string name="hide_anti_feature_apps">ให้โปรแกรมที่มีฟังก์ชั่นไม่พึงประสงค์เป็นสีเทา</string>
+    <string name="malformed_repo_uri">กำลังข้ามแหล่งโปรแกรมที่มี URI ผิดรูป: %s</string>
+    <string name="update_auto_install_summary">ดาวน์โหลดและติดตั้งโปรแกรมที่อัดเดต แบบเบื้องหลัง</string>
+    <string name="update_auto_install">ติดตั้งโปรแกรมที่อัพเดต โดยอัดโนมัติ</string>
     </resources>

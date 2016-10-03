@@ -62,7 +62,7 @@
   <string name="rooted">Ezikusi Root</string>
   <string name="ignoreTouch">Ezikusi egin ukipen-pantailari</string>
   <string name="category_All">Guztia</string>
-  <string name="category_Whats_New">Zer da berria</string>
+  <string name="category_Whats_New">Berritasunak</string>
   <string name="category_Recently_Updated">Azkenaldian eguneratua</string>
   <string name="status_connecting_to_repo">%1$s(e)ra
 \nkonektatzen</string>
@@ -382,4 +382,6 @@ konpontzen laguntzeko?</string>
     <string name="hide_anti_feature_apps_on">Ilundu ezaugarri zalantzagarriak behar dituzten aplikazioak</string>
     <string name="update_auto_install">Instalatu eguneraketak automatikoki</string>
     <string name="update_auto_install_summary">Deskargatu eta instalatu aplikazioen eguneraketak bigarren planoan</string>
+    <string name="keep_install_history">Mantendu instalazio historiala</string>
+    <string name="keep_install_history_summary">Gorde instalazio eta desinstalazioen egunkari bat F-Droiden</string>
     </resources>

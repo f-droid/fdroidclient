@@ -374,4 +374,6 @@ Depes
     <string name="hide_anti_feature_apps_on">Marca in murru sas aplicatziones cun caraterìsticas cun controidas</string>
     <string name="update_auto_install">Installa sos agiornamentos automaticamente</string>
     <string name="update_auto_install_summary">Iscàrriga e installa sos agiornamentos automaticamente</string>
+    <string name="keep_install_history">Sarba s\'istòria de sas installatziones</string>
+    <string name="keep_install_history_summary">Sarba unu regitru de sas installatziones e de sas disinstallatziones in F-Droid</string>
     </resources>
