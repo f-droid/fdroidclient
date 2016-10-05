@@ -9,6 +9,20 @@ import android.provider.BaseColumns;
  */
 public interface Schema {
 
+    interface PackageTable {
+
+        String NAME = "fdroid_package";
+
+        interface Cols {
+            String ROW_ID = "rowid";
+            String PACKAGE_NAME = "packageName";
+
+            String[] ALL = {
+                    ROW_ID, PACKAGE_NAME,
+            };
+        }
+    }
+
     interface AppPrefsTable {
 
         String NAME = "fdroid_appPrefs";
