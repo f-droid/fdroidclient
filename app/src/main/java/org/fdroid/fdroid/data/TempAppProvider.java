@@ -161,7 +161,7 @@ public class TempAppProvider extends AppProvider {
         final SQLiteDatabase db = db();
         ensureTempTableDetached(db);
         db.execSQL("ATTACH DATABASE ':memory:' AS " + DB);
-        db.execSQL(DBHelper.CREATE_TABLE_APP.replaceFirst(AppMetadataTable.NAME, DB + "." + getTableName()));
+        db.execSQL(DBHelper.CREATE_TABLE_APP_METADATA.replaceFirst(AppMetadataTable.NAME, DB + "." + getTableName()));
         db.execSQL(copyData(AppMetadataTable.Cols.ALL_COLS, AppMetadataTable.NAME, DB + "." + getTableName()));
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (" + AppMetadataTable.Cols.PACKAGE_NAME + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (" + AppMetadataTable.Cols.UPSTREAM_VERSION_CODE + ");");
