@@ -40,6 +40,30 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     @StringDef({"Conflicting", "Normal"})
     public @interface RepoIdentifier {}
 
+    /*
+     *This test fails due to issue #568 (https://gitlab.com/fdroid/fdroidclient/issues/568).
+    @Test
+    public void appsRemovedFromRepo() throws RepoUpdater.UpdateException {
+        assertEquals(0, AppProvider.Helper.all(context.getContentResolver()).size());
+
+        updateMain();
+        Repo repo = RepoProvider.Helper.findByAddress(context, REPO_MAIN_URI);
+
+        assertEquals(3, AppProvider.Helper.all(context.getContentResolver()).size());
+        assertEquals(6, ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL).size());
+        assertEquals(3, ApkProvider.Helper.findByPackageName(context, "org.adaway").size());
+        assertEquals(2, ApkProvider.Helper.findByPackageName(context, "com.uberspot.a2048").size());
+        assertEquals(1, ApkProvider.Helper.findByPackageName(context, "siir.es.adbWireless").size());
+
+        RepoUpdater updater = new RepoUpdater(context, RepoProvider.Helper.findByAddress(context, repo.address));
+        updateRepo(updater, "multiRepo.conflicting.jar");
+
+        assertEquals(2, AppProvider.Helper.all(context.getContentResolver()).size());
+        assertEquals(6, ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL).size());
+        assertEquals(4, ApkProvider.Helper.findByPackageName(context, "org.adaway").size());
+        assertEquals(2, ApkProvider.Helper.findByPackageName(context, "org.dgtale.icsimport").size());
+    }*/
+
     @Test
     public void mainRepo() throws RepoUpdater.UpdateException {
         assertEmpty();

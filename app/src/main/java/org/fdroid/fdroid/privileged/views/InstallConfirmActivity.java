@@ -191,7 +191,7 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         intent = getIntent();
         Uri uri = intent.getData();
         Apk apk = ApkProvider.Helper.findByUri(this, uri, Schema.ApkTable.Cols.ALL);
-        app = AppProvider.Helper.findByPackageName(getContentResolver(), apk.packageName, apk.repo, Schema.AppMetadataTable.Cols.ALL);
+        app = AppProvider.Helper.findSpecificApp(getContentResolver(), apk.packageName, apk.repo, Schema.AppMetadataTable.Cols.ALL);
 
         appDiff = new AppDiff(getPackageManager(), apk);
 

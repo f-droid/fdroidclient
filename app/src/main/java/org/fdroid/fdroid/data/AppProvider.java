@@ -155,6 +155,10 @@ public class AppProvider extends FDroidProvider {
             return cursorToApp(resolver.query(uri, projection, null, null, null));
         }
 
+        public static App findSpecificApp(ContentResolver resolver, String packageName, long repoId) {
+            return findSpecificApp(resolver, packageName, repoId, Cols.ALL);
+        }
+
         private static App cursorToApp(Cursor cursor) {
             App app = null;
             if (cursor != null) {
@@ -434,7 +438,7 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_SEARCH_REPO = "searchRepo";
     private static final String PATH_NO_APKS = "noApks";
     protected static final String PATH_APPS = "apps";
-    protected static final String PATH_APP = "app";
+    protected static final String PATH_SPECIFIC_APP = "app";
     private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
     private static final String PATH_NEWLY_ADDED = "newlyAdded";
     private static final String PATH_CATEGORY = "category";
@@ -471,7 +475,7 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_INSTALLED, INSTALLED);
         MATCHER.addURI(getAuthority(), PATH_NO_APKS, NO_APKS);
         MATCHER.addURI(getAuthority(), PATH_HIGHEST_PRIORITY + "/*", HIGHEST_PRIORITY);
-        MATCHER.addURI(getAuthority(), PATH_APP + "/#/*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), PATH_SPECIFIC_APP + "/#/*", CODE_SINGLE);
     }
 
     public static Uri getContentUri() {
@@ -528,7 +532,7 @@ public class AppProvider extends FDroidProvider {
     public static Uri getSpecificAppUri(String packageName, long repoId) {
         return getContentUri()
                 .buildUpon()
-                .appendPath(PATH_APP)
+                .appendPath(PATH_SPECIFIC_APP)
                 .appendPath(Long.toString(repoId))
                 .appendPath(packageName)
                 .build();

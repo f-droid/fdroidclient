@@ -5,14 +5,11 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import android.util.Log;
 
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.PackageTable.Cols;
 
 public class PackageProvider extends FDroidProvider {
-
-    private static final String TAG = "PackageProvider";
 
     public static final class Helper {
         private Helper() { }
@@ -126,17 +123,12 @@ public class PackageProvider extends FDroidProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
-        QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
-
-        switch (MATCHER.match(uri)) {
-            case CODE_SINGLE:
-                selection = selection.add(querySingle(uri.getLastPathSegment()));
-                break;
-
-            default:
-                Log.e(TAG, "Invalid URI for content provider: " + uri);
-                throw new UnsupportedOperationException("Invalid URI for content provider: " + uri);
+        if (MATCHER.match(uri) != CODE_SINGLE) {
+            throw new UnsupportedOperationException("Invalid URI for content provider: " + uri);
         }
+
+        QuerySelection selection = new QuerySelection(customSelection, selectionArgs)
+                .add(querySingle(uri.getLastPathSegment()));
 
         Query query = new Query();
         query.addSelection(selection);
@@ -152,7 +144,7 @@ public class PackageProvider extends FDroidProvider {
      * Deleting of packages is not required.
      * It doesn't matter if we have a package name in the database after the package is no longer
      * present in the repo any more. They wont take up much space, and it is the presence of rows
-     * in the {@link Schema.MetadataTable} which decides whether something is available in the
+     * in the {@link Schema.AppMetadataTable} which decides whether something is available in the
      * F-Droid client or not.
      */
     @Override
@@ -167,6 +159,10 @@ public class PackageProvider extends FDroidProvider {
         return getPackageIdUri(rowId);
     }
 
+    /**
+     * Package names never change. If a package name has changed, then that means that it is a
+     * new app all together as far as Android is concerned.
+     */
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
         throw new UnsupportedOperationException("Update not supported for " + uri + ".");

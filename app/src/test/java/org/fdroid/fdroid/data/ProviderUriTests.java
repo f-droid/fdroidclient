@@ -112,7 +112,7 @@ public class ProviderUriTests {
         packageNames.add("org.fdroid.fdroid");
         packageNames.add("com.example.com");
 
-        assertValidUri(resolver, TempAppProvider.getAppsUri(packageNames), "content://org.fdroid.fdroid.data.TempAppProvider/apps/org.fdroid.fdroid%2Ccom.example.com", projection);
+        assertValidUri(resolver, TempAppProvider.getAppsUri(packageNames, 1), "content://org.fdroid.fdroid.data.TempAppProvider/apps/1/org.fdroid.fdroid%2Ccom.example.com", projection);
         assertValidUri(resolver, TempAppProvider.getContentUri(), "content://org.fdroid.fdroid.data.TempAppProvider", projection);
     }
 

@@ -24,6 +24,7 @@ import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
@@ -259,7 +260,7 @@ public class InstallManagerService extends Service {
                             App app = getAppFromActive(downloadUrl);
                             if (app == null) {
                                 ContentResolver resolver = context.getContentResolver();
-                                app = AppProvider.Helper.findByPackageName(resolver, apk.packageName, apk.repo);
+                                app = AppProvider.Helper.findSpecificApp(resolver, apk.packageName, apk.repo);
                             }
                             // show notification if app details is not visible
                             if (app != null && AppDetails.isAppVisible(app.packageName)) {
@@ -346,7 +347,8 @@ public class InstallManagerService extends Service {
             String name = getAppName(apk);
             if (TextUtils.isEmpty(name) || name.equals(new App().name)) {
                 ContentResolver resolver = getContentResolver();
-                App app = AppProvider.Helper.findByPackageName(resolver, apk.packageName, apk.repo);
+                App app = AppProvider.Helper.findSpecificApp(resolver, apk.packageName, apk.repo,
+                        new String[] {Schema.AppMetadataTable.Cols.NAME});
                 if (app == null || TextUtils.isEmpty(app.name)) {
                     return;  // do not have a name to display, so leave notification as is
                 }

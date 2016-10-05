@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 
 /**
@@ -41,8 +42,8 @@ public class TempAppProvider extends AppProvider {
     static {
         MATCHER.addURI(getAuthority(), PATH_INIT, CODE_INIT);
         MATCHER.addURI(getAuthority(), PATH_COMMIT, CODE_COMMIT);
-        MATCHER.addURI(getAuthority(), PATH_APPS + "/*", APPS);
-        MATCHER.addURI(getAuthority(), PATH_APP + "/#/*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), PATH_APPS + "/#/*", APPS);
+        MATCHER.addURI(getAuthority(), PATH_SPECIFIC_APP + "/#/*", CODE_SINGLE);
     }
 
     @Override
@@ -58,24 +59,36 @@ public class TempAppProvider extends AppProvider {
         return Uri.parse("content://" + getAuthority());
     }
 
-    public static Uri getAppUri(String packageName, long repoId) {
+    /**
+     * Same as {@link AppProvider#getSpecificAppUri(String, long)}, except loads data from the temp
+     * table being used during a repo update rather than the persistent table.
+     */
+    public static Uri getSpecificTempAppUri(String packageName, long repoId) {
         return getContentUri()
                 .buildUpon()
-                .appendPath(PATH_APP)
+                .appendPath(PATH_SPECIFIC_APP)
                 .appendPath(Long.toString(repoId))
                 .appendPath(packageName)
                 .build();
     }
 
-    public static Uri getAppsUri(List<String> apps) {
+    public static Uri getAppsUri(List<String> apps, long repoId) {
         return getContentUri().buildUpon()
                 .appendPath(PATH_APPS)
+                .appendPath(Long.toString(repoId))
                 .appendPath(TextUtils.join(",", apps))
                 .build();
     }
 
-    private AppQuerySelection queryApps(String packageNames) {
-        return queryPackageNames(packageNames, PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME);
+    private AppQuerySelection queryRepoApps(long repoId, String packageNames) {
+        return queryPackageNames(packageNames, PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME)
+                .add(queryRepo(repoId));
+    }
+
+    private AppQuerySelection queryRepo(long repoId) {
+        String[] args = new String[] {Long.toString(repoId)};
+        String selection = getTableName() + "." + Cols.REPO_ID + " = ? ";
+        return new AppQuerySelection(selection, args);
     }
 
     public static class Helper {
@@ -90,8 +103,8 @@ public class TempAppProvider extends AppProvider {
             TempApkProvider.Helper.init(context);
         }
 
-        public static List<App> findByPackageNames(Context context, List<String> packageNames, String[] projection) {
-            Uri uri = getAppsUri(packageNames);
+        public static List<App> findByPackageNames(Context context, List<String> packageNames, long repoId, String[] projection) {
+            Uri uri = getAppsUri(packageNames, repoId);
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             return AppProvider.Helper.cursorToList(cursor);
         }
@@ -138,7 +151,7 @@ public class TempAppProvider extends AppProvider {
         QuerySelection query = new QuerySelection(where, whereArgs).add(querySingleForUpdate(packageName, repoId));
 
         // Package names for apps cannot change...
-        values.remove(AppMetadataTable.Cols.Package.PACKAGE_NAME);
+        values.remove(Cols.Package.PACKAGE_NAME);
 
         int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
         if (!isApplyingBatch()) {
@@ -152,7 +165,8 @@ public class TempAppProvider extends AppProvider {
         AppQuerySelection selection = new AppQuerySelection(customSelection, selectionArgs);
         switch (MATCHER.match(uri)) {
             case APPS:
-                selection = selection.add(queryApps(uri.getLastPathSegment()));
+                List<String> segments = uri.getPathSegments();
+                selection = selection.add(queryRepoApps(Long.parseLong(segments.get(1)), segments.get(2)));
                 break;
         }
 
