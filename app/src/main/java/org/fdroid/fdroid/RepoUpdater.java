@@ -473,7 +473,7 @@ public class RepoUpdater {
                 if (packageInfo != null && versionCode == packageInfo.versionCode) {
                     Utils.debugLog(TAG, repoPushRequest + " already installed, ignoring");
                 } else {
-                    Apk apk = ApkProvider.Helper.find(context, packageName, versionCode);
+                    Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context, packageName, versionCode);
                     InstallManagerService.queue(context, app, apk);
                 }
             } else if (RepoPushRequest.UNINSTALL.equals(repoPushRequest.request)) {
@@ -483,7 +483,7 @@ public class RepoUpdater {
                 }
                 if (repoPushRequest.versionCode == null
                         || repoPushRequest.versionCode == packageInfo.versionCode) {
-                    Apk apk = ApkProvider.Helper.find(context, repoPushRequest.packageName,
+                    Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context, repoPushRequest.packageName,
                             packageInfo.versionCode);
                     InstallerService.uninstall(context, apk);
                 } else {

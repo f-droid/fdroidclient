@@ -127,7 +127,10 @@ public class AppProvider extends FDroidProvider {
         public static App findByPackageName(ContentResolver resolver, String packageName,
                                             String[] projection) {
             final Uri uri = getContentUri(packageName);
-            Cursor cursor = resolver.query(uri, projection, null, null, null);
+            return cursorToApp(resolver.query(uri, projection, null, null, null));
+        }
+
+        private static App cursorToApp(Cursor cursor) {
             App app = null;
             if (cursor != null) {
                 if (cursor.getCount() > 0) {
@@ -675,7 +678,7 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection);
     }
 
-    static AppQuerySelection queryApps(String packageNames, String packageNameField) {
+    static AppQuerySelection queryPackageNames(String packageNames, String packageNameField) {
         String[] args = packageNames.split(",");
         String selection = packageNameField + " IN (" + generateQuestionMarksForInClause(args.length) + ")";
         return new AppQuerySelection(selection, args);
@@ -727,8 +730,9 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             case SEARCH_REPO:
-                selection = selection.add(querySearch(uri.getPathSegments().get(2)));
-                selection = selection.add(queryRepo(Long.parseLong(uri.getPathSegments().get(1))));
+                selection = selection
+                        .add(querySearch(uri.getPathSegments().get(2)))
+                        .add(queryRepo(Long.parseLong(uri.getPathSegments().get(1))));
                 break;
 
             case NO_APKS:

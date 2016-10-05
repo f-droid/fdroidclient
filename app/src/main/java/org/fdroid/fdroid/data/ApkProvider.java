@@ -36,7 +36,7 @@ public class ApkProvider extends FDroidProvider {
 
         public static void update(Context context, Apk apk) {
             ContentResolver resolver = context.getContentResolver();
-            Uri uri = getContentUri(apk.packageName, apk.versionCode);
+            Uri uri = getApkFromAnyRepoUri(apk.packageName, apk.versionCode);
             resolver.update(uri, apk.toContentValues(), null, null);
         }
 
@@ -62,8 +62,8 @@ public class ApkProvider extends FDroidProvider {
             return resolver.delete(uri, null, null);
         }
 
-        public static Apk find(Context context, String packageName, int versionCode) {
-            return find(context, packageName, versionCode, Cols.ALL);
+        public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode) {
+            return findApkFromAnyRepo(context, packageName, versionCode, Cols.ALL);
         }
 
         /**
@@ -77,12 +77,12 @@ public class ApkProvider extends FDroidProvider {
             return cursorToList(cursor);
         }
 
-        public static Apk find(Context context, String packageName, int versionCode, String[] projection) {
-            final Uri uri = getContentUri(packageName, versionCode);
-            return find(context, uri, projection);
+        public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode, String[] projection) {
+            final Uri uri = getApkFromAnyRepoUri(packageName, versionCode);
+            return findByUri(context, uri, projection);
         }
 
-        public static Apk find(Context context, Uri uri, String[] projection) {
+        public static Apk findByUri(Context context, Uri uri, String[] projection) {
             ContentResolver resolver = context.getContentResolver();
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             Apk apk = null;
@@ -165,8 +165,8 @@ public class ApkProvider extends FDroidProvider {
         }
     }
 
-    private static final int CODE_APP = CODE_SINGLE + 1;
-    private static final int CODE_REPO = CODE_APP + 1;
+    private static final int CODE_PACKAGE = CODE_SINGLE + 1;
+    private static final int CODE_REPO = CODE_PACKAGE + 1;
     private static final int CODE_APKS = CODE_REPO + 1;
     private static final int CODE_REPO_APPS = CODE_APKS + 1;
     protected static final int CODE_REPO_APK = CODE_REPO_APPS + 1;
@@ -184,17 +184,17 @@ public class ApkProvider extends FDroidProvider {
     private static final UriMatcher MATCHER = new UriMatcher(-1);
 
     private static final Map<String, String> REPO_FIELDS = new HashMap<>();
-    private static final Map<String, String> APP_FIELDS = new HashMap<>();
+    private static final Map<String, String> PACKAGE_FIELDS = new HashMap<>();
 
     static {
         REPO_FIELDS.put(Cols.Repo.VERSION, RepoTable.Cols.VERSION);
         REPO_FIELDS.put(Cols.Repo.ADDRESS, RepoTable.Cols.ADDRESS);
-        APP_FIELDS.put(Cols.App.PACKAGE_NAME, AppMetadataTable.Cols.PACKAGE_NAME);
+        PACKAGE_FIELDS.put(Cols.App.PACKAGE_NAME, AppMetadataTable.Cols.PACKAGE_NAME);
 
         MATCHER.addURI(getAuthority(), PATH_REPO + "/#", CODE_REPO);
         MATCHER.addURI(getAuthority(), PATH_APK + "/#/*", CODE_SINGLE);
         MATCHER.addURI(getAuthority(), PATH_APKS + "/*", CODE_APKS);
-        MATCHER.addURI(getAuthority(), PATH_APP + "/*", CODE_APP);
+        MATCHER.addURI(getAuthority(), PATH_APP + "/*", CODE_PACKAGE);
         MATCHER.addURI(getAuthority(), PATH_REPO_APPS + "/#/*", CODE_REPO_APPS);
         MATCHER.addURI(getAuthority(), PATH_REPO_APK + "/#/*", CODE_REPO_APK);
         MATCHER.addURI(getAuthority(), PATH_APK_ROW_ID + "/#", CODE_APK_ROW_ID);
@@ -232,11 +232,11 @@ public class ApkProvider extends FDroidProvider {
             .build();
     }
 
-    public static Uri getContentUri(Apk apk) {
-        return getContentUri(apk.packageName, apk.versionCode);
+    public static Uri getApkFromAnyRepoUri(Apk apk) {
+        return getApkFromAnyRepoUri(apk.packageName, apk.versionCode);
     }
 
-    public static Uri getContentUri(String packageName, int versionCode) {
+    public static Uri getApkFromAnyRepoUri(String packageName, int versionCode) {
         return getContentUri()
             .buildUpon()
             .appendPath(PATH_APK)
@@ -315,8 +315,8 @@ public class ApkProvider extends FDroidProvider {
 
         @Override
         protected String getRequiredTables() {
-            final String apk  = getTableName();
-            final String app  = getAppTableName();
+            final String apk = getTableName();
+            final String app = getAppTableName();
 
             return apk + " AS apk " +
                 " LEFT JOIN " + app + " AS app ON (app." + AppMetadataTable.Cols.ROW_ID + " = apk." + Cols.APP_ID + ")";
@@ -324,8 +324,8 @@ public class ApkProvider extends FDroidProvider {
 
         @Override
         public void addField(String field) {
-            if (APP_FIELDS.containsKey(field)) {
-                addAppField(APP_FIELDS.get(field), field);
+            if (PACKAGE_FIELDS.containsKey(field)) {
+                addPackageField(PACKAGE_FIELDS.get(field), field);
             } else if (REPO_FIELDS.containsKey(field)) {
                 addRepoField(REPO_FIELDS.get(field), field);
             } else if (field.equals(Cols._ID)) {
@@ -339,7 +339,7 @@ public class ApkProvider extends FDroidProvider {
             }
         }
 
-        private void addAppField(String field, String alias) {
+        private void addPackageField(String field, String alias) {
             appendField(field, "app", alias);
         }
 
@@ -353,22 +353,22 @@ public class ApkProvider extends FDroidProvider {
 
     }
 
-    private QuerySelection queryApp(String packageName) {
-        return queryApp(packageName, true);
+    private QuerySelection queryPackage(String packageName) {
+        return queryPackage(packageName, true);
     }
 
-    private QuerySelection queryApp(String packageName, boolean includeTableAlias) {
+    private QuerySelection queryPackage(String packageName, boolean includeTableAlias) {
         String alias = includeTableAlias ? "apk." : "";
         final String selection = alias + Cols.APP_ID + " = (" + getAppIdFromPackageNameQuery() + ")";
         final String[] args = {packageName};
         return new QuerySelection(selection, args);
     }
 
-    private QuerySelection querySingle(Uri uri) {
-        return querySingle(uri, true);
+    private QuerySelection querySingleFromAnyRepo(Uri uri) {
+        return querySingleFromAnyRepo(uri, true);
     }
 
-    private QuerySelection querySingle(Uri uri, boolean includeAlias) {
+    private QuerySelection querySingleFromAnyRepo(Uri uri, boolean includeAlias) {
         String alias = includeAlias ? "apk." : "";
         final String selection = alias + Cols.VERSION_CODE + " = ? and " + alias + Cols.APP_ID + " = (" + getAppIdFromPackageNameQuery() + ")";
         final String[] args = {
@@ -403,7 +403,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     private QuerySelection queryRepoApps(long repoId, String packageNames) {
-        return queryRepo(repoId).add(AppProvider.queryApps(packageNames, "app." + AppMetadataTable.Cols.PACKAGE_NAME));
+        return queryRepo(repoId).add(AppProvider.queryPackageNames(packageNames, "app." + AppMetadataTable.Cols.PACKAGE_NAME));
     }
 
     protected QuerySelection queryApks(String apkKeys) {
@@ -456,15 +456,15 @@ public class ApkProvider extends FDroidProvider {
                 break;
 
             case CODE_SINGLE:
-                query = query.add(querySingle(uri));
+                query = query.add(querySingleFromAnyRepo(uri));
                 break;
 
             case CODE_APK_ROW_ID:
                 query = query.add(querySingle(Long.parseLong(uri.getLastPathSegment())));
                 break;
 
-            case CODE_APP:
-                query = query.add(queryApp(uri.getLastPathSegment()));
+            case CODE_PACKAGE:
+                query = query.add(queryPackage(uri.getLastPathSegment()));
                 break;
 
             case CODE_APKS:
@@ -505,7 +505,7 @@ public class ApkProvider extends FDroidProvider {
             }
         }
 
-        for (Map.Entry<String, String> appField : APP_FIELDS.entrySet()) {
+        for (Map.Entry<String, String> appField : PACKAGE_FIELDS.entrySet()) {
             final String field = appField.getKey();
             if (values.containsKey(field)) {
                 values.remove(field);
@@ -535,8 +535,8 @@ public class ApkProvider extends FDroidProvider {
                 query = query.add(queryRepo(Long.parseLong(uri.getLastPathSegment()), false));
                 break;
 
-            case CODE_APP:
-                query = query.add(queryApp(uri.getLastPathSegment(), false));
+            case CODE_PACKAGE:
+                query = query.add(queryPackage(uri.getLastPathSegment(), false));
                 break;
 
             case CODE_APKS:
@@ -548,12 +548,6 @@ public class ApkProvider extends FDroidProvider {
                 List<String> pathSegments = uri.getPathSegments();
                 query = query.add(queryRepo(Long.parseLong(pathSegments.get(1)))).add(queryApks(pathSegments.get(2)));
                 break;
-
-            case CODE_LIST:
-                throw new UnsupportedOperationException("Can't delete all apks.");
-
-            case CODE_SINGLE:
-                throw new UnsupportedOperationException("Can't delete individual apks.");
 
             default:
                 Log.e(TAG, "Invalid URI for apk content provider: " + uri);
@@ -579,7 +573,7 @@ public class ApkProvider extends FDroidProvider {
         removeFieldsFromOtherTables(values);
 
         QuerySelection query = new QuerySelection(where, whereArgs);
-        query = query.add(querySingle(uri, false));
+        query = query.add(querySingleFromAnyRepo(uri, false));
 
         int numRows = db().update(getTableName(), values, query.getSelection(), query.getArgs());
         if (!isApplyingBatch()) {

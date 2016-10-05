@@ -149,8 +149,7 @@ public class RepoProvider extends FDroidProvider {
             return repo;
         }
 
-        public static void update(Context context, Repo repo,
-                                  ContentValues values) {
+        public static void update(Context context, Repo repo, ContentValues values) {
             ContentResolver resolver = context.getContentResolver();
 
             // Change the name to the new address. Next time we update the repo
@@ -316,7 +315,7 @@ public class RepoProvider extends FDroidProvider {
                 break;
 
             case CODE_ALL_EXCEPT_SWAP:
-                selection = Cols.IS_SWAP + " = 0 OR " + Cols.IS_SWAP + " IS NULL ";
+                selection = "COALESCE(" + Cols.IS_SWAP + ", 0) = 0 ";
                 break;
 
             default:
