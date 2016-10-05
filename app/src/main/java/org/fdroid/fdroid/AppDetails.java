@@ -29,6 +29,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
@@ -964,6 +965,18 @@ public class AppDetails extends AppCompatActivity {
      */
     private void uninstallApk() {
         Apk apk = app.installedApk;
+        if (apk == null) {
+            // TODO ideally, app would be refreshed immediately after install, then this
+            // workaround would be unnecessary
+            try {
+                PackageInfo pi = packageManager.getPackageInfo(app.packageName, 0);
+                apk = ApkProvider.Helper.findApkFromAnyRepo(this, pi.packageName, pi.versionCode);
+                app.installedApk = apk;
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+                return; // not installed
+            }
+        }
         Installer installer = InstallerFactory.create(this, apk);
         Intent intent = installer.getUninstallScreen();
         if (intent != null) {
