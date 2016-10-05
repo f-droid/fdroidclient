@@ -149,8 +149,7 @@ public class RepoProvider extends FDroidProvider {
             return repo;
         }
 
-        public static void update(Context context, Repo repo,
-                                  ContentValues values) {
+        public static void update(Context context, Repo repo, ContentValues values) {
             ContentResolver resolver = context.getContentResolver();
 
             // Change the name to the new address. Next time we update the repo
@@ -316,7 +315,7 @@ public class RepoProvider extends FDroidProvider {
                 break;
 
             case CODE_ALL_EXCEPT_SWAP:
-                selection = Cols.IS_SWAP + " = 0 OR " + Cols.IS_SWAP + " IS NULL ";
+                selection = "COALESCE(" + Cols.IS_SWAP + ", 0) = 0 ";
                 break;
 
             default:
@@ -332,6 +331,10 @@ public class RepoProvider extends FDroidProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
 
+        // Don't let people specify arbitrary priorities. Instead, we are responsible
+        // for making sure that newly created repositories by default have the highest priority.
+        values.put(Cols.PRIORITY, getMaxPriority() + 1);
+
         if (!values.containsKey(Cols.ADDRESS)) {
             throw new UnsupportedOperationException("Cannot add repo without an address.");
         }
@@ -341,10 +344,6 @@ public class RepoProvider extends FDroidProvider {
 
         if (!values.containsKey(Cols.IN_USE)) {
             values.put(Cols.IN_USE, 1);
-        }
-
-        if (!values.containsKey(Cols.PRIORITY)) {
-            values.put(Cols.PRIORITY, 10);
         }
 
         if (!values.containsKey(Cols.MAX_AGE)) {
@@ -364,6 +363,14 @@ public class RepoProvider extends FDroidProvider {
         Utils.debugLog(TAG, "Inserted repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return getContentUri(id);
+    }
+
+    private int getMaxPriority() {
+        Cursor cursor = db().query(RepoTable.NAME, new String[] {"MAX(" + Cols.PRIORITY + ")"}, "COALESCE(" + Cols.IS_SWAP + ", 0) = 0", null, null, null, null);
+        cursor.moveToFirst();
+        int max = cursor.getInt(0);
+        cursor.close();
+        return max;
     }
 
     @Override

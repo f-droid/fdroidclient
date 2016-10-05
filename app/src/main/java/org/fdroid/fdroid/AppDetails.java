@@ -856,7 +856,7 @@ public class AppDetails extends AppCompatActivity {
             case INSTALL:
                 // Note that this handles updating as well as installing.
                 if (app.suggestedVersionCode > 0) {
-                    final Apk apkToInstall = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode);
+                    final Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode);
                     install(apkToInstall);
                 }
                 return true;
@@ -1006,7 +1006,7 @@ public class AppDetails extends AppCompatActivity {
             case REQUEST_PERMISSION_DIALOG:
                 if (resultCode == Activity.RESULT_OK) {
                     Uri uri = data.getData();
-                    Apk apk = ApkProvider.Helper.find(this, uri, Schema.ApkTable.Cols.ALL);
+                    Apk apk = ApkProvider.Helper.findByUri(this, uri, Schema.ApkTable.Cols.ALL);
                     startInstall(apk);
                 }
                 break;
@@ -1624,7 +1624,7 @@ public class AppDetails extends AppCompatActivity {
                 App app = appDetails.getApp();
                 AppDetails activity = (AppDetails) getActivity();
                 if (updateWanted && app.suggestedVersionCode > 0) {
-                    Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVersionCode);
+                    Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(activity, app.packageName, app.suggestedVersionCode);
                     activity.install(apkToInstall);
                     return;
                 }
@@ -1640,7 +1640,7 @@ public class AppDetails extends AppCompatActivity {
                     // If not installed, install
                     btMain.setEnabled(false);
                     btMain.setText(R.string.system_install_installing);
-                    final Apk apkToInstall = ApkProvider.Helper.find(activity, app.packageName, app.suggestedVersionCode);
+                    final Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(activity, app.packageName, app.suggestedVersionCode);
                     activity.install(apkToInstall);
                 }
             }

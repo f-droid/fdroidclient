@@ -95,7 +95,7 @@ class DBHelper extends SQLiteOpenHelper {
             + "PRIMARY KEY (" + ApkTable.Cols.APP_ID + ", " + ApkTable.Cols.VERSION_CODE + ", " + ApkTable.Cols.REPO_ID + ")"
             + ");";
 
-    static final String CREATE_TABLE_APP = "CREATE TABLE " + AppMetadataTable.NAME
+    static final String CREATE_TABLE_APP_METADATA = "CREATE TABLE " + AppMetadataTable.NAME
             + " ( "
             + AppMetadataTable.Cols.PACKAGE_NAME + " text not null, "
             + AppMetadataTable.Cols.NAME + " text not null, "
@@ -248,7 +248,7 @@ class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(CREATE_TABLE_APP);
+        db.execSQL(CREATE_TABLE_APP_METADATA);
         db.execSQL(CREATE_TABLE_APK);
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
         db.execSQL(CREATE_TABLE_REPO);
@@ -731,12 +731,18 @@ class DBHelper extends SQLiteOpenHelper {
                 .putBoolean("triedEmptyUpdate", false)
                 .apply();
 
-        db.execSQL("DROP TABLE " + AppMetadataTable.NAME);
-        db.execSQL("DROP TABLE " + ApkTable.NAME);
-        db.execSQL(CREATE_TABLE_APP);
-        db.execSQL(CREATE_TABLE_APK);
-        clearRepoEtags(db);
-        ensureIndexes(db);
+        db.beginTransaction();
+        try {
+            db.execSQL("DROP TABLE " + AppMetadataTable.NAME);
+            db.execSQL("DROP TABLE " + ApkTable.NAME);
+            db.execSQL(CREATE_TABLE_APP_METADATA);
+            db.execSQL(CREATE_TABLE_APK);
+            clearRepoEtags(db);
+            ensureIndexes(db);
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
     }
 
     private void resetTransientPre42(SQLiteDatabase db, int oldVersion) {
@@ -753,7 +759,7 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL("drop table " + AppMetadataTable.NAME);
         db.execSQL("drop table " + ApkTable.NAME);
         clearRepoEtags(db);
-        db.execSQL(CREATE_TABLE_APP);
+        db.execSQL(CREATE_TABLE_APP_METADATA);
         db.execSQL(CREATE_TABLE_APK);
         ensureIndexes(db);
     }
@@ -813,7 +819,7 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void supportRepoPushRequests(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 61) {
+        if (oldVersion >= 62) {
             return;
         }
         Utils.debugLog(TAG, "Adding " + RepoTable.Cols.PUSH_REQUESTS

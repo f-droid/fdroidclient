@@ -20,10 +20,12 @@ package org.fdroid.fdroid;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
@@ -49,6 +51,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
@@ -56,9 +59,13 @@ import java.security.cert.CertificateEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Formatter;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public final class Utils {
 
@@ -539,6 +546,54 @@ public final class Utils {
             Log.e(TAG, "Could not get client version name", e);
         }
         return versionName;
+    }
+
+    /**
+     * Useful for debugging during development, so that arbitrary queries can be made, and their
+     * results inspected in the debugger.
+     */
+    @SuppressWarnings("unused")
+    @RequiresApi(api = 11)
+    public static List<Map<String, String>> dumpCursor(Cursor cursor) {
+        List<Map<String, String>> data = new ArrayList<>();
+
+        if (cursor == null) {
+            return data;
+        }
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Map<String, String> row = new HashMap<>(cursor.getColumnCount());
+            for (String col : cursor.getColumnNames()) {
+                int i = cursor.getColumnIndex(col);
+                switch (cursor.getType(i)) {
+                    case Cursor.FIELD_TYPE_NULL:
+                        row.put(col, null);
+                        break;
+
+                    case Cursor.FIELD_TYPE_INTEGER:
+                        row.put(col, Integer.toString(cursor.getInt(i)));
+                        break;
+
+                    case Cursor.FIELD_TYPE_FLOAT:
+                        row.put(col, Double.toString(cursor.getFloat(i)));
+                        break;
+
+                    case Cursor.FIELD_TYPE_STRING:
+                        row.put(col, cursor.getString(i));
+                        break;
+
+                    case Cursor.FIELD_TYPE_BLOB:
+                        row.put(col, new String(cursor.getBlob(i), Charset.defaultCharset()));
+                        break;
+                }
+            }
+            data.add(row);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return data;
     }
 
 }

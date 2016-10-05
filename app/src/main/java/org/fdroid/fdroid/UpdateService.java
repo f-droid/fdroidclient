@@ -468,7 +468,7 @@ public class UpdateService extends IntentService {
             cursor.moveToFirst();
             for (int i = 0; i < cursor.getCount(); i++) {
                 App app = new App(cursor);
-                Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode);
+                Apk apk = ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode);
                 InstallManagerService.queue(this, app, apk);
                 cursor.moveToNext();
             }
