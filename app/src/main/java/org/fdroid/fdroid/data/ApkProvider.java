@@ -424,7 +424,6 @@ public class ApkProvider extends FDroidProvider {
                 "You tried to query " + apkDetails.length);
         }
         String alias = includeAlias ? "apk." : "";
-        String metadataAlias = includeAlias ? "app." : "";
         final String[] args = new String[apkDetails.length * 2];
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < apkDetails.length; i++) {
@@ -436,12 +435,24 @@ public class ApkProvider extends FDroidProvider {
             if (i != 0) {
                 sb.append(" OR ");
             }
-            sb.append(" ( ")
-                    .append(metadataAlias)
-                    .append(AppMetadataTable.Cols.PACKAGE_ID)
-                    .append(" = (")
-                    .append(getPackageIdFromPackageNameQuery())
-                    .append(") AND ")
+            sb.append(" ( ");
+
+            if (includeAlias) {
+                // This is the simpler way to figure out the package name of a row in the apk table.
+                // It requires slightly less work for sqlite3 than the alternative below.
+                sb.append("app.")
+                        .append(AppMetadataTable.Cols.PACKAGE_ID)
+                        .append(" = (")
+                        .append(getPackageIdFromPackageNameQuery())
+                        .append(") ");
+            } else {
+                sb.append(Cols.APP_ID)
+                        .append(" IN (")
+                        .append(getMetadataIdFromPackageNameQuery())
+                        .append(")");
+            }
+
+            sb.append(" AND ")
                     .append(alias)
                     .append(Cols.VERSION_CODE)
                     .append(" = ? ) ");

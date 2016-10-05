@@ -144,7 +144,7 @@ public class RepoPersister {
             packageNames.add(app.packageName);
         }
         String[] projection = {Schema.AppMetadataTable.Cols.ROW_ID, Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME};
-        List<App> fromDb = TempAppProvider.Helper.findByPackageNames(context, packageNames, projection);
+        List<App> fromDb = TempAppProvider.Helper.findByPackageNames(context, packageNames, repo.id, projection);
 
         Map<String, Long> ids = new HashMap<>(fromDb.size());
         for (App app : fromDb) {
@@ -205,7 +205,7 @@ public class RepoPersister {
      * <strong>Does not do any checks to see if the app already exists or not.</strong>
      */
     private ContentProviderOperation updateExistingApp(App app) {
-        Uri uri = TempAppProvider.getAppUri(app.packageName, app.repoId);
+        Uri uri = TempAppProvider.getSpecificTempAppUri(app.packageName, app.repoId);
         return ContentProviderOperation.newUpdate(uri).withValues(app.toContentValues()).build();
     }
 
