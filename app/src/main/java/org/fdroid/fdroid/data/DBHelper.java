@@ -34,6 +34,7 @@ import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
@@ -49,6 +50,11 @@ class DBHelper extends SQLiteOpenHelper {
     public static final int REPO_XML_ARG_COUNT = 8;
 
     private static final String DATABASE_NAME = "fdroid";
+
+    private static final String CREATE_TABLE_PACKAGE = "CREATE TABLE " + PackageTable.NAME
+            + " ( "
+            + PackageTable.Cols.PACKAGE_NAME + " text not null"
+            + ");";
 
     private static final String CREATE_TABLE_REPO = "create table "
             + RepoTable.NAME + " ("
@@ -146,7 +152,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 62;
+    private static final int DB_VERSION = 63;
 
     private final Context context;
 
@@ -248,6 +254,7 @@ class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        db.execSQL(CREATE_TABLE_PACKAGE);
         db.execSQL(CREATE_TABLE_APP_METADATA);
         db.execSQL(CREATE_TABLE_APK);
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
@@ -344,6 +351,13 @@ class DBHelper extends SQLiteOpenHelper {
         addAppPrefsTable(db, oldVersion);
         lowerCaseApkHashes(db, oldVersion);
         supportRepoPushRequests(db, oldVersion);
+        migrateToPackageTable(db, oldVersion);
+    }
+
+    private void migrateToPackageTable(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 63) {
+            resetTransient(db);
+        }
     }
 
     private void lowerCaseApkHashes(SQLiteDatabase db, int oldVersion) {
@@ -733,8 +747,12 @@ class DBHelper extends SQLiteOpenHelper {
 
         db.beginTransaction();
         try {
+            if (tableExists(db, PackageTable.NAME)) {
+                db.execSQL("DROP TABLE " + PackageTable.NAME);
+            }
             db.execSQL("DROP TABLE " + AppMetadataTable.NAME);
             db.execSQL("DROP TABLE " + ApkTable.NAME);
+            db.execSQL(CREATE_TABLE_PACKAGE);
             db.execSQL(CREATE_TABLE_APP_METADATA);
             db.execSQL(CREATE_TABLE_APK);
             clearRepoEtags(db);
@@ -765,6 +783,11 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private static void ensureIndexes(SQLiteDatabase db) {
+        if (tableExists(db, PackageTable.NAME)) {
+            Utils.debugLog(TAG, "Ensuring indexes exist for " + PackageTable.NAME);
+            db.execSQL("CREATE INDEX IF NOT EXISTS package_packageName on " + PackageTable.NAME + " (" + PackageTable.Cols.PACKAGE_NAME + ");");
+        }
+
         Utils.debugLog(TAG, "Ensuring indexes exist for " + AppMetadataTable.NAME);
         db.execSQL("CREATE INDEX IF NOT EXISTS app_id on " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.PACKAGE_NAME + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS name on " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.NAME + ");"); // Used for sorting most lists
