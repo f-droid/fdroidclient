@@ -289,7 +289,8 @@ public class SwapAppsView extends ListView implements
                 public void onChange(boolean selfChange) {
                     Activity activity = getActivity();
                     if (activity != null) {
-                        app = AppProvider.Helper.findByPackageName(getActivity().getContentResolver(), app.packageName);
+                        app = AppProvider.Helper.findSpecificApp(getActivity().getContentResolver(),
+                                app.packageName, app.repoId, AppMetadataTable.Cols.ALL);
                         resetView();
                     }
                 }
@@ -318,7 +319,7 @@ public class SwapAppsView extends ListView implements
                     // implemented on API-16, so leaving like this for now.
                     getActivity().getContentResolver().unregisterContentObserver(appObserver);
                     getActivity().getContentResolver().registerContentObserver(
-                            AppProvider.getContentUri(this.app.packageName), true, appObserver);
+                            AppProvider.getSpecificAppUri(this.app.packageName, this.app.repoId), true, appObserver);
                 }
                 resetView();
             }

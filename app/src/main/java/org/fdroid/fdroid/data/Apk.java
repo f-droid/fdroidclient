@@ -63,7 +63,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String[] incompatibleReasons;
 
     /**
-     * The numeric primary key of the App table, which is used to join apks.
+     * The numeric primary key of the Metadata table, which is used to join apks.
      */
     public long appId;
 
@@ -91,7 +91,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                 case Cols.FEATURES:
                     features = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
-                case Cols.App.PACKAGE_NAME:
+                case Cols.Package.PACKAGE_NAME:
                     packageName = cursor.getString(i);
                     break;
                 case Cols.IS_COMPATIBLE:

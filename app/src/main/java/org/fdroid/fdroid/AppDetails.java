@@ -425,7 +425,7 @@ public class AppDetails extends AppCompatActivity {
         // register observer to know when install status changes
         myAppObserver = new AppObserver(new Handler());
         getContentResolver().registerContentObserver(
-                AppProvider.getContentUri(app.packageName),
+                AppProvider.getHighestPriorityMetadataUri(app.packageName),
                 true,
                 myAppObserver);
     }
@@ -667,7 +667,7 @@ public class AppDetails extends AppCompatActivity {
         calcActiveDownloadUrlString(packageName);
 
         if (!TextUtils.isEmpty(packageName)) {
-            newApp = AppProvider.Helper.findByPackageName(getContentResolver(), packageName);
+            newApp = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), packageName);
         }
 
         setApp(newApp);

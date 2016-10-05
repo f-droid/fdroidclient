@@ -39,7 +39,7 @@ public abstract class AppListFragment extends ListFragment implements
 
     private static final String[] APP_PROJECTION = {
             AppMetadataTable.Cols._ID, // Required for cursor loader to work.
-            AppMetadataTable.Cols.PACKAGE_NAME,
+            AppMetadataTable.Cols.Package.PACKAGE_NAME,
             AppMetadataTable.Cols.NAME,
             AppMetadataTable.Cols.SUMMARY,
             AppMetadataTable.Cols.IS_COMPATIBLE,

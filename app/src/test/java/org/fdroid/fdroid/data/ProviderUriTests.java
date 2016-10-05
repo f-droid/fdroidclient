@@ -93,10 +93,10 @@ public class ProviderUriTests {
         assertValidUri(resolver, AppProvider.getCanUpdateUri(), "content://org.fdroid.fdroid.data.AppProvider/canUpdate", projection);
 
         App app = new App();
+        app.repoId = 1;
         app.packageName = "org.fdroid.fdroid";
 
-        assertValidUri(resolver, AppProvider.getContentUri(app), "content://org.fdroid.fdroid.data.AppProvider/org.fdroid.fdroid", projection);
-        assertValidUri(resolver, AppProvider.getContentUri("org.fdroid.fdroid"), "content://org.fdroid.fdroid.data.AppProvider/org.fdroid.fdroid", projection);
+        assertValidUri(resolver, AppProvider.getSpecificAppUri(app.packageName, app.repoId), "content://org.fdroid.fdroid.data.AppProvider/app/1/org.fdroid.fdroid", projection);
     }
 
     @Test
@@ -112,7 +112,7 @@ public class ProviderUriTests {
         packageNames.add("org.fdroid.fdroid");
         packageNames.add("com.example.com");
 
-        assertValidUri(resolver, TempAppProvider.getAppsUri(packageNames), "content://org.fdroid.fdroid.data.TempAppProvider/apps/org.fdroid.fdroid%2Ccom.example.com", projection);
+        assertValidUri(resolver, TempAppProvider.getAppsUri(packageNames, 1), "content://org.fdroid.fdroid.data.TempAppProvider/apps/1/org.fdroid.fdroid%2Ccom.example.com", projection);
         assertValidUri(resolver, TempAppProvider.getContentUri(), "content://org.fdroid.fdroid.data.TempAppProvider", projection);
     }
 
@@ -135,9 +135,9 @@ public class ProviderUriTests {
 
         assertValidUri(resolver, ApkProvider.getContentUri(), "content://org.fdroid.fdroid.data.ApkProvider", projection);
         assertValidUri(resolver, ApkProvider.getAppUri("org.fdroid.fdroid"), "content://org.fdroid.fdroid.data.ApkProvider/app/org.fdroid.fdroid", projection);
-        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri(new MockApk("org.fdroid.fdroid", 100)), "content://org.fdroid.fdroid.data.ApkProvider/apk/100/org.fdroid.fdroid", projection);
+        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri(new MockApk("org.fdroid.fdroid", 100)), "content://org.fdroid.fdroid.data.ApkProvider/apk-any-repo/100/org.fdroid.fdroid", projection);
         assertValidUri(resolver, ApkProvider.getContentUri(apks), projection);
-        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri("org.fdroid.fdroid", 100), "content://org.fdroid.fdroid.data.ApkProvider/apk/100/org.fdroid.fdroid", projection);
+        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri("org.fdroid.fdroid", 100), "content://org.fdroid.fdroid.data.ApkProvider/apk-any-repo/100/org.fdroid.fdroid", projection);
         assertValidUri(resolver, ApkProvider.getRepoUri(1000), "content://org.fdroid.fdroid.data.ApkProvider/repo/1000", projection);
     }
 

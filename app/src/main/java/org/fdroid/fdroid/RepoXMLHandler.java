@@ -61,7 +61,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     private final StringBuilder curchars = new StringBuilder();
 
-    interface IndexReceiver {
+    public interface IndexReceiver {
         void receiveRepo(String name, String description, String signingCert, int maxage, int version, long timestamp);
 
         void receiveApp(App app, List<Apk> packages);
@@ -280,6 +280,7 @@ public class RepoXMLHandler extends DefaultHandler {
             }
         } else if ("application".equals(localName) && curapp == null) {
             curapp = new App();
+            curapp.repoId = repo.getId();
             curapp.packageName = attributes.getValue("", "id");
 
             // To appease the NON NULL constraint in the DB. Usually there is a description, and it

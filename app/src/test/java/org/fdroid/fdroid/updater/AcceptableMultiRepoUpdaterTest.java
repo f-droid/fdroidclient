@@ -1,14 +1,15 @@
 
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.RepoUpdater.UpdateException;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
@@ -39,49 +40,67 @@ public class AcceptableMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     @Test
     public void testAcceptableConflictingThenMainThenArchive() throws UpdateException {
         assertEmpty();
-        if (updateConflicting() && updateMain() && updateArchive()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateConflicting();
+        updateMain();
+        updateArchive();
+
+        assertSomewhatAcceptable();
     }
 
     @Test
     public void testAcceptableConflictingThenArchiveThenMain() throws UpdateException {
         assertEmpty();
-        if (updateConflicting() && updateArchive() && updateMain()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateConflicting();
+        updateArchive();
+        updateMain();
+
+        assertSomewhatAcceptable();
     }
 
     @Test
     public void testAcceptableArchiveThenMainThenConflicting() throws UpdateException {
         assertEmpty();
-        if (updateArchive() && updateMain() && updateConflicting()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateArchive();
+        updateMain();
+        updateConflicting();
+
+        assertSomewhatAcceptable();
     }
 
     @Test
     public void testAcceptableArchiveThenConflictingThenMain() throws UpdateException {
         assertEmpty();
-        if (updateArchive() && updateConflicting() && updateMain()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateArchive();
+        updateConflicting();
+        updateMain();
+
+        assertSomewhatAcceptable();
     }
 
     @Test
     public void testAcceptableMainThenArchiveThenConflicting() throws UpdateException {
         assertEmpty();
-        if (updateMain() && updateArchive() && updateConflicting()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateMain();
+        updateArchive();
+        updateConflicting();
+
+        assertSomewhatAcceptable();
     }
 
     @Test
     public void testAcceptableMainThenConflictingThenArchive() throws UpdateException {
         assertEmpty();
-        if (updateMain() && updateConflicting() && updateArchive()) {
-            assertSomewhatAcceptable();
-        }
+
+        updateMain();
+        updateConflicting();
+        updateArchive();
+
+        assertSomewhatAcceptable();
     }
 
     @NonNull
@@ -128,7 +147,7 @@ public class AcceptableMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
 
     private void disableRepo(Repo repo) {
         ContentValues values = new ContentValues(1);
-        values.put(Schema.RepoTable.Cols.IN_USE, 0);
+        values.put(Cols.IN_USE, 0);
         RepoProvider.Helper.update(context, repo, values);
     }
 

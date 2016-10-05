@@ -157,4 +157,12 @@ public abstract class FDroidProvider extends ContentProvider {
             }
         }
     }
+
+    /**
+     * Helper function to be used when you need to know the primary key from the package table
+     * when all you have is the package name.
+     */
+    protected static String getPackageIdFromPackageNameQuery() {
+        return "SELECT " + Schema.PackageTable.Cols.ROW_ID + " FROM " + Schema.PackageTable.NAME + " WHERE " + Schema.PackageTable.Cols.PACKAGE_NAME + " = ?";
+    }
 }

@@ -458,7 +458,12 @@ public class RepoUpdater {
             }
             if (RepoPushRequest.INSTALL.equals(repoPushRequest.request)) {
                 ContentResolver cr = context.getContentResolver();
-                App app = AppProvider.Helper.findByPackageName(cr, packageName);
+
+                // TODO: In the future, this needs to be able to specify which repository to get
+                // the package from. Better yet, we should be able to specify the hash of a package
+                // to install (especially when we move to using hashes more as identifiers than we
+                // do righ tnow).
+                App app = AppProvider.Helper.findHighestPriorityMetadata(cr, packageName);
                 if (app == null) {
                     Utils.debugLog(TAG, packageName + " not in local database, ignoring request to"
                             + repoPushRequest.request);

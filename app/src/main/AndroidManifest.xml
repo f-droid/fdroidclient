@@ -101,6 +101,11 @@
             android:exported="false"/>
 
         <provider
+            android:authorities="org.fdroid.fdroid.data.PackageProvider"
+            android:name="org.fdroid.fdroid.data.PackageProvider"
+            android:exported="false"/>
+
+        <provider
             android:name="org.fdroid.fdroid.installer.ApkFileProvider"
             android:authorities="org.fdroid.fdroid.installer.ApkFileProvider"
             android:exported="false"

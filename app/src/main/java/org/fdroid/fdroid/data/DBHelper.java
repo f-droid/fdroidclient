@@ -34,6 +34,7 @@ import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
@@ -49,6 +50,12 @@ class DBHelper extends SQLiteOpenHelper {
     public static final int REPO_XML_ARG_COUNT = 8;
 
     private static final String DATABASE_NAME = "fdroid";
+
+    private static final String CREATE_TABLE_PACKAGE = "CREATE TABLE " + PackageTable.NAME
+            + " ( "
+            + PackageTable.Cols.PACKAGE_NAME + " text not null, "
+            + PackageTable.Cols.PREFERRED_METADATA + " integer"
+            + ");";
 
     private static final String CREATE_TABLE_REPO = "create table "
             + RepoTable.NAME + " ("
@@ -97,7 +104,8 @@ class DBHelper extends SQLiteOpenHelper {
 
     static final String CREATE_TABLE_APP_METADATA = "CREATE TABLE " + AppMetadataTable.NAME
             + " ( "
-            + AppMetadataTable.Cols.PACKAGE_NAME + " text not null, "
+            + AppMetadataTable.Cols.PACKAGE_ID + " integer not null, "
+            + AppMetadataTable.Cols.REPO_ID + " integer not null, "
             + AppMetadataTable.Cols.NAME + " text not null, "
             + AppMetadataTable.Cols.SUMMARY + " text not null, "
             + AppMetadataTable.Cols.ICON + " text, "
@@ -124,7 +132,7 @@ class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.IS_COMPATIBLE + " int not null,"
             + AppMetadataTable.Cols.ICON_URL + " text, "
             + AppMetadataTable.Cols.ICON_URL_LARGE + " text, "
-            + "primary key(" + AppMetadataTable.Cols.PACKAGE_NAME + "));";
+            + "primary key(" + AppMetadataTable.Cols.PACKAGE_ID + ", " + AppMetadataTable.Cols.REPO_ID + "));";
 
     private static final String CREATE_TABLE_APP_PREFS = "CREATE TABLE " + AppPrefsTable.NAME
             + " ( "
@@ -146,7 +154,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 62;
+    private static final int DB_VERSION = 63;
 
     private final Context context;
 
@@ -248,6 +256,7 @@ class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        db.execSQL(CREATE_TABLE_PACKAGE);
         db.execSQL(CREATE_TABLE_APP_METADATA);
         db.execSQL(CREATE_TABLE_APK);
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
@@ -344,6 +353,63 @@ class DBHelper extends SQLiteOpenHelper {
         addAppPrefsTable(db, oldVersion);
         lowerCaseApkHashes(db, oldVersion);
         supportRepoPushRequests(db, oldVersion);
+        migrateToPackageTable(db, oldVersion);
+    }
+
+    private void migrateToPackageTable(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 63) {
+            return;
+        }
+
+        resetTransient(db);
+
+        // By pushing _ALL_ repositories to a priority of 10, it makes it slightly easier
+        // to query for the non-default repositories later on in this method.
+        ContentValues highPriority = new ContentValues(1);
+        highPriority.put(RepoTable.Cols.PRIORITY, 10);
+        db.update(RepoTable.NAME, highPriority, null, null);
+
+        String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
+        String fdroidPubKey = defaultRepos[7];
+        String fdroidAddress = defaultRepos[1];
+        String fdroidArchiveAddress = defaultRepos[REPO_XML_ARG_COUNT + 1];
+        String gpPubKey = defaultRepos[REPO_XML_ARG_COUNT * 2 + 7];
+        String gpAddress = defaultRepos[REPO_XML_ARG_COUNT * 2 + 1];
+        String gpArchiveAddress = defaultRepos[REPO_XML_ARG_COUNT * 3 + 1];
+
+        updateRepoPriority(db, fdroidPubKey, fdroidAddress, 1);
+        updateRepoPriority(db, fdroidPubKey, fdroidArchiveAddress, 2);
+        updateRepoPriority(db, gpPubKey, gpAddress, 3);
+        updateRepoPriority(db, gpPubKey, gpArchiveAddress, 4);
+
+        int priority = 5;
+        String[] projection = new String[] {RepoTable.Cols.SIGNING_CERT, RepoTable.Cols.ADDRESS};
+
+        // Order by ID, because that is a good analogy for the order in which they were added.
+        // The order in which they were added is likely the order they present in the ManageRepos activity.
+        Cursor cursor = db.query(RepoTable.NAME, projection, RepoTable.Cols.PRIORITY + " > 4", null, null, null, RepoTable.Cols._ID);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String signingCert = cursor.getString(cursor.getColumnIndex(RepoTable.Cols.SIGNING_CERT));
+            String address = cursor.getString(cursor.getColumnIndex(RepoTable.Cols.ADDRESS));
+            updateRepoPriority(db, signingCert, address, priority);
+            cursor.moveToNext();
+            priority++;
+        }
+        cursor.close();
+    }
+
+    private void updateRepoPriority(SQLiteDatabase db, String signingCert, String address, int priority) {
+        ContentValues values = new ContentValues(1);
+        values.put(RepoTable.Cols.PRIORITY, Integer.toString(priority));
+
+        Utils.debugLog(TAG, "Setting priority of repo " + address + " to " + priority);
+        db.update(
+                RepoTable.NAME,
+                values,
+                RepoTable.Cols.SIGNING_CERT + " = ? AND " + RepoTable.Cols.ADDRESS + " = ?",
+                new String[] {signingCert, address}
+        );
     }
 
     private void lowerCaseApkHashes(SQLiteDatabase db, int oldVersion) {
@@ -370,7 +436,7 @@ class DBHelper extends SQLiteOpenHelper {
                 + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ", "
                 + AppPrefsTable.Cols.IGNORE_ALL_UPDATES
                 + ") SELECT "
-                + AppMetadataTable.Cols.PACKAGE_NAME + ", "
+                + "id, "
                 + "ignoreThisUpdate, "
                 + "ignoreAllUpdates "
                 + "FROM " + AppMetadataTable.NAME + " "
@@ -479,7 +545,7 @@ class DBHelper extends SQLiteOpenHelper {
                 final String update = "UPDATE " + ApkTable.NAME + " SET " + ApkTable.Cols.APP_ID + " = ( " +
                         "SELECT app." + AppMetadataTable.Cols.ROW_ID + " " +
                         "FROM " + AppMetadataTable.NAME + " AS app " +
-                        "WHERE " + ApkTable.NAME + ".id = app." + AppMetadataTable.Cols.PACKAGE_NAME + ")";
+                        "WHERE " + ApkTable.NAME + ".id = app.id)";
                 Log.i(TAG, "Updating foreign key from " + ApkTable.NAME + " to " + AppMetadataTable.NAME + " to use numeric foreign key.");
                 Utils.debugLog(TAG, update);
                 db.execSQL(update);
@@ -733,8 +799,13 @@ class DBHelper extends SQLiteOpenHelper {
 
         db.beginTransaction();
         try {
+            if (tableExists(db, PackageTable.NAME)) {
+                db.execSQL("DROP TABLE " + PackageTable.NAME);
+            }
+
             db.execSQL("DROP TABLE " + AppMetadataTable.NAME);
             db.execSQL("DROP TABLE " + ApkTable.NAME);
+            db.execSQL(CREATE_TABLE_PACKAGE);
             db.execSQL(CREATE_TABLE_APP_METADATA);
             db.execSQL(CREATE_TABLE_APK);
             clearRepoEtags(db);
@@ -765,10 +836,23 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private static void ensureIndexes(SQLiteDatabase db) {
+        if (tableExists(db, PackageTable.NAME)) {
+            Utils.debugLog(TAG, "Ensuring indexes exist for " + PackageTable.NAME);
+            db.execSQL("CREATE INDEX IF NOT EXISTS package_packageName on " + PackageTable.NAME + " (" + PackageTable.Cols.PACKAGE_NAME + ");");
+            db.execSQL("CREATE INDEX IF NOT EXISTS package_preferredMetadata on " + PackageTable.NAME + " (" + PackageTable.Cols.PREFERRED_METADATA + ");");
+        }
+
         Utils.debugLog(TAG, "Ensuring indexes exist for " + AppMetadataTable.NAME);
-        db.execSQL("CREATE INDEX IF NOT EXISTS app_id on " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.PACKAGE_NAME + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS name on " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.NAME + ");"); // Used for sorting most lists
         db.execSQL("CREATE INDEX IF NOT EXISTS added on " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.ADDED + ");"); // Used for sorting "newly added"
+
+        if (columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.PACKAGE_ID)) {
+            db.execSQL("CREATE INDEX IF NOT EXISTS metadata_packageId ON " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.PACKAGE_ID + ");");
+        }
+
+        if (columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.REPO_ID)) {
+            db.execSQL("CREATE INDEX IF NOT EXISTS metadata_repoId ON " + AppMetadataTable.NAME + " (" + AppMetadataTable.Cols.REPO_ID + ");");
+        }
 
         Utils.debugLog(TAG, "Ensuring indexes exist for " + ApkTable.NAME);
         db.execSQL("CREATE INDEX IF NOT EXISTS apk_vercode on " + ApkTable.NAME + " (" + ApkTable.Cols.VERSION_CODE + ");");

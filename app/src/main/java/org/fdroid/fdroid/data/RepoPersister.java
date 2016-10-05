@@ -143,8 +143,8 @@ public class RepoPersister {
         for (App app : apps) {
             packageNames.add(app.packageName);
         }
-        String[] projection = {Schema.AppMetadataTable.Cols.ROW_ID, Schema.AppMetadataTable.Cols.PACKAGE_NAME};
-        List<App> fromDb = TempAppProvider.Helper.findByPackageNames(context, packageNames, projection);
+        String[] projection = {Schema.AppMetadataTable.Cols.ROW_ID, Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME};
+        List<App> fromDb = TempAppProvider.Helper.findByPackageNames(context, packageNames, repo.id, projection);
 
         Map<String, Long> ids = new HashMap<>(fromDb.size());
         for (App app : fromDb) {
@@ -175,15 +175,17 @@ public class RepoPersister {
      */
     private ArrayList<ContentProviderOperation> insertOrUpdateApks(List<Apk> packages) {
         String[] projection = new String[]{
-                Schema.ApkTable.Cols.App.PACKAGE_NAME,
+                Schema.ApkTable.Cols.Package.PACKAGE_NAME,
                 Schema.ApkTable.Cols.VERSION_CODE,
+                Schema.ApkTable.Cols.REPO_ID,
+                Schema.ApkTable.Cols.APP_ID,
         };
         List<Apk> existingApks = ApkProvider.Helper.knownApks(context, packages, projection);
         ArrayList<ContentProviderOperation> operations = new ArrayList<>(packages.size());
         for (Apk apk : packages) {
             boolean exists = false;
             for (Apk existing : existingApks) {
-                if (existing.packageName.equals(apk.packageName) && existing.versionCode == apk.versionCode) {
+                if (existing.repo == apk.repo && existing.packageName.equals(apk.packageName) && existing.versionCode == apk.versionCode) {
                     exists = true;
                     break;
                 }
@@ -204,7 +206,7 @@ public class RepoPersister {
      * <strong>Does not do any checks to see if the app already exists or not.</strong>
      */
     private ContentProviderOperation updateExistingApp(App app) {
-        Uri uri = TempAppProvider.getAppUri(app);
+        Uri uri = TempAppProvider.getSpecificTempAppUri(app.packageName, app.repoId);
         return ContentProviderOperation.newUpdate(uri).withValues(app.toContentValues()).build();
     }
 
@@ -224,8 +226,8 @@ public class RepoPersister {
      * array.
      */
     private boolean isAppInDatabase(App app) {
-        String[] fields = {Schema.AppMetadataTable.Cols.PACKAGE_NAME};
-        App found = AppProvider.Helper.findByPackageName(context.getContentResolver(), app.packageName, fields);
+        String[] fields = {Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME};
+        App found = AppProvider.Helper.findSpecificApp(context.getContentResolver(), app.packageName, repo.id, fields);
         return found != null;
     }
 
@@ -255,8 +257,8 @@ public class RepoPersister {
      */
     @Nullable
     private ContentProviderOperation deleteOrphanedApks(List<App> apps, Map<String, List<Apk>> packages) {
-        String[] projection = new String[]{Schema.ApkTable.Cols.App.PACKAGE_NAME, Schema.ApkTable.Cols.VERSION_CODE};
-        List<Apk> existing = ApkProvider.Helper.find(context, repo, apps, projection);
+        String[] projection = new String[]{Schema.ApkTable.Cols.Package.PACKAGE_NAME, Schema.ApkTable.Cols.VERSION_CODE};
+        List<Apk> existing = ApkProvider.Helper.findByUri(context, repo, apps, projection);
         List<Apk> toDelete = new ArrayList<>();
 
         for (Apk existingApk : existing) {
