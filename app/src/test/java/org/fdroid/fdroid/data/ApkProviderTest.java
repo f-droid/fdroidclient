@@ -69,8 +69,8 @@ public class ApkProviderTest extends FDroidProviderTest {
         Apk apk = new MockApk("org.fdroid.fdroid", 10);
 
         assertCantDelete(contentResolver, ApkProvider.getContentUri());
-        assertCantDelete(contentResolver, ApkProvider.getContentUri("org.fdroid.fdroid", 10));
-        assertCantDelete(contentResolver, ApkProvider.getContentUri(apk));
+        assertCantDelete(contentResolver, ApkProvider.getApkFromAnyRepoUri("org.fdroid.fdroid", 10));
+        assertCantDelete(contentResolver, ApkProvider.getApkFromAnyRepoUri(apk));
         assertCantDelete(contentResolver, Uri.withAppendedPath(ApkProvider.getContentUri(), "some-random-path"));
     }
 
@@ -411,7 +411,7 @@ public class ApkProviderTest extends FDroidProviderTest {
             Assert.insertApk(context, "com.other.thing." + i, i);
         }
 
-        Apk apk = ApkProvider.Helper.find(context, "com.example", 11);
+        Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context, "com.example", 11);
 
         assertNotNull(apk);
 
@@ -428,7 +428,7 @@ public class ApkProviderTest extends FDroidProviderTest {
             Cols.HASH,
         };
 
-        Apk apkLessFields = ApkProvider.Helper.find(context, "com.example", 11, projection);
+        Apk apkLessFields = ApkProvider.Helper.findApkFromAnyRepo(context, "com.example", 11, projection);
 
         assertNotNull(apkLessFields);
 
@@ -440,7 +440,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertNull(apkLessFields.versionName);
         assertEquals(0, apkLessFields.versionCode);
 
-        Apk notFound = ApkProvider.Helper.find(context, "com.doesnt.exist", 1000);
+        Apk notFound = ApkProvider.Helper.findApkFromAnyRepo(context, "com.doesnt.exist", 1000);
         assertNull(notFound);
     }
 

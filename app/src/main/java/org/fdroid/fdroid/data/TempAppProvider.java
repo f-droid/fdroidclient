@@ -69,7 +69,7 @@ public class TempAppProvider extends AppProvider {
     }
 
     private AppQuerySelection queryApps(String packageNames) {
-        return queryApps(packageNames, getTableName() + "." + AppMetadataTable.Cols.PACKAGE_NAME);
+        return queryPackageNames(packageNames, getTableName() + "." + AppMetadataTable.Cols.PACKAGE_NAME);
     }
 
     public static class Helper {

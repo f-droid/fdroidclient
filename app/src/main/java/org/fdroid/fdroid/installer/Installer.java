@@ -97,7 +97,7 @@ public abstract class Installer {
             // no permission screen needed!
             return null;
         }
-        Uri uri = ApkProvider.getContentUri(apk);
+        Uri uri = ApkProvider.getApkFromAnyRepoUri(apk);
         Intent intent = new Intent(context, InstallConfirmActivity.class);
         intent.setData(uri);
 

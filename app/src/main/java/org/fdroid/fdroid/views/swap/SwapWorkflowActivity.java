@@ -766,7 +766,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void install(@NonNull final App app) {
-        final Apk apk = ApkProvider.Helper.find(this, app.packageName, app.suggestedVersionCode);
+        final Apk apk = ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode);
         Uri downloadUri = Uri.parse(apk.getUrl());
         localBroadcastManager.registerReceiver(installReceiver,
                 Installer.getInstallIntentFilter(downloadUri));
