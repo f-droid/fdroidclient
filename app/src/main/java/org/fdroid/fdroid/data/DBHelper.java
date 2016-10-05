@@ -819,7 +819,7 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void supportRepoPushRequests(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 61) {
+        if (oldVersion >= 62) {
             return;
         }
         Utils.debugLog(TAG, "Adding " + RepoTable.Cols.PUSH_REQUESTS
