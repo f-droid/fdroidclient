@@ -355,9 +355,59 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void migrateToPackageTable(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion < 63) {
-            resetTransient(db);
+        if (oldVersion >= 63) {
+            return;
         }
+
+        resetTransient(db);
+
+        // By pushing _ALL_ repositories to a priority of 10, it makes it slightly easier
+        // to query for the non-default repositories later on in this method.
+        ContentValues highPriority = new ContentValues(1);
+        highPriority.put(RepoTable.Cols.PRIORITY, 10);
+        db.update(RepoTable.NAME, highPriority, null, null);
+
+        String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
+        String fdroidPubKey = defaultRepos[7];
+        String fdroidAddress = defaultRepos[1];
+        String fdroidArchiveAddress = defaultRepos[REPO_XML_ARG_COUNT + 1];
+        String gpPubKey = defaultRepos[REPO_XML_ARG_COUNT * 2 + 7];
+        String gpAddress = defaultRepos[REPO_XML_ARG_COUNT * 2 + 1];
+        String gpArchiveAddress = defaultRepos[REPO_XML_ARG_COUNT * 3 + 1];
+
+        updateRepoPriority(db, fdroidPubKey, fdroidAddress, 1);
+        updateRepoPriority(db, fdroidPubKey, fdroidArchiveAddress, 2);
+        updateRepoPriority(db, gpPubKey, gpAddress, 3);
+        updateRepoPriority(db, gpPubKey, gpArchiveAddress, 4);
+
+        int priority = 5;
+        String[] projection = new String[] {RepoTable.Cols.SIGNING_CERT, RepoTable.Cols.ADDRESS};
+
+        // Order by ID, because that is a good analogy for the order in which they were added.
+        // The order in which they were added is likely the order they present in the ManageRepos activity.
+        Cursor cursor = db.query(RepoTable.NAME, projection, RepoTable.Cols.PRIORITY + " > 4", null, null, null, RepoTable.Cols._ID);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String signingCert = cursor.getString(cursor.getColumnIndex(RepoTable.Cols.SIGNING_CERT));
+            String address = cursor.getString(cursor.getColumnIndex(RepoTable.Cols.ADDRESS));
+            updateRepoPriority(db, signingCert, address, priority);
+            cursor.moveToNext();
+            priority++;
+        }
+        cursor.close();
+    }
+
+    private void updateRepoPriority(SQLiteDatabase db, String signingCert, String address, int priority) {
+        ContentValues values = new ContentValues(1);
+        values.put(RepoTable.Cols.PRIORITY, Integer.toString(priority));
+
+        Utils.debugLog(TAG, "Setting priority of repo " + address + " to " + priority);
+        db.update(
+                RepoTable.NAME,
+                values,
+                RepoTable.Cols.SIGNING_CERT + " = ? AND " + RepoTable.Cols.ADDRESS + " = ?",
+                new String[] {signingCert, address}
+        );
     }
 
     private void lowerCaseApkHashes(SQLiteDatabase db, int oldVersion) {
@@ -750,6 +800,7 @@ class DBHelper extends SQLiteOpenHelper {
             if (tableExists(db, PackageTable.NAME)) {
                 db.execSQL("DROP TABLE " + PackageTable.NAME);
             }
+
             db.execSQL("DROP TABLE " + AppMetadataTable.NAME);
             db.execSQL("DROP TABLE " + ApkTable.NAME);
             db.execSQL(CREATE_TABLE_PACKAGE);
