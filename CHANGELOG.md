@@ -1,5 +1,15 @@
 ### 0.102 (2016-??-??)
 
+* Optionally keep install history
+
+* Optionally let repositories request installs and uninstalls of apps
+
+* Support for APK extension files (OBB)
+
+* Enable TLS v1.2 for HTTPS on all devices that support it (again)
+
+* Better support for multiple repositories providing the same app
+
 ### 0.101 (2016-09-28)
 
 * Support for Android 2.2 is dropped, 2.3.3 or later is now required
