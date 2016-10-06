@@ -270,7 +270,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
     @Override
     public String toString() {
-        return packageName + " (version " + versionCode + ")";
+        return toContentValues().toString();
     }
 
     public ContentValues toContentValues() {
