@@ -14,10 +14,14 @@ import android.net.Uri;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.support.v4.content.IntentCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
@@ -29,6 +33,8 @@ import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -61,11 +67,18 @@ import java.util.Set;
  * </ul></p>
  * The implementations of {@link Uri#toString()} and {@link Intent#getDataString()} both
  * include caching of the generated {@code String}, so it should be plenty fast.
+ * <p>
+ * This also handles downloading OBB "APK Extension" files for any APK that has one
+ * assigned to it.  OBB files are queued up for download before the APK so that they
+ * are hopefully in place before the APK starts.  That is not guaranteed though.
+ *
+ * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
  */
 public class InstallManagerService extends Service {
     private static final String TAG = "InstallManagerService";
 
     private static final String ACTION_INSTALL = "org.fdroid.fdroid.installer.action.INSTALL";
+    private static final String ACTION_CANCEL = "org.fdroid.fdroid.installer.action.CANCEL";
 
     private static final String EXTRA_APP = "org.fdroid.fdroid.installer.extra.APP";
     private static final String EXTRA_APK = "org.fdroid.fdroid.installer.extra.APK";
@@ -125,14 +138,22 @@ public class InstallManagerService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Utils.debugLog(TAG, "onStartCommand " + intent);
 
-        if (!ACTION_INSTALL.equals(intent.getAction())) {
-            Utils.debugLog(TAG, "Ignoring " + intent + " as it is not an " + ACTION_INSTALL + " intent");
-            return START_NOT_STICKY;
-        }
-
         String urlString = intent.getDataString();
         if (TextUtils.isEmpty(urlString)) {
             Utils.debugLog(TAG, "empty urlString, nothing to do");
+            return START_NOT_STICKY;
+        }
+
+        String action = intent.getAction();
+        if (ACTION_CANCEL.equals(action)) {
+            DownloaderService.cancel(this, urlString);
+            Apk apk = getApkFromActive(urlString);
+            DownloaderService.cancel(this, apk.getPatchObbUrl());
+            DownloaderService.cancel(this, apk.getMainObbUrl());
+            cancelNotification(urlString);
+            return START_NOT_STICKY;
+        } else if (!ACTION_INSTALL.equals(action)) {
+            Utils.debugLog(TAG, "Ignoring " + intent + " as it is not an " + ACTION_INSTALL + " intent");
             return START_NOT_STICKY;
         }
 
@@ -160,7 +181,9 @@ public class InstallManagerService extends Service {
         NotificationCompat.Builder builder = createNotificationBuilder(urlString, apk);
         notificationManager.notify(urlString.hashCode(), builder.build());
 
-        registerDownloaderReceivers(urlString, builder);
+        registerApkDownloaderReceivers(urlString, builder);
+        getObb(urlString, apk.getMainObbUrl(), apk.getMainObbFile(), apk.obbMainFileSha256, builder);
+        getObb(urlString, apk.getPatchObbUrl(), apk.getPatchObbFile(), apk.obbPatchFileSha256, builder);
 
         File apkFilePath = ApkCache.getApkDownloadPath(this, intent.getData());
         long apkFileSize = apkFilePath.length();
@@ -186,7 +209,72 @@ public class InstallManagerService extends Service {
         localBroadcastManager.sendBroadcast(intent);
     }
 
-    private void registerDownloaderReceivers(String urlString, final NotificationCompat.Builder builder) {
+    /**
+     * Check if any OBB files are available, and if so, download and install them. This
+     * also deletes any obsolete OBB files, per the spec, since there can be only one
+     * "main" and one "patch" OBB installed at a time.
+     *
+     * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
+     */
+    private void getObb(final String urlString, String obbUrlString,
+                        final File obbDestFile, final String sha256,
+                        final NotificationCompat.Builder builder) {
+        if (obbDestFile == null || obbDestFile.exists() || TextUtils.isEmpty(obbUrlString)) {
+            return;
+        }
+        final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                if (Downloader.ACTION_STARTED.equals(action)) {
+                    Utils.debugLog(TAG, action + " " + intent);
+                } else if (Downloader.ACTION_PROGRESS.equals(action)) {
+
+                    int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
+                    int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                    builder.setProgress(totalBytes, bytesRead, false);
+                    notificationManager.notify(urlString.hashCode(), builder.build());
+                } else if (Downloader.ACTION_COMPLETE.equals(action)) {
+                    localBroadcastManager.unregisterReceiver(this);
+                    File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
+                    Uri localApkUri = Uri.fromFile(localFile);
+                    Utils.debugLog(TAG, "OBB download completed " + intent.getDataString()
+                            + " to " + localApkUri);
+
+                    try {
+                        if (Hasher.isFileMatchingHash(localFile, sha256, "SHA-256")) {
+                            Utils.debugLog(TAG, "Installing OBB " + localFile + " to " + obbDestFile);
+                            FileUtils.forceMkdirParent(obbDestFile);
+                            FileUtils.copyFile(localFile, obbDestFile);
+                            FileFilter filter = new WildcardFileFilter(
+                                    obbDestFile.getName().substring(0, 4) + "*.obb");
+                            for (File f : obbDestFile.getParentFile().listFiles(filter)) {
+                                if (!f.equals(obbDestFile)) {
+                                    Utils.debugLog(TAG, "Deleting obsolete OBB " + f);
+                                    FileUtils.deleteQuietly(f);
+                                }
+                            }
+                        } else {
+                            Utils.debugLog(TAG, localFile + " deleted, did not match hash: " + sha256);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        FileUtils.deleteQuietly(localFile);
+                    }
+                } else if (Downloader.ACTION_INTERRUPTED.equals(action)) {
+                    localBroadcastManager.unregisterReceiver(this);
+                } else {
+                    throw new RuntimeException("intent action not handled!");
+                }
+            }
+        };
+        DownloaderService.queue(this, obbUrlString);
+        localBroadcastManager.registerReceiver(downloadReceiver,
+                DownloaderService.getIntentFilter(obbUrlString));
+    }
+
+    private void registerApkDownloaderReceivers(String urlString, final NotificationCompat.Builder builder) {
 
         BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
@@ -303,7 +391,7 @@ public class InstallManagerService extends Service {
                 .setContentIntent(getAppDetailsIntent(downloadUrlId, apk))
                 .setContentTitle(getString(R.string.downloading_apk, getAppName(apk)))
                 .addAction(R.drawable.ic_cancel_black_24dp, getString(R.string.cancel),
-                        DownloaderService.getCancelPendingIntent(this, urlString))
+                        getCancelPendingIntent(urlString))
                 .setSmallIcon(android.R.drawable.stat_sys_download)
                 .setContentText(urlString)
                 .setProgress(100, 0, true);
@@ -348,7 +436,7 @@ public class InstallManagerService extends Service {
             if (TextUtils.isEmpty(name) || name.equals(new App().name)) {
                 ContentResolver resolver = getContentResolver();
                 App app = AppProvider.Helper.findSpecificApp(resolver, apk.packageName, apk.repo,
-                        new String[] {Schema.AppMetadataTable.Cols.NAME});
+                        new String[]{Schema.AppMetadataTable.Cols.NAME});
                 if (app == null || TextUtils.isEmpty(app.name)) {
                     return;  // do not have a name to display, so leave notification as is
                 }
@@ -456,6 +544,17 @@ public class InstallManagerService extends Service {
         return apk;
     }
 
+    private PendingIntent getCancelPendingIntent(String urlString) {
+        Intent intent = new Intent(this, InstallManagerService.class)
+                .setData(Uri.parse(urlString))
+                .setAction(ACTION_CANCEL)
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+        return PendingIntent.getService(this,
+                urlString.hashCode(),
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
     /**
      * Install an APK, checking the cache and downloading if necessary before starting the process.
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
@@ -473,6 +572,13 @@ public class InstallManagerService extends Service {
         intent.setData(downloadUri);
         intent.putExtra(EXTRA_APP, app);
         intent.putExtra(EXTRA_APK, apk);
+        context.startService(intent);
+    }
+
+    public static void cancel(Context context, String urlString) {
+        Intent intent = new Intent(context, InstallManagerService.class);
+        intent.setAction(ACTION_CANCEL);
+        intent.setData(Uri.parse(urlString));
         context.startService(intent);
     }
 

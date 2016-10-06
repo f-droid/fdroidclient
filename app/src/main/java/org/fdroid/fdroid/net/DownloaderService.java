@@ -17,7 +17,6 @@
 
 package org.fdroid.fdroid.net;
 
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -30,7 +29,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PatternMatcher;
 import android.os.Process;
-import android.support.v4.content.IntentCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
@@ -154,17 +152,6 @@ public class DownloaderService extends Service {
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
     }
 
-    public static PendingIntent getCancelPendingIntent(Context context, String urlString) {
-        Intent cancelIntent = new Intent(context.getApplicationContext(), DownloaderService.class)
-                .setData(Uri.parse(urlString))
-                .setAction(ACTION_CANCEL)
-                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-        return PendingIntent.getService(context.getApplicationContext(),
-                urlString.hashCode(),
-                cancelIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-
     @Override
     public void onDestroy() {
         Utils.debugLog(TAG, "Destroying downloader service. Will move to background and stop our Looper.");
@@ -258,6 +245,9 @@ public class DownloaderService extends Service {
      * @see #cancel(Context, String)
      */
     public static void queue(Context context, String urlString) {
+        if (TextUtils.isEmpty(urlString)) {
+            return;
+        }
         Utils.debugLog(TAG, "Preparing " + urlString + " to go into the download queue");
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
@@ -275,6 +265,9 @@ public class DownloaderService extends Service {
      * @see #queue(Context, String)
      */
     public static void cancel(Context context, String urlString) {
+        if (TextUtils.isEmpty(urlString)) {
+            return;
+        }
         Utils.debugLog(TAG, "Preparing cancellation of " + urlString + " download");
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_CANCEL);

@@ -25,22 +25,32 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
+
+import java.io.File;
+import java.io.FileFilter;
 
 /**
  * This service handles the install process of apk files and
  * uninstall process of apps.
- * <p/>
+ * <p>
  * This service is based on an IntentService because:
  * - no parallel installs/uninstalls should be allowed,
  * i.e., runs sequentially
  * - no cancel operation is needed. Cancelling an installation
  * would be the same as starting uninstall afterwards
- * <p/>
+ * <p>
  * The download URL is only used as the unique ID that represents this
  * particular apk throughout the whole install process in
  * {@link InstallManagerService}.
+ * <p>
+ * This also handles deleting any associated OBB files when an app is
+ * uninstalled, as per the
+ * <a href="https://developer.android.com/google/play/expansion-files.html">
+ * APK Expansion Files</a> spec.
  */
 public class InstallerService extends IntentService {
     public static final String TAG = "InstallerService";
@@ -54,7 +64,7 @@ public class InstallerService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
+        final Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
         if (apk == null) {
             Utils.debugLog(TAG, "ignoring intent with null EXTRA_APK: " + intent);
             return;
@@ -67,6 +77,29 @@ public class InstallerService extends IntentService {
             installer.installPackage(uri, downloadUri);
         } else if (ACTION_UNINSTALL.equals(intent.getAction())) {
             installer.uninstallPackage();
+            new Thread() {
+                @Override
+                public void run() {
+                    setPriority(MIN_PRIORITY);
+                    File mainObbFile = apk.getMainObbFile();
+                    if (mainObbFile == null) {
+                        return;
+                    }
+                    File obbDir = mainObbFile.getParentFile();
+                    if (obbDir == null) {
+                        return;
+                    }
+                    FileFilter filter = new WildcardFileFilter("*.obb");
+                    File[] obbFiles = obbDir.listFiles(filter);
+                    if (obbFiles == null) {
+                        return;
+                    }
+                    for (File f : obbFiles) {
+                        Utils.debugLog(TAG, "Uninstalling OBB " + f);
+                        FileUtils.deleteQuietly(f);
+                    }
+                }
+            }.start();
         }
     }
 

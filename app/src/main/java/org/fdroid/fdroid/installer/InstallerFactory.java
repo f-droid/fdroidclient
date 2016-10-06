@@ -41,12 +41,12 @@ public class InstallerFactory {
      */
     public static Installer create(Context context, Apk apk) {
         if (apk == null || TextUtils.isEmpty(apk.packageName)) {
-            throw new IllegalArgumentException("packageName must not be empty!");
+            throw new IllegalArgumentException("Apk.packageName must not be empty: " + apk);
         }
 
         Installer installer;
         if (apk.packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
-            // special case for "F-Droid Privileged Extension"
+            // special case for installing "Privileged Extension" with root
             installer = new ExtensionInstaller(context, apk);
         } else if (PrivilegedInstaller.isDefault(context)) {
             Utils.debugLog(TAG, "privileged extension correctly installed -> PrivilegedInstaller");
