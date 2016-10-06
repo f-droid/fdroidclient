@@ -17,7 +17,10 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
@@ -29,6 +32,8 @@ import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -61,6 +66,12 @@ import java.util.Set;
  * </ul></p>
  * The implementations of {@link Uri#toString()} and {@link Intent#getDataString()} both
  * include caching of the generated {@code String}, so it should be plenty fast.
+ * <p>
+ * This also handles downloading OBB "APK Extension" files for any APK that has one
+ * assigned to it.  OBB files are queued up for download before the APK so that they
+ * are hopefully in place before the APK starts.  That is not guaranteed though.
+ *
+ * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
  */
 public class InstallManagerService extends Service {
     private static final String TAG = "InstallManagerService";
@@ -160,7 +171,9 @@ public class InstallManagerService extends Service {
         NotificationCompat.Builder builder = createNotificationBuilder(urlString, apk);
         notificationManager.notify(urlString.hashCode(), builder.build());
 
-        registerDownloaderReceivers(urlString, builder);
+        registerApkDownloaderReceivers(urlString, builder);
+        getObb(urlString, apk.getMainObbUrl(), apk.getMainObbFile(), apk.obbMainFileSha256, builder);
+        getObb(urlString, apk.getPatchObbUrl(), apk.getPatchObbFile(), apk.obbPatchFileSha256, builder);
 
         File apkFilePath = ApkCache.getApkDownloadPath(this, intent.getData());
         long apkFileSize = apkFilePath.length();
@@ -186,7 +199,72 @@ public class InstallManagerService extends Service {
         localBroadcastManager.sendBroadcast(intent);
     }
 
-    private void registerDownloaderReceivers(String urlString, final NotificationCompat.Builder builder) {
+    /**
+     * Check if any OBB files are available, and if so, download and install them. This
+     * also deletes any obsolete OBB files, per the spec, since there can be only one
+     * "main" and one "patch" OBB installed at a time.
+     *
+     * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
+     */
+    private void getObb(final String urlString, String obbUrlString,
+                        final File obbDestFile, final String sha256,
+                        final NotificationCompat.Builder builder) {
+        if (obbDestFile == null || obbDestFile.exists() || TextUtils.isEmpty(obbUrlString)) {
+            return;
+        }
+        final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                if (Downloader.ACTION_STARTED.equals(action)) {
+                    Utils.debugLog(TAG, action + " " + intent);
+                } else if (Downloader.ACTION_PROGRESS.equals(action)) {
+
+                    int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
+                    int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                    builder.setProgress(totalBytes, bytesRead, false);
+                    notificationManager.notify(urlString.hashCode(), builder.build());
+                } else if (Downloader.ACTION_COMPLETE.equals(action)) {
+                    localBroadcastManager.unregisterReceiver(this);
+                    File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
+                    Uri localApkUri = Uri.fromFile(localFile);
+                    Utils.debugLog(TAG, "OBB download completed " + intent.getDataString()
+                            + " to " + localApkUri);
+
+                    try {
+                        if (Hasher.isFileMatchingHash(localFile, sha256, "SHA-256")) {
+                            Utils.debugLog(TAG, "Installing OBB " + localFile + " to " + obbDestFile);
+                            FileUtils.forceMkdirParent(obbDestFile);
+                            FileUtils.copyFile(localFile, obbDestFile);
+                            FileFilter filter = new WildcardFileFilter(
+                                    obbDestFile.getName().substring(0, 4) + "*.obb");
+                            for (File f : obbDestFile.getParentFile().listFiles(filter)) {
+                                if (!f.equals(obbDestFile)) {
+                                    Utils.debugLog(TAG, "Deleting obsolete OBB " + f);
+                                    FileUtils.deleteQuietly(f);
+                                }
+                            }
+                        } else {
+                            Utils.debugLog(TAG, localFile + " deleted, did not match hash: " + sha256);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        FileUtils.deleteQuietly(localFile);
+                    }
+                } else if (Downloader.ACTION_INTERRUPTED.equals(action)) {
+                    localBroadcastManager.unregisterReceiver(this);
+                } else {
+                    throw new RuntimeException("intent action not handled!");
+                }
+            }
+        };
+        DownloaderService.queue(this, obbUrlString);
+        localBroadcastManager.registerReceiver(downloadReceiver,
+                DownloaderService.getIntentFilter(obbUrlString));
+    }
+
+    private void registerApkDownloaderReceivers(String urlString, final NotificationCompat.Builder builder) {
 
         BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
