@@ -361,8 +361,14 @@ class DBHelper extends SQLiteOpenHelper {
         addObbFiles(db, oldVersion);
     }
 
+    /**
+     * For upgrades from earlier than 63, this is created in
+     * {@link #resetTransient(SQLiteDatabase)} in
+     * {@link #migrateToPackageTable(SQLiteDatabase, int)}, so it only needs
+     * to run when the database is at version 63.
+     */
     private void addObbFiles(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 64) {
+        if (oldVersion != 63) {
             return;
         }
         Utils.debugLog(TAG, "Adding " + ApkTable.Cols.OBB_MAIN_FILE
@@ -499,10 +505,6 @@ class DBHelper extends SQLiteOpenHelper {
                         + ApkTable.Cols.MIN_SDK_VERSION + " integer, "
                         + ApkTable.Cols.TARGET_SDK_VERSION + " integer, "
                         + ApkTable.Cols.MAX_SDK_VERSION + " integer, "
-                        + ApkTable.Cols.OBB_MAIN_FILE + " string, "
-                        + ApkTable.Cols.OBB_MAIN_FILE_SHA256 + " string, "
-                        + ApkTable.Cols.OBB_PATCH_FILE + " string, "
-                        + ApkTable.Cols.OBB_PATCH_FILE_SHA256 + " string, "
                         + ApkTable.Cols.PERMISSIONS + " string, "
                         + ApkTable.Cols.FEATURES + " string, "
                         + ApkTable.Cols.NATIVE_CODE + " string, "
@@ -528,10 +530,6 @@ class DBHelper extends SQLiteOpenHelper {
                         ApkTable.Cols.MIN_SDK_VERSION,
                         ApkTable.Cols.TARGET_SDK_VERSION,
                         ApkTable.Cols.MAX_SDK_VERSION,
-                        ApkTable.Cols.OBB_MAIN_FILE,
-                        ApkTable.Cols.OBB_MAIN_FILE_SHA256,
-                        ApkTable.Cols.OBB_PATCH_FILE,
-                        ApkTable.Cols.OBB_PATCH_FILE_SHA256,
                         ApkTable.Cols.PERMISSIONS,
                         ApkTable.Cols.FEATURES,
                         ApkTable.Cols.NATIVE_CODE,
