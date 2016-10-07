@@ -189,6 +189,16 @@ android {
         }
     }
 
+    sourceSets {
+        test {
+            java.srcDirs += "$projectDir/src/testShared/java"
+        }
+
+        androidTest {
+            java.srcDirs += "$projectDir/src/testShared/java"
+        }
+    }
+
     lintOptions {
         checkReleaseBuilds false
         abortOnError true
