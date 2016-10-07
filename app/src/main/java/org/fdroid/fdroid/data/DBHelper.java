@@ -96,7 +96,7 @@ class DBHelper extends SQLiteOpenHelper {
             + ApkTable.Cols.OBB_MAIN_FILE_SHA256 + " string, "
             + ApkTable.Cols.OBB_PATCH_FILE + " string, "
             + ApkTable.Cols.OBB_PATCH_FILE_SHA256 + " string, "
-            + ApkTable.Cols.PERMISSIONS + " string, "
+            + ApkTable.Cols.REQUESTED_PERMISSIONS + " string, "
             + ApkTable.Cols.FEATURES + " string, "
             + ApkTable.Cols.NATIVE_CODE + " string, "
             + ApkTable.Cols.HASH_TYPE + " string, "
@@ -504,7 +504,7 @@ class DBHelper extends SQLiteOpenHelper {
                         + ApkTable.Cols.MIN_SDK_VERSION + " integer, "
                         + ApkTable.Cols.TARGET_SDK_VERSION + " integer, "
                         + ApkTable.Cols.MAX_SDK_VERSION + " integer, "
-                        + ApkTable.Cols.PERMISSIONS + " string, "
+                        + ApkTable.Cols.REQUESTED_PERMISSIONS + " string, "
                         + ApkTable.Cols.FEATURES + " string, "
                         + ApkTable.Cols.NATIVE_CODE + " string, "
                         + ApkTable.Cols.HASH_TYPE + " string, "
@@ -529,7 +529,7 @@ class DBHelper extends SQLiteOpenHelper {
                         ApkTable.Cols.MIN_SDK_VERSION,
                         ApkTable.Cols.TARGET_SDK_VERSION,
                         ApkTable.Cols.MAX_SDK_VERSION,
-                        ApkTable.Cols.PERMISSIONS,
+                        ApkTable.Cols.REQUESTED_PERMISSIONS,
                         ApkTable.Cols.FEATURES,
                         ApkTable.Cols.NATIVE_CODE,
                         ApkTable.Cols.HASH_TYPE,

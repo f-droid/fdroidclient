@@ -157,8 +157,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 case ApkTable.Cols.ADDED_DATE:
                     curapk.added = Utils.parseDate(str, null);
                     break;
-                case ApkTable.Cols.PERMISSIONS:
-                    curapk.permissions = Utils.parseCommaSeparatedString(str);
+                case ApkTable.Cols.REQUESTED_PERMISSIONS:
+                    curapk.requestedPermissions = Utils.parseCommaSeparatedString(str);
                     break;
                 case ApkTable.Cols.FEATURES:
                     curapk.features = Utils.parseCommaSeparatedString(str);

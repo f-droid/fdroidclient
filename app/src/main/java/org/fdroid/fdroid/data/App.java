@@ -372,7 +372,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         apk.targetSdkVersion = minTargetMax[1];
         apk.maxSdkVersion = minTargetMax[2];
         apk.packageName = this.packageName;
-        apk.permissions = packageInfo.requestedPermissions;
+        apk.requestedPermissions = packageInfo.requestedPermissions;
         apk.apkName = apk.packageName + "_" + apk.versionCode + ".apk";
         apk.installedFile = apkFile;
 

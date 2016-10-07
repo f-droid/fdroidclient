@@ -436,10 +436,10 @@ public final class LocalRepoManager {
 
         private void tagPermissions(App app) throws IOException {
             serializer.startTag("", "permissions");
-            if (app.installedApk.permissions != null) {
+            if (app.installedApk.requestedPermissions != null) {
                 StringBuilder buff = new StringBuilder();
 
-                for (String permission : app.installedApk.permissions) {
+                for (String permission : app.installedApk.requestedPermissions) {
                     buff.append(permission.replace("android.permission.", ""));
                     buff.append(',');
                 }

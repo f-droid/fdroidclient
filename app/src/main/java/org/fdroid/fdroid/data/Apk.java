@@ -36,8 +36,13 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String obbPatchFile;
     public String obbPatchFileSha256;
     public Date added;
-    public String[] permissions; // null if empty or
-    // unknown
+    /**
+     * The array of the names of the permissions that this APK requests. This is the
+     * same data as {@link android.content.pm.PackageInfo#requestedPermissions}. Note this
+     * does not mean that all these permissions have been granted, only requested.  For
+     * example, a regular app can request a system permission, but it won't be granted it.
+     */
+    public String[] requestedPermissions;
     public String[] features; // null if empty or unknown
 
     public String[] nativecode; // null if empty or unknown
@@ -126,8 +131,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                 case Cols.NAME:
                     apkName = cursor.getString(i);
                     break;
-                case Cols.PERMISSIONS:
-                    permissions = Utils.parseCommaSeparatedString(cursor.getString(i));
+                case Cols.REQUESTED_PERMISSIONS:
+                    requestedPermissions = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case Cols.NATIVE_CODE:
                     nativecode = Utils.parseCommaSeparatedString(cursor.getString(i));
@@ -231,12 +236,12 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     }
 
     public ArrayList<String> getFullPermissionList() {
-        if (this.permissions == null) {
+        if (this.requestedPermissions == null) {
             return new ArrayList<>();
         }
 
         ArrayList<String> permissionsFull = new ArrayList<>();
-        for (String perm : this.permissions) {
+        for (String perm : this.requestedPermissions) {
             permissionsFull.add(fdroidToAndroidPermission(perm));
         }
         return permissionsFull;
@@ -293,7 +298,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         values.put(Cols.OBB_PATCH_FILE, obbPatchFile);
         values.put(Cols.OBB_PATCH_FILE_SHA256, obbPatchFileSha256);
         values.put(Cols.ADDED_DATE, Utils.formatDate(added, ""));
-        values.put(Cols.PERMISSIONS, Utils.serializeCommaSeparatedString(permissions));
+        values.put(Cols.REQUESTED_PERMISSIONS, Utils.serializeCommaSeparatedString(requestedPermissions));
         values.put(Cols.FEATURES, Utils.serializeCommaSeparatedString(features));
         values.put(Cols.NATIVE_CODE, Utils.serializeCommaSeparatedString(nativecode));
         values.put(Cols.INCOMPATIBLE_REASONS, Utils.serializeCommaSeparatedString(incompatibleReasons));
@@ -332,7 +337,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         dest.writeString(this.obbPatchFile);
         dest.writeString(this.obbPatchFileSha256);
         dest.writeLong(this.added != null ? this.added.getTime() : -1);
-        dest.writeStringArray(this.permissions);
+        dest.writeStringArray(this.requestedPermissions);
         dest.writeStringArray(this.features);
         dest.writeStringArray(this.nativecode);
         dest.writeString(this.sig);
@@ -363,7 +368,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         this.obbPatchFileSha256 = in.readString();
         long tmpAdded = in.readLong();
         this.added = tmpAdded == -1 ? null : new Date(tmpAdded);
-        this.permissions = in.createStringArray();
+        this.requestedPermissions = in.createStringArray();
         this.features = in.createStringArray();
         this.nativecode = in.createStringArray();
         this.sig = in.readString();
