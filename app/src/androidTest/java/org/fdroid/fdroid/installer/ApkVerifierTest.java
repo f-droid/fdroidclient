@@ -80,7 +80,7 @@ public class ApkVerifierTest {
         Apk apk = new Apk();
         apk.packageName = "org.fdroid.permissions.sdk14";
         apk.targetSdkVersion = 14;
-        apk.permissions = new String[]{
+        apk.requestedPermissions = new String[]{
                 "AUTHENTICATE_ACCOUNTS",
                 "MANAGE_ACCOUNTS",
                 "READ_PROFILE",
@@ -116,7 +116,7 @@ public class ApkVerifierTest {
         Apk apk = new Apk();
         apk.packageName = "org.fdroid.permissions.sdk14";
         apk.targetSdkVersion = 14;
-        apk.permissions = new String[]{
+        apk.requestedPermissions = new String[]{
                 "android.permission.AUTHENTICATE_ACCOUNTS",
                 "android.permission.MANAGE_ACCOUNTS",
                 "android.permission.READ_PROFILE",
@@ -156,7 +156,7 @@ public class ApkVerifierTest {
         Apk apk = new Apk();
         apk.packageName = "org.fdroid.permissions.sdk14";
         apk.targetSdkVersion = 14;
-        apk.permissions = new String[]{
+        apk.requestedPermissions = new String[]{
                 "android.permission.AUTHENTICATE_ACCOUNTS",
                 "android.permission.MANAGE_ACCOUNTS",
                 "android.permission.READ_PROFILE",
@@ -197,7 +197,7 @@ public class ApkVerifierTest {
         Apk apk = new Apk();
         apk.packageName = "org.fdroid.permissions.sdk14";
         apk.targetSdkVersion = 14;
-        apk.permissions = new String[]{
+        apk.requestedPermissions = new String[]{
                 //"android.permission.AUTHENTICATE_ACCOUNTS",
                 "android.permission.MANAGE_ACCOUNTS",
                 "android.permission.READ_PROFILE",
