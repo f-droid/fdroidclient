@@ -56,7 +56,7 @@
   <string name="repo_exists_add_fingerprint">Dette registret er allerede satt opp, dette vil legge til ny informasjon om nøkler.</string>
   <string name="repo_exists_enable">Dette registret er allerede satt opp, bekreft at du vil skru det på igjen.</string>
   <string name="repo_exists_and_enabled">Oppstrøms-pakkebrønnen er allerede satt opp og påskrudd.</string>
-  <string name="repo_delete_to_overwrite">Du må først slette denne pakkebrønnen før du kan legge til en med en en annen nøkkel.</string>
+  <string name="repo_delete_to_overwrite">Du må først slette denne pakkebrønnen før du kan legge til en med en annen nøkkel.</string>
   <string name="malformed_repo_uri">Ignorerer ugyldig pakkebrønnsadresse: %s</string>
   <string name="menu_update_repo">Oppdater pakkebrønnene</string>
   <string name="menu_manage">Pakkebrønner</string>
