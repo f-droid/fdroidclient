@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
@@ -189,22 +188,6 @@ public class AppProvider extends FDroidProvider {
             Uri uri = Uri.withAppendedPath(AppProvider.getContentUri(), PATH_CALC_PREFERRED_METADATA);
             context.getContentResolver().query(uri, null, null, null, null);
         }
-    }
-
-    /**
-     * Class that only exists to call private methods in the {@link AppProvider} without having
-     * to go via a Context/ContentResolver. The reason is that if the {@link DBHelper} class
-     * was to try and use its getContext().getContentResolver() in order to access the app
-     * provider, then the AppProvider will end up creating a new instance of a writeable
-     * SQLiteDatabase. This causes problems because the {@link DBHelper} still has its reference
-     * open and locks certain tables.
-     */
-    static final class UpgradeHelper {
-
-        public static void updateIconUrls(Context context, SQLiteDatabase db) {
-            AppProvider.updateIconUrls(context, db, AppMetadataTable.NAME, ApkTable.NAME);
-        }
-
     }
 
     /**
@@ -948,7 +931,7 @@ public class AppProvider extends FDroidProvider {
         updateCompatibleFlags();
         updateSuggestedFromUpstream();
         updateSuggestedFromLatest();
-        updateIconUrls(getContext(), db(), getTableName(), getApkTableName());
+        updateIconUrls();
     }
 
     private void updatePreferredMetadata() {
@@ -1047,14 +1030,11 @@ public class AppProvider extends FDroidProvider {
         db().execSQL(updateSql);
     }
 
-    /**
-     * Made static so that the {@link org.fdroid.fdroid.data.AppProvider.UpgradeHelper} can access
-     * it without instantiating an {@link AppProvider}. This is also the reason it needs to accept
-     * the context and database as arguments.
-     */
-    private static void updateIconUrls(Context context, SQLiteDatabase db, String appTable, String apkTable) {
-        final String iconsDir = Utils.getIconsDir(context, 1.0);
-        final String iconsDirLarge = Utils.getIconsDir(context, 1.5);
+    private void updateIconUrls() {
+        final String appTable = getTableName();
+        final String apkTable = getApkTableName();
+        final String iconsDir = Utils.getIconsDir(getContext(), 1.0);
+        final String iconsDirLarge = Utils.getIconsDir(getContext(), 1.5);
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         Utils.debugLog(TAG, "Updating icon paths for apps belonging to repos with version >= " + repoVersion);
         Utils.debugLog(TAG, "Using icons dir '" + iconsDir + "'");
@@ -1064,7 +1044,7 @@ public class AppProvider extends FDroidProvider {
             repoVersion, iconsDir, Utils.FALLBACK_ICONS_DIR,
             repoVersion, iconsDirLarge, Utils.FALLBACK_ICONS_DIR,
         };
-        db.execSQL(query, params);
+        db().execSQL(query, params);
     }
 
     /**
