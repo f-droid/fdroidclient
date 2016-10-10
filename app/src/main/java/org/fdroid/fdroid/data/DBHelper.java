@@ -156,9 +156,8 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH_TYPE + " TEXT NOT NULL, "
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
-    private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 64;
+    protected static final int DB_VERSION = 64;
 
     private final Context context;
 
@@ -765,7 +764,32 @@ class DBHelper extends SQLiteOpenHelper {
             return;
         }
         Utils.debugLog(TAG, "Recalculating app icon URLs so that the newly added large icons will get updated.");
-        AppProvider.UpgradeHelper.updateIconUrls(context, db);
+
+        String query = "UPDATE fdroid_app "
+                + "SET iconUrl = ("
+                + "  SELECT (fdroid_repo.address || CASE WHEN fdroid_repo.version >= ? THEN ? ELSE ? END || fdroid_app.icon) "
+                + "  FROM fdroid_apk "
+                + "  JOIN fdroid_repo ON (fdroid_repo._id = fdroid_apk.repo) "
+                + "  WHERE fdroid_app.id = fdroid_apk.id AND fdroid_apk.vercode = fdroid_app.suggestedVercode "
+                + "), iconUrlLarge = ("
+                + "  SELECT (fdroid_repo.address || CASE WHEN fdroid_repo.version >= ? THEN ? ELSE ? END || fdroid_app.icon) "
+                + "  FROM fdroid_apk "
+                + "  JOIN fdroid_repo ON (fdroid_repo._id = fdroid_apk.repo) "
+                + "  WHERE fdroid_app.id = fdroid_apk.id AND fdroid_apk.vercode = fdroid_app.suggestedVercode"
+                + ")";
+
+        String iconsDir = Utils.getIconsDir(context, 1.0);
+        String iconsDirLarge = Utils.getIconsDir(context, 1.5);
+        String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
+        Utils.debugLog(TAG, "Using icons dir '" + iconsDir + "'");
+        Utils.debugLog(TAG, "Using large icons dir '" + iconsDirLarge + "'");
+        String[] args = {
+                repoVersion, iconsDir, Utils.FALLBACK_ICONS_DIR,
+                repoVersion, iconsDirLarge, Utils.FALLBACK_ICONS_DIR,
+        };
+
+        db.rawQuery(query, args);
+
         clearRepoEtags(db);
     }
 
@@ -916,7 +940,10 @@ class DBHelper extends SQLiteOpenHelper {
             return;
         }
         Utils.debugLog(TAG, "(re)creating 'installed app' database table.");
-        db.execSQL(DROP_TABLE_INSTALLED_APP);
+        if (tableExists(db, "fdroid_installedApp")) {
+            db.execSQL("DROP TABLE fdroid_installedApp;");
+        }
+
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
     }
 
