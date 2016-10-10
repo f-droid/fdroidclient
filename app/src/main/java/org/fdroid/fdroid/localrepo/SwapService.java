@@ -331,7 +331,7 @@ public class SwapService extends Service {
     // ==========================================
 
     private void persistAppsToSwap() {
-        persistence().edit().putString(KEY_APPS_TO_SWAP, serializePackages(appsToSwap)).commit();
+        persistence().edit().putString(KEY_APPS_TO_SWAP, serializePackages(appsToSwap)).apply();
     }
 
     /**
@@ -398,7 +398,7 @@ public class SwapService extends Service {
             persistence().edit()
                     .putBoolean(KEY_BLUETOOTH_ENABLED, bluetoothSwap.isConnected())
                     .putBoolean(KEY_WIFI_ENABLED, wifiSwap.isConnected())
-                    .commit();
+                    .apply();
         }
     };
 
