@@ -158,7 +158,7 @@ class DBHelper extends SQLiteOpenHelper {
             + " );";
     private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
-    private static final int DB_VERSION = 64;
+    protected static final int DB_VERSION = 64;
 
     private final Context context;
 
