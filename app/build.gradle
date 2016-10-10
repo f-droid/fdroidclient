@@ -202,6 +202,8 @@ android {
 
         // to make CI fail on errors until this is fixed https://github.com/rtyley/spongycastle/issues/7
         warning 'InvalidPackage'
+
+        error 'AppCompatMethod', 'NestedScrolling', 'StringFormatCount'
     }
 
     packagingOptions {
