@@ -39,7 +39,7 @@ public class AppDiff {
         pkgInfo = new PackageInfo();
         pkgInfo.packageName = apk.packageName;
         pkgInfo.applicationInfo = new ApplicationInfo();
-        pkgInfo.requestedPermissions = apk.getFullPermissionsArray();
+        pkgInfo.requestedPermissions = apk.requestedPermissions;
 
         init();
     }

@@ -7,11 +7,11 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -132,7 +132,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                     apkName = cursor.getString(i);
                     break;
                 case Cols.REQUESTED_PERMISSIONS:
-                    requestedPermissions = Utils.parseCommaSeparatedString(cursor.getString(i));
+                    requestedPermissions = convertToRequestedPermissions(cursor.getString(i));
                     break;
                 case Cols.NATIVE_CODE:
                     nativecode = Utils.parseCommaSeparatedString(cursor.getString(i));
@@ -233,44 +233,6 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
             return null;
         }
         return new File(App.getObbDir(packageName), obbPatchFile);
-    }
-
-    public ArrayList<String> getFullPermissionList() {
-        if (this.requestedPermissions == null) {
-            return new ArrayList<>();
-        }
-
-        ArrayList<String> permissionsFull = new ArrayList<>();
-        for (String perm : this.requestedPermissions) {
-            permissionsFull.add(fdroidToAndroidPermission(perm));
-        }
-        return permissionsFull;
-    }
-
-    public String[] getFullPermissionsArray() {
-        ArrayList<String> fullPermissions = getFullPermissionList();
-        return fullPermissions.toArray(new String[fullPermissions.size()]);
-    }
-
-    public HashSet<String> getFullPermissionsSet() {
-        return new HashSet<>(getFullPermissionList());
-    }
-
-    /**
-     * It appears that the default Android permissions in android.Manifest.permissions
-     * are prefixed with "android.permission." and then the constant name.
-     * FDroid just includes the constant name in the apk list, so we prefix it
-     * with "android.permission."
-     *
-     * @see <a href="https://gitlab.com/fdroid/fdroidserver/blob/1afa8cfc/update.py#L91">
-     *     More info into index - size, permissions, features, sdk version</a>
-     */
-    private static String fdroidToAndroidPermission(String permission) {
-        if (!permission.contains(".")) {
-            return "android.permission." + permission;
-        }
-
-        return permission;
     }
 
     @Override
@@ -393,4 +355,17 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
             return new Apk[size];
         }
     };
+
+    private String[] convertToRequestedPermissions(String permissionsFromDb) {
+        String[] array = Utils.parseCommaSeparatedString(permissionsFromDb);
+        if (array != null) {
+            HashSet<String> requestedPermissionsSet = new HashSet<>();
+            for (String permission : array) {
+                requestedPermissionsSet.add(RepoXMLHandler.fdroidToAndroidPermission(permission));
+            }
+            return requestedPermissionsSet.toArray(new String[requestedPermissionsSet.size()]);
+        }
+        return null;
+    }
+
 }

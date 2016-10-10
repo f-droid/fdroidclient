@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fdroid>
+    <repo name="F-Droid" icon="fdroid-icon.png" maxage="14"
+        pubkey="3082035e30820246a00302010202044c49cd00300d06092a864886f70d01010505003071310b300906035504061302554b3110300e06035504081307556e6b6e6f776e3111300f0603550407130857657468657262793110300e060355040a1307556e6b6e6f776e3110300e060355040b1307556e6b6e6f776e311930170603550403131043696172616e2047756c746e69656b73301e170d3130303732333137313032345a170d3337313230383137313032345a3071310b300906035504061302554b3110300e06035504081307556e6b6e6f776e3111300f0603550407130857657468657262793110300e060355040a1307556e6b6e6f776e3110300e060355040b1307556e6b6e6f776e311930170603550403131043696172616e2047756c746e69656b7330820122300d06092a864886f70d01010105000382010f003082010a028201010096d075e47c014e7822c89fd67f795d23203e2a8843f53ba4e6b1bf5f2fd0e225938267cfcae7fbf4fe596346afbaf4070fdb91f66fbcdf2348a3d92430502824f80517b156fab00809bdc8e631bfa9afd42d9045ab5fd6d28d9e140afc1300917b19b7c6c4df4a494cf1f7cb4a63c80d734265d735af9e4f09455f427aa65a53563f87b336ca2c19d244fcbba617ba0b19e56ed34afe0b253ab91e2fdb1271f1b9e3c3232027ed8862a112f0706e234cf236914b939bcf959821ecb2a6c18057e070de3428046d94b175e1d89bd795e535499a091f5bc65a79d539a8d43891ec504058acb28c08393b5718b57600a211e803f4a634e5c57f25b9b8c4422c6fd90203010001300d06092a864886f70d0101050500038201010008e4ef699e9807677ff56753da73efb2390d5ae2c17e4db691d5df7a7b60fc071ae509c5414be7d5da74df2811e83d3668c4a0b1abc84b9fa7d96b4cdf30bba68517ad2a93e233b042972ac0553a4801c9ebe07bf57ebe9a3b3d6d663965260e50f3b8f46db0531761e60340a2bddc3426098397fda54044a17e5244549f9869b460ca5e6e216b6f6a2db0580b480ca2afe6ec6b46eedacfa4aa45038809ece0c5978653d6c85f678e7f5a2156d1bedd8117751e64a4b0dcd140f3040b021821a8d93aed8d01ba36db6c82372211fed714d9a32607038cdfd565bd529ffc637212aaa2c224ef22b603eccefb5bf1e085c191d4b24fe742b17ab3f55d4e6f05ef"
+        timestamp="1467169032" url="http://f-droid.org/repo" version="16">
+        <description>
+            This is just a test of the extended permissions attributes.
+        </description>
+    </repo>
+
+    <application id="urzip.at.or.at.urzip">
+        <id>at.bitfire.davdroid</id>
+        <added>2013-10-13</added>
+        <lastupdated>2016-06-26</lastupdated>
+        <name>DAVdroid</name>
+        <summary>Contacts and Calendar sync</summary>
+        <icon>at.bitfire.davdroid.107.png</icon>
+        <desc>apk generated from urzip to test extended permissions</desc>
+        <license>GPLv3</license>
+        <categories>Internet</categories>
+        <category>Internet</category>
+        <web>https://davdroid.bitfire.at/</web>
+        <source>https://davdroid.bitfire.at/source/</source>
+        <tracker>https://davdroid.bitfire.at/forums/</tracker>
+        <changelog>https://gitlab.com/bitfireAT/davdroid/tags</changelog>
+        <donate>https://davdroid.bitfire.at/donate/</donate>
+        <bitcoin>1KSCy7RHztKuhW9fLLaUYqdwdC2iwbejZU</bitcoin>
+        <flattr>2100160</flattr>
+        <marketversion>1.1.1.2</marketversion>
+        <marketvercode>107</marketvercode>
+        <package>
+            <version>1.3.2-FAKE</version>
+            <versioncode>117</versioncode>
+            <apkname>org.fdroid.extendedpermissionstest.apk</apkname>
+            <srcname>at.bitfire.davdroid_116_src.tar.gz</srcname>
+            <hash type="sha256">f1aa02257e99c167d2ea9b0e9525c3ce7c181fe2e7f4dd00b65dd81ed2e27a62
+            </hash>
+            <sig>03542175324d067b4c36582242f8aecc</sig>
+            <size>3298864</size>
+            <sdkver>14</sdkver>
+            <targetSdkVersion>23</targetSdkVersion>
+            <added>2016-09-22</added>
+            <permissions>
+                READ_EXTERNAL_STORAGE,WRITE_SYNC_SETTINGS,ACCESS_NETWORK_STATE,WRITE_EXTERNAL_STORAGE,WRITE_CONTACTS,ACCESS_WIFI_STATE,REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,WRITE_CALENDAR,READ_CONTACTS,READ_SYNC_SETTINGS,MANAGE_ACCOUNTS,INTERNET,AUTHENTICATE_ACCOUNTS,GET_ACCOUNTS,READ_CALENDAR,READ_SYNC_STATS
+            </permissions>
+            <uses-permission name="android.permission.GET_ACCOUNTS" maxSdkVersion="22" />
+            <uses-permission name="android.permission.READ_EXTERNAL_STORAGE" maxSdkVersion="18" />
+            <uses-permission name="android.permission.WRITE_EXTERNAL_STORAGE" maxSdkVersion="18" />
+            <uses-permission name="android.permission.AUTHENTICATE_ACCOUNTS" maxSdkVersion="22" />
+            <uses-permission name="android.permission.MANAGE_ACCOUNTS" maxSdkVersion="22" />
+            <uses-permission-sdk-23 name="android.permission.CAMERA" />
+            <uses-permission-sdk-23 name="android.permission.CALL_PHONE" maxSdkVersion="23" />
+        </package>
+        <package>
+            <version>1.3.1-ose</version>
+            <versioncode>116</versioncode>
+            <apkname>at.bitfire.davdroid_116.apk</apkname>
+            <srcname>at.bitfire.davdroid_116_src.tar.gz</srcname>
+            <hash type="sha256">f1aa02257e99c167d2ea9b0e9525c3ce7c181fe2e7f4dd00b65dd81ed2e27a62
+            </hash>
+            <sig>03542175324d067b4c36582242f8aecc</sig>
+            <size>3298864</size>
+            <sdkver>14</sdkver>
+            <targetSdkVersion>24</targetSdkVersion>
+            <added>2016-09-21</added>
+            <permissions>
+                READ_EXTERNAL_STORAGE,WRITE_SYNC_SETTINGS,ACCESS_NETWORK_STATE,WRITE_EXTERNAL_STORAGE,org.dmfs.permission.READ_TASKS,WRITE_CONTACTS,ACCESS_WIFI_STATE,REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,WRITE_CALENDAR,READ_CONTACTS,READ_SYNC_SETTINGS,MANAGE_ACCOUNTS,INTERNET,AUTHENTICATE_ACCOUNTS,GET_ACCOUNTS,READ_CALENDAR,org.dmfs.permission.WRITE_TASKS
+            </permissions>
+            <uses-permission name="android.permission.GET_ACCOUNTS" maxSdkVersion="22" />
+            <uses-permission name="android.permission.READ_EXTERNAL_STORAGE" maxSdkVersion="18" />
+            <uses-permission name="android.permission.WRITE_EXTERNAL_STORAGE" maxSdkVersion="18" />
+            <uses-permission name="android.permission.AUTHENTICATE_ACCOUNTS" maxSdkVersion="22" />
+            <uses-permission name="android.permission.MANAGE_ACCOUNTS" maxSdkVersion="22" />
+        </package>
+        <package>
+            <version>1.1.1.2</version>
+            <versioncode>107</versioncode>
+            <apkname>at.bitfire.davdroid_107.apk</apkname>
+            <srcname>at.bitfire.davdroid_107_src.tar.gz</srcname>
+            <hash type="sha256">9a616f2e97bf8cf012baf896f95667dea4e3ce3252b31c5715073638a9fcc3d4
+            </hash>
+            <sig>03542175324d067b4c36582242f8aecc</sig>
+            <size>3134363</size>
+            <sdkver>14</sdkver>
+            <targetSdkVersion>23</targetSdkVersion>
+            <added>2016-06-26</added>
+            <permissions>
+                org.dmfs.permission.READ_TASKS,READ_EXTERNAL_STORAGE,WRITE_CONTACTS,GET_ACCOUNTS,AUTHENTICATE_ACCOUNTS,WRITE_EXTERNAL_STORAGE,READ_CALENDAR,ACCESS_WIFI_STATE,org.dmfs.permission.WRITE_TASKS,ACCESS_NETWORK_STATE,WRITE_CALENDAR,READ_CONTACTS,READ_SYNC_SETTINGS,INTERNET,MANAGE_ACCOUNTS,WRITE_SYNC_SETTINGS
+            </permissions>
+        </package>
+        <package>
+            <version>1.1.1.1</version>
+            <versioncode>105</versioncode>
+            <apkname>at.bitfire.davdroid_105.apk</apkname>
+            <srcname>at.bitfire.davdroid_105_src.tar.gz</srcname>
+            <hash type="sha256">4a0408c61536a1cc1028cea4273adbde2e57dfa2b12d93c3b52f4c3d095e2849
+            </hash>
+            <sig>03542175324d067b4c36582242f8aecc</sig>
+            <size>3131567</size>
+            <sdkver>14</sdkver>
+            <targetSdkVersion>23</targetSdkVersion>
+            <added>2016-06-24</added>
+            <permissions>
+                org.dmfs.permission.READ_TASKS,READ_EXTERNAL_STORAGE,WRITE_CONTACTS,GET_ACCOUNTS,AUTHENTICATE_ACCOUNTS,WRITE_EXTERNAL_STORAGE,READ_CALENDAR,ACCESS_WIFI_STATE,org.dmfs.permission.WRITE_TASKS,ACCESS_NETWORK_STATE,WRITE_CALENDAR,READ_CONTACTS,READ_SYNC_SETTINGS,INTERNET,MANAGE_ACCOUNTS,WRITE_SYNC_SETTINGS
+            </permissions>
+        </package>
+        <package>
+            <version>1.1.1</version>
+            <versioncode>104</versioncode>
+            <apkname>at.bitfire.davdroid_104.apk</apkname>
+            <srcname>at.bitfire.davdroid_104_src.tar.gz</srcname>
+            <hash type="sha256">09ba34996177efe8b1498a93fe6521ab84efab3bccb0f42449116e80b59e5b56
+            </hash>
+            <sig>03542175324d067b4c36582242f8aecc</sig>
+            <size>3131367</size>
+            <sdkver>14</sdkver>
+            <targetSdkVersion>23</targetSdkVersion>
+            <added>2016-06-22</added>
+            <permissions>
+                org.dmfs.permission.READ_TASKS,READ_EXTERNAL_STORAGE,WRITE_CONTACTS,GET_ACCOUNTS,AUTHENTICATE_ACCOUNTS,WRITE_EXTERNAL_STORAGE,READ_CALENDAR,ACCESS_WIFI_STATE,org.dmfs.permission.WRITE_TASKS,ACCESS_NETWORK_STATE,WRITE_CALENDAR,READ_CONTACTS,READ_SYNC_SETTINGS,INTERNET,MANAGE_ACCOUNTS,WRITE_SYNC_SETTINGS
+            </permissions>
+        </package>
+    </application>
+
+</fdroid>
