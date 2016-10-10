@@ -156,7 +156,6 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH_TYPE + " TEXT NOT NULL, "
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
-    private static final String DROP_TABLE_INSTALLED_APP = "DROP TABLE " + InstalledAppTable.NAME + ";";
 
     protected static final int DB_VERSION = 64;
 
@@ -941,7 +940,10 @@ class DBHelper extends SQLiteOpenHelper {
             return;
         }
         Utils.debugLog(TAG, "(re)creating 'installed app' database table.");
-        db.execSQL(DROP_TABLE_INSTALLED_APP);
+        if (tableExists(db, "fdroid_installedApp")) {
+            db.execSQL("DROP TABLE fdroid_installedApp;");
+        }
+
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
     }
 
