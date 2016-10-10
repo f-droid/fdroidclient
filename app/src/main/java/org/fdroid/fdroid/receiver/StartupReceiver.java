@@ -23,12 +23,18 @@ import android.content.Context;
 import android.content.Intent;
 
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 
 public class StartupReceiver extends BroadcastReceiver {
+    private static final String TAG = "StartupReceiver";
 
     @Override
     public void onReceive(Context ctx, Intent intent) {
-        UpdateService.schedule(ctx);
+        if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
+            UpdateService.schedule(ctx);
+        } else {
+            Utils.debugLog(TAG, "received unsupported Intent " + intent);
+        }
     }
 
 }
