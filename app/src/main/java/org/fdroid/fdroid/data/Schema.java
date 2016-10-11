@@ -169,7 +169,7 @@ public interface Schema {
             String OBB_MAIN_FILE_SHA256 = "obbMainFileSha256";
             String OBB_PATCH_FILE  = "obbPatchFile";
             String OBB_PATCH_FILE_SHA256 = "obbPatchFileSha256";
-            String PERMISSIONS     = "permissions";
+            String REQUESTED_PERMISSIONS = "permissions";
             String FEATURES        = "features";
             String NATIVE_CODE     = "nativecode";
             String HASH_TYPE       = "hashType";
@@ -193,7 +193,7 @@ public interface Schema {
                     APP_ID, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
                     SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
                     OBB_MAIN_FILE, OBB_MAIN_FILE_SHA256, OBB_PATCH_FILE, OBB_PATCH_FILE_SHA256,
-                    PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
+                    REQUESTED_PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
                     IS_COMPATIBLE, INCOMPATIBLE_REASONS,
             };
 
@@ -204,7 +204,7 @@ public interface Schema {
                     _ID, APP_ID, Package.PACKAGE_NAME, VERSION_NAME, REPO_ID, HASH, VERSION_CODE, NAME,
                     SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
                     OBB_MAIN_FILE, OBB_MAIN_FILE_SHA256, OBB_PATCH_FILE, OBB_PATCH_FILE_SHA256,
-                    PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
+                    REQUESTED_PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
                     IS_COMPATIBLE, Repo.VERSION, Repo.ADDRESS, INCOMPATIBLE_REASONS,
             };
         }

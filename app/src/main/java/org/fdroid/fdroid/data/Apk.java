@@ -7,11 +7,11 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -36,8 +36,13 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String obbPatchFile;
     public String obbPatchFileSha256;
     public Date added;
-    public String[] permissions; // null if empty or
-    // unknown
+    /**
+     * The array of the names of the permissions that this APK requests. This is the
+     * same data as {@link android.content.pm.PackageInfo#requestedPermissions}. Note this
+     * does not mean that all these permissions have been granted, only requested.  For
+     * example, a regular app can request a system permission, but it won't be granted it.
+     */
+    public String[] requestedPermissions;
     public String[] features; // null if empty or unknown
 
     public String[] nativecode; // null if empty or unknown
@@ -126,8 +131,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                 case Cols.NAME:
                     apkName = cursor.getString(i);
                     break;
-                case Cols.PERMISSIONS:
-                    permissions = Utils.parseCommaSeparatedString(cursor.getString(i));
+                case Cols.REQUESTED_PERMISSIONS:
+                    requestedPermissions = convertToRequestedPermissions(cursor.getString(i));
                     break;
                 case Cols.NATIVE_CODE:
                     nativecode = Utils.parseCommaSeparatedString(cursor.getString(i));
@@ -230,44 +235,6 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         return new File(App.getObbDir(packageName), obbPatchFile);
     }
 
-    public ArrayList<String> getFullPermissionList() {
-        if (this.permissions == null) {
-            return new ArrayList<>();
-        }
-
-        ArrayList<String> permissionsFull = new ArrayList<>();
-        for (String perm : this.permissions) {
-            permissionsFull.add(fdroidToAndroidPermission(perm));
-        }
-        return permissionsFull;
-    }
-
-    public String[] getFullPermissionsArray() {
-        ArrayList<String> fullPermissions = getFullPermissionList();
-        return fullPermissions.toArray(new String[fullPermissions.size()]);
-    }
-
-    public HashSet<String> getFullPermissionsSet() {
-        return new HashSet<>(getFullPermissionList());
-    }
-
-    /**
-     * It appears that the default Android permissions in android.Manifest.permissions
-     * are prefixed with "android.permission." and then the constant name.
-     * FDroid just includes the constant name in the apk list, so we prefix it
-     * with "android.permission."
-     *
-     * @see <a href="https://gitlab.com/fdroid/fdroidserver/blob/1afa8cfc/update.py#L91">
-     *     More info into index - size, permissions, features, sdk version</a>
-     */
-    private static String fdroidToAndroidPermission(String permission) {
-        if (!permission.contains(".")) {
-            return "android.permission." + permission;
-        }
-
-        return permission;
-    }
-
     @Override
     public String toString() {
         return toContentValues().toString();
@@ -293,7 +260,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         values.put(Cols.OBB_PATCH_FILE, obbPatchFile);
         values.put(Cols.OBB_PATCH_FILE_SHA256, obbPatchFileSha256);
         values.put(Cols.ADDED_DATE, Utils.formatDate(added, ""));
-        values.put(Cols.PERMISSIONS, Utils.serializeCommaSeparatedString(permissions));
+        values.put(Cols.REQUESTED_PERMISSIONS, Utils.serializeCommaSeparatedString(requestedPermissions));
         values.put(Cols.FEATURES, Utils.serializeCommaSeparatedString(features));
         values.put(Cols.NATIVE_CODE, Utils.serializeCommaSeparatedString(nativecode));
         values.put(Cols.INCOMPATIBLE_REASONS, Utils.serializeCommaSeparatedString(incompatibleReasons));
@@ -332,7 +299,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         dest.writeString(this.obbPatchFile);
         dest.writeString(this.obbPatchFileSha256);
         dest.writeLong(this.added != null ? this.added.getTime() : -1);
-        dest.writeStringArray(this.permissions);
+        dest.writeStringArray(this.requestedPermissions);
         dest.writeStringArray(this.features);
         dest.writeStringArray(this.nativecode);
         dest.writeString(this.sig);
@@ -363,7 +330,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         this.obbPatchFileSha256 = in.readString();
         long tmpAdded = in.readLong();
         this.added = tmpAdded == -1 ? null : new Date(tmpAdded);
-        this.permissions = in.createStringArray();
+        this.requestedPermissions = in.createStringArray();
         this.features = in.createStringArray();
         this.nativecode = in.createStringArray();
         this.sig = in.readString();
@@ -388,4 +355,17 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
             return new Apk[size];
         }
     };
+
+    private String[] convertToRequestedPermissions(String permissionsFromDb) {
+        String[] array = Utils.parseCommaSeparatedString(permissionsFromDb);
+        if (array != null) {
+            HashSet<String> requestedPermissionsSet = new HashSet<>();
+            for (String permission : array) {
+                requestedPermissionsSet.add(RepoXMLHandler.fdroidToAndroidPermission(permission));
+            }
+            return requestedPermissionsSet.toArray(new String[requestedPermissionsSet.size()]);
+        }
+        return null;
+    }
+
 }

@@ -19,6 +19,7 @@
 
 package org.fdroid.fdroid;
 
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -32,7 +33,9 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Parses the index.xml into Java data structures.
@@ -57,7 +60,14 @@ public class RepoXMLHandler extends DefaultHandler {
     private String repoDescription;
     private String repoName;
 
-    // the X.509 signing certificate stored in the header of index.xml
+    /**
+     * Set of requested permissions per package/APK
+     */
+    private final HashSet<String> requestedPermissionsSet = new HashSet<>();
+
+    /**
+     * the X.509 signing certificate stored in the header of index.xml
+     */
     private String repoSigningCert;
 
     private final StringBuilder curchars = new StringBuilder();
@@ -89,6 +99,9 @@ public class RepoXMLHandler extends DefaultHandler {
         if ("application".equals(localName) && curapp != null) {
             onApplicationParsed();
         } else if ("package".equals(localName) && curapk != null && curapp != null) {
+            int size = requestedPermissionsSet.size();
+            curapk.requestedPermissions = requestedPermissionsSet.toArray(new String[size]);
+            requestedPermissionsSet.clear();
             apksList.add(curapk);
             curapk = null;
         } else if ("repo".equals(localName)) {
@@ -157,8 +170,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 case ApkTable.Cols.ADDED_DATE:
                     curapk.added = Utils.parseDate(str, null);
                     break;
-                case ApkTable.Cols.PERMISSIONS:
-                    curapk.permissions = Utils.parseCommaSeparatedString(str);
+                case "permissions": // together with <uses-permissions* makes ApkTable.Cols.REQUESTED_PERMISSIONS
+                    addCommaSeparatedPermissions(str);
                     break;
                 case ApkTable.Cols.FEATURES:
                     curapk.features = Utils.parseCommaSeparatedString(str);
@@ -248,6 +261,42 @@ public class RepoXMLHandler extends DefaultHandler {
         }
     }
 
+    private static final Pattern OLD_FDROID_PERMISSION = Pattern.compile("[A-Z_]+");
+
+    /**
+     * It appears that the default Android permissions in android.Manifest.permissions
+     * are prefixed with "android.permission." and then the constant name.
+     * FDroid just includes the constant name in the apk list, so we prefix it
+     * with "android.permission."
+     *
+     * @see <a href="https://gitlab.com/fdroid/fdroidserver/blob/1afa8cfc/update.py#L91">
+     * More info into index - size, permissions, features, sdk version</a>
+     */
+    public static String fdroidToAndroidPermission(String permission) {
+        if (OLD_FDROID_PERMISSION.matcher(permission).matches()) {
+            return "android.permission." + permission;
+        }
+
+        return permission;
+    }
+
+    private void addRequestedPermission(String permission) {
+        requestedPermissionsSet.add(permission);
+    }
+
+    private void addCommaSeparatedPermissions(String permissions) {
+        String[] array = Utils.parseCommaSeparatedString(permissions);
+        if (array != null) {
+            for (String permission : array) {
+                requestedPermissionsSet.add(fdroidToAndroidPermission(permission));
+            }
+        }
+    }
+
+    private void removeRequestedPermission(String permission) {
+        requestedPermissionsSet.remove(permission);
+    }
+
     private void onApplicationParsed() {
         receiver.receiveApp(curapp, apksList);
         curapp = null;
@@ -308,6 +357,24 @@ public class RepoXMLHandler extends DefaultHandler {
 
         } else if ("hash".equals(localName) && curapk != null) {
             currentApkHashType = attributes.getValue("", "type");
+        } else if ("uses-permission".equals(localName) && curapk != null) {
+            String maxSdkVersion = attributes.getValue("maxSdkVersion");
+            if (maxSdkVersion == null || Build.VERSION.SDK_INT <= Integer.valueOf(maxSdkVersion)) {
+                addRequestedPermission(attributes.getValue("name"));
+            } else {
+                removeRequestedPermission(attributes.getValue("name"));
+            }
+        } else if ("uses-permission-sdk-23".equals(localName) && curapk != null) {
+            String maxSdkVersion = attributes.getValue("maxSdkVersion");
+            if (Build.VERSION.SDK_INT >= 23 &&
+                    (maxSdkVersion == null || Build.VERSION.SDK_INT <= Integer.valueOf(maxSdkVersion))) {
+                addRequestedPermission(attributes.getValue("name"));
+            } else {
+                removeRequestedPermission(attributes.getValue("name"));
+            }
+        } else if ("uses-feature".equals(localName) && curapk != null) {
+            System.out.println("TODO startElement " + uri + " " + localName + " " + qName);
+            // TODO
         }
         curchars.setLength(0);
     }

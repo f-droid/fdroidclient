@@ -80,18 +80,10 @@ class ApkVerifier {
         }
 
         // verify permissions, important for unattended installer
-        HashSet<String> localPermissions = getLocalPermissionsSet(localApkInfo);
-        HashSet<String> expectedPermissions = expectedApk.getFullPermissionsSet();
-        Utils.debugLog(TAG, "localPermissions: " + localPermissions);
-        Utils.debugLog(TAG, "expectedPermissions: " + expectedPermissions);
-        // NOTE: Some permissions could have a maxSdkVersion < current sdk version
-        // and are thus not parsed by pm.getPackageArchiveInfo().
-        // Thus, containsAll() instead of equals() is used!
-        // See also https://gitlab.com/fdroid/fdroidclient/issues/703
-        if (!expectedPermissions.containsAll(localPermissions)) {
-            throw new ApkPermissionUnequalException(
-                    "Permissions of the apk file are not a true subset of the permissions listed by the repo," +
-                            " i.e., some permissions have not been shown to the user!");
+        Utils.debugLog(TAG, "localPermissions: " + TextUtils.join("\n", localApkInfo.requestedPermissions));
+        Utils.debugLog(TAG, "expectedPermissions: " + TextUtils.join("\n", expectedApk.requestedPermissions));
+        if (!requestedPermissionsEqual(expectedApk.requestedPermissions, localApkInfo.requestedPermissions)) {
+            throw new ApkPermissionUnequalException("Permissions in APK and index.xml do not match!");
         }
 
         int localTargetSdkVersion = localApkInfo.applicationInfo.targetSdkVersion;
@@ -106,13 +98,24 @@ class ApkVerifier {
         }
     }
 
-    private HashSet<String> getLocalPermissionsSet(PackageInfo localApkInfo) {
-        String[] localPermissions = localApkInfo.requestedPermissions;
-        if (localPermissions == null) {
-            return new HashSet<>();
+    /**
+     * Compares to sets of APK permissions to see if they are an exact match.  The
+     * data format is {@link String} arrays but they are in effect sets. This is the
+     * same data format as {@link android.content.pm.PackageInfo#requestedPermissions}
+     */
+    public static boolean requestedPermissionsEqual(String[] expected, String[] actual) {
+        if (expected == null && actual == null) {
+            return true;
         }
-
-        return new HashSet<>(Arrays.asList(localApkInfo.requestedPermissions));
+        if (expected == null || actual == null) {
+            return false;
+        }
+        if (expected.length != actual.length) {
+            return false;
+        }
+        HashSet<String> expectedSet = new HashSet<>(Arrays.asList(expected));
+        HashSet<String> actualSet = new HashSet<>(Arrays.asList(actual));
+        return expectedSet.equals(actualSet);
     }
 
     public static class ApkVerificationException extends Exception {
