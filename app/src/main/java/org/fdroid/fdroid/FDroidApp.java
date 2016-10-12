@@ -64,6 +64,7 @@ import java.net.URL;
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
 import java.security.Security;
+import java.util.List;
 import java.util.Locale;
 
 import info.guardianproject.netcipher.NetCipher;
@@ -313,17 +314,28 @@ public class FDroidApp extends Application {
     }
 
     /**
-     * Asks if the current process is "org.fdroid.fdroid:acra". Note that it is not perfect, because
-     * some devices seem to not provide a list of running app processes when asked.
+     * Asks if the current process is "org.fdroid.fdroid:acra".
      *
-     * The `android:process` statement in AndroidManifest.xml causes another process to be created
-     * to run {@link org.fdroid.fdroid.acra.CrashReportActivity}. This was causing lots of things
-     * to be started/run twice including {@link CleanCacheService} and {@link WifiStateChangeService}.
+     * This is helpful for bailing out of the {@link FDroidApp#onCreate} method early, preventing
+     * problems that arise from executing the code twice. This happens due to the `android:process`
+     * statement in AndroidManifest.xml causes another process to be created to run
+     * {@link org.fdroid.fdroid.acra.CrashReportActivity}. This was causing lots of things to be
+     * started/run twice including {@link CleanCacheService} and {@link WifiStateChangeService}.
+     *
+     * Note that it is not perfect, because some devices seem to not provide a list of running app
+     * processes when asked. In such situations, F-Droid may regress to the behaviour where some
+     * services may run twice and thus cause weirdness or slowness. However that is probably better
+     * for end users than experiencing a deterministic crash every time F-Droid is started.
      */
     private boolean isAcraProcess() {
-        int pid = android.os.Process.myPid();
         ActivityManager manager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
-        for (RunningAppProcessInfo processInfo : manager.getRunningAppProcesses()) {
+        List<RunningAppProcessInfo> processes = manager.getRunningAppProcesses();
+        if (processes == null) {
+            return false;
+        }
+
+        int pid = android.os.Process.myPid();
+        for (RunningAppProcessInfo processInfo : processes) {
             if (processInfo.pid == pid && "org.fdroid.fdroid:acra".equals(processInfo.processName)) {
                 return true;
             }
