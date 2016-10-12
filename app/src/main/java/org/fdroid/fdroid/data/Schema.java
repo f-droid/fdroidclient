@@ -9,6 +9,15 @@ import android.provider.BaseColumns;
  */
 public interface Schema {
 
+    /**
+     * A package is essentially the app that a developer builds and wants you to install on your
+     * device. It differs from entries in:
+     *  * {@link ApkTable} because they are specific builds of a particular package. Many different
+     *    builds of the same package can exist.
+     *  * {@link AppMetadataTable} because this is metdata about a package which is specified by a
+     *    given repo. Different repos can provide the same package with different descriptions,
+     *    categories, etc.
+     */
     interface PackageTable {
 
         String NAME = "fdroid_package";
