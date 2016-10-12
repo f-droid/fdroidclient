@@ -359,4 +359,10 @@
     <string name="swap_join_same_wifi_desc">要使用 Wi-Fi 進行交換，確保雙方是在同個一網路上。如果您不能存取同個網絡，你們之中的一個，可以建立一個 Wi-Fi 熱點。</string>
     <string name="swap_qr_isnt_for_swap">您掃描的 QR 碼看起來並不是一個交換碼。</string>
     <string name="swap_connection_misc_error">連線到裝置時發生錯誤，似乎不能用它來進行交換。</string>
+    <string name="keep_install_history">保留安裝履歷</string>
+    <string name="keep_install_history_summary">F-Droid 裡面的所有安裝和解除安裝存放在一個日誌中</string>
+    <string name="update_auto_install">自動安裝更新</string>
+    <string name="update_auto_install_summary">在背景下載並且安裝更新的應用程式</string>
+    <string name="hide_anti_feature_apps">防應用程式變灰色徵狀</string>
+    <string name="hide_anti_feature_apps_on">需要防止應用程式變灰色防徵狀</string>
     </resources>
