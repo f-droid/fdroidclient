@@ -1307,14 +1307,6 @@ public class AppDetails extends AppCompatActivity {
                 tv.setVisibility(View.GONE);
             }
 
-            // Categories TextView
-            final TextView categories = (TextView) view.findViewById(R.id.categories);
-            if (prefs.expertMode() && app.categories != null) {
-                categories.setText(TextUtils.join(", ", app.categories));
-            } else {
-                categories.setVisibility(View.GONE);
-            }
-
             Apk curApk = null;
             for (int i = 0; i < appDetails.getApks().getCount(); i++) {
                 final Apk apk = appDetails.getApks().getItem(i);
