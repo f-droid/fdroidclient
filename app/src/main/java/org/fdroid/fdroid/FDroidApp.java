@@ -209,13 +209,8 @@ public class FDroidApp extends Application {
         updateLanguage();
 
         ACRA.init(this);
-        // if this is the ACRA process, do not run the rest of onCreate()
-        int pid = android.os.Process.myPid();
-        ActivityManager manager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
-        for (RunningAppProcessInfo processInfo : manager.getRunningAppProcesses()) {
-            if (processInfo.pid == pid && "org.fdroid.fdroid:acra".equals(processInfo.processName)) {
-                return;
-            }
+        if (isAcraProcess()) {
+            return;
         }
 
         PRNGFixes.apply();
@@ -315,6 +310,26 @@ public class FDroidApp extends Application {
             }
             grantUriPermission(packageName, InstallHistoryService.LOG_URI, modeFlags);
         }
+    }
+
+    /**
+     * Asks if the current process is "org.fdroid.fdroid:acra". Note that it is not perfect, because
+     * some devices seem to not provide a list of running app processes when asked.
+     *
+     * The `android:process` statement in AndroidManifest.xml causes another process to be created
+     * to run {@link org.fdroid.fdroid.acra.CrashReportActivity}. This was causing lots of things
+     * to be started/run twice including {@link CleanCacheService} and {@link WifiStateChangeService}.
+     */
+    private boolean isAcraProcess() {
+        int pid = android.os.Process.myPid();
+        ActivityManager manager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
+        for (RunningAppProcessInfo processInfo : manager.getRunningAppProcesses()) {
+            if (processInfo.pid == pid && "org.fdroid.fdroid:acra".equals(processInfo.processName)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @TargetApi(18)
