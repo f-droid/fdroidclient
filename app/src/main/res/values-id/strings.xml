@@ -33,7 +33,7 @@
 
     <string name="about_title">Tentang F-Droid</string>
     <string name="about_version">Versi</string>
-    <string name="about_site">Situs Web</string>
+    <string name="about_site">Situs web</string>
     <string name="about_source">Sumber kode</string>
     <string name="about_mail">Surel</string>
     <string name="app_incompatible">Tidak kompatibel</string>
@@ -115,14 +115,14 @@
 
     <string name="display">Tampilan</string>
 
-    <string name="expert">Mode Ahli</string>
+    <string name="expert">Mode ahli</string>
     <string name="expert_on">Menampilkan info ekstra dan mengaktifkan pengaturan ekstra</string>
 
     <string name="search_hint">Cari aplikasi</string>
 
     <string name="appcompatibility">Kompatibilitas aplikasi</string>
     <string name="show_incompat_versions">Versi tidak kompatibel</string>
-    <string name="show_incompat_versions_on">Menampilkan versi aplikasi yang tidak kompatibel dengan perangkat ini</string>
+    <string name="show_incompat_versions_on">Menampilkan versi apl yang tidak kompatibel dengan perangkat ini</string>
     <string name="rooted">Abaikan root</string>
     <string name="ignoreTouch">Abaikan layar sentuh</string>
     <string name="ignoreTouch_on">Selalu sertakan aplikasi yang membutuhkan layar sentuh</string>
@@ -168,7 +168,7 @@
     <string name="unknown">Tidak diketahui</string>
     <string name="update_notification_more">+%1$d lainnya…</string>
     <string name="menu_settings">Pengaturan</string>
-    <string name="rooted_on">Jangan bedakan warna aplikasi yang membutuhkan izin root</string>
+    <string name="rooted_on">Jangan bedakan warna apl yang membutuhkan izin root</string>
     <string name="unsigned_description">Ini artinya daftar 
 aplikasi tersebut tidak bisa diverifikasi. Anda harus berhati-hati 
 dengan aplikasi yang diunduh dari daftar yang tidak terverifikasi.</string>
@@ -181,7 +181,7 @@ aplikasi dari repositori tersebut tidak lagi tersedia dari F-Droid.
 Catatan: Semua 
 apl yang sebelumnya dipasang dari repositori ini akan tetap ada di perangkat Anda.</string>
     <string name="by_author">oleh</string>
-    <string name="SignatureMismatch">Versi baru telah ditandatangani dengan kunci yang berbeda dengan versi yang lama. Untuk menginstal versi baru, versi lama harus dihapus terlebih dahulu. Silakan melakukan ini dan coba lagi. (Perhatikan bahwa mencopot pemasangan akan menghapus data internal apapun yang disimpan oleh aplikasi tersebut)</string>
+    <string name="SignatureMismatch">Versi yang baru telah ditandatangani menggunakan kunci yang berbeda dengan versi yang lama. Untuk memasang versi yang baru, versi yang lama harus dihapus terlebih dahulu. Silakan lakukan ini dan coba lagi. (Perhatikan bahwa mencopot aplikasi akan menghapus data internal apapun yang disimpan oleh aplikasi tersebut)</string>
     <string name="interval_12h">Setiap 12 jam</string>
     <string name="downloading">Mengunduh…</string>
 
@@ -200,7 +200,7 @@ apl yang sebelumnya dipasang dari repositori ini akan tetap ada di perangkat And
     <string name="repo_provider">Repositori: %s</string>
 
     <string name="menu_email">Surel Penulis</string>
-    <string name="antinonfreeassetslist">App ini mengandung aset non-free</string>
+    <string name="antinonfreeassetslist">Apl ini mengandung aset tak-bebas</string>
 
     <string name="touch_to_configure_local_repo">Ketuk untuk melihat rincian dan izinkan yang lainnya untuk bertukar app anda.</string>
     <string name="useTor">Gunakan Tor</string>
@@ -360,8 +360,8 @@ hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
  memaksa aplikasi untuk berhenti. Apa anda ingin mengirim surel
  detail untuk membantu memperbaiki isu?</string>
     <string name="crash_dialog_comment_prompt">Anda dapat menambahkan informasi ekstra dan komentar disini:</string>
-<string name="update_auto_download">Mengunduh pembaruan otomatis</string>
-    <string name="update_auto_download_summary">Unduh berkas pembaruan dilatar belakang</string>
+<string name="update_auto_download">Otomatis mengunduh pembaruan</string>
+    <string name="update_auto_download_summary">Unduh berkas pembaruan di latar belakang</string>
     <string name="tap_to_install_format">Ketuk untuk memasang %s</string>
     <string name="tap_to_update_format">Ketuk untuk perbarui %s</string>
     <string name="download_pending">Menunggu untuk mulai unduhan…</string>
@@ -384,6 +384,10 @@ hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
     <string name="installing">Memasang…</string>
     <string name="uninstalling">Mencopot pemasangan…</string>
 
-    <string name="hide_anti_feature_apps">Jadikan abu-abu apl anti-fitur</string>
-    <string name="hide_anti_feature_apps_on">Jadikan abu-abu apl yang butuh anti-fitur</string>
+    <string name="hide_anti_feature_apps">Bedakan warna apl anti-fitur</string>
+    <string name="hide_anti_feature_apps_on">Bedakan warna apl yang membutuhkan fitur yang tidak direkomendasikan</string>
+    <string name="keep_install_history">Simpan riwayat pemasangan</string>
+    <string name="keep_install_history_summary">Simpan log semua pemasangan dan pencopotan di F-Droid</string>
+    <string name="update_auto_install">Otomatis memasang pembaruan</string>
+    <string name="update_auto_install_summary">Unduh dan pasang pembaruan apl di latar belakang</string>
     </resources>
