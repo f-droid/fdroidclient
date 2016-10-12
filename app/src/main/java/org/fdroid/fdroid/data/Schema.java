@@ -59,6 +59,46 @@ public interface Schema {
         }
     }
 
+    interface CategoryTable {
+
+        String NAME = "fdroid_category";
+
+        interface Cols {
+            String ROW_ID = "rowid";
+            String NAME = "name";
+
+            String[] ALL = {
+                    ROW_ID, NAME,
+            };
+        }
+    }
+
+    /**
+     * An entry in this table signifies that an app is in a particular category. Each repo can
+     * classify its apps in separate categories, and so the same record in {@link PackageTable}
+     * can be in the same category multiple times, if multiple repos think that is the case.
+     * @see CategoryTable
+     * @see AppMetadataTable
+     */
+    interface CatJoinTable {
+
+        String NAME = "fdroid_categoryAppMetadataJoin";
+
+        interface Cols {
+            /**
+             * Foreign key to {@link AppMetadataTable}.
+             * @see AppMetadataTable
+             */
+            String APP_METADATA_ID = "appMetadataId";
+
+            /**
+             * Foreign key to {@link CategoryTable}.
+             * @see CategoryTable
+             */
+            String CATEGORY_ID = "categoryId";
+        }
+    }
+
     interface AppMetadataTable {
 
         String NAME = "fdroid_app";
