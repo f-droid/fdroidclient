@@ -109,7 +109,7 @@ public class AppProvider extends FDroidProvider {
         public static List<String> categories(Context context) {
             final ContentResolver resolver = context.getContentResolver();
             final Uri uri = getContentUri();
-            final String[] projection = {Cols.CATEGORIES};
+            final String[] projection = {Cols.Categories.CATEGORIES};
             final Cursor cursor = resolver.query(uri, projection, null, null, null);
             final Set<String> categorySet = new HashSet<>();
             if (cursor != null) {
@@ -268,7 +268,6 @@ public class AppProvider extends FDroidProvider {
         private boolean isSuggestedApkTableAdded;
         private boolean requiresInstalledTable;
         private boolean requiresLeftJoinToPrefs;
-        private boolean categoryFieldAdded;
         private boolean countFieldAppended;
 
         @Override
@@ -289,13 +288,9 @@ public class AppProvider extends FDroidProvider {
         }
 
         @Override
-        protected boolean isDistinct() {
-            return fieldCount() == 1 && categoryFieldAdded;
-        }
-
-        @Override
         protected String groupBy() {
-            // If the count field has been requested, then we want to group all rows together.
+            // If the count field has been requested, then we want to group all rows together. Otherwise
+            // we will only group all the rows belonging to a single app together.
             return countFieldAppended ? null : getTableName() + "." + Cols.ROW_ID;
         }
 
@@ -362,10 +357,10 @@ public class AppProvider extends FDroidProvider {
                 case Cols._COUNT:
                     appendCountField();
                     break;
+                case Cols.Categories.CATEGORIES:
+                    appendCategoriesField();
+                    break;
                 default:
-                    if (field.equals(Cols.CATEGORIES)) {
-                        categoryFieldAdded = true;
-                    }
                     appendField(field, getTableName());
                     break;
             }
@@ -391,6 +386,10 @@ public class AppProvider extends FDroidProvider {
                         getTableName() + "." + Cols.SUGGESTED_VERSION_CODE + " = suggestedApk." + ApkTable.Cols.VERSION_CODE + " AND " + getTableName() + "." + Cols.ROW_ID + " = suggestedApk." + ApkTable.Cols.APP_ID);
             }
             appendField(fieldName, "suggestedApk", alias);
+        }
+
+        private void appendCategoriesField() {
+            appendField("GROUP_CONCAT(" + CategoryTable.NAME + "." + CategoryTable.Cols.NAME + ")", null, Cols.Categories.CATEGORIES);
         }
 
         private void addInstalledAppVersionName() {
@@ -584,6 +583,10 @@ public class AppProvider extends FDroidProvider {
     @Override
     protected String getTableName() {
         return AppMetadataTable.NAME;
+    }
+
+    protected String getCatJoinTableName() {
+        return CatJoinTable.NAME;
     }
 
     protected String getApkTableName() {
@@ -904,11 +907,49 @@ public class AppProvider extends FDroidProvider {
         values.remove(Cols.Package.PACKAGE_NAME);
         values.put(Cols.PACKAGE_ID, packageId);
 
-        db().insertOrThrow(getTableName(), null, values);
+        String[] categories = null;
+        boolean saveCategories = false;
+        if (values.containsKey(Cols.Categories.CATEGORIES)) {
+            // Hold onto these categories, so that after we have an ID to reference the newly inserted
+            // app metadata we can then specify its categories.
+            saveCategories = true;
+            categories = Utils.parseCommaSeparatedString(values.getAsString(Cols.Categories.CATEGORIES));
+            values.remove(Cols.Categories.CATEGORIES);
+        }
+
+        long appMetadataId = db().insertOrThrow(getTableName(), null, values);
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
+
+        if (saveCategories) {
+            ensureCategories(categories, appMetadataId);
+        }
+
         return getSpecificAppUri(values.getAsString(PackageTable.Cols.PACKAGE_NAME), values.getAsLong(Cols.REPO_ID));
+    }
+
+    protected void ensureCategories(String[] categories, long appMetadataId) {
+        db().delete(getCatJoinTableName(), CatJoinTable.Cols.APP_METADATA_ID + " = ?", new String[] {Long.toString(appMetadataId)});
+        if (categories != null) {
+            Set<String> categoriesSet = new HashSet<>();
+            for (String categoryName : categories) {
+
+                // There is nothing stopping a server repeating a category name in the metadata of
+                // an app. In order to prevent unique constraint violations, only insert once into
+                // the join table.
+                if (categoriesSet.contains(categoryName)) {
+                    continue;
+                }
+
+                categoriesSet.add(categoryName);
+                long categoryId = CategoryProvider.Helper.ensureExists(getContext(), categoryName);
+                ContentValues categoryValues = new ContentValues(2);
+                categoryValues.put(CatJoinTable.Cols.APP_METADATA_ID, appMetadataId);
+                categoryValues.put(CatJoinTable.Cols.CATEGORY_ID, categoryId);
+                db().insert(getCatJoinTableName(), null, categoryValues);
+            }
+        }
     }
 
     @Override

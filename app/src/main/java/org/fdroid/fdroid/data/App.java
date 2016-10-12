@@ -101,6 +101,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     /**
      * List of categories (as defined in the metadata documentation) or null if there aren't any.
+     * This is only populated when parsing a repository. If you need to know about the categories
+     * an app is in any other part of F-Droid, use the {@link CategoryProvider}.
      */
     public String[] categories;
 
@@ -229,9 +231,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     break;
                 case Cols.LAST_UPDATED:
                     lastUpdated = Utils.parseDate(cursor.getString(i), null);
-                    break;
-                case Cols.CATEGORIES:
-                    categories = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case Cols.ANTI_FEATURES:
                     antiFeatures = Utils.parseCommaSeparatedString(cursor.getString(i));
@@ -504,7 +503,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVersionCode);
         values.put(Cols.UPSTREAM_VERSION_NAME, upstreamVersionName);
         values.put(Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
-        values.put(Cols.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
+        values.put(Cols.Categories.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
         values.put(Cols.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
         values.put(Cols.REQUIREMENTS, Utils.serializeCommaSeparatedString(requirements));
         values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);

@@ -96,6 +96,11 @@ public interface Schema {
              * @see CategoryTable
              */
             String CATEGORY_ID = "categoryId";
+
+            /**
+             * @see AppMetadataTable.Cols#ALL_COLS
+             */
+            String[] ALL_COLS = {APP_METADATA_ID, CATEGORY_ID};
         }
     }
 
@@ -134,7 +139,6 @@ public interface Schema {
             String UPSTREAM_VERSION_CODE = "upstreamVercode";
             String ADDED = "added";
             String LAST_UPDATED = "lastUpdated";
-            String CATEGORIES = "categories";
             String ANTI_FEATURES = "antiFeatures";
             String REQUIREMENTS = "requirements";
             String ICON_URL = "iconUrl";
@@ -154,6 +158,10 @@ public interface Schema {
                 String PACKAGE_NAME = "package_packageName";
             }
 
+            interface Categories {
+                String CATEGORIES = "categories_commaSeparatedCateogryNames";
+            }
+
             /**
              * Each of the physical columns in the sqlite table. Differs from {@link Cols#ALL} in
              * that it doesn't include fields which are aliases of other fields (e.g. {@link Cols#_ID}
@@ -164,7 +172,7 @@ public interface Schema {
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
                     CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
-                    CATEGORIES, ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
+                    ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     SUGGESTED_VERSION_CODE,
             };
 
@@ -178,10 +186,10 @@ public interface Schema {
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
                     CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
-                    CATEGORIES, ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
+                    ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
-                    InstalledApp.SIGNATURE, Package.PACKAGE_NAME,
+                    InstalledApp.SIGNATURE, Package.PACKAGE_NAME, Categories.CATEGORIES,
             };
         }
     }

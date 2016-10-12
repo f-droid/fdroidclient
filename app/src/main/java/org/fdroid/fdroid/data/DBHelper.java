@@ -131,7 +131,6 @@ class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.LITECOIN_ADDR + " string,"
             + AppMetadataTable.Cols.FLATTR_ID + " string,"
             + AppMetadataTable.Cols.REQUIREMENTS + " string,"
-            + AppMetadataTable.Cols.CATEGORIES + " string,"
             + AppMetadataTable.Cols.ADDED + " string,"
             + AppMetadataTable.Cols.LAST_UPDATED + " string,"
             + AppMetadataTable.Cols.IS_COMPATIBLE + " int not null,"
@@ -151,11 +150,20 @@ class DBHelper extends SQLiteOpenHelper {
             + Schema.CategoryTable.Cols.NAME + " TEXT NOT NULL "
             + " );";
 
-    private static final String CREATE_TABLE_CAT_JOIN = "CREATE TABLE " + CatJoinTable.NAME
+    /**
+     * The order of the two columns in the primary key matters for this table. The index that is
+     * built for sqlite to quickly search the primary key will be sorted by app metadata id first,
+     * and category id second. This means that we don't need a separate individual index on the
+     * app metadata id, because it can instead look through the primary key index. This can be
+     * observed by flipping the order of the primary key columns, and noting the resulting sqlite
+     * logs along the lines of:
+     *   E/SQLiteLog(14164): (284) automatic index on fdroid_categoryAppMetadataJoin(appMetadataId)
+     */
+    static final String CREATE_TABLE_CAT_JOIN = "CREATE TABLE " + CatJoinTable.NAME
             + " ( "
             + CatJoinTable.Cols.APP_METADATA_ID + " INT NOT NULL, "
             + CatJoinTable.Cols.CATEGORY_ID + " INT NOT NULL, "
-            + "primary key(" + CatJoinTable.Cols.CATEGORY_ID + ", " + CatJoinTable.Cols.APP_METADATA_ID + ") "
+            + "primary key(" + CatJoinTable.Cols.APP_METADATA_ID + ", " + CatJoinTable.Cols.CATEGORY_ID + ") "
             + " );";
 
     private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + InstalledAppTable.NAME
