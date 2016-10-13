@@ -93,7 +93,7 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.rock", "Rock", "Mineral");
         insertAppWithCategory("com.banana", "Banana", "Vegetable");
 
-        List<String> categories = AppProvider.Helper.categories(context);
+        List<String> categories = CategoryProvider.Helper.categories(context);
         String[] expected = new String[] {
                 context.getResources().getString(R.string.category_Whats_New),
                 context.getResources().getString(R.string.category_Recently_Updated),
@@ -111,7 +111,7 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.dog.rock.apple", "Dog-Rock-Apple", "Animal,Mineral,Vegetable");
         insertAppWithCategory("com.banana.apple", "Banana", "Vegetable,Vegetable");
 
-        List<String> categories = AppProvider.Helper.categories(context);
+        List<String> categories = CategoryProvider.Helper.categories(context);
         String[] expected = new String[] {
                 context.getResources().getString(R.string.category_Whats_New),
                 context.getResources().getString(R.string.category_Recently_Updated),
@@ -127,7 +127,7 @@ public class CategoryProviderTest extends FDroidProviderTest {
                 "Running,Shooting,Jumping,Bleh,Sneh,Pleh,Blah,Test category," +
                 "The quick brown fox jumps over the lazy dog,With apostrophe's");
 
-        List<String> categoriesLonger = AppProvider.Helper.categories(context);
+        List<String> categoriesLonger = CategoryProvider.Helper.categories(context);
         String[] expectedLonger = new String[] {
                 context.getResources().getString(R.string.category_Whats_New),
                 context.getResources().getString(R.string.category_Recently_Updated),

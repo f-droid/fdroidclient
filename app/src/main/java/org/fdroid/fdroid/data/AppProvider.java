@@ -10,7 +10,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppPrefsTable;
@@ -24,7 +23,6 @@ import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -92,51 +90,6 @@ public class AppProvider extends FDroidProvider {
                 cursor.close();
             }
             return apps;
-        }
-
-        public static String getCategoryAll(Context context) {
-            return context.getString(R.string.category_All);
-        }
-
-        public static String getCategoryWhatsNew(Context context) {
-            return context.getString(R.string.category_Whats_New);
-        }
-
-        public static String getCategoryRecentlyUpdated(Context context) {
-            return context.getString(R.string.category_Recently_Updated);
-        }
-
-        public static List<String> categories(Context context) {
-            final ContentResolver resolver = context.getContentResolver();
-            final Uri uri = getContentUri();
-            final String[] projection = {Cols.Categories.CATEGORIES};
-            final Cursor cursor = resolver.query(uri, projection, null, null, null);
-            final Set<String> categorySet = new HashSet<>();
-            if (cursor != null) {
-                if (cursor.getCount() > 0) {
-                    cursor.moveToFirst();
-                    while (!cursor.isAfterLast()) {
-                        final String categoriesString = cursor.getString(0);
-                        String[] categoriesList = Utils.parseCommaSeparatedString(categoriesString);
-                        if (categoriesList != null) {
-                            Collections.addAll(categorySet, categoriesList);
-                        }
-                        cursor.moveToNext();
-                    }
-                }
-                cursor.close();
-            }
-            final List<String> categories = new ArrayList<>(categorySet);
-            Collections.sort(categories);
-
-            // Populate the category list with the real categories, and the
-            // locally generated meta-categories for "What's New", "Recently
-            // Updated" and "All"...
-            categories.add(0, getCategoryAll(context));
-            categories.add(0, getCategoryRecentlyUpdated(context));
-            categories.add(0, getCategoryWhatsNew(context));
-
-            return categories;
         }
 
         public static App findHighestPriorityMetadata(ContentResolver resolver, String packageName) {

@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.data;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
@@ -7,7 +8,15 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.CategoryTable.Cols;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class CategoryProvider extends FDroidProvider {
 
@@ -42,6 +51,51 @@ public class CategoryProvider extends FDroidProvider {
             } finally {
                 cursor.close();
             }
+        }
+
+        public static String getCategoryAll(Context context) {
+            return context.getString(R.string.category_All);
+        }
+
+        public static String getCategoryWhatsNew(Context context) {
+            return context.getString(R.string.category_Whats_New);
+        }
+
+        public static String getCategoryRecentlyUpdated(Context context) {
+            return context.getString(R.string.category_Recently_Updated);
+        }
+
+        public static List<String> categories(Context context) {
+            final ContentResolver resolver = context.getContentResolver();
+            final Uri uri = AppProvider.getContentUri();
+            final String[] projection = {Schema.AppMetadataTable.Cols.Categories.CATEGORIES};
+            final Cursor cursor = resolver.query(uri, projection, null, null, null);
+            final Set<String> categorySet = new HashSet<>();
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        final String categoriesString = cursor.getString(0);
+                        String[] categoriesList = Utils.parseCommaSeparatedString(categoriesString);
+                        if (categoriesList != null) {
+                            Collections.addAll(categorySet, categoriesList);
+                        }
+                        cursor.moveToNext();
+                    }
+                }
+                cursor.close();
+            }
+            final List<String> categories = new ArrayList<>(categorySet);
+            Collections.sort(categories);
+
+            // Populate the category list with the real categories, and the
+            // locally generated meta-categories for "What's New", "Recently
+            // Updated" and "All"...
+            categories.add(0, getCategoryAll(context));
+            categories.add(0, getCategoryRecentlyUpdated(context));
+            categories.add(0, getCategoryWhatsNew(context));
+
+            return categories;
         }
     }
 
