@@ -3,11 +3,11 @@ package org.fdroid.fdroid.data;
 import android.app.Application;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.junit.Before;
 import org.junit.Test;
@@ -89,7 +89,7 @@ public class AppProviderTest extends FDroidProviderTest {
             boolean ignoreAll, int ignoreVercode) {
         ContentValues values = new ContentValues(3);
         values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVercode);
-        App app = insertApp(packageName, "App: " + packageName, values);
+        App app = insertApp(contentResolver, context, packageName, "App: " + packageName, values);
         AppPrefsProvider.Helper.update(context, app, new AppPrefs(ignoreVercode, ignoreAll));
 
         InstalledAppTestUtils.install(context, packageName, installedVercode, "v" + installedVercode);
@@ -193,7 +193,7 @@ public class AppProviderTest extends FDroidProviderTest {
         assertContainsOnlyIds(canUpdateApps, expectedCanUpdate);
     }
 
-    private void assertContainsOnlyIds(List<App> actualApps, String[] expectedIds) {
+    public static void assertContainsOnlyIds(List<App> actualApps, String[] expectedIds) {
         List<String> actualIds = new ArrayList<>(actualApps.size());
         for (App app : actualApps) {
             actualIds.add(app.packageName);
@@ -265,95 +265,16 @@ public class AppProviderTest extends FDroidProviderTest {
         return contentResolver.query(AppProvider.getContentUri(), projection, null, null, null);
     }
 
-
-    // ========================================================================
-    //  "Categories"
-    //  (at this point) not an additional table, but we treat them sort of
-    //  like they are. That means that if we change the implementation to
-    //  use a separate table in the future, these should still pass.
-    // ========================================================================
-
-    @Test
-    public void testCategoriesSingle() {
-        insertAppWithCategory("com.dog", "Dog", "Animal");
-        insertAppWithCategory("com.rock", "Rock", "Mineral");
-        insertAppWithCategory("com.banana", "Banana", "Vegetable");
-
-        List<String> categories = AppProvider.Helper.categories(context);
-        String[] expected = new String[] {
-                context.getResources().getString(R.string.category_Whats_New),
-                context.getResources().getString(R.string.category_Recently_Updated),
-                context.getResources().getString(R.string.category_All),
-                "Animal",
-                "Mineral",
-                "Vegetable",
-        };
-        assertContainsOnly(categories, expected);
-    }
-
-    @Test
-    public void testCategoriesMultiple() {
-        insertAppWithCategory("com.rock.dog", "Rock-Dog", "Mineral,Animal");
-        insertAppWithCategory("com.dog.rock.apple", "Dog-Rock-Apple", "Animal,Mineral,Vegetable");
-        insertAppWithCategory("com.banana.apple", "Banana", "Vegetable,Vegetable");
-
-        List<String> categories = AppProvider.Helper.categories(context);
-        String[] expected = new String[] {
-                context.getResources().getString(R.string.category_Whats_New),
-                context.getResources().getString(R.string.category_Recently_Updated),
-                context.getResources().getString(R.string.category_All),
-
-                "Animal",
-                "Mineral",
-                "Vegetable",
-        };
-        assertContainsOnly(categories, expected);
-
-        insertAppWithCategory("com.example.game", "Game",
-                "Running,Shooting,Jumping,Bleh,Sneh,Pleh,Blah,Test category," +
-                        "The quick brown fox jumps over the lazy dog,With apostrophe's");
-
-        List<String> categoriesLonger = AppProvider.Helper.categories(context);
-        String[] expectedLonger = new String[] {
-                context.getResources().getString(R.string.category_Whats_New),
-                context.getResources().getString(R.string.category_Recently_Updated),
-                context.getResources().getString(R.string.category_All),
-
-                "Animal",
-                "Mineral",
-                "Vegetable",
-
-                "Running",
-                "Shooting",
-                "Jumping",
-                "Bleh",
-                "Sneh",
-                "Pleh",
-                "Blah",
-                "Test category",
-                "The quick brown fox jumps over the lazy dog",
-                "With apostrophe's",
-        };
-
-        assertContainsOnly(categoriesLonger, expectedLonger);
-    }
-
     // =======================================================================
     //  Misc helper functions
     //  (to be used by any tests in this suite)
     // =======================================================================
 
     private void insertApp(String id, String name) {
-        insertApp(id, name, new ContentValues());
+        insertApp(contentResolver, context, id, name, new ContentValues());
     }
 
-    private void insertAppWithCategory(String id, String name, String categories) {
-        ContentValues values = new ContentValues(1);
-        values.put(Cols.CATEGORIES, categories);
-        insertApp(id, name, values);
-    }
-
-    public App insertApp(String id, String name, ContentValues additionalValues) {
+    public static App insertApp(ShadowContentResolver contentResolver, Context context, String id, String name, ContentValues additionalValues) {
 
         ContentValues values = new ContentValues();
         values.put(Cols.Package.PACKAGE_NAME, id);
