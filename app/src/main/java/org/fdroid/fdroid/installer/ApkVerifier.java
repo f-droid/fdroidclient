@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -80,8 +81,6 @@ class ApkVerifier {
         }
 
         // verify permissions, important for unattended installer
-        Utils.debugLog(TAG, "localPermissions: " + TextUtils.join("\n", localApkInfo.requestedPermissions));
-        Utils.debugLog(TAG, "expectedPermissions: " + TextUtils.join("\n", expectedApk.requestedPermissions));
         if (!requestedPermissionsEqual(expectedApk.requestedPermissions, localApkInfo.requestedPermissions)) {
             throw new ApkPermissionUnequalException("Permissions in APK and index.xml do not match!");
         }
@@ -103,7 +102,11 @@ class ApkVerifier {
      * data format is {@link String} arrays but they are in effect sets. This is the
      * same data format as {@link android.content.pm.PackageInfo#requestedPermissions}
      */
-    public static boolean requestedPermissionsEqual(String[] expected, String[] actual) {
+    public static boolean requestedPermissionsEqual(@Nullable String[] expected, @Nullable String[] actual) {
+        Utils.debugLog(TAG, "Checking permissions");
+        Utils.debugLog(TAG, "Actual:\n  " + (actual == null ? "None" : TextUtils.join("\n  ", actual)));
+        Utils.debugLog(TAG, "Expected:\n  " + (expected == null ? "None" : TextUtils.join("\n  ", expected)));
+
         if (expected == null && actual == null) {
             return true;
         }
