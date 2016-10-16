@@ -100,6 +100,15 @@ public class ApkVerifierTest {
     }
 
     @Test
+    public void testNulls() {
+        assertTrue(ApkVerifier.requestedPermissionsEqual(null, null));
+
+        String[] perms = new String[] {"Blah"};
+        assertFalse(ApkVerifier.requestedPermissionsEqual(perms, null));
+        assertFalse(ApkVerifier.requestedPermissionsEqual(null, perms));
+    }
+
+    @Test
     public void testWithoutPrefix() {
         Apk apk = new Apk();
         apk.packageName = "org.fdroid.permissions.sdk14";
