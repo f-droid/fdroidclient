@@ -9,14 +9,13 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.CatJoinTable;
+import org.fdroid.fdroid.data.Schema.CategoryTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable.Cols;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class CategoryProvider extends FDroidProvider {
 
@@ -67,25 +66,21 @@ public class CategoryProvider extends FDroidProvider {
 
         public static List<String> categories(Context context) {
             final ContentResolver resolver = context.getContentResolver();
-            final Uri uri = AppProvider.getContentUri();
-            final String[] projection = {Schema.AppMetadataTable.Cols.Categories.CATEGORIES};
+            final Uri uri = CategoryProvider.getAllCategories();
+            final String[] projection = {Cols.NAME};
             final Cursor cursor = resolver.query(uri, projection, null, null, null);
-            final Set<String> categorySet = new HashSet<>();
+            List<String> categories = new ArrayList<>(30);
             if (cursor != null) {
                 if (cursor.getCount() > 0) {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
-                        final String categoriesString = cursor.getString(0);
-                        String[] categoriesList = Utils.parseCommaSeparatedString(categoriesString);
-                        if (categoriesList != null) {
-                            Collections.addAll(categorySet, categoriesList);
-                        }
+                        final String name = cursor.getString(0);
+                        categories.add(name);
                         cursor.moveToNext();
                     }
                 }
                 cursor.close();
             }
-            final List<String> categories = new ArrayList<>(categorySet);
             Collections.sort(categories);
 
             // Populate the category list with the real categories, and the
@@ -101,14 +96,28 @@ public class CategoryProvider extends FDroidProvider {
 
     private class Query extends QueryBuilder {
 
+        private boolean onlyCategoriesWithApps;
+
         @Override
         protected String getRequiredTables() {
-            return Schema.CategoryTable.NAME;
+            String joinType = onlyCategoriesWithApps ? " JOIN " : " LEFT JOIN ";
+
+            return CategoryTable.NAME + joinType + CatJoinTable.NAME + " ON (" +
+                    CatJoinTable.Cols.CATEGORY_ID + " = " + CategoryTable.NAME + "." + Cols.ROW_ID + ") ";
         }
 
         @Override
         public void addField(String field) {
             appendField(field, getTableName());
+        }
+
+        @Override
+        protected String groupBy() {
+            return CategoryTable.NAME + "." + Cols.ROW_ID;
+        }
+
+        public void setOnlyCategoriesWithApps(boolean onlyCategoriesWithApps) {
+            this.onlyCategoriesWithApps = onlyCategoriesWithApps;
         }
     }
 
@@ -117,14 +126,20 @@ public class CategoryProvider extends FDroidProvider {
     private static final UriMatcher MATCHER = new UriMatcher(-1);
 
     private static final String PATH_CATEGORY_NAME = "categoryName";
+    private static final String PATH_ALL_CATEGORIES = "all";
     private static final String PATH_CATEGORY_ID = "categoryId";
 
     static {
         MATCHER.addURI(getAuthority(), PATH_CATEGORY_NAME + "/*", CODE_SINGLE);
+        MATCHER.addURI(getAuthority(), PATH_ALL_CATEGORIES, CODE_LIST);
     }
 
     private static Uri getContentUri() {
         return Uri.parse("content://" + getAuthority());
+    }
+
+    public static Uri getAllCategories() {
+        return Uri.withAppendedPath(getContentUri(), PATH_ALL_CATEGORIES);
     }
 
     public static Uri getCategoryUri(String categoryName) {
@@ -152,7 +167,7 @@ public class CategoryProvider extends FDroidProvider {
 
     @Override
     protected String getTableName() {
-        return Schema.CategoryTable.NAME;
+        return CategoryTable.NAME;
     }
 
     @Override
@@ -175,19 +190,35 @@ public class CategoryProvider extends FDroidProvider {
         return new QuerySelection(selection, args);
     }
 
+    protected QuerySelection queryAllInUse() {
+        final String selection = CatJoinTable.NAME + "." + CatJoinTable.Cols.APP_METADATA_ID + " IS NOT NULL ";
+        final String[] args = {};
+        return new QuerySelection(selection, args);
+    }
+
     @Override
     public Cursor query(@NonNull Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
-        if (MATCHER.match(uri) != CODE_SINGLE) {
-            throw new UnsupportedOperationException("Invalid URI for content provider: " + uri);
-        }
+        QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
+        boolean onlyCategoriesWithApps = false;
+        switch (MATCHER.match(uri)) {
+            case CODE_SINGLE:
+                selection = selection.add(querySingle(uri.getLastPathSegment()));
+                break;
 
-        QuerySelection selection = new QuerySelection(customSelection, selectionArgs)
-                .add(querySingle(uri.getLastPathSegment()));
+            case CODE_LIST:
+                selection = selection.add(queryAllInUse());
+                onlyCategoriesWithApps = true;
+                break;
+
+            default:
+                throw new UnsupportedOperationException("Invalid URI for content provider: " + uri);
+        }
 
         Query query = new Query();
         query.addSelection(selection);
         query.addFields(projection);
         query.addOrderBy(sortOrder);
+        query.setOnlyCategoriesWithApps(onlyCategoriesWithApps);
 
         Cursor cursor = LoggingQuery.query(db(), query.toString(), query.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
@@ -198,7 +229,7 @@ public class CategoryProvider extends FDroidProvider {
      * Deleting of categories is not required.
      * It doesn't matter if we have a category in the database when no apps are in that category.
      * They wont take up much space, and it is the presence of rows in the
-     * {@link Schema.CatJoinTable} which decides whether a category is displayed in F-Droid or not.
+     * {@link CatJoinTable} which decides whether a category is displayed in F-Droid or not.
      */
     @Override
     public int delete(@NonNull Uri uri, String where, String[] whereArgs) {
