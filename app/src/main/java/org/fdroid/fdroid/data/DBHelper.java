@@ -940,11 +940,20 @@ class DBHelper extends SQLiteOpenHelper {
                 + Repo.PUSH_REQUEST_IGNORE);
     }
 
-    private static boolean columnExists(SQLiteDatabase db, String table, String column) {
-        Cursor cursor = db.rawQuery("select * from " + table + " limit 0,1", null);
-        boolean exists = cursor.getColumnIndex(column) != -1;
+    private static boolean columnExists(SQLiteDatabase db, String table, String field) {
+        boolean found = false;
+        Cursor cursor = db.rawQuery("PRAGMA table_info(" + table + ")", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            if (name.equalsIgnoreCase(field)) {
+                found = true;
+                break;
+            }
+            cursor.moveToNext();
+        }
         cursor.close();
-        return exists;
+        return found;
     }
 
     private static boolean tableExists(SQLiteDatabase db, String table) {
