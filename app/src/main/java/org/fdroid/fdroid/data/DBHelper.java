@@ -360,27 +360,33 @@ class DBHelper extends SQLiteOpenHelper {
         addObbFiles(db, oldVersion);
     }
 
-    /**
-     * For upgrades from earlier than 63, this is created in
-     * {@link #resetTransient(SQLiteDatabase)} in
-     * {@link #migrateToPackageTable(SQLiteDatabase, int)}, so it only needs
-     * to run when the database is at version 63.
-     */
     private void addObbFiles(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion != 63) {
+        if (oldVersion >= 64) {
             return;
         }
-        Utils.debugLog(TAG, "Adding " + ApkTable.Cols.OBB_MAIN_FILE
-                + ", " + ApkTable.Cols.OBB_PATCH_FILE
-                + ", and hash columns to " + ApkTable.NAME);
-        db.execSQL("alter table " + ApkTable.NAME + " add column "
-                + ApkTable.Cols.OBB_MAIN_FILE + " string");
-        db.execSQL("alter table " + ApkTable.NAME + " add column "
-                + ApkTable.Cols.OBB_MAIN_FILE_SHA256 + " string");
-        db.execSQL("alter table " + ApkTable.NAME + " add column "
-                + ApkTable.Cols.OBB_PATCH_FILE + " string");
-        db.execSQL("alter table " + ApkTable.NAME + " add column "
-                + ApkTable.Cols.OBB_PATCH_FILE_SHA256 + " string");
+
+        Utils.debugLog(TAG, "Ensuring " + ApkTable.Cols.OBB_MAIN_FILE + ", " +
+                ApkTable.Cols.OBB_PATCH_FILE + ", and hash columns exist on " + ApkTable.NAME);
+
+        if (!columnExists(db, ApkTable.NAME, ApkTable.Cols.OBB_MAIN_FILE)) {
+            db.execSQL("alter table " + ApkTable.NAME + " add column "
+                    + ApkTable.Cols.OBB_MAIN_FILE + " string");
+        }
+
+        if (!columnExists(db, ApkTable.NAME, ApkTable.Cols.OBB_MAIN_FILE_SHA256)) {
+            db.execSQL("alter table " + ApkTable.NAME + " add column "
+                    + ApkTable.Cols.OBB_MAIN_FILE_SHA256 + " string");
+        }
+
+        if (!columnExists(db, ApkTable.NAME, ApkTable.Cols.OBB_PATCH_FILE)) {
+            db.execSQL("alter table " + ApkTable.NAME + " add column "
+                    + ApkTable.Cols.OBB_PATCH_FILE + " string");
+        }
+
+        if (!columnExists(db, ApkTable.NAME, ApkTable.Cols.OBB_PATCH_FILE_SHA256)) {
+            db.execSQL("alter table " + ApkTable.NAME + " add column "
+                    + ApkTable.Cols.OBB_PATCH_FILE_SHA256 + " string");
+        }
     }
 
     private void migrateToPackageTable(SQLiteDatabase db, int oldVersion) {
