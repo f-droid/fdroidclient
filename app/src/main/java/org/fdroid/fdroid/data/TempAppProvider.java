@@ -196,7 +196,7 @@ public class TempAppProvider extends AppProvider {
                 break;
         }
 
-        return super.runQuery(uri, selection, projection, true, sortOrder);
+        return super.runQuery(uri, selection, projection, true, sortOrder, 0);
     }
 
     private void ensureTempTableDetached(SQLiteDatabase db) {

@@ -89,6 +89,40 @@ public class CategoryProviderTest extends FDroidProviderTest {
     }
 
     @Test
+    public void topAppsFromCategory() {
+        insertAppWithCategory("com.dog", "Dog", "Animal");
+        insertAppWithCategory("com.cat", "Cat", "Animal");
+        insertAppWithCategory("com.bird", "Bird", "Animal");
+        insertAppWithCategory("com.snake", "Snake", "Animal");
+        insertAppWithCategory("com.rat", "Rat", "Animal");
+
+        insertAppWithCategory("com.rock", "Rock", "Mineral");
+        insertAppWithCategory("com.stone", "Stone", "Mineral");
+        insertAppWithCategory("com.boulder", "Boulder", "Mineral");
+
+        insertAppWithCategory("com.banana", "Banana", "Vegetable");
+        insertAppWithCategory("com.tomato", "Tomato", "Vegetable");
+
+        assertContainsOnly(topAppsFromCategory("Animal", 3), new String[] {"com.bird", "com.cat", "com.dog", });
+        assertContainsOnly(topAppsFromCategory("Animal", 2), new String[] {"com.bird", "com.cat", });
+        assertContainsOnly(topAppsFromCategory("Animal", 1), new String[] {"com.bird", });
+
+        assertContainsOnly(topAppsFromCategory("Mineral", 2), new String[] {"com.boulder", "com.rock", });
+
+        assertContainsOnly(topAppsFromCategory("Vegetable", 10), new String[] {"com.banana", "com.tomato", });
+    }
+
+    public String[] topAppsFromCategory(String category, int numToGet) {
+        List<App> apps = AppProvider.Helper.cursorToList(contentResolver.query(AppProvider.getTopFromCategoryUri(category, numToGet), Cols.ALL, null, null, Cols.NAME));
+        String[] packageNames = new String[apps.size()];
+        for (int i = 0; i < apps.size(); i++) {
+            packageNames[i] = apps.get(i).packageName;
+        }
+
+        return packageNames;
+    }
+
+    @Test
     public void testCategoriesSingle() {
         insertAppWithCategory("com.dog", "Dog", "Animal");
         insertAppWithCategory("com.rock", "Rock", "Mineral");

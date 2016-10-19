@@ -378,6 +378,7 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_HIGHEST_PRIORITY = "highestPriority";
     private static final String PATH_CALC_PREFERRED_METADATA = "calcPreferredMetadata";
     private static final String PATH_CALC_SUGGESTED_APKS = "calcNonRepoDetailsFromIndex";
+    private static final String PATH_TOP_FROM_CATEGORY = "topFromCategory";
 
     private static final int CAN_UPDATE = CODE_SINGLE + 1;
     private static final int INSTALLED = CAN_UPDATE + 1;
@@ -392,6 +393,7 @@ public class AppProvider extends FDroidProvider {
     private static final int SEARCH_CAN_UPDATE = SEARCH_INSTALLED + 1;
     private static final int HIGHEST_PRIORITY = SEARCH_CAN_UPDATE + 1;
     private static final int CALC_PREFERRED_METADATA = HIGHEST_PRIORITY + 1;
+    private static final int TOP_FROM_CATEGORY = CALC_PREFERRED_METADATA + 1;
 
     static {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
@@ -409,6 +411,7 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_HIGHEST_PRIORITY + "/*", HIGHEST_PRIORITY);
         MATCHER.addURI(getAuthority(), PATH_SPECIFIC_APP + "/#/*", CODE_SINGLE);
         MATCHER.addURI(getAuthority(), PATH_CALC_PREFERRED_METADATA, CALC_PREFERRED_METADATA);
+        MATCHER.addURI(getAuthority(), PATH_TOP_FROM_CATEGORY + "/#/*", TOP_FROM_CATEGORY);
     }
 
     public static Uri getContentUri() {
@@ -429,9 +432,17 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getCategoryUri(String category) {
         return getContentUri().buildUpon()
-            .appendPath(PATH_CATEGORY)
-            .appendPath(category)
-            .build();
+                .appendPath(PATH_CATEGORY)
+                .appendPath(category)
+                .build();
+    }
+
+    public static Uri getTopFromCategoryUri(String category, int limit) {
+        return getContentUri().buildUpon()
+                .appendPath(PATH_TOP_FROM_CATEGORY)
+                .appendPath(Integer.toString(limit))
+                .appendPath(category)
+                .build();
     }
 
     public static Uri getInstalledUri() {
@@ -702,6 +713,8 @@ public class AppProvider extends FDroidProvider {
         // querying from.
         boolean repoIsKnown = false;
 
+        int limit = 0;
+
         switch (MATCHER.match(uri)) {
             case CALC_PREFERRED_METADATA:
                 updatePreferredMetadata();
@@ -761,6 +774,13 @@ public class AppProvider extends FDroidProvider {
                 includeSwap = false;
                 break;
 
+            case TOP_FROM_CATEGORY:
+                List<String> parts = uri.getPathSegments();
+                selection = selection.add(queryCategory(parts.get(2)));
+                limit = Integer.parseInt(parts.get(1));
+                includeSwap = false;
+                break;
+
             case RECENTLY_UPDATED:
                 sortOrder = getTableName() + "." + Cols.LAST_UPDATED + " DESC";
                 selection = selection.add(queryRecentlyUpdated());
@@ -787,14 +807,14 @@ public class AppProvider extends FDroidProvider {
             selection = selection.add(queryHighestPriority());
         }
 
-        return runQuery(uri, selection, projection, includeSwap, sortOrder);
+        return runQuery(uri, selection, projection, includeSwap, sortOrder, limit);
     }
 
     /**
      * Helper method used by both the genuine {@link AppProvider} and the temporary version used
      * by the repo updater ({@link TempAppProvider}).
      */
-    protected Cursor runQuery(Uri uri, AppQuerySelection selection, String[] projection, boolean includeSwap, String sortOrder) {
+    protected Cursor runQuery(Uri uri, AppQuerySelection selection, String[] projection, boolean includeSwap, String sortOrder, int limit) {
         if (!includeSwap) {
             selection = selection.add(queryExcludeSwap());
         }
@@ -807,6 +827,7 @@ public class AppProvider extends FDroidProvider {
         query.addSelection(selection);
         query.addFields(projection); // TODO: Make the order of addFields/addSelection not dependent on each other...
         query.addOrderBy(sortOrder);
+        query.addLimit(limit);
 
         Cursor cursor = LoggingQuery.query(db(), query.toString(), query.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
