@@ -161,10 +161,10 @@ public class TempAppProvider extends AppProvider {
         // Package names for apps cannot change...
         values.remove(Cols.Package.PACKAGE_NAME);
 
-        if (values.containsKey(Cols.Categories.CATEGORIES)) {
-            String[] categories = Utils.parseCommaSeparatedString(values.getAsString(Cols.Categories.CATEGORIES));
+        if (values.containsKey(Cols.ForWriting.Categories.CATEGORIES)) {
+            String[] categories = Utils.parseCommaSeparatedString(values.getAsString(Cols.ForWriting.Categories.CATEGORIES));
             ensureCategories(categories, packageName, repoId);
-            values.remove(Cols.Categories.CATEGORIES);
+            values.remove(Cols.ForWriting.Categories.CATEGORIES);
         }
 
         int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());

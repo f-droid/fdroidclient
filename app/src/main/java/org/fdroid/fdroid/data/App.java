@@ -503,7 +503,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVersionCode);
         values.put(Cols.UPSTREAM_VERSION_NAME, upstreamVersionName);
         values.put(Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
-        values.put(Cols.Categories.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
+        values.put(Cols.ForWriting.Categories.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
         values.put(Cols.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
         values.put(Cols.REQUIREMENTS, Utils.serializeCommaSeparatedString(requirements));
         values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);

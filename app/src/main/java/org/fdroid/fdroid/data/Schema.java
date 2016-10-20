@@ -158,8 +158,15 @@ public interface Schema {
                 String PACKAGE_NAME = "package_packageName";
             }
 
-            interface Categories {
-                String CATEGORIES = "categories_commaSeparatedCateogryNames";
+            /**
+             * This is to make it explicit that you cannot request the {@link Categories#CATEGORIES}
+             * field when selecting app metadata from the database. It is only here for the purpose
+             * of inserting/updating apps.
+             */
+            interface ForWriting {
+                interface Categories {
+                    String CATEGORIES = "categories_commaSeparatedCateogryNames";
+                }
             }
 
             /**
@@ -189,7 +196,7 @@ public interface Schema {
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
-                    InstalledApp.SIGNATURE, Package.PACKAGE_NAME, Categories.CATEGORIES,
+                    InstalledApp.SIGNATURE, Package.PACKAGE_NAME,
             };
         }
     }

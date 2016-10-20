@@ -154,7 +154,7 @@ public class CategoryProviderTest extends FDroidProviderTest {
 
     private void insertAppWithCategory(String id, String name, String categories) {
         ContentValues values = new ContentValues(1);
-        values.put(Cols.Categories.CATEGORIES, categories);
+        values.put(Cols.ForWriting.Categories.CATEGORIES, categories);
         AppProviderTest.insertApp(contentResolver, context, id, name, values);
     }
 }

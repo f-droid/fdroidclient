@@ -310,9 +310,6 @@ public class AppProvider extends FDroidProvider {
                 case Cols._COUNT:
                     appendCountField();
                     break;
-                case Cols.Categories.CATEGORIES:
-                    appendCategoriesField();
-                    break;
                 default:
                     appendField(field, getTableName());
                     break;
@@ -339,10 +336,6 @@ public class AppProvider extends FDroidProvider {
                         getTableName() + "." + Cols.SUGGESTED_VERSION_CODE + " = suggestedApk." + ApkTable.Cols.VERSION_CODE + " AND " + getTableName() + "." + Cols.ROW_ID + " = suggestedApk." + ApkTable.Cols.APP_ID);
             }
             appendField(fieldName, "suggestedApk", alias);
-        }
-
-        private void appendCategoriesField() {
-            appendField("GROUP_CONCAT(" + CategoryTable.NAME + "." + CategoryTable.Cols.NAME + ")", null, Cols.Categories.CATEGORIES);
         }
 
         private void addInstalledAppVersionName() {
@@ -862,12 +855,12 @@ public class AppProvider extends FDroidProvider {
 
         String[] categories = null;
         boolean saveCategories = false;
-        if (values.containsKey(Cols.Categories.CATEGORIES)) {
+        if (values.containsKey(Cols.ForWriting.Categories.CATEGORIES)) {
             // Hold onto these categories, so that after we have an ID to reference the newly inserted
             // app metadata we can then specify its categories.
             saveCategories = true;
-            categories = Utils.parseCommaSeparatedString(values.getAsString(Cols.Categories.CATEGORIES));
-            values.remove(Cols.Categories.CATEGORIES);
+            categories = Utils.parseCommaSeparatedString(values.getAsString(Cols.ForWriting.Categories.CATEGORIES));
+            values.remove(Cols.ForWriting.Categories.CATEGORIES);
         }
 
         long appMetadataId = db().insertOrThrow(getTableName(), null, values);
