@@ -367,4 +367,6 @@ corréu colos detalles p\'ayudar a iguar esti problema?</string>
 
     <string name="update_auto_install_summary">Baxa ya instala de fondu anovamientos d\'aplicaciones</string>
     <string name="update_auto_install">Instalar automáticamente anovamientos</string>
+    <string name="keep_install_history">Caltener historial d\'instalación</string>
+    <string name="keep_install_history_summary">Atroxa un rexistru de les instalaciones y desinstalaciones dientro de F-Droid</string>
     </resources>
