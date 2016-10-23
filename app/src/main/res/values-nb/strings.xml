@@ -130,13 +130,19 @@
   <string name="repo_description">Beskrivelse</string>
   <string name="repo_last_update">Siste oppdatering</string>
   <string name="repo_name">Navn</string>
-  <string name="unsigned_description">Dette betyr at programlisten ikke kunne bekreftes. Du bør være forsiktig med programmer lastet ned fra usignerte lister.</string>
-  <string name="repo_not_yet_updated">Denne pakkebrønnen har ikke blitt tatt i bruk enda. Du må skru det på for å se programmene den tilbyr.</string>
+  <string name="unsigned_description">Dette betyr at programlisten
+ikke kunne bekreftes. Du bør være forsiktig
+med programmer lastet ned fra usignerte lister.</string>
+  <string name="repo_not_yet_updated">Denne pakkebrønnen har ikke blitt tatt i bruk enda.
+Du må skru det på for å se programmene den tilbyr.</string>
   <string name="unknown">Ukjent</string>
   <string name="repo_confirm_delete_title">Slett pakkebrønn?</string>
   <string name="repo_confirm_delete_body">Sletting av en pakkebrønn betyr at programmer derfra ikke lenger vil være tilgjengelige i F-droid.
 \n\nMerk: Alle tidligere installerte programmer vil fremdeles være å finne på din enhet.</string>
-  <string name="repo_disabled_notification">Avskrudd \"%1$s\".\n\nDu må skru på denne pakkebrønnen igjen for å installere programmer fra den.</string>
+  <string name="repo_disabled_notification">Avskrudd \"%1$s\".
+
+Du må
+skru på denne pakkebrønnen igjen for å installere programmer fra den.</string>
   <string name="repo_added">Lagret F-Droid-pakkebrønnen %1$s.</string>
   <string name="repo_searching_address">Ser etter F-Droid-pakkebrønn på\n%1$s</string>
   <string name="minsdk_or_later">%s eller senere</string>
@@ -233,7 +239,7 @@
     <string name="bluetooth_unavailable">Blåtann utilgjengelig</string>
     <string name="swap_cant_send_no_bluetooth">Kan ikke sende F-Droid siden Blåtann ikke er tilgjengelig på denne enheten.</string>
     <string name="loading">Laster inn…</string>
-    <string name="install_confirm">Ønsker du å installere dette programmet? Du får tilgang til:</string>
+    <string name="install_confirm">tilgang til</string>
     <string name="newPerms">Ny</string>
     <string name="allPerms">Alle</string>
     <string name="perm_costs_money">Dette kan koste penger</string>
@@ -293,10 +299,18 @@
     <string name="swap_not_enabled">Sirkulering ikke påskrudd</string>
     <string name="swap_not_enabled_description">Før sirkulering må din enhet være i synlig modus.</string>
 
-    <string name="install_confirm_update">Ønsker du å installere en oppdatering til dette eksisterende programmet? Dataen du har vil ikke gå tapt. Det oppdaterte programmet vil ha tilgang til:</string>
-    <string name="install_confirm_update_system">Ønsker du å installere en oppdatering til dette innebygde programmet? Dataen din vil ikke gå tapt. Det oppdaterte programmet vil ha tilgang til:</string>
-    <string name="install_confirm_update_no_perms">Ønsker du å installere en oppdatering til dette eksisterende programmet? Dataen din vil ikke gå tapt. Det krever ingen spesiell tilgang.</string>
-    <string name="install_confirm_update_system_no_perms">Ønsker du å installere en oppdatering til dette innebygde programmet? Dataen din vil ikke gå tapt. Det krever ingen spesiell tilgang.</string>
+    <string name="install_confirm_update">Ønsker du å installere en oppdatering
+til dette eksisterende programmet? Dataen du har vil ikke
+gå tapt. Det oppdaterte programmet vil ha tilgang til:</string>
+    <string name="install_confirm_update_system">Ønsker du å installere en oppdatering
+til dette innebygde programmet? Dataen din vil ikke
+gå tapt. Det oppdaterte programmet vil ha tilgang til:</string>
+    <string name="install_confirm_update_no_perms">Ønsker du å installere en oppdatering
+til dette eksisterende programmet? Dataen din vil ikke
+gå tapt. Det krever ingen spesiell tilgang.</string>
+    <string name="install_confirm_update_system_no_perms">Ønsker du å installere en oppdatering 
+til dette innebygde programmet? Dataen din vil ikke
+gå tapt. Det krever ingen spesiell tilgang.</string>
     <string name="theme_night">Nattsvart</string>
 <string name="login_name">Brukernavn</string>
     <string name="login_password">Passord</string>
@@ -314,7 +328,9 @@
     <string name="empty_search_can_update_app_list">Ingen samsvarende programmer for oppdatering.</string>
 
     <string name="crash_dialog_title">F-Droid har kræsjet</string>
-    <string name="crash_dialog_text">Uventet feil forårsaket stopp av programmet. Ønsker du å sende detaljer om dette i en e-post for å fikse problemet?</string>
+    <string name="crash_dialog_text">Uventet feil forårsaket 
+stopp av programmet. Ønsker du å sende detaljer om dette
+i en e-post for å fikse problemet?</string>
     <string name="crash_dialog_comment_prompt">Du kan legge til ekstra informasjon og kommentarer her:</string>
 <string name="antinonfreeassetslist">Dette programmet inneholder ufrie gjenstander</string>
 
@@ -349,4 +365,10 @@
 
     <string name="system_install_not_supported">Installasjon av priviligert tillegg for F-droid er for tiden ikke støttet på Android 5.1 eller senere.</string>
 
+    <string name="keep_install_history">Behold installasjonshistorikk</string>
+    <string name="keep_install_history_summary">Behold loggføring for alle av- og in -stalleringer gjort i F-droid</string>
+    <string name="update_auto_install">Installer oppdateringer automatisk</string>
+    <string name="update_auto_install_summary">Last ned og installer programoppdateringer i bakgrunnen</string>
+    <string name="hide_anti_feature_apps">Utgråing av programmer med anti-funksjoner</string>
+    <string name="hide_anti_feature_apps_on">Utgråing av programmer som krever anti-funksjoner</string>
     </resources>

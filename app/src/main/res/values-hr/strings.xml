@@ -8,7 +8,7 @@
     <string name="by_author">od</string>
     <string name="delete">Obriši</string>
     <string name="enable_nfc_send">Omogući NFC slanje…</string>
-    <string name="cache_downloaded">Zadrži keširane aplikacije</string>
+    <string name="cache_downloaded">Zadrži privremene aplikacije</string>
     <string name="updates">Ažuriranja</string>
     <string name="unstable_updates">Nestabilna ažuriranja</string>
     <string name="unstable_updates_summary">Predloži ažuriranja za nestabilne verzije</string>
@@ -101,7 +101,7 @@
     <string name="menu_manage">Repozitoriji</string>
     <string name="menu_send_apk_bt">Podjeli F-Droid preko Bluetootha</string>
     <string name="menu_settings">Postavke</string>
-    <string name="menu_about">O</string>
+    <string name="menu_about">O aplikaciji</string>
     <string name="menu_search">Traži</string>
     <string name="menu_add_repo">Novi repozitorij</string>
 
@@ -194,12 +194,22 @@
     <string name="repo_description">Opis</string>
     <string name="repo_last_update">Posljednje ažuriranje</string>
     <string name="repo_name">Ime</string>
-    <string name="unsigned_description">Ovo znači da popis aplikacija nije mogao biti verificiran. Trebali bi biti oprezni s aplikacijama preuzetim sa nepotpisanih indeksa.</string>
-    <string name="repo_not_yet_updated">Ovaj repozitorij nije do sad bio korišten. Morate ga omogućiti kako bi vidjeli aplikacije na njemu.</string>
+    <string name="unsigned_description">Ovo znači da popis
+aplikacija nije mogao biti provjeren. Trebali bi biti oprezni
+ s aplikacijama preuzetim sa nepotpisanih indeksa.</string>
+    <string name="repo_not_yet_updated">Ovaj repozitorij nije do sad bio korišten.
+Morate ga omogućiti kako bi vidjeli aplikacije na njemu.</string>
     <string name="unknown">Nepoznato</string>
     <string name="repo_confirm_delete_title">Obrisati repozitorij?</string>
-    <string name="repo_confirm_delete_body">Brisanje repozitorija znači da aplikacije sa njega više neće bit dostupne kroz F-Droid.\n\nNapomena: Sve instalirane aplikacije će ostati na Vašem uređaju.</string>
-    <string name="repo_disabled_notification">Onemogućeno %1$s.\n\nMorate ponovno omogućiti repozitorij kako bi instalirali aplikacije iz njega.</string>
+    <string name="repo_confirm_delete_body">Brisanje repozitorija znači da
+aplikacije iz njega više neće biti dostupne kroz F-Droid.
+
+Napomena: Sve
+instalirane aplikacije će ostati na Vašem uređaju.</string>
+    <string name="repo_disabled_notification">Onemogućeno %1$s.
+
+Morat će te
+ponovno omogućiti repozitorij kako bi instalirali aplikacije iz njega.</string>
     <string name="repo_added">Spremljen F-Droid repozitorij %1$s.</string>
     <string name="repo_searching_address">Tražim F-Drroid repozitorij na\n%1$s</string>
     <string name="minsdk_or_later">%s ili kasnije</string>
@@ -313,7 +323,9 @@
     <string name="tap_to_install_format">Dodirnite za instalaciju %s</string>
     <string name="tap_to_update_format">Dodirnite za ažuriranje %s</string>
     <string name="install_confirm">treba pristup</string>
-    <string name="install_confirm_update">Želite li instalirati ažuriranje na ovu postojeću aplikaciju? Vaši podaci neće biti izgubljeni. Ažurirana aplikacija će imati pristup:</string>
+    <string name="install_confirm_update">Želite li instalirati ažuriranje
+na ovu postojeću aplikaciju? Vaši podaci neće
+biti izgubljeni. Ažurirana aplikacija će imati pristup:</string>
     <string name="install_confirm_update_system">Želite li instalirati ažuriranje na ovu ugrađenu aplikaciju? Vaši podaci neće biti izgubljeni. Ažurirana aplikacija će imati pristup:</string>
     <string name="install_confirm_update_no_perms">Želite li instalirati ažuriranje na ovu postojeću aplikaciju? Vaši podaci neće biti izgubljeni. Ne zahtijeva posebne dozvole.</string>
     <string name="install_confirm_update_system_no_perms">Želite li instalirati ažuriranje na ovu ugrađenu aplikaciju? Vaši podaci neće biti izgubljeni. Ne zahtijeva posebne dozvole.</string>
@@ -358,4 +370,8 @@
     <string name="crash_dialog_title">F-Droid se srušio</string>
     <string name="crash_dialog_text">Neočekivana greška prilikom prisilnog zaustavljanja aplikacije. Želite li poslati detalje kvara putem e-maila kako bi ga popravili?</string>
     <string name="crash_dialog_comment_prompt">Možete dodati dodatne informacije i komentare ovdje:</string>
-</resources>
+<string name="keep_install_history">Zadrži povijest instalacija</string>
+    <string name="update_auto_install">Automatski instaliraj ažuriranja</string>
+    <string name="update_auto_install_summary">Preuzmi i instaliraj ažuriranja aplikacija u pozadini</string>
+    <string name="keep_install_history_summary">Spremi zapisnik o svim instalacijama aplikacija unutar F-Droida</string>
+    </resources>

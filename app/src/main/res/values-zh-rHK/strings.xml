@@ -109,7 +109,10 @@
   <string name="repo_name">名稱</string>
   <string name="unknown">未知</string>
   <string name="repo_confirm_delete_title">刪除軟件倉庫？</string>
-  <string name="repo_disabled_notification">已停用 %1$s。\n\n您需重新啟用此軟件倉庫才能安裝其中的應用程式。</string>
+  <string name="repo_disabled_notification">已停用 %1$s。
+
+您需要
+重新啟用此軟件倉庫才能安裝其中的應用程式。</string>
   <string name="repo_added">已儲存 F-Droid 軟件倉庫 %1$s。</string>
   <string name="repo_searching_address">在 %1$s\n搜索 F-Droid 軟件倉庫</string>
   <string name="minsdk_or_later">%s 或以後</string>
@@ -149,7 +152,11 @@
     <string name="menu_changelog">更新日誌</string>
     <string name="update_notification_title">正在更新軟件倉庫</string>
     <string name="no_handler_app">您沒有任何應用程式可以開啟 %s。</string>
-    <string name="repo_confirm_delete_body">軟件倉庫被刪除後，倉庫中的應用程式將不會在 F-Droid 出現。\n\n註：之前所安裝的應用程式均會保留在您的裝置上。</string>
+    <string name="repo_confirm_delete_body">軟件倉庫被刪除後，
+倉庫中的應用程式將不會在 F-Droid 出現。
+
+註：之前
+所安裝的應用程式均會保留在您的裝置上。</string>
     <string name="pref_language">語言</string>
     <string name="pref_language_default">系統預設</string>
 
@@ -212,9 +219,15 @@
 
     <string name="status_download">正在從 %1$s\n下載\n%2$s / %3$s (%4$d%%)</string>
     <string name="install_confirm">需要存取權</string>
-    <string name="install_confirm_update">您想更新此應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
-    <string name="install_confirm_update_system">您想更新此內置的應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
-    <string name="install_confirm_update_system_no_perms">您想更新此應用程式嗎？您不會失去現有的數據。已更新的程式不需要任何特別的存取權。</string>
+    <string name="install_confirm_update">您想更新此應用程式嗎？
+您不會失去現有的數據。
+已更新的程式需要以下的存取權：</string>
+    <string name="install_confirm_update_system">您想更新此內置的應用程式嗎？
+您不會失去現有的數據。
+已更新的程式需要以下的存取權：</string>
+    <string name="install_confirm_update_system_no_perms">您想更新此應用程式嗎？
+您不會失去現有的數據，
+已更新的程式亦不需要任何特別的存取權。</string>
     <string name="update_notification_more">還有 +%1$d 個…</string>
     <string name="next">下一步</string>
     <string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
@@ -273,7 +286,8 @@
 
     <string name="linking_apks">正在連接 APK 檔至軟件倉庫…</string>
     <string name="status_processing_xml_percent">正在從 %1$s\n處理 %2$s / %3$s (%4$d%%)</string>
-    <string name="repo_not_yet_updated">此軟件倉庫還未被啟用。您先需要啟用倉庫才可以檢視其中的應用程式。</string>
+    <string name="repo_not_yet_updated">此軟件倉庫還未被啟用。
+您先需要啟用倉庫才可以檢視其中的應用程式。</string>
     <string name="system_install_button_install">安裝</string>
     <string name="system_install_button_open">開啟套件</string>
     <string name="system_install_post_success">成功安裝 F-Droid 系統權限套件</string>
@@ -310,9 +324,13 @@
     <string name="antinonfreeassetslist">此應用程式含有非自由的資源</string>
 
     <string name="system_install_post_fail_message">F-Droid 系統權限套件安裝失敗。此安裝方式並不支援所有的 Android 版本，請參見 F-Droid 的 bug tracker 以取得更多資訊。</string>
-    <string name="install_confirm_update_no_perms">您是否要更新此應用程式？您不會遺失現有的資料，也不需要提供任何特別權限。</string>
+    <string name="install_confirm_update_no_perms">您是否要更新此應用程式？
+您不會遺失現有的資料，
+也不需要提供任何特別權限。</string>
     <string name="uninstall_update_confirm">你確定要原始版本取代此應用程式嗎？</string>
-    <string name="crash_dialog_text">因發生了未預料到的錯誤，應用程式已停止運作。您願意透過電郵提供關於問題的更多資料嗎？</string>
+    <string name="crash_dialog_text">因發生了未預料到的錯誤，
+應用程式已停止運作。您願意透過電郵
+提供關於問題的更多資料嗎？</string>
     <string name="repo_fingerprint">鑰匙指紋 (SHA-256)</string>
     <string name="writing_index_jar">正在寫入已簽署的目錄檔案 (index.jar)…</string>
     <string name="rooted_on">不要以灰字顯示需要 root 權限的應用程式</string>
@@ -320,7 +338,9 @@
     <string name="update_history_summ">在 %s 天內添置於目錄的程式方可算為「最新」</string>
     <string name="repo_exists_add_fingerprint">由於此倉庫已經設置好，此動作將會加入新的鑰匙數據。</string>
     <string name="menu_email">電郵作者</string>
-    <string name="unsigned_description">這表示應用程式清單不可被驗證。您要小心使用來自未簽署的索引的應用程式。</string>
+    <string name="unsigned_description">這表示應用程式清單
+不可被驗證。您要小心使用
+來自未簽署的索引的應用程式。</string>
     <string name="useTor">使用 Tor</string>
     <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
     <string name="by_author">作者為</string>
@@ -349,4 +369,8 @@
     <string name="keep_year">一年</string>
     <string name="keep_forever">永遠</string>
 
+    <string name="keep_install_history">保留安裝紀錄</string>
+    <string name="keep_install_history_summary">在 F-Droid 中儲存所有安裝及卸載的紀錄</string>
+    <string name="update_auto_install">自動安裝更新</string>
+    <string name="update_auto_install_summary">在背景下載及安裝應用程式更新</string>
     </resources>
