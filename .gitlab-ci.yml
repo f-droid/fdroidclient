@@ -1,4 +1,4 @@
-image: fdroid/ci:client-20160927
+image: fdroid/ci:client-20161023
 
 cache:
   paths:
@@ -6,13 +6,9 @@ cache:
     - .gradle/caches
 
 before_script:
-  - mkdir "$ANDROID_SDK/licenses" || true 
-  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_SDK/licenses/android-sdk-license"
-  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_SDK/licenses/android-sdk-preview-license"
   - export GRADLE_USER_HOME=$PWD/.gradle
   - printf 'y\n\n' | android --verbose update sdk --no-ui
      --filter extra-android-m2repository
-  - printf 'y\n\n' | android update sdk --no-ui --all
 
 test:
   script:
