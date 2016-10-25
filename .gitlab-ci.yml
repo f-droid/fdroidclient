@@ -12,7 +12,7 @@ before_script:
   - export GRADLE_USER_HOME=$PWD/.gradle
   - printf 'y\n\n' | android --verbose update sdk --no-ui
      --filter extra-android-m2repository
-  - printf 'y\n\n' | android update sdk --no-ui --all --filter "extra-android-support"
+  - printf 'y\n\n' | android update sdk --no-ui --all
 
 test:
   script:
