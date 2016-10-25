@@ -216,7 +216,7 @@ public class AppProvider extends FDroidProvider {
 
     }
 
-    private class Query extends QueryBuilder {
+    protected class Query extends QueryBuilder {
 
         private boolean isSuggestedApkTableAdded;
         private boolean requiresInstalledTable;
@@ -230,7 +230,7 @@ public class AppProvider extends FDroidProvider {
             final String apk  = getApkTableName();
             final String repo = RepoTable.NAME;
             final String cat  = CategoryTable.NAME;
-            final String catJoin = CatJoinTable.NAME;
+            final String catJoin = getCatJoinTableName();
 
             return pkg +
                 " JOIN " + app + " ON (" + app + "." + Cols.PACKAGE_ID + " = " + pkg + "." + PackageTable.Cols.ROW_ID + ") " +

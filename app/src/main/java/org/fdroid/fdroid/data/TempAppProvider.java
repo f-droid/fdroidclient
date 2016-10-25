@@ -175,8 +175,10 @@ public class TempAppProvider extends AppProvider {
     }
 
     private void ensureCategories(String[] categories, String packageName, long repoId) {
-        QuerySelection forId = querySingle(packageName, repoId);
-        Cursor cursor = db().query(getTableName(), new String[] {Cols.ROW_ID}, forId.getSelection(), forId.getArgs(), null, null, null);
+        Query query = new AppProvider.Query();
+        query.addField(Cols.ROW_ID);
+        query.addSelection(querySingle(packageName, repoId));
+        Cursor cursor = db().rawQuery(query.toString(), query.getArgs());
         cursor.moveToFirst();
         long appMetadataId = cursor.getLong(0);
         cursor.close();
