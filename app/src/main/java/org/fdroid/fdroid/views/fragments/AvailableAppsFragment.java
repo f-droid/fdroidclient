@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.fragments;
+package org.belmarket.shop.views.fragments;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,14 +20,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.ArrayAdapterCompat;
-import org.fdroid.fdroid.compat.CursorAdapterCompat;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.views.AppListAdapter;
-import org.fdroid.fdroid.views.AvailableAppListAdapter;
+import org.belmarket.shop.Preferences;
+import org.belmarket.shop.R;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.compat.ArrayAdapterCompat;
+import org.belmarket.shop.compat.CursorAdapterCompat;
+import org.belmarket.shop.data.AppProvider;
+import org.belmarket.shop.views.AppListAdapter;
+import org.belmarket.shop.views.AvailableAppListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

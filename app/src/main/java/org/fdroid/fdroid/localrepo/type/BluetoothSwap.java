@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.localrepo.type;
+package org.belmarket.shop.localrepo.type;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
@@ -9,9 +9,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.localrepo.SwapService;
-import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.localrepo.SwapService;
+import org.belmarket.shop.net.bluetooth.BluetoothServer;
 
 public final class BluetoothSwap extends SwapType {
 

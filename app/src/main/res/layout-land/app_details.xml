@@ -23,14 +23,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/header"
-                android:name="org.fdroid.fdroid.AppDetails$AppDetailsHeaderFragment"
+                android:name="org.belmarket.shop.AppDetails$AppDetailsHeaderFragment"
                 tools:layout="@layout/app_details_header"/>
 
             <fragment
                 android:id="@+id/fragment_app_summary"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:name="org.fdroid.fdroid.AppDetails$AppDetailsSummaryFragment"
+                android:name="org.belmarket.shop.AppDetails$AppDetailsSummaryFragment"
                 tools:layout="@layout/app_details_summary"/>
 
         </LinearLayout>
@@ -42,6 +42,6 @@
         android:layout_width="0px"
         android:layout_weight="0.5"
         android:layout_height="wrap_content"
-        android:name="org.fdroid.fdroid.AppDetails$AppDetailsListFragment"/>
+        android:name="org.belmarket.shop.AppDetails$AppDetailsListFragment"/>
 
 </LinearLayout>

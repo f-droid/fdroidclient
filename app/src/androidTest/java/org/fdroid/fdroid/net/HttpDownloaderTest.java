@@ -1,7 +1,7 @@
 
-package org.fdroid.fdroid.net;
+package org.belmarket.shop.net;
 
-import org.fdroid.fdroid.ProgressListener;
+import org.belmarket.shop.ProgressListener;
 import org.junit.Test;
 
 import java.io.File;

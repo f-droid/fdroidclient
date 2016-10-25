@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.belmarket.shop.installer;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -28,7 +28,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.view.ContextThemeWrapper;
 
-import org.fdroid.fdroid.FDroidApp;
+import org.belmarket.shop.FDroidApp;
 
 public class ErrorDialogActivity extends FragmentActivity {
 

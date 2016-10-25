@@ -1,14 +1,14 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.localrepo.peers.WifiPeer;
-import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
+import org.belmarket.shop.R;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.localrepo.peers.WifiPeer;
+import org.belmarket.shop.views.swap.SwapWorkflowActivity;
 
 import java.util.Arrays;
 import java.util.Locale;

@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -16,10 +16,10 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.apache.commons.io.filefilter.RegexFileFilter;
-import org.fdroid.fdroid.AppFilter;
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.belmarket.shop.AppFilter;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Schema.AppMetadataTable.Cols;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 

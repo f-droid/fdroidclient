@@ -18,7 +18,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.belmarket.shop.installer;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -31,8 +31,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.Apk;
+import org.belmarket.shop.R;
+import org.belmarket.shop.data.Apk;
 
 /**
  * A transparent activity as a wrapper around Android's PackageInstaller Intents
@@ -40,8 +40,8 @@ import org.fdroid.fdroid.data.Apk;
 public class DefaultInstallerActivity extends FragmentActivity {
     private static final String TAG = "DefaultInstallerActivit";
 
-    static final String ACTION_INSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.INSTALL_PACKAGE";
-    static final String ACTION_UNINSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.UNINSTALL_PACKAGE";
+    static final String ACTION_INSTALL_PACKAGE = "org.belmarket.shop.installer.DefaultInstaller.action.INSTALL_PACKAGE";
+    static final String ACTION_UNINSTALL_PACKAGE = "org.belmarket.shop.installer.DefaultInstaller.action.UNINSTALL_PACKAGE";
 
     private static final int REQUEST_CODE_INSTALL = 0;
     private static final int REQUEST_CODE_UNINSTALL = 1;

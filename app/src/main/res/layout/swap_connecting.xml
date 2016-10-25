@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.views.swap.SwapConnecting
+<org.belmarket.shop.views.swap.SwapConnecting
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -46,4 +46,4 @@
             android:text="@string/back"
             tools:ignore="UnusedAttribute" />
 
-</org.fdroid.fdroid.views.swap.SwapConnecting>
+</org.belmarket.shop.views.swap.SwapConnecting>

@@ -1,11 +1,11 @@
-package org.fdroid.fdroid.net.bluetooth.httpish;
+package org.belmarket.shop.net.bluetooth.httpish;
 
 import android.util.Log;
 
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
-import org.fdroid.fdroid.net.bluetooth.FileDetails;
-import org.fdroid.fdroid.net.bluetooth.httpish.headers.Header;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.net.bluetooth.BluetoothConnection;
+import org.belmarket.shop.net.bluetooth.FileDetails;
+import org.belmarket.shop.net.bluetooth.httpish.headers.Header;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -87,7 +87,7 @@ public class Response {
 
     /**
      * Extracts meaningful headers from the response into a more useful and safe
-     * {@link org.fdroid.fdroid.net.bluetooth.FileDetails} object.
+     * {@link org.belmarket.shop.net.bluetooth.FileDetails} object.
      */
     public FileDetails toFileDetails() {
         FileDetails details = new FileDetails();

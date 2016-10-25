@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.localrepo.type;
+package org.belmarket.shop.localrepo.type;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.localrepo.SwapService;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.localrepo.SwapService;
 
 /**
  * There is lots of common functionality, and a common API among different communication protocols
@@ -53,9 +53,9 @@ public abstract class SwapType {
     protected void onStopped() { }
 
     /**
-     * Sends either a {@link org.fdroid.fdroid.localrepo.SwapService#EXTRA_STARTING},
-     * {@link org.fdroid.fdroid.localrepo.SwapService#EXTRA_STARTED} or
-     * {@link org.fdroid.fdroid.localrepo.SwapService#EXTRA_STOPPED} broadcast.
+     * Sends either a {@link org.belmarket.shop.localrepo.SwapService#EXTRA_STARTING},
+     * {@link org.belmarket.shop.localrepo.SwapService#EXTRA_STARTED} or
+     * {@link org.belmarket.shop.localrepo.SwapService#EXTRA_STOPPED} broadcast.
      */
     protected final void sendBroadcast(String extra) {
         if (getBroadcastAction() != null) {

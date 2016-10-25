@@ -21,7 +21,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -31,14 +31,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Schema.ApkTable;
-import org.fdroid.fdroid.data.Schema.PackageTable;
-import org.fdroid.fdroid.data.Schema.AppPrefsTable;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable;
-import org.fdroid.fdroid.data.Schema.InstalledAppTable;
-import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.belmarket.shop.R;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Schema.ApkTable;
+import org.belmarket.shop.data.Schema.PackageTable;
+import org.belmarket.shop.data.Schema.AppPrefsTable;
+import org.belmarket.shop.data.Schema.AppMetadataTable;
+import org.belmarket.shop.data.Schema.InstalledAppTable;
+import org.belmarket.shop.data.Schema.RepoTable;
 
 import java.util.ArrayList;
 import java.util.List;

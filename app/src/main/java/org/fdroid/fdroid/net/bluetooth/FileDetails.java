@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.net.bluetooth;
+package org.belmarket.shop.net.bluetooth;
 
 public class FileDetails {
 

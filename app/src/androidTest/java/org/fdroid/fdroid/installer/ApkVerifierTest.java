@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.belmarket.shop.installer;
 
 import android.app.Instrumentation;
 import android.net.Uri;
@@ -27,13 +27,13 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
-import org.fdroid.fdroid.AssetUtils;
-import org.fdroid.fdroid.RepoXMLHandler;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.FileCompatTest;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.mock.RepoDetails;
+import org.belmarket.shop.AssetUtils;
+import org.belmarket.shop.RepoXMLHandler;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.compat.FileCompatTest;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.Repo;
+import org.belmarket.shop.mock.RepoDetails;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

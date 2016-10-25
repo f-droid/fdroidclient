@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.swap;
+package org.belmarket.shop.views.swap;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -40,18 +40,18 @@ import android.widget.Toast;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable;
-import org.fdroid.fdroid.localrepo.SwapService;
-import org.fdroid.fdroid.net.Downloader;
-import org.fdroid.fdroid.net.DownloaderService;
+import org.belmarket.shop.R;
+import org.belmarket.shop.UpdateService;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.ApkProvider;
+import org.belmarket.shop.data.App;
+import org.belmarket.shop.data.AppProvider;
+import org.belmarket.shop.data.Repo;
+import org.belmarket.shop.data.Schema.AppMetadataTable;
+import org.belmarket.shop.localrepo.SwapService;
+import org.belmarket.shop.net.Downloader;
+import org.belmarket.shop.net.DownloaderService;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -132,7 +132,7 @@ public class SwapAppsView extends ListView implements
 
     private void pollForUpdates() {
         if (adapter.getCount() > 1 ||
-                (adapter.getCount() == 1 && !new App((Cursor) adapter.getItem(0)).packageName.equals("org.fdroid.fdroid"))) {
+                (adapter.getCount() == 1 && !new App((Cursor) adapter.getItem(0)).packageName.equals("org.belmarket.shop"))) {
             Utils.debugLog(TAG, "Not polling for new apps from swap repo, because we already have more than one.");
             return;
         }

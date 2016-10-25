@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.views.swap.ConfirmReceive xmlns:android="http://schemas.android.com/apk/res/android"
+<org.belmarket.shop.views.swap.ConfirmReceive xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -73,4 +73,4 @@
 
     </LinearLayout>
 
-</org.fdroid.fdroid.views.swap.ConfirmReceive>
+</org.belmarket.shop.views.swap.ConfirmReceive>

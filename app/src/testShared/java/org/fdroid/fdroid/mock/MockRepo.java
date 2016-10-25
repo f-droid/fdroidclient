@@ -1,6 +1,6 @@
-package org.fdroid.fdroid.mock;
+package org.belmarket.shop.mock;
 
-import org.fdroid.fdroid.data.Repo;
+import org.belmarket.shop.data.Repo;
 
 public class MockRepo extends Repo {
 

@@ -1,4 +1,4 @@
-package org.fdroid.fdroid;
+package org.belmarket.shop;
 
 import android.app.AlarmManager;
 import android.app.IntentService;
@@ -10,7 +10,7 @@ import android.os.Process;
 import android.os.SystemClock;
 
 import org.apache.commons.io.FileUtils;
-import org.fdroid.fdroid.installer.ApkCache;
+import org.belmarket.shop.installer.ApkCache;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -78,7 +78,7 @@ public class CleanCacheService extends IntentService {
     }
 
     /**
-     * {@link org.fdroid.fdroid.installer.Installer} instances copy the APK into
+     * {@link org.belmarket.shop.installer.Installer} instances copy the APK into
      * a safe place before installing.  It doesn't clean up them reliably yet.
      */
     private void deleteOldInstallerFiles() {
@@ -109,7 +109,7 @@ public class CleanCacheService extends IntentService {
      * after the SD card becomes available).
      * <p>
      * This also deletes temp files that are created by
-     * {@link org.fdroid.fdroid.net.DownloaderFactory#create(Context, String)}, e.g. "dl-*"
+     * {@link org.belmarket.shop.net.DownloaderFactory#create(Context, String)}, e.g. "dl-*"
      */
     private void deleteStrayIndexFiles() {
         File cacheDir = getCacheDir();

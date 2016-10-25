@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.net;
+package org.belmarket.shop.net;
 
 import android.app.IntentService;
 import android.content.Context;
@@ -12,12 +12,12 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.apache.commons.net.util.SubnetUtils;
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
-import org.fdroid.fdroid.localrepo.LocalRepoManager;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.Preferences;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Repo;
+import org.belmarket.shop.localrepo.LocalRepoKeyStore;
+import org.belmarket.shop.localrepo.LocalRepoManager;
 
 import java.net.Inet6Address;
 import java.net.InetAddress;
@@ -32,7 +32,7 @@ import java.util.Locale;
  * Handle state changes to the device's wifi, storing the required bits.
  * The {@link Intent} that starts it either has no extras included,
  * which is how it can be triggered by code, or it came in from the system
- * via {@link  org.fdroid.fdroid.receiver.WifiStateChangeReceiver}, in
+ * via {@link  org.belmarket.shop.receiver.WifiStateChangeReceiver}, in
  * which case an instance of {@link NetworkInfo} is included.
  *
  * The work is done in a {@link Thread} so that new incoming {@code Intents}
@@ -44,7 +44,7 @@ import java.util.Locale;
 public class WifiStateChangeService extends IntentService {
     private static final String TAG = "WifiStateChangeService";
 
-    public static final String BROADCAST = "org.fdroid.fdroid.action.WIFI_CHANGE";
+    public static final String BROADCAST = "org.belmarket.shop.action.WIFI_CHANGE";
 
     private WifiManager wifiManager;
     private static WifiInfoThread wifiInfoThread;

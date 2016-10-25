@@ -1,4 +1,4 @@
-package org.fdroid.fdroid;
+package org.belmarket.shop;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -24,7 +24,7 @@ import info.guardianproject.netcipher.NetCipher;
  * Handles shared preferences for FDroid, looking after the names of
  * preferences, default values and caching. Needs to be setup in the FDroidApp
  * (using {@link Preferences#setup(android.content.Context)} before it gets
- * accessed via the {@link org.fdroid.fdroid.Preferences#get()}
+ * accessed via the {@link org.belmarket.shop.Preferences#get()}
  * singleton method.
  */
 public final class Preferences implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -125,7 +125,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * of the Privileged Extension.  The preference provides a way to disable using the
      * Privileged Extension even though its installed.
      *
-     * @see org.fdroid.fdroid.views.fragments.PreferencesFragment#initPrivilegedInstallerPreference()
+     * @see org.belmarket.shop.views.fragments.PreferencesFragment#initPrivilegedInstallerPreference()
      */
     public boolean isPrivilegedInstallerEnabled() {
         return preferences.getBoolean(PREF_PRIVILEGED_INSTALLER, DEFAULT_PRIVILEGED_INSTALLER);

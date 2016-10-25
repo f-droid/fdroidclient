@@ -1,10 +1,10 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.Utils;
+import org.belmarket.shop.BuildConfig;
+import org.belmarket.shop.Utils;
 
 /**
  * Helper class to log slow queries to logcat when in debug mode. When not in debug mode, it

@@ -1,9 +1,9 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.TestUtils;
-import org.fdroid.fdroid.data.Schema.InstalledAppTable;
-import org.fdroid.fdroid.mock.MockApk;
+import org.belmarket.shop.BuildConfig;
+import org.belmarket.shop.TestUtils;
+import org.belmarket.shop.data.Schema.InstalledAppTable;
+import org.belmarket.shop.mock.MockApk;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,8 +17,8 @@ import org.robolectric.shadows.ShadowContentResolver;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.fdroid.fdroid.Assert.assertInvalidUri;
-import static org.fdroid.fdroid.Assert.assertValidUri;
+import static org.belmarket.shop.Assert.assertInvalidUri;
+import static org.belmarket.shop.Assert.assertValidUri;
 
 // TODO: Use sdk=24 when Robolectric supports this
 @Config(constants = BuildConfig.class, sdk = 23)
@@ -83,20 +83,20 @@ public class ProviderUriTests {
     public void validAppProviderUris() {
         ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
         String[] projection = new String[] {Schema.AppMetadataTable.Cols._ID};
-        assertValidUri(resolver, AppProvider.getContentUri(), "content://org.fdroid.fdroid.data.AppProvider", projection);
-        assertValidUri(resolver, AppProvider.getSearchUri("'searching!'"), "content://org.fdroid.fdroid.data.AppProvider/search/'searching!'", projection);
-        assertValidUri(resolver, AppProvider.getSearchUri("/"), "content://org.fdroid.fdroid.data.AppProvider/search/%2F", projection);
-        assertValidUri(resolver, AppProvider.getSearchUri(""), "content://org.fdroid.fdroid.data.AppProvider", projection);
-        assertValidUri(resolver, AppProvider.getSearchUri(null), "content://org.fdroid.fdroid.data.AppProvider", projection);
-        assertValidUri(resolver, AppProvider.getNoApksUri(), "content://org.fdroid.fdroid.data.AppProvider/noApks", projection);
-        assertValidUri(resolver, AppProvider.getInstalledUri(), "content://org.fdroid.fdroid.data.AppProvider/installed", projection);
-        assertValidUri(resolver, AppProvider.getCanUpdateUri(), "content://org.fdroid.fdroid.data.AppProvider/canUpdate", projection);
+        assertValidUri(resolver, AppProvider.getContentUri(), "content://org.belmarket.shop.data.AppProvider", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("'searching!'"), "content://org.belmarket.shop.data.AppProvider/search/'searching!'", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("/"), "content://org.belmarket.shop.data.AppProvider/search/%2F", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri(""), "content://org.belmarket.shop.data.AppProvider", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri(null), "content://org.belmarket.shop.data.AppProvider", projection);
+        assertValidUri(resolver, AppProvider.getNoApksUri(), "content://org.belmarket.shop.data.AppProvider/noApks", projection);
+        assertValidUri(resolver, AppProvider.getInstalledUri(), "content://org.belmarket.shop.data.AppProvider/installed", projection);
+        assertValidUri(resolver, AppProvider.getCanUpdateUri(), "content://org.belmarket.shop.data.AppProvider/canUpdate", projection);
 
         App app = new App();
         app.repoId = 1;
-        app.packageName = "org.fdroid.fdroid";
+        app.packageName = "org.belmarket.shop";
 
-        assertValidUri(resolver, AppProvider.getSpecificAppUri(app.packageName, app.repoId), "content://org.fdroid.fdroid.data.AppProvider/app/1/org.fdroid.fdroid", projection);
+        assertValidUri(resolver, AppProvider.getSpecificAppUri(app.packageName, app.repoId), "content://org.belmarket.shop.data.AppProvider/app/1/org.belmarket.shop", projection);
     }
 
     @Test
@@ -109,11 +109,11 @@ public class ProviderUriTests {
         TempAppProvider.Helper.init(TestUtils.createContextWithContentResolver(resolver));
 
         List<String> packageNames = new ArrayList<>(2);
-        packageNames.add("org.fdroid.fdroid");
+        packageNames.add("org.belmarket.shop");
         packageNames.add("com.example.com");
 
-        assertValidUri(resolver, TempAppProvider.getAppsUri(packageNames, 1), "content://org.fdroid.fdroid.data.TempAppProvider/apps/1/org.fdroid.fdroid%2Ccom.example.com", projection);
-        assertValidUri(resolver, TempAppProvider.getContentUri(), "content://org.fdroid.fdroid.data.TempAppProvider", projection);
+        assertValidUri(resolver, TempAppProvider.getAppsUri(packageNames, 1), "content://org.belmarket.shop.data.TempAppProvider/apps/1/org.belmarket.shop%2Ccom.example.com", projection);
+        assertValidUri(resolver, TempAppProvider.getContentUri(), "content://org.belmarket.shop.data.TempAppProvider", projection);
     }
 
     @Test
@@ -133,12 +133,12 @@ public class ProviderUriTests {
             apks.add(new MockApk("com.example." + i, i));
         }
 
-        assertValidUri(resolver, ApkProvider.getContentUri(), "content://org.fdroid.fdroid.data.ApkProvider", projection);
-        assertValidUri(resolver, ApkProvider.getAppUri("org.fdroid.fdroid"), "content://org.fdroid.fdroid.data.ApkProvider/app/org.fdroid.fdroid", projection);
-        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri(new MockApk("org.fdroid.fdroid", 100)), "content://org.fdroid.fdroid.data.ApkProvider/apk-any-repo/100/org.fdroid.fdroid", projection);
+        assertValidUri(resolver, ApkProvider.getContentUri(), "content://org.belmarket.shop.data.ApkProvider", projection);
+        assertValidUri(resolver, ApkProvider.getAppUri("org.belmarket.shop"), "content://org.belmarket.shop.data.ApkProvider/app/org.belmarket.shop", projection);
+        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri(new MockApk("org.belmarket.shop", 100)), "content://org.belmarket.shop.data.ApkProvider/apk-any-repo/100/org.belmarket.shop", projection);
         assertValidUri(resolver, ApkProvider.getContentUri(apks), projection);
-        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri("org.fdroid.fdroid", 100), "content://org.fdroid.fdroid.data.ApkProvider/apk-any-repo/100/org.fdroid.fdroid", projection);
-        assertValidUri(resolver, ApkProvider.getRepoUri(1000), "content://org.fdroid.fdroid.data.ApkProvider/repo/1000", projection);
+        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri("org.belmarket.shop", 100), "content://org.belmarket.shop.data.ApkProvider/apk-any-repo/100/org.belmarket.shop", projection);
+        assertValidUri(resolver, ApkProvider.getRepoUri(1000), "content://org.belmarket.shop.data.ApkProvider/repo/1000", projection);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -151,8 +151,8 @@ public class ProviderUriTests {
         }
         assertValidUri(resolver, ApkProvider.getContentUri(manyApks), projection);
 
-        manyApks.add(new MockApk("org.fdroid.fdroid.1", 1));
-        manyApks.add(new MockApk("org.fdroid.fdroid.2", 2));
+        manyApks.add(new MockApk("org.belmarket.shop.1", 1));
+        manyApks.add(new MockApk("org.belmarket.shop.2", 2));
 
         // Technically, it is a valid URI, because it doesn't
         // throw an UnsupportedOperationException. However it

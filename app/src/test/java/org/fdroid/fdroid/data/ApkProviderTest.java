@@ -1,16 +1,16 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.app.Application;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
-import org.fdroid.fdroid.Assert;
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
-import org.fdroid.fdroid.data.Schema.RepoTable;
-import org.fdroid.fdroid.mock.MockApk;
-import org.fdroid.fdroid.mock.MockRepo;
+import org.belmarket.shop.Assert;
+import org.belmarket.shop.BuildConfig;
+import org.belmarket.shop.data.Schema.ApkTable.Cols;
+import org.belmarket.shop.data.Schema.RepoTable;
+import org.belmarket.shop.mock.MockApk;
+import org.belmarket.shop.mock.MockRepo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
@@ -21,9 +21,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import static org.fdroid.fdroid.Assert.assertCantDelete;
-import static org.fdroid.fdroid.Assert.assertResultCount;
-import static org.fdroid.fdroid.Assert.insertApp;
+import static org.belmarket.shop.Assert.assertCantDelete;
+import static org.belmarket.shop.Assert.assertResultCount;
+import static org.belmarket.shop.Assert.insertApp;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -38,7 +38,7 @@ public class ApkProviderTest extends FDroidProviderTest {
 
     @Test
     public void testAppApks() {
-        App fdroidApp = insertApp(context, "org.fdroid.fdroid", "F-Droid");
+        App fdroidApp = insertApp(context, "org.belmarket.shop", "F-Droid");
         App exampleApp = insertApp(context, "com.example", "Example");
         for (int i = 1; i <= 10; i++) {
             Assert.insertApk(context, fdroidApp, i);
@@ -48,11 +48,11 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertTotalApkCount(20);
 
         Cursor fdroidApks = contentResolver.query(
-                ApkProvider.getAppUri("org.fdroid.fdroid"),
+                ApkProvider.getAppUri("org.belmarket.shop"),
                 PROJ,
                 null, null, null);
         assertResultCount(10, fdroidApks);
-        assertBelongsToApp(fdroidApks, "org.fdroid.fdroid");
+        assertBelongsToApp(fdroidApks, "org.belmarket.shop");
         fdroidApks.close();
 
         Cursor exampleApks = contentResolver.query(
@@ -66,10 +66,10 @@ public class ApkProviderTest extends FDroidProviderTest {
 
     @Test
     public void testInvalidDeleteUris() {
-        Apk apk = new MockApk("org.fdroid.fdroid", 10);
+        Apk apk = new MockApk("org.belmarket.shop", 10);
 
         assertCantDelete(contentResolver, ApkProvider.getContentUri());
-        assertCantDelete(contentResolver, ApkProvider.getApkFromAnyRepoUri("org.fdroid.fdroid", 10));
+        assertCantDelete(contentResolver, ApkProvider.getApkFromAnyRepoUri("org.belmarket.shop", 10));
         assertCantDelete(contentResolver, ApkProvider.getApkFromAnyRepoUri(apk));
         assertCantDelete(contentResolver, Uri.withAppendedPath(ApkProvider.getContentUri(), "some-random-path"));
     }
@@ -83,11 +83,11 @@ public class ApkProviderTest extends FDroidProviderTest {
         // Insert apks into two repos, one of which we will later purge the
         // the apks from.
         for (int i = 1; i <= 5; i++) {
-            insertApkForRepo("org.fdroid.fdroid", i, REPO_KEEP);
+            insertApkForRepo("org.belmarket.shop", i, REPO_KEEP);
             insertApkForRepo("com.example." + i, 1, REPO_DELETE);
         }
         for (int i = 6; i <= 10; i++) {
-            insertApkForRepo("org.fdroid.fdroid", i, REPO_DELETE);
+            insertApkForRepo("org.belmarket.shop", i, REPO_DELETE);
             insertApkForRepo("com.example." + i, 1, REPO_KEEP);
         }
 
@@ -128,7 +128,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertEquals(0, cursor.getCount());
         cursor.close();
 
-        Apk apk = new MockApk("org.fdroid.fdroid", 13);
+        Apk apk = new MockApk("org.belmarket.shop", 13);
 
         // Insert a new record...
         Assert.insertApk(context, apk.packageName, apk.versionCode);
@@ -142,7 +142,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         cursor.moveToFirst();
         Apk toCheck = new Apk(cursor);
         cursor.close();
-        assertEquals("org.fdroid.fdroid", toCheck.packageName);
+        assertEquals("org.belmarket.shop", toCheck.packageName);
         assertEquals(13, toCheck.versionCode);
     }
 
@@ -203,7 +203,7 @@ public class ApkProviderTest extends FDroidProviderTest {
     public void assertInvalidExtraField(String field) {
         ContentValues invalidRepo = new ContentValues();
         invalidRepo.put(field, "Test data");
-        Assert.insertApk(context, "org.fdroid.fdroid", 10, invalidRepo);
+        Assert.insertApk(context, "org.belmarket.shop", 10, invalidRepo);
     }
 
     @Test
@@ -242,7 +242,7 @@ public class ApkProviderTest extends FDroidProviderTest {
     @Test
     public void testKnownApks() {
 
-        App fdroid = Assert.ensureApp(context, "org.fdroid.fdroid");
+        App fdroid = Assert.ensureApp(context, "org.belmarket.shop");
         for (int i = 0; i < 7; i++) {
             Assert.insertApk(context, fdroid, i);
         }
@@ -306,7 +306,7 @@ public class ApkProviderTest extends FDroidProviderTest {
     public void testFindByApp() {
 
         for (int i = 0; i < 7; i++) {
-            Assert.insertApk(context, "org.fdroid.fdroid", i);
+            Assert.insertApk(context, "org.belmarket.shop", i);
         }
 
         for (int i = 0; i < 9; i++) {
@@ -321,9 +321,9 @@ public class ApkProviderTest extends FDroidProviderTest {
 
         assertTotalApkCount(7 + 9 + 3 + 1);
 
-        List<Apk> fdroidApks = ApkProvider.Helper.findByPackageName(context, "org.fdroid.fdroid");
+        List<Apk> fdroidApks = ApkProvider.Helper.findByPackageName(context, "org.belmarket.shop");
         assertResultCount(7, fdroidApks);
-        assertBelongsToApp(fdroidApks, "org.fdroid.fdroid");
+        assertBelongsToApp(fdroidApks, "org.belmarket.shop");
 
         List<Apk> exampleApks = ApkProvider.Helper.findByPackageName(context, "org.example");
         assertResultCount(9, exampleApks);

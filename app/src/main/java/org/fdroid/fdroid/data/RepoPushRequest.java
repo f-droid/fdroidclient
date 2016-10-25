@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.support.annotation.Nullable;
 

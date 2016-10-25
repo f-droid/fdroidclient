@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.net.bluetooth;
+package org.belmarket.shop.net.bluetooth;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;

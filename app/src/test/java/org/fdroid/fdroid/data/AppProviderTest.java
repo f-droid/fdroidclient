@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.app.Application;
 import android.content.ContentResolver;
@@ -7,8 +7,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.belmarket.shop.BuildConfig;
+import org.belmarket.shop.data.Schema.AppMetadataTable.Cols;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,8 +19,8 @@ import org.robolectric.shadows.ShadowContentResolver;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.fdroid.fdroid.Assert.assertContainsOnly;
-import static org.fdroid.fdroid.Assert.assertResultCount;
+import static org.belmarket.shop.Assert.assertContainsOnly;
+import static org.belmarket.shop.Assert.assertResultCount;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -225,7 +225,7 @@ public class AppProviderTest extends FDroidProviderTest {
         cursor.close();
 
         // Insert a new record...
-        insertApp("org.fdroid.fdroid", "F-Droid");
+        insertApp("org.belmarket.shop", "F-Droid");
         cursor = queryAllApps();
         assertNotNull(cursor);
         assertEquals(1, cursor.getCount());
@@ -236,12 +236,12 @@ public class AppProviderTest extends FDroidProviderTest {
         cursor.moveToFirst();
         App app = new App(cursor);
         cursor.close();
-        assertEquals("org.fdroid.fdroid", app.packageName);
+        assertEquals("org.belmarket.shop", app.packageName);
         assertEquals("F-Droid", app.name);
 
-        App otherApp = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "org.fdroid.fdroid", 1, Cols.ALL);
+        App otherApp = AppProvider.Helper.findSpecificApp(context.getContentResolver(), "org.belmarket.shop", 1, Cols.ALL);
         assertNotNull(otherApp);
-        assertEquals("org.fdroid.fdroid", otherApp.packageName);
+        assertEquals("org.belmarket.shop", otherApp.packageName);
         assertEquals("F-Droid", otherApp.name);
     }
 
@@ -251,7 +251,7 @@ public class AppProviderTest extends FDroidProviderTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testCursorMustMoveToFirst() {
-        insertApp("org.fdroid.fdroid", "F-Droid");
+        insertApp("org.belmarket.shop", "F-Droid");
         Cursor cursor = queryAllApps();
         new App(cursor);
     }

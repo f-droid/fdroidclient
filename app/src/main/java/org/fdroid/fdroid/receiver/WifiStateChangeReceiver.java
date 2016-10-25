@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.receiver;
+package org.belmarket.shop.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -6,8 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiManager;
 
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.net.WifiStateChangeService;
 
 public class WifiStateChangeReceiver extends BroadcastReceiver {
     private static final String TAG = "WifiStateChangeReceiver";

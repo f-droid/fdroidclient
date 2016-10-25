@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.net;
+package org.belmarket.shop.net;
 
 import android.content.Context;
 

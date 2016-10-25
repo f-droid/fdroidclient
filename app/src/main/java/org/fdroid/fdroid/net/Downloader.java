@@ -1,7 +1,7 @@
-package org.fdroid.fdroid.net;
+package org.belmarket.shop.net;
 
-import org.fdroid.fdroid.ProgressListener;
-import org.fdroid.fdroid.Utils;
+import org.belmarket.shop.ProgressListener;
+import org.belmarket.shop.Utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,15 +16,15 @@ public abstract class Downloader {
 
     private static final String TAG = "Downloader";
 
-    public static final String ACTION_STARTED = "org.fdroid.fdroid.net.Downloader.action.STARTED";
-    public static final String ACTION_PROGRESS = "org.fdroid.fdroid.net.Downloader.action.PROGRESS";
-    public static final String ACTION_INTERRUPTED = "org.fdroid.fdroid.net.Downloader.action.INTERRUPTED";
-    public static final String ACTION_COMPLETE = "org.fdroid.fdroid.net.Downloader.action.COMPLETE";
+    public static final String ACTION_STARTED = "org.belmarket.shop.net.Downloader.action.STARTED";
+    public static final String ACTION_PROGRESS = "org.belmarket.shop.net.Downloader.action.PROGRESS";
+    public static final String ACTION_INTERRUPTED = "org.belmarket.shop.net.Downloader.action.INTERRUPTED";
+    public static final String ACTION_COMPLETE = "org.belmarket.shop.net.Downloader.action.COMPLETE";
 
-    public static final String EXTRA_DOWNLOAD_PATH = "org.fdroid.fdroid.net.Downloader.extra.DOWNLOAD_PATH";
-    public static final String EXTRA_BYTES_READ = "org.fdroid.fdroid.net.Downloader.extra.BYTES_READ";
-    public static final String EXTRA_TOTAL_BYTES = "org.fdroid.fdroid.net.Downloader.extra.TOTAL_BYTES";
-    public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MESSAGE";
+    public static final String EXTRA_DOWNLOAD_PATH = "org.belmarket.shop.net.Downloader.extra.DOWNLOAD_PATH";
+    public static final String EXTRA_BYTES_READ = "org.belmarket.shop.net.Downloader.extra.BYTES_READ";
+    public static final String EXTRA_TOTAL_BYTES = "org.belmarket.shop.net.Downloader.extra.TOTAL_BYTES";
+    public static final String EXTRA_ERROR_MESSAGE = "org.belmarket.shop.net.Downloader.extra.ERROR_MESSAGE";
 
     private volatile boolean cancelled = false;
     private volatile int bytesRead;

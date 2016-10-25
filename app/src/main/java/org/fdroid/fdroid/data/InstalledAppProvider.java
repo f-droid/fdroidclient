@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,10 +11,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Schema.InstalledAppTable;
-import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
+import org.belmarket.shop.R;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Schema.InstalledAppTable;
+import org.belmarket.shop.data.Schema.InstalledAppTable.Cols;
 
 import java.util.HashMap;
 import java.util.Map;

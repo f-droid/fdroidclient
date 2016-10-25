@@ -19,7 +19,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package org.fdroid.fdroid;
+package org.belmarket.shop;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -78,21 +78,21 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppPrefs;
-import org.fdroid.fdroid.data.AppPrefsProvider;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.installer.InstallManagerService;
-import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.installer.InstallerFactory;
-import org.fdroid.fdroid.installer.InstallerService;
-import org.fdroid.fdroid.net.Downloader;
-import org.fdroid.fdroid.net.DownloaderService;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.ApkProvider;
+import org.belmarket.shop.data.App;
+import org.belmarket.shop.data.AppPrefs;
+import org.belmarket.shop.data.AppPrefsProvider;
+import org.belmarket.shop.data.AppProvider;
+import org.belmarket.shop.data.InstalledAppProvider;
+import org.belmarket.shop.data.RepoProvider;
+import org.belmarket.shop.data.Schema;
+import org.belmarket.shop.installer.InstallManagerService;
+import org.belmarket.shop.installer.Installer;
+import org.belmarket.shop.installer.InstallerFactory;
+import org.belmarket.shop.installer.InstallerService;
+import org.belmarket.shop.net.Downloader;
+import org.belmarket.shop.net.DownloaderService;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 

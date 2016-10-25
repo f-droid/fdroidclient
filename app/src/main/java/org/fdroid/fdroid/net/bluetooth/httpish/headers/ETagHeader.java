@@ -1,6 +1,6 @@
-package org.fdroid.fdroid.net.bluetooth.httpish.headers;
+package org.belmarket.shop.net.bluetooth.httpish.headers;
 
-import org.fdroid.fdroid.net.bluetooth.FileDetails;
+import org.belmarket.shop.net.bluetooth.FileDetails;
 
 public class ETagHeader extends Header {
 

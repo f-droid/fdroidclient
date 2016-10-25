@@ -1,11 +1,11 @@
-package org.fdroid.fdroid.mock;
+package org.belmarket.shop.mock;
 
 import android.support.annotation.NonNull;
 
-import org.fdroid.fdroid.RepoXMLHandler;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.RepoPushRequest;
+import org.belmarket.shop.RepoXMLHandler;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.App;
+import org.belmarket.shop.data.RepoPushRequest;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;

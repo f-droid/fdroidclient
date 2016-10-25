@@ -19,7 +19,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.belmarket.shop.installer;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -31,9 +31,9 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.Apk;
+import org.belmarket.shop.Preferences;
+import org.belmarket.shop.R;
+import org.belmarket.shop.data.Apk;
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
 import org.fdroid.fdroid.privileged.IPrivilegedService;
 

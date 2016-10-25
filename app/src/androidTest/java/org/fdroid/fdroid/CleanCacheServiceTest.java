@@ -1,11 +1,11 @@
-package org.fdroid.fdroid;
+package org.belmarket.shop;
 
 import android.app.Instrumentation;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.apache.commons.io.FileUtils;
-import org.fdroid.fdroid.compat.FileCompatTest;
+import org.belmarket.shop.compat.FileCompatTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

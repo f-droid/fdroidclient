@@ -1,12 +1,12 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.app.Application;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
+import org.belmarket.shop.BuildConfig;
+import org.belmarket.shop.data.Schema.InstalledAppTable.Cols;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,8 +15,8 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowContentResolver;
 
-import static org.fdroid.fdroid.Assert.assertIsInstalledVersionInDb;
-import static org.fdroid.fdroid.Assert.assertResultCount;
+import static org.belmarket.shop.Assert.assertIsInstalledVersionInDb;
+import static org.belmarket.shop.Assert.assertResultCount;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;

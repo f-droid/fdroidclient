@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,8 +6,8 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 
-import org.fdroid.fdroid.data.Schema.PackageTable;
-import org.fdroid.fdroid.data.Schema.PackageTable.Cols;
+import org.belmarket.shop.data.Schema.PackageTable;
+import org.belmarket.shop.data.Schema.PackageTable.Cols;
 
 public class PackageProvider extends FDroidProvider {
 

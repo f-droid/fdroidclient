@@ -18,7 +18,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.belmarket.shop.installer;
 
 import android.app.PendingIntent;
 import android.content.Context;
@@ -30,8 +30,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.ApkProvider;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
@@ -48,15 +48,15 @@ public abstract class Installer {
     final Context context;
     final Apk apk;
 
-    public static final String ACTION_INSTALL_STARTED = "org.fdroid.fdroid.installer.Installer.action.INSTALL_STARTED";
-    public static final String ACTION_INSTALL_COMPLETE = "org.fdroid.fdroid.installer.Installer.action.INSTALL_COMPLETE";
-    public static final String ACTION_INSTALL_INTERRUPTED = "org.fdroid.fdroid.installer.Installer.action.INSTALL_INTERRUPTED";
-    public static final String ACTION_INSTALL_USER_INTERACTION = "org.fdroid.fdroid.installer.Installer.action.INSTALL_USER_INTERACTION";
+    public static final String ACTION_INSTALL_STARTED = "org.belmarket.shop.installer.Installer.action.INSTALL_STARTED";
+    public static final String ACTION_INSTALL_COMPLETE = "org.belmarket.shop.installer.Installer.action.INSTALL_COMPLETE";
+    public static final String ACTION_INSTALL_INTERRUPTED = "org.belmarket.shop.installer.Installer.action.INSTALL_INTERRUPTED";
+    public static final String ACTION_INSTALL_USER_INTERACTION = "org.belmarket.shop.installer.Installer.action.INSTALL_USER_INTERACTION";
 
-    public static final String ACTION_UNINSTALL_STARTED = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_STARTED";
-    public static final String ACTION_UNINSTALL_COMPLETE = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_COMPLETE";
-    public static final String ACTION_UNINSTALL_INTERRUPTED = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_INTERRUPTED";
-    public static final String ACTION_UNINSTALL_USER_INTERACTION = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_USER_INTERACTION";
+    public static final String ACTION_UNINSTALL_STARTED = "org.belmarket.shop.installer.Installer.action.UNINSTALL_STARTED";
+    public static final String ACTION_UNINSTALL_COMPLETE = "org.belmarket.shop.installer.Installer.action.UNINSTALL_COMPLETE";
+    public static final String ACTION_UNINSTALL_INTERRUPTED = "org.belmarket.shop.installer.Installer.action.UNINSTALL_INTERRUPTED";
+    public static final String ACTION_UNINSTALL_USER_INTERACTION = "org.belmarket.shop.installer.Installer.action.UNINSTALL_USER_INTERACTION";
 
     /**
      * The URI where the APK was originally downloaded from. This is also used
@@ -66,10 +66,10 @@ public abstract class Installer {
      *
      * @see Intent#EXTRA_ORIGINATING_URI
      */
-    static final String EXTRA_DOWNLOAD_URI = "org.fdroid.fdroid.installer.Installer.extra.DOWNLOAD_URI";
-    public static final String EXTRA_APK = "org.fdroid.fdroid.installer.Installer.extra.APK";
-    public static final String EXTRA_USER_INTERACTION_PI = "org.fdroid.fdroid.installer.Installer.extra.USER_INTERACTION_PI";
-    public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.installer.Installer.extra.ERROR_MESSAGE";
+    static final String EXTRA_DOWNLOAD_URI = "org.belmarket.shop.installer.Installer.extra.DOWNLOAD_URI";
+    public static final String EXTRA_APK = "org.belmarket.shop.installer.Installer.extra.APK";
+    public static final String EXTRA_USER_INTERACTION_PI = "org.belmarket.shop.installer.Installer.extra.USER_INTERACTION_PI";
+    public static final String EXTRA_ERROR_MESSAGE = "org.belmarket.shop.net.installer.Installer.extra.ERROR_MESSAGE";
 
     /**
      * @param apk must be included so that all the phases of the install process

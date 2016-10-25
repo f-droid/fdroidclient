@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import java.io.File;
 
@@ -21,7 +21,7 @@ public class SanitizedFile extends File {
     }
 
     /**
-     * Used by the {@link org.fdroid.fdroid.data.SanitizedFile#knownSanitized(java.io.File)}
+     * Used by the {@link org.belmarket.shop.data.SanitizedFile#knownSanitized(java.io.File)}
      * method, but intentionally kept private so people don't think that any sanitization
      * will occur by passing a file in - because it wont.
      */
@@ -55,7 +55,7 @@ public class SanitizedFile extends File {
     }
 
     /**
-     * @see {@link org.fdroid.fdroid.data.SanitizedFile#knownSanitized(String)}
+     * @see {@link org.belmarket.shop.data.SanitizedFile#knownSanitized(String)}
      */
     public static SanitizedFile knownSanitized(File file) {
         return new SanitizedFile(file);

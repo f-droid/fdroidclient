@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.fragments;
+package org.belmarket.shop.views.fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -6,11 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.compat.CursorAdapterCompat;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.views.AppListAdapter;
-import org.fdroid.fdroid.views.CanUpdateAppListAdapter;
+import org.belmarket.shop.R;
+import org.belmarket.shop.compat.CursorAdapterCompat;
+import org.belmarket.shop.data.AppProvider;
+import org.belmarket.shop.views.AppListAdapter;
+import org.belmarket.shop.views.CanUpdateAppListAdapter;
 
 public class CanUpdateAppsFragment extends AppListFragment {
 

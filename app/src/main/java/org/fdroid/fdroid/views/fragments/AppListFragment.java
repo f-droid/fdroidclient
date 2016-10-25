@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.fragments;
+package org.belmarket.shop.views.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,14 +19,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.AppDetails;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable;
-import org.fdroid.fdroid.views.AppListAdapter;
+import org.belmarket.shop.AppDetails;
+import org.belmarket.shop.Preferences;
+import org.belmarket.shop.R;
+import org.belmarket.shop.UpdateService;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.App;
+import org.belmarket.shop.data.Schema.AppMetadataTable;
+import org.belmarket.shop.views.AppListAdapter;
 
 public abstract class AppListFragment extends ListFragment implements
         AdapterView.OnItemClickListener,

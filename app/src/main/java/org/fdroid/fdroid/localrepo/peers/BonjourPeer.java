@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.localrepo.peers;
+package org.belmarket.shop.localrepo.peers;
 
 import android.net.Uri;
 import android.os.Parcel;

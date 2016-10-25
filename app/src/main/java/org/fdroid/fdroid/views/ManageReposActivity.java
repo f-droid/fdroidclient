@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package org.fdroid.fdroid.views;
+package org.belmarket.shop.views;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -54,17 +54,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.fdroid.fdroid.FDroid;
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.ClipboardCompat;
-import org.fdroid.fdroid.compat.CursorAdapterCompat;
-import org.fdroid.fdroid.data.NewRepoConfig;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.belmarket.shop.FDroid;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.R;
+import org.belmarket.shop.UpdateService;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.compat.ClipboardCompat;
+import org.belmarket.shop.compat.CursorAdapterCompat;
+import org.belmarket.shop.data.NewRepoConfig;
+import org.belmarket.shop.data.Repo;
+import org.belmarket.shop.data.RepoProvider;
+import org.belmarket.shop.data.Schema.RepoTable;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

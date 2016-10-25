@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.views.swap.JoinWifiView xmlns:android="http://schemas.android.com/apk/res/android"
+<org.belmarket.shop.views.swap.JoinWifiView xmlns:android="http://schemas.android.com/apk/res/android"
       android:orientation="vertical"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -54,4 +54,4 @@
             android:paddingBottom="20dp"/>
     <!-- android:layout_above="@id/btn_learn_more_about_wifi" -->
 
-</org.fdroid.fdroid.views.swap.JoinWifiView>
+</org.belmarket.shop.views.swap.JoinWifiView>

@@ -1,7 +1,7 @@
 -dontobfuscate
 -dontoptimize
 -keepattributes SourceFile,LineNumberTable,Exceptions
--keep class org.fdroid.fdroid.** {*;}
+-keep class org.belmarket.shop.** {*;}
 -dontskipnonpubliclibraryclassmembers
 -dontwarn android.test.**
 -dontwarn com.android.support.test.**

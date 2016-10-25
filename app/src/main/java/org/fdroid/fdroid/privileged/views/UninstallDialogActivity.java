@@ -30,10 +30,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.view.ContextThemeWrapper;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.installer.Installer;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.R;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.installer.Installer;
 
 /**
  * This class provides the confirmation prompt for when the user chooses to

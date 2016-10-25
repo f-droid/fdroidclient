@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.compat;
+package org.belmarket.shop.compat;
 
 public class CursorAdapterCompat {
 

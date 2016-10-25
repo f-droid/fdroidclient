@@ -30,7 +30,7 @@ function wait {
 	fi
 }
 
-APP_TO_SHOW=org.fdroid.fdroid
+APP_TO_SHOW=org.belmarket.shop
 SEARCH_QUERY=book+reader
 
 view "Search for '$SEARCH_QUERY' (fdroid web)" http://f-droid.org/repository/browse?fdfilter=$SEARCH_QUERY

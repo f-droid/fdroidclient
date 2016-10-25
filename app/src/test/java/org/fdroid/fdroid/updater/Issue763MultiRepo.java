@@ -1,14 +1,14 @@
-package org.fdroid.fdroid.updater;
+package org.belmarket.shop.updater;
 
 import android.content.ContentValues;
 
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.RepoUpdater;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema;
+import org.belmarket.shop.BuildConfig;
+import org.belmarket.shop.RepoUpdater;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.ApkProvider;
+import org.belmarket.shop.data.Repo;
+import org.belmarket.shop.data.RepoProvider;
+import org.belmarket.shop.data.Schema;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

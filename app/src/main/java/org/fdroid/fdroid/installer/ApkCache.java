@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.belmarket.shop.installer;
 
 import android.content.Context;
 import android.net.Uri;
@@ -25,9 +25,9 @@ import android.net.Uri;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.apache.commons.io.FileUtils;
-import org.fdroid.fdroid.Hasher;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.SanitizedFile;
+import org.belmarket.shop.Hasher;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.SanitizedFile;
 
 import java.io.File;
 import java.io.IOException;

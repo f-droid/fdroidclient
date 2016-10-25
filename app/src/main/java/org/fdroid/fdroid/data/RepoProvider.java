@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -11,9 +11,9 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Schema.RepoTable;
-import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Schema.RepoTable;
+import org.belmarket.shop.data.Schema.RepoTable.Cols;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,11 +59,11 @@ public class RepoProvider extends FDroidProvider {
          * repository. Therefore, that repository must exist in the database. The way to find out
          * which repository a particular URL came from requires some consideration:
          *  * Repositories can exist at particular paths on a server (e.g. /fdroid/repo)
-         *  * Individual files can exist at a more specific path on the repo (e.g. /fdroid/repo/icons/org.fdroid.fdroid.png)
+         *  * Individual files can exist at a more specific path on the repo (e.g. /fdroid/repo/icons/org.belmarket.shop.png)
          *
-         * So for a given URL "/fdroid/repo/icons/org.fdroid.fdroid.png" we don't actually know
-         * whether it is for the file "org.fdroid.fdroid.png" at repository "/fdroid/repo/icons" or
-         * the file "icons/org.fdroid.fdroid.png" at the repository at "/fdroid/repo".
+         * So for a given URL "/fdroid/repo/icons/org.belmarket.shop.png" we don't actually know
+         * whether it is for the file "org.belmarket.shop.png" at repository "/fdroid/repo/icons" or
+         * the file "icons/org.belmarket.shop.png" at the repository at "/fdroid/repo".
          */
         @Nullable
         public static Repo findByUrl(Context context, Uri uri, String[] projection) {

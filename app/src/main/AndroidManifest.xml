@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.fdroid.fdroid"
+    package="org.belmarket.shop"
     android:installLocation="auto">
 
     <uses-sdk
@@ -65,48 +65,48 @@
         >
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.AppProvider"
-            android:name="org.fdroid.fdroid.data.AppProvider"
+            android:authorities="org.belmarket.shop.data.AppProvider"
+            android:name="org.belmarket.shop.data.AppProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.RepoProvider"
-            android:name="org.fdroid.fdroid.data.RepoProvider"
+            android:authorities="org.belmarket.shop.data.RepoProvider"
+            android:name="org.belmarket.shop.data.RepoProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.ApkProvider"
-            android:name="org.fdroid.fdroid.data.ApkProvider"
+            android:authorities="org.belmarket.shop.data.ApkProvider"
+            android:name="org.belmarket.shop.data.ApkProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.TempApkProvider"
-            android:name="org.fdroid.fdroid.data.TempApkProvider"
+            android:authorities="org.belmarket.shop.data.TempApkProvider"
+            android:name="org.belmarket.shop.data.TempApkProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.TempAppProvider"
-            android:name="org.fdroid.fdroid.data.TempAppProvider"
+            android:authorities="org.belmarket.shop.data.TempAppProvider"
+            android:name="org.belmarket.shop.data.TempAppProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.InstalledAppProvider"
-            android:name="org.fdroid.fdroid.data.InstalledAppProvider"
+            android:authorities="org.belmarket.shop.data.InstalledAppProvider"
+            android:name="org.belmarket.shop.data.InstalledAppProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.AppPrefsProvider"
-            android:name="org.fdroid.fdroid.data.AppPrefsProvider"
+            android:authorities="org.belmarket.shop.data.AppPrefsProvider"
+            android:name="org.belmarket.shop.data.AppPrefsProvider"
             android:exported="false"/>
 
         <provider
-            android:authorities="org.fdroid.fdroid.data.PackageProvider"
-            android:name="org.fdroid.fdroid.data.PackageProvider"
+            android:authorities="org.belmarket.shop.data.PackageProvider"
+            android:name="org.belmarket.shop.data.PackageProvider"
             android:exported="false"/>
 
         <provider
-            android:name="org.fdroid.fdroid.installer.ApkFileProvider"
-            android:authorities="org.fdroid.fdroid.installer.ApkFileProvider"
+            android:name="org.belmarket.shop.installer.ApkFileProvider"
+            android:authorities="org.belmarket.shop.installer.ApkFileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -115,7 +115,7 @@
         </provider>
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="org.fdroid.fdroid.installer"
+            android:authorities="org.belmarket.shop.installer"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -370,7 +370,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="application/vnd.org.fdroid.fdroid.repo" />
+                <data android:mimeType="application/vnd.org.belmarket.shop.repo" />
             </intent-filter>
         </activity>
         <activity

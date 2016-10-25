@@ -13,7 +13,7 @@
     <string name="cache_downloaded">Keep cached apps</string>
     <string name="updates">Updates</string>
     <string name="unstable_updates">Unstable updates</string>
-    <string name="unstable_updates_summary">Suggest updates to unstable versions</string>
+    <string name="unstable_updates_summary">cdSuggest updates to unstable versions</string>
     <string name="keep_install_history">Keep install history</string>
     <string name="keep_install_history_summary">Store a log of all installs and uninstalls inside F-Droid</string>
     <string name="other">Other</string>

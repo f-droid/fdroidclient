@@ -22,7 +22,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-import org.fdroid.fdroid.data.Apk;
+import org.belmarket.shop.data.Apk;
 
 public class AppDiff {
 

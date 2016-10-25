@@ -22,10 +22,10 @@ package org.fdroid.fdroid.privileged.install;
 import android.content.Context;
 import android.os.Build;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.installer.PrivilegedInstaller;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.Preferences;
+import org.belmarket.shop.R;
+import org.belmarket.shop.installer.PrivilegedInstaller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +106,7 @@ abstract class InstallExtension {
 
     List<String> getPostInstallCommands() {
         final List<String> commands = new ArrayList<>(1);
-        commands.add("am start -n org.fdroid.fdroid/.privileged.install.InstallExtensionDialogActivity --ez "
+        commands.add("am start -n org.belmarket.shop/.privileged.install.InstallExtensionDialogActivity --ez "
                 + InstallExtensionDialogActivity.ACTION_POST_INSTALL + " true");
         return commands;
     }

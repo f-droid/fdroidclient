@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.fragments;
+package org.belmarket.shop.views.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,14 +13,14 @@ import android.preference.PreferenceCategory;
 import android.support.v4.preference.PreferenceFragment;
 import android.text.TextUtils;
 
-import org.fdroid.fdroid.AppDetails;
-import org.fdroid.fdroid.CleanCacheService;
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.PreferencesActivity;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.installer.InstallHistoryService;
-import org.fdroid.fdroid.installer.PrivilegedInstaller;
+import org.belmarket.shop.AppDetails;
+import org.belmarket.shop.CleanCacheService;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.Preferences;
+import org.belmarket.shop.PreferencesActivity;
+import org.belmarket.shop.R;
+import org.belmarket.shop.installer.InstallHistoryService;
+import org.belmarket.shop.installer.PrivilegedInstaller;
 
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;

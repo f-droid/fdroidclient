@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -8,11 +8,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
-import org.fdroid.fdroid.data.Schema.ApkTable;
-import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable;
-import org.fdroid.fdroid.data.Schema.PackageTable;
-import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.belmarket.shop.data.Schema.ApkTable;
+import org.belmarket.shop.data.Schema.ApkTable.Cols;
+import org.belmarket.shop.data.Schema.AppMetadataTable;
+import org.belmarket.shop.data.Schema.PackageTable;
+import org.belmarket.shop.data.Schema.RepoTable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -270,9 +270,9 @@ public class ApkProvider extends FDroidProvider {
 
     /**
      * Intentionally left protected because it will break if apks is larger than
-     * {@link org.fdroid.fdroid.data.ApkProvider#MAX_APKS_TO_QUERY}. Instead of using
+     * {@link org.belmarket.shop.data.ApkProvider#MAX_APKS_TO_QUERY}. Instead of using
      * this directly, think about using
-     * {@link org.fdroid.fdroid.data.ApkProvider.Helper#knownApks(android.content.Context, java.util.List, String[])}
+     * {@link org.belmarket.shop.data.ApkProvider.Helper#knownApks(android.content.Context, java.util.List, String[])}
      */
     static Uri getContentUri(List<Apk> apks) {
         return getContentUri().buildUpon()

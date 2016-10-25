@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.content.ContentProviderOperation;
 import android.content.ContentValues;
@@ -9,9 +9,9 @@ import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import org.fdroid.fdroid.CompatibilityChecker;
-import org.fdroid.fdroid.RepoUpdater;
-import org.fdroid.fdroid.Utils;
+import org.belmarket.shop.CompatibilityChecker;
+import org.belmarket.shop.RepoUpdater;
+import org.belmarket.shop.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

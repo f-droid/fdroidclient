@@ -1,15 +1,15 @@
 
-package org.fdroid.fdroid.updater;
+package org.belmarket.shop.updater;
 
 import android.content.ContentValues;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.RepoUpdater.UpdateException;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
+import org.belmarket.shop.BuildConfig;
+import org.belmarket.shop.RepoUpdater.UpdateException;
+import org.belmarket.shop.data.Repo;
+import org.belmarket.shop.data.RepoProvider;
+import org.belmarket.shop.data.Schema.RepoTable.Cols;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;

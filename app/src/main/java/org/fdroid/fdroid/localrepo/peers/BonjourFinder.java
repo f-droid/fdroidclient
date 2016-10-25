@@ -1,10 +1,10 @@
-package org.fdroid.fdroid.localrepo.peers;
+package org.belmarket.shop.localrepo.peers;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Utils;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.Utils;
 
 import java.io.IOException;
 import java.net.InetAddress;

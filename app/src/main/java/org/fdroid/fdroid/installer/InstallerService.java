@@ -18,7 +18,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.belmarket.shop.installer;
 
 import android.app.IntentService;
 import android.content.Context;
@@ -27,8 +27,8 @@ import android.net.Uri;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Apk;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Apk;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -55,8 +55,8 @@ import java.io.FileFilter;
 public class InstallerService extends IntentService {
     public static final String TAG = "InstallerService";
 
-    private static final String ACTION_INSTALL = "org.fdroid.fdroid.installer.InstallerService.action.INSTALL";
-    private static final String ACTION_UNINSTALL = "org.fdroid.fdroid.installer.InstallerService.action.UNINSTALL";
+    private static final String ACTION_INSTALL = "org.belmarket.shop.installer.InstallerService.action.INSTALL";
+    private static final String ACTION_UNINSTALL = "org.belmarket.shop.installer.InstallerService.action.UNINSTALL";
 
     public InstallerService() {
         super("InstallerService");

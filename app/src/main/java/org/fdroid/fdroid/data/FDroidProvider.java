@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.annotation.TargetApi;
 import android.content.ContentProvider;
@@ -13,7 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 
-import org.fdroid.fdroid.Utils;
+import org.belmarket.shop.Utils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ public abstract class FDroidProvider extends ContentProvider {
 
     private static final String TAG = "FDroidProvider";
 
-    static final String AUTHORITY = "org.fdroid.fdroid.data";
+    static final String AUTHORITY = "org.belmarket.shop.data";
 
     static final int CODE_LIST   = 1;
     static final int CODE_SINGLE = 2;

@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views;
+package org.belmarket.shop.views;
 
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
@@ -27,16 +27,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.NfcHelper;
-import org.fdroid.fdroid.NfcNotEnabledActivity;
-import org.fdroid.fdroid.QrGenAsyncTask;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.NfcHelper;
+import org.belmarket.shop.NfcNotEnabledActivity;
+import org.belmarket.shop.QrGenAsyncTask;
+import org.belmarket.shop.R;
+import org.belmarket.shop.UpdateService;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Repo;
+import org.belmarket.shop.data.RepoProvider;
+import org.belmarket.shop.data.Schema.RepoTable;
 
 public class RepoDetailsActivity extends ActionBarActivity {
     private static final String TAG = "RepoDetailsActivity";

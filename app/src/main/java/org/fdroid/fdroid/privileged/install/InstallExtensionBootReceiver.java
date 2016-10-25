@@ -23,7 +23,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import org.fdroid.fdroid.Preferences;
+import org.belmarket.shop.Preferences;
 
 public class InstallExtensionBootReceiver extends BroadcastReceiver {
 

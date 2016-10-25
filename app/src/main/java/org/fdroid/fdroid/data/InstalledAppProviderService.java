@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.app.IntentService;
 import android.content.ContentValues;
@@ -11,9 +11,9 @@ import android.net.Uri;
 import android.os.Process;
 import android.support.annotation.Nullable;
 
-import org.fdroid.fdroid.Hasher;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Schema.InstalledAppTable;
+import org.belmarket.shop.Hasher;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Schema.InstalledAppTable;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
@@ -41,10 +41,10 @@ import rx.subjects.PublishSubject;
 public class InstalledAppProviderService extends IntentService {
     private static final String TAG = "InstalledAppProviderSer";
 
-    private static final String ACTION_INSERT = "org.fdroid.fdroid.data.action.INSERT";
-    private static final String ACTION_DELETE = "org.fdroid.fdroid.data.action.DELETE";
+    private static final String ACTION_INSERT = "org.belmarket.shop.data.action.INSERT";
+    private static final String ACTION_DELETE = "org.belmarket.shop.data.action.DELETE";
 
-    private static final String EXTRA_PACKAGE_INFO = "org.fdroid.fdroid.data.extra.PACKAGE_INFO";
+    private static final String EXTRA_PACKAGE_INFO = "org.belmarket.shop.data.extra.PACKAGE_INFO";
 
     /**
      * This is for notifing the users of this {@link android.content.ContentProvider}

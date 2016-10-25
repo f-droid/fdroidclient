@@ -20,19 +20,19 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.updater;
+package org.belmarket.shop.updater;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoPushRequest;
-import org.fdroid.fdroid.mock.RepoDetails;
+import org.belmarket.shop.BuildConfig;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.App;
+import org.belmarket.shop.data.Repo;
+import org.belmarket.shop.data.RepoPushRequest;
+import org.belmarket.shop.mock.RepoDetails;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -184,7 +184,7 @@ public class RepoXMLHandlerTest {
                 "info.guardianproject.soundrecorder",
                 "info.guardianproject.checkey",
                 "info.guardianproject.courier",
-                "org.fdroid.fdroid",
+                "org.belmarket.shop",
                 "info.guardianproject.gpg",
                 "info.guardianproject.lildebi",
                 "info.guardianproject.notepadbot",
@@ -210,7 +210,7 @@ public class RepoXMLHandlerTest {
         // Generated using something like the following:
         // sed 's,<application,\n<application,g' largeRepo.xml | grep "antifeatures" | sed 's,.*id="\(.*\)".*<antifeatures>\(.*\)</antifeatures>.*,\1 \2,p' | sort | uniq
         Map<String, List<String>> expectedAntiFeatures = new HashMap<>();
-        expectedAntiFeatures.put("org.fdroid.fdroid", new ArrayList<String>());
+        expectedAntiFeatures.put("org.belmarket.shop", new ArrayList<String>());
         expectedAntiFeatures.put("org.adblockplus.android", Arrays.asList("Tracking", "Ads"));
         expectedAntiFeatures.put("org.microg.nlp.backend.apple", Arrays.asList("Tracking", "NonFreeNet"));
         expectedAntiFeatures.put("com.ds.avare", Collections.singletonList("NonFreeDep"));
@@ -415,7 +415,7 @@ public class RepoXMLHandlerTest {
                 "com.googlecode.awsms", "com.mehmetakiftutuncu.eshotroid",
                 "com.googlecode.eyesfree.espeak", "com.sweetiepiggy.everylocale",
                 "de.pinyto.exalteddicer", "org.kost.externalip", "ch.hsr.eyecam",
-                "com.google.marvin.shell", "org.fdroid.fdroid",
+                "com.google.marvin.shell", "org.belmarket.shop",
                 "com.easwareapps.f2lflap2lock_adfree", "faenza.adw.theme", "org.balau.fakedawn",
                 "de.stefan_oltmann.falling_blocks", "com.codebutler.farebot", "org.ligi.fast",
                 "com.mod.android.widget.fbcw", "org.fastergps",
@@ -786,7 +786,7 @@ public class RepoXMLHandlerTest {
 
     private void checkPushRequests(RepoDetails actualDetails) {
         final Object[] expectedPushRequestsIndex = new Object[]{
-                "install", "org.fdroid.fdroid", 101002,
+                "install", "org.belmarket.shop", 101002,
                 "install", "org.fdroid.fdroid.privileged", null,
                 "uninstall", "com.android.vending", null,
                 "uninstall", "com.facebook.orca", -12345,
@@ -795,7 +795,7 @@ public class RepoXMLHandlerTest {
         };
 
         checkIncludedApps(actualDetails.apps, new String[]{
-                "org.fdroid.fdroid", "org.fdroid.fdroid.privileged",
+                "org.belmarket.shop", "org.fdroid.fdroid.privileged",
         });
 
         List<RepoPushRequest> repoPushRequestList = actualDetails.repoPushRequestList;

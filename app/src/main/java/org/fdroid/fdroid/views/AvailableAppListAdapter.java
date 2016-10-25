@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views;
+package org.belmarket.shop.views;
 
 import android.content.Context;
 import android.database.Cursor;

@@ -19,17 +19,17 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.app.Application;
 import android.content.ContentValues;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.belmarket.shop.BuildConfig;
+import org.belmarket.shop.R;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Schema.RepoTable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
@@ -68,8 +68,8 @@ public class RepoProviderTest extends FDroidProviderTest {
                 "https://f-droid.org/repo/index.jar",
                 "https://f-droid.org/repo/index.jar?random-junk-in-query=yes",
                 "https://f-droid.org/repo/index.jar?random-junk-in-query=yes&more-junk",
-                "https://f-droid.org/repo/icons/org.fdroid.fdroid.100.png",
-                "https://f-droid.org/repo/icons-640/org.fdroid.fdroid.100.png",
+                "https://f-droid.org/repo/icons/org.belmarket.shop.100.png",
+                "https://f-droid.org/repo/icons-640/org.belmarket.shop.100.png",
         };
 
         assertUrlsBelongToRepo(fdroidRepoUrls, fdroidRepo);
@@ -78,8 +78,8 @@ public class RepoProviderTest extends FDroidProviderTest {
                 "https://f-droid.org/archive/index.jar",
                 "https://f-droid.org/archive/index.jar?random-junk-in-query=yes",
                 "https://f-droid.org/archive/index.jar?random-junk-in-query=yes&more-junk",
-                "https://f-droid.org/archive/icons/org.fdroid.fdroid.100.png",
-                "https://f-droid.org/archive/icons-640/org.fdroid.fdroid.100.png",
+                "https://f-droid.org/archive/icons/org.belmarket.shop.100.png",
+                "https://f-droid.org/archive/icons-640/org.belmarket.shop.100.png",
         };
 
         assertUrlsBelongToRepo(fdroidArchiveUrls, fdroidArchiveRepo);

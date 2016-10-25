@@ -17,14 +17,14 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.belmarket.shop.installer;
 
 import android.content.Context;
 import android.net.Uri;
 import android.support.v4.content.FileProvider;
 
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.SanitizedFile;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.SanitizedFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,7 +44,7 @@ import java.io.IOException;
  */
 public class ApkFileProvider extends FileProvider {
 
-    private static final String AUTHORITY = "org.fdroid.fdroid.installer.ApkFileProvider";
+    private static final String AUTHORITY = "org.belmarket.shop.installer.ApkFileProvider";
 
     /**
      * Copies the APK into private data directory of F-Droid and returns a "file" or "content" Uri

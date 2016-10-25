@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.localrepo.peers;
+package org.belmarket.shop.localrepo.peers;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothClass;
@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
-import org.fdroid.fdroid.Utils;
+import org.belmarket.shop.Utils;
 
 import rx.Observable;
 import rx.Subscriber;

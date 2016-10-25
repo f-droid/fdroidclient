@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.belmarket.shop.data.Schema.ApkTable;
 
 import java.util.List;
 
@@ -75,7 +75,7 @@ public class TempApkProvider extends ApkProvider {
          * table and populates it with all the data from the real apk provider table.
          *
          * This is package local because it must be invoked after
-         * {@link org.fdroid.fdroid.data.TempAppProvider.Helper#init(Context)}. Due to this
+         * {@link org.belmarket.shop.data.TempAppProvider.Helper#init(Context)}. Due to this
          * dependence, that method invokes this one itself, rather than leaving it to the
          * {@link RepoPersister}.
          */

@@ -42,7 +42,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.R;
+import org.belmarket.shop.R;
 
 import java.text.Collator;
 import java.util.ArrayList;

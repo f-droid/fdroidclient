@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.localrepo;
+package org.belmarket.shop.localrepo;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -15,13 +15,13 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Hasher;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.SanitizedFile;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.Hasher;
+import org.belmarket.shop.Preferences;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.App;
+import org.belmarket.shop.data.SanitizedFile;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 import org.xmlpull.v1.XmlSerializer;
@@ -364,7 +364,7 @@ public final class LocalRepoManager {
         }
 
         /**
-         * Alias for {@link org.fdroid.fdroid.localrepo.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
+         * Alias for {@link org.belmarket.shop.localrepo.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
          * That accepts a number instead of string.
          *
          * @see IndexXmlBuilder#tag(String, String)
@@ -374,7 +374,7 @@ public final class LocalRepoManager {
         }
 
         /**
-         * Alias for {@link org.fdroid.fdroid.localrepo.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
+         * Alias for {@link org.belmarket.shop.localrepo.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
          * that accepts a date instead of a string.
          *
          * @see IndexXmlBuilder#tag(String, String)

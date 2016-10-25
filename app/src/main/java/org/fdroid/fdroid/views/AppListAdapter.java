@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views;
+package org.belmarket.shop.views;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -12,9 +12,9 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.App;
+import org.belmarket.shop.R;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.App;
 
 public abstract class AppListAdapter extends CursorAdapter {
 

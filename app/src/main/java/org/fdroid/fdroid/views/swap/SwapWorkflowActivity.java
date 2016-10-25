@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.swap;
+package org.belmarket.shop.views.swap;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -33,20 +33,20 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.NfcHelper;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.NewRepoConfig;
-import org.fdroid.fdroid.installer.InstallManagerService;
-import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.localrepo.LocalRepoManager;
-import org.fdroid.fdroid.localrepo.SwapService;
-import org.fdroid.fdroid.localrepo.peers.Peer;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.NfcHelper;
+import org.belmarket.shop.Preferences;
+import org.belmarket.shop.R;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.ApkProvider;
+import org.belmarket.shop.data.App;
+import org.belmarket.shop.data.NewRepoConfig;
+import org.belmarket.shop.installer.InstallManagerService;
+import org.belmarket.shop.installer.Installer;
+import org.belmarket.shop.localrepo.LocalRepoManager;
+import org.belmarket.shop.localrepo.SwapService;
+import org.belmarket.shop.localrepo.peers.Peer;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -86,7 +86,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     /**
      * A UI component (subclass of {@link View}) which forms part of the swap workflow.
-     * There is a one to one mapping between an {@link org.fdroid.fdroid.views.swap.SwapWorkflowActivity.InnerView}
+     * There is a one to one mapping between an {@link org.belmarket.shop.views.swap.SwapWorkflowActivity.InnerView}
      * and a {@link SwapService.SwapStep}, and these views know what
      * the previous view before them should be.
      */
@@ -433,7 +433,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void sendFDroidApk() {
-        ((FDroidApp) getApplication()).sendViaBluetooth(this, Activity.RESULT_OK, "org.fdroid.fdroid");
+        ((FDroidApp) getApplication()).sendViaBluetooth(this, Activity.RESULT_OK, "org.belmarket.shop");
     }
 
     // TODO: Figure out whether they have changed since last time UpdateAsyncTask was run.
@@ -632,7 +632,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     class PrepareInitialSwapRepo extends PrepareSwapRepo {
         PrepareInitialSwapRepo() {
-            super(new HashSet<>(Arrays.asList(new String[] {"org.fdroid.fdroid"})));
+            super(new HashSet<>(Arrays.asList(new String[] {"org.belmarket.shop"})));
         }
     }
 

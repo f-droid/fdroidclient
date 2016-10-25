@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.fdroid.fdroid.net;
+package org.belmarket.shop.net;
 
 import android.app.Service;
 import android.content.Context;
@@ -32,10 +32,10 @@ import android.os.Process;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
-import org.fdroid.fdroid.ProgressListener;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.SanitizedFile;
-import org.fdroid.fdroid.installer.ApkCache;
+import org.belmarket.shop.ProgressListener;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.data.SanitizedFile;
+import org.belmarket.shop.installer.ApkCache;
 
 import java.io.File;
 import java.io.IOException;
@@ -78,8 +78,8 @@ import java.net.URL;
 public class DownloaderService extends Service {
     private static final String TAG = "DownloaderService";
 
-    private static final String ACTION_QUEUE = "org.fdroid.fdroid.net.DownloaderService.action.QUEUE";
-    private static final String ACTION_CANCEL = "org.fdroid.fdroid.net.DownloaderService.action.CANCEL";
+    private static final String ACTION_QUEUE = "org.belmarket.shop.net.DownloaderService.action.QUEUE";
+    private static final String ACTION_CANCEL = "org.belmarket.shop.net.DownloaderService.action.CANCEL";
 
     private volatile Looper serviceLooper;
     private static volatile ServiceHandler serviceHandler;

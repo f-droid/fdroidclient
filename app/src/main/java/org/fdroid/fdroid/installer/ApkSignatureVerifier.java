@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.belmarket.shop.installer;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -25,7 +25,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 
-import org.fdroid.fdroid.Utils;
+import org.belmarket.shop.Utils;
 import org.spongycastle.util.encoders.Hex;
 
 import java.io.ByteArrayOutputStream;

@@ -1,10 +1,10 @@
-package org.fdroid.fdroid.localrepo;
+package org.belmarket.shop.localrepo;
 
 import android.content.Context;
 import android.util.Log;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Utils;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.Utils;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.x500.X500Name;
 import org.spongycastle.asn1.x509.GeneralName;

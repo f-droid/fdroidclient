@@ -1,9 +1,9 @@
-package org.fdroid.fdroid.data;
+package org.belmarket.shop.data;
 
 import android.app.Application;
 
-import org.fdroid.fdroid.Assert;
-import org.fdroid.fdroid.BuildConfig;
+import org.belmarket.shop.Assert;
+import org.belmarket.shop.BuildConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

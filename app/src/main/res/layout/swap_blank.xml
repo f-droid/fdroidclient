@@ -4,7 +4,7 @@
      gives an error, which is discussed here:
      http://stackoverflow.com/questions/27449776/conflicting-lint-messages-regarding-paddingstart-usage?lq=1
      -->
-<org.fdroid.fdroid.views.swap.StartSwapView
+<org.belmarket.shop.views.swap.StartSwapView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -207,4 +207,4 @@
 
     </ListView>
 
-</org.fdroid.fdroid.views.swap.StartSwapView>
+</org.belmarket.shop.views.swap.StartSwapView>

@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.swap;
+package org.belmarket.shop.views.swap;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -11,9 +11,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.NewRepoConfig;
-import org.fdroid.fdroid.localrepo.SwapService;
+import org.belmarket.shop.R;
+import org.belmarket.shop.data.NewRepoConfig;
+import org.belmarket.shop.localrepo.SwapService;
 
 public class ConfirmReceive extends RelativeLayout implements SwapWorkflowActivity.InnerView {
 

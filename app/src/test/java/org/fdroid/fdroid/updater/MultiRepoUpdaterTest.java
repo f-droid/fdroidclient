@@ -1,22 +1,22 @@
 
-package org.fdroid.fdroid.updater;
+package org.belmarket.shop.updater;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.RepoUpdater;
-import org.fdroid.fdroid.RepoUpdater.UpdateException;
-import org.fdroid.fdroid.TestUtils;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.FDroidProviderTest;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema;
+import org.belmarket.shop.Preferences;
+import org.belmarket.shop.RepoUpdater;
+import org.belmarket.shop.RepoUpdater.UpdateException;
+import org.belmarket.shop.TestUtils;
+import org.belmarket.shop.data.Apk;
+import org.belmarket.shop.data.ApkProvider;
+import org.belmarket.shop.data.AppProvider;
+import org.belmarket.shop.data.FDroidProviderTest;
+import org.belmarket.shop.data.Repo;
+import org.belmarket.shop.data.RepoProvider;
+import org.belmarket.shop.data.Schema;
 import org.junit.After;
 import org.junit.Before;
 

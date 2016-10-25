@@ -16,7 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package org.fdroid.fdroid;
+package org.belmarket.shop;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -50,15 +50,15 @@ import org.acra.ACRA;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
 import org.apache.commons.net.util.SubnetUtils;
-import org.fdroid.fdroid.Preferences.ChangeListener;
-import org.fdroid.fdroid.Preferences.Theme;
-import org.fdroid.fdroid.compat.PRNGFixes;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.InstalledAppProviderService;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.installer.InstallHistoryService;
-import org.fdroid.fdroid.net.IconDownloader;
-import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.belmarket.shop.Preferences.ChangeListener;
+import org.belmarket.shop.Preferences.Theme;
+import org.belmarket.shop.compat.PRNGFixes;
+import org.belmarket.shop.data.AppProvider;
+import org.belmarket.shop.data.InstalledAppProviderService;
+import org.belmarket.shop.data.Repo;
+import org.belmarket.shop.installer.InstallHistoryService;
+import org.belmarket.shop.net.IconDownloader;
+import org.belmarket.shop.net.WifiStateChangeService;
 
 import java.net.URL;
 import java.net.URLStreamHandler;
@@ -73,8 +73,8 @@ import sun.net.www.protocol.bluetooth.Handler;
 
 @ReportsCrashes(mailTo = "reports@f-droid.org",
         mode = ReportingInteractionMode.DIALOG,
-        reportDialogClass = org.fdroid.fdroid.acra.CrashReportActivity.class,
-        reportSenderFactoryClasses = org.fdroid.fdroid.acra.CrashReportSenderFactory.class
+        reportDialogClass = org.belmarket.shop.acra.CrashReportActivity.class,
+        reportSenderFactoryClasses = org.belmarket.shop.acra.CrashReportSenderFactory.class
 )
 public class FDroidApp extends Application {
 
@@ -161,7 +161,7 @@ public class FDroidApp extends Application {
 
     /**
      * Initialize the settings needed to run a local swap repo. This should
-     * only ever be called in {@link org.fdroid.fdroid.net.WifiStateChangeService.WifiInfoThread},
+     * only ever be called in {@link org.belmarket.shop.net.WifiStateChangeService.WifiInfoThread},
      * after the single init call in {@link FDroidApp#onCreate()}.
      */
     public static void initWifiSettings() {
@@ -314,12 +314,12 @@ public class FDroidApp extends Application {
     }
 
     /**
-     * Asks if the current process is "org.fdroid.fdroid:acra".
+     * Asks if the current process is "org.belmarket.shop:acra".
      *
      * This is helpful for bailing out of the {@link FDroidApp#onCreate} method early, preventing
      * problems that arise from executing the code twice. This happens due to the `android:process`
      * statement in AndroidManifest.xml causes another process to be created to run
-     * {@link org.fdroid.fdroid.acra.CrashReportActivity}. This was causing lots of things to be
+     * {@link org.belmarket.shop.acra.CrashReportActivity}. This was causing lots of things to be
      * started/run twice including {@link CleanCacheService} and {@link WifiStateChangeService}.
      *
      * Note that it is not perfect, because some devices seem to not provide a list of running app
@@ -336,7 +336,7 @@ public class FDroidApp extends Application {
 
         int pid = android.os.Process.myPid();
         for (RunningAppProcessInfo processInfo : processes) {
-            if (processInfo.pid == pid && "org.fdroid.fdroid:acra".equals(processInfo.processName)) {
+            if (processInfo.pid == pid && "org.belmarket.shop:acra".equals(processInfo.processName)) {
                 return true;
             }
         }

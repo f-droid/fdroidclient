@@ -51,7 +51,7 @@ it. We enforce some of these, but not all, via checkstyle.
 
 To get all the logcat messages by F-Droid, you can run:
 
-    adb logcat | grep `adb shell ps | grep org.fdroid.fdroid | cut -c10-15`
+    adb logcat | grep `adb shell ps | grep org.belmarket.shop | cut -c10-15`
 
 ## Building tips
 

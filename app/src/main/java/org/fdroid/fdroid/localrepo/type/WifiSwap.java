@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.localrepo.type;
+package org.belmarket.shop.localrepo.type;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,12 +8,12 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.localrepo.SwapService;
-import org.fdroid.fdroid.net.LocalHTTPD;
-import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.Preferences;
+import org.belmarket.shop.Utils;
+import org.belmarket.shop.localrepo.SwapService;
+import org.belmarket.shop.net.LocalHTTPD;
+import org.belmarket.shop.net.WifiStateChangeService;
 
 import java.io.IOException;
 import java.net.BindException;

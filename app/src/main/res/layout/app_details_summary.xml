@@ -40,7 +40,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-        tools:text="org.fdroid.fdroid" />
+        tools:text="org.belmarket.shop" />
 
     <TextView
         android:id="@+id/signature"

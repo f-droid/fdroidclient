@@ -1,11 +1,11 @@
-package org.fdroid.fdroid.compat;
+package org.belmarket.shop.compat;
 
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
 
-import org.fdroid.fdroid.Utils;
+import org.belmarket.shop.Utils;
 
 public class PackageManagerCompat {
 
@@ -15,7 +15,7 @@ public class PackageManagerCompat {
     public static void setInstaller(PackageManager mPm, String packageName) {
         if (Build.VERSION.SDK_INT < 11) return;
         try {
-            mPm.setInstallerPackageName(packageName, "org.fdroid.fdroid");
+            mPm.setInstallerPackageName(packageName, "org.belmarket.shop");
             Utils.debugLog(TAG, "Installer package name for " + packageName + " set successfully");
         } catch (Exception e) {
             // Many problems can occur:

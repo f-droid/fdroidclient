@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views;
+package org.belmarket.shop.views;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.Repo;
+import org.belmarket.shop.R;
+import org.belmarket.shop.data.Repo;
 
 public class RepoAdapter extends CursorAdapter {
 

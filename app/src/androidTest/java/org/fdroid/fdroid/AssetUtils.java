@@ -1,4 +1,4 @@
-package org.fdroid.fdroid;
+package org.belmarket.shop;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

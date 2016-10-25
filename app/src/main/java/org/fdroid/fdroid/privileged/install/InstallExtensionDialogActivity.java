@@ -32,10 +32,10 @@ import android.text.Html;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 
-import org.fdroid.fdroid.FDroid;
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.installer.PrivilegedInstaller;
+import org.belmarket.shop.FDroid;
+import org.belmarket.shop.FDroidApp;
+import org.belmarket.shop.R;
+import org.belmarket.shop.installer.PrivilegedInstaller;
 
 import java.io.File;
 

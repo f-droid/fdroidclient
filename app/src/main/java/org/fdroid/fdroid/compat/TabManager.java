@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.compat;
+package org.belmarket.shop.compat;
 
 import android.content.res.Configuration;
 import android.support.v4.app.FragmentTransaction;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
 
-import org.fdroid.fdroid.FDroid;
+import org.belmarket.shop.FDroid;
 
 import java.util.ArrayList;
 import java.util.List;
