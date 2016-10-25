@@ -48,113 +48,14 @@
     <string-array name="languageValues">
         <item></item>
         <item>en</item>
-        <item>ar</item>
-        <item>ast</item>
-        <item>bg</item>
-        <item>ca</item>
-        <item>cs</item>
-        <item>da</item>
-        <item>de</item>
-        <item>el</item>
-        <item>eo</item>
-        <item>es</item>
-        <item>et</item>
-        <item>eu</item>
         <item>fa</item>
-        <item>fi</item>
-        <item>fr</item>
-        <item>gl</item>
-        <item>he</item>
-        <item>hi</item>
-        <item>hr</item>
-        <item>hu</item>
-        <item>id</item>
-        <item>is</item>
-        <item>it</item>
-        <item>ja</item>
-        <item>ko</item>
-        <item>lt</item>
-        <item>lv</item>
-        <item>my</item>
-        <item>nb</item>
-        <item>nl</item>
-        <item>pl</item>
-        <item>pt-rBR</item>
-        <item>pt-rPT</item>
-        <item>ro</item>
-        <item>ru</item>
-        <item>sc</item>
-        <item>sk</item>
-        <item>sl</item>
-        <item>sq</item>
-        <item>sr</item>
-        <item>sv</item>
-        <item>ta</item>
-        <item>th</item>
-        <item>tr</item>
-        <item>ug</item>
-        <item>uk</item>
-        <item>ur</item>
-        <item>vi</item>
-        <item>zh-rCN</item>
-        <item>zh-rHK</item>
-        <item>zh-rTW</item>
     </string-array>
 
     <string-array name="languageNames">
         <item>@string/pref_language_default</item>
         <item>English</item>
-        <item>ﺎﻠﻋﺮﺒﻳﺓ</item>
-        <item>Asturian</item>
-        <item>Български</item>
-        <item>Català</item>
-        <item>Čeština</item>
-        <item>Dansk</item>
-        <item>Deutsch</item>
-        <item>Ελληνικά</item>
-        <item>Esperanto</item>
-        <item>Español</item>
-        <item>Eesti</item>
-        <item>Euskara</item>
         <item>ﻑﺍﺮﺳی</item>
-        <item>Suomi</item>
-        <item>Français</item>
-        <item>Galego</item>
-        <item>עברית</item>
-        <item>हिन्दी</item>
-        <item>Hrvatski</item>
-        <item>Magyar</item>
-        <item>Bahasa Indonesia</item>
-        <item>Íslenska</item>
-        <item>Italiano</item>
-        <item>日本語</item>
-        <item>한국어</item>
-        <item>Lietuvių</item>
-        <item>Latviešu</item>
-        <item>မြန်မာစာ</item>
-        <item>Norsk bokmål</item>
-        <item>Nederlands</item>
-        <item>Polski</item>
-        <item>Português (Brasil)</item>
-        <item>Português (Portugal)</item>
-        <item>Română</item>
-        <item>Русский</item>
-        <item>Sardinian</item>
-        <item>Slovenčina</item>
-        <item>Slovenščina</item>
-        <item>Shqip</item>
-        <item>Српски</item>
-        <item>Svenska</item>
-        <item>தமிழ்</item>
-        <item>ไทย</item>
-        <item>Türkçe</item>
-        <item>ﺉۇﻲﻏۇﺭچە</item>
-        <item>Українська</item>
-        <item>اردو</item>
-        <item>Tiếng Việt</item>
-        <item>中文 (中国)</item>
-        <item>中文 (香港)</item>
-        <item>中文 (台湾)</item>
+        
     </string-array>
 
 </resources>
