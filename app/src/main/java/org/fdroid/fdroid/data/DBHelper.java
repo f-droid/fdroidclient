@@ -166,96 +166,6 @@ class DBHelper extends SQLiteOpenHelper {
         this.context = context;
     }
 
-    private void populateRepoNames(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 37) {
-            return;
-        }
-        Utils.debugLog(TAG, "Populating repo names from the url");
-        final String[] columns = {RepoTable.Cols.ADDRESS, RepoTable.Cols._ID};
-        Cursor cursor = db.query(RepoTable.NAME, columns,
-                RepoTable.Cols.NAME + " IS NULL OR " + RepoTable.Cols.NAME + " = ''", null, null, null, null);
-        if (cursor != null) {
-            if (cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    String address = cursor.getString(0);
-                    long id = cursor.getInt(1);
-                    ContentValues values = new ContentValues(1);
-                    String name = Repo.addressToName(address);
-                    values.put(RepoTable.Cols.NAME, name);
-                    final String[] args = {Long.toString(id)};
-                    Utils.debugLog(TAG, "Setting repo name to '" + name + "' for repo " + address);
-                    db.update(RepoTable.NAME, values, RepoTable.Cols._ID + " = ?", args);
-                    cursor.moveToNext();
-                }
-            }
-            cursor.close();
-        }
-    }
-
-    private void renameRepoId(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 36 || columnExists(db, RepoTable.NAME, RepoTable.Cols._ID)) {
-            return;
-        }
-
-        Utils.debugLog(TAG, "Renaming " + RepoTable.NAME + ".id to " + RepoTable.Cols._ID);
-        db.beginTransaction();
-
-        try {
-            // http://stackoverflow.com/questions/805363/how-do-i-rename-a-column-in-a-sqlite-database-table#805508
-            String tempTableName = RepoTable.NAME + "__temp__";
-            db.execSQL("ALTER TABLE " + RepoTable.NAME + " RENAME TO " + tempTableName + ";");
-
-            // I realise this is available in the CREATE_TABLE_REPO above,
-            // however I have a feeling that it will need to be the same as the
-            // current structure of the table as of DBVersion 36, or else we may
-            // get into strife. For example, if there was a field that
-            // got removed, then it will break the "insert select"
-            // statement. Therefore, I've put a copy of CREATE_TABLE_REPO
-            // here that is the same as it was at DBVersion 36.
-            String createTableDdl = "create table " + RepoTable.NAME + " ("
-                    + RepoTable.Cols._ID + " integer not null primary key, "
-                    + RepoTable.Cols.ADDRESS + " text not null, "
-                    + RepoTable.Cols.NAME + " text, "
-                    + RepoTable.Cols.DESCRIPTION + " text, "
-                    + RepoTable.Cols.IN_USE + " integer not null, "
-                    + RepoTable.Cols.PRIORITY + " integer not null, "
-                    + RepoTable.Cols.SIGNING_CERT + " text, "
-                    + RepoTable.Cols.FINGERPRINT + " text, "
-                    + RepoTable.Cols.MAX_AGE + " integer not null default 0, "
-                    + RepoTable.Cols.VERSION + " integer not null default 0, "
-                    + RepoTable.Cols.LAST_ETAG + " text, "
-                    + RepoTable.Cols.LAST_UPDATED + " string);";
-
-            db.execSQL(createTableDdl);
-
-            String nonIdFields = TextUtils.join(", ", new String[] {
-                    RepoTable.Cols.ADDRESS,
-                    RepoTable.Cols.NAME,
-                    RepoTable.Cols.DESCRIPTION,
-                    RepoTable.Cols.IN_USE,
-                    RepoTable.Cols.PRIORITY,
-                    RepoTable.Cols.SIGNING_CERT,
-                    RepoTable.Cols.FINGERPRINT,
-                    RepoTable.Cols.MAX_AGE,
-                    RepoTable.Cols.VERSION,
-                    RepoTable.Cols.LAST_ETAG,
-                    RepoTable.Cols.LAST_UPDATED,
-            });
-
-            String insertSql = "INSERT INTO " + RepoTable.NAME +
-                    "(" + RepoTable.Cols._ID + ", " + nonIdFields + " ) " +
-                    "SELECT id, " + nonIdFields + " FROM " + tempTableName + ";";
-
-            db.execSQL(insertSql);
-            db.execSQL("DROP TABLE " + tempTableName + ";");
-            db.setTransactionSuccessful();
-        } catch (Exception e) {
-            Log.e(TAG, "Error renaming id to " + RepoTable.Cols._ID, e);
-        }
-        db.endTransaction();
-    }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -286,40 +196,6 @@ class DBHelper extends SQLiteOpenHelper {
                     defaultRepos[offset + 7]  // pubkey
             );
         }
-    }
-
-    private void insertRepo(SQLiteDatabase db, String name, String address,
-                            String description, String version, String enabled,
-                            String priority, String pushRequests, String pubKey) {
-        ContentValues values = new ContentValues();
-        values.put(RepoTable.Cols.ADDRESS, address);
-        values.put(RepoTable.Cols.NAME, name);
-        values.put(RepoTable.Cols.DESCRIPTION, description);
-        values.put(RepoTable.Cols.SIGNING_CERT, pubKey);
-        values.put(RepoTable.Cols.FINGERPRINT, Utils.calcFingerprint(pubKey));
-        values.put(RepoTable.Cols.MAX_AGE, 0);
-        values.put(RepoTable.Cols.VERSION, Utils.parseInt(version, 0));
-        values.put(RepoTable.Cols.IN_USE, Utils.parseInt(enabled, 0));
-        values.put(RepoTable.Cols.PRIORITY, Utils.parseInt(priority, Integer.MAX_VALUE));
-        values.put(RepoTable.Cols.LAST_ETAG, (String) null);
-        values.put(RepoTable.Cols.TIMESTAMP, 0);
-
-        switch (pushRequests) {
-            case "ignore":
-                values.put(RepoTable.Cols.PUSH_REQUESTS, Repo.PUSH_REQUEST_IGNORE);
-                break;
-            case "prompt":
-                values.put(RepoTable.Cols.PUSH_REQUESTS, Repo.PUSH_REQUEST_PROMPT);
-                break;
-            case "always":
-                values.put(RepoTable.Cols.PUSH_REQUESTS, Repo.PUSH_REQUEST_ACCEPT_ALWAYS);
-                break;
-            default:
-                throw new IllegalArgumentException(pushRequests + " is not a supported option!");
-        }
-
-        Utils.debugLog(TAG, "Adding repository " + name + " with push requests as " + pushRequests);
-        db.insert(RepoTable.NAME, null, values);
     }
 
     @Override
@@ -360,27 +236,33 @@ class DBHelper extends SQLiteOpenHelper {
         addObbFiles(db, oldVersion);
     }
 
-    /**
-     * For upgrades from earlier than 63, this is created in
-     * {@link #resetTransient(SQLiteDatabase)} in
-     * {@link #migrateToPackageTable(SQLiteDatabase, int)}, so it only needs
-     * to run when the database is at version 63.
-     */
     private void addObbFiles(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion != 63) {
+        if (oldVersion >= 64) {
             return;
         }
-        Utils.debugLog(TAG, "Adding " + ApkTable.Cols.OBB_MAIN_FILE
-                + ", " + ApkTable.Cols.OBB_PATCH_FILE
-                + ", and hash columns to " + ApkTable.NAME);
-        db.execSQL("alter table " + ApkTable.NAME + " add column "
-                + ApkTable.Cols.OBB_MAIN_FILE + " string");
-        db.execSQL("alter table " + ApkTable.NAME + " add column "
-                + ApkTable.Cols.OBB_MAIN_FILE_SHA256 + " string");
-        db.execSQL("alter table " + ApkTable.NAME + " add column "
-                + ApkTable.Cols.OBB_PATCH_FILE + " string");
-        db.execSQL("alter table " + ApkTable.NAME + " add column "
-                + ApkTable.Cols.OBB_PATCH_FILE_SHA256 + " string");
+
+        Utils.debugLog(TAG, "Ensuring " + ApkTable.Cols.OBB_MAIN_FILE + ", " +
+                ApkTable.Cols.OBB_PATCH_FILE + ", and hash columns exist on " + ApkTable.NAME);
+
+        if (!columnExists(db, ApkTable.NAME, ApkTable.Cols.OBB_MAIN_FILE)) {
+            db.execSQL("alter table " + ApkTable.NAME + " add column "
+                    + ApkTable.Cols.OBB_MAIN_FILE + " string");
+        }
+
+        if (!columnExists(db, ApkTable.NAME, ApkTable.Cols.OBB_MAIN_FILE_SHA256)) {
+            db.execSQL("alter table " + ApkTable.NAME + " add column "
+                    + ApkTable.Cols.OBB_MAIN_FILE_SHA256 + " string");
+        }
+
+        if (!columnExists(db, ApkTable.NAME, ApkTable.Cols.OBB_PATCH_FILE)) {
+            db.execSQL("alter table " + ApkTable.NAME + " add column "
+                    + ApkTable.Cols.OBB_PATCH_FILE + " string");
+        }
+
+        if (!columnExists(db, ApkTable.NAME, ApkTable.Cols.OBB_PATCH_FILE_SHA256)) {
+            db.execSQL("alter table " + ApkTable.NAME + " add column "
+                    + ApkTable.Cols.OBB_PATCH_FILE_SHA256 + " string");
+        }
     }
 
     private void migrateToPackageTable(SQLiteDatabase db, int oldVersion) {
@@ -720,6 +602,96 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL("Alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.LAST_UPDATED + " string");
     }
 
+    private void populateRepoNames(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 37) {
+            return;
+        }
+        Utils.debugLog(TAG, "Populating repo names from the url");
+        final String[] columns = {RepoTable.Cols.ADDRESS, RepoTable.Cols._ID};
+        Cursor cursor = db.query(RepoTable.NAME, columns,
+                RepoTable.Cols.NAME + " IS NULL OR " + RepoTable.Cols.NAME + " = ''", null, null, null, null);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    String address = cursor.getString(0);
+                    long id = cursor.getInt(1);
+                    ContentValues values = new ContentValues(1);
+                    String name = Repo.addressToName(address);
+                    values.put(RepoTable.Cols.NAME, name);
+                    final String[] args = {Long.toString(id)};
+                    Utils.debugLog(TAG, "Setting repo name to '" + name + "' for repo " + address);
+                    db.update(RepoTable.NAME, values, RepoTable.Cols._ID + " = ?", args);
+                    cursor.moveToNext();
+                }
+            }
+            cursor.close();
+        }
+    }
+
+    private void renameRepoId(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 36 || columnExists(db, RepoTable.NAME, RepoTable.Cols._ID)) {
+            return;
+        }
+
+        Utils.debugLog(TAG, "Renaming " + RepoTable.NAME + ".id to " + RepoTable.Cols._ID);
+        db.beginTransaction();
+
+        try {
+            // http://stackoverflow.com/questions/805363/how-do-i-rename-a-column-in-a-sqlite-database-table#805508
+            String tempTableName = RepoTable.NAME + "__temp__";
+            db.execSQL("ALTER TABLE " + RepoTable.NAME + " RENAME TO " + tempTableName + ";");
+
+            // I realise this is available in the CREATE_TABLE_REPO above,
+            // however I have a feeling that it will need to be the same as the
+            // current structure of the table as of DBVersion 36, or else we may
+            // get into strife. For example, if there was a field that
+            // got removed, then it will break the "insert select"
+            // statement. Therefore, I've put a copy of CREATE_TABLE_REPO
+            // here that is the same as it was at DBVersion 36.
+            String createTableDdl = "create table " + RepoTable.NAME + " ("
+                    + RepoTable.Cols._ID + " integer not null primary key, "
+                    + RepoTable.Cols.ADDRESS + " text not null, "
+                    + RepoTable.Cols.NAME + " text, "
+                    + RepoTable.Cols.DESCRIPTION + " text, "
+                    + RepoTable.Cols.IN_USE + " integer not null, "
+                    + RepoTable.Cols.PRIORITY + " integer not null, "
+                    + RepoTable.Cols.SIGNING_CERT + " text, "
+                    + RepoTable.Cols.FINGERPRINT + " text, "
+                    + RepoTable.Cols.MAX_AGE + " integer not null default 0, "
+                    + RepoTable.Cols.VERSION + " integer not null default 0, "
+                    + RepoTable.Cols.LAST_ETAG + " text, "
+                    + RepoTable.Cols.LAST_UPDATED + " string);";
+
+            db.execSQL(createTableDdl);
+
+            String nonIdFields = TextUtils.join(", ", new String[] {
+                    RepoTable.Cols.ADDRESS,
+                    RepoTable.Cols.NAME,
+                    RepoTable.Cols.DESCRIPTION,
+                    RepoTable.Cols.IN_USE,
+                    RepoTable.Cols.PRIORITY,
+                    RepoTable.Cols.SIGNING_CERT,
+                    RepoTable.Cols.FINGERPRINT,
+                    RepoTable.Cols.MAX_AGE,
+                    RepoTable.Cols.VERSION,
+                    RepoTable.Cols.LAST_ETAG,
+                    RepoTable.Cols.LAST_UPDATED,
+            });
+
+            String insertSql = "INSERT INTO " + RepoTable.NAME +
+                    "(" + RepoTable.Cols._ID + ", " + nonIdFields + " ) " +
+                    "SELECT id, " + nonIdFields + " FROM " + tempTableName + ";";
+
+            db.execSQL(insertSql);
+            db.execSQL("DROP TABLE " + tempTableName + ";");
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.e(TAG, "Error renaming id to " + RepoTable.Cols._ID, e);
+        }
+        db.endTransaction();
+    }
+
     private void addIsSwapToRepo(SQLiteDatabase db, int oldVersion) {
         if (oldVersion >= 47 || columnExists(db, RepoTable.NAME, RepoTable.Cols.IS_SWAP)) {
             return;
@@ -968,11 +940,20 @@ class DBHelper extends SQLiteOpenHelper {
                 + Repo.PUSH_REQUEST_IGNORE);
     }
 
-    private static boolean columnExists(SQLiteDatabase db, String table, String column) {
-        Cursor cursor = db.rawQuery("select * from " + table + " limit 0,1", null);
-        boolean exists = cursor.getColumnIndex(column) != -1;
+    private static boolean columnExists(SQLiteDatabase db, String table, String field) {
+        boolean found = false;
+        Cursor cursor = db.rawQuery("PRAGMA table_info(" + table + ")", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            if (name.equalsIgnoreCase(field)) {
+                found = true;
+                break;
+            }
+            cursor.moveToNext();
+        }
         cursor.close();
-        return exists;
+        return found;
     }
 
     private static boolean tableExists(SQLiteDatabase db, String table) {
@@ -982,6 +963,40 @@ class DBHelper extends SQLiteOpenHelper {
         boolean exists = cursor.getCount() > 0;
         cursor.close();
         return exists;
+    }
+
+    private void insertRepo(SQLiteDatabase db, String name, String address,
+                            String description, String version, String enabled,
+                            String priority, String pushRequests, String pubKey) {
+        ContentValues values = new ContentValues();
+        values.put(RepoTable.Cols.ADDRESS, address);
+        values.put(RepoTable.Cols.NAME, name);
+        values.put(RepoTable.Cols.DESCRIPTION, description);
+        values.put(RepoTable.Cols.SIGNING_CERT, pubKey);
+        values.put(RepoTable.Cols.FINGERPRINT, Utils.calcFingerprint(pubKey));
+        values.put(RepoTable.Cols.MAX_AGE, 0);
+        values.put(RepoTable.Cols.VERSION, Utils.parseInt(version, 0));
+        values.put(RepoTable.Cols.IN_USE, Utils.parseInt(enabled, 0));
+        values.put(RepoTable.Cols.PRIORITY, Utils.parseInt(priority, Integer.MAX_VALUE));
+        values.put(RepoTable.Cols.LAST_ETAG, (String) null);
+        values.put(RepoTable.Cols.TIMESTAMP, 0);
+
+        switch (pushRequests) {
+            case "ignore":
+                values.put(RepoTable.Cols.PUSH_REQUESTS, Repo.PUSH_REQUEST_IGNORE);
+                break;
+            case "prompt":
+                values.put(RepoTable.Cols.PUSH_REQUESTS, Repo.PUSH_REQUEST_PROMPT);
+                break;
+            case "always":
+                values.put(RepoTable.Cols.PUSH_REQUESTS, Repo.PUSH_REQUEST_ACCEPT_ALWAYS);
+                break;
+            default:
+                throw new IllegalArgumentException(pushRequests + " is not a supported option!");
+        }
+
+        Utils.debugLog(TAG, "Adding repository " + name + " with push requests as " + pushRequests);
+        db.insert(RepoTable.NAME, null, values);
     }
 
 }
