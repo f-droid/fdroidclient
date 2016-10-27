@@ -478,7 +478,7 @@
 
 * New basic app sharing functionality
 
-* Handle f-droid.org web repo as well as market:// app uris
+* Handle belmarket.ir web repo as well as market:// app uris
 
 * Search by just typing on main screen and search results screen
 
