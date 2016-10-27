@@ -157,8 +157,8 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-                <data android:host="f-droid.org" />
-                <data android:host="www.f-droid.org" />
+                <data android:host="belmarket.ir" />
+                <data android:host="www.belmarket.ir" />
                 <data android:pathPrefix="/app/" />
             </intent-filter>
 
@@ -170,8 +170,8 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-                <data android:host="f-droid.org" />
-                <data android:host="www.f-droid.org" />
+                <data android:host="belmarket.ir" />
+                <data android:host="www.belmarket.ir" />
                 <data android:pathPrefix="/repository/browse" />
             </intent-filter>
 

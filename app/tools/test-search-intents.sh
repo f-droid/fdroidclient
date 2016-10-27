@@ -33,13 +33,13 @@ function wait {
 APP_TO_SHOW=org.belmarket.shop
 SEARCH_QUERY=book+reader
 
-view "Search for '$SEARCH_QUERY' (fdroid web)" http://f-droid.org/repository/browse?fdfilter=$SEARCH_QUERY
+view "Search for '$SEARCH_QUERY' (fdroid web)" http://belmarket.ir/repository/browse?fdfilter=$SEARCH_QUERY
 view "Search for '$SEARCH_QUERY' (market)" market://search?q=$SEARCH_QUERY
 view "Search for '$SEARCH_QUERY' (play)" http://play.google.com/store/search?q=$SEARCH_QUERY
 view "Search for '$SEARCH_QUERY' (amazon)" http://amazon.com/gp/mas/dl/android?s=$SEARCH_QUERY
 view "Search for '$SEARCH_QUERY' (fdroid)" fdroid.search:$SEARCH_QUERY
-view "View '$APP_TO_SHOW' (fdroid web fdid)" http://f-droid.org/repository/browse?fdid=$APP_TO_SHOW
-view "View '$APP_TO_SHOW' (fdroid web /app/ path)" http://f-droid.org/app/$APP_TO_SHOW
+view "View '$APP_TO_SHOW' (fdroid web fdid)" http://belmarket.ir/repository/browse?fdid=$APP_TO_SHOW
+view "View '$APP_TO_SHOW' (fdroid web /app/ path)" http://belmarket.ir/app/$APP_TO_SHOW
 view "View '$APP_TO_SHOW' (market)" market://details?id=$APP_TO_SHOW
 view "View '$APP_TO_SHOW' (play)" http://play.google.com/store/apps/details?id=$APP_TO_SHOW
 view "View '$APP_TO_SHOW' (amazon)" amzn://apps/android?p=$APP_TO_SHOW

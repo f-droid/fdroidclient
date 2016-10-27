@@ -80,7 +80,7 @@
             android:layout_marginTop="8sp"
             android:singleLine="false"
             android:textSize="13sp"
-            tools:text="Connects to F-Droid compatible repositories. The default repo is hosted at f-droid.org, which contains only bona fide FOSS.
+            tools:text="Connects to F-Droid compatible repositories. The default repo is hosted at belmarket.ir, which contains only bona fide FOSS.
 
 Android is open in the sense that you are free to install apks from anywhere you wish, but there are many good reasons for using a client/repository setup:
 

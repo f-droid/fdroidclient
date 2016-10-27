@@ -1005,7 +1005,7 @@ public class AppDetails extends AppCompatActivity {
         shareIntent.setType("text/plain");
 
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary + ") - https://f-droid.org/app/" + app.packageName);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary + ") - https://belmarket.ir/app/" + app.packageName);
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }

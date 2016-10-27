@@ -12,7 +12,7 @@ Remember to include the following information:
 * Device model
 * F-Droid version
 * Steps to reproduce the issue
-* Logcat - see [instructions](https://f-droid.org/wiki/page/Getting_logcat_messages_after_crash)
+* Logcat - see [instructions](https://belmarket.ir/wiki/page/Getting_logcat_messages_after_crash)
 
 ## Translating
 

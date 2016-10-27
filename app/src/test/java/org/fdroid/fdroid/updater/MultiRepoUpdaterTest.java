@@ -35,8 +35,8 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
     protected static final String REPO_ARCHIVE = "Test F-Droid repo (Archive)";
     protected static final String REPO_CONFLICTING = "Test F-Droid repo with different apps";
 
-    protected static final String REPO_MAIN_URI = "https://f-droid.org/repo";
-    protected static final String REPO_ARCHIVE_URI = "https://f-droid.org/archive";
+    protected static final String REPO_MAIN_URI = "https://belmarket.ir/repo";
+    protected static final String REPO_ARCHIVE_URI = "https://belmarket.ir/archive";
     protected static final String REPO_CONFLICTING_URI = "https://example.com/conflicting/fdroid/repo";
 
     private static final String PUB_KEY =

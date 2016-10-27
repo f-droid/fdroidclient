@@ -3,9 +3,9 @@
 
     <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The client makes it easy to browse, install, and keep track of updates on your device.</string>
 
-    <string name="site_link">https://f-droid.org</string>
+    <string name="site_link">https://belmarket.ir</string>
     <string name="source_link">https://gitlab.com/fdroid/fdroidclient</string>
-    <string name="team_email">team@f-droid.org</string>
+    <string name="team_email">team@belmarket.ir</string>
     <string name="license_gplv3_later">GNU General Public License version\u00A03 or later</string>
 
     <string name="transition_app_item_icon">transition_app_item_icon</string>
@@ -37,7 +37,7 @@
         <item>2592000000</item>
         <item>31536000000</item>
         <item>9223372036854775807</item>
-    </string-array>
+    </string-array> 
 
     <string-array name="themeValues">
         <item>light</item>
@@ -55,7 +55,7 @@
         <item>@string/pref_language_default</item>
         <item>English</item>
         <item>ﻑﺍﺮﺳی</item>
-        
+
     </string-array>
 
 </resources>

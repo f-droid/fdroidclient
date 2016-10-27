@@ -71,7 +71,7 @@ import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 import sun.net.www.protocol.bluetooth.Handler;
 
-@ReportsCrashes(mailTo = "reports@f-droid.org",
+@ReportsCrashes(mailTo = "reports@belmarket.ir",
         mode = ReportingInteractionMode.DIALOG,
         reportDialogClass = org.belmarket.shop.acra.CrashReportActivity.class,
         reportSenderFactoryClasses = org.belmarket.shop.acra.CrashReportSenderFactory.class

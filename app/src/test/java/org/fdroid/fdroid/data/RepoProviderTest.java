@@ -51,13 +51,13 @@ public class RepoProviderTest extends FDroidProviderTest {
     @Test
     public void findByUrl() {
 
-        Repo fdroidRepo = RepoProvider.Helper.findByAddress(context, "https://f-droid.org/repo");
-        Repo fdroidArchiveRepo = RepoProvider.Helper.findByAddress(context, "https://f-droid.org/archive");
+        Repo fdroidRepo = RepoProvider.Helper.findByAddress(context, "https://belmarket.ir/repo");
+        Repo fdroidArchiveRepo = RepoProvider.Helper.findByAddress(context, "https://belmarket.ir/archive");
 
         String[] noRepos = {
                 "https://not-a-repo.example.com",
-                "https://f-droid.org",
-                "https://f-droid.org/",
+                "https://belmarket.ir",
+                "https://belmarket.ir/",
         };
 
         for (String url : noRepos) {
@@ -65,21 +65,21 @@ public class RepoProviderTest extends FDroidProviderTest {
         }
 
         String[] fdroidRepoUrls = {
-                "https://f-droid.org/repo/index.jar",
-                "https://f-droid.org/repo/index.jar?random-junk-in-query=yes",
-                "https://f-droid.org/repo/index.jar?random-junk-in-query=yes&more-junk",
-                "https://f-droid.org/repo/icons/org.belmarket.shop.100.png",
-                "https://f-droid.org/repo/icons-640/org.belmarket.shop.100.png",
+                "https://belmarket.ir/repo/index.jar",
+                "https://belmarket.ir/repo/index.jar?random-junk-in-query=yes",
+                "https://belmarket.ir/repo/index.jar?random-junk-in-query=yes&more-junk",
+                "https://belmarket.ir/repo/icons/org.belmarket.shop.100.png",
+                "https://belmarket.ir/repo/icons-640/org.belmarket.shop.100.png",
         };
 
         assertUrlsBelongToRepo(fdroidRepoUrls, fdroidRepo);
 
         String[] fdroidArchiveUrls = {
-                "https://f-droid.org/archive/index.jar",
-                "https://f-droid.org/archive/index.jar?random-junk-in-query=yes",
-                "https://f-droid.org/archive/index.jar?random-junk-in-query=yes&more-junk",
-                "https://f-droid.org/archive/icons/org.belmarket.shop.100.png",
-                "https://f-droid.org/archive/icons-640/org.belmarket.shop.100.png",
+                "https://belmarket.ir/archive/index.jar",
+                "https://belmarket.ir/archive/index.jar?random-junk-in-query=yes",
+                "https://belmarket.ir/archive/index.jar?random-junk-in-query=yes&more-junk",
+                "https://belmarket.ir/archive/icons/org.belmarket.shop.100.png",
+                "https://belmarket.ir/archive/icons-640/org.belmarket.shop.100.png",
         };
 
         assertUrlsBelongToRepo(fdroidArchiveUrls, fdroidArchiveRepo);

@@ -139,7 +139,7 @@ public class DatabaseMigration {
             String fingerprint = Utils.calcFingerprint(pubKey);
 
             ContentValues fdroidValues = new ContentValues();
-            fdroidValues.put("address", "https://f-droid.org/repo");
+            fdroidValues.put("address", "https://belmarket.ir/repo");
             fdroidValues.put("name", "F-Droid");
             fdroidValues.put("description", "The official FDroid repository. Applications in this repository are mostly built directory from the source code. Some are official binaries built by the original application developers - these will be replaced by source-built versions over time.");
             fdroidValues.put("pubkey", pubKey);
@@ -151,7 +151,7 @@ public class DatabaseMigration {
             db.insert(TABLE_REPO, null, fdroidValues);
 
             ContentValues archiveValues = new ContentValues();
-            archiveValues.put("address", "https://f-droid.org/archive");
+            archiveValues.put("address", "https://belmarket.ir/archive");
             archiveValues.put("name", "F-Droid Archive");
             archiveValues.put("description", "The archive repository of the F-Droid client. This contains older versions of applications from the main repository.");
             archiveValues.put("pubkey", pubKey);

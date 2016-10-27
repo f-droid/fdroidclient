@@ -19,7 +19,7 @@ public class HttpDownloaderTest {
     String[] urls = {
             "https://en.wikipedia.org/wiki/Index.html",
             "https://mirrors.kernel.org/debian/dists/stable/Release",
-            "https://f-droid.org/repo/index.jar",
+            "https://belmarket.ir/repo/index.jar",
             // sites that use SNI for HTTPS
             "https://guardianproject.info/fdroid/repo/index.jar",
             //"https://microg.org/fdroid/repo/index.jar",
@@ -44,7 +44,7 @@ public class HttpDownloaderTest {
     @Test
     public void downloadUninterruptedTestWithProgress() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(1);
-        String urlString = "https://f-droid.org/repo/index.jar";
+        String urlString = "https://belmarket.ir/repo/index.jar";
         receivedProgress = false;
         System.out.println("downloadUninterruptedTestWithProgress: " + urlString);
         receivedProgress = false;
@@ -111,7 +111,7 @@ public class HttpDownloaderTest {
     @Test
     public void downloadThenCancel() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(2);
-        URL url = new URL("https://f-droid.org/repo/index.jar");
+        URL url = new URL("https://belmarket.ir/repo/index.jar");
         File destFile = File.createTempFile("dl-", "");
         final HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
         httpDownloader.setListener(new ProgressListener() {

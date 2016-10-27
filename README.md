@@ -3,7 +3,7 @@
 [![build status](https://gitlab.com/fdroid/fdroidclient/badges/master/build.svg)](https://gitlab.com/fdroid/fdroidclient/builds)
 [![Translation status](https://hosted.weblate.org/widgets/f-droid/-/svg-badge.svg)](https://hosted.weblate.org/engage/f-droid/)
 
-Client for [F-Droid](https://f-droid.org), the Free Software repository system
+Client for [F-Droid](https://belmarket.ir), the Free Software repository system
 for Android.
 
 ## Building with Gradle
@@ -12,8 +12,8 @@ for Android.
 
 ## Direct download
 
-You can [download the application](https://f-droid.org/FDroid.apk) directly
-from our site or [browse it in the repo](https://f-droid.org/app/org.belmarket.shop).
+You can [download the application](https://belmarket.ir/FDroid.apk) directly
+from our site or [browse it in the repo](https://belmarket.ir/app/org.belmarket.shop).
 
 ## Contributing
 

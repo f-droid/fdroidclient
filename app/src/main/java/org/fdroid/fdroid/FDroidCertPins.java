@@ -25,11 +25,11 @@ import java.util.List;
 class FDroidCertPins {
     private static final String[] DEFAULT_PINS = {
 
-        // OU=PositiveSSL, CN=f-droid.org
+        // OU=PositiveSSL, CN=belmarket.ir
         // Fingerprint: 84B91CDF2312CB9BA7F3BE803783302F8D8C299F
         "638F93856E1F5EDFCBD40C46D4160CFF21B0713A",
 
-        // OU=PositiveSSL, CN=f-droid.org
+        // OU=PositiveSSL, CN=belmarket.ir
         "83a288fdbf7fb27ca2268d553168eb8f38298910",
 
         // OU=Gandi Standard SSL, CN=guardianproject.info
