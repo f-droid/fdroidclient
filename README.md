@@ -1,6 +1,6 @@
 # F-Droid Client
 
-[![build status](https://gitlab.com/fdroid/fdroidclient/badges/master/build.svg)](https://gitlab.com/fdroid/fdroidclient/builds)
+[![build status](https://gitlab.com/belos/Belmarket/badges/master/build.svg)](https://gitlab.com/belos/Belmarket/builds)
 [![Translation status](https://hosted.weblate.org/widgets/f-droid/-/svg-badge.svg)](https://hosted.weblate.org/engage/f-droid/)
 
 Client for [F-Droid](https://belmarket.ir), the Free Software repository system

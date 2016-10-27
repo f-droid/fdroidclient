@@ -3,7 +3,7 @@
 ## Reporting issues
 
 If you find an issue in the client, you can use our [Issue
-Tracker](https://gitlab.com/fdroid/fdroidclient/issues). Make sure that it
+Tracker](https://gitlab.com/belos/Belmarket/issues). Make sure that it
 hasn't yet been reported by searching first.
 
 Remember to include the following information:

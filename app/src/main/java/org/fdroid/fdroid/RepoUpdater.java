@@ -225,7 +225,7 @@ public class RepoUpdater {
 
             // Due to a bug in Android 5.0 Lollipop, the inclusion of spongycastle causes
             // breakage when verifying the signature of the downloaded .jar. For more
-            // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
+            // details, check out https://gitlab.com/belos/Belmarket/issues/111.
             FDroidApp.disableSpongyCastleOnLollipop();
 
             JarFile jarFile = new JarFile(downloadedFile, true);

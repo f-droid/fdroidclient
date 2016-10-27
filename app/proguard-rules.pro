@@ -22,7 +22,7 @@
 -keep class org.spongycastle.** {*;}
 
 # This keeps class members used for SystemInstaller IPC.
-#   Reference: https://gitlab.com/fdroid/fdroidclient/issues/79
+#   Reference: https://gitlab.com/belos/Belmarket/issues/79
 -keepclassmembers class * implements android.os.IInterface {
     public *;
 }

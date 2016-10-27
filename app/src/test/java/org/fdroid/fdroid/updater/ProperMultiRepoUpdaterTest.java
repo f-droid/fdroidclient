@@ -41,7 +41,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     public @interface RepoIdentifier { }
 
     /*
-     *This test fails due to issue #568 (https://gitlab.com/fdroid/fdroidclient/issues/568).
+     *This test fails due to issue #568 (https://gitlab.com/belos/Belmarket/issues/568).
     @Test
     public void appsRemovedFromRepo() throws RepoUpdater.UpdateException {
         assertEquals(0, AppProvider.Helper.all(context.getContentResolver()).size());
