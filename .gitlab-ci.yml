@@ -1,4 +1,4 @@
-image: fdroid/ci:client-20160927
+image: fdroid/ci:client-20161023
 
 cache:
   paths:
