@@ -30,7 +30,7 @@ dependencies {
     compile 'commons-io:commons-io:2.5'
     compile 'commons-net:commons-net:3.5'
     compile 'org.openhab.jmdns:jmdns:3.4.2'
-    compile('ch.acra:acra:4.9.0') {
+    compile('ch.acra:acra:4.9.1') {
         exclude module: 'support-v4'
         exclude module: 'support-annotations'
     }
@@ -84,7 +84,7 @@ if (!hasProperty('sourceDeps')) {
     dependencyVerification {
         verify = [
                 'cc.mvdan.accesspoint:library:0837b38adb48b66bb1385adb6ade8ecce7002ad815c55abf13517c82193458ea',
-                'ch.acra:acra:98e71bd00a713b9f848abbae4874601533aaf8492bf9b508e14d07f844a53839',
+                'ch.acra:acra:d2762968c448757a7d6acc9f141881d9632f664988e9723ece33b5f7c79f3bc9',
                 'commons-io:commons-io:a10418348d234968600ccb1d988efcbbd08716e1d96936ccc1880e7d22513474',
                 'commons-net:commons-net:c25b0da668b3c5649f002d504def22d1b4cb30d206f05428d2fe168fa1a901c2',
                 'com.android.support:animated-vector-drawable:5aa30f578e1daefb26bef0ce06414266fbb4cdf5d4259f42a92c7bd83dcd81b4',
