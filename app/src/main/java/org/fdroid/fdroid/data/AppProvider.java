@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -382,8 +383,9 @@ public class AppProvider extends FDroidProvider {
 
     private static final int CAN_UPDATE = CODE_SINGLE + 1;
     private static final int INSTALLED = CAN_UPDATE + 1;
-    private static final int SEARCH = INSTALLED + 1;
-    private static final int RECENTLY_UPDATED = SEARCH + 1;
+    private static final int SEARCH_TEXT = INSTALLED + 1;
+    private static final int SEARCH_TEXT_AND_CATEGORIES = SEARCH_TEXT + 1;
+    private static final int RECENTLY_UPDATED = SEARCH_TEXT_AND_CATEGORIES + 1;
     private static final int NEWLY_ADDED = RECENTLY_UPDATED + 1;
     private static final int CATEGORY = NEWLY_ADDED + 1;
     private static final int CALC_SUGGESTED_APKS = CATEGORY + 1;
@@ -401,7 +403,8 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
         MATCHER.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
         MATCHER.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
-        MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*", SEARCH);
+        MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*/*", SEARCH_TEXT_AND_CATEGORIES);
+        MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*", SEARCH_TEXT);
         MATCHER.addURI(getAuthority(), PATH_SEARCH_INSTALLED + "/*", SEARCH_INSTALLED);
         MATCHER.addURI(getAuthority(), PATH_SEARCH_CAN_UPDATE + "/*", SEARCH_CAN_UPDATE);
         MATCHER.addURI(getAuthority(), PATH_SEARCH_REPO + "/*/*", SEARCH_REPO);
@@ -489,15 +492,23 @@ public class AppProvider extends FDroidProvider {
         return Uri.withAppendedPath(getContentUri(), packageName);
     }
 
-    public static Uri getSearchUri(String query) {
-        if (TextUtils.isEmpty(query)) {
+    public static Uri getSearchUri(String query, @Nullable String category) {
+        if (TextUtils.isEmpty(query) && TextUtils.isEmpty(category)) {
             // Return all the things for an empty search.
             return getContentUri();
+        } else if (TextUtils.isEmpty(query)) {
+            return getCategoryUri(category);
         }
-        return getContentUri().buildUpon()
+
+        Uri.Builder builder = getContentUri().buildUpon()
                 .appendPath(PATH_SEARCH)
-                .appendPath(query)
-                .build();
+                .appendPath(query);
+
+        if (!TextUtils.isEmpty(category)) {
+            builder.appendPath(category);
+        }
+
+        return builder.build();
     }
 
     public static Uri getSearchInstalledUri(String query) {
@@ -594,7 +605,6 @@ public class AppProvider extends FDroidProvider {
         final String app = getTableName();
         final String[] columns = {
                 PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME,
-                CategoryTable.NAME + "." + CategoryTable.Cols.NAME,
                 app + "." + Cols.NAME,
                 app + "." + Cols.SUMMARY,
                 app + "." + Cols.DESCRIPTION,
@@ -687,6 +697,10 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryCategory(String category) {
+        if (TextUtils.isEmpty(category)) {
+            return new AppQuerySelection();
+        }
+
         final String selection = CategoryTable.NAME + "." + CategoryTable.Cols.NAME + " = ? ";
         final String[] args = {category};
         return new AppQuerySelection(selection, args);
@@ -715,6 +729,7 @@ public class AppProvider extends FDroidProvider {
 
         int limit = 0;
 
+        List<String> pathSegments = uri.getPathSegments();
         switch (MATCHER.match(uri)) {
             case CALC_PREFERRED_METADATA:
                 updatePreferredMetadata();
@@ -725,9 +740,8 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             case CODE_SINGLE:
-                List<String> pathParts = uri.getPathSegments();
-                long repoId = Long.parseLong(pathParts.get(1));
-                String packageName = pathParts.get(2);
+                long repoId = Long.parseLong(pathSegments.get(1));
+                String packageName = pathSegments.get(2);
                 selection = selection.add(querySingle(packageName, repoId));
                 repoIsKnown = true;
                 break;
@@ -747,8 +761,15 @@ public class AppProvider extends FDroidProvider {
                 includeSwap = false;
                 break;
 
-            case SEARCH:
-                selection = selection.add(querySearch(uri.getLastPathSegment()));
+            case SEARCH_TEXT:
+                selection = selection.add(querySearch(pathSegments.get(1)));
+                includeSwap = false;
+                break;
+
+            case SEARCH_TEXT_AND_CATEGORIES:
+                selection = selection
+                        .add(querySearch(pathSegments.get(1)))
+                        .add(queryCategory(pathSegments.get(2)));
                 includeSwap = false;
                 break;
 
@@ -764,8 +785,8 @@ public class AppProvider extends FDroidProvider {
 
             case SEARCH_REPO:
                 selection = selection
-                        .add(querySearch(uri.getPathSegments().get(2)))
-                        .add(queryRepo(Long.parseLong(uri.getPathSegments().get(1))));
+                        .add(querySearch(pathSegments.get(2)))
+                        .add(queryRepo(Long.parseLong(pathSegments.get(1))));
                 repoIsKnown = true;
                 break;
 
@@ -775,9 +796,8 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             case TOP_FROM_CATEGORY:
-                List<String> parts = uri.getPathSegments();
-                selection = selection.add(queryCategory(parts.get(2)));
-                limit = Integer.parseInt(parts.get(1));
+                selection = selection.add(queryCategory(pathSegments.get(2)));
+                limit = Integer.parseInt(pathSegments.get(1));
                 includeSwap = false;
                 break;
 

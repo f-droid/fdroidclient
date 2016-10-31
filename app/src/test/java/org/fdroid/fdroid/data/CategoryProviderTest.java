@@ -39,6 +39,33 @@ public class CategoryProviderTest extends FDroidProviderTest {
     // ========================================================================
 
     @Test
+    public void queryFreeTextAndCategories() {
+        insertAppWithCategory("com.dog", "Dog", "Animal");
+        insertAppWithCategory("com.cat", "Cat", "Animal");
+        insertAppWithCategory("com.crow", "Crow", "Animal,Bird");
+        insertAppWithCategory("com.chicken", "Chicken", "Animal,Bird,Food");
+        insertAppWithCategory("com.dog-statue", "Dog Statue", "Animal,Mineral");
+        insertAppWithCategory("com.rock", "Rock", "Mineral");
+        insertAppWithCategory("com.banana", "Banana", "Food");
+        insertAppWithCategory("com.dog-food", "Dog Food", "Food");
+
+        assertPackagesInUri(AppProvider.getSearchUri("dog", "Animal"), new String[] {
+                "com.dog",
+                "com.dog-statue",
+        });
+
+        assertPackagesInUri(AppProvider.getSearchUri("dog", "Food"), new String[] {
+                "com.dog-food",
+        });
+
+        assertPackagesInUri(AppProvider.getSearchUri("dog", null), new String[] {
+                "com.dog",
+                "com.dog-statue",
+                "com.dog-food",
+        });
+    }
+
+    @Test
     public void queryAppsInCategories() {
         insertAppWithCategory("com.dog", "Dog", "Animal");
         insertAppWithCategory("com.cat", "Cat", "Animal");
