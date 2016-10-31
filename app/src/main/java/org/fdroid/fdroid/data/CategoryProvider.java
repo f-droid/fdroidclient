@@ -185,7 +185,7 @@ public class CategoryProvider extends FDroidProvider {
     }
 
     protected QuerySelection querySingle(String categoryName) {
-        final String selection = getTableName() + "." + Cols.NAME + " = ?";
+        final String selection = getTableName() + "." + Cols.NAME + " = ? COLLATE NOCASE";
         final String[] args = {categoryName};
         return new QuerySelection(selection, args);
     }

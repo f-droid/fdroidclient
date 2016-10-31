@@ -82,6 +82,13 @@ public class CategoryProviderTest extends FDroidProviderTest {
                 "com.chicken",
         });
 
+        assertPackagesInCategory("animal", new String[] {
+                "com.dog",
+                "com.cat",
+                "com.crow",
+                "com.chicken",
+        });
+
         assertPackagesInCategory("Bird", new String[]{
                 "com.crow",
                 "com.chicken",

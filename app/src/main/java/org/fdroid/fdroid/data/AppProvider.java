@@ -701,7 +701,10 @@ public class AppProvider extends FDroidProvider {
             return new AppQuerySelection();
         }
 
-        final String selection = CategoryTable.NAME + "." + CategoryTable.Cols.NAME + " = ? ";
+        // Note, the COLLATE NOCASE only works for ASCII columns. The "ICU extension" for SQLite
+        // provides proper case management for Unicode characters, but is not something provided
+        // by Android.
+        final String selection = CategoryTable.NAME + "." + CategoryTable.Cols.NAME + " = ? COLLATE NOCASE ";
         final String[] args = {category};
         return new AppQuerySelection(selection, args);
     }
