@@ -736,11 +736,11 @@ public class AppDetails extends AppCompatActivity {
                             MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         }
 
-        MenuItemCompat.setShowAsAction(menu.add(
+        /*MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, SHARE, 1, R.string.menu_share)
                         .setIcon(R.drawable.ic_share_white),
                 MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
-                        MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+                        MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);*/
 
         menu.add(Menu.NONE, IGNOREALL, 2, R.string.menu_ignore_all)
                     .setIcon(R.drawable.ic_do_not_disturb_white)
