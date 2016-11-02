@@ -386,4 +386,6 @@ Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
 
     <string name="update_auto_install">Instalar atualizações automaticamente</string>
     <string name="update_auto_install_summary">Descarregar e instalar atualizações em segundo plano</string>
+    <string name="keep_install_history">Manter histórico de instalação</string>
+    <string name="keep_install_history_summary">Guardar registo de instalações e remoções através do F-Droid</string>
     </resources>

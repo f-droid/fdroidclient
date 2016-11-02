@@ -192,7 +192,7 @@
     <string name="tap_to_install">Свалянето приключи. Натиснете за инсталиране</string>
 
     <string name="unstable_updates">Нестабилни актуализации</string>
-    <string name="unstable_updates_summary">Предлага актуализиране до версии, които могат да бъдат нестабилни</string>
+    <string name="unstable_updates_summary">Предлагай актуализиране до версии, които могат да бъдат нестабилни</string>
     <string name="empty_available_app_list">В категорията няма приложения.\n\nИзберете друга категория или актуализирайте хранилищата за да получите актуалния списък с приложения.</string>
     <string name="category_Connectivity">Свързаност</string>
     <string name="menu_upgrade">Обнови</string>
@@ -327,4 +327,6 @@
     <string name="system_install_button_open">Отваряне на плъгина</string>
     <string name="system_install_post_fail_message">Инсталацията на F-Droid Privileged Extension плъгина се провали. Не всички варианти на Андроид поддържат метода на инсталация. За повече информация се консултирайте с бъг тракера на F-Droid.</string>
     <string name="linking_apks">Прилагане на APK файловете към хранилището…</string>
+    <string name="update_auto_download">Автоматично сваляне на актуализации</string>
+    <string name="update_auto_install">Автоматично инсталиране на актуализации</string>
     </resources>

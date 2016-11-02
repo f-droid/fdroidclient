@@ -323,12 +323,18 @@ ponovno omogućiti repozitorij kako bi instalirali aplikacije iz njega.</string>
     <string name="tap_to_install_format">Dodirnite za instalaciju %s</string>
     <string name="tap_to_update_format">Dodirnite za ažuriranje %s</string>
     <string name="install_confirm">treba pristup</string>
-    <string name="install_confirm_update">Želite li instalirati ažuriranje
-na ovu postojeću aplikaciju? Vaši podaci neće
-biti izgubljeni. Ažurirana aplikacija će imati pristup:</string>
-    <string name="install_confirm_update_system">Želite li instalirati ažuriranje na ovu ugrađenu aplikaciju? Vaši podaci neće biti izgubljeni. Ažurirana aplikacija će imati pristup:</string>
-    <string name="install_confirm_update_no_perms">Želite li instalirati ažuriranje na ovu postojeću aplikaciju? Vaši podaci neće biti izgubljeni. Ne zahtijeva posebne dozvole.</string>
-    <string name="install_confirm_update_system_no_perms">Želite li instalirati ažuriranje na ovu ugrađenu aplikaciju? Vaši podaci neće biti izgubljeni. Ne zahtijeva posebne dozvole.</string>
+    <string name="install_confirm_update">Želite li ažurirati ovu postojeću aplikaciju?
+Vaši podaci neće biti izgubljeni.
+Ažurirana aplikacija će imati pristup:</string>
+    <string name="install_confirm_update_system">Želite li ažurirati ovu ugrađenu aplikaciju?
+Vaši podaci neće biti izgubljeni.
+Ažurirana aplikacija će imati pristup:</string>
+    <string name="install_confirm_update_no_perms">Želite li ažurirati ovu postojeću aplikaciju?
+Vaši podaci neće biti izgubljeni.
+Ne zahtijeva posebne dozvole.</string>
+    <string name="install_confirm_update_system_no_perms">Želite li ažurirati ovu ugrađenu aplikaciju?
+Vaši podaci neće biti izgubljeni.
+Ne zahtijeva posebne dozvole.</string>
     <string name="newPerms">Novo</string>
     <string name="allPerms">Sve</string>
     <string name="perm_costs_money">Ovo se može naplaćivati</string>
@@ -368,10 +374,14 @@ biti izgubljeni. Ažurirana aplikacija će imati pristup:</string>
     <string name="theme_night">Noćna</string>
 
     <string name="crash_dialog_title">F-Droid se srušio</string>
-    <string name="crash_dialog_text">Neočekivana greška prilikom prisilnog zaustavljanja aplikacije. Želite li poslati detalje kvara putem e-maila kako bi ga popravili?</string>
+    <string name="crash_dialog_text">Dogodila se neočekivana greša,
+aplikacija je prisilno zaustavljena.Želite li poslati detalje
+kvara putem e-maila kako bi ga popravili?</string>
     <string name="crash_dialog_comment_prompt">Možete dodati dodatne informacije i komentare ovdje:</string>
 <string name="keep_install_history">Zadrži povijest instalacija</string>
     <string name="update_auto_install">Automatski instaliraj ažuriranja</string>
     <string name="update_auto_install_summary">Preuzmi i instaliraj ažuriranja aplikacija u pozadini</string>
-    <string name="keep_install_history_summary">Spremi zapisnik o svim instalacijama aplikacija unutar F-Droida</string>
+    <string name="keep_install_history_summary">Spremi zapisnik o svim instaliranim i obrisanim aplikacijama unutar F-Droida</string>
+    <string name="hide_anti_feature_apps">Obilježi aplikacije s nepoželjnim svojstvima</string>
+    <string name="hide_anti_feature_apps_on">Obilježi aplikacije koje zahtjevaju nepoželjna svojstva</string>
     </resources>

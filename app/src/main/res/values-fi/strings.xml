@@ -216,4 +216,76 @@
     <string name="unsigned">Ei allekirjoitettu</string>
     <string name="repo_details">Ohjelmasäilö</string>
     <string name="repo_confirm_delete_title">Poistetaanko ohjelmasäilö?</string>
+    <string name="update_auto_install">Asenna päivitykset automaattisesti</string>
+    <string name="repo_provider">Sovelluslähde: %s</string>
+
+    <string name="menu_flattr">Flattr</string>
+
+
+    <string name="repo_url">Osoite</string>
+    <string name="repo_num_apps">Sovelluksien lukumäärä</string>
+    <string name="repo_description">Kuvaus</string>
+    <string name="repo_last_update">Edellinen päivitys</string>
+    <string name="repo_name">Nimi</string>
+    <string name="unknown">Tuntematon</string>
+    <string name="repo_added">%1$s F-Droid sovelluslähde tallennettiin.</string>
+    <string name="not_on_same_wifi">Laitteesi ei ole samassa Wi-Fi-verkossa kuin lisäämäsi paikallinen sovelluslähde! Kokeile liittyä verkkoon: %s</string>
+    <string name="pref_language">Kieli</string>
+    <string name="pref_language_default">Järjestelmän oletus</string>
+
+    <string name="wifi">Wi-Fi</string>
+    <string name="wifi_ap">Hotspot</string>
+
+    <string name="category_Money">Raha</string>
+    <string name="category_Sports_Health">Urheilu &amp; terveys</string>
+    <string name="category_Theming">Teemat</string>
+    <string name="category_Time">Aika</string>
+    <string name="category_Writing">Kirjoittaminen</string>
+
+    <string name="system_install_button_install">Asenna</string>
+    <string name="system_install_installing">Asennetaan…</string>
+    <string name="system_install_uninstalling">Poistetaan…</string>
+    <string name="system_install_warning">Tämä voi kestää jopa 10 sekuntia.</string>
+    <string name="system_install_warning_lollipop">Tämä voi kestää jopa 10 sekuntia ja laite <b>käynnistetään uudelleen</b> sen jälkeen.</string>
+    <string name="system_uninstall_button">Poista</string>
+    <string name="swap_active_hotspot">%1$s (sinun hotspot)</string>
+    <string name="swap_dont_show_again">Älä näytä tätä uudelleen</string>
+    <string name="swap_scan_qr">Skannaa QR-koodi</string>
+    <string name="loading">Ladataan…</string>
+    <string name="keep_year">1 vuosi</string>
+    <string name="keep_month">1 kuukausi</string>
+    <string name="keep_week">1 viikko</string>
+    <string name="keep_day">1 päivä</string>
+    <string name="keep_hour">1 tunti</string>
+    <string name="uninstalling">Poistetaan…</string>
+
+    <string name="installing">Asennetaan…</string>
+    <string name="downloading_apk">Ladataan %1$s</string>
+    <string name="keep_install_history">Pidä asennushistoria</string>
+    <string name="keep_install_history_summary">Säilytä lokia kaikista asennuksista ja poistoista F-Droidin sisällä</string>
+    <string name="update_auto_install_summary">Lataa ja asenna päivitykset sovelluksiin taustalla</string>
+    <string name="malformed_repo_uri">Ohitetaan virheellisesti muodostettu sovelluslähteen URI: %s</string>
+    <string name="antinonfreeassetslist">Tämä sovellus sisältää epävapaata omaisuutta</string>
+
+    <string name="rooted_on">Älä himmennä sovelluksia jotka edellyttävät pääkäyttäjän oikeuksia</string>
+    <string name="hide_anti_feature_apps">Himmennä anti-feature sovellukset</string>
+    <string name="hide_anti_feature_apps_on">Himmennä sovellukset jotka edellyttävät anti-featurea</string>
+    <string name="status_connecting_to_repo">Yhdistetään
+%1$s</string>
+    <string name="no_handler_app">Sinulla ei ole saatavilla yhtään sovellusta joka pystyy käsittelemään %s.</string>
+    <string name="repo_fingerprint">Allekirjoitusvarmenteen sormenjälki (SHA-256)</string>
+    <string name="repo_searching_address">Etsitään F-Droid sovelluslähdettä
+%1$s</string>
+    <string name="minsdk_or_later">%s tai myöhemmin</string>
+    <string name="category_Connectivity">Yhdistettävyys</string>
+    <string name="category_Graphics">Grafiikka</string>
+    <string name="empty_installed_app_list">Ei asennettuja sovelluksia.
+
+Laitteessasi on sovelluksia mutta ne eivät ole saatavilla F-Droidissa. Tämä voi johtua joko siitä, että sinun täytyy päivittää sovelluslähteet, tai sovelluslähteissä ei yksinkertaisesti ole sovelluksiasi saatavilla.</string>
+    <string name="empty_available_app_list">Ei sovelluksia tässä kategoriassa.
+
+Kokeile valita eri kategoria tai päivitä sovelluslähteet saadaksesi tuoreen listauksen sovelluksista.</string>
+    <string name="empty_can_update_app_list">Kaikki sovellukset ajan tasalla.
+
+Onnittelut! Kaikki sovelluksesi ovat ajan tasalla (tai sovelluslähteesi ovat vanhentuneet).</string>
     </resources>
