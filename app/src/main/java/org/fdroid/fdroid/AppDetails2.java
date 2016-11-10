@@ -33,6 +33,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.views.ApkListAdapter;
 import org.fdroid.fdroid.views.LinearLayoutManagerSnapHelper;
 import org.fdroid.fdroid.views.ScreenShotsRecyclerViewAdapter;
 
@@ -130,7 +132,7 @@ public class AppDetails2 extends AppCompatActivity {
             mItems.add(Integer.valueOf(VIEWTYPE_WHATS_NEW));
             mItems.add(Integer.valueOf(VIEWTYPE_LINKS));
             //mItems.add(Integer.valueOf(VIEWTYPE_PERMISSIONS));
-            //mItems.add(Integer.valueOf(VIEWTYPE_VERSIONS));
+            mItems.add(Integer.valueOf(VIEWTYPE_VERSIONS));
         }
 
         @Override
@@ -154,7 +156,9 @@ public class AppDetails2 extends AppCompatActivity {
             } else if (viewType == VIEWTYPE_PERMISSIONS) {
 
             } else if (viewType == VIEWTYPE_VERSIONS) {
-
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.app_details2_versions, parent, false);
+                return new VersionsViewHolder(view);
             }
             return null;
         }
@@ -318,6 +322,17 @@ public class AppDetails2 extends AppCompatActivity {
                 if (!TextUtils.isEmpty(mApp.flattrID)) {
                     addLinkItemView(vh.contentView, R.string.menu_flattr, R.drawable.ic_flattr, "https://flattr.com/thing/" + mApp.flattrID);
                 }
+            } else if (viewType == VIEWTYPE_VERSIONS) {
+                final VersionsViewHolder vh = (VersionsViewHolder) holder;
+                vh.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        boolean shouldBeVisible = (vh.contentView.getVisibility() != View.VISIBLE);
+                        vh.contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
+                        TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_source_code, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+                    }
+                });
+                vh.contentView.setAdapter(new ApkListAdapter(mContext, mApp));
             }
         }
 
@@ -442,6 +457,22 @@ public class AppDetails2 extends AppCompatActivity {
             @Override
             public String toString() {
                 return super.toString() + " links";
+            }
+        }
+
+        public class VersionsViewHolder extends RecyclerView.ViewHolder {
+            final TextView headerView;
+            final ListView contentView;
+
+            VersionsViewHolder(View view) {
+                super(view);
+                headerView = (TextView) view.findViewById(R.id.information);
+                contentView = (ListView) view.findViewById(R.id.lv_content);
+            }
+
+            @Override
+            public String toString() {
+                return super.toString() + " versions";
             }
         }
 

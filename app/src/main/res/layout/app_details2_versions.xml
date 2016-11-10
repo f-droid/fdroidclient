@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_information"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/details_activity_padding"
+    android:clickable="true"
+    android:orientation="vertical"
+    tools:ignore="UnusedAttribute">
+    <TextView
+        android:id="@+id/information"
+        style="@style/AppDetailsSubheaderText"
+        android:text="@string/version"
+        android:drawableRight="@drawable/ic_expand_more_grey600"
+        android:drawableEnd="@drawable/ic_expand_more_grey600"
+        android:drawableLeft="@drawable/ic_website"
+        android:drawableStart="@drawable/ic_website" />
+
+    <ListView
+        android:id="@+id/lv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/layout_horizontal_margin"
+        android:layout_marginStart="@dimen/layout_horizontal_margin"
+        android:visibility="gone">
+    </ListView>
+</LinearLayout>
