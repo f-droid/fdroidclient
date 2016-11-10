@@ -1525,8 +1525,10 @@ public class AppDetails extends AppCompatActivity {
 
         public void startProgress(boolean allowCancel) {
             cancelButton.setVisibility(allowCancel ? View.VISIBLE : View.GONE);
-            showIndeterminateProgress(getString(R.string.download_pending));
-            updateViews();
+            if (isAdded()) {
+                showIndeterminateProgress(getString(R.string.download_pending));
+                updateViews();
+            }
         }
 
         private void showIndeterminateProgress(String message) {
