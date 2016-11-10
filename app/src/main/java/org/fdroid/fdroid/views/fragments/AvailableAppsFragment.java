@@ -26,6 +26,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.ArrayAdapterCompat;
 import org.fdroid.fdroid.compat.CursorAdapterCompat;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.CategoryProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
 
@@ -94,7 +95,7 @@ public class AvailableAppsFragment extends AppListFragment implements
             new AsyncTask<Void, Void, List<String>>() {
                 @Override
                 protected List<String> doInBackground(Void... params) {
-                    return AppProvider.Helper.categories(activity);
+                    return CategoryProvider.Helper.categories(activity);
                 }
 
                 @Override
@@ -132,7 +133,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         categorySpinner = spinner;
         categorySpinner.setId(R.id.category_spinner);
 
-        categories = AppProvider.Helper.categories(getActivity());
+        categories = CategoryProvider.Helper.categories(getActivity());
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 getActivity(), android.R.layout.simple_spinner_item, translateCategories(getActivity(), categories));
@@ -163,20 +164,20 @@ public class AvailableAppsFragment extends AppListFragment implements
 
         categoryWrapper = view.findViewById(R.id.category_wrapper);
         setupCategorySpinner((Spinner) view.findViewById(R.id.category_spinner));
-        defaultCategory = AppProvider.Helper.getCategoryWhatsNew(getActivity());
+        defaultCategory = CategoryProvider.Helper.getCategoryWhatsNew(getActivity());
 
         return view;
     }
 
     @Override
     protected Uri getDataUri() {
-        if (currentCategory == null || currentCategory.equals(AppProvider.Helper.getCategoryAll(getActivity()))) {
+        if (currentCategory == null || currentCategory.equals(CategoryProvider.Helper.getCategoryAll(getActivity()))) {
             return AppProvider.getContentUri();
         }
-        if (currentCategory.equals(AppProvider.Helper.getCategoryRecentlyUpdated(getActivity()))) {
+        if (currentCategory.equals(CategoryProvider.Helper.getCategoryRecentlyUpdated(getActivity()))) {
             return AppProvider.getRecentlyUpdatedUri();
         }
-        if (currentCategory.equals(AppProvider.Helper.getCategoryWhatsNew(getActivity()))) {
+        if (currentCategory.equals(CategoryProvider.Helper.getCategoryWhatsNew(getActivity()))) {
             return AppProvider.getNewlyAddedUri();
         }
         return AppProvider.getCategoryUri(currentCategory);

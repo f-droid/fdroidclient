@@ -48,15 +48,6 @@
         android:layout_height="wrap_content"
         android:textSize="12sp" />
 
-    <!-- android:visibility="gone" because not needed in app details imho (but maybe will get used in another place soon) -->
-    <TextView
-        android:id="@+id/categories"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:visibility="gone"
-        tools:text="System" />
-
     <TextView
         android:id="@+id/antifeatures"
         android:layout_width="fill_parent"

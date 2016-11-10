@@ -181,6 +181,10 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         return new RepoUpdater(context, createRepo(name, uri, context));
     }
 
+    protected RepoUpdater createUpdater(String name, String uri, Context context, String signingCert) {
+        return new RepoUpdater(context, createRepo(name, uri, context, signingCert));
+    }
+
     protected void updateConflicting() throws UpdateException {
         updateRepo(createUpdater(REPO_CONFLICTING, REPO_CONFLICTING_URI, context), "multiRepo.conflicting.jar");
     }

@@ -11,9 +11,11 @@ import android.text.TextUtils;
 
 import java.util.List;
 
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 
 /**
@@ -29,6 +31,7 @@ public class TempAppProvider extends AppProvider {
     private static final String PROVIDER_NAME = "TempAppProvider";
 
     static final String TABLE_TEMP_APP = "temp_" + AppMetadataTable.NAME;
+    static final String TABLE_TEMP_CAT_JOIN = "temp_" + CatJoinTable.NAME;
 
     private static final String PATH_INIT = "init";
     private static final String PATH_COMMIT = "commit";
@@ -49,6 +52,11 @@ public class TempAppProvider extends AppProvider {
     @Override
     protected String getTableName() {
         return TABLE_TEMP_APP;
+    }
+
+    @Override
+    protected String getCatJoinTableName() {
+        return TABLE_TEMP_CAT_JOIN;
     }
 
     public static String getAuthority() {
@@ -153,11 +161,29 @@ public class TempAppProvider extends AppProvider {
         // Package names for apps cannot change...
         values.remove(Cols.Package.PACKAGE_NAME);
 
+        if (values.containsKey(Cols.ForWriting.Categories.CATEGORIES)) {
+            String[] categories = Utils.parseCommaSeparatedString(values.getAsString(Cols.ForWriting.Categories.CATEGORIES));
+            ensureCategories(categories, packageName, repoId);
+            values.remove(Cols.ForWriting.Categories.CATEGORIES);
+        }
+
         int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(getHighestPriorityMetadataUri(packageName), null);
         }
         return count;
+    }
+
+    private void ensureCategories(String[] categories, String packageName, long repoId) {
+        Query query = new AppProvider.Query();
+        query.addField(Cols.ROW_ID);
+        query.addSelection(querySingle(packageName, repoId));
+        Cursor cursor = db().rawQuery(query.toString(), query.getArgs());
+        cursor.moveToFirst();
+        long appMetadataId = cursor.getLong(0);
+        cursor.close();
+
+        ensureCategories(categories, appMetadataId);
     }
 
     @Override
@@ -188,7 +214,9 @@ public class TempAppProvider extends AppProvider {
         ensureTempTableDetached(db);
         db.execSQL("ATTACH DATABASE ':memory:' AS " + DB);
         db.execSQL(DBHelper.CREATE_TABLE_APP_METADATA.replaceFirst(AppMetadataTable.NAME, DB + "." + getTableName()));
+        db.execSQL(DBHelper.CREATE_TABLE_CAT_JOIN.replaceFirst(CatJoinTable.NAME, DB + "." + getCatJoinTableName()));
         db.execSQL(copyData(AppMetadataTable.Cols.ALL_COLS, AppMetadataTable.NAME, DB + "." + getTableName()));
+        db.execSQL(copyData(CatJoinTable.Cols.ALL_COLS, CatJoinTable.NAME, DB + "." + getCatJoinTableName()));
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (" + AppMetadataTable.Cols.PACKAGE_ID + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (" + AppMetadataTable.Cols.UPSTREAM_VERSION_CODE + ");");
         db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (" + AppMetadataTable.Cols.IS_COMPATIBLE + ");");
@@ -208,14 +236,18 @@ public class TempAppProvider extends AppProvider {
         try {
             db.beginTransaction();
 
-            final String tempApp = DB + "." + TempAppProvider.TABLE_TEMP_APP;
+            final String tempApp = DB + "." + TABLE_TEMP_APP;
             final String tempApk = DB + "." + TempApkProvider.TABLE_TEMP_APK;
+            final String tempCatJoin = DB + "." + TABLE_TEMP_CAT_JOIN;
 
             db.execSQL("DELETE FROM " + AppMetadataTable.NAME + " WHERE 1");
             db.execSQL(copyData(AppMetadataTable.Cols.ALL_COLS, tempApp, AppMetadataTable.NAME));
 
             db.execSQL("DELETE FROM " + ApkTable.NAME + " WHERE 1");
             db.execSQL(copyData(ApkTable.Cols.ALL_COLS, tempApk, ApkTable.NAME));
+
+            db.execSQL("DELETE FROM " + CatJoinTable.NAME + " WHERE 1");
+            db.execSQL(copyData(CatJoinTable.Cols.ALL_COLS, tempCatJoin, CatJoinTable.NAME));
 
             db.setTransactionSuccessful();
 

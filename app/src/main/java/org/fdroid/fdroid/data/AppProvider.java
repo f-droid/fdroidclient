@@ -10,19 +10,19 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.data.Schema.CatJoinTable;
+import org.fdroid.fdroid.data.Schema.CategoryTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -90,51 +90,6 @@ public class AppProvider extends FDroidProvider {
                 cursor.close();
             }
             return apps;
-        }
-
-        public static String getCategoryAll(Context context) {
-            return context.getString(R.string.category_All);
-        }
-
-        public static String getCategoryWhatsNew(Context context) {
-            return context.getString(R.string.category_Whats_New);
-        }
-
-        public static String getCategoryRecentlyUpdated(Context context) {
-            return context.getString(R.string.category_Recently_Updated);
-        }
-
-        public static List<String> categories(Context context) {
-            final ContentResolver resolver = context.getContentResolver();
-            final Uri uri = getContentUri();
-            final String[] projection = {Cols.CATEGORIES};
-            final Cursor cursor = resolver.query(uri, projection, null, null, null);
-            final Set<String> categorySet = new HashSet<>();
-            if (cursor != null) {
-                if (cursor.getCount() > 0) {
-                    cursor.moveToFirst();
-                    while (!cursor.isAfterLast()) {
-                        final String categoriesString = cursor.getString(0);
-                        String[] categoriesList = Utils.parseCommaSeparatedString(categoriesString);
-                        if (categoriesList != null) {
-                            Collections.addAll(categorySet, categoriesList);
-                        }
-                        cursor.moveToNext();
-                    }
-                }
-                cursor.close();
-            }
-            final List<String> categories = new ArrayList<>(categorySet);
-            Collections.sort(categories);
-
-            // Populate the category list with the real categories, and the
-            // locally generated meta-categories for "What's New", "Recently
-            // Updated" and "All"...
-            categories.add(0, getCategoryAll(context));
-            categories.add(0, getCategoryRecentlyUpdated(context));
-            categories.add(0, getCategoryWhatsNew(context));
-
-            return categories;
         }
 
         public static App findHighestPriorityMetadata(ContentResolver resolver, String packageName) {
@@ -255,12 +210,11 @@ public class AppProvider extends FDroidProvider {
 
     }
 
-    private class Query extends QueryBuilder {
+    protected class Query extends QueryBuilder {
 
         private boolean isSuggestedApkTableAdded;
         private boolean requiresInstalledTable;
         private boolean requiresLeftJoinToPrefs;
-        private boolean categoryFieldAdded;
         private boolean countFieldAppended;
 
         @Override
@@ -269,21 +223,21 @@ public class AppProvider extends FDroidProvider {
             final String app  = getTableName();
             final String apk  = getApkTableName();
             final String repo = RepoTable.NAME;
+            final String cat  = CategoryTable.NAME;
+            final String catJoin = getCatJoinTableName();
 
             return pkg +
                 " JOIN " + app + " ON (" + app + "." + Cols.PACKAGE_ID + " = " + pkg + "." + PackageTable.Cols.ROW_ID + ") " +
                 " JOIN " + repo + " ON (" + app + "." + Cols.REPO_ID + " = " + repo + "." + RepoTable.Cols._ID + ") " +
+                " LEFT JOIN " + catJoin + " ON (" + app + "." + Cols.ROW_ID + " = " + catJoin + "." + CatJoinTable.Cols.APP_METADATA_ID + ") " +
+                " LEFT JOIN " + cat + " ON (" + cat + "." + CategoryTable.Cols.ROW_ID + " = " + catJoin + "." + CatJoinTable.Cols.CATEGORY_ID + ") " +
                 " LEFT JOIN " + apk + " ON (" + apk + "." + ApkTable.Cols.APP_ID + " = " + app + "." + Cols.ROW_ID + ") ";
         }
 
         @Override
-        protected boolean isDistinct() {
-            return fieldCount() == 1 && categoryFieldAdded;
-        }
-
-        @Override
         protected String groupBy() {
-            // If the count field has been requested, then we want to group all rows together.
+            // If the count field has been requested, then we want to group all rows together. Otherwise
+            // we will only group all the rows belonging to a single app together.
             return countFieldAppended ? null : getTableName() + "." + Cols.ROW_ID;
         }
 
@@ -351,9 +305,6 @@ public class AppProvider extends FDroidProvider {
                     appendCountField();
                     break;
                 default:
-                    if (field.equals(Cols.CATEGORIES)) {
-                        categoryFieldAdded = true;
-                    }
                     appendField(field, getTableName());
                     break;
             }
@@ -574,6 +525,10 @@ public class AppProvider extends FDroidProvider {
         return AppMetadataTable.NAME;
     }
 
+    protected String getCatJoinTableName() {
+        return CatJoinTable.NAME;
+    }
+
     protected String getApkTableName() {
         return ApkTable.NAME;
     }
@@ -635,6 +590,7 @@ public class AppProvider extends FDroidProvider {
         final String app = getTableName();
         final String[] columns = {
                 PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME,
+                CategoryTable.NAME + "." + CategoryTable.Cols.NAME,
                 app + "." + Cols.NAME,
                 app + "." + Cols.SUMMARY,
                 app + "." + Cols.DESCRIPTION,
@@ -727,20 +683,8 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryCategory(String category) {
-        // TODO: In the future, add a new table for categories,
-        // so we can join onto it.
-        final String app = getTableName();
-        final String selection =
-                app + "." + Cols.CATEGORIES + " = ? OR " +    // Only category e.g. "internet"
-                app + "." + Cols.CATEGORIES + " LIKE ? OR " + // First category e.g. "internet,%"
-                app + "." + Cols.CATEGORIES + " LIKE ? OR " + // Last category e.g. "%,internet"
-                app + "." + Cols.CATEGORIES + " LIKE ? ";     // One of many categories e.g. "%,internet,%"
-        final String[] args = {
-            category,
-            category + ",%",
-            "%," + category,
-            "%," + category + ",%",
-        };
+        final String selection = CategoryTable.NAME + "." + CategoryTable.Cols.NAME + " = ? ";
+        final String[] args = {category};
         return new AppQuerySelection(selection, args);
     }
 
@@ -903,11 +847,49 @@ public class AppProvider extends FDroidProvider {
         values.remove(Cols.Package.PACKAGE_NAME);
         values.put(Cols.PACKAGE_ID, packageId);
 
-        db().insertOrThrow(getTableName(), null, values);
+        String[] categories = null;
+        boolean saveCategories = false;
+        if (values.containsKey(Cols.ForWriting.Categories.CATEGORIES)) {
+            // Hold onto these categories, so that after we have an ID to reference the newly inserted
+            // app metadata we can then specify its categories.
+            saveCategories = true;
+            categories = Utils.parseCommaSeparatedString(values.getAsString(Cols.ForWriting.Categories.CATEGORIES));
+            values.remove(Cols.ForWriting.Categories.CATEGORIES);
+        }
+
+        long appMetadataId = db().insertOrThrow(getTableName(), null, values);
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
+
+        if (saveCategories) {
+            ensureCategories(categories, appMetadataId);
+        }
+
         return getSpecificAppUri(values.getAsString(PackageTable.Cols.PACKAGE_NAME), values.getAsLong(Cols.REPO_ID));
+    }
+
+    protected void ensureCategories(String[] categories, long appMetadataId) {
+        db().delete(getCatJoinTableName(), CatJoinTable.Cols.APP_METADATA_ID + " = ?", new String[] {Long.toString(appMetadataId)});
+        if (categories != null) {
+            Set<String> categoriesSet = new HashSet<>();
+            for (String categoryName : categories) {
+
+                // There is nothing stopping a server repeating a category name in the metadata of
+                // an app. In order to prevent unique constraint violations, only insert once into
+                // the join table.
+                if (categoriesSet.contains(categoryName)) {
+                    continue;
+                }
+
+                categoriesSet.add(categoryName);
+                long categoryId = CategoryProvider.Helper.ensureExists(getContext(), categoryName);
+                ContentValues categoryValues = new ContentValues(2);
+                categoryValues.put(CatJoinTable.Cols.APP_METADATA_ID, appMetadataId);
+                categoryValues.put(CatJoinTable.Cols.CATEGORY_ID, categoryId);
+                db().insert(getCatJoinTableName(), null, categoryValues);
+            }
+        }
     }
 
     @Override

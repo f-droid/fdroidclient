@@ -9,6 +9,15 @@ import android.provider.BaseColumns;
  */
 public interface Schema {
 
+    /**
+     * A package is essentially the app that a developer builds and wants you to install on your
+     * device. It differs from entries in:
+     *  * {@link ApkTable} because they are specific builds of a particular package. Many different
+     *    builds of the same package can exist.
+     *  * {@link AppMetadataTable} because this is metdata about a package which is specified by a
+     *    given repo. Different repos can provide the same package with different descriptions,
+     *    categories, etc.
+     */
     interface PackageTable {
 
         String NAME = "fdroid_package";
@@ -50,6 +59,51 @@ public interface Schema {
         }
     }
 
+    interface CategoryTable {
+
+        String NAME = "fdroid_category";
+
+        interface Cols {
+            String ROW_ID = "rowid";
+            String NAME = "name";
+
+            String[] ALL = {
+                    ROW_ID, NAME,
+            };
+        }
+    }
+
+    /**
+     * An entry in this table signifies that an app is in a particular category. Each repo can
+     * classify its apps in separate categories, and so the same record in {@link PackageTable}
+     * can be in the same category multiple times, if multiple repos think that is the case.
+     * @see CategoryTable
+     * @see AppMetadataTable
+     */
+    interface CatJoinTable {
+
+        String NAME = "fdroid_categoryAppMetadataJoin";
+
+        interface Cols {
+            /**
+             * Foreign key to {@link AppMetadataTable}.
+             * @see AppMetadataTable
+             */
+            String APP_METADATA_ID = "appMetadataId";
+
+            /**
+             * Foreign key to {@link CategoryTable}.
+             * @see CategoryTable
+             */
+            String CATEGORY_ID = "categoryId";
+
+            /**
+             * @see AppMetadataTable.Cols#ALL_COLS
+             */
+            String[] ALL_COLS = {APP_METADATA_ID, CATEGORY_ID};
+        }
+    }
+
     interface AppMetadataTable {
 
         String NAME = "fdroid_app";
@@ -85,7 +139,6 @@ public interface Schema {
             String UPSTREAM_VERSION_CODE = "upstreamVercode";
             String ADDED = "added";
             String LAST_UPDATED = "lastUpdated";
-            String CATEGORIES = "categories";
             String ANTI_FEATURES = "antiFeatures";
             String REQUIREMENTS = "requirements";
             String ICON_URL = "iconUrl";
@@ -106,6 +159,17 @@ public interface Schema {
             }
 
             /**
+             * This is to make it explicit that you cannot request the {@link Categories#CATEGORIES}
+             * field when selecting app metadata from the database. It is only here for the purpose
+             * of inserting/updating apps.
+             */
+            interface ForWriting {
+                interface Categories {
+                    String CATEGORIES = "categories_commaSeparatedCateogryNames";
+                }
+            }
+
+            /**
              * Each of the physical columns in the sqlite table. Differs from {@link Cols#ALL} in
              * that it doesn't include fields which are aliases of other fields (e.g. {@link Cols#_ID}
              * or which are from other related tables (e.g. {@link Cols.SuggestedApk#VERSION_NAME}).
@@ -115,7 +179,7 @@ public interface Schema {
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
                     CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
-                    CATEGORIES, ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
+                    ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     SUGGESTED_VERSION_CODE,
             };
 
@@ -129,7 +193,7 @@ public interface Schema {
                     LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
                     CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
-                    CATEGORIES, ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
+                    ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
                     InstalledApp.SIGNATURE, Package.PACKAGE_NAME,

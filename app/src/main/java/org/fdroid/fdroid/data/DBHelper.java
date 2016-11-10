@@ -34,6 +34,7 @@ import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
@@ -130,7 +131,6 @@ class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.LITECOIN_ADDR + " string,"
             + AppMetadataTable.Cols.FLATTR_ID + " string,"
             + AppMetadataTable.Cols.REQUIREMENTS + " string,"
-            + AppMetadataTable.Cols.CATEGORIES + " string,"
             + AppMetadataTable.Cols.ADDED + " string,"
             + AppMetadataTable.Cols.LAST_UPDATED + " string,"
             + AppMetadataTable.Cols.IS_COMPATIBLE + " int not null,"
@@ -145,6 +145,27 @@ class DBHelper extends SQLiteOpenHelper {
             + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + " INT NOT NULL "
             + " );";
 
+    private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE " + Schema.CategoryTable.NAME
+            + " ( "
+            + Schema.CategoryTable.Cols.NAME + " TEXT NOT NULL "
+            + " );";
+
+    /**
+     * The order of the two columns in the primary key matters for this table. The index that is
+     * built for sqlite to quickly search the primary key will be sorted by app metadata id first,
+     * and category id second. This means that we don't need a separate individual index on the
+     * app metadata id, because it can instead look through the primary key index. This can be
+     * observed by flipping the order of the primary key columns, and noting the resulting sqlite
+     * logs along the lines of:
+     *   E/SQLiteLog(14164): (284) automatic index on fdroid_categoryAppMetadataJoin(appMetadataId)
+     */
+    static final String CREATE_TABLE_CAT_JOIN = "CREATE TABLE " + CatJoinTable.NAME
+            + " ( "
+            + CatJoinTable.Cols.APP_METADATA_ID + " INT NOT NULL, "
+            + CatJoinTable.Cols.CATEGORY_ID + " INT NOT NULL, "
+            + "primary key(" + CatJoinTable.Cols.APP_METADATA_ID + ", " + CatJoinTable.Cols.CATEGORY_ID + ") "
+            + " );";
+
     private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + InstalledAppTable.NAME
             + " ( "
             + InstalledAppTable.Cols.PACKAGE_NAME + " TEXT NOT NULL PRIMARY KEY, "
@@ -157,7 +178,7 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
 
-    protected static final int DB_VERSION = 64;
+    protected static final int DB_VERSION = 65;
 
     private final Context context;
 
@@ -172,6 +193,8 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_PACKAGE);
         db.execSQL(CREATE_TABLE_APP_METADATA);
         db.execSQL(CREATE_TABLE_APK);
+        db.execSQL(CREATE_TABLE_CATEGORY);
+        db.execSQL(CREATE_TABLE_CAT_JOIN);
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
         db.execSQL(CREATE_TABLE_REPO);
         db.execSQL(CREATE_TABLE_APP_PREFS);
@@ -234,6 +257,23 @@ class DBHelper extends SQLiteOpenHelper {
         supportRepoPushRequests(db, oldVersion);
         migrateToPackageTable(db, oldVersion);
         addObbFiles(db, oldVersion);
+        addCategoryTables(db, oldVersion);
+    }
+
+    /**
+     * It is possible to correctly migrate categories from the previous `categories` column in
+     * app metadata to the new join table without destroying any data and requiring a repo update.
+     * However, in practice other code since the previous stable has already reset the transient
+     * tables and forced a repo update, so it is much easier to do the same here. It wont have any
+     * negative impact on those upgrading from the previous stable. If there was a number of solid
+     * alpha releases before this, then a proper migration would've be in order.
+     */
+    private void addCategoryTables(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 65) {
+            return;
+        }
+
+        resetTransient(db);
     }
 
     private void addObbFiles(SQLiteDatabase db, int oldVersion) {
@@ -823,15 +863,26 @@ class DBHelper extends SQLiteOpenHelper {
 
         db.beginTransaction();
         try {
+            if (tableExists(db, Schema.CategoryTable.NAME)) {
+                db.execSQL("DROP TABLE " + Schema.CategoryTable.NAME);
+            }
+
+            if (tableExists(db, CatJoinTable.NAME)) {
+                db.execSQL("DROP TABLE " + CatJoinTable.NAME);
+            }
+
             if (tableExists(db, PackageTable.NAME)) {
                 db.execSQL("DROP TABLE " + PackageTable.NAME);
             }
 
             db.execSQL("DROP TABLE " + AppMetadataTable.NAME);
             db.execSQL("DROP TABLE " + ApkTable.NAME);
+
             db.execSQL(CREATE_TABLE_PACKAGE);
             db.execSQL(CREATE_TABLE_APP_METADATA);
             db.execSQL(CREATE_TABLE_APK);
+            db.execSQL(CREATE_TABLE_CATEGORY);
+            db.execSQL(CREATE_TABLE_CAT_JOIN);
             clearRepoEtags(db);
             ensureIndexes(db);
             db.setTransactionSuccessful();
