@@ -83,6 +83,7 @@ public class HttpDownloader extends Downloader {
 
         // get the file size from the server
         HttpURLConnection tmpConn = getConnection();
+        tmpConn.setRequestMethod("HEAD");
         int contentLength = -1;
         if (tmpConn.getResponseCode() == 200) {
             contentLength = tmpConn.getContentLength();
