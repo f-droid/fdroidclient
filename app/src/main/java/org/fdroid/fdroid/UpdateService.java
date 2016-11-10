@@ -294,11 +294,14 @@ public class UpdateService extends IntentService {
             return false;
         }
 
-        if (activeNetwork.getType() != ConnectivityManager.TYPE_WIFI && Preferences.get().isUpdateOnlyOnWifi()) {
-            Log.i(TAG, "Skipping update - wifi not available");
-            return false;
+        int networkType = activeNetwork.getType();
+        switch (networkType) {
+            case ConnectivityManager.TYPE_ETHERNET:
+            case ConnectivityManager.TYPE_WIFI:
+                return activeNetwork.isConnectedOrConnecting();
+            default:
+                return Preferences.get().isUpdateOnlyOnWifi();
         }
-        return activeNetwork.isConnectedOrConnecting();
     }
 
     @Override
