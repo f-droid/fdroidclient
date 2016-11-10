@@ -76,7 +76,7 @@ public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
                 lp.setMargins(0,selectedItemElevation,0,selectedItemElevation);
             else
                 lp.setMargins(0,unselectedItemMargin,0,unselectedItemMargin);
-            ViewCompat.setElevation(view, selected ? selectedItemElevation : 0);
+            ViewCompat.setElevation(view, selected ? selectedItemElevation : selectedItemElevation / 2);
             view.setLayoutParams(lp);
         }
     }

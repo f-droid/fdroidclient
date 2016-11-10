@@ -10,5 +10,6 @@
     app:behavior_overlapTop="40dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="org.fdroid.fdroid.AppDetails2"
-    tools:showIn="@layout/activity_app_details2">
+    tools:showIn="@layout/activity_app_details2"
+    >
 </android.support.v7.widget.RecyclerView>
