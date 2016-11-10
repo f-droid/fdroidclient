@@ -1,9 +1,12 @@
 package org.fdroid.fdroid;
 
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
@@ -21,6 +24,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.URLSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -28,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +43,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.LinearLayoutManagerSnapHelper;
+import org.fdroid.fdroid.views.ScreenShotsRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -102,6 +108,9 @@ public class AppDetails2 extends AppCompatActivity {
         private final int VIEWTYPE_HEADER = 0;
         private final int VIEWTYPE_SCREENSHOTS = 1;
         private final int VIEWTYPE_WHATS_NEW = 2;
+        private final int VIEWTYPE_LINKS = 3;
+        private final int VIEWTYPE_PERMISSIONS = 4;
+        private final int VIEWTYPE_VERSIONS = 5;
 
         private final Context mContext;
         private ArrayList<Integer> mItems;
@@ -119,6 +128,9 @@ public class AppDetails2 extends AppCompatActivity {
             mItems.add(Integer.valueOf(VIEWTYPE_HEADER));
             mItems.add(Integer.valueOf(VIEWTYPE_SCREENSHOTS));
             mItems.add(Integer.valueOf(VIEWTYPE_WHATS_NEW));
+            mItems.add(Integer.valueOf(VIEWTYPE_LINKS));
+            //mItems.add(Integer.valueOf(VIEWTYPE_PERMISSIONS));
+            //mItems.add(Integer.valueOf(VIEWTYPE_VERSIONS));
         }
 
         @Override
@@ -135,6 +147,14 @@ public class AppDetails2 extends AppCompatActivity {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.app_details2_whatsnew, parent, false);
                 return new WhatsNewViewHolder(view);
+            } else if (viewType == VIEWTYPE_LINKS) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.app_details2_links, parent, false);
+                return new LinksViewHolder(view);
+            } else if (viewType == VIEWTYPE_PERMISSIONS) {
+
+            } else if (viewType == VIEWTYPE_VERSIONS) {
+
             }
             return null;
         }
@@ -154,8 +174,21 @@ public class AppDetails2 extends AppCompatActivity {
                 }
                 vh.summaryView.setText(mApp.summary);
                 final Spanned desc = Html.fromHtml(mApp.description, null, new Utils.HtmlTagHandler());
-                vh.descriptionView.setMovementMethod(AppDetails2.SafeLinkMovementMethod.getInstance(mContext));
+                vh.descriptionView.setMovementMethod(LinkMovementMethod.getInstance());
                 vh.descriptionView.setText(trimNewlines(desc));
+                if (vh.descriptionView.getText() instanceof Spannable) {
+                Spannable spannable = (Spannable) vh.descriptionView.getText();
+                    URLSpan[] spans = spannable.getSpans(0, spannable.length(), URLSpan.class);
+                    for (URLSpan span : spans) {
+                        int start = spannable.getSpanStart(span);
+                        int end = spannable.getSpanEnd(span);
+                        int flags = spannable.getSpanFlags(span);
+                        spannable.removeSpan(span);
+                        // Create out own safe link span
+                        SafeURLSpan safeUrlSpan = new SafeURLSpan(span.getURL());
+                        spannable.setSpan(safeUrlSpan, start, end, flags);
+                    }
+                }
                 vh.descriptionView.post(new Runnable() {
                     @Override
                     public void run() {
@@ -217,7 +250,7 @@ public class AppDetails2 extends AppCompatActivity {
                 ScreenShotsViewHolder vh = (ScreenShotsViewHolder) holder;
                 LinearLayoutManager lm = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
                 vh.recyclerView.setLayoutManager(lm);
-                ScreenShotsRecyclerViewAdapter adapter = new ScreenShotsRecyclerViewAdapter(mApp);
+                ScreenShotsRecyclerViewAdapter adapter = new ScreenShotsRecyclerViewAdapter(vh.itemView.getContext(), mApp);
                 vh.recyclerView.setAdapter(adapter);
                 vh.recyclerView.setHasFixedSize(true);
                 vh.recyclerView.setNestedScrollingEnabled(false);
@@ -227,6 +260,64 @@ public class AppDetails2 extends AppCompatActivity {
             } else if (viewType == VIEWTYPE_WHATS_NEW) {
                 WhatsNewViewHolder vh = (WhatsNewViewHolder) holder;
                 vh.textView.setText("WHATS NEW GOES HERE");
+            } else if (viewType == VIEWTYPE_LINKS) {
+                final LinksViewHolder vh = (LinksViewHolder) holder;
+                vh.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        boolean shouldBeVisible = (vh.contentView.getVisibility() != View.VISIBLE);
+                        vh.contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
+                        TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_website, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+                    }
+                });
+                vh.contentView.removeAllViews();
+
+                // Source button
+                if (!TextUtils.isEmpty(mApp.sourceURL)) {
+                    addLinkItemView(vh.contentView, R.string.menu_source, R.drawable.ic_source_code, mApp.sourceURL);
+                }
+
+                // Issues button
+                if (!TextUtils.isEmpty(mApp.trackerURL)) {
+                    addLinkItemView(vh.contentView, R.string.menu_issues, R.drawable.ic_issues, mApp.trackerURL);
+                }
+
+                // Changelog button
+                if (!TextUtils.isEmpty(mApp.changelogURL)) {
+                    addLinkItemView(vh.contentView, R.string.menu_changelog, R.drawable.ic_changelog, mApp.changelogURL);
+                }
+
+                // Website button
+                if (!TextUtils.isEmpty(mApp.webURL)) {
+                    addLinkItemView(vh.contentView, R.string.menu_website, R.drawable.ic_website, mApp.webURL);
+                }
+
+                // Email button
+                if (!TextUtils.isEmpty(mApp.email)) {
+                    final String subject = Uri.encode(getString(R.string.app_details_subject, mApp.name));
+                    String url = "mailto:" + mApp.email + "?subject=" + subject;
+                    addLinkItemView(vh.contentView, R.string.menu_email, R.drawable.ic_email, url);
+                }
+
+                // Donate button
+                if (!TextUtils.isEmpty(mApp.donateURL)) {
+                    addLinkItemView(vh.contentView, R.string.menu_donate, R.drawable.ic_donate, mApp.donateURL);
+                }
+
+                // Bitcoin
+                if (!TextUtils.isEmpty(mApp.bitcoinAddr)) {
+                    addLinkItemView(vh.contentView, R.string.menu_bitcoin, R.drawable.ic_bitcoin, "bitcoin:" + mApp.bitcoinAddr);
+                }
+
+                // Litecoin
+                if (!TextUtils.isEmpty(mApp.litecoinAddr)) {
+                    addLinkItemView(vh.contentView, R.string.menu_litecoin, R.drawable.ic_litecoin, "litecoin:" + mApp.litecoinAddr);
+                }
+
+                // Flattr
+                if (!TextUtils.isEmpty(mApp.flattrID)) {
+                    addLinkItemView(vh.contentView, R.string.menu_flattr, R.drawable.ic_flattr, "https://flattr.com/thing/" + mApp.flattrID);
+                }
             }
         }
 
@@ -281,9 +372,8 @@ public class AppDetails2 extends AppCompatActivity {
                         int pos = lm.findFirstVisibleItemPosition();
                         int posOffset = 0;
                         if (pos != NO_POSITION) {
-                            View view = lm.findViewByPosition(pos);
-                            if (view != null)
-                                posOffset = lm.getDecoratedTop(view);
+                            View firstChild = mRecyclerView.getChildAt(0);
+                            posOffset = (firstChild == null) ? 0 : (firstChild.getTop()); // - mRecyclerView.getPaddingTop());
                         }
                         if (TextViewCompat.getMaxLines(descriptionView) != MAX_LINES) {
                             descriptionView.setMaxLines(MAX_LINES);
@@ -339,84 +429,38 @@ public class AppDetails2 extends AppCompatActivity {
             }
         }
 
-        class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements LinearLayoutManagerSnapHelper.LinearSnapHelperListener {
-            private final App app;
-            private final DisplayImageOptions displayImageOptions;
-            private View selectedView;
-            private int selectedPosition;
-            private int selectedItemElevation;
-            private int unselectedItemMargin;
+        public class LinksViewHolder extends RecyclerView.ViewHolder {
+            final TextView headerView;
+            final LinearLayout contentView;
 
-            public ScreenShotsRecyclerViewAdapter(App app) {
-                super();
-                this.app = app;
-                selectedPosition = 0;
-                selectedItemElevation = getResources().getDimensionPixelSize(R.dimen.details_screenshot_selected_elevation);
-                unselectedItemMargin = getResources().getDimensionPixelSize(R.dimen.details_screenshot_margin);
-                displayImageOptions = new DisplayImageOptions.Builder()
-                        .cacheInMemory(true)
-                        .cacheOnDisk(true)
-                        .imageScaleType(ImageScaleType.NONE)
-                        .showImageOnLoading(R.drawable.ic_repo_app_default)
-                        .showImageForEmptyUri(R.drawable.ic_repo_app_default)
-                        .bitmapConfig(Bitmap.Config.RGB_565)
-                        .build();
+            LinksViewHolder(View view) {
+                super(view);
+                headerView = (TextView) view.findViewById(R.id.information);
+                contentView = (LinearLayout) view.findViewById(R.id.ll_content);
             }
 
             @Override
-            public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-                ScreenShotViewHolder vh = (ScreenShotViewHolder) holder;
-                setViewSelected(vh.itemView, position == selectedPosition);
-                if (position == selectedPosition)
-                    this.selectedView = vh.itemView;
-                ImageLoader.getInstance().displayImage(mApp.iconUrlLarge, vh.image, displayImageOptions);
+            public String toString() {
+                return super.toString() + " links";
             }
+        }
 
-            @Override
-            public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.app_details2_screenshot_item, parent, false);
-                return new ScreenShotViewHolder(view);
-            }
-
-            @Override
-            public int getItemCount() {
-                return 7;
-            }
-
-            @Override
-            public void onSnappedToView(View view, int snappedPosition) {
-                setViewSelected(selectedView, false);
-                selectedView = view;
-                selectedPosition = snappedPosition;
-                setViewSelected(selectedView, true);
-            }
-
-            private void setViewSelected(View view, boolean selected) {
-                if (view != null) {
-                    RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams)view.getLayoutParams();
-                    if (selected)
-                        lp.setMargins(0,selectedItemElevation,0,selectedItemElevation);
-                    else
-                        lp.setMargins(0,unselectedItemMargin,0,unselectedItemMargin);
-                    ViewCompat.setElevation(view, selected ? selectedItemElevation : 0);
-                    view.setLayoutParams(lp);
-                }
-            }
-
-            public class ScreenShotViewHolder extends RecyclerView.ViewHolder {
-                final ImageView image;
-
-                ScreenShotViewHolder(View view) {
-                    super(view);
-                    image = (ImageView) view.findViewById(R.id.image);
-                }
-
+        private void addLinkItemView(ViewGroup parent, int resIdText, int resIdDrawable, String url) {
+            TextView view = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.app_details2_link_item, parent, false);
+            view.setTag(url);
+            view.setText(resIdText);
+            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(view, resIdDrawable, 0, 0, 0);
+            parent.addView(view);
+            view.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public String toString() {
-                    return super.toString() + " screenshot";
+                public void onClick(View v) {
+                    onLinkClicked((String) v.getTag());
                 }
-            }
+            });
+        }
+
+        private void onLinkClicked(String url) {
+
         }
     }
 
@@ -442,59 +486,21 @@ public class AppDetails2 extends AppCompatActivity {
         return s.subSequence(0, i + 1);
     }
 
-    private static final class SafeLinkMovementMethod extends LinkMovementMethod {
-
-        private static AppDetails2.SafeLinkMovementMethod instance;
-
-        private final Context ctx;
-
-        private SafeLinkMovementMethod(Context ctx) {
-            this.ctx = ctx;
-        }
-
-        public static AppDetails2.SafeLinkMovementMethod getInstance(Context ctx) {
-            if (instance == null) {
-                instance = new AppDetails2.SafeLinkMovementMethod(ctx);
-            }
-            return instance;
-        }
-
-        private static CharSequence getLink(TextView widget, Spannable buffer,
-                                            MotionEvent event) {
-            int x = (int) event.getX();
-            int y = (int) event.getY();
-            x -= widget.getTotalPaddingLeft();
-            y -= widget.getTotalPaddingTop();
-            x += widget.getScrollX();
-            y += widget.getScrollY();
-
-            Layout layout = widget.getLayout();
-            final int line = layout.getLineForVertical(y);
-            final int off = layout.getOffsetForHorizontal(line, x);
-            final ClickableSpan[] links = buffer.getSpans(off, off, ClickableSpan.class);
-
-            if (links.length > 0) {
-                final ClickableSpan link = links[0];
-                final Spanned s = (Spanned) widget.getText();
-                return s.subSequence(s.getSpanStart(link), s.getSpanEnd(link));
-            }
-            return "null";
+    @SuppressLint("ParcelCreator")
+    private static final class SafeURLSpan extends URLSpan {
+        public SafeURLSpan(String url) {
+            super(url);
         }
 
         @Override
-        public boolean onTouchEvent(@NonNull TextView widget, @NonNull Spannable buffer,
-                                    @NonNull MotionEvent event) {
+        public void onClick(View widget) {
             try {
-                return super.onTouchEvent(widget, buffer, event);
+                super.onClick(widget);
             } catch (ActivityNotFoundException ex) {
-                Selection.removeSelection(buffer);
-                final CharSequence link = getLink(widget, buffer, event);
-                Toast.makeText(ctx,
-                        ctx.getString(R.string.no_handler_app, link),
+                Toast.makeText(widget.getContext(),
+                        widget.getContext().getString(R.string.no_handler_app, getURL()),
                         Toast.LENGTH_LONG).show();
-                return true;
             }
         }
-
     }
 }

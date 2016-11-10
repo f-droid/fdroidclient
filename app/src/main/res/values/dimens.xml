@@ -4,6 +4,7 @@
     <dimen name="layout_horizontal_margin">16dp</dimen>
     <dimen name="material_listitem_height">48dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="details_activity_padding">8dp</dimen>
     <!-- "Not selected" items are inset by this value, while the selected one is not -->
     <dimen name="details_screenshot_margin">16dp</dimen>
     <!-- The selected item stands out from the background by this elevation -->
