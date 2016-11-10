@@ -171,7 +171,11 @@ public class AppProvider extends FDroidProvider {
         }
 
         public static void calcDetailsFromIndex(Context context) {
-            context.getContentResolver().update(calcAppDetailsFromIndexUri(), null, null, null);
+            context.getContentResolver().update(calcAllDetailsFromIndexUri(), null, null, null);
+        }
+
+        public static void calcDetailsFromIndex(Context context) {
+            context.getContentResolver().update(calcAllDetailsFromIndexUri(), null, null, null);
         }
 
         public static List<App> findCanUpdate(Context context, String[] projection) {
@@ -424,7 +428,7 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
     private static final String PATH_NEWLY_ADDED = "newlyAdded";
     private static final String PATH_CATEGORY = "category";
-    private static final String PATH_CALC_APP_DETAILS_FROM_INDEX = "calcDetailsFromIndex";
+    private static final String PATH_CALC_ALL_DETAILS_FROM_INDEX = "calcDetailsFromIndex";
     private static final String PATH_REPO = "repo";
     private static final String PATH_HIGHEST_PRIORITY = "highestPriority";
     private static final String PATH_CALC_PREFERRED_METADATA = "calcPreferredMetadata";
@@ -436,8 +440,8 @@ public class AppProvider extends FDroidProvider {
     private static final int RECENTLY_UPDATED = NO_APKS + 1;
     private static final int NEWLY_ADDED = RECENTLY_UPDATED + 1;
     private static final int CATEGORY = NEWLY_ADDED + 1;
-    private static final int CALC_APP_DETAILS_FROM_INDEX = CATEGORY + 1;
-    private static final int REPO = CALC_APP_DETAILS_FROM_INDEX + 1;
+    private static final int CALC_ALL_DETAILS_FROM_INDEX = CATEGORY + 1;
+    private static final int REPO = CALC_ALL_DETAILS_FROM_INDEX + 1;
     private static final int SEARCH_REPO = REPO + 1;
     private static final int SEARCH_INSTALLED = SEARCH_REPO + 1;
     private static final int SEARCH_CAN_UPDATE = SEARCH_INSTALLED + 1;
@@ -446,7 +450,7 @@ public class AppProvider extends FDroidProvider {
 
     static {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
-        MATCHER.addURI(getAuthority(), PATH_CALC_APP_DETAILS_FROM_INDEX, CALC_APP_DETAILS_FROM_INDEX);
+        MATCHER.addURI(getAuthority(), PATH_CALC_ALL_DETAILS_FROM_INDEX, CALC_ALL_DETAILS_FROM_INDEX);
         MATCHER.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
         MATCHER.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
         MATCHER.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
@@ -475,8 +479,8 @@ public class AppProvider extends FDroidProvider {
         return Uri.withAppendedPath(getContentUri(), PATH_NEWLY_ADDED);
     }
 
-    private static Uri calcAppDetailsFromIndexUri() {
-        return Uri.withAppendedPath(getContentUri(), PATH_CALC_APP_DETAILS_FROM_INDEX);
+    private static Uri calcAllDetailsFromIndexUri() {
+        return Uri.withAppendedPath(getContentUri(), PATH_CALC_ALL_DETAILS_FROM_INDEX);
     }
 
     public static Uri getCategoryUri(String category) {
@@ -912,15 +916,15 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        if (MATCHER.match(uri) != CALC_APP_DETAILS_FROM_INDEX) {
+        if (MATCHER.match(uri) != CALC_ALL_DETAILS_FROM_INDEX) {
             throw new UnsupportedOperationException("Update not supported for " + uri + ".");
         }
 
-        updateAppDetails();
+        updateAllAppDetails();
         return 0;
     }
 
-    protected void updateAppDetails() {
+    protected void updateAllAppDetails() {
         updatePreferredMetadata();
         updateCompatibleFlags();
         updateSuggestedFromUpstream();

@@ -131,7 +131,7 @@ public class TempAppProvider extends AppProvider {
                 initTable();
                 return null;
             case CODE_COMMIT:
-                updateAppDetails();
+                updateAllAppDetails();
                 commitTable();
                 return null;
             default:
