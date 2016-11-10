@@ -121,11 +121,7 @@ public class UpdateService extends IntentService {
      * is changed, or c) on startup, in case we get upgraded.
      */
     public static void schedule(Context ctx) {
-
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(ctx);
-        String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
-        int interval = Integer.parseInt(sint);
+        int interval = Preferences.get().getUpdateInterval();
 
         Intent intent = new Intent(ctx, UpdateService.class);
         PendingIntent pending = PendingIntent.getService(ctx, 0, intent, 0);
@@ -290,13 +286,12 @@ public class UpdateService extends IntentService {
      * @return True if we are due for a scheduled update.
      */
     private boolean verifyIsTimeForScheduledRun() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
-        int interval = Integer.parseInt(sint);
+        int interval = Preferences.get().getUpdateInterval();
         if (interval == 0) {
             Log.i(TAG, "Skipping update - disabled");
             return false;
         }
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         long lastUpdate = prefs.getLong(STATE_LAST_UPDATED, 0);
         long elapsed = System.currentTimeMillis() - lastUpdate;
         if (elapsed < interval * 60 * 60 * 1000) {

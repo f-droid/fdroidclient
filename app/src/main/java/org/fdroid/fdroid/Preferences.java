@@ -75,6 +75,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final boolean DEFAULT_SHOW_INCOMPAT_VERSIONS = false;
     private static final boolean DEFAULT_SHOW_ROOT_APPS = true;
     private static final boolean DEFAULT_SHOW_ANTI_FEATURE_APPS = true;
+    private static final int DEFAULT_UPD_INTERVAL = 24;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);
@@ -156,6 +157,16 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * Old preference replaced by {@link #PREF_KEEP_CACHE_TIME}
      */
     private static final String PREF_CACHE_APK = "cacheDownloaded";
+
+    public int getUpdateInterval() {
+        try {
+            String value = preferences.getString(PREF_UPD_INTERVAL,
+                    String.valueOf(DEFAULT_UPD_INTERVAL));
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return DEFAULT_UPD_INTERVAL;
+        }
+    }
 
     /**
      * Time in millis to keep cached files.  Anything that has been around longer will be deleted
