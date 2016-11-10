@@ -460,8 +460,21 @@ public class AppDetails2 extends AppCompatActivity {
         }
 
         private void onLinkClicked(String url) {
-
+            if (!TextUtils.isEmpty(url)) {
+                tryOpenUri(url);
+            }
         }
+    }
+
+    private void tryOpenUri(String s) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
+        if (intent.resolveActivity(getPackageManager()) == null) {
+            Toast.makeText(this,
+                    getString(R.string.no_handler_app, intent.getDataString()),
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+        startActivity(intent);
     }
 
     // The HTML formatter adds "\n\n" at the end of every paragraph. This
