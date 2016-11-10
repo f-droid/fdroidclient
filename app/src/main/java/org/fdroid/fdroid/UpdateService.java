@@ -131,8 +131,7 @@ public class UpdateService extends IntentService {
         alarm.cancel(pending);
         if (interval > 0) {
             alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
-                    SystemClock.elapsedRealtime() + 5000,
-                    AlarmManager.INTERVAL_HOUR, pending);
+                    SystemClock.elapsedRealtime() + 5000, interval, pending);
             Utils.debugLog(TAG, "Update scheduler alarm set");
         } else {
             Utils.debugLog(TAG, "Update scheduler alarm not set");
@@ -276,34 +275,6 @@ public class UpdateService extends IntentService {
     };
 
     /**
-     * Check whether it is time to run the scheduled update.
-     * We don't want to run if:
-     * - The time between scheduled runs is set to zero (though don't know
-     * when that would occur)
-     * - Last update was too recent
-     * - Not on wifi, but the property for "Only auto update on wifi" is set.
-     *
-     * @return True if we are due for a scheduled update.
-     */
-    private boolean verifyIsTimeForScheduledRun() {
-        int interval = Preferences.get().getUpdateInterval();
-        if (interval == 0) {
-            Log.i(TAG, "Skipping update - disabled");
-            return false;
-        }
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        long lastUpdate = prefs.getLong(STATE_LAST_UPDATED, 0);
-        long elapsed = System.currentTimeMillis() - lastUpdate;
-        if (elapsed < interval * 60 * 60 * 1000) {
-            Log.i(TAG, "Skipping update - done " + elapsed
-                    + "ms ago, interval is " + interval + " hours");
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
      * In order to send a {@link Toast} from a {@link IntentService}, we have to do these tricks.
      */
     private void sendNoInternetToast() {
@@ -334,6 +305,7 @@ public class UpdateService extends IntentService {
         }
 
         try {
+            final Preferences fdroidPrefs = Preferences.get();
             // See if it's time to actually do anything yet...
             int netState = ConnectivityMonitorService.getNetworkState(this);
             if (address != null && address.startsWith(BluetoothDownloader.SCHEME)) {
@@ -344,12 +316,9 @@ public class UpdateService extends IntentService {
                     sendNoInternetToast();
                 }
                 return;
-            }
-
-            final Preferences fdroidPrefs = Preferences.get();
-            if (manualUpdate || forcedUpdate) {
+            } else if (manualUpdate || forcedUpdate) {
                 Utils.debugLog(TAG, "manually requested or forced update");
-            } else if (!verifyIsTimeForScheduledRun() || !fdroidPrefs.isBackgroundDownloadAllowed()) {
+            } else if (!fdroidPrefs.isBackgroundDownloadAllowed()) {
                 Utils.debugLog(TAG, "don't run update");
                 return;
             }

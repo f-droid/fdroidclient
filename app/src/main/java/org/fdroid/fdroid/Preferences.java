@@ -158,14 +158,19 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      */
     private static final String PREF_CACHE_APK = "cacheDownloaded";
 
+    /**
+     * Get the update interval in milliseconds.
+     */
     public int getUpdateInterval() {
+        int hours;
         try {
             String value = preferences.getString(PREF_UPD_INTERVAL,
                     String.valueOf(DEFAULT_UPD_INTERVAL));
-            return Integer.parseInt(value);
+            hours = Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            return DEFAULT_UPD_INTERVAL;
+            hours = DEFAULT_UPD_INTERVAL;
         }
+        return hours * 60 * 60 * 1000;
     }
 
     /**
