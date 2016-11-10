@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
@@ -78,6 +79,44 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public long appId;
 
     public Apk() {
+    }
+
+    /**
+     * If you need an {@link Apk} but it is no longer in the database any more (e.g. because the
+     * version you have installed is no longer in the repository metadata) then you can instantiate
+     * an {@link Apk} via an {@link InstalledApp} instance.
+     *
+     * Note: Many of the fields on this instance will not be known in this circumstance. Currently
+     * the only things that are known are:
+     *
+     *  + {@link Apk#packageName}
+     *  + {@link Apk#versionName}
+     *  + {@link Apk#versionCode}
+     *  + {@link Apk#hash}
+     *  + {@link Apk#hashType}
+     *
+     * This could instead be implemented by accepting a {@link PackageInfo} and it would get much
+     * the same information, but it wouldn't have the hash of the package. Seeing as we've already
+     * done the hard work to calculate that hash and stored it in the database, we may as well use
+     * that.
+     */
+    public Apk(@NonNull InstalledApp app) {
+        packageName = app.getPackageName();
+        versionName = app.getVersionName();
+        versionCode = app.getVersionCode();
+        hash = app.getHash(); // checksum of the APK, in lowercase hex
+        hashType = app.getHashType();
+
+        // zero for "we don't know". If we require this in the future, then we could look up the
+        // file on disk if required.
+        size = 0;
+
+        // Same as size. We could look this up if required but not needed at time of writing.
+        installedFile = null;
+
+        // If we are being created from an InstalledApp, it is because we couldn't load it from the
+        // apk table in the database, indicating it is not available in any of our repos.
+        repo = 0;
     }
 
     public Apk(Cursor cursor) {
