@@ -84,6 +84,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppPrefs;
 import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.InstalledApp;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
@@ -961,23 +962,52 @@ public class AppDetails extends AppCompatActivity {
     }
 
     /**
-     * Queue for uninstall based on the instance variable {@link #app}
+     * Attempts to find the installed {@link Apk} from the database. If not found, will lookup the
+     * {@link InstalledAppProvider} to find the details of the installed app and use that to
+     * instantiate an {@link Apk} to be returned.
+     *
+     * Cases where an {@link Apk} will not be found in the database and for which we fall back to
+     * the {@link InstalledAppProvider} include:
+     *  + System apps which are provided by a repository, but for which the version code bundled
+     *    with the system is not included in the repository.
+     *  + Regular apps from a repository, where the installed version is old enough that it is no
+     *    longer available in the repository.
+     *
+     * @throws IllegalStateException If neither the {@link PackageManager} or the
+     * {@link InstalledAppProvider} can't find a reference to the installed apk.
+     */
+    @NonNull
+    private Apk getInstalledApk() {
+        try {
+            PackageInfo pi = packageManager.getPackageInfo(app.packageName, 0);
+
+            Apk apk = ApkProvider.Helper.findApkFromAnyRepo(this, pi.packageName, pi.versionCode);
+            if (apk == null) {
+                InstalledApp installedApp = InstalledAppProvider.Helper.findByPackageName(context, pi.packageName);
+                if (installedApp == null) {
+                    throw new IllegalStateException("No installed app found when trying to uninstall");
+                }
+
+                apk = new Apk(installedApp);
+            }
+            return apk;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            throw new IllegalStateException("Couldn't find app while installing");
+        }
+    }
+
+    /**
+     * Queue for uninstall based on the instance variable {@link #app}.
      */
     private void uninstallApk() {
-        Apk apk = app.installedApk;
-        if (apk == null) {
+        if (app.installedApk == null) {
             // TODO ideally, app would be refreshed immediately after install, then this
             // workaround would be unnecessary
-            try {
-                PackageInfo pi = packageManager.getPackageInfo(app.packageName, 0);
-                apk = ApkProvider.Helper.findApkFromAnyRepo(this, pi.packageName, pi.versionCode);
-                app.installedApk = apk;
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-                return; // not installed
-            }
+            app.installedApk = getInstalledApk();
         }
-        Installer installer = InstallerFactory.create(this, apk);
+
+        Installer installer = InstallerFactory.create(this, app.installedApk);
         Intent intent = installer.getUninstallScreen();
         if (intent != null) {
             // uninstall screen required

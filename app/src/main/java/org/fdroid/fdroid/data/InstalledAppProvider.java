@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
@@ -53,6 +54,24 @@ public class InstalledAppProvider extends FDroidProvider {
             return cachedInfo;
         }
 
+        @Nullable
+        public static InstalledApp findByPackageName(Context context, String packageName) {
+            Cursor cursor = context.getContentResolver().query(getAppUri(packageName), Cols.ALL, null, null, null);
+            if (cursor == null) {
+                return null;
+            }
+
+            try {
+                if (cursor.getCount() == 0) {
+                    return null;
+                }
+
+                cursor.moveToFirst();
+                return new InstalledApp(cursor);
+            } finally {
+                cursor.close();
+            }
+        }
     }
 
     private static final String PROVIDER_NAME = "InstalledAppProvider";
