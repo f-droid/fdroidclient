@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DetailsPrimaryButtonStyle">
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@drawable/button_primary_background_selector</item>
+    </style>
+
+    <style name="DetailsSecondaryButtonStyle">
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/fdroid_blue</item>
+        <item name="android:background">@drawable/button_secondary_background_selector</item>
+    </style>
+
+    <style name="DetailsMoreButtonStyle">
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/fdroid_blue</item>
+    </style>
+
+</resources>

@@ -405,6 +405,17 @@
 
         </activity>
         <activity
+            android:name=".AppDetails2"
+            android:label="@string/app_details"
+            android:exported="true"
+            android:parentActivityName=".FDroid"
+            android:theme="@style/AppThemeLight.NoActionBar"
+            android:configChanges="layoutDirection|locale" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
+        </activity>
+        <activity
             android:label="@string/menu_settings"
             android:name=".PreferencesActivity"
             android:parentActivityName=".FDroid" >

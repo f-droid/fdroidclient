@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardBackgroundColor="#efefef"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_repo_app_default" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@id/icon"
+                android:layout_toRightOf="@id/icon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                tools:text="App Title" />
+
+            <TextView
+                android:id="@+id/author"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/title"
+                android:layout_alignLeft="@id/title"
+                android:layout_alignRight="@id/title"
+                android:layout_alignStart="@id/title"
+                android:layout_below="@id/title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                tools:text="Author" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon"
+                android:layout_toEndOf="@id/icon"
+                android:layout_toRightOf="@id/icon"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true">
+
+                <Button
+                    android:id="@+id/secondaryButtonView"
+                    style="@style/DetailsSecondaryButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:ellipsize="marquee"
+                    android:text="THIS IS BUTTON 1" />
+
+                <Button
+                    android:id="@+id/primaryButtonView"
+                    style="@style/DetailsPrimaryButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:ellipsize="marquee"
+                    android:text="THIS IS 2" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="This app is awezome"
+            android:scrollbars="none"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="This is the app description of this awezome app. It can be several lines long, but will be truncated at just a few if it is. A 'read more' button will appear so that you can expand the view and view the full text, if you wish. Yes, it will be blue and beautiful."
+            android:scrollbars="none"
+            />
+
+        <TextView
+            android:id="@+id/description_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            style="@style/DetailsMoreButtonStyle"
+            android:gravity="right|end"
+            android:text="@string/more"
+            tools:text="more" />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
