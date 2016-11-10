@@ -11,11 +11,13 @@ import android.net.Uri;
 import android.os.Process;
 import android.support.annotation.Nullable;
 
+import org.acra.ACRA;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
@@ -154,24 +156,49 @@ public class InstalledAppProviderService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
-        if (intent != null) {
-            String packageName = intent.getData().getSchemeSpecificPart();
-            final String action = intent.getAction();
-            if (ACTION_INSERT.equals(action)) {
-                PackageInfo packageInfo = getPackageInfo(intent, packageName);
-                if (packageInfo != null) {
-                    File apk = new File(packageInfo.applicationInfo.publicSourceDir);
-                    if (apk.exists() && apk.canRead()) {
+        if (intent == null) {
+            return;
+        }
+
+        String packageName = intent.getData().getSchemeSpecificPart();
+        final String action = intent.getAction();
+        if (ACTION_INSERT.equals(action)) {
+            PackageInfo packageInfo = getPackageInfo(intent, packageName);
+            if (packageInfo != null) {
+                File apk = new File(packageInfo.applicationInfo.publicSourceDir);
+                if (apk.isDirectory()) {
+                    FilenameFilter filter = new FilenameFilter() {
+                        @Override
+                        public boolean accept(File dir, String name) {
+                            return name.endsWith(".apk");
+                        }
+                    };
+                    File[] files = apk.listFiles(filter);
+                    if (files == null) {
+                        String msg = packageName + " sourceDir has no APKs: "
+                                + apk.getAbsolutePath();
+                        Utils.debugLog(TAG, msg);
+                        ACRA.getErrorReporter().handleException(new IllegalArgumentException(msg), false);
+                        return;
+                    }
+                    apk = files[0];
+                }
+                if (apk.exists() && apk.canRead()) {
+                    try {
                         String hashType = "sha256";
                         String hash = Utils.getBinaryHash(apk, hashType);
                         insertAppIntoDb(this, packageInfo, hashType, hash);
+                    } catch (IllegalArgumentException e) {
+                        Utils.debugLog(TAG, e.getMessage());
+                        ACRA.getErrorReporter().handleException(e, false);
+                        return;
                     }
                 }
-            } else if (ACTION_DELETE.equals(action)) {
-                deleteAppFromDb(this, packageName);
             }
-            notifyEvents.onNext(null);
+        } else if (ACTION_DELETE.equals(action)) {
+            deleteAppFromDb(this, packageName);
         }
+        notifyEvents.onNext(null);
     }
 
     /**
