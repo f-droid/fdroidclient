@@ -170,14 +170,8 @@ public class AppProvider extends FDroidProvider {
             return app;
         }
 
-        /*
-         * I wasn't quite sure on the best way to execute arbitrary queries using the same DBHelper as the
-         * content provider class, so I've hidden the implementation of this (by making it private) in case
-         * I find a better way in the future.
-         */
-        public static void calcDetailsFromIndex(Context context) {
-            final Uri fromUpstream = calcAppDetailsFromIndexUri();
-            context.getContentResolver().update(fromUpstream, null, null, null);
+        public static void calcSuggestedApks(Context context) {
+            context.getContentResolver().update(calcSuggestedApksUri(), null, null, null);
         }
 
         public static List<App> findCanUpdate(Context context, String[] projection) {
@@ -430,10 +424,10 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
     private static final String PATH_NEWLY_ADDED = "newlyAdded";
     private static final String PATH_CATEGORY = "category";
-    private static final String PATH_CALC_APP_DETAILS_FROM_INDEX = "calcDetailsFromIndex";
     private static final String PATH_REPO = "repo";
     private static final String PATH_HIGHEST_PRIORITY = "highestPriority";
     private static final String PATH_CALC_PREFERRED_METADATA = "calcPreferredMetadata";
+    private static final String PATH_CALC_SUGGESTED_APKS = "calcNonRepoDetailsFromIndex";
 
     private static final int CAN_UPDATE = CODE_SINGLE + 1;
     private static final int INSTALLED = CAN_UPDATE + 1;
@@ -442,8 +436,8 @@ public class AppProvider extends FDroidProvider {
     private static final int RECENTLY_UPDATED = NO_APKS + 1;
     private static final int NEWLY_ADDED = RECENTLY_UPDATED + 1;
     private static final int CATEGORY = NEWLY_ADDED + 1;
-    private static final int CALC_APP_DETAILS_FROM_INDEX = CATEGORY + 1;
-    private static final int REPO = CALC_APP_DETAILS_FROM_INDEX + 1;
+    private static final int CALC_SUGGESTED_APKS = CATEGORY + 1;
+    private static final int REPO = CALC_SUGGESTED_APKS + 1;
     private static final int SEARCH_REPO = REPO + 1;
     private static final int SEARCH_INSTALLED = SEARCH_REPO + 1;
     private static final int SEARCH_CAN_UPDATE = SEARCH_INSTALLED + 1;
@@ -452,7 +446,7 @@ public class AppProvider extends FDroidProvider {
 
     static {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
-        MATCHER.addURI(getAuthority(), PATH_CALC_APP_DETAILS_FROM_INDEX, CALC_APP_DETAILS_FROM_INDEX);
+        MATCHER.addURI(getAuthority(), PATH_CALC_SUGGESTED_APKS, CALC_SUGGESTED_APKS);
         MATCHER.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
         MATCHER.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
         MATCHER.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
@@ -481,8 +475,8 @@ public class AppProvider extends FDroidProvider {
         return Uri.withAppendedPath(getContentUri(), PATH_NEWLY_ADDED);
     }
 
-    private static Uri calcAppDetailsFromIndexUri() {
-        return Uri.withAppendedPath(getContentUri(), PATH_CALC_APP_DETAILS_FROM_INDEX);
+    private static Uri calcSuggestedApksUri() {
+        return Uri.withAppendedPath(getContentUri(), PATH_CALC_SUGGESTED_APKS);
     }
 
     public static Uri getCategoryUri(String category) {
@@ -918,20 +912,42 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        if (MATCHER.match(uri) != CALC_APP_DETAILS_FROM_INDEX) {
+        if (MATCHER.match(uri) != CALC_SUGGESTED_APKS) {
             throw new UnsupportedOperationException("Update not supported for " + uri + ".");
         }
 
-        updateAppDetails();
+        updateSuggestedApks();
+        getContext().getContentResolver().notifyChange(getCanUpdateUri(), null);
         return 0;
     }
 
-    protected void updateAppDetails() {
+    protected void updateAllAppDetails() {
         updatePreferredMetadata();
         updateCompatibleFlags();
         updateSuggestedFromUpstream();
         updateSuggestedFromLatest();
         updateIconUrls();
+    }
+
+    /**
+     * If the repo hasn't changed, then there are many things which we shouldn't waste time updating
+     * (compared to {@link AppProvider#updateAllAppDetails()}:
+     *
+     * + The "preferred metadata", as that is calculated based on repo with highest priority, and
+     *   only takes into account the package name, not specific versions, when figuring this out.
+     *
+     * + Compatible flags. These were calculated earlier, whether or not an app was suggested or not.
+     *
+     * + Icon URLs. While technically these do change when the suggested version changes, it is not
+     *   important enough to spend a significant amount of time to calculate. In the future maybe,
+     *   but that effort should instead go into implementing an intent service.
+     *
+     * In the future, this problem of taking a long time should be fixed by implementing an
+     * {@link android.app.IntentService} as described in https://gitlab.com/fdroid/fdroidclient/issues/520.
+     */
+    protected void updateSuggestedApks() {
+        updateSuggestedFromUpstream();
+        updateSuggestedFromLatest();
     }
 
     private void updatePreferredMetadata() {

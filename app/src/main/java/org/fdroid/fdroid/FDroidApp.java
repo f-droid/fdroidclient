@@ -256,7 +256,7 @@ public class FDroidApp extends Application {
         Preferences.get().registerUnstableUpdatesChangeListener(new Preferences.ChangeListener() {
             @Override
             public void onPreferenceChange() {
-                AppProvider.Helper.calcDetailsFromIndex(context);
+                AppProvider.Helper.calcSuggestedApks(context);
             }
         });
 
