@@ -5,11 +5,8 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.text.AllCapsTransformationMethod;
@@ -17,17 +14,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.text.Layout;
-import android.text.Selection;
 import android.text.Spannable;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -41,8 +34,11 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.privileged.views.AppDiff;
+import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.ApkListAdapter;
 import org.fdroid.fdroid.views.LinearLayoutManagerSnapHelper;
 import org.fdroid.fdroid.views.ScreenShotsRecyclerViewAdapter;
@@ -116,9 +112,11 @@ public class AppDetails2 extends AppCompatActivity {
 
         private final Context mContext;
         private ArrayList<Integer> mItems;
+        private final ApkListAdapter mApkListAdapter;
 
         public AppDetailsRecyclerViewAdapter(Context context) {
             mContext = context;
+            mApkListAdapter = new ApkListAdapter(mContext, mApp);
             updateItems();
         }
 
@@ -127,12 +125,30 @@ public class AppDetails2 extends AppCompatActivity {
                 mItems = new ArrayList<>();
             else
                 mItems.clear();
-            mItems.add(Integer.valueOf(VIEWTYPE_HEADER));
-            mItems.add(Integer.valueOf(VIEWTYPE_SCREENSHOTS));
-            mItems.add(Integer.valueOf(VIEWTYPE_WHATS_NEW));
-            mItems.add(Integer.valueOf(VIEWTYPE_LINKS));
-            //mItems.add(Integer.valueOf(VIEWTYPE_PERMISSIONS));
-            mItems.add(Integer.valueOf(VIEWTYPE_VERSIONS));
+            mItems.add(VIEWTYPE_HEADER);
+            mItems.add(VIEWTYPE_SCREENSHOTS);
+            mItems.add(VIEWTYPE_WHATS_NEW);
+            mItems.add(VIEWTYPE_LINKS);
+            if (shouldShowPermissions())
+                mItems.add(VIEWTYPE_PERMISSIONS);
+            mItems.add(VIEWTYPE_VERSIONS);
+        }
+
+        private boolean shouldShowPermissions() {
+            // Figure out if we should show permissions section
+            Apk curApk = null;
+            for (int i = 0; i < mApkListAdapter.getCount(); i++) {
+                final Apk apk = mApkListAdapter.getItem(i);
+                if (apk.versionCode == mApp.suggestedVersionCode) {
+                    curApk = apk;
+                    break;
+                }
+            }
+            final boolean curApkCompatible = curApk != null && curApk.compatible;
+            if (!mApkListAdapter.isEmpty() && (curApkCompatible || Preferences.get().showIncompatibleVersions())) {
+               return true;
+            }
+            return false;
         }
 
         @Override
@@ -152,9 +168,11 @@ public class AppDetails2 extends AppCompatActivity {
             } else if (viewType == VIEWTYPE_LINKS) {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.app_details2_links, parent, false);
-                return new LinksViewHolder(view);
+                return new ExpandableLinearLayoutViewHolder(view);
             } else if (viewType == VIEWTYPE_PERMISSIONS) {
-
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.app_details2_links, parent, false);
+                return new ExpandableLinearLayoutViewHolder(view);
             } else if (viewType == VIEWTYPE_VERSIONS) {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.app_details2_versions, parent, false);
@@ -265,7 +283,7 @@ public class AppDetails2 extends AppCompatActivity {
                 WhatsNewViewHolder vh = (WhatsNewViewHolder) holder;
                 vh.textView.setText("WHATS NEW GOES HERE");
             } else if (viewType == VIEWTYPE_LINKS) {
-                final LinksViewHolder vh = (LinksViewHolder) holder;
+                final ExpandableLinearLayoutViewHolder vh = (ExpandableLinearLayoutViewHolder) holder;
                 vh.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -274,6 +292,8 @@ public class AppDetails2 extends AppCompatActivity {
                         TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_website, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
                     }
                 });
+                vh.headerView.setText(R.string.links);
+                TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_website, 0, R.drawable.ic_expand_more_grey600, 0);
                 vh.contentView.removeAllViews();
 
                 // Source button
@@ -322,6 +342,22 @@ public class AppDetails2 extends AppCompatActivity {
                 if (!TextUtils.isEmpty(mApp.flattrID)) {
                     addLinkItemView(vh.contentView, R.string.menu_flattr, R.drawable.ic_flattr, "https://flattr.com/thing/" + mApp.flattrID);
                 }
+            } else if (viewType == VIEWTYPE_PERMISSIONS) {
+                final ExpandableLinearLayoutViewHolder vh = (ExpandableLinearLayoutViewHolder) holder;
+                vh.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        boolean shouldBeVisible = (vh.contentView.getVisibility() != View.VISIBLE);
+                        vh.contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
+                        TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_lock_24dp_grey600, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+                    }
+                });
+                vh.headerView.setText(R.string.permissions);
+                TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_lock_24dp_grey600, 0, R.drawable.ic_expand_more_grey600, 0);
+                vh.contentView.removeAllViews();
+                AppDiff appDiff = new AppDiff(getPackageManager(), mApkListAdapter.getItem(0));
+                AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.pkgInfo);
+                vh.contentView.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
             } else if (viewType == VIEWTYPE_VERSIONS) {
                 final VersionsViewHolder vh = (VersionsViewHolder) holder;
                 vh.itemView.setOnClickListener(new View.OnClickListener() {
@@ -332,7 +368,7 @@ public class AppDetails2 extends AppCompatActivity {
                         TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_source_code, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
                     }
                 });
-                vh.contentView.setAdapter(new ApkListAdapter(mContext, mApp));
+                vh.contentView.setAdapter(mApkListAdapter);
             }
         }
 
@@ -409,11 +445,6 @@ public class AppDetails2 extends AppCompatActivity {
                 buttonSecondaryView.setTransformationMethod(allCapsTransformation);
                 descriptionMoreView.setTransformationMethod(allCapsTransformation);
             }
-
-            @Override
-            public String toString() {
-                return super.toString() + " '" + titleView.getText() + "'";
-            }
         }
 
         public class ScreenShotsViewHolder extends RecyclerView.ViewHolder {
@@ -422,11 +453,6 @@ public class AppDetails2 extends AppCompatActivity {
             ScreenShotsViewHolder(View view) {
                 super(view);
                 recyclerView = (RecyclerView) view.findViewById(R.id.screenshots);
-            }
-
-            @Override
-            public String toString() {
-                return super.toString() + " screenshots";
             }
         }
 
@@ -437,26 +463,16 @@ public class AppDetails2 extends AppCompatActivity {
                 super(view);
                 textView = (TextView) view.findViewById(R.id.text);
             }
-
-            @Override
-            public String toString() {
-                return super.toString() + " " + textView.getText();
-            }
         }
 
-        public class LinksViewHolder extends RecyclerView.ViewHolder {
+        public class ExpandableLinearLayoutViewHolder extends RecyclerView.ViewHolder {
             final TextView headerView;
             final LinearLayout contentView;
 
-            LinksViewHolder(View view) {
+            ExpandableLinearLayoutViewHolder(View view) {
                 super(view);
                 headerView = (TextView) view.findViewById(R.id.information);
                 contentView = (LinearLayout) view.findViewById(R.id.ll_content);
-            }
-
-            @Override
-            public String toString() {
-                return super.toString() + " links";
             }
         }
 
@@ -468,11 +484,6 @@ public class AppDetails2 extends AppCompatActivity {
                 super(view);
                 headerView = (TextView) view.findViewById(R.id.information);
                 contentView = (ListView) view.findViewById(R.id.lv_content);
-            }
-
-            @Override
-            public String toString() {
-                return super.toString() + " versions";
             }
         }
 
