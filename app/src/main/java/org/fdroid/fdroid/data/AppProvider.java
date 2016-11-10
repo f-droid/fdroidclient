@@ -170,14 +170,8 @@ public class AppProvider extends FDroidProvider {
             return app;
         }
 
-        /*
-         * I wasn't quite sure on the best way to execute arbitrary queries using the same DBHelper as the
-         * content provider class, so I've hidden the implementation of this (by making it private) in case
-         * I find a better way in the future.
-         */
         public static void calcDetailsFromIndex(Context context) {
-            final Uri fromUpstream = calcAppDetailsFromIndexUri();
-            context.getContentResolver().update(fromUpstream, null, null, null);
+            context.getContentResolver().update(calcAppDetailsFromIndexUri(), null, null, null);
         }
 
         public static List<App> findCanUpdate(Context context, String[] projection) {
