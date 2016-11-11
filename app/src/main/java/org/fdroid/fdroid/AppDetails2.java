@@ -133,15 +133,15 @@ public class AppDetails2 extends AppCompatActivity {
 
         private final Context mContext;
         private ArrayList<Integer> mItems;
-        private final ApkListAdapter mApkListAdapter;
+        private ApkListAdapter mApkListAdapter;
 
         public AppDetailsRecyclerViewAdapter(Context context) {
             mContext = context;
-            mApkListAdapter = new ApkListAdapter(mContext, mApp);
             updateItems();
         }
 
-        private void updateItems() {
+        public void updateItems() {
+            mApkListAdapter = new ApkListAdapter(mContext, mApp);
             if (mItems == null)
                 mItems = new ArrayList<>();
             else
@@ -947,14 +947,19 @@ public class AppDetails2 extends AppCompatActivity {
     }
 
     private void onAppChanged() {
-        if (!reset(mApp.packageName)) {
-            this.finish();
-            return;
-        }
-        mRecyclerView.getAdapter().notifyDataSetChanged();
-        //refreshApkList();
-        //refreshHeader();
-        supportInvalidateOptionsMenu();
+        mRecyclerView.post(new Runnable() {
+            @Override
+            public void run() {
+                if (!reset(mApp.packageName)) {
+                    AppDetails2.this.finish();
+                    return;
+                }
+                AppDetailsRecyclerViewAdapter adapter = (AppDetailsRecyclerViewAdapter)mRecyclerView.getAdapter();
+                adapter.updateItems();
+                adapter.notifyDataSetChanged();
+                supportInvalidateOptionsMenu();
+            }
+        });
     }
 
     private boolean isAppInstalled() {
