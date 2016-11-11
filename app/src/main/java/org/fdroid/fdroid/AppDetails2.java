@@ -1,13 +1,21 @@
 package org.fdroid.fdroid;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.TextViewCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.text.AllCapsTransformationMethod;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,8 +43,16 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.installer.InstallerFactory;
+import org.fdroid.fdroid.installer.InstallerService;
+import org.fdroid.fdroid.net.Downloader;
+import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.ApkListAdapter;
@@ -51,9 +67,14 @@ public class AppDetails2 extends AppCompatActivity {
 
     private static final String TAG = "AppDetails2";
 
+    private static final int REQUEST_PERMISSION_DIALOG = 3;
+    private static final int REQUEST_UNINSTALL_DIALOG = 4;
+
     private App mApp;
     private RecyclerView mRecyclerView;
     private AppDetailsRecyclerViewAdapter mAdapter;
+    private LocalBroadcastManager mLocalBroadcastManager;
+    private String mActiveDownloadUrlString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +85,12 @@ public class AppDetails2 extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        App app = null;
-        String packageName = getPackageNameFromIntent(getIntent());
-        if (!TextUtils.isEmpty(packageName)) {
-            app = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), packageName);
+        if (!reset(getPackageNameFromIntent(getIntent()))) {
+            finish();
+            return;
         }
-        setApp(app); // Will call finish if empty or unknown
+
+        mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.rvDetails);
         mAdapter = new AppDetailsRecyclerViewAdapter(this);
@@ -222,45 +243,47 @@ public class AppDetails2 extends AppCompatActivity {
                     }
                 });
                 vh.buttonSecondaryView.setText(R.string.menu_uninstall);
-                vh.buttonSecondaryView.setVisibility(mApp.isInstalled() ? View.VISIBLE : View.INVISIBLE);
+                vh.buttonSecondaryView.setVisibility(isAppInstalled() ? View.VISIBLE : View.INVISIBLE);
+                vh.buttonSecondaryView.setOnClickListener(mOnUnInstallClickListener);
                 vh.buttonPrimaryView.setText(R.string.menu_install);
-                vh.buttonPrimaryView.setVisibility(View.VISIBLE);
-
-/*                if (appDetails.activeDownloadUrlString != null) {
-                    btMain.setText(R.string.downloading);
-                    btMain.setEnabled(false);
-                } else if (!app.isInstalled() && app.suggestedVersionCode > 0 &&
-                        appDetails.adapter.getCount() > 0) {
+                vh.buttonPrimaryView.setVisibility(mApkListAdapter.getCount() > 0 ? View.VISIBLE : View.GONE);
+                if (mActiveDownloadUrlString != null) {
+                    vh.buttonPrimaryView.setText(R.string.downloading);
+                    vh.buttonPrimaryView.setEnabled(false);
+                } else if (!isAppInstalled() && mApp.suggestedVersionCode > 0 &&
+                        mApkListAdapter.getCount() > 0) {
                     // Check count > 0 due to incompatible apps resulting in an empty list.
                     // If App isn't installed
-                    installed = false;
-                    statusView.setText(R.string.details_notinstalled);
-                    NfcHelper.disableAndroidBeam(appDetails);
+                    //installed = false;
+                    //statusView.setText(R.string.details_notinstalled);
+                    NfcHelper.disableAndroidBeam(AppDetails2.this);
                     // Set Install button and hide second button
-                    btMain.setText(R.string.menu_install);
-                    btMain.setOnClickListener(mOnClickListener);
-                    btMain.setEnabled(true);
-                } else if (app.isInstalled()) {
+                    vh.buttonPrimaryView.setText(R.string.menu_install);
+                    vh.buttonPrimaryView.setOnClickListener(mOnInstallClickListener);
+                    vh.buttonPrimaryView.setEnabled(true);
+                } else if (isAppInstalled()) {
                     // If App is installed
-                    installed = true;
-                    statusView.setText(getString(R.string.details_installed, app.installedVersionName));
-                    NfcHelper.setAndroidBeam(appDetails, app.packageName);
-                    if (app.canAndWantToUpdate(appDetails)) {
-                        updateWanted = true;
-                        btMain.setText(R.string.menu_upgrade);
+                    //installed = true;
+                    //statusView.setText(getString(R.string.details_installed, app.installedVersionName));
+                    NfcHelper.setAndroidBeam(AppDetails2.this, mApp.packageName);
+                    if (mApp.canAndWantToUpdate(AppDetails2.this)) {
+                        //updateWanted = true;
+                        vh.buttonPrimaryView.setText(R.string.menu_upgrade);
+                        vh.buttonPrimaryView.setOnClickListener(mOnUpgradeClickListener);
                     } else {
-                        updateWanted = false;
-                        if (appDetails.packageManager.getLaunchIntentForPackage(app.packageName) != null) {
-                            btMain.setText(R.string.menu_launch);
+                        //updateWanted = false;
+                        if (getPackageManager().getLaunchIntentForPackage(mApp.packageName) != null) {
+                            vh.buttonPrimaryView.setText(R.string.menu_launch);
+                            vh.buttonPrimaryView.setOnClickListener(mOnLaunchClickListener);
                         } else {
-                            btMain.setText(R.string.menu_uninstall);
+                            vh.buttonPrimaryView.setVisibility(View.GONE);
+                            //vh.buttonPrimaryView.setText(R.string.menu_uninstall);
                         }
                     }
-                    btMain.setOnClickListener(mOnClickListener);
-                    btMain.setEnabled(true);
+                    vh.buttonPrimaryView.setEnabled(true);
                 }
 
-                TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
+                /*TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
                 if (!appDetails.getApks().isEmpty()) {
                     currentVersion.setText(appDetails.getApks().getItem(0).versionName + " (" + app.license + ")");
                 } else {
@@ -276,9 +299,11 @@ public class AppDetails2 extends AppCompatActivity {
                 vh.recyclerView.setAdapter(adapter);
                 vh.recyclerView.setHasFixedSize(true);
                 vh.recyclerView.setNestedScrollingEnabled(false);
-                LinearLayoutManagerSnapHelper helper = new LinearLayoutManagerSnapHelper(lm);
-                helper.setLinearSnapHelperListener(adapter);
-                helper.attachToRecyclerView(vh.recyclerView);
+                if (vh.snapHelper != null)
+                    vh.snapHelper.attachToRecyclerView(null);
+                vh.snapHelper = new LinearLayoutManagerSnapHelper(lm);
+                vh.snapHelper.setLinearSnapHelperListener(adapter);
+                vh.snapHelper.attachToRecyclerView(vh.recyclerView);
             } else if (viewType == VIEWTYPE_WHATS_NEW) {
                 WhatsNewViewHolder vh = (WhatsNewViewHolder) holder;
                 vh.textView.setText("WHATS NEW GOES HERE");
@@ -449,6 +474,7 @@ public class AppDetails2 extends AppCompatActivity {
 
         public class ScreenShotsViewHolder extends RecyclerView.ViewHolder {
             final RecyclerView recyclerView;
+            LinearLayoutManagerSnapHelper snapHelper;
 
             ScreenShotsViewHolder(View view) {
                 super(view);
@@ -506,6 +532,41 @@ public class AppDetails2 extends AppCompatActivity {
                 tryOpenUri(url);
             }
         }
+
+        private View.OnClickListener mOnInstallClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(AppDetails2.this, mApp.packageName, mApp.suggestedVersionCode);
+
+                // If not installed, install
+                //btMain.setEnabled(false);
+                //btMain.setText(R.string.system_install_installing);
+
+                installApk(apkToInstall);
+            }
+        };
+
+        private View.OnClickListener mOnUnInstallClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uninstallApk();
+            }
+        };
+
+        private View.OnClickListener mOnUpgradeClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(AppDetails2.this, mApp.packageName, mApp.suggestedVersionCode);
+                installApk(apkToInstall);
+            }
+        };
+
+        private View.OnClickListener mOnLaunchClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchApk(mApp.packageName);
+            }
+        };
     }
 
     private void tryOpenUri(String s) {
@@ -557,5 +618,346 @@ public class AppDetails2 extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            //case REQUEST_ENABLE_BLUETOOTH:
+            //    fdroidApp.sendViaBluetooth(this, resultCode, app.packageName);
+            //    break;
+            case REQUEST_PERMISSION_DIALOG:
+                if (resultCode == Activity.RESULT_OK) {
+                    Uri uri = data.getData();
+                    Apk apk = ApkProvider.Helper.findByUri(this, uri, Schema.ApkTable.Cols.ALL);
+                    startInstall(apk);
+                }
+                break;
+            case REQUEST_UNINSTALL_DIALOG:
+                if (resultCode == Activity.RESULT_OK) {
+                    startUninstall();
+                }
+                break;
+        }
+    }
+
+    // Install the version of this app denoted by 'app.curApk'.
+    private void installApk(final Apk apk) {
+        if (isFinishing()) {
+            return;
+        }
+
+        if (!apk.compatible) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.installIncompatible);
+            builder.setPositiveButton(R.string.yes,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog,
+                                            int whichButton) {
+                            initiateInstall(apk);
+                        }
+                    });
+            builder.setNegativeButton(R.string.no,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog,
+                                            int whichButton) {
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+            return;
+        }
+        if (mApp.installedSig != null && apk.sig != null
+                && !apk.sig.equals(mApp.installedSig)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
+                    R.string.ok,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+            return;
+        }
+        initiateInstall(apk);
+    }
+
+    private void initiateInstall(Apk apk) {
+        Installer installer = InstallerFactory.create(this, apk);
+        Intent intent = installer.getPermissionScreen();
+        if (intent != null) {
+            // permission screen required
+            Utils.debugLog(TAG, "permission screen required");
+            startActivityForResult(intent, REQUEST_PERMISSION_DIALOG);
+            return;
+        }
+
+        startInstall(apk);
+    }
+
+    private void startInstall(Apk apk) {
+        mActiveDownloadUrlString = apk.getUrl();
+        registerDownloaderReceiver();
+        InstallManagerService.queue(this, mApp, apk);
+    }
+
+    /**
+     * Queue for uninstall based on the instance variable {@link #app}
+     */
+    private void uninstallApk() {
+        Apk apk = mApp.installedApk;
+        if (apk == null) {
+            // TODO ideally, app would be refreshed immediately after install, then this
+            // workaround would be unnecessary
+            try {
+                PackageInfo pi = getPackageManager().getPackageInfo(mApp.packageName, 0);
+                apk = ApkProvider.Helper.findApkFromAnyRepo(this, pi.packageName, pi.versionCode);
+                mApp.installedApk = apk;
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+                return; // not installed
+            }
+        }
+        Installer installer = InstallerFactory.create(this, apk);
+        Intent intent = installer.getUninstallScreen();
+        if (intent != null) {
+            // uninstall screen required
+            Utils.debugLog(TAG, "screen screen required");
+            startActivityForResult(intent, REQUEST_UNINSTALL_DIALOG);
+            return;
+        }
+
+        startUninstall();
+    }
+
+    private void startUninstall() {
+        registerUninstallReceiver();
+        InstallerService.uninstall(this, mApp.installedApk);
+    }
+
+    private void launchApk(String packageName) {
+        Intent intent = getPackageManager().getLaunchIntentForPackage(packageName);
+        startActivity(intent);
+    }
+
+    private void registerUninstallReceiver() {
+        mLocalBroadcastManager.registerReceiver(uninstallReceiver,
+                Installer.getUninstallIntentFilter(mApp.packageName));
+    }
+
+    private void unregisterUninstallReceiver() {
+        mLocalBroadcastManager.unregisterReceiver(uninstallReceiver);
+    }
+
+    private void registerDownloaderReceiver() {
+        if (mActiveDownloadUrlString != null) { // if a download is active
+            String url = mActiveDownloadUrlString;
+            mLocalBroadcastManager.registerReceiver(downloadReceiver,
+                    DownloaderService.getIntentFilter(url));
+        }
+    }
+
+    private void unregisterDownloaderReceiver() {
+        mLocalBroadcastManager.unregisterReceiver(downloadReceiver);
+    }
+
+    private void unregisterInstallReceiver() {
+        mLocalBroadcastManager.unregisterReceiver(installReceiver);
+    }
+
+    private final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (intent.getAction()) {
+                case Downloader.ACTION_STARTED:
+                    //if (headerFragment != null) {
+                    //    headerFragment.startProgress();
+                    //}
+                    break;
+                case Downloader.ACTION_PROGRESS:
+                    //if (headerFragment != null) {
+                    //    headerFragment.updateProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
+                    //            intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1));
+                    //}
+                    break;
+                case Downloader.ACTION_COMPLETE:
+                    // Starts the install process one the download is complete.
+                    cleanUpFinishedDownload();
+                    mLocalBroadcastManager.registerReceiver(installReceiver,
+                            Installer.getInstallIntentFilter(intent.getData()));
+                    break;
+                case Downloader.ACTION_INTERRUPTED:
+                    if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
+                        String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
+                                + " " + intent.getDataString();
+                        Toast.makeText(context, R.string.download_error, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+                    } else { // user canceled
+                        Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
+                    }
+                    cleanUpFinishedDownload();
+                    break;
+                default:
+                    throw new RuntimeException("intent action not handled!");
+            }
+        }
+    };
+
+    private final BroadcastReceiver installReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (intent.getAction()) {
+                case Installer.ACTION_INSTALL_STARTED:
+                    //headerFragment.startProgress(false);
+                    //headerFragment.showIndeterminateProgress(getString(R.string.installing));
+                    break;
+                case Installer.ACTION_INSTALL_COMPLETE:
+                    //headerFragment.removeProgress();
+                    unregisterInstallReceiver();
+                    onAppChanged();
+                    break;
+                case Installer.ACTION_INSTALL_INTERRUPTED:
+                    //headerFragment.removeProgress();
+                    onAppChanged();
+
+                    String errorMessage =
+                            intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
+
+                    if (!TextUtils.isEmpty(errorMessage)) {
+                        Log.e(TAG, "install aborted with errorMessage: " + errorMessage);
+
+                        String title = String.format(
+                                getString(R.string.install_error_notify_title),
+                                mApp.name);
+
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails2.this);
+                        alertBuilder.setTitle(title);
+                        alertBuilder.setMessage(errorMessage);
+                        alertBuilder.setNeutralButton(android.R.string.ok, null);
+                        alertBuilder.create().show();
+                    }
+                    unregisterInstallReceiver();
+                    break;
+                case Installer.ACTION_INSTALL_USER_INTERACTION:
+                    PendingIntent installPendingIntent =
+                            intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+
+                    try {
+                        installPendingIntent.send();
+                    } catch (PendingIntent.CanceledException e) {
+                        Log.e(TAG, "PI canceled", e);
+                    }
+
+                    break;
+                default:
+                    throw new RuntimeException("intent action not handled!");
+            }
+        }
+    };
+
+    private final BroadcastReceiver uninstallReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (intent.getAction()) {
+                case Installer.ACTION_UNINSTALL_STARTED:
+                    //headerFragment.startProgress(false);
+                    //headerFragment.showIndeterminateProgress(getString(R.string.uninstalling));
+                    break;
+                case Installer.ACTION_UNINSTALL_COMPLETE:
+                    //headerFragment.removeProgress();
+                    onAppChanged();
+                    unregisterUninstallReceiver();
+                    break;
+                case Installer.ACTION_UNINSTALL_INTERRUPTED:
+                    //headerFragment.removeProgress();
+
+                    String errorMessage =
+                            intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
+
+                    if (!TextUtils.isEmpty(errorMessage)) {
+                        Log.e(TAG, "uninstall aborted with errorMessage: " + errorMessage);
+
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails2.this);
+                        alertBuilder.setTitle(R.string.uninstall_error_notify_title);
+                        alertBuilder.setMessage(errorMessage);
+                        alertBuilder.setNeutralButton(android.R.string.ok, null);
+                        alertBuilder.create().show();
+                    }
+                    unregisterUninstallReceiver();
+                    break;
+                case Installer.ACTION_UNINSTALL_USER_INTERACTION:
+                    PendingIntent uninstallPendingIntent =
+                            intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+
+                    try {
+                        uninstallPendingIntent.send();
+                    } catch (PendingIntent.CanceledException e) {
+                        Log.e(TAG, "PI canceled", e);
+                    }
+
+                    break;
+                default:
+                    throw new RuntimeException("intent action not handled!");
+            }
+        }
+    };
+
+    // Reset the display and list contents. Used when entering the activity, and
+    // also when something has been installed/uninstalled.
+    // Return true if the app was found, false otherwise.
+    private boolean reset(String packageName) {
+
+        Utils.debugLog(TAG, "Getting application details for " + packageName);
+        App newApp = null;
+
+        calcActiveDownloadUrlString(packageName);
+
+        if (!TextUtils.isEmpty(packageName)) {
+            newApp = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), packageName);
+        }
+
+        setApp(newApp);
+        return this.mApp != null;
+    }
+
+    private void calcActiveDownloadUrlString(String packageName) {
+        String urlString = getPreferences(MODE_PRIVATE).getString(packageName, null);
+        if (DownloaderService.isQueuedOrActive(urlString)) {
+            mActiveDownloadUrlString = urlString;
+        } else {
+            // this URL is no longer active, remove it
+            getPreferences(MODE_PRIVATE).edit().remove(packageName).apply();
+        }
+    }
+
+    /**
+     * Remove progress listener, suppress progress bar, set downloadHandler to null.
+     */
+    private void cleanUpFinishedDownload() {
+        mActiveDownloadUrlString = null;
+        //if (headerFragment != null) {
+        //    headerFragment.removeProgress();
+        //}
+        unregisterDownloaderReceiver();
+    }
+
+    private void onAppChanged() {
+        if (!reset(mApp.packageName)) {
+            this.finish();
+            return;
+        }
+        mRecyclerView.getAdapter().notifyDataSetChanged();
+        //refreshApkList();
+        //refreshHeader();
+        supportInvalidateOptionsMenu();
+    }
+
+    private boolean isAppInstalled() {
+        return mApp.isInstalled();
     }
 }
