@@ -27,6 +27,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -51,6 +52,7 @@ import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.views.main.MainActivity;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -145,6 +147,51 @@ public class UpdateService extends IntentService {
      */
     public static boolean isUpdating() {
         return updating;
+    }
+
+    private static volatile boolean isScheduleIfStillOnWifiRunning;
+
+    /**
+     * Waits for a period of time for the WiFi to settle, then if the WiFi is
+     * still active, it schedules an update.  This is to encourage the use of
+     * unlimited networks over metered networks for index updates and auto
+     * downloads of app updates. Starting with {@code android-21}, this uses
+     * {@link android.app.job.JobScheduler} instead.
+     */
+    public static void scheduleIfStillOnWifi(Context context) {
+        if (Build.VERSION.SDK_INT >= 21) {
+            throw new IllegalStateException("This should never be used on android-21 or newer!");
+        }
+        if (isScheduleIfStillOnWifiRunning || !Preferences.get().isBackgroundDownloadAllowed()) {
+            return;
+        }
+        isScheduleIfStillOnWifiRunning = true;
+        new StillOnWifiAsyncTask(context).execute();
+    }
+
+    private static final class StillOnWifiAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        private final WeakReference<Context> contextWeakReference;
+
+        private StillOnWifiAsyncTask(Context context) {
+            this.contextWeakReference = new WeakReference<>(context);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Context context = contextWeakReference.get();
+            try {
+                Thread.sleep(120000);
+                if (Preferences.get().isBackgroundDownloadAllowed()) {
+                    Utils.debugLog(TAG, "scheduling update because there is good internet");
+                    schedule(context);
+                }
+            } catch (Exception e) {
+                Utils.debugLog(TAG, e.getMessage());
+            }
+            isScheduleIfStillOnWifiRunning = false;
+            return null;
+        }
     }
 
     @Override
