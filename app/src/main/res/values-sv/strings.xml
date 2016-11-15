@@ -6,7 +6,7 @@
   <string name="version">Version</string>
   <string name="delete">Ta bort</string>
   <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
-  <string name="cache_downloaded">Behåll cachade appar</string>
+  <string name="cache_downloaded">Behåll mellanlagrade appar</string>
   <string name="updates">Uppdateringar</string>
   <string name="other">Andra</string>
   <string name="update_interval">Automatiskt uppdateringsintervall</string>
@@ -19,15 +19,15 @@
   <string name="update_history_summ">Antalet dagar som appar ska betraktas som nya eller färska: %s</string>
   <string name="system_installer">Privilgierat tilläggsprogram</string>
   <string name="system_installer_on">Använd F-Droid\'s priviligerade tilläggsprogram för att installera, uppdatera och ta bort paket</string>
-  <string name="local_repo_name">Namnet på din lokala repository</string>
-  <string name="local_repo_name_summary">Annonserad titel på ditt lokala förråd: %s</string>
+  <string name="local_repo_name">Namn på ditt lokala förråd</string>
+  <string name="local_repo_name_summary">Annonserade titeln på ditt lokala förråd: %s</string>
   <string name="local_repo_https">Använd privat anslutning</string>
   <string name="local_repo_https_on">Använd krypterad HTTPs://-anslutning för lokalt förråd</string>
   <string name="app_details">Detaljer för app</string>
   <string name="no_such_app">Hittade ingen sådan app.</string>
   <string name="about_title">Om F-Droid</string>
   <string name="about_site">Hemsida</string>
-  <string name="about_mail">E-postadress</string>
+  <string name="about_mail">E-post</string>
   <string name="about_version">Version</string>
   <string name="app_installed">Installerad</string>
   <string name="app_not_installed">Inte installerad</string>
@@ -51,7 +51,7 @@
   <string name="bluetooth_activity_not_found">Ingen metod för att kunna skicka med Bluetooth kunde hittas, välj en!</string>
   <string name="choose_bt_send">Välj en sändningsmetod för Bluetooth</string>
   <string name="send_via_bluetooth">Skicka via Bluetooth</string>
-  <string name="repo_add_url">Adress till repository</string>
+  <string name="repo_add_url">Förråd adress</string>
   <string name="repo_add_fingerprint">Fingeravtryck (valfritt)</string>
   <string name="repo_exists_add_fingerprint">Denna repository är redan inställd, det här kommer att lägga till ny nyckelinformation.</string>
   <string name="repo_exists_enable">Denna repository är redan inställd, bekräfta att du vill återaktivera det.</string>
@@ -132,17 +132,27 @@
   <string name="repo_description">Beskrivning</string>
   <string name="repo_last_update">Senaste uppdatering</string>
   <string name="repo_name">Namn</string>
-  <string name="unsigned_description">Detta betyder att listan av program inte kunde verifieras. Du bör vara försiktig med program som hämtats från osignerade index.</string>
-  <string name="repo_not_yet_updated">Detta förrådet har inte använts ännu. Du måste aktivera det för att se apparna som det förser dig med.</string>
+  <string name="unsigned_description">Detta betyder att listan av
+program inte kunde verifieras. Du bör vara försiktig
+med appar som hämtats från osignerade index.</string>
+  <string name="repo_not_yet_updated">Detta förråd har inte använts ännu.
+Du måste aktivera det för att se apparna det förser dig med.</string>
   <string name="unknown">Okänd</string>
   <string name="repo_confirm_delete_title">Ta bort förråd?</string>
-  <string name="repo_confirm_delete_body">Att ta bort ett fil-förråd betyder att dess appar inte längre kommer att vara tillgängliga från F-Droid.\n\nOBS: Alla tidigare installerade appar kommer finnas kvar på din enhet.</string>
-  <string name="repo_disabled_notification">Inaktiverade %1$s.\n\nDu kommer behöva återaktivera det här fil-förrådet för att kunna installera appar från det.</string>
+  <string name="repo_confirm_delete_body">Att ta bort ett fil-förråd betyder
+ att dess appar inte längre kommer att vara tillgängliga från F-Droid.
+
+Notera: Alla
+ tidigare installerade appar kommer finnas kvar på din enhet.</string>
+  <string name="repo_disabled_notification">Inaktiverade %1$s.
+
+Du kommer
+ behöva återaktivera det här fil-förrådet för att kunna installera appar från det.</string>
   <string name="repo_searching_address">Söker F-Droid-förråd på %1$s</string>
   <string name="minsdk_or_later">%s eller senare</string>
   <string name="up_to_maxsdk">Upp till %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s upp till %2$s</string>
-  <string name="not_on_same_wifi">Din enhet är inte på samma WiFi som det lokala förråd du just lagt till! Försök ansluta till detta nätverk: %s</string>
+  <string name="not_on_same_wifi">Din enhet är inte på samma WiFi som det lokala förrådet du just lagt till! Försök ansluta till detta nätverk: %s</string>
   <string name="requires_features">Kräver: %1$s</string>
   <string name="app_icon">Appikon</string>
   <string name="category_Development">Utveckling</string>
@@ -211,7 +221,7 @@
 
     <string name="tab_installed_apps_count">Installerade (%d)</string>
     <string name="tab_updates_count">Uppdateringar (%d)</string>
-    <string name="menu_email">E-postförfattare</string>
+    <string name="menu_email">E-post författare</string>
     <string name="antinonfreeassetslist">Denna app innehåller icke-fria tillgångar</string>
 
     <string name="useTor">Använd Tor</string>
@@ -293,10 +303,18 @@
     <string name="swap_not_enabled_description">Innan utbyte, måste enheten synliggöras.</string>
 
     <string name="install_confirm">behöver tillgång till</string>
-    <string name="install_confirm_update">Vill du installera en uppdatering till denna befintlig applikation? Befintlig data försvinner inte. Den uppdaterade programmet kommer att få tillgång till:</string>
-    <string name="install_confirm_update_system">Vill du installera en uppdatering till detta inbyggda program? Befintlig data försvinner inte. Det uppdaterade programmet kommer att få tillgång till:</string>
-    <string name="install_confirm_update_no_perms">Vill du installera en uppdatering till denna befintlig applikation? Befintlig data försvinner inte. Det kräver inte någon särskild tillgång.</string>
-    <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering till detta inbyggda program? Befintlig data försvinner inte. Det kräver inte någon särskild tillgång.</string>
+    <string name="install_confirm_update">Vill du installera en uppdatering
+till denna befintlig applikation? Din befintliga data 
+försvinner inte. Det uppdaterade programmet kommer att få tillgång till:</string>
+    <string name="install_confirm_update_system">Vill du installera en uppdatering
+ till denna inbyggda app? Befintlig data försvinner inte. 
+ Den uppdaterade appen kommer att få tillgång till:</string>
+    <string name="install_confirm_update_no_perms">Vill du installera en uppdatering
+till denna befintlig app? Din befintliga data försvinner inte. 
+Den kräver inte någon särskild tillgång.</string>
+    <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering
+till denna inbyggda app? Din befintliga data försvinner inte.
+Den kräver inte någon särskild tillgång.</string>
     <string name="newPerms">Ny</string>
     <string name="allPerms">Alla</string>
     <string name="perm_costs_money">Detta kan kosta pengar</string>
@@ -322,7 +340,9 @@
     <string name="theme_night">Natt</string>
 
     <string name="crash_dialog_title">F-Droid har kraschat</string>
-    <string name="crash_dialog_text">Ett oväntat fel tvingade programmet att sluta. Vill du skicka e-detaljer med e-post för att hjälpa till att åtgärda problemet?</string>
+    <string name="crash_dialog_text">Ett oväntat fel inträffade
+tvingade programmet att avsluta. Vill du skicka detaljer med
+e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="crash_dialog_comment_prompt">Du kan lägga till extra information och kommentarer här:</string>
 <string name="swap_nearby">Närliggande byte</string>
     <string name="update_auto_download">Ladda ner uppdateringar automatiskt</string>
@@ -349,4 +369,10 @@
     <string name="installing">Installerar…</string>
     <string name="uninstalling">Avinstallera…</string>
 
+    <string name="keep_install_history">Behåll installerings historia</string>
+    <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i F-Droid</string>
+    <string name="update_auto_install">Installera uppdateringar automatiskt</string>
+    <string name="update_auto_install_summary">Ladda ner och installera uppdaterings program i bakgrunden</string>
+    <string name="hide_anti_feature_apps">Grå ut anti-funktion appar</string>
+    <string name="hide_anti_feature_apps_on">Grå ut appar som kräver anti-funktioner</string>
     </resources>

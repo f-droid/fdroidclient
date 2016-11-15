@@ -9,7 +9,7 @@
   <string name="cache_downloaded">Caltener aplicaciones na caché</string>
   <string name="updates">Anovamientos</string>
   <string name="other">Otru</string>
-  <string name="update_interval">Intervalu automáticu d\'anovaminetu</string>
+  <string name="update_interval">Intervalu automáticu d\'anovamientu</string>
   <string name="update_interval_zero">Nun anovar automáticamente\'l llistáu d\'aplicaciones</string>
   <string name="automatic_scan_wifi">Namái na Wi-Fi</string>
   <string name="automatic_scan_wifi_on">Anueva automáticamente les llistes d\'aplicaciones namái na Wi-Fi</string>
@@ -111,7 +111,7 @@
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Habilitar proxy HTTP</string>
   <string name="enable_proxy_summary">Configura\'l proxy HTTP pa toles solicitúes de rede</string>
-  <string name="proxy_host">Agospiu de proxy</string>
+  <string name="proxy_host">Agospiu del proxy</string>
   <string name="proxy_host_summary">Configura\'l nome d\'agospiu del to proxy (exem. 127.0.0.1)</string>
   <string name="proxy_port">Puertu del proxy</string>
   <string name="proxy_port_summary">Configura\'l númberu de puertu del to proxy (exem. 8118)</string>
@@ -369,4 +369,5 @@ corréu colos detalles p\'ayudar a iguar esti problema?</string>
     <string name="update_auto_install">Instalar automáticamente anovamientos</string>
     <string name="keep_install_history">Caltener historial d\'instalación</string>
     <string name="keep_install_history_summary">Atroxa un rexistru de les instalaciones y desinstalaciones dientro de F-Droid</string>
+    <string name="hide_anti_feature_apps_on">Abuxa les aplicaciones que rican carauterístiques de pagu, non llibres y de rastrexu</string>
     </resources>
