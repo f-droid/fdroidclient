@@ -356,12 +356,11 @@ public class UpdateService extends IntentService {
                 return;
             }
 
-            if (manualUpdate || (netState == FLAG_NET_NO_LIMIT)) {
-                // triggered by the user, or by connecting to WiFi, etc.
-                Utils.debugLog(TAG, "manually requested update or on unlimited internet");
-            } else if (Preferences.get().isUpdateOnlyOnUnmeteredNetworks()
-                    || !verifyIsTimeForScheduledRun()) {
-                Utils.debugLog(TAG, "don't run update, we're on metered internet");
+            if (manualUpdate) {
+                Utils.debugLog(TAG, "manually requested update");
+            } else if (!verifyIsTimeForScheduledRun()
+                    || (netState == FLAG_NET_METERED && Preferences.get().isUpdateOnlyOnUnmeteredNetworks())) {
+                Utils.debugLog(TAG, "don't run update");
                 return;
             }
 
