@@ -2,24 +2,24 @@ LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := F-Droid
+LOCAL_MODULE := BelMarket
 LOCAL_MODULE_TAGS := optional
-LOCAL_PACKAGE_NAME := F-Droid
+LOCAL_PACKAGE_NAME := BelMarket
 
-fdroid_root  := $(LOCAL_PATH)
-fdroid_dir   := app
-fdroid_out   := $(PWD)/$(OUT_DIR)/target/common/obj/APPS/$(LOCAL_MODULE)_intermediates
-fdroid_build := $(fdroid_root)/$(fdroid_dir)/build
-fdroid_apk   := build/outputs/apk/$(fdroid_dir)-release-unsigned.apk
+belmarket_root  := $(LOCAL_PATH)
+belmarket_dir   := app
+belmarket_out   := $(PWD)/$(OUT_DIR)/target/common/obj/APPS/$(LOCAL_MODULE)_intermediates
+belmarket_build := $(belmarket_root)/$(belmarket_dir)/build
+belmarket_apk   := build/outputs/apk/$(belmarket_dir)-release-unsigned.apk
 
-$(fdroid_root)/$(fdroid_dir)/$(fdroid_apk):
-	rm -Rf $(fdroid_build)
-	mkdir -p $(fdroid_out)
-	ln -sf $(fdroid_out) $(fdroid_build)
-	cd $(fdroid_root)/$(fdroid_dir) && gradle assembleRelease
+$(belmarket_root)/$(belmarket_dir)/$(belmarket_apk):
+	rm -Rf $(belmarket_build)
+	mkdir -p $(belmarket_out)
+	ln -sf $(belmarket_out) $(belmarket_build)
+	cd $(belmarket_root)/$(belmarket_dir) && gradle assembleRelease
 
 LOCAL_CERTIFICATE := platform
-LOCAL_SRC_FILES := $(fdroid_dir)/$(fdroid_apk)
+LOCAL_SRC_FILES := $(belmarket_dir)/$(belmarket_apk)
 LOCAL_MODULE_CLASS := APPS
 LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 
