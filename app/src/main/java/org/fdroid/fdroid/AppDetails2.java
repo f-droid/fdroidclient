@@ -79,7 +79,7 @@ public class AppDetails2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app_details2);
+        setContentView(R.layout.app_details2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(""); // Nice and clean toolbar
         setSupportActionBar(toolbar);
@@ -127,9 +127,10 @@ public class AppDetails2 extends AppCompatActivity {
         private final int VIEWTYPE_HEADER = 0;
         private final int VIEWTYPE_SCREENSHOTS = 1;
         private final int VIEWTYPE_WHATS_NEW = 2;
-        private final int VIEWTYPE_LINKS = 3;
-        private final int VIEWTYPE_PERMISSIONS = 4;
-        private final int VIEWTYPE_VERSIONS = 5;
+        private final int VIEWTYPE_DONATE = 3;
+        private final int VIEWTYPE_LINKS = 4;
+        private final int VIEWTYPE_PERMISSIONS = 5;
+        private final int VIEWTYPE_VERSIONS = 6;
 
         private final Context mContext;
         private ArrayList<Integer> mItems;
@@ -146,13 +147,26 @@ public class AppDetails2 extends AppCompatActivity {
                 mItems = new ArrayList<>();
             else
                 mItems.clear();
-            mItems.add(VIEWTYPE_HEADER);
-            mItems.add(VIEWTYPE_SCREENSHOTS);
-            mItems.add(VIEWTYPE_WHATS_NEW);
-            mItems.add(VIEWTYPE_LINKS);
-            if (shouldShowPermissions())
-                mItems.add(VIEWTYPE_PERMISSIONS);
-            mItems.add(VIEWTYPE_VERSIONS);
+            addItem(VIEWTYPE_HEADER);
+            addItem(VIEWTYPE_SCREENSHOTS);
+            addItem(VIEWTYPE_WHATS_NEW);
+            addItem(VIEWTYPE_DONATE);
+            addItem(VIEWTYPE_LINKS);
+            addItem(VIEWTYPE_PERMISSIONS);
+            addItem(VIEWTYPE_VERSIONS);
+        }
+
+        private void addItem(int item) {
+            // Gives us a chance to hide sections that are not used, e.g. the donate section when
+            // we have no donation links.
+            if (item == VIEWTYPE_DONATE) {
+                if (!shouldShowDonate())
+                    return;
+            } else if (item == VIEWTYPE_PERMISSIONS) {
+                if (!shouldShowPermissions())
+                    return;
+            }
+            mItems.add(item);
         }
 
         private boolean shouldShowPermissions() {
@@ -172,6 +186,13 @@ public class AppDetails2 extends AppCompatActivity {
             return false;
         }
 
+        private boolean shouldShowDonate() {
+            return uriIsSetAndCanBeOpened(mApp.donateURL) ||
+                    uriIsSetAndCanBeOpened(mApp.bitcoinAddr) ||
+                    uriIsSetAndCanBeOpened(mApp.litecoinAddr) ||
+                    uriIsSetAndCanBeOpened(mApp.flattrID);
+        }
+
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             if (viewType == VIEWTYPE_HEADER) {
@@ -186,6 +207,10 @@ public class AppDetails2 extends AppCompatActivity {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.app_details2_whatsnew, parent, false);
                 return new WhatsNewViewHolder(view);
+            } else if (viewType == VIEWTYPE_DONATE) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.app_details2_donate, parent, false);
+                return new DonateViewHolder(view);
             } else if (viewType == VIEWTYPE_LINKS) {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.app_details2_links, parent, false);
@@ -307,6 +332,28 @@ public class AppDetails2 extends AppCompatActivity {
             } else if (viewType == VIEWTYPE_WHATS_NEW) {
                 WhatsNewViewHolder vh = (WhatsNewViewHolder) holder;
                 vh.textView.setText("WHATS NEW GOES HERE");
+            } else if (viewType == VIEWTYPE_DONATE) {
+                DonateViewHolder vh = (DonateViewHolder) holder;
+
+                // Donate button
+                if (uriIsSetAndCanBeOpened(mApp.donateURL)) {
+                    addLinkItemView(vh.contentView, R.string.menu_donate, R.drawable.ic_donate, mApp.donateURL);
+                }
+
+                // Bitcoin
+                if (uriIsSetAndCanBeOpened(mApp.bitcoinAddr)) {
+                    addLinkItemView(vh.contentView, R.string.menu_bitcoin, R.drawable.ic_bitcoin, "bitcoin:" + mApp.bitcoinAddr);
+                }
+
+                // Litecoin
+                if (uriIsSetAndCanBeOpened(mApp.litecoinAddr)) {
+                    addLinkItemView(vh.contentView, R.string.menu_litecoin, R.drawable.ic_litecoin, "litecoin:" + mApp.litecoinAddr);
+                }
+
+                // Flattr
+                if (uriIsSetAndCanBeOpened(mApp.flattrID)) {
+                    addLinkItemView(vh.contentView, R.string.menu_flattr, R.drawable.ic_flattr, "https://flattr.com/thing/" + mApp.flattrID);
+                }
             } else if (viewType == VIEWTYPE_LINKS) {
                 final ExpandableLinearLayoutViewHolder vh = (ExpandableLinearLayoutViewHolder) holder;
                 vh.itemView.setOnClickListener(new View.OnClickListener() {
@@ -322,50 +369,30 @@ public class AppDetails2 extends AppCompatActivity {
                 vh.contentView.removeAllViews();
 
                 // Source button
-                if (!TextUtils.isEmpty(mApp.sourceURL)) {
+                if (uriIsSetAndCanBeOpened(mApp.sourceURL)) {
                     addLinkItemView(vh.contentView, R.string.menu_source, R.drawable.ic_source_code, mApp.sourceURL);
                 }
 
                 // Issues button
-                if (!TextUtils.isEmpty(mApp.trackerURL)) {
+                if (uriIsSetAndCanBeOpened(mApp.trackerURL)) {
                     addLinkItemView(vh.contentView, R.string.menu_issues, R.drawable.ic_issues, mApp.trackerURL);
                 }
 
                 // Changelog button
-                if (!TextUtils.isEmpty(mApp.changelogURL)) {
+                if (uriIsSetAndCanBeOpened(mApp.changelogURL)) {
                     addLinkItemView(vh.contentView, R.string.menu_changelog, R.drawable.ic_changelog, mApp.changelogURL);
                 }
 
                 // Website button
-                if (!TextUtils.isEmpty(mApp.webURL)) {
+                if (uriIsSetAndCanBeOpened(mApp.webURL)) {
                     addLinkItemView(vh.contentView, R.string.menu_website, R.drawable.ic_website, mApp.webURL);
                 }
 
                 // Email button
-                if (!TextUtils.isEmpty(mApp.email)) {
+                if (uriIsSetAndCanBeOpened(mApp.email)) {
                     final String subject = Uri.encode(getString(R.string.app_details_subject, mApp.name));
                     String url = "mailto:" + mApp.email + "?subject=" + subject;
                     addLinkItemView(vh.contentView, R.string.menu_email, R.drawable.ic_email, url);
-                }
-
-                // Donate button
-                if (!TextUtils.isEmpty(mApp.donateURL)) {
-                    addLinkItemView(vh.contentView, R.string.menu_donate, R.drawable.ic_donate, mApp.donateURL);
-                }
-
-                // Bitcoin
-                if (!TextUtils.isEmpty(mApp.bitcoinAddr)) {
-                    addLinkItemView(vh.contentView, R.string.menu_bitcoin, R.drawable.ic_bitcoin, "bitcoin:" + mApp.bitcoinAddr);
-                }
-
-                // Litecoin
-                if (!TextUtils.isEmpty(mApp.litecoinAddr)) {
-                    addLinkItemView(vh.contentView, R.string.menu_litecoin, R.drawable.ic_litecoin, "litecoin:" + mApp.litecoinAddr);
-                }
-
-                // Flattr
-                if (!TextUtils.isEmpty(mApp.flattrID)) {
-                    addLinkItemView(vh.contentView, R.string.menu_flattr, R.drawable.ic_flattr, "https://flattr.com/thing/" + mApp.flattrID);
                 }
             } else if (viewType == VIEWTYPE_PERMISSIONS) {
                 final ExpandableLinearLayoutViewHolder vh = (ExpandableLinearLayoutViewHolder) holder;
@@ -491,6 +518,17 @@ public class AppDetails2 extends AppCompatActivity {
             }
         }
 
+        public class DonateViewHolder extends RecyclerView.ViewHolder {
+            final TextView textView;
+            final LinearLayout contentView;
+
+            DonateViewHolder(View view) {
+                super(view);
+                textView = (TextView) view.findViewById(R.id.text);
+                contentView = (LinearLayout) view.findViewById(R.id.ll_information);
+            }
+        }
+
         public class ExpandableLinearLayoutViewHolder extends RecyclerView.ViewHolder {
             final TextView headerView;
             final LinearLayout contentView;
@@ -526,6 +564,8 @@ public class AppDetails2 extends AppCompatActivity {
                 }
             });
         }
+
+
 
         private void onLinkClicked(String url) {
             if (!TextUtils.isEmpty(url)) {
@@ -567,6 +607,13 @@ public class AppDetails2 extends AppCompatActivity {
                 launchApk(mApp.packageName);
             }
         };
+    }
+
+    private boolean uriIsSetAndCanBeOpened(String s) {
+        if (TextUtils.isEmpty(s))
+            return false;
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
+        return (intent.resolveActivity(getPackageManager()) != null);
     }
 
     private void tryOpenUri(String s) {

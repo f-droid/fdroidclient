@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_information"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/details_activity_padding"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:background="@drawable/details_panel_light_background"
+    android:padding="@dimen/details_activity_padding"
+    tools:ignore="UnusedAttribute">
+    <TextView
+        android:id="@+id/information"
+        style="@style/AppDetailsSubheaderText"
+        android:text="@string/menu_donate"
+     />
+</LinearLayout>
