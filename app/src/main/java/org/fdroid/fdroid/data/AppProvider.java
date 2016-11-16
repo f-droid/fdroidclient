@@ -562,7 +562,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryRepo(long repoId) {
-        final String selection = getApkTableName() + "." + ApkTable.Cols.REPO_ID + " = ? ";
+        final String selection = getTableName() + "." + Cols.REPO_ID + " = ? ";
         final String[] args = {String.valueOf(repoId)};
         return new AppQuerySelection(selection, args);
     }
