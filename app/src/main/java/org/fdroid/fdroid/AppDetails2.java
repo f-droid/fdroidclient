@@ -3,6 +3,7 @@ package org.fdroid.fdroid;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.bluetooth.BluetoothAdapter;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -35,6 +36,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -68,13 +70,15 @@ import java.util.ArrayList;
 
 import static android.support.v7.widget.RecyclerView.NO_POSITION;
 
-public class AppDetails2 extends AppCompatActivity {
+public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog.ShareChooserDialogListener {
 
     private static final String TAG = "AppDetails2";
 
+    private static final int REQUEST_ENABLE_BLUETOOTH = 2;
     private static final int REQUEST_PERMISSION_DIALOG = 3;
     private static final int REQUEST_UNINSTALL_DIALOG = 4;
 
+    private FDroidApp mFDroidApp;
     private App mApp;
     private RecyclerView mRecyclerView;
     private AppDetailsRecyclerViewAdapter mAdapter;
@@ -83,6 +87,8 @@ public class AppDetails2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mFDroidApp = (FDroidApp) getApplication();
+        //mFDroidApp.applyTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_details2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -160,10 +166,29 @@ public class AppDetails2 extends AppCompatActivity {
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, mApp.name);
             shareIntent.putExtra(Intent.EXTRA_TEXT, mApp.name + " (" + mApp.summary + ") - https://f-droid.org/app/" + mApp.packageName);
-            ShareChooserDialog.createChooser((CoordinatorLayout) findViewById(R.id.rootCoordinator), this, shareIntent);
+
+            boolean showNearbyItem = mApp.isInstalled() && mFDroidApp.bluetoothAdapter != null;
+            ShareChooserDialog.createChooser((CoordinatorLayout) findViewById(R.id.rootCoordinator), this, this, shareIntent, showNearbyItem);
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onNearby() {
+        /*
+                 * If Bluetooth has not been enabled/turned on, then
+                 * enabling device discoverability will automatically enable Bluetooth
+                 */
+        Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
+        startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
+        // if this is successful, the Bluetooth transfer is started
+    }
+
+    @Override
+    public void onResolvedShareIntent(Intent shareIntent) {
+        startActivity(shareIntent);
     }
 
     public class AppDetailsRecyclerViewAdapter
@@ -715,9 +740,9 @@ public class AppDetails2 extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-            //case REQUEST_ENABLE_BLUETOOTH:
-            //    fdroidApp.sendViaBluetooth(this, resultCode, app.packageName);
-            //    break;
+            case REQUEST_ENABLE_BLUETOOTH:
+                mFDroidApp.sendViaBluetooth(this, resultCode, mApp.packageName);
+                break;
             case REQUEST_PERMISSION_DIALOG:
                 if (resultCode == Activity.RESULT_OK) {
                     Uri uri = data.getData();

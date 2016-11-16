@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -31,9 +32,12 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
     private RecyclerView mRecyclerView;
     private ArrayList<ResolveInfo> mTargets;
     private int mParentWidth;
+    private Intent mShareIntent;
+    private boolean mShowNearby;
 
     public interface ShareChooserDialogListener {
-        void onItemSelected(ResolveInfo ri);
+        void onNearby();
+        void onResolvedShareIntent(Intent shareIntent);
     }
     private ShareChooserDialogListener mListener;
 
@@ -49,9 +53,10 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mParentWidth = getArguments().getInt("width", 640);
-        Intent intent = getArguments().getParcelable("intent");
+        mShareIntent = getArguments().getParcelable("intent");
+        mShowNearby = getArguments().getBoolean("showNearby", false);
         mTargets = new ArrayList<>();
-        List<ResolveInfo> resInfo = getContext().getPackageManager().queryIntentActivities(intent, 0);
+        List<ResolveInfo> resInfo = getContext().getPackageManager().queryIntentActivities(mShareIntent, 0);
         if (resInfo != null && resInfo.size() > 0) {
             for (ResolveInfo resolveInfo : resInfo) {
                 String packageName = resolveInfo.activityInfo.packageName;
@@ -123,7 +128,9 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
 
             RecyclerView.Adapter init(List<ResolveInfo> targetedShareIntents) {
                 mIntents = new ArrayList<>();
-                mIntents.add("Nearby");
+               if (mShowNearby) {
+                   mIntents.add("Nearby (string contents do not matter!)");
+               }
                 for (ResolveInfo ri : targetedShareIntents) {
                     mIntents.add(ri);
                 }
@@ -146,7 +153,15 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
             @Override
             public void onBindViewHolder(VH holder, int position) {
                 if (getItemViewType(position) == 1) {
-                    //holder.label.setText((CharSequence)mIntents.get(position));
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (mListener != null) {
+                                mListener.onNearby();
+                            }
+                            dismiss();
+                        }
+                    });
                     return;
                 }
                 final ResolveInfo ri = (ResolveInfo) mIntents.get(position);
@@ -155,8 +170,13 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (mListener != null)
-                            mListener.onItemSelected(ri);
+                        if (mListener != null) {
+                            Intent intent = new Intent(mShareIntent);
+                            ComponentName name = new ComponentName(ri.activityInfo.applicationInfo.packageName,
+                                    ri.activityInfo.name);
+                            intent.setComponent(name);
+                            mListener.onResolvedShareIntent(intent);
+                        }
                         dismiss();
                     }
                 });
@@ -170,25 +190,13 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
 
     }
 
-    public static void createChooser(CoordinatorLayout rootView, final AppCompatActivity parent, final Intent shareIntent) {
+    public static void createChooser(CoordinatorLayout rootView, ShareChooserDialog.ShareChooserDialogListener listener, final AppCompatActivity parent, final Intent shareIntent, boolean showNearbyItem) {
         ShareChooserDialog d = new ShareChooserDialog();
-        d.setListener(new ShareChooserDialog.ShareChooserDialogListener() {
-            @Override
-            public void onItemSelected(final ResolveInfo ri) {
-                startActivityForResolveInfo(ri);
-            }
-
-            private void startActivityForResolveInfo(ResolveInfo ri) {
-                Intent intent = new Intent(shareIntent);
-                ComponentName name = new ComponentName(ri.activityInfo.applicationInfo.packageName,
-                        ri.activityInfo.name);
-                intent.setComponent(name);
-                parent.startActivity(intent);
-            }
-        });
+        d.setListener(listener);
         Bundle args = new Bundle();
         args.putInt("width", rootView.getWidth());
         args.putParcelable("intent", shareIntent);
+        args.putBoolean("showNearby", showNearbyItem);
         d.setArguments(args);
         d.show(parent.getSupportFragmentManager(), "Share");
     }
