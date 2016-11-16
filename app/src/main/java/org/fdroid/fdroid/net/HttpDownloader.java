@@ -3,6 +3,7 @@ package org.fdroid.fdroid.net;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 import org.apache.commons.io.FileUtils;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.spongycastle.util.encoders.Base64;
@@ -83,6 +84,7 @@ public class HttpDownloader extends Downloader {
 
         // get the file size from the server
         HttpURLConnection tmpConn = getConnection();
+        tmpConn.setRequestMethod("HEAD");
         int contentLength = -1;
         if (tmpConn.getResponseCode() == 200) {
             contentLength = tmpConn.getContentLength();
@@ -114,6 +116,8 @@ public class HttpDownloader extends Downloader {
         } else {
             connection = NetCipher.getHttpURLConnection(sourceUrl);
         }
+
+        connection.setRequestProperty("User-Agent", "F-Droid " + BuildConfig.VERSION_NAME);
 
         if (username != null && password != null) {
             // add authorization header from username / password if set

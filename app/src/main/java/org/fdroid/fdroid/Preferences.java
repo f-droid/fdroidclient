@@ -231,7 +231,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, false);
     }
 
-    public boolean isUpdateOnlyOnWifi() {
+    public boolean isUpdateOnlyOnUnmeteredNetworks() {
         return preferences.getBoolean(PREF_UPD_WIFI_ONLY, false);
     }
 

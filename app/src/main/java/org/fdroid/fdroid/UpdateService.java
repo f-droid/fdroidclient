@@ -31,6 +31,8 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -78,6 +80,12 @@ public class UpdateService extends IntentService {
 
     private static final int NOTIFY_ID_UPDATING = 0;
     private static final int NOTIFY_ID_UPDATES_AVAILABLE = 1;
+
+    private static final int FLAG_NET_UNAVAILABLE = 0;
+    private static final int FLAG_NET_METERED = 1;
+    private static final int FLAG_NET_NO_LIMIT = 2;
+
+    private static Handler toastHandler;
 
     private NotificationManager notificationManager;
     private NotificationCompat.Builder notificationBuilder;
@@ -279,26 +287,50 @@ public class UpdateService extends IntentService {
             return false;
         }
 
-        return isNetworkAvailableForUpdate(this);
+        return true;
     }
 
     /**
-     * If we are to update the repos only on wifi, make sure that connection is active
+     * Gets the state of internet availability, whether there is no connection at all,
+     * whether the connection has no usage limit (like most WiFi), or whether this is
+     * a metered connection like most cellular plans or hotspot WiFi connections.
      */
-    private static boolean isNetworkAvailableForUpdate(Context context) {
+    private static int getNetworkState(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        // this could be cellular or wifi
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (activeNetwork == null) {
-            return false;
+        if (activeNetwork == null || !activeNetwork.isConnected()) {
+            return FLAG_NET_UNAVAILABLE;
         }
 
-        if (activeNetwork.getType() != ConnectivityManager.TYPE_WIFI && Preferences.get().isUpdateOnlyOnWifi()) {
-            Log.i(TAG, "Skipping update - wifi not available");
-            return false;
+        int networkType = activeNetwork.getType();
+        switch (networkType) {
+            case ConnectivityManager.TYPE_ETHERNET:
+            case ConnectivityManager.TYPE_WIFI:
+                if (Build.VERSION.SDK_INT >= 16 && cm.isActiveNetworkMetered()) {
+                    return FLAG_NET_METERED;
+                } else {
+                    return FLAG_NET_NO_LIMIT;
+                }
+            default:
+                return FLAG_NET_METERED;
         }
-        return activeNetwork.isConnectedOrConnecting();
+    }
+
+    /**
+     * In order to send a {@link Toast} from a {@link IntentService}, we have to do these tricks.
+     */
+    private void sendNoInternetToast() {
+        if (toastHandler == null) {
+            toastHandler = new Handler(Looper.getMainLooper());
+        }
+        toastHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(),
+                        R.string.warning_no_internet, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -315,9 +347,20 @@ public class UpdateService extends IntentService {
 
         try {
             // See if it's time to actually do anything yet...
+            int netState = getNetworkState(this);
+            if (netState == FLAG_NET_UNAVAILABLE) {
+                Utils.debugLog(TAG, "No internet, cannot update");
+                if (manualUpdate) {
+                    sendNoInternetToast();
+                }
+                return;
+            }
+
             if (manualUpdate) {
-                Utils.debugLog(TAG, "Unscheduled (manually requested) update");
-            } else if (!verifyIsTimeForScheduledRun()) {
+                Utils.debugLog(TAG, "manually requested update");
+            } else if (!verifyIsTimeForScheduledRun()
+                    || (netState == FLAG_NET_METERED && Preferences.get().isUpdateOnlyOnUnmeteredNetworks())) {
+                Utils.debugLog(TAG, "don't run update");
                 return;
             }
 
