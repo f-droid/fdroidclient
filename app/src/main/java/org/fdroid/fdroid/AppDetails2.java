@@ -13,7 +13,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +31,8 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.URLSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -58,6 +62,7 @@ import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.ApkListAdapter;
 import org.fdroid.fdroid.views.LinearLayoutManagerSnapHelper;
 import org.fdroid.fdroid.views.ScreenShotsRecyclerViewAdapter;
+import org.fdroid.fdroid.views.ShareChooserDialog;
 
 import java.util.ArrayList;
 
@@ -119,6 +124,46 @@ public class AppDetails2 extends AppCompatActivity {
             return;
         }
         mApp = newApp;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean ret = super.onCreateOptionsMenu(menu);
+        if (ret) {
+            getMenuInflater().inflate(R.menu.details2, menu);
+        }
+        return ret;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        if (mApp == null) {
+            return true;
+        }
+        MenuItem itemIgnoreAll = menu.findItem(R.id.action_ignore_all);
+        if (itemIgnoreAll != null) {
+            itemIgnoreAll.setChecked(mApp.getPrefs(this).ignoreAllUpdates);
+        }
+        MenuItem itemIgnoreThis = menu.findItem(R.id.action_ignore_this);
+        if (itemIgnoreThis != null) {
+            itemIgnoreThis.setVisible(mApp.hasUpdates());
+            itemIgnoreThis.setChecked(mApp.getPrefs(this).ignoreThisUpdate >= mApp.suggestedVersionCode);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_share) {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, mApp.name);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, mApp.name + " (" + mApp.summary + ") - https://f-droid.org/app/" + mApp.packageName);
+            ShareChooserDialog.createChooser((CoordinatorLayout) findViewById(R.id.rootCoordinator), this, shareIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public class AppDetailsRecyclerViewAdapter
