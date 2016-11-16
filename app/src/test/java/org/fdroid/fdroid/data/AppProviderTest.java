@@ -275,10 +275,14 @@ public class AppProviderTest extends FDroidProviderTest {
     }
 
     public static App insertApp(ShadowContentResolver contentResolver, Context context, String id, String name, ContentValues additionalValues) {
+        return insertApp(contentResolver, context, id, name, additionalValues, 1);
+    }
+
+    public static App insertApp(ShadowContentResolver contentResolver, Context context, String id, String name, ContentValues additionalValues, long repoId) {
 
         ContentValues values = new ContentValues();
         values.put(Cols.Package.PACKAGE_NAME, id);
-        values.put(Cols.REPO_ID, 1);
+        values.put(Cols.REPO_ID, repoId);
         values.put(Cols.NAME, name);
 
         // Required fields (NOT NULL in the database).

@@ -8,6 +8,7 @@ import android.net.Uri;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.mock.MockRepo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -107,9 +108,11 @@ public class CategoryProviderTest extends FDroidProviderTest {
 
     @Test
     public void testCategoriesMultiple() {
-        insertAppWithCategory("com.rock.dog", "Rock-Dog", "Mineral,Animal");
-        insertAppWithCategory("com.dog.rock.apple", "Dog-Rock-Apple", "Animal,Mineral,Vegetable");
-        insertAppWithCategory("com.banana.apple", "Banana", "Vegetable,Vegetable");
+        long mainRepo = 1;
+
+        insertAppWithCategory("com.rock.dog", "Rock-Dog", "Mineral,Animal", mainRepo);
+        insertAppWithCategory("com.dog.rock.apple", "Dog-Rock-Apple", "Animal,Mineral,Vegetable", mainRepo);
+        insertAppWithCategory("com.banana.apple", "Banana", "Vegetable,Vegetable", mainRepo);
 
         List<String> categories = CategoryProvider.Helper.categories(context);
         String[] expected = new String[] {
@@ -123,9 +126,11 @@ public class CategoryProviderTest extends FDroidProviderTest {
         };
         assertContainsOnly(categories, expected);
 
+        int additionalRepo = 2;
+
         insertAppWithCategory("com.example.game", "Game",
                 "Running,Shooting,Jumping,Bleh,Sneh,Pleh,Blah,Test category," +
-                "The quick brown fox jumps over the lazy dog,With apostrophe's");
+                "The quick brown fox jumps over the lazy dog,With apostrophe's", additionalRepo);
 
         List<String> categoriesLonger = CategoryProvider.Helper.categories(context);
         String[] expectedLonger = new String[] {
@@ -150,11 +155,19 @@ public class CategoryProviderTest extends FDroidProviderTest {
         };
 
         assertContainsOnly(categoriesLonger, expectedLonger);
+
+        RepoProvider.Helper.purgeApps(context, new MockRepo(additionalRepo));
+        List<String> categoriesAfterPurge = CategoryProvider.Helper.categories(context);
+        assertContainsOnly(categoriesAfterPurge, expected);
     }
 
     private void insertAppWithCategory(String id, String name, String categories) {
+        insertAppWithCategory(id, name, categories, 1);
+    }
+
+    private void insertAppWithCategory(String id, String name, String categories, long repoId) {
         ContentValues values = new ContentValues(1);
         values.put(Cols.ForWriting.Categories.CATEGORIES, categories);
-        AppProviderTest.insertApp(contentResolver, context, id, name, values);
+        AppProviderTest.insertApp(contentResolver, context, id, name, values, repoId);
     }
 }
