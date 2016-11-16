@@ -20,6 +20,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.text.AllCapsTransformationMethod;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -71,6 +72,9 @@ import java.util.ArrayList;
 import static android.support.v7.widget.RecyclerView.NO_POSITION;
 
 public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog.ShareChooserDialogListener {
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
 
     private static final String TAG = "AppDetails2";
 
@@ -488,6 +492,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                         boolean shouldBeVisible = (vh.contentView.getVisibility() != View.VISIBLE);
                         vh.contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
                         TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_source_code, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+                        vh.itemView.requestLayout();
                     }
                 });
                 vh.contentView.setAdapter(mApkListAdapter);
