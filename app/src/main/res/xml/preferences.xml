@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/updates">
+        <PreferenceScreen
+            android:title="@string/menu_manage"
+            android:summary="@string/repositories_summary">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="org.fdroid.fdroid"
+                android:targetClass="org.fdroid.fdroid.views.ManageReposActivity" />
+        </PreferenceScreen>
         <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/update_interval"
             android:key="updateInterval"
             android:defaultValue="24"
