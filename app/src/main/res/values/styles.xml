@@ -21,6 +21,7 @@
         <item name="android:textColorLink">@color/fdroid_green</item>
         <item name="alertDialogTheme">@style/AlertDialogThemeLight</item>
         <item name="android:textViewStyle">@style/TextViewStyle</item>
+        <item name="toolbar_theme">@style/AppThemeLight.Toolbar</item>
     </style>
 
     <style name="AppThemeDark" parent="AppBaseThemeDark">
@@ -60,6 +61,17 @@
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--
+      We need to support either light or dark coloured toolbars. Most tutorials online about styling
+      the Toolbar widget revolve around one style only, which is not conditioned on the current theme.
+      See http://stackoverflow.com/a/32789928/2391921 for this solution.
+    -->
+    <attr name="toolbar_theme" format="reference" />
+
+    <style name="AppThemeLight.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">@color/fdroid_blue</item>
     </style>
 
     <style name="TextViewStyle" parent="android:Widget.TextView">
