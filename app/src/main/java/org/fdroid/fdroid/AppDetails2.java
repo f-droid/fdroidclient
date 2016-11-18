@@ -295,8 +295,8 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 return new ExpandableLinearLayoutViewHolder(view);
             } else if (viewType == VIEWTYPE_VERSIONS) {
                 View view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.app_details2_versions, parent, false);
-                return new VersionsViewHolder(view);
+                        .inflate(R.layout.app_details2_links, parent, false);
+                return new ExpandableLinearLayoutViewHolder(view);
             }
             return null;
         }
@@ -408,6 +408,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 vh.textView.setText("WHATS NEW GOES HERE");
             } else if (viewType == VIEWTYPE_DONATE) {
                 DonateViewHolder vh = (DonateViewHolder) holder;
+                vh.contentView.removeAllViews();
 
                 // Donate button
                 if (uriIsSetAndCanBeOpened(mApp.donateURL)) {
@@ -485,7 +486,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.pkgInfo);
                 vh.contentView.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
             } else if (viewType == VIEWTYPE_VERSIONS) {
-                final VersionsViewHolder vh = (VersionsViewHolder) holder;
+                final ExpandableLinearLayoutViewHolder vh = (ExpandableLinearLayoutViewHolder) holder;
                 vh.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -495,7 +496,11 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                         vh.itemView.requestLayout();
                     }
                 });
-                vh.contentView.setAdapter(mApkListAdapter);
+                vh.contentView.removeAllViews();
+                for (int i = 0; i < mApkListAdapter.getCount(); i++) {
+                    View view = mApkListAdapter.getView(i, null, vh.contentView);
+                    vh.contentView.addView(view, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                }
             }
         }
 
