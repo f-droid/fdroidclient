@@ -16,7 +16,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -37,7 +36,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -504,10 +502,12 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                     public void onClick(View v) {
                         boolean shouldBeVisible = (vh.contentView.getVisibility() != View.VISIBLE);
                         vh.contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
-                        TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_source_code, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+                        TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_access_time_24dp_grey600, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
                         vh.itemView.requestLayout();
                     }
                 });
+                vh.headerView.setText(R.string.versions);
+                TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_access_time_24dp_grey600, 0, R.drawable.ic_expand_more_grey600, 0);
                 vh.contentView.removeAllViews();
                 for (int i = 0; i < mApkListAdapter.getCount(); i++) {
                     View view = mApkListAdapter.getView(i, null, vh.contentView);
