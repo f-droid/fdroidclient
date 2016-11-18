@@ -113,6 +113,18 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         lm.setStackFromEnd(false);
         mRecyclerView.setLayoutManager(lm);
         mRecyclerView.setAdapter(mAdapter);
+
+        // Load the feature graphic, if present
+        if (!TextUtils.isEmpty(mApp.iconUrlLarge)) {
+            ImageView ivFeatureGraphic = (ImageView) findViewById(R.id.feature_graphic);
+            DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder()
+                    .cacheInMemory(false)
+                    .cacheOnDisk(true)
+                    .imageScaleType(ImageScaleType.NONE)
+                    .bitmapConfig(Bitmap.Config.RGB_565)
+                    .build();
+            ImageLoader.getInstance().displayImage(mApp.iconUrlLarge, ivFeatureGraphic, displayImageOptions);
+        }
     }
 
     private String getPackageNameFromIntent(Intent intent) {
