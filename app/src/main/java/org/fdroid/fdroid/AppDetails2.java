@@ -40,7 +40,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,6 +67,7 @@ import org.fdroid.fdroid.views.LinearLayoutManagerSnapHelper;
 import org.fdroid.fdroid.views.ScreenShotsRecyclerViewAdapter;
 import org.fdroid.fdroid.views.ShareChooserDialog;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -225,6 +226,8 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         private ArrayList<Apk> mVersions;
         private boolean mShowVersions;
 
+        private HeaderViewHolder mHeaderView;
+
         public AppDetailsRecyclerViewAdapter(Context context) {
             mContext = context;
             updateItems();
@@ -300,6 +303,10 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                     uriIsSetAndCanBeOpened(mApp.flattrID);
         }
 
+        public HeaderViewHolder getHeaderView() {
+            return mHeaderView;
+        }
+
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             if (viewType == VIEWTYPE_HEADER) {
@@ -343,6 +350,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             int viewType = getItemViewType(position);
             if (viewType == VIEWTYPE_HEADER) {
                 final HeaderViewHolder vh = (HeaderViewHolder) holder;
+                mHeaderView = vh;
                 ImageLoader.getInstance().displayImage(mApp.iconUrlLarge, vh.iconView, vh.displayImageOptions);
                 vh.titleView.setText(mApp.name);
                 if (!TextUtils.isEmpty(mApp.author)) {
@@ -418,6 +426,19 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                     }
                     vh.buttonPrimaryView.setEnabled(true);
                 }
+                if (!TextUtils.isEmpty(mActiveDownloadUrlString)) {
+                    vh.buttonLayout.setVisibility(View.GONE);
+                    vh.progressLayout.setVisibility(View.VISIBLE);
+                } else {
+                    vh.buttonLayout.setVisibility(View.VISIBLE);
+                    vh.progressLayout.setVisibility(View.GONE);
+                }
+                vh.progressCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        cancelInstall();
+                    }
+                });
 
                 /*TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
                 if (!appDetails.getApks().isEmpty()) {
@@ -620,6 +641,14 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         }
 
         @Override
+        public void onViewRecycled(RecyclerView.ViewHolder holder) {
+            if (holder instanceof HeaderViewHolder) {
+                mHeaderView = null;
+            }
+            super.onViewRecycled(holder);
+        }
+
+        @Override
         public int getItemCount() {
             return mItems.size();
         }
@@ -640,8 +669,14 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             final TextView summaryView;
             final TextView descriptionView;
             final TextView descriptionMoreView;
+            final View buttonLayout;
             final Button buttonPrimaryView;
             final Button buttonSecondaryView;
+            final View progressLayout;
+            final ProgressBar progressBar;
+            final TextView progressLabel;
+            final TextView progressPercent;
+            final View progressCancel;
             final DisplayImageOptions displayImageOptions;
 
             HeaderViewHolder(View view) {
@@ -652,8 +687,14 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 summaryView = (TextView) view.findViewById(R.id.summary);
                 descriptionView = (TextView) view.findViewById(R.id.description);
                 descriptionMoreView = (TextView) view.findViewById(R.id.description_more);
+                buttonLayout = view.findViewById(R.id.button_layout);
                 buttonPrimaryView = (Button) view.findViewById(R.id.primaryButtonView);
                 buttonSecondaryView = (Button) view.findViewById(R.id.secondaryButtonView);
+                progressLayout = view.findViewById(R.id.progress_layout);
+                progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
+                progressLabel = (TextView) view.findViewById(R.id.progress_label);
+                progressPercent = (TextView) view.findViewById(R.id.progress_percent);
+                progressCancel = view.findViewById(R.id.progress_cancel);
                 displayImageOptions = new DisplayImageOptions.Builder()
                         .cacheInMemory(true)
                         .cacheOnDisk(true)
@@ -693,6 +734,37 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 buttonPrimaryView.setTransformationMethod(allCapsTransformation);
                 buttonSecondaryView.setTransformationMethod(allCapsTransformation);
                 descriptionMoreView.setTransformationMethod(allCapsTransformation);
+            }
+
+            public void setProgress(int bytesDownloaded, int totalBytes, int resIdString) {
+                if (bytesDownloaded == 0 && totalBytes == 0) {
+                    // Remove progress bar
+                    progressLayout.setVisibility(View.GONE);
+                    buttonLayout.setVisibility(View.VISIBLE);
+                } else {
+                    progressBar.setMax(totalBytes);
+                    progressBar.setProgress(bytesDownloaded);
+                    progressBar.setIndeterminate(totalBytes == -1);
+                    if (resIdString != 0) {
+                        progressLabel.setText(resIdString);
+                        progressPercent.setText("");
+                    } else if (totalBytes > 0 && bytesDownloaded >= 0) {
+                        float percent = bytesDownloaded * 100 / totalBytes;
+                        progressLabel.setText(Utils.getFriendlySize(bytesDownloaded) + " / " + Utils.getFriendlySize(totalBytes));
+                        NumberFormat format = NumberFormat.getPercentInstance();
+                        format.setMaximumFractionDigits(0);
+                        progressPercent.setText(format.format(percent / 100));
+                    } else if (bytesDownloaded >= 0) {
+                        progressLabel.setText(Utils.getFriendlySize(bytesDownloaded));
+                        progressPercent.setText("");
+                    }
+
+                    // Make sure it's visible
+                    if (progressLayout.getVisibility() != View.VISIBLE) {
+                        progressLayout.setVisibility(View.VISIBLE);
+                        buttonLayout.setVisibility(View.GONE);
+                    }
+                }
             }
         }
 
@@ -987,6 +1059,12 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         InstallManagerService.queue(this, mApp, apk);
     }
 
+    private void cancelInstall() {
+        if (!TextUtils.isEmpty(mActiveDownloadUrlString)) {
+            InstallManagerService.cancel(this, mActiveDownloadUrlString);
+        }
+    }
+
     /**
      * Queue for uninstall based on the instance variable {@link #app}
      */
@@ -1056,18 +1134,18 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Downloader.ACTION_STARTED:
-                    //if (headerFragment != null) {
-                    //    headerFragment.startProgress();
-                    //}
+                    if (mAdapter.getHeaderView() != null) {
+                        mAdapter.getHeaderView().setProgress(-1, -1, R.string.download_pending);
+                    }
                     break;
                 case Downloader.ACTION_PROGRESS:
-                    //if (headerFragment != null) {
-                    //    headerFragment.updateProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
-                    //            intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1));
-                    //}
+                    if (mAdapter.getHeaderView() != null) {
+                        mAdapter.getHeaderView().setProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
+                                intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1), 0);
+                    }
                     break;
                 case Downloader.ACTION_COMPLETE:
-                    // Starts the install process one the download is complete.
+                    // Starts the install process once the download is complete.
                     cleanUpFinishedDownload();
                     mLocalBroadcastManager.registerReceiver(installReceiver,
                             Installer.getInstallIntentFilter(intent.getData()));
@@ -1094,16 +1172,21 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_INSTALL_STARTED:
-                    //headerFragment.startProgress(false);
-                    //headerFragment.showIndeterminateProgress(getString(R.string.installing));
+                    if (mAdapter.getHeaderView() != null) {
+                        mAdapter.getHeaderView().setProgress(-1, -1, R.string.installing);
+                    }
                     break;
                 case Installer.ACTION_INSTALL_COMPLETE:
-                    //headerFragment.removeProgress();
+                    if (mAdapter.getHeaderView() != null) {
+                        mAdapter.getHeaderView().setProgress(0, 0, 0); // Remove
+                    }
                     unregisterInstallReceiver();
                     onAppChanged();
                     break;
                 case Installer.ACTION_INSTALL_INTERRUPTED:
-                    //headerFragment.removeProgress();
+                    if (mAdapter.getHeaderView() != null) {
+                        mAdapter.getHeaderView().setProgress(0, 0, 0); // Remove
+                    }
                     onAppChanged();
 
                     String errorMessage =
@@ -1146,17 +1229,21 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_UNINSTALL_STARTED:
-                    //headerFragment.startProgress(false);
-                    //headerFragment.showIndeterminateProgress(getString(R.string.uninstalling));
+                    if (mAdapter.getHeaderView() != null) {
+                        mAdapter.getHeaderView().setProgress(-1, -1, R.string.uninstalling);
+                    }
                     break;
                 case Installer.ACTION_UNINSTALL_COMPLETE:
-                    //headerFragment.removeProgress();
+                    if (mAdapter.getHeaderView() != null) {
+                        mAdapter.getHeaderView().setProgress(0, 0, 0); // Remove
+                    }
                     onAppChanged();
                     unregisterUninstallReceiver();
                     break;
                 case Installer.ACTION_UNINSTALL_INTERRUPTED:
-                    //headerFragment.removeProgress();
-
+                    if (mAdapter.getHeaderView() != null) {
+                        mAdapter.getHeaderView().setProgress(0, 0, 0); // Remove
+                    }
                     String errorMessage =
                             intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
@@ -1221,9 +1308,9 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
      */
     private void cleanUpFinishedDownload() {
         mActiveDownloadUrlString = null;
-        //if (headerFragment != null) {
-        //    headerFragment.removeProgress();
-        //}
+        if (mAdapter.getHeaderView() != null) {
+            mAdapter.getHeaderView().setProgress(0, 0, 0); // Remove
+        }
         unregisterDownloaderReceiver();
     }
 

@@ -56,14 +56,66 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 tools:text="Author" />
 
+            <RelativeLayout
+                android:id="@+id/progress_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true">
+                <ImageView
+                    android:id="@+id/progress_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    />
+                <TextView
+                    android:id="@+id/progress_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:text="@string/downloading"
+                    />
+                <TextView
+                    android:id="@+id/progress_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/progress_cancel"
+                    android:layout_toStartOf="@id/progress_cancel"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:text=""
+                    />
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/progress_cancel"
+                    android:layout_toStartOf="@id/progress_cancel"
+                    android:layout_below="@id/progress_label"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    />
+            </RelativeLayout>
+
             <LinearLayout
+                android:id="@+id/button_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/icon"
                 android:layout_toEndOf="@id/icon"
                 android:layout_toRightOf="@id/icon"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true">
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                >
 
                 <Button
                     android:id="@+id/secondaryButtonView"
