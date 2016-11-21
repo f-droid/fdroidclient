@@ -28,6 +28,7 @@ import android.text.Html;
 import android.text.Spannable;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.text.method.LinkMovementMethod;
 import android.text.style.URLSpan;
 import android.util.Log;
@@ -51,6 +52,8 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.InstalledAppProvider;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
@@ -60,12 +63,12 @@ import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
-import org.fdroid.fdroid.views.ApkListAdapter;
 import org.fdroid.fdroid.views.LinearLayoutManagerSnapHelper;
 import org.fdroid.fdroid.views.ScreenShotsRecyclerViewAdapter;
 import org.fdroid.fdroid.views.ShareChooserDialog;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static android.support.v7.widget.RecyclerView.NO_POSITION;
 
@@ -215,10 +218,12 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         private final int VIEWTYPE_LINKS = 4;
         private final int VIEWTYPE_PERMISSIONS = 5;
         private final int VIEWTYPE_VERSIONS = 6;
+        private final int VIEWTYPE_VERSION = 7;
 
         private final Context mContext;
-        private ArrayList<Integer> mItems;
-        private ApkListAdapter mApkListAdapter;
+        private ArrayList<Object> mItems;
+        private ArrayList<Apk> mVersions;
+        private boolean mShowVersions;
 
         public AppDetailsRecyclerViewAdapter(Context context) {
             mContext = context;
@@ -226,7 +231,16 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         }
 
         public void updateItems() {
-            mApkListAdapter = new ApkListAdapter(mContext, mApp);
+
+            // Get versions
+            mVersions = new ArrayList<>();
+            final List<Apk> apks = ApkProvider.Helper.findByPackageName(mContext, mApp.packageName);
+            for (final Apk apk : apks) {
+                if (apk.compatible || Preferences.get().showIncompatibleVersions()) {
+                    mVersions.add(apk);
+                }
+            }
+
             if (mItems == null)
                 mItems = new ArrayList<>();
             else
@@ -238,6 +252,15 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             addItem(VIEWTYPE_LINKS);
             addItem(VIEWTYPE_PERMISSIONS);
             addItem(VIEWTYPE_VERSIONS);
+        }
+
+        public void setShowVersions(boolean showVersions) {
+            mShowVersions = showVersions;
+            mItems.removeAll(mVersions);
+            if (showVersions) {
+                mItems.addAll(mItems.indexOf(VIEWTYPE_VERSIONS) + 1, mVersions);
+            }
+            notifyDataSetChanged();
         }
 
         private void addItem(int item) {
@@ -256,15 +279,15 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         private boolean shouldShowPermissions() {
             // Figure out if we should show permissions section
             Apk curApk = null;
-            for (int i = 0; i < mApkListAdapter.getCount(); i++) {
-                final Apk apk = mApkListAdapter.getItem(i);
+            for (int i = 0; i < mVersions.size(); i++) {
+                final Apk apk = mVersions.get(i);
                 if (apk.versionCode == mApp.suggestedVersionCode) {
                     curApk = apk;
                     break;
                 }
             }
             final boolean curApkCompatible = curApk != null && curApk.compatible;
-            if (!mApkListAdapter.isEmpty() && (curApkCompatible || Preferences.get().showIncompatibleVersions())) {
+            if (mVersions.size() > 0 && (curApkCompatible || Preferences.get().showIncompatibleVersions())) {
                return true;
             }
             return false;
@@ -307,13 +330,17 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.app_details2_links, parent, false);
                 return new ExpandableLinearLayoutViewHolder(view);
+            } else if (viewType == VIEWTYPE_VERSION) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.apklistitem, parent, false);
+                return new VersionViewHolder(view);
             }
             return null;
         }
 
         @Override
         public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-            int viewType = mItems.get(position);
+            int viewType = getItemViewType(position);
             if (viewType == VIEWTYPE_HEADER) {
                 final HeaderViewHolder vh = (HeaderViewHolder) holder;
                 ImageLoader.getInstance().displayImage(mApp.iconUrlLarge, vh.iconView, vh.displayImageOptions);
@@ -355,12 +382,12 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 vh.buttonSecondaryView.setVisibility(isAppInstalled() ? View.VISIBLE : View.INVISIBLE);
                 vh.buttonSecondaryView.setOnClickListener(mOnUnInstallClickListener);
                 vh.buttonPrimaryView.setText(R.string.menu_install);
-                vh.buttonPrimaryView.setVisibility(mApkListAdapter.getCount() > 0 ? View.VISIBLE : View.GONE);
+                vh.buttonPrimaryView.setVisibility(mVersions.size() > 0 ? View.VISIBLE : View.GONE);
                 if (mActiveDownloadUrlString != null) {
                     vh.buttonPrimaryView.setText(R.string.downloading);
                     vh.buttonPrimaryView.setEnabled(false);
                 } else if (!isAppInstalled() && mApp.suggestedVersionCode > 0 &&
-                        mApkListAdapter.getCount() > 0) {
+                        mVersions.size() > 0) {
                     // Check count > 0 due to incompatible apps resulting in an empty list.
                     // If App isn't installed
                     //installed = false;
@@ -492,7 +519,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 vh.headerView.setText(R.string.permissions);
                 TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_lock_24dp_grey600, 0, R.drawable.ic_expand_more_grey600, 0);
                 vh.contentView.removeAllViews();
-                AppDiff appDiff = new AppDiff(getPackageManager(), mApkListAdapter.getItem(0));
+                AppDiff appDiff = new AppDiff(getPackageManager(), mVersions.get(0));
                 AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.pkgInfo);
                 vh.contentView.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
             } else if (viewType == VIEWTYPE_VERSIONS) {
@@ -500,18 +527,94 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 vh.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean shouldBeVisible = (vh.contentView.getVisibility() != View.VISIBLE);
-                        vh.contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
-                        TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_access_time_24dp_grey600, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
-                        vh.itemView.requestLayout();
+                        setShowVersions(!mShowVersions);
                     }
                 });
                 vh.headerView.setText(R.string.versions);
-                TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_access_time_24dp_grey600, 0, R.drawable.ic_expand_more_grey600, 0);
-                vh.contentView.removeAllViews();
-                for (int i = 0; i < mApkListAdapter.getCount(); i++) {
-                    View view = mApkListAdapter.getView(i, null, vh.contentView);
-                    vh.contentView.addView(view, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_access_time_24dp_grey600, 0, mShowVersions ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+            } else if (viewType == VIEWTYPE_VERSION) {
+                final VersionViewHolder vh = (VersionViewHolder) holder;
+                java.text.DateFormat df = DateFormat.getDateFormat(mContext);
+                final Apk apk = (Apk)mItems.get(position);
+
+                vh.version.setText(mContext.getString(R.string.version)
+                        + " " + apk.versionName
+                        + (apk.versionCode == mApp.suggestedVersionCode ? "  ☆" : ""));
+
+                vh.status.setText(getInstalledStatus(apk));
+
+                vh.repository.setText(mContext.getString(R.string.repo_provider,
+                        RepoProvider.Helper.findById(mContext, apk.repo).getName()));
+
+                if (apk.size > 0) {
+                    vh.size.setText(Utils.getFriendlySize(apk.size));
+                    vh.size.setVisibility(View.VISIBLE);
+                } else {
+                    vh.size.setVisibility(View.GONE);
+                }
+
+                if (!Preferences.get().expertMode()) {
+                    vh.api.setVisibility(View.GONE);
+                } else if (apk.minSdkVersion > 0 && apk.maxSdkVersion < Apk.SDK_VERSION_MAX_VALUE) {
+                    vh.api.setText(mContext.getString(R.string.minsdk_up_to_maxsdk,
+                            Utils.getAndroidVersionName(apk.minSdkVersion),
+                            Utils.getAndroidVersionName(apk.maxSdkVersion)));
+                    vh.api.setVisibility(View.VISIBLE);
+                } else if (apk.minSdkVersion > 0) {
+                    vh.api.setText(mContext.getString(R.string.minsdk_or_later,
+                            Utils.getAndroidVersionName(apk.minSdkVersion)));
+                    vh.api.setVisibility(View.VISIBLE);
+                } else if (apk.maxSdkVersion > 0) {
+                    vh.api.setText(mContext.getString(R.string.up_to_maxsdk,
+                            Utils.getAndroidVersionName(apk.maxSdkVersion)));
+                    vh.api.setVisibility(View.VISIBLE);
+                }
+
+                if (apk.srcname != null) {
+                    vh.buildtype.setText("source");
+                } else {
+                    vh.buildtype.setText("bin");
+                }
+
+                if (apk.added != null) {
+                    vh.added.setText(mContext.getString(R.string.added_on,
+                            df.format(apk.added)));
+                    vh.added.setVisibility(View.VISIBLE);
+                } else {
+                    vh.added.setVisibility(View.GONE);
+                }
+
+                if (Preferences.get().expertMode() && apk.nativecode != null) {
+                    vh.nativecode.setText(TextUtils.join(" ", apk.nativecode));
+                    vh.nativecode.setVisibility(View.VISIBLE);
+                } else {
+                    vh.nativecode.setVisibility(View.GONE);
+                }
+
+                if (apk.incompatibleReasons != null) {
+                    vh.incompatibleReasons.setText(
+                            mContext.getResources().getString(
+                                    R.string.requires_features,
+                                    TextUtils.join(", ", apk.incompatibleReasons)));
+                    vh.incompatibleReasons.setVisibility(View.VISIBLE);
+                } else {
+                    vh.incompatibleReasons.setVisibility(View.GONE);
+                }
+
+                // Disable it all if it isn't compatible...
+                final View[] views = {
+                        vh.itemView,
+                        vh.version,
+                        vh.status,
+                        vh.repository,
+                        vh.size,
+                        vh.api,
+                        vh.buildtype,
+                        vh.added,
+                        vh.nativecode,
+                };
+                for (final View v : views) {
+                    v.setEnabled(apk.compatible);
                 }
             }
         }
@@ -523,7 +626,9 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
         @Override
         public int getItemViewType(int position) {
-            return mItems.get(position);
+            if (mItems.get(position) instanceof Apk)
+                return VIEWTYPE_VERSION;
+            return (Integer)mItems.get(position);
         }
 
         public class HeaderViewHolder extends RecyclerView.ViewHolder {
@@ -632,14 +737,28 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             }
         }
 
-        public class VersionsViewHolder extends RecyclerView.ViewHolder {
-            final TextView headerView;
-            final ListView contentView;
+        public class VersionViewHolder extends RecyclerView.ViewHolder {
+            final TextView version;
+            final TextView status;
+            final TextView repository;
+            final TextView size;
+            final TextView api;
+            final TextView incompatibleReasons;
+            final TextView buildtype;
+            final TextView added;
+            final TextView nativecode;
 
-            VersionsViewHolder(View view) {
+            VersionViewHolder(View view) {
                 super(view);
-                headerView = (TextView) view.findViewById(R.id.information);
-                contentView = (ListView) view.findViewById(R.id.lv_content);
+                version = (TextView) view.findViewById(R.id.version);
+                status = (TextView) view.findViewById(R.id.status);
+                repository = (TextView) view.findViewById(R.id.repository);
+                size = (TextView) view.findViewById(R.id.size);
+                api = (TextView) view.findViewById(R.id.api);
+                incompatibleReasons = (TextView) view.findViewById(R.id.incompatible_reasons);
+                buildtype = (TextView) view.findViewById(R.id.buildtype);
+                added = (TextView) view.findViewById(R.id.added);
+                nativecode = (TextView) view.findViewById(R.id.nativecode);
             }
         }
 
@@ -657,7 +776,30 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             });
         }
 
-
+        private String getInstalledStatus(final Apk apk) {
+            // Definitely not installed.
+            if (apk.versionCode != mApp.installedVersionCode) {
+                return mContext.getString(R.string.app_not_installed);
+            }
+            // Definitely installed this version.
+            if (apk.sig != null && apk.sig.equals(mApp.installedSig)) {
+                return mContext.getString(R.string.app_installed);
+            }
+            // Installed the same version, but from someplace else.
+            final String installerPkgName;
+            try {
+                installerPkgName = mContext.getPackageManager().getInstallerPackageName(mApp.packageName);
+            } catch (IllegalArgumentException e) {
+                Log.w(TAG, "Application " + mApp.packageName + " is not installed anymore");
+                return mContext.getString(R.string.app_not_installed);
+            }
+            if (TextUtils.isEmpty(installerPkgName)) {
+                return mContext.getString(R.string.app_inst_unknown_source);
+            }
+            final String installerLabel = InstalledAppProvider
+                    .getApplicationLabel(mContext, installerPkgName);
+            return mContext.getString(R.string.app_inst_known_source, installerLabel);
+        }
 
         private void onLinkClicked(String url) {
             if (!TextUtils.isEmpty(url)) {
