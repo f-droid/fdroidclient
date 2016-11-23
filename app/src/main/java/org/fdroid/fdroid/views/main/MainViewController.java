@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views.main;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.views.fragments.PreferencesFragment;
 import org.fdroid.fdroid.views.myapps.MyAppsViewBinder;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
@@ -72,6 +74,20 @@ class MainViewController extends RecyclerView.ViewHolder {
         });
     }
 
+    /**
+     * Attaches a {@link PreferencesFragment} to the view. Everything else is managed by the
+     * fragment itself, so no further work needs to be done by this view binder.
+     *
+     * Note: It is tricky to attach a {@link Fragment} to a view from this view holder. This is due
+     * to the way in which the {@link RecyclerView} will reuse existing views and ask us to
+     * put a settings fragment in there at arbitrary times. Usually it wont be the same view we
+     * attached the fragment to last time, which causes weirdness. The solution is to use code from
+     * the com.lsjwzh.widget.recyclerviewpager.FragmentStatePagerAdapter which manages this.
+     * The code has been ported to {@link SettingsView}.
+     *
+     * @see SettingsView
+     */
     public void bindSettingsView() {
+        activity.getLayoutInflater().inflate(R.layout.main_tab_settings, frame, true);
     }
 }

@@ -2,6 +2,7 @@
 <resources>
   <item type="id" name="category_spinner" />
   <item type="id" name="appDetailsSummaryHeader" />
+  <item type="id" name="preference_fragment_parent" />
 
   <item type="id" name="whats_new_feature" />
   <item type="id" name="whats_new_large_tile" />
