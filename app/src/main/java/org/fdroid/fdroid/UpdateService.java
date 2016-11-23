@@ -410,7 +410,7 @@ public class UpdateService extends IntentService {
 
                 // now that downloading the index is done, start downloading updates
                 if (changes && fdroidPrefs.isAutoDownloadEnabled()) {
-                    autoDownloadUpdates();
+                    autoDownloadUpdates(this);
                 }
             }
 
@@ -469,8 +469,8 @@ public class UpdateService extends IntentService {
         }
     }
 
-    private void autoDownloadUpdates() {
-        Cursor cursor = getContentResolver().query(
+    public static void autoDownloadUpdates(Context context) {
+        Cursor cursor = context.getContentResolver().query(
                 AppProvider.getCanUpdateUri(),
                 Schema.AppMetadataTable.Cols.ALL,
                 null, null, null);
@@ -478,8 +478,8 @@ public class UpdateService extends IntentService {
             cursor.moveToFirst();
             for (int i = 0; i < cursor.getCount(); i++) {
                 App app = new App(cursor);
-                Apk apk = ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode);
-                InstallManagerService.queue(this, app, apk);
+                Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode);
+                InstallManagerService.queue(context, app, apk);
                 cursor.moveToNext();
             }
             cursor.close();
