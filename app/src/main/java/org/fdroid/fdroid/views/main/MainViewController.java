@@ -31,7 +31,11 @@ class MainViewController extends RecyclerView.ViewHolder {
         frame.removeAllViews();
     }
 
+    /**
+     * @see WhatsNewViewBinder
+     */
     public void bindWhatsNewView() {
+        new WhatsNewViewBinder(activity, frame);
     }
 
     public void bindMyApps() {

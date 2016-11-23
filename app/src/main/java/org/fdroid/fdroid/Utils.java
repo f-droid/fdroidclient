@@ -29,7 +29,11 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.text.Editable;
 import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.style.CharacterStyle;
+import android.text.style.TypefaceSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -485,6 +489,23 @@ public final class Utils {
 
     public static String formatTime(Date date, String fallback) {
         return formatDateFormat(TIME_FORMAT, date, fallback);
+    }
+
+    /**
+     * Formats the app name using "sans-serif" and then appends the summary after a space with
+     * "sans-serif-light". Doesn't mandate any font sizes or any other styles, that is up to the
+     * {@link android.widget.TextView} which it ends up being displayed in.
+     */
+    public static CharSequence formatAppNameAndSummary(String appName, String summary) {
+        String toFormat = appName + ' ' + summary;
+        CharacterStyle normal = new TypefaceSpan("sans-serif");
+        CharacterStyle light = new TypefaceSpan("sans-serif-light");
+
+        SpannableStringBuilder sb = new SpannableStringBuilder(toFormat);
+        sb.setSpan(normal, 0, appName.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        sb.setSpan(light, appName.length(), toFormat.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        return sb;
     }
 
     // Need this to add the unimplemented support for ordered and unordered

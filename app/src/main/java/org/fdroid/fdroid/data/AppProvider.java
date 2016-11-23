@@ -373,7 +373,6 @@ public class AppProvider extends FDroidProvider {
     protected static final String PATH_APPS = "apps";
     protected static final String PATH_SPECIFIC_APP = "app";
     private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
-    private static final String PATH_NEWLY_ADDED = "newlyAdded";
     private static final String PATH_CATEGORY = "category";
     private static final String PATH_REPO = "repo";
     private static final String PATH_HIGHEST_PRIORITY = "highestPriority";
@@ -386,8 +385,7 @@ public class AppProvider extends FDroidProvider {
     private static final int SEARCH_TEXT = INSTALLED + 1;
     private static final int SEARCH_TEXT_AND_CATEGORIES = SEARCH_TEXT + 1;
     private static final int RECENTLY_UPDATED = SEARCH_TEXT_AND_CATEGORIES + 1;
-    private static final int NEWLY_ADDED = RECENTLY_UPDATED + 1;
-    private static final int CATEGORY = NEWLY_ADDED + 1;
+    private static final int CATEGORY = RECENTLY_UPDATED + 1;
     private static final int CALC_SUGGESTED_APKS = CATEGORY + 1;
     private static final int REPO = CALC_SUGGESTED_APKS + 1;
     private static final int SEARCH_REPO = REPO + 1;
@@ -401,7 +399,6 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
         MATCHER.addURI(getAuthority(), PATH_CALC_SUGGESTED_APKS, CALC_SUGGESTED_APKS);
         MATCHER.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
-        MATCHER.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
         MATCHER.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
         MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*/*", SEARCH_TEXT_AND_CATEGORIES);
         MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*", SEARCH_TEXT);
@@ -423,10 +420,6 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getRecentlyUpdatedUri() {
         return Uri.withAppendedPath(getContentUri(), PATH_RECENTLY_UPDATED);
-    }
-
-    public static Uri getNewlyAddedUri() {
-        return Uri.withAppendedPath(getContentUri(), PATH_NEWLY_ADDED);
     }
 
     private static Uri calcSuggestedApksUri() {
@@ -666,12 +659,6 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection);
     }
 
-    private AppQuerySelection queryNewlyAdded() {
-        final String selection = getTableName() + "." + Cols.ADDED + " > ?";
-        final String[] args = {Utils.formatDate(Preferences.get().calcMaxHistory(), "")};
-        return new AppQuerySelection(selection, args);
-    }
-
     /**
      * Ensures that for each app metadata row with the same package name, only the one from the repo
      * with the best priority is represented in the result set. While possible to calculate this
@@ -689,9 +676,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryRecentlyUpdated() {
-        final String app = getTableName();
-        final String lastUpdated = app + "." + Cols.LAST_UPDATED;
-        final String selection = app + "." + Cols.ADDED + " != " + lastUpdated + " AND " + lastUpdated + " > ?";
+        final String selection = getTableName() + "." + Cols.LAST_UPDATED + " > ? ";
         final String[] args = {Utils.formatDate(Preferences.get().calcMaxHistory(), "")};
         return new AppQuerySelection(selection, args);
     }
@@ -807,12 +792,6 @@ public class AppProvider extends FDroidProvider {
             case RECENTLY_UPDATED:
                 sortOrder = getTableName() + "." + Cols.LAST_UPDATED + " DESC";
                 selection = selection.add(queryRecentlyUpdated());
-                includeSwap = false;
-                break;
-
-            case NEWLY_ADDED:
-                sortOrder = getTableName() + "." + Cols.ADDED + " DESC";
-                selection = selection.add(queryNewlyAdded());
                 includeSwap = false;
                 break;
 

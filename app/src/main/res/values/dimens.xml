@@ -18,4 +18,6 @@
     <!-- The selected item stands out from the background by this elevation -->
     <dimen name="details_screenshot_selected_elevation">3dp</dimen>
 
+    <dimen name="whats_new__padding__app_card__horizontal">12dp</dimen>
+    <dimen name="whats_new__padding__app_card__vertical">10dp</dimen>
 </resources>
