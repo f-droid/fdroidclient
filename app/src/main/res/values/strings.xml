@@ -63,8 +63,16 @@
     <string name="app_not_installed">Not Installed</string>
     <string name="app_inst_known_source">Installed (from %s)</string>
     <string name="app_inst_unknown_source">Installed (from unknown source)</string>
+    <string name="app_version_x_available">Version %1$s available</string>
+    <string name="app_version_x_installed">Version %1$s</string>
 
     <string name="added_on">Added on %s</string>
+
+    <string name="my_apps_btn_update_all">Update all</string>
+    <plurals name="my_apps_header_number_of_updateable">
+        <item quantity="one">%1$d Update</item>
+        <item quantity="other">%1$d Updates</item>
+    </plurals>
 
     <string name="ok">OK</string>
 

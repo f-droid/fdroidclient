@@ -199,16 +199,26 @@ public class AppProvider extends FDroidProvider {
         public AppQuerySelection add(AppQuerySelection query) {
             QuerySelection both = super.add(query);
             AppQuerySelection bothWithJoin = new AppQuerySelection(both.getSelection(), both.getArgs());
-            if (this.naturalJoinToInstalled() || query.naturalJoinToInstalled()) {
-                bothWithJoin.requireNaturalInstalledTable();
-            }
-
-            if (this.leftJoinToPrefs() || query.leftJoinToPrefs()) {
-                bothWithJoin.requireLeftJoinPrefs();
-            }
+            ensureJoinsCopied(query, bothWithJoin);
             return bothWithJoin;
         }
 
+        public AppQuerySelection not(AppQuerySelection query) {
+            QuerySelection both = super.not(query);
+            AppQuerySelection bothWithJoin = new AppQuerySelection(both.getSelection(), both.getArgs());
+            ensureJoinsCopied(query, bothWithJoin);
+            return bothWithJoin;
+        }
+
+        private void ensureJoinsCopied(AppQuerySelection toAdd, AppQuerySelection newlyCreated) {
+            if (this.naturalJoinToInstalled() || toAdd.naturalJoinToInstalled()) {
+                newlyCreated.requireNaturalInstalledTable();
+            }
+
+            if (this.leftJoinToPrefs() || toAdd.leftJoinToPrefs()) {
+                newlyCreated.requireLeftJoinPrefs();
+            }
+        }
     }
 
     protected class Query extends QueryBuilder {
@@ -564,7 +574,8 @@ public class AppProvider extends FDroidProvider {
         final String ignoreAll = "COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + ", 0) != 1";
 
         final String ignore = " (" + ignoreCurrent + " AND " + ignoreAll + ") ";
-        final String where = ignore + " AND " + app + "." + Cols.SUGGESTED_VERSION_CODE + " > installed." + InstalledAppTable.Cols.VERSION_CODE;
+        final String nullChecks = app + "." + Cols.SUGGESTED_VERSION_CODE + " IS NOT NULL AND installed." + InstalledAppTable.Cols.VERSION_CODE + " IS NOT NULL ";
+        final String where = nullChecks + " AND " + ignore + " AND " + app + "." + Cols.SUGGESTED_VERSION_CODE + " > installed." + InstalledAppTable.Cols.VERSION_CODE;
 
         return new AppQuerySelection(where).requireNaturalInstalledTable().requireLeftJoinPrefs();
     }
@@ -576,7 +587,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryInstalled() {
-        return new AppQuerySelection().requireNaturalInstalledTable();
+        return new AppQuerySelection().requireNaturalInstalledTable().not(queryCanUpdate());
     }
 
     private AppQuerySelection querySearch(String query) {

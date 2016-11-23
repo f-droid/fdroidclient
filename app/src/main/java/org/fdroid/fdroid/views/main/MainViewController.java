@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.views.myapps.MyAppsViewBinder;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 /**
@@ -38,7 +39,11 @@ class MainViewController extends RecyclerView.ViewHolder {
         new WhatsNewViewBinder(activity, frame);
     }
 
+    /**
+     * @see MyAppsViewBinder
+     */
     public void bindMyApps() {
+        new MyAppsViewBinder(activity, frame);
     }
 
     public void bindCategoriesView() {
