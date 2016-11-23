@@ -18,13 +18,16 @@ repositories {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:24.2.1'
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:gridlayout-v7:24.2.1'
-    compile 'com.android.support:support-annotations:24.2.1'
-    compile 'com.android.support:design:24.2.1'
-    compile 'com.android.support:cardview-v7:24.2.1'
-    compile "com.android.support:recyclerview-v7:24.2.1"
+    compile 'com.android.support:support-v4:25.0.1'
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:gridlayout-v7:25.0.1'
+    compile 'com.android.support:support-annotations:25.0.1'
+    compile 'com.android.support:recyclerview-v7:25.0.1'
+    compile 'com.android.support:cardview-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
+    compile 'com.android.support:support-vector-drawable:25.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.1'
+    compile 'com.android.support:palette-v7:25.0.1'
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.google.zxing:core:3.2.1'
@@ -50,7 +53,7 @@ dependencies {
 
     testCompile "org.mockito:mockito-core:1.10.19"
 
-    androidTestCompile 'com.android.support:support-annotations:24.2.1'
+    androidTestCompile 'com.android.support:support-annotations:25.0.1'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
 }
@@ -94,20 +97,24 @@ if (!hasProperty('sourceDeps')) {
                 'ch.acra:acra:d2762968c448757a7d6acc9f141881d9632f664988e9723ece33b5f7c79f3bc9',
                 'commons-io:commons-io:a10418348d234968600ccb1d988efcbbd08716e1d96936ccc1880e7d22513474',
                 'commons-net:commons-net:c25b0da668b3c5649f002d504def22d1b4cb30d206f05428d2fe168fa1a901c2',
-                'com.android.support:animated-vector-drawable:5aa30f578e1daefb26bef0ce06414266fbb4cdf5d4259f42a92c7bd83dcd81b4',
-                'com.android.support:appcompat-v7:ead7ac8011fb40676df8adc2856cae934edab55fc4444654c0ac6ea443736088',
-                'com.android.support:support-annotations:1e4d471c5378b283d95abfb128e7ed3c6b3cb19bb6f0c317a9b75e48e99365ff',
-                'com.android.support:support-compat:8e4fe0078b68073e8f5bcb52aa5b6407fd456d47c51aa0f8e8d1e23c69da06c1',
-                'com.android.support:support-core-ui:ecc9184b7f438980e1c4a08b089d62dbc53ff90091f442d91fec27322a02c73c',
-                'com.android.support:support-core-utils:0fbc508e41dd6e8c634f310ee88452aaf8f48b6a843a369b115130b80d2fc05f',
-                'com.android.support:support-fragment:d8030f0bf0f64214a29dc4e14d5ccd225e59f66ed15eb37f3a5022e773dd1fda',
-                'com.android.support:support-media-compat:fa29a23eadd685631584b2c0c624a36e3bb79a33e257b00304501ad682fa2be3',
-                'com.android.support:support-v4:cac2956f5c4bb363cc0ba824ac16ea2a687d1c305d434416a34772a5f9375ed7',
-                'com.android.support:support-vector-drawable:6ee37a7f7b93c1df1294e6f6f97df3724ac989fcda0549faf677001085330548',
-                'com.android.support:design:89842bb1243507fe3079066ea4ea58795effe69cdf9a819e05274d21760adfc2',
-                'com.android.support:cardview-v7:2303b351686d1db060b5fcf1a9c709c79b4a54a85bfda0fb3c4849e244606ee1',
-                'com.android.support:gridlayout-v7:1a31c248d69faa815cc155883ddcb0ccc7ba8e14e69ec58dd18d8017e23d76f5',
-                'com.android.support:recyclerview-v7:9077766a1a0f4e89528fbf9dcdf6d5880a8686f0266fa852d58d803beeef18fa',
+                'com.android.support.constraint:constraint-layout-solver:d03a406eb505dfa673b0087bf17e16d5a4d6bf8afdf452ee175e346207948cdf',
+                'com.android.support.constraint:constraint-layout:df1add69d11063eebba521818d63537b22207376b65f30cc35feea172b84e300',
+                'com.android.support:animated-vector-drawable:70443a2857f9968c4e2c27c107657ce2291d774f8a50f03444e12ab637451175',
+                'com.android.support:appcompat-v7:7fead560a22ea4b15848ce3000f312ef611fac0953bf90ca8710a72a1f6e36ea',
+                'com.android.support:cardview-v7:50d88fae8cd1076cb90504d36ca5ee9df4018555c8f041bd28f43274c0fc9e1f',
+                'com.android.support:design:07a72eb68c888b38d7b78e450e1af8a84e571406e0cf911889e0645d5a41f1e4',
+                'com.android.support:gridlayout-v7:cc11d2a3ee484e078c358a51d23a37e4bfbc542de410cacf275eafc5624bb888',
+                'com.android.support:palette-v7:89700afeedd988b471f0ce528ba916f368f549b47889b86b84d68eee42ea487c',
+                'com.android.support:recyclerview-v7:803baba7be537ace8c5cb8a775e37547c22a04c4b028833796c45c26ec1deca2',
+                'com.android.support:support-annotations:bd94ab42c841db16fb480f4c65d33d297e544655ecc498b37c5cf33a0c5f1968',
+                'com.android.support:support-compat:d04f15aa5f2ae9e8cb7d025bf02dfd4fd6f6800628ceb107e0589634c9e4e537',
+                'com.android.support:support-core-ui:29205ac978a1839d92be3d32db2385dac10f8688bba649e51650023c76de2f00',
+                'com.android.support:support-core-utils:632c3750bd991da8b591f24a8916e74ca6063ae7f525f005c96981725c9bf491',
+                'com.android.support:support-fragment:da47261a1d7c3d33e6e911335a7f4ce01135923bb221d3ab84625d005fa1969f',
+                'com.android.support:support-media-compat:01cac57af687bed9a6cb4ce803bebd1b7e6b8469c14f1f9ac6b4596637ff73d6',
+                'com.android.support:support-v4:50da261acc4ca3d2dea9a43106bf65488711ca97b20a4daa095dba381c205c98',
+                'com.android.support:support-vector-drawable:071ae3695bf8427d3cbfc8791492a3d9c804a4b111aa2a72fbfe7790ea268e5d',
+                'com.android.support:transition:9fd1e6d27cb70b3c5cd19f842b48bbb05cb4e5c93a22372769c342523393e8ea',
                 'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
                 'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
                 'com.madgag.spongycastle:pkix:6aba9b2210907a3d46dd3dcac782bb3424185290468d102d5207ebdc9796a905',
