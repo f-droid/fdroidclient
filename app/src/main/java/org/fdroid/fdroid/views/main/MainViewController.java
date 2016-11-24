@@ -46,7 +46,11 @@ class MainViewController extends RecyclerView.ViewHolder {
         new MyAppsViewBinder(activity, frame);
     }
 
+    /**
+     * @see CategoriesViewBinder
+     */
     public void bindCategoriesView() {
+        new CategoriesViewBinder(activity, frame);
     }
 
     /**

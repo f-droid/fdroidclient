@@ -277,6 +277,13 @@
     <string name="category_Time">Time</string>
     <string name="category_Writing">Writing</string>
 
+    <plurals name="button_view_all_apps_in_category">
+        <!-- Even though these are the same as eachother, Android docs suggest always specifying at
+             least "one" and "other": https://developer.android.com/guide/topics/resources/string-resource.html#Plurals -->
+        <item quantity="one">View all %d</item>
+        <item quantity="other">View all %d</item>
+    </plurals>
+
     <string name="empty_installed_app_list">No apps installed.\n\nThere are apps on your device, but they are not available from F-Droid. This could be because you need to update your repositories, or the repositories genuinely don\'t have your apps available.</string>
     <string name="empty_available_app_list">No apps in this category.\n\nTry selecting a different category or updating your repositories to get a fresh list of apps.</string>
     <string name="empty_can_update_app_list">All apps up to date.\n\nCongratulations! All of your apps are up to date (or your repositories are out of date).</string>
