@@ -509,6 +509,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".views.apps.AppListActivity" />
+
     </application>
 
 </manifest>

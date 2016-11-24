@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views.categories;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.views.apps.AppListActivity;
 
 import java.util.Random;
 
@@ -130,6 +132,13 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     private final View.OnClickListener onViewAll = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if (currentCategory == null) {
+                return;
+            }
+
+            Intent intent = new Intent(activity, AppListActivity.class);
+            intent.putExtra(AppListActivity.EXTRA_CATEGORY, currentCategory);
+            activity.startActivity(intent);
         }
     };
 
