@@ -7,8 +7,6 @@ cache:
 
 before_script:
   - export GRADLE_USER_HOME=$PWD/.gradle
-  - printf 'y\n\n' | android --verbose update sdk --no-ui
-     --filter extra-android-m2repository
 
 test:
   script:
