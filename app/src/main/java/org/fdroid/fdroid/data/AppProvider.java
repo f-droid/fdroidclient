@@ -369,7 +369,6 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_SEARCH_INSTALLED = "searchInstalled";
     private static final String PATH_SEARCH_CAN_UPDATE = "searchCanUpdate";
     private static final String PATH_SEARCH_REPO = "searchRepo";
-    private static final String PATH_NO_APKS = "noApks";
     protected static final String PATH_APPS = "apps";
     protected static final String PATH_SPECIFIC_APP = "app";
     private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
@@ -383,8 +382,7 @@ public class AppProvider extends FDroidProvider {
     private static final int CAN_UPDATE = CODE_SINGLE + 1;
     private static final int INSTALLED = CAN_UPDATE + 1;
     private static final int SEARCH = INSTALLED + 1;
-    private static final int NO_APKS = SEARCH + 1;
-    private static final int RECENTLY_UPDATED = NO_APKS + 1;
+    private static final int RECENTLY_UPDATED = SEARCH + 1;
     private static final int NEWLY_ADDED = RECENTLY_UPDATED + 1;
     private static final int CATEGORY = NEWLY_ADDED + 1;
     private static final int CALC_SUGGESTED_APKS = CATEGORY + 1;
@@ -408,7 +406,6 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_REPO + "/#", REPO);
         MATCHER.addURI(getAuthority(), PATH_CAN_UPDATE, CAN_UPDATE);
         MATCHER.addURI(getAuthority(), PATH_INSTALLED, INSTALLED);
-        MATCHER.addURI(getAuthority(), PATH_NO_APKS, NO_APKS);
         MATCHER.addURI(getAuthority(), PATH_HIGHEST_PRIORITY + "/*", HIGHEST_PRIORITY);
         MATCHER.addURI(getAuthority(), PATH_SPECIFIC_APP + "/#/*", CODE_SINGLE);
         MATCHER.addURI(getAuthority(), PATH_CALC_PREFERRED_METADATA, CALC_PREFERRED_METADATA);
@@ -435,10 +432,6 @@ public class AppProvider extends FDroidProvider {
             .appendPath(PATH_CATEGORY)
             .appendPath(category)
             .build();
-    }
-
-    public static Uri getNoApksUri() {
-        return Uri.withAppendedPath(getContentUri(), PATH_NO_APKS);
     }
 
     public static Uri getInstalledUri() {
@@ -562,7 +555,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryRepo(long repoId) {
-        final String selection = getApkTableName() + "." + ApkTable.Cols.REPO_ID + " = ? ";
+        final String selection = getTableName() + "." + Cols.REPO_ID + " = ? ";
         final String[] args = {String.valueOf(repoId)};
         return new AppQuerySelection(selection, args);
     }
@@ -688,13 +681,6 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection, args);
     }
 
-    private AppQuerySelection queryNoApks() {
-        final String apk = getApkTableName();
-        final String app = getTableName();
-        String selection = "(SELECT COUNT(*) FROM " + apk + " WHERE " + apk + "." + ApkTable.Cols.APP_ID + " = " + app + "." + Cols.ROW_ID + ") = 0";
-        return new AppQuerySelection(selection);
-    }
-
     static AppQuerySelection queryPackageNames(String packageNames, String packageNameField) {
         String[] args = packageNames.split(",");
         String selection = packageNameField + " IN (" + generateQuestionMarksForInClause(args.length) + ")";
@@ -770,10 +756,6 @@ public class AppProvider extends FDroidProvider {
                 repoIsKnown = true;
                 break;
 
-            case NO_APKS:
-                selection = selection.add(queryNoApks());
-                break;
-
             case CATEGORY:
                 selection = selection.add(queryCategory(uri.getLastPathSegment()));
                 includeSwap = false;
@@ -833,11 +815,19 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
-        if (MATCHER.match(uri) != NO_APKS) {
+        if (MATCHER.match(uri) != REPO) {
             throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
         }
 
-        AppQuerySelection selection = new AppQuerySelection(where, whereArgs).add(queryNoApks());
+        long repoId = Long.parseLong(uri.getLastPathSegment());
+
+        final String catJoin = getCatJoinTableName();
+        final String app = getTableName();
+        String query = "DELETE FROM " + catJoin + " WHERE " + CatJoinTable.Cols.APP_METADATA_ID + " IN " +
+                "(SELECT " + Cols.ROW_ID + " FROM " + app + " WHERE " + app + "." + Cols.REPO_ID + " = ?)";
+        db().execSQL(query, new String[] {String.valueOf(repoId)});
+
+        AppQuerySelection selection = new AppQuerySelection(where, whereArgs).add(queryRepo(repoId));
         return db().delete(getTableName(), selection.getSelection(), selection.getArgs());
     }
 
