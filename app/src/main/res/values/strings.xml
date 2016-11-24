@@ -444,4 +444,5 @@
     <string name="notification_action_cancel">Cancel</string>
     <string name="notification_action_install">Install</string>
 
+    <string name="category">Category</string>
 </resources>

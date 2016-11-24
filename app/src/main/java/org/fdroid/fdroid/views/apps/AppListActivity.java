@@ -18,7 +18,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 
-public class AppListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class AppListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, CategoryTextWatcher.SearchTermsChangedListener {
 
     public static final String EXTRA_CATEGORY = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY";
     private RecyclerView appView;
@@ -34,6 +34,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         setContentView(R.layout.activity_app_list);
 
         searchInput = (EditText) findViewById(R.id.search);
+        searchInput.addTextChangedListener(new CategoryTextWatcher(this, searchInput, this));
 
         View backButton = findViewById(R.id.back);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +82,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     private CharSequence getSearchText(@Nullable String category, @Nullable String searchTerms) {
         StringBuilder string = new StringBuilder();
         if (category != null) {
-            string.append(category).append(' ');
+            string.append(category).append(":");
         }
 
         if (searchTerms != null) {
@@ -111,5 +112,12 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         appAdapter.setAppCursor(null);
+    }
+
+    @Override
+    public void onSearchTermsChanged(@Nullable String category, @NonNull String searchTerms) {
+        this.category = category;
+        this.searchTerms = searchTerms;
+        getSupportLoaderManager().restartLoader(0, null, this);
     }
 }

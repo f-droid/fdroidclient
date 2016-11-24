@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  A category chip displays an icon on the left and the category label on the right. It follows the
+  material design specification at https://material.google.com/components/chips.html#chips-contact-chips.
+  Most of the actual drawing is done in the Java code rather than here.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="16dp" />
+    <solid android:color="#FFCCCCCC" />
+</shape>
