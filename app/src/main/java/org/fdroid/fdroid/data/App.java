@@ -65,22 +65,22 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     public String license = "Unknown";
 
-    public String author;
-    public String email;
+    public String authorName;
+    public String authorEmail;
 
-    public String webURL;
+    public String webSite;
 
-    public String trackerURL;
+    public String issueTracker;
 
-    public String sourceURL;
+    public String sourceCode;
 
-    public String changelogURL;
+    public String changelog;
 
-    public String donateURL;
+    public String donate;
 
-    public String bitcoinAddr;
+    public String bitcoin;
 
-    public String litecoinAddr;
+    public String litecoin;
 
     public String flattrID;
 
@@ -186,32 +186,32 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 case Cols.LICENSE:
                     license = cursor.getString(i);
                     break;
-                case Cols.AUTHOR:
-                    author = cursor.getString(i);
+                case Cols.AUTHOR_NAME:
+                    authorName = cursor.getString(i);
                     break;
-                case Cols.EMAIL:
-                    email = cursor.getString(i);
+                case Cols.AUTHOR_EMAIL:
+                    authorEmail = cursor.getString(i);
                     break;
-                case Cols.WEB_URL:
-                    webURL = cursor.getString(i);
+                case Cols.WEBSITE:
+                    webSite = cursor.getString(i);
                     break;
-                case Cols.TRACKER_URL:
-                    trackerURL = cursor.getString(i);
+                case Cols.ISSUE_TRACKER:
+                    issueTracker = cursor.getString(i);
                     break;
-                case Cols.SOURCE_URL:
-                    sourceURL = cursor.getString(i);
+                case Cols.SOURCE_CODE:
+                    sourceCode = cursor.getString(i);
                     break;
-                case Cols.CHANGELOG_URL:
-                    changelogURL = cursor.getString(i);
+                case Cols.CHANGELOG:
+                    changelog = cursor.getString(i);
                     break;
-                case Cols.DONATE_URL:
-                    donateURL = cursor.getString(i);
+                case Cols.DONATE:
+                    donate = cursor.getString(i);
                     break;
-                case Cols.BITCOIN_ADDR:
-                    bitcoinAddr = cursor.getString(i);
+                case Cols.BITCOIN:
+                    bitcoin = cursor.getString(i);
                     break;
-                case Cols.LITECOIN_ADDR:
-                    litecoinAddr = cursor.getString(i);
+                case Cols.LITECOIN:
+                    litecoin = cursor.getString(i);
                     break;
                 case Cols.FLATTR_ID:
                     flattrID = cursor.getString(i);
@@ -490,15 +490,15 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.ICON_URL_LARGE, iconUrlLarge);
         values.put(Cols.DESCRIPTION, description);
         values.put(Cols.LICENSE, license);
-        values.put(Cols.AUTHOR, author);
-        values.put(Cols.EMAIL, email);
-        values.put(Cols.WEB_URL, webURL);
-        values.put(Cols.TRACKER_URL, trackerURL);
-        values.put(Cols.SOURCE_URL, sourceURL);
-        values.put(Cols.CHANGELOG_URL, changelogURL);
-        values.put(Cols.DONATE_URL, donateURL);
-        values.put(Cols.BITCOIN_ADDR, bitcoinAddr);
-        values.put(Cols.LITECOIN_ADDR, litecoinAddr);
+        values.put(Cols.AUTHOR_NAME, authorName);
+        values.put(Cols.AUTHOR_EMAIL, authorEmail);
+        values.put(Cols.WEBSITE, webSite);
+        values.put(Cols.ISSUE_TRACKER, issueTracker);
+        values.put(Cols.SOURCE_CODE, sourceCode);
+        values.put(Cols.CHANGELOG, changelog);
+        values.put(Cols.DONATE, donate);
+        values.put(Cols.BITCOIN, bitcoin);
+        values.put(Cols.LITECOIN, litecoin);
         values.put(Cols.FLATTR_ID, flattrID);
         values.put(Cols.ADDED, Utils.formatDate(added, ""));
         values.put(Cols.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
@@ -556,12 +556,12 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     @Nullable
     public String getBitcoinUri() {
-        return TextUtils.isEmpty(bitcoinAddr) ? null : "bitcoin:" + bitcoinAddr;
+        return TextUtils.isEmpty(bitcoin) ? null : "bitcoin:" + bitcoin;
     }
 
     @Nullable
     public String getLitecoinUri() {
-        return TextUtils.isEmpty(litecoinAddr) ? null : "litecoin:" + litecoinAddr;
+        return TextUtils.isEmpty(bitcoin) ? null : "litecoin:" + bitcoin;
     }
 
     @Nullable
@@ -632,15 +632,15 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.icon);
         dest.writeString(this.description);
         dest.writeString(this.license);
-        dest.writeString(this.author);
-        dest.writeString(this.email);
-        dest.writeString(this.webURL);
-        dest.writeString(this.trackerURL);
-        dest.writeString(this.sourceURL);
-        dest.writeString(this.changelogURL);
-        dest.writeString(this.donateURL);
-        dest.writeString(this.bitcoinAddr);
-        dest.writeString(this.litecoinAddr);
+        dest.writeString(this.authorName);
+        dest.writeString(this.authorEmail);
+        dest.writeString(this.webSite);
+        dest.writeString(this.issueTracker);
+        dest.writeString(this.sourceCode);
+        dest.writeString(this.changelog);
+        dest.writeString(this.donate);
+        dest.writeString(this.bitcoin);
+        dest.writeString(this.litecoin);
         dest.writeString(this.flattrID);
         dest.writeString(this.upstreamVersionName);
         dest.writeInt(this.upstreamVersionCode);
@@ -669,15 +669,15 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.icon = in.readString();
         this.description = in.readString();
         this.license = in.readString();
-        this.author = in.readString();
-        this.email = in.readString();
-        this.webURL = in.readString();
-        this.trackerURL = in.readString();
-        this.sourceURL = in.readString();
-        this.changelogURL = in.readString();
-        this.donateURL = in.readString();
-        this.bitcoinAddr = in.readString();
-        this.litecoinAddr = in.readString();
+        this.authorName = in.readString();
+        this.authorEmail = in.readString();
+        this.webSite = in.readString();
+        this.issueTracker = in.readString();
+        this.sourceCode = in.readString();
+        this.changelog = in.readString();
+        this.donate = in.readString();
+        this.bitcoin = in.readString();
+        this.litecoin = in.readString();
         this.flattrID = in.readString();
         this.upstreamVersionName = in.readString();
         this.upstreamVersionCode = in.readInt();

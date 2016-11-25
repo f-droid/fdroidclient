@@ -116,19 +116,19 @@ class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.ICON + " text, "
             + AppMetadataTable.Cols.DESCRIPTION + " text not null, "
             + AppMetadataTable.Cols.LICENSE + " text not null, "
-            + AppMetadataTable.Cols.AUTHOR + " text, "
-            + AppMetadataTable.Cols.EMAIL + " text, "
-            + AppMetadataTable.Cols.WEB_URL + " text, "
-            + AppMetadataTable.Cols.TRACKER_URL + " text, "
-            + AppMetadataTable.Cols.SOURCE_URL + " text, "
-            + AppMetadataTable.Cols.CHANGELOG_URL + " text, "
+            + AppMetadataTable.Cols.AUTHOR_NAME + " text, "
+            + AppMetadataTable.Cols.AUTHOR_EMAIL + " text, "
+            + AppMetadataTable.Cols.WEBSITE + " text, "
+            + AppMetadataTable.Cols.ISSUE_TRACKER + " text, "
+            + AppMetadataTable.Cols.SOURCE_CODE + " text, "
+            + AppMetadataTable.Cols.CHANGELOG + " text, "
             + AppMetadataTable.Cols.SUGGESTED_VERSION_CODE + " text,"
             + AppMetadataTable.Cols.UPSTREAM_VERSION_NAME + " text,"
             + AppMetadataTable.Cols.UPSTREAM_VERSION_CODE + " integer,"
             + AppMetadataTable.Cols.ANTI_FEATURES + " string,"
-            + AppMetadataTable.Cols.DONATE_URL + " string,"
-            + AppMetadataTable.Cols.BITCOIN_ADDR + " string,"
-            + AppMetadataTable.Cols.LITECOIN_ADDR + " string,"
+            + AppMetadataTable.Cols.DONATE + " string,"
+            + AppMetadataTable.Cols.BITCOIN + " string,"
+            + AppMetadataTable.Cols.LITECOIN + " string,"
             + AppMetadataTable.Cols.FLATTR_ID + " string,"
             + AppMetadataTable.Cols.REQUIREMENTS + " string,"
             + AppMetadataTable.Cols.ADDED + " string,"
@@ -756,11 +756,11 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     private void addChangelogToApp(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 48 || columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.CHANGELOG_URL)) {
+        if (oldVersion >= 48 || columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.CHANGELOG)) {
             return;
         }
-        Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.CHANGELOG_URL + " column to " + AppMetadataTable.NAME);
-        db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.CHANGELOG_URL + " text");
+        Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.CHANGELOG + " column to " + AppMetadataTable.NAME);
+        db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.CHANGELOG + " text");
     }
 
     private void addIconUrlLargeToApp(SQLiteDatabase db, int oldVersion) {
@@ -809,13 +809,13 @@ class DBHelper extends SQLiteOpenHelper {
         if (oldVersion >= 53) {
             return;
         }
-        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.AUTHOR)) {
-            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.AUTHOR + " column to " + AppMetadataTable.NAME);
-            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.AUTHOR + " text");
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.AUTHOR_NAME)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.AUTHOR_NAME + " column to " + AppMetadataTable.NAME);
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.AUTHOR_NAME + " text");
         }
-        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.EMAIL)) {
-            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.EMAIL + " column to " + AppMetadataTable.NAME);
-            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.EMAIL + " text");
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.AUTHOR_EMAIL)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.AUTHOR_EMAIL + " column to " + AppMetadataTable.NAME);
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.AUTHOR_EMAIL + " text");
         }
     }
 

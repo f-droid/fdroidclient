@@ -205,34 +205,34 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.license = str;
                     break;
                 case "author":
-                    curapp.author = str;
+                    curapp.authorName = str;
                     break;
                 case "email":
-                    curapp.email = str;
+                    curapp.authorEmail = str;
                     break;
                 case "source":
-                    curapp.sourceURL = str;
+                    curapp.sourceCode = str;
                     break;
                 case "changelog":
-                    curapp.changelogURL = str;
+                    curapp.changelog = str;
                     break;
                 case "donate":
-                    curapp.donateURL = str;
+                    curapp.donate = str;
                     break;
                 case "bitcoin":
-                    curapp.bitcoinAddr = str;
+                    curapp.bitcoin = str;
                     break;
                 case "litecoin":
-                    curapp.litecoinAddr = str;
+                    curapp.litecoin = str;
                     break;
                 case "flattr":
                     curapp.flattrID = str;
                     break;
                 case "web":
-                    curapp.webURL = str;
+                    curapp.webSite = str;
                     break;
                 case "tracker":
-                    curapp.trackerURL = str;
+                    curapp.issueTracker = str;
                     break;
                 case "added":
                     curapp.added = Utils.parseDate(str, null);

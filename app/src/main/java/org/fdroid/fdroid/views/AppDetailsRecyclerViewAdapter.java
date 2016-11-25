@@ -176,7 +176,7 @@ public class AppDetailsRecyclerViewAdapter
     }
 
     private boolean shouldShowDonate() {
-        return uriIsSetAndCanBeOpened(app.donateURL) ||
+        return uriIsSetAndCanBeOpened(app.donate) ||
                 uriIsSetAndCanBeOpened(app.getBitcoinUri()) ||
                 uriIsSetAndCanBeOpened(app.getLitecoinUri()) ||
                 uriIsSetAndCanBeOpened(app.getFlattrUri());
@@ -382,8 +382,8 @@ public class AppDetailsRecyclerViewAdapter
         public void bindModel() {
             ImageLoader.getInstance().displayImage(app.iconUrlLarge, iconView, displayImageOptions);
             titleView.setText(app.name);
-            if (!TextUtils.isEmpty(app.author)) {
-                authorView.setText(context.getString(R.string.by_author) + " " + app.author);
+            if (!TextUtils.isEmpty(app.authorName)) {
+                authorView.setText(context.getString(R.string.by_author) + " " + app.authorName);
                 authorView.setVisibility(View.VISIBLE);
             } else {
                 authorView.setVisibility(View.GONE);
@@ -523,18 +523,18 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         public void bindModel() {
-            if (TextUtils.isEmpty(app.author)) {
+            if (TextUtils.isEmpty(app.authorName)) {
                 donateHeading.setText(context.getString(R.string.app_details_donate_prompt_unknown_author, app.name));
             } else {
-                String author = "<strong>" + app.author + "</strong>";
+                String author = "<strong>" + app.authorName + "</strong>";
                 donateHeading.setText(Html.fromHtml(context.getString(R.string.app_details_donate_prompt, app.name, author)));
             }
 
             donationOptionsLayout.removeAllViews();
 
             // Donate button
-            if (uriIsSetAndCanBeOpened(app.donateURL)) {
-                addDonateOption(R.layout.donate_generic, app.donateURL);
+            if (uriIsSetAndCanBeOpened(app.donate)) {
+                addDonateOption(R.layout.donate_generic, app.donate);
             }
 
             // Bitcoin
@@ -639,28 +639,28 @@ public class AppDetailsRecyclerViewAdapter
             contentView.removeAllViews();
 
             // Source button
-            if (uriIsSetAndCanBeOpened(app.sourceURL)) {
-                addLinkItemView(contentView, R.string.menu_source, R.drawable.ic_source_code, app.sourceURL);
+            if (uriIsSetAndCanBeOpened(app.sourceCode)) {
+                addLinkItemView(contentView, R.string.menu_source, R.drawable.ic_source_code, app.sourceCode);
             }
 
             // Issues button
-            if (uriIsSetAndCanBeOpened(app.trackerURL)) {
-                addLinkItemView(contentView, R.string.menu_issues, R.drawable.ic_issues, app.trackerURL);
+            if (uriIsSetAndCanBeOpened(app.issueTracker)) {
+                addLinkItemView(contentView, R.string.menu_issues, R.drawable.ic_issues, app.issueTracker);
             }
 
             // Changelog button
-            if (uriIsSetAndCanBeOpened(app.changelogURL)) {
-                addLinkItemView(contentView, R.string.menu_changelog, R.drawable.ic_changelog, app.changelogURL);
+            if (uriIsSetAndCanBeOpened(app.changelog)) {
+                addLinkItemView(contentView, R.string.menu_changelog, R.drawable.ic_changelog, app.changelog);
             }
 
             // Website button
-            if (uriIsSetAndCanBeOpened(app.webURL)) {
-                addLinkItemView(contentView, R.string.menu_website, R.drawable.ic_website, app.webURL);
+            if (uriIsSetAndCanBeOpened(app.webSite)) {
+                addLinkItemView(contentView, R.string.menu_website, R.drawable.ic_website, app.webSite);
             }
 
             // Email button
             final String subject = Uri.encode(context.getString(R.string.app_details_subject, app.name));
-            String emailUrl = app.email == null ? null : ("mailto:" + app.email + "?subject=" + subject);
+            String emailUrl = app.authorEmail == null ? null : ("mailto:" + app.authorEmail + "?subject=" + subject);
             if (uriIsSetAndCanBeOpened(emailUrl)) {
                 addLinkItemView(contentView, R.string.menu_email, R.drawable.ic_email, emailUrl);
             }
