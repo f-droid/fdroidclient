@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.v4.view.MarginLayoutParamsCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.text.AllCapsTransformationMethod;
 import android.support.v7.widget.LinearLayoutManager;
@@ -705,6 +707,10 @@ public class AppDetailsRecyclerViewAdapter
             buildtype = (TextView) view.findViewById(R.id.buildtype);
             added = (TextView) view.findViewById(R.id.added);
             nativecode = (TextView) view.findViewById(R.id.nativecode);
+
+            int margin = mContext.getResources().getDimensionPixelSize(R.dimen.layout_horizontal_margin);
+            int padding = mContext.getResources().getDimensionPixelSize(R.dimen.details_activity_padding);
+            ViewCompat.setPaddingRelative(view, margin + padding + ViewCompat.getPaddingStart(view), view.getPaddingTop(), ViewCompat.getPaddingEnd(view), view.getPaddingBottom());
         }
     }
 
