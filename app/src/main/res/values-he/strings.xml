@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="installIncompatible">נראה כי חבילה זו אינה תואמת את מכשירך. האם ברצונך להתקין אותה בכל מקרה?</string>
+    <string name="installIncompatible">נראה כי חבילה זו אינה תואמת למכשירך. להתקין אותה בכל מקרה?</string>
     <string name="installDowngrade">הינך מנסה להנמיך את אפליקציה זו. פעולה שכזו עלולה לגרום לתפקוד לקוי ואף לאיבוד מידע. האם ברצונך לנסות להנמיך בכל מקרה?</string>
     <string name="version">גרסה</string>
     <string name="delete">מחק</string>
@@ -281,7 +281,7 @@
     <string name="swap_intro">חבר והחלף אפליקציות עם אנשים בקרבתך.</string>
     <string name="swap_no_peers_nearby">לא היה ניתן למצוא אנשים בקרבת מקום כדי לבצע הֶחְלֵף עמם.</string>
     <string name="swap_connection_misc_error">אירעה שגיאה במהלך התחברות להתקן, נראה כי אנחנו לא יכולים לבצע הֶחְלֵף עמו.</string>
-    <string name="SignatureMismatch">הגרסא החדשה הינה חתומה בעזרת מפתח אחר מזה הישן. כדי להתקין את הגרסא החדשה, על הישנה להיות מוסרת תחילה. אנא עשה זאת ונסה שוב. (לתשומת לבך ביטול התקנה יסיר כל מידע פנימי אשר מאוחסן על ידי האפליקציה)</string>
+    <string name="SignatureMismatch">הגרסה החדשה חתומה בעזרת מפתח שונה מזה הישן. כדי להתקין את הגרסה החדשה, יש להסיר את הישנה תחילה. נא לבצע פעולה זו ולנסות שוב. (לתשומת לבך ביטול התקנה יסיר כל מידע פנימי אשר מאוחסן על ידי היישומון)</string>
     <string name="repo_exists_add_fingerprint">מאגר זה כבר מותקן, זה יוסיף מידע מפתח חדש.</string>
     <string name="repo_exists_enable">מאגר זה כבר מותקן, אמת כי ברצונך לאפשרו שוב.</string>
     <string name="repo_exists_and_enabled">המאגר הנכנס הינו מותקן ומאופשר כבר.</string>

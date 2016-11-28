@@ -12,7 +12,7 @@
   <string name="update_interval">Intervall for automatisk oppdatering</string>
   <string name="update_interval_zero">Ingen automatisk oppdatering av pakkebrønner</string>
   <string name="automatic_scan_wifi">Bare på trådløst</string>
-  <string name="automatic_scan_wifi_on">Bare oppdater programmer på trådløst</string>
+  <string name="automatic_scan_wifi_on">Bare oppdater automatisk ved tilknytning til WiFi</string>
   <string name="notify">Varsle</string>
   <string name="notify_on">Varsle når nye oppdateringer er tilgjengelige</string>
   <string name="update_history">Oppdater historikk</string>
@@ -371,4 +371,5 @@ i en e-post for å fikse problemet?</string>
     <string name="update_auto_install_summary">Last ned og installer programoppdateringer i bakgrunnen</string>
     <string name="hide_anti_feature_apps">Utgråing av programmer med anti-funksjoner</string>
     <string name="hide_anti_feature_apps_on">Utgråing av programmer som krever anti-funksjoner</string>
+    <string name="warning_no_internet">Kan ikke oppdatere. Er du koblet til internett?</string>
     </resources>

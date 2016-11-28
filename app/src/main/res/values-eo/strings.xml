@@ -120,7 +120,7 @@
     <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>
     <string name="unstable_updates_summary">Proponas ĝisdatigojn al nestabilaj versioj</string>
     <string name="update_interval_zero">Neniam aŭtomate ĝisdatigas listojn de aplikaĵoj</string>
-    <string name="automatic_scan_wifi_on">Ĝisdatigas listojn aŭtomate nur per vifio</string>
+    <string name="automatic_scan_wifi_on">Ĝisdatigas listojn aŭtomate nur per netarifaj retoj kiel vifio</string>
     <string name="update_history_summ">Traktas aplikaĵojn kiel novaj aŭ ĵus-ĝisdatigaj por: %s tagoj</string>
     <string name="system_installer">Privilegia aldonaĵo</string>
     <string name="system_installer_on">Uzas privilegian F-Droid-aldonaĵon por instali, ĝisdatigi, kaj forigi pakaĵojn</string>
@@ -370,4 +370,5 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
     <string name="update_auto_install_summary">Elŝutas kaj instalas ĝisdatigojn de aplikaĵoj fone</string>
     <string name="keep_install_history">Konservi historion de instaladoj</string>
     <string name="keep_install_history_summary">Memoras historion de instaladoj kaj malinstaladoj en F-Droid</string>
+    <string name="warning_no_internet">Ne povas ĝisdatigi, ĉu vi estas konektita kun la Interreto?</string>
     </resources>

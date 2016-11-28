@@ -375,4 +375,5 @@ detalles para ayudarnos a arreglar el problema?</string>
     <string name="update_auto_install">Instalar las actualizaciones automáticamente</string>
     <string name="keep_install_history">Mantener el historial de instalaciones</string>
     <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones en F-Droid</string>
+    <string name="warning_no_internet">No se puede actualizar, ¿estás conectado a internet?</string>
     </resources>

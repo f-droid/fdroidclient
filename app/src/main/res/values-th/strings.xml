@@ -218,7 +218,7 @@
     <string name="interval_never">ไม่เลย</string>
     <string name="interval_1h">ทุกชั่วโมง</string>
     <string name="interval_4h">ทุก 4 ชั่วโมง</string>
-    <string name="interval_12h">ทุก 14 ชั่วโมง</string>
+    <string name="interval_12h">ทุก 12 ชั่วโมง</string>
     <string name="interval_1d">ทุกวัน</string>
     <string name="interval_1w">ทุกสัปดาห์</string>
     <string name="interval_2w">ทุก 2 สัปดาห์</string>
@@ -348,4 +348,29 @@
     <string name="malformed_repo_uri">กำลังข้ามแหล่งโปรแกรมที่มี URI ผิดรูป: %s</string>
     <string name="update_auto_install_summary">ดาวน์โหลดและติดตั้งโปรแกรมที่อัดเดต แบบเบื้องหลัง</string>
     <string name="update_auto_install">ติดตั้งโปรแกรมที่อัพเดต โดยอัดโนมัติ</string>
+    <string name="keep_install_history">เก็บประวัติการติดตั้ง</string>
+    <string name="keep_install_history_summary">เก็บประวัติการติดตั้งและการถอนโปรแกรมต่างๆ ทั้งหมดใน F-Droid</string>
+    <string name="writing_index_jar">กำลังบันทึกไฟล์ดรรชนีพร้อมลายเซ็นดิจิตอล (index.jar)…</string>
+    <string name="all_other_repos_fine">แหล่งโปรแกรมอื่นๆ ไม่ได้มีข้อผิดพลาด</string>
+        <string name="warning_no_internet">อัพเดตไม่สำเร็จ, ตรวจดูอีกทีว่าคุณต่ออินเตอร์เน็ตอยู่หรือไม่</string>
+    <string name="swap_confirm_connect">ยืนยันเพื่อรับโปรแกรมจาก %1$s</string>
+    <string name="system_install_post_success_message">ส่วนขยายช่วยติดตั้งของ F-Droid ติดตั้งเสร็จสิ้น, ตอนนี้ F-Droid จะสามารถติดตั้ง/อัพเกรด/ถอนการติดตั้งโปรแกรมต่างๆ ได้ด้วยตัวเองแล้ว</string>
+    <string name="system_install_post_fail_message">การติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid ล้มเหลว, เนื่องจากวิธีติดตั้งนี้อาจจะไม่ได้รองรับใน Android ทุกรุ่น, คุณสามารถอ่านรายละเอียดเพิ่มเติมได้ในส่วนเว็บไซต์ติดตามปัญหาของ F-Droid</string>
+    <string name="swap_join_same_wifi_desc">เมื่อคุณต้องการแบ่งปันโปรแกรมผ่าน WiFi, คุณจะต้องอยู่ในเครือข่ายเดียวกันก่อน, แต่ถ้าคุณเข้าเครือข่ายเดียวกันไม่ได้ คนใดคนหนึ่งสามารถเปิดตัวส่งสัญญาณ WiFi ของตัวเองแทนได้เช่นกัน</string>
+    <string name="system_install_denied_permissions">ส่วนขยายช่วยติดตั้งทำงาน แต่กลับไม่ได้รับสิทธิ์ในการจัดการโปรแกรมจากระบบ, หากเป็นไปได้ ช่วยรายงานปัญหานี้ไปที่ทีมพัฒนา F-Droid ด้วย</string>
+    <string name="system_install_denied_signature">ลายเซ็นที่ประทับอยู่บนส่วนขยายช่วยติดตั้งนั้นไม่ถูกต้อง, หากเป็นไปได้ กรุณาแจ้งปัญหานี้ไปที่ทีมพัฒนาของ F-Droid ด้วย</string>
+    <string name="system_install_denied_body">ตัวเลือกนี้ใช้ได้เฉพาตอนที่ส่วนขยายช่วยติดตั้งของ F-Droid ติดตั้งอยู่เท่านั้น</string>
+    <string name="system_install_denied_title">การเรียกใช้ส่วนขยายช่วยติดตั้งของ F-Droid ล้มเหลว</string>
+    <string name="root_access_denied_body">เกิดข้อผิดพลาดเนื่องจากเครื่องของคุณไม่มีรูท หรือคุณปฏิเสธการให้สิทธิ์ผู้ดูแลระบบกับ F-Droid</string>
+    <string name="empty_installed_app_list">ไม่มีโปรแกรมที่ติดตั้งอยู่
+
+โปรแกรมที่คุณติดตั้งอยู่ในเครื่อง ไม่มีโปรแกรมไหนเลยที่มาจาก F-Droid, อาจจะเป็นเพราะว่าคุณไม่ได้อัพเดตข้อมูลแหล่งโปรแกรม หรือโปรแกรมที่คุณใช้อยู่ไม่ได้มีอยู่ในรายการของแหล่งโปรแกรมที่คุณตั้งไว้</string>
+    <string name="not_on_same_wifi">ตอนนี้เครื่องของคุณยังไม่ได้อยู่ในเครือข่าย WiFi เดียวกับแหล่งโปรแกรมท้องถิ่นที่คุณตั้งไว้, ให้คุณลองเข้าเครือข่าย: %s</string>
+    <string name="repo_disabled_notification">ปิดการใช้งานแหล่งโปรแกรม %1$s แล้ว
+
+ถ้าคุณต้องการจะลงโปรแกรมจากแหล่งนี้อีกครั้ง คุณจะต้องกลับมาเปิดใช้แหล่งโปรแกรมนี้ใหม่</string>
+    <string name="repo_delete_to_overwrite">ถ้าคุณต้องการใช้กุญแจเข้ารหัสชุดใหม่กับแหล่งโปรแกรมที่จะสร้าง, คุณจะต้องลบแหล่งโปรแกรมนี้ก่อน</string>
+    <string name="repo_exists_and_enabled">แหล่งโปรแกรมนี้มีอยู่แล้ว และเปิดใช้งานอยู่</string>
+    <string name="repo_exists_enable">แหล่งโปรแกรมนี้มีอยู่แล้ว, กดยืนยันเพื่อเปิดกลับมาใช้งานอีกครั่ง</string>
+    <string name="repo_exists_add_fingerprint">แหล่งโปรแกรมนี้มีอยู่แล้ว, แต่ได้ทำการบันทึกข้อมูลกุณแจเข้ารหัสใหม่เพิ่มเข้าไป</string>
     </resources>

@@ -12,7 +12,7 @@
   <string name="update_interval">自动更新周期</string>
   <string name="update_interval_zero">不自动更新应用列表</string>
   <string name="automatic_scan_wifi">仅使用Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">仅当Wi-Fi可用时自动更新应用列表</string>
+  <string name="automatic_scan_wifi_on">仅当 Wi-Fi 等非计量网络可用时自动更新</string>
   <string name="notify">通知更新</string>
   <string name="notify_on">当更新可用时显示通知</string>
   <string name="update_history">更新历史</string>
@@ -356,4 +356,5 @@
     <string name="update_auto_install_summary">在后台下载和安装应用更新</string>
     <string name="keep_install_history">保持安装历史</string>
     <string name="keep_install_history_summary">在 F-Droid 内存储日志，记录所有安装和卸载</string>
+    <string name="warning_no_internet">无法更新。您是否已连接到互联网？</string>
     </resources>

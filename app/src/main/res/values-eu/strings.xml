@@ -7,7 +7,7 @@
   <string name="cache_downloaded">Gorde aplikazioak cachean</string>
   <string name="updates">Eguneraketak</string>
   <string name="automatic_scan_wifi">Wi-Fi bidez soilik</string>
-  <string name="automatic_scan_wifi_on">Eguneratu aplikazioen zerrendak automatikoki Wi-Fi bidez soilik</string>
+  <string name="automatic_scan_wifi_on">Eguneratu aplikazioen zerrendak automatikoki Wi-Fi bezalako mugatu gabeko sareen bidez soilik</string>
   <string name="notify">Eguneraketen jakinarazpenak</string>
   <string name="notify_on">Bistarazi jakinarazpena eguneraketak eskuragarri daudenean</string>
   <string name="update_history">Eguneratu historia</string>
@@ -384,4 +384,5 @@ konpontzen laguntzeko?</string>
     <string name="update_auto_install_summary">Deskargatu eta instalatu aplikazioen eguneraketak bigarren planoan</string>
     <string name="keep_install_history">Mantendu instalazio historiala</string>
     <string name="keep_install_history_summary">Gorde instalazio eta desinstalazioen egunkari bat F-Droiden</string>
+    <string name="warning_no_internet">Ezin da eguneratu, Internetera konektatuta zaude?</string>
     </resources>

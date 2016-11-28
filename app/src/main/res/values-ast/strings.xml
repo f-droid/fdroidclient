@@ -12,7 +12,7 @@
   <string name="update_interval">Intervalu automáticu d\'anovamientu</string>
   <string name="update_interval_zero">Nun anovar automáticamente\'l llistáu d\'aplicaciones</string>
   <string name="automatic_scan_wifi">Namái na Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Anueva automáticamente les llistes d\'aplicaciones namái na Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Auto-anovar namái en redes non midíes como Wi-Fi</string>
   <string name="notify">Avisos d\'anovamientos</string>
   <string name="notify_on">Amuesa un avisu cuando tán disponibles anovamientos</string>
   <string name="update_history">Anovar historia</string>
@@ -370,4 +370,5 @@ corréu colos detalles p\'ayudar a iguar esti problema?</string>
     <string name="keep_install_history">Caltener historial d\'instalación</string>
     <string name="keep_install_history_summary">Atroxa un rexistru de les instalaciones y desinstalaciones dientro de F-Droid</string>
     <string name="hide_anti_feature_apps_on">Abuxa les aplicaciones que rican carauterístiques de pagu, non llibres y de rastrexu</string>
+    <string name="warning_no_internet">Nun pue anovase, ¿tas coneutáu a internet?</string>
     </resources>

@@ -68,7 +68,7 @@
     <string name="repo_error_empty_username">Nume utilizator gol, autentificare neschimbata</string>
 
     <string name="repo_edit_credentials">Schimba parola</string>
-    <string name="automatic_scan_wifi_on">Actualizeaza listele de aplicatii doar prin Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Actualizeaza automat doar prin retele necontorizate precum Wi-Fi</string>
     <string name="local_repo_name">Numele depozitului local</string>
     <string name="local_repo_name_summary">Titlu depozitului local folosit la anuntare: %s</string>
     <string name="update_history_summ">Numarul de zile de afisat aplicatii noi sau recente: %s</string>
@@ -341,4 +341,5 @@ pentru a putea ajuta la rezolvarea acestei probleme?</string>
     <string name="hide_anti_feature_apps_on">Arata cu gri aplicatiile ce necesita caracteristici periculoase</string>
     <string name="keep_install_history">Pastreaza istoricul instalarilor</string>
     <string name="keep_install_history_summary">Toate instalarile si dezinstalarile se noteaza intr-un jurnal in F-Droid</string>
+    <string name="system_installer_on">Folositi F-Droid Extension pentru a instala, actualiza si a înlătura pachete</string>
     </resources>

@@ -9,10 +9,10 @@
   <string name="cache_downloaded">Önbellekteki uygulamaları sakla</string>
   <string name="updates">Güncellemeler</string>
   <string name="other">Diğer</string>
-  <string name="update_interval">Otomatik güncelleme aralığı</string>
-  <string name="update_interval_zero">Hiçbir otomatik uygulama listesi güncellemesi olmasın</string>
-  <string name="automatic_scan_wifi">Sadece WiFi ile</string>
-  <string name="automatic_scan_wifi_on">Uygulama listesini otomatik olarak sadece Wİ-Fİ ile güncelle</string>
+  <string name="update_interval">Kendi kendine güncelleme aralığı</string>
+  <string name="update_interval_zero">Hiçbir kendi kendine uygulama listesi güncellemesi olmasın</string>
+  <string name="automatic_scan_wifi">Yalnızca Wi-Fi ile</string>
+  <string name="automatic_scan_wifi_on">Yalnızca Wi-Fi gibi ölçülmeyen ağlarda kendiliğinden güncelle</string>
   <string name="notify">Güncelleme bildirimleri</string>
   <string name="notify_on">Güncellemeler bulunduğunda bunu bildir</string>
   <string name="update_history">Güncelleme tarihçesi</string>
@@ -125,7 +125,7 @@ bağlanılıyor</string>
   <string name="global_error_updating_repos">Güncelleme sırasında hata: %s</string>
   <string name="no_permissions">Hiçbir izin kullanılmıyor.</string>
   <string name="no_handler_app">%s unsurunu yönetecek hiçbir mevcut uygulamanız yok.</string>
-  <string name="theme">Tema</string>
+  <string name="theme">Gövde</string>
   <string name="unsigned">İmzasız</string>
   <string name="unverified">Teyit edilmemiş</string>
   <string name="repo_num_apps">Uygulama sayısı</string>
@@ -137,7 +137,8 @@ bağlanılıyor</string>
         teyit edilemediği anlamına gelir. İmzasız
         endekslerden indirilen uygulamaları dikkatle 
         kullanmanız gerekir.</string>
-  <string name="repo_not_yet_updated">Bu depo henüz kullanılmamıştır. Sunduğu uygulamaları görmek için onu güncellemeniz gerekir.</string>
+  <string name="repo_not_yet_updated">Bu depo henüz kullanılmamıştır.
+Sunduğu uygulamaları görmek için onu güncellemeniz gerekir.</string>
   <string name="unknown">Bilinmiyor</string>
   <string name="repo_confirm_delete_title">Depo silinsin mi?</string>
   <string name="repo_confirm_delete_body">Bir depoyu silmek, ondan indirilen uygulamaların bundan böyle F-Droid vasıtasıyla elde edilemeyeceği anlamına gelir.\n\nNot: Tüm önceden kurulan uygulamalar aygıtınızda kalacaktır.</string>
@@ -164,7 +165,7 @@ bağlanılıyor</string>
   <string name="root_access_denied_title">Kök erişimi engellendi</string>
   <string name="root_access_denied_body">Ya Android aygıtınız köklü değil ya da F-Droid için kök erişimini engellediniz.</string>
   <string name="system_install_denied_title">Sistem izinleri reddedildi</string>
-  <string name="system_install_denied_body">Bu seçenek sadece F-Droid bir sistem uygulaması olarak kurulduğunda mevcuttur.</string>
+  <string name="system_install_denied_body">Bu seçenek yalnızca F-Droid bir sistem uygulaması olarak kurulduğunda kullanılır.</string>
   <string name="swap_nfc_description">Arkadaşınızda F-Droid ve etkinleştirilmiş NFC varsa aygıtlarınızı birbirine dokundurun.</string>
   <string name="swap_join_same_wifi">Arkadaşınızla aynı kablosuz ağa katılın</string>
   <string name="swap">Değiş-Tokuş uygulamalar</string>
@@ -211,10 +212,10 @@ bağlanılıyor</string>
     <string name="update_notification_title">Depolar güncelleniyor</string>
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) işleniyor, şuradan %1$s</string>
     <string name="status_inserting_apps">Uygulama ayrıntıları kaydediliyor</string>
-    <string name="permissions">Müsaadeler</string>
+    <string name="permissions">İzinler</string>
     <string name="repo_details">Depo</string>
     <string name="repo_url">Adres</string>
-    <string name="pref_language">Lisan</string>
+    <string name="pref_language">Dil</string>
     <string name="pref_language_default">Sistem Varsayılanı</string>
 
     <string name="wifi">Wi-Fi</string>
@@ -222,7 +223,7 @@ bağlanılıyor</string>
     <string name="category_Graphics">Grafikler</string>
     <string name="category_Money">Para</string>
     <string name="category_Sports_Health">Spor &amp; Sağlık</string>
-    <string name="category_Theming">Temalandırma</string>
+    <string name="category_Theming">Gövdelendirme</string>
     <string name="category_Time">Zaman</string>
     <string name="category_Writing">Yazım</string>
 
@@ -274,7 +275,7 @@ bağlanılıyor</string>
     <string name="swap_not_enabled">Takas etkinleştirilmemiş</string>
     <string name="swap_not_enabled_description">Takas yapmadan önce aygıtınızın görünebilir olması gerekmektedir.</string>
 
-    <string name="install_confirm">şunlara erişime ihtiyaç duyar:</string>
+    <string name="install_confirm">şunlara erişime gereksinir:</string>
     <string name="install_confirm_update">Bu mevcut uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolmayacaktır. Güncellenmiş uygulamanın şunlara erişimi olacaktır:</string>
     <string name="install_confirm_update_system">Bu gömülü uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolamayacaktır. Güncellenmiş uygulamanın şunlara erişimi olacaktır:</string>
     <string name="install_confirm_update_no_perms">Bu mevcut uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolmayacaktır. Herhangi özel bir erişim gerektirmemektedir.</string>
@@ -324,7 +325,7 @@ bağlanılıyor</string>
     <string name="swap_active_hotspot">%1$s (erişim noktanız)</string>
     <string name="by_author">şu tarafından</string>
     <string name="menu_email">Geliştiriciye e-posta at</string>
-    <string name="update_auto_download">Güncellemeleri otomatik olarak indir</string>
+    <string name="update_auto_download">Güncellemeleri kendiliğinden indir</string>
     <string name="update_auto_download_summary">Güncelleme dosyalarını arkaplanda indir</string>
     <string name="repo_provider">Depo: %s</string>
 
@@ -353,4 +354,8 @@ bağlanılıyor</string>
     <string name="keep_year">1 Sene</string>
     <string name="keep_forever">Daima</string>
 
+    <string name="keep_install_history">Kurulum geçmişi tut</string>
+    <string name="keep_install_history_summary">F-Droid içindeki tüm kurulum ve kaldırmaların günlüğünü depola</string>
+    <string name="update_auto_install">Güncellemeleri kendiliğinden kur</string>
+    <string name="warning_no_internet">Güncellenemiyor, internete bağlı mısınız?</string>
     </resources>

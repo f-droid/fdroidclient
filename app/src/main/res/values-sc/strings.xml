@@ -12,7 +12,7 @@
   <string name="update_interval">Intervallu agiornamentu automàticu</string>
   <string name="update_interval_zero">Non che agiornes automaticamente sa lista de sas aplicatziones</string>
   <string name="automatic_scan_wifi">Cun su Wi-Fi ebbia</string>
-  <string name="automatic_scan_wifi_on">Agiorna sa lista de sas aplicatziones petzi si b\'est su wifi</string>
+  <string name="automatic_scan_wifi_on">Agiorna automaticamente sa lista de sas aplicatziones petzi si b\'est su wifi</string>
   <string name="notify">Notìficas de agiornamentu</string>
   <string name="notify_on">Averte cando bi sunt agiornamentos disponìbiles</string>
   <string name="update_history">Istòria de sos agiornamentos</string>
@@ -376,4 +376,5 @@ Depes
     <string name="update_auto_install_summary">Iscàrriga e installa sos agiornamentos automaticamente</string>
     <string name="keep_install_history">Sarba s\'istòria de sas installatziones</string>
     <string name="keep_install_history_summary">Sarba unu regitru de sas installatziones e de sas disinstallatziones in F-Droid</string>
+    <string name="warning_no_internet">Impossìbile agiornare, ses connessu a ìnternet?</string>
     </resources>

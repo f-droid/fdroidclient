@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="app_name">F-Droid</string>
+
+    <string name="SignatureMismatch">Новата верзија е потпишата со разлилен клуч од стариот.За да ја инсталирата новата верзија,најпрво деинсталирајте ја старата.(Имајте во предвиде да при деинсталирањето се бришат и податоците од апликацијата.)</string>
+    <string name="version">Верзија</string>
+    <string name="by_author">од</string>
+    <string name="delete">Избриши</string>
+    <string name="enable_nfc_send">Овозможете ја функцијата NFC Испрати …</string>
+    <string name="cache_downloaded">Чувајте кеширани апликации</string>
+    <string name="updates">Ажурирања</string>
+    <string name="unstable_updates">Нестабилни ажурирања</string>
+    <string name="unstable_updates_summary">Предложете ажурирања на нестабилни верзии</string>
+    <string name="installIncompatible">Изгледа дека овој пакет не е компатибилен со вашиот уред. Дали сакате да се обиде и да ја инсталирате и покрај тоа?</string>
+    <string name="installDowngrade">Се обидувате да инсталирате постара верзија на оваа апликација. Ова може да доведе до неуспех и загуба на податоци. Дали навистина сакате да ја инсталирам постарата верзија?</string>
+    <string name="keep_install_history">Задржи ја историјата на инсталацијата</string>
+    <string name="other">Други</string>
+
+    <string name="update_interval">Автоматско ажурирање временски интервал</string>
+    <string name="update_interval_zero">Нема листа на автоматски ажурирања на апликацијата</string>
+    <string name="automatic_scan_wifi">Само на Wi-Fi</string>
+    </resources>

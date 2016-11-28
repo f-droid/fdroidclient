@@ -15,7 +15,7 @@
     <string name="update_interval">Selang waktu pembaruan otomatis</string>
     <string name="update_interval_zero">Jangan perbarui otomatis daftar aplikasi</string>
     <string name="automatic_scan_wifi">Hanya pada Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Perbarui daftar aplikasi secara otomatis hanya melalui Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Hanya perbarui secara otomatis pada jaringan tak terbatas seperti Wi-Fi</string>
     <string name="notify">Pemberitahuan pembaruan</string>
     <string name="notify_on">Beri tahu jika pembaruan aplikasi tersedia</string>
     <string name="update_history">Riwayat pembaruan</string>
@@ -390,4 +390,5 @@ hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
     <string name="keep_install_history_summary">Simpan log semua pemasangan dan pencopotan di F-Droid</string>
     <string name="update_auto_install">Otomatis memasang pembaruan</string>
     <string name="update_auto_install_summary">Unduh dan pasang pembaruan apl di latar belakang</string>
+    <string name="warning_no_internet">Tidak bisa memperbarui, apakah Anda tersambung ke internet?</string>
     </resources>

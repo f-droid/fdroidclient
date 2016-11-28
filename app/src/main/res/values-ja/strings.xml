@@ -12,7 +12,7 @@
   <string name="update_interval">自動更新間隔</string>
   <string name="update_interval_zero">ｱﾌﾟﾘﾘｽﾄの自動更新を行いません</string>
   <string name="automatic_scan_wifi">Wi-Fi接続時のみ</string>
-  <string name="automatic_scan_wifi_on">Wi-Fi接続時のみｱﾌﾟﾘﾘｽﾄの自動更新を行います</string>
+  <string name="automatic_scan_wifi_on">Wi-Fiなどの従量課金されないﾈｯﾄﾜｰｸでのみ自動更新を行います</string>
   <string name="notify">更新通知</string>
   <string name="notify_on">更新があれば通知を表示します</string>
   <string name="update_history">更新履歴</string>
@@ -368,4 +368,5 @@
     <string name="update_auto_install_summary">ﾊﾞｯｸｸﾞﾗｳﾝﾄﾞで更新ｱﾌﾟﾘをﾀﾞｳﾝﾛｰﾄﾞしてｲﾝｽﾄｰﾙします</string>
     <string name="keep_install_history">ｲﾝｽﾄｰﾙ履歴を保存する</string>
     <string name="keep_install_history_summary">F-Droid内ですべてのｲﾝｽﾄｰﾙとｱﾝｲﾝｽﾄｰﾙのﾛｸﾞを保存します</string>
+    <string name="warning_no_internet">更新できません。ｲﾝﾀｰﾈｯﾄに接続していますか?</string>
     </resources>

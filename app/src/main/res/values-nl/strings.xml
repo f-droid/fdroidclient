@@ -12,7 +12,7 @@
   <string name="update_interval">Automatisch vernieuwingsinterval</string>
   <string name="update_interval_zero">Applijsten worden niet automatisch vernieuwd</string>
   <string name="automatic_scan_wifi">Alleen via Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Vernieuw applijsten alleen automatisch bij Wi-Fi-verbinding</string>
+  <string name="automatic_scan_wifi_on">Update alleen automatisch op verbinding zonder datalimiet zoals Wi-Fi</string>
   <string name="notify">Updatemeldingen</string>
   <string name="notify_on">Toon een melding wanneer er updates beschikbaar zijn</string>
   <string name="update_history">Updategeschiedenis</string>
@@ -377,4 +377,5 @@ in de toekomst te helpen voorkomen?</string>
     <string name="update_auto_install_summary">Updates automatisch in de achtergrond downloaden en installeren</string>
     <string name="keep_install_history">Bewaar installatiegeschiedenis</string>
     <string name="keep_install_history_summary">Bewaar een logbestand van alle installaties en verwijderingen in F-Droid</string>
+    <string name="warning_no_internet">Kan niet updaten, ben je verbonden met het internet?</string>
     </resources>

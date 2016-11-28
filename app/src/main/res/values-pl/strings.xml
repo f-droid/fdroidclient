@@ -141,7 +141,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="installDowngrade">Próbujesz zainstalować starszą wersję tej aplikacji. Wykonanie tej operacji może powodować błędy w jej działaniu lub utratę danych. Czy chcesz kontynuować?</string>
     <string name="update_interval">Okres pomiędzy sprawdzaniem aktualizacji</string>
     <string name="automatic_scan_wifi">Aktualizuj tylko przez Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Aktualizuj listę aplikacji tylko przez Wi-Fi (oszczędza dane mobilne)</string>
+    <string name="automatic_scan_wifi_on">Aktualizuj listę aplikacji tylko przez nietaryfowe połączenia, np. Wi-Fi</string>
     <string name="notify_on">Wyświetlaj powiadomienie gdy znalezione zostaną nowe aktualizacje</string>
     <string name="uninstall_system">Aktualizuj/Odinstaluj Uprzywilejowany dodatek F-Droida</string>
     <string name="uninstall_system_summary">Pokaż szczegóły Uprzywilejowanego dodatku</string>
@@ -359,4 +359,5 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="update_auto_install_summary">Pobiera i instaluje aktualizacje programów w tle</string>
     <string name="keep_install_history">Zachowaj historię instalacji</string>
     <string name="keep_install_history_summary">Zapisuje w dzienniku F-Droida historię wszystkich instalacji i dezinstalacji</string>
+    <string name="warning_no_internet">Nie można zaktualizować, czy jesteś połączony z Internetem?</string>
     </resources>

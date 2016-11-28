@@ -16,7 +16,7 @@
     <string name="update_interval">自動更新間隔</string>
     <string name="update_interval_zero">不要自動更新應用軟體清單</string>
     <string name="automatic_scan_wifi">只在 Wi-Fi 網路上更新</string>
-    <string name="automatic_scan_wifi_on">只在 Wi-Fi 網路上自動地更新應用軟體清單</string>
+    <string name="automatic_scan_wifi_on">只在未計量的網路例如 Wi-Fi 上自動更新</string>
     <string name="notify">更新通知</string>
     <string name="notify_on">當有軟體可以更新時秀出一個通知</string>
     <string name="update_history_summ">將 %s 天前冒出來的軟體視為新軟體</string>
@@ -365,4 +365,5 @@
     <string name="update_auto_install_summary">在背景下載並且安裝更新的應用程式</string>
     <string name="hide_anti_feature_apps">防應用程式變灰色徵狀</string>
     <string name="hide_anti_feature_apps_on">需要防止應用程式變灰色防徵狀</string>
+    <string name="warning_no_internet">無法更新，您是否已連接到網路？</string>
     </resources>
