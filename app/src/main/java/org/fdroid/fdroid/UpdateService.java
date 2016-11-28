@@ -520,6 +520,19 @@ public class UpdateService extends IntentService {
     }
 
     private void showAppUpdatesNotification(Cursor hasUpdates) {
+
+        if (hasUpdates != null) {
+            hasUpdates.moveToFirst();
+            NotificationHelper.startBatchUpdates();
+            for (int i = 0; i < Math.min(MAX_UPDATES_TO_SHOW, hasUpdates.getCount()); i++) {
+                App app = new App(hasUpdates);
+                hasUpdates.moveToNext();
+                Apk apk = ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode);
+                NotificationHelper.setApk(apk, NotificationHelper.Status.UpdateAvailable, null);
+            }
+            NotificationHelper.endBatchUpdates();
+        }
+
         Utils.debugLog(TAG, "Notifying " + hasUpdates.getCount() + " updates.");
 
         final int icon = Build.VERSION.SDK_INT >= 11 ? R.drawable.ic_stat_notify_updates : R.drawable.ic_launcher;
