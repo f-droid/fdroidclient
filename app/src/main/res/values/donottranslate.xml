@@ -75,6 +75,7 @@
         <item>ko</item>
         <item>lt</item>
         <item>lv</item>
+        <item>mk</item>
         <item>my</item>
         <item>nb</item>
         <item>nl</item>
@@ -86,6 +87,7 @@
         <item>sc</item>
         <item>sk</item>
         <item>sl</item>
+        <item>sn</item>
         <item>sq</item>
         <item>sr</item>
         <item>sv</item>
@@ -131,6 +133,7 @@
         <item>한국어</item>
         <item>Lietuvių</item>
         <item>Latviešu</item>
+        <item>македонски</item>
         <item>မြန်မာစာ</item>
         <item>Norsk bokmål</item>
         <item>Nederlands</item>
@@ -142,6 +145,7 @@
         <item>Sardinian</item>
         <item>Slovenčina</item>
         <item>Slovenščina</item>
+        <item>ChiSona</item>
         <item>Shqip</item>
         <item>Српски</item>
         <item>Svenska</item>
