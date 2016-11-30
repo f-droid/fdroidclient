@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.support.v4.view.MarginLayoutParamsCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.text.AllCapsTransformationMethod;
