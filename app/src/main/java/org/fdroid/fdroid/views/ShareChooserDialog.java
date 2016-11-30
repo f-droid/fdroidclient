@@ -134,13 +134,13 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
         }
         mRecyclerView.setAdapter(new RecyclerView.Adapter<VH>() {
 
-            private ArrayList<Object> mIntents;
+            private ArrayList<ResolveInfo> mIntents;
 
             RecyclerView.Adapter init(List<ResolveInfo> targetedShareIntents) {
                 mIntents = new ArrayList<>();
-               if (mShowNearby) {
-                   mIntents.add("Nearby (string contents do not matter!)");
-               }
+                if (mShowNearby) {
+                    mIntents.add(null);
+                }
                 for (ResolveInfo ri : targetedShareIntents) {
                     mIntents.add(ri);
                 }
@@ -149,7 +149,7 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
 
             @Override
             public int getItemViewType(int position) {
-                if (mIntents.get(position) instanceof String)
+                if (mIntents.get(position) == null)
                     return VIEWTYPE_SWAP;
                 return VIEWTYPE_INTENT;
             }
@@ -174,7 +174,7 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
                     });
                     return;
                 }
-                final ResolveInfo ri = (ResolveInfo) mIntents.get(position);
+                final ResolveInfo ri = mIntents.get(position);
                 holder.icon.setImageDrawable(ri.loadIcon(getContext().getPackageManager()));
                 holder.label.setText(ri.loadLabel(getContext().getPackageManager()));
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
