@@ -33,6 +33,9 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
     private static final String ARG_INTENT = "intent";
     private static final String ARG_SHOW_NEARBY = "showNearby";
 
+    private static final int VIEWTYPE_SWAP = 1;
+    private static final int VIEWTYPE_INTENT = 0;
+
     private RecyclerView mRecyclerView;
     private ArrayList<ResolveInfo> mTargets;
     private int mParentWidth;
@@ -106,7 +109,7 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
             @Override
             public int getSpanSize(int position) {
                 if (mRecyclerView.getAdapter() != null) {
-                    if (mRecyclerView.getAdapter().getItemViewType(position) == 1) {
+                    if (mRecyclerView.getAdapter().getItemViewType(position) == VIEWTYPE_SWAP) {
                         return nCols;
                     }
                     return 1;
@@ -145,8 +148,8 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
             @Override
             public int getItemViewType(int position) {
                 if (mIntents.get(position) instanceof String)
-                    return 1;
-                return 0;
+                    return VIEWTYPE_SWAP;
+                return VIEWTYPE_INTENT;
             }
 
             @Override
@@ -157,7 +160,7 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
 
             @Override
             public void onBindViewHolder(VH holder, int position) {
-                if (getItemViewType(position) == 1) {
+                if (getItemViewType(position) == VIEWTYPE_SWAP) {
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
