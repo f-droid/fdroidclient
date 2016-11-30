@@ -166,37 +166,30 @@ public class AppDetailsRecyclerViewAdapter
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         if (viewType == VIEWTYPE_HEADER) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.app_details2_header, parent, false);
+            View view = inflater.inflate(R.layout.app_details2_header, parent, false);
             return new HeaderViewHolder(view);
         } else if (viewType == VIEWTYPE_SCREENSHOTS) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.app_details2_screenshots, parent, false);
+            View view = inflater.inflate(R.layout.app_details2_screenshots, parent, false);
             return new ScreenShotsViewHolder(view);
         } else if (viewType == VIEWTYPE_WHATS_NEW) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.app_details2_whatsnew, parent, false);
+            View view = inflater.inflate(R.layout.app_details2_whatsnew, parent, false);
             return new WhatsNewViewHolder(view);
         } else if (viewType == VIEWTYPE_DONATE) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.app_details2_donate, parent, false);
+            View view = inflater.inflate(R.layout.app_details2_donate, parent, false);
             return new DonateViewHolder(view);
         } else if (viewType == VIEWTYPE_LINKS) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.app_details2_links, parent, false);
+            View view = inflater.inflate(R.layout.app_details2_links, parent, false);
             return new ExpandableLinearLayoutViewHolder(view);
         } else if (viewType == VIEWTYPE_PERMISSIONS) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.app_details2_links, parent, false);
+            View view = inflater.inflate(R.layout.app_details2_links, parent, false);
             return new ExpandableLinearLayoutViewHolder(view);
         } else if (viewType == VIEWTYPE_VERSIONS) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.app_details2_links, parent, false);
+            View view = inflater.inflate(R.layout.app_details2_links, parent, false);
             return new ExpandableLinearLayoutViewHolder(view);
         } else if (viewType == VIEWTYPE_VERSION) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.apklistitem, parent, false);
+            View view = inflater.inflate(R.layout.apklistitem, parent, false);
             return new VersionViewHolder(view);
         }
         return null;
