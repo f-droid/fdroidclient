@@ -68,14 +68,14 @@ public class AppDetailsRecyclerViewAdapter
         void launchApk();
     }
 
-    private final int VIEWTYPE_HEADER = 0;
-    private final int VIEWTYPE_SCREENSHOTS = 1;
-    private final int VIEWTYPE_WHATS_NEW = 2;
-    private final int VIEWTYPE_DONATE = 3;
-    private final int VIEWTYPE_LINKS = 4;
-    private final int VIEWTYPE_PERMISSIONS = 5;
-    private final int VIEWTYPE_VERSIONS = 6;
-    private final int VIEWTYPE_VERSION = 7;
+    private static final int VIEWTYPE_HEADER = 0;
+    private static final int VIEWTYPE_SCREENSHOTS = 1;
+    private static final int VIEWTYPE_WHATS_NEW = 2;
+    private static final int VIEWTYPE_DONATE = 3;
+    private static final int VIEWTYPE_LINKS = 4;
+    private static final int VIEWTYPE_PERMISSIONS = 5;
+    private static final int VIEWTYPE_VERSIONS = 6;
+    private static final int VIEWTYPE_VERSION = 7;
 
     private final Context mContext;
     @NonNull
