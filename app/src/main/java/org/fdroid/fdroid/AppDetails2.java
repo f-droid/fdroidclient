@@ -428,9 +428,11 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         }
     };
 
-    // Reset the display and list contents. Used when entering the activity, and
-    // also when something has been installed/uninstalled.
-    // Return true if the app was found, false otherwise.
+    /**
+     * Reset the display and list contents. Used when entering the activity, and
+     * also when something has been installed/uninstalled.
+     * Return true if the app was found, false otherwise.
+     */
     private boolean reset(String packageName) {
 
         Utils.debugLog(TAG, "Getting application details for " + packageName);
