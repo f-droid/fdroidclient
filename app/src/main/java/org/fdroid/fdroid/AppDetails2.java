@@ -181,10 +181,8 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
     @Override
     public void onNearby() {
-        /*
-                 * If Bluetooth has not been enabled/turned on, then
-                 * enabling device discoverability will automatically enable Bluetooth
-                 */
+        // If Bluetooth has not been enabled/turned on, then
+        // enabling device discoverability will automatically enable Bluetooth
         Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
         discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
         startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
