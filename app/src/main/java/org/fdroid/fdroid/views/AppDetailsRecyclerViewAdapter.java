@@ -255,31 +255,22 @@ public class AppDetailsRecyclerViewAdapter
                 vh.buttonPrimaryView.setEnabled(false);
             } else if (!mCallbacks.isAppInstalled() && mApp.suggestedVersionCode > 0 && mVersions.size() > 0) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
-                // If App isn't installed
-                //installed = false;
-                //statusView.setText(R.string.details_notinstalled);
                 mCallbacks.disableAndroidBeam();
                 // Set Install button and hide second button
                 vh.buttonPrimaryView.setText(R.string.menu_install);
                 vh.buttonPrimaryView.setOnClickListener(mOnInstallClickListener);
                 vh.buttonPrimaryView.setEnabled(true);
             } else if (mCallbacks.isAppInstalled()) {
-                // If App is installed
-                //installed = true;
-                //statusView.setText(getString(R.string.details_installed, app.installedVersionName));
                 mCallbacks.enableAndroidBeam();
                 if (mApp.canAndWantToUpdate(mContext)) {
-                    //updateWanted = true;
                     vh.buttonPrimaryView.setText(R.string.menu_upgrade);
                     vh.buttonPrimaryView.setOnClickListener(mOnUpgradeClickListener);
                 } else {
-                    //updateWanted = false;
                     if (mContext.getPackageManager().getLaunchIntentForPackage(mApp.packageName) != null) {
                         vh.buttonPrimaryView.setText(R.string.menu_launch);
                         vh.buttonPrimaryView.setOnClickListener(mOnLaunchClickListener);
                     } else {
                         vh.buttonPrimaryView.setVisibility(View.GONE);
-                        //vh.buttonPrimaryView.setText(R.string.menu_uninstall);
                     }
                 }
                 vh.buttonPrimaryView.setEnabled(true);
@@ -297,14 +288,6 @@ public class AppDetailsRecyclerViewAdapter
                     mCallbacks.installCancel();
                 }
             });
-
-                /*TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
-                if (!appDetails.getApks().isEmpty()) {
-                    currentVersion.setText(appDetails.getApks().getItem(0).versionName + " (" + app.license + ")");
-                } else {
-                    currentVersion.setVisibility(View.GONE);
-                    btMain.setVisibility(View.GONE);
-                }*/
 
         } else if (viewType == VIEWTYPE_SCREENSHOTS) {
             ScreenShotsViewHolder vh = (ScreenShotsViewHolder) holder;
