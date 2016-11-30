@@ -105,6 +105,8 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
         int appWidth = Utils.dpToPx(80, getContext());
         final int nCols = (mParentWidth - /* padding */ Utils.dpToPx(8, getContext())) / appWidth;
         GridLayoutManager glm = new GridLayoutManager(getContext(), nCols);
+
+        // Ensure that if available, the "Nearby Swap" item spans the entire width.
         glm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
