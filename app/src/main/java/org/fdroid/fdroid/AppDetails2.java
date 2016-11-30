@@ -34,6 +34,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
@@ -159,6 +160,20 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
             boolean showNearbyItem = mApp.isInstalled() && mFDroidApp.bluetoothAdapter != null;
             ShareChooserDialog.createChooser((CoordinatorLayout) findViewById(R.id.rootCoordinator), this, this, shareIntent, showNearbyItem);
+            return true;
+        } else if (item.getItemId() == R.id.action_ignore_all) {
+            mApp.getPrefs(this).ignoreAllUpdates ^= true;
+            item.setChecked(mApp.getPrefs(this).ignoreAllUpdates);
+            AppPrefsProvider.Helper.update(this, mApp, mApp.getPrefs(this));
+            return true;
+        } else if (item.getItemId() == R.id.action_ignore_this) {
+            if (mApp.getPrefs(this).ignoreThisUpdate >= mApp.suggestedVersionCode) {
+                mApp.getPrefs(this).ignoreThisUpdate = 0;
+            } else {
+                mApp.getPrefs(this).ignoreThisUpdate = mApp.suggestedVersionCode;
+            }
+            item.setChecked(mApp.getPrefs(this).ignoreThisUpdate > 0);
+            AppPrefsProvider.Helper.update(this, mApp, mApp.getPrefs(this));
             return true;
         }
         return super.onOptionsItemSelected(item);
