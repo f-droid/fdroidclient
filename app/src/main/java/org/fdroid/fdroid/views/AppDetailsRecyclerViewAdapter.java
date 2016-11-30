@@ -160,8 +160,14 @@ public class AppDetailsRecyclerViewAdapter
                 uriIsSetAndCanBeOpened(mApp.flattrID);
     }
 
-    public HeaderViewHolder getHeaderView() {
-        return mHeaderView;
+    public void clearProgress() {
+        setProgress(0, 0, 0);
+    }
+
+    public void setProgress(int bytesDownloaded, int totalBytes, int resIdString) {
+        if (mHeaderView != null) {
+            mHeaderView.setProgress(bytesDownloaded, totalBytes, resIdString);
+        }
     }
 
     @Override

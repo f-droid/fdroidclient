@@ -303,15 +303,11 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Downloader.ACTION_STARTED:
-                    if (mAdapter.getHeaderView() != null) {
-                        mAdapter.getHeaderView().setProgress(-1, -1, R.string.download_pending);
-                    }
+                    mAdapter.setProgress(-1, -1, R.string.download_pending);
                     break;
                 case Downloader.ACTION_PROGRESS:
-                    if (mAdapter.getHeaderView() != null) {
-                        mAdapter.getHeaderView().setProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
-                                intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1), 0);
-                    }
+                    mAdapter.setProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
+                            intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1), 0);
                     break;
                 case Downloader.ACTION_COMPLETE:
                     // Starts the install process once the download is complete.
@@ -341,21 +337,15 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_INSTALL_STARTED:
-                    if (mAdapter.getHeaderView() != null) {
-                        mAdapter.getHeaderView().setProgress(-1, -1, R.string.installing);
-                    }
+                    mAdapter.setProgress(-1, -1, R.string.installing);
                     break;
                 case Installer.ACTION_INSTALL_COMPLETE:
-                    if (mAdapter.getHeaderView() != null) {
-                        mAdapter.getHeaderView().setProgress(0, 0, 0); // Remove
-                    }
+                    mAdapter.clearProgress();
                     unregisterInstallReceiver();
                     onAppChanged();
                     break;
                 case Installer.ACTION_INSTALL_INTERRUPTED:
-                    if (mAdapter.getHeaderView() != null) {
-                        mAdapter.getHeaderView().setProgress(0, 0, 0); // Remove
-                    }
+                    mAdapter.clearProgress();
                     onAppChanged();
 
                     String errorMessage =
@@ -398,21 +388,15 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_UNINSTALL_STARTED:
-                    if (mAdapter.getHeaderView() != null) {
-                        mAdapter.getHeaderView().setProgress(-1, -1, R.string.uninstalling);
-                    }
+                    mAdapter.setProgress(-1, -1, R.string.uninstalling);
                     break;
                 case Installer.ACTION_UNINSTALL_COMPLETE:
-                    if (mAdapter.getHeaderView() != null) {
-                        mAdapter.getHeaderView().setProgress(0, 0, 0); // Remove
-                    }
+                    mAdapter.clearProgress();
                     onAppChanged();
                     unregisterUninstallReceiver();
                     break;
                 case Installer.ACTION_UNINSTALL_INTERRUPTED:
-                    if (mAdapter.getHeaderView() != null) {
-                        mAdapter.getHeaderView().setProgress(0, 0, 0); // Remove
-                    }
+                    mAdapter.clearProgress();
                     String errorMessage =
                             intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
@@ -477,9 +461,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
      */
     private void cleanUpFinishedDownload() {
         mActiveDownloadUrlString = null;
-        if (mAdapter.getHeaderView() != null) {
-            mAdapter.getHeaderView().setProgress(0, 0, 0); // Remove
-        }
+        mAdapter.clearProgress();
         unregisterDownloaderReceiver();
     }
 
