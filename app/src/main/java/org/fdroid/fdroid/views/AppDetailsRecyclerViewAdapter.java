@@ -697,16 +697,15 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
-    private void addLinkItemView(ViewGroup parent, int resIdText, int resIdDrawable, String url) {
+    private void addLinkItemView(ViewGroup parent, int resIdText, int resIdDrawable, final String url) {
         TextView view = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.app_details2_link_item, parent, false);
-        view.setTag(url);
         view.setText(resIdText);
         TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(view, resIdDrawable, 0, 0, 0);
         parent.addView(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onLinkClicked((String) v.getTag());
+                onLinkClicked(url);
             }
         });
     }
