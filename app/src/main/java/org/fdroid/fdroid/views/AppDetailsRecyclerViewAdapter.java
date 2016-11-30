@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.text.AllCapsTransformationMethod;
@@ -77,6 +78,7 @@ public class AppDetailsRecyclerViewAdapter
     private final int VIEWTYPE_VERSION = 7;
 
     private final Context mContext;
+    @NonNull
     private App mApp;
     private final AppDetailsRecyclerViewAdapterCallbacks mCallbacks;
     private RecyclerView mRecyclerView;
@@ -86,13 +88,14 @@ public class AppDetailsRecyclerViewAdapter
 
     private HeaderViewHolder mHeaderView;
 
-    public AppDetailsRecyclerViewAdapter(Context context, App app, AppDetailsRecyclerViewAdapterCallbacks callbacks) {
+    public AppDetailsRecyclerViewAdapter(Context context, @NonNull App app, AppDetailsRecyclerViewAdapterCallbacks callbacks) {
         mContext = context;
         mCallbacks = callbacks;
+        mApp = app;
         updateItems(app);
     }
 
-    public void updateItems(App app) {
+    public void updateItems(@NonNull App app) {
         mApp = app;
 
         // Get versions
