@@ -21,8 +21,8 @@ public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
     private final DisplayImageOptions displayImageOptions;
     private View selectedView;
     private int selectedPosition;
-    private int selectedItemElevation;
-    private int unselectedItemMargin;
+    private final int selectedItemElevation;
+    private final int unselectedItemMargin;
 
     public ScreenShotsRecyclerViewAdapter(Context context, App app) {
         super();
