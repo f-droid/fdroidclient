@@ -253,8 +253,7 @@ public class AppDetailsRecyclerViewAdapter
             if (mCallbacks.isAppDownloading()) {
                 vh.buttonPrimaryView.setText(R.string.downloading);
                 vh.buttonPrimaryView.setEnabled(false);
-            } else if (!mCallbacks.isAppInstalled() && mApp.suggestedVersionCode > 0 &&
-                    mVersions.size() > 0) {
+            } else if (!mCallbacks.isAppInstalled() && mApp.suggestedVersionCode > 0 && mVersions.size() > 0) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
                 // If App isn't installed
                 //installed = false;
