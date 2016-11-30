@@ -221,7 +221,7 @@ public class AppDetailsRecyclerViewAdapter
             vh.summaryView.setText(mApp.summary);
             final Spanned desc = Html.fromHtml(mApp.description, null, new Utils.HtmlTagHandler());
             vh.descriptionView.setMovementMethod(LinkMovementMethod.getInstance());
-            vh.descriptionView.setText(trimNewlines(desc));
+            vh.descriptionView.setText(trimTrailingNewlines(desc));
             if (vh.descriptionView.getText() instanceof Spannable) {
                 Spannable spannable = (Spannable) vh.descriptionView.getText();
                 URLSpan[] spans = spannable.getSpans(0, spannable.length(), URLSpan.class);
@@ -776,13 +776,15 @@ public class AppDetailsRecyclerViewAdapter
         return (intent.resolveActivity(mContext.getPackageManager()) != null);
     }
 
-    // The HTML formatter adds "\n\n" at the end of every paragraph. This
-    // is desired between paragraphs, but not at the end of the whole
-    // string as it adds unwanted spacing at the end of the TextView.
-    // Remove all trailing newlines.
-    // Use this function instead of a trim() as that would require
-    // converting to String and thus losing formatting (e.g. bold).
-    private static CharSequence trimNewlines(CharSequence s) {
+    /**
+     * The HTML formatter adds "\n\n" at the end of every paragraph. This
+     * is desired between paragraphs, but not at the end of the whole
+     * string as it adds unwanted spacing at the end of the TextView.
+     * Remove all trailing newlines.
+     * Use this function instead of a trim() as that would require
+     * converting to String and thus losing formatting (e.g. bold).
+     */
+    public static CharSequence trimTrailingNewlines(CharSequence s) {
         if (TextUtils.isEmpty(s)) {
             return s;
         }
