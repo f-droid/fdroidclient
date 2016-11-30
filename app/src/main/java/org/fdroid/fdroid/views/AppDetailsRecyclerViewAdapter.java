@@ -158,9 +158,9 @@ public class AppDetailsRecyclerViewAdapter
 
     private boolean shouldShowDonate() {
         return uriIsSetAndCanBeOpened(mApp.donateURL) ||
-                uriIsSetAndCanBeOpened(mApp.bitcoinAddr) ||
-                uriIsSetAndCanBeOpened(mApp.litecoinAddr) ||
-                uriIsSetAndCanBeOpened(mApp.flattrID);
+                uriIsSetAndCanBeOpened(mApp.getBitcoinUri()) ||
+                uriIsSetAndCanBeOpened(mApp.getLitecoinUri()) ||
+                uriIsSetAndCanBeOpened(mApp.getFlattrUri());
     }
 
     public void clearProgress() {
@@ -333,18 +333,18 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             // Bitcoin
-            if (uriIsSetAndCanBeOpened(mApp.bitcoinAddr)) {
-                addLinkItemView(vh.contentView, R.string.menu_bitcoin, R.drawable.ic_bitcoin, "bitcoin:" + mApp.bitcoinAddr);
+            if (uriIsSetAndCanBeOpened(mApp.getBitcoinUri())) {
+                addLinkItemView(vh.contentView, R.string.menu_bitcoin, R.drawable.ic_bitcoin, mApp.getBitcoinUri());
             }
 
             // Litecoin
-            if (uriIsSetAndCanBeOpened(mApp.litecoinAddr)) {
-                addLinkItemView(vh.contentView, R.string.menu_litecoin, R.drawable.ic_litecoin, "litecoin:" + mApp.litecoinAddr);
+            if (uriIsSetAndCanBeOpened(mApp.getLitecoinUri())) {
+                addLinkItemView(vh.contentView, R.string.menu_litecoin, R.drawable.ic_litecoin, mApp.getLitecoinUri());
             }
 
             // Flattr
-            if (uriIsSetAndCanBeOpened(mApp.flattrID)) {
-                addLinkItemView(vh.contentView, R.string.menu_flattr, R.drawable.ic_flattr, "https://flattr.com/thing/" + mApp.flattrID);
+            if (uriIsSetAndCanBeOpened(mApp.getFlattrUri())) {
+                addLinkItemView(vh.contentView, R.string.menu_flattr, R.drawable.ic_flattr, mApp.getFlattrUri());
             }
         } else if (viewType == VIEWTYPE_LINKS) {
             final ExpandableLinearLayoutViewHolder vh = (ExpandableLinearLayoutViewHolder) holder;

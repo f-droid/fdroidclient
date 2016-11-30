@@ -1182,13 +1182,13 @@ public class AppDetails extends AppCompatActivity {
                         url = app.donateURL;
                         break;
                     case R.id.bitcoin:
-                        url = "bitcoin:" + app.bitcoinAddr;
+                        url = app.getBitcoinUri();
                         break;
                     case R.id.litecoin:
-                        url = "litecoin:" + app.litecoinAddr;
+                        url = app.getLitecoinUri();
                         break;
                     case R.id.flattr:
-                        url = "https://flattr.com/thing/" + app.flattrID;
+                        url = app.getFlattrUri();
                         break;
                 }
                 if (url != null) {

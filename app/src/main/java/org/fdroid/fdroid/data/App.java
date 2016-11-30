@@ -12,6 +12,7 @@ import android.database.Cursor;
 import android.os.Environment;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -550,6 +551,21 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     public boolean isFiltered() {
         return new AppFilter().filter(this);
+    }
+
+    @Nullable
+    public String getBitcoinUri() {
+        return TextUtils.isEmpty(bitcoinAddr) ? null : "bitcoin:" + bitcoinAddr;
+    }
+
+    @Nullable
+    public String getLitecoinUri() {
+        return TextUtils.isEmpty(litecoinAddr) ? null : "litecoin:" + litecoinAddr;
+    }
+
+    @Nullable
+    public String getFlattrUri() {
+        return TextUtils.isEmpty(flattrID) ? null : "https://flattr.com/thing/" + flattrID;
     }
 
     public String getSuggestedVersionName() {
