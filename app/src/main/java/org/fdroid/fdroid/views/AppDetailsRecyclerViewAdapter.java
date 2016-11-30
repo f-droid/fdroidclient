@@ -363,10 +363,10 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             // Email button
-            if (uriIsSetAndCanBeOpened(mApp.email)) {
-                final String subject = Uri.encode(mContext.getString(R.string.app_details_subject, mApp.name));
-                String url = "mailto:" + mApp.email + "?subject=" + subject;
-                addLinkItemView(vh.contentView, R.string.menu_email, R.drawable.ic_email, url);
+            final String subject = Uri.encode(mContext.getString(R.string.app_details_subject, mApp.name));
+            String emailUrl = mApp.email == null ? null : ("mailto:" + mApp.email + "?subject=" + subject);
+            if (uriIsSetAndCanBeOpened(emailUrl)) {
+                addLinkItemView(vh.contentView, R.string.menu_email, R.drawable.ic_email, emailUrl);
             }
         } else if (viewType == VIEWTYPE_PERMISSIONS) {
             final ExpandableLinearLayoutViewHolder vh = (ExpandableLinearLayoutViewHolder) holder;
