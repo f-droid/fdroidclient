@@ -78,7 +78,7 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
         final Dialog dialog = super.onCreateDialog(savedInstanceState);
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
-            public void onShow(DialogInterface dialogINterface) {
+            public void onShow(DialogInterface dialogInterface) {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.getWindow().setLayout(
                         mParentWidth - Utils.dpToPx(0, getContext()), // Set margins here!
