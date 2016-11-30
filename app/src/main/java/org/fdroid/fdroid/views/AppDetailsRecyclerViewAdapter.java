@@ -652,7 +652,7 @@ public class AppDetailsRecyclerViewAdapter
 
         DonateViewHolder(View view) {
             super(view);
-            textView = (TextView) view.findViewById(R.id.text);
+            textView = (TextView) view.findViewById(R.id.information);
             contentView = (LinearLayout) view.findViewById(R.id.ll_information);
         }
     }
