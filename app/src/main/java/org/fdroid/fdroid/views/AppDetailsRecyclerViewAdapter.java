@@ -802,7 +802,7 @@ public class AppDetailsRecyclerViewAdapter
     // Use this function instead of a trim() as that would require
     // converting to String and thus losing formatting (e.g. bold).
     private static CharSequence trimNewlines(CharSequence s) {
-        if (s == null || s.length() < 1) {
+        if (TextUtils.isEmpty(s)) {
             return s;
         }
         int i;
