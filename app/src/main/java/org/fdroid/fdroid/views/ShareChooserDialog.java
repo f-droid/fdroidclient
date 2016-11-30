@@ -28,6 +28,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShareChooserDialog extends BottomSheetDialogFragment {
+    private static final String ARG_WIDTH = "width";
+    private static final String ARG_INTENT = "intent";
+    private static final String ARG_SHOW_NEARBY = "showNearby";
+
     private RecyclerView mRecyclerView;
     private ArrayList<ResolveInfo> mTargets;
     private int mParentWidth;
@@ -51,9 +55,9 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mParentWidth = getArguments().getInt("width", 640);
-        mShareIntent = getArguments().getParcelable("intent");
-        mShowNearby = getArguments().getBoolean("showNearby", false);
+        mParentWidth = getArguments().getInt(ARG_WIDTH, 640);
+        mShareIntent = getArguments().getParcelable(ARG_INTENT);
+        mShowNearby = getArguments().getBoolean(ARG_SHOW_NEARBY, false);
         mTargets = new ArrayList<>();
         List<ResolveInfo> resInfo = getContext().getPackageManager().queryIntentActivities(mShareIntent, 0);
         if (resInfo != null && resInfo.size() > 0) {
@@ -193,9 +197,9 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
         ShareChooserDialog d = new ShareChooserDialog();
         d.setListener(listener);
         Bundle args = new Bundle();
-        args.putInt("width", rootView.getWidth());
-        args.putParcelable("intent", shareIntent);
-        args.putBoolean("showNearby", showNearbyItem);
+        args.putInt(ARG_WIDTH, rootView.getWidth());
+        args.putParcelable(ARG_INTENT, shareIntent);
+        args.putBoolean(ARG_SHOW_NEARBY, showNearbyItem);
         d.setArguments(args);
         d.show(parent.getSupportFragmentManager(), "Share");
     }
