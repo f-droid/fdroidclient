@@ -63,7 +63,10 @@ public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
 
     @Override
     public void onSnappedToView(View view, int snappedPosition) {
+        // Deselect the previous selected view first
         setViewSelected(selectedView, false);
+
+        // Change the selected view to the newly snapped-to view.
         selectedView = view;
         selectedPosition = snappedPosition;
         setViewSelected(selectedView, true);
