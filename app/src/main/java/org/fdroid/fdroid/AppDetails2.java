@@ -537,13 +537,13 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
     @Override
     public void installApk() {
-        Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(AppDetails2.this, mApp.packageName, mApp.suggestedVersionCode);
+        Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(this, mApp.packageName, mApp.suggestedVersionCode);
         installApk(apkToInstall);
     }
 
     @Override
     public void upgradeApk() {
-        Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(AppDetails2.this, mApp.packageName, mApp.suggestedVersionCode);
+        Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(this, mApp.packageName, mApp.suggestedVersionCode);
         installApk(apkToInstall);
     }
 
