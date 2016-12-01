@@ -488,7 +488,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                     AppDetails2.this.finish();
                     return;
                 }
-                AppDetailsRecyclerViewAdapter adapter = (AppDetailsRecyclerViewAdapter)mRecyclerView.getAdapter();
+                AppDetailsRecyclerViewAdapter adapter = (AppDetailsRecyclerViewAdapter) mRecyclerView.getAdapter();
                 adapter.updateItems(mApp);
                 supportInvalidateOptionsMenu();
             }

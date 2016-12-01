@@ -44,8 +44,9 @@ public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ScreenShotViewHolder vh = (ScreenShotViewHolder) holder;
         setViewSelected(vh.itemView, position == selectedPosition);
-        if (position == selectedPosition)
+        if (position == selectedPosition) {
             this.selectedView = vh.itemView;
+        }
         ImageLoader.getInstance().displayImage(app.iconUrlLarge, vh.image, displayImageOptions);
     }
 
@@ -74,11 +75,12 @@ public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
 
     private void setViewSelected(View view, boolean selected) {
         if (view != null) {
-            RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams)view.getLayoutParams();
-            if (selected)
-                lp.setMargins(0,selectedItemElevation,0,selectedItemElevation);
-            else
-                lp.setMargins(0,unselectedItemMargin,0,unselectedItemMargin);
+            RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) view.getLayoutParams();
+            if (selected) {
+                lp.setMargins(0, selectedItemElevation, 0, selectedItemElevation);
+            } else {
+                lp.setMargins(0, unselectedItemMargin, 0, unselectedItemMargin);
+            }
             ViewCompat.setElevation(view, selected ? selectedItemElevation : selectedItemElevation / 2);
             view.setLayoutParams(lp);
         }

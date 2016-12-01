@@ -19,7 +19,7 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
          * @param position Adapter position of the snapped to view (or NO_POSITION if none)
          */
         void onSnappedToView(View view, int position);
-    };
+    }
 
     private LinearLayoutManager mLlm;
     private OrientationHelper mOrientationHelper;
@@ -28,7 +28,7 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
     public LinearLayoutManagerSnapHelper(LinearLayoutManager llm) {
         this.mLlm = llm;
         this.mOrientationHelper = OrientationHelper.createHorizontalHelper(mLlm);
-    };
+    }
 
     public void setLinearSnapHelperListener(LinearSnapHelperListener listener) {
         mListener = listener;
@@ -93,8 +93,9 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
         }
         if (mListener != null) {
             int snappedPosition = 0;
-            if (snappedView != null)
+            if (snappedView != null) {
                 snappedPosition = mLlm.getPosition(snappedView);
+            }
             mListener.onSnappedToView(snappedView, snappedPosition);
         }
         return snappedView;

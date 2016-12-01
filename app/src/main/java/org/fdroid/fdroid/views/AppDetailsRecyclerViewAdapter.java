@@ -49,22 +49,31 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.support.v7.widget.RecyclerView.NO_POSITION;
-
 public class AppDetailsRecyclerViewAdapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface AppDetailsRecyclerViewAdapterCallbacks {
+
         boolean isAppDownloading();
+
         void enableAndroidBeam();
+
         void disableAndroidBeam();
+
         void openUrl(String url);
+
         void installApk();
+
         void installApk(Apk apk);
+
         void upgradeApk();
+
         void uninstallApk();
+
         void installCancel();
+
         void launchApk();
+
     }
 
     private static final int VIEWTYPE_HEADER = 0;
@@ -106,10 +115,11 @@ public class AppDetailsRecyclerViewAdapter
             }
         }
 
-        if (mItems == null)
+        if (mItems == null) {
             mItems = new ArrayList<>();
-        else
+        } else {
             mItems.clear();
+        }
         addItem(VIEWTYPE_HEADER);
         addItem(VIEWTYPE_SCREENSHOTS);
         addItem(VIEWTYPE_WHATS_NEW);
@@ -133,12 +143,10 @@ public class AppDetailsRecyclerViewAdapter
     private void addItem(int item) {
         // Gives us a chance to hide sections that are not used, e.g. the donate section when
         // we have no donation links.
-        if (item == VIEWTYPE_DONATE) {
-            if (!shouldShowDonate())
-                return;
-        } else if (item == VIEWTYPE_PERMISSIONS) {
-            if (!shouldShowPermissions())
-                return;
+        if (item == VIEWTYPE_DONATE && !shouldShowDonate()) {
+            return;
+        } else if (item == VIEWTYPE_PERMISSIONS && !shouldShowPermissions()) {
+            return;
         }
         mItems.add(item);
     }
@@ -298,8 +306,9 @@ public class AppDetailsRecyclerViewAdapter
             vh.recyclerView.setAdapter(adapter);
             vh.recyclerView.setHasFixedSize(true);
             vh.recyclerView.setNestedScrollingEnabled(false);
-            if (vh.snapHelper != null)
+            if (vh.snapHelper != null) {
                 vh.snapHelper.attachToRecyclerView(null);
+            }
             vh.snapHelper = new LinearLayoutManagerSnapHelper(lm);
             vh.snapHelper.setLinearSnapHelperListener(adapter);
             vh.snapHelper.attachToRecyclerView(vh.recyclerView);
@@ -334,7 +343,7 @@ public class AppDetailsRecyclerViewAdapter
             vh.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    boolean shouldBeVisible = (vh.contentView.getVisibility() != View.VISIBLE);
+                    boolean shouldBeVisible = vh.contentView.getVisibility() != View.VISIBLE;
                     vh.contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
                     TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_website, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
                 }
@@ -374,7 +383,7 @@ public class AppDetailsRecyclerViewAdapter
             vh.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    boolean shouldBeVisible = (vh.contentView.getVisibility() != View.VISIBLE);
+                    boolean shouldBeVisible = vh.contentView.getVisibility() != View.VISIBLE;
                     vh.contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
                     TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_lock_24dp_grey600, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
                 }
@@ -398,7 +407,7 @@ public class AppDetailsRecyclerViewAdapter
         } else if (viewType == VIEWTYPE_VERSION) {
             final VersionViewHolder vh = (VersionViewHolder) holder;
             java.text.DateFormat df = DateFormat.getDateFormat(mContext);
-            final Apk apk = (Apk)mItems.get(position);
+            final Apk apk = (Apk) mItems.get(position);
 
             vh.version.setText(mContext.getString(R.string.version)
                     + " " + apk.versionName
@@ -503,9 +512,10 @@ public class AppDetailsRecyclerViewAdapter
 
     @Override
     public int getItemViewType(int position) {
-        if (mItems.get(position) instanceof Apk)
+        if (mItems.get(position) instanceof Apk) {
             return VIEWTYPE_VERSION;
-        return (Integer)mItems.get(position);
+        }
+        return (Integer) mItems.get(position);
     }
 
     public class HeaderViewHolder extends RecyclerView.ViewHolder {
@@ -557,10 +567,10 @@ public class AppDetailsRecyclerViewAdapter
                 @Override
                 public void onClick(View v) {
                     // Remember current scroll position so that we can restore it
-                    LinearLayoutManager lm = (LinearLayoutManager)mRecyclerView.getLayoutManager();
+                    LinearLayoutManager lm = (LinearLayoutManager) mRecyclerView.getLayoutManager();
                     int pos = lm.findFirstVisibleItemPosition();
                     int posOffset = 0;
-                    if (pos != NO_POSITION) {
+                    if (pos != RecyclerView.NO_POSITION) {
                         View firstChild = mRecyclerView.getChildAt(0);
                         posOffset = (firstChild == null) ? 0 : (firstChild.getTop()); // - mRecyclerView.getPaddingTop());
                     }
@@ -571,7 +581,7 @@ public class AppDetailsRecyclerViewAdapter
                         descriptionView.setMaxLines(Integer.MAX_VALUE);
                         descriptionMoreView.setText(R.string.less);
                     }
-                    if (pos != NO_POSITION) {
+                    if (pos != RecyclerView.NO_POSITION) {
                         // Restore scroll position
                         lm.scrollToPositionWithOffset(pos, posOffset);
                     }
@@ -771,10 +781,11 @@ public class AppDetailsRecyclerViewAdapter
     };
 
     private boolean uriIsSetAndCanBeOpened(String s) {
-        if (TextUtils.isEmpty(s))
+        if (TextUtils.isEmpty(s)) {
             return false;
+        }
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
-        return (intent.resolveActivity(mContext.getPackageManager()) != null);
+        return intent.resolveActivity(mContext.getPackageManager()) != null;
     }
 
     /**

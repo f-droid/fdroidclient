@@ -598,8 +598,7 @@ public final class Utils {
         return data;
     }
 
-    public static int dpToPx(int dp, Context ctx)
-    {
+    public static int dpToPx(int dp, Context ctx) {
         Resources r = ctx.getResources();
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }

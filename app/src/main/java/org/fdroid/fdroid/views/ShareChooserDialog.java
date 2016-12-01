@@ -43,9 +43,13 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
     private boolean mShowNearby;
 
     public interface ShareChooserDialogListener {
+
         void onNearby();
+
         void onResolvedShareIntent(Intent shareIntent);
+
     }
+
     private ShareChooserDialogListener mListener;
 
     public ShareChooserDialog() {
@@ -67,8 +71,7 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
         if (resInfo != null && resInfo.size() > 0) {
             for (ResolveInfo resolveInfo : resInfo) {
                 String packageName = resolveInfo.activityInfo.packageName;
-                if (!packageName.equals(BuildConfig.APPLICATION_ID)) // Remove ourselves
-                {
+                if (!packageName.equals(BuildConfig.APPLICATION_ID)) { // Remove ourselves
                     mTargets.add(resolveInfo);
                 }
             }
@@ -99,7 +102,7 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
     }
 
     private void setupView(View v) {
-        mRecyclerView = (RecyclerView)v.findViewById(R.id.recycler_view_apps);
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.recycler_view_apps);
 
         // Figure out how many columns that fit in the given parent width. Give them 100dp.
         int appWidth = Utils.dpToPx(80, getContext());
@@ -121,17 +124,17 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
         });
         mRecyclerView.setLayoutManager(glm);
 
-
         class VH extends RecyclerView.ViewHolder {
             public final ImageView icon;
             public final TextView label;
 
-            public VH(View itemView) {
+            VH(View itemView) {
                 super(itemView);
                 icon = (ImageView) itemView.findViewById(R.id.ivShare);
                 label = (TextView) itemView.findViewById(R.id.tvShare);
             }
         }
+
         mRecyclerView.setAdapter(new RecyclerView.Adapter<VH>() {
 
             private ArrayList<ResolveInfo> mIntents;
@@ -149,8 +152,9 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
 
             @Override
             public int getItemViewType(int position) {
-                if (mIntents.get(position) == null)
+                if (mIntents.get(position) == null) {
                     return VIEWTYPE_SWAP;
+                }
                 return VIEWTYPE_INTENT;
             }
 
