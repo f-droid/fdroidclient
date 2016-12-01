@@ -118,6 +118,8 @@ public class AppDetailsRecyclerViewAdapter
         addItem(VIEWTYPE_LINKS);
         addItem(VIEWTYPE_PERMISSIONS);
         addItem(VIEWTYPE_VERSIONS);
+
+        notifyDataSetChanged();
     }
 
     private void setShowVersions(boolean showVersions) {
