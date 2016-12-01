@@ -242,7 +242,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
         if (!TextUtils.isEmpty(packageName)) {
             Utils.debugLog(TAG, "FDroid launched via app link for '" + packageName + "'");
-            Intent intentToInvoke = new Intent(this, AppDetails.class);
+            Intent intentToInvoke = new Intent(this, AppDetails2.class);
             intentToInvoke.putExtra(AppDetails.EXTRA_APPID, packageName);
             startActivity(intentToInvoke);
             finish();

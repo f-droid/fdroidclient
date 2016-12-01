@@ -17,6 +17,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -123,7 +124,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
                 return;
             }
 
-            Intent intent = new Intent(activity, AppDetails.class);
+            Intent intent = new Intent(activity, AppDetails2.class);
             intent.putExtra(AppDetails.EXTRA_APPID, currentApp.packageName);
             if (Build.VERSION.SDK_INT >= 21) {
                 Pair<View, String> iconTransitionPair = Pair.create((View) icon, activity.getString(R.string.transition_app_item_icon));

@@ -401,7 +401,6 @@
             android:label="@string/app_details"
             android:exported="true"
             android:parentActivityName=".FDroid"
-            android:theme="@style/AppThemeLight.NoActionBar"
             android:configChanges="layoutDirection|locale" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
