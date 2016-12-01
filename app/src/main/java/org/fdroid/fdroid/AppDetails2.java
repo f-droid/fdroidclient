@@ -501,11 +501,6 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     }
 
     @Override
-    public boolean isAppInstalled() {
-        return mApp.isInstalled();
-    }
-
-    @Override
     public void enableAndroidBeam() {
         NfcHelper.setAndroidBeam(this, mApp.packageName);
     }

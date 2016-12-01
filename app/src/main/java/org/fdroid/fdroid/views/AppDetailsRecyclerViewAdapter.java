@@ -56,7 +56,6 @@ public class AppDetailsRecyclerViewAdapter
 
     public interface AppDetailsRecyclerViewAdapterCallbacks {
         boolean isAppDownloading();
-        boolean isAppInstalled();
         void enableAndroidBeam();
         void disableAndroidBeam();
         void openUrl(String url);
@@ -248,21 +247,21 @@ public class AppDetailsRecyclerViewAdapter
                 }
             });
             vh.buttonSecondaryView.setText(R.string.menu_uninstall);
-            vh.buttonSecondaryView.setVisibility(mCallbacks.isAppInstalled() ? View.VISIBLE : View.INVISIBLE);
+            vh.buttonSecondaryView.setVisibility(mApp.isInstalled() ? View.VISIBLE : View.INVISIBLE);
             vh.buttonSecondaryView.setOnClickListener(mOnUnInstallClickListener);
             vh.buttonPrimaryView.setText(R.string.menu_install);
             vh.buttonPrimaryView.setVisibility(mVersions.size() > 0 ? View.VISIBLE : View.GONE);
             if (mCallbacks.isAppDownloading()) {
                 vh.buttonPrimaryView.setText(R.string.downloading);
                 vh.buttonPrimaryView.setEnabled(false);
-            } else if (!mCallbacks.isAppInstalled() && mApp.suggestedVersionCode > 0 && mVersions.size() > 0) {
+            } else if (!mApp.isInstalled() && mApp.suggestedVersionCode > 0 && mVersions.size() > 0) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
                 mCallbacks.disableAndroidBeam();
                 // Set Install button and hide second button
                 vh.buttonPrimaryView.setText(R.string.menu_install);
                 vh.buttonPrimaryView.setOnClickListener(mOnInstallClickListener);
                 vh.buttonPrimaryView.setEnabled(true);
-            } else if (mCallbacks.isAppInstalled()) {
+            } else if (mApp.isInstalled()) {
                 mCallbacks.enableAndroidBeam();
                 if (mApp.canAndWantToUpdate(mContext)) {
                     vh.buttonPrimaryView.setText(R.string.menu_upgrade);
