@@ -27,6 +27,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.views.apps.FeatureImage;
 
 import java.util.Date;
 
@@ -49,13 +50,12 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
     private final TextView status;
 
     @Nullable
-    private final ImageView featuredImage;
+    private final FeatureImage featuredImage;
 
     @Nullable
     private App currentApp;
 
     private final Activity activity;
-    private final int defaultFeaturedImageColour;
     private final DisplayImageOptions displayImageOptions;
 
     private final Date recentCuttoffDate;
@@ -70,10 +70,9 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
         icon = (ImageView) findViewAndEnsureNonNull(itemView, R.id.icon);
         summary = (TextView) findViewAndEnsureNonNull(itemView, R.id.summary);
 
-        featuredImage = (ImageView) itemView.findViewById(R.id.featured_image);
+        featuredImage = (FeatureImage) itemView.findViewById(R.id.featured_image);
         status = (TextView) itemView.findViewById(R.id.status);
 
-        defaultFeaturedImageColour = activity.getResources().getColor(R.color.cardview_light_background);
         displayImageOptions = Utils.getImageLoadingOptions().build();
 
         itemView.setOnClickListener(this);
@@ -113,7 +112,8 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
         }
 
         if (featuredImage != null) {
-            featuredImage.setBackgroundColor(defaultFeaturedImageColour);
+            featuredImage.setPalette(null);
+            featuredImage.setImageDrawable(null);
         }
 
         ImageLoader.getInstance().displayImage(app.iconUrl, icon, displayImageOptions, this);
@@ -151,12 +151,11 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
 
     @Override
     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-        final ImageView image = featuredImage;
-        if (image != null) {
+        if (featuredImage != null) {
             new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
                 @Override
                 public void onGenerated(Palette palette) {
-                    image.setBackgroundColor(palette.getDominantColor(defaultFeaturedImageColour));
+                    featuredImage.setPalette(palette);
                 }
             });
         }

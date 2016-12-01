@@ -7,7 +7,7 @@
     android:paddingBottom="2dp"
     android:clipToPadding="false">
 
-    <ImageView
+    <org.fdroid.fdroid.views.apps.FeatureImage
         android:id="@+id/featured_image"
         android:layout_width="0dp"
         android:layout_height="120dp"
