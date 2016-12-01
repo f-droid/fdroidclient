@@ -21,8 +21,8 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
         void onSnappedToView(View view, int position);
     }
 
-    private LinearLayoutManager mLlm;
-    private OrientationHelper mOrientationHelper;
+    private final LinearLayoutManager mLlm;
+    private final OrientationHelper mOrientationHelper;
     private LinearSnapHelperListener mListener;
 
     public LinearLayoutManagerSnapHelper(LinearLayoutManager llm) {

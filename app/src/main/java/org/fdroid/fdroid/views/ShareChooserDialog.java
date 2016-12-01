@@ -52,10 +52,6 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
 
     private ShareChooserDialogListener mListener;
 
-    public ShareChooserDialog() {
-        super();
-    }
-
     private void setListener(ShareChooserDialogListener listener) {
         mListener = listener;
     }

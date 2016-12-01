@@ -752,28 +752,28 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
-    private View.OnClickListener mOnInstallClickListener = new View.OnClickListener() {
+    private final View.OnClickListener mOnInstallClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             mCallbacks.installApk();
         }
     };
 
-    private View.OnClickListener mOnUnInstallClickListener = new View.OnClickListener() {
+    private final View.OnClickListener mOnUnInstallClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             mCallbacks.uninstallApk();
         }
     };
 
-    private View.OnClickListener mOnUpgradeClickListener = new View.OnClickListener() {
+    private final View.OnClickListener mOnUpgradeClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             mCallbacks.upgradeApk();
         }
     };
 
-    private View.OnClickListener mOnLaunchClickListener = new View.OnClickListener() {
+    private final View.OnClickListener mOnLaunchClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             mCallbacks.launchApk();
