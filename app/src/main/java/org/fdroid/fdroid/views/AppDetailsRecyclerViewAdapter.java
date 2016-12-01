@@ -199,13 +199,13 @@ public class AppDetailsRecyclerViewAdapter
             return new DonateViewHolder(view);
         } else if (viewType == VIEWTYPE_LINKS) {
             View view = inflater.inflate(R.layout.app_details2_links, parent, false);
-            return new ExpandableLinearLayoutViewHolder(view);
+            return new LinksViewHolder(view);
         } else if (viewType == VIEWTYPE_PERMISSIONS) {
             View view = inflater.inflate(R.layout.app_details2_links, parent, false);
-            return new ExpandableLinearLayoutViewHolder(view);
+            return new PermissionsViewHolder(view);
         } else if (viewType == VIEWTYPE_VERSIONS) {
             View view = inflater.inflate(R.layout.app_details2_links, parent, false);
-            return new ExpandableLinearLayoutViewHolder(view);
+            return new VersionsViewHolder(view);
         } else if (viewType == VIEWTYPE_VERSION) {
             View view = inflater.inflate(R.layout.apklistitem, parent, false);
             return new VersionViewHolder(view);
@@ -217,283 +217,24 @@ public class AppDetailsRecyclerViewAdapter
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         int viewType = getItemViewType(position);
         if (viewType == VIEWTYPE_HEADER) {
-            final HeaderViewHolder vh = (HeaderViewHolder) holder;
-            mHeaderView = vh;
-            ImageLoader.getInstance().displayImage(mApp.iconUrlLarge, vh.iconView, vh.displayImageOptions);
-            vh.titleView.setText(mApp.name);
-            if (!TextUtils.isEmpty(mApp.author)) {
-                vh.authorView.setText(mContext.getString(R.string.by_author) + " " + mApp.author);
-                vh.authorView.setVisibility(View.VISIBLE);
-            } else {
-                vh.authorView.setVisibility(View.GONE);
-            }
-            vh.summaryView.setText(mApp.summary);
-            final Spanned desc = Html.fromHtml(mApp.description, null, new Utils.HtmlTagHandler());
-            vh.descriptionView.setMovementMethod(LinkMovementMethod.getInstance());
-            vh.descriptionView.setText(trimTrailingNewlines(desc));
-            if (vh.descriptionView.getText() instanceof Spannable) {
-                Spannable spannable = (Spannable) vh.descriptionView.getText();
-                URLSpan[] spans = spannable.getSpans(0, spannable.length(), URLSpan.class);
-                for (URLSpan span : spans) {
-                    int start = spannable.getSpanStart(span);
-                    int end = spannable.getSpanEnd(span);
-                    int flags = spannable.getSpanFlags(span);
-                    spannable.removeSpan(span);
-                    // Create out own safe link span
-                    SafeURLSpan safeUrlSpan = new SafeURLSpan(span.getURL());
-                    spannable.setSpan(safeUrlSpan, start, end, flags);
-                }
-            }
-            vh.descriptionView.post(new Runnable() {
-                @Override
-                public void run() {
-                    if (vh.descriptionView.getLineCount() < HeaderViewHolder.MAX_LINES) {
-                        vh.descriptionMoreView.setVisibility(View.GONE);
-                    } else {
-                        vh.descriptionMoreView.setVisibility(View.VISIBLE);
-                    }
-                }
-            });
-            vh.buttonSecondaryView.setText(R.string.menu_uninstall);
-            vh.buttonSecondaryView.setVisibility(mApp.isInstalled() ? View.VISIBLE : View.INVISIBLE);
-            vh.buttonSecondaryView.setOnClickListener(mOnUnInstallClickListener);
-            vh.buttonPrimaryView.setText(R.string.menu_install);
-            vh.buttonPrimaryView.setVisibility(mVersions.size() > 0 ? View.VISIBLE : View.GONE);
-            if (mCallbacks.isAppDownloading()) {
-                vh.buttonPrimaryView.setText(R.string.downloading);
-                vh.buttonPrimaryView.setEnabled(false);
-            } else if (!mApp.isInstalled() && mApp.suggestedVersionCode > 0 && mVersions.size() > 0) {
-                // Check count > 0 due to incompatible apps resulting in an empty list.
-                mCallbacks.disableAndroidBeam();
-                // Set Install button and hide second button
-                vh.buttonPrimaryView.setText(R.string.menu_install);
-                vh.buttonPrimaryView.setOnClickListener(mOnInstallClickListener);
-                vh.buttonPrimaryView.setEnabled(true);
-            } else if (mApp.isInstalled()) {
-                mCallbacks.enableAndroidBeam();
-                if (mApp.canAndWantToUpdate(mContext)) {
-                    vh.buttonPrimaryView.setText(R.string.menu_upgrade);
-                    vh.buttonPrimaryView.setOnClickListener(mOnUpgradeClickListener);
-                } else {
-                    if (mContext.getPackageManager().getLaunchIntentForPackage(mApp.packageName) != null) {
-                        vh.buttonPrimaryView.setText(R.string.menu_launch);
-                        vh.buttonPrimaryView.setOnClickListener(mOnLaunchClickListener);
-                    } else {
-                        vh.buttonPrimaryView.setVisibility(View.GONE);
-                    }
-                }
-                vh.buttonPrimaryView.setEnabled(true);
-            }
-            if (mCallbacks.isAppDownloading()) {
-                vh.buttonLayout.setVisibility(View.GONE);
-                vh.progressLayout.setVisibility(View.VISIBLE);
-            } else {
-                vh.buttonLayout.setVisibility(View.VISIBLE);
-                vh.progressLayout.setVisibility(View.GONE);
-            }
-            vh.progressCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mCallbacks.installCancel();
-                }
-            });
-
+            HeaderViewHolder header = (HeaderViewHolder) holder;
+            mHeaderView = header;
+            header.bindModel();
         } else if (viewType == VIEWTYPE_SCREENSHOTS) {
-            ScreenShotsViewHolder vh = (ScreenShotsViewHolder) holder;
-            LinearLayoutManager lm = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-            vh.recyclerView.setLayoutManager(lm);
-            ScreenShotsRecyclerViewAdapter adapter = new ScreenShotsRecyclerViewAdapter(vh.itemView.getContext(), mApp);
-            vh.recyclerView.setAdapter(adapter);
-            vh.recyclerView.setHasFixedSize(true);
-            vh.recyclerView.setNestedScrollingEnabled(false);
-            if (vh.snapHelper != null) {
-                vh.snapHelper.attachToRecyclerView(null);
-            }
-            vh.snapHelper = new LinearLayoutManagerSnapHelper(lm);
-            vh.snapHelper.setLinearSnapHelperListener(adapter);
-            vh.snapHelper.attachToRecyclerView(vh.recyclerView);
+            ((ScreenShotsViewHolder) holder).bindModel();
         } else if (viewType == VIEWTYPE_WHATS_NEW) {
-            WhatsNewViewHolder vh = (WhatsNewViewHolder) holder;
-            vh.textView.setText("WHATS NEW GOES HERE");
+            ((WhatsNewViewHolder) holder).bindModel();
         } else if (viewType == VIEWTYPE_DONATE) {
-            DonateViewHolder vh = (DonateViewHolder) holder;
-            vh.contentView.removeAllViews();
-
-            // Donate button
-            if (uriIsSetAndCanBeOpened(mApp.donateURL)) {
-                addLinkItemView(vh.contentView, R.string.menu_donate, R.drawable.ic_donate, mApp.donateURL);
-            }
-
-            // Bitcoin
-            if (uriIsSetAndCanBeOpened(mApp.getBitcoinUri())) {
-                addLinkItemView(vh.contentView, R.string.menu_bitcoin, R.drawable.ic_bitcoin, mApp.getBitcoinUri());
-            }
-
-            // Litecoin
-            if (uriIsSetAndCanBeOpened(mApp.getLitecoinUri())) {
-                addLinkItemView(vh.contentView, R.string.menu_litecoin, R.drawable.ic_litecoin, mApp.getLitecoinUri());
-            }
-
-            // Flattr
-            if (uriIsSetAndCanBeOpened(mApp.getFlattrUri())) {
-                addLinkItemView(vh.contentView, R.string.menu_flattr, R.drawable.ic_flattr, mApp.getFlattrUri());
-            }
+            ((DonateViewHolder) holder).bindModel();
         } else if (viewType == VIEWTYPE_LINKS) {
-            final ExpandableLinearLayoutViewHolder vh = (ExpandableLinearLayoutViewHolder) holder;
-            vh.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    boolean shouldBeVisible = vh.contentView.getVisibility() != View.VISIBLE;
-                    vh.contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
-                    TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_website, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
-                }
-            });
-            vh.headerView.setText(R.string.links);
-            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_website, 0, R.drawable.ic_expand_more_grey600, 0);
-            vh.contentView.removeAllViews();
-
-            // Source button
-            if (uriIsSetAndCanBeOpened(mApp.sourceURL)) {
-                addLinkItemView(vh.contentView, R.string.menu_source, R.drawable.ic_source_code, mApp.sourceURL);
-            }
-
-            // Issues button
-            if (uriIsSetAndCanBeOpened(mApp.trackerURL)) {
-                addLinkItemView(vh.contentView, R.string.menu_issues, R.drawable.ic_issues, mApp.trackerURL);
-            }
-
-            // Changelog button
-            if (uriIsSetAndCanBeOpened(mApp.changelogURL)) {
-                addLinkItemView(vh.contentView, R.string.menu_changelog, R.drawable.ic_changelog, mApp.changelogURL);
-            }
-
-            // Website button
-            if (uriIsSetAndCanBeOpened(mApp.webURL)) {
-                addLinkItemView(vh.contentView, R.string.menu_website, R.drawable.ic_website, mApp.webURL);
-            }
-
-            // Email button
-            final String subject = Uri.encode(mContext.getString(R.string.app_details_subject, mApp.name));
-            String emailUrl = mApp.email == null ? null : ("mailto:" + mApp.email + "?subject=" + subject);
-            if (uriIsSetAndCanBeOpened(emailUrl)) {
-                addLinkItemView(vh.contentView, R.string.menu_email, R.drawable.ic_email, emailUrl);
-            }
+            ((LinksViewHolder) holder).bindModel();
         } else if (viewType == VIEWTYPE_PERMISSIONS) {
-            final ExpandableLinearLayoutViewHolder vh = (ExpandableLinearLayoutViewHolder) holder;
-            vh.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    boolean shouldBeVisible = vh.contentView.getVisibility() != View.VISIBLE;
-                    vh.contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
-                    TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_lock_24dp_grey600, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
-                }
-            });
-            vh.headerView.setText(R.string.permissions);
-            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_lock_24dp_grey600, 0, R.drawable.ic_expand_more_grey600, 0);
-            vh.contentView.removeAllViews();
-            AppDiff appDiff = new AppDiff(mContext.getPackageManager(), mVersions.get(0));
-            AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.pkgInfo);
-            vh.contentView.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
+            ((PermissionsViewHolder) holder).bindModel();
         } else if (viewType == VIEWTYPE_VERSIONS) {
-            final ExpandableLinearLayoutViewHolder vh = (ExpandableLinearLayoutViewHolder) holder;
-            vh.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    setShowVersions(!mShowVersions);
-                }
-            });
-            vh.headerView.setText(R.string.versions);
-            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(vh.headerView, R.drawable.ic_access_time_24dp_grey600, 0, mShowVersions ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+            ((VersionsViewHolder) holder).bindModel();
         } else if (viewType == VIEWTYPE_VERSION) {
-            final VersionViewHolder vh = (VersionViewHolder) holder;
-            java.text.DateFormat df = DateFormat.getDateFormat(mContext);
             final Apk apk = (Apk) mItems.get(position);
-
-            vh.version.setText(mContext.getString(R.string.version)
-                    + " " + apk.versionName
-                    + (apk.versionCode == mApp.suggestedVersionCode ? "  ☆" : ""));
-
-            vh.status.setText(getInstalledStatus(apk));
-
-            vh.repository.setText(mContext.getString(R.string.repo_provider,
-                    RepoProvider.Helper.findById(mContext, apk.repo).getName()));
-
-            if (apk.size > 0) {
-                vh.size.setText(Utils.getFriendlySize(apk.size));
-                vh.size.setVisibility(View.VISIBLE);
-            } else {
-                vh.size.setVisibility(View.GONE);
-            }
-
-            if (!Preferences.get().expertMode()) {
-                vh.api.setVisibility(View.GONE);
-            } else if (apk.minSdkVersion > 0 && apk.maxSdkVersion < Apk.SDK_VERSION_MAX_VALUE) {
-                vh.api.setText(mContext.getString(R.string.minsdk_up_to_maxsdk,
-                        Utils.getAndroidVersionName(apk.minSdkVersion),
-                        Utils.getAndroidVersionName(apk.maxSdkVersion)));
-                vh.api.setVisibility(View.VISIBLE);
-            } else if (apk.minSdkVersion > 0) {
-                vh.api.setText(mContext.getString(R.string.minsdk_or_later,
-                        Utils.getAndroidVersionName(apk.minSdkVersion)));
-                vh.api.setVisibility(View.VISIBLE);
-            } else if (apk.maxSdkVersion > 0) {
-                vh.api.setText(mContext.getString(R.string.up_to_maxsdk,
-                        Utils.getAndroidVersionName(apk.maxSdkVersion)));
-                vh.api.setVisibility(View.VISIBLE);
-            }
-
-            if (apk.srcname != null) {
-                vh.buildtype.setText("source");
-            } else {
-                vh.buildtype.setText("bin");
-            }
-
-            if (apk.added != null) {
-                vh.added.setText(mContext.getString(R.string.added_on,
-                        df.format(apk.added)));
-                vh.added.setVisibility(View.VISIBLE);
-            } else {
-                vh.added.setVisibility(View.GONE);
-            }
-
-            if (Preferences.get().expertMode() && apk.nativecode != null) {
-                vh.nativecode.setText(TextUtils.join(" ", apk.nativecode));
-                vh.nativecode.setVisibility(View.VISIBLE);
-            } else {
-                vh.nativecode.setVisibility(View.GONE);
-            }
-
-            if (apk.incompatibleReasons != null) {
-                vh.incompatibleReasons.setText(
-                        mContext.getResources().getString(
-                                R.string.requires_features,
-                                TextUtils.join(", ", apk.incompatibleReasons)));
-                vh.incompatibleReasons.setVisibility(View.VISIBLE);
-            } else {
-                vh.incompatibleReasons.setVisibility(View.GONE);
-            }
-
-            // Disable it all if it isn't compatible...
-            final View[] views = {
-                    vh.itemView,
-                    vh.version,
-                    vh.status,
-                    vh.repository,
-                    vh.size,
-                    vh.api,
-                    vh.buildtype,
-                    vh.added,
-                    vh.nativecode,
-            };
-            for (final View v : views) {
-                v.setEnabled(apk.compatible);
-            }
-            vh.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mCallbacks.installApk(apk);
-                }
-            });
+            ((VersionViewHolder) holder).bindModel(apk);
         }
     }
 
@@ -624,6 +365,88 @@ public class AppDetailsRecyclerViewAdapter
                 }
             }
         }
+
+        public void bindModel() {
+            ImageLoader.getInstance().displayImage(mApp.iconUrlLarge, iconView, displayImageOptions);
+            titleView.setText(mApp.name);
+            if (!TextUtils.isEmpty(mApp.author)) {
+                authorView.setText(mContext.getString(R.string.by_author) + " " + mApp.author);
+                authorView.setVisibility(View.VISIBLE);
+            } else {
+                authorView.setVisibility(View.GONE);
+            }
+            summaryView.setText(mApp.summary);
+            final Spanned desc = Html.fromHtml(mApp.description, null, new Utils.HtmlTagHandler());
+            descriptionView.setMovementMethod(LinkMovementMethod.getInstance());
+            descriptionView.setText(trimTrailingNewlines(desc));
+            if (descriptionView.getText() instanceof Spannable) {
+                Spannable spannable = (Spannable) descriptionView.getText();
+                URLSpan[] spans = spannable.getSpans(0, spannable.length(), URLSpan.class);
+                for (URLSpan span : spans) {
+                    int start = spannable.getSpanStart(span);
+                    int end = spannable.getSpanEnd(span);
+                    int flags = spannable.getSpanFlags(span);
+                    spannable.removeSpan(span);
+                    // Create out own safe link span
+                    SafeURLSpan safeUrlSpan = new SafeURLSpan(span.getURL());
+                    spannable.setSpan(safeUrlSpan, start, end, flags);
+                }
+            }
+            descriptionView.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (descriptionView.getLineCount() < HeaderViewHolder.MAX_LINES) {
+                        descriptionMoreView.setVisibility(View.GONE);
+                    } else {
+                        descriptionMoreView.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
+            buttonSecondaryView.setText(R.string.menu_uninstall);
+            buttonSecondaryView.setVisibility(mApp.isInstalled() ? View.VISIBLE : View.INVISIBLE);
+            buttonSecondaryView.setOnClickListener(mOnUnInstallClickListener);
+            buttonPrimaryView.setText(R.string.menu_install);
+            buttonPrimaryView.setVisibility(mVersions.size() > 0 ? View.VISIBLE : View.GONE);
+            if (mCallbacks.isAppDownloading()) {
+                buttonPrimaryView.setText(R.string.downloading);
+                buttonPrimaryView.setEnabled(false);
+            } else if (!mApp.isInstalled() && mApp.suggestedVersionCode > 0 && mVersions.size() > 0) {
+                // Check count > 0 due to incompatible apps resulting in an empty list.
+                mCallbacks.disableAndroidBeam();
+                // Set Install button and hide second button
+                buttonPrimaryView.setText(R.string.menu_install);
+                buttonPrimaryView.setOnClickListener(mOnInstallClickListener);
+                buttonPrimaryView.setEnabled(true);
+            } else if (mApp.isInstalled()) {
+                mCallbacks.enableAndroidBeam();
+                if (mApp.canAndWantToUpdate(mContext)) {
+                    buttonPrimaryView.setText(R.string.menu_upgrade);
+                    buttonPrimaryView.setOnClickListener(mOnUpgradeClickListener);
+                } else {
+                    if (mContext.getPackageManager().getLaunchIntentForPackage(mApp.packageName) != null) {
+                        buttonPrimaryView.setText(R.string.menu_launch);
+                        buttonPrimaryView.setOnClickListener(mOnLaunchClickListener);
+                    } else {
+                        buttonPrimaryView.setVisibility(View.GONE);
+                    }
+                }
+                buttonPrimaryView.setEnabled(true);
+            }
+            if (mCallbacks.isAppDownloading()) {
+                buttonLayout.setVisibility(View.GONE);
+                progressLayout.setVisibility(View.VISIBLE);
+            } else {
+                buttonLayout.setVisibility(View.VISIBLE);
+                progressLayout.setVisibility(View.GONE);
+            }
+            progressCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mCallbacks.installCancel();
+                }
+            });
+
+        }
     }
 
     @Override
@@ -646,6 +469,21 @@ public class AppDetailsRecyclerViewAdapter
             super(view);
             recyclerView = (RecyclerView) view.findViewById(R.id.screenshots);
         }
+
+        public void bindModel() {
+            LinearLayoutManager lm = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
+            recyclerView.setLayoutManager(lm);
+            ScreenShotsRecyclerViewAdapter adapter = new ScreenShotsRecyclerViewAdapter(itemView.getContext(), mApp);
+            recyclerView.setAdapter(adapter);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setNestedScrollingEnabled(false);
+            if (snapHelper != null) {
+                snapHelper.attachToRecyclerView(null);
+            }
+            snapHelper = new LinearLayoutManagerSnapHelper(lm);
+            snapHelper.setLinearSnapHelperListener(adapter);
+            snapHelper.attachToRecyclerView(recyclerView);
+        }
     }
 
     private class WhatsNewViewHolder extends RecyclerView.ViewHolder {
@@ -654,6 +492,10 @@ public class AppDetailsRecyclerViewAdapter
         WhatsNewViewHolder(View view) {
             super(view);
             textView = (TextView) view.findViewById(R.id.text);
+        }
+
+        public void bindModel() {
+            textView.setText("WHATS NEW GOES HERE");
         }
     }
 
@@ -666,9 +508,33 @@ public class AppDetailsRecyclerViewAdapter
             textView = (TextView) view.findViewById(R.id.information);
             contentView = (LinearLayout) view.findViewById(R.id.ll_information);
         }
+
+        public void bindModel() {
+            contentView.removeAllViews();
+
+            // Donate button
+            if (uriIsSetAndCanBeOpened(mApp.donateURL)) {
+                addLinkItemView(contentView, R.string.menu_donate, R.drawable.ic_donate, mApp.donateURL);
+            }
+
+            // Bitcoin
+            if (uriIsSetAndCanBeOpened(mApp.getBitcoinUri())) {
+                addLinkItemView(contentView, R.string.menu_bitcoin, R.drawable.ic_bitcoin, mApp.getBitcoinUri());
+            }
+
+            // Litecoin
+            if (uriIsSetAndCanBeOpened(mApp.getLitecoinUri())) {
+                addLinkItemView(contentView, R.string.menu_litecoin, R.drawable.ic_litecoin, mApp.getLitecoinUri());
+            }
+
+            // Flattr
+            if (uriIsSetAndCanBeOpened(mApp.getFlattrUri())) {
+                addLinkItemView(contentView, R.string.menu_flattr, R.drawable.ic_flattr, mApp.getFlattrUri());
+            }
+        }
     }
 
-    private class ExpandableLinearLayoutViewHolder extends RecyclerView.ViewHolder {
+    private abstract class ExpandableLinearLayoutViewHolder extends RecyclerView.ViewHolder {
         final TextView headerView;
         final LinearLayout contentView;
 
@@ -676,6 +542,96 @@ public class AppDetailsRecyclerViewAdapter
             super(view);
             headerView = (TextView) view.findViewById(R.id.information);
             contentView = (LinearLayout) view.findViewById(R.id.ll_content);
+        }
+    }
+
+    private class VersionsViewHolder extends ExpandableLinearLayoutViewHolder {
+
+        VersionsViewHolder(View view) {
+            super(view);
+        }
+
+        public void bindModel() {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setShowVersions(!mShowVersions);
+                }
+            });
+            headerView.setText(R.string.versions);
+            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_access_time_24dp_grey600, 0, mShowVersions ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+        }
+    }
+
+    private class PermissionsViewHolder extends ExpandableLinearLayoutViewHolder {
+
+        PermissionsViewHolder(View view) {
+            super(view);
+        }
+
+        public void bindModel() {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
+                    contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
+                    TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_lock_24dp_grey600, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+                }
+            });
+            headerView.setText(R.string.permissions);
+            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_lock_24dp_grey600, 0, R.drawable.ic_expand_more_grey600, 0);
+            contentView.removeAllViews();
+            AppDiff appDiff = new AppDiff(mContext.getPackageManager(), mVersions.get(0));
+            AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.pkgInfo);
+            contentView.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
+        }
+    }
+
+    private class LinksViewHolder extends ExpandableLinearLayoutViewHolder {
+
+        LinksViewHolder(View view) {
+            super(view);
+        }
+
+        public void bindModel() {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
+                    contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
+                    TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_website, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+                }
+            });
+            headerView.setText(R.string.links);
+            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_website, 0, R.drawable.ic_expand_more_grey600, 0);
+            contentView.removeAllViews();
+
+            // Source button
+            if (uriIsSetAndCanBeOpened(mApp.sourceURL)) {
+                addLinkItemView(contentView, R.string.menu_source, R.drawable.ic_source_code, mApp.sourceURL);
+            }
+
+            // Issues button
+            if (uriIsSetAndCanBeOpened(mApp.trackerURL)) {
+                addLinkItemView(contentView, R.string.menu_issues, R.drawable.ic_issues, mApp.trackerURL);
+            }
+
+            // Changelog button
+            if (uriIsSetAndCanBeOpened(mApp.changelogURL)) {
+                addLinkItemView(contentView, R.string.menu_changelog, R.drawable.ic_changelog, mApp.changelogURL);
+            }
+
+            // Website button
+            if (uriIsSetAndCanBeOpened(mApp.webURL)) {
+                addLinkItemView(contentView, R.string.menu_website, R.drawable.ic_website, mApp.webURL);
+            }
+
+            // Email button
+            final String subject = Uri.encode(mContext.getString(R.string.app_details_subject, mApp.name));
+            String emailUrl = mApp.email == null ? null : ("mailto:" + mApp.email + "?subject=" + subject);
+            if (uriIsSetAndCanBeOpened(emailUrl)) {
+                addLinkItemView(contentView, R.string.menu_email, R.drawable.ic_email, emailUrl);
+            }
         }
     }
 
@@ -705,6 +661,96 @@ public class AppDetailsRecyclerViewAdapter
             int margin = mContext.getResources().getDimensionPixelSize(R.dimen.layout_horizontal_margin);
             int padding = mContext.getResources().getDimensionPixelSize(R.dimen.details_activity_padding);
             ViewCompat.setPaddingRelative(view, margin + padding + ViewCompat.getPaddingStart(view), view.getPaddingTop(), ViewCompat.getPaddingEnd(view), view.getPaddingBottom());
+        }
+
+        public void bindModel(final Apk apk) {
+            java.text.DateFormat df = DateFormat.getDateFormat(mContext);
+
+            version.setText(mContext.getString(R.string.version)
+                    + " " + apk.versionName
+                    + (apk.versionCode == mApp.suggestedVersionCode ? "  ☆" : ""));
+
+            status.setText(getInstalledStatus(apk));
+
+            repository.setText(mContext.getString(R.string.repo_provider,
+                    RepoProvider.Helper.findById(mContext, apk.repo).getName()));
+
+            if (apk.size > 0) {
+                size.setText(Utils.getFriendlySize(apk.size));
+                size.setVisibility(View.VISIBLE);
+            } else {
+                size.setVisibility(View.GONE);
+            }
+
+            if (!Preferences.get().expertMode()) {
+                api.setVisibility(View.GONE);
+            } else if (apk.minSdkVersion > 0 && apk.maxSdkVersion < Apk.SDK_VERSION_MAX_VALUE) {
+                api.setText(mContext.getString(R.string.minsdk_up_to_maxsdk,
+                        Utils.getAndroidVersionName(apk.minSdkVersion),
+                        Utils.getAndroidVersionName(apk.maxSdkVersion)));
+                api.setVisibility(View.VISIBLE);
+            } else if (apk.minSdkVersion > 0) {
+                api.setText(mContext.getString(R.string.minsdk_or_later,
+                        Utils.getAndroidVersionName(apk.minSdkVersion)));
+                api.setVisibility(View.VISIBLE);
+            } else if (apk.maxSdkVersion > 0) {
+                api.setText(mContext.getString(R.string.up_to_maxsdk,
+                        Utils.getAndroidVersionName(apk.maxSdkVersion)));
+                api.setVisibility(View.VISIBLE);
+            }
+
+            if (apk.srcname != null) {
+                buildtype.setText("source");
+            } else {
+                buildtype.setText("bin");
+            }
+
+            if (apk.added != null) {
+                added.setText(mContext.getString(R.string.added_on,
+                        df.format(apk.added)));
+                added.setVisibility(View.VISIBLE);
+            } else {
+                added.setVisibility(View.GONE);
+            }
+
+            if (Preferences.get().expertMode() && apk.nativecode != null) {
+                nativecode.setText(TextUtils.join(" ", apk.nativecode));
+                nativecode.setVisibility(View.VISIBLE);
+            } else {
+                nativecode.setVisibility(View.GONE);
+            }
+
+            if (apk.incompatibleReasons != null) {
+                incompatibleReasons.setText(
+                        mContext.getResources().getString(
+                                R.string.requires_features,
+                                TextUtils.join(", ", apk.incompatibleReasons)));
+                incompatibleReasons.setVisibility(View.VISIBLE);
+            } else {
+                incompatibleReasons.setVisibility(View.GONE);
+            }
+
+            // Disable it all if it isn't compatible...
+            final View[] views = {
+                    itemView,
+                    version,
+                    status,
+                    repository,
+                    size,
+                    api,
+                    buildtype,
+                    added,
+                    nativecode,
+            };
+            for (final View v : views) {
+                v.setEnabled(apk.compatible);
+            }
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mCallbacks.installApk(apk);
+                }
+            });
         }
     }
 
