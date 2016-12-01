@@ -113,8 +113,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String[] antiFeatures;
 
     /**
-     * List of special requirements (such as root privileges) or null if there aren't any.
+     * Requires root access (only ever used for root)
      */
+    @Deprecated
     public String[] requirements;
 
     private AppPrefs prefs;
