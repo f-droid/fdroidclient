@@ -25,13 +25,13 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <ImageView
+            <org.fdroid.fdroid.views.apps.FeatureImage
                 android:id="@+id/feature_graphic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
-                android:src="@drawable/feature_placeholder"
+                tools:src="@drawable/feature_placeholder"
                 app:layout_collapseMode="parallax" />
 
             <android.support.v7.widget.Toolbar
