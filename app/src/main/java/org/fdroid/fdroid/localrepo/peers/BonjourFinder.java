@@ -46,7 +46,7 @@ final class BonjourFinder extends PeerFinder implements ServiceListener {
 
     private JmDNS jmdns;
     private WifiManager wifiManager;
-    private WifiManager.MulticastLock mMulticastLock;
+    private WifiManager.MulticastLock multicastLock;
 
     private BonjourFinder(Context context, Subscriber<? super Peer> subscriber) {
         super(context, subscriber);
@@ -58,8 +58,8 @@ final class BonjourFinder extends PeerFinder implements ServiceListener {
 
         if (wifiManager == null) {
             wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-            mMulticastLock = wifiManager.createMulticastLock(context.getPackageName());
-            mMulticastLock.setReferenceCounted(false);
+            multicastLock = wifiManager.createMulticastLock(context.getPackageName());
+            multicastLock.setReferenceCounted(false);
         }
 
         if (isScanning) {
@@ -68,7 +68,7 @@ final class BonjourFinder extends PeerFinder implements ServiceListener {
         }
 
         isScanning = true;
-        mMulticastLock.acquire();
+        multicastLock.acquire();
 
         try {
             Utils.debugLog(TAG, "Searching for Bonjour (mDNS) clients...");
@@ -146,8 +146,8 @@ final class BonjourFinder extends PeerFinder implements ServiceListener {
     private void cancel() {
         Utils.debugLog(TAG, "Cancelling BonjourFinder, releasing multicast lock, removing jmdns service listeners");
 
-        if (mMulticastLock != null) {
-            mMulticastLock.release();
+        if (multicastLock != null) {
+            multicastLock.release();
         }
 
         isScanning = false;

@@ -89,7 +89,7 @@ public class SwapAppsView extends ListView implements
 
     private Repo repo;
     private AppListAdapter adapter;
-    private String mCurrentFilterString;
+    private String currentFilterString;
 
     @Override
     protected void onFinishInflate() {
@@ -190,9 +190,9 @@ public class SwapAppsView extends ListView implements
 
     @Override
     public CursorLoader onCreateLoader(int id, Bundle args) {
-        Uri uri = TextUtils.isEmpty(mCurrentFilterString)
+        Uri uri = TextUtils.isEmpty(currentFilterString)
                 ? AppProvider.getRepoUri(repo)
-                : AppProvider.getSearchUri(repo, mCurrentFilterString);
+                : AppProvider.getSearchUri(repo, currentFilterString);
 
         return new CursorLoader(getActivity(), uri, AppMetadataTable.Cols.ALL, null, null, AppMetadataTable.Cols.NAME);
     }
@@ -210,13 +210,13 @@ public class SwapAppsView extends ListView implements
     @Override
     public boolean onQueryTextChange(String newText) {
         String newFilter = !TextUtils.isEmpty(newText) ? newText : null;
-        if (mCurrentFilterString == null && newFilter == null) {
+        if (currentFilterString == null && newFilter == null) {
             return true;
         }
-        if (mCurrentFilterString != null && mCurrentFilterString.equals(newFilter)) {
+        if (currentFilterString != null && currentFilterString.equals(newFilter)) {
             return true;
         }
-        mCurrentFilterString = newFilter;
+        currentFilterString = newFilter;
         getActivity().getSupportLoaderManager().restartLoader(LOADER_SWAPABLE_APPS, null, this);
         return true;
     }

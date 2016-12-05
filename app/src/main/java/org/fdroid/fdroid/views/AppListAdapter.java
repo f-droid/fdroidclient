@@ -18,7 +18,7 @@ import org.fdroid.fdroid.data.App;
 
 public abstract class AppListAdapter extends CursorAdapter {
 
-    private LayoutInflater mInflater;
+    private LayoutInflater inflater;
     private DisplayImageOptions displayImageOptions;
     private String upgradeFromTo;
 
@@ -44,7 +44,7 @@ public abstract class AppListAdapter extends CursorAdapter {
     }
 
     private void init(Context context) {
-        mInflater = (LayoutInflater) context.getSystemService(
+        inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         displayImageOptions = Utils.getImageLoadingOptions().build();
         upgradeFromTo = context.getResources().getString(R.string.upgrade_from_to);
@@ -64,7 +64,7 @@ public abstract class AppListAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        View view = mInflater.inflate(R.layout.applistitem, parent, false);
+        View view = inflater.inflate(R.layout.applistitem, parent, false);
 
         ViewHolder holder = new ViewHolder();
         holder.name = (TextView) view.findViewById(R.id.name);

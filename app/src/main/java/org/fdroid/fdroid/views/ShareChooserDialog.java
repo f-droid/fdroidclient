@@ -36,11 +36,11 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
     private static final int VIEWTYPE_SWAP = 1;
     private static final int VIEWTYPE_INTENT = 0;
 
-    private RecyclerView mRecyclerView;
-    private ArrayList<ResolveInfo> mTargets;
-    private int mParentWidth;
-    private Intent mShareIntent;
-    private boolean mShowNearby;
+    private RecyclerView recyclerView;
+    private ArrayList<ResolveInfo> targets;
+    private int parentWidth;
+    private Intent shareIntent;
+    private boolean showNearby;
 
     public interface ShareChooserDialogListener {
 
@@ -50,25 +50,25 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
 
     }
 
-    private ShareChooserDialogListener mListener;
+    private ShareChooserDialogListener listener;
 
     private void setListener(ShareChooserDialogListener listener) {
-        mListener = listener;
+        this.listener = listener;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mParentWidth = getArguments().getInt(ARG_WIDTH, 640);
-        mShareIntent = getArguments().getParcelable(ARG_INTENT);
-        mShowNearby = getArguments().getBoolean(ARG_SHOW_NEARBY, false);
-        mTargets = new ArrayList<>();
-        List<ResolveInfo> resInfo = getContext().getPackageManager().queryIntentActivities(mShareIntent, 0);
+        parentWidth = getArguments().getInt(ARG_WIDTH, 640);
+        shareIntent = getArguments().getParcelable(ARG_INTENT);
+        showNearby = getArguments().getBoolean(ARG_SHOW_NEARBY, false);
+        targets = new ArrayList<>();
+        List<ResolveInfo> resInfo = getContext().getPackageManager().queryIntentActivities(shareIntent, 0);
         if (resInfo != null && resInfo.size() > 0) {
             for (ResolveInfo resolveInfo : resInfo) {
                 String packageName = resolveInfo.activityInfo.packageName;
                 if (!packageName.equals(BuildConfig.APPLICATION_ID)) { // Remove ourselves
-                    mTargets.add(resolveInfo);
+                    targets.add(resolveInfo);
                 }
             }
         }
@@ -83,7 +83,7 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
             public void onShow(DialogInterface dialogInterface) {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.getWindow().setLayout(
-                        mParentWidth - Utils.dpToPx(0, getContext()), // Set margins here!
+                        parentWidth - Utils.dpToPx(0, getContext()), // Set margins here!
                         ViewGroup.LayoutParams.MATCH_PARENT);
             }
         });
@@ -98,19 +98,19 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
     }
 
     private void setupView(View v) {
-        mRecyclerView = (RecyclerView) v.findViewById(R.id.recycler_view_apps);
+        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view_apps);
 
         // Figure out how many columns that fit in the given parent width. Give them 100dp.
         int appWidth = Utils.dpToPx(80, getContext());
-        final int nCols = (mParentWidth - /* padding */ Utils.dpToPx(8, getContext())) / appWidth;
+        final int nCols = (parentWidth - /* padding */ Utils.dpToPx(8, getContext())) / appWidth;
         GridLayoutManager glm = new GridLayoutManager(getContext(), nCols);
 
         // Ensure that if available, the "Nearby Swap" item spans the entire width.
         glm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                if (mRecyclerView.getAdapter() != null) {
-                    if (mRecyclerView.getAdapter().getItemViewType(position) == VIEWTYPE_SWAP) {
+                if (recyclerView.getAdapter() != null) {
+                    if (recyclerView.getAdapter().getItemViewType(position) == VIEWTYPE_SWAP) {
                         return nCols;
                     }
                     return 1;
@@ -118,7 +118,7 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
                 return 0;
             }
         });
-        mRecyclerView.setLayoutManager(glm);
+        recyclerView.setLayoutManager(glm);
 
         class VH extends RecyclerView.ViewHolder {
             public final ImageView icon;
@@ -131,24 +131,24 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
             }
         }
 
-        mRecyclerView.setAdapter(new RecyclerView.Adapter<VH>() {
+        recyclerView.setAdapter(new RecyclerView.Adapter<VH>() {
 
-            private ArrayList<ResolveInfo> mIntents;
+            private ArrayList<ResolveInfo> intents;
 
             RecyclerView.Adapter init(List<ResolveInfo> targetedShareIntents) {
-                mIntents = new ArrayList<>();
-                if (mShowNearby) {
-                    mIntents.add(null);
+                intents = new ArrayList<>();
+                if (showNearby) {
+                    intents.add(null);
                 }
                 for (ResolveInfo ri : targetedShareIntents) {
-                    mIntents.add(ri);
+                    intents.add(ri);
                 }
                 return this;
             }
 
             @Override
             public int getItemViewType(int position) {
-                if (mIntents.get(position) == null) {
+                if (intents.get(position) == null) {
                     return VIEWTYPE_SWAP;
                 }
                 return VIEWTYPE_INTENT;
@@ -166,26 +166,26 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if (mListener != null) {
-                                mListener.onNearby();
+                            if (listener != null) {
+                                listener.onNearby();
                             }
                             dismiss();
                         }
                     });
                     return;
                 }
-                final ResolveInfo ri = mIntents.get(position);
+                final ResolveInfo ri = intents.get(position);
                 holder.icon.setImageDrawable(ri.loadIcon(getContext().getPackageManager()));
                 holder.label.setText(ri.loadLabel(getContext().getPackageManager()));
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (mListener != null) {
-                            Intent intent = new Intent(mShareIntent);
+                        if (listener != null) {
+                            Intent intent = new Intent(shareIntent);
                             ComponentName name = new ComponentName(ri.activityInfo.applicationInfo.packageName,
                                     ri.activityInfo.name);
                             intent.setComponent(name);
-                            mListener.onResolvedShareIntent(intent);
+                            listener.onResolvedShareIntent(intent);
                         }
                         dismiss();
                     }
@@ -194,9 +194,9 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
 
             @Override
             public int getItemCount() {
-                return mIntents.size();
+                return intents.size();
             }
-        }.init(mTargets));
+        }.init(targets));
 
     }
 

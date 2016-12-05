@@ -71,7 +71,7 @@ public class SelectAppsView extends ListView implements
     private static final int LOADER_INSTALLED_APPS = 253341534;
 
     private AppListAdapter adapter;
-    private String mCurrentFilterString;
+    private String currentFilterString;
 
     @Override
     protected void onFinishInflate() {
@@ -154,10 +154,10 @@ public class SelectAppsView extends ListView implements
     @Override
     public CursorLoader onCreateLoader(int id, Bundle args) {
         Uri uri;
-        if (TextUtils.isEmpty(mCurrentFilterString)) {
+        if (TextUtils.isEmpty(currentFilterString)) {
             uri = InstalledAppProvider.getContentUri();
         } else {
-            uri = InstalledAppProvider.getSearchUri(mCurrentFilterString);
+            uri = InstalledAppProvider.getSearchUri(currentFilterString);
         }
         return new CursorLoader(
                 getActivity(),
@@ -192,13 +192,13 @@ public class SelectAppsView extends ListView implements
     @Override
     public boolean onQueryTextChange(String newText) {
         String newFilter = !TextUtils.isEmpty(newText) ? newText : null;
-        if (mCurrentFilterString == null && newFilter == null) {
+        if (currentFilterString == null && newFilter == null) {
             return true;
         }
-        if (mCurrentFilterString != null && mCurrentFilterString.equals(newFilter)) {
+        if (currentFilterString != null && currentFilterString.equals(newFilter)) {
             return true;
         }
-        mCurrentFilterString = newFilter;
+        currentFilterString = newFilter;
         getActivity().getSupportLoaderManager().restartLoader(LOADER_INSTALLED_APPS, null, this);
         return true;
     }

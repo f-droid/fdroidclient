@@ -57,17 +57,17 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     private static final int REQUEST_PERMISSION_DIALOG = 3;
     private static final int REQUEST_UNINSTALL_DIALOG = 4;
 
-    private FDroidApp mFDroidApp;
-    private App mApp;
-    private RecyclerView mRecyclerView;
-    private AppDetailsRecyclerViewAdapter mAdapter;
-    private LocalBroadcastManager mLocalBroadcastManager;
-    private String mActiveDownloadUrlString;
+    private FDroidApp fdroidApp;
+    private App app;
+    private RecyclerView recyclerView;
+    private AppDetailsRecyclerViewAdapter adapter;
+    private LocalBroadcastManager localBroadcastManager;
+    private String activeDownloadUrlString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mFDroidApp = (FDroidApp) getApplication();
-        //mFDroidApp.applyTheme(this);
+        fdroidApp = (FDroidApp) getApplication();
+        //fdroidApp.applyTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_details2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -80,17 +80,17 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             return;
         }
 
-        mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.rvDetails);
-        mAdapter = new AppDetailsRecyclerViewAdapter(this, mApp, this);
+        recyclerView = (RecyclerView) findViewById(R.id.rvDetails);
+        adapter = new AppDetailsRecyclerViewAdapter(this, app, this);
         LinearLayoutManager lm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         lm.setStackFromEnd(false);
-        mRecyclerView.setLayoutManager(lm);
-        mRecyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(lm);
+        recyclerView.setAdapter(adapter);
 
         // Load the feature graphic, if present
-        if (!TextUtils.isEmpty(mApp.iconUrlLarge)) {
+        if (!TextUtils.isEmpty(app.iconUrlLarge)) {
             ImageView ivFeatureGraphic = (ImageView) findViewById(R.id.feature_graphic);
             DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder()
                     .cacheInMemory(false)
@@ -98,7 +98,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                     .imageScaleType(ImageScaleType.NONE)
                     .bitmapConfig(Bitmap.Config.RGB_565)
                     .build();
-            ImageLoader.getInstance().displayImage(mApp.iconUrlLarge, ivFeatureGraphic, displayImageOptions);
+            ImageLoader.getInstance().displayImage(app.iconUrlLarge, ivFeatureGraphic, displayImageOptions);
         }
     }
 
@@ -120,7 +120,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             finish();
             return;
         }
-        mApp = newApp;
+        app = newApp;
     }
 
     @Override
@@ -135,17 +135,17 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        if (mApp == null) {
+        if (app == null) {
             return true;
         }
         MenuItem itemIgnoreAll = menu.findItem(R.id.action_ignore_all);
         if (itemIgnoreAll != null) {
-            itemIgnoreAll.setChecked(mApp.getPrefs(this).ignoreAllUpdates);
+            itemIgnoreAll.setChecked(app.getPrefs(this).ignoreAllUpdates);
         }
         MenuItem itemIgnoreThis = menu.findItem(R.id.action_ignore_this);
         if (itemIgnoreThis != null) {
-            itemIgnoreThis.setVisible(mApp.hasUpdates());
-            itemIgnoreThis.setChecked(mApp.getPrefs(this).ignoreThisUpdate >= mApp.suggestedVersionCode);
+            itemIgnoreThis.setVisible(app.hasUpdates());
+            itemIgnoreThis.setChecked(app.getPrefs(this).ignoreThisUpdate >= app.suggestedVersionCode);
         }
         return true;
     }
@@ -155,25 +155,25 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         if (item.getItemId() == R.id.action_share) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, mApp.name);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, mApp.name + " (" + mApp.summary + ") - https://f-droid.org/app/" + mApp.packageName);
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary + ") - https://f-droid.org/app/" + app.packageName);
 
-            boolean showNearbyItem = mApp.isInstalled() && mFDroidApp.bluetoothAdapter != null;
+            boolean showNearbyItem = app.isInstalled() && fdroidApp.bluetoothAdapter != null;
             ShareChooserDialog.createChooser((CoordinatorLayout) findViewById(R.id.rootCoordinator), this, this, shareIntent, showNearbyItem);
             return true;
         } else if (item.getItemId() == R.id.action_ignore_all) {
-            mApp.getPrefs(this).ignoreAllUpdates ^= true;
-            item.setChecked(mApp.getPrefs(this).ignoreAllUpdates);
-            AppPrefsProvider.Helper.update(this, mApp, mApp.getPrefs(this));
+            app.getPrefs(this).ignoreAllUpdates ^= true;
+            item.setChecked(app.getPrefs(this).ignoreAllUpdates);
+            AppPrefsProvider.Helper.update(this, app, app.getPrefs(this));
             return true;
         } else if (item.getItemId() == R.id.action_ignore_this) {
-            if (mApp.getPrefs(this).ignoreThisUpdate >= mApp.suggestedVersionCode) {
-                mApp.getPrefs(this).ignoreThisUpdate = 0;
+            if (app.getPrefs(this).ignoreThisUpdate >= app.suggestedVersionCode) {
+                app.getPrefs(this).ignoreThisUpdate = 0;
             } else {
-                mApp.getPrefs(this).ignoreThisUpdate = mApp.suggestedVersionCode;
+                app.getPrefs(this).ignoreThisUpdate = app.suggestedVersionCode;
             }
-            item.setChecked(mApp.getPrefs(this).ignoreThisUpdate > 0);
-            AppPrefsProvider.Helper.update(this, mApp, mApp.getPrefs(this));
+            item.setChecked(app.getPrefs(this).ignoreThisUpdate > 0);
+            AppPrefsProvider.Helper.update(this, app, app.getPrefs(this));
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -198,7 +198,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQUEST_ENABLE_BLUETOOTH:
-                mFDroidApp.sendViaBluetooth(this, resultCode, mApp.packageName);
+                fdroidApp.sendViaBluetooth(this, resultCode, app.packageName);
                 break;
             case REQUEST_PERMISSION_DIALOG:
                 if (resultCode == Activity.RESULT_OK) {
@@ -244,8 +244,8 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             alert.show();
             return;
         }
-        if (mApp.installedSig != null && apk.sig != null
-                && !apk.sig.equals(mApp.installedSig)) {
+        if (app.installedSig != null && apk.sig != null
+                && !apk.sig.equals(app.installedSig)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
                     R.string.ok,
@@ -276,39 +276,39 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     }
 
     private void startInstall(Apk apk) {
-        mActiveDownloadUrlString = apk.getUrl();
+        activeDownloadUrlString = apk.getUrl();
         registerDownloaderReceiver();
-        InstallManagerService.queue(this, mApp, apk);
+        InstallManagerService.queue(this, app, apk);
     }
 
     private void startUninstall() {
         registerUninstallReceiver();
-        InstallerService.uninstall(this, mApp.installedApk);
+        InstallerService.uninstall(this, app.installedApk);
     }
 
     private void registerUninstallReceiver() {
-        mLocalBroadcastManager.registerReceiver(uninstallReceiver,
-                Installer.getUninstallIntentFilter(mApp.packageName));
+        localBroadcastManager.registerReceiver(uninstallReceiver,
+                Installer.getUninstallIntentFilter(app.packageName));
     }
 
     private void unregisterUninstallReceiver() {
-        mLocalBroadcastManager.unregisterReceiver(uninstallReceiver);
+        localBroadcastManager.unregisterReceiver(uninstallReceiver);
     }
 
     private void registerDownloaderReceiver() {
-        if (mActiveDownloadUrlString != null) { // if a download is active
-            String url = mActiveDownloadUrlString;
-            mLocalBroadcastManager.registerReceiver(downloadReceiver,
+        if (activeDownloadUrlString != null) { // if a download is active
+            String url = activeDownloadUrlString;
+            localBroadcastManager.registerReceiver(downloadReceiver,
                     DownloaderService.getIntentFilter(url));
         }
     }
 
     private void unregisterDownloaderReceiver() {
-        mLocalBroadcastManager.unregisterReceiver(downloadReceiver);
+        localBroadcastManager.unregisterReceiver(downloadReceiver);
     }
 
     private void unregisterInstallReceiver() {
-        mLocalBroadcastManager.unregisterReceiver(installReceiver);
+        localBroadcastManager.unregisterReceiver(installReceiver);
     }
 
     private final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
@@ -316,16 +316,16 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Downloader.ACTION_STARTED:
-                    mAdapter.setProgress(-1, -1, R.string.download_pending);
+                    adapter.setProgress(-1, -1, R.string.download_pending);
                     break;
                 case Downloader.ACTION_PROGRESS:
-                    mAdapter.setProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
+                    adapter.setProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
                             intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1), 0);
                     break;
                 case Downloader.ACTION_COMPLETE:
                     // Starts the install process once the download is complete.
                     cleanUpFinishedDownload();
-                    mLocalBroadcastManager.registerReceiver(installReceiver,
+                    localBroadcastManager.registerReceiver(installReceiver,
                             Installer.getInstallIntentFilter(intent.getData()));
                     break;
                 case Downloader.ACTION_INTERRUPTED:
@@ -350,15 +350,15 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_INSTALL_STARTED:
-                    mAdapter.setProgress(-1, -1, R.string.installing);
+                    adapter.setProgress(-1, -1, R.string.installing);
                     break;
                 case Installer.ACTION_INSTALL_COMPLETE:
-                    mAdapter.clearProgress();
+                    adapter.clearProgress();
                     unregisterInstallReceiver();
                     onAppChanged();
                     break;
                 case Installer.ACTION_INSTALL_INTERRUPTED:
-                    mAdapter.clearProgress();
+                    adapter.clearProgress();
                     onAppChanged();
 
                     String errorMessage =
@@ -369,7 +369,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
                         String title = String.format(
                                 getString(R.string.install_error_notify_title),
-                                mApp.name);
+                                app.name);
 
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails2.this);
                         alertBuilder.setTitle(title);
@@ -401,15 +401,15 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_UNINSTALL_STARTED:
-                    mAdapter.setProgress(-1, -1, R.string.uninstalling);
+                    adapter.setProgress(-1, -1, R.string.uninstalling);
                     break;
                 case Installer.ACTION_UNINSTALL_COMPLETE:
-                    mAdapter.clearProgress();
+                    adapter.clearProgress();
                     onAppChanged();
                     unregisterUninstallReceiver();
                     break;
                 case Installer.ACTION_UNINSTALL_INTERRUPTED:
-                    mAdapter.clearProgress();
+                    adapter.clearProgress();
                     String errorMessage =
                             intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
@@ -458,13 +458,13 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         }
 
         setApp(newApp);
-        return this.mApp != null;
+        return this.app != null;
     }
 
     private void calcActiveDownloadUrlString(String packageName) {
         String urlString = getPreferences(MODE_PRIVATE).getString(packageName, null);
         if (DownloaderService.isQueuedOrActive(urlString)) {
-            mActiveDownloadUrlString = urlString;
+            activeDownloadUrlString = urlString;
         } else {
             // this URL is no longer active, remove it
             getPreferences(MODE_PRIVATE).edit().remove(packageName).apply();
@@ -475,21 +475,21 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
      * Remove progress listener, suppress progress bar, set downloadHandler to null.
      */
     private void cleanUpFinishedDownload() {
-        mActiveDownloadUrlString = null;
-        mAdapter.clearProgress();
+        activeDownloadUrlString = null;
+        adapter.clearProgress();
         unregisterDownloaderReceiver();
     }
 
     private void onAppChanged() {
-        mRecyclerView.post(new Runnable() {
+        recyclerView.post(new Runnable() {
             @Override
             public void run() {
-                if (!reset(mApp.packageName)) {
+                if (!reset(app.packageName)) {
                     AppDetails2.this.finish();
                     return;
                 }
-                AppDetailsRecyclerViewAdapter adapter = (AppDetailsRecyclerViewAdapter) mRecyclerView.getAdapter();
-                adapter.updateItems(mApp);
+                AppDetailsRecyclerViewAdapter adapter = (AppDetailsRecyclerViewAdapter) recyclerView.getAdapter();
+                adapter.updateItems(app);
                 supportInvalidateOptionsMenu();
             }
         });
@@ -497,12 +497,12 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
     @Override
     public boolean isAppDownloading() {
-        return !TextUtils.isEmpty(mActiveDownloadUrlString);
+        return !TextUtils.isEmpty(activeDownloadUrlString);
     }
 
     @Override
     public void enableAndroidBeam() {
-        NfcHelper.setAndroidBeam(this, mApp.packageName);
+        NfcHelper.setAndroidBeam(this, app.packageName);
     }
 
     @Override
@@ -524,39 +524,39 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
     @Override
     public void installCancel() {
-        if (!TextUtils.isEmpty(mActiveDownloadUrlString)) {
-            InstallManagerService.cancel(this, mActiveDownloadUrlString);
+        if (!TextUtils.isEmpty(activeDownloadUrlString)) {
+            InstallManagerService.cancel(this, activeDownloadUrlString);
         }
     }
 
     @Override
     public void launchApk() {
-        Intent intent = getPackageManager().getLaunchIntentForPackage(mApp.packageName);
+        Intent intent = getPackageManager().getLaunchIntentForPackage(app.packageName);
         startActivity(intent);
     }
 
     @Override
     public void installApk() {
-        Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(this, mApp.packageName, mApp.suggestedVersionCode);
+        Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode);
         installApk(apkToInstall);
     }
 
     @Override
     public void upgradeApk() {
-        Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(this, mApp.packageName, mApp.suggestedVersionCode);
+        Apk apkToInstall = ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode);
         installApk(apkToInstall);
     }
 
     @Override
     public void uninstallApk() {
-        Apk apk = mApp.installedApk;
+        Apk apk = app.installedApk;
         if (apk == null) {
             // TODO ideally, app would be refreshed immediately after install, then this
             // workaround would be unnecessary
             try {
-                PackageInfo pi = getPackageManager().getPackageInfo(mApp.packageName, 0);
+                PackageInfo pi = getPackageManager().getPackageInfo(app.packageName, 0);
                 apk = ApkProvider.Helper.findApkFromAnyRepo(this, pi.packageName, pi.versionCode);
-                mApp.installedApk = apk;
+                app.installedApk = apk;
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
                 return; // not installed

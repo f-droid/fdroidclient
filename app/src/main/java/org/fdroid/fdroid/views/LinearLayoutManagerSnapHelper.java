@@ -9,8 +9,8 @@ import android.view.View;
 
 public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
 
-    private View mLastSavedTarget;
-    private int mLastSavedDistance;
+    private View lastSavedTarget;
+    private int lastSavedDistance;
 
     public interface LinearSnapHelperListener {
         /**
@@ -21,17 +21,17 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
         void onSnappedToView(View view, int position);
     }
 
-    private final LinearLayoutManager mLlm;
-    private final OrientationHelper mOrientationHelper;
-    private LinearSnapHelperListener mListener;
+    private final LinearLayoutManager layoutManager;
+    private final OrientationHelper orientationHelper;
+    private LinearSnapHelperListener listener;
 
-    public LinearLayoutManagerSnapHelper(LinearLayoutManager llm) {
-        this.mLlm = llm;
-        this.mOrientationHelper = OrientationHelper.createHorizontalHelper(mLlm);
+    public LinearLayoutManagerSnapHelper(LinearLayoutManager layoutManager) {
+        this.layoutManager = layoutManager;
+        this.orientationHelper = OrientationHelper.createHorizontalHelper(this.layoutManager);
     }
 
     public void setLinearSnapHelperListener(LinearSnapHelperListener listener) {
-        mListener = listener;
+        this.listener = listener;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
         View snappedView = super.findSnapView(layoutManager);
         if (snappedView != null && layoutManager.canScrollHorizontally()) {
             if (layoutManager instanceof LinearLayoutManager) {
-                mLastSavedTarget = null;
+                lastSavedTarget = null;
 
                 int distSnap = super.calculateDistanceToFinalSnap(layoutManager, snappedView)[0];
 
@@ -55,10 +55,10 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
                     }
                 }
 
-                int snapPositionFirst = mOrientationHelper.getDecoratedMeasurement(((LinearLayoutManager) layoutManager).findViewByPosition(firstChild)) / 2;
-                int snapPositionLast = mOrientationHelper.getTotalSpace() - mOrientationHelper.getDecoratedMeasurement(((LinearLayoutManager) layoutManager).findViewByPosition(lastChild)) / 2;
+                int snapPositionFirst = orientationHelper.getDecoratedMeasurement(((LinearLayoutManager) layoutManager).findViewByPosition(firstChild)) / 2;
+                int snapPositionLast = orientationHelper.getTotalSpace() - orientationHelper.getDecoratedMeasurement(((LinearLayoutManager) layoutManager).findViewByPosition(lastChild)) / 2;
 
-                int centerSnapPosition = mOrientationHelper.getTotalSpace() / 2;
+                int centerSnapPosition = orientationHelper.getTotalSpace() / 2;
 
                 if (idxSnap != -1) {
                     int currentSmallestDistance = Integer.MAX_VALUE;
@@ -73,7 +73,7 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
                                 currentSmallestDistance = dist;
                                 currentSmallestDistanceView = view;
                             }
-                        } else if (i > idxSnap && lastChild == (mLlm.getItemCount() - 1)) {
+                        } else if (i > idxSnap && lastChild == (this.layoutManager.getItemCount() - 1)) {
                             int snapPosition = snapPositionLast - (lastChild - i) * (snapPositionLast - centerSnapPosition) / (lastChild - idxSnap);
                             int viewPosition = view.getLeft() + view.getWidth() / 2;
                             int dist = snapPosition - viewPosition;
@@ -85,27 +85,27 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
                     }
                     if (Math.abs(distSnap) > Math.abs(currentSmallestDistance)) {
                         snappedView = currentSmallestDistanceView;
-                        mLastSavedTarget = currentSmallestDistanceView;
-                        mLastSavedDistance = -currentSmallestDistance;
+                        lastSavedTarget = currentSmallestDistanceView;
+                        lastSavedDistance = -currentSmallestDistance;
                     }
                 }
             }
         }
-        if (mListener != null) {
+        if (listener != null) {
             int snappedPosition = 0;
             if (snappedView != null) {
-                snappedPosition = mLlm.getPosition(snappedView);
+                snappedPosition = this.layoutManager.getPosition(snappedView);
             }
-            mListener.onSnappedToView(snappedView, snappedPosition);
+            listener.onSnappedToView(snappedView, snappedPosition);
         }
         return snappedView;
     }
 
     @Override
     public int[] calculateDistanceToFinalSnap(@NonNull RecyclerView.LayoutManager layoutManager, @NonNull View targetView) {
-        if (targetView == mLastSavedTarget) {
+        if (targetView == lastSavedTarget) {
             int[] out = new int[2];
-            out[0] = mLastSavedDistance;
+            out[0] = lastSavedDistance;
             out[1] = 0;
             return out;
         }

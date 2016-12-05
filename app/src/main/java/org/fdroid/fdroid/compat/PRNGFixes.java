@@ -202,7 +202,7 @@ public final class PRNGFixes {
          * each instance needs to seed itself if the client does not explicitly
          * seed it.
          */
-        private boolean mSeeded;
+        private boolean seeded;
 
         @Override
         protected void engineSetSeed(byte[] bytes) {
@@ -218,13 +218,13 @@ public final class PRNGFixes {
                 // Log and ignore.
                 Log.w(TAG, "Failed to mix seed into " + URANDOM_FILE);
             } finally {
-                mSeeded = true;
+                seeded = true;
             }
         }
 
         @Override
         protected void engineNextBytes(byte[] bytes) {
-            if (!mSeeded) {
+            if (!seeded) {
                 // Mix in the device- and invocation-specific seed.
                 engineSetSeed(generateSeed());
             }

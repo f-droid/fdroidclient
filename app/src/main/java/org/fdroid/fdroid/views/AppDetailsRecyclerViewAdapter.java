@@ -85,40 +85,40 @@ public class AppDetailsRecyclerViewAdapter
     private static final int VIEWTYPE_VERSIONS = 6;
     private static final int VIEWTYPE_VERSION = 7;
 
-    private final Context mContext;
+    private final Context context;
     @NonNull
-    private App mApp;
-    private final AppDetailsRecyclerViewAdapterCallbacks mCallbacks;
-    private RecyclerView mRecyclerView;
-    private ArrayList<Object> mItems;
-    private ArrayList<Apk> mVersions;
-    private boolean mShowVersions;
+    private App app;
+    private final AppDetailsRecyclerViewAdapterCallbacks callbacks;
+    private RecyclerView recyclerView;
+    private ArrayList<Object> items;
+    private ArrayList<Apk> versions;
+    private boolean showVersions;
 
-    private HeaderViewHolder mHeaderView;
+    private HeaderViewHolder headerView;
 
     public AppDetailsRecyclerViewAdapter(Context context, @NonNull App app, AppDetailsRecyclerViewAdapterCallbacks callbacks) {
-        mContext = context;
-        mCallbacks = callbacks;
-        mApp = app;
+        this.context = context;
+        this.callbacks = callbacks;
+        this.app = app;
         updateItems(app);
     }
 
     public void updateItems(@NonNull App app) {
-        mApp = app;
+        this.app = app;
 
         // Get versions
-        mVersions = new ArrayList<>();
-        final List<Apk> apks = ApkProvider.Helper.findByPackageName(mContext, mApp.packageName);
+        versions = new ArrayList<>();
+        final List<Apk> apks = ApkProvider.Helper.findByPackageName(context, this.app.packageName);
         for (final Apk apk : apks) {
             if (apk.compatible || Preferences.get().showIncompatibleVersions()) {
-                mVersions.add(apk);
+                versions.add(apk);
             }
         }
 
-        if (mItems == null) {
-            mItems = new ArrayList<>();
+        if (items == null) {
+            items = new ArrayList<>();
         } else {
-            mItems.clear();
+            items.clear();
         }
         addItem(VIEWTYPE_HEADER);
         addItem(VIEWTYPE_SCREENSHOTS);
@@ -132,10 +132,10 @@ public class AppDetailsRecyclerViewAdapter
     }
 
     private void setShowVersions(boolean showVersions) {
-        mShowVersions = showVersions;
-        mItems.removeAll(mVersions);
+        this.showVersions = showVersions;
+        items.removeAll(versions);
         if (showVersions) {
-            mItems.addAll(mItems.indexOf(VIEWTYPE_VERSIONS) + 1, mVersions);
+            items.addAll(items.indexOf(VIEWTYPE_VERSIONS) + 1, versions);
         }
         notifyDataSetChanged();
     }
@@ -148,28 +148,28 @@ public class AppDetailsRecyclerViewAdapter
         } else if (item == VIEWTYPE_PERMISSIONS && !shouldShowPermissions()) {
             return;
         }
-        mItems.add(item);
+        items.add(item);
     }
 
     private boolean shouldShowPermissions() {
         // Figure out if we should show permissions section
         Apk curApk = null;
-        for (int i = 0; i < mVersions.size(); i++) {
-            final Apk apk = mVersions.get(i);
-            if (apk.versionCode == mApp.suggestedVersionCode) {
+        for (int i = 0; i < versions.size(); i++) {
+            final Apk apk = versions.get(i);
+            if (apk.versionCode == app.suggestedVersionCode) {
                 curApk = apk;
                 break;
             }
         }
         final boolean curApkCompatible = curApk != null && curApk.compatible;
-        return mVersions.size() > 0 && (curApkCompatible || Preferences.get().showIncompatibleVersions());
+        return versions.size() > 0 && (curApkCompatible || Preferences.get().showIncompatibleVersions());
     }
 
     private boolean shouldShowDonate() {
-        return uriIsSetAndCanBeOpened(mApp.donateURL) ||
-                uriIsSetAndCanBeOpened(mApp.getBitcoinUri()) ||
-                uriIsSetAndCanBeOpened(mApp.getLitecoinUri()) ||
-                uriIsSetAndCanBeOpened(mApp.getFlattrUri());
+        return uriIsSetAndCanBeOpened(app.donateURL) ||
+                uriIsSetAndCanBeOpened(app.getBitcoinUri()) ||
+                uriIsSetAndCanBeOpened(app.getLitecoinUri()) ||
+                uriIsSetAndCanBeOpened(app.getFlattrUri());
     }
 
     public void clearProgress() {
@@ -177,8 +177,8 @@ public class AppDetailsRecyclerViewAdapter
     }
 
     public void setProgress(int bytesDownloaded, int totalBytes, int resIdString) {
-        if (mHeaderView != null) {
-            mHeaderView.setProgress(bytesDownloaded, totalBytes, resIdString);
+        if (headerView != null) {
+            headerView.setProgress(bytesDownloaded, totalBytes, resIdString);
         }
     }
 
@@ -218,7 +218,7 @@ public class AppDetailsRecyclerViewAdapter
         int viewType = getItemViewType(position);
         if (viewType == VIEWTYPE_HEADER) {
             HeaderViewHolder header = (HeaderViewHolder) holder;
-            mHeaderView = header;
+            headerView = header;
             header.bindModel();
         } else if (viewType == VIEWTYPE_SCREENSHOTS) {
             ((ScreenShotsViewHolder) holder).bindModel();
@@ -233,7 +233,7 @@ public class AppDetailsRecyclerViewAdapter
         } else if (viewType == VIEWTYPE_VERSIONS) {
             ((VersionsViewHolder) holder).bindModel();
         } else if (viewType == VIEWTYPE_VERSION) {
-            final Apk apk = (Apk) mItems.get(position);
+            final Apk apk = (Apk) items.get(position);
             ((VersionViewHolder) holder).bindModel(apk);
         }
     }
@@ -241,22 +241,22 @@ public class AppDetailsRecyclerViewAdapter
     @Override
     public void onViewRecycled(RecyclerView.ViewHolder holder) {
         if (holder instanceof HeaderViewHolder) {
-            mHeaderView = null;
+            headerView = null;
         }
         super.onViewRecycled(holder);
     }
 
     @Override
     public int getItemCount() {
-        return mItems.size();
+        return items.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (mItems.get(position) instanceof Apk) {
+        if (items.get(position) instanceof Apk) {
             return VIEWTYPE_VERSION;
         }
-        return (Integer) mItems.get(position);
+        return (Integer) items.get(position);
     }
 
     public class HeaderViewHolder extends RecyclerView.ViewHolder {
@@ -308,12 +308,12 @@ public class AppDetailsRecyclerViewAdapter
                 @Override
                 public void onClick(View v) {
                     // Remember current scroll position so that we can restore it
-                    LinearLayoutManager lm = (LinearLayoutManager) mRecyclerView.getLayoutManager();
+                    LinearLayoutManager lm = (LinearLayoutManager) recyclerView.getLayoutManager();
                     int pos = lm.findFirstVisibleItemPosition();
                     int posOffset = 0;
                     if (pos != RecyclerView.NO_POSITION) {
-                        View firstChild = mRecyclerView.getChildAt(0);
-                        posOffset = (firstChild == null) ? 0 : (firstChild.getTop()); // - mRecyclerView.getPaddingTop());
+                        View firstChild = recyclerView.getChildAt(0);
+                        posOffset = (firstChild == null) ? 0 : (firstChild.getTop()); // - recyclerView.getPaddingTop());
                     }
                     if (TextViewCompat.getMaxLines(descriptionView) != MAX_LINES) {
                         descriptionView.setMaxLines(MAX_LINES);
@@ -367,16 +367,16 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         public void bindModel() {
-            ImageLoader.getInstance().displayImage(mApp.iconUrlLarge, iconView, displayImageOptions);
-            titleView.setText(mApp.name);
-            if (!TextUtils.isEmpty(mApp.author)) {
-                authorView.setText(mContext.getString(R.string.by_author) + " " + mApp.author);
+            ImageLoader.getInstance().displayImage(app.iconUrlLarge, iconView, displayImageOptions);
+            titleView.setText(app.name);
+            if (!TextUtils.isEmpty(app.author)) {
+                authorView.setText(context.getString(R.string.by_author) + " " + app.author);
                 authorView.setVisibility(View.VISIBLE);
             } else {
                 authorView.setVisibility(View.GONE);
             }
-            summaryView.setText(mApp.summary);
-            final Spanned desc = Html.fromHtml(mApp.description, null, new Utils.HtmlTagHandler());
+            summaryView.setText(app.summary);
+            final Spanned desc = Html.fromHtml(app.description, null, new Utils.HtmlTagHandler());
             descriptionView.setMovementMethod(LinkMovementMethod.getInstance());
             descriptionView.setText(trimTrailingNewlines(desc));
             if (descriptionView.getText() instanceof Spannable) {
@@ -403,36 +403,36 @@ public class AppDetailsRecyclerViewAdapter
                 }
             });
             buttonSecondaryView.setText(R.string.menu_uninstall);
-            buttonSecondaryView.setVisibility(mApp.isInstalled() ? View.VISIBLE : View.INVISIBLE);
-            buttonSecondaryView.setOnClickListener(mOnUnInstallClickListener);
+            buttonSecondaryView.setVisibility(app.isInstalled() ? View.VISIBLE : View.INVISIBLE);
+            buttonSecondaryView.setOnClickListener(onUnInstallClickListener);
             buttonPrimaryView.setText(R.string.menu_install);
-            buttonPrimaryView.setVisibility(mVersions.size() > 0 ? View.VISIBLE : View.GONE);
-            if (mCallbacks.isAppDownloading()) {
+            buttonPrimaryView.setVisibility(versions.size() > 0 ? View.VISIBLE : View.GONE);
+            if (callbacks.isAppDownloading()) {
                 buttonPrimaryView.setText(R.string.downloading);
                 buttonPrimaryView.setEnabled(false);
-            } else if (!mApp.isInstalled() && mApp.suggestedVersionCode > 0 && mVersions.size() > 0) {
+            } else if (!app.isInstalled() && app.suggestedVersionCode > 0 && versions.size() > 0) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
-                mCallbacks.disableAndroidBeam();
+                callbacks.disableAndroidBeam();
                 // Set Install button and hide second button
                 buttonPrimaryView.setText(R.string.menu_install);
-                buttonPrimaryView.setOnClickListener(mOnInstallClickListener);
+                buttonPrimaryView.setOnClickListener(onInstallClickListener);
                 buttonPrimaryView.setEnabled(true);
-            } else if (mApp.isInstalled()) {
-                mCallbacks.enableAndroidBeam();
-                if (mApp.canAndWantToUpdate(mContext)) {
+            } else if (app.isInstalled()) {
+                callbacks.enableAndroidBeam();
+                if (app.canAndWantToUpdate(context)) {
                     buttonPrimaryView.setText(R.string.menu_upgrade);
-                    buttonPrimaryView.setOnClickListener(mOnUpgradeClickListener);
+                    buttonPrimaryView.setOnClickListener(onUpgradeClickListener);
                 } else {
-                    if (mContext.getPackageManager().getLaunchIntentForPackage(mApp.packageName) != null) {
+                    if (context.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
                         buttonPrimaryView.setText(R.string.menu_launch);
-                        buttonPrimaryView.setOnClickListener(mOnLaunchClickListener);
+                        buttonPrimaryView.setOnClickListener(onLaunchClickListener);
                     } else {
                         buttonPrimaryView.setVisibility(View.GONE);
                     }
                 }
                 buttonPrimaryView.setEnabled(true);
             }
-            if (mCallbacks.isAppDownloading()) {
+            if (callbacks.isAppDownloading()) {
                 buttonLayout.setVisibility(View.GONE);
                 progressLayout.setVisibility(View.VISIBLE);
             } else {
@@ -442,7 +442,7 @@ public class AppDetailsRecyclerViewAdapter
             progressCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mCallbacks.installCancel();
+                    callbacks.installCancel();
                 }
             });
 
@@ -452,12 +452,12 @@ public class AppDetailsRecyclerViewAdapter
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
-        mRecyclerView = recyclerView;
+        this.recyclerView = recyclerView;
     }
 
     @Override
     public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
-        mRecyclerView = null;
+        this.recyclerView = null;
         super.onDetachedFromRecyclerView(recyclerView);
     }
 
@@ -471,9 +471,9 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         public void bindModel() {
-            LinearLayoutManager lm = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
+            LinearLayoutManager lm = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             recyclerView.setLayoutManager(lm);
-            ScreenShotsRecyclerViewAdapter adapter = new ScreenShotsRecyclerViewAdapter(itemView.getContext(), mApp);
+            ScreenShotsRecyclerViewAdapter adapter = new ScreenShotsRecyclerViewAdapter(itemView.getContext(), app);
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setNestedScrollingEnabled(false);
@@ -513,23 +513,23 @@ public class AppDetailsRecyclerViewAdapter
             contentView.removeAllViews();
 
             // Donate button
-            if (uriIsSetAndCanBeOpened(mApp.donateURL)) {
-                addLinkItemView(contentView, R.string.menu_donate, R.drawable.ic_donate, mApp.donateURL);
+            if (uriIsSetAndCanBeOpened(app.donateURL)) {
+                addLinkItemView(contentView, R.string.menu_donate, R.drawable.ic_donate, app.donateURL);
             }
 
             // Bitcoin
-            if (uriIsSetAndCanBeOpened(mApp.getBitcoinUri())) {
-                addLinkItemView(contentView, R.string.menu_bitcoin, R.drawable.ic_bitcoin, mApp.getBitcoinUri());
+            if (uriIsSetAndCanBeOpened(app.getBitcoinUri())) {
+                addLinkItemView(contentView, R.string.menu_bitcoin, R.drawable.ic_bitcoin, app.getBitcoinUri());
             }
 
             // Litecoin
-            if (uriIsSetAndCanBeOpened(mApp.getLitecoinUri())) {
-                addLinkItemView(contentView, R.string.menu_litecoin, R.drawable.ic_litecoin, mApp.getLitecoinUri());
+            if (uriIsSetAndCanBeOpened(app.getLitecoinUri())) {
+                addLinkItemView(contentView, R.string.menu_litecoin, R.drawable.ic_litecoin, app.getLitecoinUri());
             }
 
             // Flattr
-            if (uriIsSetAndCanBeOpened(mApp.getFlattrUri())) {
-                addLinkItemView(contentView, R.string.menu_flattr, R.drawable.ic_flattr, mApp.getFlattrUri());
+            if (uriIsSetAndCanBeOpened(app.getFlattrUri())) {
+                addLinkItemView(contentView, R.string.menu_flattr, R.drawable.ic_flattr, app.getFlattrUri());
             }
         }
     }
@@ -555,11 +555,11 @@ public class AppDetailsRecyclerViewAdapter
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    setShowVersions(!mShowVersions);
+                    setShowVersions(!showVersions);
                 }
             });
             headerView.setText(R.string.versions);
-            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_access_time_24dp_grey600, 0, mShowVersions ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_access_time_24dp_grey600, 0, showVersions ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
         }
     }
 
@@ -581,8 +581,8 @@ public class AppDetailsRecyclerViewAdapter
             headerView.setText(R.string.permissions);
             TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_lock_24dp_grey600, 0, R.drawable.ic_expand_more_grey600, 0);
             contentView.removeAllViews();
-            AppDiff appDiff = new AppDiff(mContext.getPackageManager(), mVersions.get(0));
-            AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.pkgInfo);
+            AppDiff appDiff = new AppDiff(context.getPackageManager(), versions.get(0));
+            AppSecurityPermissions perms = new AppSecurityPermissions(context, appDiff.pkgInfo);
             contentView.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
         }
     }
@@ -607,28 +607,28 @@ public class AppDetailsRecyclerViewAdapter
             contentView.removeAllViews();
 
             // Source button
-            if (uriIsSetAndCanBeOpened(mApp.sourceURL)) {
-                addLinkItemView(contentView, R.string.menu_source, R.drawable.ic_source_code, mApp.sourceURL);
+            if (uriIsSetAndCanBeOpened(app.sourceURL)) {
+                addLinkItemView(contentView, R.string.menu_source, R.drawable.ic_source_code, app.sourceURL);
             }
 
             // Issues button
-            if (uriIsSetAndCanBeOpened(mApp.trackerURL)) {
-                addLinkItemView(contentView, R.string.menu_issues, R.drawable.ic_issues, mApp.trackerURL);
+            if (uriIsSetAndCanBeOpened(app.trackerURL)) {
+                addLinkItemView(contentView, R.string.menu_issues, R.drawable.ic_issues, app.trackerURL);
             }
 
             // Changelog button
-            if (uriIsSetAndCanBeOpened(mApp.changelogURL)) {
-                addLinkItemView(contentView, R.string.menu_changelog, R.drawable.ic_changelog, mApp.changelogURL);
+            if (uriIsSetAndCanBeOpened(app.changelogURL)) {
+                addLinkItemView(contentView, R.string.menu_changelog, R.drawable.ic_changelog, app.changelogURL);
             }
 
             // Website button
-            if (uriIsSetAndCanBeOpened(mApp.webURL)) {
-                addLinkItemView(contentView, R.string.menu_website, R.drawable.ic_website, mApp.webURL);
+            if (uriIsSetAndCanBeOpened(app.webURL)) {
+                addLinkItemView(contentView, R.string.menu_website, R.drawable.ic_website, app.webURL);
             }
 
             // Email button
-            final String subject = Uri.encode(mContext.getString(R.string.app_details_subject, mApp.name));
-            String emailUrl = mApp.email == null ? null : ("mailto:" + mApp.email + "?subject=" + subject);
+            final String subject = Uri.encode(context.getString(R.string.app_details_subject, app.name));
+            String emailUrl = app.email == null ? null : ("mailto:" + app.email + "?subject=" + subject);
             if (uriIsSetAndCanBeOpened(emailUrl)) {
                 addLinkItemView(contentView, R.string.menu_email, R.drawable.ic_email, emailUrl);
             }
@@ -658,22 +658,22 @@ public class AppDetailsRecyclerViewAdapter
             added = (TextView) view.findViewById(R.id.added);
             nativecode = (TextView) view.findViewById(R.id.nativecode);
 
-            int margin = mContext.getResources().getDimensionPixelSize(R.dimen.layout_horizontal_margin);
-            int padding = mContext.getResources().getDimensionPixelSize(R.dimen.details_activity_padding);
+            int margin = context.getResources().getDimensionPixelSize(R.dimen.layout_horizontal_margin);
+            int padding = context.getResources().getDimensionPixelSize(R.dimen.details_activity_padding);
             ViewCompat.setPaddingRelative(view, margin + padding + ViewCompat.getPaddingStart(view), view.getPaddingTop(), ViewCompat.getPaddingEnd(view), view.getPaddingBottom());
         }
 
         public void bindModel(final Apk apk) {
-            java.text.DateFormat df = DateFormat.getDateFormat(mContext);
+            java.text.DateFormat df = DateFormat.getDateFormat(context);
 
-            version.setText(mContext.getString(R.string.version)
+            version.setText(context.getString(R.string.version)
                     + " " + apk.versionName
-                    + (apk.versionCode == mApp.suggestedVersionCode ? "  ☆" : ""));
+                    + (apk.versionCode == app.suggestedVersionCode ? "  ☆" : ""));
 
             status.setText(getInstalledStatus(apk));
 
-            repository.setText(mContext.getString(R.string.repo_provider,
-                    RepoProvider.Helper.findById(mContext, apk.repo).getName()));
+            repository.setText(context.getString(R.string.repo_provider,
+                    RepoProvider.Helper.findById(context, apk.repo).getName()));
 
             if (apk.size > 0) {
                 size.setText(Utils.getFriendlySize(apk.size));
@@ -685,16 +685,16 @@ public class AppDetailsRecyclerViewAdapter
             if (!Preferences.get().expertMode()) {
                 api.setVisibility(View.GONE);
             } else if (apk.minSdkVersion > 0 && apk.maxSdkVersion < Apk.SDK_VERSION_MAX_VALUE) {
-                api.setText(mContext.getString(R.string.minsdk_up_to_maxsdk,
+                api.setText(context.getString(R.string.minsdk_up_to_maxsdk,
                         Utils.getAndroidVersionName(apk.minSdkVersion),
                         Utils.getAndroidVersionName(apk.maxSdkVersion)));
                 api.setVisibility(View.VISIBLE);
             } else if (apk.minSdkVersion > 0) {
-                api.setText(mContext.getString(R.string.minsdk_or_later,
+                api.setText(context.getString(R.string.minsdk_or_later,
                         Utils.getAndroidVersionName(apk.minSdkVersion)));
                 api.setVisibility(View.VISIBLE);
             } else if (apk.maxSdkVersion > 0) {
-                api.setText(mContext.getString(R.string.up_to_maxsdk,
+                api.setText(context.getString(R.string.up_to_maxsdk,
                         Utils.getAndroidVersionName(apk.maxSdkVersion)));
                 api.setVisibility(View.VISIBLE);
             }
@@ -706,7 +706,7 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             if (apk.added != null) {
-                added.setText(mContext.getString(R.string.added_on,
+                added.setText(context.getString(R.string.added_on,
                         df.format(apk.added)));
                 added.setVisibility(View.VISIBLE);
             } else {
@@ -722,7 +722,7 @@ public class AppDetailsRecyclerViewAdapter
 
             if (apk.incompatibleReasons != null) {
                 incompatibleReasons.setText(
-                        mContext.getResources().getString(
+                        context.getResources().getString(
                                 R.string.requires_features,
                                 TextUtils.join(", ", apk.incompatibleReasons)));
                 incompatibleReasons.setVisibility(View.VISIBLE);
@@ -748,7 +748,7 @@ public class AppDetailsRecyclerViewAdapter
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mCallbacks.installApk(apk);
+                    callbacks.installApk(apk);
                 }
             });
         }
@@ -769,60 +769,60 @@ public class AppDetailsRecyclerViewAdapter
 
     private String getInstalledStatus(final Apk apk) {
         // Definitely not installed.
-        if (apk.versionCode != mApp.installedVersionCode) {
-            return mContext.getString(R.string.app_not_installed);
+        if (apk.versionCode != app.installedVersionCode) {
+            return context.getString(R.string.app_not_installed);
         }
         // Definitely installed this version.
-        if (apk.sig != null && apk.sig.equals(mApp.installedSig)) {
-            return mContext.getString(R.string.app_installed);
+        if (apk.sig != null && apk.sig.equals(app.installedSig)) {
+            return context.getString(R.string.app_installed);
         }
         // Installed the same version, but from someplace else.
         final String installerPkgName;
         try {
-            installerPkgName = mContext.getPackageManager().getInstallerPackageName(mApp.packageName);
+            installerPkgName = context.getPackageManager().getInstallerPackageName(app.packageName);
         } catch (IllegalArgumentException e) {
-            Log.w("AppDetailsAdapter", "Application " + mApp.packageName + " is not installed anymore");
-            return mContext.getString(R.string.app_not_installed);
+            Log.w("AppDetailsAdapter", "Application " + app.packageName + " is not installed anymore");
+            return context.getString(R.string.app_not_installed);
         }
         if (TextUtils.isEmpty(installerPkgName)) {
-            return mContext.getString(R.string.app_inst_unknown_source);
+            return context.getString(R.string.app_inst_unknown_source);
         }
         final String installerLabel = InstalledAppProvider
-                .getApplicationLabel(mContext, installerPkgName);
-        return mContext.getString(R.string.app_inst_known_source, installerLabel);
+                .getApplicationLabel(context, installerPkgName);
+        return context.getString(R.string.app_inst_known_source, installerLabel);
     }
 
     private void onLinkClicked(String url) {
         if (!TextUtils.isEmpty(url)) {
-            mCallbacks.openUrl(url);
+            callbacks.openUrl(url);
         }
     }
 
-    private final View.OnClickListener mOnInstallClickListener = new View.OnClickListener() {
+    private final View.OnClickListener onInstallClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            mCallbacks.installApk();
+            callbacks.installApk();
         }
     };
 
-    private final View.OnClickListener mOnUnInstallClickListener = new View.OnClickListener() {
+    private final View.OnClickListener onUnInstallClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            mCallbacks.uninstallApk();
+            callbacks.uninstallApk();
         }
     };
 
-    private final View.OnClickListener mOnUpgradeClickListener = new View.OnClickListener() {
+    private final View.OnClickListener onUpgradeClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            mCallbacks.upgradeApk();
+            callbacks.upgradeApk();
         }
     };
 
-    private final View.OnClickListener mOnLaunchClickListener = new View.OnClickListener() {
+    private final View.OnClickListener onLaunchClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            mCallbacks.launchApk();
+            callbacks.launchApk();
         }
     };
 
@@ -831,7 +831,7 @@ public class AppDetailsRecyclerViewAdapter
             return false;
         }
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
-        return intent.resolveActivity(mContext.getPackageManager()) != null;
+        return intent.resolveActivity(context.getPackageManager()) != null;
     }
 
     /**

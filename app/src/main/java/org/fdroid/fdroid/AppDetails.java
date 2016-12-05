@@ -158,7 +158,7 @@ public class AppDetails extends AppCompatActivity {
 
     class ApkListAdapter extends ArrayAdapter<Apk> {
 
-        private final LayoutInflater mInflater = (LayoutInflater) context.getSystemService(
+        private final LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
         ApkListAdapter(Context context, App app) {
@@ -204,7 +204,7 @@ public class AppDetails extends AppCompatActivity {
             ViewHolder holder;
 
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.apklistitem, parent, false);
+                convertView = inflater.inflate(R.layout.apklistitem, parent, false);
 
                 holder = new ViewHolder();
                 holder.version = (TextView) convertView.findViewById(R.id.version);
@@ -1157,7 +1157,7 @@ public class AppDetails extends AppCompatActivity {
             }
         };
 
-        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        private final View.OnClickListener onClickListener = new View.OnClickListener() {
             public void onClick(View v) {
                 String url = null;
                 App app = appDetails.getApp();
@@ -1268,7 +1268,7 @@ public class AppDetails extends AppCompatActivity {
             // Website button
             View tv = view.findViewById(R.id.website);
             if (!TextUtils.isEmpty(app.webURL)) {
-                tv.setOnClickListener(mOnClickListener);
+                tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
             }
@@ -1276,7 +1276,7 @@ public class AppDetails extends AppCompatActivity {
             // Email button
             tv = view.findViewById(R.id.email);
             if (!TextUtils.isEmpty(app.email)) {
-                tv.setOnClickListener(mOnClickListener);
+                tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
             }
@@ -1284,7 +1284,7 @@ public class AppDetails extends AppCompatActivity {
             // Source button
             tv = view.findViewById(R.id.source);
             if (!TextUtils.isEmpty(app.sourceURL)) {
-                tv.setOnClickListener(mOnClickListener);
+                tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
             }
@@ -1292,7 +1292,7 @@ public class AppDetails extends AppCompatActivity {
             // Issues button
             tv = view.findViewById(R.id.issues);
             if (!TextUtils.isEmpty(app.trackerURL)) {
-                tv.setOnClickListener(mOnClickListener);
+                tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
             }
@@ -1300,7 +1300,7 @@ public class AppDetails extends AppCompatActivity {
             // Changelog button
             tv = view.findViewById(R.id.changelog);
             if (!TextUtils.isEmpty(app.changelogURL)) {
-                tv.setOnClickListener(mOnClickListener);
+                tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
             }
@@ -1308,7 +1308,7 @@ public class AppDetails extends AppCompatActivity {
             // Donate button
             tv = view.findViewById(R.id.donate);
             if (!TextUtils.isEmpty(app.donateURL)) {
-                tv.setOnClickListener(mOnClickListener);
+                tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
             }
@@ -1316,7 +1316,7 @@ public class AppDetails extends AppCompatActivity {
             // Bitcoin
             tv = view.findViewById(R.id.bitcoin);
             if (!TextUtils.isEmpty(app.bitcoinAddr)) {
-                tv.setOnClickListener(mOnClickListener);
+                tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
             }
@@ -1324,7 +1324,7 @@ public class AppDetails extends AppCompatActivity {
             // Litecoin
             tv = view.findViewById(R.id.litecoin);
             if (!TextUtils.isEmpty(app.litecoinAddr)) {
-                tv.setOnClickListener(mOnClickListener);
+                tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
             }
@@ -1332,7 +1332,7 @@ public class AppDetails extends AppCompatActivity {
             // Flattr
             tv = view.findViewById(R.id.flattr);
             if (!TextUtils.isEmpty(app.flattrID)) {
-                tv.setOnClickListener(mOnClickListener);
+                tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
             }
@@ -1620,7 +1620,7 @@ public class AppDetails extends AppCompatActivity {
                 NfcHelper.disableAndroidBeam(appDetails);
                 // Set Install button and hide second button
                 btMain.setText(R.string.menu_install);
-                btMain.setOnClickListener(mOnClickListener);
+                btMain.setOnClickListener(onClickListener);
                 btMain.setEnabled(true);
             } else if (app.isInstalled()) {
                 // If App is installed
@@ -1638,7 +1638,7 @@ public class AppDetails extends AppCompatActivity {
                         btMain.setText(R.string.menu_uninstall);
                     }
                 }
-                btMain.setOnClickListener(mOnClickListener);
+                btMain.setOnClickListener(onClickListener);
                 btMain.setEnabled(true);
             }
             TextView author = (TextView) view.findViewById(R.id.author);
@@ -1656,7 +1656,7 @@ public class AppDetails extends AppCompatActivity {
 
         }
 
-        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        private final View.OnClickListener onClickListener = new View.OnClickListener() {
             public void onClick(View v) {
                 App app = appDetails.getApp();
                 AppDetails activity = (AppDetails) getActivity();
