@@ -7,6 +7,8 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import static android.support.v7.widget.RecyclerView.NO_POSITION;
+
 public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
 
     private View lastSavedTarget;
@@ -39,55 +41,76 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
         View snappedView = super.findSnapView(layoutManager);
         if (snappedView != null && layoutManager.canScrollHorizontally()) {
             if (layoutManager instanceof LinearLayoutManager) {
+
+                // The super class implementation will always try to snap the center of a view to the
+                // center of the screen. This is desired behavior, but will result in that the first
+                // and last item will never be fully visible (unless in the special case when they all
+                // fit on the screen)
+                //
+                // We handle this by checking if the first (and/or the last) item is visible, and compare
+                // the distance it would take to "snap" this item to the screen edge to the distance
+                // needed to snap the "snappedView" to the center of the screen. We always go for the
+                // smallest distance, e.g. the closest snap position.
+                //
+                // To further complicate this, we might have intermediate views in the range 1..idxSnap
+                // (and correspondingly idxsnap+1..idxLast-1) that will never be "snapped to". We
+                // interpolate the "snap position" for these views (between center screen and screen edge)
+                // and then calculate the snap distance for them, again selecting the smallest of them all.
                 lastSavedTarget = null;
 
-                int distSnap = super.calculateDistanceToFinalSnap(layoutManager, snappedView)[0];
+                int centerSnapPosition = orientationHelper.getTotalSpace() / 2;
 
                 int firstChild = ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
                 int lastChild = ((LinearLayoutManager) layoutManager).findLastVisibleItemPosition();
 
-                int idxSnap = -1;
-                for (int i = firstChild; i <= lastChild; i++) {
-                    View view = ((LinearLayoutManager) layoutManager).findViewByPosition(i);
-                    if (view == snappedView) {
-                        idxSnap = i;
-                        break;
-                    }
-                }
+                int currentSmallestDistance = Integer.MAX_VALUE;
+                View currentSmallestDistanceView = null;
 
-                int snapPositionFirst = orientationHelper.getDecoratedMeasurement(((LinearLayoutManager) layoutManager).findViewByPosition(firstChild)) / 2;
-                int snapPositionLast = orientationHelper.getTotalSpace() - orientationHelper.getDecoratedMeasurement(((LinearLayoutManager) layoutManager).findViewByPosition(lastChild)) / 2;
+                int snappedViewIndex = ((LinearLayoutManager)layoutManager).getPosition(snappedView);
+                if (snappedViewIndex != NO_POSITION) {
 
-                int centerSnapPosition = orientationHelper.getTotalSpace() / 2;
+                    int snapPositionFirst = orientationHelper.getDecoratedMeasurement(((LinearLayoutManager) layoutManager).findViewByPosition(firstChild)) / 2;
+                    int snapPositionLast = orientationHelper.getTotalSpace() - orientationHelper.getDecoratedMeasurement(((LinearLayoutManager) layoutManager).findViewByPosition(lastChild)) / 2;
 
-                if (idxSnap != -1) {
-                    int currentSmallestDistance = Integer.MAX_VALUE;
-                    View currentSmallestDistanceView = null;
+                    // If first item not on screen, ignore views 0..snappedViewIndex-1
+                    if (firstChild != 0)
+                        firstChild = snappedViewIndex;
+
+                    // If last item not on screen, ignore views snappedViewIndex+1..N
+                    if (lastChild != this.layoutManager.getItemCount() - 1)
+                        lastChild = snappedViewIndex;
+
                     for (int i = firstChild; i <= lastChild; i++) {
                         View view = ((LinearLayoutManager) layoutManager).findViewByPosition(i);
-                        if (i < idxSnap && firstChild == 0) {
-                            int snapPosition = snapPositionFirst + (i - firstChild) * (centerSnapPosition - snapPositionFirst) / (idxSnap - firstChild);
-                            int viewPosition = view.getLeft() + view.getWidth() / 2;
-                            int dist = snapPosition - viewPosition;
-                            if (Math.abs(dist) < Math.abs(currentSmallestDistance) || (Math.abs(dist) == Math.abs(currentSmallestDistance) && distSnap > 0)) {
-                                currentSmallestDistance = dist;
-                                currentSmallestDistanceView = view;
-                            }
-                        } else if (i > idxSnap && lastChild == (this.layoutManager.getItemCount() - 1)) {
-                            int snapPosition = snapPositionLast - (lastChild - i) * (snapPositionLast - centerSnapPosition) / (lastChild - idxSnap);
-                            int viewPosition = view.getLeft() + view.getWidth() / 2;
-                            int dist = snapPosition - viewPosition;
-                            if (Math.abs(dist) < Math.abs(currentSmallestDistance) || (Math.abs(dist) == Math.abs(currentSmallestDistance) && distSnap < 0)) {
-                                currentSmallestDistance = dist;
-                                currentSmallestDistanceView = view;
-                            }
+
+                        // Start by interpolating a snap position for (the center of) this view.
+                        //
+                        int snapPosition;
+                        if (i == snappedViewIndex) {
+                            snapPosition = centerSnapPosition;
+                        } else if (i > snappedViewIndex) {
+                            snapPosition = snapPositionLast - (lastChild - i) * (snapPositionLast - centerSnapPosition) / (lastChild - snappedViewIndex);
+                        } else {
+                            snapPosition = snapPositionFirst + (i - firstChild) * (centerSnapPosition - snapPositionFirst) / (snappedViewIndex - firstChild);
+                        }
+
+                        // Get current position of view (center)
+                        //
+                        int viewPosition = view.getLeft() + view.getWidth() / 2;
+
+                        // Calculate distance and compare to current best candidate
+                        //
+                        int dist = snapPosition - viewPosition;
+                        if (Math.abs(dist) < Math.abs(currentSmallestDistance) || (Math.abs(dist) == Math.abs(currentSmallestDistance))) {
+                            currentSmallestDistance = dist;
+                            currentSmallestDistanceView = view;
                         }
                     }
-                    if (Math.abs(distSnap) > Math.abs(currentSmallestDistance)) {
-                        snappedView = currentSmallestDistanceView;
-                        lastSavedTarget = currentSmallestDistanceView;
-                        lastSavedDistance = -currentSmallestDistance;
-                    }
+
+                    // Update with best snap candidate
+                    snappedView = currentSmallestDistanceView;
+                    lastSavedTarget = currentSmallestDistanceView;
+                    lastSavedDistance = -currentSmallestDistance;
                 }
             }
         }
@@ -104,6 +127,8 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
     @Override
     public int[] calculateDistanceToFinalSnap(@NonNull RecyclerView.LayoutManager layoutManager, @NonNull View targetView) {
         if (targetView == lastSavedTarget) {
+            // No need to recalc, we already did this when finding the snap candidate
+            //
             int[] out = new int[2];
             out[0] = lastSavedDistance;
             out[1] = 0;
