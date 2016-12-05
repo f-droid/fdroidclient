@@ -185,30 +185,31 @@ public class AppDetailsRecyclerViewAdapter
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        if (viewType == VIEWTYPE_HEADER) {
-            View view = inflater.inflate(R.layout.app_details2_header, parent, false);
-            return new HeaderViewHolder(view);
-        } else if (viewType == VIEWTYPE_SCREENSHOTS) {
-            View view = inflater.inflate(R.layout.app_details2_screenshots, parent, false);
-            return new ScreenShotsViewHolder(view);
-        } else if (viewType == VIEWTYPE_WHATS_NEW) {
-            View view = inflater.inflate(R.layout.app_details2_whatsnew, parent, false);
-            return new WhatsNewViewHolder(view);
-        } else if (viewType == VIEWTYPE_DONATE) {
-            View view = inflater.inflate(R.layout.app_details2_donate, parent, false);
-            return new DonateViewHolder(view);
-        } else if (viewType == VIEWTYPE_LINKS) {
-            View view = inflater.inflate(R.layout.app_details2_links, parent, false);
-            return new LinksViewHolder(view);
-        } else if (viewType == VIEWTYPE_PERMISSIONS) {
-            View view = inflater.inflate(R.layout.app_details2_links, parent, false);
-            return new PermissionsViewHolder(view);
-        } else if (viewType == VIEWTYPE_VERSIONS) {
-            View view = inflater.inflate(R.layout.app_details2_links, parent, false);
-            return new VersionsViewHolder(view);
-        } else if (viewType == VIEWTYPE_VERSION) {
-            View view = inflater.inflate(R.layout.apklistitem, parent, false);
-            return new VersionViewHolder(view);
+        switch (viewType) {
+            case VIEWTYPE_HEADER:
+                View header = inflater.inflate(R.layout.app_details2_header, parent, false);
+                return new HeaderViewHolder(header);
+            case VIEWTYPE_SCREENSHOTS:
+                View screenshots = inflater.inflate(R.layout.app_details2_screenshots, parent, false);
+                return new ScreenShotsViewHolder(screenshots);
+            case VIEWTYPE_WHATS_NEW:
+                View whatsNew = inflater.inflate(R.layout.app_details2_whatsnew, parent, false);
+                return new WhatsNewViewHolder(whatsNew);
+            case VIEWTYPE_DONATE:
+                View donate = inflater.inflate(R.layout.app_details2_donate, parent, false);
+                return new DonateViewHolder(donate);
+            case VIEWTYPE_LINKS:
+                View links = inflater.inflate(R.layout.app_details2_links, parent, false);
+                return new LinksViewHolder(links);
+            case VIEWTYPE_PERMISSIONS:
+                View permissions = inflater.inflate(R.layout.app_details2_links, parent, false);
+                return new PermissionsViewHolder(permissions);
+            case VIEWTYPE_VERSIONS:
+                View versions = inflater.inflate(R.layout.app_details2_links, parent, false);
+                return new VersionsViewHolder(versions);
+            case VIEWTYPE_VERSION:
+                View version = inflater.inflate(R.layout.apklistitem, parent, false);
+                return new VersionViewHolder(version);
         }
         return null;
     }
@@ -216,25 +217,34 @@ public class AppDetailsRecyclerViewAdapter
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         int viewType = getItemViewType(position);
-        if (viewType == VIEWTYPE_HEADER) {
-            HeaderViewHolder header = (HeaderViewHolder) holder;
-            headerView = header;
-            header.bindModel();
-        } else if (viewType == VIEWTYPE_SCREENSHOTS) {
-            ((ScreenShotsViewHolder) holder).bindModel();
-        } else if (viewType == VIEWTYPE_WHATS_NEW) {
-            ((WhatsNewViewHolder) holder).bindModel();
-        } else if (viewType == VIEWTYPE_DONATE) {
-            ((DonateViewHolder) holder).bindModel();
-        } else if (viewType == VIEWTYPE_LINKS) {
-            ((LinksViewHolder) holder).bindModel();
-        } else if (viewType == VIEWTYPE_PERMISSIONS) {
-            ((PermissionsViewHolder) holder).bindModel();
-        } else if (viewType == VIEWTYPE_VERSIONS) {
-            ((VersionsViewHolder) holder).bindModel();
-        } else if (viewType == VIEWTYPE_VERSION) {
-            final Apk apk = (Apk) items.get(position);
-            ((VersionViewHolder) holder).bindModel(apk);
+        switch (viewType) {
+            case VIEWTYPE_HEADER:
+                HeaderViewHolder header = (HeaderViewHolder) holder;
+                headerView = header;
+                header.bindModel();
+                break;
+            case VIEWTYPE_SCREENSHOTS:
+                ((ScreenShotsViewHolder) holder).bindModel();
+                break;
+            case VIEWTYPE_WHATS_NEW:
+                ((WhatsNewViewHolder) holder).bindModel();
+                break;
+            case VIEWTYPE_DONATE:
+                ((DonateViewHolder) holder).bindModel();
+                break;
+            case VIEWTYPE_LINKS:
+                ((LinksViewHolder) holder).bindModel();
+                break;
+            case VIEWTYPE_PERMISSIONS:
+                ((PermissionsViewHolder) holder).bindModel();
+                break;
+            case VIEWTYPE_VERSIONS:
+                ((VersionsViewHolder) holder).bindModel();
+                break;
+            case VIEWTYPE_VERSION:
+                final Apk apk = (Apk) items.get(position);
+                ((VersionViewHolder) holder).bindModel(apk);
+                break;
         }
     }
 
