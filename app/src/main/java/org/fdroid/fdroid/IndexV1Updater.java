@@ -12,6 +12,7 @@ import android.util.Log;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.io.FileUtils;
@@ -131,6 +132,7 @@ public class IndexV1Updater extends RepoUpdater {
     public void processIndexV1(InputStream indexInputStream, JarEntry indexEntry, String cacheTag)
             throws IOException, UpdateException {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         JsonFactory f = mapper.getFactory();
         JsonParser parser = f.createParser(indexInputStream);
         HashMap<String, Object> repoMap = null;
