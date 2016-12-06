@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.fdroid.AppFilter;
@@ -32,10 +33,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashSet;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.regex.Matcher;
@@ -73,12 +80,25 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * At most other times, we don't particularly care which repo an {@link App} object came from.
      * It is pretty much transparent, because the metadata will be populated from the repo with
      * the highest priority. The UI doesn't care normally _which_ repo provided the metadata.
+     * This is required for getting the full URL to the various graphics and screenshots.
      */
     public long repoId;
     public String summary = "Unknown application";
     public String icon;
 
     public String description;
+
+    public String video;
+
+    public String featureGraphic;
+    public String promoGraphic;
+    public String tvBanner;
+
+    public String[] phoneScreenshots = new String[0];
+    public String[] sevenInchScreenshots = new String[0];
+    public String[] tenInchScreenshots = new String[0];
+    public String[] tvScreenshots = new String[0];
+    public String[] wearScreenshots = new String[0];
 
     public String license = "Unknown";
 
@@ -263,6 +283,30 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 case Cols.ICON_URL_LARGE:
                     iconUrlLarge = cursor.getString(i);
                     break;
+                case Cols.FEATURE_GRAPHIC:
+                    featureGraphic = cursor.getString(i);
+                    break;
+                case Cols.PROMO_GRAPHIC:
+                    promoGraphic = cursor.getString(i);
+                    break;
+                case Cols.TV_BANNER:
+                    tvBanner = cursor.getString(i);
+                    break;
+                case Cols.PHONE_SCREENSHOTS:
+                    phoneScreenshots = Utils.parseCommaSeparatedString(cursor.getString(i));
+                    break;
+                case Cols.SEVEN_INCH_SCREENSHOTS:
+                    sevenInchScreenshots = Utils.parseCommaSeparatedString(cursor.getString(i));
+                    break;
+                case Cols.TEN_INCH_SCREENSHOTS:
+                    tenInchScreenshots = Utils.parseCommaSeparatedString(cursor.getString(i));
+                    break;
+                case Cols.TV_SCREENSHOTS:
+                    tvScreenshots = Utils.parseCommaSeparatedString(cursor.getString(i));
+                    break;
+                case Cols.WEAR_SCREENSHOTS:
+                    wearScreenshots = Utils.parseCommaSeparatedString(cursor.getString(i));
+                    break;
                 case Cols.InstalledApp.VERSION_CODE:
                     installedVersionCode = cursor.getInt(i);
                     break;
@@ -291,6 +335,175 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.installedApk = new Apk();
         SanitizedFile apkFile = SanitizedFile.knownSanitized(packageInfo.applicationInfo.publicSourceDir);
         initApkFromApkFile(context, this.installedApk, packageInfo, apkFile);
+    }
+
+    /**
+     * Parses the {@code localized} block in the incoming index metadata,
+     * choosing the best match in terms of locale/language while filling as
+     * many fields as possible.  The first English locale found is loaded, then
+     * {@code en-US} is loaded over that, since that's the most common English
+     * for software.  Then the first language match, and then finally the
+     * current locale for this device, given it precedence over all the others.
+     * <p>
+     * It is still possible that the fields will be loaded directly without any
+     * locale info.  This comes from the old-style {@code .txt} app metadata
+     * fields that do not have locale info.  They should not be used if the
+     * {@code Localized} block is specified.
+     */
+    @JsonProperty("localized")
+    private void setLocalized(Map<String, Map<String, Object>> localized) { // NOPMD
+        Locale defaultLocale = Locale.getDefault();
+        String languageTag = defaultLocale.getLanguage();
+        String localeTag = languageTag + "-" + defaultLocale.getCountry();
+        Set<String> locales = localized.keySet();
+        Set<String> localesToUse = new TreeSet<>();
+
+        if (locales.contains(localeTag)) {
+            localesToUse.add(localeTag);
+        }
+        for (String l : locales) {
+            if (l.startsWith(languageTag)) {
+                localesToUse.add(l);
+                break;
+            }
+        }
+        if (locales.contains("en-US")) {
+            localesToUse.add("en-US");
+        }
+        for (String l : locales) {
+            if (l.startsWith("en")) {
+                localesToUse.add(l);
+                break;
+            }
+        }
+        // if key starts with Upper case, its set by humans
+        // Name, Summary, Description existed before localization so their values can be set directly
+        video = getLocalizedEntry(localized, localesToUse, "Video");
+        String value = getLocalizedEntry(localized, localesToUse, "Name");
+        if (!TextUtils.isEmpty(value)) {
+            name = value;
+        }
+        value = getLocalizedEntry(localized, localesToUse, "Summary");
+        if (!TextUtils.isEmpty(value)) {
+            summary = value;
+        }
+        description = getLocalizedEntry(localized, localesToUse, "Description");
+        if (!TextUtils.isEmpty(value)) {
+            description = value;
+        }
+
+        // if key starts with lower case, its generated based on finding the files
+        featureGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "featureGraphic");
+        promoGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "promoGraphic");
+        tvBanner = getLocalizedGraphicsEntry(localized, localesToUse, "tvBanner");
+
+        wearScreenshots = setLocalizedListEntry(localized, localesToUse, "wearScreenshots");
+        phoneScreenshots = setLocalizedListEntry(localized, localesToUse, "phoneScreenshots");
+        sevenInchScreenshots = setLocalizedListEntry(localized, localesToUse, "sevenInchScreenshots");
+        tenInchScreenshots = setLocalizedListEntry(localized, localesToUse, "tenInchScreenshots");
+        tvScreenshots = setLocalizedListEntry(localized, localesToUse, "tvScreenshots");
+    }
+
+    private String getLocalizedEntry(Map<String, Map<String, Object>> localized,
+                                     Set<String> locales, String key) {
+        try {
+            for (String locale : locales) {
+                if (localized.containsKey(locale)) {
+                    return (String) localized.get(locale).get(key);
+                }
+            }
+        } catch (ClassCastException e) {
+            Utils.debugLog(TAG, e.getMessage());
+        }
+        return null;
+    }
+
+    private String getLocalizedGraphicsEntry(Map<String, Map<String, Object>> localized,
+                                             Set<String> locales, String key) {
+        try {
+            for (String locale : locales) {
+                if (localized.containsKey(locale)) {
+                    return locale + "/" + localized.get(locale).get(key);
+                }
+            }
+        } catch (ClassCastException e) {
+            Utils.debugLog(TAG, e.getMessage());
+        }
+        return null;
+    }
+
+    private String[] setLocalizedListEntry(Map<String, Map<String, Object>> localized,
+                                           Set<String> locales, String key) {
+        try {
+            for (String locale : locales) {
+                if (localized.containsKey(locale)) {
+                    ArrayList<String> entry = (ArrayList<String>) localized.get(locale).get(key);
+                    if (entry != null && entry.size() > 0) {
+                        String[] result = new String[entry.size()];
+                        int i = 0;
+                        for (String e : entry) {
+                            result[i] = locale + "/" + key + "/" + e;
+                            i++;
+                        }
+                        return result;
+                    }
+                }
+            }
+        } catch (ClassCastException e) {
+            Utils.debugLog(TAG, e.getMessage());
+        }
+        return new String[0];
+    }
+
+    public String getFeatureGraphicUrl(Context context) {
+        if (TextUtils.isEmpty(featureGraphic)) {
+            return null;
+        }
+        Repo repo = RepoProvider.Helper.findById(context, repoId);
+        return repo.address + "/" + packageName + "/" + featureGraphic;
+    }
+
+    public String getPromoGraphic(Context context) {
+        if (TextUtils.isEmpty(promoGraphic)) {
+            return null;
+        }
+        Repo repo = RepoProvider.Helper.findById(context, repoId);
+        return repo.address + "/" + packageName + "/" + promoGraphic;
+    }
+
+    public String getTvBanner(Context context) {
+        if (TextUtils.isEmpty(tvBanner)) {
+            return null;
+        }
+        Repo repo = RepoProvider.Helper.findById(context, repoId);
+        return repo.address + "/" + packageName + "/" + tvBanner;
+    }
+
+    public String[] getAllScreenshots(Context context) {
+        Repo repo = RepoProvider.Helper.findById(context, repoId);
+        ArrayList<String> list = new ArrayList<>();
+        if (phoneScreenshots != null) {
+            Collections.addAll(list, phoneScreenshots);
+        }
+        if (sevenInchScreenshots != null) {
+            Collections.addAll(list, sevenInchScreenshots);
+        }
+        if (tenInchScreenshots != null) {
+            Collections.addAll(list, tenInchScreenshots);
+        }
+        if (tvScreenshots != null) {
+            Collections.addAll(list, tvScreenshots);
+        }
+        if (wearScreenshots != null) {
+            Collections.addAll(list, wearScreenshots);
+        }
+        String[] result = new String[list.size()];
+        int i = 0;
+        for (String url : list) {
+            result[i] = repo.address + "/" + packageName + "/" + url;
+            i++;
+        }
+        return result;
     }
 
     /**
@@ -525,6 +738,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.ForWriting.Categories.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
         values.put(Cols.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
         values.put(Cols.REQUIREMENTS, Utils.serializeCommaSeparatedString(requirements));
+        values.put(Cols.FEATURE_GRAPHIC, featureGraphic);
+        values.put(Cols.PROMO_GRAPHIC, promoGraphic);
+        values.put(Cols.TV_BANNER, tvBanner);
+        values.put(Cols.PHONE_SCREENSHOTS, Utils.serializeCommaSeparatedString(phoneScreenshots));
+        values.put(Cols.SEVEN_INCH_SCREENSHOTS, Utils.serializeCommaSeparatedString(sevenInchScreenshots));
+        values.put(Cols.TEN_INCH_SCREENSHOTS, Utils.serializeCommaSeparatedString(tenInchScreenshots));
+        values.put(Cols.TV_SCREENSHOTS, Utils.serializeCommaSeparatedString(tvScreenshots));
+        values.put(Cols.WEAR_SCREENSHOTS, Utils.serializeCommaSeparatedString(wearScreenshots));
         values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);
 
         return values;
@@ -674,6 +895,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeStringArray(this.requirements);
         dest.writeString(this.iconUrl);
         dest.writeString(this.iconUrlLarge);
+        dest.writeString(this.featureGraphic);
+        dest.writeString(this.promoGraphic);
+        dest.writeString(this.tvBanner);
+        dest.writeStringArray(this.phoneScreenshots);
+        dest.writeStringArray(this.sevenInchScreenshots);
+        dest.writeStringArray(this.tenInchScreenshots);
+        dest.writeStringArray(this.tvScreenshots);
+        dest.writeStringArray(this.wearScreenshots);
         dest.writeString(this.installedVersionName);
         dest.writeInt(this.installedVersionCode);
         dest.writeParcelable(this.installedApk, flags);
@@ -713,6 +942,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.requirements = in.createStringArray();
         this.iconUrl = in.readString();
         this.iconUrlLarge = in.readString();
+        this.featureGraphic = in.readString();
+        this.promoGraphic = in.readString();
+        this.tvBanner = in.readString();
+        this.phoneScreenshots = in.createStringArray();
+        this.sevenInchScreenshots = in.createStringArray();
+        this.tenInchScreenshots = in.createStringArray();
+        this.tvScreenshots = in.createStringArray();
+        this.wearScreenshots = in.createStringArray();
         this.installedVersionName = in.readString();
         this.installedVersionCode = in.readInt();
         this.installedApk = in.readParcelable(Apk.class.getClassLoader());

@@ -136,10 +136,11 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         recyclerView.setAdapter(adapter);
 
         // Load the feature graphic, if present
-        if (!TextUtils.isEmpty(app.iconUrl)) {
+        String featureGraphicUrl = app.getFeatureGraphicUrl(this);
+        if (!TextUtils.isEmpty(featureGraphicUrl)) {
             final FeatureImage featureImage = (FeatureImage) findViewById(R.id.feature_graphic);
             DisplayImageOptions displayImageOptions = Utils.getImageLoadingOptions().build();
-            ImageLoader.getInstance().loadImage(app.iconUrl, displayImageOptions, new ImageLoadingListener() {
+            ImageLoader.getInstance().loadImage(featureGraphicUrl, displayImageOptions, new ImageLoadingListener() {
                 @Override
                 public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                     if (featureImage != null) {
