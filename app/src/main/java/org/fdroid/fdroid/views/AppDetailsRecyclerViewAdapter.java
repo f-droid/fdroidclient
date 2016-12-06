@@ -398,7 +398,7 @@ public class AppDetailsRecyclerViewAdapter
             descriptionView.post(new Runnable() {
                 @Override
                 public void run() {
-                    if (descriptionView.getLineCount() < HeaderViewHolder.MAX_LINES) {
+                    if (descriptionView.getLineCount() <= HeaderViewHolder.MAX_LINES) {
                         descriptionMoreView.setVisibility(View.GONE);
                     } else {
                         descriptionMoreView.setVisibility(View.VISIBLE);
