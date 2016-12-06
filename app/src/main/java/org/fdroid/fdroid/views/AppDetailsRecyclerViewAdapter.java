@@ -317,24 +317,17 @@ public class AppDetailsRecyclerViewAdapter
             descriptionMoreView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Remember current scroll position so that we can restore it
-                    LinearLayoutManager lm = (LinearLayoutManager) recyclerView.getLayoutManager();
-                    int pos = lm.findFirstVisibleItemPosition();
-                    int posOffset = 0;
-                    if (pos != RecyclerView.NO_POSITION) {
-                        View firstChild = recyclerView.getChildAt(0);
-                        posOffset = (firstChild == null) ? 0 : (firstChild.getTop()); // - recyclerView.getPaddingTop());
-                    }
+                    // Make this "header section" the focused child, so that RecyclerView will use
+                    // it as the anchor in the layout process. Otherwise the RV might select another
+                    // view as the anchor, resulting in that the top of this view is instead scrolled
+                    // off the screen. Refer to LinearLayoutManager.updateAnchorFromChildren(...).
+                    recyclerView.requestChildFocus(itemView, itemView);
                     if (TextViewCompat.getMaxLines(descriptionView) != MAX_LINES) {
                         descriptionView.setMaxLines(MAX_LINES);
                         descriptionMoreView.setText(R.string.more);
                     } else {
                         descriptionView.setMaxLines(Integer.MAX_VALUE);
                         descriptionMoreView.setText(R.string.less);
-                    }
-                    if (pos != RecyclerView.NO_POSITION) {
-                        // Restore scroll position
-                        lm.scrollToPositionWithOffset(pos, posOffset);
                     }
                 }
             });
