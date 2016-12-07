@@ -7,8 +7,6 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import static android.support.v7.widget.RecyclerView.NO_POSITION;
-
 public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
 
     private View lastSavedTarget;
@@ -66,19 +64,21 @@ public class LinearLayoutManagerSnapHelper extends LinearSnapHelper {
                 int currentSmallestDistance = Integer.MAX_VALUE;
                 View currentSmallestDistanceView = null;
 
-                int snappedViewIndex = ((LinearLayoutManager)layoutManager).getPosition(snappedView);
-                if (snappedViewIndex != NO_POSITION) {
+                int snappedViewIndex = ((LinearLayoutManager) layoutManager).getPosition(snappedView);
+                if (snappedViewIndex != RecyclerView.NO_POSITION) {
 
                     int snapPositionFirst = orientationHelper.getDecoratedMeasurement(((LinearLayoutManager) layoutManager).findViewByPosition(firstChild)) / 2;
                     int snapPositionLast = orientationHelper.getTotalSpace() - orientationHelper.getDecoratedMeasurement(((LinearLayoutManager) layoutManager).findViewByPosition(lastChild)) / 2;
 
                     // If first item not on screen, ignore views 0..snappedViewIndex-1
-                    if (firstChild != 0)
+                    if (firstChild != 0) {
                         firstChild = snappedViewIndex;
+                    }
 
                     // If last item not on screen, ignore views snappedViewIndex+1..N
-                    if (lastChild != this.layoutManager.getItemCount() - 1)
+                    if (lastChild != this.layoutManager.getItemCount() - 1) {
                         lastChild = snappedViewIndex;
+                    }
 
                     for (int i = firstChild; i <= lastChild; i++) {
                         View view = ((LinearLayoutManager) layoutManager).findViewByPosition(i);
