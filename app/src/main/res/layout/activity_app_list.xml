@@ -38,7 +38,10 @@
                 app:layout_constraintEnd_toStartOf="@+id/clear"
                 android:padding="12dp"
                 android:id="@+id/search"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
                 android:hint="@string/search_hint"
+                android:maxLines="1"
                 android:background="@android:color/transparent"
                 android:textSize="18sp" />
 

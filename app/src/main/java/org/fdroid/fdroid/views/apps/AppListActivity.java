@@ -11,8 +11,12 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
@@ -35,6 +39,21 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
         searchInput = (EditText) findViewById(R.id.search);
         searchInput.addTextChangedListener(new CategoryTextWatcher(this, searchInput, this));
+        searchInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    // Hide the keyboard (http://stackoverflow.com/a/1109108 (when pressing search)
+                    InputMethodManager inputManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(searchInput.getWindowToken(), 0);
+
+                    // Change focus from the search input to the app list.
+                    appView.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         View backButton = findViewById(R.id.back);
         backButton.setOnClickListener(new View.OnClickListener() {
