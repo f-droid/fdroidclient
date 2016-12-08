@@ -246,4 +246,14 @@
     <style name="AppDetailsSubheaderText" parent="AppDetailsSubheaderTextBase" />
 
     <style name="AppThemeTransparent" parent="@android:style/Theme.NoDisplay" />
+
+    <style name="AppThemeLight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
+    <style name="AppThemeLight.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppThemeLight.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

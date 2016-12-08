@@ -24,5 +24,5 @@
     <color name="shadow">#cc222222</color>
 
     <color name="perms_costs_money">#fff4511e</color>
-
+    <color name="details_panel_light">#eff4f9</color>
 </resources>

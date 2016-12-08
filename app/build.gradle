@@ -21,6 +21,9 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:support-annotations:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
+    compile "com.android.support:recyclerview-v7:24.2.1"
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.google.zxing:core:3.2.1'
@@ -40,6 +43,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     testCompile "org.robolectric:robolectric:3.1.2"
+
+    // As per https://github.com/robolectric/robolectric/issues/1932#issuecomment-219796474
+    testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
 
     testCompile "org.mockito:mockito-core:1.10.19"
 
@@ -97,6 +103,9 @@ if (!hasProperty('sourceDeps')) {
                 'com.android.support:support-media-compat:fa29a23eadd685631584b2c0c624a36e3bb79a33e257b00304501ad682fa2be3',
                 'com.android.support:support-v4:cac2956f5c4bb363cc0ba824ac16ea2a687d1c305d434416a34772a5f9375ed7',
                 'com.android.support:support-vector-drawable:6ee37a7f7b93c1df1294e6f6f97df3724ac989fcda0549faf677001085330548',
+                'com.android.support:design:89842bb1243507fe3079066ea4ea58795effe69cdf9a819e05274d21760adfc2',
+                'com.android.support:cardview-v7:2303b351686d1db060b5fcf1a9c709c79b4a54a85bfda0fb3c4849e244606ee1',
+                'com.android.support:recyclerview-v7:9077766a1a0f4e89528fbf9dcdf6d5880a8686f0266fa852d58d803beeef18fa',
                 'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
                 'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
                 'com.madgag.spongycastle:pkix:6aba9b2210907a3d46dd3dcac782bb3424185290468d102d5207ebdc9796a905',

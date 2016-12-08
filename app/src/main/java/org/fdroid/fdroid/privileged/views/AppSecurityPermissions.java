@@ -90,7 +90,7 @@ public class AppSecurityPermissions {
     // PermissionGroupInfo implements Parcelable but its Parcel constructor is private and thus cannot be extended.
     @SuppressLint("ParcelCreator")
     static class MyPermissionGroupInfo extends PermissionGroupInfo {
-        CharSequence mLabel;
+        CharSequence label;
 
         final List<MyPermissionInfo> newPermissions = new ArrayList<>();
         final List<MyPermissionInfo> allPermissions = new ArrayList<>();
@@ -185,7 +185,7 @@ public class AppSecurityPermissions {
                 }
                 PackageManager pm = getContext().getPackageManager();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle(group.mLabel);
+                builder.setTitle(group.label);
                 if (perm.descriptionRes != 0) {
                     builder.setMessage(perm.loadDescription(pm));
                 } else {
@@ -431,22 +431,22 @@ public class AppSecurityPermissions {
 
     private static class PermissionGroupInfoComparator implements Comparator<MyPermissionGroupInfo> {
 
-        private final Collator sCollator = Collator.getInstance();
+        private final Collator collator = Collator.getInstance();
 
         public final int compare(MyPermissionGroupInfo a, MyPermissionGroupInfo b) {
-            return sCollator.compare(a.mLabel, b.mLabel);
+            return collator.compare(a.label, b.label);
         }
     }
 
     private static class PermissionInfoComparator implements Comparator<MyPermissionInfo> {
 
-        private final Collator sCollator = Collator.getInstance();
+        private final Collator collator = Collator.getInstance();
 
         PermissionInfoComparator() {
         }
 
         public final int compare(MyPermissionInfo a, MyPermissionInfo b) {
-            return sCollator.compare(a.label, b.label);
+            return collator.compare(a.label, b.label);
         }
     }
 
@@ -482,13 +482,13 @@ public class AppSecurityPermissions {
 
         for (MyPermissionGroupInfo pgrp : permGroups.values()) {
             if (pgrp.labelRes != 0 || pgrp.nonLocalizedLabel != null) {
-                pgrp.mLabel = pgrp.loadLabel(pm);
+                pgrp.label = pgrp.loadLabel(pm);
             } else {
                 try {
                     ApplicationInfo app = pm.getApplicationInfo(pgrp.packageName, 0);
-                    pgrp.mLabel = app.loadLabel(pm);
+                    pgrp.label = app.loadLabel(pm);
                 } catch (NameNotFoundException e) {
-                    pgrp.mLabel = pgrp.loadLabel(pm);
+                    pgrp.label = pgrp.loadLabel(pm);
                 }
             }
             permGroupsList.add(pgrp);

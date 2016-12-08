@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
@@ -30,6 +31,7 @@ import org.fdroid.fdroid.views.AppListAdapter;
 
 public abstract class AppListFragment extends ListFragment implements
         AdapterView.OnItemClickListener,
+        AdapterView.OnItemLongClickListener,
         Preferences.ChangeListener,
         LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -109,6 +111,7 @@ public abstract class AppListFragment extends ListFragment implements
         // returns the list view is "called between onCreate and
         // onActivityCreated" according to the docs.
         getListView().setOnItemClickListener(this);
+        getListView().setOnItemLongClickListener(this);
     }
 
     @Override
@@ -155,11 +158,21 @@ public abstract class AppListFragment extends ListFragment implements
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        showItemDetails(view, position, false);
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        showItemDetails(view, position, true);
+        return true;
+    }
+
+    private void showItemDetails(View view, int position, boolean useNewDetailsActivity) {
         // Cursor is null in the swap list when touching the first item.
         Cursor cursor = (Cursor) getListView().getItemAtPosition(position);
         if (cursor != null) {
             final App app = new App(cursor);
-            Intent intent = getAppDetailsIntent();
+            Intent intent = getAppDetailsIntent(useNewDetailsActivity);
             intent.putExtra(AppDetails.EXTRA_APPID, app.packageName);
             intent.putExtra(AppDetails.EXTRA_FROM, getFromTitle());
             if (Build.VERSION.SDK_INT >= 21) {
@@ -176,8 +189,8 @@ public abstract class AppListFragment extends ListFragment implements
         }
     }
 
-    private Intent getAppDetailsIntent() {
-        return new Intent(getActivity(), AppDetails.class);
+    private Intent getAppDetailsIntent(boolean useNewDetailsActivity) {
+        return new Intent(getActivity(), useNewDetailsActivity ? AppDetails2.class : AppDetails.class);
     }
 
     @Override

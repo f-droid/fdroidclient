@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_share_white"
+        android:title="@string/menu_share"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_ignore_all"
+        android:icon="@drawable/ic_do_not_disturb_white"
+        android:title="@string/menu_ignore_all"
+        android:checkable="true"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_ignore_this"
+        android:icon="@drawable/ic_do_not_disturb_white"
+        android:title="@string/menu_ignore_this"
+        android:checkable="true"
+        app:showAsAction="never"/>
+</menu>

@@ -129,7 +129,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
      * 1. Check for root access
      */
     private final AsyncTask<Void, Void, Boolean> checkRootTask = new AsyncTask<Void, Void, Boolean>() {
-        ProgressDialog mProgressDialog;
+        ProgressDialog progressDialog;
 
         @Override
         protected void onPreExecute() {
@@ -139,11 +139,11 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
             ContextThemeWrapper theme = new ContextThemeWrapper(InstallExtensionDialogActivity.this,
                     FDroidApp.getCurThemeResId());
 
-            mProgressDialog = new ProgressDialog(theme);
-            mProgressDialog.setMessage(getString(R.string.requesting_root_access_body));
-            mProgressDialog.setIndeterminate(true);
-            mProgressDialog.setCancelable(false);
-            mProgressDialog.show();
+            progressDialog = new ProgressDialog(theme);
+            progressDialog.setMessage(getString(R.string.requesting_root_access_body));
+            progressDialog.setIndeterminate(true);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
         }
 
         @Override
@@ -155,7 +155,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
         protected void onPostExecute(Boolean rootGranted) {
             super.onPostExecute(rootGranted);
 
-            mProgressDialog.dismiss();
+            progressDialog.dismiss();
 
             if (rootGranted) {
                 // root access granted
@@ -193,7 +193,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
      * 2. Install into system
      */
     private final AsyncTask<Void, Void, Void> installTask = new AsyncTask<Void, Void, Void>() {
-        ProgressDialog mProgressDialog;
+        ProgressDialog progressDialog;
 
         @Override
         protected void onPreExecute() {
@@ -203,11 +203,11 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
             ContextThemeWrapper theme = new ContextThemeWrapper(InstallExtensionDialogActivity.this,
                     FDroidApp.getCurThemeResId());
 
-            mProgressDialog = new ProgressDialog(theme);
-            mProgressDialog.setMessage(InstallExtension.create(getApplicationContext()).getInstallingString());
-            mProgressDialog.setIndeterminate(true);
-            mProgressDialog.setCancelable(false);
-            mProgressDialog.show();
+            progressDialog = new ProgressDialog(theme);
+            progressDialog.setMessage(InstallExtension.create(getApplicationContext()).getInstallingString());
+            progressDialog.setIndeterminate(true);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
         }
 
         @Override
@@ -298,7 +298,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
     }
 
     private final AsyncTask<Void, Void, Void> uninstallTask = new AsyncTask<Void, Void, Void>() {
-        ProgressDialog mProgressDialog;
+        ProgressDialog progressDialog;
 
         @Override
         protected void onPreExecute() {
@@ -308,11 +308,11 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
             ContextThemeWrapper theme = new ContextThemeWrapper(InstallExtensionDialogActivity.this,
                     FDroidApp.getCurThemeResId());
 
-            mProgressDialog = new ProgressDialog(theme);
-            mProgressDialog.setMessage(getString(R.string.system_install_uninstalling));
-            mProgressDialog.setIndeterminate(true);
-            mProgressDialog.setCancelable(false);
-            mProgressDialog.show();
+            progressDialog = new ProgressDialog(theme);
+            progressDialog.setMessage(getString(R.string.system_install_uninstalling));
+            progressDialog.setIndeterminate(true);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
         }
 
         @Override
@@ -325,7 +325,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
 
-            mProgressDialog.dismiss();
+            progressDialog.dismiss();
 
             // app is uninstalled but still display, kill it!
             System.exit(0);
