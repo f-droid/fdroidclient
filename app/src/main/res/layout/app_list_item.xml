@@ -53,11 +53,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp" />
 
-    <Button
+    <ImageView
         android:id="@+id/install"
-        android:background="@drawable/download_button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        tools:src="@drawable/ic_download"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/menu_install"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:elevation="2dp"
         android:padding="4dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
