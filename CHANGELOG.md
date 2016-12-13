@@ -1,4 +1,4 @@
-### 0.102 (2016-??-??)
+### 0.102 (2016-11-28)
 
 * Optionally keep install history
 
