@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views.apps;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -32,14 +33,20 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
+
+import java.io.File;
 
 // TODO: Support cancelling of downloads by tapping the install button a second time.
 // TODO: Support installing of an app once downloaded by tapping the install button a second time.
 public class AppListItemController extends RecyclerView.ViewHolder {
+
+    private static final String TAG = "AppListItemController";
 
     private final Activity activity;
 
@@ -138,6 +145,15 @@ public class AppListItemController extends RecyclerView.ViewHolder {
 
     }
 
+    private boolean isReadyToInstall(@NonNull App app) {
+        for (AppUpdateStatusManager.AppUpdateStatus appStatus : AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName)) {
+            if (appStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * The install button is shown when an app:
      *  * Is compatible with the users device.
@@ -151,16 +167,9 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             return;
         }
 
-        boolean readyToInstall = false;
-        for (AppUpdateStatusManager.AppUpdateStatus appStatus : AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName)) {
-            if (appStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-                readyToInstall = true;
-                break;
-            }
-        }
-
-        if (readyToInstall) {
+        if (isReadyToInstall(app)) {
             installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_complete));
+            installButton.setVisibility(View.VISIBLE);
             // TODO: If in the downloading phase, then need to reflect that instead of this "download complete" icon.
         } else {
             boolean installable = app.canAndWantToUpdate(activity) || !app.isInstalled();
@@ -246,7 +255,36 @@ public class AppListItemController extends RecyclerView.ViewHolder {
                 return;
             }
 
-            InstallManagerService.queue(activity, currentApp, ApkProvider.Helper.findApkFromAnyRepo(activity, currentApp.packageName, currentApp.suggestedVersionCode));
+            final Apk suggestedApk = ApkProvider.Helper.findApkFromAnyRepo(activity, currentApp.packageName, currentApp.suggestedVersionCode);
+
+            if (isReadyToInstall(currentApp)) {
+                File apkFilePath = ApkCache.getApkDownloadPath(activity, Uri.parse(suggestedApk.getUrl()));
+                Utils.debugLog(TAG, "skip download, we have already downloaded " + suggestedApk.getUrl() + " to " + apkFilePath);
+
+                // TODO: This seems like a bit of a hack. Is there a better way to do this by changing
+                // the Installer API so that we can ask it to install without having to get it to fire
+                // off an intent which we then listen for and action?
+                final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(activity);
+                final BroadcastReceiver receiver = new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        broadcastManager.unregisterReceiver(this);
+
+                        if (Installer.ACTION_INSTALL_USER_INTERACTION.equals(intent.getAction())) {
+                            PendingIntent pendingIntent = intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                            try {
+                                pendingIntent.send();
+                            } catch (PendingIntent.CanceledException ignored) { }
+                        }
+                    }
+                };
+
+                broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(Uri.parse(suggestedApk.getUrl())));
+                Installer installer = InstallerFactory.create(activity, suggestedApk);
+                installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), Uri.parse(suggestedApk.getUrl()));
+            } else {
+                InstallManagerService.queue(activity, currentApp, suggestedApk);
+            }
         }
     };
 }
