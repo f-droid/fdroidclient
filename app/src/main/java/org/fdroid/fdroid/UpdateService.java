@@ -50,6 +50,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -154,7 +155,7 @@ public class UpdateService extends IntentService {
         //   http://stackoverflow.com/a/20032920
         //
         if (Build.VERSION.SDK_INT <= 10) {
-            Intent pendingIntent = new Intent(this, FDroid.class);
+            Intent pendingIntent = new Intent(this, MainActivity.class);
             pendingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             notificationBuilder.setContentIntent(PendingIntent.getActivity(this, 0, pendingIntent, PendingIntent.FLAG_UPDATE_CURRENT));
         }

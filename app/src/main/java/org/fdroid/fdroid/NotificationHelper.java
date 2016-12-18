@@ -31,6 +31,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.utils.DiskCacheUtils;
 
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.util.ArrayList;
 
@@ -408,7 +409,7 @@ class NotificationHelper {
         }
 
         // Intent to open main app list
-        Intent intentObject = new Intent(context, FDroid.class);
+        Intent intentObject = new Intent(context, MainActivity.class);
         PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject, 0);
 
         NotificationCompat.Builder builder =
@@ -483,7 +484,7 @@ class NotificationHelper {
         }
 
         // Intent to open main app list
-        Intent intentObject = new Intent(context, FDroid.class);
+        Intent intentObject = new Intent(context, MainActivity.class);
         PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject, 0);
 
         NotificationCompat.Builder builder =

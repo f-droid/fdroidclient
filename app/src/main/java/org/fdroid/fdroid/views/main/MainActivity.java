@@ -27,7 +27,10 @@ import org.fdroid.fdroid.R;
  */
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
+    public static final String EXTRA_VIEW_MY_APPS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_MY_APPS";
+
     private RecyclerView pager;
+    private MainViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +38,25 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         setContentView(R.layout.activity_main);
 
+        adapter = new MainViewAdapter(this);
+
         pager = (RecyclerView) findViewById(R.id.main_view_pager);
         pager.setHasFixedSize(true);
         pager.setLayoutManager(new NonScrollingHorizontalLayoutManager(this));
-        pager.setAdapter(new MainViewAdapter(this));
+        pager.setAdapter(adapter);
 
         BottomNavigationView bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (getIntent().hasExtra(EXTRA_VIEW_MY_APPS)) {
+            getIntent().removeExtra(EXTRA_VIEW_MY_APPS);
+            pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.my_apps));
+        }
     }
 
     @Override
