@@ -30,10 +30,6 @@ class MainViewController extends RecyclerView.ViewHolder {
         this.frame = frame;
     }
 
-    public void clearViews() {
-        frame.removeAllViews();
-    }
-
     /**
      * @see WhatsNewViewBinder
      */
