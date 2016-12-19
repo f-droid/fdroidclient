@@ -4,26 +4,26 @@
     <item
         android:title="@string/main_menu__latest_apps"
         android:icon="@drawable/ic_overview"
-        app:showAsAction="ifRoom"
+        app:showAsAction="ifRoom|withText"
         android:id="@+id/whats_new" />
     <item
         android:title="@string/main_menu__categories"
         android:icon="@drawable/ic_category"
-        app:showAsAction="ifRoom"
+        app:showAsAction="ifRoom|withText"
         android:id="@+id/categories" />
     <item
         android:title="@string/main_menu__swap_nearby"
         android:icon="@drawable/ic_nearby"
-        app:showAsAction="ifRoom"
+        app:showAsAction="ifRoom|withText"
         android:id="@+id/nearby" />
     <item
         android:title="@string/main_menu__my_apps"
         android:icon="@drawable/ic_my_apps"
-        app:showAsAction="ifRoom"
+        app:showAsAction="ifRoom|withText"
         android:id="@+id/my_apps" />
     <item
         android:title="@string/menu_settings"
         android:icon="@drawable/ic_settings"
-        app:showAsAction="ifRoom"
+        app:showAsAction="ifRoom|withText"
         android:id="@+id/settings" />
 </menu>

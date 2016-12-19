@@ -10,9 +10,10 @@
         android:layout_height="match_parent"
         android:layout_margin="8dp">
 
+        <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
+             when it will inevitably read out the name of the app straight after. -->
         <ImageView
             android:id="@+id/icon"
-            android:contentDescription="@string/app_icon"
             android:layout_width="96dip"
             android:layout_height="96dip"
             tools:src="@drawable/ic_launcher"
@@ -25,7 +26,8 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
             tools:text="F-Droid An application summary which takes up too much space and must ellipsize"

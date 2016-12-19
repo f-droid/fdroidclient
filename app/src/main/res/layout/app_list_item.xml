@@ -6,18 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
+         when it will inevitably read out the name of the app straight after. -->
     <ImageView
         android:id="@+id/icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/app_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         tools:src="@drawable/ic_launcher"
         android:scaleType="fitCenter"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/app_name"

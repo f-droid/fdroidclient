@@ -139,7 +139,8 @@ public class CategoryTextWatcher implements TextWatcher {
             if (Build.VERSION.SDK_INT >= 21) {
                 // For accessibility reasons, make this more clear to screen readers that the
                 // span we just added semantically represents a category.
-                TtsSpan ttsSpan = new TtsSpan.TextBuilder(context.getString(R.string.category)).build();
+                CharSequence categoryName = textToSpannify.subSequence(0, colonIndex);
+                TtsSpan ttsSpan = new TtsSpan.TextBuilder(context.getString(R.string.tts_category_name, categoryName)).build();
                 textToSpannify.setSpan(ttsSpan, 0, 0, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
         }

@@ -444,5 +444,11 @@
     <string name="notification_action_cancel">Cancel</string>
     <string name="notification_action_install">Install</string>
 
-    <string name="category">Category</string>
+    <!-- Used by the TTS engine when showing a category "Chip" in the search box -->
+    <string name="tts_category_name">Category %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+        <item quantity="one">View the single one app in the %2$s category</item>
+        <item quantity="other">View all %1$d apps from the %2$s category</item>
+    </plurals>
 </resources>
