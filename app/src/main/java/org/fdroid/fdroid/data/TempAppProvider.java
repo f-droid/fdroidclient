@@ -253,6 +253,7 @@ public class TempAppProvider extends AppProvider {
 
             getContext().getContentResolver().notifyChange(AppProvider.getContentUri(), null);
             getContext().getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
+            getContext().getContentResolver().notifyChange(CategoryProvider.getContentUri(), null);
         } finally {
             db.endTransaction();
             db.execSQL("DETACH DATABASE " + DB); // Can't be done in a transaction.
