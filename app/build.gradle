@@ -155,7 +155,7 @@ if (!hasProperty('sourceDeps')) {
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '25.0.2'
     useLibrary 'org.apache.http.legacy'
 
     buildTypes {
