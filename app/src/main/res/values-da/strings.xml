@@ -16,7 +16,7 @@
     <string name="update_interval">Automatisk opdateringsinterval</string>
     <string name="update_interval_zero">Ingen automatiske opdateringer til programlisten</string>
     <string name="automatic_scan_wifi">Kun på Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Opdater kun programlisten automatisk over Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Opdater kun automatisk på ubegrænsede netværk som WI-FI</string>
     <string name="notify">Opdateringsnotifikationer</string>
     <string name="notify_on">Vis en notifikation når opdateringer er tilgængelige</string>
     <string name="update_history">Opdateringshistorik</string>
@@ -184,8 +184,11 @@
     <string name="repo_description">Beskrivelse</string>
     <string name="repo_last_update">Sidste opdatering</string>
     <string name="repo_name">Navn</string>
-    <string name="unsigned_description">Det betyder at listen over programmer ikke kunnes bekræftes. Du skal være forsigtig med programmer hentet fra usignerede indeks.</string>
-    <string name="repo_not_yet_updated">Dette depot har ikke været brugt endnu. Du skal aktivere det for at se de programmer det har.</string>
+    <string name="unsigned_description">Dette betyder at listen over
+programmer ikke kunne bekræftes. Du skal være forsigtig
+med programmer hentet fra usignerede indekser.</string>
+    <string name="repo_not_yet_updated">Dette depot har ikke været brugt endnu.
+Du skal aktivere det for at se de programmer det har.</string>
     <string name="unknown">Ukendt</string>
     <string name="repo_confirm_delete_title">Slet Depot?</string>
     <string name="repo_confirm_delete_body">Slettes et depot vil dets programmer ikke længere være tilgængelige fra F-Droid.\n\nBemærk: Alle tidligere installerede programmer vil blive på din enhed.</string>
@@ -299,7 +302,9 @@
     <string name="install_confirm">kræver adgang til</string>
     <string name="install_confirm_update">Vil du installere en opdatering til dette eksisterende program? Dine eksisterende data vil ikke gå tabt. Det opdaterede program vil få adgang til:</string>
     <string name="install_confirm_update_system">Vil du installere en opdatering til dette indbyggede program? Dine eksisterende data vil ikke gå tabt. Det opdaterede program vil få adgang til:</string>
-    <string name="install_confirm_update_no_perms">Vil du installere en opdatering til dette eksisterende program? Dine eksisterende data vil ikke gå tabt. Det kræver ingen speciel adgang.</string>
+    <string name="install_confirm_update_no_perms">Vil du installere en opdatering
+til dette eksisterende program? Dine eksisterende data vil ikke
+gå tabt. Det kræver ingen speciel adgang.</string>
     <string name="install_confirm_update_system_no_perms">Vil du installere en opdatering til dette indbyggede program? Dine eksisterende data vil ikke gå tabt. Det kræver ingen speciel adgang.</string>
     <string name="newPerms">Ny</string>
     <string name="allPerms">Alle</string>
@@ -362,4 +367,9 @@
     <string name="keep_year">1 År</string>
     <string name="keep_forever">Forevigt</string>
 
+    <string name="keep_install_history">Behold installationshistorik</string>
+    <string name="keep_install_history_summary">Opbevar en log af installationer og afinstallationer i F-Droid</string>
+    <string name="update_auto_install">Installer automatisk opdateringer</string>
+    <string name="update_auto_install_summary">Download og installer app opdateringer i baggrunden</string>
+    <string name="warning_no_internet">Kan ikke opdatere, er du forbundet til internettet?</string>
     </resources>

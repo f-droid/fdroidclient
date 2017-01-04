@@ -3,7 +3,7 @@
   <string name="version">الإصدار</string>
   <string name="delete">حذف</string>
   <string name="updates">التحديثات</string>
-  <string name="local_repo_name">إسم مستودعك المحلي</string>
+  <string name="local_repo_name">اسم مستودعك المحلي</string>
   <string name="app_details">تفاصيل التطبيق</string>
   <string name="about_site">الموقع الإلكتروني</string>
   <string name="about_mail">البريد الإلكتروني</string>
@@ -22,10 +22,10 @@
   <string name="add_key">إضافة مفتاح</string>
   <string name="tab_available_apps">متواجد</string>
   <string name="tab_updates">التحديثات</string>
-  <string name="choose_bt_send">إختيار البلوتوث كطريقة إرسال</string>
+  <string name="choose_bt_send">اختيار البلوتوث كطريقة إرسال</string>
   <string name="send_via_bluetooth">إرسال بواسطة البلوتوث</string>
   <string name="repo_add_url">عنوان المستودع</string>
-  <string name="repo_add_fingerprint">البصمة (إختياري)</string>
+  <string name="repo_add_fingerprint">البصمة (اختياري)</string>
   <string name="menu_update_repo">تحديث المستودعات</string>
   <string name="menu_manage">المستودعات</string>
   <string name="menu_about">حول</string>
@@ -39,7 +39,7 @@
   <string name="menu_source">الشفرة المصدرية</string>
   <string name="menu_donate">التبرع</string>
   <string name="category_All">الكل</string>
-  <string name="category_Whats_New">مالجديد</string>
+  <string name="category_Whats_New">ما الجديد</string>
   <string name="local_repo">مستودع محلي</string>
   <string name="deleting_repo">يتم حذف المستودع الحالي…</string>
   <string name="next">التالي</string>
@@ -56,7 +56,7 @@
   <string name="app_icon">أيقونة التطبيق</string>
   <string name="category_Development">التطوير</string>
   <string name="category_Games">الألعاب</string>
-  <string name="category_Internet">الانترنت</string>
+  <string name="category_Internet">الإنترنت</string>
   <string name="category_Multimedia">الوسائط المتعددة</string>
   <string name="category_Phone_SMS">الهاتف و الرسائل</string>
   <string name="category_Reading">القراءة</string>
@@ -65,12 +65,12 @@
   <string name="category_System">النظام</string>
   <string name="app_name">اف-درويد</string>
 
-    <string name="SignatureMismatch">الإصدار الجديد يحتوي على مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد، يجب أن يتم إلغاء تثبيت القديم أولا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (من المعلوم أن إلغاء التثبيت سيتم محو البيانات الداخلية المخزنة من قِبل التطبيق)</string>
+    <string name="SignatureMismatch">الإصدار الجديد يحتوي على مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد، يجب أن يتم إلغاء تثبيت القديم أولا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (علما أن إلغاء التثبيت سيتم محو البيانات الداخلية المخزنة من قِبل التطبيق)</string>
     <string name="installIncompatible">يبدو أن هذه الحزمة غير متوافقة مع جهازك. هل ترغب في محاولة لتثبيتها على أي حال؟</string>
     <string name="menu_email">إرسال رسالة للمؤلف</string>
-    <string name="installDowngrade">بهذا الخيار سيتم تراجع التطبيق. القيام بذلك قد يحصل عليه خلل اوحتى فقدان البيانات الخاصة بك. هل ترغب في محاولة لتخفيض التطبيق على أي حال؟</string>
+    <string name="installDowngrade">بهذا الخيار سيتم تراجع التطبيق. القيام بذلك قد يحصل عليه خلل أو حتى فقدان البيانات الخاصة بك. هل ترغب في محاولة لتخفيض التطبيق على أي حال؟</string>
     <string name="by_author">بواسطة</string>
-    <string name="enable_nfc_send">تمكين إرسال نظام ملفات الشبكة(NFC)…</string>
+    <string name="enable_nfc_send">تمكين إرسال نظام ملفات الشبكة (NFC)…</string>
     <string name="cache_downloaded">إبقاء التطبيقات المخزنة مؤقتا</string>
     <string name="unstable_updates">تحديثات غير مستقرة</string>
     <string name="unstable_updates_summary">اقتراح تحديثات للإصدارات الغير المستقرة</string>
@@ -79,7 +79,7 @@
     <string name="update_interval">تحديث الفاصل الزمني التلقائي</string>
     <string name="update_interval_zero">لا توجد تحديثات لقائمة التطبيق التلقائي</string>
     <string name="automatic_scan_wifi">فقط على الشبكات اللاسلكية (Wi-Fi)</string>
-    <string name="automatic_scan_wifi_on">تحديث قوائم التطبيق تلقائيا فقط على الشبكات اللاسلكية (Wi-Fi)</string>
+    <string name="automatic_scan_wifi_on">تحديث قوائم التطبيق تلقائيا فقط على الشبكات غير المحدودة بمقدار البيانات مثل (Wi-Fi)</string>
     <string name="update_auto_download">تحميل التحديثات تلقائياً</string>
     <string name="update_auto_download_summary">تحميل ملفات التحديث في الخلفية</string>
     <string name="notify">تحديث التنبيهات</string>
@@ -95,26 +95,26 @@
     <string name="local_repo_https_on">استخدام تشفير HTTPS: // المتصل بالمستودعات المحلية</string>
 
     <string name="login_title">يستلزم التوثيق</string>
-    <string name="login_name">إسم المستخدم</string>
+    <string name="login_name">اسم المستخدم</string>
     <string name="login_password">كلمة المرور</string>
     <string name="repo_edit_credentials">تغيير كلمة المرور</string>
-    <string name="repo_error_empty_username">اسم المستخدم فارغ، لم يتم تغيير بيانات الإعتماد</string>
+    <string name="repo_error_empty_username">اسم المستخدم فارغ، لم يتم تغيير بيانات الاعتماد</string>
 
     <string name="no_such_app">لم يتم العثور على مثل هذا التطبيق.</string>
 
     <string name="about_title">معلومات عن اف-درويد</string>
-    <string name="about_source">الشفره المصدريه</string>
-    <string name="about_license">الترخيص</string>
+    <string name="about_source">الشفرة المصدرية</string>
+    <string name="about_license">الرخصة</string>
 
     <string name="app_incompatible">غير متوافقة</string>
-    <string name="added_on">تمت الإضافه في %s</string>
+    <string name="added_on">تمت الإضافة في %s</string>
 
     <string name="links">الروابط</string>
     <string name="more">المزيد</string>
     <string name="less">تقليل</string>
 
-    <string name="back">الى الخلف</string>
-    <string name="overwrite">إستبدال</string>
+    <string name="back">إلى الخلف</string>
+    <string name="overwrite">استبدال</string>
 
     <string name="tab_installed_apps">تم التثبيت</string>
     <string name="tab_installed_apps_count">تم التثبيت (%d)</string>
@@ -123,17 +123,17 @@
     <string name="many_updates_available">%d يتوفر على تحديثات.</string>
     <string name="fdroid_updates_available">تحديثات اف-درويد متوفرة</string>
     <string name="update_notification_more">+%1$d المزيد…</string>
-    <string name="bluetooth_activity_not_found">لا توجد طريقة إرسال بلوتوث موجودة، فضلاً إختيار واحد!</string>
+    <string name="bluetooth_activity_not_found">لا توجد طريقة إرسال بلوتوث، فضلاً إختر واحدة !</string>
     <string name="repo_exists_add_fingerprint">هذه المستودعات بالفعل موجودة، بهذا سوف يتم إضافة مفتاح معلومات جديد.</string>
     <string name="repo_exists_enable">هذه المستودعات بالفعل موجودة، تأكد إن كنت ترغب في إعادة تمكينه.</string>
-    <string name="repo_exists_and_enabled">المستودعات الوارده هي بالفعل موجودة وممكنه.</string>
+    <string name="repo_exists_and_enabled">المستودعات الواردة هي بالفعل موجودة وممكنه.</string>
     <string name="repo_delete_to_overwrite">يجب أولا حذف هذه المستودعات قبل أن تتمكن من إضافة جديدة مع مفتاح مختلف.</string>
-    <string name="bad_fingerprint">البصمة خطأ</string>
-    <string name="invalid_url">هذا ليس عنوان URL صالحاً للإستخدام.</string>
-    <string name="malformed_repo_uri">تجاهل مستودعات عنوان URI التالفه: %s</string>
+    <string name="bad_fingerprint">البصمة خاطئة</string>
+    <string name="invalid_url">هذا ليس عنوان URL صالح للاستخدام.</string>
+    <string name="malformed_repo_uri">تجاهل مستودعات عنوان URI التالفة : %s</string>
     <string name="repo_provider">مستودع: %s</string>
 
-    <string name="menu_send_apk_bt">مشاركة اف-درويد عن طريق البلوتوث</string>
+    <string name="menu_send_apk_bt">شارك اف-درويد عن طريق البلوتوث</string>
     <string name="menu_settings">إعدادات</string>
     <string name="menu_add_repo">مستودع جديد</string>
 
@@ -142,31 +142,31 @@
     <string name="menu_changelog">سجل التغيير</string>
     <string name="menu_upgrade">تحديث</string>
     <string name="menu_bitcoin">عملة البيتكوين (BitCoin)</string>
-    <string name="menu_litecoin">عملة اللايتكوين (Litecoin)</string>
+    <string name="menu_litecoin">عملة اللايت كوين (Litecoin)</string>
     <string name="menu_flattr">حساب فلاتر (Flattr)</string>
 
 
     <string name="details_installed">الإصدار %s مثبت</string>
     <string name="details_notinstalled">لم يتم التثبيت</string>
     <string name="antiadslist">يحتوي هذا التطبيق على إعلانات</string>
-    <string name="antitracklist">هذا التطبيق يراقب ويوثق النشاطات الخاص بك</string>
+    <string name="antitracklist">هذا التطبيق يراقب ويوثق النشاطات الخاصة بك</string>
     <string name="antinonfreeadlist">هذا التطبيق يحمل إضافات غير حرة</string>
     <string name="antinonfreenetlist">هذا التطبيق يحمل خدمات شبكة غير حرة</string>
-    <string name="antinonfreedeplist">هذا التطبيق يعتمد على تطبيقات غير الحرة أخرى</string>
+    <string name="antinonfreedeplist">هذا التطبيق يعتمد على تطبيقات أخرى غير حرة</string>
     <string name="antiupstreamnonfreelist">شفرة المصدر المنشطة ليست حرة تماماً</string>
     <string name="antinonfreeassetslist">هذا التطبيق يحتوي على أصول غير الحرة</string>
 
     <string name="display">إظهار</string>
 
     <string name="expert">طور الخبراء</string>
-    <string name="expert_on">إظهار معلومات اضافية وتمكين إعدادات إضافية</string>
+    <string name="expert_on">إظهار معلومات إضافية وتمكين إعدادات إضافية</string>
 
     <string name="search_hint">بحث على تطبيقات</string>
 
     <string name="appcompatibility">توافق التطبيق</string>
     <string name="show_incompat_versions">إصدارات غير متوافقة</string>
     <string name="show_incompat_versions_on">إظهار إصدارات التطبيق غير متوافقة مع الجهاز</string>
-    <string name="rooted">تجاهل نواة الجهاز</string>
+    <string name="rooted">تجاهل صلاحيات root</string>
     <string name="rooted_on">لا تخفي أصل التطبيقات التي تتطلب امتيازات النواة</string>
     <string name="ignoreTouch">تجاهل الشاشات التي تعمل باللمس</string>
     <string name="ignoreTouch_on">دائما ضم التطبيقات التي تتطلب شاشة تعمل باللمس</string>
@@ -176,9 +176,9 @@
     <string name="adding_apks_format">إضافة %s إلى مستودع…</string>
     <string name="writing_index_jar">كتابة توقيع ملف الفهرس (index.jar) …</string>
     <string name="linking_apks">ربط ملفات APK التي في المستودعات…</string>
-    <string name="copying_icons">نسخ ايقونات التطبيق في المستودعات …</string>
-    <string name="icon">ايقونة</string>
-    <string name="useTor">إستخدام التور (Tor)</string>
+    <string name="copying_icons">نسخ أيقونات التطبيق في المستودعات …</string>
+    <string name="icon">أيقونة</string>
+    <string name="useTor">استخدام التور (Tor)</string>
     <string name="useTorSummary">إجبار حركة التحميل من خلال تور لزيادة الخصوصية</string>
     <string name="proxy">خدمة الوكيل (البروكسي)</string>
     <string name="enable_proxy_title">تمكين وكيل (البروكسي) HTTP</string>
@@ -193,7 +193,8 @@
     <string name="status_download_unknown_size">تحميل\n%2$s من\n%1$s</string>
     <string name="update_notification_title">تحديث المستودعات</string>
     <string name="status_processing_xml_percent">تجهيز %2$s / %3$s (%4$d%%) من %1$s</string>
-    <string name="status_connecting_to_repo">الاتصال إلى\n%1$s</string>
+    <string name="status_connecting_to_repo">الاتصال بـ
+%1$s</string>
     <string name="status_inserting_apps">توفير تفاصيل التطبيق</string>
     <string name="repos_unchanged">جميع المستودعات محدثة</string>
         <string name="all_other_repos_fine">كل المستودعات الأخرى لم تقم بإنشاء أخطاء.</string>
@@ -204,10 +205,20 @@
     <string name="repo_details">مستودع</string>
     <string name="repo_url">العنوان</string>
     <string name="repo_fingerprint">بصمة توقيع المفتاح (SHA-256)</string>
-    <string name="unsigned_description">هذا يعني أن قائمة من الطلبات التي لا يمكن التحقق منها. يجب أن تكون حذرا مع التطبيقات التي تم تنزيلها من مؤشرات غير موقعة.</string>
-    <string name="repo_not_yet_updated">لم يتم استخدام هذا المستودع حتى الان. تحتاج إلى تمكينها من عرض التطبيقات التي يقدمها.</string>
-    <string name="repo_confirm_delete_body">حذف المستودع يعني أنه من التطبيقات لم يعد متاحا من اف-درويد.\n\nملاحظة: ستبقى جميع التطبيقات المثبتة مسبقا على جهازك.</string>
-    <string name="repo_disabled_notification">تعطيل %1$s.\n\nسوف تحتاج إلى إعادة تمكين هذه مستودع لتثبيته من التطبيقات.</string>
+    <string name="unsigned_description">هذا يعني أن قائمة
+التطبيقات لا يمكن التحقق منها. يجب أن تكون حذرا
+ مع التطبيقات التي تم تنزيلها من مؤشرات غير موقعة.</string>
+    <string name="repo_not_yet_updated">لم يتم استخدام هذا المستودع حتى الآن.
+تحتاج إلى تمكينها من عرض التطبيقات التي يقدمها.</string>
+    <string name="repo_confirm_delete_body">حذف المستودع يعني أنه
+من التطبيقات لم يعد متاحا من اف-درويد.
+
+ملاحظة:
+ستبقى جميع التطبيقات المثبتة مسبقا على جهازك.</string>
+    <string name="repo_disabled_notification">تعطيل %1$s.
+
+سوف
+تحتاج إلى إعادة تمكين هذا المستودع لتثبيت التطبيقات منه.</string>
     <string name="repo_added">مستودع المحفوظات التابع لاف-درويد %1$s.</string>
     <string name="repo_searching_address">أبحث عن مستودع اف-درويد في\n%1$s</string>
     <string name="minsdk_or_later">%s أو فيما بعد</string>
@@ -234,15 +245,15 @@
     <string name="empty_installed_app_list">لا يوجد تطبيقات مثبتة.\n\nهناك تطبيقات على جهازك، ولكن لم تكن متوفرة في اف-درويد. يمكن أنك تحتاج إلى تحديث المستودعات الخاصة بك، أو المستودعات بالفعل لا تملك تطبيقات متوفرة خاصة بك.</string>
     <string name="empty_available_app_list">لا يوجد تطبيقات في هذه الفئة.\n\nحاول تحديد فئة مختلفة أو تحديث المستودعات الخاص بك للحصول على قائمة جديدة من تطبيقات.</string>
     <string name="empty_can_update_app_list">كل التطبيقات محدثة.\n\nتهانينا! كل من التطبيقات الخاصة بك محدثة (أو المستودعات الخاصة بك قديمة).</string>
-    <string name="empty_search_installed_app_list">لا يوجد تطبيقات المثبتة مطابقة.</string>
+    <string name="empty_search_installed_app_list">لا يوجد تطبيقات مثبتة مطابقة.</string>
     <string name="empty_search_available_app_list">لا توجد تطبيقات مطابقة متوفرة.</string>
     <string name="empty_search_can_update_app_list">لا توجد تطبيقات مطابقة للتحديث.</string>
 
-    <string name="requesting_root_access_body">طلب وصول الى النواة…</string>
-    <string name="root_access_denied_title">لا يمكن الوصول الى النواة</string>
-    <string name="root_access_denied_body">إما جهاز الأندرويد الخاص بك ليس ممدد النواة أو كنت قد رفضت وصول الى النواة لاف-درويد.</string>
-    <string name="install_error_unknown">فشل في التثبيت بسبب خطأ غير معروف</string>
-    <string name="uninstall_error_unknown">فشل إلغاء التثبيت نتيجة لخطأ غير معروف</string>
+    <string name="requesting_root_access_body">طلب وصول إلى النواة…</string>
+    <string name="root_access_denied_title">لا يمكن الوصول إلى النواة</string>
+    <string name="root_access_denied_body">إما جهاز الأندرويد الخاص بك ليس ممدد النواة أو كنت قد رفضت وصول إلى النواة لاف-درويد.</string>
+    <string name="install_error_unknown">فشل في التثبيت بسبب خطأ مجهول</string>
+    <string name="uninstall_error_unknown">فشل إلغاء التثبيت نتيجة لخطأ مجهول</string>
     <string name="system_install_denied_title">اف-درويد مميز التمديد غير متوفر</string>
     <string name="system_install_denied_body">يتوفر هذا الخيار فقط عند تثبيت اف-درويد مميز التمديد.</string>
     <string name="system_install_denied_signature">التوقيع على التمديد خطأ! يرجى إنشاء تقرير الأخطاء!</string>
@@ -257,16 +268,16 @@
     <string name="system_install_installing_rebooting">على قيد التثبيت وإعادة التشغيل…</string>
     <string name="system_install_uninstalling">على قيد إلغاء التثبيت…</string>
     <string name="system_install_question">هل تريد تثبيت اف-درويد مميز التمديد؟</string>
-    <string name="system_install_warning">ذلك سيستغرق فترة تصل إلى 10 ثانية.</string>
-    <string name="system_install_warning_lollipop">ذلك سيستغرق فترة تصل إلى 10 ثانية، وسوف يتم <b>إعادة تشغيل</b> بعد ذلك.</string>
+    <string name="system_install_warning">ذلك سيستغرق فترة تصل إلى 10 ثواني.</string>
+    <string name="system_install_warning_lollipop">ذلك سيستغرق فترة تصل إلى 10 ثواني، وسوف يتم <b>إعادة تشغيل</b> بعد ذلك.</string>
     <string name="system_uninstall">هل تريد إلغاء تثبيت اف-درويد مميز التمديد؟</string>
-    <string name="system_uninstall_button">الغاء التثبيت</string>
+    <string name="system_uninstall_button">إلغاء التثبيت</string>
     <string name="system_install_not_supported">اف-درويد مميز التمديد غير مدعوم حاليا تثبيته على الأندرويد الإصدار 5.1 و بعد.</string>
 
     <string name="swap_nfc_title">إختر باللمس للتبديل</string>
     <string name="swap_nfc_description">إذا كان صديقك لديه اف-درويد او NFC على قيد التشغيل يمكنك توصيل الأجهزة معا.</string>
     <string name="swap_join_same_wifi">إنضم إلى الإنترنت اللاسلكي مثل صديقك</string>
-    <string name="swap_join_same_wifi_desc">للتبديل باستخدام الانترنت اللاسلكي، لضمان إن كنت على نفس الشبكة. إذا لم يكن لديك الوصول إلى نفس الشبكة، يمكن إنشاء شبكة إنترنت لاسلكي.</string>
+    <string name="swap_join_same_wifi_desc">للتبديل باستخدام الإنترنت اللاسلكي، لضمان إن كنت على نفس الشبكة. إذا لم يكن لديك الوصول إلى نفس الشبكة، يمكن إنشاء شبكة إنترنت لاسلكي.</string>
     <string name="swap_join_this_hotspot">دعوة صديقك للانضمام لشبكة الإنترنت الخاصة بك</string>
     <string name="swap">تطبيقات بديلة</string>
     <string name="swap_success">المبادلة تمت بنجاح!</string>
@@ -275,28 +286,28 @@
     <string name="swap_view_available_networks">اختر لفتح الشبكات المتاحة</string>
     <string name="swap_switch_to_wifi">إختر للتحول إلى الشبكة اللاسلكية</string>
     <string name="open_qr_code_scanner">فتح لاقط رمز الاستجابة السريع</string>
-    <string name="swap_welcome">أهلا وسهلا بك في اف-درويد!</string>
+    <string name="swap_welcome">أهلا وسهلا بك في اف-درويد !</string>
     <string name="swap_confirm_connect">هل ترغب في الحصول على التطبيقات من %1$s الآن؟</string>
     <string name="swap_dont_show_again">عدم إظهار ذلك مرة أخرى</string>
     <string name="swap_scan_or_type_url">يحتاج إلى التقاط الرمز، أو كتابة عنوان URL الآخر في المتصفح.</string>
     <string name="swap_choose_apps">اختيار التطبيقات</string>
     <string name="swap_scan_qr">التقاط رمز الاستجابة السريعة</string>
-    <string name="swap_people_nearby">اشخاص في مكان قريب</string>
-    <string name="swap_scanning_for_peers">البحث عن أشخاص في مكان قريب…</string>
+    <string name="swap_people_nearby">أشخاص حوالي</string>
+    <string name="swap_scanning_for_peers">البحث عن أشخاص في مقربة مني …</string>
     <string name="swap_nearby">المبادلة في مكان قريب</string>
-    <string name="swap_intro">ربط وتبادل تطبيقات مع اشخاص بالقرب منك.</string>
+    <string name="swap_intro">ربط وتبادل تطبيقات مع أشخاص بالقرب منك.</string>
     <string name="swap_visible_bluetooth">ظاهر عن طريق البلوتوث</string>
     <string name="swap_setting_up_bluetooth">إنشاء بلوتوث…</string>
     <string name="swap_not_visible_bluetooth">غير ظاهر عن طريق البلوتوث</string>
-    <string name="swap_visible_wifi">ظاهر عبر شبكة الانترنت اللاسلكية</string>
-    <string name="swap_setting_up_wifi">يتم إعداد شبكة الانترنت اللاسلكية…</string>
-    <string name="swap_stopping_wifi">يتم إيقاف شبكة الانترنت اللاسلكية…</string>
-    <string name="swap_not_visible_wifi">غير ظاهر عبر شبكة الانترنت اللاسلكية</string>
+    <string name="swap_visible_wifi">ظاهر عبر شبكة الإنترنت اللاسلكية</string>
+    <string name="swap_setting_up_wifi">يتم إعداد شبكة الإنترنت اللاسلكية…</string>
+    <string name="swap_stopping_wifi">يتم إيقاف شبكة الإنترنت اللاسلكية…</string>
+    <string name="swap_not_visible_wifi">غير ظاهر عبر شبكة الإنترنت اللاسلكية</string>
     <string name="swap_wifi_device_name">اسم الجهاز</string>
     <string name="swap_cant_find_peers">لا يمكن العثور على من كنت تبحث عنه؟</string>
     <string name="swap_send_fdroid">إرسال اف-درويد</string>
     <string name="swap_no_peers_nearby">لا يمكن العثور على شخص في مكان قريب للمبادلة معه.</string>
-    <string name="swap_connecting">يتم الاتصال</string>
+    <string name="swap_connecting">جاري الاتصال</string>
     <string name="swap_confirm">تأكيد المبادلة</string>
     <string name="swap_qr_isnt_for_swap">رمز الاستجابة السريعة الذي تم التقاطه لا يبدو وكأنه رمز المبادلة.</string>
     <string name="bluetooth_unavailable">البلوتوث غير متاح</string>
@@ -309,42 +320,50 @@
     <string name="tap_to_install_format">إختر لتثبيت %s</string>
     <string name="tap_to_update_format">إختر لتحديث %s</string>
     <string name="install_confirm">يحتاج إلى الوصول إلى</string>
-    <string name="install_confirm_update">هل تريد تثبيت تحديث هذا التطبيق الموجود؟ لن يتم فقدان البيانات الموجودة لديك. على تحديث التطبيق سوف تتمكن الوصول إلى:</string>
-    <string name="install_confirm_update_system">هل تريد تثبيت تحديث لهذا التطبيق المدمج؟ لن يتم فقدان البيانات الموجودة لديك. على تحديث التطبيق سوف تتمكن من الوصول إلى:</string>
-    <string name="install_confirm_update_no_perms">هل تريد تثبيت تحديث لهذا التطبيق الموجود؟ لن يتم فقدان البيانات الموجودة لديك. فإنه لا يتطلب أي دخول خاص.</string>
-    <string name="install_confirm_update_system_no_perms">هل تريد تثبيت تحديث لهذا التطبيق المدمج؟ لن يتم فقدان البيانات الموجودة لديك. فإنه لا يتطلب أي دخول خاص.</string>
+    <string name="install_confirm_update">هل تريد تحديث
+هذا التطبيق الموجود؟ لن تفقد بياناتك الموجودة.
+التطبيق المحدث سوف يتمكن من الوصول إلى:</string>
+    <string name="install_confirm_update_system">هل تريد تثبيت تحديث 
+لهذا التطبيق المدمج؟ لن تفقد بياناتك الموجودة. 
+التطبيق المحدث سوف يتمكن من الوصول إلى:</string>
+    <string name="install_confirm_update_no_perms">هل تريد تثبيت تحديث 
+لهذا التطبيق الموجود؟ لن تفقد بياناتك الموجودة. 
+إنه لا يتطلب أي دخول خاص.</string>
+    <string name="install_confirm_update_system_no_perms">هل تريد تثبيت تحديث 
+لهذا التطبيق المدمج؟ لن تفقد بياناتك الموجودة. 
+إنه لا يتطلب أي دخول خاص.</string>
     <string name="newPerms">جديد</string>
     <string name="allPerms">الكل</string>
     <string name="perm_costs_money">ذلك قد يكلفك مالياً</string>
     <string name="uninstall_update_confirm">هل تريد استبدال هذا التطبيق بإصدار المصنع؟</string>
     <string name="uninstall_confirm">هل تريد إزالة هذا التطبيق؟</string>
-    <string name="tap_to_install">التحميل إكتمل، إختر لتثبيت</string>
-    <string name="download_error">التحميل لم ينجح</string>
-    <string name="download_pending">في الانتظار لبدء التحميل…</string>
-    <string name="install_error_notify_title">خطأ في تحميل %s</string>
+    <string name="tap_to_install">التحميل اكتمل، قم باللمس لتثبيته</string>
+    <string name="download_error">لم ينجح التنزيل</string>
+    <string name="download_pending">في الانتظار لبدء التنزيل …</string>
+    <string name="install_error_notify_title">خطأ في تثبيت %s</string>
     <string name="uninstall_error_notify_title">خطأ في إلغاء تثبيت %s</string>
 
 
-    <string name="perms_new_perm_prefix">"جديد: "</string>
+    <string name="perms_new_perm_prefix">"جديد : "</string>
     <string name="perms_description_app">المقدمة من %1$s.</string>
-    <string name="downloading">يتم التحميل…</string>
-    <string name="downloading_apk">يتم تحميل %1$s</string>
+    <string name="downloading">جاري التنزيل …</string>
+    <string name="downloading_apk">يتم تنزيل %1$s</string>
     <string name="installing">يتم التثبيت…</string>
-    <string name="uninstalling">يتم إلغاء التثبيت…</string>
+    <string name="uninstalling">جاري إلغاء التثبيت…</string>
 
     <string name="interval_never">لا</string>
-    <string name="interval_1h">بالساعة</string>
+    <string name="interval_1h">كل ساعة</string>
     <string name="interval_4h">كل 4 ساعات</string>
     <string name="interval_12h">كل 12 ساعة</string>
     <string name="interval_1d">يومياً</string>
-    <string name="interval_1w">اسبوعياً</string>
-    <string name="interval_2w">كل اسبوعين</string>
+    <string name="interval_1w">أسبوعياً</string>
+    <string name="interval_2w">كل أسبوعين</string>
 
     <string name="keep_hour">ساعة</string>
     <string name="keep_day">يوم</string>
-    <string name="keep_week">اسبوع</string>
+    <string name="keep_week">أسبوع</string>
     <string name="keep_month">شهر</string>
-    <string name="keep_year">سنه</string>
+    <string name="keep_year">سنة</string>
     <string name="keep_forever">إلى الأبد</string>
 
     <string name="theme_light">نور</string>
@@ -352,6 +371,14 @@
     <string name="theme_night">ليل</string>
 
     <string name="crash_dialog_title">لقد تعطل اف-درويد</string>
-    <string name="crash_dialog_text">حدث خطأ غير متوقع اجبر التطبيق للتوقف. هل ترغب في ارسال بريد الإلكتروني التفاصيل للمساعدة في حل المشكلة؟</string>
+    <string name="crash_dialog_text">حدث خطأ غير متوقع اجبر التطبيق للتوقف. هل ترغب في إرسال بريد الإلكتروني بالتفاصيل للمساعدة في حل المشكلة؟</string>
     <string name="crash_dialog_comment_prompt">يمكنك إضافة معلومات وتعليقات إضافية هنا:</string>
-</resources>
+<string name="keep_install_history">الحفاظ على تاريخ التثبيت</string>
+    <string name="keep_install_history_summary">تخزين سجل عن جميع التثبيتات و إلغاء التثبيتات في اف-درويد</string>
+    <string name="update_auto_install">تثبيت التحديثات تلقائيا</string>
+    <string name="update_auto_install_summary">تحميل و تثبيت تحديث التطبيقات في الخلفية</string>
+    <string name="versions">الإصدارات</string>
+    <string name="warning_no_internet">لا يمكن التحديث, هل انت متصل بالانترنت ؟</string>
+    <string name="hide_anti_feature_apps_on">تعتيم جزئي للتطبيقات التي تتطلب ميزات غير مرغوبة</string>
+    <string name="hide_anti_feature_apps">تعتيم للتطبيقات الغير مرغوبة</string>
+    </resources>

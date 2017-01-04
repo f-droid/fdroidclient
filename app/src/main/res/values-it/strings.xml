@@ -383,4 +383,6 @@ non saranno rimossi. Non richiede alcun permesso speciale.</string>
     <string name="hide_anti_feature_apps_on">Disabilita le applicazioni che necessitano non-funzioni</string>
     <string name="keep_install_history">Mantieni cronologia installazione</string>
     <string name="keep_install_history_summary">Salva un log delle installazioni e disinstallazioni all\'interno di F-Droid</string>
+    <string name="versions">Versioni</string>
+    <string name="warning_no_internet">Impossibile Aggiornare,sei connesso ad internet?</string>
     </resources>

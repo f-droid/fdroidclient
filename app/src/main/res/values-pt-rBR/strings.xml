@@ -12,7 +12,7 @@
   <string name="update_interval">Intervalo de atualização automática</string>
   <string name="update_interval_zero">Não atualizar a lista de aplicativos automaticamente</string>
   <string name="automatic_scan_wifi">Apenas com Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Atualizar a lista de aplicativos automaticamente apenas com Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Atualizar automaticamente apenas em redes com acesso ilimitado, como Wi-Fi</string>
   <string name="notify">Notificações de atualização</string>
   <string name="notify_on">Mostrar uma notificação quando atualizações estiverem disponíveis</string>
   <string name="update_history">Atualizar histórico</string>
@@ -133,8 +133,8 @@
   <string name="unsigned_description">Isto significa que a lista de
 aplicativos não pôde ser verificada. Você deve ter cuidado
 com aplicativos baixados a partir de índices não assinados.</string>
-  <string name="repo_not_yet_updated">Este repositório não foi usado ainda.
-Você tem que ativá-lo para ver os aplicativos que ele disponibiliza.</string>
+  <string name="repo_not_yet_updated">Este repositório ainda não foi usado.
+Você precisa ativá-lo para ver os aplicativos que ele disponibiliza.</string>
   <string name="unknown">Desconhecido</string>
   <string name="repo_confirm_delete_title">Apagar repositório?</string>
   <string name="repo_confirm_delete_body">A exclusão de um repositório significa que
@@ -363,8 +363,8 @@ com os detalhes para ajudar a corrigir o problema?</string>
     <string name="keep_year">1 ano</string>
     <string name="keep_forever">Para sempre</string>
 
-    <string name="install_error_notify_title">Erro instalando %s</string>
-    <string name="uninstall_error_notify_title">Erro desinstalando %s</string>
+    <string name="install_error_notify_title">Erro ao instalar %s</string>
+    <string name="uninstall_error_notify_title">Erro ao desinstalar %s</string>
 
 
     <string name="installing">Instalando…</string>
@@ -376,4 +376,6 @@ com os detalhes para ajudar a corrigir o problema?</string>
     <string name="update_auto_install_summary">Baixar e instalar atualizações em segundo plano</string>
     <string name="hide_anti_feature_apps">Marcar de cinza aplicativos com recursos indesejáveis</string>
     <string name="hide_anti_feature_apps_on">Marcar de cinza aplicativos que exigem recursos indesejáveis</string>
+    <string name="warning_no_internet">Não é possível atualizar. Você está conectado à Internet?</string>
+    <string name="versions">Versões</string>
     </resources>

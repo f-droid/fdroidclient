@@ -292,7 +292,7 @@
     <string name="swap_intro">Tengstu fólki í nágrenninu og skipstu á forritum við það.</string>
     <string name="swap_qr_isnt_for_swap">QR-kóðinn sem þú skannaðir lítur ekki út eins og býttikóði.</string>
     <string name="update_interval_zero">Engar sjálfvirkar uppfærslur forritalista</string>
-    <string name="automatic_scan_wifi_on">Einungis uppfæra forritalista sjálfvirkt þegar tengst er þráðlausu Wi-Fi neti</string>
+    <string name="automatic_scan_wifi_on">Einungis uppfæra sjálfvirkt þegar tengst er kostnaðarlausum netkerfum á borð við Wi-Fi netum</string>
     <string name="system_installer_on">Nota forgangsviðbót F-Droid (privileged extension) til að setja upp, uppfæra og fjarlægja pakka</string>
     <string name="uninstall_system">Uppfæra/Fjarlægja forgangsviðbót</string>
     <string name="uninstall_system_summary">Opnaðu skjáinn með ítarupplýsingum um forgangsviðbótina til að uppfæra/fjarlægja hana</string>
@@ -394,4 +394,8 @@ Uppfærða forritið þarf engan sérstakan aðgang.</string>
     <string name="crash_dialog_text">Upp kom óvænt villa sem þvingaði fram lokun 
 á forritinu. Viltu senda tölvupóst með nánari upplýsingum 
 um atvikið til að hjálpa við að laga þetta ?</string>
+    <string name="keep_install_history">Halda yfirliti yfir uppsetningar</string>
+    <string name="keep_install_history_summary">Geyma annál yfir allar uppsetningar og fjarlægingar forrita innan F-Droid</string>
+    <string name="warning_no_internet">Get ekki uppfært, ertu tengdur við internetið?</string>
+    <string name="versions">Útgáfur</string>
     </resources>

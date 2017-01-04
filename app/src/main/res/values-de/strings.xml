@@ -12,7 +12,7 @@
   <string name="update_interval">Automatisches Aktualisierungsintervall</string>
   <string name="update_interval_zero">Keine automatischen Aktualisierungen der Anwendungsliste</string>
   <string name="automatic_scan_wifi">Nur über WLAN</string>
-  <string name="automatic_scan_wifi_on">Anwendungsliste nur über WLAN automatisch aktualisieren</string>
+  <string name="automatic_scan_wifi_on">Anwendungsliste nur über gebührenfreie Netze wie WLAN automatisch aktualisieren</string>
   <string name="notify">Aktualisierungsbenachrichtigungen</string>
   <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
   <string name="update_history">Aktualisierungsverlauf</string>
@@ -220,7 +220,9 @@ um Anwendungen daraus installieren zu können.</string>
     <string name="more">Mehr</string>
     <string name="less">Weniger</string>
 
-    <string name="empty_installed_app_list">Keine Anwendungen installiert.\n\nEs sind Anwendungen auf deinem Gerät installiert, aber keine davon ist in F-Droid erhältlich. Das könnte daran liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Anwendungen beinhalten.</string>
+    <string name="empty_installed_app_list">Keine Anwendungen installiert.
+
+Es sind Anwendungen auf Ihrem Gerät installiert, aber keine davon ist von F-Droid abrufbar. Das könnte daran liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Anwendungen beinhalten.</string>
     <string name="empty_available_app_list">Keine Anwendungen in dieser Kategorie.\n\nBitte eine andere Kategorie versuchen oder die Paketquellen aktualisieren.</string>
     <string name="empty_can_update_app_list">Alle Anwendungen sind auf dem neuesten Stand.\n\nGlückwunsch! Alle Ihre Apps sind auf dem neuesten Stand (oder Ihre Paketquellen sind veraltet).</string>
 
@@ -365,4 +367,6 @@ um Anwendungen daraus installieren zu können.</string>
     <string name="update_auto_install_summary">Anwendungsaktualisierungen im Hintergrund herunterladen und installieren</string>
     <string name="keep_install_history">Installationsverlauf behalten</string>
     <string name="keep_install_history_summary">Ein Protokoll aller Installationen und Deinstallationen von F-Droid speichern</string>
+    <string name="warning_no_internet">Aktualisierung kann nicht durchgeführt werden! Besteht eine Internetverbindung?</string>
+    <string name="versions">Versionen</string>
     </resources>

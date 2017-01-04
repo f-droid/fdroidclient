@@ -360,4 +360,5 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="keep_install_history">Zachowaj historię instalacji</string>
     <string name="keep_install_history_summary">Zapisuje w dzienniku F-Droida historię wszystkich instalacji i dezinstalacji</string>
     <string name="warning_no_internet">Nie można zaktualizować, czy jesteś połączony z Internetem?</string>
+    <string name="versions">Wersje</string>
     </resources>

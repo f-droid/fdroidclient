@@ -377,4 +377,5 @@ Depes
     <string name="keep_install_history">Sarba s\'istòria de sas installatziones</string>
     <string name="keep_install_history_summary">Sarba unu regitru de sas installatziones e de sas disinstallatziones in F-Droid</string>
     <string name="warning_no_internet">Impossìbile agiornare, ses connessu a ìnternet?</string>
+    <string name="versions">Versiones</string>
     </resources>

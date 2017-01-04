@@ -141,8 +141,15 @@ bağlanılıyor</string>
 Sunduğu uygulamaları görmek için onu güncellemeniz gerekir.</string>
   <string name="unknown">Bilinmiyor</string>
   <string name="repo_confirm_delete_title">Depo silinsin mi?</string>
-  <string name="repo_confirm_delete_body">Bir depoyu silmek, ondan indirilen uygulamaların bundan böyle F-Droid vasıtasıyla elde edilemeyeceği anlamına gelir.\n\nNot: Tüm önceden kurulan uygulamalar aygıtınızda kalacaktır.</string>
-  <string name="repo_disabled_notification">\"%1$s\" devre dışı bırakıldı.\n\nOndan uygulama indirmek için bu depoyu tekrar etkinleştirmeniz gerekecektir.</string>
+  <string name="repo_confirm_delete_body">Bir depoyu silmek, ondan indirilen uygulamaların bundan
+böyle F-Droid vasıtasıyla elde edilemeyeceği anlamına gelir.
+
+Not: Tüm 
+önceden kurulan uygulamalar aygıtınızda kalacaktır.</string>
+  <string name="repo_disabled_notification">\"%1$s\" devre dışı bırakıldı.
+
+Ondan uygulama indirmek için
+bu depoyu tekrar etkinleştirmeniz gerekecektir.</string>
   <string name="repo_added">F-Droid deposu %1$s kaydedildi.</string>
   <string name="repo_searching_address">%1$s konumunda F-Droid deposu aranıyor</string>
   <string name="minsdk_or_later">%s ya da sonrası</string>
@@ -276,10 +283,18 @@ Sunduğu uygulamaları görmek için onu güncellemeniz gerekir.</string>
     <string name="swap_not_enabled_description">Takas yapmadan önce aygıtınızın görünebilir olması gerekmektedir.</string>
 
     <string name="install_confirm">şunlara erişime gereksinir:</string>
-    <string name="install_confirm_update">Bu mevcut uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolmayacaktır. Güncellenmiş uygulamanın şunlara erişimi olacaktır:</string>
-    <string name="install_confirm_update_system">Bu gömülü uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolamayacaktır. Güncellenmiş uygulamanın şunlara erişimi olacaktır:</string>
-    <string name="install_confirm_update_no_perms">Bu mevcut uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolmayacaktır. Herhangi özel bir erişim gerektirmemektedir.</string>
-    <string name="install_confirm_update_system_no_perms">Bu gömülü uygulama için bir güncelleme kurmak istiyor musunuz? Mevcut verileriniz kaybolmayacaktır. Herhangi özel bir erişim gerektirmemektedir.</string>
+    <string name="install_confirm_update">Bu mevcut uygulama için bir güncelleme kurmak
+istiyor musunuz? Mevcut verileriniz kaybolmayacaktır.
+Güncellenmiş uygulamanın şunlara erişimi olacaktır:</string>
+    <string name="install_confirm_update_system">Bu gömülü uygulama için bir güncelleme kurmak
+istiyor musunuz? Mevcut verileriniz kaybolamayacaktır.
+Güncellenmiş uygulamanın şunlara erişimi olacaktır:</string>
+    <string name="install_confirm_update_no_perms">Bu mevcut uygulama için bir güncelleme kurmak
+istiyor musunuz? Mevcut verileriniz kaybolmayacaktır.
+Herhangi özel bir erişim gerektirmemektedir.</string>
+    <string name="install_confirm_update_system_no_perms">Bu gömülü uygulama için bir güncelleme kurmak
+istiyor musunuz? Mevcut verileriniz kaybolmayacaktır.
+Herhangi özel bir erişim gerektirmemektedir.</string>
     <string name="newPerms">Yeni</string>
     <string name="allPerms">Tümü</string>
     <string name="perm_costs_money">Bu, paraya mal olabilir</string>
@@ -305,7 +320,9 @@ Sunduğu uygulamaları görmek için onu güncellemeniz gerekir.</string>
     <string name="theme_night">Gece</string>
 
     <string name="crash_dialog_title">F-Droid çökmüştür</string>
-    <string name="crash_dialog_text">Beklenmedik bir hata meydana geldi ve bu uygulamanın kapanmasını zorladı. Sorunun giderilmesine yardımcı olmak için ayrıntıları e-posta ile göndermek ister misiniz?</string>
+    <string name="crash_dialog_text">Beklenmedik bir hata meydana geldi ve bu uygulamanın
+kapanmasını zorladı. Sorunun giderilmesine yardımcı olmak
+için ayrıntıları e-posta ile göndermek ister misiniz?</string>
     <string name="crash_dialog_comment_prompt">Ek bilgi ve yorumlarınızı burada ekleyebilirsiniz:</string>
 <string name="uninstall_system">Ayrıcalıklı Uzantıyı Güncelle/Kaldır</string>
     <string name="uninstall_system_summary">Güncellemek/kaldırmak için Ayrıcalıklı Uzantı\'nın ayrıntılar ekranını açın</string>
@@ -358,4 +375,8 @@ Sunduğu uygulamaları görmek için onu güncellemeniz gerekir.</string>
     <string name="keep_install_history_summary">F-Droid içindeki tüm kurulum ve kaldırmaların günlüğünü depola</string>
     <string name="update_auto_install">Güncellemeleri kendiliğinden kur</string>
     <string name="warning_no_internet">Güncellenemiyor, internete bağlı mısınız?</string>
+    <string name="update_auto_install_summary">Uygulama güncellemelerini arka planda indir ve kur</string>
+    <string name="versions">Sürümler</string>
+    <string name="hide_anti_feature_apps">"Anti-işlev içeren  uygulamaları gri göster"</string>
+    <string name="hide_anti_feature_apps_on">Anti-işlev gerektiren uygulamaları gri göster</string>
     </resources>

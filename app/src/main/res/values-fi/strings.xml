@@ -12,17 +12,17 @@
   <string name="update_interval">Automaattisen päivityksen tiheys</string>
   <string name="update_interval_zero">Ei automaattisia sovellusluetteloiden päivityksiä</string>
   <string name="automatic_scan_wifi">Vain Wi-Fi -yhteydellä</string>
-  <string name="automatic_scan_wifi_on">Päivitä sovelluslistat automaattisesti vain Wi-Fi -yhteydellä</string>
+  <string name="automatic_scan_wifi_on">Päivitä automaattisesti vain rajoittamattomissa verkoissa, kuten Wi-Fi</string>
   <string name="notify">Päivitysimoitukset</string>
   <string name="notify_on">Näytä iIlmoitus, kun päivityksiä on saatavilla</string>
   <string name="update_history">Päivityshistoria</string>
   <string name="update_history_summ">Päivien määrä, jolloin sovellus näytetään uutena: %s</string>
-  <string name="system_installer">Privileged Extension</string>
+  <string name="system_installer">Etuoikeutettu laajennus</string>
   <string name="system_installer_on">Käytä F-Droid Privileged Extensionia asentamiseen, päivittämiseen ja pakettien poistamiseen</string>
   <string name="local_repo_name">Paikallisen sovelluslähteesi nimi</string>
   <string name="local_repo_name_summary">Paikallisen sovelluslähteesi mainostettava otsikko: %s</string>
-  <string name="local_repo_https">Käytä yksityisyhteyttä</string>
-  <string name="local_repo_https_on">Käytä salattua HTTPS:// -yhteyttä paikalliselle sovelluslähteelle</string>
+  <string name="local_repo_https">Käytä yksityistä yhteyttä</string>
+  <string name="local_repo_https_on">Käytä salattua HTTPS-yhteyttä paikalliselle sovelluslähteelle</string>
   <string name="app_details">Sovelluksen tiedot</string>
   <string name="no_such_app">Sovellusta ei löytynyt.</string>
   <string name="about_title">Tietoa F-Droidista</string>
@@ -89,7 +89,7 @@
   <string name="local_repo_running">F-Droid on valmis vaihtamaan</string>
   <string name="touch_to_configure_local_repo">Kosketa nähdäksesi tiedot ja salliaksesi toisten vaihtaa sovelluksiasi.</string>
   <string name="deleting_repo">Poistetaan nykyistä sovelluslähdettä…</string>
-  <string name="adding_apks_format">Lisätään %s sovelluslähteeseen…</string>
+  <string name="adding_apks_format">Lisätään %s sovelluslähteisiin…</string>
   <string name="writing_index_jar">Kirjoitetaan allekirjoitettua hakemistotiedostoa (index.jar)…</string>
   <string name="linking_apks">Linkitetään APK -tiedostot sovelluslähteeseen…</string>
   <string name="copying_icons">Kopioidaan kuvakkeita sovelluslähteeseen…</string>
@@ -162,7 +162,7 @@
     <string name="about_license">Lisenssi</string>
 
     <string name="app_incompatible">Yhteensopimaton</string>
-    <string name="app_inst_known_source">Asennettu (%s lähteestä)</string>
+    <string name="app_inst_known_source">Asennettu (lähteestä %s)</string>
     <string name="login_title">Todennus vaaditaan</string>
     <string name="back">Takaisin</string>
     <string name="interval_1h">1 tunnin välein</string>
@@ -188,9 +188,9 @@
     <string name="update_auto_download_summary">Lataa päivitykset taustalla</string>
     <string name="uninstall_system">Päivitä/Poista Privileged Extension</string>
     <string name="uninstall_system_summary">Avaa Privileged Extensionin asetussivu päivittääksesi tai poistaaksesi sen</string>
-    <string name="repo_error_empty_username">Käyttäjätunnus tyhjä, käyttäjätietoja ei tallennettu</string>
+    <string name="repo_error_empty_username">Ei käyttäjänimeä. Tietoja ei muutettu.</string>
 
-    <string name="repo_exists_enable">Tämä sovelluslähde on jo asennettu, vahvista että haluat ottaa sen käyttöön uudelleen.</string>
+    <string name="repo_exists_enable">Tämä sovelluslähde on jo asennettu, vahvista, että haluat ottaa sen käyttöön uudelleen.</string>
     <string name="repo_exists_and_enabled">Tuleva sovelluslähde on jo asennettu ja käytössä.</string>
     <string name="repo_delete_to_overwrite">Sinun täytyy ensin poistaa tämä sovelluslähde, ennen kuin voit lisätä toisen eri avaimella.</string>
     <string name="bad_fingerprint">Huono sormenjälki</string>
@@ -304,7 +304,7 @@ Onnittelut! Kaikki sovelluksesi ovat ajan tasalla (tai sovelluslähteesi ovat va
     <string name="swap_nfc_title">Kosketa vaihtaaksesi</string>
     <string name="swap_join_same_wifi_desc">Vaihtaaksesi sovelluksia Wi-Fin avulla, sinun tulee olla samassa verkossa. Jos sinulla ei ole pääsyä samaan verkkoon, voit luoda oman Wi-Fi-hotspotin.</string>
     <string name="swap_join_this_hotspot">Auta ystävääsi liittymään hotspottiisi</string>
-    <string name="swap_success">Vaihto onnistui!</string>
+    <string name="swap_success">Vaihtaminen onnistui!</string>
     <string name="swap_switch_to_wifi">Napsauta vaihtaaksesi Wi-Fi-verkkoa</string>
     <string name="swap_scan_or_type_url">Henkilön tulee skannata koodi tai kirjoittaa toisen URL-osoite selaimeen.</string>
     <string name="swap_people_nearby">Lähellä olevat ihmiset</string>
@@ -366,4 +366,6 @@ Onnittelut! Kaikki sovelluksesi ovat ajan tasalla (tai sovelluslähteesi ovat va
     <string name="system_uninstall">Haluatko poistaa F-Droid Privileged Extensionin asennuksen?</string>
     <string name="system_install_not_supported">F-Droid Privileged Extensionin asennusta ei tueta Android 5.1+ -versioissa.</string>
 
+    <string name="versions">Versiot</string>
+    <string name="warning_no_internet">Päivitys epäonnistui, tarkistithan verkkoyhteytesi?</string>
     </resources>

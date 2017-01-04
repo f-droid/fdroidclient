@@ -12,7 +12,7 @@
   <string name="update_interval">Интервал автоматического обновления</string>
   <string name="update_interval_zero">Не обновлять список приложений автоматически</string>
   <string name="automatic_scan_wifi">Только по Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Обновлять списки приложений автоматически только по Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Обновлять автоматически только по нелимитированным соединениям (таким как Wi-Fi)</string>
   <string name="notify">Уведомления об обновлениях</string>
   <string name="notify_on">Отображать уведомление когда есть обновления</string>
   <string name="update_history">История обновлений</string>
@@ -355,4 +355,10 @@
 
     <string name="update_auto_install">Устанавливать обновления автоматически</string>
     <string name="update_auto_install_summary">Загружать и устанавливать обновления в фоне</string>
+    <string name="keep_install_history">Хранить историю установок</string>
+    <string name="keep_install_history_summary">Хранить в F-Droid журнал всех установок и удалений</string>
+    <string name="hide_anti_feature_apps">Выделять приложения с нежелательными функциями</string>
+    <string name="hide_anti_feature_apps_on">Выделять серым цветом приложения, содержащие нежелательный функционал</string>
+    <string name="warning_no_internet">Не могу обновить. Вы подключены к интернету?</string>
+    <string name="versions">Версии</string>
     </resources>

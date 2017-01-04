@@ -10,7 +10,7 @@
   <string name="update_interval">Auto. frissítés intervalluma</string>
   <string name="update_interval_zero">Ne frissítsen automatikusan</string>
   <string name="automatic_scan_wifi">Csak Wi-Fi-n</string>
-  <string name="automatic_scan_wifi_on">Automatikus alkalmazás lista frissítése csak Wi-Fi-n keresztül</string>
+  <string name="automatic_scan_wifi_on">Automatikus alkalmazáslista-frissítés csak korlátlan kapcsolatokon, pl. Wi-Fi-n keresztül</string>
   <string name="notify">Frissítési értesítések</string>
   <string name="notify_on">Értesít ha frissítés érhető el</string>
   <string name="update_history">Frissítési előzmények</string>
@@ -308,4 +308,11 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
     <string name="keep_install_history_summary">Napló tárolása az F-Droidban végzett telepítésekről és eltávolításokról</string>
     <string name="update_auto_install">Frissítések automatikus telepítése</string>
     <string name="update_auto_install_summary">Alkalmazásfrissítések letöltése és telepítése háttérben</string>
+    <string name="by_author">tőle:</string>
+    <string name="uninstall_system">Kiváltságos kiterjesztés frissítése/letörlése</string>
+    <string name="uninstall_system_summary">A kiváltságos kiterjesztés részleteinek megnyitása frissítéshez/törléshez</string>
+    <string name="versions">Verziók</string>
+    <string name="hide_anti_feature_apps">Ellenjavaslattal rendelkező app-ok kiszürkítése</string>
+    <string name="hide_anti_feature_apps_on">Alkalmazások kiszürkítése, amik ellenjavaslattal rendelkeznek</string>
+    <string name="local_repo_running">Az F-Droid cserére kész</string>
     </resources>

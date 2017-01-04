@@ -51,7 +51,7 @@
     <string name="update_interval">Інтервал автооновлення</string>
     <string name="update_interval_zero">Не оновлювати список програм автоматично</string>
     <string name="automatic_scan_wifi">Тільки через Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Автоматично оновлювати списки програм тільки через Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Автоматично оновлювати списки програм тільки через не лімітовані мережі, такі як Wi-Fi</string>
     <string name="notify_on">Показувати сповіщення коли є доступні оновлення</string>
     <string name="update_history">Історія оновлень</string>
     <string name="update_history_summ">Скільки днів вважати програму новою чи нещодавньою: %s</string>
@@ -383,4 +383,10 @@
 
     <string name="update_auto_install_summary">Завантажити та встановити оновлення в фоні</string>
     <string name="update_auto_install">Автоматично встановлені оновлення</string>
+    <string name="keep_install_history">Зберігати історію встановлення</string>
+    <string name="keep_install_history_summary">Зберігати звіт про всі встановлення та видалення в F-Droid</string>
+    <string name="versions">Версії</string>
+    <string name="hide_anti_feature_apps">Позначати додатки з не бажаним функціоналом</string>
+    <string name="hide_anti_feature_apps_on">Позначати сірим додатки, які потребують не бажаний функціонал</string>
+    <string name="warning_no_internet">Не можливо оновитися, чи підключено пристрій до інтернету?</string>
     </resources>

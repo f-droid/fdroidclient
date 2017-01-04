@@ -12,7 +12,7 @@
   <string name="update_interval">Intervalo de actualización automática</string>
   <string name="update_interval_zero">No actualizar la lista de aplicaciones automáticamente</string>
   <string name="automatic_scan_wifi">Sólo con Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Actualizar la lista de aplicaciones automáticamente sólo con Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Actualizar automáticamente sólo con Wi-Fi y otras redes de tarifa plana</string>
   <string name="notify">Notificaciones de actualizaciones</string>
   <string name="notify_on">Muestra una notificación cuando hay actualizaciones</string>
   <string name="update_history">Historial de actualizaciones</string>
@@ -376,4 +376,5 @@ detalles para ayudarnos a arreglar el problema?</string>
     <string name="keep_install_history">Mantener el historial de instalaciones</string>
     <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones en F-Droid</string>
     <string name="warning_no_internet">No se puede actualizar, ¿estás conectado a internet?</string>
+    <string name="versions">Versiones</string>
     </resources>

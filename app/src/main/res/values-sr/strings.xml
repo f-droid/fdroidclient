@@ -12,7 +12,7 @@
   <string name="update_interval">Међувреме самосталног освежавања</string>
   <string name="update_interval_zero">Без самосталног освежавања списка надоградњи</string>
   <string name="automatic_scan_wifi">Само на бежичној мрежи</string>
-  <string name="automatic_scan_wifi_on">Освежавање списка програма само на бежичној мрежи</string>
+  <string name="automatic_scan_wifi_on">Самостално освежавање само на бесплатним мрежама као што је бежична</string>
   <string name="notify">Обавештења о надоградњама</string>
   <string name="notify_on">Приказ обавештења о доступним надоградњама</string>
   <string name="update_history">Историјат надоградњи</string>
@@ -375,4 +375,6 @@
     <string name="update_auto_install_summary">Преузимање и уградња апликација у позадини</string>
     <string name="keep_install_history">Чувај историјат уградњи</string>
     <string name="keep_install_history_summary">Чувај запис свих уградњи и уклањања унутар Ф-дроида</string>
+    <string name="versions">Издања</string>
+    <string name="warning_no_internet">Не могу да освежим, да ли сте повезани на интернет?</string>
     </resources>

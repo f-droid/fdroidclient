@@ -2,7 +2,7 @@
 <resources>
   <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. För att installera den nya versionen måste den gamla versionen avinstalleras först. Gör det och försök sedan igen. (Observera att all intern lagrad data som tillhör programmet kommer att raderas när det avinstalleras.)</string>
   <string name="installIncompatible">Det verkar som att det här paketet inte är kompatibelt med din enhet. Vill du testa att installera det ändå?</string>
-  <string name="installDowngrade">Du försöker nedgradera detta program. Detta kan få det att fungera felaktigt eller till och med orsaka förlust av dina data. Vill du ändå försöka nedgradera?</string>
+  <string name="installDowngrade">Du försöker nedgradera detta program. Detta kan få det att fungera felaktigt eller till och med orsaka förlust av din data. Vill du ändå försöka nedgradera?</string>
   <string name="version">Version</string>
   <string name="delete">Ta bort</string>
   <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
@@ -12,7 +12,7 @@
   <string name="update_interval">Automatiskt uppdateringsintervall</string>
   <string name="update_interval_zero">Inga automatiska uppdateringar av applistor</string>
   <string name="automatic_scan_wifi">Endast via Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Uppdatera applistor automatiskt endast över Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Endast uppdatera automatiskt på obegränsad nätverk som Wi-Fi</string>
   <string name="notify">Avisering vid uppdatering</string>
   <string name="notify_on">Visa avisering när uppdateringar finns tillgängliga</string>
   <string name="update_history">Uppdateringshistorik</string>
@@ -37,7 +37,7 @@
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
   <string name="no">Nej</string>
-  <string name="repo_add_title">Lägg till en ny repository</string>
+  <string name="repo_add_title">Lägg till nytt filförråd</string>
   <string name="repo_add_add">Lägg till</string>
   <string name="cancel">Avbryt</string>
   <string name="enable">Aktivera</string>
@@ -51,13 +51,13 @@
   <string name="bluetooth_activity_not_found">Ingen metod för att kunna skicka med Bluetooth kunde hittas, välj en!</string>
   <string name="choose_bt_send">Välj en sändningsmetod för Bluetooth</string>
   <string name="send_via_bluetooth">Skicka via Bluetooth</string>
-  <string name="repo_add_url">Förråd adress</string>
+  <string name="repo_add_url">Filförrådsadress</string>
   <string name="repo_add_fingerprint">Fingeravtryck (valfritt)</string>
-  <string name="repo_exists_add_fingerprint">Denna repository är redan inställd, det här kommer att lägga till ny nyckelinformation.</string>
-  <string name="repo_exists_enable">Denna repository är redan inställd, bekräfta att du vill återaktivera det.</string>
+  <string name="repo_exists_add_fingerprint">Detta filförråd är redan inställt, det här kommer att lägga till ny nyckelinformation.</string>
+  <string name="repo_exists_enable">Detta filförråd är redan inställt, bekräfta att du vill återaktivera det.</string>
   <string name="repo_exists_and_enabled">Det inkommande förrådet är redan inställt och aktiverat.</string>
   <string name="repo_delete_to_overwrite">Du måste först ta bort detta förråd innan du kan lägga till ett med en annan nyckel.</string>
-  <string name="malformed_repo_uri">Ignorerar felaktig URI för repository\'n: %s</string>
+  <string name="malformed_repo_uri">Ignorera felaktig filförråd URI: %s</string>
   <string name="menu_update_repo">Uppdatera filförråden</string>
   <string name="menu_manage">Filförråd</string>
   <string name="menu_send_apk_bt">Dela F-Droid via Bluetooth</string>
@@ -84,16 +84,16 @@
   <string name="antinonfreedeplist">Den här appen är beroende av andra ofria appar</string>
   <string name="antiupstreamnonfreelist">Källkoden från uppströms är inte fullständigt fri</string>
   <string name="display">Visning</string>
-  <string name="expert">Expert-läge</string>
+  <string name="expert">Expertläge</string>
   <string name="expert_on">Visa extra info och aktivera extra inställningar</string>
   <string name="search_hint">Sök efter applikationer</string>
   <string name="appcompatibility">Applikationens kompabilitet</string>
   <string name="show_incompat_versions">Inkompatibla versioner</string>
   <string name="show_incompat_versions_on">Visa app-versioner som INTE är kompatibla med enheten</string>
-  <string name="rooted">Ignorera rot</string>
-  <string name="rooted_on">Gråtona inte appar som kräver rot-behörighet</string>
-  <string name="ignoreTouch">Ignorera touchskärm</string>
-  <string name="ignoreTouch_on">Inkludera alltid appar som kräver touchskärm</string>
+  <string name="rooted">Ignorera root</string>
+  <string name="rooted_on">Gråtona inte appar som kräver superanvändar-behörigheter</string>
+  <string name="ignoreTouch">Ignorera pekskärm</string>
+  <string name="ignoreTouch_on">Inkludera alltid appar som kräver pekskärm</string>
   <string name="category_All">Alla</string>
   <string name="category_Whats_New">Nyheter</string>
   <string name="category_Recently_Updated">Nyss uppdaterade</string>
@@ -135,11 +135,11 @@
   <string name="unsigned_description">Detta betyder att listan av
 program inte kunde verifieras. Du bör vara försiktig
 med appar som hämtats från osignerade index.</string>
-  <string name="repo_not_yet_updated">Detta förråd har inte använts ännu.
+  <string name="repo_not_yet_updated">Detta filförråd har inte använts ännu.
 Du måste aktivera det för att se apparna det förser dig med.</string>
   <string name="unknown">Okänd</string>
-  <string name="repo_confirm_delete_title">Ta bort förråd?</string>
-  <string name="repo_confirm_delete_body">Att ta bort ett fil-förråd betyder
+  <string name="repo_confirm_delete_title">Ta bort filförråd?</string>
+  <string name="repo_confirm_delete_body">Att ta bort ett filförråd betyder
  att dess appar inte längre kommer att vara tillgängliga från F-Droid.
 
 Notera: Alla
@@ -148,7 +148,7 @@ Notera: Alla
 
 Du kommer
  behöva återaktivera det här fil-förrådet för att kunna installera appar från det.</string>
-  <string name="repo_searching_address">Söker F-Droid-förråd på %1$s</string>
+  <string name="repo_searching_address">Söker F-Droid filförråd på %1$s</string>
   <string name="minsdk_or_later">%s eller senare</string>
   <string name="up_to_maxsdk">Upp till %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s upp till %2$s</string>
@@ -165,9 +165,9 @@ Du kommer
   <string name="category_Science_Education">Vetenskap &amp; utbildning</string>
   <string name="category_Security">Säkerhet</string>
   <string name="category_System">System</string>
-  <string name="requesting_root_access_body">Efterfrågar rot-åtkomst…</string>
-  <string name="root_access_denied_title">Rot-åtkomst nekad</string>
-  <string name="root_access_denied_body">Antingen är din Android-enhet inte rootad eller så har du nekat root-åtkomst för F-Droid.</string>
+  <string name="requesting_root_access_body">Efterfrågar superanvändar-tillträde…</string>
+  <string name="root_access_denied_title">Superanvändar-tillträde nekad</string>
+  <string name="root_access_denied_body">Antingen är din Android-enhet inte rootad eller så har du nekat superanvändar-tillträde för F-Droid.</string>
   <string name="system_install_denied_title">Systembehörigheter nekade</string>
   <string name="system_install_denied_body">Detta val är endast tillgängligt när F-Droid installerats som en system-app.</string>
   <string name="swap_join_same_wifi">Använd samma WiFi som din vän</string>
@@ -204,7 +204,7 @@ Du kommer
     <string name="status_download_unknown_size">Laddar ner\n%2$s från\n%1$s</string>
     <string name="update_notification_title">Uppdaterar fil-förråden</string>
     <string name="permissions">Tillstånd</string>
-    <string name="repo_details">Fil-förråd</string>
+    <string name="repo_details">Filförråd</string>
     <string name="repo_url">Adress</string>
     <string name="pref_language">Språk</string>
     <string name="pref_language_default">Systemets standard</string>
@@ -228,7 +228,7 @@ Du kommer
     <string name="useTorSummary">Tvinga nedladdningstrafik genom Tor för ökad integritet</string>
     <string name="status_processing_xml_percent">Bearbetar %2$s / %3$s (%4$d%%) från %1$s</string>
     <string name="status_inserting_apps">Sparar applikationsdetaljer</string>
-    <string name="repo_added">Sparade F-Droidförråd %1$s.</string>
+    <string name="repo_added">Sparade F-Droid filförråd %1$s.</string>
     <string name="wifi_ap">Hotspot</string>
 
     <string name="category_Connectivity">Anslutbarhet</string>
@@ -247,7 +247,7 @@ Du kommer
     <string name="empty_search_can_update_app_list">Inga matchande app-uppdateringar.</string>
 
     <string name="install_error_unknown">Misslyckades att installera på grund av ett okänt problem</string>
-    <string name="repo_provider">Förvaringsplats: %s</string>
+    <string name="repo_provider">Filförråd: %s</string>
 
     <string name="uninstall_error_unknown">Det gick inte att avinstallera på grund av ett okänt fel</string>
     <string name="system_install_denied_signature">Signaturen för tillbyggnaden är fel! Skapa en felrapport!</string>
@@ -373,6 +373,8 @@ e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i F-Droid</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
     <string name="update_auto_install_summary">Ladda ner och installera uppdaterings program i bakgrunden</string>
-    <string name="hide_anti_feature_apps">Grå ut anti-funktion appar</string>
-    <string name="hide_anti_feature_apps_on">Grå ut appar som kräver anti-funktioner</string>
+    <string name="hide_anti_feature_apps">Gråa ut anti-funktions appar</string>
+    <string name="hide_anti_feature_apps_on">Gråa ut appar som kräver anti-funktioner</string>
+    <string name="warning_no_internet">Det går inte att uppdatera, är du ansluten till Internet?</string>
+    <string name="versions">Versioner</string>
     </resources>

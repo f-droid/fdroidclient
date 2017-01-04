@@ -385,4 +385,5 @@ konpontzen laguntzeko?</string>
     <string name="keep_install_history">Mantendu instalazio historiala</string>
     <string name="keep_install_history_summary">Gorde instalazio eta desinstalazioen egunkari bat F-Droiden</string>
     <string name="warning_no_internet">Ezin da eguneratu, Internetera konektatuta zaude?</string>
+    <string name="versions">Bertsioak</string>
     </resources>

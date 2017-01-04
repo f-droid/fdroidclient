@@ -5,13 +5,13 @@
     <string name="version">גרסה</string>
     <string name="delete">מחק</string>
     <string name="enable_nfc_send">אפשר NFC Send…</string>
-    <string name="cache_downloaded">הטמן חבילות</string>
+    <string name="cache_downloaded">שמירת יישומונים במטמון</string>
     <string name="updates">עדכונים</string>
     <string name="other">אחר</string>
 
     <string name="update_interval">תדירות עדכון אוטומטי</string>
     <string name="automatic_scan_wifi">רק על גבי Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">עדכן רשימות אפליקציה אוטומטית רק על גבי Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">עדכון רשימות יישומונים אוטומטית רק על גבי Wi-Fi</string>
     <string name="notify">התראות עדכון</string>
     <string name="notify_on">הצג התראה כאשר עדכונים זמינים</string>
     <string name="update_history">היסטוריית עדכון</string>
@@ -211,8 +211,7 @@
     <string name="swap_dont_show_again">אל תציג זאת שוב</string>
     <string name="swap_scan_or_type_url">אדם אחד צריך לסרוק את הקוד, או להקליד URL של המחליף האחר לתוך דפדפן.</string>
 
-    <string name="install_confirm">האם ברצונך להתקין את אפליקציה זו?
-            זו תקבל גישה אל:</string>
+    <string name="install_confirm">נדרשת גישה אל</string>
     <string name="newPerms">חדש</string>
     <string name="allPerms">הכל</string>
     <string name="perm_costs_money">זה עשוי לעלות לך כסף</string>
@@ -287,9 +286,15 @@
     <string name="repo_exists_and_enabled">המאגר הנכנס הינו מותקן ומאופשר כבר.</string>
     <string name="repo_fingerprint">טביעת אצבע של מפתח החתימה (SHA-256)</string>
     <string name="unsigned_description">משמעות הדבר היא שלא היתה אפשרות לאמת את הרשימה של האפליקציות. עליך להיזהר מן אפליקציות אשר מורדות מתוך אינדקסים לא חתומים.</string>
-    <string name="repo_not_yet_updated">מאגר זה לא נמצא בשימוש עדיין. עליך לאפשרו כדי לצפות לצפות באפליקציות אשר מאגר זה מציע.</string>
-    <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי אפליקציות מתוכו לא יהיו זמינים עוד מתוך F-Droid.\n\nהערה: כל אפליקציות אשר הותקנו בעבר יישארו על המכשיר שלך.</string>
-    <string name="repo_disabled_notification">נוטרל %1$s.\n\nעליך לאפשר שוב את מאגר זה כדי להתקין אפליקציות מתוכו.</string>
+    <string name="repo_not_yet_updated">מאגר זה לא נמצא בשימוש עדיין.
+יש לאפשר אותו כדי לצפות ביישומונים שהמאגר הזה מציע.</string>
+    <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי יישומונים מתוכו לא יהיו זמינים עוד מתוך F-Droid.
+
+הערה: כל היישומונים שהותקנו בעבר יישארו על המכשיר שלך.</string>
+    <string name="repo_disabled_notification">נוטרל %1$s.
+
+עליך לאפשר שוב
+ את המאגר זה כדי להתקין יישומונים מתוכו.</string>
     <string name="not_on_same_wifi">המכשיר שלך אינו מצוי על גבי אותה רשת Wi-Fi כמו המאגר המקומי אשר הוספת עתה! נסה להצטרף לרשת זו: %s</string>
     <string name="swap_join_same_wifi_desc">כדי לבצע הֶחְלֵף באמצעות Wi-Fi, וודא כי אתה נמצא על גבי אותה רשת. אם אין לך גישה לאותה הרשת, אחד מכם יכול ליצור Wi-Fi Hotspot.</string>
     <string name="install_confirm_update">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? המידע הקיים שלך לא יאבד. האפליקציה המעודכנת תקבל גישה אל:</string>

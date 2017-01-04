@@ -12,7 +12,7 @@
   <string name="update_interval">Interval automat. aktualizácií</string>
   <string name="update_interval_zero">Automaticky neobnovovať zoznam</string>
   <string name="automatic_scan_wifi">Iba cez Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Automaticky obnoviť zoznam iba cez Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Automaticky aktualizovať len na nespoplatnených sieťach, ako napr. Wi-Fi</string>
   <string name="notify">Oznamovanie aktualizácií</string>
   <string name="notify_on">Upozorniť na dostupnosť aktualizácií</string>
   <string name="update_history">História aktualizácií</string>
@@ -374,4 +374,8 @@ a pomôť tak vyriešiť problém?</string>
     <string name="update_auto_install_summary">Prevziať a nainštalovať aktualizácie aplikácií na pozadí</string>
     <string name="hide_anti_feature_apps">Vyšediť \"anti-feature\" aplikácie</string>
     <string name="hide_anti_feature_apps_on">Vyšediť aplikácie vyžadujúje \"anti-features\"</string>
+    <string name="warning_no_internet">Nemožno aktualizovať, ste pripojený k internetu?</string>
+    <string name="keep_install_history">Uchovať históriu inštalácií</string>
+    <string name="keep_install_history_summary">Uchovávať záznamy o všetkých nainštalovaní a odinštalovaní v F-Droid-e</string>
+    <string name="versions">Verzie</string>
     </resources>

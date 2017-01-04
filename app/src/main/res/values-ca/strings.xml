@@ -11,7 +11,7 @@
   <string name="update_interval">Període d\'actualització automàtica</string>
   <string name="update_interval_zero">No actualitzis automàticament la llista d\'aplicacions</string>
   <string name="automatic_scan_wifi">Només en Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Actualitza la llista d\'aplicacions només en Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Actualitzeu la llista d\'aplicacions en xarxes sense limitació de tràfic com les Wi-Fi</string>
   <string name="notify">Notificacions d\'actualitzacions</string>
   <string name="notify_on">Ensenya una notificació quan hi hagi actualitzacions disponibles</string>
   <string name="update_history">Actualitzacions</string>
@@ -375,4 +375,6 @@ per tal d\'ajudar a resoldre la incidència?</string>
     <string name="keep_install_history_summary">Deseu un registre de totes les instal·lacions i desinstal·lacions fetes per l\'F-Droid</string>
     <string name="update_auto_install">Instal·leu les actualitzacions automàticament</string>
     <string name="update_auto_install_summary">Descarregueu i instal·leu les actualitzacions de les apps en segon pla</string>
+    <string name="versions">Versions</string>
+    <string name="warning_no_internet">No es pot actualitzar: esteu connectat a internet?</string>
     </resources>

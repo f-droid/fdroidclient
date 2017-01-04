@@ -369,4 +369,5 @@
     <string name="keep_install_history">ｲﾝｽﾄｰﾙ履歴を保存する</string>
     <string name="keep_install_history_summary">F-Droid内ですべてのｲﾝｽﾄｰﾙとｱﾝｲﾝｽﾄｰﾙのﾛｸﾞを保存します</string>
     <string name="warning_no_internet">更新できません。ｲﾝﾀｰﾈｯﾄに接続していますか?</string>
+    <string name="versions">ﾊﾞｰｼﾞｮﾝ</string>
     </resources>

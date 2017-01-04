@@ -99,7 +99,7 @@
   <string name="category_Internet">Interreto</string>
   <string name="category_Multimedia">Plurmedioj</string>
   <string name="category_Navigation">Navigado</string>
-  <string name="category_Phone_SMS">Telefono &amp; tekstmesaĝo</string>
+  <string name="category_Phone_SMS">Telefono k etmesaĝado</string>
   <string name="category_Reading">Legado</string>
   <string name="category_Science_Education">Scienco k edukado</string>
   <string name="category_Security">Sekureco</string>
@@ -121,7 +121,7 @@
     <string name="unstable_updates_summary">Proponas ĝisdatigojn al nestabilaj versioj</string>
     <string name="update_interval_zero">Neniam aŭtomate ĝisdatigas listojn de aplikaĵoj</string>
     <string name="automatic_scan_wifi_on">Ĝisdatigas listojn aŭtomate nur per netarifaj retoj kiel vifio</string>
-    <string name="update_history_summ">Traktas aplikaĵojn kiel novaj aŭ ĵus-ĝisdatigaj por: %s tagoj</string>
+    <string name="update_history_summ">Traktas aplikaĵojn kiel novajn aŭ ĵus-ĝisdatigajn por: %s tagoj</string>
     <string name="system_installer">Privilegia aldonaĵo</string>
     <string name="system_installer_on">Uzas privilegian F-Droid-aldonaĵon por instali, ĝisdatigi, kaj forigi pakaĵojn</string>
     <string name="uninstall_system">Ĝisdatigi/malinstali privilegian aldonaĵon</string>
@@ -225,7 +225,7 @@ Vi devos reaktivigi ĉi tiun deponejon por instali aplikaĵojn el ĝi.</string>
     <string name="category_Connectivity">Konekteco</string>
     <string name="category_Graphics">Grafiko</string>
     <string name="category_Money">Mono</string>
-    <string name="category_Sports_Health">Sportoj k saneco</string>
+    <string name="category_Sports_Health">Sporto k sano</string>
     <string name="category_Theming">Etosoj k aspekto</string>
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Skribado</string>
@@ -371,4 +371,5 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
     <string name="keep_install_history">Konservi historion de instaladoj</string>
     <string name="keep_install_history_summary">Memoras historion de instaladoj kaj malinstaladoj en F-Droid</string>
     <string name="warning_no_internet">Ne povas ĝisdatigi, ĉu vi estas konektita kun la Interreto?</string>
+    <string name="versions">Versioj</string>
     </resources>
