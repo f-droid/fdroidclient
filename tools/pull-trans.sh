@@ -7,7 +7,7 @@
 # they are grabbed from git log and added to the commit message.
 #
 # Note that this will apply changes and commit them! Make sure to not have
-# uncommited changes when running this script.
+# uncommitted changes when running this script.
 
 REMOTE="weblate"
 REMOTE_URL="git://git.weblate.org/f-droid.git"
