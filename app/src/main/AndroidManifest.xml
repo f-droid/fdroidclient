@@ -135,21 +135,6 @@
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustResize"
             android:configChanges="layoutDirection|locale|keyboardHidden|orientation|screenSize" >
-
-            <!-- Handle NFC tags detected from outside our application -->
-            <intent-filter>
-                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <!--
-                URIs that come in via NFC have scheme/host normalized to all lower case
-                https://developer.android.com/reference/android/nfc/NfcAdapter.html#ACTION_NDEF_DISCOVERED
-                -->
-                <data android:scheme="fdroidrepo" />
-                <data android:scheme="fdroidrepos" />
-            </intent-filter>
-
         </activity>
         <activity
             android:name=".privileged.views.InstallConfirmActivity"
@@ -511,6 +496,23 @@
                 <data android:pathPattern="/.*/.*/FDROID/REPO" />
                 <data android:pathPattern="/.*/.*/.*/FDROID/REPO" />
             </intent-filter>
+
+
+            <!-- Handle NFC tags detected from outside our application -->
+
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!--
+                URIs that come in via NFC have scheme/host normalized to all lower case
+                https://developer.android.com/reference/android/nfc/NfcAdapter.html#ACTION_NDEF_DISCOVERED
+                -->
+                <data android:scheme="fdroidrepo" />
+                <data android:scheme="fdroidrepos" />
+            </intent-filter>
+
         </activity>
 
         <activity android:name=".views.apps.AppListActivity" />
