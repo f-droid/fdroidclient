@@ -150,74 +150,6 @@
                 <data android:scheme="fdroidrepos" />
             </intent-filter>
 
-            <!-- Repo URLs -->
-
-            <!--
-            This intent serves two purposes: Swapping apps between devices and adding a
-            repo from a website (e.g. https://guardianproject.info/fdroid/repo).
-            We intercept both of these situations in the FDroid activity, and then redirect
-            to the appropriate handler (swap handling, manage repos respectively) from there.
-
-            The reason for this is that the only differentiating factor is the presence
-            of a "swap=1" in the query string, and intent-filter is unable to deal with
-            query parameters. An alternative would be to do something like fdroidswap:// as
-            a scheme, but then we. Need to copy/paste all of this intent-filter stuff and
-            keep it up to date when it changes or a bug is found.
-            -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <!--
-                Android's scheme matcher is case-sensitive, so include
-                ALL CAPS versions to support ALL CAPS URLs in QR Codes.
-                QR Codes have a special ALL CAPS mode that uses a reduced
-                character set, making for more compact QR Codes.
-                -->
-                <data android:scheme="http" />
-                <data android:scheme="HTTP" />
-                <data android:scheme="https" />
-                <data android:scheme="HTTPS" />
-                <data android:scheme="fdroidrepo" />
-                <data android:scheme="FDROIDREPO" />
-                <data android:scheme="fdroidrepos" />
-                <data android:scheme="FDROIDREPOS" />
-
-                <data android:host="*" />
-
-                <!--
-                The pattern matcher here is poorly implemented, in particular the * is
-                non-greedy, so you have to do stupid tricks to match patterns that have
-                repeat characters in them. http://stackoverflow.com/a/8599921/306864
-                -->
-                <data android:path="/fdroid/repo" />
-                <data android:pathPattern="/fdroid/repo/*" />
-                <data android:pathPattern="/.*/fdroid/repo" />
-                <data android:pathPattern="/.*/fdroid/repo/*" />
-                <data android:pathPattern="/.*/.*/fdroid/repo" />
-                <data android:pathPattern="/.*/.*/fdroid/repo/*" />
-                <data android:pathPattern="/.*/.*/.*/fdroid/repo" />
-                <data android:pathPattern="/.*/.*/.*/fdroid/repo/*" />
-                <data android:path="/fdroid/archive" />
-                <data android:pathPattern="/fdroid/archive/*" />
-                <data android:pathPattern="/.*/fdroid/archive" />
-                <data android:pathPattern="/.*/fdroid/archive/*" />
-                <data android:pathPattern="/.*/.*/fdroid/archive" />
-                <data android:pathPattern="/.*/.*/fdroid/archive/*" />
-                <data android:pathPattern="/.*/.*/.*/fdroid/archive" />
-                <data android:pathPattern="/.*/.*/.*/fdroid/archive/*" />
-                <!--
-                Some QR Code scanners don't respect custom schemes like fdroidrepo://,
-                so this is a workaround, since the local repo URL is all uppercase in
-                the QR Code for sending the local repo to another device.
-                -->
-                <data android:path="/FDROID/REPO" />
-                <data android:pathPattern="/.*/FDROID/REPO" />
-                <data android:pathPattern="/.*/.*/FDROID/REPO" />
-                <data android:pathPattern="/.*/.*/.*/FDROID/REPO" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".privileged.views.InstallConfirmActivity"
@@ -510,6 +442,75 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
 
+
+            <!-- Repo URLs -->
+
+            <!--
+            This intent serves two purposes: Swapping apps between devices and adding a
+            repo from a website (e.g. https://guardianproject.info/fdroid/repo).
+            We intercept both of these situations in the FDroid activity, and then redirect
+            to the appropriate handler (swap handling, manage repos respectively) from there.
+
+            The reason for this is that the only differentiating factor is the presence
+            of a "swap=1" in the query string, and intent-filter is unable to deal with
+            query parameters. An alternative would be to do something like fdroidswap:// as
+            a scheme, but then we need to copy/paste all of this intent-filter stuff and
+            keep it up to date when it changes or a bug is found.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!--
+                Android's scheme matcher is case-sensitive, so include
+                ALL CAPS versions to support ALL CAPS URLs in QR Codes.
+                QR Codes have a special ALL CAPS mode that uses a reduced
+                character set, making for more compact QR Codes.
+                -->
+                <data android:scheme="http" />
+                <data android:scheme="HTTP" />
+                <data android:scheme="https" />
+                <data android:scheme="HTTPS" />
+                <data android:scheme="fdroidrepo" />
+                <data android:scheme="FDROIDREPO" />
+                <data android:scheme="fdroidrepos" />
+                <data android:scheme="FDROIDREPOS" />
+
+                <data android:host="*" />
+
+                <!--
+                The pattern matcher here is poorly implemented, in particular the * is
+                non-greedy, so you have to do stupid tricks to match patterns that have
+                repeat characters in them. http://stackoverflow.com/a/8599921/306864
+                -->
+                <data android:path="/fdroid/repo" />
+                <data android:pathPattern="/fdroid/repo/*" />
+                <data android:pathPattern="/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/fdroid/repo/*" />
+                <data android:pathPattern="/.*/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/.*/fdroid/repo/*" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/repo/*" />
+                <data android:path="/fdroid/archive" />
+                <data android:pathPattern="/fdroid/archive/*" />
+                <data android:pathPattern="/.*/fdroid/archive" />
+                <data android:pathPattern="/.*/fdroid/archive/*" />
+                <data android:pathPattern="/.*/.*/fdroid/archive" />
+                <data android:pathPattern="/.*/.*/fdroid/archive/*" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/archive" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/archive/*" />
+                <!--
+                Some QR Code scanners don't respect custom schemes like fdroidrepo://,
+                so this is a workaround, since the local repo URL is all uppercase in
+                the QR Code for sending the local repo to another device.
+                -->
+                <data android:path="/FDROID/REPO" />
+                <data android:pathPattern="/.*/FDROID/REPO" />
+                <data android:pathPattern="/.*/.*/FDROID/REPO" />
+                <data android:pathPattern="/.*/.*/.*/FDROID/REPO" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".views.apps.AppListActivity" />

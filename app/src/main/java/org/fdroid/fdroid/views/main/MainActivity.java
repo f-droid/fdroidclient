@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.widget.Toast;
 import android.support.v7.widget.RecyclerView;
 
 import org.fdroid.fdroid.AppDetails;
@@ -22,7 +23,10 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.UriCompat;
+import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
+import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 /**
  * Main view shown to users upon starting F-Droid.
@@ -43,6 +47,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private static final String TAG = "MainActivity";
 
     public static final String EXTRA_VIEW_MY_APPS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_MY_APPS";
+
+    private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
+
+    private static final String ACTION_ADD_REPO = "org.fdroid.fdroid.MainActivity.ACTION_ADD_REPO";
+
+    private static final int REQUEST_SWAP = 3;
 
     private RecyclerView pager;
     private MainViewAdapter adapter;
@@ -98,12 +108,24 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         // AppDetails  2 and RepoDetailsActivity set different NFC actions, so reset here
         NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
+        checkForAddRepoIntent(getIntent());
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         handleSearchOrAppViewIntent(intent);
+
+        // This is called here as well as onResume(), because onNewIntent() is not called the first
+        // time the activity is created. An alternative option to make sure that the add repo intent
+        // is always handled is to call setIntent(intent) here. However, after this good read:
+        // http://stackoverflow.com/a/7749347 it seems that adding a repo is not really more
+        // important than the original intent which caused the activity to start (even though it
+        // could technically have been an add repo intent itself).
+        // The end result is that this method will be called twice for one add repo intent. Once
+        // here and once in onResume(). However, the method deals with this by ensuring it only
+        // handles the same intent once.
+        checkForAddRepoIntent(intent);
     }
 
     @Override
@@ -214,6 +236,27 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         Intent searchIntent = new Intent(this, AppListActivity.class);
         searchIntent.putExtra(AppListActivity.EXTRA_SEARCH_TERMS, query);
         startActivity(searchIntent);
+    }
+
+    private void checkForAddRepoIntent(Intent intent) {
+        // Don't handle the intent after coming back to this view (e.g. after hitting the back button)
+        // http://stackoverflow.com/a/14820849
+        if (!intent.hasExtra(ADD_REPO_INTENT_HANDLED)) {
+            intent.putExtra(ADD_REPO_INTENT_HANDLED, true);
+            NewRepoConfig parser = new NewRepoConfig(this, intent);
+            if (parser.isValidRepo()) {
+                if (parser.isFromSwap()) {
+                    Intent confirmIntent = new Intent(this, SwapWorkflowActivity.class);
+                    confirmIntent.putExtra(SwapWorkflowActivity.EXTRA_CONFIRM, true);
+                    confirmIntent.setData(intent.getData());
+                    startActivityForResult(confirmIntent, REQUEST_SWAP);
+                } else {
+                    startActivity(new Intent(ACTION_ADD_REPO, intent.getData(), this, ManageReposActivity.class));
+                }
+            } else if (parser.getErrorMessage() != null) {
+                Toast.makeText(this, parser.getErrorMessage(), Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     private static class NonScrollingHorizontalLayoutManager extends LinearLayoutManager {
