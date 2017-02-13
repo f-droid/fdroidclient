@@ -10,6 +10,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
 import android.support.v7.widget.RecyclerView;
 
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -76,10 +78,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onResume() {
         super.onResume();
 
+        FDroidApp.checkStartTor(this);
+
         if (getIntent().hasExtra(EXTRA_VIEW_MY_APPS)) {
             getIntent().removeExtra(EXTRA_VIEW_MY_APPS);
             pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.my_apps));
         }
+
+        // AppDetails and RepoDetailsActivity set different NFC actions, so reset here
+        NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
     }
 
     @Override

@@ -38,7 +38,7 @@ public class NfcHelper {
     }
 
     @TargetApi(16)
-    static void setAndroidBeam(Activity activity, String packageName) {
+    public static void setAndroidBeam(Activity activity, String packageName) {
         if (Build.VERSION.SDK_INT < 16) {
             return;
         }
