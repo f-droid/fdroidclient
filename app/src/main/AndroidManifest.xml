@@ -517,6 +517,13 @@
 
         <activity android:name=".views.apps.AppListActivity" />
 
+        <activity android:name=".views.installed.InstalledAppsActivity"
+            android:parentActivityName=".views.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.main.MainActivity" />
+        </activity>
+
     </application>
 
 </manifest>

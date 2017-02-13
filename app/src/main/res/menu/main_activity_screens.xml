@@ -17,7 +17,7 @@
         app:showAsAction="ifRoom|withText"
         android:id="@+id/nearby" />
     <item
-        android:title="@string/main_menu__my_apps"
+        android:title="@string/preference_category__my_apps"
         android:icon="@drawable/ic_my_apps"
         app:showAsAction="ifRoom|withText"
         android:id="@+id/my_apps" />

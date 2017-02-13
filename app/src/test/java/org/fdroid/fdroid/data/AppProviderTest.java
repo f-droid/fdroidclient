@@ -115,7 +115,7 @@ public class AppProviderTest extends FDroidProviderTest {
         assertFalse(notInstalled.canAndWantToUpdate(context));
 
         assertResultCount(contentResolver, 2, AppProvider.getCanUpdateUri(), PROJ);
-        assertResultCount(contentResolver, 7, AppProvider.getInstalledUri(), PROJ);
+        assertResultCount(contentResolver, 9, AppProvider.getInstalledUri(), PROJ);
 
         App installedOnlyOneVersionAvailable   = AppProvider.Helper.findSpecificApp(r, "installed, only one version available", 1, Cols.ALL);
         App installedAlreadyLatestNoIgnore     = AppProvider.Helper.findSpecificApp(r, "installed, already latest, no ignore", 1, Cols.ALL);

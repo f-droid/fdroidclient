@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
@@ -33,6 +34,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppPrefs;
 import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
@@ -50,10 +52,24 @@ public class AppListItemController extends RecyclerView.ViewHolder {
 
     private final Activity activity;
 
-    private final ImageView installButton;
+    @NonNull
     private final ImageView icon;
+
+    @NonNull
     private final TextView name;
+
+    @Nullable
+    private final ImageView installButton;
+
+    @Nullable
     private final TextView status;
+
+    @Nullable
+    private final TextView installedVersion;
+
+    @Nullable
+    private final TextView ignoredStatus;
+
     private final DisplayImageOptions displayImageOptions;
 
     private App currentApp;
@@ -65,28 +81,32 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         this.activity = activity;
 
         installButton = (ImageView) itemView.findViewById(R.id.install);
-        installButton.setOnClickListener(onInstallClicked);
+        if (installButton != null) {
+            installButton.setOnClickListener(onInstallClicked);
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            installButton.setOutlineProvider(new ViewOutlineProvider() {
-                @Override
-                public void getOutline(View view, Outline outline) {
-                    float density = activity.getResources().getDisplayMetrics().density;
+            if (Build.VERSION.SDK_INT >= 21) {
+                installButton.setOutlineProvider(new ViewOutlineProvider() {
+                    @Override
+                    public void getOutline(View view, Outline outline) {
+                        float density = activity.getResources().getDisplayMetrics().density;
 
-                    // TODO: This is a bit hacky/hardcoded/too-specific to the particular icons we're using.
-                    // This is because the default "download & install" and "downloaded & ready to install"
-                    // icons are smaller than the "downloading progress" button. Hence, we can't just use
-                    // the width/height of the view to calculate the outline size.
-                    int xPadding = (int) (8 * density);
-                    int yPadding = (int) (9 * density);
-                    outline.setOval(xPadding, yPadding, installButton.getWidth() - xPadding, installButton.getHeight() - yPadding);
-                }
-            });
+                        // TODO: This is a bit hacky/hardcoded/too-specific to the particular icons we're using.
+                        // This is because the default "download & install" and "downloaded & ready to install"
+                        // icons are smaller than the "downloading progress" button. Hence, we can't just use
+                        // the width/height of the view to calculate the outline size.
+                        int xPadding = (int) (8 * density);
+                        int yPadding = (int) (9 * density);
+                        outline.setOval(xPadding, yPadding, installButton.getWidth() - xPadding, installButton.getHeight() - yPadding);
+                    }
+                });
+            }
         }
 
         icon = (ImageView) itemView.findViewById(R.id.icon);
         name = (TextView) itemView.findViewById(R.id.app_name);
         status = (TextView) itemView.findViewById(R.id.status);
+        installedVersion = (TextView) itemView.findViewById(R.id.installed_version);
+        ignoredStatus = (TextView) itemView.findViewById(R.id.ignored_status);
 
         displayImageOptions = Utils.getImageLoadingOptions().build();
 
@@ -110,6 +130,8 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         broadcastManager.registerReceiver(onInstallAction, Installer.getInstallIntentFilter(Uri.parse(currentAppDownloadUrl)));
 
         configureStatusText(app);
+        configureInstalledVersion(app);
+        configureIgnoredStatus(app);
         configureInstallButton(app);
     }
 
@@ -143,6 +165,42 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             status.setVisibility(View.INVISIBLE);
         }
 
+    }
+
+    /**
+     * Shows the currently installed version name, and whether or not it is the recommended version.
+     * Binds to the {@link R.id#installed_version} {@link TextView}.
+     */
+    private void configureInstalledVersion(@NonNull App app) {
+        if (installedVersion == null) {
+            return;
+        }
+
+        int res = (app.suggestedVersionCode == app.installedVersionCode)
+                ? R.string.app_recommended_version_installed : R.string.app_version_x_installed;
+
+        installedVersion.setText(activity.getString(res, app.installedVersionName));
+    }
+
+    /**
+     * Shows whether the user has previously asked to ignore updates for this app entirely, or for a
+     * specific version of this app. Binds to the {@link R.id#ignored_status} {@link TextView}.
+     */
+    private void configureIgnoredStatus(@NonNull App app) {
+        if (ignoredStatus == null) {
+            return;
+        }
+
+        AppPrefs prefs = app.getPrefs(activity);
+        if (prefs.ignoreAllUpdates) {
+            ignoredStatus.setText(activity.getString(R.string.installed_app__updates_ignored));
+            ignoredStatus.setVisibility(View.VISIBLE);
+        } else if (prefs.ignoreThisUpdate > 0 && prefs.ignoreThisUpdate == app.suggestedVersionCode) {
+            ignoredStatus.setText(activity.getString(R.string.installed_app__updates_ignored_for_suggested_version, app.getSuggestedVersionName()));
+            ignoredStatus.setVisibility(View.VISIBLE);
+        } else {
+            ignoredStatus.setVisibility(View.GONE);
+        }
     }
 
     private boolean isReadyToInstall(@NonNull App app) {
@@ -184,6 +242,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         }
     }
 
+    @SuppressWarnings("FieldCanBeLocal")
     private final View.OnClickListener onAppClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -206,7 +265,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     private final BroadcastReceiver onDownloadProgress = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (currentApp == null || !TextUtils.equals(currentAppDownloadUrl, intent.getDataString())) {
+            if (installButton == null || currentApp == null || !TextUtils.equals(currentAppDownloadUrl, intent.getDataString())) {
                 return;
             }
 
@@ -226,7 +285,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     private final BroadcastReceiver onInstallAction = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (currentApp == null) {
+            if (currentApp == null || installButton == null) {
                 return;
             }
 
@@ -248,6 +307,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         }
     };
 
+    @SuppressWarnings("FieldCanBeLocal")
     private final View.OnClickListener onInstallClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

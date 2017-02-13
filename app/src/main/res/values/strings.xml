@@ -65,6 +65,11 @@
     <string name="app_inst_unknown_source">Installed (from unknown source)</string>
     <string name="app_version_x_available">Version %1$s available</string>
     <string name="app_version_x_installed">Version %1$s</string>
+    <string name="app_recommended_version_installed">Version %1$s (Recommended)</string>
+
+    <string name="installed_apps__activity_title">Installed Apps</string>
+    <string name="installed_app__updates_ignored">Updates ignored</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Updates ignored for Version %1$s</string>
 
     <string name="added_on">Added on %s</string>
 
@@ -142,7 +147,9 @@
     <string name="main_menu__latest_apps">Latest</string>
     <string name="main_menu__categories">Categories</string>
     <string name="main_menu__swap_nearby">Nearby</string>
-    <string name="main_menu__my_apps">My Apps</string>
+
+    <string name="preference_category__my_apps">My Apps</string>
+    <string name="preference_manage_installed_apps">Manage Installed Apps</string>
 
 
     <string name="details_installed">Version %s installed</string>
