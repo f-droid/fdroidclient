@@ -220,8 +220,6 @@ public class FDroidApp extends Application {
         curTheme = Preferences.get().getTheme();
         Preferences.get().configureProxy();
 
-        NotificationHelper.init(getApplicationContext());
-
         InstalledAppProviderService.compareToPackageManager(this);
 
         // If the user changes the preference to do with filtering rooted apps,
@@ -264,6 +262,7 @@ public class FDroidApp extends Application {
 
         CleanCacheService.schedule(this);
 
+        NotificationHelper.create(getApplicationContext());
         UpdateService.schedule(getApplicationContext());
         bluetoothAdapter = getBluetoothAdapter();
 
