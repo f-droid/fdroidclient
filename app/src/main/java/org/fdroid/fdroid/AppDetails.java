@@ -993,7 +993,7 @@ public class AppDetails extends AppCompatActivity {
             return apk;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-            throw new IllegalStateException("Couldn't find app while installing");
+            throw new IllegalStateException("Couldn't find installed apk for " + app.packageName, e);
         }
     }
 
