@@ -10,7 +10,7 @@
         android:title="@string/menu_manage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="?attr/toolbar_themne"/>
+        android:theme="?attr/toolbar_theme"/>
 
     <ListView
         android:id="@+id/list"
