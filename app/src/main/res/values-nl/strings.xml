@@ -179,7 +179,7 @@ Je moet deze bron weer inschakelen indien je er apps van wil installeren.</strin
     <string name="links">Links</string>
 
     <string name="back">Terug</string>
-    <string name="update_notification_more">+%1$d meer…</string>
+    <string name="notification_summary_more">+%1$d meer…</string>
     <string name="bad_fingerprint">Slechte vingerafdruk</string>
     <string name="invalid_url">Dit is geen correcte URL.</string>
     <string name="menu_changelog">Lijst van veranderingen</string>

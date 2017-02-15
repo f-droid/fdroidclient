@@ -168,7 +168,7 @@
     <string name="tab_installed_apps">已安装</string>
     <string name="tab_installed_apps_count">已安装（%d）</string>
     <string name="tab_updates_count">可更新（%d）</string>
-    <string name="update_notification_more">+%1$d 更多…</string>
+    <string name="notification_summary_more">+%1$d 更多…</string>
     <string name="send_via_bluetooth">用蓝牙发送</string>
 
     <string name="bad_fingerprint">指纹错误</string>

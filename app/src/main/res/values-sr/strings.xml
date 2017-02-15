@@ -188,7 +188,7 @@
 
     <string name="back">Назад</string>
     <string name="tab_installed_apps">Инсталиране</string>
-    <string name="update_notification_more">+још %1$d…</string>
+    <string name="notification_summary_more">+још %1$d…</string>
     <string name="bad_fingerprint">Лош отисак</string>
     <string name="invalid_url">Ово није исправна адреса.</string>
     <string name="menu_changelog">Дневник измена</string>

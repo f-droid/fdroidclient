@@ -183,7 +183,7 @@
     <string name="tab_installed_apps">Asennettu</string>
     <string name="tab_installed_apps_count">Asennettu (%d)</string>
     <string name="tab_updates_count">Päivitykset (%d)</string>
-    <string name="update_notification_more">+%1$d lisää…</string>
+    <string name="notification_summary_more">+%1$d lisää…</string>
     <string name="update_auto_download">Lataa päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">Lataa päivitykset taustalla</string>
     <string name="uninstall_system">Päivitä/Poista Privileged Extension</string>

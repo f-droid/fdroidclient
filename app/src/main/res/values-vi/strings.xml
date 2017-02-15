@@ -168,7 +168,7 @@
     <string name="about_source">Mã nguồn</string>
     <string name="app_incompatible">Không tương thích</string>
     <string name="tab_installed_apps">Đã cài đặt</string>
-    <string name="update_notification_more">+%1$d ứng dụng khác…</string>
+    <string name="notification_summary_more">+%1$d ứng dụng khác…</string>
     <string name="invalid_url">Đây không phải là URL hợp lệ.</string>
     <string name="menu_changelog">Lịch sử sửa đổi</string>
     <string name="menu_bitcoin">Bitcoin</string>

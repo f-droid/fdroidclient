@@ -314,7 +314,7 @@
     <string name="swap_not_visible_wifi">ไม่แสดงตัวบน Wi-Fi</string>
     <string name="swap_no_peers_nearby">ไม่พบคนรอบข้างที่สามารถจะแบ่งปันโปรแกรมด้วยได้</string>
     <string name="swap_qr_isnt_for_swap">QR Code ที่อ่านได้ ไม่ใช่โค้ดที่ใช้แบ่งปันโปรแกรม</string>
-    <string name="update_notification_more">มีอีก +%1$d…</string>
+    <string name="notification_summary_more">มีอีก +%1$d…</string>
     <string name="perms_description_app">จัดให้โดย %1$s</string>
     <string name="swap_cant_find_peers">ไม่เจอคนที่ตามหาหรือ?</string>
     <string name="swap_nearby">แลกเปลี่ยนโปรแกรมกับคนข้างๆ</string>

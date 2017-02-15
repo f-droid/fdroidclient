@@ -181,7 +181,7 @@ tornar a habilitar el dipòsit per instal·lar aplicacions d\'aquest.</string>
     <string name="links">Enllaços</string>
 
     <string name="back">Torna</string>
-    <string name="update_notification_more">+%1$d més…</string>
+    <string name="notification_summary_more">+%1$d més…</string>
     <string name="pref_language">Idioma</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Graphics">Gràfics</string>

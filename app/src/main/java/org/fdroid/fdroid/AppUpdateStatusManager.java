@@ -13,6 +13,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -43,14 +44,14 @@ public class AppUpdateStatusManager {
         return new AppUpdateStatusManager(context);
     }
 
-    class AppUpdateStatus {
-        final App app;
-        final Apk apk;
-        Status status;
-        PendingIntent intent;
-        int progressCurrent;
-        int progressMax;
-        String errorText;
+    public class AppUpdateStatus {
+        public final App app;
+        public final Apk apk;
+        public Status status;
+        public PendingIntent intent;
+        public int progressCurrent;
+        public int progressMax;
+        public String errorText;
 
         AppUpdateStatus(App app, Apk apk, Status status, PendingIntent intent) {
             this.app = app;
@@ -59,7 +60,7 @@ public class AppUpdateStatusManager {
             this.intent = intent;
         }
 
-        String getUniqueKey() {
+        public String getUniqueKey() {
             return apk.getUrl();
         }
     }
@@ -84,6 +85,23 @@ public class AppUpdateStatusManager {
         synchronized (appMapping) {
             return appMapping.values();
         }
+    }
+
+    /**
+     * Get all entries associated with a package name. There may be several.
+     * @param packageName Package name of the app
+     * @return A list of entries, or an empty list
+     */
+    public Collection<AppUpdateStatus> getByPackageName(String packageName) {
+        ArrayList<AppUpdateStatus> returnValues = new ArrayList<>();
+        synchronized (appMapping) {
+            for (AppUpdateStatus entry : appMapping.values()) {
+                if (entry.apk.packageName.equalsIgnoreCase(packageName)) {
+                    returnValues.add(entry);
+                }
+            }
+        }
+        return returnValues;
     }
 
     private void setApkInternal(Apk apk, Status status, PendingIntent intent) {

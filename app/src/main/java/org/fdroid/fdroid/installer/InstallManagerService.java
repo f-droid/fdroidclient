@@ -14,6 +14,7 @@ import android.text.TextUtils;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;
@@ -107,8 +108,9 @@ public class InstallManagerService extends Service {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String packageName = intent.getData().getSchemeSpecificPart();
-                //TODO: do we need to mark as installed, or is this handled by other code already?
-                //appUpdateStatusManager.removeApk(packageName);
+                for (AppUpdateStatusManager.AppUpdateStatus status : appUpdateStatusManager.getByPackageName(packageName)) {
+                    appUpdateStatusManager.updateApk(status.getUniqueKey(), AppUpdateStatusManager.Status.Installed, null);
+                }
             }
         };
         IntentFilter intentFilter = new IntentFilter();
@@ -292,7 +294,7 @@ public class InstallManagerService extends Service {
                         }
                         break;
                     case Downloader.ACTION_INTERRUPTED:
-                        appUpdateStatusManager.updateApk(urlString, AppUpdateStatusManager.Status.UpdateAvailable, null);
+                        appUpdateStatusManager.updateApk(urlString, AppUpdateStatusManager.Status.Unknown, null);
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     default:
@@ -325,28 +327,23 @@ public class InstallManagerService extends Service {
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     case Installer.ACTION_INSTALL_INTERRUPTED:
-                        appUpdateStatusManager.updateApk(downloadUrl, AppUpdateStatusManager.Status.ReadyToInstall, null);
-
+                        AppUpdateStatusManager.AppUpdateStatus status = appUpdateStatusManager.get(downloadUrl);
+                        appUpdateStatusManager.removeApk(downloadUrl);
                         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
                         String errorMessage =
                                 intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
                         // show notification if app details is not visible
                         if (!TextUtils.isEmpty(errorMessage)) {
-                            appUpdateStatusManager.setApkError(apk, errorMessage);
-//                            App app = getAppFromActive(downloadUrl);
-//                            if (app == null) {
-//                                ContentResolver resolver = context.getContentResolver();
-//                                app = AppProvider.Helper.findSpecificApp(resolver, apk.packageName, apk.repo);
-//                            }
-                            // TODO - show error
+                            if (status == null || status.app == null || !AppDetails.isAppVisible(status.app.packageName)) {
+                                appUpdateStatusManager.setApkError(apk, errorMessage);
+                            }
                         }
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     case Installer.ACTION_INSTALL_USER_INTERACTION:
                         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
-                        PendingIntent installPendingIntent =
-                                intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                        PendingIntent installPendingIntent = intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
                         appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.ReadyToInstall, installPendingIntent);
                         break;
                     default:

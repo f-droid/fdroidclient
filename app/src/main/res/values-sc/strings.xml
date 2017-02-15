@@ -184,7 +184,7 @@ Depes
     <string name="links">Ligàmenes</string>
 
     <string name="back">In dae segus</string>
-    <string name="update_notification_more">+%1$d àteru(os)…</string>
+    <string name="notification_summary_more">+%1$d àteru(os)…</string>
     <string name="invalid_url">Custu no est unu ligàmene vàlidu.</string>
     <string name="menu_changelog">Lista modìficas</string>
     <string name="update_notification_title">Agiornende sos depòsitos</string>

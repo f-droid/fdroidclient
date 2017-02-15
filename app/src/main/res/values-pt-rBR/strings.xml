@@ -186,7 +186,7 @@ reativar este repositório para instalar aplicativos a partir dele.</string>
     <string name="links">Links</string>
 
     <string name="back">Voltar</string>
-    <string name="update_notification_more">Mais +%1$d…</string>
+    <string name="notification_summary_more">Mais +%1$d…</string>
     <string name="bad_fingerprint">Falha na fingerprint</string>
     <string name="invalid_url">Esta não é uma URL válida.</string>
     <string name="menu_changelog">Changelog</string>

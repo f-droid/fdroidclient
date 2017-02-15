@@ -155,7 +155,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
     <string name="back">Powrót</string>
     <string name="many_updates_available">Liczba dostępnych aktualizacji: %d.</string>
-    <string name="update_notification_more">+%1$d więcej…</string>
+    <string name="notification_summary_more">+%1$d więcej…</string>
     <string name="bluetooth_activity_not_found">Nie znaleziono metody do wysłania przez Bluetooth!</string>
     <string name="choose_bt_send">Wybierz metodę wysłania przez Bluetooth</string>
     <string name="repo_exists_add_fingerprint">To repozytorium jest już dodane. Klucz zostanie zaktualizowany.</string>

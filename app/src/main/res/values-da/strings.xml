@@ -78,7 +78,7 @@
     <string name="one_update_available">1 opdatering er tilgængelig.</string>
     <string name="many_updates_available">%d opdateringer er tilgængelige.</string>
     <string name="fdroid_updates_available">F-Droid Opdateringer Tilgængelige</string>
-    <string name="update_notification_more">+%1$d flere…</string>
+    <string name="notification_summary_more">+%1$d flere…</string>
     <string name="bluetooth_activity_not_found">Ingen Bluetooth afsendelsesmetode fundet, vælg en!</string>
     <string name="choose_bt_send">Vælg Bluetooth afsendelsesmetode</string>
     <string name="send_via_bluetooth">Send over Bluetooth</string>

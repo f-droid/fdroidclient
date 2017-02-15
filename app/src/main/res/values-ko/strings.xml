@@ -194,7 +194,7 @@
     <string name="tab_installed_apps">설치됨</string>
     <string name="tab_installed_apps_count">설치됨 (%d)</string>
     <string name="tab_updates_count">업데이트 (%d)</string>
-    <string name="update_notification_more">+%1$d 이상…</string>
+    <string name="notification_summary_more">+%1$d 이상…</string>
     <string name="bad_fingerprint">올바르지 않은 핑거프린트</string>
     <string name="invalid_url">올바른 URL이 아닙니다.</string>
     <string name="menu_settings">설정</string>

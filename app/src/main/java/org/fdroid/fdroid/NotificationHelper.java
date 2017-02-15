@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
@@ -15,9 +16,16 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.StyleSpan;
+import android.view.View;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.nostra13.universalimageloader.utils.DiskCacheUtils;
+import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 
 import org.fdroid.fdroid.data.App;
 
@@ -40,25 +48,23 @@ class NotificationHelper {
     private static final String GROUP_UPDATES = "updates";
     private static final String GROUP_INSTALLED = "installed";
 
-    private static final String LOGTAG = "NotificationHelper";
-
-    private static NotificationHelper instance;
-
-    public static NotificationHelper create(Context context) {
-        if (instance == null) {
-            instance = new NotificationHelper(context.getApplicationContext());
-        }
-        return instance;
-    }
-
     private final Context context;
     private final NotificationManagerCompat notificationManager;
-    private final AppUpdateStatusManager appUpdateStatusMananger;
+    private final AppUpdateStatusManager appUpdateStatusManager;
+    private final DisplayImageOptions displayImageOptions;
+    private ArrayList<AppUpdateStatusManager.AppUpdateStatus> updates;
+    private ArrayList<AppUpdateStatusManager.AppUpdateStatus> installed;
 
-    private NotificationHelper(Context context) {
+    NotificationHelper(Context context) {
         this.context = context;
-        appUpdateStatusMananger = AppUpdateStatusManager.getInstance(context);
+        appUpdateStatusManager = AppUpdateStatusManager.getInstance(context);
         notificationManager = NotificationManagerCompat.from(context);
+        displayImageOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .imageScaleType(ImageScaleType.NONE)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
 
         // We need to listen to when notifications are cleared, so that we "forget" all that we currently know about updates
         // and installs.
@@ -67,12 +73,76 @@ class NotificationHelper {
         filter.addAction(BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED);
         filter.addAction(BROADCAST_NOTIFICATIONS_UPDATE_CLEARED);
         filter.addAction(BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED);
+        BroadcastReceiver receiverNotificationsCleared = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                switch (intent.getAction()) {
+                    case BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED:
+                        appUpdateStatusManager.clearAllUpdates();
+                        break;
+                    case BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED:
+                        appUpdateStatusManager.clearAllInstalled();
+                        break;
+                    case BROADCAST_NOTIFICATIONS_UPDATE_CLEARED:
+                        break;
+                    case BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED:
+                        String key = intent.getStringExtra(EXTRA_NOTIFICATION_KEY);
+                        appUpdateStatusManager.removeApk(key);
+                        break;
+                }
+            }
+        };
         context.registerReceiver(receiverNotificationsCleared, filter);
         filter = new IntentFilter();
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED);
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
+        BroadcastReceiver receiverAppStatusChanges = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                switch (intent.getAction()) {
+                    case AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED:
+                        notificationManager.cancelAll();
+                        updateStatusLists();
+                        createSummaryNotifications();
+                        for (AppUpdateStatusManager.AppUpdateStatus entry : appUpdateStatusManager.getAll()) {
+                            createNotification(entry);
+                        }
+                        break;
+                    case AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED: {
+                        updateStatusLists();
+                        createSummaryNotifications();
+                        String url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                        AppUpdateStatusManager.AppUpdateStatus entry = appUpdateStatusManager.get(url);
+                        if (entry != null) {
+                            createNotification(entry);
+                        }
+                        break;
+                    }
+                    case AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED: {
+                        String url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                        AppUpdateStatusManager.AppUpdateStatus entry = appUpdateStatusManager.get(url);
+                        updateStatusLists();
+                        if (entry != null) {
+                            createNotification(entry);
+                        }
+                        if (intent.getBooleanExtra(AppUpdateStatusManager.EXTRA_IS_STATUS_UPDATE, false)) {
+                            createSummaryNotifications();
+                        }
+                        break;
+                    }
+                    case AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED: {
+                        String url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                        notificationManager.cancel(url, NOTIFY_ID_INSTALLED);
+                        notificationManager.cancel(url, NOTIFY_ID_UPDATES);
+                        updateStatusLists();
+                        createSummaryNotifications();
+                        break;
+                    }
+                }
+            }
+        };
         LocalBroadcastManager.getInstance(context).registerReceiver(receiverAppStatusChanges, filter);
     }
 
@@ -80,76 +150,100 @@ class NotificationHelper {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
     }
 
-    private void updateSummaryNotifications() {
+    private void updateStatusLists() {
         if (!notificationManager.areNotificationsEnabled()) {
             return;
         }
 
         // Get the list of updates and installed available
-        ArrayList<AppUpdateStatusManager.AppUpdateStatus> updates = new ArrayList<>();
-        ArrayList<AppUpdateStatusManager.AppUpdateStatus> installed = new ArrayList<>();
-        for (AppUpdateStatusManager.AppUpdateStatus entry : appUpdateStatusMananger.getAll()) {
-            if (entry.status == AppUpdateStatusManager.Status.Unknown) {
-                continue;
-            } else if (entry.status != AppUpdateStatusManager.Status.Installed) {
-                updates.add(entry);
-            } else {
+        if (updates == null) {
+            updates = new ArrayList<>();
+        } else {
+            updates.clear();
+        }
+        if (installed == null) {
+            installed = new ArrayList<>();
+        } else {
+            installed.clear();
+        }
+        for (AppUpdateStatusManager.AppUpdateStatus entry : appUpdateStatusManager.getAll()) {
+            if (entry.status == AppUpdateStatusManager.Status.Installed) {
                 installed.add(entry);
+            } else if (entry.status != AppUpdateStatusManager.Status.Unknown) {
+                updates.add(entry);
             }
-        }
-
-        NotificationCompat.Builder builder;
-        if (updates.size() == 0) {
-            // No updates, remove summary
-            notificationManager.cancel(GROUP_UPDATES, NOTIFY_ID_UPDATES);
-        } else if (updates.size() == 1 && !useStackedNotifications()) {
-            // If we use stacked notifications we have already created one.
-            doCreateNotification(updates.get(0));
-        } else {
-            builder = createUpdateSummaryNotification(updates);
-            notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, builder.build());
-        }
-        if (installed.size() == 0) {
-            // No installed, remove summary
-            notificationManager.cancel(GROUP_INSTALLED, NOTIFY_ID_INSTALLED);
-        } else if (installed.size() == 1 && !useStackedNotifications()) {
-            // If we use stacked notifications we have already created one.
-            doCreateNotification(installed.get(0));
-        } else {
-            builder = createInstalledSummaryNotification(installed);
-            notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, builder.build());
         }
     }
 
     private void createNotification(AppUpdateStatusManager.AppUpdateStatus entry) {
-        if (useStackedNotifications() && notificationManager.areNotificationsEnabled() && entry.status != AppUpdateStatusManager.Status.Unknown) {
-            doCreateNotification(entry);
+        if (entry.status == AppUpdateStatusManager.Status.Unknown) {
+            notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
+            notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
+            return;
+        }
+        if (notificationManager.areNotificationsEnabled()) {
+            NotificationCompat.Builder builder;
+            if (entry.status == AppUpdateStatusManager.Status.Installed) {
+                if (useStackedNotifications()) {
+                    builder = createInstalledNotification(entry);
+                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
+                    notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_INSTALLED, builder.build());
+                } else if (installed.size() == 1) {
+                    builder = createInstalledNotification(entry);
+                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
+                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
+                    notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, builder.build());
+                }
+            } else {
+                if (useStackedNotifications()) {
+                    builder = createUpdateNotification(entry);
+                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
+                    notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_UPDATES, builder.build());
+                } else if (updates.size() == 1) {
+                    builder = createUpdateNotification(entry);
+                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
+                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
+                    notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, builder.build());
+                }
+            }
         }
     }
 
-    private void doCreateNotification(AppUpdateStatusManager.AppUpdateStatus entry) {
-        NotificationCompat.Builder builder;
-        int id;
-        if (entry.status == AppUpdateStatusManager.Status.Installed) {
-            builder = createInstalledNotification(entry);
-            id = NOTIFY_ID_INSTALLED;
-            notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
-        } else {
-            builder = createUpdateNotification(entry);
-            id = NOTIFY_ID_UPDATES;
-            notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
+
+    private void createSummaryNotifications() {
+        if (!notificationManager.areNotificationsEnabled()) {
+            return;
         }
-        notificationManager.notify(entry.getUniqueKey(), id, builder.build());
+
+        NotificationCompat.Builder builder;
+        if (updates.size() != 1 || useStackedNotifications()) {
+            if (updates.size() == 0) {
+                // No updates, remove summary
+                notificationManager.cancel(GROUP_UPDATES, NOTIFY_ID_UPDATES);
+            } else {
+                builder = createUpdateSummaryNotification(updates);
+                notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, builder.build());
+            }
+        }
+        if (installed.size() != 1 || useStackedNotifications()) {
+            if (installed.size() == 0) {
+                // No installed, remove summary
+                notificationManager.cancel(GROUP_INSTALLED, NOTIFY_ID_INSTALLED);
+            } else {
+                builder = createInstalledSummaryNotification(installed);
+                notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, builder.build());
+            }
+        }
     }
 
     private NotificationCompat.Action getAction(AppUpdateStatusManager.AppUpdateStatus entry) {
         if (entry.intent != null) {
             if (entry.status == AppUpdateStatusManager.Status.UpdateAvailable) {
-                return new NotificationCompat.Action(R.drawable.ic_notify_update_24dp, "Update", entry.intent);
+                return new NotificationCompat.Action(R.drawable.ic_notify_update_24dp, context.getString(R.string.notification_action_update), entry.intent);
             } else if (entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.Installing) {
-                return new NotificationCompat.Action(R.drawable.ic_notify_cancel_24dp, "Cancel", entry.intent);
+                return new NotificationCompat.Action(R.drawable.ic_notify_cancel_24dp, context.getString(R.string.notification_action_cancel), entry.intent);
             } else if (entry.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-                return new NotificationCompat.Action(R.drawable.ic_notify_install_24dp, "Install", entry.intent);
+                return new NotificationCompat.Action(R.drawable.ic_notify_install_24dp, context.getString(R.string.notification_action_install), entry.intent);
             }
         }
         return null;
@@ -158,17 +252,17 @@ class NotificationHelper {
     private String getSingleItemTitleString(App app, AppUpdateStatusManager.Status status) {
         switch (status) {
             case UpdateAvailable:
-                return "Update Available";
+                return context.getString(R.string.notification_title_single_update_available);
             case Downloading:
                 return app.name;
             case ReadyToInstall:
-                return "Update ready to install"; // TODO - "Update"? Should just be "ready to install"?
+                return context.getString(app.isInstalled() ? R.string.notification_title_single_ready_to_install_update : R.string.notification_title_single_ready_to_install); // TODO - "Update"? Should just be "ready to install"?
             case Installing:
                 return app.name;
             case Installed:
                 return app.name;
             case InstallError:
-                return "Install Failed";
+                return context.getString(R.string.notification_title_single_install_error);
         }
         return "";
     }
@@ -178,15 +272,15 @@ class NotificationHelper {
             case UpdateAvailable:
                 return app.name;
             case Downloading:
-                return String.format("Downloading update for \"%s\"...", app.name);
+                return context.getString(R.string.notification_content_single_downloading, app.name);
             case ReadyToInstall:
                 return app.name;
             case Installing:
-                return String.format("Installing \"%s\"...", app.name);
+                return context.getString(R.string.notification_content_single_installing, app.name);
             case Installed:
-                return "Successfully installed";
+                return context.getString(R.string.notification_content_single_installed);
             case InstallError:
-                return "Install Failed";
+                return context.getString(R.string.notification_content_single_install_error);
         }
         return "";
     }
@@ -194,17 +288,17 @@ class NotificationHelper {
     private String getMultiItemContentString(App app, AppUpdateStatusManager.Status status) {
         switch (status) {
             case UpdateAvailable:
-                return "Update available";
+                return context.getString(R.string.notification_title_summary_update_available);
             case Downloading:
-                return "Downloading update...";
+                return context.getString(app.isInstalled() ? R.string.notification_title_summary_downloading_update : R.string.notification_title_summary_downloading);
             case ReadyToInstall:
-                return "Ready to install";
+                return context.getString(app.isInstalled() ? R.string.notification_title_summary_ready_to_install_update : R.string.notification_title_summary_ready_to_install);
             case Installing:
-                return "Installing";
+                return context.getString(R.string.notification_title_summary_installing);
             case Installed:
-                return "Successfully installed";
+                return context.getString(R.string.notification_title_summary_installed);
             case InstallError:
-                return "Install Failed";
+                return context.getString(R.string.notification_title_summary_install_error);
         }
         return "";
     }
@@ -213,18 +307,12 @@ class NotificationHelper {
         App app = entry.app;
         AppUpdateStatusManager.Status status = entry.status;
 
-        // TODO - async image loading
-        int largeIconSize = context.getResources().getDimensionPixelSize(android.R.dimen.app_icon_size);
-        Bitmap iconLarge = ImageLoader.getInstance().loadImageSync(app.iconUrl, new ImageSize(largeIconSize, largeIconSize));
-
-        // TODO - why?
-        final int icon = Build.VERSION.SDK_INT >= 11 ? R.drawable.ic_stat_notify_updates : R.drawable.ic_launcher;
-
+        Bitmap iconLarge = getLargeIconForEntry(entry);
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
                         .setAutoCancel(false)
                         .setLargeIcon(iconLarge)
-                        .setSmallIcon(icon)
+                        .setSmallIcon(R.drawable.ic_launcher)
                         .setContentTitle(getSingleItemTitleString(app, status))
                         .setContentText(getSingleItemContentString(app, status))
                         .setGroup(GROUP_UPDATES);
@@ -261,7 +349,7 @@ class NotificationHelper {
     }
 
     private NotificationCompat.Builder createUpdateSummaryNotification(ArrayList<AppUpdateStatusManager.AppUpdateStatus> updates) {
-        String title = String.format("%d Updates", updates.size());
+        String title = context.getString(R.string.notification_summary_updates, updates.size());
         StringBuilder text = new StringBuilder();
 
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
@@ -285,7 +373,7 @@ class NotificationHelper {
         }
         if (updates.size() > MAX_UPDATES_TO_SHOW) {
             int diff = updates.size() - MAX_UPDATES_TO_SHOW;
-            inboxStyle.setSummaryText(context.getString(R.string.update_notification_more, diff));
+            inboxStyle.setSummaryText(context.getString(R.string.notification_summary_more, diff));
         }
 
         // Intent to open main app list
@@ -316,16 +404,14 @@ class NotificationHelper {
     private NotificationCompat.Builder createInstalledNotification(AppUpdateStatusManager.AppUpdateStatus entry) {
         App app = entry.app;
 
-        int largeIconSize = context.getResources().getDimensionPixelSize(android.R.dimen.app_icon_size);
-        Bitmap iconLarge = ImageLoader.getInstance().loadImageSync(app.iconUrl, new ImageSize(largeIconSize, largeIconSize));
-
+        Bitmap iconLarge = getLargeIconForEntry(entry);
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
                         .setAutoCancel(true)
                         .setLargeIcon(iconLarge)
                         .setSmallIcon(R.drawable.ic_stat_notify_updates)
                         .setContentTitle(app.name)
-                        .setContentText("Successfully Installed")
+                        .setContentText(context.getString(R.string.notification_content_single_installed))
                         .setGroup(GROUP_INSTALLED);
 
         PackageManager pm = context.getPackageManager();
@@ -341,7 +427,7 @@ class NotificationHelper {
     }
 
     private NotificationCompat.Builder createInstalledSummaryNotification(ArrayList<AppUpdateStatusManager.AppUpdateStatus> installed) {
-        String title = String.format("%d Apps Installed", installed.size());
+        String title = context.getString(R.string.notification_summary_installed, installed.size());
         StringBuilder text = new StringBuilder();
 
         NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
@@ -357,7 +443,7 @@ class NotificationHelper {
         bigTextStyle.bigText(text);
         if (installed.size() > MAX_INSTALLED_TO_SHOW) {
             int diff = installed.size() - MAX_INSTALLED_TO_SHOW;
-            bigTextStyle.setSummaryText(context.getString(R.string.update_notification_more, diff));
+            bigTextStyle.setSummaryText(context.getString(R.string.notification_summary_more, diff));
         }
 
         // Intent to open main app list
@@ -381,65 +467,58 @@ class NotificationHelper {
         return builder;
     }
 
-    private BroadcastReceiver receiverNotificationsCleared = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            switch (intent.getAction()) {
-                case BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED:
-                    appUpdateStatusMananger.clearAllUpdates();
-                    break;
-                case BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED:
-                    appUpdateStatusMananger.clearAllInstalled();
-                    break;
-                case BROADCAST_NOTIFICATIONS_UPDATE_CLEARED:
-                    break;
-                case BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED:
-                    String key = intent.getStringExtra(EXTRA_NOTIFICATION_KEY);
-                    appUpdateStatusMananger.removeApk(key);
-                    break;
-            }
+    private Point getLargeIconSize() {
+        int w;
+        int h;
+        if (Build.VERSION.SDK_INT >= 11) {
+            w = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width);
+            h = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
+        } else {
+            w = h = context.getResources().getDimensionPixelSize(android.R.dimen.app_icon_size);
         }
-    };
+        return new Point(w, h);
+    }
 
-    private BroadcastReceiver receiverAppStatusChanges = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            switch (intent.getAction()) {
-                case AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED:
-                    notificationManager.cancelAll();
-                    for (AppUpdateStatusManager.AppUpdateStatus entry : appUpdateStatusMananger.getAll()) {
-                        createNotification(entry);
-                    }
-                    updateSummaryNotifications();
-                    break;
-                case AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED: {
-                    String url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
-                    AppUpdateStatusManager.AppUpdateStatus entry = appUpdateStatusMananger.get(url);
-                    if (entry != null) {
-                        createNotification(entry);
-                    }
-                    updateSummaryNotifications();
-                    break;
+    private Bitmap getLargeIconForEntry(AppUpdateStatusManager.AppUpdateStatus entry) {
+        final Point largeIconSize = getLargeIconSize();
+        Bitmap iconLarge = null;
+        if (DiskCacheUtils.findInCache(entry.app.iconUrl, ImageLoader.getInstance().getDiskCache()) != null) {
+            iconLarge = ImageLoader.getInstance().loadImageSync(entry.app.iconUrl, new ImageSize(largeIconSize.x, largeIconSize.y), displayImageOptions);
+        } else {
+            // Load it for later!
+            ImageLoader.getInstance().loadImage(entry.app.iconUrl, new ImageSize(largeIconSize.x, largeIconSize.y), displayImageOptions, new ImageLoadingListener() {
+                AppUpdateStatusManager.AppUpdateStatus entry;
+                ImageLoadingListener init(AppUpdateStatusManager.AppUpdateStatus entry) {
+                    this.entry = entry;
+                    return this;
                 }
-                case AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED: {
-                    String url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
-                    AppUpdateStatusManager.AppUpdateStatus entry = appUpdateStatusMananger.get(url);
-                    if (entry != null) {
-                        createNotification(entry);
-                    }
-                    if (intent.getBooleanExtra(AppUpdateStatusManager.EXTRA_IS_STATUS_UPDATE, false)) {
-                        updateSummaryNotifications();
-                    }
-                    break;
+
+                @Override
+                public void onLoadingStarted(String imageUri, View view) {
+
                 }
-                case AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED: {
-                    String url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
-                    notificationManager.cancel(url, NOTIFY_ID_INSTALLED);
-                    notificationManager.cancel(url, NOTIFY_ID_UPDATES);
-                    updateSummaryNotifications();
-                    break;
+
+                @Override
+                public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+
                 }
-            }
+
+                @Override
+                public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                    // Need to check that the notification is still valid, and also that the image
+                    // is indeed cached now, so we won't get stuck in an endless loop.
+                    AppUpdateStatusManager.AppUpdateStatus oldEntry = appUpdateStatusManager.get(entry.getUniqueKey());
+                    if (oldEntry != null && DiskCacheUtils.findInCache(oldEntry.app.iconUrl, ImageLoader.getInstance().getDiskCache()) != null) {
+                        createNotification(oldEntry); // Update with new image!
+                    }
+                }
+
+                @Override
+                public void onLoadingCancelled(String imageUri, View view) {
+
+                }
+            }.init(entry));
         }
-    };
+        return iconLarge;
+    }
 }

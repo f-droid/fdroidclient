@@ -203,7 +203,7 @@ bu depoyu tekrar etkinleştirmeniz gerekecektir.</string>
     <string name="tab_installed_apps">Kurulu</string>
     <string name="tab_installed_apps_count">Kurulu (%d)</string>
     <string name="tab_updates_count">Güncellemeler (%d)</string>
-    <string name="update_notification_more">+%1$d daha…</string>
+    <string name="notification_summary_more">+%1$d daha…</string>
     <string name="bad_fingerprint">Yanlış parmak izi</string>
     <string name="invalid_url">Bu, geçerli bir URL değildir.</string>
     <string name="menu_settings">Ayarlar</string>

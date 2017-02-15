@@ -214,7 +214,7 @@ rehabilitar esti repositoriu pa instalar aplicaciones dende elli.</string>
 
     <string name="back">Atrás</string>
     <string name="tab_installed_apps">Instaláu</string>
-    <string name="update_notification_more">+%1$d más…</string>
+    <string name="notification_summary_more">+%1$d más…</string>
     <string name="bad_fingerprint">Buelga incorreuta</string>
     <string name="invalid_url">Esto nun ye una URL válida.</string>
     <string name="menu_changelog">Rexistru de cambeos</string>

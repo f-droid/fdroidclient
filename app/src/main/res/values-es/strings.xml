@@ -182,7 +182,7 @@ Para ver las aplicaciones que ofrece tienes que activarlo.</string>
     <string name="links">Enlaces</string>
 
     <string name="back">Volver</string>
-    <string name="update_notification_more">+%1$d más…</string>
+    <string name="notification_summary_more">+%1$d más…</string>
     <string name="uninstall_system">Actualiza/Desinstala la extensión con permisos de sistema</string>
     <string name="uninstall_system_summary">Abre la pantalla de detalles de la extensión con permisos de sistema para actualizarla/desinstalarla</string>
     <string name="bad_fingerprint">Huella digital incorrecta</string>

@@ -187,7 +187,7 @@ znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.</string>
 
     <string name="back">Späť</string>
     <string name="tab_installed_apps">Nainštalované</string>
-    <string name="update_notification_more">+%1$d viac…</string>
+    <string name="notification_summary_more">+%1$d viac…</string>
     <string name="bluetooth_activity_not_found">Posielanie cez Bluetooth zlyhalo, zvoľte inú metódu!</string>
     <string name="choose_bt_send">Vyberte posielanie cez Bluetooth</string>
     <string name="repo_exists_and_enabled">Tento repozitár je už nastavený a povolený.</string>

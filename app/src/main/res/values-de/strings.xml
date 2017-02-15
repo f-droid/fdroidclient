@@ -182,7 +182,7 @@ um Anwendungen daraus installieren zu können.</string>
     <string name="app_incompatible">Inkompatibel</string>
     <string name="links">Verweise</string>
     <string name="back">Zurück</string>
-    <string name="update_notification_more">+%1$d weitere …</string>
+    <string name="notification_summary_more">+%1$d weitere …</string>
     <string name="bad_fingerprint">Falscher Fingerabdruck</string>
     <string name="invalid_url">Das ist keine gültige Adresse.</string>
     <string name="update_notification_title">Paketquellen werden aktualisiert</string>

@@ -166,7 +166,7 @@
     <string name="repo_last_update">Terakhir diperbarui</string>
     <string name="repo_name">Nama</string>
     <string name="unknown">Tidak diketahui</string>
-    <string name="update_notification_more">+%1$d lainnya…</string>
+    <string name="notification_summary_more">+%1$d lainnya…</string>
     <string name="menu_settings">Pengaturan</string>
     <string name="rooted_on">Jangan bedakan warna apl yang membutuhkan izin root</string>
     <string name="unsigned_description">Ini artinya daftar 

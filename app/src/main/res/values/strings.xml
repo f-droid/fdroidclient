@@ -88,10 +88,7 @@
     <string name="tab_updates">Updates</string>
     <string name="tab_installed_apps_count">Installed (%d)</string>
     <string name="tab_updates_count">Updates (%d)</string>
-    <string name="one_update_available">1 update is available.</string>
-    <string name="many_updates_available">%d updates are available.</string>
     <string name="fdroid_updates_available">F-Droid Updates Available</string>
-    <string name="update_notification_more">+%1$d more…</string>
     <string name="bluetooth_activity_not_found">No Bluetooth send method found, choose one!</string>
     <string name="choose_bt_send">Choose Bluetooth send method</string>
     <string name="send_via_bluetooth">Send via Bluetooth</string>
@@ -400,4 +397,29 @@
             forcing the application to stop. Would you like to e-mail the
             details to help fix the issue?</string>
     <string name="crash_dialog_comment_prompt">You can add extra information and comments here:</string>
+
+    <!-- notifications -->
+    <string name="notification_summary_more">+%1$d more…</string>
+    <string name="notification_title_single_update_available">Update Available</string>
+    <string name="notification_title_single_ready_to_install">Ready to install</string>
+    <string name="notification_title_single_ready_to_install_update">Update ready to install</string>
+    <string name="notification_title_single_install_error">Install Failed</string>
+    <string name="notification_content_single_downloading">Downloading update for \"%1$s\"&#8230;</string>
+    <string name="notification_content_single_installing">Installing \"%1$s\"&#8230;</string>
+    <string name="notification_content_single_installed">Successfully installed</string>
+    <string name="notification_content_single_install_error">Install Failed</string>
+    <string name="notification_summary_updates">%1$d Updates</string>
+    <string name="notification_summary_installed">%1$d Apps Installed</string>
+    <string name="notification_title_summary_update_available">Update available</string>
+    <string name="notification_title_summary_downloading">Downloading&#8230;</string>
+    <string name="notification_title_summary_downloading_update">Downloading update&#8230;</string>
+    <string name="notification_title_summary_ready_to_install">Ready to install</string>
+    <string name="notification_title_summary_ready_to_install_update">Update ready to install</string>
+    <string name="notification_title_summary_installing">Installing</string>
+    <string name="notification_title_summary_installed">Successfully installed</string>
+    <string name="notification_title_summary_install_error">Install Failed</string>
+    <string name="notification_action_update">Update</string>
+    <string name="notification_action_cancel">Cancel</string>
+    <string name="notification_action_install">Install</string>
+
 </resources>

@@ -97,6 +97,7 @@ public class FDroidApp extends Application {
 
     @SuppressWarnings("unused")
     BluetoothAdapter bluetoothAdapter;
+    NotificationHelper notificationHelper;
 
     static {
         SPONGYCASTLE_PROVIDER = new org.spongycastle.jce.provider.BouncyCastleProvider();
@@ -262,7 +263,7 @@ public class FDroidApp extends Application {
 
         CleanCacheService.schedule(this);
 
-        NotificationHelper.create(getApplicationContext());
+        notificationHelper = new NotificationHelper(getApplicationContext());
         UpdateService.schedule(getApplicationContext());
         bluetoothAdapter = getBluetoothAdapter();
 

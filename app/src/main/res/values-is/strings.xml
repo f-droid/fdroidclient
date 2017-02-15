@@ -69,7 +69,7 @@
     <string name="one_update_available">1 uppfærsla er tiltæk.</string>
     <string name="many_updates_available">%d uppfærslur eru tiltækar.</string>
     <string name="fdroid_updates_available">Uppfærslur á F-Droid eru tiltækar</string>
-    <string name="update_notification_more">+%1$d fleiri…</string>
+    <string name="notification_summary_more">+%1$d fleiri…</string>
     <string name="bluetooth_activity_not_found">Engin aðferð til sendingar með Bluetooth fannst, veldu eina!</string>
     <string name="choose_bt_send">Veldu aðferð til sendingar með Bluetooth</string>
     <string name="send_via_bluetooth">Senda með Bluetooth</string>

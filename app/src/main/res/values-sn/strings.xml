@@ -76,7 +76,7 @@
     <string name="one_update_available">Chekunatsa 1 chiripo.</string>
     <string name="many_updates_available">Zvekunatsa %d zviripo.</string>
     <string name="fdroid_updates_available">Zvekunatsa F-Droid zviripo</string>
-    <string name="update_notification_more">zvimwe +%1$d …</string>
+    <string name="notification_summary_more">zvimwe +%1$d …</string>
     <string name="bluetooth_activity_not_found">Hapana mutowo wekutumira neBluetooth wawanikwa, sarudza imwe chete!</string>
     <string name="choose_bt_send">Sarudza mutowo weBluetooth wekutumira nawo</string>
     <string name="send_via_bluetooth">Tumira kuburikira neBluetooth</string>

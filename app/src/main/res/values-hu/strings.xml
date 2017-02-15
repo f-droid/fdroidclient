@@ -126,7 +126,7 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
     <string name="tab_installed_apps">Telepítve</string>
     <string name="tab_installed_apps_count">Telepítve (%d)</string>
     <string name="tab_updates_count">Frissítések (%d)</string>
-    <string name="update_notification_more">+%1$d további…</string>
+    <string name="notification_summary_more">+%1$d további…</string>
     <string name="send_via_bluetooth">Küldés Bluetooth-on</string>
 
     <string name="bad_fingerprint">Rossz ujjlenyomat</string>

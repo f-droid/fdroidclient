@@ -191,7 +191,7 @@ Du kommer
 
     <string name="back">Bakåt</string>
     <string name="tab_installed_apps">Installerade</string>
-    <string name="update_notification_more">+%1$d mer…</string>
+    <string name="notification_summary_more">+%1$d mer…</string>
     <string name="bad_fingerprint">Felaktigt fingeravtryck</string>
     <string name="invalid_url">Det här är inte en giltig hemsideadress.</string>
     <string name="menu_settings">Inställningar</string>

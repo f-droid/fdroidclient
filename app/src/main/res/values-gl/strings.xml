@@ -101,7 +101,7 @@
     <string name="overwrite">Sobreescribir</string>
 
     <string name="tab_installed_apps">Instalado</string>
-    <string name="update_notification_more">+%1$d máis…</string>
+    <string name="notification_summary_more">+%1$d máis…</string>
     <string name="bluetooth_activity_not_found">Non se atopou ningún método de transmisión Bluetooth, escolla un!</string>
     <string name="choose_bt_send">Escolla o método de transmisión Bluetooth</string>
     <string name="send_via_bluetooth">Enviar por Bluetooth</string>

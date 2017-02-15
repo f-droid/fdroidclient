@@ -185,7 +185,7 @@ skru på denne pakkebrønnen igjen for å installere programmer fra den.</string
 
     <string name="back">Tilbake</string>
     <string name="tab_installed_apps">Installert</string>
-    <string name="update_notification_more">+%1$d mer…</string>
+    <string name="notification_summary_more">+%1$d mer…</string>
     <string name="bad_fingerprint">Feil i fingeravtrykk</string>
     <string name="invalid_url">Dette er ikke en gyldig nettadresse.</string>
     <string name="menu_changelog">Endringslogg</string>

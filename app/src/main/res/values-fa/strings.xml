@@ -116,7 +116,7 @@
     <string name="tab_updates_count">به‌روز رسانی‌ها (%d)</string>
     <string name="one_update_available">۱ به‌روز رسانی موجود است.</string>
     <string name="many_updates_available">%d به روز رسانی موجود است.</string>
-    <string name="update_notification_more">+%1$d بیش‌تر…</string>
+    <string name="notification_summary_more">+%1$d بیش‌تر…</string>
     <string name="send_via_bluetooth">ارسال با بلوتوث</string>
 
     <string name="repo_exists_add_fingerprint">این مخزن از پیش برپا شده است. این کار، اظّلاعات کلید جدیدی را می‌افزاید.</string>

@@ -228,7 +228,7 @@
     <string name="install_confirm_update_system_no_perms">您想更新此應用程式嗎？
 您不會失去現有的數據，
 已更新的程式亦不需要任何特別的存取權。</string>
-    <string name="update_notification_more">還有 +%1$d 個…</string>
+    <string name="notification_summary_more">還有 +%1$d 個…</string>
     <string name="next">下一步</string>
     <string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
     <string name="SignatureMismatch">應用程式的新版本使用了不同的鑰匙簽署。若要安裝新版本，您必須先將舊版本卸載，然後再嘗試安裝。(注意：卸載將會把應用程式內的資料刪除)</string>
