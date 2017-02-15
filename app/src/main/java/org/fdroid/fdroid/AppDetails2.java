@@ -121,6 +121,14 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             return;
         }
         app = newApp;
+
+        // Remove all "installed" statuses for this app, since we are now viewing it.
+        AppUpdateStatusManager appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
+        for (AppUpdateStatusManager.AppUpdateStatus status : appUpdateStatusManager.getByPackageName(app.packageName)) {
+            if (status.status == AppUpdateStatusManager.Status.Installed) {
+                appUpdateStatusManager.removeApk(status.getUniqueKey());
+            }
+        }
     }
 
     @Override

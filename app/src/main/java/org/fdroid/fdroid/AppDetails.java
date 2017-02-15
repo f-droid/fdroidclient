@@ -701,6 +701,14 @@ public class AppDetails extends AppCompatActivity {
         app = newApp;
 
         startingPrefs = app.getPrefs(this).createClone();
+
+        // Remove all "installed" statuses for this app, since we are now viewing it.
+        AppUpdateStatusManager appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
+        for (AppUpdateStatusManager.AppUpdateStatus status : appUpdateStatusManager.getByPackageName(app.packageName)) {
+            if (status.status == AppUpdateStatusManager.Status.Installed) {
+                appUpdateStatusManager.removeApk(status.getUniqueKey());
+            }
+        }
     }
 
     private void refreshApkList() {
