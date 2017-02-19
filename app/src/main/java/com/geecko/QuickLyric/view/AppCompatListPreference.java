@@ -63,8 +63,9 @@ public class AppCompatListPreference extends ListPreference {
                     public void onClick(DialogInterface dialog, int which) {
                         if (which >= 0 && getEntryValues() != null) {
                             String value = getEntryValues()[which].toString();
-                            if (callChangeListener(value) && isPersistent())
+                            if (callChangeListener(value) && isPersistent()) {
                                 setValue(value);
+                            }
                         }
                         dialog.dismiss();
                     }
@@ -82,8 +83,9 @@ public class AppCompatListPreference extends ListPreference {
         }
 
         mDialog = builder.create();
-        if (state != null)
+        if (state != null) {
             mDialog.onRestoreInstanceState(state);
+        }
         mDialog.show();
     }
 
@@ -91,7 +93,8 @@ public class AppCompatListPreference extends ListPreference {
     public void onActivityDestroy() {
         super.onActivityDestroy();
         if (mDialog != null && mDialog.isShowing() &&
-                mDialog.getWindow() != null && mDialog.getWindow().getWindowManager() != null)
+                mDialog.getWindow() != null && mDialog.getWindow().getWindowManager() != null) {
             mDialog.dismiss();
+        }
     }
 }
