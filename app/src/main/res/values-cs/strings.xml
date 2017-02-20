@@ -10,7 +10,7 @@
   <string name="other">Ostatní</string>
   <string name="update_interval">Interval automatických aktualizací</string>
   <string name="automatic_scan_wifi">Pouze přes Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Aktualizovat seznam aplikací pouze přes Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Automaticky aktualizovat jen na nezpoplatněných sítích, jako např. Wi-Fi</string>
   <string name="notify">Upozornění na aktualizace</string>
   <string name="notify_on">Upozornit, pokud jsou dostupné aktualizace</string>
   <string name="update_history">Historie aktualizací</string>
@@ -108,11 +108,16 @@
   <string name="repo_description">Popis</string>
   <string name="repo_last_update">Poslední aktualizace</string>
   <string name="repo_name">Název</string>
-  <string name="unsigned_description">Toto znamená, že seznam aplikací nemohl být verifikován. Buď opatrný s aplikacemi z nepodepsaných indexů.</string>
-  <string name="repo_not_yet_updated">Tento repozitář ještě nebyl použit. Pro zobrazení nabízených aplikací je nutné ho nejprve aktualizovat.</string>
+  <string name="unsigned_description">To znamená, že seznam
+aplikací nemohl být ověřený. Měli by jste být opatrný
+s aplikacemi převzatými z nepodepsaných indexů.</string>
+  <string name="repo_not_yet_updated">Tento repozitář ještě nebyl použit. 
+Pro zobrazení nabízených aplikací je nutné ho nejprve aktualizovat.</string>
   <string name="repo_confirm_delete_title">Odebrat repositář?</string>
   <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou nabízené aplikace nadále dostupné v F-Droidu.\n\nPozn.: Všechny dříve nainstalované aplikace budou na tomto zařízení ponechány beze změn.</string>
-  <string name="repo_disabled_notification">%1$s zakázáno.\n\nPro instalaci aplikací z tohoto repozitáře ho bude neprve třeba znovu povolit.</string>
+  <string name="repo_disabled_notification">%1$s zakázáno.
+
+Pro instalaci aplikací z tohoto repozitáře ho bude nejprve třeba znovu povolit.</string>
   <string name="minsdk_or_later">%s nebo novější</string>
   <string name="requires_features">Vyžaduje: %1$s</string>
   <string name="app_icon">Ikona aplikace</string>
@@ -328,10 +333,18 @@
     <string name="swap_connection_misc_error">Došlo k chybě při připojování přístroje, zdá se že nelze vyměňovat aplikace.</string>
     <string name="tap_to_install_format">Dotykem instalovat %s</string>
     <string name="tap_to_update_format">Dotykem aktualizovat %s</string>
-    <string name="install_confirm_update">Chcete instalovat aktualizaci existující aplikace? Aktuální data budou ztracena. Aktualizovaná aplikace bude mít přístup k:</string>
-    <string name="install_confirm_update_system">Chcete instalovat aktualizaci této zabudované aplikace? Aktuální data budou ztracena. Aktualizovaná aplikace bude mít přístup k:</string>
-    <string name="install_confirm_update_no_perms">Chcete instalovat aktualizaci existující aplikace? Aktuální data budou ztracena. Nevyžaduje žádná speciální oprávnění.</string>
-    <string name="install_confirm_update_system_no_perms">Chcete instalovat aktualizaci této zabudované aplikace? Aktuální data nebudou ztracena. Nevyžaduje žádná speciální oprávnění.</string>
+    <string name="install_confirm_update">Chcete instalovat aktualizaci existující aplikace?
+Aktuální data nebudou ztracena. 
+Aktualizovaná aplikace bude mít přístup k:</string>
+    <string name="install_confirm_update_system">Chcete instalovat aktualizaci této zabudované aplikace? 
+Aktuální data nebudou ztracena. 
+Aktualizovaná aplikace bude mít přístup k:</string>
+    <string name="install_confirm_update_no_perms">Chcete instalovat aktualizaci existující aplikace?
+Aktuální data nebudou ztracena. 
+Nevyžaduje žádná speciální oprávnění.</string>
+    <string name="install_confirm_update_system_no_perms">Chcete instalovat aktualizaci této zabudované aplikace?
+Aktuální data nebudou ztracena. 
+Nevyžaduje žádná speciální oprávnění.</string>
     <string name="download_pending">Čekání na spuštění stahování…</string>
     <string name="install_error_notify_title">Chyba instalace %s</string>
     <string name="uninstall_error_notify_title">Chyba odinstalace %s</string>
@@ -349,6 +362,15 @@
     <string name="keep_forever">navždy</string>
 
     <string name="crash_dialog_title">F-Droid neočekávaně skončil</string>
-    <string name="crash_dialog_text">Neočekávaná chyba vynutila ukončení aplikace. Budete chtít odeslat detaily emailem a tím pomoci s napravením chyby?</string>
+    <string name="crash_dialog_text">Neočekávaná chyba vynutila ukončení aplikace. 
+Budete chtít odeslat detaily emailem a tím pomoci s napravením chyby?</string>
     <string name="crash_dialog_comment_prompt">Zde můžete přidat další informace a komentáře:</string>
-</resources>
+<string name="keep_install_history">Uchovat historii instalací</string>
+    <string name="keep_install_history_summary">Uchovávat záznamy o všech instalacích a odinstalacích v F-Droid-e</string>
+    <string name="update_auto_install">Automaticky nainstalovat aktualizace</string>
+    <string name="update_auto_install_summary">Převzít a nainstalovat aktualizace aplikací na pozadí</string>
+    <string name="versions">Verze</string>
+    <string name="hide_anti_feature_apps">Vyšedit \"anti-feature\" aplikace</string>
+    <string name="hide_anti_feature_apps_on">Vyšedit aplikace vyžadující \"anti-features\"</string>
+    <string name="warning_no_internet">Nemožno aktualizovat, jste připojený k internetu?</string>
+    </resources>

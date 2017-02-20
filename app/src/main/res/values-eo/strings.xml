@@ -69,7 +69,7 @@
   <string name="ignoreTouch">Ignori tuŝekranon</string>
   <string name="ignoreTouch_on">Ĉiam inkluzivas aplikaĵojn, kiuj postulas tuŝekranon</string>
   <string name="category_All">Ĉiuj</string>
-  <string name="category_Whats_New">Novaĵoj</string>
+  <string name="category_Whats_New">Novaj</string>
   <string name="category_Recently_Updated">Ĵus ĝisdatigitaj</string>
   <string name="local_repo">Loka deponejo</string>
   <string name="deleting_repo">Forigado de la deponejo…</string>
@@ -114,7 +114,7 @@
     <string name="unstable_updates">Nestabilaj ĝisdatigoj</string>
     <string name="update_interval">Intervalo de aŭtomata ĝisdatigo</string>
     <string name="installDowngrade">Vi klopodas malpromocii ĉi tiun aplikaĵon. Fari tion eble malfunkciigos ĝin kaj eĉ perdigos viajn datumojn. Ĉu vi volas klopodi malpromocii ĝin ĉiaokaze?</string>
-    <string name="SignatureMismatch">La nova versio estas subskribita per diferenca ŝlosilo. Por instali la novan version, la malnova devas esti malinstalita unue. Bonvolu fari tion kaj reprovi. (Rigardu ke malinstalado forigos ĉiujn internan datumon konservitan de la aplikaĵo)</string>
+    <string name="SignatureMismatch">La nova versio estas subskribita per diferenca ŝlosilo. Por instali la novan version, la malnova devas esti malinstalita unue. Bonvolu fari tion kaj reprovi. (rigardu ke malinstalado forigos ĉiujn internajn datumojn konservitajn en la aplikaĵo)</string>
     <string name="by_author">de</string>
     <string name="enable_nfc_send">Aktivigi sendadon tra NFC…</string>
     <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>
@@ -158,10 +158,10 @@
     <string name="repo_exists_add_fingerprint">Ĉi tiu deponejo estas jam instalita, tio aldonos novan informon pri ŝlosilo.</string>
     <string name="repo_exists_enable">Ĉi tiu deponejo estas jam instalita, konfirmu ke vi volas reaktivigi ĝin.</string>
     <string name="repo_exists_and_enabled">La deponejo estas jam instalita kaj aktiva.</string>
-    <string name="bad_fingerprint">Malkorekta fingrospuro</string>
+    <string name="bad_fingerprint">Erara fingrospuro</string>
     <string name="repo_delete_to_overwrite">Vi devas unue forigi ĉi tiun deponejon antaŭ vi povos aldoni alian kun diferenca ŝlosilo.</string>
-    <string name="invalid_url">Ĉi tio ne estas korekta URL.</string>
-    <string name="malformed_repo_uri">Transsaltis malkorektan URI de deponejo: %s</string>
+    <string name="invalid_url">Ĉi tio ne estas ĝusta URL.</string>
+    <string name="malformed_repo_uri">Transsaltis eraran URI de deponejo: %s</string>
 
     <string name="menu_send_apk_bt">Kunhavigi F-Droid per Bludento</string>
     <string name="menu_settings">Agordoj</string>
@@ -248,13 +248,13 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
     <string name="uninstall_error_unknown">Malsukcesis malinstali pro nekonata eraro</string>
     <string name="system_install_denied_title">Privilegia F-Droid-aldonaĵo ne disponebla</string>
     <string name="system_install_denied_body">Ĉi tiu agordo estas nur disponebla kiam privilegia F-Droid-aldonaĵo estas instalita.</string>
-    <string name="system_install_denied_signature">La subskribo de aldonaĵo malkorektas! Bonvolu krei erar-raporton!</string>
+    <string name="system_install_denied_signature">La subskribo de aldonaĵo estas erara! Bonvolu krei erar-raporton!</string>
     <string name="system_install_button_install">Instali</string>
     <string name="system_install_button_open">Malfermi aldonaĵon</string>
     <string name="system_install_denied_permissions">La aldonaĵo ne aliris ĉefuzantan permeson! Bonvolu krei erar-raporton!</string>
     <string name="system_install_post_success">Sukcese instalis privilegian F-Droid-aldonaĵon</string>
     <string name="system_install_post_fail">Instalado de privilegia F-Droid-aldonaĵo malsukcesis</string>
-    <string name="system_install_post_success_message">Privilegia F-Droid-aldonaĵo estas instalita korekte. Ĉi tio ebligos al F-Droid instali, ĝisdatigi, kaj malinstali aplikaĵojn per si mem.</string>
+    <string name="system_install_post_success_message">Privilegia F-Droid-aldonaĵo estas instalita senerare. Ĉi tio ebligos al F-Droid instali, ĝisdatigi, kaj malinstali aplikaĵojn per si mem.</string>
     <string name="system_install_post_fail_message">La instalado de Privilegia F-Droid-aldonaĵo malsukcesis. La instala metodo ne estas subtenata de ĉiuj Androidaj distribuaĵoj, bonvolu konsiliĝi en la F-Droida erar-spuradilo por pli da informojn.</string>
     <string name="system_install_installing">Instalado…</string>
     <string name="system_install_installing_rebooting">Instalado kaj restartado…</string>

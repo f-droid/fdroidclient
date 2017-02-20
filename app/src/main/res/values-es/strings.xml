@@ -363,11 +363,11 @@ detalles para ayudarnos a arreglar el problema?</string>
 
     <string name="keep_hour">1 hora</string>
     <string name="install_error_notify_title">Error instalando %s</string>
-    <string name="uninstall_error_notify_title">Error instalando %s</string>
+    <string name="uninstall_error_notify_title">Error desinstalando %s</string>
 
 
     <string name="installing">Instalando…</string>
-    <string name="uninstalling">Instalando…</string>
+    <string name="uninstalling">Desinstalando…</string>
 
     <string name="hide_anti_feature_apps">Marcar en gris aplicaciones con contraindicaciones</string>
     <string name="hide_anti_feature_apps_on">Marca en gris aplicaciones que tengan características indeseables</string>

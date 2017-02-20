@@ -308,7 +308,7 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
     <string name="keep_install_history_summary">Napló tárolása az F-Droidban végzett telepítésekről és eltávolításokról</string>
     <string name="update_auto_install">Frissítések automatikus telepítése</string>
     <string name="update_auto_install_summary">Alkalmazásfrissítések letöltése és telepítése háttérben</string>
-    <string name="by_author">tőle:</string>
+    <string name="by_author">-</string>
     <string name="uninstall_system">Kiváltságos kiterjesztés frissítése/letörlése</string>
     <string name="uninstall_system_summary">A kiváltságos kiterjesztés részleteinek megnyitása frissítéshez/törléshez</string>
     <string name="versions">Verziók</string>

@@ -6,22 +6,22 @@
   <string name="version">Έκδοση</string>
   <string name="delete">Διαγραφή</string>
   <string name="enable_nfc_send">Ενεργοποίηση Αποστολής NFC…</string>
-  <string name="cache_downloaded">Αποθήκευση πακέτων</string>
+  <string name="cache_downloaded">Διατήρηση των εφαρμογών προσωρινά αποθηκευμένες</string>
   <string name="updates">Ενημερώσεις</string>
   <string name="other">Άλλα</string>
   <string name="update_interval">Συχνότητα ενημέρωσης</string>
   <string name="update_interval_zero">Μη αυτόματη ενημέρωση της λίστας εφαρμογών</string>
   <string name="automatic_scan_wifi">Μόνο σε Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Ενημέρωση των λιστών εφαρμογών αυτόματα μόνο σε Wi-Fi</string>
-  <string name="notify">Ειδοποίηση ενημερώσεων</string>
-  <string name="notify_on">Ειδοποίηση όταν υπάρχουν διαθέσιμες ενημερώσεις</string>
+  <string name="automatic_scan_wifi_on">Αυτόματη ενημέρωση μόνο σε δίκτυα Wi-Fi</string>
+  <string name="notify">Ειδοποιήσεις ενημερώσεων</string>
+  <string name="notify_on">Εμφάνιση ειδοποίησης όταν υπάρχουν διαθέσιμες ενημερώσεις</string>
   <string name="update_history">Ιστορικό ενημερώσεων</string>
   <string name="update_history_summ">Ημέρες που θα θεωρούνται οι εφαρμογές νέες ή πρόσφατες: %s</string>
   <string name="app_details">Λεπτομέρειες Εφαρμογής</string>
   <string name="no_such_app">Δεν βρέθηκε τέτοια εφαρμογή.</string>
   <string name="about_title">Σχετικά με το F-Droid</string>
   <string name="about_site">Ιστοσελίδα</string>
-  <string name="about_mail">Ηλ. ταχυδρομείο:</string>
+  <string name="about_mail">Ηλ. ταχυδρομείο</string>
   <string name="about_version">Έκδοση</string>
   <string name="app_installed">Εγκατεστημένο</string>
   <string name="app_not_installed">Δεν είναι εγκατεστημένο</string>
@@ -96,7 +96,7 @@
   <string name="no_handler_app">Δεν έχετε καμία διαθέσιμη εφαρμογή που μπορεί να χειριστεί %s.</string>
   <string name="theme">Θέμα</string>
   <string name="unsigned">Μη υπογεγραμμένη</string>
-  <string name="repo_num_apps">Αριθμός των εφαρμογών</string>
+  <string name="repo_num_apps">Αριθμός εφαρμογών</string>
   <string name="repo_fingerprint">Αποτύπωμα του κλειδιού υπογραφής (SHA-256)</string>
   <string name="repo_description">Περιγραφή</string>
   <string name="repo_last_update">Τελευταία ενημέρωση</string>
@@ -105,10 +105,14 @@
         των εφαρμογών δεν μπορεί να επαληθευτεί. Θα πρέπει να
         είστε προσεκτικοί με εφαρμογές που λαμβάνετε από
         ανυπόγραφα αποθετήρια.</string>
-  <string name="repo_not_yet_updated">Αυτό το αποθετήριο δεν έχει χρησιμοποιηθεί ακόμη. Θα πρέπει να το ενεργοποιήσετε για να δείτε τις εφαρμογές που παρέχει.</string>
+  <string name="repo_not_yet_updated">Αυτό το αποθετήριο δεν έχει χρησιμοποιηθεί ακόμη.
+Θα πρέπει να το ενεργοποιήσετε για να δείτε τις εφαρμογές που παρέχει.</string>
   <string name="unknown">Άγνωστο</string>
   <string name="repo_confirm_delete_title">Διαγραφή αποθετηρίου;</string>
-  <string name="repo_disabled_notification">Απενεργοποιημένο %1$s.\n\nΘα χρειαστεί να το ενεργοποιήσετε ξανά για να εγκαταστήσετε εφαρμογές από αυτό.</string>
+  <string name="repo_disabled_notification">Απενεργοποιημένο %1$s.
+
+Θα χρειαστεί
+ να το ενεργοποιήσετε ξανά για να εγκαταστήσετε εφαρμογές από αυτό.</string>
   <string name="minsdk_or_later">%s ή αργότερα</string>
   <string name="up_to_maxsdk">Μέχρι %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s μέχρι %2$s</string>
@@ -127,7 +131,7 @@
     <string name="local_repo_https">Χρήση ιδιωτικής σύνδεσης</string>
     <string name="local_repo_https_on">Χρήση κρυπτογραφημένης σύνδεσης HTTPS:// για το τοπικό αποθετήριο</string>
 
-    <string name="about_source">Πηγαίος κώδικας:</string>
+    <string name="about_source">Πηγαίος κώδικας</string>
     <string name="app_incompatible">Μη συμβατό</string>
     <string name="app_inst_known_source">Εγκαταστημένο (από %s)</string>
     <string name="app_inst_unknown_source">Εγκαταστημένο (από άγνωστη πηγή)</string>
@@ -180,7 +184,11 @@
     <string name="unverified">Μη επαληθευμένη</string>
     <string name="repo_details">Αποθετήριο</string>
     <string name="repo_url">Διεύθυνση</string>
-    <string name="repo_confirm_delete_body">Διαγράφοντας ένα αποθετήριο σημαίνει ότι εφαρμογές από αυτό δεν θα είναι πλέον διαθέσιμες από το F-Droid.\n\nΣημείωση: Όλες οι ήδη εγκατεστημένες εφαρμογές θα παραμείνουν στη συσκευή σας.</string>
+    <string name="repo_confirm_delete_body">Διαγράφοντας ένα αποθετήριο σημαίνει ότι
+ εφαρμογές από αυτό δεν θα είναι πλέον διαθέσιμες από το F-Droid.
+
+Σημείωση: Όλες
+ οι ήδη εγκατεστημένες εφαρμογές θα παραμείνουν στη συσκευή σας.</string>
     <string name="repo_added">Αποθηκευμένο αποθετήριο F-Droid %1$s.</string>
     <string name="repo_searching_address">Αναζήτηση για αποθετήριο του F-Droid στο\n%1$s</string>
     <string name="pref_language">Γλώσσα</string>
@@ -198,7 +206,7 @@
     <string name="category_Money">Οικονομικά</string>
     <string name="category_Multimedia">Πολυμέσα</string>
     <string name="category_Navigation">Πλοήγηση</string>
-    <string name="category_Phone_SMS">Τηλέφωνο &amp; SMS</string>
+    <string name="category_Phone_SMS">Τηλέφωνο &amp; μηνύματα</string>
     <string name="category_Reading">Ανάγνωση</string>
     <string name="category_Science_Education">Επιστήμη &amp; Εκπαίδευση</string>
     <string name="category_Security">Ασφάλεια</string>
@@ -272,11 +280,19 @@
     <string name="swap_not_enabled">Η ανταλλαγή δεν είναι ενεργοποιημένη</string>
     <string name="swap_not_enabled_description">Πριν από την ανταλλαγή, η συσκευή σας πρέπει να προβάλλεται.</string>
 
-    <string name="install_confirm">Θέλετε να εγκαταστήσετε αυτήν την εφαρμογή; Θα έχει πρόσβαση σε:</string>
-    <string name="install_confirm_update">Θέλετε να ενημερώσετε αυτήν την εφαρμογή; Τα υπάρχοντα δεδομένα δεν θα χαθούν. Η ενημερωμένη εφαρμογή θα έχει πρόσβαση σε:</string>
-    <string name="install_confirm_update_system">Θέλετε να ενημερώσετε αυτήν την ενσωματωμένη εφαρμογή; Τα υπάρχοντα δεδομένα δεν θα χαθούν. Η ενημερωμένη εφαρμογή θα έχει πρόσβαση σε:</string>
-    <string name="install_confirm_update_no_perms">Θέλετε να ενημερώσετε αυτήν την εφαρμογή; Τα υπάρχοντα δεδομένα δεν θα χαθούν. Δεν απαιτεί οποιαδήποτε ειδική πρόσβαση.</string>
-    <string name="install_confirm_update_system_no_perms">Θέλετε να ενημερώσετε αυτήν την ενσωματωμένη εφαρμογή; Τα υπάρχοντα δεδομένα δεν θα χαθούν. Δεν απαιτεί οποιαδήποτε ειδική πρόσβαση.</string>
+    <string name="install_confirm">χρειάζεται πρόσβαση σε</string>
+    <string name="install_confirm_update">Θέλετε να ενημερώσετε αυτήν την εφαρμογή;
+ Τα υπάρχοντα δεδομένα δεν θα χαθούν.
+ Η ενημερωμένη εφαρμογή θα έχει πρόσβαση σε:</string>
+    <string name="install_confirm_update_system">Θέλετε να ενημερώσετε αυτήν την ενσωματωμένη εφαρμογή;
+ Τα υπάρχοντα δεδομένα δεν θα χαθούν.
+ Η ενημερωμένη εφαρμογή θα έχει πρόσβαση σε:</string>
+    <string name="install_confirm_update_no_perms">Θέλετε να ενημερώσετε αυτήν την εφαρμογή;
+ Τα υπάρχοντα δεδομένα δεν θα χαθούν.
+ Δεν απαιτεί οποιαδήποτε ειδική πρόσβαση.</string>
+    <string name="install_confirm_update_system_no_perms">Θέλετε να ενημερώσετε αυτήν την ενσωματωμένη εφαρμογή;
+ Τα υπάρχοντα δεδομένα δεν θα χαθούν.
+ Δεν απαιτεί οποιαδήποτε ειδική πρόσβαση.</string>
     <string name="newPerms">Νέες εφαρμογές</string>
     <string name="allPerms">Όλες οι εφαρμογές</string>
     <string name="perm_costs_money">Αυτό μπορεί να σας κοστίσει χρήματα</string>
@@ -301,7 +317,7 @@
     <string name="theme_dark">Σκοτεινό</string>
     <string name="theme_night">Νυχτερινό</string>
 <string name="swap_nfc_title">Αγγίξτε για να μοιραστείτε</string>
-    <string name="swap_nfc_description">Αν ο φίλος σας έχει ενεργοποιημένα το F-Droid και το NFC αγγίξτε μεταξύ τους τα τηλέφωνά σας.</string>
+    <string name="swap_nfc_description">Αν ο φίλος σας έχει το F-Droid και ενεργοποιημένο το NFC αγγίξτε μεταξύ τους τις συσκευές σας.</string>
     <string name="swap_join_same_wifi_desc">Για να ανταλλάξετε χρησιμοποιώντας Wi-Fi, βεβαιωθείτε ότι είσαστε στο ίδιο δίκτυο. Αν δεν έχετε πρόσβαση στο ίδιο δίκτυο, ένας από εσάς μπορεί να δημιουργήσει ένα σημείο πρόσβασης Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Βοηθήστε το φίλο σας να συνδεθεί στο σημείο πρόσβασής σας</string>
     <string name="swap_intro">Συνδεθείτε και ανταλλάξτε εφαρμογές με τους ανθρώπους κοντά σας.</string>
@@ -315,5 +331,54 @@
     <string name="repo_edit_credentials">Τροποποίηση Συνθηματικού</string>
     <string name="login_title">Απαιτείται πιστοποίηση</string>
     <string name="useTor">Χρήση Tor</string>
-    <string name="empty_search_installed_app_list">Καμία εγκαταστημένη εφαρμογή δεν ταιριάζει.</string>
+    <string name="empty_search_installed_app_list">Καμία από τις εγκαταστημένες εφαρμογές δεν ταιριάζει.</string>
+    <string name="by_author">από</string>
+    <string name="keep_install_history">Αποθήκευση ιστορικού εγκαταστάσεων</string>
+    <string name="keep_install_history_summary">Αποθηκεύστε ένα αρχείο όλων των εγκαταστάσεων και απεγκαταστάσεων μέσα στο F-Droid</string>
+    <string name="update_auto_download">Αυτόματη λήψη ενημερώσεων</string>
+    <string name="update_auto_download_summary">Λήψη των ενημερώσεων στο παρασκήνιο</string>
+    <string name="update_auto_install">Αυτόματη εγκατάσταση αναβαθμίσεων</string>
+    <string name="update_auto_install_summary">Λήψη και εγκατάσταση αναβαθμίσεων εφαρμογών στο παρασκήνιο</string>
+    <string name="repo_error_empty_username">Κενό όνομα χρήστη, τα διαπιστευτήρια δεν άλλαξαν</string>
+
+    <string name="versions">Εκδόσεις</string>
+    <string name="tab_installed_apps_count">Εγκαταστημένο (%d)</string>
+    <string name="tab_updates_count">Ενημερώσεις (%d)</string>
+    <string name="repo_provider">Αποθετήριο: %s</string>
+
+    <string name="menu_email">Ηλ. ταχυδρομείο δημιουργού</string>
+    <string name="antinonfreeassetslist">Αυτή η εφαρμογή περιέχει μη-ελεύθερα στοιχεία</string>
+
+    <string name="useTorSummary">Αναγκαστική λήψη μέσω του δικτύου Tor για αυξημένη ιδιωτικότητα</string>
+    <string name="warning_no_internet">Δεν είναι δυνατή η ενημέρωση, είστε συνδεδεμένοι στο internet;</string>
+    <string name="empty_search_available_app_list">Δεν υπάρχουν εφαρμογές που να ταιριάζουν.</string>
+    <string name="empty_search_can_update_app_list">Δεν υπάρχουν εφαρμογές που ταιριάζουν προς αναβάθμιση.</string>
+
+    <string name="system_install_not_supported">Η εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος προς το παρόν δεν υποστηρίζεται στο Android 5.1 ή νεότερη έκδοση.</string>
+
+    <string name="swap_stopping_wifi">Διακοπή ασύρματου δικτύου Wi-Fi…</string>
+    <string name="tap_to_install_format">Πατήστε για να εγκαταστήσετε %s</string>
+    <string name="tap_to_update_format">Πατήστε για να ενημερώσετε %s</string>
+    <string name="download_pending">Περιμένετε να αρχίσει η λήψη…</string>
+    <string name="install_error_notify_title">Λάθος κατά την εγκατάσταση %s</string>
+    <string name="uninstall_error_notify_title">Λάθος κατά την απεγκατάσταση %s</string>
+
+
+    <string name="downloading_apk">Λήψη %1$s</string>
+    <string name="installing">Εγκατάσταση…</string>
+    <string name="uninstalling">Απεγκατάσταση…</string>
+
+    <string name="keep_hour">1 Ώρα</string>
+    <string name="keep_day">1 Μέρα</string>
+    <string name="keep_week">1 Εβδομάδα</string>
+    <string name="keep_month">1 Μήνα</string>
+    <string name="keep_year">1 Χρόνο</string>
+    <string name="keep_forever">Για πάντα</string>
+
+    <string name="crash_dialog_title">Το F-Droid σταμάτησε να λειτουργεί</string>
+    <string name="crash_dialog_text">Προέκυψε μη αναμενόμενο σφάλμα
+ αναγκάζοντας την εφαρμογή να σταματήσει. Θα θέλατε να στείλετε με e-mail
+ τις λεπτομέρειες για να βοηθήσετε να διορθωθεί το πρόβλημα;</string>
+    <string name="hide_anti_feature_apps_on">Σήμανση με γκρίζο εφαρμογές που έχουν ανεπιθύμητα χαρακτηριστικά</string>
+    <string name="hide_anti_feature_apps">Γκριζάρισμα εφαρμογών με αντενδείξεις</string>
     </resources>

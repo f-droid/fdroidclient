@@ -17,8 +17,8 @@
   <string name="notify_on">Visa avisering när uppdateringar finns tillgängliga</string>
   <string name="update_history">Uppdateringshistorik</string>
   <string name="update_history_summ">Antalet dagar som appar ska betraktas som nya eller färska: %s</string>
-  <string name="system_installer">Privilgierat tilläggsprogram</string>
-  <string name="system_installer_on">Använd F-Droid\'s priviligerade tilläggsprogram för att installera, uppdatera och ta bort paket</string>
+  <string name="system_installer">Privilgierad utökning</string>
+  <string name="system_installer_on">Använd F-Droid\'s priviligerade utökning för att installera, uppdatera och ta bort paket</string>
   <string name="local_repo_name">Namn på ditt lokala förråd</string>
   <string name="local_repo_name_summary">Annonserade titeln på ditt lokala förråd: %s</string>
   <string name="local_repo_https">Använd privat anslutning</string>
@@ -91,15 +91,15 @@
   <string name="show_incompat_versions">Inkompatibla versioner</string>
   <string name="show_incompat_versions_on">Visa app-versioner som INTE är kompatibla med enheten</string>
   <string name="rooted">Ignorera root</string>
-  <string name="rooted_on">Gråtona inte appar som kräver superanvändar-behörigheter</string>
+  <string name="rooted_on">Gråtona inte appar som kräver root-behörigheter</string>
   <string name="ignoreTouch">Ignorera pekskärm</string>
   <string name="ignoreTouch_on">Inkludera alltid appar som kräver pekskärm</string>
   <string name="category_All">Alla</string>
   <string name="category_Whats_New">Nyheter</string>
   <string name="category_Recently_Updated">Nyss uppdaterade</string>
   <string name="local_repo">Lokalt filförråd</string>
-  <string name="local_repo_running">F-Droid är redo att byta ut</string>
-  <string name="touch_to_configure_local_repo">Rör för att se detaljer och tillåta andra att byta appar med dig.</string>
+  <string name="local_repo_running">F-Droid är redo att utbyta</string>
+  <string name="touch_to_configure_local_repo">Rör för att se detaljer och tillåta andra att byta ut appar med dig.</string>
   <string name="deleting_repo">Tar bort aktuellt förråd…</string>
   <string name="adding_apks_format">Lägger till %s till förråd…</string>
   <string name="writing_index_jar">Skriver signerad indexfil (index.jar)…</string>
@@ -165,13 +165,13 @@ Du kommer
   <string name="category_Science_Education">Vetenskap &amp; utbildning</string>
   <string name="category_Security">Säkerhet</string>
   <string name="category_System">System</string>
-  <string name="requesting_root_access_body">Efterfrågar superanvändar-tillträde…</string>
-  <string name="root_access_denied_title">Superanvändar-tillträde nekad</string>
-  <string name="root_access_denied_body">Antingen är din Android-enhet inte rootad eller så har du nekat superanvändar-tillträde för F-Droid.</string>
+  <string name="requesting_root_access_body">Efterfrågar root-tillträde…</string>
+  <string name="root_access_denied_title">Root-tillträde nekad</string>
+  <string name="root_access_denied_body">Antingen är din Android-enhet inte rootad eller så har du nekat root-tillträde för F-Droid.</string>
   <string name="system_install_denied_title">Systembehörigheter nekade</string>
   <string name="system_install_denied_body">Detta val är endast tillgängligt när F-Droid installerats som en system-app.</string>
   <string name="swap_join_same_wifi">Använd samma WiFi som din vän</string>
-  <string name="swap">Byt appar</string>
+  <string name="swap">Utbyta appar</string>
   <string name="swap_no_wifi_network">Inget nätverk ännu</string>
   <string name="swap_view_available_networks">(Tryck för att öppna tillgängliga nätverk)</string>
   <string name="open_qr_code_scanner">Öppna QR-kodsläsare</string>
@@ -183,8 +183,8 @@ Du kommer
     <string name="unstable_updates_summary">Föreslå uppdatering till instabil version</string>
     <string name="app_incompatible">Ej kompatibel</string>
     <string name="links">Länkar</string>
-    <string name="uninstall_system">Uppdatera/Avinstallera priviligerat tilläggsprogram</string>
-    <string name="uninstall_system_summary">Öppna detalj-rutan för det priviligerade tilläggsprogrammet för att uppdatera/avinstallera det</string>
+    <string name="uninstall_system">Uppdatera/avinstallera priviligerad utökning</string>
+    <string name="uninstall_system_summary">Öppna detaljrutan av priviligerad utökning för att uppdatera/avinstallera det</string>
     <string name="about_source">Källkod</string>
     <string name="more">Mer</string>
     <string name="less">Mindre</string>
@@ -267,11 +267,11 @@ Du kommer
     <string name="system_uninstall">Vill du avinstallera F-Droid privilegierade tillbyggnad?</string>
     <string name="system_uninstall_button">Avinstallera</string>
 
-    <string name="swap_nfc_title">Tryck här för att byta ut</string>
+    <string name="swap_nfc_title">Tryck för att utbyta</string>
     <string name="swap_nfc_description">Om din vän har F-Droid och NFC aktiverat lägg era enheterna samman.</string>
-    <string name="swap_join_same_wifi_desc">För att byta via WiFi, se till att du är på samma nätverk. Om du inte har tillgång till samma nätverk, kan en av er skapa en WiFi-hotspot.</string>
+    <string name="swap_join_same_wifi_desc">För att utbyta via WiFi, se till att ni är på samma nätverk. Om ni inte har tillgång till samma nätverk, kan en av er skapa en WiFi-hotspot.</string>
     <string name="swap_join_this_hotspot">Hjälp din vän ansluta sig till din hotspot</string>
-    <string name="swap_success">Utbyta lyckades!</string>
+    <string name="swap_success">Utbyte lyckades!</string>
     <string name="swap_active_hotspot">%1$s (din hotspot)</string>
     <string name="swap_switch_to_wifi">Tryck för att växla till ett WiFi-nätverk</string>
     <string name="swap_dont_show_again">Visa inte detta igen</string>
@@ -280,7 +280,7 @@ Du kommer
     <string name="swap_scan_qr">Skanna QR kod</string>
     <string name="swap_people_nearby">Folk i närheten</string>
     <string name="swap_scanning_for_peers">Söker efter folk i närheten…</string>
-    <string name="swap_intro">Anslut och byt program med människor nära dig.</string>
+    <string name="swap_intro">Anslut och byt ut appar med personer nära dig.</string>
     <string name="swap_visible_bluetooth">Synlig via Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Ställer in Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Inte synlig via Bluetooth</string>
@@ -291,16 +291,16 @@ Du kommer
     <string name="swap_wifi_device_name">Enhetsnamn</string>
     <string name="swap_cant_find_peers">Det går inte att hitta den du söker?</string>
     <string name="swap_send_fdroid">Skicka F-Droid</string>
-    <string name="swap_no_peers_nearby">Det gick inte att hitta personer i närheten för att byta med.</string>
+    <string name="swap_no_peers_nearby">Kunde inte hitta personer i närheten att utbyta med.</string>
     <string name="swap_connecting">Ansluter</string>
-    <string name="swap_confirm">Bekräfta byte</string>
-    <string name="swap_qr_isnt_for_swap">QR-koden du skannat ser inte ut som en byte-kod.</string>
+    <string name="swap_confirm">Bekräfta utbyte</string>
+    <string name="swap_qr_isnt_for_swap">QR-koden du skannat ser inte ut som en utbytarkod.</string>
     <string name="bluetooth_unavailable">Bluetooth inte tillgänglig</string>
     <string name="swap_cant_send_no_bluetooth">Det går inte att skicka F-Droid, eftersom Bluetooth inte är tillgänglig på den här enheten.</string>
     <string name="loading">Laddar…</string>
-    <string name="swap_connection_misc_error">Ett fel uppstod vid anslutning till enheten, kan går inte att utföra byte med den.</string>
-    <string name="swap_not_enabled">Utbyte inte aktiverat</string>
-    <string name="swap_not_enabled_description">Innan utbyte, måste enheten synliggöras.</string>
+    <string name="swap_connection_misc_error">Ett fel uppstod under enhetsanslutning, vi kan inte utföra utbyte med den.</string>
+    <string name="swap_not_enabled">Utbyta inte aktiverat</string>
+    <string name="swap_not_enabled_description">Innan utbyte måste din enhet synliggöras.</string>
 
     <string name="install_confirm">behöver tillgång till</string>
     <string name="install_confirm_update">Vill du installera en uppdatering
@@ -344,12 +344,12 @@ Den kräver inte någon särskild tillgång.</string>
 tvingade programmet att avsluta. Vill du skicka detaljer med
 e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="crash_dialog_comment_prompt">Du kan lägga till extra information och kommentarer här:</string>
-<string name="swap_nearby">Närliggande byte</string>
-    <string name="update_auto_download">Ladda ner uppdateringar automatiskt</string>
-    <string name="update_auto_download_summary">Ladda ner uppdateringsfilerna i bakgrunden</string>
+<string name="swap_nearby">Utbyta nära</string>
+    <string name="update_auto_download">Hämta uppdateringar automatiskt</string>
+    <string name="update_auto_download_summary">Hämta uppdateringsfilerna i bakgrunden</string>
     <string name="tap_to_install_format">Knacka för att installera %s</string>
     <string name="tap_to_update_format">Knacka för att uppdatera %s</string>
-    <string name="system_install_not_supported">Installation av F-Droid\'s Priviligerade Tilläggsprogram stöds för närvarande inte i Android 5.1 eller senare.</string>
+    <string name="system_install_not_supported">Installation av F-Droids priviligerade utökning stöds för närvarande inte i Android 5.1 eller senare.</string>
 
     <string name="download_pending">Väntar på att påbörja nerladdningen…</string>
 
@@ -369,10 +369,10 @@ e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="installing">Installerar…</string>
     <string name="uninstalling">Avinstallera…</string>
 
-    <string name="keep_install_history">Behåll installerings historia</string>
+    <string name="keep_install_history">Behåll installeringshistoria</string>
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i F-Droid</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
-    <string name="update_auto_install_summary">Ladda ner och installera uppdaterings program i bakgrunden</string>
+    <string name="update_auto_install_summary">Hämta och installera uppdaterings program i bakgrunden</string>
     <string name="hide_anti_feature_apps">Gråa ut anti-funktions appar</string>
     <string name="hide_anti_feature_apps_on">Gråa ut appar som kräver anti-funktioner</string>
     <string name="warning_no_internet">Det går inte att uppdatera, är du ansluten till Internet?</string>
