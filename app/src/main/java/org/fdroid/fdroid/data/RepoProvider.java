@@ -288,14 +288,9 @@ public class RepoProvider extends FDroidProvider {
         }
 
         public static void setPriority(Context context, Repo repo, int newPosition) {
-            // Close up the gap where this repo used to live:
-            // UPDATE ... SET priority = priority - 1 WHERE priority >= repo.priority
-
-            // Make a new gap where the repo is to move to:
-            // UPDATE ... SET priority = priority + 1 WHERE priority >= newPosition
-
-            // And shove the repo into this newly created slot we just made:
-            // UPDATE ... SET priority = newPosition WHERE repo.id = repo.id
+            ContentValues values = new ContentValues(1);
+            values.put(Cols.PRIORITY, newPosition);
+            update(context, repo, values);
         }
     }
 
@@ -461,25 +456,87 @@ public class RepoProvider extends FDroidProvider {
         // made to do the heavier work (e.g. a repo update to get new list of apps from server).
         // After the heavier work is complete, then that process can request the preferred metadata
         // to be recalculated.
-        boolean priorityChanged = false;
+        boolean priorityChanged;
         if (values.containsKey(Cols.PRIORITY)) {
             Cursor priorityCursor = db().query(getTableName(), new String[]{Cols.PRIORITY}, where, whereArgs, null, null, null);
             if (priorityCursor.getCount() > 0) {
+                int newPriority = values.getAsInteger(Cols.PRIORITY);
                 priorityCursor.moveToFirst();
                 int oldPriority = priorityCursor.getInt(priorityCursor.getColumnIndex(Cols.PRIORITY));
-                priorityChanged = oldPriority != values.getAsInteger(Cols.PRIORITY);
+                priorityChanged = oldPriority != newPriority;
+
+                if (priorityChanged) {
+                    Utils.debugLog(TAG, "Changing repo priority from " + oldPriority + " to " + newPriority);
+                    shufflePriorities(oldPriority, newPriority, where, whereArgs);
+                    AppProvider.Helper.recalculatePreferredMetadata(getContext());
+                    values.remove(Cols.PRIORITY);
+                }
             }
             priorityCursor.close();
         }
 
-        int numRows = db().update(getTableName(), values, where, whereArgs);
-
-        if (priorityChanged) {
-            AppProvider.Helper.recalculatePreferredMetadata(getContext());
+        // If priorities were the only thing which changed, then don't bother updating because we
+        // will have already updated the priorities in shufflePriorities() earlier and nothing will
+        // be left to update here.
+        if (values.size() > 0) {
+            db().update(getTableName(), values, where, whereArgs);
         }
 
         Utils.debugLog(TAG, "Updated repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
-        return numRows;
+        return 1;
+    }
+
+    /**
+     * For example, imagine the user wants to move item B from position 1 to position 4.
+     *
+     * +---+---+---+---+---+---+
+     * | A | B | C | D | E | F |
+     * +---+---+---+---+---+---+
+     *
+     *  To do this, we first update all items above position 1 so that they move down one
+     *  (i.e. "close old gap")
+     *
+     * +---+---+---+---+---+---+
+     * | A |B/C| D | E | F |   |
+     * +---+---+---+---+---+---+
+     *
+     * Then we take items at or above position 4 and move them up to make space.
+     * (i.e. "open new gap")
+     *
+     * +---+---+---+---+---+---+
+     * | A |B/C| D | E |   | F |
+     * +---+---+---+---+---+---+
+     *
+     * Which allows us to move item B from its place in position 1 to position 4 (now not occupied
+     * by any other item).
+     *
+     * +---+---+---+---+---+---+
+     * | A | C | D | E | B | F |
+     * +---+---+---+---+---+---+
+     *
+     */
+    private void shufflePriorities(int oldPriority, int newPriority, String where, String[] whereArgs) {
+        db().beginTransaction();
+        try {
+            String closeOldGap = "UPDATE " + getTableName() +
+                    " SET " + Cols.PRIORITY + " = " + Cols.PRIORITY + " - 1 " +
+                    " WHERE " + Cols.PRIORITY + " >= ?";
+
+            db().execSQL(closeOldGap, new String[]{Integer.toString(oldPriority)});
+
+            String openNewGap = "UPDATE " + getTableName() +
+                    " SET " + Cols.PRIORITY + " = " + Cols.PRIORITY + " + 1 " +
+                    " WHERE " + Cols.PRIORITY + " >= ?";
+            db().execSQL(openNewGap, new String[]{Integer.toString(newPriority)});
+
+            ContentValues values = new ContentValues(1);
+            values.put(Cols.PRIORITY, newPriority);
+            db().update(getTableName(), values, where, whereArgs);
+
+            db().setTransactionSuccessful();
+        } finally {
+            db().endTransaction();
+        }
     }
 }

@@ -777,7 +777,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
             }
 
             RepoProvider.Helper.setPriority(ManageReposActivity.this, repo, viewHolder.getAdapterPosition() + 1);
-            repoAdapter.notifyDataSetChanged();
+            getSupportLoaderManager().restartLoader(0, null, ManageReposActivity.this);
         }
     });
 }

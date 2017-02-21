@@ -147,6 +147,65 @@ public class RepoProviderTest extends FDroidProviderTest {
 
     }
 
+    @Test
+    public void priorities() {
+        List<Repo> defaultRepos = RepoProvider.Helper.all(context);
+        assertEquals(4, defaultRepos.size());
+        assertContiguousPriorities(defaultRepos);
+
+        Repo defaultFdroid = defaultRepos.get(0);
+        Repo defaultFdroidArchive = defaultRepos.get(1);
+        Repo defaultGuardianProject = defaultRepos.get(2);
+        Repo defaultGuardianProjectArchive = defaultRepos.get(3);
+
+        assertEquals(defaultFdroid.address, "https://f-droid.org/repo");
+        assertEquals(defaultFdroidArchive.address, "https://f-droid.org/archive");
+        assertEquals(defaultGuardianProject.address, "https://guardianproject.info/fdroid/repo");
+        assertEquals(defaultGuardianProjectArchive.address, "https://guardianproject.info/fdroid/archive");
+
+        // Move the first repository from 1 to 3.
+
+        RepoProvider.Helper.setPriority(context, defaultFdroid, 3);
+
+        List<Repo> reorderedRepos = RepoProvider.Helper.all(context);
+        assertEquals(4, reorderedRepos.size());
+        assertContiguousPriorities(reorderedRepos);
+
+        Repo reorderedFdroidArchive = reorderedRepos.get(0);
+        Repo reorderedGuardianProject = reorderedRepos.get(1);
+        Repo reorderedFdroid = reorderedRepos.get(2);
+        Repo reorderedGuardianProjectArchive = reorderedRepos.get(3);
+
+        assertEquals(reorderedFdroidArchive.address, "https://f-droid.org/archive");
+        assertEquals(reorderedGuardianProject.address, "https://guardianproject.info/fdroid/repo");
+        assertEquals(reorderedFdroid.address, "https://f-droid.org/repo");
+        assertEquals(reorderedGuardianProjectArchive.address, "https://guardianproject.info/fdroid/archive");
+
+        // Then move the fourth repository from 4 to 1
+
+        RepoProvider.Helper.setPriority(context, reorderedGuardianProjectArchive, 1);
+
+        List<Repo> reorderedAgainRepos = RepoProvider.Helper.all(context);
+        assertEquals(4, reorderedAgainRepos.size());
+        assertContiguousPriorities(reorderedAgainRepos);
+
+        Repo reorderedAgainGuardianProjectArchive = reorderedAgainRepos.get(0);
+        Repo reorderedAgainFdroidArchive = reorderedAgainRepos.get(1);
+        Repo reorderedAgainGuardianProject = reorderedAgainRepos.get(2);
+        Repo reorderedAgainFdroid = reorderedAgainRepos.get(3);
+
+        assertEquals(reorderedAgainGuardianProjectArchive.address, "https://guardianproject.info/fdroid/archive");
+        assertEquals(reorderedAgainFdroidArchive.address, "https://f-droid.org/archive");
+        assertEquals(reorderedAgainGuardianProject.address, "https://guardianproject.info/fdroid/repo");
+        assertEquals(reorderedAgainFdroid.address, "https://f-droid.org/repo");
+    }
+
+    private void assertContiguousPriorities(List<Repo> repos) {
+        for (int i = 0; i < repos.size(); i++) {
+            assertEquals(i + 1, repos.get(i).priority);
+        }
+    }
+
     /**
      * The {@link DBHelper} class populates the default repos when it first creates a database.
      * The names/URLs/signing certificates for these repos are all hard coded in the source/res.
