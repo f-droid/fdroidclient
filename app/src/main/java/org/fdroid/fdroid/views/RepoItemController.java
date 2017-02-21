@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
@@ -21,7 +23,7 @@ public class RepoItemController extends RecyclerView.ViewHolder {
     private final Activity activity;
 
     @NonNull
-    private final RepoAdapter.EnabledListener enabledListener;
+    private final RepoAdapter.RepoChangedListener repoChangedListener;
 
     @NonNull
     private final CompoundButton switchView;
@@ -38,14 +40,17 @@ public class RepoItemController extends RecyclerView.ViewHolder {
     @Nullable
     private Repo currentRepo;
 
-    public RepoItemController(@NonNull Activity activity, View itemView, @NonNull RepoAdapter.EnabledListener listener) {
+    public RepoItemController(@NonNull Activity activity, View itemView, @NonNull RepoAdapter.RepoChangedListener listener) {
         super(itemView);
         this.activity = activity;
-        enabledListener = listener;
+        repoChangedListener = listener;
         nameView = (TextView) itemView.findViewById(R.id.repo_name);
         switchView = (CompoundButton) itemView.findViewById(R.id.repo_switch);
         unsignedView = itemView.findViewById(R.id.repo_unsigned);
         unverifiedView = itemView.findViewById(R.id.repo_unverified);
+
+        ImageView dragHandle = (ImageView) itemView.findViewById(R.id.drag_handle);
+        dragHandle.setOnTouchListener(onStartDrag);
         itemView.setOnClickListener(onRepoClicked);
     }
 
@@ -64,7 +69,7 @@ public class RepoItemController extends RecyclerView.ViewHolder {
         switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                enabledListener.onSetEnabled(repo, isChecked);
+                repoChangedListener.onSetEnabled(repo, isChecked);
             }
         });
 
@@ -96,4 +101,17 @@ public class RepoItemController extends RecyclerView.ViewHolder {
         }
     };
 
+    @SuppressWarnings("FieldCanBeLocal")
+    private final View.OnTouchListener onStartDrag = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            repoChangedListener.onDragStarted(RepoItemController.this);
+            return true;
+        }
+    };
+
+    @Nullable
+    public Repo getRepo() {
+        return currentRepo;
+    }
 }

@@ -39,6 +39,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -69,7 +70,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Locale;
 
-public class ManageReposActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
+public class ManageReposActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.RepoChangedListener {
     private static final String TAG = "ManageReposActivity";
 
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
@@ -103,6 +104,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
         final RecyclerView repoList = (RecyclerView) findViewById(R.id.list);
         repoAdapter = new RepoAdapter(this, this);
         repoList.setAdapter(repoAdapter);
+        itemTouchHelper.attachToRecyclerView(repoList);
         repoList.setLayoutManager(new LinearLayoutManager(this));
     }
 
@@ -706,6 +708,11 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
         repoAdapter.setCursor(null);
     }
 
+    @Override
+    public void onDragStarted(RecyclerView.ViewHolder viewHolder) {
+        itemTouchHelper.startDrag(viewHolder);
+    }
+
     /**
      * NOTE: If somebody toggles a repo off then on again, it will have
      * removed all apps from the index when it was toggled off, so when it
@@ -747,4 +754,30 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
     private void notifyDataSetChanged() {
         getSupportLoaderManager().restartLoader(0, null, this);
     }
+
+    private final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN, 0) {
+        @Override
+        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+            repoAdapter.notifyItemMoved(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+            return true;
+        }
+
+        @Override
+        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            // Do nothing.
+        }
+
+        @Override
+        public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+            super.clearView(recyclerView, viewHolder);
+
+            Repo repo = ((RepoItemController) viewHolder).getRepo();
+            if (repo == null) {
+                throw new IllegalStateException("Tried to drag repo to change priority but could not find repo.");
+            }
+
+            RepoProvider.Helper.setPriority(ManageReposActivity.this, repo, viewHolder.getAdapterPosition() + 1);
+            repoAdapter.notifyDataSetChanged();
+        }
+    });
 }

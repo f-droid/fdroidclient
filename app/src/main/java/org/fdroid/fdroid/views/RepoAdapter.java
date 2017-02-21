@@ -19,12 +19,16 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoItemController> {
 
     public static final int SHOW_REPO_DETAILS = 1;
 
-    public interface EnabledListener {
+    public interface RepoChangedListener {
+
+        void onDragStarted(RecyclerView.ViewHolder viewHolder);
+
         void onSetEnabled(Repo repo, boolean isEnabled);
+
     }
 
     @NonNull
-    private final EnabledListener enabledListener;
+    private final RepoChangedListener repoChangedListener;
 
     @Nullable
     private Cursor cursor;
@@ -32,14 +36,14 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoItemController> {
     @NonNull
     private final Activity activity;
 
-    public RepoAdapter(@NonNull Activity activity, @NonNull EnabledListener listener) {
+    public RepoAdapter(@NonNull Activity activity, @NonNull RepoChangedListener listener) {
         this.activity = activity;
-        enabledListener = listener;
+        repoChangedListener = listener;
     }
 
     @Override
     public RepoItemController onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new RepoItemController(activity, activity.getLayoutInflater().inflate(R.layout.repo_item, parent, false), enabledListener);
+        return new RepoItemController(activity, activity.getLayoutInflater().inflate(R.layout.repo_item, parent, false), repoChangedListener);
     }
 
     @Override

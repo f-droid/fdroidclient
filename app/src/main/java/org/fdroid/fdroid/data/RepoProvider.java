@@ -286,6 +286,17 @@ public class RepoProvider extends FDroidProvider {
 
             return count;
         }
+
+        public static void setPriority(Context context, Repo repo, int newPosition) {
+            // Close up the gap where this repo used to live:
+            // UPDATE ... SET priority = priority - 1 WHERE priority >= repo.priority
+
+            // Make a new gap where the repo is to move to:
+            // UPDATE ... SET priority = priority + 1 WHERE priority >= newPosition
+
+            // And shove the repo into this newly created slot we just made:
+            // UPDATE ... SET priority = newPosition WHERE repo.id = repo.id
+        }
     }
 
     private static final String PROVIDER_NAME = "RepoProvider";
