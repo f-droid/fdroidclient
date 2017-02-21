@@ -25,6 +25,7 @@ import org.fdroid.fdroid.data.Schema;
 public class AppListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, CategoryTextWatcher.SearchTermsChangedListener {
 
     public static final String EXTRA_CATEGORY = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY";
+    public static final String EXTRA_SEARCH_TERMS = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
     private RecyclerView appView;
     private AppListAdapter appAdapter;
     private String category;
@@ -85,8 +86,9 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
         Intent intent = getIntent();
         category = intent.hasExtra(EXTRA_CATEGORY) ? intent.getStringExtra(EXTRA_CATEGORY) : null;
+        searchTerms = intent.hasExtra(EXTRA_SEARCH_TERMS) ? intent.getStringExtra(EXTRA_SEARCH_TERMS) : null;
 
-        searchInput.setText(getSearchText(category, null));
+        searchInput.setText(getSearchText(category, searchTerms));
         searchInput.setSelection(searchInput.getText().length());
 
         if (category != null) {
