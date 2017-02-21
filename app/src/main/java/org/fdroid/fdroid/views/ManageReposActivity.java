@@ -36,6 +36,8 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -44,10 +46,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +56,6 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.ClipboardCompat;
-import org.fdroid.fdroid.compat.CursorAdapterCompat;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -101,17 +100,10 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final ListView repoList = (ListView) findViewById(R.id.list);
-        repoAdapter = RepoAdapter.create(this, null, CursorAdapterCompat.FLAG_AUTO_REQUERY);
-        repoAdapter.setEnabledListener(this);
+        final RecyclerView repoList = (RecyclerView) findViewById(R.id.list);
+        repoAdapter = new RepoAdapter(this, this);
         repoList.setAdapter(repoAdapter);
-        repoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Repo repo = new Repo((Cursor) repoList.getItemAtPosition(position));
-                editRepo(repo);
-            }
-        });
+        repoList.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
@@ -706,12 +698,12 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        repoAdapter.swapCursor(cursor);
+        repoAdapter.setCursor(cursor);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
-        repoAdapter.swapCursor(null);
+        repoAdapter.setCursor(null);
     }
 
     /**
@@ -744,14 +736,6 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
                 Toast.makeText(this, notification, Toast.LENGTH_LONG).show();
             }
         }
-    }
-
-    public static final int SHOW_REPO_DETAILS = 1;
-
-    public void editRepo(Repo repo) {
-        Intent intent = new Intent(this, RepoDetailsActivity.class);
-        intent.putExtra(RepoDetailsActivity.ARG_REPO_ID, repo.getId());
-        startActivityForResult(intent, SHOW_REPO_DETAILS);
     }
 
     /**

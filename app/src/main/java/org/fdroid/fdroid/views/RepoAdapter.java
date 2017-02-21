@@ -1,109 +1,65 @@
 package org.fdroid.fdroid.views;
 
-import android.content.Context;
+import android.app.Activity;
 import android.database.Cursor;
-import android.os.Build;
-import android.support.v4.widget.CursorAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Repo;
 
-public class RepoAdapter extends CursorAdapter {
+/**
+ * Represents a collection of repositories that the F-Droid client knows about.
+ * Wraps a {@link Cursor} from the {@link org.fdroid.fdroid.data.Schema.RepoTable} table.
+ * @see RepoItemController
+ */
+public class RepoAdapter extends RecyclerView.Adapter<RepoItemController> {
+
+    public static final int SHOW_REPO_DETAILS = 1;
 
     public interface EnabledListener {
         void onSetEnabled(Repo repo, boolean isEnabled);
     }
 
-    private final LayoutInflater inflater;
+    @NonNull
+    private final EnabledListener enabledListener;
 
-    private EnabledListener enabledListener;
+    @Nullable
+    private Cursor cursor;
 
-    public static RepoAdapter create(Context context, Cursor cursor, int flags) {
-        if (Build.VERSION.SDK_INT >= 11) {
-            return new RepoAdapter(context, cursor, flags);
-        }
-        return new RepoAdapter(context, cursor);
-    }
+    @NonNull
+    private final Activity activity;
 
-    private RepoAdapter(Context context, Cursor c, int flags) {
-        super(context, c, flags);
-        inflater = LayoutInflater.from(context);
-    }
-
-    public RepoAdapter(Context context, Cursor c, boolean autoRequery) {
-        super(context, c, autoRequery);
-        inflater = LayoutInflater.from(context);
-    }
-
-    @SuppressWarnings("deprecation")
-    private RepoAdapter(Context context, Cursor c) {
-        super(context, c);
-        inflater = LayoutInflater.from(context);
-    }
-
-    public void setEnabledListener(EnabledListener listener) {
+    public RepoAdapter(@NonNull Activity activity, @NonNull EnabledListener listener) {
+        this.activity = activity;
         enabledListener = listener;
     }
 
     @Override
-    public boolean hasStableIds() {
-        return true;
+    public RepoItemController onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new RepoItemController(activity, activity.getLayoutInflater().inflate(R.layout.repo_item, parent, false), enabledListener);
     }
 
     @Override
-    public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        View view = inflater.inflate(R.layout.repo_item, parent, false);
-        setupView(cursor, view, (CompoundButton) view.findViewById(R.id.repo_switch));
-        return view;
-    }
-
-    @Override
-    public void bindView(View view, Context context, Cursor cursor) {
-        CompoundButton switchView = (CompoundButton) view.findViewById(R.id.repo_switch);
-
-        // Remove old listener (because we are reusing this view, we don't want
-        // to invoke the listener for the last repo to use it - particularly
-        // because we are potentially about to change the checked status
-        // which would in turn invoke this listener....
-        switchView.setOnCheckedChangeListener(null);
-        setupView(cursor, view, switchView);
-    }
-
-    private void setupView(Cursor cursor, View view, CompoundButton switchView) {
-        final Repo repo = new Repo(cursor);
-
-        switchView.setChecked(repo.inuse);
-
-        // Add this listener *after* setting the checked status, so we don't
-        // invoke the listener while setting up the view...
-        switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (enabledListener != null) {
-                    enabledListener.onSetEnabled(repo, isChecked);
-                }
-            }
-        });
-
-        TextView nameView = (TextView) view.findViewById(R.id.repo_name);
-        nameView.setText(repo.getName());
-
-        View unsignedView = view.findViewById(R.id.repo_unsigned);
-        View unverifiedView = view.findViewById(R.id.repo_unverified);
-        if (repo.isSigned()) {
-            unsignedView.setVisibility(View.GONE);
-            unverifiedView.setVisibility(View.GONE);
-        } else if (repo.isSignedButUnverified()) {
-            unsignedView.setVisibility(View.GONE);
-            unverifiedView.setVisibility(View.VISIBLE);
-        } else {
-            unsignedView.setVisibility(View.VISIBLE);
-            unverifiedView.setVisibility(View.GONE);
+    public void onBindViewHolder(RepoItemController holder, int position) {
+        if (cursor == null) {
+            return;
         }
+
+        cursor.moveToPosition(position);
+        holder.bindRepo(new Repo(cursor));
     }
+
+    @Override
+    public int getItemCount() {
+        return cursor == null ? 0 : cursor.getCount();
+    }
+
+    public void setCursor(@Nullable Cursor cursor) {
+        this.cursor = cursor;
+        notifyDataSetChanged();
+    }
+
 }
