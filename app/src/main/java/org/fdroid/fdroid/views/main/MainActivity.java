@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        pager.scrollToPosition(MainViewAdapter.ID_TO_POSITION.get(item.getItemId()));
         return true;
     }
 
