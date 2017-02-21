@@ -14,18 +14,24 @@
     android:clickable="true"
     android:orientation="vertical"
     tools:ignore="UnusedAttribute">
-    <TextView
-        android:id="@+id/information"
-        style="@style/AppDetailsSubheaderText"
-        android:text="@string/links"
-        android:paddingLeft="@dimen/details_activity__collapsable_lists__padding__horizontal"
-        android:paddingStart="@dimen/details_activity__collapsable_lists__padding__horizontal"
-        android:paddingRight="@dimen/details_activity__collapsable_lists__padding__horizontal"
-        android:paddingEnd="@dimen/details_activity__collapsable_lists__padding__horizontal"
-        android:drawableRight="@drawable/ic_expand_more_grey600"
-        android:drawableEnd="@drawable/ic_expand_more_grey600"
-        android:drawableLeft="@drawable/ic_website"
-        android:drawableStart="@drawable/ic_website" />
+
+    <!-- This frame layout is only for showing the material-design-like background ripple when
+         selecting the TextView. -->
+    <FrameLayout style="@style/AppDetailsLink">
+
+        <TextView
+            android:id="@+id/information"
+            style="@style/AppDetailsSubheaderText"
+            android:text="@string/links"
+            android:paddingLeft="@dimen/details_activity__collapsable_lists__padding__horizontal"
+            android:paddingStart="@dimen/details_activity__collapsable_lists__padding__horizontal"
+            android:paddingRight="@dimen/details_activity__collapsable_lists__padding__horizontal"
+            android:paddingEnd="@dimen/details_activity__collapsable_lists__padding__horizontal"
+            android:drawableRight="@drawable/ic_expand_more_grey600"
+            android:drawableEnd="@drawable/ic_expand_more_grey600"
+            android:drawableLeft="@drawable/ic_website"
+            android:drawableStart="@drawable/ic_website" />
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/ll_content"

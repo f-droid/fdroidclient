@@ -135,11 +135,19 @@ public class AppDetailsRecyclerViewAdapter
 
     private void setShowVersions(boolean showVersions) {
         this.showVersions = showVersions;
-        items.removeAll(versions);
+        boolean itemsWereRemoved = items.removeAll(versions);
+        int startIndex = items.indexOf(VIEWTYPE_VERSIONS) + 1;
+
+        // When adding/removing items, be sure to only notifyItemInserted and notifyItemRemoved
+        // rather than notifyDatasetChanged(). If we only notify about the entire thing, then
+        // everything gets rebuilt, including the expandable "Versions" item. By rebuilding that
+        // item it will interrupt the nice material-design-style-ripple from the background.
         if (showVersions) {
-            items.addAll(items.indexOf(VIEWTYPE_VERSIONS) + 1, versions);
+            items.addAll(startIndex, versions);
+            notifyItemRangeInserted(startIndex, versions.size());
+        } else if (itemsWereRemoved) {
+            notifyItemRangeRemoved(startIndex, versions.size());
         }
-        notifyDataSetChanged();
     }
 
     private void addItem(int item) {
