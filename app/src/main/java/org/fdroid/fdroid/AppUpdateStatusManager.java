@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 
@@ -292,6 +293,15 @@ public class AppUpdateStatusManager {
             return getAppDetailsIntent(entry.apk);
         } else if (entry.status == Status.InstallError) {
             return getAppErrorIntent(entry);
+        } else if (entry.status == Status.Installed) {
+            PackageManager pm = context.getPackageManager();
+            Intent intentObject = pm.getLaunchIntentForPackage(entry.app.packageName);
+            if (intentObject != null) {
+                return PendingIntent.getActivity(context, 0, intentObject, 0);
+            } else {
+                // Could not get launch intent, maybe not launchable, e.g. a keyboard
+                return getAppDetailsIntent(entry.apk);
+            }
         }
         return null;
     }
