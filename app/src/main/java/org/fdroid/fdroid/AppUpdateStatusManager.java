@@ -6,6 +6,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
@@ -108,21 +109,14 @@ public class AppUpdateStatusManager {
         return returnValues;
     }
 
-    private void setApkInternal(Apk apk, Status status, PendingIntent intent) {
+    private void setApkInternal(Apk apk, @NonNull Status status, PendingIntent intent) {
         if (apk == null) {
             return;
         }
 
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(apk.getUrl());
-            if (status == null) {
-                // Remove
-                Utils.debugLog(LOGTAG, "Remove APK " + apk.apkName);
-                if (entry != null) {
-                    appMapping.remove(apk.getUrl());
-                    notifyRemove(entry);
-                }
-            } else if (entry != null) {
+            if (entry != null) {
                 // Update
                 Utils.debugLog(LOGTAG, "Update APK " + apk.apkName + " state to " + status.name());
                 boolean isStatusUpdate = (entry.status != status);
@@ -203,11 +197,11 @@ public class AppUpdateStatusManager {
      * @param status The current status of the app
      * @param pendingIntent Action when notification is clicked. Can be null for default action(s)
      */
-    public void addApk(Apk apk, Status status, PendingIntent pendingIntent) {
+    public void addApk(Apk apk, @NonNull Status status, PendingIntent pendingIntent) {
         setApkInternal(apk, status, pendingIntent);
     }
 
-    public void updateApk(String key, Status status, PendingIntent pendingIntent) {
+    public void updateApk(String key, @NonNull Status status, PendingIntent pendingIntent) {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(key);
             if (entry != null) {
@@ -231,7 +225,9 @@ public class AppUpdateStatusManager {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(key);
             if (entry != null) {
-                setApkInternal(entry.apk, null, null); // remove
+                Utils.debugLog(LOGTAG, "Remove APK " + entry.apk.apkName);
+                appMapping.remove(entry.apk.getUrl());
+                notifyRemove(entry);
             }
         }
     }
