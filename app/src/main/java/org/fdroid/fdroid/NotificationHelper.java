@@ -5,11 +5,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.LocalBroadcastManager;
@@ -25,7 +27,6 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.utils.DiskCacheUtils;
-import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 
 import org.fdroid.fdroid.data.App;
 
@@ -169,14 +170,24 @@ class NotificationHelper {
         for (AppUpdateStatusManager.AppUpdateStatus entry : appUpdateStatusManager.getAll()) {
             if (entry.status == AppUpdateStatusManager.Status.Installed) {
                 installed.add(entry);
-            } else if (entry.status != AppUpdateStatusManager.Status.Unknown) {
+            } else if (!shouldIgnoreEntry(entry)) {
                 updates.add(entry);
             }
         }
     }
 
+    private boolean shouldIgnoreEntry(AppUpdateStatusManager.AppUpdateStatus entry) {
+        // Ignore unknown status
+        if (entry.status == AppUpdateStatusManager.Status.Unknown)
+            return true;
+        // Ignore first time install downloads, assumed to be done from UI
+        else if (!entry.app.isInstalled() && (entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.ReadyToInstall))
+            return true;
+        return false;
+    }
+
     private void createNotification(AppUpdateStatusManager.AppUpdateStatus entry) {
-        if (entry.status == AppUpdateStatusManager.Status.Unknown) {
+        if (shouldIgnoreEntry(entry)) {
             notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
             notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
             return;
@@ -256,7 +267,7 @@ class NotificationHelper {
             case Downloading:
                 return app.name;
             case ReadyToInstall:
-                return context.getString(app.isInstalled() ? R.string.notification_title_single_ready_to_install_update : R.string.notification_title_single_ready_to_install); // TODO - "Update"? Should just be "ready to install"?
+                return context.getString(R.string.notification_title_single_ready_to_install_update);
             case Installing:
                 return app.name;
             case Installed:
@@ -272,7 +283,7 @@ class NotificationHelper {
             case UpdateAvailable:
                 return app.name;
             case Downloading:
-                return context.getString(R.string.notification_content_single_downloading, app.name);
+                return context.getString(R.string.notification_content_single_downloading_update, app.name);
             case ReadyToInstall:
                 return app.name;
             case Installing:
@@ -280,19 +291,19 @@ class NotificationHelper {
             case Installed:
                 return context.getString(R.string.notification_content_single_installed);
             case InstallError:
-                return context.getString(R.string.notification_content_single_install_error);
+                return app.name;
         }
         return "";
     }
 
-    private String getMultiItemContentString(App app, AppUpdateStatusManager.Status status) {
+    private String getMultiItemContentString(AppUpdateStatusManager.Status status) {
         switch (status) {
             case UpdateAvailable:
                 return context.getString(R.string.notification_title_summary_update_available);
             case Downloading:
-                return context.getString(app.isInstalled() ? R.string.notification_title_summary_downloading_update : R.string.notification_title_summary_downloading);
+                return context.getString(R.string.notification_title_summary_downloading_update);
             case ReadyToInstall:
-                return context.getString(app.isInstalled() ? R.string.notification_title_summary_ready_to_install_update : R.string.notification_title_summary_ready_to_install);
+                return context.getString(R.string.notification_title_summary_ready_to_install_update);
             case Installing:
                 return context.getString(R.string.notification_title_summary_installing);
             case Installed:
@@ -307,14 +318,17 @@ class NotificationHelper {
         App app = entry.app;
         AppUpdateStatusManager.Status status = entry.status;
 
+        int iconSmall = R.drawable.ic_launcher;
         Bitmap iconLarge = getLargeIconForEntry(entry);
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
-                        .setAutoCancel(false)
-                        .setLargeIcon(iconLarge)
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setAutoCancel(true)
                         .setContentTitle(getSingleItemTitleString(app, status))
                         .setContentText(getSingleItemContentString(app, status))
+                        .setSmallIcon(iconSmall)
+                        .setLargeIcon(iconLarge)
+                        .setLocalOnly(true)
+                        .setVisibility(NotificationCompat.VISIBILITY_SECRET)
                         .setGroup(GROUP_UPDATES);
 
         // Handle intents
@@ -360,7 +374,7 @@ class NotificationHelper {
             App app = entry.app;
             AppUpdateStatusManager.Status status = entry.status;
 
-            String content = getMultiItemContentString(app, status);
+            String content = getMultiItemContentString(status);
             SpannableStringBuilder sb = new SpannableStringBuilder(app.name);
             sb.setSpan(new StyleSpan(Typeface.BOLD), 0, sb.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
             sb.append(" ");
@@ -382,15 +396,14 @@ class NotificationHelper {
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
-                        .setAutoCancel(true)
+                        .setAutoCancel(!useStackedNotifications())
                         .setSmallIcon(R.drawable.ic_launcher)
                         .setContentTitle(title)
                         .setContentText(text)
                         .setContentIntent(piAction)
+                        .setLocalOnly(true)
+                        .setVisibility(NotificationCompat.VISIBILITY_SECRET)
                         .setStyle(inboxStyle);
-        if (BuildConfig.DEBUG) {
-            builder.setPriority(NotificationCompat.PRIORITY_LOW); // To make not at top of list!
-        }
         if (useStackedNotifications()) {
             builder.setGroup(GROUP_UPDATES)
                     .setGroupSummary(true);
@@ -409,15 +422,16 @@ class NotificationHelper {
                 new NotificationCompat.Builder(context)
                         .setAutoCancel(true)
                         .setLargeIcon(iconLarge)
-                        .setSmallIcon(R.drawable.ic_stat_notify_updates)
+                        .setSmallIcon(R.drawable.ic_launcher)
                         .setContentTitle(app.name)
                         .setContentText(context.getString(R.string.notification_content_single_installed))
+                        .setLocalOnly(true)
+                        .setVisibility(NotificationCompat.VISIBILITY_SECRET)
                         .setGroup(GROUP_INSTALLED);
 
-        PackageManager pm = context.getPackageManager();
-        Intent intentObject = pm.getLaunchIntentForPackage(app.packageName);
-        PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject, 0);
-        builder.setContentIntent(piAction);
+        if (entry.intent != null) {
+            builder.setContentIntent(entry.intent);
+        }
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED);
         intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getUniqueKey());
@@ -452,11 +466,13 @@ class NotificationHelper {
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
-                        .setAutoCancel(true)
+                        .setAutoCancel(!useStackedNotifications())
                         .setSmallIcon(R.drawable.ic_launcher)
                         .setContentTitle(title)
                         .setContentText(text)
-                        .setContentIntent(piAction);
+                        .setContentIntent(piAction)
+                        .setLocalOnly(true)
+                        .setVisibility(NotificationCompat.VISIBILITY_SECRET);
         if (useStackedNotifications()) {
             builder.setGroup(GROUP_INSTALLED)
                     .setGroupSummary(true);
@@ -482,7 +498,16 @@ class NotificationHelper {
     private Bitmap getLargeIconForEntry(AppUpdateStatusManager.AppUpdateStatus entry) {
         final Point largeIconSize = getLargeIconSize();
         Bitmap iconLarge = null;
-        if (DiskCacheUtils.findInCache(entry.app.iconUrl, ImageLoader.getInstance().getDiskCache()) != null) {
+        if (entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.Installing) {
+            Bitmap bitmap = Bitmap.createBitmap(largeIconSize.x, largeIconSize.y, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmap);
+            Drawable downloadIcon = VectorDrawableCompat.create(context.getResources(), R.drawable.ic_notification_download, context.getTheme());
+            if (downloadIcon != null) {
+                downloadIcon.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+                downloadIcon.draw(canvas);
+            }
+            return bitmap;
+        } else if (DiskCacheUtils.findInCache(entry.app.iconUrl, ImageLoader.getInstance().getDiskCache()) != null) {
             iconLarge = ImageLoader.getInstance().loadImageSync(entry.app.iconUrl, new ImageSize(largeIconSize.x, largeIconSize.y), displayImageOptions);
         } else {
             // Load it for later!
