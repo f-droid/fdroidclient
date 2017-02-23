@@ -72,20 +72,6 @@ public class InstallManagerService extends Service {
     private static final String EXTRA_APP = "org.fdroid.fdroid.installer.extra.APP";
     private static final String EXTRA_APK = "org.fdroid.fdroid.installer.extra.APK";
 
-    /**
-     * The collection of {@link Apk}s that are actively going through this whole process,
-     * matching the {@link App}s in {@code ACTIVE_APPS}. The key is the download URL, as
-     * in {@link Apk#getUrl()} or {@code urlString}.
-     */
-    //private static final HashMap<String, Apk> ACTIVE_APKS = new HashMap<>(3);
-
-    /**
-     * The collection of {@link App}s that are actively going through this whole process,
-     * matching the {@link Apk}s in {@code ACTIVE_APKS}. The key is the
-     * {@code packageName} of the app.
-     */
-    //private static final HashMap<String, App> ACTIVE_APPS = new HashMap<>(3);
-
     private LocalBroadcastManager localBroadcastManager;
     private AppUpdateStatusManager appUpdateStatusManager;
 
@@ -271,7 +257,6 @@ public class InstallManagerService extends Service {
                         intentObject.setData(downloadUri);
                         PendingIntent action = PendingIntent.getService(context, 0, intentObject, 0);
                         appUpdateStatusManager.updateApk(urlString, AppUpdateStatusManager.Status.Downloading, action);
-                        // nothing to do
                         break;
                     case Downloader.ACTION_PROGRESS:
                         int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
