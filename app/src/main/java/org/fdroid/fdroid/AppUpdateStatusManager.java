@@ -6,6 +6,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.support.annotation.Nullable;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 
@@ -76,6 +77,7 @@ public class AppUpdateStatusManager {
         localBroadcastManager = LocalBroadcastManager.getInstance(context.getApplicationContext());
     }
 
+    @Nullable
     public AppUpdateStatus get(String key) {
         synchronized (appMapping) {
             return appMapping.get(key);
@@ -204,6 +206,7 @@ public class AppUpdateStatusManager {
         }
     }
 
+    @Nullable
     public Apk getApk(String key) {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(key);
