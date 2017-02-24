@@ -433,6 +433,15 @@ public class AppDetails extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        App newApp = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), app.packageName);
+        if (newApp.isInstalled() != app.isInstalled()) {
+            setApp(newApp);
+        }
+        super.onResume();
+    }
+
+    @Override
     protected void onResumeFragments() {
         // Must be called before super.onResumeFragments(), as the fragments depend on the active
         // url being correctly set in order to know whether or not to show the download progress bar.
@@ -993,7 +1002,7 @@ public class AppDetails extends AppCompatActivity {
             return apk;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-            throw new IllegalStateException("Couldn't find app while installing");
+            throw new IllegalStateException("Couldn't find installed apk for " + app.packageName, e);
         }
     }
 
