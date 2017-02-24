@@ -32,7 +32,7 @@ import java.lang.reflect.Method;
 
 public class AppCompatListPreference extends ListPreference {
 
-    private AppCompatDialog mDialog;
+    private AppCompatDialog appCompatDialog;
 
     public AppCompatListPreference(Context context) {
         super(context);
@@ -44,7 +44,7 @@ public class AppCompatListPreference extends ListPreference {
 
     @Override
     public AppCompatDialog getDialog() {
-        return mDialog;
+        return appCompatDialog;
     }
 
     @Override
@@ -82,19 +82,19 @@ public class AppCompatListPreference extends ListPreference {
             e.printStackTrace();
         }
 
-        mDialog = builder.create();
+        appCompatDialog = builder.create();
         if (state != null) {
-            mDialog.onRestoreInstanceState(state);
+            appCompatDialog.onRestoreInstanceState(state);
         }
-        mDialog.show();
+        appCompatDialog.show();
     }
 
     @Override
     public void onActivityDestroy() {
         super.onActivityDestroy();
-        if (mDialog != null && mDialog.isShowing() &&
-                mDialog.getWindow() != null && mDialog.getWindow().getWindowManager() != null) {
-            mDialog.dismiss();
+        if (appCompatDialog != null && appCompatDialog.isShowing() &&
+                appCompatDialog.getWindow() != null && appCompatDialog.getWindow().getWindowManager() != null) {
+            appCompatDialog.dismiss();
         }
     }
 }
