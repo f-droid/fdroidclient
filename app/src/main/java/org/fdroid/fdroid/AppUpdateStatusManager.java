@@ -285,23 +285,25 @@ public class AppUpdateStatusManager {
     }
 
     private PendingIntent getContentIntent(AppUpdateStatus entry) {
-        if (entry.status == Status.UpdateAvailable) {
-            // Make sure we have an intent to install the app. If not set, we create an intent
-            // to open up the app details page for the app. From there, the user can hit "install"
-            return getAppDetailsIntent(entry.apk);
-        } else if (entry.status == Status.ReadyToInstall) {
-            return getAppDetailsIntent(entry.apk);
-        } else if (entry.status == Status.InstallError) {
-            return getAppErrorIntent(entry);
-        } else if (entry.status == Status.Installed) {
-            PackageManager pm = context.getPackageManager();
-            Intent intentObject = pm.getLaunchIntentForPackage(entry.app.packageName);
-            if (intentObject != null) {
-                return PendingIntent.getActivity(context, 0, intentObject, 0);
-            } else {
-                // Could not get launch intent, maybe not launchable, e.g. a keyboard
+        switch (entry.status) {
+            case UpdateAvailable:
+            case ReadyToInstall:
+                // Make sure we have an intent to install the app. If not set, we create an intent
+                // to open up the app details page for the app. From there, the user can hit "install"
                 return getAppDetailsIntent(entry.apk);
-            }
+
+            case InstallError:
+                return getAppErrorIntent(entry);
+
+            case Installed:
+                PackageManager pm = context.getPackageManager();
+                Intent intentObject = pm.getLaunchIntentForPackage(entry.app.packageName);
+                if (intentObject != null) {
+                    return PendingIntent.getActivity(context, 0, intentObject, 0);
+                } else {
+                    // Could not get launch intent, maybe not launchable, e.g. a keyboard
+                    return getAppDetailsIntent(entry.apk);
+                }
         }
         return null;
     }

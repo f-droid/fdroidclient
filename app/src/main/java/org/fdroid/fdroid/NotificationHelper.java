@@ -249,12 +249,16 @@ class NotificationHelper {
 
     private NotificationCompat.Action getAction(AppUpdateStatusManager.AppUpdateStatus entry) {
         if (entry.intent != null) {
-            if (entry.status == AppUpdateStatusManager.Status.UpdateAvailable) {
-                return new NotificationCompat.Action(R.drawable.ic_notify_update_24dp, context.getString(R.string.notification_action_update), entry.intent);
-            } else if (entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.Installing) {
-                return new NotificationCompat.Action(R.drawable.ic_notify_cancel_24dp, context.getString(R.string.notification_action_cancel), entry.intent);
-            } else if (entry.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-                return new NotificationCompat.Action(R.drawable.ic_notify_install_24dp, context.getString(R.string.notification_action_install), entry.intent);
+            switch (entry.status) {
+                case UpdateAvailable:
+                    return new NotificationCompat.Action(R.drawable.ic_notify_update_24dp, context.getString(R.string.notification_action_update), entry.intent);
+
+                case Downloading:
+                case Installing:
+                    return new NotificationCompat.Action(R.drawable.ic_notify_cancel_24dp, context.getString(R.string.notification_action_cancel), entry.intent);
+
+                case ReadyToInstall:
+                    return new NotificationCompat.Action(R.drawable.ic_notify_install_24dp, context.getString(R.string.notification_action_install), entry.intent);
             }
         }
         return null;
