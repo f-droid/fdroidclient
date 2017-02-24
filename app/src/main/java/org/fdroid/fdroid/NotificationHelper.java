@@ -1,5 +1,6 @@
 package org.fdroid.fdroid;
 
+import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -189,28 +190,28 @@ class NotificationHelper {
             return;
         }
         if (notificationManager.areNotificationsEnabled()) {
-            NotificationCompat.Builder builder;
+            Notification notification;
             if (entry.status == AppUpdateStatusManager.Status.Installed) {
                 if (useStackedNotifications()) {
-                    builder = createInstalledNotification(entry);
+                    notification = createInstalledNotification(entry);
                     notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
-                    notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_INSTALLED, builder.build());
+                    notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_INSTALLED, notification);
                 } else if (installed.size() == 1) {
-                    builder = createInstalledNotification(entry);
+                    notification = createInstalledNotification(entry);
                     notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
                     notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
-                    notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, builder.build());
+                    notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, notification);
                 }
             } else {
                 if (useStackedNotifications()) {
-                    builder = createUpdateNotification(entry);
+                    notification = createUpdateNotification(entry);
                     notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
-                    notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_UPDATES, builder.build());
+                    notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_UPDATES, notification);
                 } else if (updates.size() == 1) {
-                    builder = createUpdateNotification(entry);
+                    notification = createUpdateNotification(entry);
                     notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
                     notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
-                    notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, builder.build());
+                    notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, notification);
                 }
             }
         }
@@ -222,14 +223,14 @@ class NotificationHelper {
             return;
         }
 
-        NotificationCompat.Builder builder;
+        Notification notification;
         if (updates.size() != 1 || useStackedNotifications()) {
             if (updates.size() == 0) {
                 // No updates, remove summary
                 notificationManager.cancel(GROUP_UPDATES, NOTIFY_ID_UPDATES);
             } else {
-                builder = createUpdateSummaryNotification(updates);
-                notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, builder.build());
+                notification = createUpdateSummaryNotification(updates);
+                notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, notification);
             }
         }
         if (installed.size() != 1 || useStackedNotifications()) {
@@ -237,8 +238,8 @@ class NotificationHelper {
                 // No installed, remove summary
                 notificationManager.cancel(GROUP_INSTALLED, NOTIFY_ID_INSTALLED);
             } else {
-                builder = createInstalledSummaryNotification(installed);
-                notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, builder.build());
+                notification = createInstalledSummaryNotification(installed);
+                notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, notification);
             }
         }
     }
@@ -314,7 +315,7 @@ class NotificationHelper {
         return "";
     }
 
-    private NotificationCompat.Builder createUpdateNotification(AppUpdateStatusManager.AppUpdateStatus entry) {
+    private Notification createUpdateNotification(AppUpdateStatusManager.AppUpdateStatus entry) {
         App app = entry.app;
         AppUpdateStatusManager.Status status = entry.status;
 
@@ -359,10 +360,10 @@ class NotificationHelper {
         intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getUniqueKey());
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, 0);
         builder.setDeleteIntent(piDeleted);
-        return builder;
+        return builder.build();
     }
 
-    private NotificationCompat.Builder createUpdateSummaryNotification(ArrayList<AppUpdateStatusManager.AppUpdateStatus> updates) {
+    private Notification createUpdateSummaryNotification(ArrayList<AppUpdateStatusManager.AppUpdateStatus> updates) {
         String title = context.getString(R.string.notification_summary_updates, updates.size());
         StringBuilder text = new StringBuilder();
 
@@ -414,10 +415,10 @@ class NotificationHelper {
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, 0);
         builder.setDeleteIntent(piDeleted);
-        return builder;
+        return builder.build();
     }
 
-    private NotificationCompat.Builder createInstalledNotification(AppUpdateStatusManager.AppUpdateStatus entry) {
+    private Notification createInstalledNotification(AppUpdateStatusManager.AppUpdateStatus entry) {
         App app = entry.app;
 
         Bitmap iconLarge = getLargeIconForEntry(entry);
@@ -440,10 +441,10 @@ class NotificationHelper {
         intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getUniqueKey());
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, 0);
         builder.setDeleteIntent(piDeleted);
-        return builder;
+        return builder.build();
     }
 
-    private NotificationCompat.Builder createInstalledSummaryNotification(ArrayList<AppUpdateStatusManager.AppUpdateStatus> installed) {
+    private Notification createInstalledSummaryNotification(ArrayList<AppUpdateStatusManager.AppUpdateStatus> installed) {
         String title = context.getString(R.string.notification_summary_installed, installed.size());
         StringBuilder text = new StringBuilder();
 
@@ -483,7 +484,7 @@ class NotificationHelper {
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, 0);
         builder.setDeleteIntent(piDeleted);
-        return builder;
+        return builder.build();
     }
 
     private Point getLargeIconSize() {
