@@ -188,7 +188,7 @@ public class AppUpdateStatusManager {
      * @param status The current status of the app
      * @param pendingIntent Action when notification is clicked. Can be null for default action(s)
      */
-    public void addApk(Apk apk, @NonNull Status status, PendingIntent pendingIntent) {
+    public void addApk(Apk apk, @NonNull Status status, @Nullable PendingIntent pendingIntent) {
         if (apk == null) {
             return;
         }
@@ -203,7 +203,10 @@ public class AppUpdateStatusManager {
         }
     }
 
-    public void updateApk(String key, @NonNull Status status, PendingIntent pendingIntent) {
+    /**
+     * @param pendingIntent Action when notification is clicked. Can be null for default action(s)
+     */
+    public void updateApk(String key, @NonNull Status status, @Nullable PendingIntent pendingIntent) {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(key);
             if (entry != null) {
