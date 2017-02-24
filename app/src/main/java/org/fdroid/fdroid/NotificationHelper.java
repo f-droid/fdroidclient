@@ -53,8 +53,8 @@ class NotificationHelper {
     private final NotificationManagerCompat notificationManager;
     private final AppUpdateStatusManager appUpdateStatusManager;
     private final DisplayImageOptions displayImageOptions;
-    private ArrayList<AppUpdateStatusManager.AppUpdateStatus> updates;
-    private ArrayList<AppUpdateStatusManager.AppUpdateStatus> installed;
+    private final ArrayList<AppUpdateStatusManager.AppUpdateStatus> updates = new ArrayList<>();
+    private final ArrayList<AppUpdateStatusManager.AppUpdateStatus> installed = new ArrayList<>();
 
     NotificationHelper(Context context) {
         this.context = context;
@@ -151,22 +151,18 @@ class NotificationHelper {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
     }
 
+    /**
+     * Populate {@link NotificationHelper#updates} and {@link NotificationHelper#installed} with
+     * the relevant status entries from the {@link AppUpdateStatusManager}.
+     */
     private void updateStatusLists() {
         if (!notificationManager.areNotificationsEnabled()) {
             return;
         }
 
-        // Get the list of updates and installed available
-        if (updates == null) {
-            updates = new ArrayList<>();
-        } else {
-            updates.clear();
-        }
-        if (installed == null) {
-            installed = new ArrayList<>();
-        } else {
-            installed.clear();
-        }
+        updates.clear();
+        installed.clear();
+
         for (AppUpdateStatusManager.AppUpdateStatus entry : appUpdateStatusManager.getAll()) {
             if (entry.status == AppUpdateStatusManager.Status.Installed) {
                 installed.add(entry);
