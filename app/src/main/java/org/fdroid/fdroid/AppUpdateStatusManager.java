@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class AppUpdateStatusManager {
@@ -187,6 +188,15 @@ public class AppUpdateStatusManager {
         }
     }
 
+
+    public void addApks(List<Apk> apksToUpdate, Status status) {
+        startBatchUpdates();
+        for (Apk apk : apksToUpdate) {
+            addApk(apk, status, null);
+        }
+        endBatchUpdates();
+    }
+
     /**
      * Add an Apk to the AppUpdateStatusManager manager.
      * @param apk The apk to add.
@@ -250,13 +260,13 @@ public class AppUpdateStatusManager {
         }
     }
 
-    void startBatchUpdates() {
+    private void startBatchUpdates() {
         synchronized (appMapping) {
             isBatchUpdating = true;
         }
     }
 
-    void endBatchUpdates() {
+    private void endBatchUpdates() {
         synchronized (appMapping) {
             isBatchUpdating = false;
             notifyChange();

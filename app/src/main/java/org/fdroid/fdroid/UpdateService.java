@@ -489,14 +489,13 @@ public class UpdateService extends IntentService {
     private void showAppUpdatesNotification(Cursor hasUpdates) {
         if (hasUpdates != null) {
             hasUpdates.moveToFirst();
-            appUpdateStatusManager.startBatchUpdates();
+            List<Apk> apksToUpdate = new ArrayList<>(hasUpdates.getCount());
             for (int i = 0; i < hasUpdates.getCount(); i++) {
                 App app = new App(hasUpdates);
                 hasUpdates.moveToNext();
-                Apk apk = ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode);
-                appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.UpdateAvailable, null);
+                apksToUpdate.add(ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode));
             }
-            appUpdateStatusManager.endBatchUpdates();
+            appUpdateStatusManager.addApks(apksToUpdate, AppUpdateStatusManager.Status.UpdateAvailable);
         }
     }
 
