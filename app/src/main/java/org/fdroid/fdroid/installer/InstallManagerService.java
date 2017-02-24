@@ -252,6 +252,7 @@ public class InstallManagerService extends Service {
 
                 switch (intent.getAction()) {
                     case Downloader.ACTION_STARTED:
+                        // App should currently be in the "Unknown" state, so this changes it to "Downloading".
                         Intent intentObject = new Intent(context, InstallManagerService.class);
                         intentObject.setAction(ACTION_CANCEL);
                         intentObject.setData(downloadUri);
