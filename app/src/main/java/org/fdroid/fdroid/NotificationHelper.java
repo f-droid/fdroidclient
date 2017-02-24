@@ -189,30 +189,33 @@ class NotificationHelper {
             notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
             return;
         }
-        if (notificationManager.areNotificationsEnabled()) {
-            Notification notification;
-            if (entry.status == AppUpdateStatusManager.Status.Installed) {
-                if (useStackedNotifications()) {
-                    notification = createInstalledNotification(entry);
-                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
-                    notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_INSTALLED, notification);
-                } else if (installed.size() == 1) {
-                    notification = createInstalledNotification(entry);
-                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
-                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
-                    notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, notification);
-                }
-            } else {
-                if (useStackedNotifications()) {
-                    notification = createUpdateNotification(entry);
-                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
-                    notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_UPDATES, notification);
-                } else if (updates.size() == 1) {
-                    notification = createUpdateNotification(entry);
-                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
-                    notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
-                    notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, notification);
-                }
+
+        if (!notificationManager.areNotificationsEnabled()) {
+            return;
+        }
+
+        Notification notification;
+        if (entry.status == AppUpdateStatusManager.Status.Installed) {
+            if (useStackedNotifications()) {
+                notification = createInstalledNotification(entry);
+                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
+                notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_INSTALLED, notification);
+            } else if (installed.size() == 1) {
+                notification = createInstalledNotification(entry);
+                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
+                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
+                notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, notification);
+            }
+        } else {
+            if (useStackedNotifications()) {
+                notification = createUpdateNotification(entry);
+                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
+                notificationManager.notify(entry.getUniqueKey(), NOTIFY_ID_UPDATES, notification);
+            } else if (updates.size() == 1) {
+                notification = createUpdateNotification(entry);
+                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_UPDATES);
+                notificationManager.cancel(entry.getUniqueKey(), NOTIFY_ID_INSTALLED);
+                notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, notification);
             }
         }
     }
