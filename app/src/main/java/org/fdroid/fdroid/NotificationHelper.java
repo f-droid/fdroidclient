@@ -385,6 +385,7 @@ class NotificationHelper {
                 text.append(", ");
             text.append(app.name);
         }
+
         if (updates.size() > MAX_UPDATES_TO_SHOW) {
             int diff = updates.size() - MAX_UPDATES_TO_SHOW;
             inboxStyle.setSummaryText(context.getString(R.string.notification_summary_more, diff));
@@ -404,10 +405,12 @@ class NotificationHelper {
                         .setLocalOnly(true)
                         .setVisibility(NotificationCompat.VISIBILITY_SECRET)
                         .setStyle(inboxStyle);
+
         if (useStackedNotifications()) {
             builder.setGroup(GROUP_UPDATES)
                     .setGroupSummary(true);
         }
+
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, 0);
         builder.setDeleteIntent(piDeleted);
@@ -512,7 +515,9 @@ class NotificationHelper {
         } else {
             // Load it for later!
             ImageLoader.getInstance().loadImage(entry.app.iconUrl, new ImageSize(largeIconSize.x, largeIconSize.y), displayImageOptions, new ImageLoadingListener() {
+
                 AppUpdateStatusManager.AppUpdateStatus entry;
+
                 ImageLoadingListener init(AppUpdateStatusManager.AppUpdateStatus entry) {
                     this.entry = entry;
                     return this;

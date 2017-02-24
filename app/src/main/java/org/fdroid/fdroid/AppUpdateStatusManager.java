@@ -315,6 +315,7 @@ public class AppUpdateStatusManager {
     private PendingIntent getAppDetailsIntent(Apk apk) {
         Intent notifyIntent = new Intent(context, AppDetails.class)
                 .putExtra(AppDetails.EXTRA_APPID, apk.packageName);
+
         return TaskStackBuilder.create(context)
                 .addParentStack(AppDetails.class)
                 .addNextIntent(notifyIntent)
@@ -324,11 +325,10 @@ public class AppUpdateStatusManager {
     private PendingIntent getAppErrorIntent(AppUpdateStatus entry) {
         String title = String.format(context.getString(R.string.install_error_notify_title), entry.app.name);
 
-        Intent errorDialogIntent = new Intent(context, ErrorDialogActivity.class);
-        errorDialogIntent.putExtra(
-                ErrorDialogActivity.EXTRA_TITLE, title);
-        errorDialogIntent.putExtra(
-                ErrorDialogActivity.EXTRA_MESSAGE, entry.errorText);
+        Intent errorDialogIntent = new Intent(context, ErrorDialogActivity.class)
+                .putExtra(ErrorDialogActivity.EXTRA_TITLE, title)
+                .putExtra(ErrorDialogActivity.EXTRA_MESSAGE, entry.errorText);
+
         return PendingIntent.getActivity(
                 context,
                 0,
