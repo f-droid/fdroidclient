@@ -109,36 +109,27 @@ public class AppUpdateStatusManager {
         return returnValues;
     }
 
-    private void setApkInternal(Apk apk, @NonNull Status status, PendingIntent intent) {
-        if (apk == null) {
-            return;
+    private void updateApkInternal(@NonNull AppUpdateStatus entry, @NonNull Status status, PendingIntent intent) {
+        Utils.debugLog(LOGTAG, "Update APK " + entry.apk.apkName + " state to " + status.name());
+        boolean isStatusUpdate = (entry.status != status);
+        entry.status = status;
+        entry.intent = intent;
+        // If intent not set, see if we need to create a default intent
+        if (entry.intent == null) {
+            entry.intent = getContentIntent(entry);
         }
+        notifyChange(entry, isStatusUpdate);
+    }
 
-        synchronized (appMapping) {
-            AppUpdateStatus entry = appMapping.get(apk.getUrl());
-            if (entry != null) {
-                // Update
-                Utils.debugLog(LOGTAG, "Update APK " + apk.apkName + " state to " + status.name());
-                boolean isStatusUpdate = (entry.status != status);
-                entry.status = status;
-                entry.intent = intent;
-                // If intent not set, see if we need to create a default intent
-                if (entry.intent == null) {
-                    entry.intent = getContentIntent(entry);
-                }
-                notifyChange(entry, isStatusUpdate);
-            } else {
-                // Add
-                Utils.debugLog(LOGTAG, "Add APK " + apk.apkName + " with state " + status.name());
-                entry = createAppEntry(apk, status, intent);
-                // If intent not set, see if we need to create a default intent
-                if (entry.intent == null) {
-                    entry.intent = getContentIntent(entry);
-                }
-                appMapping.put(entry.getUniqueKey(), entry);
-                notifyAdd(entry);
-            }
+    private void addApkInternal(@NonNull Apk apk, @NonNull Status status, PendingIntent intent) {
+        Utils.debugLog(LOGTAG, "Add APK " + apk.apkName + " with state " + status.name());
+        AppUpdateStatus entry = createAppEntry(apk, status, intent);
+        // If intent not set, see if we need to create a default intent
+        if (entry.intent == null) {
+            entry.intent = getContentIntent(entry);
         }
+        appMapping.put(entry.getUniqueKey(), entry);
+        notifyAdd(entry);
     }
 
     private void notifyChange() {
@@ -192,20 +183,31 @@ public class AppUpdateStatusManager {
     }
 
     /**
-     * Add an Apk to the AppUpdateStatusManager manager.
+     * Add an Apk to the AppUpdateStatusManager manager (or update it if we already know about it).
      * @param apk The apk to add.
      * @param status The current status of the app
      * @param pendingIntent Action when notification is clicked. Can be null for default action(s)
      */
     public void addApk(Apk apk, @NonNull Status status, PendingIntent pendingIntent) {
-        setApkInternal(apk, status, pendingIntent);
+        if (apk == null) {
+            return;
+        }
+
+        synchronized (appMapping) {
+            AppUpdateStatus entry = appMapping.get(apk.getUrl());
+            if (entry != null) {
+                updateApkInternal(entry, status, pendingIntent);
+            } else {
+                addApkInternal(apk, status, pendingIntent);
+            }
+        }
     }
 
     public void updateApk(String key, @NonNull Status status, PendingIntent pendingIntent) {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(key);
             if (entry != null) {
-                setApkInternal(entry.apk, status, pendingIntent);
+                updateApkInternal(entry, status, pendingIntent);
             }
         }
     }
