@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.text.AllCapsTransformationMethod;
+import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -133,11 +135,19 @@ public class AppDetailsRecyclerViewAdapter
 
     private void setShowVersions(boolean showVersions) {
         this.showVersions = showVersions;
-        items.removeAll(versions);
+        boolean itemsWereRemoved = items.removeAll(versions);
+        int startIndex = items.indexOf(VIEWTYPE_VERSIONS) + 1;
+
+        // When adding/removing items, be sure to only notifyItemInserted and notifyItemRemoved
+        // rather than notifyDatasetChanged(). If we only notify about the entire thing, then
+        // everything gets rebuilt, including the expandable "Versions" item. By rebuilding that
+        // item it will interrupt the nice material-design-style-ripple from the background.
         if (showVersions) {
-            items.addAll(items.indexOf(VIEWTYPE_VERSIONS) + 1, versions);
+            items.addAll(startIndex, versions);
+            notifyItemRangeInserted(startIndex, versions.size());
+        } else if (itemsWereRemoved) {
+            notifyItemRangeRemoved(startIndex, versions.size());
         }
-        notifyDataSetChanged();
     }
 
     private void addItem(int item) {
@@ -503,37 +513,56 @@ public class AppDetailsRecyclerViewAdapter
     }
 
     private class DonateViewHolder extends RecyclerView.ViewHolder {
-        final TextView textView;
-        final LinearLayout contentView;
+        final TextView donateHeading;
+        final GridLayout donationOptionsLayout;
 
         DonateViewHolder(View view) {
             super(view);
-            textView = (TextView) view.findViewById(R.id.information);
-            contentView = (LinearLayout) view.findViewById(R.id.ll_information);
+            donateHeading = (TextView) view.findViewById(R.id.donate_header);
+            donationOptionsLayout = (GridLayout) view.findViewById(R.id.donation_options);
         }
 
         public void bindModel() {
-            contentView.removeAllViews();
+            if (TextUtils.isEmpty(app.author)) {
+                donateHeading.setText(context.getString(R.string.app_details_donate_prompt_unknown_author, app.name));
+            } else {
+                String author = "<strong>" + app.author + "</strong>";
+                donateHeading.setText(Html.fromHtml(context.getString(R.string.app_details_donate_prompt, app.name, author)));
+            }
+
+            donationOptionsLayout.removeAllViews();
 
             // Donate button
             if (uriIsSetAndCanBeOpened(app.donateURL)) {
-                addLinkItemView(contentView, R.string.menu_donate, R.drawable.ic_donate, app.donateURL);
+                addDonateOption(R.layout.donate_generic, app.donateURL);
             }
 
             // Bitcoin
             if (uriIsSetAndCanBeOpened(app.getBitcoinUri())) {
-                addLinkItemView(contentView, R.string.menu_bitcoin, R.drawable.ic_bitcoin, app.getBitcoinUri());
+                addDonateOption(R.layout.donate_bitcoin, app.getBitcoinUri());
             }
 
             // Litecoin
             if (uriIsSetAndCanBeOpened(app.getLitecoinUri())) {
-                addLinkItemView(contentView, R.string.menu_litecoin, R.drawable.ic_litecoin, app.getLitecoinUri());
+                addDonateOption(R.layout.donate_litecoin, app.getLitecoinUri());
             }
 
             // Flattr
             if (uriIsSetAndCanBeOpened(app.getFlattrUri())) {
-                addLinkItemView(contentView, R.string.menu_flattr, R.drawable.ic_flattr, app.getFlattrUri());
+                addDonateOption(R.layout.donate_flattr, app.getFlattrUri());
             }
+        }
+
+        private void addDonateOption(@LayoutRes int layout, final String uri) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            View option = inflater.inflate(layout, donationOptionsLayout, false);
+            option.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onLinkClicked(uri);
+                }
+            });
+            donationOptionsLayout.addView(option);
         }
     }
 

@@ -184,15 +184,15 @@ Changelog" />
             <TextView
                 android:id="@+id/litecoin"
                 style="@style/AppDetailsLink"
-                android:drawableLeft="@drawable/ic_litecoin"
-                android:drawableStart="@drawable/ic_litecoin"
+                android:drawableLeft="@drawable/donation_option_litecoin"
+                android:drawableStart="@drawable/donation_option_litecoin"
                 android:text="@string/menu_litecoin" />
 
             <TextView
                 android:id="@+id/flattr"
                 style="@style/AppDetailsLink"
-                android:drawableLeft="@drawable/ic_flattr"
-                android:drawableStart="@drawable/ic_flattr"
+                android:drawableLeft="@drawable/donation_option_flattr"
+                android:drawableStart="@drawable/donation_option_flattr"
                 android:text="@string/menu_flattr" />
 
         </LinearLayout>

@@ -48,6 +48,9 @@
     <string name="app_details">App Details</string>
     <string name="no_such_app">No such app found.</string>
 
+    <string name="app_details_donate_prompt_unknown_author">Buy the developers of %1$s a coffee!</string>
+    <string name="app_details_donate_prompt">%1$s is created by %2$s. Buy them a coffee!</string>
+
     <string name="about_title">About F-Droid</string>
     <string name="about_version">Version</string>
     <string name="about_site">Website</string>
