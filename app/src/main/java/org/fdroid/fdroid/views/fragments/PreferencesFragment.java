@@ -166,7 +166,11 @@ public class PreferencesFragment extends PreferenceFragment
                 break;
 
             case Preferences.PREF_PRIVILEGED_INSTALLER:
-                checkSummary(key, R.string.system_installer_on);
+                // We may have removed this preference if it is not suitable to show the user. So lets check it is here first.
+                final CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
+                if (pref != null) {
+                    checkSummary(key, R.string.system_installer_on);
+                }
                 break;
 
             case Preferences.PREF_ENABLE_PROXY:
@@ -214,23 +218,34 @@ public class PreferencesFragment extends PreferenceFragment
         boolean enabled = p.isPrivilegedInstallerEnabled();
         boolean installed = PrivilegedInstaller.isExtensionInstalledCorrectly(getActivity())
                 == PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES;
-        pref.setEnabled(installed);
-        pref.setDefaultValue(installed);
-        pref.setChecked(enabled && installed);
 
-        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
-                if (pref.isChecked()) {
-                    editor.remove(Preferences.PREF_PRIVILEGED_INSTALLER);
-                } else {
-                    editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
+        // On later versions of Android the privileged installer needs to be installed
+        // via flashing an update.zip or building into a rom. As such, if it isn't installed
+        // by the time the user boots, opens F-Droid, and views this settings page, then there
+        // is no benefit showing it to them (it will only be disabled and we can't offer any
+        // way to easily install from here.
+        if (Build.VERSION.SDK_INT > 19 && !installed) {
+            PreferenceCategory other = (PreferenceCategory) findPreference("pref_category_other");
+            other.removePreference(pref);
+        } else {
+            pref.setEnabled(installed);
+            pref.setDefaultValue(installed);
+            pref.setChecked(enabled && installed);
+
+            pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                    if (pref.isChecked()) {
+                        editor.remove(Preferences.PREF_PRIVILEGED_INSTALLER);
+                    } else {
+                        editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
+                    }
+                    editor.apply();
+                    return true;
                 }
-                editor.apply();
-                return true;
-            }
-        });
+            });
+        }
     }
 
     private void initUpdatePrivilegedExtensionPreference() {
