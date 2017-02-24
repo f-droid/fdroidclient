@@ -333,13 +333,9 @@ class NotificationHelper {
                         .setLargeIcon(iconLarge)
                         .setLocalOnly(true)
                         .setVisibility(NotificationCompat.VISIBILITY_SECRET)
-                        .setGroup(GROUP_UPDATES);
+                        .setGroup(GROUP_UPDATES)
+                        .setContentIntent(entry.intent);
 
-        // Handle intents
-        //
-        if (entry.intent != null) {
-            builder.setContentIntent(entry.intent);
-        }
 
         // Handle actions
         //
@@ -434,11 +430,8 @@ class NotificationHelper {
                         .setContentText(context.getString(R.string.notification_content_single_installed))
                         .setLocalOnly(true)
                         .setVisibility(NotificationCompat.VISIBILITY_SECRET)
-                        .setGroup(GROUP_INSTALLED);
-
-        if (entry.intent != null) {
-            builder.setContentIntent(entry.intent);
-        }
+                        .setGroup(GROUP_INSTALLED)
+                        .setContentIntent(entry.intent);
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED);
         intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getUniqueKey());
