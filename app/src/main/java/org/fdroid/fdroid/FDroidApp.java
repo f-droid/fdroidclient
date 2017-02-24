@@ -97,6 +97,13 @@ public class FDroidApp extends Application {
 
     @SuppressWarnings("unused")
     BluetoothAdapter bluetoothAdapter;
+
+    /**
+     * The construction of this notification helper has side effects including listening and
+     * responding to local broadcasts. It is kept as a reference on the app object here so that
+     * it doesn't get GC'ed.
+     */
+    @SuppressWarnings("unused")
     NotificationHelper notificationHelper;
 
     static {
