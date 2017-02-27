@@ -8,7 +8,7 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
@@ -429,4 +429,27 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         return null;
     }
 
+    @JsonProperty("uses-permission")
+    private void setUsesPermission(Object[][] permissions) { // NOPMD
+        setRequestedPermissions(permissions, 0);
+    }
+
+    @JsonProperty("uses-permission-sdk-23")
+    private void setUsesPermissionSdk23(Object[][] permissions) { // NOPMD
+        setRequestedPermissions(permissions, 23);
+    }
+
+    private void setRequestedPermissions(Object[][] permissions, int minSdk) {
+        HashSet<String> set = new HashSet<>();
+        for (Object[] versions : permissions) {
+            int maxSdk = Integer.MAX_VALUE;
+            if (versions[1] != null) {
+                maxSdk = (int) versions[1];
+            }
+            if (minSdk <= Build.VERSION.SDK_INT && Build.VERSION.SDK_INT <= maxSdk) {
+                set.add((String) versions[0]);
+            }
+        }
+        requestedPermissions = set.toArray(new String[set.size()]);
+    }
 }
