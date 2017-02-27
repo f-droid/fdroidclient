@@ -47,6 +47,7 @@ public class Repo extends ValueObject {
     public String address;
     public String name;
     public String description;
+    public String icon;
     /** index version, i.e. what fdroidserver built it - 0 if not specified */
     public int version;
     public boolean inuse;
@@ -70,6 +71,9 @@ public class Repo extends ValueObject {
 
     /** When the signed repo index was generated, used to protect against replay attacks */
     public long timestamp;
+
+    /** Official mirrors of this repo, considered automatically interchangeable */
+    public String[] mirrors;
 
     /** How to treat push requests included in this repo's index XML */
     public int pushRequests = PUSH_REQUEST_IGNORE;
@@ -130,6 +134,12 @@ public class Repo extends ValueObject {
                     break;
                 case Cols.TIMESTAMP:
                     timestamp = cursor.getLong(i);
+                    break;
+                case Cols.ICON:
+                    icon = cursor.getString(i);
+                    break;
+                case Cols.MIRRORS:
+                    mirrors = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case Cols.PUSH_REQUESTS:
                     pushRequests = cursor.getInt(i);
@@ -255,6 +265,14 @@ public class Repo extends ValueObject {
 
         if (values.containsKey(Cols.TIMESTAMP)) {
             timestamp = toInt(values.getAsInteger(Cols.TIMESTAMP));
+        }
+
+        if (values.containsKey(Cols.ICON)) {
+            icon = values.getAsString(Cols.ICON);
+        }
+
+        if (values.containsKey(Cols.MIRRORS)) {
+            mirrors = Utils.parseCommaSeparatedString(values.getAsString(Cols.MIRRORS));
         }
 
         if (values.containsKey(Cols.PUSH_REQUESTS)) {

@@ -58,6 +58,7 @@ import java.security.CodeSigner;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.jar.JarEntry;
@@ -195,9 +196,11 @@ public class RepoUpdater {
     private RepoXMLHandler.IndexReceiver createIndexReceiver() {
         return new RepoXMLHandler.IndexReceiver() {
             @Override
-            public void receiveRepo(String name, String description, String signingCert, int maxAge, int version, long timestamp) {
+            public void receiveRepo(String name, String description, String signingCert, int maxAge,
+                                    int version, long timestamp, String icon, String[] mirrors) {
                 signingCertFromIndexXml = signingCert;
-                repoDetailsToSave = prepareRepoDetailsForSaving(name, description, maxAge, version, timestamp);
+                repoDetailsToSave = prepareRepoDetailsForSaving(name, description, maxAge, version,
+                        timestamp, icon, mirrors);
             }
 
             @Override
@@ -294,7 +297,9 @@ public class RepoUpdater {
      * Update tracking data for the repo represented by this instance (index version, etag,
      * description, human-readable name, etc.
      */
-    private ContentValues prepareRepoDetailsForSaving(String name, String description, int maxAge, int version, long timestamp) {
+    private ContentValues prepareRepoDetailsForSaving(String name, String description, int maxAge,
+                                                      int version, long timestamp, String icon,
+                                                      String[] mirrors) {
         ContentValues values = new ContentValues();
 
         values.put(RepoTable.Cols.LAST_UPDATED, Utils.formatTime(new Date(), ""));
@@ -328,6 +333,14 @@ public class RepoUpdater {
         // In such a case, the remainder of the update process will proceed, and ask for this
         // timestamp.
         values.put(RepoTable.Cols.TIMESTAMP, timestamp);
+
+        if (icon != null && !icon.equals(repo.icon)) {
+            values.put(RepoTable.Cols.ICON, icon);
+        }
+
+        if (mirrors != null && mirrors.length > 0 && !Arrays.equals(mirrors, repo.mirrors)) {
+            values.put(RepoTable.Cols.MIRRORS, Utils.serializeCommaSeparatedString(mirrors));
+        }
 
         return values;
     }

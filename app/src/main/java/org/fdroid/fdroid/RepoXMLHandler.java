@@ -59,6 +59,8 @@ public class RepoXMLHandler extends DefaultHandler {
     private long repoTimestamp;
     private String repoDescription;
     private String repoName;
+    private String repoIcon;
+    private final ArrayList<String> repoMirrors = new ArrayList<>();
 
     /**
      * Set of requested permissions per package/APK
@@ -73,7 +75,8 @@ public class RepoXMLHandler extends DefaultHandler {
     private final StringBuilder curchars = new StringBuilder();
 
     public interface IndexReceiver {
-        void receiveRepo(String name, String description, String signingCert, int maxage, int version, long timestamp);
+        void receiveRepo(String name, String description, String signingCert, int maxage, int version,
+                         long timestamp, String icon, String[] mirrors);
 
         void receiveApp(App app, List<Apk> packages);
 
@@ -258,6 +261,8 @@ public class RepoXMLHandler extends DefaultHandler {
             }
         } else if ("description".equals(localName)) {
             repoDescription = cleanWhiteSpace(str);
+        } else if ("mirror".equals(localName)) {
+            repoMirrors.add(str);
         }
     }
 
@@ -312,7 +317,8 @@ public class RepoXMLHandler extends DefaultHandler {
     }
 
     private void onRepoParsed() {
-        receiver.receiveRepo(repoName, repoDescription, repoSigningCert, repoMaxAge, repoVersion, repoTimestamp);
+        receiver.receiveRepo(repoName, repoDescription, repoSigningCert, repoMaxAge, repoVersion,
+                repoTimestamp, repoIcon, repoMirrors.toArray(new String[repoMirrors.size()]));
     }
 
     private void onRepoPushRequestParsed(RepoPushRequest repoPushRequest) {
@@ -331,6 +337,7 @@ public class RepoXMLHandler extends DefaultHandler {
             repoName = cleanWhiteSpace(attributes.getValue("", "name"));
             repoDescription = cleanWhiteSpace(attributes.getValue("", "description"));
             repoTimestamp = parseLong(attributes.getValue("", "timestamp"), 0);
+            repoIcon = attributes.getValue("", "icon");
         } else if (RepoPushRequest.INSTALL.equals(localName)
                 || RepoPushRequest.UNINSTALL.equals(localName)) {
             if (repo.pushRequests == Repo.PUSH_REQUEST_ACCEPT_ALWAYS) {

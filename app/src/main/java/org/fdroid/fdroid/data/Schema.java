@@ -240,6 +240,7 @@ public interface Schema {
             String ADDED_DATE      = "added";
             String IS_COMPATIBLE   = "compatible";
             String INCOMPATIBLE_REASONS = "incompatibleReasons";
+            String ANTI_FEATURES   = "antiFeatures";
 
             interface Repo {
                 String VERSION = "repoVersion";
@@ -258,7 +259,7 @@ public interface Schema {
                     SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
                     OBB_MAIN_FILE, OBB_MAIN_FILE_SHA256, OBB_PATCH_FILE, OBB_PATCH_FILE_SHA256,
                     REQUESTED_PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
-                    IS_COMPATIBLE, INCOMPATIBLE_REASONS,
+                    IS_COMPATIBLE, INCOMPATIBLE_REASONS, ANTI_FEATURES,
             };
 
             /**
@@ -270,6 +271,7 @@ public interface Schema {
                     OBB_MAIN_FILE, OBB_MAIN_FILE_SHA256, OBB_PATCH_FILE, OBB_PATCH_FILE_SHA256,
                     REQUESTED_PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
                     IS_COMPATIBLE, Repo.VERSION, Repo.ADDRESS, INCOMPATIBLE_REASONS,
+                    ANTI_FEATURES,
             };
         }
     }
@@ -295,12 +297,14 @@ public interface Schema {
             String USERNAME     = "username";
             String PASSWORD     = "password";
             String TIMESTAMP    = "timestamp";
+            String ICON         = "icon";
+            String MIRRORS      = "mirrors";
             String PUSH_REQUESTS = "pushRequests";
 
             String[] ALL = {
                     _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, SIGNING_CERT,
                     FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION, IS_SWAP,
-                    USERNAME, PASSWORD, TIMESTAMP, PUSH_REQUESTS,
+                    USERNAME, PASSWORD, TIMESTAMP, ICON, MIRRORS, PUSH_REQUESTS,
             };
         }
     }

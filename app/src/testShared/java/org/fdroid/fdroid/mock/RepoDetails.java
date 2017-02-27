@@ -31,19 +31,24 @@ public class RepoDetails implements RepoXMLHandler.IndexReceiver {
     public int maxAge;
     public int version;
     public long timestamp;
+    public String icon;
+    public String[] mirrors;
 
     public List<Apk> apks = new ArrayList<>();
     public List<App> apps = new ArrayList<>();
     public List<RepoPushRequest> repoPushRequestList = new ArrayList<>();
 
     @Override
-    public void receiveRepo(String name, String description, String signingCert, int maxage, int version, long timestamp) {
+    public void receiveRepo(String name, String description, String signingCert, int maxage,
+                            int version, long timestamp, String icon, String[] mirrors) {
         this.name = name;
         this.description = description;
         this.signingCert = signingCert;
         this.maxAge = maxage;
         this.version = version;
         this.timestamp = timestamp;
+        this.icon = icon;
+        this.mirrors = mirrors;
     }
 
     @Override

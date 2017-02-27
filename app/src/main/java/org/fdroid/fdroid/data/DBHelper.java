@@ -76,6 +76,8 @@ class DBHelper extends SQLiteOpenHelper {
             + RepoTable.Cols.USERNAME + " string, "
             + RepoTable.Cols.PASSWORD + " string,"
             + RepoTable.Cols.TIMESTAMP + " integer not null default 0, "
+            + RepoTable.Cols.ICON + " string, "
+            + RepoTable.Cols.MIRRORS + " string, "
             + RepoTable.Cols.PUSH_REQUESTS + " integer not null default " + Repo.PUSH_REQUEST_IGNORE
             + ");";
 
@@ -104,6 +106,7 @@ class DBHelper extends SQLiteOpenHelper {
             + ApkTable.Cols.ADDED_DATE + " string, "
             + ApkTable.Cols.IS_COMPATIBLE + " int not null, "
             + ApkTable.Cols.INCOMPATIBLE_REASONS + " text, "
+            + ApkTable.Cols.ANTI_FEATURES + " string, "
             + "PRIMARY KEY (" + ApkTable.Cols.APP_ID + ", " + ApkTable.Cols.VERSION_CODE + ", " + ApkTable.Cols.REPO_ID + ")"
             + ");";
 
@@ -178,7 +181,7 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
 
-    protected static final int DB_VERSION = 65;
+    protected static final int DB_VERSION = 66;
 
     private final Context context;
 
@@ -258,6 +261,27 @@ class DBHelper extends SQLiteOpenHelper {
         migrateToPackageTable(db, oldVersion);
         addObbFiles(db, oldVersion);
         addCategoryTables(db, oldVersion);
+        addIndexV1Fields(db, oldVersion);
+    }
+
+    private void addIndexV1Fields(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 66) {
+            return;
+        }
+        if (!columnExists(db, Schema.RepoTable.NAME, RepoTable.Cols.ICON)) {
+            Utils.debugLog(TAG, "Adding " + RepoTable.Cols.ICON + " field to " + RepoTable.NAME + " table in db.");
+            db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.ICON + " string;");
+        }
+
+        if (!columnExists(db, RepoTable.NAME, RepoTable.Cols.MIRRORS)) {
+            Utils.debugLog(TAG, "Adding " + RepoTable.Cols.MIRRORS + " field to " + RepoTable.NAME + " table in db.");
+            db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.MIRRORS + " string;");
+        }
+
+        if (!columnExists(db, ApkTable.NAME, ApkTable.Cols.ANTI_FEATURES)) {
+            Utils.debugLog(TAG, "Adding " + ApkTable.Cols.ANTI_FEATURES + " field to " + ApkTable.NAME + " table in db.");
+            db.execSQL("alter table " + ApkTable.NAME + " add column " + ApkTable.Cols.ANTI_FEATURES + " string;");
+        }
     }
 
     /**
