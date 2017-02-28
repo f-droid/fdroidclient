@@ -109,28 +109,30 @@ class NotificationHelper {
         BroadcastReceiver receiverAppStatusChanges = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+                AppUpdateStatusManager.AppUpdateStatus entry;
+                String url;
+
                 switch (intent.getAction()) {
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED:
                         notificationManager.cancelAll();
                         updateStatusLists();
                         createSummaryNotifications();
-                        for (AppUpdateStatusManager.AppUpdateStatus entry : appUpdateStatusManager.getAll()) {
-                            createNotification(entry);
+                        for (AppUpdateStatusManager.AppUpdateStatus appUpdateStatus : appUpdateStatusManager.getAll()) {
+                            createNotification(appUpdateStatus);
                         }
                         break;
-                    case AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED: {
+                    case AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED:
                         updateStatusLists();
                         createSummaryNotifications();
-                        String url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
-                        AppUpdateStatusManager.AppUpdateStatus entry = appUpdateStatusManager.get(url);
+                        url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                        entry = appUpdateStatusManager.get(url);
                         if (entry != null) {
                             createNotification(entry);
                         }
                         break;
-                    }
-                    case AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED: {
-                        String url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
-                        AppUpdateStatusManager.AppUpdateStatus entry = appUpdateStatusManager.get(url);
+                    case AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED:
+                        url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                        entry = appUpdateStatusManager.get(url);
                         updateStatusLists();
                         if (entry != null) {
                             createNotification(entry);
@@ -139,15 +141,13 @@ class NotificationHelper {
                             createSummaryNotifications();
                         }
                         break;
-                    }
-                    case AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED: {
-                        String url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+                    case AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED:
+                        url = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
                         notificationManager.cancel(url, NOTIFY_ID_INSTALLED);
                         notificationManager.cancel(url, NOTIFY_ID_UPDATES);
                         updateStatusLists();
                         createSummaryNotifications();
                         break;
-                    }
                 }
             }
         };
@@ -181,12 +181,13 @@ class NotificationHelper {
 
     private boolean shouldIgnoreEntry(AppUpdateStatusManager.AppUpdateStatus entry) {
         // Ignore unknown status
-        if (entry.status == AppUpdateStatusManager.Status.Unknown)
+        if (entry.status == AppUpdateStatusManager.Status.Unknown) {
             return true;
+        } else if ((entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.ReadyToInstall || entry.status == AppUpdateStatusManager.Status.InstallError) &&
+                (AppDetails.isAppVisible(entry.app.packageName) || AppDetails2.isAppVisible(entry.app.packageName))) {
             // Ignore downloading, readyToInstall and installError if we are showing the details screen for this app
-        else if ((entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.ReadyToInstall || entry.status == AppUpdateStatusManager.Status.InstallError) &&
-                (AppDetails.isAppVisible(entry.app.packageName) || AppDetails2.isAppVisible(entry.app.packageName)))
             return true;
+        }
         return false;
     }
 
@@ -226,7 +227,6 @@ class NotificationHelper {
             }
         }
     }
-
 
     private void createSummaryNotifications() {
         if (!notificationManager.areNotificationsEnabled()) {
@@ -361,10 +361,11 @@ class NotificationHelper {
         // Handle progress bar (for some states)
         //
         if (status == AppUpdateStatusManager.Status.Downloading) {
-            if (entry.progressMax == 0)
+            if (entry.progressMax == 0) {
                 builder.setProgress(100, 0, true);
-            else
+            } else {
                 builder.setProgress(entry.progressMax, entry.progressCurrent, false);
+            }
         } else if (status == AppUpdateStatusManager.Status.Installing) {
             builder.setProgress(100, 0, true); // indeterminate bar
         }
@@ -395,8 +396,9 @@ class NotificationHelper {
             sb.append(content);
             inboxStyle.addLine(sb);
 
-            if (text.length() > 0)
+            if (text.length() > 0) {
                 text.append(", ");
+            }
             text.append(app.name);
         }
 
@@ -469,8 +471,9 @@ class NotificationHelper {
         for (int i = 0; i < MAX_INSTALLED_TO_SHOW && i < installed.size(); i++) {
             AppUpdateStatusManager.AppUpdateStatus entry = installed.get(i);
             App app = entry.app;
-            if (text.length() > 0)
+            if (text.length() > 0) {
                 text.append(", ");
+            }
             text.append(app.name);
         }
         bigTextStyle.bigText(text);
@@ -510,7 +513,8 @@ class NotificationHelper {
             w = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width);
             h = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
         } else {
-            w = h = context.getResources().getDimensionPixelSize(android.R.dimen.app_icon_size);
+            w = context.getResources().getDimensionPixelSize(android.R.dimen.app_icon_size);
+            h = w;
         }
         return new Point(w, h);
     }

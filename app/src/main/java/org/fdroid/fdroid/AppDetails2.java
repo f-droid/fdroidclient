@@ -73,7 +73,6 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
     private static String visiblePackageName;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         fdroidApp = (FDroidApp) getApplication();

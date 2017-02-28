@@ -14,8 +14,6 @@ import android.text.TextUtils;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.fdroid.fdroid.AppDetails;
-import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;

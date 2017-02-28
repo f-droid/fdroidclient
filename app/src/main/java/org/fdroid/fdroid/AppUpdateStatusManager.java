@@ -33,7 +33,7 @@ import java.util.Map;
  * and {@code versionCode} since there could be different copies of the same
  * APK on different servers, signed by different keys, or even different builds.
  */
-public class AppUpdateStatusManager {
+public final class AppUpdateStatusManager {
 
     static final String BROADCAST_APPSTATUS_LIST_CHANGED = "org.fdroid.fdroid.installer.appstatus.listchange";
     static final String BROADCAST_APPSTATUS_ADDED = "org.fdroid.fdroid.installer.appstatus.appchange.add";
@@ -60,6 +60,7 @@ public class AppUpdateStatusManager {
         }
         return instance;
     }
+
     private static AppUpdateStatusManager instance;
 
     public class AppUpdateStatus {
@@ -125,7 +126,7 @@ public class AppUpdateStatusManager {
 
     private void updateApkInternal(@NonNull AppUpdateStatus entry, @NonNull Status status, PendingIntent intent) {
         Utils.debugLog(LOGTAG, "Update APK " + entry.apk.apkName + " state to " + status.name());
-        boolean isStatusUpdate = (entry.status != status);
+        boolean isStatusUpdate = entry.status != status;
         entry.status = status;
         entry.intent = intent;
         // If intent not set, see if we need to create a default intent
@@ -186,7 +187,6 @@ public class AppUpdateStatusManager {
             return ret;
         }
     }
-
 
     public void addApks(List<Apk> apksToUpdate, Status status) {
         startBatchUpdates();
@@ -300,7 +300,7 @@ public class AppUpdateStatusManager {
 
     void clearAllUpdates() {
         synchronized (appMapping) {
-            for (Iterator<Map.Entry<String, AppUpdateStatus>> it = appMapping.entrySet().iterator(); it.hasNext(); ) {
+            for (Iterator<Map.Entry<String, AppUpdateStatus>> it = appMapping.entrySet().iterator(); it.hasNext();) {
                 Map.Entry<String, AppUpdateStatus> entry = it.next();
                 if (entry.getValue().status != Status.Installed) {
                     it.remove();
@@ -312,7 +312,7 @@ public class AppUpdateStatusManager {
 
     void clearAllInstalled() {
         synchronized (appMapping) {
-            for (Iterator<Map.Entry<String, AppUpdateStatus>> it = appMapping.entrySet().iterator(); it.hasNext(); ) {
+            for (Iterator<Map.Entry<String, AppUpdateStatus>> it = appMapping.entrySet().iterator(); it.hasNext();) {
                 Map.Entry<String, AppUpdateStatus> entry = it.next();
                 if (entry.getValue().status == Status.Installed) {
                     it.remove();
