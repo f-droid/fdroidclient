@@ -273,7 +273,7 @@ class NotificationHelper {
             case Downloading:
                 return app.name;
             case ReadyToInstall:
-                return context.getString(R.string.notification_title_single_ready_to_install_update);
+                return context.getString(app.isInstalled() ? R.string.notification_title_single_ready_to_install_update : R.string.notification_title_single_ready_to_install);
             case Installing:
                 return app.name;
             case Installed:
@@ -289,7 +289,7 @@ class NotificationHelper {
             case UpdateAvailable:
                 return app.name;
             case Downloading:
-                return context.getString(R.string.notification_content_single_downloading_update, app.name);
+                return context.getString(app.isInstalled() ? R.string.notification_content_single_downloading_update : R.string.notification_content_single_downloading, app.name);
             case ReadyToInstall:
                 return app.name;
             case Installing:
@@ -302,14 +302,14 @@ class NotificationHelper {
         return "";
     }
 
-    private String getMultiItemContentString(AppUpdateStatusManager.Status status) {
+    private String getMultiItemContentString(App app, AppUpdateStatusManager.Status status) {
         switch (status) {
             case UpdateAvailable:
                 return context.getString(R.string.notification_title_summary_update_available);
             case Downloading:
-                return context.getString(R.string.notification_title_summary_downloading_update);
+                return context.getString(app.isInstalled() ? R.string.notification_title_summary_downloading_update : R.string.notification_title_summary_downloading);
             case ReadyToInstall:
-                return context.getString(R.string.notification_title_summary_ready_to_install_update);
+                return context.getString(app.isInstalled() ? R.string.notification_title_summary_ready_to_install_update : R.string.notification_title_summary_ready_to_install);
             case Installing:
                 return context.getString(R.string.notification_title_summary_installing);
             case Installed:
@@ -383,7 +383,7 @@ class NotificationHelper {
             App app = entry.app;
             AppUpdateStatusManager.Status status = entry.status;
 
-            String content = getMultiItemContentString(status);
+            String content = getMultiItemContentString(app, status);
             SpannableStringBuilder sb = new SpannableStringBuilder(app.name);
             sb.setSpan(new StyleSpan(Typeface.BOLD), 0, sb.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
             sb.append(" ");
