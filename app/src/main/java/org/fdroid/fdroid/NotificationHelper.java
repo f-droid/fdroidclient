@@ -87,10 +87,15 @@ class NotificationHelper {
                         appUpdateStatusManager.clearAllInstalled();
                         break;
                     case BROADCAST_NOTIFICATIONS_UPDATE_CLEARED:
+                        // If clearing apps in state "InstallError" (like when auto-cancelling) we
+                        // remove them from the status manager entirely.
+                        AppUpdateStatusManager.AppUpdateStatus appUpdateStatus = appUpdateStatusManager.get(intent.getStringExtra(EXTRA_NOTIFICATION_KEY));
+                        if (appUpdateStatus != null && appUpdateStatus.status == AppUpdateStatusManager.Status.InstallError) {
+                            appUpdateStatusManager.removeApk(intent.getStringExtra(EXTRA_NOTIFICATION_KEY));
+                        }
                         break;
                     case BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED:
-                        String key = intent.getStringExtra(EXTRA_NOTIFICATION_KEY);
-                        appUpdateStatusManager.removeApk(key);
+                        appUpdateStatusManager.removeApk(intent.getStringExtra(EXTRA_NOTIFICATION_KEY));
                         break;
                 }
             }
