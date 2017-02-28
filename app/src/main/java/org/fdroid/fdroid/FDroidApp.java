@@ -37,6 +37,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatDelegate;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -77,6 +78,10 @@ import sun.net.www.protocol.bluetooth.Handler;
         reportSenderFactoryClasses = org.fdroid.fdroid.acra.CrashReportSenderFactory.class
 )
 public class FDroidApp extends Application {
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
 
     private static final String TAG = "FDroidApp";
 

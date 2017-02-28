@@ -15,6 +15,7 @@ import android.os.Build;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -251,14 +252,14 @@ class NotificationHelper {
         if (entry.intent != null) {
             switch (entry.status) {
                 case UpdateAvailable:
-                    return new NotificationCompat.Action(R.drawable.ic_notify_update_24dp, context.getString(R.string.notification_action_update), entry.intent);
+                    return new NotificationCompat.Action(R.drawable.ic_file_download, context.getString(R.string.notification_action_update), entry.intent);
 
                 case Downloading:
                 case Installing:
-                    return new NotificationCompat.Action(R.drawable.ic_notify_cancel_24dp, context.getString(R.string.notification_action_cancel), entry.intent);
+                    return new NotificationCompat.Action(R.drawable.ic_cancel, context.getString(R.string.notification_action_cancel), entry.intent);
 
                 case ReadyToInstall:
-                    return new NotificationCompat.Action(R.drawable.ic_notify_install_24dp, context.getString(R.string.notification_action_install), entry.intent);
+                    return new NotificationCompat.Action(R.drawable.ic_file_install, context.getString(R.string.notification_action_install), entry.intent);
             }
         }
         return null;
@@ -333,9 +334,15 @@ class NotificationHelper {
                         .setLargeIcon(iconLarge)
                         .setLocalOnly(true)
                         .setVisibility(NotificationCompat.VISIBILITY_SECRET)
-                        .setGroup(GROUP_UPDATES)
                         .setContentIntent(entry.intent);
 
+        /* If using stacked notifications, use groups. Note that this would not work prior to Lollipop,
+           because of http://stackoverflow.com/a/34953411, but currently not an issue since stacked
+           notifications are used only on >= Nougat.
+        */
+        if (useStackedNotifications()) {
+            builder.setGroup(GROUP_UPDATES);
+        }
 
         // Handle actions
         //
@@ -430,8 +437,11 @@ class NotificationHelper {
                         .setContentText(context.getString(R.string.notification_content_single_installed))
                         .setLocalOnly(true)
                         .setVisibility(NotificationCompat.VISIBILITY_SECRET)
-                        .setGroup(GROUP_INSTALLED)
                         .setContentIntent(entry.intent);
+
+        if (useStackedNotifications()) {
+            builder.setGroup(GROUP_INSTALLED);
+        }
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED);
         intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getUniqueKey());
