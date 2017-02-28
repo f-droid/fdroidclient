@@ -23,6 +23,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Manages the state of APKs that are being installed or that have updates available.
+ * <p>
+ * The full URL for the APK file to download is used as the unique ID to
+ * represent the status of the APK throughout F-Droid. The full download URL is guaranteed
+ * to be unique since it points to files on a filesystem, where there cannot be multiple files with
+ * the same name.  This provides a unique ID beyond just {@code packageName}
+ * and {@code versionCode} since there could be different copies of the same
+ * APK on different servers, signed by different keys, or even different builds.
+ */
 public class AppUpdateStatusManager {
 
     static final String BROADCAST_APPSTATUS_LIST_CHANGED = "org.fdroid.fdroid.installer.appstatus.listchange";
