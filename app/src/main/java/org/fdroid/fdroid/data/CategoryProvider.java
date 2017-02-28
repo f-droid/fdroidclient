@@ -134,7 +134,7 @@ public class CategoryProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_ALL_CATEGORIES, CODE_LIST);
     }
 
-    private static Uri getContentUri() {
+    static Uri getContentUri() {
         return Uri.parse("content://" + getAuthority());
     }
 
@@ -185,7 +185,7 @@ public class CategoryProvider extends FDroidProvider {
     }
 
     protected QuerySelection querySingle(String categoryName) {
-        final String selection = getTableName() + "." + Cols.NAME + " = ?";
+        final String selection = getTableName() + "." + Cols.NAME + " = ? COLLATE NOCASE";
         final String[] args = {categoryName};
         return new QuerySelection(selection, args);
     }
@@ -239,7 +239,9 @@ public class CategoryProvider extends FDroidProvider {
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues values) {
         long rowId = db().insertOrThrow(getTableName(), null, values);
-        getContext().getContentResolver().notifyChange(AppProvider.getCanUpdateUri(), null);
+        // Don't try and notify listeners here, because it will instead happen when the TempAppProvider
+        // is committed (when the AppProvider and ApkProviders notify their listeners). There is no
+        // other time where categories get added (at time of writing) so this should be okay.
         return getCategoryIdUri(rowId);
     }
 

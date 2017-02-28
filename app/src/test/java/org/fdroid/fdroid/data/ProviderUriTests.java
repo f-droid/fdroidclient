@@ -84,10 +84,15 @@ public class ProviderUriTests {
         ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
         String[] projection = new String[] {Schema.AppMetadataTable.Cols._ID};
         assertValidUri(resolver, AppProvider.getContentUri(), "content://org.fdroid.fdroid.data.AppProvider", projection);
-        assertValidUri(resolver, AppProvider.getSearchUri("'searching!'"), "content://org.fdroid.fdroid.data.AppProvider/search/'searching!'", projection);
-        assertValidUri(resolver, AppProvider.getSearchUri("/"), "content://org.fdroid.fdroid.data.AppProvider/search/%2F", projection);
-        assertValidUri(resolver, AppProvider.getSearchUri(""), "content://org.fdroid.fdroid.data.AppProvider", projection);
-        assertValidUri(resolver, AppProvider.getSearchUri(null), "content://org.fdroid.fdroid.data.AppProvider", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("'searching!'", null), "content://org.fdroid.fdroid.data.AppProvider/search/'searching!'", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("'searching!'", "Games"), "content://org.fdroid.fdroid.data.AppProvider/search/'searching!'/Games", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("/", null), "content://org.fdroid.fdroid.data.AppProvider/search/%2F", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("/", "Games"), "content://org.fdroid.fdroid.data.AppProvider/search/%2F/Games", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("", null), "content://org.fdroid.fdroid.data.AppProvider", projection);
+        assertValidUri(resolver, AppProvider.getCategoryUri("Games"), "content://org.fdroid.fdroid.data.AppProvider/category/Games", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri("", "Games"), "content://org.fdroid.fdroid.data.AppProvider/category/Games", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri((String) null, null), "content://org.fdroid.fdroid.data.AppProvider", projection);
+        assertValidUri(resolver, AppProvider.getSearchUri((String) null, "Games"), "content://org.fdroid.fdroid.data.AppProvider/category/Games", projection);
         assertValidUri(resolver, AppProvider.getInstalledUri(), "content://org.fdroid.fdroid.data.AppProvider/installed", projection);
         assertValidUri(resolver, AppProvider.getCanUpdateUri(), "content://org.fdroid.fdroid.data.AppProvider/canUpdate", projection);
 

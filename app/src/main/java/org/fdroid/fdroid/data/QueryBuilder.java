@@ -14,6 +14,7 @@ abstract class QueryBuilder {
     private String selection;
     private String[] selectionArgs;
     private final List<OrderClause> orderBys = new ArrayList<>();
+    private int limit = 0;
 
     protected abstract String getRequiredTables();
 
@@ -88,6 +89,10 @@ abstract class QueryBuilder {
         }
     }
 
+    public void addLimit(int limit) {
+        this.limit = limit;
+    }
+
     public String[] getArgs() {
         List<String> args = new ArrayList<>();
 
@@ -156,7 +161,11 @@ abstract class QueryBuilder {
         return tables.toString();
     }
 
+    private String limitSql() {
+        return limit > 0 ? " LIMIT " + limit : "";
+    }
+
     public String toString() {
-        return "SELECT " + distinctSql() + fieldsSql() + " FROM " + tablesSql() + whereSql() + groupBySql() + orderBySql();
+        return "SELECT " + distinctSql() + fieldsSql() + " FROM " + tablesSql() + whereSql() + groupBySql() + orderBySql() + limitSql();
     }
 }
