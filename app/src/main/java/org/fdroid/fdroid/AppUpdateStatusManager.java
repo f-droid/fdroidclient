@@ -45,8 +45,12 @@ public class AppUpdateStatusManager {
     }
 
     public static AppUpdateStatusManager getInstance(Context context) {
-        return new AppUpdateStatusManager(context);
+        if (instance == null) {
+            instance = new AppUpdateStatusManager(context.getApplicationContext());
+        }
+        return instance;
     }
+    private static AppUpdateStatusManager instance;
 
     public class AppUpdateStatus {
         public final App app;
