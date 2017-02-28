@@ -202,7 +202,7 @@ public class InstallManagerService extends Service {
 
                     int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
                     int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
-                    // TODO - handle obb notifications?
+                    appUpdateStatusManager.updateApkProgress(urlString, totalBytes, bytesRead);
                 } else if (Downloader.ACTION_COMPLETE.equals(action)) {
                     localBroadcastManager.unregisterReceiver(this);
                     File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
