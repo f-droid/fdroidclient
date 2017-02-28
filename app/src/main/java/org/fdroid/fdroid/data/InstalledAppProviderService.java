@@ -249,6 +249,13 @@ public class InstalledAppProviderService extends IntentService {
                         }
 
                         insertAppIntoDb(this, packageInfo, hashType, hash);
+                    } catch (Utils.PotentialFilesystemCorruptionException e) {
+                        Log.e(TAG, "Encountered potential filesystem corruption, or other unknown " +
+                                "problem when calculating hash of " + apk.getAbsolutePath() + ". " +
+                                "It is unlikely F-Droid can do anything about this, and this " +
+                                "likely happened in the background. As such, we will continue without " +
+                                "interrupting the user by asking them to send a crash report.");
+                        return;
                     } catch (IllegalArgumentException e) {
                         Utils.debugLog(TAG, e.getMessage());
                         ACRA.getErrorReporter().handleException(e, false);
