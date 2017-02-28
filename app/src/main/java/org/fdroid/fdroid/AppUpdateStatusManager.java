@@ -85,7 +85,7 @@ public class AppUpdateStatusManager {
 
     private final Context context;
     private final LocalBroadcastManager localBroadcastManager;
-    private static final HashMap<String, AppUpdateStatus> appMapping = new HashMap<>();
+    private final HashMap<String, AppUpdateStatus> appMapping = new HashMap<>();
     private boolean isBatchUpdating;
 
     private AppUpdateStatusManager(Context context) {
