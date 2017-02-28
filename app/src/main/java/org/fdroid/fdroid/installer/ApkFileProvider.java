@@ -20,6 +20,7 @@
 package org.fdroid.fdroid.installer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.content.FileProvider;
 
@@ -59,8 +60,9 @@ public class ApkFileProvider extends FileProvider {
 
         if (useContentUri) {
             // return a content Uri using support libs FileProvider
-
-            return getUriForFile(context, AUTHORITY, sanitizedApkFile);
+            Uri apkUri = getUriForFile(context, AUTHORITY, sanitizedApkFile);
+            context.grantUriPermission("org.fdroid.fdroid.privileged", apkUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            return apkUri;
         }
 
         // Need the apk to be world readable, so that the installer is able to read it.
