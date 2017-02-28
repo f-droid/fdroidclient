@@ -237,6 +237,16 @@ public class AppUpdateStatusManager {
         }
     }
 
+    public void refreshApk(String key) {
+        synchronized (appMapping) {
+            AppUpdateStatus entry = appMapping.get(key);
+            if (entry != null) {
+                Utils.debugLog(LOGTAG, "Refresh APK " + entry.apk.apkName);
+                notifyChange(entry, true);
+            }
+        }
+    }
+
     public void updateApkProgress(String key, int max, int current) {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(key);

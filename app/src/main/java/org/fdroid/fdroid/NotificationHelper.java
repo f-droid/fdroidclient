@@ -178,8 +178,9 @@ class NotificationHelper {
         // Ignore unknown status
         if (entry.status == AppUpdateStatusManager.Status.Unknown)
             return true;
-        // Ignore first time install downloads, assumed to be done from UI
-        else if (!entry.app.isInstalled() && (entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.ReadyToInstall))
+            // Ignore downloading, readyToInstall and installError if we are showing the details screen for this app
+        else if ((entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.ReadyToInstall || entry.status == AppUpdateStatusManager.Status.InstallError) &&
+                (AppDetails.isAppVisible(entry.app.packageName) || AppDetails2.isAppVisible(entry.app.packageName)))
             return true;
         return false;
     }

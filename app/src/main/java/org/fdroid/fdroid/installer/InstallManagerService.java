@@ -15,6 +15,7 @@ import android.text.TextUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;
@@ -313,17 +314,13 @@ public class InstallManagerService extends Service {
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     case Installer.ACTION_INSTALL_INTERRUPTED:
-                        AppUpdateStatusManager.AppUpdateStatus status = appUpdateStatusManager.get(downloadUrl);
-                        appUpdateStatusManager.removeApk(downloadUrl);
                         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
                         String errorMessage =
                                 intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
-
-                        // show notification if app details is not visible
                         if (!TextUtils.isEmpty(errorMessage)) {
-                            if (status == null || status.app == null || !AppDetails.isAppVisible(status.app.packageName)) {
-                                appUpdateStatusManager.setApkError(apk, errorMessage);
-                            }
+                            appUpdateStatusManager.setApkError(apk, errorMessage);
+                        } else {
+                            appUpdateStatusManager.removeApk(downloadUrl);
                         }
                         localBroadcastManager.unregisterReceiver(this);
                         break;
