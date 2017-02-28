@@ -124,13 +124,21 @@ public class InstalledAppProviderService extends IntentService {
      * is in sync with what the {@link PackageManager} tells us is installed. Once
      * completed, the relevant {@link android.content.ContentProvider}s will be
      * notified of any changes to installed statuses.
-     * <p/>
+     * <p>
      * The installed app cache could get out of sync, e.g. if F-Droid crashed/ or
      * ran out of battery half way through responding to {@link Intent#ACTION_PACKAGE_ADDED}.
      * This method returns immediately, and will continue to work in an
      * {@link IntentService}.  It doesn't really matter where we put this in the
      * bootstrap process, because it runs in its own thread, at the lowest priority:
      * {@link Process#THREAD_PRIORITY_LOWEST}.
+     * <p>
+     * APKs installed in {@code /system} will often have zeroed out timestamps, like
+     * 2008-01-01 (ziptime) or 2009-01-01.  So instead anything older than 2010 every
+     * time since we have no way to know whether an APK wasn't changed as part of an
+     * OTA update.  An OTA update could change the APK without changing the
+     * {@link PackageInfo#versionCode} or {@link PackageInfo#lastUpdateTime}.
+     *
+     * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/819>issue #819</a>
      */
     public static void compareToPackageManager(Context context) {
         Map<String, Long> cachedInfo = InstalledAppProvider.Helper.all(context);
@@ -139,7 +147,8 @@ public class InstalledAppProviderService extends IntentService {
                 .getInstalledPackages(PackageManager.GET_SIGNATURES);
         for (PackageInfo packageInfo : packageInfoList) {
             if (cachedInfo.containsKey(packageInfo.packageName)) {
-                if (packageInfo.lastUpdateTime > cachedInfo.get(packageInfo.packageName)) {
+                if (packageInfo.lastUpdateTime < 1262300400000L // 2010-01-01 00:00
+                        || packageInfo.lastUpdateTime > cachedInfo.get(packageInfo.packageName)) {
                     insert(context, packageInfo);
                 }
                 cachedInfo.remove(packageInfo.packageName);
@@ -207,7 +216,7 @@ public class InstalledAppProviderService extends IntentService {
      * broadcast. In the first case, it will already have a {@link PackageInfo} for us. However if
      * it is from the later case, we'll need to query the {@link PackageManager} ourselves to get
      * this info.
-     *
+     * <p>
      * Can still return null, as there is potentially race conditions to do with uninstalling apps
      * such that querying the {@link PackageManager} for a given package may throw an exception.
      */

@@ -59,6 +59,8 @@ public class RepoXMLHandler extends DefaultHandler {
     private long repoTimestamp;
     private String repoDescription;
     private String repoName;
+    private String repoIcon;
+    private final ArrayList<String> repoMirrors = new ArrayList<>();
 
     /**
      * Set of requested permissions per package/APK
@@ -73,7 +75,8 @@ public class RepoXMLHandler extends DefaultHandler {
     private final StringBuilder curchars = new StringBuilder();
 
     public interface IndexReceiver {
-        void receiveRepo(String name, String description, String signingCert, int maxage, int version, long timestamp);
+        void receiveRepo(String name, String description, String signingCert, int maxage, int version,
+                         long timestamp, String icon, String[] mirrors);
 
         void receiveApp(App app, List<Apk> packages);
 
@@ -205,34 +208,34 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.license = str;
                     break;
                 case "author":
-                    curapp.author = str;
+                    curapp.authorName = str;
                     break;
                 case "email":
-                    curapp.email = str;
+                    curapp.authorEmail = str;
                     break;
                 case "source":
-                    curapp.sourceURL = str;
+                    curapp.sourceCode = str;
                     break;
                 case "changelog":
-                    curapp.changelogURL = str;
+                    curapp.changelog = str;
                     break;
                 case "donate":
-                    curapp.donateURL = str;
+                    curapp.donate = str;
                     break;
                 case "bitcoin":
-                    curapp.bitcoinAddr = str;
+                    curapp.bitcoin = str;
                     break;
                 case "litecoin":
-                    curapp.litecoinAddr = str;
+                    curapp.litecoin = str;
                     break;
                 case "flattr":
                     curapp.flattrID = str;
                     break;
                 case "web":
-                    curapp.webURL = str;
+                    curapp.webSite = str;
                     break;
                 case "tracker":
-                    curapp.trackerURL = str;
+                    curapp.issueTracker = str;
                     break;
                 case "added":
                     curapp.added = Utils.parseDate(str, null);
@@ -258,6 +261,8 @@ public class RepoXMLHandler extends DefaultHandler {
             }
         } else if ("description".equals(localName)) {
             repoDescription = cleanWhiteSpace(str);
+        } else if ("mirror".equals(localName)) {
+            repoMirrors.add(str);
         }
     }
 
@@ -312,7 +317,8 @@ public class RepoXMLHandler extends DefaultHandler {
     }
 
     private void onRepoParsed() {
-        receiver.receiveRepo(repoName, repoDescription, repoSigningCert, repoMaxAge, repoVersion, repoTimestamp);
+        receiver.receiveRepo(repoName, repoDescription, repoSigningCert, repoMaxAge, repoVersion,
+                repoTimestamp, repoIcon, repoMirrors.toArray(new String[repoMirrors.size()]));
     }
 
     private void onRepoPushRequestParsed(RepoPushRequest repoPushRequest) {
@@ -331,6 +337,7 @@ public class RepoXMLHandler extends DefaultHandler {
             repoName = cleanWhiteSpace(attributes.getValue("", "name"));
             repoDescription = cleanWhiteSpace(attributes.getValue("", "description"));
             repoTimestamp = parseLong(attributes.getValue("", "timestamp"), 0);
+            repoIcon = attributes.getValue("", "icon");
         } else if (RepoPushRequest.INSTALL.equals(localName)
                 || RepoPushRequest.UNINSTALL.equals(localName)) {
             if (repo.pushRequests == Repo.PUSH_REQUEST_ACCEPT_ALWAYS) {

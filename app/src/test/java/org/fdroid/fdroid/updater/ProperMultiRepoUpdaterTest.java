@@ -274,9 +274,9 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEquals("2048", a2048.name);
         assertEquals(String.format("<p>2048 from %s repo.</p>", id), a2048.description);
         assertEquals(String.format("Puzzle game (%s)", id), a2048.summary);
-        assertEquals(String.format("https://github.com/uberspot/2048-android?%s", id), a2048.webURL);
-        assertEquals(String.format("https://github.com/uberspot/2048-android?code&%s", id), a2048.sourceURL);
-        assertEquals(String.format("https://github.com/uberspot/2048-android/issues?%s", id), a2048.trackerURL);
+        assertEquals(String.format("https://github.com/uberspot/2048-android?%s", id), a2048.webSite);
+        assertEquals(String.format("https://github.com/uberspot/2048-android?code&%s", id), a2048.sourceCode);
+        assertEquals(String.format("https://github.com/uberspot/2048-android/issues?%s", id), a2048.issueTracker);
     }
 
     private void assertAdAwayMetadata(Repo repo, @RepoIdentifier String id) {
@@ -290,11 +290,11 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEquals(String.format("AdAway", id), adaway.name);
         assertEquals(String.format("<p>AdAway from %s repo.</p>", id), adaway.description);
         assertEquals(String.format("Block advertisements (%s)", id), adaway.summary);
-        assertEquals(String.format("http://sufficientlysecure.org/index.php/adaway?%s", id), adaway.webURL);
-        assertEquals(String.format("https://github.com/dschuermann/ad-away?%s", id), adaway.sourceURL);
-        assertEquals(String.format("https://github.com/dschuermann/ad-away/issues?%s", id), adaway.trackerURL);
-        assertEquals(String.format("https://github.com/dschuermann/ad-away/raw/HEAD/CHANGELOG?%s", id), adaway.changelogURL);
-        assertEquals(String.format("http://sufficientlysecure.org/index.php/adaway?%s", id), adaway.donateURL);
+        assertEquals(String.format("http://sufficientlysecure.org/index.php/adaway?%s", id), adaway.webSite);
+        assertEquals(String.format("https://github.com/dschuermann/ad-away?%s", id), adaway.sourceCode);
+        assertEquals(String.format("https://github.com/dschuermann/ad-away/issues?%s", id), adaway.issueTracker);
+        assertEquals(String.format("https://github.com/dschuermann/ad-away/raw/HEAD/CHANGELOG?%s", id), adaway.changelog);
+        assertEquals(String.format("http://sufficientlysecure.org/index.php/adaway?%s", id), adaway.donate);
         assertEquals(String.format("369138", id), adaway.flattrID);
     }
 
@@ -309,9 +309,9 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEquals("adbWireless", adb.name);
         assertEquals(String.format("<p>adbWireless from %s repo.</p>", id), adb.description);
         assertEquals(String.format("Wireless adb (%s)", id), adb.summary);
-        assertEquals(String.format("https://adbwireless.example.com?%s", id), adb.webURL);
-        assertEquals(String.format("https://adbwireless.example.com/source?%s", id), adb.sourceURL);
-        assertEquals(String.format("https://adbwireless.example.com/issues?%s", id), adb.trackerURL);
+        assertEquals(String.format("https://adbwireless.example.com?%s", id), adb.webSite);
+        assertEquals(String.format("https://adbwireless.example.com/source?%s", id), adb.sourceCode);
+        assertEquals(String.format("https://adbwireless.example.com/issues?%s", id), adb.issueTracker);
     }
 
     private void assertCalendarMetadata(Repo repo, @RepoIdentifier String id) {
@@ -325,9 +325,9 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEquals("Add to calendar", calendar.name);
         assertEquals(String.format("<p>Add to calendar from %s repo.</p>", id), calendar.description);
         assertEquals(String.format("Import .ics files into calendar (%s)", id), calendar.summary);
-        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport/blob/HEAD/README.md?%s", id), calendar.webURL);
-        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport?%s", id), calendar.sourceURL);
-        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport/issues?%s", id), calendar.trackerURL);
+        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport/blob/HEAD/README.md?%s", id), calendar.webSite);
+        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport?%s", id), calendar.sourceCode);
+        assertEquals(String.format("https://github.com/danielegobbetti/ICSImport/issues?%s", id), calendar.issueTracker);
         assertEquals("2225390", calendar.flattrID);
     }
 

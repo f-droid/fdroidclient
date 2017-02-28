@@ -10,10 +10,16 @@ before_script:
 
 test:
   script:
+    - cd app
+    - ./tools/langs-list-check.py
+    - ./tools/check-string-format.py
+    - cd ..
     - ./gradlew assemble -PdisablePreDex
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
     - ./gradlew lint -PdisablePreDex
+    - ./gradlew pmd -PdisablePreDex
+    - ./gradlew checkstyle -PdisablePreDex
     - ./gradlew test -PdisablePreDex || {
           for log in app/build/reports/*ests/*/*ml; do
               echo "read $log here:";
@@ -63,24 +69,6 @@ connected24:
         cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
       done
     - exit $EXITVALUE
-
-pmd:
-  script:
-    - ./gradlew pmd -PdisablePreDex
-
-checkstyle:
-  script:
-    - ./gradlew checkstyle -PdisablePreDex
-
-tools:
-  before_script:
-    - echo "ignored, no gradle needed"
-  script:
-    - cd app
-    - ./tools/langs-list-check.py
-    - ./tools/check-string-format.py
-  after_script:
-    - echo "ignored, no gradle needed"
 
 after_script:
     # this file changes every time but should not be cached

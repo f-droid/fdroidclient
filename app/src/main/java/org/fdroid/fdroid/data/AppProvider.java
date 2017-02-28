@@ -12,9 +12,9 @@ import android.util.Log;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
-import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
@@ -836,6 +836,11 @@ public class AppProvider extends FDroidProvider {
         long packageId = PackageProvider.Helper.ensureExists(getContext(), values.getAsString(Cols.Package.PACKAGE_NAME));
         values.remove(Cols.Package.PACKAGE_NAME);
         values.put(Cols.PACKAGE_ID, packageId);
+
+        if (!values.containsKey(Cols.DESCRIPTION) || values.getAsString(Cols.DESCRIPTION) == null) {
+            // the current structure assumes that description is always present and non-null
+            values.put(Cols.DESCRIPTION, "");
+        }
 
         String[] categories = null;
         boolean saveCategories = false;

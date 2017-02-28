@@ -124,15 +124,15 @@ public interface Schema {
             String ICON = "icon";
             String DESCRIPTION = "description";
             String LICENSE = "license";
-            String AUTHOR = "author";
-            String EMAIL = "email";
-            String WEB_URL = "webURL";
-            String TRACKER_URL = "trackerURL";
-            String SOURCE_URL = "sourceURL";
-            String CHANGELOG_URL = "changelogURL";
-            String DONATE_URL = "donateURL";
-            String BITCOIN_ADDR = "bitcoinAddr";
-            String LITECOIN_ADDR = "litecoinAddr";
+            String AUTHOR_NAME = "author";
+            String AUTHOR_EMAIL = "email";
+            String WEBSITE = "webURL";
+            String ISSUE_TRACKER = "trackerURL";
+            String SOURCE_CODE = "sourceURL";
+            String CHANGELOG = "changelogURL";
+            String DONATE = "donateURL";
+            String BITCOIN = "bitcoinAddr";
+            String LITECOIN = "litecoinAddr";
             String FLATTR_ID = "flattrID";
             String SUGGESTED_VERSION_CODE = "suggestedVercode";
             String UPSTREAM_VERSION_NAME = "upstreamVersion";
@@ -176,8 +176,8 @@ public interface Schema {
              */
             String[] ALL_COLS = {
                     ROW_ID, PACKAGE_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
-                    LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
-                    CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
+                    LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
+                    CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     SUGGESTED_VERSION_CODE,
@@ -190,8 +190,8 @@ public interface Schema {
              */
             String[] ALL = {
                     _ID, ROW_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
-                    LICENSE, AUTHOR, EMAIL, WEB_URL, TRACKER_URL, SOURCE_URL,
-                    CHANGELOG_URL, DONATE_URL, BITCOIN_ADDR, LITECOIN_ADDR, FLATTR_ID,
+                    LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
+                    CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
@@ -240,6 +240,7 @@ public interface Schema {
             String ADDED_DATE      = "added";
             String IS_COMPATIBLE   = "compatible";
             String INCOMPATIBLE_REASONS = "incompatibleReasons";
+            String ANTI_FEATURES   = "antiFeatures";
 
             interface Repo {
                 String VERSION = "repoVersion";
@@ -258,7 +259,7 @@ public interface Schema {
                     SIZE, SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, TARGET_SDK_VERSION, MAX_SDK_VERSION,
                     OBB_MAIN_FILE, OBB_MAIN_FILE_SHA256, OBB_PATCH_FILE, OBB_PATCH_FILE_SHA256,
                     REQUESTED_PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
-                    IS_COMPATIBLE, INCOMPATIBLE_REASONS,
+                    IS_COMPATIBLE, INCOMPATIBLE_REASONS, ANTI_FEATURES,
             };
 
             /**
@@ -270,6 +271,7 @@ public interface Schema {
                     OBB_MAIN_FILE, OBB_MAIN_FILE_SHA256, OBB_PATCH_FILE, OBB_PATCH_FILE_SHA256,
                     REQUESTED_PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
                     IS_COMPATIBLE, Repo.VERSION, Repo.ADDRESS, INCOMPATIBLE_REASONS,
+                    ANTI_FEATURES,
             };
         }
     }
@@ -295,12 +297,14 @@ public interface Schema {
             String USERNAME     = "username";
             String PASSWORD     = "password";
             String TIMESTAMP    = "timestamp";
+            String ICON         = "icon";
+            String MIRRORS      = "mirrors";
             String PUSH_REQUESTS = "pushRequests";
 
             String[] ALL = {
                     _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, SIGNING_CERT,
                     FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION, IS_SWAP,
-                    USERNAME, PASSWORD, TIMESTAMP, PUSH_REQUESTS,
+                    USERNAME, PASSWORD, TIMESTAMP, ICON, MIRRORS, PUSH_REQUESTS,
             };
         }
     }

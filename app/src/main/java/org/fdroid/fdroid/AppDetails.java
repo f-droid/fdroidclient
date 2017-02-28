@@ -1163,23 +1163,23 @@ public class AppDetails extends AppCompatActivity {
                 App app = appDetails.getApp();
                 switch (v.getId()) {
                     case R.id.website:
-                        url = app.webURL;
+                        url = app.webSite;
                         break;
                     case R.id.email:
                         final String subject = Uri.encode(getString(R.string.app_details_subject, app.name));
-                        url = "mailto:" + app.email + "?subject=" + subject;
+                        url = "mailto:" + app.authorEmail + "?subject=" + subject;
                         break;
                     case R.id.source:
-                        url = app.sourceURL;
+                        url = app.sourceCode;
                         break;
                     case R.id.issues:
-                        url = app.trackerURL;
+                        url = app.issueTracker;
                         break;
                     case R.id.changelog:
-                        url = app.changelogURL;
+                        url = app.changelog;
                         break;
                     case R.id.donate:
-                        url = app.donateURL;
+                        url = app.donate;
                         break;
                     case R.id.bitcoin:
                         url = app.getBitcoinUri();
@@ -1267,7 +1267,7 @@ public class AppDetails extends AppCompatActivity {
 
             // Website button
             View tv = view.findViewById(R.id.website);
-            if (!TextUtils.isEmpty(app.webURL)) {
+            if (!TextUtils.isEmpty(app.webSite)) {
                 tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
@@ -1275,7 +1275,7 @@ public class AppDetails extends AppCompatActivity {
 
             // Email button
             tv = view.findViewById(R.id.email);
-            if (!TextUtils.isEmpty(app.email)) {
+            if (!TextUtils.isEmpty(app.authorEmail)) {
                 tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
@@ -1283,7 +1283,7 @@ public class AppDetails extends AppCompatActivity {
 
             // Source button
             tv = view.findViewById(R.id.source);
-            if (!TextUtils.isEmpty(app.sourceURL)) {
+            if (!TextUtils.isEmpty(app.sourceCode)) {
                 tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
@@ -1291,7 +1291,7 @@ public class AppDetails extends AppCompatActivity {
 
             // Issues button
             tv = view.findViewById(R.id.issues);
-            if (!TextUtils.isEmpty(app.trackerURL)) {
+            if (!TextUtils.isEmpty(app.issueTracker)) {
                 tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
@@ -1299,7 +1299,7 @@ public class AppDetails extends AppCompatActivity {
 
             // Changelog button
             tv = view.findViewById(R.id.changelog);
-            if (!TextUtils.isEmpty(app.changelogURL)) {
+            if (!TextUtils.isEmpty(app.changelog)) {
                 tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
@@ -1307,7 +1307,7 @@ public class AppDetails extends AppCompatActivity {
 
             // Donate button
             tv = view.findViewById(R.id.donate);
-            if (!TextUtils.isEmpty(app.donateURL)) {
+            if (!TextUtils.isEmpty(app.donate)) {
                 tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
@@ -1315,7 +1315,7 @@ public class AppDetails extends AppCompatActivity {
 
             // Bitcoin
             tv = view.findViewById(R.id.bitcoin);
-            if (!TextUtils.isEmpty(app.bitcoinAddr)) {
+            if (!TextUtils.isEmpty(app.bitcoin)) {
                 tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
@@ -1323,7 +1323,7 @@ public class AppDetails extends AppCompatActivity {
 
             // Litecoin
             tv = view.findViewById(R.id.litecoin);
-            if (!TextUtils.isEmpty(app.litecoinAddr)) {
+            if (!TextUtils.isEmpty(app.litecoin)) {
                 tv.setOnClickListener(onClickListener);
             } else {
                 tv.setVisibility(View.GONE);
@@ -1642,8 +1642,8 @@ public class AppDetails extends AppCompatActivity {
                 btMain.setEnabled(true);
             }
             TextView author = (TextView) view.findViewById(R.id.author);
-            if (!TextUtils.isEmpty(app.author)) {
-                author.setText(getString(R.string.by_author) + " " + app.author);
+            if (!TextUtils.isEmpty(app.authorName)) {
+                author.setText(getString(R.string.by_author) + " " + app.authorName);
                 author.setVisibility(View.VISIBLE);
             }
             TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
