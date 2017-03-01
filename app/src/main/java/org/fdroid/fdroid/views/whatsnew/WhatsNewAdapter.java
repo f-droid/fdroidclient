@@ -18,9 +18,23 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
 
     private Cursor cursor;
     private final Activity activity;
+    private final RecyclerView.ItemDecoration appListDecorator;
 
     public WhatsNewAdapter(Activity activity) {
         this.activity = activity;
+        appListDecorator = new WhatsNewAdapter.ItemDecorator(activity);
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        recyclerView.addItemDecoration(appListDecorator);
+    }
+
+    @Override
+    public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
+        recyclerView.removeItemDecoration(appListDecorator);
+        super.onDetachedFromRecyclerView(recyclerView);
     }
 
     @Override
@@ -92,10 +106,10 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
      * @see org.fdroid.fdroid.R.dimen#whats_new__padding__app_card__horizontal
      * @see org.fdroid.fdroid.R.dimen#whats_new__padding__app_card__vertical
      */
-    public static class ItemDecorator extends RecyclerView.ItemDecoration {
+    private class ItemDecorator extends RecyclerView.ItemDecoration {
         private final Context context;
 
-        public ItemDecorator(Context context) {
+        ItemDecorator(Context context) {
             this.context = context.getApplicationContext();
         }
 

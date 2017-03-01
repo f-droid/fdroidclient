@@ -28,8 +28,6 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
     private final WhatsNewAdapter whatsNewAdapter;
     private final AppCompatActivity activity;
 
-    private static RecyclerView.ItemDecoration appListDecorator;
-
     WhatsNewViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
 
@@ -44,20 +42,6 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         appList.setHasFixedSize(true);
         appList.setLayoutManager(layoutManager);
         appList.setAdapter(whatsNewAdapter);
-
-        // This is a bit hacky, but for some reason even though we are inflating the main_tab_whats_new
-        // layout above, the app_list RecyclerView seems to remember that it has decorations from before.
-        // If we blindly call addItemDecoration here without first removing the existing one, it will
-        // double up on all of the paddings the second time we view it. The third time it will triple up
-        // on the paddings, etc. In addition, the API doesn't allow us to "clearAllDecorators()". Instead
-        // we need to hold onto the reference to the one we added in order to remove it.
-        if (appListDecorator == null) {
-            appListDecorator = new WhatsNewAdapter.ItemDecorator(activity);
-        } else {
-            appList.removeItemDecoration(appListDecorator);
-        }
-
-        appList.addItemDecoration(appListDecorator);
 
         final SwipeRefreshLayout swipeToRefresh = (SwipeRefreshLayout) whatsNewView.findViewById(R.id.swipe_to_refresh);
         swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
