@@ -12,9 +12,11 @@ class AppListAdapter extends RecyclerView.Adapter<AppListItemController> {
 
     private Cursor cursor;
     private final Activity activity;
+    private final AppListItemDivider divider;
 
     AppListAdapter(Activity activity) {
         this.activity = activity;
+        divider = new AppListItemDivider(activity);
     }
 
     public void setAppCursor(Cursor cursor) {
@@ -36,5 +38,17 @@ class AppListAdapter extends RecyclerView.Adapter<AppListItemController> {
     @Override
     public int getItemCount() {
         return cursor == null ? 0 : cursor.getCount();
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        recyclerView.addItemDecoration(divider);
+    }
+
+    @Override
+    public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
+        recyclerView.removeItemDecoration(divider);
+        super.onDetachedFromRecyclerView(recyclerView);
     }
 }

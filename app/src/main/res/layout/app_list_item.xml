@@ -64,15 +64,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/icon" />
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/app_list_item_divider"
-        app:layout_constraintTop_toBottomOf="@+id/status"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        tools:ignore="ContentDescription" />
-
 </android.support.constraint.ConstraintLayout>

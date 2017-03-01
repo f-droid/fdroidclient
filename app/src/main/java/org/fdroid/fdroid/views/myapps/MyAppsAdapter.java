@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.apps.AppListItemController;
+import org.fdroid.fdroid.views.apps.AppListItemDivider;
 
 /**
  * Wraps a cursor which should have a list of "apps which can be updated". Also includes a header
@@ -18,9 +19,11 @@ public class MyAppsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private Cursor updatesCursor;
     private final Activity activity;
+    private final AppListItemDivider divider;
 
     public MyAppsAdapter(Activity activity) {
         this.activity = activity;
+        divider = new AppListItemDivider(activity);
     }
 
     @Override
@@ -73,4 +76,17 @@ public class MyAppsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         updatesCursor = cursor;
         notifyDataSetChanged();
     }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        recyclerView.addItemDecoration(divider);
+    }
+
+    @Override
+    public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
+        recyclerView.removeItemDecoration(divider);
+        super.onDetachedFromRecyclerView(recyclerView);
+    }
+
 }
