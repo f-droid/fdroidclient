@@ -25,31 +25,18 @@ import org.fdroid.fdroid.R;
  */
 class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
 
-    // Helpers for switching between the API of the RecyclerViewPager and the BottomNavigationView.
-    // One identifies items by position, the other by menu item ID, yet they need to be able
-    // to talk to and control each other. If the user swipes the view pager, the bottom nav needs
-    // to update, and vice-versa.
-    static final SparseIntArray ID_TO_POSITION = new SparseIntArray();
-    static final SparseIntArray POSITION_TO_ID = new SparseIntArray();
-
-    static {
-        ID_TO_POSITION.put(R.id.whats_new, 0);
-        ID_TO_POSITION.put(R.id.categories, 1);
-        ID_TO_POSITION.put(R.id.nearby, 2);
-        ID_TO_POSITION.put(R.id.my_apps, 3);
-        ID_TO_POSITION.put(R.id.settings, 4);
-
-        POSITION_TO_ID.put(0, R.id.whats_new);
-        POSITION_TO_ID.put(1, R.id.categories);
-        POSITION_TO_ID.put(2, R.id.nearby);
-        POSITION_TO_ID.put(3, R.id.my_apps);
-        POSITION_TO_ID.put(4, R.id.settings);
-    }
+    private final SparseIntArray positionToId = new SparseIntArray();
 
     private final AppCompatActivity activity;
 
     MainViewAdapter(AppCompatActivity activity) {
         this.activity = activity;
+        setHasStableIds(true);
+        positionToId.put(0, R.id.whats_new);
+        positionToId.put(1, R.id.categories);
+        positionToId.put(2, R.id.nearby);
+        positionToId.put(3, R.id.my_apps);
+        positionToId.put(4, R.id.settings);
     }
 
     @Override
@@ -61,7 +48,7 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
 
     @Override
     public void onBindViewHolder(MainViewController holder, int position) {
-        int menuId = POSITION_TO_ID.get(position);
+        long menuId = getItemId(position);
         if (menuId == R.id.whats_new) {
             holder.bindWhatsNewView();
         } else if (menuId == R.id.categories) {
@@ -79,6 +66,16 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
 
     @Override
     public int getItemCount() {
-        return 5;
+        return positionToId.size();
+    }
+
+    // The RecyclerViewPager and the BottomNavigationView both use menu item IDs to identify pages.
+    @Override
+    public long getItemId(int position) {
+        return positionToId.get(position);
+    }
+
+    public int adapterPositionFromItemId(int itemId) {
+        return positionToId.indexOfValue(itemId);
     }
 }
