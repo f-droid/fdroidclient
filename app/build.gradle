@@ -184,6 +184,7 @@ android {
         versionCode 102050
         versionName getVersionName()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     testOptions {

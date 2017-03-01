@@ -433,6 +433,12 @@ public class AppDetails extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        updateNotificationsForApp();
+    }
+
+    @Override
     protected void onResumeFragments() {
         // Must be called before super.onResumeFragments(), as the fragments depend on the active
         // url being correctly set in order to know whether or not to show the download progress bar.
@@ -462,13 +468,34 @@ public class AppDetails extends AppCompatActivity {
 
     protected void onStop() {
         super.onStop();
+        visiblePackageName = null;
         getContentResolver().unregisterContentObserver(myAppObserver);
+
+        // When leaving the app details, make sure to refresh app status for this app, since
+        // we might want to show notifications for it now.
+        updateNotificationsForApp();
+    }
+
+    /**
+     * Some notifications (like "downloading" and "installed") are not shown for this app if it is open in app details.
+     * When closing, we need to refresh the notifications, so they are displayed again.
+     */
+    private void updateNotificationsForApp() {
+        if (app != null) {
+            AppUpdateStatusManager appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
+            for (AppUpdateStatusManager.AppUpdateStatus status : appUpdateStatusManager.getByPackageName(app.packageName)) {
+                if (status.status == AppUpdateStatusManager.Status.Installed) {
+                    appUpdateStatusManager.removeApk(status.getUniqueKey());
+                } else {
+                    appUpdateStatusManager.refreshApk(status.getUniqueKey());
+                }
+            }
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        visiblePackageName = null;
         // save the active URL for this app in case we come back
         getPreferences(MODE_PRIVATE)
             .edit()
@@ -554,7 +581,7 @@ public class AppDetails extends AppCompatActivity {
                     String errorMessage =
                             intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
-                    if (!TextUtils.isEmpty(errorMessage)) {
+                    if (!TextUtils.isEmpty(errorMessage) && !isFinishing()) {
                         Log.e(TAG, "install aborted with errorMessage: " + errorMessage);
 
                         String title = String.format(

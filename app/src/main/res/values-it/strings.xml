@@ -43,8 +43,6 @@
   <string name="overwrite">Sovrascrivi</string>
   <string name="tab_available_apps">Disponibile</string>
   <string name="tab_updates">Aggiornamenti</string>
-  <string name="one_update_available">1 aggiornamento disponibile.</string>
-  <string name="many_updates_available">%d aggiornamenti disponibili.</string>
   <string name="fdroid_updates_available">Aggiornamenti per F-Droid disponibili</string>
   <string name="bluetooth_activity_not_found">Non è possibile inviare via Bluetooth, scegliere un altro metodo!</string>
   <string name="choose_bt_send">Scegli invio mediante Bluetooth</string>
@@ -333,7 +331,7 @@ non saranno rimossi. Non è richiesto alcun accesso speciale.</string>
 di questa app integrata? I dati presenti
 non saranno rimossi. Non richiede alcun permesso speciale.</string>
     <string name="allPerms">Tutte</string>
-    <string name="update_notification_more">+%1$d rimanente…</string>
+    <string name="notification_summary_more">+%1$d rimanente…</string>
     <string name="swap_nearby">Scambio ravvicinato</string>
     <string name="empty_search_installed_app_list">Nessuna app installata corrispondente.</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>

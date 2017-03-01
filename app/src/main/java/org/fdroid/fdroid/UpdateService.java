@@ -37,7 +37,6 @@ import android.os.Process;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -79,7 +78,6 @@ public class UpdateService extends IntentService {
     private static final String STATE_LAST_UPDATED = "lastUpdateCheck";
 
     private static final int NOTIFY_ID_UPDATING = 0;
-    private static final int NOTIFY_ID_UPDATES_AVAILABLE = 1;
 
     private static final int FLAG_NET_UNAVAILABLE = 0;
     private static final int FLAG_NET_METERED = 1;
@@ -89,6 +87,7 @@ public class UpdateService extends IntentService {
 
     private NotificationManager notificationManager;
     private NotificationCompat.Builder notificationBuilder;
+    private AppUpdateStatusManager appUpdateStatusManager;
 
     public UpdateService() {
         super("UpdateService");
@@ -147,6 +146,7 @@ public class UpdateService extends IntentService {
                 .setOngoing(true)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setContentTitle(getString(R.string.update_notification_title));
+        appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
 
         // Android docs are a little sketchy, however it seems that Gingerbread is the last
         // sdk that made a content intent mandatory:
@@ -469,39 +469,6 @@ public class UpdateService extends IntentService {
         }
     }
 
-    private PendingIntent createNotificationIntent() {
-        Intent notifyIntent = new Intent(this, FDroid.class).putExtra(FDroid.EXTRA_TAB_UPDATE, true);
-        TaskStackBuilder stackBuilder = TaskStackBuilder
-                .create(this).addParentStack(FDroid.class)
-                .addNextIntent(notifyIntent);
-        return stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-
-    private static final int MAX_UPDATES_TO_SHOW = 5;
-
-    private NotificationCompat.Style createNotificationBigStyle(Cursor hasUpdates) {
-
-        final String contentText = hasUpdates.getCount() > 1
-                ? getString(R.string.many_updates_available, hasUpdates.getCount())
-                : getString(R.string.one_update_available);
-
-        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-        inboxStyle.setBigContentTitle(contentText);
-        hasUpdates.moveToFirst();
-        for (int i = 0; i < Math.min(hasUpdates.getCount(), MAX_UPDATES_TO_SHOW); i++) {
-            App app = new App(hasUpdates);
-            hasUpdates.moveToNext();
-            inboxStyle.addLine(app.name + " (" + app.installedVersionName + " → " + app.getSuggestedVersionName() + ")");
-        }
-
-        if (hasUpdates.getCount() > MAX_UPDATES_TO_SHOW) {
-            int diff = hasUpdates.getCount() - MAX_UPDATES_TO_SHOW;
-            inboxStyle.setSummaryText(getString(R.string.update_notification_more, diff));
-        }
-
-        return inboxStyle;
-    }
-
     private void autoDownloadUpdates() {
         Cursor cursor = getContentResolver().query(
                 AppProvider.getCanUpdateUri(),
@@ -520,24 +487,16 @@ public class UpdateService extends IntentService {
     }
 
     private void showAppUpdatesNotification(Cursor hasUpdates) {
-        Utils.debugLog(TAG, "Notifying " + hasUpdates.getCount() + " updates.");
-
-        final int icon = Build.VERSION.SDK_INT >= 11 ? R.drawable.ic_stat_notify_updates : R.drawable.ic_launcher;
-
-        final String contentText = hasUpdates.getCount() > 1
-                ? getString(R.string.many_updates_available, hasUpdates.getCount())
-                : getString(R.string.one_update_available);
-
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this)
-                    .setAutoCancel(true)
-                    .setContentTitle(getString(R.string.fdroid_updates_available))
-                    .setSmallIcon(icon)
-                    .setContentIntent(createNotificationIntent())
-                    .setContentText(contentText)
-                    .setStyle(createNotificationBigStyle(hasUpdates));
-
-        notificationManager.notify(NOTIFY_ID_UPDATES_AVAILABLE, builder.build());
+        if (hasUpdates != null) {
+            hasUpdates.moveToFirst();
+            List<Apk> apksToUpdate = new ArrayList<>(hasUpdates.getCount());
+            for (int i = 0; i < hasUpdates.getCount(); i++) {
+                App app = new App(hasUpdates);
+                hasUpdates.moveToNext();
+                apksToUpdate.add(ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode));
+            }
+            appUpdateStatusManager.addApks(apksToUpdate, AppUpdateStatusManager.Status.UpdateAvailable);
+        }
     }
 
     /**

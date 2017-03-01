@@ -45,8 +45,6 @@
   <string name="overwrite">Overskriv</string>
   <string name="tab_available_apps">Tilgjengelig</string>
   <string name="tab_updates">Oppdateringer</string>
-  <string name="one_update_available">1 oppdatering tilgjengelig.</string>
-  <string name="many_updates_available">%d oppdateringer tilgjengelig.</string>
   <string name="fdroid_updates_available">F-Droid: Oppdateringer tilgjengelig</string>
   <string name="bluetooth_activity_not_found">Ingen forsendelsesmåte for Blåtann funnet, velg en!</string>
   <string name="choose_bt_send">Velg forsendelsesmåte for Blåtann</string>
@@ -185,7 +183,7 @@ skru på denne pakkebrønnen igjen for å installere programmer fra den.</string
 
     <string name="back">Tilbake</string>
     <string name="tab_installed_apps">Installert</string>
-    <string name="update_notification_more">+%1$d mer…</string>
+    <string name="notification_summary_more">+%1$d mer…</string>
     <string name="bad_fingerprint">Feil i fingeravtrykk</string>
     <string name="invalid_url">Dette er ikke en gyldig nettadresse.</string>
     <string name="menu_changelog">Endringslogg</string>

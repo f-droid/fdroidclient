@@ -45,8 +45,6 @@
   <string name="overwrite">上書き</string>
   <string name="tab_available_apps">入手可能</string>
   <string name="tab_updates">更新</string>
-  <string name="one_update_available">1個の更新があります。</string>
-  <string name="many_updates_available">%d個の更新があります.</string>
   <string name="fdroid_updates_available">F-Droidの更新があります</string>
   <string name="bluetooth_activity_not_found">Bluetoothの送信方法がありません､選択してください!</string>
   <string name="choose_bt_send">Bluetoothの送信方法を選択してください</string>
@@ -181,7 +179,7 @@
     <string name="links">ﾘﾝｸ</string>
 
     <string name="back">戻る</string>
-    <string name="update_notification_more">+%1$d 以上…</string>
+    <string name="notification_summary_more">+%1$d 以上…</string>
     <string name="bad_fingerprint">ﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄが違います</string>
     <string name="invalid_url">有効な URL ではありません｡</string>
     <string name="menu_changelog">変更履歴</string>

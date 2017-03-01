@@ -147,10 +147,8 @@
     <string name="repos_unchanged">सारी रेपोसितोरिएस नवीनतम हैं</string>
         <string name="all_other_repos_fine">सभी दुसरे रेपो ने कोई गलती नहीं बनाई|</string>
         <string name="global_error_updating_repos">अपडेट के दौरान एरर: %s</string>
-    <string name="one_update_available">१ अपडेट उपलब्ध है|</string>
-    <string name="many_updates_available">%d अपडेटस उपलब्ध हैं|</string>
     <string name="fdroid_updates_available">F-Droid अपडेट उपलब्ध</string>
-    <string name="update_notification_more">+%1$d और…</string>
+    <string name="notification_summary_more">+%1$d और…</string>
     <string name="bluetooth_activity_not_found">Bluettoth से भेजने का तरीका उपलब नहीं है, एक चुने!</string>
     <string name="choose_bt_send">Bluetooth से भेजने का तरीका चुने</string>
     <string name="send_via_bluetooth">Bluetooth द्वारा भेजे</string>

@@ -45,8 +45,6 @@
   <string name="overwrite">Перезаписать</string>
   <string name="tab_available_apps">Доступно</string>
   <string name="tab_updates">Обновления</string>
-  <string name="one_update_available">Доступно 1 обновление.</string>
-  <string name="many_updates_available">Доступно %d обновлений.</string>
   <string name="fdroid_updates_available">Доступны обновления для F-Droid</string>
   <string name="bluetooth_activity_not_found">Методы отправки по Bluetooth не найдены, выберите какой-либо!</string>
   <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>
@@ -212,7 +210,7 @@
     <string name="less">Меньше</string>
 
     <string name="back">Назад</string>
-    <string name="update_notification_more">Детали +%1$d …</string>
+    <string name="notification_summary_more">Детали +%1$d …</string>
     <string name="bad_fingerprint">Неверный отпечаток ключа</string>
     <string name="invalid_url">URL некорректен.</string>
     <string name="menu_changelog">Список изменений</string>

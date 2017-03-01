@@ -63,10 +63,8 @@
     <string name="tab_available_apps">Disponíveis</string>
     <string name="tab_installed_apps">Instaladas</string>
     <string name="tab_updates">Atualizações</string>
-    <string name="one_update_available">1 atualização disponível.</string>
-    <string name="many_updates_available">%d atualizações disponíveis.</string>
     <string name="fdroid_updates_available">Atualizações F-Droid disponíveis</string>
-    <string name="update_notification_more">+%1$d…</string>
+    <string name="notification_summary_more">+%1$d…</string>
     <string name="bluetooth_activity_not_found">Nenhum método de envio Bluetooth encontrado. Escolha um!</string>
     <string name="choose_bt_send">Escolha o método de envio Bluetooth</string>
     <string name="send_via_bluetooth">Enviar por Bluetooth</string>

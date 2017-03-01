@@ -55,8 +55,6 @@
     <string name="tab_updates">மேம்படுத்தல்கள்</string>
     <string name="tab_installed_apps_count">நிறுவப்பட்டது (%d)</string>
     <string name="tab_updates_count">மேம்படுத்தல்கள் (%d)</string>
-    <string name="one_update_available">1 மேம்படுத்தல் உள்ளது.</string>
-    <string name="many_updates_available">%d மேம்படுத்தல்கள் உள்ளன.</string>
     <string name="fdroid_updates_available">F-Droid மேம்படுத்தல்கள் உள்ளன</string>
     <string name="send_via_bluetooth">ப்ளூடூத் வழியாக அனுப்ப</string>
 

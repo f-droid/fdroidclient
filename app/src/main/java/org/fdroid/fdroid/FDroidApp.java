@@ -37,6 +37,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatDelegate;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -78,6 +79,10 @@ import sun.net.www.protocol.bluetooth.Handler;
 )
 public class FDroidApp extends Application {
 
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
+
     private static final String TAG = "FDroidApp";
 
     public static final String SYSTEM_DIR_NAME = Environment.getRootDirectory().getAbsolutePath();
@@ -97,6 +102,14 @@ public class FDroidApp extends Application {
 
     @SuppressWarnings("unused")
     BluetoothAdapter bluetoothAdapter;
+
+    /**
+     * The construction of this notification helper has side effects including listening and
+     * responding to local broadcasts. It is kept as a reference on the app object here so that
+     * it doesn't get GC'ed.
+     */
+    @SuppressWarnings("unused")
+    NotificationHelper notificationHelper;
 
     static {
         SPONGYCASTLE_PROVIDER = new org.spongycastle.jce.provider.BouncyCastleProvider();
@@ -262,6 +275,7 @@ public class FDroidApp extends Application {
 
         CleanCacheService.schedule(this);
 
+        notificationHelper = new NotificationHelper(getApplicationContext());
         UpdateService.schedule(getApplicationContext());
         bluetoothAdapter = getBluetoothAdapter();
 

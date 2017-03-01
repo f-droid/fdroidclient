@@ -45,8 +45,6 @@
   <string name="overwrite">Écraser</string>
   <string name="tab_available_apps">Disponibles</string>
   <string name="tab_updates">Mises à jour</string>
-  <string name="one_update_available">Une mise à jour est disponible.</string>
-  <string name="many_updates_available">%d mises à jour sont disponibles.</string>
   <string name="fdroid_updates_available">Des mises à jour F-Droid sont disponibles</string>
   <string name="bluetooth_activity_not_found">Aucune méthode d\'envoi Bluetooth n\'a été trouvée, choisissez-en une !</string>
   <string name="choose_bt_send">Choisir une méthode d\'envoi Bluetooth</string>
@@ -284,7 +282,7 @@ perdues. Elle ne requiert aucune autorisation particulière.</string>
     <string name="interval_1h">Toutes les heures</string>
     <string name="perms_description_app">Fourni par %1$s.</string>
     <string name="uninstall_system_summary">Ouvrir l\'écran des détails de l\'appli F-Droid Privileged Extension pour la mettre à jour/la désinstaller</string>
-    <string name="update_notification_more">%1$d de plus…</string>
+    <string name="notification_summary_more">%1$d de plus…</string>
     <string name="status_download_unknown_size">Téléchargement de
 \n%2$s depuis
 \n%1$s</string>

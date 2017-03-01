@@ -31,8 +31,6 @@
   <string name="overwrite">Gainidatzi</string>
   <string name="tab_available_apps">Eskuragarri</string>
   <string name="tab_updates">Eguneraketak</string>
-  <string name="one_update_available">Eguneraketa 1 eskuragarri.</string>
-  <string name="many_updates_available">%d eguneraketa eskuragarri.</string>
   <string name="fdroid_updates_available">F-Droid eguneraketak eskuragarri</string>
   <string name="repo_add_url">Biltegiaren helbidea</string>
   <string name="menu_update_repo">Eguneratu biltegiak</string>
@@ -99,7 +97,7 @@
     <string name="links">Loturak</string>
 
     <string name="back">Atzera</string>
-    <string name="update_notification_more">+%1$d gehiago…</string>
+    <string name="notification_summary_more">+%1$d gehiago…</string>
     <string name="bluetooth_activity_not_found">Ez da aurkitu Bluetooth bidez bidaltzeko metodorik, aukeratu bat!</string>
     <string name="choose_bt_send">Aukeratu Bluetooth bidez bidaltzeko metodoa</string>
     <string name="send_via_bluetooth">Bidali Bluetooth bidez</string>

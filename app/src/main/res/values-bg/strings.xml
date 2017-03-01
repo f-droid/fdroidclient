@@ -42,8 +42,6 @@
   <string name="add_key">Добавете ключ</string>
   <string name="tab_available_apps">Налични</string>
   <string name="tab_updates">Обновявания</string>
-  <string name="one_update_available">1 налична актуализация.</string>
-  <string name="many_updates_available">%d налични актуализации.</string>
   <string name="fdroid_updates_available">Налични актуализации от F-Droid</string>
   <string name="bluetooth_activity_not_found">Не е намерен Bluetooth метод за изпращане, изберете един!</string>
   <string name="choose_bt_send">Изберете Bluetooth метод за изпращане</string>
@@ -181,7 +179,7 @@
 
     <string name="about_source">Изходен код</string>
     <string name="tab_installed_apps">Инсталирани</string>
-    <string name="update_notification_more">+ още %1$d…</string>
+    <string name="notification_summary_more">+ още %1$d…</string>
     <string name="update_notification_title">Актуализиране на хранилищата</string>
     <string name="install_error_unknown">Инсталирането се провали поради неизвестна грешка</string>
     <string name="uninstall_error_unknown">Деинсталирането се провали поради неизвестна грешка</string>

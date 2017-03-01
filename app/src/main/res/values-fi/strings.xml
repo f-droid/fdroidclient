@@ -44,8 +44,6 @@
   <string name="overwrite">Korvaa</string>
   <string name="tab_available_apps">Saatavilla</string>
   <string name="tab_updates">Päivityksiä</string>
-  <string name="one_update_available">1 päivitys saatavilla.</string>
-  <string name="many_updates_available">%d päivitystä saatavilla.</string>
   <string name="fdroid_updates_available">F-Droid: Päivityksiä saatavilla</string>
   <string name="bluetooth_activity_not_found">Bluetooth -lähetystapaa ei löytynyt, valitse yksi!</string>
   <string name="choose_bt_send">Valitse Bluetooth -lähetystapa</string>
@@ -183,7 +181,7 @@
     <string name="tab_installed_apps">Asennettu</string>
     <string name="tab_installed_apps_count">Asennettu (%d)</string>
     <string name="tab_updates_count">Päivitykset (%d)</string>
-    <string name="update_notification_more">+%1$d lisää…</string>
+    <string name="notification_summary_more">+%1$d lisää…</string>
     <string name="update_auto_download">Lataa päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">Lataa päivitykset taustalla</string>
     <string name="uninstall_system">Päivitä/Poista Privileged Extension</string>

@@ -45,8 +45,6 @@
   <string name="overwrite">Üzerine yaz</string>
   <string name="tab_available_apps">Mevcut</string>
   <string name="tab_updates">Güncellemeler</string>
-  <string name="one_update_available">1 güncelleme bulunmaktadır.</string>
-  <string name="many_updates_available">%d güncelleme bulunmaktadır.</string>
   <string name="fdroid_updates_available">F-Droid güncellemeleri bulunmaktadır</string>
   <string name="bluetooth_activity_not_found">Hiçbir Bluetooth gönderme yöntemi bulunamadı, birisini seçin!</string>
   <string name="choose_bt_send">Bluetooth gönderme yöntemi seç</string>
@@ -203,7 +201,7 @@ bu depoyu tekrar etkinleştirmeniz gerekecektir.</string>
     <string name="tab_installed_apps">Kurulu</string>
     <string name="tab_installed_apps_count">Kurulu (%d)</string>
     <string name="tab_updates_count">Güncellemeler (%d)</string>
-    <string name="update_notification_more">+%1$d daha…</string>
+    <string name="notification_summary_more">+%1$d daha…</string>
     <string name="bad_fingerprint">Yanlış parmak izi</string>
     <string name="invalid_url">Bu, geçerli bir URL değildir.</string>
     <string name="menu_settings">Ayarlar</string>

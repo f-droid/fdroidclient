@@ -45,8 +45,6 @@
   <string name="overwrite">Prepísať</string>
   <string name="tab_available_apps">Dostupné</string>
   <string name="tab_updates">Aktualizácie</string>
-  <string name="one_update_available">Dostupná 1 aktualizácia.</string>
-  <string name="many_updates_available">Dostupných %d aktualizácií.</string>
   <string name="fdroid_updates_available">Dostupné aktualizácie F-Droidu</string>
   <string name="send_via_bluetooth">Poslať cez Bluetooth</string>
   <string name="repo_add_url">Adresa repozitára</string>
@@ -187,7 +185,7 @@ znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.</string>
 
     <string name="back">Späť</string>
     <string name="tab_installed_apps">Nainštalované</string>
-    <string name="update_notification_more">+%1$d viac…</string>
+    <string name="notification_summary_more">+%1$d viac…</string>
     <string name="bluetooth_activity_not_found">Posielanie cez Bluetooth zlyhalo, zvoľte inú metódu!</string>
     <string name="choose_bt_send">Vyberte posielanie cez Bluetooth</string>
     <string name="repo_exists_and_enabled">Tento repozitár je už nastavený a povolený.</string>

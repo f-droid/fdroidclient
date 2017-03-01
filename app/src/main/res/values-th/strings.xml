@@ -262,8 +262,6 @@
     <string name="add_key">เพิ่มกุญแจเข้ารหัส</string>
     <string name="overwrite">เขียนทับ</string>
 
-    <string name="one_update_available">1 โปรแกรมมีอัพเดต</string>
-    <string name="many_updates_available">%d โปรแกรมมีอัพเดต</string>
     <string name="uninstall_system_summary">แสดงรายละเอียดสถานะส่วนขยายช่วยติดตั้ง และ/หรือทำการอัพเดต/ถอนการติดตั้งส่วนขยายนี้</string>
     <string name="choose_bt_send">เลือกวิธีการส่งต่อผ่านบลูทูธ</string>
     <string name="bluetooth_activity_not_found">ยังไม่ได้เลือกวิธีส่งต่อทางบลูทูธ, โปรดเลือกก่อน!</string>
@@ -314,7 +312,7 @@
     <string name="swap_not_visible_wifi">ไม่แสดงตัวบน Wi-Fi</string>
     <string name="swap_no_peers_nearby">ไม่พบคนรอบข้างที่สามารถจะแบ่งปันโปรแกรมด้วยได้</string>
     <string name="swap_qr_isnt_for_swap">QR Code ที่อ่านได้ ไม่ใช่โค้ดที่ใช้แบ่งปันโปรแกรม</string>
-    <string name="update_notification_more">มีอีก +%1$d…</string>
+    <string name="notification_summary_more">มีอีก +%1$d…</string>
     <string name="perms_description_app">จัดให้โดย %1$s</string>
     <string name="swap_cant_find_peers">ไม่เจอคนที่ตามหาหรือ?</string>
     <string name="swap_nearby">แลกเปลี่ยนโปรแกรมกับคนข้างๆ</string>

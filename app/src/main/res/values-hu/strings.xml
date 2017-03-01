@@ -35,8 +35,6 @@
   <string name="overwrite">Felülírás</string>
   <string name="tab_available_apps">Elérhető</string>
   <string name="tab_updates">Frissítések</string>
-  <string name="one_update_available">1 frissítés érhető el.</string>
-  <string name="many_updates_available">%d frissítés érhető el.</string>
   <string name="fdroid_updates_available">F-Droid frissítés érhető el</string>
   <string name="repo_add_url">Repo cím</string>
   <string name="repo_add_fingerprint">Ujjlenyomat (opcionális)</string>
@@ -126,7 +124,7 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
     <string name="tab_installed_apps">Telepítve</string>
     <string name="tab_installed_apps_count">Telepítve (%d)</string>
     <string name="tab_updates_count">Frissítések (%d)</string>
-    <string name="update_notification_more">+%1$d további…</string>
+    <string name="notification_summary_more">+%1$d további…</string>
     <string name="send_via_bluetooth">Küldés Bluetooth-on</string>
 
     <string name="bad_fingerprint">Rossz ujjlenyomat</string>

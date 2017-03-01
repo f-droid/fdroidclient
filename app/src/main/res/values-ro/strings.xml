@@ -22,8 +22,6 @@
   <string name="enable">Activeaza</string>
   <string name="tab_available_apps">Disponibil</string>
   <string name="tab_updates">Actualizari</string>
-  <string name="one_update_available">O actualizare este disponibila.</string>
-  <string name="many_updates_available">%d actualizari sunt disponibile.</string>
   <string name="menu_about">Despre</string>
   <string name="menu_search">Cauta</string>
   <string name="menu_launch">Porneste</string>
@@ -97,7 +95,7 @@
     <string name="tab_installed_apps_count">Instalat (%d)</string>
     <string name="tab_updates_count">Actualizari (%d)</string>
     <string name="fdroid_updates_available">Actualizari disponibile in F-Droid</string>
-    <string name="update_notification_more">+%1$d mai mult…</string>
+    <string name="notification_summary_more">+%1$d mai mult…</string>
     <string name="bluetooth_activity_not_found">Nu a fost gasita o metoda Bluetooth de a trimite, alegeti una!</string>
     <string name="choose_bt_send">Alegeti metoda de a trimite prin Bluetooth</string>
     <string name="send_via_bluetooth">Trimite prin Bluetooth</string>

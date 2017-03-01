@@ -44,8 +44,6 @@
   <string name="overwrite">Ghi đè</string>
   <string name="tab_available_apps">Hiện có</string>
   <string name="tab_updates">Cập nhật</string>
-  <string name="one_update_available">Có 1 bản cập nhật.</string>
-  <string name="many_updates_available">Có %d bản cập nhật.</string>
   <string name="fdroid_updates_available">Có cập nhật F-Droid</string>
   <string name="bluetooth_activity_not_found">Không tìm thấy phương pháp gửi qua Bluetooth mặc định, hãy chọn phương pháp!</string>
   <string name="choose_bt_send">Chọn phương pháp gửi qua Bluetooth</string>
@@ -168,7 +166,7 @@
     <string name="about_source">Mã nguồn</string>
     <string name="app_incompatible">Không tương thích</string>
     <string name="tab_installed_apps">Đã cài đặt</string>
-    <string name="update_notification_more">+%1$d ứng dụng khác…</string>
+    <string name="notification_summary_more">+%1$d ứng dụng khác…</string>
     <string name="invalid_url">Đây không phải là URL hợp lệ.</string>
     <string name="menu_changelog">Lịch sử sửa đổi</string>
     <string name="menu_bitcoin">Bitcoin</string>

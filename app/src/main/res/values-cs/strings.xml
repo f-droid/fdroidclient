@@ -41,8 +41,6 @@
   <string name="overwrite">Přepsat</string>
   <string name="tab_available_apps">Dostupné</string>
   <string name="tab_updates">Aktualizace</string>
-  <string name="one_update_available">1 aktualizace je dostupná.</string>
-  <string name="many_updates_available">%d aktualizací je dostupných.</string>
   <string name="fdroid_updates_available">Dostupné aktualizace F-Droid</string>
   <string name="send_via_bluetooth">Poslat přes bluetooth</string>
   <string name="repo_add_url">Adresa repositáře</string>
@@ -152,7 +150,7 @@ Pro instalaci aplikací z tohoto repozitáře ho bude nejprve třeba znovu povol
     <string name="links">Odkazy</string>
 
     <string name="back">Zpět</string>
-    <string name="update_notification_more">+%1$d více…</string>
+    <string name="notification_summary_more">+%1$d více…</string>
     <string name="bluetooth_activity_not_found">Nerozpoznána žádná Bluetooth metoda přenosu, nějakou vyberte!</string>
     <string name="choose_bt_send">Vyberte metodu přenosu Bluetooth</string>
     <string name="repo_exists_add_fingerprint">Tento repozitář je již nastaven, budou jen přidány nové klíče.</string>

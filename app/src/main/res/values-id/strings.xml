@@ -63,8 +63,6 @@
     <string name="tab_available_apps">Tersedia</string>
     <string name="tab_installed_apps">Terpasang</string>
     <string name="tab_updates">Pembaruan</string>
-    <string name="one_update_available">1 pembaruan tersedia.</string>
-    <string name="many_updates_available">%d pembaruan tersedia.</string>
     <string name="fdroid_updates_available">Tersedia Pembaruan F-Droid</string>
     <string name="bluetooth_activity_not_found">Metode pengiriman Bluetooth tidak ditemukan, pilih salah satu!</string>
     <string name="choose_bt_send">Pilih metode pengiriman Bluetooth</string>
@@ -166,7 +164,7 @@
     <string name="repo_last_update">Terakhir diperbarui</string>
     <string name="repo_name">Nama</string>
     <string name="unknown">Tidak diketahui</string>
-    <string name="update_notification_more">+%1$d lainnya…</string>
+    <string name="notification_summary_more">+%1$d lainnya…</string>
     <string name="menu_settings">Pengaturan</string>
     <string name="rooted_on">Jangan bedakan warna apl yang membutuhkan izin root</string>
     <string name="unsigned_description">Ini artinya daftar 

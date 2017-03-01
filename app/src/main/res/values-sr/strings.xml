@@ -44,8 +44,6 @@
   <string name="overwrite">Пребриши</string>
   <string name="tab_available_apps">Доступне</string>
   <string name="tab_updates">Надоградње</string>
-  <string name="one_update_available">1 надоградња је доступна.</string>
-  <string name="many_updates_available">%d нових надоградњи је доступно.</string>
   <string name="fdroid_updates_available">Доступне су надоградње на Ф-дроиду</string>
   <string name="bluetooth_activity_not_found">Нема начина за слања блутутом, одредите један!</string>
   <string name="choose_bt_send">Одредите начин слања блутутом</string>
@@ -188,7 +186,7 @@
 
     <string name="back">Назад</string>
     <string name="tab_installed_apps">Инсталиране</string>
-    <string name="update_notification_more">+још %1$d…</string>
+    <string name="notification_summary_more">+још %1$d…</string>
     <string name="bad_fingerprint">Лош отисак</string>
     <string name="invalid_url">Ово није исправна адреса.</string>
     <string name="menu_changelog">Дневник измена</string>

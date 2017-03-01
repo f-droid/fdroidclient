@@ -27,8 +27,6 @@
   <string name="cancel">Cancelar</string>
   <string name="tab_available_apps">Dispoñíbel</string>
   <string name="tab_updates">Actualizacións</string>
-  <string name="one_update_available">1 Actualización dispoñíbel.</string>
-  <string name="many_updates_available">%d actualizacións dispoñíbeis.</string>
   <string name="fdroid_updates_available">Actualizacións de F-Droid dispoñíbeis</string>
   <string name="repo_add_url">Enderezo do repositorio</string>
   <string name="menu_update_repo">Actualizar repositorios</string>
@@ -101,7 +99,7 @@
     <string name="overwrite">Sobreescribir</string>
 
     <string name="tab_installed_apps">Instalado</string>
-    <string name="update_notification_more">+%1$d máis…</string>
+    <string name="notification_summary_more">+%1$d máis…</string>
     <string name="bluetooth_activity_not_found">Non se atopou ningún método de transmisión Bluetooth, escolla un!</string>
     <string name="choose_bt_send">Escolla o método de transmisión Bluetooth</string>
     <string name="send_via_bluetooth">Enviar por Bluetooth</string>

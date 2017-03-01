@@ -28,8 +28,6 @@
   <string name="overwrite">Anstataŭigi</string>
   <string name="tab_available_apps">Disponeblaj</string>
   <string name="tab_updates">Ĝisdatigeblaj</string>
-  <string name="one_update_available">1 ĝisdatigo estas disponebla.</string>
-  <string name="many_updates_available">%d ĝisdatigoj estas disponeblaj.</string>
   <string name="fdroid_updates_available">F-Droidaj ĝisdatigoj disponeblaj</string>
   <string name="send_via_bluetooth">Sendi per Bludento</string>
   <string name="repo_add_url">Deponeja adreso</string>
@@ -151,7 +149,7 @@
     <string name="tab_installed_apps">Instalitaj</string>
     <string name="tab_installed_apps_count">Instalitaj (%d)</string>
     <string name="tab_updates_count">Ĝisdatigoj (%d)</string>
-    <string name="update_notification_more">ankoraŭ +%1$d…</string>
+    <string name="notification_summary_more">ankoraŭ +%1$d…</string>
     <string name="bluetooth_activity_not_found">Neniu Bludenta metodo de sendo trovita, elektu iun!</string>
     <string name="choose_bt_send">Elektu Bludentan metodon de sendo</string>
     <string name="repo_add_fingerprint">Fingrospuro (malnepra)</string>

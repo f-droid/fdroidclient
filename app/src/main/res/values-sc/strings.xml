@@ -45,8 +45,6 @@
   <string name="overwrite">Subraiscrie</string>
   <string name="tab_available_apps">Disponìbiles</string>
   <string name="tab_updates">Agiornamentos</string>
-  <string name="one_update_available">1 agiornamentu est disponìbile.</string>
-  <string name="many_updates_available">%d agiornamentos sunt disponìbiles.</string>
   <string name="fdroid_updates_available">Agiornamentos pro F-Droid disponìbiles</string>
   <string name="bluetooth_activity_not_found">Perunu mètodu de imbiu Bluetooth agatadu, issèberane unu!</string>
   <string name="choose_bt_send">Issèbera su mètodu de imbiu Bluetooth</string>
@@ -184,7 +182,7 @@ Depes
     <string name="links">Ligàmenes</string>
 
     <string name="back">In dae segus</string>
-    <string name="update_notification_more">+%1$d àteru(os)…</string>
+    <string name="notification_summary_more">+%1$d àteru(os)…</string>
     <string name="invalid_url">Custu no est unu ligàmene vàlidu.</string>
     <string name="menu_changelog">Lista modìficas</string>
     <string name="update_notification_title">Agiornende sos depòsitos</string>

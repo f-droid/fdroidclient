@@ -54,10 +54,8 @@
 
     <string name="tab_available_apps">זמינות</string>
     <string name="tab_updates">עדכונים</string>
-    <string name="one_update_available">עדכון 1 זמין.</string>
-    <string name="many_updates_available">%d עדכונים זמינים.</string>
     <string name="fdroid_updates_available">עדכוני F-Droid זמינים</string>
-    <string name="update_notification_more">+%1$d עוד…</string>
+    <string name="notification_summary_more">+%1$d עוד…</string>
     <string name="bluetooth_activity_not_found">לא נמצאה שיטת שליחה של Bluetooth, בחר אחת!</string>
     <string name="choose_bt_send">בחר שיטת שליחה של Bluetooth</string>
     <string name="send_via_bluetooth">שלח דרך Bluetooth</string>

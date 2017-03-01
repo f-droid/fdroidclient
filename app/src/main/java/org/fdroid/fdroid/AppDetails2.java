@@ -64,6 +64,15 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     private LocalBroadcastManager localBroadcastManager;
     private String activeDownloadUrlString;
 
+    /**
+     * Check if {@code packageName} is currently visible to the user.
+     */
+    public static boolean isAppVisible(String packageName) {
+        return packageName != null && packageName.equals(visiblePackageName);
+    }
+
+    private static String visiblePackageName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         fdroidApp = (FDroidApp) getApplication();
@@ -121,6 +130,49 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             return;
         }
         app = newApp;
+
+        // Remove all "installed" statuses for this app, since we are now viewing it.
+        AppUpdateStatusManager appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
+        for (AppUpdateStatusManager.AppUpdateStatus status : appUpdateStatusManager.getByPackageName(app.packageName)) {
+            if (status.status == AppUpdateStatusManager.Status.Installed) {
+                appUpdateStatusManager.removeApk(status.getUniqueKey());
+            }
+        }
+    }
+
+    /**
+     * Some notifications (like "downloading" and "installed") are not shown for this app if it is open in app details.
+     * When closing, we need to refresh the notifications, so they are displayed again.
+     */
+    private void updateNotificationsForApp() {
+        if (app != null) {
+            AppUpdateStatusManager appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
+            for (AppUpdateStatusManager.AppUpdateStatus status : appUpdateStatusManager.getByPackageName(app.packageName)) {
+                if (status.status == AppUpdateStatusManager.Status.Installed) {
+                    appUpdateStatusManager.removeApk(status.getUniqueKey());
+                } else {
+                    appUpdateStatusManager.refreshApk(status.getUniqueKey());
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (app != null) {
+            visiblePackageName = app.packageName;
+        }
+        updateNotificationsForApp();
+    }
+
+    protected void onStop() {
+        super.onStop();
+        visiblePackageName = null;
+
+        // When leaving the app details, make sure to refresh app status for this app, since
+        // we might want to show notifications for it now.
+        updateNotificationsForApp();
     }
 
     @Override
@@ -364,7 +416,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                     String errorMessage =
                             intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
 
-                    if (!TextUtils.isEmpty(errorMessage)) {
+                    if (!TextUtils.isEmpty(errorMessage) && !isFinishing()) {
                         Log.e(TAG, "install aborted with errorMessage: " + errorMessage);
 
                         String title = String.format(

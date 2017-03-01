@@ -119,10 +119,8 @@
     <string name="tab_installed_apps">تم التثبيت</string>
     <string name="tab_installed_apps_count">تم التثبيت (%d)</string>
     <string name="tab_updates_count">تحديثات (%d)</string>
-    <string name="one_update_available">يتوفر تحديث.</string>
-    <string name="many_updates_available">%d يتوفر على تحديثات.</string>
     <string name="fdroid_updates_available">تحديثات اف-درويد متوفرة</string>
-    <string name="update_notification_more">+%1$d المزيد…</string>
+    <string name="notification_summary_more">+%1$d المزيد…</string>
     <string name="bluetooth_activity_not_found">لا توجد طريقة إرسال بلوتوث، فضلاً إختر واحدة !</string>
     <string name="repo_exists_add_fingerprint">هذه المستودعات بالفعل موجودة، بهذا سوف يتم إضافة مفتاح معلومات جديد.</string>
     <string name="repo_exists_enable">هذه المستودعات بالفعل موجودة، تأكد إن كنت ترغب في إعادة تمكينه.</string>

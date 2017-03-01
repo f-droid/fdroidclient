@@ -27,8 +27,6 @@
   <string name="cancel">ۋاز كەچ</string>
   <string name="tab_available_apps">ئىشلىتىشچان</string>
   <string name="tab_updates">يېڭىلانمىلار</string>
-  <string name="one_update_available">1 يېڭىلانما بار.</string>
-  <string name="many_updates_available">%d يېڭىلانما بار.</string>
   <string name="fdroid_updates_available">F-Droid يېڭىلانمىلىرى بار</string>
   <string name="repo_add_url">خەزىنە ئادرېسى</string>
   <string name="menu_update_repo">خەزىنە يېڭىلا</string>

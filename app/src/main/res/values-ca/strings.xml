@@ -44,8 +44,6 @@
   <string name="overwrite">Sobreescriu</string>
   <string name="tab_available_apps">Disponible</string>
   <string name="tab_updates">Actualitzacions</string>
-  <string name="one_update_available">Hi ha 1 actualització disponible.</string>
-  <string name="many_updates_available">Hi ha %d actualitzacions disponibles.</string>
   <string name="fdroid_updates_available">Hi ha actualitzacions disponibles de l\'F-Droid</string>
   <string name="bluetooth_activity_not_found">Trieu un mètode d\'enviament per Bluetooth!</string>
   <string name="send_via_bluetooth">Envia per Bluetooth</string>
@@ -181,7 +179,7 @@ tornar a habilitar el dipòsit per instal·lar aplicacions d\'aquest.</string>
     <string name="links">Enllaços</string>
 
     <string name="back">Torna</string>
-    <string name="update_notification_more">+%1$d més…</string>
+    <string name="notification_summary_more">+%1$d més…</string>
     <string name="pref_language">Idioma</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Graphics">Gràfics</string>
