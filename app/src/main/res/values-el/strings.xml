@@ -37,8 +37,6 @@
   <string name="overwrite">Αντικατάσταση</string>
   <string name="tab_available_apps">Διαθέσιμα</string>
   <string name="tab_updates">Ενημερώσεις</string>
-  <string name="one_update_available">1 διαθέσιμη ενημερώση.</string>
-  <string name="many_updates_available">%d διαθέσιμες ενημερώσεις.</string>
   <string name="fdroid_updates_available">Υπάρχουν ενημερώσεις του F-Droid</string>
   <string name="bluetooth_activity_not_found">Καμία μέθοδος αποστολής με Bluetooth δεν βρέθηκε, επιλέξετε μία!</string>
   <string name="choose_bt_send">Επιλέξτε τη μέθοδο αποστολής με Bluetooth</string>

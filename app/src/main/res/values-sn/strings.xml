@@ -73,8 +73,6 @@
     <string name="tab_updates">Zvekunatsa</string>
     <string name="tab_installed_apps_count">Zvavakirirwa (%d)</string>
     <string name="tab_updates_count">Zvekunatsa (%d)</string>
-    <string name="one_update_available">Chekunatsa 1 chiripo.</string>
-    <string name="many_updates_available">Zvekunatsa %d zviripo.</string>
     <string name="fdroid_updates_available">Zvekunatsa F-Droid zviripo</string>
     <string name="notification_summary_more">zvimwe +%1$d …</string>
     <string name="bluetooth_activity_not_found">Hapana mutowo wekutumira neBluetooth wawanikwa, sarudza imwe chete!</string>

@@ -38,8 +38,6 @@
   <string name="overwrite">覆盖</string>
   <string name="tab_available_apps">可安装</string>
   <string name="tab_updates">更新</string>
-  <string name="one_update_available">有 1 个可用的更新。</string>
-  <string name="many_updates_available">有 %d 个可用的更新。</string>
   <string name="fdroid_updates_available">可更新 F-Droid</string>
   <string name="bluetooth_activity_not_found">未找到蓝牙发送方式，请选择一个!</string>
   <string name="choose_bt_send">选择蓝牙发送方式</string>

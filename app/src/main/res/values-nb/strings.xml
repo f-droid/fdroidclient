@@ -45,8 +45,6 @@
   <string name="overwrite">Overskriv</string>
   <string name="tab_available_apps">Tilgjengelig</string>
   <string name="tab_updates">Oppdateringer</string>
-  <string name="one_update_available">1 oppdatering tilgjengelig.</string>
-  <string name="many_updates_available">%d oppdateringer tilgjengelig.</string>
   <string name="fdroid_updates_available">F-Droid: Oppdateringer tilgjengelig</string>
   <string name="bluetooth_activity_not_found">Ingen forsendelsesmåte for Blåtann funnet, velg en!</string>
   <string name="choose_bt_send">Velg forsendelsesmåte for Blåtann</string>

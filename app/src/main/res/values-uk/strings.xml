@@ -87,8 +87,6 @@
     <string name="enable">Увімкнути</string>
     <string name="add_key">Додати ключ</string>
     <string name="tab_installed_apps">Встановлено</string>
-    <string name="one_update_available">Одне оновлення доступно.</string>
-    <string name="many_updates_available">%d оновлень доступно.</string>
     <string name="fdroid_updates_available">F-Droid: доступні оновлення</string>
     <string name="notification_summary_more">+%1$d більше…</string>
     <string name="send_via_bluetooth">Надіслати через Bluetooth</string>

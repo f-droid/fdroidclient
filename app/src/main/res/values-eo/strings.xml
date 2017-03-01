@@ -28,8 +28,6 @@
   <string name="overwrite">Anstataŭigi</string>
   <string name="tab_available_apps">Disponeblaj</string>
   <string name="tab_updates">Ĝisdatigeblaj</string>
-  <string name="one_update_available">1 ĝisdatigo estas disponebla.</string>
-  <string name="many_updates_available">%d ĝisdatigoj estas disponeblaj.</string>
   <string name="fdroid_updates_available">F-Droidaj ĝisdatigoj disponeblaj</string>
   <string name="send_via_bluetooth">Sendi per Bludento</string>
   <string name="repo_add_url">Deponeja adreso</string>

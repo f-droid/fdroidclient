@@ -45,8 +45,6 @@
   <string name="overwrite">Skriv över</string>
   <string name="tab_available_apps">Tillgängliga</string>
   <string name="tab_updates">Uppdateringar</string>
-  <string name="one_update_available">1 uppdatering finns tillgänglig.</string>
-  <string name="many_updates_available">%d uppdateringar finns tillgängliga.</string>
   <string name="fdroid_updates_available">Uppdateringar för F-Droid tillgängliga</string>
   <string name="bluetooth_activity_not_found">Ingen metod för att kunna skicka med Bluetooth kunde hittas, välj en!</string>
   <string name="choose_bt_send">Välj en sändningsmetod för Bluetooth</string>

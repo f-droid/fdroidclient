@@ -262,8 +262,6 @@
     <string name="add_key">เพิ่มกุญแจเข้ารหัส</string>
     <string name="overwrite">เขียนทับ</string>
 
-    <string name="one_update_available">1 โปรแกรมมีอัพเดต</string>
-    <string name="many_updates_available">%d โปรแกรมมีอัพเดต</string>
     <string name="uninstall_system_summary">แสดงรายละเอียดสถานะส่วนขยายช่วยติดตั้ง และ/หรือทำการอัพเดต/ถอนการติดตั้งส่วนขยายนี้</string>
     <string name="choose_bt_send">เลือกวิธีการส่งต่อผ่านบลูทูธ</string>
     <string name="bluetooth_activity_not_found">ยังไม่ได้เลือกวิธีส่งต่อทางบลูทูธ, โปรดเลือกก่อน!</string>

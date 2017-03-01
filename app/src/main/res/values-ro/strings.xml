@@ -22,8 +22,6 @@
   <string name="enable">Activeaza</string>
   <string name="tab_available_apps">Disponibil</string>
   <string name="tab_updates">Actualizari</string>
-  <string name="one_update_available">O actualizare este disponibila.</string>
-  <string name="many_updates_available">%d actualizari sunt disponibile.</string>
   <string name="menu_about">Despre</string>
   <string name="menu_search">Cauta</string>
   <string name="menu_launch">Porneste</string>

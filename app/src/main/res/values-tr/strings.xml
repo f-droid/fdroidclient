@@ -45,8 +45,6 @@
   <string name="overwrite">Üzerine yaz</string>
   <string name="tab_available_apps">Mevcut</string>
   <string name="tab_updates">Güncellemeler</string>
-  <string name="one_update_available">1 güncelleme bulunmaktadır.</string>
-  <string name="many_updates_available">%d güncelleme bulunmaktadır.</string>
   <string name="fdroid_updates_available">F-Droid güncellemeleri bulunmaktadır</string>
   <string name="bluetooth_activity_not_found">Hiçbir Bluetooth gönderme yöntemi bulunamadı, birisini seçin!</string>
   <string name="choose_bt_send">Bluetooth gönderme yöntemi seç</string>

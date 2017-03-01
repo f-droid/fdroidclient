@@ -75,8 +75,6 @@
     <string name="tab_updates">Opdateringer</string>
     <string name="tab_installed_apps_count">Installeret (%d)</string>
     <string name="tab_updates_count">Opdateringer (%d)</string>
-    <string name="one_update_available">1 opdatering er tilgængelig.</string>
-    <string name="many_updates_available">%d opdateringer er tilgængelige.</string>
     <string name="fdroid_updates_available">F-Droid Opdateringer Tilgængelige</string>
     <string name="notification_summary_more">+%1$d flere…</string>
     <string name="bluetooth_activity_not_found">Ingen Bluetooth afsendelsesmetode fundet, vælg en!</string>

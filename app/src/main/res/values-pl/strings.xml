@@ -34,7 +34,6 @@
   <string name="overwrite">Nadpisz</string>
   <string name="tab_available_apps">Dostępne</string>
   <string name="tab_updates">Aktualizacje</string>
-  <string name="one_update_available">Dostępne jest 1 uaktualnienie.</string>
   <string name="fdroid_updates_available">Uaktualnienie F-Droid jest dostępne</string>
   <string name="send_via_bluetooth">Wyślij przez Bluetooth</string>
   <string name="repo_add_url">Adres repozytorium</string>
@@ -154,7 +153,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="links">Linki</string>
 
     <string name="back">Powrót</string>
-    <string name="many_updates_available">Liczba dostępnych aktualizacji: %d.</string>
     <string name="notification_summary_more">+%1$d więcej…</string>
     <string name="bluetooth_activity_not_found">Nie znaleziono metody do wysłania przez Bluetooth!</string>
     <string name="choose_bt_send">Wybierz metodę wysłania przez Bluetooth</string>

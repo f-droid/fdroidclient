@@ -45,8 +45,6 @@
   <string name="overwrite">Sobrescrever</string>
   <string name="tab_available_apps">Disponível</string>
   <string name="tab_updates">Atualizações</string>
-  <string name="one_update_available">1 atualização disponível.</string>
-  <string name="many_updates_available">%d atualizações disponíveis.</string>
   <string name="fdroid_updates_available">Atualizações do F-Droid disponíveis</string>
   <string name="bluetooth_activity_not_found">Nenhum método de envio por Bluetooth foi encontrado, escolha um!</string>
   <string name="choose_bt_send">Escolher o método de envio Bluetooth</string>

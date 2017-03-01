@@ -45,8 +45,6 @@
   <string name="overwrite">Sobrescribir</string>
   <string name="tab_available_apps">Disponible</string>
   <string name="tab_updates">Anovamientos</string>
-  <string name="one_update_available">Ta disponible 1 anovamientu.</string>
-  <string name="many_updates_available">Tán disponibles %d anovamientos.</string>
   <string name="fdroid_updates_available">Anovamientos de F-Droid disponibles</string>
   <string name="bluetooth_activity_not_found">Nun s\'alcontró dal métodu d\'unviu pente Bluetooth, ¡escueyi ún!</string>
   <string name="choose_bt_send">Escueyi\'l métodu d\'unvu pente Bluetooth</string>

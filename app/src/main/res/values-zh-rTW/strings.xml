@@ -64,8 +64,6 @@
     <string name="tab_updates">軟體更新</string>
     <string name="tab_installed_apps_count">已安裝 (%d)</string>
     <string name="tab_updates_count">軟體更新 (%d)</string>
-    <string name="one_update_available">有 1 個軟體更新。</string>
-    <string name="many_updates_available">有 %d 個軟體更新。</string>
     <string name="fdroid_updates_available">有可用的 F-Droid 更新</string>
     <string name="send_via_bluetooth">透過藍牙傳送</string>
 

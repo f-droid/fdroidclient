@@ -63,8 +63,6 @@
     <string name="tab_available_apps">Tersedia</string>
     <string name="tab_installed_apps">Terpasang</string>
     <string name="tab_updates">Pembaruan</string>
-    <string name="one_update_available">1 pembaruan tersedia.</string>
-    <string name="many_updates_available">%d pembaruan tersedia.</string>
     <string name="fdroid_updates_available">Tersedia Pembaruan F-Droid</string>
     <string name="bluetooth_activity_not_found">Metode pengiriman Bluetooth tidak ditemukan, pilih salah satu!</string>
     <string name="choose_bt_send">Pilih metode pengiriman Bluetooth</string>

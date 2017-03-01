@@ -29,8 +29,6 @@
   <string name="overwrite">Perrašyti</string>
   <string name="tab_available_apps">Prieinamos programos</string>
   <string name="tab_updates">Atnaujinimai</string>
-  <string name="one_update_available">Atsirado 1 atnaujinimas.</string>
-  <string name="many_updates_available">Galite įdiegti %d atnaujinimus.</string>
   <string name="send_via_bluetooth">Siųsti per Bluetooth</string>
   <string name="repo_add_url">Saugyklos adresas</string>
   <string name="menu_update_repo">Atnaujinti saugyklas</string>

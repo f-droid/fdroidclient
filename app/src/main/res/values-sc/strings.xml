@@ -45,8 +45,6 @@
   <string name="overwrite">Subraiscrie</string>
   <string name="tab_available_apps">Disponìbiles</string>
   <string name="tab_updates">Agiornamentos</string>
-  <string name="one_update_available">1 agiornamentu est disponìbile.</string>
-  <string name="many_updates_available">%d agiornamentos sunt disponìbiles.</string>
   <string name="fdroid_updates_available">Agiornamentos pro F-Droid disponìbiles</string>
   <string name="bluetooth_activity_not_found">Perunu mètodu de imbiu Bluetooth agatadu, issèberane unu!</string>
   <string name="choose_bt_send">Issèbera su mètodu de imbiu Bluetooth</string>
