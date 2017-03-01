@@ -8,6 +8,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.text.style.ReplacementSpan;
 
 import org.fdroid.fdroid.R;
@@ -118,7 +119,7 @@ public class CategorySpan extends ReplacementSpan {
         canvas.drawRoundRect(iconBackgroundRect, cornerRadius, cornerRadius, iconBackgroundPaint);
 
         // Category icon on top of the circular background which was just drawn.
-        Drawable icon = context.getResources().getDrawable(R.drawable.ic_category);
+        Drawable icon = ContextCompat.getDrawable(context, R.drawable.ic_category);
         icon.setBounds(iconPadding, iconPadding, iconPadding + iconSize, iconPadding + iconSize);
         icon.draw(canvas);
 
