@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/main_activity_screens"
+        android:background="@color/fdroid_blue"
         app:itemBackground="@color/fdroid_blue"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white" />
