@@ -138,12 +138,6 @@
 
             <!-- App URLs -->
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -407,7 +401,6 @@
             android:label="@string/app_details"
             android:exported="true"
             android:parentActivityName=".FDroid"
-            android:theme="@style/AppThemeLight.NoActionBar"
             android:configChanges="layoutDirection|locale" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -506,6 +499,17 @@
         <service
             android:name=".data.InstalledAppProviderService"
             android:exported="false" />
+
+        <activity android:name=".views.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".views.apps.AppListActivity" />
+
     </application>
 
 </manifest>

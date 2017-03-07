@@ -178,7 +178,9 @@ public class AvailableAppsFragment extends AppListFragment implements
             return AppProvider.getRecentlyUpdatedUri();
         }
         if (currentCategory.equals(CategoryProvider.Helper.getCategoryWhatsNew(getActivity()))) {
-            return AppProvider.getNewlyAddedUri();
+            // Removed this feature in the new UI. this fragment will be gone soon so not implementing it again.
+            // return AppProvider.getNewlyAddedUri();
+            return AppProvider.getRecentlyUpdatedUri();
         }
         return AppProvider.getCategoryUri(currentCategory);
     }

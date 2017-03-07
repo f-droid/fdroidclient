@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="AppBaseThemeDark" parent="Theme.AppCompat">
+    <style name="AppBaseThemeDark" parent="Theme.AppCompat.NoActionBar">
         <!-- backward-compatibility theme options go here -->
 
         <item name="colorPrimary">@color/fdroid_blue_dark</item>
@@ -10,9 +10,11 @@
         <item name="android:textColorLink">@color/fdroid_green</item>
         <item name="alertDialogTheme">@style/AlertDialogThemeDark</item>
         <item name="android:textViewStyle">@style/TextViewStyle</item>
+        <item name="actionBarTheme">@style/AppThemeLight.Toolbar</item>
+        <item name="actionBarPopupTheme">@style/AppThemeLight.Toolbar</item>
     </style>
 
-    <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- backward-compatibility theme options go here -->
 
         <item name="colorPrimary">@color/fdroid_blue</item>
@@ -21,6 +23,8 @@
         <item name="android:textColorLink">@color/fdroid_green</item>
         <item name="alertDialogTheme">@style/AlertDialogThemeLight</item>
         <item name="android:textViewStyle">@style/TextViewStyle</item>
+        <item name="actionBarTheme">@style/AppThemeLight.Toolbar</item>
+        <item name="actionBarPopupTheme">@style/AppThemeLight.Toolbar</item>
     </style>
 
     <style name="AppThemeDark" parent="AppBaseThemeDark">
@@ -60,6 +64,10 @@
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppThemeLight.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">@color/fdroid_blue</item>
     </style>
 
     <style name="TextViewStyle" parent="android:Widget.TextView">

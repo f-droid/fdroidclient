@@ -16,7 +16,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -47,9 +46,6 @@ import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
 import org.fdroid.fdroid.views.ShareChooserDialog;
 
 public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog.ShareChooserDialogListener, AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks {
-    static {
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-    }
 
     private static final String TAG = "AppDetails2";
 

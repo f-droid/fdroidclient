@@ -114,6 +114,9 @@ public class AppProviderTest extends FDroidProviderTest {
         App notInstalled = AppProvider.Helper.findSpecificApp(r, "not installed", 1, Cols.ALL);
         assertFalse(notInstalled.canAndWantToUpdate(context));
 
+        assertResultCount(contentResolver, 2, AppProvider.getCanUpdateUri(), PROJ);
+        assertResultCount(contentResolver, 7, AppProvider.getInstalledUri(), PROJ);
+
         App installedOnlyOneVersionAvailable   = AppProvider.Helper.findSpecificApp(r, "installed, only one version available", 1, Cols.ALL);
         App installedAlreadyLatestNoIgnore     = AppProvider.Helper.findSpecificApp(r, "installed, already latest, no ignore", 1, Cols.ALL);
         App installedAlreadyLatestIgnoreAll    = AppProvider.Helper.findSpecificApp(r, "installed, already latest, ignore all", 1, Cols.ALL);
@@ -206,12 +209,14 @@ public class AppProviderTest extends FDroidProviderTest {
         insertApps(100);
 
         assertResultCount(contentResolver, 100, AppProvider.getContentUri(), PROJ);
+        assertResultCount(contentResolver, 0, AppProvider.getCanUpdateUri(), PROJ);
         assertResultCount(contentResolver, 0, AppProvider.getInstalledUri(), PROJ);
 
         for (int i = 10; i < 20; i++) {
             InstalledAppTestUtils.install(context, "com.example.test." + i, i, "v1");
         }
 
+        assertResultCount(contentResolver, 0, AppProvider.getCanUpdateUri(), PROJ);
         assertResultCount(contentResolver, 10, AppProvider.getInstalledUri(), PROJ);
     }
 

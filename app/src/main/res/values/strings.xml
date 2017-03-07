@@ -63,8 +63,16 @@
     <string name="app_not_installed">Not Installed</string>
     <string name="app_inst_known_source">Installed (from %s)</string>
     <string name="app_inst_unknown_source">Installed (from unknown source)</string>
+    <string name="app_version_x_available">Version %1$s available</string>
+    <string name="app_version_x_installed">Version %1$s</string>
 
     <string name="added_on">Added on %s</string>
+
+    <string name="my_apps_btn_update_all">Update all</string>
+    <plurals name="my_apps_header_number_of_updateable">
+        <item quantity="one">%1$d Update</item>
+        <item quantity="other">%1$d Updates</item>
+    </plurals>
 
     <string name="ok">OK</string>
 
@@ -82,6 +90,7 @@
     <string name="enable">Enable</string>
     <string name="add_key">Add Key</string>
     <string name="overwrite">Overwrite</string>
+    <string name="clear_search">Clear search</string>
 
     <string name="tab_available_apps">Available</string>
     <string name="tab_installed_apps">Installed</string>
@@ -129,6 +138,11 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
+
+    <string name="main_menu__latest_apps">Latest</string>
+    <string name="main_menu__categories">Categories</string>
+    <string name="main_menu__swap_nearby">Nearby</string>
+    <string name="main_menu__my_apps">My Apps</string>
 
 
     <string name="details_installed">Version %s installed</string>
@@ -263,6 +277,13 @@
     <string name="category_Theming">Theming</string>
     <string name="category_Time">Time</string>
     <string name="category_Writing">Writing</string>
+
+    <plurals name="button_view_all_apps_in_category">
+        <!-- Even though these are the same as eachother, Android docs suggest always specifying at
+             least "one" and "other": https://developer.android.com/guide/topics/resources/string-resource.html#Plurals -->
+        <item quantity="one">View all %d</item>
+        <item quantity="other">View all %d</item>
+    </plurals>
 
     <string name="empty_installed_app_list">No apps installed.\n\nThere are apps on your device, but they are not available from F-Droid. This could be because you need to update your repositories, or the repositories genuinely don\'t have your apps available.</string>
     <string name="empty_available_app_list">No apps in this category.\n\nTry selecting a different category or updating your repositories to get a fresh list of apps.</string>
@@ -423,4 +444,5 @@
     <string name="notification_action_cancel">Cancel</string>
     <string name="notification_action_install">Install</string>
 
+    <string name="category">Category</string>
 </resources>

@@ -78,4 +78,8 @@ public class QuerySelection {
         return new QuerySelection(s, a);
     }
 
+    public QuerySelection not(QuerySelection querySelection) {
+        String where = " NOT (" + querySelection.getSelection() + ") ";
+        return add(where, querySelection.getArgs());
+    }
 }

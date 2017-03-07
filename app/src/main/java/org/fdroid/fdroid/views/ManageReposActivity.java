@@ -29,17 +29,15 @@ import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -47,9 +45,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -74,7 +72,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Locale;
 
-public class ManageReposActivity extends ActionBarActivity {
+public class ManageReposActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
     private static final String TAG = "ManageReposActivity";
 
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
@@ -85,7 +83,7 @@ public class ManageReposActivity extends ActionBarActivity {
         IS_SWAP
     }
 
-    private RepoListFragment listFragment;
+    private Toolbar toolbar;
 
     /**
      * True if activity started with an intent such as from QR code. False if
@@ -99,31 +97,23 @@ public class ManageReposActivity extends ActionBarActivity {
         ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
 
-        FragmentManager fm = getSupportFragmentManager();
-        if (fm.findFragmentById(android.R.id.content) == null) {
-            /*
-             * Need to set a dummy view (which will get overridden by the
-             * fragment manager below) so that we can call setContentView().
-             * This is a work around for a (bug?) thing in 3.0, 3.1 which
-             * requires setContentView to be invoked before the actionbar is
-             * played with:
-             * http://blog.perpetumdesign.com/2011/08/strange-case-of
-             * -dr-action-and-mr-bar.html
-             */
-            if (Build.VERSION.SDK_INT >= 11 && Build.VERSION.SDK_INT <= 13) {
-                setContentView(new LinearLayout(this));
-            }
+        setContentView(R.layout.repo_list_activity);
 
-            listFragment = new RepoListFragment();
-
-            fm.beginTransaction()
-                    .add(android.R.id.content, listFragment)
-                    .commit();
-        }
-
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // title is "Repositories" here, but "F-Droid" in VIEW Intent chooser
-        getSupportActionBar().setTitle(R.string.menu_manage);
+
+        final ListView repoList = (ListView) findViewById(R.id.list);
+        repoAdapter = RepoAdapter.create(this, null, CursorAdapterCompat.FLAG_AUTO_REQUERY);
+        repoAdapter.setEnabledListener(this);
+        repoList.setAdapter(repoAdapter);
+        repoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Repo repo = new Repo((Cursor) repoList.getItemAtPosition(position));
+                editRepo(repo);
+            }
+        });
     }
 
     @Override
@@ -133,6 +123,9 @@ public class ManageReposActivity extends ActionBarActivity {
 
         /* let's see if someone is trying to send us a new repo */
         addRepoFromIntent(getIntent());
+
+        // Starts a new or restarts an existing Loader in this manager
+        getSupportLoaderManager().restartLoader(0, null, this);
     }
 
     @Override
@@ -149,7 +142,7 @@ public class ManageReposActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.manage_repos, menu);
+        toolbar.inflateMenu(R.menu.manage_repos);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -649,7 +642,7 @@ public class ManageReposActivity extends ActionBarActivity {
             values.put(RepoTable.Cols.IN_USE, 1);
             values.put(RepoTable.Cols.FINGERPRINT, fingerprint);
             RepoProvider.Helper.update(context, repo, values);
-            listFragment.notifyDataSetChanged();
+            notifyDataSetChanged();
             finishedAddingRepo();
         }
 
@@ -703,112 +696,78 @@ public class ManageReposActivity extends ActionBarActivity {
         }
     }
 
-    public static class RepoListFragment extends ListFragment
-            implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
+    private RepoAdapter repoAdapter;
 
-        private RepoAdapter repoAdapter;
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        Uri uri = RepoProvider.allExceptSwapUri();
+        final String[] projection = {
+                RepoTable.Cols._ID,
+                RepoTable.Cols.NAME,
+                RepoTable.Cols.SIGNING_CERT,
+                RepoTable.Cols.FINGERPRINT,
+                RepoTable.Cols.IN_USE,
+        };
+        return new CursorLoader(this, uri, projection, null, null, null);
+    }
 
-        @Override
-        public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-            Uri uri = RepoProvider.allExceptSwapUri();
-            Utils.debugLog(TAG, "Creating repo loader '" + uri + "'.");
-            final String[] projection = {
-                    RepoTable.Cols._ID,
-                    RepoTable.Cols.NAME,
-                    RepoTable.Cols.SIGNING_CERT,
-                    RepoTable.Cols.FINGERPRINT,
-                    RepoTable.Cols.IN_USE,
-            };
-            return new CursorLoader(getActivity(), uri, projection, null, null, null);
-        }
+    @Override
+    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+        repoAdapter.swapCursor(cursor);
+    }
 
-        @Override
-        public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-            repoAdapter.swapCursor(cursor);
-        }
+    @Override
+    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+        repoAdapter.swapCursor(null);
+    }
 
-        @Override
-        public void onLoaderReset(Loader<Cursor> cursorLoader) {
-            repoAdapter.swapCursor(null);
-        }
+    /**
+     * NOTE: If somebody toggles a repo off then on again, it will have
+     * removed all apps from the index when it was toggled off, so when it
+     * is toggled on again, then it will require a updateViews. Previously, I
+     * toyed with the idea of remembering whether they had toggled on or
+     * off, and then only actually performing the function when the activity
+     * stopped, but I think that will be problematic. What about when they
+     * press the home button, or edit a repos details? It will start to
+     * become somewhat-random as to when the actual enabling, disabling is
+     * performed. So now, it just does the disable as soon as the user
+     * clicks "Off" and then removes the apps. To compensate for the removal
+     * of apps from index, it notifies the user via a toast that the apps
+     * have been removed. Also, as before, it will still prompt the user to
+     * update the repos if you toggled on on.
+     */
+    @Override
+    public void onSetEnabled(Repo repo, boolean isEnabled) {
+        if (repo.inuse != isEnabled) {
+            ContentValues values = new ContentValues(1);
+            values.put(RepoTable.Cols.IN_USE, isEnabled ? 1 : 0);
+            RepoProvider.Helper.update(this, repo, values);
 
-        /**
-         * NOTE: If somebody toggles a repo off then on again, it will have
-         * removed all apps from the index when it was toggled off, so when it
-         * is toggled on again, then it will require a updateViews. Previously, I
-         * toyed with the idea of remembering whether they had toggled on or
-         * off, and then only actually performing the function when the activity
-         * stopped, but I think that will be problematic. What about when they
-         * press the home button, or edit a repos details? It will start to
-         * become somewhat-random as to when the actual enabling, disabling is
-         * performed. So now, it just does the disable as soon as the user
-         * clicks "Off" and then removes the apps. To compensate for the removal
-         * of apps from index, it notifies the user via a toast that the apps
-         * have been removed. Also, as before, it will still prompt the user to
-         * update the repos if you toggled on on.
-         */
-        @Override
-        public void onSetEnabled(Repo repo, boolean isEnabled) {
-            if (repo.inuse != isEnabled) {
-                ContentValues values = new ContentValues(1);
-                values.put(RepoTable.Cols.IN_USE, isEnabled ? 1 : 0);
-                RepoProvider.Helper.update(getActivity(), repo, values);
-
-                if (isEnabled) {
-                    UpdateService.updateNow(getActivity());
-                } else {
-                    RepoProvider.Helper.purgeApps(getActivity(), repo);
-                    String notification = getString(R.string.repo_disabled_notification, repo.name);
-                    Toast.makeText(getActivity(), notification, Toast.LENGTH_LONG).show();
-                }
+            if (isEnabled) {
+                UpdateService.updateNow(this);
+            } else {
+                RepoProvider.Helper.purgeApps(this, repo);
+                String notification = getString(R.string.repo_disabled_notification, repo.name);
+                Toast.makeText(this, notification, Toast.LENGTH_LONG).show();
             }
         }
+    }
 
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+    public static final int SHOW_REPO_DETAILS = 1;
 
-            setRetainInstance(true);
-            setHasOptionsMenu(true);
+    public void editRepo(Repo repo) {
+        Intent intent = new Intent(this, RepoDetailsActivity.class);
+        intent.putExtra(RepoDetailsActivity.ARG_REPO_ID, repo.getId());
+        startActivityForResult(intent, SHOW_REPO_DETAILS);
+    }
 
-            repoAdapter = RepoAdapter.create(getActivity(), null, CursorAdapterCompat.FLAG_AUTO_REQUERY);
-            repoAdapter.setEnabledListener(this);
-            setListAdapter(repoAdapter);
-        }
-
-        @Override
-        public void onResume() {
-            super.onResume();
-
-            // Starts a new or restarts an existing Loader in this manager
-            getLoaderManager().restartLoader(0, null, this);
-        }
-
-        @Override
-        public void onListItemClick(ListView l, View v, int position, long id) {
-
-            super.onListItemClick(l, v, position, id);
-
-            Repo repo = new Repo((Cursor) getListView().getItemAtPosition(position));
-            editRepo(repo);
-        }
-
-        public static final int SHOW_REPO_DETAILS = 1;
-
-        public void editRepo(Repo repo) {
-            Intent intent = new Intent(getActivity(), RepoDetailsActivity.class);
-            intent.putExtra(RepoDetailsActivity.ARG_REPO_ID, repo.getId());
-            startActivityForResult(intent, SHOW_REPO_DETAILS);
-        }
-
-        /**
-         * This is necessary because even though the list will listen to content changes
-         * in the RepoProvider, it doesn't update the list items if they are changed (but not
-         * added or removed. The example which made this necessary was enabling an existing
-         * repo, and wanting the switch to be changed to on).
-         */
-        private void notifyDataSetChanged() {
-            getLoaderManager().restartLoader(0, null, this);
-        }
+    /**
+     * This is necessary because even though the list will listen to content changes
+     * in the RepoProvider, it doesn't update the list items if they are changed (but not
+     * added or removed. The example which made this necessary was enabling an existing
+     * repo, and wanting the switch to be changed to on).
+     */
+    private void notifyDataSetChanged() {
+        getSupportLoaderManager().restartLoader(0, null, this);
     }
 }

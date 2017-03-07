@@ -1,102 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/repoView"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:title="@string/repo_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="?attr/listPreferredItemPaddingLeft"
-        android:paddingStart="?attr/listPreferredItemPaddingLeft"
-        android:paddingRight="?attr/listPreferredItemPaddingRight"
-        android:paddingEnd="?attr/listPreferredItemPaddingRight"
-        android:orientation="vertical">
+        app:theme="?attr/actionBarTheme"
+        app:popupTheme="?attr/actionBarPopupTheme" />
 
-        <!-- URL of this repo -->
-        <TextView
-            android:text="@string/repo_url"
-            style="@style/CaptionText" />
-        <TextView
-            android:id="@+id/input_repo_url"
-            style="@style/BodyText" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <!-- Name of this repo -->
-        <TextView
-            android:id="@+id/label_repo_name"
-            android:text="@string/repo_name"
-            style="@style/CaptionText" />
-        <TextView
-            android:id="@+id/text_repo_name"
-            style="@style/BodyText" />
-
-        <!-- Description - as pulled from the index file during last update... -->
-        <TextView
-            android:id="@+id/label_description"
-            android:text="@string/repo_description"
-            style="@style/CaptionText" />
-        <TextView
-            android:id="@+id/text_description"
-            style="@style/BodyText" />
-
-        <!-- Number of apps belonging to this repo -->
-        <TextView
-            android:id="@+id/label_num_apps"
-            android:text="@string/repo_num_apps"
-            style="@style/CaptionText" />
-        <TextView
-            android:id="@+id/text_num_apps"
-            style="@style/BodyText" />
-
-        <!-- The last time this repo was updated -->
-        <TextView
-            android:id="@+id/label_last_update"
-            android:text="@string/repo_last_update"
-            style="@style/CaptionText" />
-        <TextView
-            android:id="@+id/text_last_update"
-            style="@style/BodyText" />
-
-        <!-- The credentials used to access this repo (optional) -->
-        <TextView
-            android:id="@+id/label_username"
-            android:text="@string/login_name"
-            style="@style/CaptionText" />
-        <TextView
-            android:id="@+id/text_username"
-            style="@style/BodyText" />
-        <Button
-            android:id="@+id/button_edit_credentials"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/repo_edit_credentials"
-            android:onClick="showChangePasswordDialog" />
-
-        <!-- Signature (or "unsigned" if none) -->
-        <TextView
-            android:id="@+id/label_repo_fingerprint"
-            android:text="@string/repo_fingerprint"
-            style="@style/CaptionText" />
-        <TextView
-            android:id="@+id/text_repo_fingerprint"
-            android:typeface="monospace"
-            style="@style/BodyText" />
-        <TextView
-            android:id="@+id/text_repo_fingerprint_description"
-            style="@style/BodyText" />
-
-        <TextView
-            android:id="@+id/text_not_yet_updated"
-            android:text="@string/repo_not_yet_updated"
-            style="@style/BodyText" />
-
-        <ImageView
-            android:id="@+id/qr_code"
-            android:src="@drawable/swap_qr_example"
+        <LinearLayout
+            android:id="@+id/repoView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="16dp"/>
+            android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+            android:paddingStart="?attr/listPreferredItemPaddingLeft"
+            android:paddingRight="?attr/listPreferredItemPaddingRight"
+            android:paddingEnd="?attr/listPreferredItemPaddingRight"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <!-- URL of this repo -->
+            <TextView
+                android:text="@string/repo_url"
+                style="@style/CaptionText" />
+            <TextView
+                android:id="@+id/input_repo_url"
+                style="@style/BodyText" />
 
-</ScrollView>
+            <!-- Name of this repo -->
+            <TextView
+                android:id="@+id/label_repo_name"
+                android:text="@string/repo_name"
+                style="@style/CaptionText" />
+            <TextView
+                android:id="@+id/text_repo_name"
+                style="@style/BodyText" />
+
+            <!-- Description - as pulled from the index file during last update... -->
+            <TextView
+                android:id="@+id/label_description"
+                android:text="@string/repo_description"
+                style="@style/CaptionText" />
+            <TextView
+                android:id="@+id/text_description"
+                style="@style/BodyText" />
+
+            <!-- Number of apps belonging to this repo -->
+            <TextView
+                android:id="@+id/label_num_apps"
+                android:text="@string/repo_num_apps"
+                style="@style/CaptionText" />
+            <TextView
+                android:id="@+id/text_num_apps"
+                style="@style/BodyText" />
+
+            <!-- The last time this repo was updated -->
+            <TextView
+                android:id="@+id/label_last_update"
+                android:text="@string/repo_last_update"
+                style="@style/CaptionText" />
+            <TextView
+                android:id="@+id/text_last_update"
+                style="@style/BodyText" />
+
+            <!-- The credentials used to access this repo (optional) -->
+            <TextView
+                android:id="@+id/label_username"
+                android:text="@string/login_name"
+                style="@style/CaptionText" />
+            <TextView
+                android:id="@+id/text_username"
+                style="@style/BodyText" />
+            <Button
+                android:id="@+id/button_edit_credentials"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/repo_edit_credentials"
+                android:onClick="showChangePasswordDialog" />
+
+            <!-- Signature (or "unsigned" if none) -->
+            <TextView
+                android:id="@+id/label_repo_fingerprint"
+                android:text="@string/repo_fingerprint"
+                style="@style/CaptionText" />
+            <TextView
+                android:id="@+id/text_repo_fingerprint"
+                android:typeface="monospace"
+                style="@style/BodyText" />
+            <TextView
+                android:id="@+id/text_repo_fingerprint_description"
+                style="@style/BodyText" />
+
+            <TextView
+                android:id="@+id/text_not_yet_updated"
+                android:text="@string/repo_not_yet_updated"
+                style="@style/BodyText" />
+
+            <ImageView
+                android:id="@+id/qr_code"
+                android:src="@drawable/swap_qr_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
