@@ -790,7 +790,11 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             case RECENTLY_UPDATED:
-                sortOrder = getTableName() + "." + Cols.LAST_UPDATED + " DESC";
+                String table = getTableName();
+                String isNew = table + "." + Cols.LAST_UPDATED + " <= " + table + "." + Cols.ADDED + " DESC";
+                String lastUpdated = table + "." + Cols.LAST_UPDATED + " DESC";
+                sortOrder = lastUpdated + ", " + isNew;
+
                 selection = selection.add(queryRecentlyUpdated());
                 includeSwap = false;
                 break;

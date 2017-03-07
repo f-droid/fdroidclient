@@ -66,6 +66,7 @@
     <string name="app_version_x_available">Version %1$s available</string>
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="app_recommended_version_installed">Version %1$s (Recommended)</string>
+    <string name="app__newly_added">New</string>
 
     <string name="installed_apps__activity_title">Installed Apps</string>
     <string name="installed_app__updates_ignored">Updates ignored</string>

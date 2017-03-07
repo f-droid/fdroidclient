@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/app__newly_added"
+    android:textSize="12sp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:paddingStart="10dp"
+    android:paddingLeft="10dp"
+    android:paddingEnd="10dp"
+    android:paddingRight="10dp"
+    android:textColor="@color/fdroid_blue"
+    android:background="@drawable/app_tag_new_background"
+    />
