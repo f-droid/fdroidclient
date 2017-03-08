@@ -150,7 +150,7 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
 
     @Override
     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-        if (featuredImage != null) {
+        if (featuredImage != null && loadedImage != null) {
             new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
                 @Override
                 public void onGenerated(Palette palette) {

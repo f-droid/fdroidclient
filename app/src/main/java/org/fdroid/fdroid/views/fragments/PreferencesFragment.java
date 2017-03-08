@@ -227,7 +227,9 @@ public class PreferencesFragment extends PreferenceFragment
         // way to easily install from here.
         if (Build.VERSION.SDK_INT > 19 && !installed) {
             PreferenceCategory other = (PreferenceCategory) findPreference("pref_category_other");
-            other.removePreference(pref);
+            if (pref != null) {
+                other.removePreference(pref);
+            }
         } else {
             pref.setEnabled(installed);
             pref.setDefaultValue(installed);
