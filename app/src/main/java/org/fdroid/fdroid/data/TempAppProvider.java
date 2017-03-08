@@ -153,6 +153,11 @@ public class TempAppProvider extends AppProvider {
             throw new UnsupportedOperationException("Update not supported for " + uri + ".");
         }
 
+        if (values.containsKey(Cols.DESCRIPTION) && values.getAsString(Cols.DESCRIPTION) == null) {
+            // the database does not let a description be set as null
+            values.put(Cols.DESCRIPTION, "");
+        }
+
         List<String> pathParts = uri.getPathSegments();
         String packageName = pathParts.get(2);
         long repoId = Long.parseLong(pathParts.get(1));
