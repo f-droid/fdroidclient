@@ -62,7 +62,7 @@ public class WifiStateChangeService extends IntentService {
         }
         Utils.debugLog(TAG, "WiFi change service started, clearing info about wifi state until we have figured it out again.");
         NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
-        wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         int wifiState = wifiManager.getWifiState();
         if (ni == null || ni.isConnected()) {
             Utils.debugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));

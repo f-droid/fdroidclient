@@ -672,7 +672,7 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
     private void checkIfNewRepoOnSameWifi(NewRepoConfig newRepo) {
         // if this is a local repo, check we're on the same wifi
         if (!TextUtils.isEmpty(newRepo.getBssid())) {
-            WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+            WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             String bssid = wifiInfo.getBSSID();
             if (TextUtils.isEmpty(bssid)) { /* not all devices have wifi */
