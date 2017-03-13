@@ -19,8 +19,7 @@ import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowContentResolver;
 
-// TODO: Use sdk=24 when Robolectric supports this
-@Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
+@Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)
 public class DatabaseMigration {
 

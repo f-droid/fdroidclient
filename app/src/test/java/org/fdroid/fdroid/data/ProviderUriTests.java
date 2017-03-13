@@ -20,8 +20,7 @@ import java.util.List;
 import static org.fdroid.fdroid.Assert.assertInvalidUri;
 import static org.fdroid.fdroid.Assert.assertValidUri;
 
-// TODO: Use sdk=24 when Robolectric supports this
-@Config(constants = BuildConfig.class, sdk = 23)
+@Config(constants = BuildConfig.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)
 public class ProviderUriTests {
 

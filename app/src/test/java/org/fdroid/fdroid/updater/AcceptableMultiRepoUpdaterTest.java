@@ -20,8 +20,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-// TODO: Use sdk=24 when Robolectric supports this
-@Config(constants = BuildConfig.class, sdk = 23)
+@Config(constants = BuildConfig.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)
 public class AcceptableMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     private static final String TAG = "AcceptableMultiRepoTest";

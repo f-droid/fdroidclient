@@ -28,8 +28,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-// TODO: Use sdk=24 when Robolectric supports this
-@Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
+@Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)
 public class AppProviderTest extends FDroidProviderTest {
 

@@ -23,8 +23,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 
-// TODO: Use sdk=24 when Robolectric supports this
-@Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
+@Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)
 public class InstalledAppProviderTest extends FDroidProviderTest {
 
