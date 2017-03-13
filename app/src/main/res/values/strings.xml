@@ -67,17 +67,22 @@
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="app_recommended_version_installed">Version %1$s (Recommended)</string>
     <string name="app__newly_added">New</string>
+    <string name="added_on">Added on %s</string>
 
     <string name="installed_apps__activity_title">Installed Apps</string>
     <string name="installed_app__updates_ignored">Updates ignored</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Updates ignored for Version %1$s</string>
+    <!-- The inline download button shown in the "Updates" screen only uses an icon and so requires
+    some descriptive text for the TTS engine -->
+    <string name="updates__tts__download_app">Download</string>
+    <string name="updates__tts__download_updates_for_all_apps">Download all updates</string>
 
-    <string name="added_on">Added on %s</string>
+    <string name="updates__hide_updateable_apps">Hide apps</string>
+    <string name="updates__show_updateable_apps">Show apps</string>
 
-    <string name="my_apps_btn_update_all">Update all</string>
-    <plurals name="my_apps_header_number_of_updateable">
-        <item quantity="one">%1$d Update</item>
-        <item quantity="other">%1$d Updates</item>
+    <plurals name="updates__download_updates_for_apps">
+        <item quantity="one">Download update for %1$d app.</item>
+        <item quantity="other">Download updates for %1$d apps.</item>
     </plurals>
 
     <string name="ok">OK</string>

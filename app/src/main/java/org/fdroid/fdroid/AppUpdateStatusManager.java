@@ -63,6 +63,13 @@ public final class AppUpdateStatusManager {
 
     public static final String EXTRA_APK_URL = "urlstring";
 
+    public static final String EXTRA_REASON_FOR_CHANGE = "reason";
+
+    public static final String REASON_READY_TO_INSTALL = "readytoinstall";
+    public static final String REASON_UPDATES_AVAILABLE = "updatesavailable";
+    public static final String REASON_CLEAR_ALL_UPDATES = "clearallupdates";
+    public static final String REASON_CLEAR_ALL_INSTALLED = "clearallinstalled";
+
     /**
      * If this is present and true, then the broadcast has been sent in response to the {@link AppUpdateStatus#status}
      * changing. In comparison, if it is just the download progress of an app then this should not be true.
@@ -174,9 +181,11 @@ public final class AppUpdateStatusManager {
         notifyAdd(entry);
     }
 
-    private void notifyChange() {
+    private void notifyChange(String reason) {
         if (!isBatchUpdating) {
-            localBroadcastManager.sendBroadcast(new Intent(BROADCAST_APPSTATUS_LIST_CHANGED));
+            Intent intent = new Intent(BROADCAST_APPSTATUS_LIST_CHANGED);
+            intent.putExtra(EXTRA_REASON_FOR_CHANGE, reason);
+            localBroadcastManager.sendBroadcast(intent);
         }
     }
 
@@ -220,7 +229,7 @@ public final class AppUpdateStatusManager {
         for (Apk apk : apksToUpdate) {
             addApk(apk, status, null);
         }
-        endBatchUpdates();
+        endBatchUpdates(status);
     }
 
     /**
@@ -318,10 +327,17 @@ public final class AppUpdateStatusManager {
         }
     }
 
-    private void endBatchUpdates() {
+    private void endBatchUpdates(Status status) {
         synchronized (appMapping) {
             isBatchUpdating = false;
-            notifyChange();
+
+            String reason = null;
+            if (status == Status.ReadyToInstall) {
+                reason = REASON_READY_TO_INSTALL;
+            } else if (status == Status.UpdateAvailable) {
+                reason = REASON_UPDATES_AVAILABLE;
+            }
+            notifyChange(reason);
         }
     }
 
@@ -333,7 +349,7 @@ public final class AppUpdateStatusManager {
                     it.remove();
                 }
             }
-            notifyChange();
+            notifyChange(REASON_CLEAR_ALL_UPDATES);
         }
     }
 
@@ -345,7 +361,7 @@ public final class AppUpdateStatusManager {
                     it.remove();
                 }
             }
-            notifyChange();
+            notifyChange(REASON_CLEAR_ALL_INSTALLED);
         }
     }
 

@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.fragments.PreferencesFragment;
-import org.fdroid.fdroid.views.myapps.MyAppsViewBinder;
+import org.fdroid.fdroid.views.updates.UpdatesViewBinder;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 /**
@@ -38,10 +38,10 @@ class MainViewController extends RecyclerView.ViewHolder {
     }
 
     /**
-     * @see MyAppsViewBinder
+     * @see UpdatesViewBinder
      */
     public void bindUpdates() {
-        new MyAppsViewBinder(activity, frame);
+        new UpdatesViewBinder(activity, frame);
     }
 
     /**
