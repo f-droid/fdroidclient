@@ -4,26 +4,25 @@ import android.app.Application;
 
 import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.TestUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowContentResolver;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
-// TODO: Use sdk=24 when Robolectric supports this
-@Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
-@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
+@RunWith(RobolectricTestRunner.class)
 public class AppPrefsProviderTest extends FDroidProviderTest {
 
     @Before
     public void setup() {
-        ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
+        TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }
 
     @SuppressWarnings({"PMD.EqualsNull", "EqualsWithItself", "EqualsBetweenInconvertibleTypes", "ObjectEqualsNull"})

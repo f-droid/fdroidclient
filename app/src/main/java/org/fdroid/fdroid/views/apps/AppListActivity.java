@@ -11,8 +11,12 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
@@ -21,6 +25,7 @@ import org.fdroid.fdroid.data.Schema;
 public class AppListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, CategoryTextWatcher.SearchTermsChangedListener {
 
     public static final String EXTRA_CATEGORY = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY";
+    public static final String EXTRA_SEARCH_TERMS = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
     private RecyclerView appView;
     private AppListAdapter appAdapter;
     private String category;
@@ -35,6 +40,21 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
         searchInput = (EditText) findViewById(R.id.search);
         searchInput.addTextChangedListener(new CategoryTextWatcher(this, searchInput, this));
+        searchInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    // Hide the keyboard (http://stackoverflow.com/a/1109108 (when pressing search)
+                    InputMethodManager inputManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(searchInput.getWindowToken(), 0);
+
+                    // Change focus from the search input to the app list.
+                    appView.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         View backButton = findViewById(R.id.back);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -66,8 +86,9 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
         Intent intent = getIntent();
         category = intent.hasExtra(EXTRA_CATEGORY) ? intent.getStringExtra(EXTRA_CATEGORY) : null;
+        searchTerms = intent.hasExtra(EXTRA_SEARCH_TERMS) ? intent.getStringExtra(EXTRA_SEARCH_TERMS) : null;
 
-        searchInput.setText(getSearchText(category, null));
+        searchInput.setText(getSearchText(category, searchTerms));
         searchInput.setSelection(searchInput.getText().length());
 
         if (category != null) {

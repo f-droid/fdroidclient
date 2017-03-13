@@ -1,7 +1,9 @@
 package org.fdroid.fdroid.views.main;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -14,6 +16,7 @@ import android.widget.FrameLayout;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.CategoryProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.categories.CategoryAdapter;
 
 /**
@@ -28,7 +31,7 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
     private final CategoryAdapter categoryAdapter;
     private final AppCompatActivity activity;
 
-    CategoriesViewBinder(AppCompatActivity activity, FrameLayout parent) {
+    CategoriesViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
 
         View categoriesView = activity.getLayoutInflater().inflate(R.layout.main_tab_categories, parent, true);
@@ -39,6 +42,14 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         categoriesList.setHasFixedSize(true);
         categoriesList.setLayoutManager(new LinearLayoutManager(activity));
         categoriesList.setAdapter(categoryAdapter);
+
+        FloatingActionButton searchFab = (FloatingActionButton) categoriesView.findViewById(R.id.btn_search);
+        searchFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.startActivity(new Intent(activity, AppListActivity.class));
+            }
+        });
 
         activity.getSupportLoaderManager().initLoader(LOADER_ID, null, this);
     }

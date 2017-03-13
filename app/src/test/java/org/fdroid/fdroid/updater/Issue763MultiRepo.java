@@ -12,16 +12,15 @@ import org.fdroid.fdroid.data.Schema;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-// TODO: Use sdk=24 when Robolectric supports this
-@Config(constants = BuildConfig.class, sdk = 23)
-@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 24)
+@RunWith(RobolectricTestRunner.class)
 public class Issue763MultiRepo extends MultiRepoUpdaterTest {
 
     private Repo microGRepo;

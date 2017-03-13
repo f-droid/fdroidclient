@@ -54,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Find people near me"
+        style="@style/DetailsSecondaryButtonStyle"
         app:layout_constraintTop_toBottomOf="@+id/text2"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

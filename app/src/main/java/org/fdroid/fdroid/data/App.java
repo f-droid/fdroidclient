@@ -569,6 +569,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         return TextUtils.isEmpty(flattrID) ? null : "https://flattr.com/thing/" + flattrID;
     }
 
+    /**
+     * @see App#suggestedVersionName for why this uses a getter while other member variables are
+     * publicly accessible.
+     */
     public String getSuggestedVersionName() {
         return suggestedVersionName;
     }

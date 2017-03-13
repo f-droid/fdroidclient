@@ -26,7 +26,7 @@ for d in glob.glob(os.path.join('src', 'main', 'res', 'values-*')):
     lang = d[len(os.path.join('src', 'main', 'res', 'values-')):]
     if not lang:
         continue
-    if re.match('^v[0-9]+$', lang):
+    if re.match('^sw[0-9]+dp|v[0-9]+$', lang):
         continue
     if lang == 'ldrtl':
         continue
@@ -34,8 +34,8 @@ for d in glob.glob(os.path.join('src', 'main', 'res', 'values-*')):
         continue
     trans.add(lang)
 
-print("In the settings array: %s" % ' '.join(prefs))
-print("Actually translated:   %s" % ' '.join(trans))
+print("In the settings array: %s" % ' '.join(sorted(prefs)))
+print("Actually translated:   %s" % ' '.join(sorted(trans)))
 
 missing = []
 for lang in trans:

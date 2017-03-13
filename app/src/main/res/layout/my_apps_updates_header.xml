@@ -15,6 +15,7 @@
     <Button
         android:id="@+id/update_all_button"
         android:text="@string/my_apps_btn_update_all"
+        style="@style/DetailsSecondaryButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

@@ -8,11 +8,12 @@ import android.database.Cursor;
 import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowContentResolver;
 
@@ -27,16 +28,15 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-// TODO: Use sdk=24 when Robolectric supports this
-@Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
-@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
+@RunWith(RobolectricTestRunner.class)
 public class AppProviderTest extends FDroidProviderTest {
 
     private static final String[] PROJ = Cols.ALL;
 
     @Before
     public void setup() {
-        ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
+        TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }
 
     /**
@@ -115,7 +115,7 @@ public class AppProviderTest extends FDroidProviderTest {
         assertFalse(notInstalled.canAndWantToUpdate(context));
 
         assertResultCount(contentResolver, 2, AppProvider.getCanUpdateUri(), PROJ);
-        assertResultCount(contentResolver, 7, AppProvider.getInstalledUri(), PROJ);
+        assertResultCount(contentResolver, 9, AppProvider.getInstalledUri(), PROJ);
 
         App installedOnlyOneVersionAvailable   = AppProvider.Helper.findSpecificApp(r, "installed, only one version available", 1, Cols.ALL);
         App installedAlreadyLatestNoIgnore     = AppProvider.Helper.findSpecificApp(r, "installed, already latest, no ignore", 1, Cols.ALL);

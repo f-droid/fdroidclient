@@ -1,7 +1,9 @@
 package org.fdroid.fdroid.views.main;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -16,6 +18,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.whatsnew.WhatsNewAdapter;
 
 /**
@@ -49,6 +52,14 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             public void onRefresh() {
                 swipeToRefresh.setRefreshing(false);
                 UpdateService.updateNow(activity);
+            }
+        });
+
+        FloatingActionButton searchFab = (FloatingActionButton) whatsNewView.findViewById(R.id.btn_search);
+        searchFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.startActivity(new Intent(activity, AppListActivity.class));
             }
         });
 

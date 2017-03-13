@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -16,4 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:scrollbars="vertical" />
 
-</LinearLayout>
+    <include layout="@layout/fab_search" />
+
+</android.support.design.widget.CoordinatorLayout>

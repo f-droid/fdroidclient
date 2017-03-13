@@ -32,10 +32,10 @@ import android.text.Html;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 
-import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
+import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.io.File;
 
@@ -259,7 +259,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         InstallExtensionDialogActivity.this.setResult(result);
                         InstallExtensionDialogActivity.this.finish();
-                        startActivity(new Intent(InstallExtensionDialogActivity.this, FDroid.class));
+                        startActivity(new Intent(InstallExtensionDialogActivity.this, MainActivity.class));
                     }
                 })
                 .setCancelable(false);

@@ -121,6 +121,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
             int numAppsInCategory = cursor.getInt(0);
             viewAll.setVisibility(View.VISIBLE);
             viewAll.setText(activity.getResources().getQuantityString(R.plurals.button_view_all_apps_in_category, numAppsInCategory, numAppsInCategory));
+            viewAll.setContentDescription(activity.getResources().getQuantityString(R.plurals.tts_view_all_in_category, numAppsInCategory, numAppsInCategory, currentCategory));
         }
     }
 

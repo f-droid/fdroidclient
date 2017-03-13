@@ -254,7 +254,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void promptToSetupWifiAP() {
-        WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiApControl ap = WifiApControl.getInstance(this);
         wifiManager.setWifiEnabled(false);
         if (!ap.enable()) {

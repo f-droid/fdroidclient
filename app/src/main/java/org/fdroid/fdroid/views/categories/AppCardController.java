@@ -23,57 +23,59 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.AppDetails2;
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
-
-import java.util.Date;
+import org.fdroid.fdroid.views.apps.FeatureImage;
 
 /**
  * The {@link AppCardController} can bind an app to several different layouts, as long as the layout
  * contains the following elements:
  *  + {@link R.id#icon} ({@link ImageView}, required)
  *  + {@link R.id#summary} ({@link TextView}, required)
+ *  + {@link R.id#new_tag} ({@link TextView}, optional)
  *  + {@link R.id#featured_image} ({@link ImageView}, optional)
- *  + {@link R.id#status} ({@link TextView}, optional)
  */
 public class AppCardController extends RecyclerView.ViewHolder implements ImageLoadingListener, View.OnClickListener {
     @NonNull
     private final ImageView icon;
 
+    /**
+     * Text starting with the app name (in bold) followed by a short summary of the app.
+     */
     @NonNull
     private final TextView summary;
 
+    /**
+     * A little blue tag which says "New" to indicate an app was added to the repository recently.
+     */
     @Nullable
-    private final TextView status;
+    private final TextView newTag;
 
+    /**
+     * Wide and short image for branding the app. If it is not present in the metadata then F-Droid
+     * will draw some abstract art instead.
+     */
     @Nullable
-    private final ImageView featuredImage;
+    private final FeatureImage featuredImage;
 
     @Nullable
     private App currentApp;
 
     private final Activity activity;
-    private final int defaultFeaturedImageColour;
     private final DisplayImageOptions displayImageOptions;
-
-    private final Date recentCuttoffDate;
 
     public AppCardController(Activity activity, View itemView) {
         super(itemView);
 
         this.activity = activity;
 
-        recentCuttoffDate = Preferences.get().calcMaxHistory();
-
         icon = (ImageView) findViewAndEnsureNonNull(itemView, R.id.icon);
         summary = (TextView) findViewAndEnsureNonNull(itemView, R.id.summary);
 
-        featuredImage = (ImageView) itemView.findViewById(R.id.featured_image);
-        status = (TextView) itemView.findViewById(R.id.status);
+        featuredImage = (FeatureImage) itemView.findViewById(R.id.featured_image);
+        newTag = (TextView) itemView.findViewById(R.id.new_tag);
 
-        defaultFeaturedImageColour = activity.getResources().getColor(R.color.cardview_light_background);
         displayImageOptions = Utils.getImageLoadingOptions().build();
 
         itemView.setOnClickListener(this);
@@ -100,20 +102,17 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
 
         summary.setText(Utils.formatAppNameAndSummary(app.name, app.summary));
 
-        if (status != null) {
-            if (app.added != null && app.added.after(recentCuttoffDate) && (app.lastUpdated == null || app.added.equals(app.lastUpdated))) {
-                status.setText(activity.getString(R.string.category_Whats_New));
-                status.setVisibility(View.VISIBLE);
-            } else if (app.lastUpdated != null && app.lastUpdated.after(recentCuttoffDate)) {
-                status.setText(activity.getString(R.string.category_Recently_Updated));
-                status.setVisibility(View.VISIBLE);
+        if (newTag != null) {
+            if (app.added != null && app.lastUpdated != null && app.added.equals(app.lastUpdated)) {
+                newTag.setVisibility(View.VISIBLE);
             } else {
-                status.setVisibility(View.GONE);
+                newTag.setVisibility(View.GONE);
             }
         }
 
         if (featuredImage != null) {
-            featuredImage.setBackgroundColor(defaultFeaturedImageColour);
+            featuredImage.setPalette(null);
+            featuredImage.setImageDrawable(null);
         }
 
         ImageLoader.getInstance().displayImage(app.iconUrl, icon, displayImageOptions, this);
@@ -151,12 +150,11 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
 
     @Override
     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-        final ImageView image = featuredImage;
-        if (image != null) {
+        if (featuredImage != null) {
             new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
                 @Override
                 public void onGenerated(Palette palette) {
-                    image.setBackgroundColor(palette.getDominantColor(defaultFeaturedImageColour));
+                    featuredImage.setPalette(palette);
                 }
             });
         }

@@ -13,15 +13,14 @@ import org.fdroid.fdroid.Utils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowContentResolver;
 
-// TODO: Use sdk=24 when Robolectric supports this
-@Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
-@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
+@RunWith(RobolectricTestRunner.class)
 public class DatabaseMigration {
 
     protected ShadowContentResolver contentResolver;
@@ -31,7 +30,7 @@ public class DatabaseMigration {
     public final void setupBase() {
         contentResolver = Shadows.shadowOf(RuntimeEnvironment.application.getContentResolver());
         context = TestUtils.createContextWithContentResolver(contentResolver);
-        ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
+        TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }
 
     @Test

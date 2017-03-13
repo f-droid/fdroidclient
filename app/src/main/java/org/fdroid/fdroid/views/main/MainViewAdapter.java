@@ -41,6 +41,30 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
 
     @Override
     public MainViewController onCreateViewHolder(ViewGroup parent, int viewType) {
+        MainViewController holder = createEmptyView();
+        switch (viewType) {
+            case R.id.whats_new:
+                holder.bindWhatsNewView();
+                break;
+            case R.id.categories:
+                holder.bindCategoriesView();
+                break;
+            case R.id.nearby:
+                holder.bindSwapView();
+                break;
+            case R.id.my_apps:
+                holder.bindMyApps();
+                break;
+            case R.id.settings:
+                holder.bindSettingsView();
+                break;
+            default:
+                throw new IllegalStateException("Unknown view type " + viewType);
+        }
+        return holder;
+    }
+
+    private MainViewController createEmptyView() {
         FrameLayout frame = new FrameLayout(activity);
         frame.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return new MainViewController(activity, frame);
@@ -48,25 +72,20 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
 
     @Override
     public void onBindViewHolder(MainViewController holder, int position) {
-        long menuId = getItemId(position);
-        if (menuId == R.id.whats_new) {
-            holder.bindWhatsNewView();
-        } else if (menuId == R.id.categories) {
-            holder.bindCategoriesView();
-        } else if (menuId == R.id.nearby) {
-            holder.bindSwapView();
-        } else if (menuId == R.id.my_apps) {
-            holder.bindMyApps();
-        } else if (menuId == R.id.settings) {
-            holder.bindSettingsView();
-        } else {
-            holder.clearViews();
-        }
+        // The binding happens in onCreateViewHolder. This is because we never have more than one of
+        // each type of view in this main activity. Therefore, there is no benefit to re-binding new
+        // data each time we navigate back to an item, as the recycler view will just use the one we
+        // created earlier.
     }
 
     @Override
     public int getItemCount() {
         return positionToId.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return positionToId.get(position);
     }
 
     // The RecyclerViewPager and the BottomNavigationView both use menu item IDs to identify pages.

@@ -1,8 +1,6 @@
 package org.fdroid.fdroid.views.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -143,12 +141,10 @@ public abstract class AppListFragment extends ListFragment implements
      * be bad.
      */
     private boolean updateEmptyRepos() {
-        final String triedEmptyUpdate = "triedEmptyUpdate";
-        SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
-        boolean hasTriedEmptyUpdate = prefs.getBoolean(triedEmptyUpdate, false);
-        if (!hasTriedEmptyUpdate) {
+        Preferences prefs = Preferences.get();
+        if (!prefs.hasTriedEmptyUpdate()) {
             Utils.debugLog(TAG, "Empty app list, and we haven't done an update yet. Forcing repo update.");
-            prefs.edit().putBoolean(triedEmptyUpdate, true).apply();
+            prefs.setTriedEmptyUpdate(true);
             UpdateService.updateNow(getActivity());
             return true;
         }

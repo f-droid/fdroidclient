@@ -68,6 +68,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PROXY_PORT = "proxyPort";
     public static final String PREF_SHOW_NFC_DURING_SWAP = "showNfcDuringSwap";
     public static final String PREF_POST_PRIVILEGED_INSTALL = "postPrivilegedInstall";
+    public static final String PREF_TRIED_EMPTY_UPDATE = "triedEmptyUpdate";
 
     private static final boolean DEFAULT_ROOTED = true;
     private static final boolean DEFAULT_HIDE_ANTI_FEATURE_APPS = false;
@@ -180,6 +181,20 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         } catch (NumberFormatException e) {
             return DEFAULT_KEEP_CACHE_TIME;
         }
+    }
+
+    /**
+     * Used the first time F-Droid is installed to flag whether or not we have tried to request
+     * apps from the repo. This is used so that when there is no apps available, we can differentiate
+     * between whether the repos actually have no apps (in which case we don't need to continue
+     * asking), or whether there is no apps because we have never actually asked to update the repos.
+     */
+    public boolean hasTriedEmptyUpdate() {
+        return preferences.getBoolean(PREF_TRIED_EMPTY_UPDATE, false);
+    }
+
+    public void setTriedEmptyUpdate(boolean value) {
+        preferences.edit().putBoolean(PREF_TRIED_EMPTY_UPDATE, value).apply();
     }
 
     public boolean getUnstableUpdates() {
