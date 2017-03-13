@@ -18,7 +18,7 @@ public abstract class FDroidProviderTest {
     public final void setupBase() {
         contentResolver = Shadows.shadowOf(RuntimeEnvironment.application.getContentResolver());
         context = TestUtils.createContextWithContentResolver(contentResolver);
-        ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
+        TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }
 
     @After

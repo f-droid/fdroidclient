@@ -1,9 +1,12 @@
 package org.fdroid.fdroid;
 
+import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.ContextWrapper;
+import android.content.pm.ProviderInfo;
 
 import org.mockito.AdditionalAnswers;
+import org.robolectric.Robolectric;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.ShadowContentResolver;
 
@@ -21,6 +24,12 @@ public class TestUtils {
 
     @SuppressWarnings("unused")
     private static final String TAG = "TestUtils"; // NOPMD
+
+    public static <T extends ContentProvider> void registerContentProvider(String authority, Class<T> providerClass) {
+        ProviderInfo info = new ProviderInfo();
+        info.authority = authority;
+        Robolectric.buildContentProvider(providerClass).create(info);
+    }
 
     public static File copyResourceToTempFile(String resourceName) {
         File tempFile = null;

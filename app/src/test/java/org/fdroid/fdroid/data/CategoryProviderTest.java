@@ -7,28 +7,27 @@ import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.mock.MockRepo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowContentResolver;
 
 import java.util.List;
 
 import static org.fdroid.fdroid.Assert.assertContainsOnly;
 import static org.junit.Assert.assertEquals;
 
-// TODO: Use sdk=24 when Robolectric supports this
 @Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
-@RunWith(RobolectricGradleTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class CategoryProviderTest extends FDroidProviderTest {
 
     @Before
     public void setup() {
-        ShadowContentResolver.registerProvider(AppProvider.getAuthority(), new AppProvider());
+        TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }
 
     // ========================================================================

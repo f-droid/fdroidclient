@@ -32,7 +32,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.util.List;
@@ -43,7 +43,7 @@ import static org.junit.Assert.assertNull;
 
 // TODO: Use sdk=24 when Robolectric supports this
 @Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
-@RunWith(RobolectricGradleTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class RepoProviderTest extends FDroidProviderTest {
 
     private static final String[] COLS = RepoTable.Cols.ALL;

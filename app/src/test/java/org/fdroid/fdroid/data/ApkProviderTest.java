@@ -13,7 +13,7 @@ import org.fdroid.fdroid.mock.MockApk;
 import org.fdroid.fdroid.mock.MockRepo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ import static org.junit.Assert.fail;
 
 // TODO: Use sdk=24 when Robolectric supports this
 @Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
-@RunWith(RobolectricGradleTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class ApkProviderTest extends FDroidProviderTest {
 
     private static final String[] PROJ = Cols.ALL;

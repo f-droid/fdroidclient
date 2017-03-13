@@ -6,14 +6,14 @@ import android.database.Cursor;
 import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowContentResolver;
 
 import static org.fdroid.fdroid.Assert.assertIsInstalledVersionInDb;
 import static org.fdroid.fdroid.Assert.assertResultCount;
@@ -25,12 +25,12 @@ import java.util.Map;
 
 // TODO: Use sdk=24 when Robolectric supports this
 @Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
-@RunWith(RobolectricGradleTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class InstalledAppProviderTest extends FDroidProviderTest {
 
     @Before
     public void setup() {
-        ShadowContentResolver.registerProvider(InstalledAppProvider.getAuthority(), new InstalledAppProvider());
+        TestUtils.registerContentProvider(InstalledAppProvider.getAuthority(), InstalledAppProvider.class);
     }
 
     @Test
