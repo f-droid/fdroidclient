@@ -20,7 +20,10 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewOutlineProvider;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -70,6 +73,18 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     @Nullable
     private final TextView ignoredStatus;
 
+    @Nullable
+    private final ProgressBar progressBar;
+
+    @Nullable
+    private final ImageButton cancelButton;
+
+    /**
+     * Will operate as the "Download is complete, click to (install|update)" button.
+     */
+    @Nullable
+    private final Button actionButton;
+
     private final DisplayImageOptions displayImageOptions;
 
     private App currentApp;
@@ -107,6 +122,13 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         status = (TextView) itemView.findViewById(R.id.status);
         installedVersion = (TextView) itemView.findViewById(R.id.installed_version);
         ignoredStatus = (TextView) itemView.findViewById(R.id.ignored_status);
+        progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar);
+        cancelButton = (ImageButton) itemView.findViewById(R.id.cancel_button);
+        actionButton = (Button) itemView.findViewById(R.id.action_button);
+
+        if (cancelButton != null) {
+            cancelButton.setOnClickListener(onCancelDownload);
+        }
 
         displayImageOptions = Utils.getImageLoadingOptions().build();
 
@@ -133,6 +155,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         configureInstalledVersion(app);
         configureIgnoredStatus(app);
         configureInstallButton(app);
+        configureActionButton(app);
     }
 
     /**
@@ -212,6 +235,37 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         return false;
     }
 
+
+    /**
+     * The action button will either tell the user to "Update" or "Install" the app. Both actually do
+     * the same thing (launch the package manager). It depends on whether the app has a previous
+     * version installed or not as to the chosen terminology.
+     */
+    private void configureActionButton(@NonNull App app) {
+        if (actionButton == null) {
+            return;
+        }
+
+        boolean readyToInstall = false;
+        for (AppUpdateStatusManager.AppUpdateStatus status : AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName)) {
+            if (status.status == AppUpdateStatusManager.Status.ReadyToInstall) {
+                readyToInstall = true;
+                break;
+            }
+        }
+
+        if (!readyToInstall) {
+            actionButton.setVisibility(View.GONE);
+        } else {
+            actionButton.setVisibility(View.VISIBLE);
+            if (app.isInstalled()) {
+                actionButton.setText(R.string.app__install_downloaded_update);
+            } else {
+                actionButton.setText(R.string.menu_install);
+            }
+        }
+    }
+
     /**
      * The install button is shown when an app:
      *  * Is compatible with the users device.
@@ -242,6 +296,61 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         }
     }
 
+    private void onDownloadStarted() {
+        if (installButton != null) {
+            installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_progress));
+            installButton.setImageLevel(0);
+        }
+
+        if (progressBar != null) {
+            progressBar.setVisibility(View.VISIBLE);
+            progressBar.setIndeterminate(true);
+        }
+
+        if (cancelButton != null) {
+            cancelButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void onDownloadProgressUpdated(int bytesRead, int totalBytes) {
+        if (installButton != null) {
+            installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_progress));
+            int progressAsDegrees = totalBytes <= 0 ? 0 : (int) (((float) bytesRead / totalBytes) * 360);
+            installButton.setImageLevel(progressAsDegrees);
+        }
+
+        if (progressBar != null) {
+            progressBar.setVisibility(View.VISIBLE);
+            if (totalBytes <= 0) {
+                progressBar.setIndeterminate(true);
+            } else {
+                progressBar.setIndeterminate(false);
+                progressBar.setMax(totalBytes);
+                progressBar.setProgress(bytesRead);
+            }
+        }
+
+        if (cancelButton != null) {
+            cancelButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void onDownloadComplete() {
+        if (installButton != null) {
+            installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_complete));
+        }
+
+        if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
+        }
+
+        if (cancelButton != null) {
+            cancelButton.setVisibility(View.GONE);
+        }
+
+        configureActionButton(currentApp);
+    }
+
     @SuppressWarnings("FieldCanBeLocal")
     private final View.OnClickListener onAppClicked = new View.OnClickListener() {
         @Override
@@ -262,22 +371,25 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         }
     };
 
+    /**
+     * Updates both the progress bar and the circular install button (which shows progress around the outside of the circle).
+     * Also updates the app label to indicate that the app is being downloaded.
+     */
     private final BroadcastReceiver onDownloadProgress = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (installButton == null || currentApp == null || !TextUtils.equals(currentAppDownloadUrl, intent.getDataString())) {
+            if (currentApp == null || !TextUtils.equals(currentAppDownloadUrl, intent.getDataString()) || (installButton == null && progressBar == null)) {
                 return;
             }
 
-            if (Downloader.ACTION_PROGRESS.equals(intent.getAction())) {
-                installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_progress));
+            if (Downloader.ACTION_STARTED.equals(intent.getAction())) {
+                onDownloadStarted();
+            } else if (Downloader.ACTION_PROGRESS.equals(intent.getAction())) {
                 int bytesRead = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
-                int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 100);
-
-                int progressAsDegrees = (int) (((float) bytesRead / totalBytes) * 360);
-                installButton.setImageLevel(progressAsDegrees);
+                int totalBytes = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                onDownloadProgressUpdated(bytesRead, totalBytes);
             } else if (Downloader.ACTION_COMPLETE.equals(intent.getAction())) {
-                installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_complete));
+                onDownloadComplete();
             }
         }
     };
@@ -345,6 +457,18 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             } else {
                 InstallManagerService.queue(activity, currentApp, suggestedApk);
             }
+        }
+    };
+
+    @SuppressWarnings("FieldCanBeLocal")
+    private final View.OnClickListener onCancelDownload = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (currentAppDownloadUrl == null) {
+                return;
+            }
+
+            InstallManagerService.cancel(activity, currentAppDownloadUrl);
         }
     };
 }
