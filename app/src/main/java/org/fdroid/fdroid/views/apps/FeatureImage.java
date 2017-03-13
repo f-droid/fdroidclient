@@ -108,14 +108,14 @@ public class FeatureImage extends AppCompatImageView {
             trianglePaints[i] = random.nextBoolean() ? paintOne : paintTwo;
         }
 
-        animageColourChange();
+        animateColourChange();
     }
 
     private int currentAlpha = 255;
     private ValueAnimator alphaAnimator = null;
 
     @TargetApi(11)
-    private void animageColourChange() {
+    private void animateColourChange() {
         if (Build.VERSION.SDK_INT < 11) {
             return;
         }
