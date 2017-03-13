@@ -3,7 +3,6 @@ package org.fdroid.fdroid.views.main;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,6 +18,7 @@ import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -85,12 +85,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
      * don't try to do it automatically again.
      */
     private void initialRepoUpdateIfRequired() {
-        final String triedEmptyUpdate = "triedEmptyUpdate";
-        SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
-        boolean hasTriedEmptyUpdate = prefs.getBoolean(triedEmptyUpdate, false);
-        if (!hasTriedEmptyUpdate) {
+        Preferences prefs = Preferences.get();
+        if (!prefs.hasTriedEmptyUpdate()) {
             Utils.debugLog(TAG, "We haven't done an update yet. Forcing repo update.");
-            prefs.edit().putBoolean(triedEmptyUpdate, true).apply();
+            prefs.setTriedEmptyUpdate(true);
             UpdateService.updateNow(this);
         }
     }

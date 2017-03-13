@@ -28,6 +28,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -880,7 +881,8 @@ class DBHelper extends SQLiteOpenHelper {
 
     private void resetTransient(SQLiteDatabase db) {
         Utils.debugLog(TAG, "Removing app + apk tables so they can be recreated. Next time F-Droid updates it should trigger an index update.");
-        context.getSharedPreferences("FDroid", Context.MODE_PRIVATE)
+
+        PreferenceManager.getDefaultSharedPreferences(context)
                 .edit()
                 .putBoolean("triedEmptyUpdate", false)
                 .apply();
@@ -924,8 +926,12 @@ class DBHelper extends SQLiteOpenHelper {
         if (oldVersion >= 42) {
             return;
         }
-        context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
-                .putBoolean("triedEmptyUpdate", false).apply();
+
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putBoolean("triedEmptyUpdate", false)
+                .apply();
+
         db.execSQL("drop table " + AppMetadataTable.NAME);
         db.execSQL("drop table " + ApkTable.NAME);
         clearRepoEtags(db);
