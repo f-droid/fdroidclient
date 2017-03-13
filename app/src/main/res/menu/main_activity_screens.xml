@@ -17,10 +17,10 @@
         app:showAsAction="ifRoom|withText"
         android:id="@+id/nearby" />
     <item
-        android:title="@string/preference_category__my_apps"
+        android:title="@string/updates"
         android:icon="@drawable/ic_updates"
         app:showAsAction="ifRoom|withText"
-        android:id="@+id/my_apps" />
+        android:id="@+id/updates" />
     <item
         android:title="@string/menu_settings"
         android:icon="@drawable/ic_settings"

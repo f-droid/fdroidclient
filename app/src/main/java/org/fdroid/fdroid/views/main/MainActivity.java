@@ -35,7 +35,7 @@ import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
  *  + Whats new
  *  + Categories list
  *  + App swap
- *  + My apps
+ *  + Updates
  *  + Settings
  *
  *  Users navigate between items by using the bottom navigation bar, or by swiping left and right.
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private static final String TAG = "MainActivity";
 
-    public static final String EXTRA_VIEW_MY_APPS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_MY_APPS";
+    public static final String EXTRA_VIEW_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_UPDATES";
 
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
 
@@ -99,9 +99,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         FDroidApp.checkStartTor(this);
 
-        if (getIntent().hasExtra(EXTRA_VIEW_MY_APPS)) {
-            getIntent().removeExtra(EXTRA_VIEW_MY_APPS);
-            pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.my_apps));
+        if (getIntent().hasExtra(EXTRA_VIEW_UPDATES)) {
+            getIntent().removeExtra(EXTRA_VIEW_UPDATES);
+            pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.updates));
         }
 
         // AppDetails  2 and RepoDetailsActivity set different NFC actions, so reset here

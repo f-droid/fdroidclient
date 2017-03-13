@@ -13,7 +13,7 @@ import org.fdroid.fdroid.R;
  *  + Whats new
  *  + Categories
  *  + Nearby
- *  + My Apps
+ *  + Updates
  *  + Settings
  *
  *  It is responsible for understanding the relationship between each main view that is reachable
@@ -35,7 +35,7 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
         positionToId.put(0, R.id.whats_new);
         positionToId.put(1, R.id.categories);
         positionToId.put(2, R.id.nearby);
-        positionToId.put(3, R.id.my_apps);
+        positionToId.put(3, R.id.updates);
         positionToId.put(4, R.id.settings);
     }
 
@@ -52,8 +52,8 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
             case R.id.nearby:
                 holder.bindSwapView();
                 break;
-            case R.id.my_apps:
-                holder.bindMyApps();
+            case R.id.updates:
+                holder.bindUpdates();
                 break;
             case R.id.settings:
                 holder.bindSettingsView();

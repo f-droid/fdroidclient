@@ -40,7 +40,7 @@ class MainViewController extends RecyclerView.ViewHolder {
     /**
      * @see MyAppsViewBinder
      */
-    public void bindMyApps() {
+    public void bindUpdates() {
         new MyAppsViewBinder(activity, frame);
     }
 
