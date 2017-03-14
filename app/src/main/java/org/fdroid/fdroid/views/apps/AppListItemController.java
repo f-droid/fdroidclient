@@ -126,6 +126,10 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         cancelButton = (ImageButton) itemView.findViewById(R.id.cancel_button);
         actionButton = (Button) itemView.findViewById(R.id.action_button);
 
+        if (actionButton != null) {
+            actionButton.setOnClickListener(onInstallClicked);
+        }
+
         if (cancelButton != null) {
             cancelButton.setOnClickListener(onCancelDownload);
         }
@@ -137,7 +141,6 @@ public class AppListItemController extends RecyclerView.ViewHolder {
 
     public void bindModel(@NonNull App app) {
         currentApp = app;
-        name.setText(Utils.formatAppNameAndSummary(app.name, app.summary));
 
         ImageLoader.getInstance().displayImage(app.iconUrl, icon, displayImageOptions);
 
@@ -151,6 +154,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         broadcastManager.registerReceiver(onDownloadProgress, DownloaderService.getIntentFilter(currentAppDownloadUrl));
         broadcastManager.registerReceiver(onInstallAction, Installer.getInstallIntentFilter(Uri.parse(currentAppDownloadUrl)));
 
+        configureAppName(app);
         configureStatusText(app);
         configureInstalledVersion(app);
         configureIgnoredStatus(app);
@@ -163,8 +167,6 @@ public class AppListItemController extends RecyclerView.ViewHolder {
      *  * Is compatible with the users device
      *  * Is installed
      *  * Can be updated
-     *
-     * TODO: This button also needs to be repurposed to support the "Downloaded but not installed" state.
      */
     private void configureStatusText(@NonNull App app) {
         if (status == null) {
@@ -226,6 +228,10 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         }
     }
 
+    /**
+     * Queries the {@link AppUpdateStatusManager} to find out if there are any apks corresponding to
+     * `app` which are ready to install.
+     */
     private boolean isReadyToInstall(@NonNull App app) {
         for (AppUpdateStatusManager.AppUpdateStatus appStatus : AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName)) {
             if (appStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
@@ -235,6 +241,38 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         return false;
     }
 
+    /**
+     * Queries the {@link AppUpdateStatusManager} to find out if there are any apks corresponding to
+     * `app` which are in the process of being downloaded.
+     */
+    private boolean isDownloading(@NonNull App app) {
+        for (AppUpdateStatusManager.AppUpdateStatus appStatus : AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName)) {
+            if (appStatus.status == AppUpdateStatusManager.Status.Downloading) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * The app name {@link TextView} is used for a few reasons:
+     *  * Display name + summary of the app (most common).
+     *  * If downloading, mention that it is downloading instead of showing the summary.
+     *  * If downloaded and ready to install, mention that it is ready to update/install.
+     */
+    private void configureAppName(@NonNull App app) {
+        if (isReadyToInstall(app)) {
+            if (app.isInstalled()) {
+                name.setText(activity.getString(R.string.app_list__name__downloaded_and_ready_to_update, app.name));
+            } else {
+                name.setText(activity.getString(R.string.app_list__name__downloaded_and_ready_to_install, app.name));
+            }
+        } else if (isDownloading(app)) {
+            name.setText(activity.getString(R.string.app_list__name__downloading_in_progress, app.name));
+        } else {
+            name.setText(Utils.formatAppNameAndSummary(app.name, app.summary));
+        }
+    }
 
     /**
      * The action button will either tell the user to "Update" or "Install" the app. Both actually do
@@ -246,15 +284,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             return;
         }
 
-        boolean readyToInstall = false;
-        for (AppUpdateStatusManager.AppUpdateStatus status : AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName)) {
-            if (status.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-                readyToInstall = true;
-                break;
-            }
-        }
-
-        if (!readyToInstall) {
+        if (!isReadyToInstall(app)) {
             actionButton.setVisibility(View.GONE);
         } else {
             actionButton.setVisibility(View.VISIBLE);
@@ -271,8 +301,6 @@ public class AppListItemController extends RecyclerView.ViewHolder {
      *  * Is compatible with the users device.
      *  * Has not been filtered due to anti-features/root/etc.
      *  * Is either not installed or installed but can be updated.
-     *
-     * TODO: This button also needs to be repurposed to support the "Downloaded but not installed" state.
      */
     private void configureInstallButton(@NonNull App app) {
         if (installButton == null) {
@@ -382,6 +410,8 @@ public class AppListItemController extends RecyclerView.ViewHolder {
                 return;
             }
 
+            configureAppName(currentApp);
+
             if (Downloader.ACTION_STARTED.equals(intent.getAction())) {
                 onDownloadStarted();
             } else if (Downloader.ACTION_PROGRESS.equals(intent.getAction())) {
@@ -400,6 +430,8 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             if (currentApp == null || installButton == null) {
                 return;
             }
+
+            configureAppName(currentApp);
 
             Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
             if (!TextUtils.equals(apk.packageName, currentApp.packageName)) {

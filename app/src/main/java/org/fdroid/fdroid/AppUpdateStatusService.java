@@ -22,6 +22,9 @@ import java.util.List;
  * {@link AppUpdateStatusManager.Status#ReadyToInstall}. This is an {@link IntentService} so as to
  * run on a background thread, as it hits the disk a bit to figure out the hash of each downloaded
  * file.
+ *
+ * TODO: Deal with more than just the suggested version. It should also work for people downloading earlier versions (but still newer than their current)
+ * TODO: Identify new apps which have not been installed before, but which have been downloading. Currently only works for updates.
  */
 public class AppUpdateStatusService extends IntentService {
 

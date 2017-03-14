@@ -26,7 +26,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="F-Droid Application manager with a long name that will wrap and then ellipsize"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textColor="#424242"
         android:maxLines="2"
         android:ellipsize="end"

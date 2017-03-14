@@ -70,6 +70,10 @@
     <string name="added_on">Added on %s</string>
     <string name="app__install_downloaded_update">Update</string>
 
+    <string name="app_list__name__downloaded_and_ready_to_update">Update %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Install %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
+
     <string name="installed_apps__activity_title">Installed Apps</string>
     <string name="installed_app__updates_ignored">Updates ignored</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Updates ignored for Version %1$s</string>
