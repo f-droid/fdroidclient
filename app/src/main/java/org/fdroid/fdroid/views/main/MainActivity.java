@@ -6,13 +6,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.widget.Toast;
 import android.support.v7.widget.RecyclerView;
+
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.AppDetails2;
@@ -42,7 +44,7 @@ import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
  *  When switching from one screen to the next, we stay within this activity. The new screen will
  *  get inflated (if required)
  */
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements BottomNavigationViewEx.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
 
@@ -52,14 +54,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private static final String ACTION_ADD_REPO = "org.fdroid.fdroid.MainActivity.ACTION_ADD_REPO";
 
+    private static final String STATE_SELECTED_MENU_ID = "selectedMenuId";
+
     private static final int REQUEST_SWAP = 3;
 
     private RecyclerView pager;
     private MainViewAdapter adapter;
-    private BottomNavigationView bottomNavigation;
+    private BottomNavigationViewEx bottomNavigation;
+    private int selectedMenuId = R.id.whats_new;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
@@ -71,13 +76,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         pager.setLayoutManager(new NonScrollingHorizontalLayoutManager(this));
         pager.setAdapter(adapter);
 
-        bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigation = (BottomNavigationViewEx) findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(this);
+
+        if (savedInstanceState != null) {
+            selectedMenuId = savedInstanceState.getInt(STATE_SELECTED_MENU_ID, R.id.whats_new);
+        }
+        setSelectedMenuInNav();
 
         initialRepoUpdateIfRequired();
 
         Intent intent = getIntent();
         handleSearchOrAppViewIntent(intent);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(STATE_SELECTED_MENU_ID, selectedMenuId);
+        super.onSaveInstanceState(outState);
+    }
+
+    private void setSelectedMenuInNav() {
+        bottomNavigation.setCurrentItem(adapter.adapterPositionFromItemId(selectedMenuId));
     }
 
     /**
@@ -103,7 +123,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (getIntent().hasExtra(EXTRA_VIEW_UPDATES)) {
             getIntent().removeExtra(EXTRA_VIEW_UPDATES);
             pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.updates));
-            bottomNavigation.findViewById(R.id.updates).performClick();
+            selectedMenuId = R.id.updates;
+            setSelectedMenuInNav();
         }
 
         // AppDetails  2 and RepoDetailsActivity set different NFC actions, so reset here
@@ -131,6 +152,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         pager.scrollToPosition(((MainViewAdapter) pager.getAdapter()).adapterPositionFromItemId(item.getItemId()));
+        selectedMenuId = item.getItemId();
         return true;
     }
 
