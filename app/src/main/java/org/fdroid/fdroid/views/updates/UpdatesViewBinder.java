@@ -10,17 +10,24 @@ import org.fdroid.fdroid.R;
 
 public class UpdatesViewBinder {
 
+    private final UpdatesAdapter adapter;
+
     public UpdatesViewBinder(AppCompatActivity activity, FrameLayout parent) {
         View view = activity.getLayoutInflater().inflate(R.layout.main_tab_updates, parent, true);
 
-        UpdatesAdapter adapter = new UpdatesAdapter(activity);
-
-        // TODO: Find the right time to stop listening for status updates.
-        adapter.listenForStatusUpdates();
+        adapter = new UpdatesAdapter(activity);
 
         RecyclerView list = (RecyclerView) view.findViewById(R.id.list);
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(activity));
         list.setAdapter(adapter);
+    }
+
+    public void bind() {
+        adapter.listenForStatusUpdates();
+    }
+
+    public void unbind() {
+        adapter.stopListeningForStatusUpdates();
     }
 }

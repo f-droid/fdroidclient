@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views.main;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +25,9 @@ class MainViewController extends RecyclerView.ViewHolder {
     private final AppCompatActivity activity;
     private final FrameLayout frame;
 
+    @Nullable
+    private UpdatesViewBinder updatesView = null;
+
     MainViewController(AppCompatActivity activity, FrameLayout frame) {
         super(frame);
         this.activity = activity;
@@ -41,7 +45,17 @@ class MainViewController extends RecyclerView.ViewHolder {
      * @see UpdatesViewBinder
      */
     public void bindUpdates() {
-        new UpdatesViewBinder(activity, frame);
+        if (updatesView == null) {
+            updatesView = new UpdatesViewBinder(activity, frame);
+        }
+
+        updatesView.bind();
+    }
+
+    public void unbindUpdates() {
+        if (updatesView != null) {
+            updatesView.unbind();
+        }
     }
 
     /**

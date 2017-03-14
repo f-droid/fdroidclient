@@ -258,6 +258,10 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         LocalBroadcastManager.getInstance(activity).registerReceiver(receiverAppStatusChanges, filter);
     }
 
+    public void stopListeningForStatusUpdates() {
+        LocalBroadcastManager.getInstance(activity).unregisterReceiver(receiverAppStatusChanges);
+    }
+
     private void onManyAppStatusesChanged(String reasonForChange) {
         switch (reasonForChange) {
             case AppUpdateStatusManager.REASON_UPDATES_AVAILABLE:

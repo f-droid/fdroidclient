@@ -40,6 +40,22 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
     }
 
     @Override
+    public void onViewDetachedFromWindow(MainViewController holder) {
+        long viewType = getItemId(holder.getAdapterPosition());
+        if (viewType == R.id.updates) {
+            holder.unbindUpdates();
+        }
+    }
+
+    @Override
+    public void onViewAttachedToWindow(MainViewController holder) {
+        long viewType = getItemId(holder.getAdapterPosition());
+        if (viewType == R.id.updates) {
+            holder.bindUpdates();
+        }
+    }
+
+    @Override
     public MainViewController onCreateViewHolder(ViewGroup parent, int viewType) {
         MainViewController holder = createEmptyView();
         switch (viewType) {
