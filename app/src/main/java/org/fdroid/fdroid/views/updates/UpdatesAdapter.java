@@ -12,6 +12,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.ViewGroup;
@@ -137,6 +138,11 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         if (showAllUpdateableApps) {
             notifyItemRangeInserted(appsToShowStatus.size() + 1, updateableApps.size());
+            if (recyclerView != null) {
+                // Scroll so that the "Update X apps" header is at the top of the page, and the
+                // list of apps takes up the rest of the screen.
+                ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(appsToShowStatus.size(), 0);
+            }
         } else {
             notifyItemRangeRemoved(appsToShowStatus.size() + 1, updateableApps.size());
         }
