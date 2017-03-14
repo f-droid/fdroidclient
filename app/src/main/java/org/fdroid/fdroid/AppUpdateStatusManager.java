@@ -40,6 +40,7 @@ public final class AppUpdateStatusManager {
      *  * The user clears the list of installed apps from notification manager.
      *  * The user clears the list of apps available to update from the notification manager.
      *  * A repo update is completed and a bunch of new apps are ready to be updated.
+     *  * F-Droid is opened, and it finds a bunch of .apk files downloaded and ready to install.
      */
     public static final String BROADCAST_APPSTATUS_LIST_CHANGED = "org.fdroid.fdroid.installer.appstatus.listchange";
 

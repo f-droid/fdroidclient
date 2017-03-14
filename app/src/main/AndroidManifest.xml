@@ -297,6 +297,9 @@
         <service
             android:name=".data.InstalledAppProviderService"
             android:exported="false" />
+        <service
+            android:name=".AppUpdateStatusService"
+            android:exported="false" />
 
         <activity android:name=".views.main.MainActivity">
             <intent-filter>
