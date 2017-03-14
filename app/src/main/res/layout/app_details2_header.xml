@@ -114,6 +114,7 @@
                 android:layout_toRightOf="@id/icon"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:clipToPadding="false"
                 android:visibility="gone"
                 >
 
@@ -125,7 +126,8 @@
                     android:layout_weight="1"
                     android:maxLines="1"
                     android:ellipsize="marquee"
-                    android:text="THIS IS BUTTON 1" />
+                    android:padding="12dp"
+                    tools:text="THIS IS BUTTON 1" />
 
                 <Button
                     android:id="@+id/primaryButtonView"
@@ -137,7 +139,8 @@
                     android:layout_weight="1"
                     android:maxLines="1"
                     android:ellipsize="marquee"
-                    android:text="THIS IS 2" />
+                    android:padding="12dp"
+                    tools:text="THIS IS 2" />
             </LinearLayout>
 
         </RelativeLayout>
