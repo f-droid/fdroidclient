@@ -73,6 +73,10 @@
     <string name="app_list__name__downloaded_and_ready_to_update">Update %1$s</string>
     <string name="app_list__name__downloaded_and_ready_to_install">Install %1$s</string>
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
+    <plurals name="app_list__age__released_x_days_ago">
+        <item quantity="one">Released %1$d day ago</item>
+        <item quantity="other">Released %1$d days ago</item>
+    </plurals>
 
     <string name="installed_apps__activity_title">Installed Apps</string>
     <string name="installed_app__updates_ignored">Updates ignored</string>
