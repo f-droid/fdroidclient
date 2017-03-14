@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private RecyclerView pager;
     private MainViewAdapter adapter;
+    private BottomNavigationView bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         pager.setLayoutManager(new NonScrollingHorizontalLayoutManager(this));
         pager.setAdapter(adapter);
 
-        BottomNavigationView bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(this);
 
         initialRepoUpdateIfRequired();
@@ -102,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (getIntent().hasExtra(EXTRA_VIEW_UPDATES)) {
             getIntent().removeExtra(EXTRA_VIEW_UPDATES);
             pager.scrollToPosition(adapter.adapterPositionFromItemId(R.id.updates));
+            bottomNavigation.findViewById(R.id.updates).performClick();
         }
 
         // AppDetails  2 and RepoDetailsActivity set different NFC actions, so reset here
