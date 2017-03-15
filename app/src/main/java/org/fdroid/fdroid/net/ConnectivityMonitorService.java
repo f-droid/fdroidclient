@@ -61,14 +61,14 @@ public class ConnectivityMonitorService extends JobIntentService {
      * whether the connection has no usage limit (like most WiFi), or whether this is
      * a metered connection like most cellular plans or hotspot WiFi connections.
      */
-    public static int getNetworkState(Context context) {
+    public static NetworkState getNetworkState(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
         if (cm == null) {
-            return FLAG_NET_UNAVAILABLE;
+            return NetworkState.NET_UNAVAILABLE;
         }
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (activeNetwork == null || !activeNetwork.isConnected()) {
-            return FLAG_NET_UNAVAILABLE;
+            return NetworkState.NET_UNAVAILABLE;
         }
 
         int networkType = activeNetwork.getType();
@@ -76,12 +76,12 @@ public class ConnectivityMonitorService extends JobIntentService {
             case ConnectivityManager.TYPE_ETHERNET:
             case ConnectivityManager.TYPE_WIFI:
                 if (Build.VERSION.SDK_INT >= 16 && cm.isActiveNetworkMetered()) {
-                    return FLAG_NET_METERED;
+                    return NetworkState.NET_METERED;
                 } else {
-                    return FLAG_NET_NO_LIMIT;
+                    return NetworkState.NET_NO_LIMIT;
                 }
             default:
-                return FLAG_NET_METERED;
+                return NetworkState.NET_METERED;
         }
     }
 

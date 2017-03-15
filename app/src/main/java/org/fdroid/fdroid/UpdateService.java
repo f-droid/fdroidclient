@@ -56,6 +56,7 @@ import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.NetworkState;
 import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.lang.ref.WeakReference;
@@ -387,10 +388,10 @@ public class UpdateService extends JobIntentService {
         try {
             final Preferences fdroidPrefs = Preferences.get();
             // See if it's time to actually do anything yet...
-            int netState = ConnectivityMonitorService.getNetworkState(this);
+            NetworkState netState = ConnectivityMonitorService.getNetworkState(this);
             if (address != null && address.startsWith(BluetoothDownloader.SCHEME)) {
                 Utils.debugLog(TAG, "skipping internet check, this is bluetooth");
-            } else if (netState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE) {
+            } else if (netState == NetworkState.NET_UNAVAILABLE) {
                 Utils.debugLog(TAG, "No internet, cannot update");
                 if (manualUpdate) {
                     sendNoInternetToast();

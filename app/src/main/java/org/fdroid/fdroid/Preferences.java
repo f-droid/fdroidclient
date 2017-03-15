@@ -8,7 +8,7 @@ import android.support.v7.preference.PreferenceManager;
 import android.text.format.DateUtils;
 import android.util.Log;
 import info.guardianproject.netcipher.NetCipher;
-import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.NetworkState;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
@@ -383,18 +383,18 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * downloaded in the background.
      */
     public boolean isBackgroundDownloadAllowed() {
-        if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT) {
+        if (FDroidApp.networkState == NetworkState.NET_NO_LIMIT) {
             return getOverWifi() == OVER_NETWORK_ALWAYS;
-        } else if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_METERED) {
+        } else if (FDroidApp.networkState == NetworkState.NET_METERED) {
             return getOverData() == OVER_NETWORK_ALWAYS;
         }
         return false;
     }
 
     public boolean isOnDemandDownloadAllowed() {
-        if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_NO_LIMIT) {
+        if (FDroidApp.networkState == NetworkState.NET_NO_LIMIT) {
             return getOverWifi() != OVER_NETWORK_NEVER;
-        } else if (FDroidApp.networkState == ConnectivityMonitorService.FLAG_NET_METERED) {
+        } else if (FDroidApp.networkState == NetworkState.NET_METERED) {
             return getOverData() != OVER_NETWORK_NEVER;
         }
         return false;

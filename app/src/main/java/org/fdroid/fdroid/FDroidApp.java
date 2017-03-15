@@ -67,6 +67,7 @@ import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
+import org.fdroid.fdroid.net.NetworkState;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.hiding.HidingManager;
 
@@ -112,7 +113,7 @@ public class FDroidApp extends Application {
     public static volatile String bssid;
     public static volatile Repo repo = new Repo();
 
-    public static volatile int networkState = ConnectivityMonitorService.FLAG_NET_UNAVAILABLE;
+    public static volatile NetworkState networkState = NetworkState.NET_UNAVAILABLE;
 
     public static final SubnetUtils.SubnetInfo UNSET_SUBNET_INFO = new SubnetUtils("0.0.0.0/32").getInfo();
 
