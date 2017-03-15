@@ -145,6 +145,9 @@ public class AppDetailsRecyclerViewAdapter
         if (showVersions) {
             items.addAll(startIndex, versions);
             notifyItemRangeInserted(startIndex, versions.size());
+            if (recyclerView != null) {
+                ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(startIndex - 1, 0);
+            }
         } else if (itemsWereRemoved) {
             notifyItemRangeRemoved(startIndex, versions.size());
         }
