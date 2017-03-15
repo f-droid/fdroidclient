@@ -14,8 +14,8 @@
         app:menu="@menu/main_activity_screens"
         android:background="@color/fdroid_blue"
         app:itemBackground="@color/fdroid_blue"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white" />
+        app:itemIconTint="@color/bottom_nav_items"
+        app:itemTextColor="@color/bottom_nav_items" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_view_pager"

@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         bottomNavigation = (BottomNavigationViewEx) findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(this);
+        bottomNavigation.enableShiftingMode(false);
+        bottomNavigation.enableItemShiftingMode(false);
 
         if (savedInstanceState != null) {
             selectedMenuId = savedInstanceState.getInt(STATE_SELECTED_MENU_ID, R.id.whats_new);
