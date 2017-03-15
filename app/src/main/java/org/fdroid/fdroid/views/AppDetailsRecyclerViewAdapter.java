@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
@@ -578,6 +579,16 @@ public class AppDetailsRecyclerViewAdapter
             headerView = (TextView) view.findViewById(R.id.information);
             contentView = (LinearLayout) view.findViewById(R.id.ll_content);
         }
+
+        protected abstract @DrawableRes int getIcon();
+
+        /**
+         * Depending on whether we are expanded or not, update the icon which indicates whether the
+         * user can expand/collapse this item.
+         */
+        protected void updateExpandableItem(boolean isExpanded) {
+            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, getIcon(), 0, isExpanded ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+        }
     }
 
     private class VersionsViewHolder extends ExpandableLinearLayoutViewHolder {
@@ -591,10 +602,15 @@ public class AppDetailsRecyclerViewAdapter
                 @Override
                 public void onClick(View v) {
                     setShowVersions(!showVersions);
+                    updateExpandableItem(showVersions);
                 }
             });
             headerView.setText(R.string.versions);
-            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_access_time_24dp_grey600, 0, showVersions ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+            updateExpandableItem(showVersions);
+        }
+
+        protected @DrawableRes int getIcon() {
+            return R.drawable.ic_access_time_24dp_grey600;
         }
     }
 
@@ -610,15 +626,19 @@ public class AppDetailsRecyclerViewAdapter
                 public void onClick(View v) {
                     boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
                     contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
-                    TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_lock_24dp_grey600, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+                    updateExpandableItem(shouldBeVisible);
                 }
             });
             headerView.setText(R.string.permissions);
-            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_lock_24dp_grey600, 0, R.drawable.ic_expand_more_grey600, 0);
+            updateExpandableItem(false);
             contentView.removeAllViews();
             AppDiff appDiff = new AppDiff(context.getPackageManager(), versions.get(0));
             AppSecurityPermissions perms = new AppSecurityPermissions(context, appDiff.pkgInfo);
             contentView.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
+        }
+
+        protected @DrawableRes int getIcon() {
+            return R.drawable.ic_lock_24dp_grey600;
         }
     }
 
@@ -634,11 +654,11 @@ public class AppDetailsRecyclerViewAdapter
                 public void onClick(View v) {
                     boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
                     contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
-                    TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_website, 0, shouldBeVisible ? R.drawable.ic_expand_less_grey600 : R.drawable.ic_expand_more_grey600, 0);
+                    updateExpandableItem(shouldBeVisible);
                 }
             });
             headerView.setText(R.string.links);
-            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_website, 0, R.drawable.ic_expand_more_grey600, 0);
+            updateExpandableItem(false);
             contentView.removeAllViews();
 
             // Source button
@@ -667,6 +687,10 @@ public class AppDetailsRecyclerViewAdapter
             if (uriIsSetAndCanBeOpened(emailUrl)) {
                 addLinkItemView(contentView, R.string.menu_email, R.drawable.ic_email, emailUrl);
             }
+        }
+
+        protected @DrawableRes int getIcon() {
+            return R.drawable.ic_website;
         }
     }
 
