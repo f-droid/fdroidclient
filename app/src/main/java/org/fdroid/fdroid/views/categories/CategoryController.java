@@ -58,12 +58,22 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
 
     void bindModel(@NonNull String categoryName) {
         currentCategory = categoryName;
-        heading.setText(categoryName);
+        heading.setText(translateCategory(categoryName));
         viewAll.setVisibility(View.INVISIBLE);
         loaderManager.initLoader(currentCategory.hashCode(), null, this);
         loaderManager.initLoader(currentCategory.hashCode() + 1, null, this);
 
         background.setBackgroundColor(getBackgroundColour(categoryName));
+    }
+
+    /**
+     * Attempt to translate category name with fallback to default name if no translation available
+     */
+    private String translateCategory(@NonNull String categoryName) {
+        String resId = categoryName.replace(" & ", "_").replace(" ", "_").replace("'", "");
+        int id = activity.getResources().getIdentifier("category_" + resId, "string", activity.getPackageName());
+        return id == 0 ? categoryName : activity.getString(id);
+
     }
 
     public static int getBackgroundColour(@NonNull String categoryName) {
@@ -130,6 +140,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         appCardsAdapter.setAppCursor(null);
     }
 
+    @SuppressWarnings("FieldCanBeLocal")
     private final View.OnClickListener onViewAll = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
