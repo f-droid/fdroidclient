@@ -1,16 +1,27 @@
 package org.fdroid.fdroid.views.main;
 
 import android.app.SearchManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.RecyclerView;
 
@@ -18,6 +29,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.AppDetails2;
+import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
@@ -25,7 +37,9 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.UriCompat;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
@@ -44,7 +58,8 @@ import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
  *  When switching from one screen to the next, we stay within this activity. The new screen will
  *  get inflated (if required)
  */
-public class MainActivity extends AppCompatActivity implements BottomNavigationViewEx.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements BottomNavigationViewEx.OnNavigationItemSelectedListener,
+        LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String TAG = "MainActivity";
 
@@ -56,11 +71,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private static final String STATE_SELECTED_MENU_ID = "selectedMenuId";
 
+    private static final int LOADER_NUM_UPDATES = 1;
+
     private static final int REQUEST_SWAP = 3;
 
     private RecyclerView pager;
     private MainViewAdapter adapter;
     private BottomNavigationViewEx bottomNavigation;
+    private TextView updatesBadge;
     private int selectedMenuId = R.id.whats_new;
 
     @Override
@@ -80,6 +98,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigation.setOnNavigationItemSelectedListener(this);
         bottomNavigation.enableShiftingMode(false);
         bottomNavigation.enableItemShiftingMode(false);
+
+        updatesBadge = (TextView) findViewById(R.id.updates_badge);
+        IntentFilter updateableAppsFilter = new IntentFilter(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
+        LocalBroadcastManager.getInstance(this).registerReceiver(onUpdateableAppsChanged, updateableAppsFilter);
+        getSupportLoaderManager().initLoader(LOADER_NUM_UPDATES, null, this);
 
         if (savedInstanceState != null) {
             selectedMenuId = savedInstanceState.getInt(STATE_SELECTED_MENU_ID, R.id.whats_new);
@@ -283,6 +306,56 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
     }
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        Uri uri = AppProvider.getCanUpdateUri();
+        String[] projection = new String[]{Schema.AppMetadataTable.Cols._COUNT};
+
+        return new CursorLoader(this, uri, projection, null, null, null);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        cursor.moveToFirst();
+        int canUpdateCount = cursor.getInt(cursor.getColumnIndex(Schema.AppMetadataTable.Cols._COUNT));
+        cursor.close();
+        refreshUpdatesBadge(canUpdateCount);
+    }
+
+    /**
+     * The updates badge is a bit hacky. There are indeed libraries which implement a bottom nav
+     * which have support for badges built into them. However they target API 14. There are also
+     * other badge libraries which just deal with rendering, but for the cost of another dependency,
+     * it is not particularly difficult to create a {@link TextView} with a background and position
+     * it ourselves.
+     */
+    private void refreshUpdatesBadge(int canUpdateCount) {
+        if (canUpdateCount == 0) {
+            updatesBadge.setVisibility(View.GONE);
+        } else {
+            String text = Integer.toString(canUpdateCount);
+            updatesBadge.setVisibility(View.VISIBLE);
+            updatesBadge.setText(text);
+
+            BottomNavigationItemView updatesNavItem = bottomNavigation.getBottomNavigationItemView(adapter.adapterPositionFromItemId(R.id.updates));
+            int[] locationInWindow = new int[2];
+            updatesNavItem.getLocationInWindow(locationInWindow);
+
+            int height = (int) getResources().getDimension(R.dimen.badge_size);
+            int width = text.length() < 3 ? height : height * 2;
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(width, height);
+            layoutParams.leftMargin = locationInWindow[0] + updatesNavItem.getWidth() - width;
+            layoutParams.topMargin = locationInWindow[1] - updatesNavItem.getHeight() + (height * 2);
+
+            updatesBadge.setLayoutParams(layoutParams);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
+
     private static class NonScrollingHorizontalLayoutManager extends LinearLayoutManager {
         NonScrollingHorizontalLayoutManager(Context context) {
             super(context, LinearLayoutManager.HORIZONTAL, false);
@@ -298,5 +371,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             return false;
         }
     }
+
+    private final BroadcastReceiver onUpdateableAppsChanged = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (AppUpdateStatusManager.REASON_UPDATES_AVAILABLE.equals(intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE))) {
+                getSupportLoaderManager().restartLoader(LOADER_NUM_UPDATES, null, MainActivity.this);
+            }
+        }
+    };
 
 }

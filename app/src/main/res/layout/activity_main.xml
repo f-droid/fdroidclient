@@ -22,6 +22,21 @@
         android:layout_alignParentTop="true"
         android:layout_above="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/main_tab_whats_new" />
+
+    <TextView
+        android:id="@+id/updates_badge"
+        android:layout_width="@dimen/badge_size"
+        android:layout_height="@dimen/badge_size"
+        tools:text="12"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:elevation="10dp"
+        android:lines="1"
+        android:textColor="@android:color/white"
+        android:background="@drawable/badge_background" />
 
 </RelativeLayout>

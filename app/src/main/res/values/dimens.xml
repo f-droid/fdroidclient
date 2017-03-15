@@ -29,4 +29,6 @@
     <dimen name="category_preview__padding__recycler_view__top">12dp</dimen>
     <dimen name="category_preview__padding__app_card__horizontal">3dp</dimen>
     <dimen name="category_preview__padding__app_card__vertical">4dp</dimen>
+
+    <dimen name="badge_size">18dp</dimen>
 </resources>
