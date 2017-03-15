@@ -627,6 +627,9 @@ public class AppDetailsRecyclerViewAdapter
                     boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
                     contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
                     updateExpandableItem(shouldBeVisible);
+                    if (shouldBeVisible && recyclerView != null) {
+                        ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(items.indexOf(VIEWTYPE_PERMISSIONS), 0);
+                    }
                 }
             });
             headerView.setText(R.string.permissions);
@@ -655,6 +658,9 @@ public class AppDetailsRecyclerViewAdapter
                     boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
                     contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
                     updateExpandableItem(shouldBeVisible);
+                    if (shouldBeVisible && recyclerView != null) {
+                        ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(items.indexOf(VIEWTYPE_LINKS), 0);
+                    }
                 }
             });
             headerView.setText(R.string.links);
