@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:title="@string/main_menu__latest_apps"
-        android:icon="@drawable/ic_overview"
+        android:icon="@drawable/ic_latest"
         app:showAsAction="ifRoom|withText"
         android:id="@+id/whats_new" />
     <item
         android:title="@string/main_menu__categories"
-        android:icon="@drawable/ic_category"
+        android:icon="@drawable/ic_categories"
         app:showAsAction="ifRoom|withText"
         android:id="@+id/categories" />
     <item
@@ -18,7 +18,7 @@
         android:id="@+id/nearby" />
     <item
         android:title="@string/preference_category__my_apps"
-        android:icon="@drawable/ic_my_apps"
+        android:icon="@drawable/ic_updates"
         app:showAsAction="ifRoom|withText"
         android:id="@+id/my_apps" />
     <item
