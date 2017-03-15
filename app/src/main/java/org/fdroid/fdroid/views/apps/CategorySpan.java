@@ -107,7 +107,7 @@ public class CategorySpan extends ReplacementSpan {
 
         // The background which goes behind the text.
         Paint backgroundPaint = new Paint();
-        backgroundPaint.setColor(CategoryController.getBackgroundColour(categoryName.toString()));
+        backgroundPaint.setColor(CategoryController.getBackgroundColour(context, categoryName.toString()));
         backgroundPaint.setAntiAlias(true);
         canvas.drawRoundRect(backgroundRect, cornerRadius, cornerRadius, backgroundPaint);
 

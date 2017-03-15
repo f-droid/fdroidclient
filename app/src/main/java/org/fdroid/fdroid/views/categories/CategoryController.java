@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.ViewCompat;
@@ -16,6 +17,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
@@ -28,6 +30,7 @@ import java.util.Random;
 public class CategoryController extends RecyclerView.ViewHolder implements LoaderManager.LoaderCallbacks<Cursor> {
     private final Button viewAll;
     private final TextView heading;
+    private final ImageView image;
     private final AppPreviewAdapter appCardsAdapter;
     private final FrameLayout background;
 
@@ -48,7 +51,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         viewAll.setOnClickListener(onViewAll);
 
         heading = (TextView) itemView.findViewById(R.id.name);
-
+        image = (ImageView) itemView.findViewById(R.id.category_image);
         background = (FrameLayout) itemView.findViewById(R.id.category_background);
 
         RecyclerView appCards = (RecyclerView) itemView.findViewById(R.id.app_cards);
@@ -58,25 +61,47 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
 
     void bindModel(@NonNull String categoryName) {
         currentCategory = categoryName;
-        heading.setText(translateCategory(categoryName));
+
+        int categoryNameId = getCategoryResource(activity, categoryName, "string", false);
+        String translatedName = categoryNameId == 0 ? categoryName : activity.getString(categoryNameId);
+        heading.setText(translatedName);
+
         viewAll.setVisibility(View.INVISIBLE);
+
         loaderManager.initLoader(currentCategory.hashCode(), null, this);
         loaderManager.initLoader(currentCategory.hashCode() + 1, null, this);
 
-        background.setBackgroundColor(getBackgroundColour(categoryName));
+        background.setBackgroundColor(getBackgroundColour(activity, categoryName));
+
+        int categoryImageId = getCategoryResource(activity, categoryName, "drawable", true);
+        if (categoryImageId == 0) {
+            image.setVisibility(View.GONE);
+        } else {
+            image.setVisibility(View.VISIBLE);
+            image.setImageDrawable(ContextCompat.getDrawable(activity, categoryImageId));
+        }
     }
 
     /**
-     * Attempt to translate category name with fallback to default name if no translation available
+     * @param requiresLowerCaseId Previously categories were translated using strings such as "category_Reading" for
+     *                            the "Reading" category. Now we also need to have drawable resources such as
+     *                            "category_reading". Note how drawables must have only lower case letters, whereas
+     *                            we already have upper case letters in strings.xml. Hence this flag.
      */
-    private String translateCategory(@NonNull String categoryName) {
-        String resId = categoryName.replace(" & ", "_").replace(" ", "_").replace("'", "");
-        int id = activity.getResources().getIdentifier("category_" + resId, "string", activity.getPackageName());
-        return id == 0 ? categoryName : activity.getString(id);
-
+    private static int getCategoryResource(Context context, @NonNull String categoryName, String resourceType, boolean requiresLowerCaseId) {
+        String suffix = categoryName.replace(" & ", "_").replace(" ", "_").replace("'", "");
+        if (requiresLowerCaseId) {
+            suffix = suffix.toLowerCase();
+        }
+        return context.getResources().getIdentifier("category_" + suffix, resourceType, context.getPackageName());
     }
 
-    public static int getBackgroundColour(@NonNull String categoryName) {
+    public static int getBackgroundColour(Context context, @NonNull String categoryName) {
+        int colourId = getCategoryResource(context, categoryName, "color", false);
+        if (colourId > 0) {
+            return ContextCompat.getColor(context, colourId);
+        }
+
         // Seed based on the categoryName, so that each time we try to choose a colour for the same
         // category it will look the same for each different user, and each different session.
         Random random = new Random(categoryName.toLowerCase().hashCode());

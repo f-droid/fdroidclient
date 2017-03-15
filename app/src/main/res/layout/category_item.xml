@@ -50,14 +50,19 @@
         app:layout_constraintBottom_toBottomOf="@+id/app_cards"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:background="#ffffbbbb"/>
+        tools:background="#ffffbbbb" />
 
     <ImageView
         android:id="@+id/category_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="@+id/category_background"
+        app:layout_constraintEnd_toEndOf="@+id/category_background"
+        app:layout_constraintTop_toTopOf="@+id/category_background"
+        app:layout_constraintBottom_toBottomOf="@+id/category_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:src="@drawable/category_graphics"
+        android:scaleType="fitStart"
+        android:importantForAccessibility="no"
         tools:ignore="ContentDescription" />
 
     <android.support.v7.widget.RecyclerView
@@ -76,6 +81,8 @@
         android:paddingBottom="@dimen/category_preview__app_list__padding__vertical"
         android:clipToPadding="false"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"/>
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
 </android.support.constraint.ConstraintLayout>
