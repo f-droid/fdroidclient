@@ -17,6 +17,10 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <org.fdroid.fdroid.views.BannerNoInternet
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <org.fdroid.fdroid.views.BannerUpdatingRepos
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
