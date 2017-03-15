@@ -10,7 +10,8 @@ import android.view.Gravity;
 import android.view.View;
 
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.NetworkState;
 
 /**
  * Widget which monitors the network state and shows a "No Internet" message when it identifies the
@@ -66,8 +67,8 @@ public class BannerNoInternet extends android.support.v7.widget.AppCompatTextVie
     }
 
     private void updateNetworkState() {
-        Utils.NetworkState state = Utils.getNetworkState(getContext());
-        if (state == Utils.NetworkState.NET_UNAVAILABLE) {
+        NetworkState state = ConnectivityMonitorService.getNetworkState(getContext());
+        if (state == NetworkState.NET_UNAVAILABLE) {
             setVisibility(View.VISIBLE);
         } else {
             setVisibility(View.GONE);
