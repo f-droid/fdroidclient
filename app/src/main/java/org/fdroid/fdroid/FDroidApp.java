@@ -58,7 +58,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.InstallHistoryService;
-import org.fdroid.fdroid.net.IconDownloader;
+import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.net.URL;
@@ -280,7 +280,7 @@ public class FDroidApp extends Application {
         bluetoothAdapter = getBluetoothAdapter();
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
-                .imageDownloader(new IconDownloader(getApplicationContext()))
+                .imageDownloader(new ImageLoaderForUIL(getApplicationContext()))
                 .diskCache(new LimitedAgeDiskCache(
                         Utils.getIconsCacheDir(this),
                         null,

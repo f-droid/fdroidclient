@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -19,6 +20,11 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
@@ -36,6 +42,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
 
     private final Activity activity;
     private final LoaderManager loaderManager;
+    private final DisplayImageOptions displayImageOptions;
 
     private String currentCategory;
 
@@ -57,6 +64,13 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         RecyclerView appCards = (RecyclerView) itemView.findViewById(R.id.app_cards);
         appCards.setAdapter(appCardsAdapter);
         appCards.addItemDecoration(new ItemDecorator(activity));
+
+        displayImageOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .imageScaleType(ImageScaleType.NONE)
+                .displayer(new FadeInBitmapDisplayer(100, true, true, false))
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
     }
 
     void bindModel(@NonNull String categoryName) {
@@ -78,7 +92,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
             image.setVisibility(View.GONE);
         } else {
             image.setVisibility(View.VISIBLE);
-            image.setImageDrawable(ContextCompat.getDrawable(activity, categoryImageId));
+            ImageLoader.getInstance().displayImage("drawable://" + categoryImageId, image, displayImageOptions);
         }
     }
 
