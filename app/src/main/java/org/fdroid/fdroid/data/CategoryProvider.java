@@ -11,6 +11,8 @@ import android.support.annotation.NonNull;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable;
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
+import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable.Cols;
 
 import java.util.ArrayList;
@@ -96,13 +98,9 @@ public class CategoryProvider extends FDroidProvider {
 
     private class Query extends QueryBuilder {
 
-        private boolean onlyCategoriesWithApps;
-
         @Override
         protected String getRequiredTables() {
-            String joinType = onlyCategoriesWithApps ? " JOIN " : " LEFT JOIN ";
-
-            return CategoryTable.NAME + joinType + CatJoinTable.NAME + " ON (" +
+            return CategoryTable.NAME + " LEFT JOIN " + CatJoinTable.NAME + " ON (" +
                     CatJoinTable.Cols.CATEGORY_ID + " = " + CategoryTable.NAME + "." + Cols.ROW_ID + ") ";
         }
 
@@ -116,8 +114,11 @@ public class CategoryProvider extends FDroidProvider {
             return CategoryTable.NAME + "." + Cols.ROW_ID;
         }
 
-        public void setOnlyCategoriesWithApps(boolean onlyCategoriesWithApps) {
-            this.onlyCategoriesWithApps = onlyCategoriesWithApps;
+        public void setOnlyCategoriesWithApps() {
+            // Make sure that metadata from the preferred repository is used to determine if
+            // there is an app present or not.
+            join(AppMetadataTable.NAME, "app", "app." + AppMetadataTable.Cols.ROW_ID + " = " + CatJoinTable.NAME + "." + CatJoinTable.Cols.APP_METADATA_ID);
+            join(PackageTable.NAME, "pkg", "pkg." + PackageTable.Cols.PREFERRED_METADATA + " = " + "app." + AppMetadataTable.Cols.ROW_ID);
         }
     }
 
@@ -218,7 +219,10 @@ public class CategoryProvider extends FDroidProvider {
         query.addSelection(selection);
         query.addFields(projection);
         query.addOrderBy(sortOrder);
-        query.setOnlyCategoriesWithApps(onlyCategoriesWithApps);
+
+        if (onlyCategoriesWithApps) {
+            query.setOnlyCategoriesWithApps();
+        }
 
         Cursor cursor = LoggingQuery.query(db(), query.toString(), query.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
