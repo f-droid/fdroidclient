@@ -53,7 +53,7 @@ connected24:
   variables:
     AVD_SDK: "24"
   script:
-    - emulator64-x86 -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
+    - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &
     - export EXITVALUE=0
