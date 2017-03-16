@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:background="#ffffbbbb" />
 
-    <ImageView
+    <org.fdroid.fdroid.views.apps.FeatureImage
         android:id="@+id/category_image"
         app:layout_constraintStart_toStartOf="@+id/category_background"
         app:layout_constraintEnd_toEndOf="@+id/category_background"

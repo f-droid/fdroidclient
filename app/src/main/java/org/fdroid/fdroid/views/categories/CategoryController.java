@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
@@ -18,7 +19,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -30,13 +30,14 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
+import org.fdroid.fdroid.views.apps.FeatureImage;
 
 import java.util.Random;
 
 public class CategoryController extends RecyclerView.ViewHolder implements LoaderManager.LoaderCallbacks<Cursor> {
     private final Button viewAll;
     private final TextView heading;
-    private final ImageView image;
+    private final FeatureImage image;
     private final AppPreviewAdapter appCardsAdapter;
     private final FrameLayout background;
 
@@ -58,7 +59,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         viewAll.setOnClickListener(onViewAll);
 
         heading = (TextView) itemView.findViewById(R.id.name);
-        image = (ImageView) itemView.findViewById(R.id.category_image);
+        image = (FeatureImage) itemView.findViewById(R.id.category_image);
         background = (FrameLayout) itemView.findViewById(R.id.category_background);
 
         RecyclerView appCards = (RecyclerView) itemView.findViewById(R.id.app_cards);
@@ -85,13 +86,15 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         loaderManager.initLoader(currentCategory.hashCode(), null, this);
         loaderManager.initLoader(currentCategory.hashCode() + 1, null, this);
 
-        background.setBackgroundColor(getBackgroundColour(activity, categoryName));
+        @ColorInt int backgroundColour = getBackgroundColour(activity, categoryName);
+        background.setBackgroundColor(backgroundColour);
 
         int categoryImageId = getCategoryResource(activity, categoryName, "drawable", true);
         if (categoryImageId == 0) {
-            image.setVisibility(View.GONE);
+            image.setColour(backgroundColour);
+            image.setImageDrawable(null);
         } else {
-            image.setVisibility(View.VISIBLE);
+            image.setColour(0);
             ImageLoader.getInstance().displayImage("drawable://" + categoryImageId, image, displayImageOptions);
         }
     }

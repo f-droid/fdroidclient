@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.categories;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -111,7 +112,7 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
         }
 
         if (featuredImage != null) {
-            featuredImage.setPalette(null);
+            featuredImage.setColour(0);
             featuredImage.setImageDrawable(null);
         }
 
@@ -154,7 +155,7 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
             new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
                 @Override
                 public void onGenerated(Palette palette) {
-                    featuredImage.setPalette(palette);
+                    featuredImage.setColour(palette.getDominantColor(Color.LTGRAY));
                 }
             });
         }
