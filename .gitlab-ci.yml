@@ -73,7 +73,6 @@ connected24:
         cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
       done
     - exit $EXITVALUE
-  allow_failure: true
 
 after_script:
     # this file changes every time but should not be cached
