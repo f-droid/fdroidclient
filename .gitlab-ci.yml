@@ -34,6 +34,7 @@ connected10:
   variables:
     AVD_SDK: "10"
   script:
+    - ./gradlew assembleDebug -PdisablePreDex
     - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &
@@ -55,6 +56,7 @@ connected24:
   variables:
     AVD_SDK: "24"
   script:
+    - ./gradlew assembleDebug -PdisablePreDex
     - emulator64-arm -avd fcl-test-$AVD_SDK -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &
