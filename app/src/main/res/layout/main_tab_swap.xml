@@ -4,60 +4,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/swap_start_header"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
 
     <TextView
         android:id="@+id/text1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Download apps from people near you."
+        android:layout_marginEnd="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/nearby_splash__download_apps_from_people_nearby"
+        android:textAlignment="center"
         android:textSize="20sp"
-        android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@+id/image"
-        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="#4a4a4a"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp" />
-
-    <!-- TODO: Use @string/app_name instead of "F-Droid". -->
-    <!-- TODO: The swap process helps to get F-Droid to the other user. That should probably be made a bit clearer here. -->
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Participants must have F-Droid installed."
-        android:textSize="14sp"
-        android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@+id/text1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find people near me"
+        android:text="@string/nearby_splash__find_people_button"
         style="@style/DetailsSecondaryButtonStyle"
-        app:layout_constraintTop_toBottomOf="@+id/text2"
+        app:layout_constraintTop_toBottomOf="@+id/text1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/nearby_splash__both_parties_need_fdroid"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:textColor="#5B5B5B"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/nearby_splash"
+        android:importantForAccessibility="no"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text2"
+        android:layout_marginTop="36dp"
+        android:tint="#f5f5f5"
+        android:scaleType="fitXY" />
 
 </android.support.constraint.ConstraintLayout>

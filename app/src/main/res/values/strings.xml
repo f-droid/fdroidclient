@@ -342,6 +342,10 @@
     <string name="system_uninstall_button">Uninstall</string>
     <string name="system_install_not_supported">Installation of F-Droid Privileged Extension is currently not supported on Android 5.1 or later.</string>
 
+    <string name="nearby_splash__download_apps_from_people_nearby">No internet? Download apps from people near you!</string>
+    <string name="nearby_splash__find_people_button">Find people near me</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
+
     <string name="swap_nfc_title">Touch to swap</string>
     <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.</string>
     <string name="swap_join_same_wifi">Join the same Wi-Fi as your friend</string>
