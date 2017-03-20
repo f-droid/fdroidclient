@@ -12,21 +12,20 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.download.ImageDownloader;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
 public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements LinearLayoutManagerSnapHelper.LinearSnapHelperListener {
-    private final App app;
     private final DisplayImageOptions displayImageOptions;
     private View selectedView;
     private int selectedPosition;
     private final int selectedItemElevation;
     private final int unselectedItemMargin;
 
-    public ScreenShotsRecyclerViewAdapter(Context context, App app) {
+    public ScreenShotsRecyclerViewAdapter(Context context, @SuppressWarnings("unused") App app) {
         super();
-        this.app = app;
         selectedPosition = 0;
         selectedItemElevation = context.getResources().getDimensionPixelSize(R.dimen.details_screenshot_selected_elevation);
         unselectedItemMargin = context.getResources().getDimensionPixelSize(R.dimen.details_screenshot_margin);
@@ -47,7 +46,8 @@ public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
         if (position == selectedPosition) {
             this.selectedView = vh.itemView;
         }
-        ImageLoader.getInstance().displayImage(app.iconUrlLarge, vh.image, displayImageOptions);
+        // For now, use the screenshot placeholder
+        ImageLoader.getInstance().displayImage(ImageDownloader.Scheme.ASSETS.wrap("screenshot_placeholder.png"), vh.image, displayImageOptions);
     }
 
     @Override
