@@ -17,7 +17,11 @@ public class IconDownloader implements ImageDownloader {
 
     @Override
     public InputStream getStream(String imageUri, Object extra) throws IOException {
-        return DownloaderFactory.create(context, imageUri).getInputStream();
+        switch (Scheme.ofUri(imageUri)) {
+            case ASSETS:
+                return context.getAssets().open(Scheme.ASSETS.crop(imageUri));
+            default:
+                return DownloaderFactory.create(context, imageUri).getInputStream();
+        }
     }
-
 }
