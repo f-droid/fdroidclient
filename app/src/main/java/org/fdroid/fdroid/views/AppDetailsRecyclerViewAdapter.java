@@ -294,6 +294,9 @@ public class AppDetailsRecyclerViewAdapter
         final TextView lastUpdateView;
         final TextView descriptionView;
         final TextView descriptionMoreView;
+        final TextView antiFeaturesLabelView;
+        final TextView antiFeaturesView;
+        final View antiFeaturesWarningView;
         final View buttonLayout;
         final Button buttonPrimaryView;
         final Button buttonSecondaryView;
@@ -303,6 +306,7 @@ public class AppDetailsRecyclerViewAdapter
         final TextView progressPercent;
         final View progressCancel;
         final DisplayImageOptions displayImageOptions;
+        boolean descriptionIsExpanded;
 
         HeaderViewHolder(View view) {
             super(view);
@@ -312,6 +316,9 @@ public class AppDetailsRecyclerViewAdapter
             lastUpdateView = (TextView) view.findViewById(R.id.text_last_update);
             descriptionView = (TextView) view.findViewById(R.id.description);
             descriptionMoreView = (TextView) view.findViewById(R.id.description_more);
+            antiFeaturesLabelView = (TextView) view.findViewById(R.id.label_anti_features);
+            antiFeaturesView = (TextView) view.findViewById(R.id.text_anti_features);
+            antiFeaturesWarningView = view.findViewById(R.id.anti_features_warning);
             buttonLayout = view.findViewById(R.id.button_layout);
             buttonPrimaryView = (Button) view.findViewById(R.id.primaryButtonView);
             buttonSecondaryView = (Button) view.findViewById(R.id.secondaryButtonView);
@@ -341,10 +348,13 @@ public class AppDetailsRecyclerViewAdapter
                     if (TextViewCompat.getMaxLines(descriptionView) != MAX_LINES) {
                         descriptionView.setMaxLines(MAX_LINES);
                         descriptionMoreView.setText(R.string.more);
+                        descriptionIsExpanded = false;
                     } else {
                         descriptionView.setMaxLines(Integer.MAX_VALUE);
                         descriptionMoreView.setText(R.string.less);
+                        descriptionIsExpanded = true;
                     }
+                    updateAntiFeaturesWarning();
                 }
             });
             // Set ALL caps (in a way compatible with SDK 10)
@@ -421,13 +431,27 @@ public class AppDetailsRecyclerViewAdapter
             descriptionView.post(new Runnable() {
                 @Override
                 public void run() {
-                    if (descriptionView.getLineCount() <= HeaderViewHolder.MAX_LINES) {
+                    if (descriptionView.getLineCount() <= HeaderViewHolder.MAX_LINES && app.antiFeatures == null) {
                         descriptionMoreView.setVisibility(View.GONE);
                     } else {
                         descriptionMoreView.setVisibility(View.VISIBLE);
                     }
                 }
             });
+            if (app.antiFeatures != null) {
+                StringBuilder sb = new StringBuilder();
+                for (String af : app.antiFeatures) {
+                    String afdesc = descAntiFeature(af);
+                    sb.append("\t• ").append(afdesc).append('\n');
+                }
+                if (sb.length() > 0) {
+                    sb.setLength(sb.length() - 1);
+                    antiFeaturesView.setText(sb.toString());
+                } else {
+                    antiFeaturesView.setVisibility(View.GONE);
+                }
+            }
+            updateAntiFeaturesWarning();
             buttonSecondaryView.setText(R.string.menu_uninstall);
             buttonSecondaryView.setVisibility(app.isInstalled() ? View.VISIBLE : View.INVISIBLE);
             buttonSecondaryView.setOnClickListener(onUnInstallClickListener);
@@ -472,6 +496,39 @@ public class AppDetailsRecyclerViewAdapter
                 }
             });
 
+        }
+
+        private void updateAntiFeaturesWarning() {
+            if (app.antiFeatures == null || TextUtils.isEmpty(antiFeaturesView.getText())) {
+                antiFeaturesLabelView.setVisibility(View.GONE);
+                antiFeaturesView.setVisibility(View.GONE);
+                antiFeaturesWarningView.setVisibility(View.GONE);
+            } else {
+                antiFeaturesLabelView.setVisibility(descriptionIsExpanded ? View.VISIBLE : View.GONE);
+                antiFeaturesView.setVisibility(descriptionIsExpanded ? View.VISIBLE : View.GONE);
+                antiFeaturesWarningView.setVisibility(descriptionIsExpanded ? View.GONE : View.VISIBLE);
+            }
+        }
+
+        private String descAntiFeature(String af) {
+            switch (af) {
+                case "Ads":
+                    return itemView.getContext().getString(R.string.antiadslist);
+                case "Tracking":
+                    return itemView.getContext().getString(R.string.antitracklist);
+                case "NonFreeNet":
+                    return itemView.getContext().getString(R.string.antinonfreenetlist);
+                case "NonFreeAdd":
+                    return itemView.getContext().getString(R.string.antinonfreeadlist);
+                case "NonFreeDep":
+                    return itemView.getContext().getString(R.string.antinonfreedeplist);
+                case "UpstreamNonFree":
+                    return itemView.getContext().getString(R.string.antiupstreamnonfreelist);
+                case "NonFreeAssets":
+                    return itemView.getContext().getString(R.string.antinonfreeassetslist);
+                default:
+                    return af;
+            }
         }
     }
 

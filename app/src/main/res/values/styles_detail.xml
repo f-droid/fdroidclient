@@ -41,4 +41,8 @@
     <style name="DetailsLastUpdatedStyle" parent="TextAppearance.AppCompat.Small">
     </style>
 
+    <style name="DetailsAntiFeaturesWarningStyle" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

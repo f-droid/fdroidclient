@@ -166,6 +166,26 @@
             tools:text="This is the app description of this awezome app. It can be several lines long, but will be truncated at just a few if it is. A 'read more' button will appear so that you can expand the view and view the full text, if you wish. Yes, it will be blue and beautiful." />
 
         <TextView
+            android:id="@+id/label_anti_features"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:scrollbars="none"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:text="@string/antifeatures" />
+
+        <TextView
+            android:id="@+id/text_anti_features"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:scrollbars="none"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="\t• This app tracks and reports your activity." />
+
+        <TextView
             android:id="@+id/description_more"
             style="@style/DetailsMoreButtonStyle"
             android:layout_width="match_parent"
@@ -174,6 +194,18 @@
             android:text="@string/more"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             tools:text="more" />
+
+        <TextView
+            android:id="@+id/anti_features_warning"
+            style="@style/DetailsAntiFeaturesWarningStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:drawableStart="@drawable/ic_warning_black_24dp"
+            android:drawableLeft="@drawable/ic_warning_black_24dp"
+            android:gravity="center_vertical"
+            android:drawablePadding="10dp"
+            android:text="@string/antifeatureswarning" />
 
     </LinearLayout>
 </android.support.v7.widget.CardView>
