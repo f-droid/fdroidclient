@@ -13,12 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:paddingBottom="8dp"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             >
 
             <ImageView
@@ -156,8 +159,25 @@
 
         </RelativeLayout>
 
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/whats_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/details_panel_light"
+            tools:text="NEW IN VERSION 1.0.2233\n\nA lot has happened since the last build:\n\n\t• Improved UI\n\t• Bug fixes"
+            />
+
         <TextView
             android:id="@+id/description"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -170,6 +190,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:scrollbars="none"
             android:textStyle="bold"
             android:textAllCaps="true"
@@ -181,6 +203,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:scrollbars="none"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             tools:text="\t• This app tracks and reports your activity." />
@@ -190,6 +214,8 @@
             style="@style/DetailsMoreButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:gravity="right|end"
             android:text="@string/more"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -200,6 +226,8 @@
             style="@style/DetailsAntiFeaturesWarningStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:drawableStart="@drawable/ic_warning_black_24dp"
             android:drawableLeft="@drawable/ic_warning_black_24dp"

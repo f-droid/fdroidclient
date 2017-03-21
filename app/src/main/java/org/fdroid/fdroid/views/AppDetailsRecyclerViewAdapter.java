@@ -52,6 +52,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class AppDetailsRecyclerViewAdapter
@@ -83,12 +84,11 @@ public class AppDetailsRecyclerViewAdapter
 
     private static final int VIEWTYPE_HEADER = 0;
     private static final int VIEWTYPE_SCREENSHOTS = 1;
-    private static final int VIEWTYPE_WHATS_NEW = 2;
-    private static final int VIEWTYPE_DONATE = 3;
-    private static final int VIEWTYPE_LINKS = 4;
-    private static final int VIEWTYPE_PERMISSIONS = 5;
-    private static final int VIEWTYPE_VERSIONS = 6;
-    private static final int VIEWTYPE_VERSION = 7;
+    private static final int VIEWTYPE_DONATE = 2;
+    private static final int VIEWTYPE_LINKS = 3;
+    private static final int VIEWTYPE_PERMISSIONS = 4;
+    private static final int VIEWTYPE_VERSIONS = 5;
+    private static final int VIEWTYPE_VERSION = 6;
 
     private final Context context;
     @NonNull
@@ -127,7 +127,6 @@ public class AppDetailsRecyclerViewAdapter
         }
         addItem(VIEWTYPE_HEADER);
         addItem(VIEWTYPE_SCREENSHOTS);
-        addItem(VIEWTYPE_WHATS_NEW);
         addItem(VIEWTYPE_DONATE);
         addItem(VIEWTYPE_LINKS);
         addItem(VIEWTYPE_PERMISSIONS);
@@ -169,6 +168,12 @@ public class AppDetailsRecyclerViewAdapter
 
     private boolean shouldShowPermissions() {
         // Figure out if we should show permissions section
+        Apk curApk = getSuggestedApk();
+        final boolean curApkCompatible = curApk != null && curApk.compatible;
+        return versions.size() > 0 && (curApkCompatible || Preferences.get().showIncompatibleVersions());
+    }
+
+    private Apk getSuggestedApk() {
         Apk curApk = null;
         for (int i = 0; i < versions.size(); i++) {
             final Apk apk = versions.get(i);
@@ -177,8 +182,7 @@ public class AppDetailsRecyclerViewAdapter
                 break;
             }
         }
-        final boolean curApkCompatible = curApk != null && curApk.compatible;
-        return versions.size() > 0 && (curApkCompatible || Preferences.get().showIncompatibleVersions());
+        return curApk;
     }
 
     private boolean shouldShowDonate() {
@@ -208,9 +212,6 @@ public class AppDetailsRecyclerViewAdapter
             case VIEWTYPE_SCREENSHOTS:
                 View screenshots = inflater.inflate(R.layout.app_details2_screenshots, parent, false);
                 return new ScreenShotsViewHolder(screenshots);
-            case VIEWTYPE_WHATS_NEW:
-                View whatsNew = inflater.inflate(R.layout.app_details2_whatsnew, parent, false);
-                return new WhatsNewViewHolder(whatsNew);
             case VIEWTYPE_DONATE:
                 View donate = inflater.inflate(R.layout.app_details2_donate, parent, false);
                 return new DonateViewHolder(donate);
@@ -241,9 +242,6 @@ public class AppDetailsRecyclerViewAdapter
                 break;
             case VIEWTYPE_SCREENSHOTS:
                 ((ScreenShotsViewHolder) holder).bindModel();
-                break;
-            case VIEWTYPE_WHATS_NEW:
-                ((WhatsNewViewHolder) holder).bindModel();
                 break;
             case VIEWTYPE_DONATE:
                 ((DonateViewHolder) holder).bindModel();
@@ -292,6 +290,7 @@ public class AppDetailsRecyclerViewAdapter
         final TextView titleView;
         final TextView authorView;
         final TextView lastUpdateView;
+        final TextView whatsNewView;
         final TextView descriptionView;
         final TextView descriptionMoreView;
         final TextView antiFeaturesLabelView;
@@ -314,6 +313,7 @@ public class AppDetailsRecyclerViewAdapter
             titleView = (TextView) view.findViewById(R.id.title);
             authorView = (TextView) view.findViewById(R.id.author);
             lastUpdateView = (TextView) view.findViewById(R.id.text_last_update);
+            whatsNewView = (TextView) view.findViewById(R.id.whats_new);
             descriptionView = (TextView) view.findViewById(R.id.description);
             descriptionMoreView = (TextView) view.findViewById(R.id.description_more);
             antiFeaturesLabelView = (TextView) view.findViewById(R.id.label_anti_features);
@@ -411,6 +411,17 @@ public class AppDetailsRecyclerViewAdapter
                 lastUpdateView.setVisibility(View.VISIBLE);
             } else {
                 lastUpdateView.setVisibility(View.GONE);
+            }
+            Apk suggestedApk = getSuggestedApk();
+            if (suggestedApk == null || TextUtils.isEmpty(suggestedApk.whatsNew)) {
+                whatsNewView.setVisibility(View.GONE);
+            } else {
+                StringBuilder sbWhatsNew = new StringBuilder();
+                sbWhatsNew.append(whatsNewView.getContext().getString(R.string.details_new_in_version, suggestedApk.versionName).toUpperCase(Locale.getDefault()));
+                sbWhatsNew.append("\n\n");
+                sbWhatsNew.append(suggestedApk.whatsNew);
+                whatsNewView.setText(sbWhatsNew);
+                whatsNewView.setVisibility(View.VISIBLE);
             }
             final Spanned desc = Html.fromHtml(app.description, null, new Utils.HtmlTagHandler());
             descriptionView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -566,19 +577,6 @@ public class AppDetailsRecyclerViewAdapter
             snapHelper = new LinearLayoutManagerSnapHelper(lm);
             snapHelper.setLinearSnapHelperListener(adapter);
             snapHelper.attachToRecyclerView(recyclerView);
-        }
-    }
-
-    private class WhatsNewViewHolder extends RecyclerView.ViewHolder {
-        final TextView textView;
-
-        WhatsNewViewHolder(View view) {
-            super(view);
-            textView = (TextView) view.findViewById(R.id.text);
-        }
-
-        public void bindModel() {
-            textView.setText("WHATS NEW GOES HERE");
         }
     }
 
