@@ -805,7 +805,7 @@ public class AppDetailsRecyclerViewAdapter
             status.setText(getInstalledStatus(apk));
 
             repository.setText(context.getString(R.string.repo_provider,
-                    RepoProvider.Helper.findById(context, apk.repo).getName()));
+                    RepoProvider.Helper.findById(context, apk.repoId).getName()));
 
             if (apk.size > 0) {
                 size.setText(Utils.getFriendlySize(apk.size));

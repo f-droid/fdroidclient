@@ -185,7 +185,7 @@ public class RepoPersister {
         for (Apk apk : packages) {
             boolean exists = false;
             for (Apk existing : existingApks) {
-                if (existing.repo == apk.repo && existing.packageName.equals(apk.packageName) && existing.versionCode == apk.versionCode) {
+                if (existing.repoId == apk.repoId && existing.packageName.equals(apk.packageName) && existing.versionCode == apk.versionCode) {
                     exists = true;
                     break;
                 }

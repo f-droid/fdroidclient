@@ -235,7 +235,7 @@ public class ApkProviderTest extends FDroidProviderTest {
         assertEquals("Some features", apk.features[0]);
         assertEquals("com.example.com", apk.packageName);
         assertEquals(1, apk.versionCode);
-        assertEquals(10, apk.repo);
+        assertEquals(10, apk.repoId);
     }
 
     @Test
@@ -481,7 +481,7 @@ public class ApkProviderTest extends FDroidProviderTest {
 
     protected void assertBelongsToRepo(Cursor apkCursor, long repoId) {
         for (Apk apk : ApkProvider.Helper.cursorToList(apkCursor)) {
-            assertEquals(repoId, apk.repo);
+            assertEquals(repoId, apk.repoId);
         }
     }
 

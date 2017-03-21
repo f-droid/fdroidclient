@@ -261,7 +261,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "obbPatchFile",
                 "obbPatchFileSha256",
                 "packageName",
-                "repo",
+                "repoId",
                 "requestedPermissions",
                 "sig",
                 "size",

@@ -57,7 +57,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public boolean compatible; // True if compatible with the device.
 
     @JacksonInject
-    public long repo; // ID of the repo it comes from
+    public long repoId; // ID of the repo it comes from
 
     // these come directly from the index metadata
     public String packageName;
@@ -154,7 +154,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
         // If we are being created from an InstalledApp, it is because we couldn't load it from the
         // apk table in the database, indicating it is not available in any of our repos.
-        repo = 0;
+        repoId = 0;
     }
 
     public Apk(Cursor cursor) {
@@ -218,7 +218,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                     incompatibleReasons = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case Cols.REPO_ID:
-                    repo = cursor.getInt(i);
+                    repoId = cursor.getInt(i);
                     break;
                 case Cols.SIGNATURE:
                     sig = cursor.getString(i);
@@ -333,7 +333,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         values.put(Cols.APP_ID, appId);
         values.put(Cols.VERSION_NAME, versionName);
         values.put(Cols.VERSION_CODE, versionCode);
-        values.put(Cols.REPO_ID, repo);
+        values.put(Cols.REPO_ID, repoId);
         values.put(Cols.HASH, hash);
         values.put(Cols.HASH_TYPE, hashType);
         values.put(Cols.SIGNATURE, sig);
@@ -377,7 +377,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         dest.writeString(this.versionName);
         dest.writeInt(this.versionCode);
         dest.writeInt(this.size);
-        dest.writeLong(this.repo);
+        dest.writeLong(this.repoId);
         dest.writeString(this.hash);
         dest.writeString(this.hashType);
         dest.writeInt(this.minSdkVersion);
@@ -408,7 +408,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         this.versionName = in.readString();
         this.versionCode = in.readInt();
         this.size = in.readInt();
-        this.repo = in.readLong();
+        this.repoId = in.readLong();
         this.hash = in.readString();
         this.hashType = in.readString();
         this.minSdkVersion = in.readInt();

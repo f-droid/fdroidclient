@@ -218,7 +218,7 @@ public final class AppUpdateStatusManager {
     private AppUpdateStatus createAppEntry(Apk apk, Status status, PendingIntent intent) {
         synchronized (appMapping) {
             ContentResolver resolver = context.getContentResolver();
-            App app = AppProvider.Helper.findSpecificApp(resolver, apk.packageName, apk.repo);
+            App app = AppProvider.Helper.findSpecificApp(resolver, apk.packageName, apk.repoId);
             AppUpdateStatus ret = new AppUpdateStatus(app, apk, status, intent);
             appMapping.put(apk.getUrl(), ret);
             return ret;

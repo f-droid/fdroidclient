@@ -359,7 +359,7 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if ("package".equals(localName) && curapp != null && curapk == null) {
             curapk = new Apk();
             curapk.packageName = curapp.packageName;
-            curapk.repo = repo.getId();
+            curapk.repoId = repo.getId();
             currentApkHashType = null;
 
         } else if ("hash".equals(localName) && curapk != null) {
