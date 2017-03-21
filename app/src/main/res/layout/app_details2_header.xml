@@ -157,7 +157,7 @@
 
         </RelativeLayout>
 
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
             android:id="@+id/whats_new"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
