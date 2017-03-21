@@ -416,8 +416,11 @@ public class AppDetailsRecyclerViewAdapter
             if (suggestedApk == null || TextUtils.isEmpty(suggestedApk.whatsNew)) {
                 whatsNewView.setVisibility(View.GONE);
             } else {
+                //noinspection deprecation Ignore deprecation because the suggested way is only available in API 24.
+                Locale locale = context.getResources().getConfiguration().locale;
+
                 StringBuilder sbWhatsNew = new StringBuilder();
-                sbWhatsNew.append(whatsNewView.getContext().getString(R.string.details_new_in_version, suggestedApk.versionName).toUpperCase(Locale.getDefault()));
+                sbWhatsNew.append(whatsNewView.getContext().getString(R.string.details_new_in_version, suggestedApk.versionName).toUpperCase(locale));
                 sbWhatsNew.append("\n\n");
                 sbWhatsNew.append(suggestedApk.whatsNew);
                 whatsNewView.setText(sbWhatsNew);
