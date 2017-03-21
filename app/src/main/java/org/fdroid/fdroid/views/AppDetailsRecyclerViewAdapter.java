@@ -50,7 +50,9 @@ import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class AppDetailsRecyclerViewAdapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -289,6 +291,7 @@ public class AppDetailsRecyclerViewAdapter
         final ImageView iconView;
         final TextView titleView;
         final TextView authorView;
+        final TextView lastUpdateView;
         final TextView descriptionView;
         final TextView descriptionMoreView;
         final View buttonLayout;
@@ -306,6 +309,7 @@ public class AppDetailsRecyclerViewAdapter
             iconView = (ImageView) view.findViewById(R.id.icon);
             titleView = (TextView) view.findViewById(R.id.title);
             authorView = (TextView) view.findViewById(R.id.author);
+            lastUpdateView = (TextView) view.findViewById(R.id.text_last_update);
             descriptionView = (TextView) view.findViewById(R.id.description);
             descriptionMoreView = (TextView) view.findViewById(R.id.description_more);
             buttonLayout = view.findViewById(R.id.button_layout);
@@ -389,6 +393,14 @@ public class AppDetailsRecyclerViewAdapter
                 authorView.setVisibility(View.VISIBLE);
             } else {
                 authorView.setVisibility(View.GONE);
+            }
+            if (app.lastUpdated != null) {
+                long msDiff = Calendar.getInstance().getTimeInMillis() - app.lastUpdated.getTime();
+                int daysDiff = (int) TimeUnit.MILLISECONDS.toDays(msDiff);
+                lastUpdateView.setText(lastUpdateView.getContext().getResources().getQuantityString(R.plurals.details_last_update_days, daysDiff, daysDiff));
+                lastUpdateView.setVisibility(View.VISIBLE);
+            } else {
+                lastUpdateView.setVisibility(View.GONE);
             }
             final Spanned desc = Html.fromHtml(app.description, null, new Utils.HtmlTagHandler());
             descriptionView.setMovementMethod(LinkMovementMethod.getInstance());

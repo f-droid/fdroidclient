@@ -12,8 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,90 +25,103 @@
                 android:id="@+id/icon"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="8dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:paddingBottom="8dp"
+                android:paddingRight="8dp"
                 android:src="@drawable/ic_repo_app_default" />
 
-            <TextView
-                android:id="@+id/title"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/icon"
                 android:layout_toRightOf="@id/icon"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                tools:text="App Title" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/author"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@id/title"
-                android:layout_alignLeft="@id/title"
-                android:layout_alignRight="@id/title"
-                android:layout_alignStart="@id/title"
-                android:layout_below="@id/title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                tools:text="Author" />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/DetailsAppTitleStyle"
+                    tools:text="App Title" />
+
+                <TextView
+                    android:id="@+id/author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    tools:text="Author" />
+
+                <TextView
+                    android:id="@+id/text_last_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/DetailsLastUpdatedStyle"
+                    android:textColor="@android:color/darker_gray"
+                    tools:text="Update released 12 days ago" />
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/progress_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/icon"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true">
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/icon">
+
                 <ImageView
                     android:id="@+id/progress_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:src="@android:drawable/ic_menu_close_clear_cancel"
-                    />
+                    android:layout_centerVertical="true"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
                 <TextView
                     android:id="@+id/progress_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:text="@string/downloading"
-                    />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
                 <TextView
                     android:id="@+id/progress_percent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@id/progress_cancel"
                     android:layout_toStartOf="@id/progress_cancel"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:text=""
-                    />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
                 <ProgressBar
                     android:id="@+id/progress_bar"
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/progress_cancel"
-                    android:layout_toStartOf="@id/progress_cancel"
-                    android:layout_below="@id/progress_label"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    />
+                    android:layout_below="@id/progress_label"
+                    android:layout_toLeftOf="@id/progress_cancel"
+                    android:layout_toStartOf="@id/progress_cancel" />
             </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/button_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_below="@id/icon"
                 android:layout_toEndOf="@id/icon"
                 android:layout_toRightOf="@id/icon"
@@ -124,7 +137,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:maxLines="1"
                     android:ellipsize="marquee"
                     android:padding="12dp"
                     tools:text="THIS IS BUTTON 1" />
@@ -137,7 +149,6 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:maxLines="1"
                     android:ellipsize="marquee"
                     android:padding="12dp"
                     tools:text="THIS IS 2" />
@@ -150,19 +161,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            tools:text="This is the app description of this awezome app. It can be several lines long, but will be truncated at just a few if it is. A 'read more' button will appear so that you can expand the view and view the full text, if you wish. Yes, it will be blue and beautiful."
             android:scrollbars="none"
-            />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="This is the app description of this awezome app. It can be several lines long, but will be truncated at just a few if it is. A 'read more' button will appear so that you can expand the view and view the full text, if you wish. Yes, it will be blue and beautiful." />
 
         <TextView
             android:id="@+id/description_more"
+            style="@style/DetailsMoreButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            style="@style/DetailsMoreButtonStyle"
             android:gravity="right|end"
             android:text="@string/more"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             tools:text="more" />
 
     </LinearLayout>

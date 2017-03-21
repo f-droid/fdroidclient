@@ -473,4 +473,10 @@
         <item quantity="one">View the single one app in the %2$s category</item>
         <item quantity="other">View all %1$d apps from the %2$s category</item>
     </plurals>
+
+    <plurals name="details_last_update_days">
+        <item quantity="zero">Updated today</item>
+        <item quantity="one">Updated %1$s day ago</item>
+        <item quantity="other">Updated %1$s days ago</item>
+    </plurals>
 </resources>
