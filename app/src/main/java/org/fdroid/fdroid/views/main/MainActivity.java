@@ -8,9 +8,7 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.internal.BottomNavigationItemView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -18,14 +16,12 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.RecyclerView;
 
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.ashokvarma.bottomnavigation.BadgeItem;
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.AppDetails2;
@@ -58,7 +54,7 @@ import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
  *  When switching from one screen to the next, we stay within this activity. The new screen will
  *  get inflated (if required)
  */
-public class MainActivity extends AppCompatActivity implements BottomNavigationViewEx.OnNavigationItemSelectedListener,
+public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener,
         LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String TAG = "MainActivity";
@@ -77,9 +73,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private RecyclerView pager;
     private MainViewAdapter adapter;
-    private BottomNavigationViewEx bottomNavigation;
-    private TextView updatesBadge;
+    private BottomNavigationBar bottomNavigation;
     private int selectedMenuId = R.id.whats_new;
+    private BadgeItem updatesBadge;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,12 +90,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         pager.setLayoutManager(new NonScrollingHorizontalLayoutManager(this));
         pager.setAdapter(adapter);
 
-        bottomNavigation = (BottomNavigationViewEx) findViewById(R.id.bottom_navigation);
-        bottomNavigation.setOnNavigationItemSelectedListener(this);
-        bottomNavigation.enableShiftingMode(false);
-        bottomNavigation.enableItemShiftingMode(false);
+        updatesBadge = new BadgeItem();
 
-        updatesBadge = (TextView) findViewById(R.id.updates_badge);
+        bottomNavigation = (BottomNavigationBar) findViewById(R.id.bottom_navigation);
+        bottomNavigation.setTabSelectedListener(this)
+                .setBarBackgroundColor(R.color.fdroid_blue)
+                .setInActiveColor(R.color.bottom_nav_items)
+                .setActiveColor(android.R.color.white)
+                .setMode(BottomNavigationBar.MODE_FIXED)
+                .addItem(new BottomNavigationItem(R.drawable.ic_latest, R.string.main_menu__latest_apps))
+                .addItem(new BottomNavigationItem(R.drawable.ic_categories, R.string.main_menu__categories))
+                .addItem(new BottomNavigationItem(R.drawable.ic_nearby, R.string.main_menu__swap_nearby))
+                .addItem(new BottomNavigationItem(R.drawable.ic_updates, R.string.updates).setBadgeItem(updatesBadge))
+                .addItem(new BottomNavigationItem(R.drawable.ic_settings, R.string.menu_settings))
+                .initialise();
+
         IntentFilter updateableAppsFilter = new IntentFilter(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
         LocalBroadcastManager.getInstance(this).registerReceiver(onUpdateableAppsChanged, updateableAppsFilter);
         getSupportLoaderManager().initLoader(LOADER_NUM_UPDATES, null, this);
@@ -122,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     private void setSelectedMenuInNav() {
-        bottomNavigation.setCurrentItem(adapter.adapterPositionFromItemId(selectedMenuId));
+        bottomNavigation.selectTab(adapter.adapterPositionFromItemId(selectedMenuId));
     }
 
     /**
@@ -175,10 +180,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        pager.scrollToPosition(((MainViewAdapter) pager.getAdapter()).adapterPositionFromItemId(item.getItemId()));
-        selectedMenuId = item.getItemId();
-        return true;
+    public void onTabSelected(int position) {
+        pager.scrollToPosition(position);
+        selectedMenuId = (int) adapter.getItemId(position);
+    }
+
+    @Override
+    public void onTabUnselected(int position) {
+
+    }
+
+    @Override
+    public void onTabReselected(int position) {
+
     }
 
     private void handleSearchOrAppViewIntent(Intent intent) {
@@ -322,32 +336,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         refreshUpdatesBadge(canUpdateCount);
     }
 
-    /**
-     * The updates badge is a bit hacky. There are indeed libraries which implement a bottom nav
-     * which have support for badges built into them. However they target API 14. There are also
-     * other badge libraries which just deal with rendering, but for the cost of another dependency,
-     * it is not particularly difficult to create a {@link TextView} with a background and position
-     * it ourselves.
-     */
     private void refreshUpdatesBadge(int canUpdateCount) {
         if (canUpdateCount == 0) {
-            updatesBadge.setVisibility(View.GONE);
+            updatesBadge.hide(true);
         } else {
-            String text = Integer.toString(canUpdateCount);
-            updatesBadge.setVisibility(View.VISIBLE);
-            updatesBadge.setText(text);
-
-            BottomNavigationItemView updatesNavItem = bottomNavigation.getBottomNavigationItemView(adapter.adapterPositionFromItemId(R.id.updates));
-            int[] locationInWindow = new int[2];
-            updatesNavItem.getLocationInWindow(locationInWindow);
-
-            int height = (int) getResources().getDimension(R.dimen.badge_size);
-            int width = text.length() < 3 ? height : height * 2;
-            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(width, height);
-            layoutParams.leftMargin = locationInWindow[0] + updatesNavItem.getWidth() - width;
-            layoutParams.topMargin = locationInWindow[1] - updatesNavItem.getHeight() + (height * 2);
-
-            updatesBadge.setLayoutParams(layoutParams);
+            updatesBadge.setText(Integer.toString(canUpdateCount));
+            updatesBadge.show(true);
         }
     }
 

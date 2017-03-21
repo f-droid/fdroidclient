@@ -54,7 +54,12 @@ dependencies {
         exclude module: 'support-annotations'
         exclude module: 'recyclerview-v7'
     }
-    compile 'com.github.ittianyu:BottomNavigationViewEx:1.1.5'
+
+    // Migrate this to upstream https://github.com/Ashok-Varma/BottomNavigation if PR #110 gets
+    // accepted to drop the minSdk to 10.
+    compile('com.github.pserwylo:BottomNavigation:1.5.0') {
+        exclude module: 'support-annotations'
+    }
 
     testCompile 'junit:junit:4.12'
 
@@ -111,23 +116,23 @@ if (!hasProperty('sourceDeps')) {
                 'commons-net:commons-net:c25b0da668b3c5649f002d504def22d1b4cb30d206f05428d2fe168fa1a901c2',
                 'com.android.support.constraint:constraint-layout-solver:d03a406eb505dfa673b0087bf17e16d5a4d6bf8afdf452ee175e346207948cdf',
                 'com.android.support.constraint:constraint-layout:df1add69d11063eebba521818d63537b22207376b65f30cc35feea172b84e300',
-                'com.android.support:animated-vector-drawable:d2d59a11809abe3e64535346f05c22437b458de115f06ea35021fd0714960213',
-                'com.android.support:appcompat-v7:120f3ce6cac682d69e53d80ccfa9cee076f0f11ccbe56d4ccd72099a745e81f9',
+                'com.android.support:animated-vector-drawable:4c1f665bd1397da7aa8f3ba694a787fa3fa0d78f6d229448b24f802f57a533f1',
+                'com.android.support:appcompat-v7:2841b0786c50018a14b6bbcdadb63d6b077ea9e2aadcc7611de1caeecaccf06a',
                 'com.android.support:cardview-v7:c8610b0c334e4438d7e1ac58fcf2ac891fb26bac662c8351cd6b345c8d7b7076',
-                'com.android.support:design:bf92337c5d0931df50a0dcec81682186dc1fbcf14c2fa1c6d51976963379b64d',
+                'com.android.support:design:920a416eb970459a8dedc98de49a729138b3ced502991a6a698fd7b6b74ef55b',
                 'com.android.support:gridlayout-v7:257ac1280f2b3cc3c0afca1cd4d4d2e0b923b92a76b61a9c09fc57e892da7360',
                 'com.android.support:palette-v7:e0050715e0d06fabcc8721b0c2893545fb00be9d761a6ef59ae69101d2368551',
-                'com.android.support:recyclerview-v7:d6ba2c3a6196cc464eb4d69756229523a46eef7804991e5a8cf2d6306dbff10c',
-                'com.android.support:support-annotations:47a2a30eab487a490a8a8f16678007c3d2b6dcae1e09b0485a12bbf921200ec3',
-                'com.android.support:support-compat:5a7b6e18903458e3a561df24033476518f998cd7ae1ed747c2874e0685b999c7',
-                'com.android.support:support-core-ui:cf3c75fd9a1b1dcbb6042d610515cd79cd0d65d3efd272d2250727187e8ca2ed',
-                'com.android.support:support-core-utils:e0561cc9d00ae125d9e1ad8985d4639e68ce8399ae973e91674e97faaf658243',
-                'com.android.support:support-fragment:f12633dd4d418a4edeb5ecf3bf4393edd0770b1eaa5d1ee3078c5e7c174868fd',
-                'com.android.support:support-media-compat:e9f820d08e6a5735cfdb2a7d81d3c86b4a31897ac1edaeb55c7de06bcb370343',
-                'com.android.support:support-v4:cd030f875dc7ee73b58e17598f368a2e12824fb3ceb4ed515ed815a47160228c',
-                'com.android.support:support-vector-drawable:d79752fd68db5a8f5c18125517dafb9e4d7b593c755d188986010e15edd62454',
-                'com.android.support:transition:5a4adefb1b410b23ad62b4477bc612edc47d3dfc8efed488deb8223b70b510d7',
-                'com.github.ittianyu:BottomNavigationViewEx:8ca56d7a91be446e0eeb6d2cccb9aa2a990858d24acc952933b3cd26e5357e45',
+                'com.android.support:recyclerview-v7:423b183809ef75051c150f5f401c4077ddedac26b2c515b6ee231c4c5724f5bf',
+                'com.android.support:support-annotations:faa89c445701dd0daf0031ceb2309fe5ffba0e019233acbba5f183ca8671a9a4',
+                'com.android.support:support-compat:bac5e951422b2d4100f4022f30ecec63a26730ac2889b24470b2108843aaef5f',
+                'com.android.support:support-core-ui:e65cb09dc7e2083eab87e300aaebacf415293a798b5b22bad3167e4a19f8da56',
+                'com.android.support:support-core-utils:5e9035e6b11e798d5c6e89355219192d8fe130965e34794887723b5472e4ec1a',
+                'com.android.support:support-fragment:d262cac1a910ee5093a2853b8bb14642011290d50bf4078545113d2d789b84c2',
+                'com.android.support:support-media-compat:656f810ff0725282dba86f2c1f4ab0940b0724ca84560ab48217a335ec4be483',
+                'com.android.support:support-v4:9142d2f386eeb4483050d7f13fcaeddcd01011650f4216208376ff7d4d7a6bf1',
+                'com.android.support:support-vector-drawable:6b9f6c40827896e2a05703d40ddeadd3a8a4309cd388627c9c002b8145b53167',
+                'com.android.support:transition:c65326088ca0b6d63ed8f4d4d429ff2370587dfa672873998271b3dec66430f8',
+                'com.github.pserwylo:BottomNavigation:83d7941a7a8d21ba1a8a708cd683b1bb07c6cf898044dc92eadf18a7a7d54f90',
                 'com.google.zxing:core:b4d82452e7a6bf6ec2698904b332431717ed8f9a850224f295aec89de80f2259',
                 'com.hannesdorfmann:adapterdelegates3:1b20d099d6e7afe57aceca13b713b386959d94a247c3c06a7aeb65b866ece02f',
                 'com.madgag.spongycastle:core:9b6b7ac856b91bcda2ede694eccd26cefb0bf0b09b89f13cda05b5da5ff68c6b',
