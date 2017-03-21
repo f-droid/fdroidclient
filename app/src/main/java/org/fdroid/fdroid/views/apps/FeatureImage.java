@@ -8,7 +8,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
 import android.os.Build;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.AppCompatImageView;
@@ -71,8 +73,8 @@ public class FeatureImage extends AppCompatImageView {
      * then creates a second variation that is slightly dimmer still. These two colours are then
      * randomly allocated to each triangle which is expected to be rendered.
      */
-    public void setPalette(@Nullable Palette palette) {
-        if (palette == null) {
+    public void setColour(@ColorInt int colour) {
+        if (colour == 0) {
             trianglePaints = null;
             return;
         }
@@ -80,7 +82,7 @@ public class FeatureImage extends AppCompatImageView {
         // It is easier to dull al colour in the HSV space, so convert to that then adjust the
         // saturation down and the colour value down.
         float[] hsv = new float[3];
-        Color.colorToHSV(palette.getDominantColor(Color.LTGRAY), hsv);
+        Color.colorToHSV(colour, hsv);
         hsv[1] *= 0.5f;
         hsv[2] *= 0.7f;
         int colourOne = Color.HSVToColor(hsv);
@@ -187,9 +189,8 @@ public class FeatureImage extends AppCompatImageView {
 
     /**
      * First try to draw whatever image was given to this view. If that doesn't exist, try to draw
-     * a geometric pattern based on the palette that was given to us. If we haven't had a palette
-     * assigned to us (using {@link FeatureImage#setPalette(Palette)}) then clear the
-     * view by filling it with white.
+     * a geometric pattern based on the palette that was given to us. If we haven't had a colour
+     * assigned to us (using {@link #setColour(int)}) then clear the view by filling it with white.
      */
     @Override
     protected void onDraw(Canvas canvas) {
@@ -200,12 +201,11 @@ public class FeatureImage extends AppCompatImageView {
                 paint.setAlpha(currentAlpha);
             }
 
-            canvas.drawRect(0, 0, getWidth(), getHeight(), WHITE_PAINT);
             for (int i = 0; i < triangles.length; i++) {
                 canvas.drawPath(triangles[i], trianglePaints[i]);
             }
         } else {
-            canvas.drawRect(0, 0, getWidth(), getHeight(), WHITE_PAINT);
+            canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         }
 
     }

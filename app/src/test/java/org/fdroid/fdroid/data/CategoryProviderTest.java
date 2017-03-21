@@ -30,12 +30,49 @@ public class CategoryProviderTest extends FDroidProviderTest {
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
     }
 
-    // ========================================================================
-    //  "Categories"
-    //  (at this point) not an additional table, but we treat them sort of
-    //  like they are. That means that if we change the implementation to
-    //  use a separate table in the future, these should still pass.
-    // ========================================================================
+    /**
+     * Different repositories can specify a different set of categories for the same package.
+     * In this case, only the repository with the highest priority should get to choose which
+     * category the app goes in.
+     */
+    @Test
+    public void onlyHighestPriorityMetadataDefinesCategories() {
+        long mainRepo = 1;
+        long gpRepo = 3;
+
+        insertAppWithCategory("info.guardianproject.notepadbot", "NoteCipher", "Writing,Security", mainRepo);
+        insertAppWithCategory("com.dog.rock.apple", "Dog-Rock-Apple", "Animal,Mineral,Vegetable", mainRepo);
+        insertAppWithCategory("com.banana.apple", "Banana", "Vegetable,Vegetable", mainRepo);
+
+        List<String> categories = CategoryProvider.Helper.categories(context);
+        String[] expected = new String[] {
+                context.getResources().getString(R.string.category_Whats_New),
+                context.getResources().getString(R.string.category_Recently_Updated),
+                context.getResources().getString(R.string.category_All),
+
+                "Animal",
+                "Mineral",
+                "Security",
+                "Vegetable",
+                "Writing",
+        };
+        assertContainsOnly(categories, expected);
+
+        insertAppWithCategory("info.guardianproject.notepadbot", "NoteCipher", "Office,GuardianProject", gpRepo);
+        assertContainsOnly(CategoryProvider.Helper.categories(context), expected);
+
+        RepoProvider.Helper.purgeApps(context, new MockRepo(mainRepo));
+        String[] expectedGp = new String[] {
+                context.getResources().getString(R.string.category_Whats_New),
+                context.getResources().getString(R.string.category_Recently_Updated),
+                context.getResources().getString(R.string.category_All),
+
+                "GuardianProject",
+                "Office",
+        };
+        List<String> categoriesAfterPurge = CategoryProvider.Helper.categories(context);
+        assertContainsOnly(categoriesAfterPurge, expectedGp);
+    }
 
     @Test
     public void queryFreeTextAndCategories() {

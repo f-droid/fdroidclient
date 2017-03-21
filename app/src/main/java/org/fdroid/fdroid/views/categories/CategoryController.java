@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.ViewCompat;
@@ -18,21 +21,29 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
+import org.fdroid.fdroid.views.apps.FeatureImage;
 
 import java.util.Random;
 
 public class CategoryController extends RecyclerView.ViewHolder implements LoaderManager.LoaderCallbacks<Cursor> {
     private final Button viewAll;
     private final TextView heading;
+    private final FeatureImage image;
     private final AppPreviewAdapter appCardsAdapter;
     private final FrameLayout background;
 
     private final Activity activity;
     private final LoaderManager loaderManager;
+    private final DisplayImageOptions displayImageOptions;
 
     private String currentCategory;
 
@@ -48,25 +59,66 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         viewAll.setOnClickListener(onViewAll);
 
         heading = (TextView) itemView.findViewById(R.id.name);
-
+        image = (FeatureImage) itemView.findViewById(R.id.category_image);
         background = (FrameLayout) itemView.findViewById(R.id.category_background);
 
         RecyclerView appCards = (RecyclerView) itemView.findViewById(R.id.app_cards);
         appCards.setAdapter(appCardsAdapter);
         appCards.addItemDecoration(new ItemDecorator(activity));
+
+        displayImageOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .imageScaleType(ImageScaleType.NONE)
+                .displayer(new FadeInBitmapDisplayer(100, true, true, false))
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
     }
 
     void bindModel(@NonNull String categoryName) {
         currentCategory = categoryName;
-        heading.setText(categoryName);
+
+        int categoryNameId = getCategoryResource(activity, categoryName, "string", false);
+        String translatedName = categoryNameId == 0 ? categoryName : activity.getString(categoryNameId);
+        heading.setText(translatedName);
+
         viewAll.setVisibility(View.INVISIBLE);
+
         loaderManager.initLoader(currentCategory.hashCode(), null, this);
         loaderManager.initLoader(currentCategory.hashCode() + 1, null, this);
 
-        background.setBackgroundColor(getBackgroundColour(categoryName));
+        @ColorInt int backgroundColour = getBackgroundColour(activity, categoryName);
+        background.setBackgroundColor(backgroundColour);
+
+        int categoryImageId = getCategoryResource(activity, categoryName, "drawable", true);
+        if (categoryImageId == 0) {
+            image.setColour(backgroundColour);
+            image.setImageDrawable(null);
+        } else {
+            image.setColour(0);
+            ImageLoader.getInstance().displayImage("drawable://" + categoryImageId, image, displayImageOptions);
+        }
     }
 
-    public static int getBackgroundColour(@NonNull String categoryName) {
+    /**
+     * @param requiresLowerCaseId Previously categories were translated using strings such as "category_Reading" for
+     *                            the "Reading" category. Now we also need to have drawable resources such as
+     *                            "category_reading". Note how drawables must have only lower case letters, whereas
+     *                            we already have upper case letters in strings.xml. Hence this flag.
+     */
+    private static int getCategoryResource(Context context, @NonNull String categoryName, String resourceType, boolean requiresLowerCaseId) {
+        String suffix = categoryName.replace(" & ", "_").replace(" ", "_").replace("'", "");
+        if (requiresLowerCaseId) {
+            suffix = suffix.toLowerCase();
+        }
+        return context.getResources().getIdentifier("category_" + suffix, resourceType, context.getPackageName());
+    }
+
+    public static int getBackgroundColour(Context context, @NonNull String categoryName) {
+        int colourId = getCategoryResource(context, categoryName, "color", false);
+        if (colourId > 0) {
+            return ContextCompat.getColor(context, colourId);
+        }
+
         // Seed based on the categoryName, so that each time we try to choose a colour for the same
         // category it will look the same for each different user, and each different session.
         Random random = new Random(categoryName.toLowerCase().hashCode());
@@ -130,6 +182,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         appCardsAdapter.setAppCursor(null);
     }
 
+    @SuppressWarnings("FieldCanBeLocal")
     private final View.OnClickListener onViewAll = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

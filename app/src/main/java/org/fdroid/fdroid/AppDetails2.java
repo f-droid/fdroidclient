@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -108,7 +109,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                         new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
                             @Override
                             public void onGenerated(Palette palette) {
-                                featureImage.setPalette(palette);
+                                featureImage.setColour(palette.getDominantColor(Color.LTGRAY));
                             }
                         });
                     }
