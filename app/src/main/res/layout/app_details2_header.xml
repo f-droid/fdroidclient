@@ -146,17 +146,6 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/summary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            tools:text="This app is awezome"
-            android:scrollbars="none"
-            android:textStyle="bold"
-            />
-
-        <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

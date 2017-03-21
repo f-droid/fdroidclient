@@ -289,7 +289,6 @@ public class AppDetailsRecyclerViewAdapter
         final ImageView iconView;
         final TextView titleView;
         final TextView authorView;
-        final TextView summaryView;
         final TextView descriptionView;
         final TextView descriptionMoreView;
         final View buttonLayout;
@@ -307,7 +306,6 @@ public class AppDetailsRecyclerViewAdapter
             iconView = (ImageView) view.findViewById(R.id.icon);
             titleView = (TextView) view.findViewById(R.id.title);
             authorView = (TextView) view.findViewById(R.id.author);
-            summaryView = (TextView) view.findViewById(R.id.summary);
             descriptionView = (TextView) view.findViewById(R.id.description);
             descriptionMoreView = (TextView) view.findViewById(R.id.description_more);
             buttonLayout = view.findViewById(R.id.button_layout);
@@ -392,7 +390,6 @@ public class AppDetailsRecyclerViewAdapter
             } else {
                 authorView.setVisibility(View.GONE);
             }
-            summaryView.setText(app.summary);
             final Spanned desc = Html.fromHtml(app.description, null, new Utils.HtmlTagHandler());
             descriptionView.setMovementMethod(LinkMovementMethod.getInstance());
             descriptionView.setText(trimTrailingNewlines(desc));
