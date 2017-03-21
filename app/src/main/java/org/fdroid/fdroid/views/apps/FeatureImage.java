@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.apps;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -11,10 +12,18 @@ import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.AppCompatImageView;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.View;
+
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.util.Random;
 
@@ -224,5 +233,53 @@ public class FeatureImage extends AppCompatImageView {
         path.close();
 
         return path;
+    }
+
+    public void loadImageAndDisplay(@NonNull ImageLoader loader, @NonNull DisplayImageOptions imageOptions, @Nullable String featureImageToShow, @Nullable String fallbackImageToExtractColours) {
+        if (!TextUtils.isEmpty(featureImageToShow)) {
+            loadImageAndDisplay(loader, imageOptions, featureImageToShow);
+        } else if (!TextUtils.isEmpty(fallbackImageToExtractColours)) {
+            loadImageAndExtractColour(loader, imageOptions, fallbackImageToExtractColours);
+        }
+    }
+
+    private void loadImageAndExtractColour(@NonNull ImageLoader loader, @NonNull DisplayImageOptions imageOptions, String url) {
+        loader.loadImage(url, imageOptions, new ImageLoadingAdapter() {
+            @Override
+            public void onLoadingComplete(String imageUri, View view, final Bitmap loadedImage) {
+                if (loadedImage != null) {
+                    new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
+                        @Override
+                        public void onGenerated(Palette palette) {
+                            if (palette != null) {
+                                setColour(palette.getDominantColor(Color.LTGRAY));
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    public void loadImageAndDisplay(@NonNull ImageLoader loader, @NonNull DisplayImageOptions imageOptions, String url) {
+        loader.loadImage(url, imageOptions, new ImageLoadingAdapter() {
+            @Override
+            public void onLoadingComplete(String imageUri, View view, final Bitmap loadedImage) {
+                if (loadedImage != null) {
+                    setImageBitmap(loadedImage);
+                }
+            }
+        });
+    }
+
+    private abstract static class ImageLoadingAdapter implements ImageLoadingListener {
+        @Override
+        public void onLoadingStarted(String imageUri, View view) { }
+
+        @Override
+        public void onLoadingFailed(String imageUri, View view, FailReason failReason) { }
+
+        @Override
+        public void onLoadingCancelled(String imageUri, View view) { }
     }
 }

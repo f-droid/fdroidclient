@@ -9,8 +9,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -18,7 +16,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -26,13 +23,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -136,39 +130,10 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         recyclerView.setAdapter(adapter);
 
         // Load the feature graphic, if present
+        final FeatureImage featureImage = (FeatureImage) findViewById(R.id.feature_graphic);
+        DisplayImageOptions displayImageOptions = Utils.getImageLoadingOptions().build();
         String featureGraphicUrl = app.getFeatureGraphicUrl(this);
-        if (!TextUtils.isEmpty(featureGraphicUrl)) {
-            final FeatureImage featureImage = (FeatureImage) findViewById(R.id.feature_graphic);
-            DisplayImageOptions displayImageOptions = Utils.getImageLoadingOptions().build();
-            ImageLoader.getInstance().loadImage(featureGraphicUrl, displayImageOptions, new ImageLoadingListener() {
-                @Override
-                public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                    if (featureImage != null) {
-                        new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
-                            @Override
-                            public void onGenerated(Palette palette) {
-                                featureImage.setColour(palette.getDominantColor(Color.LTGRAY));
-                            }
-                        });
-                    }
-                }
-
-                @Override
-                public void onLoadingStarted(String imageUri, View view) {
-
-                }
-
-                @Override
-                public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-
-                }
-
-                @Override
-                public void onLoadingCancelled(String imageUri, View view) {
-
-                }
-            });
-        }
+        featureImage.loadImageAndDisplay(ImageLoader.getInstance(), displayImageOptions, featureGraphicUrl, app.iconUrl);
     }
 
     private String getPackageNameFromIntent(Intent intent) {

@@ -12,6 +12,8 @@
         android:layout_width="0dp"
         android:layout_height="120dp"
         tools:src="@color/fdroid_green"
+        android:scaleType="centerCrop"
+        android:fitsSystemWindows="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
