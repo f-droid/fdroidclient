@@ -16,7 +16,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.apache.commons.io.filefilter.RegexFileFilter;
@@ -56,25 +56,27 @@ import java.util.regex.Pattern;
  * <b>Do not rename these instance variables without careful consideration!</b>
  * They are mapped to JSON field names, the {@code fdroidserver} internal variable
  * names, and the {@code fdroiddata} YAML field names.  Only the instance variables
- * listed in {@code @JsonIgnoreProperties} are not directly mapped.
+ * decorated with {@code @JsonIgnore} are not directly mapped.
+ * <p>
+ * <b>NOTE:</b>If an instance variable is only meant for internal state, and not for
+ * representing data coming from the server, then it must also be decorated with
+ * {@code @JsonIgnore} to prevent abuse!  The tests for
+ * {@link org.fdroid.fdroid.IndexV1Updater} will also have to be updated.
  *
  * @see <a href="https://gitlab.com/fdroid/fdroiddata">fdroiddata</a>
  * @see <a href="https://gitlab.com/fdroid/fdroidserver">fdroidserver</a>
  */
-@JsonIgnoreProperties({"compatible", "CREATOR", "id", "installedApk", "installedSig",
-        "installedVersionCode", "installedVersionName", "prefs", "repoId", })
 public class App extends ValueObject implements Comparable<App>, Parcelable {
 
+    @JsonIgnore
     private static final String TAG = "App";
 
+    // these properties are not from the index metadata, but represent the state on the device
     /**
      * True if compatible with the device (i.e. if at least one apk is)
      */
+    @JsonIgnore
     public boolean compatible;
-
-    public String packageName = "unknown";
-    public String name = "Unknown";
-
     /**
      * This is primarily for the purpose of saving app metadata when parsing an index.xml file.
      * At most other times, we don't particularly care which repo an {@link App} object came from.
@@ -82,7 +84,25 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * the highest priority. The UI doesn't care normally _which_ repo provided the metadata.
      * This is required for getting the full URL to the various graphics and screenshots.
      */
+    @JsonIgnore
     public long repoId;
+    @JsonIgnore
+    public Apk installedApk; // might be null if not installed
+    @JsonIgnore
+    public String installedSig;
+    @JsonIgnore
+    public int installedVersionCode;
+    @JsonIgnore
+    public String installedVersionName;
+    @JsonIgnore
+    private long id;
+    @JsonIgnore
+    private AppPrefs prefs;
+
+    // the remaining properties are set directly from the index metadata
+    public String packageName = "unknown";
+    public String name = "Unknown";
+
     public String summary = "Unknown application";
     public String icon;
 
@@ -155,8 +175,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     @Deprecated
     public String[] requirements;
 
-    private AppPrefs prefs;
-
     /**
      * To be displayed at 48dp (x1.0)
      */
@@ -166,16 +184,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * To be displayed at 72dp (x1.5)
      */
     public String iconUrlLarge;
-
-    public String installedVersionName;
-
-    public int installedVersionCode;
-
-    public Apk installedApk; // might be null if not installed
-
-    public String installedSig;
-
-    private long id;
 
     public static String getIconName(String packageName, int versionCode) {
         return packageName + "_" + versionCode + ".png";
@@ -957,6 +965,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.id = in.readLong();
     }
 
+    @JsonIgnore
     public static final Parcelable.Creator<App> CREATOR = new Parcelable.Creator<App>() {
         @Override
         public App createFromParcel(Parcel source) {

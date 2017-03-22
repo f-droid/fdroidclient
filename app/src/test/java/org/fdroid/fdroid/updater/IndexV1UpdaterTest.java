@@ -2,47 +2,35 @@ package org.fdroid.fdroid.updater;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
-
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
-
 import org.apache.commons.io.IOUtils;
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.IndexV1Updater;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.RepoUpdater;
-import org.fdroid.fdroid.TestUtils;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.FDroidProviderTest;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoPushRequest;
+import org.fdroid.fdroid.*;
+import org.fdroid.fdroid.data.*;
 import org.fdroid.fdroid.mock.RepoDetails;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Field;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.core.IsNot.not;
+import static org.junit.Assert.*;
 
-// TODO: Use sdk=24 when Robolectric supports this
-@Config(constants = BuildConfig.class, sdk = 23)
-@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 24)
+@RunWith(RobolectricTestRunner.class)
 public class IndexV1UpdaterTest extends FDroidProviderTest {
     public static final String TAG = "IndexV1UpdaterTest";
 
@@ -167,6 +155,197 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
             }
         }
         assertArrayEquals(installRequests.toArray(), requests.get("install"));
+    }
+
+    /**
+     * Test that all the fields are properly marked as whether Jackson should ignore them
+     * or not.  Technically this test goes the opposite direction of how its being used:
+     * it writes out {@link App} and {@link Apk} instances to JSON using Jackson. With the
+     * index parsing, Jackson is always reading JSON into {@link App} and {@link Apk}
+     * instances.  {@code @JsonIgnoreProperties} applies to both directions.
+     * <p>
+     * The test sets come from the top of {@link App} and {@link Apk}.
+     */
+    @Test
+    public void testJsonIgnoreApp() throws JsonProcessingException {
+        String[] allowedInApp = new String[]{
+                "added",
+                "antiFeatures",
+                "authorEmail",
+                "authorName",
+                "bitcoin",
+                "categories",
+                "changelog",
+                "description",
+                "donate",
+                "featureGraphic",
+                "flattrID",
+                "icon",
+                "iconUrl",
+                "iconUrlLarge",
+                "issueTracker",
+                "lastUpdated",
+                "license",
+                "litecoin",
+                "name",
+                "packageName",
+                "phoneScreenshots",
+                "promoGraphic",
+                "requirements",
+                "sevenInchScreenshots",
+                "sourceCode",
+                "suggestedVersionCode",
+                "suggestedVersionName",
+                "summary",
+                "tenInchScreenshots",
+                "tvBanner",
+                "tvScreenshots",
+                "upstreamVersionCode",
+                "upstreamVersionName",
+                "video",
+                "wearScreenshots",
+                "webSite",
+        };
+        String[] ignoredInApp = new String[]{
+                "compatible",
+                "CREATOR",
+                "id",
+                "installedApk",
+                "installedSig",
+                "installedVersionCode",
+                "installedVersionName",
+                "prefs",
+                "repoId",
+                "TAG",
+        };
+        runJsonIgnoreTest(new App(), allowedInApp, ignoredInApp);
+    }
+
+    @Test
+    public void testJsonIgnoreApk() throws JsonProcessingException {
+        String[] allowedInApk = new String[]{
+                "added",
+                "antiFeatures",
+                "apkName",
+                "appId",
+                "features",
+                "hash",
+                "hashType",
+                "incompatibleReasons",
+                "maxSdkVersion",
+                "minSdkVersion",
+                "nativecode",
+                "obbMainFile",
+                "obbMainFileSha256",
+                "obbPatchFile",
+                "obbPatchFileSha256",
+                "packageName",
+                "requestedPermissions",
+                "sig",
+                "size",
+                "srcname",
+                "targetSdkVersion",
+                "versionCode",
+                "versionName",
+        };
+        String[] ignoredInApk = new String[]{
+                "compatible",
+                "CREATOR",
+                "installedFile",
+                "repo",
+                "repoAddress",
+                "repoVersion",
+                "SDK_VERSION_MAX_VALUE",
+                "SDK_VERSION_MIN_VALUE",
+                "url",
+        };
+        runJsonIgnoreTest(new Apk(), allowedInApk, ignoredInApk);
+    }
+
+    private void runJsonIgnoreTest(Object instance, String[] allowed, String[] ignored)
+            throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        String objectAsString = mapper.writeValueAsString(instance);
+        Set<String> fields = getFields(instance);
+        for (String field : ignored) {
+            assertThat(objectAsString, not(containsString("\"" + field + "\"")));
+            fields.remove(field);
+        }
+        for (String field : allowed) {
+            fields.remove(field);
+        }
+        if (fields.size() > 0) {
+            System.out.print(instance.getClass() + " has fields not setup for Jackson: ");
+            for (String field : fields) {
+                System.out.print("\"" + field + "\", ");
+            }
+            System.out.println("\nRead class javadoc for more info.");
+        }
+        assertEquals(0, fields.size());
+    }
+
+    @Test
+    public void testInstanceVariablesAreProperlyMarked() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        // testing with unknown metadata in it
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        JsonFactory f = mapper.getFactory();
+        JsonParser parser = f.createParser(TestUtils.copyResourceToTempFile("all_fields_index-v1.json"));
+
+        Repo repo = null;
+        App[] apps = null;
+        Map<String, List<Apk>> packages = null;
+
+        parser.nextToken(); // go into the main object block
+        while (true) {
+            String fieldName = parser.nextFieldName();
+            if (fieldName == null) {
+                break;
+            }
+            switch (fieldName) {
+                case "repo":
+                    repo = parseRepo(mapper, parser);
+                    break;
+                case "apps":
+                    apps = parseApps(mapper, parser);
+                    break;
+                case "packages":
+                    packages = parsePackages(mapper, parser);
+                    break;
+            }
+        }
+        parser.close(); // ensure resources get cleaned up timely and properly
+
+        assertEquals(1, apps.length);
+        assertEquals(1, packages.size());
+        assertEquals(1488828510109L, repo.timestamp);
+        assertEquals("GPLv3", apps[0].license);
+
+        Set<String> appFields = getFields(apps[0]);
+        for (String field : appFields) {
+            assertNotEquals("secret", field);
+        }
+
+        Apk apk = packages.get("info.guardianproject.cacert").get(0);
+        assertEquals("e013db095e8da843fae5ac44be6152e51377ee717e5c8a7b6d913d7720566b5a", apk.hash);
+        Set<String> packageFields = getFields(apk);
+        for (String field : packageFields) {
+            assertNotEquals("secret", field);
+        }
+    }
+
+    private Set<String> getFields(Object instance) {
+        SortedSet<String> output = new TreeSet<>();
+
+        //determine fields declared in this class only (no fields of superclass)
+        Field[] fields = instance.getClass().getDeclaredFields();
+
+        //print field names paired with their values
+        for (Field field : fields) {
+            output.add(field.getName());
+        }
+
+        return output;
     }
 
     private Repo parseRepo(ObjectMapper mapper, JsonParser parser) throws IOException {

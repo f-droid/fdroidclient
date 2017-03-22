@@ -38,6 +38,11 @@ import java.util.Date;
 /**
  * Represents a the descriptive info and metadata about a given repo, as provided
  * by the repo index.  This also keeps track of the state of the repo.
+ * <p>
+ * <b>Do not rename these instance variables without careful consideration!</b>
+ * They are mapped to JSON field names, the {@code fdroidserver} internal variable
+ * names, and the {@code fdroiddata} YAML field names.  Only the instance variables
+ * decorated with {@code @JsonIgnore} are not directly mapped.
  *
  * @see <a href="https://gitlab.com/fdroid/fdroiddata">fdroiddata</a>
  * @see <a href="https://gitlab.com/fdroid/fdroidserver">fdroidserver</a>
