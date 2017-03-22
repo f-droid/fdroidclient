@@ -11,8 +11,16 @@ import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import org.apache.commons.io.IOUtils;
-import org.fdroid.fdroid.*;
-import org.fdroid.fdroid.data.*;
+import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.IndexV1Updater;
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.RepoUpdater;
+import org.fdroid.fdroid.TestUtils;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.FDroidProviderTest;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoPushRequest;
 import org.fdroid.fdroid.mock.RepoDetails;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +30,13 @@ import org.robolectric.annotation.Config;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -118,7 +132,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         ObjectMapper mapper = new ObjectMapper();
         // the app ignores all unknown fields when complete, do not ignore during dev to catch mistakes
         mapper.enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setInjectableValues(new InjectableValues.Std().addValue(long.class, FAKE_REPO_ID));
+        mapper.setInjectableValues(new InjectableValues.Std().addValue("repoId", FAKE_REPO_ID));
         JsonFactory f = mapper.getFactory();
         JsonParser parser = f.createParser(TestUtils.copyResourceToTempFile("guardianproject_index-v1.json"));
 
@@ -310,7 +324,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         ObjectMapper mapper = new ObjectMapper();
         // testing with unknown metadata in it
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setInjectableValues(new InjectableValues.Std().addValue(long.class, FAKE_REPO_ID));
+        mapper.setInjectableValues(new InjectableValues.Std().addValue("repoId", FAKE_REPO_ID));
         JsonFactory f = mapper.getFactory();
         JsonParser parser = f.createParser(TestUtils.copyResourceToTempFile("all_fields_index-v1.json"));
 

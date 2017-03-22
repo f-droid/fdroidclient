@@ -56,8 +56,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     @JsonIgnore
     public boolean compatible; // True if compatible with the device.
 
-    @JacksonInject
-    public long repoId; // ID of the repo it comes from
+    @JacksonInject("repoId")
+    public long repoId; // the database ID of the repo it comes from
 
     // these come directly from the index metadata
     public String packageName;

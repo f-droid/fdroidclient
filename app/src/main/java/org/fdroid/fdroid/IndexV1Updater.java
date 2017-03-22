@@ -134,7 +134,7 @@ public class IndexV1Updater extends RepoUpdater {
             throws IOException, UpdateException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setInjectableValues(new InjectableValues.Std().addValue(long.class, repo.getId()));
+        mapper.setInjectableValues(new InjectableValues.Std().addValue("repoId", repo.getId()));
         JsonFactory f = mapper.getFactory();
         JsonParser parser = f.createParser(indexInputStream);
         HashMap<String, Object> repoMap = null;

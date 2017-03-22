@@ -163,6 +163,9 @@ public class Repo extends ValueObject {
         }
     }
 
+    /**
+     * @return the database ID to find this repo in the database
+     */
     public long getId() {
         return id;
     }

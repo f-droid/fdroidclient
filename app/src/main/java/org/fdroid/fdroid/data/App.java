@@ -98,7 +98,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     @JsonIgnore
     private AppPrefs prefs;
 
-    @JacksonInject
+    @JacksonInject("repoId")
     public long repoId;
 
     // the remaining properties are set directly from the index metadata
