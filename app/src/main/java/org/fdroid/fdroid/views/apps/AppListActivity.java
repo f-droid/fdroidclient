@@ -26,6 +26,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
     public static final String EXTRA_CATEGORY = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY";
     public static final String EXTRA_SEARCH_TERMS = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
+
     private RecyclerView appView;
     private AppListAdapter appAdapter;
     private String category;
@@ -78,12 +79,11 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         appView.setHasFixedSize(true);
         appView.setLayoutManager(new LinearLayoutManager(this));
         appView.setAdapter(appAdapter);
+
+        parseIntentForSearchQuery();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
+    private void parseIntentForSearchQuery() {
         Intent intent = getIntent();
         category = intent.hasExtra(EXTRA_CATEGORY) ? intent.getStringExtra(EXTRA_CATEGORY) : null;
         searchTerms = intent.hasExtra(EXTRA_SEARCH_TERMS) ? intent.getStringExtra(EXTRA_SEARCH_TERMS) : null;
