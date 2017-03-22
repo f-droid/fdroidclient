@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.fdroid.fdroid.BuildConfig;
@@ -47,8 +48,6 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
     // these are never set by the Apk/package index metadata
     @JsonIgnore
-    public long repo; // ID of the repo it comes from
-    @JsonIgnore
     String repoAddress;
     @JsonIgnore
     int repoVersion;
@@ -56,6 +55,9 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public SanitizedFile installedFile; // the .apk file on this device's filesystem
     @JsonIgnore
     public boolean compatible; // True if compatible with the device.
+
+    @JacksonInject
+    public long repo; // ID of the repo it comes from
 
     // these come directly from the index metadata
     public String packageName;

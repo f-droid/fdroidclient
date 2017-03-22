@@ -16,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -85,8 +86,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * This is required for getting the full URL to the various graphics and screenshots.
      */
     @JsonIgnore
-    public long repoId;
-    @JsonIgnore
     public Apk installedApk; // might be null if not installed
     @JsonIgnore
     public String installedSig;
@@ -98,6 +97,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     private long id;
     @JsonIgnore
     private AppPrefs prefs;
+
+    @JacksonInject
+    public long repoId;
 
     // the remaining properties are set directly from the index metadata
     public String packageName = "unknown";

@@ -13,6 +13,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.io.FileUtils;
@@ -133,6 +134,7 @@ public class IndexV1Updater extends RepoUpdater {
             throws IOException, UpdateException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        mapper.setInjectableValues(new InjectableValues.Std().addValue(long.class, repo.getId()));
         JsonFactory f = mapper.getFactory();
         JsonParser parser = f.createParser(indexInputStream);
         HashMap<String, Object> repoMap = null;
@@ -192,7 +194,6 @@ public class IndexV1Updater extends RepoUpdater {
         RepoPersister repoPersister = new RepoPersister(context, repo);
         if (apps != null && apps.length > 0) {
             for (App app : apps) {
-                app.repoId = repo.getId(); // TODO this should be "injected" i.e. @JacksonInject
                 List<Apk> apks = null;
                 if (packages != null) {
                     apks = packages.get(app.packageName);
