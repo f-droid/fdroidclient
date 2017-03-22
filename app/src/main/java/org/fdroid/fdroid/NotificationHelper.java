@@ -410,7 +410,8 @@ class NotificationHelper {
 
         // Intent to open main app list
         Intent intentObject = new Intent(context, MainActivity.class);
-        PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject, 0);
+        intentObject.putExtra(MainActivity.EXTRA_VIEW_UPDATES, true);
+        PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)

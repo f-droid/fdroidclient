@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views.main;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +11,7 @@ import android.widget.FrameLayout;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.fragments.PreferencesFragment;
-import org.fdroid.fdroid.views.myapps.MyAppsViewBinder;
+import org.fdroid.fdroid.views.updates.UpdatesViewBinder;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 /**
@@ -23,6 +24,9 @@ class MainViewController extends RecyclerView.ViewHolder {
 
     private final AppCompatActivity activity;
     private final FrameLayout frame;
+
+    @Nullable
+    private UpdatesViewBinder updatesView = null;
 
     MainViewController(AppCompatActivity activity, FrameLayout frame) {
         super(frame);
@@ -38,10 +42,20 @@ class MainViewController extends RecyclerView.ViewHolder {
     }
 
     /**
-     * @see MyAppsViewBinder
+     * @see UpdatesViewBinder
      */
-    public void bindMyApps() {
-        new MyAppsViewBinder(activity, frame);
+    public void bindUpdates() {
+        if (updatesView == null) {
+            updatesView = new UpdatesViewBinder(activity, frame);
+        }
+
+        updatesView.bind();
+    }
+
+    public void unbindUpdates() {
+        if (updatesView != null) {
+            updatesView.unbind();
+        }
     }
 
     /**

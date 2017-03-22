@@ -6,22 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.BottomNavigationView
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
         android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         app:menu="@menu/main_activity_screens"
-        android:background="@color/fdroid_blue"
-        app:itemBackground="@color/fdroid_blue"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white" />
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_view_pager"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/main_tab_whats_new" />
 
 </RelativeLayout>

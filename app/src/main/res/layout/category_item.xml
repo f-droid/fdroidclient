@@ -24,7 +24,6 @@
     <Button
         android:id="@+id/button"
         tools:text="View all 10"
-        style="@style/DetailsSecondaryButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"

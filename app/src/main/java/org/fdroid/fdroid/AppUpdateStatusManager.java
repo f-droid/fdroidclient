@@ -35,12 +35,47 @@ import java.util.Map;
  */
 public final class AppUpdateStatusManager {
 
-    static final String BROADCAST_APPSTATUS_LIST_CHANGED = "org.fdroid.fdroid.installer.appstatus.listchange";
-    static final String BROADCAST_APPSTATUS_ADDED = "org.fdroid.fdroid.installer.appstatus.appchange.add";
-    static final String BROADCAST_APPSTATUS_CHANGED = "org.fdroid.fdroid.installer.appstatus.appchange.change";
-    static final String BROADCAST_APPSTATUS_REMOVED = "org.fdroid.fdroid.installer.appstatus.appchange.remove";
-    static final String EXTRA_APK_URL = "urlstring";
-    static final String EXTRA_IS_STATUS_UPDATE = "isstatusupdate";
+    /**
+     * Broadcast when:
+     *  * The user clears the list of installed apps from notification manager.
+     *  * The user clears the list of apps available to update from the notification manager.
+     *  * A repo update is completed and a bunch of new apps are ready to be updated.
+     *  * F-Droid is opened, and it finds a bunch of .apk files downloaded and ready to install.
+     */
+    public static final String BROADCAST_APPSTATUS_LIST_CHANGED = "org.fdroid.fdroid.installer.appstatus.listchange";
+
+    /**
+     * Broadcast when an app begins the download/install process (either manually or via an automatic download).
+     */
+    public static final String BROADCAST_APPSTATUS_ADDED = "org.fdroid.fdroid.installer.appstatus.appchange.add";
+
+    /**
+     * When the {@link AppUpdateStatus#status} of an app changes or the download progress for an app advances.
+     */
+    public static final String BROADCAST_APPSTATUS_CHANGED = "org.fdroid.fdroid.installer.appstatus.appchange.change";
+
+    /**
+     * Broadcast when:
+     *  * The associated app has the {@link Status#Installed} status, and the user either visits
+     *    that apps details page or clears the individual notification for the app.
+     *  * The download for an app is cancelled.
+     */
+    public static final String BROADCAST_APPSTATUS_REMOVED = "org.fdroid.fdroid.installer.appstatus.appchange.remove";
+
+    public static final String EXTRA_APK_URL = "urlstring";
+
+    public static final String EXTRA_REASON_FOR_CHANGE = "reason";
+
+    public static final String REASON_READY_TO_INSTALL = "readytoinstall";
+    public static final String REASON_UPDATES_AVAILABLE = "updatesavailable";
+    public static final String REASON_CLEAR_ALL_UPDATES = "clearallupdates";
+    public static final String REASON_CLEAR_ALL_INSTALLED = "clearallinstalled";
+
+    /**
+     * If this is present and true, then the broadcast has been sent in response to the {@link AppUpdateStatus#status}
+     * changing. In comparison, if it is just the download progress of an app then this should not be true.
+     */
+    public static final String EXTRA_IS_STATUS_UPDATE = "isstatusupdate";
 
     private static final String LOGTAG = "AppUpdateStatusManager";
 
@@ -147,9 +182,11 @@ public final class AppUpdateStatusManager {
         notifyAdd(entry);
     }
 
-    private void notifyChange() {
+    private void notifyChange(String reason) {
         if (!isBatchUpdating) {
-            localBroadcastManager.sendBroadcast(new Intent(BROADCAST_APPSTATUS_LIST_CHANGED));
+            Intent intent = new Intent(BROADCAST_APPSTATUS_LIST_CHANGED);
+            intent.putExtra(EXTRA_REASON_FOR_CHANGE, reason);
+            localBroadcastManager.sendBroadcast(intent);
         }
     }
 
@@ -193,7 +230,7 @@ public final class AppUpdateStatusManager {
         for (Apk apk : apksToUpdate) {
             addApk(apk, status, null);
         }
-        endBatchUpdates();
+        endBatchUpdates(status);
     }
 
     /**
@@ -291,10 +328,17 @@ public final class AppUpdateStatusManager {
         }
     }
 
-    private void endBatchUpdates() {
+    private void endBatchUpdates(Status status) {
         synchronized (appMapping) {
             isBatchUpdating = false;
-            notifyChange();
+
+            String reason = null;
+            if (status == Status.ReadyToInstall) {
+                reason = REASON_READY_TO_INSTALL;
+            } else if (status == Status.UpdateAvailable) {
+                reason = REASON_UPDATES_AVAILABLE;
+            }
+            notifyChange(reason);
         }
     }
 
@@ -306,7 +350,7 @@ public final class AppUpdateStatusManager {
                     it.remove();
                 }
             }
-            notifyChange();
+            notifyChange(REASON_CLEAR_ALL_UPDATES);
         }
     }
 
@@ -318,7 +362,7 @@ public final class AppUpdateStatusManager {
                     it.remove();
                 }
             }
-            notifyChange();
+            notifyChange(REASON_CLEAR_ALL_INSTALLED);
         }
     }
 

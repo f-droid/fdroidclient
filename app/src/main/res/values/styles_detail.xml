@@ -14,11 +14,17 @@
     <style name="DetailsPrimaryButtonStyle" parent="DetailsButtonStyle">
         <item name="android:textColor">#ffffff</item>
         <item name="android:background">@drawable/button_primary_background_selector</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:minHeight">32dp</item>
+        <item name="android:minWidth">0dp</item>
     </style>
 
     <style name="DetailsSecondaryButtonStyle" parent="DetailsButtonStyle">
         <item name="android:textColor">@color/fdroid_blue</item>
         <item name="android:background">@drawable/button_secondary_background_selector</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:minHeight">32dp</item>
+        <item name="android:minWidth">0dp</item>
     </style>
 
     <style name="DetailsMoreButtonStyle">

@@ -119,7 +119,7 @@ public class CategorySpan extends ReplacementSpan {
         canvas.drawRoundRect(iconBackgroundRect, cornerRadius, cornerRadius, iconBackgroundPaint);
 
         // Category icon on top of the circular background which was just drawn.
-        Drawable icon = ContextCompat.getDrawable(context, R.drawable.ic_category);
+        Drawable icon = ContextCompat.getDrawable(context, R.drawable.ic_categories);
         icon.setBounds(iconPadding, iconPadding, iconPadding + iconSize, iconPadding + iconSize);
         icon.draw(canvas);
 

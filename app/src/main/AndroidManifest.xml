@@ -297,8 +297,14 @@
         <service
             android:name=".data.InstalledAppProviderService"
             android:exported="false" />
+        <service
+            android:name=".AppUpdateStatusService"
+            android:exported="false" />
 
-        <activity android:name=".views.main.MainActivity">
+        <activity
+            android:name=".views.main.MainActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
