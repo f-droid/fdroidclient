@@ -167,20 +167,19 @@ public class IndexV1Updater extends RepoUpdater {
             return;
         }
 
-            /* TODO
-            if (timestamp < repo.timestamp) {
-                throw new RepoUpdater.UpdateException(repo, "index.jar is older that current index! "
-                        + timestamp + " < " + repo.timestamp);
-            }
-            */
-        // TODO handle maxage, convert to "expiration" Date instance
+        long timestamp = (Long) repoMap.get("timestamp") / 1000;
+
+        if (repo.timestamp > timestamp) {
+            throw new RepoUpdater.UpdateException(repo, "index.jar is older that current index! "
+                    + timestamp + " < " + repo.timestamp);
+        }
 
         X509Certificate certificate = getSigningCertFromJar(indexEntry);
         verifySigningCertificate(certificate);
         Utils.debugLog(TAG, "Repo signature verified, saving app metadata to database.");
 
         // timestamp is absolutely required
-        repo.timestamp = (Long) repoMap.get("timestamp");
+        repo.timestamp = timestamp;
         // below are optional, can be null
         repo.name = getStringRepoValue(repoMap, "name");
         repo.icon = getStringRepoValue(repoMap, "icon");
