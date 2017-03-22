@@ -889,11 +889,15 @@
                     ],
                     [
                         "android.permission.WRITE_EXTERNAL_STORAGE",
-                        18
+                        18,
+                        null,
+                        "another fake future proofing test"
                     ],
                     [
                         "android.permission.VIBRATE",
-                        18
+                        18,
+                        1234567,
+                        "future proof test"
                     ]
                 ],
                 "versionCode": 100,
