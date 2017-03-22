@@ -9,6 +9,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -46,6 +48,12 @@ import java.util.jar.JarFile;
  * by Jackson. This is possible but not wise to do with {@link Repo} since that
  * class has many fields that are related to security components of the
  * implementation internal to this app.
+ * <p>
+ * All non-{@code public} fields and fields tagged with {@code @JsonIgnore} are
+ * ignored. All methods are ignored unless they are tagged with {@code @JsonProperty}.
+ * This setup prevents the situation where future developers add variables to the
+ * App/Apk classes, resulting in malicious servers being able to populate those
+ * variables.
  */
 public class IndexV1Updater extends RepoUpdater {
     public static final String TAG = "IndexV1Updater";
@@ -122,6 +130,22 @@ public class IndexV1Updater extends RepoUpdater {
     }
 
     /**
+     * Get the standard {@link ObjectMapper} instance used for parsing {@code index-v1.json}.
+     * This ignores unknown properties so that old releases won't crash when new things are
+     * added to {@code index-v1.json}.  This is required for both forward compatibility,
+     * but also because ignoring such properties when coming from a malicious server seems
+     * reasonable anyway.
+     */
+    public static ObjectMapper getObjectMapperInstance(long repoId) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        mapper.setInjectableValues(new InjectableValues.Std().addValue("repoId", repoId));
+        mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
+        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.PUBLIC_ONLY);
+        return mapper;
+    }
+
+    /**
      * Parses the index and feeds it to the database via {@link Repo}, {@link App},
      * and {@link Apk} instances.
      *
@@ -132,9 +156,7 @@ public class IndexV1Updater extends RepoUpdater {
      */
     public void processIndexV1(InputStream indexInputStream, JarEntry indexEntry, String cacheTag)
             throws IOException, UpdateException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setInjectableValues(new InjectableValues.Std().addValue("repoId", repo.getId()));
+        ObjectMapper mapper = getObjectMapperInstance(repo.getId());
         JsonFactory f = mapper.getFactory();
         JsonParser parser = f.createParser(indexInputStream);
         HashMap<String, Object> repoMap = null;

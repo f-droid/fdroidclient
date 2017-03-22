@@ -7,7 +7,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import org.apache.commons.io.IOUtils;
@@ -129,10 +128,9 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
 
     @Test
     public void testJacksonParsing() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = IndexV1Updater.getObjectMapperInstance(FAKE_REPO_ID);
         // the app ignores all unknown fields when complete, do not ignore during dev to catch mistakes
         mapper.enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setInjectableValues(new InjectableValues.Std().addValue("repoId", FAKE_REPO_ID));
         JsonFactory f = mapper.getFactory();
         JsonParser parser = f.createParser(TestUtils.copyResourceToTempFile("guardianproject_index-v1.json"));
 
@@ -199,7 +197,10 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
      * index parsing, Jackson is always reading JSON into {@link App} and {@link Apk}
      * instances.  {@code @JsonIgnoreProperties} applies to both directions.
      * <p>
-     * The test sets come from the top of {@link App} and {@link Apk}.
+     * If this test fails for you, then it probably means you are adding a new instance
+     * variable to {@link App}.  In that case, you need to add it to the appropriate
+     * list here.  If it is allowed, make sure this new instance variable is in sync with
+     * {@code index-v1.json} and {@code fdroidserver}.
      */
     @Test
     public void testJsonIgnoreApp() throws JsonProcessingException {
@@ -256,6 +257,19 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         runJsonIgnoreTest(new App(), allowedInApp, ignoredInApp);
     }
 
+
+    /**
+     * Test that all the fields are properly marked as whether Jackson should ignore them
+     * or not.  Technically this test goes the opposite direction of how its being used:
+     * it writes out {@link App} and {@link Apk} instances to JSON using Jackson. With the
+     * index parsing, Jackson is always reading JSON into {@link App} and {@link Apk}
+     * instances.  {@code @JsonIgnoreProperties} applies to both directions.
+     * <p>
+     * If this test fails for you, then it probably means you are adding a new instance
+     * variable to {@link Apk}.  In that case, you need to add it to the appropriate
+     * list here.  If it is allowed, make sure this new instance variable is in sync with
+     * {@code index-v1.json} and {@code fdroidserver}.
+     */
     @Test
     public void testJsonIgnoreApk() throws JsonProcessingException {
         String[] allowedInApk = new String[]{
@@ -299,7 +313,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
 
     private void runJsonIgnoreTest(Object instance, String[] allowed, String[] ignored)
             throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = IndexV1Updater.getObjectMapperInstance(FAKE_REPO_ID);
         String objectAsString = mapper.writeValueAsString(instance);
         Set<String> fields = getFields(instance);
         for (String field : ignored) {
@@ -321,10 +335,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
 
     @Test
     public void testInstanceVariablesAreProperlyMarked() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        // testing with unknown metadata in it
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        mapper.setInjectableValues(new InjectableValues.Std().addValue("repoId", FAKE_REPO_ID));
+        ObjectMapper mapper = IndexV1Updater.getObjectMapperInstance(FAKE_REPO_ID);
         JsonFactory f = mapper.getFactory();
         JsonParser parser = f.createParser(TestUtils.copyResourceToTempFile("all_fields_index-v1.json"));
 
