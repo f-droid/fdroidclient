@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fdroid>
+  <repo icon="guardianproject.png" name="Guardian Project Official Releases" pubkey="308204e1308202c9a0030201020204483450fa300d06092a864886f70d01010b050030213110300e060355040b1307462d44726f6964310d300b06035504031304736f7661301e170d3136303832333133333131365a170d3434303130393133333131365a30213110300e060355040b1307462d44726f6964310d300b06035504031304736f766130820222300d06092a864886f70d01010105000382020f003082020a0282020100dfdcd120f3ab224999dddf4ea33ea588d295e4d7130bef48c143e9d76e5c0e0e9e5d45e64208e35feebc79a83f08939dd6a343b7d1e2179930a105a1249ccd36d88ff3feffc6e4dc53dae0163a7876dd45ecc1ddb0adf5099aa56c1a84b52affcd45d0711ffa4de864f35ac0333ebe61ea8673eeda35a88f6af678cc4d0f80b089338ac8f2a8279a64195c611d19445cab3fd1a020afed9bd739bb95142fb2c00a8f847db5ef3325c814f8eb741bacf86ed3907bfe6e4564d2de5895df0c263824e0b75407589bae2d3a4666c13b92102d8781a8ee9bb4a5a1a78c4a9c21efdaf5584da42e84418b28f5a81d0456a3dc5b420991801e6b21e38c99bbe018a5b2d690894a114bc860d35601416aa4dc52216aff8a288d4775cddf8b72d45fd2f87303a8e9c0d67e442530be28eaf139894337266e0b33d57f949256ab32083bcc545bc18a83c9ab8247c12aea037e2b68dee31c734cb1f04f241d3b94caa3a2b258ffaf8e6eae9fbbe029a934dc0a0859c5f120334812693a1c09352340a39f2a678dbc1afa2a978bfee43afefcb7e224a58af2f3d647e5745db59061236b8af6fcfd93b3602f9e456978534f3a7851e800071bf56da80401c81d91c45f82568373af0576b1cc5eef9b85654124b6319770be3cdba3fbebe3715e8918fb6c8966624f3d0e815effac3d2ee06dd34ab9c693218b2c7c06ba99d6b74d4f17b8c3cb0203010001a321301f301d0603551d0e04160414d62bee9f3798509546acc62eb1de14b08b954d4f300d06092a864886f70d01010b05000382020100743f7c5692085895f9d1fffad390fb4202c15f123ed094df259185960fd6dadf66cb19851070f180297bba4e6996a4434616573b375cfee94fee73a4505a7ec29136b7e6c22e6436290e3686fe4379d4e3140ec6a08e70cfd3ed5b634a5eb5136efaaabf5f38e0432d3d79568a556970b8cfba2972f5d23a3856d8a981b9e9bbbbb88f35e708bde9cbc5f681cbd974085b9da28911296fe2579fa64bbe9fa0b93475a7a8db051080b0c5fade0d1c018e7858cd4cbe95145b0620e2f632cbe0f8af9cbf22e2fdaa72245ae31b0877b07181cc69dd2df74454251d8de58d25e76354abe7eb690f22e59b08795a8f2c98c578e0599503d9085927634072c82c9f82abd50fd12b8fd1a9d1954eb5cc0b4cfb5796b5aaec0356643b4a65a368442d92ef94edd3ac6a2b7fe3571b8cf9f462729228aab023ef9183f73792f5379633ccac51079177d604c6bc1873ada6f07d8da6d68c897e88a5fa5d63fdb8df820f46090e0716e7562dd3c140ba279a65b996f60addb0abe29d4bf2f5abe89480771d492307b926d91f02f341b2148502903c43d40f3c6c86a811d060711f0698b384acdcc0add44eb54e42962d3d041accc715afd49407715adc09350cb55e8d9281a3b0b6b5fcd91726eede9b7c8b13afdebb2c2b377629595f1096ba62fb14946dbac5f3c5f0b4e5b712e7acc7dcf6c46cdc5e6d6dfdeee55a0c92c2d70f080ac6" timestamp="1488828510" url="https://guardianproject.info/fdroid/repo" version="18">
+    <description>The official app repository of The Guardian Project. Applications in this repository are official binaries build by the original application developers and signed by the same key as the APKs that are released in the Google Play store. </description>
+    <mirror>http://bdf2wcxujkg6qqff.onion/fdroid/repo</mirror>
+    <mirror>https://guardianproject.info/fdroid/repo</mirror>
+    <mirror>https://s3.amazonaws.com/guardianproject/fdroid/repo</mirror>
+  </repo>
+  <install packageName="org.torproject.android"/>
+  <install packageName="info.guardianproject.orfox"/>
+  <application id="info.guardianproject.cacert">
+    <id>info.guardianproject.cacert</id>
+    <added>2013-08-19</added>
+    <lastupdated>2013-10-31</lastupdated>
+    <name>CACertMan</name>
+    <summary>Disable untrusted certificates</summary>
+    <icon>info.guardianproject.cacert.4.png</icon>
+    <desc>&lt;p&gt;Android 4+ allows you to disable certificates from the system Settings and root isn't required, so try that first if you want to manually mess with the certificates. The app won't work with Android 4+ anyway.&lt;/p&gt;&lt;p&gt;An app to manage security certificates on your phone also containing a version of the Android CACert keystore derived from Mozilla. If a certificate has recently become untrusted you can either install an update to this app or you can backup and remove certificates by yourself.&lt;/p&gt;&lt;p&gt;Requires root: Yes, it writes to the system partition. You will need a device that has the ‘grep’ command on it (via busybox: present on most custom ROMs). If the ‘save’ doesn’t work, then you will need to make your /system partition read-write by using a file explorer like &lt;a href="fdroid.app:com.ghostsq.commander"&gt;Ghost Commander&lt;/a&gt; or via a command in &lt;a href="fdroid.app:jackpal.androidterm"&gt;Terminal Emulator&lt;/a&gt;.&lt;/p&gt;</desc>
+    <license>GPLv3</license>
+    <categories>Security,GuardianProject</categories>
+    <category>Security</category>
+    <web>https://guardianproject.info/2011/09/05/cacertman-app-to-address-diginotar-other-bad-cas</web>
+    <source>https://github.com/guardianproject/cacert</source>
+    <tracker>https://github.com/guardianproject/cacert/issues</tracker>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <requirements>root</requirements>
+    <package>
+      <version>0.0.2.20111012</version>
+      <versioncode>4</versioncode>
+      <apkname>CACertMan-0.0.2-alpha-20111011.apk</apkname>
+      <hash type="sha256">251ebd40ce4a281a2292692707fb1e9c91428994cbad80a416a297db51069eb8</hash>
+      <size>172263</size>
+      <sdkver>7</sdkver>
+      <targetSdkVersion>7</targetSdkVersion>
+      <added>2013-08-19</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+    </package>
+    <package>
+      <version>0.0.2-20110906</version>
+      <versioncode>3</versioncode>
+      <apkname>CACertMan-0.0.2-20110906.apk</apkname>
+      <hash type="sha256">c217c49abe5134007ceb2623a6189a73fa02af9d2b2bbcc5cbc4cb5da7b36a5d</hash>
+      <size>170305</size>
+      <sdkver>8</sdkver>
+      <targetSdkVersion>8</targetSdkVersion>
+      <added>2013-10-31</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+    </package>
+  </application>
+  <application id="org.witness.informacam.app">
+    <id>org.witness.informacam.app</id>
+    <added>2013-12-11</added>
+    <lastupdated>2015-11-03</lastupdated>
+    <name>CameraV</name>
+    <summary>An InformaCam app to generate verifiable media</summary>
+    <icon>org.witness.informacam.app.206.png</icon>
+    <desc>&lt;p&gt;An InformaCam app to generate verifiable media.&lt;/p&gt;</desc>
+    <license>GPLv3</license>
+    <categories>Development,GuardianProject</categories>
+    <category>Development</category>
+    <web>https://guardianproject.info/apps/camerav/</web>
+    <source>https://github.com/guardianproject/CameraV</source>
+    <tracker>https://dev.guardianproject.info/projects/informacam/issues</tracker>
+    <bitcoin>1Fi5xUHiAPRKxHvyUGVFGt9extBe8Srdbk</bitcoin>
+    <marketversion/>
+    <marketvercode>9999999</marketvercode>
+    <package>
+      <version>0.2.6</version>
+      <versioncode>206</versioncode>
+      <apkname>CameraVApp-release-0.2.6.apk</apkname>
+      <hash type="sha256">508f453e26c8c83dba858b53b21d909d549fe5646d01eb198c96c22d8e521e7c</hash>
+      <size>24123646</size>
+      <sdkver>16</sdkver>
+      <targetSdkVersion>21</targetSdkVersion>
+      <added>2015-11-03</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>CAMERA,READ_EXTERNAL_STORAGE,BLUETOOTH_ADMIN,USE_CREDENTIALS,RECORD_AUDIO,VIBRATE,WRITE_EXTERNAL_STORAGE,CHANGE_WIFI_STATE,ACCESS_WIFI_STATE,ACCESS_FINE_LOCATION,GET_ACCOUNTS,INTERNET,ACCESS_COARSE_LOCATION,READ_PHONE_STATE,KILL_BACKGROUND_PROCESSES,GET_TOP_ACTIVITY_INFO,ACCESS_NETWORK_STATE,BLUETOOTH,WAKE_LOCK</permissions>
+      <nativecode>armeabi,armeabi-v7a,x86</nativecode>
+    </package>
+    <package>
+      <version>0.2.4</version>
+      <versioncode>204</versioncode>
+      <apkname>CameraV-release-0.2.4.apk</apkname>
+      <hash type="sha256">a10eefaed5a12c353525b07e655f6959fe1eb06cd5c549be56afaca6db0c6ce0</hash>
+      <size>24062229</size>
+      <sdkver>16</sdkver>
+      <targetSdkVersion>21</targetSdkVersion>
+      <added>2015-10-02</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>CAMERA,READ_EXTERNAL_STORAGE,BLUETOOTH_ADMIN,USE_CREDENTIALS,RECORD_AUDIO,VIBRATE,WRITE_EXTERNAL_STORAGE,CHANGE_WIFI_STATE,ACCESS_WIFI_STATE,ACCESS_FINE_LOCATION,GET_ACCOUNTS,INTERNET,ACCESS_COARSE_LOCATION,READ_PHONE_STATE,KILL_BACKGROUND_PROCESSES,ACCESS_NETWORK_STATE,GET_TASKS,BLUETOOTH,WAKE_LOCK</permissions>
+      <nativecode>armeabi,armeabi-v7a,x86</nativecode>
+    </package>
+    <package>
+      <version>0.2.2</version>
+      <versioncode>202</versioncode>
+      <apkname>CameraVApp-release-0.2.2.apk</apkname>
+      <hash type="sha256">8b17cbe2a5cb777b49f5ef67a390f9d9d68765c90213ac64f3ca0456860dc9b7</hash>
+      <size>24283932</size>
+      <sdkver>16</sdkver>
+      <targetSdkVersion>21</targetSdkVersion>
+      <added>2015-09-16</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>CAMERA,READ_EXTERNAL_STORAGE,BLUETOOTH_ADMIN,USE_CREDENTIALS,RECORD_AUDIO,VIBRATE,WRITE_EXTERNAL_STORAGE,CHANGE_WIFI_STATE,ACCESS_WIFI_STATE,ACCESS_FINE_LOCATION,GET_ACCOUNTS,INTERNET,ACCESS_COARSE_LOCATION,READ_PHONE_STATE,KILL_BACKGROUND_PROCESSES,ACCESS_NETWORK_STATE,GET_TASKS,BLUETOOTH,WAKE_LOCK</permissions>
+      <nativecode>armeabi,armeabi-v7a,x86</nativecode>
+    </package>
+  </application>
+  <application id="info.guardianproject.otr.app.im">
+    <id>info.guardianproject.otr.app.im</id>
+    <added>2013-03-19</added>
+    <lastupdated>2016-12-06</lastupdated>
+    <name>ChatSecure</name>
+    <summary>Instant Messaging client with OTR</summary>
+    <icon>info.guardianproject.otr.app.im.1423001.png</icon>
+    <desc>&lt;p&gt;XMPP (Jabber) client that can do end-to-end encryption using the &lt;a href="http://en.wikipedia.org/wiki/Off-the-Record_Messaging"&gt;Off-the-Record Messaging&lt;/a&gt; protocol and can anonymize your chats via the &lt;a href="fdroid.app:org.torproject.android"&gt;Orbot&lt;/a&gt; app (root not required).&lt;/p&gt;&lt;p&gt;The app used to be called GibberBot.&lt;/p&gt;</desc>
+    <license>Apache2</license>
+    <categories>Internet,GuardianProject</categories>
+    <category>Internet</category>
+    <web>https://dev.guardianproject.info/projects/gibberbot</web>
+    <source>https://github.com/guardianproject/Gibberbot</source>
+    <tracker>https://dev.guardianproject.info/projects/gibberbot</tracker>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <package>
+      <version>14.2.3</version>
+      <versioncode>1423001</versioncode>
+      <apkname>ChatSecure-v14.2.3a.apk</apkname>
+      <hash type="sha256">36d7d71c8a2115bdd2bd63bb639af286ee3242cce11cdb5c53378d1a7f35528e</hash>
+      <size>10502397</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>21</targetSdkVersion>
+      <added>2016-02-03</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>info.guardianproject.otr.app.providers.imps.permission.READ_ONLY,RECEIVE_BOOT_COMPLETED,CHANGE_WIFI_MULTICAST_STATE,READ_EXTERNAL_STORAGE,com.google.android.googleapps.permission.GOOGLE_AUTH,USE_CREDENTIALS,VIBRATE,WRITE_EXTERNAL_STORAGE,GET_ACCOUNTS,ACCESS_WIFI_STATE,UPDATE_APP_OPS_STATS,INTERNET,info.guardianproject.otr.app.im.permission.IM_SERVICE,ACCESS_NETWORK_STATE,MANAGE_ACCOUNTS,info.guardianproject.otr.app.providers.imps.permission.WRITE_ONLY,WAKE_LOCK</permissions>
+      <nativecode>armeabi,x86</nativecode>
+    </package>
+    <package>
+      <version>14.2.2</version>
+      <versioncode>1422001</versioncode>
+      <apkname>ChatSecure-v14.2.2.apk</apkname>
+      <hash type="sha256">9d4620fec0c7837ddffccde7918d7a7db0976fbcd361b96659abd93b5cc0d9e3</hash>
+      <size>10502135</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>21</targetSdkVersion>
+      <added>2016-12-06</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>info.guardianproject.otr.app.providers.imps.permission.READ_ONLY,RECEIVE_BOOT_COMPLETED,CHANGE_WIFI_MULTICAST_STATE,READ_EXTERNAL_STORAGE,com.google.android.googleapps.permission.GOOGLE_AUTH,USE_CREDENTIALS,VIBRATE,WRITE_EXTERNAL_STORAGE,GET_ACCOUNTS,ACCESS_WIFI_STATE,UPDATE_APP_OPS_STATS,INTERNET,info.guardianproject.otr.app.im.permission.IM_SERVICE,ACCESS_NETWORK_STATE,MANAGE_ACCOUNTS,info.guardianproject.otr.app.providers.imps.permission.WRITE_ONLY,WAKE_LOCK</permissions>
+      <nativecode>armeabi,x86</nativecode>
+    </package>
+    <package>
+      <version>14.2.1</version>
+      <versioncode>1421001</versioncode>
+      <apkname>ChatSecure-v14.2.1.apk</apkname>
+      <hash type="sha256">f82a3a7a823f5540b335743eb1399d0fd1f61bc68958750b5ef6aa0d95ad9a54</hash>
+      <size>10463010</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>21</targetSdkVersion>
+      <added>2015-08-24</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>info.guardianproject.otr.app.providers.imps.permission.READ_ONLY,RECEIVE_BOOT_COMPLETED,CHANGE_WIFI_MULTICAST_STATE,READ_EXTERNAL_STORAGE,com.google.android.googleapps.permission.GOOGLE_AUTH,USE_CREDENTIALS,VIBRATE,WRITE_EXTERNAL_STORAGE,GET_ACCOUNTS,ACCESS_WIFI_STATE,UPDATE_APP_OPS_STATS,INTERNET,info.guardianproject.otr.app.im.permission.IM_SERVICE,ACCESS_NETWORK_STATE,MANAGE_ACCOUNTS,info.guardianproject.otr.app.providers.imps.permission.WRITE_ONLY,WAKE_LOCK</permissions>
+      <nativecode>armeabi,x86</nativecode>
+    </package>
+  </application>
+  <application id="info.guardianproject.soundrecorder">
+    <id>info.guardianproject.soundrecorder</id>
+    <added>2013-12-13</added>
+    <lastupdated>2013-12-13</lastupdated>
+    <name>ChatSecureVoicePlugin</name>
+    <summary>ChatSecure Voice Messaging</summary>
+    <icon>info.guardianproject.soundrecorder.2.png</icon>
+    <desc>&lt;p&gt;This is a plugin for &lt;a href="fdroid.app:info.guardianproject.otr.app.im"&gt;ChatSecure&lt;/a&gt;. It does not have any function on its own.  For Your Ears Only... completely private, end-to-end encryption voice message recording, sending, receiving and playback.&lt;/p&gt;&lt;p&gt; * For use with &lt;a href="fdroid.app:info.guardianproject.otr.app.im"&gt;ChatSecure&lt;/a&gt;'s encrypted "Off-the-record" data stream  * Works over Tor - the ONLY Onion-routed voice messaging system, for total anonymity&lt;/p&gt;</desc>
+    <license>SIL Open Font License, MIT License and the CC 3.0 License [CC-By with attribution requirement waived]</license>
+    <categories>Multimedia,Security,GuardianProject</categories>
+    <category>Multimedia</category>
+    <web>https://guardianproject.info/apps/chatsecure</web>
+    <source>https://github.com/guardianproject/ChatSecureVoicePlugin</source>
+    <tracker>https://dev.guardianproject.info/projects/chatsecure/issues</tracker>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <package>
+      <version>0.2</version>
+      <versioncode>2</versioncode>
+      <apkname>ChatSecureVoiceMessaging-0.2.apk</apkname>
+      <hash type="sha256">abae18cc9cfa62fca5dce072c4c50d41b4fece506967ce9a3e2711cd1031dbee</hash>
+      <size>394212</size>
+      <sdkver>10</sdkver>
+      <targetSdkVersion>10</targetSdkVersion>
+      <added>2013-12-13</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>READ_PHONE_STATE,READ_EXTERNAL_STORAGE,RECORD_AUDIO,WRITE_EXTERNAL_STORAGE,WAKE_LOCK</permissions>
+    </package>
+  </application>
+  <application id="info.guardianproject.checkey">
+    <id>info.guardianproject.checkey</id>
+    <added>2014-07-12</added>
+    <lastupdated>2015-03-09</lastupdated>
+    <name>Checkey</name>
+    <summary>Info on local apps</summary>
+    <icon>info.guardianproject.checkey.102.png</icon>
+    <desc>&lt;p&gt;Checkey is a utility for getting information about the APKs that are installed on your device. Starting with a list of all of the apps that you have installed on your device, it will show you the APK signature with a single touch, and provides links to virustotal.com and androidobservatory.org to easily access the profiles of that APK. It will also let you export the signing certificate and generate ApkSignaturePin pin files for use with the TrustedIntents library.&lt;/p&gt;</desc>
+    <license>GPLv3</license>
+    <categories>Development,GuardianProject</categories>
+    <category>Development</category>
+    <web>https://dev.guardianproject.info/projects/checkey</web>
+    <source>https://github.com/guardianproject/checkey</source>
+    <tracker>https://dev.guardianproject.info/projects/checkey/issues</tracker>
+    <bitcoin>1Fi5xUHiAPRKxHvyUGVFGt9extBe8Srdbk</bitcoin>
+    <marketversion/>
+    <marketvercode>9999999</marketvercode>
+    <package>
+      <version>0.1.2</version>
+      <versioncode>102</versioncode>
+      <apkname>Checkey-0.1.2.apk</apkname>
+      <hash type="sha256">754701dbac52de5ca3930c2393970c03ef9aa07d1456911e9bf254d6014e0645</hash>
+      <size>842881</size>
+      <sdkver>8</sdkver>
+      <targetSdkVersion>21</targetSdkVersion>
+      <added>2015-03-09</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>INTERNET</permissions>
+    </package>
+    <package>
+      <version>0.1.1</version>
+      <versioncode>101</versioncode>
+      <apkname>Checkey-0.1.1.apk</apkname>
+      <hash type="sha256">2d81f339bb69626af42e8868dc6928c9072ebcbae76e1ff5ac8172e78ebe9cdd</hash>
+      <size>967083</size>
+      <sdkver>8</sdkver>
+      <targetSdkVersion>21</targetSdkVersion>
+      <added>2015-01-28</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>INTERNET</permissions>
+    </package>
+    <package>
+      <version>0.1</version>
+      <versioncode>1</versioncode>
+      <apkname>Checkey-0.1.apk</apkname>
+      <hash type="sha256">a8e3c102d5279a3029d0eebdeda2ffdbe1f8a3493ea7dbdc31a11affc708ee57</hash>
+      <size>878679</size>
+      <sdkver>8</sdkver>
+      <targetSdkVersion>19</targetSdkVersion>
+      <added>2014-07-12</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>INTERNET</permissions>
+    </package>
+  </application>
+  <application id="info.guardianproject.courier">
+    <id>info.guardianproject.courier</id>
+    <added>2014-05-14</added>
+    <lastupdated>2014-06-26</lastupdated>
+    <name>Courier</name>
+    <summary>Privacy-aware RSS feed reader</summary>
+    <icon>info.guardianproject.courier.15.png</icon>
+    <desc>&lt;p&gt;No description available&lt;/p&gt;</desc>
+    <license>GPLv3</license>
+    <categories>Reading,GuardianProject</categories>
+    <category>Reading</category>
+    <web/>
+    <source>https://github.com/guardianproject/securereader</source>
+    <tracker/>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <package>
+      <version>0.1.9</version>
+      <versioncode>15</versioncode>
+      <apkname>Courier-0.1.9.apk</apkname>
+      <hash type="sha256">bf6566da1f90831887f5bf5605f8d816b1f7f694969459dec599b8bc01a827d3</hash>
+      <size>16484753</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>15</targetSdkVersion>
+      <added>2014-06-26</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>READ_EXTERNAL_STORAGE,BLUETOOTH_ADMIN,VIBRATE,ACCESS_WIFI_STATE,INTERNET,ACCESS_NETWORK_STATE,BLUETOOTH,WRITE_EXTERNAL_STORAGE</permissions>
+      <nativecode>armeabi,x86</nativecode>
+    </package>
+    <package>
+      <version>0.1.8</version>
+      <versioncode>14</versioncode>
+      <apkname>Courier-0.1.8.apk</apkname>
+      <hash type="sha256">e013db095e8da843fae5ac44be6152e51377ee717e5c8a7b6d913d7720566b5a</hash>
+      <size>16536125</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>15</targetSdkVersion>
+      <added>2014-05-14</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>READ_EXTERNAL_STORAGE,BLUETOOTH_ADMIN,VIBRATE,ACCESS_WIFI_STATE,INTERNET,ACCESS_NETWORK_STATE,BLUETOOTH,WRITE_EXTERNAL_STORAGE</permissions>
+      <nativecode>armeabi,x86</nativecode>
+    </package>
+  </application>
+  <application id="info.guardianproject.lildebi">
+    <id>info.guardianproject.lildebi</id>
+    <added>2013-02-06</added>
+    <lastupdated>2015-01-26</lastupdated>
+    <name>Lil' Debi</name>
+    <summary>Run Debian on your phone</summary>
+    <icon>info.guardianproject.lildebi.5400.png</icon>
+    <desc>&lt;p&gt;Lil' Debi builds up a whole Debian chroot on your phone entirely using debootstrap. You choose the release, mirror, and size of the disk image, and away it goes. It could take up to an hour on a slow device.&lt;/p&gt;&lt;p&gt;Then it has a simple chroot manager that fscks your disk, mounts/unmounts things, starts/stops sshd if you have it installed, etc. You can also then use ‘apt-get’ to install any package that is released for ARM processors. This includes things like a complete real shell, Tor, TraceRouteTCP, iwconfig/ipconfig, and other security and crypto tools. Works well with &lt;a href="fdroid.app:jackpal.androidterm"&gt;Terminal Emulator&lt;/a&gt;—just run `/debian/shell` to get a Debian shell.&lt;/p&gt;&lt;p&gt;The aim of Lil’ Debi is to provide a transparent and tightly integrated Debian install on your Android device. It mounts all of your Android partitions in Debian space, so you see a fusion of both systems. It's even possible to have Lil’ Debi launch the normal Debian init start-up scripts when it starts, so that all you need to do is apt-get install and any servers you install will just work.&lt;/p&gt;&lt;p&gt;Lil' Debi works with as few modifications to the Android system as possible. Currently, it only adds a /bin symlink, and a /debian mount directory. It does not touch /system at all.&lt;/p&gt;&lt;p&gt;Requires root: Yes, because it needs to run debootstrap, create dirs in /, mount/umount, etc.&lt;/p&gt;</desc>
+    <license>GPLv3</license>
+    <categories>Development,GuardianProject</categories>
+    <category>Development</category>
+    <web>https://github.com/guardianproject/lildebi/wiki</web>
+    <source>https://github.com/guardianproject/lildebi</source>
+    <tracker>https://github.com/guardianproject/lildebi/issues</tracker>
+    <bitcoin>1Fi5xUHiAPRKxHvyUGVFGt9extBe8Srdbk</bitcoin>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <requirements>root</requirements>
+    <package>
+      <version>0.5.4</version>
+      <versioncode>5400</versioncode>
+      <apkname>LilDebi-0.5.4-release.apk</apkname>
+      <hash type="sha256">2c490376d8853fae04e79541f5d61e66a42ed0e890208945a11036c4a7b111da</hash>
+      <size>1876705</size>
+      <sdkver>8</sdkver>
+      <targetSdkVersion>20</targetSdkVersion>
+      <maxsdkver>20</maxsdkver>
+      <added>2015-01-26</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>RECEIVE_BOOT_COMPLETED,READ_EXTERNAL_STORAGE,ACCESS_SUPERUSER,WRITE_EXTERNAL_STORAGE,INTERNET,ACCESS_NETWORK_STATE,jackpal.androidterm.permission.RUN_SCRIPT,WAKE_LOCK</permissions>
+    </package>
+    <package>
+      <version>0.5.3</version>
+      <versioncode>5300</versioncode>
+      <apkname>LilDebi-0.5.3-release.apk</apkname>
+      <hash type="sha256">01c5a8e1fd778c141e70633d14f1b69228d6f492961098616e0446c116cf9e44</hash>
+      <size>1879560</size>
+      <sdkver>8</sdkver>
+      <targetSdkVersion>19</targetSdkVersion>
+      <added>2015-01-26</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>RECEIVE_BOOT_COMPLETED,READ_EXTERNAL_STORAGE,ACCESS_SUPERUSER,WRITE_EXTERNAL_STORAGE,INTERNET,ACCESS_NETWORK_STATE,jackpal.androidterm.permission.RUN_SCRIPT,WAKE_LOCK</permissions>
+    </package>
+    <package>
+      <version>0.5.2</version>
+      <versioncode>5200</versioncode>
+      <apkname>LilDebi-0.5.2-release.apk</apkname>
+      <hash type="sha256">07fa3dfb690e44eb540942ba2a51718c72351c91a253a56a0c90649f6d8903dd</hash>
+      <size>1861790</size>
+      <sdkver>8</sdkver>
+      <targetSdkVersion>19</targetSdkVersion>
+      <added>2014-10-22</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>RECEIVE_BOOT_COMPLETED,READ_EXTERNAL_STORAGE,ACCESS_SUPERUSER,WRITE_EXTERNAL_STORAGE,INTERNET,ACCESS_NETWORK_STATE,jackpal.androidterm.permission.RUN_SCRIPT,WAKE_LOCK</permissions>
+    </package>
+  </application>
+  <application id="info.guardianproject.locationprivacy">
+    <id>info.guardianproject.locationprivacy</id>
+    <added>2015-01-29</added>
+    <lastupdated>2016-12-06</lastupdated>
+    <name>LocationPrivacy</name>
+    <summary>privacy filters for when you are sharing your location</summary>
+    <icon>info.guardianproject.locationprivacy.30.png</icon>
+    <desc>&lt;p&gt;LocationPrivacy is not really app but rather a set of "Intent Filters" for all of the various ways of sharing location.  When you share location from one app, LocationPrivacy offers itself as an option.  It then recognizes insecure methods of sharing location, and then converts them to more secure methods. This mostly means that it rewrites URLs to use https, and even to use `geo:` URIs, which can work on fully offline setups.  LocationPrivacy mostly works by reading the location information from the URL itself.  For many URLs, LocationPrivacy must actually load some of the webpage in order to get the location.&lt;/p&gt;&lt;p&gt;LocationPrivacy can also serve as a way to redirect all location links to your favorite mapping app.  All map apps in Android can view `geo:` URIs, and LocationPrivacy converts many kinds of links to `geo:` URIs, including: Google Maps, OpenStreetMap, Amap, Baidu Map, QQ Map, Nokia HERE, Yandex Maps.&lt;/p&gt;&lt;p&gt;This was started as part of the T2 Panic work, since sharing location is so often a part of panic apps.  Follow our progress here: https://guardianproject.info/tag/panic&lt;/p&gt;&lt;p&gt;Don’t see your language? Join us and help translate the app: https://www.transifex.com/projects/p/locationprivacy&lt;/p&gt;</desc>
+    <license>GPLv3</license>
+    <categories>Navigation,Security,GuardianProject</categories>
+    <category>Navigation</category>
+    <web>https://dev.guardianproject.info/projects/panic</web>
+    <source>https://github.com/guardianproject/LocationPrivacy</source>
+    <tracker>https://dev.guardianproject.info/projects/panic/issues</tracker>
+    <bitcoin>1Fi5xUHiAPRKxHvyUGVFGt9extBe8Srdbk</bitcoin>
+    <marketversion/>
+    <marketvercode>9999999</marketvercode>
+    <package>
+      <version>0.3</version>
+      <versioncode>30</versioncode>
+      <apkname>LocationPrivacy-0.3.apk</apkname>
+      <hash type="sha256">ec2b2c6e3a99422fbe8229711dfc7b741961c2ba7bc171c745818d8b76fc4d63</hash>
+      <size>1130602</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>22</targetSdkVersion>
+      <added>2016-12-06</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>INTERNET</permissions>
+    </package>
+    <package>
+      <version>0.2</version>
+      <versioncode>20</versioncode>
+      <apkname>LocationPrivacy-0.2.apk</apkname>
+      <hash type="sha256">3cad63152ef9b04e1c2b880c286a80c65c083880612aaa36c0c4480b96adfea8</hash>
+      <size>1129409</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>22</targetSdkVersion>
+      <added>2016-12-06</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>INTERNET</permissions>
+    </package>
+    <package>
+      <version>0.1</version>
+      <versioncode>10</versioncode>
+      <apkname>LocationPrivacy-0.1.apk</apkname>
+      <hash type="sha256">130cfcc8b916682d974aa4e13385b47bdc23d07b0de852640563b880aeb61d1f</hash>
+      <size>818384</size>
+      <sdkver>8</sdkver>
+      <targetSdkVersion>21</targetSdkVersion>
+      <added>2015-01-29</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>INTERNET</permissions>
+    </package>
+  </application>
+  <application id="info.guardianproject.notepadbot">
+    <id>info.guardianproject.notepadbot</id>
+    <added>2013-01-16</added>
+    <lastupdated>2014-03-10</lastupdated>
+    <name>NoteCipher</name>
+    <summary>Notepad with lock</summary>
+    <icon>info.guardianproject.notepadbot.12.png</icon>
+    <desc>&lt;p&gt;Simple app for taking notes that encrypts everything behind a password.&lt;/p&gt;&lt;p&gt;Status: Beta.&lt;/p&gt;</desc>
+    <license>Apache2</license>
+    <categories>Office,GuardianProject</categories>
+    <category>Office</category>
+    <web>https://guardianproject.info</web>
+    <source>https://github.com/guardianproject/notecipher</source>
+    <tracker>https://github.com/guardianproject/notecipher/issues</tracker>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <package>
+      <version>0.1</version>
+      <versioncode>12</versioncode>
+      <apkname>NoteCipher-beta-0.1.apk</apkname>
+      <hash type="sha256">b560a3d6364c32990ea7505f53b019f64fde597d67513f41a50e7d034af48caa</hash>
+      <size>7321123</size>
+      <sdkver>10</sdkver>
+      <targetSdkVersion>19</targetSdkVersion>
+      <added>2014-03-10</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>VIBRATE,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE</permissions>
+      <nativecode>armeabi,x86</nativecode>
+    </package>
+    <package>
+      <version>0.0.7.1</version>
+      <versioncode>11</versioncode>
+      <apkname>NoteCipher-0.0.7.1.apk</apkname>
+      <hash type="sha256">da518f13206d2218234bfcc83205b7b2b81ec67a4cc448f818c617332235e700</hash>
+      <size>3729342</size>
+      <sdkver>11</sdkver>
+      <targetSdkVersion>17</targetSdkVersion>
+      <added>2013-10-31</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE</permissions>
+      <nativecode>armeabi</nativecode>
+    </package>
+    <package>
+      <version>0.0.7</version>
+      <versioncode>10</versioncode>
+      <apkname>NoteCipher-0.0.7.apk</apkname>
+      <hash type="sha256">8fa7536a87634c6b3441053c4f16315e4fd5aa6ef672a0026a594c107308d7bf</hash>
+      <size>3731119</size>
+      <sdkver>7</sdkver>
+      <targetSdkVersion>17</targetSdkVersion>
+      <added>2013-01-16</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE</permissions>
+      <nativecode>armeabi</nativecode>
+    </package>
+  </application>
+  <application id="org.witness.sscphase1">
+    <id>org.witness.sscphase1</id>
+    <added>2013-08-19</added>
+    <lastupdated>2013-10-31</lastupdated>
+    <name>ObscuraCam</name>
+    <summary>A camera app that keeps certain information private</summary>
+    <icon>org.witness.sscphase1.34.png</icon>
+    <desc>&lt;p&gt;Ever capture someone in a photo or video, then realize they may not want to be in it? Not comfortable posting a friend, family member or child’s face on the internet? Worried about the geolocation data in the picture giving away private hideaway? Tired of Facebook, Google and other sites “auto detecting” faces in your photos? Then this is for you, giving you the power to better protect the identity of those captures in your photos, before you post them online.&lt;/p&gt;&lt;p&gt;Take a picture or load a photo or video from the Gallery, and ObscuraCam will automatically detect faces that you can pixelate, redact (blackout) or protect with funny nose and glasses. You can also invert pixelate, so that only the person you select is visible, and no one in the background can be recognized.&lt;/p&gt;&lt;p&gt;This app will also remove all identifying data stored in photos including GPS location data and phone make &amp;amp; model. You can save the protected photo back to the Gallery, or share it directly to Facebook, Twitter or any other “Share” enabled app.&lt;/p&gt;</desc>
+    <license>GPLv3</license>
+    <categories>Multimedia,Security,GuardianProject</categories>
+    <category>Multimedia</category>
+    <web>https://guardianproject.info/apps/obscuracam</web>
+    <source>https://github.com/guardianproject/obscuracam</source>
+    <tracker>https://github.com/guardianproject/obscuracam/issues</tracker>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <package>
+      <version>2.0-RC2b</version>
+      <versioncode>34</versioncode>
+      <apkname>ObscuraCam-2.0-RC2b.apk</apkname>
+      <hash type="sha256">eeea54985c96769524ec82fb1d3599b193a2d20d1f57f3afc4c97b11bd48df8f</hash>
+      <size>8240221</size>
+      <sdkver>10</sdkver>
+      <targetSdkVersion>11</targetSdkVersion>
+      <added>2013-10-31</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>READ_EXTERNAL_STORAGE,READ_MEDIA_STORAGE,WRITE_MEDIA_STORAGE,VIBRATE,WAKE_LOCK,WRITE_EXTERNAL_STORAGE</permissions>
+      <nativecode>armeabi</nativecode>
+    </package>
+    <package>
+      <version>1.2-FINAL</version>
+      <versioncode>25</versioncode>
+      <apkname>ObscuraCam-1.2-FINAL.apk</apkname>
+      <hash type="sha256">fc4b1e26b09ab79b1ab174e8985b89985a0110f9d97d2b0472e529c85e3a1d89</hash>
+      <size>1728825</size>
+      <sdkver>8</sdkver>
+      <targetSdkVersion>8</targetSdkVersion>
+      <added>2013-08-19</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>VIBRATE,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE</permissions>
+      <nativecode>armeabi</nativecode>
+    </package>
+  </application>
+  <application id="org.torproject.android">
+    <id>org.torproject.android</id>
+    <added>2013-07-22</added>
+    <lastupdated>2016-12-06</lastupdated>
+    <name>Orbot</name>
+    <summary>Tor (anonymity) client</summary>
+    <icon>org.torproject.android.15208000.png</icon>
+    <desc>&lt;p&gt;Tor is both software and an open network that helps you defend against network surveillance that threatens personal freedom and privacy, confidential business activities and relationships.&lt;/p&gt;&lt;p&gt;Orbot allows access to Tor by accessing a local SOCKS or HTTP proxy. On a rooted device, the proxying can be completely transparent i.e. the app that accesses the network need not be aware of the proxy's existence; you can choose which apps go via the proxy in the settings.&lt;/p&gt;&lt;p&gt;If you don't have root access, there are some apps that are designed to work closely with tor or allow proxied connections: &lt;a href="fdroid.app:info.guardianproject.otr.app.im"&gt;ChatSecure&lt;/a&gt;, &lt;a href="fdroid.app:info.guardianproject.browser"&gt;Orweb&lt;/a&gt; and &lt;a href="fdroid.app:org.mariotaku.twidere"&gt;Twidere&lt;/a&gt;. There is also a proxy configurator addon for &lt;a href="fdroid.app:org.mozilla.firefox"&gt;org.mozilla.firefox&lt;/a&gt; called &lt;a href="https://github.com/guardianproject/ProxyMob/downloads"&gt;ProxyMob&lt;/a&gt; (not yet available from the Mozilla addon site).&lt;/p&gt;&lt;p&gt;Requires root: No, but you will need to use apps that allow proxies if root is not granted.&lt;/p&gt;</desc>
+    <license>NewBSD</license>
+    <categories>Security,Internet,GuardianProject</categories>
+    <category>Security</category>
+    <web>http://www.torproject.org/docs/android.html.en</web>
+    <source>https://gitweb.torproject.org/orbot.git</source>
+    <tracker>https://dev.guardianproject.info/projects/orbot/issues</tracker>
+    <donate>https://www.torproject.org/donate/donate.html.en</donate>
+    <flattr>5649</flattr>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <package>
+      <version>15.2.0-RC-8-multi</version>
+      <versioncode>15208000</versioncode>
+      <apkname>Orbot-v15.2.0-RC-8-multi.apk</apkname>
+      <hash type="sha256">3758e1b6e6b9a3b7848b253d08d6c0b1b1b3223184da4bd2ba1aaff8cf676357</hash>
+      <size>12296544</size>
+      <sdkver>16</sdkver>
+      <targetSdkVersion>23</targetSdkVersion>
+      <added>2016-11-07</added>
+      <sig>8bd7e51b479aeba908ff46ada3305a29</sig>
+      <permissions>ACCESS_NETWORK_STATE,ACCESS_SUPERUSER,INTERNET,RECEIVE_BOOT_COMPLETED</permissions>
+      <nativecode>armeabi,x86</nativecode>
+    </package>
+    <package>
+      <version>15.2.0-RC-7-multi</version>
+      <versioncode>15207000</versioncode>
+      <apkname>Orbot-v15.2.0-RC-7-multi.apk</apkname>
+      <hash type="sha256">8dc3edf0a9799eb23b5e478e15547e38831b28cc3e88b049aa5f41b7b72e7bf9</hash>
+      <size>12457510</size>
+      <sdkver>16</sdkver>
+      <targetSdkVersion>23</targetSdkVersion>
+      <added>2016-11-04</added>
+      <sig>8bd7e51b479aeba908ff46ada3305a29</sig>
+      <permissions>ACCESS_NETWORK_STATE,ACCESS_SUPERUSER,INTERNET,RECEIVE_BOOT_COMPLETED</permissions>
+      <nativecode>arm64-v8a,armeabi,armeabi-v7a,x86</nativecode>
+    </package>
+    <package>
+      <version>15.2.0-RC-5</version>
+      <versioncode>15205000</versioncode>
+      <apkname>Orbot-v15.2.0-RC-5-arm.apk</apkname>
+      <hash type="sha256">51c7e2b6a6de542e0d44f82d89ddf1d3216ec7a28297381ef15b12da2f3246f7</hash>
+      <size>7600548</size>
+      <sdkver>16</sdkver>
+      <targetSdkVersion>23</targetSdkVersion>
+      <added>2016-11-03</added>
+      <sig>8bd7e51b479aeba908ff46ada3305a29</sig>
+      <permissions>ACCESS_NETWORK_STATE,ACCESS_SUPERUSER,INTERNET,RECEIVE_BOOT_COMPLETED</permissions>
+      <nativecode>arm64-v8a,armeabi,armeabi-v7a</nativecode>
+    </package>
+  </application>
+  <application id="info.guardianproject.orfox">
+    <id>info.guardianproject.orfox</id>
+    <added>2016-09-24</added>
+    <lastupdated>2016-12-06</lastupdated>
+    <name>Orfox</name>
+    <summary>Orfox: Tor Browser for Android</summary>
+    <icon>info.guardianproject.orfox.4.png</icon>
+    <desc>&lt;p&gt;Orfox is the most privacy-enhancing web browser on Android, for visiting any website, even if it’s normally censored, monitored, or on the hidden web. It is a port of the desktop Tor Browser to the Android version of Firefox.&lt;/p&gt;&lt;p&gt;Orfox is a companion browser to &lt;a href="fdroid.app:org.torproject.android"&gt;Orbot&lt;/a&gt;, the port of Tor to Android.  Orbot anonymizes internet traffic by routing it through many different stages and you must have that enabled first, though root isn't needed.  Orfox disables certain other browser features that could be used to identify you.&lt;/p&gt;&lt;p&gt;Orfox replaces &lt;a href="fdroid.app:info.guardianproject.browser"&gt;Orweb&lt;/a&gt; as your private browser.&lt;/p&gt;</desc>
+    <license>MPL</license>
+    <categories>Internet,Security,GuardianProject</categories>
+    <category>Internet</category>
+    <web/>
+    <source>https://github.com/guardianproject/orfox</source>
+    <tracker>https://dev.guardianproject.info/projects/orfox/issues?set_filter=1</tracker>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <package>
+      <version>Fennec-45.5.1esr/TorBrowser-6.5-1/Orfox-1.2.1</version>
+      <versioncode>4</versioncode>
+      <apkname>Orfox-1.2.1-TorBrowser-6.5-Fennec45.5.1-build2.apk</apkname>
+      <hash type="sha256">d43032e79c7c31cabb194b8c1c4b14fbf73dd2cfda958ba415879ddf2f38ace2</hash>
+      <size>35273126</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>22</targetSdkVersion>
+      <added>2016-12-06</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>info.guardianproject.orfox.permissions.FORMHISTORY_PROVIDER,info.guardianproject.orfox.permissions.PASSWORD_PROVIDER,READ_EXTERNAL_STORAGE,VIBRATE,WRITE_EXTERNAL_STORAGE,CHANGE_WIFI_STATE,ACCESS_WIFI_STATE,DOWNLOAD_WITHOUT_NOTIFICATION,INTERNET,com.android.launcher.permission.UNINSTALL_SHORTCUT,info.guardianproject.orfox.permissions.BROWSER_PROVIDER,com.android.browser.permission.READ_HISTORY_BOOKMARKS,com.android.launcher.permission.INSTALL_SHORTCUT,ACCESS_NETWORK_STATE,WAKE_LOCK</permissions>
+      <nativecode>armeabi-v7a</nativecode>
+    </package>
+    <package>
+      <version>Fennec-45.4.0esr/TorBrowser-6.5-1/Orfox-1.2</version>
+      <versioncode>3</versioncode>
+      <apkname>Orfox-1.2-TorBrowser-6.5-Fennec45.4.0.apk</apkname>
+      <hash type="sha256">9b5f6614b94a47ae561e8c974d42056ba6cb6da520766deda09aec3699aeff94</hash>
+      <size>35242066</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>22</targetSdkVersion>
+      <added>2016-09-24</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+      <permissions>info.guardianproject.orfox.permissions.FORMHISTORY_PROVIDER,info.guardianproject.orfox.permissions.PASSWORD_PROVIDER,READ_EXTERNAL_STORAGE,VIBRATE,WRITE_EXTERNAL_STORAGE,CHANGE_WIFI_STATE,ACCESS_WIFI_STATE,DOWNLOAD_WITHOUT_NOTIFICATION,INTERNET,com.android.launcher.permission.UNINSTALL_SHORTCUT,info.guardianproject.orfox.permissions.BROWSER_PROVIDER,com.android.browser.permission.READ_HISTORY_BOOKMARKS,com.android.launcher.permission.INSTALL_SHORTCUT,ACCESS_NETWORK_STATE,WAKE_LOCK</permissions>
+      <nativecode>armeabi-v7a</nativecode>
+    </package>
+  </application>
+  <application id="info.guardianproject.browser">
+    <id>info.guardianproject.browser</id>
+    <added>2012-10-22</added>
+    <lastupdated>2015-11-26</lastupdated>
+    <name>Orweb</name>
+    <summary>Privacy-enhanced browser</summary>
+    <icon>info.guardianproject.browser.7010.png</icon>
+    <desc>&lt;p&gt;Orweb is a companion browser to &lt;a href="fdroid.app:org.torproject.android"&gt;Orbot&lt;/a&gt;, the port of Tor to Android.&lt;/p&gt;&lt;p&gt;Orbot anonymizes internet traffic by routing it through many different stages and you must have that enabled first, though root isn't needed. Orweb disables certain other browser features that could be used to identify you.&lt;/p&gt;</desc>
+    <license>GPL</license>
+    <categories>Internet,Security,GuardianProject</categories>
+    <category>Internet</category>
+    <web>https://guardianproject.info/apps/orweb</web>
+    <source>https://github.com/guardianproject/orweb</source>
+    <tracker>https://dev.guardianproject.info/projects/orweb/issues?set_filter=1</tracker>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <package>
+      <version>0.7.1</version>
+      <versioncode>7010</versioncode>
+      <apkname>Orweb-0.7.1.apk</apkname>
+      <hash type="sha256">949d65d6e8a1eadd0aa626bdc7c5a3e2b0dbe5a38dea1d725cce2a34ec84f0d4</hash>
+      <size>2424394</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>21</targetSdkVersion>
+      <added>2015-11-26</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>READ_EXTERNAL_STORAGE,INTERNET,WRITE_EXTERNAL_STORAGE</permissions>
+    </package>
+    <package>
+      <version>0.7</version>
+      <versioncode>28</versioncode>
+      <apkname>Orweb-release-0.7.apk</apkname>
+      <hash type="sha256">763541f43f5dc136744b4361fe67d36f25cc036526d6c3e934287d72d1b411ab</hash>
+      <size>1244875</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>18</targetSdkVersion>
+      <added>2014-11-13</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>READ_EXTERNAL_STORAGE,INTERNET,WRITE_EXTERNAL_STORAGE</permissions>
+    </package>
+    <package>
+      <version>0.6.1</version>
+      <versioncode>27</versioncode>
+      <apkname>Orweb-release-0.6.1.apk</apkname>
+      <hash type="sha256">103f4a98fa282923c07e445b2a383e946b6c15e10ed08005af3d0743249a0359</hash>
+      <size>931433</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>19</targetSdkVersion>
+      <added>2014-06-30</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>READ_EXTERNAL_STORAGE,INTERNET,WRITE_EXTERNAL_STORAGE</permissions>
+    </package>
+  </application>
+  <application id="info.guardianproject.pixelknot">
+    <id>info.guardianproject.pixelknot</id>
+    <added>2013-02-26</added>
+    <lastupdated>2016-12-06</lastupdated>
+    <name>PixelKnot</name>
+    <summary>Hide messages inside files</summary>
+    <icon>info.guardianproject.pixelknot.100.png</icon>
+    <desc>&lt;p&gt;Image steganography app with old school F5 steganography&lt;/p&gt;</desc>
+    <license>GPLv3</license>
+    <categories>Office,GuardianProject</categories>
+    <category>Office</category>
+    <web>https://guardianproject.info</web>
+    <source>https://github.com/guardianproject/PixelKnot</source>
+    <tracker>https://github.com/guardianproject/PixelKnot/issues</tracker>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <package>
+      <version>1.0.0</version>
+      <versioncode>100</versioncode>
+      <apkname>PixelKnot-release-1.0.0.apk</apkname>
+      <hash type="sha256">f97557cf7ec81ade50c308c5552dc6dc827d0e02ce90f84b1df6b7477d9f5a39</hash>
+      <size>1983586</size>
+      <sdkver>17</sdkver>
+      <targetSdkVersion>25</targetSdkVersion>
+      <added>2016-12-06</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>VIBRATE,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE</permissions>
+      <uses-permission maxSdkVersion="18" name="android.permission.VIBRATE"/>
+      <uses-permission maxSdkVersion="18" name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+      <nativecode>arm64-v8a,armeabi,armeabi-v7a,mips,mips64,x86,x86_64</nativecode>
+    </package>
+    <package>
+      <version>0.3.3</version>
+      <versioncode>6</versioncode>
+      <apkname>PixelKnot-release-0.3.3.apk</apkname>
+      <hash type="sha256">6beede8519a9e87ba8edaa5a76f203cfefd5f39eb911e789031cc6e911714b89</hash>
+      <size>4751233</size>
+      <sdkver>14</sdkver>
+      <targetSdkVersion>17</targetSdkVersion>
+      <added>2015-06-26</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>CAMERA,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE</permissions>
+      <nativecode>armeabi</nativecode>
+    </package>
+    <package>
+      <version>0.3.1</version>
+      <versioncode>4</versioncode>
+      <apkname>PixelKnot-release-0.3.1.apk</apkname>
+      <hash type="sha256">a3101fe8a2d47ab205cb00459fa62c639a6fac4538f6cd9d06eb48d2965c4d21</hash>
+      <size>3976822</size>
+      <sdkver>9</sdkver>
+      <targetSdkVersion>17</targetSdkVersion>
+      <added>2013-07-22</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+      <permissions>CAMERA,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE</permissions>
+      <nativecode>armeabi</nativecode>
+    </package>
+  </application>
+  <application id="info.guardianproject.ripple">
+    <id>info.guardianproject.ripple</id>
+    <added>2016-12-06</added>
+    <lastupdated>2016-12-06</lastupdated>
+    <name>Ripple</name>
+    <summary>Trigger apps to protect your privacy when in anxious or panic situations</summary>
+    <icon>info.guardianproject.ripple.75.png</icon>
+    <desc>&lt;p&gt;Ripple is a "panic button" that can send it's trigger message to any app that is a "panic responder".  Such apps can do things like lock, disguise themselves, delete private data, send an emergency message, and more.  It is meant for situations where there is time to react, but where users need to be sure it is not mistakenly set off.&lt;/p&gt;&lt;p&gt;This is a BETA version of this app!  We are working now to add support to as many other apps as possible.  ChatSecure, Orweb, Umbrella, and Zom already have support, these apps are coming soon: Courier, PanicButton, OpenKeychain, Orfox, SMSSecure, and StoryMaker.&lt;/p&gt;&lt;p&gt;Here are two example scenarios:&lt;/p&gt;&lt;ul&gt;&lt;li&gt; An organization gets regularly raided by the security forces, who search all of the computers and mobile devices on the premises. The organization usually has at least a minute or two of warning before a raid starts. They need a very reliable way to trigger wiping all of the data from the sensitive apps.&lt;/li&gt;&lt;/ul&gt;&lt;ul&gt;&lt;li&gt; An aid worker has lots of sensitive data about people on their device. They regularly sync that data up with a secure, central database. Occasionally, the aid worker has to leave the country on very short notice. The border guards regularly download the entire contents of mobile devices of people crossing through. While waiting in line at the border, the aid worker sees the border guards seizing people's devices, and then remembers all the data on the device, so she unlocks her phone and hits the wipe trigger, which wipes all sensitive apps from the device. When the aid worker returns to the central office, the device is again synced up with the central database.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;This was started as part of the T2 Panic work, since sharing location is so often a part of panic apps.  Follow our progress here:&lt;/p&gt;&lt;p&gt;★ &lt;a href="https://guardianproject.info/tag/panic"&gt;https://guardianproject.info/tag/panic&lt;/a&gt; ★ &lt;a href="https://dev.guardianproject.info/projects/panic"&gt;https://dev.guardianproject.info/projects/panic&lt;/a&gt; Don’t see your language? Join us and help translate the app: &lt;a href="https://www.transifex.com/projects/p/rippleapp"&gt;https://www.transifex.com/projects/p/rippleapp&lt;/a&gt;&lt;/p&gt;&lt;p&gt;==Learn More==&lt;/p&gt;&lt;p&gt;★ ABOUT US: Guardian Project is a group of developers that make secure mobile apps and open-source code for a better tomorrow ★ OUR WEBSITE: &lt;a href="https://GuardianProject.info"&gt;https://GuardianProject.info&lt;/a&gt; ★ ON TWITTER: &lt;a href="https://twitter.com/guardianproject"&gt;https://twitter.com/guardianproject&lt;/a&gt; ★ FREE SOFTWARE: Ripple is free software. You can take a look at our source code, or contribute to help make Ripple even better: &lt;a href="https://github.com/guardianproject/Ripple"&gt;https://github.com/guardianproject/Ripple&lt;/a&gt; ★ MESSAGE US: Are we missing your favorite feature? Found an annoying bug? Please tell us! We’d love to hear from you. Send us an email: support@guardianproject.info or find us in our chat room &lt;a href="https://guardianproject.info/contact"&gt;https://guardianproject.info/contact&lt;/a&gt;&lt;/p&gt;</desc>
+    <license>GPLv3</license>
+    <categories>Navigation,Security,GuardianProject</categories>
+    <category>Navigation</category>
+    <web>https://dev.guardianproject.info/projects/panic</web>
+    <source>https://github.com/guardianproject/ripple</source>
+    <tracker>https://dev.guardianproject.info/projects/panic/issues</tracker>
+    <bitcoin>1Fi5xUHiAPRKxHvyUGVFGt9extBe8Srdbk</bitcoin>
+    <marketversion/>
+    <marketvercode>9999999</marketvercode>
+    <package>
+      <version>0.2</version>
+      <versioncode>75</versioncode>
+      <apkname>Ripple-0.2-release.apk</apkname>
+      <hash type="sha256">4b14b1b402f0197e1e6ffe2c11e052432fc8a52749f5f02d9cc67799658df239</hash>
+      <size>1669315</size>
+      <sdkver>10</sdkver>
+      <targetSdkVersion>23</targetSdkVersion>
+      <added>2016-12-06</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+    </package>
+    <package>
+      <version>0.1</version>
+      <versioncode>2</versioncode>
+      <apkname>Ripple-0.1.apk</apkname>
+      <hash type="sha256">9fd24cbb3552123e6ee119f912f1646dd21cd7a683734a8d502d8b44854a284b</hash>
+      <size>1670285</size>
+      <sdkver>10</sdkver>
+      <targetSdkVersion>23</targetSdkVersion>
+      <added>2016-12-06</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+    </package>
+    <package>
+      <version>0.0</version>
+      <versioncode>1</versioncode>
+      <apkname>Ripple-0.0.apk</apkname>
+      <hash type="sha256">025894a5f3a39a288ee60bb6c9cc2c559d395f22fed020d1086308ba12df85a3</hash>
+      <size>1664407</size>
+      <sdkver>10</sdkver>
+      <targetSdkVersion>23</targetSdkVersion>
+      <added>2016-12-06</added>
+      <sig>d70ac6a02b53ebdd1354ea7af7b9ceee</sig>
+    </package>
+  </application>
+  <application id="info.guardianproject.chatsecure.emoji.core">
+    <id>info.guardianproject.chatsecure.emoji.core</id>
+    <added>2013-12-02</added>
+    <lastupdated>2013-12-02</lastupdated>
+    <name>StickerPack</name>
+    <summary>ChatSecure Open Emoji Plugin</summary>
+    <icon>info.guardianproject.chatsecure.emoji.core.1.png</icon>
+    <desc>&lt;p&gt;Plugin for &lt;a href="fdroid.app:info.guardianproject.otr.app.im"&gt;ChatSecure&lt;/a&gt; to support for core emoji input and display.  Based on "Phantom Open Emoji" project.&lt;/p&gt;</desc>
+    <license>SIL Open Font License, MIT License and the CC 3.0 License [CC-By with attribution requirement waived]</license>
+    <categories>Multimedia,Security,GuardianProject</categories>
+    <category>Multimedia</category>
+    <web>https://guardianproject.info/apps/chatsecure</web>
+    <source>https://github.com/guardianproject/ChatSecureVoicePlugin</source>
+    <tracker>https://dev.guardianproject.info/projects/chatsecure/issues</tracker>
+    <marketversion/>
+    <marketvercode>999999999</marketvercode>
+    <package>
+      <version>1.0</version>
+      <versioncode>1</versioncode>
+      <apkname>ChatSecurePluginOpenEmoji-release-v1.apk</apkname>
+      <hash type="sha256">131c1ebaf795c3f053701285699f0b7e517de1c7fdba56e247b1ec31766b2808</hash>
+      <size>1814271</size>
+      <sdkver>8</sdkver>
+      <targetSdkVersion>17</targetSdkVersion>
+      <added>2013-12-02</added>
+      <sig>a0eeebb161f946e3516945fae8a92a3e</sig>
+    </package>
+  </application>
+</fdroid>

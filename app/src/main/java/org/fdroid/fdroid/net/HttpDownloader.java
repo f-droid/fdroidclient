@@ -79,17 +79,25 @@ public class HttpDownloader extends Downloader {
      */
     @Override
     public void download() throws IOException, InterruptedException {
-        boolean resumable = false;
-        long fileLength = outputFile.length();
-
         // get the file size from the server
         HttpURLConnection tmpConn = getConnection();
         tmpConn.setRequestMethod("HEAD");
         int contentLength = -1;
-        if (tmpConn.getResponseCode() == 200) {
-            contentLength = tmpConn.getContentLength();
-        }
+        int statusCode = tmpConn.getResponseCode();
         tmpConn.disconnect();
+        switch (statusCode) {
+            case 200:
+                contentLength = tmpConn.getContentLength();
+                break;
+            case 404:
+                notFound = true;
+                return;
+            default:
+                Utils.debugLog(TAG, "HEAD check of " + sourceUrl + " returned " + statusCode + ": "
+                        + tmpConn.getResponseMessage());
+        }
+        boolean resumable = false;
+        long fileLength = outputFile.length();
         if (fileLength > contentLength) {
             FileUtils.deleteQuietly(outputFile);
         } else if (fileLength == contentLength && outputFile.isFile()) {
@@ -127,9 +135,6 @@ public class HttpDownloader extends Downloader {
         return connection;
     }
 
-    /**
-     * @return Whether the connection is resumable or not
-     */
     private void setupConnection(boolean resumable) throws IOException {
         if (connection != null) {
             return;

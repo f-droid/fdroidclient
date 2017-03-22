@@ -34,6 +34,7 @@ public abstract class Downloader {
 
     final URL sourceUrl;
     String cacheTag;
+    boolean notFound;
 
     /**
      * For sending download progress, should only be called in {@link #progressTask}
@@ -85,6 +86,13 @@ public abstract class Downloader {
     public abstract void download() throws IOException, InterruptedException;
 
     public abstract boolean isCached();
+
+    /**
+     * @return whether the requested file was not found in the repo (e.g. HTTP 404 Not Found)
+     */
+    public boolean isNotFound() {
+        return notFound;
+    }
 
     void downloadFromStream(int bufferSize, boolean resumable) throws IOException, InterruptedException {
         Utils.debugLog(TAG, "Downloading from stream");

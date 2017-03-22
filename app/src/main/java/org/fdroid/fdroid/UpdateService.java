@@ -393,10 +393,16 @@ public class UpdateService extends IntentService {
                 }
 
                 sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
-                RepoUpdater updater = new RepoUpdater(getBaseContext(), repo);
-                setProgressListeners(updater);
+
+
                 try {
-                    updater.update();
+                    RepoUpdater updater = new IndexV1Updater(this, repo);
+                    //TODO setProgressListeners(updater);
+                    if (!updater.update()) {
+                        updater = new RepoUpdater(getBaseContext(), repo);
+                        setProgressListeners(updater);
+                        updater.update();
+                    }
                     if (updater.hasChanged()) {
                         updatedRepos++;
                         changes = true;

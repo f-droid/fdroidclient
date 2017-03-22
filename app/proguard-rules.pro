@@ -44,3 +44,13 @@
 #  - https://github.com/ReactiveX/RxJava/issues/1415#issuecomment-48390883
 #  - https://github.com/ReactiveX/RxJava/blob/1.x/src/main/java/rx/internal/util/unsafe/UnsafeAccess.java#L23
 -dontwarn rx.internal.util.**
+
+-keepattributes *Annotation*,EnclosingMethod,Signature
+-keepnames class com.fasterxml.jackson.** { *; }
+-dontwarn com.fasterxml.jackson.databind.ext.**
+-keep class org.codehaus.** { *; }
+-keepclassmembers public final enum org.codehaus.jackson.annotate.JsonAutoDetect$Visibility {
+public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *; }
+-keep public class your.class.** {
+  *;
+}

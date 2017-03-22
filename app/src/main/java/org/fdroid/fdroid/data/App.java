@@ -16,6 +16,8 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.fdroid.AppFilter;
 import org.fdroid.fdroid.FDroidApp;
@@ -39,6 +41,21 @@ import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Represents an application, its availability, and its current installed state.
+ * This represents the app in general, for a specific version of this app, see
+ * {@link Apk}.
+ * <p>
+ * <b>Do not rename these instance variables without careful consideration!</b>
+ * They are mapped to JSON field names, the {@code fdroidserver} internal variable
+ * names, and the {@code fdroiddata} YAML field names.  Only the instance variables
+ * listed in {@code @JsonIgnoreProperties} are not directly mapped.
+ *
+ * @see <a href="https://gitlab.com/fdroid/fdroiddata">fdroiddata</a>
+ * @see <a href="https://gitlab.com/fdroid/fdroidserver">fdroidserver</a>
+ */
+@JsonIgnoreProperties({"compatible", "CREATOR", "id", "installedApk", "installedSig",
+        "installedVersionCode", "installedVersionName", "prefs", "repoId", })
 public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     private static final String TAG = "App";

@@ -842,8 +842,13 @@ public class RepoXMLHandlerTest {
 
     @NonNull
     private RepoDetails getFromFile(String indexFilename, int pushRequests) {
-        Log.i(TAG, "test file: " + getClass().getClassLoader().getResource(indexFilename));
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(indexFilename);
+        return getFromFile(getClass().getClassLoader(), indexFilename, pushRequests);
+    }
+
+    @NonNull
+    static RepoDetails getFromFile(ClassLoader classLoader, String indexFilename, int pushRequests) {
+        Log.i(TAG, "test file: " + classLoader.getResource(indexFilename));
+        InputStream inputStream = classLoader.getResourceAsStream(indexFilename);
         return RepoDetails.getFromFile(inputStream, pushRequests);
     }
 

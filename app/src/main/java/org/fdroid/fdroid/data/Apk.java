@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.RepoXMLHandler;
@@ -18,6 +19,21 @@ import java.io.File;
 import java.util.Date;
 import java.util.HashSet;
 
+/**
+ * Represents a single package of an application. This represents one particular
+ * package of a given application, for info about the app in general, see
+ * {@link App}.
+ * <p>
+ * <b>Do not rename these instance variables without careful consideration!</b>
+ * They are mapped to JSON field names, the {@code fdroidserver} internal variable
+ * names, and the {@code fdroiddata} YAML field names.  Only the instance variables
+ * listed in {@code @JsonIgnoreProperties} are not directly mapped.
+ *
+ * @see <a href="https://gitlab.com/fdroid/fdroiddata">fdroiddata</a>
+ * @see <a href="https://gitlab.com/fdroid/fdroidserver">fdroidserver</a>
+ */
+@JsonIgnoreProperties({"compatible", "CREATOR", "installedFile", "repo", "repoAddress",
+        "repoVersion",})
 public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
     // Using only byte-range keeps it only 8-bits in the SQLite database
@@ -94,16 +110,16 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      * If you need an {@link Apk} but it is no longer in the database any more (e.g. because the
      * version you have installed is no longer in the repository metadata) then you can instantiate
      * an {@link Apk} via an {@link InstalledApp} instance.
-     *
+     * <p>
      * Note: Many of the fields on this instance will not be known in this circumstance. Currently
      * the only things that are known are:
-     *
-     *  + {@link Apk#packageName}
-     *  + {@link Apk#versionName}
-     *  + {@link Apk#versionCode}
-     *  + {@link Apk#hash}
-     *  + {@link Apk#hashType}
-     *
+     * <p>
+     * + {@link Apk#packageName}
+     * + {@link Apk#versionName}
+     * + {@link Apk#versionCode}
+     * + {@link Apk#hash}
+     * + {@link Apk#hashType}
+     * <p>
      * This could instead be implemented by accepting a {@link PackageInfo} and it would get much
      * the same information, but it wouldn't have the hash of the package. Seeing as we've already
      * done the hard work to calculate that hash and stored it in the database, we may as well use

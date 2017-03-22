@@ -21,6 +21,8 @@
  */
 
 package org.fdroid.fdroid;
+// TODO move to org.fdroid.fdroid.updater
+// TODO reduce visibility of methods once in .updater package (.e.g tests need it public now)
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -83,21 +85,22 @@ import javax.xml.parsers.SAXParserFactory;
  * very careful with the changes that you are making!
  */
 public class RepoUpdater {
-
+    //TODO rename RepoUpdater to IndexV0Updater
     private static final String TAG = "RepoUpdater";
 
     private final String indexUrl;
 
     @NonNull
-    private final Context context;
+    final Context context;
     @NonNull
-    private final Repo repo;
-    private boolean hasChanged;
+    final Repo repo;
+    boolean hasChanged;
 
     @Nullable
-    private ProgressListener downloadProgressListener;
-    private ProgressListener committingProgressListener;
-    private ProgressListener processXmlProgressListener;
+    ProgressListener downloadProgressListener;
+    ProgressListener committingProgressListener;
+    ProgressListener processXmlProgressListener;
+
     private String cacheTag;
     private X509Certificate signingCertFromJar;
 
@@ -174,10 +177,10 @@ public class RepoUpdater {
      * a single file, {@code index.xml}.  This takes the {@code index.jar}, verifies the
      * signature, then returns the unzipped {@code index.xml}.
      *
+     * @return whether this version of the repo index was found and processed
      * @throws UpdateException All error states will come from here.
      */
-    public void update() throws UpdateException {
-
+    public boolean update() throws UpdateException {
         final Downloader downloader = downloadIndex();
         hasChanged = downloader.hasChanged();
 
@@ -188,6 +191,7 @@ public class RepoUpdater {
             processDownloadedFile(downloader.outputFile);
             processRepoPushRequests();
         }
+        return true;
     }
 
     private ContentValues repoDetailsToSave;
@@ -200,7 +204,7 @@ public class RepoUpdater {
                                     int version, long timestamp, String icon, String[] mirrors) {
                 signingCertFromIndexXml = signingCert;
                 repoDetailsToSave = prepareRepoDetailsForSaving(name, description, maxAge, version,
-                        timestamp, icon, mirrors);
+                        timestamp, icon, mirrors, cacheTag);
             }
 
             @Override
@@ -297,9 +301,9 @@ public class RepoUpdater {
      * Update tracking data for the repo represented by this instance (index version, etag,
      * description, human-readable name, etc.
      */
-    private ContentValues prepareRepoDetailsForSaving(String name, String description, int maxAge,
-                                                      int version, long timestamp, String icon,
-                                                      String[] mirrors) {
+    ContentValues prepareRepoDetailsForSaving(String name, String description, int maxAge,
+                                              int version, long timestamp, String icon,
+                                              String[] mirrors, String cacheTag) {
         ContentValues values = new ContentValues();
 
         values.put(RepoTable.Cols.LAST_UPDATED, Utils.formatTime(new Date(), ""));
@@ -308,12 +312,12 @@ public class RepoUpdater {
             values.put(RepoTable.Cols.LAST_ETAG, cacheTag);
         }
 
-        if (version != -1 && version != repo.version) {
+        if (version != Repo.INT_UNSET_VALUE && version != repo.version) {
             Utils.debugLog(TAG, "Repo specified a new version: from " + repo.version + " to " + version);
             values.put(RepoTable.Cols.VERSION, version);
         }
 
-        if (maxAge != -1 && maxAge != repo.maxage) {
+        if (maxAge != Repo.INT_UNSET_VALUE && maxAge != repo.maxage) {
             Utils.debugLog(TAG, "Repo specified a new maximum age - updated");
             values.put(RepoTable.Cols.MAX_AGE, maxAge);
         }
@@ -372,7 +376,7 @@ public class RepoUpdater {
      * signing setups that would be valid for a regular jar.  This validates those
      * restrictions.
      */
-    private X509Certificate getSigningCertFromJar(JarEntry jarEntry) throws SigningException {
+    X509Certificate getSigningCertFromJar(JarEntry jarEntry) throws SigningException {
         final CodeSigner[] codeSigners = jarEntry.getCodeSigners();
         if (codeSigners == null || codeSigners.length == 0) {
             throw new SigningException(repo, "No signature found in index");
@@ -458,7 +462,7 @@ public class RepoUpdater {
      * should always accept, prompt the user, or ignore those requests on a
      * per repo basis.
      */
-    private void processRepoPushRequests() {
+    void processRepoPushRequests() {
         PackageManager pm = context.getPackageManager();
 
         for (RepoPushRequest repoPushRequest : repoPushRequestList) {
