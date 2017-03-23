@@ -34,4 +34,15 @@
         <item name="android:textColor">@color/fdroid_blue</item>
     </style>
 
+    <style name="DetailsAppTitleStyle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="DetailsLastUpdatedStyle" parent="TextAppearance.AppCompat.Small">
+    </style>
+
+    <style name="DetailsAntiFeaturesWarningStyle" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

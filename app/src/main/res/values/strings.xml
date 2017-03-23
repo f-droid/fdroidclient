@@ -169,7 +169,10 @@
 
     <string name="details_installed">Version %s installed</string>
     <string name="details_notinstalled">Not installed</string>
+    <string name="details_new_in_version">New in version %s</string>
 
+    <string name="antifeatureswarning">This app has features you may not like.</string>
+    <string name="antifeatures">Anti-features</string>
     <string name="antiadslist">This app contains advertising</string>
     <string name="antitracklist">This app tracks and reports your activity</string>
     <string name="antinonfreeadlist">This app promotes non-free add-ons</string>
@@ -472,5 +475,11 @@
     <plurals name="tts_view_all_in_category">
         <item quantity="one">View the single one app in the %2$s category</item>
         <item quantity="other">View all %1$d apps from the %2$s category</item>
+    </plurals>
+
+    <plurals name="details_last_update_days">
+        <item quantity="zero">Updated today</item>
+        <item quantity="one">Updated %1$s day ago</item>
+        <item quantity="other">Updated %1$s days ago</item>
     </plurals>
 </resources>
