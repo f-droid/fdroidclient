@@ -23,7 +23,6 @@ import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
-import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
@@ -281,7 +280,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         if (!TextUtils.isEmpty(packageName)) {
             Utils.debugLog(TAG, "FDroid launched via app link for '" + packageName + "'");
             Intent intentToInvoke = new Intent(this, AppDetails2.class);
-            intentToInvoke.putExtra(AppDetails.EXTRA_APPID, packageName);
+            intentToInvoke.putExtra(AppDetails2.EXTRA_APPID, packageName);
             startActivity(intentToInvoke);
             finish();
         } else if (!TextUtils.isEmpty(query)) {

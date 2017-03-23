@@ -107,7 +107,6 @@ public class AppDetails extends AppCompatActivity {
     private static final int REQUEST_PERMISSION_DIALOG = 3;
     private static final int REQUEST_UNINSTALL_DIALOG = 4;
 
-    public static final String EXTRA_APPID = "appid";
     public static final String EXTRA_FROM = "from";
     public static final String EXTRA_HINT_SEARCHING = "searching";
 
@@ -351,12 +350,12 @@ public class AppDetails extends AppCompatActivity {
      * and not externally.
      */
     private String getPackageNameFromIntent(Intent intent) {
-        if (!intent.hasExtra(EXTRA_APPID)) {
+        if (!intent.hasExtra(AppDetails2.EXTRA_APPID)) {
             Log.e(TAG, "No package name found in the intent!");
             return null;
         }
 
-        return intent.getStringExtra(EXTRA_APPID);
+        return intent.getStringExtra(AppDetails2.EXTRA_APPID);
     }
 
     @Override

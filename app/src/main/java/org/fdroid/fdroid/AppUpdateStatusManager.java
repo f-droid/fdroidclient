@@ -392,16 +392,16 @@ public final class AppUpdateStatusManager {
 
     /**
      * Get a {@link PendingIntent} for a {@link Notification} to send when it
-     * is clicked.  {@link AppDetails} handles {@code Intent}s that are missing
-     * or bad {@link AppDetails#EXTRA_APPID}, so it does not need to be checked
+     * is clicked.  {@link AppDetails2} handles {@code Intent}s that are missing
+     * or bad {@link AppDetails2#EXTRA_APPID}, so it does not need to be checked
      * here.
      */
     private PendingIntent getAppDetailsIntent(Apk apk) {
-        Intent notifyIntent = new Intent(context, AppDetails.class)
-                .putExtra(AppDetails.EXTRA_APPID, apk.packageName);
+        Intent notifyIntent = new Intent(context, AppDetails2.class)
+                .putExtra(AppDetails2.EXTRA_APPID, apk.packageName);
 
         return TaskStackBuilder.create(context)
-                .addParentStack(AppDetails.class)
+                .addParentStack(AppDetails2.class)
                 .addNextIntent(notifyIntent)
                 .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
     }

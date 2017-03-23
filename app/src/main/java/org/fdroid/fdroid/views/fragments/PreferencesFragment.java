@@ -13,7 +13,7 @@ import android.preference.PreferenceCategory;
 import android.support.v4.preference.PreferenceFragment;
 import android.text.TextUtils;
 
-import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.CleanCacheService;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
@@ -261,8 +261,8 @@ public class PreferencesFragment extends PreferenceFragment
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 // Open details of F-Droid Privileged
-                Intent intent = new Intent(getActivity(), AppDetails.class);
-                intent.putExtra(AppDetails.EXTRA_APPID,
+                Intent intent = new Intent(getActivity(), AppDetails2.class);
+                intent.putExtra(AppDetails2.EXTRA_APPID,
                         PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
                 startActivity(intent);
 

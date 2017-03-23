@@ -169,7 +169,7 @@ public abstract class AppListFragment extends ListFragment implements
         if (cursor != null) {
             final App app = new App(cursor);
             Intent intent = getAppDetailsIntent(useNewDetailsActivity);
-            intent.putExtra(AppDetails.EXTRA_APPID, app.packageName);
+            intent.putExtra(AppDetails2.EXTRA_APPID, app.packageName);
             intent.putExtra(AppDetails.EXTRA_FROM, getFromTitle());
             if (Build.VERSION.SDK_INT >= 21) {
                 Pair<View, String> iconTransitionPair = Pair.create(view.findViewById(R.id.icon),
