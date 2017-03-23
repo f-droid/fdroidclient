@@ -24,7 +24,7 @@ public class UpdatesViewBinder {
     }
 
     public void bind() {
-        adapter.listenForStatusUpdates();
+        adapter.setIsActive();
     }
 
     public void unbind() {
