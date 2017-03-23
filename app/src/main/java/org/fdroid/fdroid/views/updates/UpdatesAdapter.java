@@ -92,8 +92,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     /**
      * There are some statuses managed by {@link AppUpdateStatusManager} which we don't care about
-     * for the "Updates" view. For example {@link org.fdroid.fdroid.AppUpdateStatusManager.Status#Installed}
-     * apps are not interesting in the Updates" view at this point in time. Also, although this
+     * for the "Updates" view. For example Also, although this
      * adapter does know about apps with updates availble, it does so by querying the database not
      * by querying the app update status manager. As such, apps with the status
      * {@link org.fdroid.fdroid.AppUpdateStatusManager.Status#UpdateAvailable} are not interesting here.
@@ -101,6 +100,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private boolean shouldShowStatus(AppUpdateStatusManager.AppUpdateStatus status) {
         return status.status == AppUpdateStatusManager.Status.Unknown ||
                 status.status == AppUpdateStatusManager.Status.Downloading ||
+                status.status == AppUpdateStatusManager.Status.Installed ||
                 status.status == AppUpdateStatusManager.Status.ReadyToInstall;
     }
 

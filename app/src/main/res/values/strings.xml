@@ -73,6 +73,7 @@
     <string name="app_list__name__downloaded_and_ready_to_update">Update %1$s</string>
     <string name="app_list__name__downloaded_and_ready_to_install">Install %1$s</string>
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s successfully installed</string>
     <plurals name="app_list__age__released_x_days_ago">
         <item quantity="one">Released %1$d day ago</item>
         <item quantity="other">Released %1$d days ago</item>

@@ -254,6 +254,18 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     }
 
     /**
+     * Queries the {@link AppUpdateStatusManager} and asks if the app was just successfully installed.
+     */
+    private boolean wasSuccessfullyInstalled(@NonNull App app) {
+        for (AppUpdateStatusManager.AppUpdateStatus appStatus : AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName)) {
+            if (appStatus.status == AppUpdateStatusManager.Status.Installed) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * The app name {@link TextView} is used for a few reasons:
      *  * Display name + summary of the app (most common).
      *  * If downloading, mention that it is downloading instead of showing the summary.
@@ -276,6 +288,8 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             }
         } else if (isDownloading(app)) {
             name.setText(activity.getString(R.string.app_list__name__downloading_in_progress, app.name));
+        } else if (wasSuccessfullyInstalled(app)) {
+            name.setText(activity.getString(R.string.app_list__name__successfully_installed, app.name));
         } else {
             name.setText(Utils.formatAppNameAndSummary(app.name, app.summary));
         }
