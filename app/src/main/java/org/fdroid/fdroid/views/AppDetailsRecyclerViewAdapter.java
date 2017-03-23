@@ -32,11 +32,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -126,7 +124,9 @@ public class AppDetailsRecyclerViewAdapter
             items.clear();
         }
         addItem(VIEWTYPE_HEADER);
-        addItem(VIEWTYPE_SCREENSHOTS);
+        if (app.getAllScreenshots(context).length > 0) {
+            addItem(VIEWTYPE_SCREENSHOTS);
+        }
         addItem(VIEWTYPE_DONATE);
         addItem(VIEWTYPE_LINKS);
         addItem(VIEWTYPE_PERMISSIONS);
