@@ -47,7 +47,7 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
         AppDetailsRecyclerViewAdapter adapter = new AppDetailsRecyclerViewAdapter(context, app, dummyCallbacks);
         populateViewHolders(adapter);
 
-        assertEquals(5, adapter.getItemCount());
+        assertEquals(4, adapter.getItemCount());
 
     }
 
