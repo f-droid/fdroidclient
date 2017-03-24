@@ -17,11 +17,19 @@
             android:layout_height="match_parent"
             android:background="?attr/mainTabSwapBackground">
 
+            <org.fdroid.fdroid.views.BannerNoInternet
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/banner_no_internet"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <org.fdroid.fdroid.views.BannerUpdatingRepos
                 android:id="@+id/banner_updating_repos"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/banner_no_internet"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
