@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
+import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -16,12 +18,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegatesManager;
 import org.fdroid.fdroid.AppUpdateStatusManager;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.NetworkState;
 import org.fdroid.fdroid.views.updates.items.AppStatus;
 import org.fdroid.fdroid.views.updates.items.AppUpdateData;
 import org.fdroid.fdroid.views.updates.items.KnownVulnApp;
+import org.fdroid.fdroid.views.updates.items.PendingDownload;
 import org.fdroid.fdroid.views.updates.items.UpdateableApp;
 import org.fdroid.fdroid.views.updates.items.UpdateableAppsHeader;
 
@@ -68,6 +74,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private static final int LOADER_CAN_UPDATE = 289753982;
     private static final int LOADER_KNOWN_VULN = 520389740;
+    private static final int LOADER_PENDING_DOWNLOAD = 71982312;
 
     private final AdapterDelegatesManager<List<AppUpdateData>> delegatesManager = new AdapterDelegatesManager<>();
     private final List<AppUpdateData> items = new ArrayList<>();
@@ -77,13 +84,16 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private final List<AppStatus> appsToShowStatus = new ArrayList<>();
     private final List<UpdateableApp> updateableApps = new ArrayList<>();
     private final List<KnownVulnApp> knownVulnApps = new ArrayList<>();
+    private final List<PendingDownload> pendingDownload = new ArrayList<>();
 
     private boolean showAllUpdateableApps = false;
+    private boolean showAppsPendingDownload = false;
 
-    public UpdatesAdapter(AppCompatActivity activity) {
+    public UpdatesAdapter(final AppCompatActivity activity) {
         this.activity = activity;
 
         delegatesManager.addDelegate(new AppStatus.Delegate(activity))
+                .addDelegate(new PendingDownload.Delegate(activity))
                 .addDelegate(new UpdateableApp.Delegate(activity))
                 .addDelegate(new UpdateableAppsHeader.Delegate(activity))
                 .addDelegate(new KnownVulnApp.Delegate(activity));
@@ -151,6 +161,10 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             items.add(app);
         }
 
+        if (showAppsPendingDownload) {
+            items.addAll(pendingDownload);
+        }
+
         if (updateableApps != null) {
             // Only count/show apps which are not shown above in the "Apps to show status" list.
             List<UpdateableApp> updateableAppsToShow = new ArrayList<>(updateableApps.size());
@@ -204,8 +218,12 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 uri = AppProvider.getInstalledWithKnownVulnsUri();
                 break;
 
+            case LOADER_PENDING_DOWNLOAD:
+                uri = AppProvider.getQueuedForDownloadUri();
+                break;
+
             default:
-                throw new IllegalStateException("Unknown loader requested: " + id);
+                throw new IllegalArgumentException("Unknown loader requested: " + id);
         }
 
         return new CursorLoader(
@@ -221,6 +239,10 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             case LOADER_KNOWN_VULN:
                 onKnownVulnLoadFinished(cursor);
+                break;
+
+            case LOADER_PENDING_DOWNLOAD:
+                onLoadPendingDownloadComplete(cursor);
                 break;
         }
 
@@ -248,6 +270,19 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
+    private void onLoadPendingDownloadComplete(Cursor cursor) {
+        pendingDownload.clear();
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            pendingDownload.add(new PendingDownload(activity, new App(cursor)));
+            cursor.moveToNext();
+        }
+
+        populateItems();
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
     }
@@ -261,9 +296,13 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      * update themselves accordingly (if they are displayed).
      */
     public void setIsActive() {
+        showAppsPendingDownload = ConnectivityMonitorService.getNetworkState(activity) == NetworkState.NET_UNAVAILABLE;
         appsToShowStatus.clear();
         populateAppStatuses();
         notifyDataSetChanged();
+
+        activity.getSupportLoaderManager().restartLoader(LOADER_PENDING_DOWNLOAD, null, this);
+        activity.getSupportLoaderManager().restartLoader(LOADER_CAN_UPDATE, null, this);
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED);
@@ -271,10 +310,13 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
 
         LocalBroadcastManager.getInstance(activity).registerReceiver(receiverAppStatusChanges, filter);
+
+        activity.registerReceiver(receiverNetworkChanges, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
     public void stopListeningForStatusUpdates() {
         LocalBroadcastManager.getInstance(activity).unregisterReceiver(receiverAppStatusChanges);
+        activity.unregisterReceiver(receiverNetworkChanges);
     }
 
     private void onManyAppStatusesChanged(String reasonForChange) {
@@ -322,6 +364,23 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         populateAppStatuses();
         notifyDataSetChanged();
     }
+
+    private final BroadcastReceiver receiverNetworkChanges = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (pendingDownload.size() == 0) {
+                return;
+            }
+
+            boolean show = ConnectivityMonitorService.getNetworkState(context) == NetworkState.NET_UNAVAILABLE;
+
+            if (showAppsPendingDownload != show) {
+                showAppsPendingDownload = show;
+                populateItems();
+                notifyDataSetChanged();
+            }
+        }
+    };
 
     private final BroadcastReceiver receiverAppStatusChanges = new BroadcastReceiver() {
         @Override
