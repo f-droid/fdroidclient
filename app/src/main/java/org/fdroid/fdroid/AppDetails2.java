@@ -53,6 +53,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppPrefs;
 import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
@@ -748,6 +749,13 @@ public class AppDetails2 extends AppCompatActivity
             // This can happen when the app was just uninstalled.
             Toast.makeText(this, R.string.app_not_installed, Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void setQueueForDownloadWhenOnline(boolean queue) {
+        AppPrefs prefs = app.getPrefs(this);
+        prefs.queueForDownload = queue;
+        AppPrefsProvider.Helper.update(this, app, prefs);
     }
 
     @Override

@@ -27,19 +27,20 @@ public class AppPrefsProviderTest extends FDroidProviderTest {
     @SuppressWarnings({"PMD.EqualsNull", "EqualsWithItself", "EqualsBetweenInconvertibleTypes", "ObjectEqualsNull"})
     @Test
     public void prefEquality() {
-        AppPrefs original = new AppPrefs(101, true, true);
+        AppPrefs original = new AppPrefs(101, true, true, true);
 
-        assertTrue(original.equals(new AppPrefs(101, true, true)));
+        assertTrue(original.equals(new AppPrefs(101, true, true, true)));
         assertTrue(original.equals(original));
 
         assertFalse(original.equals(null));
         assertFalse(original.equals("String"));
-        assertFalse(original.equals(new AppPrefs(102, true, true)));
-        assertFalse(original.equals(new AppPrefs(101, false, true)));
-        assertFalse(original.equals(new AppPrefs(100, false, true)));
-        assertFalse(original.equals(new AppPrefs(102, true, false)));
-        assertFalse(original.equals(new AppPrefs(101, false, false)));
-        assertFalse(original.equals(new AppPrefs(100, false, false)));
+        assertFalse(original.equals(new AppPrefs(102, true, true, true)));
+        assertFalse(original.equals(new AppPrefs(101, false, true, true)));
+        assertFalse(original.equals(new AppPrefs(100, false, true, true)));
+        assertFalse(original.equals(new AppPrefs(102, true, false, true)));
+        assertFalse(original.equals(new AppPrefs(101, false, false, true)));
+        assertFalse(original.equals(new AppPrefs(100, false, false, true)));
+        assertFalse(original.equals(new AppPrefs(101, true, true, false)));
     }
 
     @Test
@@ -54,18 +55,28 @@ public class AppPrefsProviderTest extends FDroidProviderTest {
         assertEquals(0, defaultPrefs.ignoreThisUpdate);
         assertFalse(defaultPrefs.ignoreAllUpdates);
         assertFalse(defaultPrefs.ignoreVulnerabilities);
+        assertFalse(defaultPrefs.queueForDownload);
 
-        AppPrefsProvider.Helper.update(context, withPrefs, new AppPrefs(12, false, false));
+        AppPrefsProvider.Helper.update(context, withPrefs, new AppPrefs(12, false, false, false));
         AppPrefs newPrefs = AppPrefsProvider.Helper.getPrefsOrDefault(context, withPrefs);
         assertEquals(12, newPrefs.ignoreThisUpdate);
         assertFalse(newPrefs.ignoreAllUpdates);
         assertFalse(newPrefs.ignoreVulnerabilities);
+        assertFalse(newPrefs.queueForDownload);
 
-        AppPrefsProvider.Helper.update(context, withPrefs, new AppPrefs(14, true, true));
+        AppPrefsProvider.Helper.update(context, withPrefs, new AppPrefs(14, true, true, false));
         AppPrefs evenNewerPrefs = AppPrefsProvider.Helper.getPrefsOrDefault(context, withPrefs);
         assertEquals(14, evenNewerPrefs.ignoreThisUpdate);
         assertTrue(evenNewerPrefs.ignoreAllUpdates);
         assertTrue(evenNewerPrefs.ignoreVulnerabilities);
+        assertFalse(evenNewerPrefs.queueForDownload);
+
+        AppPrefsProvider.Helper.update(context, withPrefs, new AppPrefs(16, true, true, true));
+        AppPrefs queuedForDownload = AppPrefsProvider.Helper.getPrefsOrDefault(context, withPrefs);
+        assertEquals(16, queuedForDownload.ignoreThisUpdate);
+        assertTrue(queuedForDownload.ignoreAllUpdates);
+        assertTrue(queuedForDownload.ignoreVulnerabilities);
+        assertTrue(queuedForDownload.queueForDownload);
 
         assertNull(AppPrefsProvider.Helper.getPrefsOrNull(context, withoutPrefs));
     }

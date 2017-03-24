@@ -2,10 +2,13 @@ package org.fdroid.fdroid.views;
 
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
@@ -42,6 +45,8 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.NetworkState;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.main.MainActivity;
@@ -76,6 +81,7 @@ public class AppDetailsRecyclerViewAdapter
 
         void launchApk();
 
+        void setQueueForDownloadWhenOnline(boolean queue);
     }
 
     private static final int VIEWTYPE_HEADER = 0;
@@ -355,6 +361,15 @@ public class AppDetailsRecyclerViewAdapter
                     updateAntiFeaturesWarning();
                 }
             });
+            context.registerReceiver(
+                    new BroadcastReceiver() {
+                        @Override
+                        public void onReceive(Context context, Intent intent) {
+                            updateButtons();
+                        }
+                    },
+                    new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+            );
         }
 
         public void setProgress(long bytesDownloaded, long totalBytes, int resIdString) {
@@ -469,9 +484,50 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             updateAntiFeaturesWarning();
+            updateButtons();
+
+            if (callbacks.isAppDownloading()) {
+                buttonLayout.setVisibility(View.GONE);
+                progressLayout.setVisibility(View.VISIBLE);
+            } else {
+                buttonLayout.setVisibility(View.VISIBLE);
+                progressLayout.setVisibility(View.GONE);
+            }
+            progressCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callbacks.installCancel();
+                }
+            });
+
+        }
+
+        /**
+         * Takes into account:
+         *  + Whether the app is installed.
+         *  + Whether the app can be upgraded.
+         *  + Whether the device is connected to the internet (allows user to queue for downloading
+         *    next time they go online).
+         */
+        private void updateButtons() {
+            if (ConnectivityMonitorService.getNetworkState(context) == NetworkState.NET_UNAVAILABLE) {
+                buttonSecondaryView.setVisibility(View.VISIBLE);
+                buttonPrimaryView.setVisibility(View.GONE);
+
+                if (app.getPrefs(context).queueForDownload) {
+                    buttonSecondaryView.setText(R.string.app_details__cancel_download_when_online);
+                    buttonSecondaryView.setOnClickListener(onCancelQueueForDownloadWhenOnline);
+                } else {
+                    buttonSecondaryView.setText(R.string.app_details__download_when_online);
+                    buttonSecondaryView.setOnClickListener(onQueueForDownloadWhenOnline);
+                }
+                return;
+            }
+
             buttonSecondaryView.setText(R.string.menu_uninstall);
             buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
             buttonSecondaryView.setOnClickListener(onUnInstallClickListener);
+
             buttonPrimaryView.setText(R.string.menu_install);
             buttonPrimaryView.setVisibility(versions.size() > 0 ? View.VISIBLE : View.GONE);
             if (callbacks.isAppDownloading()) {
@@ -499,20 +555,6 @@ public class AppDetailsRecyclerViewAdapter
                 }
                 buttonPrimaryView.setEnabled(true);
             }
-            if (callbacks.isAppDownloading()) {
-                buttonLayout.setVisibility(View.GONE);
-                progressLayout.setVisibility(View.VISIBLE);
-            } else {
-                buttonLayout.setVisibility(View.VISIBLE);
-                progressLayout.setVisibility(View.GONE);
-            }
-            progressCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    callbacks.installCancel();
-                }
-            });
-
         }
 
         private void updateAntiFeaturesWarning() {
@@ -551,6 +593,23 @@ public class AppDetailsRecyclerViewAdapter
                     return af;
             }
         }
+
+        private final View.OnClickListener onQueueForDownloadWhenOnline = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callbacks.setQueueForDownloadWhenOnline(true);
+                updateButtons();
+            }
+        };
+
+        private final View.OnClickListener onCancelQueueForDownloadWhenOnline = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callbacks.setQueueForDownloadWhenOnline(false);
+                updateButtons();
+            }
+        };
+
     }
 
     @Override

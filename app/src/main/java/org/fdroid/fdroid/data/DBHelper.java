@@ -165,9 +165,10 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_APP_PREFS = "CREATE TABLE " + AppPrefsTable.NAME
             + " ( "
             + AppPrefsTable.Cols.PACKAGE_NAME + " TEXT, "
-            + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + " INT NOT NULL, "
+            + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + " INT NOT NULL DEFAULT 0, "
             + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + " INT BOOLEAN NOT NULL, "
-            + AppPrefsTable.Cols.IGNORE_VULNERABILITIES + " INT BOOLEAN NOT NULL "
+            + AppPrefsTable.Cols.IGNORE_VULNERABILITIES + " INT BOOLEAN NOT NULL DEFAULT 0, "
+            + AppPrefsTable.Cols.QUEUE_FOR_DOWNLOAD + " INT NOT NULL DEFAULT 0 "
             + " );";
 
     private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE " + Schema.CategoryTable.NAME
@@ -215,7 +216,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
-    protected static final int DB_VERSION = 79;
+    protected static final int DB_VERSION = 80;
 
     private final Context context;
 
@@ -324,6 +325,18 @@ public class DBHelper extends SQLiteOpenHelper {
         addLiberapayID(db, oldVersion);
         addUserMirrorsFields(db, oldVersion);
         removeNotNullFromVersionName(db, oldVersion);
+        addQueueForDownload(db, oldVersion);
+    }
+
+    private void addQueueForDownload(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 80) {
+            return;
+        }
+
+        if (!columnExists(db, Schema.AppPrefsTable.NAME, AppPrefsTable.Cols.QUEUE_FOR_DOWNLOAD)) {
+            Utils.debugLog(TAG, "Adding " + AppPrefsTable.Cols.QUEUE_FOR_DOWNLOAD + " field to " + AppPrefsTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppPrefsTable.NAME + " add column " + AppPrefsTable.Cols.QUEUE_FOR_DOWNLOAD + " int not null default 0;");
+        }
     }
 
     private void removeNotNullFromVersionName(SQLiteDatabase db, int oldVersion) {

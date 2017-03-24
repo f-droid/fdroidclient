@@ -150,6 +150,11 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
         public void launchApk() {
 
         }
+
+        @Override
+        public void setQueueForDownloadWhenOnline(boolean queue) {
+
+        }
     };
 
 }
