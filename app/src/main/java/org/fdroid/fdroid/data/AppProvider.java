@@ -140,6 +140,10 @@ public class AppProvider extends FDroidProvider {
             Cursor cursor = context.getContentResolver().query(uri, Cols.ALL, null, null, null);
             return cursorToList(cursor);
         }
+
+        public static List<App> findQueuedForDownloadWhenOnline(Context context) {
+            return cursorToList(context.getContentResolver().query(AppProvider.getQueuedForDownloadUri(), Cols.ALL, null, null, Cols.NAME));
+        }
     }
 
     /**
@@ -448,6 +452,7 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_CALC_SUGGESTED_APKS = "calcNonRepoDetailsFromIndex";
     private static final String PATH_TOP_FROM_CATEGORY = "topFromCategory";
     private static final String PATH_INSTALLED_WITH_KNOWN_VULNS = "installedWithKnownVulns";
+    private static final String PATH_QUEUED_FOR_DOWNLOAD = "queuedForDownload";
 
     private static final int CAN_UPDATE = CODE_SINGLE + 1;
     private static final int INSTALLED = CAN_UPDATE + 1;
@@ -462,6 +467,7 @@ public class AppProvider extends FDroidProvider {
     private static final int CALC_PREFERRED_METADATA = HIGHEST_PRIORITY + 1;
     private static final int TOP_FROM_CATEGORY = CALC_PREFERRED_METADATA + 1;
     private static final int INSTALLED_WITH_KNOWN_VULNS = TOP_FROM_CATEGORY + 1;
+    private static final int QUEUED_FOR_DOWNLOAD  = INSTALLED_WITH_KNOWN_VULNS + 1;
 
     static {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
@@ -480,6 +486,7 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_CALC_PREFERRED_METADATA, CALC_PREFERRED_METADATA);
         MATCHER.addURI(getAuthority(), PATH_TOP_FROM_CATEGORY + "/#/*", TOP_FROM_CATEGORY);
         MATCHER.addURI(getAuthority(), PATH_INSTALLED_WITH_KNOWN_VULNS, INSTALLED_WITH_KNOWN_VULNS);
+        MATCHER.addURI(getAuthority(), PATH_QUEUED_FOR_DOWNLOAD, QUEUED_FOR_DOWNLOAD);
     }
 
     public static Uri getContentUri() {
@@ -521,6 +528,10 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getCanUpdateUri() {
         return Uri.withAppendedPath(getContentUri(), PATH_CAN_UPDATE);
+    }
+
+    public static Uri getQueuedForDownloadUri() {
+        return Uri.withAppendedPath(getContentUri(), PATH_QUEUED_FOR_DOWNLOAD);
     }
 
     public static Uri getRepoUri(Repo repo) {
@@ -621,6 +632,11 @@ public class AppProvider extends FDroidProvider {
         final String where = ignore + " AND " + app + "." + Cols.SUGGESTED_VERSION_CODE + " > installed." + InstalledAppTable.Cols.VERSION_CODE;
 
         return new AppQuerySelection(where).requireNaturalInstalledTable().requireLeftJoinPrefs();
+    }
+
+    protected AppQuerySelection queryPendingDownload() {
+        final String selection = "COALESCE(prefs." + AppPrefsTable.Cols.QUEUE_FOR_DOWNLOAD + ", 0) > 0";
+        return new AppQuerySelection(selection).requireLeftJoinPrefs();
     }
 
     private AppQuerySelection queryRepo(long repoId) {
@@ -870,6 +886,11 @@ public class AppProvider extends FDroidProvider {
 
             case HIGHEST_PRIORITY:
                 selection = selection.add(queryPackageName(uri.getLastPathSegment()));
+                includeSwap = false;
+                break;
+
+            case QUEUED_FOR_DOWNLOAD:
+                selection = selection.add(queryPendingDownload());
                 includeSwap = false;
                 break;
 

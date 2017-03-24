@@ -25,16 +25,20 @@ import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Process;
 import android.os.StrictMode;
 import android.support.v4.util.LongSparseArray;
 import android.text.TextUtils;
@@ -59,12 +63,16 @@ import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.Preferences.Theme;
 import org.fdroid.fdroid.compat.PRNGFixes;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
+import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.NetworkState;
@@ -455,6 +463,18 @@ public class FDroidApp extends Application {
             }
         });
 
+        registerReceiver(
+                new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        if (ConnectivityMonitorService.getNetworkState(FDroidApp.this) != NetworkState.NET_UNAVAILABLE) {
+                            processPendingDownloads();
+                        }
+                    }
+                },
+                new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        );
+
         configureTor(Preferences.get().isTorEnabled());
 
         if (Preferences.get().isKeepingInstallHistory()) {
@@ -484,6 +504,29 @@ public class FDroidApp extends Application {
     }
 
     /**
+     * Find all packages which the user has marked for download while offline, and initiate downloads
+     * for them.
+     */
+    private void processPendingDownloads() {
+        if (Utils.getNetworkState(this) == Utils.NetworkState.NET_UNAVAILABLE) {
+            return;
+        }
+
+        // Run on background thread as there is potentially quite a few DB queries to hit the disk here.
+        new Thread() {
+            public void run() {
+                Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                List<App> apps = AppProvider.Helper.findQueuedForDownloadWhenOnline(FDroidApp.this);
+                for (App app : apps) {
+                    Apk apk = ApkProvider.Helper.findApkFromAnyRepo(
+                            FDroidApp.this, app.packageName, app.suggestedVersionCode);
+                    InstallManagerService.queue(FDroidApp.this, app, apk);
+                }
+            }
+        }.start();
+    }
+
+    /**
      * Asks if the current process is "org.fdroid.fdroid:acra".
      * <p>
      * This is helpful for bailing out of the {@link FDroidApp#onCreate} method early, preventing
@@ -504,7 +547,7 @@ public class FDroidApp extends Application {
             return false;
         }
 
-        int pid = android.os.Process.myPid();
+        int pid = Process.myPid();
         for (RunningAppProcessInfo processInfo : processes) {
             if (processInfo.pid == pid && ACRA_ID.equals(processInfo.processName)) {
                 return true;

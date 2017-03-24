@@ -22,6 +22,8 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppPrefs;
+import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
@@ -198,6 +200,14 @@ public class InstallManagerService extends Service {
                 && TextUtils.equals(packageInfo.versionName, apk.versionName)) {
             Log.i(TAG, "INSTALL Intent no longer valid since its installed, ignoring: " + intent);
             return START_NOT_STICKY;
+        }
+
+        // Now that we are about to actually start the download, lets mark it as no longer queued
+        // for download.
+        AppPrefs prefs = app.getPrefs(this);
+        if (prefs.queueForDownload) {
+            prefs.queueForDownload = false;
+            AppPrefsProvider.Helper.update(this, app, prefs);
         }
 
         FDroidApp.resetMirrorVars();
