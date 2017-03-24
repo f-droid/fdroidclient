@@ -510,7 +510,7 @@ public class AppDetailsRecyclerViewAdapter
          *    next time they go online).
          */
         private void updateButtons() {
-            if (ConnectivityMonitorService.getNetworkState(context) == NetworkState.NET_UNAVAILABLE) {
+            if (ConnectivityMonitorService.getNetworkState(context) == NetworkState.NET_UNAVAILABLE && !app.isInstalled()) {
                 buttonSecondaryView.setVisibility(View.VISIBLE);
                 buttonPrimaryView.setVisibility(View.GONE);
 
