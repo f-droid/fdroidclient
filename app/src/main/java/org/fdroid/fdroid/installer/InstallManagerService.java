@@ -335,6 +335,7 @@ public class InstallManagerService extends Service {
                         Apk apkComplete = removeFromActive(downloadUrl);
 
                         PackageManagerCompat.setInstaller(getPackageManager(), apkComplete.packageName);
+                        if (PrivilegedInstaller.isDefault(context)) cancelNotification(downloadUrl);
 
                         localBroadcastManager.unregisterReceiver(this);
                         break;
