@@ -72,7 +72,7 @@
 
     <Button
         android:id="@+id/action_button"
-        style="@style/DetailsPrimaryButtonStyle"
+        style="@style/DetailsPrimaryButtonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

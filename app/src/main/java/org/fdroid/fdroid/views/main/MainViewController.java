@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.fragments.PreferencesFragment;
@@ -74,6 +75,11 @@ class MainViewController extends RecyclerView.ViewHolder {
      */
     public void bindSwapView() {
         View swapView = activity.getLayoutInflater().inflate(R.layout.main_tab_swap, frame, true);
+
+        // To allow for whitelabel versions of F-Droid, make sure not to hardcode "F-Droid" into our
+        // translation here.
+        TextView subtext = (TextView) swapView.findViewById(R.id.text2);
+        subtext.setText(activity.getString(R.string.nearby_splash__both_parties_need_fdroid, activity.getString(R.string.app_name)));
 
         Button startButton = (Button) swapView.findViewById(R.id.button);
         startButton.setOnClickListener(new View.OnClickListener() {

@@ -22,7 +22,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
-import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -129,7 +128,7 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
         }
 
         Intent intent = new Intent(activity, AppDetails2.class);
-        intent.putExtra(AppDetails.EXTRA_APPID, currentApp.packageName);
+        intent.putExtra(AppDetails2.EXTRA_APPID, currentApp.packageName);
         if (Build.VERSION.SDK_INT >= 21) {
             Pair<View, String> iconTransitionPair = Pair.create((View) icon, activity.getString(R.string.transition_app_item_icon));
 

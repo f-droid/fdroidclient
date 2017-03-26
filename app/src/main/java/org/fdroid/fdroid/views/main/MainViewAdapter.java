@@ -69,7 +69,8 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
                 holder.bindSwapView();
                 break;
             case R.id.updates:
-                holder.bindUpdates();
+                // Hold of until onViewAttachedToWindow, because that is where we want to start listening
+                // for broadcast events (which is what the data binding does).
                 break;
             case R.id.settings:
                 holder.bindSettingsView();

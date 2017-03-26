@@ -185,7 +185,7 @@ class NotificationHelper {
         if (entry.status == AppUpdateStatusManager.Status.Unknown) {
             return true;
         } else if ((entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.ReadyToInstall || entry.status == AppUpdateStatusManager.Status.InstallError) &&
-                (AppDetails.isAppVisible(entry.app.packageName) || AppDetails2.isAppVisible(entry.app.packageName))) {
+                AppDetails2.isAppVisible(entry.app.packageName)) {
             // Ignore downloading, readyToInstall and installError if we are showing the details screen for this app
             return true;
         }

@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="DetailsButtonStyleBase">
-        <item name="android:paddingTop">5dp</item>
-        <item name="android:paddingBottom">5dp</item>
-        <item name="android:paddingLeft">20dp</item>
-        <item name="android:paddingRight">20dp</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">normal</item>
-    </style>
+        <item name="android:minHeight">32dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">12dp</item>
+    </style>qgi
 
     <style name="DetailsButtonStyle" parent="DetailsButtonStyleBase" />
 
     <style name="DetailsPrimaryButtonStyle" parent="DetailsButtonStyle">
         <item name="android:textColor">#ffffff</item>
         <item name="android:background">@drawable/button_primary_background_selector</item>
+    </style>
+
+    <style name="DetailsPrimaryButtonStyleSmall" parent="DetailsPrimaryButtonStyle">
         <item name="android:padding">8dp</item>
-        <item name="android:minHeight">32dp</item>
-        <item name="android:minWidth">0dp</item>
     </style>
 
     <style name="DetailsSecondaryButtonStyle" parent="DetailsButtonStyle">
         <item name="android:textColor">@color/fdroid_blue</item>
         <item name="android:background">@drawable/button_secondary_background_selector</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:minHeight">32dp</item>
-        <item name="android:minWidth">0dp</item>
     </style>
 
     <style name="DetailsMoreButtonStyle">

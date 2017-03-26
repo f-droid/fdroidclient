@@ -151,7 +151,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:ellipsize="marquee"
-                    android:padding="12dp"
                     tools:text="THIS IS 2" />
             </LinearLayout>
 

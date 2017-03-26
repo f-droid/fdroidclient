@@ -53,6 +53,7 @@ import org.fdroid.fdroid.views.apps.FeatureImage;
 
 public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog.ShareChooserDialogListener, AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks {
 
+    public static final String EXTRA_APPID = "appid";
     private static final String TAG = "AppDetails2";
 
     private static final int REQUEST_ENABLE_BLUETOOTH = 2;
@@ -170,11 +171,11 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     }
 
     private String getPackageNameFromIntent(Intent intent) {
-        if (!intent.hasExtra(AppDetails.EXTRA_APPID)) {
+        if (!intent.hasExtra(EXTRA_APPID)) {
             Log.e(TAG, "No package name found in the intent!");
             return null;
         }
-        return intent.getStringExtra(AppDetails.EXTRA_APPID);
+        return intent.getStringExtra(EXTRA_APPID);
     }
 
     /**

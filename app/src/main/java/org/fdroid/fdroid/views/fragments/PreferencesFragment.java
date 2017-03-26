@@ -13,12 +13,13 @@ import android.preference.PreferenceCategory;
 import android.support.v4.preference.PreferenceFragment;
 import android.text.TextUtils;
 
-import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.CleanCacheService;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
@@ -261,8 +262,8 @@ public class PreferencesFragment extends PreferenceFragment
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 // Open details of F-Droid Privileged
-                Intent intent = new Intent(getActivity(), AppDetails.class);
-                intent.putExtra(AppDetails.EXTRA_APPID,
+                Intent intent = new Intent(getActivity(), AppDetails2.class);
+                intent.putExtra(AppDetails2.EXTRA_APPID,
                         PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
                 startActivity(intent);
 
@@ -271,21 +272,34 @@ public class PreferencesFragment extends PreferenceFragment
         });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    /**
+     * If a user specifies they want to fetch updates automatically, then start the download of relevant
+     * updates as soon as they enable the feature.
+     * Also, if the user has the priv extention installed then change the label to indicate that it
+     * will actually _install_ apps, not just fetch their .apk file automatically.
+     */
+    private void initAutoFetchUpdatesPreference() {
+        updateAutoDownloadPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 
-        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (newValue instanceof Boolean && (boolean) newValue) {
+                    UpdateService.autoDownloadUpdates(getContext());
+                }
+                return true;
+            }
+        });
 
-        for (final String key : SUMMARIES_TO_UPDATE) {
-            updateSummary(key, false);
+        if (PrivilegedInstaller.isDefault(getContext())) {
+            updateAutoDownloadPref.setTitle(R.string.update_auto_install);
+            updateAutoDownloadPref.setSummary(R.string.update_auto_install_summary);
         }
+    }
 
-        currentKeepCacheTime = Preferences.get().getKeepCacheTime();
-
-        initPrivilegedInstallerPreference();
-        initUpdatePrivilegedExtensionPreference();
-        // this pref's default is dynamically set based on whether Orbot is installed
+    /**
+     * The default for "Use Tor" is dynamically set based on whether Orbot is installed.
+     */
+    private void initUseTorPreference() {
         boolean useTor = Preferences.get().isTorEnabled();
         useTorCheckPref.setDefaultValue(useTor);
         useTorCheckPref.setChecked(useTor);
@@ -308,11 +322,24 @@ public class PreferencesFragment extends PreferenceFragment
                 return true;
             }
         });
+    }
 
-        if (PrivilegedInstaller.isDefault(getContext())) {
-            updateAutoDownloadPref.setTitle(R.string.update_auto_install);
-            updateAutoDownloadPref.setSummary(R.string.update_auto_install_summary);
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+
+        for (final String key : SUMMARIES_TO_UPDATE) {
+            updateSummary(key, false);
         }
+
+        currentKeepCacheTime = Preferences.get().getKeepCacheTime();
+
+        initAutoFetchUpdatesPreference();
+        initPrivilegedInstallerPreference();
+        initUpdatePrivilegedExtensionPreference();
+        initUseTorPreference();
     }
 
     @Override

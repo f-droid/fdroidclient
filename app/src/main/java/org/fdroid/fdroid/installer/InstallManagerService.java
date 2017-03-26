@@ -68,6 +68,16 @@ public class InstallManagerService extends Service {
     private static final String ACTION_INSTALL = "org.fdroid.fdroid.installer.action.INSTALL";
     private static final String ACTION_CANCEL = "org.fdroid.fdroid.installer.action.CANCEL";
 
+    /**
+     * The install manager service needs to monitor downloaded apks so that it can wait for a user to
+     * install them and respond accordingly. Usually the thing which starts listening for such events
+     * does so directly after a download is complete. This works great, except when the user then
+     * subsequently closes F-Droid and opens it at a later date. Under these circumstances, a background
+     * service will scan all downloaded apks and notify the user about them. When it does so, the
+     * install manager service needs to add listeners for if the apks get installed.
+     */
+    private static final String ACTION_MANAGE_DOWNLOADED_APKS = "org.fdroid.fdroid.installer.action.ACTION_MANAGE_DOWNLOADED_APKS";
+
     private static final String EXTRA_APP = "org.fdroid.fdroid.installer.extra.APP";
     private static final String EXTRA_APK = "org.fdroid.fdroid.installer.extra.APK";
 
@@ -108,13 +118,19 @@ public class InstallManagerService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Utils.debugLog(TAG, "onStartCommand " + intent);
 
+        String action = intent.getAction();
+
+        if (ACTION_MANAGE_DOWNLOADED_APKS.equals(action)) {
+            registerInstallerReceiversForDownlaodedApks();
+            return START_NOT_STICKY;
+        }
+
         String urlString = intent.getDataString();
         if (TextUtils.isEmpty(urlString)) {
             Utils.debugLog(TAG, "empty urlString, nothing to do");
             return START_NOT_STICKY;
         }
 
-        String action = intent.getAction();
         if (ACTION_CANCEL.equals(action)) {
             DownloaderService.cancel(this, urlString);
             Apk apk = appUpdateStatusManager.getApk(urlString);
@@ -292,6 +308,20 @@ public class InstallManagerService extends Service {
                 DownloaderService.getIntentFilter(urlString));
     }
 
+    /**
+     * For each app in the {@link AppUpdateStatusManager.Status#ReadyToInstall} state, setup listeners
+     * so that if the user installs it then we can respond accordingly. This makes sure that whether
+     * the user just finished downloading it, or whether they downloaded it a day ago but have not yet
+     * installed it, we get the same experience upon completing an install.
+     */
+    private void registerInstallerReceiversForDownlaodedApks() {
+        for (AppUpdateStatusManager.AppUpdateStatus appStatus : AppUpdateStatusManager.getInstance(this).getAll()) {
+            if (appStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
+                registerInstallerReceivers(Uri.parse(appStatus.getUniqueKey()));
+            }
+        }
+    }
+
     private void registerInstallerReceivers(Uri downloadUri) {
 
         BroadcastReceiver installReceiver = new BroadcastReceiver() {
@@ -361,6 +391,12 @@ public class InstallManagerService extends Service {
         Intent intent = new Intent(context, InstallManagerService.class);
         intent.setAction(ACTION_CANCEL);
         intent.setData(Uri.parse(urlString));
+        context.startService(intent);
+    }
+
+    public static void managePreviouslyDownloadedApks(Context context) {
+        Intent intent = new Intent(context, InstallManagerService.class);
+        intent.setAction(ACTION_MANAGE_DOWNLOADED_APKS);
         context.startService(intent);
     }
 }

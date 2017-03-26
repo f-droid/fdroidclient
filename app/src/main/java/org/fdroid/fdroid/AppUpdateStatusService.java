@@ -12,6 +12,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.ApkCache;
+import org.fdroid.fdroid.installer.InstallManagerService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,5 +54,6 @@ public class AppUpdateStatusService extends IntentService {
         }
 
         AppUpdateStatusManager.getInstance(this).addApks(apksReadyToInstall, AppUpdateStatusManager.Status.ReadyToInstall);
+        InstallManagerService.managePreviouslyDownloadedApks(this);
     }
 }

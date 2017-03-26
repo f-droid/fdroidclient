@@ -57,6 +57,9 @@ import java.util.List;
  * repopulate it from the original source lists of data. When this is done, the adapter will notify
  * the recycler view that its data has changed. Sometimes it will also ask the recycler view to
  * scroll to the newly added item (if attached to the recycler view).
+ *
+ * TODO: If a user downloads an old version of an app (resulting in a new update being available
+ * instantly), then we need to refresh the list of apps to update.
  */
 public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -84,16 +87,12 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 .addDelegate(new UpdateableApp.Delegate(activity))
                 .addDelegate(new UpdateableAppsHeader.Delegate(activity));
 
-        populateAppStatuses();
-        notifyDataSetChanged();
-
         activity.getSupportLoaderManager().initLoader(0, null, this);
     }
 
     /**
      * There are some statuses managed by {@link AppUpdateStatusManager} which we don't care about
-     * for the "Updates" view. For example {@link org.fdroid.fdroid.AppUpdateStatusManager.Status#Installed}
-     * apps are not interesting in the Updates" view at this point in time. Also, although this
+     * for the "Updates" view. For example Also, although this
      * adapter does know about apps with updates availble, it does so by querying the database not
      * by querying the app update status manager. As such, apps with the status
      * {@link org.fdroid.fdroid.AppUpdateStatusManager.Status#UpdateAvailable} are not interesting here.
@@ -101,6 +100,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private boolean shouldShowStatus(AppUpdateStatusManager.AppUpdateStatus status) {
         return status.status == AppUpdateStatusManager.Status.Unknown ||
                 status.status == AppUpdateStatusManager.Status.Downloading ||
+                status.status == AppUpdateStatusManager.Status.Installed ||
                 status.status == AppUpdateStatusManager.Status.ReadyToInstall;
     }
 
@@ -245,11 +245,18 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onLoaderReset(Loader<Cursor> loader) { }
 
     /**
+     * If this adapter is "active" then it is part of the current UI that the user is looking to.
+     * Under those circumstances, we want to make sure it is up to date, and also listen to the
+     * correct set of broadcasts.
      * Doesn't listen for {@link AppUpdateStatusManager#BROADCAST_APPSTATUS_CHANGED} because the
      * individual items in the recycler view will listen for the appropriate changes in state and
      * update themselves accordingly (if they are displayed).
      */
-    public void listenForStatusUpdates() {
+    public void setIsActive() {
+        appsToShowStatus.clear();
+        populateAppStatuses();
+        notifyDataSetChanged();
+
         IntentFilter filter = new IntentFilter();
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED);
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);

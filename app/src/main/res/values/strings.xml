@@ -22,8 +22,8 @@
     <string name="update_interval_zero">No automatic app list updates</string>
     <string name="automatic_scan_wifi">Only on Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Only update automatically on unmetered networks like Wi-Fi</string>
-    <string name="update_auto_download">Automatically download updates</string>
-    <string name="update_auto_download_summary">Download the update files in the background</string>
+    <string name="update_auto_download">Automatically fetch updates</string>
+    <string name="update_auto_download_summary">Updates are downloaded automatically and you are notified to install them</string>
     <string name="update_auto_install">Automatically install updates</string>
     <string name="update_auto_install_summary">Download and install update apps in the background</string>
     <string name="notify">Update notifications</string>
@@ -73,6 +73,7 @@
     <string name="app_list__name__downloaded_and_ready_to_update">Update %1$s</string>
     <string name="app_list__name__downloaded_and_ready_to_install">Install %1$s</string>
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s successfully installed</string>
     <plurals name="app_list__age__released_x_days_ago">
         <item quantity="one">Released %1$d day ago</item>
         <item quantity="other">Released %1$d days ago</item>
@@ -341,6 +342,10 @@
     <string name="system_uninstall">Do you want to uninstall F-Droid Privileged Extension?</string>
     <string name="system_uninstall_button">Uninstall</string>
     <string name="system_install_not_supported">Installation of F-Droid Privileged Extension is currently not supported on Android 5.1 or later.</string>
+
+    <string name="nearby_splash__download_apps_from_people_nearby">No internet? Download apps from people near you!</string>
+    <string name="nearby_splash__find_people_button">Find people near me</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
 
     <string name="swap_nfc_title">Touch to swap</string>
     <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.</string>

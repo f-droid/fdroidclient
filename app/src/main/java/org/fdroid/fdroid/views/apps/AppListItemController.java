@@ -29,7 +29,6 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
@@ -255,6 +254,18 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     }
 
     /**
+     * Queries the {@link AppUpdateStatusManager} and asks if the app was just successfully installed.
+     */
+    private boolean wasSuccessfullyInstalled(@NonNull App app) {
+        for (AppUpdateStatusManager.AppUpdateStatus appStatus : AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName)) {
+            if (appStatus.status == AppUpdateStatusManager.Status.Installed) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * The app name {@link TextView} is used for a few reasons:
      *  * Display name + summary of the app (most common).
      *  * If downloading, mention that it is downloading instead of showing the summary.
@@ -277,6 +288,8 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             }
         } else if (isDownloading(app)) {
             name.setText(activity.getString(R.string.app_list__name__downloading_in_progress, app.name));
+        } else if (wasSuccessfullyInstalled(app)) {
+            name.setText(activity.getString(R.string.app_list__name__successfully_installed, app.name));
         } else {
             name.setText(Utils.formatAppNameAndSummary(app.name, app.summary));
         }
@@ -396,7 +409,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             }
 
             Intent intent = new Intent(activity, AppDetails2.class);
-            intent.putExtra(AppDetails.EXTRA_APPID, currentApp.packageName);
+            intent.putExtra(AppDetails2.EXTRA_APPID, currentApp.packageName);
             if (Build.VERSION.SDK_INT >= 21) {
                 Pair<View, String> iconTransitionPair = Pair.create((View) icon, activity.getString(R.string.transition_app_item_icon));
                 Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, iconTransitionPair).toBundle();
