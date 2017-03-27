@@ -75,6 +75,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private static final int LOADER_CAN_UPDATE = 289753982;
     private static final int LOADER_KNOWN_VULN = 520389740;
     private static final int LOADER_PENDING_DOWNLOAD = 71982312;
+    private static final String TAG = "UpdatesAdapter";
 
     private final AdapterDelegatesManager<List<AppUpdateData>> delegatesManager = new AdapterDelegatesManager<>();
     private final List<AppUpdateData> items = new ArrayList<>();
@@ -145,6 +146,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void toggleAllUpdateableApps() {
         showAllUpdateableApps = !showAllUpdateableApps;
         populateItems();
+        notifyDataSetChanged();
     }
 
     /**
@@ -309,12 +311,14 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
 
+        Utils.debugLog(TAG, "Registering relevant receivers for network and app statuses");
         LocalBroadcastManager.getInstance(activity).registerReceiver(receiverAppStatusChanges, filter);
 
         activity.registerReceiver(receiverNetworkChanges, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
     public void stopListeningForStatusUpdates() {
+        Utils.debugLog(TAG, "UNregistering relevant receivers for network and app statuses");
         LocalBroadcastManager.getInstance(activity).unregisterReceiver(receiverAppStatusChanges);
         activity.unregisterReceiver(receiverNetworkChanges);
     }
