@@ -25,11 +25,9 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
@@ -44,7 +42,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.compat.UriCompat;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
@@ -72,9 +69,6 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
     private ViewPager viewPager;
 
     @Nullable
-    private TabManager tabManager;
-
-    @Nullable
     private MenuItem searchMenuItem;
 
     @Nullable
@@ -90,20 +84,11 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
         setContentView(R.layout.fdroid);
         createViews();
 
-        getTabManager().createTabs();
-
         // Start a search by just typing
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
         Intent intent = getIntent();
         handleSearchOrAppViewIntent(intent);
-
-        if (intent.hasExtra(EXTRA_TAB_UPDATE)) {
-            boolean showUpdateTab = intent.getBooleanExtra(EXTRA_TAB_UPDATE, false);
-            if (showUpdateTab) {
-                getTabManager().selectTab(2);
-            }
-        }
 
         Uri uri = AppProvider.getContentUri();
         getContentResolver().registerContentObserver(uri, true, new AppObserver());
@@ -271,12 +256,6 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        getTabManager().onConfigurationChanged(newConfig);
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         if (fdroidApp.bluetoothAdapter == null) {
@@ -386,25 +365,6 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     private void createViews() {
         viewPager = (ViewPager) findViewById(R.id.main_pager);
-        viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                getTabManager().selectTab(position);
-            }
-        });
-    }
-
-    @NonNull
-    private TabManager getTabManager() {
-        if (tabManager == null) {
-            tabManager = new TabManager(this, viewPager);
-        }
-        return tabManager;
-    }
-
-    private void refreshUpdateTabLabel() {
-        getTabManager().refreshTabLabel(TabManager.INDEX_CAN_UPDATE);
-        getTabManager().refreshTabLabel(TabManager.INDEX_INSTALLED);
     }
 
     public void removeNotification(int id) {
@@ -435,7 +395,7 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
             FDroid.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    refreshUpdateTabLabel();
+
                 }
             });
         }
