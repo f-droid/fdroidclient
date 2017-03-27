@@ -17,7 +17,6 @@ import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.CleanCacheService;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.installer.InstallHistoryService;
@@ -83,8 +82,6 @@ public class PreferencesFragment extends PreferenceFragment
 
     private void updateSummary(String key, boolean changing) {
 
-        int result = 0;
-
         switch (key) {
             case Preferences.PREF_UPD_INTERVAL:
                 ListPreference listPref = (ListPreference) findPreference(
@@ -114,10 +111,7 @@ public class PreferencesFragment extends PreferenceFragment
 
             case Preferences.PREF_THEME:
                 entrySummary(key);
-                if (changing) {
-                    result |= PreferencesActivity.RESULT_RESTART;
-                    getActivity().setResult(result);
-                }
+                // TODO: Ask MainActivity to restart itself.
                 break;
 
             case Preferences.PREF_INCOMP_VER:
@@ -147,10 +141,8 @@ public class PreferencesFragment extends PreferenceFragment
             case Preferences.PREF_LANGUAGE:
                 entrySummary(key);
                 if (changing) {
-                    result |= PreferencesActivity.RESULT_RESTART;
-                    Activity activity = getActivity();
-                    activity.setResult(result);
-                    ((FDroidApp) activity.getApplication()).updateLanguage();
+                    // TODO: Ask MainActivity to restart itself.
+                    ((FDroidApp) getActivity().getApplication()).updateLanguage();
                 }
                 break;
 
