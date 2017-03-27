@@ -48,7 +48,6 @@ import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.compat.UriCompat;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
-import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
@@ -74,8 +73,6 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     @Nullable
     private TabManager tabManager;
-
-    private AppListFragmentPagerAdapter adapter;
 
     @Nullable
     private MenuItem searchMenuItem;
@@ -389,8 +386,6 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     private void createViews() {
         viewPager = (ViewPager) findViewById(R.id.main_pager);
-        adapter = new AppListFragmentPagerAdapter(this);
-        viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -426,7 +421,6 @@ public class FDroid extends AppCompatActivity implements SearchView.OnQueryTextL
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        adapter.updateSearchQuery(newText);
         return true;
     }
 
