@@ -53,19 +53,27 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
         }
 
         return new AppCardController(activity, activity.getLayoutInflater().inflate(layout, parent, false));
-
     }
 
     @Override
     public int getItemViewType(int position) {
         if (position == 0) {
             return R.id.whats_new_feature;
-        } else if (position <= 2) {
-            return R.id.whats_new_large_tile;
-        } else if (position <= 4) {
-            return R.id.whats_new_small_tile;
         } else {
-            return R.id.whats_new_regular_list;
+            int relativePositionInCycle = position % 5;
+            switch (relativePositionInCycle) {
+                case 1:
+                case 2:
+                    return R.id.whats_new_large_tile;
+
+                case 3:
+                case 4:
+                    return R.id.whats_new_small_tile;
+
+                case 0:
+                default:
+                    return R.id.whats_new_regular_list;
+            }
         }
     }
 
@@ -85,17 +93,14 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
         notifyDataSetChanged();
     }
 
-    // TODO: Replace with https://github.com/lucasr/twoway-view which looks really really cool, but
-    //       no longer under active development (despite heaps of forks/stars on github).
     public static class SpanSizeLookup extends GridLayoutManager.SpanSizeLookup {
         @Override
         public int getSpanSize(int position) {
-            if (position == 0) {
+            int relativePositionInCycle = position % 5;
+            if (relativePositionInCycle == 0) {
                 return 2;
-            } else if (position <= 4) {
-                return 1;
             } else {
-                return 2;
+                return 1;
             }
         }
     }
@@ -119,18 +124,18 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
             int horizontalPadding = (int) context.getResources().getDimension(R.dimen.whats_new__padding__app_card__horizontal);
             int verticalPadding = (int) context.getResources().getDimension(R.dimen.whats_new__padding__app_card__vertical);
 
+            int relativePositionInCycle = position % 5;
             if (position == 0) {
                 // Don't set any padding for the first item as the FeatureImage behind it needs to butt right
                 // up against the left/top/right of the screen.
                 outRect.set(0, 0, 0, verticalPadding);
-            } else if (position <= 4) {
-                // Odd items are on the left, even on the right.
+            } else if (relativePositionInCycle != 0) {
                 // The item on the left will have both left and right padding. The item on the right
                 // will only have padding on the right. This will allow the same amount of padding
                 // on the left, centre, and right of the grid, rather than double the padding in the
                 // middle (which would happen if both left+right paddings were set for both items).
                 boolean isLtr = ViewCompat.getLayoutDirection(parent) == ViewCompat.LAYOUT_DIRECTION_LTR;
-                boolean isAtStart = (position % 2) == 1;
+                boolean isAtStart = relativePositionInCycle == 1 || relativePositionInCycle == 3;
                 int paddingStart = isAtStart ? horizontalPadding : 0;
                 int paddingLeft = isLtr ? paddingStart : horizontalPadding;
                 int paddingRight = isLtr ? horizontalPadding : paddingStart;
