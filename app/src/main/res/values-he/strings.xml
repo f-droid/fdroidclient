@@ -52,8 +52,6 @@
     <string name="add_key">הוסף מפתח</string>
     <string name="overwrite">שכתב</string>
 
-    <string name="tab_available_apps">זמינות</string>
-    <string name="tab_updates">עדכונים</string>
     <string name="fdroid_updates_available">עדכוני F-Droid זמינים</string>
     <string name="notification_summary_more">+%1$d עוד…</string>
     <string name="bluetooth_activity_not_found">לא נמצאה שיטת שליחה של Bluetooth, בחר אחת!</string>
@@ -110,10 +108,6 @@
     <string name="ignoreTouch">התעלם ממסך מגע</string>
     <string name="ignoreTouch_on">תמיד הכלל אפליקציות אשר מצריכות מסך מגע</string>
 
-    <string name="category_All">הכל</string>
-    <string name="category_Whats_New">מה חדש</string>
-    <string name="category_Recently_Updated">עודכנו לאחרונה</string>
-
     <string name="local_repo">מאגר מקומי</string>
     <string name="local_repo_running">F-Droid הינו מוכן להחליף</string>
     <string name="touch_to_configure_local_repo">גע כדי לצפות בפרטים ולהתיר לאחרים להחליף עם האפליקציות שלך.</string>
@@ -159,8 +153,6 @@
     <string name="requires_features">מצריכה: %1$s</string>
     <string name="pref_language">שפה</string>
     <string name="pref_language_default">שגרתית של מערכת</string>
-
-    <string name="app_icon">סמל אפליקציה</string>
 
     <string name="category_Development">פיתוח</string>
     <string name="category_Games">משחקים</string>
@@ -264,7 +256,6 @@
 <string name="unstable_updates">עדכונים לא יציבים</string>
     <string name="unstable_updates_summary">הצע עדכונים לגרסאות לא יציבות</string>
     <string name="about_source">קוד מקור</string>
-    <string name="tab_installed_apps">מותקנות</string>
     <string name="swap_nfc_title">גע כדי להחליף</string>
     <string name="swap_nearby">הֶחְלֵף בקרבת מקום</string>
     <string name="swap_cant_find_peers">אינך יכול למצוא את מי שאתה מחפש?</string>
@@ -328,8 +319,6 @@
     <string name="repo_edit_credentials">שנה סיסמה</string>
     <string name="about_license">רשיון</string>
 
-    <string name="tab_installed_apps_count">מותקנות (%d)</string>
-    <string name="tab_updates_count">עדכונים (%d)</string>
     <string name="status_inserting_apps">כעת שומר פרטי אפליקציה</string>
     <string name="repo_error_empty_username">נקה שם משתמש, פרטי התחברות לא שונו</string>
 

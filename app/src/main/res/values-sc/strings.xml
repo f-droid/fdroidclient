@@ -43,8 +43,6 @@
   <string name="enable">Abìlita</string>
   <string name="add_key">Annanghe crae</string>
   <string name="overwrite">Subraiscrie</string>
-  <string name="tab_available_apps">Disponìbiles</string>
-  <string name="tab_updates">Agiornamentos</string>
   <string name="fdroid_updates_available">Agiornamentos pro F-Droid disponìbiles</string>
   <string name="bluetooth_activity_not_found">Perunu mètodu de imbiu Bluetooth agatadu, issèberane unu!</string>
   <string name="choose_bt_send">Issèbera su mètodu de imbiu Bluetooth</string>
@@ -92,9 +90,6 @@
   <string name="rooted_on">Non disabilitare sas aplicatziones chi tenet bisòngiu de sos permissos de root</string>
   <string name="ignoreTouch">Ignora touchscreen</string>
   <string name="ignoreTouch_on">Include semper sas aplicatziones chi tenet bisòngiu de su touchscreen</string>
-  <string name="category_All">Totu</string>
-  <string name="category_Whats_New">Novidades</string>
-  <string name="category_Recently_Updated">Agiornadas dae pagu</string>
   <string name="local_repo">Depòsitu locale</string>
   <string name="local_repo_running">F-Droid est prontu pro imbiare cun swap</string>
   <string name="touch_to_configure_local_repo">Toca pro bìere sas minujas e permìtere a àteros de retzire sas aplicatziones tuas.</string>
@@ -152,7 +147,6 @@ Depes
   <string name="minsdk_up_to_maxsdk">dae %1$s finas a %2$s</string>
   <string name="not_on_same_wifi">Su dispositivu tuo no est in sa matessi retza Wi-Fi de su depòsitu locale chi as annantu como! Proa a intrare in custa retza: %s</string>
   <string name="requires_features">Netzessitat de: %1$s</string>
-  <string name="app_icon">Icona de s\'aplicatzione</string>
   <string name="category_Development">Isvilupu</string>
   <string name="category_Games">Giogos</string>
   <string name="category_Internet">Ìnternet</string>
@@ -205,7 +199,6 @@ Depes
     <string name="uninstall_system">Disinstalla s’estensione cun permissos de sistema</string>
     <string name="uninstall_system_summary">Aberi s’ischermada de sas minujas de s’estensione \"F-Droid cun permissos de sistema\" pro l’agiornare/disinstallare</string>
     <string name="about_source">Còdighe mitza</string>
-    <string name="tab_installed_apps">Installadas</string>
     <string name="bad_fingerprint">Imprenta/arrastu isballiada</string>
     <string name="category_Connectivity">Connetividade</string>
     <string name="category_Graphics">Gràfica</string>
@@ -321,8 +314,6 @@ Depes
     <string name="repo_edit_credentials">Modìfica sa crae</string>
     <string name="repo_error_empty_username">Nùmene impreadore bòidu, credentziales non cambiadas</string>
 
-    <string name="tab_installed_apps_count">Installadas (%d)</string>
-    <string name="tab_updates_count">Agiornamentos (%d)</string>
     <string name="about_license">Litzèntzia</string>
 
     <string name="status_inserting_apps">Sarbende sas minujas de sas aplicatziones</string>

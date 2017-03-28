@@ -32,8 +32,6 @@
   <string name="enable">Włącz</string>
   <string name="add_key">Dodaj klucz</string>
   <string name="overwrite">Nadpisz</string>
-  <string name="tab_available_apps">Dostępne</string>
-  <string name="tab_updates">Aktualizacje</string>
   <string name="fdroid_updates_available">Uaktualnienie F-Droid jest dostępne</string>
   <string name="send_via_bluetooth">Wyślij przez Bluetooth</string>
   <string name="repo_add_url">Adres repozytorium</string>
@@ -68,9 +66,6 @@
   <string name="rooted_on">Nie przyciemniaj aplikacji wymagających uprawnień roota</string>
   <string name="ignoreTouch">Ignoruj ekran dotykowy</string>
   <string name="ignoreTouch_on">Zawsze uwzględniaj aplikacje, które wymagają ekranu dotykowego</string>
-  <string name="category_All">Wszystkie</string>
-  <string name="category_Whats_New">Co nowego</string>
-  <string name="category_Recently_Updated">Ostatnio zaktualizowane</string>
   <string name="local_repo">Repozytorium lokalne</string>
   <string name="local_repo_running">F-Droid gotowy do wymiany</string>
   <string name="touch_to_configure_local_repo">Dotknij, aby sprawdzić szczegóły i umożliwić wymianę aplikacji.</string>
@@ -110,7 +105,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
   <string name="up_to_maxsdk">Wsparcie do %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s aż do %2$s</string>
   <string name="requires_features">Wymaga: %1$s</string>
-  <string name="app_icon">Ikona aplikacji</string>
   <string name="category_Development">Tworzenie</string>
   <string name="category_Games">Gry</string>
   <string name="category_Internet">Internet</string>
@@ -276,7 +270,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="theme_dark">Ciemny</string>
 <string name="unstable_updates">Wersje niestabilne</string>
     <string name="unstable_updates_summary">Sugeruj aktualizacje do niestabilnych wersji</string>
-    <string name="tab_installed_apps">Zainstalowane</string>
     <string name="menu_bitcoin">Bitcon</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -308,8 +301,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
     <string name="about_license">Licencja</string>
 
-    <string name="tab_installed_apps_count">Zainstalowane (%d)</string>
-    <string name="tab_updates_count">Aktualizacje (%d)</string>
     <string name="status_inserting_apps">Zapisywanie danych aplikacji</string>
     <string name="by_author">od</string>
     <string name="menu_email">E-mail do autora</string>

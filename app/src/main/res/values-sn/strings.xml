@@ -68,11 +68,6 @@
     <string name="add_key">Wedzera svumbunuro</string>
     <string name="overwrite">Nyorera pamusoro</string>
 
-    <string name="tab_available_apps">Zviripo</string>
-    <string name="tab_installed_apps">Zvakavakirirwa</string>
-    <string name="tab_updates">Zvekunatsa</string>
-    <string name="tab_installed_apps_count">Zvavakirirwa (%d)</string>
-    <string name="tab_updates_count">Zvekunatsa (%d)</string>
     <string name="fdroid_updates_available">Zvekunatsa F-Droid zviripo</string>
     <string name="notification_summary_more">zvimwe +%1$d …</string>
     <string name="bluetooth_activity_not_found">Hapana mutowo wekutumira neBluetooth wawanikwa, sarudza imwe chete!</string>
@@ -231,13 +226,9 @@ kubvumidza pfimbi iyi zvakare kuti uvakirire kubva kwairi.</string>
     <string name="pref_language">Mutauro</string>
     <string name="pref_language_default">Sistemu ine hurongwa hwakarepo</string>
 
-    <string name="app_icon">Icon yeApp</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="category_All">Zvose</string>
-    <string name="category_Whats_New">Ndezvipi zvitsva</string>
-    <string name="category_Recently_Updated">Zvanatswa manje</string>
     <string name="category_Connectivity">Mahakiro</string>
     <string name="category_Development">Tsvitsa</string>
     <string name="category_Games">Mitambo</string>

@@ -43,8 +43,6 @@
   <string name="enable">Zapnúť</string>
   <string name="add_key">Pridať kľúč</string>
   <string name="overwrite">Prepísať</string>
-  <string name="tab_available_apps">Dostupné</string>
-  <string name="tab_updates">Aktualizácie</string>
   <string name="fdroid_updates_available">Dostupné aktualizácie F-Droidu</string>
   <string name="send_via_bluetooth">Poslať cez Bluetooth</string>
   <string name="repo_add_url">Adresa repozitára</string>
@@ -89,9 +87,6 @@
   <string name="rooted_on">Nezašediť aplikácie vyžadujúce práva root</string>
   <string name="ignoreTouch">Ignorovať dotykovú obrazovku</string>
   <string name="ignoreTouch_on">Vždy zahrnúť aplikácie vyžadujúce dotykovú obrazovku</string>
-  <string name="category_All">Všetky</string>
-  <string name="category_Whats_New">Čo je nové</string>
-  <string name="category_Recently_Updated">Nedávno aktualizované</string>
   <string name="local_repo">Miestne repo</string>
   <string name="local_repo_running">F-Droid je pripravený na výmenu</string>
   <string name="touch_to_configure_local_repo">Ťuknite pre zobrazenie detailov a umožnite ostatným vymieňať vaše aplikácie.</string>
@@ -149,7 +144,6 @@ znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.</string>
   <string name="minsdk_up_to_maxsdk">%1$s do %2$s</string>
   <string name="not_on_same_wifi">Vaše zariadenie nie je na rovnakej Wi-Fi ako miestny repozitár, čo ste práve pridali! Skúste sa pripojiť na túto sieť: %s</string>
   <string name="requires_features">Vyžaduje: %1$s</string>
-  <string name="app_icon">Ikona aplikácie</string>
   <string name="category_Development">Vývoj</string>
   <string name="category_Games">Hry</string>
   <string name="category_Internet">Internet</string>
@@ -184,7 +178,6 @@ znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.</string>
     <string name="links">Linky</string>
 
     <string name="back">Späť</string>
-    <string name="tab_installed_apps">Nainštalované</string>
     <string name="notification_summary_more">+%1$d viac…</string>
     <string name="bluetooth_activity_not_found">Posielanie cez Bluetooth zlyhalo, zvoľte inú metódu!</string>
     <string name="choose_bt_send">Vyberte posielanie cez Bluetooth</string>
@@ -282,8 +275,6 @@ znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.</string>
     <string name="more">Viac</string>
     <string name="less">Menej</string>
 
-    <string name="tab_installed_apps_count">Nainštalované (%d)</string>
-    <string name="tab_updates_count">Aktualizované (%d)</string>
     <string name="menu_settings">Nastavenia</string>
     <string name="menu_email">Poslať e-mail autorovi</string>
     <string name="antinonfreeassetslist">Táto aplikácia obsahuje proprietárne časti</string>

@@ -43,8 +43,6 @@
   <string name="enable">Aktivieren</string>
   <string name="add_key">Schlüssel hinzufügen</string>
   <string name="overwrite">Überschreiben</string>
-  <string name="tab_available_apps">Verfügbar</string>
-  <string name="tab_updates">Aktualisierungen</string>
   <string name="fdroid_updates_available">F-Droid: Aktualisierungen verfügbar</string>
   <string name="bluetooth_activity_not_found">Keine Bluetooth-Sendemethode gefunden, bitte eine auswählen!</string>
   <string name="choose_bt_send">Bluetooth-Sendemethode auswählen</string>
@@ -92,9 +90,6 @@
   <string name="rooted_on">Apps nicht ausgrauen, wenn sie Root-Rechte verlangen</string>
   <string name="ignoreTouch">Touchscreen ignorieren</string>
   <string name="ignoreTouch_on">Apps anzeigen, die einen Touchscreen benötigen</string>
-  <string name="category_All">Alle</string>
-  <string name="category_Whats_New">Was gibt es Neues</string>
-  <string name="category_Recently_Updated">Kürzlich aktualisiert</string>
   <string name="local_repo">Lokale Paketquelle</string>
   <string name="local_repo_running">F-Droid ist zum Tausch bereit</string>
   <string name="touch_to_configure_local_repo">Berühren, um die Details anzusehen und anderen einen App-Tausch mit Ihnen zu ermöglichen.</string>
@@ -128,8 +123,8 @@
   <string name="repo_description">Beschreibung</string>
   <string name="repo_last_update">Letzte Aktualisierung</string>
   <string name="repo_name">Name</string>
-  <string name="unsigned_description">Die Liste der Anwendungen konnte nicht überprüft werden. 
-Sie sollten bei Anwendungen vorsichtig sein, 
+  <string name="unsigned_description">Die Liste der Anwendungen konnte nicht überprüft werden.
+Sie sollten bei Anwendungen vorsichtig sein,
 wenn sie aus nicht signierten Quellen heruntergeladen wurden.</string>
   <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht benutzt.
 Um darin bereitgestellte Anwendungen anzuzeigen, muss sie aktiviert werden.</string>
@@ -152,7 +147,6 @@ um Anwendungen daraus installieren zu können.</string>
   <string name="minsdk_up_to_maxsdk">%1$s bis zu %2$s</string>
   <string name="not_on_same_wifi">Dieses Gerät befindet sich nicht im selben WLAN, wie die eben hinzugefügte Paketquelle! Versuchen Sie sich mit dem folgenden Netzwerk zu verbinden: %s</string>
   <string name="requires_features">Erfordert: %1$s</string>
-  <string name="app_icon">App-Symbol</string>
   <string name="category_Development">Entwicklung</string>
   <string name="category_Games">Spiele</string>
   <string name="category_Internet">Internet</string>
@@ -198,7 +192,6 @@ um Anwendungen daraus installieren zu können.</string>
     <string name="unstable_updates">Instabile Aktualisierungen</string>
     <string name="unstable_updates_summary">Aktualisierungen für instabile Version vorschlagen</string>
 
-    <string name="tab_installed_apps">Installiert</string>
     <string name="menu_changelog">Änderungen</string>
     <string name="category_Connectivity">Verbindung</string>
     <string name="category_Sports_Health">Sport &amp; Gesundheit</string>
@@ -318,8 +311,6 @@ Bitte eine andere Kategorie wählen oder die Paketquellen aktualisieren.</string
 
     <string name="about_license">Lizenz</string>
 
-    <string name="tab_installed_apps_count">Installiert (%d)</string>
-    <string name="tab_updates_count">Aktualisierung (%d)</string>
     <string name="status_inserting_apps">Anwendungsdetails werden gespeichert</string>
     <string name="empty_search_can_update_app_list">Keine passenden Anwendungen zum Aktualisieren.</string>
 

@@ -36,8 +36,6 @@
   <string name="enable">启用</string>
   <string name="add_key">添加密钥</string>
   <string name="overwrite">覆盖</string>
-  <string name="tab_available_apps">可安装</string>
-  <string name="tab_updates">更新</string>
   <string name="fdroid_updates_available">可更新 F-Droid</string>
   <string name="bluetooth_activity_not_found">未找到蓝牙发送方式，请选择一个!</string>
   <string name="choose_bt_send">选择蓝牙发送方式</string>
@@ -84,9 +82,6 @@
   <string name="rooted_on">不以灰色显示需要root权限的应用程序</string>
   <string name="ignoreTouch">忽略触屏应用</string>
   <string name="ignoreTouch_on">总是包含需要触屏的应用程序</string>
-  <string name="category_All">全部</string>
-  <string name="category_Whats_New">新应用</string>
-  <string name="category_Recently_Updated">最近更新</string>
   <string name="local_repo">本地软件源</string>
   <string name="deleting_repo">正在删除当前软件源…</string>
   <string name="icon">图标</string>
@@ -121,7 +116,6 @@
   <string name="minsdk_up_to_maxsdk">%1$s 到 %2$s</string>
   <string name="not_on_same_wifi">您的设备与刚刚添加的本地软件源不在同一个Wi-Fi上！尝试加入该网络：%s</string>
   <string name="requires_features">需要：%1$s</string>
-  <string name="app_icon">应用程序图标</string>
   <string name="category_Development">软件开发</string>
   <string name="category_Games">游戏</string>
   <string name="category_Internet">互联网</string>
@@ -163,9 +157,6 @@
     <string name="less">更少</string>
 
     <string name="back">返回</string>
-    <string name="tab_installed_apps">已安装</string>
-    <string name="tab_installed_apps_count">已安装（%d）</string>
-    <string name="tab_updates_count">可更新（%d）</string>
     <string name="notification_summary_more">+%1$d 更多…</string>
     <string name="send_via_bluetooth">用蓝牙发送</string>
 

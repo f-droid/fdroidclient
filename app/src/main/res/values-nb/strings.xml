@@ -43,8 +43,6 @@
   <string name="enable">Skru på</string>
   <string name="add_key">Legg til nøkkel</string>
   <string name="overwrite">Overskriv</string>
-  <string name="tab_available_apps">Tilgjengelig</string>
-  <string name="tab_updates">Oppdateringer</string>
   <string name="fdroid_updates_available">F-Droid: Oppdateringer tilgjengelig</string>
   <string name="bluetooth_activity_not_found">Ingen forsendelsesmåte for Blåtann funnet, velg en!</string>
   <string name="choose_bt_send">Velg forsendelsesmåte for Blåtann</string>
@@ -92,9 +90,6 @@
   <string name="rooted_on">Skyggelegg alle app-er som krever superbruker-tilgang</string>
   <string name="ignoreTouch">Ignorer pekeskjerm</string>
   <string name="ignoreTouch_on">Alltid inkluder app-er som krever pekeskjerm</string>
-  <string name="category_All">Alt</string>
-  <string name="category_Whats_New">Det som er nytt</string>
-  <string name="category_Recently_Updated">Nylig oppdatert</string>
   <string name="local_repo">Lokal pakkebrønn</string>
   <string name="local_repo_running">Sirkulering av programmer kan begynne</string>
   <string name="touch_to_configure_local_repo">Trykk for å se detaljer og for å tillate andre å sirkulere de programmene du har.</string>
@@ -148,7 +143,6 @@ skru på denne pakkebrønnen igjen for å installere programmer fra den.</string
   <string name="minsdk_up_to_maxsdk">%1$s opptil %2$s</string>
   <string name="not_on_same_wifi">Din enhet er ikke på det samme lokale Wi-Fi-nettet som pakkebrønnen du nettopp la til! Prøv å koble til dette nettverket: %s</string>
   <string name="requires_features">Krever: %1$s</string>
-  <string name="app_icon">Miniatyrbilde for program</string>
   <string name="category_Development">Utvikling</string>
   <string name="category_Games">Spill</string>
   <string name="category_Internet">Internett</string>
@@ -182,7 +176,6 @@ skru på denne pakkebrønnen igjen for å installere programmer fra den.</string
     <string name="links">Lenker</string>
 
     <string name="back">Tilbake</string>
-    <string name="tab_installed_apps">Installert</string>
     <string name="notification_summary_more">+%1$d mer…</string>
     <string name="bad_fingerprint">Feil i fingeravtrykk</string>
     <string name="invalid_url">Dette er ikke en gyldig nettadresse.</string>
@@ -318,8 +311,6 @@ gå tapt. Det krever ingen spesiell tilgang.</string>
     <string name="about_license">Lisens</string>
 
     <string name="login_title">Identifikasjon påkrevet</string>
-    <string name="tab_installed_apps_count">Installert (%d)</string>
-    <string name="tab_updates_count">Oppdateringer (%d)</string>
     <string name="status_inserting_apps">Lagrer programdetaljer</string>
     <string name="empty_search_installed_app_list">Samsvarer ikke med noen installerte programmer.</string>
     <string name="empty_search_available_app_list">Samsvarer ikke med noen tilgjengelige programmer.</string>

@@ -70,11 +70,6 @@
     <string name="add_key">Tilføj Nøgle</string>
     <string name="overwrite">Overskriv</string>
 
-    <string name="tab_available_apps">Tilgængelig</string>
-    <string name="tab_installed_apps">Installeret</string>
-    <string name="tab_updates">Opdateringer</string>
-    <string name="tab_installed_apps_count">Installeret (%d)</string>
-    <string name="tab_updates_count">Opdateringer (%d)</string>
     <string name="fdroid_updates_available">F-Droid Opdateringer Tilgængelige</string>
     <string name="notification_summary_more">+%1$d flere…</string>
     <string name="bluetooth_activity_not_found">Ingen Bluetooth afsendelsesmetode fundet, vælg en!</string>
@@ -201,13 +196,9 @@ Du skal aktivere det for at se de programmer det har.</string>
     <string name="pref_language">Sprog</string>
     <string name="pref_language_default">Systemstandard</string>
 
-    <string name="app_icon">Programikon</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="category_All">Alle</string>
-    <string name="category_Whats_New">Hvad er Nyt</string>
-    <string name="category_Recently_Updated">Nyligt Opdateret</string>
     <string name="category_Connectivity">Tilslutningsmuligheder</string>
     <string name="category_Development">Udvikling</string>
     <string name="category_Games">Spil</string>

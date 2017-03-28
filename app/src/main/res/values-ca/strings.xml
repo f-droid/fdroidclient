@@ -42,8 +42,6 @@
   <string name="enable">Permès</string>
   <string name="add_key">Afegeix clau</string>
   <string name="overwrite">Sobreescriu</string>
-  <string name="tab_available_apps">Disponible</string>
-  <string name="tab_updates">Actualitzacions</string>
   <string name="fdroid_updates_available">Hi ha actualitzacions disponibles de l\'F-Droid</string>
   <string name="bluetooth_activity_not_found">Trieu un mètode d\'enviament per Bluetooth!</string>
   <string name="send_via_bluetooth">Envia per Bluetooth</string>
@@ -90,9 +88,6 @@
   <string name="rooted_on">No marquis en gris aplicacions que requereixen privilegis d\'administrador</string>
   <string name="ignoreTouch">Ignora la pantalla tàctil</string>
   <string name="ignoreTouch_on">Inclou sempre aplicacions que requereixin pantalla tàctil</string>
-  <string name="category_All">Tot</string>
-  <string name="category_Whats_New">Novetats</string>
-  <string name="category_Recently_Updated">S\'ha actualitzat fa poc</string>
   <string name="local_repo">Dipòsit local</string>
   <string name="local_repo_running">F-Droid està a punt per a l\'intercanvi</string>
   <string name="touch_to_configure_local_repo">Toqueu per veure més detalls i permetre l\'intercanvi d\'aplicacions.</string>
@@ -150,7 +145,6 @@ tornar a habilitar el dipòsit per instal·lar aplicacions d\'aquest.</string>
   <string name="minsdk_up_to_maxsdk">%1$s fins a %2$s</string>
   <string name="not_on_same_wifi">El dipòsit local que acabeu d\'afegir i el vostre dispositiu no són a la mateixa Wi-Fi. Proveu amb aquesta xarxa: %s</string>
   <string name="requires_features">Requereix: %1$s</string>
-  <string name="app_icon">Icona de l\'aplicació</string>
   <string name="category_Development">Desenvolupament</string>
   <string name="category_Games">Jocs</string>
   <string name="category_Internet">Internet</string>
@@ -195,7 +189,6 @@ tornar a habilitar el dipòsit per instal·lar aplicacions d\'aquest.</string>
     <string name="system_uninstall_button">Desinstal·la</string>
 
     <string name="unstable_updates">Actualitzacions inestables</string>
-    <string name="tab_installed_apps">Instal·lades</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -322,8 +315,6 @@ es perdran. L\'aplicació no requereix cap accés especial.</string>
 
     <string name="about_license">Llicència</string>
 
-    <string name="tab_installed_apps_count">(%d) instal·lat</string>
-    <string name="tab_updates_count">Actualitzacions (%d)</string>
     <string name="status_inserting_apps">Desant els detalls de l\'aplicació</string>
     <string name="empty_search_installed_app_list">Cap coincidència amb les aplicacions instal·lades.</string>
     <string name="empty_search_available_app_list">Cap coincidència amb les aplicacions disponibles.</string>

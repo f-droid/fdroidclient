@@ -50,11 +50,6 @@
     <string name="add_key">Ավելացնել բանալի</string>
     <string name="clear_search">Մաքրել որոնումը</string>
 
-    <string name="tab_available_apps">Հասանելի</string>
-    <string name="tab_installed_apps">Տեղադրված</string>
-    <string name="tab_updates">Թարմացումներ</string>
-    <string name="tab_installed_apps_count">Տեղադրված (%d)</string>
-    <string name="tab_updates_count">Թարմացումներ (%d)</string>
     <string name="fdroid_updates_available">F-Droidի թարմացումներ են հասանելի</string>
     <string name="menu_about">Մասին</string>
     <string name="menu_search">Որոնել</string>
@@ -86,9 +81,6 @@
     <string name="pref_language">Լեզու</string>
     <string name="pref_language_default">Համակարգի լռելյայնը</string>
 
-    <string name="category_All">Ամենը</string>
-    <string name="category_Whats_New">Նորերից</string>
-    <string name="category_Recently_Updated">Վերջին թարմացվածները</string>
     <string name="category_Connectivity">Կապ</string>
     <string name="category_Games">Խաղեր</string>
     <string name="category_Internet">Ցանց</string>

@@ -59,11 +59,6 @@
     <string name="back">返回</string>
     <string name="cancel">取消</string>
     <string name="enable">啟用</string>
-    <string name="tab_available_apps">可用的</string>
-    <string name="tab_installed_apps">已安裝</string>
-    <string name="tab_updates">軟體更新</string>
-    <string name="tab_installed_apps_count">已安裝 (%d)</string>
-    <string name="tab_updates_count">軟體更新 (%d)</string>
     <string name="fdroid_updates_available">有可用的 F-Droid 更新</string>
     <string name="send_via_bluetooth">透過藍牙傳送</string>
 
@@ -135,13 +130,9 @@
     <string name="pref_language">語言</string>
     <string name="pref_language_default">系統預設</string>
 
-    <string name="app_icon">應用程式圖示</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">熱點</string>
 
-    <string name="category_All">全部</string>
-    <string name="category_Whats_New">最新</string>
-    <string name="category_Recently_Updated">最近更新</string>
     <string name="category_Development">開發</string>
     <string name="category_Games">遊戲</string>
     <string name="category_Graphics">圖形</string>

@@ -60,9 +60,6 @@
     <string name="add_key">Tambah Kunci</string>
     <string name="overwrite">Timpa</string>
 
-    <string name="tab_available_apps">Tersedia</string>
-    <string name="tab_installed_apps">Terpasang</string>
-    <string name="tab_updates">Pembaruan</string>
     <string name="fdroid_updates_available">Tersedia Pembaruan F-Droid</string>
     <string name="bluetooth_activity_not_found">Metode pengiriman Bluetooth tidak ditemukan, pilih salah satu!</string>
     <string name="choose_bt_send">Pilih metode pengiriman Bluetooth</string>
@@ -191,8 +188,6 @@ apl yang sebelumnya dipasang dari repositori ini akan tetap ada di perangkat And
 
     <string name="about_license">Lisensi</string>
 
-    <string name="tab_installed_apps_count">Terpasang (%d)</string>
-    <string name="tab_updates_count">Pembaruan (%d)</string>
     <string name="local_repo_running">F--Droid siap untuk ditukar</string>
     <string name="system_installer">Ekstensi Istimewa</string>
     <string name="repo_provider">Repositori: %s</string>
@@ -220,13 +215,9 @@ butuh untuk mengaktifkan ulang repo ini untuk memasang apl darinya.</string>
     <string name="pref_language">Bahasa</string>
     <string name="pref_language_default">Baku Sistem</string>
 
-    <string name="app_icon">Ikon apl</string>
     <string name="wifi">Wifi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="category_All">Semua</string>
-    <string name="category_Whats_New">Apa yang Baru</string>
-    <string name="category_Recently_Updated">Baru saja diPerbarui</string>
     <string name="category_Connectivity">Konektifitas</string>
     <string name="category_Development">Pengembangan</string>
     <string name="category_Games">Permainan</string>
@@ -485,6 +476,6 @@ hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
     <string name="antifeatures">Anti-fitur</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Diperbarui %1$s hari yang lalu</item>
-	<item quantity="other"></item>
+	<item quantity="other"/>
 </plurals>
 </resources>

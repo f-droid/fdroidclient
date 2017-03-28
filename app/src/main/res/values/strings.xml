@@ -113,11 +113,6 @@
     <string name="overwrite">Overwrite</string>
     <string name="clear_search">Clear search</string>
 
-    <string name="tab_available_apps">Available</string>
-    <string name="tab_installed_apps">Installed</string>
-    <string name="tab_updates">Updates</string>
-    <string name="tab_installed_apps_count">Installed (%d)</string>
-    <string name="tab_updates_count">Updates (%d)</string>
     <string name="fdroid_updates_available">F-Droid Updates Available</string>
     <string name="bluetooth_activity_not_found">No Bluetooth send method found, choose one!</string>
     <string name="choose_bt_send">Choose Bluetooth send method</string>
@@ -279,13 +274,9 @@
     <string name="pref_language">Language</string>
     <string name="pref_language_default">System Default</string>
 
-    <string name="app_icon">App icon</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="category_All">All</string>
-    <string name="category_Whats_New">What\'s New</string>
-    <string name="category_Recently_Updated">Recently Updated</string>
     <string tools:ignore="UnusedResources" name="category_Connectivity">Connectivity</string>
     <string tools:ignore="UnusedResources" name="category_Development">Development</string>
     <string tools:ignore="UnusedResources" name="category_Games">Games</string>

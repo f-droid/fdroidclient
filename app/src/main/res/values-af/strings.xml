@@ -75,11 +75,6 @@
     <string name="cancel">Kanselleer</string>
     <string name="overwrite">Oorskryf</string>
 
-    <string name="tab_available_apps">Beskikbaar</string>
-    <string name="tab_installed_apps">Geinstalleer</string>
-    <string name="tab_updates">Opdaterings</string>
-    <string name="tab_installed_apps_count">Geinstalleer (%d)</string>
-    <string name="tab_updates_count">Opdaterings (%d)</string>
     <string name="fdroid_updates_available">F-Droid opdaterings beskikbaar</string>
     <string name="bluetooth_activity_not_found">Geen Bluetooth stuur metode gevind, kies een!</string>
     <string name="choose_bt_send">Kies Bluetooth stuur metode</string>
@@ -226,13 +221,9 @@ Jy moet
     <string name="pref_language">Taal</string>
     <string name="pref_language_default">Stelsel nalaat waarde</string>
 
-    <string name="app_icon">Program simbooltjie</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="category_All">Alle</string>
-    <string name="category_Whats_New">Wat\'s nuut</string>
-    <string name="category_Recently_Updated">Onlangs opgedateer</string>
     <string name="category_Connectivity">Konnektiwiteit</string>
     <string name="category_Development">Ontwikkeling</string>
     <string name="category_Games">Speletjies</string>

@@ -73,11 +73,6 @@
     <string name="add_key">Lisa võti</string>
     <string name="overwrite">Kirjuta üle</string>
 
-    <string name="tab_available_apps">Saadaval</string>
-    <string name="tab_installed_apps">Paigaldatud</string>
-    <string name="tab_updates">Värskendused</string>
-    <string name="tab_installed_apps_count">Paigaldatud (%d)</string>
-    <string name="tab_updates_count">Värskendused (%d)</string>
     <string name="fdroid_updates_available">F-Droid: värskendused saadaval</string>
     <string name="notification_summary_more">+%1$d veel…</string>
     <string name="bluetooth_activity_not_found">Bluetoothiga saatmisviise ei leitud. Valige üks!</string>
@@ -141,7 +136,6 @@
     <string name="menu_source">Lähtekood</string>
     <string name="global_error_updating_repos">Viga värskendamisel: %s</string>
     <string name="repo_last_update">Viimane värskendus</string>
-    <string name="category_Recently_Updated">Viimati värskendatud</string>
     <string name="tap_to_update_format">%s värskendamiseks koputa</string>
     <string name="install_confirm_update_system">Kas sa soovid paigaldada värskenduse sellele sisse ehitatud rakendusele? Sinu olemasolevad andmed jäävad ales. Värskendatud rakendus saab ligipääsu:</string>
     <string name="install_confirm_update_no_perms">Kas sa soovid paigaldada värskenduse sellele rakendusele? Su olemasolevad andmed jäävad alles. Selleks ei ole vaja erilist ligipääsu.</string>
@@ -221,12 +215,9 @@
     <string name="pref_language">Keel</string>
     <string name="pref_language_default">Süsteemi vaikesäte</string>
 
-    <string name="app_icon">Rakenduse ikoon</string>
     <string name="wifi">WiFi</string>
     <string name="wifi_ap">Tööpunkt</string>
 
-    <string name="category_All">Kõik</string>
-    <string name="category_Whats_New">Mis on uut</string>
     <string name="category_Connectivity">Ühenduvus</string>
     <string name="category_Development">Arendus</string>
     <string name="category_Games">Mängud</string>

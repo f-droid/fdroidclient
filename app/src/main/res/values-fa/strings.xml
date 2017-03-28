@@ -27,7 +27,6 @@
   <string name="enable">فعّال کردن</string>
   <string name="add_key">افزودن کلید</string>
   <string name="overwrite">جانویسی</string>
-  <string name="tab_updates">به‌روز رسانی‌ها</string>
   <string name="fdroid_updates_available">به‌روزرسانی‌های اف‌دروید موجودند</string>
   <string name="bluetooth_activity_not_found">هیچ روش ارسال با بلوتوثی پیدا نشد، یکی را برگزینید!</string>
   <string name="choose_bt_send">گزینش روش ارسال بلوتوث</string>
@@ -56,7 +55,6 @@
   <string name="appcompatibility">سازگاری برنامه</string>
   <string name="rooted">نادیده گرفتن ریشه</string>
   <string name="ignoreTouch">نادیده گرفتن صفحه‌لمسی</string>
-  <string name="category_All">همه</string>
   <string name="status_download">در حال بارگیری\n%2$s / %3$s (%4$d%%) از\n%1$s</string>
   <string name="status_connecting_to_repo">درحال اتّصال به\n%1$s</string>
   <string name="no_permissions">اجازه‌ای استفاده نشده است.</string>
@@ -110,10 +108,6 @@
     <string name="less">کم‌تر</string>
 
     <string name="back">بازگشت</string>
-    <string name="tab_available_apps">موجود</string>
-    <string name="tab_installed_apps">نصب شده</string>
-    <string name="tab_installed_apps_count">نصب شده (%d)</string>
-    <string name="tab_updates_count">به‌روز رسانی‌ها (%d)</string>
     <string name="notification_summary_more">+%1$d بیش‌تر…</string>
     <string name="send_via_bluetooth">ارسال با بلوتوث</string>
 
@@ -181,12 +175,9 @@
     <string name="pref_language">زبان</string>
     <string name="pref_language_default">پیش‌گزیدهٔ سامانه</string>
 
-    <string name="app_icon">نقشک کاره</string>
     <string name="wifi">وای‌فای</string>
     <string name="wifi_ap">نقطهٔ داغ</string>
 
-    <string name="category_Whats_New">تازه‌ها</string>
-    <string name="category_Recently_Updated">به‌روز رسانی‌های اخیر</string>
     <string name="category_Connectivity">اتّصال</string>
     <string name="category_Development">توسعه</string>
     <string name="category_Games">بازی</string>

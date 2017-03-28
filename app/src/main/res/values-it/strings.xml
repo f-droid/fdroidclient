@@ -41,8 +41,6 @@
   <string name="enable">Attiva</string>
   <string name="add_key">Aggiungi chiave</string>
   <string name="overwrite">Sovrascrivi</string>
-  <string name="tab_available_apps">Disponibile</string>
-  <string name="tab_updates">Aggiornamenti</string>
   <string name="fdroid_updates_available">Aggiornamenti per F-Droid disponibili</string>
   <string name="bluetooth_activity_not_found">Non è possibile inviare via Bluetooth, scegliere un altro metodo!</string>
   <string name="choose_bt_send">Scegli invio mediante Bluetooth</string>
@@ -90,9 +88,6 @@
   <string name="rooted_on">Non disabilitare le applicazioni che richiedono privilegi di root</string>
   <string name="ignoreTouch">Ignora il touchscreen</string>
   <string name="ignoreTouch_on">Includi sempre le applicazioni che necessitano del touchscreen</string>
-  <string name="category_All">Tutte</string>
-  <string name="category_Whats_New">Novità</string>
-  <string name="category_Recently_Updated">Aggiornate di recente</string>
   <string name="local_repo">Repo locale</string>
   <string name="local_repo_running">F-Droid è pronto per lo scambio</string>
   <string name="touch_to_configure_local_repo">Tocca per vedere i dettagli e permettere agli altri di ricevere le tue app.</string>
@@ -149,7 +144,6 @@ abilitare nuovamente questo repository per installare le app contenute.</string>
   <string name="minsdk_up_to_maxsdk">da %1$s fino a %2$s</string>
   <string name="not_on_same_wifi">Il tuo dispositivo non è nella stessa rete Wi-Fi del repo locale che hai aggiunto! Prova a collegarti a questa rete: %s</string>
   <string name="requires_features">Richiede: %1$s</string>
-  <string name="app_icon">Icona dell\'app</string>
   <string name="category_Development">Sviluppo</string>
   <string name="category_Games">Giochi</string>
   <string name="category_Internet">Internet</string>
@@ -182,7 +176,6 @@ abilitare nuovamente questo repository per installare le app contenute.</string>
     <string name="back">Indietro</string>
     <string name="less">Meno</string>
 
-    <string name="tab_installed_apps">Installate</string>
     <string name="bad_fingerprint">Impronta digitale non corrispondente</string>
     <string name="invalid_url">Questo non è un URL valido.</string>
     <string name="menu_settings">Impostazioni</string>
@@ -255,8 +248,6 @@ non saranno rimossi. L\'app dopo l\'aggiornamento avrà accesso a:</string>
     <string name="about_license">Licenza</string>
 
     <string name="links">Collegamenti</string>
-    <string name="tab_installed_apps_count">Installate (%d)</string>
-    <string name="tab_updates_count">Aggiornamenti (%d)</string>
     <string name="menu_changelog">Changelog</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

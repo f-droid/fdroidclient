@@ -42,8 +42,6 @@
   <string name="enable">Омогући</string>
   <string name="add_key">Додај кључ</string>
   <string name="overwrite">Пребриши</string>
-  <string name="tab_available_apps">Доступне</string>
-  <string name="tab_updates">Надоградње</string>
   <string name="fdroid_updates_available">Доступне су надоградње на Ф-дроиду</string>
   <string name="bluetooth_activity_not_found">Нема начина за слања блутутом, одредите један!</string>
   <string name="choose_bt_send">Одредите начин слања блутутом</string>
@@ -91,9 +89,6 @@
   <string name="rooted_on">Не посивљуј приказ апликација које захтевају корени приступ</string>
   <string name="ignoreTouch">Занемари услов додирног екрана</string>
   <string name="ignoreTouch_on">Увек укључи апликације које захтевају додирни екран</string>
-  <string name="category_All">Све</string>
-  <string name="category_Whats_New">Нове</string>
-  <string name="category_Recently_Updated">Недавно надограђене</string>
   <string name="local_repo">Локална ризница</string>
   <string name="local_repo_running">Ф-дроид је спреман за размену</string>
   <string name="touch_to_configure_local_repo">Додирните за приказ детаља и да дозволите другима да размењују ваше апликације.</string>
@@ -150,7 +145,6 @@
   <string name="minsdk_up_to_maxsdk">Од %1$s до %2$s</string>
   <string name="not_on_same_wifi">Ваш уређај није на истој бежичној мрежи са локалном ризницом коју сте управо додали! Придружите се овој мрежи: %s</string>
   <string name="requires_features">Захтева: %1$s</string>
-  <string name="app_icon">Икона програма</string>
   <string name="category_Development">Развој</string>
   <string name="category_Games">Игре</string>
   <string name="category_Internet">Интернет</string>
@@ -185,7 +179,6 @@
     <string name="links">Везе</string>
 
     <string name="back">Назад</string>
-    <string name="tab_installed_apps">Инсталиране</string>
     <string name="notification_summary_more">+још %1$d…</string>
     <string name="bad_fingerprint">Лош отисак</string>
     <string name="invalid_url">Ово није исправна адреса.</string>
@@ -308,8 +301,6 @@
     <string name="repo_edit_credentials">Измени лозинку</string>
     <string name="repo_error_empty_username">Корисничко име је празно, пуномоћја нису измењена</string>
 
-    <string name="tab_installed_apps_count">Инсталиране (%d)</string>
-    <string name="tab_updates_count">Надоградње (%d)</string>
     <string name="about_license">Лиценца</string>
 
     <string name="status_inserting_apps">Уписујем детаље апликација</string>
