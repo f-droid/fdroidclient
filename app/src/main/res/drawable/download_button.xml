@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-  Shown in the app list item as a shortcut for the user to be able to download/install an app.
--->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/ic_download_button" />
-</selector>
