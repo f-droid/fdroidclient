@@ -147,7 +147,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,
                 new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
 
-        // FDroid.java and AppDetails set different NFC actions, so reset here
+        // FDroid.java and AppDetails2 set different NFC actions, so reset here
         setNfc();
         processIntent(getIntent());
     }

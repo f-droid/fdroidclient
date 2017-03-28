@@ -415,7 +415,7 @@ public class AppSecurityPermissions {
                 || ((pInfo.protectionLevel & PermissionInfo.PROTECTION_FLAG_PRE23) != 0);
 
         // Dangerous and normal permissions are always shown to the user
-        // this is matches the permission list in AppDetails
+        // this is matches the permission list in AppDetails2
         if (isNormal || isDangerous) {
             return true;
         }

@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             setSelectedMenuInNav();
         }
 
-        // AppDetails  2 and RepoDetailsActivity set different NFC actions, so reset here
+        // AppDetails2 and RepoDetailsActivity set different NFC actions, so reset here
         NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
         checkForAddRepoIntent(getIntent());
     }
