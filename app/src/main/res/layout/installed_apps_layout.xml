@@ -38,6 +38,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:padding="16dp"
         android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#424242"
         android:textSize="14sp"
         android:text="Tap and hold on an app for more options"
