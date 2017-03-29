@@ -623,4 +623,19 @@ public final class Utils {
         Resources r = ctx.getResources();
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
+
+    @SuppressWarnings("unused")
+    public static class Profiler {
+        public final long startTime = System.currentTimeMillis();
+        public final String logTag;
+
+        public Profiler(String logTag) {
+            this.logTag = logTag;
+        }
+
+        public void log(String message) {
+            long duration = System.currentTimeMillis() - startTime;
+            Utils.debugLog(logTag, "[" + duration + "ms] " + message);
+        }
+    }
 }
