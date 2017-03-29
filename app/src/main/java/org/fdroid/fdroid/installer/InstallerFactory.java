@@ -45,12 +45,12 @@ public class InstallerFactory {
         }
 
         Installer installer;
-        if (apk.packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
-            // special case for installing "Privileged Extension" with root
-            installer = new ExtensionInstaller(context, apk);
-        } else if (PrivilegedInstaller.isDefault(context)) {
+        if (PrivilegedInstaller.isDefault(context)) {
             Utils.debugLog(TAG, "privileged extension correctly installed -> PrivilegedInstaller");
             installer = new PrivilegedInstaller(context, apk);
+        } else if (apk.packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
+            // special case for installing "Privileged Extension" with root
+            installer = new ExtensionInstaller(context, apk);
         } else {
             installer = new DefaultInstaller(context, apk);
         }
