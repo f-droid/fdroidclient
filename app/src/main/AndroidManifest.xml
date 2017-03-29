@@ -530,6 +530,8 @@
                 android:value=".views.main.MainActivity" />
         </activity>
 
+        <activity android:name=".AboutActivity" android:theme="@style/Theme.AppCompat.Light.Dialog" />
+
     </application>
 
 </manifest>
