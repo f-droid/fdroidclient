@@ -215,6 +215,13 @@ public class PreferencesFragment extends PreferenceFragment
      */
     private void initPrivilegedInstallerPreference() {
         final CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
+
+        // This code will be run each time the activity is resumed, and so we may have already removed
+        // this preference.
+        if (pref == null) {
+            return;
+        }
+
         Preferences p = Preferences.get();
         boolean enabled = p.isPrivilegedInstallerEnabled();
         boolean installed = PrivilegedInstaller.isExtensionInstalledCorrectly(getActivity())
