@@ -11,7 +11,6 @@ import android.support.annotation.NonNull;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
@@ -101,11 +100,6 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String srcname;
 
     public String[] incompatibleReasons;
-
-    /**
-     * A descriptive text for what has changed in the latest version.
-     */
-    public String whatsNew;
 
     public String[] antiFeatures;
 
@@ -244,13 +238,6 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                 case Cols.ANTI_FEATURES:
                     antiFeatures = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
-            }
-        }
-
-        // For now, just populate "what's new" with placeholder (or leave blank)
-        if (BuildConfig.DEBUG) {
-            if (Math.random() > 0.5) {
-                whatsNew = "This section will contain the 'what's new' information for the apk.\n\n\t• Bug fixes.";
             }
         }
     }
