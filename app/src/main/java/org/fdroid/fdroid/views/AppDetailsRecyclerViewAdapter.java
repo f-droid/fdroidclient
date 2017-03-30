@@ -136,7 +136,7 @@ public class AppDetailsRecyclerViewAdapter
         notifyDataSetChanged();
     }
 
-    private void setShowVersions(boolean showVersions) {
+    void setShowVersions(boolean showVersions) {
         this.showVersions = showVersions;
         boolean itemsWereRemoved = items.removeAll(versions);
         int startIndex = items.indexOf(VIEWTYPE_VERSIONS) + 1;
