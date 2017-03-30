@@ -73,6 +73,17 @@ Note that the CI already runs the tests on an emulator, so you don't
 necessarily have to do this yourself if you open a merge request as the tests
 will get run.
 
+### Running tests in Android Studio
+
+Later versions of Android Studio require tests to be run with a "Working directory"
+of `$MODULE_DIR$`.
+[To make this the default behaviour](https://code.google.com/p/android/issues/detail?id=158015#c11),
+close any projects to get the Welcome dialog. Then choose _Configure > Project Defaults >
+Run Configurations > Defaults > Android JUnit_, and change "Working directory"
+to `$MODULE_DIR$`. If you already have a project setup in Android Studio, you
+may also need to change the default in _Run > Edit Configurations... > Defaults >
+Android JUnit_.
+
 ## Versioning
 
 Each stable version follows the `X.Y` pattern. Hotfix releases - i.e. when a
