@@ -23,7 +23,7 @@ public class PackageManagerCompat {
              * That enforces the uninstaller being the same as the installer,
              * so set the package name to that.
              */
-            if (PrivilegedInstaller.isDefault(context)) {
+            if (Build.VERSION.SDK_INT >= 24 && PrivilegedInstaller.isDefault(context)) {
                 mPm.setInstallerPackageName(packageName, "org.fdroid.fdroid.privileged");
             } else {
                 mPm.setInstallerPackageName(packageName, "org.fdroid.fdroid");
