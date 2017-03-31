@@ -336,8 +336,9 @@ public class InstallManagerService extends Service {
                     case Installer.ACTION_INSTALL_COMPLETE:
                         appUpdateStatusManager.updateApk(downloadUrl, AppUpdateStatusManager.Status.Installed, null);
                         Apk apkComplete =  appUpdateStatusManager.getApk(downloadUrl);
+
                         if (apkComplete != null) {
-                            PackageManagerCompat.setInstaller(getPackageManager(), apkComplete.packageName);
+                            PackageManagerCompat.setInstaller(context, getPackageManager(), apkComplete.packageName);
                         }
                         localBroadcastManager.unregisterReceiver(this);
                         break;
