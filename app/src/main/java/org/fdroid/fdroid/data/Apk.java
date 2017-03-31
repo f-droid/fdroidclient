@@ -8,8 +8,9 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
-
-import org.fdroid.fdroid.BuildConfig;
+import com.fasterxml.jackson.annotation.JacksonInject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
@@ -18,17 +19,50 @@ import java.io.File;
 import java.util.Date;
 import java.util.HashSet;
 
+/**
+ * Represents a single package of an application. This represents one particular
+ * package of a given application, for info about the app in general, see
+ * {@link App}.
+ * <p>
+ * <b>Do not rename these instance variables without careful consideration!</b>
+ * They are mapped to JSON field names, the {@code fdroidserver} internal variable
+ * names, and the {@code fdroiddata} YAML field names.  Only the instance variables
+ * decorated with {@code @JsonIgnore} are not directly mapped.
+ * <p>
+ * <b>NOTE:</b>If an instance variable is only meant for internal state, and not for
+ * representing data coming from the server, then it must also be decorated with
+ * {@code @JsonIgnore} to prevent abuse!  The tests for
+ * {@link org.fdroid.fdroid.IndexV1Updater} will also have to be updated.
+ *
+ * @see <a href="https://gitlab.com/fdroid/fdroiddata">fdroiddata</a>
+ * @see <a href="https://gitlab.com/fdroid/fdroidserver">fdroidserver</a>
+ */
 public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
     // Using only byte-range keeps it only 8-bits in the SQLite database
+    @JsonIgnore
     public static final int SDK_VERSION_MAX_VALUE = Byte.MAX_VALUE;
+    @JsonIgnore
     public static final int SDK_VERSION_MIN_VALUE = 0;
 
+    // these are never set by the Apk/package index metadata
+    @JsonIgnore
+    String repoAddress;
+    @JsonIgnore
+    int repoVersion;
+    @JsonIgnore
+    public SanitizedFile installedFile; // the .apk file on this device's filesystem
+    @JsonIgnore
+    public boolean compatible; // True if compatible with the device.
+
+    @JacksonInject("repoId")
+    public long repoId; // the database ID of the repo it comes from
+
+    // these come directly from the index metadata
     public String packageName;
     public String versionName;
     public int versionCode;
     public int size; // Size in bytes - 0 means we don't know!
-    public long repo; // ID of the repo it comes from
     public String hash; // checksum of the APK, in lowercase hex
     public String hashType;
     public int minSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown
@@ -56,13 +90,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      */
     public String sig;
 
-    /**
-     * True if compatible with the device.
-     */
-    public boolean compatible;
-
     public String apkName; // F-Droid style APK name
-    public SanitizedFile installedFile; // the .apk file on this device's filesystem
 
     /**
      * If not null, this is the name of the source tarball for the
@@ -71,14 +99,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      */
     public String srcname;
 
-    public int repoVersion;
-    public String repoAddress;
     public String[] incompatibleReasons;
-
-    /**
-     * A descriptive text for what has changed in the latest version.
-     */
-    public String whatsNew;
 
     public String[] antiFeatures;
 
@@ -94,16 +115,18 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      * If you need an {@link Apk} but it is no longer in the database any more (e.g. because the
      * version you have installed is no longer in the repository metadata) then you can instantiate
      * an {@link Apk} via an {@link InstalledApp} instance.
-     *
+     * <p>
      * Note: Many of the fields on this instance will not be known in this circumstance. Currently
      * the only things that are known are:
-     *
-     *  + {@link Apk#packageName}
-     *  + {@link Apk#versionName}
-     *  + {@link Apk#versionCode}
-     *  + {@link Apk#hash}
-     *  + {@link Apk#hashType}
-     *
+     * <p>
+     * <ul>
+     * <li>{@link Apk#packageName}
+     * <li>{@link Apk#versionName}
+     * <li>{@link Apk#versionCode}
+     * <li>{@link Apk#hash}
+     * <li>{@link Apk#hashType}
+     * </ul>
+     * <p>
      * This could instead be implemented by accepting a {@link PackageInfo} and it would get much
      * the same information, but it wouldn't have the hash of the package. Seeing as we've already
      * done the hard work to calculate that hash and stored it in the database, we may as well use
@@ -125,7 +148,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
         // If we are being created from an InstalledApp, it is because we couldn't load it from the
         // apk table in the database, indicating it is not available in any of our repos.
-        repo = 0;
+        repoId = 0;
     }
 
     public Apk(Cursor cursor) {
@@ -189,7 +212,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                     incompatibleReasons = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
                 case Cols.REPO_ID:
-                    repo = cursor.getInt(i);
+                    repoId = cursor.getInt(i);
                     break;
                 case Cols.SIGNATURE:
                     sig = cursor.getString(i);
@@ -217,13 +240,6 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                     break;
             }
         }
-
-        // For now, just populate "what's new" with placeholder (or leave blank)
-        if (BuildConfig.DEBUG) {
-            if (Math.random() > 0.5) {
-                whatsNew = "This section will contain the 'what's new' information for the apk.\n\n\t• Bug fixes.";
-            }
-        }
     }
 
     private void checkRepoAddress() {
@@ -232,6 +248,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         }
     }
 
+    @JsonIgnore  // prevent tests from failing due to nulls in checkRepoAddress()
     public String getUrl() {
         checkRepoAddress();
         return repoAddress + "/" + apkName.replace(" ", "%20");
@@ -303,7 +320,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         values.put(Cols.APP_ID, appId);
         values.put(Cols.VERSION_NAME, versionName);
         values.put(Cols.VERSION_CODE, versionCode);
-        values.put(Cols.REPO_ID, repo);
+        values.put(Cols.REPO_ID, repoId);
         values.put(Cols.HASH, hash);
         values.put(Cols.HASH_TYPE, hashType);
         values.put(Cols.SIGNATURE, sig);
@@ -347,7 +364,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         dest.writeString(this.versionName);
         dest.writeInt(this.versionCode);
         dest.writeInt(this.size);
-        dest.writeLong(this.repo);
+        dest.writeLong(this.repoId);
         dest.writeString(this.hash);
         dest.writeString(this.hashType);
         dest.writeInt(this.minSdkVersion);
@@ -378,7 +395,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         this.versionName = in.readString();
         this.versionCode = in.readInt();
         this.size = in.readInt();
-        this.repo = in.readLong();
+        this.repoId = in.readLong();
         this.hash = in.readString();
         this.hashType = in.readString();
         this.minSdkVersion = in.readInt();
@@ -429,4 +446,27 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         return null;
     }
 
+    @JsonProperty("uses-permission")
+    private void setUsesPermission(Object[][] permissions) { // NOPMD
+        setRequestedPermissions(permissions, 0);
+    }
+
+    @JsonProperty("uses-permission-sdk-23")
+    private void setUsesPermissionSdk23(Object[][] permissions) { // NOPMD
+        setRequestedPermissions(permissions, 23);
+    }
+
+    private void setRequestedPermissions(Object[][] permissions, int minSdk) {
+        HashSet<String> set = new HashSet<>();
+        for (Object[] versions : permissions) {
+            int maxSdk = Integer.MAX_VALUE;
+            if (versions[1] != null) {
+                maxSdk = (int) versions[1];
+            }
+            if (minSdk <= Build.VERSION.SDK_INT && Build.VERSION.SDK_INT <= maxSdk) {
+                set.add((String) versions[0]);
+            }
+        }
+        requestedPermissions = set.toArray(new String[set.size()]);
+    }
 }

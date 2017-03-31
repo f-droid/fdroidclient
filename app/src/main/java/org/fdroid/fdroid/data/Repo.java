@@ -34,6 +34,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 
+
+/**
+ * Represents a the descriptive info and metadata about a given repo, as provided
+ * by the repo index.  This also keeps track of the state of the repo.
+ * <p>
+ * <b>Do not rename these instance variables without careful consideration!</b>
+ * They are mapped to JSON field names, the {@code fdroidserver} internal variable
+ * names, and the {@code fdroiddata} YAML field names.  Only the instance variables
+ * decorated with {@code @JsonIgnore} are not directly mapped.
+ *
+ * @see <a href="https://gitlab.com/fdroid/fdroiddata">fdroiddata</a>
+ * @see <a href="https://gitlab.com/fdroid/fdroidserver">fdroidserver</a>
+ */
 public class Repo extends ValueObject {
 
     public static final int VERSION_DENSITY_SPECIFIC_ICONS = 11;
@@ -42,6 +55,8 @@ public class Repo extends ValueObject {
     public static final int PUSH_REQUEST_PROMPT = 1;
     public static final int PUSH_REQUEST_ACCEPT_ALWAYS = 2;
 
+    public static final int INT_UNSET_VALUE = -1;
+    // these are never set by the Apk/package index metadata
     protected long id;
 
     public String address;
@@ -148,6 +163,9 @@ public class Repo extends ValueObject {
         }
     }
 
+    /**
+     * @return the database ID to find this repo in the database
+     */
     public long getId() {
         return id;
     }

@@ -1,0 +1,1978 @@
+{
+    "repo": {
+        "timestamp": 1488828510109,
+        "version": 18,
+        "name": "Guardian Project Official Releases",
+        "icon": "guardianproject.png",
+        "address": "https://guardianproject.info/fdroid/repo",
+        "description": "The official app repository of The Guardian Project. Applications in this repository are official binaries build by the original application developers and signed by the same key as the APKs that are released in the Google Play store. ",
+        "mirrors": [
+            "http://bdf2wcxujkg6qqff.onion/fdroid/repo",
+            "https://guardianproject.info/fdroid/repo",
+            "https://s3.amazonaws.com/guardianproject/fdroid/repo"
+        ]
+    },
+    "requests": {
+        "uninstall": [],
+        "install": [
+            "org.torproject.android",
+            "info.guardianproject.orfox"
+        ]
+    },
+    "apps": [
+        {
+            "categories": [
+                "Security",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>Android 4+ allows you to disable certificates from the system Settings and root isn't required, so try that first if you want to manually mess with the certificates. The app won't work with Android 4+ anyway.</p><p>An app to manage security certificates on your phone also containing a version of the Android CACert keystore derived from Mozilla. If a certificate has recently become untrusted you can either install an update to this app or you can backup and remove certificates by yourself.</p><p>Requires root: Yes, it writes to the system partition. You will need a device that has the \u2018grep\u2019 command on it (via busybox: present on most custom ROMs). If the \u2018save\u2019 doesn\u2019t work, then you will need to make your /system partition read-write by using a file explorer like <a href=\"fdroid.app:com.ghostsq.commander\">Ghost Commander</a> or via a command in <a href=\"fdroid.app:jackpal.androidterm\">Terminal Emulator</a>.</p>",
+            "issueTracker": "https://github.com/guardianproject/cacert/issues",
+            "license": "GPLv3",
+            "name": "CACertMan",
+            "sourceCode": "https://github.com/guardianproject/cacert",
+            "summary": "Disable untrusted certificates",
+            "webSite": "https://guardianproject.info/2011/09/05/cacertman-app-to-address-diginotar-other-bad-cas",
+            "added": 1376863200000,
+            "icon": "info.guardianproject.cacert.4.png",
+            "packageName": "info.guardianproject.cacert",
+            "lastUpdated": 1383174000000
+        },
+        {
+            "bitcoin": "1Fi5xUHiAPRKxHvyUGVFGt9extBe8Srdbk",
+            "categories": [
+                "Development",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "9999999",
+            "description": "<p>An InformaCam app to generate verifiable media.</p>",
+            "issueTracker": "https://dev.guardianproject.info/projects/informacam/issues",
+            "license": "GPLv3",
+            "name": "CameraV",
+            "sourceCode": "https://github.com/guardianproject/CameraV",
+            "summary": "An InformaCam app to generate verifiable media",
+            "webSite": "https://guardianproject.info/apps/camerav/",
+            "added": 1386716400000,
+            "icon": "org.witness.informacam.app.206.png",
+            "packageName": "org.witness.informacam.app",
+            "lastUpdated": 1446505200000
+        },
+        {
+            "categories": [
+                "Internet",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>XMPP (Jabber) client that can do end-to-end encryption using the <a href=\"http://en.wikipedia.org/wiki/Off-the-Record_Messaging\">Off-the-Record Messaging</a> protocol and can anonymize your chats via the <a href=\"fdroid.app:org.torproject.android\">Orbot</a> app (root not required).</p><p>The app used to be called GibberBot.</p>",
+            "issueTracker": "https://dev.guardianproject.info/projects/gibberbot",
+            "license": "Apache2",
+            "name": "ChatSecure",
+            "sourceCode": "https://github.com/guardianproject/Gibberbot",
+            "summary": "Instant Messaging client with OTR",
+            "webSite": "https://dev.guardianproject.info/projects/gibberbot",
+            "added": 1363647600000,
+            "icon": "info.guardianproject.otr.app.im.1423001.png",
+            "packageName": "info.guardianproject.otr.app.im",
+            "lastUpdated": 1481029619791
+        },
+        {
+            "categories": [
+                "Multimedia",
+                "Security",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>This is a plugin for <a href=\"fdroid.app:info.guardianproject.otr.app.im\">ChatSecure</a>. It does not have any function on its own.  For Your Ears Only... completely private, end-to-end encryption voice message recording, sending, receiving and playback.</p><p> * For use with <a href=\"fdroid.app:info.guardianproject.otr.app.im\">ChatSecure</a>'s encrypted \"Off-the-record\" data stream  * Works over Tor - the ONLY Onion-routed voice messaging system, for total anonymity</p>",
+            "issueTracker": "https://dev.guardianproject.info/projects/chatsecure/issues",
+            "license": "SIL Open Font License, MIT License and the CC 3.0 License [CC-By with attribution requirement waived]",
+            "name": "ChatSecureVoicePlugin",
+            "sourceCode": "https://github.com/guardianproject/ChatSecureVoicePlugin",
+            "summary": "ChatSecure Voice Messaging",
+            "webSite": "https://guardianproject.info/apps/chatsecure",
+            "added": 1386889200000,
+            "icon": "info.guardianproject.soundrecorder.2.png",
+            "packageName": "info.guardianproject.soundrecorder",
+            "lastUpdated": 1386889200000
+        },
+        {
+            "bitcoin": "1Fi5xUHiAPRKxHvyUGVFGt9extBe8Srdbk",
+            "categories": [
+                "Development",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "9999999",
+            "description": "<p>Checkey is a utility for getting information about the APKs that are installed on your device. Starting with a list of all of the apps that you have installed on your device, it will show you the APK signature with a single touch, and provides links to virustotal.com and androidobservatory.org to easily access the profiles of that APK. It will also let you export the signing certificate and generate ApkSignaturePin pin files for use with the TrustedIntents library.</p>",
+            "issueTracker": "https://dev.guardianproject.info/projects/checkey/issues",
+            "license": "GPLv3",
+            "name": "Checkey",
+            "sourceCode": "https://github.com/guardianproject/checkey",
+            "summary": "Info on local apps",
+            "webSite": "https://dev.guardianproject.info/projects/checkey",
+            "added": 1405116000000,
+            "icon": "info.guardianproject.checkey.102.png",
+            "packageName": "info.guardianproject.checkey",
+            "lastUpdated": 1425855600000
+        },
+        {
+            "categories": [
+                "Reading",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>No description available</p>",
+            "license": "GPLv3",
+            "name": "Courier",
+            "sourceCode": "https://github.com/guardianproject/securereader",
+            "summary": "Privacy-aware RSS feed reader",
+            "added": 1400018400000,
+            "icon": "info.guardianproject.courier.15.png",
+            "packageName": "info.guardianproject.courier",
+            "lastUpdated": 1403733600000
+        },
+        {
+            "bitcoin": "1Fi5xUHiAPRKxHvyUGVFGt9extBe8Srdbk",
+            "categories": [
+                "Development",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>Lil' Debi builds up a whole Debian chroot on your phone entirely using debootstrap. You choose the release, mirror, and size of the disk image, and away it goes. It could take up to an hour on a slow device.</p><p>Then it has a simple chroot manager that fscks your disk, mounts/unmounts things, starts/stops sshd if you have it installed, etc. You can also then use \u2018apt-get\u2019 to install any package that is released for ARM processors. This includes things like a complete real shell, Tor, TraceRouteTCP, iwconfig/ipconfig, and other security and crypto tools. Works well with <a href=\"fdroid.app:jackpal.androidterm\">Terminal Emulator</a>\u2014just run `/debian/shell` to get a Debian shell.</p><p>The aim of Lil\u2019 Debi is to provide a transparent and tightly integrated Debian install on your Android device. It mounts all of your Android partitions in Debian space, so you see a fusion of both systems. It's even possible to have Lil\u2019 Debi launch the normal Debian init start-up scripts when it starts, so that all you need to do is apt-get install and any servers you install will just work.</p><p>Lil' Debi works with as few modifications to the Android system as possible. Currently, it only adds a /bin symlink, and a /debian mount directory. It does not touch /system at all.</p><p>Requires root: Yes, because it needs to run debootstrap, create dirs in /, mount/umount, etc.</p>",
+            "issueTracker": "https://github.com/guardianproject/lildebi/issues",
+            "license": "GPLv3",
+            "name": "Lil' Debi",
+            "sourceCode": "https://github.com/guardianproject/lildebi",
+            "summary": "Run Debian on your phone",
+            "webSite": "https://github.com/guardianproject/lildebi/wiki",
+            "added": 1360105200000,
+            "icon": "info.guardianproject.lildebi.5400.png",
+            "packageName": "info.guardianproject.lildebi",
+            "lastUpdated": 1422226800000
+        },
+        {
+            "bitcoin": "1Fi5xUHiAPRKxHvyUGVFGt9extBe8Srdbk",
+            "categories": [
+                "Navigation",
+                "Security",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "9999999",
+            "description": "<p>LocationPrivacy is not really app but rather a set of \"Intent Filters\" for all of the various ways of sharing location.  When you share location from one app, LocationPrivacy offers itself as an option.  It then recognizes insecure methods of sharing location, and then converts them to more secure methods. This mostly means that it rewrites URLs to use https, and even to use `geo:` URIs, which can work on fully offline setups.  LocationPrivacy mostly works by reading the location information from the URL itself.  For many URLs, LocationPrivacy must actually load some of the webpage in order to get the location.</p><p>LocationPrivacy can also serve as a way to redirect all location links to your favorite mapping app.  All map apps in Android can view `geo:` URIs, and LocationPrivacy converts many kinds of links to `geo:` URIs, including: Google Maps, OpenStreetMap, Amap, Baidu Map, QQ Map, Nokia HERE, Yandex Maps.</p><p>This was started as part of the T2 Panic work, since sharing location is so often a part of panic apps.  Follow our progress here: https://guardianproject.info/tag/panic</p><p>Don\u2019t see your language? Join us and help translate the app: https://www.transifex.com/projects/p/locationprivacy</p>",
+            "issueTracker": "https://dev.guardianproject.info/projects/panic/issues",
+            "license": "GPLv3",
+            "name": "LocationPrivacy",
+            "sourceCode": "https://github.com/guardianproject/LocationPrivacy",
+            "summary": "privacy filters for when you are sharing your location",
+            "webSite": "https://dev.guardianproject.info/projects/panic",
+            "added": 1422486000000,
+            "icon": "info.guardianproject.locationprivacy.30.png",
+            "packageName": "info.guardianproject.locationprivacy",
+            "lastUpdated": 1481029454284
+        },
+        {
+            "categories": [
+                "Office",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>Simple app for taking notes that encrypts everything behind a password.</p><p>Status: Beta.</p>",
+            "issueTracker": "https://github.com/guardianproject/notecipher/issues",
+            "license": "Apache2",
+            "name": "NoteCipher",
+            "sourceCode": "https://github.com/guardianproject/notecipher",
+            "summary": "Notepad with lock",
+            "webSite": "https://guardianproject.info",
+            "added": 1358290800000,
+            "icon": "info.guardianproject.notepadbot.12.png",
+            "packageName": "info.guardianproject.notepadbot",
+            "lastUpdated": 1394406000000
+        },
+        {
+            "categories": [
+                "Multimedia",
+                "Security",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>Ever capture someone in a photo or video, then realize they may not want to be in it? Not comfortable posting a friend, family member or child\u2019s face on the internet? Worried about the geolocation data in the picture giving away private hideaway? Tired of Facebook, Google and other sites \u201cauto detecting\u201d faces in your photos? Then this is for you, giving you the power to better protect the identity of those captures in your photos, before you post them online.</p><p>Take a picture or load a photo or video from the Gallery, and ObscuraCam will automatically detect faces that you can pixelate, redact (blackout) or protect with funny nose and glasses. You can also invert pixelate, so that only the person you select is visible, and no one in the background can be recognized.</p><p>This app will also remove all identifying data stored in photos including GPS location data and phone make &amp; model. You can save the protected photo back to the Gallery, or share it directly to Facebook, Twitter or any other \u201cShare\u201d enabled app.</p>",
+            "issueTracker": "https://github.com/guardianproject/obscuracam/issues",
+            "license": "GPLv3",
+            "name": "ObscuraCam",
+            "sourceCode": "https://github.com/guardianproject/obscuracam",
+            "summary": "A camera app that keeps certain information private",
+            "webSite": "https://guardianproject.info/apps/obscuracam",
+            "added": 1376863200000,
+            "icon": "org.witness.sscphase1.34.png",
+            "packageName": "org.witness.sscphase1",
+            "lastUpdated": 1383174000000
+        },
+        {
+            "categories": [
+                "Security",
+                "Internet",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>Tor is both software and an open network that helps you defend against network surveillance that threatens personal freedom and privacy, confidential business activities and relationships.</p><p>Orbot allows access to Tor by accessing a local SOCKS or HTTP proxy. On a rooted device, the proxying can be completely transparent i.e. the app that accesses the network need not be aware of the proxy's existence; you can choose which apps go via the proxy in the settings.</p><p>If you don't have root access, there are some apps that are designed to work closely with tor or allow proxied connections: <a href=\"fdroid.app:info.guardianproject.otr.app.im\">ChatSecure</a>, <a href=\"fdroid.app:info.guardianproject.browser\">Orweb</a> and <a href=\"fdroid.app:org.mariotaku.twidere\">Twidere</a>. There is also a proxy configurator addon for <a href=\"fdroid.app:org.mozilla.firefox\">org.mozilla.firefox</a> called <a href=\"https://github.com/guardianproject/ProxyMob/downloads\">ProxyMob</a> (not yet available from the Mozilla addon site).</p><p>Requires root: No, but you will need to use apps that allow proxies if root is not granted.</p>",
+            "donate": "https://www.torproject.org/donate/donate.html.en",
+            "flattrID": "5649",
+            "issueTracker": "https://dev.guardianproject.info/projects/orbot/issues",
+            "license": "NewBSD",
+            "name": "Orbot",
+            "sourceCode": "https://gitweb.torproject.org/orbot.git",
+            "summary": "Tor (anonymity) client",
+            "webSite": "http://www.torproject.org/docs/android.html.en",
+            "added": 1374444000000,
+            "icon": "org.torproject.android.15208000.png",
+            "packageName": "org.torproject.android",
+            "lastUpdated": 1481029552790
+        },
+        {
+            "categories": [
+                "Internet",
+                "Security",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>Orfox is the most privacy-enhancing web browser on Android, for visiting any website, even if it\u2019s normally censored, monitored, or on the hidden web. It is a port of the desktop Tor Browser to the Android version of Firefox.</p><p>Orfox is a companion browser to <a href=\"fdroid.app:org.torproject.android\">Orbot</a>, the port of Tor to Android.  Orbot anonymizes internet traffic by routing it through many different stages and you must have that enabled first, though root isn't needed.  Orfox disables certain other browser features that could be used to identify you.</p><p>Orfox replaces <a href=\"fdroid.app:info.guardianproject.browser\">Orweb</a> as your private browser.</p>",
+            "issueTracker": "https://dev.guardianproject.info/projects/orfox/issues?set_filter=1",
+            "license": "MPL",
+            "name": "Orfox",
+            "sourceCode": "https://github.com/guardianproject/orfox",
+            "summary": "Orfox: Tor Browser for Android",
+            "added": 1474668000000,
+            "icon": "info.guardianproject.orfox.4.png",
+            "packageName": "info.guardianproject.orfox",
+            "lastUpdated": 1481029470199
+        },
+        {
+            "categories": [
+                "Internet",
+                "Security",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>Orweb is a companion browser to <a href=\"fdroid.app:org.torproject.android\">Orbot</a>, the port of Tor to Android.</p><p>Orbot anonymizes internet traffic by routing it through many different stages and you must have that enabled first, though root isn't needed. Orweb disables certain other browser features that could be used to identify you.</p>",
+            "issueTracker": "https://dev.guardianproject.info/projects/orweb/issues?set_filter=1",
+            "license": "GPL",
+            "name": "Orweb",
+            "sourceCode": "https://github.com/guardianproject/orweb",
+            "summary": "Privacy-enhanced browser",
+            "webSite": "https://guardianproject.info/apps/orweb",
+            "added": 1350856800000,
+            "icon": "info.guardianproject.browser.7010.png",
+            "packageName": "info.guardianproject.browser",
+            "lastUpdated": 1448492400000
+        },
+        {
+            "categories": [
+                "Office",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>Image steganography app with old school F5 steganography</p>",
+            "issueTracker": "https://github.com/guardianproject/PixelKnot/issues",
+            "license": "GPLv3",
+            "name": "PixelKnot",
+            "sourceCode": "https://github.com/guardianproject/PixelKnot",
+            "summary": "Hide messages inside files",
+            "webSite": "https://guardianproject.info",
+            "added": 1361833200000,
+            "icon": "info.guardianproject.pixelknot.100.png",
+            "packageName": "info.guardianproject.pixelknot",
+            "lastUpdated": 1481029472671
+        },
+        {
+            "bitcoin": "1Fi5xUHiAPRKxHvyUGVFGt9extBe8Srdbk",
+            "categories": [
+                "Navigation",
+                "Security",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "9999999",
+            "description": "<p>Ripple is a \"panic button\" that can send it's trigger message to any app that is a \"panic responder\".  Such apps can do things like lock, disguise themselves, delete private data, send an emergency message, and more.  It is meant for situations where there is time to react, but where users need to be sure it is not mistakenly set off.</p><p>This is a BETA version of this app!  We are working now to add support to as many other apps as possible.  ChatSecure, Orweb, Umbrella, and Zom already have support, these apps are coming soon: Courier, PanicButton, OpenKeychain, Orfox, SMSSecure, and StoryMaker.</p><p>Here are two example scenarios:</p><ul><li> An organization gets regularly raided by the security forces, who search all of the computers and mobile devices on the premises. The organization usually has at least a minute or two of warning before a raid starts. They need a very reliable way to trigger wiping all of the data from the sensitive apps.</li></ul><ul><li> An aid worker has lots of sensitive data about people on their device. They regularly sync that data up with a secure, central database. Occasionally, the aid worker has to leave the country on very short notice. The border guards regularly download the entire contents of mobile devices of people crossing through. While waiting in line at the border, the aid worker sees the border guards seizing people's devices, and then remembers all the data on the device, so she unlocks her phone and hits the wipe trigger, which wipes all sensitive apps from the device. When the aid worker returns to the central office, the device is again synced up with the central database.</li></ul><p>This was started as part of the T2 Panic work, since sharing location is so often a part of panic apps.  Follow our progress here:</p><p>\u2605 <a href=\"https://guardianproject.info/tag/panic\">https://guardianproject.info/tag/panic</a> \u2605 <a href=\"https://dev.guardianproject.info/projects/panic\">https://dev.guardianproject.info/projects/panic</a> Don\u2019t see your language? Join us and help translate the app: <a href=\"https://www.transifex.com/projects/p/rippleapp\">https://www.transifex.com/projects/p/rippleapp</a></p><p>==Learn More==</p><p>\u2605 ABOUT US: Guardian Project is a group of developers that make secure mobile apps and open-source code for a better tomorrow \u2605 OUR WEBSITE: <a href=\"https://GuardianProject.info\">https://GuardianProject.info</a> \u2605 ON TWITTER: <a href=\"https://twitter.com/guardianproject\">https://twitter.com/guardianproject</a> \u2605 FREE SOFTWARE: Ripple is free software. You can take a look at our source code, or contribute to help make Ripple even better: <a href=\"https://github.com/guardianproject/Ripple\">https://github.com/guardianproject/Ripple</a> \u2605 MESSAGE US: Are we missing your favorite feature? Found an annoying bug? Please tell us! We\u2019d love to hear from you. Send us an email: support@guardianproject.info or find us in our chat room <a href=\"https://guardianproject.info/contact\">https://guardianproject.info/contact</a></p>",
+            "issueTracker": "https://dev.guardianproject.info/projects/panic/issues",
+            "license": "GPLv3",
+            "name": "Ripple",
+            "sourceCode": "https://github.com/guardianproject/ripple",
+            "summary": "Trigger apps to protect your privacy when in anxious or panic situations",
+            "webSite": "https://dev.guardianproject.info/projects/panic",
+            "added": 1481029448654,
+            "icon": "info.guardianproject.ripple.75.png",
+            "packageName": "info.guardianproject.ripple",
+            "lastUpdated": 1481029466419
+        },
+        {
+            "categories": [
+                "Multimedia",
+                "Security",
+                "GuardianProject"
+            ],
+            "suggestedVersionCode": "999999999",
+            "description": "<p>Plugin for <a href=\"fdroid.app:info.guardianproject.otr.app.im\">ChatSecure</a> to support for core emoji input and display.  Based on \"Phantom Open Emoji\" project.</p>",
+            "issueTracker": "https://dev.guardianproject.info/projects/chatsecure/issues",
+            "license": "SIL Open Font License, MIT License and the CC 3.0 License [CC-By with attribution requirement waived]",
+            "name": "StickerPack",
+            "sourceCode": "https://github.com/guardianproject/ChatSecureVoicePlugin",
+            "summary": "ChatSecure Open Emoji Plugin",
+            "webSite": "https://guardianproject.info/apps/chatsecure",
+            "added": 1385938800000,
+            "icon": "info.guardianproject.chatsecure.emoji.core.1.png",
+            "packageName": "info.guardianproject.chatsecure.emoji.core",
+            "lastUpdated": 1385938800000
+        }
+    ],
+    "packages": {
+        "info.guardianproject.courier": [
+            {
+                "added": 1400018400000,
+                "apkName": "Courier-0.1.8.apk",
+                "hash": "e013db095e8da843fae5ac44be6152e51377ee717e5c8a7b6d913d7720566b5a",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "nativecode": [
+                    "armeabi",
+                    "x86"
+                ],
+                "packageName": "info.guardianproject.courier",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 16536125,
+                "targetSdkVersion": "15",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH_ADMIN",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_WIFI_STATE",
+                        null
+                    ]
+                ],
+                "versionCode": 14,
+                "versionName": "0.1.8"
+            },
+            {
+                "added": 1403733600000,
+                "apkName": "Courier-0.1.9.apk",
+                "hash": "bf6566da1f90831887f5bf5605f8d816b1f7f694969459dec599b8bc01a827d3",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "nativecode": [
+                    "armeabi",
+                    "x86"
+                ],
+                "packageName": "info.guardianproject.courier",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 16484753,
+                "targetSdkVersion": "15",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH_ADMIN",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_WIFI_STATE",
+                        null
+                    ]
+                ],
+                "versionCode": 15,
+                "versionName": "0.1.9"
+            }
+        ],
+        "info.guardianproject.cacert": [
+            {
+                "added": 1376863200000,
+                "apkName": "CACertMan-0.0.2-alpha-20111011.apk",
+                "hash": "251ebd40ce4a281a2292692707fb1e9c91428994cbad80a416a297db51069eb8",
+                "hashType": "sha256",
+                "minSdkVersion": "7",
+                "packageName": "info.guardianproject.cacert",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 172263,
+                "targetSdkVersion": "7",
+                "versionCode": 4,
+                "versionName": "0.0.2.20111012"
+            },
+            {
+                "added": 1383174000000,
+                "apkName": "CACertMan-0.0.2-20110906.apk",
+                "hash": "c217c49abe5134007ceb2623a6189a73fa02af9d2b2bbcc5cbc4cb5da7b36a5d",
+                "hashType": "sha256",
+                "minSdkVersion": "8",
+                "packageName": "info.guardianproject.cacert",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 170305,
+                "targetSdkVersion": "8",
+                "versionCode": 3,
+                "versionName": "0.0.2-20110906"
+            }
+        ],
+        "info.guardianproject.soundrecorder": [
+            {
+                "added": 1386889200000,
+                "apkName": "ChatSecureVoiceMessaging-0.2.apk",
+                "hash": "abae18cc9cfa62fca5dce072c4c50d41b4fece506967ce9a3e2711cd1031dbee",
+                "hashType": "sha256",
+                "minSdkVersion": "10",
+                "packageName": "info.guardianproject.soundrecorder",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 394212,
+                "targetSdkVersion": "10",
+                "uses-permission": [
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.RECORD_AUDIO",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_PHONE_STATE",
+                        null
+                    ]
+                ],
+                "versionCode": 2,
+                "versionName": "0.2"
+            }
+        ],
+        "info.guardianproject.browser": [
+            {
+                "added": 1404079200000,
+                "apkName": "Orweb-release-0.6.1.apk",
+                "hash": "103f4a98fa282923c07e445b2a383e946b6c15e10ed08005af3d0743249a0359",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "packageName": "info.guardianproject.browser",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 931433,
+                "targetSdkVersion": "19",
+                "uses-permission": [
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ]
+                ],
+                "versionCode": 27,
+                "versionName": "0.6.1"
+            },
+            {
+                "added": 1448492400000,
+                "apkName": "Orweb-0.7.1.apk",
+                "hash": "949d65d6e8a1eadd0aa626bdc7c5a3e2b0dbe5a38dea1d725cce2a34ec84f0d4",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "packageName": "info.guardianproject.browser",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 2424394,
+                "targetSdkVersion": "21",
+                "uses-permission": [
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ]
+                ],
+                "versionCode": 7010,
+                "versionName": "0.7.1"
+            },
+            {
+                "added": 1415833200000,
+                "apkName": "Orweb-release-0.7.apk",
+                "hash": "763541f43f5dc136744b4361fe67d36f25cc036526d6c3e934287d72d1b411ab",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "packageName": "info.guardianproject.browser",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 1244875,
+                "targetSdkVersion": "18",
+                "uses-permission": [
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ]
+                ],
+                "versionCode": 28,
+                "versionName": "0.7"
+            }
+        ],
+        "info.guardianproject.notepadbot": [
+            {
+                "added": 1394406000000,
+                "apkName": "NoteCipher-beta-0.1.apk",
+                "hash": "b560a3d6364c32990ea7505f53b019f64fde597d67513f41a50e7d034af48caa",
+                "hashType": "sha256",
+                "minSdkVersion": "10",
+                "nativecode": [
+                    "armeabi",
+                    "x86"
+                ],
+                "packageName": "info.guardianproject.notepadbot",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 7321123,
+                "targetSdkVersion": "19",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ]
+                ],
+                "versionCode": 12,
+                "versionName": "0.1"
+            },
+            {
+                "added": 1358290800000,
+                "apkName": "NoteCipher-0.0.7.apk",
+                "hash": "8fa7536a87634c6b3441053c4f16315e4fd5aa6ef672a0026a594c107308d7bf",
+                "hashType": "sha256",
+                "minSdkVersion": "7",
+                "nativecode": [
+                    "armeabi"
+                ],
+                "packageName": "info.guardianproject.notepadbot",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 3731119,
+                "targetSdkVersion": "17",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ]
+                ],
+                "versionCode": 10,
+                "versionName": "0.0.7"
+            },
+            {
+                "added": 1383174000000,
+                "apkName": "NoteCipher-0.0.7.1.apk",
+                "hash": "da518f13206d2218234bfcc83205b7b2b81ec67a4cc448f818c617332235e700",
+                "hashType": "sha256",
+                "minSdkVersion": "11",
+                "nativecode": [
+                    "armeabi"
+                ],
+                "packageName": "info.guardianproject.notepadbot",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 3729342,
+                "targetSdkVersion": "17",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ]
+                ],
+                "versionCode": 11,
+                "versionName": "0.0.7.1"
+            }
+        ],
+        "info.guardianproject.orfox": [
+            {
+                "added": 1481029470199,
+                "apkName": "Orfox-1.2.1-TorBrowser-6.5-Fennec45.5.1-build2.apk",
+                "hash": "d43032e79c7c31cabb194b8c1c4b14fbf73dd2cfda958ba415879ddf2f38ace2",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "nativecode": [
+                    "armeabi-v7a"
+                ],
+                "packageName": "info.guardianproject.orfox",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 35273126,
+                "targetSdkVersion": "22",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.orfox.permissions.BROWSER_PROVIDER",
+                        null
+                    ],
+                    [
+                        "com.android.launcher.permission.UNINSTALL_SHORTCUT",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.CHANGE_WIFI_STATE",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.orfox.permissions.FORMHISTORY_PROVIDER",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "com.android.launcher.permission.INSTALL_SHORTCUT",
+                        null
+                    ],
+                    [
+                        "com.android.browser.permission.READ_HISTORY_BOOKMARKS",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_WIFI_STATE",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.orfox.permissions.PASSWORD_PROVIDER",
+                        null
+                    ]
+                ],
+                "versionCode": 4,
+                "versionName": "Fennec-45.5.1esr/TorBrowser-6.5-1/Orfox-1.2.1"
+            },
+            {
+                "added": 1474668000000,
+                "apkName": "Orfox-1.2-TorBrowser-6.5-Fennec45.4.0.apk",
+                "hash": "9b5f6614b94a47ae561e8c974d42056ba6cb6da520766deda09aec3699aeff94",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "nativecode": [
+                    "armeabi-v7a"
+                ],
+                "packageName": "info.guardianproject.orfox",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 35242066,
+                "targetSdkVersion": "22",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.orfox.permissions.BROWSER_PROVIDER",
+                        null
+                    ],
+                    [
+                        "com.android.launcher.permission.UNINSTALL_SHORTCUT",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.CHANGE_WIFI_STATE",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.orfox.permissions.FORMHISTORY_PROVIDER",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "com.android.launcher.permission.INSTALL_SHORTCUT",
+                        null
+                    ],
+                    [
+                        "com.android.browser.permission.READ_HISTORY_BOOKMARKS",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_WIFI_STATE",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.orfox.permissions.PASSWORD_PROVIDER",
+                        null
+                    ]
+                ],
+                "versionCode": 3,
+                "versionName": "Fennec-45.4.0esr/TorBrowser-6.5-1/Orfox-1.2"
+            }
+        ],
+        "info.guardianproject.chatsecure.emoji.core": [
+            {
+                "added": 1385938800000,
+                "apkName": "ChatSecurePluginOpenEmoji-release-v1.apk",
+                "hash": "131c1ebaf795c3f053701285699f0b7e517de1c7fdba56e247b1ec31766b2808",
+                "hashType": "sha256",
+                "minSdkVersion": "8",
+                "packageName": "info.guardianproject.chatsecure.emoji.core",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 1814271,
+                "targetSdkVersion": "17",
+                "versionCode": 1,
+                "versionName": "1.0"
+            }
+        ],
+        "info.guardianproject.pixelknot": [
+            {
+                "added": 1374444000000,
+                "apkName": "PixelKnot-release-0.3.1.apk",
+                "hash": "a3101fe8a2d47ab205cb00459fa62c639a6fac4538f6cd9d06eb48d2965c4d21",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "nativecode": [
+                    "armeabi"
+                ],
+                "packageName": "info.guardianproject.pixelknot",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 3976822,
+                "targetSdkVersion": "17",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.CAMERA",
+                        null
+                    ]
+                ],
+                "versionCode": 4,
+                "versionName": "0.3.1"
+            },
+            {
+                "added": 1481029472671,
+                "apkName": "PixelKnot-release-1.0.0.apk",
+                "hash": "f97557cf7ec81ade50c308c5552dc6dc827d0e02ce90f84b1df6b7477d9f5a39",
+                "hashType": "sha256",
+                "minSdkVersion": "17",
+                "nativecode": [
+                    "arm64-v8a",
+                    "armeabi",
+                    "armeabi-v7a",
+                    "mips",
+                    "mips64",
+                    "x86",
+                    "x86_64"
+                ],
+                "packageName": "info.guardianproject.pixelknot",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 1983586,
+                "targetSdkVersion": "25",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        18,
+                        null,
+                        "another fake future proofing test"
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        18,
+                        1234567,
+                        "future proof test"
+                    ]
+                ],
+                "versionCode": 100,
+                "versionName": "1.0.0"
+            },
+            {
+                "added": 1435269600000,
+                "apkName": "PixelKnot-release-0.3.3.apk",
+                "hash": "6beede8519a9e87ba8edaa5a76f203cfefd5f39eb911e789031cc6e911714b89",
+                "hashType": "sha256",
+                "minSdkVersion": "14",
+                "nativecode": [
+                    "armeabi"
+                ],
+                "packageName": "info.guardianproject.pixelknot",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 4751233,
+                "targetSdkVersion": "17",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.CAMERA",
+                        null
+                    ]
+                ],
+                "versionCode": 6,
+                "versionName": "0.3.3"
+            }
+        ],
+        "org.witness.informacam.app": [
+            {
+                "added": 1443736800000,
+                "apkName": "CameraV-release-0.2.4.apk",
+                "hash": "a10eefaed5a12c353525b07e655f6959fe1eb06cd5c549be56afaca6db0c6ce0",
+                "hashType": "sha256",
+                "minSdkVersion": "16",
+                "nativecode": [
+                    "armeabi",
+                    "armeabi-v7a",
+                    "x86"
+                ],
+                "packageName": "org.witness.informacam.app",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 24062229,
+                "targetSdkVersion": "21",
+                "uses-permission": [
+                    [
+                        "android.permission.KILL_BACKGROUND_PROCESSES",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.RECORD_AUDIO",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_COARSE_LOCATION",
+                        null
+                    ],
+                    [
+                        "android.permission.CAMERA",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_PHONE_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.USE_CREDENTIALS",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.GET_ACCOUNTS",
+                        null
+                    ],
+                    [
+                        "android.permission.CHANGE_WIFI_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH_ADMIN",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_FINE_LOCATION",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_WIFI_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.GET_TASKS",
+                        null
+                    ]
+                ],
+                "versionCode": 204,
+                "versionName": "0.2.4"
+            },
+            {
+                "added": 1446505200000,
+                "apkName": "CameraVApp-release-0.2.6.apk",
+                "hash": "508f453e26c8c83dba858b53b21d909d549fe5646d01eb198c96c22d8e521e7c",
+                "hashType": "sha256",
+                "minSdkVersion": "16",
+                "nativecode": [
+                    "armeabi",
+                    "armeabi-v7a",
+                    "x86"
+                ],
+                "packageName": "org.witness.informacam.app",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 24123646,
+                "targetSdkVersion": "21",
+                "uses-permission": [
+                    [
+                        "android.permission.KILL_BACKGROUND_PROCESSES",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.RECORD_AUDIO",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_COARSE_LOCATION",
+                        null
+                    ],
+                    [
+                        "android.permission.CAMERA",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_PHONE_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.USE_CREDENTIALS",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.GET_TOP_ACTIVITY_INFO",
+                        null
+                    ],
+                    [
+                        "android.permission.GET_ACCOUNTS",
+                        null
+                    ],
+                    [
+                        "android.permission.CHANGE_WIFI_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH_ADMIN",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_FINE_LOCATION",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_WIFI_STATE",
+                        null
+                    ]
+                ],
+                "versionCode": 206,
+                "versionName": "0.2.6"
+            },
+            {
+                "added": 1442354400000,
+                "apkName": "CameraVApp-release-0.2.2.apk",
+                "hash": "8b17cbe2a5cb777b49f5ef67a390f9d9d68765c90213ac64f3ca0456860dc9b7",
+                "hashType": "sha256",
+                "minSdkVersion": "16",
+                "nativecode": [
+                    "armeabi",
+                    "armeabi-v7a",
+                    "x86"
+                ],
+                "packageName": "org.witness.informacam.app",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 24283932,
+                "targetSdkVersion": "21",
+                "uses-permission": [
+                    [
+                        "android.permission.KILL_BACKGROUND_PROCESSES",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.RECORD_AUDIO",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_COARSE_LOCATION",
+                        null
+                    ],
+                    [
+                        "android.permission.CAMERA",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_PHONE_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.USE_CREDENTIALS",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.GET_ACCOUNTS",
+                        null
+                    ],
+                    [
+                        "android.permission.CHANGE_WIFI_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.BLUETOOTH_ADMIN",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_FINE_LOCATION",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_WIFI_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.GET_TASKS",
+                        null
+                    ]
+                ],
+                "versionCode": 202,
+                "versionName": "0.2.2"
+            }
+        ],
+        "info.guardianproject.checkey": [
+            {
+                "added": 1425855600000,
+                "apkName": "Checkey-0.1.2.apk",
+                "hash": "754701dbac52de5ca3930c2393970c03ef9aa07d1456911e9bf254d6014e0645",
+                "hashType": "sha256",
+                "minSdkVersion": "8",
+                "packageName": "info.guardianproject.checkey",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 842881,
+                "targetSdkVersion": "21",
+                "uses-permission": [
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ]
+                ],
+                "versionCode": 102,
+                "versionName": "0.1.2"
+            },
+            {
+                "added": 1422399600000,
+                "apkName": "Checkey-0.1.1.apk",
+                "hash": "2d81f339bb69626af42e8868dc6928c9072ebcbae76e1ff5ac8172e78ebe9cdd",
+                "hashType": "sha256",
+                "minSdkVersion": "8",
+                "packageName": "info.guardianproject.checkey",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 967083,
+                "targetSdkVersion": "21",
+                "uses-permission": [
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ]
+                ],
+                "versionCode": 101,
+                "versionName": "0.1.1"
+            },
+            {
+                "added": 1405116000000,
+                "apkName": "Checkey-0.1.apk",
+                "hash": "a8e3c102d5279a3029d0eebdeda2ffdbe1f8a3493ea7dbdc31a11affc708ee57",
+                "hashType": "sha256",
+                "minSdkVersion": "8",
+                "packageName": "info.guardianproject.checkey",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 878679,
+                "targetSdkVersion": "19",
+                "uses-permission": [
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ]
+                ],
+                "versionCode": 1,
+                "versionName": "0.1"
+            }
+        ],
+        "info.guardianproject.lildebi": [
+            {
+                "added": 1413928800000,
+                "apkName": "LilDebi-0.5.2-release.apk",
+                "hash": "07fa3dfb690e44eb540942ba2a51718c72351c91a253a56a0c90649f6d8903dd",
+                "hashType": "sha256",
+                "minSdkVersion": "8",
+                "packageName": "info.guardianproject.lildebi",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 1861790,
+                "targetSdkVersion": "19",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_SUPERUSER",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.RECEIVE_BOOT_COMPLETED",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "jackpal.androidterm.permission.RUN_SCRIPT",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ]
+                ],
+                "versionCode": 5200,
+                "versionName": "0.5.2"
+            },
+            {
+                "added": 1422226800000,
+                "apkName": "LilDebi-0.5.3-release.apk",
+                "hash": "01c5a8e1fd778c141e70633d14f1b69228d6f492961098616e0446c116cf9e44",
+                "hashType": "sha256",
+                "minSdkVersion": "8",
+                "packageName": "info.guardianproject.lildebi",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 1879560,
+                "targetSdkVersion": "19",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_SUPERUSER",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.RECEIVE_BOOT_COMPLETED",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "jackpal.androidterm.permission.RUN_SCRIPT",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ]
+                ],
+                "versionCode": 5300,
+                "versionName": "0.5.3"
+            },
+            {
+                "added": 1422226800000,
+                "apkName": "LilDebi-0.5.4-release.apk",
+                "hash": "2c490376d8853fae04e79541f5d61e66a42ed0e890208945a11036c4a7b111da",
+                "hashType": "sha256",
+                "maxSdkVersion": "20",
+                "minSdkVersion": "8",
+                "packageName": "info.guardianproject.lildebi",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 1876705,
+                "targetSdkVersion": "20",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_SUPERUSER",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.RECEIVE_BOOT_COMPLETED",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "jackpal.androidterm.permission.RUN_SCRIPT",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ]
+                ],
+                "versionCode": 5400,
+                "versionName": "0.5.4"
+            }
+        ],
+        "info.guardianproject.otr.app.im": [
+            {
+                "added": 1481029471580,
+                "apkName": "ChatSecure-v14.2.2.apk",
+                "hash": "9d4620fec0c7837ddffccde7918d7a7db0976fbcd361b96659abd93b5cc0d9e3",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "nativecode": [
+                    "armeabi",
+                    "x86"
+                ],
+                "packageName": "info.guardianproject.otr.app.im",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 10502135,
+                "targetSdkVersion": "21",
+                "uses-permission": [
+                    [
+                        "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.otr.app.providers.imps.permission.READ_ONLY",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.otr.app.im.permission.IM_SERVICE",
+                        null
+                    ],
+                    [
+                        "com.google.android.googleapps.permission.GOOGLE_AUTH",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.USE_CREDENTIALS",
+                        null
+                    ],
+                    [
+                        "android.permission.UPDATE_APP_OPS_STATS",
+                        null
+                    ],
+                    [
+                        "android.permission.RECEIVE_BOOT_COMPLETED",
+                        null
+                    ],
+                    [
+                        "android.permission.GET_ACCOUNTS",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.otr.app.providers.imps.permission.WRITE_ONLY",
+                        null
+                    ],
+                    [
+                        "android.permission.MANAGE_ACCOUNTS",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_WIFI_STATE",
+                        null
+                    ]
+                ],
+                "versionCode": 1422001,
+                "versionName": "14.2.2"
+            },
+            {
+                "added": 1454454000000,
+                "apkName": "ChatSecure-v14.2.3a.apk",
+                "hash": "36d7d71c8a2115bdd2bd63bb639af286ee3242cce11cdb5c53378d1a7f35528e",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "nativecode": [
+                    "armeabi",
+                    "x86"
+                ],
+                "packageName": "info.guardianproject.otr.app.im",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 10502397,
+                "targetSdkVersion": "21",
+                "uses-permission": [
+                    [
+                        "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.otr.app.providers.imps.permission.READ_ONLY",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.otr.app.im.permission.IM_SERVICE",
+                        null
+                    ],
+                    [
+                        "com.google.android.googleapps.permission.GOOGLE_AUTH",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.USE_CREDENTIALS",
+                        null
+                    ],
+                    [
+                        "android.permission.UPDATE_APP_OPS_STATS",
+                        null
+                    ],
+                    [
+                        "android.permission.RECEIVE_BOOT_COMPLETED",
+                        null
+                    ],
+                    [
+                        "android.permission.GET_ACCOUNTS",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.otr.app.providers.imps.permission.WRITE_ONLY",
+                        null
+                    ],
+                    [
+                        "android.permission.MANAGE_ACCOUNTS",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_WIFI_STATE",
+                        null
+                    ]
+                ],
+                "versionCode": 1423001,
+                "versionName": "14.2.3"
+            },
+            {
+                "added": 1440367200000,
+                "apkName": "ChatSecure-v14.2.1.apk",
+                "hash": "f82a3a7a823f5540b335743eb1399d0fd1f61bc68958750b5ef6aa0d95ad9a54",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "nativecode": [
+                    "armeabi",
+                    "x86"
+                ],
+                "packageName": "info.guardianproject.otr.app.im",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 10463010,
+                "targetSdkVersion": "21",
+                "uses-permission": [
+                    [
+                        "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.otr.app.providers.imps.permission.READ_ONLY",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.otr.app.im.permission.IM_SERVICE",
+                        null
+                    ],
+                    [
+                        "com.google.android.googleapps.permission.GOOGLE_AUTH",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.USE_CREDENTIALS",
+                        null
+                    ],
+                    [
+                        "android.permission.UPDATE_APP_OPS_STATS",
+                        null
+                    ],
+                    [
+                        "android.permission.RECEIVE_BOOT_COMPLETED",
+                        null
+                    ],
+                    [
+                        "android.permission.GET_ACCOUNTS",
+                        null
+                    ],
+                    [
+                        "info.guardianproject.otr.app.providers.imps.permission.WRITE_ONLY",
+                        null
+                    ],
+                    [
+                        "android.permission.MANAGE_ACCOUNTS",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_WIFI_STATE",
+                        null
+                    ]
+                ],
+                "versionCode": 1421001,
+                "versionName": "14.2.1"
+            }
+        ],
+        "org.torproject.android": [
+            {
+                "added": 1478127600000,
+                "apkName": "Orbot-v15.2.0-RC-5-arm.apk",
+                "hash": "51c7e2b6a6de542e0d44f82d89ddf1d3216ec7a28297381ef15b12da2f3246f7",
+                "hashType": "sha256",
+                "minSdkVersion": "16",
+                "nativecode": [
+                    "arm64-v8a",
+                    "armeabi",
+                    "armeabi-v7a"
+                ],
+                "packageName": "org.torproject.android",
+                "sig": "8bd7e51b479aeba908ff46ada3305a29",
+                "size": 7600548,
+                "targetSdkVersion": "23",
+                "uses-permission": [
+                    [
+                        "android.permission.ACCESS_SUPERUSER",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.RECEIVE_BOOT_COMPLETED",
+                        null
+                    ]
+                ],
+                "versionCode": 15205000,
+                "versionName": "15.2.0-RC-5"
+            },
+            {
+                "added": 1478214000000,
+                "apkName": "Orbot-v15.2.0-RC-7-multi.apk",
+                "hash": "8dc3edf0a9799eb23b5e478e15547e38831b28cc3e88b049aa5f41b7b72e7bf9",
+                "hashType": "sha256",
+                "minSdkVersion": "16",
+                "nativecode": [
+                    "arm64-v8a",
+                    "armeabi",
+                    "armeabi-v7a",
+                    "x86"
+                ],
+                "packageName": "org.torproject.android",
+                "sig": "8bd7e51b479aeba908ff46ada3305a29",
+                "size": 12457510,
+                "targetSdkVersion": "23",
+                "uses-permission": [
+                    [
+                        "android.permission.ACCESS_SUPERUSER",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.RECEIVE_BOOT_COMPLETED",
+                        null
+                    ]
+                ],
+                "versionCode": 15207000,
+                "versionName": "15.2.0-RC-7-multi"
+            },
+            {
+                "added": 1478473200000,
+                "apkName": "Orbot-v15.2.0-RC-8-multi.apk",
+                "hash": "3758e1b6e6b9a3b7848b253d08d6c0b1b1b3223184da4bd2ba1aaff8cf676357",
+                "hashType": "sha256",
+                "minSdkVersion": "16",
+                "nativecode": [
+                    "armeabi",
+                    "x86"
+                ],
+                "packageName": "org.torproject.android",
+                "sig": "8bd7e51b479aeba908ff46ada3305a29",
+                "size": 12296544,
+                "targetSdkVersion": "23",
+                "uses-permission": [
+                    [
+                        "android.permission.ACCESS_SUPERUSER",
+                        null
+                    ],
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ],
+                    [
+                        "android.permission.ACCESS_NETWORK_STATE",
+                        null
+                    ],
+                    [
+                        "android.permission.RECEIVE_BOOT_COMPLETED",
+                        null
+                    ]
+                ],
+                "versionCode": 15208000,
+                "versionName": "15.2.0-RC-8-multi"
+            }
+        ],
+        "org.witness.sscphase1": [
+            {
+                "added": 1376863200000,
+                "apkName": "ObscuraCam-1.2-FINAL.apk",
+                "hash": "fc4b1e26b09ab79b1ab174e8985b89985a0110f9d97d2b0472e529c85e3a1d89",
+                "hashType": "sha256",
+                "minSdkVersion": "8",
+                "nativecode": [
+                    "armeabi"
+                ],
+                "packageName": "org.witness.sscphase1",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 1728825,
+                "targetSdkVersion": "8",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ]
+                ],
+                "versionCode": 25,
+                "versionName": "1.2-FINAL"
+            },
+            {
+                "added": 1383174000000,
+                "apkName": "ObscuraCam-2.0-RC2b.apk",
+                "hash": "eeea54985c96769524ec82fb1d3599b193a2d20d1f57f3afc4c97b11bd48df8f",
+                "hashType": "sha256",
+                "minSdkVersion": "10",
+                "nativecode": [
+                    "armeabi"
+                ],
+                "packageName": "org.witness.sscphase1",
+                "sig": "a0eeebb161f946e3516945fae8a92a3e",
+                "size": 8240221,
+                "targetSdkVersion": "11",
+                "uses-permission": [
+                    [
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.READ_MEDIA_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_MEDIA_STORAGE",
+                        null
+                    ],
+                    [
+                        "android.permission.WAKE_LOCK",
+                        null
+                    ],
+                    [
+                        "android.permission.VIBRATE",
+                        null
+                    ],
+                    [
+                        "android.permission.WRITE_EXTERNAL_STORAGE",
+                        null
+                    ]
+                ],
+                "versionCode": 34,
+                "versionName": "2.0-RC2b"
+            }
+        ],
+        "info.guardianproject.locationprivacy": [
+            {
+                "added": 1481029454284,
+                "apkName": "LocationPrivacy-0.3.apk",
+                "hash": "ec2b2c6e3a99422fbe8229711dfc7b741961c2ba7bc171c745818d8b76fc4d63",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "packageName": "info.guardianproject.locationprivacy",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 1130602,
+                "targetSdkVersion": "22",
+                "uses-permission": [
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ]
+                ],
+                "versionCode": 30,
+                "versionName": "0.3"
+            },
+            {
+                "added": 1422486000000,
+                "apkName": "LocationPrivacy-0.1.apk",
+                "hash": "130cfcc8b916682d974aa4e13385b47bdc23d07b0de852640563b880aeb61d1f",
+                "hashType": "sha256",
+                "minSdkVersion": "8",
+                "packageName": "info.guardianproject.locationprivacy",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 818384,
+                "targetSdkVersion": "21",
+                "uses-permission": [
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ]
+                ],
+                "versionCode": 10,
+                "versionName": "0.1"
+            },
+            {
+                "added": 1481029439166,
+                "apkName": "LocationPrivacy-0.2.apk",
+                "hash": "3cad63152ef9b04e1c2b880c286a80c65c083880612aaa36c0c4480b96adfea8",
+                "hashType": "sha256",
+                "minSdkVersion": "9",
+                "packageName": "info.guardianproject.locationprivacy",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 1129409,
+                "targetSdkVersion": "22",
+                "uses-permission": [
+                    [
+                        "android.permission.INTERNET",
+                        null
+                    ]
+                ],
+                "versionCode": 20,
+                "versionName": "0.2"
+            }
+        ],
+        "info.guardianproject.ripple": [
+            {
+                "added": 1481029466419,
+                "apkName": "Ripple-0.1.apk",
+                "hash": "9fd24cbb3552123e6ee119f912f1646dd21cd7a683734a8d502d8b44854a284b",
+                "hashType": "sha256",
+                "minSdkVersion": "10",
+                "packageName": "info.guardianproject.ripple",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 1670285,
+                "targetSdkVersion": "23",
+                "versionCode": 2,
+                "versionName": "0.1"
+            },
+            {
+                "added": 1481029448654,
+                "apkName": "Ripple-0.0.apk",
+                "hash": "025894a5f3a39a288ee60bb6c9cc2c559d395f22fed020d1086308ba12df85a3",
+                "hashType": "sha256",
+                "minSdkVersion": "10",
+                "packageName": "info.guardianproject.ripple",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 1664407,
+                "targetSdkVersion": "23",
+                "versionCode": 1,
+                "versionName": "0.0"
+            },
+            {
+                "added": 1481029455428,
+                "apkName": "Ripple-0.2-release.apk",
+                "hash": "4b14b1b402f0197e1e6ffe2c11e052432fc8a52749f5f02d9cc67799658df239",
+                "hashType": "sha256",
+                "minSdkVersion": "10",
+                "packageName": "info.guardianproject.ripple",
+                "sig": "d70ac6a02b53ebdd1354ea7af7b9ceee",
+                "size": 1669315,
+                "targetSdkVersion": "23",
+                "versionCode": 75,
+                "versionName": "0.2"
+            }
+        ]
+    }
+}

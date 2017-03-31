@@ -228,7 +228,7 @@ public class AppDetails extends AppCompatActivity {
             holder.status.setText(getInstalledStatus(apk));
 
             holder.repository.setText(getString(R.string.repo_provider,
-                    RepoProvider.Helper.findById(getContext(), apk.repo).getName()));
+                    RepoProvider.Helper.findById(getContext(), apk.repoId).getName()));
 
             if (apk.size > 0) {
                 holder.size.setText(Utils.getFriendlySize(apk.size));

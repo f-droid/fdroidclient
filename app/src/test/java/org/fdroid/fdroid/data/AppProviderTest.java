@@ -304,6 +304,6 @@ public class AppProviderTest extends FDroidProviderTest {
 
         AppProvider.Helper.recalculatePreferredMetadata(context);
 
-        return AppProvider.Helper.findSpecificApp(context.getContentResolver(), id, 1, Cols.ALL);
+        return AppProvider.Helper.findSpecificApp(context.getContentResolver(), id, repoId, Cols.ALL);
     }
 }

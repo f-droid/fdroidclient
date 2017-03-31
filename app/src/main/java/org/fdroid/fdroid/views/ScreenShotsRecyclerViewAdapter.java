@@ -12,20 +12,21 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.download.ImageDownloader;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
 public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements LinearLayoutManagerSnapHelper.LinearSnapHelperListener {
+    private final String[] screenshots;
     private final DisplayImageOptions displayImageOptions;
     private View selectedView;
     private int selectedPosition;
     private final int selectedItemElevation;
     private final int unselectedItemMargin;
 
-    public ScreenShotsRecyclerViewAdapter(Context context, @SuppressWarnings("unused") App app) {
+    public ScreenShotsRecyclerViewAdapter(Context context, App app) {
         super();
+        screenshots = app.getAllScreenshots(context);
         selectedPosition = 0;
         selectedItemElevation = context.getResources().getDimensionPixelSize(R.dimen.details_screenshot_selected_elevation);
         unselectedItemMargin = context.getResources().getDimensionPixelSize(R.dimen.details_screenshot_margin);
@@ -46,8 +47,8 @@ public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
         if (position == selectedPosition) {
             this.selectedView = vh.itemView;
         }
-        // For now, use the screenshot placeholder
-        ImageLoader.getInstance().displayImage(ImageDownloader.Scheme.ASSETS.wrap("screenshot_placeholder.png"), vh.image, displayImageOptions);
+        ImageLoader.getInstance().displayImage(screenshots[position],
+                vh.image, displayImageOptions);
     }
 
     @Override
@@ -59,7 +60,7 @@ public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
 
     @Override
     public int getItemCount() {
-        return 7;
+        return screenshots.length;
     }
 
     @Override

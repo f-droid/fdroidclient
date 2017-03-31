@@ -159,7 +159,7 @@ public abstract class MultiRepoUpdaterTest extends FDroidProviderTest {
         return createRepo(name, uri, context, PUB_KEY);
     }
 
-    protected Repo createRepo(String name, String uri, Context context, String signingCert) {
+    static Repo createRepo(String name, String uri, Context context, String signingCert) {
         Repo repo = new Repo();
         repo.signingCertificate = signingCert;
         repo.address = uri;

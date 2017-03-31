@@ -23,6 +23,7 @@ package org.fdroid.fdroid.data;
 
 import android.app.Application;
 import android.content.ContentValues;
+import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 
@@ -125,6 +126,7 @@ public class RepoProviderTest extends FDroidProviderTest {
         assertEquals(4, RepoProvider.Helper.all(context).size());
 
         Repo mock1 = insertRepo(
+                context,
                 "https://mock-repo-1.example.com/fdroid/repo",
                 "Just a made up repo",
                 "ABCDEF1234567890",
@@ -132,6 +134,7 @@ public class RepoProviderTest extends FDroidProviderTest {
         );
 
         Repo mock2 = insertRepo(
+                context,
                 "http://mock-repo-2.example.com/fdroid/repo",
                 "Mock repo without a name",
                 "0123456789ABCDEF"
@@ -167,6 +170,7 @@ public class RepoProviderTest extends FDroidProviderTest {
     @Test
     public void canDeleteRepo() {
         Repo mock1 = insertRepo(
+                context,
                 "https://mock-repo-1.example.com/fdroid/repo",
                 "Just a made up repo",
                 "ABCDEF1234567890",
@@ -174,6 +178,7 @@ public class RepoProviderTest extends FDroidProviderTest {
         );
 
         Repo mock2 = insertRepo(
+                context,
                 "http://mock-repo-2.example.com/fdroid/repo",
                 "Mock repo without a name",
                 "0123456789ABCDEF"
@@ -191,11 +196,11 @@ public class RepoProviderTest extends FDroidProviderTest {
         assertEquals(mock2.id, afterDelete.get(4).id);
     }
 
-    protected Repo insertRepo(String address, String description, String fingerprint) {
-        return insertRepo(address, description, fingerprint, null);
+    public Repo insertRepo(Context context, String address, String description, String fingerprint) {
+        return insertRepo(context, address, description, fingerprint, null);
     }
 
-    protected Repo insertRepo(String address, String description, String fingerprint, @Nullable String name) {
+    public static Repo insertRepo(Context context, String address, String description, String fingerprint, @Nullable String name) {
         ContentValues values = new ContentValues();
         values.put(RepoTable.Cols.ADDRESS, address);
         values.put(RepoTable.Cols.DESCRIPTION, description);

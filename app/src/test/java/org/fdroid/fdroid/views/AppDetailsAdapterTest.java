@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views;
 
 import android.app.Application;
+import android.content.ContentValues;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,12 +9,17 @@ import android.view.ViewGroup;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProviderTest;
 import org.fdroid.fdroid.data.FDroidProvider;
 import org.fdroid.fdroid.data.FDroidProviderTest;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProviderTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,28 +33,60 @@ import static org.junit.Assert.assertEquals;
 @RunWith(RobolectricTestRunner.class)
 public class AppDetailsAdapterTest extends FDroidProviderTest {
 
+    private App app;
+
     @Before
     public void setup() {
         ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(context));
+        Preferences.setup(context);
+
+        Repo repo = RepoProviderTest.insertRepo(context, "http://www.example.com/fdroid/repo", "", "", "Test Repo");
+        app = AppProviderTest.insertApp(contentResolver, context, "com.example.app", "Test App", new ContentValues(), repo.getId());
     }
 
     @After
     public void teardown() {
         ImageLoader.getInstance().destroy();
         FDroidProvider.clearDbHelperSingleton();
+        Preferences.clearSingletonForTesting();
     }
 
     @Test
-    public void appWithNoVersions() {
-        App app = new App();
-        app.name = "Test App";
-        app.description = "Test App <b>Description</b>";
+    public void appWithNoVersionsOrScreenshots() {
+        AppDetailsRecyclerViewAdapter adapter = new AppDetailsRecyclerViewAdapter(context, app, dummyCallbacks);
+        populateViewHolders(adapter);
+
+        assertEquals(3, adapter.getItemCount());
+    }
+
+    @Test
+    public void appWithScreenshots() {
+        app.phoneScreenshots = new String[] {"screenshot1.png", "screenshot2.png"};
 
         AppDetailsRecyclerViewAdapter adapter = new AppDetailsRecyclerViewAdapter(context, app, dummyCallbacks);
         populateViewHolders(adapter);
 
         assertEquals(4, adapter.getItemCount());
 
+    }
+
+    @Test
+    public void appWithVersions() {
+        Assert.insertApk(context, app, 1);
+        Assert.insertApk(context, app, 2);
+        Assert.insertApk(context, app, 3);
+
+        AppDetailsRecyclerViewAdapter adapter = new AppDetailsRecyclerViewAdapter(context, app, dummyCallbacks);
+        populateViewHolders(adapter);
+
+        // Starts collapsed, now showing versions at all.
+        assertEquals(3, adapter.getItemCount());
+
+        adapter.setShowVersions(true);
+        assertEquals(6, adapter.getItemCount());
+
+        adapter.setShowVersions(false);
+        assertEquals(3, adapter.getItemCount());
     }
 
     /**

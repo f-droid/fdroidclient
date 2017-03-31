@@ -13,6 +13,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -110,12 +111,23 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
             }
         }
 
+        ImageLoader.getInstance().displayImage(app.iconUrl, icon, displayImageOptions, this);
+
         if (featuredImage != null) {
             featuredImage.setColour(0);
             featuredImage.setImageDrawable(null);
-        }
 
-        ImageLoader.getInstance().displayImage(app.iconUrl, icon, displayImageOptions, this);
+            // Note: We could call the convenience function loadImageAndDisplay(ImageLoader, DisplayImageOptions, String, String)
+            // which includes a fallback for when currentApp.featureGraphic is empty. However we need
+            // to take care of also loading the icon (regardless of whether there is a featureGraphic
+            // or not for this app) so that we can display the icon to the user. We will use the
+            // load complete listener for the icon to decide whether we need to extract the colour
+            // from that icon and assign to the `FeatureImage` (or whether we should wait for the
+            // feature image to be loaded).
+            if (!TextUtils.isEmpty(app.featureGraphic)) {
+                featuredImage.loadImageAndDisplay(ImageLoader.getInstance(), displayImageOptions, app.featureGraphic);
+            }
+        }
     }
 
     /**
@@ -145,12 +157,14 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
     //  Icon loader callbacks
     //
     //  Most are unused, the main goal is to specify a background colour for the featured image if
-    //  no featured image is specified in the apps metadata.
+    //  no featured image is specified in the apps metadata. If an image is specified, then it will
+    //  get loaded using the `FeatureImage.loadImageAndDisplay()` method and so we don't need to do
+    //  anything special here.
     // =============================================================================================
 
     @Override
     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-        if (featuredImage != null) {
+        if (currentApp != null && TextUtils.isEmpty(currentApp.featureGraphic) && featuredImage != null && loadedImage != null) {
             new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
                 @Override
                 public void onGenerated(Palette palette) {

@@ -140,6 +140,14 @@ class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.IS_COMPATIBLE + " int not null,"
             + AppMetadataTable.Cols.ICON_URL + " text, "
             + AppMetadataTable.Cols.ICON_URL_LARGE + " text, "
+            + AppMetadataTable.Cols.FEATURE_GRAPHIC + " string,"
+            + AppMetadataTable.Cols.PROMO_GRAPHIC + " string,"
+            + AppMetadataTable.Cols.TV_BANNER + " string,"
+            + AppMetadataTable.Cols.PHONE_SCREENSHOTS + " string,"
+            + AppMetadataTable.Cols.SEVEN_INCH_SCREENSHOTS + " string,"
+            + AppMetadataTable.Cols.TEN_INCH_SCREENSHOTS + " string,"
+            + AppMetadataTable.Cols.TV_SCREENSHOTS + " string,"
+            + AppMetadataTable.Cols.WEAR_SCREENSHOTS + " string,"
             + "primary key(" + AppMetadataTable.Cols.PACKAGE_ID + ", " + AppMetadataTable.Cols.REPO_ID + "));";
 
     private static final String CREATE_TABLE_APP_PREFS = "CREATE TABLE " + AppPrefsTable.NAME
@@ -182,7 +190,7 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
 
-    protected static final int DB_VERSION = 66;
+    protected static final int DB_VERSION = 67;
 
     private final Context context;
 
@@ -263,6 +271,47 @@ class DBHelper extends SQLiteOpenHelper {
         addObbFiles(db, oldVersion);
         addCategoryTables(db, oldVersion);
         addIndexV1Fields(db, oldVersion);
+        addIndexV1AppFields(db, oldVersion);
+    }
+
+    private void addIndexV1AppFields(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 67) {
+            return;
+        }
+        // Strings
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.FEATURE_GRAPHIC)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.FEATURE_GRAPHIC + " field to " + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.FEATURE_GRAPHIC + " string;");
+        }
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.PROMO_GRAPHIC)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.PROMO_GRAPHIC + " field to " + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.PROMO_GRAPHIC + " string;");
+        }
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.TV_BANNER)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.TV_BANNER + " field to " + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.TV_BANNER + " string;");
+        }
+        // String Arrays
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.PHONE_SCREENSHOTS)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.PHONE_SCREENSHOTS + " field to " + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.PHONE_SCREENSHOTS + " string;");
+        }
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.SEVEN_INCH_SCREENSHOTS)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.SEVEN_INCH_SCREENSHOTS + " field to " + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.SEVEN_INCH_SCREENSHOTS + " string;");
+        }
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.TEN_INCH_SCREENSHOTS)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.TEN_INCH_SCREENSHOTS + " field to " + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.TEN_INCH_SCREENSHOTS + " string;");
+        }
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.TV_SCREENSHOTS)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.TV_SCREENSHOTS + " field to " + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.TV_SCREENSHOTS + " string;");
+        }
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.WEAR_SCREENSHOTS)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.WEAR_SCREENSHOTS + " field to " + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.WEAR_SCREENSHOTS + " string;");
+        }
     }
 
     private void addIndexV1Fields(SQLiteDatabase db, int oldVersion) {

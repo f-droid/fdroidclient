@@ -143,6 +143,14 @@ public interface Schema {
             String REQUIREMENTS = "requirements";
             String ICON_URL = "iconUrl";
             String ICON_URL_LARGE = "iconUrlLarge";
+            String FEATURE_GRAPHIC = "featureGraphic";
+            String PROMO_GRAPHIC = "promoGraphic";
+            String TV_BANNER = "tvBanner";
+            String PHONE_SCREENSHOTS = "phoneScreenshots";
+            String SEVEN_INCH_SCREENSHOTS = "sevenInchScreenshots";
+            String TEN_INCH_SCREENSHOTS = "tenInchScreenshots";
+            String TV_SCREENSHOTS = "tvScreenshots";
+            String WEAR_SCREENSHOTS = "wearScreenshots";
 
             interface SuggestedApk {
                 String VERSION_NAME = "suggestedApkVersion";
@@ -180,6 +188,8 @@ public interface Schema {
                     CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
+                    FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
+                    SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
                     SUGGESTED_VERSION_CODE,
             };
 
@@ -194,6 +204,8 @@ public interface Schema {
                     CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
+                    FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
+                    SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
                     SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
                     InstalledApp.SIGNATURE, Package.PACKAGE_NAME,
