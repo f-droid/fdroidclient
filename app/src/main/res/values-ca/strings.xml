@@ -69,7 +69,7 @@
   <string name="menu_website">Pàgina web</string>
   <string name="menu_issues">Problemes</string>
   <string name="menu_source">Codi font</string>
-  <string name="menu_upgrade">Actualitza</string>
+  <string name="menu_upgrade">Actualitzeu</string>
   <string name="menu_donate">Feu una donació</string>
   <string name="details_installed">Versió instal·lada %s</string>
   <string name="details_notinstalled">No està instal·lat</string>
@@ -343,8 +343,8 @@ per tal d\'ajudar a resoldre la incidència?</string>
     <string name="useTorSummary">Forçar el tràfic de baixada a través de Tor per millorar la privadesa</string>
     <string name="repo_provider">Repositori: %s</string>
 
-    <string name="update_auto_download">Descarregueu actualitzacions de forma automàtica</string>
-    <string name="update_auto_download_summary">Descarregueu els arxius de l\'actualització en segon pla</string>
+    <string name="update_auto_download">Obtingueu actualitzacions de forma automàtica</string>
+    <string name="update_auto_download_summary">Les descàrregues es descarreguen automàticament i sereu avisats per instal·lar-les</string>
     <string name="tap_to_install_format">Premeu per instal·lar %s</string>
     <string name="tap_to_update_format">Premeu per actualitzar %s</string>
     <string name="download_pending">Esperant que comenci la descàrrega…</string>
@@ -375,4 +375,104 @@ per tal d\'ajudar a resoldre la incidència?</string>
     <string name="update_auto_install_summary">Descarregueu i instal·leu les actualitzacions de les apps en segon pla</string>
     <string name="versions">Versions</string>
     <string name="warning_no_internet">No es pot actualitzar: esteu connectat a internet?</string>
+    <string name="app_details_donate_prompt_unknown_author">Convideu els desenvolupadors de %1$s a un cafè!</string>
+    <string name="app_details_donate_prompt">%2$s ha creat %1$s. Convideu-los a un cafè!</string>
+
+    <string name="repositories_summary">Afegiu orígens d\'aplicacions addicionals</string>
+    <string name="app_version_x_available">Versió %1$s disponible</string>
+    <string name="app_version_x_installed">Versió %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d actualització</item>
+	<item quantity="other">"%1$d  actualitzacions"</item>
+</plurals>
+
+    <string name="clear_search">Netegeu la cerca</string>
+
+    <string name="main_menu__latest_apps">Últim</string>
+    <string name="main_menu__categories">Categories</string>
+    <string name="main_menu__swap_nearby">Al voltant</string>
+
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Malgrat que són iguals, la documentació d\'Android recomana especificar sempre l\'una i l\'altre:
+https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
+	<item quantity="other">" Veure-ho tot "</item>
+</plurals>
+
+    <string name="notification_title_single_update_available">Actualització disponible</string>
+    <string name="notification_title_single_ready_to_install">Llest per a instal·lar</string>
+    <string name="notification_title_single_ready_to_install_update">Actualització llesta per a ser instal·lada</string>
+    <string name="notification_title_single_install_error">Instal·lació fallida</string>
+    <string name="notification_content_single_downloading">Descarregant \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Descarregant una actualització de \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Instal·lant \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Instal·lació correcta</string>
+    <string name="notification_content_single_install_error">Instal·lació fallida</string>
+    <string name="notification_summary_updates">%1$d actualitzacions</string>
+    <string name="notification_summary_installed">%1$d Apps instal·lades</string>
+    <string name="notification_title_summary_update_available">Actualització disponible</string>
+    <string name="notification_title_summary_downloading">Descarregant…</string>
+    <string name="notification_title_summary_downloading_update">Descarregant una actualització…</string>
+    <string name="notification_title_summary_ready_to_install">Llest per instal·lar</string>
+    <string name="notification_title_summary_ready_to_install_update">Actualització llesta per a ser instal·lada</string>
+    <string name="notification_title_summary_installing">Instal·lant</string>
+    <string name="notification_title_summary_installed">Instal·lació correcta</string>
+    <string name="notification_title_summary_install_error">Instal·lació fallida</string>
+    <string name="notification_action_update">Actualitzeu</string>
+    <string name="notification_action_cancel">Cancel·leu</string>
+    <string name="notification_action_install">Instal·leu</string>
+
+<string name="app_recommended_version_installed">Versió %1$s (Recomanada)</string>
+    <string name="app__newly_added">Nou</string>
+
+    <string name="installed_apps__activity_title">Apps instal·lades</string>
+    <string name="installed_app__updates_ignored">Ignoreu les actualitzacions</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Les actualitzacions s\'han ignorat per la versió %1$s</string>
+
+    <string name="preference_category__my_apps">Les meves apps</string>
+    <string name="preference_manage_installed_apps">Administreu les «apps» instal·lades</string>
+
+
+    <string name="tts_category_name">Categoria %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Mostreu l\'única «app» de la categoria %2$s</item>
+	<item quantity="other">Mostreu totes les «apps» de la categoria %2$s</item>
+</plurals>
+<string name="app__install_downloaded_update">Actualitzeu</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Actualitzeu %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Instal·leu %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Descarregant %1$s</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Publicat ahir</item>
+	<item quantity="other">Publicat fa %1$s dies</item>
+</plurals>
+
+    <string name="updates__tts__download_app">"El botó de descàrrega que es mostra a dins del test a la pantalla d\'\"Actualitzacions\" només usa 
+    una icona i per tant li cal algun text descriptiu pel motor de TTS"</string>
+    <string name="updates__tts__download_updates_for_all_apps">Descarregueu totes les actualitzacions</string>
+
+    <string name="updates__hide_updateable_apps">Oculteu apps</string>
+    <string name="updates__show_updateable_apps">Mostreu apps</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Descarregueu l\'actualització per l\'app %1$d.</item>
+	<item quantity="other">Descarregueu les actualitzacions per a les apps %1$d.</item>
+</plurals>
+
+    <string name="details_new_in_version">Novetats a la versió %s</string>
+
+    <string name="antifeatureswarning">Aquesta app conté característiques que potser no us agradarien.</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Actualitzades avui</item>
+	<item quantity="other">Actualitzades fa %1$s dies</item>
+</plurals>
+<string name="app_list__name__successfully_installed">%1$s s\'ha instal·lat correctament</string>
+    <string name="antifeatures">Característiques no lliures</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">No teniu internet? Descarregueu apps de la gent que tingueu al voltant!</string>
+    <string name="nearby_splash__find_people_button">Trobeu persones del voltant</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambdues parts necessiten %1$s per poder usar la proximitat.</string>
+
     </resources>

@@ -376,4 +376,87 @@ com os detalhes para ajudar a corrigir o problema?</string>
     <string name="hide_anti_feature_apps_on">Marcar de cinza aplicativos que exigem recursos indesejáveis</string>
     <string name="warning_no_internet">Não é possível atualizar. Você está conectado à Internet?</string>
     <string name="versions">Versões</string>
-    </resources>
+    <string name="app_details_donate_prompt_unknown_author">Compre %1$s de um café para os desenvolvedores!</string>
+    <string name="app_details_donate_prompt">%1$s é criado por %2$s. Compre um café para eles!</string>
+
+    <string name="repositories_summary">Acrescentar fontes adicionais de aplicativos</string>
+    <string name="notification_title_single_update_available">Atualização disponível</string>
+    <string name="notification_title_single_ready_to_install">Pronto para instalar</string>
+    <string name="notification_title_single_ready_to_install_update">Atualização pronta para instalar</string>
+    <string name="notification_title_single_install_error">Falha na instalação</string>
+    <string name="notification_content_single_downloading">Baixando \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Baixando atualização para \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Instalando \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Instalado com sucesso</string>
+    <string name="notification_content_single_install_error">Falha na instalação</string>
+    <string name="notification_summary_updates">%1$d Atualizações</string>
+    <string name="notification_summary_installed">%1$d Aplicativos instalados</string>
+    <string name="notification_title_summary_update_available">Atualização disponível</string>
+    <string name="notification_title_summary_downloading">Baixando…</string>
+    <string name="notification_title_summary_downloading_update">Baixando atualização…</string>
+    <string name="notification_title_summary_ready_to_install">Pronto para instalar</string>
+    <string name="notification_title_summary_ready_to_install_update">Atualização pronta para instalar</string>
+    <string name="notification_title_summary_installing">Instalando</string>
+    <string name="notification_title_summary_installed">Instalado com sucesso</string>
+    <string name="notification_title_summary_install_error">Falha na instalação</string>
+    <string name="notification_action_update">Atualizar</string>
+    <string name="notification_action_cancel">Cancelar</string>
+    <string name="notification_action_install">Instalar</string>
+
+<string name="app_version_x_available">Versão %1$s disponível</string>
+    <string name="app_version_x_installed">Versão %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d Atualização</item>
+	<item quantity="other">%1$d Atualizações</item>
+</plurals>
+
+    <string name="clear_search">Limpar pesquisa</string>
+
+    <string name="main_menu__latest_apps">Mais recentes</string>
+    <string name="main_menu__categories">Categorias</string>
+    <string name="main_menu__swap_nearby">Perto</string>
+
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Ver %d "</item>
+	<item quantity="other">" Ver todas as %d "</item>
+</plurals>
+
+<string name="app_recommended_version_installed">Versão %1$s (Recomendada)</string>
+    <string name="app__newly_added">Novo</string>
+    <string name="app__install_downloaded_update">Atualizar</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Atualizar %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Instalar %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Baixando %1$s</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Lançado %1$d dias atrás</item>
+	<item quantity="other">Lançados %1$d dias atrás</item>
+</plurals>
+
+    <string name="installed_apps__activity_title">Aplicativos instalados</string>
+    <string name="installed_app__updates_ignored">Atualizações ignoradas</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s</string>
+    <string name="updates__tts__download_app">Download</string>
+    <string name="updates__tts__download_updates_for_all_apps">Baixar todas as atualizações</string>
+
+    <string name="updates__hide_updateable_apps">Esconder aplicativos</string>
+    <string name="updates__show_updateable_apps">Mostrar aplicativos</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Baixar atualização para %1$d aplicativo.</item>
+	<item quantity="other">Baixar atualização para %1$d aplicativos.</item>
+</plurals>
+
+    <string name="preference_category__my_apps">Meus aplicativos</string>
+    <string name="preference_manage_installed_apps">Gerenciar aplicativos instalados</string>
+
+
+    <string name="tts_category_name">Categoria %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Ver o único aplicativo na categoria %2$s</item>
+	<item quantity="other">Ver todos os %1$d aplicativos da categoria %2$s</item>
+</plurals>
+</resources>

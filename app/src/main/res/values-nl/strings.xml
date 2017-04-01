@@ -12,7 +12,7 @@
   <string name="update_interval">Automatisch vernieuwingsinterval</string>
   <string name="update_interval_zero">Applijsten worden niet automatisch vernieuwd</string>
   <string name="automatic_scan_wifi">Alleen via Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Update alleen automatisch op verbinding zonder datalimiet zoals Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Update alleen automatisch op verbinding zonder datalimiet zoals wifi</string>
   <string name="notify">Updatemeldingen</string>
   <string name="notify_on">Toon een melding wanneer er updates beschikbaar zijn</string>
   <string name="update_history">Updategeschiedenis</string>
@@ -251,7 +251,7 @@ Gefeliciteerd! Al je apps zijn up-to-date
     <string name="swap_not_enabled_description">Voordat we kunnen swappen, moet het apparaat zichtbaar gemaakt worden.</string>
 
     <string name="install_confirm">heeft toegang nodig tot</string>
-    <string name="install_confirm_update">Wil je een update voor deze bestaande applicatie installeren? De bestaande gegevens zullen niet verloren gaan. De nieuwe versie van de applicatie zal toegang krijgen tot:</string>
+    <string name="install_confirm_update">Wil je een update voor deze applicatie installeren? De bestaande gegevens zullen niet verloren gaan. De nieuwe versie van de applicatie zal toegang krijgen tot:</string>
     <string name="install_confirm_update_system">Wil je een update voor deze ingebouwde applicatie installeren?
 De bestaande gegevens zullen niet verloren gaan.
 De nieuwe versie van de applicatie zal toegang krijgen tot:</string>
@@ -347,8 +347,8 @@ in de toekomst te helpen voorkomen?</string>
     <string name="useTor">Gebruik Tor</string>
     <string name="useTorSummary">Forceer downloadverkeer door Tor heen voor betere privacy</string>
     <string name="swap_stopping_wifi">Wi-Fi stoppen…</string>
-    <string name="update_auto_download">Download automatisch updates</string>
-    <string name="update_auto_download_summary">Download de update in de achtergrond</string>
+    <string name="update_auto_download">Download updates automatisch</string>
+    <string name="update_auto_download_summary">Updates worden automatisch gedownload in de achtergrond en er wordt een melding weergegeven om ze te installeren</string>
     <string name="tap_to_install_format">Raak aan om %s te installeren</string>
     <string name="tap_to_update_format">Raak aan om %s bij te werken</string>
     <string name="system_install_not_supported">Installatie van de F-Droid extensie voor systeemrechten wordt op het moment niet ondersteund op Android 5.1 of later.</string>
@@ -377,4 +377,94 @@ in de toekomst te helpen voorkomen?</string>
     <string name="keep_install_history_summary">Bewaar een logbestand van alle installaties en verwijderingen in F-Droid</string>
     <string name="warning_no_internet">Kan niet updaten, ben je verbonden met het internet?</string>
     <string name="versions">Versies</string>
+    <string name="app_details_donate_prompt_unknown_author">Bestel een kopje koffie voor de ontwikkelaars van %1$s!</string>
+    <string name="app_details_donate_prompt">%1$s is gemaakt door %2$s. Bestel ze een kopje koffie!</string>
+
+    <string name="app_version_x_available">Versie %1$s is beschikbaar</string>
+    <string name="app_version_x_installed">Versie %1$s</string>
+    <string name="app_recommended_version_installed">Versie %1$s (aanbevolen)</string>
+    <string name="app__newly_added">Nieuw</string>
+    <string name="app__install_downloaded_update">Bijwerken</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">%1$s bijwerken</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">%1$s installeren</string>
+    <string name="app_list__name__downloading_in_progress">%1$s wordt gedownload</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">%1$d dag geleden uitgebracht</item>
+	<item quantity="other">%1$d dagen geleden uitgebracht</item>
+</plurals>
+
+    <string name="installed_apps__activity_title">Geïnstalleerde apps</string>
+    <string name="installed_app__updates_ignored">Updates genegeerd</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Updates genegeerd voor versie %1$s</string>
+    <string name="updates__tts__download_app">Downloaden</string>
+    <string name="updates__tts__download_updates_for_all_apps">Alle updates downloaden</string>
+
+    <string name="updates__hide_updateable_apps">Apps verbergen</string>
+    <string name="updates__show_updateable_apps">Apps weergeven</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Download updates voor %1$d app.</item>
+	<item quantity="other">Download updates voor %1$d apps.</item>
+</plurals>
+
+    <string name="clear_search">Zoekopdracht wissen</string>
+
+    <string name="repositories_summary">Voeg extra pakketbronnen voor apps toe</string>
+    <string name="main_menu__latest_apps">Nieuwste</string>
+    <string name="main_menu__categories">Categorieën</string>
+    <string name="main_menu__swap_nearby">Dichtbij</string>
+
+    <string name="preference_category__my_apps">Mijn apps</string>
+    <string name="preference_manage_installed_apps">Beheer geïnstalleerde apps</string>
+
+
+    <string name="details_new_in_version">Nieuw in versie %s</string>
+
+    <string name="antifeatureswarning">Deze app heeft functionaliteit die je misschien niet leuk vindt.</string>
+    <string name="antifeatures">Anti-functies</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Alle %d weergeven "</item>
+	<item quantity="other">" Alle %d weergeven "</item>
+</plurals>
+
+    <string name="notification_title_single_update_available">Update beschikbaar</string>
+    <string name="notification_title_single_ready_to_install">Klaar voor installatie</string>
+    <string name="notification_title_single_ready_to_install_update">Update klaar voor installatie</string>
+    <string name="notification_title_single_install_error">Installatie mislukt</string>
+    <string name="notification_content_single_downloading">%1$s wordt gedownload…</string>
+    <string name="notification_content_single_downloading_update">Update voor %1$s wordt gedownload…</string>
+    <string name="notification_content_single_installing">%1$s wordt geïnstalleerd…</string>
+    <string name="notification_content_single_installed">Geïnstalleerd</string>
+    <string name="notification_content_single_install_error">Installatie mislukt</string>
+    <string name="notification_summary_updates">%1$d updates</string>
+    <string name="notification_summary_installed">%1$d apps geïnstalleerd</string>
+    <string name="notification_title_summary_update_available">Update beschikbaar</string>
+    <string name="notification_title_summary_downloading">Wordt gedownload…</string>
+    <string name="notification_title_summary_ready_to_install">Klaar voor installatie</string>
+    <string name="notification_title_summary_ready_to_install_update">Update klaar voor installatie</string>
+    <string name="notification_title_summary_installing">Wordt geïnstalleerd</string>
+    <string name="notification_title_summary_installed">Geïnstalleerd</string>
+    <string name="notification_title_summary_install_error">Installatie mislukt</string>
+    <string name="notification_action_update">Update</string>
+    <string name="notification_action_cancel">Annuleren</string>
+    <string name="notification_action_install">Installeren</string>
+
+    <string name="tts_category_name">Categorie %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Geef de enige app weer in de categorie %2$s</item>
+	<item quantity="other">Geef alle %1$d apps weer in de categorie %2$s</item>
+</plurals>
+
+    <plurals name="details_last_update_days">
+	<item quantity="one">%1$s dag geleden bijgewerkt</item>
+	<item quantity="other">%1$s dagen geleden bijgewerkt</item>
+</plurals>
+<string name="notification_title_summary_downloading_update">Update wordt gedownload…</string>
+    <string name="app_list__name__successfully_installed">%1$s geïnstalleerd</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Geen internet? Download dan apps van mensen nabij!</string>
+    <string name="nearby_splash__find_people_button">Zoek mensen in de buurt</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Beide partijen moeten %1$s gebruiken.</string>
+
     </resources>

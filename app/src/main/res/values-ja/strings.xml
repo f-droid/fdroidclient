@@ -336,8 +336,8 @@
     <string name="swap_stopping_wifi">Wi-Fiの停止中…</string>
     <string name="repo_provider">ﾘﾎﾟｼﾞﾄﾘ: %s</string>
 
-    <string name="update_auto_download">自動的に更新をﾀﾞｳﾝﾛｰﾄﾞ</string>
-    <string name="update_auto_download_summary">ﾊﾞｯｸｸﾞﾗｳﾝﾄﾞで更新をﾀﾞｳﾝﾛｰﾄﾞします</string>
+    <string name="update_auto_download">自動的に更新を取得</string>
+    <string name="update_auto_download_summary">自動的に更新をﾀﾞｳﾝﾛｰﾄﾞして、ｲﾝｽﾄｰﾙする通知をします</string>
     <string name="tap_to_install_format">ﾀｯﾌﾟして %s をｲﾝｽﾄｰﾙ</string>
     <string name="tap_to_update_format">ﾀｯﾌﾟして %s を更新</string>
     <string name="download_pending">ﾀﾞｳﾝﾛｰﾄﾞの開始を待っています…</string>
@@ -368,4 +368,101 @@
     <string name="keep_install_history_summary">F-Droid内ですべてのｲﾝｽﾄｰﾙとｱﾝｲﾝｽﾄｰﾙのﾛｸﾞを保存します</string>
     <string name="warning_no_internet">更新できません。ｲﾝﾀｰﾈｯﾄに接続していますか?</string>
     <string name="versions">ﾊﾞｰｼﾞｮﾝ</string>
+    <string name="app_details_donate_prompt_unknown_author">開発者の %1$s のコーヒーを購入します!</string>
+    <string name="app_details_donate_prompt">%1$s は %2$s によって作成されました。彼らにコーヒーを購入します!</string>
+
+    <string name="repositories_summary">ｱﾌﾟﾘｹｰｼｮﾝの追加のｿｰｽを追加します</string>
+    <string name="notification_title_single_update_available">更新が利用可能です</string>
+    <string name="notification_title_single_ready_to_install">ｲﾝｽﾄｰﾙの準備完了</string>
+    <string name="notification_title_single_ready_to_install_update">更新をｲﾝｽﾄｰﾙする準備完了</string>
+    <string name="notification_title_single_install_error">ｲﾝｽﾄｰﾙに失敗しました</string>
+    <string name="notification_content_single_downloading">\"%1$s\" をﾀﾞｳﾝﾛｰﾄﾞ中…</string>
+    <string name="notification_content_single_downloading_update">\"%1$s\" の更新をﾀﾞｳﾝﾛｰﾄﾞ中…</string>
+    <string name="notification_content_single_installing">\"%1$s\" をｲﾝｽﾄｰﾙ中…</string>
+    <string name="notification_content_single_installed">正常にｲﾝｽﾄｰﾙしました</string>
+    <string name="notification_content_single_install_error">ｲﾝｽﾄｰﾙに失敗しました</string>
+    <string name="notification_summary_updates">%1$d 更新</string>
+    <string name="notification_title_summary_update_available">更新が利用可能です</string>
+    <string name="notification_title_summary_downloading_update">更新をﾀﾞｳﾝﾛｰﾄﾞしています…</string>
+    <string name="notification_title_summary_ready_to_install_update">更新をｲﾝｽﾄｰﾙする準備ができました</string>
+    <string name="notification_action_update">更新</string>
+    <string name="notification_summary_installed">%1$d ｱﾌﾟﾘをｲﾝｽﾄｰﾙしました</string>
+    <string name="notification_title_summary_downloading">ﾀﾞｳﾝﾛｰﾄﾞ中…</string>
+    <string name="notification_title_summary_ready_to_install">ｲﾝｽﾄｰﾙの準備完了</string>
+    <string name="notification_title_summary_installing">ｲﾝｽﾄｰﾙ中</string>
+    <string name="notification_title_summary_installed">正常にｲﾝｽﾄｰﾙしました</string>
+    <string name="notification_title_summary_install_error">ｲﾝｽﾄｰﾙに失敗しました</string>
+    <string name="notification_action_cancel">ｷｬﾝｾﾙ</string>
+    <string name="notification_action_install">ｲﾝｽﾄｰﾙ</string>
+
+<string name="app_version_x_available">ﾊﾞｰｼﾞｮﾝ %1$s が利用可能</string>
+    <string name="app_version_x_installed">ﾊﾞｰｼﾞｮﾝ %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d の更新</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="clear_search">検索のｸﾘｱ</string>
+
+    <string name="main_menu__latest_apps">最新</string>
+    <string name="main_menu__categories">ｶﾃｺﾞﾘ</string>
+<string name="main_menu__swap_nearby">近く</string>
+
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" %d すべて表示 "</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="app_recommended_version_installed">ﾊﾞｰｼﾞｮﾝ %1$s (推奨)</string>
+    <string name="app__newly_added">新規</string>
+
+    <string name="installed_apps__activity_title">ｲﾝｽﾄｰﾙ済ｱﾌﾟﾘ</string>
+    <string name="installed_app__updates_ignored">ｱｯﾌﾟﾃﾞｰﾄを無視</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">ﾊﾞｰｼﾞｮﾝ %1$s の更新を無視しました</string>
+
+    <string name="preference_category__my_apps">ﾏｲ ｱﾌﾟﾘ</string>
+    <string name="preference_manage_installed_apps">ｲﾝｽﾄｰﾙ済ｱﾌﾟﾘを管理</string>
+
+
+    <string name="tts_category_name">ｶﾃｺﾞﾘ %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">%2$s ｶﾃｺﾞﾘのｱﾌﾟﾘを1つ表示</item>
+	<item quantity="other"/>
+</plurals>
+<string name="app__install_downloaded_update">更新</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">%1$s を更新</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">%1$s をｲﾝｽﾄｰﾙ</string>
+    <string name="app_list__name__downloading_in_progress">%1$s をﾀﾞｳﾝﾛｰﾄﾞ中</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">%1$d 日前にﾘﾘｰｽ</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="updates__tts__download_app">ﾀﾞｳﾝﾛｰﾄﾞ</string>
+    <string name="updates__tts__download_updates_for_all_apps">すべての更新をﾀﾞｳﾝﾛｰﾄﾞ</string>
+
+    <string name="updates__hide_updateable_apps">ｱﾌﾟﾘを非表示</string>
+    <string name="updates__show_updateable_apps">ｱﾌﾟﾘを表示</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="other">%1$d ｱﾌﾟﾘの更新をﾀﾞｳﾝﾛｰﾄﾞします。</item>
+</plurals>
+
+    <string name="details_new_in_version">ﾊﾞｰｼﾞｮﾝ %s の新機能</string>
+
+    <string name="antifeatureswarning">このｱﾌﾟﾘの機能は好きではないかもしれません。</string>
+    <string name="antifeatures">対策機能</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">今日更新</item>
+	<item quantity="other"/>
+</plurals>
+<string name="app_list__name__successfully_installed">%1$s を正常にｲﾝｽﾄｰﾙしました</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">ｲﾝﾀｰﾈｯﾄがありませんか? 近くの人からｱﾌﾟﾘをﾀﾞｳﾝﾛｰﾄﾞしてください!</string>
+    <string name="nearby_splash__find_people_button">近くの人を見つける</string>
+    <string name="nearby_splash__both_parties_need_fdroid">双方が近くで %1$s を使用する必要があります。</string>
+
     </resources>

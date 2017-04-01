@@ -343,8 +343,8 @@ detalles para ayudarnos a arreglar el problema?</string>
     <string name="useTorSummary">Forzar el tráfico de bajada a través de Tor para mejorar la privacidad</string>
     <string name="repo_provider">Repositorio: %s</string>
 
-    <string name="update_auto_download">Descargar actualizaciones automáticamente</string>
-    <string name="update_auto_download_summary">Descargar las actualizaciones en un segundo plano</string>
+    <string name="update_auto_download">Obtenga actualizaciones automáticamente</string>
+    <string name="update_auto_download_summary">Las actualizaciones se descargan automáticamente y se le avisará para instalarlas</string>
     <string name="tap_to_install_format">Pulsa para instalar %s</string>
     <string name="tap_to_update_format">Pulsa para actualizar %s</string>
     <string name="download_pending">Esperando a que empiece la descarga…</string>
@@ -375,4 +375,103 @@ detalles para ayudarnos a arreglar el problema?</string>
     <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones en F-Droid</string>
     <string name="warning_no_internet">No se puede actualizar, ¿estás conectado a internet?</string>
     <string name="versions">Versiones</string>
+    <string name="app_details_donate_prompt_unknown_author">¡Invite a los desarrolladores de %1$s a un café!</string>
+    <string name="app_details_donate_prompt">%2$s han creado %1$s. ¡Invítelos a un café!</string>
+
+    <string name="repositories_summary">Añadir orígenes adiccionales de aplicaciones</string>
+    <string name="app_version_x_available">Versión %1$s disponible</string>
+    <string name="app_version_x_installed">Versión %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d actualización</item>
+	<item quantity="other">%1$d actualizaciones</item>
+</plurals>
+
+    <string name="clear_search">Limpiar la búsqueda</string>
+
+    <string name="main_menu__latest_apps">Último</string>
+    <string name="main_menu__categories">Categorías</string>
+    <string name="main_menu__swap_nearby">Alrededor</string>
+
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Ver %d "</item>
+	<item quantity="other">" Ver todo %d "</item>
+</plurals>
+
+    <string name="notification_title_single_update_available">Actualización disponible</string>
+    <string name="notification_title_single_ready_to_install">Listo para instalar</string>
+    <string name="notification_title_single_ready_to_install_update">Actualización lista para instalar</string>
+    <string name="notification_title_single_install_error">Instalación fallida</string>
+    <string name="notification_content_single_downloading">Descargando \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Descargando la actualización de \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Instalando \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Instalación correcta</string>
+    <string name="notification_content_single_install_error">Instalación fallida</string>
+    <string name="notification_summary_updates">%1$d actualizaciones</string>
+    <string name="notification_summary_installed">%1$d apps instaladas</string>
+    <string name="notification_title_summary_update_available">Actualización disponible</string>
+    <string name="notification_title_summary_downloading">Descargando…</string>
+    <string name="notification_title_summary_downloading_update">Descargando actualización…</string>
+    <string name="notification_title_summary_ready_to_install">Listo para instalar</string>
+    <string name="notification_title_summary_ready_to_install_update">Actualización lista para instalar</string>
+    <string name="notification_title_summary_installing">Instalando</string>
+    <string name="notification_title_summary_installed">Instalación correcta</string>
+    <string name="notification_title_summary_install_error">Instalación fallida</string>
+    <string name="notification_action_update">Actualizar</string>
+    <string name="notification_action_cancel">Cancelar</string>
+    <string name="notification_action_install">Instalar</string>
+
+<string name="app_recommended_version_installed">Versión %1$s (Recomendada)</string>
+    <string name="app__newly_added">Novedad</string>
+
+    <string name="installed_apps__activity_title">«Apps» instaladas</string>
+    <string name="installed_app__updates_ignored">Actualizaciones ignoradas</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Actualizaciones ignoradas para la versión %1$s</string>
+
+    <string name="preference_category__my_apps">Mis «apps»</string>
+    <string name="preference_manage_installed_apps">Gestionar las «apps» instaladas</string>
+
+
+    <string name="tts_category_name">Categoría %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Ver la única «app» de la categoría %2$s</item>
+	<item quantity="other">Ver todas las «apps» de la categoría %2$s</item>
+</plurals>
+<string name="app__install_downloaded_update">Actualización</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Actualizar %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Instalar %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Descargando %1$s</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">%1 publicada ayer</item>
+	<item quantity="other">%1 publicada hace $d días</item>
+</plurals>
+
+    <string name="updates__tts__download_app">"El botón de descarga que se encuentra entre el texto en la pantalla de \"Actualizaciones\" solo usa
+    un icono y por tanto necesita algún texto descriptivo para el motor TTS"</string>
+    <string name="updates__tts__download_updates_for_all_apps">Descargar todas las actualizaciones</string>
+
+    <string name="updates__hide_updateable_apps">Ocultar apps</string>
+    <string name="updates__show_updateable_apps">Mostrar apps</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Descargar la actualización para %1$d app.</item>
+	<item quantity="other">Descargar actualizaciones para %1$d apps.</item>
+</plurals>
+
+    <string name="details_new_in_version">Novedades en la versión %s</string>
+
+    <string name="antifeatureswarning">Est app contiene características que podrían no gustarte.</string>
+    <string name="antifeatures">Características no-libres</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Actualizada hoy</item>
+	<item quantity="other">Actualizadas hace %1$s días</item>
+</plurals>
+<string name="app_list__name__successfully_installed">%1$s se ha instalado con éxito</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">¿No tiene internet? ¡Descargue apps de la gente de su alrededor!</string>
+    <string name="nearby_splash__find_people_button">Encontrar personas cerca de mí</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambas partes necesitan %1$s para usar la cercanía.</string>
+
     </resources>

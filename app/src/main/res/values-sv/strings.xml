@@ -97,7 +97,7 @@
   <string name="category_Recently_Updated">Nyss uppdaterade</string>
   <string name="local_repo">Lokalt filförråd</string>
   <string name="local_repo_running">F-Droid är redo att utbyta</string>
-  <string name="touch_to_configure_local_repo">Rör för att se detaljer och tillåta andra att byta ut appar med dig.</string>
+  <string name="touch_to_configure_local_repo">Tryck för att se detaljer och tillåta andra att utbyta appar med dig.</string>
   <string name="deleting_repo">Tar bort aktuellt förråd…</string>
   <string name="adding_apks_format">Lägger till %s till förråd…</string>
   <string name="writing_index_jar">Skriver signerad indexfil (index.jar)…</string>
@@ -278,7 +278,7 @@ Du kommer
     <string name="swap_scan_qr">Skanna QR kod</string>
     <string name="swap_people_nearby">Folk i närheten</string>
     <string name="swap_scanning_for_peers">Söker efter folk i närheten…</string>
-    <string name="swap_intro">Anslut och byt ut appar med personer nära dig.</string>
+    <string name="swap_intro">Anslut och utbyt appar med personer nära dig.</string>
     <string name="swap_visible_bluetooth">Synlig via Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Ställer in Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Inte synlig via Bluetooth</string>
@@ -316,7 +316,7 @@ Den kräver inte någon särskild tillgång.</string>
     <string name="newPerms">Ny</string>
     <string name="allPerms">Alla</string>
     <string name="perm_costs_money">Detta kan kosta pengar</string>
-    <string name="uninstall_update_confirm">Vill du byta ut den här appen med fabriksversionen?</string>
+    <string name="uninstall_update_confirm">Vill du utbyta den här appen med fabriksversionen?</string>
     <string name="uninstall_confirm">Vill du avinstallera den här appen?</string>
     <string name="tap_to_install">Hämtning klar, tryck för att installera</string>
     <string name="download_error">Hämtning misslyckades</string>
@@ -345,8 +345,8 @@ e-post för att hjälpa till att åtgärda problemet?</string>
 <string name="swap_nearby">Utbyta nära</string>
     <string name="update_auto_download">Hämta uppdateringar automatiskt</string>
     <string name="update_auto_download_summary">Hämta uppdateringsfilerna i bakgrunden</string>
-    <string name="tap_to_install_format">Knacka för att installera %s</string>
-    <string name="tap_to_update_format">Knacka för att uppdatera %s</string>
+    <string name="tap_to_install_format">Tryck för att installera %s</string>
+    <string name="tap_to_update_format">Tryck för att uppdatera %s</string>
     <string name="system_install_not_supported">Installation av F-Droids priviligerade utökning stöds för närvarande inte i Android 5.1 eller senare.</string>
 
     <string name="download_pending">Väntar på att påbörja nerladdningen…</string>
@@ -375,4 +375,96 @@ e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="hide_anti_feature_apps_on">Gråa ut appar som kräver anti-funktioner</string>
     <string name="warning_no_internet">Det går inte att uppdatera, är du ansluten till Internet?</string>
     <string name="versions">Versioner</string>
-    </resources>
+    <string name="app_details_donate_prompt_unknown_author">Köp utvecklarna av %1$s en kopp kaffe!</string>
+    <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp dem en kaffe!</string>
+
+    <string name="repositories_summary">Lägg till ytterligare källor till applikationer</string>
+    <string name="app_version_x_available">Version %1$s är tillgänglig</string>
+    <string name="app_version_x_installed">Version %1$s</string>
+    <string name="app_recommended_version_installed">Version %1$s (Rekommenderad)</string>
+    <string name="app__newly_added">Ny</string>
+
+    <string name="installed_apps__activity_title">Installerade appar</string>
+    <string name="installed_app__updates_ignored">Uppdateringar ignorerade</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Uppdateringar ignorerade för version %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d uppdatering</item>
+	<item quantity="other">%1$d uppdateringar</item>
+</plurals>
+
+    <string name="clear_search">Rensa sök</string>
+
+    <string name="main_menu__latest_apps">Senaste</string>
+    <string name="main_menu__categories">Kategorier</string>
+    <string name="main_menu__swap_nearby">Nära</string>
+
+    <string name="preference_category__my_apps">Mina appar</string>
+    <string name="preference_manage_installed_apps">Hantera installerade appar</string>
+
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Även om dessa är lika varandra, föreslår alltid Android docs att ange åtminstone en och annan: 
+ https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
+	<item quantity="other">" Visa alla %d "</item>
+</plurals>
+
+    <string name="notification_title_single_update_available">Uppdatering tillgänglig</string>
+    <string name="notification_title_single_ready_to_install">Färdig att installera</string>
+    <string name="notification_title_single_ready_to_install_update">Uppdatering färdig att installera</string>
+    <string name="notification_title_single_install_error">Installering misslyckades</string>
+    <string name="notification_content_single_downloading">Hämtar \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Hämtar uppdatering för \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Installerar \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Installerardes</string>
+    <string name="notification_content_single_install_error">Installering misslyckades</string>
+    <string name="notification_summary_updates">%1$d uppdateringar</string>
+    <string name="notification_summary_installed">%1$d appar installerade</string>
+    <string name="notification_title_summary_update_available">Uppdatering tillgänglig</string>
+    <string name="notification_title_summary_downloading">Hämtar…</string>
+    <string name="notification_title_summary_downloading_update">Hämtar uppdatering…</string>
+    <string name="notification_title_summary_ready_to_install">Färdig att installera</string>
+    <string name="notification_title_summary_ready_to_install_update">Uppdatering färdig att installera</string>
+    <string name="notification_title_summary_installing">Installerar</string>
+    <string name="notification_title_summary_installed">Installerades</string>
+    <string name="notification_title_summary_install_error">Installering misslyckades</string>
+    <string name="notification_action_update">Uppdatering</string>
+    <string name="notification_action_cancel">Avbryt</string>
+    <string name="notification_action_install">Installera</string>
+
+    <string name="tts_category_name">Kategori %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Visa enda appen %1$d kategorin</item>
+	<item quantity="other">Visa alla %1$d appar från %2$s kategorin</item>
+</plurals>
+<string name="app__install_downloaded_update">Uppdatera</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Uppdatera %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Installera %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Hämtar %1$s</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Utgiven för %1$d dag sedan</item>
+	<item quantity="other">Utgiven för %1$d dagar sedan</item>
+</plurals>
+
+    <string name="updates__tts__download_app">Hämta</string>
+    <string name="updates__tts__download_updates_for_all_apps">Hämta alla uppdateringar</string>
+
+    <string name="updates__hide_updateable_apps">Göm appar</string>
+    <string name="updates__show_updateable_apps">Visa appar</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Hämta uppdatering för %1$d app.</item>
+	<item quantity="other">Hämta uppdatering för %1$d appar.</item>
+</plurals>
+
+    <string name="details_new_in_version">Nytt i version %s</string>
+
+    <string name="antifeatureswarning">Denna app har funktioner som du kanske inte gillar.</string>
+    <string name="antifeatures">Anti-funktioner</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Uppdaterad %1$s dag sedan</item>
+	<item quantity="other">Uppdaterad %1$s dagar sedan</item>
+</plurals>
+</resources>

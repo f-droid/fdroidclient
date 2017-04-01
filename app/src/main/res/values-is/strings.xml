@@ -376,8 +376,7 @@ Til hamingju! Öll forritin þín eru af nýjustu útgáfu (nema ef vera kynni a
     <string name="swap_connection_misc_error">Villa kom upp við að tengjast við tækið, það lítur út fyrir að ekki sé hægt að nota það við býtti.</string>
     <string name="swap_not_enabled_description">Áður en farið er í að býtta þarf að gera tækið þitt sýnilegt.</string>
 
-    <string name="install_confirm_update">Viltu setja inn uppfærslu á þessu forriti sem fyrir 
-hendi er? Fyrirliggjandi gögn sem þú átt tapast ekki. 
+    <string name="install_confirm_update">Viltu setja inn uppfærslu á þessu forriti? Fyrirliggjandi gögn sem þú átt tapast ekki. 
 Uppfærða forritið mun fá aðgang að:</string>
     <string name="install_confirm_update_system">Viltu setja inn uppfærslu á þessu innbyggða forriti? 
 Fyrirliggjandi gögn sem þú átt tapast ekki. 
@@ -396,4 +395,66 @@ um atvikið til að hjálpa við að laga þetta ?</string>
     <string name="keep_install_history_summary">Geyma annál yfir allar uppsetningar og fjarlægingar forrita innan F-Droid</string>
     <string name="warning_no_internet">Get ekki uppfært, ertu tengdur við internetið?</string>
     <string name="versions">Útgáfur</string>
-    </resources>
+    <string name="app_details_donate_prompt_unknown_author">Kauptu einn kaffibolla handa forriturum %1$s!</string>
+    <string name="app_details_donate_prompt">%1$s er hannað af %2$s. Kauptu einn kaffibolla handa þeim!</string>
+
+    <string name="app_version_x_available">%1$s-útgáfan er tiltæk</string>
+    <string name="app_version_x_installed">Útgáfa %1$s</string>
+    <string name="app_recommended_version_installed">Útgáfa %1$s (mælt með)</string>
+    <string name="app__newly_added">Nýtt</string>
+
+    <string name="installed_apps__activity_title">Uppsett forrit</string>
+    <string name="installed_app__updates_ignored">Hunsaðar uppfærslur</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Hunsaðar uppfærslur fyrir %1$s-útgáfuna</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d uppfærsla</item>
+	<item quantity="other">%1$d uppfærslur</item>
+</plurals>
+
+    <string name="clear_search">Hreinsa leit</string>
+
+    <string name="repositories_summary">Bæta við öðrum upptökum fyrir hugbúnað</string>
+    <string name="main_menu__latest_apps">Nýjustu</string>
+    <string name="main_menu__categories">Flokkar</string>
+    <string name="main_menu__swap_nearby">Nálægt</string>
+
+    <string name="preference_category__my_apps">Forritin mín</string>
+    <string name="preference_manage_installed_apps">Sýsla með uppsett forrit</string>
+
+
+    <string name="notification_title_single_update_available">Uppfærsla tiltæk</string>
+    <string name="notification_title_single_ready_to_install">Tilbúin til uppsetningar</string>
+    <string name="notification_title_single_ready_to_install_update">Uppfærsla tilbúin til uppsetningar</string>
+    <string name="notification_title_single_install_error">Uppsetning mistókst</string>
+    <string name="notification_content_single_downloading">Næ í \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Næ í uppfærslu fyrir \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Set upp \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Tókst að setja upp</string>
+    <string name="notification_content_single_install_error">Uppsetning mistókst</string>
+    <string name="notification_summary_updates">%1$d uppfærslur</string>
+    <string name="notification_summary_installed">%1$d forrit uppsett</string>
+    <string name="notification_title_summary_update_available">Uppfærslur tiltækar</string>
+    <string name="notification_title_summary_downloading">Sæki…</string>
+    <string name="notification_title_summary_downloading_update">Næ í uppfærslu…</string>
+    <string name="notification_title_summary_ready_to_install">Tilbúið til uppsetningar</string>
+    <string name="notification_title_summary_ready_to_install_update">Uppfærsla tilbúin til uppsetningar</string>
+    <string name="notification_title_summary_installing">Set inn</string>
+    <string name="notification_title_summary_installed">Tókst að setja upp</string>
+    <string name="notification_title_summary_install_error">Uppsetning mistókst</string>
+    <string name="notification_action_update">Uppfæra</string>
+    <string name="notification_action_cancel">Hætta við</string>
+    <string name="notification_action_install">Setja upp</string>
+
+    <string name="tts_category_name">Flokkur %1$s</string>
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Skoða %d "</item>
+	<item quantity="other">" Skoða öll %d "</item>
+</plurals>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Skoða forritið í %2$s flokknum</item>
+	<item quantity="other">Skoða öll %1$d forritin í %2$s flokknum</item>
+</plurals>
+</resources>

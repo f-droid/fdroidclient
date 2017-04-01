@@ -132,7 +132,7 @@
 applicazioni non può essere verificato. È consigliabile prestare attenzione
 alle applicazioni scaricate da indici non firmati.</string>
   <string name="repo_not_yet_updated">Questo repository non è ancora stato utilizzato.
-Puoi attivarlo per vedere le applicazioni che fornisce.</string>
+Devi attivarlo per vedere le applicazioni che fornisce.</string>
   <string name="unknown">Sconosciuto</string>
   <string name="repo_confirm_delete_title">Eliminare il repository?</string>
   <string name="repo_confirm_delete_body">Eliminare un repository implica
@@ -383,4 +383,46 @@ non saranno rimossi. Non richiede alcun permesso speciale.</string>
     <string name="keep_install_history_summary">Salva un log delle installazioni e disinstallazioni all\'interno di F-Droid</string>
     <string name="versions">Versioni</string>
     <string name="warning_no_internet">Impossibile Aggiornare,sei connesso ad internet?</string>
+    <string name="app_details_donate_prompt_unknown_author">Offri agli sviluppatori di %1$s un caffè!</string>
+    <string name="app_details_donate_prompt">%1$s è creato da %2$s. Offri un caffè!</string>
+
+    <string name="app_version_x_available">Versione %1$s disponibile</string>
+    <string name="app_version_x_installed">Versione %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d aggiornamento</item>
+	<item quantity="other">%1$d aggiornamenti</item>
+</plurals>
+
+    <string name="clear_search">Svuota ricerca</string>
+
+    <string name="repositories_summary">Aggiungi ulteriori fonti per le applicazioni</string>
+    <string name="main_menu__latest_apps">Più recenti</string>
+    <string name="main_menu__categories">Categorie</string>
+
+
+    <string name="notification_title_single_update_available">Aggiornamento disponibile</string>
+    <string name="notification_title_single_ready_to_install">Pronto per l\'installazione</string>
+    <string name="notification_title_single_ready_to_install_update">Aggiornamento pronto per l\'installazione</string>
+    <string name="notification_title_single_install_error">Installazione fallita</string>
+    <string name="notification_content_single_downloading">Scaricamento \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Scaricamento aggiornamento di \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Installazione \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Installato con successo</string>
+    <string name="notification_content_single_install_error">Installazione fallita</string>
+    <string name="notification_summary_updates">%1$d aggiornamenti</string>
+    <string name="notification_summary_installed">%1$d app installate</string>
+    <string name="notification_title_summary_update_available">Aggiornamento disponibile</string>
+    <string name="notification_title_summary_downloading">Scaricamento…</string>
+    <string name="notification_title_summary_downloading_update">Scaricamento aggiornamento…</string>
+    <string name="notification_title_summary_ready_to_install">Pronto per l\'installazione</string>
+    <string name="notification_title_summary_ready_to_install_update">Aggiornamento pronto per l\'installazione</string>
+    <string name="notification_title_summary_installing">Installazione</string>
+    <string name="notification_title_summary_installed">Installato con successo</string>
+    <string name="notification_title_summary_install_error">Installazione fallita</string>
+    <string name="notification_action_update">Aggiorna</string>
+    <string name="notification_action_cancel">Annulla</string>
+    <string name="notification_action_install">Installa</string>
+
+<string name="main_menu__swap_nearby">Nelle vicinanze</string>
     </resources>

@@ -48,8 +48,10 @@
     <string-array name="languageValues">
         <item></item>
         <item>en</item>
+        <item>af</item>
         <item>ar</item>
         <item>ast</item>
+        <item>be</item>
         <item>bg</item>
         <item>ca</item>
         <item>cs</item>
@@ -68,6 +70,7 @@
         <item>hi</item>
         <item>hr</item>
         <item>hu</item>
+        <item>hy</item>
         <item>id</item>
         <item>is</item>
         <item>it</item>
@@ -106,8 +109,10 @@
     <string-array name="languageNames">
         <item>@string/pref_language_default</item>
         <item>English</item>
+        <item>Afrikaans</item>
         <item>ﺎﻠﻋﺮﺒﻳﺓ</item>
         <item>Asturian</item>
+        <item>белорусский</item>
         <item>Български</item>
         <item>Català</item>
         <item>Čeština</item>
@@ -126,6 +131,7 @@
         <item>हिन्दी</item>
         <item>Hrvatski</item>
         <item>Magyar</item>
+        <item>հայերեն</item>
         <item>Bahasa Indonesia</item>
         <item>Íslenska</item>
         <item>Italiano</item>

@@ -25,7 +25,7 @@
   <string name="local_repo_https_on">Imprea sa connessione criptada HTTPS:// pro sos depòsitu locale</string>
   <string name="app_details">Minujas aplicatzione</string>
   <string name="no_such_app">Peruna aplicatzione currispondente.</string>
-  <string name="about_title">Informatziones</string>
+  <string name="about_title">A pitzu de F-Droid</string>
   <string name="about_site">Giassu/situ web</string>
   <string name="about_mail">Posta eletrònica</string>
   <string name="about_version">Versione</string>
@@ -345,7 +345,7 @@ Depes
     <string name="repo_provider">Depòsitu: %s</string>
 
     <string name="update_auto_download">Iscàrriga automaticamente sos agiornamentos</string>
-    <string name="update_auto_download_summary">Iscàrriga sos agiornamentos in segundu pianu</string>
+    <string name="update_auto_download_summary">Sos agiornamentos ant a èssere iscarrigados automaticamente e tue as a retzire una notìfica pro los installare</string>
     <string name="tap_to_install_format">Incarca pro installare %s</string>
     <string name="tap_to_update_format">Incarca pro agiornare %s</string>
     <string name="download_pending">Isetende pro incumintzare s\'iscarrigamentu…</string>
@@ -376,4 +376,102 @@ Depes
     <string name="keep_install_history_summary">Sarba unu regitru de sas installatziones e de sas disinstallatziones in F-Droid</string>
     <string name="warning_no_internet">Impossìbile agiornare, ses connessu a ìnternet?</string>
     <string name="versions">Versiones</string>
+    <string name="app_details_donate_prompt_unknown_author">Cùmbida unu cafè a sos isvilupadores de %1$s!</string>
+    <string name="app_details_donate_prompt">%1$s est istadu creadu dae %2$s. Cumbida·li unu cafè!</string>
+
+    <string name="repositories_summary">Annanghe mitzas additzionales de aplicatziones</string>
+    <string name="notification_title_single_update_available">Agiornamentu disponìbile</string>
+    <string name="notification_title_single_ready_to_install">Prontu pro s\'installatzione</string>
+    <string name="notification_title_single_ready_to_install_update">Agiornamentu prontu pro s\'installatzione</string>
+    <string name="notification_title_single_install_error">Installatzione faddida</string>
+    <string name="notification_content_single_downloading">Iscarrighende \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Iscarrighende s\'agiornamentu pro \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Installende \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Installatzione resissida</string>
+    <string name="notification_content_single_install_error">Installatzione faddida</string>
+    <string name="notification_summary_updates">%1$d agiornamentos</string>
+    <string name="notification_summary_installed">%1$d aplicatziones installadas</string>
+    <string name="notification_title_summary_update_available">Agiornamentu disponìbile</string>
+    <string name="notification_title_summary_downloading">Iscarrighende…</string>
+    <string name="notification_title_summary_downloading_update">Iscarrighende s\'agiornamentu…</string>
+    <string name="notification_title_summary_ready_to_install">Prontu pro s\'installatzione</string>
+    <string name="notification_title_summary_ready_to_install_update">Agiornamentu prontu pro s\'installatzione</string>
+    <string name="notification_title_summary_installing">Installende</string>
+    <string name="notification_title_summary_installed">Installatzione resissida</string>
+    <string name="notification_title_summary_install_error">Installatzione faddida</string>
+    <string name="notification_action_update">Agiornamentu</string>
+    <string name="notification_action_cancel">Lassa</string>
+    <string name="notification_action_install">Installa</string>
+
+<string name="app_version_x_available">Sa versione %1$s est disponìbile</string>
+    <string name="app_version_x_installed">Versione %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d Agiornamentu</item>
+	<item quantity="other">%1$d Agiornamentos</item>
+</plurals>
+
+    <string name="main_menu__latest_apps">Ùrtimas</string>
+    <string name="main_menu__categories">Categorias</string>
+    <string name="main_menu__swap_nearby">A curtzu</string>
+
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Fintzas si in custu casu sunt sa matessi cosa, sos documentos de Android narant chi est mègius dislindare a su mancu \"unu\" e \"àteros\": https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
+	<item quantity="other">" Càstia totu %d "</item>
+</plurals>
+
+<string name="clear_search">Inneta sa chirca</string>
+
+    <string name="app_recommended_version_installed">Versione %1$s (Racumandada)</string>
+    <string name="app__newly_added">Noa</string>
+
+    <string name="installed_apps__activity_title">Aplicatziones installadas</string>
+    <string name="installed_app__updates_ignored">Agiornamentos ignorados</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Agiornamentos ignorados pro sa versione %1$s</string>
+
+    <string name="preference_category__my_apps">Aplicatziones meas</string>
+    <string name="preference_manage_installed_apps">Manìgia sas aplicatziones installadas</string>
+
+
+    <string name="tts_category_name">Categoria %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Ammustra s\'aplicatzione in sa categoria %2$s</item>
+	<item quantity="other">Ammustra totu sas aplicatziones in sa categoria %2$s</item>
+</plurals>
+<string name="app__install_downloaded_update">Agiorna</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Agiorna %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Installa %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Installende %1$s</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Carrigada %1$d die faghet</item>
+	<item quantity="other">Carrigada %1$d dies faghet</item>
+</plurals>
+
+    <string name="updates__tts__download_app">Iscàrriga</string>
+    <string name="updates__tts__download_updates_for_all_apps">Iscàrriga totu sos agiornamentos</string>
+
+    <string name="updates__hide_updateable_apps">Istichi sas aplicatziones</string>
+    <string name="updates__show_updateable_apps">Ammustra sas aplicatziones</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Iscàrriga s\'agiornamentu pro %1$d aplicatzione.</item>
+	<item quantity="other">Iscàrriga sos agiornamentos pro %1$d aplicatziones.</item>
+</plurals>
+
+    <string name="details_new_in_version">Nou in sa versione %s</string>
+
+    <string name="antifeatureswarning">Custa aplicatzione tenet funtzionalidades chi ti diant pòdere non agradare.</string>
+    <string name="antifeatures">Anti-funtzionalidades</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Agiornadu oe</item>
+	<item quantity="other">Agiornadu %1$s dies faghet</item>
+</plurals>
+<string name="app_list__name__successfully_installed">%1$s installada</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Non ses in lìnia? Iscàrriga aplicatziones dae sa gente a curtzu de tie!</string>
+    <string name="nearby_splash__find_people_button">Agata persones a curtzu</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambos tenides bisòngiu de %1$s pro impreare custa funtzionalidade.</string>
+
     </resources>

@@ -376,4 +376,31 @@ a pomôť tak vyriešiť problém?</string>
     <string name="keep_install_history">Uchovať históriu inštalácií</string>
     <string name="keep_install_history_summary">Uchovávať záznamy o všetkých nainštalovaní a odinštalovaní v F-Droid-e</string>
     <string name="versions">Verzie</string>
-    </resources>
+    <string name="app_details_donate_prompt_unknown_author">Kúpiť vývojárom kávu za %1$s!</string>
+    <string name="app_details_donate_prompt">%1$s vytvorili %2$s. Kúp mu kávu!</string>
+
+    <string name="repositories_summary">Pridať ďaľšie zdroje aplikácií</string>
+    <string name="notification_title_single_update_available">Dostupná aktualizácia</string>
+    <string name="notification_title_single_ready_to_install">Pripravené na inštaláciu</string>
+    <string name="notification_title_single_ready_to_install_update">Aktualizácia je pripravená na inštaláciu</string>
+    <string name="notification_title_single_install_error">Inštalácia zlyhala</string>
+    <string name="notification_content_single_downloading">Preberanie \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Preberanie aktualizácie pre \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Inštalovanie \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Úspešne nainštalované</string>
+    <string name="notification_content_single_install_error">Inštalácia zlyhala</string>
+    <string name="notification_summary_updates">%1$d Aktualizácií</string>
+    <string name="notification_summary_installed">%1$d Nainštalovaných aplikácií</string>
+    <string name="notification_title_summary_update_available">Dostupná aktualizácia</string>
+    <string name="notification_title_summary_downloading">Preberanie…</string>
+    <string name="notification_title_summary_downloading_update">Preberanie aktualizácie…</string>
+    <string name="notification_title_summary_ready_to_install">Pripravené na inštaláciu</string>
+    <string name="notification_title_summary_ready_to_install_update">Aktualizácia je pripravená na inštaláciu</string>
+    <string name="notification_title_summary_installing">Inštalovanie</string>
+    <string name="notification_title_summary_installed">Úspešne nainštalované</string>
+    <string name="notification_title_summary_install_error">Inštalácia zlyhala</string>
+    <string name="notification_action_update">Aktualizovať</string>
+    <string name="notification_action_cancel">Zrušiť</string>
+    <string name="notification_action_install">Nainštalovať</string>
+
+</resources>
