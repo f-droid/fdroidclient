@@ -227,6 +227,7 @@ public class FDroidApp extends Application {
         Preferences.setup(this);
         curTheme = Preferences.get().getTheme();
         Preferences.get().configureProxy();
+        Languages.setup(getClass(), R.string.pref_language_default);
 
         InstalledAppProviderService.compareToPackageManager(this);
         AppUpdateStatusService.scanDownloadedApks(this);
