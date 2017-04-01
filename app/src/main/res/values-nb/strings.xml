@@ -369,6 +369,97 @@ i en e-post for å fikse problemet?</string>
     <string name="update_auto_install_summary">Last ned og installer programoppdateringer i bakgrunnen</string>
     <string name="hide_anti_feature_apps">Utgråing av programmer med anti-funksjoner</string>
     <string name="hide_anti_feature_apps_on">Utgråing av programmer som krever anti-funksjoner</string>
-    <string name="warning_no_internet">Kan ikke oppdatere. Er du koblet til internett?</string>
+    <string name="warning_no_internet">Kan ikke oppdatere. Er du koblet til Internett?</string>
     <string name="versions">Versjoner</string>
-    </resources>
+    <string name="app_details_donate_prompt_unknown_author">Spander kaffe på utviklerne av %1$s!</string>
+    <string name="app_details_donate_prompt">%1$s lages av %2$s. Spander kaffe!</string>
+
+    <string name="app_version_x_available">Versjon %1$s er tilgjengelig</string>
+    <string name="app_version_x_installed">Versjon %1$s</string>
+    <string name="app_recommended_version_installed">Versjon %1$s (Anbefales)</string>
+    <string name="app__newly_added">Ny</string>
+
+    <string name="installed_apps__activity_title">Installerte programmer</string>
+    <string name="installed_app__updates_ignored">Oppdateringer ignorert</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Oppdateringer ignorert for versjon %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d oppdatering</item>
+	<item quantity="other">%1$d oppdateringer</item>
+</plurals>
+
+    <string name="clear_search">Tøm søkefelt</string>
+
+    <string name="repositories_summary">Legg til andre pakkebrønner for programmer</string>
+    <string name="main_menu__latest_apps">Seneste</string>
+    <string name="main_menu__categories">Kategorier</string>
+    <string name="main_menu__swap_nearby">I nærheten</string>
+
+    <string name="preference_category__my_apps">Mine programmer</string>
+    <string name="preference_manage_installed_apps">Behandle installerte programmer</string>
+
+
+    <string name="notification_title_single_update_available">Oppdatering tilgjengelig</string>
+    <string name="notification_title_single_ready_to_install">Klar til å installere</string>
+    <string name="notification_title_single_ready_to_install_update">Oppdatering klar til installasjon</string>
+    <string name="notification_title_single_install_error">Installasjon mislyktes</string>
+    <string name="notification_content_single_downloading">Laster ned \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Henter oppdatering for \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Installerer \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Installert</string>
+    <string name="notification_content_single_install_error">Installering mislyktes</string>
+    <string name="notification_summary_updates">%1$d oppdateringer</string>
+    <string name="notification_summary_installed">%1$d programmer installert</string>
+    <string name="notification_title_summary_update_available">Oppdatering tilgjengelig</string>
+    <string name="notification_title_summary_downloading">Laster ned…</string>
+    <string name="notification_title_summary_downloading_update">Laster ned oppdatering…</string>
+    <string name="notification_title_summary_ready_to_install">Klar til å installere</string>
+    <string name="notification_title_summary_ready_to_install_update">Oppdatering klar til installasjon</string>
+    <string name="notification_title_summary_installing">Installerer</string>
+    <string name="notification_title_summary_installed">Installert</string>
+    <string name="notification_title_summary_install_error">Installering mislyktes</string>
+    <string name="notification_action_update">Oppdatering</string>
+    <string name="notification_action_cancel">Avbryt</string>
+    <string name="notification_action_install">Installer</string>
+
+    <string name="tts_category_name">Kategori %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Vis det ene programmet i kategorien %1$s</item>
+	<item quantity="other">Vis alle programmer i kategorien %2$s</item>
+</plurals>
+<string name="app__install_downloaded_update">Oppdater</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Oppdater %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Installer %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Utgitt i går</item>
+	<item quantity="other">Utgitt for %1$d dager siden</item>
+</plurals>
+
+    <string name="updates__tts__download_app">Last ned</string>
+    <string name="updates__tts__download_updates_for_all_apps">Last ned alle oppdateringer</string>
+
+    <string name="updates__hide_updateable_apps">Skjul programmer</string>
+    <string name="updates__show_updateable_apps">Vis programmer</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Hent oppdatering for %1$d program.</item>
+	<item quantity="other">Hent oppdateringer for %1$d programmer.</item>
+</plurals>
+
+    <string name="details_new_in_version">Nytt i versjon %s</string>
+
+    <string name="antifeatureswarning">Dette programmet har funksjoner du kanskje ikke liker.</string>
+    <string name="antifeatures">Anti-funksjoner</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Vis alle %d "</item>
+	<item quantity="other">" Vis alle %d "</item>
+</plurals>
+
+    <plurals name="details_last_update_days">
+	<item quantity="one">Oppdatert i dag</item>
+	<item quantity="other">Oppdatert for %1$s dager siden</item>
+</plurals>
+</resources>

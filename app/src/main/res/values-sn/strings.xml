@@ -395,4 +395,82 @@ rasika. Izvi hazvizosungira hupindwa hwuripamusoro.</string>
 yamanikidza Application kuti imire. Unoda kunyora tsamba mbozha
 ine zvizerekuti ubatsire kugadzira dambudziko iri here?</string>
     <string name="crash_dialog_comment_prompt">Unokwanisa kuwedzera mashoko mamwe ne mawonero ako panapa:</string>
+<string name="versions">Mavhezheni</string>
+    <string name="app_details_donate_prompt_unknown_author">Tengera vauumbi ve %1$s coffee!</string>
+    <string name="app_details_donate_prompt">%1$s inosikwa na %2$s. Vatengereyi coffee!</string>
+
+    <string name="repositories_summary">Wedzera dzimwe nyuko dze maapplication</string>
+    <string name="notification_title_single_update_available">Kuwedzera kwavapo</string>
+    <string name="notification_title_single_ready_to_install">Yagadzirira kuvakirira</string>
+    <string name="notification_title_single_ready_to_install_update">Kuwedzera kwagadzirira kuvakirirwa</string>
+    <string name="notification_title_single_install_error">Kuvakirira kwaramba</string>
+    <string name="notification_content_single_downloading">Kututunura \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Kututunura wedzero ye \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Kuvakirira \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Kuvakirira kwabudirira</string>
+    <string name="notification_content_single_install_error">Kuvakirira kwaramba</string>
+    <string name="notification_summary_updates">%1$d Mawedzero</string>
+    <string name="notification_summary_installed">%1$d MaApps avakirirwa</string>
+    <string name="notification_title_summary_update_available">Wedzero yavapo</string>
+    <string name="notification_title_summary_downloading">Kututunura…</string>
+    <string name="notification_title_summary_downloading_update">Kututunura wedzero…</string>
+    <string name="notification_title_summary_ready_to_install">Yagadzirira kuvakirirwa</string>
+    <string name="notification_title_summary_ready_to_install_update">Wedzero yagadzirira kuvakirirwa</string>
+    <string name="notification_title_summary_installing">Kuvakirira</string>
+    <string name="notification_title_summary_installed">Budiriro pakuvakirira</string>
+    <string name="notification_title_summary_install_error">Kuvakirira kwaramba</string>
+    <string name="notification_action_update">Wedzero</string>
+    <string name="notification_action_cancel">Kanzura</string>
+    <string name="notification_action_install">Vakirira</string>
+
+<string name="app_version_x_available">Version %1$s yavapo</string>
+    <string name="app_version_x_installed">Version %1$s</string>
+    <string name="app_recommended_version_installed">Version %1$s (Inoyambirwa)</string>
+    <string name="app__newly_added">Itsva</string>
+    <string name="app__install_downloaded_update">Natsa</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Wedzero %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Vakirira %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Kututunura %1$s</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Yakasunungurwa zuva %1$d radarika</item>
+	<item quantity="other">Yakasunungurwa mazuva %1$d adarika</item>
+</plurals>
+
+    <string name="installed_apps__activity_title">MaApps akavakirirwa</string>
+    <string name="installed_app__updates_ignored">Wedzero dzakafuratirwa</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Wedzero dzakafuratirwa pa Version %1$s</string>
+    <string name="updates__tts__download_app">Bhatani rekututunura riri mukati memutsara rakaratidzwa muscreen rinoshandisa icon chete</string>
+    <string name="updates__tts__download_updates_for_all_apps">Tutunura wedzero dzese</string>
+
+    <string name="updates__hide_updateable_apps">Hwandisa maApps</string>
+    <string name="updates__show_updateable_apps">Ratidza maApps</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Tutunura wedzero yeApp %1$d.</item>
+	<item quantity="other">Tutunura wedzero dze maApps %1$d.</item>
+</plurals>
+
+    <string name="clear_search">Chenesa rutsvako</string>
+
+    <string name="main_menu__latest_apps">Azvino</string>
+    <string name="main_menu__categories">Mapato</string>
+    <string name="main_menu__swap_nearby">Zviri padhuze</string>
+
+    <string name="preference_category__my_apps">MaApps angu</string>
+    <string name="preference_manage_installed_apps">Maneja maApps Akavakirirwa</string>
+
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Kunyangwe dai izvi zvakafanana, maAndroid docs anoyambira kujekesa musiyano 
+we imwe ne zvimwe: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
+	<item quantity="other">" Wona zvese %d "</item>
+</plurals>
+
+    <string name="tts_category_name">Bato %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Wona app imwe chete mubato iri %2$s</item>
+	<item quantity="other">Wona maApps %1$d ese kubva mubato iri %2$s</item>
+</plurals>
 </resources>

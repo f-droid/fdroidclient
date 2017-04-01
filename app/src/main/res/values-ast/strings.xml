@@ -370,4 +370,39 @@ corréu colos detalles p\'ayudar a iguar esti problema?</string>
     <string name="hide_anti_feature_apps_on">Abuxa les aplicaciones que rican carauterístiques de pagu, non llibres y de rastrexu</string>
     <string name="warning_no_internet">Nun pue anovase, ¿tas coneutáu a internet?</string>
     <string name="versions">Versiones</string>
+    <string name="app_details_donate_prompt">%1$s creólu %2$s. ¡Convídalu a un café!</string>
+
+    <string name="app_version_x_available">Versión %1$s disponible</string>
+    <string name="app_version_x_installed">Versión %1$s</string>
+    <string name="app_recommended_version_installed">Versión %1$s (Aconseyada)</string>
+    <string name="installed_apps__activity_title">Aplicaciones instalaes</string>
+    <string name="installed_app__updates_ignored">Anovamientos inoraos</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Anovamientos inoraos pa la versión %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d anovamientu</item>
+	<item quantity="other">%1$d anovamientos</item>
+</plurals>
+
+    <string name="clear_search">Llimpiar gueta</string>
+
+    <string name="repositories_summary">Amiesta fontes adicionales d\'aplicaciones</string>
+    <string name="main_menu__categories">Estayes</string>
+    <string name="preference_category__my_apps">Les mios aplicaciones</string>
+    <string name="preference_manage_installed_apps">Xestionar aplicaciones instalaes</string>
+
+
+    <string name="notification_title_single_update_available">Anovamientu disponible</string>
+    <string name="notification_title_single_install_error">Falló la instalación</string>
+    <string name="notification_content_single_downloading">Baxando «%1$s»…</string>
+    <string name="notification_content_single_downloading_update">Baxando anovamientu pa «%1$s»…</string>
+    <string name="notification_content_single_installing">Instalando «%1$s»…</string>
+    <string name="notification_content_single_installed">Instalóse con ésitu</string>
+    <string name="notification_content_single_install_error">Falló la instalación</string>
+    <string name="notification_summary_updates">%1$d anovamientos</string>
+    <string name="notification_summary_installed">%1$d aplicaciones instalaes</string>
+    <string name="notification_title_summary_update_available">Anovamientu disponible</string>
+    <string name="notification_title_summary_downloading">Baxando…</string>
+    <string name="notification_title_summary_downloading_update">Baxando anovamientu…</string>
+    <string name="notification_title_summary_installing">Instalando</string>
     </resources>

@@ -343,8 +343,8 @@
     <string name="swap_stopping_wifi">Заустављам бежични…</string>
     <string name="repo_provider">Ризница: %s</string>
 
-    <string name="update_auto_download">Аутоматски преузимај надоградње</string>
-    <string name="update_auto_download_summary">Преузимање надоградњи у позадини</string>
+    <string name="update_auto_download">Аутоматски добављај надоградње</string>
+    <string name="update_auto_download_summary">Преузимање надоградњи аутоматски и обавештење за надоградњу</string>
     <string name="tap_to_install_format">Тапните да инсталирате %s</string>
     <string name="tap_to_update_format">Тапните да надоградите %s</string>
     <string name="download_pending">Чекам на почетак преузимања…</string>
@@ -375,4 +375,109 @@
     <string name="keep_install_history_summary">Чувај запис свих уградњи и уклањања унутар Ф-дроида</string>
     <string name="versions">Издања</string>
     <string name="warning_no_internet">Не могу да освежим, да ли сте повезани на интернет?</string>
+    <string name="app_details_donate_prompt_unknown_author">Почастите програмере %1$s кафом!</string>
+    <string name="app_details_donate_prompt">%1$s су направили %2$s. Почастите их кафом!</string>
+
+    <string name="app_version_x_available">Издање %1$s је доступно</string>
+    <string name="app_version_x_installed">Издање %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d надоградња</item>
+	<item quantity="few">%1$d надоградње</item>
+	<item quantity="other">%1$d надоградњи</item>
+</plurals>
+
+    <string name="clear_search">Очисти претрагу</string>
+
+    <string name="repositories_summary">Додај додатне изворе апликација</string>
+    <string name="main_menu__latest_apps">Најновије</string>
+    <string name="main_menu__categories">Категорије</string>
+
+
+    <string name="notification_title_single_update_available">Доступна надоградња</string>
+    <string name="notification_title_single_ready_to_install">Спреман за уградњу</string>
+    <string name="notification_title_single_ready_to_install_update">Надоградња спремна</string>
+    <string name="notification_title_single_install_error">Уградња није успела</string>
+    <string name="notification_content_single_downloading">Преузимам „%1$s“…</string>
+    <string name="notification_content_single_downloading_update">Преузимам надоградњу за „%1$s“…</string>
+    <string name="notification_content_single_installing">Уграђујем „%1$s“…</string>
+    <string name="notification_content_single_installed">Успешно уграђено</string>
+    <string name="notification_content_single_install_error">Уградња није успела</string>
+    <string name="notification_summary_updates">%1$d надоградњи</string>
+    <string name="notification_summary_installed">%1$d уграђених апликација</string>
+    <string name="notification_title_summary_update_available">Надоградња доступна</string>
+    <string name="notification_title_summary_downloading">Преузимам…</string>
+    <string name="notification_title_summary_downloading_update">Преузимам надоградњу…</string>
+    <string name="notification_title_summary_ready_to_install">Спреман за уградњу</string>
+    <string name="notification_title_summary_installing">Уграђујем</string>
+    <string name="notification_title_summary_installed">Успешно уграђено</string>
+    <string name="notification_title_summary_install_error">Уградња није успела</string>
+    <string name="notification_action_update">Надогради</string>
+    <string name="notification_action_cancel">Одустани</string>
+    <string name="notification_action_install">Угради</string>
+
+<string name="main_menu__swap_nearby">Оближње</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Прикажи %d "</item>
+	<item quantity="few">" Прикажи све %d "</item>
+	<item quantity="other">" Прикажи свих %d "</item>
+</plurals>
+
+    <string name="notification_title_summary_ready_to_install_update">Надоградња спремна</string>
+    <string name="app_recommended_version_installed">Издање %1$s (препоручено)</string>
+    <string name="app__newly_added">Ново</string>
+
+    <string name="installed_apps__activity_title">Уграђене</string>
+    <string name="installed_app__updates_ignored">Надоградње занемарене</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Надоградње за издање %1$s занемарене</string>
+
+    <string name="preference_category__my_apps">Моје апликације</string>
+    <string name="preference_manage_installed_apps">Управљај уграђеним апликацијама</string>
+
+
+    <string name="tts_category_name">Категорија %1$s</string>
+
+    <string name="app__install_downloaded_update">Надогради</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Надогради %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Угради %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Преузимам %1$s</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Издато пре %1$d дан</item>
+	<item quantity="few">Издато пре %1$d дана</item>
+	<item quantity="other">Издато пре %1$d дана</item>
+</plurals>
+
+    <string name="updates__tts__download_app">Преузми</string>
+    <string name="updates__tts__download_updates_for_all_apps">Преузми све надоградње</string>
+
+    <string name="updates__hide_updateable_apps">Сакриј апликације</string>
+    <string name="updates__show_updateable_apps">Прикажи апликације</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Преузми надоградњу за %1$d апликацију.</item>
+	<item quantity="few">Преузми надоградње за %1$d апликације.</item>
+	<item quantity="other">Преузми надоградње за %1$d апликација.</item>
+</plurals>
+
+    <string name="details_new_in_version">Ново у издању %s</string>
+
+    <string name="antifeatureswarning">Ова апликација поседује функционалности које вам се можда неће свидети.</string>
+    <string name="antifeatures">Анти-могућности</string>
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Прикажи једну апликацију у категорији %2$s</item>
+	<item quantity="few">Прикажи све %1$d апликације у категорији %2$s</item>
+	<item quantity="other">Прикажи свих %1$d апликација у категорији %2$s</item>
+</plurals>
+
+    <plurals name="details_last_update_days">
+	<item quantity="one">Ажурирано пре %1$s дана</item>
+	<item quantity="few">Ажурирано пре %1$s дана</item>
+	<item quantity="other">Ажурирано пре %1$s дана</item>
+</plurals>
+<string name="app_list__name__successfully_installed">%1$s успешно инсталирана</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Немате интернета? Преузимајте апликације од људи у близини!</string>
+    <string name="nearby_splash__find_people_button">Пронађи људе у близини</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Обе стране треба да користе %1$s да би користиле ово.</string>
+
     </resources>

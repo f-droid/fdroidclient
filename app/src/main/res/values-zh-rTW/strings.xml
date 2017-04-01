@@ -376,4 +376,97 @@ F-Droid 並無您裝置上可用的應用程式。這可能是因為您需要更
     <string name="hide_anti_feature_apps_on">以灰色顯示需要 anti-features 的應用程式</string>
     <string name="warning_no_internet">無法更新，您是否已連接到網路？</string>
     <string name="versions">版本</string>
+    <string name="app_details_donate_prompt_unknown_author">購買%1$s開發者的咖啡！</string>
+    <string name="app_details_donate_prompt">%1$s由%2$s建立。買他們的咖啡！</string>
+
+    <string name="repositories_summary">增加另外的應用程式來源</string>
+    <string name="notification_title_single_update_available">可用的更新</string>
+    <string name="notification_title_single_ready_to_install">準備安裝</string>
+    <string name="notification_title_single_ready_to_install_update">更新就緒準備安裝</string>
+    <string name="notification_title_single_install_error">安裝失敗</string>
+    <string name="notification_content_single_downloading">正在下載 \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">\"%1$s\" 正在下載更新…</string>
+    <string name="notification_content_single_installing">正在安裝 \"%1$s\"…</string>
+    <string name="notification_content_single_installed">安裝成功</string>
+    <string name="notification_content_single_install_error">安裝失敗</string>
+    <string name="notification_summary_updates">%1$d 更新</string>
+    <string name="notification_summary_installed">%1$d 應用程式已安裝</string>
+    <string name="notification_title_summary_update_available">可用的更新</string>
+    <string name="notification_title_summary_downloading">正在下載…</string>
+    <string name="notification_title_summary_downloading_update">正在下載更新…</string>
+    <string name="notification_title_summary_ready_to_install">準備安裝</string>
+    <string name="notification_title_summary_ready_to_install_update">更新就緒準備安裝</string>
+    <string name="notification_title_summary_installing">正在安裝</string>
+    <string name="notification_title_summary_installed">安裝成功</string>
+    <string name="notification_title_summary_install_error">安裝失敗</string>
+    <string name="notification_action_update">更新</string>
+    <string name="notification_action_cancel">取消</string>
+    <string name="notification_action_install">安裝</string>
+
+<string name="app_version_x_available">有版本 %1$s 可用</string>
+    <string name="app_version_x_installed">版本 %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d 更新</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="clear_search">清除搜尋</string>
+
+    <string name="main_menu__latest_apps">最新的</string>
+    <string name="main_menu__categories">類別</string>
+    <string name="main_menu__swap_nearby">附近的</string>
+
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" 查看全部 %d "</item>
+	<item quantity="other"/>
+</plurals>
+
+<string name="app_recommended_version_installed">版本 %1$s （推薦）</string>
+    <string name="app__newly_added">新的</string>
+
+    <string name="installed_apps__activity_title">已安裝的應用程式</string>
+    <string name="installed_app__updates_ignored">忽略更新</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">忽略 %1$s 版本更新</string>
+
+    <string name="preference_category__my_apps">我的應用程式</string>
+    <string name="preference_manage_installed_apps">管理已安裝的應用程式</string>
+
+
+    <string name="tts_category_name">類別 %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">從 %2$s 類別中查看所有 %1$d 的應用程式</item>
+	<item quantity="other"/>
+</plurals>
+<string name="app__install_downloaded_update">更新</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">更新 %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">安裝 %1$s</string>
+    <string name="app_list__name__downloading_in_progress">正在下載 %1$s</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">%1$d 天前已釋出</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="updates__tts__download_updates_for_all_apps">下載所有的更新</string>
+
+    <string name="updates__hide_updateable_apps">隱藏應用程式</string>
+    <string name="updates__show_updateable_apps">顯示應用程式</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">為 %1$d 應用程式下載更新。</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="details_new_in_version">新的版本在 %s</string>
+
+    <string name="antifeatureswarning">此應用程式可能有您不喜歡的功能。</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">%1$s 天前已更新</item>
+	<item quantity="other"/>
+</plurals>
+<string name="updates__tts__download_app">下載</string>
+    <string name="antifeatures">Anti-features</string>
     </resources>

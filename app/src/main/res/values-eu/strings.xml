@@ -384,4 +384,97 @@ konpontzen laguntzeko?</string>
     <string name="keep_install_history_summary">Gorde instalazio eta desinstalazioen egunkari bat F-Droiden</string>
     <string name="warning_no_internet">Ezin da eguneratu, Internetera konektatuta zaude?</string>
     <string name="versions">Bertsioak</string>
-    </resources>
+    <string name="app_details_donate_prompt_unknown_author">"Gonbidatu %1$s  garatzaileak kafe batetara!"</string>
+    <string name="app_details_donate_prompt">%1$s %2$s(e)k sortu du. Gonbidatu kafe batetara!</string>
+
+    <string name="repositories_summary">Gehitu aplikazioen iturri gehigarriak</string>
+    <string name="notification_title_single_update_available">Eguneraketa eskuragarri</string>
+    <string name="notification_title_single_ready_to_install">Instalatzeko prest</string>
+    <string name="notification_title_single_ready_to_install_update">Eguneraketa instalatzeko prest</string>
+    <string name="notification_title_single_install_error">Instalazioak huts egin du</string>
+    <string name="notification_content_single_downloading">\"%1$s\" deskargatzen…</string>
+    <string name="notification_content_single_downloading_update">\"%1$s\" eguneraketa deskargatzen…</string>
+    <string name="notification_content_single_installing">\"%1$s\" instalatzen…</string>
+    <string name="notification_content_single_installed">Ongi instalatu da</string>
+    <string name="notification_content_single_install_error">Instalazioak huts egin du</string>
+    <string name="notification_summary_updates">%1$d eguneraketa</string>
+    <string name="notification_summary_installed">%1$d Aplikazio instalatuta</string>
+    <string name="notification_title_summary_update_available">Eguneraketa eskuragarri</string>
+    <string name="notification_title_summary_downloading">Deskargatzen…</string>
+    <string name="notification_title_summary_downloading_update">Eguneraketa deskargatzen…</string>
+    <string name="notification_title_summary_ready_to_install">Instalatzeko prest</string>
+    <string name="notification_title_summary_ready_to_install_update">Eguneraketa instalatzeko prest</string>
+    <string name="notification_title_summary_installing">Instalatzen</string>
+    <string name="notification_title_summary_installed">Ongi instalatu da</string>
+    <string name="notification_title_summary_install_error">Instalazioak huts egin du</string>
+    <string name="notification_action_update">Eguneratu</string>
+    <string name="notification_action_cancel">Utzi</string>
+    <string name="notification_action_install">Instalatu</string>
+
+<string name="app_version_x_available">%1$s bertsioa eskuragarri</string>
+    <string name="app_version_x_installed">%1$s bertsioa</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">eguneraketa %1$d</item>
+	<item quantity="other">%1$d eguneraketa</item>
+</plurals>
+
+    <string name="clear_search">Garbitu bilaketa</string>
+
+    <string name="main_menu__latest_apps">Azkena</string>
+    <string name="main_menu__categories">Kategoriak</string>
+    <string name="main_menu__swap_nearby">Inguruan</string>
+
+
+<string name="app_recommended_version_installed">%1$s bertsioa (Aholkatutakoa)</string>
+    <string name="app__newly_added">Berria</string>
+
+    <string name="installed_apps__activity_title">Instalatutako aplikazioak</string>
+    <string name="installed_app__updates_ignored">Eguneraketak ezikusita</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">"Eguneraketak ezikusita  %1$s bertsioarentzat"</string>
+
+    <string name="preference_category__my_apps">Nire aplikazioak</string>
+    <string name="preference_manage_installed_apps">Kudeatu instalatutako aplikazioak</string>
+
+
+    <string name="tts_category_name">%1$s kategoria</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Ikusi %2$s kategoriako aplikazio bakarra</item>
+	<item quantity="other">Ikusi %2$s kategoriako %1$d aplikazioak</item>
+</plurals>
+<string name="app__install_downloaded_update">Eguneratu</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Eguneratu %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Instalatu %1$s</string>
+    <string name="app_list__name__downloading_in_progress">%1$s deskargatzen</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Orain dela egun %1$d kaleratua</item>
+	<item quantity="other">Orain dela %1$d egun kaleratua</item>
+</plurals>
+
+    <string name="updates__tts__download_app">Deskargatu</string>
+    <string name="updates__tts__download_updates_for_all_apps">Deskargatu eguneraketa guztiak</string>
+
+    <string name="updates__hide_updateable_apps">Ezkutatu aplikazioak</string>
+    <string name="updates__show_updateable_apps">Erakutsi aplikazioak</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Deskargatu eguneraketa %1$d.</item>
+	<item quantity="other">Deskargatu %1$d eguneraketa.</item>
+</plurals>
+
+    <string name="details_new_in_version">%s bertsioan berria</string>
+
+    <string name="antifeatureswarning">Aplikazio honek gustuko izan ez ditzakezun ezaugarriak ditu.</string>
+    <string name="antifeatures">Anti-ezaugarriak</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Bi hauek berdina badira ere, Androiden dokumentazioak gutxienez bata zein bestea zehaztea aholkatzen du: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
+	<item quantity="other">" Ikusi guztiak %d "</item>
+</plurals>
+
+    <plurals name="details_last_update_days">
+	<item quantity="one">Gaur eguneratua</item>
+	<item quantity="other">Orain dela %1$s egun eguneratua</item>
+</plurals>
+</resources>

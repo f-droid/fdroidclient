@@ -200,7 +200,7 @@ apl yang sebelumnya dipasang dari repositori ini akan tetap ada di perangkat And
     <string name="menu_email">Surel Penulis</string>
     <string name="antinonfreeassetslist">Apl ini mengandung aset tak-bebas</string>
 
-    <string name="touch_to_configure_local_repo">Ketuk untuk melihat rincian dan izinkan yang lainnya untuk bertukar app anda.</string>
+    <string name="touch_to_configure_local_repo">Ketuk untuk melihat rincian dan izinkan yang lainnya untuk bertukar apl anda.</string>
     <string name="useTor">Gunakan Tor</string>
     <string name="useTorSummary">Paksa jalur unduhan lewat Tor untuk meningkatkan privasi</string>
     <string name="status_inserting_apps">Menyimpan rincian aplikasi</string>
@@ -220,7 +220,7 @@ butuh untuk mengaktifkan ulang repo ini untuk memasang apl darinya.</string>
     <string name="pref_language">Bahasa</string>
     <string name="pref_language_default">Baku Sistem</string>
 
-    <string name="app_icon">Ikon app</string>
+    <string name="app_icon">Ikon apl</string>
     <string name="wifi">Wifi</string>
     <string name="wifi_ap">Hotspot</string>
 
@@ -245,10 +245,16 @@ butuh untuk mengaktifkan ulang repo ini untuk memasang apl darinya.</string>
     <string name="category_Time">Waktu</string>
     <string name="category_Writing">Menulis</string>
 
-    <string name="empty_installed_app_list">Tidak ada app terpasang.\n\nTerdapat app diperangkat anda, tapi tidak tersedia dari F-Droid. Ini mungkin disebabkan karena anda butuh pembaruan repositori, atau repositori memang tidak memiliki app yang tersedia.</string>
-    <string name="empty_available_app_list">Tidak ada app dikategori ini.\n\nCoba pilih kategori lain atau perbarui repositori anda untuk mendapatkan daftar app yang baru.</string>
-    <string name="empty_can_update_app_list">Semua app sudah paling baru.\n\nSelamat! Semua app anda sudah paling baru (atau repositori anda yang kadaluarsa).</string>
-    <string name="empty_search_installed_app_list">Tidak ada app sesuai yang terpasang.</string>
+    <string name="empty_installed_app_list">Tidak ada apl terpasang.
+
+Terdapat apl diperangkat anda, tapi tidak tersedia dari F-Droid. Ini mungkin disebabkan karena anda butuh pembaruan repositori, atau repositori memang tidak memiliki apl yang tersedia.</string>
+    <string name="empty_available_app_list">Tidak ada apl dikategori ini.
+
+Coba pilih kategori lain atau perbarui repositori anda untuk mendapatkan daftar apl yang baru.</string>
+    <string name="empty_can_update_app_list">Semua apl sudah paling baru.
+
+Selamat! Semua apl anda sudah paling baru (atau repositori anda yang kadaluarsa).</string>
+    <string name="empty_search_installed_app_list">Tidak ada apl sesuai yang terpasang.</string>
     <string name="empty_search_available_app_list">Tidak ada aplikasi sesuai yang tersedia.</string>
     <string name="empty_search_can_update_app_list">Tidak ada aplikasi sesuai untuk pembaruan.</string>
 
@@ -265,7 +271,7 @@ butuh untuk mengaktifkan ulang repo ini untuk memasang apl darinya.</string>
     <string name="system_install_button_open">Buka Ekstensi</string>
     <string name="system_install_post_success">F-Droid Privileged Extension sukses terpasang</string>
     <string name="system_install_post_fail">Pemasangan F-Droid Privileged Extension gagal</string>
-    <string name="system_install_post_success_message">F-Droid Privileged Extension telah sukses terpasang. Ini mengijinkan F-Droid untuk memasang, meningkatkan dan mencopot pemasangan app sendiri.</string>
+    <string name="system_install_post_success_message">F-Droid Privileged Extension telah sukses terpasang. Ini mengijinkan F-Droid untuk memasang, meningkatkan dan mencopot pemasangan apl sendiri.</string>
     <string name="system_install_post_fail_message">Pemasangan F-Droid Privileged Extension gagal. Metode pemasangan tidak didukung oleh semua distribusi Android, harap hubungi pelacak kutu F-Droid untuk info selanjutnya.</string>
     <string name="system_install_installing">Memasang…</string>
     <string name="system_install_installing_rebooting">Memasang dan booting ulang…</string>
@@ -281,7 +287,7 @@ butuh untuk mengaktifkan ulang repo ini untuk memasang apl darinya.</string>
     <string name="swap_join_same_wifi">Gabung ke Wi-Fi yang sama dengan temanmu</string>
     <string name="swap_join_same_wifi_desc">Untuk swap menggunakan Wi-Fi, pastikan anda ada dijaringan yang sama. Jika anda tidak memiliki akses ke jaringan yang sama, satu diantara anda buatlah peranggitan Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Bantu teman anda bergabung ke hotspot anda</string>
-    <string name="swap">Swap app</string>
+    <string name="swap">Swap apl</string>
     <string name="swap_success">Swap sukses!</string>
     <string name="swap_no_wifi_network">Tidak ada jaringan</string>
     <string name="swap_active_hotspot">%1$s (hotspot anda)</string>
@@ -289,7 +295,7 @@ butuh untuk mengaktifkan ulang repo ini untuk memasang apl darinya.</string>
     <string name="swap_switch_to_wifi">Ketuk untuk beralih ke jaringan Wi-Fi</string>
     <string name="open_qr_code_scanner">Buka Pemindai QR</string>
     <string name="swap_welcome">Selamat datang di F-Droid!</string>
-    <string name="swap_confirm_connect">Apa anda ingin mendapatkan app dari %1$s sekarang?</string>
+    <string name="swap_confirm_connect">Apa anda ingin mendapatkan apl dari %1$s sekarang?</string>
     <string name="swap_dont_show_again">Jangan tampilkan ini lagi</string>
     <string name="swap_scan_or_type_url">Satu orang butuh memindai kode, atau buka URL yang lain diperamban.</string>
     <string name="swap_choose_apps">Pilih Aplikasi</string>
@@ -297,7 +303,7 @@ butuh untuk mengaktifkan ulang repo ini untuk memasang apl darinya.</string>
     <string name="swap_people_nearby">Orang Terdekat</string>
     <string name="swap_scanning_for_peers">Mencari orang terdekat…</string>
     <string name="swap_nearby">Swap Terdekat</string>
-    <string name="swap_intro">Sambungkan dan pindahkan app dengan orang didekat anda.</string>
+    <string name="swap_intro">Sambungkan dan pindahkan apl dengan orang didekat anda.</string>
     <string name="swap_visible_bluetooth">Terlihat melalui Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Mengatur Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Tidak terlihat melalui Bluetooth</string>
@@ -335,8 +341,8 @@ hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
     <string name="newPerms">Baru</string>
     <string name="allPerms">Semua</string>
     <string name="perm_costs_money">Ini mungkin akan memakan biaya</string>
-    <string name="uninstall_update_confirm">Anda ingin mengganti app ini dengan versi pabrik?</string>
-    <string name="uninstall_confirm">Anda ingin mencopot pemasangan app ini?</string>
+    <string name="uninstall_update_confirm">Anda ingin mengganti apl ini dengan versi pabrik?</string>
+    <string name="uninstall_confirm">Anda ingin mencopot pemasangan apl ini?</string>
     <string name="tap_to_install">Unduhan selesai, ketuk untuk memasang</string>
     <string name="download_error">Unduhan gagal</string>
 
@@ -390,4 +396,95 @@ hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
     <string name="update_auto_install_summary">Unduh dan pasang pembaruan apl di latar belakang</string>
     <string name="warning_no_internet">Tidak bisa memperbarui, apakah Anda tersambung ke internet?</string>
     <string name="versions">Versi</string>
-    </resources>
+    <string name="app_details_donate_prompt">%1$s dibuat oleh %2$s. Belikan mereka kopi!</string>
+
+    <string name="repositories_summary">Tambah sumber aplikasi alternatif</string>
+    <string name="notification_title_single_update_available">Tersedia Pembaruan</string>
+    <string name="notification_title_single_ready_to_install">Siap untuk dipasang</string>
+    <string name="notification_title_single_ready_to_install_update">Pembaruan siap untuk dipasang</string>
+    <string name="notification_title_single_install_error">Gagal Memasang</string>
+    <string name="notification_content_single_downloading">Mengunduh \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Mengunduh pembaruan untuk \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Memasang \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Berhasil dipasang</string>
+    <string name="notification_content_single_install_error">Gagal Memasang</string>
+    <string name="notification_summary_updates">%1$d Pembaruan</string>
+    <string name="notification_summary_installed">%1$d Apl Dipasang</string>
+    <string name="notification_title_summary_update_available">Tersedia pembaruan</string>
+    <string name="notification_title_summary_downloading">Mengunduh…</string>
+    <string name="notification_title_summary_downloading_update">Mengunduh pembaruan…</string>
+    <string name="notification_title_summary_ready_to_install">Siap untuk dipasang</string>
+    <string name="notification_title_summary_ready_to_install_update">Pembaruan siap untuk dipasang</string>
+    <string name="notification_title_summary_installing">Memasang</string>
+    <string name="notification_title_summary_installed">Berhasil dipasang</string>
+    <string name="notification_title_summary_install_error">Gagal Memasang</string>
+    <string name="notification_action_update">Pembaruan</string>
+    <string name="notification_action_cancel">Batal</string>
+    <string name="notification_action_install">Pasang</string>
+
+<string name="app_details_donate_prompt_unknown_author">Belikan pengembang %1$s kopi!</string>
+    <string name="app_version_x_available">Versi %1$s tersedia</string>
+    <string name="app_version_x_installed">Versi %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d Pembaruan</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="clear_search">Kosongkan pencarian</string>
+
+    <string name="main_menu__latest_apps">Terbaru</string>
+    <string name="main_menu__categories">Kategori</string>
+
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Tampilkan semua %d "</item>
+	<item quantity="other"/>
+</plurals>
+
+<string name="main_menu__swap_nearby">Dekat</string>
+    <string name="app_recommended_version_installed">Versi %1$s (Direkomendasikan)</string>
+    <string name="app__newly_added">Baru</string>
+    <string name="app_list__name__downloaded_and_ready_to_update">Perbarui %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Pasang %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Mengunduh %1$s</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Dirilis %1$d hari yang lalu</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="installed_apps__activity_title">Apl Terpasang</string>
+    <string name="installed_app__updates_ignored">Pembaruan diabaikan</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Pembaruan diabaikan untuk Versi %1$s</string>
+    <string name="updates__tts__download_app">Unduh</string>
+    <string name="updates__tts__download_updates_for_all_apps">Unduh semua pembaruan</string>
+
+    <string name="updates__hide_updateable_apps">Sembunyikan apl</string>
+    <string name="updates__show_updateable_apps">Tampilkan apl</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Unduh pembaruan untuk %1$d apl.</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="preference_manage_installed_apps">Kelola Apl Terpasang</string>
+
+
+    <string name="tts_category_name">Kategori %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Tampilkan semua apl di dalam kategori %2$s</item>
+	<item quantity="other"/>
+</plurals>
+<string name="preference_category__my_apps">Apl Saya</string>
+    <string name="app__install_downloaded_update">Perbarui</string>
+
+    <string name="details_new_in_version">Apa yang baru dalam versi %s</string>
+
+    <string name="antifeatureswarning">Apl ini memiliki fitur yang Anda mungkin tidak suka.</string>
+    <string name="antifeatures">Anti-fitur</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Diperbarui %1$s hari yang lalu</item>
+	<item quantity="other"></item>
+</plurals>
+</resources>

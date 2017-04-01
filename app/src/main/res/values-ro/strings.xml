@@ -290,8 +290,8 @@
     <string name="bluetooth_unavailable">Bluetooth indisponibil</string>
     <string name="repo_provider">Depozit: %s</string>
 
-    <string name="update_auto_download">Descarca automat actualizarile</string>
-    <string name="update_auto_download_summary">Se descarca fisierele actualizate in fundal</string>
+    <string name="update_auto_download">Descarcă automat actualizările</string>
+    <string name="update_auto_download_summary">Se descarcă pachetele automat și veți primi o notificare pentru a le instala</string>
     <string name="useTorSummary">Pentru a iti proteja intimitatea, forteaza folosirea Tor pentru descarcari</string>
     <string name="no_handler_app">Nu exista nici o aplicatie disponibila care sa poata folosi %s.</string>
     <string name="tap_to_install_format">Atinge pentru a instala %s</string>
@@ -340,4 +340,68 @@ pentru a putea ajuta la rezolvarea acestei probleme?</string>
     <string name="keep_install_history">Pastreaza istoricul instalarilor</string>
     <string name="keep_install_history_summary">Toate instalarile si dezinstalarile se noteaza intr-un jurnal in F-Droid</string>
     <string name="system_installer_on">Folositi F-Droid Extension pentru a instala, actualiza si a înlătura pachete</string>
-    </resources>
+    <string name="empty_can_update_app_list">Toate aplicatiile sunt la zi.
+
+Felicitari! Toate aplicatiile tale sunt la zi (sau depozitele sunt prea vechi).</string>
+    <string name="empty_available_app_list">Nici o aplicatie in aceasta categorie.
+
+Incercati sa selectati o categorie diferita sau sa actualizati depozitele.</string>
+    <string name="empty_installed_app_list">Nici o aplicatie instalata.
+
+Exista aplicatii pe acest dispozitiv, dar nu sunt disponibile din F-Droid. Asta din cauza ca trebuie sa actualizati depozitele sau poate depozitele chiar nu contin aplicatiile dumneavoastra.</string>
+    <string name="repo_disabled_notification">%1$s dezactivat.
+
+Va trebui
+ sa reactivati acest depozit pentru a putea instala aplicatii din el.</string>
+    <string name="repo_confirm_delete_body">Stergerea unui depozit presupune
+ ca aplicatiile din el sa nu mai fi disponibile din F-Droid.
+
+Nota: Toate
+ aplicatiile instalate anterior vor ramane pe dispozitivul dumneavoastra.</string>
+    <string name="repo_not_yet_updated">Acest depozit nu a fost folosit inca.
+ Trebuie sa il activati pentru a putea vedea ce aplicatii are disponibile.</string>
+    <string name="unsigned_description">Asta inseamna ca lista
+ de aplicatii nu a putut fi verificata. Ar trebui sa fiti atenti
+ cu aplicatiile descarcate din indexuri nesemnate.</string>
+    <string name="warning_no_internet">Nu se poate face actualizarea, exista conexiune la internet?</string>
+    <string name="versions">Versiuni</string>
+    <string name="app_details_donate_prompt">%1$s creat de %2$s. Cumpara-le o cafea!</string>
+
+    <string name="app_details_donate_prompt_unknown_author">Cumpara dezvoltatorului %1$s o cafea!</string>
+    <string name="repositories_summary">Adaugă surse adiționale de aplicații</string>
+    <string name="notification_title_single_update_available">Actualizare disponibila</string>
+    <string name="notification_title_single_ready_to_install">Pregatit de instalare</string>
+    <string name="notification_title_single_ready_to_install_update">Actualizare pregătită de instalare</string>
+    <string name="notification_title_single_install_error">Instalarea a eșuat</string>
+    <string name="notification_content_single_downloading">Descărcare \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Descărcare actualizare pentru \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Instalare \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Instalare reușită</string>
+    <string name="notification_content_single_install_error">Instalarea a eșuat</string>
+    <string name="notification_summary_updates">%1$d actualizări</string>
+    <string name="notification_summary_installed">%1$d aplicații instalate</string>
+    <string name="notification_title_summary_update_available">Actualizare disponibila</string>
+    <string name="notification_title_summary_downloading">Descărcare…</string>
+    <string name="notification_title_summary_downloading_update">Descărcare actualizare…</string>
+    <string name="notification_title_summary_ready_to_install">Pregătit de instalare</string>
+    <string name="notification_title_summary_ready_to_install_update">Actualizare pregătita de instalare</string>
+    <string name="notification_title_summary_installing">Se instalează</string>
+    <string name="notification_title_summary_installed">Instalare reușită</string>
+    <string name="notification_title_summary_install_error">Instalarea a eșuat</string>
+    <string name="notification_action_update">Actualizare</string>
+    <string name="notification_action_cancel">Anulează</string>
+    <string name="notification_action_install">Instalare</string>
+
+<string name="tts_category_name">Categorie %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Vezi singura aplicație din categoria %2$s</item>
+	<item quantity="few">Vezi toate cele %1$d aplicații din categoria %2$s</item>
+	<item quantity="other">Vezi toate cele %1$d de aplicații din categoria %2$s</item>
+</plurals>
+<plurals name="details_last_update_days">
+	<item quantity="one">Actualizate azi</item>
+	<item quantity="few">Actualizate acum %1$ zile</item>
+	<item quantity="other">Actualizate acum %1$ zile</item>
+</plurals>
+</resources>

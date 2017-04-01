@@ -387,4 +387,58 @@
     <string name="hide_anti_feature_apps">Позначати додатки з не бажаним функціоналом</string>
     <string name="hide_anti_feature_apps_on">Позначати сірим додатки, які потребують не бажаний функціонал</string>
     <string name="warning_no_internet">Не можливо оновитися, чи підключено пристрій до інтернету?</string>
+    <string name="repositories_summary">Додати додаткові джерела для додатку</string>
+    <string name="notification_title_single_update_available">Доступне оновлення</string>
+    <string name="notification_title_single_ready_to_install">Готове до встановлення</string>
+    <string name="notification_title_single_ready_to_install_update">Оновлення готове до встановлення</string>
+    <string name="notification_title_single_install_error">Помилка встановлення</string>
+    <string name="notification_content_single_downloading">Завантаження \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Завантаження оновлення для \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Встановлення \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Встановлено</string>
+    <string name="notification_content_single_install_error">Помилка встановлення</string>
+    <string name="notification_summary_updates">Оновлень: %1$d</string>
+    <string name="notification_summary_installed">Додатків встановлено: %1$d</string>
+    <string name="notification_title_summary_update_available">Доступне оновлення</string>
+    <string name="notification_title_summary_downloading">Завантаження…</string>
+    <string name="notification_title_summary_downloading_update">Завантаження оновлення…</string>
+    <string name="notification_title_summary_ready_to_install">Готове до встановлення</string>
+    <string name="notification_title_summary_ready_to_install_update">Оновлення готове до встановлення</string>
+    <string name="notification_title_summary_installing">Встановлення</string>
+    <string name="notification_title_summary_installed">Встановлено</string>
+    <string name="notification_title_summary_install_error">Помилка встановлення</string>
+    <string name="notification_action_update">Оновити</string>
+    <string name="notification_action_cancel">Скасувати</string>
+    <string name="notification_action_install">Встановити</string>
+
+<string name="app_details_donate_prompt">%1$s результат роботи %2$s. Пригости його кавою!</string>
+
+    <string name="app_version_x_available">Доступна версія %1$s</string>
+    <string name="app_version_x_installed">Версія %1$s</string>
+    <string name="app_recommended_version_installed">Версія %1$s (Рекомендовано)</string>
+    <string name="app__newly_added">Нова</string>
+
+    <string name="installed_apps__activity_title">Встановлені додатки</string>
+    <string name="installed_app__updates_ignored">Оновлення проігноровані</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Ігнорувати оновлення для версії %1$s</string>
+
+    <plurals name="my_apps_header_number_of_updateable">
+	<item quantity="one">%1$d оновлення</item>
+	<item quantity="few">%1$d оновлення</item>
+	<item quantity="many">%1$d оновлень</item>
+	<item quantity="other"></item>
+</plurals>
+
+    <string name="clear_search">Очистити пошук</string>
+
+    <string name="main_menu__latest_apps">Останні</string>
+    <string name="main_menu__categories">Категорії</string>
+    <string name="main_menu__swap_nearby">Сусідні</string>
+
+    <string name="preference_category__my_apps">Мої додатки</string>
+    <string name="preference_manage_installed_apps">Керування встановленими додатками</string>
+
+
+    <string name="tts_category_name">Категорія %1$s</string>
+
     </resources>
