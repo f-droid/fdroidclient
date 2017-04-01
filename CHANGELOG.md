@@ -1,5 +1,9 @@
 ### 0.102.3 (2017-04-01)
 
+* Fix issue with installing from the wrong repo (#909)
+
+* Allow F-Droid to update Privileged Extension (#911)
+
 * Ignore errors that are likely due to filesystem corruption (#855)
 
 * Improve installs/uninstalls with Privileged Extension on 7.x
