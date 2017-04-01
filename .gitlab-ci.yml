@@ -1,4 +1,4 @@
-image: fdroid/ci:client-20161023
+image: registry.gitlab.com/fdroid/ci-images:client
 
 cache:
   paths:
@@ -7,13 +7,21 @@ cache:
 
 before_script:
   - export GRADLE_USER_HOME=$PWD/.gradle
+  - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdkVersion\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
+  - echo y | android --silent update sdk --no-ui --filter android-${ANDROID_COMPILE_SDK}
 
 test:
   script:
+    - cd app
+    - ./tools/langs-list-check.py
+    - ./tools/check-string-format.py
+    - cd ..
     - ./gradlew assemble -PdisablePreDex
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
     - ./gradlew lint -PdisablePreDex
+    - ./gradlew pmd -PdisablePreDex
+    - ./gradlew checkstyle -PdisablePreDex
     - ./gradlew test -PdisablePreDex || {
           for log in app/build/reports/*ests/*/*ml; do
               echo "read $log here:";
@@ -26,6 +34,7 @@ connected10:
   variables:
     AVD_SDK: "10"
   script:
+    - ./gradlew assembleDebug -PdisablePreDex
     - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &
@@ -47,7 +56,8 @@ connected24:
   variables:
     AVD_SDK: "24"
   script:
-    - emulator64-arm -avd fcl-test-$AVD_SDK -no-skin -no-audio -no-window &
+    - ./gradlew assembleDebug -PdisablePreDex
+    - emulator64-arm -avd fcl-test-$AVD_SDK -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &
     - export EXITVALUE=0
@@ -63,24 +73,6 @@ connected24:
         cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
       done
     - exit $EXITVALUE
-
-pmd:
-  script:
-    - ./gradlew pmd -PdisablePreDex
-
-checkstyle:
-  script:
-    - ./gradlew checkstyle -PdisablePreDex
-
-tools:
-  before_script:
-    - echo "ignored, no gradle needed"
-  script:
-    - cd app
-    - ./tools/langs-list-check.py
-    - ./tools/check-string-format.py
-  after_script:
-    - echo "ignored, no gradle needed"
 
 after_script:
     # this file changes every time but should not be cached
