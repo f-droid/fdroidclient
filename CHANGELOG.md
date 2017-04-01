@@ -1,3 +1,21 @@
+### 0.102.3 (2017-04-01)
+
+* Ignore errors that are likely due to filesystem corruption (#855)
+
+* Improve installs/uninstalls with Privileged Extension on 7.x
+
+### 0.102.2 (2017-03-14)
+
+* Fix installing with Privileged Extension on 7.x
+
+* Detect app updates via sytem OTA updates (#819)
+
+### 0.102.1 (2017-02-24)
+
+* Detect installed/uninstalled state more reliably (#854)
+
+* Ensure dark theme gets applied everywhere (#750)
+
 ### 0.102 (2016-11-28)
 
 * Optionally keep install history
