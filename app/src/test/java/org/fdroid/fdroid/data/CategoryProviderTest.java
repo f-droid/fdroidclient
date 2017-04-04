@@ -44,8 +44,7 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.dog.rock.apple", "Dog-Rock-Apple", "Animal,Mineral,Vegetable", mainRepo);
         insertAppWithCategory("com.banana.apple", "Banana", "Vegetable,Vegetable", mainRepo);
 
-        List<String> categories = CategoryProvider.Helper.categories(context);
-        String[] expected = new String[] {
+        String[] expectedFDroid = new String[] {
                 context.getResources().getString(R.string.category_Whats_New),
                 context.getResources().getString(R.string.category_Recently_Updated),
                 context.getResources().getString(R.string.category_All),
@@ -56,13 +55,8 @@ public class CategoryProviderTest extends FDroidProviderTest {
                 "Vegetable",
                 "Writing",
         };
-        assertContainsOnly(categories, expected);
 
-        insertAppWithCategory("info.guardianproject.notepadbot", "NoteCipher", "Office,GuardianProject", gpRepo);
-        assertContainsOnly(CategoryProvider.Helper.categories(context), expected);
-
-        RepoProvider.Helper.purgeApps(context, new MockRepo(mainRepo));
-        String[] expectedGp = new String[] {
+        String[] expectedGP = new String[] {
                 context.getResources().getString(R.string.category_Whats_New),
                 context.getResources().getString(R.string.category_Recently_Updated),
                 context.getResources().getString(R.string.category_All),
@@ -70,8 +64,29 @@ public class CategoryProviderTest extends FDroidProviderTest {
                 "GuardianProject",
                 "Office",
         };
+
+        // We overwrite "Security" + "Writing" with "GuardianProject" + "Office"
+        String[] expectedBoth = new String[] {
+                context.getResources().getString(R.string.category_Whats_New),
+                context.getResources().getString(R.string.category_Recently_Updated),
+                context.getResources().getString(R.string.category_All),
+
+                "Animal",
+                "Mineral",
+                "Vegetable",
+
+                "GuardianProject",
+                "Office",
+        };
+
+        assertContainsOnly(CategoryProvider.Helper.categories(context), expectedFDroid);
+
+        insertAppWithCategory("info.guardianproject.notepadbot", "NoteCipher", "Office,GuardianProject", gpRepo);
+        assertContainsOnly(CategoryProvider.Helper.categories(context), expectedBoth);
+
+        RepoProvider.Helper.purgeApps(context, new MockRepo(mainRepo));
         List<String> categoriesAfterPurge = CategoryProvider.Helper.categories(context);
-        assertContainsOnly(categoriesAfterPurge, expectedGp);
+        assertContainsOnly(categoriesAfterPurge, expectedGP);
     }
 
     @Test

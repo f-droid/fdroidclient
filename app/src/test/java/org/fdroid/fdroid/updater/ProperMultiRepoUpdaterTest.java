@@ -95,15 +95,15 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
 
     @Test
     public void metadataWithRepoPriority() throws RepoUpdater.UpdateException {
-        updateConflicting();
         updateMain();
         updateArchive();
+        updateConflicting();
 
-        Repo conflictingRepo = RepoProvider.Helper.findByAddress(context, REPO_CONFLICTING_URI);
+        Repo mainRepo = RepoProvider.Helper.findByAddress(context, REPO_MAIN_URI);
 
-        assertEquals(1, conflictingRepo.priority);
-        assertEquals(2, RepoProvider.Helper.findByAddress(context, REPO_MAIN_URI).priority);
-        assertEquals(3, RepoProvider.Helper.findByAddress(context, REPO_ARCHIVE_URI).priority);
+        assertEquals(1, mainRepo.priority);
+        assertEquals(2, RepoProvider.Helper.findByAddress(context, REPO_ARCHIVE_URI).priority);
+        assertEquals(3, RepoProvider.Helper.findByAddress(context, REPO_CONFLICTING_URI).priority);
 
         assertMainRepo();
         assertMainArchiveRepoMetadata();
@@ -114,9 +114,9 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         // Make the conflicting repo less important than the main repo.
         ContentValues values = new ContentValues(1);
         values.put(Cols.PRIORITY, 5);
-        RepoProvider.Helper.update(context, conflictingRepo, values);
-        Repo updatedConflictingRepo = RepoProvider.Helper.findByAddress(context, REPO_CONFLICTING_URI);
-        assertEquals(5, updatedConflictingRepo.priority);
+        RepoProvider.Helper.update(context, mainRepo, values);
+        Repo updatedMainRepo = RepoProvider.Helper.findByAddress(context, REPO_MAIN_URI);
+        assertEquals(5, updatedMainRepo.priority);
 
         assertRepoTakesPriority("Normal");
     }
