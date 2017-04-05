@@ -448,14 +448,15 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     private final BroadcastReceiver onInstallAction = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (currentApp == null || installButton == null) {
+            Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
+            if (currentApp == null || !TextUtils.equals(apk.packageName, currentApp.packageName)) {
                 return;
             }
 
             configureAppName(currentApp);
+            configureActionButton(currentApp);
 
-            Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
-            if (!TextUtils.equals(apk.packageName, currentApp.packageName)) {
+            if (installButton == null) {
                 return;
             }
 
