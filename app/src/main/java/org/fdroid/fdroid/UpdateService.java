@@ -90,6 +90,8 @@ public class UpdateService extends IntentService {
     private NotificationCompat.Builder notificationBuilder;
     private AppUpdateStatusManager appUpdateStatusManager;
 
+    private static boolean updating;
+
     public UpdateService() {
         super("UpdateService");
     }
@@ -134,6 +136,14 @@ public class UpdateService extends IntentService {
             Utils.debugLog(TAG, "Update scheduler alarm not set");
         }
 
+    }
+
+    /**
+     * Whether or not a repo update is currently in progress. Used to show feedback throughout
+     * the app to users, so they know something is happening.
+     */
+    public static boolean isUpdating() {
+        return updating;
     }
 
     @Override
@@ -365,6 +375,7 @@ public class UpdateService extends IntentService {
                 return;
             }
 
+            updating = true;
             notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
             LocalBroadcastManager.getInstance(this).registerReceiver(updateStatusReceiver,
                     new IntentFilter(LOCAL_ACTION_STATUS));
@@ -452,6 +463,8 @@ public class UpdateService extends IntentService {
         } catch (Exception e) {
             Log.e(TAG, "Exception during update processing", e);
             sendStatus(this, STATUS_ERROR_GLOBAL, e.getMessage());
+        } finally {
+            updating = false;
         }
 
         long time = System.currentTimeMillis() - startTime;
