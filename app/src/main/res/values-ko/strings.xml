@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Wi-Fi에 연결되어 있을 때만 자동으로 앱 목록 업데이트</string>
   <string name="notify">업데이트 알림</string>
   <string name="notify_on">새로운 업데이트가 가능할 때 알림</string>
-  <string name="update_history">이력 업데이트</string>
-  <string name="update_history_summ">최신 앱이라고 간주할 날짜: %s</string>
   <string name="system_installer">권한 확장</string>
   <string name="system_installer_on">패키지의 설치, 업데이트, 제거를 위해 특별 권한 확장 사용</string>
   <string name="local_repo_name">로컬 저장소의 이름</string>

@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Bare oppdater automatisk når tilknyttet Wi-Fi</string>
   <string name="notify">Varsle</string>
   <string name="notify_on">Varsle når nye oppdateringer er tilgjengelige</string>
-  <string name="update_history">Oppdater historikk</string>
-  <string name="update_history_summ">Dager nytt innhold skal anses som ferskt: %s</string>
   <string name="system_installer">Priviligert tillegg</string>
   <string name="system_installer_on">Bruk priviligert tillegg til å installere, oppdatere, og fjerne programmer</string>
   <string name="local_repo_name">Navn på lokal pakkebrønn</string>

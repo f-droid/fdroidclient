@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Chỉ tự động cập nhật danh sách ứng dụng khi dùng Wi-Fi</string>
   <string name="notify">Thông báo cập nhật</string>
   <string name="notify_on">Hiện thông báo khi có bản cập nhật</string>
-  <string name="update_history">Lịch sử cập nhật</string>
-  <string name="update_history_summ">Ứng dụng sẽ được xem là mới nếu được thêm hoặc cập nhật trong vòng %s ngày</string>
   <string name="system_installer">Phần mở rộng được cấp quyền</string>
   <string name="system_installer_on">Dùng phần mở rộng được cấp quyền của F-Droid để cài đặt, cập nhật và gỡ bỏ ứng dụng</string>
   <string name="local_repo_name">Tên kho ứng dụng nội bộ</string>

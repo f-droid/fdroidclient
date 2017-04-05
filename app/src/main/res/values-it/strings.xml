@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Aggiorna automaticamente gli elenchi applicazioni solo via Wi-Fi</string>
   <string name="notify">Notifiche aggiornamenti</string>
   <string name="notify_on">Mostra una notifica quando sono disponibili aggiornamenti</string>
-  <string name="update_history">Aggiorna la cronologia</string>
-  <string name="update_history_summ">Numero di giorni per considerare le applicazioni nuove o recenti: %s</string>
   <string name="system_installer">Estensione priviliegiata</string>
   <string name="system_installer_on">Usa l\'estensione privilegiata di F-Droid per installare, aggiornare e rimuovere i pacchetti</string>
   <string name="local_repo_name">Nome del tuo repo locale</string>

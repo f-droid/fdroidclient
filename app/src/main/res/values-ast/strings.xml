@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Auto-anovar namái en redes non midíes como Wi-Fi</string>
   <string name="notify">Avisos d\'anovamientos</string>
   <string name="notify_on">Amuesa un avisu cuando tán disponibles anovamientos</string>
-  <string name="update_history">Anovar historia</string>
-  <string name="update_history_summ">Díes pa considerar a les aplicaciones nueves o recientes: %s</string>
   <string name="system_installer">Estensión con privilexos</string>
   <string name="system_installer_on">Usa la estensión F-droid con privilexos pa instalar, anovar y desaniciar paquetes</string>
   <string name="local_repo_name">Nome del to repositoriu llocal</string>

@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">仅当 Wi-Fi 等非计量网络可用时自动更新</string>
   <string name="notify">通知更新</string>
   <string name="notify_on">当更新可用时显示通知</string>
-  <string name="update_history">更新历史</string>
-  <string name="update_history_summ">进入新应用及最近更新目录的时间限制：%s 天以内</string>
   <string name="system_installer">特权扩展</string>
   <string name="app_details">应用程序详情</string>
   <string name="no_such_app">未找到此类应用程序。</string>

@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Wi-Fiなどの従量課金されないﾈｯﾄﾜｰｸでのみ自動更新を行います</string>
   <string name="notify">更新通知</string>
   <string name="notify_on">更新があれば通知を表示します</string>
-  <string name="update_history">更新履歴</string>
-  <string name="update_history_summ">ｱﾌﾟﾘｹｰｼｮﾝが新しいものだと判断する日数:%s日</string>
   <string name="system_installer">特権拡張</string>
   <string name="system_installer_on">F-Droid 特権拡張を使用してﾊﾟｯｹｰｼﾞのｲﾝｽﾄｰﾙ､更新､および削除をします｡</string>
   <string name="local_repo_name">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘの名前</string>

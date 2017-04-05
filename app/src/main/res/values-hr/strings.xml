@@ -22,8 +22,6 @@
     <string name="update_auto_download_summary">Preuzmi datoteke ažuriranja u pozadini</string>
     <string name="notify">Obavijesti ažuriranja</string>
     <string name="notify_on">Pokaži obavijest kad su dostupna ažuriranja</string>
-    <string name="update_history">Povijest ažuriranja</string>
-    <string name="update_history_summ">Dana koliko se aplikacije smatraju novima: %s</string>
     <string name="system_installer">Povlašteno proširenje</string>
     <string name="system_installer_on">Koristite F-Droidovo povlašteno proširenje kako bi instalirali, ažurirali i uklonili pakete</string>
     <string name="uninstall_system">Ažuriraj/ukloni povlašteno proširenje</string>

@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Agiorna automaticamente sa lista de sas aplicatziones petzi si b\'est su wifi</string>
   <string name="notify">Notìficas de agiornamentu</string>
   <string name="notify_on">Averte cando bi sunt agiornamentos disponìbiles</string>
-  <string name="update_history">Istòria de sos agiornamentos</string>
-  <string name="update_history_summ">Nùmeru de dies pro che cunsiderare sas aplicatzione noas o reghentes: %s</string>
   <string name="system_installer">Estensione cun permissos de sistema</string>
   <string name="system_installer_on">Imprea sos permissos de sistema pro installare, agiornare, e remòvere pachetos</string>
   <string name="local_repo_name">Nùmene de su Depòsitu Locale tuo</string>

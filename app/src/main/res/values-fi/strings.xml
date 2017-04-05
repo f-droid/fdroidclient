@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Päivitä automaattisesti vain rajoittamattomissa verkoissa, kuten Wi-Fi</string>
   <string name="notify">Päivitysimoitukset</string>
   <string name="notify_on">Näytä iIlmoitus, kun päivityksiä on saatavilla</string>
-  <string name="update_history">Päivityshistoria</string>
-  <string name="update_history_summ">Päivien määrä, jolloin sovellus näytetään uutena: %s</string>
   <string name="system_installer">Etuoikeutettu laajennus</string>
   <string name="system_installer_on">Käytä F-Droid Privileged Extensionia asentamiseen, päivittämiseen ja pakettien poistamiseen</string>
   <string name="local_repo_name">Paikallisen sovelluslähteesi nimi</string>

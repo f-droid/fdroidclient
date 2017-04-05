@@ -10,8 +10,6 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.SocketAddress;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +45,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_UPD_WIFI_ONLY = "updateOnWifiOnly";
     public static final String PREF_AUTO_DOWNLOAD_INSTALL_UPDATES = "updateAutoDownload";
     public static final String PREF_UPD_NOTIFY = "updateNotify";
-    public static final String PREF_UPD_HISTORY = "updateHistoryDays";
     public static final String PREF_ROOTED = "rooted";
     public static final String PREF_HIDE_ANTI_FEATURE_APPS = "hideAntiFeatureApps";
     public static final String PREF_INCOMP_VER = "incompatibleVersions";
@@ -72,7 +69,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private static final boolean DEFAULT_ROOTED = true;
     private static final boolean DEFAULT_HIDE_ANTI_FEATURE_APPS = false;
-    private static final int DEFAULT_UPD_HISTORY = 14;
     private static final boolean DEFAULT_PRIVILEGED_INSTALLER = true;
     //private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final long DEFAULT_KEEP_CACHE_TIME = TimeUnit.DAYS.toMillis(1);
@@ -103,7 +99,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private final List<ChangeListener> filterAppsRequiringRootListeners = new ArrayList<>();
     private final List<ChangeListener> filterAppsRequiringAntiFeaturesListeners = new ArrayList<>();
-    private final List<ChangeListener> updateHistoryListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoNameListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoHttpsListeners = new ArrayList<>();
     private final List<ChangeListener> unstableUpdatesListeners = new ArrayList<>();
@@ -295,23 +290,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     /**
-     * Calculate the cutoff date we'll use for What's New and Recently
-     * Updated...
-     */
-    public Date calcMaxHistory() {
-        final String daysString = preferences.getString(PREF_UPD_HISTORY, Integer.toString(DEFAULT_UPD_HISTORY));
-        int maxHistoryDays;
-        try {
-            maxHistoryDays = Integer.parseInt(daysString);
-        } catch (NumberFormatException e) {
-            maxHistoryDays = DEFAULT_UPD_HISTORY;
-        }
-        Calendar recent = Calendar.getInstance();
-        recent.add(Calendar.DAY_OF_YEAR, -maxHistoryDays);
-        return recent.getTime();
-    }
-
-    /**
      * This is cached as it is called several times inside app list adapters.
      * Providing it here means the shared preferences file only needs to be
      * read once, and we will keep our copy up to date by listening to changes
@@ -379,11 +357,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                     listener.onPreferenceChange();
                 }
                 break;
-            case PREF_UPD_HISTORY:
-                for (ChangeListener listener : updateHistoryListeners) {
-                    listener.onPreferenceChange();
-                }
-                break;
             case PREF_LOCAL_REPO_NAME:
                 for (ChangeListener listener : localRepoNameListeners) {
                     listener.onPreferenceChange();
@@ -400,14 +373,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 }
                 break;
         }
-    }
-
-    public void registerUpdateHistoryListener(ChangeListener listener) {
-        updateHistoryListeners.add(listener);
-    }
-
-    public void unregisterUpdateHistoryListener(ChangeListener listener) {
-        updateHistoryListeners.remove(listener);
     }
 
     public void registerLocalRepoNameListeners(ChangeListener listener) {

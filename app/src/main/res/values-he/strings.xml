@@ -14,8 +14,6 @@
     <string name="automatic_scan_wifi_on">עדכון רשימות יישומונים אוטומטית רק על גבי Wi-Fi</string>
     <string name="notify">התראות עדכון</string>
     <string name="notify_on">הצג התראה כאשר עדכונים זמינים</string>
-    <string name="update_history">היסטוריית עדכון</string>
-    <string name="update_history_summ">ימים כדי להחשיב אפליקציות כחדשות או אחרונות: %s</string>
     <string name="system_installer">הרחבה מועדפת</string>
     <string name="system_installer_on">השתמש בהרחבת F-Droid מועדפת כדי להתקין, לעדכן, ולהסיר חבילות</string>
     <string name="uninstall_system">בטל התקנת או עדכן הרחבה מועדפת</string>

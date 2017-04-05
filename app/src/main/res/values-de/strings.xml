@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Anwendungsliste nur über gebührenfreie Netze wie WLAN automatisch aktualisieren</string>
   <string name="notify">Aktualisierungsbenachrichtigung</string>
   <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
-  <string name="update_history">Aktualisierungsverlauf</string>
-  <string name="update_history_summ">Anzahl in Tagen, an denen neue oder kürzlich geänderte Anwendungen angezeigt werden: %s</string>
   <string name="system_installer">Privilegierte Erweiterung</string>
   <string name="system_installer_on">Privilegierte F-Droid-Erweiterung verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
   <string name="local_repo_name">Name Ihrer lokalen Paketquelle</string>

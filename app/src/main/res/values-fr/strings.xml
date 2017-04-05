@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Mise à jour automatique de la liste d\'applis uniquement via Wi-Fi</string>
   <string name="notify">Notifications de mise à jour</string>
   <string name="notify_on">Afficher une notification quand des mises à jour sont disponibles</string>
-  <string name="update_history">Historique des mises à jour</string>
-  <string name="update_history_summ">Nombre de jours durant lesquels les applis sont considérées nouvelles ou récentes : %s</string>
   <string name="system_installer">Permissions étendues</string>
   <string name="system_installer_on">Utiliser F-Droid Privileged Extension pour installer, mettre à jour et supprimer des paquets</string>
   <string name="local_repo_name">Nom de votre dépôt local</string>

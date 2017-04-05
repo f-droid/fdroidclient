@@ -10,7 +10,6 @@
 
     <string name="update_interval">Intervali i përditësimeve automatike</string>
     <string name="automatic_scan_wifi">Vetëm me Wi-Fi</string>
-    <string name="update_history">Kronologjia e përditësimeve</string>
     <string name="about_title">Rreth F-Droid</string>
     <string name="about_version">Versioni:</string>
     <string name="about_source">Burimi:</string>

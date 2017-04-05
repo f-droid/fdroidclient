@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Update alleen automatisch op verbinding zonder datalimiet zoals wifi</string>
   <string name="notify">Updatemeldingen</string>
   <string name="notify_on">Toon een melding wanneer er updates beschikbaar zijn</string>
-  <string name="update_history">Updategeschiedenis</string>
-  <string name="update_history_summ">Dagen om apps als nieuw/recent weer te geven: %s</string>
   <string name="system_installer">Extensie voor systeemrechten</string>
   <string name="system_installer_on">Gebruik de extensie voor systeemrechten om pakketten te installeren, updaten en verwijderen</string>
   <string name="local_repo_name">Naam van collectie gedeelde apps</string>

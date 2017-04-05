@@ -48,8 +48,6 @@
     <string name="automatic_scan_wifi">Тільки через Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Автоматично оновлювати списки програм тільки через не лімітовані мережі, такі як Wi-Fi</string>
     <string name="notify_on">Показувати сповіщення коли є доступні оновлення</string>
-    <string name="update_history">Історія оновлень</string>
-    <string name="update_history_summ">Скільки днів вважати програму новою чи нещодавньою: %s</string>
     <string name="system_installer">Привілейоване розширення</string>
     <string name="system_installer_on">Використовувати привілейоване розширення F-Droid для встановлення, оновлення та видалення пакетів</string>
     <string name="uninstall_system">Оновити/Видалити привілейоване розширення F-Droid</string>

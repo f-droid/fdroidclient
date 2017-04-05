@@ -19,8 +19,6 @@
     <string name="update_auto_install_summary">Sækja uppfærslur og uppfæra forrit í bakgrunni</string>
     <string name="notify">Tilkynningar um uppfærslur</string>
     <string name="notify_on">Birta tilkynningu þegar uppfærslur eru tiltækar</string>
-    <string name="update_history">Uppfæra feril</string>
-    <string name="update_history_summ">Fjöldi daga sem forrit teljast nýleg: %s</string>
     <string name="system_installer">Forgangsviðbót</string>
     <string name="local_repo_name">Heiti staðværa hugbúnaðarsafnsins þíns</string>
     <string name="local_repo_https">Nota einkatengingu</string>

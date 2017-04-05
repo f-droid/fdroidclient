@@ -14,8 +14,6 @@
   <string name="automatic_scan_wifi_on">Actualitzeu la llista d\'aplicacions en xarxes sense limitació de tràfic com les Wi-Fi</string>
   <string name="notify">Notificacions d\'actualitzacions</string>
   <string name="notify_on">Ensenya una notificació quan hi hagi actualitzacions disponibles</string>
-  <string name="update_history">Actualitzacions</string>
-  <string name="update_history_summ">Les aplicacions es consideren noves o recents durant: %s dies</string>
   <string name="system_installer">Extensió Privilegiada</string>
   <string name="system_installer_on">Instal·la, actualitza i suprimeix paquets fent servir l\'extensió privilegiada de l\'F-Droid</string>
   <string name="local_repo_name">Nom del vostre dipòsit local</string>

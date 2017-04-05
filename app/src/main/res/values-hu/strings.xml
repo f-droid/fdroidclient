@@ -13,8 +13,6 @@
   <string name="automatic_scan_wifi_on">Automatikus alkalmazáslista-frissítés csak korlátlan kapcsolatokon, pl. Wi-Fi-n keresztül</string>
   <string name="notify">Frissítési értesítések</string>
   <string name="notify_on">Értesít ha frissítés érhető el</string>
-  <string name="update_history">Frissítési előzmények</string>
-  <string name="update_history_summ">Hány napig tekintse az appot frissnek vagy újnak: %s</string>
   <string name="app_details">App részletei</string>
   <string name="no_such_app">Nem található ilyen app.</string>
   <string name="about_title">Az F-Droid</string>

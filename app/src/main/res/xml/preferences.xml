@@ -40,12 +40,6 @@
         <CheckBoxPreference android:title="@string/notify"
             android:defaultValue="true"
             android:key="updateNotify" />
-        <EditTextPreference
-            android:defaultValue="14"
-            android:key="updateHistoryDays"
-            android:maxLength="2"
-            android:numeric="integer"
-            android:title="@string/update_history" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/display">
         <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/pref_language"

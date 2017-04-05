@@ -13,8 +13,6 @@
   <string name="automatic_scan_wifi_on">Automaticky aktualizovat jen na nezpoplatněných sítích, jako např. Wi-Fi</string>
   <string name="notify">Upozornění na aktualizace</string>
   <string name="notify_on">Upozornit, pokud jsou dostupné aktualizace</string>
-  <string name="update_history">Historie aktualizací</string>
-  <string name="update_history_summ">Počet dnů, po které je aplikace vedena jako nová nebo nedávná: %s</string>
   <string name="system_installer">Privilegovaná rozšíření</string>
   <string name="system_installer_on">Použít privilegovaná rozšíření F-Droid k instalování, aktualizaci a odebírání balíčků</string>
   <string name="local_repo_name">Název místního repozitáře</string>

@@ -13,7 +13,6 @@
     <string name="update_interval">อัพเดตข้อมูลอัตโนมัติทุกๆ</string>
     <string name="automatic_scan_wifi">เฉพาะตอนมีสัญญาณ WiFi</string>
     <string name="update_auto_download">ดาวน์โหลดอัพเดตโดยอัตโนมัติ</string>
-    <string name="update_history">ประวัติการอัพเดต</string>
     <string name="local_repo_name">ชื่อที่ตั้งให้แหล่งโปรแกรมจากเครื่องคุณ</string>
     <string name="login_name">ชื่อผู้ใช้</string>
     <string name="login_password">รหัสผ่าน</string>
@@ -239,7 +238,6 @@
     <string name="update_auto_download_summary">ทำการดาวน์โหลดอัพเดตโปรแกรมแบบเบื้องหลัง</string>
     <string name="notify">การแจ้งเตือนอัพเดต</string>
     <string name="notify_on">แสดงการแจ้งเตือนเมื่อมีอัพเดตให้ดาวน์โหลด</string>
-    <string name="update_history_summ">ถือว่าโปรแกรมที่เพิ่งมีใน %s วัน เป็นโปรแกรมใหม่</string>
     <string name="local_repo_name_summary">ฃื่อของแหล่งโปรแกรมในเครื่องที่แสดงสู่ภายนอก: %s</string>
     <string name="local_repo_https">ใช้การเชื่อมต่อที่เป็นส่วนตัว</string>
     <string name="local_repo_https_on">ใช้การเชื่อมต่อ HTTPS:// ที่เข้ารหัส กับแหล่งโปรแกรมจากในเครื่อง</string>

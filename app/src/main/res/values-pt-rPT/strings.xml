@@ -19,8 +19,6 @@
     <string name="automatic_scan_wifi_on">Atualizar lista de aplicações se estiver ligado a redes Wi-Fi</string>
     <string name="notify">Notificação de atualizações</string>
     <string name="notify_on">Mostrar uma notificação se existirem atualizações disponíveis</string>
-    <string name="update_history">Histórico de atualizações</string>
-    <string name="update_history_summ">Dias para considerar aplicações como novas ou recentes: %s</string>
     <string name="system_installer">Extensão privilegiada</string>
     <string name="system_installer_on">Utilizar a extensão privilegiada do F-Droid para instalar, atualizar e remover pacotes</string>
     <string name="uninstall_system">Atualizar/desinstalar extensão privilegiada</string>

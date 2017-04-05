@@ -19,8 +19,6 @@
     <string name="automatic_scan_wifi_on">Opdater kun automatisk på ubegrænsede netværk som WI-FI</string>
     <string name="notify">Opdateringsnotifikationer</string>
     <string name="notify_on">Vis en notifikation når opdateringer er tilgængelige</string>
-    <string name="update_history">Opdateringshistorik</string>
-    <string name="update_history_summ">Dage hvor programmer opfattes som nye eller nylige: %s</string>
     <string name="system_installer">Privilegeret Udvidelse</string>
     <string name="system_installer_on">Brug F-Droid Privilegeret Udvidelse til at installere, opdatere og fjerne pakker</string>
     <string name="uninstall_system">Opdater/Afinstaller Privilegeret Udvidelse</string>
