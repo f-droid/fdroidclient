@@ -78,10 +78,6 @@
         android:orientation="horizontal"
         android:paddingTop="@dimen/category_preview__app_list__padding__vertical"
         android:paddingBottom="@dimen/category_preview__app_list__padding__vertical"
-        android:clipToPadding="false"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:clipToPadding="false" />
 
 </android.support.constraint.ConstraintLayout>
