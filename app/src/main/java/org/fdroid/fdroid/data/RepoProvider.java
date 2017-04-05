@@ -16,6 +16,7 @@ import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class RepoProvider extends FDroidProvider {
@@ -249,6 +250,40 @@ public class RepoProvider extends FDroidProvider {
                 }
                 cursor.close();
             }
+            return count;
+        }
+
+        @Nullable
+        public static Date lastUpdate(Context context) {
+            ContentResolver resolver = context.getContentResolver();
+            final String[] projection = {Cols.LAST_UPDATED};
+            final String selection = Cols.IN_USE + " = 1";
+            Cursor cursor = resolver.query(getContentUri(), projection, selection, null, Cols.LAST_UPDATED + " DESC");
+
+            Date lastUpdate = null;
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    lastUpdate = Utils.parseDate(cursor.getString(0), null);
+                }
+                cursor.close();
+            }
+
+            return lastUpdate;
+        }
+
+        public static int countEnabledRepos(Context context) {
+            ContentResolver resolver = context.getContentResolver();
+            final String[] projection = {Cols._ID};
+            final String selection = Cols.IN_USE + " = 1";
+            Cursor cursor = resolver.query(getContentUri(), projection, selection, null, null);
+
+            int count = 0;
+            if (cursor != null) {
+                count = cursor.getCount();
+                cursor.close();
+            }
+
             return count;
         }
     }
