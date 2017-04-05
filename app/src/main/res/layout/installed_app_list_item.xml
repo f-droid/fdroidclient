@@ -7,7 +7,9 @@
     android:layout_height="wrap_content"
     android:padding="4dp"
     android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:paddingBottom="8dp"
+    android:clickable="true"
+    android:background="?attr/selectableItemBackground">
 
     <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
          when it will inevitably read out the name of the app straight after. -->
