@@ -38,6 +38,12 @@ import org.fdroid.fdroid.views.apps.FeatureImage;
  *  + {@link R.id#featured_image} ({@link ImageView}, optional)
  */
 public class AppCardController extends RecyclerView.ViewHolder implements ImageLoadingListener, View.OnClickListener {
+
+    /**
+     * After this many days, don't consider showing the "New" tag next to an app.
+     */
+    private static final int DAYS_TO_CONSIDER_NEW = 14;
+
     @NonNull
     private final ImageView icon;
 
@@ -104,7 +110,7 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
         summary.setText(Utils.formatAppNameAndSummary(app.name, app.summary));
 
         if (newTag != null) {
-            if (app.added != null && app.lastUpdated != null && app.added.equals(app.lastUpdated)) {
+            if (isConsideredNew(app)) {
                 newTag.setVisibility(View.VISIBLE);
             } else {
                 newTag.setVisibility(View.GONE);
@@ -128,6 +134,15 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
                 featuredImage.loadImageAndDisplay(ImageLoader.getInstance(), displayImageOptions, app.featureGraphic);
             }
         }
+    }
+
+    private boolean isConsideredNew(@NonNull App app) {
+        //noinspection SimplifiableIfStatement
+        if (app.added == null || app.lastUpdated == null || !app.added.equals(app.lastUpdated)) {
+            return false;
+        }
+
+        return Utils.daysSince(app.added) <= DAYS_TO_CONSIDER_NEW;
     }
 
     /**
