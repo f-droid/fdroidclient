@@ -17,15 +17,14 @@ import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.whatsnew.WhatsNewAdapter;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Loads a list of newly added or recently updated apps and displays them to the user.
@@ -123,9 +122,8 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             if (lastUpdate == null) {
                 emptyStateText.append(activity.getString(R.string.latest__empty_state__never_updated));
             } else {
-                long msDiff = Calendar.getInstance().getTimeInMillis() - lastUpdate.getTime();
-                int daysDiff = (int) TimeUnit.MILLISECONDS.toDays(msDiff);
-                emptyStateText.append(activity.getResources().getQuantityString(R.plurals.details_last_update_days, daysDiff, daysDiff));
+                int daysSince = Utils.daysSince(lastUpdate);
+                emptyStateText.append(activity.getResources().getQuantityString(R.plurals.details_last_update_days, daysSince, daysSince));
             }
         }
 

@@ -66,12 +66,14 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public final class Utils {
 
@@ -506,6 +508,14 @@ public final class Utils {
         sb.setSpan(light, appName.length(), toFormat.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         return sb;
+    }
+
+    /**
+     * Calculate the number of days since the given date.
+     */
+    public static int daysSince(@NonNull Date date) {
+        long msDiff = Calendar.getInstance().getTimeInMillis() - date.getTime();
+        return (int) TimeUnit.MILLISECONDS.toDays(msDiff);
     }
 
     // Need this to add the unimplemented support for ordered and unordered

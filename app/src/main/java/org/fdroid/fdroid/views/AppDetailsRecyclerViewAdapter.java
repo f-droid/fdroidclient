@@ -48,10 +48,8 @@ import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 public class AppDetailsRecyclerViewAdapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -405,9 +403,8 @@ public class AppDetailsRecyclerViewAdapter
                 authorView.setVisibility(View.GONE);
             }
             if (app.lastUpdated != null) {
-                long msDiff = Calendar.getInstance().getTimeInMillis() - app.lastUpdated.getTime();
-                int daysDiff = (int) TimeUnit.MILLISECONDS.toDays(msDiff);
-                lastUpdateView.setText(lastUpdateView.getContext().getResources().getQuantityString(R.plurals.details_last_update_days, daysDiff, daysDiff));
+                int daysSince = Utils.daysSince(app.lastUpdated);
+                lastUpdateView.setText(lastUpdateView.getContext().getResources().getQuantityString(R.plurals.details_last_update_days, daysSince, daysSince));
                 lastUpdateView.setVisibility(View.VISIBLE);
             } else {
                 lastUpdateView.setVisibility(View.GONE);
