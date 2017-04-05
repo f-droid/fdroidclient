@@ -159,6 +159,12 @@
     <string name="main_menu__categories">Categories</string>
     <string name="main_menu__swap_nearby">Nearby</string>
 
+    <string name="latest__empty_state__no_recent_apps">No recent apps found</string>
+    <string name="latest__empty_state__never_updated">Once your list of apps has been updated, the latest apps should show here</string>
+    <string name="latest__empty_state__no_enabled_repos">Once you enable a repository and let it update, the latest apps should show here</string>
+
+    <string name="categories__empty_state__no_categories">No categories to display</string>
+
     <string name="preference_category__my_apps">My Apps</string>
     <string name="preference_manage_installed_apps">Manage Installed Apps</string>
 

@@ -16,6 +16,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteX="8dp" />
 
+    <TextView
+        android:id="@+id/empty_state"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        style="@style/AppListEmptyText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        android:text="@string/categories__empty_state__no_categories" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/category_list"
         android:layout_width="0dp"

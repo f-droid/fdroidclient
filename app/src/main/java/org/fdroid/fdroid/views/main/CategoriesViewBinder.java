@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.CategoryProvider;
@@ -30,6 +31,8 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private final CategoryAdapter categoryAdapter;
     private final AppCompatActivity activity;
+    private final TextView emptyState;
+    private final RecyclerView categoriesList;
 
     CategoriesViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
@@ -38,7 +41,9 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
         categoryAdapter = new CategoryAdapter(activity, activity.getSupportLoaderManager());
 
-        RecyclerView categoriesList = (RecyclerView) categoriesView.findViewById(R.id.category_list);
+        emptyState = (TextView) categoriesView.findViewById(R.id.empty_state);
+
+        categoriesList = (RecyclerView) categoriesView.findViewById(R.id.category_list);
         categoriesList.setHasFixedSize(true);
         categoriesList.setLayoutManager(new LinearLayoutManager(activity));
         categoriesList.setAdapter(categoryAdapter);
@@ -77,6 +82,14 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         }
 
         categoryAdapter.setCategoriesCursor(cursor);
+
+        if (categoryAdapter.getItemCount() == 0) {
+            emptyState.setVisibility(View.VISIBLE);
+            categoriesList.setVisibility(View.GONE);
+        } else {
+            emptyState.setVisibility(View.GONE);
+            categoriesList.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
