@@ -457,8 +457,14 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                     unregisterInstallReceiver();
                     break;
                 case Installer.ACTION_INSTALL_USER_INTERACTION:
-                    PendingIntent installPendingIntent =
-                            intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                    Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
+                    if (!isAppVisible(apk.packageName)) {
+                        Utils.debugLog(TAG, "Ignore request for user interaction from installer, because " + apk.packageName + " is no longer showing.");
+                        break;
+                    }
+
+                    Utils.debugLog(TAG, "Automatically showing package manager for " + apk.packageName + " as it is being viewed by the user.");
+                    PendingIntent installPendingIntent = intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
 
                     try {
                         installPendingIntent.send();
