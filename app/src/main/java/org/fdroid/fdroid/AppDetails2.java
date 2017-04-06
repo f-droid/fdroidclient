@@ -9,8 +9,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.LocalBroadcastManager;
@@ -188,12 +190,21 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         if (app != null) {
             visiblePackageName = app.packageName;
         }
+
+        appObserver = new AppObserver(new Handler());
+        getContentResolver().registerContentObserver(
+                AppProvider.getHighestPriorityMetadataUri(app.packageName),
+                true,
+                appObserver);
+
         updateNotificationsForApp();
     }
 
     protected void onStop() {
         super.onStop();
         visiblePackageName = null;
+
+        getContentResolver().unregisterContentObserver(appObserver);
 
         // When leaving the app details, make sure to refresh app status for this app, since
         // we might want to show notifications for it now.
@@ -432,7 +443,9 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 case Installer.ACTION_INSTALL_COMPLETE:
                     adapter.clearProgress();
                     unregisterInstallReceiver();
-                    onAppChanged();
+                    // Don't try and update the view here, because the InstalledAppProviderService
+                    // hasn't had time to do its thing and mark the app as installed. Instead, we
+                    // wait for that service to notify us, and then we will respond in appObserver.
                     break;
                 case Installer.ACTION_INSTALL_INTERRUPTED:
                     adapter.clearProgress();
@@ -457,8 +470,14 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                     unregisterInstallReceiver();
                     break;
                 case Installer.ACTION_INSTALL_USER_INTERACTION:
-                    PendingIntent installPendingIntent =
-                            intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                    Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
+                    if (!isAppVisible(apk.packageName)) {
+                        Utils.debugLog(TAG, "Ignore request for user interaction from installer, because " + apk.packageName + " is no longer showing.");
+                        break;
+                    }
+
+                    Utils.debugLog(TAG, "Automatically showing package manager for " + apk.packageName + " as it is being viewed by the user.");
+                    PendingIntent installPendingIntent = intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
 
                     try {
                         installPendingIntent.send();
@@ -649,4 +668,26 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         }
         startUninstall();
     }
+
+    // observer to update view when package has been installed/deleted
+    private AppObserver appObserver;
+
+    class AppObserver extends ContentObserver {
+
+        AppObserver(Handler handler) {
+            super(handler);
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            onChange(selfChange, null);
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            onAppChanged();
+        }
+
+    }
+
 }

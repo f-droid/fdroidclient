@@ -5,13 +5,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,9 +28,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.UriCompat;
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
-import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
@@ -53,8 +47,7 @@ import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
  *  When switching from one screen to the next, we stay within this activity. The new screen will
  *  get inflated (if required)
  */
-public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener,
-        LoaderManager.LoaderCallbacks<Cursor> {
+public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {
 
     private static final String TAG = "MainActivity";
 
@@ -65,8 +58,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private static final String ACTION_ADD_REPO = "org.fdroid.fdroid.MainActivity.ACTION_ADD_REPO";
 
     private static final String STATE_SELECTED_MENU_ID = "selectedMenuId";
-
-    private static final int LOADER_NUM_UPDATES = 1;
 
     private static final int REQUEST_SWAP = 3;
 
@@ -89,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         pager.setLayoutManager(new NonScrollingHorizontalLayoutManager(this));
         pager.setAdapter(adapter);
 
-        updatesBadge = new BadgeItem();
+        updatesBadge = new BadgeItem().hide(false);
 
         bottomNavigation = (BottomNavigationBar) findViewById(R.id.bottom_navigation);
         bottomNavigation.setTabSelectedListener(this)
@@ -105,8 +96,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 .initialise();
 
         IntentFilter updateableAppsFilter = new IntentFilter(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
+        updateableAppsFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
         LocalBroadcastManager.getInstance(this).registerReceiver(onUpdateableAppsChanged, updateableAppsFilter);
-        getSupportLoaderManager().initLoader(LOADER_NUM_UPDATES, null, this);
 
         if (savedInstanceState != null) {
             selectedMenuId = savedInstanceState.getInt(STATE_SELECTED_MENU_ID, R.id.whats_new);
@@ -319,22 +310,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         }
     }
 
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Uri uri = AppProvider.getCanUpdateUri();
-        String[] projection = new String[]{Schema.AppMetadataTable.Cols._COUNT};
-
-        return new CursorLoader(this, uri, projection, null, null, null);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        cursor.moveToFirst();
-        int canUpdateCount = cursor.getInt(cursor.getColumnIndex(Schema.AppMetadataTable.Cols._COUNT));
-        cursor.close();
-        refreshUpdatesBadge(canUpdateCount);
-    }
-
     private void refreshUpdatesBadge(int canUpdateCount) {
         if (canUpdateCount == 0) {
             updatesBadge.hide(true);
@@ -342,11 +317,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             updatesBadge.setText(Integer.toString(canUpdateCount));
             updatesBadge.show(true);
         }
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-
     }
 
     private static class NonScrollingHorizontalLayoutManager extends LinearLayoutManager {
@@ -365,11 +335,43 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         }
     }
 
+    /**
+     * There are a bunch of reasons why we would get notified about app statuses.
+     * The ones we are interested in are those which would result in the "items requiring user interaction"
+     * to increase or decrease:
+     *  * Bulk updates of ready-to-install-apps (relating to {@link org.fdroid.fdroid.AppUpdateStatusService}.
+     *  * Change in status to:
+     *    * {@link AppUpdateStatusManager.Status#ReadyToInstall} (Causes the count to go UP by one)
+     *    * {@link AppUpdateStatusManager.Status#Installed} (Causes the count to go DOWN by one)
+     */
     private final BroadcastReceiver onUpdateableAppsChanged = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (AppUpdateStatusManager.REASON_UPDATES_AVAILABLE.equals(intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE))) {
-                getSupportLoaderManager().restartLoader(LOADER_NUM_UPDATES, null, MainActivity.this);
+            boolean updateBadge = false;
+
+            AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(context);
+
+            if (AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED.equals(intent.getAction()) &&
+                    AppUpdateStatusManager.REASON_READY_TO_INSTALL.equals(intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE))) {
+                updateBadge = true;
+            }
+
+            // Check if we have moved into the ReadyToInstall or Installed state.
+            AppUpdateStatusManager.AppUpdateStatus status = manager.get(intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL));
+            boolean isStatusChange = intent.getBooleanExtra(AppUpdateStatusManager.EXTRA_IS_STATUS_UPDATE, false);
+            if (isStatusChange && status != null && (status.status == AppUpdateStatusManager.Status.ReadyToInstall || status.status == AppUpdateStatusManager.Status.Installed)) {
+                updateBadge = true;
+            }
+
+            if (updateBadge) {
+                int count = 0;
+                for (AppUpdateStatusManager.AppUpdateStatus s : manager.getAll()) {
+                    if (s.status == AppUpdateStatusManager.Status.ReadyToInstall) {
+                        count++;
+                    }
+                }
+
+                refreshUpdatesBadge(count);
             }
         }
     };

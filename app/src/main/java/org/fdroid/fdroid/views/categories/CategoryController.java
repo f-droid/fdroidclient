@@ -153,7 +153,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
                     },
                     null,
                     null,
-                    null
+                    Schema.AppMetadataTable.Cols.NAME
             );
         }
     }

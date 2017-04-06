@@ -21,7 +21,6 @@ import java.io.FilenameFilter;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
@@ -64,7 +63,7 @@ public class InstalledAppProviderService extends IntentService {
     public void onCreate() {
         super.onCreate();
         notifyEvents = PublishSubject.create();
-        notifyEvents.debounce(1, TimeUnit.SECONDS)
+        notifyEvents
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(new Action1<Void>() {
                         @Override

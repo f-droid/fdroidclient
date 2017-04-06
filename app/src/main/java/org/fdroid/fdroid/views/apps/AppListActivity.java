@@ -121,7 +121,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                 Schema.AppMetadataTable.Cols.ALL,
                 null,
                 null,
-                null
+                Schema.AppMetadataTable.Cols.NAME
         );
     }
 

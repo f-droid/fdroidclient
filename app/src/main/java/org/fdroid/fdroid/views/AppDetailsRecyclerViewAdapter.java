@@ -35,7 +35,6 @@ import android.widget.Toast;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -413,15 +412,12 @@ public class AppDetailsRecyclerViewAdapter
             } else {
                 lastUpdateView.setVisibility(View.GONE);
             }
+
             Apk suggestedApk = getSuggestedApk();
-            // TODO replace this whatsNew test code with what comes from suggestedApk once that exists
-            //if (suggestedApk == null || TextUtils.isEmpty(suggestedApk.whatsNew)) {
+
+            // TODO populate whatsNew with suggestedApk.whatsNew once that exists
             String whatsNew = null;
-            if (BuildConfig.DEBUG) {
-                if (Math.random() > 0.5) {
-                    whatsNew = "This section will contain the 'what's new' information for the apk.\n\n\t• Bug fixes.";
-                }
-            }
+            //noinspection ConstantConditions
             if (suggestedApk == null || TextUtils.isEmpty(whatsNew)) {
                 whatsNewView.setVisibility(View.GONE);
             } else {
@@ -431,7 +427,7 @@ public class AppDetailsRecyclerViewAdapter
                 StringBuilder sbWhatsNew = new StringBuilder();
                 sbWhatsNew.append(whatsNewView.getContext().getString(R.string.details_new_in_version, suggestedApk.versionName).toUpperCase(locale));
                 sbWhatsNew.append("\n\n");
-                sbWhatsNew.append("This section will contain the 'what's new' information for the apk.\n\n\t• Bug fixes.");
+                sbWhatsNew.append(whatsNew);
                 whatsNewView.setText(sbWhatsNew);
                 whatsNewView.setVisibility(View.VISIBLE);
             }

@@ -330,14 +330,13 @@ class NotificationHelper {
         App app = entry.app;
         AppUpdateStatusManager.Status status = entry.status;
 
-        int iconSmall = R.drawable.ic_launcher;
         Bitmap iconLarge = getLargeIconForEntry(entry);
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
                         .setAutoCancel(true)
                         .setContentTitle(getSingleItemTitleString(app, status))
                         .setContentText(getSingleItemContentString(app, status))
-                        .setSmallIcon(iconSmall)
+                        .setSmallIcon(R.drawable.ic_notification)
                         .setColor(ContextCompat.getColor(context, R.color.fdroid_blue))
                         .setLargeIcon(iconLarge)
                         .setLocalOnly(true)
@@ -416,7 +415,7 @@ class NotificationHelper {
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
                         .setAutoCancel(!useStackedNotifications())
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setSmallIcon(R.drawable.ic_notification)
                         .setColor(ContextCompat.getColor(context, R.color.fdroid_blue))
                         .setContentTitle(title)
                         .setContentText(text)
@@ -444,7 +443,7 @@ class NotificationHelper {
                 new NotificationCompat.Builder(context)
                         .setAutoCancel(true)
                         .setLargeIcon(iconLarge)
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setSmallIcon(R.drawable.ic_notification)
                         .setColor(ContextCompat.getColor(context, R.color.fdroid_blue))
                         .setContentTitle(app.name)
                         .setContentText(context.getString(R.string.notification_content_single_installed))
@@ -491,7 +490,7 @@ class NotificationHelper {
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
                         .setAutoCancel(!useStackedNotifications())
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setSmallIcon(R.drawable.ic_notification)
                         .setColor(ContextCompat.getColor(context, R.color.fdroid_blue))
                         .setContentTitle(title)
                         .setContentText(text)
