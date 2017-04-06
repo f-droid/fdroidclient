@@ -17,7 +17,6 @@ import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.CleanCacheService;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Languages;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -142,8 +141,9 @@ public class PreferencesFragment extends PreferenceFragment
             case Preferences.PREF_LANGUAGE:
                 entrySummary(key);
                 if (changing) {
-                    // TODO: Ask MainActivity to restart itself.
-                    ((FDroidApp) getActivity().getApplication()).updateLanguage();
+                    Activity activity = getActivity();
+                    Languages.setLanguage(activity, Preferences.get().getLangauge(), false);
+                    Languages.forceChangeLanguage(activity);
                 }
                 break;
 

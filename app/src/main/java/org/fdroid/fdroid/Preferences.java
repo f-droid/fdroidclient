@@ -229,6 +229,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 .replaceAll(" ", "-");
     }
 
+    public String getLangauge() {
+        return preferences.getString(Preferences.PREF_LANGUAGE, "");
+    }
+
     public String getLocalRepoName() {
         return preferences.getString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName());
     }

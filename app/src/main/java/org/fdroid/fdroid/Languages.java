@@ -25,6 +25,7 @@ public final class Languages {
 
     private static final Locale DEFAULT_LOCALE;
     private static final Locale TIBETAN = new Locale("bo");
+    private static final Locale CHINESE_HONG_KONG = new Locale("zh", "HK");
     private static final String DEFAULT_STRING = "System Default";
 
     private static Locale locale;
@@ -62,8 +63,10 @@ public final class Languages {
                 tmpMap.put(Locale.SIMPLIFIED_CHINESE.toString(), "中文 (中国)"); // Chinese (China)
             } else if (locale.equals(Locale.TRADITIONAL_CHINESE)) {
                 tmpMap.put(Locale.TRADITIONAL_CHINESE.toString(), "中文 (台灣)"); // Chinese (Taiwan)
+            } else if (locale.equals(CHINESE_HONG_KONG)) {
+                tmpMap.put(CHINESE_HONG_KONG.toString(), "中文 (香港)"); // Chinese (Hong Kong)
             } else {
-                tmpMap.put(locale.getLanguage(), locale.getDisplayLanguage(locale));
+                tmpMap.put(locale.getLanguage(), capitalize(locale.getDisplayLanguage(locale)));
             }
         }
 
@@ -196,6 +199,10 @@ public final class Languages {
         return keys.toArray(new String[keys.size()]);
     }
 
+    private String capitalize(final String line) {
+        return Character.toUpperCase(line.charAt(0)) + line.substring(1);
+    }
+
     private static final Locale[] LOCALES_TO_TEST = {
             Locale.ENGLISH,
             Locale.FRENCH,
@@ -205,6 +212,7 @@ public final class Languages {
             Locale.KOREAN,
             Locale.SIMPLIFIED_CHINESE,
             Locale.TRADITIONAL_CHINESE,
+            CHINESE_HONG_KONG,
             TIBETAN,
             new Locale("af"),
             new Locale("am"),
