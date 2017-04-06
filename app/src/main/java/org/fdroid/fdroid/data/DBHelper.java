@@ -190,7 +190,7 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
 
-    protected static final int DB_VERSION = 67;
+    protected static final int DB_VERSION = 68;
 
     private final Context context;
 
@@ -272,6 +272,16 @@ class DBHelper extends SQLiteOpenHelper {
         addCategoryTables(db, oldVersion);
         addIndexV1Fields(db, oldVersion);
         addIndexV1AppFields(db, oldVersion);
+        recalculatePreferredMetadata(db, oldVersion);
+    }
+
+    private void recalculatePreferredMetadata(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 68) {
+            return;
+        }
+
+        Log.i(TAG, "Previously, the repository metadata was being interpreted backwards. Need to force a repo refresh to fix this.");
+        resetTransient(db);
     }
 
     private void addIndexV1AppFields(SQLiteDatabase db, int oldVersion) {

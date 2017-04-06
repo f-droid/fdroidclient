@@ -960,7 +960,7 @@ public class AppProvider extends FDroidProvider {
         final String app = getTableName();
 
         final String highestPriority =
-                "SELECT MIN(r." + RepoTable.Cols.PRIORITY + ") " +
+                "SELECT MAX(r." + RepoTable.Cols.PRIORITY + ") " +
                 "FROM " + RepoTable.NAME + " AS r " +
                 "JOIN " + getTableName() + " AS m ON (m." + Cols.REPO_ID + " = r." + RepoTable.Cols._ID + ") " +
                 "WHERE m." + Cols.PACKAGE_ID + " = " + "metadata." + Cols.PACKAGE_ID;
