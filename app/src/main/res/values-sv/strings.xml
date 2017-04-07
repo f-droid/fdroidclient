@@ -67,7 +67,7 @@
   <string name="menu_ignore_all">Ignorera alla uppdateringar</string>
   <string name="menu_ignore_this">Ignorera denna uppdatering</string>
   <string name="menu_website">Hemsida</string>
-  <string name="menu_issues">Buggar</string>
+  <string name="menu_issues">Fel</string>
   <string name="menu_source">Källkod</string>
   <string name="menu_upgrade">Uppgradera</string>
   <string name="menu_donate">Donera</string>
@@ -458,4 +458,9 @@ e-post för att hjälpa till att åtgärda problemet?</string>
 	<item quantity="one">Uppdaterad %1$s dag sedan</item>
 	<item quantity="other">Uppdaterad %1$s dagar sedan</item>
 </plurals>
-</resources>
+<string name="app_list__name__successfully_installed">%1$s har installerats</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Inget internet? Hämta appar från personer nära dig!</string>
+    <string name="nearby_splash__find_people_button">Hitta personer nära mig</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"nära\"-funktionen.</string>
+
+    </resources>

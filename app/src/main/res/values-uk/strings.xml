@@ -347,7 +347,7 @@
     <string name="repo_provider">Репозиторій: %s</string>
 
     <string name="update_auto_download">Автоматично завантажувати оновлення</string>
-    <string name="update_auto_download_summary">Завантажувати файли оновлення у фоновому режимі</string>
+    <string name="update_auto_download_summary">Оновлення буде завантажено автоматично, по завершенню буде запропоновано встановити їх</string>
     <string name="tap_to_install_format">Торкніться для встановлення %s</string>
     <string name="tap_to_update_format">Торкніться для оновлення %s</string>
     <string name="download_pending">Очікування початку завантаження…</string>
@@ -432,4 +432,41 @@
 
     <string name="tts_category_name">Категорія %1$s</string>
 
-    </resources>
+    <string name="app_details_donate_prompt_unknown_author">Придбай розробнику %1$s філіжанку кави!</string>
+    <string name="app__install_downloaded_update">Оновити</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Оновити %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Встановити %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Завантаження %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s встановлено</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Випущено %1$d день по тому</item>
+	<item quantity="few">Випущено %1$d дні по тому</item>
+	<item quantity="many">Випущено %1$d дні по тому</item>
+	<item quantity="other">Випущено %1$d дні по тому</item>
+</plurals>
+
+    <string name="updates__tts__download_updates_for_all_apps">Завантажити всі оновлення</string>
+
+    <string name="updates__hide_updateable_apps">Приховати додатки</string>
+    <string name="updates__show_updateable_apps">Показати додатки</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Завантажити оновлення для %1$d додатку.</item>
+	<item quantity="few">Завантажити оновлення для %1$d додатка.</item>
+	<item quantity="many">Завантажити оновлення для %1$d додатків.</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="details_new_in_version">Нове у версії %s</string>
+
+    <string name="antifeatureswarning">Цей додаток містить функції, які можуть бути вам не до вподоби.</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Немає інтернету? Завантажуйте додати від людей навколо!</string>
+    <string name="nearby_splash__find_people_button">Знайти людей навколо мене</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Оновлено %1$s сьогодні</item>
+	<item quantity="few">Оновлено %1$s дні тому</item>
+	<item quantity="many">Оновлено %1$s дні тому</item>
+	<item quantity="other">Оновлено %1$s дні тому</item>
+</plurals>
+</resources>
