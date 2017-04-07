@@ -333,8 +333,8 @@ com os detalhes para ajudar a corrigir o problema?</string>
     <string name="swap_stopping_wifi">Parando o Wi-Fi…</string>
     <string name="repo_provider">Repositório: %s</string>
 
-    <string name="update_auto_download">Baixar automaticamente as atualizações</string>
-    <string name="update_auto_download_summary">Baixar os arquivos de atualização em segundo plano</string>
+    <string name="update_auto_download">Obter atualizações automaticamente</string>
+    <string name="update_auto_download_summary">As atualizações são baixar automaticamente e você é notificado para instalá-las</string>
     <string name="tap_to_install_format">Toque para instalar %s</string>
     <string name="tap_to_update_format">Toque para atualizar %s</string>
     <string name="download_pending">Esperando para iniciar o download…</string>
@@ -447,5 +447,24 @@ com os detalhes para ajudar a corrigir o problema?</string>
     <plurals name="tts_view_all_in_category">
 	<item quantity="one">Ver o único aplicativo na categoria %2$s</item>
 	<item quantity="other">Ver todos os %1$d aplicativos da categoria %2$s</item>
+</plurals>
+<string name="app_list__name__successfully_installed">%1$s instalado com sucesso</string>
+    <string name="latest__empty_state__no_recent_apps">Nenhum aplicativo recente encontrado</string>
+    <string name="latest__empty_state__never_updated">Uma vez que a sua lista de aplicativos tenha sido atualizada, os aplicativos mais recentes devem aparecer aqui</string>
+    <string name="latest__empty_state__no_enabled_repos">Uma vez que você habilite um repositório e deixei-o atualizar, os aplicativos mais recentes devem aparecer aqui</string>
+
+    <string name="categories__empty_state__no_categories">Não há categorias para exibir</string>
+
+    <string name="details_new_in_version">Novidades na versão %s</string>
+
+    <string name="antifeatureswarning">Este aplicativo tem características que você pode não gostar.</string>
+    <string name="antifeatures">Características indesejadas</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Sem internet? Baixe aplicativos de pessoas perto de você!</string>
+    <string name="nearby_splash__find_people_button">Encontrar pessoas perto de mim</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes precisam de %1$s para usar perto.</string>
+
+    <plurals name="details_last_update_days">
+	<item quantity="one">Atualizado hoje</item>
+	<item quantity="other">Atualizados %1$s dias atrás</item>
 </plurals>
 </resources>
