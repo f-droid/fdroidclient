@@ -316,7 +316,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         // After adding the new item to our list (somewhere) we can then look it back up again in
         // order to notify the recycler view and scroll to that item.
-        int positionOfNewApp = 0;
+        int positionOfNewApp = -1;
         for (int i = 0; i < appsToShowStatus.size(); i++) {
             if (TextUtils.equals(appsToShowStatus.get(i).status.getUniqueKey(), apkUrl)) {
                 positionOfNewApp = i;
@@ -324,17 +324,19 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         }
 
-        notifyItemInserted(positionOfNewApp);
+        if (positionOfNewApp != -1) {
+            notifyItemInserted(positionOfNewApp);
 
-        if (recyclerView != null) {
-            recyclerView.smoothScrollToPosition(positionOfNewApp);
+            if (recyclerView != null) {
+                recyclerView.smoothScrollToPosition(positionOfNewApp);
+            }
         }
     }
 
     private void onAppStatusRemoved(String apkUrl) {
         // Find out where the item is in our internal data structure, so that we can remove it and
         // also notify the recycler view appropriately.
-        int positionOfOldApp = 0;
+        int positionOfOldApp = -1;
         for (int i = 0; i < appsToShowStatus.size(); i++) {
             if (TextUtils.equals(appsToShowStatus.get(i).status.getUniqueKey(), apkUrl)) {
                 positionOfOldApp = i;
@@ -342,10 +344,12 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         }
 
-        appsToShowStatus.remove(positionOfOldApp);
+        if (positionOfOldApp != -1) {
+            appsToShowStatus.remove(positionOfOldApp);
 
-        populateItems();
-        notifyItemRemoved(positionOfOldApp);
+            populateItems();
+            notifyItemRemoved(positionOfOldApp);
+        }
     }
 
     private final BroadcastReceiver receiverAppStatusChanges = new BroadcastReceiver() {
