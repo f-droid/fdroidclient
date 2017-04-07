@@ -329,9 +329,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         }
 
         if (isReadyToInstall(app)) {
-            installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_complete));
-            installButton.setVisibility(View.VISIBLE);
-            // TODO: If in the downloading phase, then need to reflect that instead of this "download complete" icon.
+            installButton.setVisibility(View.GONE);
         } else {
             boolean installable = app.canAndWantToUpdate(activity) || !app.isInstalled();
             boolean shouldAllow = app.compatible && !app.isFiltered();
@@ -386,7 +384,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
 
     private void onDownloadComplete() {
         if (installButton != null) {
-            installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_complete));
+            installButton.setVisibility(View.GONE);
         }
 
         if (progressBar != null) {
