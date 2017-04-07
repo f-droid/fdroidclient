@@ -11,10 +11,10 @@
             android:id="@+id/heading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:textSize="20sp"
             android:padding="30dp"
             android:textAlignment="center"
+            android:gravity="center"
             tools:text="Connecting with Nexus 4"
             tools:ignore="UnusedAttribute" />
 
@@ -30,6 +30,7 @@
             android:id="@+id/error"
             android:textSize="20sp"
             android:textAlignment="center"
+            android:gravity="center"
             android:text="@string/swap_connection_misc_error"
             android:visibility="gone"
             android:padding="30dp"

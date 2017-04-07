@@ -50,6 +50,25 @@
             android:text="@string/license_gplv3_later"
             style="@style/BodyText" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:paddingBottom="16dp"
+            android:clipToPadding="false">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:minWidth="100dp"
+                android:layout_height="wrap_content"
+                style="@style/DetailsPrimaryButtonStyle"
+                android:id="@+id/ok_button"
+                android:text="@string/ok" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>

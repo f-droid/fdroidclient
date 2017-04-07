@@ -10,7 +10,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:padding="8dp">
 
         <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
              when it will inevitably read out the name of the app straight after. -->

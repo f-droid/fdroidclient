@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textAlignment="center"
+        android:gravity="center"
         tools:text="F-Droid is created by F-Droid Limited and Contributors. Buy them a coffee!"
         android:layout_marginBottom="12dp" />
 
