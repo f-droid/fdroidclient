@@ -12,7 +12,6 @@ import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.ContextCompat;
@@ -526,7 +525,7 @@ class NotificationHelper {
         if (entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.Installing) {
             Bitmap bitmap = Bitmap.createBitmap(largeIconSize.x, largeIconSize.y, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
-            Drawable downloadIcon = VectorDrawableCompat.create(context.getResources(), R.drawable.ic_notification_download, context.getTheme());
+            Drawable downloadIcon = ContextCompat.getDrawable(context, R.drawable.ic_notification_download);
             if (downloadIcon != null) {
                 downloadIcon.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
                 downloadIcon.draw(canvas);

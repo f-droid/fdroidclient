@@ -27,7 +27,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_back_black_24dp" />
+                android:src="@drawable/ic_back_black_24dp" />
 
             <EditText
                 android:layout_width="0dp"
@@ -53,7 +53,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/ic_close_black_24dp" />
+                android:src="@drawable/ic_close_black_24dp" />
 
         </android.support.constraint.ConstraintLayout>
 

@@ -19,7 +19,7 @@
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
         android:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/ic_nearby_share"
+        android:src="@drawable/ic_nearby_share"
         android:layout_marginRight="10dp"
         android:layout_marginEnd="10dp"
         />

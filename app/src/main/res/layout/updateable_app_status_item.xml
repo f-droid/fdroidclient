@@ -60,7 +60,7 @@
         android:contentDescription="@string/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_cancel"
+        android:src="@drawable/ic_cancel"
         android:background="@android:color/transparent"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
