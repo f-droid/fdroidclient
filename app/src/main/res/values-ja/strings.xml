@@ -454,4 +454,10 @@
     <string name="nearby_splash__find_people_button">近くの人を見つける</string>
     <string name="nearby_splash__both_parties_need_fdroid">双方が近くで %1$s を使用する必要があります。</string>
 
+    <string name="latest__empty_state__no_recent_apps">最近のｱﾌﾟﾘが見つかりません</string>
+    <string name="latest__empty_state__never_updated">一度ｱﾌﾟﾘのﾘｽﾄを更新すると、最新のｱﾌﾟﾘがここに表示されます</string>
+    <string name="latest__empty_state__no_enabled_repos">一度ﾘﾎﾟｼﾞﾄﾘを有効にして更新すると、最新ｱﾌﾟﾘがここに表示されます</string>
+
+    <string name="categories__empty_state__no_categories">表示するｶﾃｺﾞﾘはありません</string>
+
     </resources>
