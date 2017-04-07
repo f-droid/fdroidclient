@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Outline;
 import android.net.Uri;
 import android.os.Build;
@@ -96,7 +97,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
 
         installButton = (ImageView) itemView.findViewById(R.id.install);
         if (installButton != null) {
-            installButton.setOnClickListener(onInstallClicked);
+            installButton.setOnClickListener(onActionClicked);
 
             if (Build.VERSION.SDK_INT >= 21) {
                 installButton.setOutlineProvider(new ViewOutlineProvider() {
@@ -126,7 +127,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         actionButton = (Button) itemView.findViewById(R.id.action_button);
 
         if (actionButton != null) {
-            actionButton.setOnClickListener(onInstallClicked);
+            actionButton.setOnClickListener(onActionClicked);
         }
 
         if (cancelButton != null) {
@@ -149,9 +150,11 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(activity.getApplicationContext());
         broadcastManager.unregisterReceiver(onDownloadProgress);
         broadcastManager.unregisterReceiver(onInstallAction);
+        broadcastManager.unregisterReceiver(onStatusRemoved);
 
         broadcastManager.registerReceiver(onDownloadProgress, DownloaderService.getIntentFilter(currentAppDownloadUrl));
         broadcastManager.registerReceiver(onInstallAction, Installer.getInstallIntentFilter(Uri.parse(currentAppDownloadUrl)));
+        broadcastManager.registerReceiver(onStatusRemoved, new IntentFilter(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED));
 
         configureAppName(app);
         configureStatusText(app);
@@ -255,14 +258,17 @@ public class AppListItemController extends RecyclerView.ViewHolder {
 
     /**
      * Queries the {@link AppUpdateStatusManager} and asks if the app was just successfully installed.
+     * For convenience, returns the {@link org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus}
+     * object if it was sucessfully installed, or null otherwise.
      */
-    private boolean wasSuccessfullyInstalled(@NonNull App app) {
+    @Nullable
+    private AppUpdateStatusManager.AppUpdateStatus wasSuccessfullyInstalled(@NonNull App app) {
         for (AppUpdateStatusManager.AppUpdateStatus appStatus : AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName)) {
             if (appStatus.status == AppUpdateStatusManager.Status.Installed) {
-                return true;
+                return appStatus;
             }
         }
-        return false;
+        return null;
     }
 
     /**
@@ -288,7 +294,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             }
         } else if (isDownloading(app)) {
             name.setText(activity.getString(R.string.app_list__name__downloading_in_progress, app.name));
-        } else if (wasSuccessfullyInstalled(app)) {
+        } else if (wasSuccessfullyInstalled(app) != null) {
             name.setText(activity.getString(R.string.app_list__name__successfully_installed, app.name));
         } else {
             name.setText(Utils.formatAppNameAndSummary(app.name, app.summary));
@@ -305,15 +311,18 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             return;
         }
 
-        if (!isReadyToInstall(app)) {
-            actionButton.setVisibility(View.GONE);
-        } else {
-            actionButton.setVisibility(View.VISIBLE);
+        actionButton.setVisibility(View.VISIBLE);
+
+        if (wasSuccessfullyInstalled(app) != null) {
+            actionButton.setText(R.string.menu_launch);
+        } else if (isReadyToInstall(app)) {
             if (app.isInstalled()) {
                 actionButton.setText(R.string.app__install_downloaded_update);
             } else {
                 actionButton.setText(R.string.menu_install);
             }
+        } else {
+            actionButton.setVisibility(View.GONE);
         }
     }
 
@@ -329,9 +338,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         }
 
         if (isReadyToInstall(app)) {
-            installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_complete));
-            installButton.setVisibility(View.VISIBLE);
-            // TODO: If in the downloading phase, then need to reflect that instead of this "download complete" icon.
+            installButton.setVisibility(View.GONE);
         } else {
             boolean installable = app.canAndWantToUpdate(activity) || !app.isInstalled();
             boolean shouldAllow = app.compatible && !app.isFiltered();
@@ -386,7 +393,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
 
     private void onDownloadComplete() {
         if (installButton != null) {
-            installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_complete));
+            installButton.setVisibility(View.GONE);
         }
 
         if (progressBar != null) {
@@ -473,11 +480,44 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         }
     };
 
+    /**
+     * If the app goes from "Successfully installed" to anything else, then reset the action button
+     * and the app label text to whatever they should be.
+     */
+    private final BroadcastReceiver onStatusRemoved = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (currentApp == null || currentAppDownloadUrl == null) {
+                return;
+            }
+
+            if (!TextUtils.equals(intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL), currentAppDownloadUrl)) {
+                return;
+            }
+
+            configureAppName(currentApp);
+            configureActionButton(currentApp);
+        }
+    };
+
     @SuppressWarnings("FieldCanBeLocal")
-    private final View.OnClickListener onInstallClicked = new View.OnClickListener() {
+    private final View.OnClickListener onActionClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (currentApp == null) {
+                return;
+            }
+
+            // When the button says "Run", then launch the app.
+            AppUpdateStatusManager.AppUpdateStatus successfullyInstalledStatus = wasSuccessfullyInstalled(currentApp);
+            if (successfullyInstalledStatus != null) {
+                Intent intent = activity.getPackageManager().getLaunchIntentForPackage(currentApp.packageName);
+                activity.startActivity(intent);
+
+                // Once it is explicitly launched by the user, then we can pretty much forget about
+                // any sort of notification that the app was successfully installed. It should be
+                // apparent to the user because they just launched it.
+                AppUpdateStatusManager.getInstance(activity).removeApk(successfullyInstalledStatus.getUniqueKey());
                 return;
             }
 

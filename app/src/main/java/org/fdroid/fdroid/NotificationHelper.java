@@ -371,7 +371,7 @@ class NotificationHelper {
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_UPDATE_CLEARED);
         intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getUniqueKey());
-        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, 0);
+        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
         return builder.build();
     }
@@ -429,7 +429,7 @@ class NotificationHelper {
         }
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED);
-        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, 0);
+        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
         return builder.build();
     }
@@ -456,7 +456,7 @@ class NotificationHelper {
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED);
         intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getUniqueKey());
-        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, 0);
+        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
         return builder.build();
     }
@@ -484,7 +484,7 @@ class NotificationHelper {
 
         // Intent to open main app list
         Intent intentObject = new Intent(context, MainActivity.class);
-        PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject, 0);
+        PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
@@ -501,7 +501,7 @@ class NotificationHelper {
                     .setGroupSummary(true);
         }
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED);
-        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, 0);
+        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
         return builder.build();
     }
