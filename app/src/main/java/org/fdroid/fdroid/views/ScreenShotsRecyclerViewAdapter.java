@@ -34,8 +34,8 @@ public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
                 .imageScaleType(ImageScaleType.NONE)
-                .showImageOnLoading(R.drawable.ic_repo_app_default)
-                .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+                .showImageOnLoading(R.drawable.screenshot_placeholder)
+                .showImageForEmptyUri(R.drawable.screenshot_placeholder)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
     }
