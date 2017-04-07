@@ -356,7 +356,7 @@ hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
  detail untuk membantu memperbaiki isu?</string>
     <string name="crash_dialog_comment_prompt">Anda dapat menambahkan informasi ekstra dan komentar disini:</string>
 <string name="update_auto_download">Otomatis mengunduh pembaruan</string>
-    <string name="update_auto_download_summary">Unduh berkas pembaruan di latar belakang</string>
+    <string name="update_auto_download_summary">Pembaruan diunduh secara otomatis dan Anda akan diberi tahu untuk memasangnya</string>
     <string name="tap_to_install_format">Ketuk untuk memasang %s</string>
     <string name="tap_to_update_format">Ketuk untuk perbarui %s</string>
     <string name="download_pending">Menunggu untuk mulai unduhan…</string>
@@ -478,4 +478,9 @@ hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
 	<item quantity="one">Diperbarui %1$s hari yang lalu</item>
 	<item quantity="other"/>
 </plurals>
-</resources>
+<string name="app_list__name__successfully_installed">%1$s berhasil dipasang</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Tidak ada internet? Unduh apl dari orang-orang di sekitarmu!</string>
+    <string name="nearby_splash__find_people_button">Temukan orang-orang di sekitarmu</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Kedua belah pihak memerlukan %1$s untuk digunakan secara dekat.</string>
+
+    </resources>

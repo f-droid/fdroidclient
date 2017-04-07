@@ -350,4 +350,21 @@
     <string name="hide_anti_feature_apps_on">Выделять серым цветом приложения, содержащие нежелательный функционал</string>
     <string name="warning_no_internet">Не могу обновить. Вы подключены к интернету?</string>
     <string name="versions">Версии</string>
+    <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе</string>
+    <string name="updates__tts__download_updates_for_all_apps">Скачать все обновления</string>
+
+    <string name="updates__hide_updateable_apps">Скрыть приложение</string>
+    <string name="updates__show_updateable_apps">Показать приложение</string>
+
+    <string name="clear_search">Очистить поиск</string>
+
+    <string name="repositories_summary">Добавить дополнительный источник приложений</string>
+    <string name="main_menu__categories">Категории</string>
+    <string name="preference_manage_installed_apps">Управление установленными приложениями</string>
+
+
+    <string name="antifeatureswarning">Это приложение может содержать функции которые могут Вам не понравиться.</string>
+    <string name="details_new_in_version">Новое в версии %s</string>
+
+    <string name="preference_category__my_apps">Мои приложения</string>
     </resources>

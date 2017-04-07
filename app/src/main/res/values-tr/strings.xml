@@ -259,7 +259,7 @@ Tebrikler! Tüm uygulamalarınız güncel (veya depolarınız güncel değil).</
     <string name="swap_people_nearby">Yakındaki Kişiler</string>
     <string name="swap_scanning_for_peers">Yakındaki kişiler aranıyor…</string>
     <string name="swap_nearby">Yakında Takas</string>
-    <string name="swap_intro">Yakınınızdaki kişilerle bağlanın ve uygulama takas edin.</string>
+    <string name="swap_intro">Yakınınızdaki kişilerle bağlanın ve uygulamaları takas edin.</string>
     <string name="swap_visible_bluetooth">Bluetooth üzerinden görünür</string>
     <string name="swap_setting_up_bluetooth">Bluetooth ayarlanıyor…</string>
     <string name="swap_not_visible_bluetooth">Bluetooth üzerinden görünmez</string>
@@ -269,7 +269,7 @@ Tebrikler! Tüm uygulamalarınız güncel (veya depolarınız güncel değil).</
     <string name="swap_wifi_device_name">Aygıt İsmi</string>
     <string name="swap_cant_find_peers">Aradığınız kişiyi bulamadınız mı?</string>
     <string name="swap_send_fdroid">F-Droid\'i gönder</string>
-    <string name="swap_no_peers_nearby">Yakında takas yapılabilecek kimse bulunamadı.</string>
+    <string name="swap_no_peers_nearby">Yakında takas yapılabilecek kişi bulunamadı.</string>
     <string name="swap_connecting">Bağlanıyor</string>
     <string name="swap_confirm">Takası onaylayın</string>
     <string name="swap_qr_isnt_for_swap">Taradığınız QR kodu bir takas kodu gibi görünmüyor.</string>
@@ -340,8 +340,8 @@ Hiçbir özel erişim gerektirmez.</string>
     <string name="swap_active_hotspot">%1$s (erişim noktanız)</string>
     <string name="by_author">şu tarafından</string>
     <string name="menu_email">Geliştiriciye E-posta At</string>
-    <string name="update_auto_download">Güncellemeleri otomatik indir</string>
-    <string name="update_auto_download_summary">Güncelleme dosyalarını arkaplanda indir</string>
+    <string name="update_auto_download">Güncellemeleri otomatik al</string>
+    <string name="update_auto_download_summary">Güncellemeler otomatik indirilir ve onları yüklemek için bilgilendirilirsiniz</string>
     <string name="repo_provider">Depo: %s</string>
 
     <string name="useTor">Tor Kullan</string>
@@ -375,8 +375,8 @@ Hiçbir özel erişim gerektirmez.</string>
     <string name="warning_no_internet">Güncellenemiyor, internete bağlı mısınız?</string>
     <string name="update_auto_install_summary">Uygulama güncellemelerini arka planda indir ve kur</string>
     <string name="versions">Sürümler</string>
-    <string name="hide_anti_feature_apps">Karşıt özellikli uygulamaları gri yap</string>
-    <string name="hide_anti_feature_apps_on">Karşıt özellik gerektiren uygulamaları gri yap</string>
+    <string name="hide_anti_feature_apps">Karşıt-özellikli uygulamaları gri yap</string>
+    <string name="hide_anti_feature_apps_on">Karşıt-özellik gerektiren uygulamaları gri yap</string>
     <string name="app_details_donate_prompt_unknown_author">%1$s geliştiricilerine kahve alın!</string>
     <string name="app_details_donate_prompt">%1$s %2$s tarafından oluşturuldu. Onlara kahve al!</string>
 
@@ -393,7 +393,7 @@ Hiçbir özel erişim gerektirmez.</string>
     <string name="repositories_summary">Ek uygulama kaynakları ekle</string>
     <string name="main_menu__latest_apps">En Son</string>
     <string name="main_menu__categories">Kategoriler</string>
-    <string name="main_menu__swap_nearby">Yakındaki</string>
+    <string name="main_menu__swap_nearby">Yakında</string>
 
 
     <string name="notification_title_single_update_available">Güncelleme Mevcut</string>
@@ -462,12 +462,17 @@ Hiçbir özel erişim gerektirmez.</string>
 	<item quantity="other">%1$d uygulama için güncellemeleri indir.</item>
 </plurals>
 
-    <string name="details_new_in_version">%s sürümünde yeni</string>
+    <string name="details_new_in_version">%s sürümündeki yenilikler</string>
 
     <string name="antifeatureswarning">Bu uygulama sevmeyebileceğiniz özellikler içerir.</string>
-    <string name="antifeatures">Ters-özellikler</string>
+    <string name="antifeatures">Karşıt-özellikler</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">%1$s gün önce güncellendi</item>
 	<item quantity="other">%1$s gün önce güncellendi</item>
 </plurals>
-</resources>
+<string name="app_list__name__successfully_installed">%1$s başarıyla yüklendi</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">İnternet yok mu? Uygulamaları yakınınızdaki kişilerden indirin!</string>
+    <string name="nearby_splash__find_people_button">Yakınımdaki kişileri bul</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Yakında kullanımı için her iki tarafta %1$s olmalı.</string>
+
+    </resources>

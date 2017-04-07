@@ -409,7 +409,7 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
 </plurals>
 
 <string name="app_recommended_version_installed">Versio %1$s (konsilinda)</string>
-    <string name="app__newly_added">Novaj</string>
+    <string name="app__newly_added">Nova</string>
 
     <string name="installed_apps__activity_title">Instalitaj aplikaĵoj</string>
     <string name="installed_app__updates_ignored">Ignorataj ĝisdatigoj</string>

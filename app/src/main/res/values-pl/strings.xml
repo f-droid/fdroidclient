@@ -402,7 +402,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 </plurals>
 
 <string name="app_recommended_version_installed">Wersja %1$s (zalecana)</string>
-    <string name="app__newly_added">Nowe</string>
+    <string name="app__newly_added">Nowa</string>
 
     <string name="installed_apps__activity_title">Zainstalowane aplikacje</string>
     <string name="installed_app__updates_ignored">Zignorowane aktualizacje</string>
