@@ -64,7 +64,7 @@
                 android:gravity="end"
                 android:textAlignment="viewEnd"
                 tools:text=""
-                tools:visible="gone" />
+                tools:visibility="gone" />
 
       </LinearLayout>
 
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             tools:text=""
-            tools:visible="gone" />
+            tools:visibility="gone" />
 
 
       <TextView android:id="@+id/incompatible_reasons"
@@ -108,6 +108,6 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             tools:text=""
-            tools:visible="gone" />
+            tools:visibility="gone" />
 
 </RelativeLayout>

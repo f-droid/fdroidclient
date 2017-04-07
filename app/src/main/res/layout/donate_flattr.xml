@@ -8,5 +8,5 @@
     android:layout_marginStart="12dp"
     android:layout_marginEnd="12dp"
     android:layout_marginRight="12dp"
-    app:srcCompat="@drawable/donation_option_flattr"
+    android:src="@drawable/donation_option_flattr"
     android:contentDescription="@string/menu_flattr" />
