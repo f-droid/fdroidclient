@@ -12,18 +12,17 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.support.v4.preference.PreferenceFragment;
 import android.text.TextUtils;
-
+import com.geecko.QuickLyric.view.AppCompatListPreference;
+import info.guardianproject.netcipher.NetCipher;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.CleanCacheService;
-import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Languages;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
-
-import info.guardianproject.netcipher.NetCipher;
-import info.guardianproject.netcipher.proxy.OrbotHelper;
 
 public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -62,6 +61,12 @@ public class PreferencesFragment extends PreferenceFragment
         enableProxyCheckPref = (CheckBoxPreference) findPreference(Preferences.PREF_ENABLE_PROXY);
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
         updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
+
+        AppCompatListPreference languagePref = (AppCompatListPreference) findPreference(Preferences.PREF_LANGUAGE);
+        Languages languages = Languages.get(getActivity());
+        languagePref.setDefaultValue(Languages.USE_SYSTEM_DEFAULT);
+        languagePref.setEntries(languages.getAllNames());
+        languagePref.setEntryValues(languages.getSupportedLocales());
     }
 
     private void checkSummary(String key, int resId) {
@@ -136,8 +141,9 @@ public class PreferencesFragment extends PreferenceFragment
             case Preferences.PREF_LANGUAGE:
                 entrySummary(key);
                 if (changing) {
-                    // TODO: Ask MainActivity to restart itself.
-                    ((FDroidApp) getActivity().getApplication()).updateLanguage();
+                    Activity activity = getActivity();
+                    Languages.setLanguage(activity, Preferences.get().getLangauge(), false);
+                    Languages.forceChangeLanguage(activity);
                 }
                 break;
 

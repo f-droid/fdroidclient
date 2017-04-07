@@ -13,7 +13,6 @@ before_script:
 test:
   script:
     - cd app
-    - ./tools/langs-list-check.py
     - ./tools/check-string-format.py
     - cd ..
     - ./gradlew assemble -PdisablePreDex

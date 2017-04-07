@@ -27,7 +27,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -36,16 +35,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
+import info.guardianproject.netcipher.NetCipher;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.acra.ACRA;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
@@ -59,17 +57,13 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
+import sun.net.www.protocol.bluetooth.Handler;
 
 import java.net.URL;
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
 import java.security.Security;
 import java.util.List;
-import java.util.Locale;
-
-import info.guardianproject.netcipher.NetCipher;
-import info.guardianproject.netcipher.proxy.OrbotHelper;
-import sun.net.www.protocol.bluetooth.Handler;
 
 @ReportsCrashes(mailTo = "reports@f-droid.org",
         mode = ReportingInteractionMode.DIALOG,
@@ -81,8 +75,6 @@ public class FDroidApp extends Application {
     private static final String TAG = "FDroidApp";
 
     public static final String SYSTEM_DIR_NAME = Environment.getRootDirectory().getAbsolutePath();
-
-    private static Locale locale;
 
     // for the local repo on this device, all static since there is only one
     public static volatile int port;
@@ -181,25 +173,10 @@ public class FDroidApp extends Application {
         repo = new Repo();
     }
 
-    public void updateLanguage() {
-        Context ctx = getBaseContext();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
-        String lang = prefs.getString(Preferences.PREF_LANGUAGE, "");
-        locale = Utils.getLocaleFromAndroidLangTag(lang);
-        applyLanguage();
-    }
-
-    private void applyLanguage() {
-        Context ctx = getBaseContext();
-        Configuration cfg = new Configuration();
-        cfg.locale = locale == null ? Locale.getDefault() : locale;
-        ctx.getResources().updateConfiguration(cfg, null);
-    }
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        applyLanguage();
+        Languages.setLanguage(this, Preferences.get().getLangauge(), false);
     }
 
     @Override
@@ -215,7 +192,9 @@ public class FDroidApp extends Application {
                     .penaltyLog()
                     .build());
         }
-        updateLanguage();
+        Preferences.setup(this);
+        Languages.setup(getClass(), R.string.pref_language_default);
+        Languages.setLanguage(this, Preferences.get().getLangauge(), false);
 
         ACRA.init(this);
         if (isAcraProcess()) {
@@ -224,7 +203,6 @@ public class FDroidApp extends Application {
 
         PRNGFixes.apply();
 
-        Preferences.setup(this);
         curTheme = Preferences.get().getTheme();
         Preferences.get().configureProxy();
 
@@ -325,13 +303,13 @@ public class FDroidApp extends Application {
 
     /**
      * Asks if the current process is "org.fdroid.fdroid:acra".
-     *
+     * <p>
      * This is helpful for bailing out of the {@link FDroidApp#onCreate} method early, preventing
      * problems that arise from executing the code twice. This happens due to the `android:process`
      * statement in AndroidManifest.xml causes another process to be created to run
      * {@link org.fdroid.fdroid.acra.CrashReportActivity}. This was causing lots of things to be
      * started/run twice including {@link CleanCacheService} and {@link WifiStateChangeService}.
-     *
+     * <p>
      * Note that it is not perfect, because some devices seem to not provide a list of running app
      * processes when asked. In such situations, F-Droid may regress to the behaviour where some
      * services may run twice and thus cause weirdness or slowness. However that is probably better
