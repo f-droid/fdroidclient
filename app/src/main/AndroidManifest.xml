@@ -126,16 +126,6 @@
                 android:resource="@xml/install_history_file_provider" />
         </provider>
 
-        <meta-data
-            android:name="android.app.default_searchable"
-            android:value=".FDroid" />
-
-        <activity
-            android:name=".FDroid"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustResize"
-            android:configChanges="layoutDirection|locale|keyboardHidden|orientation|screenSize" >
-        </activity>
         <activity
             android:name=".privileged.views.InstallConfirmActivity"
             android:label="@string/menu_install"
@@ -184,17 +174,6 @@
         </activity>
 
         <activity
-            android:name=".AppDetails"
-            android:label="@string/app_details"
-            android:exported="true"
-            android:parentActivityName=".FDroid"
-            android:configChanges="layoutDirection|locale" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".FDroid" />
-
-        </activity>
-        <activity
             android:name=".AppDetails2"
             android:label="@string/app_details"
             android:exported="true"
@@ -203,14 +182,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.main.MainActivity" />
-        </activity>
-        <activity
-            android:label="@string/menu_settings"
-            android:name=".PreferencesActivity"
-            android:parentActivityName=".FDroid" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".FDroid" />
         </activity>
         <activity
             android:name=".acra.CrashReportActivity"

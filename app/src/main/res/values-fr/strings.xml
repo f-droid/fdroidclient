@@ -43,8 +43,6 @@
   <string name="enable">Activer</string>
   <string name="add_key">Ajouter une clé</string>
   <string name="overwrite">Écraser</string>
-  <string name="tab_available_apps">Disponibles</string>
-  <string name="tab_updates">Mises à jour</string>
   <string name="fdroid_updates_available">Des mises à jour F-Droid sont disponibles</string>
   <string name="bluetooth_activity_not_found">Aucune méthode d\'envoi Bluetooth n\'a été trouvée, choisissez-en une !</string>
   <string name="choose_bt_send">Choisir une méthode d\'envoi Bluetooth</string>
@@ -92,9 +90,6 @@
   <string name="rooted_on">Ne pas griser les applis nécessitant les privilèges root</string>
   <string name="ignoreTouch">Ignorer l\'écran tactile</string>
   <string name="ignoreTouch_on">Toujours inclure les applis nécessitant un écran tactile</string>
-  <string name="category_All">Toutes</string>
-  <string name="category_Whats_New">Nouveautés</string>
-  <string name="category_Recently_Updated">Mises à jour récentes</string>
   <string name="local_repo">Dépôt local</string>
   <string name="local_repo_running">F-Droid est prêt à l\'échange</string>
   <string name="touch_to_configure_local_repo">Appuyez pour voir les détails et autoriser d\'autres à échanger vos applis.</string>
@@ -150,7 +145,6 @@ réactiver ce dépôt pour installer les applis qu\'il contient.</string>
   <string name="minsdk_up_to_maxsdk">De %1$s à %2$s</string>
   <string name="not_on_same_wifi">Votre appareil n\'est pas sur le même réseau Wi-Fi que le dépôt local que vous venez d\'ajouter ! Essayez de rejoindre ce réseau : %s</string>
   <string name="requires_features">Nécessite : %1$s</string>
-  <string name="app_icon">Icône de l\'appli</string>
   <string name="category_Development">Développement</string>
   <string name="category_Games">Jeux</string>
   <string name="category_Internet">Internet</string>
@@ -183,7 +177,6 @@ réactiver ce dépôt pour installer les applis qu\'il contient.</string>
     <string name="links">Liens</string>
 
     <string name="back">Retour</string>
-    <string name="tab_installed_apps">Installées</string>
     <string name="bad_fingerprint">Mauvaise empreinte</string>
     <string name="invalid_url">Ceci n\'est pas une URL valide.</string>
     <string name="menu_changelog">Liste des changements</string>
@@ -323,8 +316,6 @@ perdues. Elle ne requiert aucune autorisation particulière.</string>
     <string name="repo_edit_credentials">Modifier le mot de passe</string>
     <string name="repo_error_empty_username">Nom d\'utilisateur vide, aucune modification effectuée</string>
 
-    <string name="tab_installed_apps_count">Installées (%d)</string>
-    <string name="tab_updates_count">Mises à jour (%d)</string>
     <string name="about_license">Licence</string>
 
     <string name="status_inserting_apps">Enregistrement des détails d\'applications</string>

@@ -29,8 +29,6 @@
   <string name="enable">Gaitu</string>
   <string name="add_key">Gehitu gakoa</string>
   <string name="overwrite">Gainidatzi</string>
-  <string name="tab_available_apps">Eskuragarri</string>
-  <string name="tab_updates">Eguneraketak</string>
   <string name="fdroid_updates_available">F-Droid eguneraketak eskuragarri</string>
   <string name="repo_add_url">Biltegiaren helbidea</string>
   <string name="menu_update_repo">Eguneratu biltegiak</string>
@@ -59,9 +57,6 @@
   <string name="show_incompat_versions">Bertsio bateraezinak</string>
   <string name="rooted">Ezikusi Root</string>
   <string name="ignoreTouch">Ezikusi egin ukipen-pantailari</string>
-  <string name="category_All">Guztia</string>
-  <string name="category_Whats_New">Berritasunak</string>
-  <string name="category_Recently_Updated">Azkenaldian eguneratua</string>
   <string name="status_connecting_to_repo">%1$s(e)ra
 \nkonektatzen</string>
   <string name="no_permissions">Ez da baimenik erabiltzen.</string>
@@ -116,7 +111,6 @@
     <string name="local_repo_name_summary">Zure tokiko biltegiak iragarritako izenburua: %s</string>
     <string name="local_repo_https_on">Erabili zifratu gabeko HTTPS:// konexioa tokiko biltegiarentzat</string>
 
-    <string name="tab_installed_apps">Instalatuta</string>
     <string name="repo_exists_add_fingerprint">Biltegi hau ezarrita dago jada, honek gako informazio berria gehituko du.</string>
     <string name="repo_exists_enable">Biltegi hau ezarrita dago jada, berretsi berrezarri nahi duzula.</string>
     <string name="repo_exists_and_enabled">Sarrera biltegia ezarrita eta gaituta dago jada.</string>
@@ -207,7 +201,6 @@ instalatu ahal izateko gaitu egin beharko duzu.</string>
     <string name="pref_language">Hizkuntza</string>
     <string name="pref_language_default">Sistemaren lehenetsia</string>
 
-    <string name="app_icon">Aplikazioaren ikonoa</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Wi-Fi gunea</string>
 
@@ -335,8 +328,6 @@ Ez du baimen berezirik behar.</string>
 
     <string name="about_license">Lizentzia</string>
 
-    <string name="tab_installed_apps_count">Instalatuta (%d)</string>
-    <string name="tab_updates_count">Eguneraketak (%d)</string>
     <string name="repo_provider">Biltegia: %s</string>
 
     <string name="menu_email">Bidali e-posta egileari</string>

@@ -43,8 +43,6 @@
   <string name="enable">Habilitar</string>
   <string name="add_key">Amestar clave</string>
   <string name="overwrite">Sobrescribir</string>
-  <string name="tab_available_apps">Disponible</string>
-  <string name="tab_updates">Anovamientos</string>
   <string name="fdroid_updates_available">Anovamientos de F-Droid disponibles</string>
   <string name="bluetooth_activity_not_found">Nun s\'alcontró dal métodu d\'unviu pente Bluetooth, ¡escueyi ún!</string>
   <string name="choose_bt_send">Escueyi\'l métodu d\'unvu pente Bluetooth</string>
@@ -92,9 +90,6 @@
   <string name="rooted_on">Nun escurez les aplicaciones que rican privilexos root</string>
   <string name="ignoreTouch">Inorar pantalla táutil</string>
   <string name="ignoreTouch_on">Inclúi siempres aplicaciones que rican pantalla táutil</string>
-  <string name="category_All">Too</string>
-  <string name="category_Whats_New">Qué hai nuevo</string>
-  <string name="category_Recently_Updated">Anovao apocayá</string>
   <string name="local_repo">Repositoriu llocal</string>
   <string name="local_repo_running">F-Doid ta tresnáu pa intercambiar</string>
   <string name="touch_to_configure_local_repo">Toca pa ver los detalles y permitir a otros intercambiar les tos aplicaciones.</string>
@@ -148,7 +143,6 @@ rehabilitar esti repositoriu pa instalar aplicaciones dende elli.</string>
   <string name="minsdk_up_to_maxsdk">De %1$s fasta %2$s</string>
   <string name="not_on_same_wifi">¡El to preséu nun ta na mesma rede Wi-Fi que\'l repositoriu llocal que tas acabante d\'amestar! Tenta de xunite a esta rede: %s</string>
   <string name="requires_features">Rique: %1$s</string>
-  <string name="app_icon">Iconu d\'aplicación</string>
   <string name="category_Development">Desendolcu</string>
   <string name="category_Games">Xuegos</string>
   <string name="category_Internet">Internet</string>
@@ -211,7 +205,6 @@ rehabilitar esti repositoriu pa instalar aplicaciones dende elli.</string>
     <string name="links">Enllaces</string>
 
     <string name="back">Atrás</string>
-    <string name="tab_installed_apps">Instaláu</string>
     <string name="notification_summary_more">+%1$d más…</string>
     <string name="bad_fingerprint">Buelga incorreuta</string>
     <string name="invalid_url">Esto nun ye una URL válida.</string>
@@ -317,8 +310,6 @@ L\'aplicación nun rique accesu especial dalu.</string>
     <string name="repo_edit_credentials">Camudar contraseña</string>
     <string name="repo_error_empty_username">Nome d\'usuariu baleru, nun se camudaron les credenciales</string>
 
-    <string name="tab_installed_apps_count">Instalaes (%d)</string>
-    <string name="tab_updates_count">Anovamientos (%d)</string>
     <string name="about_license">Llicencia</string>
 
     <string name="status_inserting_apps">Guardando detalles d\'aplicaciones</string>

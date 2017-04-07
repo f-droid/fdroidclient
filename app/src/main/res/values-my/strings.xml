@@ -69,11 +69,6 @@
     <string name="add_key">ကီးထည့္မည္</string>
     <string name="overwrite">ထပ္ေရးမည္</string>
 
-    <string name="tab_available_apps">ရရွိႏိုင္ေသာ</string>
-    <string name="tab_installed_apps">သြင္းထားခဲ့သည္</string>
-    <string name="tab_updates">အသစ္မြမး္မံမႈမ်ား</string>
-    <string name="tab_installed_apps_count">သြင္းထားခဲ့သည္ (%d)</string>
-    <string name="tab_updates_count">အသစ္မြမ္းမံမႈမ်ား (%d)</string>
     <string name="fdroid_updates_available">F-Droid အသစ္မြမ္းမံမႈရရွိႏိုင္သည္</string>
     <string name="notification_summary_more">+%1$d ေနာက္ထပ္..</string>
     <string name="bluetooth_activity_not_found">ဘလူးသုဒ့္ႏွင့္ပို႔ရန္နည္းလမ္းရွာမေတြ႕ပါ။ တစ္ခုေရြးပါ!</string>
@@ -185,13 +180,9 @@
     <string name="pref_language">ဘာသာစကား</string>
     <string name="pref_language_default">စနစ္မူလအတိုင္း</string>
 
-    <string name="app_icon">App အိုင္ကြန္း</string>
     <string name="wifi">ဝိုင္ဖိုင္</string>
     <string name="wifi_ap">ေဟာ့ဒ့္စေပါ့ဒ္</string>
 
-    <string name="category_All">အားလံုး</string>
-    <string name="category_Whats_New">ဘာေတြအသစ္ပါသလဲ</string>
-    <string name="category_Recently_Updated">မၾကာေသးခင္က အသစ္မြမ္းမံခဲ့ေသာ</string>
     <string name="category_Connectivity">ခ်ိတ္ဆက္မႈ</string>
     <string name="category_Development">ေရးသားမႈ</string>
     <string name="category_Games">ဂိမ္းမ်ား</string>

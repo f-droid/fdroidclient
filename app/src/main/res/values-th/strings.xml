@@ -47,11 +47,6 @@
     <string name="back">กลับ</string>
     <string name="cancel">ยกเลิก</string>
     <string name="enable">เปิดใช้</string>
-    <string name="tab_available_apps">มีดาวน์โหลด</string>
-    <string name="tab_installed_apps">ติดตั้งอยู่</string>
-    <string name="tab_updates">มีอัพเดต</string>
-    <string name="tab_installed_apps_count">ติดตั้งอยู่ (%d)</string>
-    <string name="tab_updates_count">มีอัพเดต (%d)</string>
     <string name="fdroid_updates_available">มีอัพเดตโปรแกรม F-Droid</string>
     <string name="send_via_bluetooth">ส่งผ่านบลูทูธ</string>
 
@@ -147,8 +142,6 @@
     <string name="pref_language">ภาษา</string>
     <string name="pref_language_default">ใช้ภาษาของเครื่อง</string>
 
-    <string name="category_Whats_New">มีอะไรใหม่</string>
-    <string name="category_Recently_Updated">อัพเดตเมื่อไม่นานมานี้</string>
     <string name="category_Connectivity">การสื่อสาร</string>
     <string name="category_Development">การพัฒนาซอฟต์แวร์</string>
     <string name="category_Games">เกม</string>
@@ -266,7 +259,6 @@
     <string name="choose_bt_send">เลือกวิธีการส่งต่อผ่านบลูทูธ</string>
     <string name="bluetooth_activity_not_found">ยังไม่ได้เลือกวิธีส่งต่อทางบลูทูธ, โปรดเลือกก่อน!</string>
     <string name="downloading_apk">กำลังดาวน์โหลด %1$s</string>
-    <string name="category_All">ทั้งหมด</string>
     <string name="ignoreTouch">ไม่ต้องสนใจชนิดหน้าจอ</string>
     <string name="ignoreTouch_on">แสดงโปรแกรมที่ต้องใช้จอสัมผัสด้วยเสมอ แม้ว่าเครื่องคุณจะไม่มีจอสัมผัส</string>
 
@@ -279,7 +271,6 @@
     <string name="update_notification_title">กำลังอัพเดตข้อมูลจากแหล่งโปรแกรม</string>
     <string name="status_processing_xml_percent">กำลังประมวลผลข้อมูล %2$s / %3$s (%4$d%%) จาก %1$s</string>
     <string name="requires_features">ต้องใช้: %1$s</string>
-    <string name="app_icon">ไอคอนโปรแกรม</string>
     <string name="wifi">Wi-Fi</string>
     <string name="empty_search_installed_app_list">ไม่มีโปรแกรมที่ติดตั้งอยู่ตรงตามที่ค้นหา</string>
     <string name="empty_search_available_app_list">ไม่พบโปรแกรมตามที่ค้นหา</string>

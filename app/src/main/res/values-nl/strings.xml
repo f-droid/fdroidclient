@@ -43,8 +43,6 @@
   <string name="enable">Inschakelen</string>
   <string name="add_key">Sleutel toevoegen</string>
   <string name="overwrite">Overschrijven</string>
-  <string name="tab_available_apps">Beschikbaar</string>
-  <string name="tab_updates">Updates</string>
   <string name="fdroid_updates_available">F-Droid-updates beschikbaar</string>
   <string name="bluetooth_activity_not_found">Geen Bluetooth-verzendmethode gevonden, kies er een!</string>
   <string name="choose_bt_send">Kies Bluetooth-verzendmethode</string>
@@ -92,9 +90,6 @@
   <string name="rooted_on">Verberg apps die root-permissies vereisen niet</string>
   <string name="ignoreTouch">Negeer aanraakscherm</string>
   <string name="ignoreTouch_on">Reken apps die een aanraakscreen vereisen altijd mee</string>
-  <string name="category_All">Alles</string>
-  <string name="category_Whats_New">Wat is nieuw</string>
-  <string name="category_Recently_Updated">Recentelijk vernieuwd</string>
   <string name="local_repo">Collectie gedeelde apps</string>
   <string name="local_repo_running">F-Droid is klaar om apps te delen</string>
   <string name="touch_to_configure_local_repo">Raak aan om details te bekijken en anderen gedeelde apps van jou te laten downloaden.</string>
@@ -150,7 +145,6 @@ Je moet deze bron weer inschakelen indien je er apps van wil installeren.</strin
   <string name="minsdk_up_to_maxsdk">%1$s tot en met %2$s</string>
   <string name="not_on_same_wifi">Je apparaat zit niet op hetzelfde Wi-Fi-netwerk als de lokale bron die je zojuist hebt toegevoegd! Probeer om netwerk %s bij te treden</string>
   <string name="requires_features">Benodigd: %1$s</string>
-  <string name="app_icon">App-pictogram</string>
   <string name="category_Development">Ontwikkeling</string>
   <string name="category_Games">Spellen</string>
   <string name="category_Internet">Internet</string>
@@ -289,7 +283,6 @@ Het heeft geen speciale toegang nodig.</string>
     <string name="more">Meer</string>
     <string name="less">Minder</string>
 
-    <string name="tab_installed_apps">Geïnstalleerd</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -323,8 +316,6 @@ worden gedownload</string>
     <string name="repo_edit_credentials">Wachtwoord wijzigen</string>
     <string name="about_license">Licentie</string>
 
-    <string name="tab_installed_apps_count">Geïnstalleerd (%d)</string>
-    <string name="tab_updates_count">Updates (%d)</string>
     <string name="status_inserting_apps">Applicatiedetails opslaan</string>
     <string name="login_title">Authenticatie vereist</string>
     <string name="repo_error_empty_username">Lege gebruikersnaam, referenties niet gewijzigd</string>

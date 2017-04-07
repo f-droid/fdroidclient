@@ -43,8 +43,6 @@
   <string name="enable">有効</string>
   <string name="add_key">鍵を追加</string>
   <string name="overwrite">上書き</string>
-  <string name="tab_available_apps">入手可能</string>
-  <string name="tab_updates">更新</string>
   <string name="fdroid_updates_available">F-Droidの更新があります</string>
   <string name="bluetooth_activity_not_found">Bluetoothの送信方法がありません､選択してください!</string>
   <string name="choose_bt_send">Bluetoothの送信方法を選択してください</string>
@@ -92,9 +90,6 @@
   <string name="rooted_on">管理者権限を要求するｱﾌﾟﾘｹｰｼｮﾝを表示します｡</string>
   <string name="ignoreTouch">ﾀｯﾁｽｸﾘｰﾝを無視</string>
   <string name="ignoreTouch_on">ﾀｯﾁｽｸﾘｰﾝを要求するｱﾌﾟﾘｹｰｼｮﾝをのみ表示します｡</string>
-  <string name="category_All">全て</string>
-  <string name="category_Whats_New">新着</string>
-  <string name="category_Recently_Updated">最近の更新</string>
   <string name="local_repo">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘ</string>
   <string name="local_repo_running">F-Droidは交換の準備ができました</string>
   <string name="touch_to_configure_local_repo">ﾀｯﾁすると詳細を表示し､ｱﾌﾟﾘｹｰｼｮﾝの交換ができるようになります｡</string>
@@ -149,7 +144,6 @@
   <string name="minsdk_up_to_maxsdk">%1$s から %2$s</string>
   <string name="not_on_same_wifi">あなたの端末は追加したﾛｰｶﾙ･ﾘﾎﾟｼﾞﾄﾘと同じWi-Fi上にありません｡このﾈｯﾄﾜｰｸに参加してみてください: %s</string>
   <string name="requires_features">必須: %1$s</string>
-  <string name="app_icon">ｱﾌﾟﾘｱｲｺﾝ</string>
   <string name="category_Development">開発</string>
   <string name="category_Games">ｹﾞｰﾑ</string>
   <string name="category_Internet">ｲﾝﾀｰﾈｯﾄ</string>
@@ -285,7 +279,6 @@
 
     <string name="unstable_updates">非安定版への更新</string>
     <string name="unstable_updates_summary">非安定版への更新を提案します</string>
-    <string name="tab_installed_apps">ｲﾝｽﾄｰﾙ済</string>
     <string name="download_error">ﾀﾞｳﾝﾛｰﾄﾞできませんでした</string>
 
     <string name="menu_bitcoin">Bitcoin</string>
@@ -314,8 +307,6 @@
     <string name="repo_edit_credentials">ﾊﾟｽﾜｰﾄﾞを変更</string>
     <string name="repo_error_empty_username">ﾕｰｻﾞｰ名が空です。資格情報は変更されていません</string>
 
-    <string name="tab_installed_apps_count">ｲﾝｽﾄｰﾙ済 (%d)</string>
-    <string name="tab_updates_count">更新 (%d)</string>
     <string name="about_license">ﾗｲｾﾝｽ</string>
 
     <string name="status_inserting_apps">ｱﾌﾟﾘｹｰｼｮﾝの詳細を保存中</string>

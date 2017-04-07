@@ -30,7 +30,6 @@
     <string name="enable">Aktivizo</string>
     <string name="overwrite">Mbishkruaj</string>
 
-    <string name="tab_updates">Përditësime</string>
     <string name="bluetooth_activity_not_found">Nuk u gjet ndonjë mënyrë dërgimi me Bluetooth, zgjidhni një!</string>
     <string name="choose_bt_send">Zgjidhni mënyrën e dërgimit me Bluetooth</string>
     <string name="send_via_bluetooth">Dërgo me Bluetooth</string>
@@ -70,7 +69,6 @@
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="category_Recently_Updated">Të përditësuar së fundmi</string>
     <string name="category_Games">Lojra</string>
     <string name="category_Internet">Internet</string>
     <string name="category_Reading">Lexim</string>

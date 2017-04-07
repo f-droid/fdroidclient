@@ -17,8 +17,6 @@
   <string name="repo_add_title">Новий репозиторій</string>
   <string name="repo_add_add">Додати</string>
   <string name="cancel">Назад</string>
-  <string name="tab_available_apps">Наявне</string>
-  <string name="tab_updates">Оновлення</string>
   <string name="repo_add_url">Адреса репозиторію</string>
   <string name="menu_update_repo">Оновити</string>
   <string name="menu_manage">Репозиторії</string>
@@ -39,10 +37,7 @@
   <string name="appcompatibility">Сумісність</string>
   <string name="rooted">Ігнорувати Суперкористувача</string>
   <string name="ignoreTouch">Ігнорувати тачскрін</string>
-  <string name="category_All">Всі програми</string>
-  <string name="category_Whats_New">Недавні додання</string>
-  <string name="category_Recently_Updated">Недавні оновлення</string>
-<string name="app_name">F-Droid</string>
+  <string name="app_name">F-Droid</string>
 
     <string name="installIncompatible">Схоже, ця програма не сумісна з вашим пристроєм. Спробувати встановити її все одно?</string>
     <string name="installDowngrade">Ви збираєтесь встановити більш стару версію програми. Це можете призвести до некоректної робити і навіть втрати ваших даних. Встановити більш стару версію?</string>
@@ -86,7 +81,6 @@
     <string name="back">Назад</string>
     <string name="enable">Увімкнути</string>
     <string name="add_key">Додати ключ</string>
-    <string name="tab_installed_apps">Встановлено</string>
     <string name="fdroid_updates_available">F-Droid: доступні оновлення</string>
     <string name="notification_summary_more">+%1$d більше…</string>
     <string name="send_via_bluetooth">Надіслати через Bluetooth</string>
@@ -152,7 +146,6 @@
     <string name="pref_language">Мова</string>
     <string name="pref_language_default">Типова для системи</string>
 
-    <string name="app_icon">Піктограма додатку</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Games">Ігри</string>
     <string name="category_Graphics">Графіка</string>
@@ -331,11 +324,9 @@
     <string name="repo_edit_credentials">Змінити пароль</string>
     <string name="repo_error_empty_username">Відсутнє ім\'я користувача, облікові дані не змінено</string>
 
-    <string name="tab_installed_apps_count">Встановлено (%d)</string>
     <string name="perms_description_app">Надано %1$s.</string>
     <string name="about_license">Ліцензія</string>
 
-    <string name="tab_updates_count">Оновлення (%d)</string>
     <string name="status_inserting_apps">Збереження подробиць по додаткам</string>
     <string name="empty_search_installed_app_list">Не має збігів серед встановлених програм.</string>
     <string name="empty_search_available_app_list">Не має збігів серед доступних програм.</string>
@@ -426,7 +417,7 @@
 	<item quantity="one">%1$d оновлення</item>
 	<item quantity="few">%1$d оновлення</item>
 	<item quantity="many">%1$d оновлень</item>
-	<item quantity="other"></item>
+	<item quantity="other"/>
 </plurals>
 
     <string name="clear_search">Очистити пошук</string>

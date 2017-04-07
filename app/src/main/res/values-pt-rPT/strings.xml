@@ -60,9 +60,6 @@
     <string name="add_key">Adicionar chave</string>
     <string name="overwrite">Substituir</string>
 
-    <string name="tab_available_apps">Disponíveis</string>
-    <string name="tab_installed_apps">Instaladas</string>
-    <string name="tab_updates">Atualizações</string>
     <string name="fdroid_updates_available">Atualizações F-Droid disponíveis</string>
     <string name="notification_summary_more">+%1$d…</string>
     <string name="bluetooth_activity_not_found">Nenhum método de envio Bluetooth encontrado. Escolha um!</string>
@@ -193,13 +190,9 @@ Tem que ativar o repositório para poder instalar aplicações.</string>
     <string name="pref_language">Idioma</string>
     <string name="pref_language_default">Definições do sistema</string>
 
-    <string name="app_icon">Ícone da aplicação</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="category_All">Todas</string>
-    <string name="category_Whats_New">Novidades</string>
-    <string name="category_Recently_Updated">Atualizadas recentemente</string>
     <string name="category_Connectivity">Conectividade</string>
     <string name="category_Development">Desenvolvimento</string>
     <string name="category_Games">Jogos</string>
@@ -337,8 +330,6 @@ A aplicação atualizada não requer qualquer acesso especial.</string>
 
     <string name="about_license">Licença</string>
 
-    <string name="tab_installed_apps_count">Instaladas (%d)</string>
-    <string name="tab_updates_count">Atualizações (%d)</string>
     <string name="status_inserting_apps">A guardar detalhes das aplicações</string>
     <string name="empty_search_installed_app_list">Nenhuma aplicação instalada coincidente.</string>
     <string name="empty_search_available_app_list">Nenhuma aplicação disponível coincidente.</string>

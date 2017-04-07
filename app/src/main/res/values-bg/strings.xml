@@ -40,8 +40,6 @@
   <string name="repo_add_add">Добавяне</string>
   <string name="cancel">Отказ</string>
   <string name="add_key">Добавете ключ</string>
-  <string name="tab_available_apps">Налични</string>
-  <string name="tab_updates">Обновявания</string>
   <string name="fdroid_updates_available">Налични актуализации от F-Droid</string>
   <string name="bluetooth_activity_not_found">Не е намерен Bluetooth метод за изпращане, изберете един!</string>
   <string name="choose_bt_send">Изберете Bluetooth метод за изпращане</string>
@@ -84,9 +82,6 @@
   <string name="rooted_on">Приложенията изискващи Root няма да бъдат изобразявани в сиво</string>
   <string name="ignoreTouch">Игнорирай сензорния екран</string>
   <string name="ignoreTouch_on">Приложенията изискващи сензорен екран ще бъдат показвани винаги</string>
-  <string name="category_All">Всички</string>
-  <string name="category_Whats_New">Какво ново</string>
-  <string name="category_Recently_Updated">Обновени наскоро</string>
   <string name="local_repo">Локално хранилище</string>
   <string name="deleting_repo">Изтриване на хранилището…</string>
   <string name="adding_apks_format">Добавяне на %s към хранилището…</string>
@@ -122,7 +117,6 @@
   <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
   <string name="not_on_same_wifi">Вашето устройство не е в една и съща Wi-Fi мрежа с локалното хранилище, което добавихте! Опитайте да се свържете към тази мрежа: %s</string>
   <string name="requires_features">Изисква: %1$s</string>
-  <string name="app_icon">Икона на приложението</string>
   <string name="category_Development">Разработване</string>
   <string name="category_Games">Игри</string>
   <string name="category_Internet">Интернет</string>
@@ -178,7 +172,6 @@
     <string name="downloading">Сваляне…</string>
 
     <string name="about_source">Изходен код</string>
-    <string name="tab_installed_apps">Инсталирани</string>
     <string name="notification_summary_more">+ още %1$d…</string>
     <string name="update_notification_title">Актуализиране на хранилищата</string>
     <string name="install_error_unknown">Инсталирането се провали поради неизвестна грешка</string>
@@ -291,8 +284,6 @@
     <string name="enable">Включване</string>
     <string name="overwrite">Презаписване</string>
 
-    <string name="tab_installed_apps_count">Инсталирани (%d)</string>
-    <string name="tab_updates_count">Актуализации (%d)</string>
     <string name="repo_provider">Хранилище: %s</string>
 
     <string name="menu_email">Изпращане на имейл на създателя</string>

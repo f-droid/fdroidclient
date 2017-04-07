@@ -53,20 +53,6 @@ public class AppProvider extends FDroidProvider {
 
         private Helper() { }
 
-        public static int count(Context context, Uri uri) {
-            final String[] projection = {Cols._COUNT};
-            Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
-            int count = 0;
-            if (cursor != null) {
-                if (cursor.getCount() == 1) {
-                    cursor.moveToFirst();
-                    count = cursor.getInt(0);
-                }
-                cursor.close();
-            }
-            return count;
-        }
-
         public static List<App> all(ContentResolver resolver) {
             return all(resolver, Cols.ALL);
         }
@@ -367,8 +353,6 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_INSTALLED = "installed";
     private static final String PATH_CAN_UPDATE = "canUpdate";
     private static final String PATH_SEARCH = "search";
-    private static final String PATH_SEARCH_INSTALLED = "searchInstalled";
-    private static final String PATH_SEARCH_CAN_UPDATE = "searchCanUpdate";
     private static final String PATH_SEARCH_REPO = "searchRepo";
     protected static final String PATH_APPS = "apps";
     protected static final String PATH_SPECIFIC_APP = "app";
@@ -389,9 +373,7 @@ public class AppProvider extends FDroidProvider {
     private static final int CALC_SUGGESTED_APKS = CATEGORY + 1;
     private static final int REPO = CALC_SUGGESTED_APKS + 1;
     private static final int SEARCH_REPO = REPO + 1;
-    private static final int SEARCH_INSTALLED = SEARCH_REPO + 1;
-    private static final int SEARCH_CAN_UPDATE = SEARCH_INSTALLED + 1;
-    private static final int HIGHEST_PRIORITY = SEARCH_CAN_UPDATE + 1;
+    private static final int HIGHEST_PRIORITY = SEARCH_REPO + 1;
     private static final int CALC_PREFERRED_METADATA = HIGHEST_PRIORITY + 1;
     private static final int TOP_FROM_CATEGORY = CALC_PREFERRED_METADATA + 1;
 
@@ -402,8 +384,6 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
         MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*/*", SEARCH_TEXT_AND_CATEGORIES);
         MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*", SEARCH_TEXT);
-        MATCHER.addURI(getAuthority(), PATH_SEARCH_INSTALLED + "/*", SEARCH_INSTALLED);
-        MATCHER.addURI(getAuthority(), PATH_SEARCH_CAN_UPDATE + "/*", SEARCH_CAN_UPDATE);
         MATCHER.addURI(getAuthority(), PATH_SEARCH_REPO + "/*/*", SEARCH_REPO);
         MATCHER.addURI(getAuthority(), PATH_REPO + "/#", REPO);
         MATCHER.addURI(getAuthority(), PATH_CAN_UPDATE, CAN_UPDATE);
@@ -456,10 +436,6 @@ public class AppProvider extends FDroidProvider {
             .build();
     }
 
-    public static Uri getContentUri(App app) {
-        return getContentUri(app.packageName);
-    }
-
     /**
      * @see AppProvider.Helper#findSpecificApp(ContentResolver, String, long, String[]) for details
      * of why you should usually prefer {@link AppProvider#getHighestPriorityMetadataUri(String)} to
@@ -481,10 +457,6 @@ public class AppProvider extends FDroidProvider {
                 .build();
     }
 
-    public static Uri getContentUri(String packageName) {
-        return Uri.withAppendedPath(getContentUri(), packageName);
-    }
-
     public static Uri getSearchUri(String query, @Nullable String category) {
         if (TextUtils.isEmpty(query) && TextUtils.isEmpty(category)) {
             // Return all the things for an empty search.
@@ -502,22 +474,6 @@ public class AppProvider extends FDroidProvider {
         }
 
         return builder.build();
-    }
-
-    public static Uri getSearchInstalledUri(String query) {
-        return getContentUri()
-            .buildUpon()
-            .appendPath(PATH_SEARCH_INSTALLED)
-            .appendPath(query)
-            .build();
-    }
-
-    public static Uri getSearchCanUpdateUri(String query) {
-        return getContentUri()
-            .buildUpon()
-            .appendPath(PATH_SEARCH_CAN_UPDATE)
-            .appendPath(query)
-            .build();
     }
 
     public static Uri getSearchUri(Repo repo, String query) {
@@ -758,16 +714,6 @@ public class AppProvider extends FDroidProvider {
                 selection = selection
                         .add(querySearch(pathSegments.get(1)))
                         .add(queryCategory(pathSegments.get(2)));
-                includeSwap = false;
-                break;
-
-            case SEARCH_INSTALLED:
-                selection = querySearch(uri.getLastPathSegment()).add(queryInstalled());
-                includeSwap = false;
-                break;
-
-            case SEARCH_CAN_UPDATE:
-                selection = querySearch(uri.getLastPathSegment()).add(queryCanUpdate());
                 includeSwap = false;
                 break;
 

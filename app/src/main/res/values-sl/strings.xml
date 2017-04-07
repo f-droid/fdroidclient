@@ -16,8 +16,6 @@
   <string name="repo_add_title">Dodaj novo skladišče</string>
   <string name="repo_add_add">Dodaj</string>
   <string name="cancel">Prekliči</string>
-  <string name="tab_available_apps">Na razpolago</string>
-  <string name="tab_updates">Posodobitve</string>
   <string name="repo_add_url">Naslov skladišča</string>
   <string name="menu_manage">Upravljanje s skladišči</string>
   <string name="menu_about">O programu</string>

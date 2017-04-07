@@ -312,7 +312,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     /**
-     * This is cached as it is called several times inside the AppListAdapter.
+     * This is cached as it is called several times inside app list adapters.
      * Providing it here means the shared preferences file only needs to be
      * read once, and we will keep our copy up to date by listening to changes
      * in PREF_ROOTED.
@@ -326,7 +326,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     /**
-     * This is cached as it is called several times inside the AppListAdapter.
+     * This is cached as it is called several times inside app list adapters.
      * Providing it here means the shared preferences file only needs to be
      * read once, and we will keep our copy up to date by listening to changes
      * in PREF_HIDE_ANTI_FEATURE_APPS.

@@ -81,11 +81,6 @@
     <string name="add_key">Дадаць ключ</string>
     <string name="overwrite">Перазапісаць</string>
 
-    <string name="tab_available_apps">Даступна</string>
-    <string name="tab_installed_apps">Усталяваныя</string>
-    <string name="tab_updates">Абнаўленні</string>
-    <string name="tab_installed_apps_count">Усталявана (%d)</string>
-    <string name="tab_updates_count">Абнаўленні (%d)</string>
     <string name="fdroid_updates_available">Даступны абнаўленні F-Droid</string>
     <string name="bluetooth_activity_not_found">Не знойдзена метада адпраўкі праз Bluetooth, абярыце адзін!</string>
     <string name="choose_bt_send">Абраць метад адпраўкі праз Bluetooth</string>
@@ -235,13 +230,9 @@
     <string name="pref_language">Мова</string>
     <string name="pref_language_default">Агаданая сістэмная</string>
 
-    <string name="app_icon">Значка праграмы</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Кропка доступу</string>
 
-    <string name="category_All">Усе</string>
-    <string name="category_Whats_New">Што новага</string>
-    <string name="category_Recently_Updated">Нядаўна абноўленыя</string>
     <string name="category_Connectivity">Сувязь</string>
     <string name="category_Development">Распрацоўка</string>
     <string name="category_Games">Гульні</string>

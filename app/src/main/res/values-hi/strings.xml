@@ -61,11 +61,6 @@
     <string name="add_key">कुंजी जोड़े</string>
     <string name="overwrite">ऊपर लिखना</string>
 
-    <string name="tab_available_apps">उपलब्ध</string>
-    <string name="tab_installed_apps">स्थापित</string>
-    <string name="tab_updates">अपडेट</string>
-    <string name="tab_installed_apps_count">स्थापित (%d)</string>
-    <string name="tab_updates_count">अपडेट (%d)</string>
     <string name="theme_light">रोशन</string>
     <string name="theme_dark">अंधेरा</string>
     <string name="theme_night">रात्रि</string>

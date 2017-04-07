@@ -43,8 +43,6 @@
   <string name="enable">Ativar</string>
   <string name="add_key">Adicionar chave</string>
   <string name="overwrite">Sobrescrever</string>
-  <string name="tab_available_apps">Disponível</string>
-  <string name="tab_updates">Atualizações</string>
   <string name="fdroid_updates_available">Atualizações do F-Droid disponíveis</string>
   <string name="bluetooth_activity_not_found">Nenhum método de envio por Bluetooth foi encontrado, escolha um!</string>
   <string name="choose_bt_send">Escolher o método de envio Bluetooth</string>
@@ -92,9 +90,6 @@
   <string name="rooted_on">Não marcar de cinza os aplicativos que requerem privilégios de root</string>
   <string name="ignoreTouch">Ignorar tela sensível ao toque</string>
   <string name="ignoreTouch_on">Sempre incluir aplicativos que requerem tela sensível a toque</string>
-  <string name="category_All">Todos</string>
-  <string name="category_Whats_New">O que há de novo</string>
-  <string name="category_Recently_Updated">Recentemente atualizado</string>
   <string name="local_repo">Repositório local</string>
   <string name="local_repo_running">O F-Droid está pronto para permutar</string>
   <string name="touch_to_configure_local_repo">Toque para ver detalhes e permitir que outros permutem seus aplicativos.</string>
@@ -152,7 +147,6 @@ reativar este repositório para instalar aplicativos a partir dele.</string>
   <string name="minsdk_up_to_maxsdk">De %1$s até %2$s</string>
   <string name="not_on_same_wifi">O seu dispositivo não está no mesma rede Wi-Fi do repositório local que você acabou de adicionar! Tente conectar-se a esta rede: %s</string>
   <string name="requires_features">Requer: %1$s</string>
-  <string name="app_icon">Ícone do aplicativo</string>
   <string name="category_Development">Desenvolvimento</string>
   <string name="category_Games">Jogos</string>
   <string name="category_Internet">Internet</string>
@@ -292,7 +286,6 @@ serão perdidos. Ele não exige nenhum acesso especial.</string>
     <string name="theme_dark">Escuro</string>
 <string name="unstable_updates">Atualizações instáveis</string>
     <string name="unstable_updates_summary">Sugerir atualizações para versões instáveis</string>
-    <string name="tab_installed_apps">Instalado</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -323,8 +316,6 @@ serão perdidos. Ele não exige nenhum acesso especial.</string>
 
     <string name="about_license">Licença</string>
 
-    <string name="tab_installed_apps_count">Instalado (%d)</string>
-    <string name="tab_updates_count">Atualizações (%d)</string>
     <string name="status_inserting_apps">Salvando detalhes dos aplicativos</string>
     <string name="empty_search_installed_app_list">Nenhum aplicativo correspondente instalado.</string>
     <string name="empty_search_available_app_list">Nenhum aplicativo correspondente disponível.</string>

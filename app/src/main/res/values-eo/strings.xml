@@ -26,8 +26,6 @@
   <string name="repo_add_add">Aldoni</string>
   <string name="cancel">Nuligi</string>
   <string name="overwrite">Anstataŭigi</string>
-  <string name="tab_available_apps">Disponeblaj</string>
-  <string name="tab_updates">Ĝisdatigeblaj</string>
   <string name="fdroid_updates_available">F-Droidaj ĝisdatigoj disponeblaj</string>
   <string name="send_via_bluetooth">Sendi per Bludento</string>
   <string name="repo_add_url">Deponeja adreso</string>
@@ -66,9 +64,6 @@
   <string name="rooted_on">Ne grizigi aplikaĵojn, kiuj postulas ĉefuzantajn privilegiojn</string>
   <string name="ignoreTouch">Ignori tuŝekranon</string>
   <string name="ignoreTouch_on">Ĉiam inkluzivi aplikaĵojn, kiuj postulas tuŝekranon</string>
-  <string name="category_All">Ĉiuj</string>
-  <string name="category_Whats_New">Novaj</string>
-  <string name="category_Recently_Updated">Ĵus ĝisdatigitaj</string>
   <string name="local_repo">Loka deponejo</string>
   <string name="deleting_repo">Forigado de la deponejo…</string>
   <string name="adding_apks_format">Aldonado de %s al la deponejo…</string>
@@ -91,7 +86,6 @@
   <string name="up_to_maxsdk">Ĝis %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s ĝis %2$s</string>
   <string name="requires_features">Postulas: %1$s</string>
-  <string name="app_icon">Aplikaĵ-emblemo</string>
   <string name="category_Development">Programado</string>
   <string name="category_Games">Ludoj</string>
   <string name="category_Internet">Interreto</string>
@@ -146,9 +140,6 @@
     <string name="back">Reen</string>
     <string name="enable">Aktivigi</string>
     <string name="add_key">Aldoni ŝlosilon</string>
-    <string name="tab_installed_apps">Instalitaj</string>
-    <string name="tab_installed_apps_count">Instalitaj (%d)</string>
-    <string name="tab_updates_count">Ĝisdatigoj (%d)</string>
     <string name="notification_summary_more">ankoraŭ +%1$d…</string>
     <string name="bluetooth_activity_not_found">Neniu Bludenta metodo de sendo trovita, elektu iun!</string>
     <string name="choose_bt_send">Elektu Bludentan metodon de sendo</string>

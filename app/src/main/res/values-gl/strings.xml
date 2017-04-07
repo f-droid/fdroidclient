@@ -25,8 +25,6 @@
   <string name="repo_add_title">Engadir un novo repositorio</string>
   <string name="repo_add_add">Engadir</string>
   <string name="cancel">Cancelar</string>
-  <string name="tab_available_apps">Dispoñíbel</string>
-  <string name="tab_updates">Actualizacións</string>
   <string name="fdroid_updates_available">Actualizacións de F-Droid dispoñíbeis</string>
   <string name="repo_add_url">Enderezo do repositorio</string>
   <string name="menu_update_repo">Actualizar repositorios</string>
@@ -59,9 +57,6 @@
   <string name="show_incompat_versions">Versións incompatíbeis</string>
   <string name="rooted">Ignorar Root</string>
   <string name="ignoreTouch">Ignorar a pantalla táctil</string>
-  <string name="category_All">Todos</string>
-  <string name="category_Whats_New">Qué novidades hai</string>
-  <string name="category_Recently_Updated">Actualizado recentemente</string>
   <string name="status_download">Descargando
 %2$s / %3$s (%4$d%%) desde
 %1$s</string>
@@ -98,7 +93,6 @@
     <string name="add_key">Engadir chave</string>
     <string name="overwrite">Sobreescribir</string>
 
-    <string name="tab_installed_apps">Instalado</string>
     <string name="notification_summary_more">+%1$d máis…</string>
     <string name="bluetooth_activity_not_found">Non se atopou ningún método de transmisión Bluetooth, escolla un!</string>
     <string name="choose_bt_send">Escolla o método de transmisión Bluetooth</string>
@@ -159,7 +153,6 @@
     <string name="category_Science_Education">Ciencia e educación</string>
     <string name="category_Reading">Lectura</string>
     <string name="category_Phone_SMS">Teléfono e SMS</string>
-    <string name="app_icon">Icona do aplicativo</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Connectivity">Conectividade</string>
     <string name="category_Development">Desenvolvemento</string>

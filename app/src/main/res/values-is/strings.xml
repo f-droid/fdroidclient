@@ -61,11 +61,6 @@
     <string name="add_key">Bæta við lykli</string>
     <string name="overwrite">Skrifa yfir</string>
 
-    <string name="tab_available_apps">Tiltækt</string>
-    <string name="tab_installed_apps">Uppsett</string>
-    <string name="tab_updates">Uppfærslur</string>
-    <string name="tab_installed_apps_count">Uppsett (%d)</string>
-    <string name="tab_updates_count">Uppfærslur (%d)</string>
     <string name="fdroid_updates_available">Uppfærslur á F-Droid eru tiltækar</string>
     <string name="notification_summary_more">+%1$d fleiri…</string>
     <string name="bluetooth_activity_not_found">Engin aðferð til sendingar með Bluetooth fannst, veldu eina!</string>
@@ -171,13 +166,9 @@
     <string name="pref_language">Tungumál</string>
     <string name="pref_language_default">Sjálfgefið í kerfinu</string>
 
-    <string name="app_icon">Forritstákn</string>
     <string name="wifi">Þráðlaust Wi-Fi net</string>
     <string name="wifi_ap">Tengipunktur (hotspot)</string>
 
-    <string name="category_All">Allt</string>
-    <string name="category_Whats_New">Nýtt á döfinni</string>
-    <string name="category_Recently_Updated">Nýlega uppfært</string>
     <string name="category_Connectivity">Tengingar</string>
     <string name="category_Development">Þróun</string>
     <string name="category_Games">Leikir</string>

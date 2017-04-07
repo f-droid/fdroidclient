@@ -42,8 +42,6 @@
   <string name="enable">Kích hoạt</string>
   <string name="add_key">Thêm mã khoá</string>
   <string name="overwrite">Ghi đè</string>
-  <string name="tab_available_apps">Hiện có</string>
-  <string name="tab_updates">Cập nhật</string>
   <string name="fdroid_updates_available">Có cập nhật F-Droid</string>
   <string name="bluetooth_activity_not_found">Không tìm thấy phương pháp gửi qua Bluetooth mặc định, hãy chọn phương pháp!</string>
   <string name="choose_bt_send">Chọn phương pháp gửi qua Bluetooth</string>
@@ -87,9 +85,6 @@
   <string name="rooted_on">Không bôi xám các ứng dụng yêu cầu quyền root</string>
   <string name="ignoreTouch">Bỏ qua màn hình cảm ứng</string>
   <string name="ignoreTouch_on">Luôn hiện các ứng dụng yêu cầu màn hình cảm ứng</string>
-  <string name="category_All">Tất cả</string>
-  <string name="category_Whats_New">Ứng dụng mới</string>
-  <string name="category_Recently_Updated">Mới cập nhật</string>
   <string name="local_repo">Kho nội bộ</string>
   <string name="local_repo_running">F-Droid đã sẵn sàng để trao đổi</string>
   <string name="touch_to_configure_local_repo">Chạm để xem danh sách và cho phép mọi người trao đổi ứng dụng với bạn.</string>
@@ -129,7 +124,6 @@
   <string name="minsdk_up_to_maxsdk">Từ %1$s đến %2$s</string>
   <string name="not_on_same_wifi">Thiết bị của bạn không trong cùng mạng Wi-Fi với kho nội bộ mới thêm! Hãy vào mạng này: %s</string>
   <string name="requires_features">Yêu cầu: %1$s</string>
-  <string name="app_icon">Biểu tượng ứng dụng</string>
   <string name="category_Development">Lập trình</string>
   <string name="category_Games">Trò chơi</string>
   <string name="category_Internet">Internet</string>
@@ -165,7 +159,6 @@
     <string name="local_repo_name_summary">Tên kho phần mềm nội bộ của bạn: %s</string>
     <string name="about_source">Mã nguồn</string>
     <string name="app_incompatible">Không tương thích</string>
-    <string name="tab_installed_apps">Đã cài đặt</string>
     <string name="notification_summary_more">+%1$d ứng dụng khác…</string>
     <string name="invalid_url">Đây không phải là URL hợp lệ.</string>
     <string name="menu_changelog">Lịch sử sửa đổi</string>
@@ -304,8 +297,6 @@
 
     <string name="about_license">Giấy phép</string>
 
-    <string name="tab_installed_apps_count">Đã cài đặt (%d)</string>
-    <string name="tab_updates_count">Cập nhật (%d)</string>
     <string name="status_inserting_apps">Đang lưu thông tin ứng dụng</string>
     <string name="by_author">bởi</string>
     <string name="menu_email">E-mail tác giả</string>

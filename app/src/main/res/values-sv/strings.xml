@@ -43,8 +43,6 @@
   <string name="enable">Aktivera</string>
   <string name="add_key">Lägg till en nyckel</string>
   <string name="overwrite">Skriv över</string>
-  <string name="tab_available_apps">Tillgängliga</string>
-  <string name="tab_updates">Uppdateringar</string>
   <string name="fdroid_updates_available">Uppdateringar för F-Droid tillgängliga</string>
   <string name="bluetooth_activity_not_found">Ingen metod för att kunna skicka med Bluetooth kunde hittas, välj en!</string>
   <string name="choose_bt_send">Välj en sändningsmetod för Bluetooth</string>
@@ -92,9 +90,6 @@
   <string name="rooted_on">Gråtona inte appar som kräver root-behörigheter</string>
   <string name="ignoreTouch">Ignorera pekskärm</string>
   <string name="ignoreTouch_on">Inkludera alltid appar som kräver pekskärm</string>
-  <string name="category_All">Alla</string>
-  <string name="category_Whats_New">Nyheter</string>
-  <string name="category_Recently_Updated">Nyss uppdaterade</string>
   <string name="local_repo">Lokalt filförråd</string>
   <string name="local_repo_running">F-Droid är redo att utbyta</string>
   <string name="touch_to_configure_local_repo">Tryck för att se detaljer och tillåta andra att utbyta appar med dig.</string>
@@ -152,7 +147,6 @@ Du kommer
   <string name="minsdk_up_to_maxsdk">%1$s upp till %2$s</string>
   <string name="not_on_same_wifi">Din enhet är inte på samma WiFi som det lokala förrådet du just lagt till! Försök ansluta till detta nätverk: %s</string>
   <string name="requires_features">Kräver: %1$s</string>
-  <string name="app_icon">Appikon</string>
   <string name="category_Development">Utveckling</string>
   <string name="category_Games">Spel</string>
   <string name="category_Internet">Internet</string>
@@ -188,7 +182,6 @@ Du kommer
     <string name="less">Mindre</string>
 
     <string name="back">Bakåt</string>
-    <string name="tab_installed_apps">Installerade</string>
     <string name="notification_summary_more">+%1$d mer…</string>
     <string name="bad_fingerprint">Felaktigt fingeravtryck</string>
     <string name="invalid_url">Det här är inte en giltig hemsideadress.</string>
@@ -217,8 +210,6 @@ Du kommer
 
     <string name="about_license">Licens</string>
 
-    <string name="tab_installed_apps_count">Installerade (%d)</string>
-    <string name="tab_updates_count">Uppdateringar (%d)</string>
     <string name="menu_email">E-post författare</string>
     <string name="antinonfreeassetslist">Denna app innehåller icke-fria tillgångar</string>
 

@@ -27,8 +27,6 @@
   <string name="enable">Įjungti</string>
   <string name="add_key">Pridėti raktą</string>
   <string name="overwrite">Perrašyti</string>
-  <string name="tab_available_apps">Prieinamos programos</string>
-  <string name="tab_updates">Atnaujinimai</string>
   <string name="send_via_bluetooth">Siųsti per Bluetooth</string>
   <string name="repo_add_url">Saugyklos adresas</string>
   <string name="menu_update_repo">Atnaujinti saugyklas</string>
@@ -51,9 +49,6 @@
   <string name="show_incompat_versions">Nesuderintos versijos</string>
   <string name="show_incompat_versions_on">Rodyti programų laidas, netinkamas šiam įrenginiui</string>
   <string name="rooted">Administratoriaus privilegijos</string>
-  <string name="category_All">Rodyti visas</string>
-  <string name="category_Whats_New">Naujienos</string>
-  <string name="category_Recently_Updated">Neseniai atnaujinta</string>
   <string name="deleting_repo">Šalinama pasirinkta saugykla…</string>
   <string name="next">Toliau</string>
   <string name="status_connecting_to_repo">Jungiamasi prie

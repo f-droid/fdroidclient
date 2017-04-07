@@ -39,8 +39,6 @@
   <string name="enable">啟用</string>
   <string name="add_key">添加鑰匙</string>
   <string name="overwrite">覆寫</string>
-  <string name="tab_available_apps">可安裝</string>
-  <string name="tab_updates">更新</string>
   <string name="fdroid_updates_available">有尚未安裝的 F-Droid 更新</string>
   <string name="bluetooth_activity_not_found">請選擇一個藍牙傳送的方式！</string>
   <string name="choose_bt_send">選擇藍牙的傳送方式</string>
@@ -82,9 +80,6 @@
   <string name="rooted">略過 root</string>
   <string name="ignoreTouch">略過觸碰屏幕</string>
   <string name="ignoreTouch_on">顯示需要觸碰屏幕的應用程式</string>
-  <string name="category_All">所有</string>
-  <string name="category_Whats_New">最新</string>
-  <string name="category_Recently_Updated">最近更新</string>
   <string name="local_repo">本地倉庫</string>
   <string name="local_repo_running">F-Droid 隨時可以進行交換</string>
   <string name="touch_to_configure_local_repo">觸碰以顯示詳細資料及允許其他人交換您的應用程式。</string>
@@ -117,7 +112,6 @@
   <string name="up_to_maxsdk">直至 %s</string>
   <string name="not_on_same_wifi">您剛才添加的本地倉庫與您的裝置並不在同一個 Wi-Fi 網絡上！請嘗試加入以下網絡：%s</string>
   <string name="requires_features">需要：%1$s</string>
-  <string name="app_icon">應用程式圖示</string>
   <string name="category_Development">開發</string>
   <string name="category_Games">遊戲</string>
   <string name="category_Internet">互聯網</string>
@@ -145,7 +139,6 @@
     <string name="links">連結</string>
 
     <string name="back">返回</string>
-    <string name="tab_installed_apps">已安裝</string>
     <string name="invalid_url">這不是有效的網址。</string>
     <string name="menu_changelog">更新日誌</string>
     <string name="update_notification_title">正在更新軟件倉庫</string>
@@ -302,8 +295,6 @@
     <string name="swap_active_hotspot">%1$s (您的熱點)</string>
     <string name="about_license">特許條款</string>
 
-    <string name="tab_installed_apps_count">已安裝 (%d)</string>
-    <string name="tab_updates_count">更新 (%d)</string>
     <string name="enable_proxy_summary">為所有網絡請求設置 HTTP 代理</string>
     <string name="status_inserting_apps">正在儲存應用程式的詳細資料</string>
     <string name="empty_installed_app_list">沒有安裝任何應用程式。\n\nF-Droid 並不提供您裝置上的應用程式。您可以嘗試更新您的軟件倉庫，但若更新後此頁還沒有顯示任何應用程式，您的倉庫的確不提供裝置現有的程式。</string>

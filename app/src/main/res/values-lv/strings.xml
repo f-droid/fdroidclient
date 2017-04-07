@@ -38,8 +38,6 @@
   <string name="enable">Ieslēgt</string>
   <string name="add_key">Pievienot atslēgu</string>
   <string name="overwrite">Pārrakstīt</string>
-  <string name="tab_available_apps">Pieejams</string>
-  <string name="tab_updates">Atjauninājumi</string>
   <string name="bluetooth_activity_not_found">Nav Bluetooth aktivitāšu, izvēlies vienu!</string>
   <string name="choose_bt_send">Izvēlies Bluesūtīšanas metodi</string>
   <string name="send_via_bluetooth">Bluesūtīt</string>
@@ -74,7 +72,6 @@
     <string name="about_source">Pirmkods</string>
     <string name="about_license">Licence</string>
 
-    <string name="tab_updates_count">Atjauninājumi (%d)</string>
     <string name="menu_settings">Iestatījumi</string>
     <string name="menu_email">Autora Epasts</string>
     <string name="menu_issues">Issues</string>

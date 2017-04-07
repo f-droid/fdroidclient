@@ -43,8 +43,6 @@
   <string name="enable">Habilitar</string>
   <string name="add_key">Agregar clave</string>
   <string name="overwrite">Sobrescribir</string>
-  <string name="tab_available_apps">Disponible</string>
-  <string name="tab_updates">Actualizaciones</string>
   <string name="fdroid_updates_available">Actualizaciones de F-Droid disponibles</string>
   <string name="bluetooth_activity_not_found">No se encontró método de envío Bluetooth, ¡elige uno!</string>
   <string name="choose_bt_send">Elegir el método de envío Bluetooth</string>
@@ -92,9 +90,6 @@
   <string name="rooted_on">No marcar en gris las aplicaciones que requieren permisos de «root»</string>
   <string name="ignoreTouch">Ignorar pantalla táctil</string>
   <string name="ignoreTouch_on">Siempre incluir aplicaciones que requieran pantalla táctil</string>
-  <string name="category_All">Todas</string>
-  <string name="category_Whats_New">Novedades</string>
-  <string name="category_Recently_Updated">Recientemente actualizados</string>
   <string name="local_repo">Repo local</string>
   <string name="local_repo_running">F-Droid está preparado para intercambiar</string>
   <string name="touch_to_configure_local_repo">Tocar para ver los detalles y permitir a otros intercambiar aplicaciones.</string>
@@ -149,7 +144,6 @@ Para ver las aplicaciones que ofrece tienes que activarlo.</string>
   <string name="minsdk_up_to_maxsdk">De %1$s a %2$s</string>
   <string name="not_on_same_wifi">¡Tu dispositivo no está en la misma Wi-Fi que el repo que acabas de añadir! Intenta unirte a esta red: %s</string>
   <string name="requires_features">Requiere: %1$s</string>
-  <string name="app_icon">Icono de la aplicación</string>
   <string name="category_Development">Desarrollo</string>
   <string name="category_Games">Juegos</string>
   <string name="category_Internet">Internet</string>
@@ -282,7 +276,6 @@ No requiere ningún acceso especial.</string>
     <string name="theme_dark">Oscuro</string>
 <string name="unstable_updates">Actualizaciones inestables</string>
     <string name="unstable_updates_summary">Sugerir actualizaciones a versiones inestables</string>
-    <string name="tab_installed_apps">Instalado</string>
     <string name="system_install_post_fail_message">La instalación de la extensión de F-Droid con permisos de sistema ha fallado. El método de instalación no está soportado por todas las versiones de Android, así que, por favor, consulta el sistema de gestión de incidencias de F-Droid para más información.</string>
     <string name="install_confirm_update_system">¿Quieres instalar una actualización
 de esta aplicación fija? Los datos no se perderán.
@@ -319,8 +312,6 @@ No requiere ningún acceso especial.</string>
     <string name="repo_edit_credentials">Cambiar contraseña</string>
     <string name="repo_error_empty_username">Nombre de usuario vacío, las credenciales no se han cambiado</string>
 
-    <string name="tab_installed_apps_count">Instalado (%d)</string>
-    <string name="tab_updates_count">Actualizaciones (%d)</string>
     <string name="about_license">Licencia</string>
 
     <string name="status_inserting_apps">Guardando los detalles de la aplicación</string>

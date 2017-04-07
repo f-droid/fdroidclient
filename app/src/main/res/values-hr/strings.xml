@@ -73,11 +73,6 @@
     <string name="add_key">Dodaj ključ</string>
     <string name="overwrite">Prepiši</string>
 
-    <string name="tab_available_apps">Dostupno</string>
-    <string name="tab_installed_apps">Instalirano</string>
-    <string name="tab_updates">Ažuriranja</string>
-    <string name="tab_installed_apps_count">Instalirano (%d)</string>
-    <string name="tab_updates_count">Ažuriranja (%d)</string>
     <string name="fdroid_updates_available">Ažuriranja za F-Droid dostupna</string>
     <string name="notification_summary_more">+%1$d više…</string>
     <string name="bluetooth_activity_not_found">Nije pronađena metoda slanja preko Bluetootha, odaberite jednu!</string>
@@ -218,13 +213,9 @@ ponovno omogućiti repozitorij kako bi instalirali aplikacije iz njega.</string>
     <string name="pref_language">Jezik</string>
     <string name="pref_language_default">Zadani jezik sustava</string>
 
-    <string name="app_icon">Ikona aplikacije</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="category_All">Sve</string>
-    <string name="category_Whats_New">Novo</string>
-    <string name="category_Recently_Updated">Nedavno ažurirano</string>
     <string name="category_Connectivity">Povezivanje</string>
     <string name="category_Development">Razvoj</string>
     <string name="category_Games">Igre</string>

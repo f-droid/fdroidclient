@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <color name="unsigned">#ffCC0000</color>
     <color name="unverified">#ff999999</color>
     <color name="red">#ffdd2c00</color>
 
-    <color name="category_connectivity">#CBEFEC</color>
-    <color name="category_development">#E2D6BC</color>
-    <color name="category_games">#6D6862</color>
-    <color name="category_graphics">#F25050</color>
-    <color name="category_internet">#DBDDC9</color>
-    <color name="category_money">#DDDDD0</color>
-    <color name="category_multimedia">#FF7F66</color>
-    <color name="category_navigation">#94D6FD</color>
-    <color name="category_phone_sms">#F3CFC0</color>
-    <color name="category_reading">#D6A07A</color>
-    <color name="category_science_education">#F4F4EC</color>
-    <color name="category_security">#6D6862</color>
-    <color name="category_sports_health">#72C7EA</color>
-    <color name="category_system">#D3DB77</color>
-    <color name="category_theming">#DEEFE9</color>
-    <color name="category_time">#FF7043</color>
-    <color name="category_writing">#F2E9CE</color>
+    <!-- Ignore UnusedResources errors here, because the resources are loaded dynamically at runtime -->
+    <color tools:ignore="UnusedResources" name="category_connectivity">#CBEFEC</color>
+    <color tools:ignore="UnusedResources" name="category_development">#E2D6BC</color>
+    <color tools:ignore="UnusedResources" name="category_games">#6D6862</color>
+    <color tools:ignore="UnusedResources" name="category_graphics">#F25050</color>
+    <color tools:ignore="UnusedResources" name="category_internet">#DBDDC9</color>
+    <color tools:ignore="UnusedResources" name="category_money">#DDDDD0</color>
+    <color tools:ignore="UnusedResources" name="category_multimedia">#FF7F66</color>
+    <color tools:ignore="UnusedResources" name="category_navigation">#94D6FD</color>
+    <color tools:ignore="UnusedResources" name="category_phone_sms">#F3CFC0</color>
+    <color tools:ignore="UnusedResources" name="category_reading">#D6A07A</color>
+    <color tools:ignore="UnusedResources" name="category_science_education">#F4F4EC</color>
+    <color tools:ignore="UnusedResources" name="category_security">#6D6862</color>
+    <color tools:ignore="UnusedResources" name="category_sports_health">#72C7EA</color>
+    <color tools:ignore="UnusedResources" name="category_system">#D3DB77</color>
+    <color tools:ignore="UnusedResources" name="category_theming">#DEEFE9</color>
+    <color tools:ignore="UnusedResources" name="category_time">#FF7043</color>
+    <color tools:ignore="UnusedResources" name="category_writing">#F2E9CE</color>
 
     <color name="fdroid_blue">#ff1976d2</color>
     <color name="fdroid_blue_dark">#ff0d47a1</color>

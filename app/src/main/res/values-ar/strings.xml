@@ -20,8 +20,6 @@
   <string name="cancel">إلغاء</string>
   <string name="enable">تمكين</string>
   <string name="add_key">إضافة مفتاح</string>
-  <string name="tab_available_apps">متواجد</string>
-  <string name="tab_updates">التحديثات</string>
   <string name="choose_bt_send">اختيار البلوتوث كطريقة إرسال</string>
   <string name="send_via_bluetooth">إرسال بواسطة البلوتوث</string>
   <string name="repo_add_url">عنوان المستودع</string>
@@ -38,8 +36,6 @@
   <string name="menu_ignore_this">تجاهل هذا التحديث</string>
   <string name="menu_source">الشفرة المصدرية</string>
   <string name="menu_donate">التبرع</string>
-  <string name="category_All">الكل</string>
-  <string name="category_Whats_New">ما الجديد</string>
   <string name="local_repo">مستودع محلي</string>
   <string name="deleting_repo">يتم حذف المستودع الحالي…</string>
   <string name="next">التالي</string>
@@ -53,7 +49,6 @@
   <string name="repo_name">الإسم</string>
   <string name="unknown">غير معروف</string>
   <string name="repo_confirm_delete_title">حذف المستودع؟</string>
-  <string name="app_icon">أيقونة التطبيق</string>
   <string name="category_Development">التطوير</string>
   <string name="category_Games">الألعاب</string>
   <string name="category_Internet">الإنترنت</string>
@@ -116,9 +111,6 @@
     <string name="back">إلى الخلف</string>
     <string name="overwrite">استبدال</string>
 
-    <string name="tab_installed_apps">تم التثبيت</string>
-    <string name="tab_installed_apps_count">تم التثبيت (%d)</string>
-    <string name="tab_updates_count">تحديثات (%d)</string>
     <string name="fdroid_updates_available">تحديثات اف-درويد متوفرة</string>
     <string name="notification_summary_more">+%1$d المزيد…</string>
     <string name="bluetooth_activity_not_found">لا توجد طريقة إرسال بلوتوث، فضلاً إختر واحدة !</string>
@@ -230,7 +222,6 @@
     <string name="wifi">شبكة لاسلكية (واي-فاي)</string>
     <string name="wifi_ap">نقاط الإنترنت</string>
 
-    <string name="category_Recently_Updated">تم تحديثه مؤخرا</string>
     <string name="category_Connectivity">الاتصال</string>
     <string name="category_Graphics">الرسومات</string>
     <string name="category_Money">نقود</string>

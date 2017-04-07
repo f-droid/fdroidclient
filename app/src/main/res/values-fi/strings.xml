@@ -42,8 +42,6 @@
   <string name="enable">Ota käyttöön</string>
   <string name="add_key">Lisää avain</string>
   <string name="overwrite">Korvaa</string>
-  <string name="tab_available_apps">Saatavilla</string>
-  <string name="tab_updates">Päivityksiä</string>
   <string name="fdroid_updates_available">F-Droid: Päivityksiä saatavilla</string>
   <string name="bluetooth_activity_not_found">Bluetooth -lähetystapaa ei löytynyt, valitse yksi!</string>
   <string name="choose_bt_send">Valitse Bluetooth -lähetystapa</string>
@@ -80,9 +78,6 @@
   <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
   <string name="rooted">Ohita root</string>
   <string name="ignoreTouch">Älä välitä kosketusnäytöstä</string>
-  <string name="category_All">Kaikki</string>
-  <string name="category_Whats_New">Mikä on uutta</string>
-  <string name="category_Recently_Updated">Viimeksi päivitetyt</string>
   <string name="local_repo">Paikallinen sovelluslähde</string>
   <string name="local_repo_running">F-Droid on valmis vaihtamaan</string>
   <string name="touch_to_configure_local_repo">Kosketa nähdäksesi tiedot ja salliaksesi toisten vaihtaa sovelluksiasi.</string>
@@ -111,7 +106,6 @@
   <string name="repo_confirm_delete_body">Sovelluslähteen poistaminen tarkoittaa, että sieltä olevat sovellukset eivät ole enää saatavissa F-Droidin kautta. Huomautus: Kaikki aikaisemmin asentamasi sovellukset säilyvät laitteellasi.</string>
   <string name="repo_disabled_notification">%1$s poistettu käytöstä. Sinun pitää ottaa tämä sovelluslähde uudelleen käyttöön asentaaksesi sieltä sovelluksia.</string>
   <string name="requires_features">Edellyttää: %1$s</string>
-  <string name="app_icon">Sovelluskuvake</string>
   <string name="category_Development">Kehittäminen</string>
   <string name="category_Games">Pelit</string>
   <string name="category_Internet">Internet</string>
@@ -178,9 +172,6 @@
     <string name="more">Lisää</string>
     <string name="less">Vähemmän</string>
 
-    <string name="tab_installed_apps">Asennettu</string>
-    <string name="tab_installed_apps_count">Asennettu (%d)</string>
-    <string name="tab_updates_count">Päivitykset (%d)</string>
     <string name="notification_summary_more">+%1$d lisää…</string>
     <string name="update_auto_download">Lataa päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">Lataa päivitykset taustalla</string>

@@ -1,12 +1,12 @@
 package org.fdroid.fdroid.data;
 
 import android.app.Application;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.mock.MockRepo;
@@ -16,6 +16,8 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.fdroid.fdroid.Assert.assertContainsOnly;
@@ -45,10 +47,6 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.banana.apple", "Banana", "Vegetable,Vegetable", mainRepo);
 
         String[] expectedFDroid = new String[] {
-                context.getResources().getString(R.string.category_Whats_New),
-                context.getResources().getString(R.string.category_Recently_Updated),
-                context.getResources().getString(R.string.category_All),
-
                 "Animal",
                 "Mineral",
                 "Security",
@@ -57,20 +55,12 @@ public class CategoryProviderTest extends FDroidProviderTest {
         };
 
         String[] expectedGP = new String[] {
-                context.getResources().getString(R.string.category_Whats_New),
-                context.getResources().getString(R.string.category_Recently_Updated),
-                context.getResources().getString(R.string.category_All),
-
                 "GuardianProject",
                 "Office",
         };
 
         // We overwrite "Security" + "Writing" with "GuardianProject" + "Office"
         String[] expectedBoth = new String[] {
-                context.getResources().getString(R.string.category_Whats_New),
-                context.getResources().getString(R.string.category_Recently_Updated),
-                context.getResources().getString(R.string.category_All),
-
                 "Animal",
                 "Mineral",
                 "Vegetable",
@@ -79,13 +69,13 @@ public class CategoryProviderTest extends FDroidProviderTest {
                 "Office",
         };
 
-        assertContainsOnly(CategoryProvider.Helper.categories(context), expectedFDroid);
+        assertContainsOnly(categories(), expectedFDroid);
 
         insertAppWithCategory("info.guardianproject.notepadbot", "NoteCipher", "Office,GuardianProject", gpRepo);
-        assertContainsOnly(CategoryProvider.Helper.categories(context), expectedBoth);
+        assertContainsOnly(categories(), expectedBoth);
 
         RepoProvider.Helper.purgeApps(context, new MockRepo(mainRepo));
-        List<String> categoriesAfterPurge = CategoryProvider.Helper.categories(context);
+        List<String> categoriesAfterPurge = categories();
         assertContainsOnly(categoriesAfterPurge, expectedGP);
     }
 
@@ -213,11 +203,8 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.rock", "Rock", "Mineral");
         insertAppWithCategory("com.banana", "Banana", "Vegetable");
 
-        List<String> categories = CategoryProvider.Helper.categories(context);
+        List<String> categories = categories();
         String[] expected = new String[] {
-                context.getResources().getString(R.string.category_Whats_New),
-                context.getResources().getString(R.string.category_Recently_Updated),
-                context.getResources().getString(R.string.category_All),
                 "Animal",
                 "Mineral",
                 "Vegetable",
@@ -233,12 +220,8 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.dog.rock.apple", "Dog-Rock-Apple", "Animal,Mineral,Vegetable", mainRepo);
         insertAppWithCategory("com.banana.apple", "Banana", "Vegetable,Vegetable", mainRepo);
 
-        List<String> categories = CategoryProvider.Helper.categories(context);
+        List<String> categories = categories();
         String[] expected = new String[] {
-                context.getResources().getString(R.string.category_Whats_New),
-                context.getResources().getString(R.string.category_Recently_Updated),
-                context.getResources().getString(R.string.category_All),
-
                 "Animal",
                 "Mineral",
                 "Vegetable",
@@ -251,12 +234,8 @@ public class CategoryProviderTest extends FDroidProviderTest {
                 "Running,Shooting,Jumping,Bleh,Sneh,Pleh,Blah,Test category," +
                 "The quick brown fox jumps over the lazy dog,With apostrophe's", additionalRepo);
 
-        List<String> categoriesLonger = CategoryProvider.Helper.categories(context);
+        List<String> categoriesLonger = categories();
         String[] expectedLonger = new String[] {
-                context.getResources().getString(R.string.category_Whats_New),
-                context.getResources().getString(R.string.category_Recently_Updated),
-                context.getResources().getString(R.string.category_All),
-
                 "Animal",
                 "Mineral",
                 "Vegetable",
@@ -276,7 +255,7 @@ public class CategoryProviderTest extends FDroidProviderTest {
         assertContainsOnly(categoriesLonger, expectedLonger);
 
         RepoProvider.Helper.purgeApps(context, new MockRepo(additionalRepo));
-        List<String> categoriesAfterPurge = CategoryProvider.Helper.categories(context);
+        List<String> categoriesAfterPurge = categories();
         assertContainsOnly(categoriesAfterPurge, expected);
     }
 
@@ -288,5 +267,26 @@ public class CategoryProviderTest extends FDroidProviderTest {
         ContentValues values = new ContentValues(1);
         values.put(Cols.ForWriting.Categories.CATEGORIES, categories);
         AppProviderTest.insertApp(contentResolver, context, id, name, values, repoId);
+    }
+
+    public List<String> categories() {
+        final ContentResolver resolver = context.getContentResolver();
+        final Uri uri = CategoryProvider.getAllCategories();
+        final String[] projection = {Schema.CategoryTable.Cols.NAME};
+        final Cursor cursor = resolver.query(uri, projection, null, null, null);
+        List<String> categories = new ArrayList<>(30);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    final String name = cursor.getString(0);
+                    categories.add(name);
+                    cursor.moveToNext();
+                }
+            }
+            cursor.close();
+        }
+        Collections.sort(categories);
+        return categories;
     }
 }

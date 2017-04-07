@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.data;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
@@ -8,16 +7,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable.Cols;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class CategoryProvider extends FDroidProvider {
 
@@ -52,47 +46,6 @@ public class CategoryProvider extends FDroidProvider {
             } finally {
                 cursor.close();
             }
-        }
-
-        public static String getCategoryAll(Context context) {
-            return context.getString(R.string.category_All);
-        }
-
-        public static String getCategoryWhatsNew(Context context) {
-            return context.getString(R.string.category_Whats_New);
-        }
-
-        public static String getCategoryRecentlyUpdated(Context context) {
-            return context.getString(R.string.category_Recently_Updated);
-        }
-
-        public static List<String> categories(Context context) {
-            final ContentResolver resolver = context.getContentResolver();
-            final Uri uri = CategoryProvider.getAllCategories();
-            final String[] projection = {Cols.NAME};
-            final Cursor cursor = resolver.query(uri, projection, null, null, null);
-            List<String> categories = new ArrayList<>(30);
-            if (cursor != null) {
-                if (cursor.getCount() > 0) {
-                    cursor.moveToFirst();
-                    while (!cursor.isAfterLast()) {
-                        final String name = cursor.getString(0);
-                        categories.add(name);
-                        cursor.moveToNext();
-                    }
-                }
-                cursor.close();
-            }
-            Collections.sort(categories);
-
-            // Populate the category list with the real categories, and the
-            // locally generated meta-categories for "What's New", "Recently
-            // Updated" and "All"...
-            categories.add(0, getCategoryAll(context));
-            categories.add(0, getCategoryRecentlyUpdated(context));
-            categories.add(0, getCategoryWhatsNew(context));
-
-            return categories;
         }
     }
 

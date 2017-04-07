@@ -93,22 +93,6 @@
     </style>
     <style name="BodyText" parent="BodyTextBase" />
 
-    <style name="AppList">
-        <item name="android:id">@android:id/list</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:fastScrollEnabled">true</item>
-    </style>
-
-    <style name="AppListEmptyText">
-        <item name="android:id">@android:id/empty</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:padding">20dp</item>
-        <item name="android:textSize">20sp</item>
-    </style>
-
     <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorButtonNormal">@color/swap_bright_blue</item>
         <item name="actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>

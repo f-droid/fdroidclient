@@ -11,7 +11,6 @@
     <string name="transition_app_item_icon">transition_app_item_icon</string>
 
     <string name="https">https://</string>
-    <string name="upgrade_from_to">%1$s → %2$s</string>
 
     <string name="app_details_subject">%1$s on F-Droid</string>
 

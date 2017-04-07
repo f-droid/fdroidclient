@@ -43,8 +43,6 @@
   <string name="enable">Включить</string>
   <string name="add_key">Добавить ключ</string>
   <string name="overwrite">Перезаписать</string>
-  <string name="tab_available_apps">Доступно</string>
-  <string name="tab_updates">Обновления</string>
   <string name="fdroid_updates_available">Доступны обновления для F-Droid</string>
   <string name="bluetooth_activity_not_found">Методы отправки по Bluetooth не найдены, выберите какой-либо!</string>
   <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>
@@ -92,9 +90,6 @@
   <string name="rooted_on">Не выделять серым цветом приложения, требующие привилегии суперпользователя</string>
   <string name="ignoreTouch">Сенсорный экран</string>
   <string name="ignoreTouch_on">Всегда включать приложения, требующие сенсорный экран</string>
-  <string name="category_All">Все</string>
-  <string name="category_Whats_New">Новинки</string>
-  <string name="category_Recently_Updated">Недавно обновлённые</string>
   <string name="local_repo">Локальный репозиторий</string>
   <string name="local_repo_running">F-Droid готов для обмена</string>
   <string name="deleting_repo">Удаление текущего репозитория…</string>
@@ -142,7 +137,6 @@
   <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
   <string name="not_on_same_wifi">Данное устройство не находится в той же сети Wi-Fi, что и локальный репозиторий, который вы только что добавили! Попробуйте присоединиться к этой сети: %s</string>
   <string name="requires_features">Требуется: %1$s</string>
-  <string name="app_icon">Иконка приложения</string>
   <string name="category_Development">Разработка</string>
   <string name="category_Games">Игры</string>
   <string name="category_Internet">Интернет</string>
@@ -187,7 +181,6 @@
     <string name="category_Time">Время</string>
     <string name="app_name">F-Droid</string>
 
-    <string name="tab_installed_apps">Установлено</string>
     <string name="update_notification_title">Обновление репозиториев</string>
     <string name="status_processing_xml_percent">Обработка %2$s / %3$s (%4$d%%) из %1$s</string>
     <string name="install_error_unknown">Установка не удалась из-за неизвестной ошибки</string>
@@ -224,8 +217,6 @@
 \n%2$s от
 \n%1$s</string>
     <string name="repo_added">Сохранен F-Droid репозиторий %1$s.</string>
-    <string name="tab_installed_apps_count">Установлено (%d)</string>
-    <string name="tab_updates_count">Обновления (%d)</string>
     <string name="about_license">Лицензия</string>
 
     <string name="status_inserting_apps">Сохранение информации о приложениях</string>

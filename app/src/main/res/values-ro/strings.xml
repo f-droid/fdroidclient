@@ -20,8 +20,6 @@
   <string name="repo_add_add">Adauga</string>
   <string name="cancel">Anuleaza</string>
   <string name="enable">Activeaza</string>
-  <string name="tab_available_apps">Disponibil</string>
-  <string name="tab_updates">Actualizari</string>
   <string name="menu_about">Despre</string>
   <string name="menu_search">Cauta</string>
   <string name="menu_launch">Porneste</string>
@@ -35,9 +33,6 @@
   <string name="expert">Setari expert</string>
   <string name="rooted">Ignora aplicatiile ce necesita root</string>
   <string name="ignoreTouch_on">Include mereu aplicatii ce necesita touchscreen</string>
-  <string name="category_All">Toate</string>
-  <string name="category_Whats_New">Ce este nou</string>
-  <string name="category_Recently_Updated">Actualizat recent</string>
   <string name="theme">Temă</string>
   <string name="repo_num_apps">Număr de aplicaţii</string>
   <string name="repo_last_update">Ultima actualizare</string>
@@ -91,9 +86,6 @@
     <string name="add_key">Adauga cheie</string>
     <string name="overwrite">Suprascrie</string>
 
-    <string name="tab_installed_apps">Instalat</string>
-    <string name="tab_installed_apps_count">Instalat (%d)</string>
-    <string name="tab_updates_count">Actualizari (%d)</string>
     <string name="fdroid_updates_available">Actualizari disponibile in F-Droid</string>
     <string name="notification_summary_more">+%1$d mai mult…</string>
     <string name="bluetooth_activity_not_found">Nu a fost gasita o metoda Bluetooth de a trimite, alegeti una!</string>
@@ -198,7 +190,6 @@
     <string name="antiupstreamnonfreelist">Codul sursa originar nu este in totalitatea lui software liber</string>
     <string name="unsigned">Nesemnat</string>
     <string name="repo_fingerprint">Amprenta cheii de semnatura (SHA-256)</string>
-    <string name="app_icon">Iconita aplicatie</string>
     <string name="category_Connectivity">Conectivitate</string>
     <string name="category_Money">Finante</string>
     <string name="category_Security">Securitate</string>

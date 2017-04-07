@@ -35,8 +35,6 @@
   <string name="enable">Ενεργοποίηση</string>
   <string name="add_key">Προσθήκη κλειδιού</string>
   <string name="overwrite">Αντικατάσταση</string>
-  <string name="tab_available_apps">Διαθέσιμα</string>
-  <string name="tab_updates">Ενημερώσεις</string>
   <string name="fdroid_updates_available">Υπάρχουν ενημερώσεις του F-Droid</string>
   <string name="bluetooth_activity_not_found">Καμία μέθοδος αποστολής με Bluetooth δεν βρέθηκε, επιλέξετε μία!</string>
   <string name="choose_bt_send">Επιλέξτε τη μέθοδο αποστολής με Bluetooth</string>
@@ -83,9 +81,6 @@
   <string name="rooted_on">Να μη γκριζάρονται εφαρμογές που απαιτούν δικαιώματα υπερχρήστη</string>
   <string name="ignoreTouch">Αγνόηση οθόνης αφής</string>
   <string name="ignoreTouch_on">Πάντα να περιλαμβάνονται εφαρμογές που απαιτούν οθόνη αφής</string>
-  <string name="category_All">Όλα</string>
-  <string name="category_Whats_New">Τι νέο υπάρχει</string>
-  <string name="category_Recently_Updated">Πρόσφατα Ενημερωμένες</string>
   <string name="status_download">Λήψη
 %2$s / %3$s (%4$d%%) από
 %1$s</string>
@@ -139,7 +134,6 @@
     <string name="less">Λιγότερα</string>
 
     <string name="back">Πίσω</string>
-    <string name="tab_installed_apps">Εγκατεστημένο</string>
     <string name="notification_summary_more">+%1$d περισσότερα…</string>
     <string name="send_via_bluetooth">Αποστολή μέσω Bluetooth</string>
 
@@ -192,7 +186,6 @@
     <string name="pref_language">Γλώσσα</string>
     <string name="pref_language_default">Προεπιλογή συστήματος</string>
 
-    <string name="app_icon">Εικονίδιο εφαρμογής</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Σημείο πρόσβασης</string>
 
@@ -340,8 +333,6 @@
     <string name="repo_error_empty_username">Κενό όνομα χρήστη, τα διαπιστευτήρια δεν άλλαξαν</string>
 
     <string name="versions">Εκδόσεις</string>
-    <string name="tab_installed_apps_count">Εγκαταστημένο (%d)</string>
-    <string name="tab_updates_count">Ενημερώσεις (%d)</string>
     <string name="repo_provider">Αποθετήριο: %s</string>
 
     <string name="menu_email">Ηλ. ταχυδρομείο δημιουργού</string>
