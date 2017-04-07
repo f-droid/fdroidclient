@@ -24,8 +24,6 @@
     <string name="update_auto_install_summary">Laai en installeer opdaterings in die agtergrond</string>
     <string name="notify">Opdaterings kennisgewings</string>
     <string name="notify_on">Wys \'n kennisgewing wanneer opdaterings beskikbaar is</string>
-    <string name="update_history">Dateer geskiedenis op</string>
-    <string name="update_history_summ">Hoeveelheid dae wat programme as nuut of onlangs geag word: %s</string>
     <string name="system_installer">Bevoorregte uitbreiding</string>
     <string name="system_installer_on">Gebruik F-Droid bevoorregte uitbreiding om pakkettete te installeer, verander of verwyder</string>
     <string name="uninstall_system">Opdateer/Verwyder bevoorregte uitbreiding</string>

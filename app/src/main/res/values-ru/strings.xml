@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Обновлять автоматически только по нелимитированным соединениям (таким как Wi-Fi)</string>
   <string name="notify">Уведомления об обновлениях</string>
   <string name="notify_on">Отображать уведомление когда есть обновления</string>
-  <string name="update_history">История обновлений</string>
-  <string name="update_history_summ">Показывать новые приложения и обновления за последние %s дней</string>
   <string name="system_installer">Привилегированное расширение</string>
   <string name="system_installer_on">Использовать привилегированное расширение F-Droid для установки, обновления и удаления пакетов</string>
   <string name="local_repo_name">Название локального репозитория</string>

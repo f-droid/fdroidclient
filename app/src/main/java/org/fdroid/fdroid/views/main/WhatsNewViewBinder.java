@@ -13,13 +13,18 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.whatsnew.WhatsNewAdapter;
+
+import java.util.Date;
 
 /**
  * Loads a list of newly added or recently updated apps and displays them to the user.
@@ -30,6 +35,8 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private final WhatsNewAdapter whatsNewAdapter;
     private final AppCompatActivity activity;
+    private final TextView emptyState;
+    private final RecyclerView appList;
 
     WhatsNewViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
@@ -41,7 +48,9 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         GridLayoutManager layoutManager = new GridLayoutManager(activity, 2);
         layoutManager.setSpanSizeLookup(new WhatsNewAdapter.SpanSizeLookup());
 
-        RecyclerView appList = (RecyclerView) whatsNewView.findViewById(R.id.app_list);
+        emptyState = (TextView) whatsNewView.findViewById(R.id.empty_state);
+
+        appList = (RecyclerView) whatsNewView.findViewById(R.id.app_list);
         appList.setHasFixedSize(true);
         appList.setLayoutManager(layoutManager);
         appList.setAdapter(whatsNewAdapter);
@@ -89,6 +98,36 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         }
 
         whatsNewAdapter.setAppsCursor(cursor);
+
+        if (whatsNewAdapter.getItemCount() == 0) {
+            emptyState.setVisibility(View.VISIBLE);
+            appList.setVisibility(View.GONE);
+            explainEmptyStateToUser();
+        } else {
+            emptyState.setVisibility(View.GONE);
+            appList.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void explainEmptyStateToUser() {
+        StringBuilder emptyStateText = new StringBuilder();
+        emptyStateText.append(activity.getString(R.string.latest__empty_state__no_recent_apps));
+        emptyStateText.append("\n\n");
+
+        int repoCount = RepoProvider.Helper.countEnabledRepos(activity);
+        if (repoCount == 0) {
+            emptyStateText.append(activity.getString(R.string.latest__empty_state__no_enabled_repos));
+        } else {
+            Date lastUpdate = RepoProvider.Helper.lastUpdate(activity);
+            if (lastUpdate == null) {
+                emptyStateText.append(activity.getString(R.string.latest__empty_state__never_updated));
+            } else {
+                int daysSince = Utils.daysSince(lastUpdate);
+                emptyStateText.append(activity.getResources().getQuantityString(R.plurals.details_last_update_days, daysSince, daysSince));
+            }
+        }
+
+        emptyState.setText(emptyStateText.toString());
     }
 
     @Override

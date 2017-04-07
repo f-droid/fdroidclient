@@ -48,7 +48,6 @@
     <string name="update_interval">Interval actualizari automate</string>
     <string name="automatic_scan_wifi">Doar prin Wi-Fi</string>
     <string name="unstable_updates">Actualizari instabile</string>
-    <string name="update_history">Istoric actualizari</string>
     <string name="login_name">Nume utilizator</string>
     <string name="login_password">Parola</string>
     <string name="no_such_app">Nu exista aceasta aplicatie.</string>
@@ -64,7 +63,6 @@
     <string name="automatic_scan_wifi_on">Actualizeaza automat doar prin retele necontorizate precum Wi-Fi</string>
     <string name="local_repo_name">Numele depozitului local</string>
     <string name="local_repo_name_summary">Titlu depozitului local folosit la anuntare: %s</string>
-    <string name="update_history_summ">Numarul de zile de afisat aplicatii noi sau recente: %s</string>
     <string name="notify_on">Arata o notificare atunci cand exista actualizari ale aplicatiilor</string>
     <string name="uninstall_system">Actualizeaza/Dezinstaleaza extensia privilegiata</string>
     <string name="local_repo_https_on">Foloseste o conexiune criptata HTTPS:// pentru depozitul local</string>

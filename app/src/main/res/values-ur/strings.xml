@@ -20,7 +20,6 @@
     <string name="automatic_scan_wifi_on">اپلی کیشن کی فہرست صرف وائی فائی پر خود بخود اپڈیٹ کریں</string>
     <string name="notify">تازہ کاریوں کی اطلاعات</string>
     <string name="notify_on">اگر تازہ کاری دستیاب ہیں تو اطلاع دیں</string>
-    <string name="update_history">تازہ کاری کرنے کی ہسٹری</string>
     <string name="system_installer">پریولجڈ ایکس ٹینشن</string>
     <string name="local_repo_name">اپنے مقامی ریپو کا نام</string>
     <string name="login_name">اسم صارف</string>
@@ -28,6 +27,5 @@
     <string name="repo_edit_credentials">پاس ورڈ تبدیل کریں</string>
     <string name="update_auto_download">خودکار اپڈیٹس ڈاؤنلوڈ کریں</string>
     <string name="update_auto_download_summary">اپڈیٹ والی فائلوں کو پسِ منظر ڈاؤنلوڈ کریں</string>
-    <string name="update_history_summ">کتنے دن اطلاقیوں کو نیا یا حالیہ تصور کیا جائے: %s</string>
     <string name="system_installer_on">F-Droid Privileged Extension کے ذریعے پیکج کو انسٹال، اپڈیٹ اور حذف کریں</string>
     </resources>

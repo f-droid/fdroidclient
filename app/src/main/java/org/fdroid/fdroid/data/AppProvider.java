@@ -631,12 +631,6 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection, args);
     }
 
-    private AppQuerySelection queryRecentlyUpdated() {
-        final String selection = getTableName() + "." + Cols.LAST_UPDATED + " > ? ";
-        final String[] args = {Utils.formatDate(Preferences.get().calcMaxHistory(), "")};
-        return new AppQuerySelection(selection, args);
-    }
-
     private AppQuerySelection queryCategory(String category) {
         if (TextUtils.isEmpty(category)) {
             return new AppQuerySelection();
@@ -741,7 +735,12 @@ public class AppProvider extends FDroidProvider {
                 String lastUpdated = table + "." + Cols.LAST_UPDATED + " DESC";
                 sortOrder = lastUpdated + ", " + isNew;
 
-                selection = selection.add(queryRecentlyUpdated());
+                // There seems no reason to limit the number of apps on the front page, but it helps
+                // if it loads quickly, as it is the default view shown every time F-Droid is opened.
+                // 200 is an arbitrary number which hopefully gives the user enough to scroll through
+                // if they are bored.
+                limit = 200;
+
                 includeSwap = false;
                 break;
 

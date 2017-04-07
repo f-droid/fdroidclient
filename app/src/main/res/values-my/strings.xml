@@ -20,8 +20,6 @@
     <string name="update_auto_download_summary">အေနာက္ပိုင္းတြင္ အသစ္မြမ္းမံမႈမ်ားကိုေဒါင္းလုတ္ဆြဲမည္</string>
     <string name="notify">အသစ္မြမ္းမံမႈ အသိေပးခ်က္မ်ား</string>
     <string name="notify_on">အသစ္မြမ္းမံမႈရရွိပါက အခ်က္ေပးျခင္းကိုျပပါ</string>
-    <string name="update_history">အသစ္မြမ္းမံမႈမွတ္တမ္း</string>
-    <string name="update_history_summ">app မ်ားသည္ အသစ္လား မၾကာေသးခင္ကလား ဆိုတာကိုစဥ္းစားရန္ ရက္ - %s</string>
     <string name="system_installer">Privileged Extension</string>
     <string name="system_installer_on">F-Droid ၏ Privileged Extension ကိုသံုးျပီး သြင္းျခင္း၊ အသစ္မြမ္းမံျခင္းႏွင့္ Package မ်ားျဖဳတ္ျခင္းမ်ားျပဳလုပ္မည္</string>
     <string name="local_repo_name">သင္၏ Local Repo အမည္</string>

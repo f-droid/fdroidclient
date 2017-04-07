@@ -10,7 +10,6 @@
   <string name="automatic_scan_wifi_on">Eguneratu aplikazioen zerrendak automatikoki Wi-Fi bezalako mugatu gabeko sareen bidez soilik</string>
   <string name="notify">Eguneraketen jakinarazpenak</string>
   <string name="notify_on">Bistarazi jakinarazpena eguneraketak eskuragarri daudenean</string>
-  <string name="update_history">Eguneratu historia</string>
   <string name="app_details">Aplikazioaren xehetasunak</string>
   <string name="no_such_app">Ez da aplikazio hori aurkitu.</string>
   <string name="about_title">F-Droid-i buruz</string>
@@ -78,7 +77,6 @@
 <string name="theme_light">Argia</string>
     <string name="other">Bestelakoak</string>
     <string name="update_interval">Eguneraketa automatikoaren tartea</string>
-    <string name="update_history_summ">Aplikazioak berritzat edo oraintsukotzat hartzeko egunak: %s</string>
     <string name="system_installer">Pribilegiodun Luzapena</string>
     <string name="system_installer_on">Erabili Pribilegiodun F-Droid Luzapena paketeak instalatu, eguneratu eta kentzeko</string>
     <string name="uninstall_system">Eguneratu/Desinstalatu Pribilegiodun Luzapena</string>

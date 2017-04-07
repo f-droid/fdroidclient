@@ -32,7 +32,6 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.PREF_UPD_INTERVAL,
         Preferences.PREF_UPD_WIFI_ONLY,
         Preferences.PREF_UPD_NOTIFY,
-        Preferences.PREF_UPD_HISTORY,
         Preferences.PREF_ROOTED,
         Preferences.PREF_HIDE_ANTI_FEATURE_APPS,
         Preferences.PREF_INCOMP_VER,
@@ -103,10 +102,6 @@ public class PreferencesFragment extends PreferenceFragment
 
             case Preferences.PREF_UPD_NOTIFY:
                 checkSummary(key, R.string.notify_on);
-                break;
-
-            case Preferences.PREF_UPD_HISTORY:
-                textSummary(key, R.string.update_history_summ);
                 break;
 
             case Preferences.PREF_THEME:

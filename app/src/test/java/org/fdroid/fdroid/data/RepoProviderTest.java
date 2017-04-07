@@ -36,6 +36,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -47,6 +48,58 @@ import static org.junit.Assert.assertNull;
 public class RepoProviderTest extends FDroidProviderTest {
 
     private static final String[] COLS = RepoTable.Cols.ALL;
+
+    @Test
+    public void countEnabledRepos() {
+
+        // By default, f-droid is enabled.
+        assertEquals(1, RepoProvider.Helper.countEnabledRepos(context));
+
+        Repo gpRepo = RepoProvider.Helper.findByAddress(context, "https://guardianproject.info/fdroid/repo");
+        gpRepo = setEnabled(gpRepo, true);
+        assertEquals(2, RepoProvider.Helper.countEnabledRepos(context));
+
+        Repo fdroidRepo = RepoProvider.Helper.findByAddress(context, "https://f-droid.org/repo");
+        setEnabled(fdroidRepo, false);
+        setEnabled(gpRepo, false);
+
+        assertEquals(0, RepoProvider.Helper.countEnabledRepos(context));
+    }
+
+    private Repo setEnabled(Repo repo, boolean enabled) {
+        ContentValues enable = new ContentValues(1);
+        enable.put(RepoTable.Cols.IN_USE, enabled);
+        RepoProvider.Helper.update(context, repo, enable);
+        return RepoProvider.Helper.findByAddress(context, repo.address);
+    }
+
+    @Test
+    public void lastUpdated() {
+        assertNull(RepoProvider.Helper.lastUpdate(context));
+
+        Repo gpRepo = RepoProvider.Helper.findByAddress(context, "https://guardianproject.info/fdroid/repo");
+
+        // Set date to 2017-04-05 11:56:38
+        setLastUpdate(gpRepo, new Date(1491357408643L));
+
+        // GP is not yet enabled, so it is not counted.
+        assertNull(RepoProvider.Helper.lastUpdate(context));
+
+        // Set date to 2017-04-04 11:56:38
+        Repo fdroidRepo = RepoProvider.Helper.findByAddress(context, "https://f-droid.org/repo");
+        setLastUpdate(fdroidRepo, new Date(1491357408643L - (1000 * 60 * 60 * 24)));
+        assertEquals("2017-04-04", Utils.formatDate(RepoProvider.Helper.lastUpdate(context), null));
+
+        setEnabled(gpRepo, true);
+        assertEquals("2017-04-05", Utils.formatDate(RepoProvider.Helper.lastUpdate(context), null));
+    }
+
+    private Repo setLastUpdate(Repo repo, Date date) {
+        ContentValues values = new ContentValues(1);
+        values.put(RepoTable.Cols.LAST_UPDATED, Utils.formatDate(date, null));
+        RepoProvider.Helper.update(context, repo, values);
+        return RepoProvider.Helper.findByAddress(context, repo.address);
+    }
 
     @Test
     public void findByUrl() {

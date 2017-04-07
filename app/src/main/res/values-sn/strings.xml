@@ -17,8 +17,6 @@
     <string name="update_auto_install_summary">Tutunura nekuvakirira ma apps ekunatsa kuseri kwezvauri kuita iyezvino</string>
     <string name="notify">Zviziviso zvekunatsa</string>
     <string name="notify_on">Ratidza chiziviso kana zvekunatsa zvavapo</string>
-    <string name="update_history">Natsa makare</string>
-    <string name="update_history_summ">Mazuva ekufunga nezve ma apps matsva kana amanje: %s</string>
     <string name="system_installer">Tambanudzo dzine chihesvuro</string>
     <string name="system_installer_on">Shandisa tambanudzo inechihesvuro yeF-Droid kuti uvakirire, unatse nekubvisa mapakeji</string>
     <string name="uninstall_system">Natsa/Bvisa chivakirirwa patambanudzo ane chihesvuro</string>

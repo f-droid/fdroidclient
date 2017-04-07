@@ -22,8 +22,6 @@
     <string name="update_auto_download_summary">Laadi värskenduse failid taustal alla</string>
     <string name="notify">Värskenduste teated</string>
     <string name="notify_on">Kuva teade, kui värskendused on saadaval</string>
-    <string name="update_history">Värskenduste ajalugu</string>
-    <string name="update_history_summ">Päevade arv, mille jooksul kuvatakse rakendust uuena: %s</string>
     <string name="system_installer">Priviligeeritud laiendus</string>
     <string name="system_installer_on">"Kasuta pakettide paigaldamiseks, värskendamiseks ja eemaldamiseks  F-Droidi priviligeeritud laiendust"</string>
     <string name="uninstall_system">Värskenda/eemalda priviligeeritud laiendus</string>

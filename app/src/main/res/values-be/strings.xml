@@ -26,8 +26,6 @@
     <string name="update_auto_install_summary">Спампоўваць і ўсталёўваць абнаўленні ў фоне</string>
     <string name="notify">Абвесткі пра абнаўленні</string>
     <string name="notify_on">Паказваць абвесткі калі ёсць абнаўленні</string>
-    <string name="update_history">Гісторыя абнаўленняў</string>
-    <string name="update_history_summ">Сколькі дзён лічыць праграму новай ці нядаўна абноўленай: %s</string>
     <string name="system_installer">Прывілеяваны дадатак</string>
     <string name="system_installer_on">Выкарыстоўваць прывілеяваны дадатак для ўсталёўкі, абнаўлення ці выдалення пакетаў</string>
     <string name="uninstall_system">Абнавіць/Выдаліць прывілеяваны дадатак</string>

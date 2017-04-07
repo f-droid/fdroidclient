@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Endast uppdatera automatiskt på obegränsad nätverk som Wi-Fi</string>
   <string name="notify">Avisering vid uppdatering</string>
   <string name="notify_on">Visa avisering när uppdateringar finns tillgängliga</string>
-  <string name="update_history">Uppdateringshistorik</string>
-  <string name="update_history_summ">Antalet dagar som appar ska betraktas som nya eller färska: %s</string>
   <string name="system_installer">Privilgierad utökning</string>
   <string name="system_installer_on">Använd F-Droid\'s priviligerade utökning för att installera, uppdatera och ta bort paket</string>
   <string name="local_repo_name">Namn på ditt lokala förråd</string>

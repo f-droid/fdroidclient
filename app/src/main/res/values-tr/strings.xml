@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Yalnızca Wi-Fi gibi ölçümsüz ağlarda otomatik güncelle</string>
   <string name="notify">Güncelleme bildirimleri</string>
   <string name="notify_on">Güncellemeler varsa bir bildirim göster</string>
-  <string name="update_history">Güncelleme tarihçesi</string>
-  <string name="update_history_summ">Uygulamaların yeni sayılacağı gün sayısı: %s</string>
   <string name="system_installer">Ayrıcalıklı Uzantı</string>
   <string name="system_installer_on">Paket kurmak, güncellemek ve kaldırmak için F-Droid Ayrıcalıklı Uzantıyı kullan</string>
   <string name="local_repo_name">Yerel Deponuzun Adı</string>

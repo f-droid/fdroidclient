@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Actualizar automáticamente sólo con Wi-Fi y otras redes de tarifa plana</string>
   <string name="notify">Notificaciones de actualizaciones</string>
   <string name="notify_on">Muestra una notificación cuando hay actualizaciones</string>
-  <string name="update_history">Historial de actualizaciones</string>
-  <string name="update_history_summ">Días para considerar las aplicaciones nuevas o recientes: %s</string>
   <string name="system_installer">Extensión con permisos de sistema</string>
   <string name="system_installer_on">Utilizar la extensión de F-Droid con permisos de sistema al instalar, actualizar, y eliminar paquetes</string>
   <string name="local_repo_name">Nombre de tu repo local</string>

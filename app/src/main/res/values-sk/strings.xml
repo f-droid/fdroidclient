@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Automaticky aktualizovať len na nespoplatnených sieťach, ako napr. Wi-Fi</string>
   <string name="notify">Oznamovanie aktualizácií</string>
   <string name="notify_on">Upozorniť na dostupnosť aktualizácií</string>
-  <string name="update_history">História aktualizácií</string>
-  <string name="update_history_summ">Počet dní, kedy sú aplikácie brané ako nové alebo nedávne: %s</string>
   <string name="system_installer">Ukladať balíky do vyr. pamäte</string>
   <string name="system_installer_on">Používať Oprávnené Rozšírenie F-Droidu na inštaláciu, aktualizácie a odstránenie balíkov</string>
   <string name="local_repo_name">Meno miestneho repozitára</string>

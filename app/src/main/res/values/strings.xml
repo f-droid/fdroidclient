@@ -28,8 +28,6 @@
     <string name="update_auto_install_summary">Download and install update apps in the background</string>
     <string name="notify">Update notifications</string>
     <string name="notify_on">Show a notification when updates are available</string>
-    <string name="update_history">Update history</string>
-    <string name="update_history_summ">Days to consider apps new or recent: %s</string>
     <string name="system_installer">Privileged Extension</string>
     <string name="system_installer_on">Use F-Droid Privileged Extension to install, update, and remove packages</string>
     <string name="uninstall_system">Update/Uninstall Privileged Extension</string>
@@ -158,6 +156,12 @@
     <string name="main_menu__latest_apps">Latest</string>
     <string name="main_menu__categories">Categories</string>
     <string name="main_menu__swap_nearby">Nearby</string>
+
+    <string name="latest__empty_state__no_recent_apps">No recent apps found</string>
+    <string name="latest__empty_state__never_updated">Once your list of apps has been updated, the latest apps should show here</string>
+    <string name="latest__empty_state__no_enabled_repos">Once you enable a repository and let it update, the latest apps should show here</string>
+
+    <string name="categories__empty_state__no_categories">No categories to display</string>
 
     <string name="preference_category__my_apps">My Apps</string>
     <string name="preference_manage_installed_apps">Manage Installed Apps</string>

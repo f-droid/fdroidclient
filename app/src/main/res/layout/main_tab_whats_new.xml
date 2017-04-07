@@ -12,15 +12,31 @@
         android:layout_height="match_parent"
         android:id="@+id/swipe_to_refresh">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/app_list"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/app_card_normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:scrollbars="vertical" />
+            android:orientation="vertical">
+
+            <org.fdroid.fdroid.views.BannerUpdatingRepos
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/empty_state"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/AppListEmptyText"
+                android:visibility="gone"
+                tools:text="@string/latest__empty_state__no_recent_apps"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/app_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/app_card_normal"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

@@ -12,7 +12,6 @@
   <string name="automatic_scan_wifi_on">只透過 Wi-Fi 自動更新應用程式目錄</string>
   <string name="notify">更新通知</string>
   <string name="notify_on">應用程式發佈更新時通知我</string>
-  <string name="update_history">更新記錄</string>
   <string name="system_installer">系統權限套件</string>
   <string name="system_installer_on">使用系統權限套件安裝、更新及移除軟件包</string>
   <string name="local_repo_name">您的本地倉庫名稱</string>
@@ -324,7 +323,6 @@
     <string name="writing_index_jar">正在寫入已簽署的目錄檔案 (index.jar)…</string>
     <string name="rooted_on">不要以灰字顯示需要 root 權限的應用程式</string>
     <string name="repo_delete_to_overwrite">在加入含有不同鑰匙的軟件倉庫前，您先要刪除此倉庫。</string>
-    <string name="update_history_summ">在 %s 天內添置於目錄的程式方可算為「最新」</string>
     <string name="repo_exists_add_fingerprint">由於此倉庫已經設置好，此動作將會加入新的鑰匙數據。</string>
     <string name="menu_email">電郵作者</string>
     <string name="unsigned_description">這表示應用程式清單

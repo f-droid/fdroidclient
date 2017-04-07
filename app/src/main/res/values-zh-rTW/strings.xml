@@ -19,7 +19,6 @@
     <string name="automatic_scan_wifi_on">只在未計量的網路例如 Wi-Fi 上自動更新</string>
     <string name="notify">更新通知</string>
     <string name="notify_on">當有軟體可以更新時秀出一個通知</string>
-    <string name="update_history_summ">將 %s 天前冒出來的軟體視為新軟體</string>
     <string name="local_repo_name">您的本地端應用軟體倉庫的名稱</string>
     <string name="local_repo_name_summary">您本地端應用軟體倉庫對外宣傳的名稱：%s</string>
     <string name="local_repo_https_on">使用 HTTPS:// 加密連線來存取當地的應用軟體倉庫</string>
@@ -188,7 +187,6 @@
 
 恭喜您！所有應用程式都是最新的 (或者是您的應用軟體倉庫已過期)。</string>
     <string name="uninstall_error_unknown">不明的錯誤導致解除安裝失敗</string>
-    <string name="update_history">更新記錄</string>
     <string name="add_key">加入金鑰</string>
     <string name="repo_exists_add_fingerprint">此儲存庫已經設定，此動作將會加入新的金鑰資訊。</string>
     <string name="repo_delete_to_overwrite">在加入含有不同金鑰的應用軟體倉庫前，您需要先刪除此儲存庫。</string>

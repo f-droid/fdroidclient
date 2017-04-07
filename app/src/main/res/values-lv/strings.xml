@@ -12,7 +12,6 @@
   <string name="automatic_scan_wifi_on">Atjaunināt automātiski tikai WiFi tīklā</string>
   <string name="notify">Ziņot</string>
   <string name="notify_on">Ziņot, kad atjauninājumi pieejami</string>
-  <string name="update_history">Atjauninājumu vēsture</string>
   <string name="system_installer">Instalēt izmantojot sistēmas piekļuvi</string>
   <string name="system_installer_on">Izmantot sistēmas piekļuvi instalējot, atjauninot, dzēšot pakotnes</string>
   <string name="local_repo_name">Lokālā Repozitorija nosaukums</string>

@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Αυτόματη ενημέρωση μόνο σε δίκτυα Wi-Fi</string>
   <string name="notify">Ειδοποιήσεις ενημερώσεων</string>
   <string name="notify_on">Εμφάνιση ειδοποίησης όταν υπάρχουν διαθέσιμες ενημερώσεις</string>
-  <string name="update_history">Ιστορικό ενημερώσεων</string>
-  <string name="update_history_summ">Ημέρες που θα θεωρούνται οι εφαρμογές νέες ή πρόσφατες: %s</string>
   <string name="app_details">Λεπτομέρειες Εφαρμογής</string>
   <string name="no_such_app">Δεν βρέθηκε τέτοια εφαρμογή.</string>
   <string name="about_title">Σχετικά με το F-Droid</string>

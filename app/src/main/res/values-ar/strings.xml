@@ -79,8 +79,6 @@
     <string name="update_auto_download_summary">تحميل ملفات التحديث في الخلفية</string>
     <string name="notify">تحديث التنبيهات</string>
     <string name="notify_on">إظهار تنبيه عندما تتوفر التحديثات</string>
-    <string name="update_history">تحديث المحفوظات</string>
-    <string name="update_history_summ">أيام للنظر في تطبيقات جديدة أو الأخيرة: %s</string>
     <string name="system_installer">ملحقات متميزة</string>
     <string name="system_installer_on">استخدام اف-درويد مميز الملحقات لتثبيت وتحديث وإزالة الحزم</string>
     <string name="uninstall_system">تحديث / إلغاء مميز الملحقات</string>

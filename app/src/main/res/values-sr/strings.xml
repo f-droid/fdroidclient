@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Самостално освежавање само на бесплатним мрежама као што је бежична</string>
   <string name="notify">Обавештења о надоградњама</string>
   <string name="notify_on">Приказ обавештења о доступним надоградњама</string>
-  <string name="update_history">Историјат надоградњи</string>
-  <string name="update_history_summ">Колико дана се програми сматрају новим или недавним: %s</string>
   <string name="system_installer">Повлашћено проширење</string>
   <string name="system_installer_on">Користи повлашћено проширење за уградњу, надоградњу и уклањање пакета</string>
   <string name="local_repo_name">Назив месне ризнице</string>

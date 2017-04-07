@@ -8,8 +8,6 @@
   <string name="updates">Aktualizacje</string>
   <string name="other">Inne</string>
   <string name="notify">Powiadomienia o aktualizacjach</string>
-  <string name="update_history">Historia aktualizacji</string>
-  <string name="update_history_summ">Liczba dni, aby uznać aplikację za nową lub niedawną: %s</string>
   <string name="system_installer">Uprzywilejowany dodatek</string>
   <string name="system_installer_on">Używaj dodatku uprzywilejowanego FDroida by instalować, aktualizować i usuwać paczki</string>
   <string name="local_repo_name">Nazwa lokalnego repozytorium</string>

@@ -15,8 +15,6 @@
   <string name="automatic_scan_wifi_on">Актуализирането на списъка с приложения ще става само през Wi-Fi</string>
   <string name="notify">Известяване</string>
   <string name="notify_on">Известява при наличие на актуализация</string>
-  <string name="update_history">История на актуализациите</string>
-  <string name="update_history_summ">Счита за нови или скорошни приложенията от преди (дни): %s</string>
   <string name="system_installer">Инсталиране чрез системни разрешения</string>
   <string name="system_installer_on">Ползване на системни права за инсталиране, актуализиране и премахване на приложения</string>
   <string name="local_repo_name">Име на локалното хранилище</string>
