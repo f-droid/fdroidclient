@@ -1,0 +1,7 @@
+<!-- Would like to use the android:autoMirror property, but that is not suppoted on pre-lollipop
+     unless using VectorDrawableCompat (instead of using build-tools to produce .pngs for us). -->
+<vector android:height="24dp"
+    android:viewportHeight="24.0" android:viewportWidth="24.0"
+    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#FF000000" android:pathData="M 4,11 H 16.17 L 10.58,5.41 12,4 20,12 12,20 10.59,18.59 16.17,13 H 4 Z"/>
+</vector>
