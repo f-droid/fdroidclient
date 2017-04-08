@@ -98,7 +98,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         fdroidApp = (FDroidApp) getApplication();
-        //fdroidApp.applyTheme(this);
+        fdroidApp.applyTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_details2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

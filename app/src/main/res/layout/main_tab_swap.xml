@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA">
+    android:background="?attr/mainTabSwapBackground">
 
     <TextView
         android:id="@+id/text1"
@@ -65,7 +65,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text2"
         android:layout_marginTop="36dp"
-        android:tint="#f5f5f5"
+        android:tint="?attr/mainTabSwapSplashTint"
         android:scaleType="fitXY" />
 
 </android.support.constraint.ConstraintLayout>

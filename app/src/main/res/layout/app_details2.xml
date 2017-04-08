@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="org.fdroid.fdroid.AppDetails2"
-    android:background="#fcfcfc"
+    android:background="?attr/appDetailsBackground"
     android:id="@+id/rootCoordinator"
     >
 

@@ -143,6 +143,24 @@ public class FDroidApp extends Application {
         }
     }
 
+    /**
+     * Force reload the {@link Activity to make theme changes take effect.}
+     * Same as {@link Languages.forceChangeLanguage}
+     *
+     * @param activity the {@code Activity} to force reload
+     */
+    public static void forceChangeTheme(Activity activity) {
+        Intent intent = activity.getIntent();
+        if (intent == null) { // when launched as LAUNCHER
+            return;
+        }
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        activity.finish();
+        activity.overridePendingTransition(0, 0);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0, 0);
+    }
+
     public static void enableSpongyCastle() {
         Security.addProvider(SPONGYCASTLE_PROVIDER);
     }
