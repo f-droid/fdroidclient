@@ -432,8 +432,12 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                                              Set<String> locales, String key) {
         try {
             for (String locale : locales) {
-                if (localized.containsKey(locale)) {
-                    return locale + "/" + localized.get(locale).get(key);
+                Map<String, Object> entry = localized.get(locale);
+                if (entry != null) {
+                    Object value = entry.get(key);
+                    if (value != null && value.toString().length() > 0) {
+                        return locale + "/" + value;
+                    }
                 }
             }
         } catch (ClassCastException e) {

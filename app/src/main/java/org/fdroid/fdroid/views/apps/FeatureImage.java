@@ -14,6 +14,7 @@ import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.AppCompatImageView;
 import android.text.TextUtils;
@@ -24,6 +25,8 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
+import org.fdroid.fdroid.R;
 
 import java.util.Random;
 
@@ -58,23 +61,34 @@ public class FeatureImage extends AppCompatImageView {
     @Nullable
     private Paint[] trianglePaints;
 
-    private static final Paint WHITE_PAINT = new Paint();
-
-    static {
-        WHITE_PAINT.setColor(Color.WHITE);
-        WHITE_PAINT.setStyle(Paint.Style.FILL);
-    }
+    /**
+     * F-Droid blue is shown behind the animation which eases in the feature graphics. This is
+     * preferable to showing white behind, which can be a bit harsh.
+     */
+    @ColorInt
+    private int baseColour;
 
     public FeatureImage(Context context) {
         super(context);
+        init(context);
     }
 
     public FeatureImage(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        init(context);
     }
 
     public FeatureImage(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(context);
+    }
+
+    private void init(Context context) {
+        float[] hsv = new float[3];
+        Color.colorToHSV(ContextCompat.getColor(context, R.color.fdroid_blue), hsv);
+        hsv[1] *= 0.5f;
+        hsv[2] *= 0.7f;
+        baseColour = Color.HSVToColor(hsv);
     }
 
     /**
@@ -118,7 +132,10 @@ public class FeatureImage extends AppCompatImageView {
         for (int i = 0; i < trianglePaints.length; i++) {
             trianglePaints[i] = random.nextBoolean() ? paintOne : paintTwo;
         }
+    }
 
+    public void setColorAndAnimateChange(@ColorInt int colour) {
+        setColour(colour);
         animateColourChange();
     }
 
@@ -210,6 +227,7 @@ public class FeatureImage extends AppCompatImageView {
                 paint.setAlpha(currentAlpha);
             }
 
+            canvas.drawColor(baseColour);
             for (int i = 0; i < triangles.length; i++) {
                 canvas.drawPath(triangles[i], trianglePaints[i]);
             }
@@ -236,6 +254,7 @@ public class FeatureImage extends AppCompatImageView {
     }
 
     public void loadImageAndDisplay(@NonNull ImageLoader loader, @NonNull DisplayImageOptions imageOptions, @Nullable String featureImageToShow, @Nullable String fallbackImageToExtractColours) {
+        setColour(ContextCompat.getColor(getContext(), R.color.fdroid_blue));
         if (!TextUtils.isEmpty(featureImageToShow)) {
             loadImageAndDisplay(loader, imageOptions, featureImageToShow);
         } else if (!TextUtils.isEmpty(fallbackImageToExtractColours)) {
@@ -252,7 +271,7 @@ public class FeatureImage extends AppCompatImageView {
                         @Override
                         public void onGenerated(Palette palette) {
                             if (palette != null) {
-                                setColour(palette.getDominantColor(Color.LTGRAY));
+                                setColorAndAnimateChange(palette.getDominantColor(Color.LTGRAY));
                             }
                         }
                     });
