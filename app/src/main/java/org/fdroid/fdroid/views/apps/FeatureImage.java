@@ -254,6 +254,7 @@ public class FeatureImage extends AppCompatImageView {
     }
 
     public void loadImageAndDisplay(@NonNull ImageLoader loader, @NonNull DisplayImageOptions imageOptions, @Nullable String featureImageToShow, @Nullable String fallbackImageToExtractColours) {
+        setColour(ContextCompat.getColor(getContext(), R.color.fdroid_blue));
         if (!TextUtils.isEmpty(featureImageToShow)) {
             loadImageAndDisplay(loader, imageOptions, featureImageToShow);
         } else if (!TextUtils.isEmpty(fallbackImageToExtractColours)) {

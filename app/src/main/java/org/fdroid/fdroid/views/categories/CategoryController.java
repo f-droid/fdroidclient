@@ -94,7 +94,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
             image.setColour(backgroundColour);
             image.setImageDrawable(null);
         } else {
-            image.setColour(0);
+            image.setColour(ContextCompat.getColor(activity, R.color.fdroid_blue));
             ImageLoader.getInstance().displayImage("drawable://" + categoryImageId, image, displayImageOptions);
         }
     }
