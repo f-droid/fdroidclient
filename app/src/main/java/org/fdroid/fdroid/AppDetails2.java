@@ -369,6 +369,11 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             return;
         }
         initiateInstall(apk);
+
+        // Scroll back to the header, so that the user can see the progress beginning. This can be
+        // removed once https://gitlab.com/fdroid/fdroidclient/issues/903 is implemented. However
+        // for now it adds valuable feedback to the user about the download they just initiated.
+        ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(0, 0);
     }
 
     private void initiateInstall(Apk apk) {
