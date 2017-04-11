@@ -10,6 +10,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
@@ -120,7 +121,7 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
         ImageLoader.getInstance().displayImage(app.iconUrl, icon, displayImageOptions, this);
 
         if (featuredImage != null) {
-            featuredImage.setColour(0);
+            featuredImage.setColour(ContextCompat.getColor(activity, R.color.fdroid_blue));
             featuredImage.setImageDrawable(null);
 
             // Note: We could call the convenience function loadImageAndDisplay(ImageLoader, DisplayImageOptions, String, String)
@@ -183,7 +184,7 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
             new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
                 @Override
                 public void onGenerated(Palette palette) {
-                    featuredImage.setColour(palette.getDominantColor(Color.LTGRAY));
+                    featuredImage.setColorAndAnimateChange(palette.getDominantColor(Color.LTGRAY));
                 }
             });
         }
