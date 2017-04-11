@@ -5,6 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/AppListEmptyText"
+        android:visibility="gone"
+        android:text="@string/empty_can_update_app_list" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
         tools:listitem="@layout/app_list_item"

@@ -16,6 +16,18 @@
         app:theme="?attr/actionBarTheme"
         app:popupTheme="?attr/actionBarPopupTheme" />
 
+    <TextView
+        android:id="@+id/empty_state"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        style="@style/AppListEmptyText"
+        android:visibility="gone"
+        android:text="@string/empty_installed_app_list" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/app_list"
         android:layout_width="0dp"

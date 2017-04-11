@@ -32,6 +32,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -43,6 +44,8 @@ import org.fdroid.fdroid.views.apps.AppListItemController;
 public class InstalledAppsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private InstalledAppListAdapter adapter;
+    private RecyclerView appList;
+    private TextView emptyState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +62,12 @@ public class InstalledAppsActivity extends AppCompatActivity implements LoaderMa
 
         adapter = new InstalledAppListAdapter(this);
 
-        RecyclerView appList = (RecyclerView) findViewById(R.id.app_list);
+        appList = (RecyclerView) findViewById(R.id.app_list);
         appList.setHasFixedSize(true);
         appList.setLayoutManager(new LinearLayoutManager(this));
         appList.setAdapter(adapter);
+
+        emptyState = (TextView) findViewById(R.id.empty_state);
     }
 
     @Override
@@ -85,6 +90,14 @@ public class InstalledAppsActivity extends AppCompatActivity implements LoaderMa
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         adapter.setApps(cursor);
+
+        if (adapter.getItemCount() == 0) {
+            appList.setVisibility(View.GONE);
+            emptyState.setVisibility(View.VISIBLE);
+        } else {
+            appList.setVisibility(View.VISIBLE);
+            emptyState.setVisibility(View.GONE);
+        }
     }
 
     @Override
