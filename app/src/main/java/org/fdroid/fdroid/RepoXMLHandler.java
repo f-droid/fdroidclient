@@ -303,9 +303,7 @@ public class RepoXMLHandler extends DefaultHandler {
     }
 
     private void onApplicationParsed() {
-        if (!replicantFSDGviolation()) {
-            receiver.receiveApp(curapp, apksList);
-        }
+        receiver.receiveApp(curapp, apksList);
         curapp = null;
         apksList = new ArrayList<>();
         // If the app packageName is already present in this apps list, then it
@@ -403,28 +401,5 @@ public class RepoXMLHandler extends DefaultHandler {
             result = fallback;
         }
         return result;
-    }
-
-    private final String osVersion = System.getProperty("os.version");
-
-    /**
-     * Checks if an app fails to comply with the GNU Free System Distribution
-     * Guidelines in the case that F-Droid is installed on Replicant.
-     * Currently, all apps that have at least one of the following anti-features
-     * violate the guidelines: Tracking, NonFreeAdd, NonFreeDep and NonFreeAssets.
-     */
-    private boolean replicantFSDGviolation() {
-        if (osVersion == null || !osVersion.contains("replicant")) {
-            return false;
-        }
-        if (curapp.antiFeatures != null && curapp.antiFeatures.length > 0) {
-            for (String af : curapp.antiFeatures) {
-                if ("Tracking".equals(af) || "NonFreeAdd".equals(af)
-                        || "NonFreeDep".equals(af) || "NonFreeAssets".equals(af)) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 }
