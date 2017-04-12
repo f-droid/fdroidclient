@@ -81,6 +81,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         int categoryNameId = getCategoryResource(activity, categoryName, "string", false);
         String translatedName = categoryNameId == 0 ? categoryName : activity.getString(categoryNameId);
         heading.setText(translatedName);
+        heading.setContentDescription(activity.getString(R.string.tts_category_name, translatedName));
 
         viewAll.setVisibility(View.INVISIBLE);
 
