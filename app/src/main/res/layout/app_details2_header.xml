@@ -129,6 +129,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:paddingBottom="2dp"
                 android:clipToPadding="false"
                 android:visibility="gone"
                 >
