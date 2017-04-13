@@ -251,6 +251,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "upstreamVersionCode",
                 "upstreamVersionName",
                 "video",
+                "whatsNew",
                 "wearScreenshots",
                 "webSite",
         };

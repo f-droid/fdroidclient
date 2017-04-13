@@ -119,12 +119,14 @@ class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.SUMMARY + " text not null, "
             + AppMetadataTable.Cols.ICON + " text, "
             + AppMetadataTable.Cols.DESCRIPTION + " text not null, "
+            + AppMetadataTable.Cols.WHATSNEW + " text, "
             + AppMetadataTable.Cols.LICENSE + " text not null, "
             + AppMetadataTable.Cols.AUTHOR_NAME + " text, "
             + AppMetadataTable.Cols.AUTHOR_EMAIL + " text, "
             + AppMetadataTable.Cols.WEBSITE + " text, "
             + AppMetadataTable.Cols.ISSUE_TRACKER + " text, "
             + AppMetadataTable.Cols.SOURCE_CODE + " text, "
+            + AppMetadataTable.Cols.VIDEO + " string, "
             + AppMetadataTable.Cols.CHANGELOG + " text, "
             + AppMetadataTable.Cols.SUGGESTED_VERSION_CODE + " text,"
             + AppMetadataTable.Cols.UPSTREAM_VERSION_NAME + " text,"
@@ -190,7 +192,7 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
 
-    protected static final int DB_VERSION = 68;
+    protected static final int DB_VERSION = 69;
 
     private final Context context;
 
@@ -273,6 +275,21 @@ class DBHelper extends SQLiteOpenHelper {
         addIndexV1Fields(db, oldVersion);
         addIndexV1AppFields(db, oldVersion);
         recalculatePreferredMetadata(db, oldVersion);
+        addWhatsNewAndVideo(db, oldVersion);
+    }
+
+    private void addWhatsNewAndVideo(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 69) {
+            return;
+        }
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.WHATSNEW)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.WHATSNEW + " field to " + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.WHATSNEW + " text;");
+        }
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.VIDEO)) {
+            Utils.debugLog(TAG, "Adding " + AppMetadataTable.Cols.VIDEO + " field to " + AppMetadataTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.VIDEO + " string;");
+        }
     }
 
     private void recalculatePreferredMetadata(SQLiteDatabase db, int oldVersion) {
