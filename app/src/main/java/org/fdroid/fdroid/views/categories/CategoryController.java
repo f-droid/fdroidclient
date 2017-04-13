@@ -32,6 +32,7 @@ import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 
+import java.util.Locale;
 import java.util.Random;
 
 public class CategoryController extends RecyclerView.ViewHolder implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -108,7 +109,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     private static int getCategoryResource(Context context, @NonNull String categoryName, String resourceType, boolean requiresLowerCaseId) {
         String suffix = categoryName.replace(" & ", "_").replace(" ", "_").replace("'", "");
         if (requiresLowerCaseId) {
-            suffix = suffix.toLowerCase();
+            suffix = suffix.toLowerCase(Locale.ENGLISH);
         }
         return context.getResources().getIdentifier("category_" + suffix, resourceType, context.getPackageName());
     }
@@ -121,7 +122,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
 
         // Seed based on the categoryName, so that each time we try to choose a colour for the same
         // category it will look the same for each different user, and each different session.
-        Random random = new Random(categoryName.toLowerCase().hashCode());
+        Random random = new Random(categoryName.toLowerCase(Locale.ENGLISH).hashCode());
 
         float[] hsv = new float[3];
         hsv[0] = random.nextFloat() * 360;
