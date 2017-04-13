@@ -33,6 +33,7 @@
                 android:layout_alignParentTop="true"
                 android:paddingBottom="8dp"
                 android:paddingRight="8dp"
+                android:paddingEnd="8dp"
                 android:src="@drawable/ic_repo_app_default" />
 
             <LinearLayout
