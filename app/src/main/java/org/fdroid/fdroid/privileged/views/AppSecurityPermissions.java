@@ -26,6 +26,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
@@ -43,6 +44,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.Preferences.Theme;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -172,7 +175,9 @@ public class AppSecurityPermissions {
                 label = builder;
             }
 
+            Theme theme = Preferences.get().getTheme();
             permGrpIcon.setImageDrawable(icon);
+            permGrpIcon.setColorFilter(theme == Theme.light ? Color.BLACK : Color.WHITE);
             permNameView.setText(label);
             setOnClickListener(this);
         }

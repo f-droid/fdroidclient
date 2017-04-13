@@ -17,6 +17,7 @@ import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.CleanCacheService;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Languages;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -52,6 +53,7 @@ public class PreferencesFragment extends PreferenceFragment
     private Preference updateAutoDownloadPref;
     private Preference updatePrivilegedExtensionPref;
     private long currentKeepCacheTime;
+    private FDroidApp fdroidApp;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -111,7 +113,13 @@ public class PreferencesFragment extends PreferenceFragment
 
             case Preferences.PREF_THEME:
                 entrySummary(key);
-                // TODO: Ask MainActivity to restart itself.
+                if (changing) {
+                    Activity activity = getActivity();
+                    fdroidApp = (FDroidApp) activity.getApplication();
+                    fdroidApp.reloadTheme();
+                    fdroidApp.applyTheme(activity);
+                    fdroidApp.forceChangeTheme(activity);
+                }
                 break;
 
             case Preferences.PREF_INCOMP_VER:

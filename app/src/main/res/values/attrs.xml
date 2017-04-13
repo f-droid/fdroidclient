@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <declare-styleable name="Theme">
+        <attr name="appDetailsBackground" format="color" />
+        <attr name="appDetailsCardBackground" format="color" />
+        <attr name="categoryPreviewAppCardBackground" format="color" />
+        <attr name="mainTabSwapBackground" format="color" />
+        <attr name="mainTabSwapSplashTint" format="color" />
+        <attr name="categoryName" format="color" />
+        <attr name="installedApps" format="color" />
+    </declare-styleable>
+</resources>
