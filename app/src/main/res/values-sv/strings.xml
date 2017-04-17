@@ -10,17 +10,17 @@
   <string name="updates">Uppdateringar</string>
   <string name="other">Andra</string>
   <string name="update_interval">Automatiskt uppdateringsintervall</string>
-  <string name="update_interval_zero">Inga automatiska uppdateringar av applistor</string>
+  <string name="update_interval_zero">Inga automatiska applistsuppdateringar</string>
   <string name="automatic_scan_wifi">Endast via Wi-Fi</string>
   <string name="automatic_scan_wifi_on">Endast uppdatera automatiskt på obegränsad nätverk som Wi-Fi</string>
   <string name="notify">Avisering vid uppdatering</string>
   <string name="notify_on">Visa avisering när uppdateringar finns tillgängliga</string>
   <string name="system_installer">Privilgierad utökning</string>
-  <string name="system_installer_on">Använd F-Droid\'s priviligerade utökning för att installera, uppdatera och ta bort paket</string>
+  <string name="system_installer_on">Använd F-Droids priviligerade utökning för att installera, uppdatera och ta bort paket</string>
   <string name="local_repo_name">Namn på ditt lokala förråd</string>
   <string name="local_repo_name_summary">Annonserade titeln på ditt lokala förråd: %s</string>
   <string name="local_repo_https">Använd privat anslutning</string>
-  <string name="local_repo_https_on">Använd krypterad HTTPs://-anslutning för lokalt förråd</string>
+  <string name="local_repo_https_on">Använd krypterad HTTPS://-anslutning för lokalt förråd</string>
   <string name="app_details">Detaljer för app</string>
   <string name="no_such_app">Hittade ingen sådan app.</string>
   <string name="about_title">Om F-Droid</string>
@@ -35,7 +35,7 @@
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
   <string name="no">Nej</string>
-  <string name="repo_add_title">Lägg till nytt filförråd</string>
+  <string name="repo_add_title">Lägg till nytt förråd</string>
   <string name="repo_add_add">Lägg till</string>
   <string name="cancel">Avbryt</string>
   <string name="enable">Aktivera</string>
@@ -45,19 +45,19 @@
   <string name="bluetooth_activity_not_found">Ingen metod för att kunna skicka med Bluetooth kunde hittas, välj en!</string>
   <string name="choose_bt_send">Välj en sändningsmetod för Bluetooth</string>
   <string name="send_via_bluetooth">Skicka via Bluetooth</string>
-  <string name="repo_add_url">Filförrådsadress</string>
+  <string name="repo_add_url">Förrådsadress</string>
   <string name="repo_add_fingerprint">Fingeravtryck (valfritt)</string>
-  <string name="repo_exists_add_fingerprint">Detta filförråd är redan inställt, det här kommer att lägga till ny nyckelinformation.</string>
-  <string name="repo_exists_enable">Detta filförråd är redan inställt, bekräfta att du vill återaktivera det.</string>
+  <string name="repo_exists_add_fingerprint">Detta förråd är redan inställt, det här kommer att lägga till ny nyckelinformation.</string>
+  <string name="repo_exists_enable">Detta förråd är redan inställt, bekräfta att du vill återaktivera det.</string>
   <string name="repo_exists_and_enabled">Det inkommande förrådet är redan inställt och aktiverat.</string>
   <string name="repo_delete_to_overwrite">Du måste först ta bort detta förråd innan du kan lägga till ett med en annan nyckel.</string>
-  <string name="malformed_repo_uri">Ignorera felaktig filförråd URI: %s</string>
-  <string name="menu_update_repo">Uppdatera filförråden</string>
-  <string name="menu_manage">Filförråd</string>
+  <string name="malformed_repo_uri">Ignorera felaktig förråds-URI: %s</string>
+  <string name="menu_update_repo">Uppdatera förråden</string>
+  <string name="menu_manage">Förråd</string>
   <string name="menu_send_apk_bt">Dela F-Droid via Bluetooth</string>
   <string name="menu_about">Om</string>
   <string name="menu_search">Sök</string>
-  <string name="menu_add_repo">Nytt filförråd</string>
+  <string name="menu_add_repo">Nytt förråd</string>
   <string name="menu_launch">Kör</string>
   <string name="menu_share">Dela</string>
   <string name="menu_install">Installera</string>
@@ -81,14 +81,14 @@
   <string name="expert">Expertläge</string>
   <string name="expert_on">Visa extra info och aktivera extra inställningar</string>
   <string name="search_hint">Sök efter applikationer</string>
-  <string name="appcompatibility">Applikationens kompabilitet</string>
+  <string name="appcompatibility">Applikations kompabilitet</string>
   <string name="show_incompat_versions">Inkompatibla versioner</string>
-  <string name="show_incompat_versions_on">Visa app-versioner som INTE är kompatibla med enheten</string>
+  <string name="show_incompat_versions_on">Visa app-versioner som är inkompatibla med enheten</string>
   <string name="rooted">Ignorera root</string>
   <string name="rooted_on">Gråtona inte appar som kräver root-behörigheter</string>
   <string name="ignoreTouch">Ignorera pekskärm</string>
   <string name="ignoreTouch_on">Inkludera alltid appar som kräver pekskärm</string>
-  <string name="local_repo">Lokalt filförråd</string>
+  <string name="local_repo">Lokalt förråd</string>
   <string name="local_repo_running">F-Droid är redo att utbyta</string>
   <string name="touch_to_configure_local_repo">Tryck för att se detaljer och tillåta andra att utbyta appar med dig.</string>
   <string name="deleting_repo">Tar bort aktuellt förråd…</string>
@@ -126,24 +126,24 @@
   <string name="unsigned_description">Detta betyder att listan av
 program inte kunde verifieras. Du bör vara försiktig
 med appar som hämtats från osignerade index.</string>
-  <string name="repo_not_yet_updated">Detta filförråd har inte använts ännu.
-Du måste aktivera det för att se apparna det förser dig med.</string>
+  <string name="repo_not_yet_updated">Detta förråd har inte använts ännu.
+Du måste aktivera det för att se apparna det tillhandahåller.</string>
   <string name="unknown">Okänd</string>
-  <string name="repo_confirm_delete_title">Ta bort filförråd?</string>
-  <string name="repo_confirm_delete_body">Att ta bort ett filförråd betyder
+  <string name="repo_confirm_delete_title">Ta bort förråd?</string>
+  <string name="repo_confirm_delete_body">Att ta bort ett förråd betyder
  att dess appar inte längre kommer att vara tillgängliga från F-Droid.
 
-Notera: Alla
- tidigare installerade appar kommer finnas kvar på din enhet.</string>
+Observera: Alla
+ tidigare installerade appar kommer kvarstå på din enhet.</string>
   <string name="repo_disabled_notification">Inaktiverade %1$s.
 
 Du kommer
- behöva återaktivera det här fil-förrådet för att kunna installera appar från det.</string>
-  <string name="repo_searching_address">Söker F-Droid filförråd på %1$s</string>
+ behöva återaktivera det här förrådet för att kunna installera appar från det.</string>
+  <string name="repo_searching_address">Söker F-Droid-förråd på %1$s</string>
   <string name="minsdk_or_later">%s eller senare</string>
   <string name="up_to_maxsdk">Upp till %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s upp till %2$s</string>
-  <string name="not_on_same_wifi">Din enhet är inte på samma WiFi som det lokala förrådet du just lagt till! Försök ansluta till detta nätverk: %s</string>
+  <string name="not_on_same_wifi">Din enhet är inte på samma wifi som det lokala förrådet du just lagt till! Försök ansluta till detta nätverk: %s</string>
   <string name="requires_features">Kräver: %1$s</string>
   <string name="category_Development">Utveckling</string>
   <string name="category_Games">Spel</string>
@@ -155,16 +155,16 @@ Du kommer
   <string name="category_Science_Education">Vetenskap &amp; utbildning</string>
   <string name="category_Security">Säkerhet</string>
   <string name="category_System">System</string>
-  <string name="requesting_root_access_body">Efterfrågar root-tillträde…</string>
-  <string name="root_access_denied_title">Root-tillträde nekad</string>
-  <string name="root_access_denied_body">Antingen är din Android-enhet inte rootad eller så har du nekat root-tillträde för F-Droid.</string>
+  <string name="requesting_root_access_body">Efterfrågar root-åtkomst…</string>
+  <string name="root_access_denied_title">Root-åtkomst nekad</string>
+  <string name="root_access_denied_body">Antingen är din Android-enhet inte rootad eller så har du blivit nekat root-åtkomst för F-Droid.</string>
   <string name="system_install_denied_title">Systembehörigheter nekade</string>
   <string name="system_install_denied_body">Detta val är endast tillgängligt när F-Droid installerats som en system-app.</string>
-  <string name="swap_join_same_wifi">Använd samma WiFi som din vän</string>
+  <string name="swap_join_same_wifi">Använd samma wifi som din vän</string>
   <string name="swap">Utbyta appar</string>
   <string name="swap_no_wifi_network">Inget nätverk ännu</string>
-  <string name="swap_view_available_networks">(Tryck för att öppna tillgängliga nätverk)</string>
-  <string name="open_qr_code_scanner">Öppna QR-kodsläsare</string>
+  <string name="swap_view_available_networks">Tryck för att öppna tillgängliga nätverk</string>
+  <string name="open_qr_code_scanner">Öppna QR-skannare</string>
   <string name="swap_welcome">Välkommen till F-Droid!</string>
   <string name="swap_confirm_connect">Vill du ta emot appar från %1$s nu?</string>
 <string name="app_name">F-Droid</string>
@@ -193,7 +193,7 @@ Du kommer
     <string name="status_download_unknown_size">Laddar ner\n%2$s från\n%1$s</string>
     <string name="update_notification_title">Uppdaterar fil-förråden</string>
     <string name="permissions">Tillstånd</string>
-    <string name="repo_details">Filförråd</string>
+    <string name="repo_details">Förråd</string>
     <string name="repo_url">Adress</string>
     <string name="pref_language">Språk</string>
     <string name="pref_language_default">Systemets standard</string>
@@ -215,8 +215,8 @@ Du kommer
     <string name="useTorSummary">Tvinga nedladdningstrafik genom Tor för ökad integritet</string>
     <string name="status_processing_xml_percent">Bearbetar %2$s / %3$s (%4$d%%) från %1$s</string>
     <string name="status_inserting_apps">Sparar applikationsdetaljer</string>
-    <string name="repo_added">Sparade F-Droid filförråd %1$s.</string>
-    <string name="wifi_ap">Hotspot</string>
+    <string name="repo_added">Sparade F-Droid-förråd %1$s.</string>
+    <string name="wifi_ap">Aktiveringspunkt</string>
 
     <string name="category_Connectivity">Anslutbarhet</string>
     <string name="category_Graphics">Grafik</string>
@@ -234,7 +234,7 @@ Du kommer
     <string name="empty_search_can_update_app_list">Inga matchande app-uppdateringar.</string>
 
     <string name="install_error_unknown">Misslyckades att installera på grund av ett okänt problem</string>
-    <string name="repo_provider">Filförråd: %s</string>
+    <string name="repo_provider">Förråd: %s</string>
 
     <string name="uninstall_error_unknown">Det gick inte att avinstallera på grund av ett okänt fel</string>
     <string name="system_install_denied_signature">Signaturen för tillbyggnaden är fel! Skapa en felrapport!</string>
@@ -256,25 +256,25 @@ Du kommer
 
     <string name="swap_nfc_title">Tryck för att utbyta</string>
     <string name="swap_nfc_description">Om din vän har F-Droid och NFC aktiverat lägg era enheterna samman.</string>
-    <string name="swap_join_same_wifi_desc">För att utbyta via WiFi, se till att ni är på samma nätverk. Om ni inte har tillgång till samma nätverk, kan en av er skapa en WiFi-hotspot.</string>
-    <string name="swap_join_this_hotspot">Hjälp din vän ansluta sig till din hotspot</string>
+    <string name="swap_join_same_wifi_desc">För att utbyta via wifi, se till att ni är på samma nätverk. Om ni inte har åtkomst till samma nätverk, kan en av er skapa en wifi-aktiveringspunkt.</string>
+    <string name="swap_join_this_hotspot">Hjälp din vän ansluta sig till din aktiveringspunkt</string>
     <string name="swap_success">Utbyte lyckades!</string>
-    <string name="swap_active_hotspot">%1$s (din hotspot)</string>
-    <string name="swap_switch_to_wifi">Tryck för att växla till ett WiFi-nätverk</string>
+    <string name="swap_active_hotspot">%1$s (din aktiveringspunkt)</string>
+    <string name="swap_switch_to_wifi">Tryck för att växla till ett wifi-nätverk</string>
     <string name="swap_dont_show_again">Visa inte detta igen</string>
     <string name="swap_scan_or_type_url">En person behöver skanna koden, eller skriv in adressen för den andra i en webbläsare.</string>
     <string name="swap_choose_apps">Välj appar</string>
-    <string name="swap_scan_qr">Skanna QR kod</string>
+    <string name="swap_scan_qr">Skanna QR-kod</string>
     <string name="swap_people_nearby">Folk i närheten</string>
     <string name="swap_scanning_for_peers">Söker efter folk i närheten…</string>
     <string name="swap_intro">Anslut och utbyt appar med personer nära dig.</string>
     <string name="swap_visible_bluetooth">Synlig via Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Ställer in Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Inte synlig via Bluetooth</string>
-    <string name="swap_visible_wifi">Synlig via WiFi</string>
-    <string name="swap_setting_up_wifi">Ställer in WiFi…</string>
-    <string name="swap_stopping_wifi">Stoppar WiFi…</string>
-    <string name="swap_not_visible_wifi">Inte synlig via WiFi</string>
+    <string name="swap_visible_wifi">Synlig via wifi</string>
+    <string name="swap_setting_up_wifi">Ställer in wifi…</string>
+    <string name="swap_stopping_wifi">Stoppar wifi…</string>
+    <string name="swap_not_visible_wifi">Inte synlig via wifi</string>
     <string name="swap_wifi_device_name">Enhetsnamn</string>
     <string name="swap_cant_find_peers">Det går inte att hitta den du söker?</string>
     <string name="swap_send_fdroid">Skicka F-Droid</string>
@@ -289,19 +289,19 @@ Du kommer
     <string name="swap_not_enabled">Utbyta inte aktiverat</string>
     <string name="swap_not_enabled_description">Innan utbyte måste din enhet synliggöras.</string>
 
-    <string name="install_confirm">behöver tillgång till</string>
+    <string name="install_confirm">behöver åtkomst till</string>
     <string name="install_confirm_update">Vill du installera en uppdatering
 till denna befintlig applikation? Din befintliga data 
-försvinner inte. Det uppdaterade programmet kommer att få tillgång till:</string>
+försvinner inte. Det uppdaterade programmet kommer att få åtkomst till:</string>
     <string name="install_confirm_update_system">Vill du installera en uppdatering
  till denna inbyggda app? Befintlig data försvinner inte. 
- Den uppdaterade appen kommer att få tillgång till:</string>
+ Den uppdaterade appen kommer att få åtkomst till:</string>
     <string name="install_confirm_update_no_perms">Vill du installera en uppdatering
 till denna befintlig app? Din befintliga data försvinner inte. 
-Den kräver inte någon särskild tillgång.</string>
+Den kräver inte någon särskild åtkomst.</string>
     <string name="install_confirm_update_system_no_perms">Vill du installera en uppdatering
 till denna inbyggda app? Din befintliga data försvinner inte.
-Den kräver inte någon särskild tillgång.</string>
+Den kräver inte någon särskild åtkomst.</string>
     <string name="newPerms">Ny</string>
     <string name="allPerms">Alla</string>
     <string name="perm_costs_money">Detta kan kosta pengar</string>
@@ -331,9 +331,9 @@ Den kräver inte någon särskild tillgång.</string>
 tvingade programmet att avsluta. Vill du skicka detaljer med
 e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="crash_dialog_comment_prompt">Du kan lägga till extra information och kommentarer här:</string>
-<string name="swap_nearby">Utbyta nära</string>
+<string name="swap_nearby">Utbyt nära</string>
     <string name="update_auto_download">Hämta uppdateringar automatiskt</string>
-    <string name="update_auto_download_summary">Hämta uppdateringsfilerna i bakgrunden</string>
+    <string name="update_auto_download_summary">Uppdateringar hämtas automatiskt och du får ett meddelande om att installera dem</string>
     <string name="tap_to_install_format">Tryck för att installera %s</string>
     <string name="tap_to_update_format">Tryck för att uppdatera %s</string>
     <string name="system_install_not_supported">Installation av F-Droids priviligerade utökning stöds för närvarande inte i Android 5.1 eller senare.</string>
@@ -342,7 +342,7 @@ e-post för att hjälpa till att åtgärda problemet?</string>
 
     <string name="downloading_apk">Laddar ner %1$s</string>
 
-    <string name="keep_hour">1 timma</string>
+    <string name="keep_hour">1 timme</string>
     <string name="keep_day">1 dag</string>
     <string name="keep_week">1 vecka</string>
     <string name="keep_month">1 månad</string>
@@ -360,7 +360,7 @@ e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i F-Droid</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
     <string name="update_auto_install_summary">Hämta och installera uppdaterings program i bakgrunden</string>
-    <string name="hide_anti_feature_apps">Gråa ut anti-funktions appar</string>
+    <string name="hide_anti_feature_apps">Gråa ut anti-funktionsappar</string>
     <string name="hide_anti_feature_apps_on">Gråa ut appar som kräver anti-funktioner</string>
     <string name="warning_no_internet">Det går inte att uppdatera, är du ansluten till Internet?</string>
     <string name="versions">Versioner</string>
@@ -424,8 +424,8 @@ e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="tts_category_name">Kategori %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Visa enda appen %1$d kategorin</item>
-	<item quantity="other">Visa alla %1$d appar från %2$s kategorin</item>
+	<item quantity="one">Visa enda appen i %2$d kategorin</item>
+	<item quantity="other">Visa alla %2$d appar från %2$s kategorin</item>
 </plurals>
 <string name="app__install_downloaded_update">Uppdatera</string>
 
@@ -453,12 +453,18 @@ e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="antifeatureswarning">Denna app har funktioner som du kanske inte gillar.</string>
     <string name="antifeatures">Anti-funktioner</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Uppdaterad %1$s dag sedan</item>
-	<item quantity="other">Uppdaterad %1$s dagar sedan</item>
+	<item quantity="one">Uppdaterade %1$s dag sedan</item>
+	<item quantity="other">Uppdaterade %1$s dagar sedan</item>
 </plurals>
 <string name="app_list__name__successfully_installed">%1$s har installerats</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Inget internet? Hämta appar från personer nära dig!</string>
     <string name="nearby_splash__find_people_button">Hitta personer nära mig</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"nära\"-funktionen.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"nära\".</string>
+
+    <string name="latest__empty_state__no_recent_apps">Inga senaste appar hittade</string>
+    <string name="latest__empty_state__never_updated">När din lista med appar har uppdaterats, bör de senaste apparna visas här</string>
+    <string name="latest__empty_state__no_enabled_repos">När du aktiverar ett förråd och låter uppdatera det, bör de senaste apparna visas här</string>
+
+    <string name="categories__empty_state__no_categories">Inga kategorier att visa</string>
 
     </resources>

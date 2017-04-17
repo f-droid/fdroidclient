@@ -392,4 +392,30 @@ a pomôť tak vyriešiť problém?</string>
     <string name="notification_action_cancel">Zrušiť</string>
     <string name="notification_action_install">Nainštalovať</string>
 
-</resources>
+<string name="app_version_x_available">Je dostupná verzia %1$s</string>
+    <string name="app_version_x_installed">Verzia %1$s</string>
+    <string name="app_recommended_version_installed">Verzia %1$s (odporúčaná)</string>
+    <string name="app__newly_added">Novinka</string>
+    <string name="app__install_downloaded_update">Aktualizovať</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Aktualizovať %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Inštalovať %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Sťahovanie %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s úspešne nainštalovaná</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Vydané pred dňom</item>
+	<item quantity="few">Vydané pred %1$d dňami</item>
+	<item quantity="many">Vydané pred %1$d dňami.</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="installed_apps__activity_title">Nainštalované aplikácie</string>
+    <string name="installed_app__updates_ignored">Vynechané aktualizácie</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Vynechané aktualizácie pre verziu %1$s</string>
+    <string name="updates__tts__download_app">Stiahnuť</string>
+    <string name="updates__tts__download_updates_for_all_apps">Stiahnuť všetky aktualizácie</string>
+
+    <string name="updates__hide_updateable_apps">Skryť aplikácie</string>
+    <string name="updates__show_updateable_apps">Zobraziť aplikácie</string>
+
+    </resources>

@@ -16,7 +16,7 @@
     <string name="update_interval">Intervalo de atualização automática</string>
     <string name="update_interval_zero">Não atualizar automaticamente a lista de aplicações</string>
     <string name="automatic_scan_wifi">Apenas por Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Atualizar lista de aplicações se estiver ligado a redes Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Apenas atualizar a lista de aplicações se estiver ligado a redes Wi-Fi</string>
     <string name="notify">Notificação de atualizações</string>
     <string name="notify_on">Mostrar uma notificação se existirem atualizações disponíveis</string>
     <string name="system_installer">Extensão privilegiada</string>
@@ -347,8 +347,8 @@ Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
     <string name="useTor">Utilizar Tor</string>
     <string name="useTorSummary">Descarregar aplicações através da rede Tor para manter a privacidade</string>
     <string name="swap_stopping_wifi">A parar Wi-Fi…</string>
-    <string name="update_auto_download">Descarregar atualizações automaticamente</string>
-    <string name="update_auto_download_summary">Descarregar ficheiros de atualização em segundo plano</string>
+    <string name="update_auto_download">Obter atualizações automaticamente</string>
+    <string name="update_auto_download_summary">As descargas são automáticas e você será notificado para as instalar</string>
     <string name="tap_to_install_format">Toque para instalar %s</string>
     <string name="tap_to_update_format">Toque para atualizar %s</string>
     <string name="download_pending">À espera da descarga…</string>
@@ -375,4 +375,104 @@ Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
     <string name="update_auto_install_summary">Descarregar e instalar atualizações em segundo plano</string>
     <string name="keep_install_history">Manter histórico de instalação</string>
     <string name="keep_install_history_summary">Guardar registo de instalações e remoções através do F-Droid</string>
+    <string name="app_details_donate_prompt_unknown_author">Pague um café aos programadores de %1$s!</string>
+    <string name="app_details_donate_prompt">%1$s foi criado por %2$s. Pague-lhes um café!</string>
+
+    <string name="app_version_x_available">Versão %1$s disponível</string>
+    <string name="app_version_x_installed">Versão %1$s</string>
+    <string name="app_recommended_version_installed">Versão %1$s (recomendada)</string>
+    <string name="app__newly_added">Nova</string>
+    <string name="app__install_downloaded_update">Atualização</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Atualizar %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Instalar %1$s</string>
+    <string name="app_list__name__downloading_in_progress">A descarregar %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s instalada com sucesso</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Disponibilizada há %1$s dia</item>
+	<item quantity="other">Disponibilizada há %1$s dias</item>
+</plurals>
+
+    <string name="installed_apps__activity_title">Aplicações instaladas</string>
+    <string name="installed_app__updates_ignored">Atualizações ignoradas</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s</string>
+    <string name="updates__tts__download_app">Descarregar</string>
+    <string name="updates__tts__download_updates_for_all_apps">Descarregar todas as atualizações</string>
+
+    <string name="updates__hide_updateable_apps">Ocultar aplicações</string>
+    <string name="updates__show_updateable_apps">Mostrar aplicações</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">A descarregar atualização para %1$s aplicação.</item>
+	<item quantity="other">A descarregar atualizações para %1$s aplicações.</item>
+</plurals>
+
+    <string name="versions">Versões</string>
+    <string name="clear_search">Limpar pesquisa</string>
+
+    <string name="repositories_summary">Adicionar mais fontes de aplicações</string>
+    <string name="main_menu__latest_apps">Últimas</string>
+    <string name="main_menu__categories">Categorias</string>
+    <string name="main_menu__swap_nearby">Vizinhança</string>
+
+    <string name="latest__empty_state__no_recent_apps">Nenhuma aplicação recente</string>
+    <string name="latest__empty_state__never_updated">Assim que a lista de aplicações estiver atualizada, as aplicações mais recentes serão mostradas aqui.</string>
+    <string name="latest__empty_state__no_enabled_repos">Assim que ativar um repositório e este estiver atualizado, as aplicações mais recentes serão mostradas aqui.</string>
+
+    <string name="categories__empty_state__no_categories">Nenhuma categoria para mostrar</string>
+
+    <string name="preference_category__my_apps">Minhas aplicações</string>
+    <string name="preference_manage_installed_apps">Gerir aplicações instaladas</string>
+
+
+    <string name="details_new_in_version">Novidades da versão %s</string>
+
+    <string name="antifeatureswarning">Esta aplicação tem funcionalidades que poderão não lhe agradar.</string>
+    <string name="antifeatures">Anti-funcionalidades</string>
+    <string name="hide_anti_feature_apps">Sombrear aplicações com anti-funcionalidades</string>
+    <string name="hide_anti_feature_apps_on">Sombrear aplicações cque necessitem de anti-funcionalidades</string>
+    <string name="warning_no_internet">Atualização impossível. Está ligado à Internet?</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Ver %d "</item>
+	<item quantity="other">" Ver %d "</item>
+</plurals>
+
+    <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Descarregue as aplicações através de pessoas perto de si!</string>
+    <string name="nearby_splash__find_people_button">Encontrar pessoas perto de mim</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes necessitam de %1$s.</string>
+
+    <string name="notification_title_single_update_available">Atualização disponível</string>
+    <string name="notification_title_single_ready_to_install">Pronta para instalação</string>
+    <string name="notification_title_single_ready_to_install_update">Atualização pronta para instalação</string>
+    <string name="notification_title_single_install_error">Falha ao instalar</string>
+    <string name="notification_content_single_downloading">A descarregar \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">A descarregar atualização para \"%1$s\"…</string>
+    <string name="notification_content_single_installing">A instalar \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Instalação efetuada</string>
+    <string name="notification_content_single_install_error">Falha ao instalar</string>
+    <string name="notification_summary_updates">%1$d atualizações</string>
+    <string name="notification_summary_installed">%1$d aplicações instaladas</string>
+    <string name="notification_title_summary_update_available">Atualização disponível</string>
+    <string name="notification_title_summary_downloading">A descarregar…</string>
+    <string name="notification_title_summary_downloading_update">A descarregar atualização…</string>
+    <string name="notification_title_summary_ready_to_install">Pronta para instalar</string>
+    <string name="notification_title_summary_ready_to_install_update">Atualização pronta para instalação</string>
+    <string name="notification_title_summary_installing">A instalar</string>
+    <string name="notification_title_summary_installed">Instalação efetuada</string>
+    <string name="notification_title_summary_install_error">Falha ao instalar</string>
+    <string name="notification_action_update">Atualização</string>
+    <string name="notification_action_cancel">Cancelar</string>
+    <string name="notification_action_install">Instalar</string>
+
+    <string name="tts_category_name">Categoria %1$s</string>
+
+    <plurals name="details_last_update_days">
+	<item quantity="one">Atualizada há %1$s dia</item>
+	<item quantity="other">Atualizada há %1$s dias</item>
+</plurals>
+<plurals name="tts_view_all_in_category">
+	<item quantity="one">Ver a única aplicação da categoria %2$s</item>
+	<item quantity="other">Ver todas as %1$d aplicações da categoria %2$s</item>
+</plurals>
+
     </resources>

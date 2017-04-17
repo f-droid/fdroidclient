@@ -336,8 +336,8 @@
     <string name="useTor">שימוש ב־Tor</string>
     <string name="useTorSummary">אילוץ העברת תעבורת העבודה דרך Tor להגברת הפרטיות</string>
     <string name="swap_stopping_wifi">חיבור הרשת האלחוטי מופסק…</string>
-    <string name="update_auto_download">הורד עדכונים אוטומטית</string>
-    <string name="update_auto_download_summary">הורד את קבצי העדכון בתוך הרקע</string>
+    <string name="update_auto_download">הורדת עדכונים אוטומטית</string>
+    <string name="update_auto_download_summary">העדכונים מתקבלים אוטומטית ותופיע הודעה להתקין אותם</string>
     <string name="tap_to_install_format">הקש כדי להתקין %s</string>
     <string name="tap_to_update_format">הקש כדי לעדכן %s</string>
     <string name="download_pending">כעת ממתין להתחיל להוריד…</string>

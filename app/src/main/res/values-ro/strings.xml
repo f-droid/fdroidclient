@@ -390,7 +390,64 @@ Nota: Toate
 </plurals>
 <plurals name="details_last_update_days">
 	<item quantity="one">Actualizate azi</item>
-	<item quantity="few">Actualizate acum %1$ zile</item>
-	<item quantity="other">Actualizate acum %1$ zile</item>
+	<item quantity="few">Actualizate acum %1$s zile</item>
+	<item quantity="other">Actualizate acum %1$s de zile</item>
 </plurals>
-</resources>
+<plurals name="button_view_all_apps_in_category">
+	<item quantity="one"/>
+    <item quantity="few">Toate cele %d</item>
+    <item quantity="other">Toate cele %d</item>
+</plurals>
+
+    <string name="antifeatures">Caracteristici negative</string>
+    <string name="antifeatureswarning">Aceasta aplicatie are caracteristici ce ar putea sa nu iti placa.</string>
+    <string name="details_new_in_version">Nou in versiunea %s</string>
+
+    <string name="preference_manage_installed_apps">Gestioneaza aplicatiile instalate</string>
+
+
+    <string name="preference_category__my_apps">Aplicatiile mele</string>
+    <string name="categories__empty_state__no_categories">Nici o categorie de aratat</string>
+
+    <string name="latest__empty_state__no_enabled_repos">Odata ce ai activat si actualizat un depozit, cele mai noi aplicatii ar trebui sa apara aici</string>
+
+    <string name="latest__empty_state__never_updated">Odata ce s-a actualizat lista de aplicatii, cele mai noi ar trebui sa apara aici</string>
+    <string name="latest__empty_state__no_recent_apps">Nu s-a gasit nici o aplicatie recenta</string>
+    <string name="main_menu__swap_nearby">In apropiere</string>
+
+    <string name="main_menu__categories">Categorii</string>
+    <string name="main_menu__latest_apps">Cele mai noi</string>
+    <string name="clear_search">Curata cautarea</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Descarca actualizarea pentru %1$d aplicatie.</item>
+	<item quantity="few">Descarca actualizari pentru %1$d aplicatii.</item>
+	<item quantity="other">Descarca actualizari pentru %1$d de aplicatii.</item>
+</plurals>
+
+    <string name="updates__show_updateable_apps">Arata aplicatiile</string>
+
+    <string name="updates__hide_updateable_apps">Ascunde aplicatiile</string>
+    <string name="updates__tts__download_updates_for_all_apps">Descarca toate actualizarile</string>
+
+    <string name="updates__tts__download_app">Descarca</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Actualizarile ignorate pentru versiunea %1$s</string>
+    <string name="installed_app__updates_ignored">Actualizarile ignorate</string>
+    <string name="installed_apps__activity_title">Aplicatii instalate</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Publicat acum %1$d zi</item>
+    <item quantity="few">Publicat acum %1$d zi</item>
+	<item quantity="other">Publicat acum %1$d zile</item>
+</plurals>
+
+    <string name="app_list__name__successfully_installed">%1$s instalat cu succes</string>
+    <string name="app_list__name__downloading_in_progress">Se descarca %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Instalare %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_update">Actualizare %1$s</string>
+    <string name="app__install_downloaded_update">Actualizare</string>
+
+    <string name="app__newly_added">Nou</string>
+    <string name="app_recommended_version_installed">Versiunea %1$s (Recomandata)</string>
+    <string name="app_version_x_installed">Versiunea %1$s</string>
+    <string name="app_version_x_available">Versiunea %1$s disponibila</string>
+    </resources>

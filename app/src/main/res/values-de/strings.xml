@@ -456,4 +456,10 @@ Bitte eine andere Kategorie wählen oder die Paketquellen aktualisieren.</string
     <string name="nearby_splash__find_people_button">Menschen in der Nähe finden</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um die Nahfunktion zu verwenden.</string>
 
+    <string name="latest__empty_state__no_recent_apps">Keine kürzlichen Apps gefunden</string>
+    <string name="latest__empty_state__never_updated">Sobald Ihre Liste der Apps aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.</string>
+    <string name="latest__empty_state__no_enabled_repos">Sobald Sie eine Paketquelle aktiviert haben und sie aktualisiert wurde, sollten die neuesten Apps hier angezeigt werden.</string>
+
+    <string name="categories__empty_state__no_categories">Keine Kategorien zum Anzeigen</string>
+
     </resources>

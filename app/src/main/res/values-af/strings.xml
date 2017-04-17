@@ -315,7 +315,7 @@ Baie geluk! Al jou toepassings is op datum (of jou argiewe is verouderd).</strin
 
     <plurals name="my_apps_header_number_of_updateable">
 	<item quantity="one">%1$d Opdaterings</item>
-	<item quantity="other">%1$ d bywerking</item>
+	<item quantity="other">%1$d bywerking</item>
 </plurals>
 
     <string name="clear_search">Duidelike soektog</string>
