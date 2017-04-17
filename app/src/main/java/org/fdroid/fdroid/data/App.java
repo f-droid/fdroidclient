@@ -110,7 +110,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     public String description;
 
-    public String video;
+    /**
+     * A descriptive text for what has changed in this version.
+     */
+    public String whatsNew;
 
     public String featureGraphic;
     public String promoGraphic;
@@ -132,6 +135,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String issueTracker;
 
     public String sourceCode;
+
+    public String video;
 
     public String changelog;
 
@@ -230,6 +235,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 case Cols.DESCRIPTION:
                     description = cursor.getString(i);
                     break;
+                case Cols.WHATSNEW:
+                    whatsNew = cursor.getString(i);
+                    break;
                 case Cols.LICENSE:
                     license = cursor.getString(i);
                     break;
@@ -247,6 +255,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     break;
                 case Cols.SOURCE_CODE:
                     sourceCode = cursor.getString(i);
+                    break;
+                case Cols.VIDEO:
+                    video = cursor.getString(i);
                     break;
                 case Cols.CHANGELOG:
                     changelog = cursor.getString(i);
@@ -387,8 +398,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             }
         }
         // if key starts with Upper case, its set by humans
-        // Name, Summary, Description existed before localization so their values can be set directly
         video = getLocalizedEntry(localized, localesToUse, "Video");
+        whatsNew = getLocalizedEntry(localized, localesToUse, "WhatsNew");
+        // Name, Summary, Description existed before localization so they shouldn't replace
+        // non-localized old data format with a null or blank string
         String value = getLocalizedEntry(localized, localesToUse, "Name");
         if (!TextUtils.isEmpty(value)) {
             name = value;
@@ -397,7 +410,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         if (!TextUtils.isEmpty(value)) {
             summary = value;
         }
-        description = getLocalizedEntry(localized, localesToUse, "Description");
+        value = getLocalizedEntry(localized, localesToUse, "Description");
         if (!TextUtils.isEmpty(value)) {
             description = value;
         }
@@ -733,12 +746,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.ICON_URL, iconUrl);
         values.put(Cols.ICON_URL_LARGE, iconUrlLarge);
         values.put(Cols.DESCRIPTION, description);
+        values.put(Cols.WHATSNEW, whatsNew);
         values.put(Cols.LICENSE, license);
         values.put(Cols.AUTHOR_NAME, authorName);
         values.put(Cols.AUTHOR_EMAIL, authorEmail);
         values.put(Cols.WEBSITE, webSite);
         values.put(Cols.ISSUE_TRACKER, issueTracker);
         values.put(Cols.SOURCE_CODE, sourceCode);
+        values.put(Cols.VIDEO, video);
         values.put(Cols.CHANGELOG, changelog);
         values.put(Cols.DONATE, donate);
         values.put(Cols.BITCOIN, bitcoin);
@@ -887,12 +902,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.summary);
         dest.writeString(this.icon);
         dest.writeString(this.description);
+        dest.writeString(this.whatsNew);
         dest.writeString(this.license);
         dest.writeString(this.authorName);
         dest.writeString(this.authorEmail);
         dest.writeString(this.webSite);
         dest.writeString(this.issueTracker);
         dest.writeString(this.sourceCode);
+        dest.writeString(this.video);
         dest.writeString(this.changelog);
         dest.writeString(this.donate);
         dest.writeString(this.bitcoin);
@@ -932,12 +949,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.summary = in.readString();
         this.icon = in.readString();
         this.description = in.readString();
+        this.whatsNew = in.readString();
         this.license = in.readString();
         this.authorName = in.readString();
         this.authorEmail = in.readString();
         this.webSite = in.readString();
         this.issueTracker = in.readString();
         this.sourceCode = in.readString();
+        this.video = in.readString();
         this.changelog = in.readString();
         this.donate = in.readString();
         this.bitcoin = in.readString();

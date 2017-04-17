@@ -123,12 +123,14 @@ public interface Schema {
             String SUMMARY = "summary";
             String ICON = "icon";
             String DESCRIPTION = "description";
+            String WHATSNEW = "whatsNew";
             String LICENSE = "license";
             String AUTHOR_NAME = "author";
             String AUTHOR_EMAIL = "email";
             String WEBSITE = "webURL";
             String ISSUE_TRACKER = "trackerURL";
             String SOURCE_CODE = "sourceURL";
+            String VIDEO = "video";
             String CHANGELOG = "changelogURL";
             String DONATE = "donateURL";
             String BITCOIN = "bitcoinAddr";
@@ -184,8 +186,8 @@ public interface Schema {
              */
             String[] ALL_COLS = {
                     ROW_ID, PACKAGE_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
-                    LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
-                    CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID,
+                    WHATSNEW, LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
+                    VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
@@ -200,8 +202,8 @@ public interface Schema {
              */
             String[] ALL = {
                     _ID, ROW_ID, REPO_ID, IS_COMPATIBLE, NAME, SUMMARY, ICON, DESCRIPTION,
-                    LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
-                    CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID,
+                    WHATSNEW, LICENSE, AUTHOR_NAME, AUTHOR_EMAIL, WEBSITE, ISSUE_TRACKER, SOURCE_CODE,
+                    VIDEO, CHANGELOG, DONATE, BITCOIN, LITECOIN, FLATTR_ID,
                     UPSTREAM_VERSION_NAME, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
