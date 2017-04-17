@@ -15,11 +15,9 @@ import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.fdroid.AppFilter;
 import org.fdroid.fdroid.FDroidApp;
@@ -40,10 +38,10 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.regex.Matcher;
@@ -377,7 +375,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         String languageTag = defaultLocale.getLanguage();
         String localeTag = languageTag + "-" + defaultLocale.getCountry();
         Set<String> locales = localized.keySet();
-        Set<String> localesToUse = new TreeSet<>();
+        Set<String> localesToUse = new LinkedHashSet<>();
 
         if (locales.contains(localeTag)) {
             localesToUse.add(localeTag);
