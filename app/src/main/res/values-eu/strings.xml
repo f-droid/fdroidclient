@@ -402,12 +402,6 @@ konpontzen laguntzeko?</string>
 
 <string name="app_version_x_available">%1$s bertsioa eskuragarri</string>
     <string name="app_version_x_installed">%1$s bertsioa</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">eguneraketa %1$d</item>
-	<item quantity="other">%1$d eguneraketa</item>
-</plurals>
-
     <string name="clear_search">Garbitu bilaketa</string>
 
     <string name="main_menu__latest_apps">Azkena</string>

@@ -396,12 +396,6 @@ détails des opérations en cours pour aider à résoudre ce problème ?</string
 
 <string name="app_version_x_available">Version %1$s disponible</string>
     <string name="app_version_x_installed">Version %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d mise à jour</item>
-	<item quantity="other">%1$d mises à jours</item>
-</plurals>
-
     <string name="clear_search">Effacer la recherche</string>
 
     <string name="main_menu__latest_apps">Dernière</string>

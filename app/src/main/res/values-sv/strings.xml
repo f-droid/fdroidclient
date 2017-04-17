@@ -376,12 +376,6 @@ e-post för att hjälpa till att åtgärda problemet?</string>
     <string name="installed_apps__activity_title">Installerade appar</string>
     <string name="installed_app__updates_ignored">Uppdateringar ignorerade</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Uppdateringar ignorerade för version %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d uppdatering</item>
-	<item quantity="other">%1$d uppdateringar</item>
-</plurals>
-
     <string name="clear_search">Rensa sök</string>
 
     <string name="main_menu__latest_apps">Senaste</string>

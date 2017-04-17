@@ -387,12 +387,6 @@ Bitte eine andere Kategorie wählen oder die Paketquellen aktualisieren.</string
 
 <string name="app_version_x_available">Version %1$s verfügbar</string>
     <string name="app_version_x_installed">Version %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d Aktualisierung</item>
-	<item quantity="other">%1$d Aktualisierungen</item>
-</plurals>
-
     <string name="clear_search">Suche löschen</string>
 
     <string name="main_menu__latest_apps">Zuletzt</string>

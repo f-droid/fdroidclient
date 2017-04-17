@@ -380,12 +380,6 @@ Hiçbir özel erişim gerektirmez.</string>
 
     <string name="app_version_x_available">%1$s sürümü mevcut</string>
     <string name="app_version_x_installed">Sürüm %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d Güncelleme</item>
-	<item quantity="other">%1$d Güncelleme</item>
-</plurals>
-
     <string name="clear_search">Aramayı temizle</string>
 
     <string name="repositories_summary">Ek uygulama kaynakları ekle</string>

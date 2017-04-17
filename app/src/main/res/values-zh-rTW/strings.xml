@@ -394,12 +394,6 @@ F-Droid 並無您裝置上可用的應用程式。這可能是因為您需要更
 
 <string name="app_version_x_available">有版本 %1$s 可用</string>
     <string name="app_version_x_installed">版本 %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d 更新</item>
-	<item quantity="other"/>
-</plurals>
-
     <string name="clear_search">清除搜尋</string>
 
     <string name="main_menu__latest_apps">最新的</string>

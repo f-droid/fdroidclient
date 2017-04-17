@@ -415,14 +415,6 @@
 
 <string name="app_version_x_available">Версія %1$s даступна</string>
     <string name="app_version_x_installed">Версія %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d абнаўленне</item>
-	<item quantity="few">%1$d абнаўленні</item>
-	<item quantity="many">%1$d абнаўленняў</item>
-	<item quantity="other"/>
-</plurals>
-
     <string name="clear_search">Ачысціць пошук</string>
 
     <string name="main_menu__latest_apps">Апошнія</string>

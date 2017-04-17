@@ -369,13 +369,6 @@
 
     <string name="app_version_x_available">Издање %1$s је доступно</string>
     <string name="app_version_x_installed">Издање %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d надоградња</item>
-	<item quantity="few">%1$d надоградње</item>
-	<item quantity="other">%1$d надоградњи</item>
-</plurals>
-
     <string name="clear_search">Очисти претрагу</string>
 
     <string name="repositories_summary">Додај додатне изворе апликација</string>

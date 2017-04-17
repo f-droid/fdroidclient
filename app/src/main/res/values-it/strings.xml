@@ -377,12 +377,6 @@ non saranno rimossi. Non richiede alcun permesso speciale.</string>
 
     <string name="app_version_x_available">Versione %1$s disponibile</string>
     <string name="app_version_x_installed">Versione %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d aggiornamento</item>
-	<item quantity="other">%1$d aggiornamenti</item>
-</plurals>
-
     <string name="clear_search">Svuota ricerca</string>
 
     <string name="repositories_summary">Aggiungi ulteriori fonti per le applicazioni</string>

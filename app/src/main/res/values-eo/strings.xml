@@ -388,12 +388,6 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
 
 <string name="app_version_x_available">Versio %1$s disponebla</string>
     <string name="app_version_x_installed">Versio %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d ĝisdatigo</item>
-	<item quantity="other">%1$d ĝisdatigoj</item>
-</plurals>
-
     <string name="clear_search">Forviŝi serĉon</string>
 
     <string name="main_menu__latest_apps">Novaj</string>

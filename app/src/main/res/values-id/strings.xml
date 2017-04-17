@@ -414,12 +414,6 @@ hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
 <string name="app_details_donate_prompt_unknown_author">Belikan pengembang %1$s kopi!</string>
     <string name="app_version_x_available">Versi %1$s tersedia</string>
     <string name="app_version_x_installed">Versi %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d Pembaruan</item>
-	<item quantity="other"/>
-</plurals>
-
     <string name="clear_search">Kosongkan pencarian</string>
 
     <string name="main_menu__latest_apps">Terbaru</string>

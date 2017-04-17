@@ -371,12 +371,6 @@ i en e-post for å fikse problemet?</string>
     <string name="installed_apps__activity_title">Installerte programmer</string>
     <string name="installed_app__updates_ignored">Oppdateringer ignorert</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Oppdateringer ignorert for versjon %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d oppdatering</item>
-	<item quantity="other">%1$d oppdateringer</item>
-</plurals>
-
     <string name="clear_search">Tøm søkefelt</string>
 
     <string name="repositories_summary">Legg til andre pakkebrønner for programmer</string>

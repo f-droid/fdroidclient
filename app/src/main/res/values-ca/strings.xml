@@ -370,12 +370,6 @@ per tal d\'ajudar a resoldre la incidència?</string>
     <string name="repositories_summary">Afegiu orígens d\'aplicacions addicionals</string>
     <string name="app_version_x_available">Versió %1$s disponible</string>
     <string name="app_version_x_installed">Versió %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d actualització</item>
-	<item quantity="other">"%1$d  actualitzacions"</item>
-</plurals>
-
     <string name="clear_search">Netegeu la cerca</string>
 
     <string name="main_menu__latest_apps">Últim</string>

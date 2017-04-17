@@ -367,12 +367,6 @@ corréu colos detalles p\'ayudar a iguar esti problema?</string>
     <string name="installed_apps__activity_title">Aplicaciones instalaes</string>
     <string name="installed_app__updates_ignored">Anovamientos inoraos</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Anovamientos inoraos pa la versión %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d anovamientu</item>
-	<item quantity="other">%1$d anovamientos</item>
-</plurals>
-
     <string name="clear_search">Llimpiar gueta</string>
 
     <string name="repositories_summary">Amiesta fontes adicionales d\'aplicaciones</string>

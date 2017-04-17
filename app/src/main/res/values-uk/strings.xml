@@ -410,14 +410,6 @@
     <string name="installed_apps__activity_title">Встановлені додатки</string>
     <string name="installed_app__updates_ignored">Оновлення проігноровані</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Ігнорувати оновлення для версії %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d оновлення</item>
-	<item quantity="few">%1$d оновлення</item>
-	<item quantity="many">%1$d оновлень</item>
-	<item quantity="other"/>
-</plurals>
-
     <string name="clear_search">Очистити пошук</string>
 
     <string name="main_menu__latest_apps">Останні</string>

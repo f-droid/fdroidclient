@@ -394,12 +394,6 @@ Depes
 
 <string name="app_version_x_available">Sa versione %1$s est disponìbile</string>
     <string name="app_version_x_installed">Versione %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d Agiornamentu</item>
-	<item quantity="other">%1$d Agiornamentos</item>
-</plurals>
-
     <string name="main_menu__latest_apps">Ùrtimas</string>
     <string name="main_menu__categories">Categorias</string>
     <string name="main_menu__swap_nearby">A curtzu</string>

@@ -365,14 +365,6 @@ Budete chtít odeslat detaily emailem a tím pomoci s napravením chyby?</string
 
     <string name="app_version_x_available">Je dostupná verze %1$s</string>
     <string name="app_version_x_installed">Verze %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d aktualizace</item>
-	<item quantity="few">%1$d aktualizace</item>
-	<item quantity="many">%1$d aktualizací</item>
-	<item quantity="other"/>
-</plurals>
-
     <string name="clear_search">Vymazat hledání</string>
 
     <string name="repositories_summary">Přidat další zdroje aplikací</string>

@@ -370,12 +370,6 @@ detalles para ayudarnos a arreglar el problema?</string>
     <string name="repositories_summary">Añadir orígenes adiccionales de aplicaciones</string>
     <string name="app_version_x_available">Versión %1$s disponible</string>
     <string name="app_version_x_installed">Versión %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d actualización</item>
-	<item quantity="other">%1$d actualizaciones</item>
-</plurals>
-
     <string name="clear_search">Limpiar la búsqueda</string>
 
     <string name="main_menu__latest_apps">Último</string>

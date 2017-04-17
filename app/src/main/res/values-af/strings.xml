@@ -312,12 +312,6 @@ Baie geluk! Al jou toepassings is op datum (of jou argiewe is verouderd).</strin
     <string name="swap_connecting">Verbind tans</string>
     <string name="app_version_x_available">Weergawe %1$s beskikbaar</string>
     <string name="app_version_x_installed">Weergawe %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d Opdaterings</item>
-	<item quantity="other">%1$d bywerking</item>
-</plurals>
-
     <string name="clear_search">Duidelike soektog</string>
 
     <string name="main_menu__latest_apps">Nuutste</string>

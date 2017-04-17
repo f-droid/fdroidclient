@@ -395,12 +395,6 @@ um atvikið til að hjálpa við að laga þetta ?</string>
     <string name="installed_apps__activity_title">Uppsett forrit</string>
     <string name="installed_app__updates_ignored">Hunsaðar uppfærslur</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Hunsaðar uppfærslur fyrir %1$s-útgáfuna</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d uppfærsla</item>
-	<item quantity="other">%1$d uppfærslur</item>
-</plurals>
-
     <string name="clear_search">Hreinsa leit</string>
 
     <string name="repositories_summary">Bæta við öðrum upptökum fyrir hugbúnað</string>

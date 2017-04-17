@@ -386,12 +386,6 @@
 
 <string name="app_version_x_available">ﾊﾞｰｼﾞｮﾝ %1$s が利用可能</string>
     <string name="app_version_x_installed">ﾊﾞｰｼﾞｮﾝ %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d の更新</item>
-	<item quantity="other"/>
-</plurals>
-
     <string name="clear_search">検索のｸﾘｱ</string>
 
     <string name="main_menu__latest_apps">最新</string>
