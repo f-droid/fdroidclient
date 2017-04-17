@@ -456,4 +456,10 @@ in de toekomst te helpen voorkomen?</string>
     <string name="nearby_splash__find_people_button">Zoek mensen in de buurt</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide partijen moeten %1$s gebruiken.</string>
 
+    <string name="latest__empty_state__no_recent_apps">Geen recente apps gevonden</string>
+    <string name="latest__empty_state__never_updated">Wanneer je applijst is bijgewerkt zullen de laatste nieuwe apps hier worden weergegeven</string>
+    <string name="latest__empty_state__no_enabled_repos">Wanneer je een pakketbron inschakelt en ze bijwerkt zullen de laatste nieuwe apps hier worden weergegeven</string>
+
+    <string name="categories__empty_state__no_categories">Geen categorieën om weer te geven</string>
+
     </resources>

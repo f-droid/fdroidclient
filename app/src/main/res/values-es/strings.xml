@@ -12,7 +12,7 @@
   <string name="update_interval">Intervalo de actualización automática</string>
   <string name="update_interval_zero">No actualizar la lista de aplicaciones automáticamente</string>
   <string name="automatic_scan_wifi">Sólo con Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Actualizar automáticamente sólo con Wi-Fi y otras redes de tarifa plana</string>
+  <string name="automatic_scan_wifi_on">Actualizar automáticamente solo con Wi-Fi y otras redes de tarifa plana</string>
   <string name="notify">Notificaciones de actualizaciones</string>
   <string name="notify_on">Muestra una notificación cuando hay actualizaciones</string>
   <string name="system_installer">Extensión con permisos de sistema</string>
@@ -326,7 +326,7 @@ detalles para ayudarnos a arreglar el problema?</string>
     <string name="empty_search_can_update_app_list">No hay ninguna coincidencia con ninguna aplicación a actualizar.</string>
 
     <string name="by_author">por</string>
-    <string name="menu_email">Correo electrónico del autor</string>
+    <string name="menu_email">Escribir un correo electrónico al autor</string>
     <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>
     <string name="useTor">Usar Tor</string>
     <string name="useTorSummary">Forzar el tráfico de bajada a través de Tor para mejorar la privacidad</string>
@@ -380,12 +380,12 @@ detalles para ayudarnos a arreglar el problema?</string>
 
     <string name="main_menu__latest_apps">Último</string>
     <string name="main_menu__categories">Categorías</string>
-    <string name="main_menu__swap_nearby">Alrededor</string>
+    <string name="main_menu__swap_nearby">Proximidad</string>
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Ver %d "</item>
-	<item quantity="other">" Ver todo %d "</item>
+	<item quantity="one">" Ver (%d) "</item>
+	<item quantity="other">" Ver todos (%d) "</item>
 </plurals>
 
     <string name="notification_title_single_update_available">Actualización disponible</string>
@@ -428,14 +428,14 @@ detalles para ayudarnos a arreglar el problema?</string>
 	<item quantity="one">Ver la única «app» de la categoría %2$s</item>
 	<item quantity="other">Ver todas las «apps» de la categoría %2$s</item>
 </plurals>
-<string name="app__install_downloaded_update">Actualización</string>
+<string name="app__install_downloaded_update">Actualizar</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Actualizar %1$s</string>
     <string name="app_list__name__downloaded_and_ready_to_install">Instalar %1$s</string>
     <string name="app_list__name__downloading_in_progress">Descargando %1$s</string>
     <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">%1 publicada ayer</item>
-	<item quantity="other">%1 publicada hace $d días</item>
+	<item quantity="one">publicada ayer</item>
+	<item quantity="other">publicada hace %1$d días</item>
 </plurals>
 
     <string name="updates__tts__download_app">"El botón de descarga que se encuentra entre el texto en la pantalla de \"Actualizaciones\" solo usa
@@ -461,6 +461,12 @@ detalles para ayudarnos a arreglar el problema?</string>
 <string name="app_list__name__successfully_installed">%1$s se ha instalado con éxito</string>
     <string name="nearby_splash__download_apps_from_people_nearby">¿No tiene internet? ¡Descargue apps de la gente de su alrededor!</string>
     <string name="nearby_splash__find_people_button">Encontrar personas cerca de mí</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Ambas partes necesitan %1$s para usar la cercanía.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambas partes necesitan %1$s para usar la proximidad.</string>
+
+    <string name="latest__empty_state__no_recent_apps">No se encontraron aplicaciones recientes</string>
+    <string name="latest__empty_state__never_updated">Una vez que la lista de aplicaciones se actualice, aquí se mostrarán las últimas aplicaciones</string>
+    <string name="latest__empty_state__no_enabled_repos">Una vez que se habilite y actualice un repositorio, sus últimas aplicaciones se mostrarán aquí</string>
+
+    <string name="categories__empty_state__no_categories">No hay categorías para mostrar</string>
 
     </resources>

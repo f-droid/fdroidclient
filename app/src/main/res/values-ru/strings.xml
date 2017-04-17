@@ -283,14 +283,14 @@
 
     <string name="system_install_post_success_message">Привилегированное дополнение F-Droid успешно установлено. Оно позволяет F-Droid самостоятельно устанавливать, обновить и удалять приложения.</string>
     <string name="system_install_post_fail_message">Установка привилегированного приложения F-Droid не удалась. Используемый метод установки поддерживается не всеми дистрибутивами Android, за дополнительной информацией обратитесь к системе отслеживания ошибок F-Droid.</string>
-    <string name="system_install_question">Желаете установить привилегированное дополнение F-Droid?</string>
-    <string name="system_uninstall">Желаете удалить привилегированное дополнение F-Droid?</string>
+    <string name="system_install_question">Вы хотите установить привилегированное расширение F-Droid?</string>
+    <string name="system_uninstall">Вы хотите удалить привилегированное расширение F-Droid?</string>
     <string name="swap_nfc_description">Если у вашего друга есть F-Droid, а на ваших устройствах включен NFC.</string>
-    <string name="swap_join_this_hotspot">Помогите своему другу подключиться к вашей временной сети</string>
+    <string name="swap_join_this_hotspot">Помогите Вашему другу подключиться к Вашей точке доступа</string>
     <string name="swap_nfc_title">Нажмите для обмена</string>
     <string name="swap_join_same_wifi_desc">Чтобы выполнить обмен, используя Wi-Fi, убедитесь, что вы подключены к одной и той же сети. Если у вас нет доступа к одной и той же сети, то один из вас может создать временную сеть Wi-Fi.</string>
     <string name="swap_success">Обмен прошёл успешно!</string>
-    <string name="swap_active_hotspot">%1$s (ваша временная сеть)</string>
+    <string name="swap_active_hotspot">%1$s (ваша точка доступа)</string>
     <string name="swap_switch_to_wifi">Нажмите, чтобы переключиться на сеть Wi-Fi</string>
     <string name="swap_scan_or_type_url">Одному из вас следует сканировать код или ввести в браузере другого участника URL.</string>
     <string name="swap_people_nearby">Люди поблизости</string>
@@ -316,8 +316,8 @@
     <string name="swap_not_enabled_description">Для выполнения обмена следует сделать ваше устройство видимым.</string>
 
     <string name="perms_description_app">Предоставлено %1$s.</string>
-    <string name="update_auto_download">Автоматически скачивать обновления</string>
-    <string name="update_auto_download_summary">Скачивать файлы обновлений в фоне</string>
+    <string name="update_auto_download">Получать обновления автоматически</string>
+    <string name="update_auto_download_summary">Скачивать файлы обновлений в фоне и выводить уведомление для их установки</string>
     <string name="system_install_not_supported">"Установка Привилегированного расширения F-Droid в настоящее время не поддерживается на  Android 5.1 или более поздних версиях."</string>
 
     <string name="download_pending">Ожидание начала загрузки…</string>
@@ -348,7 +348,7 @@
     <string name="hide_anti_feature_apps_on">Выделять серым цветом приложения, содержащие нежелательный функционал</string>
     <string name="warning_no_internet">Не могу обновить. Вы подключены к интернету?</string>
     <string name="versions">Версии</string>
-    <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе</string>
+    <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>
     <string name="updates__tts__download_updates_for_all_apps">Скачать все обновления</string>
 
     <string name="updates__hide_updateable_apps">Скрыть приложение</string>
@@ -365,4 +365,90 @@
     <string name="details_new_in_version">Новое в версии %s</string>
 
     <string name="preference_category__my_apps">Мои приложения</string>
+    <string name="installed_apps__activity_title">Установленные приложения</string>
+    <string name="main_menu__swap_nearby">Рядом</string>
+
+    <string name="nearby_splash__find_people_button">Найти людей рядом со мной</string>
+    <string name="notification_title_single_update_available">Доступно обновление</string>
+    <string name="notification_title_single_ready_to_install_update">Обновление готово к установке</string>
+    <string name="notification_title_summary_ready_to_install">Готово к установке</string>
+    <string name="notification_title_summary_ready_to_install_update">Обновление готово к установке</string>
+    <string name="notification_action_cancel">Отмена</string>
+    <string name="notification_action_install">Установить</string>
+
+    <string name="tts_category_name">Категория %1$s</string>
+
+    <string name="app_version_x_available">Доступна версия %1$s</string>
+    <string name="app_version_x_installed">Версия %1$s</string>
+    <string name="app__newly_added">Новое</string>
+    <string name="app_list__name__successfully_installed">%1$s успешно установлено</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Выпущено %1$d день назад</item>
+    <item quantity="few">Выпущено %1$d день назад</item>
+    <item quantity="many">Выпущено %1$d день назад</item>
+	<item quantity="other">Выпущено %1$d дня назад</item>
+</plurals>
+
+    <string name="categories__empty_state__no_categories">Нет категорий для показа</string>
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Смотреть все %d "</item>
+	<item quantity="few">" Смотреть все %d "</item>
+	<item quantity="many">" Смотреть все %d "</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета? Скачивайте приложения через людей рядом с вами!</string>
+    <string name="notification_title_single_ready_to_install">Готово к установке</string>
+    <string name="notification_title_single_install_error">Установка не удалась</string>
+    <string name="notification_content_single_downloading">Загрузка \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Загрузка обновления для \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Установка \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Успешно установлено</string>
+    <string name="notification_content_single_install_error">Установка не удалась</string>
+    <string name="notification_title_summary_update_available">Доступно обновление</string>
+    <string name="notification_title_summary_downloading">Загрузка…</string>
+    <string name="notification_title_summary_downloading_update">Загрузка обновления…</string>
+    <string name="notification_action_update">Обновить</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Обновлено %1$s дня назад</item>
+	<item quantity="few">Обновлено %1$s дня назад</item>
+	<item quantity="many">Обновлено %1$s дней назад</item>
+	<item quantity="other"/>
+</plurals>
+<string name="app_details_donate_prompt">%1$s создано %2$s. Купи им чашечку кофе!</string>
+
+    <string name="app_recommended_version_installed">Версия %1$s (Рекомендуемая)</string>
+    <string name="app__install_downloaded_update">Обновить</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Скачать обновления для %1$d приложения.</item>
+	<item quantity="few">Скачать обновления для %1$d приложений.</item>
+	<item quantity="many">Скачать обновления для %1$d приложений.</item>
+	<item quantity="other"/>
+</plurals>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Обновить %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Установить %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Загружается %1$s</string>
+    <string name="updates__tts__download_app">Скачать</string>
+    <string name="installed_app__updates_ignored">Обновления игнорируются</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Обновления игнорируются для версии %1$s</string>
+    <string name="main_menu__latest_apps">Новинки</string>
+    <string name="latest__empty_state__never_updated">Как только список приложений обновится, тут появятся самые свежие приложения</string>
+    <string name="latest__empty_state__no_enabled_repos">Как только Вы включите репозитории и позволите их обновлять, тут появятся свежие приложения</string>
+
+    <string name="antifeatures">Вредный функционал</string>
+    <string name="notification_summary_updates">%1$d обновлений</string>
+    <string name="notification_summary_installed">%1$d приложений установлено</string>
+    <string name="notification_title_summary_installing">Установка</string>
+    <string name="notification_title_summary_installed">Успешно установлено</string>
+    <string name="notification_title_summary_install_error">Установка не удалась</string>
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Посмотреть %1$d приложение в категории %2$s</item>
+    <item quantity="few">Посмотреть %1$d приложения в категории %2$s</item>
+    <item quantity="many">Посмотреть %1$d приложения в категории %2$s</item>
+	<item quantity="other">Посмотреть %1$d приложения в категории %2$s</item>
+</plurals>
+
     </resources>

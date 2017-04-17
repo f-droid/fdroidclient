@@ -151,4 +151,6 @@
     <string name="repo_exists_add_fingerprint">यह रेपो पहले से ही स्थापित है, इस से नयी कीय जानकारी जुड़ जायेगी|</string>
     <string name="repo_exists_enable">यह रेपो पहले से ही स्थापित है, पुष्टि करे की आप इसे फिर से चालू करना चाहते हैं|</string>
     <string name="repo_exists_and_enabled">आने वाली रेपो पहले से ही सैट उप और सक्षम है|</string>
+    <string name="pref_language_default">सिस्टम पूर्वनिर्धारित विकल्प</string>
+
     </resources>

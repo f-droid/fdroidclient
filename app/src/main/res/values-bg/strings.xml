@@ -6,13 +6,13 @@
   <string name="version">Версия</string>
   <string name="delete">Изтриване</string>
   <string name="enable_nfc_send">Активирай NFC изпращане…</string>
-  <string name="cache_downloaded">Кеширане на приложенията</string>
+  <string name="cache_downloaded">Запазване на кешираните приложения</string>
   <string name="updates">Актуализации</string>
   <string name="other">Други</string>
   <string name="update_interval">Проверка за актуализации</string>
   <string name="update_interval_zero">Без автоматично актуализиране на списъка с приложения</string>
   <string name="automatic_scan_wifi">Само през Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Актуализирането на списъка с приложения ще става само през Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Актуализирането на списъка с приложения ще става само през неограничени мрежи като Wi-Fi</string>
   <string name="notify">Известяване</string>
   <string name="notify_on">Известява при наличие на актуализация</string>
   <string name="system_installer">Инсталиране чрез системни разрешения</string>
@@ -65,10 +65,10 @@
   <string name="details_notinstalled">Не е инсталирано</string>
   <string name="antiadslist">Приложението съдържа реклами</string>
   <string name="antitracklist">Приложението следи и докладва активността ви</string>
-  <string name="antinonfreeadlist">Приложението промотира не-безплатни добавки</string>
-  <string name="antinonfreenetlist">Приложението промотира не-безплатни услуги</string>
-  <string name="antinonfreedeplist">Приложението зависи от други не-безплатни приложения</string>
-  <string name="antiupstreamnonfreelist">Изходният код не е напълно безплатен</string>
+  <string name="antinonfreeadlist">Приложението промотира несвободни добавки</string>
+  <string name="antinonfreenetlist">Приложението промотира несвободни услуги</string>
+  <string name="antinonfreedeplist">Приложението зависи от други несвободни приложения</string>
+  <string name="antiupstreamnonfreelist">Изходният код не е напълно свободен</string>
   <string name="display">Дисплей</string>
   <string name="expert">Експертен режим</string>
   <string name="expert_on">Показва допълнителна информация и настройки</string>
@@ -109,7 +109,8 @@
   <string name="repo_name">Име</string>
   <string name="repo_not_yet_updated">Хранилището не е било използвано. За да разгледате приложенията, които предлага, трябва да го активирате.</string>
   <string name="repo_confirm_delete_title">Изтриване на хранилището?</string>
-  <string name="repo_confirm_delete_body">Изтриването на хранилище значи, че приложенията от него няма да са налични в F-Droid.\nБележка: Всички вече инсталирани приложения ще останат на устройството.</string>
+  <string name="repo_confirm_delete_body">Изтриването на хранилище значи, че приложенията от него няма да са налични в F-Droid.
+Бележка: Всички вече инсталирани приложения ще останат на устройството.</string>
   <string name="repo_disabled_notification">\"%1$s\" е деактивирано. За да инсталирате приложения от него ще трябва да го активирате наново.</string>
   <string name="up_to_maxsdk">До %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
@@ -189,7 +190,7 @@
     <string name="empty_installed_app_list">Няма инсталирани приложения.\n\nСъществуващите приложения не са налични през F-Droid. Вероятна причина може да бъде неактуализирани хранилища или просто хранилищата не предлагат програмите, който ползвате.</string>
     <string name="empty_can_update_app_list">Всички приложения са актуализирани до последните налични версии.\n\nПоздравления! Ползвате актуалните версии на приложенията (или хранилищата не са актуализирани).</string>
 
-    <string name="install_confirm">Желаете ли приложението да бъде инсталирано? Ще има достъп до:</string>
+    <string name="install_confirm">има нужда от достъп до</string>
     <string name="install_confirm_update">Желаете ли актуализацията за съществуващото приложение да бъде инсталирана? Вашата информация няма да бъде загубена. Актуализираната версия ще има достъп до:</string>
     <string name="install_confirm_update_system">Желаете ли актуализацията за за вграденото приложение да бъде инсталирана? Вашата информация няма да бъде загубена. Актуализираната версия ще има достъп до:</string>
     <string name="install_confirm_update_no_perms">Желаете ли актуализацията за съществуващото приложение да бъде инсталирана? Вашата информация няма да бъде загубена. Актуализираната версия няма специални изисквания за достъп.</string>
@@ -314,6 +315,50 @@
     <string name="system_install_button_open">Отваряне на плъгина</string>
     <string name="system_install_post_fail_message">Инсталацията на F-Droid Privileged Extension плъгина се провали. Не всички варианти на Андроид поддържат метода на инсталация. За повече информация се консултирайте с бъг тракера на F-Droid.</string>
     <string name="linking_apks">Прилагане на APK файловете към хранилището…</string>
-    <string name="update_auto_download">Автоматично сваляне на актуализации</string>
+    <string name="update_auto_download">Автоматично изтегляне на актуализации</string>
     <string name="update_auto_install">Автоматично инсталиране на актуализации</string>
+    <string name="keep_install_history">Запазване на история за инсталираните приложения</string>
+    <string name="keep_install_history_summary">Запазване на дневник за всички инсталирани и деинсталирани приложение във F-Droid</string>
+    <string name="update_auto_download_summary">Обновленията се свалят автоматично и получавате известие за да ги инсталирате</string>
+    <string name="update_auto_install_summary">Сваляне и инсталиране на обновленията на заден фон</string>
+    <string name="app_details_donate_prompt_unknown_author">Почерпете разработчиците на %1$s с кафе!</string>
+    <string name="app_details_donate_prompt">%1$s е създадено от %2$s. Почерпете ги кафе!</string>
+
+    <string name="app_version_x_available">Версия %1$s е достъпна</string>
+    <string name="app_version_x_installed">Версия %1$s</string>
+    <string name="app_recommended_version_installed">Версия %1$s (Препоръчителна)</string>
+    <string name="app__newly_added">Ново</string>
+    <string name="app__install_downloaded_update">Обновяване</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Обновяване на %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Инсталиране на %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Изтегляне на %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s се инсталира успешно</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Пуснато преди %1$d ден</item>
+	<item quantity="other">Пуснато преди %1$d дни</item>
+</plurals>
+
+    <string name="installed_apps__activity_title">Инсталирани приложения</string>
+    <string name="installed_app__updates_ignored">Обновленията са отхвърлени</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Обновленията са отхвърлени за версия %1$s</string>
+    <string name="updates__tts__download_updates_for_all_apps">Изтегляне на всички обновления</string>
+
+    <string name="updates__hide_updateable_apps">Скриване на приложения</string>
+    <string name="updates__show_updateable_apps">Показване на приложения</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Изтегляне на обновление за %1$d приложение.</item>
+	<item quantity="other">Изтегляне на обновления за %1$d приложения.</item>
+</plurals>
+
+    <string name="versions">Версии</string>
+    <string name="clear_search">Изчистване на търсенето</string>
+
+    <string name="repositories_summary">Добавяне на допълнителни източници на приложения</string>
+    <string name="main_menu__latest_apps">Последни</string>
+    <string name="main_menu__categories">Категории</string>
+    <string name="main_menu__swap_nearby">Наблизо</string>
+
+    <string name="latest__empty_state__no_recent_apps">Няма намерени нови приложения</string>
     </resources>

@@ -327,7 +327,7 @@ corréu colos detalles p\'ayudar a iguar esti problema?</string>
     <string name="useTorSummary">Forcia la descaga\'l tráficu pente Tor pa una privacidá aumentada</string>
     <string name="swap_stopping_wifi">Parando Wi-Fi…</string>
     <string name="update_auto_download">Auto-baxar anovamientos</string>
-    <string name="update_auto_download_summary">Baxa de fondu los anovamientos de ficheros</string>
+    <string name="update_auto_download_summary">Los anovamientos báxense de fondu automáticamente y avisarásete pa instalaos</string>
     <string name="repo_provider">Repositoriu: %s</string>
 
     <string name="tap_to_install_format">Calca pa instalar %s</string>
@@ -359,7 +359,7 @@ corréu colos detalles p\'ayudar a iguar esti problema?</string>
     <string name="hide_anti_feature_apps_on">Abuxa les aplicaciones que rican carauterístiques de pagu, non llibres y de rastrexu</string>
     <string name="warning_no_internet">Nun pue anovase, ¿tas coneutáu a internet?</string>
     <string name="versions">Versiones</string>
-    <string name="app_details_donate_prompt">%1$s creólu %2$s. ¡Convídalu a un café!</string>
+    <string name="app_details_donate_prompt">%1$s creólu %2$s. ¡Convídalu a sidres!</string>
 
     <string name="app_version_x_available">Versión %1$s disponible</string>
     <string name="app_version_x_installed">Versión %1$s</string>
@@ -394,4 +394,47 @@ corréu colos detalles p\'ayudar a iguar esti problema?</string>
     <string name="notification_title_summary_downloading">Baxando…</string>
     <string name="notification_title_summary_downloading_update">Baxando anovamientu…</string>
     <string name="notification_title_summary_installing">Instalando</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Llanzóse hai %1$d día</item>
+	<item quantity="other">Llanzóse hai %1$d díes</item>
+</plurals>
+
+    <string name="app_list__name__downloading_in_progress">Baxando %1$s</string>
+    <string name="app__install_downloaded_update">Anovar</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Anovar %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Instalar %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s instalóse con ésitu</string>
+    <string name="updates__tts__download_app">Baxar</string>
+    <string name="updates__tts__download_updates_for_all_apps">Baxar tolos anovamientos</string>
+
+    <string name="updates__hide_updateable_apps">Anubrir aplicaciones</string>
+    <string name="updates__show_updateable_apps">Amosar aplicaciones</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Baxar anovamientu pa %1$d aplicación.</item>
+	<item quantity="other">Baxar anovamientos pa %1$d aplicaciones.</item>
+</plurals>
+
+    <plurals name="details_last_update_days">
+	<item quantity="one">Anovóse güei</item>
+	<item quantity="other">Anovóse hai %1$s día</item>
+</plurals>
+<string name="tts_category_name">Estaya %1$s</string>
+
+    <string name="notification_action_install">Instalar</string>
+
+    <string name="notification_action_cancel">Encaboxar</string>
+    <string name="notification_action_update">Anovar</string>
+    <string name="app_details_donate_prompt_unknown_author">¡Convida a los desendolcadores de %1$s a sidres!</string>
+    <string name="latest__empty_state__no_recent_apps">Nun s\'alcontraron aplicaciones recientes</string>
+    <string name="latest__empty_state__never_updated">Namái que s\'anueve\'l to llistáu aplicaciones, equí deberíen amosase les aplicaciones caberes</string>
+    <string name="latest__empty_state__no_enabled_repos">Namái qu\'habilites un repositoriu y lu dexes anovase, equí deberíen amosase les aplicaciones caberes</string>
+
+    <string name="categories__empty_state__no_categories">Nun hai estayes p\'amosar</string>
+
+    <string name="details_new_in_version">Nuevo na versión %s</string>
+
+    <string name="antifeatureswarning">Esta aplicación tien carauterístiques que quiciabes nun te presten.</string>
+    <string name="main_menu__latest_apps">Lo cabero</string>
     </resources>

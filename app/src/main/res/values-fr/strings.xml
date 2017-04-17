@@ -2,7 +2,7 @@
 <resources>
   <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez de nouveau après avoir désinstallé l\'ancienne application (attention : ceci effacera les données stockées par l\'application).</string>
   <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous quand même essayer de l\'installer ?</string>
-  <string name="installDowngrade">Vous essayez de revenir à une version antérieure de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous tout de même essayer de désinstaller les mises à jour ?</string>
+  <string name="installDowngrade">Vous essayez de revenir à une version antérieure de cette application. Cela peut causer des dysfonctionnements ou des pertes de données. Voulez-vous tout de même essayer de désinstaller les mises à jour ?</string>
   <string name="version">Version</string>
   <string name="delete">Supprimer</string>
   <string name="enable_nfc_send">Activer l\'envoi via NFC…</string>
@@ -440,10 +440,10 @@ détails des opérations en cours pour aider à résoudre ce problème ?</string
     <string name="preference_manage_installed_apps">Gère les applications installées</string>
 
 
-    <string name="details_new_in_version">Nouveauté de la version %s</string>
+    <string name="details_new_in_version">Nouveautés de la version %s</string>
 
-    <string name="antifeatureswarning">Cette application a des fonctionalités qui peuvent ne pas vous plaire.</string>
-    <string name="antifeatures">fonctionalités antagonistes</string>
+    <string name="antifeatureswarning">Cette application a des fonctionnalités qui peuvent ne pas vous plaire.</string>
+    <string name="antifeatures">Mauvaises fonctionnalités</string>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">" voir %d "</item>
 	<item quantity="other">" voir toutes %d "</item>
@@ -464,4 +464,10 @@ détails des opérations en cours pour aider à résoudre ce problème ?</string
 	<item quantity="one">Mis à jour il y a %1$s jour</item>
 	<item quantity="other">Mis à jour il y a %1$s jours</item>
 </plurals>
-</resources>
+<string name="latest__empty_state__no_recent_apps">Aucunes applications récentes trouvé</string>
+    <string name="categories__empty_state__no_categories">Aucune catégorie à afficher</string>
+
+    <string name="latest__empty_state__no_enabled_repos">Quand vous activez un dépôt et le mettez à jour, les dernières applis s\'affichent ici</string>
+
+    <string name="latest__empty_state__never_updated">Quand votre liste d\'applis est mise à jour, les dernières applis s\'affichent ici</string>
+    </resources>

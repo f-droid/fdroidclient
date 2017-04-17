@@ -464,4 +464,10 @@ https://developer.android.com/guide/topics/resources/string-resource.html#Plural
     <string name="nearby_splash__find_people_button">Trobeu persones del voltant</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambdues parts necessiten %1$s per poder usar la proximitat.</string>
 
+    <string name="latest__empty_state__no_recent_apps">Cap «app» recent trobada</string>
+    <string name="latest__empty_state__never_updated">Un cop s\'hagi actualitzat la vostra llista d\'«apps», les «apps» més noves s\'haurien de mostrar aquí</string>
+    <string name="latest__empty_state__no_enabled_repos">Un cop habiliteu i actualitzeu un repositori, les «apps» més noves s\'haurien de mostrar aquí</string>
+
+    <string name="categories__empty_state__no_categories">No hi ha cap categoria per mostrar</string>
+
     </resources>

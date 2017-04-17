@@ -464,7 +464,7 @@ com os detalhes para ajudar a corrigir o problema?</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes precisam de %1$s para usar perto.</string>
 
     <plurals name="details_last_update_days">
-	<item quantity="one">Atualizado hoje</item>
+	<item quantity="one">Atualizados %1$s dias atrás</item>
 	<item quantity="other">Atualizados %1$s dias atrás</item>
 </plurals>
 </resources>

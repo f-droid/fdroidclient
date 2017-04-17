@@ -406,8 +406,8 @@ Depes
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Fintzas si in custu casu sunt sa matessi cosa, sos documentos de Android narant chi est mègius dislindare a su mancu \"unu\" e \"àteros\": https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
-	<item quantity="other">" Càstia totu %d "</item>
+	<item quantity="one">Càstia totu %d</item>
+	<item quantity="other">Càstia totu %d</item>
 </plurals>
 
 <string name="clear_search">Inneta sa chirca</string>

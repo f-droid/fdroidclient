@@ -496,4 +496,7 @@
     <string name="nearby_splash__find_people_button">Знасці людзей паблізу</string>
     <string name="nearby_splash__both_parties_need_fdroid">Абодва бакі патрабуюць %1$s для выкарыстання паблізу.</string>
 
+    <string name="categories__empty_state__no_categories">Няма катэгорый для паказу</string>
+
+    <string name="latest__empty_state__no_recent_apps">Няма новых праграм</string>
     </resources>
