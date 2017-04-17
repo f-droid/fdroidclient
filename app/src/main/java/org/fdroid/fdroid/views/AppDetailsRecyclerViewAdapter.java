@@ -740,6 +740,11 @@ public class AppDetailsRecyclerViewAdapter
             updateExpandableItem(false);
             contentView.removeAllViews();
 
+            // Video link
+            if (uriIsSetAndCanBeOpened(app.video)) {
+                addLinkItemView(contentView, R.string.menu_video, R.drawable.ic_video, app.video);
+            }
+
             // Source button
             if (uriIsSetAndCanBeOpened(app.sourceCode)) {
                 addLinkItemView(contentView, R.string.menu_source, R.drawable.ic_source_code, app.sourceCode);

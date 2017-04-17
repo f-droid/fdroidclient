@@ -396,11 +396,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             }
         }
         // if key starts with Upper case, its set by humans
-        video = getLocalizedEntry(localized, localesToUse, "Video");
+        String value = getLocalizedEntry(localized, localesToUse, "Video");
+        if (!TextUtils.isEmpty(value)) {
+            video = value.split("\n", 1)[0];
+        }
         whatsNew = getLocalizedEntry(localized, localesToUse, "WhatsNew");
         // Name, Summary, Description existed before localization so they shouldn't replace
         // non-localized old data format with a null or blank string
-        String value = getLocalizedEntry(localized, localesToUse, "Name");
+        value = getLocalizedEntry(localized, localesToUse, "Name");
         if (!TextUtils.isEmpty(value)) {
             name = value;
         }
