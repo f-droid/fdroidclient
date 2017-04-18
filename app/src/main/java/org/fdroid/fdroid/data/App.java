@@ -373,7 +373,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     private void setLocalized(Map<String, Map<String, Object>> localized) { // NOPMD
         Locale defaultLocale = Locale.getDefault();
         String languageTag = defaultLocale.getLanguage();
-        String localeTag = languageTag + "-" + defaultLocale.getCountry();
+        String countryTag = defaultLocale.getCountry();
+        String localeTag;
+        if (TextUtils.isEmpty(countryTag)) {
+            localeTag = languageTag;
+        } else {
+            localeTag = languageTag + "-" + countryTag;
+        }
+
         Set<String> locales = localized.keySet();
         Set<String> localesToUse = new LinkedHashSet<>();
 
