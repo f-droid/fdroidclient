@@ -5,9 +5,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
-
-import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 public class PackageManagerCompat {
 

@@ -25,11 +25,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Build;
 import android.os.PatternMatcher;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.privileged.views.AppDiff;
@@ -137,6 +140,16 @@ public abstract class Installer {
             return null;
         }
 
+        try {
+            PackageManagerCompat.setInstaller(context, context.getPackageManager(), apk.packageName);
+        } catch (SecurityException e) {
+            Utils.debugLog(TAG, "Falling back to default installer for uninstall");
+            Intent intent = new Intent(context, DefaultInstallerActivity.class);
+            intent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
+            intent.putExtra(Installer.EXTRA_APK, apk);
+            return intent;
+        }
+
         Intent intent = new Intent(context, UninstallDialogActivity.class);
         intent.putExtra(Installer.EXTRA_APK, apk);
 
@@ -228,6 +241,19 @@ public abstract class Installer {
      *                    installation of that specific APK
      */
     public void installPackage(Uri localApkUri, Uri downloadUri) {
+        Uri sanitizedUri;
+
+        try {
+            // move apk file to private directory for installation and check hash
+            sanitizedUri = ApkFileProvider.getSafeUri(
+                    context, localApkUri, apk, supportsContentUri());
+        } catch (IOException e) {
+            Log.e(TAG, e.getMessage(), e);
+            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
+                    e.getMessage());
+            return;
+        }
+
         try {
             // verify that permissions of the apk file match the ones from the apk object
             ApkVerifier apkVerifier = new ApkVerifier(context, localApkUri, apk);
@@ -245,21 +271,16 @@ public abstract class Installer {
                 Log.e(TAG, e.getMessage(), e);
                 Log.e(TAG, "Falling back to AOSP DefaultInstaller!");
                 DefaultInstaller defaultInstaller = new DefaultInstaller(context, apk);
-                defaultInstaller.installPackageInternal(localApkUri, downloadUri);
+                // https://code.google.com/p/android/issues/detail?id=205827
+                if (Build.VERSION.SDK_INT >= 24) {
+                    // content scheme for N and above
+                    defaultInstaller.installPackageInternal(sanitizedUri, downloadUri);
+                } else {
+                    // file scheme for below N
+                    defaultInstaller.installPackageInternal(localApkUri, downloadUri);
+                }
                 return;
             }
-        }
-
-        Uri sanitizedUri;
-        try {
-            // move apk file to private directory for installation and check hash
-            sanitizedUri = ApkFileProvider.getSafeUri(
-                    context, localApkUri, apk, supportsContentUri());
-        } catch (IOException e) {
-            Log.e(TAG, e.getMessage(), e);
-            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
-                    e.getMessage());
-            return;
         }
 
         installPackageInternal(sanitizedUri, downloadUri);

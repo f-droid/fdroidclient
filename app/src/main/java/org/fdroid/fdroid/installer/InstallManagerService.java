@@ -338,7 +338,11 @@ public class InstallManagerService extends Service {
                         Apk apkComplete =  appUpdateStatusManager.getApk(downloadUrl);
 
                         if (apkComplete != null) {
-                            PackageManagerCompat.setInstaller(context, getPackageManager(), apkComplete.packageName);
+                            try {
+                                PackageManagerCompat.setInstaller(context, getPackageManager(), apkComplete.packageName);
+                            } catch (SecurityException e) {
+                                // Will happen if we fell back to DefaultInstaller for some reason.
+                            }
                         }
                         localBroadcastManager.unregisterReceiver(this);
                         break;

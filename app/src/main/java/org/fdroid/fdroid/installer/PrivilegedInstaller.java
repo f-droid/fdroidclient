@@ -31,10 +31,8 @@ import android.os.Build;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
-
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
 import org.fdroid.fdroid.privileged.IPrivilegedService;
@@ -395,10 +393,6 @@ public class PrivilegedInstaller extends Installer {
             }
         };
 
-        /*
-         * Set installer to the privileged extension
-         */
-        PackageManagerCompat.setInstaller(context, context.getPackageManager(), apk.packageName);
         Intent serviceIntent = new Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT);
         serviceIntent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME);
         context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
