@@ -5,9 +5,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
-
-import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 public class PackageManagerCompat {
 
@@ -29,8 +28,6 @@ public class PackageManagerCompat {
                 mPm.setInstallerPackageName(packageName, "org.fdroid.fdroid");
             }
             Utils.debugLog(TAG, "Installer package name for " + packageName + " set successfully");
-        } catch (SecurityException e) {
-            throw new SecurityException(e);
         } catch (Exception e) {
             // Many problems can occur:
             //  * App wasn't installed due to incompatibility
