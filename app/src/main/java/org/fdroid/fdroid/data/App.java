@@ -7,9 +7,12 @@ import android.content.pm.FeatureInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Environment;
+import android.os.LocaleList;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
@@ -383,14 +386,19 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
         Set<String> locales = localized.keySet();
         Set<String> localesToUse = new LinkedHashSet<>();
-
         if (locales.contains(localeTag)) {
             localesToUse.add(localeTag);
         }
-        for (String l : locales) {
-            if (l.startsWith(languageTag)) {
-                localesToUse.add(l);
-                break;
+        if (Build.VERSION.SDK_INT >= 24) {
+            LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
+            localesToUse.addAll(Arrays.asList(localeList.toLanguageTags().split(",")));
+        }
+        for (String toUse : localesToUse) {
+            for (String l : locales) {
+                if (l.startsWith(toUse.split("-")[0])) {
+                    localesToUse.add(l);
+                    break;
+                }
             }
         }
         if (locales.contains("en-US")) {
