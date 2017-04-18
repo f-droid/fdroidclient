@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="installIncompatible">נראה כי חבילה זו אינה תואמת למכשירך. להתקין אותה בכל מקרה?</string>
-    <string name="installDowngrade">הינך מנסה להנמיך את אפליקציה זו. פעולה שכזו עלולה לגרום לתפקוד לקוי ואף לאיבוד מידע. האם ברצונך לנסות להנמיך בכל מקרה?</string>
+    <string name="installDowngrade">הינך מנסה להנמיך את אפליקציה זו. פעולה שכזו עלולה לגרום לתפקוד לקוי ואף לאיבוד מידע.
+        האם ברצונך לנסות להנמיך בכל מקרה?
+    </string>
     <string name="version">גרסה</string>
     <string name="delete">מחק</string>
     <string name="enable_nfc_send">אפשר NFC Send…</string>
@@ -58,7 +60,9 @@
 
     <string name="repo_add_url">כתובת מאגר</string>
     <string name="repo_add_fingerprint">טביעת אצבע (רשות)</string>
-    <string name="repo_delete_to_overwrite">תחילה עליך למחוק את מאגר זה בטרם תעמוד לרשותך האפשרות להוסיף אחד עם מפתח אחר.</string>
+    <string name="repo_delete_to_overwrite">תחילה עליך למחוק את מאגר זה בטרם תעמוד לרשותך האפשרות להוסיף אחד עם מפתח
+        אחר.
+    </string>
     <string name="bad_fingerprint">טביעת אצבע רעה</string>
     <string name="invalid_url">אין זה URL תקין.</string>
     <string name="malformed_repo_uri">מתעלם מן URI מאגר פגום: %s</string>
@@ -131,8 +135,8 @@
     <string name="status_processing_xml_percent">כעת מעבד %2$s / %3$s (%4$d%%) מתוך %1$s</string>
     <string name="status_connecting_to_repo">כעת מתחבר אל\n%1$s</string>
     <string name="repos_unchanged">כל המאגרים הינם מעודכנים</string>
-        <string name="all_other_repos_fine">כל שאר המאגרים לא יצרו שגיאות.</string>
-        <string name="global_error_updating_repos">שגיאה במהלך עדכון: %s</string>
+    <string name="all_other_repos_fine">כל שאר המאגרים לא יצרו שגיאות.</string>
+    <string name="global_error_updating_repos">שגיאה במהלך עדכון: %s</string>
     <string name="no_permissions">אין הרשאות בשימוש.</string>
     <string name="no_handler_app">אין לך שום אפליקציה זמינה אשר מסוגלת להתמודד עם %s.</string>
     <string name="theme">ערכת עיצוב</string>
@@ -162,9 +166,15 @@
     <string name="category_Science_Education">חינוך ומדע</string>
     <string name="category_Security">אבטחה</string>
     <string name="category_System">מערכת</string>
-    <string name="empty_installed_app_list">אין אפליקציות מותקנות.\n\nאין אפליקציות מותקנות על מכשירך, אך אלו אינן זמינות מתוך F-Droid. זה אפשרי מפני שעליך לעדכן את המאגרים שלך, או שלמאגרים באמת אין את האפליקציות שלך זמינות.</string>
-    <string name="empty_available_app_list">אין אפליקציות בתוך קטגוריה זו.\n\nנסה לבחור קטגוריה אחרת או לעדכן את המאגרים שלך כדי להשיג רשימה רעננה של אפליקציות.</string>
-    <string name="empty_can_update_app_list">כל האפליקציות מעודכנות.\n\nברכותינו! כל האפליקציות שלך הינן מעודכנות (או שהמאגרים שלך אינם מעודכנים).</string>
+    <string name="empty_installed_app_list">אין אפליקציות מותקנות.\n\nאין אפליקציות מותקנות על מכשירך, אך אלו אינן
+        זמינות מתוך F-Droid. זה אפשרי מפני שעליך לעדכן את המאגרים שלך, או שלמאגרים באמת אין את האפליקציות שלך זמינות.
+    </string>
+    <string name="empty_available_app_list">אין אפליקציות בתוך קטגוריה זו.\n\nנסה לבחור קטגוריה אחרת או לעדכן את המאגרים
+        שלך כדי להשיג רשימה רעננה של אפליקציות.
+    </string>
+    <string name="empty_can_update_app_list">כל האפליקציות מעודכנות.\n\nברכותינו! כל האפליקציות שלך הינן מעודכנות (או
+        שהמאגרים שלך אינם מעודכנים).
+    </string>
 
     <string name="requesting_root_access_body">כעת מבקש גישת שורש…</string>
     <string name="root_access_denied_title">גישת שורש נאסרה</string>
@@ -172,15 +182,24 @@
     <string name="install_error_unknown">נכשל להתקין בשל שגיאה לא מוכרת</string>
     <string name="uninstall_error_unknown">נכשל לבטל התקנה בשל שגיאה לא מוכרת</string>
     <string name="system_install_denied_title">הרשאות מערכת נאסרו</string>
-    <string name="system_install_denied_body">אפשרות זו הינה זמינה רק כאשר F-Droid הינה מותקנת בתור אפליקציה מועדפת.</string>
+    <string name="system_install_denied_body">אפשרות זו הינה זמינה רק כאשר F-Droid הינה מותקנת בתור אפליקציה מועדפת.
+    </string>
     <string name="system_install_post_success">התקין בהצלחה הרחבת F-Droid מועדף</string>
     <string name="system_install_post_fail">התקנת הרחבת F-Droid מועדף נכשלה</string>
-    <string name="system_install_post_success_message">הרחבת F-Droid מועדף הותקנה בהצלחה בתור אפליקציה מועדפת. דבר זה מתיר לאפליקציה F-Droid להתקין, לשדרג ולהסיר התקנת אפליקציות בכוחות עצמה.</string>
-    <string name="system_install_post_fail_message">ההתקנה של הרחבת F-Droid מועדף נכשלה. שיטת ההתקנה אינה נתמכת על ידי כל הפצות Android, אנא פנה למערכת מעקב באגים של F-Droid לצורך מידע נוסף.</string>
+    <string name="system_install_post_success_message">הרחבת F-Droid מועדף הותקנה בהצלחה בתור אפליקציה מועדפת. דבר זה
+        מתיר לאפליקציה F-Droid להתקין, לשדרג ולהסיר התקנת אפליקציות בכוחות עצמה.
+    </string>
+    <string name="system_install_post_fail_message">ההתקנה של הרחבת F-Droid מועדף נכשלה. שיטת ההתקנה אינה נתמכת על ידי
+        כל הפצות Android, אנא פנה למערכת מעקב באגים של F-Droid לצורך מידע נוסף.
+    </string>
     <string name="system_install_installing">כעת מתקין…</string>
     <string name="system_install_uninstalling">כעת מבטל התקנה…</string>
     <string name="system_install_question">האם ברצונך להתקין את הרחבת F-Droid מועדף?</string>
-    <string name="system_install_warning_lollipop">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד 10 שניות והמכשיר יאותחל לאחר מכן.<b>שום ממשק משתמש</b> לא מוצג והמכשיר יאותחל לאחר מכן.</string>
+    <string name="system_install_warning_lollipop">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד
+        10 שניות והמכשיר יאותחל לאחר מכן.
+        <b>שום ממשק משתמש</b>
+        לא מוצג והמכשיר יאותחל לאחר מכן.
+    </string>
     <string name="system_uninstall">האם ברצונך לבטל את התקנת הרחבת F-Droid מועדף?</string>
     <string name="system_uninstall_button">בטל התקנה</string>
 
@@ -206,10 +225,10 @@
     <string name="uninstall_update_confirm">האם ברצונך להחליף את אפליקציה זו בגרסת היצרן?</string>
     <string name="uninstall_confirm">האם ברצונך לבטל את התקנת אפליקציה זו?</string>
 
-    <string name="perms_new_perm_prefix">חדש: </string>
+    <string name="perms_new_perm_prefix">חדש:</string>
     <string name="perms_description_app">מסופקת על ידי %1$s.</string>
     <string name="downloading">כעת מוריד…</string>
-<string name="app_name">F-Droid</string>
+    <string name="app_name">F-Droid</string>
 
     <string name="app_incompatible">לא תואמת</string>
     <string name="back">אחורה</string>
@@ -251,7 +270,7 @@
 
     <string name="theme_light">בהיר</string>
     <string name="theme_dark">אפל</string>
-<string name="unstable_updates">עדכונים לא יציבים</string>
+    <string name="unstable_updates">עדכונים לא יציבים</string>
     <string name="unstable_updates_summary">הצע עדכונים לגרסאות לא יציבות</string>
     <string name="about_source">קוד מקור</string>
     <string name="swap_nfc_title">גע כדי להחליף</string>
@@ -260,34 +279,57 @@
     <string name="swap_send_fdroid">שלח F-Droid</string>
     <string name="swap_confirm">אמת הֶחְלֵף</string>
     <string name="swap_qr_isnt_for_swap">קוד QR שסרקת לא נראה כמו קוד swap.</string>
-    <string name="swap_cant_send_no_bluetooth">לא מסוגל לשלוח את F-Droid, בשל העובדה כי Bluetooth אינו זמין על מכשיר זה.</string>
+    <string name="swap_cant_send_no_bluetooth">לא מסוגל לשלוח את F-Droid, בשל העובדה כי Bluetooth אינו זמין על מכשיר
+        זה.
+    </string>
     <string name="swap_not_enabled">הֶחְלֵף לא מאופשר</string>
     <string name="swap_not_enabled_description">בטרם ביצוע הֶחְלֵף, על מכשירך להיות נראה.</string>
 
     <string name="swap_intro">חבר והחלף אפליקציות עם אנשים בקרבתך.</string>
     <string name="swap_no_peers_nearby">לא היה ניתן למצוא אנשים בקרבת מקום כדי לבצע הֶחְלֵף עמם.</string>
-    <string name="swap_connection_misc_error">אירעה שגיאה במהלך התחברות להתקן, נראה כי אנחנו לא יכולים לבצע הֶחְלֵף עמו.</string>
-    <string name="SignatureMismatch">הגרסה החדשה חתומה בעזרת מפתח שונה מזה הישן. כדי להתקין את הגרסה החדשה, יש להסיר את הישנה תחילה. נא לבצע פעולה זו ולנסות שוב. (לתשומת לבך ביטול התקנה יסיר כל מידע פנימי אשר מאוחסן על ידי היישומון)</string>
+    <string name="swap_connection_misc_error">אירעה שגיאה במהלך התחברות להתקן, נראה כי אנחנו לא יכולים לבצע הֶחְלֵף
+        עמו.
+    </string>
+    <string name="SignatureMismatch">הגרסה החדשה חתומה בעזרת מפתח שונה מזה הישן. כדי להתקין את הגרסה החדשה, יש להסיר את
+        הישנה תחילה. נא לבצע פעולה זו ולנסות שוב. (לתשומת לבך ביטול התקנה יסיר כל מידע פנימי אשר מאוחסן על ידי היישומון)
+    </string>
     <string name="repo_exists_add_fingerprint">מאגר זה כבר מותקן, זה יוסיף מידע מפתח חדש.</string>
     <string name="repo_exists_enable">מאגר זה כבר מותקן, אמת כי ברצונך לאפשרו שוב.</string>
     <string name="repo_exists_and_enabled">המאגר הנכנס הינו מותקן ומאופשר כבר.</string>
     <string name="repo_fingerprint">טביעת אצבע של מפתח החתימה (SHA-256)</string>
-    <string name="unsigned_description">משמעות הדבר היא שלא היתה אפשרות לאמת את הרשימה של האפליקציות. עליך להיזהר מן אפליקציות אשר מורדות מתוך אינדקסים לא חתומים.</string>
+    <string name="unsigned_description">משמעות הדבר היא שלא היתה אפשרות לאמת את הרשימה של האפליקציות. עליך להיזהר מן
+        אפליקציות אשר מורדות מתוך אינדקסים לא חתומים.
+    </string>
     <string name="repo_not_yet_updated">מאגר זה לא נמצא בשימוש עדיין.
-יש לאפשר אותו כדי לצפות ביישומונים שהמאגר הזה מציע.</string>
+        יש לאפשר אותו כדי לצפות ביישומונים שהמאגר הזה מציע.
+    </string>
     <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי יישומונים מתוכו לא יהיו זמינים עוד מתוך F-Droid.
 
-הערה: כל היישומונים שהותקנו בעבר יישארו על המכשיר שלך.</string>
+        הערה: כל היישומונים שהותקנו בעבר יישארו על המכשיר שלך.
+    </string>
     <string name="repo_disabled_notification">נוטרל %1$s.
 
-עליך לאפשר שוב
- את המאגר זה כדי להתקין יישומונים מתוכו.</string>
-    <string name="not_on_same_wifi">המכשיר שלך אינו מצוי על גבי אותה רשת Wi-Fi כמו המאגר המקומי אשר הוספת עתה! נסה להצטרף לרשת זו: %s</string>
-    <string name="swap_join_same_wifi_desc">כדי לבצע הֶחְלֵף באמצעות Wi-Fi, וודא כי אתה נמצא על גבי אותה רשת. אם אין לך גישה לאותה הרשת, אחד מכם יכול ליצור Wi-Fi Hotspot.</string>
-    <string name="install_confirm_update">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? המידע הקיים שלך לא יאבד. האפליקציה המעודכנת תקבל גישה אל:</string>
-    <string name="install_confirm_update_system">האם ברצונך להתקין עדכון לאפליקציה מובנית (קרי, built-in)? המידע הקיים שלך לא יאבד. האפליקציה המעודכנת תקבל גישה אל:</string>
-    <string name="install_confirm_update_no_perms">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? המידע הקיים שלך לא יאבד. זו לא מצריכה שום גישה מיוחדת.</string>
-    <string name="install_confirm_update_system_no_perms">האם ברצונך להתקין עדכון לאפליקציה מובנית (קרי, built-in)? המידע הקיים שלך לא יאבד. זו לא מצריכה שום גישה מיוחדת.</string>
+        עליך לאפשר שוב
+        את המאגר זה כדי להתקין יישומונים מתוכו.
+    </string>
+    <string name="not_on_same_wifi">המכשיר שלך אינו מצוי על גבי אותה רשת Wi-Fi כמו המאגר המקומי אשר הוספת עתה! נסה
+        להצטרף לרשת זו: %s
+    </string>
+    <string name="swap_join_same_wifi_desc">כדי לבצע הֶחְלֵף באמצעות Wi-Fi, וודא כי אתה נמצא על גבי אותה רשת. אם אין לך
+        גישה לאותה הרשת, אחד מכם יכול ליצור Wi-Fi Hotspot.
+    </string>
+    <string name="install_confirm_update">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? המידע הקיים שלך לא יאבד. האפליקציה
+        המעודכנת תקבל גישה אל:
+    </string>
+    <string name="install_confirm_update_system">האם ברצונך להתקין עדכון לאפליקציה מובנית (קרי, built-in)? המידע הקיים
+        שלך לא יאבד. האפליקציה המעודכנת תקבל גישה אל:
+    </string>
+    <string name="install_confirm_update_no_perms">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? המידע הקיים שלך לא יאבד.
+        זו לא מצריכה שום גישה מיוחדת.
+    </string>
+    <string name="install_confirm_update_system_no_perms">האם ברצונך להתקין עדכון לאפליקציה מובנית (קרי, built-in)?
+        המידע הקיים שלך לא יאבד. זו לא מצריכה שום גישה מיוחדת.
+    </string>
     <string name="update_interval_zero">אין עדכוני רשימת אפליקציה אוטומטיים</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -310,7 +352,7 @@
     <string name="system_install_installing_rebooting">כעת מתקין ומאתחל…</string>
     <string name="system_install_warning">פעולה זו לוקחת עד 10 שניות.</string>
     <string name="theme_night">לילה</string>
-<string name="system_install_denied_permissions">ההרשאות המיוחדות לא הוענקו להרחבה! אנא צור bug report!</string>
+    <string name="system_install_denied_permissions">ההרשאות המיוחדות לא הוענקו להרחבה! אנא צור bug report!</string>
     <string name="login_title">נדרש אימות</string>
     <string name="login_name">שם משתמש</string>
     <string name="login_password">סיסמה</string>
@@ -329,9 +371,11 @@
     <string name="empty_search_can_update_app_list">אין אפליקציות מותקנות תואמות לצורך עדכון.</string>
 
     <string name="crash_dialog_title">‏F-Droid קרסה</string>
-    <string name="crash_dialog_text">אירעה שגיאה לא פצויה אשר אילצה את עצירת האפליקציה. האם ברצונך לדוור בדוא״ל את הפרטים כדי לעזור לפתור את הבעיה?</string>
+    <string name="crash_dialog_text">אירעה שגיאה לא פצויה אשר אילצה את עצירת האפליקציה. האם ברצונך לדוור בדוא״ל את
+        הפרטים כדי לעזור לפתור את הבעיה?
+    </string>
     <string name="crash_dialog_comment_prompt">באפשרותך להוסיף מידע והערות נוספים כאן:</string>
-<string name="repo_provider">מאגר: %s</string>
+    <string name="repo_provider">מאגר: %s</string>
 
     <string name="useTor">שימוש ב־Tor</string>
     <string name="useTorSummary">אילוץ העברת תעבורת העבודה דרך Tor להגברת הפרטיות</string>
@@ -344,4 +388,4 @@
 
     <string name="downloading_apk">כעת מוריד %1$s</string>
 
-    </resources>
+</resources>

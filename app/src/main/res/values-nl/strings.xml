@@ -1,171 +1,202 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="SignatureMismatch">De nieuwe versie is met een andere sleutel ondertekend dan de oude versie. Om de nieuwe versie te installeren, moet de oude eerst verwijderd worden. Probeer het daarna opnieuw. (Let op dat bij het verwijderen de data van de applicatie ook verwijderd wordt)</string>
-  <string name="installIncompatible">Dit pakket is niet compatibel met je apparaat. Wil je het alsnog proberen installeren?</string>
-  <string name="installDowngrade">Je probeert deze app te downgraden naar een oudere versie. Als je dit doet, functioneert de app mogelijk niet goed meer en kan je zelfs je gegevens verliezen. Wil je het alsnog proberen en de app downgraden?</string>
-  <string name="version">Versie</string>
-  <string name="delete">Verwijderen</string>
-  <string name="enable_nfc_send">Schakel versturen via NFC in…</string>
-  <string name="cache_downloaded">Bewaar tijdelijk opgeslagen apps</string>
-  <string name="updates">Updates</string>
-  <string name="other">Overig</string>
-  <string name="update_interval">Automatisch vernieuwingsinterval</string>
-  <string name="update_interval_zero">Applijsten worden niet automatisch vernieuwd</string>
-  <string name="automatic_scan_wifi">Alleen via Wi-Fi</string>
-  <string name="automatic_scan_wifi_on">Update alleen automatisch op verbinding zonder datalimiet zoals wifi</string>
-  <string name="notify">Updatemeldingen</string>
-  <string name="notify_on">Toon een melding wanneer er updates beschikbaar zijn</string>
-  <string name="system_installer">Extensie voor systeemrechten</string>
-  <string name="system_installer_on">Gebruik de extensie voor systeemrechten om pakketten te installeren, updaten en verwijderen</string>
-  <string name="local_repo_name">Naam van collectie gedeelde apps</string>
-  <string name="local_repo_name_summary">De geadverteerde titel van jouw collectie gedeelde apps: %s</string>
-  <string name="local_repo_https">Gebruik beveiligde verbinding</string>
-  <string name="local_repo_https_on">Gebruik versleutelde HTTPS:// verbinding voor gedeelde apps</string>
-  <string name="app_details">App-details</string>
-  <string name="no_such_app">Geen dergelijke app gevonden.</string>
-  <string name="about_title">Over F-Droid</string>
-  <string name="about_site">Website</string>
-  <string name="about_mail">E-mail</string>
-  <string name="about_version">Versie</string>
-  <string name="app_installed">Geïnstalleerd</string>
-  <string name="app_not_installed">Niet geïnstalleerd</string>
-  <string name="app_inst_known_source">Geïnstalleerd (van %s)</string>
-  <string name="app_inst_unknown_source">Geïnstalleerd (van onbekende bron)</string>
-  <string name="added_on">Toegevoegd op %s</string>
-  <string name="ok">Oké</string>
-  <string name="yes">Ja</string>
-  <string name="no">Nee</string>
-  <string name="repo_add_title">Nieuwe bron toevoegen</string>
-  <string name="repo_add_add">Toevoegen</string>
-  <string name="cancel">Annuleren</string>
-  <string name="enable">Inschakelen</string>
-  <string name="add_key">Sleutel toevoegen</string>
-  <string name="overwrite">Overschrijven</string>
-  <string name="fdroid_updates_available">F-Droid-updates beschikbaar</string>
-  <string name="bluetooth_activity_not_found">Geen Bluetooth-verzendmethode gevonden, kies er een!</string>
-  <string name="choose_bt_send">Kies Bluetooth-verzendmethode</string>
-  <string name="send_via_bluetooth">Versturen via Bluetooth</string>
-  <string name="repo_add_url">Bronadres</string>
-  <string name="repo_add_fingerprint">Vingerafdruk (optioneel)</string>
-  <string name="repo_exists_add_fingerprint">Deze bron is al ingesteld. Nieuwe sleutelinformatie zal worden toegevoegd.</string>
-  <string name="repo_exists_enable">Deze bron is al ingesteld. Bevestig dat je deze opnieuw wil inschakelen.</string>
-  <string name="repo_exists_and_enabled">De binnenkomende bron is al ingesteld en ingeschakeld.</string>
-  <string name="repo_delete_to_overwrite">Je moet deze bron eerst verwijderen voordat je er een kan toevoegen met een andere sleutel.</string>
-  <string name="malformed_repo_uri">Misvormde bron-URI %s genegeerd</string>
-  <string name="menu_update_repo">Bronnen bijwerken</string>
-  <string name="menu_manage">Bronnen</string>
-  <string name="menu_send_apk_bt">F-Droid delen via Bluetooth</string>
-  <string name="menu_about">Over</string>
-  <string name="menu_search">Zoeken</string>
-  <string name="menu_add_repo">Nieuwe bron</string>
-  <string name="menu_launch">Uitvoeren</string>
-  <string name="menu_share">Delen</string>
-  <string name="menu_install">Installeren</string>
-  <string name="menu_uninstall">Verwijderen</string>
-  <string name="menu_ignore_all">Negeer alle updates</string>
-  <string name="menu_ignore_this">Negeer deze update</string>
-  <string name="menu_website">Website</string>
-  <string name="menu_issues">Problemen</string>
-  <string name="menu_source">Broncode</string>
-  <string name="menu_upgrade">Bijwerken</string>
-  <string name="menu_donate">Doneer</string>
-  <string name="details_installed">Versie %s geïnstalleerd</string>
-  <string name="details_notinstalled">Niet geïnstalleerd</string>
-  <string name="antiadslist">Deze app bevat advertenties</string>
-  <string name="antitracklist">Deze app houdt je activiteiten bij en rapporteert ze</string>
-  <string name="antinonfreeadlist">Deze app promoot niet-vrije add-ons</string>
-  <string name="antinonfreenetlist">Deze app promoot niet-vrije netwerkdiensten</string>
-  <string name="antinonfreedeplist">Deze app vereist andere niet-vrije apps</string>
-  <string name="antiupstreamnonfreelist">De broncode stroomopwaarts is niet helemaal vrij (open-bron)</string>
-  <string name="display">Weergeven</string>
-  <string name="expert">Expertmodus</string>
-  <string name="expert_on">Toon extra informatie en schakel extra instellingen in</string>
-  <string name="search_hint">Zoek applicaties</string>
-  <string name="appcompatibility">Compatibiliteit van applicatie</string>
-  <string name="show_incompat_versions">Onverenigbare versies</string>
-  <string name="show_incompat_versions_on">Laat app-versies zien die niet geschikt zijn voor je apparaat</string>
-  <string name="rooted">Negeer root</string>
-  <string name="rooted_on">Verberg apps die root-permissies vereisen niet</string>
-  <string name="ignoreTouch">Negeer aanraakscherm</string>
-  <string name="ignoreTouch_on">Reken apps die een aanraakscreen vereisen altijd mee</string>
-  <string name="local_repo">Collectie gedeelde apps</string>
-  <string name="local_repo_running">F-Droid is klaar om apps te delen</string>
-  <string name="touch_to_configure_local_repo">Raak aan om details te bekijken en anderen gedeelde apps van jou te laten downloaden.</string>
-  <string name="deleting_repo">Bron verwijderen…</string>
-  <string name="adding_apks_format">%s aan gedeelde app-collectie toevoegen…</string>
-  <string name="writing_index_jar">Ondertekend indexbestand (index.jar) aan het schrijven…</string>
-  <string name="linking_apks">APK\'s aan collectie toevoegen…</string>
-  <string name="copying_icons">App-pictogrammen aan collectie toevoegen…</string>
-  <string name="icon">Pictogram</string>
-  <string name="next">Volgende</string>
-  <string name="skip">Overslaan</string>
-  <string name="proxy">Proxy</string>
-  <string name="enable_proxy_title">Schakel HTTP-proxy in</string>
-  <string name="enable_proxy_summary">Stel HTTP-proxy voor alle netwerkverbindingen in</string>
-  <string name="proxy_host">Proxyhost</string>
-  <string name="proxy_host_summary">Stel de hostnaam van de proxy in (bijv. 127.0.0.1)</string>
-  <string name="proxy_port">Proxypoort</string>
-  <string name="proxy_port_summary">Stel het poortnummer van de proxy in (bijv. 8118)</string>
-  <string name="status_download">%2$s / %3$s (%4$d%%) van
- %1$s
-worden gedownload</string>
-  <string name="status_connecting_to_repo">Verbinding maken met
-%1$s</string>
-  <string name="repos_unchanged">Alle bronnen zijn up-to-date</string>
-  <string name="all_other_repos_fine">Alle andere bronnen hebben geen fouten veroorzaakt.</string>
-  <string name="global_error_updating_repos">Fout tijdens update: %s</string>
-  <string name="no_permissions">Geen machtigingen in gebruik.</string>
-  <string name="no_handler_app">Je hebt geen app die %s kan verwerken.</string>
-  <string name="theme">Thema</string>
-  <string name="unsigned">Ongetekend</string>
-  <string name="unverified">Onbevestigd</string>
-  <string name="repo_num_apps">Aantal apps</string>
-  <string name="repo_fingerprint">Vingerafdruk van de bronondertekensleutel (SHA-256)</string>
-  <string name="repo_description">Beschrijving</string>
-  <string name="repo_last_update">Meest recente update</string>
-  <string name="repo_name">Naam</string>
-  <string name="unsigned_description">Dit betekent dat de lijst van applicaties niet geverifieerd kon worden. Je moet voorzichtig zijn met het downloaden van applicaties van ongetekende bronnen.</string>
-  <string name="repo_not_yet_updated">Deze bron is nog niet eerder gebruikt.
-Schakel ze in om de beschikbare apps te kunnen zien.</string>
-  <string name="unknown">Onbekend</string>
-  <string name="repo_confirm_delete_title">Softwarebron verwijderen?</string>
-  <string name="repo_confirm_delete_body">Als een bron verwijderd wordt, zijn de apps in die bron niet meer beschikbaar via F-Droid.
+    <string name="SignatureMismatch">De nieuwe versie is met een andere sleutel ondertekend dan de oude versie. Om de
+        nieuwe versie te installeren, moet de oude eerst verwijderd worden. Probeer het daarna opnieuw. (Let op dat bij
+        het verwijderen de data van de applicatie ook verwijderd wordt)
+    </string>
+    <string name="installIncompatible">Dit pakket is niet compatibel met je apparaat. Wil je het alsnog proberen
+        installeren?
+    </string>
+    <string name="installDowngrade">Je probeert deze app te downgraden naar een oudere versie. Als je dit doet,
+        functioneert de app mogelijk niet goed meer en kan je zelfs je gegevens verliezen. Wil je het alsnog proberen en
+        de app downgraden?
+    </string>
+    <string name="version">Versie</string>
+    <string name="delete">Verwijderen</string>
+    <string name="enable_nfc_send">Schakel versturen via NFC in…</string>
+    <string name="cache_downloaded">Bewaar tijdelijk opgeslagen apps</string>
+    <string name="updates">Updates</string>
+    <string name="other">Overig</string>
+    <string name="update_interval">Automatisch vernieuwingsinterval</string>
+    <string name="update_interval_zero">Applijsten worden niet automatisch vernieuwd</string>
+    <string name="automatic_scan_wifi">Alleen via Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Update alleen automatisch op verbinding zonder datalimiet zoals wifi</string>
+    <string name="notify">Updatemeldingen</string>
+    <string name="notify_on">Toon een melding wanneer er updates beschikbaar zijn</string>
+    <string name="system_installer">Extensie voor systeemrechten</string>
+    <string name="system_installer_on">Gebruik de extensie voor systeemrechten om pakketten te installeren, updaten en
+        verwijderen
+    </string>
+    <string name="local_repo_name">Naam van collectie gedeelde apps</string>
+    <string name="local_repo_name_summary">De geadverteerde titel van jouw collectie gedeelde apps: %s</string>
+    <string name="local_repo_https">Gebruik beveiligde verbinding</string>
+    <string name="local_repo_https_on">Gebruik versleutelde HTTPS:// verbinding voor gedeelde apps</string>
+    <string name="app_details">App-details</string>
+    <string name="no_such_app">Geen dergelijke app gevonden.</string>
+    <string name="about_title">Over F-Droid</string>
+    <string name="about_site">Website</string>
+    <string name="about_mail">E-mail</string>
+    <string name="about_version">Versie</string>
+    <string name="app_installed">Geïnstalleerd</string>
+    <string name="app_not_installed">Niet geïnstalleerd</string>
+    <string name="app_inst_known_source">Geïnstalleerd (van %s)</string>
+    <string name="app_inst_unknown_source">Geïnstalleerd (van onbekende bron)</string>
+    <string name="added_on">Toegevoegd op %s</string>
+    <string name="ok">Oké</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nee</string>
+    <string name="repo_add_title">Nieuwe bron toevoegen</string>
+    <string name="repo_add_add">Toevoegen</string>
+    <string name="cancel">Annuleren</string>
+    <string name="enable">Inschakelen</string>
+    <string name="add_key">Sleutel toevoegen</string>
+    <string name="overwrite">Overschrijven</string>
+    <string name="fdroid_updates_available">F-Droid-updates beschikbaar</string>
+    <string name="bluetooth_activity_not_found">Geen Bluetooth-verzendmethode gevonden, kies er een!</string>
+    <string name="choose_bt_send">Kies Bluetooth-verzendmethode</string>
+    <string name="send_via_bluetooth">Versturen via Bluetooth</string>
+    <string name="repo_add_url">Bronadres</string>
+    <string name="repo_add_fingerprint">Vingerafdruk (optioneel)</string>
+    <string name="repo_exists_add_fingerprint">Deze bron is al ingesteld. Nieuwe sleutelinformatie zal worden
+        toegevoegd.
+    </string>
+    <string name="repo_exists_enable">Deze bron is al ingesteld. Bevestig dat je deze opnieuw wil inschakelen.</string>
+    <string name="repo_exists_and_enabled">De binnenkomende bron is al ingesteld en ingeschakeld.</string>
+    <string name="repo_delete_to_overwrite">Je moet deze bron eerst verwijderen voordat je er een kan toevoegen met een
+        andere sleutel.
+    </string>
+    <string name="malformed_repo_uri">Misvormde bron-URI %s genegeerd</string>
+    <string name="menu_update_repo">Bronnen bijwerken</string>
+    <string name="menu_manage">Bronnen</string>
+    <string name="menu_send_apk_bt">F-Droid delen via Bluetooth</string>
+    <string name="menu_about">Over</string>
+    <string name="menu_search">Zoeken</string>
+    <string name="menu_add_repo">Nieuwe bron</string>
+    <string name="menu_launch">Uitvoeren</string>
+    <string name="menu_share">Delen</string>
+    <string name="menu_install">Installeren</string>
+    <string name="menu_uninstall">Verwijderen</string>
+    <string name="menu_ignore_all">Negeer alle updates</string>
+    <string name="menu_ignore_this">Negeer deze update</string>
+    <string name="menu_website">Website</string>
+    <string name="menu_issues">Problemen</string>
+    <string name="menu_source">Broncode</string>
+    <string name="menu_upgrade">Bijwerken</string>
+    <string name="menu_donate">Doneer</string>
+    <string name="details_installed">Versie %s geïnstalleerd</string>
+    <string name="details_notinstalled">Niet geïnstalleerd</string>
+    <string name="antiadslist">Deze app bevat advertenties</string>
+    <string name="antitracklist">Deze app houdt je activiteiten bij en rapporteert ze</string>
+    <string name="antinonfreeadlist">Deze app promoot niet-vrije add-ons</string>
+    <string name="antinonfreenetlist">Deze app promoot niet-vrije netwerkdiensten</string>
+    <string name="antinonfreedeplist">Deze app vereist andere niet-vrije apps</string>
+    <string name="antiupstreamnonfreelist">De broncode stroomopwaarts is niet helemaal vrij (open-bron)</string>
+    <string name="display">Weergeven</string>
+    <string name="expert">Expertmodus</string>
+    <string name="expert_on">Toon extra informatie en schakel extra instellingen in</string>
+    <string name="search_hint">Zoek applicaties</string>
+    <string name="appcompatibility">Compatibiliteit van applicatie</string>
+    <string name="show_incompat_versions">Onverenigbare versies</string>
+    <string name="show_incompat_versions_on">Laat app-versies zien die niet geschikt zijn voor je apparaat</string>
+    <string name="rooted">Negeer root</string>
+    <string name="rooted_on">Verberg apps die root-permissies vereisen niet</string>
+    <string name="ignoreTouch">Negeer aanraakscherm</string>
+    <string name="ignoreTouch_on">Reken apps die een aanraakscreen vereisen altijd mee</string>
+    <string name="local_repo">Collectie gedeelde apps</string>
+    <string name="local_repo_running">F-Droid is klaar om apps te delen</string>
+    <string name="touch_to_configure_local_repo">Raak aan om details te bekijken en anderen gedeelde apps van jou te
+        laten downloaden.
+    </string>
+    <string name="deleting_repo">Bron verwijderen…</string>
+    <string name="adding_apks_format">%s aan gedeelde app-collectie toevoegen…</string>
+    <string name="writing_index_jar">Ondertekend indexbestand (index.jar) aan het schrijven…</string>
+    <string name="linking_apks">APK\'s aan collectie toevoegen…</string>
+    <string name="copying_icons">App-pictogrammen aan collectie toevoegen…</string>
+    <string name="icon">Pictogram</string>
+    <string name="next">Volgende</string>
+    <string name="skip">Overslaan</string>
+    <string name="proxy">Proxy</string>
+    <string name="enable_proxy_title">Schakel HTTP-proxy in</string>
+    <string name="enable_proxy_summary">Stel HTTP-proxy voor alle netwerkverbindingen in</string>
+    <string name="proxy_host">Proxyhost</string>
+    <string name="proxy_host_summary">Stel de hostnaam van de proxy in (bijv. 127.0.0.1)</string>
+    <string name="proxy_port">Proxypoort</string>
+    <string name="proxy_port_summary">Stel het poortnummer van de proxy in (bijv. 8118)</string>
+    <string name="status_download">%2$s / %3$s (%4$d%%) van
+        %1$s
+        worden gedownload
+    </string>
+    <string name="status_connecting_to_repo">Verbinding maken met
+        %1$s
+    </string>
+    <string name="repos_unchanged">Alle bronnen zijn up-to-date</string>
+    <string name="all_other_repos_fine">Alle andere bronnen hebben geen fouten veroorzaakt.</string>
+    <string name="global_error_updating_repos">Fout tijdens update: %s</string>
+    <string name="no_permissions">Geen machtigingen in gebruik.</string>
+    <string name="no_handler_app">Je hebt geen app die %s kan verwerken.</string>
+    <string name="theme">Thema</string>
+    <string name="unsigned">Ongetekend</string>
+    <string name="unverified">Onbevestigd</string>
+    <string name="repo_num_apps">Aantal apps</string>
+    <string name="repo_fingerprint">Vingerafdruk van de bronondertekensleutel (SHA-256)</string>
+    <string name="repo_description">Beschrijving</string>
+    <string name="repo_last_update">Meest recente update</string>
+    <string name="repo_name">Naam</string>
+    <string name="unsigned_description">Dit betekent dat de lijst van applicaties niet geverifieerd kon worden. Je moet
+        voorzichtig zijn met het downloaden van applicaties van ongetekende bronnen.
+    </string>
+    <string name="repo_not_yet_updated">Deze bron is nog niet eerder gebruikt.
+        Schakel ze in om de beschikbare apps te kunnen zien.
+    </string>
+    <string name="unknown">Onbekend</string>
+    <string name="repo_confirm_delete_title">Softwarebron verwijderen?</string>
+    <string name="repo_confirm_delete_body">Als een bron verwijderd wordt, zijn de apps in die bron niet meer
+        beschikbaar via F-Droid.
 
-Let op: eerder geïnstalleerde apps blijven op je apparaat staan.</string>
-  <string name="repo_disabled_notification">%1$s uitgeschakeld.
+        Let op: eerder geïnstalleerde apps blijven op je apparaat staan.
+    </string>
+    <string name="repo_disabled_notification">%1$s uitgeschakeld.
 
-Je moet deze bron weer inschakelen indien je er apps van wil installeren.</string>
-  <string name="repo_added">F-Droid-bron %1$s opgeslagen.</string>
-  <string name="repo_searching_address">Zoeken naar F-Droid-bron op
-%1$s</string>
-  <string name="minsdk_or_later">%s of later</string>
-  <string name="up_to_maxsdk">Tot en met %s</string>
-  <string name="minsdk_up_to_maxsdk">%1$s tot en met %2$s</string>
-  <string name="not_on_same_wifi">Je apparaat zit niet op hetzelfde Wi-Fi-netwerk als de lokale bron die je zojuist hebt toegevoegd! Probeer om netwerk %s bij te treden</string>
-  <string name="requires_features">Benodigd: %1$s</string>
-  <string name="category_Development">Ontwikkeling</string>
-  <string name="category_Games">Spellen</string>
-  <string name="category_Internet">Internet</string>
-  <string name="category_Multimedia">Multimedia</string>
-  <string name="category_Navigation">Navigatie</string>
-  <string name="category_Phone_SMS">Telefoon &amp; SMS</string>
-  <string name="category_Reading">Lezen</string>
-  <string name="category_Science_Education">Wetenschap &amp; onderwijs</string>
-  <string name="category_Security">Beveiliging</string>
-  <string name="category_System">Systeem</string>
-  <string name="requesting_root_access_body">Root-toegang aanvragen…</string>
-  <string name="root_access_denied_title">Root-toegang geweigerd</string>
-  <string name="root_access_denied_body">Je Android-apparaat is niet geroot, of je hebt F-Droid geen root-toegang gegeven.</string>
-  <string name="system_install_denied_title">F-Droid extensie voor systeemrechten is niet beschikbaar</string>
-  <string name="system_install_denied_body">Deze optie is alleen beschikbaar als F-Droid als systeemapp geïnstalleerd is.</string>
-  <string name="swap_join_same_wifi">Verbind met hetzelfde Wi-Fi-netwerk als je vriend</string>
-  <string name="swap">Deel apps</string>
-  <string name="swap_no_wifi_network">Nog geen netwerkverbinding</string>
-  <string name="swap_view_available_networks">(Raak aan om een lijst van beschikbare netwerken te openen)</string>
-  <string name="open_qr_code_scanner">Open QR-codescanner</string>
-  <string name="swap_welcome">Welkom bij F-Droid!</string>
-  <string name="swap_confirm_connect">Wil je nu apps van %1$s ontvangen?</string>
-<string name="app_incompatible">Incompatibel</string>
+        Je moet deze bron weer inschakelen indien je er apps van wil installeren.
+    </string>
+    <string name="repo_added">F-Droid-bron %1$s opgeslagen.</string>
+    <string name="repo_searching_address">Zoeken naar F-Droid-bron op
+        %1$s
+    </string>
+    <string name="minsdk_or_later">%s of later</string>
+    <string name="up_to_maxsdk">Tot en met %s</string>
+    <string name="minsdk_up_to_maxsdk">%1$s tot en met %2$s</string>
+    <string name="not_on_same_wifi">Je apparaat zit niet op hetzelfde Wi-Fi-netwerk als de lokale bron die je zojuist
+        hebt toegevoegd! Probeer om netwerk %s bij te treden
+    </string>
+    <string name="requires_features">Benodigd: %1$s</string>
+    <string name="category_Development">Ontwikkeling</string>
+    <string name="category_Games">Spellen</string>
+    <string name="category_Internet">Internet</string>
+    <string name="category_Multimedia">Multimedia</string>
+    <string name="category_Navigation">Navigatie</string>
+    <string name="category_Phone_SMS">Telefoon &amp; SMS</string>
+    <string name="category_Reading">Lezen</string>
+    <string name="category_Science_Education">Wetenschap &amp; onderwijs</string>
+    <string name="category_Security">Beveiliging</string>
+    <string name="category_System">Systeem</string>
+    <string name="requesting_root_access_body">Root-toegang aanvragen…</string>
+    <string name="root_access_denied_title">Root-toegang geweigerd</string>
+    <string name="root_access_denied_body">Je Android-apparaat is niet geroot, of je hebt F-Droid geen root-toegang
+        gegeven.
+    </string>
+    <string name="system_install_denied_title">F-Droid extensie voor systeemrechten is niet beschikbaar</string>
+    <string name="system_install_denied_body">Deze optie is alleen beschikbaar als F-Droid als systeemapp geïnstalleerd
+        is.
+    </string>
+    <string name="swap_join_same_wifi">Verbind met hetzelfde Wi-Fi-netwerk als je vriend</string>
+    <string name="swap">Deel apps</string>
+    <string name="swap_no_wifi_network">Nog geen netwerkverbinding</string>
+    <string name="swap_view_available_networks">(Raak aan om een lijst van beschikbare netwerken te openen)</string>
+    <string name="open_qr_code_scanner">Open QR-codescanner</string>
+    <string name="swap_welcome">Welkom bij F-Droid!</string>
+    <string name="swap_confirm_connect">Wil je nu apps van %1$s ontvangen?</string>
+    <string name="app_incompatible">Incompatibel</string>
     <string name="links">Links</string>
 
     <string name="back">Terug</string>
@@ -183,12 +214,17 @@ Je moet deze bron weer inschakelen indien je er apps van wil installeren.</strin
 
     <string name="empty_installed_app_list">Geen apps geïnstalleerd.
 
-Er bevinden zich apps op dit apparaat, maar deze zijn niet beschikbaar via F-Droid. Het kan zijn dat je je bronnen moet bijwerken, of dat de bronnen geen van jouw apps beschikbaar stellen.</string>
-    <string name="empty_available_app_list">Geen apps in deze categorie.\n\nProbeer een andere categorie of werk je bronnen bij om de lijst van apps te verversen.</string>
+        Er bevinden zich apps op dit apparaat, maar deze zijn niet beschikbaar via F-Droid. Het kan zijn dat je je
+        bronnen moet bijwerken, of dat de bronnen geen van jouw apps beschikbaar stellen.
+    </string>
+    <string name="empty_available_app_list">Geen apps in deze categorie.\n\nProbeer een andere categorie of werk je
+        bronnen bij om de lijst van apps te verversen.
+    </string>
     <string name="empty_can_update_app_list">Alle apps zijn up-to-date.
 
-Gefeliciteerd! Al je apps zijn up-to-date
-(of je bronnen zijn verouderd).</string>
+        Gefeliciteerd! Al je apps zijn up-to-date
+        (of je bronnen zijn verouderd).
+    </string>
 
     <string name="install_error_unknown">Kon de app niet installeren door een onbekende fout</string>
     <string name="uninstall_error_unknown">Kon de app niet verwijderen door een onbekende fout</string>
@@ -197,8 +233,12 @@ Gefeliciteerd! Al je apps zijn up-to-date
     <string name="system_uninstall_button">Verwijderen</string>
 
     <string name="swap_nfc_title">Raak aan om te swappen</string>
-    <string name="swap_nfc_description">Als je vriend F-Droid heeft geïnstalleerd en NFC is ingeschakeld, hou dan de apparaten tegen elkaar.</string>
-    <string name="swap_join_same_wifi_desc">Om via Wi-Fi te swappen moeten jullie beiden op hetzelfde netwerk zitten. Indien je geen toegang hebt tot hetzelfde netwerk kan iemand een Wi-Fi-hotspot aanmaken.</string>
+    <string name="swap_nfc_description">Als je vriend F-Droid heeft geïnstalleerd en NFC is ingeschakeld, hou dan de
+        apparaten tegen elkaar.
+    </string>
+    <string name="swap_join_same_wifi_desc">Om via Wi-Fi te swappen moeten jullie beiden op hetzelfde netwerk zitten.
+        Indien je geen toegang hebt tot hetzelfde netwerk kan iemand een Wi-Fi-hotspot aanmaken.
+    </string>
     <string name="swap_join_this_hotspot">Help je vriend jouw hotspot bij te treden</string>
     <string name="swap_success">Swap succesvol!</string>
     <string name="swap_active_hotspot">%1$s (jouw hotspot)</string>
@@ -215,7 +255,9 @@ Gefeliciteerd! Al je apps zijn up-to-date
     <string name="category_Time">Tijd</string>
     <string name="category_Writing">Schrijven</string>
 
-    <string name="swap_scan_or_type_url">Een iemand moet de code scannen, of de URL van de ander in een browser openen.</string>
+    <string name="swap_scan_or_type_url">Een iemand moet de code scannen, of de URL van de ander in een browser
+        openen.
+    </string>
     <string name="swap_choose_apps">Kies apps</string>
     <string name="swap_scan_qr">Scan QR-code</string>
     <string name="swap_people_nearby">Personen nabij</string>
@@ -236,23 +278,33 @@ Gefeliciteerd! Al je apps zijn up-to-date
     <string name="swap_confirm">Bevestig swap</string>
     <string name="swap_qr_isnt_for_swap">De QR-code die je gescand hebt lijkt geen swap-code te zijn.</string>
     <string name="bluetooth_unavailable">Bluetooth niet beschikbaar</string>
-    <string name="swap_cant_send_no_bluetooth">Kon F-Droid niet verzenden omdat Bluetooth niet beschikbaar is op dit apparaat.</string>
+    <string name="swap_cant_send_no_bluetooth">Kon F-Droid niet verzenden omdat Bluetooth niet beschikbaar is op dit
+        apparaat.
+    </string>
     <string name="loading">Laden…</string>
-    <string name="swap_connection_misc_error">Er trad een fout op bij het verbinden met het apparaat, dus het lijkt erop dat we er niet mee kunnen swappen.</string>
+    <string name="swap_connection_misc_error">Er trad een fout op bij het verbinden met het apparaat, dus het lijkt erop
+        dat we er niet mee kunnen swappen.
+    </string>
     <string name="swap_not_enabled">Swap niet ingeschakeld</string>
-    <string name="swap_not_enabled_description">Voordat we kunnen swappen, moet het apparaat zichtbaar gemaakt worden.</string>
+    <string name="swap_not_enabled_description">Voordat we kunnen swappen, moet het apparaat zichtbaar gemaakt worden.
+    </string>
 
     <string name="install_confirm">heeft toegang nodig tot</string>
-    <string name="install_confirm_update">Wil je een update voor deze applicatie installeren? De bestaande gegevens zullen niet verloren gaan. De nieuwe versie van de applicatie zal toegang krijgen tot:</string>
+    <string name="install_confirm_update">Wil je een update voor deze applicatie installeren? De bestaande gegevens
+        zullen niet verloren gaan. De nieuwe versie van de applicatie zal toegang krijgen tot:
+    </string>
     <string name="install_confirm_update_system">Wil je een update voor deze ingebouwde applicatie installeren?
-De bestaande gegevens zullen niet verloren gaan.
-De nieuwe versie van de applicatie zal toegang krijgen tot:</string>
+        De bestaande gegevens zullen niet verloren gaan.
+        De nieuwe versie van de applicatie zal toegang krijgen tot:
+    </string>
     <string name="install_confirm_update_no_perms">Wil je een update voor deze bestaande applicatie installeren?
-De bestaande gegevens zullen niet verloren gaan.
-Het heeft geen speciale toegang nodig.</string>
+        De bestaande gegevens zullen niet verloren gaan.
+        Het heeft geen speciale toegang nodig.
+    </string>
     <string name="install_confirm_update_system_no_perms">Wil je een update voor deze ingebouwde applicatie installeren?
-De bestaande gegevens zullen niet verloren gaan.
-Het heeft geen speciale toegang nodig.</string>
+        De bestaande gegevens zullen niet verloren gaan.
+        Het heeft geen speciale toegang nodig.
+    </string>
     <string name="newPerms">Nieuw</string>
     <string name="allPerms">Alles</string>
     <string name="perm_costs_money">Dit kan geld kosten</string>
@@ -274,10 +326,12 @@ Het heeft geen speciale toegang nodig.</string>
 
     <string name="theme_light">Licht</string>
     <string name="theme_dark">Donker</string>
-<string name="unstable_updates">Instabiele versies</string>
+    <string name="unstable_updates">Instabiele versies</string>
     <string name="unstable_updates_summary">Geef updates weer voor instabiele versies</string>
     <string name="uninstall_system">Update/verwijder extensie voor systeemrechten</string>
-    <string name="uninstall_system_summary">Open detailscherm van extensie voor systeemrechten om deze te updaten of te verwijderen</string>
+    <string name="uninstall_system_summary">Open detailscherm van extensie voor systeemrechten om deze te updaten of te
+        verwijderen
+    </string>
     <string name="more">Meer</string>
     <string name="less">Minder</string>
 
@@ -287,28 +341,41 @@ Het heeft geen speciale toegang nodig.</string>
 
 
     <string name="status_download_unknown_size">%2$s van
-%1$s
-worden gedownload</string>
+        %1$s
+        worden gedownload
+    </string>
     <string name="permissions">Machtigingen</string>
     <string name="repo_details">Bron</string>
     <string name="repo_url">Adres</string>
-    <string name="system_install_denied_signature">De handtekening van de extensie klopt niet! Maak een bugrapport aan!</string>
-    <string name="system_install_denied_permissions">De extensie heeft geen systeemrechten gekregen! Maak een bugrapport aan!</string>
+    <string name="system_install_denied_signature">De handtekening van de extensie klopt niet! Maak een bugrapport
+        aan!
+    </string>
+    <string name="system_install_denied_permissions">De extensie heeft geen systeemrechten gekregen! Maak een bugrapport
+        aan!
+    </string>
     <string name="system_install_button_install">Installeren</string>
     <string name="system_install_button_open">Extensie openen</string>
     <string name="system_install_post_success">F-Droid extensie voor systeemrechten is succesvol geïnstalleerd</string>
     <string name="system_install_post_fail">Installatie van F-Droid extensie voor systeemrechten is mislukt</string>
-    <string name="system_install_post_success_message">F-Droid extensie voor systeemrechten is succesvol geïnstalleerd. F-Droid kan hiermee zelf apps installeren, updaten en verwijderen.</string>
-    <string name="system_install_post_fail_message">De installatie van de F-Droid extensie voor systeemrechten is mislukt. De installatiemethode wordt niet door alle Android-systemen ondersteund. Zie de F-Droid-bugtracker voor meer informatie.</string>
+    <string name="system_install_post_success_message">F-Droid extensie voor systeemrechten is succesvol geïnstalleerd.
+        F-Droid kan hiermee zelf apps installeren, updaten en verwijderen.
+    </string>
+    <string name="system_install_post_fail_message">De installatie van de F-Droid extensie voor systeemrechten is
+        mislukt. De installatiemethode wordt niet door alle Android-systemen ondersteund. Zie de F-Droid-bugtracker voor
+        meer informatie.
+    </string>
     <string name="system_install_installing_rebooting">Installeren en opnieuw opstarten…</string>
     <string name="system_install_question">Wil je de F-Droid extensie voor systeemrechten installeren?</string>
     <string name="system_install_warning">Dit kan tot 10 seconden duren.</string>
-    <string name="system_install_warning_lollipop">Dit kan tot 10 seconden duren en het apparaat zal <b>opnieuw opgestart</b> worden.</string>
+    <string name="system_install_warning_lollipop">Dit kan tot 10 seconden duren en het apparaat zal
+        <b>opnieuw opgestart</b>
+        worden.
+    </string>
     <string name="system_uninstall">Wil je de F-Droid extensie voor systeemrechten verwijderen?</string>
     <string name="download_error">Download mislukt</string>
 
     <string name="theme_night">Nacht</string>
-<string name="menu_settings">Instellingen</string>
+    <string name="menu_settings">Instellingen</string>
     <string name="login_name">Gebruikersnaam</string>
     <string name="login_password">Wachtwoord</string>
     <string name="repo_edit_credentials">Wachtwoord wijzigen</string>
@@ -328,19 +395,24 @@ worden gedownload</string>
 
     <string name="crash_dialog_title">F-Droid is gecrasht</string>
     <string name="crash_dialog_text">Een onverwachte fout is opgetreden waardoor de app is gestopt.
-Wil je de details over deze fout e-mailen om zo het probleem
-in de toekomst te helpen voorkomen?</string>
+        Wil je de details over deze fout e-mailen om zo het probleem
+        in de toekomst te helpen voorkomen?
+    </string>
     <string name="crash_dialog_comment_prompt">Je kan extra informatie en commentaar hier toevoegen:</string>
-<string name="repo_provider">Bron: %s</string>
+    <string name="repo_provider">Bron: %s</string>
 
     <string name="useTor">Gebruik Tor</string>
     <string name="useTorSummary">Forceer downloadverkeer door Tor heen voor betere privacy</string>
     <string name="swap_stopping_wifi">Wi-Fi stoppen…</string>
     <string name="update_auto_download">Download updates automatisch</string>
-    <string name="update_auto_download_summary">Updates worden automatisch gedownload in de achtergrond en er wordt een melding weergegeven om ze te installeren</string>
+    <string name="update_auto_download_summary">Updates worden automatisch gedownload in de achtergrond en er wordt een
+        melding weergegeven om ze te installeren
+    </string>
     <string name="tap_to_install_format">Raak aan om %s te installeren</string>
     <string name="tap_to_update_format">Raak aan om %s bij te werken</string>
-    <string name="system_install_not_supported">Installatie van de F-Droid extensie voor systeemrechten wordt op het moment niet ondersteund op Android 5.1 of later.</string>
+    <string name="system_install_not_supported">Installatie van de F-Droid extensie voor systeemrechten wordt op het
+        moment niet ondersteund op Android 5.1 of later.
+    </string>
 
     <string name="download_pending">Wachten op start van download…</string>
     <string name="install_error_notify_title">Fout bij het installeren van %s</string>
@@ -363,10 +435,13 @@ in de toekomst te helpen voorkomen?</string>
     <string name="update_auto_install">Updates automatisch installeren</string>
     <string name="update_auto_install_summary">Updates automatisch in de achtergrond downloaden en installeren</string>
     <string name="keep_install_history">Bewaar installatiegeschiedenis</string>
-    <string name="keep_install_history_summary">Bewaar een logbestand van alle installaties en verwijderingen in F-Droid</string>
+    <string name="keep_install_history_summary">Bewaar een logbestand van alle installaties en verwijderingen in
+        F-Droid
+    </string>
     <string name="warning_no_internet">Kan niet updaten, ben je verbonden met het internet?</string>
     <string name="versions">Versies</string>
-    <string name="app_details_donate_prompt_unknown_author">Bestel een kopje koffie voor de ontwikkelaars van %1$s!</string>
+    <string name="app_details_donate_prompt_unknown_author">Bestel een kopje koffie voor de ontwikkelaars van %1$s!
+    </string>
     <string name="app_details_donate_prompt">%1$s is gemaakt door %2$s. Bestel ze een kopje koffie!</string>
 
     <string name="app_version_x_available">Versie %1$s is beschikbaar</string>
@@ -379,9 +454,9 @@ in de toekomst te helpen voorkomen?</string>
     <string name="app_list__name__downloaded_and_ready_to_install">%1$s installeren</string>
     <string name="app_list__name__downloading_in_progress">%1$s wordt gedownload</string>
     <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">%1$d dag geleden uitgebracht</item>
-	<item quantity="other">%1$d dagen geleden uitgebracht</item>
-</plurals>
+        <item quantity="one">%1$d dag geleden uitgebracht</item>
+        <item quantity="other">%1$d dagen geleden uitgebracht</item>
+    </plurals>
 
     <string name="installed_apps__activity_title">Geïnstalleerde apps</string>
     <string name="installed_app__updates_ignored">Updates genegeerd</string>
@@ -393,9 +468,9 @@ in de toekomst te helpen voorkomen?</string>
     <string name="updates__show_updateable_apps">Apps weergeven</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Download updates voor %1$d app.</item>
-	<item quantity="other">Download updates voor %1$d apps.</item>
-</plurals>
+        <item quantity="one">Download updates voor %1$d app.</item>
+        <item quantity="other">Download updates voor %1$d apps.</item>
+    </plurals>
 
     <string name="clear_search">Zoekopdracht wissen</string>
 
@@ -413,9 +488,9 @@ in de toekomst te helpen voorkomen?</string>
     <string name="antifeatureswarning">Deze app heeft functionaliteit die je misschien niet leuk vindt.</string>
     <string name="antifeatures">Anti-functies</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Alle %d weergeven</item>
-	<item quantity="other">Alle %d weergeven</item>
-</plurals>
+        <item quantity="one">Alle %d weergeven</item>
+        <item quantity="other">Alle %d weergeven</item>
+    </plurals>
 
     <string name="notification_title_single_update_available">Update beschikbaar</string>
     <string name="notification_title_single_ready_to_install">Klaar voor installatie</string>
@@ -442,24 +517,29 @@ in de toekomst te helpen voorkomen?</string>
     <string name="tts_category_name">Categorie %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Geef de enige app weer in de categorie %2$s</item>
-	<item quantity="other">Geef alle %1$d apps weer in de categorie %2$s</item>
-</plurals>
+        <item quantity="one">Geef de enige app weer in de categorie %2$s</item>
+        <item quantity="other">Geef alle %1$d apps weer in de categorie %2$s</item>
+    </plurals>
 
     <plurals name="details_last_update_days">
-	<item quantity="one">%1$s dag geleden bijgewerkt</item>
-	<item quantity="other">%1$s dagen geleden bijgewerkt</item>
-</plurals>
-<string name="notification_title_summary_downloading_update">Update wordt gedownload…</string>
+        <item quantity="one">%1$s dag geleden bijgewerkt</item>
+        <item quantity="other">%1$s dagen geleden bijgewerkt</item>
+    </plurals>
+    <string name="notification_title_summary_downloading_update">Update wordt gedownload…</string>
     <string name="app_list__name__successfully_installed">%1$s geïnstalleerd</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Geen internet? Download dan apps van mensen nabij!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Geen internet? Download dan apps van mensen nabij!
+    </string>
     <string name="nearby_splash__find_people_button">Zoek mensen in de buurt</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide partijen moeten %1$s gebruiken.</string>
 
     <string name="latest__empty_state__no_recent_apps">Geen recente apps gevonden</string>
-    <string name="latest__empty_state__never_updated">Wanneer je applijst is bijgewerkt zullen de laatste nieuwe apps hier worden weergegeven</string>
-    <string name="latest__empty_state__no_enabled_repos">Wanneer je een pakketbron inschakelt en ze bijwerkt zullen de laatste nieuwe apps hier worden weergegeven</string>
+    <string name="latest__empty_state__never_updated">Wanneer je applijst is bijgewerkt zullen de laatste nieuwe apps
+        hier worden weergegeven
+    </string>
+    <string name="latest__empty_state__no_enabled_repos">Wanneer je een pakketbron inschakelt en ze bijwerkt zullen de
+        laatste nieuwe apps hier worden weergegeven
+    </string>
 
     <string name="categories__empty_state__no_categories">Geen categorieën om weer te geven</string>
 
-    </resources>
+</resources>

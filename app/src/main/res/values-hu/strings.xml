@@ -1,96 +1,114 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="SignatureMismatch">Az új verzió a régitől eltérő kulccsal van aláírva. Az új verzió telepítéséhez először el kell távolítani a régit. Kérem tegye meg ezt és próbálja újra. (Megjegyzendő, hogy az eltávolítás törli az alkalmazás minden tárolt adatát)</string>
-  <string name="installIncompatible">Úgy tűnik, ez a csomag nem kompatibilis a készülékkel. Ennek ellenére is megpróbálja telepíteni?</string>
-  <string name="installDowngrade">Ön megpróbálta régebbivel felülírni az alkalmazást. Ez hibás működést és az adatok elvesztését okozhatja. Ennek ellenére is megpróbálja telepíteni?</string>
-  <string name="version">Verzió</string>
-  <string name="cache_downloaded">Gyorsítótárazott appok megtartása</string>
-  <string name="updates">Frissítések</string>
-  <string name="other">egyéb</string>
-  <string name="update_interval">Auto. frissítés intervalluma</string>
-  <string name="update_interval_zero">Ne frissítsen automatikusan</string>
-  <string name="automatic_scan_wifi">Csak Wi-Fi-n</string>
-  <string name="automatic_scan_wifi_on">Automatikus alkalmazáslista-frissítés csak korlátlan kapcsolatokon, pl. Wi-Fi-n keresztül</string>
-  <string name="notify">Frissítési értesítések</string>
-  <string name="notify_on">Értesít ha frissítés érhető el</string>
-  <string name="app_details">App részletei</string>
-  <string name="no_such_app">Nem található ilyen app.</string>
-  <string name="about_title">Az F-Droid</string>
-  <string name="about_site">Weboldal</string>
-  <string name="about_mail">E-mail</string>
-  <string name="about_version">Verzió</string>
-  <string name="app_installed">Telepítve</string>
-  <string name="app_not_installed">Nincs telepítve</string>
-  <string name="added_on">Hozzáadva %s</string>
-  <string name="ok">Oké</string>
-  <string name="yes">Igen</string>
-  <string name="no">Nem</string>
-  <string name="repo_add_title">Új repo hozzáadása</string>
-  <string name="repo_add_add">Hozzáad</string>
-  <string name="cancel">Mégsem</string>
-  <string name="enable">Engedélyez</string>
-  <string name="add_key">Kulcs hozzáadás</string>
-  <string name="overwrite">Felülírás</string>
-  <string name="fdroid_updates_available">F-Droid frissítés érhető el</string>
-  <string name="repo_add_url">Repo cím</string>
-  <string name="repo_add_fingerprint">Ujjlenyomat (opcionális)</string>
-  <string name="repo_exists_add_fingerprint">Ez a repo már be van állítva, ez új kulcs információt fog hozzáadni.</string>
-  <string name="repo_exists_enable">Ez a repo már be van állítva, erősítse meg az újraengedélyezését.</string>
-  <string name="repo_exists_and_enabled">A fogadott repo már telepítve és engedélyezve van.</string>
-  <string name="repo_delete_to_overwrite">Előbb törölnie kell ezt a repót, mielőtt hozzáad egyet eltérő kulccsal.</string>
-  <string name="menu_update_repo">Repo-k frissítése</string>
-  <string name="menu_manage">Repo-k kezelése</string>
-  <string name="menu_about">Rólunk</string>
-  <string name="menu_search">Keresés</string>
-  <string name="menu_add_repo">Új repository</string>
-  <string name="menu_launch">Indítás</string>
-  <string name="menu_share">Megoszt</string>
-  <string name="menu_install">Telepít</string>
-  <string name="menu_uninstall">Eltávolít</string>
-  <string name="menu_ignore_all">Mellőz minden frissítést</string>
-  <string name="menu_ignore_this">Ezt a frissítést mellőzi</string>
-  <string name="menu_website">Weboldal</string>
-  <string name="menu_issues">Kérdések</string>
-  <string name="menu_source">Forráskód</string>
-  <string name="menu_upgrade">Frissítés</string>
-  <string name="menu_donate">Adomány</string>
-  <string name="details_installed">%s verzió telepítve</string>
-  <string name="details_notinstalled">Nincs telepítve</string>
-  <string name="antiadslist">Az alkalmazás reklámot tartalmaz</string>
-  <string name="antitracklist">Az alkalmazás nyomon követi és jelenti a tevékenységeit</string>
-  <string name="antinonfreeadlist">Az alkalmazás nem szabad kiegészítőket támogat</string>
-  <string name="antinonfreenetlist">Az alkalmazás nem ingyenes hálózati szolgáltatásokat támogat</string>
-  <string name="antinonfreedeplist">Az alkalmazás egyéb, nem szabad alkalmazásoktól függ</string>
-  <string name="antiupstreamnonfreelist">Az upstream forráskód nem teljesen szabad</string>
-  <string name="display">Megjelenés</string>
-  <string name="expert">Szakértő mód</string>
-  <string name="expert_on">Extra infókat mutat és extra beállításokat engedélyez</string>
-  <string name="search_hint">Alkalmazások keresése</string>
-  <string name="appcompatibility">App kompatibilitás</string>
-  <string name="show_incompat_versions">Inkompatibilis verzió</string>
-  <string name="show_incompat_versions_on">Megjeleníti, ha az app verzió nem kompatibilis a készülékkel</string>
-  <string name="rooted">Root ignorálása</string>
-  <string name="rooted_on">Nem szürkíti ki a root jogot igénylő alkalmazásokat</string>
-  <string name="ignoreTouch">Érintőképernyő ignorálása</string>
-  <string name="ignoreTouch_on">Mindig tartalmazza az érintőképernyőt igénylő alkalmazásokat</string>
-  <string name="status_download">Letöltés\n%2$s / %3$s (%4$d%%), forrás:\n%1$s</string>
-  <string name="status_connecting_to_repo">Kapcsolódás ehhez:\n%1$s</string>
-  <string name="no_permissions">Nincsenek engedélyei.</string>
-  <string name="no_handler_app">Nincs elérhető app, ami képes ezt kezelni: %s.</string>
-  <string name="theme">Téma</string>
-  <string name="repo_not_yet_updated">Ezt a repót még nem használta.
-Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
-  <string name="repo_confirm_delete_body">Egy tároló törlése azt jelenti, hogy a belőle származó alkalmazások nem lesznek többé elérhetőek az F-Droidban.\n\nMegjegyzés: Minden korábban telepített alkalmazás az eszközön marad.</string>
-  <string name="repo_disabled_notification">%1$s letiltva.\n\nÚjra kell majd engedélyezni a tárolót, hogy appokat telepíthessen belőle.</string>
-  <string name="minsdk_or_later">Android %s vagy későbbi</string>
-<string name="delete">Törlés</string>
+    <string name="SignatureMismatch">Az új verzió a régitől eltérő kulccsal van aláírva. Az új verzió telepítéséhez
+        először el kell távolítani a régit. Kérem tegye meg ezt és próbálja újra. (Megjegyzendő, hogy az eltávolítás
+        törli az alkalmazás minden tárolt adatát)
+    </string>
+    <string name="installIncompatible">Úgy tűnik, ez a csomag nem kompatibilis a készülékkel. Ennek ellenére is
+        megpróbálja telepíteni?
+    </string>
+    <string name="installDowngrade">Ön megpróbálta régebbivel felülírni az alkalmazást. Ez hibás működést és az adatok
+        elvesztését okozhatja. Ennek ellenére is megpróbálja telepíteni?
+    </string>
+    <string name="version">Verzió</string>
+    <string name="cache_downloaded">Gyorsítótárazott appok megtartása</string>
+    <string name="updates">Frissítések</string>
+    <string name="other">egyéb</string>
+    <string name="update_interval">Auto. frissítés intervalluma</string>
+    <string name="update_interval_zero">Ne frissítsen automatikusan</string>
+    <string name="automatic_scan_wifi">Csak Wi-Fi-n</string>
+    <string name="automatic_scan_wifi_on">Automatikus alkalmazáslista-frissítés csak korlátlan kapcsolatokon, pl.
+        Wi-Fi-n keresztül
+    </string>
+    <string name="notify">Frissítési értesítések</string>
+    <string name="notify_on">Értesít ha frissítés érhető el</string>
+    <string name="app_details">App részletei</string>
+    <string name="no_such_app">Nem található ilyen app.</string>
+    <string name="about_title">Az F-Droid</string>
+    <string name="about_site">Weboldal</string>
+    <string name="about_mail">E-mail</string>
+    <string name="about_version">Verzió</string>
+    <string name="app_installed">Telepítve</string>
+    <string name="app_not_installed">Nincs telepítve</string>
+    <string name="added_on">Hozzáadva %s</string>
+    <string name="ok">Oké</string>
+    <string name="yes">Igen</string>
+    <string name="no">Nem</string>
+    <string name="repo_add_title">Új repo hozzáadása</string>
+    <string name="repo_add_add">Hozzáad</string>
+    <string name="cancel">Mégsem</string>
+    <string name="enable">Engedélyez</string>
+    <string name="add_key">Kulcs hozzáadás</string>
+    <string name="overwrite">Felülírás</string>
+    <string name="fdroid_updates_available">F-Droid frissítés érhető el</string>
+    <string name="repo_add_url">Repo cím</string>
+    <string name="repo_add_fingerprint">Ujjlenyomat (opcionális)</string>
+    <string name="repo_exists_add_fingerprint">Ez a repo már be van állítva, ez új kulcs információt fog hozzáadni.
+    </string>
+    <string name="repo_exists_enable">Ez a repo már be van állítva, erősítse meg az újraengedélyezését.</string>
+    <string name="repo_exists_and_enabled">A fogadott repo már telepítve és engedélyezve van.</string>
+    <string name="repo_delete_to_overwrite">Előbb törölnie kell ezt a repót, mielőtt hozzáad egyet eltérő kulccsal.
+    </string>
+    <string name="menu_update_repo">Repo-k frissítése</string>
+    <string name="menu_manage">Repo-k kezelése</string>
+    <string name="menu_about">Rólunk</string>
+    <string name="menu_search">Keresés</string>
+    <string name="menu_add_repo">Új repository</string>
+    <string name="menu_launch">Indítás</string>
+    <string name="menu_share">Megoszt</string>
+    <string name="menu_install">Telepít</string>
+    <string name="menu_uninstall">Eltávolít</string>
+    <string name="menu_ignore_all">Mellőz minden frissítést</string>
+    <string name="menu_ignore_this">Ezt a frissítést mellőzi</string>
+    <string name="menu_website">Weboldal</string>
+    <string name="menu_issues">Kérdések</string>
+    <string name="menu_source">Forráskód</string>
+    <string name="menu_upgrade">Frissítés</string>
+    <string name="menu_donate">Adomány</string>
+    <string name="details_installed">%s verzió telepítve</string>
+    <string name="details_notinstalled">Nincs telepítve</string>
+    <string name="antiadslist">Az alkalmazás reklámot tartalmaz</string>
+    <string name="antitracklist">Az alkalmazás nyomon követi és jelenti a tevékenységeit</string>
+    <string name="antinonfreeadlist">Az alkalmazás nem szabad kiegészítőket támogat</string>
+    <string name="antinonfreenetlist">Az alkalmazás nem ingyenes hálózati szolgáltatásokat támogat</string>
+    <string name="antinonfreedeplist">Az alkalmazás egyéb, nem szabad alkalmazásoktól függ</string>
+    <string name="antiupstreamnonfreelist">Az upstream forráskód nem teljesen szabad</string>
+    <string name="display">Megjelenés</string>
+    <string name="expert">Szakértő mód</string>
+    <string name="expert_on">Extra infókat mutat és extra beállításokat engedélyez</string>
+    <string name="search_hint">Alkalmazások keresése</string>
+    <string name="appcompatibility">App kompatibilitás</string>
+    <string name="show_incompat_versions">Inkompatibilis verzió</string>
+    <string name="show_incompat_versions_on">Megjeleníti, ha az app verzió nem kompatibilis a készülékkel</string>
+    <string name="rooted">Root ignorálása</string>
+    <string name="rooted_on">Nem szürkíti ki a root jogot igénylő alkalmazásokat</string>
+    <string name="ignoreTouch">Érintőképernyő ignorálása</string>
+    <string name="ignoreTouch_on">Mindig tartalmazza az érintőképernyőt igénylő alkalmazásokat</string>
+    <string name="status_download">Letöltés\n%2$s / %3$s (%4$d%%), forrás:\n%1$s</string>
+    <string name="status_connecting_to_repo">Kapcsolódás ehhez:\n%1$s</string>
+    <string name="no_permissions">Nincsenek engedélyei.</string>
+    <string name="no_handler_app">Nincs elérhető app, ami képes ezt kezelni: %s.</string>
+    <string name="theme">Téma</string>
+    <string name="repo_not_yet_updated">Ezt a repót még nem használta.
+        Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.
+    </string>
+    <string name="repo_confirm_delete_body">Egy tároló törlése azt jelenti, hogy a belőle származó alkalmazások nem
+        lesznek többé elérhetőek az F-Droidban.\n\nMegjegyzés: Minden korábban telepített alkalmazás az eszközön marad.
+    </string>
+    <string name="repo_disabled_notification">%1$s letiltva.\n\nÚjra kell majd engedélyezni a tárolót, hogy appokat
+        telepíthessen belőle.
+    </string>
+    <string name="minsdk_or_later">Android %s vagy későbbi</string>
+    <string name="delete">Törlés</string>
     <string name="app_name">F-Droid</string>
 
     <string name="enable_nfc_send">NFC küldés engedélyezése…</string>
     <string name="unstable_updates">Instabil frissítések</string>
     <string name="unstable_updates_summary">Frissítések ajánlása instabil verziókra</string>
     <string name="system_installer">Kiváltságos Kiterjesztés</string>
-    <string name="system_installer_on">Az F-Droid Kiváltságos Kiterjesztésének használata csomagok telepítéséhez, frissítéséhez és eltávolításához</string>
+    <string name="system_installer_on">Az F-Droid Kiváltságos Kiterjesztésének használata csomagok telepítéséhez,
+        frissítéséhez és eltávolításához
+    </string>
     <string name="local_repo_name">Helyi repo neve</string>
     <string name="local_repo_name_summary">A helyi repód közzétett címe: %s</string>
     <string name="local_repo_https">Biztonságos kapcsolat használata</string>
@@ -148,7 +166,7 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
     <string name="repo_details">Tároló</string>
     <string name="update_notification_title">Tárolók frissítése</string>
     <string name="repos_unchanged">Minden tároló naprakész</string>
-        <string name="repo_url">Cím</string>
+    <string name="repo_url">Cím</string>
     <string name="repo_num_apps">Appok száma</string>
     <string name="repo_fingerprint">Aláírókulcs ujjlenyomata (SHA-256)</string>
     <string name="repo_description">Leírás</string>
@@ -179,9 +197,16 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
     <string name="category_Time">Idő</string>
     <string name="category_Writing">Írás</string>
 
-    <string name="empty_installed_app_list">Nincs telepített app.\n\nVannak appok a készülékén, de azok nem érhetők el az F-Droidból. Ez lehet azért, mert frissíteni kell a tárolókat, vagy mert a tárolókban valóban nem szerepelnek az appjai.</string>
-    <string name="empty_available_app_list">Nincs app ebben a kategóriában.\n\nPróbáljon kiválasztani egy másik kategóriát vagy frissíteni a tárolókat a friss applista megszerzéséhez.</string>
-    <string name="empty_can_update_app_list">Minden app naprakész.\n\nGratulálunk! Minden appja naprakész (vagy a tárolói elavultak).</string>
+    <string name="empty_installed_app_list">Nincs telepített app.\n\nVannak appok a készülékén, de azok nem érhetők el
+        az F-Droidból. Ez lehet azért, mert frissíteni kell a tárolókat, vagy mert a tárolókban valóban nem szerepelnek
+        az appjai.
+    </string>
+    <string name="empty_available_app_list">Nincs app ebben a kategóriában.\n\nPróbáljon kiválasztani egy másik
+        kategóriát vagy frissíteni a tárolókat a friss applista megszerzéséhez.
+    </string>
+    <string name="empty_can_update_app_list">Minden app naprakész.\n\nGratulálunk! Minden appja naprakész (vagy a
+        tárolói elavultak).
+    </string>
     <string name="empty_search_installed_app_list">Nincs találat a telepített alkalmazások között.</string>
     <string name="empty_search_available_app_list">Nincs találat az elérhető alkalmazások között.</string>
     <string name="empty_search_can_update_app_list">Nincs találat a frissítések között.</string>
@@ -195,15 +220,27 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
     <string name="system_install_installing_rebooting">Telepítés és újraindítás…</string>
     <string name="system_install_uninstalling">Eltávolítás…</string>
     <string name="system_install_warning">Ez akár 10 másodpercet is igénybe vehet.</string>
-    <string name="system_install_warning_lollipop">Ez akár 10 másodpercet is igénybe vehet, és az eszköz <b>újra lesz indítva</b> utána.</string>
+    <string name="system_install_warning_lollipop">Ez akár 10 másodpercet is igénybe vehet, és az eszköz
+        <b>újra lesz indítva</b>
+        utána.
+    </string>
     <string name="system_uninstall_button">Eltávolítás</string>
 
     <string name="loading">Betöltés…</string>
     <string name="install_confirm">a következőkhöz szeretne hozzáférni:</string>
-    <string name="install_confirm_update">Szeretne telepíteni egy frissítést a meglévő alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a következőkhöz kap hozzáférést:</string>
-    <string name="install_confirm_update_system">Szeretne telepíteni egy frissítést ehhez a beépített alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a következőkhöz kap hozzáférést:</string>
-    <string name="install_confirm_update_no_perms">Szeretne telepíteni egy frissítést a meglévő alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a nem igényel semmilyen különleges hozzáférést.</string>
-    <string name="install_confirm_update_system_no_perms">Szeretne telepíteni egy frissítést ehhez a beépített alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a nem igényel semmilyen különleges hozzáférést.</string>
+    <string name="install_confirm_update">Szeretne telepíteni egy frissítést a meglévő alkalmazáshoz? Az adatai nem
+        fognak elveszni. A frissített alkalmazás a következőkhöz kap hozzáférést:
+    </string>
+    <string name="install_confirm_update_system">Szeretne telepíteni egy frissítést ehhez a beépített alkalmazáshoz? Az
+        adatai nem fognak elveszni. A frissített alkalmazás a következőkhöz kap hozzáférést:
+    </string>
+    <string name="install_confirm_update_no_perms">Szeretne telepíteni egy frissítést a meglévő alkalmazáshoz? Az adatai
+        nem fognak elveszni. A frissített alkalmazás a nem igényel semmilyen különleges hozzáférést.
+    </string>
+    <string name="install_confirm_update_system_no_perms">Szeretne telepíteni egy frissítést ehhez a beépített
+        alkalmazáshoz? Az adatai nem fognak elveszni. A frissített alkalmazás a nem igényel semmilyen különleges
+        hozzáférést.
+    </string>
     <string name="newPerms">Új</string>
     <string name="allPerms">Összes</string>
     <string name="perm_costs_money">Ez pénzbe kerülhet Önnek</string>
@@ -228,9 +265,11 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
     <string name="theme_night">Éjszakai</string>
 
     <string name="crash_dialog_title">Az F-Droid összeomlott</string>
-    <string name="crash_dialog_text">Egy váratlan hiba következtében az alkalmazásnak le kellett állnia. Szeretné elküldeni e-mailben a részleteket, hogy segítsen a probléma javításában?</string>
+    <string name="crash_dialog_text">Egy váratlan hiba következtében az alkalmazásnak le kellett állnia. Szeretné
+        elküldeni e-mailben a részleteket, hogy segítsen a probléma javításában?
+    </string>
     <string name="crash_dialog_comment_prompt">Itt adhat meg további adatokat és megjegyzéseket:</string>
-<string name="update_auto_download">Frissítések automatikus letöltése</string>
+    <string name="update_auto_download">Frissítések automatikus letöltése</string>
     <string name="update_auto_download_summary">Frissítések letöltése a háttérben</string>
     <string name="choose_bt_send">Válassza ki a Bluetooth küldés módját</string>
     <string name="repo_provider">Tároló: %s</string>
@@ -246,7 +285,8 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
 
     <string name="requesting_root_access_body">Root hozzáférés kérése…</string>
     <string name="root_access_denied_title">Root hozzáférés megtagadva</string>
-    <string name="root_access_denied_body">A készüléke vagy nem rootolt, vagy megtagadta az F-Droid root hozzáférését.</string>
+    <string name="root_access_denied_body">A készüléke vagy nem rootolt, vagy megtagadta az F-Droid root hozzáférését.
+    </string>
     <string name="menu_email">E-mail a készítőnek</string>
     <string name="useTorSummary">Letöltési forgalom kényszerítése Tor használatára az adatvédelem növeléséért</string>
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) feldolgozása, forrás: %1$s</string>
@@ -254,7 +294,9 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
     <string name="antinonfreeassetslist">Ez az app nem szabad eszközöket tartalmaz</string>
 
     <string name="requires_features">Szükséges: %1$s</string>
-    <string name="swap_nfc_description">Ha a barátjának is van F-Droidja és bekapcsolt NFC-je, érintsék össze az eszközeiket.</string>
+    <string name="swap_nfc_description">Ha a barátjának is van F-Droidja és bekapcsolt NFC-je, érintsék össze az
+        eszközeiket.
+    </string>
     <string name="swap_join_same_wifi">Kapcsolódjon a barátjával azonos WiFi-hálózathoz</string>
     <string name="swap_no_wifi_network">Jelenleg nincs hálózat</string>
     <string name="swap_active_hotspot">%1$s (saját hotspot)</string>
@@ -278,7 +320,9 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
     <string name="swap_send_fdroid">F-Droid küldése</string>
     <string name="swap_connecting">Kapcsolódás</string>
     <string name="bluetooth_unavailable">A Bluetooth nem érhető el</string>
-    <string name="swap_cant_send_no_bluetooth">Az F-Droid küldése sikertelen, mivel a Bluetooth nem érhető el ezen az eszközön.</string>
+    <string name="swap_cant_send_no_bluetooth">Az F-Droid küldése sikertelen, mivel a Bluetooth nem érhető el ezen az
+        eszközön.
+    </string>
     <string name="download_pending">Várakozás a letöltés elkezdésére…</string>
     <string name="downloading_apk">%1$s letöltése</string>
     <string name="installing">Telepítés…</string>
@@ -292,14 +336,17 @@ Engedélyeznie kell, hogy megtekinthesse az általa kínált appokat.</string>
     <string name="keep_forever">Örökké</string>
 
     <string name="keep_install_history">Telepítési előzmények megtartása</string>
-    <string name="keep_install_history_summary">Napló tárolása az F-Droidban végzett telepítésekről és eltávolításokról</string>
+    <string name="keep_install_history_summary">Napló tárolása az F-Droidban végzett telepítésekről és
+        eltávolításokról
+    </string>
     <string name="update_auto_install">Frissítések automatikus telepítése</string>
     <string name="update_auto_install_summary">Alkalmazásfrissítések letöltése és telepítése háttérben</string>
     <string name="by_author">-</string>
     <string name="uninstall_system">Kiváltságos kiterjesztés frissítése/letörlése</string>
-    <string name="uninstall_system_summary">A kiváltságos kiterjesztés részleteinek megnyitása frissítéshez/törléshez</string>
+    <string name="uninstall_system_summary">A kiváltságos kiterjesztés részleteinek megnyitása frissítéshez/törléshez
+    </string>
     <string name="versions">Verziók</string>
     <string name="hide_anti_feature_apps">Ellenjavaslattal rendelkező app-ok kiszürkítése</string>
     <string name="hide_anti_feature_apps_on">Alkalmazások kiszürkítése, amik ellenjavaslattal rendelkeznek</string>
     <string name="local_repo_running">Az F-Droid cserére kész</string>
-    </resources>
+</resources>

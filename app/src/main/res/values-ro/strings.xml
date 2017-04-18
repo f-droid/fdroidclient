@@ -1,46 +1,49 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="version">Versiune</string>
-  <string name="delete">Sterge</string>
-  <string name="cache_downloaded">Pastreaza aplicatiile descarcate</string>
-  <string name="updates">Actualizat</string>
-  <string name="other">Altele</string>
-  <string name="notify">Notificare actualizari</string>
-  <string name="app_details">Detalii aplicatie</string>
-  <string name="about_title">Despre F-Droid</string>
-  <string name="about_site">Site web</string>
-  <string name="about_mail">Email</string>
-  <string name="about_version">Versiune</string>
-  <string name="app_installed">Instalat</string>
-  <string name="app_not_installed">Nu este instalat</string>
-  <string name="ok">Aplica</string>
-  <string name="yes">Da</string>
-  <string name="no">Nu</string>
-  <string name="repo_add_title">Adauga depozit nou de aplicatii</string>
-  <string name="repo_add_add">Adauga</string>
-  <string name="cancel">Anuleaza</string>
-  <string name="enable">Activeaza</string>
-  <string name="menu_about">Despre</string>
-  <string name="menu_search">Cauta</string>
-  <string name="menu_launch">Porneste</string>
-  <string name="menu_install">Instaleaza</string>
-  <string name="menu_uninstall">Dezinstaleaza</string>
-  <string name="menu_ignore_all">Ignora toate actualizarile</string>
-  <string name="menu_website">Site web</string>
-  <string name="menu_donate">Donează</string>
-  <string name="details_notinstalled">Nu e instalat</string>
-  <string name="display">Afişează</string>
-  <string name="expert">Setari expert</string>
-  <string name="rooted">Ignora aplicatiile ce necesita root</string>
-  <string name="ignoreTouch_on">Include mereu aplicatii ce necesita touchscreen</string>
-  <string name="theme">Temă</string>
-  <string name="repo_num_apps">Număr de aplicaţii</string>
-  <string name="repo_last_update">Ultima actualizare</string>
-  <string name="repo_name">Nume</string>
-  <string name="unknown">Necunoscut</string>
-  <string name="requires_features">Necesită: %1$s</string>
-<string name="menu_email">E-mail autor</string>
-    <string name="SignatureMismatch">Noua versiune este semnata cu o cheie diferita fata de versiunea veche. Pentru a putea instala noua versiune, cea veche trebuie intai dezinstalata. Va rugam sa faceti asta si sa reincercati. (Tineti minte ca procesul de dezinstalare a aplicatiei o sa stearga datele interne stocate ale acesteia)</string>
+    <string name="version">Versiune</string>
+    <string name="delete">Sterge</string>
+    <string name="cache_downloaded">Pastreaza aplicatiile descarcate</string>
+    <string name="updates">Actualizat</string>
+    <string name="other">Altele</string>
+    <string name="notify">Notificare actualizari</string>
+    <string name="app_details">Detalii aplicatie</string>
+    <string name="about_title">Despre F-Droid</string>
+    <string name="about_site">Site web</string>
+    <string name="about_mail">Email</string>
+    <string name="about_version">Versiune</string>
+    <string name="app_installed">Instalat</string>
+    <string name="app_not_installed">Nu este instalat</string>
+    <string name="ok">Aplica</string>
+    <string name="yes">Da</string>
+    <string name="no">Nu</string>
+    <string name="repo_add_title">Adauga depozit nou de aplicatii</string>
+    <string name="repo_add_add">Adauga</string>
+    <string name="cancel">Anuleaza</string>
+    <string name="enable">Activeaza</string>
+    <string name="menu_about">Despre</string>
+    <string name="menu_search">Cauta</string>
+    <string name="menu_launch">Porneste</string>
+    <string name="menu_install">Instaleaza</string>
+    <string name="menu_uninstall">Dezinstaleaza</string>
+    <string name="menu_ignore_all">Ignora toate actualizarile</string>
+    <string name="menu_website">Site web</string>
+    <string name="menu_donate">Donează</string>
+    <string name="details_notinstalled">Nu e instalat</string>
+    <string name="display">Afişează</string>
+    <string name="expert">Setari expert</string>
+    <string name="rooted">Ignora aplicatiile ce necesita root</string>
+    <string name="ignoreTouch_on">Include mereu aplicatii ce necesita touchscreen</string>
+    <string name="theme">Temă</string>
+    <string name="repo_num_apps">Număr de aplicaţii</string>
+    <string name="repo_last_update">Ultima actualizare</string>
+    <string name="repo_name">Nume</string>
+    <string name="unknown">Necunoscut</string>
+    <string name="requires_features">Necesită: %1$s</string>
+    <string name="menu_email">E-mail autor</string>
+    <string name="SignatureMismatch">Noua versiune este semnata cu o cheie diferita fata de versiunea veche. Pentru a
+        putea instala noua versiune, cea veche trebuie intai dezinstalata. Va rugam sa faceti asta si sa reincercati.
+        (Tineti minte ca procesul de dezinstalare a aplicatiei o sa stearga datele interne stocate ale acesteia)
+    </string>
     <string name="app_name">F-Droid</string>
 
     <string name="by_author">de catre</string>
@@ -92,7 +95,9 @@
 
     <string name="repo_add_url">Adresa depozit</string>
     <string name="repo_add_fingerprint">Amprenta (optionala)</string>
-    <string name="repo_exists_add_fingerprint">Acest depozit este deja configurat, aceasta actiune doar va adauga o noua cheie.</string>
+    <string name="repo_exists_add_fingerprint">Acest depozit este deja configurat, aceasta actiune doar va adauga o noua
+        cheie.
+    </string>
     <string name="icon">Iconita</string>
     <string name="skip">Sari</string>
 
@@ -137,9 +142,13 @@
     <string name="bad_fingerprint">Amprenta eronata</string>
     <string name="repo_exists_enable">Acest depozit este deja configurat, confirmati activarea din nou.</string>
     <string name="repo_exists_and_enabled">Depozitul care urmeaza este deja configurat si activat.</string>
-    <string name="repo_delete_to_overwrite">Depozitul curent trebuie sters inainte de a adauga unul nou cu o cheie diferita.</string>
+    <string name="repo_delete_to_overwrite">Depozitul curent trebuie sters inainte de a adauga unul nou cu o cheie
+        diferita.
+    </string>
     <string name="install_error_unknown">Instalare esuata din cauza unei erori necunoscute</string>
-    <string name="root_access_denied_body">Fie dispozitivul nu are acces root fie tocmai ati refuzat cererea de permisiuni root pentru F-Droid.</string>
+    <string name="root_access_denied_body">Fie dispozitivul nu are acces root fie tocmai ati refuzat cererea de
+        permisiuni root pentru F-Droid.
+    </string>
     <string name="root_access_denied_title">Acces root refuzat</string>
     <string name="requesting_root_access_body">Se cer permisiuni root…</string>
     <string name="empty_search_available_app_list">Nici o aplicatie disponibila nu se potriveste.</string>
@@ -167,7 +176,7 @@
     <string name="unverified">Neverificat</string>
     <string name="no_permissions">Nu foloseste nici o permisiune.</string>
     <string name="all_other_repos_fine">Nici un alt depozit nu a mai dat vreo eroare.</string>
-        <string name="status_inserting_apps">Salvare detalii aplicatie</string>
+    <string name="status_inserting_apps">Salvare detalii aplicatie</string>
     <string name="status_processing_xml_percent">Procesare %2$s / %3$s (%4$d%%) din %1$s</string>
     <string name="status_download_unknown_size">Descarcare\n%2$s din\n%1$s</string>
     <string name="proxy_port_summary">Configureaza port proxy (ex. 8118)</string>
@@ -268,7 +277,7 @@
     <string name="swap_not_visible_wifi">Nu este vizibil prin Wi-Fi</string>
     <string name="enable_proxy_summary">Configureaza proxy HTTP pentru toate conexiunile de retea</string>
     <string name="repos_unchanged">Toate depozitele sunt actualizate</string>
-        <string name="loading">Se incarca…</string>
+    <string name="loading">Se incarca…</string>
     <string name="category_Navigation">Navigatie</string>
     <string name="category_Games">Jocuri</string>
     <string name="local_repo_running">F-Droid este gata de schimb</string>
@@ -280,26 +289,32 @@
     <string name="repo_provider">Depozit: %s</string>
 
     <string name="update_auto_download">Descarcă automat actualizările</string>
-    <string name="update_auto_download_summary">Se descarcă pachetele automat și veți primi o notificare pentru a le instala</string>
+    <string name="update_auto_download_summary">Se descarcă pachetele automat și veți primi o notificare pentru a le
+        instala
+    </string>
     <string name="useTorSummary">Pentru a iti proteja intimitatea, forteaza folosirea Tor pentru descarcari</string>
     <string name="no_handler_app">Nu exista nici o aplicatie disponibila care sa poata folosi %s.</string>
     <string name="tap_to_install_format">Atinge pentru a instala %s</string>
     <string name="tap_to_update_format">Atinge pentru a actualiza %s</string>
     <string name="install_confirm">are nevoie de acces la</string>
     <string name="install_confirm_update">Sigur vrei sa instalezi o actualizare
- la o aplicatie existenta? Datele curente nu se vor pierde.
-Aplicatia odata actualizata va primi acces la:</string>
-    <string name="install_confirm_update_system">Sigur vrei sa instalezi o actualizare 
-la o aplicatie inclusa in Android? Datele curente nu se vor pierde. 
-Aplicatia odata actualizata va primi acces la:</string>
-    <string name="install_confirm_update_no_perms">Sigur vrei sa instalezi o actualizare 
-la aceasta aplicatie existenta? Datele curente nu se vor pierde. 
-Nu necesita vreun acces special.</string>
+        la o aplicatie existenta? Datele curente nu se vor pierde.
+        Aplicatia odata actualizata va primi acces la:
+    </string>
+    <string name="install_confirm_update_system">Sigur vrei sa instalezi o actualizare
+        la o aplicatie inclusa in Android? Datele curente nu se vor pierde.
+        Aplicatia odata actualizata va primi acces la:
+    </string>
+    <string name="install_confirm_update_no_perms">Sigur vrei sa instalezi o actualizare
+        la aceasta aplicatie existenta? Datele curente nu se vor pierde.
+        Nu necesita vreun acces special.
+    </string>
     <string name="install_confirm_update_system_no_perms">Sigur vrei sa instalezi o actualizare
- la o aplicatie inclusa in Android? Datele curente nu se vor pierde. 
-Nu necesita vreun acces special.</string>
+        la o aplicatie inclusa in Android? Datele curente nu se vor pierde.
+        Nu necesita vreun acces special.
+    </string>
     <string name="crash_dialog_comment_prompt">Puteti adauga informatii si comentarii aici:</string>
-<string name="downloading_apk">Descarcare %1$s</string>
+    <string name="downloading_apk">Descarcare %1$s</string>
 
     <string name="download_pending">Asteptare pornire descarcare…</string>
 
@@ -311,12 +326,17 @@ Nu necesita vreun acces special.</string>
     <string name="keep_forever">Totdeauna</string>
 
     <string name="crash_dialog_text">O eroare neasteptata s-a produs
- fortand oprirea aplicatiei. Doriti sa trimite-ti un e-mail cu detalii, 
-pentru a putea ajuta la rezolvarea acestei probleme?</string>
+        fortand oprirea aplicatiei. Doriti sa trimite-ti un e-mail cu detalii,
+        pentru a putea ajuta la rezolvarea acestei probleme?
+    </string>
     <string name="uninstalling">Dezinstalare…</string>
 
-    <string name="installIncompatible">Se pare ca acest pachet nu este compatibil cu dispozitivul dumneavoastra. Doriti sa se incerce instalarea lui oricum?</string>
-    <string name="installDowngrade">Incercati sa instalati o versiune mai veche. Facand asta s-ar putea sa nu functioneze corect si chiar sa va pierdeti datele. Doriti sa se incerce instalarea oricum?</string>
+    <string name="installIncompatible">Se pare ca acest pachet nu este compatibil cu dispozitivul dumneavoastra. Doriti
+        sa se incerce instalarea lui oricum?
+    </string>
+    <string name="installDowngrade">Incercati sa instalati o versiune mai veche. Facand asta s-ar putea sa nu
+        functioneze corect si chiar sa va pierdeti datele. Doriti sa se incerce instalarea oricum?
+    </string>
     <string name="installing">Instalare…</string>
     <string name="uninstall_error_notify_title">Eroare la dezinstalarea %s</string>
 
@@ -327,31 +347,42 @@ pentru a putea ajuta la rezolvarea acestei probleme?</string>
     <string name="hide_anti_feature_apps">Arata cu gri aplicatiile ce prezinta caracteristici periculoase</string>
     <string name="hide_anti_feature_apps_on">Arata cu gri aplicatiile ce necesita caracteristici periculoase</string>
     <string name="keep_install_history">Pastreaza istoricul instalarilor</string>
-    <string name="keep_install_history_summary">Toate instalarile si dezinstalarile se noteaza intr-un jurnal in F-Droid</string>
-    <string name="system_installer_on">Folositi F-Droid Extension pentru a instala, actualiza si a înlătura pachete</string>
+    <string name="keep_install_history_summary">Toate instalarile si dezinstalarile se noteaza intr-un jurnal in
+        F-Droid
+    </string>
+    <string name="system_installer_on">Folositi F-Droid Extension pentru a instala, actualiza si a înlătura pachete
+    </string>
     <string name="empty_can_update_app_list">Toate aplicatiile sunt la zi.
 
-Felicitari! Toate aplicatiile tale sunt la zi (sau depozitele sunt prea vechi).</string>
+        Felicitari! Toate aplicatiile tale sunt la zi (sau depozitele sunt prea vechi).
+    </string>
     <string name="empty_available_app_list">Nici o aplicatie in aceasta categorie.
 
-Incercati sa selectati o categorie diferita sau sa actualizati depozitele.</string>
+        Incercati sa selectati o categorie diferita sau sa actualizati depozitele.
+    </string>
     <string name="empty_installed_app_list">Nici o aplicatie instalata.
 
-Exista aplicatii pe acest dispozitiv, dar nu sunt disponibile din F-Droid. Asta din cauza ca trebuie sa actualizati depozitele sau poate depozitele chiar nu contin aplicatiile dumneavoastra.</string>
+        Exista aplicatii pe acest dispozitiv, dar nu sunt disponibile din F-Droid. Asta din cauza ca trebuie sa
+        actualizati depozitele sau poate depozitele chiar nu contin aplicatiile dumneavoastra.
+    </string>
     <string name="repo_disabled_notification">%1$s dezactivat.
 
-Va trebui
- sa reactivati acest depozit pentru a putea instala aplicatii din el.</string>
+        Va trebui
+        sa reactivati acest depozit pentru a putea instala aplicatii din el.
+    </string>
     <string name="repo_confirm_delete_body">Stergerea unui depozit presupune
- ca aplicatiile din el sa nu mai fi disponibile din F-Droid.
+        ca aplicatiile din el sa nu mai fi disponibile din F-Droid.
 
-Nota: Toate
- aplicatiile instalate anterior vor ramane pe dispozitivul dumneavoastra.</string>
+        Nota: Toate
+        aplicatiile instalate anterior vor ramane pe dispozitivul dumneavoastra.
+    </string>
     <string name="repo_not_yet_updated">Acest depozit nu a fost folosit inca.
- Trebuie sa il activati pentru a putea vedea ce aplicatii are disponibile.</string>
+        Trebuie sa il activati pentru a putea vedea ce aplicatii are disponibile.
+    </string>
     <string name="unsigned_description">Asta inseamna ca lista
- de aplicatii nu a putut fi verificata. Ar trebui sa fiti atenti
- cu aplicatiile descarcate din indexuri nesemnate.</string>
+        de aplicatii nu a putut fi verificata. Ar trebui sa fiti atenti
+        cu aplicatiile descarcate din indexuri nesemnate.
+    </string>
     <string name="warning_no_internet">Nu se poate face actualizarea, exista conexiune la internet?</string>
     <string name="versions">Versiuni</string>
     <string name="app_details_donate_prompt">%1$s creat de %2$s. Cumpara-le o cafea!</string>
@@ -381,24 +412,24 @@ Nota: Toate
     <string name="notification_action_cancel">Anulează</string>
     <string name="notification_action_install">Instalare</string>
 
-<string name="tts_category_name">Categorie %1$s</string>
+    <string name="tts_category_name">Categorie %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Vezi singura aplicație din categoria %2$s</item>
-	<item quantity="few">Vezi toate cele %1$d aplicații din categoria %2$s</item>
-	<item quantity="other">Vezi toate cele %1$d de aplicații din categoria %2$s</item>
-</plurals>
+        <item quantity="one">Vezi singura aplicație din categoria %2$s</item>
+        <item quantity="few">Vezi toate cele %1$d aplicații din categoria %2$s</item>
+        <item quantity="other">Vezi toate cele %1$d de aplicații din categoria %2$s</item>
+    </plurals>
     <string name="details_last_updated_today">Actualizate azi</string>
-<plurals name="details_last_update_days">
-	<item quantity="one">Actualizate azi</item>
-	<item quantity="few">Actualizate acum %1$s zile</item>
-	<item quantity="other">Actualizate acum %1$s de zile</item>
-</plurals>
-<plurals name="button_view_all_apps_in_category">
-	<item quantity="one"/>
-    <item quantity="few">Toate cele %d</item>
-    <item quantity="other">Toate cele %d</item>
-</plurals>
+    <plurals name="details_last_update_days">
+        <item quantity="one">Actualizate azi</item>
+        <item quantity="few">Actualizate acum %1$s zile</item>
+        <item quantity="other">Actualizate acum %1$s de zile</item>
+    </plurals>
+    <plurals name="button_view_all_apps_in_category">
+        <item quantity="one"/>
+        <item quantity="few">Toate cele %d</item>
+        <item quantity="other">Toate cele %d</item>
+    </plurals>
 
     <string name="antifeatures">Caracteristici negative</string>
     <string name="antifeatureswarning">Aceasta aplicatie are caracteristici ce ar putea sa nu iti placa.</string>
@@ -410,9 +441,13 @@ Nota: Toate
     <string name="preference_category__my_apps">Aplicatiile mele</string>
     <string name="categories__empty_state__no_categories">Nici o categorie de aratat</string>
 
-    <string name="latest__empty_state__no_enabled_repos">Odata ce ai activat si actualizat un depozit, cele mai noi aplicatii ar trebui sa apara aici</string>
+    <string name="latest__empty_state__no_enabled_repos">Odata ce ai activat si actualizat un depozit, cele mai noi
+        aplicatii ar trebui sa apara aici
+    </string>
 
-    <string name="latest__empty_state__never_updated">Odata ce s-a actualizat lista de aplicatii, cele mai noi ar trebui sa apara aici</string>
+    <string name="latest__empty_state__never_updated">Odata ce s-a actualizat lista de aplicatii, cele mai noi ar trebui
+        sa apara aici
+    </string>
     <string name="latest__empty_state__no_recent_apps">Nu s-a gasit nici o aplicatie recenta</string>
     <string name="main_menu__swap_nearby">In apropiere</string>
 
@@ -421,10 +456,10 @@ Nota: Toate
     <string name="clear_search">Curata cautarea</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Descarca actualizarea pentru %1$d aplicatie.</item>
-	<item quantity="few">Descarca actualizari pentru %1$d aplicatii.</item>
-	<item quantity="other">Descarca actualizari pentru %1$d de aplicatii.</item>
-</plurals>
+        <item quantity="one">Descarca actualizarea pentru %1$d aplicatie.</item>
+        <item quantity="few">Descarca actualizari pentru %1$d aplicatii.</item>
+        <item quantity="other">Descarca actualizari pentru %1$d de aplicatii.</item>
+    </plurals>
 
     <string name="updates__show_updateable_apps">Arata aplicatiile</string>
 
@@ -432,14 +467,15 @@ Nota: Toate
     <string name="updates__tts__download_updates_for_all_apps">Descarca toate actualizarile</string>
 
     <string name="updates__tts__download_app">Descarca</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Actualizarile ignorate pentru versiunea %1$s</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Actualizarile ignorate pentru versiunea %1$s
+    </string>
     <string name="installed_app__updates_ignored">Actualizarile ignorate</string>
     <string name="installed_apps__activity_title">Aplicatii instalate</string>
     <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">Publicat acum %1$d zi</item>
-    <item quantity="few">Publicat acum %1$d zi</item>
-	<item quantity="other">Publicat acum %1$d zile</item>
-</plurals>
+        <item quantity="one">Publicat acum %1$d zi</item>
+        <item quantity="few">Publicat acum %1$d zi</item>
+        <item quantity="other">Publicat acum %1$d zile</item>
+    </plurals>
 
     <string name="app_list__name__successfully_installed">%1$s instalat cu succes</string>
     <string name="app_list__name__downloading_in_progress">Se descarca %1$s</string>
@@ -451,4 +487,4 @@ Nota: Toate
     <string name="app_recommended_version_installed">Versiunea %1$s (Recomandata)</string>
     <string name="app_version_x_installed">Versiunea %1$s</string>
     <string name="app_version_x_available">Versiunea %1$s disponibila</string>
-    </resources>
+</resources>

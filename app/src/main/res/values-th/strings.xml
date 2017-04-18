@@ -1,8 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">F-Droid</string>
+<resources>
+    <string name="app_name">F-Droid</string>
 
     <string name="installIncompatible">โปรแกรมนี้เข้ากันไม่ได้กับเครื่องของคุณ, ดำเนินการติดตั้งต่อหรือไม่?</string>
-    <string name="installDowngrade">คุณกำลังจะติดตั้งโปรแกรมรุ่นเก่าทับรุ่นใหม่ ซึ่งอาจทำให้การทำงานของโปรแกรมผิดเพี้ยนจากการอ่านข้อมูลบันทึกภายในที่เขียนโดยโปรแกรมรุ่นใหม่กว่า, ดำเนินการต่อหรือไม่?</string>
+    <string name="installDowngrade">คุณกำลังจะติดตั้งโปรแกรมรุ่นเก่าทับรุ่นใหม่
+        ซึ่งอาจทำให้การทำงานของโปรแกรมผิดเพี้ยนจากการอ่านข้อมูลบันทึกภายในที่เขียนโดยโปรแกรมรุ่นใหม่กว่า,
+        ดำเนินการต่อหรือไม่?
+    </string>
     <string name="version">รุ่น</string>
     <string name="by_author">โดย</string>
     <string name="delete">ลบ</string>
@@ -120,7 +124,7 @@
     <string name="status_connecting_to_repo">กำลังเชื่อมต่อไปยัง\n%1$s</string>
     <string name="status_inserting_apps">กำลังบันทึกรายละเอียดโปรแกรม</string>
     <string name="repos_unchanged">ข้อมูลโปรแกรมทั้งหมดนั้นอัพเดตอยู่แล้ว</string>
-        <string name="global_error_updating_repos">การอัพเดตล้มเหลว: %s</string>
+    <string name="global_error_updating_repos">การอัพเดตล้มเหลว: %s</string>
     <string name="no_permissions">ไม่มีการขออนุญาตใดๆ เป็นพิเศษ</string>
     <string name="permissions">การขออนุญาตพิเศษ</string>
     <string name="theme">ธีม</string>
@@ -131,11 +135,18 @@
     <string name="repo_description">คำอธิบาย</string>
     <string name="repo_last_update">อัพเดตครั้งล่าสุดเมื่อ</string>
     <string name="repo_name">ชื่อ</string>
-    <string name="unsigned_description">นี่หมายความว่ารายการโปรแกรมที่มีให้ดาวน์โหลดนี้ไม่สามารถตรวจสอบได้, คุณควรระวังโปรแกรมที่ติดตั้งจากแหล่งที่ตรวจสอบไม่ได้เหล่านี้</string>
-    <string name="repo_not_yet_updated">คุณยังไม่ได้เปิดใช้งานแหล่งโปรแกรมนี้, คุณจะต้องสั่งเปิดใช้แหล่งนี้ก่อน จึงจะดูรายการโปรแกรมที่มีได้</string>
+    <string name="unsigned_description">นี่หมายความว่ารายการโปรแกรมที่มีให้ดาวน์โหลดนี้ไม่สามารถตรวจสอบได้,
+        คุณควรระวังโปรแกรมที่ติดตั้งจากแหล่งที่ตรวจสอบไม่ได้เหล่านี้
+    </string>
+    <string name="repo_not_yet_updated">คุณยังไม่ได้เปิดใช้งานแหล่งโปรแกรมนี้, คุณจะต้องสั่งเปิดใช้แหล่งนี้ก่อน
+        จึงจะดูรายการโปรแกรมที่มีได้
+    </string>
     <string name="unknown">ไม่ทราบ</string>
     <string name="repo_confirm_delete_title">ดำเนินการลบแหล่งโปแกรม?</string>
-    <string name="repo_confirm_delete_body">เมื่อคุณลบแหล่งโปรแกรมออก โปรแกรมที่มาจากแหล่งนี้จะไม่มีขึ้นให้ดาวน์โหลดในรายการของ F-Droid อีกต่อไป\n\nหมายเหตุ: โปรแกรมที่คุณดาวน์โหลดและติดตั้งแล้ว จะยังคงติดตั้งและใช้งานได้อยู่ตามเดิม</string>
+    <string name="repo_confirm_delete_body">เมื่อคุณลบแหล่งโปรแกรมออก
+        โปรแกรมที่มาจากแหล่งนี้จะไม่มีขึ้นให้ดาวน์โหลดในรายการของ F-Droid อีกต่อไป\n\nหมายเหตุ:
+        โปรแกรมที่คุณดาวน์โหลดและติดตั้งแล้ว จะยังคงติดตั้งและใช้งานได้อยู่ตามเดิม
+    </string>
     <string name="minsdk_or_later">%s หรือสูงกว่า</string>
     <string name="up_to_maxsdk">จนถึง %s</string>
     <string name="pref_language">ภาษา</string>
@@ -166,7 +177,9 @@
     <string name="system_install_uninstalling">กำลังถอนการติดตั้ง…</string>
     <string name="system_uninstall_button">ถอนการติดตั้ง</string>
     <string name="swap_nfc_title">แตะเพื่อแบ่งปันโปรแกรม</string>
-    <string name="swap_nfc_description">ถ้าเพื่อนคุณติดตั้ง F-Droid ไว้และใช้ NFC, คุณสามารถแบ่งบันโปรแกรมได้ เพียงแค่นำเครื่องมาแตะกัน</string>
+    <string name="swap_nfc_description">ถ้าเพื่อนคุณติดตั้ง F-Droid ไว้และใช้ NFC, คุณสามารถแบ่งบันโปรแกรมได้
+        เพียงแค่นำเครื่องมาแตะกัน
+    </string>
     <string name="swap">แบ่งปันโปรแกรมให้เพื่อน</string>
     <string name="swap_success">การส่งต่อโปรแกรมเสร็จสิ้นสมบูรณ์!</string>
     <string name="swap_welcome">ยินดีต้อนรับสู่ F-Droid!</string>
@@ -186,10 +199,18 @@
     <string name="tap_to_install_format">แตะเพื่อติดตั้ง %s</string>
     <string name="tap_to_update_format">แตะเพื่ออัพเดต %s</string>
     <string name="install_confirm">ต้องการเข้าถึง</string>
-    <string name="install_confirm_update">คุณต้องการติดตั้งอัพเดตของโปรแกรมนี้หรือไม่? ข้อมูลภายในของโปรแกรมจะยังคงอยู่ และโปรแกรมจะได้รับอนุญาตเพิ่มเติมให้เข้าถึง:</string>
-    <string name="install_confirm_update_system">คุณต้องการติดตั้งอัพเดตของโปรแกรมที่มากับระบบนี้หรือไม่? ข้อมูลภายในของโปรแกรมจะยังคงอยู่ และโปรแกรมจะได้รับอนุญาตเพิ่มเติมให้เข้าถึง:</string>
-    <string name="install_confirm_update_no_perms">คุณต้องการติดตั้งอัพเดตของโปรแกรมนี้หรือไม่? ข้อมูลภายในของโปรแกรมจะยังคงอยู่ และไม่ต้องมีการอนุญาตให้เข้าถึงใดๆ เพิ่มเติม</string>
-    <string name="install_confirm_update_system_no_perms">คุณต้องการติดตั้งอัพเดตของโปรแกรมที่มากับระบบนี้หรือไม่? ข้อมูลภายในของโปรแกรมจะยังคงอยู่ และไม่ต้องมีการอนุญาตให้เข้าถึงใดๆ เพิ่มเติม</string>
+    <string name="install_confirm_update">คุณต้องการติดตั้งอัพเดตของโปรแกรมนี้หรือไม่? ข้อมูลภายในของโปรแกรมจะยังคงอยู่
+        และโปรแกรมจะได้รับอนุญาตเพิ่มเติมให้เข้าถึง:
+    </string>
+    <string name="install_confirm_update_system">คุณต้องการติดตั้งอัพเดตของโปรแกรมที่มากับระบบนี้หรือไม่?
+        ข้อมูลภายในของโปรแกรมจะยังคงอยู่ และโปรแกรมจะได้รับอนุญาตเพิ่มเติมให้เข้าถึง:
+    </string>
+    <string name="install_confirm_update_no_perms">คุณต้องการติดตั้งอัพเดตของโปรแกรมนี้หรือไม่?
+        ข้อมูลภายในของโปรแกรมจะยังคงอยู่ และไม่ต้องมีการอนุญาตให้เข้าถึงใดๆ เพิ่มเติม
+    </string>
+    <string name="install_confirm_update_system_no_perms">คุณต้องการติดตั้งอัพเดตของโปรแกรมที่มากับระบบนี้หรือไม่?
+        ข้อมูลภายในของโปรแกรมจะยังคงอยู่ และไม่ต้องมีการอนุญาตให้เข้าถึงใดๆ เพิ่มเติม
+    </string>
     <string name="newPerms">ใหม่</string>
     <string name="allPerms">ทั้งหมด</string>
     <string name="perm_costs_money">อาจจะัทำให้คุณเสียค่าใช้จ่าย</string>
@@ -227,9 +248,14 @@
     <string name="theme_night">กลางคืน</string>
 
     <string name="crash_dialog_title">F-Droid เกิดข้อผิดพลาด</string>
-    <string name="crash_dialog_text">มีข้อผิดพลาดที่ทำให้โปรแกรมหยุดทำงานกะทันหัน, คุณต้องการจะส่งอีเมลแจ้งปัญหาไปยังผู้พัฒนาเพื่อทำการแก้ไขหรือไม่?</string>
+    <string name="crash_dialog_text">มีข้อผิดพลาดที่ทำให้โปรแกรมหยุดทำงานกะทันหัน,
+        คุณต้องการจะส่งอีเมลแจ้งปัญหาไปยังผู้พัฒนาเพื่อทำการแก้ไขหรือไม่?
+    </string>
     <string name="crash_dialog_comment_prompt">ระบุรายละเอียดและหมายเหตุเพิ่มเติมที่นี่:</string>
-<string name="SignatureMismatch">โปรแกรมรุ่นใหม่มีการประทับลายเซ็นดิจิตอลที่ไม่เหมือนกับโปรแกรมที่ติดตั้งอยู่, คุณจะต้องทำการถอนการติดตั้งรุ่นเดิมออกก่อน จึงจะทำการติดตั้งรุ่นใหม่ได้ (หมายเหตุ: การถอนการติดตั้งจะทำให้ข้อมูลภายในของโปรแกรมนั้นๆ ถูกลบ)</string>
+    <string name="SignatureMismatch">โปรแกรมรุ่นใหม่มีการประทับลายเซ็นดิจิตอลที่ไม่เหมือนกับโปรแกรมที่ติดตั้งอยู่,
+        คุณจะต้องทำการถอนการติดตั้งรุ่นเดิมออกก่อน จึงจะทำการติดตั้งรุ่นใหม่ได้ (หมายเหตุ:
+        การถอนการติดตั้งจะทำให้ข้อมูลภายในของโปรแกรมนั้นๆ ถูกลบ)
+    </string>
     <string name="updates">อัพเดต</string>
     <string name="unstable_updates">อัพเดตที่ไม่เสถียร</string>
     <string name="unstable_updates_summary">แนะนำการอัพเดตไปรุ่นที่ไม่เสถียร</string>
@@ -244,7 +270,9 @@
 
     <string name="login_title">ต้องใช้รหัสผ่าน</string>
     <string name="system_installer">ส่วนขยายเพื่อช่วยติดตั้ง</string>
-    <string name="system_installer_on">ใช้ส่วนขยายช่วยติดตั้งของ F-Droid เพื่อจัดการติดตั้ง, อัพเดต, และถอนการติดตั้งโปรแกรม</string>
+    <string name="system_installer_on">ใช้ส่วนขยายช่วยติดตั้งของ F-Droid เพื่อจัดการติดตั้ง, อัพเดต,
+        และถอนการติดตั้งโปรแกรม
+    </string>
     <string name="uninstall_system">อัพเดต/ถอนส่วนขยายช่วยติดตั้ง</string>
     <string name="repo_error_empty_username">ชื่อผู้ใช้ว่างเปล่า, จะไม่มีการเปลี่ยนข้อมูลรหัสผ่านใดๆ ทั้งสิ้น</string>
 
@@ -253,7 +281,9 @@
     <string name="add_key">เพิ่มกุญแจเข้ารหัส</string>
     <string name="overwrite">เขียนทับ</string>
 
-    <string name="uninstall_system_summary">แสดงรายละเอียดสถานะส่วนขยายช่วยติดตั้ง และ/หรือทำการอัพเดต/ถอนการติดตั้งส่วนขยายนี้</string>
+    <string name="uninstall_system_summary">แสดงรายละเอียดสถานะส่วนขยายช่วยติดตั้ง
+        และ/หรือทำการอัพเดต/ถอนการติดตั้งส่วนขยายนี้
+    </string>
     <string name="choose_bt_send">เลือกวิธีการส่งต่อผ่านบลูทูธ</string>
     <string name="bluetooth_activity_not_found">ยังไม่ได้เลือกวิธีส่งต่อทางบลูทูธ, โปรดเลือกก่อน!</string>
     <string name="downloading_apk">กำลังดาวน์โหลด %1$s</string>
@@ -282,7 +312,9 @@
     <string name="system_install_question">ต้องการติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid?</string>
     <string name="system_install_warning">จะใช้เวลาสูงสุด 10 วินาที</string>
     <string name="system_uninstall">ต้องการถอนส่วนขยายช่วยติดตั้งของ F-Droid?</string>
-    <string name="system_install_not_supported">ไม่รองรับการติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid บน Android รุ่น 5.1 หรือสูงกว่า</string>
+    <string name="system_install_not_supported">ไม่รองรับการติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid บน Android รุ่น 5.1
+        หรือสูงกว่า
+    </string>
 
     <string name="swap_no_wifi_network">ยังไม่พบเครือข่าย</string>
     <string name="swap_view_available_networks">แสดงเครือข่ายที่มีทั้งหมด</string>
@@ -309,26 +341,32 @@
     <string name="swap_active_hotspot">%1$s (เครื่องส่งของคุณ)</string>
     <string name="swap_join_this_hotspot">บอกวิธีให้เพื่อนคุณเชื่อมต่อกับเครื่องส่งของคุณ</string>
     <string name="swap_join_same_wifi">ต่อเข้าเครือข่าย WiFi เดียวกันกับเพื่อนของคุณ</string>
-    <string name="system_install_warning_lollipop">ขั้นตอนนี้จะใช้เวลาอย่างมาก 10 วินาที แล้วเครื่องของคุณจะทำการ<b>รีสตาร์ต</b></string>
+    <string name="system_install_warning_lollipop">ขั้นตอนนี้จะใช้เวลาอย่างมาก 10 วินาที แล้วเครื่องของคุณจะทำการ
+        <b>รีสตาร์ต</b>
+    </string>
     <string name="system_install_button_open">เปิดดูข้อมูลส่วนขยาย</string>
     <string name="empty_can_update_app_list">ทุกโปรแกรมเป็นรุ่นใหม่สุดแล้ว
 
-ยินดีด้วย! ทุกโปรแกรมที่คุณติดตั้งอยู่เป็นรุ่นล่าสุด (หรือไม่ก็ข้อมูลรายการโปรแกรมของคุณนั้นเก่าไปแล้ว)</string>
+        ยินดีด้วย! ทุกโปรแกรมที่คุณติดตั้งอยู่เป็นรุ่นล่าสุด (หรือไม่ก็ข้อมูลรายการโปรแกรมของคุณนั้นเก่าไปแล้ว)
+    </string>
     <string name="empty_available_app_list">ไม่มีโปรแกรมในหมวดนี้
 
-ลองเลือกดูโปรแกรมหมวดอื่น หรือทำการอัพเดตข้อมูลรายการโปรแกรมเผื่อจะมีโปรแกรมใหม่</string>
+        ลองเลือกดูโปรแกรมหมวดอื่น หรือทำการอัพเดตข้อมูลรายการโปรแกรมเผื่อจะมีโปรแกรมใหม่
+    </string>
     <string name="wifi_ap">เครื่องส่ง WiFi</string>
 
     <string name="minsdk_up_to_maxsdk">%1$s ถึง %2$s</string>
     <string name="repo_searching_address">กำลังค้นหาแหล่งโปรแกรม F-Droid ที่
-%1$s</string>
+        %1$s
+    </string>
     <string name="repo_added">บันทึกแหล่งโปรแกรม F-Droid %1$s แล้ว</string>
     <string name="unverified">ตรวจสอบไม่ได้</string>
     <string name="unsigned">ไม่มีลายเซ็นดิจิตอล</string>
     <string name="no_handler_app">คุณไม่มีโปรแกรมที่รองรับการใช้งาน %s</string>
     <string name="copying_icons">กำลังคัดลอกข้อมูลไอคอนลงไปในแหล่งโปรแกรม…</string>
     <string name="linking_apks">กำลังเชื่อมโยงไฟล์ APK ในแหล่งโปรแกรม…</string>
-    <string name="touch_to_configure_local_repo">แตะเพื่อดูรายละเอียดแหล่งโปรแกรม หรืออนุญาตให้ผู้อื่นดาวน์โหลดโปรแกรม</string>
+    <string name="touch_to_configure_local_repo">แตะเพื่อดูรายละเอียดแหล่งโปรแกรม หรืออนุญาตให้ผู้อื่นดาวน์โหลดโปรแกรม
+    </string>
     <string name="local_repo_running">F-Droid พร้อมจะแบ่งบันโปรแกรมแล้ว</string>
     <string name="hide_anti_feature_apps_on">แสดงโปรแกรมที่มีฟังก์ชั่นไม่พึงประสงค์เป็นสีเทา</string>
     <string name="hide_anti_feature_apps">ให้โปรแกรมที่มีฟังก์ชั่นไม่พึงประสงค์เป็นสีเทา</string>
@@ -339,25 +377,51 @@
     <string name="keep_install_history_summary">เก็บประวัติการติดตั้งและการถอนโปรแกรมต่างๆ ทั้งหมดใน F-Droid</string>
     <string name="writing_index_jar">กำลังบันทึกไฟล์ดรรชนีพร้อมลายเซ็นดิจิตอล (index.jar)…</string>
     <string name="all_other_repos_fine">แหล่งโปรแกรมอื่นๆ ไม่ได้มีข้อผิดพลาด</string>
-        <string name="warning_no_internet">อัพเดตไม่สำเร็จ, ตรวจดูอีกทีว่าคุณต่ออินเตอร์เน็ตอยู่หรือไม่</string>
+    <string name="warning_no_internet">อัพเดตไม่สำเร็จ, ตรวจดูอีกทีว่าคุณต่ออินเตอร์เน็ตอยู่หรือไม่</string>
     <string name="swap_confirm_connect">ยืนยันเพื่อรับโปรแกรมจาก %1$s</string>
-    <string name="system_install_post_success_message">ส่วนขยายช่วยติดตั้งของ F-Droid ติดตั้งเสร็จสิ้น, ตอนนี้ F-Droid จะสามารถติดตั้ง/อัพเกรด/ถอนการติดตั้งโปรแกรมต่างๆ ได้ด้วยตัวเองแล้ว</string>
-    <string name="system_install_post_fail_message">การติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid ล้มเหลว, เนื่องจากวิธีติดตั้งนี้อาจจะไม่ได้รองรับใน Android ทุกรุ่น, คุณสามารถอ่านรายละเอียดเพิ่มเติมได้ในส่วนเว็บไซต์ติดตามปัญหาของ F-Droid</string>
-    <string name="swap_join_same_wifi_desc">เมื่อคุณต้องการแบ่งปันโปรแกรมผ่าน WiFi, คุณจะต้องอยู่ในเครือข่ายเดียวกันก่อน, แต่ถ้าคุณเข้าเครือข่ายเดียวกันไม่ได้ คนใดคนหนึ่งสามารถเปิดตัวส่งสัญญาณ WiFi ของตัวเองแทนได้เช่นกัน</string>
-    <string name="system_install_denied_permissions">ส่วนขยายช่วยติดตั้งทำงาน แต่กลับไม่ได้รับสิทธิ์ในการจัดการโปรแกรมจากระบบ, หากเป็นไปได้ ช่วยรายงานปัญหานี้ไปที่ทีมพัฒนา F-Droid ด้วย</string>
-    <string name="system_install_denied_signature">ลายเซ็นที่ประทับอยู่บนส่วนขยายช่วยติดตั้งนั้นไม่ถูกต้อง, หากเป็นไปได้ กรุณาแจ้งปัญหานี้ไปที่ทีมพัฒนาของ F-Droid ด้วย</string>
-    <string name="system_install_denied_body">ตัวเลือกนี้ใช้ได้เฉพาตอนที่ส่วนขยายช่วยติดตั้งของ F-Droid ติดตั้งอยู่เท่านั้น</string>
+    <string name="system_install_post_success_message">ส่วนขยายช่วยติดตั้งของ F-Droid ติดตั้งเสร็จสิ้น, ตอนนี้ F-Droid
+        จะสามารถติดตั้ง/อัพเกรด/ถอนการติดตั้งโปรแกรมต่างๆ ได้ด้วยตัวเองแล้ว
+    </string>
+    <string name="system_install_post_fail_message">การติดตั้งส่วนขยายช่วยติดตั้งของ F-Droid ล้มเหลว,
+        เนื่องจากวิธีติดตั้งนี้อาจจะไม่ได้รองรับใน Android ทุกรุ่น,
+        คุณสามารถอ่านรายละเอียดเพิ่มเติมได้ในส่วนเว็บไซต์ติดตามปัญหาของ F-Droid
+    </string>
+    <string name="swap_join_same_wifi_desc">เมื่อคุณต้องการแบ่งปันโปรแกรมผ่าน WiFi,
+        คุณจะต้องอยู่ในเครือข่ายเดียวกันก่อน, แต่ถ้าคุณเข้าเครือข่ายเดียวกันไม่ได้ คนใดคนหนึ่งสามารถเปิดตัวส่งสัญญาณ
+        WiFi ของตัวเองแทนได้เช่นกัน
+    </string>
+    <string name="system_install_denied_permissions">ส่วนขยายช่วยติดตั้งทำงาน
+        แต่กลับไม่ได้รับสิทธิ์ในการจัดการโปรแกรมจากระบบ, หากเป็นไปได้ ช่วยรายงานปัญหานี้ไปที่ทีมพัฒนา F-Droid ด้วย
+    </string>
+    <string name="system_install_denied_signature">ลายเซ็นที่ประทับอยู่บนส่วนขยายช่วยติดตั้งนั้นไม่ถูกต้อง, หากเป็นไปได้
+        กรุณาแจ้งปัญหานี้ไปที่ทีมพัฒนาของ F-Droid ด้วย
+    </string>
+    <string name="system_install_denied_body">ตัวเลือกนี้ใช้ได้เฉพาตอนที่ส่วนขยายช่วยติดตั้งของ F-Droid
+        ติดตั้งอยู่เท่านั้น
+    </string>
     <string name="system_install_denied_title">การเรียกใช้ส่วนขยายช่วยติดตั้งของ F-Droid ล้มเหลว</string>
-    <string name="root_access_denied_body">เกิดข้อผิดพลาดเนื่องจากเครื่องของคุณไม่มีรูท หรือคุณปฏิเสธการให้สิทธิ์ผู้ดูแลระบบกับ F-Droid</string>
+    <string name="root_access_denied_body">เกิดข้อผิดพลาดเนื่องจากเครื่องของคุณไม่มีรูท
+        หรือคุณปฏิเสธการให้สิทธิ์ผู้ดูแลระบบกับ F-Droid
+    </string>
     <string name="empty_installed_app_list">ไม่มีโปรแกรมที่ติดตั้งอยู่
 
-โปรแกรมที่คุณติดตั้งอยู่ในเครื่อง ไม่มีโปรแกรมไหนเลยที่มาจาก F-Droid, อาจจะเป็นเพราะว่าคุณไม่ได้อัพเดตข้อมูลแหล่งโปรแกรม หรือโปรแกรมที่คุณใช้อยู่ไม่ได้มีอยู่ในรายการของแหล่งโปรแกรมที่คุณตั้งไว้</string>
-    <string name="not_on_same_wifi">ตอนนี้เครื่องของคุณยังไม่ได้อยู่ในเครือข่าย WiFi เดียวกับแหล่งโปรแกรมท้องถิ่นที่คุณตั้งไว้, ให้คุณลองเข้าเครือข่าย: %s</string>
+        โปรแกรมที่คุณติดตั้งอยู่ในเครื่อง ไม่มีโปรแกรมไหนเลยที่มาจาก F-Droid,
+        อาจจะเป็นเพราะว่าคุณไม่ได้อัพเดตข้อมูลแหล่งโปรแกรม
+        หรือโปรแกรมที่คุณใช้อยู่ไม่ได้มีอยู่ในรายการของแหล่งโปรแกรมที่คุณตั้งไว้
+    </string>
+    <string name="not_on_same_wifi">ตอนนี้เครื่องของคุณยังไม่ได้อยู่ในเครือข่าย WiFi
+        เดียวกับแหล่งโปรแกรมท้องถิ่นที่คุณตั้งไว้, ให้คุณลองเข้าเครือข่าย: %s
+    </string>
     <string name="repo_disabled_notification">ปิดการใช้งานแหล่งโปรแกรม %1$s แล้ว
 
-ถ้าคุณต้องการจะลงโปรแกรมจากแหล่งนี้อีกครั้ง คุณจะต้องกลับมาเปิดใช้แหล่งโปรแกรมนี้ใหม่</string>
-    <string name="repo_delete_to_overwrite">ถ้าคุณต้องการใช้กุญแจเข้ารหัสชุดใหม่กับแหล่งโปรแกรมที่จะสร้าง, คุณจะต้องลบแหล่งโปรแกรมนี้ก่อน</string>
+        ถ้าคุณต้องการจะลงโปรแกรมจากแหล่งนี้อีกครั้ง คุณจะต้องกลับมาเปิดใช้แหล่งโปรแกรมนี้ใหม่
+    </string>
+    <string name="repo_delete_to_overwrite">ถ้าคุณต้องการใช้กุญแจเข้ารหัสชุดใหม่กับแหล่งโปรแกรมที่จะสร้าง,
+        คุณจะต้องลบแหล่งโปรแกรมนี้ก่อน
+    </string>
     <string name="repo_exists_and_enabled">แหล่งโปรแกรมนี้มีอยู่แล้ว และเปิดใช้งานอยู่</string>
     <string name="repo_exists_enable">แหล่งโปรแกรมนี้มีอยู่แล้ว, กดยืนยันเพื่อเปิดกลับมาใช้งานอีกครั่ง</string>
-    <string name="repo_exists_add_fingerprint">แหล่งโปรแกรมนี้มีอยู่แล้ว, แต่ได้ทำการบันทึกข้อมูลกุณแจเข้ารหัสใหม่เพิ่มเข้าไป</string>
-    </resources>
+    <string name="repo_exists_add_fingerprint">แหล่งโปรแกรมนี้มีอยู่แล้ว,
+        แต่ได้ทำการบันทึกข้อมูลกุณแจเข้ารหัสใหม่เพิ่มเข้าไป
+    </string>
+</resources>
