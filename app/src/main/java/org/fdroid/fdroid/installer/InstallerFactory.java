@@ -47,7 +47,7 @@ public class InstallerFactory {
 
 
         Installer installer;
-        if (!apk.apkName.endsWith(".apk")) {
+        if (apk.apkName != null && !apk.apkName.endsWith(".apk")) {
             String msg = context.getString(R.string.install_error_not_yet_supported, apk.apkName);
             Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
             Utils.debugLog(TAG, msg);
