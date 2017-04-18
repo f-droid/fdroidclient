@@ -203,7 +203,7 @@ public final class Languages {
         return Character.toUpperCase(line.charAt(0)) + line.substring(1);
     }
 
-    private static final Locale[] LOCALES_TO_TEST = {
+    public static final Locale[] LOCALES_TO_TEST = {
             Locale.ENGLISH,
             Locale.FRENCH,
             Locale.GERMAN,
