@@ -19,7 +19,9 @@
         android:paddingStart="18dp"
         android:paddingRight="18dp"
         android:paddingEnd="18dp"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
 
     <Button
         android:id="@+id/button"

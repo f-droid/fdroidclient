@@ -33,7 +33,7 @@ dependencies {
     compile "com.android.support:cardview-v7:${supportLibVersion}"
     compile "com.android.support:design:${supportLibVersion}"
     compile "com.android.support:support-vector-drawable:${supportLibVersion}"
-    compile 'com.android.support.constraint:constraint-layout:1.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "com.android.support:palette-v7:${supportLibVersion}"
 
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
@@ -112,8 +112,8 @@ if (!hasProperty('sourceDeps')) {
                 'ch.acra:acra:d2762968c448757a7d6acc9f141881d9632f664988e9723ece33b5f7c79f3bc9',
                 'commons-io:commons-io:a10418348d234968600ccb1d988efcbbd08716e1d96936ccc1880e7d22513474',
                 'commons-net:commons-net:c25b0da668b3c5649f002d504def22d1b4cb30d206f05428d2fe168fa1a901c2',
-                'com.android.support.constraint:constraint-layout-solver:d03a406eb505dfa673b0087bf17e16d5a4d6bf8afdf452ee175e346207948cdf',
-                'com.android.support.constraint:constraint-layout:df1add69d11063eebba521818d63537b22207376b65f30cc35feea172b84e300',
+                'com.android.support.constraint:constraint-layout-solver:8c62525a9bc5cff5633a96cb9b32fffeccaf41b8841aa87fc22607070dea9b8d',
+                'com.android.support.constraint:constraint-layout:b0c688cc2b7172608f8153a689d746da40f71e52d7e2fe2bfd9df2f92db77085',
                 'com.android.support:animated-vector-drawable:d2d59a11809abe3e64535346f05c22437b458de115f06ea35021fd0714960213',
                 'com.android.support:appcompat-v7:120f3ce6cac682d69e53d80ccfa9cee076f0f11ccbe56d4ccd72099a745e81f9',
                 'com.android.support:cardview-v7:c8610b0c334e4438d7e1ac58fcf2ac891fb26bac662c8351cd6b345c8d7b7076',

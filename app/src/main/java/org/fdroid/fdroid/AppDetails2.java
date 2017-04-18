@@ -469,9 +469,20 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 case Installer.ACTION_INSTALL_COMPLETE:
                     adapter.clearProgress();
                     unregisterInstallReceiver();
-                    // Don't try and update the view here, because the InstalledAppProviderService
+                    // Ideally, we wouldn't try to update the view here, because the InstalledAppProviderService
                     // hasn't had time to do its thing and mark the app as installed. Instead, we
                     // wait for that service to notify us, and then we will respond in appObserver.
+
+                    // Having said that, there are some cases where the PackageManager doesn't
+                    // return control back to us until after it has already braodcast to the
+                    // InstalledAppProviderService. This means that we are not listening for any
+                    // feedback from InstalledAppProviderService (we intentionally stop listening in
+                    // onPause). Empirically, this happens when upgrading an app rather than a clean
+                    // install. However given the nature of this race condition, it may be different
+                    // on different operating systems. As such, we'll just update our view now. It may
+                    // happen again in our appObserver, but that will only cause a little more load
+                    // on the system, it shouldn't cause a different UX.
+                    onAppChanged();
                     break;
                 case Installer.ACTION_INSTALL_INTERRUPTED:
                     adapter.clearProgress();

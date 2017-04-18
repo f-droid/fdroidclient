@@ -10,6 +10,7 @@ import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Process;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import org.acra.ACRA;
 import org.fdroid.fdroid.Hasher;
@@ -173,6 +174,7 @@ public class InstalledAppProviderService extends IntentService {
         if (ACTION_INSERT.equals(action)) {
             PackageInfo packageInfo = getPackageInfo(intent, packageName);
             if (packageInfo != null) {
+                Log.i(TAG, "Marking " + packageName + " as installed");
                 File apk = new File(packageInfo.applicationInfo.publicSourceDir);
                 if (apk.isDirectory()) {
                     FilenameFilter filter = new FilenameFilter() {
@@ -204,6 +206,7 @@ public class InstalledAppProviderService extends IntentService {
                 }
             }
         } else if (ACTION_DELETE.equals(action)) {
+            Log.i(TAG, "Marking " + packageName + " as no longer installed");
             deleteAppFromDb(this, packageName);
         }
         notifyEvents.onNext(null);
