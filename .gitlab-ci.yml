@@ -1,4 +1,4 @@
-image: registry.gitlab.com/fdroid/ci-images:client
+image: registry.gitlab.com/fdroid/ci-images:client-latest
 
 cache:
   paths:
