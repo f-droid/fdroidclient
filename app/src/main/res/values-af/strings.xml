@@ -322,10 +322,6 @@ Baie geluk! Al jou toepassings is op datum (of jou argiewe is verouderd).</strin
     <string name="status_download_unknown_size">Aflaai van 
 %2$s vanaf 
 %1$s</string>
-    <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Selfs al is hierdie dieselfde as mekaar, stel Android  dokumentasie voor dat daar altyd  ten minste een of die ander gespesifiseer word. Sien: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
-	<item quantity="other">" Selfs al is dit dieselfde as mekaar, raai Android dokumente altyd spesifiseer ten minste een en ander: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
-</plurals>
 
     <string name="swap_scan_or_type_url">Een persoon het nodig om die kode te skandeer of tik die URL van die ander in \'n web browser.</string>
     <string name="swap_intro">Verbind en deel programme met mense naby jou.</string>

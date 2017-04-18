@@ -376,13 +376,6 @@ per tal d\'ajudar a resoldre la incidència?</string>
     <string name="main_menu__categories">Categories</string>
     <string name="main_menu__swap_nearby">Al voltant</string>
 
-
-    <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Malgrat que són iguals, la documentació d\'Android recomana especificar sempre l\'una i l\'altre:
-https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
-	<item quantity="other">" Veure-ho tot "</item>
-</plurals>
-
     <string name="notification_title_single_update_available">Actualització disponible</string>
     <string name="notification_title_single_ready_to_install">Llest per a instal·lar</string>
     <string name="notification_title_single_ready_to_install_update">Actualització llesta per a ser instal·lada</string>

@@ -451,9 +451,8 @@ ine zvizerekuti ubatsire kugadzira dambudziko iri here?</string>
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Kunyangwe dai izvi zvakafanana, maAndroid docs anoyambira kujekesa musiyano 
-we imwe ne zvimwe: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
-	<item quantity="other">" Wona zvese %d "</item>
+	<item quantity="one">Wona zvese %d</item>
+	<item quantity="other">Wona zvese %d</item>
 </plurals>
 
     <string name="tts_category_name">Bato %1$s</string>

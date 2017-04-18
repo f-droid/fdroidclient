@@ -387,9 +387,8 @@ e-post för att hjälpa till att åtgärda problemet?</string>
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Även om dessa är lika varandra, föreslår alltid Android docs att ange åtminstone en och annan: 
- https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
-	<item quantity="other">" Visa alla %d "</item>
+	<item quantity="one">Visa alla %d</item>
+	<item quantity="other">Visa alla %d</item>
 </plurals>
 
     <string name="notification_title_single_update_available">Uppdatering tillgänglig</string>
