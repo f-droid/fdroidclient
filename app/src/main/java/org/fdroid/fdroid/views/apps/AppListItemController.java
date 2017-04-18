@@ -322,7 +322,11 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         actionButton.setVisibility(View.VISIBLE);
 
         if (wasSuccessfullyInstalled(app) != null) {
-            actionButton.setText(R.string.menu_launch);
+            if (activity.getPackageManager().getLaunchIntentForPackage(currentApp.packageName) != null) {
+                actionButton.setText(R.string.menu_launch);
+            } else {
+                actionButton.setVisibility(View.GONE);
+            }
         } else if (isReadyToInstall(app)) {
             if (app.isInstalled()) {
                 actionButton.setText(R.string.app__install_downloaded_update);
@@ -520,12 +524,14 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             AppUpdateStatusManager.AppUpdateStatus successfullyInstalledStatus = wasSuccessfullyInstalled(currentApp);
             if (successfullyInstalledStatus != null) {
                 Intent intent = activity.getPackageManager().getLaunchIntentForPackage(currentApp.packageName);
-                activity.startActivity(intent);
+                if (intent != null) {
+                    activity.startActivity(intent);
 
-                // Once it is explicitly launched by the user, then we can pretty much forget about
-                // any sort of notification that the app was successfully installed. It should be
-                // apparent to the user because they just launched it.
-                AppUpdateStatusManager.getInstance(activity).removeApk(successfullyInstalledStatus.getUniqueKey());
+                    // Once it is explicitly launched by the user, then we can pretty much forget about
+                    // any sort of notification that the app was successfully installed. It should be
+                    // apparent to the user because they just launched it.
+                    AppUpdateStatusManager.getInstance(activity).removeApk(successfullyInstalledStatus.getUniqueKey());
+                }
                 return;
             }
 
