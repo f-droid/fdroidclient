@@ -120,6 +120,7 @@ public final class Languages {
         if (locale != null && TextUtils.equals(locale.getLanguage(), language) && (!refresh)) {
             return; // already configured
         } else if (language == null || language.equals(USE_SYSTEM_DEFAULT)) {
+            Preferences.get().clearLanguage();
             locale = DEFAULT_LOCALE;
         } else {
             /* handle locales with the country in it, i.e. zh_CN, zh_TW, etc */
