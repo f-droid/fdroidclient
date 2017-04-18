@@ -66,7 +66,15 @@ class ApkSignatureVerifier {
 
     private byte[] getApkSignature(File apkFile) {
         final String pkgPath = apkFile.getAbsolutePath();
+        if (!apkFile.exists()) {
+            throw new IllegalArgumentException("Could not find APK at \"" + pkgPath + "\" when checking for signature.");
+        }
+
         PackageInfo pkgInfo = pm.getPackageArchiveInfo(pkgPath, PackageManager.GET_SIGNATURES);
+        if (pkgInfo == null) {
+            throw new NullPointerException("Could not find PackageInfo for package at \"" + pkgPath + "\".");
+        }
+
         return signatureToBytes(pkgInfo.signatures);
     }
 
