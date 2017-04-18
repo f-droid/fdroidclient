@@ -150,7 +150,7 @@ public class PreferencesFragment extends PreferenceFragment
                 entrySummary(key);
                 if (changing) {
                     Activity activity = getActivity();
-                    Languages.setLanguage(activity, Preferences.get().getLangauge(), false);
+                    Languages.setLanguage(activity, Preferences.get().getLanguage(), false);
                     Languages.forceChangeLanguage(activity);
                 }
                 break;

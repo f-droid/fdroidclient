@@ -229,7 +229,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 .replaceAll(" ", "-");
     }
 
-    public String getLangauge() {
+    public String getLanguage() {
         return preferences.getString(Preferences.PREF_LANGUAGE, "");
     }
 
