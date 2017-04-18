@@ -400,9 +400,9 @@
 
 <string name="main_menu__swap_nearby">Оближње</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Прикажи %d "</item>
-	<item quantity="few">" Прикажи све %d "</item>
-	<item quantity="other">" Прикажи свих %d "</item>
+	<item quantity="one">Прикажи %d</item>
+	<item quantity="few">Прикажи све %d</item>
+	<item quantity="other">Прикажи свих %d</item>
 </plurals>
 
     <string name="notification_title_summary_ready_to_install_update">Надоградња спремна</string>

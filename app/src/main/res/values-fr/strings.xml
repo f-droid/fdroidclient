@@ -439,8 +439,8 @@ détails des opérations en cours pour aider à résoudre ce problème ?</string
     <string name="antifeatureswarning">Cette application a des fonctionnalités qui peuvent ne pas vous plaire.</string>
     <string name="antifeatures">Mauvaises fonctionnalités</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" voir %d "</item>
-	<item quantity="other">" voir toutes %d "</item>
+	<item quantity="one">voir %d</item>
+	<item quantity="other">voir toutes %d</item>
 </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Sans connexion internet? Téléchargez les applications depuis des appareils de votre entourage !</string>

@@ -432,8 +432,8 @@ um atvikið til að hjálpa við að laga þetta ?</string>
     <string name="tts_category_name">Flokkur %1$s</string>
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Skoða %d "</item>
-	<item quantity="other">" Skoða öll %d "</item>
+	<item quantity="one">Skoða %d</item>
+	<item quantity="other">Skoða öll %d</item>
 </plurals>
 
     <plurals name="tts_view_all_in_category">

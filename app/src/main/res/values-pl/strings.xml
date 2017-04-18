@@ -385,9 +385,9 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Zobacz %d aplikację "</item>
-	<item quantity="few">" Zobacz wszystkie %d aplikacje "</item>
-	<item quantity="many">" Zobacz wszystkich %d aplikacji "</item>
+	<item quantity="one">Zobacz %d aplikację</item>
+	<item quantity="few">Zobacz wszystkie %d aplikacje</item>
+	<item quantity="many">Zobacz wszystkich %d aplikacji</item>
 	<item quantity="other"/>
 </plurals>
 

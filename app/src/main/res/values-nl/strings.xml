@@ -413,8 +413,8 @@ in de toekomst te helpen voorkomen?</string>
     <string name="antifeatureswarning">Deze app heeft functionaliteit die je misschien niet leuk vindt.</string>
     <string name="antifeatures">Anti-functies</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Alle %d weergeven "</item>
-	<item quantity="other">" Alle %d weergeven "</item>
+	<item quantity="one">Alle %d weergeven</item>
+	<item quantity="other">Alle %d weergeven</item>
 </plurals>
 
     <string name="notification_title_single_update_available">Update beschikbaar</string>

@@ -438,8 +438,8 @@ i en e-post for å fikse problemet?</string>
     <string name="antifeatureswarning">Dette programmet har funksjoner du kanskje ikke liker.</string>
     <string name="antifeatures">Anti-funksjoner</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Vis alle %d "</item>
-	<item quantity="other">" Vis alle %d "</item>
+	<item quantity="one">Vis alle %d</item>
+	<item quantity="other">Vis alle %d</item>
 </plurals>
     <string name="details_last_updated_today">Oppdatert i dag</string>
 

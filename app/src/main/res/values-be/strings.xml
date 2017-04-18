@@ -423,9 +423,9 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Убачыць %d праграму "</item>
-	<item quantity="few">" Убачыць усе %d "</item>
-	<item quantity="many">" Убачыць усе %d "</item>
+	<item quantity="one">Убачыць %d праграму</item>
+	<item quantity="few">Убачыць усе %d</item>
+	<item quantity="many">Убачыць усе %d</item>
 	<item quantity="other"/>
 </plurals>
 

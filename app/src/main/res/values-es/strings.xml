@@ -378,8 +378,8 @@ detalles para ayudarnos a arreglar el problema?</string>
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Ver (%d) "</item>
-	<item quantity="other">" Ver todos (%d) "</item>
+	<item quantity="one">Ver (%d)</item>
+	<item quantity="other">Ver todos (%d)</item>
 </plurals>
 
     <string name="notification_title_single_update_available">Actualización disponible</string>

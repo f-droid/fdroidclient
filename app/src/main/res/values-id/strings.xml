@@ -421,7 +421,7 @@ hilang. Aplikasi yang diperbarui akan mendapatkan akses ke:</string>
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Tampilkan semua %d "</item>
+	<item quantity="one">Tampilkan semua %d</item>
 	<item quantity="other"/>
 </plurals>
 

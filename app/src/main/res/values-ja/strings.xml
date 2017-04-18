@@ -394,7 +394,7 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" %d すべて表示 "</item>
+	<item quantity="one">%d すべて表示</item>
 	<item quantity="other"/>
 </plurals>
 

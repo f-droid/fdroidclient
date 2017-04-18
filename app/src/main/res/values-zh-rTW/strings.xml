@@ -402,7 +402,7 @@ F-Droid 並無您裝置上可用的應用程式。這可能是因為您需要更
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" 查看全部 %d "</item>
+	<item quantity="one">查看全部 %d</item>
 	<item quantity="other"/>
 </plurals>
 

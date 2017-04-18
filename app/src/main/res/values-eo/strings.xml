@@ -396,8 +396,8 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Montri aplikaĵon "</item>
-	<item quantity="other">" Montri ĉiujn %d "</item>
+	<item quantity="one">Montri aplikaĵon</item>
+	<item quantity="other">Montri ĉiujn %d</item>
 </plurals>
 
 <string name="app_recommended_version_installed">Versio %1$s (konsilinda)</string>

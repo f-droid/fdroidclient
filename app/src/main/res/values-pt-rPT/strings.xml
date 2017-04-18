@@ -433,8 +433,8 @@ Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
     <string name="hide_anti_feature_apps_on">Sombrear aplicações cque necessitem de anti-funcionalidades</string>
     <string name="warning_no_internet">Atualização impossível. Está ligado à Internet?</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Ver %d "</item>
-	<item quantity="other">" Ver %d "</item>
+	<item quantity="one">Ver %d</item>
+	<item quantity="other">Ver %d</item>
 </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Descarregue as aplicações através de pessoas perto de si!</string>
