@@ -410,6 +410,7 @@
     <string name="notification_title_summary_downloading">Загрузка…</string>
     <string name="notification_title_summary_downloading_update">Загрузка обновления…</string>
     <string name="notification_action_update">Обновить</string>
+    <string name="details_last_updated_today">Обновлено сегодня</string>
     <plurals name="details_last_update_days">
     <item quantity="one">Обновлено %1$s дня назад</item>
 	<item quantity="few">Обновлено %1$s дня назад</item>

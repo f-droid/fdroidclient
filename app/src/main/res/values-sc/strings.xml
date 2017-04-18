@@ -454,6 +454,7 @@ Depes
 
     <string name="antifeatureswarning">Custa aplicatzione tenet funtzionalidades chi ti diant pòdere non agradare.</string>
     <string name="antifeatures">Anti-funtzionalidades</string>
+    <string name="details_last_updated_today">Agiornadu oe</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Agiornadu oe</item>
 	<item quantity="other">Agiornadu %1$s dies faghet</item>

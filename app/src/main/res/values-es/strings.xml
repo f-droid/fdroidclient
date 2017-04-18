@@ -433,6 +433,8 @@ detalles para ayudarnos a arreglar el problema?</string>
     <string name="app_list__name__downloaded_and_ready_to_update">Actualizar %1$s</string>
     <string name="app_list__name__downloaded_and_ready_to_install">Instalar %1$s</string>
     <string name="app_list__name__downloading_in_progress">Descargando %1$s</string>
+    <string name="app_list__age__released_today">publicada hoy</string>
+    <string name="app_list__age__released_yesterday">publicada ayer</string>
     <plurals name="app_list__age__released_x_days_ago">
 	<item quantity="one">publicada ayer</item>
 	<item quantity="other">publicada hace %1$d días</item>
@@ -454,6 +456,7 @@ detalles para ayudarnos a arreglar el problema?</string>
 
     <string name="antifeatureswarning">Est app contiene características que podrían no gustarte.</string>
     <string name="antifeatures">Características no-libres</string>
+    <string name="details_last_updated_today">Actualizada hoy</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Actualizada hoy</item>
 	<item quantity="other">Actualizadas hace %1$s días</item>

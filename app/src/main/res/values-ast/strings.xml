@@ -415,7 +415,7 @@ corréu colos detalles p\'ayudar a iguar esti problema?</string>
 	<item quantity="one">Baxar anovamientu pa %1$d aplicación.</item>
 	<item quantity="other">Baxar anovamientos pa %1$d aplicaciones.</item>
 </plurals>
-
+    <string name="details_last_updated_today">Anovóse güei</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Anovóse güei</item>
 	<item quantity="other">Anovóse hai %1$s día</item>

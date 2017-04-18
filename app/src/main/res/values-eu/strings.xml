@@ -461,7 +461,7 @@ konpontzen laguntzeko?</string>
 	<item quantity="one">" Bi hauek berdina badira ere, Androiden dokumentazioak gutxienez bata zein bestea zehaztea aholkatzen du: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
 	<item quantity="other">" Ikusi guztiak %d "</item>
 </plurals>
-
+    <string name="details_last_updated_today">Gaur eguneratua</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Gaur eguneratua</item>
 	<item quantity="other">Orain dela %1$s egun eguneratua</item>

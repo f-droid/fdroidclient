@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.graphics.Outline;
 import android.net.Uri;
 import android.os.Build;
@@ -26,10 +27,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
@@ -273,9 +272,9 @@ public class AppListItemController extends RecyclerView.ViewHolder {
 
     /**
      * The app name {@link TextView} is used for a few reasons:
-     *  * Display name + summary of the app (most common).
-     *  * If downloading, mention that it is downloading instead of showing the summary.
-     *  * If downloaded and ready to install, mention that it is ready to update/install.
+     * <li> Display name + summary of the app (most common).
+     * <li> If downloading, mention that it is downloading instead of showing the summary.
+     * <li> If downloaded and ready to install, mention that it is ready to update/install.
      */
     private void configureAppName(@NonNull App app) {
         if (isReadyToInstall(app)) {
@@ -284,7 +283,16 @@ public class AppListItemController extends RecyclerView.ViewHolder {
                 if (app.lastUpdated != null) {
                     long ageInMillis = System.currentTimeMillis() - app.lastUpdated.getTime();
                     int ageInDays = (int) (ageInMillis / 1000 / 60 / 60 / 24);
-                    String age = activity.getResources().getQuantityString(R.plurals.app_list__age__released_x_days_ago, ageInDays, ageInDays);
+                    Resources resources = activity.getResources();
+                    String age;
+                    if (ageInDays == 0) {
+                        age = resources.getString(R.string.app_list__age__released_today);
+                    } else if (ageInDays == 1) {
+                        age = resources.getString(R.string.app_list__age__released_yesterday);
+                    } else {
+                        age = resources.getQuantityString(R.plurals.app_list__age__released_x_days_ago,
+                                ageInDays, ageInDays);
+                    }
                     name.setText(appName + "\n" + age);
                 } else {
                     name.setText(appName);

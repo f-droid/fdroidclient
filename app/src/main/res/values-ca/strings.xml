@@ -434,6 +434,7 @@ https://developer.android.com/guide/topics/resources/string-resource.html#Plural
     <string name="app_list__name__downloaded_and_ready_to_update">Actualitzeu %1$s</string>
     <string name="app_list__name__downloaded_and_ready_to_install">Instal·leu %1$s</string>
     <string name="app_list__name__downloading_in_progress">Descarregant %1$s</string>
+    <string name="app_list__age__released_yesterday">Publicat ahir</string>
     <plurals name="app_list__age__released_x_days_ago">
 	<item quantity="one">Publicat ahir</item>
 	<item quantity="other">Publicat fa %1$s dies</item>
@@ -454,6 +455,7 @@ https://developer.android.com/guide/topics/resources/string-resource.html#Plural
     <string name="details_new_in_version">Novetats a la versió %s</string>
 
     <string name="antifeatureswarning">Aquesta app conté característiques que potser no us agradarien.</string>
+    <string name="details_last_updated_today">Actualitzades avui</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Actualitzades avui</item>
 	<item quantity="other">Actualitzades fa %1$s dies</item>

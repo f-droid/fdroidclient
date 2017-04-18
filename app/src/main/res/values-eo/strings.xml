@@ -448,6 +448,7 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
 
     <string name="antifeatureswarning">Ĉi tiu aplikaĵo enhavas eblojn, kiujn vi eble ne ŝatas.</string>
     <string name="antifeatures">Fiebloj</string>
+    <string name="details_last_updated_today">Ĝisdatigita hodiaŭ</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Ĝisdatigita hodiaŭ</item>
 	<item quantity="other">Ĝisdatigita antaŭ %1$s tagoj</item>

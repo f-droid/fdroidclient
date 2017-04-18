@@ -422,6 +422,7 @@ i en e-post for å fikse problemet?</string>
     <string name="app_list__name__downloaded_and_ready_to_update">Oppdater %1$s</string>
     <string name="app_list__name__downloaded_and_ready_to_install">Installer %1$s</string>
     <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
+    <string name="app_list__age__released_yesterday">Utgitt i går</string>
     <plurals name="app_list__age__released_x_days_ago">
 	<item quantity="one">Utgitt i går</item>
 	<item quantity="other">Utgitt for %1$d dager siden</item>
@@ -446,6 +447,7 @@ i en e-post for å fikse problemet?</string>
 	<item quantity="one">" Vis alle %d "</item>
 	<item quantity="other">" Vis alle %d "</item>
 </plurals>
+    <string name="details_last_updated_today">Oppdatert i dag</string>
 
     <plurals name="details_last_update_days">
 	<item quantity="one">Oppdatert i dag</item>

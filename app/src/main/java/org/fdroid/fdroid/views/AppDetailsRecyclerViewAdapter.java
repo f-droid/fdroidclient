@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.DrawableRes;
@@ -404,7 +405,14 @@ public class AppDetailsRecyclerViewAdapter
             }
             if (app.lastUpdated != null) {
                 int daysSince = Utils.daysSince(app.lastUpdated);
-                lastUpdateView.setText(lastUpdateView.getContext().getResources().getQuantityString(R.plurals.details_last_update_days, daysSince, daysSince));
+                String text;
+                Resources resources = lastUpdateView.getContext().getResources();
+                if (daysSince < 1) {
+                    text = resources.getString(R.string.details_last_updated_today);
+                } else {
+                    text = resources.getQuantityString(R.plurals.details_last_update_days, daysSince, daysSince);
+                }
+                lastUpdateView.setText(text);
                 lastUpdateView.setVisibility(View.VISIBLE);
             } else {
                 lastUpdateView.setVisibility(View.GONE);

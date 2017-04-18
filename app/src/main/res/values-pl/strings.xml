@@ -447,6 +447,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
     <string name="antifeatureswarning">Ta aplikacja zawiera funkcje, których możesz nie lubić.</string>
     <string name="antifeatures">Niepożądane funkcje</string>
+    <string name="details_last_updated_today">Uaktualniono dzisiaj</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Uaktualniono dzisiaj</item>
 	<item quantity="few">Uaktualniono %1$s dni temu</item>

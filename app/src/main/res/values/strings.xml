@@ -72,6 +72,8 @@
     <string name="app_list__name__downloaded_and_ready_to_install">Install %1$s</string>
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s successfully installed</string>
+    <string name="app_list__age__released_today">Released today</string>
+    <string name="app_list__age__released_yesterday">Released yesterday</string>
     <plurals name="app_list__age__released_x_days_ago">
         <item quantity="one">Released %1$d day ago</item>
         <item quantity="other">Released %1$d days ago</item>
@@ -473,12 +475,12 @@
     <string name="tts_category_name">Category %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">View the single one app in the %2$s category</item>
+        <item quantity="one">View %1$d app in the %2$s category</item>
         <item quantity="other">View all %1$d apps from the %2$s category</item>
     </plurals>
 
+    <string name="details_last_updated_today">Updated today</string>
     <plurals name="details_last_update_days">
-        <item quantity="zero">Updated today</item>
         <item quantity="one">Updated %1$s day ago</item>
         <item quantity="other">Updated %1$s days ago</item>
     </plurals>

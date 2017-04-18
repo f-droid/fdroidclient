@@ -449,6 +449,7 @@
 	<item quantity="one">今日更新</item>
 	<item quantity="other"/>
 </plurals>
+    <string name="details_last_updated_today">今日更新</string>
 <string name="app_list__name__successfully_installed">%1$s を正常にｲﾝｽﾄｰﾙしました</string>
     <string name="nearby_splash__download_apps_from_people_nearby">ｲﾝﾀｰﾈｯﾄがありませんか? 近くの人からｱﾌﾟﾘをﾀﾞｳﾝﾛｰﾄﾞしてください!</string>
     <string name="nearby_splash__find_people_button">近くの人を見つける</string>

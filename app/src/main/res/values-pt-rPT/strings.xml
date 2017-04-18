@@ -466,6 +466,7 @@ Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
 
     <string name="tts_category_name">Categoria %1$s</string>
 
+    <string name="details_last_updated_today">Atualizado hoje</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Atualizada há %1$s dia</item>
 	<item quantity="other">Atualizada há %1$s dias</item>

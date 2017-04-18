@@ -442,6 +442,7 @@ Bitte eine andere Kategorie wählen oder die Paketquellen aktualisieren.</string
 
     <string name="antifeatureswarning">Diese Anwendung hat Merkmale, die Ihnen nicht gefallen könnten.</string>
     <string name="antifeatures">Unfreie Merkmale</string>
+    <string name="details_last_updated_today">Heute aktualisiert</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Heute aktualisiert</item>
 	<item quantity="other">Vor %1$d Tagen aktualisiert</item>

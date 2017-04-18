@@ -388,6 +388,7 @@ Nota: Toate
 	<item quantity="few">Vezi toate cele %1$d aplicații din categoria %2$s</item>
 	<item quantity="other">Vezi toate cele %1$d de aplicații din categoria %2$s</item>
 </plurals>
+    <string name="details_last_updated_today">Actualizate azi</string>
 <plurals name="details_last_update_days">
 	<item quantity="one">Actualizate azi</item>
 	<item quantity="few">Actualizate acum %1$s zile</item>
