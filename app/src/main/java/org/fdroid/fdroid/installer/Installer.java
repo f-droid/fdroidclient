@@ -31,6 +31,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.privileged.views.AppDiff;
@@ -136,6 +138,16 @@ public abstract class Installer {
     public Intent getUninstallScreen() {
         if (!isUnattended()) {
             return null;
+        }
+
+        try {
+            PackageManagerCompat.setInstaller(context, context.getPackageManager(), apk.packageName);
+        } catch (SecurityException e) {
+            Utils.debugLog(TAG, "Falling back to default installer for uninstall");
+            Intent intent = new Intent(context, DefaultInstallerActivity.class);
+            intent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
+            intent.putExtra(Installer.EXTRA_APK, apk);
+            return intent;
         }
 
         Intent intent = new Intent(context, UninstallDialogActivity.class);

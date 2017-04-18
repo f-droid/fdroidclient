@@ -29,6 +29,8 @@ public class PackageManagerCompat {
                 mPm.setInstallerPackageName(packageName, "org.fdroid.fdroid");
             }
             Utils.debugLog(TAG, "Installer package name for " + packageName + " set successfully");
+        } catch (SecurityException e) {
+            throw new SecurityException(e);
         } catch (Exception e) {
             // Many problems can occur:
             //  * App wasn't installed due to incompatibility
