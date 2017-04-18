@@ -481,8 +481,8 @@
     <string name="tts_category_name">Kategori %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Visa enda appen i %2$d kategorin</item>
-        <item quantity="other">Visa alla %2$d appar från %2$s kategorin</item>
+        <item quantity="one">Visa enda appen i %2$s kategorin</item>
+        <item quantity="other">Visa alla %1$d appar från %2$s kategorin</item>
     </plurals>
     <string name="app__install_downloaded_update">Uppdatera</string>
 
