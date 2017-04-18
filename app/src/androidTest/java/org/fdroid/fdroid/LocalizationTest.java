@@ -14,9 +14,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,7 +34,7 @@ public class LocalizationTest {
 
     private final Pattern androidFormat = Pattern.compile("(%[a-z0-9]\\$?[a-z]?)");
     private final Locale[] locales = Locale.getAvailableLocales();
-    private final ArrayList<String> localeNames = new ArrayList<>(locales.length);
+    private final HashSet<String> localeNames = new HashSet<>(locales.length);
 
     private AssetManager assets;
     private Configuration config;
@@ -43,10 +42,12 @@ public class LocalizationTest {
 
     @Before
     public void setUp() {
+        for (Locale locale : Languages.LOCALES_TO_TEST) {
+            localeNames.add(locale.toString());
+        }
         for (Locale locale : locales) {
             localeNames.add(locale.toString());
         }
-        Collections.sort(localeNames);
 
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
         Context context = instrumentation.getTargetContext();
