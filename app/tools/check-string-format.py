@@ -23,7 +23,10 @@ for d in glob.glob(os.path.join('src', 'main', 'res', 'values-*')):
     tree = ElementTree.parse(str_path)
     root = tree.getroot()
 
-    for e in root.findall('.//string'):
+    for e in root.findall('.//string') + root.findall('.//item'):
+        if e.tag == "item" and e.text is None:
+            continue
+
         for m in formatRe.finditer(e.text):
             s = m.group(0)
             if validFormatRe.match(s):

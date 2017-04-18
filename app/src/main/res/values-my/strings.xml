@@ -1,7 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="SignatureMismatch">ဗားရွင္းအသစ္သည္ တျခားကီးႏွင့္ ဗားရွင္းအေဟာင္းကိုသတ္မွတ္ထားပါသည္။ ဗားရွင္းအသစ္သြင္းရန္ အေဟာင္းသည္ အရင္ဆံုးျဖဳတ္မွရပါမည္။ ျဖဳတ္ျပီးမွ ျပန္လည္ၾကိဳးစားၾကည့္ပါ။ (ျဖဳတ္ျခင္းသည္ application မွသိမ္းထားေသာ ေဒတာအားလံုးဖ်က္သြားပါလိမ့္မည္)</string>
-    <string name="installIncompatible">ဒီ Package သည္ သင့္ကိရိယာႏွင့္ကိုက္ညီမႈမရွိဘူးဟုထင္ရပါသည္။ ၾကိဳးစားျပီးမရမကသြင္းခ်င္ပါသလား။</string>
-    <string name="installDowngrade">သင္သည္ ဒီ application ၏ဗားရွင္းအေဟာင္းကိုသြင္းေနသည္ကိုေတြ႕ရသည္။ ထိုသို႔သြင္းျခင္းသည္ သင့္အခ်က္အလက္မ်ားကို မွားယြင္းစြာလႈပ္ေဆာင္ျခင္း ႏွင့္ ေဒတာမ်ားပ်က္စီးျခင္းျဖစ္ႏိုင္သည္။ သင္ၾကိဳးစားျပီး ဗားရွင္းအဆင့္ႏွီမ့္ေအာင္လုပ္မလား။?</string>
+<resources>
+    <string name="SignatureMismatch">ဗားရွင္းအသစ္သည္ တျခားကီးႏွင့္ ဗားရွင္းအေဟာင္းကိုသတ္မွတ္ထားပါသည္။
+        ဗားရွင္းအသစ္သြင္းရန္ အေဟာင္းသည္ အရင္ဆံုးျဖဳတ္မွရပါမည္။ ျဖဳတ္ျပီးမွ ျပန္လည္ၾကိဳးစားၾကည့္ပါ။ (ျဖဳတ္ျခင္းသည္
+        application မွသိမ္းထားေသာ ေဒတာအားလံုးဖ်က္သြားပါလိမ့္မည္)
+    </string>
+    <string name="installIncompatible">ဒီ Package သည္ သင့္ကိရိယာႏွင့္ကိုက္ညီမႈမရွိဘူးဟုထင္ရပါသည္။
+        ၾကိဳးစားျပီးမရမကသြင္းခ်င္ပါသလား။
+    </string>
+    <string name="installDowngrade">သင္သည္ ဒီ application ၏ဗားရွင္းအေဟာင္းကိုသြင္းေနသည္ကိုေတြ႕ရသည္။ ထိုသို႔သြင္းျခင္းသည္
+        သင့္အခ်က္အလက္မ်ားကို မွားယြင္းစြာလႈပ္ေဆာင္ျခင္း ႏွင့္ ေဒတာမ်ားပ်က္စီးျခင္းျဖစ္ႏိုင္သည္။ သင္ၾကိဳးစားျပီး
+        ဗားရွင္းအဆင့္ႏွီမ့္ေအာင္လုပ္မလား။?
+    </string>
     <string name="version">ဗားရွင္း</string>
     <string name="by_author">မွ</string>
     <string name="delete">ဖ်က္မည္</string>
@@ -21,7 +30,9 @@
     <string name="notify">အသစ္မြမ္းမံမႈ အသိေပးခ်က္မ်ား</string>
     <string name="notify_on">အသစ္မြမ္းမံမႈရရွိပါက အခ်က္ေပးျခင္းကိုျပပါ</string>
     <string name="system_installer">Privileged Extension</string>
-    <string name="system_installer_on">F-Droid ၏ Privileged Extension ကိုသံုးျပီး သြင္းျခင္း၊ အသစ္မြမ္းမံျခင္းႏွင့္ Package မ်ားျဖဳတ္ျခင္းမ်ားျပဳလုပ္မည္</string>
+    <string name="system_installer_on">F-Droid ၏ Privileged Extension ကိုသံုးျပီး သြင္းျခင္း၊ အသစ္မြမ္းမံျခင္းႏွင့္
+        Package မ်ားျဖဳတ္ျခင္းမ်ားျပဳလုပ္မည္
+    </string>
     <string name="local_repo_name">သင္၏ Local Repo အမည္</string>
     <string name="local_repo_name_summary">သင္၏ Local Repo ေၾကျငာေခါင္းစဥ္ - %s</string>
     <string name="local_repo_https">ကိုယ္ပိုင္ကြန္ရက္ခ်ိတ္ဆက္မႈကိုသံုးမည္</string>
@@ -75,7 +86,9 @@
 
     <string name="repo_add_url">Repository လိပ္စာ</string>
     <string name="repo_add_fingerprint">လက္ေဗြရာ(လိုအပ္မွသာ)</string>
-    <string name="repo_exists_add_fingerprint">ဒီ repo သည္ အဆင္သင့္ျဖစ္ေနပါျပီ ၄င္းသည္ ကီးအသစ္တစ္ခုအခ်က္အလက္ထည့္ေပးပါလိမ့္မည္.</string>
+    <string name="repo_exists_add_fingerprint">ဒီ repo သည္ အဆင္သင့္ျဖစ္ေနပါျပီ ၄င္းသည္
+        ကီးအသစ္တစ္ခုအခ်က္အလက္ထည့္ေပးပါလိမ့္မည္.
+    </string>
     <string name="repo_exists_enable">ဒီ repo သည္ အသင့္ျဖစ္ေနပါျပီ သင္ျပန္ဖြင့္ခ်င္ေၾကာင္း အတည္ျပဳပါ.</string>
     <string name="repo_exists_and_enabled">အဝင္ ရီပိုသည္ အသင့္ျဖစ္ပါျပီ ဖြင့္ရန္လိုအပ္သည္</string>
     <string name="repo_delete_to_overwrite">ကီးအသစ္တစ္ခုႏွင့္ထည့္သြင္းရန္မတိုင္မီ ဒီရီပိုကိုအရင္ဖ်က္မွရမည္.</string>
@@ -143,18 +156,20 @@
     <string name="useTorSummary">ကိုယ္ေရးအခ်က္အလက္မ်ားပိုမိုလံုျခံဳေစရန္ လိုင္းမ်ားမွ မရမက အတင္းေဒါင္းလုတ္ခ်မည္</string>
     <string name="proxy">ပေရာစီ</string>
     <string name="enable_proxy_title">HTTP ပေရာစီကိုဖြင့္မည္</string>
-    <string name="status_download">"%1$s မွ  %2$s / %3$s (%4$d%%)  ကိုေဒါင္းလုတ္ခ်ေနပါသည္"</string>
+    <string name="status_download">"%1$s မွ %2$s / %3$s (%4$d%%) ကိုေဒါင္းလုတ္ခ်ေနပါသည္"</string>
 
     <string name="status_download_unknown_size">%1$s မွ
-%2$s ကို
-ေဒါင္းလုတ္ဆြဲေနပါသည္</string>
+        %2$s ကို
+        ေဒါင္းလုတ္ဆြဲေနပါသည္
+    </string>
     <string name="update_notification_title">repositories ကိုအသစ္မြမ္းမံေနသည္</string>
-    <string name="status_processing_xml_percent">"%1$s မွ  %2$s / %3$s (%4$d%%) ကိုရယူေနသည္"</string>
+    <string name="status_processing_xml_percent">"%1$s မွ %2$s / %3$s (%4$d%%) ကိုရယူေနသည္"</string>
     <string name="status_connecting_to_repo">%1$s
-သို႔ခ်ိတ္ဆက္ေနသည္</string>
+        သို႔ခ်ိတ္ဆက္ေနသည္
+    </string>
     <string name="status_inserting_apps">Application အခ်က္အလက္မ်ားကိုသိမ္းဆည္းေနသည္</string>
     <string name="repos_unchanged">Repository မ်ားအားလံုးသည္အသစ္မြမ္းမံျပီးျဖစ္သည္</string>
-        <string name="no_permissions">မည္သည့္ခြင့္ျပဳခ်က္ကိုမွမသံုးခဲ့ပါ.</string>
+    <string name="no_permissions">မည္သည့္ခြင့္ျပဳခ်က္ကိုမွမသံုးခဲ့ပါ.</string>
     <string name="permissions">ခြင့္ျပဳခ်က္မ်ား</string>
     <string name="theme">အျပင္အဆင္</string>
     <string name="unverified">မစစ္ထားျခင္း</string>
@@ -170,7 +185,7 @@
 
     <string name="deleting_repo">ယခုလက္ရွိ ရီပိုကိုဖ်က္ေနသည္.…</string>
     <string name="all_other_repos_fine">တျခားရီပိုအားလံုးသည္ ခ်ိဳ႕ယြင္းခ်က္မ်ားမရွိပါ.</string>
-        <string name="global_error_updating_repos">အသစ္မြမ္းမံစဥ္ခ်ိဳ႕ယြင္းခ်က္ - %s</string>
+    <string name="global_error_updating_repos">အသစ္မြမ္းမံစဥ္ခ်ိဳ႕ယြင္းခ်က္ - %s</string>
     <string name="minsdk_or_later">%s သို႔မဟုတ္ ေနာက္မွ</string>
     <string name="up_to_maxsdk">%s ထိ</string>
     <string name="minsdk_up_to_maxsdk">%1$s %2$s ထိ</string>
@@ -263,8 +278,10 @@
     <string name="theme_night">ည</string>
 
     <string name="crash_dialog_title">F-Droid ခဏရပ္သြားပါသည္</string>
-    <string name="crash_dialog_comment_prompt">သင္သည္ ေနာက္ထပ္ အခ်က္အလက္မ်ားႏွင့္မွတ္ခ်က္မ်ားကို ဒီေနရာတြင္ထည့္သြင္းႏိုင္သည္ :</string>
-<string name="local_repo">လိုကယ္ရီပို</string>
+    <string name="crash_dialog_comment_prompt">သင္သည္ ေနာက္ထပ္ အခ်က္အလက္မ်ားႏွင့္မွတ္ခ်က္မ်ားကို
+        ဒီေနရာတြင္ထည့္သြင္းႏိုင္သည္ :
+    </string>
+    <string name="local_repo">လိုကယ္ရီပို</string>
     <string name="repo_added">F-Droid repository ကိုသိမ္းခဲ့သည္ %1$s.</string>
     <string name="empty_search_installed_app_list">သြင္းထားေသာ application ထဲမွာ ရွာေဖြမႈမတူညီပါ.</string>
-    </resources>
+</resources>

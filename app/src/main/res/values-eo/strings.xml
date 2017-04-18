@@ -1,111 +1,118 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="version">Versio</string>
-  <string name="delete">Forigi</string>
-  <string name="updates">Ĝisdatigoj</string>
-  <string name="other">Aliaj</string>
-  <string name="automatic_scan_wifi">Nur per vifio</string>
-  <string name="notify">Sciigoj pri ĝisdatigoj</string>
-  <string name="notify_on">Sciigi kiam ĝisdatigoj estas disponeblaj</string>
-  <string name="app_details">Aplikaĵaj detaloj</string>
-  <string name="no_such_app">Neniu aplikaĵo trovita.</string>
-  <string name="about_title">Pri F-Droid</string>
-  <string name="about_site">Retejo</string>
-  <string name="about_mail">Retpoŝto</string>
-  <string name="about_version">Versio</string>
-  <string name="app_installed">Instalita</string>
-  <string name="app_not_installed">Neinstalita</string>
-  <string name="app_inst_known_source">Instalita (el %s)</string>
-  <string name="app_inst_unknown_source">Instalita (el nekonata fonto)</string>
-  <string name="added_on">Aldonita je %s</string>
-  <string name="ok">Bone</string>
-  <string name="yes">Jes</string>
-  <string name="no">Ne</string>
-  <string name="repo_add_title">Aldoni novan deponejon</string>
-  <string name="repo_add_add">Aldoni</string>
-  <string name="cancel">Nuligi</string>
-  <string name="overwrite">Anstataŭigi</string>
-  <string name="fdroid_updates_available">F-Droidaj ĝisdatigoj disponeblaj</string>
-  <string name="send_via_bluetooth">Sendi per Bludento</string>
-  <string name="repo_add_url">Deponeja adreso</string>
-  <string name="menu_update_repo">Ĝisdatigi deponejojn</string>
-  <string name="menu_manage">Deponejoj</string>
-  <string name="menu_about">Pri</string>
-  <string name="menu_search">Serĉi</string>
-  <string name="menu_add_repo">Nova deponejo</string>
-  <string name="menu_launch">Lanĉi</string>
-  <string name="menu_share">Kunhavigi</string>
-  <string name="menu_install">Instali</string>
-  <string name="menu_uninstall">Malinstali</string>
-  <string name="menu_ignore_all">Ignori ĉiujn ĝisdatigojn</string>
-  <string name="menu_ignore_this">Ignori ĉi tiun ĝisdatigon</string>
-  <string name="menu_website">Retejo</string>
-  <string name="menu_issues">Eraroj</string>
-  <string name="menu_source">Fontkodo</string>
-  <string name="menu_upgrade">Ĝisdatigi</string>
-  <string name="menu_donate">Donaci</string>
-  <string name="details_installed">Versio %s instalita</string>
-  <string name="details_notinstalled">Neinstalita</string>
-  <string name="antiadslist">Ĉi tiu aplikaĵo enhavas reklamojn</string>
-  <string name="antitracklist">Ĉi tiu aplikaĵo spuras kaj raportas vian agadon</string>
-  <string name="antinonfreeadlist">Ĉi tiu aplikaĵo favoras neliberajn aldonaĵojn</string>
-  <string name="antinonfreenetlist">Ĉi tiu aplikaĵo favoras neliberajn retservojn</string>
-  <string name="antinonfreedeplist">Ĉi tiu aplikaĵo dependas de aliaj neliberaj aplikaĵoj</string>
-  <string name="antiupstreamnonfreelist">La fontkodo ne estas tute libera</string>
-  <string name="display">Aspekto</string>
-  <string name="expert">Altnivelo</string>
-  <string name="expert_on">Montri aldonajn informojn kaj aktivigi aldonajn agordojn</string>
-  <string name="search_hint">Serĉi aplikaĵojn</string>
-  <string name="appcompatibility">Aplikaĵa kongrueco</string>
-  <string name="show_incompat_versions">Nekongruaj versioj</string>
-  <string name="show_incompat_versions_on">Montri aplikaĵ-versiojn nekongruajn kun la aparato</string>
-  <string name="rooted">Ĉefuzanto</string>
-  <string name="rooted_on">Ne grizigi aplikaĵojn, kiuj postulas ĉefuzantajn privilegiojn</string>
-  <string name="ignoreTouch">Ignori tuŝekranon</string>
-  <string name="ignoreTouch_on">Ĉiam inkluzivi aplikaĵojn, kiuj postulas tuŝekranon</string>
-  <string name="local_repo">Loka deponejo</string>
-  <string name="deleting_repo">Forigado de la deponejo…</string>
-  <string name="adding_apks_format">Aldonado de %s al la deponejo…</string>
-  <string name="linking_apks">Ligado de APK al la deponejo…</string>
-  <string name="copying_icons">Kopiado de aplikaĵ-emblemoj al la deponejo…</string>
-  <string name="icon">Emblemo</string>
-  <string name="next">Sekvi</string>
-  <string name="skip">Preterpasi</string>
-  <string name="no_permissions">Neniu permeso estas uzata.</string>
-  <string name="theme">Etoso</string>
-  <string name="repo_num_apps">Nombro da aplikaĵoj</string>
-  <string name="repo_description">Priskribo</string>
-  <string name="repo_last_update">Lasta ĝisdatigo</string>
-  <string name="repo_name">Nomo</string>
-  <string name="unknown">Nekonata</string>
-  <string name="repo_confirm_delete_title">Ĉu forigi la deponejon?</string>
-  <string name="repo_added">Konservis la F-Droidan deponejon %1$s.</string>
-  <string name="repo_searching_address">Serĉado de F-Droida deponejo ĉe %1$s</string>
-  <string name="minsdk_or_later">%s aŭ posta</string>
-  <string name="up_to_maxsdk">Ĝis %s</string>
-  <string name="minsdk_up_to_maxsdk">De %1$s ĝis %2$s</string>
-  <string name="requires_features">Postulas: %1$s</string>
-  <string name="category_Development">Programado</string>
-  <string name="category_Games">Ludoj</string>
-  <string name="category_Internet">Interreto</string>
-  <string name="category_Multimedia">Plurmedioj</string>
-  <string name="category_Navigation">Navigado</string>
-  <string name="category_Phone_SMS">Telefono k etmesaĝado</string>
-  <string name="category_Reading">Legado</string>
-  <string name="category_Science_Education">Scienco k edukado</string>
-  <string name="category_Security">Sekureco</string>
-  <string name="category_System">Sistemo</string>
-  <string name="swap_no_wifi_network">Ankoraŭ neniu reto</string>
-  <string name="swap_view_available_networks">Tuŝu por montri disponeblajn retojn</string>
-  <string name="open_qr_code_scanner">Malfermi QR-kodan skanilon</string>
-  <string name="swap_welcome">Bonvenon al F-Droid!</string>
-<string name="app_name">F-Droid</string>
+    <string name="version">Versio</string>
+    <string name="delete">Forigi</string>
+    <string name="updates">Ĝisdatigoj</string>
+    <string name="other">Aliaj</string>
+    <string name="automatic_scan_wifi">Nur per vifio</string>
+    <string name="notify">Sciigoj pri ĝisdatigoj</string>
+    <string name="notify_on">Sciigi kiam ĝisdatigoj estas disponeblaj</string>
+    <string name="app_details">Aplikaĵaj detaloj</string>
+    <string name="no_such_app">Neniu aplikaĵo trovita.</string>
+    <string name="about_title">Pri F-Droid</string>
+    <string name="about_site">Retejo</string>
+    <string name="about_mail">Retpoŝto</string>
+    <string name="about_version">Versio</string>
+    <string name="app_installed">Instalita</string>
+    <string name="app_not_installed">Neinstalita</string>
+    <string name="app_inst_known_source">Instalita (el %s)</string>
+    <string name="app_inst_unknown_source">Instalita (el nekonata fonto)</string>
+    <string name="added_on">Aldonita je %s</string>
+    <string name="ok">Bone</string>
+    <string name="yes">Jes</string>
+    <string name="no">Ne</string>
+    <string name="repo_add_title">Aldoni novan deponejon</string>
+    <string name="repo_add_add">Aldoni</string>
+    <string name="cancel">Nuligi</string>
+    <string name="overwrite">Anstataŭigi</string>
+    <string name="fdroid_updates_available">F-Droidaj ĝisdatigoj disponeblaj</string>
+    <string name="send_via_bluetooth">Sendi per Bludento</string>
+    <string name="repo_add_url">Deponeja adreso</string>
+    <string name="menu_update_repo">Ĝisdatigi deponejojn</string>
+    <string name="menu_manage">Deponejoj</string>
+    <string name="menu_about">Pri</string>
+    <string name="menu_search">Serĉi</string>
+    <string name="menu_add_repo">Nova deponejo</string>
+    <string name="menu_launch">Lanĉi</string>
+    <string name="menu_share">Kunhavigi</string>
+    <string name="menu_install">Instali</string>
+    <string name="menu_uninstall">Malinstali</string>
+    <string name="menu_ignore_all">Ignori ĉiujn ĝisdatigojn</string>
+    <string name="menu_ignore_this">Ignori ĉi tiun ĝisdatigon</string>
+    <string name="menu_website">Retejo</string>
+    <string name="menu_issues">Eraroj</string>
+    <string name="menu_source">Fontkodo</string>
+    <string name="menu_upgrade">Ĝisdatigi</string>
+    <string name="menu_donate">Donaci</string>
+    <string name="details_installed">Versio %s instalita</string>
+    <string name="details_notinstalled">Neinstalita</string>
+    <string name="antiadslist">Ĉi tiu aplikaĵo enhavas reklamojn</string>
+    <string name="antitracklist">Ĉi tiu aplikaĵo spuras kaj raportas vian agadon</string>
+    <string name="antinonfreeadlist">Ĉi tiu aplikaĵo favoras neliberajn aldonaĵojn</string>
+    <string name="antinonfreenetlist">Ĉi tiu aplikaĵo favoras neliberajn retservojn</string>
+    <string name="antinonfreedeplist">Ĉi tiu aplikaĵo dependas de aliaj neliberaj aplikaĵoj</string>
+    <string name="antiupstreamnonfreelist">La fontkodo ne estas tute libera</string>
+    <string name="display">Aspekto</string>
+    <string name="expert">Altnivelo</string>
+    <string name="expert_on">Montri aldonajn informojn kaj aktivigi aldonajn agordojn</string>
+    <string name="search_hint">Serĉi aplikaĵojn</string>
+    <string name="appcompatibility">Aplikaĵa kongrueco</string>
+    <string name="show_incompat_versions">Nekongruaj versioj</string>
+    <string name="show_incompat_versions_on">Montri aplikaĵ-versiojn nekongruajn kun la aparato</string>
+    <string name="rooted">Ĉefuzanto</string>
+    <string name="rooted_on">Ne grizigi aplikaĵojn, kiuj postulas ĉefuzantajn privilegiojn</string>
+    <string name="ignoreTouch">Ignori tuŝekranon</string>
+    <string name="ignoreTouch_on">Ĉiam inkluzivi aplikaĵojn, kiuj postulas tuŝekranon</string>
+    <string name="local_repo">Loka deponejo</string>
+    <string name="deleting_repo">Forigado de la deponejo…</string>
+    <string name="adding_apks_format">Aldonado de %s al la deponejo…</string>
+    <string name="linking_apks">Ligado de APK al la deponejo…</string>
+    <string name="copying_icons">Kopiado de aplikaĵ-emblemoj al la deponejo…</string>
+    <string name="icon">Emblemo</string>
+    <string name="next">Sekvi</string>
+    <string name="skip">Preterpasi</string>
+    <string name="no_permissions">Neniu permeso estas uzata.</string>
+    <string name="theme">Etoso</string>
+    <string name="repo_num_apps">Nombro da aplikaĵoj</string>
+    <string name="repo_description">Priskribo</string>
+    <string name="repo_last_update">Lasta ĝisdatigo</string>
+    <string name="repo_name">Nomo</string>
+    <string name="unknown">Nekonata</string>
+    <string name="repo_confirm_delete_title">Ĉu forigi la deponejon?</string>
+    <string name="repo_added">Konservis la F-Droidan deponejon %1$s.</string>
+    <string name="repo_searching_address">Serĉado de F-Droida deponejo ĉe %1$s</string>
+    <string name="minsdk_or_later">%s aŭ posta</string>
+    <string name="up_to_maxsdk">Ĝis %s</string>
+    <string name="minsdk_up_to_maxsdk">De %1$s ĝis %2$s</string>
+    <string name="requires_features">Postulas: %1$s</string>
+    <string name="category_Development">Programado</string>
+    <string name="category_Games">Ludoj</string>
+    <string name="category_Internet">Interreto</string>
+    <string name="category_Multimedia">Plurmedioj</string>
+    <string name="category_Navigation">Navigado</string>
+    <string name="category_Phone_SMS">Telefono k etmesaĝado</string>
+    <string name="category_Reading">Legado</string>
+    <string name="category_Science_Education">Scienco k edukado</string>
+    <string name="category_Security">Sekureco</string>
+    <string name="category_System">Sistemo</string>
+    <string name="swap_no_wifi_network">Ankoraŭ neniu reto</string>
+    <string name="swap_view_available_networks">Tuŝu por montri disponeblajn retojn</string>
+    <string name="open_qr_code_scanner">Malfermi QR-kodan skanilon</string>
+    <string name="swap_welcome">Bonvenon al F-Droid!</string>
+    <string name="app_name">F-Droid</string>
 
-    <string name="installIncompatible">Ŝajnas ke ĉi tiu pakaĵo ne kongruas kun via aparato. Ĉu vi malgraŭe volas provi instali ĝin?</string>
+    <string name="installIncompatible">Ŝajnas ke ĉi tiu pakaĵo ne kongruas kun via aparato. Ĉu vi malgraŭe volas provi
+        instali ĝin?
+    </string>
     <string name="unstable_updates">Nestabilaj ĝisdatigoj</string>
     <string name="update_interval">Intervalo de aŭtomata ĝisdatigo</string>
-    <string name="installDowngrade">Vi klopodas malpromocii ĉi tiun aplikaĵon. Fari tion eble malfunkciigos ĝin kaj eĉ perdigos viajn datumojn. Ĉu vi volas klopodi malpromocii ĝin ĉiaokaze?</string>
-    <string name="SignatureMismatch">La nova versio estas subskribita per diferenca ŝlosilo. Por instali la novan version, la malnova devas esti malinstalita unue. Bonvolu fari tion kaj reprovi. (rigardu ke malinstalado forigos ĉiujn internajn datumojn konservitajn en la aplikaĵo)</string>
+    <string name="installDowngrade">Vi klopodas malpromocii ĉi tiun aplikaĵon. Fari tion eble malfunkciigos ĝin kaj eĉ
+        perdigos viajn datumojn. Ĉu vi volas klopodi malpromocii ĝin ĉiaokaze?
+    </string>
+    <string name="SignatureMismatch">La nova versio estas subskribita per diferenca ŝlosilo. Por instali la novan
+        version, la malnova devas esti malinstalita unue. Bonvolu fari tion kaj reprovi. (rigardu ke malinstalado
+        forigos ĉiujn internajn datumojn konservitajn en la aplikaĵo)
+    </string>
     <string name="by_author">de</string>
     <string name="enable_nfc_send">Aktivigi sendadon tra NFC…</string>
     <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>
@@ -113,9 +120,12 @@
     <string name="update_interval_zero">Neniam aŭtomate ĝisdatigi listojn de aplikaĵoj</string>
     <string name="automatic_scan_wifi_on">Ĝisdatigi listojn aŭtomate nur per netarifaj retoj kiel vifio</string>
     <string name="system_installer">Privilegia aldonaĵo</string>
-    <string name="system_installer_on">Uzi privilegian F-Droid-aldonaĵon por instali, ĝisdatigi kaj forigi pakaĵojn</string>
+    <string name="system_installer_on">Uzi privilegian F-Droid-aldonaĵon por instali, ĝisdatigi kaj forigi pakaĵojn
+    </string>
     <string name="uninstall_system">Ĝisdatigi/malinstali privilegian aldonaĵon</string>
-    <string name="uninstall_system_summary">Malfermi detalan ekranon de Privilegia Aldonaĵo por ĝisdatigi/malinstali ĝin</string>
+    <string name="uninstall_system_summary">Malfermi detalan ekranon de Privilegia Aldonaĵo por ĝisdatigi/malinstali
+        ĝin
+    </string>
     <string name="local_repo_name">Nomo de loka deponejo</string>
     <string name="local_repo_name_summary">La anoncata nomo de via loka deponejo: %s</string>
     <string name="local_repo_https">Uzi privatan konekton</string>
@@ -142,11 +152,15 @@
     <string name="bluetooth_activity_not_found">Neniu Bludenta metodo de sendo trovita, elektu iun!</string>
     <string name="choose_bt_send">Elektu Bludentan metodon de sendo</string>
     <string name="repo_add_fingerprint">Fingrospuro (malnepra)</string>
-    <string name="repo_exists_add_fingerprint">Ĉi tiu deponejo estas jam instalita, tio aldonos novan informon pri ŝlosilo.</string>
+    <string name="repo_exists_add_fingerprint">Ĉi tiu deponejo estas jam instalita, tio aldonos novan informon pri
+        ŝlosilo.
+    </string>
     <string name="repo_exists_enable">Ĉi tiu deponejo estas jam instalita, konfirmu ke vi volas reaktivigi ĝin.</string>
     <string name="repo_exists_and_enabled">La deponejo estas jam instalita kaj aktiva.</string>
     <string name="bad_fingerprint">Erara fingrospuro</string>
-    <string name="repo_delete_to_overwrite">Vi devas unue forigi ĉi tiun deponejon antaŭ vi povos aldoni alian kun diferenca ŝlosilo.</string>
+    <string name="repo_delete_to_overwrite">Vi devas unue forigi ĉi tiun deponejon antaŭ vi povos aldoni alian kun
+        diferenca ŝlosilo.
+    </string>
     <string name="invalid_url">Ĉi tio ne estas ĝusta URL.</string>
     <string name="malformed_repo_uri">Transsaltis eraran URI de deponejo: %s</string>
 
@@ -162,7 +176,9 @@
     <string name="antinonfreeassetslist">Ĉi tiu aplikaĵo enhavas neliberan enhavon</string>
 
     <string name="local_repo_running">F-Droid estas preta por interŝanĝo</string>
-    <string name="touch_to_configure_local_repo">Tuŝu por rigardi detalojn kaj permesi aliajn interŝanĝi viajn aplikaĵojn.</string>
+    <string name="touch_to_configure_local_repo">Tuŝu por rigardi detalojn kaj permesi aliajn interŝanĝi viajn
+        aplikaĵojn.
+    </string>
     <string name="writing_index_jar">Konservado de subskribita indeksa dosiero (index.jar)…</string>
     <string name="proxy">Prokurilo</string>
     <string name="enable_proxy_title">Aktivigi HTTP prokurilon</string>
@@ -173,20 +189,23 @@
     <string name="proxy_port_summary">Agordi pordan numeron de via prokurilo (ekz. 8118)</string>
 
     <string name="status_download">Elŝutado
-%2$s / %3$s (%4$d%%) el
-%1$s</string>
+        %2$s / %3$s (%4$d%%) el
+        %1$s
+    </string>
 
     <string name="status_download_unknown_size">Elŝutado
-%2$s el
-%1$s</string>
+        %2$s el
+        %1$s
+    </string>
     <string name="update_notification_title">Ĝisdatigado de deponejoj</string>
     <string name="status_processing_xml_percent">Prilaborado de %2$s / %3$s (%4$d%%) el %1$s</string>
     <string name="status_connecting_to_repo">Konektado al
-%1$s</string>
+        %1$s
+    </string>
     <string name="status_inserting_apps">Konservado de aplikaĵaj detaloj</string>
     <string name="repos_unchanged">Ĉiuj deponejoj estas ĝisdatigitaj</string>
-        <string name="all_other_repos_fine">En ĉiuj aliaj deponejoj ne okazis erarojn.</string>
-        <string name="global_error_updating_repos">Eraro dum ĝisdatigado: %s</string>
+    <string name="all_other_repos_fine">En ĉiuj aliaj deponejoj ne okazis erarojn.</string>
+    <string name="global_error_updating_repos">Eraro dum ĝisdatigado: %s</string>
     <string name="permissions">Permesoj</string>
     <string name="no_handler_app">Vi ne havas iun ajn disponeblan aplikaĵon, kiu povas trakti %s.</string>
     <string name="unsigned">Nesubskribita</string>
@@ -194,15 +213,24 @@
     <string name="repo_details">Deponejo</string>
     <string name="repo_url">Adreso</string>
     <string name="repo_fingerprint">Fingrospuro de subskrib-ŝlosilo (SHA-256)</string>
-    <string name="unsigned_description">Tio ĉi signifas, ke la listo de aplikaĵoj ne povas esti verigita. Vi devas esti singarda kun aplikaĵoj elŝutitaj el nesubskribitaj indeksoj.</string>
-    <string name="repo_not_yet_updated">La deponejo ne estas jam uzita. Vi devas aktivigi ĝin por vidi la aplikaĵojn, kiujn ĝi liveras.</string>
-    <string name="repo_confirm_delete_body">Forigado de deponejo kaŭzos, ke aplikaĵojn ĝi liveras ne plu estos disponeblaj en F-Droid.
+    <string name="unsigned_description">Tio ĉi signifas, ke la listo de aplikaĵoj ne povas esti verigita. Vi devas esti
+        singarda kun aplikaĵoj elŝutitaj el nesubskribitaj indeksoj.
+    </string>
+    <string name="repo_not_yet_updated">La deponejo ne estas jam uzita. Vi devas aktivigi ĝin por vidi la aplikaĵojn,
+        kiujn ĝi liveras.
+    </string>
+    <string name="repo_confirm_delete_body">Forigado de deponejo kaŭzos, ke aplikaĵojn ĝi liveras ne plu estos
+        disponeblaj en F-Droid.
 
-Rigardu: ĉiuj antaŭe konservitaj aplikaĵoj restos en via aparato.</string>
+        Rigardu: ĉiuj antaŭe konservitaj aplikaĵoj restos en via aparato.
+    </string>
     <string name="repo_disabled_notification">%1$s malaktiva.
 
-Vi devos reaktivigi ĉi tiun deponejon por instali aplikaĵojn el ĝi.</string>
-    <string name="not_on_same_wifi">Via aparato ne estas en la sama vifi-reto kiel la loka deponejo, kiun vi ĵus aldonis! Provu konekti al ĉi tiu reto: %s</string>
+        Vi devos reaktivigi ĉi tiun deponejon por instali aplikaĵojn el ĝi.
+    </string>
+    <string name="not_on_same_wifi">Via aparato ne estas en la sama vifi-reto kiel la loka deponejo, kiun vi ĵus
+        aldonis! Provu konekti al ĉi tiu reto: %s
+    </string>
     <string name="pref_language">Lingvo</string>
     <string name="pref_language_default">Sistema implicita</string>
 
@@ -219,43 +247,66 @@ Vi devos reaktivigi ĉi tiun deponejon por instali aplikaĵojn el ĝi.</string>
 
     <string name="empty_installed_app_list">Neniu aplikaĵo instalita.
 
-En via aparato estas aplikaĵoj, tamen ili ne estas disponeblaj el F-Droid. Eble vi devas ĝisdatigi viajn deponejojn, aŭ la deponejoj vere ne enhavas viajn aplikaĵojn.</string>
+        En via aparato estas aplikaĵoj, tamen ili ne estas disponeblaj el F-Droid. Eble vi devas ĝisdatigi viajn
+        deponejojn, aŭ la deponejoj vere ne enhavas viajn aplikaĵojn.
+    </string>
     <string name="empty_available_app_list">Nenia aplikaĵo en ĉi tiu kategorio.
 
-Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan liston de aplikaĵojn.</string>
-    <string name="empty_can_update_app_list">Ĉiuj aplikaĵoj estas ĝisdataj.\n\nGratulon! Ĉiuj viaj aplikaĵoj estas ĝisdataj (aŭ viaj deponejoj estas neĝisdataj).</string>
+        Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan liston de aplikaĵojn.
+    </string>
+    <string name="empty_can_update_app_list">Ĉiuj aplikaĵoj estas ĝisdataj.\n\nGratulon! Ĉiuj viaj aplikaĵoj estas
+        ĝisdataj (aŭ viaj deponejoj estas neĝisdataj).
+    </string>
     <string name="empty_search_installed_app_list">Neniuj kongruaj instalitaj aplikaĵoj.</string>
     <string name="empty_search_available_app_list">Neniuj kongruaj aplikaĵoj disponeblaj.</string>
     <string name="empty_search_can_update_app_list">Neniuj kongruaj aplikaĵoj por ĝisdatigi.</string>
 
     <string name="requesting_root_access_body">Petado pri ĉefuzanta aliro…</string>
     <string name="root_access_denied_title">Ĉefuzanta aliro malpermesita</string>
-    <string name="root_access_denied_body">Aŭ via Androida aparato ne havas ĉefuzantan aliron, aŭ vi malpermesis ĉefuzantan aliron al F-Droid.</string>
+    <string name="root_access_denied_body">Aŭ via Androida aparato ne havas ĉefuzantan aliron, aŭ vi malpermesis
+        ĉefuzantan aliron al F-Droid.
+    </string>
     <string name="install_error_unknown">Instalo malsukcesis pro nekonata eraro</string>
     <string name="uninstall_error_unknown">Malinstalo malsukcesis pro nekonata eraro</string>
     <string name="system_install_denied_title">Privilegia F-Droid-aldonaĵo ne disponebla</string>
-    <string name="system_install_denied_body">Ĉi tiu agordo estas nur disponebla kiam privilegia F-Droid-aldonaĵo estas instalita.</string>
-    <string name="system_install_denied_signature">La subskribo de aldonaĵo estas erara! Bonvolu krei erar-raporton!</string>
+    <string name="system_install_denied_body">Ĉi tiu agordo estas nur disponebla kiam privilegia F-Droid-aldonaĵo estas
+        instalita.
+    </string>
+    <string name="system_install_denied_signature">La subskribo de aldonaĵo estas erara! Bonvolu krei erar-raporton!
+    </string>
     <string name="system_install_button_install">Instali</string>
     <string name="system_install_button_open">Malfermi aldonaĵon</string>
-    <string name="system_install_denied_permissions">La privilegia aldonaĵo ne akiris ĉefuzantan permeson! Bonvolu krei erar-raporton!</string>
+    <string name="system_install_denied_permissions">La privilegia aldonaĵo ne akiris ĉefuzantan permeson! Bonvolu krei
+        erar-raporton!
+    </string>
     <string name="system_install_post_success">Sukcese instalis privilegian F-Droid-aldonaĵon</string>
     <string name="system_install_post_fail">Instalado de privilegia F-Droid-aldonaĵo malsukcesis</string>
-    <string name="system_install_post_success_message">Privilegia F-Droid-aldonaĵo estas instalita senerare. Ĉi tio ebligos al F-Droid instali, ĝisdatigi kaj malinstali aplikaĵojn per si mem.</string>
-    <string name="system_install_post_fail_message">La instalado de Privilegia F-Droid-aldonaĵo malsukcesis. La instala metodo ne estas subtenata de ĉiuj Androidaj distribuaĵoj, bonvolu konsiliĝi en la F-Droida erar-spurilo por pli da informoj.</string>
+    <string name="system_install_post_success_message">Privilegia F-Droid-aldonaĵo estas instalita senerare. Ĉi tio
+        ebligos al F-Droid instali, ĝisdatigi kaj malinstali aplikaĵojn per si mem.
+    </string>
+    <string name="system_install_post_fail_message">La instalado de Privilegia F-Droid-aldonaĵo malsukcesis. La instala
+        metodo ne estas subtenata de ĉiuj Androidaj distribuaĵoj, bonvolu konsiliĝi en la F-Droida erar-spurilo por pli
+        da informoj.
+    </string>
     <string name="system_install_installing">Instalado…</string>
     <string name="system_install_installing_rebooting">Instalado kaj restartado…</string>
     <string name="system_install_uninstalling">Malinstalado…</string>
     <string name="system_install_question">Ĉu vi volas instali privilegian F-Droid-aldonaĵon?</string>
     <string name="system_install_warning">Ĉi tio daŭros ĝis 10 sekundoj.</string>
-    <string name="system_install_warning_lollipop">Ĉi tio daŭros ĝis 10 sekundoj kaj la aparato estos poste <b>restartita</b>.</string>
+    <string name="system_install_warning_lollipop">Ĉi tio daŭros ĝis 10 sekundoj kaj la aparato estos poste<b>
+        restartita</b>.
+    </string>
     <string name="system_uninstall">Ĉu vi certe volas malinstali privilegian F-Droid-aldonaĵon?</string>
     <string name="system_uninstall_button">Malinstali</string>
 
     <string name="swap_nfc_title">Tuŝu por interŝanĝi</string>
-    <string name="swap_nfc_description">Se via amiko havas F-Droid kaj aktivigan NFC, vi povas tuŝi viajn aparatojn kune.</string>
+    <string name="swap_nfc_description">Se via amiko havas F-Droid kaj aktivigan NFC, vi povas tuŝi viajn aparatojn
+        kune.
+    </string>
     <string name="swap_join_same_wifi">Konektu al la sama vifio kiel via amiko</string>
-    <string name="swap_join_same_wifi_desc">Por interŝanĝi per vifio, certigu ke vi estas en la sama reto. Se vi ne havas aliron al la sama reto, unu el vi povas krei vifian retkaptejon.</string>
+    <string name="swap_join_same_wifi_desc">Por interŝanĝi per vifio, certigu ke vi estas en la sama reto. Se vi ne
+        havas aliron al la sama reto, unu el vi povas krei vifian retkaptejon.
+    </string>
     <string name="swap_join_this_hotspot">Helpu al via amiko aligi vian retkaptejon</string>
     <string name="swap">Interŝanĝi aplikaĵojn</string>
     <string name="swap_success">Interŝanĝo sukcesis!</string>
@@ -284,21 +335,34 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
     <string name="swap_confirm">Konfirmi interŝanĝon</string>
     <string name="swap_qr_isnt_for_swap">La skanita QR-kodo ne estas interŝanĝa kodo.</string>
     <string name="bluetooth_unavailable">Bludento ne disponebla</string>
-    <string name="swap_cant_send_no_bluetooth">Ne povas sendi F-Droid, ĉar Bludento ne estas disponebla en via aparato.</string>
+    <string name="swap_cant_send_no_bluetooth">Ne povas sendi F-Droid, ĉar Bludento ne estas disponebla en via
+        aparato.
+    </string>
     <string name="loading">Prilaborado…</string>
-    <string name="swap_connection_misc_error">Eraro okazis dum konektado al aparato, verŝajne ne povas interŝanĝi kun ĝi.</string>
+    <string name="swap_connection_misc_error">Eraro okazis dum konektado al aparato, verŝajne ne povas interŝanĝi kun
+        ĝi.
+    </string>
     <string name="swap_not_enabled">Interŝanĝo malaktiva</string>
     <string name="swap_not_enabled_description">Antaŭ interŝanĝo via aparato devas esti videbla.</string>
 
     <string name="install_confirm">postulas permeson al</string>
-    <string name="install_confirm_update">Ĉu vi volas instali ĝisdatigon al ĉi tiu aplikaĵo? Viaj nunaj datumoj ne foriĝos. La ĝisdatiga aplikaĵo povos aliri al:</string>
-    <string name="install_confirm_update_system">Ĉu vi volas instali ĝisdatigon al ĉi tiu integrigita aplikaĵo? Viaj nunaj datumoj ne foriĝos. La ĝisdatiga aplikaĵo povos aliri al:</string>
-    <string name="install_confirm_update_no_perms">Ĉu vi volas instali ĝisdatigon al ĉi tiu estanta aplikaĵo? Viaj nunaj datumoj ne foriĝos. Ĝi ne postulas iun ajn specialan permeson.</string>
-    <string name="install_confirm_update_system_no_perms">Ĉu vi volas instali ĝisdatigon al ĉi tiu integrigita aplikaĵo? Viaj nunaj datumoj ne foriĝos. Ĝi ne bezonas iun ajn specialan permeson.</string>
+    <string name="install_confirm_update">Ĉu vi volas instali ĝisdatigon al ĉi tiu aplikaĵo? Viaj nunaj datumoj ne
+        foriĝos. La ĝisdatiga aplikaĵo povos aliri al:
+    </string>
+    <string name="install_confirm_update_system">Ĉu vi volas instali ĝisdatigon al ĉi tiu integrigita aplikaĵo? Viaj
+        nunaj datumoj ne foriĝos. La ĝisdatiga aplikaĵo povos aliri al:
+    </string>
+    <string name="install_confirm_update_no_perms">Ĉu vi volas instali ĝisdatigon al ĉi tiu estanta aplikaĵo? Viaj nunaj
+        datumoj ne foriĝos. Ĝi ne postulas iun ajn specialan permeson.
+    </string>
+    <string name="install_confirm_update_system_no_perms">Ĉu vi volas instali ĝisdatigon al ĉi tiu integrigita aplikaĵo?
+        Viaj nunaj datumoj ne foriĝos. Ĝi ne bezonas iun ajn specialan permeson.
+    </string>
     <string name="newPerms">Nova(j)</string>
     <string name="allPerms">Ĉio</string>
     <string name="perm_costs_money">Ĉi tio povas elspezi vian monon</string>
-    <string name="uninstall_update_confirm">Ĉu vi volas anstataŭigi ĉi tiun aplikaĵon per la antaŭinstalita versio?</string>
+    <string name="uninstall_update_confirm">Ĉu vi volas anstataŭigi ĉi tiun aplikaĵon per la antaŭinstalita versio?
+    </string>
     <string name="uninstall_confirm">Ĉu vi volas malinstali ĉi tiun aplikaĵon?</string>
     <string name="tap_to_install">Elŝuto finiĝis, tuŝu por instali</string>
     <string name="download_error">Elŝuto malsukcesis</string>
@@ -320,22 +384,28 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
     <string name="theme_night">Nokta</string>
 
     <string name="crash_dialog_title">F-Droid kolapsis</string>
-    <string name="crash_dialog_text">Senatenda eraro okazis kaj devigis aplikaĵon halti. Ĉu vi volas retmesaĝi detalojn por helpi ripari la eraron?</string>
+    <string name="crash_dialog_text">Senatenda eraro okazis kaj devigis aplikaĵon halti. Ĉu vi volas retmesaĝi detalojn
+        por helpi ripari la eraron?
+    </string>
     <string name="crash_dialog_comment_prompt">Vi povas aldoni ekstrajn informojn kaj komentojn ĉi tien:</string>
-<string name="useTor">Uzi Tor</string>
+    <string name="useTor">Uzi Tor</string>
     <string name="useTorSummary">Devigi elŝuti per Tor-reto por plibonigi privatecon</string>
     <string name="swap_stopping_wifi">Ĉesado de vifio…</string>
     <string name="repo_provider">Deponejo: %s</string>
 
     <string name="update_auto_download">Aŭtomate elŝuti ĝisdatigojn</string>
-    <string name="update_auto_download_summary">Elŝuti dosierojn de ĝisdatigoj fone kaj vi ricevos sciigon por ilin instali</string>
+    <string name="update_auto_download_summary">Elŝuti dosierojn de ĝisdatigoj fone kaj vi ricevos sciigon por ilin
+        instali
+    </string>
     <string name="tap_to_install_format">Tuŝu por instali %s</string>
     <string name="tap_to_update_format">Tuŝu por ĝisdatigi %s</string>
     <string name="download_pending">Atendado je instalado…</string>
 
     <string name="downloading_apk">Elŝutado de %1$s</string>
 
-    <string name="system_install_not_supported">Instalado de Privilegia F-Droid-aldonaĵo ne estas nuntempe subtenata en Android 5.1 aŭ posta.</string>
+    <string name="system_install_not_supported">Instalado de Privilegia F-Droid-aldonaĵo ne estas nuntempe subtenata en
+        Android 5.1 aŭ posta.
+    </string>
 
     <string name="keep_hour">1 horo</string>
     <string name="keep_day">1 tago</string>
@@ -386,14 +456,8 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
     <string name="notification_action_cancel">Nuligi</string>
     <string name="notification_action_install">Instali</string>
 
-<string name="app_version_x_available">Versio %1$s disponebla</string>
+    <string name="app_version_x_available">Versio %1$s disponebla</string>
     <string name="app_version_x_installed">Versio %1$s</string>
-
-    <plurals name="my_apps_header_number_of_updateable">
-	<item quantity="one">%1$d ĝisdatigo</item>
-	<item quantity="other">%1$d ĝisdatigoj</item>
-</plurals>
-
     <string name="clear_search">Forviŝi serĉon</string>
 
     <string name="main_menu__latest_apps">Novaj</string>
@@ -402,11 +466,11 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Montri aplikaĵon "</item>
-	<item quantity="other">" Montri ĉiujn %d "</item>
-</plurals>
+        <item quantity="one">Montri aplikaĵon</item>
+        <item quantity="other">Montri ĉiujn %d</item>
+    </plurals>
 
-<string name="app_recommended_version_installed">Versio %1$s (konsilinda)</string>
+    <string name="app_recommended_version_installed">Versio %1$s (konsilinda)</string>
     <string name="app__newly_added">Nova</string>
 
     <string name="installed_apps__activity_title">Instalitaj aplikaĵoj</string>
@@ -420,18 +484,18 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
     <string name="tts_category_name">Kategorio %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Montri la ununuran aplikaĵon en la kategorio %2$s</item>
-	<item quantity="other">Montri ĉiujn %1$s aplikaĵojn en la kategorio %2$s</item>
-</plurals>
-<string name="app__install_downloaded_update">Ĝisdatigi</string>
+        <item quantity="one">Montri la ununuran aplikaĵon en la kategorio %2$s</item>
+        <item quantity="other">Montri ĉiujn %1$s aplikaĵojn en la kategorio %2$s</item>
+    </plurals>
+    <string name="app__install_downloaded_update">Ĝisdatigi</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Ĝisdatigi %1$s</string>
     <string name="app_list__name__downloaded_and_ready_to_install">Instali %1$s</string>
     <string name="app_list__name__downloading_in_progress">Elŝutado de %1$s</string>
     <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">Eldonita antaŭ %1$d tago</item>
-	<item quantity="other">Eldonita antaŭ %1$d tagoj</item>
-</plurals>
+        <item quantity="one">Eldonita antaŭ %1$d tago</item>
+        <item quantity="other">Eldonita antaŭ %1$d tagoj</item>
+    </plurals>
 
     <string name="updates__tts__download_app">Elŝuti</string>
     <string name="updates__tts__download_updates_for_all_apps">Elŝuti ĉiujn ĝisdatigojn</string>
@@ -440,27 +504,34 @@ Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan
     <string name="updates__show_updateable_apps">Montri aplikaĵojn</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">Elŝuti ĝisdatigon por %1$d aplikaĵo.</item>
-	<item quantity="other">Elŝuti ĝisdatigojn por %1$d aplikaĵoj.</item>
-</plurals>
+        <item quantity="one">Elŝuti ĝisdatigon por %1$d aplikaĵo.</item>
+        <item quantity="other">Elŝuti ĝisdatigojn por %1$d aplikaĵoj.</item>
+    </plurals>
 
     <string name="details_new_in_version">Nova en versio %s</string>
 
     <string name="antifeatureswarning">Ĉi tiu aplikaĵo enhavas eblojn, kiujn vi eble ne ŝatas.</string>
     <string name="antifeatures">Fiebloj</string>
+    <string name="details_last_updated_today">Ĝisdatigita hodiaŭ</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Ĝisdatigita hodiaŭ</item>
-	<item quantity="other">Ĝisdatigita antaŭ %1$s tagoj</item>
-</plurals>
-<string name="app_list__name__successfully_installed">%1$s instalita sukcese</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Seninterrete? Elŝutu aplikaĵojn el proksimaj uloj!</string>
+        <item quantity="one">Ĝisdatigita hodiaŭ</item>
+        <item quantity="other">Ĝisdatigita antaŭ %1$s tagoj</item>
+    </plurals>
+    <string name="app_list__name__successfully_installed">%1$s instalita sukcese</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Seninterrete? Elŝutu aplikaĵojn el proksimaj uloj!
+    </string>
     <string name="nearby_splash__find_people_button">Trovi proksimajn ulojn</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Ambaŭ flankoj bezonas %1$s por uzi proksiman interŝanĝon.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambaŭ flankoj bezonas %1$s por uzi proksiman interŝanĝon.
+    </string>
 
     <string name="latest__empty_state__no_recent_apps">Neniuj novaj aplikaĵoj</string>
-    <string name="latest__empty_state__never_updated">Kiam la listo de aplikaĵoj estos ĝisdatigita, plej novaj aplikaĵoj ĉi tie aperos</string>
-    <string name="latest__empty_state__no_enabled_repos">Kiam vi aktivigos deponejon kaj ĝi estos ĝisdatigita, plej novaj aplikaĵoj ĉi tie aperos</string>
+    <string name="latest__empty_state__never_updated">Kiam la listo de aplikaĵoj estos ĝisdatigita, plej novaj aplikaĵoj
+        ĉi tie aperos
+    </string>
+    <string name="latest__empty_state__no_enabled_repos">Kiam vi aktivigos deponejon kaj ĝi estos ĝisdatigita, plej
+        novaj aplikaĵoj ĉi tie aperos
+    </string>
 
     <string name="categories__empty_state__no_categories">Neniuj kategorioj por montri</string>
 
-    </resources>
+</resources>

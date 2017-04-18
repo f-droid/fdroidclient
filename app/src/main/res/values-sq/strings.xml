@@ -1,8 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
-<resources><string name="app_name">F-Droid</string>
+<resources>
+    <string name="app_name">F-Droid</string>
 
-    <string name="SignatureMismatch">Versioni i ri është i nënshkruar me një çelës të ndryshëm nga ai i vjetri. Për të instaluar versionin e ri, së pari duhet të çinstalohet versioni i vjetër. Ju lutem provojeni dhe provoni përsëri.\n(Vini re që çinstalimi do të fshijë çdo të dhënë të brendshme të ruajtur nga aplikacioni)</string>
-    <string name="installIncompatible">Mesa duket kjo paketë nuk përputhet me pajisjen tuaj. Dëshironi të provoni ta instaloni sidoqoftë?</string>
+    <string name="SignatureMismatch">Versioni i ri është i nënshkruar me një çelës të ndryshëm nga ai i vjetri. Për të
+        instaluar versionin e ri, së pari duhet të çinstalohet versioni i vjetër. Ju lutem provojeni dhe provoni
+        përsëri.\n(Vini re që çinstalimi do të fshijë çdo të dhënë të brendshme të ruajtur nga aplikacioni)
+    </string>
+    <string name="installIncompatible">Mesa duket kjo paketë nuk përputhet me pajisjen tuaj. Dëshironi të provoni ta
+        instaloni sidoqoftë?
+    </string>
     <string name="version">Versioni</string>
     <string name="delete">Fshi</string>
     <string name="updates">Përditësime</string>
@@ -103,13 +109,13 @@
     <string name="theme_light">Çiltër</string>
     <string name="theme_dark">Errët</string>
     <string name="theme_night">Natë</string>
-<string name="login_password">Fjalëkalimi</string>
+    <string name="login_password">Fjalëkalimi</string>
     <string name="repo_edit_credentials">Nrysho Fjalëkalimin</string>
     <string name="crash_dialog_comment_prompt">Këtu mundë të shtosh detaje dhe komente shtesë:</string>
-<string name="perms_new_perm_prefix">"Risi: "</string>
+    <string name="perms_new_perm_prefix">"Risi: "</string>
     <string name="perms_description_app">Mundësuar nga %1$s.</string>
     <string name="allPerms">Të gjitha</string>
     <string name="about_license">Licenca</string>
 
     <string name="app_incompatible">I mospërputhshëm</string>
-    </resources>
+</resources>

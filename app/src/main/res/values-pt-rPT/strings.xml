@@ -1,9 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">F-Droid</string>
+<resources>
+    <string name="app_name">F-Droid</string>
 
-    <string name="SignatureMismatch">A nova versão está assinada com uma chave diferente da antiga. Para instalar a nova versão, tem que desinstalar a antiga. Remova a aplicação e tente novamente. (Tenha em atenção que irá apagar todos os dados guardados pela aplicação)</string>
-    <string name="installIncompatible">Parece que este pacote não é compatível com o seu dispositivo. Deseja tentar a instalação?</string>
-    <string name="installDowngrade">Está a tentar desatualizar esta aplicação. Se o fizer pode perder os seus dados e provocar um funcionamento errático. Tem a certeza de que o deseja fazer?</string>
+    <string name="SignatureMismatch">A nova versão está assinada com uma chave diferente da antiga. Para instalar a nova
+        versão, tem que desinstalar a antiga. Remova a aplicação e tente novamente. (Tenha em atenção que irá apagar
+        todos os dados guardados pela aplicação)
+    </string>
+    <string name="installIncompatible">Parece que este pacote não é compatível com o seu dispositivo. Deseja tentar a
+        instalação?
+    </string>
+    <string name="installDowngrade">Está a tentar desatualizar esta aplicação. Se o fizer pode perder os seus dados e
+        provocar um funcionamento errático. Tem a certeza de que o deseja fazer?
+    </string>
     <string name="version">Versão</string>
     <string name="delete">Apagar</string>
     <string name="enable_nfc_send">Ativar o envio NFC…</string>
@@ -16,13 +24,18 @@
     <string name="update_interval">Intervalo de atualização automática</string>
     <string name="update_interval_zero">Não atualizar automaticamente a lista de aplicações</string>
     <string name="automatic_scan_wifi">Apenas por Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Apenas atualizar a lista de aplicações se estiver ligado a redes Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Apenas atualizar a lista de aplicações se estiver ligado a redes Wi-Fi
+    </string>
     <string name="notify">Notificação de atualizações</string>
     <string name="notify_on">Mostrar uma notificação se existirem atualizações disponíveis</string>
     <string name="system_installer">Extensão privilegiada</string>
-    <string name="system_installer_on">Utilizar a extensão privilegiada do F-Droid para instalar, atualizar e remover pacotes</string>
+    <string name="system_installer_on">Utilizar a extensão privilegiada do F-Droid para instalar, atualizar e remover
+        pacotes
+    </string>
     <string name="uninstall_system">Atualizar/desinstalar extensão privilegiada</string>
-    <string name="uninstall_system_summary">Abrir ecrã de detalhes da extensão privilegiada para a atualizar/desinstalar</string>
+    <string name="uninstall_system_summary">Abrir ecrã de detalhes da extensão privilegiada para a
+        atualizar/desinstalar
+    </string>
     <string name="local_repo_name">Nome do seu repositório local</string>
     <string name="local_repo_name_summary">O título anunciado do seu repositório local: %s</string>
     <string name="local_repo_https">Utilizar ligação privada</string>
@@ -66,10 +79,14 @@
 
     <string name="repo_add_url">Endereço do repositório</string>
     <string name="repo_add_fingerprint">Identificação digital (opcional)</string>
-    <string name="repo_exists_add_fingerprint">Este repositório já está configurado, isto adicionará nova informação sobre a chave.</string>
+    <string name="repo_exists_add_fingerprint">Este repositório já está configurado, isto adicionará nova informação
+        sobre a chave.
+    </string>
     <string name="repo_exists_enable">Este repositório já está configurado, confirme que o quer reativar.</string>
     <string name="repo_exists_and_enabled">O repositório de receção já está configurado e ativado.</string>
-    <string name="repo_delete_to_overwrite">Tem de apagar este repositório antes de adicionar outro com uma chave diferente.</string>
+    <string name="repo_delete_to_overwrite">Tem de apagar este repositório antes de adicionar outro com uma chave
+        diferente.
+    </string>
     <string name="bad_fingerprint">Identificação inválida</string>
     <string name="invalid_url">Este URL não é válido.</string>
     <string name="malformed_repo_uri">A ignorar URI de repositório inválido: %s</string>
@@ -149,8 +166,8 @@
     <string name="status_processing_xml_percent">A processar %2$s/%3$s (%4$d%%) de %1$s</string>
     <string name="status_connecting_to_repo">Estabelecendo\nligação a %1$s</string>
     <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
-        <string name="all_other_repos_fine">Nenhum dos repositórios gerou erros.</string>
-        <string name="global_error_updating_repos">Erro ao atualizar: %s</string>
+    <string name="all_other_repos_fine">Nenhum dos repositórios gerou erros.</string>
+    <string name="global_error_updating_repos">Erro ao atualizar: %s</string>
     <string name="no_permissions">Não utiliza permissões.</string>
     <string name="no_handler_app">Não possui uma aplicação capaz de manipular %s.</string>
     <string name="theme">Tema</string>
@@ -164,26 +181,32 @@
     <string name="repo_last_update">Última atualização</string>
     <string name="repo_name">Nome</string>
     <string name="unsigned_description">Isto significa que a lista de aplicações não pode
-ser verificada. Deve ter muito cuidado ao descarregar
-aplicações de índices não assinados.</string>
+        ser verificada. Deve ter muito cuidado ao descarregar
+        aplicações de índices não assinados.
+    </string>
     <string name="repo_not_yet_updated">Este repositório ainda não foi utilizado.
-Tem que o ativar para ver as aplicações disponibilizadas.</string>
+        Tem que o ativar para ver as aplicações disponibilizadas.
+    </string>
     <string name="unknown">Desconhecido</string>
     <string name="repo_confirm_delete_title">Apagar repositório?</string>
     <string name="repo_confirm_delete_body">Ao apagar um repositório, as aplicações por ele
-disponibilizadas não estarão disponíveis no F-Droid.
+        disponibilizadas não estarão disponíveis no F-Droid.
 
-Nota:
-todas as aplicações instaladas não serão afetadas.</string>
+        Nota:
+        todas as aplicações instaladas não serão afetadas.
+    </string>
     <string name="repo_disabled_notification">%1$s desativado.
 
-Tem que ativar o repositório para poder instalar aplicações.</string>
+        Tem que ativar o repositório para poder instalar aplicações.
+    </string>
     <string name="repo_added">Repositório %1$s guardado.</string>
     <string name="repo_searching_address">A procurar um repositório F-Droid em\n%1$s</string>
     <string name="minsdk_or_later">%s ou posterior</string>
     <string name="up_to_maxsdk">Até %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s até %2$s</string>
-    <string name="not_on_same_wifi">O seu dispositivo não está ligado à rede Wi-Fi do repositório adicionado! Tente entrar nesta rede: %s</string>
+    <string name="not_on_same_wifi">O seu dispositivo não está ligado à rede Wi-Fi do repositório adicionado! Tente
+        entrar nesta rede: %s
+    </string>
     <string name="requires_features">Requer: %1$s</string>
     <string name="pref_language">Idioma</string>
     <string name="pref_language_default">Definições do sistema</string>
@@ -209,38 +232,63 @@ Tem que ativar o repositório para poder instalar aplicações.</string>
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Escrita</string>
 
-    <string name="empty_installed_app_list">Não existem aplicações instaladas.\n\nExistem aplicações no seu dispositivo que não estão disponíveis no F-Droid. Pode ser necessário atualizar os seus repositórios ou os repositórios não possuem quaisquer aplicações.</string>
-    <string name="empty_available_app_list">Não existem aplicações nesta categoria.\n\nSelecione uma categoria diferente ou atualize os repositórios para obter a lista de aplicações.</string>
-    <string name="empty_can_update_app_list">Todas as aplicações estão atualizadas.\n\nParabéns! Todas as aplicações estão atualizadas (ou os repositórios não o estão).</string>
+    <string name="empty_installed_app_list">Não existem aplicações instaladas.\n\nExistem aplicações no seu dispositivo
+        que não estão disponíveis no F-Droid. Pode ser necessário atualizar os seus repositórios ou os repositórios não
+        possuem quaisquer aplicações.
+    </string>
+    <string name="empty_available_app_list">Não existem aplicações nesta categoria.\n\nSelecione uma categoria diferente
+        ou atualize os repositórios para obter a lista de aplicações.
+    </string>
+    <string name="empty_can_update_app_list">Todas as aplicações estão atualizadas.\n\nParabéns! Todas as aplicações
+        estão atualizadas (ou os repositórios não o estão).
+    </string>
 
     <string name="requesting_root_access_body">A solicitar acesso \'root\'…</string>
     <string name="root_access_denied_title">Acesso \'root\' recusado</string>
-    <string name="root_access_denied_body">O dispositivo Android não está \'rooted\' ou você recusou o acesso \'root\' solicitado pelo F-Droid.</string>
+    <string name="root_access_denied_body">O dispositivo Android não está \'rooted\' ou você recusou o acesso \'root\'
+        solicitado pelo F-Droid.
+    </string>
     <string name="install_error_unknown">Falha de instalação devido a um erro desconhecido</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
     <string name="system_install_denied_title">A extensão privilegiada do F-Droid não está disponível</string>
-    <string name="system_install_denied_body">Esta opção só está disponível se a extensão privilegiada do F-Droid estiver instalada.</string>
-    <string name="system_install_denied_signature">A assinatura da extensão é inválida. Por favor reporte este erro!</string>
-    <string name="system_install_denied_permissions">Não foram concedidas as permissões necessárias para a extensão. Por favor reporte este erro!</string>
+    <string name="system_install_denied_body">Esta opção só está disponível se a extensão privilegiada do F-Droid
+        estiver instalada.
+    </string>
+    <string name="system_install_denied_signature">A assinatura da extensão é inválida. Por favor reporte este erro!
+    </string>
+    <string name="system_install_denied_permissions">Não foram concedidas as permissões necessárias para a extensão. Por
+        favor reporte este erro!
+    </string>
     <string name="system_install_button_install">Instalar</string>
     <string name="system_install_button_open">Abrir extensão</string>
     <string name="system_install_post_success">Extensão privilegiada F-Droid instalada com sucesso</string>
     <string name="system_install_post_fail">Extensão privilegiada F-Droid não instalada</string>
-    <string name="system_install_post_success_message">A extensão privilegiada F-Droid foi instalada com sucesso. Esta extensão permite que o F-Droid instale, atualize e desinstale aplicações por si só.</string>
-    <string name="system_install_post_fail_message">A extensão privilegiada F-Droid não foi instalada. O método de instalação não é suportado por todas as distribuições Android. Por favor consulte o \'bug tracker\' do F-Droid para mais informações.</string>
+    <string name="system_install_post_success_message">A extensão privilegiada F-Droid foi instalada com sucesso. Esta
+        extensão permite que o F-Droid instale, atualize e desinstale aplicações por si só.
+    </string>
+    <string name="system_install_post_fail_message">A extensão privilegiada F-Droid não foi instalada. O método de
+        instalação não é suportado por todas as distribuições Android. Por favor consulte o \'bug tracker\' do F-Droid
+        para mais informações.
+    </string>
     <string name="system_install_installing">A instalar…</string>
     <string name="system_install_installing_rebooting">A instalar e reiniciar…</string>
     <string name="system_install_uninstalling">A desinstalar…</string>
     <string name="system_install_question">Deseja instalar a extensão privilegiada F-Droid?</string>
     <string name="system_install_warning">Demora cerca de 10 segundos.</string>
-    <string name="system_install_warning_lollipop">Demora cerca de 10 segundos, após os quais o dispositivo será <b>reiniciado</b>.</string>
+    <string name="system_install_warning_lollipop">Demora cerca de 10 segundos, após os quais o dispositivo será<b>
+        reiniciado</b>.
+    </string>
     <string name="system_uninstall">Deseja desinstalar a extensão privilegiada F-Droid?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Toque para trocar</string>
-    <string name="swap_nfc_description">Se o seu amigo(a) possui o F-Droid e o NFC ativo, juntem os vossos dispositivos.</string>
+    <string name="swap_nfc_description">Se o seu amigo(a) possui o F-Droid e o NFC ativo, juntem os vossos
+        dispositivos.
+    </string>
     <string name="swap_join_same_wifi">Entre na mesma rede Wi-fi do seu amigo(a)</string>
-    <string name="swap_join_same_wifi_desc">Para trocar através de Wi-Fi, certifique-se que estão ambos na mesma rede. Se não estiverem na mesma rede, um de vós pode criar um \'hotspot\' Wi-Fi.</string>
+    <string name="swap_join_same_wifi_desc">Para trocar através de Wi-Fi, certifique-se que estão ambos na mesma rede.
+        Se não estiverem na mesma rede, um de vós pode criar um \'hotspot\' Wi-Fi.
+    </string>
     <string name="swap_join_this_hotspot">Ajude o seu amigo a entrar no seu \'hotspot\'</string>
     <string name="swap">Trocar aplicações</string>
     <string name="swap_success">Troca efetuada!</string>
@@ -274,8 +322,10 @@ Tem que ativar o repositório para poder instalar aplicações.</string>
 
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
-<string name="swap_confirm_connect">Deseja obter agora as aplicações de %1$s?</string>
-    <string name="swap_scan_or_type_url">Uma pessoa tem que digitalizar o código ou digitar o URL da outra no navegador web.</string>
+    <string name="swap_confirm_connect">Deseja obter agora as aplicações de %1$s?</string>
+    <string name="swap_scan_or_type_url">Uma pessoa tem que digitalizar o código ou digitar o URL da outra no navegador
+        web.
+    </string>
     <string name="swap_scan_qr">Digitalizar código QR</string>
     <string name="swap_people_nearby">Vizinhança</string>
     <string name="swap_scanning_for_peers">A pesquisar pessoas na vizinhança…</string>
@@ -291,8 +341,11 @@ Tem que ativar o repositório para poder instalar aplicações.</string>
     <string name="swap_confirm">Confirmação de troca</string>
     <string name="swap_qr_isnt_for_swap">O código QR digitalizado não parece ser um código de troca.</string>
     <string name="bluetooth_unavailable">Bluetooth não disponível</string>
-    <string name="swap_cant_send_no_bluetooth">Não pode enviar o F-Droid porque o Bluetooth não está ativo no dispositivo.</string>
-    <string name="swap_connection_misc_error">Ocorreu um erro ao estabelecer a ligação e não será possível a troca.</string>
+    <string name="swap_cant_send_no_bluetooth">Não pode enviar o F-Droid porque o Bluetooth não está ativo no
+        dispositivo.
+    </string>
+    <string name="swap_connection_misc_error">Ocorreu um erro ao estabelecer a ligação e não será possível a troca.
+    </string>
     <string name="swap_not_enabled">Troca não ativa</string>
     <string name="swap_not_enabled_description">Antes de trocar, o seu dispositivo tem que estar disponível.</string>
 
@@ -302,24 +355,28 @@ Tem que ativar o repositório para poder instalar aplicações.</string>
 
     <string name="permissions">Permissões</string>
     <string name="install_confirm_update">Deseja instalar uma atualização para esta aplicação?
-Os seus dados não serão perdidos.
-A aplicação atualizada terá acesso a:</string>
+        Os seus dados não serão perdidos.
+        A aplicação atualizada terá acesso a:
+    </string>
     <string name="install_confirm_update_system">Deseja instalar uma atualização para esta aplicação
-do sistema? Os seus dados não serão perdidos.
-A aplicação atualizada terá acesso a:</string>
+        do sistema? Os seus dados não serão perdidos.
+        A aplicação atualizada terá acesso a:
+    </string>
     <string name="install_confirm_update_no_perms">Deseja instalar uma atualização para esta aplicação?
-Os seus dados não serão perdidos.
-A aplicação atualizada não requer acessos especiais.</string>
+        Os seus dados não serão perdidos.
+        A aplicação atualizada não requer acessos especiais.
+    </string>
     <string name="install_confirm_update_system_no_perms">Deseja instalar uma atualização para esta aplicação
-do sistema? Os seus dados não serão perdidos.
-A aplicação atualizada não requer qualquer acesso especial.</string>
+        do sistema? Os seus dados não serão perdidos.
+        A aplicação atualizada não requer qualquer acesso especial.
+    </string>
     <string name="uninstall_update_confirm">Deseja restaurar esta aplicação para a sua versão de fábrica?</string>
     <string name="uninstall_confirm">Deseja desinstalar esta aplicação?</string>
     <string name="tap_to_install">Descarga terminada. Toque para instalar.</string>
     <string name="download_error">Descarga não efetuada</string>
 
     <string name="theme_night">Noite</string>
-<string name="menu_settings">Definições</string>
+    <string name="menu_settings">Definições</string>
     <string name="login_title">Requer autenticação</string>
     <string name="login_name">Nome de utilizador</string>
     <string name="login_password">Palavra-passe</string>
@@ -337,10 +394,11 @@ A aplicação atualizada não requer qualquer acesso especial.</string>
 
     <string name="crash_dialog_title">O F-Droid terminou abruptamente</string>
     <string name="crash_dialog_text">Ocorreu um erro inesperado que obrigou
-ao encerramento da aplicação.
-Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
+        ao encerramento da aplicação.
+        Gostaria de nos enviar um e-mail com os detalhes do erro?
+    </string>
     <string name="crash_dialog_comment_prompt">Pode adicionar algumas informações e comentários aqui:</string>
-<string name="by_author">de</string>
+    <string name="by_author">de</string>
     <string name="menu_email">E-mail do autor</string>
     <string name="repo_provider">Repositório: %s</string>
 
@@ -348,14 +406,17 @@ Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
     <string name="useTorSummary">Descarregar aplicações através da rede Tor para manter a privacidade</string>
     <string name="swap_stopping_wifi">A parar Wi-Fi…</string>
     <string name="update_auto_download">Obter atualizações automaticamente</string>
-    <string name="update_auto_download_summary">As descargas são automáticas e você será notificado para as instalar</string>
+    <string name="update_auto_download_summary">As descargas são automáticas e você será notificado para as instalar
+    </string>
     <string name="tap_to_install_format">Toque para instalar %s</string>
     <string name="tap_to_update_format">Toque para atualizar %s</string>
     <string name="download_pending">À espera da descarga…</string>
 
     <string name="downloading_apk">A descarregar %1$s</string>
 
-    <string name="system_install_not_supported">Atualmente, ainda não é possível instalar a F-Droid Privileged Extension em sistemas Android &gt; 5.1.</string>
+    <string name="system_install_not_supported">Atualmente, ainda não é possível instalar a F-Droid Privileged Extension
+        em sistemas Android &gt; 5.1.
+    </string>
 
     <string name="install_error_notify_title">Erro ao instalar %s</string>
     <string name="uninstall_error_notify_title">Erro ao desinstalar %s</string>
@@ -389,13 +450,14 @@ Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
     <string name="app_list__name__downloading_in_progress">A descarregar %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s instalada com sucesso</string>
     <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">Disponibilizada há %1$s dia</item>
-	<item quantity="other">Disponibilizada há %1$s dias</item>
-</plurals>
+        <item quantity="one">Disponibilizada há %1$s dia</item>
+        <item quantity="other">Disponibilizada há %1$s dias</item>
+    </plurals>
 
     <string name="installed_apps__activity_title">Aplicações instaladas</string>
     <string name="installed_app__updates_ignored">Atualizações ignoradas</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s
+    </string>
     <string name="updates__tts__download_app">Descarregar</string>
     <string name="updates__tts__download_updates_for_all_apps">Descarregar todas as atualizações</string>
 
@@ -403,9 +465,9 @@ Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
     <string name="updates__show_updateable_apps">Mostrar aplicações</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">A descarregar atualização para %1$s aplicação.</item>
-	<item quantity="other">A descarregar atualizações para %1$s aplicações.</item>
-</plurals>
+        <item quantity="one">A descarregar atualização para %1$s aplicação.</item>
+        <item quantity="other">A descarregar atualizações para %1$s aplicações.</item>
+    </plurals>
 
     <string name="versions">Versões</string>
     <string name="clear_search">Limpar pesquisa</string>
@@ -416,8 +478,12 @@ Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
     <string name="main_menu__swap_nearby">Vizinhança</string>
 
     <string name="latest__empty_state__no_recent_apps">Nenhuma aplicação recente</string>
-    <string name="latest__empty_state__never_updated">Assim que a lista de aplicações estiver atualizada, as aplicações mais recentes serão mostradas aqui.</string>
-    <string name="latest__empty_state__no_enabled_repos">Assim que ativar um repositório e este estiver atualizado, as aplicações mais recentes serão mostradas aqui.</string>
+    <string name="latest__empty_state__never_updated">Assim que a lista de aplicações estiver atualizada, as aplicações
+        mais recentes serão mostradas aqui.
+    </string>
+    <string name="latest__empty_state__no_enabled_repos">Assim que ativar um repositório e este estiver atualizado, as
+        aplicações mais recentes serão mostradas aqui.
+    </string>
 
     <string name="categories__empty_state__no_categories">Nenhuma categoria para mostrar</string>
 
@@ -433,11 +499,13 @@ Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
     <string name="hide_anti_feature_apps_on">Sombrear aplicações cque necessitem de anti-funcionalidades</string>
     <string name="warning_no_internet">Atualização impossível. Está ligado à Internet?</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Ver %d "</item>
-	<item quantity="other">" Ver %d "</item>
-</plurals>
+        <item quantity="one">Ver %d</item>
+        <item quantity="other">Ver %d</item>
+    </plurals>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Descarregue as aplicações através de pessoas perto de si!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Descarregue as aplicações através de
+        pessoas perto de si!
+    </string>
     <string name="nearby_splash__find_people_button">Encontrar pessoas perto de mim</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes necessitam de %1$s.</string>
 
@@ -466,13 +534,14 @@ Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
 
     <string name="tts_category_name">Categoria %1$s</string>
 
+    <string name="details_last_updated_today">Atualizado hoje</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Atualizada há %1$s dia</item>
-	<item quantity="other">Atualizada há %1$s dias</item>
-</plurals>
-<plurals name="tts_view_all_in_category">
-	<item quantity="one">Ver a única aplicação da categoria %2$s</item>
-	<item quantity="other">Ver todas as %1$d aplicações da categoria %2$s</item>
-</plurals>
+        <item quantity="one">Atualizada há %1$s dia</item>
+        <item quantity="other">Atualizada há %1$s dias</item>
+    </plurals>
+    <plurals name="tts_view_all_in_category">
+        <item quantity="one">Ver a única aplicação da categoria %2$s</item>
+        <item quantity="other">Ver todas as %1$d aplicações da categoria %2$s</item>
+    </plurals>
 
-    </resources>
+</resources>
