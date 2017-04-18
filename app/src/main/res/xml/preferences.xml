@@ -41,7 +41,8 @@
             android:defaultValue="true"
             android:key="updateNotify" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/display">
+    <PreferenceCategory android:title="@string/display"
+                        android:key="pref_category_display">
         <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/pref_language"
             android:key="language"/>
         <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/theme"
