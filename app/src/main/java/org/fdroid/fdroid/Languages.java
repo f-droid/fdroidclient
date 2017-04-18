@@ -47,6 +47,7 @@ public final class Languages {
         activity.getWindowManager().getDefaultDisplay().getMetrics(ignored);
         Resources resources;
         Set<Locale> localeSet = new LinkedHashSet<>();
+        Locale currentLocale = config.locale;
         for (Locale locale : LOCALES_TO_TEST) {
             config.locale = locale;
             resources = new Resources(assets, ignored, config);
@@ -55,6 +56,8 @@ public final class Languages {
                 localeSet.add(locale);
             }
         }
+        config.locale = currentLocale;
+
         for (Locale locale : localeSet) {
             if (locale.equals(TIBETAN)) {
                 // include English name for devices without Tibetan font support
@@ -71,7 +74,6 @@ public final class Languages {
         }
 
         /* SYSTEM_DEFAULT is a fake one for displaying in a chooser menu. */
-        localeSet.add(null);
         tmpMap.put(USE_SYSTEM_DEFAULT, activity.getString(resId));
         nameMap = Collections.unmodifiableMap(tmpMap);
     }
@@ -137,8 +139,6 @@ public final class Languages {
             config.locale = locale;
         }
         resources.updateConfiguration(config, resources.getDisplayMetrics());
-        Locale.setDefault(locale);
-
     }
 
     /**
