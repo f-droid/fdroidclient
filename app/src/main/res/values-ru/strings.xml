@@ -344,7 +344,7 @@
     <string name="update_auto_install_summary">Загружать и устанавливать обновления в фоне</string>
     <string name="keep_install_history">Хранить историю установок</string>
     <string name="keep_install_history_summary">Хранить в F-Droid журнал всех установок и удалений</string>
-    <string name="hide_anti_feature_apps">Выделять приложения с нежелательными функциями</string>
+    <string name="hide_anti_feature_apps">Сомнительные приложения</string>
     <string name="hide_anti_feature_apps_on">Выделять серым цветом приложения, содержащие нежелательный функционал</string>
     <string name="warning_no_internet">Не могу обновить. Вы подключены к интернету?</string>
     <string name="versions">Версии</string>
@@ -383,18 +383,18 @@
     <string name="app__newly_added">Новое</string>
     <string name="app_list__name__successfully_installed">%1$s успешно установлено</string>
     <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">Выпущено %1$d день назад</item>
-    <item quantity="few">Выпущено %1$d день назад</item>
-    <item quantity="many">Выпущено %1$d день назад</item>
-	<item quantity="other">Выпущено %1$d дня назад</item>
+	<item quantity="one">Опубликовано %1$d день назад</item>
+	<item quantity="few">Опубликовано %1$d дня назад</item>
+	<item quantity="many">Опубликовано %1$d дней назад</item>
+	<item quantity="other"/>
 </plurals>
 
     <string name="categories__empty_state__no_categories">Нет категорий для показа</string>
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Смотреть все %d "</item>
-	<item quantity="few">" Смотреть все %d "</item>
-	<item quantity="many">" Смотреть все %d "</item>
+	<item quantity="one">Смотреть все %d</item>
+	<item quantity="few">Смотреть все %d</item>
+	<item quantity="many">Смотреть все %d</item>
 	<item quantity="other"/>
 </plurals>
 
@@ -411,7 +411,7 @@
     <string name="notification_title_summary_downloading_update">Загрузка обновления…</string>
     <string name="notification_action_update">Обновить</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Обновлено %1$s дня назад</item>
+    <item quantity="one">Обновлено %1$s дня назад</item>
 	<item quantity="few">Обновлено %1$s дня назад</item>
 	<item quantity="many">Обновлено %1$s дней назад</item>
 	<item quantity="other"/>
@@ -432,13 +432,13 @@
     <string name="app_list__name__downloaded_and_ready_to_install">Установить %1$s</string>
     <string name="app_list__name__downloading_in_progress">Загружается %1$s</string>
     <string name="updates__tts__download_app">Скачать</string>
-    <string name="installed_app__updates_ignored">Обновления игнорируются</string>
+    <string name="installed_app__updates_ignored">Пропущенные обновления</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Обновления игнорируются для версии %1$s</string>
     <string name="main_menu__latest_apps">Новинки</string>
     <string name="latest__empty_state__never_updated">Как только список приложений обновится, тут появятся самые свежие приложения</string>
     <string name="latest__empty_state__no_enabled_repos">Как только Вы включите репозитории и позволите их обновлять, тут появятся свежие приложения</string>
 
-    <string name="antifeatures">Вредный функционал</string>
+    <string name="antifeatures">Нежелательный функционал</string>
     <string name="notification_summary_updates">%1$d обновлений</string>
     <string name="notification_summary_installed">%1$d приложений установлено</string>
     <string name="notification_title_summary_installing">Установка</string>
@@ -446,9 +446,12 @@
     <string name="notification_title_summary_install_error">Установка не удалась</string>
     <plurals name="tts_view_all_in_category">
 	<item quantity="one">Посмотреть %1$d приложение в категории %2$s</item>
-    <item quantity="few">Посмотреть %1$d приложения в категории %2$s</item>
-    <item quantity="many">Посмотреть %1$d приложения в категории %2$s</item>
-	<item quantity="other">Посмотреть %1$d приложения в категории %2$s</item>
+	<item quantity="few">Посмотреть %1$d приложения в категории %2$s</item>
+	<item quantity="many">Посмотреть %1$d приложений в категории %2$s</item>
+	<item quantity="other"/>
 </plurals>
+
+    <string name="latest__empty_state__no_recent_apps">Нет недавних приложений</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Обоим участникам нужен %1$s чтобы передавать приложения.</string>
 
     </resources>
