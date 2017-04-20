@@ -36,10 +36,10 @@ import java.util.ArrayList;
 
 class NotificationHelper {
 
-    private static final String BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED = "org.fdroid.fdroid.installer.notifications.allupdates.cleared";
-    private static final String BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED = "org.fdroid.fdroid.installer.notifications.allinstalled.cleared";
-    private static final String BROADCAST_NOTIFICATIONS_UPDATE_CLEARED = "org.fdroid.fdroid.installer.notifications.update.cleared";
-    private static final String BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED = "org.fdroid.fdroid.installer.notifications.installed.cleared";
+    static final String BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED = "org.fdroid.fdroid.installer.notifications.allupdates.cleared";
+    static final String BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED = "org.fdroid.fdroid.installer.notifications.allinstalled.cleared";
+    static final String BROADCAST_NOTIFICATIONS_UPDATE_CLEARED = "org.fdroid.fdroid.installer.notifications.update.cleared";
+    static final String BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED = "org.fdroid.fdroid.installer.notifications.installed.cleared";
 
     private static final int NOTIFY_ID_UPDATES = 1;
     private static final int NOTIFY_ID_INSTALLED = 2;
@@ -47,7 +47,7 @@ class NotificationHelper {
     private static final int MAX_UPDATES_TO_SHOW = 5;
     private static final int MAX_INSTALLED_TO_SHOW = 10;
 
-    private static final String EXTRA_NOTIFICATION_KEY = "key";
+    static final String EXTRA_NOTIFICATION_KEY = "key";
     private static final String GROUP_UPDATES = "updates";
     private static final String GROUP_INSTALLED = "installed";
 
@@ -69,39 +69,7 @@ class NotificationHelper {
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
 
-        // We need to listen to when notifications are cleared, so that we "forget" all that we currently know about updates
-        // and installs.
         IntentFilter filter = new IntentFilter();
-        filter.addAction(BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED);
-        filter.addAction(BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED);
-        filter.addAction(BROADCAST_NOTIFICATIONS_UPDATE_CLEARED);
-        filter.addAction(BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED);
-        BroadcastReceiver receiverNotificationsCleared = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                switch (intent.getAction()) {
-                    case BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED:
-                        appUpdateStatusManager.clearAllUpdates();
-                        break;
-                    case BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED:
-                        appUpdateStatusManager.clearAllInstalled();
-                        break;
-                    case BROADCAST_NOTIFICATIONS_UPDATE_CLEARED:
-                        // If clearing apps in state "InstallError" (like when auto-cancelling) we
-                        // remove them from the status manager entirely.
-                        AppUpdateStatusManager.AppUpdateStatus appUpdateStatus = appUpdateStatusManager.get(intent.getStringExtra(EXTRA_NOTIFICATION_KEY));
-                        if (appUpdateStatus != null && appUpdateStatus.status == AppUpdateStatusManager.Status.InstallError) {
-                            appUpdateStatusManager.removeApk(intent.getStringExtra(EXTRA_NOTIFICATION_KEY));
-                        }
-                        break;
-                    case BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED:
-                        appUpdateStatusManager.removeApk(intent.getStringExtra(EXTRA_NOTIFICATION_KEY));
-                        break;
-                }
-            }
-        };
-        context.registerReceiver(receiverNotificationsCleared, filter);
-        filter = new IntentFilter();
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED);
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
@@ -371,6 +339,7 @@ class NotificationHelper {
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_UPDATE_CLEARED);
         intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getUniqueKey());
+        intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
         return builder.build();
@@ -429,6 +398,7 @@ class NotificationHelper {
         }
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED);
+        intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
         return builder.build();
@@ -456,6 +426,7 @@ class NotificationHelper {
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED);
         intentDeleted.putExtra(EXTRA_NOTIFICATION_KEY, entry.getUniqueKey());
+        intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
         return builder.build();
@@ -501,6 +472,7 @@ class NotificationHelper {
                     .setGroupSummary(true);
         }
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED);
+        intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
         return builder.build();

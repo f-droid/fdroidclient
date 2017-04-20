@@ -145,7 +145,7 @@ public class FDroidApp extends Application {
 
     /**
      * Force reload the {@link Activity to make theme changes take effect.}
-     * Same as {@link Languages.forceChangeLanguage}
+     * Same as {@link Languages#forceChangeLanguage(Activity)}
      *
      * @param activity the {@code Activity} to force reload
      */
