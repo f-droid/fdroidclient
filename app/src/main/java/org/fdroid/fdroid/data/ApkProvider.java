@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
@@ -172,6 +173,16 @@ public class ApkProvider extends FDroidProvider {
                 cursor.close();
             }
             return apk;
+        }
+
+        @NonNull
+        public static List<Apk> findApksByHash(Context context, String apkHash) {
+            ContentResolver resolver = context.getContentResolver();
+            final Uri uri = getContentUri();
+            String selection = " apk." + Cols.HASH + " = ? ";
+            String[] selectionArgs = new String[]{apkHash};
+            Cursor cursor = resolver.query(uri, Cols.ALL, selection, selectionArgs, null);
+            return cursorToList(cursor);
         }
     }
 
