@@ -8,5 +8,7 @@
         <attr name="mainTabSwapSplashTint" format="color" />
         <attr name="categoryName" format="color" />
         <attr name="installedApps" format="color" />
+        <attr name="detailPanel" format="color" />
+        <attr name="appListItem" format="color" />
     </declare-styleable>
 </resources>

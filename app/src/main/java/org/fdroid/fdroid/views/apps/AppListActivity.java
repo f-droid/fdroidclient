@@ -18,6 +18,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
@@ -35,6 +36,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_app_list);
