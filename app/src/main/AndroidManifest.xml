@@ -229,6 +229,7 @@
                 <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
+
         <receiver android:name=".receiver.PackageManagerReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
@@ -238,10 +239,15 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
+
         <receiver android:name=".receiver.WifiStateChangeReceiver" >
             <intent-filter>
                 <action android:name="android.net.wifi.STATE_CHANGE" />
             </intent-filter>
+        </receiver>
+
+        <receiver android:name=".NotificationBroadcastReceiver" android:exported="false">
+            <!-- Doesn't require an intent-filter because it is explicitly invoked via Intent.setClass() -->
         </receiver>
 
         <service android:name=".UpdateService" />
