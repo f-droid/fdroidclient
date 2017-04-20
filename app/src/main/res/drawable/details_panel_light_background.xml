@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <corners android:radius="3dp" />
-    <solid android:color="@color/details_panel_light" />
+    <solid android:color="?attr/detailPanel" />
 </shape>
