@@ -84,20 +84,25 @@ public class AppUpdateStatusService extends IntentService {
             return null;
         }
 
-        // It makes zero difference whether we return the apk from one repo or another. The hash
-        // calculation shows that they are exactly the same binary.
+        // It makes zero difference which apk we get from this list. By definition they all have
+        // the exact same hash, and are thus the same binary.
         Apk downloadedApk = apksMatchingHash.get(0);
 
         PackageInfo installedInfo = null;
         try {
             installedInfo = getPackageManager().getPackageInfo(downloadedApk.packageName, PackageManager.GET_META_DATA);
-        } catch (PackageManager.NameNotFoundException ignored) {}
+        } catch (PackageManager.NameNotFoundException ignored) { }
 
         if (installedInfo == null) {
-            // This will return some false positives, because it is possible that
-            // the user downloaded + installed, tried the apk, and then uninstalled it.
-            Utils.debugLog(TAG, downloadedApk.packageName + " is not installed, so presuming we need to notify the user about installing it.");
-            return downloadedApk;
+            if (AppUpdateStatusManager.getInstance(this).isPendingInstall(hash)) {
+                Utils.debugLog(TAG, downloadedApk.packageName + " is not installed, so presuming we need to notify the user about installing it.");
+                return downloadedApk;
+            } else {
+                // It was probably downloaded for a previous install, and then subsequently removed
+                // (but stayed in the cache, as is the designed behaviour). Under these circumstances
+                // we don't want to tell the user to try and install it.
+                return null;
+            }
         }
 
         if (installedInfo.versionCode >= downloadedInfo.versionCode) {

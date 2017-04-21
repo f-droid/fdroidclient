@@ -138,6 +138,7 @@ public class InstallManagerService extends Service {
                 DownloaderService.cancel(this, apk.getPatchObbUrl());
                 DownloaderService.cancel(this, apk.getMainObbUrl());
             }
+            appUpdateStatusManager.markAsNoLongerPendingInstall(urlString);
             appUpdateStatusManager.removeApk(urlString);
             return START_NOT_STICKY;
         } else if (!ACTION_INSTALL.equals(action)) {
@@ -164,7 +165,9 @@ public class InstallManagerService extends Service {
             Utils.debugLog(TAG, "Intent had null EXTRA_APP and/or EXTRA_APK: " + intent);
             return START_NOT_STICKY;
         }
+
         appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.Unknown, null);
+        appUpdateStatusManager.markAsPendingInstall(urlString);
 
         registerApkDownloaderReceivers(urlString);
         getObb(urlString, apk.getMainObbUrl(), apk.getMainObbFile(), apk.obbMainFileSha256);
@@ -295,6 +298,7 @@ public class InstallManagerService extends Service {
                         }
                         break;
                     case Downloader.ACTION_INTERRUPTED:
+                        appUpdateStatusManager.markAsNoLongerPendingInstall(urlString);
                         appUpdateStatusManager.updateApk(urlString, AppUpdateStatusManager.Status.Unknown, null);
                         localBroadcastManager.unregisterReceiver(this);
                         break;
@@ -334,6 +338,7 @@ public class InstallManagerService extends Service {
                         appUpdateStatusManager.updateApk(downloadUrl, AppUpdateStatusManager.Status.Installing, null);
                         break;
                     case Installer.ACTION_INSTALL_COMPLETE:
+                        appUpdateStatusManager.markAsNoLongerPendingInstall(downloadUrl);
                         appUpdateStatusManager.updateApk(downloadUrl, AppUpdateStatusManager.Status.Installed, null);
                         Apk apkComplete =  appUpdateStatusManager.getApk(downloadUrl);
 
@@ -350,6 +355,7 @@ public class InstallManagerService extends Service {
                         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
                         String errorMessage =
                                 intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
+                        appUpdateStatusManager.markAsNoLongerPendingInstall(downloadUrl);
                         if (!TextUtils.isEmpty(errorMessage)) {
                             appUpdateStatusManager.setApkError(apk, errorMessage);
                         } else {

@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -34,6 +35,8 @@ import java.util.Map;
  * APK on different servers, signed by different keys, or even different builds.
  */
 public final class AppUpdateStatusManager {
+
+    private static final String TAG = "AppUpdateStatusManager";
 
     /**
      * Broadcast when:
@@ -124,9 +127,13 @@ public final class AppUpdateStatusManager {
     private final HashMap<String, AppUpdateStatus> appMapping = new HashMap<>();
     private boolean isBatchUpdating;
 
+    /** @see #isPendingInstall(String) */
+    private final SharedPreferences apksPendingInstall;
+
     private AppUpdateStatusManager(Context context) {
         this.context = context;
         localBroadcastManager = LocalBroadcastManager.getInstance(context.getApplicationContext());
+        apksPendingInstall = context.getSharedPreferences("apks-pending-install", Context.MODE_PRIVATE);
     }
 
     @Nullable
@@ -419,4 +426,54 @@ public final class AppUpdateStatusManager {
                 errorDialogIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
     }
+
+    /**
+     * Note that this could technically be made private and automatically invoked when
+     * {@link #addApk(Apk, Status, PendingIntent)} is called, but that would greatly reduce
+     * the maintainability of this class. Right now it is used by two clients: the notification
+     * manager, and the Updates tab. They have different requirements, with the Updates information
+     * being more permanent than the notification info. As such, the different clients should be
+     * aware of their requirements when invoking general-sounding methods like "addApk()", rather
+     * than this class trying to second-guess why they added an apk.
+     * @see #isPendingInstall(String)
+     */
+    public void markAsPendingInstall(String uniqueKey) {
+        AppUpdateStatus entry = get(uniqueKey);
+        if (entry != null) {
+            Utils.debugLog(TAG, "Marking " + entry.apk.packageName + " as pending install.");
+            apksPendingInstall.edit().putBoolean(entry.apk.hash, true).apply();
+        }
+    }
+
+    /**
+     * @see #markAsNoLongerPendingInstall(AppUpdateStatus)
+     * @see #isPendingInstall(String)
+     */
+    public void markAsNoLongerPendingInstall(String uniqueKey) {
+        AppUpdateStatus entry = get(uniqueKey);
+        if (entry != null) {
+            markAsNoLongerPendingInstall(entry);
+        }
+    }
+
+    /**
+     * @see #markAsNoLongerPendingInstall(AppUpdateStatus)
+     * @see #isPendingInstall(String)
+     */
+    public void markAsNoLongerPendingInstall(@NonNull AppUpdateStatus entry) {
+        Utils.debugLog(TAG, "Marking " + entry.apk.packageName + " as NO LONGER pending install.");
+        apksPendingInstall.edit().remove(entry.apk.hash).apply();
+    }
+
+    /**
+     * Keep track of the list of apks for which an install was initiated (i.e. a download + install).
+     * This is used when F-Droid starts, so that it can look through the cached apks and decide whether
+     * the presence of a .apk file means we should tell the user to press "Install" to complete the
+     * process, or whether it is purely there because it was installed some time ago and is no longer
+     * needed.
+     */
+    public boolean isPendingInstall(String apkHash) {
+        return apksPendingInstall.contains(apkHash);
+    }
+
 }
