@@ -372,17 +372,21 @@ public class AppDetailsRecyclerViewAdapter
                 progressBar.setMax(totalBytes);
                 progressBar.setProgress(bytesDownloaded);
                 progressBar.setIndeterminate(totalBytes == -1);
+                progressLabel.setContentDescription("");
                 if (resIdString != 0) {
                     progressLabel.setText(resIdString);
+                    progressLabel.setContentDescription(context.getString(R.string.downloading));
                     progressPercent.setText("");
                 } else if (totalBytes > 0 && bytesDownloaded >= 0) {
                     float percent = bytesDownloaded * 100 / totalBytes;
                     progressLabel.setText(Utils.getFriendlySize(bytesDownloaded) + " / " + Utils.getFriendlySize(totalBytes));
+                    progressLabel.setContentDescription(context.getString(R.string.app__tts__downloading_progress, (int) percent));
                     NumberFormat format = NumberFormat.getPercentInstance();
                     format.setMaximumFractionDigits(0);
                     progressPercent.setText(format.format(percent / 100));
                 } else if (bytesDownloaded >= 0) {
                     progressLabel.setText(Utils.getFriendlySize(bytesDownloaded));
+                    progressLabel.setContentDescription(context.getString(R.string.downloading));
                     progressPercent.setText("");
                 }
 
