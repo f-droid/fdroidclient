@@ -7,7 +7,7 @@
     android:layout_margin="@dimen/details_activity_padding"
     android:clickable="true"
     android:orientation="vertical"
-    android:background="@drawable/details_panel_light_background"
+    android:background="?attr/detailPanel"
     android:padding="@dimen/details_activity_padding">
 
     <TextView
