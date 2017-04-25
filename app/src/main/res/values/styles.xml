@@ -14,7 +14,7 @@
         <item name="actionBarPopupTheme">@style/AppThemeLight.Toolbar</item>
         <item name="appDetailsBackground">#0c0c0c</item>
         <item name="appDetailsCardBackground">#000000</item>
-        <item name="categoryPreviewAppCardBackground">#212121</item>
+        <item name="categoryPreviewAppCardBackground">#303030</item>
         <item name="mainTabSwapBackground">#0a0a0a</item>
         <item name="mainTabSwapSplashTint">#050505</item>
         <item name="categoryName">#ffffff</item>
