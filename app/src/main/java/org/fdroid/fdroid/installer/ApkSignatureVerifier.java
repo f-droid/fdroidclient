@@ -72,7 +72,7 @@ class ApkSignatureVerifier {
 
         PackageInfo pkgInfo = pm.getPackageArchiveInfo(pkgPath, PackageManager.GET_SIGNATURES);
         if (pkgInfo == null) {
-            throw new NullPointerException("Could not find PackageInfo for package at \"" + pkgPath + "\".");
+            throw new IllegalArgumentException("Could not find PackageInfo for package at \"" + pkgPath + "\".");
         }
 
         return signatureToBytes(pkgInfo.signatures);
