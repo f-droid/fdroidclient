@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
 import org.spongycastle.util.encoders.Hex;
@@ -51,6 +52,12 @@ class ApkSignatureVerifier {
     }
 
     public boolean hasFDroidSignature(File apkFile) {
+        if (!apkFile.exists()) {
+            Log.e(TAG, "Failed to verify that " + apkFile.getName() + " has F-Droid signature, " +
+                    "because " + apkFile.getAbsolutePath() + " does not exist.");
+            return false;
+        }
+
         byte[] apkSig = getApkSignature(apkFile);
         byte[] fdroidSig = getFDroidSignature();
 
