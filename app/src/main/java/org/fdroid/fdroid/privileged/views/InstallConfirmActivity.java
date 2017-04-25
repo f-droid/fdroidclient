@@ -186,7 +186,7 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        ((FDroidApp) getApplication()).applyDialogTheme(this);
+        ((FDroidApp) getApplication()).applyTheme(this);
 
         intent = getIntent();
         Uri uri = intent.getData();
