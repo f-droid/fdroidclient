@@ -284,6 +284,9 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             item.setChecked(app.getPrefs(this).ignoreThisUpdate > 0);
             AppPrefsProvider.Helper.update(this, app, app.getPrefs(this));
             return true;
+        } else if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
