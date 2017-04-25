@@ -531,7 +531,7 @@ class NotificationHelper {
                     // Need to check that the notification is still valid, and also that the image
                     // is indeed cached now, so we won't get stuck in an endless loop.
                     AppUpdateStatusManager.AppUpdateStatus oldEntry = appUpdateStatusManager.get(entry.getUniqueKey());
-                    if (oldEntry != null && DiskCacheUtils.findInCache(oldEntry.app.iconUrl, ImageLoader.getInstance().getDiskCache()) != null) {
+                    if (oldEntry != null && oldEntry.app != null && oldEntry.app.iconUrl != null && DiskCacheUtils.findInCache(oldEntry.app.iconUrl, ImageLoader.getInstance().getDiskCache()) != null) {
                         createNotification(oldEntry); // Update with new image!
                     }
                 }
