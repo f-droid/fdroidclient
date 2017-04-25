@@ -1,17 +1,21 @@
 package org.fdroid.fdroid.views.categories;
 
 import android.app.Activity;
-import android.database.Cursor;
+import android.support.annotation.NonNull;
 import android.support.v4.app.LoaderManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.Schema;
+
+import java.util.Collections;
+import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryController> {
 
-    private Cursor cursor;
+    @NonNull
+    private List<String> unlocalizedCategoryNames = Collections.<String>emptyList();
+
     private final Activity activity;
     private final LoaderManager loaderManager;
 
@@ -27,17 +31,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryController> {
 
     @Override
     public void onBindViewHolder(CategoryController holder, int position) {
-        cursor.moveToPosition(position);
-        holder.bindModel(cursor.getString(cursor.getColumnIndex(Schema.CategoryTable.Cols.NAME)));
+        holder.bindModel(unlocalizedCategoryNames.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return cursor == null ? 0 : cursor.getCount();
+        return unlocalizedCategoryNames.size();
     }
 
-    public void setCategoriesCursor(Cursor cursor) {
-        this.cursor = cursor;
+    public void setCategories(@NonNull List<String> unlocalizedCategoryNames) {
+        this.unlocalizedCategoryNames = unlocalizedCategoryNames;
         notifyDataSetChanged();
     }
 

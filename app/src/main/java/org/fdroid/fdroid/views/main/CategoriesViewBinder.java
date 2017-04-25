@@ -19,6 +19,12 @@ import org.fdroid.fdroid.data.CategoryProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.categories.CategoryAdapter;
+import org.fdroid.fdroid.views.categories.CategoryController;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Responsible for ensuring that the categories view is inflated and then populated correctly.
@@ -75,13 +81,38 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         );
     }
 
+    /**
+     * Reads all categories from the cursor and stores them in memory to provide to the {@link CategoryAdapter}.
+     *
+     * It does this so it is easier to deal with localized/unlocalized categories without having
+     * to store the localized version in the database. It is not expected that the list of categories
+     * will grow so large as to make this a performance concern. If it does in the future, the
+     * {@link CategoryAdapter} can be reverted to wrap the cursor again, and localized category
+     * names can be stored in the database (allowing sorting in their localized form).
+     */
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        if (loader.getId() != LOADER_ID) {
+        if (loader.getId() != LOADER_ID || cursor == null) {
             return;
         }
 
-        categoryAdapter.setCategoriesCursor(cursor);
+        List<String> categoryNames = new ArrayList<>(cursor.getCount());
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            categoryNames.add(cursor.getString(cursor.getColumnIndex(Schema.CategoryTable.Cols.NAME)));
+            cursor.moveToNext();
+        }
+
+        Collections.sort(categoryNames, new Comparator<String>() {
+            @Override
+            public int compare(String categoryOne, String categoryTwo) {
+                String localizedCategoryOne = CategoryController.translateCategory(activity, categoryOne);
+                String localizedCategoryTwo = CategoryController.translateCategory(activity, categoryTwo);
+                return localizedCategoryOne.compareTo(localizedCategoryTwo);
+            }
+        });
+
+        categoryAdapter.setCategories(categoryNames);
 
         if (categoryAdapter.getItemCount() == 0) {
             emptyState.setVisibility(View.VISIBLE);
@@ -90,6 +121,8 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             emptyState.setVisibility(View.GONE);
             categoriesList.setVisibility(View.VISIBLE);
         }
+
+        cursor.close();
     }
 
     @Override
@@ -98,7 +131,7 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             return;
         }
 
-        categoryAdapter.setCategoriesCursor(null);
+        categoryAdapter.setCategories(Collections.<String>emptyList());
     }
 
 }

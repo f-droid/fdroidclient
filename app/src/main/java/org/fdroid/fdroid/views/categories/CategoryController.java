@@ -75,11 +75,15 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
                 .build();
     }
 
+    public static String translateCategory(Context context, String categoryName) {
+        int categoryNameId = getCategoryResource(context, categoryName, "string", false);
+        return categoryNameId == 0 ? categoryName : context.getString(categoryNameId);
+    }
+
     void bindModel(@NonNull String categoryName) {
         currentCategory = categoryName;
 
-        int categoryNameId = getCategoryResource(activity, categoryName, "string", false);
-        String translatedName = categoryNameId == 0 ? categoryName : activity.getString(categoryNameId);
+        String translatedName = translateCategory(activity, categoryName);
         heading.setText(translatedName);
         heading.setContentDescription(activity.getString(R.string.tts_category_name, translatedName));
 
