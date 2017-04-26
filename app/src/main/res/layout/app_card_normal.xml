@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="100dp"
     android:layout_height="130dp"
-    android:background="@drawable/category_preview_app_card_background"
+    android:background="?attr/categoryPreviewAppCardBackground"
     android:padding="8dp">
 
     <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"

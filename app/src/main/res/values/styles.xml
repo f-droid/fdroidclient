@@ -14,12 +14,12 @@
         <item name="actionBarPopupTheme">@style/AppThemeLight.Toolbar</item>
         <item name="appDetailsBackground">#0c0c0c</item>
         <item name="appDetailsCardBackground">#000000</item>
-        <item name="categoryPreviewAppCardBackground">#303030</item>
+        <item name="categoryPreviewAppCardBackground">@drawable/category_preview_app_card_background_dark</item>
         <item name="mainTabSwapBackground">#0a0a0a</item>
         <item name="mainTabSwapSplashTint">#050505</item>
         <item name="categoryName">#ffffff</item>
         <item name="installedApps">#ffffff</item>
-        <item name="detailPanel">#212121</item>
+        <item name="detailPanel">@drawable/details_panel_donate_background_dark</item>
         <item name="appListItem">#ffffff</item>
     </style>
 
@@ -36,12 +36,12 @@
         <item name="actionBarPopupTheme">@style/AppThemeLight.Toolbar</item>
         <item name="appDetailsBackground">#fcfcfc</item>
         <item name="appDetailsCardBackground">#ffffff</item>
-        <item name="categoryPreviewAppCardBackground">#faf8ef</item>
+        <item name="categoryPreviewAppCardBackground">@drawable/category_preview_app_card_background_light</item>
         <item name="mainTabSwapBackground">#fafafa</item>
         <item name="mainTabSwapSplashTint">#f5f5f5</item>
         <item name="categoryName">#4a4a4a</item>
         <item name="installedApps">#424242</item>
-        <item name="detailPanel">#eff4f9</item>
+        <item name="detailPanel">@drawable/details_panel_donate_background_light</item>
         <item name="appListItem">#424242</item>
     </style>
 
