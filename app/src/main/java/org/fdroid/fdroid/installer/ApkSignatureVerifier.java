@@ -25,6 +25,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 
+import org.acra.ACRA;
 import org.fdroid.fdroid.Utils;
 import org.spongycastle.util.encoders.Hex;
 
@@ -51,6 +52,15 @@ class ApkSignatureVerifier {
     }
 
     public boolean hasFDroidSignature(File apkFile) {
+        if (!apkFile.exists()) {
+            ACRA.getErrorReporter().handleException(
+                    new Exception("Failed to install Privileged Extension, because " + apkFile.getAbsolutePath() + " does not exist."),
+                    false
+            );
+
+            return false;
+        }
+
         byte[] apkSig = getApkSignature(apkFile);
         byte[] fdroidSig = getFDroidSignature();
 
@@ -66,7 +76,15 @@ class ApkSignatureVerifier {
 
     private byte[] getApkSignature(File apkFile) {
         final String pkgPath = apkFile.getAbsolutePath();
+        if (!apkFile.exists()) {
+            throw new IllegalArgumentException("Could not find APK at \"" + pkgPath + "\" when checking for signature.");
+        }
+
         PackageInfo pkgInfo = pm.getPackageArchiveInfo(pkgPath, PackageManager.GET_SIGNATURES);
+        if (pkgInfo == null) {
+            throw new IllegalArgumentException("Could not find PackageInfo for package at \"" + pkgPath + "\".");
+        }
+
         return signatureToBytes(pkgInfo.signatures);
     }
 

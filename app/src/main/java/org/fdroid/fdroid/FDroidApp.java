@@ -279,8 +279,7 @@ public class FDroidApp extends Application {
                         new FileNameGenerator() {
                             @Override
                             public String generate(String imageUri) {
-                                return imageUri.substring(
-                                        imageUri.lastIndexOf('/') + 1);
+                                return imageUri.substring(imageUri.lastIndexOf('/') + 1);
                             }
                         },
                         // 30 days in secs: 30*24*60*60 = 2592000

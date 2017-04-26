@@ -696,6 +696,7 @@ public class AppProvider extends FDroidProvider {
 
             case INSTALLED:
                 selection = selection.add(queryInstalled());
+                sortOrder = Cols.NAME;
                 includeSwap = false;
                 break;
 

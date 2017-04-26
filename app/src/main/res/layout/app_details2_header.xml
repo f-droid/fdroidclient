@@ -26,53 +26,63 @@
             android:layout_marginRight="8dp"
             >
 
-            <ImageView
-                android:id="@+id/icon"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:paddingBottom="8dp"
-                android:paddingRight="8dp"
-                android:paddingEnd="8dp"
-                android:src="@drawable/ic_repo_app_default" />
-
-            <LinearLayout
-                android:layout_width="0dp"
+            <!-- Icon, Name, Author (optional), Updated date -->
+            <RelativeLayout
+                android:id="@+id/icon_and_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@id/icon"
-                android:layout_toRightOf="@id/icon"
-                android:orientation="vertical">
+                android:paddingBottom="8dp">
 
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingRight="8dp"
+                    android:paddingEnd="8dp"
+                    android:src="@drawable/ic_repo_app_default" />
+
+                <!-- Name, Author (optional), Updated date -->
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textAppearance="@style/DetailsAppTitleStyle"
-                    tools:text="App Title" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@id/icon"
+                    android:layout_toRightOf="@id/icon"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/author"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    tools:text="Author" />
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/DetailsAppTitleStyle"
+                        tools:text="Really Long App Title Which Wraps Around Onto the Second Line" />
 
-                <TextView
-                    android:id="@+id/text_last_update"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/DetailsLastUpdatedStyle"
-                    android:textColor="@android:color/darker_gray"
-                    tools:text="Update released 12 days ago" />
+                    <TextView
+                        android:id="@+id/author"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        tools:text="Author" />
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/text_last_update"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/DetailsLastUpdatedStyle"
+                        android:textColor="@android:color/darker_gray"
+                        tools:text="Update released 12 days ago" />
 
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- Progress info -->
             <RelativeLayout
                 android:id="@+id/progress_layout"
                 android:layout_width="match_parent"
@@ -81,7 +91,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@id/icon">
+                android:layout_below="@id/icon_and_name"
+                tools:visibility="gone">
 
                 <ImageView
                     android:id="@+id/progress_cancel"
@@ -90,6 +101,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:contentDescription="@string/app__tts__cancel_download"
                     android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
                 <TextView
@@ -99,6 +111,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:text="@string/downloading"
+                    android:contentDescription="@string/downloading"
+                    android:focusable="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
                 <TextView
@@ -122,18 +136,19 @@
                     android:layout_toStartOf="@id/progress_cancel" />
             </RelativeLayout>
 
+            <!-- Install, Uninstall, Upgrade, Run buttons -->
             <LinearLayout
                 android:id="@+id/button_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/icon"
+                android:layout_below="@id/icon_and_name"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:paddingBottom="2dp"
                 android:clipToPadding="false"
-                android:visibility="gone"
+                android:visibility="visible"
                 >
 
                 <Button

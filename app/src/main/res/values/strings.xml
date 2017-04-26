@@ -75,6 +75,7 @@
     <string name="app_recommended_version_installed">Version %1$s (Recommended)</string>
     <string name="app__newly_added">New</string>
     <string name="added_on">Added on %s</string>
+    <string name="app__tts__cancel_download">Cancel download</string>
     <string name="app__install_downloaded_update">Update</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Update %1$s</string>
@@ -475,6 +476,7 @@
     <string name="perms_new_perm_prefix">New:</string>
     <string name="perms_description_app">Provided by %1$s.</string>
     <string name="downloading">Downloading…</string>
+    <string name="app__tts__downloading_progress">Downloading, %1$d%% complete</string>
     <string name="downloading_apk">Downloading %1$s</string>
     <string name="installing">Installing…</string>
     <string name="uninstalling">Uninstalling…</string>
