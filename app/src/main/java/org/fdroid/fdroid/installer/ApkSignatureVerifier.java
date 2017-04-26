@@ -24,8 +24,8 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
-import android.util.Log;
 
+import org.acra.ACRA;
 import org.fdroid.fdroid.Utils;
 import org.spongycastle.util.encoders.Hex;
 
@@ -53,8 +53,11 @@ class ApkSignatureVerifier {
 
     public boolean hasFDroidSignature(File apkFile) {
         if (!apkFile.exists()) {
-            Log.e(TAG, "Failed to verify that " + apkFile.getName() + " has F-Droid signature, " +
-                    "because " + apkFile.getAbsolutePath() + " does not exist.");
+            ACRA.getErrorReporter().handleException(
+                    new Exception("Failed to install Privileged Extension, because " + apkFile.getAbsolutePath() + " does not exist."),
+                    false
+            );
+
             return false;
         }
 
