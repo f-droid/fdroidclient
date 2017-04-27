@@ -11,6 +11,7 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.InstalledAppTestUtils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
@@ -68,6 +69,9 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEmpty();
         updateMain();
         assertMainRepo();
+
+        // Even though there is a version 54 in the repo, version 53 is marked as the current version.
+        assertCanUpdate("org.adaway", 49, 53);
     }
 
     @Test
@@ -75,6 +79,8 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEmpty();
         updateArchive();
         assertMainArchiveRepoMetadata();
+
+        assertCanUpdate("org.adaway", 49, 51);
     }
 
     @Test
@@ -82,6 +88,8 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEmpty();
         updateConflicting();
         assertConflictingRepo();
+
+        assertCanUpdate("org.adaway", 49, 53);
     }
 
     private Map<String, App> allApps() {
@@ -228,6 +236,17 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertMainRepo(repos);
         assertMainArchiveRepoMetadata(repos);
         assertConflictingRepo(repos);
+
+        // Even though there is a version 54 in the repo, version 53 is marked as the current version.
+        assertCanUpdate("org.adaway", 49, 53);
+    }
+
+    private void assertCanUpdate(String packageName, int installedVersion, int expectedUpdateVersion) {
+        InstalledAppTestUtils.install(context, packageName, installedVersion, "v" + installedVersion);
+        List<App> appsToUpdate = AppProvider.Helper.findCanUpdate(context, AppMetadataTable.Cols.ALL);
+        assertEquals(1, appsToUpdate.size());
+        assertEquals(installedVersion, appsToUpdate.get(0).installedVersionCode);
+        assertEquals(expectedUpdateVersion, appsToUpdate.get(0).suggestedVersionCode);
     }
 
     private void assertMainRepo() {
