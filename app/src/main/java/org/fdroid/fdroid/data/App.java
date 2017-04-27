@@ -384,13 +384,13 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             localeTag = languageTag + "-" + countryTag;
         }
 
-        Set<String> locales = localized.keySet();
+        Set<String> availableLocales = localized.keySet();
         Set<String> localesToUse = new LinkedHashSet<>();
         if (Build.VERSION.SDK_INT >= 24) {
             LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
             for (String toUse : localeList.toLanguageTags().split(",")) {
                 localesToUse.add(toUse);
-                for (String l : locales) {
+                for (String l : availableLocales) {
                     if (l.equals(toUse.split("-")[0])) {
                         localesToUse.add(l);
                         break;
@@ -398,22 +398,22 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 }
             }
         } else {
-            if (locales.contains(localeTag)) {
+            if (availableLocales.contains(localeTag)) {
                 localesToUse.add(localeTag);
             }
-            if (locales.contains(languageTag)) {
+            if (availableLocales.contains(languageTag)) {
                 localesToUse.add(languageTag);
             }
-            for (String l : locales) {
+            for (String l : availableLocales) {
                 if (l.startsWith(languageTag)) {
                     localesToUse.add(l);
                 }
             }
         }
-        if (locales.contains("en-US")) {
+        if (availableLocales.contains("en-US")) {
             localesToUse.add("en-US");
         }
-        for (String l : locales) {
+        for (String l : availableLocales) {
             if (l.startsWith("en")) {
                 localesToUse.add(l);
                 break;
