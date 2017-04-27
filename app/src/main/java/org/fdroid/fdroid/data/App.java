@@ -386,18 +386,27 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
         Set<String> locales = localized.keySet();
         Set<String> localesToUse = new LinkedHashSet<>();
-        if (locales.contains(localeTag)) {
-            localesToUse.add(localeTag);
-        }
         if (Build.VERSION.SDK_INT >= 24) {
             LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
-            localesToUse.addAll(Arrays.asList(localeList.toLanguageTags().split(",")));
-        }
-        for (String toUse : localesToUse) {
+            for (String toUse : localeList.toLanguageTags().split(",")) {
+                localesToUse.add(toUse);
+                for (String l : locales) {
+                    if (l.equals(toUse.split("-")[0])) {
+                        localesToUse.add(l);
+                        break;
+                    }
+                }
+            }
+        } else {
+            if (locales.contains(localeTag)) {
+                localesToUse.add(localeTag);
+            }
+            if (locales.contains(languageTag)) {
+                localesToUse.add(languageTag);
+            }
             for (String l : locales) {
-                if (l.startsWith(toUse.split("-")[0])) {
+                if (l.startsWith(languageTag)) {
                     localesToUse.add(l);
-                    break;
                 }
             }
         }
