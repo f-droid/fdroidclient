@@ -57,8 +57,10 @@ public class AppUpdateStatusService extends IntentService {
             }
         }
 
-        AppUpdateStatusManager.getInstance(this).addApks(apksReadyToInstall, AppUpdateStatusManager.Status.ReadyToInstall);
-        InstallManagerService.managePreviouslyDownloadedApks(this);
+        if (apksReadyToInstall.size() > 0) {
+            AppUpdateStatusManager.getInstance(this).addApks(apksReadyToInstall, AppUpdateStatusManager.Status.ReadyToInstall);
+            InstallManagerService.managePreviouslyDownloadedApks(this);
+        }
     }
 
     @Nullable
