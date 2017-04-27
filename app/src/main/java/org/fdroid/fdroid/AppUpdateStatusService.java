@@ -43,6 +43,7 @@ public class AppUpdateStatusService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
+        Utils.debugLog(TAG, "Scanning apk cache to see if we need to prompt the user to install any apks.");
         List<Apk> apksReadyToInstall = new ArrayList<>();
         File cacheDir = ApkCache.getApkCacheDir(this);
         for (String repoDirName : cacheDir.list()) {
@@ -76,29 +77,13 @@ public class AppUpdateStatusService extends IntentService {
             return null;
         }
 
-        PackageInfo installedInfo = null;
-        try {
-            installedInfo = getPackageManager().getPackageInfo(downloadedApk.packageName, PackageManager.GET_META_DATA);
-        } catch (PackageManager.NameNotFoundException ignored) { }
-
-        if (installedInfo == null) {
-            if (AppUpdateStatusManager.getInstance(this).isPendingInstall(downloadedApk.hash)) {
-                Utils.debugLog(TAG, downloadedApk.packageName + " is not installed, so presuming we need to notify the user about installing it.");
-                return downloadedApk;
-            } else {
-                // It was probably downloaded for a previous install, and then subsequently removed
-                // (but stayed in the cache, as is the designed behaviour). Under these circumstances
-                // we don't want to tell the user to try and install it.
-                return null;
-            }
-        }
-
-        if (installedInfo.versionCode >= downloadedInfo.versionCode) {
-            Utils.debugLog(TAG, downloadedApk.packageName + " already installed with versionCode " + installedInfo.versionCode + " and downloaded apk is only " + downloadedInfo.versionCode + ", so ignoring downloaded apk.");
+        if (AppUpdateStatusManager.getInstance(this).isPendingInstall(downloadedApk.hash)) {
+            Utils.debugLog(TAG, downloadedApk.packageName + " is pending install, so we need to notify the user about installing it.");
+            return downloadedApk;
+        } else {
+            Utils.debugLog(TAG, downloadedApk.packageName + " is NOT pending install, probably just left over from a previous install.");
             return null;
         }
-
-        return downloadedApk;
     }
 
     /**
