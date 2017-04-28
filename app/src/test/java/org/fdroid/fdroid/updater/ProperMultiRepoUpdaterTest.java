@@ -21,6 +21,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.annotation.Implementation;
+import org.robolectric.annotation.Implements;
+import org.robolectric.shadows.ShadowSystemProperties;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -31,7 +34,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@Config(constants = BuildConfig.class, sdk = 24)
+@Config(constants = BuildConfig.class, sdk = 24, shadows = ProperMultiRepoUpdaterTest.ArmSystemProperties.class)
 @RunWith(RobolectricTestRunner.class)
 public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     private static final String TAG = "ProperMultiRepoSupport";
@@ -403,6 +406,25 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
 
         assertAdAwayMetadata(repo, "Conflicting");
         assertCalendarMetadata(repo, "Conflicting");
+    }
+
+    /**
+     * Allows us to customize the result of Build.SUPPORTED_ABIS.
+     * In these tests, we want to "install" and check for updates of Adaway, but that depends
+     * on the armeabi, x86, or mips architectures, whereas the {@link ShadowSystemProperties}
+     * only returns armeabi-v7a by default.
+     * Based on https://groups.google.com/d/msg/robolectric/l_W2EbOek6s/O-GTce8jBQAJ.
+     */
+    @Implements(className = "android.os.SystemProperties")
+    public static class ArmSystemProperties extends ShadowSystemProperties {
+        @Implementation
+        @SuppressWarnings("unused")
+        public static String get(String key) {
+            if ("ro.product.cpu.abilist".equals(key)) {
+                return "armeabi";
+            }
+            return ShadowSystemProperties.get(key);
+        }
     }
 
 }
