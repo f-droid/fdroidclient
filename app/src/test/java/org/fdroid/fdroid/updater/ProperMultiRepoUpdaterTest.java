@@ -11,6 +11,7 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.InstalledAppTestUtils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
@@ -20,6 +21,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.annotation.Implementation;
+import org.robolectric.annotation.Implements;
+import org.robolectric.shadows.ShadowSystemProperties;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -30,7 +34,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@Config(constants = BuildConfig.class, sdk = 24)
+@Config(constants = BuildConfig.class, sdk = 24, shadows = ProperMultiRepoUpdaterTest.ArmSystemProperties.class)
 @RunWith(RobolectricTestRunner.class)
 public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     private static final String TAG = "ProperMultiRepoSupport";
@@ -68,6 +72,9 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEmpty();
         updateMain();
         assertMainRepo();
+
+        // Even though there is a version 54 in the repo, version 53 is marked as the current version.
+        assertCanUpdate("org.adaway", 49, 53);
     }
 
     @Test
@@ -75,6 +82,8 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEmpty();
         updateArchive();
         assertMainArchiveRepoMetadata();
+
+        assertCanUpdate("org.adaway", 49, 51);
     }
 
     @Test
@@ -82,6 +91,8 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEmpty();
         updateConflicting();
         assertConflictingRepo();
+
+        assertCanUpdate("org.adaway", 49, 53);
     }
 
     private Map<String, App> allApps() {
@@ -228,6 +239,17 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertMainRepo(repos);
         assertMainArchiveRepoMetadata(repos);
         assertConflictingRepo(repos);
+
+        // Even though there is a version 54 in the repo, version 53 is marked as the current version.
+        assertCanUpdate("org.adaway", 49, 53);
+    }
+
+    private void assertCanUpdate(String packageName, int installedVersion, int expectedUpdateVersion) {
+        InstalledAppTestUtils.install(context, packageName, installedVersion, "v" + installedVersion);
+        List<App> appsToUpdate = AppProvider.Helper.findCanUpdate(context, AppMetadataTable.Cols.ALL);
+        assertEquals(1, appsToUpdate.size());
+        assertEquals(installedVersion, appsToUpdate.get(0).installedVersionCode);
+        assertEquals(expectedUpdateVersion, appsToUpdate.get(0).suggestedVersionCode);
     }
 
     private void assertMainRepo() {
@@ -384,6 +406,25 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
 
         assertAdAwayMetadata(repo, "Conflicting");
         assertCalendarMetadata(repo, "Conflicting");
+    }
+
+    /**
+     * Allows us to customize the result of Build.SUPPORTED_ABIS.
+     * In these tests, we want to "install" and check for updates of Adaway, but that depends
+     * on the armeabi, x86, or mips architectures, whereas the {@link ShadowSystemProperties}
+     * only returns armeabi-v7a by default.
+     * Based on https://groups.google.com/d/msg/robolectric/l_W2EbOek6s/O-GTce8jBQAJ.
+     */
+    @Implements(className = "android.os.SystemProperties")
+    public static class ArmSystemProperties extends ShadowSystemProperties {
+        @Implementation
+        @SuppressWarnings("unused")
+        public static String get(String key) {
+            if ("ro.product.cpu.abilist".equals(key)) {
+                return "armeabi";
+            }
+            return ShadowSystemProperties.get(key);
+        }
     }
 
 }
