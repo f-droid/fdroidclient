@@ -65,10 +65,15 @@ public class PreferencesFragment extends PreferenceFragment
         updatePrivilegedExtensionPref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
 
         AppCompatListPreference languagePref = (AppCompatListPreference) findPreference(Preferences.PREF_LANGUAGE);
-        Languages languages = Languages.get(getActivity());
-        languagePref.setDefaultValue(Languages.USE_SYSTEM_DEFAULT);
-        languagePref.setEntries(languages.getAllNames());
-        languagePref.setEntryValues(languages.getSupportedLocales());
+        if (Build.VERSION.SDK_INT >= 24) {
+            PreferenceCategory category = (PreferenceCategory) findPreference("pref_category_display");
+            category.removePreference(languagePref);
+        } else {
+            Languages languages = Languages.get(getActivity());
+            languagePref.setDefaultValue(Languages.USE_SYSTEM_DEFAULT);
+            languagePref.setEntries(languages.getAllNames());
+            languagePref.setEntryValues(languages.getSupportedLocales());
+        }
     }
 
     private void checkSummary(String key, int resId) {
@@ -78,7 +83,9 @@ public class PreferencesFragment extends PreferenceFragment
 
     private void entrySummary(String key) {
         ListPreference pref = (ListPreference) findPreference(key);
-        pref.setSummary(pref.getEntry());
+        if (pref != null) {
+            pref.setSummary(pref.getEntry());
+        }
     }
 
     private void textSummary(String key, int resId) {
@@ -150,7 +157,7 @@ public class PreferencesFragment extends PreferenceFragment
                 entrySummary(key);
                 if (changing) {
                     Activity activity = getActivity();
-                    Languages.setLanguage(activity, Preferences.get().getLangauge(), false);
+                    Languages.setLanguage(activity, Preferences.get().getLanguage(), false);
                     Languages.forceChangeLanguage(activity);
                 }
                 break;

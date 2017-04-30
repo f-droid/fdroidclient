@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/menu_about">
         <PreferenceScreen android:title="@string/about_title">
             <intent
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="org.fdroid.fdroid"
                 android:targetClass="org.fdroid.fdroid.AboutActivity" />
         </PreferenceScreen>
-    </PreferenceCategory>
     <PreferenceCategory android:title="@string/preference_category__my_apps">
         <PreferenceScreen android:title="@string/preference_manage_installed_apps">
             <intent
@@ -41,7 +39,8 @@
             android:defaultValue="true"
             android:key="updateNotify" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/display">
+    <PreferenceCategory android:title="@string/display"
+                        android:key="pref_category_display">
         <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/pref_language"
             android:key="language"/>
         <com.geecko.QuickLyric.view.AppCompatListPreference android:title="@string/theme"

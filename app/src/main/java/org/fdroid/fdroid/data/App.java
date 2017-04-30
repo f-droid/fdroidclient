@@ -7,9 +7,12 @@ import android.content.pm.FeatureInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Environment;
+import android.os.LocaleList;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
@@ -359,64 +362,116 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     /**
      * Parses the {@code localized} block in the incoming index metadata,
      * choosing the best match in terms of locale/language while filling as
-     * many fields as possible.  The first English locale found is loaded, then
-     * {@code en-US} is loaded over that, since that's the most common English
-     * for software.  Then the first language match, and then finally the
-     * current locale for this device, given it precedence over all the others.
+     * many fields as possible.  It first sets up a locale list based on user
+     * preference and the locales available for this app, then picks the texts
+     * based on that list.  One thing that makes this tricky is that any given
+     * locale block in the index might not have all the fields.  So when filling
+     * out each value, it needs to go through the whole preference list each time,
+     * rather than just taking the whole block for a specific locale.  This is to
+     * ensure that there is something to show, as often as possible.
      * <p>
-     * It is still possible that the fields will be loaded directly without any
-     * locale info.  This comes from the old-style {@code .txt} app metadata
+     * It is still possible that the fields will be loaded directly by Jackson
+     * without any locale info.  This comes from the old-style, inline app metadata
      * fields that do not have locale info.  They should not be used if the
-     * {@code Localized} block is specified.
+     * {@code localized} block is included in the index.  Also, null strings in
+     * the {@code localized} block should not overwrite Name/Summary/Description
+     * strings with empty/null if they were set directly by Jackson.
+     * <p>
+     * Choosing the locale to use follows two sets of rules, one for Android versions
+     * older than {@code android-24} and the other for {@code android-24} or newer.
+     * The system-wide language preference list was added in {@code android-24}.
+     * <ul>
+     * <li>{@code >= android-24}<ol>
+     * <li>the country variant {@code de-AT} from the user locale list
+     * <li>only the language {@code de} from the above locale
+     * <li>{@code en-US} since its the most common English for software
+     * <li>the first available {@code en} locale
+     * </ol></li>
+     * <li>{@code < android-24}<ol>
+     * <li>the country variant from the user locale: {@code de-AT}
+     * <li>only the language from the above locale:  {@code de}
+     * <li>all available locales with the same language:  {@code de-BE}
+     * <li>{@code en-US} since its the most common English for software
+     * <li>all available {@code en} locales
+     * </ol></li>
+     * </ul>
+     * On {@code >= android-24}, it is by design that this does not fallback to other
+     * country-specific locales, e.g. {@code fr-CH} does not fall back on {@code fr-FR}.
+     * If someone wants to fallback to {@code fr-FR}, they can add it to the system
+     * language list.  There are many cases where it is inappropriate to fallback to a
+     * different country-specific locale, for example {@code de-DE --> de-CH} or
+     * {@code zh-CN --> zh-TW}.
+     * <p>
+     * On {@code < android-24}, the user can only set a single
+     * locale with a country as an option, so here it makes sense to try to fallback
+     * on other country-specific locales, rather than English.
      */
     @JsonProperty("localized")
     private void setLocalized(Map<String, Map<String, Object>> localized) { // NOPMD
         Locale defaultLocale = Locale.getDefault();
         String languageTag = defaultLocale.getLanguage();
-        String localeTag = languageTag + "-" + defaultLocale.getCountry();
-        Set<String> locales = localized.keySet();
-        Set<String> localesToUse = new LinkedHashSet<>();
-
-        if (locales.contains(localeTag)) {
-            localesToUse.add(localeTag);
+        String countryTag = defaultLocale.getCountry();
+        String localeTag;
+        if (TextUtils.isEmpty(countryTag)) {
+            localeTag = languageTag;
+        } else {
+            localeTag = languageTag + "-" + countryTag;
         }
-        for (String l : locales) {
-            if (l.startsWith(languageTag)) {
-                localesToUse.add(l);
-                break;
+
+        Set<String> availableLocales = localized.keySet();
+        Set<String> localesToUse = new LinkedHashSet<>();
+        if (Build.VERSION.SDK_INT >= 24) {
+            LocaleList localeList = Resources.getSystem().getConfiguration().getLocales();
+            for (String toUse : localeList.toLanguageTags().split(",")) {
+                localesToUse.add(toUse);
+                for (String l : availableLocales) {
+                    if (l.equals(toUse.split("-")[0])) {
+                        localesToUse.add(l);
+                        break;
+                    }
+                }
+            }
+        } else {
+            if (availableLocales.contains(localeTag)) {
+                localesToUse.add(localeTag);
+            }
+            if (availableLocales.contains(languageTag)) {
+                localesToUse.add(languageTag);
+            }
+            for (String l : availableLocales) {
+                if (l.startsWith(languageTag)) {
+                    localesToUse.add(l);
+                }
             }
         }
-        if (locales.contains("en-US")) {
+        if (availableLocales.contains("en-US")) {
             localesToUse.add("en-US");
         }
-        for (String l : locales) {
+        for (String l : availableLocales) {
             if (l.startsWith("en")) {
                 localesToUse.add(l);
                 break;
             }
         }
-        // if key starts with Upper case, its set by humans
-        String value = getLocalizedEntry(localized, localesToUse, "Video");
+
+        whatsNew = getLocalizedEntry(localized, localesToUse, "whatsNew");
+        String value = getLocalizedEntry(localized, localesToUse, "video");
         if (!TextUtils.isEmpty(value)) {
             video = value.split("\n", 1)[0];
         }
-        whatsNew = getLocalizedEntry(localized, localesToUse, "WhatsNew");
-        // Name, Summary, Description existed before localization so they shouldn't replace
-        // non-localized old data format with a null or blank string
-        value = getLocalizedEntry(localized, localesToUse, "Name");
+        value = getLocalizedEntry(localized, localesToUse, "name");
         if (!TextUtils.isEmpty(value)) {
             name = value;
         }
-        value = getLocalizedEntry(localized, localesToUse, "Summary");
+        value = getLocalizedEntry(localized, localesToUse, "summary");
         if (!TextUtils.isEmpty(value)) {
             summary = value;
         }
-        value = getLocalizedEntry(localized, localesToUse, "Description");
+        value = getLocalizedEntry(localized, localesToUse, "description");
         if (!TextUtils.isEmpty(value)) {
             description = value;
         }
 
-        // if key starts with lower case, its generated based on finding the files
         featureGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "featureGraphic");
         promoGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "promoGraphic");
         tvBanner = getLocalizedGraphicsEntry(localized, localesToUse, "tvBanner");

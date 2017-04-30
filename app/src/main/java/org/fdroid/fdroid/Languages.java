@@ -117,9 +117,15 @@ public final class Languages {
 
     @TargetApi(17)
     public static void setLanguage(final ContextWrapper contextWrapper, String language, boolean refresh) {
+        if (Build.VERSION.SDK_INT >= 24) {
+            Utils.debugLog(TAG, "Languages.setLanguage() ignored on >= android-24");
+            Preferences.get().clearLanguage();
+            return;
+        }
         if (locale != null && TextUtils.equals(locale.getLanguage(), language) && (!refresh)) {
             return; // already configured
         } else if (language == null || language.equals(USE_SYSTEM_DEFAULT)) {
+            Preferences.get().clearLanguage();
             locale = DEFAULT_LOCALE;
         } else {
             /* handle locales with the country in it, i.e. zh_CN, zh_TW, etc */
@@ -147,6 +153,10 @@ public final class Languages {
      * @param activity the {@code Activity} to force reload
      */
     public static void forceChangeLanguage(Activity activity) {
+        if (Build.VERSION.SDK_INT >= 24) {
+            Utils.debugLog(TAG, "Languages.forceChangeLanguage() ignored on >= android-24");
+            return;
+        }
         Intent intent = activity.getIntent();
         if (intent == null) { // when launched as LAUNCHER
             return;
@@ -159,36 +169,11 @@ public final class Languages {
     }
 
     /**
-     * @return the name of the language based on the locale.
-     */
-    public String getName(String locale) {
-        String ret = nameMap.get(locale);
-        // if no match, try to return a more general name (i.e. English for en_IN)
-        if (ret == null && locale.contains("_")) {
-            ret = nameMap.get(locale.split("_")[0]);
-        }
-        return ret;
-    }
-
-    /**
      * @return an array of the names of all the supported languages, sorted to
      * match what is returned by {@link Languages#getSupportedLocales()}.
      */
     public String[] getAllNames() {
         return nameMap.values().toArray(new String[nameMap.size()]);
-    }
-
-    public int getPosition(Locale locale) {
-        String localeName = locale.getLanguage();
-        int i = 0;
-        for (String key : nameMap.keySet()) {
-            if (TextUtils.equals(key, localeName)) {
-                return i;
-            } else {
-                i++;
-            }
-        }
-        return -1;
     }
 
     /**
