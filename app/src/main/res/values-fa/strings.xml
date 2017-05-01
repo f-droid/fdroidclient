@@ -408,7 +408,7 @@
     <string name="keep_install_history_summary">نگه داشتن گزارشی ار تمام نصب و حذف‌ها در اف‌دروید</string>
     <string name="update_auto_install">نصب خودکار به‌روز رسانی‌ها</string>
     <string name="update_auto_install_summary">بارگیری و نصب کاره‌های به‌روز در پس‌زمینه</string>
-    <string name="app_details_donate_prompt_unknown_author">خرید قهوه برای توسعه‌دهندهٔ %1!</string>
+    <string name="app_details_donate_prompt_unknown_author">خرید قهوه برای توسعه‌دهندهٔ %1$s!</string>
     <string name="app_details_donate_prompt">‫%1$s به دست %2$s ایجاد شده است. برایش قهوه بخرید!</string>
 
     <string name="app_version_x_available">نگارش %1$s موجود است</string>
@@ -474,8 +474,8 @@
     <string name="hide_anti_feature_apps_on">خاکستری کردن کاره‌هایی کخ نیازمند ضدّویژگی هستند</string>
     <string name="warning_no_internet">نمی‌توان به‌روز کرد. به اینترنت وصل هستید؟</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" نمایش همهٔ %Id "</item>
-	<item quantity="other">" نمایش همهٔ %Id "</item>
+	<item quantity="one"> نمایش همهٔ %d</item>
+	<item quantity="other">" نمایش همهٔ %d</item>
 </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">"اینترنت  ندارید؟ کاره‌ها را از اطرافیاتتان بارگیری کنید!
