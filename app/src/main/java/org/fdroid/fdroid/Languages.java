@@ -250,6 +250,7 @@ public final class Languages {
             new Locale("rm"),
             new Locale("ro"),
             new Locale("ru"),
+            new Locale("sc"),
             new Locale("si"),
             new Locale("sk"),
             new Locale("sl"),
