@@ -56,9 +56,11 @@ connected24:
     AVD_SDK: "24"
   script:
     - ./gradlew assembleDebug -PdisablePreDex
+    - android list avd
     - emulator64-arm -avd fcl-test-$AVD_SDK -no-audio -no-window &
     - ./tools/wait-for-emulator
     - adb shell input keyevent 82 &
+    - adb devices
     - export EXITVALUE=0
     - ./gradlew connectedCheck -PdisablePreDex || {
         adb -e logcat -d '*:E';
