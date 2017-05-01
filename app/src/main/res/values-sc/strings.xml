@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">Sa versione noa est firmada cun una crae diferente dae sa bècia. Pro la installare,
-        sa bècia depet èssere istada disinstallada in antis. Pro piaghere fàghe·lu e torra a proare. (Sa
-        disinstallatzione as a burrare totu sos datos sarbados in s\'aplicatzione)
-    </string>
+    <string name="SignatureMismatch">"Sa versione noa est firmada cun una crae diferente dae sa bècia. Pro la installare,
+\n sa bècia depet èssere istada disinstallada in antis. Pro piaghere fàghe·lu e torra a proare. (Sa
+\n disinstallatzione as a burrare totu sos datos sarvados in s\'aplicatzione)
+\n "</string>
     <string name="installIncompatible">Paret chi custu pachete non siat cumpatìbile cun su dispositivu tuo. Boles a
         proare a lu installare su matessi?
     </string>
@@ -58,11 +58,9 @@
     <string name="repo_add_url">Indiritzu depòsitu</string>
     <string name="repo_add_fingerprint">Arrastu/Imprenta (optzionale)</string>
     <string name="repo_exists_add_fingerprint">Custu depòsitu est giai cunfiguradu, custu at a annànghere
-        un\'informatzione crae noa.
-    </string>
+ un\'informatzione crae noa.</string>
     <string name="repo_exists_enable">Custu depòsitu est giai cunfiguradu, cunfirma s\'intentzione de lu bòlere torrare
-        a abilitare.
-    </string>
+ a abilitare.</string>
     <string name="repo_exists_and_enabled">Custu depòsitu est giai cunfiguradu e abilitadu.</string>
     <string name="repo_delete_to_overwrite">Depes burrare custu depòsitu in antis de nde pòdere annànghere unu cun
         un’àtera crae.
@@ -106,9 +104,8 @@
     <string name="ignoreTouch_on">Include semper sas aplicatziones chi tenet bisòngiu de su touchscreen</string>
     <string name="local_repo">Depòsitu locale</string>
     <string name="local_repo_running">F-Droid est prontu pro imbiare cun swap</string>
-    <string name="touch_to_configure_local_repo">Toca pro bìere sas minujas e permìtere a àteros de retzire sas
-        aplicatziones tuas.
-    </string>
+    <string name="touch_to_configure_local_repo">Toca pro bìdere sas minujas e permìtere a àteros de retzire sas
+ aplicatziones tuas.</string>
     <string name="deleting_repo">Burrende su depòsitu atuale…</string>
     <string name="adding_apks_format">Annanghende %s a su depòsitu…</string>
     <string name="writing_index_jar">Iscriende su documentu de ìnditze firmadu (index.jar)…</string>
@@ -161,7 +158,7 @@
         Depes
         torrare a abilitare custu depòsitu pro installare sas aplicatziones chi bi sunt in intro.
     </string>
-    <string name="repo_added">Sarbadu depòsitu F-Droid %1$s.</string>
+    <string name="repo_added">Depòsitu F-Droid %1$s sarvadu.</string>
     <string name="repo_searching_address">Chirchende unu depòsitu F-Droid in\n%1$s</string>
     <string name="minsdk_or_later">%s o imbeniente</string>
     <string name="up_to_maxsdk">Finas a %s</string>
@@ -307,8 +304,7 @@
     </string>
     <string name="loading">Carrighende…</string>
     <string name="swap_not_enabled">Cumpartzidura non abilitada</string>
-    <string name="swap_not_enabled_description">In antis de cumpartzire, su dispositivu depet èssere postu visìbile.
-    </string>
+    <string name="swap_not_enabled_description">In antis de cumpartzire, su dispositivu depet èssere postu visìbile.</string>
 
     <string name="install_confirm">at a tènnere atzessu a</string>
     <string name="install_confirm_update">Boles installare un’agiornamentu
@@ -334,7 +330,7 @@
     <string name="uninstall_confirm">Boles disinstallare custa aplicatzione?</string>
     <string name="tap_to_install">Iscarrigamentu cumpridu, toca pro installare</string>
 
-    <string name="perms_new_perm_prefix">"Nou: "</string>
+    <string name="perms_new_perm_prefix">Nou:</string>
     <string name="perms_description_app">Frunidu dae %1$s.</string>
     <string name="downloading">Iscarrighende…</string>
 
@@ -382,7 +378,7 @@
 
     <string name="about_license">Litzèntzia</string>
 
-    <string name="status_inserting_apps">Sarbende sas minujas de sas aplicatziones</string>
+    <string name="status_inserting_apps">Sarvende sas minujas de sas aplicatziones</string>
     <string name="empty_search_installed_app_list">Peruna aplicatzione currispondente installada.</string>
     <string name="empty_search_available_app_list">Peruna aplicatzione currispondente disponìbile.</string>
     <string name="empty_search_can_update_app_list">Perunu agiornamentu currispondente disponìbile.</string>
@@ -434,10 +430,9 @@
     <string name="hide_anti_feature_apps_on">Marca in murru sas aplicatziones cun caraterìsticas cun controidas</string>
     <string name="update_auto_install">Installa sos agiornamentos automaticamente</string>
     <string name="update_auto_install_summary">Iscàrriga e installa sos agiornamentos automaticamente</string>
-    <string name="keep_install_history">Sarba s\'istòria de sas installatziones</string>
-    <string name="keep_install_history_summary">Sarba unu regitru de sas installatziones e de sas disinstallatziones in
-        F-Droid
-    </string>
+    <string name="keep_install_history">Sarva s\'istòria de sas installatziones</string>
+    <string name="keep_install_history_summary">Sarva unu registru de sas installatziones e de sas disinstallatziones in
+\n F-Droid</string>
     <string name="warning_no_internet">Impossìbile agiornare, ses connessu a ìnternet?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt_unknown_author">Cùmbida unu cafè a sos isvilupadores de %1$s!</string>
@@ -475,9 +470,9 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Càstia totu %d</item>
-        <item quantity="other">Càstia totu %d</item>
-    </plurals>
+	<item quantity="one">" Càstia %d "</item>
+	<item quantity="other">" Càstia totu %d "</item>
+</plurals>
 
     <string name="clear_search">Inneta sa chirca</string>
 
@@ -496,9 +491,9 @@
     <string name="tts_category_name">Categoria %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Ammustra s\'aplicatzione in sa categoria %2$s</item>
-        <item quantity="other">Ammustra totu sas aplicatziones in sa categoria %2$s</item>
-    </plurals>
+	<item quantity="one">Ammustra s\'aplicatzione %1$d in sa categoria %2$s</item>
+	<item quantity="other">Ammustra totu sas aplicatziones %1$d in sa categoria %2$s</item>
+</plurals>
     <string name="app__install_downloaded_update">Agiorna</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Agiorna %1$s</string>
@@ -522,22 +517,20 @@
 
     <string name="details_new_in_version">Nou in sa versione %s</string>
 
-    <string name="antifeatureswarning">Custa aplicatzione tenet funtzionalidades chi ti diant pòdere non agradare.
-    </string>
+    <string name="antifeatureswarning">Custa aplicatzione tenet funtzionalidades chi ti diant pòdere non agradare.</string>
     <string name="antifeatures">Anti-funtzionalidades</string>
     <string name="details_last_updated_today">Agiornadu oe</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Agiornadu oe</item>
-        <item quantity="other">Agiornadu %1$s dies faghet</item>
-    </plurals>
+	<item quantity="one">Agiornada %1$s die faghet</item>
+	<item quantity="other">Agiornadas %1$s dies faghet</item>
+</plurals>
     <string name="app_list__name__successfully_installed">%1$s installada</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Non ses in lìnia? Iscàrriga aplicatziones dae sa
         gente a curtzu de tie!
     </string>
     <string name="nearby_splash__find_people_button">Agata persones a curtzu</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambos tenides bisòngiu de %1$s pro impreare custa
-        funtzionalidade.
-    </string>
+ funtzionalidade.</string>
 
     <string name="latest__empty_state__no_recent_apps">Peruna aplicatzione reghente agatada</string>
     <string name="latest__empty_state__never_updated">Cando sa lista de sas aplicatziones at a èssere agiornada, sas
@@ -549,4 +542,9 @@
 
     <string name="categories__empty_state__no_categories">Peruna categoria de ammustrare</string>
 
-</resources>
+<string name="app_list__age__released_today">Publicada oe</string>
+    <string name="app_list__age__released_yesterday">Publicada eris</string>
+    <string name="menu_video">Vìdeu</string>
+    <string name="app__tts__cancel_download">Firma s\'iscarrigamentu</string>
+    <string name="app__tts__downloading_progress">Iscarrighende, %1$d%% cumpridu</string>
+    </resources>

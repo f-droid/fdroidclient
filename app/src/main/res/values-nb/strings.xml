@@ -55,11 +55,8 @@
     <string name="send_via_bluetooth">Send via Blåtann</string>
     <string name="repo_add_url">Pakkebrønnsadresse</string>
     <string name="repo_add_fingerprint">Fingeravtrykk (valgfritt)</string>
-    <string name="repo_exists_add_fingerprint">Dette registret er allerede satt opp, dette vil legge til ny informasjon
-        om nøkler.
-    </string>
-    <string name="repo_exists_enable">Dette registret er allerede satt opp, bekreft at du vil skru det på igjen.
-    </string>
+    <string name="repo_exists_add_fingerprint">Dette registret er allerede satt opp, dette vil legge til ny informasjon om nøkler.</string>
+    <string name="repo_exists_enable">Dette registret er allerede satt opp, bekreft at du vil skru det på igjen.</string>
     <string name="repo_exists_and_enabled">Oppstrøms-pakkebrønnen er allerede satt opp og påskrudd.</string>
     <string name="repo_delete_to_overwrite">Du må først slette denne pakkebrønnen før du kan legge til en med en annen
         nøkkel.
@@ -103,9 +100,7 @@
     <string name="ignoreTouch_on">Alltid inkluder app-er som krever pekeskjerm</string>
     <string name="local_repo">Lokal pakkebrønn</string>
     <string name="local_repo_running">Sirkulering av programmer kan begynne</string>
-    <string name="touch_to_configure_local_repo">Trykk for å se detaljer og for å tillate andre å sirkulere de
-        programmene du har.
-    </string>
+    <string name="touch_to_configure_local_repo">Trykk for å se detaljer og for å tillate andre å sirkulere de programmene du har.</string>
     <string name="deleting_repo">Sletter gjeldende pakkebrønn…</string>
     <string name="adding_apks_format">Legger til %s til pakkebrønn…</string>
     <string name="writing_index_jar">Skriver signert indekseringsfil (index.jar)…</string>
@@ -500,13 +495,33 @@
     <string name="antifeatureswarning">Dette programmet har funksjoner du kanskje ikke liker.</string>
     <string name="antifeatures">Anti-funksjoner</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Vis alle %d</item>
-        <item quantity="other">Vis alle %d</item>
-    </plurals>
+	<item quantity="one">" Vis alle %d "</item>
+	<item quantity="other">" Vis alle %d "</item>
+</plurals>
     <string name="details_last_updated_today">Oppdatert i dag</string>
 
     <plurals name="details_last_update_days">
         <item quantity="one">Oppdatert i dag</item>
         <item quantity="other">Oppdatert for %1$s dager siden</item>
     </plurals>
-</resources>
+<string name="app__tts__cancel_download">Avbryt nedlasting</string>
+    <string name="app_list__name__successfully_installed">%1$s installert</string>
+    <string name="app_list__age__released_today">Utgitt i dag</string>
+    <string name="menu_video">Video</string>
+    <string name="latest__empty_state__no_recent_apps">Ingen nylige programmer funnet</string>
+    <string name="latest__empty_state__never_updated">"Når din programliste har blitt oppdater, bør de nyligste programmene
+\n vises her
+\n "</string>
+    <string name="latest__empty_state__no_enabled_repos">"Når du skrur på en pakkebrønn og lar den oppdatere seg, bør de nyligste programmene
+\n vises her
+\n "</string>
+
+    <string name="categories__empty_state__no_categories">Ingen kategorier å vise</string>
+
+    <string name="nearby_splash__download_apps_from_people_nearby">"Inget Internett? Hent programmer fra folk i nærheten!
+\n "</string>
+    <string name="nearby_splash__find_people_button">Finn folk i nærheten</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Begge parter trenger %1$s for å bruke sirkulering.</string>
+
+    <string name="app__tts__downloading_progress">Laster ned, %1$d%% fullført</string>
+    </resources>

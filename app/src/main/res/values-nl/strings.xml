@@ -57,9 +57,7 @@
     <string name="send_via_bluetooth">Versturen via Bluetooth</string>
     <string name="repo_add_url">Bronadres</string>
     <string name="repo_add_fingerprint">Vingerafdruk (optioneel)</string>
-    <string name="repo_exists_add_fingerprint">Deze bron is al ingesteld. Nieuwe sleutelinformatie zal worden
-        toegevoegd.
-    </string>
+    <string name="repo_exists_add_fingerprint">Deze bron is al ingesteld. Nieuwe sleutelinformatie zal worden toegevoegd.</string>
     <string name="repo_exists_enable">Deze bron is al ingesteld. Bevestig dat je deze opnieuw wil inschakelen.</string>
     <string name="repo_exists_and_enabled">De binnenkomende bron is al ingesteld en ingeschakeld.</string>
     <string name="repo_delete_to_overwrite">Je moet deze bron eerst verwijderen voordat je er een kan toevoegen met een
@@ -104,9 +102,7 @@
     <string name="ignoreTouch_on">Reken apps die een aanraakscreen vereisen altijd mee</string>
     <string name="local_repo">Collectie gedeelde apps</string>
     <string name="local_repo_running">F-Droid is klaar om apps te delen</string>
-    <string name="touch_to_configure_local_repo">Raak aan om details te bekijken en anderen gedeelde apps van jou te
-        laten downloaden.
-    </string>
+    <string name="touch_to_configure_local_repo">Raak aan om details te bekijken en anderen gedeelde apps van jou te laten downloaden.</string>
     <string name="deleting_repo">Bron verwijderen…</string>
     <string name="adding_apks_format">%s aan gedeelde app-collectie toevoegen…</string>
     <string name="writing_index_jar">Ondertekend indexbestand (index.jar) aan het schrijven…</string>
@@ -286,8 +282,7 @@
         dat we er niet mee kunnen swappen.
     </string>
     <string name="swap_not_enabled">Swap niet ingeschakeld</string>
-    <string name="swap_not_enabled_description">Voordat we kunnen swappen, moet het apparaat zichtbaar gemaakt worden.
-    </string>
+    <string name="swap_not_enabled_description">Voordat we kunnen swappen moet het apparaat zichtbaar gemaakt worden.</string>
 
     <string name="install_confirm">heeft toegang nodig tot</string>
     <string name="install_confirm_update">Wil je een update voor deze applicatie installeren? De bestaande gegevens
@@ -312,7 +307,7 @@
     <string name="uninstall_confirm">Wil je deze app verwijderen?</string>
     <string name="tap_to_install">Download voltooid, raak aan om te installeren</string>
 
-    <string name="perms_new_perm_prefix">"Nieuw: "</string>
+    <string name="perms_new_perm_prefix">Nieuw:</string>
     <string name="perms_description_app">Aangeboden door %1$s.</string>
     <string name="downloading">Downloaden…</string>
 
@@ -440,8 +435,7 @@
     </string>
     <string name="warning_no_internet">Kan niet updaten, ben je verbonden met het internet?</string>
     <string name="versions">Versies</string>
-    <string name="app_details_donate_prompt_unknown_author">Bestel een kopje koffie voor de ontwikkelaars van %1$s!
-    </string>
+    <string name="app_details_donate_prompt_unknown_author">Bestel een kopje koffie voor de ontwikkelaars van %1$s!</string>
     <string name="app_details_donate_prompt">%1$s is gemaakt door %2$s. Bestel ze een kopje koffie!</string>
 
     <string name="app_version_x_available">Versie %1$s is beschikbaar</string>
@@ -517,9 +511,9 @@
     <string name="tts_category_name">Categorie %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Geef de enige app weer in de categorie %2$s</item>
-        <item quantity="other">Geef alle %1$d apps weer in de categorie %2$s</item>
-    </plurals>
+	<item quantity="one">Geef %1$d app weer in de categorie %2$s</item>
+	<item quantity="other">Geef alle %1$d apps weer in de categorie %2$s</item>
+</plurals>
 
     <plurals name="details_last_update_days">
         <item quantity="one">%1$s dag geleden bijgewerkt</item>
@@ -542,4 +536,10 @@
 
     <string name="categories__empty_state__no_categories">Geen categorieën om weer te geven</string>
 
-</resources>
+<string name="app_list__age__released_today">Vandaag uitgebracht</string>
+    <string name="app_list__age__released_yesterday">Gisteren uitgebracht</string>
+    <string name="details_last_updated_today">Vandaag bijgewerkt</string>
+    <string name="menu_video">Video</string>
+    <string name="app__tts__cancel_download">Download annuleren</string>
+    <string name="app__tts__downloading_progress">Downloaden, %1$d%% voltooid</string>
+    </resources>

@@ -19,8 +19,7 @@
     <string name="update_interval">Automaattisen päivityksen tiheys</string>
     <string name="update_interval_zero">Ei automaattisia sovellusluetteloiden päivityksiä</string>
     <string name="automatic_scan_wifi">Vain Wi-Fi -yhteydellä</string>
-    <string name="automatic_scan_wifi_on">Päivitä automaattisesti vain rajoittamattomissa verkoissa, kuten Wi-Fi
-    </string>
+    <string name="automatic_scan_wifi_on">Päivitä automaattisesti vain rajoittamattomissa verkoissa, kuten Wi-Fi</string>
     <string name="notify">Päivitysimoitukset</string>
     <string name="notify_on">Näytä iIlmoitus, kun päivityksiä on saatavilla</string>
     <string name="system_installer">Etuoikeutettu laajennus</string>
@@ -76,9 +75,9 @@
     <string name="details_notinstalled">Ei asennettu</string>
     <string name="antiadslist">Tämä sovellus sisältää mainoksia</string>
     <string name="antitracklist">Tämä sovellus tarkkailee ja raportoi toimintaasi</string>
-    <string name="antinonfreeadlist">Tämä sovellus suosittelee epävapaita lisäosia</string>
-    <string name="antinonfreenetlist">Tämä sovellus mainostaa epävapaita verkkopalveluja</string>
-    <string name="antinonfreedeplist">Tämä sovellus vaatii toimiakseen jonkin muun, ei-avoimen sovelluksen</string>
+    <string name="antinonfreeadlist">Tämä sovellus suosittelee maksullisia lisäosia</string>
+    <string name="antinonfreenetlist">Tämä sovellus tukee maksullisia verkkopalveluja</string>
+    <string name="antinonfreedeplist">Tämä sovellus on riippuvainen muista maksullisista sovelluksista</string>
     <string name="display">Näyttö</string>
     <string name="expert">Asiantuntijatila</string>
     <string name="search_hint">Etsi sovelluksia</string>
@@ -93,9 +92,9 @@
     </string>
     <string name="deleting_repo">Poistetaan nykyistä sovelluslähdettä…</string>
     <string name="adding_apks_format">Lisätään %s sovelluslähteisiin…</string>
-    <string name="writing_index_jar">Kirjoitetaan allekirjoitettua hakemistotiedostoa (index.jar)…</string>
-    <string name="linking_apks">Linkitetään APK -tiedostot sovelluslähteeseen…</string>
-    <string name="copying_icons">Kopioidaan kuvakkeita sovelluslähteeseen…</string>
+    <string name="writing_index_jar">Kirjoitetaan allekirjoitettua indeksitiedostoa (index.jar)…</string>
+    <string name="linking_apks">Yhdistetään APK-tiedostot sovelluslähteeseen…</string>
+    <string name="copying_icons">Kopioidaan sovelluskuvakkeita sovelluslähteeseen…</string>
     <string name="icon">Kuvake</string>
     <string name="next">Seuraava</string>
     <string name="skip">Ohita</string>
@@ -107,7 +106,7 @@
     <string name="proxy_port">Välityspalvelimen portti</string>
     <string name="proxy_port_summary">Määritä välityspalvelimesi porttinumero (esim. 8118)</string>
     <string name="repos_unchanged">Kaikki sovelluslähteet ovat ajan tasalla</string>
-    <string name="all_other_repos_fine">Mistään muusta sovelluslähteestä ei havaittu virheitä.</string>
+    <string name="all_other_repos_fine">Muut ohjelmalähteet eivät luoneet virheitä.</string>
     <string name="global_error_updating_repos">Virhe päivityksen aikana: %s</string>
     <string name="theme">Teema</string>
     <string name="unverified">Vahvistamaton</string>
@@ -147,7 +146,7 @@
     <string name="swap_join_same_wifi">Liity ystäväsi kanssa samaan Wi-Fi-verkkoon</string>
     <string name="swap">Vaihda sovelluksia</string>
     <string name="swap_no_wifi_network">Ei vielä verkkoa</string>
-    <string name="swap_view_available_networks">Napsauta avataksesi saatavilla olevat verkot</string>
+    <string name="swap_view_available_networks">Näytä saatavilla olevat verkot napauttamalla</string>
     <string name="open_qr_code_scanner">Avaa QR-koodilukija</string>
     <string name="swap_welcome">Tervetuloa F-Droidiin!</string>
     <string name="swap_confirm_connect">Haluatko saada sovellukset kohteesta %1$s nyt?</string>
@@ -169,7 +168,7 @@
     <string name="interval_never">Ei koskaan</string>
     <string name="downloading">Ladataan…</string>
 
-    <string name="perms_new_perm_prefix">"Uusi: "</string>
+    <string name="perms_new_perm_prefix">Uutta:</string>
     <string name="download_error">Lataaminen epäonnistui</string>
 
     <string name="about_source">Lähdekoodi</string>
@@ -195,8 +194,10 @@
     <string name="less">Vähemmän</string>
 
     <string name="notification_summary_more">+%1$d lisää…</string>
-    <string name="update_auto_download">Lataa päivitykset automaattisesti</string>
-    <string name="update_auto_download_summary">Lataa päivitykset taustalla</string>
+    <string name="update_auto_download">Hae päivitykset automaattisesti</string>
+    <string name="update_auto_download_summary">"Päivitykset ladataan automaattisesti ja sinulle ilmoitetaan niiden
+asentamisesta
+ "</string>
     <string name="uninstall_system">Päivitä/Poista Privileged Extension</string>
     <string name="uninstall_system_summary">Avaa Privileged Extensionin asetussivu päivittääksesi tai poistaaksesi sen
     </string>
@@ -217,7 +218,7 @@
     <string name="menu_changelog">Muutosloki</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
-    <string name="antiupstreamnonfreelist">\"Upstream\" lähdekoodi ei ole kokonaan vapaata</string>
+    <string name="antiupstreamnonfreelist">Ylävirran lähdekoodi ei ole kokonaan ilmaista</string>
     <string name="expert_on">Näytä lisää tietoa ja ota käyttöön lisäasetukset</string>
 
     <string name="show_incompat_versions_on">Näytä sovellusversiot jotka eivät ole yhteensopivia laitteesi kanssa
@@ -225,12 +226,11 @@
     <string name="ignoreTouch_on">Sisällytä aina sovellukset jotka vaativat kosketusnäytön toimiakseen</string>
 
     <string name="useTor">Käytä Tor-verkkoa</string>
-    <string name="useTorSummary">Pakota latausliikenne Tor-verkon kautta suojataksesi yksityisyyttäsi</string>
+    <string name="useTorSummary">Pakota latausliikenne Tor-verkon kautta yksityisyyden lisäämiseksi</string>
     <string name="update_notification_title">Päivitetään sovelluslähteitä</string>
-    <string name="repo_exists_add_fingerprint">Tämä sovelluslähde on jo asennettu, tämä lisää uuden avaimen tiedot.
-    </string>
+    <string name="repo_exists_add_fingerprint">Tämä sovelluslähde on jo asennettu, tämä lisää uuden avaimen tiedot.</string>
     <string name="status_inserting_apps">Tallennetaan sovelluksen tietoja</string>
-    <string name="no_permissions">Käyttöoikeuksia ei ole pyydetty.</string>
+    <string name="no_permissions">Käyttöoikeuksia ei tarvita.</string>
     <string name="permissions">Käyttöoikeudet</string>
     <string name="unsigned">Allekirjoittamaton</string>
     <string name="repo_details">Sovelluslähde</string>
@@ -266,7 +266,7 @@
     <string name="system_install_button_install">Asenna</string>
     <string name="system_install_installing">Asennetaan…</string>
     <string name="system_install_uninstalling">Poistetaan…</string>
-    <string name="system_install_warning">Tämä voi kestää jopa 10 sekuntia.</string>
+    <string name="system_install_warning">Tämä kestää jopa 10 sekuntia.</string>
     <string name="system_install_warning_lollipop">Tämä voi kestää jopa 10 sekuntia ja laite tullaan
         <b>käynnistämään uudelleen</b>
         sen jälkeen.
@@ -290,21 +290,21 @@
     </string>
     <string name="update_auto_install_summary">Lataa ja asenna päivitykset sovelluksiin taustalla</string>
     <string name="malformed_repo_uri">Ohitetaan virheellisesti muodostettu sovelluslähteen URI: %s</string>
-    <string name="antinonfreeassetslist">Tämä sovellus sisältää epävapaata omaisuutta</string>
+    <string name="antinonfreeassetslist">Tämä sovellus sisältää maksullisia osia</string>
 
     <string name="rooted_on">Älä himmennä sovelluksia jotka edellyttävät root-oikeuksia</string>
-    <string name="hide_anti_feature_apps">Himmennä anti-feature sovellukset</string>
-    <string name="hide_anti_feature_apps_on">Himmennä sovellukset jotka edellyttävät anti-featurea</string>
+    <string name="hide_anti_feature_apps">Himmennä anti-ominaisuuksia sisältävät sovellukset</string>
+    <string name="hide_anti_feature_apps_on">Himmennä sovellukset, jotka vaativat anti-ominaisuuksia</string>
     <string name="status_connecting_to_repo">Yhdistetään osoitteeseen
         %1$s
     </string>
-    <string name="no_handler_app">Sinulla ei ole saatavilla yhtään sovellusta joka pystyy käsittelemään %s.</string>
+    <string name="no_handler_app">Sinulla ei ole yhtään sovellusta, joka voi käsitellä %s.</string>
     <string name="repo_fingerprint">Allekirjoitusvarmenteen sormenjälki (SHA-256)</string>
     <string name="repo_searching_address">Etsitään F-Droid sovelluslähdettä osoitteesta
         %1$s
     </string>
     <string name="minsdk_or_later">%s tai uudempi</string>
-    <string name="category_Connectivity">Yhdistettävyys</string>
+    <string name="category_Connectivity">Liitettävyys</string>
     <string name="category_Graphics">Grafiikka</string>
     <string name="empty_installed_app_list">Ei asennettuja sovelluksia.
 
@@ -324,8 +324,8 @@
     </string>
     <string name="up_to_maxsdk">%s asti</string>
     <string name="minsdk_up_to_maxsdk">%1$s alkaen %2$s asti</string>
-    <string name="empty_search_installed_app_list">Hakusi ei vastannut yhtään asennettua sovellusta.</string>
-    <string name="empty_search_available_app_list">Haulla ei löytynyt tuloksia.</string>
+    <string name="empty_search_installed_app_list">Haulla ei löytynyt asennettuja sovelluksia.</string>
+    <string name="empty_search_available_app_list">Haulla ei löytynyt sovelluksia.</string>
     <string name="empty_search_can_update_app_list">Haulla ei löytynyt päivitettäviä sovelluksia.</string>
 
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
@@ -334,27 +334,27 @@
     </string>
     <string name="system_install_button_open">Avaa laajennus</string>
     <string name="system_install_installing_rebooting">Asennetaan ja käynnistetään uudelleen…</string>
-    <string name="swap_nfc_title">Kosketa vaihtaaksesi</string>
+    <string name="swap_nfc_title">Vaihda koskettamalla</string>
     <string name="swap_join_same_wifi_desc">Vaihtaaksesi sovelluksia Wi-Fin avulla, sinun tulee olla samassa verkossa.
         Jos sinulla ei ole pääsyä samaan verkkoon, voit luoda oman Wi-Fi-hotspotin.
     </string>
     <string name="swap_join_this_hotspot">Auta ystävääsi liittymään hotspottiisi</string>
     <string name="swap_success">Vaihtaminen onnistui!</string>
-    <string name="swap_switch_to_wifi">Napsauta vaihtaaksesi Wi-Fi-verkkoa</string>
+    <string name="swap_switch_to_wifi">Napauta vaihtaaksesi Wi-Fi-verkkoa</string>
     <string name="swap_scan_or_type_url">Henkilön tulee skannata koodi tai kirjoittaa toisen URL-osoite selaimeen.
     </string>
     <string name="swap_people_nearby">Lähellä olevat ihmiset</string>
     <string name="swap_scanning_for_peers">Etsitään lähellä olevia ihmisiä…</string>
     <string name="swap_nearby">Lähellä vaihto</string>
     <string name="swap_intro">Yhdistä ja vaihda sovelluksia lähellä olevien ihmisten kanssa.</string>
-    <string name="swap_visible_bluetooth">Nähtävissä Bluetoothin kautta</string>
-    <string name="swap_setting_up_bluetooth">Asetetaan Bluetoothia…</string>
+    <string name="swap_visible_bluetooth">Näkyvissä Bluetoothin kautta</string>
+    <string name="swap_setting_up_bluetooth">Valmistellaan Bluetoothia…</string>
     <string name="swap_not_visible_bluetooth">Ei nähtävissä Bluetoothin kautta</string>
-    <string name="swap_visible_wifi">Nähtävissä Wi-Fin kautta</string>
-    <string name="swap_setting_up_wifi">Asetetaan Wi-Fiä…</string>
+    <string name="swap_visible_wifi">Näkyvissä Wi-Fin kautta</string>
+    <string name="swap_setting_up_wifi">Valmistellaan Wi-Fiä…</string>
     <string name="swap_stopping_wifi">Pysäytetään WiFiä…</string>
     <string name="swap_not_visible_wifi">Ei nähtävissä Wi-Fin kautta</string>
-    <string name="swap_cant_find_peers">Etkö löydä etsimääsi?</string>
+    <string name="swap_cant_find_peers">Etkö löydä ketä etsit?</string>
     <string name="swap_no_peers_nearby">Ei löytynyt lähellä olevia ihmisiä joiden kanssa vaihtaa.</string>
     <string name="swap_connecting">Yhdistetään</string>
     <string name="swap_confirm">Vahvista vaihto</string>
@@ -368,8 +368,8 @@
     <string name="swap_not_enabled">Vaihtaminen ei ole käytössä</string>
     <string name="swap_not_enabled_description">Ennen vaihtamista, laitteesi täytyy tehdä näkyväksi.</string>
 
-    <string name="tap_to_install_format">Napsauta asentaaksesi %s</string>
-    <string name="tap_to_update_format">Napsauta päivittääksesi %s</string>
+    <string name="tap_to_install_format">Napauta asentaaksesi %s</string>
+    <string name="tap_to_update_format">Napauta päivittääksesi %s</string>
     <string name="install_confirm">tarvitsee pääsyn</string>
     <string name="install_confirm_update">Haluatko asentaa päivityksen tähän olemassa olevaan sovellukseen? Nykyiset
         tietosi eivät häviä. Päivitetty sovellus saa pääsyn:
@@ -383,9 +383,9 @@
     <string name="install_confirm_update_system_no_perms">Haluatko asentaa päivityksen tähän sisäänrakennettuun
         sovellukseen? Nykyiset tietosi eivät häviä. Sovellus ei tarvitse uusia lupia.
     </string>
-    <string name="perm_costs_money">Tämä voi maksaa sinulle rahaa</string>
+    <string name="perm_costs_money">Tämä voi olla maksullista</string>
     <string name="uninstall_update_confirm">Haluatko korvata tämän sovelluksen tehdasversiolla?</string>
-    <string name="tap_to_install">Lataus valmis, napsauta asentaaksesi</string>
+    <string name="tap_to_install">Lataus valmis, napauta asentaaksesi</string>
     <string name="download_pending">Odotetaan latauksen alkamista…</string>
     <string name="install_error_notify_title">Virhe asennettaessa %s</string>
     <string name="uninstall_error_notify_title">Virhe poistettaessa %s</string>
@@ -427,4 +427,109 @@
 
     <string name="versions">Versiot</string>
     <string name="warning_no_internet">Päivitys epäonnistui, tarkistithan verkkoyhteytesi?</string>
-</resources>
+<string name="app_version_x_available">Versio %1$s saatavilla</string>
+    <string name="app_version_x_installed">Versio %1$s</string>
+    <string name="app_recommended_version_installed">Versio %1$s (Suositeltu)</string>
+    <string name="app__newly_added">Uusi</string>
+    <string name="app__install_downloaded_update">Päivitys</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_install">Asenna %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Ladataan %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s on asennettu onnistuneesti</string>
+    <string name="app_list__age__released_today">Julkaistu tänään</string>
+    <string name="app_list__age__released_yesterday">Julkaistu eilen</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">Julkaistu %1$d päivä sitten</item>
+	<item quantity="other">Julkaistu %1$d päivää sitten</item>
+</plurals>
+
+    <string name="installed_apps__activity_title">Asennetut Sovellukset</string>
+    <string name="updates__tts__download_updates_for_all_apps">Lataa kaikki päivitykset</string>
+
+    <string name="updates__hide_updateable_apps">Piilota sovellukset</string>
+    <string name="updates__show_updateable_apps">Näytä sovellukset</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Lataa päivitys sovellukselle %1$d.</item>
+	<item quantity="other">Lataa päivitykset sovelluksille %1$d.</item>
+</plurals>
+
+    <string name="clear_search">Tyhjennä haku</string>
+
+    <string name="repositories_summary">Lisää muita sovelluslähteitä</string>
+    <string name="menu_video">Video</string>
+    <string name="main_menu__latest_apps">Uusimmat</string>
+    <string name="main_menu__categories">Kategoriat</string>
+    <string name="latest__empty_state__no_recent_apps">Viimeaikaisia sovelluksia ei löytynyt</string>
+    <string name="latest__empty_state__never_updated">"Kun sovelluslistasi on päivitetty, uusimpien sovelluksien pitäisi
+ näkyä tässä
+ "</string>
+    <string name="categories__empty_state__no_categories">Ei näytettäviä kategorioita</string>
+
+    <string name="preference_category__my_apps">Omat sovellukset</string>
+    <string name="preference_manage_installed_apps">Hallitse asennettuja sovelluksia</string>
+
+
+    <string name="details_new_in_version">Uutta versiossa %s</string>
+
+    <string name="antifeatureswarning">Tässä sovelluksessa on ominaisuuksia, joista et ehkä pidä.</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">"Ei nettiä? Lataa sovelluksia lähellä olevilta ihmisiltä!
+ "</string>
+    <string name="nearby_splash__find_people_button">Etsi lähellä olevia ihmisiä</string>
+    <string name="notification_title_single_update_available">Päivitys Saatavilla</string>
+    <string name="notification_title_single_ready_to_install">Valmis asennettavaksi</string>
+    <string name="notification_title_single_ready_to_install_update">Päivitys valmiina asennettavaksi</string>
+    <string name="notification_title_single_install_error">Asennus Epäonnistui</string>
+    <string name="notification_content_single_downloading">Ladataan \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Ladataan päivitystä sovellukselle \"%1$s\"…</string>
+    <string name="notification_content_single_installing">Asennetaan \"%1$s\"…</string>
+    <string name="notification_content_single_installed">Asennettu onnistuneesti</string>
+    <string name="notification_content_single_install_error">Asennus Epäonnistui</string>
+    <string name="notification_summary_updates">%1$d Päivitystä</string>
+    <string name="notification_summary_installed">%1$d Sovellusta Asennettu</string>
+    <string name="notification_title_summary_update_available">Päivitys saatavilla</string>
+    <string name="notification_title_summary_downloading">Ladataan…</string>
+    <string name="notification_title_summary_downloading_update">Ladataan päivitystä…</string>
+    <string name="notification_title_summary_ready_to_install">Valmis asennettavaksi</string>
+    <string name="notification_title_summary_ready_to_install_update">Päivitys valmiina asennettavaksi</string>
+    <string name="notification_title_summary_installing">Asennetaan</string>
+    <string name="notification_title_summary_installed">Asennettu onnistuneesti</string>
+    <string name="notification_title_summary_install_error">Asennus Epäonnistui</string>
+    <string name="notification_action_update">Päivitä</string>
+    <string name="notification_action_cancel">Peruuta</string>
+    <string name="notification_action_install">Asenna</string>
+
+    <string name="details_last_updated_today">Päivitetty tänään</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Päivitetty %1$s päivä sitten</item>
+	<item quantity="other">Päivitetty %1$s päivää sitten</item>
+</plurals>
+<string name="installed_app__updates_ignored">Päivitykset ohitetaan</string>
+    <string name="app_details_donate_prompt_unknown_author">Osta sovelluksen %1$s kehittäjille kahvi!</string>
+    <string name="app_details_donate_prompt">Sovelluksen %1$s on luonut %2$s. Osta heille kahvi!</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Päivitä %1$s</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Version %1$s päivitykset ohitetaan</string>
+    <string name="updates__tts__download_app">Lataa päivitykset</string>
+    <string name="main_menu__swap_nearby">Lähellä</string>
+
+    <string name="latest__empty_state__no_enabled_repos">"Kun otat sovelluslähteen käyttöön ja annat sen päivittyä, uusimpien
+ sovelluksien pitäsi näkyä tässä
+ "</string>
+
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Näytä kaikki %d "</item>
+	<item quantity="other">" Näytä kaikki %d "</item>
+</plurals>
+
+    <string name="nearby_splash__both_parties_need_fdroid">Molemmilla osapuolilla tulee olla %1$s ominaisuuden käyttämiseksi.</string>
+
+    <string name="tts_category_name">Kategoria %1$s</string>
+
+    <string name="antifeatures">Anti-ominaisuudet</string>
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Näytä sovellus %1$d kategoriassa %2$s</item>
+	<item quantity="other">Näytä kaikki %1$d -sovellukset kategoriasta %2$s</item>
+</plurals>
+
+    </resources>

@@ -57,11 +57,8 @@
     <string name="send_via_bluetooth">Enviar vía Bluetooth</string>
     <string name="repo_add_url">Dirección del repositorio</string>
     <string name="repo_add_fingerprint">Huella digital (opcional)</string>
-    <string name="repo_exists_add_fingerprint">Este repositorio ya está configurado, esto agregará nueva información
-        sobre la clave.
-    </string>
-    <string name="repo_exists_enable">Este repositorio ya está configurado, confirma que quieres volver a habilitarlo.
-    </string>
+    <string name="repo_exists_add_fingerprint">Este repositorio ya está configurado, esto agregará nueva información sobre la clave.</string>
+    <string name="repo_exists_enable">Este repositorio ya está configurado, confirma que quieres volver a habilitarlo.</string>
     <string name="repo_exists_and_enabled">El repositorio ya está configurado y habilitado.</string>
     <string name="repo_delete_to_overwrite">Debes borrar este repositorio antes de agregar uno con una clave
         diferente.
@@ -106,9 +103,7 @@
     <string name="ignoreTouch_on">Siempre incluir aplicaciones que requieran pantalla táctil</string>
     <string name="local_repo">Repo local</string>
     <string name="local_repo_running">F-Droid está preparado para intercambiar</string>
-    <string name="touch_to_configure_local_repo">Tocar para ver los detalles y permitir a otros intercambiar
-        aplicaciones.
-    </string>
+    <string name="touch_to_configure_local_repo">Tocar para ver los detalles y permitir a otros intercambiar aplicaciones.</string>
     <string name="deleting_repo">Borrando repositorio actual…</string>
     <string name="adding_apks_format">Agregando %s al repositorio…</string>
     <string name="writing_index_jar">Escribiendo archivo firmado de índice (index.jar)…</string>
@@ -190,13 +185,12 @@
     <string name="system_install_denied_body">"Esta opción sólo está disponible cuando la extensión de F-Droid con
         permisos de sistema está instalada."
     </string>
-    <string name="swap_nfc_description">Si tu amigo tiene F-Droid y NFC activado, colocad los teléfonos dándose la
-        espalda.
-    </string>
-    <string name="swap_join_same_wifi">Unirse a la misma Red Wi-Fi que tu amigo</string>
+    <string name="swap_nfc_description">"Si la otra persona tiene F-Droid y activado NFC, poned en contacto vuestros teléfonos.
+ "</string>
+    <string name="swap_join_same_wifi">Unirse a la misma Red Wi-Fi que la otra persona</string>
     <string name="swap">Intercambiar aplicaciones</string>
     <string name="swap_no_wifi_network">No hay red aún</string>
-    <string name="swap_view_available_networks">(Toca para abrir las redes disponibles)</string>
+    <string name="swap_view_available_networks">Tocar para abrir las redes disponibles</string>
     <string name="open_qr_code_scanner">Abrir el escáner de códigos QR</string>
     <string name="swap_welcome">¡Bienvenido a F-Droid!</string>
     <string name="swap_confirm_connect">¿Quieres obtener aplicaciones desde %1$s ahora?</string>
@@ -255,24 +249,23 @@
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">¿Deseas instalar la extensión de F-Droid con permisos de sistema?</string>
-    <string name="system_install_warning_lollipop">Esto tardará unos 10 segundos y después el dispositivo se<b>
-        reiniciará</b>.
-    </string>
+    <string name="system_install_warning_lollipop">Esto tardará unos 10 segundos y después el dispositivo 
+se <b>reiniciará</b>.
+ </string>
     <string name="system_uninstall">¿Deseas desinstalar F-Droid con permisos de sistema?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
-    <string name="swap_nfc_title">Toque para intercambiar</string>
-    <string name="swap_join_same_wifi_desc">Para intercambiar usando Wi-Fi, verificad que estáis en la misma red. Si no
-        tienes acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi-Fi.
-    </string>
-    <string name="swap_join_this_hotspot">Facilita que tu amigo se conecte a tu punto de acceso</string>
+    <string name="swap_nfc_title">Tocar para intercambiar</string>
+    <string name="swap_join_same_wifi_desc">"Para intercambiar usando Wi-Fi, verificad que estáis en la misma red. Si no
+tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi-Fi.
+ "</string>
+    <string name="swap_join_this_hotspot">Facilita que la otra persona se conecte a tu punto de acceso</string>
     <string name="swap_success">¡Intercambio realizado con éxito!</string>
     <string name="swap_active_hotspot">%1$s (tu punto de acceso)</string>
     <string name="swap_switch_to_wifi">Toca para cambiar a una red Wi-Fi</string>
     <string name="swap_dont_show_again">No volver a mostrar esto</string>
-    <string name="swap_scan_or_type_url">Una persona tiene que escanear el código, o escribir la URL de la otra en el
-        navegador.
-    </string>
+    <string name="swap_scan_or_type_url">"Una persona tiene que escanear el código, o escribir la URL de la otra en un navegador.
+ "</string>
     <string name="swap_choose_apps">Elige las aplicaciones</string>
     <string name="swap_scan_qr">Escanea código QR</string>
     <string name="swap_people_nearby">Personas cercanas</string>
@@ -293,9 +286,8 @@
     <string name="swap_confirm">Confirmar intercambio</string>
     <string name="swap_qr_isnt_for_swap">El código QR escaneado no parece un código de intercambio.</string>
     <string name="bluetooth_unavailable">Bluetooth no disponible</string>
-    <string name="swap_cant_send_no_bluetooth">No se puede enviar F-Droid porque Bluetooth no está disponible en este
-        dispositivo.
-    </string>
+    <string name="swap_cant_send_no_bluetooth">"No se puede enviar F-Droid porque Bluetooth no está disponible en este dispositivo.
+ "</string>
     <string name="loading">Cargando…</string>
     <string name="swap_connection_misc_error">Ocurrió un error mientras se conectaba al dispositivo. Parece que no
         podemos intercambiar con él.
@@ -319,7 +311,7 @@
     <string name="uninstall_confirm">¿Quieres desinstalar esta aplicación?</string>
     <string name="tap_to_install">Descarga completada, toca para instalar</string>
 
-    <string name="perms_new_perm_prefix">"Nuevo: "</string>
+    <string name="perms_new_perm_prefix">Nuevos:</string>
     <string name="perms_description_app">Proporcionado por %1$s.</string>
     <string name="downloading">Descargando…</string>
 
@@ -394,8 +386,7 @@
 
     <string name="empty_search_installed_app_list">Ninguna de las aplicaciones instaladas coincide.</string>
     <string name="empty_search_available_app_list">No hay coincidencias con las aplicaciones disponibles.</string>
-    <string name="empty_search_can_update_app_list">No hay ninguna coincidencia con ninguna aplicación a actualizar.
-    </string>
+    <string name="empty_search_can_update_app_list">No hay ninguna coincidencia con ninguna aplicación a actualizar.</string>
 
     <string name="by_author">por</string>
     <string name="menu_email">Escribir un correo electrónico al autor</string>
@@ -452,7 +443,7 @@
 
     <string name="main_menu__latest_apps">Último</string>
     <string name="main_menu__categories">Categorías</string>
-    <string name="main_menu__swap_nearby">Proximidad</string>
+    <string name="main_menu__swap_nearby">Cercanía</string>
 
 
     <plurals name="button_view_all_apps_in_category">
@@ -533,15 +524,14 @@
     <string name="antifeatures">Características no-libres</string>
     <string name="details_last_updated_today">Actualizada hoy</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Actualizada hoy</item>
-        <item quantity="other">Actualizadas hace %1$s días</item>
-    </plurals>
+	<item quantity="one">Actualizada hoy</item>
+	<item quantity="other">Actualizada hace %1$s días</item>
+</plurals>
     <string name="app_list__name__successfully_installed">%1$s se ha instalado con éxito</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">¿No tiene internet? ¡Descargue apps de la gente de su
-        alrededor!
-    </string>
+    <string name="nearby_splash__download_apps_from_people_nearby">"¿Sin internet? ¡Descarga «apps» de gente cercana!
+ "</string>
     <string name="nearby_splash__find_people_button">Encontrar personas cerca de mí</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Ambas partes necesitan %1$s para usar la proximidad.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambas partes necesitan %1$s para usar la cercanía.</string>
 
     <string name="latest__empty_state__no_recent_apps">No se encontraron aplicaciones recientes</string>
     <string name="latest__empty_state__never_updated">Una vez que la lista de aplicaciones se actualice, aquí se
@@ -553,4 +543,7 @@
 
     <string name="categories__empty_state__no_categories">No hay categorías para mostrar</string>
 
-</resources>
+<string name="menu_video">Vídeo</string>
+    <string name="app__tts__cancel_download">Cancelar descarga</string>
+    <string name="app__tts__downloading_progress">Descargando, %1$d%% completado</string>
+    </resources>

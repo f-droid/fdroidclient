@@ -152,9 +152,7 @@
     <string name="bluetooth_activity_not_found">Neniu Bludenta metodo de sendo trovita, elektu iun!</string>
     <string name="choose_bt_send">Elektu Bludentan metodon de sendo</string>
     <string name="repo_add_fingerprint">Fingrospuro (malnepra)</string>
-    <string name="repo_exists_add_fingerprint">Ĉi tiu deponejo estas jam instalita, tio aldonos novan informon pri
-        ŝlosilo.
-    </string>
+    <string name="repo_exists_add_fingerprint">Ĉi tiu deponejo estas jam instalita, tio aldonos novan informon pri ŝlosilo.</string>
     <string name="repo_exists_enable">Ĉi tiu deponejo estas jam instalita, konfirmu ke vi volas reaktivigi ĝin.</string>
     <string name="repo_exists_and_enabled">La deponejo estas jam instalita kaj aktiva.</string>
     <string name="bad_fingerprint">Erara fingrospuro</string>
@@ -176,9 +174,7 @@
     <string name="antinonfreeassetslist">Ĉi tiu aplikaĵo enhavas neliberan enhavon</string>
 
     <string name="local_repo_running">F-Droid estas preta por interŝanĝo</string>
-    <string name="touch_to_configure_local_repo">Tuŝu por rigardi detalojn kaj permesi aliajn interŝanĝi viajn
-        aplikaĵojn.
-    </string>
+    <string name="touch_to_configure_local_repo">Tuŝu por rigardi detalojn kaj permesi aliajn interŝanĝi viajn aplikaĵojn.</string>
     <string name="writing_index_jar">Konservado de subskribita indeksa dosiero (index.jar)…</string>
     <string name="proxy">Prokurilo</string>
     <string name="enable_proxy_title">Aktivigi HTTP prokurilon</string>
@@ -314,7 +310,8 @@
     <string name="swap_switch_to_wifi">Tuŝu por ŝanĝi al vifio</string>
     <string name="swap_confirm_connect">Ĉu vi volas elŝuti aplikaĵojn el %1$s nun?</string>
     <string name="swap_dont_show_again">Ne montri ĉi tion denove</string>
-    <string name="swap_scan_or_type_url">Iu ajn devas skani kodon, aŭ entajpi URL-n de aliulo en la foliumilo.</string>
+    <string name="swap_scan_or_type_url">"Unu persono devas skani la kodon, aŭ entajpi URL-n de aliulo en foliumilon.
+ "</string>
     <string name="swap_choose_apps">Elekti aplikaĵojn</string>
     <string name="swap_scan_qr">Skanu QR-kodon</string>
     <string name="swap_people_nearby">Homoj proksime</string>
@@ -361,13 +358,12 @@
     <string name="newPerms">Nova(j)</string>
     <string name="allPerms">Ĉio</string>
     <string name="perm_costs_money">Ĉi tio povas elspezi vian monon</string>
-    <string name="uninstall_update_confirm">Ĉu vi volas anstataŭigi ĉi tiun aplikaĵon per la antaŭinstalita versio?
-    </string>
+    <string name="uninstall_update_confirm">Ĉu vi volas anstataŭigi ĉi tiun aplikaĵon per la antaŭinstalita versio?</string>
     <string name="uninstall_confirm">Ĉu vi volas malinstali ĉi tiun aplikaĵon?</string>
     <string name="tap_to_install">Elŝuto finiĝis, tuŝu por instali</string>
     <string name="download_error">Elŝuto malsukcesis</string>
 
-    <string name="perms_new_perm_prefix">"Nova: "</string>
+    <string name="perms_new_perm_prefix">Nova:</string>
     <string name="downloading">Elŝutado…</string>
 
     <string name="perms_description_app">Liverita per %1$s.</string>
@@ -484,9 +480,9 @@
     <string name="tts_category_name">Kategorio %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Montri la ununuran aplikaĵon en la kategorio %2$s</item>
-        <item quantity="other">Montri ĉiujn %1$s aplikaĵojn en la kategorio %2$s</item>
-    </plurals>
+	<item quantity="one">Montri %1$d aplikaĵon en la kategorio %2$s</item>
+	<item quantity="other">Montri ĉiujn %1$s aplikaĵojn en la kategorio %2$s</item>
+</plurals>
     <string name="app__install_downloaded_update">Ĝisdatigi</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Ĝisdatigi %1$s</string>
@@ -514,15 +510,14 @@
     <string name="antifeatures">Fiebloj</string>
     <string name="details_last_updated_today">Ĝisdatigita hodiaŭ</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Ĝisdatigita hodiaŭ</item>
-        <item quantity="other">Ĝisdatigita antaŭ %1$s tagoj</item>
-    </plurals>
+	<item quantity="one">Ĝisdatigita antaŭ %1$s tago</item>
+	<item quantity="other">Ĝisdatigita antaŭ %1$s tagoj</item>
+</plurals>
     <string name="app_list__name__successfully_installed">%1$s instalita sukcese</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Seninterrete? Elŝutu aplikaĵojn el proksimaj uloj!
     </string>
     <string name="nearby_splash__find_people_button">Trovi proksimajn ulojn</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Ambaŭ flankoj bezonas %1$s por uzi proksiman interŝanĝon.
-    </string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambaŭ flankoj bezonas %1$s por uzi proksiman interŝanĝon.</string>
 
     <string name="latest__empty_state__no_recent_apps">Neniuj novaj aplikaĵoj</string>
     <string name="latest__empty_state__never_updated">Kiam la listo de aplikaĵoj estos ĝisdatigita, plej novaj aplikaĵoj
@@ -534,4 +529,9 @@
 
     <string name="categories__empty_state__no_categories">Neniuj kategorioj por montri</string>
 
-</resources>
+<string name="app_list__age__released_today">Eldonita hodiaŭ</string>
+    <string name="app_list__age__released_yesterday">Eldonita hieraŭ</string>
+    <string name="menu_video">Video</string>
+    <string name="app__tts__cancel_download">Nuligi elŝutadon</string>
+    <string name="app__tts__downloading_progress">Elŝutado, %1$d%% kompleta</string>
+    </resources>

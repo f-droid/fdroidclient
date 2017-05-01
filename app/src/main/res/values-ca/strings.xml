@@ -56,12 +56,8 @@
     <string name="send_via_bluetooth">Envia per Bluetooth</string>
     <string name="repo_add_url">Adreça del dipòsit</string>
     <string name="repo_add_fingerprint">Empremta digital (opcional)</string>
-    <string name="repo_exists_add_fingerprint">Ja teniu un dipòsit amb aquesta adreça, sou canviant l\'empremta
-        digital.
-    </string>
-    <string name="repo_exists_enable">L\'adreça coincideix amb la d\'un dipòsit inhabilitat, confirmeu que voleu
-        reactivar-lo.
-    </string>
+    <string name="repo_exists_add_fingerprint">Ja teniu un dipòsit amb aquesta adreça, sou canviant l\'empremta digital.</string>
+    <string name="repo_exists_enable">L\'adreça coincideix amb la d\'un dipòsit inhabilitat, confirmeu que voleu reactivar-lo.</string>
     <string name="repo_exists_and_enabled">Aquesta adreça ja està en ús per un altre dipòsit del dispositiu.</string>
     <string name="repo_delete_to_overwrite">Si voleu canviar la clau d\'aquest dipòsit, primer suprimiu el dipòsit.
     </string>
@@ -105,8 +101,7 @@
     <string name="ignoreTouch_on">Inclou sempre aplicacions que requereixin pantalla tàctil</string>
     <string name="local_repo">Dipòsit local</string>
     <string name="local_repo_running">F-Droid està a punt per a l\'intercanvi</string>
-    <string name="touch_to_configure_local_repo">Toqueu per veure més detalls i permetre l\'intercanvi d\'aplicacions.
-    </string>
+    <string name="touch_to_configure_local_repo">Toqueu per veure més detalls i permetre l\'intercanvi d\'aplicacions.</string>
     <string name="deleting_repo">S\'està esborrant el dipòsit actual…</string>
     <string name="adding_apks_format">Afegint %s al dipòsit…</string>
     <string name="writing_index_jar">S\'està escribint la llista d\'aplicacions (index.jar)…</string>
@@ -265,7 +260,7 @@
     <string name="tap_to_install">S\'ha completat la baixada, toqueu per instal·lar-la</string>
     <string name="download_error">Error en la baixada</string>
 
-    <string name="perms_new_perm_prefix">"Nou: "</string>
+    <string name="perms_new_perm_prefix">Nou:</string>
     <string name="perms_description_app">Proporcionat per %1$s.</string>
     <string name="downloading">S\'està baixant…</string>
 
@@ -521,17 +516,16 @@
     <string name="antifeatureswarning">Aquesta app conté característiques que potser no us agradarien.</string>
     <string name="details_last_updated_today">Actualitzades avui</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Actualitzades avui</item>
-        <item quantity="other">Actualitzades fa %1$s dies</item>
-    </plurals>
+	<item quantity="one">Actualitzada fa %1$s dies</item>
+	<item quantity="other">Actualitzades fa %1$s dies</item>
+</plurals>
     <string name="app_list__name__successfully_installed">%1$s s\'ha instal·lat correctament</string>
     <string name="antifeatures">Característiques no lliures</string>
     <string name="nearby_splash__download_apps_from_people_nearby">No teniu internet? Descarregueu apps de la gent que
         tingueu al voltant!
     </string>
     <string name="nearby_splash__find_people_button">Trobeu persones del voltant</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Ambdues parts necessiten %1$s per poder usar la proximitat.
-    </string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambdues parts necessiten %1$s per poder usar la proximitat.</string>
 
     <string name="latest__empty_state__no_recent_apps">Cap «app» recent trobada</string>
     <string name="latest__empty_state__never_updated">Un cop s\'hagi actualitzat la vostra llista d\'«apps», les «apps»
@@ -543,4 +537,6 @@
 
     <string name="categories__empty_state__no_categories">No hi ha cap categoria per mostrar</string>
 
-</resources>
+<string name="app_list__age__released_today">Publicat avui</string>
+    <string name="menu_video">Vídeo</string>
+    </resources>
