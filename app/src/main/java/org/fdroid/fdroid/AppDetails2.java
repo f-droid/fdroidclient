@@ -34,6 +34,7 @@ import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.LocalBroadcastManager;
@@ -56,6 +57,8 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.InstalledApp;
+import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
@@ -683,20 +686,48 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         installApk(apkToInstall);
     }
 
+    /**
+     * Attempts to find the installed {@link Apk} from the database. If not found, will lookup the
+     * {@link InstalledAppProvider} to find the details of the installed app and use that to
+     * instantiate an {@link Apk} to be returned.
+     *
+     * Cases where an {@link Apk} will not be found in the database and for which we fall back to
+     * the {@link InstalledAppProvider} include:
+     *  + System apps which are provided by a repository, but for which the version code bundled
+     *    with the system is not included in the repository.
+     *  + Regular apps from a repository, where the installed version is old enough that it is no
+     *    longer available in the repository.
+     *
+     * @throws IllegalStateException If neither the {@link PackageManager} or the
+     * {@link InstalledAppProvider} can't find a reference to the installed apk.
+     */
+    @NonNull
+    private Apk getInstalledApk() {
+        try {
+            PackageInfo pi = getPackageManager().getPackageInfo(app.packageName, 0);
+            Apk apk = ApkProvider.Helper.findApkFromAnyRepo(this, pi.packageName, pi.versionCode);
+            if (apk == null) {
+                InstalledApp installedApp = InstalledAppProvider.Helper.findByPackageName(this, pi.packageName);
+                if (installedApp == null) {
+                    throw new IllegalStateException("No installed app found when trying to uninstall");
+                }
+                apk = new Apk(installedApp);
+            }
+            return apk;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            throw new IllegalStateException("Couldn't find installed apk for " + app.packageName, e);
+        }
+    }
+
     @Override
     public void uninstallApk() {
         Apk apk = app.installedApk;
         if (apk == null) {
             // TODO ideally, app would be refreshed immediately after install, then this
             // workaround would be unnecessary
-            try {
-                PackageInfo pi = getPackageManager().getPackageInfo(app.packageName, 0);
-                apk = ApkProvider.Helper.findApkFromAnyRepo(this, pi.packageName, pi.versionCode);
-                app.installedApk = apk;
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-                return; // not installed
-            }
+            apk = getInstalledApk();
+            app.installedApk = apk;
         }
         Installer installer = InstallerFactory.create(this, apk);
         Intent intent = installer.getUninstallScreen();
