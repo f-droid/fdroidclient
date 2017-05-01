@@ -379,8 +379,9 @@
     <string name="permissions">Baimenak</string>
     <string name="theme_night">Gaua</string>
     <string name="menu_settings">Ezarpenak</string>
-    <string name="update_auto_download">Deskargatu eguneraketak automatikoki</string>
-    <string name="update_auto_download_summary">Deskargatu eguneraketaren fitxategiak bigarren planoan</string>
+    <string name="update_auto_download">Jaso eguneraketak automatikoki</string>
+    <string name="update_auto_download_summary">"Eguneraketak bigarren planoan deskargatzen dira automatikoki eta berauek instalatzeko jakinarazten zaizu
+ "</string>
     <string name="login_title">Autentifikazioa behar da</string>
     <string name="login_name">Erabiltzaile-izena</string>
     <string name="login_password">Pasahitza</string>
@@ -528,4 +529,9 @@
         <item quantity="one">Gaur eguneratua</item>
         <item quantity="other">Orain dela %1$s egun eguneratua</item>
     </plurals>
-</resources>
+<string name="app_list__name__successfully_installed">%1$s ongi instalatu da</string>
+    <string name="app_list__age__released_today">Gaur argitaratua</string>
+    <string name="app_list__age__released_yesterday">Atzo argitaratua</string>
+    <string name="menu_video">Bideoa</string>
+    <string name="latest__empty_state__no_recent_apps">Ez da oraintsuko aplikaziorik aurkitu</string>
+    </resources>

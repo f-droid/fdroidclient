@@ -98,8 +98,7 @@
 
     <string name="repo_add_url">Адрас рэпазіторыя</string>
     <string name="repo_add_fingerprint">Адбітак (неабавязковы)</string>
-    <string name="repo_exists_add_fingerprint">Гэты рэпазіторый ужо наладжаны, гэта абновіць інфармацыю аб ключы.
-    </string>
+    <string name="repo_exists_add_fingerprint">Гэты рэпазіторый ужо наладжаны, гэта абновіць інфармацыю аб ключы.</string>
     <string name="repo_exists_enable">Гэты рэпазіторый ужо наладжаны, пацвердзіце што хочаце ўключыць яго.</string>
     <string name="repo_exists_and_enabled">Рэпазіторый ужо наладжаны і ўключаны.</string>
     <string name="repo_delete_to_overwrite">Вы павінны спачатку выдаліць гэты рэпазіторый, а потым дабавіць яго з іншым
@@ -167,10 +166,8 @@
 
     <string name="local_repo">Лакальны рэпазіторый</string>
     <string name="local_repo_running">F-Droid гатовы да абмену</string>
-    <string name="touch_to_configure_local_repo">Датыкніцеся каб праглядзець дэталі і дазволіць абмен праграмамі з
-        іншымі.
-    </string>
-    <string name="deleting_repo">Выдаленне бягучага рэпазіторыя…</string>
+    <string name="touch_to_configure_local_repo">Датыкніцеся, каб праглядзець дэталі і дазволіць абмен праграмамі з іншымі.</string>
+    <string name="deleting_repo">Выдаленне дзейнага рэпазіторыя…</string>
     <string name="adding_apks_format">Дадаванне «%s» да рэпазіторыя…</string>
     <string name="writing_index_jar">Запіс падпісанага файла індэкса (index.jar)…</string>
     <string name="linking_apks">Уключэнне APK-файлаў у рэпазіторый…</string>
@@ -351,7 +348,8 @@
     <string name="swap_welcome">Вітаем у F-Droid!</string>
     <string name="swap_confirm_connect">Вы жадаеце атрымаць праграмы з «%1$s» зараз?</string>
     <string name="swap_dont_show_again">Не паказваць зноў</string>
-    <string name="swap_scan_or_type_url">Адзін з вас павінен адсканаваць код ці ўвясці URL іншага ў браўзеры.</string>
+    <string name="swap_scan_or_type_url">"Адзін з вас павінен адсканаваць код ці ўвясці URL іншага ў браўзеры.
+ "</string>
     <string name="swap_choose_apps">Абраць праграму</string>
     <string name="swap_scan_qr">Сканаваць QR-код</string>
     <string name="swap_people_nearby">Людзі паблізу</string>
@@ -386,22 +384,22 @@
     <string name="tap_to_install_format">Націсніце для ўсталёўкі %s</string>
     <string name="tap_to_update_format">Націсніце для абнаўлення %s</string>
     <string name="install_confirm">патрабуе доступ да</string>
-    <string name="install_confirm_update">Хочаце ўсталяваць абнаўленне праграмы?
-        Існуючыя дадзеныя не будуць выдалены.
-        Абноўленная праграма атрымае доступ да:
-    </string>
-    <string name="install_confirm_update_system">Хочаце ўсталяваць абнаўленне ўбудаванай праграмы?
-        Існуючыя дадзеныя не будуць выдалены.
-        Абноўленная праграма атрымае доступ да:
-    </string>
-    <string name="install_confirm_update_no_perms">Хочаце ўсталяваць абнаўленне праграмы?
-        Існуючыя дадзеныя не будуць выдалены.
-        Праграма не патрабуе адмысловых дазволаў.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Хочаце ўсталяваць абнаўленне ўбудаванай праграмы?
-        Існуючыя дадзеныя не будуць выдалены.
-        Праграма не патрабуе адмысловых дазволаў.
-    </string>
+    <string name="install_confirm_update">"Хочаце ўсталяваць абнаўленне праграмы?
+ Наяўныя дадзеныя не будуць выдалены.
+ Абноўленная праграма атрымае доступ да:
+ "</string>
+    <string name="install_confirm_update_system">"Хочаце ўсталяваць абнаўленне ўбудаванай праграмы?
+ Наяўныя дадзеныя не будуць выдалены.
+ Абноўленная праграма атрымае доступ да:
+ "</string>
+    <string name="install_confirm_update_no_perms">"Хочаце ўсталяваць абнаўленне праграмы?
+ Наяўныя дадзеныя не будуць выдалены.
+ Праграма не патрабуе адмысловых дазволаў.
+ "</string>
+    <string name="install_confirm_update_system_no_perms">"Хочаце ўсталяваць абнаўленне ўбудаванай праграмы?
+ Наяўныя дадзеныя не будуць выдалены.
+ Праграма не патрабуе адмысловых дазволаў.
+ "</string>
     <string name="newPerms">Новыя</string>
     <string name="allPerms">Усе</string>
     <string name="perm_costs_money">Гэта можа каштаваць грошай</string>
@@ -414,7 +412,7 @@
     <string name="uninstall_error_notify_title">Памылка выдалення %s</string>
 
 
-    <string name="perms_new_perm_prefix">"Новыя: "</string>
+    <string name="perms_new_perm_prefix">Новыя:</string>
     <string name="perms_description_app">Прадастаўлена %1$s.</string>
     <string name="downloading">Спампоўка…</string>
     <string name="downloading_apk">Пампуецца %1$s</string>
@@ -501,11 +499,11 @@
     <string name="tts_category_name">Катэгорыя %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Паказаць адну праграму ў катэгорыі %2$s</item>
-        <item quantity="few">Паказаць %1$s праграмы ў катэгорыі %2$s</item>
-        <item quantity="many">Паказаць %1$s праграм ў катэгорыі %2$s</item>
-        <item quantity="other"/>
-    </plurals>
+	<item quantity="one">Паказаць %1$s праграму ў катэгорыі %2$s</item>
+	<item quantity="few">Паказаць %1$s праграмы ў катэгорыі %2$s</item>
+	<item quantity="many">Паказаць %1$s праграм ў катэгорыі %2$s</item>
+	<item quantity="other"/>
+</plurals>
     <string name="app__install_downloaded_update">Абнавіць</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Абнавіць %1$s</string>
@@ -535,21 +533,32 @@
 
     <string name="antifeatures">Непажаданыя функцыі</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Абноўлена %1$s сёння</item>
-        <item quantity="few">Абноўлена %1$s дні таму</item>
-        <item quantity="many">Абноўлена %1$s дзён таму</item>
-        <item quantity="other"/>
-    </plurals>
+	<item quantity="one">Абноўлена %1$s дзень таму</item>
+	<item quantity="few">Абноўлена %1$s дні таму</item>
+	<item quantity="many">Абноўлена %1$s дзён таму</item>
+	<item quantity="other"/>
+</plurals>
     <string name="antifeatureswarning">Гэтая праграма мае функцыі, што могуць вам не спадабацца.</string>
     <string name="app_list__name__successfully_installed">%1$s паспяхова ўсталявана</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Няма інтэрнэту? Пампуйце праграмы ад людзей
         паблізу!
     </string>
     <string name="nearby_splash__find_people_button">Знасці людзей паблізу</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Абодва бакі патрабуюць %1$s для выкарыстання паблізу.
-    </string>
+    <string name="nearby_splash__both_parties_need_fdroid">Абодва бакі патрабуюць %1$s для выкарыстання паблізу.</string>
 
     <string name="categories__empty_state__no_categories">Няма катэгорый для паказу</string>
 
     <string name="latest__empty_state__no_recent_apps">Няма новых праграм</string>
-</resources>
+<string name="app_list__age__released_today">Выпушчана сёння</string>
+    <string name="app_list__age__released_yesterday">Выпушчана ўчора</string>
+    <string name="menu_video">Відэа</string>
+    <string name="latest__empty_state__never_updated">"Як толькі спіс праграм абновіцца, тут з\'явяцца найноўшыя праграмы
+ "</string>
+    <string name="latest__empty_state__no_enabled_repos">"Як толькі вы ўключыце рэпазіторыі і абновіце іх, тут з\'явяцца
+ найноўшыя праграмы
+ "</string>
+
+    <string name="details_last_updated_today">Абноўлена сёння</string>
+    <string name="app__tts__cancel_download">Адмяніць спампоўку</string>
+    <string name="app__tts__downloading_progress">Спампоўка, %1$d%% скончана</string>
+    </resources>

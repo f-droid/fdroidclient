@@ -20,7 +20,7 @@
     <string name="update_interval">Intervalle de mise à jour automatique</string>
     <string name="update_interval_zero">Aucune mise à jour automatique de la liste d\'applis</string>
     <string name="automatic_scan_wifi">Uniquement via Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Mise à jour automatique de la liste d\'applis uniquement via Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">Ne mettre à jour automatiquement que lorsque connecté via Wifi</string>
     <string name="notify">Notifications de mise à jour</string>
     <string name="notify_on">Afficher une notification quand des mises à jour sont disponibles</string>
     <string name="system_installer">Permissions étendues</string>
@@ -52,16 +52,12 @@
     <string name="add_key">Ajouter une clé</string>
     <string name="overwrite">Écraser</string>
     <string name="fdroid_updates_available">Des mises à jour F-Droid sont disponibles</string>
-    <string name="bluetooth_activity_not_found">Aucune méthode d\'envoi Bluetooth n\'a été trouvée, choisissez-en une
-        !
-    </string>
+    <string name="bluetooth_activity_not_found">Aucune méthode d\'envoi Bluetooth trouvée, choisissez-en une !</string>
     <string name="choose_bt_send">Choisir une méthode d\'envoi Bluetooth</string>
     <string name="send_via_bluetooth">Envoyer par Bluetooth</string>
     <string name="repo_add_url">Adresse du dépôt</string>
     <string name="repo_add_fingerprint">Empreinte (facultatif)</string>
-    <string name="repo_exists_add_fingerprint">Ce dépôt est déjà configuré, les informations de la nouvelle clé seront
-        ajoutées.
-    </string>
+    <string name="repo_exists_add_fingerprint">Ce dépôt est déjà configuré, les informations de la nouvelle clé seront ajoutées.</string>
     <string name="repo_exists_enable">Ce dépôt est déjà configuré, confirmez que vous voulez le réactiver.</string>
     <string name="repo_exists_and_enabled">Le dépôt entrant est déjà configuré et activé.</string>
     <string name="repo_delete_to_overwrite">Vous devez d\'abord supprimer ce dépôt avant d\'en ajouter un avec une clé
@@ -107,9 +103,7 @@
     <string name="ignoreTouch_on">Toujours inclure les applis nécessitant un écran tactile</string>
     <string name="local_repo">Dépôt local</string>
     <string name="local_repo_running">F-Droid est prêt à l\'échange</string>
-    <string name="touch_to_configure_local_repo">Appuyez pour voir les détails et autoriser d\'autres à échanger vos
-        applis.
-    </string>
+    <string name="touch_to_configure_local_repo">Appuyez pour voir les détails et autoriser d\'autres à échanger vos applications.</string>
     <string name="deleting_repo">Supprimer le dépôt actuel…</string>
     <string name="adding_apks_format">Ajout de %s au dépôt…</string>
     <string name="writing_index_jar">Écriture d\'un fichier d\'index signé (index.jar)…</string>
@@ -257,7 +251,7 @@
     <string name="tap_to_install">Téléchargement terminé, appuyez pour installer</string>
     <string name="download_error">Le téléchargement a échoué</string>
 
-    <string name="perms_new_perm_prefix">"Nouvelle : "</string>
+    <string name="perms_new_perm_prefix">Nouveauté :</string>
     <string name="downloading">Téléchargement…</string>
 
     <string name="interval_never">Jamais</string>
@@ -317,9 +311,7 @@
     <string name="swap_cant_send_no_bluetooth">Impossible d\'envoyer F-Droid : le Bluetooth n\'est pas disponible sur
         cet appareil.
     </string>
-    <string name="swap_not_enabled_description">Votre appareil doit être visible avant de pouvoir commencer
-        l\'échange.
-    </string>
+    <string name="swap_not_enabled_description">Votre appareil doit être visible avant de pouvoir commencer l\'échange.</string>
 
     <string name="interval_1h">Toutes les heures</string>
     <string name="perms_description_app">Fourni par %1$s.</string>
@@ -452,8 +444,7 @@
     <string name="notification_title_single_ready_to_install_update">Mise à jour prête pour installation</string>
     <string name="notification_title_single_install_error">L’installation a échoué</string>
     <string name="notification_content_single_downloading">Téléchargement de « %1$s »…</string>
-    <string name="notification_content_single_downloading_update">Téléchargement de la mise à jour pour « %1$s »…
-    </string>
+    <string name="notification_content_single_downloading_update">Téléchargement de la mise à jour de « %1$s »…</string>
     <string name="notification_content_single_installing">Installation de « %1$s »…</string>
     <string name="notification_content_single_installed">Installation réussie</string>
     <string name="notification_content_single_install_error">L’installation a échoué</string>
@@ -515,7 +506,7 @@
     <string name="details_new_in_version">Nouveautés de la version %s</string>
 
     <string name="antifeatureswarning">Cette application a des fonctionnalités qui peuvent ne pas vous plaire.</string>
-    <string name="antifeatures">Mauvaises fonctionnalités</string>
+    <string name="antifeatures">Fonctionnalités qui n\'en sont pas</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">voir %d</item>
         <item quantity="other">voir toutes %d</item>
@@ -525,19 +516,19 @@
         depuis des appareils de votre entourage !
     </string>
     <string name="nearby_splash__find_people_button">Trouver des gens/appareils dans les environs</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Chacun doit utiliser %1$s.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Chacun utilisateur proche doit utiliser %1$s.</string>
 
     <string name="tts_category_name">Catégorie %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Voir l\'application de la catégorie %2$s</item>
-        <item quantity="other">Voir toutes les applications de la catégorie %2$s</item>
-    </plurals>
+	<item quantity="one">Voir l\'application %1$d de la catégorie %2$s</item>
+	<item quantity="other">Voir toutes les applications %1$d de la catégorie %2$s</item>
+</plurals>
 
     <plurals name="details_last_update_days">
-        <item quantity="one">Mis à jour il y a %1$s jour</item>
-        <item quantity="other">Mis à jour il y a %1$s jours</item>
-    </plurals>
+	<item quantity="one">Mis à jour il y a %1$s jour</item>
+	<item quantity="other">Mis à jour il y a %1$s jours</item>
+</plurals>
     <string name="latest__empty_state__no_recent_apps">Aucunes applications récentes trouvé</string>
     <string name="categories__empty_state__no_categories">Aucune catégorie à afficher</string>
 
@@ -548,4 +539,8 @@
     <string name="latest__empty_state__never_updated">Quand votre liste d\'applis est mise à jour, les dernières applis
         s\'affichent ici
     </string>
-</resources>
+<string name="app_list__age__released_today">Mis à disposition aujourd\'hui</string>
+    <string name="app_list__age__released_yesterday">Mis à disposition hier</string>
+    <string name="menu_video">Vidéo</string>
+    <string name="details_last_updated_today">Mis à jour aujourd\'hui</string>
+    </resources>

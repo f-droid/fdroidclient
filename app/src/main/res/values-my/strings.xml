@@ -284,4 +284,70 @@
     <string name="local_repo">လိုကယ္ရီပို</string>
     <string name="repo_added">F-Droid repository ကိုသိမ္းခဲ့သည္ %1$s.</string>
     <string name="empty_search_installed_app_list">သြင္းထားေသာ application ထဲမွာ ရွာေဖြမႈမတူညီပါ.</string>
-</resources>
+<string name="keep_install_history">မှတ်တမ်းများကိုသိမ်းထားမည်</string>
+    <string name="keep_install_history_summary">F-Droid အတွင်း သွင်းထားသည် နှင့် ဖြုတ်ထားသည့်မှတ်တမ်းတစ်ခုကို သိမ်းထားမည်</string>
+    <string name="update_auto_install">အသစ်ထွက်ရှိမှုများကိုအလိုအလျောက်သွင်းမည်</string>
+    <string name="update_auto_install_summary">အနောက်လုပ်ငန်းစဉ်များတွင် အသစ်ထွက်ရှိသော အက်ပ်စ်များကို ဒေါင်းပြီး ထည့်သွင်းမည်</string>
+    <string name="uninstall_system">အိတ်ရှ်တန်းရှင်းများကို အသစ်မွမ်းမံခြင်း၊ ဖြုတ်ခြင်းများပြုလုပ်မည်</string>
+    <string name="app_details_donate_prompt_unknown_author">ရေးတဲ့သူတွေကို %1$s တန်ကော်ဖီတစ်ခွက်တော့တိုက်သင့်ပါတယ်!</string>
+    <string name="app_version_x_available">ဗားရှင်း %1$s ထွက်ရှိပါသည်</string>
+    <string name="app_version_x_installed">ဗားရှင်း %1$s</string>
+    <string name="app_recommended_version_installed">ဗားရှင်း %1$s (အကြံပြုသည်)</string>
+    <string name="app__newly_added">အသစ်</string>
+    <string name="app__install_downloaded_update">အသစ်ထွက်ရှိခြင်း</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">အသစ်ထွက်ရှိမှု %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">%1$s သွင်းမည်</string>
+    <string name="app_list__name__downloading_in_progress">%1$s ကိုဒေါင်းလုတ်ဆွဲနေသည်</string>
+    <string name="app_list__name__successfully_installed">%1$s ကိုအောင်မြင်စွာသွင်းပြီးပါပြီ</string>
+    <string name="app_list__age__released_today">ယနေ့ထွက်ခဲ့သည်</string>
+    <string name="app_list__age__released_yesterday">မနေ့ကထွက်ခဲ့သည်</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="other">%1$d ရက်ကြိုတင်ထွက်ခဲ့သည်</item>
+</plurals>
+
+    <string name="installed_apps__activity_title">သွင်းခဲ့သော အက်ပ်စ်များ</string>
+    <string name="installed_app__updates_ignored">အသစ်ထွက်ရှိမှုကိုလျစ်လျူရှူမည်</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">ဗားရှင်း %1$s အတွက် အသစ်ထွက်ရှိမှုကိုလျစ်လျူရှုမည်</string>
+    <string name="updates__tts__download_updates_for_all_apps">အသစ်ထွက်ရှိမှုအားလုံးကိုဒေါင်းလုတ်ဆွဲမည်</string>
+
+    <string name="updates__hide_updateable_apps">ဖျောက်ထားသောအက်ပ်စ်များ</string>
+    <string name="updates__show_updateable_apps">အက်ပ်စ်များကိုပြမည်</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="other">%1$d အက်ပ်များအတွက် အသစ်ထွက်ရှိမှုကိုဒေါင်းလုတ်ဆွဲမည်</item>
+</plurals>
+
+    <string name="versions">ဗားရှင်းများ</string>
+    <string name="clear_search">ရှာဖွေထားမည်ကိုရှင်းမည်</string>
+
+    <string name="repositories_summary">အက်ပလီကေးရှင်း၏ နောက်ထပ်ရင်းမြစ်များပေါင်းထည့်မည်</string>
+    <string name="menu_issues">ထွက်ရှိမှုများ</string>
+    <string name="menu_video">ဗွီဒီယို</string>
+    <string name="main_menu__latest_apps">နောက်ဆုံး</string>
+    <string name="main_menu__categories">ခေါင်းစဉ်</string>
+    <string name="main_menu__swap_nearby">အနီးအနားရှိ</string>
+
+    <string name="latest__empty_state__no_recent_apps">မကြာသေးခင်က အက်ပ်စ်များမတွေ့ပါ</string>
+    <string name="latest__empty_state__never_updated">"သင်၏အက်ပ်စ့်များကို အသစ်မွမ်းမံပြီးပါက နောက်ဆုံးအသစ်မွမ်းမံသည့်အက်ပ်စ်များကို
+ အောက်ပါတွင်ပါလိမ့်မည်
+ "</string>
+    <string name="categories__empty_state__no_categories">ဖော်ပြရန် ခေါင်းစဉ်မရှိပါ</string>
+
+    <string name="preference_category__my_apps">ကျွနိုပ်၏အက်ပ်စ်များ</string>
+    <string name="preference_manage_installed_apps">သွင်းထားသည့်အက်ပ်စ့်များကို စီမံမည်</string>
+
+
+    <string name="details_new_in_version">%s ဗားရှင်းတွင် အသစ်များ</string>
+
+    <string name="antifeatureswarning">ဒီအက်ပ်သည် သင်မကြိုက်သည့်အင်္ဂါရပ်ရှိကောင်းရှိနိုင်သည်</string>
+    <string name="touch_to_configure_local_repo">အသေးစိတ်အချက်အလက်ကြည်ရန် နှိပ်ပါ နှင့် သင့်အက်ပ်စ့်ကို တခြားသူများလဲလှယ်ရယူရန်အတွက် ခွင့်ပြုမည်</string>
+    <string name="proxy_host">Proxy Host</string>
+    <string name="proxy_port">Proxy Port</string>
+    <string name="warning_no_internet">အသစ်မွမ်းမံလို့မရပါ။ သင် အင်တာနက်နှင့်ချိတ်ဆက်ထားသလား?</string>
+    <string name="no_handler_app">%s ကိုကိုင်တွယ်ရန်အတွက် သင့်တွင် ရရှိထားသော အက်ပ်မရှိပါ</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="other">" %d အားလုံးကိုကြည့်မည် "</item>
+</plurals>
+
+    </resources>

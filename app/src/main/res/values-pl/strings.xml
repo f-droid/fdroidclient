@@ -72,8 +72,7 @@
     <string name="ignoreTouch_on">Zawsze uwzględniaj aplikacje, które wymagają ekranu dotykowego</string>
     <string name="local_repo">Repozytorium lokalne</string>
     <string name="local_repo_running">F-Droid gotowy do wymiany</string>
-    <string name="touch_to_configure_local_repo">Dotknij, aby sprawdzić szczegóły i umożliwić wymianę aplikacji.
-    </string>
+    <string name="touch_to_configure_local_repo">Dotknij, aby sprawdzić szczegóły i umożliwić wymianę aplikacji.</string>
     <string name="deleting_repo">Usuwanie aktualnego repozytorium…</string>
     <string name="adding_apks_format">Dodawanie %s do repozytorium…</string>
     <string name="writing_index_jar">Zapisywanie podpisanego pliku pakietów (index.jar)…</string>
@@ -130,7 +129,8 @@
     <string name="system_install_denied_body">Opcja dostępna tylko wtedy, gdy F-Droid został zainstalowany jako
         aplikacja systemowa.
     </string>
-    <string name="swap_nfc_description">Jeśli oba urządzenie mają F-Droida i NFC, możecie je zbliżyć do siebie.</string>
+    <string name="swap_nfc_description">"Jeśli oba urządzenie mają F-Droida i NFC, możecie je zbliżyć do siebie.
+ "</string>
     <string name="swap_join_same_wifi">Połącz się z tą samą siecią Wi-Fi</string>
     <string name="swap">Wymień aplikacje</string>
     <string name="swap_no_wifi_network">Brak sieci</string>
@@ -273,8 +273,7 @@
     <string name="swap_no_peers_nearby">Nie udało się znaleźć urządzeń, z którymi można by się wymienić.</string>
     <string name="swap_connecting">Łączenie</string>
     <string name="swap_confirm">Potwierdź wymianę</string>
-    <string name="swap_qr_isnt_for_swap">Kod QR który został zeskanowany nie wygląda na kod do wymiany aplikacji.
-    </string>
+    <string name="swap_qr_isnt_for_swap">Kod QR który został zeskanowany nie wygląda na kod do wymiany aplikacji.</string>
     <string name="bluetooth_unavailable">Bluetooth nie jest dostępny</string>
     <string name="swap_cant_send_no_bluetooth">Nie udało się wysłać F-Droida ponieważ Bluetooth nie jest dostępny na
         Twoim urządzeniu.
@@ -305,7 +304,7 @@
     <string name="uninstall_confirm">Czy chcesz odinstalować tą aplikację?</string>
     <string name="tap_to_install">Pobieranie zakończone, kliknij by zainstalować</string>
 
-    <string name="perms_new_perm_prefix">"Nowe: "</string>
+    <string name="perms_new_perm_prefix">Nowe:</string>
     <string name="perms_description_app">Dostarczone przez %1$s.</string>
     <string name="downloading">Pobieranie…</string>
 
@@ -328,7 +327,8 @@
 
     <string name="download_error">Pobieranie nie powiodło się</string>
 
-    <string name="system_install_denied_signature">Niepoprawny podpis dodatku! Prosimy o zgłoszenie błędu!</string>
+    <string name="system_install_denied_signature">"Niepoprawny podpis dodatku! Prosimy o zgłoszenie błędu!
+ "</string>
     <string name="system_install_denied_permissions">Uprzywilejowanemu dodatkowi nie zostały przyznane wymagane
         uprawnienia! Prosimy o zgłoszenie błędu!
     </string>
@@ -471,11 +471,11 @@
     <string name="tts_category_name">Kategoria %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Pokaż pojedynczą aplikację w kategorii %2$s</item>
-        <item quantity="few">Pokaż wszystkie %1$s aplikacje w kategorii %2$s</item>
-        <item quantity="many">Pokaż wszystkie %1$s aplikacji w kategorii %2$s</item>
-        <item quantity="other"/>
-    </plurals>
+	<item quantity="one">Pokaż %1$d aplikację w kategorii %2$s</item>
+	<item quantity="few">Pokaż wszystkie %1$s aplikacje w kategorii %2$s</item>
+	<item quantity="many">Pokaż wszystkich %1$s aplikacji w kategorii %2$s</item>
+	<item quantity="other"/>
+</plurals>
     <string name="app__install_downloaded_update">Aktualizuj</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Aktualizuj %1$s</string>
@@ -507,19 +507,17 @@
     <string name="antifeatures">Niepożądane funkcje</string>
     <string name="details_last_updated_today">Uaktualniono dzisiaj</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Uaktualniono dzisiaj</item>
-        <item quantity="few">Uaktualniono %1$s dni temu</item>
-        <item quantity="many">Uaktualniono %1$s dni temu</item>
-        <item quantity="other"/>
-    </plurals>
+	<item quantity="one">Uaktualniono %1$s dzień temu</item>
+	<item quantity="few">Uaktualniono %1$s dni temu</item>
+	<item quantity="many">Uaktualniono %1$s dni temu</item>
+	<item quantity="other"/>
+</plurals>
     <string name="app_list__name__successfully_installed">%1$s pomyślnie zainstalowano</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Brak internetu? Pobierz aplikacje od ludzi w
         pobliżu!
     </string>
     <string name="nearby_splash__find_people_button">Znajdź ludzi w pobliżu</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Obydwie strony potrzebują %1$s, aby użyć pobliskiej
-        wymiany.
-    </string>
+    <string name="nearby_splash__both_parties_need_fdroid">Obydwie strony potrzebują %1$s, aby użyć pobliskiej wymiany.</string>
 
     <string name="latest__empty_state__no_recent_apps">Brak najnowszych aplikacji</string>
     <string name="latest__empty_state__never_updated">Kiedy lista aplikacji zostanie zaktualizowana, najnowsze aplikacje
@@ -531,4 +529,9 @@
 
     <string name="categories__empty_state__no_categories">Brak kategorii do wyświetlenia</string>
 
-</resources>
+<string name="app_list__age__released_today">Wydany dzisiaj</string>
+    <string name="app_list__age__released_yesterday">Wydany wczoraj</string>
+    <string name="menu_video">Wideo</string>
+    <string name="app__tts__cancel_download">Anuluj pobieranie</string>
+    <string name="app__tts__downloading_progress">Pobieranie, %1$d%% ukończono</string>
+    </resources>

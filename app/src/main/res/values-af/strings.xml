@@ -29,7 +29,8 @@
     <string name="automatic_scan_wifi_on">Opdateer slegs automaties wanneer gekoppel aan ongemete netwerke soos Wi-Fi
     </string>
     <string name="update_auto_download">Automatise opdaterings</string>
-    <string name="update_auto_download_summary">Opdateer in die agtergrond</string>
+    <string name="update_auto_download_summary">"Opdateerings word outomaties afgelaai en jy word in kennis gestel om dit te installeer
+\n "</string>
     <string name="update_auto_install">Installeer opdaterings automaties</string>
     <string name="update_auto_install_summary">Laai en installeer opdaterings in die agtergrond</string>
     <string name="notify">Opdaterings kennisgewings</string>
@@ -425,7 +426,7 @@
     <string name="uninstall_error_notify_title">Fout tydens deïnstalleer van %s</string>
 
 
-    <string name="perms_new_perm_prefix">"Nuwe: "</string>
+    <string name="perms_new_perm_prefix">Nuwe:</string>
     <string name="perms_description_app">Verskaf deur %1$s.</string>
     <string name="downloading">Laai tans af…</string>
     <string name="downloading_apk">Aflaai van %1$s</string>
@@ -485,4 +486,71 @@
     <string name="notification_action_cancel">Kanselleer</string>
     <string name="notification_action_install">Installeer</string>
 
-</resources>
+<string name="app_recommended_version_installed">Weergawe %1$s (aanbeveel)</string>
+    <string name="app__newly_added">Nuwe</string>
+    <string name="app__tts__cancel_download">Kanselleer aflaai</string>
+    <string name="app__install_downloaded_update">Opdateer</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">Opdateer %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">Installeer %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Aflaai %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s suksesvol geïnstalleer</string>
+    <string name="app_list__age__released_today">Vandag vrygestel</string>
+    <string name="app_list__age__released_yesterday">Gister vrygestel</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">%1$d dae gelede vrygestel</item>
+	<item quantity="other">Vrygestel %1$d dag gelede</item>
+</plurals>
+
+    <string name="installed_apps__activity_title">Geïnstalleerde programme</string>
+    <string name="installed_app__updates_ignored">Opdaterings geïgnoreer</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Opdaterings vir weergawe %1$s geïgnoreer</string>
+    <string name="updates__tts__download_app">Aflaai</string>
+    <string name="updates__tts__download_updates_for_all_apps">Laai alle opdaterings af</string>
+
+    <string name="updates__hide_updateable_apps">Verberg programme</string>
+    <string name="updates__show_updateable_apps">Wys programme</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Laai opdaterings vir %1$d programme af.</item>
+	<item quantity="other">Laai bywerking vir %1$d app.</item>
+</plurals>
+
+    <string name="menu_video">Video</string>
+    <string name="latest__empty_state__no_recent_apps">Geen onlangse programme gevind nie</string>
+    <string name="latest__empty_state__never_updated">"Sodra jou lys van programme opgedateer is, behoort die nuutste 
+\nprogram hier te wys
+\n "</string>
+    <string name="latest__empty_state__no_enabled_repos">"Sodra \'n argief aktiveer en laat dit laat opdateer, behoort die nuutste 
+\nprogramme hier te wys
+\n "</string>
+
+    <string name="categories__empty_state__no_categories">Geen kategorieë om te wys nie</string>
+
+    <string name="preference_category__my_apps">My programme</string>
+    <string name="preference_manage_installed_apps">Handhaaf geïnstalleerde programme</string>
+
+
+    <string name="details_new_in_version">Nuut in weergawe %s</string>
+
+    <string name="antifeatureswarning">Hierdie program het eienskappe wat jy hou dalk nie van sal hou nie.</string>
+    <string name="antifeatures">Anti-kenmerke</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">" Selfs al is hierdie dieselfde as mekaar, stel Android dokumentasie altyd voor dat ten minste een en ander: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
+	<item quantity="other">" Selfs al is dit dieselfde as eachother, Android dokumente stel altyd met vermelding van ten minste een en ander: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
+</plurals>
+
+    <string name="nearby_splash__download_apps_from_people_nearby">"Geen internet nie? Laai programme van mense naby jou!
+\n "</string>
+    <string name="nearby_splash__find_people_button">Vind mense naby my</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Beide partye moet %1$s gebruik.</string>
+
+    <string name="app__tts__downloading_progress">Besig met aflaai, %1$d%% voltooi</string>
+    <string name="tts_category_name">Kategorie %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Kyk na %1$d program in die %2$s kategorie</item>
+	<item quantity="other">Kyk na alle %1$d programme van die %2$s kategorie</item>
+</plurals>
+
+    </resources>

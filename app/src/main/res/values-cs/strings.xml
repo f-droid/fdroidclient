@@ -473,8 +473,7 @@
     <plurals name="app_list__age__released_x_days_ago">
         <item quantity="one">Vydáno před %1$d dnem</item>
         <item quantity="few">Vydáno před %1$d dny</item>
-        <item quantity="many">‚Vydáno před %1$d dny</item>
-        <item quantity="other"/>
+        <item quantity="other">‚Vydáno před %1$d dny</item>
     </plurals>
 
     <string name="updates__tts__download_app">Stáhnout</string>

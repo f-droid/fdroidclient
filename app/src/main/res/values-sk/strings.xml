@@ -461,8 +461,7 @@
     <plurals name="app_list__age__released_x_days_ago">
         <item quantity="one">Vydané pred dňom</item>
         <item quantity="few">Vydané pred %1$d dňami</item>
-        <item quantity="many">Vydané pred %1$d dňami.</item>
-        <item quantity="other"/>
+        <item quantity="other">Vydané pred %1$d dňami.</item>
     </plurals>
 
     <string name="installed_apps__activity_title">Nainštalované aplikácie</string>

@@ -3,7 +3,8 @@
     <string name="SignatureMismatch">
         新しいﾊﾞｰｼﾞｮﾝは､以前のものと異なる暗号鍵で署名されています｡新しいﾊﾞｰｼﾞｮﾝをｲﾝｽﾄｰﾙするには､まず以前のﾊﾞｰｼﾞｮﾝをｱﾝｲﾝｽﾄｰﾙする必要があります｡その後で再度実行してください｡(ｱﾌﾟﾘｹｰｼｮﾝをｱﾝｲﾝｽﾄｰﾙすると保存したﾃﾞｰﾀｰが消えることに注意してください)
     </string>
-    <string name="installIncompatible">このﾊﾟｯｹｰｼﾞはあなたの端末と互換性がないようです｡それでもｲﾝｽﾄｰﾙを続行しますか?</string>
+    <string name="installIncompatible">"このﾊﾟｯｹｰｼﾞはあなたの端末と互換性がないようです｡それでもｲﾝｽﾄｰﾙを続行しますか?
+ "</string>
     <string name="installDowngrade">
         このｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝｸﾞﾚｰﾄﾞしようとしています｡これにより不具合を発生させたりﾃﾞｰﾀを失ったりする場合があります｡それでもﾀﾞｳﾝｸﾞﾚｰﾄﾞを続行しますか?
     </string>
@@ -54,7 +55,8 @@
     <string name="repo_exists_add_fingerprint">このﾘﾎﾟｼﾞﾄﾘはすでに設定されています｡新しい鍵の情報を追加します｡</string>
     <string name="repo_exists_enable">このﾘﾎﾟｼﾞﾄﾘはすでに設定されています｡再度有効にするか確認してください｡</string>
     <string name="repo_exists_and_enabled">入力中のﾘﾎﾟｼﾞﾄﾘはすでに設定されて有効にされています｡</string>
-    <string name="repo_delete_to_overwrite">異なる鍵でﾘﾎﾟｼﾞﾄﾘを追加する前に､このﾘﾎﾟｼﾞﾄﾘを削除する必要があります｡</string>
+    <string name="repo_delete_to_overwrite">"異なる鍵でﾘﾎﾟｼﾞﾄﾘを追加する前に､このﾘﾎﾟｼﾞﾄﾘを削除する必要があります｡
+ "</string>
     <string name="malformed_repo_uri">不正な形式のﾘﾎﾟｼﾞﾄﾘURIを無視します: %s</string>
     <string name="menu_update_repo">ﾘﾎﾟｼﾞﾄﾘの更新</string>
     <string name="menu_manage">ﾘﾎﾟｼﾞﾄﾘ</string>
@@ -149,7 +151,9 @@
     <string name="minsdk_or_later">%s 以上</string>
     <string name="up_to_maxsdk">最大 %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s から %2$s</string>
-    <string name="not_on_same_wifi">あなたの端末は追加したﾛｰｶﾙ･ﾘﾎﾟｼﾞﾄﾘと同じWi-Fi上にありません｡このﾈｯﾄﾜｰｸに参加してみてください: %s</string>
+    <string name="not_on_same_wifi">"あなたの端末は追加したﾛｰｶﾙ･ﾘﾎﾟｼﾞﾄﾘと同じWi-Fi上にありません。
+このﾈｯﾄﾜｰｸに参加してみてください: %s
+ "</string>
     <string name="requires_features">必須: %1$s</string>
     <string name="category_Development">開発</string>
     <string name="category_Games">ｹﾞｰﾑ</string>
@@ -163,10 +167,13 @@
     <string name="category_System">ｼｽﾃﾑ</string>
     <string name="requesting_root_access_body">管理者権限の要求中…</string>
     <string name="root_access_denied_title">管理者権限での接続が拒絶されました｡</string>
-    <string name="root_access_denied_body">この端末はroot化されていないか､F-Droidの管理者権限の要求が拒絶されました｡</string>
+    <string name="root_access_denied_body">"この端末はroot化されていないか､F-Droidのrootｱｸｾｽが拒絶されました｡
+ "</string>
     <string name="system_install_denied_title">ｼｽﾃﾑｱｸｾｽ許可が拒絶されました</string>
-    <string name="system_install_denied_body">この設定は､F-Droidがｼｽﾃﾑｱﾌﾟﾘとしてｲﾝｽﾄｰﾙされているときのみ有効です｡</string>
-    <string name="swap_nfc_description">友達がF-DroidとNFCを持っていれば､一緒にお使いのﾃﾞﾊﾞｲｽをﾀｯﾁしてください｡</string>
+    <string name="system_install_denied_body">"このｵﾌﾟｼｮﾝは､F-Droid特権拡張がｲﾝｽﾄｰﾙされているときのみ有効です｡
+ "</string>
+    <string name="swap_nfc_description">"友達がF-DroidとNFCを持っていれば､一緒にお使いのﾃﾞﾊﾞｲｽをﾀｯﾁしてください｡
+ "</string>
     <string name="swap_join_same_wifi">友達として同じWi-Fiに参加</string>
     <string name="swap">ｱﾌﾟﾘの交換</string>
     <string name="swap_no_wifi_network">まだﾈｯﾄﾜｰｸがありません</string>
@@ -202,7 +209,11 @@
     <string name="swap_join_this_hotspot">友達がﾎｯﾄｽﾎﾟｯﾄに参加するのを助ける</string>
     <string name="empty_available_app_list">この欄にｱﾌﾟﾘｹｰｼｮﾝはありません｡\n\n別の欄を選択するか､ﾘﾎﾟｼﾞﾄﾘを更新して新しいｱﾌﾟﾘｹｰｼｮﾝの一覧を取得してみてください｡
     </string>
-    <string name="empty_can_update_app_list">全てのｱﾌﾟﾘｹｰｼｮﾝが最新の状態であるか､又はﾘﾎﾟｼﾞﾄﾘが更新されていません。</string>
+    <string name="empty_can_update_app_list">"全てのｱﾌﾟﾘは最新です。
+
+おめでとう! 全てのｱﾌﾟﾘは最新の状態です
+ (または、ﾘﾎﾟｼﾞﾄﾘが更新されていません)。
+ "</string>
 
     <string name="install_error_unknown">不明なｴﾗｰのためｲﾝｽﾄｰﾙに失敗しました</string>
     <string name="uninstall_error_unknown">不明なｴﾗｰのためｱﾝｲﾝｽﾄｰﾙに失敗しました</string>
@@ -230,7 +241,8 @@
     <string name="app_name">F-Droid</string>
 
     <string name="swap_dont_show_again">今後この案内を表示しない</string>
-    <string name="swap_scan_or_type_url">一人は､ｺｰﾄﾞを読み取るか､他のURLをﾌﾞﾗｳｻﾞｰに入力する必要があります｡</string>
+    <string name="swap_scan_or_type_url">"一人がｺｰﾄﾞを読み取るか､他の人のURLをﾌﾞﾗｳｻﾞｰに入力する必要があります｡
+ "</string>
     <string name="swap_choose_apps">ｱﾌﾟﾘｹｰｼｮﾝを選択</string>
     <string name="swap_scan_qr">QRｺｰﾄﾞを読み取る</string>
     <string name="swap_people_nearby">近くの人</string>
@@ -251,13 +263,15 @@
     <string name="swap_confirm">交換の確認</string>
     <string name="swap_qr_isnt_for_swap">読み取った QR ｺｰﾄﾞは交換ｺｰﾄﾞではないようです｡</string>
     <string name="bluetooth_unavailable">Bluetooth が利用できません</string>
-    <string name="swap_cant_send_no_bluetooth">この端末でBluetoothが利用できないため､F-Droidを送信できません｡</string>
+    <string name="swap_cant_send_no_bluetooth">"この端末でBluetoothが利用できないため､F-Droidを送信できません｡
+ "</string>
     <string name="loading">読み込み中…</string>
     <string name="tap_to_install">ﾀﾞｳﾝﾛｰﾄﾞが完了しました｡ﾀｯﾌﾟするとｲﾝｽﾄｰﾙします｡</string>
 
     <string name="downloading">ﾀﾞｳﾝﾛｰﾄﾞ中…</string>
 
-    <string name="swap_connection_misc_error">端末への接続中にｴﾗｰが発生しました｡交換できないようです｡</string>
+    <string name="swap_connection_misc_error">"端末への接続中にｴﾗｰが発生しました｡交換できないようです｡
+ "</string>
     <string name="swap_not_enabled">交換は有効ではありません</string>
     <string name="swap_not_enabled_description">交換する前に､お使いの端末が表示されている必要があります｡</string>
 
@@ -279,7 +293,7 @@
     <string name="perm_costs_money">お金がかかることがあります</string>
     <string name="uninstall_update_confirm">このｱﾌﾟﾘｹｰｼｮﾝを出荷時のものに置き換えますか｡</string>
     <string name="uninstall_confirm">このｱﾌﾟﾘｹｰｼｮﾝをｱﾝｲﾝｽﾄｰﾙしますか｡</string>
-    <string name="perms_new_perm_prefix">"新規: "</string>
+    <string name="perms_new_perm_prefix">新規:</string>
     <string name="perms_description_app">%1$s によって提供されます。</string>
     <string name="interval_never">なし</string>
     <string name="interval_1h">1 時間毎</string>
@@ -311,8 +325,10 @@
 
     <string name="repo_details">ﾘﾎﾟｼﾞﾄﾘ</string>
     <string name="repo_url">ｱﾄﾞﾚｽ</string>
-    <string name="system_install_denied_signature">拡張の署名が間違っています｡ 不具合の報告を送ってください｡(英語で)</string>
-    <string name="system_install_denied_permissions">特権のｱｸｾｽ許可が拡張に付与されていません｡ 不具合の報告を送ってください｡(英語で)</string>
+    <string name="system_install_denied_signature">"拡張の署名が間違っています! 不具合の報告を送ってください!
+ "</string>
+    <string name="system_install_denied_permissions">"特権のｱｸｾｽ許可が拡張に付与されていません!  不具合の報告を送ってください!
+ "</string>
     <string name="system_install_button_install">ｲﾝｽﾄｰﾙ</string>
     <string name="system_install_button_open">拡張を開く</string>
     <string name="system_install_installing_rebooting">ｲﾝｽﾄｰﾙおよび再起動中…</string>
@@ -352,14 +368,16 @@
     <string name="repo_provider">ﾘﾎﾟｼﾞﾄﾘ: %s</string>
 
     <string name="update_auto_download">自動的に更新を取得</string>
-    <string name="update_auto_download_summary">自動的に更新をﾀﾞｳﾝﾛｰﾄﾞして、ｲﾝｽﾄｰﾙする通知をします</string>
+    <string name="update_auto_download_summary">"自動的に更新をﾀﾞｳﾝﾛｰﾄﾞして、ｲﾝｽﾄｰﾙする通知をします
+ "</string>
     <string name="tap_to_install_format">ﾀｯﾌﾟして %s をｲﾝｽﾄｰﾙ</string>
     <string name="tap_to_update_format">ﾀｯﾌﾟして %s を更新</string>
     <string name="download_pending">ﾀﾞｳﾝﾛｰﾄﾞの開始を待っています…</string>
 
     <string name="downloading_apk">%1$s のﾀﾞｳﾝﾛｰﾄﾞ中</string>
 
-    <string name="system_install_not_supported">F-Droidの特権拡張のｲﾝｽﾄｰﾙは、現在Android 5.1以降でｻﾎﾟｰﾄされていません。</string>
+    <string name="system_install_not_supported">"F-Droidの特権拡張のｲﾝｽﾄｰﾙは、現在Android 5.1以降でｻﾎﾟｰﾄされていません。
+ "</string>
 
     <string name="keep_hour">1時間</string>
     <string name="keep_day">1日</string>
@@ -420,8 +438,7 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">%d すべて表示</item>
-        <item quantity="other"/>
+        <item quantity="other">%d すべて表示</item>
     </plurals>
 
     <string name="app_recommended_version_installed">ﾊﾞｰｼﾞｮﾝ %1$s (推奨)</string>
@@ -438,17 +455,15 @@
     <string name="tts_category_name">ｶﾃｺﾞﾘ %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">%2$s ｶﾃｺﾞﾘのｱﾌﾟﾘを1つ表示</item>
-        <item quantity="other"/>
-    </plurals>
+	<item quantity="other">%2$s ｶﾃｺﾞﾘから %1$d ｱﾌﾟﾘをすべて表示</item>
+</plurals>
     <string name="app__install_downloaded_update">更新</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">%1$s を更新</string>
     <string name="app_list__name__downloaded_and_ready_to_install">%1$s をｲﾝｽﾄｰﾙ</string>
     <string name="app_list__name__downloading_in_progress">%1$s をﾀﾞｳﾝﾛｰﾄﾞ中</string>
     <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">%1$d 日前にﾘﾘｰｽ</item>
-        <item quantity="other"/>
+        <item quantity="other">%1$d 日前にﾘﾘｰｽ</item>
     </plurals>
 
     <string name="updates__tts__download_app">ﾀﾞｳﾝﾛｰﾄﾞ</string>
@@ -466,19 +481,26 @@
     <string name="antifeatureswarning">このｱﾌﾟﾘの機能は好きではないかもしれません。</string>
     <string name="antifeatures">対策機能</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">今日更新</item>
-        <item quantity="other"/>
-    </plurals>
+	<item quantity="other">%1$s 日前に更新しました</item>
+</plurals>
     <string name="details_last_updated_today">今日更新</string>
     <string name="app_list__name__successfully_installed">%1$s を正常にｲﾝｽﾄｰﾙしました</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">ｲﾝﾀｰﾈｯﾄがありませんか? 近くの人からｱﾌﾟﾘをﾀﾞｳﾝﾛｰﾄﾞしてください!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">"ｲﾝﾀｰﾈｯﾄがありませんか? 近くの人からｱﾌﾟﾘをﾀﾞｳﾝﾛｰﾄﾞしてください!
+ "</string>
     <string name="nearby_splash__find_people_button">近くの人を見つける</string>
     <string name="nearby_splash__both_parties_need_fdroid">双方が近くで %1$s を使用する必要があります。</string>
 
     <string name="latest__empty_state__no_recent_apps">最近のｱﾌﾟﾘが見つかりません</string>
-    <string name="latest__empty_state__never_updated">一度ｱﾌﾟﾘのﾘｽﾄを更新すると、最新のｱﾌﾟﾘがここに表示されます</string>
-    <string name="latest__empty_state__no_enabled_repos">一度ﾘﾎﾟｼﾞﾄﾘを有効にして更新すると、最新ｱﾌﾟﾘがここに表示されます</string>
+    <string name="latest__empty_state__never_updated">"一度ｱﾌﾟﾘのﾘｽﾄを更新すると、最新のｱﾌﾟﾘがここに表示されます
+ "</string>
+    <string name="latest__empty_state__no_enabled_repos">"一度ﾘﾎﾟｼﾞﾄﾘを有効にして更新すると、最新ｱﾌﾟﾘがここに表示されます
+ "</string>
 
     <string name="categories__empty_state__no_categories">表示するｶﾃｺﾞﾘはありません</string>
 
-</resources>
+<string name="app_list__age__released_today">今日ﾘﾘｰｽ</string>
+    <string name="app_list__age__released_yesterday">昨日ﾘﾘｰｽ</string>
+    <string name="menu_video">ﾋﾞﾃﾞｵ</string>
+    <string name="app__tts__cancel_download">ﾀﾞｳﾝﾛｰﾄﾞをｷｬﾝｾﾙ</string>
+    <string name="app__tts__downloading_progress">ﾀﾞｳﾝﾛｰﾄﾞ中、%1$d%% 完了</string>
+    </resources>
