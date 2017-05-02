@@ -18,6 +18,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.view.View;
 
@@ -494,7 +495,9 @@ class NotificationHelper {
     private Bitmap getLargeIconForEntry(AppUpdateStatusManager.AppUpdateStatus entry) {
         final Point largeIconSize = getLargeIconSize();
         Bitmap iconLarge = null;
-        if (entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.Installing) {
+        if (TextUtils.isEmpty(entry.app.iconUrl)) {
+            return null;
+        } else if (entry.status == AppUpdateStatusManager.Status.Downloading || entry.status == AppUpdateStatusManager.Status.Installing) {
             Bitmap bitmap = Bitmap.createBitmap(largeIconSize.x, largeIconSize.y, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
             Drawable downloadIcon = ContextCompat.getDrawable(context, R.drawable.ic_notification_download);
