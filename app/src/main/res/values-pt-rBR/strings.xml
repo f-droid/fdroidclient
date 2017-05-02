@@ -301,17 +301,15 @@
 
     <string name="install_confirm">necessário acesso à</string>
     <string name="install_confirm_update">"Você quer instalar uma atualização
- para este aplicativo já existente? Os dados existentes não
- serão perdidos. O aplicativo atualizado terá acesso a:
- "</string>
+\npara este aplicativo já existente? Os dados existentes não
+\nserão perdidos. O aplicativo atualizado terá acesso a: "</string>
     <string name="install_confirm_update_system">Você quer instalar uma atualização
         para este aplicativo incorporado? Os dados existentes não
         serão perdidos. O aplicativo atualizado terá acesso a:
     </string>
     <string name="install_confirm_update_no_perms">"Você quer instalar uma atualização
- para este aplicativo já existente? Os dados existentes não
- serão perdidos. Ele não exige nenhum acesso especial.
- "</string>
+\npara este aplicativo já existente? Os dados existentes não
+\nserão perdidos. Ele não exige nenhum acesso especial. "</string>
     <string name="install_confirm_update_system_no_perms">Você quer instalar uma atualização
         para este aplicativo incorporado? Os dados existentes não
         serão perdidos. Ele não exige nenhum acesso especial.
@@ -468,9 +466,10 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Ver %d</item>
-        <item quantity="other">Ver todas as %d</item>
-    </plurals>
+	<item quantity="one">" Mesmo que estes sejam iguais uns aos outros, a documentação do Android  sugere especificar pelo
+\nmenos um e outro: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
+	<item quantity="other">" Ver todas as %d "</item>
+</plurals>
 
     <string name="app_recommended_version_installed">Versão %1$s (Recomendada)</string>
     <string name="app__newly_added">Novo</string>
@@ -524,9 +523,7 @@
 
     <string name="antifeatureswarning">Este aplicativo tem características que você pode não gostar.</string>
     <string name="antifeatures">Características indesejadas</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">"Sem internet? Baixe aplicativos de pessoas próximas de
- você!
- "</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">"Sem internet? Baixe aplicativos de pessoas próximas a você! "</string>
     <string name="nearby_splash__find_people_button">Encontrar pessoas próximas de mim</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes precisam do %1$s para uso próximo.</string>
 
@@ -540,4 +537,5 @@
     <string name="menu_video">Vídeo</string>
     <string name="app__tts__cancel_download">Cancelar download</string>
     <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>
+    <string name="menu_license">Licença: %s</string>
     </resources>

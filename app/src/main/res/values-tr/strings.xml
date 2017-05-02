@@ -303,8 +303,7 @@
     <string name="swap_confirm">Takası onaylayın</string>
     <string name="swap_qr_isnt_for_swap">Taradığınız QR kodu bir takas kodu gibi görünmüyor.</string>
     <string name="bluetooth_unavailable">Bluetooth mevcut değil</string>
-    <string name="swap_cant_send_no_bluetooth">"F-Droid gönderilemedi, çünkü bu aygıtta Bluetooth mevcut değil.
- "</string>
+    <string name="swap_cant_send_no_bluetooth">"F-Droid gönderilemiyor, çünkü bu aygıtta Bluetooth mevcut değil. "</string>
     <string name="loading">Yükleniyor…</string>
     <string name="swap_connection_misc_error">Aygıta bağlanılırken bir hata meydana geldi, onunla takas yapamıyoruz.
     </string>
@@ -364,8 +363,7 @@
     </string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="system_install_denied_signature">"Uzantının imzası yanlış! Lütfen bir hata raporu oluşturun!
- "</string>
+    <string name="system_install_denied_signature">"Uzantının imzası yanlış! Lütfen bir hata raporu oluşturun! "</string>
     <string name="system_install_denied_permissions">Uzantıya ayrıcalıklı izinler verilmemiştir! Lütfen bir hata raporu
         oluşturun!
     </string>
@@ -467,9 +465,9 @@
     <string name="notification_action_install">Yükle</string>
 
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Tüm %d taneyi göster</item>
-        <item quantity="other">Tüm %d taneyi göster</item>
-    </plurals>
+	<item quantity="one">" Tüm %d taneyi göster "</item>
+	<item quantity="other">" Tüm %d taneyi göster "</item>
+</plurals>
 
     <string name="app_recommended_version_installed">Sürüm %1$s (Tavsiye edilen)</string>
     <string name="app__newly_added">Yeni</string>
@@ -541,4 +539,5 @@
     <string name="details_last_updated_today">Bugün güncellendi</string>
     <string name="app__tts__cancel_download">İndirmeyi iptal et</string>
     <string name="app__tts__downloading_progress">İndiriliyor, %%%1$d tamamlandı</string>
+    <string name="menu_license">Lisans: %s</string>
     </resources>

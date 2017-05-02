@@ -547,4 +547,5 @@
     <string name="menu_video">Vìdeu</string>
     <string name="app__tts__cancel_download">Firma s\'iscarrigamentu</string>
     <string name="app__tts__downloading_progress">Iscarrighende, %1$d%% cumpridu</string>
+    <string name="menu_license">Litzèntzia: %s</string>
     </resources>

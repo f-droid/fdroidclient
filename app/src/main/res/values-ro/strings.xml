@@ -186,7 +186,7 @@
     <string name="copying_icons">Copiere iconite in depozit…</string>
     <string name="antiadslist">Aplicatia contine reclama</string>
     <string name="menu_bitcoin">Bitcoin</string>
-    <string name="menu_settings">Setari</string>
+    <string name="menu_settings">Setări</string>
     <string name="menu_manage">Depozite</string>
     <string name="repo_added">Depozit F-Droid salvat %1$s.</string>
     <string name="minsdk_or_later">%s sau mai nou</string>
@@ -467,7 +467,7 @@
     <string name="installed_app__updates_ignored">Actualizări ignorate</string>
     <string name="installed_apps__activity_title">Aplicatii instalate</string>
     <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">Publicat acum %1$d zi</item>
+	<item quantity="one">Publicat ieri</item>
 	<item quantity="few">Publicat acum %1$d zile</item>
 	<item quantity="other">Publicat acum %1$d de zile</item>
 </plurals>
@@ -482,4 +482,5 @@
     <string name="app_recommended_version_installed">Versiunea %1$s (Recomandata)</string>
     <string name="app_version_x_installed">Versiunea %1$s</string>
     <string name="app_version_x_available">Versiunea %1$s disponibila</string>
-</resources>
+<string name="app__tts__downloading_progress">Se descarcă, %1$d%% gata</string>
+    </resources>
