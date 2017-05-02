@@ -373,7 +373,7 @@
     <string name="uninstall_error_notify_title">خطأ في إلغاء تثبيت %s</string>
 
 
-    <string name="perms_new_perm_prefix">"جديد : "</string>
+    <string name="perms_new_perm_prefix">جديد :</string>
     <string name="perms_description_app">المقدمة من %1$s.</string>
     <string name="downloading">جاري التنزيل …</string>
     <string name="downloading_apk">يتم تنزيل %1$s</string>
@@ -418,8 +418,7 @@
     <string name="categories__empty_state__no_categories">ليس هناك فئات للعرض</string>
 
     <string name="preference_category__my_apps">تطبيقاتي</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">"ليس هناك إنترنت ؟ قم بتحميل تطبيقات من أشخاص بالقرب منك !
- "</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">ليس هناك إنترنت ؟ قم بتحميل تطبيقات من أشخاص بالقرب منك !</string>
     <string name="nearby_splash__find_people_button">إبحث عن أشخاص بالقرب مني</string>
     <string name="nearby_splash__both_parties_need_fdroid">يحتاج كلا الطرفين إلى %1$s للمبادلة.</string>
 

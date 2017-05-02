@@ -308,7 +308,7 @@
     <string name="newPerms">Novas</string>
     <string name="allPerms">Todas</string>
     <string name="perm_costs_money">Pode implicar gastos</string>
-    <string name="perms_new_perm_prefix">"Novas: "</string>
+    <string name="perms_new_perm_prefix">Novas:</string>
     <string name="perms_description_app">Disponibilizada por %1$s.</string>
     <string name="downloading">A descarregar…</string>
 

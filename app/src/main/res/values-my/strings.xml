@@ -156,14 +156,14 @@
     <string name="useTorSummary">ကိုယ္ေရးအခ်က္အလက္မ်ားပိုမိုလံုျခံဳေစရန္ လိုင္းမ်ားမွ မရမက အတင္းေဒါင္းလုတ္ခ်မည္</string>
     <string name="proxy">ပေရာစီ</string>
     <string name="enable_proxy_title">HTTP ပေရာစီကိုဖြင့္မည္</string>
-    <string name="status_download">"%1$s မွ %2$s / %3$s (%4$d%%) ကိုေဒါင္းလုတ္ခ်ေနပါသည္"</string>
+    <string name="status_download">%1$s မွ %2$s / %3$s (%4$d%%) ကိုေဒါင္းလုတ္ခ်ေနပါသည္</string>
 
     <string name="status_download_unknown_size">%1$s မွ
         %2$s ကို
         ေဒါင္းလုတ္ဆြဲေနပါသည္
     </string>
     <string name="update_notification_title">repositories ကိုအသစ္မြမ္းမံေနသည္</string>
-    <string name="status_processing_xml_percent">"%1$s မွ %2$s / %3$s (%4$d%%) ကိုရယူေနသည္"</string>
+    <string name="status_processing_xml_percent">%1$s မွ %2$s / %3$s (%4$d%%) ကိုရယူေနသည္</string>
     <string name="status_connecting_to_repo">%1$s
         သို႔ခ်ိတ္ဆက္ေနသည္
     </string>
@@ -251,7 +251,7 @@
     <string name="download_error">ေဒါင္းလုတ္မေအာင္ျမင္ပါ</string>
     <string name="download_pending">ေဒါင္းလုတ္စရန္ေစာင့္ဆိုင္းေနသည္…</string>
     <string name="install_error_notify_title">%s ကိုသြင္းေနစဥ္ခ်ိဳ႕ယြင္းခ်က္</string>
-    <string name="perms_new_perm_prefix">"အသစ္ - "</string>
+    <string name="perms_new_perm_prefix">အသစ္ -</string>
     <string name="perms_description_app">%1$s မွေထာက္ပံ့ထားသည္.</string>
     <string name="downloading">ေဒါင္းလုတ္ဆြဲေနသည္…</string>
     <string name="downloading_apk">%1$s ကိုေဒါင္းလုတ္ဆြဲေနသည္</string>
@@ -347,7 +347,7 @@
     <string name="warning_no_internet">အသစ်မွမ်းမံလို့မရပါ။ သင် အင်တာနက်နှင့်ချိတ်ဆက်ထားသလား?</string>
     <string name="no_handler_app">%s ကိုကိုင်တွယ်ရန်အတွက် သင့်တွင် ရရှိထားသော အက်ပ်မရှိပါ</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="other">" %d အားလုံးကိုကြည့်မည် "</item>
+	<item quantity="other">%d အားလုံးကိုကြည့်မည်</item>
 </plurals>
 
     </resources>

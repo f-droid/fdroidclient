@@ -285,7 +285,7 @@
     <string name="tap_to_install">下载已完成，点击安装</string>
     <string name="download_error">下载失败</string>
 
-    <string name="perms_new_perm_prefix">"新的： "</string>
+    <string name="perms_new_perm_prefix">新的：</string>
     <string name="perms_description_app">由 %1$s 提供。</string>
     <string name="downloading">下载中…</string>
 

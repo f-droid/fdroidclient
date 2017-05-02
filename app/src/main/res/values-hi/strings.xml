@@ -89,7 +89,7 @@
     <string name="downloading">डोव्न्लोअदिन्ग…</string>
 
     <string name="perms_description_app">%1$s द्वारा उपलब्ध कराया गया|</string>
-    <string name="perms_new_perm_prefix">"नया: "</string>
+    <string name="perms_new_perm_prefix">नया:</string>
     <string name="download_error">डाउनलोड असफल</string>
 
     <string name="tap_to_install">डाउनलोड सफल| स्थापित करने के लिए स्पर्श करे</string>
@@ -125,7 +125,7 @@
     <string name="swap_cant_find_peers">नहीं धुंद प् रहे जिसकी आप तलाश कर रहे है?</string>
     <string name="swap_send_fdroid">F-Droid भेजे</string>
     <string name="swap_no_peers_nearby">अदला-बदली के लिए आस पास लोग नहीं धुंद पाए|</string>
-    <string name="swap_join_this_hotspot">"हॉटस्पॉट से जुडने मैं अपने दोस्त की सहयता करें"</string>
+    <string name="swap_join_this_hotspot">हॉटस्पॉट से जुडने मैं अपने दोस्त की सहयता करें</string>
     <string name="swap">आपस की अदला-बदली</string>
     <string name="swap_success">अदला-बदली सफल!</string>
     <string name="swap_no_wifi_network">अभी तक कोई नेटवर्क नहीं</string>

@@ -350,8 +350,7 @@
     </string>
     <string name="system_installer_on">Folositi F-Droid Extension pentru a instala, actualiza si a înlătura pachete
     </string>
-    <string name="empty_can_update_app_list">"Felicitări! Toate aplicațiile tale sunt la zi (sau depozitele nu au fost actualizate).
- "</string>
+    <string name="empty_can_update_app_list">Felicitări! Toate aplicațiile tale sunt la zi (sau depozitele nu au fost actualizate).</string>
     <string name="empty_available_app_list">Nici o aplicatie in aceasta categorie.
 
         Incercati sa selectati o categorie diferita sau sa actualizati depozitele.

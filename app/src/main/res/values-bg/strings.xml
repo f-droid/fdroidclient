@@ -327,7 +327,7 @@
     <string name="uninstall_update_confirm">Желаете ли приложението да бъде заменено от фабричната му версия?</string>
     <string name="download_error">Свалянето се провали</string>
 
-    <string name="perms_new_perm_prefix">"Ново: "</string>
+    <string name="perms_new_perm_prefix">Ново:</string>
     <string name="perms_description_app">Предоставено от %1$s.</string>
     <string name="by_author">от</string>
     <string name="local_repo_https">Използване на засекретена връзка</string>

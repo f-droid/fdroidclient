@@ -303,7 +303,7 @@
     <string name="tap_to_install">다운로드가 완료되었습니다, 눌러서 설치하세요</string>
     <string name="download_error">다운로드 실패</string>
 
-    <string name="perms_new_perm_prefix">"새로운: "</string>
+    <string name="perms_new_perm_prefix">새로운:</string>
     <string name="perms_description_app">%1$s 제공.</string>
     <string name="downloading">다운로드 중…</string>
 

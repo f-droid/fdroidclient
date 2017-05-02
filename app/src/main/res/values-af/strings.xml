@@ -308,7 +308,7 @@
     </string>
     <string name="system_install_button_install">Installeer</string>
     <string name="system_install_button_open">Oop uitbreiding</string>
-    <string name="system_install_post_success">"F-Droid voorreg uitbreiding suksesvol geïnstalleer"</string>
+    <string name="system_install_post_success">F-Droid voorreg uitbreiding suksesvol geïnstalleer</string>
     <string name="system_install_post_fail">Installasie van F-Droid voorreg uitbreiding het misluk</string>
     <string name="system_install_post_success_message">F-Droid voorreg uitbreiding is suksesvol geïnstalleer. Dit laat
         F-Droid toe om programme te installeer, opgradeer en deïnstalleer op sy eie.
@@ -320,7 +320,7 @@
     <string name="system_install_installing">Installeer tans…</string>
     <string name="system_install_installing_rebooting">Installeer en reboot…</string>
     <string name="system_install_uninstalling">Deïnstalleer…</string>
-    <string name="system_install_question">"Wil F-Droid voorreg uitbreiding installeer?"</string>
+    <string name="system_install_question">Wil F-Droid voorreg uitbreiding installeer?</string>
     <string name="system_install_warning">Dit neem tot 10 sekondes.</string>
     <string name="system_install_warning_lollipop">Dit neem tot 10 sekondes en die toestel sal
         <b>reboot</b>
@@ -535,10 +535,6 @@
 
     <string name="antifeatureswarning">Hierdie program het eienskappe wat jy hou dalk nie van sal hou nie.</string>
     <string name="antifeatures">Anti-kenmerke</string>
-    <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Selfs al is hierdie dieselfde as mekaar, stel Android dokumentasie altyd voor dat ten minste een en ander: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
-	<item quantity="other">" Selfs al is dit dieselfde as eachother, Android dokumente stel altyd met vermelding van ten minste een en ander: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
-</plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">"Geen internet nie? Laai programme van mense naby jou!
 \n "</string>

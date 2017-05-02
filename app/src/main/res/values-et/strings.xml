@@ -369,7 +369,7 @@
     <string name="uninstall_error_notify_title">Viga %s eemaldamisel</string>
 
 
-    <string name="perms_new_perm_prefix">"Uus: "</string>
+    <string name="perms_new_perm_prefix">Uus:</string>
     <string name="perms_description_app">Tagas %1$s.</string>
     <string name="downloading">Allalaadimine…</string>
     <string name="downloading_apk">%1$s allalaadimine</string>

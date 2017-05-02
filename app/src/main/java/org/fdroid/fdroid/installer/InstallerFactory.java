@@ -22,8 +22,8 @@ package org.fdroid.fdroid.installer;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
-
+import android.widget.Toast;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 
@@ -41,7 +41,6 @@ public class InstallerFactory {
      * @return instance of an Installer
      */
     public static Installer create(Context context, Apk apk) {
-        Log.d(TAG, "Apk.apkName " + apk.apkName);
         if (apk == null || TextUtils.isEmpty(apk.packageName)) {
             throw new IllegalArgumentException("Apk.packageName must not be empty: " + apk);
         }
@@ -49,7 +48,9 @@ public class InstallerFactory {
 
         Installer installer;
         if (!apk.apkName.endsWith(".apk")) {
-            Utils.debugLog(TAG, "Using DummyInstaller for " + apk.apkName);
+            String msg = context.getString(R.string.install_error_not_yet_supported, apk.apkName);
+            Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+            Utils.debugLog(TAG, msg);
             installer = new DummyInstaller(context, apk);
         } else if (PrivilegedInstaller.isDefault(context)) {
             Utils.debugLog(TAG, "privileged extension correctly installed -> PrivilegedInstaller");

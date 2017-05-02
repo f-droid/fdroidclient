@@ -473,8 +473,7 @@ asentamisesta
     <string name="details_new_in_version">Uutta versiossa %s</string>
 
     <string name="antifeatureswarning">Tässä sovelluksessa on ominaisuuksia, joista et ehkä pidä.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">"Ei nettiä? Lataa sovelluksia lähellä olevilta ihmisiltä!
- "</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Ei nettiä? Lataa sovelluksia lähellä olevilta ihmisiltä!</string>
     <string name="nearby_splash__find_people_button">Etsi lähellä olevia ihmisiä</string>
     <string name="notification_title_single_update_available">Päivitys Saatavilla</string>
     <string name="notification_title_single_ready_to_install">Valmis asennettavaksi</string>
@@ -518,8 +517,8 @@ asentamisesta
  "</string>
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Näytä kaikki %d "</item>
-	<item quantity="other">" Näytä kaikki %d "</item>
+	<item quantity="one">Näytä kaikki %d</item>
+	<item quantity="other">Näytä kaikki %d</item>
 </plurals>
 
     <string name="nearby_splash__both_parties_need_fdroid">Molemmilla osapuolilla tulee olla %1$s ominaisuuden käyttämiseksi.</string>

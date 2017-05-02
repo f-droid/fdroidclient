@@ -391,7 +391,7 @@
     <string name="uninstall_error_notify_title">Greška pri uklanjanju %s</string>
 
 
-    <string name="perms_new_perm_prefix">"Novo: "</string>
+    <string name="perms_new_perm_prefix">Novo:</string>
     <string name="perms_description_app">Pruža %1$s.</string>
     <string name="downloading">Preuzimanje…</string>
     <string name="downloading_apk">Preuzimam %1$s</string>

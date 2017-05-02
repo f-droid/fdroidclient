@@ -249,7 +249,7 @@
     <string name="tap_to_install">Letöltés sikeres, érintse meg a telepítéshez</string>
     <string name="download_error">Letöltés sikertelen</string>
 
-    <string name="perms_new_perm_prefix">"Új: "</string>
+    <string name="perms_new_perm_prefix">Új:</string>
     <string name="downloading">Letöltés…</string>
 
     <string name="interval_never">Soha</string>

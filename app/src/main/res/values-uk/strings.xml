@@ -337,7 +337,7 @@
         Оновлений додаток не потребує спеціальних дозволів.
     </string>
     <string name="uninstall_update_confirm">Бажаєте замінити цей додаток заводською версією?</string>
-    <string name="perms_new_perm_prefix">"Нові: "</string>
+    <string name="perms_new_perm_prefix">Нові:</string>
     <string name="empty_installed_app_list">Жодного додатку не встановлено.\n\nДодатки, які встановлені на вашому
         пристрої, не доступні через F-Droid. Можливо вам слід оновити репозиторії, або ж ваші репозиторії не містять
         такі додатки.
