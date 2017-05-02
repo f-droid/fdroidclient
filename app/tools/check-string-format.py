@@ -12,9 +12,11 @@ formatRe = re.compile(r'(%%|%[^%](\$.)?)')
 
 validFormatRe = re.compile(r'^(%%|%[sd]|%[0-9]\$[sd])$')
 
+projectdir = os.path.join(os.path.dirname(__file__), '..')
+
 count = 0
 
-for d in glob.glob(os.path.join('src', 'main', 'res', 'values-*')):
+for d in sorted(glob.glob(os.path.join(projectdir, 'src', 'main', 'res', 'values-*'))):
 
     str_path = os.path.join(d, 'strings.xml')
     if not os.path.exists(str_path):
