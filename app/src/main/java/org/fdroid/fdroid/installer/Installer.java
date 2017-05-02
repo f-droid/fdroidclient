@@ -24,6 +24,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.PatternMatcher;
@@ -32,7 +33,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.privileged.views.AppDiff;
@@ -141,9 +141,10 @@ public abstract class Installer {
             return null;
         }
 
-        try {
-            PackageManagerCompat.setInstaller(context, context.getPackageManager(), apk.packageName);
-        } catch (SecurityException e) {
+        PackageManager pm = context.getPackageManager();
+        if (Build.VERSION.SDK_INT >= 24 && (
+                pm.getInstallerPackageName(apk.packageName).equals("com.android.packageinstaller")
+                || pm.getInstallerPackageName(apk.packageName).equals("com.google.android.packageinstaller"))) {
             Utils.debugLog(TAG, "Falling back to default installer for uninstall");
             Intent intent = new Intent(context, DefaultInstallerActivity.class);
             intent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
