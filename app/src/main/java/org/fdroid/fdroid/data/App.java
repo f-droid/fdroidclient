@@ -126,7 +126,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String[] tvScreenshots = new String[0];
     public String[] wearScreenshots = new String[0];
 
-    public String license = "Unknown";
+    public String license;
 
     public String authorName;
     public String authorEmail;

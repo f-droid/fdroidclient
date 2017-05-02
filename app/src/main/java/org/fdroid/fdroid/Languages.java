@@ -136,6 +136,7 @@ public final class Languages {
                 locale = new Locale(language);
             }
         }
+        Locale.setDefault(locale);
 
         final Resources resources = contextWrapper.getBaseContext().getResources();
         Configuration config = resources.getConfiguration();
@@ -249,6 +250,7 @@ public final class Languages {
             new Locale("rm"),
             new Locale("ro"),
             new Locale("ru"),
+            new Locale("sc"),
             new Locale("si"),
             new Locale("sk"),
             new Locale("sl"),

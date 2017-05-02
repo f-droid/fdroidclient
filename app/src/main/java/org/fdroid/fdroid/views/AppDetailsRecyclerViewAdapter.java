@@ -744,6 +744,15 @@ public class AppDetailsRecyclerViewAdapter
             updateExpandableItem(false);
             contentView.removeAllViews();
 
+            // License link
+            if (!TextUtils.isEmpty(app.license)) {
+                String firstLicense = app.license.split(",")[0];
+                String url = "https://spdx.org/licenses/" + firstLicense + ".html";
+                if (uriIsSetAndCanBeOpened(url)) {
+                    addLinkItemView(contentView, R.string.menu_license, R.drawable.ic_license, url, app.license);
+                }
+            }
+
             // Video link
             if (uriIsSetAndCanBeOpened(app.video)) {
                 addLinkItemView(contentView, R.string.menu_video, R.drawable.ic_video, app.video);
@@ -902,8 +911,17 @@ public class AppDetailsRecyclerViewAdapter
     }
 
     private void addLinkItemView(ViewGroup parent, int resIdText, int resIdDrawable, final String url) {
+        addLinkItemView(parent, resIdText, resIdDrawable, url, null);
+    }
+
+    private void addLinkItemView(ViewGroup parent, int resIdText, int resIdDrawable, final String url, String formatArg) {
         TextView view = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.app_details2_link_item, parent, false);
-        view.setText(resIdText);
+        if (formatArg == null) {
+            view.setText(resIdText);
+        } else {
+            String text = parent.getContext().getString(resIdText, formatArg);
+            view.setText(text);
+        }
         TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(view, resIdDrawable, 0, 0, 0);
         parent.addView(view);
         view.setOnClickListener(new View.OnClickListener() {

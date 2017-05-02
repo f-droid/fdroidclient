@@ -161,6 +161,7 @@
     <string name="menu_issues">Issues</string>
     <string name="menu_changelog">Changelog</string>
     <string name="menu_video">Video</string>
+    <string name="menu_license">License: %s</string>
     <string name="menu_source">Source Code</string>
     <string name="menu_upgrade">Upgrade</string>
     <string name="menu_donate">Donate</string>

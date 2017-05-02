@@ -13,7 +13,7 @@
     <string name="update_interval">به‌روزرسانی دوره‌ای خودکار</string>
     <string name="update_interval_zero">به‌روزرسانی‌نکردن خودکار فهرست برنامه‌ها</string>
     <string name="automatic_scan_wifi">فقط روی وای‌فای</string>
-    <string name="automatic_scan_wifi_on">به‌روز رسانی خودکار فهرست کاره‌ها روی وای‌فای</string>
+    <string name="automatic_scan_wifi_on">"به‌روز رسانی خودکار  فقط روی شبکه‌های اندازه‌گیری نشده مثل وای‌فای"</string>
     <string name="notify_on">نمایش یک آگهی هنگام موجود بودن به‌روز رسانی‌ها</string>
     <string name="no_such_app">چنین کاره‌ای پیدا نشد.</string>
     <string name="about_title">دربارهٔ F-Droid</string>
@@ -21,7 +21,7 @@
     <string name="app_installed">نصب شده</string>
     <string name="app_not_installed">نصب نشده</string>
     <string name="added_on">در %s افزوده شد</string>
-    <string name="ok">باشد</string>
+    <string name="ok">قبول</string>
     <string name="yes">بله</string>
     <string name="no">خیر</string>
     <string name="repo_add_title">افزودن مخزنی جدید</string>
@@ -118,9 +118,7 @@
     <string name="notification_summary_more">+%1$d بیش‌تر…</string>
     <string name="send_via_bluetooth">ارسال با بلوتوث</string>
 
-    <string name="repo_exists_add_fingerprint">این مخزن از پیش برپا شده است. این کار، اظّلاعات کلید جدیدی را
-        می‌افزاید.
-    </string>
+    <string name="repo_exists_add_fingerprint">این مخزن از پیش برپا شده است. این کار، اطّلاعات کلید جدیدی را می‌افزاید.</string>
     <string name="repo_exists_enable">این مخزن از پیش برپا شده است. تأیید کنید که می‌خواهید دوباره فعّالش کنید.</string>
     <string name="bad_fingerprint">اثر انگشت بد</string>
     <string name="invalid_url">این یک نشانی اینترنتی معتیبر نیست.</string>
@@ -148,8 +146,7 @@
 
     <string name="local_repo">مخزن محلّی</string>
     <string name="local_repo_running">اف‌دروید آمادهٔ تبادل است</string>
-    <string name="touch_to_configure_local_repo">برای دیدن جزییات و اجازه به دیگرات برای تبادل کاره‌هایتان، لمس کنید.
-    </string>
+    <string name="touch_to_configure_local_repo">برای دیدن جزییات و اجازه به دیگران برای تبادل کاره‌هایتان، لمس کنید.</string>
     <string name="deleting_repo">در حال حذف مخزن جاری…</string>
     <string name="adding_apks_format">در حال افزودن %s به مخزن…</string>
     <string name="writing_index_jar">در حال نوشتن پروندهٔ شاخص امضا شده (index.jar)…</string>
@@ -181,9 +178,9 @@
     <string name="repo_num_apps">تعداد کاره‌ها</string>
     <string name="repo_fingerprint">اثر انگشت کلید امضا (SHA-256)</string>
     <string name="repo_confirm_delete_title">حذف مخزن؟</string>
-    <string name="not_on_same_wifi">افزاره‌تان روی همان وای‌فای مخزن محلّی‌ای که افزودید نیست! لطفاً به این شبکه وصل
-        شوید: %s
-    </string>
+    <string name="not_on_same_wifi">"افزاره‌تان روی همان وای‌فای مخزن محلّی‌ای که افزودید نیست!
+\nلطفاً به این شبکه وصل شوید: %s
+\n "</string>
     <string name="pref_language">زبان</string>
     <string name="pref_language_default">پیش‌گزیدهٔ سامانه</string>
 
@@ -258,7 +255,7 @@
     <string name="tap_to_install">بارگیری کامل شد، برای نصب ضربه بزنید</string>
     <string name="download_error">بارگیری موفّق نبود</string>
 
-    <string name="perms_new_perm_prefix">"جدید: "</string>
+    <string name="perms_new_perm_prefix">جدید:</string>
     <string name="perms_description_app">فراهم شده توسّط: %1$s.</string>
     <string name="downloading">در حال بارگیری…</string>
 
@@ -274,7 +271,9 @@
     <string name="theme_dark">تیره</string>
     <string name="theme_night">شب</string>
     <string name="repo_exists_and_enabled">مخزنن ورودی از پیش برپا و فعّال شده است.</string>
-    <string name="repo_delete_to_overwrite">باید پیش از افزودن مخزن جدیدی با کلید متفاوت، این را حذف کنید.</string>
+    <string name="repo_delete_to_overwrite">"باید پیش از افزودن مخزنی جدید با کلیدی متفاوت،
+\nاین مخزن را حذف کنید.
+\n "</string>
     <string name="malformed_repo_uri">نادیده گرفتن نشانی اینترنتی مخزن ناهنجار: %s</string>
 
     <string name="all_other_repos_fine">تمام مخزن‌های دیگر خطایی ایاد نکردند.</string>
@@ -298,8 +297,12 @@
     <string name="install_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
     <string name="uninstall_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
     <string name="system_install_denied_title">افزونهٔ ممتاز اف‌دروید موجود نیست</string>
-    <string name="system_install_denied_body">این گزینه فقط هنگام نصب بودن افزونهٔ ممتاز اف‌دروید، موجود است.</string>
-    <string name="system_install_denied_signature">امضای افزونه اشتباه است! لطفاً یک گزارش خطا ایجاد کنید!</string>
+    <string name="system_install_denied_body">"این گزینه فقط هنگام نصب بودن افزونهٔ ممتاز اف‌دروید،
+\nدر دسترس است.
+\n "</string>
+    <string name="system_install_denied_signature">"امضای افزونه اشتباه است!
+\nلطفاً یک گزارش خطا ایجاد کنید!
+\n "</string>
     <string name="system_install_denied_permissions">اجازه‌های ممتاز به افزونه داده نشده است! لطفاً یک گزارش خطا ایجاد
         کنید!
     </string>
@@ -373,8 +376,10 @@
     <string name="swap_stopping_wifi">در حال توقّف وای‌فای…</string>
     <string name="repo_provider">مخزن: %s</string>
 
-    <string name="update_auto_download">بارگیری خودکار به‌روز رسانی‌ها</string>
-    <string name="update_auto_download_summary">بارگیری پرونده‌های به‌روز رسانی در پس‌زمینه</string>
+    <string name="update_auto_download">دریافت خودکار به‌روز رسانی‌ها</string>
+    <string name="update_auto_download_summary">"به‌روز رسانی‌ها به صورت خودکار بارگیری شده
+\nو برای نصبشان آگاه می‌شوید
+\n "</string>
     <string name="tap_to_install_format">برای نصب %s ضربه بزنید</string>
     <string name="tap_to_update_format">برای به‌روز رسانی %s ضربه بزنید</string>
     <string name="download_pending">در انتظار شروع بارگیری…</string>
@@ -399,4 +404,119 @@
     <string name="uninstall_error_notify_title">خطا در حذف نصب %s</string>
 
 
+<string name="keep_install_history">نگه داشتن تاریخچهٔ نصب</string>
+    <string name="keep_install_history_summary">نگه داشتن گزارشی ار تمام نصب و حذف‌ها در اف‌دروید</string>
+    <string name="update_auto_install">نصب خودکار به‌روز رسانی‌ها</string>
+    <string name="update_auto_install_summary">بارگیری و نصب کاره‌های به‌روز در پس‌زمینه</string>
+    <string name="app_details_donate_prompt_unknown_author">خرید قهوه برای توسعه‌دهندهٔ %1$s!</string>
+    <string name="app_details_donate_prompt">‫%1$s به دست %2$s ایجاد شده است. برایش قهوه بخرید!</string>
+
+    <string name="app_version_x_available">نگارش %1$s موجود است</string>
+    <string name="app_version_x_installed">نگارش %1$s</string>
+    <string name="app_recommended_version_installed">نگارش %1$s (توصیه شده)</string>
+    <string name="app__newly_added">جدید</string>
+    <string name="app__tts__cancel_download">لغو بارگیری</string>
+    <string name="app__install_downloaded_update">به‌روز رسانی</string>
+
+    <string name="app_list__name__downloaded_and_ready_to_update">به‌روز رسانی %1$s</string>
+    <string name="app_list__name__downloaded_and_ready_to_install">نصب %1$s</string>
+    <string name="app_list__name__downloading_in_progress">در حال بارگیری %1$s</string>
+    <string name="app_list__name__successfully_installed">‫%1$s با موفّقیت نصب شد</string>
+    <string name="app_list__age__released_today">امروز منتشر شده</string>
+    <string name="app_list__age__released_yesterday">دیروز منتشر شده</string>
+    <plurals name="app_list__age__released_x_days_ago">
+	<item quantity="one">‫%1$d روز پیش منتشر شده</item>
+	<item quantity="other">‫%1$d روز پیش منتشر شده</item>
+</plurals>
+
+    <string name="installed_apps__activity_title">کاره‌های نصب شده</string>
+    <string name="installed_app__updates_ignored">صرف‌نظر از به‌روز رسانی</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">صرف‌نظر از به‌روز رسانی برای نگارش %1$s</string>
+    <string name="updates__tts__download_app">بارگیری</string>
+    <string name="updates__tts__download_updates_for_all_apps">بارگیری تمام به‌روز رسانی‌ها</string>
+
+    <string name="updates__hide_updateable_apps">نهفتن کاره‌ها</string>
+    <string name="updates__show_updateable_apps">نمایش کاره‌ها</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">بارگیری به‌روز رسانی برای %1$d کاره.</item>
+	<item quantity="other">بارگیری به‌روز رسانی‌ها برای %1$d کاره.</item>
+</plurals>
+
+    <string name="versions">نگارش‌ها</string>
+    <string name="clear_search">پاک‌سازی جست‌وجو</string>
+
+    <string name="repositories_summary">افزودن منابع اضافی برای برنامه‌ها</string>
+    <string name="menu_video">ویدیو</string>
+    <string name="main_menu__latest_apps">جدیدترین</string>
+    <string name="main_menu__categories">دسته‌ها</string>
+    <string name="main_menu__swap_nearby">نزدیک</string>
+
+    <string name="latest__empty_state__no_recent_apps">کارهٔ اخیری پیدا نشد</string>
+    <string name="latest__empty_state__never_updated">"به محض به‌روز رسانی فهرست کاره‌هایتان،
+\nجدیدترین کاره‌ها باید در این‌حا نمایش داده شوند
+\n "</string>
+    <string name="latest__empty_state__no_enabled_repos">"به محض فعّال کردن یک مخزن و به‌روز کردنش،
+\nجدیدترین کاره‌ها باید در این‌جا نمایش داده شوند
+\n "</string>
+
+    <string name="categories__empty_state__no_categories">هیچ دسته‌ای برای نمایش نیست</string>
+
+    <string name="preference_category__my_apps">کاره‌های من</string>
+    <string name="preference_manage_installed_apps">مدیریت کاره‌های نصب شده</string>
+
+
+    <string name="details_new_in_version">جدید در نگارش %s</string>
+
+    <string name="antifeatureswarning">این کاره، ویژگی‌هایی دارد که شاید نپسندید.</string>
+    <string name="antifeatures">ضدّویژگی‌ها</string>
+    <string name="hide_anti_feature_apps">خاکستری کردن کاره‌های دارای ضدّویژگی</string>
+    <string name="hide_anti_feature_apps_on">خاکستری کردن کاره‌هایی کخ نیازمند ضدّویژگی هستند</string>
+    <string name="warning_no_internet">نمی‌توان به‌روز کرد. به اینترنت وصل هستید؟</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one"> نمایش همهٔ %d</item>
+	<item quantity="other">" نمایش همهٔ %d</item>
+</plurals>
+
+    <string name="nearby_splash__download_apps_from_people_nearby">"اینترنت  ندارید؟ کاره‌ها را از اطرافیاتتان بارگیری کنید!
+\n "</string>
+    <string name="nearby_splash__find_people_button">یافتن اطرافیانم</string>
+    <string name="nearby_splash__both_parties_need_fdroid">برای استفاده از این ویژگی، دو طرف به %1$s نیاز دارند.</string>
+
+    <string name="app__tts__downloading_progress">در حال بارگیری، %1$d%% کامل</string>
+    <string name="notification_title_single_update_available">به‌روز رسانی موجود است</string>
+    <string name="notification_title_single_ready_to_install">آماده برای نصب</string>
+    <string name="notification_title_single_ready_to_install_update">به‌روز رسانی آماده برای تصب</string>
+    <string name="notification_title_single_install_error">نصب شکست خورد</string>
+    <string name="notification_content_single_downloading">در حال بارگیری «%1$s»…</string>
+    <string name="notification_content_single_downloading_update">در حال بارگیری به‌روز رسانی برای «%1$s»…</string>
+    <string name="notification_content_single_installing">در حال نصب «%1$s»…</string>
+    <string name="notification_content_single_installed">با موفّقیت نصب شد</string>
+    <string name="notification_content_single_install_error">نصب شکست خورد</string>
+    <string name="notification_summary_updates">‫%1$d به‌روز رسانی</string>
+    <string name="notification_summary_installed">‫%1$d کاره نصب شدند</string>
+    <string name="notification_title_summary_update_available">به‌روز رسانی موجود است</string>
+    <string name="notification_title_summary_downloading">در حال بارگیری…</string>
+    <string name="notification_title_summary_downloading_update">در حال بارگیری به‌روز رسانی…</string>
+    <string name="notification_title_summary_ready_to_install">آماده برای نصب</string>
+    <string name="notification_title_summary_ready_to_install_update">به‌روز رسانی آماده برای نصب</string>
+    <string name="notification_title_summary_installing">در حال نصب</string>
+    <string name="notification_title_summary_installed">با موفّقیت نصب شد</string>
+    <string name="notification_title_summary_install_error">نصب شکست خورد</string>
+    <string name="notification_action_update">به‌روز رسانی</string>
+    <string name="notification_action_cancel">لغو</string>
+    <string name="notification_action_install">نصب</string>
+
+    <string name="tts_category_name">دستهٔ %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">نمایش %1$d کارهٔ دستهٔ %2$s</item>
+	<item quantity="other">نمایش تمام %1$d کارهٔ دستهٔ %2$s</item>
+</plurals>
+
+    <string name="details_last_updated_today">امروز به‌روز شده</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">‫%1$s روز پیش به‌روز شده</item>
+	<item quantity="other">‫%1$s روز پیش به‌روز شده</item>
+</plurals>
 </resources>
