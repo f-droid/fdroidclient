@@ -22,6 +22,7 @@ import java.io.FilenameFilter;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
@@ -54,7 +55,7 @@ public class InstalledAppProviderService extends IntentService {
      * or fast, and this can trigger a lot of UI updates, the actual
      * notifications are rate limited to one per second.
      */
-    private PublishSubject<Void> notifyEvents;
+    private PublishSubject<String> packageChangeNotifier;
 
     public InstalledAppProviderService() {
         super("InstalledAppProviderService");
@@ -63,16 +64,37 @@ public class InstalledAppProviderService extends IntentService {
     @Override
     public void onCreate() {
         super.onCreate();
-        notifyEvents = PublishSubject.create();
-        notifyEvents
+        packageChangeNotifier = PublishSubject.create();
+
+        // This "debounced" event will queue up any number of invocations within one second, and
+        // only emit an event to the subscriber after it has not received any new events for one second.
+        // This ensures that we don't constantly ask our lists of apps to update as we iterate over
+        // the list of installed apps and insert them to the database...
+        packageChangeNotifier
                 .subscribeOn(Schedulers.newThread())
-                .subscribe(new Action1<Void>() {
+                .debounce(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<String>() {
                         @Override
-                        public void call(Void voidArg) {
+                        public void call(String packageName) {
                             Utils.debugLog(TAG, "Notifying content providers (so they can update the relevant views).");
                             getContentResolver().notifyChange(AppProvider.getContentUri(), null);
                             getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
                         }
+                });
+
+        // ...alternatively, this non-debounced version will instantly emit an event about the
+        // particular package being updated. This is required so that our AppDetails view can update
+        // itself immediately in response to an app being installed/upgraded/removed.
+        // It does this _without_ triggering the main lists to update themselves, because they listen
+        // only for changes to specific URIs in the AppProvider. These are triggered when a more
+        // general notification (e.g. to AppProvider.getContentUri()) is fired, but not when a
+        // sibling such as AppProvider.getHighestPriorityMetadataUri() is fired.
+        packageChangeNotifier.subscribeOn(Schedulers.newThread())
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String packageName) {
+                        getContentResolver().notifyChange(AppProvider.getHighestPriorityMetadataUri(packageName), null);
+                    }
                 });
     }
 
@@ -209,7 +231,7 @@ public class InstalledAppProviderService extends IntentService {
             Log.i(TAG, "Marking " + packageName + " as no longer installed");
             deleteAppFromDb(this, packageName);
         }
-        notifyEvents.onNext(null);
+        packageChangeNotifier.onNext(packageName);
     }
 
     /**
