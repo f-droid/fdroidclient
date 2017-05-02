@@ -22,6 +22,7 @@ import org.fdroid.fdroid.Languages;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
@@ -158,6 +159,10 @@ public class PreferencesFragment extends PreferenceFragment
                 if (changing) {
                     Activity activity = getActivity();
                     Languages.setLanguage(activity, Preferences.get().getLanguage(), false);
+
+                    RepoProvider.Helper.clearEtags(getContext());
+                    UpdateService.updateNow(getContext());
+
                     Languages.forceChangeLanguage(activity);
                 }
                 break;

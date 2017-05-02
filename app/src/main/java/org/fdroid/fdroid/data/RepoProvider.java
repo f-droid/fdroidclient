@@ -286,6 +286,18 @@ public class RepoProvider extends FDroidProvider {
 
             return count;
         }
+
+        /**
+         * Helper method to ensure that next time the user asks for a repository update, we will
+         * fetch the metadata and update regardless of whether the metadata has changed or not.
+         * This is useful for when we change languages, because we need to ask the user to fetch
+         * the metadata again, so that we can extract the correctly-localized metadata.
+         */
+        public static void clearEtags(Context context) {
+            ContentValues values = new ContentValues(1);
+            values.put(Cols.LAST_ETAG, (String) null);
+            context.getContentResolver().update(getContentUri(), values, null, null);
+        }
     }
 
     private static final String PROVIDER_NAME = "RepoProvider";
