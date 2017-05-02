@@ -22,6 +22,7 @@ package org.fdroid.fdroid.installer;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -40,12 +41,17 @@ public class InstallerFactory {
      * @return instance of an Installer
      */
     public static Installer create(Context context, Apk apk) {
+        Log.d(TAG, "Apk.apkName " + apk.apkName);
         if (apk == null || TextUtils.isEmpty(apk.packageName)) {
             throw new IllegalArgumentException("Apk.packageName must not be empty: " + apk);
         }
 
+
         Installer installer;
-        if (PrivilegedInstaller.isDefault(context)) {
+        if (!apk.apkName.endsWith(".apk")) {
+            Utils.debugLog(TAG, "Using DummyInstaller for " + apk.apkName);
+            installer = new DummyInstaller(context, apk);
+        } else if (PrivilegedInstaller.isDefault(context)) {
             Utils.debugLog(TAG, "privileged extension correctly installed -> PrivilegedInstaller");
             installer = new PrivilegedInstaller(context, apk);
         } else if (apk.packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
