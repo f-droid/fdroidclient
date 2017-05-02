@@ -112,7 +112,7 @@
     <string name="login_password">Fjalëkalimi</string>
     <string name="repo_edit_credentials">Nrysho Fjalëkalimin</string>
     <string name="crash_dialog_comment_prompt">Këtu mundë të shtosh detaje dhe komente shtesë:</string>
-    <string name="perms_new_perm_prefix">"Risi: "</string>
+    <string name="perms_new_perm_prefix">Risi:</string>
     <string name="perms_description_app">Mundësuar nga %1$s.</string>
     <string name="allPerms">Të gjitha</string>
     <string name="about_license">Licenca</string>

@@ -309,7 +309,7 @@
     <string name="tap_to_install">Stažení kompletní, dotykem instalovat</string>
     <string name="download_error">Stažení neúspěšné</string>
 
-    <string name="perms_new_perm_prefix">"Nová: "</string>
+    <string name="perms_new_perm_prefix">Nová:</string>
     <string name="perms_description_app">Poskytováno %1$s.</string>
     <string name="downloading">Stahování…</string>
 

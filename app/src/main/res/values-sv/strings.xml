@@ -268,8 +268,7 @@
     <string name="repo_provider">Förråd: %s</string>
 
     <string name="uninstall_error_unknown">Det gick inte att avinstallera på grund av ett okänt fel</string>
-    <string name="system_install_denied_signature">"Signaturen för tillbyggnaden är fel! Skapa en felrapport!
- "</string>
+    <string name="system_install_denied_signature">Signaturen för tillbyggnaden är fel! Skapa en felrapport!</string>
     <string name="system_install_denied_permissions">De privilegierade tillstånden har inte beviljats tillbyggnad! Skapa
         en felrapport!
     </string>
@@ -297,8 +296,7 @@
     <string name="system_uninstall_button">Avinstallera</string>
 
     <string name="swap_nfc_title">Tryck för att utbyta</string>
-    <string name="swap_nfc_description">"Om din vän har F-Droid och NFC aktiverat lägg era enheterna samman.
- "</string>
+    <string name="swap_nfc_description">Om din vän har F-Droid och NFC aktiverat lägg era enheterna samman.</string>
     <string name="swap_join_same_wifi_desc">För att utbyta via wifi, se till att ni är på samma nätverk. Om ni inte har
         åtkomst till samma nätverk, kan en av er skapa en wifi-aktiveringspunkt.
     </string>
@@ -449,8 +447,8 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Visa alla %d "</item>
-	<item quantity="other">" Visa alla %d "</item>
+	<item quantity="one">Visa alla %d</item>
+	<item quantity="other">Visa alla %d</item>
 </plurals>
 
     <string name="notification_title_single_update_available">Uppdatering tillgänglig</string>

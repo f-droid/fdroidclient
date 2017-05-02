@@ -268,7 +268,7 @@
     <string name="newPerms">Nové</string>
     <string name="uninstall_update_confirm">Chcete nahradiť túto aplikáciu továreňskou verziou?</string>
     <string name="uninstall_confirm">Chcete odinštalovať túto aplikáciu?</string>
-    <string name="perms_new_perm_prefix">"Nové: "</string>
+    <string name="perms_new_perm_prefix">Nové:</string>
     <string name="downloading">Sťahujem…</string>
 
     <string name="interval_never">Nikdy</string>

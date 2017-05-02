@@ -423,7 +423,7 @@
     <string name="uninstall_error_notify_title">Kanganiso pakubvisa kuvakirira %s</string>
 
 
-    <string name="perms_new_perm_prefix">"Chitsva: "</string>
+    <string name="perms_new_perm_prefix">Chitsva:</string>
     <string name="perms_description_app">Kuyananiswa na %1$s.</string>
     <string name="downloading">Kututunura…</string>
     <string name="downloading_apk">Kututunura %1$s</string>

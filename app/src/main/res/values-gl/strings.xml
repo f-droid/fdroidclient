@@ -225,7 +225,7 @@
     <string name="uninstall_update_confirm">Desexas sustituir éste aplicativo pola versión de fábrica?</string>
     <string name="uninstall_confirm">Desexas desinstalar este aplicativo?</string>
     <string name="tap_to_install">Descarga completada, toca para instalar</string>
-    <string name="perms_new_perm_prefix">"Novo: "</string>
+    <string name="perms_new_perm_prefix">Novo:</string>
     <string name="downloading">Descargando…</string>
 
     <string name="interval_never">Xamáis</string>

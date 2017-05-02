@@ -300,7 +300,7 @@
     <string name="tap_to_install">Đã tải xong, chạm để cài đặt</string>
     <string name="download_error">Tải về thất bại</string>
 
-    <string name="perms_new_perm_prefix">"Mới: "</string>
+    <string name="perms_new_perm_prefix">Mới:</string>
     <string name="perms_description_app">Được cung cấp bởi %1$s.</string>
     <string name="downloading">Đang tải về…</string>
 

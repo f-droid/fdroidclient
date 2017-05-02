@@ -327,7 +327,7 @@
     <string name="swap_welcome">Selamat datang di F-Droid!</string>
     <string name="swap_confirm_connect">Apa anda ingin mendapatkan apl dari %1$s sekarang?</string>
     <string name="swap_dont_show_again">Jangan tampilkan ini lagi</string>
-    <string name="swap_scan_or_type_url">"Salah satu orang perlu memindai kode, atau ketik URL orang yang lain diperamban. "</string>
+    <string name="swap_scan_or_type_url">Salah satu orang perlu memindai kode, atau ketik URL orang yang lain diperamban.</string>
     <string name="swap_choose_apps">Pilih Aplikasi</string>
     <string name="swap_scan_qr">Pindai Kode QR</string>
     <string name="swap_people_nearby">Orang Terdekat</string>

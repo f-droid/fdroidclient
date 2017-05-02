@@ -163,7 +163,7 @@
 
     <string name="newPerms">Berria</string>
     <string name="allPerms">Guztiak</string>
-    <string name="perms_new_perm_prefix">"Berria: "</string>
+    <string name="perms_new_perm_prefix">Berria:</string>
     <string name="loading">Kargatzen…</string>
     <string name="swap_connecting">Konektatzen</string>
     <string name="swap_wifi_device_name">Gailuaren izena</string>
@@ -380,8 +380,7 @@
     <string name="theme_night">Gaua</string>
     <string name="menu_settings">Ezarpenak</string>
     <string name="update_auto_download">Jaso eguneraketak automatikoki</string>
-    <string name="update_auto_download_summary">"Eguneraketak bigarren planoan deskargatzen dira automatikoki eta berauek instalatzeko jakinarazten zaizu
- "</string>
+    <string name="update_auto_download_summary">Eguneraketak bigarren planoan deskargatzen dira automatikoki eta berauek instalatzeko jakinarazten zaizu</string>
     <string name="login_title">Autentifikazioa behar da</string>
     <string name="login_name">Erabiltzaile-izena</string>
     <string name="login_password">Pasahitza</string>
@@ -441,7 +440,7 @@
     <string name="keep_install_history_summary">Gorde instalazio eta desinstalazioen egunkari bat F-Droiden</string>
     <string name="warning_no_internet">Ezin da eguneratu, Internetera konektatuta zaude?</string>
     <string name="versions">Bertsioak</string>
-    <string name="app_details_donate_prompt_unknown_author">"Gonbidatu %1$s garatzaileak kafe batetara!"</string>
+    <string name="app_details_donate_prompt_unknown_author">Gonbidatu %1$s garatzaileak kafe batetara!</string>
     <string name="app_details_donate_prompt">%1$s %2$s(e)k sortu du. Gonbidatu kafe batetara!</string>
 
     <string name="repositories_summary">Gehitu aplikazioen iturri gehigarriak</string>

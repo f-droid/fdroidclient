@@ -223,7 +223,7 @@
     <string name="uninstall_error_notify_title">การถอนการติดตั้ง %s ล้มเหลว</string>
 
 
-    <string name="perms_new_perm_prefix">"ใหม่: "</string>
+    <string name="perms_new_perm_prefix">ใหม่:</string>
     <string name="downloading">กำลังดาวน์โหลด…</string>
     <string name="installing">กำลังติดตั้ง…</string>
     <string name="uninstalling">กำลังถอนการติดตั้ง…</string>

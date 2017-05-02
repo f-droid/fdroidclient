@@ -265,7 +265,7 @@
     <string name="tap_to_install">Nedlasting fullført, trykk for å installere</string>
     <string name="download_error">Nedlasting feilet</string>
 
-    <string name="perms_new_perm_prefix">"Ny: "</string>
+    <string name="perms_new_perm_prefix">Ny:</string>
     <string name="perms_description_app">Tilbudt av %1$s.</string>
     <string name="downloading">Laster ned…</string>
 
@@ -495,8 +495,8 @@
     <string name="antifeatureswarning">Dette programmet har funksjoner du kanskje ikke liker.</string>
     <string name="antifeatures">Anti-funksjoner</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Vis alle %d "</item>
-	<item quantity="other">" Vis alle %d "</item>
+	<item quantity="one">Vis alle %d</item>
+	<item quantity="other">Vis alle %d</item>
 </plurals>
     <string name="details_last_updated_today">Oppdatert i dag</string>
 

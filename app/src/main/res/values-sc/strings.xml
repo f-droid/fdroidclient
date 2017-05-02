@@ -470,8 +470,8 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Càstia %d "</item>
-	<item quantity="other">" Càstia totu %d "</item>
+	<item quantity="one">Càstia %d</item>
+	<item quantity="other">Càstia totu %d</item>
 </plurals>
 
     <string name="clear_search">Inneta sa chirca</string>

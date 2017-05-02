@@ -358,7 +358,7 @@
     <string name="system_install_warning">Tardará fasta 10 segundos.</string>
     <string name="repo_details">Repositoriu</string>
     <string name="repo_url">Direición</string>
-    <string name="perms_new_perm_prefix">"Nuevo: "</string>
+    <string name="perms_new_perm_prefix">Nuevo:</string>
     <string name="status_download_unknown_size">Baxando\n%2$s de\n%1$s</string>
     <string name="more">Más</string>
     <string name="less">Menos</string>

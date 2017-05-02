@@ -167,11 +167,11 @@
     <string name="category_Time">時間</string>
     <string name="category_Writing">文書</string>
 
-    <string name="empty_available_app_list">"此分類沒有任何應用程式。
+    <string name="empty_available_app_list">此分類沒有任何應用程式。
 
 請選擇另一個分類或更新您的軟件庫
 以取得最新的程式目錄。
- "</string>
+</string>
     <string name="empty_can_update_app_list">"所有應用程式都是最新的。
 
 恭喜您！所有的應用程式已更新至
@@ -185,8 +185,7 @@
     <string name="system_uninstall_button">卸載</string>
 
     <string name="swap_nfc_title">觸碰來交換</string>
-    <string name="swap_nfc_description">"若您的朋友有 F-Droid，並開啟了 NFC 功能，請觸碰您們的裝置。
- "</string>
+    <string name="swap_nfc_description">若您的朋友有 F-Droid，並開啟了 NFC 功能，請觸碰您們的裝置。</string>
     <string name="theme_dark">暗色系</string>
     <string name="theme_light">明亮色系</string>
     <string name="interval_2w">每兩星期</string>
@@ -214,9 +213,9 @@
     <string name="swap_scanning_for_peers">正在尋找附近的人…</string>
     <string name="swap_choose_apps">選擇程式</string>
     <string name="swap_dont_show_again">不要再顯示</string>
-    <string name="installIncompatible">"此軟件包與您的裝置並不相容，
+    <string name="installIncompatible">此軟件包與您的裝置並不相容，
 您確定要把它安裝嗎？
- "</string>
+</string>
     <string name="proxy">代理伺服器</string>
     <string name="enable_proxy_title">啟用 HTTP 代理伺服器</string>
     <string name="proxy_host">Proxy Host</string>
@@ -227,28 +226,28 @@
     <string name="status_download">正在從 %1$s 下載
 %2$s / %3$s (%4$d%%)</string>
     <string name="install_confirm">需要存取權</string>
-    <string name="install_confirm_update">"您想更新此應用程式嗎？
+    <string name="install_confirm_update">您想更新此應用程式嗎？
 您不會失去現有的數據。
 已更新的程式需要以下的存取權：
- "</string>
-    <string name="install_confirm_update_system">"您想更新此內置的應用程式嗎？
+</string>
+    <string name="install_confirm_update_system">您想更新此內置的應用程式嗎？
 您不會失去現有的數據。
 已更新的程式需要以下的存取權：
- "</string>
-    <string name="install_confirm_update_system_no_perms">"您想更新此應用程式嗎？
+</string>
+    <string name="install_confirm_update_system_no_perms">您想更新此應用程式嗎？
 您不會失去現有的數據，
 已更新的程式亦不需要任何特別的存取權。
- "</string>
+</string>
     <string name="notification_summary_more">還有 +%1$d 個…</string>
     <string name="next">下一步</string>
     <string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
-    <string name="SignatureMismatch">"應用程式的新版本使用了不同的鑰匙簽署。若要安裝新版本，
+    <string name="SignatureMismatch">應用程式的新版本使用了不同的鑰匙簽署。若要安裝新版本，
 您必須先卸載舊版本，然後再嘗試安裝。(注意：卸載將會刪除
 應用程式內的資料)
- "</string>
-    <string name="installDowngrade">"應用程式將會降級，這樣做可能會導致程式異常運作
+</string>
+    <string name="installDowngrade">應用程式將會降級，這樣做可能會導致程式異常運作
 甚至資料損失。您確定要進行降級嗎？
- "</string>
+</string>
     <string name="download_error">下載失敗</string>
 
     <string name="more">顯示更多</string>
@@ -259,12 +258,11 @@
     <string name="swap_not_enabled_description">在交換之前，您的裝置必須可被其他裝置發現。</string>
 
     <string name="swap_not_enabled">沒有啟用交換功能</string>
-    <string name="swap_connection_misc_error">"與裝置連接時出現了問題，
+    <string name="swap_connection_misc_error">與裝置連接時出現了問題，
 未能與它進行交換。
- "</string>
+</string>
     <string name="loading">正在載入…</string>
-    <string name="swap_cant_send_no_bluetooth">"因為此裝置沒有藍牙功能，未能傳送 F-Droid。
- "</string>
+    <string name="swap_cant_send_no_bluetooth">因為此裝置沒有藍牙功能，未能傳送 F-Droid。</string>
     <string name="bluetooth_unavailable">藍牙不可用</string>
     <string name="swap_qr_isnt_for_swap">您所掃描的 QR 碼不是一個交換碼。</string>
     <string name="swap_confirm">確定交換</string>
@@ -278,8 +276,7 @@
     <string name="swap_visible_bluetooth">在藍牙上可被偵測</string>
     <string name="swap_intro">與您附近的人交換應用程式。</string>
     <string name="swap_nearby">近距交換</string>
-    <string name="swap_scan_or_type_url">"其中一人需掃描 QR 碼或在瀏覽器中輸入另一人的網址。
- "</string>
+    <string name="swap_scan_or_type_url">其中一人需掃描 QR 碼或在瀏覽器中輸入另一人的網址。</string>
     <string name="swap_switch_to_wifi">觸碰以換至一個 Wi-Fi 網絡</string>
     <string name="swap_view_available_networks">觸碰以檢視可加入的網絡</string>
     <string name="swap_success">交換成功！</string>
@@ -307,9 +304,9 @@
 
     <string name="linking_apks">正在連接 APK 檔至軟件庫…</string>
     <string name="status_processing_xml_percent">正在從 %1$s 處理 %2$s / %3$s (%4$d%%)</string>
-    <string name="repo_not_yet_updated">"此軟件庫還未啟用。
+    <string name="repo_not_yet_updated">此軟件庫還未啟用。
 您需要啟用倉庫才可以檢視其中的應用程式。
- "</string>
+</string>
     <string name="system_install_button_install">安裝</string>
     <string name="system_install_button_open">開啟套件</string>
     <string name="system_install_post_success">成功安裝 F-Droid 系統權限套件</string>
@@ -349,12 +346,12 @@ F-Droid 並不提供您裝置上的應用程式。
     <string name="system_install_denied_body">"此選項只在
 安裝 F-Droid 系統權限套件後適用。
  "</string>
-    <string name="system_install_denied_signature">"套件的簽署不正確！
+    <string name="system_install_denied_signature">套件的簽署不正確！
 請提交一份錯誤報告！
- "</string>
-    <string name="system_install_denied_permissions">"套件尚未得到系統權限！
+</string>
+    <string name="system_install_denied_permissions">套件尚未得到系統權限！
 請提交一份錯誤報告！
- "</string>
+</string>
     <string name="perm_costs_money">此權限可能需要您花費</string>
     <string name="crash_dialog_title">F-Droid 已崩潰</string>
     <string name="crash_dialog_comment_prompt">您可以在此加入額外的資料及評論：</string>
@@ -364,10 +361,10 @@ F-Droid 並不提供您裝置上的應用程式。
     <string name="system_install_post_fail_message">F-Droid 系統權限套件安裝失敗。此安裝方式並不支援所有的 Android 版本，請參見 F-Droid 的 bug tracker
         以取得更多資訊。
     </string>
-    <string name="install_confirm_update_no_perms">"您是否要更新此應用程式？
+    <string name="install_confirm_update_no_perms">您是否要更新此應用程式？
 您不會遺失現有的資料，
 也不需要提供任何特別權限。
- "</string>
+</string>
     <string name="uninstall_update_confirm">你確定要原始版本取代此應用程式嗎？</string>
     <string name="crash_dialog_text">因發生了未預料到的錯誤，
         應用程式已停止運作。您願意透過電郵
@@ -376,23 +373,23 @@ F-Droid 並不提供您裝置上的應用程式。
     <string name="repo_fingerprint">鑰匙指紋 (SHA-256)</string>
     <string name="writing_index_jar">正在寫入已簽署的目錄檔案 (index.jar)…</string>
     <string name="rooted_on">不要以灰字顯示需要 root 權限的應用程式</string>
-    <string name="repo_delete_to_overwrite">"在加入使用不同鑰匙的軟件庫前之前，
+    <string name="repo_delete_to_overwrite">在加入使用不同鑰匙的軟件庫前之前，
 請先刪除此倉庫。
- "</string>
+</string>
     <string name="repo_exists_add_fingerprint">由於此倉庫已經設置好，此動作將會加入新的鑰匙數據。</string>
     <string name="menu_email">電郵作者</string>
-    <string name="unsigned_description">"這表示應用程式清單
+    <string name="unsigned_description">這表示應用程式清單
 不可被驗證。您要小心使用
 來自未簽署的索引的應用程式。
- "</string>
+</string>
     <string name="useTor">使用 Tor</string>
     <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
     <string name="by_author">作者為</string>
     <string name="useTorSummary">要求下載流量經過 Tor，以加強對私隱的保障</string>
     <string name="update_auto_download">自動下載更新</string>
-    <string name="update_auto_download_summary">"將會自動下載更新，下載完畢後
+    <string name="update_auto_download_summary">將會自動下載更新，下載完畢後
 會通知您安裝有關更新
- "</string>
+</string>
     <string name="repo_provider">軟件庫：%s</string>
 
     <string name="system_install_not_supported">"F-Droid 系統權限套件不支援
@@ -461,12 +458,12 @@ Android 5.1 或更新的版本。
     <string name="main_menu__categories">類別</string>
     <string name="main_menu__swap_nearby">附近</string>
 
-    <string name="latest__empty_state__never_updated">"當您更新應用程式目錄後，
+    <string name="latest__empty_state__never_updated">當您更新應用程式目錄後，
 最新的程式將會在此處顯示。
- "</string>
-    <string name="latest__empty_state__no_enabled_repos">"當您啟用並更新軟件庫後，
+</string>
+    <string name="latest__empty_state__no_enabled_repos">當您啟用並更新軟件庫後，
 最新的程式將會在此處顯示。
- "</string>
+</string>
 
     <string name="preference_category__my_apps">我的應用程式</string>
     <string name="preference_manage_installed_apps">管理已安裝的應用程式</string>
@@ -480,11 +477,11 @@ Android 5.1 或更新的版本。
     <string name="hide_anti_feature_apps_on">以灰字顯示含有反功能的應用程式</string>
     <string name="warning_no_internet">無法更新，您是否能夠連線至互聯網？</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="other">" 顯示所有 %d "</item>
+	<item quantity="other">顯示所有 %d</item>
 </plurals>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">"沒有網絡連線？您可以從附近的人下載應用程式！
- "</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">沒有網絡連線？您可以從附近的人下載應用程式！
+</string>
     <string name="nearby_splash__find_people_button">搜索附近的人</string>
     <string name="nearby_splash__both_parties_need_fdroid">雙方都需要 %1$s 才可使用附近功能。</string>
 

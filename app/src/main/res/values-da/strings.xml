@@ -360,7 +360,7 @@
     <string name="tap_to_install">Overførsel fuldført, rør for at installere</string>
     <string name="download_error">Overførsel forfejlet</string>
 
-    <string name="perms_new_perm_prefix">"Nye: "</string>
+    <string name="perms_new_perm_prefix">Nye:</string>
     <string name="perms_description_app">Udbudt af %1$s.</string>
     <string name="downloading">Henter…</string>
 

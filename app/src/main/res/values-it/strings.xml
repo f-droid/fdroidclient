@@ -217,7 +217,7 @@
     <string name="tap_to_install">Scaricamento completato, tocca per installare</string>
     <string name="download_error">Scaricamento fallito</string>
 
-    <string name="perms_new_perm_prefix">"Nuovo: "</string>
+    <string name="perms_new_perm_prefix">Nuovo:</string>
     <string name="perms_description_app">Fornito da %1$s.</string>
     <string name="uninstall_confirm">Vuoi rimuovere questa app?</string>
     <string name="install_confirm">deve accedere a</string>

@@ -343,8 +343,7 @@
     </string>
     <string name="system_install_question">Вы хотите установить привилегированное расширение F-Droid?</string>
     <string name="system_uninstall">Вы хотите удалить привилегированное расширение F-Droid?</string>
-    <string name="swap_nfc_description">"Если у вашего друга есть F-Droid и у Вас обоих включен NFC, приложите устройства друг к другу.
- "</string>
+    <string name="swap_nfc_description">Если у вашего друга есть F-Droid и у Вас обоих включен NFC, приложите устройства друг к другу.</string>
     <string name="swap_join_this_hotspot">Помогите Вашему другу подключиться к Вашей точке доступа</string>
     <string name="swap_nfc_title">Нажмите для обмена</string>
     <string name="swap_join_same_wifi_desc">Чтобы выполнить обмен, используя Wi-Fi, убедитесь, что вы подключены к одной
@@ -464,9 +463,9 @@
     <string name="categories__empty_state__no_categories">Нет категорий для показа</string>
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Посмотреть %d приложение "</item>
-	<item quantity="few">" Посмотреть %d приложения "</item>
-	<item quantity="many">" Посмотреть %d приложений "</item>
+	<item quantity="one">Посмотреть %d приложение</item>
+	<item quantity="few">Посмотреть %d приложения</item>
+	<item quantity="many">Посмотреть %d приложений</item>
 	<item quantity="other"/>
 </plurals>
 

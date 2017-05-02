@@ -251,7 +251,7 @@
     <string name="uninstall_error_notify_title">Villa við að fjarlægja %s</string>
 
 
-    <string name="perms_new_perm_prefix">"Nýtt: "</string>
+    <string name="perms_new_perm_prefix">Nýtt:</string>
     <string name="perms_description_app">Útgefið af %1$s.</string>
     <string name="downloading">Sæki…</string>
     <string name="downloading_apk">Næ í %1$s</string>
