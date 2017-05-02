@@ -310,8 +310,7 @@
     <string name="swap_switch_to_wifi">Tuŝu por ŝanĝi al vifio</string>
     <string name="swap_confirm_connect">Ĉu vi volas elŝuti aplikaĵojn el %1$s nun?</string>
     <string name="swap_dont_show_again">Ne montri ĉi tion denove</string>
-    <string name="swap_scan_or_type_url">"Unu persono devas skani la kodon, aŭ entajpi URL-n de aliulo en foliumilon.
- "</string>
+    <string name="swap_scan_or_type_url">"Unu persono devas skani la kodon, aŭ entajpi URL-n de aliulo en foliumilon. "</string>
     <string name="swap_choose_apps">Elekti aplikaĵojn</string>
     <string name="swap_scan_qr">Skanu QR-kodon</string>
     <string name="swap_people_nearby">Homoj proksime</string>
@@ -462,9 +461,9 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Montri aplikaĵon</item>
-        <item quantity="other">Montri ĉiujn %d</item>
-    </plurals>
+	<item quantity="one">" Montri %d aplikaĵon "</item>
+	<item quantity="other">" Montri ĉiujn %d "</item>
+</plurals>
 
     <string name="app_recommended_version_installed">Versio %1$s (konsilinda)</string>
     <string name="app__newly_added">Nova</string>
@@ -534,4 +533,5 @@
     <string name="menu_video">Video</string>
     <string name="app__tts__cancel_download">Nuligi elŝutadon</string>
     <string name="app__tts__downloading_progress">Elŝutado, %1$d%% kompleta</string>
+    <string name="menu_license">Permesilo: %s</string>
     </resources>

@@ -129,8 +129,7 @@
     <string name="system_install_denied_body">Opcja dostępna tylko wtedy, gdy F-Droid został zainstalowany jako
         aplikacja systemowa.
     </string>
-    <string name="swap_nfc_description">"Jeśli oba urządzenie mają F-Droida i NFC, możecie je zbliżyć do siebie.
- "</string>
+    <string name="swap_nfc_description">"Jeśli oba urządzenia mają F-Droida i NFC, możecie je zbliżyć do siebie. "</string>
     <string name="swap_join_same_wifi">Połącz się z tą samą siecią Wi-Fi</string>
     <string name="swap">Wymień aplikacje</string>
     <string name="swap_no_wifi_network">Brak sieci</string>
@@ -327,8 +326,7 @@
 
     <string name="download_error">Pobieranie nie powiodło się</string>
 
-    <string name="system_install_denied_signature">"Niepoprawny podpis dodatku! Prosimy o zgłoszenie błędu!
- "</string>
+    <string name="system_install_denied_signature">"Niepoprawny podpis dodatku! Prosimy o zgłoszenie błędu! "</string>
     <string name="system_install_denied_permissions">Uprzywilejowanemu dodatkowi nie zostały przyznane wymagane
         uprawnienia! Prosimy o zgłoszenie błędu!
     </string>
@@ -450,11 +448,11 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Zobacz %d aplikację</item>
-        <item quantity="few">Zobacz wszystkie %d aplikacje</item>
-        <item quantity="many">Zobacz wszystkich %d aplikacji</item>
-        <item quantity="other"/>
-    </plurals>
+	<item quantity="one">" Zobacz %d aplikację "</item>
+	<item quantity="few">" Zobacz wszystkie %d aplikacje "</item>
+	<item quantity="many">" Zobacz wszystkich %d aplikacji "</item>
+	<item quantity="other"/>
+</plurals>
 
     <string name="app_recommended_version_installed">Wersja %1$s (zalecana)</string>
     <string name="app__newly_added">Nowa</string>
@@ -534,4 +532,5 @@
     <string name="menu_video">Wideo</string>
     <string name="app__tts__cancel_download">Anuluj pobieranie</string>
     <string name="app__tts__downloading_progress">Pobieranie, %1$d%% ukończono</string>
+    <string name="menu_license">Licencja: %s</string>
     </resources>
