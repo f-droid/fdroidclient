@@ -535,10 +535,6 @@
 
     <string name="antifeatureswarning">Hierdie program het eienskappe wat jy hou dalk nie van sal hou nie.</string>
     <string name="antifeatures">Anti-kenmerke</string>
-    <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">" Selfs al is hierdie dieselfde as mekaar, stel Android dokumentasie altyd voor dat ten minste een en ander: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
-	<item quantity="other">" Selfs al is dit dieselfde as eachother, Android dokumente stel altyd met vermelding van ten minste een en ander: https://developer.android.com/guide/topics/resources/string-resource.html#Plurals "</item>
-</plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">"Geen internet nie? Laai programme van mense naby jou!
 \n "</string>

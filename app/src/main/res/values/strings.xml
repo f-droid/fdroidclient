@@ -326,9 +326,7 @@
     <string tools:ignore="UnusedResources" name="category_Writing">Writing</string>
 
     <plurals name="button_view_all_apps_in_category">
-        <!-- Even though these are the same as eachother, Android docs suggest always specifying at
-             least "one" and "other": https://developer.android.com/guide/topics/resources/string-resource.html#Plurals -->
-        <item quantity="one">View all %d</item>
+        <item quantity="one">View %d</item>
         <item quantity="other">View all %d</item>
     </plurals>
 
