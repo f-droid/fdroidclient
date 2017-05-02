@@ -351,6 +351,7 @@
     </string>
     <string name="install_error_unknown">Failed to install due to an unknown error</string>
     <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
+    <string name="install_error_not_yet_supported">File type cannot yet be installed: %s</string>
     <string name="system_install_denied_title">F-Droid Privileged Extension is not available</string>
     <string name="system_install_denied_body">This option is only available when F-Droid Privileged Extension is
         installed.
