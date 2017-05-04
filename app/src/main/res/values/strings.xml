@@ -337,7 +337,7 @@
     <string name="empty_available_app_list">No apps in this category.\n\nTry selecting a different category or updating
         your repositories to get a fresh list of apps.
     </string>
-    <string name="empty_can_update_app_list">All apps up to date.\n\nCongratulations! All of your apps are up to date
+    <string name="empty_can_update_app_list">Congratulations! All of your apps are up to date
         (or your repositories are out of date).
     </string>
     <string name="empty_search_installed_app_list">No matching installed applications.</string>
