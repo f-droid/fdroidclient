@@ -54,12 +54,14 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import sun.net.www.protocol.bluetooth.Handler;
 
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
@@ -381,7 +383,7 @@ public class FDroidApp extends Application {
 
             // The APK type ("application/vnd.android.package-archive") is blocked by stock Android, so use zip
             sendBt.setType("application/zip");
-            sendBt.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + appInfo.publicSourceDir));
+            sendBt.putExtra(Intent.EXTRA_STREAM, ApkFileProvider.getSafeUri(this, appInfo));
 
             // not all devices have the same Bluetooth Activities, so
             // let's find it
@@ -397,6 +399,12 @@ public class FDroidApp extends Application {
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Could not get application info to send via bluetooth", e);
             found = false;
+        } catch (IOException e) {
+            // This will crash the app, because we want to get error reports of this.
+            // Additionally, it is not going to happen in the background or other important times
+            // (like application startup), only when the user actively performs a function (i.e. share
+            // via bluetooth). As such, it should not be too much of a burden to crash here.
+            throw new RuntimeException("Error preparing file to send via Bluetooth", e);
         }
 
         if (sendBt != null) {
