@@ -368,20 +368,21 @@ public class FDroidApp extends Application {
         if (resultCode == Activity.RESULT_CANCELED) {
             return;
         }
+
         String bluetoothPackageName = null;
         String className = null;
         boolean found = false;
         Intent sendBt = null;
+
         try {
             PackageManager pm = getPackageManager();
-            ApplicationInfo appInfo = pm.getApplicationInfo(packageName,
-                    PackageManager.GET_META_DATA);
+            ApplicationInfo appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
             sendBt = new Intent(Intent.ACTION_SEND);
-            // The APK type is blocked by stock Android, so use zip
-            // sendBt.setType("application/vnd.android.package-archive");
+
+            // The APK type ("application/vnd.android.package-archive") is blocked by stock Android, so use zip
             sendBt.setType("application/zip");
-            sendBt.putExtra(Intent.EXTRA_STREAM,
-                    Uri.parse("file://" + appInfo.publicSourceDir));
+            sendBt.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + appInfo.publicSourceDir));
+
             // not all devices have the same Bluetooth Activities, so
             // let's find it
             for (ResolveInfo info : pm.queryIntentActivities(sendBt, 0)) {
@@ -397,6 +398,7 @@ public class FDroidApp extends Application {
             Log.e(TAG, "Could not get application info to send via bluetooth", e);
             found = false;
         }
+
         if (sendBt != null) {
             if (found) {
                 sendBt.setClassName(bluetoothPackageName, className);
