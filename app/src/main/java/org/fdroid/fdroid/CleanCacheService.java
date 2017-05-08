@@ -136,7 +136,7 @@ public class CleanCacheService extends IntentService {
      * Delete cached icons that have not been accessed in over a year.
      */
     private void deleteOldIcons() {
-        clearOldFiles(Utils.getIconsCacheDir(this), TimeUnit.DAYS.toMillis(365));
+        clearOldFiles(Utils.getImageCacheDir(this), TimeUnit.DAYS.toMillis(365));
     }
 
     /**

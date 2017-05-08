@@ -274,7 +274,7 @@ public class FDroidApp extends Application {
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .imageDownloader(new ImageLoaderForUIL(getApplicationContext()))
                 .diskCache(new LimitedAgeDiskCache(
-                        Utils.getIconsCacheDir(this),
+                        Utils.getImageCacheDir(this),
                         null,
                         new FileNameGenerator() {
                             @Override
