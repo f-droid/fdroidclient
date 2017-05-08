@@ -12,12 +12,19 @@ import java.io.File;
 public class SanitizedFile extends File {
 
     /**
+     * Removes anything that is not an alpha numeric character, or one of "-", ".", or "_".
+     */
+    public static String sanitizeFileName(String name) {
+        return name.replaceAll("[^A-Za-z0-9-._]", "");
+    }
+
+    /**
      * The "name" argument is assumed to be a file name, _not including any path separators_.
      * If it is a relative path to be appended to "parent", such as "/blah/sneh.txt", then
      * the forward slashes will be removed and it will be assumed you meant "blahsneh.txt".
      */
     public SanitizedFile(File parent, String name) {
-        super(parent, name.replaceAll("[^A-Za-z0-9-._]", ""));
+        super(parent, sanitizeFileName(name));
     }
 
     /**
