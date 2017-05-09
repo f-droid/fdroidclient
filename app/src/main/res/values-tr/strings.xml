@@ -13,7 +13,7 @@
     <string name="cache_downloaded">Önbellekteki uygulamaları sakla</string>
     <string name="updates">Güncellemeler</string>
     <string name="other">Diğer</string>
-    <string name="update_interval">Kendi kendine güncelleme aralığı</string>
+    <string name="update_interval">Kendiliğinden güncelleme aralığı</string>
     <string name="update_interval_zero">Kendiliğinden uygulama listesi güncellemesi olmasın</string>
     <string name="automatic_scan_wifi">Yalnızca Wi-Fi ile</string>
     <string name="automatic_scan_wifi_on">Yalnızca Wi-Fi gibi ölçümsüz ağlarda kendiliğinden güncelle</string>
@@ -96,7 +96,7 @@
     <string name="ignoreTouch_on">Dokunmatik ekran gerektiren uygulamaları daima dahil et</string>
     <string name="local_repo">Yerel Depo</string>
     <string name="local_repo_running">F-Droid takasa hazır</string>
-    <string name="touch_to_configure_local_repo">Detayları görmek ve başkalarının uygulamalarınızı takas edebilmesi için dokunun.</string>
+    <string name="touch_to_configure_local_repo">Ayrıntıları görmek ve başkalarının uygulamalarınızı takas etmesine izin vermek için dokunun.</string>
     <string name="deleting_repo">Mevcut depo siliniyor…</string>
     <string name="adding_apks_format">%s depoya ekleniyor…</string>
     <string name="writing_index_jar">İmzalanmış indeks dosyası yazılıyor (index.jar)…</string>
@@ -109,7 +109,7 @@
     <string name="enable_proxy_title">HTTP Vekilini Etkinleştir</string>
     <string name="enable_proxy_summary">HTTP Vekilini tüm ağ istekleri için yapılandır</string>
     <string name="proxy_host">Vekil Sunucu</string>
-    <string name="proxy_host_summary">Vekil sunucu adresini yapılandır (örn. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Vekil sunucu adını yapılandır (örn. 127.0.0.1)</string>
     <string name="proxy_port">Vekil Bağlantı Noktası</string>
     <string name="proxy_port_summary">Vekil bağlantı noktası numarasını yapılandır (örn. 8118)</string>
     <string name="status_download">İndiriliyor
@@ -131,7 +131,7 @@
     <string name="repo_fingerprint">İmza anahtarının parmak izi (SHA-256)</string>
     <string name="repo_description">Açıklama</string>
     <string name="repo_last_update">Son güncelleme</string>
-    <string name="repo_name">İsim</string>
+    <string name="repo_name">Ad</string>
     <string name="unsigned_description">Bu, uygulama listesinin
         teyit edilemediği anlamına gelir. İmzasız
         indekslerden indirilen uygulamalara karşı
@@ -289,7 +289,7 @@
     <string name="swap_visible_wifi">Wi-Fi üzerinden görünür</string>
     <string name="swap_setting_up_wifi">Wi-Fi ayarlanıyor…</string>
     <string name="swap_not_visible_wifi">Wi-Fi üzerinden görünmez</string>
-    <string name="swap_wifi_device_name">Aygıt İsmi</string>
+    <string name="swap_wifi_device_name">Aygıt Adı</string>
     <string name="swap_cant_find_peers">Aradığınız kişiyi bulamadınız mı?</string>
     <string name="swap_send_fdroid">F-Droid\'i gönder</string>
     <string name="swap_no_peers_nearby">Yakında takas yapılabilecek kişi bulunamadı.</string>
