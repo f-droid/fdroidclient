@@ -205,7 +205,9 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="status_download_unknown_size">Laddar ner\n%2$s från\n%1$s</string>
+    <string name="status_download_unknown_size">Hämtar
+\n%2$s från
+\n%1$s</string>
     <string name="update_notification_title">Uppdaterar fil-förråden</string>
     <string name="permissions">Tillstånd</string>
     <string name="repo_details">Förråd</string>
@@ -227,7 +229,7 @@
     <string name="antinonfreeassetslist">Denna app innehåller icke-fria tillgångar</string>
 
     <string name="useTor">Använd Tor</string>
-    <string name="useTorSummary">Tvinga nedladdningstrafik genom Tor för ökad integritet</string>
+    <string name="useTorSummary">Tvinga hämtningstrafik genom Tor för ökad integritet</string>
     <string name="status_processing_xml_percent">Bearbetar %2$s / %3$s (%4$d%%) från %1$s</string>
     <string name="status_inserting_apps">Sparar applikationsdetaljer</string>
     <string name="repo_added">Sparade F-Droid-förråd %1$s.</string>
@@ -349,7 +351,7 @@
     <string name="perm_costs_money">Detta kan kosta pengar</string>
     <string name="uninstall_update_confirm">Vill du utbyta den här appen med fabriksversionen?</string>
     <string name="uninstall_confirm">Vill du avinstallera den här appen?</string>
-    <string name="tap_to_install">Hämtning klar, tryck för att installera</string>
+    <string name="tap_to_install">Hämtning färdig, tryck för att installera</string>
     <string name="download_error">Hämtning misslyckades</string>
 
     <string name="perms_new_perm_prefix">Ny:</string>
@@ -385,9 +387,9 @@
         inte i Android 5.1 eller senare.
     </string>
 
-    <string name="download_pending">Väntar på att påbörja nerladdningen…</string>
+    <string name="download_pending">Väntar på att påbörja hämtning…</string>
 
-    <string name="downloading_apk">Laddar ner %1$s</string>
+    <string name="downloading_apk">Hämtar %1$s</string>
 
     <string name="keep_hour">1 timme</string>
     <string name="keep_day">1 dag</string>
@@ -406,7 +408,7 @@
     <string name="keep_install_history">Behåll installeringshistoria</string>
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i F-Droid</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
-    <string name="update_auto_install_summary">Hämta och installera uppdaterings program i bakgrunden</string>
+    <string name="update_auto_install_summary">Hämta och installera uppdateringsappar i bakgrunden</string>
     <string name="hide_anti_feature_apps">Gråa ut anti-funktionsappar</string>
     <string name="hide_anti_feature_apps_on">Gråa ut appar som kräver anti-funktioner</string>
     <string name="warning_no_internet">Det går inte att uppdatera, är du ansluten till internet?</string>
