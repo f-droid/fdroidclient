@@ -124,9 +124,9 @@ public final class Utils {
     }
 
     /**
-     * @return the directory where cached icons are stored
+     * @return the directory where cached icons/feature graphics/screenshots are stored
      */
-    public static File getIconsCacheDir(Context context) {
+    public static File getImageCacheDir(Context context) {
         File cacheDir = StorageUtils.getCacheDirectory(context.getApplicationContext(), true);
         return new File(cacheDir, "icons");
     }
