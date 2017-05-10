@@ -13,6 +13,8 @@ before_script:
 test:
   script:
     - ./tools/check-format-strings.py
+    - ./tools/remove-unused-and-blank-translations.py
+    - git diff | grep diff && false # there should be no changes
     - ./gradlew assemble -PdisablePreDex
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
