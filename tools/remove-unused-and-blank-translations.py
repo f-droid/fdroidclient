@@ -10,34 +10,35 @@ import re
 from xml.etree import ElementTree
 
 resdir = os.path.join(os.path.dirname(__file__), '..', 'app', 'src', 'main', 'res')
+sourcepath = os.path.join(resdir, 'values', 'strings.xml')
 
 strings = set()
-
-for e in ElementTree.parse(os.path.join(resdir, 'values', 'strings.xml')).getroot().findall('.//string'):
+for e in ElementTree.parse(sourcepath).getroot().findall('.//string'):
     name = e.attrib['name']
     strings.add(name)
 
-for d in glob.glob(os.path.join(resdir, 'values-*')):
+for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
 
     str_path = os.path.join(d, 'strings.xml')
-    if os.path.exists(str_path):
-        header = ''
-        with open(str_path, 'r') as f:
-            header = f.readline()
-        tree = ElementTree.parse(str_path)
-        root = tree.getroot()
+    if not os.path.exists(str_path):
+        continue
 
-        elems = root.findall('.//string')
-        for e in elems:
-            name = e.attrib['name']
-            if name not in strings:
-                root.remove(e)
-            if not e.text:
-                root.remove(e)
+    header = ''
+    with open(str_path, 'r') as f:
+        header = f.readline()
+    tree = ElementTree.parse(str_path)
+    root = tree.getroot()
 
-        result = re.sub(r' />', r'/>', ElementTree.tostring(root, encoding='utf-8').decode('utf-8'))
+    for e in root.findall('.//string'):
+        name = e.attrib['name']
+        if name not in strings:
+            root.remove(e)
+        if not e.text:
+            root.remove(e)
 
-        with open(str_path, 'w+') as f:
-            f.write(header)
-            f.write(result)
-            f.write('\n')
+    result = re.sub(r' />', r'/>', ElementTree.tostring(root, encoding='utf-8').decode('utf-8'))
+
+    with open(str_path, 'w+') as f:
+        f.write(header)
+        f.write(result)
+        f.write('\n')
