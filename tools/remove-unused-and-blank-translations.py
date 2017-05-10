@@ -1,19 +1,23 @@
 #!/usr/bin/env python3
 
-# Remove extra translations
+# This script removes strings from the translated files that are not useful:
+#  * translations for strings that are no longer used
+#  * empty translated strings, English is better than no text at all
 
 import glob
 import os
 import re
 from xml.etree import ElementTree
 
+resdir = os.path.join(os.path.dirname(__file__), '..', 'app', 'src', 'main', 'res')
+
 strings = set()
 
-for e in ElementTree.parse(os.path.join('src', 'main', 'res', 'values', 'strings.xml')).getroot().findall('.//string'):
+for e in ElementTree.parse(os.path.join(resdir, 'values', 'strings.xml')).getroot().findall('.//string'):
     name = e.attrib['name']
     strings.add(name)
 
-for d in glob.glob(os.path.join('src', 'main', 'res', 'values-*')):
+for d in glob.glob(os.path.join(resdir, 'values-*')):
 
     str_path = os.path.join(d, 'strings.xml')
     if os.path.exists(str_path):

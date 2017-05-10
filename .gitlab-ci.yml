@@ -12,7 +12,7 @@ before_script:
 
 test:
   script:
-    - ./app/tools/check-string-format.py
+    - ./tools/check-format-strings.py
     - ./gradlew assemble -PdisablePreDex
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
