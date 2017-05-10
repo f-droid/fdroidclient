@@ -54,8 +54,7 @@
     <string name="app_details">Program details</string>
     <string name="no_such_app">Daar bestaan nie so program nie.</string>
 
-    <string name="app_details_donate_prompt_unknown_author">Koop vir die ontwikkelaars van %1$s \'n koppie koffie!
-    </string>
+    <string name="app_details_donate_prompt_unknown_author">Koop vir die ontwikkelaars van %1$s \'n koppie koffie!</string>
     <string name="app_details_donate_prompt">%1$s is geskep deur %2$s. Koop vir hulle \'n koffie!</string>
 
     <string name="about_title">Ietsie oor F-Droid</string>
@@ -97,11 +96,8 @@
     <string name="enable">Aktiveer</string>
     <string name="add_key">Nuwe sleutel</string>
     <string name="repo_add_url">Argief adres</string>
-    <string name="repo_exists_add_fingerprint">Hierdie argief is reeds opgestel, die aksie sal nuwe sleutel inligting
-        laai.
-    </string>
-    <string name="repo_exists_enable">Hierdie argief is reeds opgestel, bevestig jy wil dit weer wil her-aktiveer.
-    </string>
+    <string name="repo_exists_add_fingerprint">Hierdie argief is reeds opgestel, die aksie sal nuwe sleutel inligting laai.</string>
+    <string name="repo_exists_enable">Hierdie argief is reeds opgestel, bevestig jy wil dit weer wil her-aktiveer.</string>
     <string name="repo_exists_and_enabled">Die inkomende argief is reeds opgestel en geaktiveer.</string>
     <string name="bad_fingerprint">Onaanvaarbare vingerafdruk</string>
     <string name="invalid_url">Dit is nie \'n geldige URL nie.</string>
@@ -226,8 +222,7 @@
     </string>
     <string name="hide_anti_feature_apps">Grys anti-funksie programme uit</string>
     <string name="hide_anti_feature_apps_on">Grys programme wat anti-funksies benodig uit</string>
-    <string name="touch_to_configure_local_repo">Tas om details te wys en laat ander toe om jou programme te deel.
-    </string>
+    <string name="touch_to_configure_local_repo">Tas om details te wys en laat ander toe om jou programme te deel.</string>
     <string name="copying_icons">Kopieer program simbooltjie na die argief…</string>
     <string name="icon">Simbooltjie</string>
     <string name="status_download">Aflaai\n%2$s / %3$s (%4$d%%) vanaf \n%1$s</string>
