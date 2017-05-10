@@ -245,13 +245,7 @@ android {
         xmlReport false
         textReport false
 
-        // Our translations are crowd-sourced
-        disable 'MissingTranslation'
-
-        // to make CI fail on errors until this is fixed https://github.com/rtyley/spongycastle/issues/7
-        warning 'InvalidPackage', 'ImpliedQuantity'
-
-        error 'AppCompatMethod', 'NestedScrolling', 'StringFormatCount', 'UnsafeProtectedBroadcastReceiver'
+        lintConfig file("lint.xml")
     }
 
     packagingOptions {
