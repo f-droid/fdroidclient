@@ -88,8 +88,7 @@
 
     <string name="repo_add_url">Depot adresse</string>
     <string name="repo_add_fingerprint">Fingeraftryk (valgfri)</string>
-    <string name="repo_exists_add_fingerprint">Dette depot er allerede sat op, dette vil tilføje ny nøgleinformation.
-    </string>
+    <string name="repo_exists_add_fingerprint">Dette depot er allerede sat op, dette vil tilføje ny nøgleinformation.</string>
     <string name="repo_exists_enable">Dette depot er allerede sat op, bekræft at du vil genaktivere det.</string>
     <string name="repo_exists_and_enabled">Det indgående depot er allerede sat op og aktiveret.</string>
     <string name="repo_delete_to_overwrite">Du skal først slette dette depot, før du kan tilføje et med en forskellig
@@ -150,8 +149,7 @@
     <string name="local_repo">Lokalt Depot</string>
     <string name="rooted_on">Ekskluder ikke programmer som kræver root privilegier</string>
     <string name="local_repo_running">F-Droid er klar til at udveksle</string>
-    <string name="touch_to_configure_local_repo">Rør for at se detaljer og tillade andre at udveksle dine programmer.
-    </string>
+    <string name="touch_to_configure_local_repo">Rør for at se detaljer og tillade andre at udveksle dine programmer.</string>
     <string name="deleting_repo">Sletter aktuelle depot…</string>
     <string name="adding_apks_format">Tilføjer %s til depot…</string>
     <string name="writing_index_jar">Skriver signeret indeksfil (inden.jar)…</string>

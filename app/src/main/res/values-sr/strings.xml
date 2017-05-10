@@ -278,9 +278,7 @@
     <string name="system_install_warning_lollipop">Ово траје десетак секунди и уређај ће након тога<b>поново да се
         покрене</b>.
     </string>
-    <string name="empty_can_update_app_list">Све апликације су надограђене.\n\nЧеститке! Све ваше апликације су
-        надограђене (или ризнице нису освежене).
-    </string>
+    <string name="empty_can_update_app_list">Честитке! Све ваше апликације су надограђене (или ризнице нису освежене).</string>
 
     <string name="swap_people_nearby">Људи у близини</string>
     <string name="swap_scanning_for_peers">Тражим људе у близини…</string>
@@ -518,9 +516,7 @@
 
 <string name="app_list__age__released_today">Издато данас</string>
     <string name="app_list__age__released_yesterday">Издато јуче</string>
-    <string name="latest__empty_state__never_updated">"Када се списак апликација ажурира, најновије апликације ће бити
- приказане овде
- "</string>
+    <string name="latest__empty_state__never_updated">Када се списак апликација ажурира, најновије апликације ће бити приказане овде</string>
     <string name="latest__empty_state__no_enabled_repos">"Када укључите ризнице и дозволите да се ажурира, најновије
 апликације ће бити приказане овде
  "</string>
@@ -528,4 +524,7 @@
     <string name="details_last_updated_today">Ажурирана данас</string>
     <string name="menu_video">Видео</string>
     <string name="app__tts__cancel_download">Откажи преузимање</string>
+    <string name="menu_license">Лиценца: %s</string>
+    <string name="app__tts__downloading_progress">Преузимам, %1$d%% завршено</string>
+    <string name="install_error_not_yet_supported">Тип фајла још не може бити инсталиран: %s</string>
     </resources>

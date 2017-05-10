@@ -17,15 +17,13 @@
     <string name="updates">Uppdateringar</string>
     <string name="other">Andra</string>
     <string name="update_interval">Automatiskt uppdateringsintervall</string>
-    <string name="update_interval_zero">Inga automatiska applistsuppdateringar</string>
+    <string name="update_interval_zero">Inga automatiska applistuppdateringar</string>
     <string name="automatic_scan_wifi">Endast via Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Endast uppdatera automatiskt på obegränsad nätverk som Wi-Fi</string>
     <string name="notify">Avisering vid uppdatering</string>
     <string name="notify_on">Visa avisering när uppdateringar finns tillgängliga</string>
     <string name="system_installer">Privilgierad utökning</string>
-    <string name="system_installer_on">Använd F-Droids priviligerade utökning för att installera, uppdatera och ta bort
-        paket
-    </string>
+    <string name="system_installer_on">Använd F-Droids priviligerade utökning för att installera, uppdatera och ta bort paket</string>
     <string name="local_repo_name">Namn på ditt lokala förråd</string>
     <string name="local_repo_name_summary">Annonserade titeln på ditt lokala förråd: %s</string>
     <string name="local_repo_https">Använd privat anslutning</string>
@@ -92,7 +90,7 @@
     <string name="expert">Expertläge</string>
     <string name="expert_on">Visa extra info och aktivera extra inställningar</string>
     <string name="search_hint">Sök efter applikationer</string>
-    <string name="appcompatibility">Applikations kompabilitet</string>
+    <string name="appcompatibility">Applikations kompatibilitet</string>
     <string name="show_incompat_versions">Inkompatibla versioner</string>
     <string name="show_incompat_versions_on">Visa app-versioner som är inkompatibla med enheten</string>
     <string name="rooted">Ignorera root</string>
@@ -118,9 +116,8 @@
     <string name="proxy_port">Proxyport</string>
     <string name="proxy_port_summary">Konfigurera din proxys portnummer (t.ex. 8118)</string>
     <string name="status_download">Hämtar
-        %2$s / %3$s (%4$d%%) från
-        %1$s
-    </string>
+\n%2$s / %3$s (%4$d%%) från
+\n%1$s</string>
     <string name="status_connecting_to_repo">Ansluter till\n%1$s</string>
     <string name="repos_unchanged">Alla fil-förråd är uppdaterade</string>
     <string name="all_other_repos_fine">Övriga förråd orsakade inga fel.</string>
@@ -144,18 +141,14 @@
     </string>
     <string name="unknown">Okänd</string>
     <string name="repo_confirm_delete_title">Ta bort förråd?</string>
-    <string name="repo_confirm_delete_body">Att ta bort ett förråd betyder
-        att dess appar inte längre kommer att vara tillgängliga från F-Droid.
-
-        Observera: Alla
-        tidigare installerade appar kommer kvarstå på din enhet.
-    </string>
-    <string name="repo_disabled_notification">Inaktiverade %1$s.
-
-        Du kommer
-        behöva återaktivera det här förrådet för att kunna installera appar från det.
-    </string>
-    <string name="repo_searching_address">Söker F-Droid-förråd på %1$s</string>
+    <string name="repo_confirm_delete_body">"Att ta bort ett förråd betyder att dess appar inte längre kommer att vara tillgängliga från F-Droid. 
+\n
+\nObservera: Alla tidigare installerade appar kommer kvarstå på din enhet. "</string>
+    <string name="repo_disabled_notification">"Inaktiverade %1$s.
+\n
+\nDu kommer behöva återaktivera det här förrådet för att kunna installera appar från det. "</string>
+    <string name="repo_searching_address">Söker F-Droid-förråd på
+\n%1$s</string>
     <string name="minsdk_or_later">%s eller senare</string>
     <string name="up_to_maxsdk">Upp till %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s upp till %2$s</string>
@@ -196,9 +189,7 @@
     <string name="app_incompatible">Ej kompatibel</string>
     <string name="links">Länkar</string>
     <string name="uninstall_system">Uppdatera/avinstallera priviligerad utökning</string>
-    <string name="uninstall_system_summary">Öppna detaljrutan av priviligerad utökning för att uppdatera/avinstallera
-        det
-    </string>
+    <string name="uninstall_system_summary">Öppna detaljrutan av priviligerad utökning för att uppdatera/avinstallera det</string>
     <string name="about_source">Källkod</string>
     <string name="more">Mer</string>
     <string name="less">Mindre</string>
@@ -206,7 +197,7 @@
     <string name="back">Bakåt</string>
     <string name="notification_summary_more">+%1$d mer…</string>
     <string name="bad_fingerprint">Felaktigt fingeravtryck</string>
-    <string name="invalid_url">Det här är inte en giltig hemsideadress.</string>
+    <string name="invalid_url">Det här är inte en giltig webbadress.</string>
     <string name="menu_settings">Inställningar</string>
     <string name="menu_changelog">Ändringslogg</string>
     <string name="menu_bitcoin">Bitcoin</string>
@@ -257,9 +248,7 @@
     <string name="empty_available_app_list">Inga appar i denna kategori.\n\nProva att välja en annan kategori eller att
         uppdatera dina förråd för att få en färsk lista med appar.
     </string>
-    <string name="empty_can_update_app_list">Alla appar är uppdaterade.\n\nGrattis! Alla dina appar är uppdaterade
-        (eller så behöver dina förråd uppdateras).
-    </string>
+    <string name="empty_can_update_app_list">Grattis! Alla dina appar är uppdaterade (eller så behöver dina förråd uppdateras).</string>
     <string name="empty_search_installed_app_list">Inga installerade applikationer matchar.</string>
     <string name="empty_search_available_app_list">Inga matchande program är tillgängliga.</string>
     <string name="empty_search_can_update_app_list">Inga matchande app-uppdateringar.</string>
@@ -373,7 +362,7 @@
     <string name="interval_12h">Var 12:e timme</string>
     <string name="interval_1d">Dagligen</string>
     <string name="interval_1w">Veckovis</string>
-    <string name="interval_2w">Var 2:a vecka</string>
+    <string name="interval_2w">Varannan vecka</string>
 
     <string name="theme_light">Ljus</string>
     <string name="theme_dark">Mörk</string>
@@ -415,13 +404,12 @@
     <string name="uninstalling">Avinstallera…</string>
 
     <string name="keep_install_history">Behåll installeringshistoria</string>
-    <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i F-Droid
-    </string>
+    <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i F-Droid</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
     <string name="update_auto_install_summary">Hämta och installera uppdaterings program i bakgrunden</string>
     <string name="hide_anti_feature_apps">Gråa ut anti-funktionsappar</string>
     <string name="hide_anti_feature_apps_on">Gråa ut appar som kräver anti-funktioner</string>
-    <string name="warning_no_internet">Det går inte att uppdatera, är du ansluten till Internet?</string>
+    <string name="warning_no_internet">Det går inte att uppdatera, är du ansluten till internet?</string>
     <string name="versions">Versioner</string>
     <string name="app_details_donate_prompt_unknown_author">Köp utvecklarna av %1$s en kopp kaffe!</string>
     <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp dem en kaffe!</string>
@@ -434,8 +422,7 @@
 
     <string name="installed_apps__activity_title">Installerade appar</string>
     <string name="installed_app__updates_ignored">Uppdateringar ignorerade</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Uppdateringar ignorerade för version %1$s
-    </string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Uppdateringar ignorerade för version %1$s</string>
     <string name="clear_search">Rensa sök</string>
 
     <string name="main_menu__latest_apps">Senaste</string>
@@ -529,4 +516,8 @@
     <string name="app_list__age__released_yesterday">Utgiven igår</string>
     <string name="menu_video">Video</string>
     <string name="details_last_updated_today">Uppdaterad idag</string>
+    <string name="app__tts__cancel_download">Avbryt hämtning</string>
+    <string name="menu_license">Licens: %s</string>
+    <string name="install_error_not_yet_supported">Filtypen kan inte ännu installeras: %s</string>
+    <string name="app__tts__downloading_progress">Hämtar, %1$d%% färdigt</string>
     </resources>

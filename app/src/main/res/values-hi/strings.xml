@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="by_author">द्वारा</string>
+    <string name="by_author">के द्वारा</string>
     <string name="delete">नष्ट करे</string>
     <string name="enable_nfc_send">NFC द्वारा भेजे …</string>
     <string name="version">संस्करण</string>
@@ -12,7 +12,7 @@
     <string name="update_interval">स्वचालित अद्यतन अंतराल</string>
     <string name="update_interval_zero">कोई स्वचालित एप्लिकेशन अद्यतन नहीं</string>
     <string name="automatic_scan_wifi">केवल Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">एप्लिकेशन सूचि स्वतः नवीनतम बनाये केवल Wi-Fi पे</string>
+    <string name="automatic_scan_wifi_on">एप्लिकेशन सूचि केवल Wi-Fi पे अपडेट करें</string>
     <string name="notify">नवीनतम सूचनाएं</string>
     <string name="notify_on">सूचित कर्रे जब नवीनतम उपलब्ध हो</string>
     <string name="local_repo_name">स्थानीय कोष का नाम</string>
@@ -69,15 +69,11 @@
         सुलझाने मैं मदद करना चाहते हैं?
     </string>
     <string name="crash_dialog_comment_prompt">आप अन्य जानकारी और टिप्पणियाँ यहाँ लिख सकते हैं:</string>
-    <string name="app_name">फ-द्रोइड</string>
+    <string name="app_name">एफ-ड्रॉईड</string>
 
-    <string name="installIncompatible">ऐसा ज्ञात होता है की पैकेज आपके यंत्र के लिए अनुकुल नहीं है| क्या आप इसे किसी न
-        किसी प्रकार से इनस्टॉल करना चाहते हैं?
-    </string>
-    <string name="installDowngrade">"आप एप्लीकेशन की अवनति करना चाहते हैं| ऐसा करने से येह काम करना बंद कर सकता है और आप
-        अपना डाटा खो सकते हैं| क्या आप येह करना चाहते हैं?"
-    </string>
-    <string name="cache_downloaded">कैश पच्कगेस</string>
+    <string name="installIncompatible">ऐसा ज्ञात होता है की पैकेज आपके डिवाइस के लिए अनुकुल नहीं है| क्या आप इसे फिर भी इन्स्टॉल करना चाहते हैं?</string>
+    <string name="installDowngrade">आप एप्लीकेशन की अवनति करना चाहते हैं| ऐसा करने से येह काम करना बंद कर सकता है और आप अपना डाटा खो सकते हैं| क्या आप येह करना चाहते हैं?</string>
+    <string name="cache_downloaded">कैश पैकेजेस स्टोर करें</string>
     <string name="interval_1w">साप्ताहिक</string>
     <string name="interval_2w">हर २ हफ्ते मैं</string>
 
@@ -165,4 +161,7 @@
     <string name="repo_exists_and_enabled">आने वाली रेपो पहले से ही सैट उप और सक्षम है|</string>
     <string name="pref_language_default">सिस्टम पूर्वनिर्धारित विकल्प</string>
 
-</resources>
+<string name="SignatureMismatch">नया व्हर्जन भिन्न की से साईन किया हुवा है।नया व्हर्जन इन्स्टॉल करनेकेलिए पुराना अनइंस्टाल करें।कृपया फिर से कोशिश करें। ( याद रहे कि अनइंस्टाल करनेके बाद ऐप डेटा डिलेट हो जायेगा।)</string>
+    <string name="keep_install_history">इनस्टॉल हिस्ट्री रखें</string>
+    <string name="keep_install_history_summary">सभी इन्स्टॉल एवं अनइंस्टॉल लॉग को एफ-ड्रॉइड में रखें</string>
+    </resources>

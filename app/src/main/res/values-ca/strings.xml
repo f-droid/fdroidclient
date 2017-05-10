@@ -539,4 +539,13 @@
 
 <string name="app_list__age__released_today">Publicat avui</string>
     <string name="menu_video">Vídeo</string>
+    <string name="app__tts__cancel_download">Cancel·leu la descàrrega</string>
+    <string name="menu_license">Llicència: %s</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">Veure\'n %d</item>
+	<item quantity="other">Veure\'ls tots %d</item>
+</plurals>
+
+    <string name="install_error_not_yet_supported">El tipus de fitxer no es pot instal·lar: %s</string>
+    <string name="app__tts__downloading_progress">Descarregant, %1$d%% completat</string>
     </resources>

@@ -246,9 +246,7 @@
 
         Bitte eine andere Kategorie wählen oder die Paketquellen aktualisieren.
     </string>
-    <string name="empty_can_update_app_list">Alle Anwendungen sind auf dem neuesten Stand.\n\nGlückwunsch! Alle Ihre
-        Apps sind auf dem neuesten Stand (oder Ihre Paketquellen sind veraltet).
-    </string>
+    <string name="empty_can_update_app_list">Glückwunsch! Alle Ihre Apps sind auf dem neuesten Stand (oder Ihre Paketquellen sind veraltet).</string>
 
     <string name="swap_send_fdroid">F-Droid senden</string>
     <string name="swap_connecting">Verbindungsaufbau</string>
@@ -517,9 +515,9 @@
 	<item quantity="other">Vor %1$d Tagen aktualisiert</item>
 </plurals>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">%d ansehen</item>
-        <item quantity="other">Alle %d ansehen</item>
-    </plurals>
+	<item quantity="one">%d ansehen</item>
+	<item quantity="other">Alle %d ansehen</item>
+</plurals>
 
     <string name="app_list__name__successfully_installed">%1$s erfolgreich installiert</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet? Laden Sie Apps von Menschen in Ihrer
@@ -543,4 +541,6 @@
     <string name="menu_video">Film</string>
     <string name="app__tts__cancel_download">Herunterladen abbrechen</string>
     <string name="app__tts__downloading_progress">wird heruntergeladen, %1$d%% vervollständigt</string>
+    <string name="menu_license">Lizenz: %s</string>
+    <string name="install_error_not_yet_supported">Dateityp kann nicht installiert werden: %s</string>
     </resources>

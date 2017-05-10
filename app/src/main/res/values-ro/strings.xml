@@ -421,10 +421,10 @@
         <item quantity="other">Actualizate acum %1$s de zile</item>
     </plurals>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one"/>
-        <item quantity="few">Toate cele %d</item>
-        <item quantity="other">Toate cele %d</item>
-    </plurals>
+	<item quantity="one">Vezi %d</item>
+	<item quantity="few">Toate cele %d</item>
+	<item quantity="other">Toate cele %d</item>
+</plurals>
 
     <string name="antifeatures">Caracteristici negative</string>
     <string name="antifeatureswarning">Aceasta aplicatie are caracteristici ce ar putea sa nu iti placa.</string>
@@ -436,13 +436,9 @@
     <string name="preference_category__my_apps">Aplicatiile mele</string>
     <string name="categories__empty_state__no_categories">Nici o categorie de aratat</string>
 
-    <string name="latest__empty_state__no_enabled_repos">Odata ce ai activat si actualizat un depozit, cele mai noi
-        aplicatii ar trebui sa apara aici
-    </string>
+    <string name="latest__empty_state__no_enabled_repos">Odată ce ai activat și actualizat un depozit, cele mai noi aplicații ar trebui să apară aici</string>
 
-    <string name="latest__empty_state__never_updated">Odata ce s-a actualizat lista de aplicatii, cele mai noi ar trebui
-        sa apara aici
-    </string>
+    <string name="latest__empty_state__never_updated">Odată actualizată lista de aplicații, cele mai noi ar trebui să apară aici</string>
     <string name="latest__empty_state__no_recent_apps">Nu s-a gasit nici o aplicatie recenta</string>
     <string name="main_menu__swap_nearby">In apropiere</string>
 
@@ -482,4 +478,14 @@
     <string name="app_version_x_installed">Versiunea %1$s</string>
     <string name="app_version_x_available">Versiunea %1$s disponibila</string>
 <string name="app__tts__downloading_progress">Se descarcă, %1$d%% gata</string>
+    <string name="app__tts__cancel_download">Anulează descărcarea</string>
+    <string name="app_list__age__released_today">Publicat azi</string>
+    <string name="app_list__age__released_yesterday">Publicat ieri</string>
+    <string name="menu_video">Video</string>
+    <string name="menu_license">Licență: %s</string>
+    <string name="install_error_not_yet_supported">Acest tip de fișier nu se poate încă instala: %s</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Nu ai acces la internet? Descarcă aplicații de la persoanele de lângă tine!</string>
+    <string name="nearby_splash__find_people_button">Găsește persoane lângă mine</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambele persoane au nevoie de %1$s pentru a putea folosi această opțiune.</string>
+
     </resources>

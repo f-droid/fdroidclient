@@ -216,11 +216,7 @@
     <string name="empty_available_app_list">Geen apps in deze categorie.\n\nProbeer een andere categorie of werk je
         bronnen bij om de lijst van apps te verversen.
     </string>
-    <string name="empty_can_update_app_list">Alle apps zijn up-to-date.
-
-        Gefeliciteerd! Al je apps zijn up-to-date
-        (of je bronnen zijn verouderd).
-    </string>
+    <string name="empty_can_update_app_list">Gefeliciteerd! Al je apps zijn up-to-date (of je bronnen zijn verouderd).</string>
 
     <string name="install_error_unknown">Kon de app niet installeren door een onbekende fout</string>
     <string name="uninstall_error_unknown">Kon de app niet verwijderen door een onbekende fout</string>
@@ -482,9 +478,9 @@
     <string name="antifeatureswarning">Deze app heeft functionaliteit die je misschien niet leuk vindt.</string>
     <string name="antifeatures">Anti-functies</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Alle %d weergeven</item>
-        <item quantity="other">Alle %d weergeven</item>
-    </plurals>
+	<item quantity="one">%d weergeven</item>
+	<item quantity="other">Alle %d weergeven</item>
+</plurals>
 
     <string name="notification_title_single_update_available">Update beschikbaar</string>
     <string name="notification_title_single_ready_to_install">Klaar voor installatie</string>
@@ -542,4 +538,6 @@
     <string name="menu_video">Video</string>
     <string name="app__tts__cancel_download">Download annuleren</string>
     <string name="app__tts__downloading_progress">Downloaden, %1$d%% voltooid</string>
+    <string name="menu_license">Licentie: %s</string>
+    <string name="install_error_not_yet_supported">Bestandstype kan nog niet geïnstalleerd worden: %s</string>
     </resources>

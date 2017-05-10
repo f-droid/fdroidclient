@@ -210,10 +210,8 @@
     <string name="empty_available_app_list">この欄にｱﾌﾟﾘｹｰｼｮﾝはありません｡\n\n別の欄を選択するか､ﾘﾎﾟｼﾞﾄﾘを更新して新しいｱﾌﾟﾘｹｰｼｮﾝの一覧を取得してみてください｡
     </string>
     <string name="empty_can_update_app_list">"全てのｱﾌﾟﾘは最新です。
-
-おめでとう! 全てのｱﾌﾟﾘは最新の状態です
- (または、ﾘﾎﾟｼﾞﾄﾘが更新されていません)。
- "</string>
+\n
+\nおめでとう! 全てのｱﾌﾟﾘは最新の状態です (または、ﾘﾎﾟｼﾞﾄﾘが更新されていません)。 "</string>
 
     <string name="install_error_unknown">不明なｴﾗｰのためｲﾝｽﾄｰﾙに失敗しました</string>
     <string name="uninstall_error_unknown">不明なｴﾗｰのためｱﾝｲﾝｽﾄｰﾙに失敗しました</string>
@@ -499,4 +497,6 @@
     <string name="menu_video">ﾋﾞﾃﾞｵ</string>
     <string name="app__tts__cancel_download">ﾀﾞｳﾝﾛｰﾄﾞをｷｬﾝｾﾙ</string>
     <string name="app__tts__downloading_progress">ﾀﾞｳﾝﾛｰﾄﾞ中、%1$d%% 完了</string>
+    <string name="menu_license">ライセンス: %s</string>
+    <string name="install_error_not_yet_supported">ﾌｧｲﾙの種類はまだｲﾝｽﾄｰﾙできません: %s</string>
     </resources>

@@ -281,10 +281,7 @@
         Probeer \'n ander kategorie te kies of om jou argiewe op te dateer om sodoende kry \'n vars lys van programme te
         kry."
     </string>
-    <string name="empty_can_update_app_list">Alle programme is op datum.
-
-        Baie geluk! Al jou toepassings is op datum (of jou argiewe is verouderd).
-    </string>
+    <string name="empty_can_update_app_list">Baie geluk! Al jou programme is op datum (of jou argiewe is verouderd).</string>
     <string name="empty_search_installed_app_list">Geen ooreenstemende geïnstalleerde programme.</string>
     <string name="empty_search_available_app_list">Geen ooreenstemende programme beskikbaar.</string>
     <string name="empty_search_can_update_app_list">Geen ooreenstemende programme vir opdatering.</string>
@@ -549,4 +546,16 @@
 	<item quantity="other">Kyk na alle %1$d programme van die %2$s kategorie</item>
 </plurals>
 
-    </resources>
+    <string name="menu_license">Lisensie: %s</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">Kyk na %d</item>
+	<item quantity="other">Kyk na alle %d</item>
+</plurals>
+
+    <string name="install_error_not_yet_supported">Lêertipe kan nog nie geïnstalleer word nie: %s</string>
+    <string name="details_last_updated_today">Vandag opgedateer</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">%1$s dag gelede opgedateer</item>
+	<item quantity="other">%1$s dae gelede opgedateer</item>
+</plurals>
+</resources>

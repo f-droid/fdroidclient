@@ -231,9 +231,7 @@
     <string name="empty_available_app_list">No hay aplicaciones en esta categoría.\n\nPrueba a seleccionar una categoría
         diferente o actualizar los repositorios para obtener una lista reciente de aplicaciones.
     </string>
-    <string name="empty_can_update_app_list">Todas las aplicaciones están actualizadas.\n\n¡Felicidades! Todas tus
-        aplicaciones están actualizadas (o los repositorios están desactualizados).
-    </string>
+    <string name="empty_can_update_app_list">¡Felicitaciones! Todas tus aplicaciones están actualizadas (o los repositorios están desactualizados).</string>
 
     <string name="install_error_unknown">Fallo al instalar, debido a un error desconocido</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>
@@ -444,9 +442,9 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
 
 
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Ver (%d)</item>
-        <item quantity="other">Ver todos (%d)</item>
-    </plurals>
+	<item quantity="one">Ver %d</item>
+	<item quantity="other">Ver todos %d</item>
+</plurals>
 
     <string name="notification_title_single_update_available">Actualización disponible</string>
     <string name="notification_title_single_ready_to_install">Listo para instalar</string>
@@ -542,4 +540,6 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
 <string name="menu_video">Vídeo</string>
     <string name="app__tts__cancel_download">Cancelar descarga</string>
     <string name="app__tts__downloading_progress">Descargando, %1$d%% completado</string>
+    <string name="menu_license">Licencia: %s</string>
+    <string name="install_error_not_yet_supported">No se puede instalar el tipo de fichero: %s</string>
     </resources>

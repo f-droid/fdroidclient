@@ -79,9 +79,7 @@
 
     <string name="repo_add_url">Endereço do repositório</string>
     <string name="repo_add_fingerprint">Identificação digital (opcional)</string>
-    <string name="repo_exists_add_fingerprint">Este repositório já está configurado, isto adicionará nova informação
-        sobre a chave.
-    </string>
+    <string name="repo_exists_add_fingerprint">Este repositório já está configurado, isto adicionará nova informação sobre a chave.</string>
     <string name="repo_exists_enable">Este repositório já está configurado, confirme que o quer reativar.</string>
     <string name="repo_exists_and_enabled">O repositório de receção já está configurado e ativado.</string>
     <string name="repo_delete_to_overwrite">Tem de apagar este repositório antes de adicionar outro com uma chave
@@ -239,9 +237,7 @@
     <string name="empty_available_app_list">Não existem aplicações nesta categoria.\n\nSelecione uma categoria diferente
         ou atualize os repositórios para obter a lista de aplicações.
     </string>
-    <string name="empty_can_update_app_list">Todas as aplicações estão atualizadas.\n\nParabéns! Todas as aplicações
-        estão atualizadas (ou os repositórios não o estão).
-    </string>
+    <string name="empty_can_update_app_list">Parabéns! Todas as aplicações estão atualizadas (ou os repositórios não o estão atualizados).</string>
 
     <string name="requesting_root_access_body">A solicitar acesso \'root\'…</string>
     <string name="root_access_denied_title">Acesso \'root\' recusado</string>
@@ -499,9 +495,9 @@
     <string name="hide_anti_feature_apps_on">Sombrear aplicações cque necessitem de anti-funcionalidades</string>
     <string name="warning_no_internet">Atualização impossível. Está ligado à Internet?</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Ver %d</item>
-        <item quantity="other">Ver %d</item>
-    </plurals>
+	<item quantity="one">Ver %d</item>
+	<item quantity="other">Ver todos %d</item>
+</plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Descarregue as aplicações através de
         pessoas perto de si!
@@ -540,8 +536,15 @@
         <item quantity="other">Atualizada há %1$s dias</item>
     </plurals>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Ver a única aplicação da categoria %2$s</item>
-        <item quantity="other">Ver todas as %1$d aplicações da categoria %2$s</item>
-    </plurals>
+	<item quantity="one">Ver  aplicação %1$d  da categoria %2$s</item>
+	<item quantity="other">Ver todas as %1$d aplicações da categoria %2$s</item>
+</plurals>
 
-</resources>
+<string name="app_list__age__released_today">Lançado hoje</string>
+    <string name="app_list__age__released_yesterday">Lançado ontem</string>
+    <string name="menu_video">Vídeo</string>
+    <string name="menu_license">Licença:%s</string>
+    <string name="install_error_not_yet_supported">Este tipo de ficheiro ainda não pode ser instalado: %s</string>
+    <string name="app__tts__downloading_progress">A descarregar, %1$d%% completo</string>
+    <string name="app__tts__cancel_download">Cancelar descarga</string>
+    </resources>
