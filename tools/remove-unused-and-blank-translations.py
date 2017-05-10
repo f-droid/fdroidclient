@@ -42,6 +42,11 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
         if not e.text:
             root.remove(e)
 
+    for e in root.findall('.//plurals'):
+        for item in e.findall('item'):
+            if not item.text:
+                e.remove(item)
+
     result = re.sub(r' />', r'/>', ElementTree.tostring(root, encoding='utf-8').decode('utf-8'))
 
     with open(str_path, 'w+') as f:

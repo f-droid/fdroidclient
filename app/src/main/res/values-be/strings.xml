@@ -466,8 +466,7 @@
 	<item quantity="one">Убачыць %d праграму</item>
 	<item quantity="few">Убачыць усе %d праграмы</item>
 	<item quantity="many">Убачыць усе %d праграм</item>
-	<item quantity="other"/>
-</plurals>
+	</plurals>
 
     <string name="app_recommended_version_installed">Версія %1$s (рэкамендуецца)</string>
     <string name="app__newly_added">Новая</string>
@@ -486,8 +485,7 @@
 	<item quantity="one">Паказаць %1$s праграму ў катэгорыі %2$s</item>
 	<item quantity="few">Паказаць %1$s праграмы ў катэгорыі %2$s</item>
 	<item quantity="many">Паказаць %1$s праграм ў катэгорыі %2$s</item>
-	<item quantity="other"/>
-</plurals>
+	</plurals>
     <string name="app__install_downloaded_update">Абнавіць</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Абнавіць %1$s</string>
@@ -497,8 +495,7 @@
         <item quantity="one">Выпушчана %1$d дзень таму</item>
         <item quantity="few">Выпушчана %1$d дня таму</item>
         <item quantity="many">Выпушчана %1$d дзён таму</item>
-        <item quantity="other"/>
-    </plurals>
+        </plurals>
 
     <string name="updates__tts__download_app">Спампаваць</string>
     <string name="updates__tts__download_updates_for_all_apps">Спампаваць усе абнаўленні</string>
@@ -510,8 +507,7 @@
         <item quantity="one">Спампаваць абнаўленне для %1$d праграмы.</item>
         <item quantity="few">Спампаваць абнаўленні для %1$d праграм.</item>
         <item quantity="many">Спампаваць абнаўленні для %1$d праграм.</item>
-        <item quantity="other"/>
-    </plurals>
+        </plurals>
 
     <string name="details_new_in_version">Навае ў версіі %s</string>
 
@@ -520,8 +516,7 @@
 	<item quantity="one">Абноўлена %1$s дзень таму</item>
 	<item quantity="few">Абноўлена %1$s дні таму</item>
 	<item quantity="many">Абноўлена %1$s дзён таму</item>
-	<item quantity="other"/>
-</plurals>
+	</plurals>
     <string name="antifeatureswarning">Гэтая праграма мае функцыі, што могуць вам не спадабацца.</string>
     <string name="app_list__name__successfully_installed">%1$s паспяхова ўсталявана</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Няма інтэрнэту? Пампуйце праграмы ад людзей
