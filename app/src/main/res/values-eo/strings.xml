@@ -250,9 +250,7 @@
 
         Provu elekti alian kategorion aŭ ĝisdatigi viajn deponejojn por atingi freŝan liston de aplikaĵojn.
     </string>
-    <string name="empty_can_update_app_list">Ĉiuj aplikaĵoj estas ĝisdataj.\n\nGratulon! Ĉiuj viaj aplikaĵoj estas
-        ĝisdataj (aŭ viaj deponejoj estas neĝisdataj).
-    </string>
+    <string name="empty_can_update_app_list">Bonege! Ĉiuj viaj aplikaĵoj estas ĝisdataj (aŭ viaj deponejoj estas neĝisdataj).</string>
     <string name="empty_search_installed_app_list">Neniuj kongruaj instalitaj aplikaĵoj.</string>
     <string name="empty_search_available_app_list">Neniuj kongruaj aplikaĵoj disponeblaj.</string>
     <string name="empty_search_can_update_app_list">Neniuj kongruaj aplikaĵoj por ĝisdatigi.</string>
@@ -534,4 +532,5 @@
     <string name="app__tts__cancel_download">Nuligi elŝutadon</string>
     <string name="app__tts__downloading_progress">Elŝutado, %1$d%% kompleta</string>
     <string name="menu_license">Permesilo: %s</string>
+    <string name="install_error_not_yet_supported">Dosier-tipo ne povas ankoraŭ esti instalita: %s</string>
     </resources>

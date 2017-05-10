@@ -222,9 +222,7 @@
     <string name="empty_available_app_list">Nenhum aplicativo nesta categoria.\n\nTente selecionar uma categoria
         diferente ou atualizar seus repositórios para obter uma nova lista de aplicativos.
     </string>
-    <string name="empty_can_update_app_list">Todos aplicativos atualizados.\n\nParabéns! Todos os seus aplicativos estão
-        atualizados (ou os seus repositórios estão desatualizados).
-    </string>
+    <string name="empty_can_update_app_list">Parabéns! Todos os seus aplicativos estão atualizados (ou os seus repositórios estão desatualizados).</string>
 
     <string name="install_error_unknown">Falha ao instalar devido a um erro desconhecido</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
@@ -466,7 +464,7 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Ver todas as %d</item>
+	<item quantity="one">Ver %d</item>
 	<item quantity="other">Ver todas as %d</item>
 </plurals>
 
@@ -537,4 +535,5 @@
     <string name="app__tts__cancel_download">Cancelar download</string>
     <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>
     <string name="menu_license">Licença: %s</string>
+    <string name="install_error_not_yet_supported">Tipo de arquivo ainda não pode ser instalado: %s</string>
     </resources>

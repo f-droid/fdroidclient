@@ -473,4 +473,63 @@
     <string name="updates__hide_updateable_apps">Skryť aplikácie</string>
     <string name="updates__show_updateable_apps">Zobraziť aplikácie</string>
 
+<string name="app__tts__cancel_download">Zrušiť sťahovanie</string>
+    <string name="app_list__age__released_today">Publikované dnes</string>
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Stiahnuť aktualizáciu pre %1$d aplikáciu.</item>
+	<item quantity="few">Stiahnuť aktualizácie pre %1$d aplikácie.</item>
+	<item quantity="many">Stiahnuť aktualizácie pre %1$d aplikácií.</item>
+	<item quantity="other">Stiahnuť aktualizácie pre %1$d aplikácií.</item>
+	</plurals>
+
+    <string name="clear_search">Vymazať hľadanie</string>
+
+    <string name="menu_video">Video</string>
+    <string name="menu_license">Licencia: %s</string>
+    <string name="main_menu__latest_apps">Najnovšie</string>
+    <string name="main_menu__categories">Kategórie</string>
+    <string name="main_menu__swap_nearby">Podobné</string>
+
+    <string name="latest__empty_state__no_recent_apps">Neboli nájdené žiadne najnovšie aplikácie</string>
+    <string name="latest__empty_state__never_updated">Po aktualizácii zoznamu aplikácií, by sa tu mali zobrazovať najnovšie aplikácie</string>
+    <string name="latest__empty_state__no_enabled_repos">Keď povolíte úložisko a necháte ho aktualizovať, mali by sa tu zobrazovať najnovšie aplikácie</string>
+
+    <string name="categories__empty_state__no_categories">Žiadne kategórie na zobrazenie</string>
+
+    <string name="preference_category__my_apps">Moje aplikácie</string>
+    <string name="preference_manage_installed_apps">Správa nainštalovaných aplikácií</string>
+
+
+    <string name="details_new_in_version">Nové vo verzii %s</string>
+
+    <string name="antifeatureswarning">Táto aplikácia obsahuje funkcie, ktoré sa vám nemusia páčiť.</string>
+    <string name="antifeatures">Anti-funkcie</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">Zobraziť %d</item>
+	<item quantity="few">Zobraziť: %d</item>
+	<item quantity="many">Zobraziť. %d</item>
+	<item quantity="other">Zobraziť. %d</item>
+	</plurals>
+
+    <string name="install_error_not_yet_supported">Typ súboru zatiaľ nie je možné nainštalovať: %s</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Žiadny internet? Stiahnite si aplikácie od ľudí v blízkosti vás!</string>
+    <string name="nearby_splash__find_people_button">Nájdi ľudí blízko mňa</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Obidve strany potrebujú %1$s na použitie v okolí.</string>
+
+    <string name="app__tts__downloading_progress">Sťahovanie, %1$d%% dokončených</string>
+    <string name="tts_category_name">Kategória %1$s</string>
+
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Zobraziť %1$d aplikáciu v kategórií %2$s</item>
+	<item quantity="few">Zobraziť %1$d aplikácie v kategórií %2$s</item>
+	<item quantity="other">Zobraziť %1$d aplikácie v kategórií %2$s</item>
+</plurals>
+
+    <string name="details_last_updated_today">Dnes aktualizované</string>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Aktualizované pred %1$s dňom</item>
+	<item quantity="few">Aktualizované pred %1$s dňami</item>
+	<item quantity="many">Aktualizované pred %1$s dňami</item>
+	<item quantity="other">Aktualizované pred %1$s dňami</item>
+	</plurals>
 </resources>

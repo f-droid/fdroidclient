@@ -282,10 +282,7 @@
 
         Паспрабуйце абраць іншую катэгорыю або абнавіць вашы рэпазіторыі, каб атрымаць свежы спіс праграм.
     </string>
-    <string name="empty_can_update_app_list">Усе праграмы абноўлены.
-
-        Віншуем! Усе вашы праграмы маюць апошнія версіі (або вашы рэпазіторыі застарэлі).
-    </string>
+    <string name="empty_can_update_app_list">Віншуем! Усе вашы праграмы маюць апошнія версіі (або вашы рэпазіторыі застарэлі).</string>
     <string name="empty_search_installed_app_list">Няма супадзенняў сярод усталяваных праграм.</string>
     <string name="empty_search_available_app_list">Няма супадзенняў сярод даступных праграм.</string>
     <string name="empty_search_can_update_app_list">Няма супадзенняў сярод абнаўленняў.</string>
@@ -383,22 +380,10 @@
     <string name="tap_to_install_format">Націсніце для ўсталёўкі %s</string>
     <string name="tap_to_update_format">Націсніце для абнаўлення %s</string>
     <string name="install_confirm">патрабуе доступ да</string>
-    <string name="install_confirm_update">"Хочаце ўсталяваць абнаўленне праграмы?
- Наяўныя дадзеныя не будуць выдалены.
- Абноўленная праграма атрымае доступ да:
- "</string>
-    <string name="install_confirm_update_system">"Хочаце ўсталяваць абнаўленне ўбудаванай праграмы?
- Наяўныя дадзеныя не будуць выдалены.
- Абноўленная праграма атрымае доступ да:
- "</string>
-    <string name="install_confirm_update_no_perms">"Хочаце ўсталяваць абнаўленне праграмы?
- Наяўныя дадзеныя не будуць выдалены.
- Праграма не патрабуе адмысловых дазволаў.
- "</string>
-    <string name="install_confirm_update_system_no_perms">"Хочаце ўсталяваць абнаўленне ўбудаванай праграмы?
- Наяўныя дадзеныя не будуць выдалены.
- Праграма не патрабуе адмысловых дазволаў.
- "</string>
+    <string name="install_confirm_update">Хочаце ўсталяваць абнаўленне праграмы? Наяўныя дадзеныя не будуць выдалены.  Абноўленная праграма атрымае доступ да:</string>
+    <string name="install_confirm_update_system">Хочаце ўсталяваць абнаўленне ўбудаванай праграмы? Наяўныя дадзеныя не будуць выдалены. Абноўленная праграма атрымае доступ да:</string>
+    <string name="install_confirm_update_no_perms">Хочаце ўсталяваць абнаўленне праграмы? Наяўныя дадзеныя не будуць выдалены. Праграма не патрабуе адмысловых дазволаў.</string>
+    <string name="install_confirm_update_system_no_perms">Хочаце ўсталяваць абнаўленне ўбудаванай праграмы? Наяўныя дадзеныя не будуць выдалены. Праграма не патрабуе адмысловых дазволаў.</string>
     <string name="newPerms">Новыя</string>
     <string name="allPerms">Усе</string>
     <string name="perm_costs_money">Гэта можа каштаваць грошай</string>
@@ -478,11 +463,11 @@
 
 
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Убачыць %d праграму</item>
-        <item quantity="few">Убачыць усе %d</item>
-        <item quantity="many">Убачыць усе %d</item>
-        <item quantity="other"/>
-    </plurals>
+	<item quantity="one">Убачыць %d праграму</item>
+	<item quantity="few">Убачыць усе %d праграмы</item>
+	<item quantity="many">Убачыць усе %d праграм</item>
+	<item quantity="other"/>
+</plurals>
 
     <string name="app_recommended_version_installed">Версія %1$s (рэкамендуецца)</string>
     <string name="app__newly_added">Новая</string>
@@ -552,11 +537,11 @@
     <string name="app_list__age__released_yesterday">Выпушчана ўчора</string>
     <string name="menu_video">Відэа</string>
     <string name="latest__empty_state__never_updated">Як толькі спіс праграм абновіцца, тут з\'явяцца найноўшыя праграмы</string>
-    <string name="latest__empty_state__no_enabled_repos">"Як толькі вы ўключыце рэпазіторыі і абновіце іх, тут з\'явяцца
- найноўшыя праграмы
- "</string>
+    <string name="latest__empty_state__no_enabled_repos">Як толькі вы ўключыце рэпазіторыі і абновіце іх, тут з\'явяцца найноўшыя праграмы</string>
 
     <string name="details_last_updated_today">Абноўлена сёння</string>
     <string name="app__tts__cancel_download">Адмяніць спампоўку</string>
     <string name="app__tts__downloading_progress">Спампоўка, %1$d%% скончана</string>
+    <string name="menu_license">Ліцэнзія: %s</string>
+    <string name="install_error_not_yet_supported">Тып файла не можа быць усталяваны: %s</string>
     </resources>

@@ -105,8 +105,7 @@
 
     <string name="back">Atzera</string>
     <string name="notification_summary_more">+%1$d gehiago…</string>
-    <string name="bluetooth_activity_not_found">Ez da aurkitu Bluetooth bidez bidaltzeko metodorik, aukeratu bat!
-    </string>
+    <string name="bluetooth_activity_not_found">Ez da aurkitu Bluetooth bidez bidaltzeko metodorik, aukeratu bat!</string>
     <string name="choose_bt_send">Aukeratu Bluetooth bidez bidaltzeko metodoa</string>
     <string name="send_via_bluetooth">Bidali Bluetooth bidez</string>
 
@@ -124,9 +123,7 @@
     <string name="local_repo_name_summary">Zure tokiko biltegiak iragarritako izenburua: %s</string>
     <string name="local_repo_https_on">Erabili zifratu gabeko HTTPS:// konexioa tokiko biltegiarentzat</string>
 
-    <string name="repo_exists_add_fingerprint">Biltegi hau ezarrita dago jada, honek gako informazio berria gehituko
-        du.
-    </string>
+    <string name="repo_exists_add_fingerprint">Biltegi hau ezarrita dago jada, honek gako informazio berria gehituko du.</string>
     <string name="repo_exists_enable">Biltegi hau ezarrita dago jada, berretsi berrezarri nahi duzula.</string>
     <string name="repo_exists_and_enabled">Sarrera biltegia ezarrita eta gaituta dago jada.</string>
     <string name="repo_delete_to_overwrite">Biltegi hau ezabatu behar duzu gako ezberdin batekin sinatutako beste bat
@@ -184,9 +181,7 @@
 
     <string name="rooted_on">Ez lainotu root baimena behar duten aplikazioak</string>
     <string name="local_repo_running">F-Droid partekatzeko prest dago</string>
-    <string name="touch_to_configure_local_repo">Ukitu xehetasunak ikusteko eta besteek zure aplikazioak hartzea
-        ahalbidetzeko.
-    </string>
+    <string name="touch_to_configure_local_repo">Ukitu xehetasunak ikusteko eta besteek zure aplikazioak hartzea ahalbidetzeko.</string>
     <string name="proxy_host_summary">Konfiguratu zure proxyaren zerbitzaria (adib. 127.0.0.1)</string>
     <string name="proxy_port">Proxyaren ataka</string>
     <string name="proxy_port_summary">Konfiguratu zure proxyaren ataka zenbakia (adib. 8118)</string>
@@ -491,9 +486,9 @@
     <string name="tts_category_name">%1$s kategoria</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Ikusi %2$s kategoriako aplikazio bakarra</item>
-        <item quantity="other">Ikusi %2$s kategoriako %1$d aplikazioak</item>
-    </plurals>
+	<item quantity="one">Ikusi %2$s kategoriako aplikazio %1$d</item>
+	<item quantity="other">Ikusi %2$s kategoriako %1$d aplikazioak</item>
+</plurals>
     <string name="app__install_downloaded_update">Eguneratu</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Eguneratu %1$s</string>
@@ -520,17 +515,30 @@
     <string name="antifeatureswarning">Aplikazio honek gustuko izan ez ditzakezun ezaugarriak ditu.</string>
     <string name="antifeatures">Anti-ezaugarriak</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Ikusi guztiak %d</item>
-        <item quantity="other">Ikusi guztiak %d</item>
-    </plurals>
+	<item quantity="one">Ikusi %d</item>
+	<item quantity="other">Ikusi guztiak: %d</item>
+</plurals>
     <string name="details_last_updated_today">Gaur eguneratua</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Gaur eguneratua</item>
-        <item quantity="other">Orain dela %1$s egun eguneratua</item>
-    </plurals>
+	<item quantity="one">Orain dela egun %1$s eguneratua</item>
+	<item quantity="other">Orain dela %1$s egun eguneratua</item>
+</plurals>
 <string name="app_list__name__successfully_installed">%1$s ongi instalatu da</string>
     <string name="app_list__age__released_today">Gaur argitaratua</string>
     <string name="app_list__age__released_yesterday">Atzo argitaratua</string>
     <string name="menu_video">Bideoa</string>
     <string name="latest__empty_state__no_recent_apps">Ez da oraintsuko aplikaziorik aurkitu</string>
+    <string name="app__tts__cancel_download">Utzi deskarga</string>
+    <string name="menu_license">Lizentzia: %s</string>
+    <string name="latest__empty_state__never_updated">Zure aplikazioen zerrenda eguneratzen denean, azken aplikazioak hemen agertuko dira</string>
+    <string name="latest__empty_state__no_enabled_repos">Biltegi bat gaitu eta eguneratzen duzunean, azken aplikazioak hemen agertuko dira</string>
+
+    <string name="categories__empty_state__no_categories">Ez dago kategoriarik erakusteko</string>
+
+    <string name="install_error_not_yet_supported">Fitxategi mota ezin da oraindik instalatu: %s</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Internetik ez? Deskargatu aplikazioak inguruko jendearengandik!</string>
+    <string name="nearby_splash__find_people_button">Aurkitu inguruko jendea</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Biek %1$s erabili behar dute inguruan elkar aurkitzeko.</string>
+
+    <string name="app__tts__downloading_progress">Deskargatzen, %1$d%% osatua</string>
     </resources>

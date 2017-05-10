@@ -263,10 +263,7 @@
 \n
 \nCoba pilih kategori yang berbeda atau perbarui
 \nrepositori Anda untuk mendapatkan daftar apl yang baru. "</string>
-    <string name="empty_can_update_app_list">Semua apl sudah paling baru.
-
-        Selamat! Semua apl anda sudah paling baru (atau repositori anda yang kadaluarsa).
-    </string>
+    <string name="empty_can_update_app_list">Selamat! Semua apl Anda sudah yang paling baru (atau repositori Anda yang kedaluwarsa).</string>
     <string name="empty_search_installed_app_list">Tidak ada apl sesuai yang terpasang.</string>
     <string name="empty_search_available_app_list">Tidak ada aplikasi sesuai yang tersedia.</string>
     <string name="empty_search_can_update_app_list">Tidak ada aplikasi sesuai untuk pembaruan.</string>
@@ -543,4 +540,6 @@
     <string name="details_last_updated_today">Diperbarui hari ini</string>
     <string name="app__tts__cancel_download">Batalkan unduhan</string>
     <string name="app__tts__downloading_progress">Mengunduh, %1$d%% selesai</string>
+    <string name="menu_license">Lisensi: %s</string>
+    <string name="install_error_not_yet_supported">Tipe berkas belum dapat dipasang: %s</string>
     </resources>

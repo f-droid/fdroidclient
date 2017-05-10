@@ -220,9 +220,7 @@
     <string name="empty_available_app_list">Peruna aplicatzione in custa categoria.\n\nProa a ischertare una categoria
         diferente o a agiornare sos depòsitos tuos pro tènnere una lista noa de aplicatziones.
     </string>
-    <string name="empty_can_update_app_list">Totu sas aplicatziones sunt agiornadas.\n\nBene meda! Totu sas
-        aplicatziones tuas sunt agiornadas (o sos depòsitos tuos non lu sunt).
-    </string>
+    <string name="empty_can_update_app_list">Bene meda! Totu sas aplicatziones tuas sunt agiornadas (o sos depòsitos tuos non lu sunt).</string>
 
     <string name="install_error_unknown">Installatzione faddida pro cajone de una faddina disconnota</string>
     <string name="uninstall_error_unknown">Disinstallatzione faddida pro cajone de una faddina disconnota</string>
@@ -548,4 +546,5 @@
     <string name="app__tts__cancel_download">Firma s\'iscarrigamentu</string>
     <string name="app__tts__downloading_progress">Iscarrighende, %1$d%% cumpridu</string>
     <string name="menu_license">Litzèntzia: %s</string>
+    <string name="install_error_not_yet_supported">Sa casta de documentu non podet èssere installada: %s</string>
     </resources>

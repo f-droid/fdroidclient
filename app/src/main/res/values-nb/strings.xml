@@ -82,7 +82,7 @@
     <string name="details_installed">Versjon %s installert</string>
     <string name="details_notinstalled">Ikke installert</string>
     <string name="antiadslist">Dette programmet inneholder reklame</string>
-    <string name="antitracklist">Dette programmet sporer din aktivitet</string>
+    <string name="antitracklist">Dette programmet sporer og rapporterer din aktivitet</string>
     <string name="antinonfreeadlist">Dette programmet promoterer ufrie utvidelser</string>
     <string name="antinonfreenetlist">Dette programmet promoterer ufrie nettverkstjenester</string>
     <string name="antinonfreedeplist">Dette programmet avhenger av andre ufrie applikasjoner</string>
@@ -298,9 +298,7 @@
     <string name="empty_available_app_list">Ingen programmer i denne kategorien.\n\nVelg en annen kategori eller
         oppdater pakkebrønnene dine for en fersk programopplisting.
     </string>
-    <string name="empty_can_update_app_list">Alle programmer oppdatert.\n\nAlle dine programmer er av nyeste dato (eller
-        så er pakkebrønnene dine foreldet).
-    </string>
+    <string name="empty_can_update_app_list">Alle dine programmer er av nyeste dato (eller så er pakkebrønnene dine foreldet).</string>
 
     <string name="system_install_denied_signature">Signaturen til tillegget er feil! Send inn en feilrapport om dette
         omgående!
@@ -382,8 +380,9 @@
     <string name="useTor">Bruk Tor</string>
     <string name="useTorSummary">Tving nedlasting av trafikk gjennom Tor for økt sikkerhet</string>
     <string name="swap_stopping_wifi">Stopper Wi-Fi…</string>
-    <string name="update_auto_download">Last ned oppdateringer automatisk</string>
-    <string name="update_auto_download_summary">Last ned oppdateringsfilene i bakgrunnen</string>
+    <string name="update_auto_download">Hent oppdateringer automatisk</string>
+    <string name="update_auto_download_summary">"Oppdateringene blir lastet ned i bakgrunnen og du får en beskjed
+\nom å installere dem "</string>
     <string name="tap_to_install_format">Trykk for å installere %s</string>
     <string name="tap_to_update_format">Trykk for å oppdatere %s</string>
     <string name="download_pending">Venter på at nedlastingen skal starte…</string>
@@ -465,9 +464,9 @@
     <string name="tts_category_name">Kategori %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Vis det ene programmet i kategorien %1$s</item>
-        <item quantity="other">Vis alle programmer i kategorien %2$s</item>
-    </plurals>
+	<item quantity="one">Vis %1$d programmet i kategorien %1$s</item>
+	<item quantity="other">Vis alle %1$d programmer i kategorien %2$s</item>
+</plurals>
     <string name="app__install_downloaded_update">Oppdater</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Oppdater %1$s</string>
@@ -495,15 +494,15 @@
     <string name="antifeatureswarning">Dette programmet har funksjoner du kanskje ikke liker.</string>
     <string name="antifeatures">Anti-funksjoner</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Vis alle %d</item>
+	<item quantity="one">Vis ett %d</item>
 	<item quantity="other">Vis alle %d</item>
 </plurals>
     <string name="details_last_updated_today">Oppdatert i dag</string>
 
     <plurals name="details_last_update_days">
-        <item quantity="one">Oppdatert i dag</item>
-        <item quantity="other">Oppdatert for %1$s dager siden</item>
-    </plurals>
+	<item quantity="one">Oppdatert %1$s dag siden</item>
+	<item quantity="other">Oppdatert for %1$s dager siden</item>
+</plurals>
 <string name="app__tts__cancel_download">Avbryt nedlasting</string>
     <string name="app_list__name__successfully_installed">%1$s installert</string>
     <string name="app_list__age__released_today">Utgitt i dag</string>
@@ -524,4 +523,6 @@
     <string name="nearby_splash__both_parties_need_fdroid">Begge parter trenger %1$s for å bruke sirkulering.</string>
 
     <string name="app__tts__downloading_progress">Laster ned, %1$d%% fullført</string>
+    <string name="menu_license">Lisens: %s</string>
+    <string name="install_error_not_yet_supported">Filtypen kan ikke installeres enda: %s</string>
     </resources>
