@@ -14,6 +14,20 @@
     <issue id="StringFormatCount" severity="error"/>
     <issue id="UnsafeProtectedBroadcastReceiver" severity="error"/>
 
+    <!-- Change the severity of hardcoded strings to "error" -->
+    <issue id="HardcodedText" severity="error"/>
+
+    <!-- both the correct and deprecated locales need to be present for
+         them to be recognized on all devices -->
+    <issue id="LocaleFolder" severity="error">
+        <ignore path="src/main/res/values-he"/>
+        <ignore path="src/main/res/values-id"/>
+    </issue>
+
+    <issue id="SetWorldReadable" severity="error">
+        <ignore path="src/main/java/org/fdroid/fdroid/installer/ApkFileProvider.java"/>
+    </issue>
+
     <!-- these should be fixed, but it'll be a chunk of work -->
     <issue id="SetTextI18n" severity="error">
         <ignore path="src/main/java/org/fdroid/fdroid/views/AppDetailsRecyclerViewAdapter.java"/>
