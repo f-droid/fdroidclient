@@ -47,7 +47,7 @@ public class DonationPrompt extends AppUpdateData {
         }
 
         public void bindApp(DonationPrompt app) {
-            ((TextView) itemView).setText("Donation prompt for app");
+            ((TextView) itemView).setText("");
         }
     }
 

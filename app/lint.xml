@@ -13,4 +13,10 @@
     <issue id="NestedScrolling" severity="error"/>
     <issue id="StringFormatCount" severity="error"/>
     <issue id="UnsafeProtectedBroadcastReceiver" severity="error"/>
+
+    <!-- these should be fixed, but it'll be a chunk of work -->
+    <issue id="SetTextI18n" severity="error">
+        <ignore path="src/main/java/org/fdroid/fdroid/views/AppDetailsRecyclerViewAdapter.java"/>
+        <ignore path="src/main/java/org/fdroid/fdroid/views/apps/AppListItemController.java"/>
+    </issue>
 </lint>
