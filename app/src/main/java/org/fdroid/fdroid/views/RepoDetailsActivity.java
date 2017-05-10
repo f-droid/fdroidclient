@@ -27,7 +27,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.NfcNotEnabledActivity;
@@ -38,6 +37,8 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema.RepoTable;
+
+import java.util.Locale;
 
 public class RepoDetailsActivity extends ActionBarActivity {
     private static final String TAG = "RepoDetailsActivity";
@@ -323,7 +324,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
         name.setText(repo.name);
 
         int appCount = RepoProvider.Helper.countAppsForRepo(this, repoId);
-        numApps.setText(Integer.toString(appCount));
+        numApps.setText(String.format(Locale.getDefault(), "%d", appCount));
 
         setupDescription(repoView, repo);
         setupRepoFingerprint(repoView, repo);
