@@ -400,11 +400,8 @@ public class FDroidApp extends Application {
             Log.e(TAG, "Could not get application info to send via bluetooth", e);
             found = false;
         } catch (IOException e) {
-            // This will crash the app, because we want to get error reports of this.
-            // Additionally, it is not going to happen in the background or other important times
-            // (like application startup), only when the user actively performs a function (i.e. share
-            // via bluetooth). As such, it should not be too much of a burden to crash here.
-            throw new RuntimeException("Error preparing file to send via Bluetooth", e);
+            Exception toLog = new RuntimeException("Error preparing file to send via Bluetooth", e);
+            ACRA.getErrorReporter().handleException(toLog, false);
         }
 
         if (sendBt != null) {
