@@ -79,9 +79,13 @@ public class AppProvider extends FDroidProvider {
             return apps;
         }
 
-        public static App findHighestPriorityMetadata(ContentResolver resolver, String packageName) {
+        public static App findHighestPriorityMetadata(ContentResolver resolver, String packageName, String[] cols) {
             final Uri uri = getHighestPriorityMetadataUri(packageName);
-            return cursorToApp(resolver.query(uri, Cols.ALL, null, null, null));
+            return cursorToApp(resolver.query(uri, cols, null, null, null));
+        }
+
+        public static App findHighestPriorityMetadata(ContentResolver resolver, String packageName) {
+            return findHighestPriorityMetadata(resolver, packageName, Cols.ALL);
         }
 
         /**
