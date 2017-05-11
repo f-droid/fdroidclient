@@ -449,8 +449,7 @@
 	<item quantity="one">Zobacz %d aplikację</item>
 	<item quantity="few">Zobacz wszystkie %d aplikacje</item>
 	<item quantity="many">Zobacz wszystkich %d aplikacji</item>
-	<item quantity="other"/>
-</plurals>
+	</plurals>
 
     <string name="app_recommended_version_installed">Wersja %1$s (zalecana)</string>
     <string name="app__newly_added">Nowa</string>
@@ -470,8 +469,7 @@
 	<item quantity="one">Pokaż %1$d aplikację w kategorii %2$s</item>
 	<item quantity="few">Pokaż wszystkie %1$s aplikacje w kategorii %2$s</item>
 	<item quantity="many">Pokaż wszystkich %1$s aplikacji w kategorii %2$s</item>
-	<item quantity="other"/>
-</plurals>
+	</plurals>
     <string name="app__install_downloaded_update">Aktualizuj</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Aktualizuj %1$s</string>
@@ -481,8 +479,7 @@
         <item quantity="one">Wydano %1$d dzień temu</item>
         <item quantity="few">Wydano %1$d dni temu</item>
         <item quantity="many">Wydano %1$d dni temu</item>
-        <item quantity="other"/>
-    </plurals>
+        </plurals>
 
     <string name="updates__tts__download_app">Pobierz</string>
     <string name="updates__tts__download_updates_for_all_apps">Pobierz wszystkie aktualizacje</string>
@@ -494,8 +491,7 @@
         <item quantity="one">Pobierz aktualizację dla %1$d aplikacji.</item>
         <item quantity="few">Pobierz aktualizacje dla %1$d aplikacji.</item>
         <item quantity="many">Pobierz aktualizacje dla %1$d aplikacji.</item>
-        <item quantity="other"/>
-    </plurals>
+        </plurals>
 
     <string name="details_new_in_version">Nowe w wersji %s</string>
 
@@ -506,8 +502,7 @@
 	<item quantity="one">Uaktualniono %1$s dzień temu</item>
 	<item quantity="few">Uaktualniono %1$s dni temu</item>
 	<item quantity="many">Uaktualniono %1$s dni temu</item>
-	<item quantity="other"/>
-</plurals>
+	</plurals>
     <string name="app_list__name__successfully_installed">%1$s pomyślnie zainstalowano</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Brak internetu? Pobierz aplikacje od ludzi w
         pobliżu!

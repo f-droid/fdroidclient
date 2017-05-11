@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources xmlns:tools="http://schemas.android.com/tools"><string name="app_name">ಎಫ್-ಡ್ರಾಯ್ಡ್</string>
+<resources><string name="app_name">ಎಫ್-ಡ್ರಾಯ್ಡ್</string>
 
     <string name="version">ಆವೃತ್ತಿ</string>
     <string name="notification_action_install">ಅನುಸ್ಥಾಪಿಸು</string>
@@ -31,10 +31,10 @@
     <string name="nearby_splash__find_people_button">ನನ್ನ ಹತ್ತಿರವಿರುವ ಜನರನ್ನು ಹುಡುಕು</string>
     <string name="system_install_installing">ಅನುಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ…</string>
     <string name="system_install_button_install">ಅನುಸ್ಥಾಪಿಸು</string>
-    <string tools:ignore="UnusedResources" name="category_Time">ಸಮಯ</string>
-    <string tools:ignore="UnusedResources" name="category_Security">ಸುರಕ್ಷತೆ</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">ಕ್ರೀಡೆ &amp; ಆರೋಗ್ಯ</string>
-    <string tools:ignore="UnusedResources" name="category_Games">ಆಟಗಳು</string>
+    <string name="category_Time">ಸಮಯ</string>
+    <string name="category_Security">ಸುರಕ್ಷತೆ</string>
+    <string name="category_Sports_Health">ಕ್ರೀಡೆ &amp; ಆರೋಗ್ಯ</string>
+    <string name="category_Games">ಆಟಗಳು</string>
     <string name="wifi">ವೈ-ಫೈ</string>
     <string name="pref_language">ಭಾಷೆ</string>
     <string name="repo_name">ಹೆಸರು</string>

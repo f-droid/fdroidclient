@@ -454,8 +454,7 @@
         <item quantity="one">Опубликовано %1$d день назад</item>
         <item quantity="few">Опубликовано %1$d дня назад</item>
         <item quantity="many">Опубликовано %1$d дней назад</item>
-        <item quantity="other"/>
-    </plurals>
+        </plurals>
 
     <string name="categories__empty_state__no_categories">Нет категорий для показа</string>
 
@@ -463,8 +462,7 @@
 	<item quantity="one">Посмотреть %d приложение</item>
 	<item quantity="few">Посмотреть %d приложения</item>
 	<item quantity="many">Посмотреть %d приложений</item>
-	<item quantity="other"/>
-</plurals>
+	</plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета? Скачивайте приложения у людей рядом с вами!</string>
     <string name="notification_title_single_ready_to_install">Готово к установке</string>
@@ -483,8 +481,7 @@
 	<item quantity="one">Обновлено %1$s день назад</item>
 	<item quantity="few">Обновлено %1$s дня назад</item>
 	<item quantity="many">Обновлено %1$s дней назад</item>
-	<item quantity="other"/>
-</plurals>
+	</plurals>
     <string name="app_details_donate_prompt">%1$s создано %2$s. Купи им чашечку кофе!</string>
 
     <string name="app_recommended_version_installed">Версия %1$s (Рекомендуемая)</string>
@@ -494,8 +491,7 @@
         <item quantity="one">Скачать обновления для %1$d приложения.</item>
         <item quantity="few">Скачать обновления для %1$d приложений.</item>
         <item quantity="many">Скачать обновления для %1$d приложений.</item>
-        <item quantity="other"/>
-    </plurals>
+        </plurals>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Обновить %1$s</string>
     <string name="app_list__name__downloaded_and_ready_to_install">Установить %1$s</string>
@@ -521,8 +517,7 @@
 	<item quantity="one">Посмотреть %1$d приложение в категории %2$s</item>
 	<item quantity="few">Посмотреть %1$d приложения в категории %2$s</item>
 	<item quantity="many">Посмотреть %1$d приложений в категории %2$s</item>
-	<item quantity="other"/>
-</plurals>
+	</plurals>
 
     <string name="latest__empty_state__no_recent_apps">Нет недавних приложений</string>
     <string name="nearby_splash__both_parties_need_fdroid">Обоим участникам нужен %1$s чтобы передавать приложения.</string>

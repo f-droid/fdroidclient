@@ -508,8 +508,7 @@
         <item quantity="one">Завантажити оновлення для %1$d додатку.</item>
         <item quantity="few">Завантажити оновлення для %1$d додатка.</item>
         <item quantity="many">Завантажити оновлення для %1$d додатків.</item>
-        <item quantity="other"/>
-    </plurals>
+        </plurals>
 
     <string name="details_new_in_version">Нове у версії %s</string>
 

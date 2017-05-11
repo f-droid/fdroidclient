@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- Our translations are crowd-sourced -->
+    <issue id="MissingTranslation" severity="ignore"/>
+
+    <!-- to make CI fail on errors until this is fixed
+         https://github.com/rtyley/spongycastle/issues/7 -->
+    <issue id="InvalidPackage" severity="warning"/>
+    <issue id="ImpliedQuantity" severity="warning"/>
+
+    <!-- These are important to us, so promote from warning to error -->
+    <issue id="AppCompatMethod" severity="error"/>
+    <issue id="NestedScrolling" severity="error"/>
+    <issue id="StringFormatCount" severity="error"/>
+    <issue id="UnsafeProtectedBroadcastReceiver" severity="error"/>
+
+    <!-- Change the severity of hardcoded strings to "error" -->
+    <issue id="HardcodedText" severity="error"/>
+
+    <!-- both the correct and deprecated locales need to be present for
+         them to be recognized on all devices -->
+    <issue id="LocaleFolder" severity="error">
+        <ignore path="src/main/res/values-he"/>
+        <ignore path="src/main/res/values-id"/>
+    </issue>
+
+    <issue id="SetWorldReadable" severity="error">
+        <ignore path="src/main/java/org/fdroid/fdroid/installer/ApkFileProvider.java"/>
+    </issue>
+
+    <!-- these should be fixed, but it'll be a chunk of work -->
+    <issue id="SetTextI18n" severity="error">
+        <ignore path="src/main/java/org/fdroid/fdroid/views/AppDetailsRecyclerViewAdapter.java"/>
+        <ignore path="src/main/java/org/fdroid/fdroid/views/apps/AppListItemController.java"/>
+    </issue>
+</lint>

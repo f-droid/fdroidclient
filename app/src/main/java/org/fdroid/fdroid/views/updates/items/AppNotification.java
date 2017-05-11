@@ -49,7 +49,7 @@ public class AppNotification extends AppUpdateData {
         }
 
         public void bindApp(AppNotification app) {
-            ((TextView) itemView).setText("Notification for app");
+            ((TextView) itemView).setText("");
         }
     }
 

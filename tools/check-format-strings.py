@@ -13,11 +13,11 @@ formatRe = re.compile(r'(%%|%[^%](\$.)?)')
 validFormatRe = re.compile(r'^(%%|%[sd]|%[0-9]\$[sd])$')
 oddQuotingRe = re.compile(r'^"\s*(.+?)\s*"$')
 
-projectdir = os.path.join(os.path.dirname(__file__), '..')
+resdir = os.path.join(os.path.dirname(__file__), '..', 'app', 'src', 'main', 'res')
 
 count = 0
 
-for d in sorted(glob.glob(os.path.join(projectdir, 'src', 'main', 'res', 'values-*'))):
+for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
 
     str_path = os.path.join(d, 'strings.xml')
     if not os.path.exists(str_path):

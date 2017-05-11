@@ -44,11 +44,22 @@ public class AppUpdateStatusService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         Utils.debugLog(TAG, "Scanning apk cache to see if we need to prompt the user to install any apks.");
-        List<Apk> apksReadyToInstall = new ArrayList<>();
         File cacheDir = ApkCache.getApkCacheDir(this);
-        for (String repoDirName : cacheDir.list()) {
+        if (cacheDir == null) {
+            return;
+        }
+        String[] cacheDirList = cacheDir.list();
+        if (cacheDirList == null) {
+            return;
+        }
+        List<Apk> apksReadyToInstall = new ArrayList<>();
+        for (String repoDirName : cacheDirList) {
             File repoDir = new File(cacheDir, repoDirName);
-            for (String apkFileName : repoDir.list()) {
+            String[] apks = repoDir.list();
+            if (apks == null) {
+                continue;
+            }
+            for (String apkFileName : apks) {
                 Apk apk = processDownloadedApk(new File(repoDir, apkFileName));
                 if (apk != null) {
                     Log.i(TAG, "Found downloaded apk " + apk.packageName + ". Notifying user that it should be installed.");
