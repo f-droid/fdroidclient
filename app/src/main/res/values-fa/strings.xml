@@ -115,7 +115,6 @@
     <string name="less">کم‌تر</string>
 
     <string name="back">بازگشت</string>
-    <string name="notification_summary_more">+%1$d بیش‌تر…</string>
     <string name="send_via_bluetooth">ارسال با بلوتوث</string>
 
     <string name="repo_exists_add_fingerprint">این مخزن از پیش برپا شده است. این کار، اطّلاعات کلید جدیدی را می‌افزاید.</string>
@@ -493,8 +492,6 @@
     <string name="notification_content_single_installing">در حال نصب «%1$s»…</string>
     <string name="notification_content_single_installed">با موفّقیت نصب شد</string>
     <string name="notification_content_single_install_error">نصب شکست خورد</string>
-    <string name="notification_summary_updates">‫%1$d به‌روز رسانی</string>
-    <string name="notification_summary_installed">‫%1$d کاره نصب شدند</string>
     <string name="notification_title_summary_update_available">به‌روز رسانی موجود است</string>
     <string name="notification_title_summary_downloading">در حال بارگیری…</string>
     <string name="notification_title_summary_downloading_update">در حال بارگیری به‌روز رسانی…</string>

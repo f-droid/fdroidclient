@@ -51,7 +51,6 @@
     <string name="overwrite">שכתוב</string>
 
     <string name="fdroid_updates_available">יש עדכונים ל־F-Droid</string>
-    <string name="notification_summary_more">+%1$d עוד…</string>
     <string name="bluetooth_activity_not_found">לא נמצאה שיטת שליחה של Bluetooth, נא לבחור אחת!</string>
     <string name="choose_bt_send">נא לבחור שיטת שליחה של Bluetooth</string>
     <string name="send_via_bluetooth">שליחה דרך Bluetooth</string>

@@ -103,7 +103,6 @@
     <string name="add_key">Engadir chave</string>
     <string name="overwrite">Sobreescribir</string>
 
-    <string name="notification_summary_more">+%1$d máis…</string>
     <string name="bluetooth_activity_not_found">Non se atopou ningún método de transmisión Bluetooth, escolla un!
     </string>
     <string name="choose_bt_send">Escolla o método de transmisión Bluetooth</string>

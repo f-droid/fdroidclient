@@ -450,7 +450,6 @@
     </string>
     <string name="crash_dialog_comment_prompt">Jy kan ekstra inligting en kommentaar hier laat:</string>
 
-    <string name="notification_summary_more">+%1$d meer…</string>
     <string name="notification_title_single_update_available">Opdatering beskikbaar</string>
     <string name="install_confirm_update_system">Wil jy \'n opdatering installeer
         vir hierdie ingeboude program? Jou bestaande data sal nie verloor word nie.
@@ -464,8 +463,6 @@
     <string name="notification_content_single_installing">Installeer tans \"%1$s\"…</string>
     <string name="notification_content_single_installed">Suksesvol geïnstalleer</string>
     <string name="notification_content_single_install_error">Installering het misluk</string>
-    <string name="notification_summary_updates">%1$d Opdaterings</string>
-    <string name="notification_summary_installed">%1$d programme geïnstalleer</string>
     <string name="notification_title_summary_update_available">Opdatering beskikbaar</string>
     <string name="notification_title_summary_downloading">Laai tans af…</string>
     <string name="notification_title_summary_downloading_update">Besig met aflaai van opdatering …</string>

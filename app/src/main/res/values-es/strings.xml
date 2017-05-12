@@ -200,7 +200,6 @@
     <string name="links">Enlaces</string>
 
     <string name="back">Volver</string>
-    <string name="notification_summary_more">+%1$d más…</string>
     <string name="uninstall_system">Actualiza/Desinstala la extensión con permisos de sistema</string>
     <string name="uninstall_system_summary">Abre la pantalla de detalles de la extensión con permisos de sistema para
         actualizarla/desinstalarla
@@ -455,8 +454,6 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="notification_content_single_installing">Instalando \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instalación correcta</string>
     <string name="notification_content_single_install_error">Instalación fallida</string>
-    <string name="notification_summary_updates">%1$d actualizaciones</string>
-    <string name="notification_summary_installed">%1$d apps instaladas</string>
     <string name="notification_title_summary_update_available">Actualización disponible</string>
     <string name="notification_title_summary_downloading">Descargando…</string>
     <string name="notification_title_summary_downloading_update">Descargando actualización…</string>

@@ -238,7 +238,6 @@
 您不會失去現有的數據，
 已更新的程式亦不需要任何特別的存取權。
 </string>
-    <string name="notification_summary_more">還有 +%1$d 個…</string>
     <string name="next">下一步</string>
     <string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
     <string name="SignatureMismatch">應用程式的新版本使用了不同的鑰匙簽署。若要安裝新版本，
@@ -494,8 +493,6 @@ Android 5.1 或更新的版本。
     <string name="notification_content_single_installing">正在安裝「%1$s」…</string>
     <string name="notification_content_single_installed">安裝成功</string>
     <string name="notification_content_single_install_error">安裝失敗</string>
-    <string name="notification_summary_updates">%1$d 個更新</string>
-    <string name="notification_summary_installed">安裝了 %1$d 應用程式</string>
     <string name="notification_title_summary_update_available">可以更新</string>
     <string name="notification_title_summary_downloading">下載中…</string>
     <string name="notification_title_summary_downloading_update">正在下載更新…</string>

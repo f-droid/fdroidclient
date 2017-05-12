@@ -239,7 +239,6 @@
     <string name="links">Enllaces</string>
 
     <string name="back">Atrás</string>
-    <string name="notification_summary_more">+%1$d más…</string>
     <string name="bad_fingerprint">Buelga incorreuta</string>
     <string name="invalid_url">Esto nun ye una URL válida.</string>
     <string name="menu_changelog">Rexistru de cambeos</string>
@@ -455,8 +454,6 @@
     <string name="notification_content_single_installing">Instalando «%1$s»…</string>
     <string name="notification_content_single_installed">Instalóse con ésitu</string>
     <string name="notification_content_single_install_error">Falló la instalación</string>
-    <string name="notification_summary_updates">%1$d anovamientos</string>
-    <string name="notification_summary_installed">%1$d aplicaciones instalaes</string>
     <string name="notification_title_summary_update_available">Anovamientu disponible</string>
     <string name="notification_title_summary_downloading">Baxando…</string>
     <string name="notification_title_summary_downloading_update">Baxando anovamientu…</string>

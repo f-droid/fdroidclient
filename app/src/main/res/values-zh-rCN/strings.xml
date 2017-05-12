@@ -156,7 +156,6 @@
     <string name="less">更少</string>
 
     <string name="back">返回</string>
-    <string name="notification_summary_more">+%1$d 更多…</string>
     <string name="send_via_bluetooth">用蓝牙发送</string>
 
     <string name="bad_fingerprint">指纹错误</string>

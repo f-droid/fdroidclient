@@ -379,7 +379,6 @@
         non saranno rimossi. Non richiede alcun permesso speciale.
     </string>
     <string name="allPerms">Tutte</string>
-    <string name="notification_summary_more">+%1$d rimanente…</string>
     <string name="swap_nearby">Scambio ravvicinato</string>
     <string name="empty_search_installed_app_list">Nessuna app installata corrispondente.</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>
@@ -459,8 +458,6 @@
     <string name="notification_content_single_installing">Installazione \"%1$s\"…</string>
     <string name="notification_content_single_installed">Installato con successo</string>
     <string name="notification_content_single_install_error">Installazione fallita</string>
-    <string name="notification_summary_updates">%1$d aggiornamenti</string>
-    <string name="notification_summary_installed">%1$d app installate</string>
     <string name="notification_title_summary_update_available">Aggiornamento disponibile</string>
     <string name="notification_title_summary_downloading">Scaricamento…</string>
     <string name="notification_title_summary_downloading_update">Scaricamento aggiornamento…</string>

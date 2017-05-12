@@ -14,7 +14,7 @@
     <issue id="StringFormatCount" severity="error"/>
     <issue id="UnsafeProtectedBroadcastReceiver" severity="error"/>
 
-    <!-- Change the severity of hardcoded strings to "error" -->
+    <issue id="PluralsCandidate" severity="error"/>
     <issue id="HardcodedText" severity="error"/>
 
     <!-- both the correct and deprecated locales need to be present for

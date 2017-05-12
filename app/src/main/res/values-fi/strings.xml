@@ -193,7 +193,6 @@
     <string name="more">Lisää</string>
     <string name="less">Vähemmän</string>
 
-    <string name="notification_summary_more">+%1$d lisää…</string>
     <string name="update_auto_download">Hae päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">"Päivitykset ladataan automaattisesti ja sinulle ilmoitetaan niiden
 asentamisesta
@@ -484,8 +483,6 @@ asentamisesta
     <string name="notification_content_single_installing">Asennetaan \"%1$s\"…</string>
     <string name="notification_content_single_installed">Asennettu onnistuneesti</string>
     <string name="notification_content_single_install_error">Asennus Epäonnistui</string>
-    <string name="notification_summary_updates">%1$d Päivitystä</string>
-    <string name="notification_summary_installed">%1$d Sovellusta Asennettu</string>
     <string name="notification_title_summary_update_available">Päivitys saatavilla</string>
     <string name="notification_title_summary_downloading">Ladataan…</string>
     <string name="notification_title_summary_downloading_update">Ladataan päivitystä…</string>

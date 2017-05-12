@@ -156,7 +156,6 @@
     <string name="less">Λιγότερα</string>
 
     <string name="back">Πίσω</string>
-    <string name="notification_summary_more">+%1$d περισσότερα…</string>
     <string name="send_via_bluetooth">Αποστολή μέσω Bluetooth</string>
 
     <string name="bad_fingerprint">Λανθασμένο δακτυλικό αποτύπωμα</string>

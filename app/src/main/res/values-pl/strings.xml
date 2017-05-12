@@ -162,7 +162,6 @@
     <string name="links">Linki</string>
 
     <string name="back">Powrót</string>
-    <string name="notification_summary_more">+%1$d więcej…</string>
     <string name="bluetooth_activity_not_found">Nie znaleziono metody do wysłania przez Bluetooth!</string>
     <string name="choose_bt_send">Wybierz metodę wysłania przez Bluetooth</string>
     <string name="repo_exists_add_fingerprint">To repozytorium jest już dodane. Klucz zostanie zaktualizowany.</string>
@@ -422,8 +421,6 @@
     <string name="notification_content_single_installing">Instalowanie \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instalacja powiodła się</string>
     <string name="notification_content_single_install_error">Instalacja zakończona niepowodzeniem</string>
-    <string name="notification_summary_updates">%1$d aktualizacji</string>
-    <string name="notification_summary_installed">%1$d aplikacji zainstalowano</string>
     <string name="notification_title_summary_update_available">Dostępna aktualizacja</string>
     <string name="notification_title_summary_downloading">Pobieranie…</string>
     <string name="notification_title_summary_downloading_update">Pobieranie aktualizacji…</string>

@@ -118,7 +118,6 @@
     <string name="overwrite">استبدال</string>
 
     <string name="fdroid_updates_available">تحديثات اف-درويد متوفرة</string>
-    <string name="notification_summary_more">+%1$d المزيد…</string>
     <string name="bluetooth_activity_not_found">لا توجد طريقة إرسال بلوتوث، فضلاً إختر واحدة !</string>
     <string name="repo_exists_add_fingerprint">هذه المستودعات بالفعل موجودة، بهذا سوف يتم إضافة مفتاح معلومات جديد.
     </string>
@@ -466,8 +465,6 @@
     <string name="notification_title_single_update_available">تحديث متوفر</string>
     <string name="notification_content_single_downloading">جاري تنزيل \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">جاري تنزيل تحديث \"%1$s\"…</string>
-    <string name="notification_summary_updates">%1$d تحديثات</string>
-    <string name="notification_summary_installed">%1$d تطبيقات مثبتة</string>
     <string name="notification_title_summary_update_available">تحديث متوفر</string>
     <string name="notification_title_summary_downloading">جاري تنزيل …</string>
     <string name="notification_title_summary_downloading_update">جاري تنزيل التحديث …</string>

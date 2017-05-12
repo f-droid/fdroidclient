@@ -72,7 +72,6 @@
     <string name="overwrite">Substituir</string>
 
     <string name="fdroid_updates_available">Atualizações F-Droid disponíveis</string>
-    <string name="notification_summary_more">+%1$d…</string>
     <string name="bluetooth_activity_not_found">Nenhum método de envio Bluetooth encontrado. Escolha um!</string>
     <string name="choose_bt_send">Escolha o método de envio Bluetooth</string>
     <string name="send_via_bluetooth">Enviar por Bluetooth</string>
@@ -514,8 +513,6 @@
     <string name="notification_content_single_installing">A instalar \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instalação efetuada</string>
     <string name="notification_content_single_install_error">Falha ao instalar</string>
-    <string name="notification_summary_updates">%1$d atualizações</string>
-    <string name="notification_summary_installed">%1$d aplicações instaladas</string>
     <string name="notification_title_summary_update_available">Atualização disponível</string>
     <string name="notification_title_summary_downloading">A descarregar…</string>
     <string name="notification_title_summary_downloading_update">A descarregar atualização…</string>

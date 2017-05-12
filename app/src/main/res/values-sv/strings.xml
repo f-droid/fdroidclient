@@ -195,7 +195,6 @@
     <string name="less">Mindre</string>
 
     <string name="back">Bakåt</string>
-    <string name="notification_summary_more">+%1$d mer…</string>
     <string name="bad_fingerprint">Felaktigt fingeravtryck</string>
     <string name="invalid_url">Det här är inte en giltig webbadress.</string>
     <string name="menu_settings">Inställningar</string>
@@ -449,8 +448,6 @@
     <string name="notification_content_single_installing">Installerar \"%1$s\"…</string>
     <string name="notification_content_single_installed">Installerardes</string>
     <string name="notification_content_single_install_error">Installering misslyckades</string>
-    <string name="notification_summary_updates">%1$d uppdateringar</string>
-    <string name="notification_summary_installed">%1$d appar installerade</string>
     <string name="notification_title_summary_update_available">Uppdatering tillgänglig</string>
     <string name="notification_title_summary_downloading">Hämtar…</string>
     <string name="notification_title_summary_downloading_update">Hämtar uppdatering…</string>

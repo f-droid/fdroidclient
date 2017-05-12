@@ -236,7 +236,6 @@
     <string name="less">Меньше</string>
 
     <string name="back">Назад</string>
-    <string name="notification_summary_more">Детали +%1$d …</string>
     <string name="bad_fingerprint">Неверный отпечаток ключа</string>
     <string name="invalid_url">URL некорректен.</string>
     <string name="menu_changelog">Список изменений</string>
@@ -508,8 +507,6 @@
     </string>
 
     <string name="antifeatures">Нежелательный функционал</string>
-    <string name="notification_summary_updates">%1$d обновлений</string>
-    <string name="notification_summary_installed">%1$d приложений установлено</string>
     <string name="notification_title_summary_installing">Установка</string>
     <string name="notification_title_summary_installed">Успешно установлено</string>
     <string name="notification_title_summary_install_error">Установка не удалась</string>

@@ -429,7 +429,6 @@
     </string>
     <string name="crash_dialog_comment_prompt">Можаце ўвясці дадатковую інфармацыю і каментары тут:</string>
 
-    <string name="notification_summary_more">+%1$d больш…</string>
     <string name="notification_title_single_update_available">Даступна абнаўленне</string>
     <string name="notification_title_single_ready_to_install">Гатовая да ўсталёўкі</string>
     <string name="notification_title_single_ready_to_install_update">Абнаўленне гатовая да ўсталёўкі</string>
@@ -439,8 +438,6 @@
     <string name="notification_content_single_installing">Усталёўка «%1$s»…</string>
     <string name="notification_content_single_installed">Паспяхова ўсталявана</string>
     <string name="notification_content_single_install_error">Не атрымалася ўсталяваць</string>
-    <string name="notification_summary_updates">Абнаўленняў: %1$d</string>
-    <string name="notification_summary_installed">Усталявана праграм: %1$d</string>
     <string name="notification_title_summary_update_available">Даступна абнаўленне</string>
     <string name="notification_title_summary_downloading">Спампоўка…</string>
     <string name="notification_title_summary_downloading_update">Спампоўка абнаўлення…</string>

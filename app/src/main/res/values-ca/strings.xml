@@ -195,7 +195,6 @@
     <string name="links">Enllaços</string>
 
     <string name="back">Torna</string>
-    <string name="notification_summary_more">+%1$d més…</string>
     <string name="pref_language">Idioma</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Graphics">Gràfics</string>
@@ -452,8 +451,6 @@
     <string name="notification_content_single_installing">Instal·lant \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instal·lació correcta</string>
     <string name="notification_content_single_install_error">Instal·lació fallida</string>
-    <string name="notification_summary_updates">%1$d actualitzacions</string>
-    <string name="notification_summary_installed">%1$d Apps instal·lades</string>
     <string name="notification_title_summary_update_available">Actualització disponible</string>
     <string name="notification_title_summary_downloading">Descarregant…</string>
     <string name="notification_title_summary_downloading_update">Descarregant una actualització…</string>

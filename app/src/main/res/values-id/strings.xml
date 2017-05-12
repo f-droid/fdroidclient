@@ -170,7 +170,6 @@
     <string name="repo_last_update">Terakhir diperbarui</string>
     <string name="repo_name">Nama</string>
     <string name="unknown">Tidak diketahui</string>
-    <string name="notification_summary_more">+%1$d lainnya…</string>
     <string name="menu_settings">Pengaturan</string>
     <string name="rooted_on">Jangan bedakan warna apl yang membutuhkan izin root</string>
     <string name="unsigned_description">Ini artinya daftar
@@ -449,8 +448,6 @@
     <string name="notification_content_single_installing">Memasang \"%1$s\"…</string>
     <string name="notification_content_single_installed">Berhasil dipasang</string>
     <string name="notification_content_single_install_error">Gagal Memasang</string>
-    <string name="notification_summary_updates">%1$d Pembaruan</string>
-    <string name="notification_summary_installed">%1$d Apl Dipasang</string>
     <string name="notification_title_summary_update_available">Tersedia pembaruan</string>
     <string name="notification_title_summary_downloading">Mengunduh…</string>
     <string name="notification_title_summary_downloading_update">Mengunduh pembaruan…</string>
