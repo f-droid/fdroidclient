@@ -21,7 +21,9 @@ package org.fdroid.fdroid.installer;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v4.content.FileProvider;
 
 import org.fdroid.fdroid.data.Apk;
@@ -47,6 +49,11 @@ public class ApkFileProvider extends FileProvider {
 
     private static final String AUTHORITY = "org.fdroid.fdroid.installer.ApkFileProvider";
 
+    public static Uri getSafeUri(Context context, ApplicationInfo appInfo) throws IOException {
+        SanitizedFile tempApkFile = ApkCache.copyInstalledApkToFiles(context, appInfo);
+        return getSafeUri(context, tempApkFile, Build.VERSION.SDK_INT >= 24);
+    }
+
     /**
      * Copies the APK into private data directory of F-Droid and returns a "file" or "content" Uri
      * to be used for installation.
@@ -54,14 +61,17 @@ public class ApkFileProvider extends FileProvider {
     public static Uri getSafeUri(Context context, Uri localApkUri, Apk expectedApk, boolean useContentUri)
             throws IOException {
         File apkFile = new File(localApkUri.getPath());
+        SanitizedFile tempApkFile = ApkCache.copyApkFromCacheToFiles(context, apkFile, expectedApk);
+        return getSafeUri(context, tempApkFile, useContentUri);
 
-        SanitizedFile sanitizedApkFile =
-                ApkCache.copyApkFromCacheToFiles(context, apkFile, expectedApk);
+    }
 
+    private static Uri getSafeUri(Context context, SanitizedFile tempApkFile, boolean useContentUri) {
         if (useContentUri) {
             // return a content Uri using support libs FileProvider
-            Uri apkUri = getUriForFile(context, AUTHORITY, sanitizedApkFile);
+            Uri apkUri = getUriForFile(context, AUTHORITY, tempApkFile);
             context.grantUriPermission("org.fdroid.fdroid.privileged", apkUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            context.grantUriPermission("com.android.bluetooth", apkUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
             return apkUri;
         }
 
@@ -70,9 +80,9 @@ public class ApkFileProvider extends FileProvider {
         // have access is insecure, because apps with permission to write to the external
         // storage can overwrite the app between F-Droid asking for it to be installed and
         // the installer actually installing it.
-        sanitizedApkFile.setReadable(true, false);
+        tempApkFile.setReadable(true, false);
 
-        return Uri.fromFile(sanitizedApkFile);
+        return Uri.fromFile(tempApkFile);
     }
 
 }

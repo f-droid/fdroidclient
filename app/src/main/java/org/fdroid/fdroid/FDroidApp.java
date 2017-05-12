@@ -54,12 +54,14 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import sun.net.www.protocol.bluetooth.Handler;
 
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
@@ -368,20 +370,21 @@ public class FDroidApp extends Application {
         if (resultCode == Activity.RESULT_CANCELED) {
             return;
         }
+
         String bluetoothPackageName = null;
         String className = null;
         boolean found = false;
         Intent sendBt = null;
+
         try {
             PackageManager pm = getPackageManager();
-            ApplicationInfo appInfo = pm.getApplicationInfo(packageName,
-                    PackageManager.GET_META_DATA);
+            ApplicationInfo appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
             sendBt = new Intent(Intent.ACTION_SEND);
-            // The APK type is blocked by stock Android, so use zip
-            // sendBt.setType("application/vnd.android.package-archive");
+
+            // The APK type ("application/vnd.android.package-archive") is blocked by stock Android, so use zip
             sendBt.setType("application/zip");
-            sendBt.putExtra(Intent.EXTRA_STREAM,
-                    Uri.parse("file://" + appInfo.publicSourceDir));
+            sendBt.putExtra(Intent.EXTRA_STREAM, ApkFileProvider.getSafeUri(this, appInfo));
+
             // not all devices have the same Bluetooth Activities, so
             // let's find it
             for (ResolveInfo info : pm.queryIntentActivities(sendBt, 0)) {
@@ -396,7 +399,11 @@ public class FDroidApp extends Application {
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Could not get application info to send via bluetooth", e);
             found = false;
+        } catch (IOException e) {
+            Exception toLog = new RuntimeException("Error preparing file to send via Bluetooth", e);
+            ACRA.getErrorReporter().handleException(toLog, false);
         }
+
         if (sendBt != null) {
             if (found) {
                 sendBt.setClassName(bluetoothPackageName, className);

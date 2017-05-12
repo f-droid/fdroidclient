@@ -245,12 +245,10 @@ public abstract class Installer {
 
         try {
             // move apk file to private directory for installation and check hash
-            sanitizedUri = ApkFileProvider.getSafeUri(
-                    context, localApkUri, apk, supportsContentUri());
+            sanitizedUri = ApkFileProvider.getSafeUri(context, localApkUri, apk, supportsContentUri());
         } catch (IOException e) {
             Log.e(TAG, e.getMessage(), e);
-            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
-                    e.getMessage());
+            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
             return;
         }
 
@@ -260,8 +258,7 @@ public abstract class Installer {
             apkVerifier.verifyApk();
         } catch (ApkVerifier.ApkVerificationException e) {
             Log.e(TAG, e.getMessage(), e);
-            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED,
-                    e.getMessage());
+            sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
             return;
         } catch (ApkVerifier.ApkPermissionUnequalException e) {
             // if permissions of apk are not the ones listed in the repo

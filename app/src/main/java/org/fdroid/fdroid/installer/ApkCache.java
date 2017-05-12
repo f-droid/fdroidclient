@@ -20,6 +20,7 @@
 package org.fdroid.fdroid.installer;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 
 import com.nostra13.universalimageloader.utils.StorageUtils;
@@ -37,6 +38,15 @@ public class ApkCache {
     private static final String CACHE_DIR = "apks";
 
     /**
+     * Same as {@link #copyApkFromCacheToFiles(Context, File, Apk)}, except it does not need to
+     * verify the hash after copying. This is because we are copying from an installed apk, which
+     * other apps do not have permission to modify.
+     */
+    public static SanitizedFile copyInstalledApkToFiles(Context context, ApplicationInfo appInfo) throws IOException {
+        return copyApkToFiles(context, new File(appInfo.publicSourceDir), false, null, null);
+    }
+
+    /**
      * Copy the APK to the safe location inside of the protected area
      * of the app to prevent attacks based on other apps swapping the file
      * out during the install process. Most likely, apkFile was just downloaded,
@@ -44,12 +54,24 @@ public class ApkCache {
      */
     public static SanitizedFile copyApkFromCacheToFiles(Context context, File apkFile, Apk expectedApk)
             throws IOException {
+        return copyApkToFiles(context, apkFile, true, expectedApk.hash, expectedApk.hashType);
+    }
+
+    /**
+     * Copy an APK from {@param apkFile} to our internal files directory for 20 minutes.
+     * @param verifyHash If the file was just downloaded, then you should mark this as true and
+     *                   request the file to be verified once it has finished copying. Otherwise,
+     *                   if the app was installed from part of the system where it can't be tampered
+     *                   with (e.g. installed apks on disk) then
+     */
+    private static SanitizedFile copyApkToFiles(Context context, File apkFile, boolean verifyHash, String hash, String hashType)
+            throws IOException {
         SanitizedFile sanitizedApkFile = SanitizedFile.knownSanitized(
                 File.createTempFile("install-", ".apk", context.getFilesDir()));
         FileUtils.copyFile(apkFile, sanitizedApkFile);
 
         // verify copied file's hash with expected hash from Apk class
-        if (!Hasher.isFileMatchingHash(sanitizedApkFile, expectedApk.hash, expectedApk.hashType)) {
+        if (verifyHash && !Hasher.isFileMatchingHash(sanitizedApkFile, hash, hashType)) {
             FileUtils.deleteQuietly(apkFile);
             throw new IOException(apkFile + " failed to verify!");
         }
