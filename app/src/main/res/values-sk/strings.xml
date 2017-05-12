@@ -475,7 +475,6 @@
     <plurals name="updates__download_updates_for_apps">
 	<item quantity="one">Stiahnuť aktualizáciu pre %1$d aplikáciu.</item>
 	<item quantity="few">Stiahnuť aktualizácie pre %1$d aplikácie.</item>
-	<item quantity="many">Stiahnuť aktualizácie pre %1$d aplikácií.</item>
 	<item quantity="other">Stiahnuť aktualizácie pre %1$d aplikácií.</item>
 	</plurals>
 
@@ -504,7 +503,6 @@
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">Zobraziť %d</item>
 	<item quantity="few">Zobraziť: %d</item>
-	<item quantity="many">Zobraziť. %d</item>
 	<item quantity="other">Zobraziť. %d</item>
 	</plurals>
 
@@ -526,7 +524,6 @@
     <plurals name="details_last_update_days">
 	<item quantity="one">Aktualizované pred %1$s dňom</item>
 	<item quantity="few">Aktualizované pred %1$s dňami</item>
-	<item quantity="many">Aktualizované pred %1$s dňami</item>
 	<item quantity="other">Aktualizované pred %1$s dňami</item>
 	</plurals>
 </resources>
