@@ -158,7 +158,7 @@ public class PreferencesFragment extends PreferenceFragment
                 entrySummary(key);
                 if (changing) {
                     Activity activity = getActivity();
-                    Languages.setLanguage(activity, Preferences.get().getLanguage(), false);
+                    Languages.setLanguage(activity);
 
                     RepoProvider.Helper.clearEtags(getContext());
                     UpdateService.updateNow(getContext());

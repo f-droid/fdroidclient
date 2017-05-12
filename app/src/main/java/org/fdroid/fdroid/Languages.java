@@ -124,16 +124,17 @@ public final class Languages {
      * or different than the current system-wide locale.  The preference is cleared
      * if the language matches the system-wide locale or "System Default" is chosen.
      */
-    public static void setLanguage(final ContextWrapper contextWrapper, String language, boolean refresh) {
+    public static void setLanguage(final ContextWrapper contextWrapper) {
         if (Build.VERSION.SDK_INT >= 24) {
             Utils.debugLog(TAG, "Languages.setLanguage() ignored on >= android-24");
             Preferences.get().clearLanguage();
             return;
         }
+        String language = Preferences.get().getLanguage();
         if (TextUtils.equals(language, DEFAULT_LOCALE.getLanguage())) {
             Preferences.get().clearLanguage();
             locale = DEFAULT_LOCALE;
-        } else if (locale != null && TextUtils.equals(locale.getLanguage(), language) && (!refresh)) {
+        } else if (locale != null && TextUtils.equals(locale.getLanguage(), language)) {
             return; // already configured
         } else if (language == null || language.equals(USE_SYSTEM_DEFAULT)) {
             Preferences.get().clearLanguage();
