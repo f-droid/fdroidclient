@@ -214,7 +214,6 @@ public class FDroidApp extends Application {
                     .build());
         }
         Preferences.setup(this);
-        Languages.setup(getClass(), R.string.pref_language_default);
         Languages.setLanguage(this);
 
         ACRA.init(this);

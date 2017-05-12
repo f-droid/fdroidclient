@@ -4,13 +4,12 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContextWrapper;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Locale;
@@ -26,12 +25,9 @@ public final class Languages {
     private static final Locale DEFAULT_LOCALE;
     private static final Locale TIBETAN = new Locale("bo");
     private static final Locale CHINESE_HONG_KONG = new Locale("zh", "HK");
-    private static final String DEFAULT_STRING = "System Default";
 
     private static Locale locale;
     private static Languages singleton;
-    private static Class<?> clazz;
-    private static int resId;
     private static Map<String, String> tmpMap = new TreeMap<>();
     private static Map<String, String> nameMap;
 
@@ -40,23 +36,8 @@ public final class Languages {
     }
 
     private Languages(Activity activity) {
-        AssetManager assets = activity.getAssets();
-        Configuration config = activity.getResources().getConfiguration();
-        // Resources() requires DisplayMetrics, but they are only needed for drawables
-        DisplayMetrics ignored = new DisplayMetrics();
-        activity.getWindowManager().getDefaultDisplay().getMetrics(ignored);
-        Resources resources;
         Set<Locale> localeSet = new LinkedHashSet<>();
-        Locale currentLocale = config.locale;
-        for (Locale locale : LOCALES_TO_TEST) {
-            config.locale = locale;
-            resources = new Resources(assets, ignored, config);
-            if (!TextUtils.equals(DEFAULT_STRING, resources.getString(resId))
-                    || locale.equals(Locale.ENGLISH)) {
-                localeSet.add(locale);
-            }
-        }
-        config.locale = currentLocale;
+        localeSet.addAll(Arrays.asList(LOCALES_TO_TEST));
 
         for (Locale locale : localeSet) {
             if (locale.equals(TIBETAN)) {
@@ -74,37 +55,11 @@ public final class Languages {
         }
 
         // remove the current system language from the menu
-        tmpMap.remove(currentLocale.getLanguage());
+        tmpMap.remove(Locale.getDefault().getLanguage());
 
         /* SYSTEM_DEFAULT is a fake one for displaying in a chooser menu. */
-        tmpMap.put(USE_SYSTEM_DEFAULT, activity.getString(resId));
+        tmpMap.put(USE_SYSTEM_DEFAULT, activity.getString(R.string.pref_language_default));
         nameMap = Collections.unmodifiableMap(tmpMap);
-    }
-
-    /**
-     * Get the instance of {@link Languages} to work with, providing the
-     * {@link Activity} that is will be working as part of, as well as the
-     * {@code resId} that has the exact string "Use System Default",
-     * i.e. {@code R.string.use_system_default}.
-     * <p/>
-     * That string resource {@code resId} is also used to find the supported
-     * translations: if an included translation has a translated string that
-     * matches that {@code resId}, then that language will be included as a
-     * supported language.
-     *
-     * @param clazz the {@link Class} of the default {@code Activity},
-     *              usually the main {@code Activity} from where the
-     *              Settings is launched from.
-     * @param resId the string resource ID to for the string "System Default",
-     *              e.g. {@code R.string.pref_language_default}
-     */
-    public static void setup(Class<?> clazz, int resId) {
-        if (Languages.clazz == null) {
-            Languages.clazz = clazz;
-            Languages.resId = resId;
-        } else {
-            throw new RuntimeException("Languages singleton was already initialized, duplicate call to Languages.setup()!");
-        }
     }
 
     /**
@@ -213,12 +168,9 @@ public final class Languages {
             CHINESE_HONG_KONG,
             TIBETAN,
             new Locale("af"),
-            new Locale("am"),
             new Locale("ar"),
-            new Locale("az"),
             new Locale("be"),
             new Locale("bg"),
-            new Locale("bn"),
             new Locale("ca"),
             new Locale("cs"),
             new Locale("da"),
@@ -229,58 +181,29 @@ public final class Languages {
             new Locale("eu"),
             new Locale("fa"),
             new Locale("fi"),
-            new Locale("gl"),
+            new Locale("he"),
             new Locale("hi"),
-            new Locale("hr"),
             new Locale("hu"),
             new Locale("hy"),
-            new Locale("in"),
-            new Locale("hy"),
-            new Locale("in"),
+            new Locale("id"),
             new Locale("is"),
             new Locale("it"),
-            new Locale("iw"),
-            new Locale("ka"),
-            new Locale("kk"),
-            new Locale("km"),
-            new Locale("kn"),
-            new Locale("ky"),
-            new Locale("lo"),
-            new Locale("lt"),
-            new Locale("lv"),
-            new Locale("mk"),
-            new Locale("ml"),
-            new Locale("mn"),
-            new Locale("mr"),
-            new Locale("ms"),
             new Locale("my"),
             new Locale("nb"),
-            new Locale("ne"),
             new Locale("nl"),
             new Locale("pl"),
             new Locale("pt"),
-            new Locale("rm"),
             new Locale("ro"),
             new Locale("ru"),
             new Locale("sc"),
-            new Locale("si"),
             new Locale("sk"),
-            new Locale("sl"),
             new Locale("sn"),
-            new Locale("sq"),
             new Locale("sr"),
             new Locale("sv"),
-            new Locale("sw"),
-            new Locale("ta"),
-            new Locale("te"),
             new Locale("th"),
-            new Locale("tl"),
             new Locale("tr"),
             new Locale("uk"),
-            new Locale("ur"),
-            new Locale("uz"),
             new Locale("vi"),
-            new Locale("zu"),
     };
 
 }
