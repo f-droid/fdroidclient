@@ -1,3 +1,21 @@
+### 0.103.1 (2017-05-12)
+
+* Various stability fixes
+
+* Bits of text no longer randomly switches to English
+
+* Fix send F-Droid via Bluetooth on Android 7.x
+
+### 0.103 (2017-05-02)
+
+* Complete overhaul of the user experience
+
+* Complete support for localization, including app descriptions
+
+* Support for screenshots, graphics, and "What's New" texts
+
+* Stable support for F-Droid Privileged Extension
+
 ### 0.102.3 (2017-04-01)
 
 * Fix issue with installing from the wrong repo (#909)
