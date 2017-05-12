@@ -197,7 +197,7 @@ public class FDroidApp extends Application {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Languages.setLanguage(this, Preferences.get().getLanguage(), false);
+        Languages.setLanguage(this);
     }
 
     @Override
@@ -214,8 +214,7 @@ public class FDroidApp extends Application {
                     .build());
         }
         Preferences.setup(this);
-        Languages.setup(getClass(), R.string.pref_language_default);
-        Languages.setLanguage(this, Preferences.get().getLanguage(), false);
+        Languages.setLanguage(this);
 
         ACRA.init(this);
         if (isAcraProcess()) {
