@@ -410,7 +410,7 @@ public final class AppUpdateStatusManager {
         return TaskStackBuilder.create(context)
                 .addParentStack(AppDetails2.class)
                 .addNextIntent(notifyIntent)
-                .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+                .getPendingIntent(apk.packageName.hashCode(), PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     private PendingIntent getAppErrorIntent(AppUpdateStatus entry) {
