@@ -150,9 +150,6 @@ public class ManageReposActivity extends AppCompatActivity implements LoaderMana
             case R.id.action_add_repo:
                 showAddRepo();
                 return true;
-            case R.id.action_update_repo:
-                UpdateService.updateNow(this);
-                return true;
         }
         return super.onOptionsItemSelected(item);
     }
