@@ -76,7 +76,6 @@
     <string name="overwrite">Nyorera pamusoro</string>
 
     <string name="fdroid_updates_available">Zvekunatsa F-Droid zviripo</string>
-    <string name="notification_summary_more">zvimwe +%1$d …</string>
     <string name="bluetooth_activity_not_found">Hapana mutowo wekutumira neBluetooth wawanikwa, sarudza imwe chete!
     </string>
     <string name="choose_bt_send">Sarudza mutowo weBluetooth wekutumira nawo</string>
@@ -469,8 +468,6 @@
     <string name="notification_content_single_installing">Kuvakirira \"%1$s\"…</string>
     <string name="notification_content_single_installed">Kuvakirira kwabudirira</string>
     <string name="notification_content_single_install_error">Kuvakirira kwaramba</string>
-    <string name="notification_summary_updates">%1$d Mawedzero</string>
-    <string name="notification_summary_installed">%1$d MaApps avakirirwa</string>
     <string name="notification_title_summary_update_available">Wedzero yavapo</string>
     <string name="notification_title_summary_downloading">Kututunura…</string>
     <string name="notification_title_summary_downloading_update">Kututunura wedzero…</string>

@@ -318,7 +318,6 @@
     <string name="uninstall_system_summary">Ouvrir l\'écran des détails de l\'appli F-Droid Privileged Extension pour la
         mettre à jour/la désinstaller
     </string>
-    <string name="notification_summary_more">%1$d de plus…</string>
     <string name="status_download_unknown_size">Téléchargement de
         \n%2$s depuis
         \n%1$s
@@ -448,8 +447,6 @@
     <string name="notification_content_single_installing">Installation de « %1$s »…</string>
     <string name="notification_content_single_installed">Installation réussie</string>
     <string name="notification_content_single_install_error">L’installation a échoué</string>
-    <string name="notification_summary_updates">%1$d mises à jour</string>
-    <string name="notification_summary_installed">%1$d applications installées</string>
     <string name="notification_title_summary_update_available">Mise à jour disponible</string>
     <string name="notification_title_summary_downloading">Téléchargement…</string>
     <string name="notification_title_summary_downloading_update">Téléchargement de la mise à jour…</string>

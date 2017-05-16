@@ -195,7 +195,6 @@
     <string name="links">Lenker</string>
 
     <string name="back">Tilbake</string>
-    <string name="notification_summary_more">+%1$d mer…</string>
     <string name="bad_fingerprint">Feil i fingeravtrykk</string>
     <string name="invalid_url">Dette er ikke en gyldig nettadresse.</string>
     <string name="menu_changelog">Endringslogg</string>
@@ -447,8 +446,6 @@
     <string name="notification_content_single_installing">Installerer \"%1$s\"…</string>
     <string name="notification_content_single_installed">Installert</string>
     <string name="notification_content_single_install_error">Installering mislyktes</string>
-    <string name="notification_summary_updates">%1$d oppdateringer</string>
-    <string name="notification_summary_installed">%1$d programmer installert</string>
     <string name="notification_title_summary_update_available">Oppdatering tilgjengelig</string>
     <string name="notification_title_summary_downloading">Laster ned…</string>
     <string name="notification_title_summary_downloading_update">Laster ned oppdatering…</string>

@@ -79,7 +79,6 @@
     <string name="overwrite">ထပ္ေရးမည္</string>
 
     <string name="fdroid_updates_available">F-Droid အသစ္မြမ္းမံမႈရရွိႏိုင္သည္</string>
-    <string name="notification_summary_more">+%1$d ေနာက္ထပ္..</string>
     <string name="bluetooth_activity_not_found">ဘလူးသုဒ့္ႏွင့္ပို႔ရန္နည္းလမ္းရွာမေတြ႕ပါ။ တစ္ခုေရြးပါ!</string>
     <string name="choose_bt_send">ဘလူးသုဒ့္ႏွင့္ပို႔ေသာနည္းလမ္းကိုေရြးမည္</string>
     <string name="send_via_bluetooth">ဘလူးသုဒ့္မွတစ္ဆင့္ပို႔မည္</string>

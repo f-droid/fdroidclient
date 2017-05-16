@@ -164,7 +164,6 @@
     <string name="links">Odkazy</string>
 
     <string name="back">Zpět</string>
-    <string name="notification_summary_more">+%1$d více…</string>
     <string name="bluetooth_activity_not_found">Nerozpoznána žádná Bluetooth metoda přenosu, nějakou vyberte!</string>
     <string name="choose_bt_send">Vyberte metodu přenosu Bluetooth</string>
     <string name="repo_exists_add_fingerprint">Tento repozitář je již nastaven, budou jen přidány nové klíče.</string>
@@ -436,8 +435,6 @@
     <string name="notification_content_single_installing">Instalování \"%1$s\"…</string>
     <string name="notification_content_single_installed">Úspěšně nainstalováno</string>
     <string name="notification_content_single_install_error">Instalace selhala</string>
-    <string name="notification_summary_updates">%1$d aktualizací</string>
-    <string name="notification_summary_installed">%1$d aplikací nainstalováno</string>
     <string name="notification_title_summary_update_available">Dostupná aktualizace</string>
     <string name="notification_title_summary_downloading">Stahování…</string>
     <string name="notification_title_summary_downloading_update">Stahování aktualizace…</string>

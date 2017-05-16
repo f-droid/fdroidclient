@@ -117,7 +117,6 @@
     <string name="theme_dark">Մուգ</string>
     <string name="theme_night">Գիշեր</string>
 
-    <string name="notification_summary_more">+%1$d ավել…</string>
     <string name="notification_title_single_update_available">Թարմացում է հասանելի</string>
     <string name="notification_title_single_ready_to_install">Պատրաստ է տեղադրման</string>
     <string name="notification_title_single_ready_to_install_update">Թարմացումը պատրաստ է տեղադրման</string>
@@ -127,8 +126,6 @@
     <string name="notification_content_single_installing">Տեղադրում եմ \"%1$s\"…</string>
     <string name="notification_content_single_installed">Բարեհաջող տեղադրվեց</string>
     <string name="notification_content_single_install_error">Տեղադրումը չհաջողվեց</string>
-    <string name="notification_summary_updates">%1$d թարմացում</string>
-    <string name="notification_summary_installed">%1$d տեղադրված ափփ</string>
     <string name="notification_title_summary_update_available">Թարմացում է հասանելի</string>
     <string name="notification_title_summary_downloading">Ներբեռնում եմ…</string>
     <string name="notification_title_summary_downloading_update">Ներբեռնում եմ թարմացումը…</string>

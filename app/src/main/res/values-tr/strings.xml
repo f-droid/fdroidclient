@@ -210,7 +210,6 @@
     <string name="less">Daha azı</string>
 
     <string name="back">Geri</string>
-    <string name="notification_summary_more">+%1$d daha…</string>
     <string name="bad_fingerprint">Yanlış parmak izi</string>
     <string name="invalid_url">Bu geçerli bir URL değildir.</string>
     <string name="menu_settings">Ayarlar</string>
@@ -439,8 +438,6 @@
     <string name="notification_content_single_installing">\"%1$s\" kuruluyor…</string>
     <string name="notification_content_single_installed">Başarıyla kuruldu</string>
     <string name="notification_content_single_install_error">Kurulum Başarısız</string>
-    <string name="notification_summary_updates">%1$d Güncelleme</string>
-    <string name="notification_summary_installed">%1$d Uygulama Kuruldu</string>
     <string name="notification_title_summary_update_available">Güncelleme mevcut</string>
     <string name="notification_title_summary_downloading">İndiriliyor…</string>
     <string name="notification_title_summary_downloading_update">Güncelleme indiriliyor…</string>

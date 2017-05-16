@@ -132,7 +132,6 @@
     <string name="less">Kevesebb</string>
 
     <string name="back">Vissza</string>
-    <string name="notification_summary_more">+%1$d további…</string>
     <string name="send_via_bluetooth">Küldés Bluetooth-on</string>
 
     <string name="bad_fingerprint">Rossz ujjlenyomat</string>

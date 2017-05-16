@@ -83,7 +83,6 @@
     <string name="overwrite">Kirjuta üle</string>
 
     <string name="fdroid_updates_available">F-Droid: värskendused saadaval</string>
-    <string name="notification_summary_more">+%1$d veel…</string>
     <string name="bluetooth_activity_not_found">Bluetoothiga saatmisviise ei leitud. Valige üks!</string>
     <string name="choose_bt_send">Vali Bluetoothiga saatmise viis</string>
     <string name="send_via_bluetooth">Saada Bluetoothiga</string>

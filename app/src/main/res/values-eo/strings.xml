@@ -148,7 +148,6 @@
     <string name="back">Reen</string>
     <string name="enable">Aktivigi</string>
     <string name="add_key">Aldoni ŝlosilon</string>
-    <string name="notification_summary_more">ankoraŭ +%1$d…</string>
     <string name="bluetooth_activity_not_found">Neniu Bludenta metodo de sendo trovita, elektu iun!</string>
     <string name="choose_bt_send">Elektu Bludentan metodon de sendo</string>
     <string name="repo_add_fingerprint">Fingrospuro (malnepra)</string>
@@ -435,8 +434,6 @@
     <string name="notification_content_single_installing">Instalado de \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instalado sukcesis</string>
     <string name="notification_content_single_install_error">Instalado fiaskis</string>
-    <string name="notification_summary_updates">%1$d ĝisdatigoj</string>
-    <string name="notification_summary_installed">Instalis %1$d aplikaĵojn</string>
     <string name="notification_title_summary_update_available">Disponebla ĝisdatigo</string>
     <string name="notification_title_summary_downloading">Elŝutado…</string>
     <string name="notification_title_summary_downloading_update">Elŝutado de ĝisdatigo…</string>

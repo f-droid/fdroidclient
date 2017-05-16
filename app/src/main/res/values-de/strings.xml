@@ -199,7 +199,6 @@
     <string name="app_incompatible">Inkompatibel</string>
     <string name="links">Verweise</string>
     <string name="back">Zurück</string>
-    <string name="notification_summary_more">+%1$d weitere …</string>
     <string name="bad_fingerprint">Falscher Fingerabdruck</string>
     <string name="invalid_url">Das ist keine gültige Adresse.</string>
     <string name="update_notification_title">Paketquellen werden aktualisiert</string>
@@ -443,8 +442,6 @@
     <string name="notification_content_single_installing">»%1$s« wird installiert …</string>
     <string name="notification_content_single_installed">Erfolgreich installiert</string>
     <string name="notification_content_single_install_error">Installation fehlgeschlagen</string>
-    <string name="notification_summary_updates">%1$d Aktualisierungen</string>
-    <string name="notification_summary_installed">%1$d Apps installiert</string>
     <string name="notification_title_summary_update_available">Aktualisierung verfügbar</string>
     <string name="notification_title_summary_downloading">wird heruntergeladen …</string>
     <string name="notification_title_summary_downloading_update">Aktualisierung wird heruntergeladen …</string>

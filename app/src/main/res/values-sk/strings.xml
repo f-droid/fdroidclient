@@ -202,7 +202,6 @@
     <string name="links">Linky</string>
 
     <string name="back">Späť</string>
-    <string name="notification_summary_more">+%1$d viac…</string>
     <string name="bluetooth_activity_not_found">Posielanie cez Bluetooth zlyhalo, zvoľte inú metódu!</string>
     <string name="choose_bt_send">Vyberte posielanie cez Bluetooth</string>
     <string name="repo_exists_and_enabled">Tento repozitár je už nastavený a povolený.</string>
@@ -433,8 +432,6 @@
     <string name="notification_content_single_installing">Inštalovanie \"%1$s\"…</string>
     <string name="notification_content_single_installed">Úspešne nainštalované</string>
     <string name="notification_content_single_install_error">Inštalácia zlyhala</string>
-    <string name="notification_summary_updates">%1$d Aktualizácií</string>
-    <string name="notification_summary_installed">%1$d Nainštalovaných aplikácií</string>
     <string name="notification_title_summary_update_available">Dostupná aktualizácia</string>
     <string name="notification_title_summary_downloading">Preberanie…</string>
     <string name="notification_title_summary_downloading_update">Preberanie aktualizácie…</string>
@@ -478,7 +475,6 @@
     <plurals name="updates__download_updates_for_apps">
 	<item quantity="one">Stiahnuť aktualizáciu pre %1$d aplikáciu.</item>
 	<item quantity="few">Stiahnuť aktualizácie pre %1$d aplikácie.</item>
-	<item quantity="many">Stiahnuť aktualizácie pre %1$d aplikácií.</item>
 	<item quantity="other">Stiahnuť aktualizácie pre %1$d aplikácií.</item>
 	</plurals>
 
@@ -507,7 +503,6 @@
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">Zobraziť %d</item>
 	<item quantity="few">Zobraziť: %d</item>
-	<item quantity="many">Zobraziť. %d</item>
 	<item quantity="other">Zobraziť. %d</item>
 	</plurals>
 
@@ -529,7 +524,6 @@
     <plurals name="details_last_update_days">
 	<item quantity="one">Aktualizované pred %1$s dňom</item>
 	<item quantity="few">Aktualizované pred %1$s dňami</item>
-	<item quantity="many">Aktualizované pred %1$s dňami</item>
 	<item quantity="other">Aktualizované pred %1$s dňami</item>
 	</plurals>
 </resources>

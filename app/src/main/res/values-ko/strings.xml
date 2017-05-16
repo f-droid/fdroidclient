@@ -188,7 +188,6 @@
     <string name="less">접기</string>
 
     <string name="back">뒤로</string>
-    <string name="notification_summary_more">+%1$d 이상…</string>
     <string name="bad_fingerprint">올바르지 않은 핑거프린트</string>
     <string name="invalid_url">올바른 URL이 아닙니다.</string>
     <string name="menu_settings">설정</string>

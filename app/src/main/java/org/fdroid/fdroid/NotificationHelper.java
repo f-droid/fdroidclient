@@ -21,7 +21,6 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.view.View;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -29,7 +28,6 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.utils.DiskCacheUtils;
-
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.main.MainActivity;
 
@@ -347,7 +345,8 @@ class NotificationHelper {
     }
 
     private Notification createUpdateSummaryNotification(ArrayList<AppUpdateStatusManager.AppUpdateStatus> updates) {
-        String title = context.getString(R.string.notification_summary_updates, updates.size());
+        String title = context.getResources().getQuantityString(R.plurals.notification_summary_updates,
+                updates.size(), updates.size());
         StringBuilder text = new StringBuilder();
 
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
@@ -373,7 +372,8 @@ class NotificationHelper {
 
         if (updates.size() > MAX_UPDATES_TO_SHOW) {
             int diff = updates.size() - MAX_UPDATES_TO_SHOW;
-            inboxStyle.setSummaryText(context.getString(R.string.notification_summary_more, diff));
+            inboxStyle.setSummaryText(context.getResources().getQuantityString(R.plurals.notification_summary_more,
+                    diff, diff));
         }
 
         // Intent to open main app list
@@ -434,7 +434,8 @@ class NotificationHelper {
     }
 
     private Notification createInstalledSummaryNotification(ArrayList<AppUpdateStatusManager.AppUpdateStatus> installed) {
-        String title = context.getString(R.string.notification_summary_installed, installed.size());
+        String title = context.getResources().getQuantityString(R.plurals.notification_summary_installed,
+                installed.size(), installed.size());
         StringBuilder text = new StringBuilder();
 
         NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
@@ -451,7 +452,8 @@ class NotificationHelper {
         bigTextStyle.bigText(text);
         if (installed.size() > MAX_INSTALLED_TO_SHOW) {
             int diff = installed.size() - MAX_INSTALLED_TO_SHOW;
-            bigTextStyle.setSummaryText(context.getString(R.string.notification_summary_more, diff));
+            bigTextStyle.setSummaryText(context.getResources().getQuantityString(R.plurals.notification_summary_more,
+                    diff, diff));
         }
 
         // Intent to open main app list

@@ -196,7 +196,6 @@
     <string name="links">Links</string>
 
     <string name="back">Terug</string>
-    <string name="notification_summary_more">+%1$d meer…</string>
     <string name="bad_fingerprint">Slechte vingerafdruk</string>
     <string name="invalid_url">Dit is geen correcte URL.</string>
     <string name="menu_changelog">Lijst van veranderingen</string>
@@ -491,8 +490,6 @@
     <string name="notification_content_single_installing">%1$s wordt geïnstalleerd…</string>
     <string name="notification_content_single_installed">Geïnstalleerd</string>
     <string name="notification_content_single_install_error">Installatie mislukt</string>
-    <string name="notification_summary_updates">%1$d updates</string>
-    <string name="notification_summary_installed">%1$d apps geïnstalleerd</string>
     <string name="notification_title_summary_update_available">Update beschikbaar</string>
     <string name="notification_title_summary_downloading">Wordt gedownload…</string>
     <string name="notification_title_summary_ready_to_install">Klaar voor installatie</string>

@@ -203,7 +203,6 @@
     <string name="links">Links</string>
 
     <string name="back">Voltar</string>
-    <string name="notification_summary_more">Mais +%1$d…</string>
     <string name="bad_fingerprint">Falha na fingerprint</string>
     <string name="invalid_url">Esta não é uma URL válida.</string>
     <string name="menu_changelog">Changelog</string>
@@ -440,8 +439,6 @@
     <string name="notification_content_single_installing">Instalando \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instalado com sucesso</string>
     <string name="notification_content_single_install_error">Falha na instalação</string>
-    <string name="notification_summary_updates">%1$d Atualizações</string>
-    <string name="notification_summary_installed">%1$d Aplicativos instalados</string>
     <string name="notification_title_summary_update_available">Atualização disponível</string>
     <string name="notification_title_summary_downloading">Baixando…</string>
     <string name="notification_title_summary_downloading_update">Baixando atualização…</string>

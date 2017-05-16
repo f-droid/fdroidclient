@@ -202,7 +202,6 @@
     <string name="links">Ligàmenes</string>
 
     <string name="back">In dae segus</string>
-    <string name="notification_summary_more">+%1$d àteru(os)…</string>
     <string name="invalid_url">Custu no est unu ligàmene vàlidu.</string>
     <string name="menu_changelog">Lista modìficas</string>
     <string name="update_notification_title">Agiornende sos depòsitos</string>
@@ -446,8 +445,6 @@
     <string name="notification_content_single_installing">Installende \"%1$s\"…</string>
     <string name="notification_content_single_installed">Installatzione resissida</string>
     <string name="notification_content_single_install_error">Installatzione faddida</string>
-    <string name="notification_summary_updates">%1$d agiornamentos</string>
-    <string name="notification_summary_installed">%1$d aplicatziones installadas</string>
     <string name="notification_title_summary_update_available">Agiornamentu disponìbile</string>
     <string name="notification_title_summary_downloading">Iscarrighende…</string>
     <string name="notification_title_summary_downloading_update">Iscarrighende s\'agiornamentu…</string>

@@ -84,7 +84,6 @@
     <string name="overwrite">Prepiši</string>
 
     <string name="fdroid_updates_available">Ažuriranja za F-Droid dostupna</string>
-    <string name="notification_summary_more">+%1$d više…</string>
     <string name="bluetooth_activity_not_found">Nije pronađena metoda slanja preko Bluetootha, odaberite jednu!</string>
     <string name="choose_bt_send">Odaberi metodu slanja preko Bluetootha</string>
     <string name="send_via_bluetooth">Pošalji preko Bluetootha</string>

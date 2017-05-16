@@ -61,7 +61,6 @@
     <string name="overwrite">Skrifa yfir</string>
 
     <string name="fdroid_updates_available">Uppfærslur á F-Droid eru tiltækar</string>
-    <string name="notification_summary_more">+%1$d fleiri…</string>
     <string name="bluetooth_activity_not_found">Engin aðferð til sendingar með Bluetooth fannst, veldu eina!</string>
     <string name="choose_bt_send">Veldu aðferð til sendingar með Bluetooth</string>
     <string name="send_via_bluetooth">Senda með Bluetooth</string>
@@ -484,8 +483,6 @@
     <string name="notification_content_single_installing">Set upp \"%1$s\"…</string>
     <string name="notification_content_single_installed">Tókst að setja upp</string>
     <string name="notification_content_single_install_error">Uppsetning mistókst</string>
-    <string name="notification_summary_updates">%1$d uppfærslur</string>
-    <string name="notification_summary_installed">%1$d forrit uppsett</string>
     <string name="notification_title_summary_update_available">Uppfærslur tiltækar</string>
     <string name="notification_title_summary_downloading">Sæki…</string>
     <string name="notification_title_summary_downloading_update">Næ í uppfærslu…</string>

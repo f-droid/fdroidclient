@@ -92,7 +92,6 @@
     <string name="enable">Увімкнути</string>
     <string name="add_key">Додати ключ</string>
     <string name="fdroid_updates_available">F-Droid: доступні оновлення</string>
-    <string name="notification_summary_more">+%1$d більше…</string>
     <string name="send_via_bluetooth">Надіслати через Bluetooth</string>
 
     <string name="menu_share">Поділитися</string>
@@ -449,8 +448,6 @@
     <string name="notification_content_single_installing">Встановлення \"%1$s\"…</string>
     <string name="notification_content_single_installed">Встановлено</string>
     <string name="notification_content_single_install_error">Помилка встановлення</string>
-    <string name="notification_summary_updates">Оновлень: %1$d</string>
-    <string name="notification_summary_installed">Додатків встановлено: %1$d</string>
     <string name="notification_title_summary_update_available">Доступне оновлення</string>
     <string name="notification_title_summary_downloading">Завантаження…</string>
     <string name="notification_title_summary_downloading_update">Завантаження оновлення…</string>

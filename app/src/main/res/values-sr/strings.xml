@@ -196,7 +196,6 @@
     <string name="links">Везе</string>
 
     <string name="back">Назад</string>
-    <string name="notification_summary_more">+још %1$d…</string>
     <string name="bad_fingerprint">Лош отисак</string>
     <string name="invalid_url">Ово није исправна адреса.</string>
     <string name="menu_changelog">Дневник измена</string>
@@ -432,8 +431,6 @@
     <string name="notification_content_single_installing">Уграђујем „%1$s“…</string>
     <string name="notification_content_single_installed">Успешно уграђено</string>
     <string name="notification_content_single_install_error">Уградња није успела</string>
-    <string name="notification_summary_updates">%1$d надоградњи</string>
-    <string name="notification_summary_installed">%1$d уграђених апликација</string>
     <string name="notification_title_summary_update_available">Надоградња доступна</string>
     <string name="notification_title_summary_downloading">Преузимам…</string>
     <string name="notification_title_summary_downloading_update">Преузимам надоградњу…</string>
