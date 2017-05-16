@@ -27,7 +27,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
@@ -377,12 +377,12 @@ public class FDroidApp extends Application {
 
         try {
             PackageManager pm = getPackageManager();
-            ApplicationInfo appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
+            PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_META_DATA);
             sendBt = new Intent(Intent.ACTION_SEND);
 
             // The APK type ("application/vnd.android.package-archive") is blocked by stock Android, so use zip
             sendBt.setType("application/zip");
-            sendBt.putExtra(Intent.EXTRA_STREAM, ApkFileProvider.getSafeUri(this, appInfo));
+            sendBt.putExtra(Intent.EXTRA_STREAM, ApkFileProvider.getSafeUri(this, packageInfo));
 
             // not all devices have the same Bluetooth Activities, so
             // let's find it

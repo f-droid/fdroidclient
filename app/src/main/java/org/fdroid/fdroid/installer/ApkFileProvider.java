@@ -21,7 +21,7 @@ package org.fdroid.fdroid.installer;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.content.FileProvider;
@@ -49,8 +49,8 @@ public class ApkFileProvider extends FileProvider {
 
     private static final String AUTHORITY = "org.fdroid.fdroid.installer.ApkFileProvider";
 
-    public static Uri getSafeUri(Context context, ApplicationInfo appInfo) throws IOException {
-        SanitizedFile tempApkFile = ApkCache.copyInstalledApkToFiles(context, appInfo);
+    public static Uri getSafeUri(Context context, PackageInfo packageInfo) throws IOException {
+        SanitizedFile tempApkFile = ApkCache.copyInstalledApkToFiles(context, packageInfo);
         return getSafeUri(context, tempApkFile, Build.VERSION.SDK_INT >= 24);
     }
 
