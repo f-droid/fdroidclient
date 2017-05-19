@@ -12,9 +12,11 @@ before_script:
 
 test:
   script:
+    - export EXITVALUE=0
     - ./tools/check-format-strings.py
     - ./tools/remove-unused-and-blank-translations.py
-    - git diff | grep diff && false # there should be no changes
+    - echo "These are unused or blank translations that should be removed:"
+    - git --no-pager diff --exit-code || export EXITVALUE=1
     - ./gradlew assemble -PdisablePreDex
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
@@ -26,8 +28,9 @@ test:
               echo "read $log here:";
               cat "$log" | curl --silent -F 'clbin=<-' https://clbin.com;
           done;
-          exit 1;
+          export EXITVALUE=1;
       }
+    - exit $EXITVALUE
 
 connected10:
   variables:
