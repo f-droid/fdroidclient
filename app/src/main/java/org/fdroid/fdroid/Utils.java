@@ -32,6 +32,7 @@ import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.TypefaceSpan;
 import android.util.DisplayMetrics;
@@ -516,6 +517,26 @@ public final class Utils {
     public static int daysSince(@NonNull Date date) {
         long msDiff = Calendar.getInstance().getTimeInMillis() - date.getTime();
         return (int) TimeUnit.MILLISECONDS.toDays(msDiff);
+    }
+
+    public static String formatLastUpdated(@NonNull Resources res, @NonNull Date date) {
+        long msDiff = Calendar.getInstance().getTimeInMillis() - date.getTime();
+        long days   = msDiff / DateUtils.DAY_IN_MILLIS;
+        long weeks  = msDiff / (DateUtils.DAY_IN_MILLIS * 7);
+        long months = msDiff / (DateUtils.DAY_IN_MILLIS * 30);
+        long years  = msDiff / (DateUtils.DAY_IN_MILLIS * 365);
+
+        if (days < 1) {
+            return res.getString(R.string.details_last_updated_today);
+        } else if (weeks < 1) {
+            return res.getQuantityString(R.plurals.details_last_update_days, (int) days, days);
+        } else if (months < 1) {
+            return res.getQuantityString(R.plurals.details_last_update_months, (int) months, months);
+        } else if (years < 1) {
+            return res.getQuantityString(R.plurals.details_last_update_weeks, (int) weeks, weeks);
+        } else {
+            return res.getQuantityString(R.plurals.details_last_update_years, (int) years, years);
+        }
     }
 
     // Need this to add the unimplemented support for ordered and unordered

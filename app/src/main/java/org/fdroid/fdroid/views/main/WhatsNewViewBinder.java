@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.views.main;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -122,15 +122,7 @@ class WhatsNewViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             if (lastUpdate == null) {
                 emptyStateText.append(activity.getString(R.string.latest__empty_state__never_updated));
             } else {
-                int daysSince = Utils.daysSince(lastUpdate);
-                Resources resources = activity.getResources();
-                String text;
-                if (daysSince < 1) {
-                    text = resources.getString(R.string.details_last_updated_today);
-                } else {
-                    text = resources.getQuantityString(R.plurals.details_last_update_days, daysSince, daysSince);
-                }
-                emptyStateText.append(text);
+                emptyStateText.append(Utils.formatLastUpdated(activity.getResources(), lastUpdate));
             }
         }
 

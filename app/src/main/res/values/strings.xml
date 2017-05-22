@@ -554,4 +554,16 @@
         <item quantity="one">Updated %1$s day ago</item>
         <item quantity="other">Updated %1$s days ago</item>
     </plurals>
+    <plurals name="details_last_update_weeks">
+        <item quantity="one">Updated %1$s week ago</item>
+        <item quantity="other">Updated %1$s weeks ago</item>
+    </plurals>
+    <plurals name="details_last_update_months">
+        <item quantity="one">Updated %1$s month ago</item>
+        <item quantity="other">Updated %1$s months ago</item>
+    </plurals>
+    <plurals name="details_last_update_years">
+        <item quantity="one">Updated %1$s year ago</item>
+        <item quantity="other">Updated %1$s years ago</item>
+    </plurals>
 </resources>
