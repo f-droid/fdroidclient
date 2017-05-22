@@ -33,9 +33,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -408,15 +410,8 @@ public class AppDetailsRecyclerViewAdapter
                 authorView.setVisibility(View.GONE);
             }
             if (app.lastUpdated != null) {
-                int daysSince = Utils.daysSince(app.lastUpdated);
-                String text;
-                Resources resources = lastUpdateView.getContext().getResources();
-                if (daysSince < 1) {
-                    text = resources.getString(R.string.details_last_updated_today);
-                } else {
-                    text = resources.getQuantityString(R.plurals.details_last_update_days, daysSince, daysSince);
-                }
-                lastUpdateView.setText(text);
+                Resources res = lastUpdateView.getContext().getResources();
+                lastUpdateView.setText(Utils.formatLastUpdated(res, app.lastUpdated));
                 lastUpdateView.setVisibility(View.VISIBLE);
             } else {
                 lastUpdateView.setVisibility(View.GONE);
