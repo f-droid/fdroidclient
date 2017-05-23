@@ -151,17 +151,18 @@
                 android:visibility="visible"
                 >
 
-                <Button
+                <android.support.v7.widget.AppCompatButton
                     android:id="@+id/secondaryButtonView"
                     style="@style/DetailsSecondaryButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ellipsize="marquee"
+                    app:textAllCaps="true"
                     android:padding="12dp"
                     tools:text="Uninstall" />
 
-                <Button
+                <android.support.v7.widget.AppCompatButton
                     android:id="@+id/primaryButtonView"
                     style="@style/DetailsPrimaryButtonStyle"
                     android:layout_width="match_parent"
@@ -170,6 +171,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:ellipsize="marquee"
+                    app:textAllCaps="true"
                     tools:text="Run" />
             </LinearLayout>
 
@@ -233,7 +235,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             tools:text="\t• This app tracks and reports your activity." />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/description_more"
             style="@style/DetailsMoreButtonStyle"
             android:layout_width="match_parent"
@@ -244,6 +246,7 @@
             android:layout_marginRight="8dp"
             android:gravity="end"
             android:text="@string/more"
+            android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             tools:text="more" />
 
