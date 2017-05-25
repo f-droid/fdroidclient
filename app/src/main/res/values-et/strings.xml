@@ -13,7 +13,6 @@
         töötada valesti või isegi kustutada su andmeid. Kas sa soovid ikkagi proovida varasema versiooni kasutamist?
     </string>
     <string name="version">Versioon</string>
-    <string name="by_author">autoritelt</string>
     <string name="delete">Kustuta</string>
     <string name="enable_nfc_send">Luba NFC andmevahetus…</string>
     <string name="cache_downloaded">Jäta alles puhverdatud paketid</string>

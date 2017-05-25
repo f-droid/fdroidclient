@@ -384,7 +384,6 @@
     <string name="crash_dialog_comment_prompt">Podeu afegir informació addicional i comentaris aquí:</string>
     <string name="antinonfreeassetslist">Aquesta aplicació conté parts no lliures</string>
 
-    <string name="by_author">per</string>
     <string name="menu_email">Escriviu un correu electrònic a l\'autor</string>
     <string name="swap_stopping_wifi">Aurant la Wi-Fi…</string>
     <string name="useTor">Usi Tor</string>

@@ -7,7 +7,6 @@
         апликацијата.)
     </string>
     <string name="version">Верзија</string>
-    <string name="by_author">од</string>
     <string name="delete">Избриши</string>
     <string name="enable_nfc_send">Овозможете ја функцијата NFC Испрати …</string>
     <string name="cache_downloaded">Чувајте кеширани апликации</string>

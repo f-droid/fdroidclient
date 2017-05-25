@@ -327,7 +327,6 @@
         подробностями, чтобы помочь исправить эту ошибку?
     </string>
     <string name="crash_dialog_comment_prompt">Можете добавить дополнительную информацию и комментарии:</string>
-    <string name="by_author">от</string>
     <string name="useTor">Использовать Tor</string>
     <string name="useTorSummary">Перенаправлять входящий трафик через Tor для улучшения конфиденциальности</string>
     <string name="repo_provider">Репозиторий: %s</string>

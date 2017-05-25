@@ -301,7 +301,6 @@
     <string name="system_install_post_success_message">Úspešne bolo nainštalované Oprávnené Rozšírenie F-Droidu. To
         umožňuje F-Droidu samostatne inštalovať, aktualizovať, a odinštalovať aplikácie.
     </string>
-    <string name="by_author">od</string>
     <string name="login_title">Vyžaduje sa overenie</string>
     <string name="login_name">Prihlasovacie meno</string>
     <string name="login_password">Heslo</string>

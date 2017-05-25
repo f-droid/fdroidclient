@@ -382,7 +382,6 @@
     <string name="swap_nearby">Scambio ravvicinato</string>
     <string name="empty_search_installed_app_list">Nessuna app installata corrispondente.</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>
-    <string name="by_author">di</string>
     <string name="menu_email">Invia email all\'autore</string>
     <string name="crash_dialog_text">Un errore inaspettato
         ha provocato il blocco dell\'applicazione. Vuoi inviare una e-mail

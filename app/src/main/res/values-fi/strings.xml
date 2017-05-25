@@ -396,7 +396,6 @@ asentamisesta
     <string name="crash_dialog_text">Tapahtui odottamaton virhe, sovellus pakko lopetettiin. Haluatko lähettää
         tapahtuman yksityiskohdat sähköpostilla ja auttaa kehittäjiä korjaamaan ongelman?
     </string>
-    <string name="by_author">kehittäjältä</string>
     <string name="status_processing_xml_percent">Käsitellään %2$s / %3$s (%4$d%%) lähteestä %1$s</string>
     <string name="status_download">Ladataan
         %2$s / %3$s (%4$d%%) lähteestä

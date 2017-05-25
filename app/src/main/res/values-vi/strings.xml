@@ -348,7 +348,6 @@
     <string name="about_license">Giấy phép</string>
 
     <string name="status_inserting_apps">Đang lưu thông tin ứng dụng</string>
-    <string name="by_author">bởi</string>
     <string name="menu_email">E-mail tác giả</string>
     <string name="useTor">Sử dụng Tor</string>
     <string name="useTorSummary">Tải xuống thông qua Tor để tăng tính riêng tư</string>

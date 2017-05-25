@@ -186,7 +186,6 @@
         Catatan: Semua
         apl yang sebelumnya dipasang dari repositori ini akan tetap ada di perangkat Anda.
     </string>
-    <string name="by_author">oleh</string>
     <string name="SignatureMismatch">Versi yang baru telah ditandatangani menggunakan kunci yang berbeda dengan versi
         yang lama. Untuk memasang versi yang baru, versi yang lama harus dihapus terlebih dahulu. Silakan lakukan ini
         dan coba lagi. (Perhatikan bahwa mencopot aplikasi akan menghapus data internal apapun yang disimpan oleh

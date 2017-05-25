@@ -387,7 +387,6 @@
     </string>
     <string name="antinonfreeassetslist">Cette appli comprend des parties qui ne sont pas libres/open-source</string>
 
-    <string name="by_author">par</string>
     <string name="menu_email">Écrire à l\'auteur</string>
     <string name="useTor">Utiliser Tor</string>
     <string name="useTorSummary">Télécharger anonymement grâce à Tor</string>

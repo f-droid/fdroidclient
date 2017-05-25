@@ -374,7 +374,6 @@
     </string>
     <string name="swap_join_this_hotspot">Arkadaşınızın erişim noktanıza bağlanmasına yardım edin</string>
     <string name="swap_active_hotspot">%1$s (erişim noktanız)</string>
-    <string name="by_author">şu tarafından</string>
     <string name="menu_email">Geliştiriciye E-posta At</string>
     <string name="update_auto_download">Güncellemeleri kendiliğinden al</string>
     <string name="update_auto_download_summary">Güncellemeler kendiliğinden indirilir ve onları kurmak için bilgilendirilirsiniz</string>

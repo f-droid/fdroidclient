@@ -404,7 +404,7 @@ public class AppDetailsRecyclerViewAdapter
             ImageLoader.getInstance().displayImage(app.iconUrlLarge, iconView, displayImageOptions);
             titleView.setText(app.name);
             if (!TextUtils.isEmpty(app.authorName)) {
-                authorView.setText(context.getString(R.string.by_author) + " " + app.authorName);
+                authorView.setText(context.getString(R.string.by_author_format, app.authorName));
                 authorView.setVisibility(View.VISIBLE);
             } else {
                 authorView.setVisibility(View.GONE);

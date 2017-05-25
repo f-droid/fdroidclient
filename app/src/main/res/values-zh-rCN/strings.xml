@@ -306,7 +306,6 @@
     <string name="empty_search_available_app_list">已安装应用列表为空。</string>
     <string name="empty_search_can_update_app_list">未能从可更新应用中找到符合的结果。</string>
 
-    <string name="by_author">by</string>
     <string name="menu_email">发邮件给作者</string>
     <string name="antinonfreeassetslist">该此应用包括非自由资产</string>
 

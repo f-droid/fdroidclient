@@ -355,7 +355,6 @@
     <string name="crash_dialog_comment_prompt">ここに追加の情報やｺﾒﾝﾄを追加できます:</string>
     <string name="antinonfreeassetslist">このｱﾌﾟﾘには無料ではない資産が含まれています</string>
 
-    <string name="by_author">作者</string>
     <string name="menu_email">ﾒｰﾙ作者</string>
     <string name="useTor">Tor を使用する</string>
     <string name="useTorSummary">強制的に Tor を通じたﾄﾗﾌｨｯｸでﾀﾞｳﾝﾛｰﾄﾞして、プライバシーを高めます</string>

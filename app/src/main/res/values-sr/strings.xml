@@ -367,7 +367,6 @@
     <string name="crash_dialog_comment_prompt">Можете да унесете додатне податке и коментаре овде:</string>
     <string name="antinonfreeassetslist">Ова апликација садржи неслободне ресурсе</string>
 
-    <string name="by_author">од</string>
     <string name="menu_email">Пошаљи е-пошту аутору</string>
     <string name="useTor">Користи Тор</string>
     <string name="useTorSummary">Присили саобраћај кроз Тор за бољу приватност</string>

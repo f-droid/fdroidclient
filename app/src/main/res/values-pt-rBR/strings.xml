@@ -381,7 +381,6 @@
         com os detalhes para ajudar a corrigir o problema?
     </string>
     <string name="crash_dialog_comment_prompt">Você pode adicionar informações extras e comentários aqui:</string>
-    <string name="by_author">por</string>
     <string name="menu_email">Enviar mensagem para o autor</string>
     <string name="useTor">Usar o Tor</string>
     <string name="useTorSummary">Força tráfego de download através do Tor para maior privacidade</string>

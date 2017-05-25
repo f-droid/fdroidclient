@@ -328,7 +328,6 @@
 
     <string name="perms_new_perm_prefix">Ново:</string>
     <string name="perms_description_app">Предоставено от %1$s.</string>
-    <string name="by_author">от</string>
     <string name="local_repo_https">Използване на засекретена връзка</string>
     <string name="login_title">Нужна е автентификация</string>
     <string name="login_name">Потребителско име</string>

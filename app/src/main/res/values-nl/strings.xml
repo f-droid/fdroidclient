@@ -375,7 +375,6 @@
     <string name="login_title">Authenticatie vereist</string>
     <string name="repo_error_empty_username">Lege gebruikersnaam, referenties niet gewijzigd</string>
 
-    <string name="by_author">van</string>
     <string name="menu_email">E-mail de auteur</string>
     <string name="antinonfreeassetslist">Deze app bevat niet-vrije elementen</string>
 

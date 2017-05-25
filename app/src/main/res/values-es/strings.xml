@@ -382,7 +382,6 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="empty_search_available_app_list">No hay coincidencias con las aplicaciones disponibles.</string>
     <string name="empty_search_can_update_app_list">No hay ninguna coincidencia con ninguna aplicación a actualizar.</string>
 
-    <string name="by_author">por</string>
     <string name="menu_email">Escribir un correo electrónico al autor</string>
     <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>
     <string name="useTor">Usar Tor</string>

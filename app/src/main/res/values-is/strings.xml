@@ -3,7 +3,6 @@
     <string name="app_name">F-Droid</string>
 
     <string name="version">Útgáfa</string>
-    <string name="by_author">frá</string>
     <string name="delete">Eyða</string>
     <string name="login_name">Notandanafn</string>
     <string name="enable_nfc_send">Virkja NFC-sendingu…</string>

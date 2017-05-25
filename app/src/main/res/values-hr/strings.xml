@@ -13,7 +13,6 @@
         može prestati raditi ili čak izgubiti Vaše podatke. Želite li ju svejedno unazaditi?
     </string>
     <string name="version">Verzija</string>
-    <string name="by_author">od</string>
     <string name="delete">Obriši</string>
     <string name="enable_nfc_send">Omogući NFC slanje…</string>
     <string name="cache_downloaded">Zadrži privremene aplikacije</string>

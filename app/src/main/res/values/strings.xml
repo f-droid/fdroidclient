@@ -14,7 +14,7 @@
         and even lose your data. Do you want to try and downgrade it anyway?
     </string>
     <string name="version">Version</string>
-    <string name="by_author">by</string>
+    <string name="by_author_format">by %s</string>
     <string name="delete">Delete</string>
     <string name="enable_nfc_send">Enable NFC Send…</string>
     <string name="cache_downloaded">Keep cached apps</string>

@@ -327,7 +327,6 @@
     <string name="system_install_denied_permissions">Privilegovaná oprávnění nebyla tomuto rozšíření udělena! Nahlašte
         prosím jako chybu!
     </string>
-    <string name="by_author">od</string>
     <string name="cache_downloaded">Uchovat balíčky</string>
     <string name="menu_email">Odeslat email autorovi</string>
     <string name="antinonfreeassetslist">Tato aplikace obsahuje nesvobodné části</string>

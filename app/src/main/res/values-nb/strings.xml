@@ -372,7 +372,6 @@
     <string name="crash_dialog_comment_prompt">Du kan legge til ekstra informasjon og kommentarer her:</string>
     <string name="antinonfreeassetslist">Dette programmet inneholder ufrie gjenstander</string>
 
-    <string name="by_author">av</string>
     <string name="menu_email">E-postens avsender</string>
     <string name="repo_provider">Pakkebrønn: %s</string>
 

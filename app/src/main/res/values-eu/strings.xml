@@ -404,7 +404,6 @@
         konpontzen laguntzeko?
     </string>
     <string name="crash_dialog_comment_prompt">Informazio gehigarria eta iruzkinak sartu ditzakezu hemen:</string>
-    <string name="by_author">egilea</string>
     <string name="download_pending">Deskarga hastearen zain…</string>
     <string name="install_error_notify_title">Errorea %s instalatzean</string>
     <string name="uninstall_error_notify_title">Errorea %s desinstalatzean</string>

@@ -215,7 +215,6 @@
     <string name="pref_language_default">Systemets standard</string>
 
     <string name="wifi">Trådlöst</string>
-    <string name="by_author">av</string>
     <string name="login_title">Autentisering krävs</string>
     <string name="login_name">Användarnamn</string>
     <string name="login_password">Lösenord</string>

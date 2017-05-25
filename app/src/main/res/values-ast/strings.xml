@@ -386,7 +386,6 @@
     <string name="crash_dialog_comment_prompt">Equí pues amestar información y comentarios estra:</string>
     <string name="antinonfreeassetslist">Esta aplicación contién activos non llibres</string>
 
-    <string name="by_author">por</string>
     <string name="useTor">Usar Tor</string>
     <string name="useTorSummary">Forcia la descaga\'l tráficu pente Tor pa una privacidá aumentada</string>
     <string name="swap_stopping_wifi">Parando Wi-Fi…</string>

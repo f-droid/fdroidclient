@@ -390,7 +390,6 @@
     <string name="login_title">Απαιτείται πιστοποίηση</string>
     <string name="useTor">Χρήση Tor</string>
     <string name="empty_search_installed_app_list">Καμία από τις εγκαταστημένες εφαρμογές δεν ταιριάζει.</string>
-    <string name="by_author">από</string>
     <string name="keep_install_history">Αποθήκευση ιστορικού εγκαταστάσεων</string>
     <string name="keep_install_history_summary">Αποθηκεύστε ένα αρχείο όλων των εγκαταστάσεων και απεγκαταστάσεων μέσα
         στο F-Droid

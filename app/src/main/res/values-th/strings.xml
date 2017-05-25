@@ -8,7 +8,6 @@
         ดำเนินการต่อหรือไม่?
     </string>
     <string name="version">รุ่น</string>
-    <string name="by_author">โดย</string>
     <string name="delete">ลบ</string>
     <string name="enable_nfc_send">เปิดใช้การแบ่งปันโปรแกรมผ่าน NFC…</string>
     <string name="cache_downloaded">เก็บไฟล์โปรแกรมที่ดาวน์โหลดไว้</string>

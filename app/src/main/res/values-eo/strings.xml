@@ -113,7 +113,6 @@
         version, la malnova devas esti malinstalita unue. Bonvolu fari tion kaj reprovi. (rigardu ke malinstalado
         forigos ĉiujn internajn datumojn konservitajn en la aplikaĵo)
     </string>
-    <string name="by_author">de</string>
     <string name="enable_nfc_send">Aktivigi sendadon tra NFC…</string>
     <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>
     <string name="unstable_updates_summary">Proponi ĝisdatigojn al nestabilaj versioj</string>

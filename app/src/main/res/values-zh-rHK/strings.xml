@@ -383,7 +383,6 @@ F-Droid 並不提供您裝置上的應用程式。
 </string>
     <string name="useTor">使用 Tor</string>
     <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
-    <string name="by_author">作者為</string>
     <string name="useTorSummary">要求下載流量經過 Tor，以加強對私隱的保障</string>
     <string name="update_auto_download">自動下載更新</string>
     <string name="update_auto_download_summary">將會自動下載更新，下載完畢後

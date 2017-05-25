@@ -46,7 +46,6 @@
     </string>
     <string name="app_name">F-Droid</string>
 
-    <string name="by_author">de catre</string>
     <string name="enable_nfc_send">Activeaza trimiterea prin NFC…</string>
     <string name="update_interval">Interval actualizari automate</string>
     <string name="automatic_scan_wifi">Doar prin Wi-Fi</string>
