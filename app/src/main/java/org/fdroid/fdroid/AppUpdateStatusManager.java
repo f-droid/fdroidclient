@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.TaskStackBuilder;
@@ -66,6 +68,7 @@ public final class AppUpdateStatusManager {
     public static final String BROADCAST_APPSTATUS_REMOVED = "org.fdroid.fdroid.installer.appstatus.appchange.remove";
 
     public static final String EXTRA_APK_URL = "urlstring";
+    public static final String EXTRA_STATUS = "status";
 
     public static final String EXTRA_REASON_FOR_CHANGE = "reason";
 
@@ -102,7 +105,7 @@ public final class AppUpdateStatusManager {
 
     private static AppUpdateStatusManager instance;
 
-    public class AppUpdateStatus {
+    public static class AppUpdateStatus implements Parcelable {
         public final App app;
         public final Apk apk;
         public Status status;
@@ -127,6 +130,59 @@ public final class AppUpdateStatusManager {
          */
         public String toString() {
             return app.packageName + " [Status: " + status + ", Progress: " + progressCurrent + " / " + progressMax + "]";
+        }
+
+        protected AppUpdateStatus(Parcel in) {
+            app = in.readParcelable(getClass().getClassLoader());
+            apk = in.readParcelable(getClass().getClassLoader());
+            intent = in.readParcelable(getClass().getClassLoader());
+            status = (Status) in.readSerializable();
+            progressCurrent = in.readInt();
+            progressMax = in.readInt();
+            errorText = in.readString();
+        }
+
+        @Override
+        public void writeToParcel(@NonNull Parcel dest, int flags) {
+            dest.writeParcelable(app, 0);
+            dest.writeParcelable(apk, 0);
+            dest.writeParcelable(intent, 0);
+            dest.writeSerializable(status);
+            dest.writeInt(progressCurrent);
+            dest.writeInt(progressMax);
+            dest.writeString(errorText);
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        public static final Parcelable.Creator<AppUpdateStatus> CREATOR = new Parcelable.Creator<AppUpdateStatus>() {
+            @Override
+            public AppUpdateStatus createFromParcel(Parcel in) {
+                return new AppUpdateStatus(in);
+            }
+
+            @Override
+            public AppUpdateStatus[] newArray(int size) {
+                return new AppUpdateStatus[size];
+            }
+        };
+
+        /**
+         * When passing to the broadcast manager, it is important to pass a copy rather than the original object.
+         * This is because if two status changes are noticed in the same event loop, than they will both refer
+         * to the same status object. The objects are not parceled until the end of the event loop, and so the first
+         * parceled event will refer to the updated object (with a different status) rather than the intended
+         * status (i.e. the one in existence when talking to the broadcast manager).
+         */
+        public AppUpdateStatus copy() {
+            AppUpdateStatus copy = new AppUpdateStatus(app, apk, status, intent);
+            copy.errorText = errorText;
+            copy.progressCurrent = progressCurrent;
+            copy.progressMax = progressMax;
+            return copy;
         }
     }
 
@@ -209,6 +265,7 @@ public final class AppUpdateStatusManager {
         if (!isBatchUpdating) {
             Intent broadcastIntent = new Intent(BROADCAST_APPSTATUS_ADDED);
             broadcastIntent.putExtra(EXTRA_APK_URL, entry.getUniqueKey());
+            broadcastIntent.putExtra(EXTRA_STATUS, entry.copy());
             localBroadcastManager.sendBroadcast(broadcastIntent);
         }
     }
@@ -217,6 +274,7 @@ public final class AppUpdateStatusManager {
         if (!isBatchUpdating) {
             Intent broadcastIntent = new Intent(BROADCAST_APPSTATUS_CHANGED);
             broadcastIntent.putExtra(EXTRA_APK_URL, entry.getUniqueKey());
+            broadcastIntent.putExtra(EXTRA_STATUS, entry.copy());
             broadcastIntent.putExtra(EXTRA_IS_STATUS_UPDATE, isStatusUpdate);
             localBroadcastManager.sendBroadcast(broadcastIntent);
         }
@@ -226,6 +284,7 @@ public final class AppUpdateStatusManager {
         if (!isBatchUpdating) {
             Intent broadcastIntent = new Intent(BROADCAST_APPSTATUS_REMOVED);
             broadcastIntent.putExtra(EXTRA_APK_URL, entry.getUniqueKey());
+            broadcastIntent.putExtra(EXTRA_STATUS, entry.copy());
             localBroadcastManager.sendBroadcast(broadcastIntent);
         }
     }

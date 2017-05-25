@@ -527,13 +527,11 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     private final BroadcastReceiver appStatusReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String apkUrl = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
-            AppUpdateStatusManager.AppUpdateStatus status = AppUpdateStatusManager.getInstance(context).get(apkUrl);
+            AppUpdateStatusManager.AppUpdateStatus status = intent.getParcelableExtra(AppUpdateStatusManager.EXTRA_STATUS);
 
             boolean isRemoving = TextUtils.equals(intent.getAction(), AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
-            // !TextUtils.equals(status.apk.packageName, app.packageName)
-            if (status == null && currentStatus != null && isRemoving && !TextUtils.equals(apkUrl, currentStatus.getUniqueKey())) {
-                Utils.debugLog(TAG, "Ignoring app status change because it belongs to " + apkUrl + " not " + currentStatus.getUniqueKey());
+            if (currentStatus != null && isRemoving && !TextUtils.equals(status.getUniqueKey(), currentStatus.getUniqueKey())) {
+                Utils.debugLog(TAG, "Ignoring app status change because it belongs to " + status.getUniqueKey() + " not " + currentStatus.getUniqueKey());
             } else if (status != null && !TextUtils.equals(status.apk.packageName, app.packageName)) {
                 Utils.debugLog(TAG, "Ignoring app status change because it belongs to " + status.apk.packageName + " not " + app.packageName);
             } else {
