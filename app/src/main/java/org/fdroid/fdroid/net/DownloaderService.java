@@ -33,6 +33,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
 import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkCache;
@@ -200,7 +201,11 @@ public class DownloaderService extends Service {
                 }
             });
             downloader.download();
-            sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile);
+            if (downloader.isNotFound()) {
+                sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, getString(R.string.download_404));
+            } else {
+                sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile);
+            }
         } catch (InterruptedException e) {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile);
         } catch (IOException e) {

@@ -166,7 +166,7 @@ public class InstallManagerService extends Service {
             return START_NOT_STICKY;
         }
 
-        appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.Unknown, null);
+        appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.PendingDownload, null);
         appUpdateStatusManager.markAsPendingInstall(urlString);
 
         registerApkDownloaderReceivers(urlString);
@@ -270,7 +270,7 @@ public class InstallManagerService extends Service {
 
                 switch (intent.getAction()) {
                     case Downloader.ACTION_STARTED:
-                        // App should currently be in the "Unknown" state, so this changes it to "Downloading".
+                        // App should currently be in the "PendingDownload" state, so this changes it to "Downloading".
                         Intent intentObject = new Intent(context, InstallManagerService.class);
                         intentObject.setAction(ACTION_CANCEL);
                         intentObject.setData(downloadUri);
@@ -299,7 +299,7 @@ public class InstallManagerService extends Service {
                         break;
                     case Downloader.ACTION_INTERRUPTED:
                         appUpdateStatusManager.markAsNoLongerPendingInstall(urlString);
-                        appUpdateStatusManager.updateApk(urlString, AppUpdateStatusManager.Status.Unknown, null);
+                        appUpdateStatusManager.setDownloadError(urlString, intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     default:

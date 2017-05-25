@@ -83,7 +83,8 @@ public final class AppUpdateStatusManager {
     private static final String LOGTAG = "AppUpdateStatusManager";
 
     public enum Status {
-        Unknown,
+        PendingDownload,
+        DownloadInterrupted,
         UpdateAvailable,
         Downloading,
         ReadyToInstall,
@@ -119,6 +120,13 @@ public final class AppUpdateStatusManager {
 
         public String getUniqueKey() {
             return apk.getUrl();
+        }
+
+        /**
+         * Dumps some information about the status for debugging purposes.
+         */
+        public String toString() {
+            return app.packageName + " [Status: " + status + ", Progress: " + progressCurrent + " / " + progressMax + "]";
         }
     }
 
@@ -312,6 +320,21 @@ public final class AppUpdateStatusManager {
                 entry.progressMax = max;
                 entry.progressCurrent = current;
                 notifyChange(entry, false);
+            }
+        }
+    }
+
+    /**
+     * @param errorText If null, then it is likely because the user cancelled the download.
+     */
+    public void setDownloadError(String url, @Nullable String errorText) {
+        synchronized (appMapping) {
+            AppUpdateStatus entry = appMapping.get(url);
+            if (entry != null) {
+                entry.status = Status.DownloadInterrupted;
+                entry.errorText = errorText;
+                entry.intent = null;
+                notifyChange(entry, true);
             }
         }
     }

@@ -28,6 +28,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
@@ -35,6 +36,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.LocalBroadcastManager;
@@ -65,12 +67,12 @@ import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.installer.InstallerService;
-import org.fdroid.fdroid.net.Downloader;
-import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
 import org.fdroid.fdroid.views.OverscrollLinearLayoutManager;
 import org.fdroid.fdroid.views.ShareChooserDialog;
 import org.fdroid.fdroid.views.apps.FeatureImage;
+
+import java.util.Iterator;
 
 public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog.ShareChooserDialogListener, AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks {
 
@@ -88,7 +90,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     private RecyclerView recyclerView;
     private AppDetailsRecyclerViewAdapter adapter;
     private LocalBroadcastManager localBroadcastManager;
-    private String activeDownloadUrlString;
+    private AppUpdateStatusManager.AppUpdateStatus currentStatus;
 
     /**
      * Check if {@code packageName} is currently visible to the user.
@@ -125,7 +127,10 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         OverscrollLinearLayoutManager lm = new OverscrollLinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         lm.setStackFromEnd(false);
 
-        /** The recyclerView/AppBarLayout combo has a bug that prevents a "fling" from the bottom
+        // Has to be invoked after AppDetailsRecyclerViewAdapter is created.
+        refreshStatus();
+
+        /* The recyclerView/AppBarLayout combo has a bug that prevents a "fling" from the bottom
          * to continue all the way to the top by expanding the AppBarLayout. It will instead stop
          * with the app bar in a collapsed state. See here: https://code.google.com/p/android/issues/detail?id=177729
          * Not sure this is the exact issue, but it is true that while in a fling the RecyclerView will
@@ -234,6 +239,28 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 appObserver);
 
         updateNotificationsForApp();
+        refreshStatus();
+        registerAppStatusReceiver();
+    }
+
+    /**
+     * Figures out the current install/update/download/etc status for the app we are viewing.
+     * Then, asks the view to update itself to reflect this status.
+     */
+    private void refreshStatus() {
+        Iterator<AppUpdateStatusManager.AppUpdateStatus> statuses = AppUpdateStatusManager.getInstance(this).getByPackageName(app.packageName).iterator();
+        if (statuses.hasNext()) {
+            AppUpdateStatusManager.AppUpdateStatus status = statuses.next();
+            updateAppStatus(status, false);
+        }
+
+        currentStatus = null;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterAppStatusReceiver();
     }
 
     protected void onStop() {
@@ -395,6 +422,11 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     }
 
     private void initiateInstall(Apk apk) {
+        if (isAppDownloading()) {
+            Log.i(TAG, "Ignoring request to install " + apk.packageName + " version " + apk.versionName + ", as we are already downloading (either that or a different version).");
+            return;
+        }
+
         Installer installer = InstallerFactory.create(this, apk);
         Intent intent = installer.getPermissionScreen();
         if (intent != null) {
@@ -408,8 +440,6 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
     }
 
     private void startInstall(Apk apk) {
-        activeDownloadUrlString = apk.getUrl();
-        registerDownloaderReceiver();
         InstallManagerService.queue(this, app, apk);
     }
 
@@ -427,52 +457,87 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         localBroadcastManager.unregisterReceiver(uninstallReceiver);
     }
 
-    private void registerDownloaderReceiver() {
-        if (activeDownloadUrlString != null) { // if a download is active
-            String url = activeDownloadUrlString;
-            localBroadcastManager.registerReceiver(downloadReceiver,
-                    DownloaderService.getIntentFilter(url));
-        }
+    private void registerAppStatusReceiver() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
+        filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED);
+        filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
+        localBroadcastManager.registerReceiver(appStatusReceiver, filter);
     }
 
-    private void unregisterDownloaderReceiver() {
-        localBroadcastManager.unregisterReceiver(downloadReceiver);
+    private void unregisterAppStatusReceiver() {
+        localBroadcastManager.unregisterReceiver(appStatusReceiver);
     }
 
     private void unregisterInstallReceiver() {
         localBroadcastManager.unregisterReceiver(installReceiver);
     }
 
-    private final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
+    private void updateAppStatus(@Nullable AppUpdateStatusManager.AppUpdateStatus newStatus, boolean justReceived) {
+        this.currentStatus = newStatus;
+        if (this.currentStatus == null) {
+            return;
+        }
+
+        switch (newStatus.status) {
+            case PendingDownload:
+                adapter.setProgress(-1, -1, R.string.download_pending);
+                break;
+
+            case Downloading:
+                if (newStatus.progressMax == 0) {
+                    // The first progress notification we get telling us our status is "Downloading"
+                    adapter.setProgress(-1, -1, 0);
+                } else {
+                    adapter.setProgress(newStatus.progressCurrent, newStatus.progressMax, 0);
+                }
+                break;
+
+            case ReadyToInstall:
+                if (justReceived) {
+                    adapter.clearProgress();
+                    localBroadcastManager.registerReceiver(installReceiver, Installer.getInstallIntentFilter(Uri.parse(newStatus.getUniqueKey())));
+                }
+                break;
+
+            case DownloadInterrupted:
+                if (justReceived) {
+                    if (TextUtils.isEmpty(newStatus.errorText)) {
+                        Toast.makeText(this, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
+                    } else {
+                        String msg = newStatus.errorText + " " + newStatus.getUniqueKey();
+                        Toast.makeText(this, R.string.download_error, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+                    }
+
+                    adapter.clearProgress();
+                }
+                break;
+
+            case Installing:
+            case Installed:
+            case UpdateAvailable:
+            case InstallError:
+                // Ignore.
+                break;
+        }
+
+    }
+
+    private final BroadcastReceiver appStatusReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            switch (intent.getAction()) {
-                case Downloader.ACTION_STARTED:
-                    adapter.setProgress(-1, -1, R.string.download_pending);
-                    break;
-                case Downloader.ACTION_PROGRESS:
-                    adapter.setProgress(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
-                            intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1), 0);
-                    break;
-                case Downloader.ACTION_COMPLETE:
-                    // Starts the install process once the download is complete.
-                    cleanUpFinishedDownload();
-                    localBroadcastManager.registerReceiver(installReceiver,
-                            Installer.getInstallIntentFilter(intent.getData()));
-                    break;
-                case Downloader.ACTION_INTERRUPTED:
-                    if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
-                        String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
-                                + " " + intent.getDataString();
-                        Toast.makeText(context, R.string.download_error, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
-                    } else { // user canceled
-                        Toast.makeText(context, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
-                    }
-                    cleanUpFinishedDownload();
-                    break;
-                default:
-                    throw new RuntimeException("intent action not handled!");
+            String apkUrl = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
+            AppUpdateStatusManager.AppUpdateStatus status = AppUpdateStatusManager.getInstance(context).get(apkUrl);
+
+            boolean isRemoving = TextUtils.equals(intent.getAction(), AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
+            // !TextUtils.equals(status.apk.packageName, app.packageName)
+            if (status == null && currentStatus != null && isRemoving && !TextUtils.equals(apkUrl, currentStatus.getUniqueKey())) {
+                Utils.debugLog(TAG, "Ignoring app status change because it belongs to " + apkUrl + " not " + currentStatus.getUniqueKey());
+            } else if (status != null && !TextUtils.equals(status.apk.packageName, app.packageName)) {
+                Utils.debugLog(TAG, "Ignoring app status change because it belongs to " + status.apk.packageName + " not " + app.packageName);
+            } else {
+                updateAppStatus(status, true);
             }
         }
     };
@@ -602,33 +667,12 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         Utils.debugLog(TAG, "Getting application details for " + packageName);
         App newApp = null;
 
-        calcActiveDownloadUrlString(packageName);
-
         if (!TextUtils.isEmpty(packageName)) {
             newApp = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), packageName);
         }
 
         setApp(newApp);
         return this.app != null;
-    }
-
-    private void calcActiveDownloadUrlString(String packageName) {
-        String urlString = getPreferences(MODE_PRIVATE).getString(packageName, null);
-        if (DownloaderService.isQueuedOrActive(urlString)) {
-            activeDownloadUrlString = urlString;
-        } else {
-            // this URL is no longer active, remove it
-            getPreferences(MODE_PRIVATE).edit().remove(packageName).apply();
-        }
-    }
-
-    /**
-     * Remove progress listener, suppress progress bar, set downloadHandler to null.
-     */
-    private void cleanUpFinishedDownload() {
-        activeDownloadUrlString = null;
-        adapter.clearProgress();
-        unregisterDownloaderReceiver();
     }
 
     private void onAppChanged() {
@@ -641,6 +685,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
                 }
                 AppDetailsRecyclerViewAdapter adapter = (AppDetailsRecyclerViewAdapter) recyclerView.getAdapter();
                 adapter.updateItems(app);
+                refreshStatus();
                 supportInvalidateOptionsMenu();
             }
         });
@@ -648,7 +693,8 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
     @Override
     public boolean isAppDownloading() {
-        return !TextUtils.isEmpty(activeDownloadUrlString);
+        return currentStatus != null &&
+                (currentStatus.status == AppUpdateStatusManager.Status.PendingDownload || currentStatus.status == AppUpdateStatusManager.Status.Downloading);
     }
 
     @Override
@@ -675,8 +721,9 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
     @Override
     public void installCancel() {
-        if (!TextUtils.isEmpty(activeDownloadUrlString)) {
-            InstallManagerService.cancel(this, activeDownloadUrlString);
+        if (isAppDownloading()) {
+            InstallManagerService.cancel(this, currentStatus.getUniqueKey());
+            adapter.clearProgress();
         }
     }
 
