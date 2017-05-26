@@ -12,7 +12,6 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.TextViewCompat;
-import android.support.v7.text.AllCapsTransformationMethod;
 import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -358,11 +357,6 @@ public class AppDetailsRecyclerViewAdapter
                     updateAntiFeaturesWarning();
                 }
             });
-            // Set ALL caps (in a way compatible with SDK 10)
-            AllCapsTransformationMethod allCapsTransformation = new AllCapsTransformationMethod(view.getContext());
-            buttonPrimaryView.setTransformationMethod(allCapsTransformation);
-            buttonSecondaryView.setTransformationMethod(allCapsTransformation);
-            descriptionMoreView.setTransformationMethod(allCapsTransformation);
         }
 
         public void setProgress(int bytesDownloaded, int totalBytes, int resIdString) {
