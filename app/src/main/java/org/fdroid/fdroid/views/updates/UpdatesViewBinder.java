@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
@@ -14,6 +15,7 @@ public class UpdatesViewBinder {
     private final UpdatesAdapter adapter;
     private final RecyclerView list;
     private final TextView emptyState;
+    private final ImageView emptyImage;
 
     public UpdatesViewBinder(AppCompatActivity activity, FrameLayout parent) {
         View view = activity.getLayoutInflater().inflate(R.layout.main_tab_updates, parent, true);
@@ -27,6 +29,7 @@ public class UpdatesViewBinder {
         list.setAdapter(adapter);
 
         emptyState = (TextView) view.findViewById(R.id.empty_state);
+        emptyImage = (ImageView) view.findViewById(R.id.image);
     }
 
     public void bind() {
@@ -41,9 +44,11 @@ public class UpdatesViewBinder {
         if (adapter.getItemCount() == 0) {
             list.setVisibility(View.GONE);
             emptyState.setVisibility(View.VISIBLE);
+            emptyImage.setVisibility(View.VISIBLE);
         } else {
             list.setVisibility(View.VISIBLE);
             emptyState.setVisibility(View.GONE);
+            emptyImage.setVisibility(View.GONE);
         }
     }
 
