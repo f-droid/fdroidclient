@@ -691,8 +691,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
     @Override
     public boolean isAppDownloading() {
-        return currentStatus != null &&
-                (currentStatus.status == AppUpdateStatusManager.Status.PendingDownload || currentStatus.status == AppUpdateStatusManager.Status.Downloading);
+        return currentStatus != null && currentStatus.isDownloading();
     }
 
     @Override
