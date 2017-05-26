@@ -42,6 +42,7 @@
                     android:layout_alignParentTop="true"
                     android:paddingRight="8dp"
                     android:paddingEnd="8dp"
+                    android:transitionName="@string/transition_app_item_icon"
                     android:src="@drawable/ic_repo_app_default" />
 
                 <!-- Name, Author (optional), Updated date -->
