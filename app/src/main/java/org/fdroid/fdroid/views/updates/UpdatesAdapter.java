@@ -20,10 +20,8 @@ import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.views.updates.items.AppNotification;
 import org.fdroid.fdroid.views.updates.items.AppStatus;
 import org.fdroid.fdroid.views.updates.items.AppUpdateData;
-import org.fdroid.fdroid.views.updates.items.DonationPrompt;
 import org.fdroid.fdroid.views.updates.items.UpdateableApp;
 import org.fdroid.fdroid.views.updates.items.UpdateableAppsHeader;
 
@@ -45,8 +43,8 @@ import java.util.Set;
  *    + Once "Show apps" is expanded then each app is shown along with its own download button.
  *
  * It does this by maintaining several different lists of interesting apps. Each list contains wrappers
- * around the piece of data it wants to render ({@link AppStatus}, {@link DonationPrompt},
- * {@link AppNotification}, {@link UpdateableApp}). Instead of juggling the various viewTypes
+ * around the piece of data it wants to render ({@link AppStatus}, {@link UpdateableApp}).
+ * Instead of juggling the various viewTypes
  * to find out which position in the adapter corresponds to which view type, this is handled by
  * the {@link UpdatesAdapter#delegatesManager}.
  *
@@ -68,8 +66,6 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private final AppCompatActivity activity;
 
     private final List<AppStatus> appsToShowStatus = new ArrayList<>();
-    private final List<DonationPrompt> appsToPromptForDonation = new ArrayList<>();
-    private final List<AppNotification> appsToNotifyAbout = new ArrayList<>();
     private final List<UpdateableApp> updateableApps = new ArrayList<>();
 
     private boolean showAllUpdateableApps = false;
@@ -78,8 +74,6 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.activity = activity;
 
         delegatesManager.addDelegate(new AppStatus.Delegate(activity))
-                .addDelegate(new AppNotification.Delegate())
-                .addDelegate(new DonationPrompt.Delegate())
                 .addDelegate(new UpdateableApp.Delegate(activity))
                 .addDelegate(new UpdateableAppsHeader.Delegate(activity));
 
@@ -164,9 +158,6 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 }
             }
         }
-
-        items.addAll(appsToPromptForDonation);
-        items.addAll(appsToNotifyAbout);
     }
 
     @Override
