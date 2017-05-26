@@ -47,7 +47,6 @@ import org.fdroid.fdroid.net.DownloaderService;
 import java.io.File;
 
 // TODO: Support cancelling of downloads by tapping the install button a second time.
-// TODO: Support installing of an app once downloaded by tapping the install button a second time.
 public class AppListItemController extends RecyclerView.ViewHolder {
 
     private static final String TAG = "AppListItemController";
@@ -79,13 +78,15 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     private final ImageButton cancelButton;
 
     /**
-     * Will operate as the "Download is complete, click to (install|update)" button.
+     * Will operate as the "Download is complete, click to (install|update)" button, as well as the
+     * "Installed successfully, click to run" button.
      */
     @Nullable
     private final Button actionButton;
 
     private final DisplayImageOptions displayImageOptions;
 
+    @Nullable
     private App currentApp;
     private String currentAppDownloadUrl;
 
@@ -416,7 +417,9 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             cancelButton.setVisibility(View.GONE);
         }
 
-        configureActionButton(currentApp);
+        if (currentApp != null) {
+            configureActionButton(currentApp);
+        }
     }
 
     @SuppressWarnings("FieldCanBeLocal")
