@@ -47,6 +47,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -108,6 +109,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         toolbar.setTitle(""); // Nice and clean toolbar
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        supportPostponeEnterTransition();
 
         if (!reset(getPackageNameFromIntent(getIntent()))) {
             finish();
@@ -154,6 +156,16 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         });
         recyclerView.setLayoutManager(lm);
         recyclerView.setAdapter(adapter);
+
+        recyclerView.getViewTreeObserver().addOnPreDrawListener(
+                new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        supportStartPostponedEnterTransition();
+                        return true;
+                    }
+                }
+        );
 
         // Load the feature graphic, if present
         final FeatureImage featureImage = (FeatureImage) findViewById(R.id.feature_graphic);

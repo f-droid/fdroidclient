@@ -51,6 +51,7 @@
                 android:layout_height="48dp"
                 tools:src="@drawable/ic_launcher"
                 android:scaleType="fitCenter"
+                android:transitionName="@string/transition_app_item_icon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
