@@ -118,7 +118,7 @@
     <string name="show_incompat_versions">不相容的版本</string>
     <string name="show_incompat_versions_on">顯示與裝置不相容的應用程式版本</string>
     <string name="rooted">忽略 root</string>
-    <string name="rooted_on">不要以灰色顯示需要 root 權限的應用程式</string>
+    <string name="rooted_on">不要以暗灰顯示需要 root 權限的應用程式</string>
     <string name="ignoreTouch">忽略觸控螢幕</string>
     <string name="ignoreTouch_on">永遠包含需要觸控螢幕的應用程式</string>
 
@@ -404,8 +404,8 @@
     <string name="keep_install_history_summary">F-Droid 裡面的所有安裝和解除安裝存放在一個日誌中</string>
     <string name="update_auto_install">自動安裝更新</string>
     <string name="update_auto_install_summary">在背景下載並且安裝更新的應用程式</string>
-    <string name="hide_anti_feature_apps">以灰色顯示 anti-features 應用程式</string>
-    <string name="hide_anti_feature_apps_on">以灰色顯示需要 anti-features 的應用程式</string>
+    <string name="hide_anti_feature_apps">以暗灰顯示 anti-features 應用程式</string>
+    <string name="hide_anti_feature_apps_on">以暗灰顯示需要 anti-features 的應用程式</string>
     <string name="warning_no_internet">無法更新，您是否已連接到網路？</string>
     <string name="versions">版本</string>
     <string name="app_details_donate_prompt_unknown_author">購買%1$s開發者的咖啡！</string>
@@ -510,4 +510,22 @@
     <string name="app__tts__downloading_progress">正在下载的 %1$d%% 完成</string>
     <string name="menu_license">授權：%s</string>
     <string name="install_error_not_yet_supported">還未安裝檔案類型：%s</string>
-    </resources>
+    <plurals name="notification_summary_more">
+	<item quantity="other">+%1$d 更多…</item>
+	</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="other">%1$d 更新</item>
+	</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="other">%1$d 應用程式已安裝</item>
+	</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="other">已更新於 %1$s 周前</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="other">已更新於 %1$s 月前</item>
+	</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="other">已更新於 %1$s 年前</item>
+	</plurals>
+</resources>

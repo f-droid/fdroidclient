@@ -107,7 +107,7 @@
     <string name="menu_manage">Argiewe</string>
     <string name="repositories_summary">Laai addisionele program bronne</string>
     <string name="menu_send_apk_bt">Deel F-Droid via Bluetooth</string>
-    <string name="menu_settings">Instellings</string>
+    <string name="menu_settings">Opsies</string>
     <string name="menu_about">Iesie oor</string>
     <string name="menu_search">Soek</string>
     <string name="menu_add_repo">Nuwe argief</string>
@@ -215,7 +215,7 @@
 
         Let wel: Alle voorheen geïnstalleerde programme sal op jou toestel bly.
     </string>
-    <string name="cache_downloaded">Behou gekaste programme</string>
+    <string name="cache_downloaded">Hou gebergte programme</string>
     <string name="uninstall_system_summary">Wys die bevoorregte uitbreiding detail besonderhede skerm vir opdatering of
         verdydering
     </string>
@@ -275,7 +275,7 @@
         Probeer \'n ander kategorie te kies of om jou argiewe op te dateer om sodoende kry \'n vars lys van programme te
         kry."
     </string>
-    <string name="empty_can_update_app_list">Baie geluk! Al jou programme is op datum (of jou argiewe is verouderd).</string>
+    <string name="empty_can_update_app_list">Baie geluk! Al jou programme is op datum (of jou argiewe is verouderd)</string>
     <string name="empty_search_installed_app_list">Geen ooreenstemende geïnstalleerde programme.</string>
     <string name="empty_search_available_app_list">Geen ooreenstemende programme beskikbaar.</string>
     <string name="empty_search_can_update_app_list">Geen ooreenstemende programme vir opdatering.</string>
@@ -549,4 +549,16 @@
 	<item quantity="one">%1$s dag gelede opgedateer</item>
 	<item quantity="other">%1$s dae gelede opgedateer</item>
 </plurals>
-</resources>
+<plurals name="notification_summary_more">
+	<item quantity="one">+%1$d meer…</item>
+	<item quantity="other">+%1$d meer…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d Opdatering</item>
+	<item quantity="other">%1$d Opdaterings</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d Program geïnstalleer</item>
+	<item quantity="other">%1$d Programme geïnstalleer</item>
+</plurals>
+    </resources>

@@ -538,4 +538,22 @@
     <string name="app__tts__downloading_progress">Mengunduh, %1$d%% selesai</string>
     <string name="menu_license">Lisensi: %s</string>
     <string name="install_error_not_yet_supported">Tipe berkas belum dapat dipasang: %s</string>
-    </resources>
+    <plurals name="notification_summary_more">
+	<item quantity="other">+%1$d lainnya…</item>
+	</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="other">%1$d Pembaruan</item>
+	</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="other">%1$d Apl Terpasang</item>
+	</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="other">Diperbarui %1$s minggu yang lalu</item>
+	</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="other">Diperbarui %1$s bulan yang lalu</item>
+	</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="other">Diperbarui %1$s tahun yang lalu</item>
+	</plurals>
+</resources>

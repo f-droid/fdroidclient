@@ -529,4 +529,28 @@
     <string name="app__tts__downloading_progress">Elŝutado, %1$d%% kompleta</string>
     <string name="menu_license">Permesilo: %s</string>
     <string name="install_error_not_yet_supported">Dosier-tipo ne povas ankoraŭ esti instalita: %s</string>
-    </resources>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d pli…</item>
+	<item quantity="other">+1$d pli…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d ĝisdatigo</item>
+	<item quantity="other">%1$d ĝisdatigoj</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d instalita aplikaĵo</item>
+	<item quantity="other">%1$d instalitaj aplikaĵoj</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Ĝisdatigita antaŭ %1$s semajno</item>
+	<item quantity="other">Ĝisdatigita antaŭ %1$s semajnoj</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Ĝisdatigita antaŭ %1$s monato</item>
+	<item quantity="other">Ĝisdatigita antaŭ %1$s monatoj</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Ĝisdatigita antaŭ %1$s jaro</item>
+	<item quantity="other">Ĝisdatigita antaŭ %1$s jaroj</item>
+</plurals>
+</resources>

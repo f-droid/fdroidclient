@@ -351,4 +351,15 @@
     <string name="menu_email">E-mail tác giả</string>
     <string name="useTor">Sử dụng Tor</string>
     <string name="useTorSummary">Tải xuống thông qua Tor để tăng tính riêng tư</string>
-</resources>
+<string name="main_menu__swap_nearby">Gần đó</string>
+
+    <string name="main_menu__latest_apps">Hiện hành</string>
+    <string name="main_menu__categories">Hạng mục</string>
+    <string name="preference_manage_installed_apps">Quản lý các ứng dụng đã cài đặt</string>
+
+
+    <string name="notification_action_update">Cập nhật</string>
+    <string name="notification_action_cancel">Hủy bỏ</string>
+    <string name="notification_action_install">Cài đặt</string>
+
+    </resources>

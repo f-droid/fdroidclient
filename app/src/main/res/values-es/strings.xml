@@ -185,7 +185,7 @@
     <string name="system_install_denied_body">"Esta opción sólo está disponible cuando la extensión de F-Droid con
         permisos de sistema está instalada."
     </string>
-    <string name="swap_nfc_description">Si la otra persona tiene F-Droid y activado NFC, poned en contacto vuestros teléfonos.</string>
+    <string name="swap_nfc_description">Si la otra persona tiene instalado F-Droid y activado NFC, poned en contacto vuestros teléfonos.</string>
     <string name="swap_join_same_wifi">Unirse a la misma Red Wi-Fi que la otra persona</string>
     <string name="swap">Intercambiar aplicaciones</string>
     <string name="swap_no_wifi_network">No hay red aún</string>
@@ -230,7 +230,7 @@
     <string name="empty_available_app_list">No hay aplicaciones en esta categoría.\n\nPrueba a seleccionar una categoría
         diferente o actualizar los repositorios para obtener una lista reciente de aplicaciones.
     </string>
-    <string name="empty_can_update_app_list">¡Felicitaciones! Todas tus aplicaciones están actualizadas (o los repositorios están desactualizados).</string>
+    <string name="empty_can_update_app_list">¡Enhorabuena! Todas tus aplicaciones están actualizadas (o los repositorios están desactualizados).</string>
 
     <string name="install_error_unknown">Fallo al instalar, debido a un error desconocido</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>
@@ -258,9 +258,9 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="swap_join_this_hotspot">Facilita que la otra persona se conecte a tu punto de acceso</string>
     <string name="swap_success">¡Intercambio realizado con éxito!</string>
     <string name="swap_active_hotspot">%1$s (tu punto de acceso)</string>
-    <string name="swap_switch_to_wifi">Toca para cambiar a una red Wi-Fi</string>
+    <string name="swap_switch_to_wifi">Tocar para cambiar a una red Wi-Fi</string>
     <string name="swap_dont_show_again">No volver a mostrar esto</string>
-    <string name="swap_scan_or_type_url">Una persona tiene que escanear el código, o escribir la URL de la otra en un navegador.</string>
+    <string name="swap_scan_or_type_url">Una persona tiene que escanear el código o escribir el enlace de la otra en un navegador.</string>
     <string name="swap_choose_apps">Elige las aplicaciones</string>
     <string name="swap_scan_qr">Escanea código QR</string>
     <string name="swap_people_nearby">Personas cercanas</string>
@@ -281,7 +281,7 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="swap_confirm">Confirmar intercambio</string>
     <string name="swap_qr_isnt_for_swap">El código QR escaneado no parece un código de intercambio.</string>
     <string name="bluetooth_unavailable">Bluetooth no disponible</string>
-    <string name="swap_cant_send_no_bluetooth">No se puede enviar F-Droid porque Bluetooth no está disponible en este dispositivo.</string>
+    <string name="swap_cant_send_no_bluetooth">No se puede enviar F-Droid porque este dispositivo carece de Bluetooth.</string>
     <string name="loading">Cargando…</string>
     <string name="swap_connection_misc_error">Ocurrió un error mientras se conectaba al dispositivo. Parece que no
         podemos intercambiar con él.
@@ -495,10 +495,7 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
         <item quantity="other">publicada hace %1$d días</item>
     </plurals>
 
-    <string name="updates__tts__download_app">"El botón de descarga que se encuentra entre el texto en la pantalla de
-        \"Actualizaciones\" solo usa
-        un icono y por tanto necesita algún texto descriptivo para el motor TTS"
-    </string>
+    <string name="updates__tts__download_app">Actualizaciones</string>
     <string name="updates__tts__download_updates_for_all_apps">Descargar todas las actualizaciones</string>
 
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
@@ -519,7 +516,7 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
 	<item quantity="other">Actualizada hace %1$s días</item>
 </plurals>
     <string name="app_list__name__successfully_installed">%1$s se ha instalado con éxito</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">¿Sin internet? ¡Descarga «apps» de gente cercana!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">¿No tienes internet? ¡Descarga aplicaciones de gente cercana!</string>
     <string name="nearby_splash__find_people_button">Encontrar personas cerca de mí</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas partes necesitan %1$s para usar la cercanía.</string>
 
@@ -538,4 +535,28 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="app__tts__downloading_progress">Descargando, %1$d%% completado</string>
     <string name="menu_license">Licencia: %s</string>
     <string name="install_error_not_yet_supported">No se puede instalar el tipo de fichero: %s</string>
-    </resources>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d más…</item>
+	<item quantity="other">+%1$d más…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d actualización</item>
+	<item quantity="other">%1$d actualizaciones</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d «app» instalada</item>
+	<item quantity="other">%1$d «apps» instaladas</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Actualizado hace una semana</item>
+	<item quantity="other">Actualizado hace %1$s semanas</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Actualizado hace un mes</item>
+	<item quantity="other">Actualizado hace %1$s meses</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Actualizado hace un año</item>
+	<item quantity="other">Actualizado hace %1$s años</item>
+</plurals>
+</resources>

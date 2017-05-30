@@ -347,4 +347,22 @@
     <string name="hide_anti_feature_apps">Ellenjavaslattal rendelkező app-ok kiszürkítése</string>
     <string name="hide_anti_feature_apps_on">Alkalmazások kiszürkítése, amik ellenjavaslattal rendelkeznek</string>
     <string name="local_repo_running">Az F-Droid cserére kész</string>
-</resources>
+<string name="main_menu__latest_apps">Legújabb</string>
+    <string name="main_menu__categories">Kategóriák</string>
+    <string name="main_menu__swap_nearby">Közeli</string>
+
+    <string name="preference_manage_installed_apps">Telepített Alkalmazások Kezelése</string>
+
+
+    <string name="notification_action_update">Frissítés</string>
+    <string name="notification_action_cancel">Mégse</string>
+    <string name="notification_action_install">Telepítés</string>
+
+    <string name="updates__tts__download_app">Letöltés</string>
+    <string name="app__newly_added">Új</string>
+    <string name="app__install_downloaded_update">Frissítés</string>
+
+    <string name="installed_apps__activity_title">Telepített Alkalmazások</string>
+    <string name="menu_video">Videó</string>
+    <string name="preference_category__my_apps">Az én-m Apps</string>
+    </resources>

@@ -205,9 +205,7 @@
     <string name="category_Writing">نوشتن</string>
 
     <string name="requesting_root_access_body">در حال درخواست دسترسی ریشه…</string>
-    <string name="empty_can_update_app_list">تمام کاره‌ها به‌روز هستند.\n\nتبریک! تمام کاره‌هایتان به‌روز هستند (یا
-        مخزن‌هایتان منقضی شده‌اند).
-    </string>
+    <string name="empty_can_update_app_list">تبریک! تمام کاره‌هایتان به‌روز هستند (یا مخزن‌هایتان منقضی شده‌اند).</string>
 
     <string name="root_access_denied_title">دسترسی ریشه داده نشد</string>
     <string name="root_access_denied_body">یا افزارهٔ اندرویدیتان روت شده نیست، یا درخواست ریشه برای اف‌دروید را رد
@@ -516,4 +514,29 @@
 	<item quantity="other">‫%1$s روز پیش به‌روز شده‌</item>
 </plurals>
 <string name="menu_license">پروانه: %s</string>
-    </resources>
+    <string name="install_error_not_yet_supported">این نوع فایل نمی تواند نصب شود: %s</string>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d بیشتر…</item>
+	<item quantity="other">+%1$d بیشتر…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d بروزرسانی</item>
+	<item quantity="other">%1$d بروزرسانی ها</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d برنامه نصب شد</item>
+	<item quantity="other">%1$d برنامه ها نصب شدند</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">%1$s هفته پیش بروزرسانی شده است</item>
+	<item quantity="other">%1$s هفته پیش بروزرسانی شده است</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">%1$s ماه پیش بروزرسانی شده است</item>
+	<item quantity="other">%1$s ماه پیش بروزرسانی شده است</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">%1$s سال پیش بروزرسانی شده است</item>
+	<item quantity="other">%1$s سال پیش بروزرسانی شده است</item>
+</plurals>
+</resources>
