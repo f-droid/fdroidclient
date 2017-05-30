@@ -9,6 +9,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +17,7 @@ import org.junit.runner.RunWith;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.IllegalFormatException;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -97,33 +99,33 @@ public class LocalizationTest {
             // Resources() requires DisplayMetrics, but they are only needed for drawables
             resources = new Resources(assets, new DisplayMetrics(), config);
             for (Field field : fields) {
-                //Log.i(TAG, field.getName());
                 int resId = field.getInt(int.class);
                 for (int quantity = 0; quantity < 22; quantity++) {
                     resources.getQuantityString(resId, quantity);
                 }
 
                 String formats = haveFormats.get(field.getName());
-                String formattedString = null;
-                switch (formats) {
-                    case "d":
-                        formattedString = resources.getQuantityString(resId, 1, 1);
-                        break;
-                    case "s":
-                        formattedString = resources.getQuantityString(resId, 1, "ONE");
-                        break;
-                    case "ds":
-                        formattedString = resources.getQuantityString(resId, 2, 1, "TWO");
-                        break;
-                    default:
-                        if (!TextUtils.isEmpty(formats)) {
-                            throw new IllegalStateException("Pattern not included in tests: " + formats);
-                        }
+                try {
+                    switch (formats) {
+                        case "d":
+                            resources.getQuantityString(resId, 1, 1);
+                            break;
+                        case "s":
+                            resources.getQuantityString(resId, 1, "ONE");
+                            break;
+                        case "ds":
+                            resources.getQuantityString(resId, 2, 1, "TWO");
+                            break;
+                        default:
+                            if (!TextUtils.isEmpty(formats)) {
+                                throw new IllegalStateException("Pattern not included in tests: " + formats);
+                            }
+                    }
+                } catch (IllegalFormatException e) {
+                    Log.i(TAG, locale + " " + field.getName());
+                    throw new IllegalArgumentException("Bad '" + formats + "' format in " + locale + " "
+                            + field.getName() + ": " + e.getMessage());
                 }
-                if (formattedString != null) {  // NOPMD
-                    //Log.i(TAG, locale + " " + field.getName() + " FORMATTED: " + formattedString);
-                }
-                //Log.i(TAG, field.getName() + ": " + string);
             }
         }
     }
@@ -159,52 +161,51 @@ public class LocalizationTest {
             haveFormats.put(field.getName(), new String(formats).trim());
         }
 
-        //for (Locale locale : new Locale[]{new Locale("es")}) {
         for (Locale locale : locales) {
             config.locale = locale;
             // Resources() requires DisplayMetrics, but they are only needed for drawables
             resources = new Resources(assets, new DisplayMetrics(), config);
             for (Field field : fields) {
-                //Log.i(TAG, field.getName());
                 int resId = field.getInt(int.class);
                 resources.getString(resId);
 
                 String formats = haveFormats.get(field.getName());
-                String formattedString = null;
-                switch (formats) {
-                    case "d":
-                        formattedString = resources.getString(resId, 1);
-                        break;
-                    case "dd":
-                        formattedString = resources.getString(resId, 1, 2);
-                        break;
-                    case "s":
-                        formattedString = resources.getString(resId, "ONE");
-                        break;
-                    case "ss":
-                        formattedString = resources.getString(resId, "ONE", "TWO");
-                        break;
-                    case "sss":
-                        formattedString = resources.getString(resId, "ONE", "TWO", "THREE");
-                        break;
-                    case "ssss":
-                        formattedString = resources.getString(resId, "ONE", "TWO", "THREE", "FOUR");
-                        break;
-                    case "ssd":
-                        formattedString = resources.getString(resId, "ONE", "TWO", 3);
-                        break;
-                    case "sssd":
-                        formattedString = resources.getString(resId, "ONE", "TWO", "THREE", 4);
-                        break;
-                    default:
-                        if (!TextUtils.isEmpty(formats)) {
-                            throw new IllegalStateException("Pattern not included in tests: " + formats);
-                        }
+                try {
+                    switch (formats) {
+                        case "d":
+                            resources.getString(resId, 1);
+                            break;
+                        case "dd":
+                            resources.getString(resId, 1, 2);
+                            break;
+                        case "s":
+                            resources.getString(resId, "ONE");
+                            break;
+                        case "ss":
+                            resources.getString(resId, "ONE", "TWO");
+                            break;
+                        case "sss":
+                            resources.getString(resId, "ONE", "TWO", "THREE");
+                            break;
+                        case "ssss":
+                            resources.getString(resId, "ONE", "TWO", "THREE", "FOUR");
+                            break;
+                        case "ssd":
+                            resources.getString(resId, "ONE", "TWO", 3);
+                            break;
+                        case "sssd":
+                            resources.getString(resId, "ONE", "TWO", "THREE", 4);
+                            break;
+                        default:
+                            if (!TextUtils.isEmpty(formats)) {
+                                throw new IllegalStateException("Pattern not included in tests: " + formats);
+                            }
+                    }
+                } catch (Exception e) {
+                    Log.i(TAG, locale + " " + field.getName());
+                    throw new IllegalArgumentException("Bad format in '" + locale + "' '" + field.getName() + "': "
+                            + e.getMessage());
                 }
-                if (formattedString != null) {  //NOPMD
-                    //Log.i(TAG, "FORMATTED: " + formattedString);
-                }
-                //Log.i(TAG, field.getName() + ": " + string);
             }
         }
     }
