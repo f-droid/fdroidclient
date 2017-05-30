@@ -291,7 +291,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             } else {
                 name.setText(activity.getString(R.string.app_list__name__downloaded_and_ready_to_install, app.name));
             }
-        } else if (currentStatus != null && currentStatus.isDownloading()) {
+        } else if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Downloading) {
             name.setText(activity.getString(R.string.app_list__name__downloading_in_progress, app.name));
         } else if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Installed) {
             name.setText(activity.getString(R.string.app_list__name__successfully_installed, app.name));
@@ -352,22 +352,6 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             } else {
                 installButton.setVisibility(View.GONE);
             }
-        }
-    }
-
-    private void onDownloadStarted() {
-        if (installButton != null) {
-            installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_progress));
-            installButton.setImageLevel(0);
-        }
-
-        if (progressBar != null) {
-            progressBar.setVisibility(View.VISIBLE);
-            progressBar.setIndeterminate(true);
-        }
-
-        if (cancelButton != null) {
-            cancelButton.setVisibility(View.VISIBLE);
         }
     }
 
@@ -443,10 +427,6 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         configureActionButton(app);
 
         switch (status.status) {
-            case PendingDownload:
-                onDownloadStarted();
-                break;
-
             case Downloading:
                 onDownloadProgressUpdated(status.progressCurrent, status.progressMax);
                 break;
@@ -564,7 +544,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     private final View.OnClickListener onCancelDownload = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (currentStatus == null || !currentStatus.isDownloading()) {
+            if (currentStatus == null || currentStatus.status != AppUpdateStatusManager.Status.Downloading) {
                 return;
             }
 

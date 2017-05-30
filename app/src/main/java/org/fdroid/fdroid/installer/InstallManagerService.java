@@ -166,7 +166,7 @@ public class InstallManagerService extends Service {
             return START_NOT_STICKY;
         }
 
-        appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.PendingDownload, null);
+        appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.Downloading, null);
         appUpdateStatusManager.markAsPendingInstall(urlString);
 
         registerApkDownloaderReceivers(urlString);

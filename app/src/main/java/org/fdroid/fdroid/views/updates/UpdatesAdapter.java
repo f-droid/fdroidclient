@@ -88,8 +88,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      * {@link org.fdroid.fdroid.AppUpdateStatusManager.Status#UpdateAvailable} are not interesting here.
      */
     private boolean shouldShowStatus(AppUpdateStatusManager.AppUpdateStatus status) {
-        return status.status == AppUpdateStatusManager.Status.PendingDownload ||
-                status.status == AppUpdateStatusManager.Status.Downloading ||
+        return status.status == AppUpdateStatusManager.Status.Downloading ||
                 status.status == AppUpdateStatusManager.Status.Installed ||
                 status.status == AppUpdateStatusManager.Status.ReadyToInstall;
     }

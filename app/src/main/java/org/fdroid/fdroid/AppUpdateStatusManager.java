@@ -184,10 +184,6 @@ public final class AppUpdateStatusManager {
             copy.progressMax = progressMax;
             return copy;
         }
-
-        public boolean isDownloading() {
-            return status == Status.Downloading || status == Status.PendingDownload;
-        }
     }
 
     private final Context context;

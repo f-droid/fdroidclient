@@ -480,14 +480,10 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         }
 
         switch (newStatus.status) {
-            case PendingDownload:
-                adapter.setProgress(-1, -1, R.string.download_pending);
-                break;
-
             case Downloading:
                 if (newStatus.progressMax == 0) {
                     // The first progress notification we get telling us our status is "Downloading"
-                    adapter.setProgress(-1, -1, 0);
+                    adapter.setProgress(-1, -1, R.string.download_pending);
                 } else {
                     adapter.setProgress(newStatus.progressCurrent, newStatus.progressMax, 0);
                 }
@@ -691,7 +687,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
 
     @Override
     public boolean isAppDownloading() {
-        return currentStatus != null && currentStatus.isDownloading();
+        return currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Downloading;
     }
 
     @Override
