@@ -379,7 +379,7 @@
     <string name="tap_to_install_format">Націсніце для ўсталёўкі %s</string>
     <string name="tap_to_update_format">Націсніце для абнаўлення %s</string>
     <string name="install_confirm">патрабуе доступ да</string>
-    <string name="install_confirm_update">Хочаце ўсталяваць абнаўленне праграмы? Наяўныя дадзеныя не будуць выдалены.  Абноўленная праграма атрымае доступ да:</string>
+    <string name="install_confirm_update">Хочаце ўсталяваць абнаўленне праграмы? Наяўныя дадзеныя не будуць выдалены. Абноўленная праграма атрымае доступ да:</string>
     <string name="install_confirm_update_system">Хочаце ўсталяваць абнаўленне ўбудаванай праграмы? Наяўныя дадзеныя не будуць выдалены. Абноўленная праграма атрымае доступ да:</string>
     <string name="install_confirm_update_no_perms">Хочаце ўсталяваць абнаўленне праграмы? Наяўныя дадзеныя не будуць выдалены. Праграма не патрабуе адмысловых дазволаў.</string>
     <string name="install_confirm_update_system_no_perms">Хочаце ўсталяваць абнаўленне ўбудаванай праграмы? Наяўныя дадзеныя не будуць выдалены. Праграма не патрабуе адмысловых дазволаў.</string>
@@ -535,4 +535,37 @@
     <string name="app__tts__downloading_progress">Спампоўка, %1$d%% скончана</string>
     <string name="menu_license">Ліцэнзія: %s</string>
     <string name="install_error_not_yet_supported">Тып файла не можа быць усталяваны: %s</string>
-    </resources>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d абнаўленне</item>
+	<item quantity="few">%1$d абнаўленні</item>
+	<item quantity="many">%1$d абнаўленняў</item>
+	</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d праграма ўсталяваная</item>
+	<item quantity="few">%1$d праграмы ўсталяваныя</item>
+	<item quantity="many">%1$d праграм ўсталяваныя</item>
+	</plurals>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d больш…</item>
+	<item quantity="few">+%1$d больш…</item>
+	<item quantity="many">+%1$d больш…</item>
+	</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Абноўленая %1$s тыдзень назад</item>
+        <item quantity="few">Абноўленая %1$s тыдні назад</item>
+        <item quantity="many">Абноўленая %1$s тыдні назад</item>
+	<item quantity="other">Абноўленая %1$s тыдні назад</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Абноўленая %1$s месяц назад</item>
+        <item quantity="few">Абноўленая %1$s месяцы назад</item>
+        <item quantity="many">Абноўленая %1$s месяцы назад</item>
+	<item quantity="other">Абноўленая %1$s месяцы назад</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Абноўленая %1$s год назад</item>
+        <item quantity="few">Абноўленая %1$s гады назад</item>
+        <item quantity="many">Абноўленая %1$s гады назад</item>
+	<item quantity="other">Абноўленая %1$s гады назад</item>
+</plurals>
+</resources>

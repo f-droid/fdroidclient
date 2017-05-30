@@ -484,4 +484,34 @@
     <string name="nearby_splash__find_people_button">Găsește persoane lângă mine</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambele persoane au nevoie de %1$s pentru a putea folosi această opțiune.</string>
 
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d aplicație instalată</item>
+	<item quantity="few">%1$d aplicații instalate</item>
+	<item quantity="other">%1$d de aplicații instalate</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d actualizare</item>
+	<item quantity="few">%1$d actualizări</item>
+	<item quantity="other">%1$d de actualizări</item>
+</plurals>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+ încă %1$d…</item>
+	<item quantity="few">+ încă %1$d…</item>
+	<item quantity="other">+ încă %1$d…</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Actualizat acum %1$s an</item>
+        <item quantity="few">Actualizat acum %1$s ani</item>
+	<item quantity="other">Actualizat acum %1$s ani</item>
+</plurals>
+<plurals name="details_last_update_months">
+	<item quantity="one">Actualizat acum %1$s lună</item>
+    <item quantity="few">Actualizat acum %1$s luni</item>
+	<item quantity="other">Actualizat acum %1$s luni</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Actualizat acum %1$s săptămână</item>
+        <item quantity="few">Actualizat acum %1$s săptămâni</item>
+	<item quantity="other">Actualizat acum %1$s săptămâni</item>
+</plurals>
     </resources>

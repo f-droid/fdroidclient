@@ -270,9 +270,7 @@
     <string name="install_error_unknown">La instal·lació ha fallat per un error desconegut</string>
     <string name="uninstall_error_unknown">La desinstal·lació ha fallat per un error desconegut</string>
     <string name="system_install_denied_title">L\'Extensió Privilegiada d\'F-Droid no està disponible</string>
-    <string name="empty_can_update_app_list">Totes les aplicacions estan actualitzades.\n\nFelicitats! Totes les vostres
-        aplicacions estan actualitzades (o els repositoris no ho estan).
-    </string>
+    <string name="empty_can_update_app_list">Felicitats! Totes les vostres aplicacions estan actualitzades (o els repositoris no ho estan).</string>
 
     <string name="system_install_denied_signature">La signatura de l\'extensió és incorrecta! Si podeu, informeu
         d\'aquest error!
@@ -418,8 +416,8 @@
     <string name="uninstalling">Desinstal·lant…</string>
 
     <string name="keep_hour">1 hora</string>
-    <string name="hide_anti_feature_apps_on">Ombrejar les apps que sol·licitin «anti-features»</string>
-    <string name="hide_anti_feature_apps">Ombrejar les apps amb «anti-features»</string>
+    <string name="hide_anti_feature_apps_on">Ombrejar les «apps» que requereixin components no lliures</string>
+    <string name="hide_anti_feature_apps">Ombrejar les «apps» amb components no lliures</string>
     <string name="keep_install_history">Mantingueu l\'historial d\'instal·lació</string>
     <string name="keep_install_history_summary">Deseu un registre de totes les instal·lacions i desinstal·lacions fetes
         per l\'F-Droid
@@ -479,9 +477,9 @@
     <string name="tts_category_name">Categoria %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Mostreu l\'única «app» de la categoria %2$s</item>
-        <item quantity="other">Mostreu totes les «apps» de la categoria %2$s</item>
-    </plurals>
+	<item quantity="one">Mostreu %1$d «app» de la categoria %2$s</item>
+	<item quantity="other">Mostreu totes les %1$d «apps» de la categoria %2$s</item>
+</plurals>
     <string name="app__install_downloaded_update">Actualitzeu</string>
 
     <string name="app_list__name__downloaded_and_ready_to_update">Actualitzeu %1$s</string>
@@ -544,4 +542,28 @@
 
     <string name="install_error_not_yet_supported">El tipus de fitxer no es pot instal·lar: %s</string>
     <string name="app__tts__downloading_progress">Descarregant, %1$d%% completat</string>
-    </resources>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d actualització</item>
+	<item quantity="other">%1$d actualitzacions</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d «app» instal·lada</item>
+	<item quantity="other">%1$d «apps» instal·lades</item>
+</plurals>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d més…</item>
+	<item quantity="other">+%1$d més…</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Actualitzades fa %1$s setmana</item>
+	<item quantity="other">Actualitzades %1$s setmanes</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Actualitzades fa %1$s mes</item>
+	<item quantity="other">Actualitzades fa %1$s mesos</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Actualitzades fa %1$s any</item>
+	<item quantity="other">Actualitzades fa %1$s anys</item>
+</plurals>
+</resources>

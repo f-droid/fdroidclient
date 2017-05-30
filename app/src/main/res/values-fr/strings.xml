@@ -20,7 +20,7 @@
     <string name="update_interval">Intervalle de mise à jour automatique</string>
     <string name="update_interval_zero">Aucune mise à jour automatique de la liste d\'applis</string>
     <string name="automatic_scan_wifi">Uniquement via Wi-Fi</string>
-    <string name="automatic_scan_wifi_on">Ne mettre à jour automatiquement que lorsque connecté via Wifi</string>
+    <string name="automatic_scan_wifi_on">Mise à jour automatique uniquement sur des réseaux sans restriction, comme le Wi-Fi</string>
     <string name="notify">Notifications de mise à jour</string>
     <string name="notify_on">Afficher une notification quand des mises à jour sont disponibles</string>
     <string name="system_installer">Permissions étendues</string>
@@ -214,9 +214,7 @@
     <string name="empty_available_app_list">Aucune appli dans cette catégorie.\n\nEssayez de sélectionner une autre
         catégorie ou de mettre à jour vos dépôts pour avoir une liste d\'applis récente.
     </string>
-    <string name="empty_can_update_app_list">Toutes les applis sont à jour.\n\nFélicitations ! Toutes vos applis sont à
-        jour (ou vos dépôts ne le sont pas).
-    </string>
+    <string name="empty_can_update_app_list">Félicitations ! Toutes vos applis sont à jour (ou vos dépôts ne le sont pas).</string>
 
     <string name="system_install_installing">Installation…</string>
     <string name="system_install_uninstalling">Désinstallation…</string>
@@ -502,11 +500,11 @@
     <string name="details_new_in_version">Nouveautés de la version %s</string>
 
     <string name="antifeatureswarning">Cette application a des fonctionnalités qui peuvent ne pas vous plaire.</string>
-    <string name="antifeatures">Fonctionnalités qui n\'en sont pas</string>
+    <string name="antifeatures">Fonctionnalités problématiques</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">voir %d</item>
-        <item quantity="other">voir toutes %d</item>
-    </plurals>
+	<item quantity="one">Voir %d</item>
+	<item quantity="other">Voir toutes %d</item>
+</plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">Sans connexion internet? Téléchargez les applications
         depuis des appareils de votre entourage !
@@ -539,4 +537,32 @@
     <string name="app_list__age__released_yesterday">Mis à disposition hier</string>
     <string name="menu_video">Vidéo</string>
     <string name="details_last_updated_today">Mis à jour aujourd\'hui</string>
-    </resources>
+    <string name="app__tts__cancel_download">Annuler le téléchargement</string>
+    <string name="menu_license">Licence: %s</string>
+    <string name="install_error_not_yet_supported">Ce type de fichier ne peut être installé pour l\'instant: %s</string>
+    <string name="app__tts__downloading_progress">Téléchargement, %1$d%% complété</string>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d autre…</item>
+	<item quantity="other">+%1$d autres…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d Mise à jour</item>
+	<item quantity="other">%1$d Mises à jour</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d Application installée</item>
+	<item quantity="other">%1$d Applications installées</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Mis à jour il y a %1$s semaine</item>
+	<item quantity="other">Mis à jour il y a %1$s semaines</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Mis à jour il y a %1$s mois</item>
+	<item quantity="other">Mis à jour il y a %1$s mois</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Mis à jour il y a %1$s an</item>
+	<item quantity="other">Mis à jour il y a %1$s ans</item>
+</plurals>
+</resources>

@@ -129,7 +129,7 @@
     <string name="system_install_denied_body">Opcja dostępna tylko wtedy, gdy F-Droid został zainstalowany jako
         aplikacja systemowa.
     </string>
-    <string name="swap_nfc_description">Jeśli oba urządzenia mają F-Droida i NFC, możecie je zbliżyć do siebie.</string>
+    <string name="swap_nfc_description">Jeśli oba urządzenia mają F-Droida i NFC możecie je zbliżyć do siebie.</string>
     <string name="swap_join_same_wifi">Połącz się z tą samą siecią Wi-Fi</string>
     <string name="swap">Wymień aplikacje</string>
     <string name="swap_no_wifi_network">Brak sieci</string>
@@ -523,4 +523,37 @@
     <string name="app__tts__downloading_progress">Pobieranie, %1$d%% ukończono</string>
     <string name="menu_license">Licencja: %s</string>
     <string name="install_error_not_yet_supported">Typ pliku nie może być jeszcze zainstalowany: %s</string>
-    </resources>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d Aktualizacja</item>
+	<item quantity="few">%1$d Aktualizacje</item>
+	<item quantity="many">%1$d Aktualizacji</item>
+	</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d Zainstalowana Aplikacja</item>
+	<item quantity="few">%1$d Zainstalowane Aplikacje</item>
+	<item quantity="many">%1$d Zainstalowanych Aplikacji</item>
+	</plurals>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d powiadomienie więcej…</item>
+	<item quantity="few">+%1$d powiadomienia więcej…</item>
+	<item quantity="many">+%1$d powiadomień więcej…</item>
+	</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Uaktualniono %1$s tydzień temu</item>
+        <item quantity="few">Uaktualniono %1$s tygodnie temu</item>
+        <item quantity="many">Uaktualniono %1$s tygodnie temu</item>
+	<item quantity="other">Uaktualniono %1$s tygodnie temu</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Uaktualniono %1$s miesiąc temu</item>
+        <item quantity="few">Uaktualniono %1$s miesiące temu</item>
+        <item quantity="many">Uaktualniono %1$s miesiące temu</item>
+	<item quantity="other">Uaktualniono %1$s miesiące temu</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Uaktualniono %1$s rok temu</item>
+        <item quantity="few">Uaktualniono %1$s lata temu</item>
+        <item quantity="many">Uaktualniono %1$s lata temu</item>
+	<item quantity="other">Uaktualniono %1$s lata temu</item>
+</plurals>
+</resources>

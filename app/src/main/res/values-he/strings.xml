@@ -335,13 +335,13 @@
     <string name="permissions">הרשאות</string>
     <string name="repo_details">מאגר</string>
     <string name="repo_url">כתובת</string>
-    <string name="system_install_denied_signature">החתימה של ההרחבה הינה שגויה! אנא צור bug report!</string>
+    <string name="system_install_denied_signature">החתימה של ההרחבה שגויה! נא לדווח על באג!</string>
     <string name="system_install_button_install">התקנה</string>
     <string name="system_install_button_open">פתיחת הרחבה</string>
     <string name="system_install_installing_rebooting">כעת מתקין ומאתחל…</string>
     <string name="system_install_warning">פעולה זו לוקחת עד 10 שניות.</string>
     <string name="theme_night">לילה</string>
-    <string name="system_install_denied_permissions">ההרשאות המיוחדות לא הוענקו להרחבה! אנא צור bug report!</string>
+    <string name="system_install_denied_permissions">ההרשאות המיוחדות לא הוענקו להרחבה! נא לדווח על באג!</string>
     <string name="login_title">נדרש אימות</string>
     <string name="login_name">שם משתמש</string>
     <string name="login_password">ססמה</string>
@@ -454,4 +454,8 @@
     </plurals>
 
     <string name="install_error_not_yet_supported">עדיין לא ניתן להתקין את סוג הקובץ: %s</string>
-</resources>
+<string name="nearby_splash__download_apps_from_people_nearby">אין חיבור לאינטרנט? ניתן להוריד יישומונים מאנשים בקרבתך!</string>
+    <string name="nearby_splash__find_people_button">חיפוש אנשים בקרבתי</string>
+    <string name="nearby_splash__both_parties_need_fdroid">שני הצדדים צריכים %1$s כדי להשתמש בקרבה.</string>
+
+    </resources>

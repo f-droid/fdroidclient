@@ -24,9 +24,9 @@
     <string name="update_interval">Automaatne värskendusintervall</string>
     <string name="update_interval_zero">Ära värskenda rakenduste loendit automaatselt</string>
     <string name="automatic_scan_wifi">Ainult Wi-Fi ühendusega</string>
-    <string name="automatic_scan_wifi_on">Värskenda rakenduste loendit automaatselt ainult Wi-Fi ühendusega</string>
-    <string name="update_auto_download">Värskenduste automaatne allalaadimine</string>
-    <string name="update_auto_download_summary">Laadi värskenduse failid taustal alla</string>
+    <string name="automatic_scan_wifi_on">Värskenda rakenduste loendit automaatselt piiramatu andmemahuga võrkudes nagu Wi-Fi</string>
+    <string name="update_auto_download">Värskenduste automaatne hankimine</string>
+    <string name="update_auto_download_summary">Värskendused laaditakse automaatselt ja sulle antakse teada nende paigaldamiseks</string>
     <string name="notify">Värskenduste teated</string>
     <string name="notify_on">Kuva teade, kui värskendused on saadaval</string>
     <string name="system_installer">Priviligeeritud laiendus</string>
@@ -89,8 +89,7 @@
     <string name="repo_add_url">Hoidla aadress</string>
     <string name="repo_add_fingerprint">Sõrmejälg (valikuline)</string>
     <string name="repo_exists_add_fingerprint">See hoidla on juba seadistatud, see lisab uue võtme teabe.</string>
-    <string name="repo_exists_enable">See hoidla on juba seadistatud. Palun kinnita, et soovid ta uuesti lubada.
-    </string>
+    <string name="repo_exists_enable">See hoidla on juba seadistatud. Palun kinnita, et soovid ta uuesti lubada.</string>
     <string name="repo_exists_and_enabled">Sissetulev hoidla on juba seadistatud ja lubatud.</string>
     <string name="repo_delete_to_overwrite">Enne sellest hoidlast erineva võtmega hoidla lisamist, pead sa hoidla
         kustutama.
@@ -142,9 +141,7 @@
     <string name="empty_available_app_list">Selles kategoorias rakendusi ei ole.\n\nProovi valida teine kategooria või
         uuenda hoidlaid, et uuendada rakenduste nimekirja.
     </string>
-    <string name="empty_can_update_app_list">Kõik rakendused on värskendatud.\n\nPalju õnne! Su rakendused on kõik
-        kaasajastatud (või hoidlad on aegunud).
-    </string>
+    <string name="empty_can_update_app_list">Palju õnne! Su rakendused on kõik kaasajastatud (või hoidlad on aegunud).</string>
     <string name="system_install_denied_signature">Laienduse signatuur on vale! Palun saada veateade!</string>
     <string name="system_install_denied_permissions">Laiendusele ei ole antud priviligeeritud õiguseid! Palun saada
         veateade!
@@ -208,9 +205,7 @@
     <string name="ignoreTouch_on">Alati kaasa puuteekraani vajavad rakendused</string>
 
     <string name="local_repo_running">F-Droid on valmis vahetama</string>
-    <string name="touch_to_configure_local_repo">Üksikasjade vaatamiseks puuduta ja luba teistel vahetada su
-        rakendusi.
-    </string>
+    <string name="touch_to_configure_local_repo">Üksikasjade vaatamiseks puuduta ja luba teistel vahetada su rakendusi.</string>
     <string name="writing_index_jar">Kirjutatakse signeeritud indeksi faili (index.jar)…</string>
     <string name="icon">Ikoon</string>
     <string name="next">Järgmine</string>

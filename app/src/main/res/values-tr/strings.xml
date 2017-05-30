@@ -79,8 +79,8 @@
     <string name="details_notinstalled">Kurulu değil</string>
     <string name="antiadslist">Bu uygulama reklam içerir</string>
     <string name="antitracklist">Bu uygulama etkinliklerinizi izler ve rapor eder</string>
-    <string name="antinonfreeadlist">Bu uygulama özgür olmayan eklentiler tavsiye eder</string>
-    <string name="antinonfreenetlist">Bu uygulama özgür olmayan ağ servisleri tavsiye eder</string>
+    <string name="antinonfreeadlist">Bu uygulama özgür olmayan eklentiler önerir</string>
+    <string name="antinonfreenetlist">Bu uygulama özgür olmayan ağ servisleri önerir</string>
     <string name="antinonfreedeplist">Bu uygulama özgür olmayan başka uygulamalara bağımlıdır</string>
     <string name="antiupstreamnonfreelist">Kaynak kod tamamen özgür değildir</string>
     <string name="display">Görüntüleme</string>
@@ -232,7 +232,7 @@
     <string name="repo_details">Depo</string>
     <string name="repo_url">Adres</string>
     <string name="pref_language">Dil</string>
-    <string name="pref_language_default">Sistem Varsayılanı</string>
+    <string name="pref_language_default">Sistem Öntanımlı</string>
 
     <string name="wifi">Wi-Fi</string>
     <string name="category_Connectivity">Bağlantı</string>
@@ -366,7 +366,7 @@
     <string name="system_install_post_success_message">F-Droid Ayrıcalıklı Uzantı başarılı bir şekilde kuruldu. Bu,
         F-Droid\'in kendi başına uygulamaları kurmasına, yükseltmesine ve kaldırmasına izin verir.
     </string>
-    <string name="system_install_post_fail_message">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu başarısız. Kurulum yöntemi her Android dağıtımı tarafından desteklenmeyebilir, daha fazla bilgi için lütfen F-Droid hata izleyicisine başvurun.</string>
+    <string name="system_install_post_fail_message">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu başarısız. Kurulum yöntemi her Android dağıtımı tarafından desteklenmeyebilir, daha çok bilgi için lütfen F-Droid hata izleyicisine başvurun.</string>
     <string name="system_install_question">F-Droid Ayrıcalıklı Uzantı\'yı kurmak istiyor musunuz?</string>
     <string name="system_uninstall">F-Droid Ayrıcalıklı Uzantı\'yı kaldırmak istiyor musunuz?</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi ile takas yapmak istiyorsanız, aynı ağda olduğunuzdan emin olun. Eğer
@@ -415,8 +415,8 @@
     <string name="versions">Sürümler</string>
     <string name="hide_anti_feature_apps">Karşıt-özellikli uygulamaları gri yap</string>
     <string name="hide_anti_feature_apps_on">Karşıt-özellik gerektiren uygulamaları gri yap</string>
-    <string name="app_details_donate_prompt_unknown_author">%1$s geliştiricilerine kahve alın!</string>
-    <string name="app_details_donate_prompt">%1$s, %2$s tarafından oluşturuldu. Onlara bir kahve al!</string>
+    <string name="app_details_donate_prompt_unknown_author">%1$s geliştiricilerine bir kahve al!</string>
+    <string name="app_details_donate_prompt">%1$s, %2$s tarafından yaratıldı. Onlara bir kahve al!</string>
 
     <string name="app_version_x_available">%1$s sürümü mevcut</string>
     <string name="app_version_x_installed">Sürüm %1$s</string>
@@ -526,4 +526,28 @@
     <string name="app__tts__downloading_progress">İndiriliyor, %%%1$d tamamlandı</string>
     <string name="menu_license">Lisans: %s</string>
     <string name="install_error_not_yet_supported">Dosya türü henüz kurulamaz: %s</string>
-    </resources>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d daha…</item>
+	<item quantity="other">+%1$d daha…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d Güncelleme</item>
+	<item quantity="other">%1$d Güncelleme</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d Uygulama Kuruldu</item>
+	<item quantity="other">%1$d Uygulama Kuruldu</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">%1$s hafta önce güncellendi</item>
+	<item quantity="other">%1$s hafta önce güncellendi</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">%1$s ay önce güncellendi</item>
+	<item quantity="other">%1$s ay önce güncellendi</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">%1$s yıl önce güncellendi</item>
+	<item quantity="other">%1$s yıl önce güncellendi</item>
+</plurals>
+</resources>

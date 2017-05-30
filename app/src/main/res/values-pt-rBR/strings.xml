@@ -532,4 +532,28 @@
     <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>
     <string name="menu_license">Licença: %s</string>
     <string name="install_error_not_yet_supported">Tipo de arquivo ainda não pode ser instalado: %s</string>
-    </resources>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d mais…</item>
+	<item quantity="other">+%1$d mais…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d atualização</item>
+	<item quantity="other">%1$d atualizações</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d Aplicativo instalado</item>
+	<item quantity="other">%1$d Aplicativos instalados</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Actualizado há %1$s semana atrás</item>
+	<item quantity="other">Actualizado há %1$s semanas atrás</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Atualizado há %1$s semana atrás</item>
+	<item quantity="other">Atualizado há %1$s semanas atrás</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Atualizado há %1$s ano atrás</item>
+	<item quantity="other">Atualizado há %1$s anos atrás</item>
+</plurals>
+</resources>

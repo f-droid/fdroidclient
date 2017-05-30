@@ -1,15 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">Den nye versjonen er signert med en annen nøkkel enn den gamle. For å installere en
-        ny versjon må du først avinstallere den gamle. (Avinstallering vil medfører sletting av all intern data lagret
-        av programmet)
-    </string>
-    <string name="installIncompatible">Det ser ut til at denne pakken ikke er kompatibel med ditt utstyr. Vil du prøve å
-        installere det likevel?
-    </string>
-    <string name="installDowngrade">Du prøver å nedgradere denne applikasjonen. Dette kan føre til at programmet henger,
-        og du kan til og med miste dataene dine. Nedgradere uansett ?
-    </string>
+    <string name="SignatureMismatch">Den nye versjonen er signert med en annen nøkkel enn den gamle. For å installere en ny versjon må du først avinstallere den gamle. (Avinstallering vil medfører sletting av all intern data lagret av programmet.)</string>
+    <string name="installIncompatible">Det ser ut til at denne pakken ikke er kompatibel med ditt utstyr. Vil du prøve å installere den likevel?</string>
+    <string name="installDowngrade">Du prøver å nedgradere dette programmet. Dette kan føre til at programmet henger, og du kan til og med miste dataene dine. Nedgrader uansett?</string>
     <string name="version">Versjon</string>
     <string name="delete">Slett</string>
     <string name="enable_nfc_send">Skru på NFC-sending…</string>
@@ -28,7 +21,7 @@
     <string name="local_repo_name">Navn på lokal pakkebrønn</string>
     <string name="local_repo_name_summary">Offentliggjort tittel for din lokale pakkebrønn: %s</string>
     <string name="local_repo_https">Bruk privat tilkobling</string>
-    <string name="local_repo_https_on">Bruk sikret HTTP://-tilkobling for lokal pakkebrønn</string>
+    <string name="local_repo_https_on">Bruk sikret HTTPS://-tilkobling for lokal pakkebrønn</string>
     <string name="app_details">Programdetaljer</string>
     <string name="no_such_app">Program ikke funnet.</string>
     <string name="about_title">Om F-Droid</string>
@@ -56,7 +49,7 @@
     <string name="repo_add_url">Pakkebrønnsadresse</string>
     <string name="repo_add_fingerprint">Fingeravtrykk (valgfritt)</string>
     <string name="repo_exists_add_fingerprint">Dette registret er allerede satt opp, dette vil legge til ny informasjon om nøkler.</string>
-    <string name="repo_exists_enable">Dette registret er allerede satt opp, bekreft at du vil skru det på igjen.</string>
+    <string name="repo_exists_enable">Denne pakkebrønnen er allerede satt opp, bekreft at du vil skru den på igjen.</string>
     <string name="repo_exists_and_enabled">Oppstrøms-pakkebrønnen er allerede satt opp og påskrudd.</string>
     <string name="repo_delete_to_overwrite">Du må først slette denne pakkebrønnen før du kan legge til en med en annen
         nøkkel.
@@ -353,7 +346,7 @@
     <string name="theme_night">Nattsvart</string>
     <string name="login_name">Brukernavn</string>
     <string name="login_password">Passord</string>
-    <string name="repo_edit_credentials">Bytt Passord</string>
+    <string name="repo_edit_credentials">Bytt passord</string>
     <string name="repo_error_empty_username">Tomt brukernavn, personlige data uendret</string>
 
     <string name="about_license">Lisens</string>
@@ -372,7 +365,7 @@
     <string name="crash_dialog_comment_prompt">Du kan legge til ekstra informasjon og kommentarer her:</string>
     <string name="antinonfreeassetslist">Dette programmet inneholder ufrie gjenstander</string>
 
-    <string name="menu_email">E-postens avsender</string>
+    <string name="menu_email">Utviklerens e-post</string>
     <string name="repo_provider">Pakkebrønn: %s</string>
 
     <string name="useTor">Bruk Tor</string>
@@ -414,8 +407,8 @@
     <string name="hide_anti_feature_apps_on">Utgråing av programmer som krever anti-funksjoner</string>
     <string name="warning_no_internet">Kan ikke oppdatere. Er du koblet til Internett?</string>
     <string name="versions">Versjoner</string>
-    <string name="app_details_donate_prompt_unknown_author">Spander kaffe på utviklerne av %1$s!</string>
-    <string name="app_details_donate_prompt">%1$s lages av %2$s. Spander kaffe!</string>
+    <string name="app_details_donate_prompt_unknown_author">Spander kaffe på utviklerne av %1$s.</string>
+    <string name="app_details_donate_prompt">%1$s lages av %2$s. Spander kaffe.</string>
 
     <string name="app_version_x_available">Versjon %1$s er tilgjengelig</string>
     <string name="app_version_x_installed">Versjon %1$s</string>
@@ -521,4 +514,28 @@
     <string name="app__tts__downloading_progress">Laster ned, %1$d%% fullført</string>
     <string name="menu_license">Lisens: %s</string>
     <string name="install_error_not_yet_supported">Filtypen kan ikke installeres enda: %s</string>
-    </resources>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d til…</item>
+	<item quantity="other">+%1$d til…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d oppdatering</item>
+	<item quantity="other">%1$d oppdateringer</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d program installert</item>
+	<item quantity="other">%1$d programmer installert</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Oppdatert for %1$d uke siden</item>
+	<item quantity="other">Oppdatert for %1$d uker siden</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Oppdatert %1$d måned siden</item>
+	<item quantity="other">Oppdatert %1$d måneder siden</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Oppdatert for %1$d år siden</item>
+	<item quantity="other">Oppdatert for %1$d år siden</item>
+</plurals>
+</resources>

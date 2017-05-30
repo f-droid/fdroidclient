@@ -143,11 +143,9 @@
     </string>
     <string name="unknown">Неизвестно</string>
     <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
-    <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него больше не будут
-        доступны в F-Droid.
-
-        Примечание: Все ранее установленные приложения останутся на вашем устройстве.
-    </string>
+    <string name="repo_confirm_delete_body">"Удаление репозитория означает, что приложения из него больше не будут доступны в F-Droid.
+\n
+\nПримечание: все ранее установленные приложения останутся на вашем устройстве. "</string>
     <string name="repo_disabled_notification">%1$s отключён.\n\nДля установки приложений из этого репозитория вам
         необходимо повторно включить его.
     </string>
@@ -178,7 +176,7 @@
         приложение.
     </string>
     <string name="swap_join_same_wifi">Подключиться к той же Wi-Fi сети, что и ваш друг</string>
-    <string name="swap">Обмен файлами</string>
+    <string name="swap">Обмен приложениями</string>
     <string name="swap_no_wifi_network">Нет сети в данный момент</string>
     <string name="swap_view_available_networks">(Нажмите, чтобы открыть список доступных сетей)</string>
     <string name="open_qr_code_scanner">Открыть сканер QR-кода</string>
@@ -222,9 +220,7 @@
     <string name="empty_available_app_list">Нет приложений в этой категории.\n\nПопробуйте выбрать другую категорию или
         обновите репозитории, чтобы получить свежий список приложений.
     </string>
-    <string name="empty_can_update_app_list">"Все приложения обновлены.
-\n
-\nПоздравляем! У Вас установлены самые свежие версии приложений (либо репозитории требуют обновления). "</string>
+    <string name="empty_can_update_app_list">Поздравляем! У вас установлены самые свежие версии приложений (либо репозитории требуют обновления).</string>
 
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>
@@ -412,13 +408,13 @@
     <string name="hide_anti_feature_apps">Сомнительные приложения</string>
     <string name="hide_anti_feature_apps_on">Выделять серым цветом приложения, содержащие нежелательный функционал
     </string>
-    <string name="warning_no_internet">Не могу обновить. Вы подключены к интернету?</string>
+    <string name="warning_no_internet">Не удаётся обновить. Вы подключены к интернету?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Купи разработчику %1$s чашечку кофе!</string>
     <string name="updates__tts__download_updates_for_all_apps">Скачать все обновления</string>
 
-    <string name="updates__hide_updateable_apps">Скрыть приложение</string>
-    <string name="updates__show_updateable_apps">Показать приложение</string>
+    <string name="updates__hide_updateable_apps">Скрыть приложения</string>
+    <string name="updates__show_updateable_apps">Показать приложения</string>
 
     <string name="clear_search">Очистить поиск</string>
 
@@ -525,4 +521,19 @@
     <string name="app__tts__downloading_progress">Скачано %1$d%%</string>
     <string name="menu_license">Лицензия: %s</string>
     <string name="install_error_not_yet_supported">Тип файла пока не может быть установлен: %s</string>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d обновление</item>
+        <item quantity="few">%1$d обновления</item>
+        <item quantity="many">%1$d обновления</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d приложение установлено</item>
+        <item quantity="few">%1$d приложения установлено</item>
+        <item quantity="many">%1$d приложения установлено</item>
+</plurals>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+ещё %1$d…</item>
+	<item quantity="few">+ещё %1$d…</item>
+	<item quantity="many">+ещё %1$d…</item>
+	</plurals>
     </resources>

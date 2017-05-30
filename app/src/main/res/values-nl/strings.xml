@@ -215,7 +215,7 @@
     <string name="empty_available_app_list">Geen apps in deze categorie.\n\nProbeer een andere categorie of werk je
         bronnen bij om de lijst van apps te verversen.
     </string>
-    <string name="empty_can_update_app_list">Gefeliciteerd! Al je apps zijn up-to-date (of je bronnen zijn verouderd).</string>
+    <string name="empty_can_update_app_list">Al je apps zijn up-to-date (of je bronnen zijn verouderd).</string>
 
     <string name="install_error_unknown">Kon de app niet installeren door een onbekende fout</string>
     <string name="uninstall_error_unknown">Kon de app niet verwijderen door een onbekende fout</string>
@@ -536,4 +536,28 @@
     <string name="app__tts__downloading_progress">Downloaden, %1$d%% voltooid</string>
     <string name="menu_license">Licentie: %s</string>
     <string name="install_error_not_yet_supported">Bestandstype kan nog niet geïnstalleerd worden: %s</string>
-    </resources>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d meer…</item>
+	<item quantity="other">+%1$d meer…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d update</item>
+	<item quantity="other">%1$d updates</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d app geïnstalleerd</item>
+	<item quantity="other">%1$d apps geïnstalleerd</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">%1$s week geleden bijgewerkt</item>
+	<item quantity="other">%1$s weken geleden bijgewerkt</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">%1$s maand geleden bijgewerkt</item>
+	<item quantity="other">%1$s maand geleden bijgewerkt</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">%1$s jaar geleden bijgewerkt</item>
+	<item quantity="other">%1$s jaar geleden bijgewerkt</item>
+</plurals>
+</resources>

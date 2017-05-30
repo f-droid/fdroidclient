@@ -495,4 +495,22 @@
     <string name="app__tts__downloading_progress">ﾀﾞｳﾝﾛｰﾄﾞ中、%1$d%% 完了</string>
     <string name="menu_license">ライセンス: %s</string>
     <string name="install_error_not_yet_supported">ﾌｧｲﾙの種類はまだｲﾝｽﾄｰﾙできません: %s</string>
-    </resources>
+    <plurals name="notification_summary_more">
+	<item quantity="other">+%1$d さらに…</item>
+	</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="other">%1$d 更新</item>
+	</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="other">%1$d ｱﾌﾟﾘ ｲﾝｽﾄｰﾙ済</item>
+	</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="other">%1$s 週間前に更新</item>
+	</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="other">%1$s ヶ月前に更新</item>
+	</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="other">%1$s 年前に更新</item>
+	</plurals>
+</resources>
