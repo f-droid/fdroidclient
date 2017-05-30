@@ -20,8 +20,7 @@
     </string>
     <string name="local_repo_name">Navn på lokal pakkebrønn</string>
     <string name="local_repo_name_summary">Offentliggjort tittel for din lokale pakkebrønn: %s</string>
-    <string name="local_repo_https">Bruk privat tilkobling</string>
-    <string name="local_repo_https_on">Bruk sikret HTTPS://-tilkobling for lokal pakkebrønn</string>
+    <string name="local_repo_https_on">Bruk sikret HTTP://-tilkobling for lokal pakkebrønn</string>
     <string name="app_details">Programdetaljer</string>
     <string name="no_such_app">Program ikke funnet.</string>
     <string name="about_title">Om F-Droid</string>
@@ -42,10 +41,8 @@
     <string name="enable">Skru på</string>
     <string name="add_key">Legg til nøkkel</string>
     <string name="overwrite">Overskriv</string>
-    <string name="fdroid_updates_available">F-Droid: Oppdateringer tilgjengelig</string>
     <string name="bluetooth_activity_not_found">Ingen forsendelsesmåte for Blåtann funnet, velg en!</string>
     <string name="choose_bt_send">Velg forsendelsesmåte for Blåtann</string>
-    <string name="send_via_bluetooth">Send via Blåtann</string>
     <string name="repo_add_url">Pakkebrønnsadresse</string>
     <string name="repo_add_fingerprint">Fingeravtrykk (valgfritt)</string>
     <string name="repo_exists_add_fingerprint">Dette registret er allerede satt opp, dette vil legge til ny informasjon om nøkler.</string>
@@ -55,10 +52,8 @@
         nøkkel.
     </string>
     <string name="malformed_repo_uri">Ignorerer ugyldig pakkebrønnsadresse: %s</string>
-    <string name="menu_update_repo">Oppdater pakkebrønnene</string>
     <string name="menu_manage">Pakkebrønner</string>
     <string name="menu_send_apk_bt">Del F-Droid.apk via Blåtann</string>
-    <string name="menu_about">Om</string>
     <string name="menu_search">Søk</string>
     <string name="menu_add_repo">Ny pakkebrønn</string>
     <string name="menu_launch">Kjør</string>
@@ -72,7 +67,6 @@
     <string name="menu_source">Kildekode</string>
     <string name="menu_upgrade">Oppgrader</string>
     <string name="menu_donate">Doner</string>
-    <string name="details_installed">Versjon %s installert</string>
     <string name="details_notinstalled">Ikke installert</string>
     <string name="antiadslist">Dette programmet inneholder reklame</string>
     <string name="antitracklist">Dette programmet sporer og rapporterer din aktivitet</string>
@@ -166,10 +160,6 @@
     <string name="root_access_denied_body">Enten mangler din Android-enhet superbrukertilgang, eller så har du nektet
         F-droid root-tilgang.
     </string>
-    <string name="system_install_denied_title">F-Droid priviligert tillegg er ikke tilgjengelig</string>
-    <string name="system_install_denied_body">Dette valget er bare tilgjengelig når F-Droid er installert som
-        priviligert tillegg.
-    </string>
     <string name="swap_nfc_description">Hvis din venn har F-Droid og NFC påslått, sammenfør enhetene.</string>
     <string name="swap_join_same_wifi">Koble til samme Wi-Fi-nett som din venn</string>
     <string name="swap">Sirkuler programvare</string>
@@ -213,7 +203,6 @@
     <string name="install_error_unknown">Som følge av ukjent feil gikk installasjonen i vasken</string>
     <string name="uninstall_error_unknown">Klarte ikke å installere grunnet ukjent feil</string>
     <string name="system_install_button_install">Installer</string>
-    <string name="system_install_button_open">Åpne tillegg</string>
     <string name="system_install_installing">Installerer…</string>
     <string name="system_install_installing_rebooting">Installerer og starter på ny…</string>
     <string name="system_install_uninstalling">Avinstallerer…</string>
@@ -254,7 +243,6 @@
     <string name="perm_costs_money">Dette kan koste penger</string>
     <string name="uninstall_update_confirm">Ønsker du å erstatte dette programmet med fabrikkversjonen?</string>
     <string name="uninstall_confirm">Ønsker du å avinstallere dette programmet?</string>
-    <string name="tap_to_install">Nedlasting fullført, trykk for å installere</string>
     <string name="download_error">Nedlasting feilet</string>
 
     <string name="perms_new_perm_prefix">Ny:</string>
@@ -286,9 +274,6 @@
     <string name="empty_installed_app_list">Ingen installerte programmer\n\nDet fins programmer på enheten din, men din
         F-Droid har dem ikke. Det kan hende du bare må oppdatere pakkebrønnene dine, eller at de faktisk ikke finnes
         der.
-    </string>
-    <string name="empty_available_app_list">Ingen programmer i denne kategorien.\n\nVelg en annen kategori eller
-        oppdater pakkebrønnene dine for en fersk programopplisting.
     </string>
     <string name="empty_can_update_app_list">Alle dine programmer er av nyeste dato (eller så er pakkebrønnene dine foreldet).</string>
 
@@ -353,9 +338,7 @@
 
     <string name="login_title">Identifikasjon påkrevet</string>
     <string name="status_inserting_apps">Lagrer programdetaljer</string>
-    <string name="empty_search_installed_app_list">Samsvarer ikke med noen installerte programmer.</string>
     <string name="empty_search_available_app_list">Samsvarer ikke med noen tilgjengelige programmer.</string>
-    <string name="empty_search_can_update_app_list">Ingen samsvarende programmer for oppdatering.</string>
 
     <string name="crash_dialog_title">F-Droid har kræsjet</string>
     <string name="crash_dialog_text">Uventet feil forårsaket
@@ -374,11 +357,7 @@
     <string name="update_auto_download">Hent oppdateringer automatisk</string>
     <string name="update_auto_download_summary">"Oppdateringene blir lastet ned i bakgrunnen og du får en beskjed
 \nom å installere dem "</string>
-    <string name="tap_to_install_format">Trykk for å installere %s</string>
-    <string name="tap_to_update_format">Trykk for å oppdatere %s</string>
     <string name="download_pending">Venter på at nedlastingen skal starte…</string>
-
-    <string name="downloading_apk">Laster ned %1$s</string>
 
     <string name="keep_hour">én time</string>
     <string name="keep_day">én dag</string>
@@ -437,7 +416,6 @@
     <string name="notification_content_single_downloading_update">Henter oppdatering for \"%1$s\"…</string>
     <string name="notification_content_single_installing">Installerer \"%1$s\"…</string>
     <string name="notification_content_single_installed">Installert</string>
-    <string name="notification_content_single_install_error">Installering mislyktes</string>
     <string name="notification_title_summary_update_available">Oppdatering tilgjengelig</string>
     <string name="notification_title_summary_downloading">Laster ned…</string>
     <string name="notification_title_summary_downloading_update">Laster ned oppdatering…</string>

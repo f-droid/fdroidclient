@@ -29,7 +29,6 @@
     </string>
     <string name="local_repo_name">Meno miestneho repozitára</string>
     <string name="local_repo_name_summary">Zverejnený názov miestneho repozitára: %s</string>
-    <string name="local_repo_https">Použiť bezpečné pripojenie</string>
     <string name="local_repo_https_on">Použiť zašifrované HTTPS:// pripojenie pre miestny repozitár</string>
     <string name="app_details">Detaily aplikácie</string>
     <string name="no_such_app">Aplikácia sa nenašla.</string>
@@ -51,8 +50,6 @@
     <string name="enable">Zapnúť</string>
     <string name="add_key">Pridať kľúč</string>
     <string name="overwrite">Prepísať</string>
-    <string name="fdroid_updates_available">Dostupné aktualizácie F-Droidu</string>
-    <string name="send_via_bluetooth">Poslať cez Bluetooth</string>
     <string name="repo_add_url">Adresa repozitára</string>
     <string name="repo_add_fingerprint">Fingerprint (voliteľné)</string>
     <string name="repo_exists_add_fingerprint">Toto repo je už nastavené, toto pridá nové info o kľúčoch.</string>
@@ -61,10 +58,8 @@
         kľúčom.
     </string>
     <string name="malformed_repo_uri">Ignorujem chybné URI(adresu) repozitára: %s</string>
-    <string name="menu_update_repo">Aktualizovať repozitáre</string>
     <string name="menu_manage">Repozitáre</string>
     <string name="menu_send_apk_bt">Poslať FDroid cez bluetooth</string>
-    <string name="menu_about">O</string>
     <string name="menu_search">Hľadať</string>
     <string name="menu_add_repo">Nový repozitár</string>
     <string name="menu_launch">Spustiť</string>
@@ -78,7 +73,6 @@
     <string name="menu_source">Zdrojový kód</string>
     <string name="menu_upgrade">Inovovať</string>
     <string name="menu_donate">Darovať peniaze</string>
-    <string name="details_installed">Verzia %s nainštalovaná</string>
     <string name="details_notinstalled">Nie je nainštalované</string>
     <string name="antiadslist">Táto aplikácia obsahuje reklamy</string>
     <string name="antitracklist">Táto aplikácia zaznamenáva a hlási vaše aktivity</string>
@@ -178,10 +172,6 @@
     <string name="root_access_denied_body">Buď vaše zariadenie s Androidom nemá urobený root alebo ste odmietli root
         prístup pre F-Droid.
     </string>
-    <string name="system_install_denied_title">Systémové povolenia zamietnuté</string>
-    <string name="system_install_denied_body">Táto možnosť je dostupná iba ak je F-Droid inštalovaný ako systémová
-        aplikácia.
-    </string>
     <string name="swap_nfc_description">Ak má váš kamarát F-Droid a zapnuté NFC, dotknite sa zariadeniami.</string>
     <string name="swap_join_same_wifi">Pripojte sa na rovnaké Wi-fi ako kamarát</string>
     <string name="swap">Vymeniť aplikácie</string>
@@ -230,9 +220,6 @@
     <string name="empty_installed_app_list">Žiadne nainštalované aplikácie.\n\nAplikácie, ktoré sú v zariadení, nie sú
         dostupné z F-Droidu. Môže to byť spôsobené neaktuálnym zoznamom repozitárov, alebo repozitáre skutočne nemajú k
         dispozicií vaše aplikácie.
-    </string>
-    <string name="empty_available_app_list">Žiadne aplikácie v tejto kategórií\n\nSkúste inú kategóriu alebo
-        aktualizujte repozitáre pre najnovší zoznam aplikácií.
     </string>
     <string name="install_error_unknown">Nenainštalované vďaka neznámej chybe</string>
     <string name="uninstall_error_unknown">Neodinštalované vďaka neznámej chybe</string>
@@ -297,7 +284,6 @@
         hlásenie chýb!
     </string>
     <string name="system_install_button_install">Inštalovať</string>
-    <string name="system_install_button_open">Otvoriť rozšírenie</string>
     <string name="system_install_post_success_message">Úspešne bolo nainštalované Oprávnené Rozšírenie F-Droidu. To
         umožňuje F-Droidu samostatne inštalovať, aktualizovať, a odinštalovať aplikácie.
     </string>
@@ -321,9 +307,7 @@
     <string name="permissions">Práva</string>
     <string name="repo_details">Repozitár</string>
     <string name="repo_url">Adresa</string>
-    <string name="empty_search_installed_app_list">Výrazu nezodpovedá žiadna nainštalovaná aplikácia.</string>
     <string name="empty_search_available_app_list">Výrazu nezodpovedá žiadna dostupná aplikácia.</string>
-    <string name="empty_search_can_update_app_list">Výrazu nezodpovedá žiadna dostupná aktualizácia.</string>
 
     <string name="system_install_post_fail_message">Inštalácia F-Droidu ako systémovej aplikácie zlyhala. Táto
         inštalačná metóda nie je podporovaná všetkými distribúciami Androidu. Pre viac informácií navśívte bug tracker
@@ -365,7 +349,6 @@
         k tejto vstavanej aplikácií? Dáta aplikácie nebudú
         prepísané. Aplikácia nevyžaduje špeciálny prístup.
     </string>
-    <string name="tap_to_install">Preberanie dokončené, dotykom nainštalovať</string>
     <string name="download_error">Prevzatie neúspešné</string>
 
     <string name="perms_description_app">Poskytované %1$s.</string>
@@ -385,11 +368,7 @@
     <string name="swap_stopping_wifi">Vypínanie Wi-Fi…</string>
     <string name="update_auto_download">Automaticky preberať aktualizácie</string>
     <string name="update_auto_download_summary">Aktualizačné súbory preberať na pozadí</string>
-    <string name="tap_to_install_format">Poklepaním nainštalovať %s</string>
-    <string name="tap_to_update_format">Poklepaním aktualizovať %s</string>
     <string name="download_pending">Čakanie na spustenie preberania…</string>
-
-    <string name="downloading_apk">Preberanie %1$s</string>
 
     <string name="system_install_not_supported">Inštalácia F-Droidu ako systémovej aplikácie v súčasnosti nie je
         podporovaná na Androide 5.1 a novšom.
@@ -430,7 +409,6 @@
     <string name="notification_content_single_downloading_update">Preberanie aktualizácie pre \"%1$s\"…</string>
     <string name="notification_content_single_installing">Inštalovanie \"%1$s\"…</string>
     <string name="notification_content_single_installed">Úspešne nainštalované</string>
-    <string name="notification_content_single_install_error">Inštalácia zlyhala</string>
     <string name="notification_title_summary_update_available">Dostupná aktualizácia</string>
     <string name="notification_title_summary_downloading">Preberanie…</string>
     <string name="notification_title_summary_downloading_update">Preberanie aktualizácie…</string>

@@ -28,7 +28,6 @@
     </string>
     <string name="local_repo_name">Nome del tuo repo locale</string>
     <string name="local_repo_name_summary">Il titolo visualizzato del tuo repo: %s</string>
-    <string name="local_repo_https">Usa una connessione privata</string>
     <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per i repo locali</string>
     <string name="app_details">Dettagli app</string>
     <string name="no_such_app">Nessuna app corrispondente trovata.</string>
@@ -48,11 +47,9 @@
     <string name="enable">Attiva</string>
     <string name="add_key">Aggiungi chiave</string>
     <string name="overwrite">Sovrascrivi</string>
-    <string name="fdroid_updates_available">Aggiornamenti per F-Droid disponibili</string>
     <string name="bluetooth_activity_not_found">Non è possibile inviare via Bluetooth, scegliere un altro metodo!
     </string>
     <string name="choose_bt_send">Scegli invio mediante Bluetooth</string>
-    <string name="send_via_bluetooth">Invia via Bluetooth</string>
     <string name="repo_add_url">Indirizzo repository</string>
     <string name="repo_add_fingerprint">Impronta digitale (opzionale)</string>
     <string name="repo_exists_add_fingerprint">Questo repository è già configurato, una nuova informazione chiave verrà
@@ -65,10 +62,8 @@
         chiave differente.
     </string>
     <string name="malformed_repo_uri">Ignora URI repo malformati: %s</string>
-    <string name="menu_update_repo">Aggiorna i repository</string>
     <string name="menu_manage">Repository</string>
     <string name="menu_send_apk_bt">Condividi F-Droid via Bluetooth</string>
-    <string name="menu_about">Informazioni</string>
     <string name="menu_search">Cerca</string>
     <string name="menu_add_repo">Nuovo repository</string>
     <string name="menu_launch">Avvia</string>
@@ -82,7 +77,6 @@
     <string name="menu_source">Codice sorgente</string>
     <string name="menu_upgrade">Aggiorna</string>
     <string name="menu_donate">Dona</string>
-    <string name="details_installed">Versione %s installata</string>
     <string name="details_notinstalled">Non installato</string>
     <string name="antiadslist">Questa app contiene pubblicità</string>
     <string name="antitracklist">Questa app monitora e riferisce sulle tue attività</string>
@@ -180,10 +174,6 @@
     <string name="root_access_denied_title">Accesso root negato</string>
     <string name="root_access_denied_body">Il tuo telefono non ha i permessi di root oppure li hai negati a F-Droid.
     </string>
-    <string name="system_install_denied_title">Estensione privilegiata di F-Droid non disponibile</string>
-    <string name="system_install_denied_body">Questa opzione è disponibile solo quando F-Droid è installato come app di
-        sistema.
-    </string>
     <string name="swap_join_same_wifi">Collegati alla stessa rete Wi-Fi del tuo amico</string>
     <string name="swap">Invia app</string>
     <string name="swap_no_wifi_network">Nessuna rete disponibile</string>
@@ -214,7 +204,6 @@
     <string name="interval_1h">Ogni ora</string>
     <string name="downloading">Scaricamento…</string>
 
-    <string name="tap_to_install">Scaricamento completato, tocca per installare</string>
     <string name="download_error">Scaricamento fallito</string>
 
     <string name="perms_new_perm_prefix">Nuovo:</string>
@@ -311,10 +300,6 @@
         Ci sono delle app sul tuo dispositivo ma non sono disponibili su F-Droid. Ciò potrebbe essere dovuto al fatto
         che devi aggiornare i repository o che le app non sono disponibili all\'interno dei repository.
     </string>
-    <string name="empty_available_app_list">Nessuna app in questa categoria.
-
-        Prova a selezionarne un\'altra o aggiorna i tuoi repository per ottenere una lista di app aggiornata.
-    </string>
     <string name="empty_can_update_app_list">Tutte le app sono aggiornate.
 
         Congratulazioni! Tutte le tue app sono aggiornate (o i tuoi repository non sono aggiornati).
@@ -329,7 +314,6 @@
         segnala questo problema!
     </string>
     <string name="system_install_button_install">Installa</string>
-    <string name="system_install_button_open">Apri l\'estensione</string>
     <string name="system_install_post_success">Estensione privilegiata di F-Droid installata con successo</string>
     <string name="system_install_post_fail">Installazione dell\'estensione privilegiata di F-Droid fallita</string>
     <string name="system_install_post_success_message">L\'estensione privilegiata di F-Droid è stata installata con
@@ -380,7 +364,6 @@
     </string>
     <string name="allPerms">Tutte</string>
     <string name="swap_nearby">Scambio ravvicinato</string>
-    <string name="empty_search_installed_app_list">Nessuna app installata corrispondente.</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>
     <string name="menu_email">Invia email all\'autore</string>
     <string name="crash_dialog_text">Un errore inaspettato
@@ -391,16 +374,12 @@
     <string name="antinonfreeassetslist">Questa app contiene risorse non libere</string>
 
     <string name="empty_search_available_app_list">Non è disponibile nessuna app corrispondente.</string>
-    <string name="empty_search_can_update_app_list">Nessuna app corrispondente è disponibile per l\'aggiornamento.
-    </string>
 
     <string name="useTor">Usa Tor</string>
     <string name="useTorSummary">Forza lo scaricamento attraverso Tor per aumentare la privacy</string>
     <string name="swap_stopping_wifi">Spegnimento del Wi-Fi…</string>
     <string name="update_auto_download_summary">Scarica gli aggiornamenti in background</string>
     <string name="update_auto_download">Scarica automaticamente gli aggiornamenti</string>
-    <string name="tap_to_install_format">Tocca per installare %s</string>
-    <string name="tap_to_update_format">Tocca per aggiornare %s</string>
     <string name="repo_provider">Repository: %s</string>
 
     <string name="system_install_not_supported">L\'installazione di Estensione Privilegiata di F-Droid non è attualmente
@@ -408,8 +387,6 @@
     </string>
 
     <string name="download_pending">In attesa di avviare lo scaricamento…</string>
-
-    <string name="downloading_apk">Scaricamento di %1$s</string>
 
     <string name="keep_hour">1 ora</string>
     <string name="keep_day">1 giorno</string>
@@ -456,7 +433,6 @@
     <string name="notification_content_single_downloading_update">Scaricamento aggiornamento di \"%1$s\"…</string>
     <string name="notification_content_single_installing">Installazione \"%1$s\"…</string>
     <string name="notification_content_single_installed">Installato con successo</string>
-    <string name="notification_content_single_install_error">Installazione fallita</string>
     <string name="notification_title_summary_update_available">Aggiornamento disponibile</string>
     <string name="notification_title_summary_downloading">Scaricamento…</string>
     <string name="notification_title_summary_downloading_update">Scaricamento aggiornamento…</string>

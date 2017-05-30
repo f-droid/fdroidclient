@@ -31,7 +31,6 @@
     </string>
     <string name="local_repo_name">Zita repfimbi rakamanikwa</string>
     <string name="local_repo_name_summary">Musoro wepfimbi yakamanikwa wakashambadzwa: %s</string>
-    <string name="local_repo_https">Shandisa chihako chepuraivheti</string>
     <string name="local_repo_https_on">Shandisa chihako cheHTTPS:// chakakwedekerwa kuitira pfimbi yakamanikwa</string>
 
     <string name="login_title">Kukwedekwerwa kunodiwa</string>
@@ -75,11 +74,9 @@
     <string name="add_key">Wedzera svumbunuro</string>
     <string name="overwrite">Nyorera pamusoro</string>
 
-    <string name="fdroid_updates_available">Zvekunatsa F-Droid zviripo</string>
     <string name="bluetooth_activity_not_found">Hapana mutowo wekutumira neBluetooth wawanikwa, sarudza imwe chete!
     </string>
     <string name="choose_bt_send">Sarudza mutowo weBluetooth wekutumira nawo</string>
-    <string name="send_via_bluetooth">Tumira kuburikira neBluetooth</string>
 
     <string name="repo_add_url">Kero yepfimbi</string>
     <string name="repo_add_fingerprint">Chidhindo chechigunwe (zvirikwauri)</string>
@@ -96,11 +93,9 @@
     <string name="malformed_repo_uri">Kufuratira URI yepfimbi yakapeyama: %s</string>
     <string name="repo_provider">Pfimbi: %s</string>
 
-    <string name="menu_update_repo">Natsa pfimbi idzi</string>
     <string name="menu_manage">Pfimbi</string>
     <string name="menu_send_apk_bt">Gova F-Droid kuburikidza neBluetooth</string>
     <string name="menu_settings">Gadziro</string>
-    <string name="menu_about">Nezve</string>
     <string name="menu_search">Tsvaga</string>
     <string name="menu_add_repo">Pfimbi itsva</string>
 
@@ -122,7 +117,6 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="details_installed">Vhezheni %s yavakirirwa</string>
     <string name="details_notinstalled">Haina kuvakirirwa</string>
 
     <string name="antiadslist">App ino ine zvakashambadzwa zvemamwe makambani</string>
@@ -282,17 +276,11 @@
         Pane maApps pamuchina wako, asi haapo kubva kuF-Droid. Izvi zvinogona kudaro nekuti unofanirwa kunatsa pfimbi
         dzako, kana kuti pfimbi dzako hadzina maApps ako zvechokwadi.
     </string>
-    <string name="empty_available_app_list">Hapana maApps mubato iri.
-
-        Yedza kusarudza bato rakasiyana kana kunatsa pfimbi dzako kuti uwane rutarwa rutsva rwemaApps.
-    </string>
     <string name="empty_can_update_app_list">MaApps ose akanatswa.
 
         Makorokoto! MaApps ako ose akanatswa (kana kuti pfimbi dzako hadzina kunatswa).
     </string>
-    <string name="empty_search_installed_app_list">Hapana maApps akatevedzera akavakirirwa.</string>
     <string name="empty_search_available_app_list">Hapana maApps akatevedzera aripo.</string>
-    <string name="empty_search_can_update_app_list">Hapana maApps akatevedzera ekunatsa.</string>
 
     <string name="requesting_root_access_body">Kukumbira hupindwa pamudzi…</string>
     <string name="root_access_denied_title">Hupindwa pamudzi kwanyimwa</string>
@@ -301,10 +289,6 @@
     </string>
     <string name="install_error_unknown">Tatadza kuvakirira nenhau yekanganiso isingazivikanwe</string>
     <string name="uninstall_error_unknown">Tatadza kubvisa kuvakirira nenhau yekanganiso isirikuzivikanwe</string>
-    <string name="system_install_denied_title">Tambanudzo ine chihesvuro yeF-Droid haipo</string>
-    <string name="system_install_denied_body">Sarudzo iyi iripo chete kana tambanudzo ine chihesvuro cheF-Droid
-        chakavakirirwa.
-    </string>
     <string name="system_install_denied_signature">Chicherechedzo chechihesvuro ichi chatadzwa! Chikumbiro, sika dudziro
         yezvipfukuto!
     </string>
@@ -312,7 +296,6 @@
         dudziro rezvipfukuto!
     </string>
     <string name="system_install_button_install">Vakirira</string>
-    <string name="system_install_button_open">Tambanudzo yakavhurika</string>
     <string name="system_install_post_success">Budiriro pakuvakirira Tambanudzo ine chihesvuro cheF-Droid</string>
     <string name="system_install_post_fail">Kuvakirira tambanudzo yechihesvuro cheF-Droid kwaramba</string>
     <string name="system_install_post_success_message">Tambanudzo ine chihesvuro cheF-Droid chabudirira kuvakirirwa.
@@ -390,8 +373,6 @@
     <string name="swap_not_enabled">Kutsinhana hakuna kubvumirwa</string>
     <string name="swap_not_enabled_description">Tisati tatsinhana, muchina wako unofanirwa kuita kuti uwonekwe.</string>
 
-    <string name="tap_to_install_format">Bata kuti uvakirire %s</string>
-    <string name="tap_to_update_format">Bata kuti unatse %s</string>
     <string name="install_confirm">inoda hupindwa pa</string>
     <string name="install_confirm_update">Unoda kuvakirira chekunatsa
         kuApplication iripo here? Dhata rako ragara riripo harizo
@@ -414,7 +395,6 @@
     <string name="perm_costs_money">Izvi zvichada mari</string>
     <string name="uninstall_update_confirm">Urikuda kudzorera App iyi nevhezheni yekufacory?</string>
     <string name="uninstall_confirm">Urikuda kubvisa kuvakirira paApp iyi here?</string>
-    <string name="tap_to_install">Kututunura kwazadziswa, bata kuti uvakirire</string>
     <string name="download_error">Kututunura hakuna kubudirira</string>
     <string name="download_pending">Takamirira kutanga kututunura…</string>
     <string name="install_error_notify_title">Kanganiso pakuvakirira %s</string>
@@ -424,7 +404,6 @@
     <string name="perms_new_perm_prefix">Chitsva:</string>
     <string name="perms_description_app">Kuyananiswa na %1$s.</string>
     <string name="downloading">Kututunura…</string>
-    <string name="downloading_apk">Kututunura %1$s</string>
     <string name="installing">Kuvakirira…</string>
     <string name="uninstalling">Kubvisa kuvakirira…</string>
 
@@ -466,7 +445,6 @@
     <string name="notification_content_single_downloading_update">Kututunura wedzero ye \"%1$s\"…</string>
     <string name="notification_content_single_installing">Kuvakirira \"%1$s\"…</string>
     <string name="notification_content_single_installed">Kuvakirira kwabudirira</string>
-    <string name="notification_content_single_install_error">Kuvakirira kwaramba</string>
     <string name="notification_title_summary_update_available">Wedzero yavapo</string>
     <string name="notification_title_summary_downloading">Kututunura…</string>
     <string name="notification_title_summary_downloading_update">Kututunura wedzero…</string>

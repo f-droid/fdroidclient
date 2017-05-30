@@ -21,7 +21,6 @@
     <string name="cancel">Prekliči</string>
     <string name="repo_add_url">Naslov skladišča</string>
     <string name="menu_manage">Upravljanje s skladišči</string>
-    <string name="menu_about">O programu</string>
     <string name="menu_search">Iskanje</string>
     <string name="menu_add_repo">Novo skladišče</string>
     <string name="menu_install">Namesti</string>
@@ -30,7 +29,6 @@
     <string name="menu_issues">Težave</string>
     <string name="menu_source">Izvorna koda</string>
     <string name="menu_donate">Prispevek</string>
-    <string name="details_installed">Nameščena različica %s</string>
     <string name="details_notinstalled">Ni nameščeno</string>
     <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
     <string name="expert">Napredno</string>

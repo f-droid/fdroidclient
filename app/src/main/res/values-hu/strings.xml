@@ -40,7 +40,6 @@
     <string name="enable">Engedélyez</string>
     <string name="add_key">Kulcs hozzáadás</string>
     <string name="overwrite">Felülírás</string>
-    <string name="fdroid_updates_available">F-Droid frissítés érhető el</string>
     <string name="repo_add_url">Repo cím</string>
     <string name="repo_add_fingerprint">Ujjlenyomat (opcionális)</string>
     <string name="repo_exists_add_fingerprint">Ez a repo már be van állítva, ez új kulcs információt fog hozzáadni.
@@ -49,9 +48,7 @@
     <string name="repo_exists_and_enabled">A fogadott repo már telepítve és engedélyezve van.</string>
     <string name="repo_delete_to_overwrite">Előbb törölnie kell ezt a repót, mielőtt hozzáad egyet eltérő kulccsal.
     </string>
-    <string name="menu_update_repo">Repo-k frissítése</string>
     <string name="menu_manage">Repo-k kezelése</string>
-    <string name="menu_about">Rólunk</string>
     <string name="menu_search">Keresés</string>
     <string name="menu_add_repo">Új repository</string>
     <string name="menu_launch">Indítás</string>
@@ -65,7 +62,6 @@
     <string name="menu_source">Forráskód</string>
     <string name="menu_upgrade">Frissítés</string>
     <string name="menu_donate">Adomány</string>
-    <string name="details_installed">%s verzió telepítve</string>
     <string name="details_notinstalled">Nincs telepítve</string>
     <string name="antiadslist">Az alkalmazás reklámot tartalmaz</string>
     <string name="antitracklist">Az alkalmazás nyomon követi és jelenti a tevékenységeit</string>
@@ -111,7 +107,6 @@
     </string>
     <string name="local_repo_name">Helyi repo neve</string>
     <string name="local_repo_name_summary">A helyi repód közzétett címe: %s</string>
-    <string name="local_repo_https">Biztonságos kapcsolat használata</string>
     <string name="local_repo_https_on">Titkosított HTTPS:// kapcsolat használata a helyi repóhoz</string>
 
     <string name="login_title">Hitelesítés szükséges</string>
@@ -132,7 +127,6 @@
     <string name="less">Kevesebb</string>
 
     <string name="back">Vissza</string>
-    <string name="send_via_bluetooth">Küldés Bluetooth-on</string>
 
     <string name="bad_fingerprint">Rossz ujjlenyomat</string>
     <string name="invalid_url">Ez nem egy érvényes URL.</string>
@@ -200,21 +194,15 @@
         az F-Droidból. Ez lehet azért, mert frissíteni kell a tárolókat, vagy mert a tárolókban valóban nem szerepelnek
         az appjai.
     </string>
-    <string name="empty_available_app_list">Nincs app ebben a kategóriában.\n\nPróbáljon kiválasztani egy másik
-        kategóriát vagy frissíteni a tárolókat a friss applista megszerzéséhez.
-    </string>
     <string name="empty_can_update_app_list">Minden app naprakész.\n\nGratulálunk! Minden appja naprakész (vagy a
         tárolói elavultak).
     </string>
-    <string name="empty_search_installed_app_list">Nincs találat a telepített alkalmazások között.</string>
     <string name="empty_search_available_app_list">Nincs találat az elérhető alkalmazások között.</string>
-    <string name="empty_search_can_update_app_list">Nincs találat a frissítések között.</string>
 
     <string name="install_error_unknown">A telepítés ismeretlen hiba miatt nem sikerült</string>
     <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt nem sikerült</string>
     <string name="system_install_denied_signature">A kiterjesztés aláírása hibás! Készíts egy hibajelentést!</string>
     <string name="system_install_button_install">Telepítés</string>
-    <string name="system_install_button_open">Kiterjesztés megnyitása</string>
     <string name="system_install_installing">Telepítés…</string>
     <string name="system_install_installing_rebooting">Telepítés és újraindítás…</string>
     <string name="system_install_uninstalling">Eltávolítás…</string>
@@ -245,7 +233,6 @@
     <string name="perm_costs_money">Ez pénzbe kerülhet Önnek</string>
     <string name="uninstall_update_confirm">Szeretné lecserélni ezt az appot a gyári verzióra?</string>
     <string name="uninstall_confirm">Szeretné eltávolítani ezt az appot?</string>
-    <string name="tap_to_install">Letöltés sikeres, érintse meg a telepítéshez</string>
     <string name="download_error">Letöltés sikertelen</string>
 
     <string name="perms_new_perm_prefix">Új:</string>
@@ -323,7 +310,6 @@
         eszközön.
     </string>
     <string name="download_pending">Várakozás a letöltés elkezdésére…</string>
-    <string name="downloading_apk">%1$s letöltése</string>
     <string name="installing">Telepítés…</string>
     <string name="uninstalling">Eltávolítás…</string>
 

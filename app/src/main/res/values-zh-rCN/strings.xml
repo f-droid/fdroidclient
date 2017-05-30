@@ -34,7 +34,6 @@
     <string name="enable">启用</string>
     <string name="add_key">添加密钥</string>
     <string name="overwrite">覆盖</string>
-    <string name="fdroid_updates_available">可更新 F-Droid</string>
     <string name="bluetooth_activity_not_found">未找到蓝牙发送方式，请选择一个!</string>
     <string name="choose_bt_send">选择蓝牙发送方式</string>
     <string name="repo_add_url">软件源地址</string>
@@ -44,10 +43,8 @@
     <string name="repo_exists_and_enabled">此软件源已经设置好并已启用。</string>
     <string name="repo_delete_to_overwrite">在您添加不同密钥的软件源之前，您需要先删除该软件源。</string>
     <string name="malformed_repo_uri">忽略异常格式的软件源URI：%s</string>
-    <string name="menu_update_repo">更新软件库</string>
     <string name="menu_manage">管理软件源</string>
     <string name="menu_send_apk_bt">用蓝牙分享F-Droid</string>
-    <string name="menu_about">关于</string>
     <string name="menu_search">搜索</string>
     <string name="menu_add_repo">添加新软件源</string>
     <string name="menu_launch">运行</string>
@@ -61,7 +58,6 @@
     <string name="menu_source">源代码</string>
     <string name="menu_upgrade">升级</string>
     <string name="menu_donate">捐赠</string>
-    <string name="details_installed">已安装版本 %s</string>
     <string name="details_notinstalled">未安装</string>
     <string name="antiadslist">该应用程序包含广告</string>
     <string name="antitracklist">该应用程序会跟踪并报告您的活动</string>
@@ -139,7 +135,6 @@
     <string name="uninstall_system_summary">打开特权扩展的详情来更新/卸载它</string>
     <string name="local_repo_name">本地软件源的名字</string>
     <string name="local_repo_name_summary">本地软件源对外广播的标题: %s</string>
-    <string name="local_repo_https">使用加密链接</string>
     <string name="local_repo_https_on">本地软件源使用加密的https://链接</string>
 
     <string name="login_title">需要验证</string>
@@ -158,7 +153,6 @@
     <string name="less">更少</string>
 
     <string name="back">返回</string>
-    <string name="send_via_bluetooth">用蓝牙发送</string>
 
     <string name="bad_fingerprint">指纹错误</string>
     <string name="invalid_url">无效的URL。</string>
@@ -205,20 +199,14 @@
 
     <string name="empty_installed_app_list">应用程序未安装。\n\n在您的设备上有这些应用程序，但无法从F-Droid获取它们。这可能是因为需要更新你的软件库，或者在库里真的没有这些应用程序。
     </string>
-    <string name="empty_available_app_list">"该类别中未找到任何应用程序。
-\n
-\n试试其它类别或者更新软件库获取最新的应用列表。 "</string>
-    <string name="empty_can_update_app_list">好棒！你的应用都是最新的（或者你该更新软件库了）。</string>
+    <string name="empty_can_update_app_list">所有软件已更新。\n\n好棒！你的应用都是最新的（或者你该更新软件库了）。</string>
 
     <string name="root_access_denied_body">你的设备未 root，或者你拒绝了root请求。</string>
     <string name="install_error_unknown">由于未知原因导致安装失败</string>
     <string name="uninstall_error_unknown">由于未知原因导致缷载失败</string>
-    <string name="system_install_denied_title">F-Droid特权扩展不可用</string>
-    <string name="system_install_denied_body">请先安装 F-Droid 特权扩展，然后该选项才可用。</string>
     <string name="system_install_denied_signature">该扩展的签名不正确！请报BUG！</string>
     <string name="system_install_denied_permissions">该扩展没有获得超级权限！请报BUG！</string>
     <string name="system_install_button_install">安装</string>
-    <string name="system_install_button_open">打开扩展</string>
     <string name="system_install_post_success">安装F-Droid特权扩展成功</string>
     <string name="system_install_post_fail">安装F-Droid特权扩展失败</string>
     <string name="system_install_post_success_message">F-Droid 特权扩展已成功安装。将允许 F-Droid 安装，升级和卸载自己的应用程序。</string>
@@ -285,7 +273,6 @@
     <string name="perm_costs_money">这可能会产生费用</string>
     <string name="uninstall_update_confirm">你要把这个程序换成出厂版本吗？</string>
     <string name="uninstall_confirm">确定要卸载此应用程序吗？</string>
-    <string name="tap_to_install">下载已完成，点击安装</string>
     <string name="download_error">下载失败</string>
 
     <string name="perms_new_perm_prefix">新的：</string>
@@ -306,9 +293,7 @@
     <string name="about_license">许可证类型</string>
 
     <string name="status_inserting_apps">正在保存应用信息</string>
-    <string name="empty_search_installed_app_list">没找到符合的已安装应用。</string>
     <string name="empty_search_available_app_list">已安装应用列表为空。</string>
-    <string name="empty_search_can_update_app_list">未能从可更新应用中找到符合的结果。</string>
 
     <string name="menu_email">发邮件给作者</string>
     <string name="antinonfreeassetslist">该此应用包括非自由资产</string>
@@ -323,11 +308,7 @@
     <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
     <string name="update_auto_download">自动下载更新</string>
     <string name="update_auto_download_summary">后台下载更新文件</string>
-    <string name="tap_to_install_format">点按以安装 %s</string>
-    <string name="tap_to_update_format">点按以更新 %s</string>
     <string name="download_pending">正在等待开始下载…</string>
-
-    <string name="downloading_apk">正在下载 %1$s</string>
 
     <string name="system_install_not_supported">F-Droid 特权扩展目前不支持安装在 Android 5.1 或更高版本上。</string>
 
@@ -435,7 +416,6 @@
     <string name="notification_content_single_downloading_update">正在下载“%1$s”的更新…</string>
     <string name="notification_content_single_installing">正在安装“%1$s”…</string>
     <string name="notification_content_single_installed">安装成功</string>
-    <string name="notification_content_single_install_error">安装失败</string>
     <plurals name="notification_summary_updates">
 	<item quantity="other">%1$d 个更新</item>
 </plurals>

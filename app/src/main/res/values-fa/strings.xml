@@ -30,14 +30,11 @@
     <string name="enable">فعّال کردن</string>
     <string name="add_key">افزودن کلید</string>
     <string name="overwrite">جانویسی</string>
-    <string name="fdroid_updates_available">به‌روزرسانی‌های اف‌دروید موجودند</string>
     <string name="bluetooth_activity_not_found">هیچ روش ارسال با بلوتوثی پیدا نشد، یکی را برگزینید!</string>
     <string name="choose_bt_send">گزینش روش ارسال بلوتوث</string>
     <string name="repo_add_url">نشانی مخزن</string>
     <string name="repo_add_fingerprint">اثر انگشت (اختیاری)</string>
-    <string name="menu_update_repo">به‌روزرسانی مخزن‌ها</string>
     <string name="menu_manage">مخزن‌ها</string>
-    <string name="menu_about">درباره</string>
     <string name="menu_search">جست‌وجو</string>
     <string name="menu_share">هم‌رسانی</string>
     <string name="menu_install">نصب</string>
@@ -91,7 +88,6 @@
     <string name="uninstall_system_summary">گشودن صفحهٔ جزییات افزونهٔ ممتاز برای به‌روز رسانی/حذف آن</string>
     <string name="local_repo_name">نام مخزن محلّی شما</string>
     <string name="local_repo_name_summary">عنوان تبلغی مخزن محلّی شما: %s</string>
-    <string name="local_repo_https">استفاده از اتّصال خصوصی</string>
     <string name="local_repo_https_on">استفاده از اتّصال رمز شدهٔ http برای مخزن محلّی</string>
 
     <string name="login_title">نیاز به تأیید هویت</string>
@@ -115,7 +111,6 @@
     <string name="less">کم‌تر</string>
 
     <string name="back">بازگشت</string>
-    <string name="send_via_bluetooth">ارسال با بلوتوث</string>
 
     <string name="repo_exists_add_fingerprint">این مخزن از پیش برپا شده است. این کار، اطّلاعات کلید جدیدی را می‌افزاید.</string>
     <string name="repo_exists_enable">این مخزن از پیش برپا شده است. تأیید کنید که می‌خواهید دوباره فعّالش کنید.</string>
@@ -136,7 +131,6 @@
     <string name="menu_flattr">فلتر</string>
 
 
-    <string name="details_installed">نگارش %s نصب شده</string>
     <string name="expert">حالت حرفه‌ای</string>
     <string name="show_incompat_versions">نگارش‌های ناسازگار</string>
     <string name="show_incompat_versions_on">نمایش نگارش‌های ناساگار کاره با این افزاره</string>
@@ -249,7 +243,6 @@
     <string name="newPerms">جدید</string>
     <string name="allPerms">همه</string>
     <string name="perm_costs_money">ممکن است این کار برایتان خرج داشته باشد</string>
-    <string name="tap_to_install">بارگیری کامل شد، برای نصب ضربه بزنید</string>
     <string name="download_error">بارگیری موفّق نبود</string>
 
     <string name="perms_new_perm_prefix">جدید:</string>
@@ -288,15 +281,8 @@
         اف‌دروید موجود نیستند. دلیل این امر می‌تواند این دلیل باشد که مخازنتان کاره‌هایتان را موجود ندارند یا باید
         به‌روز شوند.
     </string>
-    <string name="empty_available_app_list">هیچ کاره‌ای در این دسته نیست.\n\nتلاش کنید دسته‌ای دیگر برگزیده یا مخازنتان
-        را برای گرفتن فهرست تازه‌ای از کاره‌ها به‌روز کنید.
-    </string>
     <string name="install_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
     <string name="uninstall_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
-    <string name="system_install_denied_title">افزونهٔ ممتاز اف‌دروید موجود نیست</string>
-    <string name="system_install_denied_body">"این گزینه فقط هنگام نصب بودن افزونهٔ ممتاز اف‌دروید،
-\nدر دسترس است.
-\n "</string>
     <string name="system_install_denied_signature">"امضای افزونه اشتباه است!
 \nلطفاً یک گزارش خطا ایجاد کنید!
 \n "</string>
@@ -304,7 +290,6 @@
         کنید!
     </string>
     <string name="system_install_button_install">نصب</string>
-    <string name="system_install_button_open">گشودن افزونه</string>
     <string name="system_install_post_success">افزونهٔ ممتاز اف‌دروید با موفّقیت نصب شد</string>
     <string name="system_install_post_fail">نصب افزونهٔ ممتاز اف‌دروید شکست خورد</string>
     <string name="system_install_post_success_message">افزونهٔ ممتاز اف‌دروید با موفّقیت نصب شد. این مار به اف‌دروید
@@ -358,9 +343,7 @@
     <string name="menu_email">رایانامه به نویسنده</string>
     <string name="antinonfreeassetslist">این کاره شامل ابزارهای غیرآزاد است</string>
 
-    <string name="empty_search_installed_app_list">هیچ برنامهٔ نصب شدهٔ مطابقی وجود ندارد.</string>
     <string name="empty_search_available_app_list">هیچ برنامهٔ مطابقی وجود ندارد.</string>
-    <string name="empty_search_can_update_app_list">هیچ برنامهٔ مطابقی برای به‌روز رسانی وجود ندارد.</string>
 
     <string name="crash_dialog_title">اف‌دروید از کار افتاد</string>
     <string name="crash_dialog_text">خطایی پیش‌بینی نشده رخ داد که برنامه را وادار به توقّف کرد. می‌خواهید جزئیات را
@@ -376,11 +359,7 @@
     <string name="update_auto_download_summary">"به‌روز رسانی‌ها به صورت خودکار بارگیری شده
 \nو برای نصبشان آگاه می‌شوید
 \n "</string>
-    <string name="tap_to_install_format">برای نصب %s ضربه بزنید</string>
-    <string name="tap_to_update_format">برای به‌روز رسانی %s ضربه بزنید</string>
     <string name="download_pending">در انتظار شروع بارگیری…</string>
-
-    <string name="downloading_apk">در حال بارگیری %1$s</string>
 
     <string name="system_install_not_supported">در حال حاضر نصب افزونهٔ ممتاز اف‌دروید روی اندروید ۵.۱ یا بالاتر
         پشتیبانی نمی‌شود.
@@ -488,7 +467,6 @@
     <string name="notification_content_single_downloading_update">در حال بارگیری به‌روز رسانی برای «%1$s»…</string>
     <string name="notification_content_single_installing">در حال نصب «%1$s»…</string>
     <string name="notification_content_single_installed">با موفّقیت نصب شد</string>
-    <string name="notification_content_single_install_error">نصب شکست خورد</string>
     <string name="notification_title_summary_update_available">به‌روز رسانی موجود است</string>
     <string name="notification_title_summary_downloading">در حال بارگیری…</string>
     <string name="notification_title_summary_downloading_update">در حال بارگیری به‌روز رسانی…</string>

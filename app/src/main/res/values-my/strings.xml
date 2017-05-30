@@ -33,7 +33,6 @@
     </string>
     <string name="local_repo_name">သင္၏ Local Repo အမည္</string>
     <string name="local_repo_name_summary">သင္၏ Local Repo ေၾကျငာေခါင္းစဥ္ - %s</string>
-    <string name="local_repo_https">ကိုယ္ပိုင္ကြန္ရက္ခ်ိတ္ဆက္မႈကိုသံုးမည္</string>
     <string name="local_repo_https_on">Local Repo အတြက္ လံုျခံဳေသာ HTTPS:// ကိုသံုးမည္</string>
 
     <string name="login_title">ခြင့္ျပဳခ်က္လိုအပ္သည္</string>
@@ -76,10 +75,8 @@
     <string name="add_key">ကီးထည့္မည္</string>
     <string name="overwrite">ထပ္ေရးမည္</string>
 
-    <string name="fdroid_updates_available">F-Droid အသစ္မြမ္းမံမႈရရွိႏိုင္သည္</string>
     <string name="bluetooth_activity_not_found">ဘလူးသုဒ့္ႏွင့္ပို႔ရန္နည္းလမ္းရွာမေတြ႕ပါ။ တစ္ခုေရြးပါ!</string>
     <string name="choose_bt_send">ဘလူးသုဒ့္ႏွင့္ပို႔ေသာနည္းလမ္းကိုေရြးမည္</string>
-    <string name="send_via_bluetooth">ဘလူးသုဒ့္မွတစ္ဆင့္ပို႔မည္</string>
 
     <string name="repo_add_url">Repository လိပ္စာ</string>
     <string name="repo_add_fingerprint">လက္ေဗြရာ(လိုအပ္မွသာ)</string>
@@ -94,11 +91,9 @@
     <string name="malformed_repo_uri">repo URI မွားယြင္းျပဳလုပ္မႈကိုလ်စ္လ်ဴရႈမလား : %s</string>
     <string name="repo_provider">Repository: %s</string>
 
-    <string name="menu_update_repo">Repo မ်ားအသစ္မြမ္းမံမည္</string>
     <string name="menu_manage">Repository မ်ား</string>
     <string name="menu_send_apk_bt">F-Droid ကို ဘလူးသုဒ့္မွတစ္ဆင့္ေဝမွ်မည္</string>
     <string name="menu_settings">ျပင္ဆင္ရန္</string>
-    <string name="menu_about">အေၾကာင္း</string>
     <string name="menu_search">ရွာေဖြမည္</string>
     <string name="menu_add_repo">Repository အသစ္</string>
 
@@ -116,7 +111,6 @@
     <string name="menu_donate">လွဴဒါန္းမည္</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
-    <string name="details_installed">ဗားရွင္း %s ကိုသြင္းမည္</string>
     <string name="details_notinstalled">မသြင္းထားခဲ့ပါ</string>
 
     <string name="antiadslist">ဒီ app သည္ ေၾကျငာမ်ားပါဝင္သည္</string>
@@ -214,7 +208,6 @@
     <string name="requesting_root_access_body">Root ရယူျခင္းေတာင္းဆိုေနသည္…</string>
     <string name="root_access_denied_title">Root ရယူမႈျငင္းဆိုခ့ဲသည္</string>
     <string name="system_install_button_install">သြင္းမည္</string>
-    <string name="system_install_button_open">Extension ဖြင့္မည္</string>
     <string name="system_install_installing">သြင္းေနသည္…</string>
     <string name="system_install_installing_rebooting">သြင္းေနသည္ ျပီးေတာ့ ျပန္လည္ စတင္ေနသည္</string>
     <string name="system_install_uninstalling">ျဖဳတ္ေနသည္</string>
@@ -238,20 +231,16 @@
     <string name="swap_connecting">ခ်ိတ္ဆက္ေနသည္</string>
     <string name="bluetooth_unavailable">ဘလူးသုဒ္မရရွိႏိုင္ပါ</string>
     <string name="loading">ဖြင့္ေနသည္</string>
-    <string name="tap_to_install_format">%s ကိုသြင္းရန္ႏွိပ္ပါ</string>
-    <string name="tap_to_update_format">%s ကိုအသစ္မြမ္းမံရန္ႏွိပ္ပါ</string>
     <string name="newPerms">အသစ္</string>
     <string name="allPerms">အားလံုး</string>
     <string name="perm_costs_money">၄င္းသည္ ေငြေၾကးကုန္က်ႏိုင္သည္</string>
     <string name="uninstall_confirm">ဒီ app ကိုျဖုတ္ခ်င္ပါသလား?</string>
-    <string name="tap_to_install">ေဒါင္းလုတ္ျပီးပါျပီ သြင္းရန္ႏွိပ္ပါ</string>
     <string name="download_error">ေဒါင္းလုတ္မေအာင္ျမင္ပါ</string>
     <string name="download_pending">ေဒါင္းလုတ္စရန္ေစာင့္ဆိုင္းေနသည္…</string>
     <string name="install_error_notify_title">%s ကိုသြင္းေနစဥ္ခ်ိဳ႕ယြင္းခ်က္</string>
     <string name="perms_new_perm_prefix">အသစ္ -</string>
     <string name="perms_description_app">%1$s မွေထာက္ပံ့ထားသည္.</string>
     <string name="downloading">ေဒါင္းလုတ္ဆြဲေနသည္…</string>
-    <string name="downloading_apk">%1$s ကိုေဒါင္းလုတ္ဆြဲေနသည္</string>
     <string name="installing">သြင္းေနသည္.…</string>
     <string name="uninstalling">ျဖဳတ္ေနသည္..…</string>
 
@@ -280,8 +269,7 @@
     </string>
     <string name="local_repo">လိုကယ္ရီပို</string>
     <string name="repo_added">F-Droid repository ကိုသိမ္းခဲ့သည္ %1$s.</string>
-    <string name="empty_search_installed_app_list">သြင္းထားေသာ application ထဲမွာ ရွာေဖြမႈမတူညီပါ.</string>
-<string name="keep_install_history">မှတ်တမ်းများကိုသိမ်းထားမည်</string>
+    <string name="keep_install_history">မှတ်တမ်းများကိုသိမ်းထားမည်</string>
     <string name="keep_install_history_summary">F-Droid အတွင်း သွင်းထားသည် နှင့် ဖြုတ်ထားသည့်မှတ်တမ်းတစ်ခုကို သိမ်းထားမည်</string>
     <string name="update_auto_install">အသစ်ထွက်ရှိမှုများကိုအလိုအလျောက်သွင်းမည်</string>
     <string name="update_auto_install_summary">အနောက်လုပ်ငန်းစဉ်များတွင် အသစ်ထွက်ရှိသော အက်ပ်စ်များကို ဒေါင်းပြီး ထည့်သွင်းမည်</string>

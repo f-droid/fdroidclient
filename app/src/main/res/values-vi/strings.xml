@@ -26,7 +26,6 @@
         dụng
     </string>
     <string name="local_repo_name">Tên kho ứng dụng nội bộ</string>
-    <string name="local_repo_https">Dùng kết nối riêng tư</string>
     <string name="local_repo_https_on">Dùng kết nối HTTPS:// mã hoá cho kho nội bộ</string>
     <string name="app_details">Thông tin ứng dụng</string>
     <string name="no_such_app">Không tìm thấy ứng dụng.</string>
@@ -48,19 +47,15 @@
     <string name="enable">Kích hoạt</string>
     <string name="add_key">Thêm mã khoá</string>
     <string name="overwrite">Ghi đè</string>
-    <string name="fdroid_updates_available">Có cập nhật F-Droid</string>
     <string name="bluetooth_activity_not_found">Không tìm thấy phương pháp gửi qua Bluetooth mặc định, hãy chọn phương
         pháp!
     </string>
     <string name="choose_bt_send">Chọn phương pháp gửi qua Bluetooth</string>
-    <string name="send_via_bluetooth">Gửi qua Bluetooth</string>
     <string name="repo_add_url">Địa chỉ kho</string>
     <string name="repo_delete_to_overwrite">Bạn phải xoá kho này trước thì mới có thể thêm kho có mã khác.</string>
     <string name="malformed_repo_uri">Bỏ qua địa chỉ lỗi: %s</string>
-    <string name="menu_update_repo">Cập nhật kho</string>
     <string name="menu_manage">Kho ứng dụng</string>
     <string name="menu_send_apk_bt">Chia sẻ F-Droid qua Bluetooth</string>
-    <string name="menu_about">Giới thiệu</string>
     <string name="menu_search">Tìm kiếm</string>
     <string name="menu_add_repo">Thêm kho ứng dụng mới</string>
     <string name="menu_launch">Chạy</string>
@@ -74,7 +69,6 @@
     <string name="menu_source">Mã nguồn</string>
     <string name="menu_upgrade">Nâng cấp</string>
     <string name="menu_donate">Ủng hộ</string>
-    <string name="details_installed">Đã cài đặt phiên bản %s</string>
     <string name="details_notinstalled">Chưa cài đặt</string>
     <string name="antiadslist">Ứng dụng này có quảng cáo</string>
     <string name="antitracklist">Ứng dụng này theo dõi và báo cáo hoạt động của bạn</string>
@@ -155,8 +149,6 @@
     <string name="root_access_denied_title">Bị từ chối quyền root</string>
     <string name="root_access_denied_body">Thiết bị của bạn chưa được root hoặc bạn đã từ chối quyền root của F-Droid.
     </string>
-    <string name="system_install_denied_title">Bị từ chối quyền hệ thống</string>
-    <string name="system_install_denied_body">Chỉ có tuỳ chọn này khi F-Droid được cài làm ứng dụng hệ thống.</string>
     <string name="swap_nfc_description">Nếu bạn của bạn có F-Droid và đã bật NFC, hãy chạm hai thiết bị vào nhau.
     </string>
     <string name="swap_join_same_wifi">Vào cùng một mạng Wi-Fi với bạn của bạn</string>
@@ -214,9 +206,6 @@
     <string name="empty_installed_app_list">Chưa cài đặt ứng dụng nào.\n\nCó ứng dụng trên máy bạn, nhưng những ứng dụng
         này không nằm trong F-Droid. Có thể bạn cần cập nhật các kho ứng dụng, hoặc trong các kho không có ứng dụng bạn
         đang dùng.
-    </string>
-    <string name="empty_available_app_list">Không có ứng dụng trong mục này.\n\nHãy thử chọn mục khác hoặc cập nhật kho
-        ứng dụng để có danh sách ứng dụng mới.
     </string>
     <string name="empty_can_update_app_list">Tất cả ứng dụng đã được cập nhật.\n\nChúc mừng! Bạn đang có những phiên bản
         mới nhất (nhưng cũng có thể các kho ứng dụng chưa được cập nhật).
@@ -296,7 +285,6 @@
     <string name="perm_costs_money">Việc này có thể mất phí</string>
     <string name="uninstall_update_confirm">Bạn có muốn thay thế ứng dụng này bằng phiên bản xuất xưởng không?</string>
     <string name="uninstall_confirm">Bạn có muốn gỡ bỏ ứng dụng này không?</string>
-    <string name="tap_to_install">Đã tải xong, chạm để cài đặt</string>
     <string name="download_error">Tải về thất bại</string>
 
     <string name="perms_new_perm_prefix">Mới:</string>
@@ -329,7 +317,6 @@
         cho chúng tôi!
     </string>
     <string name="system_install_button_install">Cài đặt</string>
-    <string name="system_install_button_open">Mở phần mở rộng</string>
     <string name="system_install_installing_rebooting">Đang cài đặt và khởi động lại…</string>
     <string name="system_install_warning">Việc này mất tối đa 10 giây.</string>
     <string name="theme_night">Đen</string>

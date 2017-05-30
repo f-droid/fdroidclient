@@ -29,7 +29,6 @@
     </string>
     <string name="local_repo_name">Название локального репозитория</string>
     <string name="local_repo_name_summary">Ваш локальный репозиторий рекламируется под именем: %s</string>
-    <string name="local_repo_https">Использовать частное соединение</string>
     <string name="local_repo_https_on">Использовать защищённое HTTPS:// соединение для локального репозитория</string>
     <string name="app_details">Описание приложения</string>
     <string name="no_such_app">Приложение не найдено.</string>
@@ -51,10 +50,8 @@
     <string name="enable">Включить</string>
     <string name="add_key">Добавить ключ</string>
     <string name="overwrite">Перезаписать</string>
-    <string name="fdroid_updates_available">Доступны обновления для F-Droid</string>
     <string name="bluetooth_activity_not_found">Методы отправки по Bluetooth не найдены, выберите какой-либо!</string>
     <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>
-    <string name="send_via_bluetooth">Отправить по Bluetooth</string>
     <string name="repo_add_url">Адрес репозитория</string>
     <string name="repo_add_fingerprint">Отпечаток ключа (необязательно)</string>
     <string name="repo_exists_add_fingerprint">Этот репозиторий уже настроен, это действие обновит информацию о ключе.</string>
@@ -64,10 +61,8 @@
         ключом.
     </string>
     <string name="malformed_repo_uri">Игнорирование неверного URI репозитория: %s</string>
-    <string name="menu_update_repo">Обновить репозитории</string>
     <string name="menu_manage">Репозитории</string>
     <string name="menu_send_apk_bt">Передать F-Droid по Bluetooth</string>
-    <string name="menu_about">О программе</string>
     <string name="menu_search">Поиск</string>
     <string name="menu_add_repo">Новый репозиторий</string>
     <string name="menu_launch">Запустить</string>
@@ -81,7 +76,6 @@
     <string name="menu_source">Исходный код</string>
     <string name="menu_upgrade">Обновить</string>
     <string name="menu_donate">Пожертвовать</string>
-    <string name="details_installed">Версия %s установлена</string>
     <string name="details_notinstalled">Не установлено</string>
     <string name="antiadslist">Это приложение содержит рекламу</string>
     <string name="antitracklist">Это приложение будет отслеживать ваши действия и сообщать о вашей деятельности</string>
@@ -171,10 +165,6 @@
     <string name="root_access_denied_body">Либо у вашего устройства нет root доступа, либо вы отклонили запрос от
         F-Droid.
     </string>
-    <string name="system_install_denied_title">Запрос на системные привилегии отклонён</string>
-    <string name="system_install_denied_body">Данная опция доступна только если F-Droid установлен как системное
-        приложение.
-    </string>
     <string name="swap_join_same_wifi">Подключиться к той же Wi-Fi сети, что и ваш друг</string>
     <string name="swap">Обмен приложениями</string>
     <string name="swap_no_wifi_network">Нет сети в данный момент</string>
@@ -217,10 +207,9 @@
         недоступны из F-Droid. Возможно, репозитории не обновлены, а может быть они вообще не содержат установленных у
         вас приложений.
     </string>
-    <string name="empty_available_app_list">Нет приложений в этой категории.\n\nПопробуйте выбрать другую категорию или
-        обновите репозитории, чтобы получить свежий список приложений.
-    </string>
-    <string name="empty_can_update_app_list">Поздравляем! У вас установлены самые свежие версии приложений (либо репозитории требуют обновления).</string>
+    <string name="empty_can_update_app_list">"Все приложения обновлены.
+\n
+\nПоздравляем! У Вас установлены самые свежие версии приложений (либо репозитории требуют обновления). "</string>
 
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>
@@ -267,7 +256,6 @@
         Пожалуйста, отправьте сообщение об ошибке!
     </string>
     <string name="system_install_button_install">Установить</string>
-    <string name="system_install_button_open">Открыть расширение</string>
     <string name="system_install_post_success">Привелигированное расширение F-Droid успешно установлено</string>
     <string name="system_install_post_fail">Установка привилегированного расширения F-Droid не удалась</string>
     <string name="system_install_installing">Установка…</string>
@@ -282,9 +270,7 @@
 
     <string name="category_Writing">Работа с текстом</string>
 
-    <string name="empty_search_installed_app_list">Нет совпадений среди установленных приложений.</string>
     <string name="empty_search_available_app_list">Нет совпадений среди доступных приложений.</string>
-    <string name="empty_search_can_update_app_list">Нет совпадений среди доступных обновлений.</string>
 
     <string name="system_install_warning">Это займёт до 10 секунд.</string>
     <string name="system_install_warning_lollipop">Это займёт до 10 секунд, после чего устройство будет<b>
@@ -314,7 +300,6 @@
     <string name="perm_costs_money">Это может стоить вам денег</string>
     <string name="uninstall_update_confirm">Хотите заменить это приложение заводской версией?</string>
     <string name="uninstall_confirm">Хотите удалить это приложение?</string>
-    <string name="tap_to_install">Загрузка закончена, нажмите для установки</string>
     <string name="download_error">Загрузка не удалась</string>
 
     <string name="perms_new_perm_prefix">Новые:</string>
@@ -383,8 +368,6 @@
 
     <string name="download_pending">Ожидание начала загрузки…</string>
 
-    <string name="downloading_apk">Загружается %1$s</string>
-
     <string name="keep_hour">1 час</string>
     <string name="keep_day">1 день</string>
     <string name="keep_week">1 неделя</string>
@@ -392,8 +375,6 @@
     <string name="keep_year">1 год</string>
     <string name="keep_forever">Всегда</string>
 
-    <string name="tap_to_install_format">Нажмите для установки %s</string>
-    <string name="tap_to_update_format">Нажмите для обновления %s</string>
     <string name="install_error_notify_title">Ошибка установки %s</string>
     <string name="uninstall_error_notify_title">Ошибка удаления %s</string>
 
@@ -465,7 +446,6 @@
     <string name="notification_content_single_downloading_update">Загрузка обновления для \"%1$s\"…</string>
     <string name="notification_content_single_installing">Установка \"%1$s\"…</string>
     <string name="notification_content_single_installed">Успешно установлено</string>
-    <string name="notification_content_single_install_error">Установка не удалась</string>
     <string name="notification_title_summary_update_available">Доступно обновление</string>
     <string name="notification_title_summary_downloading">Загрузка…</string>
     <string name="notification_title_summary_downloading_update">Загрузка обновления…</string>

@@ -39,7 +39,6 @@
     </string>
     <string name="local_repo_name">Ime Vašeg lokalnog repozitorija</string>
     <string name="local_repo_name_summary">Oglašeno ime Vašeg lokalnog repozitorija: %s</string>
-    <string name="local_repo_https">Koristi privatnu vezu</string>
     <string name="local_repo_https_on">Koristi enkriptiranu HTTPS:// vezu za lokalni repozitorij</string>
 
     <string name="login_title">Zahtjevana autentikacija</string>
@@ -82,10 +81,8 @@
     <string name="add_key">Dodaj ključ</string>
     <string name="overwrite">Prepiši</string>
 
-    <string name="fdroid_updates_available">Ažuriranja za F-Droid dostupna</string>
     <string name="bluetooth_activity_not_found">Nije pronađena metoda slanja preko Bluetootha, odaberite jednu!</string>
     <string name="choose_bt_send">Odaberi metodu slanja preko Bluetootha</string>
-    <string name="send_via_bluetooth">Pošalji preko Bluetootha</string>
 
     <string name="repo_add_url">Adresa repozitorija</string>
     <string name="repo_add_fingerprint">Otisak prsta (opcionalno)</string>
@@ -102,11 +99,9 @@
     <string name="malformed_repo_uri">Ignoriram pogrešna URI repozitorija: %s</string>
     <string name="repo_provider">Repozitorij: %s</string>
 
-    <string name="menu_update_repo">Ažuriraj repozitorije</string>
     <string name="menu_manage">Repozitoriji</string>
     <string name="menu_send_apk_bt">Podjeli F-Droid preko Bluetootha</string>
     <string name="menu_settings">Postavke</string>
-    <string name="menu_about">O aplikaciji</string>
     <string name="menu_search">Traži</string>
     <string name="menu_add_repo">Novi repozitorij</string>
 
@@ -128,7 +123,6 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="details_installed">Instalirana verzija %s</string>
     <string name="details_notinstalled">Nije instalirano</string>
 
     <string name="antiadslist">Ova aplikacija sadržava oglase</string>
@@ -258,15 +252,10 @@
         nisu dostupne iz F-Droida. Možda trebate ažurirati svoje repozitorije, ili ti repozitoriji stvarno nemaju Vaše
         aplikacije.
     </string>
-    <string name="empty_available_app_list">Nema aplikacija u ovoj kategoriji.\n\nProbajte odabrati drugu kategoriju ili
-        ažurirati svoje repozitorije kako bi dobili novi popis aplikacija.
-    </string>
     <string name="empty_can_update_app_list">Sve aplikacije su ažurirane.\n\nČestitke! Sve aplikacije su ažurirane (ili
         su Vam repozitoriji zastarjeli).
     </string>
-    <string name="empty_search_installed_app_list">Nema odgovarajućih instaliranih aplikacija.</string>
     <string name="empty_search_available_app_list">Nema dostupnih odgovarajućih aplikacija.</string>
-    <string name="empty_search_can_update_app_list">Nema odgovarajućih aplikacija za ažuriranje.</string>
 
     <string name="requesting_root_access_body">Zahtjevam root pristup…</string>
     <string name="root_access_denied_title">Root pristup odbijen</string>
@@ -274,17 +263,12 @@
     </string>
     <string name="install_error_unknown">Nije uspjelo instaliranje zbog nepoznate greške</string>
     <string name="uninstall_error_unknown">Nije uspjelo instaliranje zbog nepoznate greške</string>
-    <string name="system_install_denied_title">F-Droid povlašteno proširenje nije dostupno</string>
-    <string name="system_install_denied_body">Ova opcija je dostupna samo kad je instalirano F-Droid povlašteno
-        proširenje.
-    </string>
     <string name="system_install_denied_signature">Potpis proširenja je pogrešan! Molimo napravite zapis o greški!
     </string>
     <string name="system_install_denied_permissions">Proširenju nisu dodjeljene privilegirane ovlasti! Molimo stvorite
         zapis o greški!
     </string>
     <string name="system_install_button_install">Instaliraj</string>
-    <string name="system_install_button_open">Otvori proširenje</string>
     <string name="system_install_post_success">Uspješno instalirano F-Droid privilegirano proširenje</string>
     <string name="system_install_post_fail">Instalacija F-Droid privilegiranog proširenja nije uspjela</string>
     <string name="system_install_post_success_message">F-Droid privilegirano proširenje je uspješno instalirano. Ono
@@ -358,8 +342,6 @@
     <string name="swap_not_enabled">Razmjena nije omogućena</string>
     <string name="swap_not_enabled_description">Vaš uređaj mora biti vidljiv prije razmjene.</string>
 
-    <string name="tap_to_install_format">Dodirnite za instalaciju %s</string>
-    <string name="tap_to_update_format">Dodirnite za ažuriranje %s</string>
     <string name="install_confirm">treba pristup</string>
     <string name="install_confirm_update">Želite li ažurirati ovu postojeću aplikaciju?
         Vaši podaci neće biti izgubljeni.
@@ -382,7 +364,6 @@
     <string name="perm_costs_money">Ovo se može naplaćivati</string>
     <string name="uninstall_update_confirm">Želite li zamijeniti ovu aplikaciju sa tvorničkom verzijom?</string>
     <string name="uninstall_confirm">Želite li ukloniti ovu aplikaciju?</string>
-    <string name="tap_to_install">Preuzimanje dovršeno, dodirnite za instalaciju</string>
     <string name="download_error">Preuzimanje neuspješno</string>
     <string name="download_pending">Čekanje na početak preuzimanja…</string>
     <string name="install_error_notify_title">Greška pri instalaciji %s</string>
@@ -392,7 +373,6 @@
     <string name="perms_new_perm_prefix">Novo:</string>
     <string name="perms_description_app">Pruža %1$s.</string>
     <string name="downloading">Preuzimanje…</string>
-    <string name="downloading_apk">Preuzimam %1$s</string>
     <string name="installing">Instaliram…</string>
     <string name="uninstalling">Uklanjam…</string>
 

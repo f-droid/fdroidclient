@@ -31,7 +31,6 @@
     </string>
     <string name="local_repo_name">Name Ihrer lokalen Paketquelle</string>
     <string name="local_repo_name_summary">Der verwendete Titel Ihrer lokalen Paketquelle: %s</string>
-    <string name="local_repo_https">Gesicherte Verbindung verwenden</string>
     <string name="local_repo_https_on">Verschlüsselte HTTPS://-Verbindung zur lokalen Paketquelle verwenden</string>
     <string name="app_details">Anwendungsdetails</string>
     <string name="no_such_app">Keine solche Anwendung gefunden.</string>
@@ -53,10 +52,8 @@
     <string name="enable">Aktivieren</string>
     <string name="add_key">Schlüssel hinzufügen</string>
     <string name="overwrite">Überschreiben</string>
-    <string name="fdroid_updates_available">F-Droid: Aktualisierungen verfügbar</string>
     <string name="bluetooth_activity_not_found">Keine Bluetooth-Sendemethode gefunden, bitte eine auswählen!</string>
     <string name="choose_bt_send">Bluetooth-Sendemethode auswählen</string>
-    <string name="send_via_bluetooth">Über Bluetooth senden</string>
     <string name="repo_add_url">Adresse der Paketquelle</string>
     <string name="repo_add_fingerprint">Fingerabdruck (optional)</string>
     <string name="repo_exists_add_fingerprint">Diese Paketquelle ist bereits eingerichtet, hiermit werden neue Schlüsselinformationen hinzugefügt.</string>
@@ -66,10 +63,8 @@
         anderen Schlüssel hinzufügen können.
     </string>
     <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse wird übergangen: %s</string>
-    <string name="menu_update_repo">Paketquellen aktualisieren</string>
     <string name="menu_manage">Paketquellen</string>
     <string name="menu_send_apk_bt">F-Droid über Bluetooth freigeben</string>
-    <string name="menu_about">Über</string>
     <string name="menu_search">Suchen</string>
     <string name="menu_add_repo">Paketquelle hinzufügen</string>
     <string name="menu_launch">Starten</string>
@@ -83,7 +78,6 @@
     <string name="menu_source">Quelltext</string>
     <string name="menu_upgrade">Aktualisieren</string>
     <string name="menu_donate">Spenden</string>
-    <string name="details_installed">Version %s installiert</string>
     <string name="details_notinstalled">Nicht installiert</string>
     <string name="antiadslist">Diese Anwendung enthält Werbung</string>
     <string name="antitracklist">Diese Anwendung verfolgt und versendet Ihre Aktivitäten</string>
@@ -181,10 +175,6 @@
     <string name="root_access_denied_body">Entweder ist Ihr Android-Gerät nicht gerootet oder Sie haben den Root-Zugriff
         für F-Droid verweigert.
     </string>
-    <string name="system_install_denied_title">Priveligierte F-Droid-Erweiterung ist nicht verfügbar</string>
-    <string name="system_install_denied_body">Diese Option ist nur verfügbar, wenn F-Droid als System-App installiert
-        wurde.
-    </string>
     <string name="swap_nfc_description">Wenn Ihr Freund F-Droid und NFC aktiviert hat, bitte die Geräte aneinander
         halten.
     </string>
@@ -241,10 +231,6 @@
         liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Anwendungen
         beinhalten.
     </string>
-    <string name="empty_available_app_list">Keine Anwendungen in dieser Kategorie.
-
-        Bitte eine andere Kategorie wählen oder die Paketquellen aktualisieren.
-    </string>
     <string name="empty_can_update_app_list">Glückwunsch! Alle Ihre Apps sind auf dem neuesten Stand (oder Ihre Paketquellen sind veraltet).</string>
 
     <string name="swap_send_fdroid">F-Droid senden</string>
@@ -276,7 +262,6 @@
         genehmigt! Bitte einen Fehlerbericht erstellen!
     </string>
     <string name="system_install_button_install">Installieren</string>
-    <string name="system_install_button_open">Erweiterung öffnen</string>
     <string name="system_install_post_success">Privilegierte F-Droid-Erweiterung erfolgreich installiert</string>
     <string name="system_install_post_fail">Installation der privilegierten F-Droid-Erweiterung fehlgeschlagen</string>
     <string name="system_install_installing">Installation läuft …</string>
@@ -355,7 +340,6 @@
     <string name="perm_costs_money">Das könnte Sie Geld kosten</string>
     <string name="uninstall_update_confirm">Möchten Sie diese App durch die Version des Werkszustands ersetzen?</string>
     <string name="uninstall_confirm">Möchten Sie diese App deinstallieren?</string>
-    <string name="tap_to_install">Herunterladen abgeschlossen, zum Installieren antippen</string>
     <string name="download_error">Herunterladen nicht erfolgreich</string>
 
     <string name="perms_description_app">Bereitgestellt von %1$s.</string>
@@ -371,10 +355,8 @@
     <string name="about_license">Lizenz</string>
 
     <string name="status_inserting_apps">Anwendungsdetails werden gespeichert</string>
-    <string name="empty_search_can_update_app_list">Keine passenden Anwendungen zum Aktualisieren.</string>
 
     <string name="empty_search_available_app_list">Keine passenden Anwendungen verfügbar.</string>
-    <string name="empty_search_installed_app_list">Keine passenden Anwendungen installiert.</string>
     <string name="crash_dialog_title">F-Droid ist abgestürzt</string>
     <string name="crash_dialog_comment_prompt">Sie können zusätzliche Informationen und Kommentare hier einfügen:</string>
     <string name="antinonfreeassetslist">Diese Anwendung enthält nicht freie Bestandteile</string>
@@ -392,11 +374,7 @@
     <string name="update_auto_download_summary">Die Aktualisierungen werden automatisch heruntergeladen und Sie werden
         informiert, um sie zu installieren.
     </string>
-    <string name="tap_to_install_format">%s installieren</string>
-    <string name="tap_to_update_format">%s aktualisieren</string>
     <string name="download_pending">Auf den Start der Übertragung wird gewartet …</string>
-
-    <string name="downloading_apk">%1$s wird heruntergeladen</string>
 
     <string name="keep_hour">1 Stunde</string>
     <string name="keep_day">1 Tag</string>
@@ -440,7 +418,6 @@
     <string name="notification_content_single_downloading_update">Aktualisierung für »%1$s« wird heruntergeladen …</string>
     <string name="notification_content_single_installing">»%1$s« wird installiert …</string>
     <string name="notification_content_single_installed">Erfolgreich installiert</string>
-    <string name="notification_content_single_install_error">Installation fehlgeschlagen</string>
     <string name="notification_title_summary_update_available">Aktualisierung verfügbar</string>
     <string name="notification_title_summary_downloading">wird heruntergeladen …</string>
     <string name="notification_title_summary_downloading_update">Aktualisierung wird heruntergeladen …</string>
