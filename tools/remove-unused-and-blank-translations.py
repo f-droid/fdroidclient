@@ -23,6 +23,15 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
     if not os.path.exists(str_path):
         continue
 
+    with open(str_path, 'rb') as fp:
+        body = fp.read()
+    body = re.sub(b'.*<item quantity="[a-z]+"/>.*\n', b'', body)
+    # Weblate is not handling plurals right https://github.com/WeblateOrg/weblate/issues/520
+    if os.path.basename(d)[7:9] in ('ja', 'ko', 'zh'):
+        body = re.sub(b'<item quantity="one">', b'<item quantity="other">', body)
+    with open(str_path, 'wb') as fp:
+        fp.write(body)
+
     header = ''
     with open(str_path, 'r') as f:
         header = f.readline()
