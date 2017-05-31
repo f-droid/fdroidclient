@@ -112,7 +112,6 @@
 
     <string name="bad_fingerprint">Поганий відбиток</string>
     <string name="invalid_url">Це не правильний URL.</string>
-    <string name="menu_send_apk_bt">Поділитися F-Droid через Bluetooth</string>
     <string name="antitracklist">Цей додаток збирає дані та звітує про вашу активність</string>
     <string name="antinonfreedeplist">Цей додаток залежить від іншого не вільного додатку</string>
     <string name="expert_on">Показати додаткову інформацію та ввімкнути розширені параметри</string>

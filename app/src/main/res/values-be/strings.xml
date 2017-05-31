@@ -107,7 +107,6 @@
 
     <string name="menu_manage">Рэпазіторыі</string>
     <string name="repositories_summary">Дадаць дадатковых крыніцы праграм</string>
-    <string name="menu_send_apk_bt">Падзяліцца F-Droid праз Bluetooth</string>
     <string name="menu_settings">Настаўленні</string>
     <string name="menu_search">Пошук</string>
     <string name="menu_add_repo">Навы рэпазіторый</string>

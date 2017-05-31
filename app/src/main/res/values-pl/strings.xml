@@ -160,7 +160,6 @@
     <string name="bad_fingerprint">Niepoprawny podpis cyfrowy</string>
     <string name="invalid_url">Niepoprawny URL.</string>
     <string name="menu_manage">Repozytoria</string>
-    <string name="menu_send_apk_bt">Prześlij FDroida przez Bluetooh</string>
     <string name="menu_ignore_all">Ignoruj przyszłe aktualizacje</string>
     <string name="menu_issues">Problemy</string>
     <string name="menu_changelog">Lista zmian</string>

@@ -68,7 +68,6 @@
     <string name="repo_provider">Hugbúnaðarsafn: %s</string>
 
     <string name="menu_manage">Hugbúnaðarsöfn</string>
-    <string name="menu_send_apk_bt">Deila F-Droid með Bluetooth</string>
     <string name="menu_settings">Stillingar</string>
     <string name="menu_search">Leita</string>
     <string name="menu_add_repo">Nýtt hugbúnaðarsafn</string>

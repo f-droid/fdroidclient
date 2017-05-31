@@ -42,7 +42,6 @@
     <string name="repo_add_url">軟件庫網址</string>
     <string name="repo_add_fingerprint">指紋 (可選擇填寫)</string>
     <string name="menu_manage">軟件庫</string>
-    <string name="menu_send_apk_bt">透過藍牙傳送 F-Droid</string>
     <string name="menu_search">搜尋</string>
     <string name="menu_add_repo">新增軟件庫</string>
     <string name="menu_launch">開啟</string>

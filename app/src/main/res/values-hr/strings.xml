@@ -100,7 +100,6 @@
     <string name="repo_provider">Repozitorij: %s</string>
 
     <string name="menu_manage">Repozitoriji</string>
-    <string name="menu_send_apk_bt">Podjeli F-Droid preko Bluetootha</string>
     <string name="menu_settings">Postavke</string>
     <string name="menu_search">Traži</string>
     <string name="menu_add_repo">Novi repozitorij</string>

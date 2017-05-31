@@ -140,7 +140,6 @@
     <string name="system_install_denied_permissions">Laiendusele ei ole antud priviligeeritud õiguseid! Palun saada
         veateade!
     </string>
-    <string name="menu_send_apk_bt">Jaga F-Droidi Bluetoothiga</string>
     <string name="menu_settings">Seaded</string>
     <string name="menu_search">Otsi</string>
     <string name="menu_launch">Käivita</string>

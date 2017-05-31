@@ -62,7 +62,6 @@
     </string>
     <string name="malformed_repo_uri">Misvormde bron-URI %s genegeerd</string>
     <string name="menu_manage">Bronnen</string>
-    <string name="menu_send_apk_bt">F-Droid delen via Bluetooth</string>
     <string name="menu_search">Zoeken</string>
     <string name="menu_add_repo">Nieuwe bron</string>
     <string name="menu_launch">Uitvoeren</string>

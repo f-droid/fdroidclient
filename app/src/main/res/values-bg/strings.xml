@@ -55,7 +55,6 @@
     <string name="repo_add_fingerprint">Отпечатък (незадължително)</string>
     <string name="malformed_repo_uri">Игнориране на неправилен URI адрес на хранилище: %s</string>
     <string name="menu_manage">Хранилища</string>
-    <string name="menu_send_apk_bt">Изпрати FDroid.apk чрез Bluetoot</string>
     <string name="menu_search">Търсене</string>
     <string name="menu_add_repo">Ново хранилище</string>
     <string name="menu_launch">Стартирай</string>

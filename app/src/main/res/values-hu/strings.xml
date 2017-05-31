@@ -132,7 +132,6 @@
     <string name="invalid_url">Ez nem egy érvényes URL.</string>
     <string name="malformed_repo_uri">Hibás repo URI figyelmen kívül hagyva: %s</string>
 
-    <string name="menu_send_apk_bt">F-Droid megosztása Bluetooth-on</string>
     <string name="menu_settings">Beállítások</string>
     <string name="menu_changelog">Változásnapló</string>
     <string name="local_repo">Helyi repo</string>

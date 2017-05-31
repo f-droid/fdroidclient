@@ -54,7 +54,6 @@
     <string name="repo_delete_to_overwrite">다른 키가 할당된 저장소를 추가하기 전에 이 저장소를 먼저 삭제해야 합니다!</string>
     <string name="malformed_repo_uri">잘못된 형식의 저장소 URI를 무시하는 중: %s</string>
     <string name="menu_manage">저장소 관리</string>
-    <string name="menu_send_apk_bt">F-Droid를 블루투스로 전송</string>
     <string name="menu_search">검색</string>
     <string name="menu_add_repo">새로운 저장소</string>
     <string name="menu_launch">실행</string>

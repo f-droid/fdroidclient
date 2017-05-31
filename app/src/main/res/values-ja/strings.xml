@@ -56,7 +56,6 @@
 </string>
     <string name="malformed_repo_uri">不正な形式のﾘﾎﾟｼﾞﾄﾘURIを無視します: %s</string>
     <string name="menu_manage">ﾘﾎﾟｼﾞﾄﾘ</string>
-    <string name="menu_send_apk_bt">BluetoothでFDroidを共有する</string>
     <string name="menu_search">検索</string>
     <string name="menu_add_repo">新しいﾘﾎﾟｼﾞﾄﾘ</string>
     <string name="menu_launch">実行</string>

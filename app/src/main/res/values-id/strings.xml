@@ -82,7 +82,6 @@
     <string name="malformed_repo_uri">Mengabaikan URI repo yang tidak valid: %s</string>
 
     <string name="menu_manage">Repositori</string>
-    <string name="menu_send_apk_bt">Bagi F-Droid melalui Bluetooth</string>
     <string name="menu_search">Cari</string>
     <string name="menu_add_repo">Repositori Baru</string>
 

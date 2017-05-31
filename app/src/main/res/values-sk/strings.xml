@@ -59,7 +59,6 @@
     </string>
     <string name="malformed_repo_uri">Ignorujem chybné URI(adresu) repozitára: %s</string>
     <string name="menu_manage">Repozitáre</string>
-    <string name="menu_send_apk_bt">Poslať FDroid cez bluetooth</string>
     <string name="menu_search">Hľadať</string>
     <string name="menu_add_repo">Nový repozitár</string>
     <string name="menu_launch">Spustiť</string>

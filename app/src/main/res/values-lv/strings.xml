@@ -47,7 +47,6 @@
     </string>
     <string name="malformed_repo_uri">Ignorē nepareizu Repozitorija URI: %s</string>
     <string name="menu_manage">Repozitoriji</string>
-    <string name="menu_send_apk_bt">Bluesūta F-Droid</string>
     <string name="menu_search">Meklēt</string>
     <string name="menu_add_repo">Jauns Repozitorijs</string>
     <string name="menu_launch">Palaist</string>

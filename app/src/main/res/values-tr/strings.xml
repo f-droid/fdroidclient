@@ -56,7 +56,6 @@
     </string>
     <string name="malformed_repo_uri">Hatalı depo URI\'si yok sayılıyor: %s</string>
     <string name="menu_manage">Depolar</string>
-    <string name="menu_send_apk_bt">FDroid\'i Bluetooth ile paylaş</string>
     <string name="menu_search">Arama</string>
     <string name="menu_add_repo">Yeni Depo</string>
     <string name="menu_launch">Çalıştır</string>

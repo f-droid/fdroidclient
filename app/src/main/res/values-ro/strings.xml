@@ -125,7 +125,6 @@
     <string name="menu_share">Trimite</string>
     <string name="menu_add_repo">Depozit nou</string>
 
-    <string name="menu_send_apk_bt">Trimite F-Droid prin Bluetooth</string>
     <string name="malformed_repo_uri">Ignora adresa corupta URL a depozitului: %s</string>
 
     <string name="invalid_url">Aceasta nu este o adresa URL valida.</string>

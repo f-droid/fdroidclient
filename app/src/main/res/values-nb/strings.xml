@@ -53,7 +53,6 @@
     </string>
     <string name="malformed_repo_uri">Ignorerer ugyldig pakkebrønnsadresse: %s</string>
     <string name="menu_manage">Pakkebrønner</string>
-    <string name="menu_send_apk_bt">Del F-Droid.apk via Blåtann</string>
     <string name="menu_search">Søk</string>
     <string name="menu_add_repo">Ny pakkebrønn</string>
     <string name="menu_launch">Kjør</string>

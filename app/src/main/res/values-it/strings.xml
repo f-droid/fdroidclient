@@ -63,7 +63,6 @@
     </string>
     <string name="malformed_repo_uri">Ignora URI repo malformati: %s</string>
     <string name="menu_manage">Repository</string>
-    <string name="menu_send_apk_bt">Condividi F-Droid via Bluetooth</string>
     <string name="menu_search">Cerca</string>
     <string name="menu_add_repo">Nuovo repository</string>
     <string name="menu_launch">Avvia</string>

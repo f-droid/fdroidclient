@@ -86,7 +86,6 @@
     <string name="malformed_repo_uri">A ignorar URI de repositório inválido: %s</string>
 
     <string name="menu_manage">Repositórios</string>
-    <string name="menu_send_apk_bt">Partilhar F-Droid por Bluetooth</string>
     <string name="menu_search">Pesquisar</string>
     <string name="menu_add_repo">Novo repositório</string>
 

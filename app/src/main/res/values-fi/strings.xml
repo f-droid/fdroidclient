@@ -201,7 +201,6 @@ asentamisesta
     </string>
     <string name="bad_fingerprint">Huono sormenjälki</string>
     <string name="invalid_url">Tämä URL-osoite ei ole kelvollinen.</string>
-    <string name="menu_send_apk_bt">Jaa F-Droid Bluetoothilla</string>
     <string name="menu_settings">Asetukset</string>
     <string name="menu_email">Lähetä sähköpostia kehittäjälle</string>
     <string name="menu_changelog">Muutosloki</string>

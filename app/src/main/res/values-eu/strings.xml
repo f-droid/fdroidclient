@@ -104,7 +104,6 @@
 
     <string name="repo_add_fingerprint">Hatz-marka (aukerazkoa)</string>
     <string name="bad_fingerprint">Hatz-marka okerra</string>
-    <string name="menu_send_apk_bt">Partekatu F-Droid Bluetooth bidez</string>
     <string name="menu_changelog">Aldaketa egunkaria</string>
     <string name="antitracklist">Aplikazio honek zure eginkizunen jarraipena egiten du eta berri ematen du</string>
     <string name="antinonfreeadlist">Aplikazio honen libreak ez diren gehigarriak bultzatzen ditu</string>

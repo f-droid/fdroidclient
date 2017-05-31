@@ -60,7 +60,6 @@
     <string name="malformed_repo_uri">כתובת מאגר שגויה בהתעלמות: %s</string>
 
     <string name="menu_manage">מאגרים</string>
-    <string name="menu_send_apk_bt">שיתוף F-Droid דרך Bluetooth</string>
     <string name="menu_search">חיפוש</string>
     <string name="menu_add_repo">מאגר חדש</string>
     <string name="menu_launch">הפעלה</string>

@@ -75,7 +75,6 @@
     <string name="bluetooth_activity_not_found">未找到藍牙傳送方式，請選擇一個！</string>
     <string name="choose_bt_send">選擇藍牙傳送方式</string>
     <string name="invalid_url">這不是有效的網址。</string>
-    <string name="menu_send_apk_bt">透過藍牙分享 F-Droid</string>
     <string name="menu_settings">設定</string>
     <string name="menu_search">搜尋</string>
     <string name="menu_launch">執行</string>

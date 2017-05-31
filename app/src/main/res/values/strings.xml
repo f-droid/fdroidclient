@@ -140,7 +140,6 @@
 
     <string name="menu_manage">Repositories</string>
     <string name="repositories_summary">Add additional sources of applications</string>
-    <string name="menu_send_apk_bt">Share F-Droid by Bluetooth</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_search">Search</string>
     <string name="menu_add_repo">New Repository</string>

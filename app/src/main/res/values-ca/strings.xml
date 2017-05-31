@@ -60,7 +60,6 @@
     </string>
     <string name="malformed_repo_uri">Ignorant el URI mal formatat del dipòsit: %s</string>
     <string name="menu_manage">Gestiona els dipòsits</string>
-    <string name="menu_send_apk_bt">Comparteix l\'F-Droid per Bluetooth</string>
     <string name="menu_search">Cerca</string>
     <string name="menu_add_repo">Nou dipòsit</string>
     <string name="menu_launch">Executa</string>

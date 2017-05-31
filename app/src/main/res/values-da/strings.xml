@@ -95,7 +95,6 @@
     <string name="malformed_repo_uri">Ignorerer misdannet depot URI: %s</string>
 
     <string name="menu_manage">Depoter</string>
-    <string name="menu_send_apk_bt">Del F-Droid via Bluetooth</string>
     <string name="menu_settings">Indstillinger</string>
     <string name="menu_search">Søg</string>
     <string name="menu_add_repo">Nyt Depot</string>

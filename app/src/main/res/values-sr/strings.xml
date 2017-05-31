@@ -57,7 +57,6 @@
     </string>
     <string name="malformed_repo_uri">Занемарујем лошу адресу ризнице: %s</string>
     <string name="menu_manage">Ризнице</string>
-    <string name="menu_send_apk_bt">Подели F-Droid.apk преко блутута</string>
     <string name="menu_search">Тражи</string>
     <string name="menu_add_repo">Нова ризница</string>
     <string name="menu_launch">Покрени</string>

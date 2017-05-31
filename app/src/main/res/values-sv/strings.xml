@@ -59,7 +59,6 @@
     </string>
     <string name="malformed_repo_uri">Ignorera felaktig förråds-URI: %s</string>
     <string name="menu_manage">Förråd</string>
-    <string name="menu_send_apk_bt">Dela F-Droid via Bluetooth</string>
     <string name="menu_search">Sök</string>
     <string name="menu_add_repo">Nytt förråd</string>
     <string name="menu_launch">Kör</string>

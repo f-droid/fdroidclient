@@ -55,7 +55,6 @@
     <string name="repo_delete_to_overwrite">Bạn phải xoá kho này trước thì mới có thể thêm kho có mã khác.</string>
     <string name="malformed_repo_uri">Bỏ qua địa chỉ lỗi: %s</string>
     <string name="menu_manage">Kho ứng dụng</string>
-    <string name="menu_send_apk_bt">Chia sẻ F-Droid qua Bluetooth</string>
     <string name="menu_search">Tìm kiếm</string>
     <string name="menu_add_repo">Thêm kho ứng dụng mới</string>
     <string name="menu_launch">Chạy</string>

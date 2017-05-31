@@ -57,7 +57,6 @@
     </string>
     <string name="malformed_repo_uri">Παράβλεψη αποθετηρίου με λανθασμένη διεύθυνση: %s</string>
     <string name="menu_manage">Διαχείριση Αποθετηρίων</string>
-    <string name="menu_send_apk_bt">Στείλτε το F-Droid μέσω Bluetooth</string>
     <string name="menu_search">Αναζήτηση</string>
     <string name="menu_add_repo">Νέο Αποθετήριο</string>
     <string name="menu_launch">Εκτέλεση</string>

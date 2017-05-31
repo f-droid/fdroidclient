@@ -49,7 +49,6 @@
     <string name="repo_add_url">Adresa repositáře</string>
     <string name="repo_add_fingerprint">Fingerprint (volitelné)</string>
     <string name="menu_manage">Repozitáře</string>
-    <string name="menu_send_apk_bt">Poslat F-Droid přes Bluetooth</string>
     <string name="menu_search">Hledat</string>
     <string name="menu_add_repo">Nový repozitář</string>
     <string name="menu_launch">Spustit</string>

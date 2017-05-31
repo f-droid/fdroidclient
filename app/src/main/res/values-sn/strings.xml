@@ -94,7 +94,6 @@
     <string name="repo_provider">Pfimbi: %s</string>
 
     <string name="menu_manage">Pfimbi</string>
-    <string name="menu_send_apk_bt">Gova F-Droid kuburikidza neBluetooth</string>
     <string name="menu_settings">Gadziro</string>
     <string name="menu_search">Tsvaga</string>
     <string name="menu_add_repo">Pfimbi itsva</string>

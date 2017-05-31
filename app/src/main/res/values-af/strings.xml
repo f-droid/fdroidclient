@@ -102,7 +102,6 @@
 
     <string name="menu_manage">Argiewe</string>
     <string name="repositories_summary">Laai addisionele program bronne</string>
-    <string name="menu_send_apk_bt">Deel F-Droid via Bluetooth</string>
     <string name="menu_settings">Instellings</string>
     <string name="menu_search">Soek</string>
     <string name="menu_add_repo">Nuwe argief</string>

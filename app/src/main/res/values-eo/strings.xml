@@ -154,7 +154,6 @@
     <string name="invalid_url">Ĉi tio ne estas ĝusta URL.</string>
     <string name="malformed_repo_uri">Transsaltis eraran URI de deponejo: %s</string>
 
-    <string name="menu_send_apk_bt">Kunhavigi F-Droid per Bludento</string>
     <string name="menu_settings">Agordoj</string>
     <string name="menu_email">Aŭtora retpoŝtadreso</string>
     <string name="menu_changelog">Ŝanĝoprotokolo</string>

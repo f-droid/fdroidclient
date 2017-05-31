@@ -64,7 +64,6 @@
     </string>
     <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse wird übergangen: %s</string>
     <string name="menu_manage">Paketquellen</string>
-    <string name="menu_send_apk_bt">F-Droid über Bluetooth freigeben</string>
     <string name="menu_search">Suchen</string>
     <string name="menu_add_repo">Paketquelle hinzufügen</string>
     <string name="menu_launch">Starten</string>

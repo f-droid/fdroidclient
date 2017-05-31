@@ -64,7 +64,6 @@
     </string>
     <string name="malformed_repo_uri">Ignorende URI depòsitos malformados: %s</string>
     <string name="menu_manage">Depòsitos</string>
-    <string name="menu_send_apk_bt">Cumpartzi F-Droid impreende su Bluetooth</string>
     <string name="menu_search">Chirca</string>
     <string name="menu_add_repo">Depòsitu nou</string>
     <string name="menu_launch">Allughe</string>

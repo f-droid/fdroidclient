@@ -62,7 +62,6 @@
     </string>
     <string name="malformed_repo_uri">Игнорирование неверного URI репозитория: %s</string>
     <string name="menu_manage">Репозитории</string>
-    <string name="menu_send_apk_bt">Передать F-Droid по Bluetooth</string>
     <string name="menu_search">Поиск</string>
     <string name="menu_add_repo">Новый репозиторий</string>
     <string name="menu_launch">Запустить</string>
