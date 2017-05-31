@@ -480,8 +480,8 @@
     <string name="antifeatures">Fiebloj</string>
     <string name="details_last_updated_today">Ĝisdatigita hodiaŭ</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Ĝisdatigita antaŭ %1$s tago</item>
-	<item quantity="other">Ĝisdatigita antaŭ %1$s tagoj</item>
+	<item quantity="one">Ĝisdatigita antaŭ %1$d tago</item>
+	<item quantity="other">Ĝisdatigita antaŭ %1$d tagoj</item>
 </plurals>
     <string name="app_list__name__successfully_installed">%1$s instalita sukcese</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Seninterrete? Elŝutu aplikaĵojn el proksimaj uloj!
@@ -519,15 +519,16 @@
 	<item quantity="other">%1$d instalitaj aplikaĵoj</item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Ĝisdatigita antaŭ %1$s semajno</item>
-	<item quantity="other">Ĝisdatigita antaŭ %1$s semajnoj</item>
+	<item quantity="one">Ĝisdatigita antaŭ %1$d semajno</item>
+	<item quantity="other">Ĝisdatigita antaŭ %1$d semajnoj</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Ĝisdatigita antaŭ %1$s monato</item>
-	<item quantity="other">Ĝisdatigita antaŭ %1$s monatoj</item>
+	<item quantity="one">Ĝisdatigita antaŭ %1$d monato</item>
+	<item quantity="other">Ĝisdatigita antaŭ %1$d monatoj</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Ĝisdatigita antaŭ %1$s jaro</item>
-	<item quantity="other">Ĝisdatigita antaŭ %1$s jaroj</item>
+	<item quantity="one">Ĝisdatigita antaŭ %1$d jaro</item>
+	<item quantity="other">Ĝisdatigita antaŭ %1$d jaroj</item>
 </plurals>
-</resources>
+<string name="by_author_format">de %s</string>
+    </resources>
