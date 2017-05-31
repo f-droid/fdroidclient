@@ -7,9 +7,6 @@
     <string name="installIncompatible">Parece que este paquete no es compatible con el dispositivo. ¿Quieres probar e
         instalarlo de todos modos?
     </string>
-    <string name="installDowngrade">Estás intentando instalar una versión inferior de esta aplicación. Hacerlo puede
-        derivar en mal funcionamiento o incluso pérdida de datos. ¿Quieres intentarlo de todos modos?
-    </string>
     <string name="version">Versión</string>
     <string name="delete">Borrar</string>
     <string name="enable_nfc_send">Habilitar envío NFC…</string>
@@ -62,7 +59,6 @@
     </string>
     <string name="malformed_repo_uri">Ignorando URI de repo mal formada: %s</string>
     <string name="menu_manage">Repositorios</string>
-    <string name="menu_send_apk_bt">Compartir F-Droid por Bluetooth</string>
     <string name="menu_search">Buscar</string>
     <string name="menu_add_repo">Repositorio nuevo</string>
     <string name="menu_launch">Ejecutar</string>
@@ -362,7 +358,6 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="crash_dialog_comment_prompt">Puede añadir información extra y comentarios aquí:</string>
     <string name="antinonfreeassetslist">Esta aplicación contiene recursos que no son libres</string>
 
-    <string name="empty_search_available_app_list">No hay coincidencias con las aplicaciones disponibles.</string>
 
     <string name="menu_email">Escribir un correo electrónico al autor</string>
     <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>

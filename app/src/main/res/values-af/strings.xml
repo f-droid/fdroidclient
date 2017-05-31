@@ -9,9 +9,6 @@
     <string name="installIncompatible">Dit blyk dat hierdie progam nie aanpasbaar is met you toestel nie. Wil jy in elk
         geval probeer?
     </string>
-    <string name="installDowngrade">Jy probeer die program afgradeer. Dit mag veroorsaak dat die program nie meer werk
-        nie of selfs data verlies tot gevolg hê. Wil jy in elk geval probeer afgradeer?
-    </string>
     <string name="version">Weergawe</string>
     <string name="delete">Uitvee</string>
     <string name="updates">Opdaterings</string>
@@ -102,7 +99,6 @@
 
     <string name="menu_manage">Argiewe</string>
     <string name="repositories_summary">Laai addisionele program bronne</string>
-    <string name="menu_send_apk_bt">Deel F-Droid via Bluetooth</string>
     <string name="menu_settings">Instellings</string>
     <string name="menu_search">Soek</string>
     <string name="menu_add_repo">Nuwe argief</string>
@@ -265,7 +261,6 @@
         argiewe moet opdateer, of die argiewe het werklikwaar geen van jou programme beskikbaar nie.
     </string>
     <string name="empty_can_update_app_list">Baie geluk! Al jou programme is op datum (of jou argiewe is verouderd).</string>
-    <string name="empty_search_available_app_list">Geen ooreenstemende programme beskikbaar.</string>
 
     <string name="requesting_root_access_body">Versoek root toegang…</string>
     <string name="root_access_denied_title">Root toegang geweier</string>

@@ -7,9 +7,6 @@
     <string name="installIncompatible">Zdá sa, že tento balíček nie je kompatibilný s vašim zariadením. Chcete ho
         napriek tomu nainštalovať?
     </string>
-    <string name="installDowngrade">Pokúšate sa prejsť na staršiu verziu aplikácie. Môže to spôsobiť poruchy a dokonca
-        aj stratu údajov. Naozaj chcete skúsiť prejsť na staršiu verziu?
-    </string>
     <string name="version">Verzia</string>
     <string name="delete">Vymazať</string>
     <string name="enable_nfc_send">Zapnúť odoslanie cez NFC …</string>
@@ -59,7 +56,6 @@
     </string>
     <string name="malformed_repo_uri">Ignorujem chybné URI(adresu) repozitára: %s</string>
     <string name="menu_manage">Repozitáre</string>
-    <string name="menu_send_apk_bt">Poslať FDroid cez bluetooth</string>
     <string name="menu_search">Hľadať</string>
     <string name="menu_add_repo">Nový repozitár</string>
     <string name="menu_launch">Spustiť</string>
@@ -307,7 +303,6 @@
     <string name="permissions">Práva</string>
     <string name="repo_details">Repozitár</string>
     <string name="repo_url">Adresa</string>
-    <string name="empty_search_available_app_list">Výrazu nezodpovedá žiadna dostupná aplikácia.</string>
 
     <string name="system_install_post_fail_message">Inštalácia F-Droidu ako systémovej aplikácie zlyhala. Táto
         inštalačná metóda nie je podporovaná všetkými distribúciami Androidu. Pre viac informácií navśívte bug tracker

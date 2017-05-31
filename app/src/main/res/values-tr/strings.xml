@@ -4,9 +4,6 @@
     <string name="installIncompatible">Bu paket aygıtınızla uyumlu değil gibi görünüyor. Yine de kurmayı denemek istiyor
         musunuz?
     </string>
-    <string name="installDowngrade">Bu uygulamanın eski bir sürümüne dönmek üzeresiniz. Bu, uygulamanın yanlış
-        çalışmasına ve hatta veri kaybına neden olabilir. Devam etmek istiyor musunuz?
-    </string>
     <string name="version">Sürüm</string>
     <string name="delete">Sil</string>
     <string name="enable_nfc_send">NFC Gönderimini Etkinleştir…</string>
@@ -56,7 +53,6 @@
     </string>
     <string name="malformed_repo_uri">Hatalı depo URI\'si yok sayılıyor: %s</string>
     <string name="menu_manage">Depolar</string>
-    <string name="menu_send_apk_bt">FDroid\'i Bluetooth ile paylaş</string>
     <string name="menu_search">Arama</string>
     <string name="menu_add_repo">Yeni Depo</string>
     <string name="menu_launch">Çalıştır</string>
@@ -240,7 +236,6 @@
         veya gerçekten depolar uygulamalarınızı bulundurmadığı için olabilir.
     </string>
     <string name="empty_can_update_app_list">Tebrikler! Tüm uygulamalarınız güncel (veya depolarınız güncel değil).</string>
-    <string name="empty_search_available_app_list">Mevcut eşleşen uygulama yok.</string>
 
     <string name="install_error_unknown">Bilinmeyen bir hata nedeniyle kurulamadı</string>
     <string name="uninstall_error_unknown">Bilinmeyen bir hata nedeniyle kaldırılamadı</string>

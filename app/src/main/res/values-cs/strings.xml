@@ -7,9 +7,6 @@
     <string name="installIncompatible">Zdá se, že balíček není kompatibilní s tímto zařízením. Chcete ho přesto zkusit
         nainstalovat?
     </string>
-    <string name="installDowngrade">Pokoušíte se instalovat starší verzi než je nyní nainstalována. To nemusí fungovat a
-        může to vést i ke ztrátě dat. Opravdu chcete starší verzi nainstalovat?
-    </string>
     <string name="version">Verze</string>
     <string name="delete">Smazat</string>
     <string name="enable_nfc_send">Povolit posílání po NFC…</string>
@@ -49,7 +46,6 @@
     <string name="repo_add_url">Adresa repositáře</string>
     <string name="repo_add_fingerprint">Fingerprint (volitelné)</string>
     <string name="menu_manage">Repozitáře</string>
-    <string name="menu_send_apk_bt">Poslat F-Droid přes Bluetooth</string>
     <string name="menu_search">Hledat</string>
     <string name="menu_add_repo">Nový repozitář</string>
     <string name="menu_launch">Spustit</string>
@@ -317,7 +313,6 @@
     <string name="antinonfreeassetslist">Tato aplikace obsahuje nesvobodné části</string>
 
     <string name="status_inserting_apps">Ukládání detailů aplikace</string>
-    <string name="empty_search_available_app_list">Žádné odpovídající aplikace nejsou dostupné.</string>
 
     <string name="system_install_post_success_message">Oprávněné rozšíření F-Droidu bylo úspěšně nainstalováno. Toto
         dovoluje F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.

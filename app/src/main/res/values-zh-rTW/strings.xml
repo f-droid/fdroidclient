@@ -7,9 +7,6 @@
     <string name="installIncompatible">看起來此軟體包與您的裝置並不相容。
 您無論如何都要嘗試安裝它嗎？
 </string>
-    <string name="installDowngrade">您正在嘗試降級此應用軟體。這樣做可能會讓該應用軟體不能正常運作，甚至可能會
-造成您重要資料的流失。您確定不論如何都要將它降級嗎？
-</string>
     <string name="version">版本</string>
     <string name="delete">刪除</string>
     <string name="enable_nfc_send">啟用 NFC 傳送功能……</string>
@@ -75,7 +72,6 @@
     <string name="bluetooth_activity_not_found">未找到藍牙傳送方式，請選擇一個！</string>
     <string name="choose_bt_send">選擇藍牙傳送方式</string>
     <string name="invalid_url">這不是有效的網址。</string>
-    <string name="menu_send_apk_bt">透過藍牙分享 F-Droid</string>
     <string name="menu_settings">設定</string>
     <string name="menu_search">搜尋</string>
     <string name="menu_launch">執行</string>
@@ -289,7 +285,6 @@
     <string name="not_on_same_wifi">"您剛才增加的本地應用軟體倉庫與您的裝置並不在同一個 Wi-Fi 網路上！
 請嘗試加入這個網路：%s
  "</string>
-    <string name="empty_search_available_app_list">沒有相符合的應用程式可用。</string>
 
     <string name="requesting_root_access_body">正在要求 root 權限…</string>
     <string name="empty_installed_app_list">未安裝應用程式。

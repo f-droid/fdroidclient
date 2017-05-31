@@ -94,7 +94,6 @@
     <string name="repo_provider">Pfimbi: %s</string>
 
     <string name="menu_manage">Pfimbi</string>
-    <string name="menu_send_apk_bt">Gova F-Droid kuburikidza neBluetooth</string>
     <string name="menu_settings">Gadziro</string>
     <string name="menu_search">Tsvaga</string>
     <string name="menu_add_repo">Pfimbi itsva</string>
@@ -191,9 +190,6 @@
     <string name="installIncompatible">Zvirikuratidza sekunge pakeji inoiyi haiwirirane nemuchina wako. Urikuda kuyedza
         nekuvakirira zvakangodaro here?
     </string>
-    <string name="installDowngrade">Urikuyedza kudzikisira application inoiyi. Kuita sekudaro kunokwanisa kuita kuti
-        itadze kushanda nekurasa data rako zvekare. Urikuda kuyedza nekudzikisira zvakangodaro here?
-    </string>
     <string name="cache_downloaded">Chengeta maApps ari cached</string>
     <string name="unstable_updates">Zvakanatswa zvisina kuvimbika</string>
     <string name="unstable_updates_summary">Yambira zvekunatsa maererano nemavhezheni asina kuvimbika</string>
@@ -280,7 +276,6 @@
 
         Makorokoto! MaApps ako ose akanatswa (kana kuti pfimbi dzako hadzina kunatswa).
     </string>
-    <string name="empty_search_available_app_list">Hapana maApps akatevedzera aripo.</string>
 
     <string name="requesting_root_access_body">Kukumbira hupindwa pamudzi…</string>
     <string name="root_access_denied_title">Hupindwa pamudzi kwanyimwa</string>

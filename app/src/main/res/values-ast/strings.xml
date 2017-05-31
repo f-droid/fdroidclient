@@ -7,9 +7,6 @@
     <string name="installIncompatible">Paez qu\'esti paquete nun ye compatible col to preséu. ¿Quies tentar d\'instalalu
         de toes toes?
     </string>
-    <string name="installDowngrade">Tas tentando de baxar de versión esta aplicación. Eso quiciabes faiga que
-        l\'aplicación furrule mal o incluso, pierdas los tos datos. ¿Quies tentalo y baxala de versión de toes toes?
-    </string>
     <string name="version">Versión</string>
     <string name="delete">Desaniciar</string>
     <string name="enable_nfc_send">Habilitar unviu per NFC…</string>
@@ -64,7 +61,6 @@
     </string>
     <string name="malformed_repo_uri">Inorando l\'URI de repositoriu mal formáu: %s</string>
     <string name="menu_manage">Repositorios</string>
-    <string name="menu_send_apk_bt">Compartir F-Droid per Bluetooth</string>
     <string name="menu_search">Guetar</string>
     <string name="menu_add_repo">Repostoriu nuevu</string>
     <string name="menu_launch">Executar</string>
@@ -359,7 +355,6 @@
     <string name="about_license">Llicencia</string>
 
     <string name="status_inserting_apps">Guardando detalles d\'aplicaciones</string>
-    <string name="empty_search_available_app_list">Nun aplicaciones disponibles que concasen.</string>
 
     <string name="crash_dialog_title">F-Droid cascó</string>
     <string name="crash_dialog_text">Asocedió un fallu inesperáu

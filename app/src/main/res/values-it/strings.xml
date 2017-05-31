@@ -7,9 +7,6 @@
     <string name="installIncompatible">Sembra che questo pacchetto non sia compatibile con il tuo dispositivo. Vuoi
         provare comunque ad installarlo?
     </string>
-    <string name="installDowngrade">Stai provando a passare ad una versione precedente di questa applicazione. Potresti
-        avere malfunzionamenti e perdite di dati. Vuoi installarla comunque?
-    </string>
     <string name="version">Versione</string>
     <string name="delete">Elimina</string>
     <string name="enable_nfc_send">Attiva invio NFC…</string>
@@ -63,7 +60,6 @@
     </string>
     <string name="malformed_repo_uri">Ignora URI repo malformati: %s</string>
     <string name="menu_manage">Repository</string>
-    <string name="menu_send_apk_bt">Condividi F-Droid via Bluetooth</string>
     <string name="menu_search">Cerca</string>
     <string name="menu_add_repo">Nuovo repository</string>
     <string name="menu_launch">Avvia</string>
@@ -373,7 +369,6 @@
     <string name="crash_dialog_title">F-Droid si è bloccato</string>
     <string name="antinonfreeassetslist">Questa app contiene risorse non libere</string>
 
-    <string name="empty_search_available_app_list">Non è disponibile nessuna app corrispondente.</string>
 
     <string name="useTor">Usa Tor</string>
     <string name="useTorSummary">Forza lo scaricamento attraverso Tor per aumentare la privacy</string>

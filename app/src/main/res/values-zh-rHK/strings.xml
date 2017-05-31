@@ -42,7 +42,6 @@
     <string name="repo_add_url">軟件庫網址</string>
     <string name="repo_add_fingerprint">指紋 (可選擇填寫)</string>
     <string name="menu_manage">軟件庫</string>
-    <string name="menu_send_apk_bt">透過藍牙傳送 F-Droid</string>
     <string name="menu_search">搜尋</string>
     <string name="menu_add_repo">新增軟件庫</string>
     <string name="menu_launch">開啟</string>
@@ -230,9 +229,6 @@
 您必須先卸載舊版本，然後再嘗試安裝。(注意：卸載將會刪除
 應用程式內的資料)
 </string>
-    <string name="installDowngrade">應用程式將會降級，這樣做可能會導致程式異常運作
-甚至資料損失。您確定要進行降級嗎？
-</string>
     <string name="download_error">下載失敗</string>
 
     <string name="more">顯示更多</string>
@@ -320,7 +316,6 @@ F-Droid 並不提供您裝置上的應用程式。
 您可以嘗試更新您的軟件庫，但若更新後此頁還沒有顯示任何應用程式，
 您的倉庫的確不提供裝置現有的程式。
  "</string>
-    <string name="empty_search_available_app_list">沒有符合搜尋字詞的應用程式。</string>
 
     <string name="root_access_denied_body">"您的 Android 裝置還未取得 root 權限，
 或 F-Droid 被拒 root 權限。

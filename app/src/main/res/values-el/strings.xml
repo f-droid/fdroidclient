@@ -8,10 +8,6 @@
     <string name="installIncompatible">Φαίνεται ότι αυτό το πακέτο δεν είναι συμβατό με τη συσκευή σας. Θα θέλατε να
         δοκιμάσετε να το εγκαταστήσετε ούτως ή άλλως;
     </string>
-    <string name="installDowngrade">Προσπαθείτε να υποβαθμίσετε αυτήν την εφαρμογή. Αν το κάνετε αυτό, μπορεί να
-        προκληθούν προβλήματα στην εφαρμογή ή ακόμα και να χάσετε τα δεδομένα σας. Θέλετε να δοκιμάσετε να την
-        υποβαθμίσετε ούτως ή άλλως;
-    </string>
     <string name="version">Έκδοση</string>
     <string name="delete">Διαγραφή</string>
     <string name="enable_nfc_send">Ενεργοποίηση Αποστολής NFC…</string>
@@ -57,7 +53,6 @@
     </string>
     <string name="malformed_repo_uri">Παράβλεψη αποθετηρίου με λανθασμένη διεύθυνση: %s</string>
     <string name="menu_manage">Διαχείριση Αποθετηρίων</string>
-    <string name="menu_send_apk_bt">Στείλτε το F-Droid μέσω Bluetooth</string>
     <string name="menu_search">Αναζήτηση</string>
     <string name="menu_add_repo">Νέο Αποθετήριο</string>
     <string name="menu_launch">Εκτέλεση</string>
@@ -391,7 +386,6 @@
 
     <string name="useTorSummary">Αναγκαστική λήψη μέσω του δικτύου Tor για αυξημένη ιδιωτικότητα</string>
     <string name="warning_no_internet">Δεν είναι δυνατή η ενημέρωση, είστε συνδεδεμένοι στο internet;</string>
-    <string name="empty_search_available_app_list">Δεν υπάρχουν εφαρμογές που να ταιριάζουν.</string>
 
     <string name="system_install_not_supported">Η εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος προς το
         παρόν δεν υποστηρίζεται στο Android 5.1 ή νεότερη έκδοση.

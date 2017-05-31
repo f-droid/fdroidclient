@@ -3,10 +3,6 @@
     <string name="app_name">F-Droid</string>
 
     <string name="installIncompatible">โปรแกรมนี้เข้ากันไม่ได้กับเครื่องของคุณ, ดำเนินการติดตั้งต่อหรือไม่?</string>
-    <string name="installDowngrade">คุณกำลังจะติดตั้งโปรแกรมรุ่นเก่าทับรุ่นใหม่
-        ซึ่งอาจทำให้การทำงานของโปรแกรมผิดเพี้ยนจากการอ่านข้อมูลบันทึกภายในที่เขียนโดยโปรแกรมรุ่นใหม่กว่า,
-        ดำเนินการต่อหรือไม่?
-    </string>
     <string name="version">รุ่น</string>
     <string name="delete">ลบ</string>
     <string name="enable_nfc_send">เปิดใช้การแบ่งปันโปรแกรมผ่าน NFC…</string>
@@ -57,7 +53,6 @@
     <string name="repo_provider">แหล่งโปรแกรม: %s</string>
 
     <string name="menu_manage">แหล่งโปรแกรม</string>
-    <string name="menu_send_apk_bt">ล่งโปรแกรม F-Droid ทางบลูทูธ</string>
     <string name="menu_settings">ตั้งค่า</string>
     <string name="menu_search">ค้นหา</string>
     <string name="menu_add_repo">เพิ่มแหล่งโปรแกรมใหม่</string>
@@ -289,7 +284,6 @@
     <string name="status_processing_xml_percent">กำลังประมวลผลข้อมูล %2$s / %3$s (%4$d%%) จาก %1$s</string>
     <string name="requires_features">ต้องใช้: %1$s</string>
     <string name="wifi">Wi-Fi</string>
-    <string name="empty_search_available_app_list">ไม่พบโปรแกรมตามที่ค้นหา</string>
 
     <string name="install_error_unknown">การติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>
     <string name="uninstall_error_unknown">การถอนการติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>

@@ -7,9 +7,6 @@
     <string name="installIncompatible">Paret chi custu pachete non siat cumpatìbile cun su dispositivu tuo. Boles a
         proare a lu installare su matessi?
     </string>
-    <string name="installDowngrade">Ses chirchende de torrare a una versione prus bècia de custa aplicatzione. Dias
-        pòdere tènnere problemas e fintzas pèrdere sos datos tuos. Seguru ses de bòlere proare a lu fàghere?
-    </string>
     <string name="version">Versione</string>
     <string name="delete">Burra</string>
     <string name="enable_nfc_send">Abìlita imbiu NFC…</string>
@@ -64,7 +61,6 @@
     </string>
     <string name="malformed_repo_uri">Ignorende URI depòsitos malformados: %s</string>
     <string name="menu_manage">Depòsitos</string>
-    <string name="menu_send_apk_bt">Cumpartzi F-Droid impreende su Bluetooth</string>
     <string name="menu_search">Chirca</string>
     <string name="menu_add_repo">Depòsitu nou</string>
     <string name="menu_launch">Allughe</string>
@@ -359,7 +355,6 @@
     <string name="about_license">Litzèntzia</string>
 
     <string name="status_inserting_apps">Sarvende sas minujas de sas aplicatziones</string>
-    <string name="empty_search_available_app_list">Peruna aplicatzione currispondente disponìbile.</string>
 
     <string name="crash_dialog_text">Un’errore imprevistu
         at fatu serrare s’aplicatzione. Boles imbiare sas minujas

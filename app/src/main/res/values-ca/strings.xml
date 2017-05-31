@@ -7,9 +7,6 @@
     <string name="installIncompatible">Sembla que aquest paquet no és compatible amb el vostre dispositiu. Voleu provar
         a instaŀlar-lo de totes maneres?
     </string>
-    <string name="installDowngrade">Aneu a desactualitzar aquesta aplicació. Això podria fer que l\'aplicació no
-        funcionés o inclús es perdessin les vostres dades. Esteu segur que ho voleu fer?
-    </string>
     <string name="version">Versió</string>
     <string name="delete">Esborrar</string>
     <string name="cache_downloaded">Conservar les apps en memòria cau</string>
@@ -60,7 +57,6 @@
     </string>
     <string name="malformed_repo_uri">Ignorant el URI mal formatat del dipòsit: %s</string>
     <string name="menu_manage">Gestiona els dipòsits</string>
-    <string name="menu_send_apk_bt">Comparteix l\'F-Droid per Bluetooth</string>
     <string name="menu_search">Cerca</string>
     <string name="menu_add_repo">Nou dipòsit</string>
     <string name="menu_launch">Executa</string>
@@ -357,7 +353,6 @@
     <string name="about_license">Llicència</string>
 
     <string name="status_inserting_apps">Desant els detalls de l\'aplicació</string>
-    <string name="empty_search_available_app_list">Cap coincidència amb les aplicacions disponibles.</string>
 
     <string name="crash_dialog_title">L\'F-Droid ha fallat</string>
     <string name="crash_dialog_text">L\'aplicació s\'ha aturat degut a un

@@ -7,10 +7,6 @@
     <string name="installIncompatible">Es sieht so aus, als sei dieses Paket mit Ihrem Gerät nicht kompatibel. Möchten
         Sie trotzdem versuchen, es zu installieren?
     </string>
-    <string name="installDowngrade">Sie versuchen, eine vorherige Version einer bereits installierten Anwendung zu
-        installieren. Dies kann zu Fehlverhalten der Anwendung und gegebenenfalls zu Datenverlust führen. Möchten Sie
-        dennoch fortfahren?
-    </string>
     <string name="version">Version</string>
     <string name="delete">Löschen</string>
     <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
@@ -64,7 +60,6 @@
     </string>
     <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse wird übergangen: %s</string>
     <string name="menu_manage">Paketquellen</string>
-    <string name="menu_send_apk_bt">F-Droid über Bluetooth freigeben</string>
     <string name="menu_search">Suchen</string>
     <string name="menu_add_repo">Paketquelle hinzufügen</string>
     <string name="menu_launch">Starten</string>
@@ -356,7 +351,6 @@
 
     <string name="status_inserting_apps">Anwendungsdetails werden gespeichert</string>
 
-    <string name="empty_search_available_app_list">Keine passenden Anwendungen verfügbar.</string>
     <string name="crash_dialog_title">F-Droid ist abgestürzt</string>
     <string name="crash_dialog_comment_prompt">Sie können zusätzliche Informationen und Kommentare hier einfügen:</string>
     <string name="antinonfreeassetslist">Diese Anwendung enthält nicht freie Bestandteile</string>

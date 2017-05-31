@@ -7,9 +7,6 @@
     <string name="installIncompatible">Det verkar som att det här paketet inte är kompatibelt med din enhet. Vill du
         testa att installera det ändå?
     </string>
-    <string name="installDowngrade">Du försöker nedgradera detta program. Detta kan få det att fungera felaktigt eller
-        till och med orsaka förlust av din data. Vill du ändå försöka nedgradera?
-    </string>
     <string name="version">Version</string>
     <string name="delete">Ta bort</string>
     <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
@@ -59,7 +56,6 @@
     </string>
     <string name="malformed_repo_uri">Ignorera felaktig förråds-URI: %s</string>
     <string name="menu_manage">Förråd</string>
-    <string name="menu_send_apk_bt">Dela F-Droid via Bluetooth</string>
     <string name="menu_search">Sök</string>
     <string name="menu_add_repo">Nytt förråd</string>
     <string name="menu_launch">Kör</string>
@@ -236,7 +232,6 @@
         verkligen inte dina appar tillgängliga.
     </string>
     <string name="empty_can_update_app_list">Grattis! Alla dina appar är uppdaterade (eller så behöver dina förråd uppdateras).</string>
-    <string name="empty_search_available_app_list">Inga matchande program är tillgängliga.</string>
 
     <string name="install_error_unknown">Misslyckades att installera på grund av ett okänt problem</string>
     <string name="repo_provider">Förråd: %s</string>

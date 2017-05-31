@@ -6,9 +6,12 @@
     <!-- to make CI fail on errors until this is fixed
          https://github.com/rtyley/spongycastle/issues/7 -->
     <issue id="InvalidPackage" severity="warning"/>
-    <issue id="ImpliedQuantity" severity="warning"/>
+    <issue id="ImpliedQuantity" severity="error"/>
 
     <!-- These are important to us, so promote from warning to error -->
+    <issue id="UnusedResources" severity="error">
+        <ignore path="src/main/res/drawable/category_**.png" />
+    </issue>
     <issue id="AppCompatMethod" severity="error"/>
     <issue id="NestedScrolling" severity="error"/>
     <issue id="StringFormatCount" severity="error"/>

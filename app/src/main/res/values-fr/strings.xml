@@ -7,10 +7,6 @@
     <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous
         quand même essayer de l\'installer ?
     </string>
-    <string name="installDowngrade">Vous essayez de revenir à une version antérieure de cette application. Cela peut
-        causer des dysfonctionnements ou des pertes de données. Voulez-vous tout de même essayer de désinstaller les
-        mises à jour ?
-    </string>
     <string name="version">Version</string>
     <string name="delete">Supprimer</string>
     <string name="enable_nfc_send">Activer l\'envoi via NFC…</string>
@@ -62,7 +58,6 @@
     </string>
     <string name="malformed_repo_uri">URI de dépôt malformé ignoré : %s</string>
     <string name="menu_manage">Gestion des dépôts</string>
-    <string name="menu_send_apk_bt">Partager F-Droid via Bluetooth</string>
     <string name="menu_search">Rechercher</string>
     <string name="menu_add_repo">Nouveau dépôt</string>
     <string name="menu_launch">Lancer</string>
@@ -360,7 +355,6 @@
     <string name="about_license">Licence</string>
 
     <string name="status_inserting_apps">Enregistrement des détails d\'applications</string>
-    <string name="empty_search_available_app_list">Aucune application correspondante disponible.</string>
 
     <string name="crash_dialog_title">F-Droid s\'est arrêté de manière inattendue</string>
     <string name="crash_dialog_comment_prompt">Vous pouvez ajouter des informations additionnelles :</string>

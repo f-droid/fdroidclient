@@ -7,9 +7,6 @@
     <string name="installIncompatible">Parece que este paquete non é compatíbel co seu dispositivo. Quere facer a proba
         e instalalo aínda así?
     </string>
-    <string name="installDowngrade">Está tentando instalar unha versión anterior. Isto pode supoñer un mal funcionamento
-        ou perda de datos. Quere tentalo de todas maneiras?
-    </string>
     <string name="version">Versión</string>
     <string name="cache_downloaded">Manter paquetes na caché</string>
     <string name="updates">Actualizacións</string>
@@ -110,7 +107,6 @@
     <string name="invalid_url">Ésta non é unha URL válida.</string>
     <string name="malformed_repo_uri">Ignorouse unha URL de repositorio mal formada: %s</string>
 
-    <string name="menu_send_apk_bt">Compartir F-Droid mediante Bluetooth</string>
     <string name="menu_changelog">Historial de cambios</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>

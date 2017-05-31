@@ -9,9 +9,6 @@
     <string name="installIncompatible">Tundub, et see pakett ei ühildu su seadmega. Kas sa soovid ikkagi proovida selle
         paigaldamist?
     </string>
-    <string name="installDowngrade">Sa proovid võtta kasutusele programmi varasemat versiooni. Sedasi võib programm
-        töötada valesti või isegi kustutada su andmeid. Kas sa soovid ikkagi proovida varasema versiooni kasutamist?
-    </string>
     <string name="version">Versioon</string>
     <string name="delete">Kustuta</string>
     <string name="enable_nfc_send">Luba NFC andmevahetus…</string>
@@ -140,7 +137,6 @@
     <string name="system_install_denied_permissions">Laiendusele ei ole antud priviligeeritud õiguseid! Palun saada
         veateade!
     </string>
-    <string name="menu_send_apk_bt">Jaga F-Droidi Bluetoothiga</string>
     <string name="menu_settings">Seaded</string>
     <string name="menu_search">Otsi</string>
     <string name="menu_launch">Käivita</string>
@@ -261,7 +257,6 @@
     <string name="category_Time">Aeg</string>
     <string name="category_Writing">Kirjutamine</string>
 
-    <string name="empty_search_available_app_list">Sobivaid rakendusi ei ole.</string>
     <string name="requesting_root_access_body">Soovitakse juurkasutaja õiguseid…</string>
     <string name="root_access_denied_title">Juurkasutajana ligipääs keelatud</string>
     <string name="install_error_unknown">Paigaldamine nurjus tundmatu vea tõttu</string>

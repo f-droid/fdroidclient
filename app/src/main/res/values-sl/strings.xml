@@ -41,9 +41,6 @@
     <string name="installIncompatible">Izgleda da aplikacija ni kompatibilna z vašo napravo. Ali jo želite vseeno
         poskusiti namestiti?
     </string>
-    <string name="installDowngrade">Poskušate namestiti starejšo različico aplikacije od trenutno nameščene. To lahko
-        povzroči napake ali pa izgubo podatkov. ali želite kljub temu nadaljevati?
-    </string>
     <string name="delete">Izbriši</string>
     <string name="enable_nfc_send">Omogoči NFC pošiljanje</string>
     <string name="unstable_updates">Nestabilne posodobitve</string>

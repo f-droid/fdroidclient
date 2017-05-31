@@ -5,9 +5,6 @@
     </string>
     <string name="installIncompatible">このﾊﾟｯｹｰｼﾞはあなたの端末と互換性がないようです｡それでもｲﾝｽﾄｰﾙを続行しますか?
 </string>
-    <string name="installDowngrade">
-        このｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝｸﾞﾚｰﾄﾞしようとしています｡これにより不具合を発生させたりﾃﾞｰﾀを失ったりする場合があります｡それでもﾀﾞｳﾝｸﾞﾚｰﾄﾞを続行しますか?
-    </string>
     <string name="version">ﾊﾞｰｼﾞｮﾝ</string>
     <string name="delete">削除</string>
     <string name="enable_nfc_send">NFC 送信を有効…</string>
@@ -56,7 +53,6 @@
 </string>
     <string name="malformed_repo_uri">不正な形式のﾘﾎﾟｼﾞﾄﾘURIを無視します: %s</string>
     <string name="menu_manage">ﾘﾎﾟｼﾞﾄﾘ</string>
-    <string name="menu_send_apk_bt">BluetoothでFDroidを共有する</string>
     <string name="menu_search">検索</string>
     <string name="menu_add_repo">新しいﾘﾎﾟｼﾞﾄﾘ</string>
     <string name="menu_launch">実行</string>
@@ -331,7 +327,6 @@
     <string name="about_license">ﾗｲｾﾝｽ</string>
 
     <string name="status_inserting_apps">ｱﾌﾟﾘｹｰｼｮﾝの詳細を保存中</string>
-    <string name="empty_search_available_app_list">一致する利用可能なｱﾌﾟﾘｹｰｼｮﾝはありません。</string>
 
     <string name="crash_dialog_title">F-Droid がｸﾗｯｼｭしました</string>
     <string name="crash_dialog_text">ｱﾌﾟﾘｹｰｼｮﾝを強制的に停止させる、予期しないｴﾗｰが発生しました。

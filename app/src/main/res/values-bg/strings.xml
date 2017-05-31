@@ -7,9 +7,6 @@
     <string name="installIncompatible">Изглежда пакетът не е съвместим с вашето устройство. Да бъде направен опит за
         инсталиране въпреки това?
     </string>
-    <string name="installDowngrade">Опитвате се да инсталирате по-стара версия на приложението. Това действие може да
-        предизвика нестабилност и дори загуба на данни. Наистина ли желаете да продължите?
-    </string>
     <string name="version">Версия</string>
     <string name="delete">Изтриване</string>
     <string name="enable_nfc_send">Активирай NFC изпращане…</string>
@@ -55,7 +52,6 @@
     <string name="repo_add_fingerprint">Отпечатък (незадължително)</string>
     <string name="malformed_repo_uri">Игнориране на неправилен URI адрес на хранилище: %s</string>
     <string name="menu_manage">Хранилища</string>
-    <string name="menu_send_apk_bt">Изпрати FDroid.apk чрез Bluetoot</string>
     <string name="menu_search">Търсене</string>
     <string name="menu_add_repo">Ново хранилище</string>
     <string name="menu_launch">Стартирай</string>
@@ -355,7 +351,6 @@
         до разработчиците за помощ?
     </string>
     <string name="crash_dialog_comment_prompt">Тук можете да добавяте допълнителна информация и коментари:</string>
-    <string name="empty_search_available_app_list">Няма съвпадения сред достъпните приложения.</string>
 
     <string name="system_install_denied_signature">Подписът на плъгина е грешен! Моля създайте бъг репорт!</string>
     <string name="system_install_denied_permissions">Разширените пълномощия не бяха предоставени на плъгина! Моля

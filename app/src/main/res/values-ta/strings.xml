@@ -3,10 +3,6 @@
     <string name="installIncompatible">நீங்கள் நிறுவ விரும்பும் இச்செயலி உங்கள் சாதனத்திற்கு ஏற்புடையதாக தெரியவில்லை.
         எனினும் நீங்கள் இதை நிறுவ முயற்சி செய்ய விரும்புகிறீர்களா?
     </string>
-    <string name="installDowngrade">நீங்கள் இச்செயலியை இதன் முந்தைய பதிப்பிற்கு இறக்கம் செய்ய முயச்சி செய்கிறீர்கள்.
-        இவ்வாறு செய்வதன் விளைவாக ஒருவேளை நீங்கள் எதிர்பார்ப்பது போல் செயல்படாமலோ அல்லது உங்களுடைய தரவுகள் அழிந்து
-        போகவும் வாய்ப்பு உள்ளது. எனினும் இதனை செய்ய விரும்புகிறீர்களா?
-    </string>
     <string name="version">பதிப்பு</string>
     <string name="delete">அழி</string>
     <string name="cache_downloaded">தற்காலிகமாக சேமிக்கப்பட்ட செயலிகளை வைத்திரு</string>
@@ -60,7 +56,6 @@
     <string name="repo_add_url">களஞ்சிய முகவரி</string>
     <string name="invalid_url">இந்த முகவரி ஏற்புடையதல்ல</string>
     <string name="menu_manage">களஞ்சியங்கள்</string>
-    <string name="menu_send_apk_bt">F-Droid-ஐ ப்ளூடூத் வழியாக பகிர</string>
     <string name="menu_settings">அமைப்புகள்</string>
     <string name="menu_search">தேடல்</string>
     <string name="menu_add_repo">புதிய களஞ்சியம்</string>

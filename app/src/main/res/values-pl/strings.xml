@@ -133,9 +133,6 @@
         zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (odinstalowanie aplikacji spowoduje
         usunięcie jej danych i ustawień)
     </string>
-    <string name="installDowngrade">Próbujesz zainstalować starszą wersję tej aplikacji. Wykonanie tej operacji może
-        powodować błędy w jej działaniu lub utratę danych. Czy chcesz kontynuować?
-    </string>
     <string name="update_interval">Okres pomiędzy sprawdzaniem aktualizacji</string>
     <string name="automatic_scan_wifi">Aktualizuj tylko przez Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Aktualizuj listę aplikacji tylko przez nietaryfowe połączenia, np. Wi-Fi
@@ -160,7 +157,6 @@
     <string name="bad_fingerprint">Niepoprawny podpis cyfrowy</string>
     <string name="invalid_url">Niepoprawny URL.</string>
     <string name="menu_manage">Repozytoria</string>
-    <string name="menu_send_apk_bt">Prześlij FDroida przez Bluetooh</string>
     <string name="menu_ignore_all">Ignoruj przyszłe aktualizacje</string>
     <string name="menu_issues">Problemy</string>
     <string name="menu_changelog">Lista zmian</string>
@@ -345,7 +341,6 @@
         szczegóły aby pomóc naprawić błąd?
     </string>
     <string name="crash_dialog_comment_prompt">Możesz dodać dodatkowe informacje i komentarze tutaj:</string>
-    <string name="empty_search_available_app_list">Brak pasujących dostępnych aplikacji.</string>
 
     <string name="useTor">Użyj Tora</string>
     <string name="useTorSummary">Wymuś pobieranie przez Tora aby zwiększyć prywatność</string>

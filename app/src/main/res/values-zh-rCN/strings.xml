@@ -2,8 +2,6 @@
 <resources>
     <string name="SignatureMismatch">新版本签名与旧版本不同，请先卸载旧版本应用再安装新版本。（注意：卸载旧版本会清除该应用存储的所有内部数据）</string>
     <string name="installIncompatible">该应用程序好像与您的设备不兼容。您仍然要尝试安装吗？</string>
-    <string name="installDowngrade">您正在降级该应用程序。这样做可能会使该程序无法工作，甚至丢失您的数据。您仍然要尝试降级吗？</string>
-    <string name="version">版本</string>
     <string name="delete">删除</string>
     <string name="enable_nfc_send">启用NFC发送…</string>
     <string name="cache_downloaded">保留应用安装包</string>
@@ -44,7 +42,6 @@
     <string name="repo_delete_to_overwrite">在您添加不同密钥的软件源之前，您需要先删除该软件源。</string>
     <string name="malformed_repo_uri">忽略异常格式的软件源URI：%s</string>
     <string name="menu_manage">管理软件源</string>
-    <string name="menu_send_apk_bt">用蓝牙分享F-Droid</string>
     <string name="menu_search">搜索</string>
     <string name="menu_add_repo">添加新软件源</string>
     <string name="menu_launch">运行</string>
@@ -293,7 +290,6 @@
     <string name="about_license">许可证类型</string>
 
     <string name="status_inserting_apps">正在保存应用信息</string>
-    <string name="empty_search_available_app_list">已安装应用列表为空。</string>
 
     <string name="menu_email">发邮件给作者</string>
     <string name="antinonfreeassetslist">该此应用包括非自由资产</string>

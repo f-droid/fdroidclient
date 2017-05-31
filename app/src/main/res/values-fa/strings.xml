@@ -3,9 +3,6 @@
     <string name="installIncompatible">به‌نظر می‌رسد این بسته با دستگاه شما هماهنگ نیست. آیا می‌خواهید آن را به هر قیمتی
         آزمایش و نصب کنید؟
     </string>
-    <string name="installDowngrade">شما در حال قدیمی‌کردن و کاهش درجهٔ این برنامه هستید. انجام چنین کاری ممکن منجر به
-        خرابی یا از دست رفتن داده‌های شما شود. آیا می‌خواهید سعی کنید این برنامه را به هر قیمتی قدیمی کنید؟
-    </string>
     <string name="delete">حذف</string>
     <string name="cache_downloaded">نگه‌داری کاره‌های انبار شده</string>
     <string name="updates">به‌روزرسانی‌ها</string>
@@ -116,7 +113,6 @@
     <string name="repo_exists_enable">این مخزن از پیش برپا شده است. تأیید کنید که می‌خواهید دوباره فعّالش کنید.</string>
     <string name="bad_fingerprint">اثر انگشت بد</string>
     <string name="invalid_url">این یک نشانی اینترنتی معتیبر نیست.</string>
-    <string name="menu_send_apk_bt">هم‌رسانی اف‌دروید با بلوتوث</string>
     <string name="menu_settings">تنظیمات</string>
     <string name="menu_add_repo">مخزن جدید</string>
 
@@ -343,7 +339,6 @@
     <string name="menu_email">رایانامه به نویسنده</string>
     <string name="antinonfreeassetslist">این کاره شامل ابزارهای غیرآزاد است</string>
 
-    <string name="empty_search_available_app_list">هیچ برنامهٔ مطابقی وجود ندارد.</string>
 
     <string name="crash_dialog_title">اف‌دروید از کار افتاد</string>
     <string name="crash_dialog_text">خطایی پیش‌بینی نشده رخ داد که برنامه را وادار به توقّف کرد. می‌خواهید جزئیات را

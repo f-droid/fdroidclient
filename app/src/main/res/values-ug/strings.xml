@@ -6,9 +6,6 @@
     </string>
     <string name="installIncompatible">بۇ بوغچا ئۈسكۈنىڭىز بىلەن ماسلاشمايدىغاندەك تۇرىدۇ، ئۇنى سىناپ ئورنىتىۋېرەمسىز؟
     </string>
-    <string name="installDowngrade">بۇ ئەپنىڭ دەرىجىسىنى تۆۋەنلىتىشنى سىناۋاتىسىز. بۇ مەشغۇلاتنى ئىجرا قىلىش داۋامىدا
-        كاشىلا كۆرۈلۈشى ۋە سانلىق مەلۇماتلىرىڭىزنى يوقۇتۇپ قويۇشىڭىز مۇمكىن. ئۇنى سىناپ دەرىجىسىنى تۆۋەنلىتىۋېرەمسىز؟
-    </string>
     <string name="version">نەشرى</string>
     <string name="cache_downloaded">ئەپلەر غەملەككە چۈشۈرۈلدى</string>
     <string name="updates">يېڭىلانمىلار</string>

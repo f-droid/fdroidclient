@@ -64,9 +64,6 @@
     <string name="installIncompatible">يبدو أن هذه الحزمة غير متوافقة مع جهازك. هل ترغب في محاولة لتثبيتها على أي حال؟
     </string>
     <string name="menu_email">إرسال رسالة للمؤلف</string>
-    <string name="installDowngrade">بهذا الخيار سيتم تراجع التطبيق. القيام بذلك قد يحصل عليه خلل أو حتى فقدان البيانات
-        الخاصة بك. هل ترغب في محاولة لتخفيض التطبيق على أي حال؟
-    </string>
     <string name="enable_nfc_send">تمكين إرسال نظام ملفات الشبكة (NFC)…</string>
     <string name="cache_downloaded">إبقاء التطبيقات المخزنة مؤقتا</string>
     <string name="unstable_updates">تحديثات غير مستقرة</string>
@@ -124,7 +121,6 @@
     <string name="malformed_repo_uri">تجاهل مستودعات عنوان URI التالفة : %s</string>
     <string name="repo_provider">مستودع: %s</string>
 
-    <string name="menu_send_apk_bt">شارك اف-درويد عن طريق البلوتوث</string>
     <string name="menu_settings">إعدادات</string>
     <string name="menu_add_repo">مستودع جديد</string>
 
@@ -245,7 +241,6 @@
     <string name="empty_can_update_app_list">كل التطبيقات محدثة.\n\nتهانينا! كل من التطبيقات الخاصة بك محدثة (أو
         المستودعات الخاصة بك قديمة).
     </string>
-    <string name="empty_search_available_app_list">لا توجد تطبيقات مطابقة متوفرة.</string>
 
     <string name="requesting_root_access_body">طلب وصول إلى النواة…</string>
     <string name="root_access_denied_title">لا يمكن الوصول إلى النواة</string>

@@ -9,9 +9,6 @@
     <string name="installIncompatible">Parece que este pacote não é compatível com o seu dispositivo. Deseja tentar a
         instalação?
     </string>
-    <string name="installDowngrade">Está a tentar desatualizar esta aplicação. Se o fizer pode perder os seus dados e
-        provocar um funcionamento errático. Tem a certeza de que o deseja fazer?
-    </string>
     <string name="version">Versão</string>
     <string name="delete">Apagar</string>
     <string name="enable_nfc_send">Ativar o envio NFC…</string>
@@ -86,7 +83,6 @@
     <string name="malformed_repo_uri">A ignorar URI de repositório inválido: %s</string>
 
     <string name="menu_manage">Repositórios</string>
-    <string name="menu_send_apk_bt">Partilhar F-Droid por Bluetooth</string>
     <string name="menu_search">Pesquisar</string>
     <string name="menu_add_repo">Novo repositório</string>
 
@@ -366,7 +362,6 @@
     <string name="about_license">Licença</string>
 
     <string name="status_inserting_apps">A guardar detalhes das aplicações</string>
-    <string name="empty_search_available_app_list">Nenhuma aplicação disponível coincidente.</string>
 
     <string name="antinonfreeassetslist">Esta aplicação contém recursos não livres</string>
 

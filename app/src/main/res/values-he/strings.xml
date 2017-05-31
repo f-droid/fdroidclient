@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="installIncompatible">נראה כי חבילה זו אינה תואמת למכשירך. להתקין אותה בכל מקרה?</string>
-    <string name="installDowngrade">פעולה זו תחזיר אחורה את גרסת היישומון. פעולה זו עשויה לגרום לתקלה חמורה ביישומון ואף לאבדן מידע. לנסות להחזיר את הגרסה אחורה בכל זאת?</string>
-    <string name="version">גרסה</string>
     <string name="delete">מחיקה</string>
     <string name="enable_nfc_send">הפעלת שליחה עם NFC…</string>
     <string name="cache_downloaded">שמירת יישומונים במטמון</string>
@@ -60,7 +58,6 @@
     <string name="malformed_repo_uri">כתובת מאגר שגויה בהתעלמות: %s</string>
 
     <string name="menu_manage">מאגרים</string>
-    <string name="menu_send_apk_bt">שיתוף F-Droid דרך Bluetooth</string>
     <string name="menu_search">חיפוש</string>
     <string name="menu_add_repo">מאגר חדש</string>
     <string name="menu_launch">הפעלה</string>
@@ -341,7 +338,6 @@
     <string name="menu_email">שליחת דוא״ל ליוצר</string>
     <string name="antinonfreeassetslist">יישומון זה מכיל נכסים בלתי חופשיים</string>
 
-    <string name="empty_search_available_app_list">אין יישומונים תואמים זמינים.</string>
 
     <string name="crash_dialog_title">‏F-Droid קרסה</string>
     <string name="crash_dialog_text">אירעה שגיאה לא פצויה אשר אילצה את עצירת האפליקציה. האם ברצונך לדוור בדוא״ל את

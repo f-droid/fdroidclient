@@ -4,9 +4,6 @@
         (참고로, 삭제를 할 경우 앱이 저장한 모든 내부 자료도 같이 삭제됩니다)
     </string>
     <string name="installIncompatible">이 패키지가 기기와 호환되지 않는 것 같습니다. 계속 설치를 진행할까요?</string>
-    <string name="installDowngrade">이 응용 프로그램의 다운그레이드 하려고 합니다. 이전 버전을 설치할 경우, 응용 프로그램에 데이터가 손상되거나 오작동이 발생할 수 있습니다. 정말로
-        다운그레이드하시겠습니까?
-    </string>
     <string name="version">버전</string>
     <string name="delete">삭제</string>
     <string name="enable_nfc_send">NFC 전송 사용…</string>
@@ -54,7 +51,6 @@
     <string name="repo_delete_to_overwrite">다른 키가 할당된 저장소를 추가하기 전에 이 저장소를 먼저 삭제해야 합니다!</string>
     <string name="malformed_repo_uri">잘못된 형식의 저장소 URI를 무시하는 중: %s</string>
     <string name="menu_manage">저장소 관리</string>
-    <string name="menu_send_apk_bt">F-Droid를 블루투스로 전송</string>
     <string name="menu_search">검색</string>
     <string name="menu_add_repo">새로운 저장소</string>
     <string name="menu_launch">실행</string>
@@ -315,7 +311,6 @@
 
     <string name="useTor">Tor 사용</string>
     <string name="useTorSummary">향상된 프라이버시를 위해 Tor를 통한 다운로드 트래픽을 강제합니다</string>
-    <string name="empty_search_available_app_list">일치하는 앱이 없습니다.</string>
 
     <string name="system_install_not_supported">F-Droid 특별 권한 확장을 설치하려면 Android 5.1보다 높은 버전이 필요합니다.</string>
 

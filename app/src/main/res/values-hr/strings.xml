@@ -9,9 +9,6 @@
     <string name="installIncompatible">Čini se da ovaj paket nije kompatibilan s Vašim uređajem. Želite li ga svejedno
         pokušati instalirati?
     </string>
-    <string name="installDowngrade">Pokušavate unazaditi aplikaciju na prošlu verziju. Ukoliko to napravite, aplikacija
-        može prestati raditi ili čak izgubiti Vaše podatke. Želite li ju svejedno unazaditi?
-    </string>
     <string name="version">Verzija</string>
     <string name="delete">Obriši</string>
     <string name="enable_nfc_send">Omogući NFC slanje…</string>
@@ -100,7 +97,6 @@
     <string name="repo_provider">Repozitorij: %s</string>
 
     <string name="menu_manage">Repozitoriji</string>
-    <string name="menu_send_apk_bt">Podjeli F-Droid preko Bluetootha</string>
     <string name="menu_settings">Postavke</string>
     <string name="menu_search">Traži</string>
     <string name="menu_add_repo">Novi repozitorij</string>
@@ -255,7 +251,6 @@
     <string name="empty_can_update_app_list">Sve aplikacije su ažurirane.\n\nČestitke! Sve aplikacije su ažurirane (ili
         su Vam repozitoriji zastarjeli).
     </string>
-    <string name="empty_search_available_app_list">Nema dostupnih odgovarajućih aplikacija.</string>
 
     <string name="requesting_root_access_body">Zahtjevam root pristup…</string>
     <string name="root_access_denied_title">Root pristup odbijen</string>

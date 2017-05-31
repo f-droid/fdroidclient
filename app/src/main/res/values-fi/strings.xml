@@ -7,9 +7,6 @@
     <string name="installIncompatible">Tämä paketti ei näytä olevan yhteensopiva laitteesi kanssa. Haluatko silti
         asentaa sen?
     </string>
-    <string name="installDowngrade">Sovellusta päivitetään vanhempaan versioon. Sovellus voi toimia väärin tai kadottaa
-        tietojasi. Haluatko päivittää vanhempaan versioon?
-    </string>
     <string name="version">Versio</string>
     <string name="delete">Poista</string>
     <string name="enable_nfc_send">Ota NFC-lähetys käyttöön…</string>
@@ -201,7 +198,6 @@ asentamisesta
     </string>
     <string name="bad_fingerprint">Huono sormenjälki</string>
     <string name="invalid_url">Tämä URL-osoite ei ole kelvollinen.</string>
-    <string name="menu_send_apk_bt">Jaa F-Droid Bluetoothilla</string>
     <string name="menu_settings">Asetukset</string>
     <string name="menu_email">Lähetä sähköpostia kehittäjälle</string>
     <string name="menu_changelog">Muutosloki</string>
@@ -308,7 +304,6 @@ asentamisesta
     </string>
     <string name="up_to_maxsdk">%s asti</string>
     <string name="minsdk_up_to_maxsdk">%1$s alkaen %2$s asti</string>
-    <string name="empty_search_available_app_list">Haulla ei löytynyt sovelluksia.</string>
 
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>

@@ -7,10 +7,6 @@
     <string name="installIncompatible">Dit pakket is niet compatibel met je apparaat. Wil je het alsnog proberen
         installeren?
     </string>
-    <string name="installDowngrade">Je probeert deze app te downgraden naar een oudere versie. Als je dit doet,
-        functioneert de app mogelijk niet goed meer en kan je zelfs je gegevens verliezen. Wil je het alsnog proberen en
-        de app downgraden?
-    </string>
     <string name="version">Versie</string>
     <string name="delete">Verwijderen</string>
     <string name="enable_nfc_send">Schakel versturen via NFC in…</string>
@@ -62,7 +58,6 @@
     </string>
     <string name="malformed_repo_uri">Misvormde bron-URI %s genegeerd</string>
     <string name="menu_manage">Bronnen</string>
-    <string name="menu_send_apk_bt">F-Droid delen via Bluetooth</string>
     <string name="menu_search">Zoeken</string>
     <string name="menu_add_repo">Nieuwe bron</string>
     <string name="menu_launch">Uitvoeren</string>
@@ -363,7 +358,6 @@
     <string name="menu_email">E-mail de auteur</string>
     <string name="antinonfreeassetslist">Deze app bevat niet-vrije elementen</string>
 
-    <string name="empty_search_available_app_list">Geen overeenkomende apps beschikbaar.</string>
 
     <string name="crash_dialog_title">F-Droid is gecrasht</string>
     <string name="crash_dialog_text">Een onverwachte fout is opgetreden waardoor de app is gestopt.
