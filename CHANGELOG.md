@@ -1,3 +1,9 @@
+### 0.103.2 (2017-05-31)
+
+* Fix problematic updates and notifications (#1013)
+
+* Language and stability updates
+
 ### 0.103.1 (2017-05-12)
 
 * Various stability fixes
