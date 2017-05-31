@@ -9,9 +9,6 @@
     <string name="installIncompatible">Dit blyk dat hierdie progam nie aanpasbaar is met you toestel nie. Wil jy in elk
         geval probeer?
     </string>
-    <string name="installDowngrade">Jy probeer die program afgradeer. Dit mag veroorsaak dat die program nie meer werk
-        nie of selfs data verlies tot gevolg hê. Wil jy in elk geval probeer afgradeer?
-    </string>
     <string name="version">Weergawe</string>
     <string name="delete">Uitvee</string>
     <string name="updates">Opdaterings</string>

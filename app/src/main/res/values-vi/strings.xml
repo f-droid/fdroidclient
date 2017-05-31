@@ -6,9 +6,6 @@
     <string name="installIncompatible">Ứng dụng này có khả năng không tương thích với thiết bị của bạn. Bạn vẫn muốn thử
         cài đặt?
     </string>
-    <string name="installDowngrade">Bạn đang cài đè phiên bản cũ hơn của ứng dụng này. Làm như vậy có thể khiến cho ứng
-        dụng không hoạt động được và thậm chí làm mất dữ liệu. Bạn vẫn muốn tiếp tục?
-    </string>
     <string name="version">Phiên bản</string>
     <string name="delete">Xoá</string>
     <string name="enable_nfc_send">Kích hoạt gửi qua NFC…</string>

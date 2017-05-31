@@ -7,9 +7,6 @@
     <string name="installIncompatible">Изглежда пакетът не е съвместим с вашето устройство. Да бъде направен опит за
         инсталиране въпреки това?
     </string>
-    <string name="installDowngrade">Опитвате се да инсталирате по-стара версия на приложението. Това действие може да
-        предизвика нестабилност и дори загуба на данни. Наистина ли желаете да продължите?
-    </string>
     <string name="version">Версия</string>
     <string name="delete">Изтриване</string>
     <string name="enable_nfc_send">Активирай NFC изпращане…</string>

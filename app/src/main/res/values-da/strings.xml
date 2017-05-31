@@ -9,9 +9,6 @@
     <string name="installIncompatible">Det ser ud til at denne pakke er inkompatibel med din enhed. Vil du forsøge at
         installere den alligevel?
     </string>
-    <string name="installDowngrade">Du forsøger at nedgradere dette program. Gøres dette vil programmet måske blive
-        defekt og endda tabe dine data. Vil du alligevel forsøge at nedgradere programmet?
-    </string>
     <string name="version">Version</string>
     <string name="delete">Slet</string>
     <string name="enable_nfc_send">Aktiver NFC Send…</string>

@@ -2,8 +2,6 @@
 <resources>
     <string name="SignatureMismatch">Den nye versjonen er signert med en annen nøkkel enn den gamle. For å installere en ny versjon må du først avinstallere den gamle. (Avinstallering vil medfører sletting av all intern data lagret av programmet.)</string>
     <string name="installIncompatible">Det ser ut til at denne pakken ikke er kompatibel med ditt utstyr. Vil du prøve å installere den likevel?</string>
-    <string name="installDowngrade">Du prøver å nedgradere dette programmet. Dette kan føre til at programmet henger, og du kan til og med miste dataene dine. Nedgrader uansett?</string>
-    <string name="version">Versjon</string>
     <string name="delete">Slett</string>
     <string name="enable_nfc_send">Skru på NFC-sending…</string>
     <string name="cache_downloaded">Behold mellomlagrede programmer</string>

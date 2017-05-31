@@ -9,9 +9,6 @@
     <string name="installIncompatible">ایسا لگتا ہے کیہ یہ پیکج آپ کے آلے کے ساتھ کمپیٹبل نہیں۔ کیا آپ پھر بھی اسے نصب
         کرنا چاہیں گے؟
     </string>
-    <string name="installDowngrade">آپ اس اطلاقیے کو ڈاؤنگریڈ کرنے کی کوشش کر رہے ہیں۔ ایسا کرنے سے یہ خراب ہو سکتا ہے
-        یا آپ کا ڈیٹا اڑ سکتا ہے۔ کیا آپ پھر بھی ڈاؤنگریڈ کرنا چاہیں گے؟
-    </string>
     <string name="version">ورژن</string>
     <string name="delete">حذف کریں</string>
     <string name="enable_nfc_send">این ایف سی ارسال فعال کریں…</string>

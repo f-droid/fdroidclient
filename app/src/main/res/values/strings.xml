@@ -10,9 +10,6 @@
     <string name="installIncompatible">It seems like this package is not compatible with your device. Do you want to try
         and install it anyway?
     </string>
-    <string name="installDowngrade">You are trying to downgrade this application. Doing so might get it to malfunction
-        and even lose your data. Do you want to try and downgrade it anyway?
-    </string>
     <string name="version">Version</string>
     <string name="by_author_format">by %s</string>
     <string name="delete">Delete</string>

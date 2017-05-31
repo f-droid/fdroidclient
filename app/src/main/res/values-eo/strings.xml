@@ -101,9 +101,6 @@
     </string>
     <string name="unstable_updates">Nestabilaj ĝisdatigoj</string>
     <string name="update_interval">Intervalo de aŭtomata ĝisdatigo</string>
-    <string name="installDowngrade">Vi klopodas malpromocii ĉi tiun aplikaĵon. Fari tion eble malfunkciigos ĝin kaj eĉ
-        perdigos viajn datumojn. Ĉu vi volas klopodi malpromocii ĝin ĉiaokaze?
-    </string>
     <string name="SignatureMismatch">La nova versio estas subskribita per diferenca ŝlosilo. Por instali la novan
         version, la malnova devas esti malinstalita unue. Bonvolu fari tion kaj reprovi. (rigardu ke malinstalado
         forigos ĉiujn internajn datumojn konservitajn en la aplikaĵo)

@@ -7,9 +7,6 @@
     <string name="installIncompatible">Zdá sa, že tento balíček nie je kompatibilný s vašim zariadením. Chcete ho
         napriek tomu nainštalovať?
     </string>
-    <string name="installDowngrade">Pokúšate sa prejsť na staršiu verziu aplikácie. Môže to spôsobiť poruchy a dokonca
-        aj stratu údajov. Naozaj chcete skúsiť prejsť na staršiu verziu?
-    </string>
     <string name="version">Verzia</string>
     <string name="delete">Vymazať</string>
     <string name="enable_nfc_send">Zapnúť odoslanie cez NFC …</string>

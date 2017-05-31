@@ -4,9 +4,6 @@
         (참고로, 삭제를 할 경우 앱이 저장한 모든 내부 자료도 같이 삭제됩니다)
     </string>
     <string name="installIncompatible">이 패키지가 기기와 호환되지 않는 것 같습니다. 계속 설치를 진행할까요?</string>
-    <string name="installDowngrade">이 응용 프로그램의 다운그레이드 하려고 합니다. 이전 버전을 설치할 경우, 응용 프로그램에 데이터가 손상되거나 오작동이 발생할 수 있습니다. 정말로
-        다운그레이드하시겠습니까?
-    </string>
     <string name="version">버전</string>
     <string name="delete">삭제</string>
     <string name="enable_nfc_send">NFC 전송 사용…</string>

@@ -7,9 +7,6 @@
     <string name="installIncompatible">Aparentemente este pacote não é compatível com o seu dispositivo. Quer tentar
         instalá-lo mesmo assim?
     </string>
-    <string name="installDowngrade">Você está tentando desatualizar este aplicativo. Isso pode causar mal funcionamento
-        e eventualmente perda de dados. Você quer tentar desatualizá-lo mesmo assim?
-    </string>
     <string name="version">Versão</string>
     <string name="delete">Apagar</string>
     <string name="enable_nfc_send">Habilitar envio NFC…</string>

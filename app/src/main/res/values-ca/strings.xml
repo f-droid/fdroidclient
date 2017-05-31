@@ -7,9 +7,6 @@
     <string name="installIncompatible">Sembla que aquest paquet no és compatible amb el vostre dispositiu. Voleu provar
         a instaŀlar-lo de totes maneres?
     </string>
-    <string name="installDowngrade">Aneu a desactualitzar aquesta aplicació. Això podria fer que l\'aplicació no
-        funcionés o inclús es perdessin les vostres dades. Esteu segur que ho voleu fer?
-    </string>
     <string name="version">Versió</string>
     <string name="delete">Esborrar</string>
     <string name="cache_downloaded">Conservar les apps en memòria cau</string>

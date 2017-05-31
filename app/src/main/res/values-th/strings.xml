@@ -3,10 +3,6 @@
     <string name="app_name">F-Droid</string>
 
     <string name="installIncompatible">โปรแกรมนี้เข้ากันไม่ได้กับเครื่องของคุณ, ดำเนินการติดตั้งต่อหรือไม่?</string>
-    <string name="installDowngrade">คุณกำลังจะติดตั้งโปรแกรมรุ่นเก่าทับรุ่นใหม่
-        ซึ่งอาจทำให้การทำงานของโปรแกรมผิดเพี้ยนจากการอ่านข้อมูลบันทึกภายในที่เขียนโดยโปรแกรมรุ่นใหม่กว่า,
-        ดำเนินการต่อหรือไม่?
-    </string>
     <string name="version">รุ่น</string>
     <string name="delete">ลบ</string>
     <string name="enable_nfc_send">เปิดใช้การแบ่งปันโปรแกรมผ่าน NFC…</string>

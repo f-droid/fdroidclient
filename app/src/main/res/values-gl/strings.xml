@@ -7,9 +7,6 @@
     <string name="installIncompatible">Parece que este paquete non é compatíbel co seu dispositivo. Quere facer a proba
         e instalalo aínda así?
     </string>
-    <string name="installDowngrade">Está tentando instalar unha versión anterior. Isto pode supoñer un mal funcionamento
-        ou perda de datos. Quere tentalo de todas maneiras?
-    </string>
     <string name="version">Versión</string>
     <string name="cache_downloaded">Manter paquetes na caché</string>
     <string name="updates">Actualizacións</string>

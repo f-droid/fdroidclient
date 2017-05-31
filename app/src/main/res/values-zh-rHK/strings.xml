@@ -229,9 +229,6 @@
 您必須先卸載舊版本，然後再嘗試安裝。(注意：卸載將會刪除
 應用程式內的資料)
 </string>
-    <string name="installDowngrade">應用程式將會降級，這樣做可能會導致程式異常運作
-甚至資料損失。您確定要進行降級嗎？
-</string>
     <string name="download_error">下載失敗</string>
 
     <string name="more">顯示更多</string>

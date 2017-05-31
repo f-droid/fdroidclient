@@ -3,9 +3,6 @@
     <string name="installIncompatible">به‌نظر می‌رسد این بسته با دستگاه شما هماهنگ نیست. آیا می‌خواهید آن را به هر قیمتی
         آزمایش و نصب کنید؟
     </string>
-    <string name="installDowngrade">شما در حال قدیمی‌کردن و کاهش درجهٔ این برنامه هستید. انجام چنین کاری ممکن منجر به
-        خرابی یا از دست رفتن داده‌های شما شود. آیا می‌خواهید سعی کنید این برنامه را به هر قیمتی قدیمی کنید؟
-    </string>
     <string name="delete">حذف</string>
     <string name="cache_downloaded">نگه‌داری کاره‌های انبار شده</string>
     <string name="updates">به‌روزرسانی‌ها</string>

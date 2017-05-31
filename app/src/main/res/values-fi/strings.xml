@@ -7,9 +7,6 @@
     <string name="installIncompatible">Tämä paketti ei näytä olevan yhteensopiva laitteesi kanssa. Haluatko silti
         asentaa sen?
     </string>
-    <string name="installDowngrade">Sovellusta päivitetään vanhempaan versioon. Sovellus voi toimia väärin tai kadottaa
-        tietojasi. Haluatko päivittää vanhempaan versioon?
-    </string>
     <string name="version">Versio</string>
     <string name="delete">Poista</string>
     <string name="enable_nfc_send">Ota NFC-lähetys käyttöön…</string>

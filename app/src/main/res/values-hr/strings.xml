@@ -9,9 +9,6 @@
     <string name="installIncompatible">Čini se da ovaj paket nije kompatibilan s Vašim uređajem. Želite li ga svejedno
         pokušati instalirati?
     </string>
-    <string name="installDowngrade">Pokušavate unazaditi aplikaciju na prošlu verziju. Ukoliko to napravite, aplikacija
-        može prestati raditi ili čak izgubiti Vaše podatke. Želite li ju svejedno unazaditi?
-    </string>
     <string name="version">Verzija</string>
     <string name="delete">Obriši</string>
     <string name="enable_nfc_send">Omogući NFC slanje…</string>

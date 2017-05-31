@@ -5,9 +5,6 @@
     </string>
     <string name="installIncompatible">このﾊﾟｯｹｰｼﾞはあなたの端末と互換性がないようです｡それでもｲﾝｽﾄｰﾙを続行しますか?
 </string>
-    <string name="installDowngrade">
-        このｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝｸﾞﾚｰﾄﾞしようとしています｡これにより不具合を発生させたりﾃﾞｰﾀを失ったりする場合があります｡それでもﾀﾞｳﾝｸﾞﾚｰﾄﾞを続行しますか?
-    </string>
     <string name="version">ﾊﾞｰｼﾞｮﾝ</string>
     <string name="delete">削除</string>
     <string name="enable_nfc_send">NFC 送信を有効…</string>

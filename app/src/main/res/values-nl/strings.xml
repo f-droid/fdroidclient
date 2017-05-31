@@ -7,10 +7,6 @@
     <string name="installIncompatible">Dit pakket is niet compatibel met je apparaat. Wil je het alsnog proberen
         installeren?
     </string>
-    <string name="installDowngrade">Je probeert deze app te downgraden naar een oudere versie. Als je dit doet,
-        functioneert de app mogelijk niet goed meer en kan je zelfs je gegevens verliezen. Wil je het alsnog proberen en
-        de app downgraden?
-    </string>
     <string name="version">Versie</string>
     <string name="delete">Verwijderen</string>
     <string name="enable_nfc_send">Schakel versturen via NFC in…</string>

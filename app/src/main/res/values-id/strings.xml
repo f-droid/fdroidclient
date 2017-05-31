@@ -5,10 +5,6 @@
     <string name="installIncompatible">Sepertinya versi paket ini tidak kompatibel dengan perangkat Anda. Apakah Anda
         tetap ingin memasang dan mencobanya?
     </string>
-    <string name="installDowngrade">Anda mencoba untuk memasang versi yang lebih rendah dari aplikasi ini. Tetap
-        memasangnya mungkin dapat meyebabkan aplikasi tidak bekerja dengan baik. Apakah Anda tetap ingin memasang dan
-        mencobanya?
-    </string>
     <string name="version">Versi</string>
     <string name="delete">Hapus</string>
     <string name="enable_nfc_send">Aktifkan Pengirimian NFC…</string>

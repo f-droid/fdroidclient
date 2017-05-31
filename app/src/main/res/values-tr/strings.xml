@@ -4,9 +4,6 @@
     <string name="installIncompatible">Bu paket aygıtınızla uyumlu değil gibi görünüyor. Yine de kurmayı denemek istiyor
         musunuz?
     </string>
-    <string name="installDowngrade">Bu uygulamanın eski bir sürümüne dönmek üzeresiniz. Bu, uygulamanın yanlış
-        çalışmasına ve hatta veri kaybına neden olabilir. Devam etmek istiyor musunuz?
-    </string>
     <string name="version">Sürüm</string>
     <string name="delete">Sil</string>
     <string name="enable_nfc_send">NFC Gönderimini Etkinleştir…</string>

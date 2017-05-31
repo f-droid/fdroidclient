@@ -7,9 +7,6 @@
     <string name="installIncompatible">Parece que este paquete no es compatible con el dispositivo. ¿Quieres probar e
         instalarlo de todos modos?
     </string>
-    <string name="installDowngrade">Estás intentando instalar una versión inferior de esta aplicación. Hacerlo puede
-        derivar en mal funcionamiento o incluso pérdida de datos. ¿Quieres intentarlo de todos modos?
-    </string>
     <string name="version">Versión</string>
     <string name="delete">Borrar</string>
     <string name="enable_nfc_send">Habilitar envío NFC…</string>

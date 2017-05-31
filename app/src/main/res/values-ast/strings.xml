@@ -7,9 +7,6 @@
     <string name="installIncompatible">Paez qu\'esti paquete nun ye compatible col to preséu. ¿Quies tentar d\'instalalu
         de toes toes?
     </string>
-    <string name="installDowngrade">Tas tentando de baxar de versión esta aplicación. Eso quiciabes faiga que
-        l\'aplicación furrule mal o incluso, pierdas los tos datos. ¿Quies tentalo y baxala de versión de toes toes?
-    </string>
     <string name="version">Versión</string>
     <string name="delete">Desaniciar</string>
     <string name="enable_nfc_send">Habilitar unviu per NFC…</string>

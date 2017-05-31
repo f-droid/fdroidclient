@@ -9,9 +9,6 @@
     <string name="installIncompatible">Tundub, et see pakett ei ühildu su seadmega. Kas sa soovid ikkagi proovida selle
         paigaldamist?
     </string>
-    <string name="installDowngrade">Sa proovid võtta kasutusele programmi varasemat versiooni. Sedasi võib programm
-        töötada valesti või isegi kustutada su andmeid. Kas sa soovid ikkagi proovida varasema versiooni kasutamist?
-    </string>
     <string name="version">Versioon</string>
     <string name="delete">Kustuta</string>
     <string name="enable_nfc_send">Luba NFC andmevahetus…</string>

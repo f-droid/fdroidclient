@@ -6,9 +6,6 @@
     <string name="installIncompatible">Изгледа да овај пакет не одговара вашем уређају. Желите ли свеједно да га
         инсталирате?
     </string>
-    <string name="installDowngrade">Покушавате да инсталирате старије издање ове апликације. То може довести до отказа и
-        губитка података. Желите ли заиста да инсталирате старије издање?
-    </string>
     <string name="version">Издање</string>
     <string name="delete">Обриши</string>
     <string name="enable_nfc_send">Омогући слање преко НФЦ-а…</string>

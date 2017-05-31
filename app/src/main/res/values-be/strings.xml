@@ -9,9 +9,6 @@
     <string name="installIncompatible">Падобна на тое, што гэтая праграма не сумяшчальная з вашым прыстасаваннем. Усё
         адно прадоўжыць?
     </string>
-    <string name="installDowngrade">Вы спрабуеце ўсталяваць больш старую версію праграмы. Гэта можа прывесці да
-        некарэктнай рабоце і нават да страты вашых дадзеных. Усталяваць больш старую версію?
-    </string>
     <string name="version">Версія</string>
     <string name="delete">Выдаліць</string>
     <string name="enable_nfc_send">Уключыць адпраўку NFC…</string>

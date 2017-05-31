@@ -70,8 +70,6 @@
     <string name="app_name">एफ-ड्रॉईड</string>
 
     <string name="installIncompatible">ऐसा ज्ञात होता है की पैकेज आपके डिवाइस के लिए अनुकुल नहीं है| क्या आप इसे फिर भी इन्स्टॉल करना चाहते हैं?</string>
-    <string name="installDowngrade">आप एप्लीकेशन की अवनति करना चाहते हैं| ऐसा करने से येह काम करना बंद कर सकता है और आप अपना डाटा खो सकते हैं| क्या आप येह करना चाहते हैं?</string>
-    <string name="cache_downloaded">कैश पैकेजेस स्टोर करें</string>
     <string name="interval_1w">साप्ताहिक</string>
     <string name="interval_2w">हर २ हफ्ते मैं</string>
 

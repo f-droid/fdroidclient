@@ -317,9 +317,6 @@
     <string name="installIncompatible">Það lítur út eins og að þessi pakki sé ekki samhæfður tækinu þínu. Viltu samt
         prófa að setja hann upp?
     </string>
-    <string name="installDowngrade">Þú ert að reyna að niðurfæra þetta forrit. Sé það gert getur leitt til þess að
-        forritið virki ekki rétt og jafnvel að gögn tapist. Viltu samt prófa að niðurfæra það?
-    </string>
     <string name="repo_exists_add_fingerprint">Þetta hugbúnaðarsafn er þegar uppsett, þetta mun bæta við nýjum
         lykilupplýsingum.
     </string>

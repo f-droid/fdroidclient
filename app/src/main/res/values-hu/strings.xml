@@ -7,9 +7,6 @@
     <string name="installIncompatible">Úgy tűnik, ez a csomag nem kompatibilis a készülékkel. Ennek ellenére is
         megpróbálja telepíteni?
     </string>
-    <string name="installDowngrade">Ön megpróbálta régebbivel felülírni az alkalmazást. Ez hibás működést és az adatok
-        elvesztését okozhatja. Ennek ellenére is megpróbálja telepíteni?
-    </string>
     <string name="version">Verzió</string>
     <string name="cache_downloaded">Gyorsítótárazott appok megtartása</string>
     <string name="updates">Frissítések</string>

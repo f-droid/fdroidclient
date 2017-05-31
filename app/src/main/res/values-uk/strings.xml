@@ -41,9 +41,6 @@
     <string name="installIncompatible">Схоже, ця програма не сумісна з вашим пристроєм. Спробувати встановити її все
         одно?
     </string>
-    <string name="installDowngrade">Ви збираєтесь встановити більш стару версію програми. Це можете призвести до
-        некоректної робити і навіть втрати ваших даних. Встановити більш стару версію?
-    </string>
     <string name="delete">Видалити</string>
     <string name="other">Інше</string>
     <string name="update_interval">Інтервал автооновлення</string>
