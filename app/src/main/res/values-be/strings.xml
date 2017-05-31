@@ -272,7 +272,6 @@
         або вашы рэпазіторыі не змяшчаюць такіх праграм.
     </string>
     <string name="empty_can_update_app_list">Віншуем! Усе вашы праграмы маюць апошнія версіі (або вашы рэпазіторыі застарэлі).</string>
-    <string name="empty_search_available_app_list">Няма супадзенняў сярод даступных праграм.</string>
 
     <string name="requesting_root_access_body">Запыт root-доступу…</string>
     <string name="root_access_denied_title">Адмоўлена ў root-доступе</string>

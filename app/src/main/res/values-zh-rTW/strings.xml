@@ -289,7 +289,6 @@
     <string name="not_on_same_wifi">"您剛才增加的本地應用軟體倉庫與您的裝置並不在同一個 Wi-Fi 網路上！
 請嘗試加入這個網路：%s
  "</string>
-    <string name="empty_search_available_app_list">沒有相符合的應用程式可用。</string>
 
     <string name="requesting_root_access_body">正在要求 root 權限…</string>
     <string name="empty_installed_app_list">未安裝應用程式。

@@ -360,7 +360,6 @@
     <string name="menu_email">E-Mail forfatter</string>
     <string name="antinonfreeassetslist">Denne app indeholder ikke-frie aktiver</string>
 
-    <string name="empty_search_available_app_list">Ingen sådanne programmer tilgængelige.</string>
 
     <string name="crash_dialog_title">F-Droid er gået ned</string>
     <string name="crash_dialog_text">En uventet fejl har tvunget programmet til at stoppe. Vil du sende en e-mail med

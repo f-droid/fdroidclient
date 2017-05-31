@@ -236,7 +236,6 @@
         verkligen inte dina appar tillgängliga.
     </string>
     <string name="empty_can_update_app_list">Grattis! Alla dina appar är uppdaterade (eller så behöver dina förråd uppdateras).</string>
-    <string name="empty_search_available_app_list">Inga matchande program är tillgängliga.</string>
 
     <string name="install_error_unknown">Misslyckades att installera på grund av ett okänt problem</string>
     <string name="repo_provider">Förråd: %s</string>

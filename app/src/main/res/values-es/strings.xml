@@ -362,7 +362,6 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="crash_dialog_comment_prompt">Puede añadir información extra y comentarios aquí:</string>
     <string name="antinonfreeassetslist">Esta aplicación contiene recursos que no son libres</string>
 
-    <string name="empty_search_available_app_list">No hay coincidencias con las aplicaciones disponibles.</string>
 
     <string name="menu_email">Escribir un correo electrónico al autor</string>
     <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>

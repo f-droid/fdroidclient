@@ -197,7 +197,6 @@
     <string name="empty_can_update_app_list">Minden app naprakész.\n\nGratulálunk! Minden appja naprakész (vagy a
         tárolói elavultak).
     </string>
-    <string name="empty_search_available_app_list">Nincs találat az elérhető alkalmazások között.</string>
 
     <string name="install_error_unknown">A telepítés ismeretlen hiba miatt nem sikerült</string>
     <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt nem sikerült</string>

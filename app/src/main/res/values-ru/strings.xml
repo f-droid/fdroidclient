@@ -270,7 +270,6 @@
 
     <string name="category_Writing">Работа с текстом</string>
 
-    <string name="empty_search_available_app_list">Нет совпадений среди доступных приложений.</string>
 
     <string name="system_install_warning">Это займёт до 10 секунд.</string>
     <string name="system_install_warning_lollipop">Это займёт до 10 секунд, после чего устройство будет<b>

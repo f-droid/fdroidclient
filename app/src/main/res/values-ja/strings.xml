@@ -331,7 +331,6 @@
     <string name="about_license">ﾗｲｾﾝｽ</string>
 
     <string name="status_inserting_apps">ｱﾌﾟﾘｹｰｼｮﾝの詳細を保存中</string>
-    <string name="empty_search_available_app_list">一致する利用可能なｱﾌﾟﾘｹｰｼｮﾝはありません。</string>
 
     <string name="crash_dialog_title">F-Droid がｸﾗｯｼｭしました</string>
     <string name="crash_dialog_text">ｱﾌﾟﾘｹｰｼｮﾝを強制的に停止させる、予期しないｴﾗｰが発生しました。

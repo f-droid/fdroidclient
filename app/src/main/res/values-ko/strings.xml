@@ -315,7 +315,6 @@
 
     <string name="useTor">Tor 사용</string>
     <string name="useTorSummary">향상된 프라이버시를 위해 Tor를 통한 다운로드 트래픽을 강제합니다</string>
-    <string name="empty_search_available_app_list">일치하는 앱이 없습니다.</string>
 
     <string name="system_install_not_supported">F-Droid 특별 권한 확장을 설치하려면 Android 5.1보다 높은 버전이 필요합니다.</string>
 

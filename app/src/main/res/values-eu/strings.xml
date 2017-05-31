@@ -375,7 +375,6 @@
 
     <string name="useTor">Erabili Tor</string>
     <string name="status_inserting_apps">Aplikazioaren xehetasunak gordetzen</string>
-    <string name="empty_search_available_app_list">Ez dago bat datorren aplikaziorik eskuragarri.</string>
 
     <string name="swap_stopping_wifi">Wi-Fia gelditzen…</string>
     <string name="crash_dialog_title">F-droid kraskatu da</string>

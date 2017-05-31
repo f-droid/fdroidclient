@@ -289,7 +289,6 @@
     <string name="status_processing_xml_percent">กำลังประมวลผลข้อมูล %2$s / %3$s (%4$d%%) จาก %1$s</string>
     <string name="requires_features">ต้องใช้: %1$s</string>
     <string name="wifi">Wi-Fi</string>
-    <string name="empty_search_available_app_list">ไม่พบโปรแกรมตามที่ค้นหา</string>
 
     <string name="install_error_unknown">การติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>
     <string name="uninstall_error_unknown">การถอนการติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>

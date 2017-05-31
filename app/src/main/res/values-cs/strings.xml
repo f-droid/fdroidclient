@@ -317,7 +317,6 @@
     <string name="antinonfreeassetslist">Tato aplikace obsahuje nesvobodné části</string>
 
     <string name="status_inserting_apps">Ukládání detailů aplikace</string>
-    <string name="empty_search_available_app_list">Žádné odpovídající aplikace nejsou dostupné.</string>
 
     <string name="system_install_post_success_message">Oprávněné rozšíření F-Droidu bylo úspěšně nainstalováno. Toto
         dovoluje F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.

@@ -324,7 +324,6 @@
     <string name="about_license">Лиценца</string>
 
     <string name="status_inserting_apps">Уписујем детаље апликација</string>
-    <string name="empty_search_available_app_list">Нема одговарајућих апликација.</string>
 
     <string name="install_confirm_update">Желите ли да надоградите постојећу
         апликацију? Подаци неће бити изгубљени.

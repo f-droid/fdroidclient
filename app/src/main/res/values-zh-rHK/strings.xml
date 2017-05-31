@@ -320,7 +320,6 @@ F-Droid 並不提供您裝置上的應用程式。
 您可以嘗試更新您的軟件庫，但若更新後此頁還沒有顯示任何應用程式，
 您的倉庫的確不提供裝置現有的程式。
  "</string>
-    <string name="empty_search_available_app_list">沒有符合搜尋字詞的應用程式。</string>
 
     <string name="root_access_denied_body">"您的 Android 裝置還未取得 root 權限，
 或 F-Droid 被拒 root 權限。

@@ -240,7 +240,6 @@
         veya gerçekten depolar uygulamalarınızı bulundurmadığı için olabilir.
     </string>
     <string name="empty_can_update_app_list">Tebrikler! Tüm uygulamalarınız güncel (veya depolarınız güncel değil).</string>
-    <string name="empty_search_available_app_list">Mevcut eşleşen uygulama yok.</string>
 
     <string name="install_error_unknown">Bilinmeyen bir hata nedeniyle kurulamadı</string>
     <string name="uninstall_error_unknown">Bilinmeyen bir hata nedeniyle kaldırılamadı</string>

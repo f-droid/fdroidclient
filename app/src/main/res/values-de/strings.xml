@@ -356,7 +356,6 @@
 
     <string name="status_inserting_apps">Anwendungsdetails werden gespeichert</string>
 
-    <string name="empty_search_available_app_list">Keine passenden Anwendungen verfügbar.</string>
     <string name="crash_dialog_title">F-Droid ist abgestürzt</string>
     <string name="crash_dialog_comment_prompt">Sie können zusätzliche Informationen und Kommentare hier einfügen:</string>
     <string name="antinonfreeassetslist">Diese Anwendung enthält nicht freie Bestandteile</string>

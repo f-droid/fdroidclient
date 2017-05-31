@@ -343,7 +343,6 @@
     <string name="menu_email">رایانامه به نویسنده</string>
     <string name="antinonfreeassetslist">این کاره شامل ابزارهای غیرآزاد است</string>
 
-    <string name="empty_search_available_app_list">هیچ برنامهٔ مطابقی وجود ندارد.</string>
 
     <string name="crash_dialog_title">اف‌دروید از کار افتاد</string>
     <string name="crash_dialog_text">خطایی پیش‌بینی نشده رخ داد که برنامه را وادار به توقّف کرد. می‌خواهید جزئیات را

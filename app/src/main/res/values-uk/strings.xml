@@ -368,7 +368,6 @@
     <string name="about_license">Ліцензія</string>
 
     <string name="status_inserting_apps">Збереження подробиць по додаткам</string>
-    <string name="empty_search_available_app_list">Не має збігів серед доступних програм.</string>
 
     <string name="crash_dialog_title">F-Droid зазнав збою</string>
     <string name="crash_dialog_text">Несподівана помилка припинила роботу програми.
