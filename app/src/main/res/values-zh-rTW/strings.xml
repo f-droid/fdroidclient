@@ -464,7 +464,7 @@
 
     <string name="antifeatureswarning">此應用程式可能有您不喜歡的功能。</string>
     <plurals name="details_last_update_days">
-	<item quantity="other">%1$s 天前已更新</item>
+	<item quantity="other">%1$d 天前已更新</item>
 </plurals>
     <string name="updates__tts__download_app">下載</string>
     <string name="antifeatures">Anti-features</string>
@@ -500,12 +500,13 @@
 	<item quantity="other">%1$d 應用程式已安裝</item>
 	</plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="other">已更新於 %1$s 周前</item>
+	<item quantity="other">%1$d 周前已更新</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="other">已更新於 %1$s 月前</item>
-	</plurals>
+	<item quantity="other">%1$d 月前已更新</item>
+</plurals>
     <plurals name="details_last_update_years">
-	<item quantity="other">已更新於 %1$s 年前</item>
-	</plurals>
-</resources>
+	<item quantity="other">%1$d 年前已更新</item>
+</plurals>
+<string name="by_author_format">由 %s</string>
+    </resources>

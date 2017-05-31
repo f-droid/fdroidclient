@@ -119,7 +119,7 @@
     <string name="root_access_denied_title">Odmówiono uprawnień roota</string>
     <string name="root_access_denied_body">Urządzenie nie zostało zrootowane lub odmówiono uprawnień roota F-Droidowi.
     </string>
-    <string name="swap_nfc_description">Jeśli oba urządzenia mają F-Droida i NFC, możecie je zbliżyć do siebie.</string>
+    <string name="swap_nfc_description">Jeśli oba urządzenia mają F-Droida i NFC możecie je zbliżyć do siebie.</string>
     <string name="swap_join_same_wifi">Połącz się z tą samą siecią Wi-Fi</string>
     <string name="swap">Wymień aplikacje</string>
     <string name="swap_no_wifi_network">Brak sieci</string>
@@ -473,10 +473,10 @@
     <string name="antifeatures">Niepożądane funkcje</string>
     <string name="details_last_updated_today">Uaktualniono dzisiaj</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Uaktualniono %1$s dzień temu</item>
-	<item quantity="few">Uaktualniono %1$s dni temu</item>
-	<item quantity="many">Uaktualniono %1$s dni temu</item>
-	</plurals>
+	<item quantity="one">Uaktualniono %1$d dzień temu</item>
+	<item quantity="few">Uaktualniono %1$d dni temu</item>
+	<item quantity="many">Uaktualniono %1$d dni temu</item>
+</plurals>
     <string name="app_list__name__successfully_installed">%1$s pomyślnie zainstalowano</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Brak internetu? Pobierz aplikacje od ludzi w
         pobliżu!
@@ -517,21 +517,19 @@
 	<item quantity="many">+%1$d powiadomień więcej…</item>
 	</plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Uaktualniono %1$s tydzień temu</item>
-        <item quantity="few">Uaktualniono %1$s tygodnie temu</item>
-        <item quantity="many">Uaktualniono %1$s tygodnie temu</item>
-	<item quantity="other">Uaktualniono %1$s tygodnie temu</item>
+	<item quantity="one">Uaktualniono %1$d tydzień temu</item>
+	<item quantity="few">Uaktualniono %1$d tygodnie temu</item>
+	<item quantity="many">Uaktualniono %1$d tygodni temu</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Uaktualniono %1$s miesiąc temu</item>
-        <item quantity="few">Uaktualniono %1$s miesiące temu</item>
-        <item quantity="many">Uaktualniono %1$s miesiące temu</item>
-	<item quantity="other">Uaktualniono %1$s miesiące temu</item>
+	<item quantity="one">Uaktualniono %1$d miesiąc temu</item>
+	<item quantity="few">Uaktualniono %1$d miesiące temu</item>
+	<item quantity="many">Uaktualniono %1$d miesięcy temu</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Uaktualniono %1$s rok temu</item>
-        <item quantity="few">Uaktualniono %1$s lata temu</item>
-        <item quantity="many">Uaktualniono %1$s lata temu</item>
-	<item quantity="other">Uaktualniono %1$s lata temu</item>
+	<item quantity="one">Uaktualniono %1$d rok temu</item>
+	<item quantity="few">Uaktualniono %1$d lata temu</item>
+	<item quantity="many">Uaktualniono %1$d lat temu</item>
 </plurals>
-</resources>
+<string name="by_author_format">od %s</string>
+    </resources>

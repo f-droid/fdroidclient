@@ -474,9 +474,9 @@
 </plurals>
 
     <plurals name="details_last_update_days">
-	<item quantity="one">Ажурирана пре %1$s дана</item>
-	<item quantity="few">Ажурирана пре %1$s дана</item>
-	<item quantity="other">Ажурирана пре %1$s дана</item>
+	<item quantity="one">Надограђена пре %1$d дан</item>
+	<item quantity="few">Надограђена пре %1$d дана</item>
+	<item quantity="other">Надограђена пре %1$d дана</item>
 </plurals>
     <string name="app_list__name__successfully_installed">%1$s успешно инсталирана</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Немате интернета? Преузимајте апликације од људи у
@@ -501,4 +501,35 @@
     <string name="menu_license">Лиценца: %s</string>
     <string name="app__tts__downloading_progress">Преузимам, %1$d%% завршено</string>
     <string name="install_error_not_yet_supported">Тип фајла још не може бити инсталиран: %s</string>
-    </resources>
+    <string name="by_author_format">од %s</string>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+још %1$d…</item>
+	<item quantity="few">+још %1$d…</item>
+	<item quantity="other">+још %1$d…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d надоградња</item>
+        <item quantity="few">%1$d надоградње</item>
+	<item quantity="other">%1$d надоградње</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d апл. инсталирана</item>
+        <item quantity="few">%1$d апл. инсталиране</item>
+	<item quantity="other">%1$d апл. инсталиране</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Надограђена пре %1$d седмицу</item>
+        <item quantity="few">Надограђена пре %1$d седмице</item>
+	<item quantity="other">Надограђена пре %1$d седмице</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Надограђена пре %1$d месец</item>
+        <item quantity="few">Надограђена пре %1$d месеца</item>
+	<item quantity="other">Надограђена пре %1$d месеца</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Надограђена пре %1$d годину</item>
+        <item quantity="few">Надограђена пре %1$d године</item>
+	<item quantity="other">Надограђена пре %1$d године</item>
+</plurals>
+</resources>

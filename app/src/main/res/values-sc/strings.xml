@@ -491,8 +491,8 @@
     <string name="antifeatures">Anti-funtzionalidades</string>
     <string name="details_last_updated_today">Agiornadu oe</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Agiornada %1$s die a como</item>
-	<item quantity="other">Agiornada %1$s dies a como</item>
+	<item quantity="one">Agiornada %1$d die a como</item>
+	<item quantity="other">Agiornada %1$d dies a como</item>
 </plurals>
     <string name="app_list__name__successfully_installed">%1$s installada</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Non ses in lìnia? Iscàrriga aplicatziones dae sa
@@ -532,15 +532,16 @@
 	<item quantity="other">%1$d aplicatziones installadas</item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Agiornada %1$s chida a como</item>
-	<item quantity="other">Agiornada %1$s chidas a como</item>
+	<item quantity="one">Agiornada %1$d chida a como</item>
+	<item quantity="other">Agiornada %1$d chidas a como</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Agiornada %1$s mese a como</item>
-	<item quantity="other">Agiornada %1$s meses a como</item>
+	<item quantity="one">Agiornada %1$d mese a como</item>
+	<item quantity="other">Agiornada %1$d meses a como</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Agiornada %1$s annu a como</item>
-	<item quantity="other">Agiornada %1$s annos a como</item>
+	<item quantity="one">Agiornada %1$d annu a como</item>
+	<item quantity="other">Agiornada %1$d annos a como</item>
 </plurals>
-</resources>
+<string name="by_author_format">de %s</string>
+    </resources>
