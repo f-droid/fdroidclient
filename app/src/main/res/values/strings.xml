@@ -43,7 +43,6 @@
     <string name="uninstall_system_summary">Open details screen of Privileged Extension to update/uninstall it</string>
     <string name="local_repo_name">Name of your Local Repo</string>
     <string name="local_repo_name_summary">The advertised title of your local repo: %s</string>
-    <string name="local_repo_https">Use Private Connection</string>
     <string name="local_repo_https_on">Use encrypted HTTPS:// connection for local repo</string>
 
     <string name="login_title">Authentication required</string>
@@ -123,10 +122,8 @@
     <string name="overwrite">Overwrite</string>
     <string name="clear_search">Clear search</string>
 
-    <string name="fdroid_updates_available">F-Droid Updates Available</string>
     <string name="bluetooth_activity_not_found">No Bluetooth send method found, choose one!</string>
     <string name="choose_bt_send">Choose Bluetooth send method</string>
-    <string name="send_via_bluetooth">Send via Bluetooth</string>
 
     <string name="repo_add_url">Repository address</string>
     <string name="repo_add_fingerprint">Fingerprint (optional)</string>
@@ -141,12 +138,10 @@
     <string name="malformed_repo_uri">Ignoring malformed repo URI: %s</string>
     <string name="repo_provider">Repository: %s</string>
 
-    <string name="menu_update_repo">Update Repos</string>
     <string name="menu_manage">Repositories</string>
     <string name="repositories_summary">Add additional sources of applications</string>
     <string name="menu_send_apk_bt">Share F-Droid by Bluetooth</string>
     <string name="menu_settings">Settings</string>
-    <string name="menu_about">About</string>
     <string name="menu_search">Search</string>
     <string name="menu_add_repo">New Repository</string>
 
@@ -187,7 +182,6 @@
     <string name="preference_manage_installed_apps">Manage Installed Apps</string>
 
 
-    <string name="details_installed">Version %s installed</string>
     <string name="details_notinstalled">Not installed</string>
     <string name="details_new_in_version">New in version %s</string>
 
@@ -334,15 +328,10 @@
         available from F-Droid. This could be because you need to update your repositories, or the repositories
         genuinely don\'t have your apps available.
     </string>
-    <string name="empty_available_app_list">No apps in this category.\n\nTry selecting a different category or updating
-        your repositories to get a fresh list of apps.
-    </string>
     <string name="empty_can_update_app_list">Congratulations! All of your apps are up to date
         (or your repositories are out of date).
     </string>
-    <string name="empty_search_installed_app_list">No matching installed applications.</string>
     <string name="empty_search_available_app_list">No matching applications available.</string>
-    <string name="empty_search_can_update_app_list">No matching applications for update.</string>
 
     <string name="requesting_root_access_body">Requesting root access…</string>
     <string name="root_access_denied_title">Root access denied</string>
@@ -352,10 +341,6 @@
     <string name="install_error_unknown">Failed to install due to an unknown error</string>
     <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
     <string name="install_error_not_yet_supported">File type cannot yet be installed: %s</string>
-    <string name="system_install_denied_title">F-Droid Privileged Extension is not available</string>
-    <string name="system_install_denied_body">This option is only available when F-Droid Privileged Extension is
-        installed.
-    </string>
     <string name="system_install_denied_signature">The signature of the extension is wrong! Please create a bug
         report!
     </string>
@@ -363,7 +348,6 @@
         Please create a bug report!
     </string>
     <string name="system_install_button_install">Install</string>
-    <string name="system_install_button_open">Open Extension</string>
     <string name="system_install_post_success">Successfully installed F-Droid Privileged Extension</string>
     <string name="system_install_post_fail">Installation of F-Droid Privileged Extension failed</string>
     <string name="system_install_post_success_message">F-Droid Privileged Extension has been successfully installed.
@@ -442,8 +426,6 @@
     <string name="swap_not_enabled">Swapping not enabled</string>
     <string name="swap_not_enabled_description">Before swapping, your device must be made visible.</string>
 
-    <string name="tap_to_install_format">Tap to install %s</string>
-    <string name="tap_to_update_format">Tap to update %s</string>
     <string name="install_confirm">needs access to</string>
     <string name="install_confirm_update">Do you want to install an update
         to this existing application? Your existing data will not
@@ -466,7 +448,6 @@
     <string name="perm_costs_money">This may cost you money</string>
     <string name="uninstall_update_confirm">Do you want to replace this app with the factory version?</string>
     <string name="uninstall_confirm">Do you want to uninstall this app?</string>
-    <string name="tap_to_install">Download completed, tap to install</string>
     <string name="download_error">Download unsuccessful</string>
     <string name="download_pending">Waiting to start download…</string>
     <string name="install_error_notify_title">Error installing %s</string>
@@ -477,7 +458,6 @@
     <string name="perms_description_app">Provided by %1$s.</string>
     <string name="downloading">Downloading…</string>
     <string name="app__tts__downloading_progress">Downloading, %1$d%% complete</string>
-    <string name="downloading_apk">Downloading %1$s</string>
     <string name="installing">Installing…</string>
     <string name="uninstalling">Uninstalling…</string>
 
@@ -520,7 +500,6 @@
     <string name="notification_content_single_downloading_update">Downloading update for \"%1$s\"&#8230;</string>
     <string name="notification_content_single_installing">Installing \"%1$s\"&#8230;</string>
     <string name="notification_content_single_installed">Successfully installed</string>
-    <string name="notification_content_single_install_error">Install Failed</string>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d Update</item>
         <item quantity="other">%1$d Updates</item>

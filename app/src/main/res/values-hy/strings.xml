@@ -45,8 +45,6 @@
     <string name="add_key">Ավելացնել բանալի</string>
     <string name="clear_search">Մաքրել որոնումը</string>
 
-    <string name="fdroid_updates_available">F-Droidի թարմացումներ են հասանելի</string>
-    <string name="menu_about">Մասին</string>
     <string name="menu_search">Որոնել</string>
     <string name="menu_share">Կիսվել</string>
     <string name="menu_install">Տեղադրել</string>
@@ -101,7 +99,6 @@
     <string name="allPerms">Ամենը</string>
     <string name="perms_new_perm_prefix">Նոր.</string>
     <string name="downloading">Ներբեռնում եմ…</string>
-    <string name="downloading_apk">Ներբեռնում եմ %1$s</string>
     <string name="installing">Տեղադրում եմ…</string>
     <string name="uninstalling">Ապատեղադրում եմ…</string>
 
@@ -125,7 +122,6 @@
     <string name="notification_content_single_downloading_update">Ներբեռնում եմ թարմացում \"%1$s\" համար…</string>
     <string name="notification_content_single_installing">Տեղադրում եմ \"%1$s\"…</string>
     <string name="notification_content_single_installed">Բարեհաջող տեղադրվեց</string>
-    <string name="notification_content_single_install_error">Տեղադրումը չհաջողվեց</string>
     <string name="notification_title_summary_update_available">Թարմացում է հասանելի</string>
     <string name="notification_title_summary_downloading">Ներբեռնում եմ…</string>
     <string name="notification_title_summary_downloading_update">Ներբեռնում եմ թարմացումը…</string>
@@ -142,7 +138,6 @@
     <string name="automatic_scan_wifi">Միայն Wi-Fiով</string>
     <string name="notify">Թարմացման ծանուցումներ</string>
     <string name="notify_on">Երբ թարմացում է հասանելի՝ ցույց տալ ծանուցում</string>
-    <string name="local_repo_https">Օգտագործել անձնական կապը</string>
     <string name="no_such_app">Այդպիսի ափփ չի գտնվել</string>
 
     <string name="app_version_x_available">Հասանելի է %1$s տարբերակը</string>
@@ -156,7 +151,6 @@
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
 
-    <string name="details_installed">Տեղադրված է %s տարբերակը</string>
     <string name="details_notinstalled">Տեղադրված չէ</string>
 
     <string name="antiadslist">Այս ափփը պարունակում է գովազդ</string>
@@ -188,9 +182,7 @@
     <string name="category_Time">Ժամանակ</string>
     <string name="category_Writing">Տեքստ</string>
 
-    <string name="empty_search_installed_app_list">Չկան համընկնող տեղադրված ափփեր։</string>
     <string name="empty_search_available_app_list">Չկան համընկնող հասանելի ափփեր։</string>
-    <string name="empty_search_can_update_app_list">Չկան համընկնող ափփեր թարմացման համար։</string>
 
     <string name="swap_no_wifi_network">Դեռ համացանց չկա</string>
     <string name="swap_welcome">Բարի՜ գալուստ F-Droid</string>
@@ -225,12 +217,10 @@
     <string name="overwrite">Վրագրել</string>
     <string name="bluetooth_activity_not_found">Bluetoothով ուղարկելու մեթոդ չի գտնվել, ընտրի՛ր մեկը։</string>
     <string name="choose_bt_send">Ընտրիր Bluetoothով ուղարկելու մեթոդ</string>
-    <string name="send_via_bluetooth">Ուղարկել Bluetoothի միջոցով</string>
 
     <string name="repo_add_url">Շտեմարանի հասցե</string>
     <string name="repo_provider">Շտեմարան. %s</string>
 
-    <string name="menu_update_repo">Թարմացնել շտեմարանները</string>
     <string name="menu_manage">Շտեմարաններ</string>
     <string name="repositories_summary">Ավելացնել ափփերի հավելյալ աղբյուրներ</string>
     <string name="menu_add_repo">Նոր շտեմարան</string>

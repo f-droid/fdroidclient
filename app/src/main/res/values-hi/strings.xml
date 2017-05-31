@@ -16,7 +16,6 @@
     <string name="notify_on">सूचित कर्रे जब नवीनतम उपलब्ध हो</string>
     <string name="local_repo_name">स्थानीय कोष का नाम</string>
     <string name="local_repo_name_summary">विज्ञापित शीर्षक स्थानीय कोष का : %s</string>
-    <string name="local_repo_https">गुप्त संपर्क इस्तेमाल करे</string>
     <string name="local_repo_https_on">HTTPS:// इस्तेमाल करे स्थानीय कोष से संपर्क के लिए</string>
 
     <string name="login_title">प्रमाणीकरण अपेक्षित</string>
@@ -87,14 +86,11 @@
     <string name="perms_new_perm_prefix">नया:</string>
     <string name="download_error">डाउनलोड असफल</string>
 
-    <string name="tap_to_install">डाउनलोड सफल| स्थापित करने के लिए स्पर्श करे</string>
     <string name="uninstall_confirm">क्या आप आप्लिकतिओन को हटाना चेहते हैं?</string>
     <string name="uninstall_update_confirm">क्या आप एप्लीकेशन को फैक्ट्री संस्करण से बदलना चाहते हैं?</string>
     <string name="perm_costs_money">यह तुम्हारे पैसे खर्च कर सकते हैं</string>
     <string name="allPerms">सब</string>
     <string name="newPerms">नया</string>
-    <string name="tap_to_install_format">%s को इनस्टॉल करने के लिए स्पर्श करे</string>
-    <string name="tap_to_update_format">%s को अपडेट करने के लिए स्पर्श करे</string>
     <string name="install_confirm">क्या आप यह एप्लीकेशन इनस्टॉल करना चाहते हैं? ये पहुंच मिल जाएगी:</string>
     <string name="swap_not_enabled_description">अदला-बदली से पहले, आपका यन्त्र दिखाई देना चाइये|</string>
 
@@ -146,10 +142,8 @@
     <string name="repos_unchanged">सारी रेपोसितोरिएस नवीनतम हैं</string>
     <string name="all_other_repos_fine">सभी दुसरे रेपो ने कोई गलती नहीं बनाई|</string>
     <string name="global_error_updating_repos">अपडेट के दौरान एरर: %s</string>
-    <string name="fdroid_updates_available">F-Droid अपडेट उपलब्ध</string>
     <string name="bluetooth_activity_not_found">Bluettoth से भेजने का तरीका उपलब नहीं है, एक चुने!</string>
     <string name="choose_bt_send">Bluetooth से भेजने का तरीका चुने</string>
-    <string name="send_via_bluetooth">Bluetooth द्वारा भेजे</string>
 
     <string name="repo_add_url">रिपॉजिटरी पता</string>
     <string name="repo_add_fingerprint">अंगुली की छाप(वैकल्पिक)</string>

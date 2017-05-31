@@ -30,11 +30,8 @@
     <string name="repo_add_title">يېڭى خەزىنە قوش</string>
     <string name="repo_add_add">قوش</string>
     <string name="cancel">ۋاز كەچ</string>
-    <string name="fdroid_updates_available">F-Droid يېڭىلانمىلىرى بار</string>
     <string name="repo_add_url">خەزىنە ئادرېسى</string>
-    <string name="menu_update_repo">خەزىنە يېڭىلا</string>
     <string name="menu_manage">خەزىنە باشقۇر</string>
-    <string name="menu_about">ھەققىدە</string>
     <string name="menu_search">ئىزدە</string>
     <string name="menu_add_repo">يېڭى خەزىنە</string>
     <string name="menu_launch">ئىجرا قىل</string>
@@ -48,7 +45,6 @@
     <string name="menu_source">ئەسلى كود</string>
     <string name="menu_upgrade">يۈكسەلت</string>
     <string name="menu_donate">ئىئانە</string>
-    <string name="details_installed">%s نەشرى ئورنىتىلدى</string>
     <string name="details_notinstalled">ئورنىتىلمىدى</string>
     <string name="antiadslist">بۇ ئەپتە ئېلان بار</string>
     <string name="antitracklist">بۇ ئەپ پائالىيەتلىرىڭىزنى ئىزلاپ، دوكلات قىلىدۇ</string>

@@ -20,7 +20,6 @@
     <string name="repo_add_add">Adauga</string>
     <string name="cancel">Anuleaza</string>
     <string name="enable">Activeaza</string>
-    <string name="menu_about">Despre</string>
     <string name="menu_search">Cauta</string>
     <string name="menu_launch">Porneste</string>
     <string name="menu_install">Instaleaza</string>
@@ -55,7 +54,6 @@
     <string name="no_such_app">Nu exista aceasta aplicatie.</string>
 
     <string name="login_title">Necesita autentificare</string>
-    <string name="local_repo_https">Foloseste conexiune privata</string>
     <string name="system_installer">Extensie privilegiata</string>
     <string name="unstable_updates_summary">Sugereaza actualizari si la versiunile instabile</string>
     <string name="update_interval_zero">Nu actualiza automat lista de pachete</string>
@@ -86,10 +84,8 @@
     <string name="add_key">Adauga cheie</string>
     <string name="overwrite">Suprascrie</string>
 
-    <string name="fdroid_updates_available">Actualizari disponibile in F-Droid</string>
     <string name="bluetooth_activity_not_found">Nu a fost gasita o metoda Bluetooth de a trimite, alegeti una!</string>
     <string name="choose_bt_send">Alegeti metoda de a trimite prin Bluetooth</string>
-    <string name="send_via_bluetooth">Trimite prin Bluetooth</string>
 
     <string name="repo_add_url">Adresa depozit</string>
     <string name="repo_add_fingerprint">Amprenta (optionala)</string>
@@ -117,7 +113,6 @@
     <string name="antinonfreenetlist">Aplicatia promoveaza servicii de retea ce nu sunt accesibile la liber</string>
     <string name="antinonfreeadlist">Aplicatia promoveaza anexe ce nu sunt software liber</string>
     <string name="antitracklist">Aplicatia iti inregistreaza si raporteaza activitatea undeva</string>
-    <string name="details_installed">Vers. %s instalata</string>
     <string name="menu_flattr">Flattr</string>
 
 
@@ -131,7 +126,6 @@
     <string name="menu_add_repo">Depozit nou</string>
 
     <string name="menu_send_apk_bt">Trimite F-Droid prin Bluetooth</string>
-    <string name="menu_update_repo">Actualizeaza depozite</string>
     <string name="malformed_repo_uri">Ignora adresa corupta URL a depozitului: %s</string>
 
     <string name="invalid_url">Aceasta nu este o adresa URL valida.</string>
@@ -205,11 +199,8 @@
     <string name="global_error_updating_repos">Eroare la actualizare: %s</string>
     <string name="permissions">Permisiuni</string>
     <string name="category_Time">Timp</string>
-    <string name="empty_search_installed_app_list">Nici o aplicatie instalata nu se potriveste.</string>
-    <string name="empty_search_can_update_app_list">Nici o aplicatie nu se potriveste cu actualizarea.</string>
 
     <string name="uninstall_error_unknown">O eroare necunoscuta a impiedicat instalarea</string>
-    <string name="system_install_denied_title">Extensia privilegiata F-Droid nu este disponibila</string>
     <string name="system_install_installing_rebooting">Instalare si repornire dispozitiv…</string>
     <string name="system_install_warning">Aceasta poate dura pana la 10 secunde.</string>
     <string name="swap_nfc_title">Atinge pentru schimb</string>
@@ -221,7 +212,6 @@
     <string name="swap_join_same_wifi">Conecteaza la aceeasi retea Wi-Fi ca si prietenul tau</string>
     <string name="swap">Schimb de aplicatii</string>
     <string name="swap_active_hotspot">%1$s (hotspot-ul tau)</string>
-    <string name="system_install_button_open">Deschide extensie</string>
     <string name="swap_no_wifi_network">Nici o retea inca</string>
     <string name="system_install_button_install">Instalare</string>
     <string name="swap_dont_show_again">Nu mai arata asta</string>
@@ -258,7 +248,6 @@
     <string name="interval_2w">O data la 2 saptamani</string>
 
     <string name="interval_4h">La fiecare 4 ore</string>
-    <string name="tap_to_install">Descarcare completa, atinge pentru a instala</string>
     <string name="uninstall_confirm">Vrei sa dezinstalezi aceasta aplicatie?</string>
     <string name="perm_costs_money">Aceasta s-ar putea sa coste bani</string>
     <string name="newPerms">Nou</string>
@@ -290,8 +279,6 @@
     </string>
     <string name="useTorSummary">Pentru a iti proteja intimitatea, forteaza folosirea Tor pentru descarcari</string>
     <string name="no_handler_app">Nu exista nici o aplicatie disponibila care sa poata folosi %s.</string>
-    <string name="tap_to_install_format">Atinge pentru a instala %s</string>
-    <string name="tap_to_update_format">Atinge pentru a actualiza %s</string>
     <string name="install_confirm">are nevoie de acces la</string>
     <string name="install_confirm_update">Sigur vrei sa instalezi o actualizare
         la o aplicatie existenta? Datele curente nu se vor pierde.
@@ -310,7 +297,6 @@
         Nu necesita vreun acces special.
     </string>
     <string name="crash_dialog_comment_prompt">Puteti adauga informatii si comentarii aici:</string>
-    <string name="downloading_apk">Descarcare %1$s</string>
 
     <string name="download_pending">Asteptare pornire descarcare…</string>
 
@@ -349,10 +335,6 @@
     <string name="system_installer_on">Folositi F-Droid Extension pentru a instala, actualiza si a înlătura pachete
     </string>
     <string name="empty_can_update_app_list">Felicitări! Toate aplicațiile tale sunt la zi (sau depozitele nu au fost actualizate).</string>
-    <string name="empty_available_app_list">Nici o aplicatie in aceasta categorie.
-
-        Incercati sa selectati o categorie diferita sau sa actualizati depozitele.
-    </string>
     <string name="empty_installed_app_list">Nici o aplicatie instalata.
 
         Exista aplicatii pe acest dispozitiv, dar nu sunt disponibile din F-Droid. Asta din cauza ca trebuie sa
@@ -390,7 +372,6 @@
     <string name="notification_content_single_downloading_update">Descărcare actualizare pentru \"%1$s\"…</string>
     <string name="notification_content_single_installing">Instalare \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instalare reușită</string>
-    <string name="notification_content_single_install_error">Instalarea a eșuat</string>
     <string name="notification_title_summary_update_available">Actualizare disponibila</string>
     <string name="notification_title_summary_downloading">Descărcare…</string>
     <string name="notification_title_summary_downloading_update">Descărcare actualizare…</string>

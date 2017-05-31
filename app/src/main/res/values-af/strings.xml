@@ -39,7 +39,6 @@
         verwyder
     </string>
     <string name="uninstall_system">Opdateer/Verwyder bevoorregte uitbreiding</string>
-    <string name="local_repo_https">Gebruik private verbinding</string>
     <string name="local_repo_https_on">Gebruik geenkripteerde HTTPS:// verbinding vir lokale repo</string>
 
     <string name="login_title">Verifikasie word vereis</string>
@@ -85,10 +84,8 @@
     <string name="cancel">Kanselleer</string>
     <string name="overwrite">Oorskryf</string>
 
-    <string name="fdroid_updates_available">F-Droid opdaterings beskikbaar</string>
     <string name="bluetooth_activity_not_found">Geen Bluetooth stuur metode gevind, kies een!</string>
     <string name="choose_bt_send">Kies Bluetooth stuur metode</string>
-    <string name="send_via_bluetooth">Stuur via Bluetooth</string>
 
     <string name="repo_add_fingerprint">Vingerafdruk (opsioneel)</string>
     <string name="repo_add_title">Skep \'n nuwe argief</string>
@@ -103,12 +100,10 @@
     <string name="malformed_repo_uri">Ek ignoreer die misvormde argief URI: %s</string>
     <string name="repo_provider">Argief: %s</string>
 
-    <string name="menu_update_repo">Opdateer argiewe</string>
     <string name="menu_manage">Argiewe</string>
     <string name="repositories_summary">Laai addisionele program bronne</string>
     <string name="menu_send_apk_bt">Deel F-Droid via Bluetooth</string>
-    <string name="menu_settings">Opsies</string>
-    <string name="menu_about">Iesie oor</string>
+    <string name="menu_settings">Instellings</string>
     <string name="menu_search">Soek</string>
     <string name="menu_add_repo">Nuwe argief</string>
 
@@ -130,7 +125,6 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="details_installed">Weergawe %s geïnstalleer</string>
     <string name="details_notinstalled">Nie geïnstalleer nie</string>
 
     <string name="antiadslist">Hierdie program bevat advertensies</string>
@@ -270,15 +264,8 @@
         Daar is programme op jou toestel nie, maar hulle is nie beskikbaar vanaf F-Droid nie. Dit kan wees omdat jy jou
         argiewe moet opdateer, of die argiewe het werklikwaar geen van jou programme beskikbaar nie.
     </string>
-    <string name="empty_available_app_list">"Geen programme in hierdie kategorie.
-
-        Probeer \'n ander kategorie te kies of om jou argiewe op te dateer om sodoende kry \'n vars lys van programme te
-        kry."
-    </string>
-    <string name="empty_can_update_app_list">Baie geluk! Al jou programme is op datum (of jou argiewe is verouderd)</string>
-    <string name="empty_search_installed_app_list">Geen ooreenstemende geïnstalleerde programme.</string>
+    <string name="empty_can_update_app_list">Baie geluk! Al jou programme is op datum (of jou argiewe is verouderd).</string>
     <string name="empty_search_available_app_list">Geen ooreenstemende programme beskikbaar.</string>
-    <string name="empty_search_can_update_app_list">Geen ooreenstemende programme vir opdatering.</string>
 
     <string name="requesting_root_access_body">Versoek root toegang…</string>
     <string name="root_access_denied_title">Root toegang geweier</string>
@@ -287,10 +274,6 @@
     </string>
     <string name="install_error_unknown">Installasie onsuksesvol vanweë \'n onbekende fout</string>
     <string name="uninstall_error_unknown">Deïnstallasie onsuksesvol vanweë \'n onbekende fout</string>
-    <string name="system_install_denied_title">F-Droid voorreg uitbreiding is nie beskikbaar nie</string>
-    <string name="system_install_denied_body">Hierdie opsie is slegs beskikbaar wanneer F-Droid voorreg uitbreiding
-        geïnstalleer is.
-    </string>
     <string name="system_install_denied_signature">Die handtekening van die uitbreiding is verkeerd! Skep asseblief \'n
         foutverslag!
     </string>
@@ -298,7 +281,6 @@
         Skep asseblief \'n foutverslag!
     </string>
     <string name="system_install_button_install">Installeer</string>
-    <string name="system_install_button_open">Oop uitbreiding</string>
     <string name="system_install_post_success">F-Droid voorreg uitbreiding suksesvol geïnstalleer</string>
     <string name="system_install_post_fail">Installasie van F-Droid voorreg uitbreiding het misluk</string>
     <string name="system_install_post_success_message">F-Droid voorreg uitbreiding is suksesvol geïnstalleer. Dit laat
@@ -390,8 +372,6 @@
     <string name="swap_not_enabled">Uitruil nie geaktiveer nie</string>
     <string name="swap_not_enabled_description">Voor uitruil, moet jou toestel sigbaar gemaak word.</string>
 
-    <string name="tap_to_install_format">Tik om %s te installeer</string>
-    <string name="tap_to_update_format">Tik om %s op te dateer</string>
     <string name="install_confirm">benodig toegang tot</string>
     <string name="install_confirm_update">Wil jy \'n opdatering installeer
         vir hierdie bestaande program? Jou bestaande data sal nie verloor word nie.
@@ -410,7 +390,6 @@
     <string name="perm_costs_money">Dit kan jy dalk geld kos</string>
     <string name="uninstall_update_confirm">Wil jy hierdie program met die fabriek weergawe vervang?</string>
     <string name="uninstall_confirm">Wil jy hierdie program deïnstalleer?</string>
-    <string name="tap_to_install">Aflaai voltooi, tik om te installeer</string>
     <string name="download_error">Aflaai onsuksesvol</string>
     <string name="download_pending">Wag om aflaai te begin …</string>
     <string name="install_error_notify_title">Fout tydens installeering van %s</string>
@@ -420,7 +399,6 @@
     <string name="perms_new_perm_prefix">Nuwe:</string>
     <string name="perms_description_app">Verskaf deur %1$s.</string>
     <string name="downloading">Laai tans af…</string>
-    <string name="downloading_apk">Aflaai van %1$s</string>
     <string name="installing">Installeer tans…</string>
     <string name="uninstalling">Deïnstalleer…</string>
 
@@ -461,7 +439,6 @@
     <string name="notification_content_single_downloading_update">Aflaai opdatering vir \"%1$s\"…</string>
     <string name="notification_content_single_installing">Installeer tans \"%1$s\"…</string>
     <string name="notification_content_single_installed">Suksesvol geïnstalleer</string>
-    <string name="notification_content_single_install_error">Installering het misluk</string>
     <string name="notification_title_summary_update_available">Opdatering beskikbaar</string>
     <string name="notification_title_summary_downloading">Laai tans af…</string>
     <string name="notification_title_summary_downloading_update">Besig met aflaai van opdatering …</string>

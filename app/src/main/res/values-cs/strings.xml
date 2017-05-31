@@ -27,7 +27,6 @@
     </string>
     <string name="local_repo_name">Název místního repozitáře</string>
     <string name="local_repo_name_summary">Oznamovaný název místního repozitáře: %s</string>
-    <string name="local_repo_https">Použít soukromé připojení</string>
     <string name="local_repo_https_on">Použít šifrované HTTPS spojení pro místní repozitář</string>
     <string name="app_details">Detaily aplikace</string>
     <string name="no_such_app">Žádná taková aplikace nebyla nalezena.</string>
@@ -47,14 +46,10 @@
     <string name="enable">Povolit</string>
     <string name="add_key">Přidat klíč</string>
     <string name="overwrite">Přepsat</string>
-    <string name="fdroid_updates_available">Dostupné aktualizace F-Droid</string>
-    <string name="send_via_bluetooth">Poslat přes bluetooth</string>
     <string name="repo_add_url">Adresa repositáře</string>
     <string name="repo_add_fingerprint">Fingerprint (volitelné)</string>
-    <string name="menu_update_repo">Aktualizovat repozitáře</string>
     <string name="menu_manage">Repozitáře</string>
     <string name="menu_send_apk_bt">Poslat F-Droid přes Bluetooth</string>
-    <string name="menu_about">O aplikaci</string>
     <string name="menu_search">Hledat</string>
     <string name="menu_add_repo">Nový repozitář</string>
     <string name="menu_launch">Spustit</string>
@@ -68,7 +63,6 @@
     <string name="menu_source">Zdrojový kód</string>
     <string name="menu_upgrade">Aktualizovat</string>
     <string name="menu_donate">Přispět</string>
-    <string name="details_installed">Verze %s nainstalována</string>
     <string name="details_notinstalled">Nenainstalováno</string>
     <string name="antiadslist">Tato aplikace obsahuje reklamu</string>
     <string name="antitracklist">Tato aplikace zaznamenává a hlásí vaše aktivity</string>
@@ -141,10 +135,6 @@
     <string name="root_access_denied_title">Root přístup odepřen</string>
     <string name="root_access_denied_body">Buď toto Android zařízení není rootnuté, nebo jsi odepřel F-Droidu opránění
         roota.
-    </string>
-    <string name="system_install_denied_title">Systémová oprávnění odepřena</string>
-    <string name="system_install_denied_body">Tato volba je dostupná pouze, pokud je F-Droid nainstalován jako systémová
-        aplikace.
     </string>
     <string name="swap_join_same_wifi">Připojte oba přístroje na stejnou Wi-Fi</string>
     <string name="swap_no_wifi_network">Zatím žádná síť</string>
@@ -243,9 +233,6 @@
         dostupné v F-Droid. To může být způsobeno zastaralým seznamem repozitářů nebo aplikace nejsou v repozitářích
         vůbec dostupné.
     </string>
-    <string name="empty_available_app_list">Žádné aplikace v této kategorii.\n\nZkuste vybrat jinou kategorii nebo
-        aktualizovat data repozitářů pro aktuální seznam aplikací.
-    </string>
     <string name="empty_can_update_app_list">Všechny aplikace jsou aktualizované.\n\nGratulujeme! Všechny nainstalované
         aplikace jsou aktuální (nebo nejsou repozitáře aktualizovány).
     </string>
@@ -254,7 +241,6 @@
     <string name="uninstall_error_unknown">Chyba deinstalace kvůli neznámé chybě</string>
     <string name="system_install_denied_signature">Podpis rozšíření je chybný! Nahlašte prosím chybu!</string>
     <string name="system_install_button_install">Instalovat</string>
-    <string name="system_install_button_open">Spustit rozšíření</string>
     <string name="swap_join_this_hotspot">Pomoz příteli s připojením k hotspotu</string>
     <string name="swap">Vyměnit aplikace</string>
     <string name="swap_success">Výměna úspěšná!</string>
@@ -305,7 +291,6 @@
     <string name="perm_costs_money">Toto může stát peníze</string>
     <string name="uninstall_update_confirm">Má být aplikace nahrazena verzí z výroby?</string>
     <string name="uninstall_confirm">Odinstalovat tuto aplikaci?</string>
-    <string name="tap_to_install">Stažení kompletní, dotykem instalovat</string>
     <string name="download_error">Stažení neúspěšné</string>
 
     <string name="perms_new_perm_prefix">Nová:</string>
@@ -332,9 +317,7 @@
     <string name="antinonfreeassetslist">Tato aplikace obsahuje nesvobodné části</string>
 
     <string name="status_inserting_apps">Ukládání detailů aplikace</string>
-    <string name="empty_search_installed_app_list">Žádné odpovídající nainstalované aplikace.</string>
     <string name="empty_search_available_app_list">Žádné odpovídající aplikace nejsou dostupné.</string>
-    <string name="empty_search_can_update_app_list">Žádné odpovídající aplikace k aktualizaci.</string>
 
     <string name="system_install_post_success_message">Oprávněné rozšíření F-Droidu bylo úspěšně nainstalováno. Toto
         dovoluje F-Droidu instalovat, aktualizovat a odinstalovat aplikace samostatně.
@@ -365,8 +348,6 @@
     <string name="swap_connection_misc_error">Došlo k chybě při připojování přístroje, zdá se že nelze vyměňovat
         aplikace.
     </string>
-    <string name="tap_to_install_format">Dotykem instalovat %s</string>
-    <string name="tap_to_update_format">Dotykem aktualizovat %s</string>
     <string name="install_confirm_update">Chcete instalovat aktualizaci existující aplikace?
         Aktuální data nebudou ztracena.
         Aktualizovaná aplikace bude mít přístup k:
@@ -388,7 +369,6 @@
     <string name="uninstall_error_notify_title">Chyba odinstalace %s</string>
 
 
-    <string name="downloading_apk">Stahování %1$s</string>
     <string name="installing">Instalace…</string>
     <string name="uninstalling">Odinstalace…</string>
 
@@ -433,7 +413,6 @@
     <string name="notification_content_single_downloading_update">Stahování aktualizace pro \"%1$s\"…</string>
     <string name="notification_content_single_installing">Instalování \"%1$s\"…</string>
     <string name="notification_content_single_installed">Úspěšně nainstalováno</string>
-    <string name="notification_content_single_install_error">Instalace selhala</string>
     <string name="notification_title_summary_update_available">Dostupná aktualizace</string>
     <string name="notification_title_summary_downloading">Stahování…</string>
     <string name="notification_title_summary_downloading_update">Stahování aktualizace…</string>

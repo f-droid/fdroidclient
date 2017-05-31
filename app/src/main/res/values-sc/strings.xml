@@ -29,7 +29,6 @@
     </string>
     <string name="local_repo_name">Nùmene de su Depòsitu Locale tuo</string>
     <string name="local_repo_name_summary">Su nùmene pùblicu de su depòsitu locale tuo: %s</string>
-    <string name="local_repo_https">Imprea una connessione privada</string>
     <string name="local_repo_https_on">Imprea sa connessione criptada HTTPS:// pro sos depòsitu locale</string>
     <string name="app_details">Minujas aplicatzione</string>
     <string name="no_such_app">Peruna aplicatzione currispondente.</string>
@@ -51,10 +50,8 @@
     <string name="enable">Abìlita</string>
     <string name="add_key">Annanghe crae</string>
     <string name="overwrite">Subraiscrie</string>
-    <string name="fdroid_updates_available">Agiornamentos pro F-Droid disponìbiles</string>
     <string name="bluetooth_activity_not_found">Perunu mètodu de imbiu Bluetooth agatadu, issèberane unu!</string>
     <string name="choose_bt_send">Issèbera su mètodu de imbiu Bluetooth</string>
-    <string name="send_via_bluetooth">Imbia tràmite Bluetooth</string>
     <string name="repo_add_url">Indiritzu depòsitu</string>
     <string name="repo_add_fingerprint">Arrastu/Imprenta (optzionale)</string>
     <string name="repo_exists_add_fingerprint">Custu depòsitu est giai cunfiguradu, custu at a annànghere
@@ -66,10 +63,8 @@
         un’àtera crae.
     </string>
     <string name="malformed_repo_uri">Ignorende URI depòsitos malformados: %s</string>
-    <string name="menu_update_repo">Agiorna sos depòsitos</string>
     <string name="menu_manage">Depòsitos</string>
     <string name="menu_send_apk_bt">Cumpartzi F-Droid impreende su Bluetooth</string>
-    <string name="menu_about">Informatziones</string>
     <string name="menu_search">Chirca</string>
     <string name="menu_add_repo">Depòsitu nou</string>
     <string name="menu_launch">Allughe</string>
@@ -83,7 +78,6 @@
     <string name="menu_source">Còdighe mitza</string>
     <string name="menu_upgrade">Agiorna</string>
     <string name="menu_donate">Dona</string>
-    <string name="details_installed">Versione %s installada</string>
     <string name="details_notinstalled">Non installada</string>
     <string name="antiadslist">Custa aplicatzione cuntènnidi publitzidade</string>
     <string name="antitracklist">Custa aplicatzione compidat e riferit a àteros de sas atividades tuas</string>
@@ -182,10 +176,6 @@
     <string name="root_access_denied_body">Su dispositivu tuo non tenet sos permissos de root o non los as datu a
         F-droid.
     </string>
-    <string name="system_install_denied_title">Permissos de sistema dennegados</string>
-    <string name="system_install_denied_body">Custa optzione est disponìbile petzi cando F-Droid est installadu comente
-        aplicatzione de sistema.
-    </string>
     <string name="swap_nfc_description">Si s\'amigu tuo tenet F-Droid e s’NFC allutos pone a cuntatu sos duos
         dispositivos.
     </string>
@@ -215,9 +205,6 @@
     <string name="empty_installed_app_list">Peruna aplicatzione installada.\n\nBi sunt aplicatziones in su dispositivu
         tuo, ma non sunt disponìbiles dae F-Droid. Custu podet nàrrere chi tenes bisòngiu de agiornare sos depòsitos
         tuos, o chi a beru sas aplicatziones tuas non bi sunt intre sas disponìbiles.
-    </string>
-    <string name="empty_available_app_list">Peruna aplicatzione in custa categoria.\n\nProa a ischertare una categoria
-        diferente o a agiornare sos depòsitos tuos pro tènnere una lista noa de aplicatziones.
     </string>
     <string name="empty_can_update_app_list">Bene meda! Totu sas aplicatziones tuas sunt agiornadas (o sos depòsitos tuos non lu sunt).</string>
 
@@ -323,7 +310,6 @@
     <string name="perm_costs_money">Custu ti diat pòdere costare dinare</string>
     <string name="uninstall_update_confirm">Boles remplasare custa aplicatzione cun sa versione de fàbrica?</string>
     <string name="uninstall_confirm">Boles disinstallare custa aplicatzione?</string>
-    <string name="tap_to_install">Iscarrigamentu cumpridu, toca pro installare</string>
 
     <string name="perms_new_perm_prefix">Nou:</string>
     <string name="perms_description_app">Frunidu dae %1$s.</string>
@@ -353,8 +339,7 @@
         s’estensione! Pro piaghere crea una sinnalatzione de errore!
     </string>
     <string name="system_install_button_install">Installa</string>
-    <string name="system_install_button_open">Aberi estensione</string>
-    <string name="system_install_installing_rebooting">Installende e torrende a allùghere…</string>
+    <string name="system_install_installing_rebooting">Installende e torrende a allùere…</string>
     <string name="system_install_warning">Custu podet durare finas a 10 segundos.</string>
     <string name="repo_details">Depòsitu</string>
     <string name="repo_url">Indiritzu</string>
@@ -374,9 +359,7 @@
     <string name="about_license">Litzèntzia</string>
 
     <string name="status_inserting_apps">Sarvende sas minujas de sas aplicatziones</string>
-    <string name="empty_search_installed_app_list">Peruna aplicatzione currispondente installada.</string>
     <string name="empty_search_available_app_list">Peruna aplicatzione currispondente disponìbile.</string>
-    <string name="empty_search_can_update_app_list">Perunu agiornamentu currispondente disponìbile.</string>
 
     <string name="crash_dialog_text">Un’errore imprevistu
         at fatu serrare s’aplicatzione. Boles imbiare sas minujas
@@ -396,11 +379,7 @@
     <string name="update_auto_download_summary">Sos agiornamentos ant a èssere iscarrigados automaticamente e tue as a
         retzire una notìfica pro los installare
     </string>
-    <string name="tap_to_install_format">Incarca pro installare %s</string>
-    <string name="tap_to_update_format">Incarca pro agiornare %s</string>
     <string name="download_pending">Isetende pro incumintzare s\'iscarrigamentu…</string>
-
-    <string name="downloading_apk">Iscarrighende %1$s</string>
 
     <string name="system_install_not_supported">S\'installatzione de s\'estensione F-Droid cun permissos de sistema no
         est, pro como, suportada pro Android 5.1 o prus nou.
@@ -441,7 +420,6 @@
     <string name="notification_content_single_downloading_update">Iscarrighende s\'agiornamentu pro \"%1$s\"…</string>
     <string name="notification_content_single_installing">Installende \"%1$s\"…</string>
     <string name="notification_content_single_installed">Installatzione resissida</string>
-    <string name="notification_content_single_install_error">Installatzione faddida</string>
     <string name="notification_title_summary_update_available">Agiornamentu disponìbile</string>
     <string name="notification_title_summary_downloading">Iscarrighende…</string>
     <string name="notification_title_summary_downloading_update">Iscarrighende s\'agiornamentu…</string>

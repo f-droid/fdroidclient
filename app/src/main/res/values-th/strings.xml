@@ -49,8 +49,6 @@
     <string name="back">กลับ</string>
     <string name="cancel">ยกเลิก</string>
     <string name="enable">เปิดใช้</string>
-    <string name="fdroid_updates_available">มีอัพเดตโปรแกรม F-Droid</string>
-    <string name="send_via_bluetooth">ส่งผ่านบลูทูธ</string>
 
     <string name="repo_add_url">ตำแหน่งของแหล่งโปรแกรม</string>
     <string name="repo_add_fingerprint">ลายนิ้วมือดิจิตอล (หากมี)</string>
@@ -58,11 +56,9 @@
     <string name="invalid_url">เขียนยูอาร์แอลผิดรูปแบบ</string>
     <string name="repo_provider">แหล่งโปรแกรม: %s</string>
 
-    <string name="menu_update_repo">อัพเดตข้อมูลจากแหล่งโปรแกรม</string>
     <string name="menu_manage">แหล่งโปรแกรม</string>
     <string name="menu_send_apk_bt">ล่งโปรแกรม F-Droid ทางบลูทูธ</string>
     <string name="menu_settings">ตั้งค่า</string>
-    <string name="menu_about">เกี่ยวกับ F-Droid</string>
     <string name="menu_search">ค้นหา</string>
     <string name="menu_add_repo">เพิ่มแหล่งโปรแกรมใหม่</string>
 
@@ -84,7 +80,6 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="details_installed">ติดตั้งอยู่รุ่น %s</string>
     <string name="details_notinstalled">ไม่ได้ติดตั้งอยู่</string>
     <string name="antiadslist">โปรแกรมนี้มีโฆษณา</string>
     <string name="antitracklist">โปรแกรมนี้ติดตามและส่งต่อข้อมูลกิจกรรมของคุณให้บุคคลภายนอก</string>
@@ -195,8 +190,6 @@
     <string name="swap_not_enabled">ไม่เปิดใช้การส่งต่อโปรแกรม</string>
     <string name="swap_not_enabled_description">ก่อนจะทำการส่งต่อโปรแกรม, เครื่องของคุณจะต้องปรากฎตัวก่อน</string>
 
-    <string name="tap_to_install_format">แตะเพื่อติดตั้ง %s</string>
-    <string name="tap_to_update_format">แตะเพื่ออัพเดต %s</string>
     <string name="install_confirm">ต้องการเข้าถึง</string>
     <string name="install_confirm_update">คุณต้องการติดตั้งอัพเดตของโปรแกรมนี้หรือไม่? ข้อมูลภายในของโปรแกรมจะยังคงอยู่
         และโปรแกรมจะได้รับอนุญาตเพิ่มเติมให้เข้าถึง:
@@ -215,7 +208,6 @@
     <string name="perm_costs_money">อาจจะัทำให้คุณเสียค่าใช้จ่าย</string>
     <string name="uninstall_update_confirm">คุณต้องการจะแทนที่โปรแกรมนี้ด้วยรุ่นที่มากับระบบหรือไม่?</string>
     <string name="uninstall_confirm">คุณต้องการจะถอนการติดตั้งโปรแกรมนี้หรือไม่?</string>
-    <string name="tap_to_install">ดาวน์โหลดเสร็จสิ้น, แตะเพื่อเริ่มการติดตั้ง</string>
     <string name="download_error">การดาวน์โหลดล้มเหลว</string>
     <string name="download_pending">เตรียมพร้อมจะเริ่มการดาวน์โหลด…</string>
     <string name="install_error_notify_title">การติดตั้ง %s ล้มเหลว</string>
@@ -264,7 +256,6 @@
     <string name="notify">การแจ้งเตือนอัพเดต</string>
     <string name="notify_on">แสดงการแจ้งเตือนเมื่อมีอัพเดตให้ดาวน์โหลด</string>
     <string name="local_repo_name_summary">ฃื่อของแหล่งโปรแกรมในเครื่องที่แสดงสู่ภายนอก: %s</string>
-    <string name="local_repo_https">ใช้การเชื่อมต่อที่เป็นส่วนตัว</string>
     <string name="local_repo_https_on">ใช้การเชื่อมต่อ HTTPS:// ที่เข้ารหัส กับแหล่งโปรแกรมจากในเครื่อง</string>
 
     <string name="login_title">ต้องใช้รหัสผ่าน</string>
@@ -285,7 +276,6 @@
     </string>
     <string name="choose_bt_send">เลือกวิธีการส่งต่อผ่านบลูทูธ</string>
     <string name="bluetooth_activity_not_found">ยังไม่ได้เลือกวิธีส่งต่อทางบลูทูธ, โปรดเลือกก่อน!</string>
-    <string name="downloading_apk">กำลังดาวน์โหลด %1$s</string>
     <string name="ignoreTouch">ไม่ต้องสนใจชนิดหน้าจอ</string>
     <string name="ignoreTouch_on">แสดงโปรแกรมที่ต้องใช้จอสัมผัสด้วยเสมอ แม้ว่าเครื่องคุณจะไม่มีจอสัมผัส</string>
 
@@ -299,9 +289,7 @@
     <string name="status_processing_xml_percent">กำลังประมวลผลข้อมูล %2$s / %3$s (%4$d%%) จาก %1$s</string>
     <string name="requires_features">ต้องใช้: %1$s</string>
     <string name="wifi">Wi-Fi</string>
-    <string name="empty_search_installed_app_list">ไม่มีโปรแกรมที่ติดตั้งอยู่ตรงตามที่ค้นหา</string>
     <string name="empty_search_available_app_list">ไม่พบโปรแกรมตามที่ค้นหา</string>
-    <string name="empty_search_can_update_app_list">ไม่พบโปรแกรมมีอัพเดตตามที่ค้นหา</string>
 
     <string name="install_error_unknown">การติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>
     <string name="uninstall_error_unknown">การถอนการติดตั้งล้มเหลวจากความผิดพลาดที่ระบุไม่ได้</string>
@@ -342,14 +330,9 @@
     <string name="system_install_warning_lollipop">ขั้นตอนนี้จะใช้เวลาอย่างมาก 10 วินาที แล้วเครื่องของคุณจะทำการ
         <b>รีสตาร์ต</b>
     </string>
-    <string name="system_install_button_open">เปิดดูข้อมูลส่วนขยาย</string>
     <string name="empty_can_update_app_list">ทุกโปรแกรมเป็นรุ่นใหม่สุดแล้ว
 
         ยินดีด้วย! ทุกโปรแกรมที่คุณติดตั้งอยู่เป็นรุ่นล่าสุด (หรือไม่ก็ข้อมูลรายการโปรแกรมของคุณนั้นเก่าไปแล้ว)
-    </string>
-    <string name="empty_available_app_list">ไม่มีโปรแกรมในหมวดนี้
-
-        ลองเลือกดูโปรแกรมหมวดอื่น หรือทำการอัพเดตข้อมูลรายการโปรแกรมเผื่อจะมีโปรแกรมใหม่
     </string>
     <string name="wifi_ap">เครื่องส่ง WiFi</string>
 
@@ -394,10 +377,6 @@
     <string name="system_install_denied_signature">ลายเซ็นที่ประทับอยู่บนส่วนขยายช่วยติดตั้งนั้นไม่ถูกต้อง, หากเป็นไปได้
         กรุณาแจ้งปัญหานี้ไปที่ทีมพัฒนาของ F-Droid ด้วย
     </string>
-    <string name="system_install_denied_body">ตัวเลือกนี้ใช้ได้เฉพาตอนที่ส่วนขยายช่วยติดตั้งของ F-Droid
-        ติดตั้งอยู่เท่านั้น
-    </string>
-    <string name="system_install_denied_title">การเรียกใช้ส่วนขยายช่วยติดตั้งของ F-Droid ล้มเหลว</string>
     <string name="root_access_denied_body">เกิดข้อผิดพลาดเนื่องจากเครื่องของคุณไม่มีรูท
         หรือคุณปฏิเสธการให้สิทธิ์ผู้ดูแลระบบกับ F-Droid
     </string>

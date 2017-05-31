@@ -29,7 +29,6 @@
     </string>
     <string name="local_repo_name">Nom de votre dépôt local</string>
     <string name="local_repo_name_summary">Le nom public de votre dépôt local : %s</string>
-    <string name="local_repo_https">Utiliser une connexion privée</string>
     <string name="local_repo_https_on">Utiliser une connexion chiffrée HTTPS pour le dépôt local</string>
     <string name="app_details">Détails de l\'appli</string>
     <string name="no_such_app">Aucune appli trouvée.</string>
@@ -51,10 +50,8 @@
     <string name="enable">Activer</string>
     <string name="add_key">Ajouter une clé</string>
     <string name="overwrite">Écraser</string>
-    <string name="fdroid_updates_available">Des mises à jour F-Droid sont disponibles</string>
     <string name="bluetooth_activity_not_found">Aucune méthode d\'envoi Bluetooth trouvée, choisissez-en une !</string>
     <string name="choose_bt_send">Choisir une méthode d\'envoi Bluetooth</string>
-    <string name="send_via_bluetooth">Envoyer par Bluetooth</string>
     <string name="repo_add_url">Adresse du dépôt</string>
     <string name="repo_add_fingerprint">Empreinte (facultatif)</string>
     <string name="repo_exists_add_fingerprint">Ce dépôt est déjà configuré, les informations de la nouvelle clé seront ajoutées.</string>
@@ -64,10 +61,8 @@
         différente.
     </string>
     <string name="malformed_repo_uri">URI de dépôt malformé ignoré : %s</string>
-    <string name="menu_update_repo">Mettre à jour les dépôts</string>
     <string name="menu_manage">Gestion des dépôts</string>
     <string name="menu_send_apk_bt">Partager F-Droid via Bluetooth</string>
-    <string name="menu_about">À propos</string>
     <string name="menu_search">Rechercher</string>
     <string name="menu_add_repo">Nouveau dépôt</string>
     <string name="menu_launch">Lancer</string>
@@ -81,7 +76,6 @@
     <string name="menu_source">Code source</string>
     <string name="menu_upgrade">Mise à jour</string>
     <string name="menu_donate">Faire un don</string>
-    <string name="details_installed">Version %s installée</string>
     <string name="details_notinstalled">Non installée</string>
     <string name="antiadslist">Cette appli contient des publicités</string>
     <string name="antitracklist">Cette appli piste et rapporte votre activité</string>
@@ -178,10 +172,6 @@
     <string name="root_access_denied_body">Soit vous n\'avez pas accès aux privilèges root sur ce système Android, soit
         vous les avez refusés à F-Droid.
     </string>
-    <string name="system_install_denied_title">F-Droid Privileged Extension n\'est pas disponible</string>
-    <string name="system_install_denied_body">Cette option est disponible uniquement quand l\'appli F-Droid Privileged
-        Extension est installée.
-    </string>
     <string name="swap_join_same_wifi">Connectez-vous au même Wi-Fi que votre ami</string>
     <string name="swap">Échanger des applis</string>
     <string name="swap_no_wifi_network">Aucun réseau</string>
@@ -211,10 +201,9 @@
 
     <string name="category_Connectivity">Connectivité</string>
     <string name="category_Sports_Health">Sport &amp; Santé</string>
-    <string name="empty_available_app_list">Aucune appli dans cette catégorie.\n\nEssayez de sélectionner une autre
-        catégorie ou de mettre à jour vos dépôts pour avoir une liste d\'applis récente.
+    <string name="empty_can_update_app_list">Toutes les applis sont à jour.\n\nFélicitations ! Toutes vos applis sont à
+        jour (ou vos dépôts ne le sont pas).
     </string>
-    <string name="empty_can_update_app_list">Félicitations ! Toutes vos applis sont à jour (ou vos dépôts ne le sont pas).</string>
 
     <string name="system_install_installing">Installation…</string>
     <string name="system_install_uninstalling">Désinstallation…</string>
@@ -246,7 +235,6 @@
     <string name="perm_costs_money">Peut vous coûter de l\'argent</string>
     <string name="uninstall_update_confirm">Voulez-vous remplacer cette appli avec la version pré-installée ?</string>
     <string name="uninstall_confirm">Voulez-vous désinstaller cette appli ?</string>
-    <string name="tap_to_install">Téléchargement terminé, appuyez pour installer</string>
     <string name="download_error">Le téléchargement a échoué</string>
 
     <string name="perms_new_perm_prefix">Nouveauté :</string>
@@ -333,7 +321,6 @@
         l\'application ! Veuillez créer un rapport de bug !
     </string>
     <string name="system_install_button_install">Installer</string>
-    <string name="system_install_button_open">Lancer l\'appli Privileged Extension</string>
     <string name="system_install_post_success">F-Droid Privileged Extension a été installée avec succès</string>
     <string name="system_install_post_fail">Échec de l\'installation de F-Droid Privileged Extension</string>
     <string name="system_install_post_success_message">F-Droid Privileged Extension a été installée avec succès. Elle
@@ -373,9 +360,7 @@
     <string name="about_license">Licence</string>
 
     <string name="status_inserting_apps">Enregistrement des détails d\'applications</string>
-    <string name="empty_search_installed_app_list">Aucune application correspondante installée.</string>
     <string name="empty_search_available_app_list">Aucune application correspondante disponible.</string>
-    <string name="empty_search_can_update_app_list">Aucune mise à jour correspondante disponible.</string>
 
     <string name="crash_dialog_title">F-Droid s\'est arrêté de manière inattendue</string>
     <string name="crash_dialog_comment_prompt">Vous pouvez ajouter des informations additionnelles :</string>
@@ -395,11 +380,7 @@
     <string name="update_auto_download_summary">Les mises à jour sont téléchargées automatiquement et vous êtes invité à
         les installer
     </string>
-    <string name="tap_to_install_format">Appuyez pour installer %s</string>
-    <string name="tap_to_update_format">Appuyez pour mettre à jour %s</string>
     <string name="download_pending">Téléchargement en attente…</string>
-
-    <string name="downloading_apk">Téléchargement de %1$s</string>
 
     <string name="system_install_not_supported">L\'installation de F-Droid Privileged Extension n\'est pas supportée
         pour l\'instant sur Android 5.1 et plus.
@@ -443,7 +424,6 @@
     <string name="notification_content_single_downloading_update">Téléchargement de la mise à jour de « %1$s »…</string>
     <string name="notification_content_single_installing">Installation de « %1$s »…</string>
     <string name="notification_content_single_installed">Installation réussie</string>
-    <string name="notification_content_single_install_error">L’installation a échoué</string>
     <string name="notification_title_summary_update_available">Mise à jour disponible</string>
     <string name="notification_title_summary_downloading">Téléchargement…</string>
     <string name="notification_title_summary_downloading_update">Téléchargement de la mise à jour…</string>

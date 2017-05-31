@@ -42,7 +42,6 @@
     <string name="enable">Ενεργοποίηση</string>
     <string name="add_key">Προσθήκη κλειδιού</string>
     <string name="overwrite">Αντικατάσταση</string>
-    <string name="fdroid_updates_available">Υπάρχουν ενημερώσεις του F-Droid</string>
     <string name="bluetooth_activity_not_found">Καμία μέθοδος αποστολής με Bluetooth δεν βρέθηκε, επιλέξετε μία!
     </string>
     <string name="choose_bt_send">Επιλέξτε τη μέθοδο αποστολής με Bluetooth</string>
@@ -57,10 +56,8 @@
         ένα με διαφορετικό κλειδί.
     </string>
     <string name="malformed_repo_uri">Παράβλεψη αποθετηρίου με λανθασμένη διεύθυνση: %s</string>
-    <string name="menu_update_repo">Ενημέρωση αποθετηρίων</string>
     <string name="menu_manage">Διαχείριση Αποθετηρίων</string>
     <string name="menu_send_apk_bt">Στείλτε το F-Droid μέσω Bluetooth</string>
-    <string name="menu_about">Σχετικά</string>
     <string name="menu_search">Αναζήτηση</string>
     <string name="menu_add_repo">Νέο Αποθετήριο</string>
     <string name="menu_launch">Εκτέλεση</string>
@@ -74,7 +71,6 @@
     <string name="menu_source">Πηγαίος κώδικας</string>
     <string name="menu_upgrade">Αναβάθμιση</string>
     <string name="menu_donate">Δωρεά</string>
-    <string name="details_installed">Εγκατεστημένη Έκδοση: %s</string>
     <string name="details_notinstalled">Δεν είναι εγκατεστημένο</string>
     <string name="antiadslist">Αυτή η εφαρμογή περιέχει διαφημίσεις</string>
     <string name="antitracklist">Αυτή η εφαρμογή παρακολουθεί και αναφέρει την δραστηριότητα σας</string>
@@ -143,7 +139,6 @@
     </string>
     <string name="local_repo_name">Όνομα του Αποθετηρίου σας</string>
     <string name="local_repo_name_summary">Ο διαφημιζόμενος τίτλος του τοπικού αποθετηρίου σας: %s</string>
-    <string name="local_repo_https">Χρήση ιδιωτικής σύνδεσης</string>
     <string name="local_repo_https_on">Χρήση κρυπτογραφημένης σύνδεσης HTTPS:// για το τοπικό αποθετήριο</string>
 
     <string name="about_source">Πηγαίος κώδικας</string>
@@ -156,7 +151,6 @@
     <string name="less">Λιγότερα</string>
 
     <string name="back">Πίσω</string>
-    <string name="send_via_bluetooth">Αποστολή μέσω Bluetooth</string>
 
     <string name="bad_fingerprint">Λανθασμένο δακτυλικό αποτύπωμα</string>
     <string name="invalid_url">Αυτή δεν είναι έγκυρη διεύθυνση URL.</string>
@@ -235,9 +229,6 @@
         αλλά δεν είναι διαθέσιμες από το F-Droid. Αυτό θα μπορούσε να είναι γιατί θα πρέπει να ενημερώσετε τα αποθετήριά
         σας, ή τα αποθετήρια δεν περιέχουν τις εφαρμογές σας.
     </string>
-    <string name="empty_available_app_list">Δεν υπάρχουν εφαρμογές σε αυτή την κατηγορία.\n\nΠροσπαθήστε να επιλέξετε
-        μια διαφορετική κατηγορία ή να ενημερώσετε τα αποθετήριά σας για να πάρετε μια νέα λίστα των εφαρμογών.
-    </string>
     <string name="empty_can_update_app_list">Όλες οι εφαρμογές είναι ενημερωμένες.\n\nΣυγχαρητήρια! Όλες οι εφαρμογές
         σας είναι ενημερωμένες (ή τα αποθετήριά σας είναι παρωχημένα).
     </string>
@@ -249,11 +240,6 @@
     </string>
     <string name="install_error_unknown">Απέτυχε η εγκατάσταση λόγω άγνωστου προβλήματος</string>
     <string name="uninstall_error_unknown">Αποτυχία απεγκατάστασης λόγω άγνωστου σφάλματος</string>
-    <string name="system_install_denied_title">Η επέκταση του F-Droid με δικαιώματα συστήματος δεν είναι διαθέσιμη
-    </string>
-    <string name="system_install_denied_body">Αυτή η επιλογή είναι διαθέσιμη μόνο όταν η επέκταση του F-Droid με
-        δικαιώματα συστήματος είναι εγκατεστημένη.
-    </string>
     <string name="system_install_denied_signature">Η υπογραφή της επέκτασης είναι λάθος! Παρακαλώ δημιουργήστε μια
         αναφορά σφάλματος!
     </string>
@@ -261,7 +247,6 @@
         Παρακαλώ δημιουργήστε μια αναφορά σφάλματος!
     </string>
     <string name="system_install_button_install">Εγκατάσταση</string>
-    <string name="system_install_button_open">Άνοιγμα Επέκτασης</string>
     <string name="system_install_post_success">Επιτυχής εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος
     </string>
     <string name="system_install_post_fail">Απέτυχε η εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος
@@ -352,7 +337,6 @@
     <string name="uninstall_update_confirm">Θέλετε να αντικαταστήσετε αυτή την εφαρμογή με την εργοστασιακή έκδοση;
     </string>
     <string name="uninstall_confirm">Θέλετε να απεγκαταστήσετε αυτή την εφαρμογή;</string>
-    <string name="tap_to_install">Η λήψη ολοκληρώθηκε, πατήστε για να εγκαταστήσετε</string>
     <string name="download_error">Ανεπιτυχής λήψη</string>
 
     <string name="perms_new_perm_prefix">Νέα:</string>
@@ -389,7 +373,6 @@
     <string name="repo_edit_credentials">Τροποποίηση Συνθηματικού</string>
     <string name="login_title">Απαιτείται πιστοποίηση</string>
     <string name="useTor">Χρήση Tor</string>
-    <string name="empty_search_installed_app_list">Καμία από τις εγκαταστημένες εφαρμογές δεν ταιριάζει.</string>
     <string name="keep_install_history">Αποθήκευση ιστορικού εγκαταστάσεων</string>
     <string name="keep_install_history_summary">Αποθηκεύστε ένα αρχείο όλων των εγκαταστάσεων και απεγκαταστάσεων μέσα
         στο F-Droid
@@ -409,21 +392,17 @@
     <string name="useTorSummary">Αναγκαστική λήψη μέσω του δικτύου Tor για αυξημένη ιδιωτικότητα</string>
     <string name="warning_no_internet">Δεν είναι δυνατή η ενημέρωση, είστε συνδεδεμένοι στο internet;</string>
     <string name="empty_search_available_app_list">Δεν υπάρχουν εφαρμογές που να ταιριάζουν.</string>
-    <string name="empty_search_can_update_app_list">Δεν υπάρχουν εφαρμογές που ταιριάζουν προς αναβάθμιση.</string>
 
     <string name="system_install_not_supported">Η εγκατάσταση της επέκτασης του F-Droid με δικαιώματα συστήματος προς το
         παρόν δεν υποστηρίζεται στο Android 5.1 ή νεότερη έκδοση.
     </string>
 
     <string name="swap_stopping_wifi">Διακοπή ασύρματου δικτύου Wi-Fi…</string>
-    <string name="tap_to_install_format">Πατήστε για να εγκαταστήσετε %s</string>
-    <string name="tap_to_update_format">Πατήστε για να ενημερώσετε %s</string>
     <string name="download_pending">Περιμένετε να αρχίσει η λήψη…</string>
     <string name="install_error_notify_title">Λάθος κατά την εγκατάσταση %s</string>
     <string name="uninstall_error_notify_title">Λάθος κατά την απεγκατάσταση %s</string>
 
 
-    <string name="downloading_apk">Λήψη %1$s</string>
     <string name="installing">Εγκατάσταση…</string>
     <string name="uninstalling">Απεγκατάσταση…</string>
 

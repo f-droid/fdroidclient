@@ -28,7 +28,6 @@
     </string>
     <string name="local_repo_name">Paikallisen sovelluslähteesi nimi</string>
     <string name="local_repo_name_summary">Paikallisen sovelluslähteesi mainostettava otsikko: %s</string>
-    <string name="local_repo_https">Käytä yksityistä yhteyttä</string>
     <string name="local_repo_https_on">Käytä salattua HTTPS-yhteyttä paikalliselle sovelluslähteelle</string>
     <string name="app_details">Sovelluksen tiedot</string>
     <string name="no_such_app">Sovellusta ei löytynyt.</string>
@@ -49,15 +48,11 @@
     <string name="enable">Ota käyttöön</string>
     <string name="add_key">Lisää avain</string>
     <string name="overwrite">Korvaa</string>
-    <string name="fdroid_updates_available">F-Droid: Päivityksiä saatavilla</string>
     <string name="bluetooth_activity_not_found">Bluetooth -lähetystapaa ei löytynyt, valitse yksi!</string>
     <string name="choose_bt_send">Valitse Bluetooth -lähetystapa</string>
-    <string name="send_via_bluetooth">Lähetä Bluetoothin kautta</string>
     <string name="repo_add_url">Sovelluslähteen osoite</string>
     <string name="repo_add_fingerprint">Sormenjälki (valinnainen)</string>
-    <string name="menu_update_repo">Päivitä sovelluslähteet</string>
     <string name="menu_manage">Hallitse sovelluslähteitä</string>
-    <string name="menu_about">Tietoja</string>
     <string name="menu_search">Etsi</string>
     <string name="menu_add_repo">Uusi sovelluslähde</string>
     <string name="menu_launch">Suorita</string>
@@ -71,7 +66,6 @@
     <string name="menu_source">Lähdekoodi</string>
     <string name="menu_upgrade">Päivitä</string>
     <string name="menu_donate">Lahjoita</string>
-    <string name="details_installed">Versio %s asennettu</string>
     <string name="details_notinstalled">Ei asennettu</string>
     <string name="antiadslist">Tämä sovellus sisältää mainoksia</string>
     <string name="antitracklist">Tämä sovellus tarkkailee ja raportoi toimintaasi</string>
@@ -135,10 +129,6 @@
     <string name="root_access_denied_title">Root-oikeudet kielletty</string>
     <string name="root_access_denied_body">Joko Android-laitettasi ei ole rootattu tai olet kieltänyt F-Droidin
         root-oikeuksiin pääsyn.
-    </string>
-    <string name="system_install_denied_title">F-Droid Privileged Extension ei ole saatavilla</string>
-    <string name="system_install_denied_body">Tämä asetus on käytössä vain silloin, kun F-Droid Privileged Extension on
-        asennettu.
     </string>
     <string name="swap_nfc_description">Jos ystävälläsi on F-Droid asennettuna ja NFC päällä, koskettakaa laitteitanne
         yhteen.
@@ -283,7 +273,6 @@ asentamisesta
     <string name="uninstalling">Poistetaan…</string>
 
     <string name="installing">Asennetaan…</string>
-    <string name="downloading_apk">Ladataan %1$s</string>
     <string name="keep_install_history">Säilytä asennushistoria</string>
     <string name="keep_install_history_summary">Säilytä lokia kaikista asennuksista ja poistoista F-Droidin sisällä
     </string>
@@ -310,10 +299,6 @@ asentamisesta
         Laitteessasi on sovelluksia mutta ne eivät ole saatavilla F-Droidissa. Tämä voi johtua joko siitä, että sinun
         täytyy päivittää sovelluslähteesi tai sovelluslähteissä ei yksinkertaisesti ole sovelluksiasi saatavilla.
     </string>
-    <string name="empty_available_app_list">Ei sovelluksia tässä kategoriassa.
-
-        Kokeile valita eri kategoria tai päivitä sovelluslähteesi saadaksesi tuoreen listauksen sovelluksista.
-    </string>
     <string name="empty_can_update_app_list">Kaikki sovellukset ajan tasalla.
 
         Onnittelut! Kaikki sovelluksesi ovat ajan tasalla (tai sovelluslähteesi ovat vanhentuneet).
@@ -323,15 +308,12 @@ asentamisesta
     </string>
     <string name="up_to_maxsdk">%s asti</string>
     <string name="minsdk_up_to_maxsdk">%1$s alkaen %2$s asti</string>
-    <string name="empty_search_installed_app_list">Haulla ei löytynyt asennettuja sovelluksia.</string>
     <string name="empty_search_available_app_list">Haulla ei löytynyt sovelluksia.</string>
-    <string name="empty_search_can_update_app_list">Haulla ei löytynyt päivitettäviä sovelluksia.</string>
 
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="system_install_denied_signature">Laajennuksen allekirjoitus on väärä! Ole hyvä ja luo vikailmoitus!
     </string>
-    <string name="system_install_button_open">Avaa laajennus</string>
     <string name="system_install_installing_rebooting">Asennetaan ja käynnistetään uudelleen…</string>
     <string name="swap_nfc_title">Vaihda koskettamalla</string>
     <string name="swap_join_same_wifi_desc">Vaihtaaksesi sovelluksia Wi-Fin avulla, sinun tulee olla samassa verkossa.
@@ -367,8 +349,6 @@ asentamisesta
     <string name="swap_not_enabled">Vaihtaminen ei ole käytössä</string>
     <string name="swap_not_enabled_description">Ennen vaihtamista, laitteesi täytyy tehdä näkyväksi.</string>
 
-    <string name="tap_to_install_format">Napauta asentaaksesi %s</string>
-    <string name="tap_to_update_format">Napauta päivittääksesi %s</string>
     <string name="install_confirm">tarvitsee pääsyn</string>
     <string name="install_confirm_update">Haluatko asentaa päivityksen tähän olemassa olevaan sovellukseen? Nykyiset
         tietosi eivät häviä. Päivitetty sovellus saa pääsyn:
@@ -384,7 +364,6 @@ asentamisesta
     </string>
     <string name="perm_costs_money">Tämä voi olla maksullista</string>
     <string name="uninstall_update_confirm">Haluatko korvata tämän sovelluksen tehdasversiolla?</string>
-    <string name="tap_to_install">Lataus valmis, napauta asentaaksesi</string>
     <string name="download_pending">Odotetaan latauksen alkamista…</string>
     <string name="install_error_notify_title">Virhe asennettaessa %s</string>
     <string name="uninstall_error_notify_title">Virhe poistettaessa %s</string>
@@ -481,7 +460,6 @@ asentamisesta
     <string name="notification_content_single_downloading_update">Ladataan päivitystä sovellukselle \"%1$s\"…</string>
     <string name="notification_content_single_installing">Asennetaan \"%1$s\"…</string>
     <string name="notification_content_single_installed">Asennettu onnistuneesti</string>
-    <string name="notification_content_single_install_error">Asennus Epäonnistui</string>
     <string name="notification_title_summary_update_available">Päivitys saatavilla</string>
     <string name="notification_title_summary_downloading">Ladataan…</string>
     <string name="notification_title_summary_downloading_update">Ladataan päivitystä…</string>

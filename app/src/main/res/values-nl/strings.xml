@@ -29,7 +29,6 @@
     </string>
     <string name="local_repo_name">Naam van collectie gedeelde apps</string>
     <string name="local_repo_name_summary">De geadverteerde titel van jouw collectie gedeelde apps: %s</string>
-    <string name="local_repo_https">Gebruik beveiligde verbinding</string>
     <string name="local_repo_https_on">Gebruik versleutelde HTTPS:// verbinding voor gedeelde apps</string>
     <string name="app_details">App-details</string>
     <string name="no_such_app">Geen dergelijke app gevonden.</string>
@@ -51,10 +50,8 @@
     <string name="enable">Inschakelen</string>
     <string name="add_key">Sleutel toevoegen</string>
     <string name="overwrite">Overschrijven</string>
-    <string name="fdroid_updates_available">F-Droid-updates beschikbaar</string>
     <string name="bluetooth_activity_not_found">Geen Bluetooth-verzendmethode gevonden, kies er een!</string>
     <string name="choose_bt_send">Kies Bluetooth-verzendmethode</string>
-    <string name="send_via_bluetooth">Versturen via Bluetooth</string>
     <string name="repo_add_url">Bronadres</string>
     <string name="repo_add_fingerprint">Vingerafdruk (optioneel)</string>
     <string name="repo_exists_add_fingerprint">Deze bron is al ingesteld. Nieuwe sleutelinformatie zal worden toegevoegd.</string>
@@ -64,10 +61,8 @@
         andere sleutel.
     </string>
     <string name="malformed_repo_uri">Misvormde bron-URI %s genegeerd</string>
-    <string name="menu_update_repo">Bronnen bijwerken</string>
     <string name="menu_manage">Bronnen</string>
     <string name="menu_send_apk_bt">F-Droid delen via Bluetooth</string>
-    <string name="menu_about">Over</string>
     <string name="menu_search">Zoeken</string>
     <string name="menu_add_repo">Nieuwe bron</string>
     <string name="menu_launch">Uitvoeren</string>
@@ -81,7 +76,6 @@
     <string name="menu_source">Broncode</string>
     <string name="menu_upgrade">Bijwerken</string>
     <string name="menu_donate">Doneer</string>
-    <string name="details_installed">Versie %s geïnstalleerd</string>
     <string name="details_notinstalled">Niet geïnstalleerd</string>
     <string name="antiadslist">Deze app bevat advertenties</string>
     <string name="antitracklist">Deze app houdt je activiteiten bij en rapporteert ze</string>
@@ -181,10 +175,6 @@
     <string name="root_access_denied_body">Je Android-apparaat is niet geroot, of je hebt F-Droid geen root-toegang
         gegeven.
     </string>
-    <string name="system_install_denied_title">F-Droid extensie voor systeemrechten is niet beschikbaar</string>
-    <string name="system_install_denied_body">Deze optie is alleen beschikbaar als F-Droid als systeemapp geïnstalleerd
-        is.
-    </string>
     <string name="swap_join_same_wifi">Verbind met hetzelfde Wi-Fi-netwerk als je vriend</string>
     <string name="swap">Deel apps</string>
     <string name="swap_no_wifi_network">Nog geen netwerkverbinding</string>
@@ -212,10 +202,7 @@
         Er bevinden zich apps op dit apparaat, maar deze zijn niet beschikbaar via F-Droid. Het kan zijn dat je je
         bronnen moet bijwerken, of dat de bronnen geen van jouw apps beschikbaar stellen.
     </string>
-    <string name="empty_available_app_list">Geen apps in deze categorie.\n\nProbeer een andere categorie of werk je
-        bronnen bij om de lijst van apps te verversen.
-    </string>
-    <string name="empty_can_update_app_list">Al je apps zijn up-to-date (of je bronnen zijn verouderd).</string>
+    <string name="empty_can_update_app_list">Gefeliciteerd! Al je apps zijn up-to-date (of je bronnen zijn verouderd).</string>
 
     <string name="install_error_unknown">Kon de app niet installeren door een onbekende fout</string>
     <string name="uninstall_error_unknown">Kon de app niet verwijderen door een onbekende fout</string>
@@ -300,7 +287,6 @@
     <string name="perm_costs_money">Dit kan geld kosten</string>
     <string name="uninstall_update_confirm">Wil je deze app vervangen door de fabrieksversie?</string>
     <string name="uninstall_confirm">Wil je deze app verwijderen?</string>
-    <string name="tap_to_install">Download voltooid, raak aan om te installeren</string>
 
     <string name="perms_new_perm_prefix">Nieuw:</string>
     <string name="perms_description_app">Aangeboden door %1$s.</string>
@@ -344,7 +330,6 @@
         aan!
     </string>
     <string name="system_install_button_install">Installeren</string>
-    <string name="system_install_button_open">Extensie openen</string>
     <string name="system_install_post_success">F-Droid extensie voor systeemrechten is succesvol geïnstalleerd</string>
     <string name="system_install_post_fail">Installatie van F-Droid extensie voor systeemrechten is mislukt</string>
     <string name="system_install_post_success_message">F-Droid extensie voor systeemrechten is succesvol geïnstalleerd.
@@ -378,9 +363,7 @@
     <string name="menu_email">E-mail de auteur</string>
     <string name="antinonfreeassetslist">Deze app bevat niet-vrije elementen</string>
 
-    <string name="empty_search_installed_app_list">Geen overeenkomende geïnstalleerde apps.</string>
     <string name="empty_search_available_app_list">Geen overeenkomende apps beschikbaar.</string>
-    <string name="empty_search_can_update_app_list">Geen overeenkomende apps om bij te werken.</string>
 
     <string name="crash_dialog_title">F-Droid is gecrasht</string>
     <string name="crash_dialog_text">Een onverwachte fout is opgetreden waardoor de app is gestopt.
@@ -397,8 +380,6 @@
     <string name="update_auto_download_summary">Updates worden automatisch gedownload in de achtergrond en er wordt een
         melding weergegeven om ze te installeren
     </string>
-    <string name="tap_to_install_format">Raak aan om %s te installeren</string>
-    <string name="tap_to_update_format">Raak aan om %s bij te werken</string>
     <string name="system_install_not_supported">Installatie van de F-Droid extensie voor systeemrechten wordt op het
         moment niet ondersteund op Android 5.1 of later.
     </string>
@@ -408,7 +389,6 @@
     <string name="uninstall_error_notify_title">Fout bij het verwijderen van %s</string>
 
 
-    <string name="downloading_apk">%1$s wordt gedownload</string>
     <string name="installing">Installeren…</string>
     <string name="uninstalling">Verwijderen…</string>
 
@@ -488,7 +468,6 @@
     <string name="notification_content_single_downloading_update">Update voor %1$s wordt gedownload…</string>
     <string name="notification_content_single_installing">%1$s wordt geïnstalleerd…</string>
     <string name="notification_content_single_installed">Geïnstalleerd</string>
-    <string name="notification_content_single_install_error">Installatie mislukt</string>
     <string name="notification_title_summary_update_available">Update beschikbaar</string>
     <string name="notification_title_summary_downloading">Wordt gedownload…</string>
     <string name="notification_title_summary_ready_to_install">Klaar voor installatie</string>

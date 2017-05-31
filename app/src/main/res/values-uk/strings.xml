@@ -20,9 +20,7 @@
     <string name="repo_add_add">Додати</string>
     <string name="cancel">Назад</string>
     <string name="repo_add_url">Адреса репозиторію</string>
-    <string name="menu_update_repo">Оновити</string>
     <string name="menu_manage">Репозиторії</string>
-    <string name="menu_about">Про F-Droid</string>
     <string name="menu_search">Пошук</string>
     <string name="menu_add_repo">Додати</string>
     <string name="menu_launch">Запуск</string>
@@ -32,7 +30,6 @@
     <string name="menu_issues">Вади</string>
     <string name="menu_source">Сирці</string>
     <string name="menu_donate">Пожертва</string>
-    <string name="details_installed">Встановлена версія %s</string>
     <string name="details_notinstalled">Не встановлено</string>
     <string name="expert">Експертний режим</string>
     <string name="search_hint">Пошук програм</string>
@@ -91,8 +88,6 @@
     <string name="back">Назад</string>
     <string name="enable">Увімкнути</string>
     <string name="add_key">Додати ключ</string>
-    <string name="fdroid_updates_available">F-Droid: доступні оновлення</string>
-    <string name="send_via_bluetooth">Надіслати через Bluetooth</string>
 
     <string name="menu_share">Поділитися</string>
     <string name="menu_ignore_all">Ігнорувати всі оновлення</string>
@@ -109,10 +104,8 @@
     <string name="proxy">Проксі</string>
     <string name="download_error">Не вдалося завантажити</string>
 
-    <string name="tap_to_install">Завантажено, натисніть аби встановити</string>
     <string name="uninstall_confirm">Бажаєте видалити цей додаток?</string>
     <string name="local_repo_name">Назва вашого локального репозиторію</string>
-    <string name="local_repo_https">Використовувати приватне з\'єднання</string>
     <string name="local_repo_https_on">Використовувати шифроване HTTP:// з\'єднання для локального репозиторію</string>
 
     <string name="overwrite">Перезаписати</string>
@@ -199,15 +192,11 @@
     <string name="icon">Піктограма</string>
     <string name="no_permissions">Не потребує дозволів.</string>
     <string name="requires_features">Залежності: %1$s</string>
-    <string name="empty_available_app_list">Відсутні додатки в даній категорії.\n\nСпробуйте обрати іншу категорію, або
-        оновити Ваші репозиторії, аби отримати свіжий перелік додатків.
-    </string>
     <string name="empty_can_update_app_list">Всі додатки оновлені.\n\nВітаємо! Всі ваші додатки мають крайні версії (або
         ж ваші репозиторії застаріли).
     </string>
 
     <string name="install_error_unknown">Не вдалося встановити через невідому помилку</string>
-    <string name="system_install_button_open">Відкрити розширення</string>
     <string name="system_install_warning">Це забере приблизно 10 секунд.</string>
     <string name="swap_nfc_description">Якщо ваш друг має F-Droid та ввімкнений NFC, просто торкніться пристроями.
     </string>
@@ -278,10 +267,6 @@
     <string name="requesting_root_access_body">Запит root доступу…</string>
     <string name="root_access_denied_title">У root доступі відмовлено</string>
     <string name="root_access_denied_body">Або ваш пристрій не має root доступу, або ж ви відхилили запит від F-Droid.
-    </string>
-    <string name="system_install_denied_title">Привілейоване розширення F-Droid не доступне</string>
-    <string name="system_install_denied_body">Цей параметр активний, якщо встановлено привілейоване розширення
-        F-Droid.
     </string>
     <string name="system_install_denied_signature">Підпис розширення не сходиться! Будь ласка, повідомте про помилку!
     </string>
@@ -383,9 +368,7 @@
     <string name="about_license">Ліцензія</string>
 
     <string name="status_inserting_apps">Збереження подробиць по додаткам</string>
-    <string name="empty_search_installed_app_list">Не має збігів серед встановлених програм.</string>
     <string name="empty_search_available_app_list">Не має збігів серед доступних програм.</string>
-    <string name="empty_search_can_update_app_list">Не має збігів серед програм для оновлення.</string>
 
     <string name="crash_dialog_title">F-Droid зазнав збою</string>
     <string name="crash_dialog_text">Несподівана помилка припинила роботу програми.
@@ -405,11 +388,7 @@
     <string name="update_auto_download_summary">Оновлення буде завантажено автоматично, по завершенню буде запропоновано
         встановити їх
     </string>
-    <string name="tap_to_install_format">Торкніться для встановлення %s</string>
-    <string name="tap_to_update_format">Торкніться для оновлення %s</string>
     <string name="download_pending">Очікування початку завантаження…</string>
-
-    <string name="downloading_apk">Завантаження %1$s</string>
 
     <string name="keep_hour">1 година</string>
     <string name="keep_day">1 день</string>
@@ -446,7 +425,6 @@
     <string name="notification_content_single_downloading_update">Завантаження оновлення для \"%1$s\"…</string>
     <string name="notification_content_single_installing">Встановлення \"%1$s\"…</string>
     <string name="notification_content_single_installed">Встановлено</string>
-    <string name="notification_content_single_install_error">Помилка встановлення</string>
     <string name="notification_title_summary_update_available">Доступне оновлення</string>
     <string name="notification_title_summary_downloading">Завантаження…</string>
     <string name="notification_title_summary_downloading_update">Завантаження оновлення…</string>

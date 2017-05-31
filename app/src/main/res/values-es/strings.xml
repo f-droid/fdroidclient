@@ -29,7 +29,6 @@
     </string>
     <string name="local_repo_name">Nombre de tu repo local</string>
     <string name="local_repo_name_summary">El título que se publicita para el repo local: %s</string>
-    <string name="local_repo_https">Usar conexión privada</string>
     <string name="local_repo_https_on">Utilizar conexión HTTPS:// cifrada para el repositorio local</string>
     <string name="app_details">Detalles de la aplicación</string>
     <string name="no_such_app">No se encontró la aplicación.</string>
@@ -51,10 +50,8 @@
     <string name="enable">Habilitar</string>
     <string name="add_key">Agregar clave</string>
     <string name="overwrite">Sobrescribir</string>
-    <string name="fdroid_updates_available">Actualizaciones de F-Droid disponibles</string>
     <string name="bluetooth_activity_not_found">No se encontró método de envío Bluetooth, ¡elige uno!</string>
     <string name="choose_bt_send">Elegir el método de envío Bluetooth</string>
-    <string name="send_via_bluetooth">Enviar vía Bluetooth</string>
     <string name="repo_add_url">Dirección del repositorio</string>
     <string name="repo_add_fingerprint">Huella digital (opcional)</string>
     <string name="repo_exists_add_fingerprint">Este repositorio ya está configurado, esto agregará nueva información sobre la clave.</string>
@@ -64,10 +61,8 @@
         diferente.
     </string>
     <string name="malformed_repo_uri">Ignorando URI de repo mal formada: %s</string>
-    <string name="menu_update_repo">Actualizar repositorios</string>
     <string name="menu_manage">Repositorios</string>
     <string name="menu_send_apk_bt">Compartir F-Droid por Bluetooth</string>
-    <string name="menu_about">Acerca de</string>
     <string name="menu_search">Buscar</string>
     <string name="menu_add_repo">Repositorio nuevo</string>
     <string name="menu_launch">Ejecutar</string>
@@ -81,7 +76,6 @@
     <string name="menu_source">Código fuente</string>
     <string name="menu_upgrade">Actualización (a nueva versión)</string>
     <string name="menu_donate">Donar</string>
-    <string name="details_installed">Versión %s instalada</string>
     <string name="details_notinstalled">No instalado</string>
     <string name="antiadslist">Esta aplicación contiene publicidad</string>
     <string name="antitracklist">Esta aplicación rastrea e informa de tu actividad</string>
@@ -180,12 +174,7 @@
     <string name="root_access_denied_body">El dispositivo Android no está «rooteado» o se ha denegado el acceso «root»
         para F-Droid.
     </string>
-    <string name="system_install_denied_title">La extensión de F-Droid con permisos de sistema no está disponible
-    </string>
-    <string name="system_install_denied_body">"Esta opción sólo está disponible cuando la extensión de F-Droid con
-        permisos de sistema está instalada."
-    </string>
-    <string name="swap_nfc_description">Si la otra persona tiene instalado F-Droid y activado NFC, poned en contacto vuestros teléfonos.</string>
+    <string name="swap_nfc_description">Si la otra persona tiene F-Droid y activado NFC, poned en contacto vuestros teléfonos.</string>
     <string name="swap_join_same_wifi">Unirse a la misma Red Wi-Fi que la otra persona</string>
     <string name="swap">Intercambiar aplicaciones</string>
     <string name="swap_no_wifi_network">No hay red aún</string>
@@ -227,10 +216,7 @@
         no están disponibles desde F-Droid. Esto podría ser porque necesitas actualizar los repositorios, o porque los
         repositorios no tienen esas aplicaciones.
     </string>
-    <string name="empty_available_app_list">No hay aplicaciones en esta categoría.\n\nPrueba a seleccionar una categoría
-        diferente o actualizar los repositorios para obtener una lista reciente de aplicaciones.
-    </string>
-    <string name="empty_can_update_app_list">¡Enhorabuena! Todas tus aplicaciones están actualizadas (o los repositorios están desactualizados).</string>
+    <string name="empty_can_update_app_list">¡Felicitaciones! Todas tus aplicaciones están actualizadas (o los repositorios están desactualizados).</string>
 
     <string name="install_error_unknown">Fallo al instalar, debido a un error desconocido</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>
@@ -303,7 +289,6 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="perm_costs_money">Esto puede costar dinero</string>
     <string name="uninstall_update_confirm">¿Deseas reemplazar esta aplicación con la versión de fábrica?</string>
     <string name="uninstall_confirm">¿Quieres desinstalar esta aplicación?</string>
-    <string name="tap_to_install">Descarga completada, toca para instalar</string>
 
     <string name="perms_new_perm_prefix">Nuevos:</string>
     <string name="perms_description_app">Proporcionado por %1$s.</string>
@@ -358,7 +343,6 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="system_install_denied_permissions">¡No se han concedido permisos de sistema a la extensión! ¡Por
         favor, informa sobre este fallo!
     </string>
-    <string name="system_install_button_open">Abrir la extensión</string>
     <string name="menu_settings">Ajustes</string>
     <string name="login_title">Se requiere autentificación</string>
     <string name="login_name">Nombre de usuario</string>
@@ -378,9 +362,7 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="crash_dialog_comment_prompt">Puede añadir información extra y comentarios aquí:</string>
     <string name="antinonfreeassetslist">Esta aplicación contiene recursos que no son libres</string>
 
-    <string name="empty_search_installed_app_list">Ninguna de las aplicaciones instaladas coincide.</string>
     <string name="empty_search_available_app_list">No hay coincidencias con las aplicaciones disponibles.</string>
-    <string name="empty_search_can_update_app_list">No hay ninguna coincidencia con ninguna aplicación a actualizar.</string>
 
     <string name="menu_email">Escribir un correo electrónico al autor</string>
     <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>
@@ -392,11 +374,7 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="update_auto_download_summary">Las actualizaciones se descargan automáticamente y se le avisará para
         instalarlas
     </string>
-    <string name="tap_to_install_format">Pulsa para instalar %s</string>
-    <string name="tap_to_update_format">Pulsa para actualizar %s</string>
     <string name="download_pending">Esperando a que empiece la descarga…</string>
-
-    <string name="downloading_apk">Descargando %1$s</string>
 
     <string name="system_install_not_supported">La instalación de la extensión con permisos de sistema de F-Droid no
         está actualmente disponible para Android 5.1 o superiores.
@@ -452,7 +430,6 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="notification_content_single_downloading_update">Descargando la actualización de \"%1$s\"…</string>
     <string name="notification_content_single_installing">Instalando \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instalación correcta</string>
-    <string name="notification_content_single_install_error">Instalación fallida</string>
     <string name="notification_title_summary_update_available">Actualización disponible</string>
     <string name="notification_title_summary_downloading">Descargando…</string>
     <string name="notification_title_summary_downloading_update">Descargando actualización…</string>

@@ -24,7 +24,6 @@
     </string>
     <string name="local_repo_name">Yerel Deponuzun Adı</string>
     <string name="local_repo_name_summary">Yerel deponuzun duyurulan adı: %s</string>
-    <string name="local_repo_https">Özel Bağlantı Kullan</string>
     <string name="local_repo_https_on">Yerel depo için şifrelenmiş HTTPS:// bağlantısı kullan</string>
     <string name="app_details">Uygulama Ayrıntıları</string>
     <string name="no_such_app">Böyle bir uygulama yok.</string>
@@ -46,10 +45,8 @@
     <string name="enable">Etkinleştir</string>
     <string name="add_key">Anahtar ekle</string>
     <string name="overwrite">Üzerine yaz</string>
-    <string name="fdroid_updates_available">F-Droid güncellemeleri mevcut</string>
     <string name="bluetooth_activity_not_found">Hiçbir Bluetooth gönderme yöntemi bulunamadı, birisini seçin!</string>
     <string name="choose_bt_send">Bluetooth gönderme yöntemi seç</string>
-    <string name="send_via_bluetooth">Bluetooth ile Gönder</string>
     <string name="repo_add_url">Depo adresi</string>
     <string name="repo_add_fingerprint">Parmak izi (seçime dayalı)</string>
     <string name="repo_exists_add_fingerprint">Bu depo zaten ayarlanmıştır, bu yeni anahtar bilgisi ekleyecek.</string>
@@ -58,10 +55,8 @@
     <string name="repo_delete_to_overwrite">Değişik bir anahtarla depo ekleyebilmek için önce bu depoyu silmelisiniz.
     </string>
     <string name="malformed_repo_uri">Hatalı depo URI\'si yok sayılıyor: %s</string>
-    <string name="menu_update_repo">Depoları güncelle</string>
     <string name="menu_manage">Depolar</string>
     <string name="menu_send_apk_bt">FDroid\'i Bluetooth ile paylaş</string>
-    <string name="menu_about">Hakkında</string>
     <string name="menu_search">Arama</string>
     <string name="menu_add_repo">Yeni Depo</string>
     <string name="menu_launch">Çalıştır</string>
@@ -75,7 +70,6 @@
     <string name="menu_source">Kaynak kodu</string>
     <string name="menu_upgrade">Yükselt</string>
     <string name="menu_donate">Bağış Yap</string>
-    <string name="details_installed">%s sürümü kurulu</string>
     <string name="details_notinstalled">Kurulu değil</string>
     <string name="antiadslist">Bu uygulama reklam içerir</string>
     <string name="antitracklist">Bu uygulama etkinliklerinizi izler ve rapor eder</string>
@@ -179,9 +173,6 @@
     <string name="root_access_denied_body">Ya Android aygıtınız köklenmemiş ya da F-Droid için kök erişimini
         engellediniz.
     </string>
-    <string name="system_install_denied_title">F-Droid Ayrıcalıklı Uzantı mevcut değil</string>
-    <string name="system_install_denied_body">Bu seçenek yalnızca F-Droid Ayrıcalıklı Uzantı kurulu ise kullanılır.
-    </string>
     <string name="swap_nfc_description">Arkadaşınızda F-Droid varsa ve NFC açıksa aygıtlarınızı birbirine dokundurun.
     </string>
     <string name="swap_join_same_wifi">Arkadaşınızla aynı Wi-Fi\'ye katılın</string>
@@ -248,14 +239,8 @@
         Aygıtınızda uygulamalar var ancak bunlar F-Droid\'de bulumamaktadır. Bu, depolarınızı güncellemeniz gerektiği
         veya gerçekten depolar uygulamalarınızı bulundurmadığı için olabilir.
     </string>
-    <string name="empty_available_app_list">Bu kategoride hiçbir uygulama yok.
-
-        Başka bir kategori seçmeyi veya yeni bir uygulama listesi almak için depolarınızı güncellemeyi deneyin.
-    </string>
     <string name="empty_can_update_app_list">Tebrikler! Tüm uygulamalarınız güncel (veya depolarınız güncel değil).</string>
-    <string name="empty_search_installed_app_list">Eşleşen kurulu uygulama yok.</string>
     <string name="empty_search_available_app_list">Mevcut eşleşen uygulama yok.</string>
-    <string name="empty_search_can_update_app_list">Güncelleme için eşleşen uygulama yok.</string>
 
     <string name="install_error_unknown">Bilinmeyen bir hata nedeniyle kurulamadı</string>
     <string name="uninstall_error_unknown">Bilinmeyen bir hata nedeniyle kaldırılamadı</string>
@@ -325,7 +310,6 @@
     <string name="perm_costs_money">Bu size paraya mal olabilir</string>
     <string name="uninstall_update_confirm">Bu uygulamayı fabrika sürümü ile değiştirmek istiyor musunuz?</string>
     <string name="uninstall_confirm">Bu uygulamayı kaldırmak istiyor musunuz?</string>
-    <string name="tap_to_install">İndirme tamamlandı, kurmak için dokunun</string>
     <string name="download_error">İndirme başarısız oldu</string>
 
     <string name="perms_new_perm_prefix">Yeni:</string>
@@ -360,7 +344,6 @@
     <string name="system_install_denied_permissions">Uzantıya ayrıcalıklı izinler verilmemiştir! Lütfen bir hata raporu
         oluşturun!
     </string>
-    <string name="system_install_button_open">Uzantıyı Aç</string>
     <string name="system_install_post_success">F-Droid Ayrıcalıklı Uzantı başarıyla kuruldu</string>
     <string name="system_install_post_fail">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu başarısız</string>
     <string name="system_install_post_success_message">F-Droid Ayrıcalıklı Uzantı başarılı bir şekilde kuruldu. Bu,
@@ -381,12 +364,8 @@
 
     <string name="useTor">Tor Kullan</string>
     <string name="swap_stopping_wifi">Wi-Fi durduruluyor…</string>
-    <string name="tap_to_install_format">%s kurmak için dokun</string>
-    <string name="tap_to_update_format">%s güncellemek için dokun</string>
     <string name="useTorSummary">Arttırılmış gizlilik için indirme trafiğinin Tor\'dan geçmesini zorunlu kıl</string>
     <string name="download_pending">İndirmeye başlamak için bekleniyor…</string>
-
-    <string name="downloading_apk">%1$s indiriliyor</string>
 
     <string name="system_install_not_supported">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu şu anda Android 5.1 ve sonraki
         sürümlerde desteklenmemektedir.
@@ -436,7 +415,6 @@
     <string name="notification_content_single_downloading_update">\"%1$s\" için güncelleme indiriliyor…</string>
     <string name="notification_content_single_installing">\"%1$s\" kuruluyor…</string>
     <string name="notification_content_single_installed">Başarıyla kuruldu</string>
-    <string name="notification_content_single_install_error">Kurulum Başarısız</string>
     <string name="notification_title_summary_update_available">Güncelleme mevcut</string>
     <string name="notification_title_summary_downloading">İndiriliyor…</string>
     <string name="notification_title_summary_downloading_update">Güncelleme indiriliyor…</string>

@@ -16,7 +16,6 @@
     </string>
     <string name="local_repo_name">Nazwa lokalnego repozytorium</string>
     <string name="local_repo_name_summary">Wyświetlana nazwa repozytorium lokalnego: %s</string>
-    <string name="local_repo_https">Użyj zabezpieczonego połączenia</string>
     <string name="local_repo_https_on">Korzystaj z zabezpieczonego połączenia HTTPS</string>
     <string name="app_details">Szczegóły aplikacji</string>
     <string name="no_such_app">Nie znaleziono takiej aplikacji.</string>
@@ -34,16 +33,12 @@
     <string name="enable">Włącz</string>
     <string name="add_key">Dodaj klucz</string>
     <string name="overwrite">Nadpisz</string>
-    <string name="fdroid_updates_available">Uaktualnienie F-Droid jest dostępne</string>
-    <string name="send_via_bluetooth">Wyślij przez Bluetooth</string>
     <string name="repo_add_url">Adres repozytorium</string>
     <string name="repo_add_fingerprint">Podpis cyfrowy (opcjonalnie)</string>
     <string name="repo_delete_to_overwrite">Musisz najpierw usunąć to repozytorium zanim dodasz następne z innym
         kluczem.
     </string>
     <string name="malformed_repo_uri">Ignorowanie błędnego adresu (URI) repozytorium: %s</string>
-    <string name="menu_update_repo">Aktualizuj repozytoria</string>
-    <string name="menu_about">Informacje</string>
     <string name="menu_search">Wyszukaj</string>
     <string name="menu_add_repo">Nowe repozytorium</string>
     <string name="menu_launch">Uruchom</string>
@@ -53,7 +48,6 @@
     <string name="menu_ignore_this">Ignoruj tę aktualizację</string>
     <string name="menu_website">Strona internetowa</string>
     <string name="menu_upgrade">Uaktualnij</string>
-    <string name="details_installed">Wersja %s została zainstalowana</string>
     <string name="details_notinstalled">Nie zainstalowano</string>
     <string name="antiadslist">Ta aplikacja zawiera reklamy</string>
     <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
@@ -125,11 +119,7 @@
     <string name="root_access_denied_title">Odmówiono uprawnień roota</string>
     <string name="root_access_denied_body">Urządzenie nie zostało zrootowane lub odmówiono uprawnień roota F-Droidowi.
     </string>
-    <string name="system_install_denied_title">Odmówiono uprawnień systemowych</string>
-    <string name="system_install_denied_body">Opcja dostępna tylko wtedy, gdy F-Droid został zainstalowany jako
-        aplikacja systemowa.
-    </string>
-    <string name="swap_nfc_description">Jeśli oba urządzenia mają F-Droida i NFC możecie je zbliżyć do siebie.</string>
+    <string name="swap_nfc_description">Jeśli oba urządzenia mają F-Droida i NFC, możecie je zbliżyć do siebie.</string>
     <string name="swap_join_same_wifi">Połącz się z tą samą siecią Wi-Fi</string>
     <string name="swap">Wymień aplikacje</string>
     <string name="swap_no_wifi_network">Brak sieci</string>
@@ -203,9 +193,6 @@
 
     <string name="empty_installed_app_list">Brak zainstalowanych aplikacji.\n\nMasz na swoim urządzeniu aplikacje, ale
         nie zostały one zainstalowane przez F-Droida. Być może musisz zaktualizować swoje repozytoria.
-    </string>
-    <string name="empty_available_app_list">Brak aplikacji w tej kategorii.\n\nSpróbuj wybrać inną kategorię lub
-        zaktualizować swoje repozytoria.
     </string>
     <string name="empty_can_update_app_list">Wspaniale! Wszystkie Twoje aplikacje są w najnowszych wersjach (lub repozytoria nie mają najnowszych wersji).</string>
 
@@ -298,7 +285,6 @@
     <string name="perm_costs_money">To może Cię kosztować</string>
     <string name="uninstall_update_confirm">Czy chcesz zastąpić tą aplikację pierwotną wersją?</string>
     <string name="uninstall_confirm">Czy chcesz odinstalować tą aplikację?</string>
-    <string name="tap_to_install">Pobieranie zakończone, kliknij by zainstalować</string>
 
     <string name="perms_new_perm_prefix">Nowe:</string>
     <string name="perms_description_app">Dostarczone przez %1$s.</string>
@@ -328,7 +314,6 @@
         uprawnienia! Prosimy o zgłoszenie błędu!
     </string>
     <string name="system_install_button_install">Instalacja</string>
-    <string name="system_install_button_open">Otwórz dodatek</string>
     <string name="system_install_installing_rebooting">Instalowanie i restartowanie…</string>
     <string name="system_install_warning">Zajmuje to ok. 10 sekund.</string>
     <string name="system_install_warning_lollipop">Zajmuje to ok. 10 sekund, następnie urządzenie zostanie<b>
@@ -360,9 +345,7 @@
         szczegóły aby pomóc naprawić błąd?
     </string>
     <string name="crash_dialog_comment_prompt">Możesz dodać dodatkowe informacje i komentarze tutaj:</string>
-    <string name="empty_search_installed_app_list">Brak pasujących zainstalowanych aplikacji.</string>
     <string name="empty_search_available_app_list">Brak pasujących dostępnych aplikacji.</string>
-    <string name="empty_search_can_update_app_list">Brak pasujących aplikacji do zaktualizowania.</string>
 
     <string name="useTor">Użyj Tora</string>
     <string name="useTorSummary">Wymuś pobieranie przez Tora aby zwiększyć prywatność</string>
@@ -373,11 +356,7 @@
     <string name="update_auto_download_summary">Automatycznie pobiera pliki aktualizacji w tle i zostaniesz
         powiadomiony, aby je zainstalować
     </string>
-    <string name="tap_to_install_format">Dotknij aby zainstalować %s</string>
-    <string name="tap_to_update_format">Dotknij aby uaktualnić %s</string>
     <string name="download_pending">Oczekiwanie na pobieranie…</string>
-
-    <string name="downloading_apk">Pobieranie %1$s</string>
 
     <string name="system_install_not_supported">Instalacja Uprzywilejowanego Dodatku F-Droid nie jest obecnie wspierana
         na Androidzie 5.1 i nowszych.
@@ -419,7 +398,6 @@
     <string name="notification_content_single_downloading_update">Pobieranie aktualizacji dla \"%1$s\"…</string>
     <string name="notification_content_single_installing">Instalowanie \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instalacja powiodła się</string>
-    <string name="notification_content_single_install_error">Instalacja zakończona niepowodzeniem</string>
     <string name="notification_title_summary_update_available">Dostępna aktualizacja</string>
     <string name="notification_title_summary_downloading">Pobieranie…</string>
     <string name="notification_title_summary_downloading_update">Pobieranie aktualizacji…</string>

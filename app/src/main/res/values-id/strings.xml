@@ -32,7 +32,6 @@
     <string name="uninstall_system_summary">Buka layar detail Privileged Extension untuk memperbarui/mencopotnya</string>
     <string name="local_repo_name">Nama Repo Lokal Anda</string>
     <string name="local_repo_name_summary">Judul repo lokal Anda yang disiarkan: %s</string>
-    <string name="local_repo_https">Gunakan Sambungan Privat</string>
     <string name="local_repo_https_on">Gunakan sambungan HTTPS:// terenkripsi untuk repo lokal</string>
 
     <string name="app_details">Detail Apl</string>
@@ -67,10 +66,8 @@
     <string name="add_key">Tambah Kunci</string>
     <string name="overwrite">Timpa</string>
 
-    <string name="fdroid_updates_available">Tersedia Pembaruan F-Droid</string>
     <string name="bluetooth_activity_not_found">Metode pengiriman Bluetooth tidak ditemukan, pilih salah satu!</string>
     <string name="choose_bt_send">Pilih metode pengiriman Bluetooth</string>
-    <string name="send_via_bluetooth">Kirim melalui Bluetooth</string>
 
     <string name="repo_add_url">Alamat repositori</string>
     <string name="repo_add_fingerprint">Sidik jari (opsional)</string>
@@ -84,10 +81,8 @@
     <string name="invalid_url">Ini bukan URL yang valid.</string>
     <string name="malformed_repo_uri">Mengabaikan URI repo yang tidak valid: %s</string>
 
-    <string name="menu_update_repo">Perbarui Repo</string>
     <string name="menu_manage">Repositori</string>
     <string name="menu_send_apk_bt">Bagi F-Droid melalui Bluetooth</string>
-    <string name="menu_about">Tentang</string>
     <string name="menu_search">Cari</string>
     <string name="menu_add_repo">Repositori Baru</string>
 
@@ -108,7 +103,6 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="details_installed">Versi %s terpasang</string>
     <string name="details_notinstalled">Tidak terpasang</string>
     <string name="antiadslist">Aplikasi ini berisi iklan</string>
     <string name="antitracklist">Aplikasi ini melacak dan melaporkan aktivitas Anda</string>
@@ -257,14 +251,8 @@
         Terdapat apl diperangkat anda, tapi tidak tersedia dari F-Droid. Ini mungkin disebabkan karena anda butuh
         pembaruan repositori, atau repositori memang tidak memiliki apl yang tersedia.
     </string>
-    <string name="empty_available_app_list">"Tidak ada apl di kategori ini.
-\n
-\nCoba pilih kategori yang berbeda atau perbarui
-\nrepositori Anda untuk mendapatkan daftar apl yang baru. "</string>
     <string name="empty_can_update_app_list">Selamat! Semua apl Anda sudah yang paling baru (atau repositori Anda yang kedaluwarsa).</string>
-    <string name="empty_search_installed_app_list">Tidak ada apl sesuai yang terpasang.</string>
     <string name="empty_search_available_app_list">Tidak ada aplikasi sesuai yang tersedia.</string>
-    <string name="empty_search_can_update_app_list">Tidak ada aplikasi sesuai untuk pembaruan.</string>
 
     <string name="requesting_root_access_body">Meminta akses root…</string>
     <string name="root_access_denied_title">Akses root ditolak</string>
@@ -273,16 +261,12 @@
     </string>
     <string name="install_error_unknown">Gagal memasang karena galat yang tidak diketahui</string>
     <string name="uninstall_error_unknown">Gagal mencopot pemasangan karena galat yang tidak diketahui</string>
-    <string name="system_install_denied_title">Ekstensi Istimewa F-Droid tidak tersedia</string>
-    <string name="system_install_denied_body">Opsi ini tidak tersedia ketika F-Droid Privileged Extension terpasang.
-    </string>
     <string name="system_install_denied_signature">"Tanda tangan ekstensi ini salah! Harap buat laporan
 \nkutu! "</string>
     <string name="system_install_denied_permissions">Izin istimewa belum diberikan ke ekstensi! Harap buat laporan
         kutu!
     </string>
     <string name="system_install_button_install">Pasang</string>
-    <string name="system_install_button_open">Buka Ekstensi</string>
     <string name="system_install_post_success">F-Droid Privileged Extension sukses terpasang</string>
     <string name="system_install_post_fail">Pemasangan F-Droid Privileged Extension gagal</string>
     <string name="system_install_post_success_message">F-Droid Privileged Extension telah sukses terpasang. Ini
@@ -376,7 +360,6 @@
     <string name="perm_costs_money">Ini mungkin akan memakan biaya</string>
     <string name="uninstall_update_confirm">Anda ingin mengganti apl ini dengan versi pabrik?</string>
     <string name="uninstall_confirm">Anda ingin mencopot pemasangan apl ini?</string>
-    <string name="tap_to_install">Unduhan selesai, ketuk untuk memasang</string>
     <string name="download_error">Unduhan gagal</string>
 
     <string name="perms_new_perm_prefix">Baru:</string>
@@ -402,11 +385,7 @@
     <string name="update_auto_download_summary">Pembaruan diunduh secara otomatis dan Anda akan diberi tahu untuk
         memasangnya
     </string>
-    <string name="tap_to_install_format">Ketuk untuk memasang %s</string>
-    <string name="tap_to_update_format">Ketuk untuk perbarui %s</string>
     <string name="download_pending">Menunggu untuk mulai unduhan…</string>
-
-    <string name="downloading_apk">Mengunduh %1$s</string>
 
     <string name="system_install_not_supported">Pemasangan F-Droid Privileged Extension saat ini tidak tersedia di
         Android 5.1 atau lebih baru.
@@ -446,7 +425,6 @@
     <string name="notification_content_single_downloading_update">Mengunduh pembaruan untuk \"%1$s\"…</string>
     <string name="notification_content_single_installing">Memasang \"%1$s\"…</string>
     <string name="notification_content_single_installed">Berhasil dipasang</string>
-    <string name="notification_content_single_install_error">Gagal Memasang</string>
     <string name="notification_title_summary_update_available">Tersedia pembaruan</string>
     <string name="notification_title_summary_downloading">Mengunduh…</string>
     <string name="notification_title_summary_downloading_update">Mengunduh pembaruan…</string>

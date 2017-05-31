@@ -64,8 +64,6 @@
     <string name="back">返回</string>
     <string name="cancel">取消</string>
     <string name="enable">啟用</string>
-    <string name="fdroid_updates_available">有可用的 F-Droid 更新</string>
-    <string name="send_via_bluetooth">透過藍牙傳送</string>
 
     <string name="repo_add_url">應用軟體倉庫網址</string>
     <string name="repo_add_fingerprint">指紋（選填）</string>
@@ -79,7 +77,6 @@
     <string name="invalid_url">這不是有效的網址。</string>
     <string name="menu_send_apk_bt">透過藍牙分享 F-Droid</string>
     <string name="menu_settings">設定</string>
-    <string name="menu_about">關於</string>
     <string name="menu_search">搜尋</string>
     <string name="menu_launch">執行</string>
     <string name="menu_share">分享</string>
@@ -97,7 +94,6 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="details_installed">已安裝版本 %s</string>
     <string name="details_notinstalled">未安裝</string>
     <string name="antiadslist">此應用程式含有廣告</string>
     <string name="antitracklist">此應用程式會跟蹤及彙報您的行為</string>
@@ -159,7 +155,6 @@
     <string name="swap_welcome">歡迎使用 F-Droid！</string>
     <string name="swap_dont_show_again">不要再次顯示</string>
     <string name="swap_scan_qr">掃描 QR Code</string>
-    <string name="menu_update_repo">更新應用軟體倉庫</string>
     <string name="menu_manage">應用軟體倉庫</string>
     <string name="menu_add_repo">新增應用軟體倉庫</string>
 
@@ -254,7 +249,6 @@
     <string name="system_installer_on">使用 F-Droid 特權擴充以安裝、更新和移除套裝軟體</string>
     <string name="uninstall_system">更新/解除安裝特權擴充</string>
     <string name="uninstall_system_summary">開啟特權擴充的詳情畫面來更新/解除安裝</string>
-    <string name="local_repo_https">使用私密連線</string>
     <string name="repo_error_empty_username">空的使用者名稱，憑證未改變</string>
 
     <string name="repo_exists_enable">此應用軟體倉庫已經設立。確認您要重新啟用它。</string>
@@ -295,27 +289,18 @@
     <string name="not_on_same_wifi">"您剛才增加的本地應用軟體倉庫與您的裝置並不在同一個 Wi-Fi 網路上！
 請嘗試加入這個網路：%s
  "</string>
-    <string name="empty_search_installed_app_list">沒有相符合的已安裝應用程式。</string>
     <string name="empty_search_available_app_list">沒有相符合的應用程式可用。</string>
-    <string name="empty_search_can_update_app_list">沒有相符合的應用程式更新。</string>
 
     <string name="requesting_root_access_body">正在要求 root 權限…</string>
     <string name="empty_installed_app_list">未安裝應用程式。
 
         F-Droid 並無您裝置上可用的應用程式。這可能是因為您需要更新您的應用軟體倉庫，或是應用軟體倉庫真的沒有您可用的應用程式。
     </string>
-    <string name="empty_available_app_list">此類別沒有應用程式。
-
-        試著選擇不同的類別或是更新您的應用軟體倉庫來取得應用程式最新的清單。
-    </string>
     <string name="root_access_denied_body">或許您的 Android 裝置還未取得 root 又或您已拒絕 F-Droid 存取 root。</string>
-    <string name="system_install_denied_title">F-Droid 特權擴充無法利用</string>
-    <string name="system_install_denied_body">此選項只能用在已有安裝 F-Droid 的特權擴充。</string>
     <string name="system_install_denied_signature">該擴充簽署錯誤！請建立一份錯誤報告！
 </string>
     <string name="system_install_denied_permissions">擴充未被授予特權權限！請建立一份錯誤報告！
 </string>
-    <string name="system_install_button_open">開啟擴充</string>
     <string name="system_install_post_success">成功的安裝了 F-Droid 特權擴充</string>
     <string name="system_install_post_fail">安裝的 F-Droid 特權擴充失敗</string>
     <string name="system_install_question">您想要安裝 F-Droid 特權擴充嗎？</string>
@@ -355,16 +340,12 @@
     <string name="installing">正在安裝…</string>
     <string name="uninstalling">解除安裝中…</string>
 
-    <string name="downloading_apk">正在下載 %1$s</string>
     <string name="perms_new_perm_prefix">新的：</string>
     <string name="perms_description_app">由 %1$s 提供。</string>
-    <string name="tap_to_install">下載完成，輕點以安裝</string>
     <string name="newPerms">新的</string>
     <string name="allPerms">全部</string>
     <string name="perm_costs_money">這可能會花費您的錢</string>
     <string name="download_pending">等待開始下載…</string>
-    <string name="tap_to_install_format">輕點以安裝 %s</string>
-    <string name="tap_to_update_format">輕點以更新 %s</string>
     <string name="install_confirm">需要存取</string>
     <string name="loading">正在載入…</string>
     <string name="swap_not_enabled_description">在交換之前，您的裝置必須可以被看見。</string>
@@ -420,7 +401,6 @@
     <string name="notification_content_single_downloading_update">\"%1$s\" 正在下載更新…</string>
     <string name="notification_content_single_installing">正在安裝 \"%1$s\"…</string>
     <string name="notification_content_single_installed">安裝成功</string>
-    <string name="notification_content_single_install_error">安裝失敗</string>
     <string name="notification_title_summary_update_available">可用的更新</string>
     <string name="notification_title_summary_downloading">正在下載…</string>
     <string name="notification_title_summary_downloading_update">正在下載更新…</string>

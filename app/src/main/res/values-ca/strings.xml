@@ -29,7 +29,6 @@
     </string>
     <string name="local_repo_name">Nom del vostre dipòsit local</string>
     <string name="local_repo_name_summary">Títol per difondre el vostre dipòsit local: %s</string>
-    <string name="local_repo_https">Utilitza una connexió privada</string>
     <string name="local_repo_https_on">Connexió encriptada (HTTPS://) per els dipòsits locals</string>
     <string name="app_details">Detalls de l\'aplicació</string>
     <string name="no_such_app">No s\'ha trobat l\'aplicació.</string>
@@ -51,9 +50,7 @@
     <string name="enable">Permès</string>
     <string name="add_key">Afegeix clau</string>
     <string name="overwrite">Sobreescriu</string>
-    <string name="fdroid_updates_available">Hi ha actualitzacions disponibles de l\'F-Droid</string>
     <string name="bluetooth_activity_not_found">Trieu un mètode d\'enviament per Bluetooth!</string>
-    <string name="send_via_bluetooth">Envia per Bluetooth</string>
     <string name="repo_add_url">Adreça del dipòsit</string>
     <string name="repo_add_fingerprint">Empremta digital (opcional)</string>
     <string name="repo_exists_add_fingerprint">Ja teniu un dipòsit amb aquesta adreça, sou canviant l\'empremta digital.</string>
@@ -62,10 +59,8 @@
     <string name="repo_delete_to_overwrite">Si voleu canviar la clau d\'aquest dipòsit, primer suprimiu el dipòsit.
     </string>
     <string name="malformed_repo_uri">Ignorant el URI mal formatat del dipòsit: %s</string>
-    <string name="menu_update_repo">Actualitza els dipòsits</string>
     <string name="menu_manage">Gestiona els dipòsits</string>
     <string name="menu_send_apk_bt">Comparteix l\'F-Droid per Bluetooth</string>
-    <string name="menu_about">Quant a</string>
     <string name="menu_search">Cerca</string>
     <string name="menu_add_repo">Nou dipòsit</string>
     <string name="menu_launch">Executa</string>
@@ -79,7 +74,6 @@
     <string name="menu_source">Codi font</string>
     <string name="menu_upgrade">Actualitzeu</string>
     <string name="menu_donate">Feu una donació</string>
-    <string name="details_installed">Versió instal·lada %s</string>
     <string name="details_notinstalled">No està instal·lat</string>
     <string name="antiadslist">Aquesta aplicació conté publicitat</string>
     <string name="antitracklist">Aquesta aplicació segueix i informa sobre la vostra activitat</string>
@@ -178,9 +172,6 @@
     <string name="root_access_denied_body">Aquest dispositiu Android no permet actuar com a administrador o bé no heu
         donat privilegis d\'administrador a l\'F-Droid.
     </string>
-    <string name="system_install_denied_body">Només disponible quan l\'Extensió Privilegiada d\'F-Droid està
-        instal·lada.
-    </string>
     <string name="swap_join_same_wifi">Uniu-vos a la Wi-Fi del vostre amic</string>
     <string name="swap">Intercanvieu aplicacions</string>
     <string name="swap_no_wifi_network">No esteu connectats a cap xarxa</string>
@@ -256,7 +247,6 @@
     <string name="perm_costs_money">Això pot costat-li diners</string>
     <string name="uninstall_update_confirm">Voleu canviar aquesta aplicació per la versió de fàbrica?</string>
     <string name="uninstall_confirm">Voleu eliminar aquesta aplicació?</string>
-    <string name="tap_to_install">S\'ha completat la baixada, toqueu per instal·lar-la</string>
     <string name="download_error">Error en la baixada</string>
 
     <string name="perms_new_perm_prefix">Nou:</string>
@@ -269,8 +259,9 @@
     </string>
     <string name="install_error_unknown">La instal·lació ha fallat per un error desconegut</string>
     <string name="uninstall_error_unknown">La desinstal·lació ha fallat per un error desconegut</string>
-    <string name="system_install_denied_title">L\'Extensió Privilegiada d\'F-Droid no està disponible</string>
-    <string name="empty_can_update_app_list">Felicitats! Totes les vostres aplicacions estan actualitzades (o els repositoris no ho estan).</string>
+    <string name="empty_can_update_app_list">Totes les aplicacions estan actualitzades.\n\nFelicitats! Totes les vostres
+        aplicacions estan actualitzades (o els repositoris no ho estan).
+    </string>
 
     <string name="system_install_denied_signature">La signatura de l\'extensió és incorrecta! Si podeu, informeu
         d\'aquest error!
@@ -278,7 +269,6 @@
     <string name="system_install_denied_permissions">No s\'han concedit els permisos de sistema a l\'extensió! Si podeu,
         informeu d\'aquest error!
     </string>
-    <string name="system_install_button_open">Obre l\'extensió</string>
     <string name="system_install_post_success">L\'Extensió Privilegiada d\'F-Droid s\'ha instal·lat correctament
     </string>
     <string name="system_install_post_fail">La instal·lació de l\'Extensió Privilegiada d\'F-Droid ha fallat</string>
@@ -335,9 +325,6 @@
         aquest dispositiu.
     </string>
     <string name="loading">Carregant…</string>
-    <string name="empty_available_app_list">Cap aplicació en aquesta categoria.\n\nProveu triant una altra categoria o
-        actualitzeu els repositoris per obtenir una llista recent d\'aplicacions.
-    </string>
     <string name="swap_connection_misc_error">S\'ha produït un error al connectar-se al dispositiu. Sembla que no ens hi
         podem connectar.
     </string>
@@ -370,9 +357,7 @@
     <string name="about_license">Llicència</string>
 
     <string name="status_inserting_apps">Desant els detalls de l\'aplicació</string>
-    <string name="empty_search_installed_app_list">Cap coincidència amb les aplicacions instal·lades.</string>
     <string name="empty_search_available_app_list">Cap coincidència amb les aplicacions disponibles.</string>
-    <string name="empty_search_can_update_app_list">Cap coincidència amb les aplicacions per actualitzar.</string>
 
     <string name="crash_dialog_title">L\'F-Droid ha fallat</string>
     <string name="crash_dialog_text">L\'aplicació s\'ha aturat degut a un
@@ -392,11 +377,7 @@
     <string name="update_auto_download_summary">Les descàrregues es descarreguen automàticament i sereu avisats per
         instal·lar-les
     </string>
-    <string name="tap_to_install_format">Premeu per instal·lar %s</string>
-    <string name="tap_to_update_format">Premeu per actualitzar %s</string>
     <string name="download_pending">Esperant que comenci la descàrrega…</string>
-
-    <string name="downloading_apk">Descarregant %1$s</string>
 
     <string name="system_install_not_supported">No es pot instal·lar F-Droid Privileged Extension actualment actualment
         en versions d\'Android 5.1 o posteriors.
@@ -447,7 +428,6 @@
     <string name="notification_content_single_downloading_update">Descarregant una actualització de \"%1$s\"…</string>
     <string name="notification_content_single_installing">Instal·lant \"%1$s\"…</string>
     <string name="notification_content_single_installed">Instal·lació correcta</string>
-    <string name="notification_content_single_install_error">Instal·lació fallida</string>
     <string name="notification_title_summary_update_available">Actualització disponible</string>
     <string name="notification_title_summary_downloading">Descarregant…</string>
     <string name="notification_title_summary_downloading_update">Descarregant una actualització…</string>

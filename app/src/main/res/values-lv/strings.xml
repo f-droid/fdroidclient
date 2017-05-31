@@ -15,7 +15,6 @@
     <string name="system_installer">Instalēt izmantojot sistēmas piekļuvi</string>
     <string name="system_installer_on">Izmantot sistēmas piekļuvi instalējot, atjauninot, dzēšot pakotnes</string>
     <string name="local_repo_name">Lokālā Repozitorija nosaukums</string>
-    <string name="local_repo_https">Izmantot privātu savienojumu</string>
     <string name="local_repo_https_on">Izmantot kriptētu HTTPS:// savienojumu</string>
     <string name="app_details">Programmas detaļas</string>
     <string name="no_such_app">Nav atrasts.</string>
@@ -39,7 +38,6 @@
     <string name="overwrite">Pārrakstīt</string>
     <string name="bluetooth_activity_not_found">Nav Bluetooth aktivitāšu, izvēlies vienu!</string>
     <string name="choose_bt_send">Izvēlies Bluesūtīšanas metodi</string>
-    <string name="send_via_bluetooth">Bluesūtīt</string>
     <string name="repo_add_url">Repozitorija adrese</string>
     <string name="repo_add_fingerprint">Nospiedums (opcionāli)</string>
     <string name="repo_exists_add_fingerprint">Repozitorijs jau iestatīts, šis pievienos jaunu atslēgas info.</string>
@@ -48,10 +46,8 @@
     <string name="repo_delete_to_overwrite">Vispirms jāizdzēš Repozitorijs, pirms pievienošanas ar citu atslēgu.
     </string>
     <string name="malformed_repo_uri">Ignorē nepareizu Repozitorija URI: %s</string>
-    <string name="menu_update_repo">Atjauno Repozitorijus</string>
     <string name="menu_manage">Repozitoriji</string>
     <string name="menu_send_apk_bt">Bluesūta F-Droid</string>
-    <string name="menu_about">Par</string>
     <string name="menu_search">Meklēt</string>
     <string name="menu_add_repo">Jauns Repozitorijs</string>
     <string name="menu_launch">Palaist</string>
@@ -64,7 +60,6 @@
     <string name="menu_source">Pirmkods</string>
     <string name="menu_upgrade">Atjaunot</string>
     <string name="menu_donate">Ziedot</string>
-    <string name="details_installed">versija %s instalēta</string>
     <string name="details_notinstalled">Nav instalēts</string>
     <string name="antiadslist">Programma satur reklāmu</string>
     <string name="antitracklist">Programma seko tavām aktivitātēm un ziņo par tām</string>

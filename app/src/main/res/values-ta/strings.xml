@@ -57,16 +57,11 @@
     <string name="enable">செயல்படுத்த</string>
     <string name="overwrite">மாற்றி எழுது</string>
 
-    <string name="fdroid_updates_available">F-Droid மேம்படுத்தல்கள் உள்ளன</string>
-    <string name="send_via_bluetooth">ப்ளூடூத் வழியாக அனுப்ப</string>
-
     <string name="repo_add_url">களஞ்சிய முகவரி</string>
     <string name="invalid_url">இந்த முகவரி ஏற்புடையதல்ல</string>
-    <string name="menu_update_repo">கணஞ்சியங்களை மேம்படுத்த</string>
     <string name="menu_manage">களஞ்சியங்கள்</string>
     <string name="menu_send_apk_bt">F-Droid-ஐ ப்ளூடூத் வழியாக பகிர</string>
     <string name="menu_settings">அமைப்புகள்</string>
-    <string name="menu_about">விபரங்கள்</string>
     <string name="menu_search">தேடல்</string>
     <string name="menu_add_repo">புதிய களஞ்சியம்</string>
 
@@ -87,7 +82,6 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="details_installed">நிறுவப்பட்டிருக்கும் பதிப்பு %s</string>
     <string name="details_notinstalled">நிறுவப்படவில்லை</string>
     <string name="antiadslist">இச்செயலியில் விளம்பரங்கள் உள்ளது</string>
     <string name="antitracklist">இச்செயலி உங்கள் செயல்பாடுகளை கண்கானித்து தகவல்களை வேறொருவருக்குத் தெரிவிக்கிறது

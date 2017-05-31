@@ -37,7 +37,6 @@
     </string>
     <string name="local_repo_name">Dit Lokale Depots navn</string>
     <string name="local_repo_name_summary">Dit lokale depots annoncerede titel: %s</string>
-    <string name="local_repo_https">Brug Privat Forbindelse</string>
     <string name="local_repo_https_on">Brug krypteret HTTPS:// forbindelse til lokalt depot</string>
 
     <string name="login_title">Autentificering påkrævet</string>
@@ -80,10 +79,8 @@
     <string name="add_key">Tilføj Nøgle</string>
     <string name="overwrite">Overskriv</string>
 
-    <string name="fdroid_updates_available">F-Droid Opdateringer Tilgængelige</string>
     <string name="bluetooth_activity_not_found">Ingen Bluetooth afsendelsesmetode fundet, vælg en!</string>
     <string name="choose_bt_send">Vælg Bluetooth afsendelsesmetode</string>
-    <string name="send_via_bluetooth">Send over Bluetooth</string>
 
     <string name="repo_add_url">Depot adresse</string>
     <string name="repo_add_fingerprint">Fingeraftryk (valgfri)</string>
@@ -97,11 +94,9 @@
     <string name="invalid_url">Dette er ikke en gyldig URL.</string>
     <string name="malformed_repo_uri">Ignorerer misdannet depot URI: %s</string>
 
-    <string name="menu_update_repo">Opdater Depoter</string>
     <string name="menu_manage">Depoter</string>
     <string name="menu_send_apk_bt">Del F-Droid via Bluetooth</string>
     <string name="menu_settings">Indstillinger</string>
-    <string name="menu_about">Om</string>
     <string name="menu_search">Søg</string>
     <string name="menu_add_repo">Nyt Depot</string>
 
@@ -122,7 +117,6 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="details_installed">Version %s installeret</string>
     <string name="details_notinstalled">Ikke installeret</string>
     <string name="antiadslist">Programmet indeholder annoncering</string>
     <string name="antitracklist">Programmet sporer og indberetter din aktivitet</string>
@@ -240,9 +234,6 @@
         ikke tilgængelige fra F-Droid. Det kan være fordi du skal opdatere dine depoter eller også tilbyder depoterne
         reelt ikke dine programmer.
     </string>
-    <string name="empty_available_app_list">Ingen programmer i denne kategori.\n\nPrøv at vælge en anden kategori eller
-        at opdatere dine depoter for at få en frisk liste over programmer.
-    </string>
     <string name="empty_can_update_app_list">Alle programmer er opdateret.\n\nTillykke! Alle dine programmer er
         opdaterede (eller dine depoter er uddaterede).
     </string>
@@ -255,17 +246,12 @@
     <string name="install_error_unknown">Kunne ikke installere på grund af en ukendt fejl</string>
     <string name="linking_apks">Kobler APK\'er sammen med depotet…</string>
     <string name="uninstall_error_unknown">Afinstallation mislykkedes grundet en ukendt fejl</string>
-    <string name="system_install_denied_title">F-Droid Privilegeret Udvidelse er ikke tilgængelig</string>
-    <string name="system_install_denied_body">Denne valgmulighed er kun tilgængelig når F-Droid Privilegeret Udvidelse
-        er installeret.
-    </string>
     <string name="system_install_denied_signature">Udvidelsens signatur er forkert! Opret venligst en fejlrapport!
     </string>
     <string name="system_install_denied_permissions">De privilegerede tilladelser er ikke blevet givet til udvidelsen!
         Opret venligst en fejlrapport!
     </string>
     <string name="system_install_button_install">Installer</string>
-    <string name="system_install_button_open">Åbn Udvidelse</string>
     <string name="system_install_post_success">Installation af F-Droid Privilegeret Udvidelse succesfuld</string>
     <string name="system_install_post_fail">Installation af F-Droid Privilegeret Udvidelse fejlede</string>
     <string name="system_install_post_success_message">F-Droid Privilegeret Udvidelse blev installeret succesfuldt.
@@ -354,7 +340,6 @@
     <string name="perm_costs_money">Dette koster dig muligvis penge</string>
     <string name="uninstall_update_confirm">Vil du erstatte dette program med fabriksversionen?</string>
     <string name="uninstall_confirm">Vil du afinstallere dette program?</string>
-    <string name="tap_to_install">Overførsel fuldført, rør for at installere</string>
     <string name="download_error">Overførsel forfejlet</string>
 
     <string name="perms_new_perm_prefix">Nye:</string>
@@ -375,9 +360,7 @@
     <string name="menu_email">E-Mail forfatter</string>
     <string name="antinonfreeassetslist">Denne app indeholder ikke-frie aktiver</string>
 
-    <string name="empty_search_installed_app_list">Ingen matches blandt installerede programmer.</string>
     <string name="empty_search_available_app_list">Ingen sådanne programmer tilgængelige.</string>
-    <string name="empty_search_can_update_app_list">Ingen sådanne programmer som kan opdateres.</string>
 
     <string name="crash_dialog_title">F-Droid er gået ned</string>
     <string name="crash_dialog_text">En uventet fejl har tvunget programmet til at stoppe. Vil du sende en e-mail med
@@ -395,14 +378,11 @@
     </string>
 
     <string name="swap_stopping_wifi">Deaktiverer Wi-Fi…</string>
-    <string name="tap_to_install_format">Berør for at installere %s</string>
-    <string name="tap_to_update_format">Berør for at opdatere %s</string>
     <string name="download_pending">Venter på at kunne begynde hentning…</string>
     <string name="install_error_notify_title">Fejl ved installation af %s</string>
     <string name="uninstall_error_notify_title">Fejl ved afinstallering af %s</string>
 
 
-    <string name="downloading_apk">Henter %1$s</string>
     <string name="installing">Installerer…</string>
     <string name="uninstalling">Afinstallerer…</string>
 
