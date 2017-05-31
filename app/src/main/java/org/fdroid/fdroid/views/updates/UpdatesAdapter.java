@@ -6,15 +6,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.ViewGroup;
 
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegatesManager;
@@ -23,17 +20,17 @@ import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.views.updates.items.AppNotification;
 import org.fdroid.fdroid.views.updates.items.AppStatus;
 import org.fdroid.fdroid.views.updates.items.AppUpdateData;
-import org.fdroid.fdroid.views.updates.items.DonationPrompt;
 import org.fdroid.fdroid.views.updates.items.UpdateableApp;
 import org.fdroid.fdroid.views.updates.items.UpdateableAppsHeader;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Manages the following types of information:
@@ -46,8 +43,8 @@ import java.util.List;
  *    + Once "Show apps" is expanded then each app is shown along with its own download button.
  *
  * It does this by maintaining several different lists of interesting apps. Each list contains wrappers
- * around the piece of data it wants to render ({@link AppStatus}, {@link DonationPrompt},
- * {@link AppNotification}, {@link UpdateableApp}). Instead of juggling the various viewTypes
+ * around the piece of data it wants to render ({@link AppStatus}, {@link UpdateableApp}).
+ * Instead of juggling the various viewTypes
  * to find out which position in the adapter corresponds to which view type, this is handled by
  * the {@link UpdatesAdapter#delegatesManager}.
  *
@@ -68,12 +65,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private final AppCompatActivity activity;
 
-    @Nullable
-    private RecyclerView recyclerView;
-
     private final List<AppStatus> appsToShowStatus = new ArrayList<>();
-    private final List<DonationPrompt> appsToPromptForDonation = new ArrayList<>();
-    private final List<AppNotification> appsToNotifyAbout = new ArrayList<>();
     private final List<UpdateableApp> updateableApps = new ArrayList<>();
 
     private boolean showAllUpdateableApps = false;
@@ -82,8 +74,6 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.activity = activity;
 
         delegatesManager.addDelegate(new AppStatus.Delegate(activity))
-                .addDelegate(new AppNotification.Delegate())
-                .addDelegate(new DonationPrompt.Delegate())
                 .addDelegate(new UpdateableApp.Delegate(activity))
                 .addDelegate(new UpdateableAppsHeader.Delegate(activity));
 
@@ -98,8 +88,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      * {@link org.fdroid.fdroid.AppUpdateStatusManager.Status#UpdateAvailable} are not interesting here.
      */
     private boolean shouldShowStatus(AppUpdateStatusManager.AppUpdateStatus status) {
-        return status.status == AppUpdateStatusManager.Status.Unknown ||
-                status.status == AppUpdateStatusManager.Status.Downloading ||
+        return status.status == AppUpdateStatusManager.Status.Downloading ||
                 status.status == AppUpdateStatusManager.Status.Installed ||
                 status.status == AppUpdateStatusManager.Status.ReadyToInstall;
     }
@@ -135,17 +124,6 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void toggleAllUpdateableApps() {
         showAllUpdateableApps = !showAllUpdateableApps;
         populateItems();
-
-        if (showAllUpdateableApps) {
-            notifyItemRangeInserted(appsToShowStatus.size() + 1, updateableApps.size());
-            if (recyclerView != null) {
-                // Scroll so that the "Update X apps" header is at the top of the page, and the
-                // list of apps takes up the rest of the screen.
-                ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(appsToShowStatus.size(), 0);
-            }
-        } else {
-            notifyItemRangeRemoved(appsToShowStatus.size() + 1, updateableApps.size());
-        }
     }
 
     /**
@@ -156,17 +134,29 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private void populateItems() {
         items.clear();
 
-        items.addAll(appsToShowStatus);
-
-        if (updateableApps != null && updateableApps.size() > 0) {
-            items.add(new UpdateableAppsHeader(activity, this, updateableApps));
-            if (showAllUpdateableApps) {
-                items.addAll(updateableApps);
-            }
+        Set<String> toShowStatusPackageNames = new HashSet<>(appsToShowStatus.size());
+        for (AppStatus app : appsToShowStatus) {
+            toShowStatusPackageNames.add(app.status.app.packageName);
+            items.add(app);
         }
 
-        items.addAll(appsToPromptForDonation);
-        items.addAll(appsToNotifyAbout);
+        if (updateableApps != null) {
+            // Only count/show apps which are not shown above in the "Apps to show status" list.
+            List<UpdateableApp> updateableAppsToShow = new ArrayList<>(updateableApps.size());
+            for (UpdateableApp app : updateableApps) {
+                if (!toShowStatusPackageNames.contains(app.app.packageName)) {
+                    updateableAppsToShow.add(app);
+                }
+            }
+
+            if (updateableAppsToShow.size() > 0) {
+                items.add(new UpdateableAppsHeader(activity, this, updateableAppsToShow));
+
+                if (showAllUpdateableApps) {
+                    items.addAll(updateableAppsToShow);
+                }
+            }
+        }
     }
 
     @Override
@@ -187,12 +177,6 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         delegatesManager.onBindViewHolder(items, position, holder);
-    }
-
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
-        this.recyclerView = recyclerView;
     }
 
     @Override
@@ -224,12 +208,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        int numberRemoved = updateableApps.size();
-        boolean hadHeader = updateableApps.size() > 0;
-        boolean willHaveHeader = cursor.getCount() > 0;
-
         updateableApps.clear();
-        notifyItemRangeRemoved(appsToShowStatus.size(), numberRemoved + (hadHeader ? 1 : 0));
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -238,7 +217,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         populateItems();
-        notifyItemRangeInserted(appsToShowStatus.size(), updateableApps.size() + (willHaveHeader ? 1 : 0));
+        notifyDataSetChanged();
     }
 
     @Override
@@ -294,80 +273,36 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      * some which are ready to install.
      */
     private void onFoundAppsReadyToInstall() {
-        if (appsToShowStatus.size() > 0) {
-            int size = appsToShowStatus.size();
-            appsToShowStatus.clear();
-            notifyItemRangeRemoved(0, size);
-        }
-
         populateAppStatuses();
-        notifyItemRangeInserted(0, appsToShowStatus.size());
-
-        if (recyclerView != null) {
-            recyclerView.smoothScrollToPosition(0);
-        }
+        notifyDataSetChanged();
     }
 
-    private void onAppStatusAdded(String apkUrl) {
-        // We could try and find the specific place where we need to add our new item, but it is
-        // far simpler to clear the list and rebuild it (sorting it in the process).
+    private void onAppStatusAdded() {
         appsToShowStatus.clear();
         populateAppStatuses();
-
-        // After adding the new item to our list (somewhere) we can then look it back up again in
-        // order to notify the recycler view and scroll to that item.
-        int positionOfNewApp = -1;
-        for (int i = 0; i < appsToShowStatus.size(); i++) {
-            if (TextUtils.equals(appsToShowStatus.get(i).status.getUniqueKey(), apkUrl)) {
-                positionOfNewApp = i;
-                break;
-            }
-        }
-
-        if (positionOfNewApp != -1) {
-            notifyItemInserted(positionOfNewApp);
-
-            if (recyclerView != null) {
-                recyclerView.smoothScrollToPosition(positionOfNewApp);
-            }
-        }
+        notifyDataSetChanged();
     }
 
-    private void onAppStatusRemoved(String apkUrl) {
-        // Find out where the item is in our internal data structure, so that we can remove it and
-        // also notify the recycler view appropriately.
-        int positionOfOldApp = -1;
-        for (int i = 0; i < appsToShowStatus.size(); i++) {
-            if (TextUtils.equals(appsToShowStatus.get(i).status.getUniqueKey(), apkUrl)) {
-                positionOfOldApp = i;
-                break;
-            }
-        }
-
-        if (positionOfOldApp != -1) {
-            appsToShowStatus.remove(positionOfOldApp);
-
-            populateItems();
-            notifyItemRemoved(positionOfOldApp);
-        }
+    private void onAppStatusRemoved() {
+        appsToShowStatus.clear();
+        populateAppStatuses();
+        notifyDataSetChanged();
     }
 
     private final BroadcastReceiver receiverAppStatusChanges = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String apkUrl = intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL);
-
             switch (intent.getAction()) {
                 case AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED:
                     onManyAppStatusesChanged(intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE));
                     break;
 
                 case AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED:
-                    onAppStatusAdded(apkUrl);
+                    onAppStatusAdded();
                     break;
 
                 case AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED:
-                    onAppStatusRemoved(apkUrl);
+                    onAppStatusRemoved();
                     break;
             }
         }
