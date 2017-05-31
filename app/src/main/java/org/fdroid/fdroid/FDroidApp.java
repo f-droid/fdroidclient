@@ -35,6 +35,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -279,13 +280,23 @@ public class FDroidApp extends Application {
                         Utils.getImageCacheDir(this),
                         null,
                         new FileNameGenerator() {
+                            @NonNull
                             @Override
                             public String generate(String imageUri) {
                                 if (TextUtils.isEmpty(imageUri)) {
                                     return "null";
-                                } else {
-                                    return SanitizedFile.sanitizeFileName(Uri.parse(imageUri).getPath().replaceAll("/", "-"));
                                 }
+
+                                String fileNameToSanitize;
+                                Uri uri = Uri.parse(imageUri);
+                                if (TextUtils.isEmpty(uri.getPath())) {
+                                    // e.g. files with a URL like "drawable://213083835209" used by the category backgrounds.
+                                    fileNameToSanitize = imageUri.replaceAll("[:/]", "");
+                                } else {
+                                    fileNameToSanitize = uri.getPath().replace("/", "-");
+                                }
+
+                                return SanitizedFile.sanitizeFileName(fileNameToSanitize);
                             }
                         },
                         // 30 days in secs: 30*24*60*60 = 2592000
