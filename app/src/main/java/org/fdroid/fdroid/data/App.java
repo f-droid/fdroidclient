@@ -476,11 +476,11 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         promoGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "promoGraphic");
         tvBanner = getLocalizedGraphicsEntry(localized, localesToUse, "tvBanner");
 
-        wearScreenshots = setLocalizedListEntry(localized, localesToUse, "wearScreenshots");
-        phoneScreenshots = setLocalizedListEntry(localized, localesToUse, "phoneScreenshots");
-        sevenInchScreenshots = setLocalizedListEntry(localized, localesToUse, "sevenInchScreenshots");
-        tenInchScreenshots = setLocalizedListEntry(localized, localesToUse, "tenInchScreenshots");
-        tvScreenshots = setLocalizedListEntry(localized, localesToUse, "tvScreenshots");
+        wearScreenshots = getLocalizedListEntry(localized, localesToUse, "wearScreenshots");
+        phoneScreenshots = getLocalizedListEntry(localized, localesToUse, "phoneScreenshots");
+        sevenInchScreenshots = getLocalizedListEntry(localized, localesToUse, "sevenInchScreenshots");
+        tenInchScreenshots = getLocalizedListEntry(localized, localesToUse, "tenInchScreenshots");
+        tvScreenshots = getLocalizedListEntry(localized, localesToUse, "tvScreenshots");
     }
 
     private String getLocalizedEntry(Map<String, Map<String, Object>> localized,
@@ -518,7 +518,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         return null;
     }
 
-    private String[] setLocalizedListEntry(Map<String, Map<String, Object>> localized,
+    private String[] getLocalizedListEntry(Map<String, Map<String, Object>> localized,
                                            Set<String> locales, String key) {
         try {
             for (String locale : locales) {
