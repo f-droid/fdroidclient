@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import org.acra.ACRA;
+import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
@@ -219,6 +220,22 @@ public class InstalledAppProviderService extends IntentService {
                     try {
                         String hashType = "sha256";
                         String hash = Utils.getBinaryHash(apk, hashType);
+
+                        // Ensure that we no longer notify the user that this apk successfully
+                        // downloaded and is now ready to be installed. Used to be handled only
+                        // by InstallManagerService after receiving ACTION_INSTALL_COMPLETE, but
+                        // that doesn't work for F-Droid itself, which never receives that action.
+                        for (Apk apkInRepo : ApkProvider.Helper.findApksByHash(this, hash)) {
+
+                            Utils.debugLog(TAG, "Noticed that " + apkInRepo.apkName +
+                                    " version " + apkInRepo.versionName + " was installed," +
+                                    " so marking as no longer pending install");
+
+                            AppUpdateStatusManager.getInstance(this)
+                                    .markAsNoLongerPendingInstall(apkInRepo.getUrl());
+
+                        }
+
                         insertAppIntoDb(this, packageInfo, hashType, hash);
                     } catch (IllegalArgumentException e) {
                         Utils.debugLog(TAG, e.getMessage());
