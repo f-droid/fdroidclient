@@ -20,7 +20,7 @@
         android:textAlignment="center"
         android:gravity="center"
         android:textSize="20sp"
-        android:textColor="#4a4a4a"
+        android:textColor="?attr/lightGrayTextColor"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +44,7 @@
         android:textSize="15sp"
         android:textAlignment="center"
         android:gravity="center"
-        android:textColor="#5B5B5B"
+        android:textColor="?attr/lightGrayTextColor"
         app:layout_constraintTop_toBottomOf="@+id/button"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -21,6 +21,7 @@
         <item name="installedApps">#ffffff</item>
         <item name="detailPanel">@drawable/details_panel_donate_background_dark</item>
         <item name="appListItem">#ffffff</item>
+        <item name="lightGrayTextColor">#a6a6a6</item>
     </style>
 
     <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
@@ -43,6 +44,7 @@
         <item name="installedApps">#424242</item>
         <item name="detailPanel">@drawable/details_panel_donate_background_light</item>
         <item name="appListItem">#424242</item>
+        <item name="lightGrayTextColor">#4a4a4a</item>
     </style>
 
     <style name="AppThemeDark" parent="AppBaseThemeDark">
@@ -116,7 +118,7 @@
         <item name="android:gravity">center</item>
         <item name="android:padding">48dp</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">#4a4a4a</item>
+        <item name="android:textColor">?attr/lightGrayTextColor</item>
     </style>
 
     <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">

@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/empty_state"
         android:tint="?attr/mainTabSwapSplashTint"
-        android:scaleType="fitXY"
+        android:scaleType="fitCenter"
         android:visibility="gone" />
 
     <android.support.v7.widget.RecyclerView
