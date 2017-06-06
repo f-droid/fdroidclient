@@ -909,7 +909,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * {@code AndroidManifest.xml}.  If {@code targetSdkVersion} is not set, then it is
      * equal to {@code minSdkVersion}
      *
-     * @see <a href="https://developer.android.com/guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt; element</a>
+     * @see <a href="https://developer.android.com/guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a>
      */
     private static int[] getMinTargetMaxSdkVersions(Context context, String packageName) {
         int minSdkVersion = Apk.SDK_VERSION_MIN_VALUE;

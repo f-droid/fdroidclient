@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * This class does all of its operations in a temporary sqlite table.
  */
+@SuppressWarnings("LineLength")
 public class TempApkProvider extends ApkProvider {
 
     private static final String PROVIDER_NAME = "TempApkProvider";

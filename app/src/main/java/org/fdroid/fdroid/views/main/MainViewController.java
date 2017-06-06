@@ -9,11 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.fragments.PreferencesFragment;
-import org.fdroid.fdroid.views.updates.UpdatesViewBinder;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
+import org.fdroid.fdroid.views.updates.UpdatesViewBinder;
 
 /**
  * Decides which view on the main screen to attach to a given {@link FrameLayout}. This class
@@ -79,7 +78,8 @@ class MainViewController extends RecyclerView.ViewHolder {
         // To allow for whitelabel versions of F-Droid, make sure not to hardcode "F-Droid" into our
         // translation here.
         TextView subtext = (TextView) swapView.findViewById(R.id.text2);
-        subtext.setText(activity.getString(R.string.nearby_splash__both_parties_need_fdroid, activity.getString(R.string.app_name)));
+        subtext.setText(activity.getString(R.string.nearby_splash__both_parties_need_fdroid,
+                activity.getString(R.string.app_name)));
 
         Button startButton = (Button) swapView.findViewById(R.id.button);
         startButton.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +93,7 @@ class MainViewController extends RecyclerView.ViewHolder {
     /**
      * Attaches a {@link PreferencesFragment} to the view. Everything else is managed by the
      * fragment itself, so no further work needs to be done by this view binder.
-     *
+     * <p>
      * Note: It is tricky to attach a {@link Fragment} to a view from this view holder. This is due
      * to the way in which the {@link RecyclerView} will reuse existing views and ask us to
      * put a settings fragment in there at arbitrary times. Usually it wont be the same view we

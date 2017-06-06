@@ -20,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -156,7 +155,9 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
 
             @Override
             public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate((viewType == 1) ? R.layout.share_header_item : R.layout.share_item, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate((viewType == 1)
+                        ? R.layout.share_header_item
+                        : R.layout.share_item, parent, false);
                 return new VH(view);
             }
 
@@ -200,7 +201,11 @@ public class ShareChooserDialog extends BottomSheetDialogFragment {
 
     }
 
-    public static void createChooser(CoordinatorLayout rootView, ShareChooserDialog.ShareChooserDialogListener listener, final AppCompatActivity parent, final Intent shareIntent, boolean showNearbyItem) {
+    public static void createChooser(CoordinatorLayout rootView,
+                                     ShareChooserDialog.ShareChooserDialogListener listener,
+                                     final AppCompatActivity parent,
+                                     final Intent shareIntent,
+                                     boolean showNearbyItem) {
         ShareChooserDialog d = new ShareChooserDialog();
         d.setListener(listener);
         Bundle args = new Bundle();

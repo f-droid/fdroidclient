@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
@@ -23,6 +21,7 @@ import java.util.List;
 /**
  * Summary of all apps that can be downloaded. Includes a button to download all of them and also
  * a toggle to show or hide the list of each individual item.
+ *
  * @see R.layout#updates_header The view that this binds to.
  * @see UpdateableAppsHeader The data that is bound to this view.
  */
@@ -31,7 +30,8 @@ public class UpdateableAppsHeader extends AppUpdateData {
     public final List<UpdateableApp> apps;
     public final UpdatesAdapter adapter;
 
-    public UpdateableAppsHeader(Activity activity, UpdatesAdapter updatesAdapter, List<UpdateableApp> updateableApps) {
+    public UpdateableAppsHeader(Activity activity,
+                                UpdatesAdapter updatesAdapter, List<UpdateableApp> updateableApps) {
         super(activity);
         apps = updateableApps;
         adapter = updatesAdapter;
@@ -57,7 +57,8 @@ public class UpdateableAppsHeader extends AppUpdateData {
         }
 
         @Override
-        protected void onBindViewHolder(@NonNull List<AppUpdateData> items, int position, @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
+        protected void onBindViewHolder(@NonNull List<AppUpdateData> items, int position,
+                                        @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
             UpdateableAppsHeader app = (UpdateableAppsHeader) items.get(position);
             ((ViewHolder) holder).bindHeader(app);
         }
@@ -87,7 +88,9 @@ public class UpdateableAppsHeader extends AppUpdateData {
         public void bindHeader(UpdateableAppsHeader header) {
             this.header = header;
 
-            updatesAvailable.setText(itemView.getResources().getQuantityString(R.plurals.updates__download_updates_for_apps, header.apps.size(), header.apps.size()));
+            updatesAvailable.setText(itemView.getResources()
+                    .getQuantityString(R.plurals.updates__download_updates_for_apps, header.apps.size(),
+                            header.apps.size()));
 
             List<String> appNames = new ArrayList<>(header.apps.size());
             for (UpdateableApp app : header.apps) {

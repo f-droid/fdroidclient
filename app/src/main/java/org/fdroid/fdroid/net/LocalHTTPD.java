@@ -93,7 +93,8 @@ public class LocalHTTPD extends NanoHTTPD {
                 session.parseBody(new HashMap<String, String>());
             } catch (IOException e) {
                 Log.e(TAG, "An error occured while parsing the POST body", e);
-                return new Response(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT, "Internal server error, check logcat on server for details.");
+                return new Response(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT,
+                        "Internal server error, check logcat on server for details.");
             } catch (ResponseException re) {
                 return new Response(re.getStatus(), MIME_PLAINTEXT, re.getMessage());
             }
@@ -108,8 +109,10 @@ public class LocalHTTPD extends NanoHTTPD {
         switch (uri.getPath()) {
             case "/request-swap":
                 if (!session.getParms().containsKey("repo")) {
-                    Log.e(TAG, "Malformed /request-swap request to local repo HTTP server. Should have posted a 'repo' parameter.");
-                    return new Response(Response.Status.BAD_REQUEST, MIME_PLAINTEXT, "Requires 'repo' parameter to be posted.");
+                    Log.e(TAG, "Malformed /request-swap request to local repo HTTP server."
+                            + " Should have posted a 'repo' parameter.");
+                    return new Response(Response.Status.BAD_REQUEST, MIME_PLAINTEXT,
+                            "Requires 'repo' parameter to be posted.");
                 }
                 requestSwap(session.getParms().get("repo"));
                 return new Response(Response.Status.OK, MIME_PLAINTEXT, "Swap request received.");

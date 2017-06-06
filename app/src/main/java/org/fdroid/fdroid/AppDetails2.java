@@ -74,6 +74,7 @@ import org.fdroid.fdroid.views.apps.FeatureImage;
 
 import java.util.Iterator;
 
+@SuppressWarnings("LineLength")
 public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog.ShareChooserDialogListener, AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks {
 
     public static final String EXTRA_APPID = "appid";

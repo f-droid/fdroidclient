@@ -13,6 +13,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
+@SuppressWarnings("LineLength")
 public final class BluetoothSwap extends SwapType {
 
     private static final String TAG = "BluetoothSwap";

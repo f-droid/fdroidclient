@@ -11,7 +11,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
@@ -77,7 +76,7 @@ public class InstalledAppProvider extends FDroidProvider {
     private static final String PROVIDER_NAME = "InstalledAppProvider";
 
     private static final String PATH_SEARCH = "search";
-    private static final int    CODE_SEARCH = CODE_SINGLE + 1;
+    private static final int CODE_SEARCH = CODE_SINGLE + 1;
 
     private static final UriMatcher MATCHER = new UriMatcher(-1);
 
@@ -100,9 +99,9 @@ public class InstalledAppProvider extends FDroidProvider {
 
     public static Uri getSearchUri(String keywords) {
         return getContentUri().buildUpon()
-            .appendPath(PATH_SEARCH)
-            .appendPath(keywords)
-            .build();
+                .appendPath(PATH_SEARCH)
+                .appendPath(keywords)
+                .build();
     }
 
     public static String getApplicationLabel(Context context, String packageName) {
@@ -146,7 +145,8 @@ public class InstalledAppProvider extends FDroidProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
+    public Cursor query(Uri uri, String[] projection,
+                        String customSelection, String[] selectionArgs, String sortOrder) {
         if (sortOrder == null) {
             sortOrder = Cols.APPLICATION_LABEL;
         }
@@ -170,7 +170,8 @@ public class InstalledAppProvider extends FDroidProvider {
                 throw new UnsupportedOperationException(message);
         }
 
-        Cursor cursor = db().query(getTableName(), projection, selection.getSelection(), selection.getArgs(), null, null, sortOrder);
+        Cursor cursor = db().query(getTableName(), projection,
+                selection.getSelection(), selection.getArgs(), null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
@@ -207,7 +208,8 @@ public class InstalledAppProvider extends FDroidProvider {
      */
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        throw new UnsupportedOperationException("\"Update' not supported for installed appp provider. Instead, you should insert, and it will overwrite the relevant rows if one exists.");
+        throw new UnsupportedOperationException("\"Update' not supported for installed appp provider."
+                + " Instead, you should insert, and it will overwrite the relevant rows if one exists.");
     }
 
     /**

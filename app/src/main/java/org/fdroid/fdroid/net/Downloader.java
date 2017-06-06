@@ -143,7 +143,8 @@ public abstract class Downloader {
      * keeping track of the number of bytes that have flowed through for the
      * progress counter.
      */
-    private void copyInputToOutputStream(InputStream input, int bufferSize, OutputStream output) throws IOException, InterruptedException {
+    private void copyInputToOutputStream(InputStream input, int bufferSize, OutputStream output)
+            throws IOException, InterruptedException {
         Timer timer = new Timer();
         try {
             bytesRead = 0;

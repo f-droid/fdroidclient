@@ -19,7 +19,8 @@ import org.fdroid.fdroid.Utils;
  *       LEFT JOIN fdroid_apk ON (fdroid_apk.appId = fdroid_app.rowid)
  *       LEFT JOIN fdroid_repo ON (fdroid_apk.repo = fdroid_repo._id)
  *       LEFT JOIN fdroid_installedApp AS installed ON (installed.appId = fdroid_app.id)
- *       LEFT JOIN fdroid_apk AS suggestedApk ON (fdroid_app.suggestedVercode = suggestedApk.vercode AND fdroid_app.rowid = suggestedApk.appId)
+ *       LEFT JOIN fdroid_apk AS suggestedApk ON (fdroid_app.suggestedVercode = suggestedApk.vercode
+ *                                                AND fdroid_app.rowid = suggestedApk.appId)
  *     WHERE
  *       fdroid_repo.isSwap = 0 OR fdroid_repo.isSwap IS NULL
  *     GROUP BY fdroid_app.rowid

@@ -83,7 +83,8 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
 
     private MainViewController createEmptyView() {
         FrameLayout frame = new FrameLayout(activity);
-        frame.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        frame.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
         return new MainViewController(activity, frame);
     }
 

@@ -5,14 +5,14 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-
 import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.PackageTable.Cols;
 
 public class PackageProvider extends FDroidProvider {
 
     public static final class Helper {
-        private Helper() { }
+        private Helper() {
+        }
 
         public static long ensureExists(Context context, String packageName) {
             long id = getPackageId(context, packageName);
@@ -26,8 +26,9 @@ public class PackageProvider extends FDroidProvider {
         }
 
         public static long getPackageId(Context context, String packageName) {
-            String[] projection = new String[] {Cols.ROW_ID};
-            Cursor cursor = context.getContentResolver().query(getPackageUri(packageName), projection, null, null, null);
+            String[] projection = new String[]{Cols.ROW_ID};
+            Cursor cursor = context.getContentResolver().query(getPackageUri(packageName), projection,
+                    null, null, null);
             if (cursor == null) {
                 return 0;
             }
@@ -122,7 +123,8 @@ public class PackageProvider extends FDroidProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
+    public Cursor query(Uri uri, String[] projection,
+                        String customSelection, String[] selectionArgs, String sortOrder) {
         if (MATCHER.match(uri) != CODE_SINGLE) {
             throw new UnsupportedOperationException("Invalid URI for content provider: " + uri);
         }

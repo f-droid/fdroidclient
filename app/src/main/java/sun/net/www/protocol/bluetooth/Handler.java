@@ -6,8 +6,9 @@ import java.net.URLConnection;
 import java.net.URLStreamHandler;
 
 /**
- * This class is added so that the bluetooth:// scheme we use for the {@link org.fdroid.fdroid.net.BluetoothDownloader}
- * is not treated as invalid by the {@link URL} class.
+ * This class is added so that the bluetooth:// scheme we use for the {@link
+ * org.fdroid.fdroid.net.BluetoothDownloader} is not treated as invalid by
+ * the {@link URL} class.
  */
 public class Handler extends URLStreamHandler {
     @Override

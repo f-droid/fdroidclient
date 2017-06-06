@@ -65,6 +65,7 @@ import rx.schedulers.Schedulers;
  * Central service which manages all of the different moving parts of swap which are required
  * to enable p2p swapping of apps.
  */
+@SuppressWarnings("LineLength")
 public class SwapService extends Service {
 
     private static final String TAG = "SwapService";

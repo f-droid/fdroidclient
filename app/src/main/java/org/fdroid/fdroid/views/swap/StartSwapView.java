@@ -27,20 +27,19 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import cc.mvdan.accesspoint.WifiApControl;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-
-import java.util.ArrayList;
-
-import cc.mvdan.accesspoint.WifiApControl;
 import rx.Subscriber;
 import rx.Subscription;
 
+import java.util.ArrayList;
+
+@SuppressWarnings("LineLength")
 public class StartSwapView extends RelativeLayout implements SwapWorkflowActivity.InnerView {
 
     private static final String TAG = "StartSwapView";
@@ -78,12 +77,14 @@ public class StartSwapView extends RelativeLayout implements SwapWorkflowActivit
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.swap_peer_list_item, parent, false);
+                convertView = LayoutInflater.from(getContext())
+                        .inflate(R.layout.swap_peer_list_item, parent, false);
             }
 
             Peer peer = getItem(position);
             ((TextView) convertView.findViewById(R.id.peer_name)).setText(peer.getName());
-            ((ImageView) convertView.findViewById(R.id.icon)).setImageDrawable(getResources().getDrawable(peer.getIcon()));
+            ((ImageView) convertView.findViewById(R.id.icon))
+                    .setImageDrawable(getResources().getDrawable(peer.getIcon()));
 
             return convertView;
         }
@@ -142,7 +143,7 @@ public class StartSwapView extends RelativeLayout implements SwapWorkflowActivit
     /**
      * Remove relevant listeners/subscriptions/etc so that they do not receive and process events
      * when this view is not in use.
-     *
+     * <p>
      * TODO: Not sure if this is the best place to handle being removed from the view.
      */
     @Override
@@ -391,10 +392,10 @@ public class StartSwapView extends RelativeLayout implements SwapWorkflowActivit
      * Helper function to set the "enable wifi" switch, but prevents the listeners from
      * being notified. This enables the UI to be updated without triggering further enable/disable
      * events being queued.
-     *
+     * <p>
      * This is required because the SwitchCompat and its parent classes will always try to notify
      * their listeners if there is one (e.g. http://stackoverflow.com/a/15523518).
-     *
+     * <p>
      * The fact that this method also deals with enabling/disabling the switch is more of a convenience
      * Nigh on all times this UI wants to change the state of the switch, it is also interested in
      * ensuring the enabled state of the switch.
@@ -408,10 +409,10 @@ public class StartSwapView extends RelativeLayout implements SwapWorkflowActivit
 
     /**
      * When the wifi switch is:
-     *
+     * <p>
      * Toggled on: Ask the swap service to ensure wifi swap is running.
      * Toggled off: Ask the swap service to prevent the wifi swap service from running.
-     *
+     * <p>
      * Both of these actions will be performed in a background thread which will send broadcast
      * intents when they are completed.
      */

@@ -66,8 +66,10 @@ public class PrivilegedInstaller extends Installer {
 
     private static final String TAG = "PrivilegedInstaller";
 
-    private static final String PRIVILEGED_EXTENSION_SERVICE_INTENT = "org.fdroid.fdroid.privileged.IPrivilegedService";
-    public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME = "org.fdroid.fdroid.privileged";
+    private static final String PRIVILEGED_EXTENSION_SERVICE_INTENT
+            = "org.fdroid.fdroid.privileged.IPrivilegedService";
+    public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME
+            = "org.fdroid.fdroid.privileged";
 
     public static final int IS_EXTENSION_INSTALLED_NO = 0;
     public static final int IS_EXTENSION_INSTALLED_YES = 1;

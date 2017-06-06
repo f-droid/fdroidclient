@@ -5,7 +5,6 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
@@ -46,7 +45,7 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.dog.rock.apple", "Dog-Rock-Apple", "Animal,Mineral,Vegetable", mainRepo);
         insertAppWithCategory("com.banana.apple", "Banana", "Vegetable,Vegetable", mainRepo);
 
-        String[] expectedFDroid = new String[] {
+        String[] expectedFDroid = new String[]{
                 "Animal",
                 "Mineral",
                 "Security",
@@ -54,13 +53,13 @@ public class CategoryProviderTest extends FDroidProviderTest {
                 "Writing",
         };
 
-        String[] expectedGP = new String[] {
+        String[] expectedGP = new String[]{
                 "GuardianProject",
                 "Office",
         };
 
         // We overwrite "Security" + "Writing" with "GuardianProject" + "Office"
-        String[] expectedBoth = new String[] {
+        String[] expectedBoth = new String[]{
                 "Animal",
                 "Mineral",
                 "Vegetable",
@@ -90,16 +89,16 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.banana", "Banana", "Food");
         insertAppWithCategory("com.dog-food", "Dog Food", "Food");
 
-        assertPackagesInUri(AppProvider.getSearchUri("dog", "Animal"), new String[] {
+        assertPackagesInUri(AppProvider.getSearchUri("dog", "Animal"), new String[]{
                 "com.dog",
                 "com.dog-statue",
         });
 
-        assertPackagesInUri(AppProvider.getSearchUri("dog", "Food"), new String[] {
+        assertPackagesInUri(AppProvider.getSearchUri("dog", "Food"), new String[]{
                 "com.dog-food",
         });
 
-        assertPackagesInUri(AppProvider.getSearchUri("dog", null), new String[] {
+        assertPackagesInUri(AppProvider.getSearchUri("dog", null), new String[]{
                 "com.dog",
                 "com.dog-statue",
                 "com.dog-food",
@@ -116,14 +115,14 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.rock", "Rock", "Mineral");
         insertAppWithCategory("com.banana", "Banana", "Food");
 
-        assertPackagesInCategory("Animal", new String[] {
+        assertPackagesInCategory("Animal", new String[]{
                 "com.dog",
                 "com.cat",
                 "com.crow",
                 "com.chicken",
         });
 
-        assertPackagesInCategory("animal", new String[] {
+        assertPackagesInCategory("animal", new String[]{
                 "com.dog",
                 "com.cat",
                 "com.crow",
@@ -136,12 +135,12 @@ public class CategoryProviderTest extends FDroidProviderTest {
                 "com.bird-statue",
         });
 
-        assertPackagesInCategory("Food", new String[] {
+        assertPackagesInCategory("Food", new String[]{
                 "com.chicken",
                 "com.banana",
         });
 
-        assertPackagesInCategory("Mineral", new String[] {
+        assertPackagesInCategory("Mineral", new String[]{
                 "com.rock",
                 "com.bird-statue",
         });
@@ -178,17 +177,18 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.banana", "Banana", "Vegetable");
         insertAppWithCategory("com.tomato", "Tomato", "Vegetable");
 
-        assertContainsOnly(topAppsFromCategory("Animal", 3), new String[] {"com.bird", "com.cat", "com.dog", });
-        assertContainsOnly(topAppsFromCategory("Animal", 2), new String[] {"com.bird", "com.cat", });
-        assertContainsOnly(topAppsFromCategory("Animal", 1), new String[] {"com.bird", });
+        assertContainsOnly(topAppsFromCategory("Animal", 3), new String[]{"com.bird", "com.cat", "com.dog"});
+        assertContainsOnly(topAppsFromCategory("Animal", 2), new String[]{"com.bird", "com.cat"});
+        assertContainsOnly(topAppsFromCategory("Animal", 1), new String[]{"com.bird"});
 
-        assertContainsOnly(topAppsFromCategory("Mineral", 2), new String[] {"com.boulder", "com.rock", });
+        assertContainsOnly(topAppsFromCategory("Mineral", 2), new String[]{"com.boulder", "com.rock"});
 
-        assertContainsOnly(topAppsFromCategory("Vegetable", 10), new String[] {"com.banana", "com.tomato", });
+        assertContainsOnly(topAppsFromCategory("Vegetable", 10), new String[]{"com.banana", "com.tomato"});
     }
 
     public String[] topAppsFromCategory(String category, int numToGet) {
-        List<App> apps = AppProvider.Helper.cursorToList(contentResolver.query(AppProvider.getTopFromCategoryUri(category, numToGet), Cols.ALL, null, null, Cols.NAME));
+        List<App> apps = AppProvider.Helper.cursorToList(contentResolver
+                .query(AppProvider.getTopFromCategoryUri(category, numToGet), Cols.ALL, null, null, Cols.NAME));
         String[] packageNames = new String[apps.size()];
         for (int i = 0; i < apps.size(); i++) {
             packageNames[i] = apps.get(i).packageName;
@@ -204,7 +204,7 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.banana", "Banana", "Vegetable");
 
         List<String> categories = categories();
-        String[] expected = new String[] {
+        String[] expected = new String[]{
                 "Animal",
                 "Mineral",
                 "Vegetable",
@@ -221,7 +221,7 @@ public class CategoryProviderTest extends FDroidProviderTest {
         insertAppWithCategory("com.banana.apple", "Banana", "Vegetable,Vegetable", mainRepo);
 
         List<String> categories = categories();
-        String[] expected = new String[] {
+        String[] expected = new String[]{
                 "Animal",
                 "Mineral",
                 "Vegetable",
@@ -232,10 +232,10 @@ public class CategoryProviderTest extends FDroidProviderTest {
 
         insertAppWithCategory("com.example.game", "Game",
                 "Running,Shooting,Jumping,Bleh,Sneh,Pleh,Blah,Test category," +
-                "The quick brown fox jumps over the lazy dog,With apostrophe's", additionalRepo);
+                        "The quick brown fox jumps over the lazy dog,With apostrophe's", additionalRepo);
 
         List<String> categoriesLonger = categories();
-        String[] expectedLonger = new String[] {
+        String[] expectedLonger = new String[]{
                 "Animal",
                 "Mineral",
                 "Vegetable",

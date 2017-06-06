@@ -77,7 +77,8 @@ public class SelectAppsView extends ListView implements
     protected void onFinishInflate() {
         super.onFinishInflate();
         adapter = new AppListAdapter(this, getContext(),
-                getContext().getContentResolver().query(InstalledAppProvider.getContentUri(), InstalledAppTable.Cols.ALL, null, null, null));
+                getContext().getContentResolver().query(InstalledAppProvider.getContentUri(),
+                        InstalledAppTable.Cols.ALL, null, null, null));
 
         setAdapter(adapter);
         setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -124,7 +125,8 @@ public class SelectAppsView extends ListView implements
 
     @Override
     public int getPreviousStep() {
-        // TODO: The STEP_JOIN_WIFI step isn't shown first, need to make it so that it is, or so that this doesn't go back there.
+        // TODO: The STEP_JOIN_WIFI step isn't shown first, need to make it
+        // so that it is, or so that this doesn't go back there.
         return getState().isConnectingWithPeer() ? SwapService.STEP_INTRO : SwapService.STEP_JOIN_WIFI;
     }
 

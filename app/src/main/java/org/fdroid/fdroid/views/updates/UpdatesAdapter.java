@@ -13,9 +13,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegatesManager;
-
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -34,31 +32,38 @@ import java.util.Set;
 
 /**
  * Manages the following types of information:
- *  * Apps marked for downloading (while the user is offline)
- *  * Currently downloading apps
- *  * Apps which have been downloaded (and need further action to install). This includes new installs and updates.
- *  * Reminders to users that they can donate to apps (only shown infrequently after several updates)
- *  * A list of apps which are eligible to be updated (for when the "Automatic Updates" option is disabled), including:
- *    + A summary of all apps to update including an "Update all" button and a "Show apps" button.
- *    + Once "Show apps" is expanded then each app is shown along with its own download button.
- *
+ * <ul>
+ * <li>Apps marked for downloading (while the user is offline)</li>
+ * <li>Currently downloading apps</li>
+ * <li>Apps which have been downloaded (and need further action to install)</li>
+ * </ul>
+ * This includes new installs and updates.
+ * <ul>
+ * <li>Reminders to users that they can donate to apps (only shown infrequently after several updates)</li>
+ * <li>A list of apps which are eligible to be updated (for when the "Automatic Updates" option is disabled),
+ * including:
+ * + A summary of all apps to update including an "Update all" button and a "Show apps" button.
+ * + Once "Show apps" is expanded then each app is shown along with its own download button.</li>
+ * </ul>
  * It does this by maintaining several different lists of interesting apps. Each list contains wrappers
  * around the piece of data it wants to render ({@link AppStatus}, {@link UpdateableApp}).
  * Instead of juggling the various viewTypes
  * to find out which position in the adapter corresponds to which view type, this is handled by
  * the {@link UpdatesAdapter#delegatesManager}.
- *
+ * <p>
  * There are a series of type-safe lists which hold the specific data this adapter is interested in.
  * This data is then collated into a single list (see {@link UpdatesAdapter#populateItems()}) which
  * is the actual thing the adapter binds too. At any point it is safe to clear the single list and
  * repopulate it from the original source lists of data. When this is done, the adapter will notify
  * the recycler view that its data has changed. Sometimes it will also ask the recycler view to
  * scroll to the newly added item (if attached to the recycler view).
- *
+ * <p>
  * TODO: If a user downloads an old version of an app (resulting in a new update being available
  * instantly), then we need to refresh the list of apps to update.
  */
-public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements LoaderManager.LoaderCallbacks<Cursor> {
+@SuppressWarnings("LineLength")
+public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+        implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private final AdapterDelegatesManager<List<AppUpdateData>> delegatesManager = new AdapterDelegatesManager<>();
     private final List<AppUpdateData> items = new ArrayList<>();
@@ -221,7 +226,8 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) { }
+    public void onLoaderReset(Loader<Cursor> loader) {
+    }
 
     /**
      * If this adapter is "active" then it is part of the current UI that the user is looking to.

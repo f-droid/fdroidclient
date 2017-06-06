@@ -56,6 +56,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("LineLength")
 public class UpdateService extends IntentService {
 
     private static final String TAG = "UpdateService";

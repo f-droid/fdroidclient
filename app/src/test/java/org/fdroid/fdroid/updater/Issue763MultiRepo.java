@@ -21,6 +21,7 @@ import static org.junit.Assert.assertEquals;
 
 @Config(constants = BuildConfig.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)
+@SuppressWarnings("LineLength")
 public class Issue763MultiRepo extends MultiRepoUpdaterTest {
 
     private Repo microGRepo;

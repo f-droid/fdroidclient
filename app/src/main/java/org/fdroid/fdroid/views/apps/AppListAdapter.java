@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
@@ -26,7 +25,8 @@ class AppListAdapter extends RecyclerView.Adapter<AppListItemController> {
 
     @Override
     public AppListItemController onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new AppListItemController(activity, activity.getLayoutInflater().inflate(R.layout.app_list_item, parent, false));
+        return new AppListItemController(activity, activity.getLayoutInflater()
+                .inflate(R.layout.app_list_item, parent, false));
     }
 
     @Override

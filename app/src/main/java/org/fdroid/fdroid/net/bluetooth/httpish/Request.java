@@ -18,7 +18,7 @@ public final class Request {
 
     public interface Methods {
         String HEAD = "HEAD";
-        String GET  = "GET";
+        String GET = "GET";
     }
 
     private String method;
@@ -73,10 +73,12 @@ public final class Request {
         Utils.debugLog(TAG, "Read " + headers.size() + " headers");
 
         if (method.equals(Methods.HEAD)) {
-            Utils.debugLog(TAG, "Request was a " + Methods.HEAD + " request, not including anything other than headers and status...");
+            Utils.debugLog(TAG, "Request was a " + Methods.HEAD
+                    + " request, not including anything other than headers and status...");
             return new Response(responseCode, headers);
         }
-        Utils.debugLog(TAG, "Request was a " + Methods.GET + " request, so including content stream in response...");
+        Utils.debugLog(TAG, "Request was a " + Methods.GET
+                + " request, so including content stream in response...");
         return new Response(responseCode, headers, connection.getInputStream());
     }
 
@@ -102,8 +104,8 @@ public final class Request {
             return false;
         }
 
-        method  = parts[0].toUpperCase(Locale.ENGLISH);
-        path    = parts[1];
+        method = parts[0].toUpperCase(Locale.ENGLISH);
+        path = parts[1];
         headers = readHeaders();
         return true;
     }

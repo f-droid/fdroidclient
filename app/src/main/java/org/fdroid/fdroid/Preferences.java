@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import info.guardianproject.netcipher.NetCipher;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
@@ -15,8 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
-import info.guardianproject.netcipher.NetCipher;
 
 /**
  * Handles shared preferences for FDroid, looking after the names of
@@ -320,7 +319,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public boolean filterAppsWithAntiFeatures() {
         if (!isInitialized(PREF_HIDE_ANTI_FEATURE_APPS)) {
             initialize(PREF_HIDE_ANTI_FEATURE_APPS);
-            filterAppsWithAntiFeatures = preferences.getBoolean(PREF_HIDE_ANTI_FEATURE_APPS, DEFAULT_HIDE_ANTI_FEATURE_APPS);
+            filterAppsWithAntiFeatures = preferences.getBoolean(PREF_HIDE_ANTI_FEATURE_APPS,
+                    DEFAULT_HIDE_ANTI_FEATURE_APPS);
         }
         return filterAppsWithAntiFeatures;
     }

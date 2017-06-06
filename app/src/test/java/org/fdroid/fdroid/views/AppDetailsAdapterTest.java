@@ -5,10 +5,8 @@ import android.content.ContentValues;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
 import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
@@ -41,7 +39,8 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
         Preferences.setup(context);
 
         Repo repo = RepoProviderTest.insertRepo(context, "http://www.example.com/fdroid/repo", "", "", "Test Repo");
-        app = AppProviderTest.insertApp(contentResolver, context, "com.example.app", "Test App", new ContentValues(), repo.getId());
+        app = AppProviderTest.insertApp(contentResolver, context, "com.example.app", "Test App",
+                new ContentValues(), repo.getId());
     }
 
     @After
@@ -61,7 +60,7 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
 
     @Test
     public void appWithScreenshots() {
-        app.phoneScreenshots = new String[] {"screenshot1.png", "screenshot2.png"};
+        app.phoneScreenshots = new String[]{"screenshot1.png", "screenshot2.png"};
 
         AppDetailsRecyclerViewAdapter adapter = new AppDetailsRecyclerViewAdapter(context, app, dummyCallbacks);
         populateViewHolders(adapter);
@@ -102,7 +101,7 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
         }
     }
 
-    private final AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks dummyCallbacks = new AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks() {
+    private final AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks dummyCallbacks = new AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks() { // NOCHECKSTYLE LineLength
         @Override
         public boolean isAppDownloading() {
             return false;

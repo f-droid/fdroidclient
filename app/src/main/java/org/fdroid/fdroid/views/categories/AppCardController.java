@@ -18,12 +18,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -33,12 +31,13 @@ import org.fdroid.fdroid.views.apps.FeatureImage;
 /**
  * The {@link AppCardController} can bind an app to several different layouts, as long as the layout
  * contains the following elements:
- *  + {@link R.id#icon} ({@link ImageView}, required)
- *  + {@link R.id#summary} ({@link TextView}, required)
- *  + {@link R.id#new_tag} ({@link TextView}, optional)
- *  + {@link R.id#featured_image} ({@link ImageView}, optional)
+ * + {@link R.id#icon} ({@link ImageView}, required)
+ * + {@link R.id#summary} ({@link TextView}, required)
+ * + {@link R.id#new_tag} ({@link TextView}, optional)
+ * + {@link R.id#featured_image} ({@link ImageView}, optional)
  */
-public class AppCardController extends RecyclerView.ViewHolder implements ImageLoadingListener, View.OnClickListener {
+public class AppCardController extends RecyclerView.ViewHolder
+        implements ImageLoadingListener, View.OnClickListener {
 
     /**
      * After this many days, don't consider showing the "New" tag next to an app.
@@ -124,7 +123,8 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
             featuredImage.setColour(ContextCompat.getColor(activity, R.color.fdroid_blue));
             featuredImage.setImageDrawable(null);
 
-            // Note: We could call the convenience function loadImageAndDisplay(ImageLoader, DisplayImageOptions, String, String)
+            // Note: We could call the convenience function
+            // loadImageAndDisplay(ImageLoader, DisplayImageOptions, String, String)
             // which includes a fallback for when currentApp.featureGraphic is empty. However we need
             // to take care of also loading the icon (regardless of whether there is a featureGraphic
             // or not for this app) so that we can display the icon to the user. We will use the
@@ -132,7 +132,8 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
             // from that icon and assign to the `FeatureImage` (or whether we should wait for the
             // feature image to be loaded).
             if (!TextUtils.isEmpty(app.featureGraphic)) {
-                featuredImage.loadImageAndDisplay(ImageLoader.getInstance(), displayImageOptions, app.featureGraphic);
+                featuredImage.loadImageAndDisplay(ImageLoader.getInstance(),
+                        displayImageOptions, app.featureGraphic);
             }
         }
     }
@@ -158,12 +159,12 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
         Intent intent = new Intent(activity, AppDetails2.class);
         intent.putExtra(AppDetails2.EXTRA_APPID, currentApp.packageName);
         if (Build.VERSION.SDK_INT >= 21) {
-            Pair<View, String> iconTransitionPair = Pair.create((View) icon, activity.getString(R.string.transition_app_item_icon));
+            Pair<View, String> iconTransitionPair = Pair.create((View) icon,
+                    activity.getString(R.string.transition_app_item_icon));
 
-            @SuppressWarnings("unchecked") // We are passing the right type as the second varargs argument (i.e. a Pair<View, String>).
-            Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, iconTransitionPair).toBundle();
-
-            activity.startActivity(intent, bundle);
+            @SuppressWarnings("unchecked") // the right type is passed as 2nd varargs arg: Pair<View, String>
+            Bundle b = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, iconTransitionPair).toBundle();
+            activity.startActivity(intent, b);
         } else {
             activity.startActivity(intent);
         }
@@ -180,7 +181,10 @@ public class AppCardController extends RecyclerView.ViewHolder implements ImageL
 
     @Override
     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-        if (currentApp != null && TextUtils.isEmpty(currentApp.featureGraphic) && featuredImage != null && loadedImage != null) {
+        if (currentApp != null
+                && TextUtils.isEmpty(currentApp.featureGraphic)
+                && featuredImage != null
+                && loadedImage != null) {
             new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
                 @Override
                 public void onGenerated(Palette palette) {

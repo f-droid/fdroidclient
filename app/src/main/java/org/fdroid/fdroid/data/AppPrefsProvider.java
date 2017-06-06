@@ -7,14 +7,14 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
 import org.fdroid.fdroid.data.Schema.AppPrefsTable;
 import org.fdroid.fdroid.data.Schema.AppPrefsTable.Cols;
 
 public class AppPrefsProvider extends FDroidProvider {
 
     public static final class Helper {
-        private Helper() { }
+        private Helper() {
+        }
 
         public static void update(Context context, App app, AppPrefs prefs) {
             ContentValues values = new ContentValues(3);
@@ -37,7 +37,8 @@ public class AppPrefsProvider extends FDroidProvider {
 
         @Nullable
         public static AppPrefs getPrefsOrNull(Context context, App app) {
-            Cursor cursor = context.getContentResolver().query(getAppUri(app.packageName), Cols.ALL, null, null, null);
+            Cursor cursor = context.getContentResolver().query(getAppUri(app.packageName), Cols.ALL,
+                    null, null, null);
             if (cursor == null) {
                 return null;
             }
@@ -114,7 +115,8 @@ public class AppPrefsProvider extends FDroidProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
+    public Cursor query(Uri uri, String[] projection,
+                        String customSelection, String[] selectionArgs, String sortOrder) {
         if (MATCHER.match(uri) != CODE_SINGLE) {
             throw new UnsupportedOperationException("Invalid URI for app content provider: " + uri);
         }

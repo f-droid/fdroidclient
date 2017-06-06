@@ -30,6 +30,7 @@ import static org.junit.Assert.assertTrue;
 
 @Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)
+@SuppressWarnings("LineLength")
 public class AppProviderTest extends FDroidProviderTest {
 
     private static final String[] PROJ = Cols.ALL;

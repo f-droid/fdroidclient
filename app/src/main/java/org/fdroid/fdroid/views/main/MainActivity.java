@@ -12,15 +12,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import android.support.v7.widget.RecyclerView;
-
 import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
@@ -37,17 +35,17 @@ import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 /**
  * Main view shown to users upon starting F-Droid.
- *
+ * <p>
  * Shows a bottom navigation bar, with the following entries:
- *  + Whats new
- *  + Categories list
- *  + App swap
- *  + Updates
- *  + Settings
- *
- *  Users navigate between items by using the bottom navigation bar, or by swiping left and right.
- *  When switching from one screen to the next, we stay within this activity. The new screen will
- *  get inflated (if required)
+ * + Whats new
+ * + Categories list
+ * + App swap
+ * + Updates
+ * + Settings
+ * <p>
+ * Users navigate between items by using the bottom navigation bar, or by swiping left and right.
+ * When switching from one screen to the next, we stay within this activity. The new screen will
+ * get inflated (if required)
  */
 public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {
 
@@ -105,7 +103,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 .addItem(new BottomNavigationItem(R.drawable.ic_settings, R.string.menu_settings))
                 .initialise();
 
-        IntentFilter updateableAppsFilter = new IntentFilter(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
+        IntentFilter updateableAppsFilter = new IntentFilter(
+                AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
         updateableAppsFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
         LocalBroadcastManager.getInstance(this).registerReceiver(onUpdateableAppsChanged, updateableAppsFilter);
 
@@ -349,10 +348,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
      * There are a bunch of reasons why we would get notified about app statuses.
      * The ones we are interested in are those which would result in the "items requiring user interaction"
      * to increase or decrease:
-     *  * Bulk updates of ready-to-install-apps (relating to {@link org.fdroid.fdroid.AppUpdateStatusService}.
-     *  * Change in status to:
-     *    * {@link AppUpdateStatusManager.Status#ReadyToInstall} (Causes the count to go UP by one)
-     *    * {@link AppUpdateStatusManager.Status#Installed} (Causes the count to go DOWN by one)
+     * * Bulk updates of ready-to-install-apps (relating to {@link org.fdroid.fdroid.AppUpdateStatusService}.
+     * * Change in status to:
+     * * {@link AppUpdateStatusManager.Status#ReadyToInstall} (Causes the count to go UP by one)
+     * * {@link AppUpdateStatusManager.Status#Installed} (Causes the count to go DOWN by one)
      */
     private final BroadcastReceiver onUpdateableAppsChanged = new BroadcastReceiver() {
         @Override
@@ -362,14 +361,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(context);
 
             if (AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED.equals(intent.getAction()) &&
-                    AppUpdateStatusManager.REASON_READY_TO_INSTALL.equals(intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE))) {
+                    AppUpdateStatusManager.REASON_READY_TO_INSTALL.equals(
+                            intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE))) {
                 updateBadge = true;
             }
 
             // Check if we have moved into the ReadyToInstall or Installed state.
-            AppUpdateStatusManager.AppUpdateStatus status = manager.get(intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL));
+            AppUpdateStatusManager.AppUpdateStatus status = manager.get(
+                    intent.getStringExtra(AppUpdateStatusManager.EXTRA_APK_URL));
             boolean isStatusChange = intent.getBooleanExtra(AppUpdateStatusManager.EXTRA_IS_STATUS_UPDATE, false);
-            if (isStatusChange && status != null && (status.status == AppUpdateStatusManager.Status.ReadyToInstall || status.status == AppUpdateStatusManager.Status.Installed)) {
+            if (isStatusChange
+                    && status != null
+                    && (status.status == AppUpdateStatusManager.Status.ReadyToInstall || status.status == AppUpdateStatusManager.Status.Installed)) { // NOCHECKSTYLE LineLength
                 updateBadge = true;
             }
 

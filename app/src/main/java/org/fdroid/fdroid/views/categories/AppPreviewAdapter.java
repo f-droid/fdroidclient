@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
@@ -19,7 +18,8 @@ class AppPreviewAdapter extends RecyclerView.Adapter<AppCardController> {
 
     @Override
     public AppCardController onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new AppCardController(activity, activity.getLayoutInflater().inflate(R.layout.app_card_normal, parent, false));
+        return new AppCardController(activity, activity.getLayoutInflater()
+                .inflate(R.layout.app_card_normal, parent, false));
     }
 
     @Override

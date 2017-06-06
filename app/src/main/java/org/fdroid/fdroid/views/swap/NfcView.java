@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
-
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.SwapService;
@@ -56,7 +55,8 @@ public class NfcView extends RelativeLayout implements SwapWorkflowActivity.Inne
     public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.swap_skip, menu);
         MenuItem next = menu.findItem(R.id.action_next);
-        MenuItemCompat.setShowAsAction(next, MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+        MenuItemCompat.setShowAsAction(next,
+                MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

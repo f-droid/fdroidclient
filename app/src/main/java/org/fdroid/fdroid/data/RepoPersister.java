@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("LineLength")
 public class RepoPersister {
 
     private static final String TAG = "RepoPersister";

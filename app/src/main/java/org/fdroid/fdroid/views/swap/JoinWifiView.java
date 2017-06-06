@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.SwapService;
@@ -111,7 +110,8 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
     public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.swap_next, menu);
         MenuItem next = menu.findItem(R.id.action_next);
-        MenuItemCompat.setShowAsAction(next, MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+        MenuItemCompat.setShowAsAction(next,
+                MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -119,7 +119,7 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
                 return true;
             }
         });
-        return  true;
+        return true;
     }
 
     @Override

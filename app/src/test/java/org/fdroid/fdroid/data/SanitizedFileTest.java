@@ -29,7 +29,7 @@ public class SanitizedFileTest {
 
         assertEquals("safe", safeNotSanitized.getName());
         assertEquals("$%^safe-and_bleh.boo*@~", nonEvilNotSanitized.getName());
-        assertEquals("shadow;", evilNotSanitized.getName()); // Should be ;rm /etc/shadow; but the forward slashes are naughty.
+        assertEquals("shadow;", evilNotSanitized.getName());
 
         SanitizedFile safeSanitized = new SanitizedFile(directory, safeFile);
         SanitizedFile nonEvilSanitized = new SanitizedFile(directory, nonEvilFile);

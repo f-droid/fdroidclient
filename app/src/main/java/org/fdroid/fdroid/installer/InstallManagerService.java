@@ -62,6 +62,7 @@ import java.io.IOException;
  *
  * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
  */
+@SuppressWarnings("LineLength")
 public class InstallManagerService extends Service {
     private static final String TAG = "InstallManagerService";
 
