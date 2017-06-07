@@ -73,7 +73,7 @@ public class InstalledAppProviderService extends IntentService {
         // the list of installed apps and insert them to the database...
         packageChangeNotifier
                 .subscribeOn(Schedulers.newThread())
-                .debounce(1, TimeUnit.SECONDS)
+                .debounce(3, TimeUnit.SECONDS)
                 .subscribe(new Action1<String>() {
                         @Override
                         public void call(String packageName) {
