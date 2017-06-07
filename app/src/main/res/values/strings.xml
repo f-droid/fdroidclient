@@ -18,6 +18,8 @@
     <string name="unstable_updates_summary">Suggest updates to unstable versions</string>
     <string name="keep_install_history">Keep install history</string>
     <string name="keep_install_history_summary">Store a log of all installs and uninstalls inside F-Droid</string>
+    <string name="force_old_index">Force old index format</string>
+    <string name="force_old_index_summary">In case there are bugs or compatibility issues, use the XML app index</string>
     <string name="other">Other</string>
 
     <string name="update_interval">Automatic update interval</string>
