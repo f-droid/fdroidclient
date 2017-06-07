@@ -3,6 +3,7 @@ package org.fdroid.fdroid.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
@@ -26,7 +27,11 @@ public class PackageManagerReceiver extends BroadcastReceiver {
             if (Intent.ACTION_PACKAGE_ADDED.equals(action)) {
                 InstalledAppProviderService.insert(context, intent.getData());
             } else if (Intent.ACTION_PACKAGE_REMOVED.equals(action)) {
-                InstalledAppProviderService.delete(context, intent.getData());
+                if (TextUtils.equals(context.getPackageName(), intent.getData().getSchemeSpecificPart())) {
+                    Utils.debugLog(TAG, "Ignoring request to remove ourselves from cache.");
+                } else {
+                    InstalledAppProviderService.delete(context, intent.getData());
+                }
             } else {
                 Utils.debugLog(TAG, "unsupported action: " + action + " " + intent);
             }

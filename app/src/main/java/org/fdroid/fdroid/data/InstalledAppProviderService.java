@@ -164,6 +164,7 @@ public class InstalledAppProviderService extends IntentService {
      * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/819>issue #819</a>
      */
     public static void compareToPackageManager(Context context) {
+        Utils.debugLog(TAG, "Comparing package manager to our installed app cache.");
         Map<String, Long> cachedInfo = InstalledAppProvider.Helper.all(context);
 
         List<PackageInfo> packageInfoList = context.getPackageManager()
