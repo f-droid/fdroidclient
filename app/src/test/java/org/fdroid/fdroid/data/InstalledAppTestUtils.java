@@ -3,6 +3,8 @@ package org.fdroid.fdroid.data;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
+import android.content.pm.Signature;
+import android.support.annotation.Nullable;
 
 public class InstalledAppTestUtils {
 
@@ -13,12 +15,22 @@ public class InstalledAppTestUtils {
     public static void install(Context context,
                                String packageName,
                                int versionCode, String versionName) {
+        install(context, packageName, versionCode, versionName, null);
+    }
+
+    public static void install(Context context,
+                               String packageName,
+                               int versionCode, String versionName,
+                               @Nullable String signature) {
         PackageInfo info = new PackageInfo();
         info.packageName = packageName;
         info.versionCode = versionCode;
         info.versionName = versionName;
         info.applicationInfo = new ApplicationInfo();
         info.applicationInfo.publicSourceDir = "/tmp/mock-location";
+        if (signature != null) {
+            info.signatures = new Signature[]{new Signature(signature)};
+        }
         String hashType = "sha256";
         String hash = "00112233445566778899aabbccddeeff";
         InstalledAppProviderService.insertAppIntoDb(context, info, hashType, hash);

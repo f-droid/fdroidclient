@@ -196,11 +196,16 @@ public class Assert {
 
         values.putAll(additionalValues);
 
+        // Don't hard code to 1, let consumers override it in additionalValues then ask for it back.
+        int repoId = values.getAsInteger(AppMetadataTable.Cols.REPO_ID);
+
         Uri uri = AppProvider.getContentUri();
 
         context.getContentResolver().insert(uri, values);
-        return AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1,
-                AppMetadataTable.Cols.ALL);
+        App app = AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName,
+                repoId, AppMetadataTable.Cols.ALL);
+        assertNotNull(app);
+        return app;
     }
 
     public static App ensureApp(Context context, String packageName) {
