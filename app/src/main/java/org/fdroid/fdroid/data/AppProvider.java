@@ -953,6 +953,8 @@ public class AppProvider extends FDroidProvider {
      * with the closest version code to that, without going over.
      * If the app is not compatible at all (i.e. no versions were compatible)
      * then we take the highest, otherwise we take the highest compatible version.
+     * If the app is installed, then all apks signed by a different certificate are
+     * ignored for the purpose of this calculation.
      *
      * @see #updateSuggestedFromLatest()
      */
@@ -1024,18 +1026,20 @@ public class AppProvider extends FDroidProvider {
     private static String restrictToSameSigIfInstalled(String appTable, String apkTable) {
         String installedSig =
                 "(SELECT installed." + InstalledAppTable.Cols.SIGNATURE +
-                        " FROM " + InstalledAppTable.NAME + " AS installed " +
-                        " JOIN " + PackageTable.NAME + " AS pkg ON " +
-                        "   (pkg." + PackageTable.Cols.ROW_ID + " = " + appTable + "." + Cols.PACKAGE_ID + " AND " +
-                        "    installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = pkg." + PackageTable.Cols.PACKAGE_NAME + ") " +
-                        ")";
+                " FROM " + InstalledAppTable.NAME + " AS installed " +
+                " JOIN " + PackageTable.NAME + " AS pkg ON " +
+                "   (pkg." + PackageTable.Cols.ROW_ID + " = " + appTable + "." + Cols.PACKAGE_ID + " AND " +
+                "    installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = pkg." + PackageTable.Cols.PACKAGE_NAME + ") " +
+                ")";
 
-        // If the installed sig is not null, then the apk signature will need to match that.
-        // If the installed sig IS null, then it will check whether the apk sig matches the apk sig
-        // (i.e. it will always return the app).
-        // This would be better writen as: `installedSig IS NULL OR installedSig = apk.sig`,
+        // Ideally, the check below would actually be written as:
+        //   `installedSig IS NULL OR installedSig = apk.sig`
         // however that would require a separate sub query for each `installedSig` which is more
-        // expensive. This is a less expressive way to write the same thing.
+        // expensive. Using a COALESCE is a less expressive way to write the same thing with only
+        // a single subquery.
+        // Also note that the `installedSig IS NULL` is not because there is a `NULL` entry in the
+        // installed table (this is impossible), but rather because the subselect above returned
+        // zero rows.
         return apkTable + "." + ApkTable.Cols.SIGNATURE + " = " +
                 "COALESCE(" + installedSig + ", " + apkTable + "." + ApkTable.Cols.SIGNATURE + ")";
     }
