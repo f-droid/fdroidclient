@@ -206,6 +206,7 @@
             android:layout_marginTop="16dp"
             android:scrollbars="none"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textIsSelectable="true"
             tools:text="This is the app description of this awezome app. It can be several lines long, but will be truncated at just a few if it is. A 'read more' button will appear so that you can expand the view and view the full text, if you wish. Yes, it will be blue and beautiful." />
 
         <TextView
