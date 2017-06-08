@@ -120,7 +120,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     }
 
     public static int getBackgroundColour(Context context, @NonNull String categoryName) {
-        int colourId = getCategoryResource(context, categoryName, "color", false);
+        int colourId = getCategoryResource(context, categoryName, "color", true);
         if (colourId > 0) {
             return ContextCompat.getColor(context, colourId);
         }
