@@ -977,6 +977,7 @@ public class AppProvider extends FDroidProvider {
                 " FROM " + apk +
                 "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
                 " WHERE " +
+                    restrictToSameSigIfInstalled(app, apk) + " AND " +
                     app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
                     restrictToStable +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
@@ -1007,11 +1008,36 @@ public class AppProvider extends FDroidProvider {
                 " FROM " + apk +
                 "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
                 " WHERE " +
+                    restrictToSameSigIfInstalled(app, apk) + " AND " +
                     app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
 
         db().execSQL(updateSql);
+    }
+
+    /**
+     * Limits results for an apk query. If the app in question is installed, then will limit apk
+     * results to those matching the same signature as the installed one. Otherwise, allows all apks
+     * to be returned.
+     */
+    private static String restrictToSameSigIfInstalled(String appTable, String apkTable) {
+        String installedSig =
+                "(SELECT installed." + InstalledAppTable.Cols.SIGNATURE +
+                        " FROM " + InstalledAppTable.NAME + " AS installed " +
+                        " JOIN " + PackageTable.NAME + " AS pkg ON " +
+                        "   (pkg." + PackageTable.Cols.ROW_ID + " = " + appTable + "." + Cols.PACKAGE_ID + " AND " +
+                        "    installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = pkg." + PackageTable.Cols.PACKAGE_NAME + ") " +
+                        ")";
+
+        // If the installed sig is not null, then the apk signature will need to match that.
+        // If the installed sig IS null, then it will check whether the apk sig matches the apk sig
+        // (i.e. it will always return the app).
+        // This would be better writen as: `installedSig IS NULL OR installedSig = apk.sig`,
+        // however that would require a separate sub query for each `installedSig` which is more
+        // expensive. This is a less expressive way to write the same thing.
+        return apkTable + "." + ApkTable.Cols.SIGNATURE + " = " +
+                "COALESCE(" + installedSig + ", " + apkTable + "." + ApkTable.Cols.SIGNATURE + ")";
     }
 
     private void updateIconUrls() {
