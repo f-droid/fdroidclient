@@ -108,8 +108,7 @@ class DBHelper extends SQLiteOpenHelper {
             + ApkTable.Cols.ADDED_DATE + " string, "
             + ApkTable.Cols.IS_COMPATIBLE + " int not null, "
             + ApkTable.Cols.INCOMPATIBLE_REASONS + " text, "
-            + ApkTable.Cols.ANTI_FEATURES + " string, "
-            + "PRIMARY KEY (" + ApkTable.Cols.APP_ID + ", " + ApkTable.Cols.VERSION_CODE + ", " + ApkTable.Cols.REPO_ID + ")"
+            + ApkTable.Cols.ANTI_FEATURES + " string"
             + ");";
 
     static final String CREATE_TABLE_APP_METADATA = "CREATE TABLE " + AppMetadataTable.NAME
@@ -193,7 +192,7 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
 
-    protected static final int DB_VERSION = 69;
+    protected static final int DB_VERSION = 70;
 
     private final Context context;
 
@@ -277,6 +276,18 @@ class DBHelper extends SQLiteOpenHelper {
         addIndexV1AppFields(db, oldVersion);
         recalculatePreferredMetadata(db, oldVersion);
         addWhatsNewAndVideo(db, oldVersion);
+        dropApkPrimaryKey(db, oldVersion);
+    }
+
+    private void dropApkPrimaryKey(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 70) {
+            return;
+        }
+
+        // versionCode + repo is no longer a valid primary key given a repo can have multiple apks
+        // with the same versionCode, signed by different certificates.
+        Log.i(TAG, "Dropping composite primary key on apk table in favour of sqlite's rowid");
+        resetTransient(db);
     }
 
     private void addWhatsNewAndVideo(SQLiteDatabase db, int oldVersion) {

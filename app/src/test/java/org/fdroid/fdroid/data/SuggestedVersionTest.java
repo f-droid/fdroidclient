@@ -73,11 +73,6 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         assertEquals(3, found3.suggestedVersionCode);
     }
 
-    /**
-     * TODO: Failing for two reasons:
-     *  * We don't support suggested versioncode with multi-sig.
-     *  * More importantly, we don't even support multi-sig due to the [appId, vercode, repo] primary key.
-     */
     @Test
     public void singleRepoMultiSig() {
         App singleApp = insertApp(context, "single.app", "Single App", 4, "https://simple.repo");
