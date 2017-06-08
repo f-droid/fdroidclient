@@ -985,7 +985,7 @@ public class AppProvider extends FDroidProvider {
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 ";
 
-        db().execSQL(updateSql);
+        LoggingQuery.execSQL(db(), updateSql);
     }
 
     /**
@@ -1015,7 +1015,7 @@ public class AppProvider extends FDroidProvider {
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
 
-        db().execSQL(updateSql);
+        LoggingQuery.execSQL(db(), updateSql);
     }
 
     /**

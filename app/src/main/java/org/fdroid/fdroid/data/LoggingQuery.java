@@ -66,6 +66,20 @@ final class LoggingQuery {
         return db.rawQuery(query, queryArgs);
     }
 
+    private void execSQLInternal() {
+        if (BuildConfig.DEBUG) {
+            long startTime = System.currentTimeMillis();
+            db.execSQL(query);
+            long queryDuration = System.currentTimeMillis() - startTime;
+
+            if (queryDuration >= SLOW_QUERY_DURATION) {
+                logSlowQuery(queryDuration);
+            }
+        } else {
+            db.execSQL(query);
+        }
+    }
+
     /**
      * Log the query and its duration to the console. In addition, execute an "EXPLAIN QUERY PLAN"
      * for the query in question so that the query can be diagnosed (https://sqlite.org/eqp.html)
@@ -115,5 +129,9 @@ final class LoggingQuery {
 
     public static Cursor query(SQLiteDatabase db, String query, String[] queryBuilderArgs) {
         return new LoggingQuery(db, query, queryBuilderArgs).rawQuery();
+    }
+
+    public static void execSQL(SQLiteDatabase db, String sql) {
+        new LoggingQuery(db, sql, null).execSQLInternal();
     }
 }
