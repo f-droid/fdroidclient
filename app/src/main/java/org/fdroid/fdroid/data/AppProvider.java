@@ -953,6 +953,8 @@ public class AppProvider extends FDroidProvider {
      * with the closest version code to that, without going over.
      * If the app is not compatible at all (i.e. no versions were compatible)
      * then we take the highest, otherwise we take the highest compatible version.
+     *
+     * @see #updateSuggestedFromLatest()
      */
     private void updateSuggestedFromUpstream() {
         Utils.debugLog(TAG, "Calculating suggested versions for all apps which specify an upstream version code.");
@@ -963,40 +965,24 @@ public class AppProvider extends FDroidProvider {
         final boolean unstableUpdates = Preferences.get().getUnstableUpdates();
         String restrictToStable = unstableUpdates ? "" : (apk + "." + ApkTable.Cols.VERSION_CODE + " <= " + app + "." + Cols.UPSTREAM_VERSION_CODE + " AND ");
 
+        // The join onto `appForThisApk` is to ensure that the MAX(apk.versionCode) is chosen from
+        // all apps regardless of repo. If we joined directly onto the outer `app` table we are
+        // in the process of updating, then it would be limited to only apks from the same repo.
+        // By adding the extra join, and then joining based on the packageId of this inner app table
+        // and the app table we are updating, we take into account all apks for this app.
+
         String updateSql =
                 "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
+                "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
                 " WHERE " +
-                    joinToApksRegardlessOfRepo() + " AND " +
+                    app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
                     restrictToStable +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 ";
 
         db().execSQL(updateSql);
-    }
-
-    /**
-     * Ensure that when we select a list of {@link ApkTable} rows for which to calculate the
-     * {@link Cols#SUGGESTED_VERSION_CODE}, that we select all apks belonging to the same package,
-     * regardless of which repo they come from. We can't just join {@link ApkTable} onto the
-     * {@link AppMetadataTable}, because the {@link AppMetadataTable} table is specific to a repo.
-     *
-     * This is required so that apps always have the highest possible
-     * {@link Cols#SUGGESTED_VERSION_CODE}, regardless of the repository priorities. Without this,
-     * then each {@link AppMetadataTable} row will have a different {@link Cols#SUGGESTED_VERSION_CODE}
-     * depending on which repo it came from. With this, each {@link AppMetadataTable} row has the
-     * same {@link Cols#SUGGESTED_VERSION_CODE}, even if that version is from a different repo.
-     */
-    private String joinToApksRegardlessOfRepo() {
-        final String apk = getApkTableName();
-        final String app = getTableName();
-
-        return app + "." + Cols.PACKAGE_ID + " = (" +
-                    " SELECT innerAppName." + Cols.PACKAGE_ID +
-                    " FROM " + app + " as innerAppName " +
-                    " WHERE innerAppName." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID +
-                ") ";
     }
 
     /**
@@ -1006,6 +992,8 @@ public class AppProvider extends FDroidProvider {
      * If the suggested version is null, it means that we could not figure it
      * out from the upstream vercode. In such a case, fall back to the simpler
      * algorithm as if upstreamVercode was 0.
+     *
+     * @see #updateSuggestedFromUpstream()
      */
     private void updateSuggestedFromLatest() {
         Utils.debugLog(TAG, "Calculating suggested versions for all apps which don't specify an upstream version code.");
@@ -1017,8 +1005,9 @@ public class AppProvider extends FDroidProvider {
                 "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
+                "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
                 " WHERE " +
-                    joinToApksRegardlessOfRepo() + " AND " +
+                    app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
 
