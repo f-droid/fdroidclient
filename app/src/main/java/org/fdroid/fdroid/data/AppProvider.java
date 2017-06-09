@@ -961,9 +961,9 @@ public class AppProvider extends FDroidProvider {
     private void updateSuggestedFromUpstream() {
         Utils.debugLog(TAG, "Calculating suggested versions for all NON-INSTALLED apps which specify an upstream version code.");
 
-        Utils.Profiler profiler = new Utils.Profiler("UpdateSuggestedApks");
         final String apk = getApkTableName();
         final String app = getTableName();
+        final String installed = InstalledAppTable.NAME;
 
         final boolean unstableUpdates = Preferences.get().getUnstableUpdates();
         String restrictToStable = unstableUpdates ? "" : (apk + "." + ApkTable.Cols.VERSION_CODE + " <= " + app + "." + Cols.UPSTREAM_VERSION_CODE + " AND ");
@@ -974,20 +974,28 @@ public class AppProvider extends FDroidProvider {
         // By adding the extra join, and then joining based on the packageId of this inner app table
         // and the app table we are updating, we take into account all apks for this app.
 
+        // The check apk.sig = COALESCE(installed.sig, apk.sig) would ideally be better written as:
+        //   `installedSig IS NULL OR installedSig = apk.sig`
+        // however that would require a separate sub query for each `installedSig` which is more
+        // expensive. Using a COALESCE is a less expressive way to write the same thing with only
+        // a single subquery.
+        // Also note that the `installedSig IS NULL` is not because there is a `NULL` entry in the
+        // installed table (this is impossible), but rather because the subselect above returned
+        // zero rows.
         String updateSql =
                 "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
                 "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
+                        "   LEFT JOIN " + installed + " ON (" + installed + "." + InstalledAppTable.Cols.PACKAGE_ID + " = " + app + "." + Cols.PACKAGE_ID + ") " +
                 " WHERE " +
-                    restrictToSameSigIfInstalled(app, apk) + " AND " +
                     app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
+                    apk + "." + ApkTable.Cols.SIGNATURE + " = COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
                     restrictToStable +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 ";
 
         LoggingQuery.execSQL(db(), updateSql);
-        profiler.log("Done");
     }
 
     /**
@@ -1005,45 +1013,21 @@ public class AppProvider extends FDroidProvider {
 
         final String apk = getApkTableName();
         final String app = getTableName();
+        final String installed = InstalledAppTable.NAME;
 
         String updateSql =
                 "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
                 "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
+                "   LEFT JOIN " + installed + " ON (" + installed + "." + InstalledAppTable.Cols.PACKAGE_ID + " = " + app + "." + Cols.PACKAGE_ID + ") " +
                 " WHERE " +
-                    restrictToSameSigIfInstalled(app, apk) + " AND " +
                     app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
+                    apk + "." + ApkTable.Cols.SIGNATURE + " = COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
 
         LoggingQuery.execSQL(db(), updateSql);
-    }
-
-    /**
-     * Limits results for an apk query. If the app in question is installed, then will limit apk
-     * results to those matching the same signature as the installed one. Otherwise, allows all apks
-     * to be returned.
-     */
-    private static String restrictToSameSigIfInstalled(String appTable, String apkTable) {
-        String installedSig =
-                "(SELECT installed." + InstalledAppTable.Cols.SIGNATURE +
-                " FROM " + InstalledAppTable.NAME + " AS installed " +
-                " JOIN " + PackageTable.NAME + " AS pkg ON " +
-                "   (pkg." + PackageTable.Cols.ROW_ID + " = " + appTable + "." + Cols.PACKAGE_ID + " AND " +
-                "    installed." + InstalledAppTable.Cols.PACKAGE_ID + " = pkg." + PackageTable.Cols.ROW_ID + ") " +
-                ")";
-
-        // Ideally, the check below would actually be written as:
-        //   `installedSig IS NULL OR installedSig = apk.sig`
-        // however that would require a separate sub query for each `installedSig` which is more
-        // expensive. Using a COALESCE is a less expressive way to write the same thing with only
-        // a single subquery.
-        // Also note that the `installedSig IS NULL` is not because there is a `NULL` entry in the
-        // installed table (this is impossible), but rather because the subselect above returned
-        // zero rows.
-        return apkTable + "." + ApkTable.Cols.SIGNATURE + " = " +
-                "COALESCE(" + installedSig + ", " + apkTable + "." + ApkTable.Cols.SIGNATURE + ")";
     }
 
     private void updateIconUrls() {
