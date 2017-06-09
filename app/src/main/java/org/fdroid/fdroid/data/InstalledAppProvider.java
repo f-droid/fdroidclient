@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -41,7 +42,7 @@ public class InstalledAppProvider extends FDroidProvider {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
                         cachedInfo.put(
-                                cursor.getString(cursor.getColumnIndex(Cols.PACKAGE_NAME)),
+                                cursor.getString(cursor.getColumnIndex(Cols.Package.NAME)),
                                 cursor.getLong(cursor.getColumnIndex(Cols.LAST_UPDATE_TIME))
                         );
                         cursor.moveToNext();
@@ -136,12 +137,42 @@ public class InstalledAppProvider extends FDroidProvider {
     }
 
     private QuerySelection queryApp(String packageName) {
-        return new QuerySelection(Cols.PACKAGE_NAME + " = ?", new String[]{packageName});
+        return new QuerySelection(Cols.Package.NAME + " = ?", new String[]{packageName});
+    }
+
+    private QuerySelection queryAppSubQuery(String packageName) {
+        String pkg = Schema.PackageTable.NAME;
+        String subQuery = "(" +
+                " SELECT " + pkg + "." + Schema.PackageTable.Cols.ROW_ID +
+                " FROM " + pkg +
+                " WHERE " + pkg + "." + Schema.PackageTable.Cols.PACKAGE_NAME + " = ?)";
+        String query = Cols.PACKAGE_ID + " = " + subQuery;
+        return new QuerySelection(query, new String[]{packageName});
     }
 
     private QuerySelection querySearch(String query) {
         return new QuerySelection(Cols.APPLICATION_LABEL + " LIKE ?",
                 new String[]{"%" + query + "%"});
+    }
+
+    private static class QueryBuilder extends org.fdroid.fdroid.data.QueryBuilder {
+        @Override
+        protected String getRequiredTables() {
+            String pkg = Schema.PackageTable.NAME;
+            String installed = InstalledAppTable.NAME;
+            return installed + " JOIN " + pkg +
+                    " ON (" + pkg + "." + Schema.PackageTable.Cols.ROW_ID + " = " +
+                    installed + "." + Cols.PACKAGE_ID + ")";
+        }
+
+        @Override
+        public void addField(String field) {
+            if (TextUtils.equals(field, Cols.Package.NAME)) {
+                appendField(Schema.PackageTable.Cols.PACKAGE_NAME, Schema.PackageTable.NAME, field);
+            } else {
+                appendField(field, InstalledAppTable.NAME);
+            }
+        }
     }
 
     @Override
@@ -170,8 +201,15 @@ public class InstalledAppProvider extends FDroidProvider {
                 throw new UnsupportedOperationException(message);
         }
 
-        Cursor cursor = db().query(getTableName(), projection,
-                selection.getSelection(), selection.getArgs(), null, null, sortOrder);
+        QueryBuilder query = new QueryBuilder();
+        query.addFields(projection);
+        if (projection.length == 0) {
+            query.addField(Cols._ID);
+        }
+        query.addSelection(selection);
+        query.addOrderBy(sortOrder);
+
+        Cursor cursor = db().rawQuery(query.toString(), selection.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
@@ -184,7 +222,7 @@ public class InstalledAppProvider extends FDroidProvider {
         }
 
         QuerySelection query = new QuerySelection(where, whereArgs);
-        query = query.add(queryApp(uri.getLastPathSegment()));
+        query = query.add(queryAppSubQuery(uri.getLastPathSegment()));
 
         return db().delete(getTableName(), query.getSelection(), query.getArgs());
     }
@@ -196,9 +234,16 @@ public class InstalledAppProvider extends FDroidProvider {
             throw new UnsupportedOperationException("Insert not supported for " + uri + ".");
         }
 
+        if (values.containsKey(Cols.Package.NAME)) {
+            String packageName = values.getAsString(Cols.Package.NAME);
+            long packageId = PackageProvider.Helper.ensureExists(getContext(), packageName);
+            values.remove(Cols.Package.NAME);
+            values.put(Cols.PACKAGE_ID, packageId);
+        }
+
         verifyVersionNameNotNull(values);
         db().replaceOrThrow(getTableName(), null, values);
-        return getAppUri(values.getAsString(Cols.PACKAGE_NAME));
+        return getAppUri(values.getAsString(Cols.Package.NAME));
     }
 
     /**

@@ -182,7 +182,7 @@ class DBHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + InstalledAppTable.NAME
             + " ( "
-            + InstalledAppTable.Cols.PACKAGE_NAME + " TEXT NOT NULL PRIMARY KEY, "
+            + InstalledAppTable.Cols.PACKAGE_ID + " INT NOT NULL UNIQUE, "
             + InstalledAppTable.Cols.VERSION_CODE + " INT NOT NULL, "
             + InstalledAppTable.Cols.VERSION_NAME + " TEXT NOT NULL, "
             + InstalledAppTable.Cols.APPLICATION_LABEL + " TEXT NOT NULL, "
@@ -192,7 +192,7 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
 
-    protected static final int DB_VERSION = 70;
+    protected static final int DB_VERSION = 71;
 
     private final Context context;
 
@@ -277,6 +277,28 @@ class DBHelper extends SQLiteOpenHelper {
         recalculatePreferredMetadata(db, oldVersion);
         addWhatsNewAndVideo(db, oldVersion);
         dropApkPrimaryKey(db, oldVersion);
+        addIntegerPrimaryKeyToInstalledApps(db, oldVersion);
+    }
+
+    private void addIntegerPrimaryKeyToInstalledApps(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 71) {
+            return;
+        }
+
+        Log.i(TAG, "Replacing primary key on installed app table with integer for performance.");
+
+        db.beginTransaction();
+        try {
+            if (tableExists(db, Schema.InstalledAppTable.NAME)) {
+                db.execSQL("DROP TABLE " + Schema.InstalledAppTable.NAME);
+            }
+
+            db.execSQL(CREATE_TABLE_INSTALLED_APP);
+            ensureIndexes(db);
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
     }
 
     private void dropApkPrimaryKey(SQLiteDatabase db, int oldVersion) {
@@ -1061,9 +1083,11 @@ class DBHelper extends SQLiteOpenHelper {
                     AppPrefsTable.Cols.IGNORE_THIS_UPDATE + ");");
         }
 
-        Utils.debugLog(TAG, "Ensuring indexes exist for " + InstalledAppTable.NAME);
-        db.execSQL("CREATE INDEX IF NOT EXISTS installedApp_appId_vercode on " + InstalledAppTable.NAME + " (" +
-                InstalledAppTable.Cols.PACKAGE_NAME + ", " + InstalledAppTable.Cols.VERSION_CODE + ");");
+        if (columnExists(db, InstalledAppTable.NAME, InstalledAppTable.Cols.PACKAGE_ID)) {
+            Utils.debugLog(TAG, "Ensuring indexes exist for " + InstalledAppTable.NAME);
+            db.execSQL("CREATE INDEX IF NOT EXISTS installedApp_packageId_vercode on " + InstalledAppTable.NAME + " (" +
+                    InstalledAppTable.Cols.PACKAGE_ID + ", " + InstalledAppTable.Cols.VERSION_CODE + ");");
+        }
 
         Utils.debugLog(TAG, "Ensuring indexes exist for " + RepoTable.NAME);
         db.execSQL("CREATE INDEX IF NOT EXISTS repo_id_isSwap on " + RepoTable.NAME + " (" +

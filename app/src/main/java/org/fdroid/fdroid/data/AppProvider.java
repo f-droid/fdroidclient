@@ -250,7 +250,7 @@ public class AppProvider extends FDroidProvider {
                 join(
                         InstalledAppTable.NAME,
                         "installed",
-                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME);
+                        "installed." + InstalledAppTable.Cols.PACKAGE_ID + " = " + PackageTable.NAME + "." + PackageTable.Cols.ROW_ID);
                 requiresInstalledTable = true;
             }
         }
@@ -270,7 +270,7 @@ public class AppProvider extends FDroidProvider {
                 leftJoin(
                         InstalledAppTable.NAME,
                         "installed",
-                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME);
+                        "installed." + InstalledAppTable.Cols.PACKAGE_ID + " = " + PackageTable.NAME + "." + PackageTable.Cols.ROW_ID);
                 requiresInstalledTable = true;
             }
         }
@@ -959,8 +959,9 @@ public class AppProvider extends FDroidProvider {
      * @see #updateSuggestedFromLatest()
      */
     private void updateSuggestedFromUpstream() {
-        Utils.debugLog(TAG, "Calculating suggested versions for all apps which specify an upstream version code.");
+        Utils.debugLog(TAG, "Calculating suggested versions for all NON-INSTALLED apps which specify an upstream version code.");
 
+        Utils.Profiler profiler = new Utils.Profiler("UpdateSuggestedApks");
         final String apk = getApkTableName();
         final String app = getTableName();
 
@@ -986,6 +987,7 @@ public class AppProvider extends FDroidProvider {
                 " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 ";
 
         LoggingQuery.execSQL(db(), updateSql);
+        profiler.log("Done");
     }
 
     /**
@@ -1029,7 +1031,7 @@ public class AppProvider extends FDroidProvider {
                 " FROM " + InstalledAppTable.NAME + " AS installed " +
                 " JOIN " + PackageTable.NAME + " AS pkg ON " +
                 "   (pkg." + PackageTable.Cols.ROW_ID + " = " + appTable + "." + Cols.PACKAGE_ID + " AND " +
-                "    installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = pkg." + PackageTable.Cols.PACKAGE_NAME + ") " +
+                "    installed." + InstalledAppTable.Cols.PACKAGE_ID + " = pkg." + PackageTable.Cols.ROW_ID + ") " +
                 ")";
 
         // Ideally, the check below would actually be written as:

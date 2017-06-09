@@ -24,7 +24,7 @@ public class InstalledApp extends ValueObject {
                 case Schema.InstalledAppTable.Cols._ID:
                     id = cursor.getLong(i);
                     break;
-                case Schema.InstalledAppTable.Cols.PACKAGE_NAME:
+                case Schema.InstalledAppTable.Cols.Package.NAME:
                     packageName = cursor.getString(i);
                     break;
                 case Schema.InstalledAppTable.Cols.VERSION_CODE:

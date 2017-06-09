@@ -37,7 +37,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         assertEquals(foundBefore.size(), 0);
 
         ContentValues values = new ContentValues();
-        values.put(Cols.PACKAGE_NAME, "org.example.test-app");
+        values.put(Cols.Package.NAME, "org.example.test-app");
         values.put(Cols.APPLICATION_LABEL, "Test App");
         values.put(Cols.VERSION_CODE, 1021);
         values.put(Cols.VERSION_NAME, "Longhorn");
@@ -56,7 +56,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         assertEquals(cursor.getCount(), 1);
 
         cursor.moveToFirst();
-        assertEquals("org.example.test-app", cursor.getString(cursor.getColumnIndex(Cols.PACKAGE_NAME)));
+        assertEquals("org.example.test-app", cursor.getString(cursor.getColumnIndex(Cols.Package.NAME)));
         assertEquals("Test App", cursor.getString(cursor.getColumnIndex(Cols.APPLICATION_LABEL)));
         assertEquals(1021, cursor.getInt(cursor.getColumnIndex(Cols.VERSION_CODE)));
         assertEquals("Longhorn", cursor.getString(cursor.getColumnIndex(Cols.VERSION_NAME)));
@@ -125,7 +125,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         Uri uri = InstalledAppProvider.getAppUri(packageName);
 
         String[] projection = {
-                Cols.PACKAGE_NAME,
+                Cols.Package.NAME,
                 Cols.LAST_UPDATE_TIME,
         };
 
@@ -133,7 +133,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         assertNotNull(cursor);
         assertEquals("App \"" + packageName + "\" not installed", 1, cursor.getCount());
         cursor.moveToFirst();
-        assertEquals(packageName, cursor.getString(cursor.getColumnIndex(Cols.PACKAGE_NAME)));
+        assertEquals(packageName, cursor.getString(cursor.getColumnIndex(Cols.Package.NAME)));
         long lastUpdateTime = cursor.getLong(cursor.getColumnIndex(Cols.LAST_UPDATE_TIME));
         assertTrue(lastUpdateTime > 0);
         assertTrue(lastUpdateTime < System.currentTimeMillis());
@@ -170,7 +170,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
     private ContentValues createContentValues(String appId, int versionCode, String versionNumber) {
         ContentValues values = new ContentValues(3);
         if (appId != null) {
-            values.put(Cols.PACKAGE_NAME, appId);
+            values.put(Cols.Package.NAME, appId);
         }
         values.put(Cols.APPLICATION_LABEL, "Mock app: " + appId);
         values.put(Cols.VERSION_CODE, versionCode);

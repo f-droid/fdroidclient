@@ -288,7 +288,7 @@ public class InstalledAppProviderService extends IntentService {
     static void insertAppIntoDb(Context context, PackageInfo packageInfo, String hashType, String hash) {
         Uri uri = InstalledAppProvider.getContentUri();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(InstalledAppTable.Cols.PACKAGE_NAME, packageInfo.packageName);
+        contentValues.put(InstalledAppTable.Cols.Package.NAME, packageInfo.packageName);
         contentValues.put(InstalledAppTable.Cols.VERSION_CODE, packageInfo.versionCode);
         contentValues.put(InstalledAppTable.Cols.VERSION_NAME, packageInfo.versionName);
         contentValues.put(InstalledAppTable.Cols.APPLICATION_LABEL,
