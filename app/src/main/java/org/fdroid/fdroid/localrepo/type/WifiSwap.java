@@ -26,6 +26,7 @@ import rx.functions.Action1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
+@SuppressWarnings("LineLength")
 public class WifiSwap extends SwapType {
 
     private static final String TAG = "WifiSwap";

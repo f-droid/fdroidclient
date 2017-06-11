@@ -54,6 +54,7 @@ import kellinwood.security.zipsigner.ZipSigner;
 
 // TODO Address exception handling in a uniform way throughout
 
+@SuppressWarnings("LineLength")
 public final class LocalRepoKeyStore {
 
     private static final String TAG = "LocalRepoKeyStore";

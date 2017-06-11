@@ -46,6 +46,7 @@ import java.io.File;
 import java.util.Iterator;
 
 // TODO: Support cancelling of downloads by tapping the install button a second time.
+@SuppressWarnings("LineLength")
 public class AppListItemController extends RecyclerView.ViewHolder {
 
     private static final String TAG = "AppListItemController";

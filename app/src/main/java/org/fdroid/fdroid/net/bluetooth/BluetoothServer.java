@@ -26,6 +26,7 @@ import fi.iki.elonen.NanoHTTPD;
  * Act as a layer on top of LocalHTTPD server, by forwarding requests served
  * over bluetooth to that server.
  */
+@SuppressWarnings("LineLength")
 public class BluetoothServer extends Thread {
 
     private static final String TAG = "BluetoothServer";

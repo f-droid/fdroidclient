@@ -33,6 +33,7 @@ import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("LineLength")
 class NotificationHelper {
 
     static final String BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED = "org.fdroid.fdroid.installer.notifications.allupdates.cleared";

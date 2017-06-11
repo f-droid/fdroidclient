@@ -41,6 +41,7 @@ import java.util.Locale;
  * changed.  Having the {@code Thread} also makes it easy to kill work
  * that is in progress.
  */
+@SuppressWarnings("LineLength")
 public class WifiStateChangeService extends IntentService {
     private static final String TAG = "WifiStateChangeService";
 

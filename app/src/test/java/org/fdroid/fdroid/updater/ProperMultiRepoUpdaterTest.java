@@ -36,6 +36,7 @@ import static org.junit.Assert.assertNotNull;
 
 @Config(constants = BuildConfig.class, sdk = 24, shadows = ProperMultiRepoUpdaterTest.ArmSystemProperties.class)
 @RunWith(RobolectricTestRunner.class)
+@SuppressWarnings("LineLength")
 public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     private static final String TAG = "ProperMultiRepoSupport";
 

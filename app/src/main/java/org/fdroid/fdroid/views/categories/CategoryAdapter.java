@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.LoaderManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-
 import org.fdroid.fdroid.R;
 
 import java.util.Collections;
@@ -26,7 +25,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryController> {
 
     @Override
     public CategoryController onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new CategoryController(activity, loaderManager, activity.getLayoutInflater().inflate(R.layout.category_item, parent, false));
+        return new CategoryController(activity, loaderManager, activity.getLayoutInflater()
+                .inflate(R.layout.category_item, parent, false));
     }
 
     @Override

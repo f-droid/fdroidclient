@@ -45,6 +45,7 @@ import org.fdroid.fdroid.data.Schema.RepoTable;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("LineLength")
 class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DBHelper";

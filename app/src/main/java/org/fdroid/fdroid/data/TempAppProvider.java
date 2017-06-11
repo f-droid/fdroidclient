@@ -8,9 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
 import android.text.TextUtils;
-
-import java.util.List;
-
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
@@ -18,9 +15,12 @@ import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 
+import java.util.List;
+
 /**
  * This class does all of its operations in a temporary sqlite table.
  */
+@SuppressWarnings("LineLength")
 public class TempAppProvider extends AppProvider {
 
     /**
@@ -94,7 +94,7 @@ public class TempAppProvider extends AppProvider {
     }
 
     private AppQuerySelection queryRepo(long repoId) {
-        String[] args = new String[] {Long.toString(repoId)};
+        String[] args = new String[]{Long.toString(repoId)};
         String selection = getTableName() + "." + Cols.REPO_ID + " = ? ";
         return new AppQuerySelection(selection, args);
     }
@@ -111,7 +111,8 @@ public class TempAppProvider extends AppProvider {
             TempApkProvider.Helper.init(context);
         }
 
-        public static List<App> findByPackageNames(Context context, List<String> packageNames, long repoId, String[] projection) {
+        public static List<App> findByPackageNames(Context context,
+                                                   List<String> packageNames, long repoId, String[] projection) {
             Uri uri = getAppsUri(packageNames, repoId);
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             return AppProvider.Helper.cursorToList(cursor);
@@ -167,7 +168,8 @@ public class TempAppProvider extends AppProvider {
         values.remove(Cols.Package.PACKAGE_NAME);
 
         if (values.containsKey(Cols.ForWriting.Categories.CATEGORIES)) {
-            String[] categories = Utils.parseCommaSeparatedString(values.getAsString(Cols.ForWriting.Categories.CATEGORIES));
+            String[] categories = Utils.parseCommaSeparatedString(
+                    values.getAsString(Cols.ForWriting.Categories.CATEGORIES));
             ensureCategories(categories, packageName, repoId);
             values.remove(Cols.ForWriting.Categories.CATEGORIES);
         }
@@ -192,7 +194,8 @@ public class TempAppProvider extends AppProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
+    public Cursor query(Uri uri, String[] projection,
+                        String customSelection, String[] selectionArgs, String sortOrder) {
         AppQuerySelection selection = new AppQuerySelection(customSelection, selectionArgs);
         switch (MATCHER.match(uri)) {
             case APPS:

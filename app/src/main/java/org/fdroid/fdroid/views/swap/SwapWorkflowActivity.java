@@ -64,6 +64,7 @@ import cc.mvdan.accesspoint.WifiApControl;
  * The problem comes when there are two competing goals - 1) Show the user a list of apps from another
  * device to download and install, and 2) Prepare your own list of apps to share.
  */
+@SuppressWarnings("LineLength")
 public class SwapWorkflowActivity extends AppCompatActivity {
 
     /**

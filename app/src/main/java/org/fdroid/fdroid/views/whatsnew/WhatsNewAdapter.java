@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views.whatsnew;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Rect;
 import android.support.v4.view.ViewCompat;
@@ -9,7 +10,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.categories.AppCardController;
@@ -108,6 +108,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
     /**
      * Applies padding to items, ensuring that the spacing on the left, centre, and right all match.
      * The vertical padding is slightly shorter than the horizontal padding also.
+     *
      * @see org.fdroid.fdroid.R.dimen#whats_new__padding__app_card__horizontal
      * @see org.fdroid.fdroid.R.dimen#whats_new__padding__app_card__vertical
      */
@@ -121,8 +122,9 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<AppCardController> {
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
             int position = parent.getChildAdapterPosition(view);
-            int horizontalPadding = (int) context.getResources().getDimension(R.dimen.whats_new__padding__app_card__horizontal);
-            int verticalPadding = (int) context.getResources().getDimension(R.dimen.whats_new__padding__app_card__vertical);
+            Resources resources = context.getResources();
+            int horizontalPadding = (int) resources.getDimension(R.dimen.whats_new__padding__app_card__horizontal);
+            int verticalPadding = (int) resources.getDimension(R.dimen.whats_new__padding__app_card__vertical);
 
             int relativePositionInCycle = position % 5;
             if (position == 0) {

@@ -3,19 +3,17 @@ package org.fdroid.fdroid.localrepo.type;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.SwapService;
 
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.HashMap;
-
-import javax.jmdns.JmDNS;
-import javax.jmdns.ServiceInfo;
 
 /**
  * Sends a {@link SwapService#BONJOUR_STATE_CHANGE} broadcasts when starting, started or stopped.
@@ -38,7 +36,8 @@ public class BonjourBroadcast extends SwapType {
 
         InetAddress address = getDeviceAddress();
         if (address == null) {
-            Log.e(TAG, "Starting Bonjour service, but couldn't ascertain IP address. Seems we are not connected to a network.");
+            Log.e(TAG, "Starting Bonjour service, but couldn't ascertain IP address."
+                    + "  Seems we are not connected to a network.");
             return;
         }
 
@@ -103,7 +102,8 @@ public class BonjourBroadcast extends SwapType {
         if (FDroidApp.ipAddressString != null) {
             try {
                 return InetAddress.getByName(FDroidApp.ipAddressString);
-            } catch (UnknownHostException ignored) { }
+            } catch (UnknownHostException ignored) {
+            }
         }
 
         return null;

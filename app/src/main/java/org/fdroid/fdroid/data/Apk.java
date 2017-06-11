@@ -244,7 +244,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
     private void checkRepoAddress() {
         if (repoAddress == null || apkName == null) {
-            throw new IllegalStateException("Apk needs to have both Schema.ApkTable.Cols.REPO_ADDRESS and Schema.ApkTable.Cols.NAME set in order to calculate URL.");
+            throw new IllegalStateException("Apk needs to have both Schema.ApkTable.Cols.REPO_ADDRESS and "
+                    + "Schema.ApkTable.Cols.NAME set in order to calculate URL.");
         }
     }
 

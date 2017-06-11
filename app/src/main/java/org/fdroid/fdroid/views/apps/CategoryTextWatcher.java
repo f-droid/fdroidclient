@@ -10,17 +10,16 @@ import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.TtsSpan;
 import android.widget.EditText;
-
 import org.fdroid.fdroid.R;
 
 /**
  * The search input treats text before the first colon as a category name. Text after this colon
  * (or all text if there is no colon) is the free text search terms.
  * The behaviour of this search input is:
- *  * Replacing anything before the first colon with a {@link CategorySpan} that renders a "Chip"
- *    including an icon representing "category" and the name of the category.
- *  * Removing the trailing ":" from a category chip will cause it to remove the entire category
- *    from the input.
+ * * Replacing anything before the first colon with a {@link CategorySpan} that renders a "Chip"
+ * including an icon representing "category" and the name of the category.
+ * * Removing the trailing ":" from a category chip will cause it to remove the entire category
+ * from the input.
  */
 public class CategoryTextWatcher implements TextWatcher {
 
@@ -35,7 +34,8 @@ public class CategoryTextWatcher implements TextWatcher {
     private int removeTo = -1;
     private boolean requiresSpanRecalculation = false;
 
-    public CategoryTextWatcher(final Context context, final EditText widget, final SearchTermsChangedListener listener) {
+    public CategoryTextWatcher(final Context context, final EditText widget,
+                               final SearchTermsChangedListener listener) {
         this.context = context;
         this.widget = widget;
         this.listener = listener;
@@ -75,8 +75,10 @@ public class CategoryTextWatcher implements TextWatcher {
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         boolean addingOrReplacing = count > 0;
-        boolean addingColon = addingOrReplacing && s.subSequence(start, start + count).toString().indexOf(':') >= 0;
-        boolean addingFirstColon = addingColon && s.subSequence(0, start).toString().indexOf(':') == -1;
+        boolean addingColon = addingOrReplacing
+                && s.subSequence(start, start + count).toString().indexOf(':') >= 0;
+        boolean addingFirstColon = addingColon
+                && s.subSequence(0, start).toString().indexOf(':') == -1;
         if (addingFirstColon) {
             requiresSpanRecalculation = true;
         }
@@ -99,7 +101,8 @@ public class CategoryTextWatcher implements TextWatcher {
 
         int colonIndex = searchText.toString().indexOf(':');
         String category = colonIndex == -1 ? null : searchText.subSequence(0, colonIndex).toString();
-        String searchTerms = searchText.subSequence(colonIndex == -1 ? 0 : colonIndex + 1, searchText.length()).toString();
+        String searchTerms = searchText.subSequence(colonIndex == -1 ? 0 : colonIndex + 1,
+                searchText.length()).toString();
         listener.onSearchTermsChanged(category, searchTerms);
     }
 
@@ -140,7 +143,8 @@ public class CategoryTextWatcher implements TextWatcher {
                 // For accessibility reasons, make this more clear to screen readers that the
                 // span we just added semantically represents a category.
                 CharSequence categoryName = textToSpannify.subSequence(0, colonIndex);
-                TtsSpan ttsSpan = new TtsSpan.TextBuilder(context.getString(R.string.tts_category_name, categoryName)).build();
+                TtsSpan ttsSpan = new TtsSpan.TextBuilder(context.getString(R.string.tts_category_name,
+                        categoryName)).build();
                 textToSpannify.setSpan(ttsSpan, 0, 0, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
         }

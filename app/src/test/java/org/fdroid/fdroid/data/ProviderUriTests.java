@@ -22,6 +22,7 @@ import static org.fdroid.fdroid.Assert.assertValidUri;
 
 @Config(constants = BuildConfig.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)
+@SuppressWarnings("LineLength")
 public class ProviderUriTests {
 
     private ShadowContentResolver resolver;

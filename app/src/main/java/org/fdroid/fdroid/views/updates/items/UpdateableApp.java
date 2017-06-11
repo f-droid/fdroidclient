@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.apps.AppListItemController;
@@ -15,6 +13,7 @@ import java.util.List;
 
 /**
  * List of all apps which can be updated, but have not yet been downloaded.
+ *
  * @see UpdateableApp The data that is bound to this view.
  * @see R.layout#updateable_app_list_item The view that this binds to.
  * @see AppListItemController Used for binding the {@link App} to the {@link R.layout#updateable_app_list_item}
@@ -44,11 +43,13 @@ public class UpdateableApp extends AppUpdateData {
         @NonNull
         @Override
         protected RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
-            return new AppListItemController(activity, activity.getLayoutInflater().inflate(R.layout.updateable_app_list_item, parent, false));
+            return new AppListItemController(activity, activity.getLayoutInflater()
+                    .inflate(R.layout.updateable_app_list_item, parent, false));
         }
 
         @Override
-        protected void onBindViewHolder(@NonNull List<AppUpdateData> items, int position, @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
+        protected void onBindViewHolder(@NonNull List<AppUpdateData> items, int position,
+                                        @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
             UpdateableApp app = (UpdateableApp) items.get(position);
             ((AppListItemController) holder).bindModel(app.app);
         }

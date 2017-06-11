@@ -406,7 +406,8 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
                         } else {
 
-                            Toast.makeText(RepoDetailsActivity.this, R.string.repo_error_empty_username, Toast.LENGTH_LONG).show();
+                            Toast.makeText(RepoDetailsActivity.this, R.string.repo_error_empty_username,
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                 });

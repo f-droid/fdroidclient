@@ -132,7 +132,7 @@ public class SwapAppsView extends ListView implements
 
     private void pollForUpdates() {
         if (adapter.getCount() > 1 ||
-                (adapter.getCount() == 1 && !new App((Cursor) adapter.getItem(0)).packageName.equals("org.fdroid.fdroid"))) {
+                (adapter.getCount() == 1 && !new App((Cursor) adapter.getItem(0)).packageName.equals("org.fdroid.fdroid"))) { // NOCHECKSTYLE LineLength
             Utils.debugLog(TAG, "Not polling for new apps from swap repo, because we already have more than one.");
             return;
         }
@@ -194,7 +194,8 @@ public class SwapAppsView extends ListView implements
                 ? AppProvider.getRepoUri(repo)
                 : AppProvider.getSearchUri(repo, currentFilterString);
 
-        return new CursorLoader(getActivity(), uri, AppMetadataTable.Cols.ALL, null, null, AppMetadataTable.Cols.NAME);
+        return new CursorLoader(getActivity(), uri, AppMetadataTable.Cols.ALL,
+                null, null, AppMetadataTable.Cols.NAME);
     }
 
     @Override
@@ -305,7 +306,8 @@ public class SwapAppsView extends ListView implements
                     this.app = app;
 
                     Context context = getContext();
-                    Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode);
+                    Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context,
+                            app.packageName, app.suggestedVersionCode);
                     String urlString = apk.getUrl();
 
                     // TODO unregister receivers? or will they just die with this instance

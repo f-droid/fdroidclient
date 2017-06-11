@@ -16,6 +16,7 @@ import rx.Subscriber;
 import rx.functions.Action0;
 import rx.subscriptions.Subscriptions;
 
+@SuppressWarnings("LineLength")
 final class BluetoothFinder extends PeerFinder {
 
     public static Observable<Peer> createBluetoothObservable(final Context context) {

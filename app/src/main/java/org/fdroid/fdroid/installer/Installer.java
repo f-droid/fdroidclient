@@ -45,6 +45,7 @@ import java.io.IOException;
 /**
  * Handles the actual install process.  Subclasses implement the details.
  */
+@SuppressWarnings("LineLength")
 public abstract class Installer {
     private static final String TAG = "Installer";
 

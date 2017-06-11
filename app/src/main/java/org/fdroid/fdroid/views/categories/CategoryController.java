@@ -1,8 +1,9 @@
 package org.fdroid.fdroid.views.categories;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -20,12 +21,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
@@ -106,12 +105,13 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     }
 
     /**
-     * @param requiresLowerCaseId Previously categories were translated using strings such as "category_Reading" for
-     *                            the "Reading" category. Now we also need to have drawable resources such as
+     * @param requiresLowerCaseId Previously categories were translated using strings such as "category_Reading"
+     *                            for the "Reading" category. Now we also need to have drawable resources such as
      *                            "category_reading". Note how drawables must have only lower case letters, whereas
      *                            we already have upper case letters in strings.xml. Hence this flag.
      */
-    private static int getCategoryResource(Context context, @NonNull String categoryName, String resourceType, boolean requiresLowerCaseId) {
+    private static int getCategoryResource(Context context, @NonNull String categoryName, String resourceType,
+                                           boolean requiresLowerCaseId) {
         String suffix = categoryName.replace(" & ", "_").replace(" ", "_").replace("'", "");
         if (requiresLowerCaseId) {
             suffix = suffix.toLowerCase(Locale.ENGLISH);
@@ -178,8 +178,11 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
             cursor.moveToFirst();
             int numAppsInCategory = cursor.getInt(0);
             viewAll.setVisibility(View.VISIBLE);
-            viewAll.setText(activity.getResources().getQuantityString(R.plurals.button_view_all_apps_in_category, numAppsInCategory, numAppsInCategory));
-            viewAll.setContentDescription(activity.getResources().getQuantityString(R.plurals.tts_view_all_in_category, numAppsInCategory, numAppsInCategory, currentCategory));
+            Resources r = activity.getResources();
+            viewAll.setText(r.getQuantityString(R.plurals.button_view_all_apps_in_category, numAppsInCategory,
+                    numAppsInCategory));
+            viewAll.setContentDescription(r.getQuantityString(R.plurals.tts_view_all_in_category, numAppsInCategory,
+                    numAppsInCategory, currentCategory));
         }
     }
 
@@ -205,6 +208,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     /**
      * Applies excessive padding to the start of the first item. This is so that the category artwork
      * can peek out and make itself visible. This is RTL friendly.
+     *
      * @see org.fdroid.fdroid.R.dimen#category_preview__app_list__padding__horizontal
      * @see org.fdroid.fdroid.R.dimen#category_preview__app_list__padding__horizontal__first
      */
@@ -217,8 +221,10 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
 
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            int horizontalPadding = (int) context.getResources().getDimension(R.dimen.category_preview__app_list__padding__horizontal);
-            int horizontalPaddingFirst = (int) context.getResources().getDimension(R.dimen.category_preview__app_list__padding__horizontal__first);
+            Resources r = context.getResources();
+            int horizontalPadding = (int) r.getDimension(R.dimen.category_preview__app_list__padding__horizontal);
+            int horizontalPaddingFirst = (int) r.getDimension(
+                    R.dimen.category_preview__app_list__padding__horizontal__first);
             boolean isLtr = ViewCompat.getLayoutDirection(parent) == ViewCompat.LAYOUT_DIRECTION_LTR;
             int itemPosition = parent.getChildLayoutPosition(view);
             boolean first = itemPosition == 0;

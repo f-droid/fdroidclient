@@ -83,7 +83,8 @@ public final class IntentResult {
     @Override
     public String toString() {
         int rawBytesLength = rawBytes == null ? 0 : rawBytes.length;
-        return "Format: " + formatName + '\n' + "Contents: " + contents + '\n' + "Raw bytes: (" + rawBytesLength + " bytes)\n" + "Orientation: " + orientation + '\n' + "EC level: " + errorCorrectionLevel + '\n';
+        return "Format: " + formatName + '\n' + "Contents: " + contents + '\n' + "Raw bytes: (" + rawBytesLength
+                + " bytes)\n" + "Orientation: " + orientation + '\n' + "EC level: " + errorCorrectionLevel + '\n';
     }
 
 }

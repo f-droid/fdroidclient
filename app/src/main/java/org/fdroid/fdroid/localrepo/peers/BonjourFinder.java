@@ -19,6 +19,7 @@ import rx.Subscriber;
 import rx.functions.Action0;
 import rx.subscriptions.Subscriptions;
 
+@SuppressWarnings("LineLength")
 final class BonjourFinder extends PeerFinder implements ServiceListener {
 
     public static Observable<Peer> createBonjourObservable(final Context context) {

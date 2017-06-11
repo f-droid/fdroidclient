@@ -25,6 +25,7 @@ import java.util.List;
  * run on a background thread, as it hits the disk a bit to figure out the hash of each downloaded
  * file.
  */
+@SuppressWarnings("LineLength")
 public class AppUpdateStatusService extends IntentService {
 
     private static final String TAG = "AppUpdateStatusService";

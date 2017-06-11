@@ -36,11 +36,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
@@ -119,7 +117,8 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
                 scrollView.addView(perms.getPermissionsView(
                         AppSecurityPermissions.WHICH_NEW));
             } else {
-                throw new RuntimeException("This should not happen. No new permissions were found but InstallConfirmActivity has been started!");
+                throw new RuntimeException("This should not happen. No new permissions were found"
+                        + " but InstallConfirmActivity has been started!");
             }
             adapter.addTab(tabHost.newTabSpec(TAB_ID_NEW).setIndicator(
                     getText(R.string.newPerms)), scrollView);
@@ -191,7 +190,8 @@ public class InstallConfirmActivity extends FragmentActivity implements OnCancel
         intent = getIntent();
         Uri uri = intent.getData();
         Apk apk = ApkProvider.Helper.findByUri(this, uri, Schema.ApkTable.Cols.ALL);
-        app = AppProvider.Helper.findSpecificApp(getContentResolver(), apk.packageName, apk.repoId, Schema.AppMetadataTable.Cols.ALL);
+        app = AppProvider.Helper.findSpecificApp(getContentResolver(),
+                apk.packageName, apk.repoId, Schema.AppMetadataTable.Cols.ALL);
 
         appDiff = new AppDiff(getPackageManager(), apk);
 

@@ -290,7 +290,7 @@ public class FDroidApp extends Application {
                                 String fileNameToSanitize;
                                 Uri uri = Uri.parse(imageUri);
                                 if (TextUtils.isEmpty(uri.getPath())) {
-                                    // e.g. files with a URL like "drawable://213083835209" used by the category backgrounds.
+                                    // files with URL like "drawable://213083835209" used by the category backgrounds
                                     fileNameToSanitize = imageUri.replaceAll("[:/]", "");
                                 } else {
                                     fileNameToSanitize = uri.getPath().replace("/", "-");

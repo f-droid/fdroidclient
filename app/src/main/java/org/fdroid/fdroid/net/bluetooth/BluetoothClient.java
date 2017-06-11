@@ -39,7 +39,7 @@ public class BluetoothClient {
             throw e1;
 
             /*
-            Log.e(TAG, "There was an error while establishing Bluetooth connection. Falling back to using reflection...");
+            Log.e(TAG, "There was an error while establishing Bluetooth connection. Falling back to reflection");
             Class<?> clazz = socket.getRemoteDevice().getClass();
             Class<?>[] paramTypes = new Class<?>[]{Integer.TYPE};
 

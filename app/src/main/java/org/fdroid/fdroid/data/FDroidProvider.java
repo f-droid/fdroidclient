@@ -163,6 +163,7 @@ public abstract class FDroidProvider extends ContentProvider {
      * when all you have is the package name.
      */
     protected static String getPackageIdFromPackageNameQuery() {
-        return "SELECT " + Schema.PackageTable.Cols.ROW_ID + " FROM " + Schema.PackageTable.NAME + " WHERE " + Schema.PackageTable.Cols.PACKAGE_NAME + " = ?";
+        return "SELECT " + Schema.PackageTable.Cols.ROW_ID + " FROM " + Schema.PackageTable.NAME
+                + " WHERE " + Schema.PackageTable.Cols.PACKAGE_NAME + " = ?";
     }
 }

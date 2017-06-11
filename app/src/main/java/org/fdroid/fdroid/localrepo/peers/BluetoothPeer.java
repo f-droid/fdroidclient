@@ -31,7 +31,9 @@ public class BluetoothPeer implements Peer {
 
     @Override
     public boolean equals(Object peer) {
-        return peer != null && peer instanceof BluetoothPeer && ((BluetoothPeer) peer).device.getAddress().equals(device.getAddress());
+        return peer != null
+                && peer instanceof BluetoothPeer
+                && ((BluetoothPeer) peer).device.getAddress().equals(device.getAddress());
     }
 
     @Override

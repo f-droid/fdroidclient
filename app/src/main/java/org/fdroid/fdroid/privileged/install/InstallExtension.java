@@ -37,6 +37,7 @@ import eu.chainfire.libsuperuser.Shell;
  * http://omerjerk.in/2014/08/how-to-install-an-app-to-system-partition/
  * https://github.com/omerjerk/RemoteDroid/blob/master/app/src/main/java/in/omerjerk/remotedroid/app/MainActivity.java
  */
+@SuppressWarnings("LineLength")
 abstract class InstallExtension {
 
     final Context context;

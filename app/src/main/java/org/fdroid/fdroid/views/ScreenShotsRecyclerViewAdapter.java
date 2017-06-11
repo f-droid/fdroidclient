@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +17,8 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
-public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements LinearLayoutManagerSnapHelper.LinearSnapHelperListener {
+public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+        implements LinearLayoutManagerSnapHelper.LinearSnapHelperListener {
     private final String[] screenshots;
     private final DisplayImageOptions displayImageOptions;
     private View selectedView;
@@ -28,8 +30,9 @@ public class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
         super();
         screenshots = app.getAllScreenshots(context);
         selectedPosition = 0;
-        selectedItemElevation = context.getResources().getDimensionPixelSize(R.dimen.details_screenshot_selected_elevation);
-        unselectedItemMargin = context.getResources().getDimensionPixelSize(R.dimen.details_screenshot_margin);
+        Resources r = context.getResources();
+        selectedItemElevation = r.getDimensionPixelSize(R.dimen.details_screenshot_selected_elevation);
+        unselectedItemMargin = r.getDimensionPixelSize(R.dimen.details_screenshot_margin);
         displayImageOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
                 .cacheOnDisk(true)

@@ -10,7 +10,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.text.style.ReplacementSpan;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.categories.CategoryController;
 
@@ -74,7 +73,8 @@ public class CategorySpan extends ReplacementSpan {
     }
 
     @Override
-    public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, @NonNull Paint paint) {
+    public void draw(@NonNull Canvas canvas, CharSequence text,
+                     int start, int end, float x, int top, int y, int bottom, @NonNull Paint paint) {
         CharSequence categoryName = getCategoryName(text, start, end);
         if (categoryName == null) {
             return;
@@ -94,7 +94,8 @@ public class CategorySpan extends ReplacementSpan {
         canvas.save();
         canvas.translate(x, bottom - height + TEXT_BELOW_PADDING * density);
 
-        RectF backgroundRect = new RectF(0, 0, iconBackgroundSize + textLeadingPadding + textWidth + textTrailingPadding, height);
+        RectF backgroundRect = new RectF(0, 0, iconBackgroundSize + textLeadingPadding
+                + textWidth + textTrailingPadding, height);
 
         // The shadow below the entire category chip.
         canvas.save();

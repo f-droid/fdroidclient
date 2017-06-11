@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
@@ -15,13 +14,13 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
+import java.util.Map;
+
 import static org.fdroid.fdroid.Assert.assertIsInstalledVersionInDb;
 import static org.fdroid.fdroid.Assert.assertResultCount;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-
-import java.util.Map;
 
 @Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)
@@ -52,7 +51,8 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         assertEquals(1, foundAfter.size());
         assertEquals(100000000L, foundAfter.get("org.example.test-app").longValue());
 
-        Cursor cursor = contentResolver.query(InstalledAppProvider.getAppUri("org.example.test-app"), Cols.ALL, null, null, null);
+        Cursor cursor = contentResolver.query(InstalledAppProvider.getAppUri("org.example.test-app"), Cols.ALL,
+                null, null, null);
         assertEquals(cursor.getCount(), 1);
 
         cursor.moveToFirst();
@@ -63,7 +63,8 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
         assertEquals("has of test app", cursor.getString(cursor.getColumnIndex(Cols.HASH)));
         assertEquals("fake hash type", cursor.getString(cursor.getColumnIndex(Cols.HASH_TYPE)));
         assertEquals(100000000L, cursor.getLong(cursor.getColumnIndex(Cols.LAST_UPDATE_TIME)));
-        assertEquals("000111222333444555666777888999aaabbbcccdddeeefff", cursor.getString(cursor.getColumnIndex(Cols.SIGNATURE)));
+        assertEquals("000111222333444555666777888999aaabbbcccdddeeefff",
+                cursor.getString(cursor.getColumnIndex(Cols.SIGNATURE)));
 
         cursor.close();
     }

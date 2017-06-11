@@ -17,16 +17,18 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 
-public class AppListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, CategoryTextWatcher.SearchTermsChangedListener {
+public class AppListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,
+        CategoryTextWatcher.SearchTermsChangedListener {
 
-    public static final String EXTRA_CATEGORY = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY";
-    public static final String EXTRA_SEARCH_TERMS = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
+    public static final String EXTRA_CATEGORY
+            = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY";
+    public static final String EXTRA_SEARCH_TERMS
+            = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
 
     private RecyclerView appView;
     private AppListAdapter appAdapter;

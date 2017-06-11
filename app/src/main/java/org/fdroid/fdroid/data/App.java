@@ -476,11 +476,11 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         promoGraphic = getLocalizedGraphicsEntry(localized, localesToUse, "promoGraphic");
         tvBanner = getLocalizedGraphicsEntry(localized, localesToUse, "tvBanner");
 
-        wearScreenshots = setLocalizedListEntry(localized, localesToUse, "wearScreenshots");
-        phoneScreenshots = setLocalizedListEntry(localized, localesToUse, "phoneScreenshots");
-        sevenInchScreenshots = setLocalizedListEntry(localized, localesToUse, "sevenInchScreenshots");
-        tenInchScreenshots = setLocalizedListEntry(localized, localesToUse, "tenInchScreenshots");
-        tvScreenshots = setLocalizedListEntry(localized, localesToUse, "tvScreenshots");
+        wearScreenshots = getLocalizedListEntry(localized, localesToUse, "wearScreenshots");
+        phoneScreenshots = getLocalizedListEntry(localized, localesToUse, "phoneScreenshots");
+        sevenInchScreenshots = getLocalizedListEntry(localized, localesToUse, "sevenInchScreenshots");
+        tenInchScreenshots = getLocalizedListEntry(localized, localesToUse, "tenInchScreenshots");
+        tvScreenshots = getLocalizedListEntry(localized, localesToUse, "tvScreenshots");
     }
 
     private String getLocalizedEntry(Map<String, Map<String, Object>> localized,
@@ -518,7 +518,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         return null;
     }
 
-    private String[] setLocalizedListEntry(Map<String, Map<String, Object>> localized,
+    private String[] getLocalizedListEntry(Map<String, Map<String, Object>> localized,
                                            Set<String> locales, String key) {
         try {
             for (String locale : locales) {
@@ -909,7 +909,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * {@code AndroidManifest.xml}.  If {@code targetSdkVersion} is not set, then it is
      * equal to {@code minSdkVersion}
      *
-     * @see <a href="https://developer.android.com/guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt; element</a>
+     * @see <a href="https://developer.android.com/guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a>
      */
     private static int[] getMinTargetMaxSdkVersions(Context context, String packageName) {
         int minSdkVersion = Apk.SDK_VERSION_MIN_VALUE;

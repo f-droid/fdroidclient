@@ -142,7 +142,8 @@ public class RepoProviderTest extends FDroidProviderTest {
         for (String url : urls) {
             Repo actualRepo = RepoProvider.Helper.findByUrl(context, Uri.parse(url), COLS);
             assertNotNull("No repo matching URL " + url, actualRepo);
-            assertEquals("Invalid repo for URL [" + url + "]. Expected [" + expectedRepo.address + "] but got [" + actualRepo.address + "]", expectedRepo.id, actualRepo.id);
+            assertEquals("Invalid repo for URL [" + url + "]. Expected [" + expectedRepo.address + "] but got ["
+                    + actualRepo.address + "]", expectedRepo.id, actualRepo.id);
         }
 
     }
@@ -253,7 +254,8 @@ public class RepoProviderTest extends FDroidProviderTest {
         return insertRepo(context, address, description, fingerprint, null);
     }
 
-    public static Repo insertRepo(Context context, String address, String description, String fingerprint, @Nullable String name) {
+    public static Repo insertRepo(Context context, String address, String description,
+                                  String fingerprint, @Nullable String name) {
         ContentValues values = new ContentValues();
         values.put(RepoTable.Cols.ADDRESS, address);
         values.put(RepoTable.Cols.DESCRIPTION, description);

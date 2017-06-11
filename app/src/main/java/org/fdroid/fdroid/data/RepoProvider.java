@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
@@ -27,7 +26,8 @@ public class RepoProvider extends FDroidProvider {
 
         private static final String TAG = "RepoProvider.Helper";
 
-        private Helper() { }
+        private Helper() {
+        }
 
         /**
          * Find by the content URI of a repo ({@link RepoProvider#getContentUri(long)}).
@@ -54,14 +54,15 @@ public class RepoProvider extends FDroidProvider {
          * This method decides what repo a URL belongs to by iteratively removing path fragments and
          * checking if it belongs to a repo or not. It will match the most specific repository which
          * could serve the file at the given URL.
-         *
+         * <p>
          * For any given HTTP resource requested by F-Droid, it should belong to a repository.
          * Whether that resource is an index.jar, an icon, or a .apk file, they all belong to a
          * repository. Therefore, that repository must exist in the database. The way to find out
          * which repository a particular URL came from requires some consideration:
-         *  * Repositories can exist at particular paths on a server (e.g. /fdroid/repo)
-         *  * Individual files can exist at a more specific path on the repo (e.g. /fdroid/repo/icons/org.fdroid.fdroid.png)
-         *
+         * <li>Repositories can exist at particular paths on a server (e.g. /fdroid/repo)
+         * <li>Individual files can exist at a more specific path on the repo (e.g.
+         * /fdroid/repo/icons/org.fdroid.fdroid.png)</li>
+         * <p>
          * So for a given URL "/fdroid/repo/icons/org.fdroid.fdroid.png" we don't actually know
          * whether it is for the file "org.fdroid.fdroid.png" at repository "/fdroid/repo/icons" or
          * the file "icons/org.fdroid.fdroid.png" at the repository at "/fdroid/repo".
@@ -212,7 +213,7 @@ public class RepoProvider extends FDroidProvider {
          * each of the CRUD methods available in the helper class.
          */
         public static Uri insert(Context context,
-                                  ContentValues values) {
+                                 ContentValues values) {
             ContentResolver resolver = context.getContentResolver();
             Uri uri = RepoProvider.getContentUri();
             return resolver.insert(uri, values);
@@ -258,7 +259,8 @@ public class RepoProvider extends FDroidProvider {
             ContentResolver resolver = context.getContentResolver();
             final String[] projection = {Cols.LAST_UPDATED};
             final String selection = Cols.IN_USE + " = 1";
-            Cursor cursor = resolver.query(getContentUri(), projection, selection, null, Cols.LAST_UPDATED + " DESC");
+            Cursor cursor = resolver.query(getContentUri(), projection,
+                    selection, null, Cols.LAST_UPDATED + " DESC");
 
             Date lastUpdate = null;
             if (cursor != null) {
@@ -347,7 +349,8 @@ public class RepoProvider extends FDroidProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+    public Cursor query(Uri uri, String[] projection,
+                        String selection, String[] selectionArgs, String sortOrder) {
 
         if (TextUtils.isEmpty(sortOrder)) {
             sortOrder = Cols.PRIORITY + " ASC";
@@ -360,7 +363,7 @@ public class RepoProvider extends FDroidProvider {
 
             case CODE_SINGLE:
                 selection = (selection == null ? "" : selection + " AND ") +
-                    Cols._ID + " = " + uri.getLastPathSegment();
+                        Cols._ID + " = " + uri.getLastPathSegment();
                 break;
 
             case CODE_ALL_EXCEPT_SWAP:
@@ -372,7 +375,8 @@ public class RepoProvider extends FDroidProvider {
                 throw new UnsupportedOperationException("Invalid URI for repo content provider: " + uri);
         }
 
-        Cursor cursor = db().query(getTableName(), projection, selection, selectionArgs, null, null, sortOrder);
+        Cursor cursor = db().query(getTableName(), projection,
+                selection, selectionArgs, null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
@@ -415,7 +419,8 @@ public class RepoProvider extends FDroidProvider {
     }
 
     private int getMaxPriority() {
-        Cursor cursor = db().query(RepoTable.NAME, new String[] {"MAX(" + Cols.PRIORITY + ")"}, "COALESCE(" + Cols.IS_SWAP + ", 0) = 0", null, null, null, null);
+        Cursor cursor = db().query(RepoTable.NAME, new String[]{"MAX(" + Cols.PRIORITY + ")"},
+                "COALESCE(" + Cols.IS_SWAP + ", 0) = 0", null, null, null, null);
         cursor.moveToFirst();
         int max = cursor.getInt(0);
         cursor.close();
@@ -432,7 +437,7 @@ public class RepoProvider extends FDroidProvider {
                 return 0;
 
             case CODE_SINGLE:
-                selection = selection.add(Cols._ID + " = ?", new String[] {uri.getLastPathSegment()});
+                selection = selection.add(Cols._ID + " = ?", new String[]{uri.getLastPathSegment()});
                 break;
 
             default:
@@ -464,7 +469,8 @@ public class RepoProvider extends FDroidProvider {
         // to be recalculated.
         boolean priorityChanged = false;
         if (values.containsKey(Cols.PRIORITY)) {
-            Cursor priorityCursor = db().query(getTableName(), new String[]{Cols.PRIORITY}, where, whereArgs, null, null, null);
+            Cursor priorityCursor = db().query(getTableName(), new String[]{Cols.PRIORITY},
+                    where, whereArgs, null, null, null);
             if (priorityCursor.getCount() > 0) {
                 priorityCursor.moveToFirst();
                 int oldPriority = priorityCursor.getInt(priorityCursor.getColumnIndex(Cols.PRIORITY));

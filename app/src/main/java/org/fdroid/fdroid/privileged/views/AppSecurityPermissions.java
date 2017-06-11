@@ -42,10 +42,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Preferences.Theme;
+import org.fdroid.fdroid.R;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -70,9 +69,9 @@ import java.util.Set;
  * Based on AOSP core/java/android/widget/AppSecurityPermissions
  * latest included commit: a3f68ef2f6811cf72f1282214c0883db5a30901d
  * <p/>
- * To update this file:
- * - Open https://github.com/android/platform_frameworks_base/commits/master/core/java/android/widget/AppSecurityPermissions.java
- * - Start from latest included commit and include changes until the newest commit with care
+ * To update this file, Start from latest included commit and include changes
+ * until the newest commit with care:
+ * github.com/android/platform_frameworks_base/blob/master/core/java/android/widget/AppSecurityPermissions.java
  */
 public class AppSecurityPermissions {
 
@@ -92,6 +91,7 @@ public class AppSecurityPermissions {
 
     // PermissionGroupInfo implements Parcelable but its Parcel constructor is private and thus cannot be extended.
     @SuppressLint("ParcelCreator")
+    @SuppressWarnings("LineLength")
     static class MyPermissionGroupInfo extends PermissionGroupInfo {
         CharSequence label;
 
@@ -402,8 +402,8 @@ public class AppSecurityPermissions {
         }
     }
 
-    private PermissionItemView getPermissionItemView(MyPermissionGroupInfo grp,
-                                                     MyPermissionInfo perm, boolean first, CharSequence newPermPrefix) {
+    private PermissionItemView getPermissionItemView(MyPermissionGroupInfo grp, MyPermissionInfo perm,
+                                                     boolean first, CharSequence newPermPrefix) {
         PermissionItemView permView = (PermissionItemView) inflater.inflate(
                 Build.VERSION.SDK_INT >= 17 &&
                         (perm.flags & PermissionInfo.FLAG_COSTS_MONEY) != 0

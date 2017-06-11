@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("LineLength")
 public class ApkProvider extends FDroidProvider {
 
     private static final String TAG = "ApkProvider";
@@ -88,7 +89,8 @@ public class ApkProvider extends FDroidProvider {
             return cursorToList(cursor);
         }
 
-        public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode, String[] projection) {
+        public static Apk findApkFromAnyRepo(Context context,
+                                             String packageName, int versionCode, String[] projection) {
             final Uri uri = getApkFromAnyRepoUri(packageName, versionCode);
             return findByUri(context, uri, projection);
         }
@@ -283,7 +285,7 @@ public class ApkProvider extends FDroidProvider {
      * Intentionally left protected because it will break if apks is larger than
      * {@link org.fdroid.fdroid.data.ApkProvider#MAX_APKS_TO_QUERY}. Instead of using
      * this directly, think about using
-     * {@link org.fdroid.fdroid.data.ApkProvider.Helper#knownApks(android.content.Context, java.util.List, String[])}
+     * {@link ApkProvider.Helper#knownApks(android.content.Context, java.util.List, String[])}
      */
     static Uri getContentUri(List<Apk> apks) {
         return getContentUri().buildUpon()

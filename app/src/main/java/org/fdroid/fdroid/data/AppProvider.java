@@ -45,6 +45,7 @@ import java.util.Set;
  * The same can be said of retrieving a list of {@link App} objects, where the metadata for each app
  * in the result set should be populated from the repository with the best priority.
  */
+@SuppressWarnings("LineLength")
 public class AppProvider extends FDroidProvider {
 
     private static final String TAG = "AppProvider";

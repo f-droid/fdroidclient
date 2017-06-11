@@ -42,6 +42,7 @@ import rx.subjects.PublishSubject;
  * {@link #deleteAppFromDb(Context, String)} are both static methods to enable easy testing
  * of this stuff.
  */
+@SuppressWarnings("LineLength")
 public class InstalledAppProviderService extends IntentService {
     private static final String TAG = "InstalledAppProviderSer";
 
@@ -94,7 +95,8 @@ public class InstalledAppProviderService extends IntentService {
                 .subscribe(new Action1<String>() {
                     @Override
                     public void call(String packageName) {
-                        getContentResolver().notifyChange(AppProvider.getHighestPriorityMetadataUri(packageName), null);
+                        getContentResolver()
+                                .notifyChange(AppProvider.getHighestPriorityMetadataUri(packageName), null);
                     }
                 });
     }

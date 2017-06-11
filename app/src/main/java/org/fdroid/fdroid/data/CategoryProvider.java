@@ -6,17 +6,17 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-
+import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable;
-import org.fdroid.fdroid.data.Schema.PackageTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable.Cols;
+import org.fdroid.fdroid.data.Schema.PackageTable;
 
 public class CategoryProvider extends FDroidProvider {
 
     public static final class Helper {
-        private Helper() { }
+        private Helper() {
+        }
 
         public static long ensureExists(Context context, String category) {
             long id = getCategoryId(context, category);
@@ -30,8 +30,9 @@ public class CategoryProvider extends FDroidProvider {
         }
 
         public static long getCategoryId(Context context, String category) {
-            String[] projection = new String[] {Cols.ROW_ID};
-            Cursor cursor = context.getContentResolver().query(getCategoryUri(category), projection, null, null, null);
+            String[] projection = new String[]{Cols.ROW_ID};
+            Cursor cursor = context.getContentResolver().query(getCategoryUri(category), projection,
+                    null, null, null);
             if (cursor == null) {
                 return 0;
             }
@@ -70,8 +71,10 @@ public class CategoryProvider extends FDroidProvider {
         public void setOnlyCategoriesWithApps() {
             // Make sure that metadata from the preferred repository is used to determine if
             // there is an app present or not.
-            join(AppMetadataTable.NAME, "app", "app." + AppMetadataTable.Cols.ROW_ID + " = " + CatJoinTable.NAME + "." + CatJoinTable.Cols.APP_METADATA_ID);
-            join(PackageTable.NAME, "pkg", "pkg." + PackageTable.Cols.PREFERRED_METADATA + " = " + "app." + AppMetadataTable.Cols.ROW_ID);
+            join(AppMetadataTable.NAME, "app", "app." + AppMetadataTable.Cols.ROW_ID
+                    + " = " + CatJoinTable.NAME + "." + CatJoinTable.Cols.APP_METADATA_ID);
+            join(PackageTable.NAME, "pkg", "pkg." + PackageTable.Cols.PREFERRED_METADATA
+                    + " = " + "app." + AppMetadataTable.Cols.ROW_ID);
         }
     }
 
@@ -151,7 +154,8 @@ public class CategoryProvider extends FDroidProvider {
     }
 
     @Override
-    public Cursor query(@NonNull Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
+    public Cursor query(@NonNull Uri uri, String[] projection,
+                        String customSelection, String[] selectionArgs, String sortOrder) {
         QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
         boolean onlyCategoriesWithApps = false;
         switch (MATCHER.match(uri)) {

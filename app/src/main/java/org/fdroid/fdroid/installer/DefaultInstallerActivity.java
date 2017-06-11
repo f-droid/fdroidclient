@@ -30,7 +30,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
 
@@ -40,8 +39,10 @@ import org.fdroid.fdroid.data.Apk;
 public class DefaultInstallerActivity extends FragmentActivity {
     private static final String TAG = "DefaultInstallerActivit";
 
-    static final String ACTION_INSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.INSTALL_PACKAGE";
-    static final String ACTION_UNINSTALL_PACKAGE = "org.fdroid.fdroid.installer.DefaultInstaller.action.UNINSTALL_PACKAGE";
+    static final String ACTION_INSTALL_PACKAGE
+            = "org.fdroid.fdroid.installer.DefaultInstaller.action.INSTALL_PACKAGE";
+    static final String ACTION_UNINSTALL_PACKAGE
+            = "org.fdroid.fdroid.installer.DefaultInstaller.action.UNINSTALL_PACKAGE";
 
     private static final int REQUEST_CODE_INSTALL = 0;
     private static final int REQUEST_CODE_UNINSTALL = 1;

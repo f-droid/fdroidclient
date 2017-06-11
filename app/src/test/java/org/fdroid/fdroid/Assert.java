@@ -4,9 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-
 import junit.framework.AssertionFailedError;
-
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -118,7 +116,7 @@ public class Assert {
     }
 
     public static void assertInvalidUri(ShadowContentResolver resolver, Uri uri) {
-        Cursor cursor = resolver.query(uri, new String[] {}, null, null, null);
+        Cursor cursor = resolver.query(uri, new String[]{}, null, null, null);
         assertNull(cursor);
     }
 
@@ -128,16 +126,18 @@ public class Assert {
         cursor.close();
     }
 
-    public static void assertValidUri(ShadowContentResolver resolver, Uri actualUri, String expectedUri, String[] projection) {
+    public static void assertValidUri(ShadowContentResolver resolver, Uri actualUri, String expectedUri,
+                                      String[] projection) {
         assertValidUri(resolver, actualUri, projection);
         assertEquals(expectedUri, actualUri.toString());
     }
 
     public static void assertResultCount(ShadowContentResolver resolver, int expectedCount, Uri uri) {
-        assertResultCount(resolver, expectedCount, uri, new String[] {});
+        assertResultCount(resolver, expectedCount, uri, new String[]{});
     }
 
-    public static void assertResultCount(ShadowContentResolver resolver, int expectedCount, Uri uri, String[] projection) {
+    public static void assertResultCount(ShadowContentResolver resolver, int expectedCount, Uri uri,
+                                         String[] projection) {
         Cursor cursor = resolver.query(uri, projection, null, null, null);
         assertResultCount(expectedCount, cursor);
         cursor.close();
@@ -153,7 +153,8 @@ public class Assert {
         assertEquals(expectedCount, result.getCount());
     }
 
-    public static void assertIsInstalledVersionInDb(ShadowContentResolver resolver, String appId, int versionCode, String versionName) {
+    public static void assertIsInstalledVersionInDb(ShadowContentResolver resolver,
+                                                    String appId, int versionCode, String versionName) {
         Uri uri = InstalledAppProvider.getAppUri(appId);
 
         String[] projection = {
@@ -198,14 +199,17 @@ public class Assert {
         Uri uri = AppProvider.getContentUri();
 
         context.getContentResolver().insert(uri, values);
-        return AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1, AppMetadataTable.Cols.ALL);
+        return AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1,
+                AppMetadataTable.Cols.ALL);
     }
 
     public static App ensureApp(Context context, String packageName) {
-        App app = AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1, AppMetadataTable.Cols.ALL);
+        App app = AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1,
+                AppMetadataTable.Cols.ALL);
         if (app == null) {
             insertApp(context, packageName, packageName);
-            app = AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1, AppMetadataTable.Cols.ALL);
+            app = AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1,
+                    AppMetadataTable.Cols.ALL);
         }
         assertNotNull(app);
         return app;
@@ -215,7 +219,8 @@ public class Assert {
         return insertApk(context, ensureApp(context, packageName), versionCode);
     }
 
-    public static Uri insertApk(Context context, String packageName, int versionCode, ContentValues additionalValues) {
+    public static Uri insertApk(Context context, String packageName, int versionCode,
+                                ContentValues additionalValues) {
         return insertApk(context, ensureApp(context, packageName), versionCode, additionalValues);
     }
 

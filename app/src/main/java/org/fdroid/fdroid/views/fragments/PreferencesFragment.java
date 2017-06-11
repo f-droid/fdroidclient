@@ -30,22 +30,22 @@ public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String[] SUMMARIES_TO_UPDATE = {
-        Preferences.PREF_UPD_INTERVAL,
-        Preferences.PREF_UPD_WIFI_ONLY,
-        Preferences.PREF_UPD_NOTIFY,
-        Preferences.PREF_ROOTED,
-        Preferences.PREF_HIDE_ANTI_FEATURE_APPS,
-        Preferences.PREF_INCOMP_VER,
-        Preferences.PREF_THEME,
-        Preferences.PREF_IGN_TOUCH,
-        Preferences.PREF_LOCAL_REPO_NAME,
-        Preferences.PREF_LANGUAGE,
-        Preferences.PREF_KEEP_CACHE_TIME,
-        Preferences.PREF_EXPERT,
-        Preferences.PREF_PRIVILEGED_INSTALLER,
-        Preferences.PREF_ENABLE_PROXY,
-        Preferences.PREF_PROXY_HOST,
-        Preferences.PREF_PROXY_PORT,
+            Preferences.PREF_UPD_INTERVAL,
+            Preferences.PREF_UPD_WIFI_ONLY,
+            Preferences.PREF_UPD_NOTIFY,
+            Preferences.PREF_ROOTED,
+            Preferences.PREF_HIDE_ANTI_FEATURE_APPS,
+            Preferences.PREF_INCOMP_VER,
+            Preferences.PREF_THEME,
+            Preferences.PREF_IGN_TOUCH,
+            Preferences.PREF_LOCAL_REPO_NAME,
+            Preferences.PREF_LANGUAGE,
+            Preferences.PREF_KEEP_CACHE_TIME,
+            Preferences.PREF_EXPERT,
+            Preferences.PREF_PRIVILEGED_INSTALLER,
+            Preferences.PREF_ENABLE_PROXY,
+            Preferences.PREF_PROXY_HOST,
+            Preferences.PREF_PROXY_PORT,
     };
 
     private static final int REQUEST_INSTALL_ORBOT = 0x1234;
@@ -180,8 +180,10 @@ public class PreferencesFragment extends PreferenceFragment
                 break;
 
             case Preferences.PREF_PRIVILEGED_INSTALLER:
-                // We may have removed this preference if it is not suitable to show the user. So lets check it is here first.
-                final CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
+                // We may have removed this preference if it is not suitable to show the user.
+                // So lets check it is here first.
+                final CheckBoxPreference pref = (CheckBoxPreference) findPreference(
+                        Preferences.PREF_PRIVILEGED_INSTALLER);
                 if (pref != null) {
                     checkSummary(key, R.string.system_installer_on);
                 }

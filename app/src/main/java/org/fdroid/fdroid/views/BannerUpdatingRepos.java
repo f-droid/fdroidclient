@@ -8,7 +8,6 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
-
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 
@@ -53,7 +52,8 @@ public class BannerUpdatingRepos extends android.support.v7.widget.AppCompatText
             return;
         }
 
-        LocalBroadcastManager.getInstance(getContext()).registerReceiver(onRepoFeedback, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(onRepoFeedback,
+                new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
         setBannerIsVisible(UpdateService.isUpdating());
     }
 

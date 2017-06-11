@@ -13,7 +13,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
-
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -36,16 +35,17 @@ import java.util.Map;
  * and {@code versionCode} since there could be different copies of the same
  * APK on different servers, signed by different keys, or even different builds.
  */
+@SuppressWarnings("LineLength")
 public final class AppUpdateStatusManager {
 
     private static final String TAG = "AppUpdateStatusManager";
 
     /**
      * Broadcast when:
-     *  * The user clears the list of installed apps from notification manager.
-     *  * The user clears the list of apps available to update from the notification manager.
-     *  * A repo update is completed and a bunch of new apps are ready to be updated.
-     *  * F-Droid is opened, and it finds a bunch of .apk files downloaded and ready to install.
+     * * The user clears the list of installed apps from notification manager.
+     * * The user clears the list of apps available to update from the notification manager.
+     * * A repo update is completed and a bunch of new apps are ready to be updated.
+     * * F-Droid is opened, and it finds a bunch of .apk files downloaded and ready to install.
      */
     public static final String BROADCAST_APPSTATUS_LIST_CHANGED = "org.fdroid.fdroid.installer.appstatus.listchange";
 
@@ -61,9 +61,9 @@ public final class AppUpdateStatusManager {
 
     /**
      * Broadcast when:
-     *  * The associated app has the {@link Status#Installed} status, and the user either visits
-     *    that apps details page or clears the individual notification for the app.
-     *  * The download for an app is cancelled.
+     * * The associated app has the {@link Status#Installed} status, and the user either visits
+     * that apps details page or clears the individual notification for the app.
+     * * The download for an app is cancelled.
      */
     public static final String BROADCAST_APPSTATUS_REMOVED = "org.fdroid.fdroid.installer.appstatus.appchange.remove";
 
@@ -129,7 +129,8 @@ public final class AppUpdateStatusManager {
          * Dumps some information about the status for debugging purposes.
          */
         public String toString() {
-            return app.packageName + " [Status: " + status + ", Progress: " + progressCurrent + " / " + progressMax + "]";
+            return app.packageName + " [Status: " + status
+                    + ", Progress: " + progressCurrent + " / " + progressMax + "]";
         }
 
         protected AppUpdateStatus(Parcel in) {
@@ -191,7 +192,9 @@ public final class AppUpdateStatusManager {
     private final HashMap<String, AppUpdateStatus> appMapping = new HashMap<>();
     private boolean isBatchUpdating;
 
-    /** @see #isPendingInstall(String) */
+    /**
+     * @see #isPendingInstall(String)
+     */
     private final SharedPreferences apksPendingInstall;
 
     private AppUpdateStatusManager(Context context) {
@@ -215,6 +218,7 @@ public final class AppUpdateStatusManager {
 
     /**
      * Get all entries associated with a package name. There may be several.
+     *
      * @param packageName Package name of the app
      * @return A list of entries, or an empty list
      */
@@ -309,8 +313,9 @@ public final class AppUpdateStatusManager {
 
     /**
      * Add an Apk to the AppUpdateStatusManager manager (or update it if we already know about it).
-     * @param apk The apk to add.
-     * @param status The current status of the app
+     *
+     * @param apk           The apk to add.
+     * @param status        The current status of the app
      * @param pendingIntent Action when notification is clicked. Can be null for default action(s)
      */
     public void addApk(Apk apk, @NonNull Status status, @Nullable PendingIntent pendingIntent) {
@@ -433,7 +438,7 @@ public final class AppUpdateStatusManager {
 
     void clearAllUpdates() {
         synchronized (appMapping) {
-            for (Iterator<Map.Entry<String, AppUpdateStatus>> it = appMapping.entrySet().iterator(); it.hasNext();) {
+            for (Iterator<Map.Entry<String, AppUpdateStatus>> it = appMapping.entrySet().iterator(); it.hasNext(); ) { // NOCHECKSTYLE EmptyForIteratorPad
                 Map.Entry<String, AppUpdateStatus> entry = it.next();
                 if (entry.getValue().status != Status.Installed) {
                     it.remove();
@@ -445,7 +450,7 @@ public final class AppUpdateStatusManager {
 
     void clearAllInstalled() {
         synchronized (appMapping) {
-            for (Iterator<Map.Entry<String, AppUpdateStatus>> it = appMapping.entrySet().iterator(); it.hasNext();) {
+            for (Iterator<Map.Entry<String, AppUpdateStatus>> it = appMapping.entrySet().iterator(); it.hasNext(); ) { // NOCHECKSTYLE EmptyForIteratorPad
                 Map.Entry<String, AppUpdateStatus> entry = it.next();
                 if (entry.getValue().status == Status.Installed) {
                     it.remove();
@@ -517,6 +522,7 @@ public final class AppUpdateStatusManager {
      * being more permanent than the notification info. As such, the different clients should be
      * aware of their requirements when invoking general-sounding methods like "addApk()", rather
      * than this class trying to second-guess why they added an apk.
+     *
      * @see #isPendingInstall(String)
      */
     public void markAsPendingInstall(String uniqueKey) {

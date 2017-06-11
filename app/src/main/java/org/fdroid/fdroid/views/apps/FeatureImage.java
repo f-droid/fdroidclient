@@ -50,6 +50,7 @@ import java.util.Random;
  *
  * It is suggested that you obtain the Palette from the icon of an app.
  */
+@SuppressWarnings("LineLength")
 public class FeatureImage extends AppCompatImageView {
 
     private static final int NUM_SQUARES_WIDE = 4;

@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.net.bluetooth.httpish;
 
 import android.util.Log;
-
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 import org.fdroid.fdroid.net.bluetooth.FileDetails;
@@ -99,7 +98,8 @@ public class Response {
 
     public InputStream toContentStream() throws UnsupportedOperationException {
         if (contentStream == null) {
-            throw new UnsupportedOperationException("This kind of response doesn't have a content stream. Did you perform a HEAD request instead of a GET request?");
+            throw new UnsupportedOperationException("This kind of response doesn't have a content stream."
+                    + " Did you perform a HEAD request instead of a GET request?");
         }
         return contentStream;
     }
@@ -136,7 +136,8 @@ public class Response {
         private int fileSize = -1;
         private String etag;
 
-        public Builder() { }
+        public Builder() {
+        }
 
         public Builder(InputStream contentStream) {
             this.contentStream = contentStream;
