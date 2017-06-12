@@ -209,11 +209,14 @@ public class TempAppProvider extends AppProvider {
 
     private void ensureTempTableDetached(SQLiteDatabase db) {
         try {
+            // Ideally we'd ask SQLite if the temp table is attached, but that is not possible.
+            // Instead, we resort to hackery:
+            // If the first statement does not throw an exception, then the temp db is attached and the second
+            // statement will detach the database.
+            db.rawQuery("SELECT * FROM " + DB + "." + getTableName() + " WHERE 0", null);
             db.execSQL("DETACH DATABASE " + DB);
-        } catch (SQLiteException e) {
-            // We expect that most of the time the database will not exist unless an error occurred
-            // midway through the last update, The resulting exception is:
-            //   android.database.sqlite.SQLiteException: no such database: temp_update_db (code 1)
+        } catch (SQLiteException ignored) {
+
         }
     }
 
