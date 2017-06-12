@@ -46,16 +46,12 @@ public class HttpDownloaderTest {
         final CountDownLatch latch = new CountDownLatch(1);
         String urlString = "https://f-droid.org/repo/index.jar";
         receivedProgress = false;
-        System.out.println("downloadUninterruptedTestWithProgress: " + urlString);
-        receivedProgress = false;
         URL url = new URL(urlString);
         File destFile = File.createTempFile("dl-", "");
         final HttpDownloader httpDownloader = new HttpDownloader(url, destFile);
         httpDownloader.setListener(new ProgressListener() {
             @Override
             public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                System.out.println("DownloaderProgressListener.sendProgress "
-                        + sourceUrl + " " + bytesRead + " / " + totalBytes);
                 receivedProgress = true;
             }
         });
@@ -118,7 +114,6 @@ public class HttpDownloaderTest {
         httpDownloader.setListener(new ProgressListener() {
             @Override
             public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                System.out.println("DownloaderProgressListener.sendProgress " + bytesRead + " / " + totalBytes);
                 receivedProgress = true;
                 latch.countDown();
             }

@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.updater;
 
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.util.Log;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
@@ -177,7 +178,6 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 Repo.PUSH_REQUEST_ACCEPT_ALWAYS);
         indexV0Details.apps.size();
 
-        System.out.println("total apps: " + apps.length + " " + indexV0Details.apps.size());
         assertEquals(indexV0Details.apps.size(), apps.length);
         assertEquals(apps.length, packages.size());
 
@@ -336,13 +336,10 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
             fields.remove(field);
         }
         if (fields.size() > 0) {
-            System.out.print(instance.getClass() + " has fields not setup for Jackson: ");
-            for (String field : fields) {
-                System.out.print("\"" + field + "\", ");
-            }
-            System.out.println("\nRead class javadoc for more info.");
+            String sb = String.valueOf(instance.getClass()) + " has fields not setup for Jackson: " +
+                    TextUtils.join(", ", fields) + "\nRead class javadoc for more info.";
+            fail(sb);
         }
-        assertEquals(0, fields.size());
     }
 
     @Test
@@ -408,7 +405,6 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
     }
 
     private Repo parseRepo(ObjectMapper mapper, JsonParser parser) throws IOException {
-        System.out.println("parseRepo ");
         parser.nextToken();
         parser.nextToken();
         ObjectReader repoReader = mapper.readerFor(Repo.class);

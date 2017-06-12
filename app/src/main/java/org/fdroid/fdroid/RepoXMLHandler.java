@@ -379,9 +379,6 @@ public class RepoXMLHandler extends DefaultHandler {
             } else {
                 removeRequestedPermission(attributes.getValue("name"));
             }
-        } else if ("uses-feature".equals(localName) && curapk != null) {
-            System.out.println("TODO startElement " + uri + " " + localName + " " + qName);
-            // TODO
         }
         curchars.setLength(0);
     }
