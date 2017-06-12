@@ -20,6 +20,8 @@ import org.robolectric.annotation.Config;
 import java.security.NoSuchAlgorithmException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 @Config(constants = BuildConfig.class, application = Application.class, sdk = 24)
 @RunWith(RobolectricTestRunner.class)
@@ -68,16 +70,66 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         App found2 = findApp(singleApp);
         assertEquals(2, found2.suggestedVersionCode);
 
+        Apk found2Apk = findApk(found2);
+        assertEquals(2, found2Apk.versionCode);
+        assertEquals(FDROID_SIG, found2Apk.sig);
+
         // By enabling unstable updates, the "upstreamVersionCode" should get ignored, and we should
         // suggest the latest version (3).
         Preferences.get().setUnstableUpdates(true);
         AppProvider.Helper.calcSuggestedApks(context);
         App found3 = findApp(singleApp);
         assertEquals(3, found3.suggestedVersionCode);
+
+        Apk found3Apk = findApk(found3);
+        assertEquals(3, found3Apk.versionCode);
+        assertEquals(FDROID_SIG, found3Apk.sig);
     }
 
     private App findApp(App app) {
         return AppProvider.Helper.findSpecificApp(context.getContentResolver(), app.packageName, app.repoId);
+    }
+
+    private Apk findApk(App app) {
+        return ApkProvider.Helper.findSuggestedApk(context, app);
+    }
+
+    @Test
+    public void suggestedApkQuery() {
+        App singleApp = insertApp(context, "single.app", "Single App", 0, "https://simple.repo");
+        insertApk(context, singleApp, 1, FDROID_SIG);
+        insertApk(context, singleApp, 1, UPSTREAM_SIG);
+        insertApk(context, singleApp, 2, FDROID_SIG);
+        insertApk(context, singleApp, 2, UPSTREAM_SIG);
+        insertApk(context, singleApp, 3, FDROID_SIG);
+        insertApk(context, singleApp, 3, UPSTREAM_SIG);
+        insertApk(context, singleApp, 3, THIRD_PARTY_SIG);
+        insertApk(context, singleApp, 4, FDROID_SIG);
+        insertApk(context, singleApp, 4, UPSTREAM_SIG);
+        insertApk(context, singleApp, 4, THIRD_PARTY_SIG);
+        insertApk(context, singleApp, 5, FDROID_SIG);
+        insertApk(context, singleApp, 5, UPSTREAM_SIG);
+        AppProvider.Helper.calcSuggestedApks(context);
+
+        App notInstalled = findApp(singleApp);
+        Apk suggestedApkForNotInstalled = findApk(notInstalled);
+        assertNull(notInstalled.installedSig);
+
+        // It could be either of these, I think it is actually non-deterministic as to which is chosen.
+        // TODO: Make it deterministic based on repo priority.
+        assertTrue(FDROID_SIG.equals(suggestedApkForNotInstalled.sig) ||
+                UPSTREAM_SIG.equals(suggestedApkForNotInstalled.sig));
+        assertEquals(5, suggestedApkForNotInstalled.versionCode);
+
+        InstalledAppTestUtils.install(context, "single.app", 3, "v1", THIRD_PARTY_CERT);
+        AppProvider.Helper.calcSuggestedApks(context);
+
+        App installed = findApp(singleApp);
+        Apk suggestedApkForInstalled = findApk(installed);
+        assertEquals(THIRD_PARTY_SIG, installed.installedSig);
+        assertEquals(4, installed.suggestedVersionCode);
+        assertEquals(THIRD_PARTY_SIG, suggestedApkForInstalled.sig);
+        assertEquals(4, suggestedApkForInstalled.versionCode);
     }
 
     @Test
@@ -98,12 +150,20 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         App suggestUpstream4 = findApp(singleApp);
         assertEquals(4, suggestUpstream4.suggestedVersionCode);
 
+        Apk suggestedUpstream4Apk = findApk(suggestUpstream4);
+        assertEquals(4, suggestedUpstream4Apk.versionCode);
+        assertEquals(UPSTREAM_SIG, suggestedUpstream4Apk.sig);
+
         // Now install v1 with the f-droid signature. In response, we should only suggest
         // apps with that sig in the future. That is, version 4 from upstream is not considered.
         InstalledAppTestUtils.install(context, "single.app", 1, "v1", FDROID_CERT);
         AppProvider.Helper.calcSuggestedApks(context);
         App suggestFDroid3 = findApp(singleApp);
         assertEquals(3, suggestFDroid3.suggestedVersionCode);
+
+        Apk suggestedFDroid3Apk = findApk(suggestFDroid3);
+        assertEquals(3, suggestedFDroid3Apk.versionCode);
+        assertEquals(FDROID_SIG, suggestedFDroid3Apk.sig);
 
         // This adds the "upstreamVersionCode" version of the app, but signed by f-droid.
         insertApk(context, singleApp, 4, FDROID_SIG);
@@ -112,12 +172,20 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         App suggestFDroid4 = findApp(singleApp);
         assertEquals(4, suggestFDroid4.suggestedVersionCode);
 
+        Apk suggestedFDroid4Apk = findApk(suggestFDroid4);
+        assertEquals(4, suggestedFDroid4Apk.versionCode);
+        assertEquals(FDROID_SIG, suggestedFDroid4Apk.sig);
+
         // Version 5 from F-Droid is not the "upstreamVersionCode", but with beta updates it should
         // still become the suggested version now.
         Preferences.get().setUnstableUpdates(true);
         AppProvider.Helper.calcSuggestedApks(context);
         App suggestFDroid5 = findApp(singleApp);
         assertEquals(5, suggestFDroid5.suggestedVersionCode);
+
+        Apk suggestedFDroid5Apk = findApk(suggestFDroid5);
+        assertEquals(5, suggestedFDroid5Apk.versionCode);
+        assertEquals(FDROID_SIG, suggestedFDroid5Apk.sig);
     }
 
     private void recalculateMetadata() {

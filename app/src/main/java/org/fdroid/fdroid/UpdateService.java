@@ -499,7 +499,7 @@ public class UpdateService extends IntentService {
             cursor.moveToFirst();
             for (int i = 0; i < cursor.getCount(); i++) {
                 App app = new App(cursor);
-                Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode);
+                Apk apk = ApkProvider.Helper.findSuggestedApk(context, app);
                 InstallManagerService.queue(context, app, apk);
                 cursor.moveToNext();
             }
@@ -514,7 +514,7 @@ public class UpdateService extends IntentService {
             for (int i = 0; i < hasUpdates.getCount(); i++) {
                 App app = new App(hasUpdates);
                 hasUpdates.moveToNext();
-                apksToUpdate.add(ApkProvider.Helper.findApkFromAnyRepo(this, app.packageName, app.suggestedVersionCode));
+                apksToUpdate.add(ApkProvider.Helper.findSuggestedApk(this, app));
             }
             appUpdateStatusManager.addApks(apksToUpdate, AppUpdateStatusManager.Status.UpdateAvailable);
         }

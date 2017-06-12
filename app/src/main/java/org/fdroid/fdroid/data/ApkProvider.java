@@ -7,6 +7,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
@@ -74,8 +75,16 @@ public class ApkProvider extends FDroidProvider {
             return resolver.delete(uri, null, null);
         }
 
+        public static Apk findSuggestedApk(Context context, App app) {
+            return findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode, app.installedSig);
+        }
+
         public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode) {
-            return findApkFromAnyRepo(context, packageName, versionCode, Cols.ALL);
+            return findApkFromAnyRepo(context, packageName, versionCode, null, Cols.ALL);
+        }
+
+        public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode, String signature) {
+            return findApkFromAnyRepo(context, packageName, versionCode, signature, Cols.ALL);
         }
 
         /**
@@ -89,9 +98,9 @@ public class ApkProvider extends FDroidProvider {
             return cursorToList(cursor);
         }
 
-        public static Apk findApkFromAnyRepo(Context context,
-                                             String packageName, int versionCode, String[] projection) {
-            final Uri uri = getApkFromAnyRepoUri(packageName, versionCode);
+        public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode,
+                                             @Nullable String signature, String[] projection) {
+            final Uri uri = getApkFromAnyRepoUri(packageName, versionCode, signature);
             return findByUri(context, uri, projection);
         }
 
@@ -113,8 +122,7 @@ public class ApkProvider extends FDroidProvider {
             return findByPackageName(context, packageName, Cols.ALL);
         }
 
-        public static List<Apk> findByPackageName(Context context,
-                                                  String packageName, String[] projection) {
+        public static List<Apk> findByPackageName(Context context, String packageName, String[] projection) {
             ContentResolver resolver = context.getContentResolver();
             final Uri uri = getAppUri(packageName);
             final String sort = "apk." + Cols.VERSION_CODE + " DESC";
@@ -218,6 +226,7 @@ public class ApkProvider extends FDroidProvider {
         PACKAGE_FIELDS.put(Cols.Package.PACKAGE_NAME, PackageTable.Cols.PACKAGE_NAME);
 
         MATCHER.addURI(getAuthority(), PATH_REPO + "/#", CODE_REPO);
+        MATCHER.addURI(getAuthority(), PATH_APK_FROM_ANY_REPO + "/#/*/*", CODE_APK_FROM_ANY_REPO);
         MATCHER.addURI(getAuthority(), PATH_APK_FROM_ANY_REPO + "/#/*", CODE_APK_FROM_ANY_REPO);
         MATCHER.addURI(getAuthority(), PATH_APK_FROM_REPO + "/#/#", CODE_APK_FROM_REPO);
         MATCHER.addURI(getAuthority(), PATH_APKS + "/*", CODE_APKS);
@@ -260,16 +269,21 @@ public class ApkProvider extends FDroidProvider {
     }
 
     public static Uri getApkFromAnyRepoUri(Apk apk) {
-        return getApkFromAnyRepoUri(apk.packageName, apk.versionCode);
+        return getApkFromAnyRepoUri(apk.packageName, apk.versionCode, null);
     }
 
-    public static Uri getApkFromAnyRepoUri(String packageName, int versionCode) {
-        return getContentUri()
-            .buildUpon()
-            .appendPath(PATH_APK_FROM_ANY_REPO)
-            .appendPath(Integer.toString(versionCode))
-            .appendPath(packageName)
-            .build();
+    public static Uri getApkFromAnyRepoUri(String packageName, int versionCode, @Nullable String signature) {
+        Uri.Builder builder = getContentUri()
+                .buildUpon()
+                .appendPath(PATH_APK_FROM_ANY_REPO)
+                .appendPath(Integer.toString(versionCode))
+                .appendPath(packageName);
+
+        if (signature != null) {
+            builder.appendPath(signature);
+        }
+
+        return builder.build();
     }
 
     public static Uri getContentUriForApps(Repo repo, List<App> apps) {
@@ -395,20 +409,20 @@ public class ApkProvider extends FDroidProvider {
     private QuerySelection querySingleFromAnyRepo(Uri uri, boolean includeAlias) {
         String alias = includeAlias ? "apk." : "";
 
-        // TODO: Technically multiple repositories can provide the apk with this version code.
-        //       Therefore, in the very near future we'll need to change from calculating a
-        //       "suggested version code" to a "suggested apk" and join directly onto the apk table.
-        //       This way, we can take into account both repo priorities and signing keys of any
-        //       already installed apks to ensure that the best version is suggested to the user.
-        //       At this point, we may pull back the "wrong" apk in weird edge cases, but the user
-        //       wont be tricked into installing it, as it will (likely) have a different signing key.
-        final String selection = alias + Cols.VERSION_CODE + " = ? and " + alias + Cols.APP_ID + " IN (" + getMetadataIdFromPackageNameQuery() + ")";
-        final String[] args = {
-            // First (0th) path segment is the word "apk",
-            // and we are not interested in it.
-            uri.getPathSegments().get(1),
-            uri.getPathSegments().get(2),
-        };
+        String selection =
+                alias + Cols.VERSION_CODE + " = ? AND " +
+                alias + Cols.APP_ID + " IN (" + getMetadataIdFromPackageNameQuery() + ")";
+
+        List<String> pathSegments = uri.getPathSegments();
+        List<String> args = new ArrayList<>(3);
+        args.add(pathSegments.get(1)); // First (0th) path segment is the word "apk" and we are not interested in it.
+        args.add(pathSegments.get(2));
+
+        if (pathSegments.size() >= 4) {
+            selection += " AND " + alias + Cols.SIGNATURE + " = ? ";
+            args.add(pathSegments.get(3));
+        }
+
         return new QuerySelection(selection, args);
     }
 

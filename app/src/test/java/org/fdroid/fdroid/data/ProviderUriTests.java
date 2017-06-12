@@ -141,7 +141,7 @@ public class ProviderUriTests {
         assertValidUri(resolver, ApkProvider.getAppUri("org.fdroid.fdroid"), "content://org.fdroid.fdroid.data.ApkProvider/app/org.fdroid.fdroid", projection);
         assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri(new MockApk("org.fdroid.fdroid", 100)), "content://org.fdroid.fdroid.data.ApkProvider/apk-any-repo/100/org.fdroid.fdroid", projection);
         assertValidUri(resolver, ApkProvider.getContentUri(apks), projection);
-        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri("org.fdroid.fdroid", 100), "content://org.fdroid.fdroid.data.ApkProvider/apk-any-repo/100/org.fdroid.fdroid", projection);
+        assertValidUri(resolver, ApkProvider.getApkFromAnyRepoUri("org.fdroid.fdroid", 100, null), "content://org.fdroid.fdroid.data.ApkProvider/apk-any-repo/100/org.fdroid.fdroid", projection);
         assertValidUri(resolver, ApkProvider.getRepoUri(1000), "content://org.fdroid.fdroid.data.ApkProvider/repo/1000", projection);
     }
 

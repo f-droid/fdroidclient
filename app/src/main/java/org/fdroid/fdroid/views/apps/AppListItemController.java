@@ -535,7 +535,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
                 Installer installer = InstallerFactory.create(activity, currentStatus.apk);
                 installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), Uri.parse(currentStatus.apk.getUrl()));
             } else {
-                final Apk suggestedApk = ApkProvider.Helper.findApkFromAnyRepo(activity, currentApp.packageName, currentApp.suggestedVersionCode);
+                final Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, currentApp);
                 InstallManagerService.queue(activity, currentApp, suggestedApk);
             }
         }
