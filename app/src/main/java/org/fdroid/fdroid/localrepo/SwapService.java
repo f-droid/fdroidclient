@@ -278,7 +278,7 @@ public class SwapService extends Service {
             if (!TextUtils.isEmpty(fingerprint)) {
                 values.put(Schema.RepoTable.Cols.FINGERPRINT, peer.getFingerprint());
             }
-            values.put(Schema.RepoTable.Cols.IN_USE, true);
+            values.put(Schema.RepoTable.Cols.IN_USE, 1);
             values.put(Schema.RepoTable.Cols.IS_SWAP, true);
             Uri uri = RepoProvider.Helper.insert(this, values);
             repo = RepoProvider.Helper.get(this, uri);

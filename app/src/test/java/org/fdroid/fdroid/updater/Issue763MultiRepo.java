@@ -38,7 +38,7 @@ public class Issue763MultiRepo extends MultiRepoUpdaterTest {
 
     public void setEnabled(Repo repo, boolean enabled) {
         ContentValues values = new ContentValues(1);
-        values.put(Schema.RepoTable.Cols.IN_USE, enabled);
+        values.put(Schema.RepoTable.Cols.IN_USE, enabled ? 1 : 0);
         RepoProvider.Helper.update(context, repo, values);
     }
 
