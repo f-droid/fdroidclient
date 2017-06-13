@@ -27,7 +27,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -478,42 +477,24 @@ public class UpdateService extends IntentService {
     }
 
     private void performUpdateNotification() {
-        Cursor cursor = getContentResolver().query(
-                AppProvider.getCanUpdateUri(),
-                Schema.AppMetadataTable.Cols.ALL,
-                null, null, null);
-        if (cursor != null) {
-            if (cursor.getCount() > 0) {
-                showAppUpdatesNotification(cursor);
-            }
-            cursor.close();
+        List<App> canUpdate = AppProvider.Helper.findCanUpdate(this, Schema.AppMetadataTable.Cols.ALL);
+        if (canUpdate.size() > 0) {
+            showAppUpdatesNotification(canUpdate);
         }
     }
 
     public static void autoDownloadUpdates(Context context) {
-        Cursor cursor = context.getContentResolver().query(
-                AppProvider.getCanUpdateUri(),
-                Schema.AppMetadataTable.Cols.ALL,
-                null, null, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
-            for (int i = 0; i < cursor.getCount(); i++) {
-                App app = new App(cursor);
-                Apk apk = ApkProvider.Helper.findSuggestedApk(context, app);
-                InstallManagerService.queue(context, app, apk);
-                cursor.moveToNext();
-            }
-            cursor.close();
+        List<App> canUpdate = AppProvider.Helper.findCanUpdate(context, Schema.AppMetadataTable.Cols.ALL);
+        for (App app : canUpdate) {
+            Apk apk = ApkProvider.Helper.findSuggestedApk(context, app);
+            InstallManagerService.queue(context, app, apk);
         }
     }
 
-    private void showAppUpdatesNotification(Cursor hasUpdates) {
-        if (hasUpdates != null) {
-            hasUpdates.moveToFirst();
-            List<Apk> apksToUpdate = new ArrayList<>(hasUpdates.getCount());
-            for (int i = 0; i < hasUpdates.getCount(); i++) {
-                App app = new App(hasUpdates);
-                hasUpdates.moveToNext();
+    private void showAppUpdatesNotification(List<App> canUpdate) {
+        if (canUpdate.size() > 0) {
+            List<Apk> apksToUpdate = new ArrayList<>(canUpdate.size());
+            for (App app : canUpdate) {
                 apksToUpdate.add(ApkProvider.Helper.findSuggestedApk(this, app));
             }
             appUpdateStatusManager.addApks(apksToUpdate, AppUpdateStatusManager.Status.UpdateAvailable);
