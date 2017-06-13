@@ -18,6 +18,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -147,6 +148,44 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         // it should still become the suggested version now.
         Preferences.get().setUnstableUpdates(true);
         assertSuggested("single.app", 6, THIRD_PARTY_SIG, 3);
+    }
+
+    /**
+     * This is specifically for the {@link AppProvider.Helper#findCanUpdate(Context, String[])} method used by
+     * the {@link org.fdroid.fdroid.UpdateService#showAppUpdatesNotification(List)} method. We need to ensure
+     * that we don't prompt people to update to the wrong sig after an update.
+     */
+    @Test
+    public void dontSuggestUpstreamVersions() {
+        // By setting the "upstreamVersionCode" to 0, we are letting F-Droid choose the highest compatible version.
+        App mainApp = insertApp(context, "single.app", "Single App (Main repo)", 0, "https://main.repo");
+
+        insertApk(context, mainApp, 1, FDROID_SIG);
+        insertApk(context, mainApp, 2, FDROID_SIG);
+        insertApk(context, mainApp, 3, FDROID_SIG);
+        insertApk(context, mainApp, 4, FDROID_SIG);
+        insertApk(context, mainApp, 5, FDROID_SIG);
+
+        insertApk(context, mainApp, 4, UPSTREAM_SIG);
+        insertApk(context, mainApp, 5, UPSTREAM_SIG);
+        insertApk(context, mainApp, 6, UPSTREAM_SIG);
+        insertApk(context, mainApp, 7, UPSTREAM_SIG);
+
+        // If the user was to manually install the app, they should be suggested version 7 from upstream...
+        assertSuggested("single.app", 7);
+
+        // ... but we should not prompt them to update anything, because it isn't installed.
+        assertEquals(Collections.EMPTY_LIST, AppProvider.Helper.findCanUpdate(context, Cols.ALL));
+
+        // After installing an early F-Droid version, we should then suggest the latest F-Droid version.
+        InstalledAppTestUtils.install(context, "single.app", 2, "v2", FDROID_CERT);
+        assertSuggested("single.app", 5, FDROID_SIG, 2);
+
+        // However once we've reached the maximum F-Droid version, then we should not suggest higher versions
+        // with different signatures.
+        InstalledAppProviderService.deleteAppFromDb(context, "single.app");
+        InstalledAppTestUtils.install(context, "single.app", 5, "v5", FDROID_CERT);
+        assertEquals(Collections.EMPTY_LIST, AppProvider.Helper.findCanUpdate(context, Cols.ALL));
     }
 
     /**
