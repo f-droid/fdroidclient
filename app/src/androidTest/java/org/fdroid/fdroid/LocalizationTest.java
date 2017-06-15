@@ -99,13 +99,14 @@ public class LocalizationTest {
             // Resources() requires DisplayMetrics, but they are only needed for drawables
             resources = new Resources(assets, new DisplayMetrics(), config);
             for (Field field : fields) {
-                int resId = field.getInt(int.class);
-                for (int quantity = 0; quantity < 22; quantity++) {
-                    resources.getQuantityString(resId, quantity);
-                }
-
-                String formats = haveFormats.get(field.getName());
+                String formats = null;
                 try {
+                    int resId = field.getInt(int.class);
+                    for (int quantity = 0; quantity < 22; quantity++) {
+                        resources.getQuantityString(resId, quantity);
+                    }
+
+                    formats = haveFormats.get(field.getName());
                     switch (formats) {
                         case "d":
                             resources.getQuantityString(resId, 1, 1);
@@ -121,7 +122,7 @@ public class LocalizationTest {
                                 throw new IllegalStateException("Pattern not included in tests: " + formats);
                             }
                     }
-                } catch (IllegalFormatException e) {
+                } catch (IllegalFormatException | Resources.NotFoundException e) {
                     Log.i(TAG, locale + " " + field.getName());
                     throw new IllegalArgumentException("Bad '" + formats + "' format in " + locale + " "
                             + field.getName() + ": " + e.getMessage());

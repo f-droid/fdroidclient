@@ -409,7 +409,7 @@ public class UpdateService extends IntentService {
                 try {
                     RepoUpdater updater = new IndexV1Updater(this, repo);
                     //TODO setProgressListeners(updater);
-                    if (!updater.update()) {
+                    if (Preferences.get().isForceOldIndexEnabled() || !updater.update()) {
                         updater = new RepoUpdater(getBaseContext(), repo);
                         setProgressListeners(updater);
                         updater.update();

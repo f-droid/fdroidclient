@@ -53,6 +53,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
     public static final String PREF_KEEP_INSTALL_HISTORY = "keepInstallHistory";
     public static final String PREF_EXPERT = "expert";
+    public static final String PREF_FORCE_OLD_INDEX = "forceOldIndex";
     public static final String PREF_PRIVILEGED_INSTALLER = "privilegedInstaller";
     public static final String PREF_UNINSTALL_PRIVILEGED_APP = "uninstallPrivilegedApp";
     public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
@@ -82,6 +83,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String DEFAULT_PROXY_HOST = "127.0.0.1";
     public static final int DEFAULT_PROXY_PORT = 8118;
     private static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;
+    private static final boolean DEFAULT_FORCE_OLD_INDEX = false;
     private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
 
     public enum Theme {
@@ -112,6 +114,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private void uninitialize(String key) {
         initialized.put(key, false);
+    }
+
+    public boolean isForceOldIndexEnabled() {
+        return preferences.getBoolean(PREF_FORCE_OLD_INDEX, DEFAULT_FORCE_OLD_INDEX);
     }
 
     /**
