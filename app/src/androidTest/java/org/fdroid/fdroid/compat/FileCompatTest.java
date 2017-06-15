@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 
 import org.fdroid.fdroid.AssetUtils;
 import org.fdroid.fdroid.data.SanitizedFile;
@@ -30,6 +31,8 @@ import static org.junit.Assume.assumeTrue;
 @RunWith(AndroidJUnit4.class)
 public class FileCompatTest {
 
+    private static final String TAG = "FileCompatTest";
+
     private SanitizedFile sourceFile;
     private SanitizedFile destFile;
 
@@ -47,11 +50,11 @@ public class FileCompatTest {
     @After
     public void tearDown() {
         if (!sourceFile.delete()) {
-            System.out.println("Can't delete " + sourceFile.getAbsolutePath() + ".");
+            Log.w(TAG, "Can't delete " + sourceFile.getAbsolutePath() + ".");
         }
 
         if (!destFile.delete()) {
-            System.out.println("Can't delete " + destFile.getAbsolutePath() + ".");
+            Log.w(TAG, "Can't delete " + destFile.getAbsolutePath() + ".");
         }
     }
 

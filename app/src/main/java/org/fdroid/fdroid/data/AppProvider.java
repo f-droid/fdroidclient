@@ -250,7 +250,7 @@ public class AppProvider extends FDroidProvider {
                 join(
                         InstalledAppTable.NAME,
                         "installed",
-                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME);
+                        "installed." + InstalledAppTable.Cols.PACKAGE_ID + " = " + PackageTable.NAME + "." + PackageTable.Cols.ROW_ID);
                 requiresInstalledTable = true;
             }
         }
@@ -270,7 +270,7 @@ public class AppProvider extends FDroidProvider {
                 leftJoin(
                         InstalledAppTable.NAME,
                         "installed",
-                        "installed." + InstalledAppTable.Cols.PACKAGE_NAME + " = " + PackageTable.NAME + "." + PackageTable.Cols.PACKAGE_NAME);
+                        "installed." + InstalledAppTable.Cols.PACKAGE_ID + " = " + PackageTable.NAME + "." + PackageTable.Cols.ROW_ID);
                 requiresInstalledTable = true;
             }
         }
@@ -953,50 +953,49 @@ public class AppProvider extends FDroidProvider {
      * with the closest version code to that, without going over.
      * If the app is not compatible at all (i.e. no versions were compatible)
      * then we take the highest, otherwise we take the highest compatible version.
+     * If the app is installed, then all apks signed by a different certificate are
+     * ignored for the purpose of this calculation.
+     *
+     * @see #updateSuggestedFromLatest()
      */
     private void updateSuggestedFromUpstream() {
-        Utils.debugLog(TAG, "Calculating suggested versions for all apps which specify an upstream version code.");
+        Utils.debugLog(TAG, "Calculating suggested versions for all NON-INSTALLED apps which specify an upstream version code.");
 
         final String apk = getApkTableName();
         final String app = getTableName();
+        final String installed = InstalledAppTable.NAME;
 
         final boolean unstableUpdates = Preferences.get().getUnstableUpdates();
         String restrictToStable = unstableUpdates ? "" : (apk + "." + ApkTable.Cols.VERSION_CODE + " <= " + app + "." + Cols.UPSTREAM_VERSION_CODE + " AND ");
 
+        // The join onto `appForThisApk` is to ensure that the MAX(apk.versionCode) is chosen from
+        // all apps regardless of repo. If we joined directly onto the outer `app` table we are
+        // in the process of updating, then it would be limited to only apks from the same repo.
+        // By adding the extra join, and then joining based on the packageId of this inner app table
+        // and the app table we are updating, we take into account all apks for this app.
+
+        // The check apk.sig = COALESCE(installed.sig, apk.sig) would ideally be better written as:
+        //   `installedSig IS NULL OR installedSig = apk.sig`
+        // however that would require a separate sub query for each `installedSig` which is more
+        // expensive. Using a COALESCE is a less expressive way to write the same thing with only
+        // a single subquery.
+        // Also note that the `installedSig IS NULL` is not because there is a `NULL` entry in the
+        // installed table (this is impossible), but rather because the subselect above returned
+        // zero rows.
         String updateSql =
                 "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
+                "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
+                        "   LEFT JOIN " + installed + " ON (" + installed + "." + InstalledAppTable.Cols.PACKAGE_ID + " = " + app + "." + Cols.PACKAGE_ID + ") " +
                 " WHERE " +
-                    joinToApksRegardlessOfRepo() + " AND " +
+                    app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
+                    apk + "." + ApkTable.Cols.SIGNATURE + " = COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
                     restrictToStable +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 ";
 
-        db().execSQL(updateSql);
-    }
-
-    /**
-     * Ensure that when we select a list of {@link ApkTable} rows for which to calculate the
-     * {@link Cols#SUGGESTED_VERSION_CODE}, that we select all apks belonging to the same package,
-     * regardless of which repo they come from. We can't just join {@link ApkTable} onto the
-     * {@link AppMetadataTable}, because the {@link AppMetadataTable} table is specific to a repo.
-     *
-     * This is required so that apps always have the highest possible
-     * {@link Cols#SUGGESTED_VERSION_CODE}, regardless of the repository priorities. Without this,
-     * then each {@link AppMetadataTable} row will have a different {@link Cols#SUGGESTED_VERSION_CODE}
-     * depending on which repo it came from. With this, each {@link AppMetadataTable} row has the
-     * same {@link Cols#SUGGESTED_VERSION_CODE}, even if that version is from a different repo.
-     */
-    private String joinToApksRegardlessOfRepo() {
-        final String apk = getApkTableName();
-        final String app = getTableName();
-
-        return app + "." + Cols.PACKAGE_ID + " = (" +
-                    " SELECT innerAppName." + Cols.PACKAGE_ID +
-                    " FROM " + app + " as innerAppName " +
-                    " WHERE innerAppName." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID +
-                ") ";
+        LoggingQuery.execSQL(db(), updateSql);
     }
 
     /**
@@ -1006,23 +1005,29 @@ public class AppProvider extends FDroidProvider {
      * If the suggested version is null, it means that we could not figure it
      * out from the upstream vercode. In such a case, fall back to the simpler
      * algorithm as if upstreamVercode was 0.
+     *
+     * @see #updateSuggestedFromUpstream()
      */
     private void updateSuggestedFromLatest() {
         Utils.debugLog(TAG, "Calculating suggested versions for all apps which don't specify an upstream version code.");
 
         final String apk = getApkTableName();
         final String app = getTableName();
+        final String installed = InstalledAppTable.NAME;
 
         String updateSql =
                 "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
                 " SELECT MAX( " + apk + "." + ApkTable.Cols.VERSION_CODE + " ) " +
                 " FROM " + apk +
+                "   JOIN " + app + " AS appForThisApk ON (appForThisApk." + Cols.ROW_ID + " = " + apk + "." + ApkTable.Cols.APP_ID + ") " +
+                "   LEFT JOIN " + installed + " ON (" + installed + "." + InstalledAppTable.Cols.PACKAGE_ID + " = " + app + "." + Cols.PACKAGE_ID + ") " +
                 " WHERE " +
-                    joinToApksRegardlessOfRepo() + " AND " +
+                    app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
+                    apk + "." + ApkTable.Cols.SIGNATURE + " = COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
 
-        db().execSQL(updateSql);
+        LoggingQuery.execSQL(db(), updateSql);
     }
 
     private void updateIconUrls() {

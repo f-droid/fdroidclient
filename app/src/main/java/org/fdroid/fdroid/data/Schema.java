@@ -329,7 +329,7 @@ public interface Schema {
 
         interface Cols {
             String _ID = "rowid as _id"; // Required for CursorLoaders
-            String PACKAGE_NAME = "appId";
+            String PACKAGE_ID = "packageId";
             String VERSION_CODE = "versionCode";
             String VERSION_NAME = "versionName";
             String APPLICATION_LABEL = "applicationLabel";
@@ -338,8 +338,12 @@ public interface Schema {
             String HASH_TYPE = "hashType";
             String HASH = "hash";
 
+            interface Package {
+                String NAME = "packageName";
+            }
+
             String[] ALL = {
-                    _ID, PACKAGE_NAME, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
+                    _ID, PACKAGE_ID, Package.NAME, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
                     SIGNATURE, LAST_UPDATE_TIME, HASH_TYPE, HASH,
             };
         }

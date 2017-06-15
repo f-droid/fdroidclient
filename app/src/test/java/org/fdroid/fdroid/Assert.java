@@ -158,7 +158,7 @@ public class Assert {
         Uri uri = InstalledAppProvider.getAppUri(appId);
 
         String[] projection = {
-                InstalledAppTable.Cols.PACKAGE_NAME,
+                InstalledAppTable.Cols.Package.NAME,
                 InstalledAppTable.Cols.VERSION_CODE,
                 InstalledAppTable.Cols.VERSION_NAME,
                 InstalledAppTable.Cols.APPLICATION_LABEL,
@@ -171,7 +171,7 @@ public class Assert {
 
         cursor.moveToFirst();
 
-        assertEquals(appId, cursor.getString(cursor.getColumnIndex(InstalledAppTable.Cols.PACKAGE_NAME)));
+        assertEquals(appId, cursor.getString(cursor.getColumnIndex(InstalledAppTable.Cols.Package.NAME)));
         assertEquals(versionCode, cursor.getInt(cursor.getColumnIndex(InstalledAppTable.Cols.VERSION_CODE)));
         assertEquals(versionName, cursor.getString(cursor.getColumnIndex(InstalledAppTable.Cols.VERSION_NAME)));
         cursor.close();
@@ -196,11 +196,16 @@ public class Assert {
 
         values.putAll(additionalValues);
 
+        // Don't hard code to 1, let consumers override it in additionalValues then ask for it back.
+        int repoId = values.getAsInteger(AppMetadataTable.Cols.REPO_ID);
+
         Uri uri = AppProvider.getContentUri();
 
         context.getContentResolver().insert(uri, values);
-        return AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName, 1,
-                AppMetadataTable.Cols.ALL);
+        App app = AppProvider.Helper.findSpecificApp(context.getContentResolver(), packageName,
+                repoId, AppMetadataTable.Cols.ALL);
+        assertNotNull(app);
+        return app;
     }
 
     public static App ensureApp(Context context, String packageName) {

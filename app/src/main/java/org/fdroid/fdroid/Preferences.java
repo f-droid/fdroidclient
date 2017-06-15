@@ -195,6 +195,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_UNSTABLE_UPDATES, DEFAULT_UNSTABLE_UPDATES);
     }
 
+    public void setUnstableUpdates(boolean value) {
+        preferences.edit().putBoolean(PREF_UNSTABLE_UPDATES, value).apply();
+    }
+
     public boolean isKeepingInstallHistory() {
         return preferences.getBoolean(PREF_KEEP_INSTALL_HISTORY, DEFAULT_KEEP_INSTALL_HISTORY);
     }
