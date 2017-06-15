@@ -484,8 +484,8 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="antifeatures">Características no-libres</string>
     <string name="details_last_updated_today">Actualizada hoy</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Actualizada hoy</item>
-	<item quantity="other">Actualizada hace %1$s días</item>
+	<item quantity="one">Actualizada ayer</item>
+	<item quantity="other">Actualizada hace %1$d días</item>
 </plurals>
     <string name="app_list__name__successfully_installed">%1$s se ha instalado con éxito</string>
     <string name="nearby_splash__download_apps_from_people_nearby">¿No tienes internet? ¡Descarga aplicaciones de gente cercana!</string>
@@ -521,14 +521,16 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
 </plurals>
     <plurals name="details_last_update_weeks">
 	<item quantity="one">Actualizado hace una semana</item>
-	<item quantity="other">Actualizado hace %1$s semanas</item>
+	<item quantity="other">Actualizado hace %1$d semanas</item>
 </plurals>
     <plurals name="details_last_update_months">
 	<item quantity="one">Actualizado hace un mes</item>
-	<item quantity="other">Actualizado hace %1$s meses</item>
+	<item quantity="other">Actualizado hace %1$d meses</item>
 </plurals>
     <plurals name="details_last_update_years">
 	<item quantity="one">Actualizado hace un año</item>
-	<item quantity="other">Actualizado hace %1$s años</item>
+	<item quantity="other">Actualizado hace %1$d años</item>
 </plurals>
-</resources>
+<string name="by_author_format">por %s</string>
+    <string name="download_404">No se ha encontrado archivo solicitado.</string>
+    </resources>

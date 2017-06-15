@@ -119,7 +119,7 @@
     <string name="root_access_denied_title">Odmówiono uprawnień roota</string>
     <string name="root_access_denied_body">Urządzenie nie zostało zrootowane lub odmówiono uprawnień roota F-Droidowi.
     </string>
-    <string name="swap_nfc_description">Jeśli oba urządzenia mają F-Droida i NFC możecie je zbliżyć do siebie.</string>
+    <string name="swap_nfc_description">Jeśli oba urządzenia mają F-Droida i NFC, możecie je zbliżyć do siebie.</string>
     <string name="swap_join_same_wifi">Połącz się z tą samą siecią Wi-Fi</string>
     <string name="swap">Wymień aplikacje</string>
     <string name="swap_no_wifi_network">Brak sieci</string>
@@ -312,9 +312,7 @@
     <string name="system_install_button_install">Instalacja</string>
     <string name="system_install_installing_rebooting">Instalowanie i restartowanie…</string>
     <string name="system_install_warning">Zajmuje to ok. 10 sekund.</string>
-    <string name="system_install_warning_lollipop">Zajmuje to ok. 10 sekund, następnie urządzenie zostanie<b>
-        zrestartowane</b>.
-    </string>
+    <string name="system_install_warning_lollipop">Zajmuje to ok. 10 sekund, następnie urządzenie zostanie <b>zrestartowane</b>.</string>
     <string name="repo_details">Repozytorium</string>
     <string name="repo_url">Adres</string>
     <string name="more">Więcej</string>
@@ -527,4 +525,5 @@
 	<item quantity="many">Uaktualniono %1$d lat temu</item>
 </plurals>
 <string name="by_author_format">od %s</string>
+    <string name="download_404">Nie znaleziono żądanego pliku.</string>
     </resources>

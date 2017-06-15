@@ -481,9 +481,9 @@
 </plurals>
 
     <plurals name="details_last_update_days">
-        <item quantity="one">%1$s dag geleden bijgewerkt</item>
-        <item quantity="other">%1$s dagen geleden bijgewerkt</item>
-    </plurals>
+	<item quantity="one">%1$d dag geleden bijgewerkt</item>
+	<item quantity="other">%1$d dagen geleden bijgewerkt</item>
+</plurals>
     <string name="notification_title_summary_downloading_update">Update wordt gedownload…</string>
     <string name="app_list__name__successfully_installed">%1$s geïnstalleerd</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Geen internet? Download dan apps van mensen nabij!
@@ -522,15 +522,17 @@
 	<item quantity="other">%1$d apps geïnstalleerd</item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">%1$s week geleden bijgewerkt</item>
-	<item quantity="other">%1$s weken geleden bijgewerkt</item>
+	<item quantity="one">%1$d week geleden bijgewerkt</item>
+	<item quantity="other">%1$d weken geleden bijgewerkt</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">%1$s maand geleden bijgewerkt</item>
-	<item quantity="other">%1$s maand geleden bijgewerkt</item>
+	<item quantity="one">%1$d maand geleden bijgewerkt</item>
+	<item quantity="other">%1$d maand geleden bijgewerkt</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">%1$s jaar geleden bijgewerkt</item>
-	<item quantity="other">%1$s jaar geleden bijgewerkt</item>
+	<item quantity="one">%1$d jaar geleden bijgewerkt</item>
+	<item quantity="other">%1$d jaar geleden bijgewerkt</item>
 </plurals>
-</resources>
+<string name="by_author_format">door %s</string>
+    <string name="download_404">Het gevraagde bestand is niet gevonden.</string>
+    </resources>

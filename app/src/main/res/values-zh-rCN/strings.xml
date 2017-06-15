@@ -2,6 +2,7 @@
 <resources>
     <string name="SignatureMismatch">新版本签名与旧版本不同，请先卸载旧版本应用再安装新版本。（注意：卸载旧版本会清除该应用存储的所有内部数据）</string>
     <string name="installIncompatible">该应用程序好像与您的设备不兼容。您仍然要尝试安装吗？</string>
+    <string name="version">版本</string>
     <string name="delete">删除</string>
     <string name="enable_nfc_send">启用NFC发送…</string>
     <string name="cache_downloaded">保留应用安装包</string>
@@ -445,4 +446,5 @@
 	<item quantity="other">更新于 %1$d 年前</item>
 </plurals>
 <string name="by_author_format">由 %s</string>
+    <string name="download_404">找不到所请求的文件。</string>
     </resources>

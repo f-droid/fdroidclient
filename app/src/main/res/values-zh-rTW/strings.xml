@@ -2,8 +2,7 @@
 <resources>
     <string name="app_name">F-Droid</string>
 
-    <string name="SignatureMismatch">此應用軟體的新版本被簽署了與舊版本不同的金鑰。如要安裝新版本，您必須將舊版本應用軟體先解除安裝。請於完成該操作後再嘗試一次。（注意解除安裝應用軟體時會清除任何由該應用軟體儲存於系統中的所有資料）
-\n</string>
+    <string name="SignatureMismatch">此應用軟體的新版本被簽署了與舊版本不同的金鑰。如要安裝新版本，您必須將舊版本應用軟體先解除安裝。請於完成該操作後再嘗試一次。（注意解除安裝應用軟體時會清除任何由該應用軟體儲存於系統中的所有資料）</string>
     <string name="installIncompatible">看起來此軟體包與您的裝置並不相容。
 您無論如何都要嘗試安裝它嗎？
 </string>
@@ -282,10 +281,7 @@
     <string name="repo_searching_address">查看 F-Droid 應用軟體倉庫於
         %1$s
     </string>
-    <string name="not_on_same_wifi">"您剛才增加的本地應用軟體倉庫與您的裝置並不在同一個 Wi-Fi 網路上！
-請嘗試加入這個網路：%s
- "</string>
-
+    <string name="not_on_same_wifi">您剛才增加的本地應用軟體倉庫與您的裝置並不在同一個 Wi-Fi 網路上！請嘗試加入這個網路：%s</string>
     <string name="requesting_root_access_body">正在要求 root 權限…</string>
     <string name="empty_installed_app_list">未安裝應用程式。
 
@@ -303,8 +299,7 @@
     <string name="system_install_not_supported">目前 FDroid 還不支援在 Android5.1 或更高的版本安裝特權擴充。</string>
 
     <string name="system_install_warning">這需要 10 秒以上的時間。</string>
-    <string name="system_install_warning_lollipop">這需要 10 秒以上的時間而且該裝置將在之後<b>重新開機</b>。
-    </string>
+    <string name="system_install_warning_lollipop">這需要 10 秒以上的時間而且該裝置將在之後<b>重新開機</b>。</string>
     <string name="swap_nfc_description">如果您的朋友有 F-Droid 並且已開啟NFC，那把你們的裝置相互貼近。</string>
     <string name="swap_join_same_wifi">將您朋友加入相同的 Wi-Fi</string>
     <string name="swap_no_wifi_network">尚沒有網路</string>
@@ -319,9 +314,7 @@
     <string name="swap_visible_wifi">經由 Wi-Fi 可看見</string>
     <string name="swap_not_visible_wifi">經由 Wi-Fi 不可看見</string>
     <string name="swap_connecting">連線</string>
-    <string name="system_install_post_success_message">"F-Droid 特權擴充已成功安裝。
-這允許 F-Droid 安裝、更新以及解除安裝其擁有的應用程式。
- "</string>
+    <string name="system_install_post_success_message">F-Droid 特權擴充已成功安裝。這允許 F-Droid 安裝、更新以及解除安裝其擁有的應用程式。</string>
     <string name="system_install_post_fail_message">F-Droid 特權擴充安裝失敗。此安裝方式並不支援所有發行的 Android 版本，請查閱 F-Droid 的 bug
         追蹤以取得詳細資訊。
     </string>
@@ -370,9 +363,7 @@
 您願意以電子郵件提供詳細資訊，以協
 助修復這個問題嗎？
 </string>
-    <string name="swap_join_same_wifi_desc">"要使用 Wi-Fi 進行交換，確保雙方是在同個一網路上。如果您不能
-存取同個網絡，你們其中的一個，可以建立一個 Wi-Fi 熱點。
- "</string>
+    <string name="swap_join_same_wifi_desc">要使用 Wi-Fi 進行交換，確保雙方是在同個一網路上。如果您不能 存取同個網絡，你們其中的一個，可以建立一個 Wi-Fi 熱點。</string>
     <string name="swap_qr_isnt_for_swap">您掃描的 QR 碼看起來並不是一個交換碼。</string>
     <string name="swap_connection_misc_error">連線到裝置時發生錯誤，似乎不能用它來進行交換。
 </string>
@@ -504,4 +495,5 @@
 	<item quantity="other">%1$d 年前已更新</item>
 </plurals>
 <string name="by_author_format">由 %s</string>
+    <string name="download_404">找不到要求的檔案。</string>
     </resources>

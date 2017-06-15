@@ -485,8 +485,8 @@
     <string name="antifeatureswarning">Aquesta app conté característiques que potser no us agradarien.</string>
     <string name="details_last_updated_today">Actualitzades avui</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Actualitzada fa %1$s dies</item>
-	<item quantity="other">Actualitzades fa %1$s dies</item>
+	<item quantity="one">Actualitzada fa %1$d dies</item>
+	<item quantity="other">Actualitzades fa %1$d dies</item>
 </plurals>
     <string name="app_list__name__successfully_installed">%1$s s\'ha instal·lat correctament</string>
     <string name="antifeatures">Característiques no lliures</string>
@@ -530,15 +530,17 @@
 	<item quantity="other">+%1$d més…</item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Actualitzades fa %1$s setmana</item>
-	<item quantity="other">Actualitzades %1$s setmanes</item>
+	<item quantity="one">Actualitzades fa %1$d setmana</item>
+	<item quantity="other">Actualitzades %1$d setmanes</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Actualitzades fa %1$s mes</item>
-	<item quantity="other">Actualitzades fa %1$s mesos</item>
+	<item quantity="one">Actualitzades fa %1$d mes</item>
+	<item quantity="other">Actualitzades fa %1$d mesos</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Actualitzades fa %1$s any</item>
-	<item quantity="other">Actualitzades fa %1$s anys</item>
+	<item quantity="one">Actualitzades fa %1$d any</item>
+	<item quantity="other">Actualitzades fa %1$d anys</item>
 </plurals>
-</resources>
+<string name="by_author_format">per %s</string>
+    <string name="download_404">No s\'ha trobat l\'arxiu sol·licitat.</string>
+    </resources>

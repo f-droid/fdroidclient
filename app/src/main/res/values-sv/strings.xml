@@ -500,4 +500,6 @@
 	<item quantity="one">Uppdaterad för %1$s år sedan</item>
 	<item quantity="other">Uppdaterad för %1$s år sedan</item>
 </plurals>
-</resources>
+<string name="by_author_format">av %s</string>
+    <string name="download_404">Den begärda filen hittades inte.</string>
+    </resources>

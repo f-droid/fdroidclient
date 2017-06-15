@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour
-        installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez de nouveau après avoir
-        désinstallé l\'ancienne application (attention : ceci effacera les données stockées par l\'application).
-    </string>
+    <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez de nouveau après avoir désinstallé l\'ancienne application (attention : ceci effacera les données stockées par l\'application)</string>
     <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous
         quand même essayer de l\'installer ?
     </string>
@@ -328,9 +325,7 @@
     <string name="system_install_installing_rebooting">Installation et redémarrage…</string>
     <string name="system_install_question">Voulez-vous installer F-Droid Privileged Extension ?</string>
     <string name="system_install_warning">Ceci peut prendre jusqu\'à 10 secondes.</string>
-    <string name="system_install_warning_lollipop">Ceci peut prendre jusqu\'à 10 secondes et l\'appareil sera ensuite<b>
-        redémarré</b>.
-    </string>
+    <string name="system_install_warning_lollipop">Ceci peut prendre jusqu\'à 10 secondes et l\'appareil sera ensuite <b>redémarré</b>.</string>
     <string name="system_uninstall">Voulez-vous désinstaller F-Droid Privileged Extension ?</string>
     <string name="system_uninstall_button">Désinstaller</string>
 
@@ -357,7 +352,7 @@
     <string name="status_inserting_apps">Enregistrement des détails d\'applications</string>
 
     <string name="crash_dialog_title">F-Droid s\'est arrêté de manière inattendue</string>
-    <string name="crash_dialog_comment_prompt">Vous pouvez ajouter des informations additionnelles :</string>
+    <string name="crash_dialog_comment_prompt">Vous pouvez ajouter des informations supplémentaires :</string>
     <string name="crash_dialog_text">Une erreur inattendue s’est produite
         entraînant l\'arrêt de l\'application. Acceptez-vous d\'envoyer les
         détails des opérations en cours pour aider à résoudre ce problème ?
@@ -532,11 +527,13 @@
 	<item quantity="other">Mis à jour il y a %1$s semaines</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Mis à jour il y a %1$s mois</item>
-	<item quantity="other">Mis à jour il y a %1$s mois</item>
+	<item quantity="one">Mis à jour il y a %1$d moi</item>
+        <item quantity="other">Mis à jour il y a %1$d mois</item>
 </plurals>
     <plurals name="details_last_update_years">
 	<item quantity="one">Mis à jour il y a %1$s an</item>
 	<item quantity="other">Mis à jour il y a %1$s ans</item>
 </plurals>
-</resources>
+<string name="by_author_format">par %s</string>
+    <string name="download_404">Le fichier n\'a pas été trouvé.</string>
+    </resources>

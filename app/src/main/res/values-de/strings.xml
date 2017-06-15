@@ -263,9 +263,7 @@
     <string name="system_install_installing_rebooting">Installation und Neustart läuft …</string>
     <string name="system_install_uninstalling">Wird deinstalliert …</string>
     <string name="system_install_warning">Das wird bis zu 10 Sekunden dauern.</string>
-    <string name="system_install_warning_lollipop">Das wird bis zu 10 Sekunden dauern und das Gerät wird anschließend<b>
-        neu gestartet</b>.
-    </string>
+    <string name="system_install_warning_lollipop">Das wird bis zu 10 Sekunden dauern und das Gerät wird anschließend <b>neu gestartet</b>.</string>
     <string name="swap_nfc_title">Berühren, um zu tauschen</string>
     <string name="swap_join_this_hotspot">Ihrem Freund helfen, Ihrem Hotspot beizutreten</string>
     <string name="swap_success">Tausch erfolgreich!</string>
@@ -478,7 +476,7 @@
     <string name="antifeatures">Unfreie Merkmale</string>
     <string name="details_last_updated_today">Heute aktualisiert</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Vor %1$s Tag aktualisiert</item>
+	<item quantity="one">Vor %1$d Tag aktualisiert</item>
 	<item quantity="other">Vor %1$d Tagen aktualisiert</item>
 </plurals>
     <plurals name="button_view_all_apps_in_category">
@@ -523,15 +521,17 @@
 	<item quantity="other">%1$d Apps installiert</item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Vor %1$s Woche aktualisiert</item>
-	<item quantity="other">Vor %1$s Wochen aktualisiert</item>
+	<item quantity="one">Vor %1$d Woche aktualisiert</item>
+	<item quantity="other">Vor %1$d Wochen aktualisiert</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Vor %1$s Monat aktualisiert</item>
-	<item quantity="other">Vor %1$s Monaten aktualisiert</item>
+	<item quantity="one">Vor %1$d Monat aktualisiert</item>
+	<item quantity="other">Vor %1$d Monaten aktualisiert</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Vor %1$s Jahr aktualisiert</item>
-	<item quantity="other">Vor %1$s Jahren aktualisiert</item>
+	<item quantity="one">Vor %1$d Jahr aktualisiert</item>
+	<item quantity="other">Vor %1$d Jahren aktualisiert</item>
 </plurals>
-</resources>
+<string name="by_author_format">von %s</string>
+    <string name="download_404">Die angeforderte Datei wurde nicht gefunden.</string>
+    </resources>
