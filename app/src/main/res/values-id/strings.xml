@@ -247,7 +247,6 @@
         pembaruan repositori, atau repositori memang tidak memiliki apl yang tersedia.
     </string>
     <string name="empty_can_update_app_list">Selamat! Semua apl Anda sudah yang paling baru (atau repositori Anda yang kedaluwarsa).</string>
-
     <string name="requesting_root_access_body">Meminta akses root…</string>
     <string name="root_access_denied_title">Akses root ditolak</string>
     <string name="root_access_denied_body">Mungkin perangkat Android anda yang belum diroot atau anda telah menolak
@@ -483,7 +482,7 @@
     <string name="antifeatureswarning">Apl ini memiliki fitur yang Anda mungkin tidak suka.</string>
     <string name="antifeatures">Anti-fitur</string>
     <plurals name="details_last_update_days">
-	<item quantity="other">Diperbarui %1$s hari yang lalu</item>
+	<item quantity="other">Diperbarui %1$d hari yang lalu</item>
 </plurals>
     <string name="app_list__name__successfully_installed">%1$s berhasil dipasang</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Tidak ada internet? Unduh apl dari orang-orang di
@@ -520,12 +519,14 @@
 	<item quantity="other">%1$d Apl Terpasang</item>
 	</plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="other">Diperbarui %1$s minggu yang lalu</item>
-	</plurals>
+	<item quantity="other">Diperbarui %1$d minggu yang lalu</item>
+</plurals>
     <plurals name="details_last_update_months">
-	<item quantity="other">Diperbarui %1$s bulan yang lalu</item>
-	</plurals>
+	<item quantity="other">Diperbarui %1$d bulan yang lalu</item>
+</plurals>
     <plurals name="details_last_update_years">
-	<item quantity="other">Diperbarui %1$s tahun yang lalu</item>
-	</plurals>
-</resources>
+	<item quantity="other">Diperbarui %1$d tahun yang lalu</item>
+</plurals>
+<string name="by_author_format">oleh %s</string>
+    <string name="download_404">Berkas yang diminta tidak ditemukan.</string>
+    </resources>

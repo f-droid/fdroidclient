@@ -188,9 +188,7 @@
     <string name="icon">Піктограма</string>
     <string name="no_permissions">Не потребує дозволів.</string>
     <string name="requires_features">Залежності: %1$s</string>
-    <string name="empty_can_update_app_list">Всі додатки оновлені.\n\nВітаємо! Всі ваші додатки мають крайні версії (або
-        ж ваші репозиторії застаріли).
-    </string>
+    <string name="empty_can_update_app_list">Вітаємо! Всі ваші додатки мають крайні версії (або ж ваші репозиторії застаріли).</string>
 
     <string name="install_error_unknown">Не вдалося встановити через невідому помилку</string>
     <string name="system_install_warning">Це забере приблизно 10 секунд.</string>
@@ -210,10 +208,8 @@
         них!
     </string>
     <string name="choose_bt_send">Оберіть метод надсилання через Bluetooth</string>
-    <string name="repo_exists_add_fingerprint">Цей репозиторії вже налаштовано, ця дія оновить інформацію про ключ.
-    </string>
-    <string name="repo_exists_enable">Цей репозиторії вже налаштовано, підтвердіть, що бажаєте знову ввімкнути його.
-    </string>
+    <string name="repo_exists_add_fingerprint">Цей репозиторії вже налаштовано, ця дія оновить інформацію про ключ.</string>
+    <string name="repo_exists_enable">Цей репозиторії вже налаштовано, підтвердіть, що бажаєте знову ввімкнути його.</string>
     <string name="repo_exists_and_enabled">Репозиторій вже налаштовано і увімкнено.</string>
     <string name="repo_delete_to_overwrite">Спершу ви маєте видалити цей репозиторій, а потім додати його з іншим
         ключем.
@@ -351,9 +347,7 @@
     <string name="permissions">Привілеї</string>
     <string name="theme_night">Нічна</string>
     <string name="category_Connectivity">Зв\'язаність</string>
-    <string name="touch_to_configure_local_repo">Торкніться для перегляду подробиць та дозволити іншим обмінюватись
-        вашими додатками.
-    </string>
+    <string name="touch_to_configure_local_repo">Торкніться для перегляду подробиць та дозволити іншим обмінюватись вашими додатками.</string>
     <string name="login_title">Необхідна авторизація</string>
     <string name="login_name">Ім\'я користувача</string>
     <string name="login_password">Пароль</string>
@@ -462,11 +456,10 @@
     <string name="app_list__name__downloading_in_progress">Завантаження %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s встановлено</string>
     <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Випущено %1$d день по тому</item>
-        <item quantity="few">Випущено %1$d дні по тому</item>
-        <item quantity="many">Випущено %1$d дні по тому</item>
-        <item quantity="other">Випущено %1$d дні по тому</item>
-    </plurals>
+	<item quantity="one">Випущено %1$d день по тому</item>
+	<item quantity="few">Випущено %1$d дні по тому</item>
+	<item quantity="many">Випущено %1$d днів по тому</item>
+	</plurals>
 
     <string name="updates__tts__download_updates_for_all_apps">Завантажити всі оновлення</string>
 
@@ -492,4 +485,12 @@
         <item quantity="many">Оновлено %1$s дні тому</item>
         <item quantity="other">Оновлено %1$s дні тому</item>
     </plurals>
-</resources>
+<string name="updates__tts__download_app">Завантажити</string>
+    <string name="by_author_format">від %s</string>
+    <string name="app__tts__cancel_download">Скасувати завантажити</string>
+    <string name="app_list__age__released_today">Опубліковано сьогодні</string>
+    <string name="app_list__age__released_yesterday">Опубліковано вчора</string>
+    <string name="menu_video">Відео</string>
+    <string name="menu_license">Ліцензія: %s</string>
+    <string name="details_last_updated_today">Оновлено сьогодні</string>
+    </resources>

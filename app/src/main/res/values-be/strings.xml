@@ -268,7 +268,6 @@
         або вашы рэпазіторыі не змяшчаюць такіх праграм.
     </string>
     <string name="empty_can_update_app_list">Віншуем! Усе вашы праграмы маюць апошнія версіі (або вашы рэпазіторыі застарэлі).</string>
-
     <string name="requesting_root_access_body">Запыт root-доступу…</string>
     <string name="root_access_denied_title">Адмоўлена ў root-доступе</string>
     <string name="root_access_denied_body">Альбо ваша прылада не мае root-доступу, альбо вы адхілілі запыт ад F-Droid.
@@ -295,9 +294,7 @@
     <string name="system_install_uninstalling">Выдаленне…</string>
     <string name="system_install_question">Жадаеце ўсталяваць прывілеваны дадатак F-Droid?</string>
     <string name="system_install_warning">Гэта зойме прыблізнва 10 секунд.</string>
-    <string name="system_install_warning_lollipop">Гэта зойме прыблізна 10 секунд, пасля чаго прылада будзе<b>
-        перазагружана</b>.
-    </string>
+    <string name="system_install_warning_lollipop">Гэта зойме прыблізна 10 секунд, пасля чаго прылада будзе<b> перазагружана</b>.</string>
     <string name="system_uninstall">Жадаеце выдаліць прывілеяваны дадатак F-Droid?</string>
     <string name="system_uninstall_button">Выдаліць</string>
     <string name="system_install_not_supported">Усталёўка прывілеяванага дадатаку F-Droid у цяперашні час не
@@ -482,10 +479,10 @@
 
     <string name="antifeatures">Непажаданыя функцыі</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Абноўлена %1$s дзень таму</item>
-	<item quantity="few">Абноўлена %1$s дні таму</item>
-	<item quantity="many">Абноўлена %1$s дзён таму</item>
-	</plurals>
+	<item quantity="one">Абноўлена %1$d дзень таму</item>
+	<item quantity="few">Абноўлена %1$d дні таму</item>
+	<item quantity="many">Абноўлена %1$d дзён таму</item>
+</plurals>
     <string name="antifeatureswarning">Гэтая праграма мае функцыі, што могуць вам не спадабацца.</string>
     <string name="app_list__name__successfully_installed">%1$s паспяхова ўсталявана</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Няма інтэрнэту? Пампуйце праграмы ад людзей
@@ -525,20 +522,19 @@
 	</plurals>
     <plurals name="details_last_update_weeks">
 	<item quantity="one">Абноўленая %1$s тыдзень назад</item>
-        <item quantity="few">Абноўленая %1$s тыдні назад</item>
-        <item quantity="many">Абноўленая %1$s тыдні назад</item>
-	<item quantity="other">Абноўленая %1$s тыдні назад</item>
+	<item quantity="few">Абноўленая %1$s тыдні назад</item>
+	<item quantity="many">Абноўленая %1$s тыдняў назад</item>
 </plurals>
     <plurals name="details_last_update_months">
 	<item quantity="one">Абноўленая %1$s месяц назад</item>
-        <item quantity="few">Абноўленая %1$s месяцы назад</item>
-        <item quantity="many">Абноўленая %1$s месяцы назад</item>
-	<item quantity="other">Абноўленая %1$s месяцы назад</item>
+	<item quantity="few">Абноўленая %1$s месяцы назад</item>
+	<item quantity="many">Абноўленая %1$s месяцаў назад</item>
 </plurals>
     <plurals name="details_last_update_years">
 	<item quantity="one">Абноўленая %1$s год назад</item>
-        <item quantity="few">Абноўленая %1$s гады назад</item>
-        <item quantity="many">Абноўленая %1$s гады назад</item>
-	<item quantity="other">Абноўленая %1$s гады назад</item>
+	<item quantity="few">Абноўленая %1$s гады назад</item>
+	<item quantity="many">Абноўленая %1$s гадоў назад</item>
 </plurals>
-</resources>
+<string name="by_author_format">ад %s</string>
+    <string name="download_404">Запытаны файл не знойдзены.</string>
+    </resources>

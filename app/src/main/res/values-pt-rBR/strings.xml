@@ -220,11 +220,7 @@
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">Você quer instalar a extensão privilegiada do F-Droid?</string>
-    <string name="system_install_warning_lollipop">Você quer instalar o F-Droid privilegiado?\nIsto leva até 10 segundos
-        e o dispositivo será reinicializado depois.
-        <b>reinicializado</b>
-        depois.
-    </string>
+    <string name="system_install_warning_lollipop">Isto leva até 10 segundos e posteriormente o dispositivo será <b>reinicializado</b>.</string>
     <string name="system_uninstall">Você quer desinstalar a extensão privilegiada do F-Droid?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
@@ -280,16 +276,12 @@
     <string name="swap_not_enabled_description">Antes de permutar, seu dispositivo deve estar visível.</string>
 
     <string name="install_confirm">necessário acesso à</string>
-    <string name="install_confirm_update">"Você quer instalar uma atualização
-\npara este aplicativo já existente? Os dados existentes não
-\nserão perdidos. O aplicativo atualizado terá acesso a: "</string>
+    <string name="install_confirm_update">Você quer instalar uma atualização para este aplicativo já existente? Seus dados não serão perdidos. O aplicativo atualizado terá acesso a:</string>
     <string name="install_confirm_update_system">Você quer instalar uma atualização
         para este aplicativo incorporado? Os dados existentes não
         serão perdidos. O aplicativo atualizado terá acesso a:
     </string>
-    <string name="install_confirm_update_no_perms">"Você quer instalar uma atualização
-\npara este aplicativo já existente? Os dados existentes não
-\nserão perdidos. Ele não exige nenhum acesso especial. "</string>
+    <string name="install_confirm_update_no_perms">Você quer instalar uma atualização para este aplicativo já existente? Os dados não serão perdidos. Ele não exige nenhum acesso especial.</string>
     <string name="install_confirm_update_system_no_perms">Você quer instalar uma atualização
         para este aplicativo incorporado? Os dados existentes não
         serão perdidos. Ele não exige nenhum acesso especial.
@@ -518,15 +510,17 @@
 	<item quantity="other">%1$d Aplicativos instalados</item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Actualizado há %1$s semana atrás</item>
-	<item quantity="other">Actualizado há %1$s semanas atrás</item>
+	<item quantity="one">Actualizado há %1$d semana atrás</item>
+	<item quantity="other">Actualizado há %1$d semanas atrás</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Atualizado há %1$s semana atrás</item>
-	<item quantity="other">Atualizado há %1$s semanas atrás</item>
+	<item quantity="one">Atualizado há %1$d semana atrás</item>
+	<item quantity="other">Atualizado há %1$d semanas atrás</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Atualizado há %1$s ano atrás</item>
-	<item quantity="other">Atualizado há %1$s anos atrás</item>
+	<item quantity="one">Atualizado há %1$d ano atrás</item>
+	<item quantity="other">Atualizado há %1$d anos atrás</item>
 </plurals>
-</resources>
+<string name="by_author_format">por %s</string>
+    <string name="download_404">O arquivo solicitado não foi encontrado.</string>
+    </resources>

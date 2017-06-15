@@ -447,10 +447,10 @@
     <string name="notification_action_update">Обновить</string>
     <string name="details_last_updated_today">Обновлено сегодня</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Обновлено %1$s день назад</item>
-	<item quantity="few">Обновлено %1$s дня назад</item>
-	<item quantity="many">Обновлено %1$s дней назад</item>
-	</plurals>
+	<item quantity="one">Обновлено %1$d день назад</item>
+	<item quantity="few">Обновлено %1$d дня назад</item>
+	<item quantity="many">Обновлено %1$d дней назад</item>
+</plurals>
     <string name="app_details_donate_prompt">%1$s создано %2$s. Купи им чашечку кофе!</string>
 
     <string name="app_recommended_version_installed">Версия %1$s (Рекомендуемая)</string>
@@ -498,17 +498,34 @@
     <string name="install_error_not_yet_supported">Тип файла пока не может быть установлен: %s</string>
     <plurals name="notification_summary_updates">
 	<item quantity="one">%1$d обновление</item>
-        <item quantity="few">%1$d обновления</item>
-        <item quantity="many">%1$d обновления</item>
+	<item quantity="few">%1$d обновления</item>
+	<item quantity="many">%1$d обновлений</item>
 </plurals>
     <plurals name="notification_summary_installed">
 	<item quantity="one">%1$d приложение установлено</item>
-        <item quantity="few">%1$d приложения установлено</item>
-        <item quantity="many">%1$d приложения установлено</item>
+	<item quantity="few">%1$d приложения установлено</item>
+	<item quantity="many">%1$d приложений установлено</item>
 </plurals>
     <plurals name="notification_summary_more">
 	<item quantity="one">+ещё %1$d…</item>
 	<item quantity="few">+ещё %1$d…</item>
 	<item quantity="many">+ещё %1$d…</item>
 	</plurals>
-    </resources>
+    <string name="by_author_format">от %s</string>
+    <string name="download_404">Запрашиваемый файл не найден.</string>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Обновлено %1$d неделю назад</item>
+        <item quantity="few">Обновлено %1$d недели назад</item>
+        <item quantity="many">Обновлено %1$d недели назад</item>
+</plurals>
+    <plurals name="details_last_update_months">
+        <item quantity="one">Обновлено %1$d месяц назад</item>
+        <item quantity="few">Обновлено %1$d месяца назад</item>
+        <item quantity="many">Обновлено %1$d месяца назад</item>
+    </plurals>
+    <plurals name="details_last_update_years">
+        <item quantity="one">Обновлено %1$d год назад</item>
+        <item quantity="few">Обновлено %1$d года назад</item>
+        <item quantity="many">Обновлено %1$d года назад</item>
+    </plurals>
+</resources>

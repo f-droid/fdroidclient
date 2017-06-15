@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">"Sa versione noa est firmada cun una crae diferente dae sa bècia. Pro la installare,
-\n sa bècia depet èssere istada disinstallada in antis. Pro piaghere fàghe·lu e torra a proare. (Sa
-\n disinstallatzione as a burrare totu sos datos sarvados in s\'aplicatzione)
-\n "</string>
+    <string name="SignatureMismatch">Sa versione noa est firmada cun una crae diferente dae sa bècia. Pro la installare, sa bècia depet èssere istada disinstallada in antis. Pro piaghere fàghe·lu e torra a proare. (Sa disinstallatzione as a burrare totu sos datos sarvados in s\'aplicatzione)</string>
     <string name="installIncompatible">Paret chi custu pachete non siat cumpatìbile cun su dispositivu tuo. Boles a
         proare a lu installare su matessi?
     </string>
@@ -241,7 +238,7 @@
     <string name="system_install_installing">Installende…</string>
     <string name="system_install_uninstalling">Disinstallende…</string>
     <string name="system_install_question">Boles installare s’estensione F-Droid cun permissos de sistema?</string>
-    <string name="system_install_warning_lollipop">Custu podet durare finas a 10 segundos e su dispositivu, a pustis, at a èssere<b>torradu a allùghere</b>. </string>
+    <string name="system_install_warning_lollipop">Custu podet durare finas a 10 segundos e su dispositivu, a pustis, at a èssere <b>torradu a allùghere</b>.</string>
     <string name="system_uninstall">Boles disinstallare s’estensione F-Droid cun permissos de sistema?</string>
     <string name="system_uninstall_button">Disinstalla</string>
 
@@ -539,4 +536,5 @@
 	<item quantity="other">Agiornada %1$d annos a como</item>
 </plurals>
 <string name="by_author_format">de %s</string>
+    <string name="download_404">Su documentu pedidu no est istadu agatadu.</string>
     </resources>

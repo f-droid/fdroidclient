@@ -446,4 +446,26 @@
     <string name="notification_action_update">تحديث</string>
     <string name="notification_action_cancel">إلغاء</string>
     <string name="details_last_updated_today">حُدِّثت اليوم</string>
+    <string name="updates__tts__download_app">تحميل</string>
+    <string name="by_author_format">بواسطة %s</string>
+    <string name="app_details_donate_prompt_unknown_author">اشتري لمطوري  %1$s كأسا من القهوة!</string>
+    <string name="app__tts__cancel_download">ألغ التحميل</string>
+    <string name="installed_app__updates_ignored">تم تجاهل التحديثات</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">تم تجاهل التحديثات للإصدار %1$s</string>
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="zero">لا تحمل التحديثات لأي شيء.</item>
+	<item quantity="one">حمل التحديثات لتطبيق واحد.</item>
+	<item quantity="two">حمل التحديثات لتطبيقين.</item>
+	<item quantity="few">حمل التحديثات  %1$s تطبيقات.</item>
+	<item quantity="many">حمل التحديثات ل  %1$s تطبيقا.</item>
+	<item quantity="other">حمل التحديثات ل  %1$s تطبيق.</item>
+</plurals>
+
+    <string name="repositories_summary">أضف مصادر أخرى للتطبيقات</string>
+    <string name="menu_license">الرخصة: %s</string>
+    <string name="download_404">الملف المطلوب غير موجود.</string>
+    <string name="install_error_not_yet_supported">نوع الملف لا يمكن بعد تثبيته: %s</string>
+    <string name="app__tts__downloading_progress">جاري التحميل، اكتمل %1$d%%</string>
+    <string name="tts_category_name">التصنيف  %1$s</string>
+
     </resources>

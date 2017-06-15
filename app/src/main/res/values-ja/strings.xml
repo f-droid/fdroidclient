@@ -141,9 +141,7 @@
     <string name="minsdk_or_later">%s 以上</string>
     <string name="up_to_maxsdk">最大 %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s から %2$s</string>
-    <string name="not_on_same_wifi">"あなたの端末は追加したﾛｰｶﾙ･ﾘﾎﾟｼﾞﾄﾘと同じWi-Fi上にありません。
-このﾈｯﾄﾜｰｸに参加してみてください: %s
- "</string>
+    <string name="not_on_same_wifi">あなたの端末は追加したﾛｰｶﾙ･ﾘﾎﾟｼﾞﾄﾘと同じWi-Fi上にありません。 このﾈｯﾄﾜｰｸに参加してみてください: %s</string>
     <string name="requires_features">必須: %1$s</string>
     <string name="category_Development">開発</string>
     <string name="category_Games">ｹﾞｰﾑ</string>
@@ -193,9 +191,7 @@
         Wi-Fiを使用して交換するには､同じﾈｯﾄﾜｰｸ上に居るかを確認してください｡同じﾈｯﾄﾜｰｸにｱｸｾｽしていない場合は､Wi-Fiﾎｯﾄｽﾎﾟｯﾄを作成できます｡
     </string>
     <string name="swap_join_this_hotspot">友達がﾎｯﾄｽﾎﾟｯﾄに参加するのを助ける</string>
-    <string name="empty_can_update_app_list">"全てのｱﾌﾟﾘは最新です。
-\n
-\nおめでとう! 全てのｱﾌﾟﾘは最新の状態です (または、ﾘﾎﾟｼﾞﾄﾘが更新されていません)。 "</string>
+    <string name="empty_can_update_app_list">おめでとう! 全てのｱﾌﾟﾘは最新の状態です (または、ﾘﾎﾟｼﾞﾄﾘが更新されていません)。</string>
 
     <string name="install_error_unknown">不明なｴﾗｰのためｲﾝｽﾄｰﾙに失敗しました</string>
     <string name="uninstall_error_unknown">不明なｴﾗｰのためｱﾝｲﾝｽﾄｰﾙに失敗しました</string>
@@ -210,10 +206,7 @@
     <string name="system_install_installing">ｲﾝｽﾄｰﾙ中…</string>
     <string name="system_install_uninstalling">ｱﾝｲﾝｽﾄｰﾙ中…</string>
     <string name="system_install_question">F-Droidの特権拡張をｲﾝｽﾄｰﾙしますか?</string>
-    <string name="system_install_warning_lollipop">特権 F-Droid をｲﾝｽﾄｰﾙしますか\nこれには､約10 秒程かかりその後端末を再起動します｡
-        <b>再起動</b>
-        します｡
-    </string>
+    <string name="system_install_warning_lollipop">これには､約10 秒程かかりその後端末が <b>再起動</b> されます｡</string>
     <string name="system_uninstall">F-Droidの特権拡張をｱﾝｲﾝｽﾄｰﾙしますか?</string>
     <string name="system_uninstall_button">ｱﾝｲﾝｽﾄｰﾙ</string>
 
@@ -447,7 +440,7 @@
     <string name="antifeatureswarning">このｱﾌﾟﾘの機能は好きではないかもしれません。</string>
     <string name="antifeatures">対策機能</string>
     <plurals name="details_last_update_days">
-	<item quantity="other">%1$s 日前に更新しました</item>
+	<item quantity="other">%1$d 日前に更新しました</item>
 </plurals>
     <string name="details_last_updated_today">今日更新</string>
     <string name="app_list__name__successfully_installed">%1$s を正常にｲﾝｽﾄｰﾙしました</string>
@@ -480,12 +473,14 @@
 	<item quantity="other">%1$d ｱﾌﾟﾘ ｲﾝｽﾄｰﾙ済</item>
 	</plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="other">%1$s 週間前に更新</item>
-	</plurals>
+	<item quantity="other">%1$d 週間前に更新</item>
+</plurals>
     <plurals name="details_last_update_months">
-	<item quantity="other">%1$s ヶ月前に更新</item>
-	</plurals>
+	<item quantity="other">%1$d ヶ月前に更新</item>
+</plurals>
     <plurals name="details_last_update_years">
-	<item quantity="other">%1$s 年前に更新</item>
-	</plurals>
-</resources>
+	<item quantity="other">%1$d 年前に更新</item>
+</plurals>
+<string name="by_author_format">開発者 %s</string>
+    <string name="download_404">要求されたﾌｧｲﾙが見つかりませんでした。</string>
+    </resources>

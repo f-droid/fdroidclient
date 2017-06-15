@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">Bu yeni sürüm eskiye göre farklı bir anahtar ile imzalanmış. Yeni sürümü kurmak için önce eski sürümü kaldırmalısınız. Lütfen bunu yapın ve yeniden deneyin. (Not: bu, uygulama tarafından saklanan tüm dahili verileri silecektir)</string>
+    <string name="SignatureMismatch">Bu yeni sürüm eskiye göre farklı bir anahtar ile imzalanmış. Yeni sürümü kurmak için önce eski sürüm kaldırılmalı. Lütfen bunu yapın ve yeniden deneyin. (Kaldırmanın uygulama tarafından saklanan her dahili veriyi sileceğini unutmayın)</string>
     <string name="installIncompatible">Bu paket aygıtınızla uyumlu değil gibi görünüyor. Yine de kurmayı denemek istiyor
         musunuz?
     </string>
@@ -235,8 +235,7 @@
         Aygıtınızda uygulamalar var ancak bunlar F-Droid\'de bulumamaktadır. Bu, depolarınızı güncellemeniz gerektiği
         veya gerçekten depolar uygulamalarınızı bulundurmadığı için olabilir.
     </string>
-    <string name="empty_can_update_app_list">Tebrikler! Tüm uygulamalarınız güncel (veya depolarınız güncel değil).</string>
-
+    <string name="empty_can_update_app_list">Tebrikler! Tüm uygulamalarınız güncel (ya da depolarınız güncel değil).</string>
     <string name="install_error_unknown">Bilinmeyen bir hata nedeniyle kurulamadı</string>
     <string name="uninstall_error_unknown">Bilinmeyen bir hata nedeniyle kaldırılamadı</string>
     <string name="system_install_button_install">Kur</string>
@@ -244,9 +243,7 @@
     <string name="system_install_installing_rebooting">Kuruluyor ve aygıt yeniden başlatılıyor…</string>
     <string name="system_install_uninstalling">Kaldırılıyor…</string>
     <string name="system_install_warning">Bu 10 saniye kadar bir süre alır.</string>
-    <string name="system_install_warning_lollipop">Bu 10 saniye kadar bir süre alır ve ardından aygıt<b>yeniden
-        başlatılacaktır</b>.
-    </string>
+    <string name="system_install_warning_lollipop">Bu 10 saniye kadar bir sürer ve ardından aygıt<b>yeniden başlatılacak</b>.</string>
     <string name="system_uninstall_button">Kaldır</string>
 
     <string name="swap_nfc_title">Takas yapmak için dokunun</string>
@@ -276,7 +273,7 @@
     <string name="swap_confirm">Takası onaylayın</string>
     <string name="swap_qr_isnt_for_swap">Taradığınız QR kodu bir takas kodu gibi görünmüyor.</string>
     <string name="bluetooth_unavailable">Bluetooth mevcut değil</string>
-    <string name="swap_cant_send_no_bluetooth">F-Droid gönderilemiyor, çünkü bu aygıtta Bluetooth mevcut değil.</string>
+    <string name="swap_cant_send_no_bluetooth">F-Droid gönderilemiyor, çünkü bu aygıtta Bluetooth kullanılabilir değil.</string>
     <string name="loading">Yükleniyor…</string>
     <string name="swap_connection_misc_error">Aygıta bağlanılırken bir hata meydana geldi, onunla takas yapamıyoruz.
     </string>
@@ -344,7 +341,7 @@
     <string name="system_install_post_success_message">F-Droid Ayrıcalıklı Uzantı başarılı bir şekilde kuruldu. Bu,
         F-Droid\'in kendi başına uygulamaları kurmasına, yükseltmesine ve kaldırmasına izin verir.
     </string>
-    <string name="system_install_post_fail_message">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu başarısız. Kurulum yöntemi her Android dağıtımı tarafından desteklenmeyebilir, daha çok bilgi için lütfen F-Droid hata izleyicisine başvurun.</string>
+    <string name="system_install_post_fail_message">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu başarısız oldu. Kurulum yöntemi her Android dağıtımı tarafından desteklenmez, daha çok bilgi için lütfen F-Droid hata izleyicisine başvurun.</string>
     <string name="system_install_question">F-Droid Ayrıcalıklı Uzantı\'yı kurmak istiyor musunuz?</string>
     <string name="system_uninstall">F-Droid Ayrıcalıklı Uzantı\'yı kaldırmak istiyor musunuz?</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi ile takas yapmak istiyorsanız, aynı ağda olduğunuzdan emin olun. Eğer
@@ -354,12 +351,12 @@
     <string name="swap_active_hotspot">%1$s (erişim noktanız)</string>
     <string name="menu_email">Geliştiriciye E-posta At</string>
     <string name="update_auto_download">Güncellemeleri kendiliğinden al</string>
-    <string name="update_auto_download_summary">Güncellemeler kendiliğinden indirilir ve onları kurmak için bilgilendirilirsiniz</string>
+    <string name="update_auto_download_summary">Güncellemeler kendiliğinden indirilir ve siz onları kurmak için bilgilendirilirsiniz</string>
     <string name="repo_provider">Depo: %s</string>
 
     <string name="useTor">Tor Kullan</string>
     <string name="swap_stopping_wifi">Wi-Fi durduruluyor…</string>
-    <string name="useTorSummary">Arttırılmış gizlilik için indirme trafiğinin Tor\'dan geçmesini zorunlu kıl</string>
+    <string name="useTorSummary">Artırılmış gizlilik için indirme trafiğinin Tor\'dan geçmesini zorunlu kıl</string>
     <string name="download_pending">İndirmeye başlamak için bekleniyor…</string>
 
     <string name="system_install_not_supported">F-Droid Ayrıcalıklı Uzantı\'nın kurulumu şu anda Android 5.1 ve sonraki
@@ -471,9 +468,9 @@
     <string name="antifeatureswarning">Bu uygulama sevmeyebileceğiniz özellikler içerir.</string>
     <string name="antifeatures">Karşıt-özellikler</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">%1$s gün önce güncellendi</item>
-        <item quantity="other">%1$s gün önce güncellendi</item>
-    </plurals>
+	<item quantity="one">%1$d gün önce güncellendi</item>
+	<item quantity="other">%1$d gün önce güncellendi</item>
+</plurals>
     <string name="app_list__name__successfully_installed">%1$s başarıyla kuruldu</string>
     <string name="nearby_splash__download_apps_from_people_nearby">İnternet yok mu? Uygulamaları yakınınızdaki
         kişilerden indirin!
@@ -512,15 +509,17 @@
 	<item quantity="other">%1$d Uygulama Kuruldu</item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">%1$s hafta önce güncellendi</item>
-	<item quantity="other">%1$s hafta önce güncellendi</item>
+	<item quantity="one">%1$d hafta önce güncellendi</item>
+	<item quantity="other">%1$d hafta önce güncellendi</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">%1$s ay önce güncellendi</item>
-	<item quantity="other">%1$s ay önce güncellendi</item>
+	<item quantity="one">%1$d ay önce güncellendi</item>
+	<item quantity="other">%1$d ay önce güncellendi</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">%1$s yıl önce güncellendi</item>
-	<item quantity="other">%1$s yıl önce güncellendi</item>
+	<item quantity="one">%1$d yıl önce güncellendi</item>
+	<item quantity="other">%1$d yıl önce güncellendi</item>
 </plurals>
-</resources>
+<string name="by_author_format">%s tarafından</string>
+    <string name="download_404">İstenen dosya bulunamadı.</string>
+    </resources>

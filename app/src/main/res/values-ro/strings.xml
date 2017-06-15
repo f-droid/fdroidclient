@@ -388,10 +388,10 @@
     </plurals>
     <string name="details_last_updated_today">Actualizate azi</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Actualizate azi</item>
-        <item quantity="few">Actualizate acum %1$s zile</item>
-        <item quantity="other">Actualizate acum %1$s de zile</item>
-    </plurals>
+	<item quantity="one">Actualizate azi</item>
+	<item quantity="few">Actualizate acum %1$sd zile</item>
+	<item quantity="other">Actualizate acum %1$sd de zile</item>
+</plurals>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">Vezi %d</item>
 	<item quantity="few">Toate cele %d</item>
@@ -476,18 +476,18 @@
 	<item quantity="other">+ încă %1$d…</item>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">Actualizat acum %1$s an</item>
-        <item quantity="few">Actualizat acum %1$s ani</item>
-	<item quantity="other">Actualizat acum %1$s ani</item>
+	<item quantity="one">Actualizat acum un an</item>
+	<item quantity="few">Actualizat acum %1$s ani</item>
+	<item quantity="other">Actualizat acum %1$s de ani</item>
 </plurals>
 <plurals name="details_last_update_months">
-	<item quantity="one">Actualizat acum %1$s lună</item>
-    <item quantity="few">Actualizat acum %1$s luni</item>
-	<item quantity="other">Actualizat acum %1$s luni</item>
+	<item quantity="one">Actualizat acum o lună</item>
+	<item quantity="few">Actualizat acum %1$s luni</item>
+	<item quantity="other">Actualizat acum %1$s de luni</item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">Actualizat acum %1$s săptămână</item>
-        <item quantity="few">Actualizat acum %1$s săptămâni</item>
+	<item quantity="one">Actualizat acum o săptămână</item>
+	<item quantity="few">Actualizat acum %1$s săptămâni</item>
 	<item quantity="other">Actualizat acum %1$s săptămâni</item>
 </plurals>
     </resources>
