@@ -1048,7 +1048,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     /**
-     * Returns a query which requires two parameters to be bound. These are (in order):
+     * Returns a query which requires two parameters to be bdeatound. These are (in order):
      *  1) The repo version that introduced density specific icons
      *  2) The dir to density specific icons for the current device.
      */

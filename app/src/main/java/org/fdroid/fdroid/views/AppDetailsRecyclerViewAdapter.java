@@ -114,7 +114,9 @@ public class AppDetailsRecyclerViewAdapter
         versions = new ArrayList<>();
         final List<Apk> apks = ApkProvider.Helper.findByPackageName(context, this.app.packageName);
         for (final Apk apk : apks) {
-            if (apk.compatible || Preferences.get().showIncompatibleVersions()) {
+            boolean allowByCompatability = apk.compatible || Preferences.get().showIncompatibleVersions();
+            boolean allowBySig = this.app.installedSig == null || TextUtils.equals(this.app.installedSig, apk.sig);
+            if (allowByCompatability && allowBySig) {
                 versions.add(apk);
             }
         }
