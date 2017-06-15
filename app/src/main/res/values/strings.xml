@@ -5,11 +5,9 @@
 
     <string name="SignatureMismatch">The new version is signed with a different key to the old one. To install the new
         version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase
-        any internal data stored by the application)
+        any internal data stored by the app)
     </string>
-    <string name="installIncompatible">It seems like this package is not compatible with your device. Do you want to try
-        and install it anyway?
-    </string>
+    <string name="installIncompatible">App incompatible with your device, install anyway?</string>
     <string name="version">Version</string>
     <string name="by_author_format">by %s</string>
     <string name="delete">Delete</string>
@@ -32,7 +30,7 @@
     </string>
     <string name="update_auto_install">Automatically install updates</string>
     <string name="update_auto_install_summary">Download and install update apps in the background</string>
-    <string name="notify">Update notifications</string>
+    <string name="notify">Show available updates</string>
     <string name="notify_on">Show a notification when updates are available</string>
     <string name="system_installer">Privileged Extension</string>
     <string name="system_installer_on">Use F-Droid Privileged Extension to install, update, and remove packages</string>
@@ -58,7 +56,7 @@
     <string name="about_version">Version</string>
     <string name="about_site">Website</string>
     <string name="about_source">Source code</string>
-    <string name="about_mail">Email</string>
+    <string name="about_mail">E-mail</string>
     <string name="about_license">License</string>
 
     <string name="app_incompatible">Incompatible</string>
@@ -77,7 +75,7 @@
     <string name="app_list__name__downloaded_and_ready_to_update">Update %1$s</string>
     <string name="app_list__name__downloaded_and_ready_to_install">Install %1$s</string>
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
-    <string name="app_list__name__successfully_installed">%1$s successfully installed</string>
+    <string name="app_list__name__successfully_installed">%1$s installed</string>
     <string name="app_list__age__released_today">Released today</string>
     <string name="app_list__age__released_yesterday">Released yesterday</string>
     <plurals name="app_list__age__released_x_days_ago">
@@ -136,7 +134,7 @@
     <string name="repo_provider">Repository: %s</string>
 
     <string name="menu_manage">Repositories</string>
-    <string name="repositories_summary">Add additional sources of applications</string>
+    <string name="repositories_summary">Add additional sources of apps</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_search">Search</string>
     <string name="menu_add_repo">New Repository</string>
@@ -196,9 +194,9 @@
     <string name="expert">Expert mode</string>
     <string name="expert_on">Show extra info and enable extra settings</string>
 
-    <string name="search_hint">Search applications</string>
+    <string name="search_hint">Search apps</string>
 
-    <string name="appcompatibility">Application compatibility</string>
+    <string name="appcompatibility">App compatibility</string>
     <string name="show_incompat_versions">Incompatible versions</string>
     <string name="show_incompat_versions_on">Show app versions incompatible with the device</string>
     <string name="rooted">Ignore root</string>
@@ -226,9 +224,9 @@
     <string name="enable_proxy_title">Enable HTTP Proxy</string>
     <string name="enable_proxy_summary">Configure HTTP Proxy for all network requests</string>
     <string name="proxy_host">Proxy Host</string>
-    <string name="proxy_host_summary">Configure your proxy\'s hostname (e.g. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Your proxy\'s hostname (e.g. 127.0.0.1)</string>
     <string name="proxy_port">Proxy Port</string>
-    <string name="proxy_port_summary">Configure your proxy\'s port number (e.g. 8118)</string>
+    <string name="proxy_port_summary">Your proxy\'s port number (e.g. 8118)</string>
 
     <!--
     status_download takes four parameters:
@@ -249,11 +247,11 @@
     <string name="update_notification_title">Updating repositories</string>
     <string name="status_processing_xml_percent">Processing %2$s / %3$s (%4$d%%) from %1$s</string>
     <string name="status_connecting_to_repo">Connecting to\n%1$s</string>
-    <string name="status_inserting_apps">Saving application details</string>
+    <string name="status_inserting_apps">Saving app details</string>
     <string name="repos_unchanged">All repositories are up to date</string>
     <string name="all_other_repos_fine">All other repos didn\'t create errors.</string>
     <string name="global_error_updating_repos">Error during update: %s</string>
-    <string name="warning_no_internet">Cannot update, are you connected to the internet?</string>
+    <string name="warning_no_internet">Cannot update, are you connected to the Internet?</string>
     <string name="no_permissions">No permissions are used.</string>
     <string name="permissions">Permissions</string>
     <string name="no_handler_app">You don\'t have any available app that can handle %s.</string>
@@ -268,8 +266,8 @@
     <string name="repo_last_update">Last update</string>
     <string name="repo_name">Name</string>
     <string name="unsigned_description">This means that the list of
-        applications could not be verified. You should be careful
-        with applications downloaded from unsigned indexes.
+        apps could not be verified. You should be careful
+        with apps downloaded from unsigned indexes.
     </string>
     <string name="repo_not_yet_updated">This repository has not been used yet.
         You need to enable it to view the apps it provides.
@@ -344,10 +342,10 @@
         Please create a bug report!
     </string>
     <string name="system_install_button_install">Install</string>
-    <string name="system_install_post_success">Successfully installed F-Droid Privileged Extension</string>
+    <string name="system_install_post_success">F-Droid Privileged Extension installed</string>
     <string name="system_install_post_fail">Installation of F-Droid Privileged Extension failed</string>
-    <string name="system_install_post_success_message">F-Droid Privileged Extension has been successfully installed.
-        This allows F-Droid to install, upgrade and uninstall apps on its own.
+    <string name="system_install_post_success_message">F-Droid Privileged Extension installed.
+        This allows F-Droid to install, update and uninstall apps on its own.
     </string>
     <string name="system_install_post_fail_message">The installation of F-Droid Privileged Extension has failed. The
         installation method is not supported by all Android distributions, please consult the F-Droid bug tracker for
@@ -367,8 +365,7 @@
         on Android 5.1 or later.
     </string>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">No internet? Download apps from people near you!
-    </string>
+    <string name="nearby_splash__download_apps_from_people_nearby">No Internet? Get apps from people near you!</string>
     <string name="nearby_splash__find_people_button">Find people near me</string>
     <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
 
@@ -416,27 +413,25 @@
     <string name="swap_cant_send_no_bluetooth">Cannot send F-Droid, because Bluetooth is unavailable on this device.
     </string>
     <string name="loading">Loading…</string>
-    <string name="swap_connection_misc_error">An error occurred while connecting to device, we can\'t seem to swap with
-        it.
-    </string>
+    <string name="swap_connection_misc_error">Error occurred while connecting to device, can\'t swap with it!</string>
     <string name="swap_not_enabled">Swapping not enabled</string>
     <string name="swap_not_enabled_description">Before swapping, your device must be made visible.</string>
 
     <string name="install_confirm">needs access to</string>
     <string name="install_confirm_update">Do you want to install an update
-        to this existing application? Your existing data will not
-        be lost. The updated application will get access to:
+        to this existing app? Your existing data will not
+        be lost. The updated app will get access to:
     </string>
     <string name="install_confirm_update_system">Do you want to install an update
-        to this built-in application? Your existing data will not
-        be lost. The updated application will get access to:
+        to this built-in app? Your existing data will not
+        be lost. The updated app will get access to:
     </string>
     <string name="install_confirm_update_no_perms">Do you want to install an update
-        to this existing application? Your existing data will not
+        to this existing app? Your existing data will not
         be lost. It does not require any special access.
     </string>
     <string name="install_confirm_update_system_no_perms">Do you want to install an update
-        to this built-in application? Your existing data will not
+        to this built-in app? Your existing data will not
         be lost. It does not require any special access.
     </string>
     <string name="newPerms">New</string>
@@ -444,7 +439,7 @@
     <string name="perm_costs_money">This may cost you money</string>
     <string name="uninstall_update_confirm">Do you want to replace this app with the factory version?</string>
     <string name="uninstall_confirm">Do you want to uninstall this app?</string>
-    <string name="download_error">Download unsuccessful</string>
+    <string name="download_error">Download failed!</string>
     <string name="download_pending">Waiting to start download…</string>
     <string name="install_error_notify_title">Error installing %s</string>
     <string name="uninstall_error_notify_title">Error uninstalling %s</string>
@@ -478,7 +473,7 @@
 
     <string name="crash_dialog_title">F-Droid has crashed</string>
     <string name="crash_dialog_text">An unexpected error occurred
-        forcing the application to stop. Would you like to e-mail the
+        forcing the app to stop. Would you like to e-mail the
         details to help fix the issue?
     </string>
     <string name="crash_dialog_comment_prompt">You can add extra information and comments here:</string>
