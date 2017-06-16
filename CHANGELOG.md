@@ -1,3 +1,9 @@
+### 0.104 (2017-06-16)
+
+* Support apps with APKs signed by more than one key
+
+* Fix F-Droid update notifications that never go away
+
 ### 0.103.2 (2017-05-31)
 
 * Fix problematic updates and notifications (#1013)
