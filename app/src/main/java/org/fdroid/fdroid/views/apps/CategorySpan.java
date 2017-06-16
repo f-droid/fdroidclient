@@ -97,6 +97,8 @@ public class CategorySpan extends ReplacementSpan {
         RectF backgroundRect = new RectF(0, 0, iconBackgroundSize + textLeadingPadding
                 + textWidth + textTrailingPadding, height);
 
+        int backgroundColour = CategoryController.getBackgroundColour(context, categoryName.toString());
+
         // The shadow below the entire category chip.
         canvas.save();
         canvas.translate(0, DROP_SHADOW_HEIGHT * density);
@@ -108,7 +110,7 @@ public class CategorySpan extends ReplacementSpan {
 
         // The background which goes behind the text.
         Paint backgroundPaint = new Paint();
-        backgroundPaint.setColor(CategoryController.getBackgroundColour(context, categoryName.toString()));
+        backgroundPaint.setColor(backgroundColour);
         backgroundPaint.setAntiAlias(true);
         canvas.drawRoundRect(backgroundRect, cornerRadius, cornerRadius, backgroundPaint);
 
@@ -124,9 +126,15 @@ public class CategorySpan extends ReplacementSpan {
         icon.setBounds(iconPadding, iconPadding, iconPadding + iconSize, iconPadding + iconSize);
         icon.draw(canvas);
 
+        // Choose white or black text based on the perceived brightness.
+        // Uses some arbitrary magic from https://stackoverflow.com/a/946734/2391921
+        double grey = Color.red(backgroundColour) * 0.299 +
+                Color.green(backgroundColour) * 0.587 +
+                Color.blue(backgroundColour) * 0.114;
+
         // The category name drawn to the right of the category name.
         Paint textPaint = new Paint(paint);
-        textPaint.setColor(Color.WHITE);
+        textPaint.setColor(grey < 186 ? Color.WHITE : Color.BLACK);
         canvas.drawText(categoryName.toString(), iconBackgroundSize + textLeadingPadding, bottom, textPaint);
 
         canvas.restore();

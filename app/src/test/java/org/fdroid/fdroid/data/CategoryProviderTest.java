@@ -17,9 +17,11 @@ import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import static org.fdroid.fdroid.Assert.assertContainsOnly;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 @Config(constants = BuildConfig.class, application = Application.class, sdk = 23)
@@ -164,29 +166,29 @@ public class CategoryProviderTest extends FDroidProviderTest {
 
     @Test
     public void topAppsFromCategory() {
-        insertAppWithCategory("com.dog", "Dog", "Animal");
-        insertAppWithCategory("com.cat", "Cat", "Animal");
-        insertAppWithCategory("com.bird", "Bird", "Animal");
-        insertAppWithCategory("com.snake", "Snake", "Animal");
-        insertAppWithCategory("com.rat", "Rat", "Animal");
+        insertAppWithCategory("com.dog", "Dog", "Animal", new Date(2017, 2, 6));
+        insertAppWithCategory("com.cat", "Cat", "Animal", new Date(2017, 2, 5));
+        insertAppWithCategory("com.bird", "Bird", "Animal", new Date(2017, 2, 4));
+        insertAppWithCategory("com.snake", "Snake", "Animal", new Date(2017, 2, 3));
+        insertAppWithCategory("com.rat", "Rat", "Animal", new Date(2017, 2, 2));
 
-        insertAppWithCategory("com.rock", "Rock", "Mineral");
-        insertAppWithCategory("com.stone", "Stone", "Mineral");
-        insertAppWithCategory("com.boulder", "Boulder", "Mineral");
+        insertAppWithCategory("com.rock", "Rock", "Mineral", new Date(2017, 1, 4));
+        insertAppWithCategory("com.stone", "Stone", "Mineral", new Date(2017, 1, 3));
+        insertAppWithCategory("com.boulder", "Boulder", "Mineral", new Date(2017, 1, 2));
 
-        insertAppWithCategory("com.banana", "Banana", "Vegetable");
-        insertAppWithCategory("com.tomato", "Tomato", "Vegetable");
+        insertAppWithCategory("com.banana", "Banana", "Vegetable", new Date(2015, 1, 1));
+        insertAppWithCategory("com.tomato", "Tomato", "Vegetable", new Date(2017, 4, 4));
 
-        assertContainsOnly(topAppsFromCategory("Animal", 3), new String[]{"com.bird", "com.cat", "com.dog"});
-        assertContainsOnly(topAppsFromCategory("Animal", 2), new String[]{"com.bird", "com.cat"});
-        assertContainsOnly(topAppsFromCategory("Animal", 1), new String[]{"com.bird"});
+        assertArrayEquals(getTopAppsFromCategory("Animal", 3), new String[]{"com.dog", "com.cat", "com.bird"});
+        assertArrayEquals(getTopAppsFromCategory("Animal", 2), new String[]{"com.dog", "com.cat"});
+        assertArrayEquals(getTopAppsFromCategory("Animal", 1), new String[]{"com.dog"});
 
-        assertContainsOnly(topAppsFromCategory("Mineral", 2), new String[]{"com.boulder", "com.rock"});
+        assertArrayEquals(getTopAppsFromCategory("Mineral", 2), new String[]{"com.rock", "com.stone"});
 
-        assertContainsOnly(topAppsFromCategory("Vegetable", 10), new String[]{"com.banana", "com.tomato"});
+        assertArrayEquals(getTopAppsFromCategory("Vegetable", 10), new String[]{"com.tomato", "com.banana"});
     }
 
-    public String[] topAppsFromCategory(String category, int numToGet) {
+    public String[] getTopAppsFromCategory(String category, int numToGet) {
         List<App> apps = AppProvider.Helper.cursorToList(contentResolver
                 .query(AppProvider.getTopFromCategoryUri(category, numToGet), Cols.ALL, null, null, Cols.NAME));
         String[] packageNames = new String[apps.size()];
@@ -260,12 +262,21 @@ public class CategoryProviderTest extends FDroidProviderTest {
     }
 
     private void insertAppWithCategory(String id, String name, String categories) {
-        insertAppWithCategory(id, name, categories, 1);
+        insertAppWithCategory(id, name, categories, new Date(), 1);
+    }
+
+    private void insertAppWithCategory(String id, String name, String categories, Date lastUpdated) {
+        insertAppWithCategory(id, name, categories, lastUpdated, 1);
     }
 
     private void insertAppWithCategory(String id, String name, String categories, long repoId) {
-        ContentValues values = new ContentValues(1);
+        insertAppWithCategory(id, name, categories, new Date(), repoId);
+    }
+
+    private void insertAppWithCategory(String id, String name, String categories, Date lastUpdated, long repoId) {
+        ContentValues values = new ContentValues(2);
         values.put(Cols.ForWriting.Categories.CATEGORIES, categories);
+        values.put(Cols.LAST_UPDATED, lastUpdated.getTime() / 1000);
         AppProviderTest.insertApp(contentResolver, context, id, name, values, repoId);
     }
 
