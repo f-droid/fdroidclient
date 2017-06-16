@@ -732,6 +732,7 @@ public class AppProvider extends FDroidProvider {
             case TOP_FROM_CATEGORY:
                 selection = selection.add(queryCategory(pathSegments.get(2)));
                 limit = Integer.parseInt(pathSegments.get(1));
+                sortOrder = getTableName() + "." + Cols.LAST_UPDATED + " DESC";
                 includeSwap = false;
                 break;
 
