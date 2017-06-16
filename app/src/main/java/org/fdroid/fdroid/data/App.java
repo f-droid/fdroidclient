@@ -150,6 +150,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     public String flattrID;
 
     public String upstreamVersionName;
+
+    /**
+     * The index-v1 metadata uses the term `suggestedVersionCode` but we need that
+     * value to end up in the `upstreamVersionCode` property here. These variables
+     * need to be renamed across the whole F-Droid ecosystem to make sense.
+     * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/1063">issue #1063</a>
+     */
+    @JsonProperty("suggestedVersionCode")
     public int upstreamVersionCode;
 
     /**
