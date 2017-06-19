@@ -531,9 +531,9 @@ public final class Utils {
         } else if (weeks < 1) {
             return res.getQuantityString(R.plurals.details_last_update_days, (int) days, days);
         } else if (months < 1) {
-            return res.getQuantityString(R.plurals.details_last_update_months, (int) months, months);
-        } else if (years < 1) {
             return res.getQuantityString(R.plurals.details_last_update_weeks, (int) weeks, weeks);
+        } else if (years < 1) {
+            return res.getQuantityString(R.plurals.details_last_update_months, (int) months, months);
         } else {
             return res.getQuantityString(R.plurals.details_last_update_years, (int) years, years);
         }
