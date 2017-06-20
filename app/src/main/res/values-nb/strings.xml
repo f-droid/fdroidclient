@@ -479,7 +479,6 @@
 
     <string name="app__tts__downloading_progress">Laster ned, %1$d%% fullført</string>
     <string name="menu_license">Lisens: %s</string>
-    <string name="install_error_not_yet_supported">Filtypen kan ikke installeres enda: %s</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d til…</item>
 	<item quantity="other">+%1$d til…</item>

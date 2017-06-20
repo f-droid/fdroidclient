@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.fdroid.AppFilter;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.xmlpull.v1.XmlPullParser;
@@ -42,6 +43,7 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -853,8 +855,38 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         return values;
     }
 
-    public boolean isInstalled() {
-        return installedVersionCode > 0;
+    public boolean isInstalled(Context context) {
+        return isMediaInstalled(context) || installedVersionCode > 0;
+    }
+
+    public boolean isMediaInstalled(Context context) {
+        return getMediaApkifInstalled(context) != null;
+    }
+
+    /**
+     * Gets the installed media apk from all the apks of this {@link App}, if any.
+     *
+     * @return The installed media {@link Apk} if it exists, null otherwise.
+     */
+    public Apk getMediaApkifInstalled(Context context) {
+        // This is always null for media files. We could skip the code below completely if it wasn't
+        if (this.installedApk != null && !this.installedApk.isApk() && this.installedApk.isMediaInstalled(context)) {
+            return this.installedApk;
+        }
+        // This code comes from AppDetailsRecyclerViewAdapter
+        final List<Apk> apks = ApkProvider.Helper.findByPackageName(context, this.packageName);
+        for (final Apk apk : apks) {
+            boolean allowByCompatability = apk.compatible || Preferences.get().showIncompatibleVersions();
+            boolean allowBySig = this.installedSig == null || TextUtils.equals(this.installedSig, apk.sig);
+            if (allowByCompatability && allowBySig) {
+                if (!apk.isApk()) {
+                    if (apk.isMediaInstalled(context)) {
+                        return apk;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     /**
@@ -966,11 +998,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         return 0;
     }
 
-    /**
-     * System apps aren't uninstallable, only their updates are.
-     */
     public boolean isUninstallable(Context context) {
-        if (this.isInstalled()) {
+        if (this.isMediaInstalled(context)) {
+            return true;
+        } else if (this.isInstalled(context)) {
             PackageManager pm = context.getPackageManager();
             ApplicationInfo appInfo;
             try {
@@ -980,8 +1011,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 return false;
             }
 
+            // System apps aren't uninstallable.
             final boolean isSystem = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-            return !isSystem && this.isInstalled();
+            return !isSystem && this.isInstalled(context);
         } else {
             return false;
         }

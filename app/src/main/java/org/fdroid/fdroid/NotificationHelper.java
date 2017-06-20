@@ -248,7 +248,7 @@ class NotificationHelper {
             case Downloading:
                 return app.name;
             case ReadyToInstall:
-                return context.getString(app.isInstalled() ? R.string.notification_title_single_ready_to_install_update : R.string.notification_title_single_ready_to_install);
+                return context.getString(app.isInstalled(context) ? R.string.notification_title_single_ready_to_install_update : R.string.notification_title_single_ready_to_install);
             case Installing:
                 return app.name;
             case Installed:
@@ -264,7 +264,7 @@ class NotificationHelper {
             case UpdateAvailable:
                 return app.name;
             case Downloading:
-                return context.getString(app.isInstalled() ? R.string.notification_content_single_downloading_update : R.string.notification_content_single_downloading, app.name);
+                return context.getString(app.isInstalled(context) ? R.string.notification_content_single_downloading_update : R.string.notification_content_single_downloading, app.name);
             case ReadyToInstall:
                 return app.name;
             case Installing:
@@ -282,9 +282,9 @@ class NotificationHelper {
             case UpdateAvailable:
                 return context.getString(R.string.notification_title_summary_update_available);
             case Downloading:
-                return context.getString(app.isInstalled() ? R.string.notification_title_summary_downloading_update : R.string.notification_title_summary_downloading);
+                return context.getString(app.isInstalled(context) ? R.string.notification_title_summary_downloading_update : R.string.notification_title_summary_downloading);
             case ReadyToInstall:
-                return context.getString(app.isInstalled() ? R.string.notification_title_summary_ready_to_install_update : R.string.notification_title_summary_ready_to_install);
+                return context.getString(app.isInstalled(context) ? R.string.notification_title_summary_ready_to_install_update : R.string.notification_title_summary_ready_to_install);
             case Installing:
                 return context.getString(R.string.notification_title_summary_installing);
             case Installed:

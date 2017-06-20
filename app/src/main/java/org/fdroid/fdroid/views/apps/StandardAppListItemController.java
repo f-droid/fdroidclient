@@ -35,7 +35,7 @@ public class StandardAppListItemController extends AppListItemController {
     private CharSequence getStatusText(@NonNull App app) {
         if (!app.compatible) {
             return activity.getString(R.string.app_incompatible);
-        } else if (app.isInstalled()) {
+        } else if (app.isInstalled(activity.getApplicationContext())) {
             if (app.canAndWantToUpdate(activity)) {
                 return activity.getString(R.string.app_version_x_available, app.getSuggestedVersionName());
             } else {
@@ -47,7 +47,7 @@ public class StandardAppListItemController extends AppListItemController {
     }
 
     private boolean shouldShowInstall(@NonNull App app) {
-        boolean installable = app.canAndWantToUpdate(activity) || !app.isInstalled();
+        boolean installable = app.canAndWantToUpdate(activity) || !app.isInstalled(activity.getApplicationContext());
         boolean shouldAllow = app.compatible && !app.isFiltered();
 
         return installable && shouldAllow;

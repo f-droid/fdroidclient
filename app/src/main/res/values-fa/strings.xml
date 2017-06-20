@@ -436,7 +436,6 @@
 	<item quantity="other">%1$sd روز پیش به‌روز شده‌</item>
 </plurals>
 <string name="menu_license">پروانه: %s</string>
-    <string name="install_error_not_yet_supported">این نوع فایل نمی تواند نصب شود: %s</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d بیشتر…</item>
 	<item quantity="other">+%1$d بیشتر…</item>

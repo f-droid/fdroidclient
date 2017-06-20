@@ -479,7 +479,6 @@
 	<item quantity="other">Veure\'ls tots %d</item>
 </plurals>
 
-    <string name="install_error_not_yet_supported">El tipus de fitxer no es pot instal·lar: %s</string>
     <string name="app__tts__downloading_progress">Descarregant, %1$d%% completat</string>
     <plurals name="notification_summary_updates">
 	<item quantity="one">%1$d actualització</item>

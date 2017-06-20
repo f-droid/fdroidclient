@@ -438,7 +438,6 @@
     <string name="app__tts__cancel_download">Anulează descărcarea</string>
     <string name="menu_video">Video</string>
     <string name="menu_license">Licență: %s</string>
-    <string name="install_error_not_yet_supported">Acest tip de fișier nu se poate încă instala: %s</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Nu ai acces la Internet? Descarcă aplicații de la persoanele de lângă tine!</string>
     <string name="nearby_splash__find_people_button">Găsește persoane lângă mine</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambele persoane au nevoie de %1$s pentru a putea folosi această opțiune.</string>

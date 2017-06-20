@@ -346,7 +346,7 @@ public class SwapAppsView extends ListView implements
                     btnInstall.setVisibility(View.VISIBLE);
                     statusIncompatible.setVisibility(View.GONE);
                     statusInstalled.setVisibility(View.GONE);
-                } else if (app.isInstalled()) {
+                } else if (app.isInstalled(getContext())) {
                     btnInstall.setVisibility(View.GONE);
                     statusIncompatible.setVisibility(View.GONE);
                     statusInstalled.setVisibility(View.VISIBLE);

@@ -322,7 +322,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     }
 
     protected AppListItemState getViewStateReadyToInstall(@NonNull App app) {
-        int actionButtonLabel = app.isInstalled()
+        int actionButtonLabel = app.isInstalled(activity.getApplicationContext())
                 ? R.string.app__install_downloaded_update
                 : R.string.menu_install;
 

@@ -16,9 +16,11 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+
 import org.fdroid.fdroid.AppDetails2;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
@@ -388,5 +390,4 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             }
         }
     };
-
 }

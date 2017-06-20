@@ -478,14 +478,14 @@ public class AppDetailsRecyclerViewAdapter
             if (callbacks.isAppDownloading()) {
                 buttonPrimaryView.setText(R.string.downloading);
                 buttonPrimaryView.setEnabled(false);
-            } else if (!app.isInstalled() && suggestedApk != null) {
+            } else if (!app.isInstalled(context) && suggestedApk != null) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
                 callbacks.disableAndroidBeam();
                 // Set Install button and hide second button
                 buttonPrimaryView.setText(R.string.menu_install);
                 buttonPrimaryView.setOnClickListener(onInstallClickListener);
                 buttonPrimaryView.setEnabled(true);
-            } else if (app.isInstalled()) {
+            } else if (app.isInstalled(context)) {
                 callbacks.enableAndroidBeam();
                 if (app.canAndWantToUpdate(context) && suggestedApk != null) {
                     buttonPrimaryView.setText(R.string.menu_upgrade);

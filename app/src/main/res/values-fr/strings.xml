@@ -496,7 +496,6 @@
     <string name="details_last_updated_today">Mis à jour aujourd\'hui</string>
     <string name="app__tts__cancel_download">Annuler le téléchargement</string>
     <string name="menu_license">Licence: %s</string>
-    <string name="install_error_not_yet_supported">Ce type de fichier ne peut être installé pour l\'instant: %s</string>
     <string name="app__tts__downloading_progress">Téléchargement, %1$d%% complété</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d autre…</item>

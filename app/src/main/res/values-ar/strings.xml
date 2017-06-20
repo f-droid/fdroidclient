@@ -460,7 +460,6 @@
     <string name="repositories_summary">أضف مصادر أخرى للتطبيقات</string>
     <string name="menu_license">الرخصة: %s</string>
     <string name="download_404">الملف المطلوب غير موجود.</string>
-    <string name="install_error_not_yet_supported">نوع الملف لا يمكن بعد تثبيته: %s</string>
     <string name="app__tts__downloading_progress">جاري التحميل، اكتمل %1$d%%</string>
     <string name="tts_category_name">التصنيف  %1$s</string>
 

@@ -489,7 +489,6 @@
 	<item quantity="other">Kyk na alle %d</item>
 </plurals>
 
-    <string name="install_error_not_yet_supported">Lêertipe kan nog nie geïnstalleer word nie: %s</string>
     <string name="details_last_updated_today">Vandag opgedateer</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">%1$s dag gelede opgedateer</item>

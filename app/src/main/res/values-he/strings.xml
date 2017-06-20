@@ -409,7 +409,6 @@
     <item quantity="other">הצגת כל ה־%d</item>
 </plurals>
 
-    <string name="install_error_not_yet_supported">עדיין לא ניתן להתקין את סוג הקובץ: %s</string>
     <string name="nearby_splash__download_apps_from_people_nearby">אין חיבור לאינטרנט? ניתן להוריד יישומונים מאנשים בקרבתך!</string>
     <string name="nearby_splash__find_people_button">חיפוש אנשים בקרבתי</string>
     <string name="nearby_splash__both_parties_need_fdroid">שני הצדדים צריכים %1$s כדי להשתמש בקרבה.</string>

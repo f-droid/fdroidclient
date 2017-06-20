@@ -388,7 +388,6 @@
 	<item quantity="other">查看全部 %d</item>
 </plurals>
 
-    <string name="install_error_not_yet_supported">文件类型无法安装：%s</string>
     <string name="nearby_splash__download_apps_from_people_nearby">没有连上互联网？请从附近的 F-Droid 用户那里获取应用！</string>
     <string name="nearby_splash__find_people_button">查找附近的人</string>
     <string name="nearby_splash__both_parties_need_fdroid">双方都需要 %1$s 才可使用附近的人功能。</string>

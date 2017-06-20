@@ -2,15 +2,21 @@ package org.fdroid.fdroid.data;
 
 import android.annotation.TargetApi;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.database.Cursor;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.webkit.MimeTypeMap;
+
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
@@ -469,5 +475,56 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
             }
         }
         requestedPermissions = set.toArray(new String[set.size()]);
+    }
+
+    /**
+     * Get the install path for a "non-apk" media file
+     * Defaults to {@link android.os.Environment#DIRECTORY_DOWNLOADS}
+     *
+     * @return the install path for this {@link Apk}
+     */
+
+    public File getMediaInstallPath(Context context) {
+        File path = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOWNLOADS); // Default for all other non-apk/media files
+        String fileExtension = MimeTypeMap.getFileExtensionFromUrl(this.getUrl());
+        if (TextUtils.isEmpty(fileExtension)) return path;
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        String[] mimeType = mimeTypeMap.getMimeTypeFromExtension(fileExtension).split("/");
+        String topLevelType;
+        if (mimeType.length == 0) {
+            topLevelType = "";
+        } else {
+            topLevelType = mimeType[0];
+        }
+        if ("audio".equals(topLevelType)) {
+            path = Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_MUSIC);
+        } else if ("image".equals(topLevelType)) {
+            path = Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_PICTURES);
+        } else if ("video".equals(topLevelType)) {
+            path = Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_MOVIES);
+            // TODO support OsmAnd map files, other map apps?
+            //} else if (mimeTypeMap.hasExtension("map")) {  // OsmAnd map files
+            //} else if (this.apkName.matches(".*.ota_[0-9]*.zip")) {  // Over-The-Air update ZIP files
+        } else if (this.apkName.endsWith(".zip")) {  // Over-The-Air update ZIP files
+            path = new File(context.getApplicationInfo().dataDir + "/ota");
+        }
+        return path;
+    }
+
+    public boolean isMediaInstalled(Context context) {
+        return new File(this.getMediaInstallPath(context), this.apkName).isFile();
+    }
+
+    /**
+     * Default to assuming apk if apkName is null since that has always been
+     * what we had.
+     * @return true if this is an apk instead of a non-apk/media file
+     */
+    public boolean isApk() {
+        return this.apkName == null || this.apkName.endsWith(".apk");
     }
 }

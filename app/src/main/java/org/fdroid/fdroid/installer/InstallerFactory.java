@@ -22,8 +22,7 @@ package org.fdroid.fdroid.installer;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.widget.Toast;
-import org.fdroid.fdroid.R;
+
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 
@@ -47,11 +46,9 @@ public class InstallerFactory {
 
 
         Installer installer;
-        if (apk.apkName != null && !apk.apkName.endsWith(".apk")) {
-            String msg = context.getString(R.string.install_error_not_yet_supported, apk.apkName);
-            Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
-            Utils.debugLog(TAG, msg);
-            installer = new DummyInstaller(context, apk);
+        if (!apk.isApk()) {
+            Utils.debugLog(TAG, "Using FileInstaller for non-apk file");
+            installer = new FileInstaller(context, apk);
         } else if (PrivilegedInstaller.isDefault(context)) {
             Utils.debugLog(TAG, "privileged extension correctly installed -> PrivilegedInstaller");
             installer = new PrivilegedInstaller(context, apk);

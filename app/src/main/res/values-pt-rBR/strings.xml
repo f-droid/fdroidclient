@@ -482,7 +482,6 @@
     <string name="app__tts__cancel_download">Cancelar download</string>
     <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>
     <string name="menu_license">Licença: %s</string>
-    <string name="install_error_not_yet_supported">Tipo de arquivo ainda não pode ser instalado: %s</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d mais…</item>
 	<item quantity="other">+%1$d mais…</item>

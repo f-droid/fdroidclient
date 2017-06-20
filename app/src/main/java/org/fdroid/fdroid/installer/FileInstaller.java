@@ -19,15 +19,16 @@
 
 package org.fdroid.fdroid.installer;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
 import org.fdroid.fdroid.data.Apk;
 
-public class DummyInstaller extends Installer {
+public class FileInstaller extends Installer {
 
-    public DummyInstaller(Context context, Apk apk) {
+    public FileInstaller(Context context, Apk apk) {
         super(context, apk);
     }
 
@@ -43,17 +44,41 @@ public class DummyInstaller extends Installer {
 
     @Override
     public void installPackage(Uri localApkUri, Uri downloadUri) {
-        // Do nothing
+        installPackageInternal(localApkUri, downloadUri);
     }
 
     @Override
     protected void installPackageInternal(Uri localApkUri, Uri downloadUri) {
-        // Do nothing
+        Intent installIntent = new Intent(context, FileInstallerActivity.class);
+        installIntent.setAction(FileInstallerActivity.ACTION_INSTALL_FILE);
+        installIntent.putExtra(Installer.EXTRA_DOWNLOAD_URI, downloadUri);
+        installIntent.putExtra(Installer.EXTRA_APK, apk);
+        installIntent.setData(localApkUri);
+
+        PendingIntent installPendingIntent = PendingIntent.getActivity(
+                context.getApplicationContext(),
+                localApkUri.hashCode(),
+                installIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        sendBroadcastInstall(downloadUri, Installer.ACTION_INSTALL_USER_INTERACTION,
+                installPendingIntent);
     }
 
     @Override
     protected void uninstallPackage() {
-        // Do nothing
+        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_STARTED);
+
+        Intent uninstallIntent = new Intent(context, FileInstallerActivity.class);
+        uninstallIntent.setAction(FileInstallerActivity.ACTION_UNINSTALL_FILE);
+        uninstallIntent.putExtra(Installer.EXTRA_APK, apk);
+        PendingIntent uninstallPendingIntent = PendingIntent.getActivity(
+                context.getApplicationContext(),
+                apk.packageName.hashCode(),
+                uninstallIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        sendBroadcastUninstall(Installer.ACTION_UNINSTALL_USER_INTERACTION, uninstallPendingIntent);
     }
 
     @Override

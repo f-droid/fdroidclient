@@ -293,7 +293,6 @@
     <string name="empty_can_update_app_list">അഭിനന്ദനങ്ങൾ! നിങ്ങളുടെ പ്രയോഗങ്ങളെല്ലാം കാലികമാണ് (അല്ലെങ്കിൽ നിങ്ങളുടെ സംഭരണികള്‍ കാലഹരണപ്പെട്ടതാണ്).</string>
     <string name="install_error_unknown">ഒരു അജ്ഞാത പിശക് കാരണം സ്ഥാപിക്കല്‍ പരാജയപ്പെട്ടു</string>
     <string name="uninstall_error_unknown">കാരണം ഒരു അജ്ഞാത പിശക് ഒഴിവാക്കല്‍ പരാജയപ്പെട്ടു</string>
-    <string name="install_error_not_yet_supported">ഫയൽ തരം സ്ഥാപിക്കാന്‍ കഴിയില്ല: %s</string>
     <string name="system_install_denied_signature">വിപുലീകരണത്തിന്റെ ഒപ്പ് തെറ്റാണ്! ഒരു ബഗ് റിപ്പോർട്ട് സൃഷ്ടിക്കുക!</string>
     <string name="system_install_denied_permissions">പ്രത്യേക അനുമതികൾ വിപുലീകരണത്തിന് നൽകിയിട്ടില്ല! ഒരു ബഗ് റിപ്പോർട്ട് സൃഷ്ടിക്കുക!</string>
     <string name="system_install_post_success">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിച്ചു</string>

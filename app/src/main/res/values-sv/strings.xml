@@ -466,7 +466,6 @@
     <string name="details_last_updated_today">Uppdaterad idag</string>
     <string name="app__tts__cancel_download">Avbryt hämtning</string>
     <string name="menu_license">Licens: %s</string>
-    <string name="install_error_not_yet_supported">Filtypen kan inte ännu installeras: %s</string>
     <string name="app__tts__downloading_progress">Hämtar, %1$d%% färdigt</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d till…</item>

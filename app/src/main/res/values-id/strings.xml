@@ -466,7 +466,6 @@
     <string name="app__tts__cancel_download">Batalkan unduhan</string>
     <string name="app__tts__downloading_progress">Mengunduh, %1$d%% selesai</string>
     <string name="menu_license">Lisensi: %s</string>
-    <string name="install_error_not_yet_supported">Tipe berkas belum dapat dipasang: %s</string>
     <plurals name="notification_summary_more">
 	<item quantity="other">+%1$d lainnya…</item>
 	</plurals>

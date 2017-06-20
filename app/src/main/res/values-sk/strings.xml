@@ -462,7 +462,6 @@
 	<item quantity="other">Dostupných %d aplikácií</item>
 </plurals>
 
-    <string name="install_error_not_yet_supported">Typ súboru zatiaľ nie je možné nainštalovať: %s</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Žiadny Internet? Stiahnite si aplikácie od ľudí v blízkosti vás!</string>
     <string name="nearby_splash__find_people_button">Nájdi ľudí blízko mňa</string>
     <string name="nearby_splash__both_parties_need_fdroid">Obidve strany potrebujú %1$s na použitie v okolí.</string>
