@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.security.NoSuchAlgorithmException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
@@ -54,6 +55,27 @@ public class TestUtils {
         }
     }
 
+    private static String formatSigForDebugging(String sig) {
+        String suffix;
+
+        // Can't use a switch statement here because *_SIG is not a constant, despite beign static final.
+        if (sig.equals(FDROID_SIG)) {
+            suffix = "F-Droid";
+        } else if (sig.equals(UPSTREAM_SIG)) {
+            suffix = "Upstream";
+        } else if (sig.equals(THIRD_PARTY_SIG)) {
+            suffix = "3rd Party";
+        } else {
+            suffix = "Unknown";
+        }
+
+        return sig + " [" + suffix + "]";
+    }
+
+    public static void assertSignaturesMatch(String message, String expected, String actual) {
+        assertEquals(message, formatSigForDebugging(expected), formatSigForDebugging(actual));
+    }
+
     public static void insertApk(Context context, App app, int versionCode, String signature) {
         ContentValues values = new ContentValues();
         values.put(Schema.ApkTable.Cols.SIGNATURE, signature);
@@ -63,6 +85,14 @@ public class TestUtils {
     public static App insertApp(Context context, String packageName, String appName, int upstreamVersionCode,
                           String repoUrl) {
         Repo repo = ensureRepo(context, repoUrl);
+        ContentValues values = new ContentValues();
+        values.put(Schema.AppMetadataTable.Cols.REPO_ID, repo.getId());
+        values.put(Schema.AppMetadataTable.Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
+        return Assert.insertApp(context, packageName, appName, values);
+    }
+
+    public static App insertApp(Context context, String packageName, String appName, int upstreamVersionCode,
+                          Repo repo) {
         ContentValues values = new ContentValues();
         values.put(Schema.AppMetadataTable.Cols.REPO_ID, repo.getId());
         values.put(Schema.AppMetadataTable.Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
