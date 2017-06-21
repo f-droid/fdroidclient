@@ -128,6 +128,7 @@ class DBHelper extends SQLiteOpenHelper {
             + AppMetadataTable.Cols.SOURCE_CODE + " text, "
             + AppMetadataTable.Cols.VIDEO + " string, "
             + AppMetadataTable.Cols.CHANGELOG + " text, "
+            + AppMetadataTable.Cols.PREFERRED_SIGNER + " text,"
             + AppMetadataTable.Cols.SUGGESTED_VERSION_CODE + " text,"
             + AppMetadataTable.Cols.UPSTREAM_VERSION_NAME + " text,"
             + AppMetadataTable.Cols.UPSTREAM_VERSION_CODE + " integer,"
@@ -192,7 +193,7 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
 
-    protected static final int DB_VERSION = 71;
+    protected static final int DB_VERSION = 72;
 
     private final Context context;
 
@@ -278,6 +279,18 @@ class DBHelper extends SQLiteOpenHelper {
         addWhatsNewAndVideo(db, oldVersion);
         dropApkPrimaryKey(db, oldVersion);
         addIntegerPrimaryKeyToInstalledApps(db, oldVersion);
+        addPreferredSignerToApp(db, oldVersion);
+    }
+
+    private void addPreferredSignerToApp(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 72) {
+            return;
+        }
+
+        if (!columnExists(db, AppMetadataTable.NAME, AppMetadataTable.Cols.PREFERRED_SIGNER)) {
+            Log.i(TAG, "Adding preferred signer to app table.");
+            db.execSQL("alter table " + AppMetadataTable.NAME + " add column " + AppMetadataTable.Cols.PREFERRED_SIGNER + " text;");
+        }
     }
 
     private void addIntegerPrimaryKeyToInstalledApps(SQLiteDatabase db, int oldVersion) {

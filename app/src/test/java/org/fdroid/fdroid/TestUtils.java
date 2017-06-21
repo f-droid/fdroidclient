@@ -92,10 +92,11 @@ public class TestUtils {
     }
 
     public static App insertApp(Context context, String packageName, String appName, int upstreamVersionCode,
-                          Repo repo) {
+                          Repo repo, String preferredSigner) {
         ContentValues values = new ContentValues();
         values.put(Schema.AppMetadataTable.Cols.REPO_ID, repo.getId());
         values.put(Schema.AppMetadataTable.Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
+        values.put(Schema.AppMetadataTable.Cols.PREFERRED_SIGNER, preferredSigner);
         return Assert.insertApp(context, packageName, appName, values);
     }
 

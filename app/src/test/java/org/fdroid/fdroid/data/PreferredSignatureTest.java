@@ -37,7 +37,7 @@ public class PreferredSignatureTest extends FDroidProviderTest {
     }
 
     private App populateFDroidRepo(Repo repo) {
-        App app = TestUtils.insertApp(context, PACKAGE_NAME, "App", 3100, repo);
+        App app = TestUtils.insertApp(context, PACKAGE_NAME, "App", 3100, repo, TestUtils.UPSTREAM_SIG);
 
         TestUtils.insertApk(context, app, 1100, TestUtils.FDROID_SIG); // 1.0
         TestUtils.insertApk(context, app, 2100, TestUtils.FDROID_SIG); // 2.0
@@ -54,7 +54,7 @@ public class PreferredSignatureTest extends FDroidProviderTest {
     }
 
     private App populateDevRepo(Repo repo) {
-        App app = TestUtils.insertApp(context, PACKAGE_NAME, "App", 4100, repo);
+        App app = TestUtils.insertApp(context, PACKAGE_NAME, "App", 4100, repo, TestUtils.THIRD_PARTY_SIG);
 
         TestUtils.insertApk(context, app, 1001, TestUtils.THIRD_PARTY_SIG); // 1.0-rc2
         TestUtils.insertApk(context, app, 1100, TestUtils.THIRD_PARTY_SIG); // 1.0
@@ -78,7 +78,7 @@ public class PreferredSignatureTest extends FDroidProviderTest {
     }
 
     private App populateUpstreamRepo(Repo repo) {
-        App app = TestUtils.insertApp(context, PACKAGE_NAME, "App", 4100, repo);
+        App app = TestUtils.insertApp(context, PACKAGE_NAME, "App", 4100, repo, TestUtils.UPSTREAM_SIG);
 
         TestUtils.insertApk(context, app, 2100, TestUtils.UPSTREAM_SIG);
         TestUtils.insertApk(context, app, 3100, TestUtils.UPSTREAM_SIG);

@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
@@ -75,8 +76,22 @@ public class ApkProvider extends FDroidProvider {
             return resolver.delete(uri, null, null);
         }
 
+        /**
+         * Find an app which is closest to the version code suggested by the server, with some caveates:
+         * <ul>
+         *     <li>If installed, limit to apks signed by the same signer as the installed apk.</li>
+         *     <li>Otherwise, limit to apks signed by the "preferred" signer (see {@link App#preferredSigner}).</li>
+         * </ul>
+         */
         public static Apk findSuggestedApk(Context context, App app) {
-            return findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode, app.installedSig);
+            String preferredSignature = null;
+            if (!TextUtils.isEmpty(app.installedSig)) {
+                preferredSignature = app.installedSig;
+            } else if (!TextUtils.isEmpty(app.preferredSigner)) {
+                preferredSignature = app.preferredSigner;
+            }
+
+            return findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode, preferredSignature);
         }
 
         public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode) {

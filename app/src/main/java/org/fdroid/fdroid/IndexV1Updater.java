@@ -217,9 +217,14 @@ public class IndexV1Updater extends RepoUpdater {
                 if (packages != null) {
                     apks = packages.get(app.packageName);
                 }
+
                 if (apks == null) {
                     Log.i(TAG, "processIndexV1 empty packages");
-                    apks = new ArrayList<Apk>(0);
+                    apks = new ArrayList<>(0);
+                }
+
+                if (apks.size() > 0) {
+                    app.preferredSigner = apks.get(0).sig;
                 }
 
                 if (appCount % 50 == 0) {
