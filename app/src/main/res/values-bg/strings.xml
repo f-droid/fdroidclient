@@ -380,14 +380,8 @@
     <string name="app__newly_added">Ново</string>
     <string name="app__install_downloaded_update">Обновяване</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Обновяване на %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Инсталиране на %1$s</string>
     <string name="app_list__name__downloading_in_progress">Изтегляне на %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s се инсталира успешно</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Пуснато преди %1$d ден</item>
-        <item quantity="other">Пуснато преди %1$d дни</item>
-    </plurals>
 
     <string name="installed_apps__activity_title">Инсталирани приложения</string>
     <string name="installed_app__updates_ignored">Обновленията са отхвърлени</string>

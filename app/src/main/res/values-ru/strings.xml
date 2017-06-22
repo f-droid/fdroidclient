@@ -420,11 +420,6 @@
     <string name="app_version_x_installed">Версия %1$s</string>
     <string name="app__newly_added">Новое</string>
     <string name="app_list__name__successfully_installed">%1$s успешно установлено</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Опубликовано %1$d день назад</item>
-        <item quantity="few">Опубликовано %1$d дня назад</item>
-        <item quantity="many">Опубликовано %1$d дней назад</item>
-        </plurals>
 
     <string name="categories__empty_state__no_categories">Нет категорий для показа</string>
 
@@ -462,8 +457,6 @@
         <item quantity="many">Скачать обновления для %1$d приложений.</item>
         </plurals>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Обновить %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Установить %1$s</string>
     <string name="app_list__name__downloading_in_progress">Загружается %1$s</string>
     <string name="updates__tts__download_app">Скачать</string>
     <string name="installed_app__updates_ignored">Пропущенные обновления</string>
@@ -489,8 +482,6 @@
     <string name="latest__empty_state__no_recent_apps">Нет недавних приложений</string>
     <string name="nearby_splash__both_parties_need_fdroid">Обоим участникам нужен %1$s чтобы передавать приложения.</string>
 
-<string name="app_list__age__released_today">Опубликованные сегодня</string>
-    <string name="app_list__age__released_yesterday">Опубликованные вчера</string>
     <string name="menu_video">Видео</string>
     <string name="app__tts__cancel_download">Отменить скачивание</string>
     <string name="app__tts__downloading_progress">Скачано %1$d%%</string>

@@ -422,16 +422,8 @@
     <string name="app__newly_added">Novinka</string>
     <string name="app__install_downloaded_update">Aktualizovať</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Aktualizovať %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Inštalovať %1$s</string>
     <string name="app_list__name__downloading_in_progress">Sťahovanie %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s úspešne nainštalovaná</string>
-    <string name="app_list__age__released_yesterday">Vydané pred dňom</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Vydané pred dňom</item>
-        <item quantity="few">Vydané pred %1$d dňami</item>
-        <item quantity="other">Vydané pred %1$d dňami.</item>
-    </plurals>
 
     <string name="installed_apps__activity_title">Nainštalované aplikácie</string>
     <string name="installed_app__updates_ignored">Vynechané aktualizácie</string>
@@ -443,7 +435,6 @@
     <string name="updates__show_updateable_apps">Zobraziť aplikácie</string>
 
 <string name="app__tts__cancel_download">Zrušiť sťahovanie</string>
-    <string name="app_list__age__released_today">Publikované dnes</string>
     <plurals name="updates__download_updates_for_apps">
 	<item quantity="one">Stiahnuť aktualizáciu pre %1$d aplikáciu.</item>
 	<item quantity="few">Stiahnuť aktualizácie pre %1$d aplikácie.</item>

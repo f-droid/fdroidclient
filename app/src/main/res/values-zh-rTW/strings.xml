@@ -430,12 +430,7 @@
 </plurals>
     <string name="app__install_downloaded_update">更新</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">更新 %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">安裝 %1$s</string>
     <string name="app_list__name__downloading_in_progress">正在下載 %1$s</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="other">%1$d 天前已釋出</item>
-    </plurals>
 
     <string name="updates__tts__download_updates_for_all_apps">下載所有的更新</string>
 
@@ -468,8 +463,6 @@
 
     <string name="categories__empty_state__no_categories">沒有要顯示的類別</string>
 
-<string name="app_list__age__released_today">今天釋出</string>
-    <string name="app_list__age__released_yesterday">昨天已釋出</string>
     <string name="menu_video">視頻</string>
     <string name="details_last_updated_today">今天更新</string>
     <string name="app__tts__cancel_download">取消下載</string>

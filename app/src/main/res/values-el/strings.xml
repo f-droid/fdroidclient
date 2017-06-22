@@ -413,7 +413,6 @@
     <string name="notification_action_cancel">Ακύρωση</string>
     <string name="notification_action_install">Εγκατάσταση</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_install">Εγκατάσταση %1$s</string>
     <string name="app_list__name__downloading_in_progress">Γίνεται λήψη %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s εγκαταστάθηκε με επιτυχία</string>
     <string name="notification_title_single_update_available">Διαθέσιμη ενημέρωση</string>
@@ -425,9 +424,6 @@
     <string name="app__tts__cancel_download">Ακύρωση λήψης</string>
     <string name="app__install_downloaded_update">Ενημέρωση</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Ενημέρωση %1$s</string>
-    <string name="app_list__age__released_today">Κυκλοφόρησε σήμερα</string>
-    <string name="app_list__age__released_yesterday">Κυκλοφόρησε εχτές</string>
     <string name="installed_apps__activity_title">Εγκατεστημένες εφαρμογές</string>
     <string name="installed_app__updates_ignored">Οι ενημερώσεις αγνοήθηκαν</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Οι ενημερώσεις αγνοήθηκαν για την Έκδοση %1$s</string>

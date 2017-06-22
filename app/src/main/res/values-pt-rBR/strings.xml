@@ -433,13 +433,7 @@
     <string name="app__newly_added">Novo</string>
     <string name="app__install_downloaded_update">Atualizar</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Atualizar %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Instalar %1$s</string>
     <string name="app_list__name__downloading_in_progress">Baixando %1$s</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Lançado %1$d dias atrás</item>
-        <item quantity="other">Lançados %1$d dias atrás</item>
-    </plurals>
 
     <string name="installed_apps__activity_title">Aplicativos instalados</string>
     <string name="installed_app__updates_ignored">Atualizações ignoradas</string>
@@ -490,8 +484,6 @@
 	<item quantity="one">Atualizado %1$s dia atrás</item>
 	<item quantity="other">Atualizados %1$s dias atrás</item>
 </plurals>
-<string name="app_list__age__released_today">Lançado hoje</string>
-    <string name="app_list__age__released_yesterday">Lançado ontem</string>
     <string name="menu_video">Vídeo</string>
     <string name="app__tts__cancel_download">Cancelar download</string>
     <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>

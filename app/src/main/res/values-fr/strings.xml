@@ -438,14 +438,8 @@
     <string name="app__newly_added">Nouveau</string>
     <string name="app__install_downloaded_update">Mise à jour</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Mise à jour %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Installer %1$s</string>
     <string name="app_list__name__downloading_in_progress">Téléchargement %1$s en cours</string>
     <string name="app_list__name__successfully_installed">%1$s installé</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Publié il y a %1$d jour</item>
-        <item quantity="other">Publié il y a %1$d jours</item>
-    </plurals>
 
     <string name="installed_apps__activity_title">Applications installées</string>
     <string name="installed_app__updates_ignored">Mises à jour ignorées</string>
@@ -502,8 +496,6 @@
     <string name="latest__empty_state__never_updated">Quand votre liste d\'applis est mise à jour, les dernières applis
         s\'affichent ici
     </string>
-<string name="app_list__age__released_today">Mis à disposition aujourd\'hui</string>
-    <string name="app_list__age__released_yesterday">Mis à disposition hier</string>
     <string name="menu_video">Vidéo</string>
     <string name="details_last_updated_today">Mis à jour aujourd\'hui</string>
     <string name="app__tts__cancel_download">Annuler le téléchargement</string>

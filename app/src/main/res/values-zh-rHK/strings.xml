@@ -396,15 +396,8 @@ Android 5.1 或更新的版本。
     <string name="app_recommended_version_installed">版本 %1$s (建議使用)</string>
     <string name="app__install_downloaded_update">更新</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">更新 %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">安裝 %1$s</string>
     <string name="app_list__name__downloading_in_progress">正在下載 %1$s</string>
     <string name="app_list__name__successfully_installed">已成功安裝 %1$s</string>
-    <string name="app_list__age__released_today">今天發佈</string>
-    <string name="app_list__age__released_yesterday">昨天發佈</string>
-    <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="other">%1$d 天前發佈</item>
-</plurals>
 
     <string name="installed_apps__activity_title">已安裝的應用程式</string>
     <string name="installed_app__updates_ignored">已略過的更新</string>

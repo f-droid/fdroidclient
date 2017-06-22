@@ -372,16 +372,8 @@
     <string name="app__tts__cancel_download">لغو بارگیری</string>
     <string name="app__install_downloaded_update">به‌روز رسانی</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">به‌روز رسانی %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">نصب %1$s</string>
     <string name="app_list__name__downloading_in_progress">در حال بارگیری %1$s</string>
     <string name="app_list__name__successfully_installed">‫%1$s با موفّقیت نصب شد</string>
-    <string name="app_list__age__released_today">امروز منتشر شده</string>
-    <string name="app_list__age__released_yesterday">دیروز منتشر شده</string>
-    <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">‫%1$d روز پیش منتشر شده</item>
-	<item quantity="other">‫%1$d روز پیش منتشر ‌شده</item>
-</plurals>
 
     <string name="installed_apps__activity_title">کاره‌های نصب شده</string>
     <string name="installed_app__updates_ignored">صرف‌نظر از به‌روز رسانی</string>

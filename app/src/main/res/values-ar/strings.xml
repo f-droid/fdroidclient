@@ -399,7 +399,6 @@
 
     <string name="main_menu__latest_apps">الجديد</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_install">تثبيت %1$s</string>
     <string name="app_list__name__successfully_installed">تم تثبيت %1$s بنجاح</string>
     <string name="installed_apps__activity_title">التطبيقات المثبتة</string>
     <string name="preference_manage_installed_apps">إدارة التطبيقات المثبتة</string>
@@ -423,10 +422,7 @@
     <string name="app__newly_added">جديد</string>
     <string name="app__install_downloaded_update">تحديث</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">قم بتحديث %1$s</string>
     <string name="app_list__name__downloading_in_progress">تنزيل %1$s</string>
-    <string name="app_list__age__released_today">صدر اليوم</string>
-    <string name="app_list__age__released_yesterday">صدر البارحة</string>
     <string name="updates__tts__download_updates_for_all_apps">قم بتنزيل كل التحديثات</string>
 
     <string name="updates__hide_updateable_apps">إخفاء التطبيقات</string>

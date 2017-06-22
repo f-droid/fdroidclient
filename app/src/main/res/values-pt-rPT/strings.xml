@@ -413,14 +413,8 @@
     <string name="app__newly_added">Nova</string>
     <string name="app__install_downloaded_update">Atualização</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Atualizar %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Instalar %1$s</string>
     <string name="app_list__name__downloading_in_progress">A descarregar %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s instalada com sucesso</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Disponibilizada há %1$s dia</item>
-        <item quantity="other">Disponibilizada há %1$s dias</item>
-    </plurals>
 
     <string name="installed_apps__activity_title">Aplicações instaladas</string>
     <string name="installed_app__updates_ignored">Atualizações ignoradas</string>
@@ -509,8 +503,6 @@
 	<item quantity="other">Ver todas as %1$d aplicações da categoria %2$s</item>
 </plurals>
 
-<string name="app_list__age__released_today">Lançado hoje</string>
-    <string name="app_list__age__released_yesterday">Lançado ontem</string>
     <string name="menu_video">Vídeo</string>
     <string name="menu_license">Licença:%s</string>
     <string name="install_error_not_yet_supported">Este tipo de ficheiro ainda não pode ser instalado: %s</string>

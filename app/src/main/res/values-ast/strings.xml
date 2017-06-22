@@ -430,16 +430,10 @@
     <string name="notification_title_summary_downloading">Baxando…</string>
     <string name="notification_title_summary_downloading_update">Baxando anovamientu…</string>
     <string name="notification_title_summary_installing">Instalando</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Llanzóse hai %1$d día</item>
-        <item quantity="other">Llanzóse hai %1$d díes</item>
-    </plurals>
 
     <string name="app_list__name__downloading_in_progress">Baxando %1$s</string>
     <string name="app__install_downloaded_update">Anovar</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Anovar %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Instalar %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s instalóse con ésitu</string>
     <string name="updates__tts__download_app">Baxar</string>
     <string name="updates__tts__download_updates_for_all_apps">Baxar tolos anovamientos</string>

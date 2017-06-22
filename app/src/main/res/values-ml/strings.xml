@@ -58,7 +58,6 @@
 
     <string name="app_details">വിശദാംശങ്ങള്‍</string>
     <string name="about_title">എഫ്-ഡ്രോയ്ഡിനെക്കുറിച്ച്</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">%1$s സ്ഥാപിക്കുക</string>
     <string name="app_list__name__downloading_in_progress">%1$s ഡൗൺലോഡ് ചെയ്യുന്നു</string>
     <string name="app_list__name__successfully_installed">%1$s നെ വിജയകരമായി സ്ഥാപിച്ചു</string>
     <string name="updates__tts__download_app">ഡൗൺലോഡ് ചെയ്യുക</string>
@@ -140,14 +139,6 @@
     <string name="added_on">%s ന് ചേർത്തത്</string>
     <string name="app__tts__cancel_download">ഡൗൺലോഡ് റദ്ദാക്കുക</string>
     <string name="app__install_downloaded_update">പുതുക്കുക</string>
-
-    <string name="app_list__name__downloaded_and_ready_to_update">%1$s പുതുക്കുക</string>
-    <string name="app_list__age__released_today">ഇന്ന് പ്രസിദ്ധപ്പെടുത്തിയത്</string>
-    <string name="app_list__age__released_yesterday">ഇന്നലെ പ്രസിദ്ധപ്പെടുത്തിയത്</string>
-    <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">%1$d ദിവസം മുമ്പ് പ്രസിദ്ധപ്പെടുത്തിയത്</item>
-	<item quantity="other">%1$d ദിവസങ്ങള്‍ക്ക് മുമ്പ് പ്രസിദ്ധപ്പെടുത്തിയത്</item>
-</plurals>
 
     <string name="installed_apps__activity_title">സ്ഥാപിച്ചിട്ടുള്ള പ്രയോഗങ്ങള്‍</string>
     <string name="installed_app__updates_ignored">പുതുക്കലുകള്‍ അവഗണിച്ചു</string>

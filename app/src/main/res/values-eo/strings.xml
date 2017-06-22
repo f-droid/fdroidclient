@@ -447,13 +447,7 @@
 </plurals>
     <string name="app__install_downloaded_update">Ĝisdatigi</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Ĝisdatigi %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Instali %1$s</string>
     <string name="app_list__name__downloading_in_progress">Elŝutado de %1$s</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Eldonita antaŭ %1$d tago</item>
-        <item quantity="other">Eldonita antaŭ %1$d tagoj</item>
-    </plurals>
 
     <string name="updates__tts__download_app">Elŝuti</string>
     <string name="updates__tts__download_updates_for_all_apps">Elŝuti ĉiujn ĝisdatigojn</string>
@@ -491,8 +485,6 @@
 
     <string name="categories__empty_state__no_categories">Neniuj kategorioj por montri</string>
 
-<string name="app_list__age__released_today">Eldonita hodiaŭ</string>
-    <string name="app_list__age__released_yesterday">Eldonita hieraŭ</string>
     <string name="menu_video">Video</string>
     <string name="app__tts__cancel_download">Nuligi elŝutadon</string>
     <string name="app__tts__downloading_progress">Elŝutado, %1$d%% kompleta</string>

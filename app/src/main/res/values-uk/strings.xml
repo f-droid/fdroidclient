@@ -451,15 +451,8 @@
     <string name="app_details_donate_prompt_unknown_author">Придбай розробнику %1$s філіжанку кави!</string>
     <string name="app__install_downloaded_update">Оновити</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Оновити %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Встановити %1$s</string>
     <string name="app_list__name__downloading_in_progress">Завантаження %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s встановлено</string>
-    <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">Випущено %1$d день по тому</item>
-	<item quantity="few">Випущено %1$d дні по тому</item>
-	<item quantity="many">Випущено %1$d днів по тому</item>
-	</plurals>
 
     <string name="updates__tts__download_updates_for_all_apps">Завантажити всі оновлення</string>
 
@@ -488,8 +481,6 @@
 <string name="updates__tts__download_app">Завантажити</string>
     <string name="by_author_format">від %s</string>
     <string name="app__tts__cancel_download">Скасувати завантажити</string>
-    <string name="app_list__age__released_today">Опубліковано сьогодні</string>
-    <string name="app_list__age__released_yesterday">Опубліковано вчора</string>
     <string name="menu_video">Відео</string>
     <string name="menu_license">Ліцензія: %s</string>
     <string name="details_last_updated_today">Оновлено сьогодні</string>

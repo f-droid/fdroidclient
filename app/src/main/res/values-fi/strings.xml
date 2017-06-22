@@ -405,15 +405,8 @@ asentamisesta
     <string name="app__newly_added">Uusi</string>
     <string name="app__install_downloaded_update">Päivitys</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_install">Asenna %1$s</string>
     <string name="app_list__name__downloading_in_progress">Ladataan %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s on asennettu onnistuneesti</string>
-    <string name="app_list__age__released_today">Julkaistu tänään</string>
-    <string name="app_list__age__released_yesterday">Julkaistu eilen</string>
-    <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">Julkaistu %1$d päivä sitten</item>
-	<item quantity="other">Julkaistu %1$d päivää sitten</item>
-</plurals>
 
     <string name="installed_apps__activity_title">Asennetut Sovellukset</string>
     <string name="updates__tts__download_updates_for_all_apps">Lataa kaikki päivitykset</string>
@@ -476,7 +469,6 @@ asentamisesta
     <string name="app_details_donate_prompt_unknown_author">Osta sovelluksen %1$s kehittäjille kahvi!</string>
     <string name="app_details_donate_prompt">Sovelluksen %1$s on luonut %2$s. Osta heille kahvi!</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Päivitä %1$s</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Version %1$s päivitykset ohitetaan</string>
     <string name="updates__tts__download_app">Lataa päivitykset</string>
     <string name="main_menu__swap_nearby">Lähellä</string>

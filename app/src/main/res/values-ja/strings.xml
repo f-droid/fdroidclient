@@ -418,12 +418,7 @@
 </plurals>
     <string name="app__install_downloaded_update">更新</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">%1$s を更新</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">%1$s をｲﾝｽﾄｰﾙ</string>
     <string name="app_list__name__downloading_in_progress">%1$s をﾀﾞｳﾝﾛｰﾄﾞ中</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="other">%1$d 日前にﾘﾘｰｽ</item>
-    </plurals>
 
     <string name="updates__tts__download_app">ﾀﾞｳﾝﾛｰﾄﾞ</string>
     <string name="updates__tts__download_updates_for_all_apps">すべての更新をﾀﾞｳﾝﾛｰﾄﾞ</string>
@@ -456,8 +451,6 @@
 
     <string name="categories__empty_state__no_categories">表示するｶﾃｺﾞﾘはありません</string>
 
-<string name="app_list__age__released_today">今日ﾘﾘｰｽ</string>
-    <string name="app_list__age__released_yesterday">昨日ﾘﾘｰｽ</string>
     <string name="menu_video">ﾋﾞﾃﾞｵ</string>
     <string name="app__tts__cancel_download">ﾀﾞｳﾝﾛｰﾄﾞをｷｬﾝｾﾙ</string>
     <string name="app__tts__downloading_progress">ﾀﾞｳﾝﾛｰﾄﾞ中、%1$d%% 完了</string>
