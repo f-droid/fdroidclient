@@ -446,12 +446,7 @@
     <string name="main_menu__swap_nearby">Dekat</string>
     <string name="app_recommended_version_installed">Versi %1$s (Direkomendasikan)</string>
     <string name="app__newly_added">Baru</string>
-    <string name="app_list__name__downloaded_and_ready_to_update">Perbarui %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Pasang %1$s</string>
     <string name="app_list__name__downloading_in_progress">Mengunduh %1$s</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="other">Dirilis %1$d hari yang lalu</item>
-    </plurals>
 
     <string name="installed_apps__activity_title">Apl Terpasang</string>
     <string name="installed_app__updates_ignored">Pembaruan diabaikan</string>
@@ -501,8 +496,6 @@
 
     <string name="categories__empty_state__no_categories">Tidak ada kategori untuk ditampilkan</string>
 
-<string name="app_list__age__released_today">Dirilis hari ini</string>
-    <string name="app_list__age__released_yesterday">Dirilis kemarin</string>
     <string name="menu_video">Video</string>
     <string name="details_last_updated_today">Diperbarui hari ini</string>
     <string name="app__tts__cancel_download">Batalkan unduhan</string>

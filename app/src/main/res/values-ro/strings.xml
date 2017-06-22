@@ -433,16 +433,9 @@
     <string name="installed_app__updates_ignored_for_suggested_version">Actualizări ignorate pentru versiunea %1$s</string>
     <string name="installed_app__updates_ignored">Actualizări ignorate</string>
     <string name="installed_apps__activity_title">Aplicatii instalate</string>
-    <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">Publicat ieri</item>
-	<item quantity="few">Publicat acum %1$d zile</item>
-	<item quantity="other">Publicat acum %1$d de zile</item>
-</plurals>
 
     <string name="app_list__name__successfully_installed">%1$s instalat cu succes</string>
     <string name="app_list__name__downloading_in_progress">Se descarca %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Instalare %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_update">Actualizare %1$s</string>
     <string name="app__install_downloaded_update">Actualizare</string>
 
     <string name="app__newly_added">Nou</string>
@@ -451,8 +444,6 @@
     <string name="app_version_x_available">Versiunea %1$s disponibila</string>
 <string name="app__tts__downloading_progress">Se descarcă, %1$d%% gata</string>
     <string name="app__tts__cancel_download">Anulează descărcarea</string>
-    <string name="app_list__age__released_today">Publicat azi</string>
-    <string name="app_list__age__released_yesterday">Publicat ieri</string>
     <string name="menu_video">Video</string>
     <string name="menu_license">Licență: %s</string>
     <string name="install_error_not_yet_supported">Acest tip de fișier nu se poate încă instala: %s</string>

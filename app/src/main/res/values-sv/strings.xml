@@ -429,13 +429,7 @@
 </plurals>
     <string name="app__install_downloaded_update">Uppdatera</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Uppdatera %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Installera %1$s</string>
     <string name="app_list__name__downloading_in_progress">Hämtar %1$s</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Utgiven för %1$d dag sedan</item>
-        <item quantity="other">Utgiven för %1$d dagar sedan</item>
-    </plurals>
 
     <string name="updates__tts__download_app">Hämta</string>
     <string name="updates__tts__download_updates_for_all_apps">Hämta alla uppdateringar</string>
@@ -468,8 +462,6 @@
 
     <string name="categories__empty_state__no_categories">Inga kategorier att visa</string>
 
-<string name="app_list__age__released_today">Utgiven idag</string>
-    <string name="app_list__age__released_yesterday">Utgiven igår</string>
     <string name="menu_video">Video</string>
     <string name="details_last_updated_today">Uppdaterad idag</string>
     <string name="app__tts__cancel_download">Avbryt hämtning</string>

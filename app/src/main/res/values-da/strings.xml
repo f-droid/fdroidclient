@@ -379,7 +379,6 @@
     <string name="notification_action_cancel">Annullér</string>
     <string name="notification_action_install">Installér</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_install">Installér %1$s</string>
     <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s blev installeret succesfuldt</string>
     <string name="updates__tts__download_app">Hent</string>
@@ -395,14 +394,6 @@
     <string name="app__newly_added">Nyhed</string>
     <string name="app__tts__cancel_download">Stop download</string>
     <string name="app__install_downloaded_update">Opdatér</string>
-
-    <string name="app_list__name__downloaded_and_ready_to_update">Updatér %1$s</string>
-    <string name="app_list__age__released_today">Udgivet i dag</string>
-    <string name="app_list__age__released_yesterday">Udgivet i går</string>
-    <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="one">Udgivet for %1$d dag siden</item>
-	<item quantity="other">Udgivet for %1$d dage siden</item>
-</plurals>
 
     <string name="installed_apps__activity_title">Installerede Apps</string>
     <string name="installed_app__updates_ignored">Opdateringer ignoreres</string>

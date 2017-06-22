@@ -458,13 +458,7 @@
 </plurals>
     <string name="app__install_downloaded_update">Agiorna</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Agiorna %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Installa %1$s</string>
     <string name="app_list__name__downloading_in_progress">Installende %1$s</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Carrigada %1$d die faghet</item>
-        <item quantity="other">Carrigada %1$d dies faghet</item>
-    </plurals>
 
     <string name="updates__tts__download_app">Iscàrriga</string>
     <string name="updates__tts__download_updates_for_all_apps">Iscàrriga totu sos agiornamentos</string>
@@ -504,8 +498,6 @@
 
     <string name="categories__empty_state__no_categories">Peruna categoria de ammustrare</string>
 
-<string name="app_list__age__released_today">Publicada oe</string>
-    <string name="app_list__age__released_yesterday">Publicada eris</string>
     <string name="menu_video">Vìdeu</string>
     <string name="app__tts__cancel_download">Firma s\'iscarrigamentu</string>
     <string name="app__tts__downloading_progress">Iscarrighende, %1$d%% cumpridu</string>

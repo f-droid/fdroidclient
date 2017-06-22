@@ -457,15 +457,7 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     </plurals>
     <string name="app__install_downloaded_update">Actualizar</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Actualizar %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Instalar %1$s</string>
     <string name="app_list__name__downloading_in_progress">Descargando %1$s</string>
-    <string name="app_list__age__released_today">publicada hoy</string>
-    <string name="app_list__age__released_yesterday">publicada ayer</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">publicada ayer</item>
-        <item quantity="other">publicada hace %1$d días</item>
-    </plurals>
 
     <string name="updates__tts__download_app">Actualizaciones</string>
     <string name="updates__tts__download_updates_for_all_apps">Descargar todas las actualizaciones</string>

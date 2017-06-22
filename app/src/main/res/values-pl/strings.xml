@@ -439,14 +439,7 @@
 	</plurals>
     <string name="app__install_downloaded_update">Aktualizuj</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Aktualizuj %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Instaluj %1$s</string>
     <string name="app_list__name__downloading_in_progress">Pobieranie %1$s</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Wydano %1$d dzień temu</item>
-        <item quantity="few">Wydano %1$d dni temu</item>
-        <item quantity="many">Wydano %1$d dni temu</item>
-        </plurals>
 
     <string name="updates__tts__download_app">Pobierz</string>
     <string name="updates__tts__download_updates_for_all_apps">Pobierz wszystkie aktualizacje</string>
@@ -487,8 +480,6 @@
 
     <string name="categories__empty_state__no_categories">Brak kategorii do wyświetlenia</string>
 
-<string name="app_list__age__released_today">Wydany dzisiaj</string>
-    <string name="app_list__age__released_yesterday">Wydany wczoraj</string>
     <string name="menu_video">Wideo</string>
     <string name="app__tts__cancel_download">Anuluj pobieranie</string>
     <string name="app__tts__downloading_progress">Pobieranie, %1$d%% ukończono</string>

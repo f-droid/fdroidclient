@@ -461,13 +461,7 @@
 </plurals>
     <string name="app__install_downloaded_update">Eguneratu</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Eguneratu %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Instalatu %1$s</string>
     <string name="app_list__name__downloading_in_progress">%1$s deskargatzen</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Orain dela egun %1$d kaleratua</item>
-        <item quantity="other">Orain dela %1$d egun kaleratua</item>
-    </plurals>
 
     <string name="updates__tts__download_app">Deskargatu</string>
     <string name="updates__tts__download_updates_for_all_apps">Deskargatu eguneraketa guztiak</string>
@@ -494,8 +488,6 @@
 	<item quantity="other">Orain dela %1$s egun eguneratua</item>
 </plurals>
 <string name="app_list__name__successfully_installed">%1$s ongi instalatu da</string>
-    <string name="app_list__age__released_today">Gaur argitaratua</string>
-    <string name="app_list__age__released_yesterday">Atzo argitaratua</string>
     <string name="menu_video">Bideoa</string>
     <string name="latest__empty_state__no_recent_apps">Ez da oraintsuko aplikaziorik aurkitu</string>
     <string name="app__tts__cancel_download">Utzi deskarga</string>

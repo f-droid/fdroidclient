@@ -457,14 +457,7 @@
 </plurals>
     <string name="app__install_downloaded_update">Actualitzeu</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Actualitzeu %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Instal·leu %1$s</string>
     <string name="app_list__name__downloading_in_progress">Descarregant %1$s</string>
-    <string name="app_list__age__released_yesterday">Publicat ahir</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Publicat ahir</item>
-        <item quantity="other">Publicat fa %1$s dies</item>
-    </plurals>
 
     <string name="updates__tts__download_app">"El botó de descàrrega que es mostra a dins del test a la pantalla
         d\'\"Actualitzacions\" només usa
@@ -506,7 +499,6 @@
 
     <string name="categories__empty_state__no_categories">No hi ha cap categoria per mostrar</string>
 
-<string name="app_list__age__released_today">Publicat avui</string>
     <string name="menu_video">Vídeo</string>
     <string name="app__tts__cancel_download">Cancel·leu la descàrrega</string>
     <string name="menu_license">Llicència: %s</string>

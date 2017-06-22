@@ -432,14 +432,7 @@
 </plurals>
     <string name="app__install_downloaded_update">Oppdater</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Oppdater %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Installer %1$s</string>
     <string name="app_list__name__downloading_in_progress">Henter %1$s</string>
-    <string name="app_list__age__released_yesterday">Utgitt i går</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Utgitt i går</item>
-        <item quantity="other">Utgitt for %1$d dager siden</item>
-    </plurals>
 
     <string name="updates__tts__download_app">Last ned</string>
     <string name="updates__tts__download_updates_for_all_apps">Last ned alle oppdateringer</string>
@@ -468,7 +461,6 @@
 </plurals>
 <string name="app__tts__cancel_download">Avbryt nedlasting</string>
     <string name="app_list__name__successfully_installed">%1$s installert</string>
-    <string name="app_list__age__released_today">Utgitt i dag</string>
     <string name="menu_video">Video</string>
     <string name="latest__empty_state__no_recent_apps">Ingen nylige programmer funnet</string>
     <string name="latest__empty_state__never_updated">"Når din programliste har blitt oppdater, bør de nyligste programmene

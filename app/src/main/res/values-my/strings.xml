@@ -276,15 +276,8 @@
     <string name="app__newly_added">အသစ်</string>
     <string name="app__install_downloaded_update">အသစ်ထွက်ရှိခြင်း</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">အသစ်ထွက်ရှိမှု %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">%1$s သွင်းမည်</string>
     <string name="app_list__name__downloading_in_progress">%1$s ကိုဒေါင်းလုတ်ဆွဲနေသည်</string>
     <string name="app_list__name__successfully_installed">%1$s ကိုအောင်မြင်စွာသွင်းပြီးပါပြီ</string>
-    <string name="app_list__age__released_today">ယနေ့ထွက်ခဲ့သည်</string>
-    <string name="app_list__age__released_yesterday">မနေ့ကထွက်ခဲ့သည်</string>
-    <plurals name="app_list__age__released_x_days_ago">
-	<item quantity="other">%1$d ရက်ကြိုတင်ထွက်ခဲ့သည်</item>
-</plurals>
 
     <string name="installed_apps__activity_title">သွင်းခဲ့သော အက်ပ်စ်များ</string>
     <string name="installed_app__updates_ignored">အသစ်ထွက်ရှိမှုကိုလျစ်လျူရှူမည်</string>

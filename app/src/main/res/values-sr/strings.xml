@@ -437,14 +437,7 @@
 
     <string name="app__install_downloaded_update">Надогради</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">Надогради %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">Угради %1$s</string>
     <string name="app_list__name__downloading_in_progress">Преузимам %1$s</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Издато пре %1$d дан</item>
-        <item quantity="few">Издато пре %1$d дана</item>
-        <item quantity="other">Издато пре %1$d дана</item>
-    </plurals>
 
     <string name="updates__tts__download_app">Преузми</string>
     <string name="updates__tts__download_updates_for_all_apps">Преузми све надоградње</string>
@@ -483,8 +476,6 @@
     <string name="latest__empty_state__no_recent_apps">Нема недавних апликација</string>
     <string name="categories__empty_state__no_categories">Нема категорија за приказ</string>
 
-<string name="app_list__age__released_today">Издато данас</string>
-    <string name="app_list__age__released_yesterday">Издато јуче</string>
     <string name="latest__empty_state__never_updated">Када се списак апликација ажурира, најновије апликације ће бити приказане овде</string>
     <string name="latest__empty_state__no_enabled_repos">"Када укључите ризнице и дозволите да се ажурира, најновије
 апликације ће бити приказане овде

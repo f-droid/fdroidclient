@@ -430,13 +430,7 @@
 </plurals>
     <string name="app__install_downloaded_update">Güncelle</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">%1$s uygulamasını güncelle</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">%1$s uygulamasını kur</string>
     <string name="app_list__name__downloading_in_progress">%1$s indiriliyor</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">%1$d gün önce yayımlandı</item>
-        <item quantity="other">%1$d gün önce yayımlandı</item>
-    </plurals>
 
     <string name="updates__tts__download_app">İndir</string>
     <string name="updates__tts__download_updates_for_all_apps">Tüm güncellemeleri indir</string>
@@ -474,8 +468,6 @@
     <string name="categories__empty_state__no_categories">Gösterilecek kategori yok</string>
 
     <string name="latest__empty_state__no_recent_apps">Yakın tarihli uygulama bulunamadı</string>
-<string name="app_list__age__released_today">Bugün yayımlandı</string>
-    <string name="app_list__age__released_yesterday">Dün yayımlandı</string>
     <string name="menu_video">Video</string>
     <string name="details_last_updated_today">Bugün güncellendi</string>
     <string name="app__tts__cancel_download">İndirmeyi iptal et</string>

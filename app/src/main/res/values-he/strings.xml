@@ -355,18 +355,8 @@
     <string name="app__tts__cancel_download">בטל הורדה</string>
     <string name="app__install_downloaded_update">עדכן</string>
 
-    <string name="app_list__name__downloaded_and_ready_to_update">עדכן את %1$s</string>
-    <string name="app_list__name__downloaded_and_ready_to_install">התקן את %1$s</string>
     <string name="app_list__name__downloading_in_progress">כעת מוריד את %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s הותקנה בהצלחה</string>
-    <string name="app_list__age__released_today">שוחררה היום</string>
-    <string name="app_list__age__released_yesterday">שוחררה אתמול</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">יצא לאור אתמול</item>
-        <item quantity="two">יצא לאור לפני %1$d ימים</item>
-        <item quantity="many">יצא לאור לפני %1$d ימים</item>
-        <item quantity="other">יצא לאור לפני %1$d ימים</item>
-    </plurals>
 
     <string name="installed_apps__activity_title">אפליקציות מותקנות</string>
     <string name="installed_app__updates_ignored">עדכונים מנוכרים</string>
