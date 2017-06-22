@@ -960,6 +960,27 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         return 0;
     }
 
+    /**
+     * System apps aren't uninstallable, only their updates are.
+     */
+    public boolean isUninstallable(Context context) {
+        if (this.isInstalled()) {
+            PackageManager pm = context.getPackageManager();
+            ApplicationInfo appInfo;
+            try {
+                appInfo = pm.getApplicationInfo(this.packageName,
+                        PackageManager.GET_UNINSTALLED_PACKAGES);
+            } catch (PackageManager.NameNotFoundException e) {
+                return false;
+            }
+
+            final boolean isSystem = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
+            return !isSystem && this.isInstalled();
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte(this.compatible ? (byte) 1 : (byte) 0);
