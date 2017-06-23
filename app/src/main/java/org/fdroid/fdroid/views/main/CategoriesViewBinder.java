@@ -62,7 +62,7 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             }
         });
 
-        activity.getSupportLoaderManager().initLoader(LOADER_ID, null, this);
+        activity.getSupportLoaderManager().restartLoader(LOADER_ID, null, this);
     }
 
     @Override
