@@ -414,7 +414,8 @@ public class AppDetailsRecyclerViewAdapter
                 lastUpdateView.setVisibility(View.GONE);
             }
 
-            if (TextUtils.isEmpty(app.whatsNew)) {
+            Apk suggestedApk = getSuggestedApk();
+            if (suggestedApk == null || TextUtils.isEmpty(app.whatsNew)) {
                 whatsNewView.setVisibility(View.GONE);
             } else {
                 //noinspection deprecation Ignore deprecation because the suggested way is only available in API 24.
@@ -422,7 +423,7 @@ public class AppDetailsRecyclerViewAdapter
 
                 StringBuilder sbWhatsNew = new StringBuilder();
                 sbWhatsNew.append(whatsNewView.getContext().getString(R.string.details_new_in_version,
-                        getSuggestedApk().versionName).toUpperCase(locale));
+                        suggestedApk.versionName).toUpperCase(locale));
                 sbWhatsNew.append("\n\n");
                 sbWhatsNew.append(app.whatsNew);
                 whatsNewView.setText(sbWhatsNew);
