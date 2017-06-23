@@ -188,6 +188,7 @@ public final class Languages {
             new Locale("id"),
             new Locale("is"),
             new Locale("it"),
+            new Locale("ml"),
             new Locale("my"),
             new Locale("nb"),
             new Locale("nl"),
