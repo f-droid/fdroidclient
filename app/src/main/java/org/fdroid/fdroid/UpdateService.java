@@ -51,7 +51,6 @@ import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.views.main.MainActivity;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -408,12 +407,15 @@ public class UpdateService extends IntentService {
 
                 try {
                     RepoUpdater updater = new IndexV1Updater(this, repo);
-                    //TODO setProgressListeners(updater);
+                    UpdateBroadcastReceivers receivers = new UpdateBroadcastReceivers(updater);
                     if (Preferences.get().isForceOldIndexEnabled() || !updater.update()) {
+                        receivers.unregisterReceivers();
                         updater = new RepoUpdater(getBaseContext(), repo);
-                        setProgressListeners(updater);
+                        receivers = new UpdateBroadcastReceivers(updater);
                         updater.update();
                     }
+                    receivers.unregisterReceivers();
+
                     if (updater.hasChanged()) {
                         updatedRepos++;
                         changes = true;
@@ -502,52 +504,116 @@ public class UpdateService extends IntentService {
     }
 
     /**
-     * Set up the various {@link ProgressListener}s needed to get feedback to the UI.
-     * Note: {@code ProgressListener}s do not need to be unregistered, they can just
-     * be set again for each download.
+     * Creates three broadcast receivers (downloading, processing index, saving apps) and listens
+     * for relevant broadcasts from them. Calling {@link #unregisterReceivers()} will unregister
+     * all three receivers. If you neglect to unregister them, then they will continually receive
+     * events into the future.
+     *
+     * For each broadcast it receives, it checks the URL of the sender, because it may be possible
+     * to have, e.g. a swap and a regular repo update happening at once.
      */
-    private void setProgressListeners(RepoUpdater updater) {
-        updater.setDownloadProgressListener(new ProgressListener() {
-            @Override
-            public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                Log.i(TAG, "downloadProgressReceiver " + sourceUrl);
-                String downloadedSizeFriendly = Utils.getFriendlySize(bytesRead);
-                int percent = -1;
-                if (totalBytes > 0) {
-                    percent = (int) ((double) bytesRead / totalBytes * 100);
-                }
-                String message;
-                if (totalBytes == -1) {
-                    message = getString(R.string.status_download_unknown_size, sourceUrl, downloadedSizeFriendly);
-                    percent = -1;
-                } else {
-                    String totalSizeFriendly = Utils.getFriendlySize(totalBytes);
-                    message = getString(R.string.status_download, sourceUrl, downloadedSizeFriendly, totalSizeFriendly, percent);
-                }
-                sendStatus(getApplicationContext(), STATUS_INFO, message, percent);
-            }
-        });
+    private class UpdateBroadcastReceivers {
 
-        updater.setProcessXmlProgressListener(new ProgressListener() {
-            @Override
-            public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                String downloadedSize = Utils.getFriendlySize(bytesRead);
-                String totalSize = Utils.getFriendlySize(totalBytes);
-                int percent = -1;
-                if (totalBytes > 0) {
-                    percent = (int) ((double) bytesRead / totalBytes * 100);
-                }
-                String message = getString(R.string.status_processing_xml_percent, sourceUrl, downloadedSize, totalSize, percent);
-                sendStatus(getApplicationContext(), STATUS_INFO, message, percent);
-            }
-        });
+        private final BroadcastReceiver downloading;
+        private final BroadcastReceiver processingIndex;
+        private final BroadcastReceiver savingApps;
 
-        updater.setCommittingProgressListener(new ProgressListener() {
-            @Override
-            public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                String message = getString(R.string.status_inserting_apps);
-                sendStatus(getApplicationContext(), STATUS_INFO, message);
-            }
-        });
+        UpdateBroadcastReceivers(final RepoUpdater updater) {
+            downloading = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String url = intent.getStringExtra(RepoUpdater.EXTRA_URL);
+                    if (TextUtils.equals(url, updater.indexUrl)) {
+                        reportDownloadProgress(updater,
+                                intent.getIntExtra(RepoUpdater.EXTRA_BYTES_READ, 0),
+                                intent.getIntExtra(RepoUpdater.EXTRA_TOTAL_BYTES, 0));
+                    }
+                }
+            };
+
+            processingIndex = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String url = intent.getStringExtra(RepoUpdater.EXTRA_URL);
+                    if (TextUtils.equals(url, updater.indexUrl)) {
+                        reportProcessIndexProgress(updater,
+                                intent.getIntExtra(RepoUpdater.EXTRA_BYTES_READ, 0),
+                                intent.getIntExtra(RepoUpdater.EXTRA_TOTAL_BYTES, 0));
+                    }
+                }
+            };
+
+            savingApps = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String url = intent.getStringExtra(RepoUpdater.EXTRA_URL);
+                    if (TextUtils.equals(url, updater.indexUrl)) {
+                        reportProcessingAppsProgress(updater,
+                                intent.getIntExtra(RepoUpdater.EXTRA_APPS_SAVED, 0),
+                                intent.getIntExtra(RepoUpdater.EXTRA_TOTAL_APPS, 0));
+                    }
+                }
+            };
+
+            LocalBroadcastManager manager = LocalBroadcastManager.getInstance(UpdateService.this);
+            manager.registerReceiver(savingApps, new IntentFilter(RepoUpdater.ACTION_SAVING_APPS));
+            manager.registerReceiver(processingIndex, new IntentFilter(RepoUpdater.ACTION_INDEX_PROCESSING));
+            manager.registerReceiver(downloading, new IntentFilter(RepoUpdater.ACTION_DOWNLOADING));
+        }
+
+        public void unregisterReceivers() {
+            LocalBroadcastManager manager = LocalBroadcastManager.getInstance(UpdateService.this);
+            manager.unregisterReceiver(savingApps);
+            manager.unregisterReceiver(processingIndex);
+            manager.unregisterReceiver(downloading);
+        }
+
+    }
+
+    private void reportDownloadProgress(RepoUpdater updater, int bytesRead, int totalBytes) {
+        Utils.debugLog(TAG, "Downloading " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
+        String downloadedSizeFriendly = Utils.getFriendlySize(bytesRead);
+        int percent = -1;
+        if (totalBytes > 0) {
+            percent = (int) ((double) bytesRead / totalBytes * 100);
+        }
+        String message;
+        if (totalBytes == -1) {
+            message = getString(R.string.status_download_unknown_size, updater.indexUrl, downloadedSizeFriendly);
+            percent = -1;
+        } else {
+            String totalSizeFriendly = Utils.getFriendlySize(totalBytes);
+            message = getString(R.string.status_download, updater.indexUrl, downloadedSizeFriendly, totalSizeFriendly, percent);
+        }
+        sendStatus(getApplicationContext(), STATUS_INFO, message, percent);
+    }
+
+    private void reportProcessIndexProgress(RepoUpdater updater, int bytesRead, int totalBytes) {
+        Utils.debugLog(TAG, "Processing " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
+        String downloadedSize = Utils.getFriendlySize(bytesRead);
+        String totalSize = Utils.getFriendlySize(totalBytes);
+        int percent = -1;
+        if (totalBytes > 0) {
+            percent = (int) ((double) bytesRead / totalBytes * 100);
+        }
+        String message = getString(R.string.status_processing_xml_percent, updater.indexUrl, downloadedSize, totalSize, percent);
+        sendStatus(getApplicationContext(), STATUS_INFO, message, percent);
+    }
+
+    /**
+     * If an updater is unable to know how many apps it has to process (i.e. it is streaming apps to the database or
+     * performing a large database query which touches all apps, but is unable to report progress), then it call this
+     * listener with `totalBytes = 0`. Doing so will result in a message of "Saving app details" sent to the user. If
+     * you know how many apps you have processed, then a message of "Saving app details (x/total)" is displayed.
+     */
+    private void reportProcessingAppsProgress(RepoUpdater updater, int appsSaved, int totalApps) {
+        Utils.debugLog(TAG, "Committing " + updater.indexUrl + "(" + appsSaved + "/" + totalApps + ")");
+        String message;
+        if (totalApps > 0) {
+            message = getString(R.string.status_inserting_x_apps, appsSaved, totalApps, updater.indexUrl);
+        } else {
+            message = getString(R.string.status_inserting_apps);
+        }
+        sendStatus(getApplicationContext(), STATUS_INFO, message);
     }
 }

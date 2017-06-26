@@ -2,10 +2,8 @@ package org.fdroid.fdroid;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -61,11 +59,13 @@ public class IndexV1Updater extends RepoUpdater {
     private static final String SIGNED_FILE_NAME = "index-v1.jar";
     public static final String DATA_FILE_NAME = "index-v1.json";
 
-    private final LocalBroadcastManager localBroadcastManager;
-
     public IndexV1Updater(@NonNull Context context, @NonNull Repo repo) {
         super(context, repo);
-        this.localBroadcastManager = LocalBroadcastManager.getInstance(this.context);
+    }
+
+    @Override
+    protected String getIndexUrl(@NonNull Repo repo) {
+        return Uri.parse(repo.address).buildUpon().appendPath(SIGNED_FILE_NAME).build().toString();
     }
 
     /**
@@ -83,19 +83,10 @@ public class IndexV1Updater extends RepoUpdater {
         InputStream indexInputStream = null;
         try {
             // read file name from file
-            final Uri dataUri = Uri.parse(repo.address).buildUpon().appendPath(SIGNED_FILE_NAME).build();
+            final Uri dataUri = Uri.parse(indexUrl);
             downloader = DownloaderFactory.create(context, dataUri.toString());
             downloader.setCacheTag(repo.lastetag);
-            downloader.setListener(new ProgressListener() {
-                @Override
-                public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-                    Intent intent = new Intent(Downloader.ACTION_PROGRESS);
-                    intent.setData(dataUri);
-                    intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
-                    intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
-                    localBroadcastManager.sendBroadcast(intent);
-                }
-            });
+            downloader.setListener(downloadListener);
             downloader.download();
             if (downloader.isNotFound()) {
                 return false;
@@ -114,7 +105,7 @@ public class IndexV1Updater extends RepoUpdater {
             JarFile jarFile = new JarFile(downloader.outputFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry(DATA_FILE_NAME);
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                    processXmlProgressListener, new URL(repo.address), (int) indexEntry.getSize());
+                    processIndexListener, new URL(repo.address), (int) indexEntry.getSize());
             processIndexV1(indexInputStream, indexEntry, downloader.getCacheTag());
 
         } catch (IOException e) {
@@ -156,6 +147,8 @@ public class IndexV1Updater extends RepoUpdater {
      */
     public void processIndexV1(InputStream indexInputStream, JarEntry indexEntry, String cacheTag)
             throws IOException, UpdateException {
+        Utils.Profiler profiler = new Utils.Profiler(TAG);
+        profiler.log("Starting to process index-v1.json");
         ObjectMapper mapper = getObjectMapperInstance(repo.getId());
         JsonFactory f = mapper.getFactory();
         JsonParser parser = f.createParser(indexInputStream);
@@ -186,6 +179,7 @@ public class IndexV1Updater extends RepoUpdater {
             }
         }
         parser.close(); // ensure resources get cleaned up timely and properly
+        profiler.log("Finished processing index-v1.json. Now verifying certificate...");
 
         if (repoMap == null) {
             return;
@@ -200,7 +194,8 @@ public class IndexV1Updater extends RepoUpdater {
 
         X509Certificate certificate = getSigningCertFromJar(indexEntry);
         verifySigningCertificate(certificate);
-        Utils.debugLog(TAG, "Repo signature verified, saving app metadata to database.");
+
+        profiler.log("Certificate verified. Now saving to database...");
 
         // timestamp is absolutely required
         repo.timestamp = timestamp;
@@ -215,7 +210,9 @@ public class IndexV1Updater extends RepoUpdater {
 
         RepoPersister repoPersister = new RepoPersister(context, repo);
         if (apps != null && apps.length > 0) {
+            int appCount = 0;
             for (App app : apps) {
+                appCount++;
                 List<Apk> apks = null;
                 if (packages != null) {
                     apks = packages.get(app.packageName);
@@ -224,15 +221,24 @@ public class IndexV1Updater extends RepoUpdater {
                     Log.i(TAG, "processIndexV1 empty packages");
                     apks = new ArrayList<Apk>(0);
                 }
+
+                if (appCount % 50 == 0) {
+                    notifyProcessingApps(appCount, apps.length);
+                }
+
                 repoPersister.saveToDb(app, apks);
             }
         }
 
-        // TODO send event saying moving on to committing to db
+        profiler.log("Saved to database, but only a temporary table. Now persisting to database...");
+
+        notifyCommittingToDb();
         ContentValues values = prepareRepoDetailsForSaving(repo.name,
                 repo.description, repo.maxage, repo.version, repo.timestamp, repo.icon,
                 repo.mirrors, cacheTag);
         repoPersister.commit(values);
+
+        profiler.log("Persited to database.");
 
 
         // TODO RepoUpdater.processRepoPushRequests(context, repoPushRequestList);
