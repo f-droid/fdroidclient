@@ -188,6 +188,29 @@ public class InstalledAppProviderService extends IntentService {
         }
     }
 
+    @Nullable
+    public static File getPathToInstalledApk(PackageInfo packageInfo) {
+        File apk = new File(packageInfo.applicationInfo.publicSourceDir);
+        if (apk.isDirectory()) {
+            FilenameFilter filter = new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    return name.endsWith(".apk");
+                }
+            };
+            File[] files = apk.listFiles(filter);
+            if (files == null) {
+                String msg = packageInfo.packageName + " sourceDir has no APKs: " + apk.getAbsolutePath();
+                Utils.debugLog(TAG, msg);
+                ACRA.getErrorReporter().handleException(new IllegalArgumentException(msg), false);
+                return null;
+            }
+            apk = files[0];
+        }
+
+        return apk;
+    }
+
     @Override
     protected void onHandleIntent(Intent intent) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
@@ -201,23 +224,9 @@ public class InstalledAppProviderService extends IntentService {
             PackageInfo packageInfo = getPackageInfo(intent, packageName);
             if (packageInfo != null) {
                 Log.i(TAG, "Marking " + packageName + " as installed");
-                File apk = new File(packageInfo.applicationInfo.publicSourceDir);
-                if (apk.isDirectory()) {
-                    FilenameFilter filter = new FilenameFilter() {
-                        @Override
-                        public boolean accept(File dir, String name) {
-                            return name.endsWith(".apk");
-                        }
-                    };
-                    File[] files = apk.listFiles(filter);
-                    if (files == null) {
-                        String msg = packageName + " sourceDir has no APKs: "
-                                + apk.getAbsolutePath();
-                        Utils.debugLog(TAG, msg);
-                        ACRA.getErrorReporter().handleException(new IllegalArgumentException(msg), false);
-                        return;
-                    }
-                    apk = files[0];
+                File apk = getPathToInstalledApk(packageInfo);
+                if (apk == null) {
+                    return;
                 }
                 if (apk.exists() && apk.canRead()) {
                     try {

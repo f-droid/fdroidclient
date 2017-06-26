@@ -7,10 +7,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.installer.InstallManagerService;
 
@@ -75,29 +77,45 @@ public class AppUpdateStatusService extends IntentService {
         }
     }
 
+    /**
+     * Verifies that {@param apkPath} is a valid apk which the user intends to install.
+     * If it is corrupted to the point where {@link PackageManager} can't read it, doesn't match the hash of any apk
+     * we know about in our database, is not pending install, or is already installed, then it will return null.
+     */
     @Nullable
     private Apk processDownloadedApk(File apkPath) {
         Utils.debugLog(TAG, "Checking " + apkPath);
         PackageInfo downloadedInfo = getPackageManager().getPackageArchiveInfo(apkPath.getAbsolutePath(), PackageManager.GET_GIDS);
         if (downloadedInfo == null) {
-            Utils.debugLog(TAG, "Skipping " + apkPath + " because PackageManager was unable to read it.");
+            Log.i(TAG, "Skipping " + apkPath + " because PackageManager was unable to read it.");
             return null;
         }
 
         Utils.debugLog(TAG, "Found package for " + downloadedInfo.packageName + ", checking its hash to see if it downloaded correctly.");
         Apk downloadedApk = findApkMatchingHash(apkPath);
         if (downloadedApk ==  null) {
-            Utils.debugLog(TAG, "Either the apk wasn't downloaded fully, or the repo it came from has been disabled. Either way, not notifying the user about it.");
+            Log.i(TAG, "Either the apk wasn't downloaded fully, or the repo it came from has been disabled. Either way, not notifying the user about it.");
             return null;
         }
 
-        if (AppUpdateStatusManager.getInstance(this).isPendingInstall(downloadedApk.hash)) {
-            Utils.debugLog(TAG, downloadedApk.packageName + " is pending install, so we need to notify the user about installing it.");
-            return downloadedApk;
-        } else {
-            Utils.debugLog(TAG, downloadedApk.packageName + " is NOT pending install, probably just left over from a previous install.");
+        if (!AppUpdateStatusManager.getInstance(this).isPendingInstall(downloadedApk.hash)) {
+            Log.i(TAG, downloadedApk.packageName + " is NOT pending install, probably just left over from a previous install.");
             return null;
         }
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(downloadedApk.packageName, 0);
+            File pathToInstalled = InstalledAppProviderService.getPathToInstalledApk(info);
+            if (pathToInstalled != null && pathToInstalled.canRead() &&
+                    TextUtils.equals(Utils.getBinaryHash(pathToInstalled, "sha256"), downloadedApk.hash)) {
+                Log.i(TAG, downloadedApk.packageName + " is pending install, but we already have the correct version installed.");
+                AppUpdateStatusManager.getInstance(this).markAsNoLongerPendingInstall(downloadedApk.getUrl());
+                return null;
+            }
+        } catch (PackageManager.NameNotFoundException ignored) { }
+
+        Utils.debugLog(TAG, downloadedApk.packageName + " is pending install, so we need to notify the user about installing it.");
+        return downloadedApk;
     }
 
     /**
