@@ -15,7 +15,7 @@ public class AppListItemState {
     private final Context context;
     private final App app;
     private CharSequence mainText = null;
-    private boolean showDownloadReady = false;
+    private CharSequence appInstallStatusText = null;
     private CharSequence actionButtonText = null;
     private int progressCurrent = -1;
     private int progressMax = -1;
@@ -30,13 +30,13 @@ public class AppListItemState {
         return this;
     }
 
-    public AppListItemState setShowDownloadReady() {
-        this.showDownloadReady = true;
+    public AppListItemState showActionButton(@NonNull CharSequence label) {
+        actionButtonText = label;
         return this;
     }
 
-    public AppListItemState showActionButton(@NonNull CharSequence label) {
-        actionButtonText = label;
+    public AppListItemState setAppInstallStatusText(@NonNull CharSequence text) {
+        appInstallStatusText = text;
         return this;
     }
 
@@ -58,10 +58,6 @@ public class AppListItemState {
         boolean shouldAllow = app.compatible && !app.isFiltered();
 
         return installable && shouldAllow && !shouldShowActionButton() && !showProgress();
-    }
-
-    public boolean shouldShowDownloadReady() {
-        return showDownloadReady;
     }
 
     public boolean shouldShowActionButton() {
@@ -86,6 +82,14 @@ public class AppListItemState {
 
     public int getProgressMax() {
         return progressMax;
+    }
+
+    public boolean shouldShowAppInstallStatusText() {
+        return appInstallStatusText != null;
+    }
+
+    public CharSequence getAppInstallStatusText() {
+        return appInstallStatusText;
     }
 
     /**

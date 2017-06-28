@@ -66,7 +66,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     private final TextView status;
 
     @Nullable
-    private final TextView downloadReady;
+    private final TextView appInstallStatus;
 
     @Nullable
     private final TextView installedVersion;
@@ -125,7 +125,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         icon = (ImageView) itemView.findViewById(R.id.icon);
         name = (TextView) itemView.findViewById(R.id.app_name);
         status = (TextView) itemView.findViewById(R.id.status);
-        downloadReady = (TextView) itemView.findViewById(R.id.download_ready);
+        appInstallStatus = (TextView) itemView.findViewById(R.id.app_install_status);
         installedVersion = (TextView) itemView.findViewById(R.id.installed_version);
         ignoredStatus = (TextView) itemView.findViewById(R.id.ignored_status);
         progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar);
@@ -207,8 +207,13 @@ public class AppListItemController extends RecyclerView.ViewHolder {
 
         name.setText(viewState.getMainText());
 
-        if (downloadReady != null) {
-            downloadReady.setVisibility(viewState.shouldShowActionButton() ? View.VISIBLE : View.GONE);
+        if (appInstallStatus != null) {
+            if (viewState.shouldShowAppInstallStatusText()) {
+                appInstallStatus.setVisibility(View.VISIBLE);
+                appInstallStatus.setText(viewState.getAppInstallStatusText());
+            } else {
+                appInstallStatus.setVisibility(View.GONE);
+            }
         }
 
         if (actionButton != null) {
@@ -290,7 +295,9 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         CharSequence mainText = activity.getString(
                 R.string.app_list__name__successfully_installed, app.name);
 
-        AppListItemState state = new AppListItemState(activity, app).setMainText(mainText);
+        AppListItemState state = new AppListItemState(activity, app)
+                .setMainText(mainText)
+                .setAppInstallStatusText(activity.getString(R.string.notification_content_single_installed));
 
         if (activity.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
             state.showActionButton(activity.getString(R.string.menu_launch));
@@ -317,7 +324,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         return new AppListItemState(activity, app)
                 .setMainText(app.name)
                 .showActionButton(activity.getString(actionButtonLabel))
-                .setShowDownloadReady();
+                .setAppInstallStatusText(activity.getString(R.string.app_list_download_ready));
     }
 
     private AppListItemState getViewStateDefault(@NonNull App app) {
