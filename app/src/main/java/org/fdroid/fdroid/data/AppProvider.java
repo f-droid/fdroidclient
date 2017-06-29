@@ -807,7 +807,13 @@ public class AppProvider extends FDroidProvider {
         db().execSQL(query, new String[] {String.valueOf(repoId)});
 
         AppQuerySelection selection = new AppQuerySelection(where, whereArgs).add(queryRepo(repoId));
-        return db().delete(getTableName(), selection.getSelection(), selection.getArgs());
+        int result = db().delete(getTableName(), selection.getSelection(), selection.getArgs());
+
+        getContext().getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
+        getContext().getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+        getContext().getContentResolver().notifyChange(CategoryProvider.getContentUri(), null);
+
+        return result;
     }
 
     @Override

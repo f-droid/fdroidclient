@@ -121,8 +121,6 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             emptyState.setVisibility(View.GONE);
             categoriesList.setVisibility(View.VISIBLE);
         }
-
-        cursor.close();
     }
 
     @Override
