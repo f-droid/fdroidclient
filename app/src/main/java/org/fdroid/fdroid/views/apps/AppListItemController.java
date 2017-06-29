@@ -47,11 +47,11 @@ import java.util.Iterator;
 
 // TODO: Support cancelling of downloads by tapping the install button a second time.
 @SuppressWarnings("LineLength")
-public class AppListItemController extends RecyclerView.ViewHolder {
+public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
     private static final String TAG = "AppListItemController";
 
-    private final Activity activity;
+    protected final Activity activity;
 
     @NonNull
     private final ImageView icon;
@@ -66,13 +66,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     private final TextView status;
 
     @Nullable
-    private final TextView appInstallStatus;
-
-    @Nullable
-    private final TextView installedVersion;
-
-    @Nullable
-    private final TextView ignoredStatus;
+    private final TextView secondaryStatus;
 
     @Nullable
     private final ProgressBar progressBar;
@@ -125,9 +119,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         icon = (ImageView) itemView.findViewById(R.id.icon);
         name = (TextView) itemView.findViewById(R.id.app_name);
         status = (TextView) itemView.findViewById(R.id.status);
-        appInstallStatus = (TextView) itemView.findViewById(R.id.app_install_status);
-        installedVersion = (TextView) itemView.findViewById(R.id.installed_version);
-        ignoredStatus = (TextView) itemView.findViewById(R.id.ignored_status);
+        secondaryStatus = (TextView) itemView.findViewById(R.id.secondary_status);
         progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar);
         cancelButton = (ImageButton) itemView.findViewById(R.id.cancel_button);
         actionButton = (Button) itemView.findViewById(R.id.action_button);
@@ -179,7 +171,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     }
 
     @NonNull
-    private AppListItemState getCurrentViewState(
+    protected AppListItemState getCurrentViewState(
             @NonNull App app, @Nullable AppUpdateStatusManager.AppUpdateStatus appStatus) {
         if (appStatus == null) {
             return getViewStateDefault(app);
@@ -206,15 +198,6 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         AppListItemState viewState = getCurrentViewState(app, appStatus);
 
         name.setText(viewState.getMainText());
-
-        if (appInstallStatus != null) {
-            if (viewState.shouldShowAppInstallStatusText()) {
-                appInstallStatus.setVisibility(View.VISIBLE);
-                appInstallStatus.setText(viewState.getAppInstallStatusText());
-            } else {
-                appInstallStatus.setVisibility(View.GONE);
-            }
-        }
 
         if (actionButton != null) {
             if (viewState.shouldShowActionButton()) {
@@ -265,11 +248,6 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             }
         }
 
-        if (installedVersion != null) {
-            installedVersion.setVisibility(View.VISIBLE);
-            installedVersion.setText(viewState.getInstalledVersionText());
-        }
-
         if (status != null) {
             CharSequence statusText = viewState.getStatusText();
             if (statusText == null) {
@@ -280,24 +258,24 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             }
         }
 
-        if (ignoredStatus != null) {
-            CharSequence ignoredStatusText = viewState.getIgnoredStatusText();
-            if (ignoredStatusText == null) {
-                ignoredStatus.setVisibility(View.GONE);
+        if (secondaryStatus != null) {
+            CharSequence statusText = viewState.getSecondaryStatusText();
+            if (statusText == null) {
+                secondaryStatus.setVisibility(View.GONE);
             } else {
-                ignoredStatus.setVisibility(View.VISIBLE);
-                ignoredStatus.setText(ignoredStatusText);
+                secondaryStatus.setVisibility(View.VISIBLE);
+                secondaryStatus.setText(statusText);
             }
         }
     }
 
-    private AppListItemState getViewStateInstalled(@NonNull App app) {
+    protected AppListItemState getViewStateInstalled(@NonNull App app) {
         CharSequence mainText = activity.getString(
                 R.string.app_list__name__successfully_installed, app.name);
 
-        AppListItemState state = new AppListItemState(activity, app)
+        AppListItemState state = new AppListItemState(app)
                 .setMainText(mainText)
-                .setAppInstallStatusText(activity.getString(R.string.notification_content_single_installed));
+                .setStatusText(activity.getString(R.string.notification_content_single_installed));
 
         if (activity.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
             state.showActionButton(activity.getString(R.string.menu_launch));
@@ -306,29 +284,29 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         return state;
     }
 
-    private AppListItemState getViewStateDownloading(
+    protected AppListItemState getViewStateDownloading(
             @NonNull App app, @NonNull AppUpdateStatusManager.AppUpdateStatus currentStatus) {
         CharSequence mainText = activity.getString(
                 R.string.app_list__name__downloading_in_progress, app.name);
 
-        return new AppListItemState(activity, app)
+        return new AppListItemState(app)
                 .setMainText(mainText)
                 .setProgress(currentStatus.progressCurrent, currentStatus.progressMax);
     }
 
-    private AppListItemState getViewStateReadyToInstall(@NonNull App app) {
+    protected AppListItemState getViewStateReadyToInstall(@NonNull App app) {
         int actionButtonLabel = app.isInstalled()
                 ? R.string.app__install_downloaded_update
                 : R.string.menu_install;
 
-        return new AppListItemState(activity, app)
+        return new AppListItemState(app)
                 .setMainText(app.name)
                 .showActionButton(activity.getString(actionButtonLabel))
-                .setAppInstallStatusText(activity.getString(R.string.app_list_download_ready));
+                .setStatusText(activity.getString(R.string.app_list_download_ready));
     }
 
-    private AppListItemState getViewStateDefault(@NonNull App app) {
-        return new AppListItemState(activity, app);
+    protected AppListItemState getViewStateDefault(@NonNull App app) {
+        return new AppListItemState(app);
     }
 
     @SuppressWarnings("FieldCanBeLocal")

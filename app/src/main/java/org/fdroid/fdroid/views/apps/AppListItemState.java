@@ -1,48 +1,57 @@
 package org.fdroid.fdroid.views.apps;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.TextView;
 
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppPrefs;
 
+/**
+ * A dumb model which is used to specify what should/should not be shown  in an {@link AppListItemController}.
+ * @see AppListItemController and its subclasses.
+ */
 public class AppListItemState {
-    private final Context context;
     private final App app;
     private CharSequence mainText = null;
-    private CharSequence appInstallStatusText = null;
     private CharSequence actionButtonText = null;
+    private CharSequence statusText = null;
+    private CharSequence secondaryStatusText = null;
     private int progressCurrent = -1;
     private int progressMax = -1;
+    private boolean showInstallButton;
 
-    public AppListItemState(Context context, @NonNull App app) {
+    public AppListItemState(@NonNull App app) {
         this.app = app;
-        this.context = context;
     }
 
-    public AppListItemState setMainText(@NonNull CharSequence mainText) {
+    public AppListItemState setMainText(CharSequence mainText) {
         this.mainText = mainText;
         return this;
     }
 
-    public AppListItemState showActionButton(@NonNull CharSequence label) {
+    public AppListItemState showActionButton(CharSequence label) {
         actionButtonText = label;
         return this;
     }
 
-    public AppListItemState setAppInstallStatusText(@NonNull CharSequence text) {
-        appInstallStatusText = text;
+    public AppListItemState setStatusText(CharSequence text) {
+        this.statusText = text;
+        return this;
+    }
+
+    public AppListItemState setSecondaryStatusText(CharSequence text) {
+        this.secondaryStatusText = text;
         return this;
     }
 
     public AppListItemState setProgress(int progressCurrent, int progressMax) {
         this.progressCurrent = progressCurrent;
         this.progressMax = progressMax;
+        return this;
+    }
+
+    public AppListItemState setShowInstallButton(boolean show) {
+        this.showInstallButton = show;
         return this;
     }
 
@@ -54,10 +63,7 @@ public class AppListItemState {
     }
 
     public boolean shouldShowInstall() {
-        boolean installable = app.canAndWantToUpdate(context) || !app.isInstalled();
-        boolean shouldAllow = app.compatible && !app.isFiltered();
-
-        return installable && shouldAllow && !shouldShowActionButton() && !showProgress();
+        return showInstallButton;
     }
 
     public boolean shouldShowActionButton() {
@@ -84,62 +90,13 @@ public class AppListItemState {
         return progressMax;
     }
 
-    public boolean shouldShowAppInstallStatusText() {
-        return appInstallStatusText != null;
-    }
-
-    public CharSequence getAppInstallStatusText() {
-        return appInstallStatusText;
-    }
-
-    /**
-     * Sets the text/visibility of the {@link R.id#status} {@link TextView} based on whether the app:
-     *  * Is compatible with the users device
-     *  * Is installed
-     *  * Can be updated
-     */
     @Nullable
     public CharSequence getStatusText() {
-        String statusText = null;
-        if (!app.compatible) {
-            statusText = context.getString(R.string.app_incompatible);
-        } else if (app.isInstalled()) {
-            if (app.canAndWantToUpdate(context)) {
-                statusText = context.getString(R.string.app_version_x_available, app.getSuggestedVersionName());
-            } else {
-                statusText = context.getString(R.string.app_version_x_installed, app.installedVersionName);
-            }
-        }
         return statusText;
     }
 
-    /**
-     * Shows the currently installed version name, and whether or not it is the recommended version.
-     */
-    public CharSequence getInstalledVersionText() {
-        int res = (app.suggestedVersionCode == app.installedVersionCode)
-                ? R.string.app_recommended_version_installed
-                : R.string.app_version_x_installed;
-
-        return context.getString(res, app.installedVersionName);
-    }
-
-    /**
-     * Shows whether the user has previously asked to ignore updates for this app entirely, or for a
-     * specific version of this app. Binds to the {@link R.id#ignored_status} {@link TextView}.
-     */
     @Nullable
-    public CharSequence getIgnoredStatusText() {
-        AppPrefs prefs = app.getPrefs(context);
-        if (prefs.ignoreAllUpdates) {
-            return context.getString(R.string.installed_app__updates_ignored);
-        } else if (prefs.ignoreThisUpdate > 0 && prefs.ignoreThisUpdate == app.suggestedVersionCode) {
-            return context.getString(
-                    R.string.installed_app__updates_ignored_for_suggested_version,
-                    app.getSuggestedVersionName());
-        } else {
-            return null;
-        }
+    public CharSequence getSecondaryStatusText() {
+        return secondaryStatusText;
     }
-
 }

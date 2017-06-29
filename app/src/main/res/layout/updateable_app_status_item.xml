@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.333" />
 
     <TextView
-        android:id="@+id/app_install_status"
+        android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="@string/app_list_download_ready"

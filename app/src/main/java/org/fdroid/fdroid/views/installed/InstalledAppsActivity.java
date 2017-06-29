@@ -19,10 +19,8 @@
 
 package org.fdroid.fdroid.views.installed;
 
-import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -31,15 +29,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.views.apps.AppListItemController;
 
 public class InstalledAppsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -105,52 +100,4 @@ public class InstalledAppsActivity extends AppCompatActivity implements LoaderMa
         adapter.setApps(null);
     }
 
-    static class InstalledAppListAdapter extends RecyclerView.Adapter<AppListItemController> {
-
-        private final Activity activity;
-
-        @Nullable
-        private Cursor cursor;
-
-        InstalledAppListAdapter(Activity activity) {
-            this.activity = activity;
-            setHasStableIds(true);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            if (cursor == null) {
-                return 0;
-            }
-
-            cursor.moveToPosition(position);
-            return cursor.getLong(cursor.getColumnIndex(Schema.AppMetadataTable.Cols.ROW_ID));
-        }
-
-        @Override
-        public AppListItemController onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = activity.getLayoutInflater().inflate(R.layout.installed_app_list_item, parent, false);
-            return new AppListItemController(activity, view);
-        }
-
-        @Override
-        public void onBindViewHolder(AppListItemController holder, int position) {
-            if (cursor == null) {
-                return;
-            }
-
-            cursor.moveToPosition(position);
-            holder.bindModel(new App(cursor));
-        }
-
-        @Override
-        public int getItemCount() {
-            return cursor == null ? 0 : cursor.getCount();
-        }
-
-        public void setApps(@Nullable Cursor cursor) {
-            this.cursor = cursor;
-            notifyDataSetChanged();
-        }
-    }
 }
