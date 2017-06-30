@@ -478,7 +478,7 @@ public class AppDetailsRecyclerViewAdapter
             if (callbacks.isAppDownloading()) {
                 buttonPrimaryView.setText(R.string.downloading);
                 buttonPrimaryView.setEnabled(false);
-            } else if (!app.isInstalled() && app.suggestedVersionCode > 0 && versions.size() > 0) {
+            } else if (!app.isInstalled() && suggestedApk != null) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
                 callbacks.disableAndroidBeam();
                 // Set Install button and hide second button
@@ -487,7 +487,7 @@ public class AppDetailsRecyclerViewAdapter
                 buttonPrimaryView.setEnabled(true);
             } else if (app.isInstalled()) {
                 callbacks.enableAndroidBeam();
-                if (app.canAndWantToUpdate(context)) {
+                if (app.canAndWantToUpdate(context) && suggestedApk != null) {
                     buttonPrimaryView.setText(R.string.menu_upgrade);
                     buttonPrimaryView.setOnClickListener(onUpgradeClickListener);
                 } else {
@@ -819,9 +819,12 @@ public class AppDetailsRecyclerViewAdapter
         public void bindModel(final Apk apk) {
             java.text.DateFormat df = DateFormat.getDateFormat(context);
 
+            boolean isSuggested = apk.versionCode == app.suggestedVersionCode &&
+                    TextUtils.equals(apk.sig, app.getMostAppropriateSignature());
+
             version.setText(context.getString(R.string.version)
                     + " " + apk.versionName
-                    + (apk.versionCode == app.suggestedVersionCode ? "  ☆" : ""));
+                    + (isSuggested ? "  ☆" : ""));
 
             status.setText(getInstalledStatus(apk));
 
