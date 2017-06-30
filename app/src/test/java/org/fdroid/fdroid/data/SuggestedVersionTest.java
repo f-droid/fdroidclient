@@ -26,6 +26,14 @@ public class SuggestedVersionTest extends FDroidProviderTest {
     public void setup() {
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
         Preferences.setup(context);
+
+        // This is what the FDroidApp does when this preference is changed. Need to also do this under testing.
+        Preferences.get().registerUnstableUpdatesChangeListener(new Preferences.ChangeListener() {
+            @Override
+            public void onPreferenceChange() {
+                AppProvider.Helper.calcSuggestedApks(context);
+            }
+        });
     }
 
     @After
@@ -40,6 +48,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         TestUtils.insertApk(context, singleApp, 1, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, singleApp, 2, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, singleApp, 3, TestUtils.FDROID_SIG);
+        TestUtils.updateDbAfterInserting(context);
         assertSuggested("single.app", 2);
 
         // By enabling unstable updates, the "upstreamVersionCode" should get ignored, and we should
@@ -59,6 +68,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         TestUtils.insertApk(context, singleApp, 3, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, singleApp, 4, TestUtils.UPSTREAM_SIG);
         TestUtils.insertApk(context, singleApp, 5, TestUtils.UPSTREAM_SIG);
+        TestUtils.updateDbAfterInserting(context);
 
         // Given we aren't installed yet, we don't care which signature.
         // Just get as close to upstreamVersionCode as possible.
@@ -72,6 +82,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         // This adds the "upstreamVersionCode" version of the app, but signed by f-droid.
         TestUtils.insertApk(context, singleApp, 4, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, singleApp, 5, TestUtils.FDROID_SIG);
+        TestUtils.updateDbAfterInserting(context);
         assertSuggested("single.app", 4, TestUtils.FDROID_SIG, 1);
 
         // Version 5 from F-Droid is not the "upstreamVersionCode", but with beta updates it should
@@ -99,6 +110,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         TestUtils.insertApk(context, thirdPartyApp, 4, TestUtils.THIRD_PARTY_SIG);
         TestUtils.insertApk(context, thirdPartyApp, 5, TestUtils.THIRD_PARTY_SIG);
         TestUtils.insertApk(context, thirdPartyApp, 6, TestUtils.THIRD_PARTY_SIG);
+        TestUtils.updateDbAfterInserting(context);
 
         // Given we aren't installed yet, we don't care which signature or even which repo.
         // Just get as close to upstreamVersionCode as possible.
@@ -112,6 +124,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         // This adds the "upstreamVersionCode" version of the app, but signed by f-droid.
         TestUtils.insertApk(context, mainApp, 4, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, mainApp, 5, TestUtils.FDROID_SIG);
+        TestUtils.updateDbAfterInserting(context);
         assertSuggested("single.app", 4, TestUtils.FDROID_SIG, 1);
 
         // Uninstalling the F-Droid build and installing v3 of the third party means we can now go
@@ -146,6 +159,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
         TestUtils.insertApk(context, mainApp, 5, TestUtils.UPSTREAM_SIG);
         TestUtils.insertApk(context, mainApp, 6, TestUtils.UPSTREAM_SIG);
         TestUtils.insertApk(context, mainApp, 7, TestUtils.UPSTREAM_SIG);
+        TestUtils.updateDbAfterInserting(context);
 
         // If the user was to manually install the app, they should be suggested version 7 from upstream...
         assertSuggested("single.app", 7);
@@ -180,9 +194,6 @@ public class SuggestedVersionTest extends FDroidProviderTest {
      * apk is not checked.
      */
     public void assertSuggested(String packageName, int suggestedVersion, String installedSig, int installedVersion) {
-        AppProvider.Helper.calcSuggestedApks(context);
-        AppProvider.Helper.recalculatePreferredMetadata(context);
-
         App suggestedApp = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), packageName);
         assertEquals("Suggested version on App", suggestedVersion, suggestedApp.suggestedVersionCode);
         assertEquals("Installed signature on App", installedSig, suggestedApp.installedSig);

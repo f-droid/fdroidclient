@@ -221,10 +221,17 @@ public class InstalledAppProvider extends FDroidProvider {
             throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
         }
 
+        String packageName = uri.getLastPathSegment();
         QuerySelection query = new QuerySelection(where, whereArgs);
-        query = query.add(queryAppSubQuery(uri.getLastPathSegment()));
+        query = query.add(queryAppSubQuery(packageName));
 
-        return db().delete(getTableName(), query.getSelection(), query.getArgs());
+        Utils.debugLog(TAG, "Deleting " + packageName);
+        int count = db().delete(getTableName(), query.getSelection(), query.getArgs());
+
+        Utils.debugLog(TAG, "Requesting the suggested apk get recalculated for  " + packageName);
+        AppProvider.Helper.calcSuggestedApk(getContext(), packageName);
+
+        return count;
     }
 
     @Override
@@ -234,15 +241,23 @@ public class InstalledAppProvider extends FDroidProvider {
             throw new UnsupportedOperationException("Insert not supported for " + uri + ".");
         }
 
-        if (values.containsKey(Cols.Package.NAME)) {
-            String packageName = values.getAsString(Cols.Package.NAME);
-            long packageId = PackageProvider.Helper.ensureExists(getContext(), packageName);
-            values.remove(Cols.Package.NAME);
-            values.put(Cols.PACKAGE_ID, packageId);
+        if (!values.containsKey(Cols.Package.NAME)) {
+            throw new IllegalStateException("Package name not provided to InstalledAppProvider");
         }
 
+        String packageName = values.getAsString(Cols.Package.NAME);
+        long packageId = PackageProvider.Helper.ensureExists(getContext(), packageName);
+        values.remove(Cols.Package.NAME);
+        values.put(Cols.PACKAGE_ID, packageId);
+
         verifyVersionNameNotNull(values);
+
+        Utils.debugLog(TAG, "Inserting/updating " + packageName);
         db().replaceOrThrow(getTableName(), null, values);
+
+        Utils.debugLog(TAG, "Requesting the suggested apk get recalculated for  " + packageName);
+        AppProvider.Helper.calcSuggestedApk(getContext(), packageName);
+
         return getAppUri(values.getAsString(Cols.Package.NAME));
     }
 

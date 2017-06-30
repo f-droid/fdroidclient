@@ -8,6 +8,7 @@ import android.content.ContextWrapper;
 import android.content.pm.ProviderInfo;
 
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.RepoProviderTest;
@@ -156,5 +157,16 @@ public class TestUtils {
                 return resolver;
             }
         };
+    }
+
+    /**
+     * Normally apps/apks are only added to the database in response to a repo update.
+     * At the end of a repo update, the {@link AppProvider} updates the suggested apks and
+     * recalculates the preferred metadata for each app. Because we are adding apps/apks
+     * directly to the database, we need to simulate this update after inserting stuff.
+     */
+    public static void updateDbAfterInserting(Context context) {
+        AppProvider.Helper.calcSuggestedApks(context);
+        AppProvider.Helper.recalculatePreferredMetadata(context);
     }
 }

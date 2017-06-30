@@ -117,6 +117,11 @@ public class AppProvider extends FDroidProvider {
             return app;
         }
 
+        public static void calcSuggestedApk(Context context, String packageName) {
+            Uri uri = Uri.withAppendedPath(calcSuggestedApksUri(), packageName);
+            context.getContentResolver().update(uri, null, null, null);
+        }
+
         public static void calcSuggestedApks(Context context) {
             context.getContentResolver().update(calcSuggestedApksUri(), null, null, null);
         }
@@ -385,6 +390,7 @@ public class AppProvider extends FDroidProvider {
     static {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
         MATCHER.addURI(getAuthority(), PATH_CALC_SUGGESTED_APKS, CALC_SUGGESTED_APKS);
+        MATCHER.addURI(getAuthority(), PATH_CALC_SUGGESTED_APKS + "/*", CALC_SUGGESTED_APKS);
         MATCHER.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
         MATCHER.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
         MATCHER.addURI(getAuthority(), PATH_SEARCH + "/*/*", SEARCH_TEXT_AND_CATEGORIES);
@@ -879,7 +885,13 @@ public class AppProvider extends FDroidProvider {
             throw new UnsupportedOperationException("Update not supported for " + uri + ".");
         }
 
-        updateSuggestedApks();
+        List<String> segments = uri.getPathSegments();
+        if (segments.size() > 1) {
+            String packageName = segments.get(1);
+            updateSuggestedApk(packageName);
+        } else {
+            updateSuggestedApks();
+        }
         getContext().getContentResolver().notifyChange(getCanUpdateUri(), null);
         return 0;
     }
@@ -887,8 +899,8 @@ public class AppProvider extends FDroidProvider {
     protected void updateAllAppDetails() {
         updatePreferredMetadata();
         updateCompatibleFlags();
-        updateSuggestedFromUpstream();
-        updateSuggestedFromLatest();
+        updateSuggestedFromUpstream(null);
+        updateSuggestedFromLatest(null);
         updateIconUrls();
     }
 
@@ -909,8 +921,13 @@ public class AppProvider extends FDroidProvider {
      * {@link android.app.IntentService} as described in https://gitlab.com/fdroid/fdroidclient/issues/520.
      */
     protected void updateSuggestedApks() {
-        updateSuggestedFromUpstream();
-        updateSuggestedFromLatest();
+        updateSuggestedFromUpstream(null);
+        updateSuggestedFromLatest(null);
+    }
+
+    protected void updateSuggestedApk(String packageName) {
+        updateSuggestedFromUpstream(packageName);
+        updateSuggestedFromLatest(packageName);
     }
 
     private void updatePreferredMetadata() {
@@ -964,9 +981,9 @@ public class AppProvider extends FDroidProvider {
      * If the app is installed, then all apks signed by a different certificate are
      * ignored for the purpose of this calculation.
      *
-     * @see #updateSuggestedFromLatest()
+     * @see #updateSuggestedFromLatest(String)
      */
-    private void updateSuggestedFromUpstream() {
+    private void updateSuggestedFromUpstream(@Nullable String packageName) {
         Utils.debugLog(TAG, "Calculating suggested versions for all NON-INSTALLED apps which specify an upstream version code.");
 
         final String apk = getApkTableName();
@@ -975,6 +992,14 @@ public class AppProvider extends FDroidProvider {
 
         final boolean unstableUpdates = Preferences.get().getUnstableUpdates();
         String restrictToStable = unstableUpdates ? "" : (apk + "." + ApkTable.Cols.VERSION_CODE + " <= " + app + "." + Cols.UPSTREAM_VERSION_CODE + " AND ");
+
+        String restrictToApp = "";
+        String[] args = null;
+
+        if (packageName != null) {
+            restrictToApp = " AND " + app + "." + Cols.PACKAGE_ID + " = (" + getPackageIdFromPackageNameQuery() + ") ";
+            args = new String[]{packageName};
+        }
 
         // The join onto `appForThisApk` is to ensure that the MAX(apk.versionCode) is chosen from
         // all apps regardless of repo. If we joined directly onto the outer `app` table we are
@@ -1001,9 +1026,9 @@ public class AppProvider extends FDroidProvider {
                     apk + "." + ApkTable.Cols.SIGNATURE + " = COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
                     restrictToStable +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
-                " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 ";
+                " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 " + restrictToApp;
 
-        LoggingQuery.execSQL(db(), updateSql);
+        LoggingQuery.execSQL(db(), updateSql, args);
     }
 
     /**
@@ -1014,14 +1039,27 @@ public class AppProvider extends FDroidProvider {
      * out from the upstream vercode. In such a case, fall back to the simpler
      * algorithm as if upstreamVercode was 0.
      *
-     * @see #updateSuggestedFromUpstream()
+     * @see #updateSuggestedFromUpstream(String)
      */
-    private void updateSuggestedFromLatest() {
+    private void updateSuggestedFromLatest(@Nullable String packageName) {
         Utils.debugLog(TAG, "Calculating suggested versions for all apps which don't specify an upstream version code.");
 
         final String apk = getApkTableName();
         final String app = getTableName();
         final String installed = InstalledAppTable.NAME;
+
+        final String restrictToApps;
+        final String[] args;
+
+        if (packageName == null) {
+            restrictToApps = " COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
+            args = null;
+        } else {
+            // Don't update an app with an upstream version code, because that would have been updated
+            // by updateSuggestedFromUpdate(packageName).
+            restrictToApps = " COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 AND " + app + "." + Cols.PACKAGE_ID + " = (" + getPackageIdFromPackageNameQuery() + ") ";
+            args = new String[]{packageName};
+        }
 
         String updateSql =
                 "UPDATE " + app + " SET " + Cols.SUGGESTED_VERSION_CODE + " = ( " +
@@ -1033,9 +1071,9 @@ public class AppProvider extends FDroidProvider {
                     app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
                     apk + "." + ApkTable.Cols.SIGNATURE + " = COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
-                " WHERE COALESCE(" + Cols.UPSTREAM_VERSION_CODE + ", 0) = 0 OR " + Cols.SUGGESTED_VERSION_CODE + " IS NULL ";
+                " WHERE " + restrictToApps;
 
-        LoggingQuery.execSQL(db(), updateSql);
+        LoggingQuery.execSQL(db(), updateSql, args);
     }
 
     private void updateIconUrls() {

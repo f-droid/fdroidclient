@@ -25,6 +25,14 @@ public class PreferredSignatureTest extends FDroidProviderTest {
     public void setup() {
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
         Preferences.setup(context);
+
+        // This is what the FDroidApp does when this preference is changed. Need to also do this under testing.
+        Preferences.get().registerUnstableUpdatesChangeListener(new Preferences.ChangeListener() {
+            @Override
+            public void onPreferenceChange() {
+                AppProvider.Helper.calcSuggestedApks(context);
+            }
+        });
     }
 
     @After
@@ -45,6 +53,8 @@ public class PreferredSignatureTest extends FDroidProviderTest {
 
         TestUtils.insertApk(context, app, 2100, TestUtils.UPSTREAM_SIG); // 2.0
         TestUtils.insertApk(context, app, 3100, TestUtils.UPSTREAM_SIG); // 3.0
+
+        TestUtils.updateDbAfterInserting(context);
 
         return app;
     }
@@ -70,6 +80,8 @@ public class PreferredSignatureTest extends FDroidProviderTest {
         TestUtils.insertApk(context, app, 5002, TestUtils.THIRD_PARTY_SIG); // 5.0-rc2
         TestUtils.insertApk(context, app, 5003, TestUtils.THIRD_PARTY_SIG); // 5.0-rc3
 
+        TestUtils.updateDbAfterInserting(context);
+
         return app;
     }
 
@@ -83,6 +95,8 @@ public class PreferredSignatureTest extends FDroidProviderTest {
         TestUtils.insertApk(context, app, 2100, TestUtils.UPSTREAM_SIG);
         TestUtils.insertApk(context, app, 3100, TestUtils.UPSTREAM_SIG);
         TestUtils.insertApk(context, app, 4100, TestUtils.UPSTREAM_SIG);
+
+        TestUtils.updateDbAfterInserting(context);
 
         return app;
     }
@@ -265,9 +279,6 @@ public class PreferredSignatureTest extends FDroidProviderTest {
     }
 
     private void assertSuggested(Context context, int suggestedVersion, String suggestedSig) {
-        AppProvider.Helper.calcSuggestedApks(context);
-        AppProvider.Helper.recalculatePreferredMetadata(context);
-
         App suggestedApp = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(), PACKAGE_NAME);
         assertEquals("Suggested version on App", suggestedVersion, suggestedApp.suggestedVersionCode);
 
