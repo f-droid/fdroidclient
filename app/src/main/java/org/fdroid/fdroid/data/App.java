@@ -1098,4 +1098,24 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             return new App[size];
         }
     };
+
+    /**
+     * Choose the signature which we should encourage the user to install.
+     * Usually, we want the {@link #preferredSigner} rather than any random signature.
+     * However, if the app is installed, then we override this and instead want to only encourage
+     * the user to try and install versions with that signature (because thats all the OS will let
+     * them do).
+     * TODO: I don't think preferredSigner should ever be null, because if an app has apks then
+     * we should have chosen the first and used that. If so, then we should change to @NonNull and
+     * throw an exception if it is null.
+     */
+    @Nullable
+    public String getMostAppropriateSignature() {
+        if (!TextUtils.isEmpty(installedSig)) {
+            return installedSig;
+        } else if (!TextUtils.isEmpty(preferredSigner)) {
+            return preferredSigner;
+        }
+        return null;
+    }
 }

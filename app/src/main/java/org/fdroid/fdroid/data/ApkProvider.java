@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
@@ -84,14 +83,7 @@ public class ApkProvider extends FDroidProvider {
          * </ul>
          */
         public static Apk findSuggestedApk(Context context, App app) {
-            String preferredSignature = null;
-            if (!TextUtils.isEmpty(app.installedSig)) {
-                preferredSignature = app.installedSig;
-            } else if (!TextUtils.isEmpty(app.preferredSigner)) {
-                preferredSignature = app.preferredSigner;
-            }
-
-            return findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode, preferredSignature);
+            return findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode, app.getMostAppropriateSignature());
         }
 
         public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode) {

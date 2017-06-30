@@ -178,9 +178,10 @@ public class AppDetailsRecyclerViewAdapter
 
     private Apk getSuggestedApk() {
         Apk curApk = null;
+        String appropriateSig = app.getMostAppropriateSignature();
         for (int i = 0; i < versions.size(); i++) {
             final Apk apk = versions.get(i);
-            if (apk.versionCode == app.suggestedVersionCode) {
+            if (apk.versionCode == app.suggestedVersionCode && TextUtils.equals(apk.sig, appropriateSig)) {
                 curApk = apk;
                 break;
             }
