@@ -537,12 +537,12 @@ public class UpdateService extends IntentService {
      */
     public static void reportProcessingAppsProgress(Context context, RepoUpdater updater, int appsSaved, int totalApps) {
         Utils.debugLog(TAG, "Committing " + updater.indexUrl + "(" + appsSaved + "/" + totalApps + ")");
-        String message;
         if (totalApps > 0) {
-            message = context.getString(R.string.status_inserting_x_apps, appsSaved, totalApps, updater.indexUrl);
+            String message = context.getString(R.string.status_inserting_x_apps, appsSaved, totalApps, updater.indexUrl);
+            sendStatus(context, STATUS_INFO, message, (int) ((double) appsSaved / totalApps * 100));
         } else {
-            message = context.getString(R.string.status_inserting_apps);
+            String message = context.getString(R.string.status_inserting_apps);
+            sendStatus(context, STATUS_INFO, message);
         }
-        sendStatus(context, STATUS_INFO, message);
     }
 }
