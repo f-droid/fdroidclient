@@ -1,9 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="SignatureMismatch">Sa versione noa est firmada cun una crae diferente dae sa bècia. Pro la installare, sa bècia depet èssere istada disinstallada in antis. Pro piaghere fàghe·lu e torra a proare. (Sa disinstallatzione as a burrare totu sos datos sarvados in s\'aplicatzione)</string>
-    <string name="installIncompatible">Paret chi custu pachete non siat cumpatìbile cun su dispositivu tuo. Boles a
-        proare a lu installare su matessi?
-    </string>
+    <string name="installIncompatible">S\'aplicatzione no est compatìbile cun su dispositivu tuo, la cheres installare su matessi?</string>
     <string name="version">Versione</string>
     <string name="delete">Burra</string>
     <string name="enable_nfc_send">Abìlita imbiu NFC…</string>
@@ -16,7 +14,7 @@
     <string name="automatic_scan_wifi_on">Agiorna automaticamente sa lista de sas aplicatziones petzi si b\'est su
         wifi
     </string>
-    <string name="notify">Notìficas de agiornamentu</string>
+    <string name="notify">Ammustra sos agiornamentos disponìbiles</string>
     <string name="notify_on">Averte cando bi sunt agiornamentos disponìbiles</string>
     <string name="system_installer">Estensione cun permissos de sistema</string>
     <string name="system_installer_on">Imprea sos permissos de sistema pro installare, agiornare, e remòvere pachetos
@@ -105,9 +103,9 @@
     <string name="enable_proxy_title">Abìlita proxy HTTP</string>
     <string name="enable_proxy_summary">Cunfigura proxy HTTP pro totu sas rechestas de sa retza</string>
     <string name="proxy_host">Host proxy</string>
-    <string name="proxy_host_summary">Cunfigura su nùmene de s\'host de su proxy tuo (e.g. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Su nùmene de s\'host de su proxy tuo (e.g. 127.0.0.1)</string>
     <string name="proxy_port">Ghenna proxy</string>
-    <string name="proxy_port_summary">Cunfigura su nùmeru de sa ghenna de su proxy tuo (es. 8118)</string>
+    <string name="proxy_port_summary">Su nùmeru de sa ghenna de su proxy tuo (es. 8118)</string>
     <string name="status_download">Iscarrighende %2$s / %3$s (%4$d%%) dae %1$s</string>
     <string name="status_connecting_to_repo">Connessione a
         %1$s
@@ -203,9 +201,7 @@
 
     <string name="install_error_unknown">Installatzione faddida pro cajone de una faddina disconnota</string>
     <string name="uninstall_error_unknown">Disinstallatzione faddida pro cajone de una faddina disconnota</string>
-    <string name="swap_connection_misc_error">B\'est istada una faddina durante sa connessione a su dispositivu, non
-        resessimus a cumpartzire sas aplicatziones.
-    </string>
+    <string name="swap_connection_misc_error">B\'est istada una faddina durante sa connessione a su dispositivu, impossìbile cumpartzire sas aplicatziones!</string>
     <string name="unstable_updates">Agiornamentos instàbiles</string>
     <string name="unstable_updates_summary">Cussigia agiornamentos a versiones instàbiles</string>
     <string name="uninstall_system">Disinstalla s’estensione cun permissos de sistema</string>
@@ -222,15 +218,10 @@
     <string name="category_Time">Tempus</string>
     <string name="category_Writing">Iscritura</string>
 
-    <string name="system_install_post_success">S’estensione F-Droid cun sos permissos de sistema est istada intallada
-        curretamente
-    </string>
+    <string name="system_install_post_success">S’estensione F-Droid cun sos permissos de sistema est istada intallada</string>
     <string name="system_install_post_fail">Installatzione de s’estensione F-Droid cun permissos de sistema faddida
     </string>
-    <string name="system_install_post_success_message">S’estensione F-Droid cun permissos de sistema est istada
-        installada curretamente. Custu at a permìtere a F-Droid de installare, agiornare e disinstallare aplicatziones
-        pro contu suo.
-    </string>
+    <string name="system_install_post_success_message">S’estensione F-Droid cun permissos de sistema est istada installada. Custu at a permìtere a F-Droid de installare, agiornare e disinstallare aplicatziones pro contu suo.</string>
     <string name="system_install_post_fail_message">S’installatzione de s’estensione F-Droid cun permissos de sistema
         est faddida. Su mètodu de installatzione no est suportadu dae totu sas versiones de Android, pro piaghere
         consulta su sistema de gestione de sos errores de F-Droid pro àteras informatziones.
@@ -318,7 +309,7 @@
 
     <string name="theme_light">Craru</string>
     <string name="theme_dark">Iscuru</string>
-    <string name="download_error">Iscarrigamentu non resissidu</string>
+    <string name="download_error">Iscarrigamentu fallidu!</string>
 
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -529,4 +520,6 @@
 </plurals>
 <string name="by_author_format">de %s</string>
     <string name="download_404">Su documentu pedidu no est istadu agatadu.</string>
+    <string name="force_old_index">Fortza su formatu betzu de s\'ìnditze</string>
+    <string name="force_old_index_summary">In casu chi bi siant errores o problemas de compatibilidade, imprea s\'ìnditze XML de s\'aplicatzione</string>
     </resources>

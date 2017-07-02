@@ -6,9 +6,7 @@
         versão, tem que desinstalar a antiga. Remova a aplicação e tente novamente. (Tenha em atenção que irá apagar
         todos os dados guardados pela aplicação)
     </string>
-    <string name="installIncompatible">Parece que este pacote não é compatível com o seu dispositivo. Deseja tentar a
-        instalação?
-    </string>
+    <string name="installIncompatible">A aplicação não é compatível com o seu dispositivo. Deseja tentar a instalação?</string>
     <string name="version">Versão</string>
     <string name="delete">Apagar</string>
     <string name="enable_nfc_send">Ativar o envio NFC…</string>
@@ -23,7 +21,7 @@
     <string name="automatic_scan_wifi">Apenas por Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Apenas atualizar a lista de aplicações se estiver ligado a redes Wi-Fi
     </string>
-    <string name="notify">Notificação de atualizações</string>
+    <string name="notify">Mostrar atualizações disponíveis</string>
     <string name="notify_on">Mostrar uma notificação se existirem atualizações disponíveis</string>
     <string name="system_installer">Extensão privilegiada</string>
     <string name="system_installer_on">Utilizar a extensão privilegiada do F-Droid para instalar, atualizar e remover
@@ -142,9 +140,9 @@
     <string name="enable_proxy_title">Ativar proxy HTTP</string>
     <string name="enable_proxy_summary">Configurar proxy HTTP para todos os pedidos de rede</string>
     <string name="proxy_host">Servidor proxy</string>
-    <string name="proxy_host_summary">Configurar nome do servidor proxy (exemplo: 127.0.0.1)</string>
+    <string name="proxy_host_summary">Nome do seu servidor proxy (ex: 127.0.0.1)</string>
     <string name="proxy_port">Porta do proxy</string>
-    <string name="proxy_port_summary">Configure a porta do seu proxy (exemplo: 8118)</string>
+    <string name="proxy_port_summary">Número da porta do seu proxy (ex: 8118)</string>
 
     <string name="status_download">A descarregar\n%2$s/%3$s (%4$d%%) de\n%1$s</string>
 
@@ -223,7 +221,7 @@
         que não estão disponíveis no F-Droid. Pode ser necessário atualizar os seus repositórios ou os repositórios não
         possuem quaisquer aplicações.
     </string>
-    <string name="empty_can_update_app_list">Parabéns! Todas as aplicações estão atualizadas (ou os repositórios não o estão atualizados).</string>
+    <string name="empty_can_update_app_list">Parabéns! Todas as aplicações estão atualizadas (ou os repositórios estão desatualizados).</string>
 
     <string name="requesting_root_access_body">A solicitar acesso \'root\'…</string>
     <string name="root_access_denied_title">Acesso \'root\' recusado</string>
@@ -238,11 +236,9 @@
         favor reporte este erro!
     </string>
     <string name="system_install_button_install">Instalar</string>
-    <string name="system_install_post_success">Extensão privilegiada F-Droid instalada com sucesso</string>
+    <string name="system_install_post_success">Extensão privilegiada F-Droid instalada</string>
     <string name="system_install_post_fail">Extensão privilegiada F-Droid não instalada</string>
-    <string name="system_install_post_success_message">A extensão privilegiada F-Droid foi instalada com sucesso. Esta
-        extensão permite que o F-Droid instale, atualize e desinstale aplicações por si só.
-    </string>
+    <string name="system_install_post_success_message">A extensão privilegiada F-Droid foi instalada. Esta extensão permite que o F-Droid instale, atualize e desinstale aplicações por si só.</string>
     <string name="system_install_post_fail_message">A extensão privilegiada F-Droid não foi instalada. O método de
         instalação não é suportado por todas as distribuições Android. Por favor consulte o \'bug tracker\' do F-Droid
         para mais informações.
@@ -252,9 +248,7 @@
     <string name="system_install_uninstalling">A desinstalar…</string>
     <string name="system_install_question">Deseja instalar a extensão privilegiada F-Droid?</string>
     <string name="system_install_warning">Demora cerca de 10 segundos.</string>
-    <string name="system_install_warning_lollipop">Demora cerca de 10 segundos, após os quais o dispositivo será<b>
-        reiniciado</b>.
-    </string>
+    <string name="system_install_warning_lollipop">Demora cerca de 10 segundos, após os quais o dispositivo será <b>reiniciado</b>.</string>
     <string name="system_uninstall">Deseja desinstalar a extensão privilegiada F-Droid?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
@@ -321,8 +315,7 @@
     <string name="swap_cant_send_no_bluetooth">Não pode enviar o F-Droid porque o Bluetooth não está ativo no
         dispositivo.
     </string>
-    <string name="swap_connection_misc_error">Ocorreu um erro ao estabelecer a ligação e não será possível a troca.
-    </string>
+    <string name="swap_connection_misc_error">Ocorreu um erro ao estabelecer a ligação e não será possível a troca!</string>
     <string name="swap_not_enabled">Troca não ativa</string>
     <string name="swap_not_enabled_description">Antes de trocar, o seu dispositivo tem que estar disponível.</string>
 
@@ -349,7 +342,7 @@
     </string>
     <string name="uninstall_update_confirm">Deseja restaurar esta aplicação para a sua versão de fábrica?</string>
     <string name="uninstall_confirm">Deseja desinstalar esta aplicação?</string>
-    <string name="download_error">Descarga não efetuada</string>
+    <string name="download_error">Falha ao descarregar!</string>
 
     <string name="theme_night">Noite</string>
     <string name="menu_settings">Definições</string>
@@ -366,10 +359,7 @@
     <string name="antinonfreeassetslist">Esta aplicação contém recursos não livres</string>
 
     <string name="crash_dialog_title">O F-Droid terminou abruptamente</string>
-    <string name="crash_dialog_text">Ocorreu um erro inesperado que obrigou
-        ao encerramento da aplicação.
-        Gostaria de nos enviar um e-mail com os detalhes do erro?
-    </string>
+    <string name="crash_dialog_text">Ocorreu um erro inesperado e a aplicação foi encerrada. Gostaria de nos enviar um e-mail com os detalhes do erro?</string>
     <string name="crash_dialog_comment_prompt">Pode adicionar algumas informações e comentários aqui:</string>
     <string name="menu_email">E-mail do autor</string>
     <string name="repo_provider">Repositório: %s</string>
@@ -414,7 +404,7 @@
     <string name="app__install_downloaded_update">Atualização</string>
 
     <string name="app_list__name__downloading_in_progress">A descarregar %1$s</string>
-    <string name="app_list__name__successfully_installed">%1$s instalada com sucesso</string>
+    <string name="app_list__name__successfully_installed">%1$s foi instalada</string>
 
     <string name="installed_apps__activity_title">Aplicações instaladas</string>
     <string name="installed_app__updates_ignored">Atualizações ignoradas</string>
@@ -440,12 +430,8 @@
     <string name="main_menu__swap_nearby">Vizinhança</string>
 
     <string name="latest__empty_state__no_recent_apps">Nenhuma aplicação recente</string>
-    <string name="latest__empty_state__never_updated">Assim que a lista de aplicações estiver atualizada, as aplicações
-        mais recentes serão mostradas aqui.
-    </string>
-    <string name="latest__empty_state__no_enabled_repos">Assim que ativar um repositório e este estiver atualizado, as
-        aplicações mais recentes serão mostradas aqui.
-    </string>
+    <string name="latest__empty_state__never_updated">Assim que a lista de aplicações estiver atualizada, as aplicações mais recentes serão mostradas aqui</string>
+    <string name="latest__empty_state__no_enabled_repos">Assim que ativar um repositório e o atualizar, as aplicações mais recentes serão mostradas aqui</string>
 
     <string name="categories__empty_state__no_categories">Nenhuma categoria para mostrar</string>
 
@@ -459,15 +445,13 @@
     <string name="antifeatures">Anti-funcionalidades</string>
     <string name="hide_anti_feature_apps">Sombrear aplicações com anti-funcionalidades</string>
     <string name="hide_anti_feature_apps_on">Sombrear aplicações cque necessitem de anti-funcionalidades</string>
-    <string name="warning_no_internet">Atualização impossível. Está ligado à Internet?</string>
+    <string name="warning_no_internet">Não é possível atualizar. Está ligado à Internet?</string>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">Ver %d</item>
 	<item quantity="other">Ver todos %d</item>
 </plurals>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Descarregue as aplicações através de
-        pessoas perto de si!
-    </string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Obtenha as aplicações através de pessoas perto de si!</string>
     <string name="nearby_splash__find_people_button">Encontrar pessoas perto de mim</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes necessitam de %1$s.</string>
 
@@ -495,9 +479,9 @@
 
     <string name="details_last_updated_today">Atualizado hoje</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Atualizada há %1$s dia</item>
-        <item quantity="other">Atualizada há %1$s dias</item>
-    </plurals>
+	<item quantity="one">Atualizada há %1$d dia</item>
+	<item quantity="other">Atualizada há %1$d dias</item>
+</plurals>
     <plurals name="tts_view_all_in_category">
 	<item quantity="one">Ver  aplicação %1$d  da categoria %2$s</item>
 	<item quantity="other">Ver todas as %1$d aplicações da categoria %2$s</item>
@@ -508,4 +492,32 @@
     <string name="install_error_not_yet_supported">Este tipo de ficheiro ainda não pode ser instalado: %s</string>
     <string name="app__tts__downloading_progress">A descarregar, %1$d%% completo</string>
     <string name="app__tts__cancel_download">Cancelar descarga</string>
+    <string name="by_author_format">de %s</string>
+    <string name="download_404">O ficheiro solicitado não foi encontrado.</string>
+    <plurals name="notification_summary_more">
+	<item quantity="one">%1$d mais…</item>
+	<item quantity="other">%1$d mais…</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d atualização</item>
+	<item quantity="other">%1$d atualizações</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d aplicação instalada</item>
+	<item quantity="other">%1$d aplicações instaladas</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Atualizada há %1$d semana</item>
+	<item quantity="other">Atualizada há %1$d semanas</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Atualizada há %1$d mês</item>
+	<item quantity="other">Atualizada há %1$d meses</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Atualizada há %1$d ano</item>
+	<item quantity="other">Atualizada há %1$d anos</item>
+</plurals>
+<string name="force_old_index">Impor formato de índice antigo</string>
+    <string name="force_old_index_summary">Se ocorrerem erros ou incompatibilidade, utilizar o índice XML</string>
     </resources>

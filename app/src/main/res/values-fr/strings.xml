@@ -1,9 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez de nouveau après avoir désinstallé l\'ancienne application (attention : ceci effacera les données stockées par l\'application)</string>
-    <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous
-        quand même essayer de l\'installer ?
-    </string>
+    <string name="installIncompatible">Application incompatible avec votre appareil, installer quand même ?</string>
     <string name="version">Version</string>
     <string name="delete">Supprimer</string>
     <string name="enable_nfc_send">Activer l\'envoi via NFC…</string>
@@ -14,7 +12,7 @@
     <string name="update_interval_zero">Aucune mise à jour automatique de la liste d\'applis</string>
     <string name="automatic_scan_wifi">Uniquement via Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Mise à jour automatique uniquement sur des réseaux sans restriction, comme le Wi-Fi</string>
-    <string name="notify">Notifications de mise à jour</string>
+    <string name="notify">Afficher les mises à jour disponibles</string>
     <string name="notify_on">Afficher une notification quand des mises à jour sont disponibles</string>
     <string name="system_installer">Permissions étendues</string>
     <string name="system_installer_on">Utiliser F-Droid Privileged Extension pour installer, mettre à jour et supprimer
@@ -102,9 +100,9 @@
     <string name="enable_proxy_title">Activer le proxy HTTP</string>
     <string name="enable_proxy_summary">Configurer le proxy HTTP pour toutes les requêtes réseaux</string>
     <string name="proxy_host">Hôte du proxy</string>
-    <string name="proxy_host_summary">Configurer votre nom d\'hôte de proxy (ex : 127.0.0.1)</string>
+    <string name="proxy_host_summary">Le nom d\'hôte de votre proxy (ex : 127.0.0.1)</string>
     <string name="proxy_port">Port du proxy</string>
-    <string name="proxy_port_summary">Configurer votre numéro de port de proxy (ex : 8118)</string>
+    <string name="proxy_port_summary">Le numéro de port de votre proxy (ex : 8118)</string>
     <string name="status_download">Téléchargement %2$s / %3$s (%4$d%%) depuis %1$s</string>
     <string name="status_connecting_to_repo">Connexion à
         \n%1$s
@@ -227,7 +225,7 @@
     <string name="perm_costs_money">Peut vous coûter de l\'argent</string>
     <string name="uninstall_update_confirm">Voulez-vous remplacer cette appli avec la version pré-installée ?</string>
     <string name="uninstall_confirm">Voulez-vous désinstaller cette appli ?</string>
-    <string name="download_error">Le téléchargement a échoué</string>
+    <string name="download_error">Téléchargement échoué!</string>
 
     <string name="perms_new_perm_prefix">Nouveauté :</string>
     <string name="downloading">Téléchargement…</string>
@@ -313,11 +311,9 @@
         l\'application ! Veuillez créer un rapport de bug !
     </string>
     <string name="system_install_button_install">Installer</string>
-    <string name="system_install_post_success">F-Droid Privileged Extension a été installée avec succès</string>
+    <string name="system_install_post_success">F-Droid Privileged Extension installée</string>
     <string name="system_install_post_fail">Échec de l\'installation de F-Droid Privileged Extension</string>
-    <string name="system_install_post_success_message">F-Droid Privileged Extension a été installée avec succès. Elle
-        permet à F-Droid d\'installer, mettre à jour et désinstaller des applis de son propre chef.
-    </string>
+    <string name="system_install_post_success_message">F-Droid Privileged Extension installé. Elle permet à F-Droid d\'installer, mettre à jour et désinstaller des applis de son propre chef.</string>
     <string name="system_install_post_fail_message">Échec de l\'installation de F-Droid Privileged Extension. La méthode
         d\'installation utilisée n\'est pas supportée par toutes les variantes d\'Android. Veuillez consulter la base de
         donnée de bogues pour plus d\'informations.
@@ -399,7 +395,7 @@
     <string name="keep_install_history_summary">Enregistrer un journal de toutes les installations et désinstallations
         au sein de F-Droid
     </string>
-    <string name="warning_no_internet">Mise à jour impossible, êtes-vous connecté à Internet ?</string>
+    <string name="warning_no_internet">Impossible de mettre à jour, êtes-vous connecté à Internet ?</string>
     <string name="versions">Versions</string>
     <string name="app_details_donate_prompt_unknown_author">Offrir un café aux développeurs de %1$s !</string>
     <string name="app_details_donate_prompt">%1$s est créé par %2$s. Offrez-leur un café !</string>
@@ -528,4 +524,5 @@
 </plurals>
 <string name="by_author_format">par %s</string>
     <string name="download_404">Le fichier n\'a pas été trouvé.</string>
+    <string name="force_old_index">Forcer l\'ancien format d\'index</string>
     </resources>

@@ -1,10 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">
-        新しいﾊﾞｰｼﾞｮﾝは､以前のものと異なる暗号鍵で署名されています｡新しいﾊﾞｰｼﾞｮﾝをｲﾝｽﾄｰﾙするには､まず以前のﾊﾞｰｼﾞｮﾝをｱﾝｲﾝｽﾄｰﾙする必要があります｡その後で再度実行してください｡(ｱﾌﾟﾘｹｰｼｮﾝをｱﾝｲﾝｽﾄｰﾙすると保存したﾃﾞｰﾀｰが消えることに注意してください)
-    </string>
-    <string name="installIncompatible">このﾊﾟｯｹｰｼﾞはあなたの端末と互換性がないようです｡それでもｲﾝｽﾄｰﾙを続行しますか?
-</string>
+    <string name="SignatureMismatch">新しいﾊﾞｰｼﾞｮﾝは､以前のものと異なる暗号鍵で署名されています｡新しいﾊﾞｰｼﾞｮﾝをｲﾝｽﾄｰﾙするには､まず以前のﾊﾞｰｼﾞｮﾝをｱﾝｲﾝｽﾄｰﾙする必要があります｡その後で再度実行してください｡(ｱﾌﾟﾘをｱﾝｲﾝｽﾄｰﾙすると保存したﾃﾞｰﾀｰが消えることに注意してください)</string>
+    <string name="installIncompatible">ｱﾌﾟﾘはお使いの端末と互換性がありません｡それでもｲﾝｽﾄｰﾙしますか?</string>
     <string name="version">ﾊﾞｰｼﾞｮﾝ</string>
     <string name="delete">削除</string>
     <string name="enable_nfc_send">NFC 送信を有効…</string>
@@ -15,7 +12,7 @@
     <string name="update_interval_zero">ｱﾌﾟﾘﾘｽﾄの自動更新を行いません</string>
     <string name="automatic_scan_wifi">Wi-Fi接続時のみ</string>
     <string name="automatic_scan_wifi_on">Wi-Fiなどの従量課金されないﾈｯﾄﾜｰｸでのみ自動更新を行います</string>
-    <string name="notify">更新通知</string>
+    <string name="notify">利用可能な更新を表示</string>
     <string name="notify_on">更新があれば通知を表示します</string>
     <string name="system_installer">特権拡張</string>
     <string name="system_installer_on">F-Droid 特権拡張を使用してﾊﾟｯｹｰｼﾞのｲﾝｽﾄｰﾙ､更新､および削除をします｡</string>
@@ -76,8 +73,8 @@
     <string name="display">表示</string>
     <string name="expert">上級者向け機能</string>
     <string name="expert_on">拡張情報を表示し､拡張設定を有効にします｡</string>
-    <string name="search_hint">ｱﾌﾟﾘｹｰｼｮﾝの検索</string>
-    <string name="appcompatibility">ｱﾌﾟﾘｹｰｼｮﾝの互換性</string>
+    <string name="search_hint">ｱﾌﾟﾘの検索</string>
+    <string name="appcompatibility">ｱﾌﾟﾘの互換性</string>
     <string name="show_incompat_versions">互換性の無いﾊﾞｰｼﾞｮﾝ</string>
     <string name="show_incompat_versions_on">端末と互換性の無いのﾊﾞｰｼﾞｮﾝのｱﾌﾟﾘｹｰｼｮﾝを表示します｡</string>
     <string name="rooted">管理者(Superuser)権限を要求するｱﾌﾟﾘｹｰｼｮﾝを無視する｡</string>
@@ -99,9 +96,9 @@
     <string name="enable_proxy_title">HTTPﾌﾟﾛｷｼｰを有効にする</string>
     <string name="enable_proxy_summary">全てのﾈｯﾄﾜｰｸﾘｸｴｽﾄに対して HTTPﾌﾟﾛｷｼｰを設定する</string>
     <string name="proxy_host">ﾌﾟﾛｷｼｰﾎｽﾄ</string>
-    <string name="proxy_host_summary">ﾌﾟﾛｷｼｰのﾎｽﾄ名を設定(例:127.0.0.1)</string>
+    <string name="proxy_host_summary">ﾌﾟﾛｷｼｰのﾎｽﾄ名 (例:127.0.0.1)</string>
     <string name="proxy_port">ﾌﾟﾛｷｼｰﾎﾟｰﾄ</string>
-    <string name="proxy_port_summary">ﾌﾟﾛｷｼｰのﾎﾟｰﾄ番号を設定(例:8118)</string>
+    <string name="proxy_port_summary">ﾌﾟﾛｷｼｰのﾎﾟｰﾄ番号 (例:8118)</string>
     <string name="status_download">ﾀﾞｳﾝﾛｰﾄﾞ中
         %2$s / %3$s (%4$d%%) ﾀﾞｳﾝﾛｰﾄﾞ元
         %1$s
@@ -120,9 +117,7 @@
     <string name="repo_description">説明</string>
     <string name="repo_last_update">最終更新</string>
     <string name="repo_name">名前</string>
-    <string name="unsigned_description">ｱﾌﾟﾘｹｰｼｮﾝの一覧は検証されていません｡
-        未署名の索引からｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝﾛｰﾄﾞする時は注意してください｡
-    </string>
+    <string name="unsigned_description">ｱﾌﾟﾘの一覧は検証されていません｡ 未署名の索引からｱﾌﾟﾘをﾀﾞｳﾝﾛｰﾄﾞする時はご注意ください｡</string>
     <string name="repo_not_yet_updated">このﾘﾎﾟｼﾞﾄﾘはまだ使用されていません｡
         ｱﾌﾟﾘｹｰｼｮﾝを表示するには､ﾘﾎﾟｼﾞﾄﾘを有効にする必要があります｡
     </string>
@@ -195,11 +190,9 @@
 
     <string name="install_error_unknown">不明なｴﾗｰのためｲﾝｽﾄｰﾙに失敗しました</string>
     <string name="uninstall_error_unknown">不明なｴﾗｰのためｱﾝｲﾝｽﾄｰﾙに失敗しました</string>
-    <string name="system_install_post_success">F-Droid 特権拡張を正常にｲﾝｽﾄｰﾙしました｡</string>
+    <string name="system_install_post_success">F-Droid 特権拡張をｲﾝｽﾄｰﾙしました</string>
     <string name="system_install_post_fail">F-Droid 特権拡張のｲﾝｽﾄｰﾙに失敗しました｡</string>
-    <string name="system_install_post_success_message">F-Droid 特権拡張は正常にｲﾝｽﾄｰﾙされています｡これは F-Droid
-        が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙとｱｯﾌﾟｸﾞﾚｰﾄﾞ､及びｱﾝｲﾝｽﾄｰﾙをすることができます｡
-    </string>
+    <string name="system_install_post_success_message">F-Droid 特権拡張をｲﾝｽﾄｰﾙしました｡これは F-Droid が独自にｱﾌﾟﾘをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ､及びｱﾝｲﾝｽﾄｰﾙをすることができます｡</string>
     <string name="system_install_post_fail_message">F-Droid 特権拡張のｲﾝｽﾄｰﾙに失敗しました｡全ての Android
         ﾃﾞｨｽﾄﾘﾋﾞｭｰｼｮﾝで､このｲﾝｽﾄｰﾙ方法が使用できる訳ではありません｡詳細については F-Droid の不具合追跡機能を参照してください｡
     </string>
@@ -244,24 +237,15 @@
 
     <string name="downloading">ﾀﾞｳﾝﾛｰﾄﾞ中…</string>
 
-    <string name="swap_connection_misc_error">端末への接続中にｴﾗｰが発生しました｡交換できないようです｡
-</string>
+    <string name="swap_connection_misc_error">端末への接続中にｴﾗｰが発生しました｡交換できません!</string>
     <string name="swap_not_enabled">交換は有効ではありません</string>
     <string name="swap_not_enabled_description">交換する前に､お使いの端末が表示されている必要があります｡</string>
 
     <string name="install_confirm">必要なｱｸｾｽ許可</string>
-    <string name="install_confirm_update">既存のｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか?
-        既存のﾃﾞｰﾀは失われません｡更新されたｱﾌﾟﾘｹｰｼｮﾝのｱｸｾｽ許可:
-    </string>
-    <string name="install_confirm_update_system">この組み込みｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか?
-        既存のﾃﾞｰﾀは失われません｡更新されたｱﾌﾟﾘｹｰｼｮﾝのｱｸｾｽ許可:
-    </string>
-    <string name="install_confirm_update_no_perms">既存のｱﾌﾟﾘｹｰｼｮﾝに更新をｲﾝｽﾄｰﾙしますか?
-        既存のﾃﾞｰﾀは失われません｡特別なｱｸｾｽ許可は不要です｡
-    </string>
-    <string name="install_confirm_update_system_no_perms">この組み込みｱﾌﾟﾘｹｰｼｮﾝに更新ﾌﾟﾛｸﾞﾗﾑをｲﾝｽﾄｰﾙしますか?
-        既存のﾃﾞｰﾀは失われません。特別なｱｸｾｽ許可は不要です。
-    </string>
+    <string name="install_confirm_update">既存のｱﾌﾟﾘに更新をｲﾝｽﾄｰﾙしますか? 既存のﾃﾞｰﾀは失われません｡更新されたｱﾌﾟﾘのｱｸｾｽ許可:</string>
+    <string name="install_confirm_update_system">この組み込みｱﾌﾟﾘに更新をｲﾝｽﾄｰﾙしますか? 既存のﾃﾞｰﾀは失われません｡更新されたｱﾌﾟﾘのｱｸｾｽ許可:</string>
+    <string name="install_confirm_update_no_perms">この既存のｱﾌﾟﾘに更新をｲﾝｽﾄｰﾙしますか? 既存のﾃﾞｰﾀは失われません｡特別なｱｸｾｽ許可は不要です｡</string>
+    <string name="install_confirm_update_system_no_perms">この組み込みｱﾌﾟﾘに更新ﾌﾟﾛｸﾞﾗﾑをｲﾝｽﾄｰﾙしますか? 既存のﾃﾞｰﾀは失われません。特別なｱｸｾｽ許可は不要です。</string>
     <string name="newPerms">新規</string>
     <string name="allPerms">全て</string>
     <string name="perm_costs_money">お金がかかることがあります</string>
@@ -290,7 +274,7 @@
 
     <string name="unstable_updates">非安定版への更新</string>
     <string name="unstable_updates_summary">非安定版への更新を提案します</string>
-    <string name="download_error">ﾀﾞｳﾝﾛｰﾄﾞできませんでした</string>
+    <string name="download_error">ﾀﾞｳﾝﾛｰﾄﾞに失敗しました!</string>
 
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -319,12 +303,10 @@
 
     <string name="about_license">ﾗｲｾﾝｽ</string>
 
-    <string name="status_inserting_apps">ｱﾌﾟﾘｹｰｼｮﾝの詳細を保存中</string>
+    <string name="status_inserting_apps">ｱﾌﾟﾘの詳細を保存中</string>
 
     <string name="crash_dialog_title">F-Droid がｸﾗｯｼｭしました</string>
-    <string name="crash_dialog_text">ｱﾌﾟﾘｹｰｼｮﾝを強制的に停止させる、予期しないｴﾗｰが発生しました。
-        問題を修正するため、詳細をﾒｰﾙしますか?
-    </string>
+    <string name="crash_dialog_text">ｱﾌﾟﾘを強制的に停止させる、予期しないｴﾗｰが発生しました。 問題を修正するため、詳細をﾒｰﾙしてもよろしいですか?</string>
     <string name="crash_dialog_comment_prompt">ここに追加の情報やｺﾒﾝﾄを追加できます:</string>
     <string name="antinonfreeassetslist">このｱﾌﾟﾘには無料ではない資産が含まれています</string>
 
@@ -366,7 +348,7 @@
     <string name="app_details_donate_prompt_unknown_author">開発者の %1$s のコーヒーを購入します!</string>
     <string name="app_details_donate_prompt">%1$s は %2$s によって作成されました。彼らにコーヒーを購入します!</string>
 
-    <string name="repositories_summary">ｱﾌﾟﾘｹｰｼｮﾝの追加のｿｰｽを追加します</string>
+    <string name="repositories_summary">ｱﾌﾟﾘの追加のｿｰｽを追加します</string>
     <string name="notification_title_single_update_available">更新が利用可能です</string>
     <string name="notification_title_single_ready_to_install">ｲﾝｽﾄｰﾙの準備完了</string>
     <string name="notification_title_single_ready_to_install_update">更新をｲﾝｽﾄｰﾙする準備完了</string>
@@ -438,8 +420,8 @@
 	<item quantity="other">%1$d 日前に更新しました</item>
 </plurals>
     <string name="details_last_updated_today">今日更新</string>
-    <string name="app_list__name__successfully_installed">%1$s を正常にｲﾝｽﾄｰﾙしました</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">ｲﾝﾀｰﾈｯﾄがありませんか? 近くの人からｱﾌﾟﾘをﾀﾞｳﾝﾛｰﾄﾞしてください!</string>
+    <string name="app_list__name__successfully_installed">%1$s をｲﾝｽﾄｰﾙしました</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">ｲﾝﾀｰﾈｯﾄ接続がありませんか? 近くの人からｱﾌﾟﾘを入手してください!</string>
     <string name="nearby_splash__find_people_button">近くの人を見つける</string>
     <string name="nearby_splash__both_parties_need_fdroid">双方が近くで %1$s を使用する必要があります。</string>
 
@@ -476,4 +458,6 @@
 </plurals>
 <string name="by_author_format">開発者 %s</string>
     <string name="download_404">要求されたﾌｧｲﾙが見つかりませんでした。</string>
+    <string name="force_old_index">古い索引形式を強制する</string>
+    <string name="force_old_index_summary">ﾊﾞｸﾞや互換性の問題がある場合に、XML ｱﾌﾟﾘ索引を使用します</string>
     </resources>

@@ -1,12 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri avaimella kuin vanha. Asentaaksesi uuden
-        version, vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen. (Huomaa, että poistaminen poistaa kaiken
-        sovelluksen sisäisen datan)
-    </string>
-    <string name="installIncompatible">Tämä paketti ei näytä olevan yhteensopiva laitteesi kanssa. Haluatko silti
-        asentaa sen?
-    </string>
+    <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri salausavaimella kuin vanha. Asentaaksesi uuden version vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen (Huomaa, että poistaminen hävittää kaiken sovelluksen sisäisen tiedon).</string>
+    <string name="installIncompatible">Tämä paketti ei näytä olevan yhteensopiva laitteesi kanssa. Haluatko silti asentaa sen?</string>
     <string name="version">Versio</string>
     <string name="delete">Poista</string>
     <string name="enable_nfc_send">Ota NFC-lähetys käyttöön…</string>
@@ -367,9 +362,7 @@ asentamisesta
     <string name="perms_description_app">Toimittaja %1$s.</string>
     <string name="keep_forever">Ikuisesti</string>
 
-    <string name="crash_dialog_text">Tapahtui odottamaton virhe, sovellus pakko lopetettiin. Haluatko lähettää
-        tapahtuman yksityiskohdat sähköpostilla ja auttaa kehittäjiä korjaamaan ongelman?
-    </string>
+    <string name="crash_dialog_text">Tapahtui odottamaton virhe ja sovellus kaatui. Haluatko lähettää tapahtuneen yksityiskohdat sähköpostilla ja auttaa kehittäjiä korjaamaan ongelman?</string>
     <string name="status_processing_xml_percent">Käsitellään %2$s / %3$s (%4$d%%) lähteestä %1$s</string>
     <string name="status_download">Ladataan
         %2$s / %3$s (%4$d%%) lähteestä

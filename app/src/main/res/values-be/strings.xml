@@ -6,9 +6,7 @@
         неабходна спачатку выдаліць старую. Зрабіце гэта і паспрабуйце зноў. (Заўважце, што выдаленне праграмы прывядзе
         да знішчэння ўсіх яе дадзеных)
     </string>
-    <string name="installIncompatible">Падобна на тое, што гэтая праграма не сумяшчальная з вашым прыстасаваннем. Усё
-        адно прадоўжыць?
-    </string>
+    <string name="installIncompatible">Праграма не сумяшчальная з вашым прыстасаваннем. Усё адно ўсталяваць?</string>
     <string name="version">Версія</string>
     <string name="delete">Выдаліць</string>
     <string name="enable_nfc_send">Уключыць адпраўку NFC…</string>
@@ -30,7 +28,7 @@
     </string>
     <string name="update_auto_install">Аўтаматычна ўсталёўваць абнаўленні</string>
     <string name="update_auto_install_summary">Спампоўваць і ўсталёўваць абнаўленні ў фоне</string>
-    <string name="notify">Абвесткі пра абнаўленні</string>
+    <string name="notify">Паказаць даступныя абнаўленні</string>
     <string name="notify_on">Паказваць абвесткі калі ёсць абнаўленні</string>
     <string name="system_installer">Прывілеяваны дадатак</string>
     <string name="system_installer_on">Выкарыстоўваць прывілеяваны дадатак для ўсталёўкі, абнаўлення ці выдалення
@@ -103,7 +101,7 @@
     <string name="repo_provider">Рэпазіторый: %s</string>
 
     <string name="menu_manage">Рэпазіторыі</string>
-    <string name="repositories_summary">Дадаць дадатковых крыніцы праграм</string>
+    <string name="repositories_summary">Дадаць дадатковыя крыніцы праграм</string>
     <string name="menu_settings">Настаўленні</string>
     <string name="menu_search">Пошук</string>
     <string name="menu_add_repo">Навы рэпазіторый</string>
@@ -171,9 +169,9 @@
     <string name="enable_proxy_title">Выкарыстоўваць HTTP-проксі</string>
     <string name="enable_proxy_summary">Наладзіць HTTP-проксі для ўсіх сеткавых запытаў</string>
     <string name="proxy_host">Проксі-хост</string>
-    <string name="proxy_host_summary">Наладзіць назву хоста вашага проксі (напрыклад 127.0.0.1)</string>
+    <string name="proxy_host_summary">Назву хаста вашага проксі (напрыклад 127.0.0.1)</string>
     <string name="proxy_port">Проксі-порт</string>
-    <string name="proxy_port_summary">Наладзіць нумар порта вашага проксі (напрыклад 8118)</string>
+    <string name="proxy_port_summary">Нумар порта вашага проксі (напрыклад 8118)</string>
 
     <string name="status_download">Спампоўка
         %2$s / %3$s (%4$d%%) з
@@ -193,7 +191,7 @@
     <string name="repos_unchanged">Усе рэпазіторыі абноўлены</string>
     <string name="all_other_repos_fine">Усе астатнія рэпазіторыі ў добрым стане.</string>
     <string name="global_error_updating_repos">Памылка пад час абнаўлення: %s</string>
-    <string name="warning_no_internet">Не атрымалася абнавіцца. Ці падключаны вы да Інтэрнэту?</string>
+    <string name="warning_no_internet">Не атрымалася абнавіцца. Ці падключаныя вы да Інтэрнэту?</string>
     <string name="no_permissions">Не патрабуе дазволаў.</string>
     <string name="permissions">Прывілеі</string>
     <string name="no_handler_app">Вы не маеце праграмы для апрацоўкі «%s».</string>
@@ -280,7 +278,7 @@
         паведаміце пра памылку!
     </string>
     <string name="system_install_button_install">Усталяваць</string>
-    <string name="system_install_post_success">Прывілеяваны дадатак F-Droid паспяхова ўсталяваны</string>
+    <string name="system_install_post_success">Прывілеяваны дадатак F-Droid усталяваны</string>
     <string name="system_install_post_fail">Не атрымалася ўсталяваць прывілеяваны дадатак F-Droid</string>
     <string name="system_install_post_success_message">Прывілеяваны дадатак F-Droid усталяваны. Гэта дазволіць F-Droid
         усталёўваць, абнаўляць і выдаляць праграмы.
@@ -345,9 +343,7 @@
         прыладзе.
     </string>
     <string name="loading">Загрузка…</string>
-    <string name="swap_connection_misc_error">Здарылася памылка пад час злучэння з прыладай. Немагчыма прадоўжыць
-        абмен.
-    </string>
+    <string name="swap_connection_misc_error">Здарылася памылка падчас злучэння з прыладай. Немагчыма прадоўжыць абмен!</string>
     <string name="swap_not_enabled">Абмен не ўключаны</string>
     <string name="swap_not_enabled_description">Перад абменам, вы павінны зрабіць прыладу бачнай.</string>
 
@@ -361,7 +357,7 @@
     <string name="perm_costs_money">Гэта можа каштаваць грошай</string>
     <string name="uninstall_update_confirm">Хочаце замяніць гэту праграму завадской версіяй?</string>
     <string name="uninstall_confirm">Жадаеце выдаліць гэту праграму?</string>
-    <string name="download_error">Не атрымалася спампаваць</string>
+    <string name="download_error">Не атрымалася спампаваць!</string>
     <string name="download_pending">Чаканне пачатку спампоўкі…</string>
     <string name="install_error_notify_title">Памылка ўсталёўкі %s</string>
     <string name="uninstall_error_notify_title">Памылка выдалення %s</string>
@@ -477,10 +473,8 @@
 	<item quantity="many">Абноўлена %1$d дзён таму</item>
 </plurals>
     <string name="antifeatureswarning">Гэтая праграма мае функцыі, што могуць вам не спадабацца.</string>
-    <string name="app_list__name__successfully_installed">%1$s паспяхова ўсталявана</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Няма інтэрнэту? Пампуйце праграмы ад людзей
-        паблізу!
-    </string>
+    <string name="app_list__name__successfully_installed">%1$s усталявана</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Няма інтэрнэту? Атрымайце праграмы ад людзей паблізу!</string>
     <string name="nearby_splash__find_people_button">Знасці людзей паблізу</string>
     <string name="nearby_splash__both_parties_need_fdroid">Абодва бакі патрабуюць %1$s для выкарыстання паблізу.</string>
 
@@ -528,4 +522,6 @@
 </plurals>
 <string name="by_author_format">ад %s</string>
     <string name="download_404">Запытаны файл не знойдзены.</string>
+    <string name="force_old_index">Прымусова ўжываць стары фармат індэкса</string>
+    <string name="force_old_index_summary">У выпадку, калі ёсць памылкі або праблемы сумяшчальнасці, выкарыстоўвайце XML-індэкс</string>
     </resources>

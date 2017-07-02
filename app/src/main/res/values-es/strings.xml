@@ -1,12 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar
-        la nueva versión, la antigua debe de ser desinstalada primero. Por favor, hazlo y prueba de nuevo. (Ten en
-        cuenta que la desinstalación borrará cualquier dato interno guardado por la aplicación)
-    </string>
-    <string name="installIncompatible">Parece que este paquete no es compatible con el dispositivo. ¿Quieres probar e
-        instalarlo de todos modos?
-    </string>
+    <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar la nueva versión, la antigua debe desinstalarse antes. Por favor, hazlo y prueba de nuevo. (Ten en cuenta que la desinstalación borrará cualquier dato interno guardado por la aplicación)</string>
+    <string name="installIncompatible">La aplicación no es compatible con el dispositivo. ¿Instalarla de todos modos?</string>
     <string name="version">Versión</string>
     <string name="delete">Borrar</string>
     <string name="enable_nfc_send">Habilitar envío NFC…</string>
@@ -18,7 +13,7 @@
     <string name="automatic_scan_wifi">Sólo con Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Actualizar automáticamente solo con Wi-Fi y otras redes de tarifa plana
     </string>
-    <string name="notify">Notificaciones de actualizaciones</string>
+    <string name="notify">Mostrar actualizaciones disponibles</string>
     <string name="notify_on">Muestra una notificación cuando hay actualizaciones</string>
     <string name="system_installer">Extensión con permisos de sistema</string>
     <string name="system_installer_on">Utilizar la extensión de F-Droid con permisos de sistema al instalar, actualizar,
@@ -106,9 +101,9 @@
     <string name="enable_proxy_title">Habilitar proxy HTTP</string>
     <string name="enable_proxy_summary">Configurar proxy HTTP para todas las solicitudes de red</string>
     <string name="proxy_host">Servidor proxy</string>
-    <string name="proxy_host_summary">Configurar el nombre de máquina del proxy (p.ej. 127.0.0.1)</string>
+    <string name="proxy_host_summary">El nombre de tu proxy (p. ej., 127.0.0.1)</string>
     <string name="proxy_port">Puerto proxy</string>
-    <string name="proxy_port_summary">Configurar el número de puerto del proxy (p.ej. 8118)</string>
+    <string name="proxy_port_summary">El número de puerto de tu proxy (p. ej., 8118)</string>
     <string name="status_download">Descargando\n%2$s / %3$s (%4$d%%) desde
         \n%1$s
     </string>
@@ -216,33 +211,25 @@
 
     <string name="install_error_unknown">Fallo al instalar, debido a un error desconocido</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>
-    <string name="system_install_post_success">La extensión de F-Droid con permisos de sistema se ha instalado
-        correctamente
-    </string>
+    <string name="system_install_post_success">La extensión privilegiada de F-Droid se ha instalado</string>
     <string name="system_install_post_fail">Fallo en la instalación de la extensión de F-Droid con permisos de sistema
     </string>
-    <string name="system_install_post_success_message">Se ha instalado correctamente la extensión de F-Droid con
-        permisos de sistema. Esto le permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.
-    </string>
+    <string name="system_install_post_success_message">Se ha instalado la extensión privilegiada de F-Droid. Esto le permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.</string>
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">¿Deseas instalar la extensión de F-Droid con permisos de sistema?</string>
-    <string name="system_install_warning_lollipop">Esto tardará unos 10 segundos y después el dispositivo 
-se <b>reiniciará</b>.
- </string>
+    <string name="system_install_warning_lollipop">Esto tardará unos 10 segundos y después el dispositivo se <b>reiniciará</b>.</string>
     <string name="system_uninstall">¿Deseas desinstalar F-Droid con permisos de sistema?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Tocar para intercambiar</string>
-    <string name="swap_join_same_wifi_desc">"Para intercambiar usando Wi-Fi, verificad que estáis en la misma red. Si no
-tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi-Fi.
- "</string>
+    <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, verificad que estáis en la misma red. Si no tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Facilita que la otra persona se conecte a tu punto de acceso</string>
     <string name="swap_success">¡Intercambio realizado con éxito!</string>
     <string name="swap_active_hotspot">%1$s (tu punto de acceso)</string>
     <string name="swap_switch_to_wifi">Tocar para cambiar a una red Wi-Fi</string>
     <string name="swap_dont_show_again">No volver a mostrar esto</string>
-    <string name="swap_scan_or_type_url">Una persona tiene que escanear el código o escribir el enlace de la otra en un navegador.</string>
+    <string name="swap_scan_or_type_url">Una persona tiene que escanear el código o escribir el URL de la otra en un navegador.</string>
     <string name="swap_choose_apps">Elige las aplicaciones</string>
     <string name="swap_scan_qr">Escanea código QR</string>
     <string name="swap_people_nearby">Personas cercanas</string>
@@ -263,11 +250,9 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="swap_confirm">Confirmar intercambio</string>
     <string name="swap_qr_isnt_for_swap">El código QR escaneado no parece un código de intercambio.</string>
     <string name="bluetooth_unavailable">Bluetooth no disponible</string>
-    <string name="swap_cant_send_no_bluetooth">No se puede enviar F-Droid porque este dispositivo carece de Bluetooth.</string>
+    <string name="swap_cant_send_no_bluetooth">No se puede enviar F-Droid porque no está disponible Bluetooth en este dispositivo.</string>
     <string name="loading">Cargando…</string>
-    <string name="swap_connection_misc_error">Ocurrió un error mientras se conectaba al dispositivo. Parece que no
-        podemos intercambiar con él.
-    </string>
+    <string name="swap_connection_misc_error">Ocurrió un error mientras se conectaba al dispositivo. ¡No podemos intercambiar con él!</string>
     <string name="swap_not_enabled">Intercambio no activado</string>
     <string name="swap_not_enabled_description">Antes de intercambiar, el dispositivo debe ser visible.</string>
 
@@ -276,10 +261,7 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
         esta aplicación? Los datos no se perderán.
         La aplicación actualizada tendrá acceso a:
     </string>
-    <string name="install_confirm_update_no_perms">¿Quieres instalar una actualización
-        para esta aplicación? Los datos no se perderán.
-        No requiere ningún acceso especial.
-    </string>
+    <string name="install_confirm_update_no_perms">¿Quieres instalar una actualización para esta aplicación existente? Los datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="newPerms">Nuevo</string>
     <string name="allPerms">Todo</string>
     <string name="perm_costs_money">Esto puede costar dinero</string>
@@ -306,15 +288,8 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
         fallado. El método de instalación no está soportado por todas las versiones de Android, así que, por favor,
         consulta el sistema de gestión de incidencias de F-Droid para más información.
     </string>
-    <string name="install_confirm_update_system">¿Quieres instalar una actualización
-        de esta aplicación fija? Los datos no se perderán.
-        La aplicación actualizada tendrá acceso a:
-    </string>
-    <string name="install_confirm_update_system_no_perms">¿Quieres instalar una actualización
-        para esta aplicación fija?
-        Los datos no se perderán.
-        No requiere ningún acceso especial.
-    </string>
+    <string name="install_confirm_update_system">¿Quieres instalar una actualización de esta aplicación integrada? Los datos no se perderán. La aplicación actualizada tendrá acceso a:</string>
+    <string name="install_confirm_update_system_no_perms">¿Quieres instalar una actualización para esta aplicación integrada? Los datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="more">Más</string>
     <string name="less">Menos</string>
 
@@ -333,7 +308,7 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="system_install_button_install">Instalar</string>
     <string name="system_install_installing_rebooting">Instalando y reiniciando…</string>
     <string name="system_install_warning">Esto tardará unos 10 segundos.</string>
-    <string name="download_error">Descarga fallida</string>
+    <string name="download_error">¡Descarga fallida!</string>
 
     <string name="theme_night">Noche</string>
     <string name="system_install_denied_permissions">¡No se han concedido permisos de sistema a la extensión! ¡Por
@@ -397,7 +372,7 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
     <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones en
         F-Droid
     </string>
-    <string name="warning_no_internet">No se puede actualizar, ¿estás conectado a internet?</string>
+    <string name="warning_no_internet">No se puede actualizar, ¿estás conectado a Internet?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt_unknown_author">¡Invite a los desarrolladores de %1$s a un café!</string>
     <string name="app_details_donate_prompt">%2$s han creado %1$s. ¡Invítelos a un café!</string>
@@ -479,8 +454,8 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
 	<item quantity="one">Actualizada ayer</item>
 	<item quantity="other">Actualizada hace %1$d días</item>
 </plurals>
-    <string name="app_list__name__successfully_installed">%1$s se ha instalado con éxito</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">¿No tienes internet? ¡Descarga aplicaciones de gente cercana!</string>
+    <string name="app_list__name__successfully_installed">%1$s se ha instalado</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">¿No tienes Internet? ¡Descarga aplicaciones de gente cercana!</string>
     <string name="nearby_splash__find_people_button">Encontrar personas cerca de mí</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas partes necesitan %1$s para usar la cercanía.</string>
 
@@ -525,4 +500,6 @@ tenéis acceso a la misma red, uno de vosotros puede crear un punto de acceso Wi
 </plurals>
 <string name="by_author_format">por %s</string>
     <string name="download_404">No se ha encontrado archivo solicitado.</string>
+    <string name="force_old_index">Forzar al formato de índice antiguo</string>
+    <string name="force_old_index_summary">En caso de que haya problemas o incopatibilidades, usa el índice XML de la aplicación</string>
     </resources>

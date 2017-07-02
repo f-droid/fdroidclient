@@ -59,7 +59,7 @@
     <string name="app_details">വിശദാംശങ്ങള്‍</string>
     <string name="about_title">എഫ്-ഡ്രോയ്ഡിനെക്കുറിച്ച്</string>
     <string name="app_list__name__downloading_in_progress">%1$s ഡൗൺലോഡ് ചെയ്യുന്നു</string>
-    <string name="app_list__name__successfully_installed">%1$s നെ വിജയകരമായി സ്ഥാപിച്ചു</string>
+    <string name="app_list__name__successfully_installed">%1$s നെ സ്ഥാപിച്ചു</string>
     <string name="updates__tts__download_app">ഡൗൺലോഡ് ചെയ്യുക</string>
     <string name="more">കൂടുതല്‍</string>
     <string name="less">കുറവ്</string>
@@ -76,7 +76,7 @@
     <string name="category_System">സിസ്റ്റം</string>
     <string name="swap_send_fdroid">എഫ്-ഡ്രോയ്ഡ് അയ്ക്കുക</string>
     <string name="crash_dialog_title">എഫ്-ഡ്രോയ്ഡ് തകര്‍ന്നു</string>
-    <string name="crash_dialog_text">പ്രയോഗം നിർത്തുന്നതിന് ഒരു അപ്രതീക്ഷിത പിശക് സംഭവിച്ചു. പ്രശ്നം പരിഹരിക്കാൻ സഹായിക്കുന്നതിന് വിശദാംശങ്ങൾ ഇ-മെയിൽ ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?</string>
+    <string name="crash_dialog_text">പ്രയോഗം നിർത്തുന്നതില്‍ ഒരു അപ്രതീക്ഷിത പിശക് സംഭവിച്ചു. പ്രശ്നം പരിഹരിക്കാൻ സഹായിക്കുന്നതിന് വിശദാംശങ്ങൾ ഇ-മെയിൽ ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?</string>
     <string name="notification_title_single_update_available">പുതിയ പതിപ്പ് ലഭ്യമാണ്</string>
     <string name="notification_title_summary_install_error">സ്ഥാപിക്കല്‍ പരാജയപ്പെട്ടു</string>
     <string name="SignatureMismatch">പുതിയ പതിപ്പ് പഴയതില്‍ നിന്ന് വ്യത്യസ്തമായ ഒരു കീ ഉപയോഗിച്ച് ഒപ്പ് വെച്ചിരിക്കുന്നു. പുതിയ പതിപ്പ് ഇൻസ്റ്റാൾ ചെയ്യുന്നതിന്, പഴയത് ആദ്യം ഒഴിവാക്കേണ്ടതുണ്ട്. അതിനുശേഷം വീണ്ടും ശ്രമിക്കുക. (ഒഴിവാക്കുന്നത് പ്രയോഗത്തില്‍ സംഭരിച്ചിട്ടുള്ള എല്ലാ ആന്തരിക ഡേറ്റയും മായ്ക്കും)</string>
@@ -100,7 +100,7 @@
     <string name="update_auto_download_summary">പുതുക്കലുകള്‍ സ്വതവേ ഡൗൺലോഡ് ചെയ്യുകയും അവ സ്ഥാപിക്കാന്‍ നിങ്ങളെ വിവരം അറിയിക്കുകയും ചെയ്യുക</string>
     <string name="update_auto_install">പുതുക്കലുകള്‍ സ്വതവേ സ്ഥാപിക്കുക</string>
     <string name="update_auto_install_summary">പ്രയോഗങ്ങള്‍ പശ്ചാത്തലത്തിൽ ഡൌൺലോഡ് ചെയ്ത് സ്ഥാപിക്കുക</string>
-    <string name="notify">പുതുക്കല്‍ അറിയിപ്പുകൾ</string>
+    <string name="notify">ലഭ്യമായ പുതുക്കലുകള്‍ കാണിക്കുക</string>
     <string name="notify_on">പുതുക്കലുകൾ ലഭ്യമാകുമ്പോൾ ഒരു അറിയിപ്പ് കാണിക്കുക</string>
     <string name="system_installer">പ്രത്യേകാധികാരമുള്ള കൂട്ടിച്ചേര്‍പ്പ്</string>
     <string name="system_installer_on">പ്രയോഗങ്ങളെ സ്ഥാപിക്കാനും പുതുക്കാനും ഒഴിവാക്കാനും എഫ്-ഡ്രോയ്ഡിന്റെ പ്രത്യേകാധികാരമുള്ള കൂട്ടിച്ചേര്‍പ്പ് ഉപയോഗിക്കുക</string>
@@ -266,12 +266,12 @@
     <string name="repo_not_yet_updated">ഈ സങ്കേതം ഇതുവരെ ഉപയോഗിച്ചിട്ടില്ല. ഇതിലുള്ള പ്രയോഗങ്ങള്‍ കാണാന്‍ ഇത് സജ്ജമാക്കേണ്ടതുണ്ട്.</string>
     <string name="unknown">അജ്ഞാതം</string>
     <string name="repo_confirm_delete_title">സങ്കേതം ഇല്ലാതാക്കുക?</string>
-    <string name="repo_confirm_delete_body">"ഒരു സങ്കേതം ഇല്ലാതാക്കിയാൽ അതില്‍ നിന്നുള്ള പ്രയോഗങ്ങള്‍ ഇനി എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമാകുില്ല.
-\n
-\nകുറിപ്പ്:  മുമ്പ് സ്ഥാപിച്ച എല്ലാ പ്രയോഗങ്ങളും നിങ്ങളുടെ ഉപകരണത്തില്‍ തന്നെ ഉണ്ടാകും. "</string>
-    <string name="repo_disabled_notification">"%1$s പ്രവര്‍ത്തനരഹിതമാക്കി.
-\n
-\nഈ സങ്കേതത്തില്‍ നിന്ന് പ്രയോഗങ്ങള്‍ സ്ഥാപിക്കാന്‍ ഇത് വീണ്ടും പ്രവർത്തനക്ഷമമാക്കേണ്ടതുണ്ട്. "</string>
+    <string name="repo_confirm_delete_body">"ഒരു സങ്കേതം ഇല്ലാതാക്കിയാൽ അതില്‍ നിന്നുള്ള പ്രയോഗങ്ങള്‍ ഇനി എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമാകുില്ല. 
+\n 
+\nകുറിപ്പ്:  മുമ്പ് സ്ഥാപിച്ച എല്ലാ പ്രയോഗങ്ങളും നിങ്ങളുടെ ഉപകരണത്തില്‍ തന്നെ ഉണ്ടാകും."</string>
+    <string name="repo_disabled_notification">%1$s പ്രവര്‍ത്തനരഹിതമാക്കി. 
+\n 
+\nഈ സംഭരണിയില്‍ നിന്ന് പ്രയോഗങ്ങള്‍ സ്ഥാപിക്കാന്‍ ഇത് വീണ്ടും പ്രവർത്തനക്ഷമമാക്കേണ്ടതുണ്ട്.</string>
     <string name="repo_added">എഫ്-ഡ്രോയ്ഡ് സങ്കേതം %1$s സൂക്ഷിച്ചു.</string>
     <string name="repo_searching_address">എഫ്-ഡ്രോയ്ഡ് സംഭരണിക്ക് വേണ്ടി തിരയുന്നു
 \n%1$s ല്‍</string>
@@ -287,28 +287,28 @@
 	<item quantity="other">എല്ലാ %d യും കാണുക</item>
 </plurals>
 
-    <string name="empty_installed_app_list">"പ്രയോഗങ്ങളൊന്നും സ്ഥാപിക്കപ്പെട്ടിട്ടില്ല.
-\n
-\nനിങ്ങളുടെ ഉപകരണത്തിൽ പ്രയോഗങ്ങള്‍ ഉണ്ട്, എന്നാൽ അവ എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമല്ല. ഇത് നിങ്ങളുടെ സംഭരണികള്‍ പുതുക്കേണ്ടതു കൊണ്ടാകാം, അല്ലെങ്കിൽ നിങ്ങളുടെ പ്രയോഗങ്ങള്‍ സംഭരണികളില്‍ ലഭ്യമല്ലാത്തതു കൊണ്ടുമാകാം. "</string>
+    <string name="empty_installed_app_list">പ്രയോഗങ്ങളൊന്നും സ്ഥാപിക്കപ്പെട്ടിട്ടില്ല. 
+\n 
+\nനിങ്ങളുടെ ഉപകരണത്തിൽ പ്രയോഗങ്ങള്‍ ഉണ്ട്, എന്നാൽ അവ എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമല്ല. ഇത് നിങ്ങളുടെ സംഭരണികള്‍ പുതുക്കേണ്ടതു കൊണ്ടാകാം, അല്ലെങ്കിൽ നിങ്ങളുടെ പ്രയോഗങ്ങള്‍ സംഭരണികളില്‍ ലഭ്യമല്ലാത്തതു കൊണ്ടുമാകാം.</string>
     <string name="empty_can_update_app_list">അഭിനന്ദനങ്ങൾ! നിങ്ങളുടെ പ്രയോഗങ്ങളെല്ലാം കാലികമാണ് (അല്ലെങ്കിൽ നിങ്ങളുടെ സംഭരണികള്‍ കാലഹരണപ്പെട്ടതാണ്).</string>
     <string name="install_error_unknown">ഒരു അജ്ഞാത പിശക് കാരണം സ്ഥാപിക്കല്‍ പരാജയപ്പെട്ടു</string>
     <string name="uninstall_error_unknown">കാരണം ഒരു അജ്ഞാത പിശക് ഒഴിവാക്കല്‍ പരാജയപ്പെട്ടു</string>
     <string name="install_error_not_yet_supported">ഫയൽ തരം സ്ഥാപിക്കാന്‍ കഴിയില്ല: %s</string>
     <string name="system_install_denied_signature">വിപുലീകരണത്തിന്റെ ഒപ്പ് തെറ്റാണ്! ഒരു ബഗ് റിപ്പോർട്ട് സൃഷ്ടിക്കുക!</string>
     <string name="system_install_denied_permissions">പ്രത്യേക അനുമതികൾ വിപുലീകരണത്തിന് നൽകിയിട്ടില്ല! ഒരു ബഗ് റിപ്പോർട്ട് സൃഷ്ടിക്കുക!</string>
-    <string name="system_install_post_success">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം വിജയകരമായി സ്ഥാപിച്ചു</string>
+    <string name="system_install_post_success">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിച്ചു</string>
     <string name="system_install_post_fail">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിക്കല്‍ പരാജയപ്പെട്ടു</string>
-    <string name="system_install_post_success_message">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം വിജയകരമായി സ്ഥാപിച്ചു. ഇത് പ്രയോഗങ്ങളെ സ്ഥാപിക്കാനും പുതുക്കാനും ഒഴിവാക്കാനും എഫ്-ഡ്രോയ്ഡിനെ സ്വയം പ്രാപ്തമാക്കുന്നു.</string>
+    <string name="system_install_post_success_message">പ്രത്യേക അനുമതി ആവശ്യമുള്ള എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിച്ചു. ഇത് പ്രയോഗങ്ങളെ സ്ഥാപിക്കാനും പുതുക്കാനും ഒഴിവാക്കാനും എഫ്-ഡ്രോയ്ഡിനെ സ്വയം പ്രാപ്തമാക്കുന്നു.</string>
     <string name="system_install_installing">സ്ഥാപിക്കുന്നു…</string>
     <string name="system_install_installing_rebooting">സ്ഥാപിക്കുന്നു, റീബൂട്ട് ചെയ്യുന്നു…</string>
     <string name="system_install_uninstalling">ഒഴിവാക്കുന്നു…</string>
     <string name="system_install_question">നിങ്ങൾക്ക് പ്രത്യേകാവകാശ എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം സ്ഥാപിക്കണോ?</string>
     <string name="system_install_warning">ഇത് 10 സെക്കന്റ് വരെ എടുക്കും.</string>
-    <string name="system_install_warning_lollipop">ഇത് 10 സെക്കന്റ് വരെ എടുക്കും. ശേഷം ഉപകരണം <b>റീബൂട്ട്</b> ചെയ്യും. </string>
+    <string name="system_install_warning_lollipop">ഇത് 10 സെക്കന്റ് വരെ എടുക്കും. ശേഷം ഉപകരണം <b>റീബൂട്ട്</b> ചെയ്യും.</string>
     <string name="system_uninstall">നിങ്ങൾക്ക് പ്രത്യേകാവകാശ എഫ്-ഡ്രോയ്ഡ് വിപുലീകരണം ഒഴിവാക്കണോ?</string>
     <string name="system_install_not_supported">എഫ്-ഡ്രോയ്ഡിന്റെ പ്രത്യേകാവകാശ വിപുലീകരണം നിലവിൽ Android 5.1 ഓ അല്ലെങ്കിൽ പുതിയതോ പിന്തുണയ്ക്കുന്നില്ല.</string>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">ഇന്റർനെറ്റ് ഇല്ലേ? നിങ്ങളുടെ അടുത്തുള്ള ആളുകളിൽ നിന്ന് പ്രയോഗങ്ങള്‍ ഡൗൺലോഡ് ചെയ്യൂ!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">ഇന്റർനെറ്റ് ഇല്ലേ? നിങ്ങളുടെ അടുത്തുള്ള ആളുകളിൽ നിന്ന് പ്രയോഗങ്ങള്‍ സ്വീകരിക്കൂ!</string>
     <string name="nearby_splash__find_people_button">എന്റെ അരികിലുള്ള ആളുകളെ കണ്ടെത്തുക</string>
     <string name="nearby_splash__both_parties_need_fdroid">നിയര്‍ബെെ ഉപയോഗിക്കാന്‍ രണ്ട് കൂട്ടരും %1$s ഉപയോഗിക്കേണ്ടതുണ്ട്.</string>
 
@@ -342,7 +342,7 @@
     <string name="bluetooth_unavailable">ബ്ലൂടൂത്ത് ലഭ്യമല്ല</string>
     <string name="swap_cant_send_no_bluetooth">ബ്ലൂടൂത്ത് ഈ ഉപകരണത്തിൽ ലഭ്യമല്ലാത്തതിനാൽ എഫ്-ഡ്രോയ്ഡ് അയയ്ക്കാൻ കഴിയില്ല.</string>
     <string name="loading">ലോഡുചെയ്യുന്നു…</string>
-    <string name="swap_connection_misc_error">ഉപകരണത്തിലേക്ക് കണക്റ്റുചെയ്യുമ്പോൾ ഒരു പിശക്, അതുമായി കെെമാറ്റം ചെയ്യാന്‍ പറ്റുമെന്ന് തോന്നുന്നില്ല.</string>
+    <string name="swap_connection_misc_error">ഉപകരണത്തിലേക്ക് കണക്റ്റുചെയ്യുമ്പോൾ പിശക് സംഭവിച്ചു, അതുമായി കെെമാറ്റം ചെയ്യാന്‍ പറ്റുന്നില്ല!</string>
     <string name="swap_not_enabled">കെെമാറ്റം സജ്ജമല്ല</string>
     <string name="swap_not_enabled_description">കെെമാറ്റം ചെയ്യുന്നതിനു മ‌ുമ്പ് നിങ്ങളുടെ ഉപകരണം ദൃശ്യമാക്കേണ്ടതുണ്ട്.</string>
 
@@ -350,7 +350,7 @@
     <string name="allPerms">എല്ലാം</string>
     <string name="perm_costs_money">ഇത് പണം ഈടാക്കിയേക്കാം</string>
     <string name="uninstall_confirm">ഈ പ്രയോഗം ഒഴിവാക്കണോ?</string>
-    <string name="download_error">ഡൗൺലോഡ് നിഷ്‌ഫലം</string>
+    <string name="download_error">ഡൗൺലോഡ് പരാജയപ്പെട്ടു!</string>
     <string name="download_pending">ഡൗൺലോഡ് ആരംഭിക്കാൻ കാത്തിരിക്കുന്നു…</string>
     <string name="install_error_notify_title">%s സ്ഥാപിക്കുന്നതില്‍ പിശക്</string>
     <string name="uninstall_error_notify_title">%s ഒഴിവാക്കുന്നതില്‍ പിശക്</string>
@@ -442,4 +442,15 @@
     <string name="swap_confirm_connect">നിങ്ങൾക്ക് ഇപ്പോൾ %1$s ൽ  നിന്ന് പ്രയോഗങ്ങള്‍ സ്വീകരിക്കണോ?</string>
     <string name="swap_scan_or_type_url">ഒരാൾ കോഡ് സ്കാൻ ചെയ്യുകയോ മറ്റേയാളുടെ യുആര്‍എല്‍ ബ്രൗസറിൽ ടൈപ്പുചെയ്യുകയോ വേണം.</string>
     <string name="swap_nearby">അടുത്തുള്ളവ കെെമാറുക</string>
+    <string name="force_old_index">പഴയ സൂചിക ഫോർമാറ്റ് ഉപയോഗിക്കാന്‍ നിര്‍ബന്ധിക്കുക</string>
+    <string name="force_old_index_summary">ബഗ്ഗുകൾ അല്ലെങ്കിൽ അനുയോജ്യത പ്രശ്നങ്ങൾ ഉണ്ടെങ്കിൽ, XML ആപ്പ് സൂചിക ഉപയോഗിക്കുക</string>
+    <string name="swap_intro">നിങ്ങളുടെ അടുത്തുള്ള ആളുകളുമായി ബന്ധപ്പെട്ട് പ്രയോഗങ്ങള്‍ കെെമാറ്റം ചെയ്യൂ.</string>
+    <string name="install_confirm_update">നിലവിലുള്ള ഈ പ്രയോഗത്തിന് ഒരു അപ്ഡേറ്റ് ഇൻസ്റ്റാൾ ചെയ്യണോ? നിങ്ങളുടെ നിലവിലുള്ള ഡാറ്റ നഷ്ടപ്പെടുകയില്ല. പുതുക്കിയ പ്രയോഗത്തിന് ഇനിപ്പറയുന്നതിലേക്ക് പ്രവേശനം ലഭിക്കും:</string>
+    <string name="install_confirm_update_system">ഇൻ-ബിൽറ്റ് പ്രയോഗത്തിന് ഒരു അപ്ഡേറ്റ് ഇൻസ്റ്റാൾ ചെയ്യണോ? നിങ്ങളുടെ നിലവിലുള്ള ഡാറ്റ നഷ്ടപ്പെടുകയില്ല. പുതുക്കിയ പ്രയോഗത്തിന് ഇനിപ്പറയുന്നതിലേക്ക് പ്രവേശനം ലഭിക്കും:</string>
+    <string name="install_confirm_update_no_perms">നിലവിലുള്ള ഈ പ്രയോഗത്തിന് ഒരു അപ്ഡേറ്റ് ഇൻസ്റ്റാൾ ചെയ്യണോ? നിങ്ങളുടെ നിലവിലുള്ള ഡാറ്റ നഷ്ടപ്പെടുകയില്ല. ഇതിന് പ്രത്യേക അനുമതി ആവശ്യമില്ല.</string>
+    <string name="install_confirm_update_system_no_perms">ഈ ഇന്‍-ബില്‍റ്റ് പ്രയോഗത്തിന് ഒരു അപ്ഡേറ്റ് ഇൻസ്റ്റാൾ ചെയ്യണോ? നിങ്ങളുടെ നിലവിലുള്ള ഡാറ്റ നഷ്ടപ്പെടുകയില്ല. ഇതിന് പ്രത്യേക അനുമതി ആവശ്യമില്ല.</string>
+    <string name="uninstall_update_confirm">ഫാക്ടറി പതിപ്പ് ഉപയോഗിച്ച് ഈ പ്രയോഗം മാറ്റിസ്ഥാപിക്കാൻ താൽപ്പര്യപ്പെടുന്നുണ്ടോ?</string>
+    <string name="perms_description_app">%1$s നൽകിയത്.</string>
+    <string name="enable_proxy_summary">എല്ലാ നെറ്റ്വർക്ക് അഭ്യർത്ഥനകൾക്കും പ്രോക്സി ക്രമീകരിക്കുക</string>
+    <string name="proxy_host">പ്രോക്സി ഹോസ്റ്റ്</string>
     </resources>
