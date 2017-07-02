@@ -177,15 +177,15 @@ public class UpdateService extends IntentService {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(updateStatusReceiver);
     }
 
-    private static void sendStatus(Context context, int statusCode) {
+    public static void sendStatus(Context context, int statusCode) {
         sendStatus(context, statusCode, null, -1);
     }
 
-    private static void sendStatus(Context context, int statusCode, String message) {
+    public static void sendStatus(Context context, int statusCode, String message) {
         sendStatus(context, statusCode, message, -1);
     }
 
-    private static void sendStatus(Context context, int statusCode, String message, int progress) {
+    public static void sendStatus(Context context, int statusCode, String message, int progress) {
         Intent intent = new Intent(LOCAL_ACTION_STATUS);
         intent.putExtra(EXTRA_STATUS_CODE, statusCode);
         if (!TextUtils.isEmpty(message)) {
@@ -407,14 +407,10 @@ public class UpdateService extends IntentService {
 
                 try {
                     RepoUpdater updater = new IndexV1Updater(this, repo);
-                    UpdateBroadcastReceivers receivers = new UpdateBroadcastReceivers(updater);
                     if (Preferences.get().isForceOldIndexEnabled() || !updater.update()) {
-                        receivers.unregisterReceivers();
                         updater = new RepoUpdater(getBaseContext(), repo);
-                        receivers = new UpdateBroadcastReceivers(updater);
                         updater.update();
                     }
-                    receivers.unregisterReceivers();
 
                     if (updater.hasChanged()) {
                         updatedRepos++;
@@ -503,74 +499,7 @@ public class UpdateService extends IntentService {
         }
     }
 
-    /**
-     * Creates three broadcast receivers (downloading, processing index, saving apps) and listens
-     * for relevant broadcasts from them. Calling {@link #unregisterReceivers()} will unregister
-     * all three receivers. If you neglect to unregister them, then they will continually receive
-     * events into the future.
-     *
-     * For each broadcast it receives, it checks the URL of the sender, because it may be possible
-     * to have, e.g. a swap and a regular repo update happening at once.
-     */
-    private class UpdateBroadcastReceivers {
-
-        private final BroadcastReceiver downloading;
-        private final BroadcastReceiver processingIndex;
-        private final BroadcastReceiver savingApps;
-
-        UpdateBroadcastReceivers(final RepoUpdater updater) {
-            downloading = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    String url = intent.getStringExtra(RepoUpdater.EXTRA_URL);
-                    if (TextUtils.equals(url, updater.indexUrl)) {
-                        reportDownloadProgress(updater,
-                                intent.getIntExtra(RepoUpdater.EXTRA_BYTES_READ, 0),
-                                intent.getIntExtra(RepoUpdater.EXTRA_TOTAL_BYTES, 0));
-                    }
-                }
-            };
-
-            processingIndex = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    String url = intent.getStringExtra(RepoUpdater.EXTRA_URL);
-                    if (TextUtils.equals(url, updater.indexUrl)) {
-                        reportProcessIndexProgress(updater,
-                                intent.getIntExtra(RepoUpdater.EXTRA_BYTES_READ, 0),
-                                intent.getIntExtra(RepoUpdater.EXTRA_TOTAL_BYTES, 0));
-                    }
-                }
-            };
-
-            savingApps = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    String url = intent.getStringExtra(RepoUpdater.EXTRA_URL);
-                    if (TextUtils.equals(url, updater.indexUrl)) {
-                        reportProcessingAppsProgress(updater,
-                                intent.getIntExtra(RepoUpdater.EXTRA_APPS_SAVED, 0),
-                                intent.getIntExtra(RepoUpdater.EXTRA_TOTAL_APPS, 0));
-                    }
-                }
-            };
-
-            LocalBroadcastManager manager = LocalBroadcastManager.getInstance(UpdateService.this);
-            manager.registerReceiver(savingApps, new IntentFilter(RepoUpdater.ACTION_SAVING_APPS));
-            manager.registerReceiver(processingIndex, new IntentFilter(RepoUpdater.ACTION_INDEX_PROCESSING));
-            manager.registerReceiver(downloading, new IntentFilter(RepoUpdater.ACTION_DOWNLOADING));
-        }
-
-        public void unregisterReceivers() {
-            LocalBroadcastManager manager = LocalBroadcastManager.getInstance(UpdateService.this);
-            manager.unregisterReceiver(savingApps);
-            manager.unregisterReceiver(processingIndex);
-            manager.unregisterReceiver(downloading);
-        }
-
-    }
-
-    private void reportDownloadProgress(RepoUpdater updater, int bytesRead, int totalBytes) {
+    public static void reportDownloadProgress(Context context, RepoUpdater updater, int bytesRead, int totalBytes) {
         Utils.debugLog(TAG, "Downloading " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
         String downloadedSizeFriendly = Utils.getFriendlySize(bytesRead);
         int percent = -1;
@@ -579,16 +508,16 @@ public class UpdateService extends IntentService {
         }
         String message;
         if (totalBytes == -1) {
-            message = getString(R.string.status_download_unknown_size, updater.indexUrl, downloadedSizeFriendly);
+            message = context.getString(R.string.status_download_unknown_size, updater.indexUrl, downloadedSizeFriendly);
             percent = -1;
         } else {
             String totalSizeFriendly = Utils.getFriendlySize(totalBytes);
-            message = getString(R.string.status_download, updater.indexUrl, downloadedSizeFriendly, totalSizeFriendly, percent);
+            message = context.getString(R.string.status_download, updater.indexUrl, downloadedSizeFriendly, totalSizeFriendly, percent);
         }
-        sendStatus(getApplicationContext(), STATUS_INFO, message, percent);
+        sendStatus(context, STATUS_INFO, message, percent);
     }
 
-    private void reportProcessIndexProgress(RepoUpdater updater, int bytesRead, int totalBytes) {
+    public static void reportProcessIndexProgress(Context context, RepoUpdater updater, int bytesRead, int totalBytes) {
         Utils.debugLog(TAG, "Processing " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
         String downloadedSize = Utils.getFriendlySize(bytesRead);
         String totalSize = Utils.getFriendlySize(totalBytes);
@@ -596,8 +525,8 @@ public class UpdateService extends IntentService {
         if (totalBytes > 0) {
             percent = (int) ((double) bytesRead / totalBytes * 100);
         }
-        String message = getString(R.string.status_processing_xml_percent, updater.indexUrl, downloadedSize, totalSize, percent);
-        sendStatus(getApplicationContext(), STATUS_INFO, message, percent);
+        String message = context.getString(R.string.status_processing_xml_percent, updater.indexUrl, downloadedSize, totalSize, percent);
+        sendStatus(context, STATUS_INFO, message, percent);
     }
 
     /**
@@ -606,14 +535,14 @@ public class UpdateService extends IntentService {
      * listener with `totalBytes = 0`. Doing so will result in a message of "Saving app details" sent to the user. If
      * you know how many apps you have processed, then a message of "Saving app details (x/total)" is displayed.
      */
-    private void reportProcessingAppsProgress(RepoUpdater updater, int appsSaved, int totalApps) {
+    public static void reportProcessingAppsProgress(Context context, RepoUpdater updater, int appsSaved, int totalApps) {
         Utils.debugLog(TAG, "Committing " + updater.indexUrl + "(" + appsSaved + "/" + totalApps + ")");
         String message;
         if (totalApps > 0) {
-            message = getString(R.string.status_inserting_x_apps, appsSaved, totalApps, updater.indexUrl);
+            message = context.getString(R.string.status_inserting_x_apps, appsSaved, totalApps, updater.indexUrl);
         } else {
-            message = getString(R.string.status_inserting_apps);
+            message = context.getString(R.string.status_inserting_apps);
         }
-        sendStatus(getApplicationContext(), STATUS_INFO, message);
+        sendStatus(context, STATUS_INFO, message);
     }
 }

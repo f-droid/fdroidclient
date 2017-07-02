@@ -25,11 +25,9 @@ package org.fdroid.fdroid;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
-import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -87,33 +85,6 @@ import javax.xml.parsers.SAXParserFactory;
  */
 public class RepoUpdater {
     private static final String TAG = "RepoUpdater";
-
-    /**
-     * @see #EXTRA_URL
-     * @see #EXTRA_BYTES_READ
-     * @see #EXTRA_TOTAL_BYTES
-     */
-    public static final String ACTION_DOWNLOADING = "org.fdroid.fdroid.RepoUpdater.ACTION_DOWNLOADING";
-
-    /**
-     * @see #EXTRA_URL
-     * @see #EXTRA_BYTES_READ
-     * @see #EXTRA_TOTAL_BYTES
-     */
-    public static final String ACTION_INDEX_PROCESSING = "org.fdroid.fdroid.RepoUpdater.ACTION_INDEX_PROCESSING";
-
-    /**
-     * @see #EXTRA_URL
-     * @see #EXTRA_APPS_SAVED
-     * @see #EXTRA_TOTAL_APPS
-     */
-    public static final String ACTION_SAVING_APPS = "org.fdroid.fdroid.RepoUpdater.ACTION_SAVING_APPS";
-
-    public static final String EXTRA_URL = "URL";
-    public static final String EXTRA_BYTES_READ = "BYTES_READ";
-    public static final String EXTRA_TOTAL_BYTES = "TOTAL_BYTES";
-    public static final String EXTRA_APPS_SAVED = "APPS_SAVED";
-    public static final String EXTRA_TOTAL_APPS = "TOTAL_APPS";
 
     final String indexUrl;
 
@@ -289,31 +260,19 @@ public class RepoUpdater {
     protected final ProgressListener downloadListener = new ProgressListener() {
         @Override
         public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-            Intent intent = new Intent(ACTION_DOWNLOADING);
-            intent.putExtra(EXTRA_URL, indexUrl);
-            intent.putExtra(EXTRA_BYTES_READ, bytesRead);
-            intent.putExtra(EXTRA_TOTAL_BYTES, totalBytes);
-            LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+            UpdateService.reportDownloadProgress(context, RepoUpdater.this, bytesRead, totalBytes);
         }
     };
 
     protected final ProgressListener processIndexListener = new ProgressListener() {
         @Override
         public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
-            Intent intent = new Intent(ACTION_INDEX_PROCESSING);
-            intent.putExtra(EXTRA_URL, indexUrl);
-            intent.putExtra(EXTRA_BYTES_READ, bytesRead);
-            intent.putExtra(EXTRA_TOTAL_BYTES, totalBytes);
-            LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+            UpdateService.reportProcessIndexProgress(context, RepoUpdater.this, bytesRead, totalBytes);
         }
     };
 
-    protected void notifyProcessingApps(int appsSaved, int totalBytes) {
-        Intent intent = new Intent(ACTION_SAVING_APPS);
-        intent.putExtra(EXTRA_URL, indexUrl);
-        intent.putExtra(EXTRA_APPS_SAVED, appsSaved);
-        intent.putExtra(EXTRA_TOTAL_APPS, totalBytes);
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+    protected void notifyProcessingApps(int appsSaved, int totalApps) {
+        UpdateService.reportProcessingAppsProgress(context, this, appsSaved, totalApps);
     }
 
     protected void notifyCommittingToDb() {
