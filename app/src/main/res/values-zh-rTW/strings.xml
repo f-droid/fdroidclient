@@ -2,10 +2,8 @@
 <resources>
     <string name="app_name">F-Droid</string>
 
-    <string name="SignatureMismatch">此應用軟體的新版本被簽署了與舊版本不同的金鑰。如要安裝新版本，您必須將舊版本應用軟體先解除安裝。請於完成該操作後再嘗試一次。（注意解除安裝應用軟體時會清除任何由該應用軟體儲存於系統中的所有資料）</string>
-    <string name="installIncompatible">看起來此軟體包與您的裝置並不相容。
-您無論如何都要嘗試安裝它嗎？
-</string>
+    <string name="SignatureMismatch">此應用程式的新版本被簽署了與舊版本不同的金鑰。如要安裝新版本，您必須將舊版本應用程式先解除安裝。請於完成該操作後再嘗試一次。（注意，解除安裝時會清除任何由該應用程式儲存於系統中的所有資料）</string>
+    <string name="installIncompatible">應用程式與您的裝置並不相容。您仍然要安裝嗎？</string>
     <string name="version">版本</string>
     <string name="delete">刪除</string>
     <string name="enable_nfc_send">啟用 NFC 傳送功能……</string>
@@ -19,7 +17,7 @@
     <string name="update_interval_zero">不要自動更新應用軟體清單</string>
     <string name="automatic_scan_wifi">只在 Wi-Fi 網路上更新</string>
     <string name="automatic_scan_wifi_on">只在未計量的網路例如 Wi-Fi 上自動更新</string>
-    <string name="notify">更新通知</string>
+    <string name="notify">顯示可用的更新</string>
     <string name="notify_on">當有軟體可以更新時秀出一個通知</string>
     <string name="local_repo_name">您的本地端應用軟體倉庫的名稱</string>
     <string name="local_repo_name_summary">您本地端應用軟體倉庫對外宣傳的名稱：%s</string>
@@ -165,9 +163,7 @@
     <string name="repo_details">應用軟體倉庫</string>
     <string name="repo_num_apps">應用程式數量</string>
     <string name="repo_last_update">上次更新</string>
-    <string name="unsigned_description">這表示應用程式清單無法被驗證。
-您要小心使用來自未簽署的索引的應用程式。
-</string>
+    <string name="unsigned_description">這表示應用程式清單無法被驗證。 您應該小心從未簽署索引下載的應用程式。</string>
     <string name="repo_not_yet_updated">此應用軟體倉庫尚未被使用。
 您需要啟用它才能檢視其中的應用程式。
 </string>
@@ -239,7 +235,7 @@
     <string name="swap_cant_send_no_bluetooth">無法傳送 F-Droid，因為此裝置沒有藍牙功能。</string>
     <string name="swap_not_enabled">沒有啟用交換功能</string>
     <string name="uninstall_confirm">您想要解除安裝此應用程式嗎？</string>
-    <string name="download_error">下載失敗</string>
+    <string name="download_error">下載失敗！</string>
 
     <string name="system_installer_on">使用 F-Droid 特權擴充以安裝、更新和移除套裝軟體</string>
     <string name="uninstall_system">更新/解除安裝特權擴充</string>
@@ -263,9 +259,9 @@
     <string name="useTorSummary">為了增強隱私保護，強制下載流量通過 Tor</string>
     <string name="enable_proxy_summary">為所有的網路要求組態 HTTP Proxy</string>
     <string name="proxy_host">Proxy 主機</string>
-    <string name="proxy_host_summary">組態您的 proxy 主機名稱 (例如 127.0.0.1)</string>
+    <string name="proxy_host_summary">您的 proxy 主機名稱 (例如 127.0.0.1)</string>
     <string name="proxy_port">Proxy 的埠號</string>
-    <string name="proxy_port_summary">組態您 proxy 的埠號 (例如 8118)</string>
+    <string name="proxy_port_summary">您 proxy 的通訊埠 (例如 8118)</string>
 
     <string name="status_download">正在下載\n%2$s / %3$s (%4$d%%) 來自\n%1$s</string>
 
@@ -292,7 +288,7 @@
 </string>
     <string name="system_install_denied_permissions">擴充未被授予特權權限！請建立一份錯誤報告！
 </string>
-    <string name="system_install_post_success">成功的安裝了 F-Droid 特權擴充</string>
+    <string name="system_install_post_success">F-Droid 特權擴充已安裝</string>
     <string name="system_install_post_fail">安裝的 F-Droid 特權擴充失敗</string>
     <string name="system_install_question">您想要安裝 F-Droid 特權擴充嗎？</string>
     <string name="system_uninstall">您想要解除安裝 F-Droid 特權擴充嗎？</string>
@@ -314,7 +310,7 @@
     <string name="swap_visible_wifi">經由 Wi-Fi 可看見</string>
     <string name="swap_not_visible_wifi">經由 Wi-Fi 不可看見</string>
     <string name="swap_connecting">連線</string>
-    <string name="system_install_post_success_message">F-Droid 特權擴充已成功安裝。這允許 F-Droid 安裝、更新以及解除安裝其擁有的應用程式。</string>
+    <string name="system_install_post_success_message">F-Droid 特權擴充已安裝。這允許 F-Droid 自行安裝、更新以及解除安裝應用程式。</string>
     <string name="system_install_post_fail_message">F-Droid 特權擴充安裝失敗。此安裝方式並不支援所有發行的 Android 版本，請查閱 F-Droid 的 bug
         追蹤以取得詳細資訊。
     </string>
@@ -343,30 +339,14 @@
     <string name="uninstall_error_notify_title">%s 解除安裝時錯誤</string>
 
 
-    <string name="install_confirm_update">您想要安裝更新到現有的應用程式嗎？
-您不會遺失現有的資料。
-更新後的應用程式會獲得以下的存取權：
-</string>
-    <string name="install_confirm_update_system">您想要安裝更新到內置的應用程式嗎？
-您不會遺失現有的資料。
-更新後的應用程式會獲得以下的存取權：
-</string>
-    <string name="install_confirm_update_no_perms">您想要安裝更新到現有的應用程式嗎？
-您不會遺失現有的資料。
-它不需要任何特殊的存取權限。
-</string>
-    <string name="install_confirm_update_system_no_perms">您想要安裝更新到內置的應用程式嗎？
-您不會遺失現有的資料。
-它不需要任何特殊的存取權限。
-</string>
-    <string name="crash_dialog_text">出現意外的錯誤，迫使應用程式停止。
-您願意以電子郵件提供詳細資訊，以協
-助修復這個問題嗎？
-</string>
+    <string name="install_confirm_update">您想要安裝更新到現有的應用程式嗎？您不會遺失現有的資料。更新後的應用程式會獲得以下的存取權：</string>
+    <string name="install_confirm_update_system">您想要安裝更新到內置的應用程式嗎？您不會遺失現有的資料。更新後的應用程式會獲得以下的存取權：</string>
+    <string name="install_confirm_update_no_perms">您想要安裝更新到現有的應用程式嗎？您不會遺失現有的資料。它不需要任何特殊的存取權限。</string>
+    <string name="install_confirm_update_system_no_perms">您想要安裝更新到內置的應用程式嗎？您不會遺失現有的資料。它不需要任何特殊的存取權限。</string>
+    <string name="crash_dialog_text">出現意外的錯誤，迫使應用程式停止。 您願意以電子郵件提供詳細資訊，以協助修復這個問題嗎？</string>
     <string name="swap_join_same_wifi_desc">要使用 Wi-Fi 進行交換，確保雙方是在同個一網路上。如果您不能 存取同個網絡，你們其中的一個，可以建立一個 Wi-Fi 熱點。</string>
     <string name="swap_qr_isnt_for_swap">您掃描的 QR 碼看起來並不是一個交換碼。</string>
-    <string name="swap_connection_misc_error">連線到裝置時發生錯誤，似乎不能用它來進行交換。
-</string>
+    <string name="swap_connection_misc_error">連線到裝置時發生錯誤，不能與它進行交換！</string>
     <string name="keep_install_history">保留安裝履歷</string>
     <string name="keep_install_history_summary">F-Droid 裡面的所有安裝和解除安裝存放在一個日誌中</string>
     <string name="update_auto_install">自動安裝更新</string>
@@ -378,7 +358,7 @@
     <string name="app_details_donate_prompt_unknown_author">購買%1$s開發者的咖啡！</string>
     <string name="app_details_donate_prompt">%1$s由%2$s建立。買他們的咖啡！</string>
 
-    <string name="repositories_summary">增加另外的應用程式來源</string>
+    <string name="repositories_summary">為應用程式增加其他的來源</string>
     <string name="notification_title_single_update_available">可用的更新</string>
     <string name="notification_title_single_ready_to_install">準備安裝</string>
     <string name="notification_title_single_ready_to_install_update">更新就緒準備安裝</string>
@@ -449,7 +429,7 @@
 </plurals>
     <string name="updates__tts__download_app">下載</string>
     <string name="antifeatures">Anti-features</string>
-    <string name="app_list__name__successfully_installed">%1$s 已成功安裝</string>
+    <string name="app_list__name__successfully_installed">%1$s 已安裝</string>
     <string name="nearby_splash__download_apps_from_people_nearby">沒有網路嗎？從您附近的人下載應用程式！
 </string>
     <string name="nearby_splash__find_people_button">找我附近的人</string>
@@ -489,4 +469,6 @@
 </plurals>
 <string name="by_author_format">由 %s</string>
     <string name="download_404">找不到要求的檔案。</string>
+    <string name="force_old_index">強制舊的索引格式</string>
+    <string name="force_old_index_summary">萬一有錯誤或相容性問題，使用 XML 應用程式索引</string>
     </resources>

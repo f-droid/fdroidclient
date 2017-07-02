@@ -1,12 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">La versión nueva ta roblada con una clave diferente. Pa instalar la versión nueva,
-        tien de desinstalase primero la vieya. Por favor, failo y volvi tentalo. (Decátate que la desinstalación
-        desaniciará cualesquier datu internu atroxáu pola aplicación)
-    </string>
-    <string name="installIncompatible">Paez qu\'esti paquete nun ye compatible col to preséu. ¿Quies tentar d\'instalalu
-        de toes toes?
-    </string>
+    <string name="SignatureMismatch">La versión nueva ta roblada con una clave diferente. Pa instalar la versión nueva, tien de desinstalase primero la vieya. Por favor, failo y vuelve a tentalo. (Decátate que la desinstalación desaniciará cualquier datu internu atroxáu pola app)</string>
+    <string name="installIncompatible">App incompatible col to preséu, ¿instalar de toes toes?</string>
     <string name="version">Versión</string>
     <string name="delete">Desaniciar</string>
     <string name="enable_nfc_send">Habilitar unviu per NFC…</string>
@@ -17,7 +12,7 @@
     <string name="update_interval_zero">Nun anovar automáticamente\'l llistáu d\'aplicaciones</string>
     <string name="automatic_scan_wifi">Namái na Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Auto-anovar namái en redes non midíes como Wi-Fi</string>
-    <string name="notify">Avisos d\'anovamientos</string>
+    <string name="notify">Ver los anovamientos disponibles</string>
     <string name="notify_on">Amuesa un avisu cuando tán disponibles anovamientos</string>
     <string name="system_installer">Estensión con privilexos</string>
     <string name="system_installer_on">Usa la estensión F-droid con privilexos pa instalar, anovar y desaniciar
@@ -84,8 +79,8 @@
     <string name="display">Amosar</string>
     <string name="expert">Mou espertu</string>
     <string name="expert_on">Amuesa información estra y habilita axustes estra</string>
-    <string name="search_hint">Gueta aplicaciones</string>
-    <string name="appcompatibility">Compatibilidá d\'aplicación</string>
+    <string name="search_hint">Guetar apps</string>
+    <string name="appcompatibility">Compatibilidá d\'app</string>
     <string name="show_incompat_versions">Versiones incompatibles</string>
     <string name="show_incompat_versions_on">Amuesa les versiones d\'aplicaciones incompatibles col preséu</string>
     <string name="rooted">Inorar root</string>
@@ -109,9 +104,9 @@
     <string name="enable_proxy_title">Habilitar proxy HTTP</string>
     <string name="enable_proxy_summary">Configura\'l proxy HTTP pa toles solicitúes de rede</string>
     <string name="proxy_host">Agospiu del proxy</string>
-    <string name="proxy_host_summary">Configura\'l nome d\'agospiu del to proxy (exem. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Nome de host del to proxy (exem. 127.0.0.1)</string>
     <string name="proxy_port">Puertu del proxy</string>
-    <string name="proxy_port_summary">Configura\'l númberu de puertu del to proxy (exem. 8118)</string>
+    <string name="proxy_port_summary">Númberu de puertu del to proxy (exem. 8118)</string>
     <string name="status_download">Baxando
         \n%2$s / %3$s (%4$d%%)\ndende %1$s
     </string>
@@ -129,9 +124,7 @@
     <string name="repo_description">Descripción</string>
     <string name="repo_last_update">Anovamientu caberu</string>
     <string name="repo_name">Nome</string>
-    <string name="unsigned_description">Esto quier dicir que nun pudo verificase\'l llistáu d\'aplicaciones.
-        Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.
-    </string>
+    <string name="unsigned_description">Esto significa que nun pudo comprobase la llista d\'apps. Tendríes de tener procuru con apps baxaes dende índices ensin roblar.</string>
     <string name="repo_not_yet_updated">Entá nun s\'usó esti repositoriu.
         Precises anovalu pa ver les aplicaciones que forne.
     </string>
@@ -202,9 +195,7 @@
     <string name="swap_cant_find_peers">¿Nun pues alcontrar a quien tas guetando?</string>
     <string name="swap_send_fdroid">Unviar F-droid</string>
     <string name="swap_qr_isnt_for_swap">El códigu QR qu\'escaniesti nun paez ser un códigu d\'intercambéu.</string>
-    <string name="swap_connection_misc_error">Asocedió un fallu entrín se coneutaba col preséu, paez que nun podemos
-        facer l\'intercambéu con elli.
-    </string>
+    <string name="swap_connection_misc_error">Asocedió un fallu entrín se coneutaba col preséu, ¡nun podemos facer l\'intercambiu con elli!</string>
     <string name="bluetooth_unavailable">Bluetooth non disponible</string>
     <string name="swap_confirm">Confirmar intercambéu</string>
     <string name="swap_wifi_device_name">Nome del preséu</string>
@@ -251,19 +242,13 @@
 
     <string name="install_error_unknown">Fallu al instalar pola mor d\'un fallu desconocíu</string>
     <string name="uninstall_error_unknown">Fallu al desinstalar pola mor d\'un fallu desconocíu</string>
-    <string name="system_install_post_success">Instalóse con ésitu la estensión F-Droid con privilexos</string>
+    <string name="system_install_post_success">Instalada la estensión F-Droid con privilexos</string>
     <string name="system_install_post_fail">Fallo la instalación de la estensión F-Droid con privilexos</string>
-    <string name="system_install_post_success_message">Instalóse con ésitu la estensión F-Droid con privilexos. Esto
-        permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.
-    </string>
+    <string name="system_install_post_success_message">Instalada la estensión F-Droid con privilexos. Esto permite a F-Droid instalar, anovar y desinstalar apps por sigo mesmu.</string>
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">¿Quies instalar la estensión F-Droid con privilexos?</string>
-    <string name="system_install_warning_lollipop">¿Quies instalar F-Droid pivilexáu?\nEsto tardará 10 segundos y el
-        preséu
-        <b>reaniciaráse</b>
-        darréu.
-    </string>
+    <string name="system_install_warning_lollipop">Esto tardará unos 10 segundos y el preséu <b>reaniciaráse</b> darréu.</string>
     <string name="system_uninstall">¿Quies desinstalar la estensión F-Droid con privilexos?</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
@@ -288,22 +273,10 @@
     <string name="swap_not_enabled_description">Enantes d\'intercambiar, el to preséu ha tar visible.</string>
 
     <string name="install_confirm">precisa accesu a</string>
-    <string name="install_confirm_update">¿Quies instalar un anovamientu pa esta aplicación?
-        Nun va perdese datu dalu esistente.
-        L\'aplicación anovada tendrá accesu a:
-    </string>
-    <string name="install_confirm_update_system">¿Quies instalar un anovamientu pa esta aplicación integrada?
-        Nun va perdese datu dalu esistente.
-        L\'aplicación anovada tendrá accesu a:
-    </string>
-    <string name="install_confirm_update_no_perms">¿Quies instalar un anovamientu pa esta aplicación?
-        Nun va perdese datu dalu esistente.
-        L\'aplicación nun rique dal accesu especial.
-    </string>
-    <string name="install_confirm_update_system_no_perms">¿Quies instalar un anovamientu pa esta aplicación integrada?
-        Nun va perdese datu dalu esistente.
-        L\'aplicación nun rique accesu especial dalu.
-    </string>
+    <string name="install_confirm_update">¿Quies instalar un anovamientu pa esta app? Nun va perdese datu dalu esistiente. La app anovada tendrá accesu a:</string>
+    <string name="install_confirm_update_system">¿Quies instalar un anovamientu pa esta app integrada? Nun va perdese datu dalu esistiente. La app anovada tendrá accesu a:</string>
+    <string name="install_confirm_update_no_perms">¿Quies instalar un anovamientu pa esta app? Nun va perdese datu dalu esistiente. La app nun rique dal accesu especial.</string>
+    <string name="install_confirm_update_system_no_perms">¿Quies instalar un anovamientu pa esta app integrada? Nun va perdese datu dalu esistiente. La app nun rique accesu especial dalu.</string>
     <string name="newPerms">Nuevu</string>
     <string name="allPerms">Too</string>
     <string name="uninstall_confirm">¿Quies desinstalar esta aplicación?</string>
@@ -325,7 +298,7 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="download_error">Descarga non esitosa</string>
+    <string name="download_error">Falló la descarga</string>
 
     <string name="system_install_denied_signature">¡La robla d\'esta estensión ta mal! ¡Por favor, crea un informe de
         fallu!
@@ -354,20 +327,17 @@
 
     <string name="about_license">Llicencia</string>
 
-    <string name="status_inserting_apps">Guardando detalles d\'aplicaciones</string>
+    <string name="status_inserting_apps">Guardando detalles de la app</string>
 
     <string name="crash_dialog_title">F-Droid cascó</string>
-    <string name="crash_dialog_text">Asocedió un fallu inesperáu
-        forciando\'l paru de l\'aplicación. ¿Prestaríate unviar un
-        corréu colos detalles p\'ayudar a iguar esti problema?
-    </string>
+    <string name="crash_dialog_text">Asocedió un fallu inesperáu forciando\'l paru de la app. ¿Prestaríate unviar un corréu colos detalles p\'ayudar a iguar esti problema?</string>
     <string name="crash_dialog_comment_prompt">Equí pues amestar información y comentarios estra:</string>
     <string name="antinonfreeassetslist">Esta aplicación contién activos non llibres</string>
 
     <string name="useTor">Usar Tor</string>
     <string name="useTorSummary">Forcia la descaga\'l tráficu pente Tor pa una privacidá aumentada</string>
     <string name="swap_stopping_wifi">Parando Wi-Fi…</string>
-    <string name="update_auto_download">Auto-baxar anovamientos</string>
+    <string name="update_auto_download">Baxar anovamientos automáticamente</string>
     <string name="update_auto_download_summary">Los anovamientos báxense de fondu automáticamente y avisarásete pa
         instalaos
     </string>
@@ -402,7 +372,7 @@
     <string name="hide_anti_feature_apps_on">Abuxa les aplicaciones que rican carauterístiques de pagu, non llibres y de
         rastrexu
     </string>
-    <string name="warning_no_internet">Nun pue anovase, ¿tas coneutáu a internet?</string>
+    <string name="warning_no_internet">Nun pué anovase, ¿tas coneutáu a Internet?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt">%1$s creólu %2$s. ¡Convídalu a sidres!</string>
 
@@ -414,7 +384,7 @@
     <string name="installed_app__updates_ignored_for_suggested_version">Anovamientos inoraos pa la versión %1$s</string>
     <string name="clear_search">Llimpiar gueta</string>
 
-    <string name="repositories_summary">Amiesta fontes adicionales d\'aplicaciones</string>
+    <string name="repositories_summary">Amiesta más fontes d\'apps</string>
     <string name="main_menu__categories">Estayes</string>
     <string name="preference_category__my_apps">Les mios aplicaciones</string>
     <string name="preference_manage_installed_apps">Xestionar aplicaciones instalaes</string>
@@ -434,7 +404,7 @@
     <string name="app_list__name__downloading_in_progress">Baxando %1$s</string>
     <string name="app__install_downloaded_update">Anovar</string>
 
-    <string name="app_list__name__successfully_installed">%1$s instalóse con ésitu</string>
+    <string name="app_list__name__successfully_installed">instalóse %1$s</string>
     <string name="updates__tts__download_app">Baxar</string>
     <string name="updates__tts__download_updates_for_all_apps">Baxar tolos anovamientos</string>
 
@@ -447,9 +417,9 @@
     </plurals>
     <string name="details_last_updated_today">Anovóse güei</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Anovóse güei</item>
-        <item quantity="other">Anovóse hai %1$s día</item>
-    </plurals>
+	<item quantity="one">Anovóse hai %1$d día</item>
+	<item quantity="other">Anovóse hai %1$d díes</item>
+</plurals>
     <string name="tts_category_name">Estaya %1$s</string>
 
     <string name="notification_action_install">Instalar</string>
@@ -471,4 +441,63 @@
 
     <string name="antifeatureswarning">Esta aplicación tien carauterístiques que quiciabes nun te presten.</string>
     <string name="main_menu__latest_apps">Lo cabero</string>
+<string name="main_menu__swap_nearby">Cercanía</string>
+
+    <string name="notification_title_summary_install_error">Falló la instalación</string>
+    <string name="by_author_format">per %s</string>
+    <string name="force_old_index">Forzar l\'antiguu formatu d\'índiz</string>
+    <string name="force_old_index_summary">En casu d\'haber fallos o problemes de compatibilidá, usa l\'índiz XML de la app</string>
+    <string name="app__newly_added">Nueva</string>
+    <string name="app__tts__cancel_download">Encaboxar descarga</string>
+    <string name="menu_email">Mandar un corréu al autor</string>
+    <string name="menu_video">Videu</string>
+    <string name="menu_license">Llicencia: %s</string>
+    <string name="antifeatures">Carauterístiques non llibres</string>
+    <string name="hide_anti_feature_apps">Poner en buxu  les apps con componentes non llibres</string>
+    <string name="download_404">Nun s\'alcontró el ficheru solicitáu.</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">Ver %d</item>
+	<item quantity="other">Ver toles %d</item>
+</plurals>
+
+    <string name="install_error_not_yet_supported">Entá nun puede instalase\'l tipu de ficheru: %s</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">¿Nun tienes Internet? ¡Descarga apps de xente cercana!</string>
+    <string name="nearby_splash__find_people_button">Alcontrar persones cercanes</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Les dos partes necesiten %1$s pa usar la cercanía.</string>
+
+    <string name="app__tts__downloading_progress">Descargando, %1$d%% completáu</string>
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d más…</item>
+	<item quantity="other">+%1$d más…</item>
+</plurals>
+    <string name="notification_title_single_ready_to_install">Preparáu pa instalar</string>
+    <string name="notification_title_single_ready_to_install_update">Anovamientu preparáu pa instalar</string>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d anovamientu</item>
+	<item quantity="other">%1$d anovamientos</item>
+</plurals>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d app instalada</item>
+	<item quantity="other">%1$d app instalaes</item>
+</plurals>
+    <string name="notification_title_summary_ready_to_install">Preparáu pa instalar</string>
+    <string name="notification_title_summary_ready_to_install_update">Anovamientu preparáu pa instalar</string>
+    <string name="notification_title_summary_installed">Instalación correuta</string>
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Ver %1$d app de la categoría %2$s</item>
+	<item quantity="other">Ver les %1$d apps de la categoría %2$s</item>
+</plurals>
+
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Anovóse hai %1$d selmana</item>
+	<item quantity="other">Anovóse hai %1$d selmanes</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Anovóse hai %1$d mes</item>
+	<item quantity="other">Anovóse hai %1$d meses</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Anovóse hai %1$d añu</item>
+	<item quantity="other">Anovóse hai %1$d años</item>
+</plurals>
 </resources>

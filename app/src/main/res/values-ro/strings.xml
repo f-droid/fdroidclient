@@ -5,11 +5,11 @@
     <string name="cache_downloaded">Pastreaza aplicatiile descarcate</string>
     <string name="updates">Actualizări</string>
     <string name="other">Altele</string>
-    <string name="notify">Notificări actualizări</string>
+    <string name="notify">Arată actualizările disponibile</string>
     <string name="app_details">Detalii aplicatie</string>
     <string name="about_title">Despre F-Droid</string>
     <string name="about_site">Site web</string>
-    <string name="about_mail">Email</string>
+    <string name="about_mail">E-mail</string>
     <string name="about_version">Versiune</string>
     <string name="app_installed">Instalat</string>
     <string name="app_not_installed">Nu este instalat</string>
@@ -30,7 +30,7 @@
     <string name="details_notinstalled">Nu e instalat</string>
     <string name="display">Afişează</string>
     <string name="expert">Setari expert</string>
-    <string name="rooted">Ignora aplicatiile ce necesita root</string>
+    <string name="rooted">Ignora aplicaţiile ce necesită root</string>
     <string name="ignoreTouch_on">Include mereu aplicatii ce necesita touchscreen</string>
     <string name="theme">Temă</string>
     <string name="repo_num_apps">Număr de aplicaţii</string>
@@ -39,10 +39,7 @@
     <string name="unknown">Necunoscut</string>
     <string name="requires_features">Necesită: %1$s</string>
     <string name="menu_email">E-mail autor</string>
-    <string name="SignatureMismatch">Noua versiune este semnata cu o cheie diferita fata de versiunea veche. Pentru a
-        putea instala noua versiune, cea veche trebuie intai dezinstalata. Va rugam sa faceti asta si sa reincercati.
-        (Tineti minte ca procesul de dezinstalare a aplicatiei o sa stearga datele interne stocate ale acesteia)
-    </string>
+    <string name="SignatureMismatch">Noua versiune este semnata cu o cheie diferita fata de versiunea veche. Pentru a putea instala noua versiune, cea veche trebuie intai dezinstalata. Va rugam sa faceti asta si sa reincercati. (Tineti minte ca procesul de dezinstalare a aplicatiei o sa stearga datele interne stocate ale acesteia)</string>
     <string name="app_name">F-Droid</string>
 
     <string name="enable_nfc_send">Activeaza trimiterea prin NFC…</string>
@@ -102,10 +99,10 @@
     <string name="ignoreTouch">Ignora touchscreen</string>
     <string name="show_incompat_versions_on">Arata versiunile incompatibile cu acest dispozitiv</string>
     <string name="show_incompat_versions">Versiuni incompatibile</string>
-    <string name="appcompatibility">Compatibilitate aplicatii</string>
+    <string name="appcompatibility">Compatibilitate aplicaţii</string>
     <string name="expert_on">Arata informatii si setari suplimentare</string>
 
-    <string name="search_hint">Cauta aplicatii</string>
+    <string name="search_hint">Caută aplicaţii</string>
 
     <string name="antinonfreeassetslist">Aceasta aplicatie contine resurse ce nu sunt la disponibile la liber</string>
 
@@ -164,12 +161,12 @@
     <string name="unverified">Neverificat</string>
     <string name="no_permissions">Nu foloseste nici o permisiune.</string>
     <string name="all_other_repos_fine">Nici un alt depozit nu a mai dat vreo eroare.</string>
-    <string name="status_inserting_apps">Salvare detalii aplicatie</string>
+    <string name="status_inserting_apps">Salvare detalii aplicaţie</string>
     <string name="status_processing_xml_percent">Procesare %2$s / %3$s (%4$d%%) din %1$s</string>
     <string name="status_download_unknown_size">Descarcare\n%2$s din\n%1$s</string>
-    <string name="proxy_port_summary">Configureaza port proxy (ex. 8118)</string>
+    <string name="proxy_port_summary">Port proxy (ex. 8118)</string>
 
-    <string name="proxy_host_summary">Configureaza gazda proxy (ex. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Gazdă proxy (ex. 127.0.0.1)</string>
     <string name="proxy_host">Gazda proxy</string>
     <string name="enable_proxy_title">Activeaza proxy HTTP</string>
     <string name="next">Urmatorul</string>
@@ -241,7 +238,7 @@
     <string name="perms_new_perm_prefix">Nou:</string>
     <string name="allPerms">Toate</string>
     <string name="uninstall_update_confirm">Vrei sa inlocuiesti aceasta aplicatie cu versiunea din fabrica?</string>
-    <string name="download_error">Descarcare finalizata cu eroare</string>
+    <string name="download_error">Descărcare eşuată!</string>
 
     <string name="interval_2w">O data la 2 saptamani</string>
 
@@ -305,15 +302,10 @@
     <string name="keep_year">Un an</string>
     <string name="keep_forever">Totdeauna</string>
 
-    <string name="crash_dialog_text">O eroare neasteptata s-a produs
-        fortand oprirea aplicatiei. Doriti sa trimite-ti un e-mail cu detalii,
-        pentru a putea ajuta la rezolvarea acestei probleme?
-    </string>
+    <string name="crash_dialog_text">O eroare neaşteptată s-a produs forţând oprirea aplicaţiei. Doriţi să trimite-ţi un e-mail cu detalii pentru a putea ajuta la rezolvarea acestei probleme?</string>
     <string name="uninstalling">Dezinstalare…</string>
 
-    <string name="installIncompatible">Se pare ca acest pachet nu este compatibil cu dispozitivul dumneavoastra. Doriti
-        sa se incerce instalarea lui oricum?
-    </string>
+    <string name="installIncompatible">Aplicaţia nu este compatibilă cu dispozitivul dumneavoastră. Instalaţi oricum?</string>
     <string name="installing">Instalare…</string>
     <string name="uninstall_error_notify_title">Eroare la dezinstalarea %s</string>
 
@@ -353,7 +345,7 @@
         de aplicatii nu a putut fi verificata. Ar trebui sa fiti atenti
         cu aplicatiile descarcate din indexuri nesemnate.
     </string>
-    <string name="warning_no_internet">Nu se poate face actualizarea, exista conexiune la internet?</string>
+    <string name="warning_no_internet">Nu se poate face actualizarea, exista conexiune la Internet?</string>
     <string name="versions">Versiuni</string>
     <string name="app_details_donate_prompt">%1$s creat de %2$s. Cumpara-le o cafea!</string>
 
@@ -434,7 +426,7 @@
     <string name="installed_app__updates_ignored">Actualizări ignorate</string>
     <string name="installed_apps__activity_title">Aplicatii instalate</string>
 
-    <string name="app_list__name__successfully_installed">%1$s instalat cu succes</string>
+    <string name="app_list__name__successfully_installed">%1$s instalat</string>
     <string name="app_list__name__downloading_in_progress">Se descarca %1$s</string>
     <string name="app__install_downloaded_update">Actualizare</string>
 
@@ -447,7 +439,7 @@
     <string name="menu_video">Video</string>
     <string name="menu_license">Licență: %s</string>
     <string name="install_error_not_yet_supported">Acest tip de fișier nu se poate încă instala: %s</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Nu ai acces la internet? Descarcă aplicații de la persoanele de lângă tine!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Nu ai acces la Internet? Descarcă aplicații de la persoanele de lângă tine!</string>
     <string name="nearby_splash__find_people_button">Găsește persoane lângă mine</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambele persoane au nevoie de %1$s pentru a putea folosi această opțiune.</string>
 
@@ -481,4 +473,7 @@
 	<item quantity="few">Actualizat acum %1$s săptămâni</item>
 	<item quantity="other">Actualizat acum %1$s săptămâni</item>
 </plurals>
+    <string name="force_old_index">Forţează vechiul format de index</string>
+    <string name="force_old_index_summary">În caz de probleme legate de compatibilitate, foloseşte indexul de aplicaţii XML</string>
+    <string name="by_author_format">de %s</string>
     </resources>

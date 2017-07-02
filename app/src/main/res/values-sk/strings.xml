@@ -11,14 +11,14 @@
     <string name="delete">Vymazať</string>
     <string name="enable_nfc_send">Zapnúť odoslanie cez NFC …</string>
     <string name="cache_downloaded">Prevzaté balíky ponechať na úložisku</string>
-    <string name="updates">Aktualizácie</string>
+    <string name="updates">Obnovy</string>
     <string name="other">Iné</string>
     <string name="update_interval">Interval automat. aktualizácií</string>
     <string name="update_interval_zero">Automaticky neobnovovať zoznam</string>
     <string name="automatic_scan_wifi">Iba cez Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Automaticky aktualizovať len na nespoplatnených sieťach, ako napr. Wi-Fi
     </string>
-    <string name="notify">Oznamovanie aktualizácií</string>
+    <string name="notify">Zobraziť dostupné aktualizácie</string>
     <string name="notify_on">Upozorniť na dostupnosť aktualizácií</string>
     <string name="system_installer">Ukladať balíky do vyr. pamäte</string>
     <string name="system_installer_on">Používať Oprávnené Rozšírenie F-Droidu na inštaláciu, aktualizácie a odstránenie
@@ -31,7 +31,7 @@
     <string name="no_such_app">Aplikácia sa nenašla.</string>
     <string name="about_title">O F-Droide</string>
     <string name="about_site">Webstránka</string>
-    <string name="about_mail">Email</string>
+    <string name="about_mail">E-mail</string>
     <string name="about_version">Verzia</string>
     <string name="app_installed">Nainštalované</string>
     <string name="app_not_installed">Nie je nainštalované</string>
@@ -104,9 +104,9 @@
     <string name="enable_proxy_title">Povoliť HTTP Proxy</string>
     <string name="enable_proxy_summary">Nastaviť HTTP Proxy na všetky sieťové žiadosti</string>
     <string name="proxy_host">Hostiteľ proxy</string>
-    <string name="proxy_host_summary">Nastavte názov hostiteľa svojej proxy (napr. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Adresa proxy servera (napr. 127.0.0.1)</string>
     <string name="proxy_port">Port proxy</string>
-    <string name="proxy_port_summary">Nastaviť číslo portu proxy (napr. 8118)</string>
+    <string name="proxy_port_summary">Číslo portu proxy servera (napr. 8118)</string>
     <string name="status_download">Sťahuje sa %2$s / %3$s (%4$d%%) z
         %1$s
     </string>
@@ -219,14 +219,13 @@
     </string>
     <string name="install_error_unknown">Nenainštalované vďaka neznámej chybe</string>
     <string name="uninstall_error_unknown">Neodinštalované vďaka neznámej chybe</string>
-    <string name="system_install_post_success">Úspešne bolo nainštalované Oprávnené Rozšírenie F-Droidu</string>
+    <string name="system_install_post_success">Privilegovaný doplnok F-Droidu bol nainštalovaný</string>
     <string name="system_install_post_fail">Inštalácia Oprávneného Rozšírenia F-Droidu zlyhala</string>
     <string name="system_install_installing">Inštalovanie…</string>
     <string name="system_install_uninstalling">Odinštalovávanie…</string>
     <string name="system_install_question">Chcete nainštalovať F-Droid ako systémovú aplikáciu?</string>
-    <string name="system_install_warning_lollipop">Chcete nainštalovať privilegovaný F-Droid?\nTrvá to do 10s a
-        zariadenie sa následne<b>reštartuje</b>.
-    </string>
+    <string name="system_install_warning_lollipop">Chcete nainštalovať privilegovaný F-Droid?
+\nTrvá to do 10s a zariadenie sa následne<b>reštartuje</b>.</string>
     <string name="system_uninstall">Chcete odinštalovať F-Droid ako systémovú aplikáciu?</string>
     <string name="system_uninstall_button">Odinštalovať</string>
 
@@ -275,14 +274,12 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="system_install_denied_signature">Prodpis rozšírenia je zlý! Vytvorte prosím chybové hlásenie!</string>
+    <string name="system_install_denied_signature">Podpis rozšírenia je zlý! Vytvorte prosím chybové hlásenie!</string>
     <string name="system_install_denied_permissions">Oprávnené povolenia neboli rozšíreniu udelené! Prosím vytvorte
         hlásenie chýb!
     </string>
     <string name="system_install_button_install">Inštalovať</string>
-    <string name="system_install_post_success_message">Úspešne bolo nainštalované Oprávnené Rozšírenie F-Droidu. To
-        umožňuje F-Droidu samostatne inštalovať, aktualizovať, a odinštalovať aplikácie.
-    </string>
+    <string name="system_install_post_success_message">Privilegovaný doplnok  F-Droidu bol nainštalovaný. Umožňuje F-Droidu samostatne inštalovať, aktualizovať a odinštalovať aplikácie.</string>
     <string name="login_title">Vyžaduje sa overenie</string>
     <string name="login_name">Prihlasovacie meno</string>
     <string name="login_password">Heslo</string>
@@ -294,13 +291,13 @@
     <string name="more">Viac</string>
     <string name="less">Menej</string>
 
-    <string name="menu_settings">Nastavenia</string>
+    <string name="menu_settings">Nastaviť</string>
     <string name="menu_email">Poslať e-mail autorovi</string>
     <string name="antinonfreeassetslist">Táto aplikácia obsahuje proprietárne časti</string>
 
     <string name="status_download_unknown_size">Sťahuje sa\n%2$s z\n%1$s</string>
     <string name="status_inserting_apps">Ukladanie detailov aplikácie</string>
-    <string name="permissions">Práva</string>
+    <string name="permissions">Povolenia aplikácie</string>
     <string name="repo_details">Repozitár</string>
     <string name="repo_url">Adresa</string>
 
@@ -323,8 +320,7 @@
     <string name="swap_no_peers_nearby">Nemožno nájsť ľudí v okolí na výmenu.</string>
     <string name="swap_confirm">Potvrdiť výmenu</string>
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevyzerá ako kód na výmenu.</string>
-    <string name="swap_connection_misc_error">Pri pokuse o pripojenie došlo k chybe, zdá sa, že výmena sa neuskutoční.
-    </string>
+    <string name="swap_connection_misc_error">Pri pokuse o pripojenie došlo k chybe, zdá sa, že výmena sa neuskutoční!</string>
     <string name="swap_not_enabled">Výmena nie je povolená</string>
     <string name="swap_not_enabled_description">Pred výmenou musí byť zariadenie viditeľné.</string>
 
@@ -344,16 +340,13 @@
         k tejto vstavanej aplikácií? Dáta aplikácie nebudú
         prepísané. Aplikácia nevyžaduje špeciálny prístup.
     </string>
-    <string name="download_error">Prevzatie neúspešné</string>
+    <string name="download_error">Sťahovanie zlyhalo!</string>
 
     <string name="perms_description_app">Poskytované %1$s.</string>
     <string name="theme_night">Noc</string>
 
     <string name="crash_dialog_title">F-Droid spadol</string>
-    <string name="crash_dialog_text">Neočakávaná chyba spôsobila
-        násilné ukončenie aplikácie. Chcete poslať e-mail s detailami
-        a pomôť tak vyriešiť problém?
-    </string>
+    <string name="crash_dialog_text">Neočakávaná chyba spôsobila násilné ukončenie aplikácie. Chcete poslať e-mail s detailami a pomôcť tak vyriešiť problém?</string>
     <string name="crash_dialog_comment_prompt">Sem môžete poskytnúť extra informácie a pripomienky:</string>
     <string name="swap_scan_or_type_url">Naskenujte kód alebo zadajte URL v prehliadači.</string>
     <string name="repo_provider">Repozitár: %s</string>
@@ -362,7 +355,7 @@
     <string name="useTorSummary">Vyžadovať preberanie cez Tor pre zabezpečenie súkromia</string>
     <string name="swap_stopping_wifi">Vypínanie Wi-Fi…</string>
     <string name="update_auto_download">Automaticky preberať aktualizácie</string>
-    <string name="update_auto_download_summary">Aktualizačné súbory preberať na pozadí</string>
+    <string name="update_auto_download_summary">Aktualizácie budú preberané automaticky a budete upozornení o možnosti inštalácie</string>
     <string name="download_pending">Čakanie na spustenie preberania…</string>
 
     <string name="system_install_not_supported">Inštalácia F-Droidu ako systémovej aplikácie v súčasnosti nie je
@@ -387,7 +380,7 @@
     <string name="update_auto_install_summary">Prevziať a nainštalovať aktualizácie aplikácií na pozadí</string>
     <string name="hide_anti_feature_apps">Vyšediť \"anti-feature\" aplikácie</string>
     <string name="hide_anti_feature_apps_on">Vyšediť aplikácie vyžadujúje \"anti-features\"</string>
-    <string name="warning_no_internet">Nemožno aktualizovať, ste pripojený k internetu?</string>
+    <string name="warning_no_internet">Nemožno aktualizovať, máte prístup na Internet?</string>
     <string name="keep_install_history">Uchovať históriu inštalácií</string>
     <string name="keep_install_history_summary">Uchovávať záznamy o všetkých nainštalovaní a odinštalovaní v F-Droid-e
     </string>
@@ -395,7 +388,7 @@
     <string name="app_details_donate_prompt_unknown_author">Kúpiť vývojárom kávu za %1$s!</string>
     <string name="app_details_donate_prompt">%1$s vytvorili %2$s. Kúp mu kávu!</string>
 
-    <string name="repositories_summary">Pridať ďaľšie zdroje aplikácií</string>
+    <string name="repositories_summary">Pridať ďalšie zdroje aplikácií</string>
     <string name="notification_title_single_update_available">Dostupná aktualizácia</string>
     <string name="notification_title_single_ready_to_install">Pripravené na inštaláciu</string>
     <string name="notification_title_single_ready_to_install_update">Aktualizácia je pripravená na inštaláciu</string>
@@ -423,7 +416,7 @@
     <string name="app__install_downloaded_update">Aktualizovať</string>
 
     <string name="app_list__name__downloading_in_progress">Sťahovanie %1$s</string>
-    <string name="app_list__name__successfully_installed">%1$s úspešne nainštalovaná</string>
+    <string name="app_list__name__successfully_installed">%1$s nainštalovaná</string>
 
     <string name="installed_apps__activity_title">Nainštalované aplikácie</string>
     <string name="installed_app__updates_ignored">Vynechané aktualizácie</string>
@@ -447,7 +440,7 @@
     <string name="menu_license">Licencia: %s</string>
     <string name="main_menu__latest_apps">Najnovšie</string>
     <string name="main_menu__categories">Kategórie</string>
-    <string name="main_menu__swap_nearby">Podobné</string>
+    <string name="main_menu__swap_nearby">Nablízku</string>
 
     <string name="latest__empty_state__no_recent_apps">Neboli nájdené žiadne najnovšie aplikácie</string>
     <string name="latest__empty_state__never_updated">Po aktualizácii zoznamu aplikácií, by sa tu mali zobrazovať najnovšie aplikácie</string>
@@ -464,13 +457,13 @@
     <string name="antifeatureswarning">Táto aplikácia obsahuje funkcie, ktoré sa vám nemusia páčiť.</string>
     <string name="antifeatures">Anti-funkcie</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">Zobraziť %d</item>
-	<item quantity="few">Zobraziť: %d</item>
-	<item quantity="other">Zobraziť. %d</item>
-	</plurals>
+	<item quantity="one">Dostupná %d aplikácia</item>
+	<item quantity="few">Dostupné %d aplikácie</item>
+	<item quantity="other">Dostupných %d aplikácií</item>
+</plurals>
 
     <string name="install_error_not_yet_supported">Typ súboru zatiaľ nie je možné nainštalovať: %s</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Žiadny internet? Stiahnite si aplikácie od ľudí v blízkosti vás!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Žiadny Internet? Stiahnite si aplikácie od ľudí v blízkosti vás!</string>
     <string name="nearby_splash__find_people_button">Nájdi ľudí blízko mňa</string>
     <string name="nearby_splash__both_parties_need_fdroid">Obidve strany potrebujú %1$s na použitie v okolí.</string>
 
@@ -478,15 +471,49 @@
     <string name="tts_category_name">Kategória %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Zobraziť %1$d aplikáciu v kategórií %2$s</item>
-	<item quantity="few">Zobraziť %1$d aplikácie v kategórií %2$s</item>
-	<item quantity="other">Zobraziť %1$d aplikácie v kategórií %2$s</item>
+	<item quantity="one">Zobraziť %1$d aplikáciu z kategórie %2$s</item>
+	<item quantity="few">Zobraziť %1$d aplikácie z kategórie %2$s</item>
+	<item quantity="other">Zobraziť %1$d aplikácií z kategórie %2$s</item>
 </plurals>
 
     <string name="details_last_updated_today">Dnes aktualizované</string>
     <plurals name="details_last_update_days">
-	<item quantity="one">Aktualizované pred %1$s dňom</item>
-	<item quantity="few">Aktualizované pred %1$s dňami</item>
-	<item quantity="other">Aktualizované pred %1$s dňami</item>
-	</plurals>
-</resources>
+	<item quantity="one">Od poslednej aktualizácie prešiel %1$d deň</item>
+	<item quantity="few">Od poslednej aktualizácie prešli %1$d dni</item>
+	<item quantity="other">Od poslednej aktualizácie prešlo %1$d dní</item>
+</plurals>
+<string name="by_author_format">autor %s</string>
+    <string name="force_old_index">Pôvodný index</string>
+    <string name="force_old_index_summary">V prípade problémov s kompatibilitou alebo chýb, použiť index vo formáte XML</string>
+    <string name="download_404">Požadovaný súbor sa nenašiel.</string>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d nainštalovaná aplikácia</item>
+	<item quantity="few">%1$d nainštalované aplikácie</item>
+	<item quantity="other">%1$d nainštalovaných aplikácií</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Od poslednej aktualizácie prešiel %1$d týždeň</item>
+	<item quantity="few">Od poslednej aktualizácie prešli %1$d týždne</item>
+	<item quantity="other">Od poslednej aktualizácie prešlo %1$d týždňov</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">Od poslednej aktualizácie prešiel %1$d mesiac</item>
+	<item quantity="few">Od poslednej aktualizácie prešli %1$d mesiace</item>
+	<item quantity="other">Od poslednej aktualizácie prešlo %1$d mesiacov</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d aktualizácia</item>
+	<item quantity="few">%1$d aktualizácie</item>
+	<item quantity="other">%1$d aktualizácií</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Od poslednej aktualizácie prešiel %1$d rok</item>
+	<item quantity="few">Od poslednej aktualizácie prešli %1$d roky</item>
+	<item quantity="other">Od poslednej aktualizácie prešlo %1$d rokov</item>
+</plurals>
+<plurals name="notification_summary_more">
+	<item quantity="one">+%1$d ďaľšia…</item>
+	<item quantity="few">+%1$d ďaľšie…</item>
+	<item quantity="other">+%1$d ďaľších…</item>
+</plurals>
+    </resources>

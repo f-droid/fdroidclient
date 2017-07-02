@@ -2,13 +2,8 @@
 <resources>
     <string name="app_name">F-Droid</string>
 
-    <string name="SignatureMismatch">Die nuwe weergawe is geteken met \'n ander sleutel as die vorige een. Om die nuwe
-        weergawe te installeer moet die vorige een eers verwyder word. Doen dit asseblief eers en probeer dan weer.
-        (Neem egter kennis dat deinstallasie alle interne data wat deur die program gestoor is sal verloor)
-    </string>
-    <string name="installIncompatible">Dit blyk dat hierdie progam nie aanpasbaar is met you toestel nie. Wil jy in elk
-        geval probeer?
-    </string>
+    <string name="SignatureMismatch">Die nuwe weergawe is geteken met \'n ander sleutel as die vorige een. Om die nuwe weergawe te installeer moet die vorige een eers verwyder word. Doen dit asseblief eers en probeer dan weer. (Neem egter kennis dat de-installasie alle interne data wat deur die program gestoor is sal verloor)</string>
+    <string name="installIncompatible">Hierdie progam nie aanpasbaar is met you toestel nie. Wil jy in elk geval probeer?</string>
     <string name="version">Weergawe</string>
     <string name="delete">Uitvee</string>
     <string name="updates">Opdaterings</string>
@@ -25,11 +20,10 @@
     <string name="automatic_scan_wifi_on">Opdateer slegs automaties wanneer gekoppel aan ongemete netwerke soos Wi-Fi
     </string>
     <string name="update_auto_download">Automatise opdaterings</string>
-    <string name="update_auto_download_summary">"Opdateerings word outomaties afgelaai en jy word in kennis gestel om dit te installeer
-\n "</string>
+    <string name="update_auto_download_summary">Opdateerings word outomaties afgelaai en jy word in kennis gestel om dit self te installeer</string>
     <string name="update_auto_install">Installeer opdaterings automaties</string>
     <string name="update_auto_install_summary">Laai en installeer opdaterings in die agtergrond</string>
-    <string name="notify">Opdaterings kennisgewings</string>
+    <string name="notify">Wys beskikbare opdaterings</string>
     <string name="notify_on">Wys \'n kennisgewing wanneer opdaterings beskikbaar is</string>
     <string name="system_installer">Bevoorregte uitbreiding</string>
     <string name="system_installer_on">Gebruik F-Droid bevoorregte uitbreiding om pakkettete te installeer, verander of
@@ -157,9 +151,9 @@
     <string name="enable_proxy_title">Aktiveer HTTP proxy</string>
     <string name="enable_proxy_summary">Stel HTTP proxy op vir alle netwerk versoeke</string>
     <string name="proxy_host">Proxyhost</string>
-    <string name="proxy_host_summary">Stel die host naam van jou proxy op (bv. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Jou proxy se hostnaam (bv. 127.0.0.1)</string>
     <string name="proxy_port">Proxypoort</string>
-    <string name="proxy_port_summary">Stel die poortnommer van jou proxy op (bv. 8118)</string>
+    <string name="proxy_port_summary">Jou proxy se poortnommer (bv. 8118)</string>
 
     <string name="update_notification_title">Opdatering van argiewe</string>
     <string name="status_processing_xml_percent">Besig met %2$s / %3$s (%4$d%%) van %1$s</string>
@@ -170,7 +164,7 @@
     <string name="repos_unchanged">Alle argiewe is op datum</string>
     <string name="all_other_repos_fine">Alle ander argiewe het geen foute veroorsaak nie.</string>
     <string name="global_error_updating_repos">Fout tydens opdatering: %s</string>
-    <string name="warning_no_internet">Kan nie opdateer nie, is jy aan die internet verbind?</string>
+    <string name="warning_no_internet">Kan nie opdateer nie, is jy aan die Internet verbind?</string>
     <string name="no_handler_app">Jy het geen beskikbare program wat %s kan hanteer nie.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Ongeteken</string>
@@ -276,11 +270,9 @@
         Skep asseblief \'n foutverslag!
     </string>
     <string name="system_install_button_install">Installeer</string>
-    <string name="system_install_post_success">F-Droid voorreg uitbreiding suksesvol geïnstalleer</string>
+    <string name="system_install_post_success">F-Droid bevoorregte uitbreiding geïnstalleer</string>
     <string name="system_install_post_fail">Installasie van F-Droid voorreg uitbreiding het misluk</string>
-    <string name="system_install_post_success_message">F-Droid voorreg uitbreiding is suksesvol geïnstalleer. Dit laat
-        F-Droid toe om programme te installeer, opgradeer en deïnstalleer op sy eie.
-    </string>
+    <string name="system_install_post_success_message">F-Droid voorreg uitbreiding is geïnstalleer. Dit stel F-Droid in staat om programme onafhanklik te installeer, opgradeer en de-ïnstalleer.</string>
     <string name="system_install_post_fail_message">Installasie van die F-Droid voorreg uitbreiding het misluk. Die
         installasie metode word nie ondersteun deur alle Android weergawes nie, raadpleeg asseblief die F-Droid
         bug-tracker vir meer inligting.
@@ -290,10 +282,7 @@
     <string name="system_install_uninstalling">Deïnstalleer…</string>
     <string name="system_install_question">Wil F-Droid voorreg uitbreiding installeer?</string>
     <string name="system_install_warning">Dit neem tot 10 sekondes.</string>
-    <string name="system_install_warning_lollipop">Dit neem tot 10 sekondes en die toestel sal
-        <b>reboot</b>
-        daarna.
-    </string>
+    <string name="system_install_warning_lollipop">Dit neem tot 10 sekondes en die toestel sal <b>reboot</b> daarna.</string>
     <string name="system_uninstall">Wil jy F-Droid voorreg uitbreiding deïnstalleer?</string>
     <string name="system_uninstall_button">Deïnstalleer</string>
     <string name="system_install_not_supported">Installasie van F-Droid voorreg uitbreiding word tans nie ondersteun op
@@ -361,9 +350,7 @@
         hierdie toestel nie."
     </string>
     <string name="loading">Laai tans…</string>
-    <string name="swap_connection_misc_error">\'n Fout het plaasgevind tydens koppeling met die toestel, dit lyk nie
-        asof ons kan uitruil nie.
-    </string>
+    <string name="swap_connection_misc_error">\'n Fout het plaasgevind tydens koppeling met die toestel, dit lyk nie asof ons kan uitruil nie!</string>
     <string name="swap_not_enabled">Uitruil nie geaktiveer nie</string>
     <string name="swap_not_enabled_description">Voor uitruil, moet jou toestel sigbaar gemaak word.</string>
 
@@ -385,7 +372,7 @@
     <string name="perm_costs_money">Dit kan jy dalk geld kos</string>
     <string name="uninstall_update_confirm">Wil jy hierdie program met die fabriek weergawe vervang?</string>
     <string name="uninstall_confirm">Wil jy hierdie program deïnstalleer?</string>
-    <string name="download_error">Aflaai onsuksesvol</string>
+    <string name="download_error">Aflaai het misluk!</string>
     <string name="download_pending">Wag om aflaai te begin …</string>
     <string name="install_error_notify_title">Fout tydens installeering van %s</string>
     <string name="uninstall_error_notify_title">Fout tydens deïnstalleer van %s</string>
@@ -452,7 +439,7 @@
     <string name="app__install_downloaded_update">Opdateer</string>
 
     <string name="app_list__name__downloading_in_progress">Aflaai %1$s</string>
-    <string name="app_list__name__successfully_installed">%1$s suksesvol geïnstalleer</string>
+    <string name="app_list__name__successfully_installed">%1$s geïnstalleer</string>
 
     <string name="installed_apps__activity_title">Geïnstalleerde programme</string>
     <string name="installed_app__updates_ignored">Opdaterings geïgnoreer</string>
@@ -470,12 +457,8 @@
 
     <string name="menu_video">Video</string>
     <string name="latest__empty_state__no_recent_apps">Geen onlangse programme gevind nie</string>
-    <string name="latest__empty_state__never_updated">"Sodra jou lys van programme opgedateer is, behoort die nuutste 
-\nprogram hier te wys
-\n "</string>
-    <string name="latest__empty_state__no_enabled_repos">"Sodra \'n argief aktiveer en laat dit laat opdateer, behoort die nuutste 
-\nprogramme hier te wys
-\n "</string>
+    <string name="latest__empty_state__never_updated">Sodra jou lys van programme opgedateer is, behoort die nuutste program hier te wys</string>
+    <string name="latest__empty_state__no_enabled_repos">Sodra \'n argief aktiveer en laat dit laat opdateer, behoort die nuutste programme hier te wys</string>
 
     <string name="categories__empty_state__no_categories">Geen kategorieë om te wys nie</string>
 
@@ -488,8 +471,7 @@
     <string name="antifeatureswarning">Hierdie program het eienskappe wat jy hou dalk nie van sal hou nie.</string>
     <string name="antifeatures">Anti-kenmerke</string>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">"Geen internet nie? Laai programme van mense naby jou!
-\n "</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Geen Internet nie? Kry programme van mense naby jou!</string>
     <string name="nearby_splash__find_people_button">Vind mense naby my</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide partye moet %1$s gebruik.</string>
 
@@ -525,4 +507,20 @@
 	<item quantity="one">%1$d Program geïnstalleer</item>
 	<item quantity="other">%1$d Programme geïnstalleer</item>
 </plurals>
-    </resources>
+    <string name="by_author_format">deur %s</string>
+    <string name="force_old_index">Forseer ou indeks formaat</string>
+    <string name="force_old_index_summary">As daar foute of versoenbaarheidskwessies is, gebruik die XML app indeks</string>
+    <string name="download_404">Die aangevraagde lêer is nie gevind nie.</string>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">\'n Week gelede opgedateer</item>
+	<item quantity="other">%1$d weke gelede opgedateer</item>
+</plurals>
+    <plurals name="details_last_update_months">
+	<item quantity="one">\'n Maand gelede opgedateer</item>
+	<item quantity="other">%1$d maande gelede opgedateer</item>
+</plurals>
+    <plurals name="details_last_update_years">
+	<item quantity="one">\'n Jaar gelede opgedateer</item>
+	<item quantity="other">%1$d jare gelede opgedateer</item>
+</plurals>
+</resources>

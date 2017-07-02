@@ -4,9 +4,7 @@
         versão, desinstale primeiro a antiga. Por favor, faça isso e tente novamente. (Note que a desinstalação apaga
         todos os dados internos armazenados pelo aplicativo)
     </string>
-    <string name="installIncompatible">Aparentemente este pacote não é compatível com o seu dispositivo. Quer tentar
-        instalá-lo mesmo assim?
-    </string>
+    <string name="installIncompatible">O aplicativo é incompatível com seu dispositivo. Quer instalar mesmo assim?</string>
     <string name="version">Versão</string>
     <string name="delete">Apagar</string>
     <string name="enable_nfc_send">Habilitar envio NFC…</string>
@@ -18,7 +16,7 @@
     <string name="automatic_scan_wifi">Apenas com Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Atualizar automaticamente apenas em redes com acesso ilimitado, como Wi-Fi
     </string>
-    <string name="notify">Notificações de atualização</string>
+    <string name="notify">Mostras atualizações disponíveis</string>
     <string name="notify_on">Mostrar uma notificação quando atualizações estiverem disponíveis</string>
     <string name="system_installer">Extensão privilegiada</string>
     <string name="system_installer_on">Usar extensão privilegiada do F-Droid para instalar, atualizar e remover
@@ -105,9 +103,9 @@
     <string name="enable_proxy_title">Ativar proxy HTTP</string>
     <string name="enable_proxy_summary">Configurar proxy HTTP para todas as solicitaçõs de rede</string>
     <string name="proxy_host">Host do proxy</string>
-    <string name="proxy_host_summary">Configurar o hostname do seu proxy (ex. 127.0.0.1)</string>
+    <string name="proxy_host_summary">O hostname do seu proxy (ex. 127.0.0.1)</string>
     <string name="proxy_port">Porta do proxy</string>
-    <string name="proxy_port_summary">Configurar o número da porta do seu proxy (ex. 8118)</string>
+    <string name="proxy_port_summary">O número da porta do seu proxy (ex. 8118)</string>
     <string name="status_download">Baixando\n%2$s / %3$s (%4$d%%) de\n%1$s</string>
     <string name="status_connecting_to_repo">Conectando-se a\n%1$s</string>
     <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
@@ -208,11 +206,9 @@
 
     <string name="install_error_unknown">Falha ao instalar devido a um erro desconhecido</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
-    <string name="system_install_post_success">A extensão privilegiada do F-Droid foi instalada com sucesso</string>
+    <string name="system_install_post_success">A extensão privilegiada do F-Droid foi instalada</string>
     <string name="system_install_post_fail">Falha na instalação da extensão privilegiada do F-Droid</string>
-    <string name="system_install_post_success_message">A extensão privilegiada do F-Droid foi instalada com sucesso.
-        Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.
-    </string>
+    <string name="system_install_post_success_message">A extensão privilegiada do F-Droid foi instalada. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.</string>
     <string name="system_install_post_fail_message">A instalação da extensão privilegiada do F-Droid falhou. O método de
         instalação não é suportado por todas as distribuições do Android, por favor consulte o rastreador de bugs do
         F-Droid para mais informações.
@@ -269,9 +265,7 @@
         neste dispositivo.
     </string>
     <string name="loading">Carregando…</string>
-    <string name="swap_connection_misc_error">Ocorreu um erro ao conectar o dispositivo, não conseguimos permutar com
-        ele.
-    </string>
+    <string name="swap_connection_misc_error">Ocorreu um erro ao conectar o dispositivo, não conseguimos permutar com ele.</string>
     <string name="swap_not_enabled">Permuta não habilitada</string>
     <string name="swap_not_enabled_description">Antes de permutar, seu dispositivo deve estar visível.</string>
 
@@ -313,7 +307,7 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="download_error">Falha no download</string>
+    <string name="download_error">Falha no download!</string>
 
     <string name="system_install_denied_signature">A assinatura da extensão é incorreta! Por favor, crie um relatório de
         bug!
@@ -460,7 +454,7 @@
 	<item quantity="one">Ver %1$d aplicativo na categoria %2$s</item>
 	<item quantity="other">Ver todos os %1$d aplicativos da categoria %2$s</item>
 </plurals>
-    <string name="app_list__name__successfully_installed">%1$s instalado com sucesso</string>
+    <string name="app_list__name__successfully_installed">%1$s instalado</string>
     <string name="latest__empty_state__no_recent_apps">Nenhum aplicativo recente encontrado</string>
     <string name="latest__empty_state__never_updated">Uma vez que a sua lista de aplicativos tenha sido atualizada, os
         aplicativos mais recentes devem aparecer aqui
@@ -475,7 +469,7 @@
 
     <string name="antifeatureswarning">Este aplicativo tem características que você pode não gostar.</string>
     <string name="antifeatures">Características indesejadas</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Sem internet? Baixe aplicativos de pessoas próximas a você!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Baixe aplicativos de pessoas próximas a você!</string>
     <string name="nearby_splash__find_people_button">Encontrar pessoas próximas de mim</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes precisam do %1$s para uso próximo.</string>
 
@@ -515,4 +509,6 @@
 </plurals>
 <string name="by_author_format">por %s</string>
     <string name="download_404">O arquivo solicitado não foi encontrado.</string>
+    <string name="force_old_index">Forçar um formato de índice antigo</string>
+    <string name="force_old_index_summary">Se existirem bugs ou problemas de compatibilidade, use o índice XML do aplicativo</string>
     </resources>
