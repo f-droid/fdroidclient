@@ -8,8 +8,10 @@ import android.database.Cursor;
 import android.net.Uri;
 
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +24,7 @@ import java.util.List;
 
 import static org.fdroid.fdroid.Assert.assertContainsOnly;
 import static org.fdroid.fdroid.Assert.assertResultCount;
+import static org.fdroid.fdroid.Assert.insertApk;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -38,6 +41,12 @@ public class AppProviderTest extends FDroidProviderTest {
     @Before
     public void setup() {
         TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
+        Preferences.setup(context);
+    }
+
+    @After
+    public void tearDown() {
+        Preferences.clearSingletonForTesting();
     }
 
     /**
@@ -88,12 +97,20 @@ public class AppProviderTest extends FDroidProviderTest {
     private void insertAndInstallApp(
             String packageName, int installedVercode, int suggestedVercode,
             boolean ignoreAll, int ignoreVercode) {
-        ContentValues values = new ContentValues(3);
-        values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVercode);
-        App app = insertApp(contentResolver, context, packageName, "App: " + packageName, values);
+        App app = insertApp(contentResolver, context, packageName, "App: " + packageName, new ContentValues());
         AppPrefsProvider.Helper.update(context, app, new AppPrefs(ignoreVercode, ignoreAll));
 
-        InstalledAppTestUtils.install(context, packageName, installedVercode, "v" + installedVercode);
+        ContentValues certValue = new ContentValues(1);
+        certValue.put(Schema.ApkTable.Cols.SIGNATURE, TestUtils.FDROID_SIG);
+
+        // Make sure that the relevant apks are also in the DB, or else the `install` method below will
+        // not be able to correctly calculate the suggested version o the apk.
+        insertApk(context, packageName, installedVercode, certValue);
+        if (installedVercode != suggestedVercode) {
+            insertApk(context, packageName, suggestedVercode, certValue);
+        }
+
+        InstalledAppTestUtils.install(context, packageName, installedVercode, "v" + installedVercode, TestUtils.FDROID_CERT);
     }
 
     @Test

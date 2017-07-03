@@ -21,15 +21,15 @@ public class InstalledAppTestUtils {
     public static void install(Context context,
                                String packageName,
                                int versionCode, String versionName,
-                               @Nullable String signature) {
+                               @Nullable String signingCert) {
         PackageInfo info = new PackageInfo();
         info.packageName = packageName;
         info.versionCode = versionCode;
         info.versionName = versionName;
         info.applicationInfo = new ApplicationInfo();
         info.applicationInfo.publicSourceDir = "/tmp/mock-location";
-        if (signature != null) {
-            info.signatures = new Signature[]{new Signature(signature)};
+        if (signingCert != null) {
+            info.signatures = new Signature[]{new Signature(signingCert)};
         }
         String hashType = "sha256";
         String hash = "00112233445566778899aabbccddeeff";
