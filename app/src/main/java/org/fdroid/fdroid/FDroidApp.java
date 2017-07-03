@@ -508,10 +508,6 @@ public class FDroidApp extends Application {
      * for them.
      */
     private void processPendingDownloads() {
-        if (Utils.getNetworkState(this) == Utils.NetworkState.NET_UNAVAILABLE) {
-            return;
-        }
-
         // Run on background thread as there is potentially quite a few DB queries to hit the disk here.
         new Thread() {
             public void run() {
