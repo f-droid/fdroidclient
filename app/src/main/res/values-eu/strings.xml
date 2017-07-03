@@ -44,7 +44,7 @@
     <string name="menu_ignore_all">Ezikusi eguneraketa guztiak</string>
     <string name="menu_ignore_this">Ezikusi eguneraketa hau</string>
     <string name="menu_website">Webgunea</string>
-    <string name="menu_issues">Gaiak</string>
+    <string name="menu_issues">Arazoak</string>
     <string name="menu_source">Iturburu-kodea</string>
     <string name="menu_upgrade">Bertsio-berritu</string>
     <string name="menu_donate">Egin dohaintza</string>
@@ -61,7 +61,7 @@
         \nkonektatzen
     </string>
     <string name="no_permissions">Ez da baimenik erabiltzen.</string>
-    <string name="theme">Gaia</string>
+    <string name="theme">Itxura</string>
     <string name="unsigned">Sinatu gabea</string>
     <string name="repo_num_apps">Aplikazio kopurua</string>
     <string name="repo_description">Deskribapena</string>
@@ -77,7 +77,7 @@
     <string name="theme_dark">Iluna</string>
     <string name="theme_light">Argia</string>
     <string name="other">Bestelakoak</string>
-    <string name="update_interval">Eguneraketa automatikoaren tartea</string>
+    <string name="update_interval">Eguneratze-maiztasuna</string>
     <string name="system_installer">Pribilegiodun Luzapena</string>
     <string name="system_installer_on">Erabili Pribilegiodun F-Droid Luzapena paketeak instalatu, eguneratu eta
         kentzeko
@@ -222,7 +222,7 @@
     <string name="category_Security">Segurtasuna</string>
     <string name="category_Sports_Health">Kirola eta osasuna</string>
     <string name="category_System">Sistema</string>
-    <string name="category_Theming">Gaiak</string>
+    <string name="category_Theming">Itxura</string>
     <string name="category_Time">Denbora</string>
     <string name="category_Writing">Idazketa</string>
 
@@ -427,7 +427,7 @@
     <string name="app_version_x_installed">%1$s bertsioa</string>
     <string name="clear_search">Garbitu bilaketa</string>
 
-    <string name="main_menu__latest_apps">Azkena</string>
+    <string name="main_menu__latest_apps">Azkenak</string>
     <string name="main_menu__categories">Kategoriak</string>
     <string name="main_menu__swap_nearby">Inguruan</string>
 

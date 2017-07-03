@@ -349,7 +349,7 @@
     <string name="useTorSummary">Herunterladen über Tor erzwingen; zum besseren Schutz der Privatsphäre</string>
     <string name="swap_stopping_wifi">WLAN wird angehalten …</string>
     <string name="update_auto_download">Aktualisierungen automatisch herunterladen</string>
-    <string name="update_auto_download_summary">Die Aktualisierungen werden automatisch heruntergeladen und Sie werden informiert, um Sie zu installieren.</string>
+    <string name="update_auto_download_summary">Die Aktualisierungen werden automatisch heruntergeladen und Sie werden informiert, um sie zu installieren.</string>
     <string name="download_pending">Auf den Start der Übertragung wird gewartet …</string>
 
     <string name="keep_hour">1 Stunde</string>

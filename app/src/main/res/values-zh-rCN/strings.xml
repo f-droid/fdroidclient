@@ -4,7 +4,7 @@
     <string name="installIncompatible">应用程序与您的设备不兼容，是否继续安装？</string>
     <string name="version">版本</string>
     <string name="delete">删除</string>
-    <string name="enable_nfc_send">启用NFC发送…</string>
+    <string name="enable_nfc_send">启用 NFC 发送…</string>
     <string name="cache_downloaded">保留应用安装包</string>
     <string name="updates">更新</string>
     <string name="other">其它</string>
@@ -60,8 +60,8 @@
     <string name="antiadslist">该应用程序包含广告</string>
     <string name="antitracklist">该应用程序会跟踪并报告您的活动</string>
     <string name="antinonfreeadlist">该应用程序会推广非自由免费的插件或扩展</string>
-    <string name="antinonfreenetlist">该应用程序会推广非自由的网络服务</string>
-    <string name="antinonfreedeplist">该应用程序依赖于其它非自由的应用程序</string>
+    <string name="antinonfreenetlist">该应用程序会推广非自由免费的网络服务</string>
+    <string name="antinonfreedeplist">该应用程序依赖于其它非自由免费的应用程序</string>
     <string name="antiupstreamnonfreelist">上游源代码不是完全自由的</string>
     <string name="display">显示</string>
     <string name="expert">专家模式</string>
@@ -70,8 +70,8 @@
     <string name="appcompatibility">应用兼容性</string>
     <string name="show_incompat_versions">不兼容的版本</string>
     <string name="show_incompat_versions_on">显示与该设备不兼容的应用程序版本</string>
-    <string name="rooted">忽略root</string>
-    <string name="rooted_on">不以灰色显示需要root权限的应用程序</string>
+    <string name="rooted">忽略 root</string>
+    <string name="rooted_on">不以灰色显示需要 root 权限的应用程序</string>
     <string name="ignoreTouch">忽略触屏应用</string>
     <string name="ignoreTouch_on">总是包含需要触屏的应用程序</string>
     <string name="local_repo">本地软件源</string>
@@ -100,13 +100,13 @@
     <string name="repo_not_yet_updated">该软件源尚未使用。 你需要启用它才能查看该软件源提供的应用程序。</string>
     <string name="unknown">未知</string>
     <string name="repo_confirm_delete_title">删除应用程序仓库？</string>
-    <string name="repo_confirm_delete_body">删除软件源意味着来自该软件源的软件将不会出现在F-Droid上。
-        \n\n注意： 之前安装的所有应用会保留在您的设备上。
-    </string>
+    <string name="repo_confirm_delete_body">删除软件源意味着来自该软件源的软件将不会出现在 F-Droid 上。 
+\n
+\n注意： 之前安装的所有应用会保留在您的设备上。</string>
     <string name="repo_disabled_notification">已禁用 %1$s。
 \n
 \n需重新启用该资源库才能安装其中的应用。</string>
-    <string name="minsdk_or_later">%s 或更新</string>
+    <string name="minsdk_or_later">%s 或稍候</string>
     <string name="up_to_maxsdk">最大 %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s 到 %2$s</string>
     <string name="not_on_same_wifi">您的设备与刚刚添加的本地资源库不在同一 Wi-Fi 网络上！请尝试加入该网络：%s</string>
@@ -121,14 +121,14 @@
     <string name="category_Science_Education">科学和教育</string>
     <string name="category_Security">安全</string>
     <string name="category_System">系统</string>
-    <string name="requesting_root_access_body">正在请求root权限…</string>
-    <string name="root_access_denied_title">root权限请求被拒绝</string>
+    <string name="requesting_root_access_body">正在请求 root 权限…</string>
+    <string name="root_access_denied_title">root 权限请求被拒绝</string>
     <string name="swap_welcome">欢迎来到F-Droid！</string>
     <string name="app_name">F-Droid</string>
 
     <string name="unstable_updates">不稳定更新</string>
-    <string name="unstable_updates_summary">启用不稳定版本的更新</string>
-    <string name="system_installer_on">使用F-Droid特权扩展来安装，更新以及卸载应用</string>
+    <string name="unstable_updates_summary">建议更新至不稳定版本</string>
+    <string name="system_installer_on">使用 F-Droid 特权扩展来安装，更新以及卸载应用</string>
     <string name="uninstall_system">更新/卸载特权扩展</string>
     <string name="uninstall_system_summary">打开特权扩展的详情来更新/卸载它</string>
     <string name="local_repo_name">本地软件源的名字</string>
@@ -161,7 +161,7 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="local_repo_running">F-Droid已准备好交换应用</string>
+    <string name="local_repo_running">F-Droid 已准备好交换应用</string>
     <string name="touch_to_configure_local_repo">触摸可查看详细信息以及允许其他人与你交换应用程序。</string>
     <string name="adding_apks_format">正在添加 %s 到软件源…</string>
     <string name="writing_index_jar">正在写入已签名的索引文件（index.jar）…</string>
@@ -179,7 +179,7 @@
     <string name="permissions">权限</string>
     <string name="repo_details">库</string>
     <string name="repo_url">地址</string>
-    <string name="repo_added">已保存F-Droid软件库 %1$s。</string>
+    <string name="repo_added">已保存 F-Droid 软件库 %1$s。</string>
     <string name="repo_searching_address">查找软件库从\n%1$s</string>
     <string name="pref_language">语言</string>
     <string name="pref_language_default">系统默认</string>
@@ -195,8 +195,9 @@
     <string name="category_Time">时间</string>
     <string name="category_Writing">书写</string>
 
-    <string name="empty_installed_app_list">应用程序未安装。\n\n在您的设备上有这些应用程序，但无法从F-Droid获取它们。这可能是因为需要更新你的软件库，或者在库里真的没有这些应用程序。
-    </string>
+    <string name="empty_installed_app_list">应用程序未安装。
+\n
+\n在您的设备上有这些应用程序，但无法从 F-Droid 获取它们。这可能是因为需要更新你的软件库，或者在库里真的没有这些应用程序。</string>
     <string name="empty_can_update_app_list">好棒！你的应用都是最新的（或者你该更新软件库了）。</string>
 
     <string name="root_access_denied_body">你的设备未 root，或者你拒绝了root请求。</string>
@@ -206,17 +207,16 @@
     <string name="system_install_denied_permissions">该扩展没有获得超级权限！请报BUG！</string>
     <string name="system_install_button_install">安装</string>
     <string name="system_install_post_success">F-Droid 特权扩展已安装</string>
-    <string name="system_install_post_fail">安装F-Droid特权扩展失败</string>
+    <string name="system_install_post_fail">安装 F-Droid 特权扩展失败</string>
     <string name="system_install_post_success_message">F-Droid 特权扩展已安装。通过该扩展，F-Droid 可自动安装，升级和卸载应用。</string>
-    <string name="system_install_post_fail_message">F-Droid特权扩展的安装失败。不是所有版本的Android都支持该安装方式，请咨询F-Droid的bug跟踪系统以获取更多信息。
-    </string>
+    <string name="system_install_post_fail_message">F-Droid 特权扩展的安装失败。不是所有版本的 Android 都支持该安装方式，请咨询 F-Droid 的 bug 跟踪系统以获取更多信息。</string>
     <string name="system_install_installing">安装中…</string>
     <string name="system_install_installing_rebooting">安装并重启中…</string>
     <string name="system_install_uninstalling">缷载中…</string>
-    <string name="system_install_question">你确定要安装F-Droid的特权扩展吗？</string>
+    <string name="system_install_question">你确定要安装 F-Droid 的特权扩展吗？</string>
     <string name="system_install_warning">这最多需要10秒。</string>
     <string name="system_install_warning_lollipop">该步骤最多需 10 秒钟，之后设备将<b>重启</b>。</string>
-    <string name="system_uninstall">确定要缷载F-Droid特权扩展？</string>
+    <string name="system_uninstall">确定要缷载 F-Droid 特权扩展？</string>
     <string name="system_uninstall_button">缷载</string>
 
     <string name="swap_nfc_title">点击开始交换</string>
@@ -230,7 +230,7 @@
     <string name="swap_active_hotspot">%1$s (你的热点)</string>
     <string name="swap_view_available_networks">点击打开可用的网络</string>
     <string name="swap_switch_to_wifi">点击切换到Wi-Fi网络</string>
-    <string name="open_qr_code_scanner">扫描二维码</string>
+    <string name="open_qr_code_scanner">开启二维码扫描</string>
     <string name="swap_confirm_connect">你想从 %1$s 获取应用程序吗？</string>
     <string name="swap_dont_show_again">不再显示</string>
     <string name="swap_scan_or_type_url">别人需要扫描该代码，或在浏览器输入对方的URL。</string>
@@ -244,11 +244,11 @@
     <string name="swap_setting_up_bluetooth">正在设置蓝牙…</string>
     <string name="swap_not_visible_bluetooth">蓝牙下不可见</string>
     <string name="swap_visible_wifi">Wi-Fi下可见</string>
-    <string name="swap_setting_up_wifi">正在设置Wi-Fi…</string>
-    <string name="swap_not_visible_wifi">Wi-Fi下不可见</string>
+    <string name="swap_setting_up_wifi">正在设置 Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">Wi-Fi 下不可见</string>
     <string name="swap_wifi_device_name">设备名称</string>
     <string name="swap_cant_find_peers">找不到你要找的人？</string>
-    <string name="swap_send_fdroid">发送F-Droid</string>
+    <string name="swap_send_fdroid">发送 F-Droid</string>
     <string name="swap_no_peers_nearby">附近无法找到可与其交换应用程序的人。</string>
     <string name="swap_connecting">连接中</string>
     <string name="swap_confirm">确认交换</string>
@@ -257,14 +257,14 @@
     <string name="swap_cant_send_no_bluetooth">不能发送 F-Droid，因为该设备蓝牙不可用。</string>
     <string name="loading">加载中…</string>
     <string name="swap_connection_misc_error">连接设备时出错，无法交换应用！</string>
-    <string name="swap_not_enabled">示启用交换功能</string>
+    <string name="swap_not_enabled">未启用交换功能</string>
     <string name="swap_not_enabled_description">交换之前，你的设备必须是可见的。</string>
 
     <string name="install_confirm">确定要安装这个应用吗？它将有以下权限</string>
     <string name="install_confirm_update">是否更新现有应用？已有数据不会丢失。更新后该应用具有以下访问权限：</string>
     <string name="install_confirm_update_system">是否更新该内置应用？已有数据不会丢失。更新后该应用具有以下访问权限：</string>
     <string name="install_confirm_update_no_perms">是否更新现有应用？已有数据不会丢失。无需任何特殊访问权限。</string>
-    <string name="install_confirm_update_system_no_perms">确是否更新该内置应用？已有数据不会丢失。无需任何特殊访问权限。</string>
+    <string name="install_confirm_update_system_no_perms">是否更新该内置应用？已有数据不会丢失。无需任何特殊访问权限。</string>
     <string name="newPerms">新建</string>
     <string name="allPerms">所有</string>
     <string name="perm_costs_money">这可能会产生费用</string>

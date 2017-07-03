@@ -488,7 +488,7 @@
 </plurals>
 
     <string name="menu_video">Vídeo</string>
-    <string name="menu_license">Licença:%s</string>
+    <string name="menu_license">Licença: %s</string>
     <string name="install_error_not_yet_supported">Este tipo de ficheiro ainda não pode ser instalado: %s</string>
     <string name="app__tts__downloading_progress">A descarregar, %1$d%% completo</string>
     <string name="app__tts__cancel_download">Cancelar descarga</string>
