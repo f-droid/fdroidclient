@@ -133,7 +133,7 @@ public class AppCardController extends RecyclerView.ViewHolder
             // feature image to be loaded).
             if (!TextUtils.isEmpty(app.featureGraphic)) {
                 featuredImage.loadImageAndDisplay(ImageLoader.getInstance(),
-                        displayImageOptions, app.featureGraphic);
+                        displayImageOptions, app.getFeatureGraphicUrl(activity));
             }
         }
     }

@@ -739,8 +739,9 @@ public class AppProvider extends FDroidProvider {
             case RECENTLY_UPDATED:
                 String table = getTableName();
                 String isNew = table + "." + Cols.LAST_UPDATED + " <= " + table + "." + Cols.ADDED + " DESC";
+                String hasFeatureGraphic = table + "." + Cols.FEATURE_GRAPHIC + " IS NULL ASC ";
                 String lastUpdated = table + "." + Cols.LAST_UPDATED + " DESC";
-                sortOrder = lastUpdated + ", " + isNew;
+                sortOrder = lastUpdated + ", " + isNew + ", " + hasFeatureGraphic;
 
                 // There seems no reason to limit the number of apps on the front page, but it helps
                 // if it loads quickly, as it is the default view shown every time F-Droid is opened.
