@@ -241,7 +241,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                 case Cols.Repo.ADDRESS:
                     repoAddress = cursor.getString(i);
                     break;
-                case Cols.ANTI_FEATURES:
+                case Cols.AntiFeatures.ANTI_FEATURES:
                     antiFeatures = Utils.parseCommaSeparatedString(cursor.getString(i));
                     break;
             }
@@ -348,7 +348,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         values.put(Cols.FEATURES, Utils.serializeCommaSeparatedString(features));
         values.put(Cols.NATIVE_CODE, Utils.serializeCommaSeparatedString(nativecode));
         values.put(Cols.INCOMPATIBLE_REASONS, Utils.serializeCommaSeparatedString(incompatibleReasons));
-        values.put(Cols.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
+        values.put(Cols.AntiFeatures.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
         values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);
         return values;
     }

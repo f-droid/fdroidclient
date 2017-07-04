@@ -34,6 +34,8 @@ import android.util.Log;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.AntiFeatureTable;
+import org.fdroid.fdroid.data.Schema.ApkAntiFeatureJoinTable;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.CatJoinTable;
 import org.fdroid.fdroid.data.Schema.PackageTable;
@@ -107,8 +109,7 @@ class DBHelper extends SQLiteOpenHelper {
             + ApkTable.Cols.HASH_TYPE + " string, "
             + ApkTable.Cols.ADDED_DATE + " string, "
             + ApkTable.Cols.IS_COMPATIBLE + " int not null, "
-            + ApkTable.Cols.INCOMPATIBLE_REASONS + " text, "
-            + ApkTable.Cols.ANTI_FEATURES + " string"
+            + ApkTable.Cols.INCOMPATIBLE_REASONS + " text"
             + ");";
 
     static final String CREATE_TABLE_APP_METADATA = "CREATE TABLE " + AppMetadataTable.NAME
@@ -194,7 +195,19 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
 
-    protected static final int DB_VERSION = 74;
+    private static final String CREATE_TABLE_ANTI_FEATURE = "CREATE TABLE " + AntiFeatureTable.NAME
+            + " ( "
+            + AntiFeatureTable.Cols.NAME + " TEXT NOT NULL "
+            + " );";
+
+    private static final String CREATE_TABLE_APK_ANTI_FEATURE_JOIN = "CREATE TABLE " + ApkAntiFeatureJoinTable.NAME
+            + " ( "
+            + ApkAntiFeatureJoinTable.Cols.APK_ID + " INT NOT NULL, "
+            + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + " INT NOT NULL, "
+            + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
+            + " );";
+
+    protected static final int DB_VERSION = 75;
 
     private final Context context;
 
@@ -214,6 +227,8 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
         db.execSQL(CREATE_TABLE_REPO);
         db.execSQL(CREATE_TABLE_APP_PREFS);
+        db.execSQL(CREATE_TABLE_ANTI_FEATURE);
+        db.execSQL(CREATE_TABLE_APK_ANTI_FEATURE_JOIN);
         ensureIndexes(db);
 
         String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
@@ -283,6 +298,16 @@ class DBHelper extends SQLiteOpenHelper {
         addPreferredSignerToApp(db, oldVersion);
         updatePreferredSignerIfEmpty(db, oldVersion);
         addIsAppToApp(db, oldVersion);
+        addApkAntiFeatures(db, oldVersion);
+    }
+
+    private void addApkAntiFeatures(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 74) {
+            return;
+        }
+
+        Log.i(TAG, "Adding anti features on a per-apk basis.");
+        resetTransient(db);
     }
 
     private void addIsAppToApp(SQLiteDatabase db, int oldVersion) {
@@ -435,11 +460,6 @@ class DBHelper extends SQLiteOpenHelper {
         if (!columnExists(db, RepoTable.NAME, RepoTable.Cols.MIRRORS)) {
             Utils.debugLog(TAG, "Adding " + RepoTable.Cols.MIRRORS + " field to " + RepoTable.NAME + " table in db.");
             db.execSQL("alter table " + RepoTable.NAME + " add column " + RepoTable.Cols.MIRRORS + " string;");
-        }
-
-        if (!columnExists(db, ApkTable.NAME, ApkTable.Cols.ANTI_FEATURES)) {
-            Utils.debugLog(TAG, "Adding " + ApkTable.Cols.ANTI_FEATURES + " field to " + ApkTable.NAME + " table in db.");
-            db.execSQL("alter table " + ApkTable.NAME + " add column " + ApkTable.Cols.ANTI_FEATURES + " string;");
         }
     }
 
@@ -1059,6 +1079,14 @@ class DBHelper extends SQLiteOpenHelper {
                 db.execSQL("DROP TABLE " + PackageTable.NAME);
             }
 
+            if (tableExists(db, AntiFeatureTable.NAME)) {
+                db.execSQL("DROP TABLE " + AntiFeatureTable.NAME);
+            }
+
+            if (tableExists(db, ApkAntiFeatureJoinTable.NAME)) {
+                db.execSQL("DROP TABLE " + ApkAntiFeatureJoinTable.NAME);
+            }
+
             db.execSQL("DROP TABLE " + AppMetadataTable.NAME);
             db.execSQL("DROP TABLE " + ApkTable.NAME);
 
@@ -1067,6 +1095,8 @@ class DBHelper extends SQLiteOpenHelper {
             db.execSQL(CREATE_TABLE_APK);
             db.execSQL(CREATE_TABLE_CATEGORY);
             db.execSQL(CREATE_TABLE_CAT_JOIN);
+            db.execSQL(CREATE_TABLE_ANTI_FEATURE);
+            db.execSQL(CREATE_TABLE_APK_ANTI_FEATURE_JOIN);
             clearRepoEtags(db);
             ensureIndexes(db);
             db.setTransactionSuccessful();
