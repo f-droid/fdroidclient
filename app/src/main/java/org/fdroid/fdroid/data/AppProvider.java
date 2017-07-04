@@ -1023,7 +1023,7 @@ public class AppProvider extends FDroidProvider {
                         "   LEFT JOIN " + installed + " ON (" + installed + "." + InstalledAppTable.Cols.PACKAGE_ID + " = " + app + "." + Cols.PACKAGE_ID + ") " +
                 " WHERE " +
                     app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
-                    apk + "." + ApkTable.Cols.SIGNATURE + " = COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
+                    apk + "." + ApkTable.Cols.SIGNATURE + " IS COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
                     restrictToStable +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE " + Cols.UPSTREAM_VERSION_CODE + " > 0 " + restrictToApp;
@@ -1069,7 +1069,7 @@ public class AppProvider extends FDroidProvider {
                 "   LEFT JOIN " + installed + " ON (" + installed + "." + InstalledAppTable.Cols.PACKAGE_ID + " = " + app + "." + Cols.PACKAGE_ID + ") " +
                 " WHERE " +
                     app + "." + Cols.PACKAGE_ID + " = appForThisApk." + Cols.PACKAGE_ID + " AND " +
-                    apk + "." + ApkTable.Cols.SIGNATURE + " = COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
+                    apk + "." + ApkTable.Cols.SIGNATURE + " IS COALESCE(" + installed + "." + InstalledAppTable.Cols.SIGNATURE + ", " + apk + "." + ApkTable.Cols.SIGNATURE + ") AND " +
                     " ( " + app + "." + Cols.IS_COMPATIBLE + " = 0 OR " + apk + "." + ApkTable.Cols.IS_COMPATIBLE + " = 1 ) ) " +
                 " WHERE " + restrictToApps;
 
