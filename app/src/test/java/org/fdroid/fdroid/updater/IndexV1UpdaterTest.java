@@ -91,7 +91,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         updater.processIndexV1(indexInputStream, indexEntry, "fakeEtag");
         IOUtils.closeQuietly(indexInputStream);
         List<App> apps = AppProvider.Helper.all(context.getContentResolver());
-        assertEquals("53 apps present", 53, apps.size());
+        assertEquals("63 apps present", 63, apps.size());
 
         String[] packages = {
                 "fake.app.one",
@@ -110,7 +110,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         repos = RepoProvider.Helper.all(context);
         assertEquals("One repo", 1, repos.size());
         Repo repoFromDb = repos.get(0);
-        assertEquals("repo.timestamp should be set", 1481222111, repoFromDb.timestamp);
+        assertEquals("repo.timestamp should be set", 1497639511, repoFromDb.timestamp);
         assertEquals("repo.address should be the same", repo.address, repoFromDb.address);
         assertEquals("repo.name should be set", "non-public test repo", repoFromDb.name);
         assertEquals("repo.maxage should be set", 0, repoFromDb.maxage);

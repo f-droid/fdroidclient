@@ -200,7 +200,7 @@ class DBHelper extends SQLiteOpenHelper {
             + AntiFeatureTable.Cols.NAME + " TEXT NOT NULL "
             + " );";
 
-    private static final String CREATE_TABLE_APK_ANTI_FEATURE_JOIN = "CREATE TABLE " + ApkAntiFeatureJoinTable.NAME
+    static final String CREATE_TABLE_APK_ANTI_FEATURE_JOIN = "CREATE TABLE " + ApkAntiFeatureJoinTable.NAME
             + " ( "
             + ApkAntiFeatureJoinTable.Cols.APK_ID + " INT NOT NULL, "
             + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + " INT NOT NULL, "
