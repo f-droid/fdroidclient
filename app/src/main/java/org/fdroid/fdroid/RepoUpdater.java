@@ -21,8 +21,6 @@
  */
 
 package org.fdroid.fdroid;
-// TODO move to org.fdroid.fdroid.updater
-// TODO reduce visibility of methods once in .updater package (.e.g tests need it public now)
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -30,7 +28,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -54,7 +51,6 @@ import org.xml.sax.XMLReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.CodeSigner;
 import java.security.cert.Certificate;
@@ -69,6 +65,9 @@ import java.util.jar.JarFile;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
+// TODO move to org.fdroid.fdroid.updater
+// TODO reduce visibility of methods once in .updater package (.e.g tests need it public now)
 
 /**
  * Updates the local database with a repository's app/apk metadata and verifying
@@ -85,22 +84,15 @@ import javax.xml.parsers.SAXParserFactory;
  * very careful with the changes that you are making!
  */
 public class RepoUpdater {
-    //TODO rename RepoUpdater to IndexV0Updater
     private static final String TAG = "RepoUpdater";
 
-    private final String indexUrl;
+    final String indexUrl;
 
     @NonNull
     final Context context;
     @NonNull
     final Repo repo;
     boolean hasChanged;
-
-    @Nullable
-    ProgressListener downloadProgressListener;
-    ProgressListener committingProgressListener;
-    ProgressListener processXmlProgressListener;
-
     private String cacheTag;
     private X509Certificate signingCertFromJar;
 
@@ -118,25 +110,16 @@ public class RepoUpdater {
         this.context = context;
         this.repo = repo;
         this.persister = new RepoPersister(context, repo);
+        this.indexUrl = getIndexUrl(repo);
+    }
 
+    protected String getIndexUrl(@NonNull Repo repo) {
         String url = repo.address + "/index.jar";
         String versionName = Utils.getVersionName(context);
         if (versionName != null) {
             url += "?client_version=" + versionName;
         }
-        this.indexUrl = url;
-    }
-
-    public void setDownloadProgressListener(ProgressListener progressListener) {
-        this.downloadProgressListener = progressListener;
-    }
-
-    public void setProcessXmlProgressListener(ProgressListener progressListener) {
-        this.processXmlProgressListener = progressListener;
-    }
-
-    public void setCommittingProgressListener(ProgressListener progressListener) {
-        this.committingProgressListener = progressListener;
+        return url;
     }
 
     public boolean hasChanged() {
@@ -148,7 +131,7 @@ public class RepoUpdater {
         try {
             downloader = DownloaderFactory.create(context, indexUrl);
             downloader.setCacheTag(repo.lastetag);
-            downloader.setListener(downloadProgressListener);
+            downloader.setListener(downloadListener);
             downloader.download();
 
             if (downloader.isCached()) {
@@ -238,7 +221,7 @@ public class RepoUpdater {
             JarFile jarFile = new JarFile(downloadedFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                    processXmlProgressListener, new URL(repo.address), (int) indexEntry.getSize());
+                    processIndexListener, new URL(repo.address), (int) indexEntry.getSize());
 
             // Process the index...
             SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -274,16 +257,31 @@ public class RepoUpdater {
         }
     }
 
+    protected final ProgressListener downloadListener = new ProgressListener() {
+        @Override
+        public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+            UpdateService.reportDownloadProgress(context, RepoUpdater.this, bytesRead, totalBytes);
+        }
+    };
+
+    protected final ProgressListener processIndexListener = new ProgressListener() {
+        @Override
+        public void onProgress(URL sourceUrl, int bytesRead, int totalBytes) {
+            UpdateService.reportProcessIndexProgress(context, RepoUpdater.this, bytesRead, totalBytes);
+        }
+    };
+
+    protected void notifyProcessingApps(int appsSaved, int totalApps) {
+        UpdateService.reportProcessingAppsProgress(context, this, appsSaved, totalApps);
+    }
+
+    protected void notifyCommittingToDb() {
+        notifyProcessingApps(0, -1);
+    }
+
     private void commitToDb() throws UpdateException {
         Log.i(TAG, "Repo signature verified, saving app metadata to database.");
-        if (committingProgressListener != null) {
-            try {
-                //TODO this should be an event, not a progress listener
-                committingProgressListener.onProgress(new URL(indexUrl), 0, -1);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        }
+        notifyCommittingToDb();
         persister.commit(repoDetailsToSave);
     }
 
@@ -479,7 +477,7 @@ public class RepoUpdater {
                 // TODO: In the future, this needs to be able to specify which repository to get
                 // the package from. Better yet, we should be able to specify the hash of a package
                 // to install (especially when we move to using hashes more as identifiers than we
-                // do righ tnow).
+                // do right now).
                 App app = AppProvider.Helper.findHighestPriorityMetadata(cr, packageName);
                 if (app == null) {
                     Utils.debugLog(TAG, packageName + " not in local database, ignoring request to"

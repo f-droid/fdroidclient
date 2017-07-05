@@ -243,6 +243,7 @@
     <string name="status_processing_xml_percent">Processing %2$s / %3$s (%4$d%%) from %1$s</string>
     <string name="status_connecting_to_repo">Connecting to\n%1$s</string>
     <string name="status_inserting_apps">Saving app details</string>
+    <string name="status_inserting_x_apps">Saving app details (%1$d/%2$d) from %3$s</string>
     <string name="repos_unchanged">All repositories are up to date</string>
     <string name="all_other_repos_fine">All other repos didn\'t create errors.</string>
     <string name="global_error_updating_repos">Error during update: %s</string>
