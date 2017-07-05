@@ -388,54 +388,58 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 return;
             }
 
-            // When the button says "Run", then launch the app.
-            if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Installed) {
-                Intent intent = activity.getPackageManager().getLaunchIntentForPackage(currentApp.packageName);
-                if (intent != null) {
-                    activity.startActivity(intent);
-
-                    // Once it is explicitly launched by the user, then we can pretty much forget about
-                    // any sort of notification that the app was successfully installed. It should be
-                    // apparent to the user because they just launched it.
-                    AppUpdateStatusManager.getInstance(activity).removeApk(currentStatus.getUniqueKey());
-                }
-                return;
-            }
-
-            if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-                Uri apkDownloadUri = Uri.parse(currentStatus.apk.getUrl());
-                File apkFilePath = ApkCache.getApkDownloadPath(activity, apkDownloadUri);
-                Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getUrl() +
-                        " to " + apkFilePath);
-
-                // TODO: This seems like a bit of a hack. Is there a better way to do this by changing
-                // the Installer API so that we can ask it to install without having to get it to fire
-                // off an intent which we then listen for and action?
-                final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(activity);
-                final BroadcastReceiver receiver = new BroadcastReceiver() {
-                    @Override
-                    public void onReceive(Context context, Intent intent) {
-                        broadcastManager.unregisterReceiver(this);
-
-                        if (Installer.ACTION_INSTALL_USER_INTERACTION.equals(intent.getAction())) {
-                            PendingIntent pendingIntent =
-                                    intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
-                            try {
-                                pendingIntent.send();
-                            } catch (PendingIntent.CanceledException ignored) { }
-                        }
-                    }
-                };
-
-                broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(apkDownloadUri));
-                Installer installer = InstallerFactory.create(activity, currentStatus.apk);
-                installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), apkDownloadUri);
-            } else {
-                final Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, currentApp);
-                InstallManagerService.queue(activity, currentApp, suggestedApk);
-            }
+            onActionButtonPressed(currentApp);
         }
     };
+
+    protected void onActionButtonPressed(@NonNull App app) {
+        // When the button says "Run", then launch the app.
+        if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Installed) {
+            Intent intent = activity.getPackageManager().getLaunchIntentForPackage(app.packageName);
+            if (intent != null) {
+                activity.startActivity(intent);
+
+                // Once it is explicitly launched by the user, then we can pretty much forget about
+                // any sort of notification that the app was successfully installed. It should be
+                // apparent to the user because they just launched it.
+                AppUpdateStatusManager.getInstance(activity).removeApk(currentStatus.getUniqueKey());
+            }
+            return;
+        }
+
+        if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
+            Uri apkDownloadUri = Uri.parse(currentStatus.apk.getUrl());
+            File apkFilePath = ApkCache.getApkDownloadPath(activity, apkDownloadUri);
+            Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getUrl() +
+                    " to " + apkFilePath);
+
+            // TODO: This seems like a bit of a hack. Is there a better way to do this by changing
+            // the Installer API so that we can ask it to install without having to get it to fire
+            // off an intent which we then listen for and action?
+            final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(activity);
+            final BroadcastReceiver receiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    broadcastManager.unregisterReceiver(this);
+
+                    if (Installer.ACTION_INSTALL_USER_INTERACTION.equals(intent.getAction())) {
+                        PendingIntent pendingIntent =
+                                intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                        try {
+                            pendingIntent.send();
+                        } catch (PendingIntent.CanceledException ignored) { }
+                    }
+                }
+            };
+
+            broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(apkDownloadUri));
+            Installer installer = InstallerFactory.create(activity, currentStatus.apk);
+            installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), apkDownloadUri);
+        } else {
+            final Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
+            InstallManagerService.queue(activity, app, suggestedApk);
+        }
+    }
 
     @SuppressWarnings("FieldCanBeLocal")
     private final View.OnClickListener onCancelDownload = new View.OnClickListener() {

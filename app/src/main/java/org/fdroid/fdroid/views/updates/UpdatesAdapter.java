@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -20,6 +21,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.updates.items.AppStatus;
 import org.fdroid.fdroid.views.updates.items.AppUpdateData;
+import org.fdroid.fdroid.views.updates.items.KnownVulnApp;
 import org.fdroid.fdroid.views.updates.items.UpdateableApp;
 import org.fdroid.fdroid.views.updates.items.UpdateableAppsHeader;
 
@@ -65,6 +67,9 @@ import java.util.Set;
 public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    private static final int LOADER_CAN_UPDATE = 289753982;
+    private static final int LOADER_KNOWN_VULN = 520389740;
+
     private final AdapterDelegatesManager<List<AppUpdateData>> delegatesManager = new AdapterDelegatesManager<>();
     private final List<AppUpdateData> items = new ArrayList<>();
 
@@ -72,6 +77,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private final List<AppStatus> appsToShowStatus = new ArrayList<>();
     private final List<UpdateableApp> updateableApps = new ArrayList<>();
+    private final List<KnownVulnApp> knownVulnApps = new ArrayList<>();
 
     private boolean showAllUpdateableApps = false;
 
@@ -80,9 +86,11 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         delegatesManager.addDelegate(new AppStatus.Delegate(activity))
                 .addDelegate(new UpdateableApp.Delegate(activity))
-                .addDelegate(new UpdateableAppsHeader.Delegate(activity));
+                .addDelegate(new UpdateableAppsHeader.Delegate(activity))
+                .addDelegate(new KnownVulnApp.Delegate(activity));
 
-        activity.getSupportLoaderManager().initLoader(0, null, this);
+        activity.getSupportLoaderManager().initLoader(LOADER_CAN_UPDATE, null, this);
+        activity.getSupportLoaderManager().initLoader(LOADER_KNOWN_VULN, null, this);
     }
 
     /**
@@ -162,6 +170,10 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 }
             }
         }
+
+        for (KnownVulnApp app : knownVulnApps) {
+            items.add(app);
+        }
     }
 
     @Override
@@ -186,33 +198,41 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        Uri uri;
+        switch (id) {
+            case LOADER_CAN_UPDATE:
+                uri = AppProvider.getCanUpdateUri();
+                break;
+
+            case LOADER_KNOWN_VULN:
+                uri = AppProvider.getInstalledWithKnownVulnsUri();
+                break;
+
+            default:
+                throw new IllegalStateException("Unknown loader requested: " + id);
+        }
+
         return new CursorLoader(
-                activity,
-                AppProvider.getCanUpdateUri(),
-                new String[]{
-                        Schema.AppMetadataTable.Cols._ID, // Required for cursor loader to work.
-                        Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME,
-                        Schema.AppMetadataTable.Cols.NAME,
-                        Schema.AppMetadataTable.Cols.SUMMARY,
-                        Schema.AppMetadataTable.Cols.IS_COMPATIBLE,
-                        Schema.AppMetadataTable.Cols.LICENSE,
-                        Schema.AppMetadataTable.Cols.ICON,
-                        Schema.AppMetadataTable.Cols.ICON_URL,
-                        Schema.AppMetadataTable.Cols.InstalledApp.VERSION_CODE,
-                        Schema.AppMetadataTable.Cols.InstalledApp.VERSION_NAME,
-                        Schema.AppMetadataTable.Cols.SuggestedApk.VERSION_NAME,
-                        Schema.AppMetadataTable.Cols.SUGGESTED_VERSION_CODE,
-                        Schema.AppMetadataTable.Cols.REQUIREMENTS, // Needed for filtering apps that require root.
-                        Schema.AppMetadataTable.Cols.ANTI_FEATURES, // Needed for filtering apps that require anti-features.
-                },
-                null,
-                null,
-                Schema.AppMetadataTable.Cols.NAME
-        );
+                activity, uri, Schema.AppMetadataTable.Cols.ALL, null, null, Schema.AppMetadataTable.Cols.NAME);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        switch (loader.getId()) {
+            case LOADER_CAN_UPDATE:
+                onCanUpdateLoadFinished(cursor);
+                break;
+
+            case LOADER_KNOWN_VULN:
+                onKnownVulnLoadFinished(cursor);
+                break;
+        }
+
+        populateItems();
+        notifyDataSetChanged();
+    }
+
+    private void onCanUpdateLoadFinished(Cursor cursor) {
         updateableApps.clear();
 
         cursor.moveToFirst();
@@ -220,9 +240,16 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             updateableApps.add(new UpdateableApp(activity, new App(cursor)));
             cursor.moveToNext();
         }
+    }
 
-        populateItems();
-        notifyDataSetChanged();
+    private void onKnownVulnLoadFinished(Cursor cursor) {
+        knownVulnApps.clear();
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            knownVulnApps.add(new KnownVulnApp(activity, new App(cursor)));
+            cursor.moveToNext();
+        }
     }
 
     @Override
