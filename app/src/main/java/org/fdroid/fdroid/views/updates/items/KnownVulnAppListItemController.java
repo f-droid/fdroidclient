@@ -12,6 +12,7 @@ import android.view.View;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.installer.Installer;
@@ -33,23 +34,46 @@ public class KnownVulnAppListItemController extends AppListItemController {
     @Override
     protected AppListItemState getCurrentViewState(
             @NonNull App app, @Nullable AppUpdateStatusManager.AppUpdateStatus appStatus) {
+        String mainText;
+        String actionButtonText;
+
+        // TODO: Take into account signature when multi-sig stuff is merged.
+        if (app.installedVersionCode < app.suggestedVersionCode) {
+            mainText = activity.getString(R.string.updates__app_with_known_vulnerability__upgrade, app.name);
+            actionButtonText = activity.getString(R.string.menu_upgrade);
+        } else {
+            mainText = activity.getString(R.string.updates__app_with_known_vulnerability__uninstall, app.name);
+            actionButtonText = activity.getString(R.string.menu_uninstall);
+        }
+
         return new AppListItemState(app)
-                .setMainText(activity.getString(R.string.updates__app_with_known_vulnerability__uninstall, app.name))
-                .showActionButton(activity.getString(R.string.menu_uninstall));
+                .setMainText(mainText)
+                .showActionButton(actionButtonText);
     }
 
     @Override
     protected void onActionButtonPressed(@NonNull App app) {
-        LocalBroadcastManager.getInstance(activity).registerReceiver(uninstallReceiver,
-                Installer.getUninstallIntentFilter(app.packageName));
-        InstallerService.uninstall(activity, app.getInstalledApk(activity));
+        Apk installedApk = app.getInstalledApk(activity);
+        if (installedApk == null) {
+            throw new IllegalStateException(
+                    "Tried to upgrade or uninstall app with known vulnerability but it doesn't seem to be installed");
+        }
+
+        // TODO: Take into account signature when multi-sig stuff is merged.
+        if (app.installedVersionCode < app.suggestedVersionCode) {
+            LocalBroadcastManager manager = LocalBroadcastManager.getInstance(activity);
+            manager.registerReceiver(installReceiver, Installer.getUninstallIntentFilter(app.packageName));
+            InstallerService.uninstall(activity, installedApk);
+        } else {
+            InstallerService.uninstall(activity, installedApk);
+        }
     }
 
     private void unregisterUninstallReceiver() {
-        LocalBroadcastManager.getInstance(activity).unregisterReceiver(uninstallReceiver);
+        LocalBroadcastManager.getInstance(activity).unregisterReceiver(installReceiver);
     }
 
-    private final BroadcastReceiver uninstallReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver installReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
