@@ -5,8 +5,10 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable.Cols;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +31,12 @@ public class InstalledAppProviderTest extends FDroidProviderTest {
     @Before
     public void setup() {
         TestUtils.registerContentProvider(InstalledAppProvider.getAuthority(), InstalledAppProvider.class);
+        Preferences.setup(context);
+    }
+
+    @After
+    public void tearDown() {
+        Preferences.clearSingletonForTesting();
     }
 
     @Test

@@ -98,6 +98,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     private long id;
     @JsonIgnore
     private AppPrefs prefs;
+    @JsonIgnore
+    public String preferredSigner;
 
     @JacksonInject("repoId")
     public long repoId;
@@ -285,6 +287,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     break;
                 case Cols.SuggestedApk.VERSION_NAME:
                     suggestedVersionName = cursor.getString(i);
+                    break;
+                case Cols.PREFERRED_SIGNER:
+                    preferredSigner = cursor.getString(i);
                     break;
                 case Cols.SUGGESTED_VERSION_CODE:
                     suggestedVersionCode = cursor.getInt(i);
@@ -828,6 +833,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         values.put(Cols.FLATTR_ID, flattrID);
         values.put(Cols.ADDED, Utils.formatDate(added, ""));
         values.put(Cols.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
+        values.put(Cols.PREFERRED_SIGNER, preferredSigner);
         values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVersionCode);
         values.put(Cols.UPSTREAM_VERSION_NAME, upstreamVersionName);
         values.put(Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
@@ -1003,6 +1009,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         dest.writeString(this.bitcoin);
         dest.writeString(this.litecoin);
         dest.writeString(this.flattrID);
+        dest.writeString(this.preferredSigner);
         dest.writeString(this.upstreamVersionName);
         dest.writeInt(this.upstreamVersionCode);
         dest.writeString(this.suggestedVersionName);
@@ -1050,6 +1057,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         this.bitcoin = in.readString();
         this.litecoin = in.readString();
         this.flattrID = in.readString();
+        this.preferredSigner = in.readString();
         this.upstreamVersionName = in.readString();
         this.upstreamVersionCode = in.readInt();
         this.suggestedVersionName = in.readString();
@@ -1090,4 +1098,24 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             return new App[size];
         }
     };
+
+    /**
+     * Choose the signature which we should encourage the user to install.
+     * Usually, we want the {@link #preferredSigner} rather than any random signature.
+     * However, if the app is installed, then we override this and instead want to only encourage
+     * the user to try and install versions with that signature (because thats all the OS will let
+     * them do).
+     * TODO: I don't think preferredSigner should ever be null, because if an app has apks then
+     * we should have chosen the first and used that. If so, then we should change to @NonNull and
+     * throw an exception if it is null.
+     */
+    @Nullable
+    public String getMostAppropriateSignature() {
+        if (!TextUtils.isEmpty(installedSig)) {
+            return installedSig;
+        } else if (!TextUtils.isEmpty(preferredSigner)) {
+            return preferredSigner;
+        }
+        return null;
+    }
 }

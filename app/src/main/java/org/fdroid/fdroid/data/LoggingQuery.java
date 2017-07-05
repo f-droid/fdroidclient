@@ -69,14 +69,21 @@ final class LoggingQuery {
     private void execSQLInternal() {
         if (BuildConfig.DEBUG) {
             long startTime = System.currentTimeMillis();
-            db.execSQL(query);
             long queryDuration = System.currentTimeMillis() - startTime;
-
+            executeSQLInternal();
             if (queryDuration >= SLOW_QUERY_DURATION) {
                 logSlowQuery(queryDuration);
             }
         } else {
+            executeSQLInternal();
+        }
+    }
+
+    private void executeSQLInternal() {
+        if (queryArgs == null || queryArgs.length == 0) {
             db.execSQL(query);
+        } else {
+            db.execSQL(query, queryArgs);
         }
     }
 
@@ -131,7 +138,7 @@ final class LoggingQuery {
         return new LoggingQuery(db, query, queryBuilderArgs).rawQuery();
     }
 
-    public static void execSQL(SQLiteDatabase db, String sql) {
-        new LoggingQuery(db, sql, null).execSQLInternal();
+    public static void execSQL(SQLiteDatabase db, String sql, String[] queryArgs) {
+        new LoggingQuery(db, sql, queryArgs).execSQLInternal();
     }
 }

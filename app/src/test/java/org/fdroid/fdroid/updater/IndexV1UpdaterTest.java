@@ -263,6 +263,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                 "installedSig",
                 "installedVersionCode",
                 "installedVersionName",
+                "preferredSigner",
                 "prefs",
                 "TAG",
         };

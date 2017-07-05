@@ -136,6 +136,7 @@ public interface Schema {
             String BITCOIN = "bitcoinAddr";
             String LITECOIN = "litecoinAddr";
             String FLATTR_ID = "flattrID";
+            String PREFERRED_SIGNER = "preferredSigner";
             String SUGGESTED_VERSION_CODE = "suggestedVercode";
             String UPSTREAM_VERSION_NAME = "upstreamVersion";
             String UPSTREAM_VERSION_CODE = "upstreamVercode";
@@ -192,7 +193,7 @@ public interface Schema {
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
-                    SUGGESTED_VERSION_CODE,
+                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE,
             };
 
             /**
@@ -208,7 +209,7 @@ public interface Schema {
                     ANTI_FEATURES, REQUIREMENTS, ICON_URL, ICON_URL_LARGE,
                     FEATURE_GRAPHIC, PROMO_GRAPHIC, TV_BANNER, PHONE_SCREENSHOTS,
                     SEVEN_INCH_SCREENSHOTS, TEN_INCH_SCREENSHOTS, TV_SCREENSHOTS, WEAR_SCREENSHOTS,
-                    SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
+                    PREFERRED_SIGNER, SUGGESTED_VERSION_CODE, SuggestedApk.VERSION_NAME,
                     InstalledApp.VERSION_CODE, InstalledApp.VERSION_NAME,
                     InstalledApp.SIGNATURE, Package.PACKAGE_NAME,
             };

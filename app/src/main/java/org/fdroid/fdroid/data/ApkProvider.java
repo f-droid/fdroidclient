@@ -75,8 +75,15 @@ public class ApkProvider extends FDroidProvider {
             return resolver.delete(uri, null, null);
         }
 
+        /**
+         * Find an app which is closest to the version code suggested by the server, with some caveates:
+         * <ul>
+         *     <li>If installed, limit to apks signed by the same signer as the installed apk.</li>
+         *     <li>Otherwise, limit to apks signed by the "preferred" signer (see {@link App#preferredSigner}).</li>
+         * </ul>
+         */
         public static Apk findSuggestedApk(Context context, App app) {
-            return findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode, app.installedSig);
+            return findApkFromAnyRepo(context, app.packageName, app.suggestedVersionCode, app.getMostAppropriateSignature());
         }
 
         public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode) {

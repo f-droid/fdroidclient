@@ -7,6 +7,7 @@ import android.util.Log;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.RepoUpdater;
+import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -246,7 +247,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     }
 
     private void assertCanUpdate(String packageName, int installedVersion, int expectedUpdateVersion) {
-        InstalledAppTestUtils.install(context, packageName, installedVersion, "v" + installedVersion);
+        InstalledAppTestUtils.install(context, packageName, installedVersion, "v" + installedVersion, TestUtils.FDROID_CERT);
         List<App> appsToUpdate = AppProvider.Helper.findCanUpdate(context, AppMetadataTable.Cols.ALL);
         assertEquals(1, appsToUpdate.size());
         assertEquals(installedVersion, appsToUpdate.get(0).installedVersionCode);
