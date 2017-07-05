@@ -126,6 +126,10 @@ public class TempAppProvider extends AppProvider {
         return TempApkProvider.TABLE_TEMP_APK;
     }
 
+    protected String getApkAntiFeatureJoinTableName() {
+        return TempApkProvider.TABLE_TEMP_APK;
+    }
+
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         switch (MATCHER.match(uri)) {

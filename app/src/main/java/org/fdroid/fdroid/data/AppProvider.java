@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Schema.ApkAntiFeatureJoinTable;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
@@ -133,6 +134,12 @@ public class AppProvider extends FDroidProvider {
             Uri uri = Uri.withAppendedPath(AppProvider.getContentUri(), PATH_CALC_PREFERRED_METADATA);
             context.getContentResolver().query(uri, null, null, null, null);
         }
+
+        public static List<App> findInstalledAppsWithKnownVulns(Context context) {
+            Uri uri = getInstalledWithKnownVulnsUri();
+            Cursor cursor = context.getContentResolver().query(uri, Cols.ALL, null, null, null);
+            return cursorToList(cursor);
+        }
     }
 
     /**
@@ -150,6 +157,7 @@ public class AppProvider extends FDroidProvider {
     protected static class AppQuerySelection extends QuerySelection {
 
         private boolean naturalJoinToInstalled;
+        private boolean naturalJoinAntiFeatures;
         private boolean leftJoinPrefs;
 
         AppQuerySelection() {
@@ -170,6 +178,10 @@ public class AppProvider extends FDroidProvider {
             return naturalJoinToInstalled;
         }
 
+        public boolean naturalJoinAntiFeatures() {
+            return naturalJoinAntiFeatures;
+        }
+
         /**
          * Tells the query selection that it will need to join onto the installed apps table
          * when used. This should be called when your query makes use of fields from that table
@@ -179,6 +191,11 @@ public class AppProvider extends FDroidProvider {
          */
         public AppQuerySelection requireNaturalInstalledTable() {
             naturalJoinToInstalled = true;
+            return this;
+        }
+
+        public AppQuerySelection requireNatrualJoinAntiFeatures() {
+            naturalJoinAntiFeatures = true;
             return this;
         }
 
@@ -201,6 +218,11 @@ public class AppProvider extends FDroidProvider {
             if (this.leftJoinToPrefs() || query.leftJoinToPrefs()) {
                 bothWithJoin.requireLeftJoinPrefs();
             }
+
+            if (this.naturalJoinAntiFeatures() || query.naturalJoinAntiFeatures()) {
+                bothWithJoin.requireNatrualJoinAntiFeatures();
+            }
+
             return bothWithJoin;
         }
 
@@ -210,6 +232,7 @@ public class AppProvider extends FDroidProvider {
 
         private boolean isSuggestedApkTableAdded;
         private boolean requiresInstalledTable;
+        private boolean requiresAntiFeatures;
         private boolean requiresLeftJoinToPrefs;
         private boolean countFieldAppended;
 
@@ -243,6 +266,9 @@ public class AppProvider extends FDroidProvider {
             if (selection.leftJoinToPrefs()) {
                 leftJoinToPrefs();
             }
+            if (selection.naturalJoinAntiFeatures()) {
+                naturalJoinAntiFeatures();
+            }
         }
 
         // TODO: What if the selection requires a natural join, but we first get a left join
@@ -274,6 +300,22 @@ public class AppProvider extends FDroidProvider {
                         "installed",
                         "installed." + InstalledAppTable.Cols.PACKAGE_ID + " = " + PackageTable.NAME + "." + PackageTable.Cols.ROW_ID);
                 requiresInstalledTable = true;
+            }
+        }
+
+        public void naturalJoinAntiFeatures() {
+            if (!requiresAntiFeatures) {
+                join(
+                        getApkAntiFeatureJoinTableName(),
+                        "apkAntiFeature",
+                        "apkAntiFeature." + ApkAntiFeatureJoinTable.Cols.APK_ID + " = " + getApkTableName() + "." + ApkTable.Cols.ROW_ID);
+
+                join(
+                        Schema.AntiFeatureTable.NAME,
+                        "antiFeature",
+                        "antiFeature." + Schema.AntiFeatureTable.Cols.ROW_ID + " = " + "apkAntiFeature." + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID);
+
+                requiresAntiFeatures = true;
             }
         }
 
@@ -370,6 +412,7 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_CALC_PREFERRED_METADATA = "calcPreferredMetadata";
     private static final String PATH_CALC_SUGGESTED_APKS = "calcNonRepoDetailsFromIndex";
     private static final String PATH_TOP_FROM_CATEGORY = "topFromCategory";
+    private static final String PATH_INSTALLED_WITH_KNOWN_VULNS = "installedWithKnownVulns";
 
     private static final int CAN_UPDATE = CODE_SINGLE + 1;
     private static final int INSTALLED = CAN_UPDATE + 1;
@@ -383,6 +426,7 @@ public class AppProvider extends FDroidProvider {
     private static final int HIGHEST_PRIORITY = SEARCH_REPO + 1;
     private static final int CALC_PREFERRED_METADATA = HIGHEST_PRIORITY + 1;
     private static final int TOP_FROM_CATEGORY = CALC_PREFERRED_METADATA + 1;
+    private static final int INSTALLED_WITH_KNOWN_VULNS = TOP_FROM_CATEGORY + 1;
 
     static {
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
@@ -400,6 +444,7 @@ public class AppProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_SPECIFIC_APP + "/#/*", CODE_SINGLE);
         MATCHER.addURI(getAuthority(), PATH_CALC_PREFERRED_METADATA, CALC_PREFERRED_METADATA);
         MATCHER.addURI(getAuthority(), PATH_TOP_FROM_CATEGORY + "/#/*", TOP_FROM_CATEGORY);
+        MATCHER.addURI(getAuthority(), PATH_INSTALLED_WITH_KNOWN_VULNS, INSTALLED_WITH_KNOWN_VULNS);
     }
 
     public static Uri getContentUri() {
@@ -418,6 +463,12 @@ public class AppProvider extends FDroidProvider {
         return getContentUri().buildUpon()
                 .appendPath(PATH_CATEGORY)
                 .appendPath(category)
+                .build();
+    }
+
+    public static Uri getInstalledWithKnownVulnsUri() {
+        return getContentUri().buildUpon()
+                .appendPath(PATH_INSTALLED_WITH_KNOWN_VULNS)
                 .build();
     }
 
@@ -503,6 +554,10 @@ public class AppProvider extends FDroidProvider {
 
     protected String getApkTableName() {
         return ApkTable.NAME;
+    }
+
+    protected String getApkAntiFeatureJoinTableName() {
+        return ApkAntiFeatureJoinTable.NAME;
     }
 
     @Override
@@ -652,6 +707,14 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection, args);
     }
 
+    private AppQuerySelection queryInstalledWithKnownVulns() {
+        // Include the hash in this check because otherwise any app with any vulnerable version will
+        // get returned.
+        String selection = " antiFeature." + Schema.AntiFeatureTable.Cols.NAME + " = 'KnownVuln' AND " +
+                getApkTableName() + "." + ApkTable.Cols.HASH + " = installed." + InstalledAppTable.Cols.HASH;
+        return new AppQuerySelection(selection).requireNaturalInstalledTable().requireNatrualJoinAntiFeatures();
+    }
+
     static AppQuerySelection queryPackageNames(String packageNames, String packageNameField) {
         String[] args = packageNames.split(",");
         String selection = packageNameField + " IN (" + generateQuestionMarksForInClause(args.length) + ")";
@@ -736,6 +799,11 @@ public class AppProvider extends FDroidProvider {
                 selection = selection.add(queryCategory(pathSegments.get(2)));
                 limit = Integer.parseInt(pathSegments.get(1));
                 sortOrder = getTableName() + "." + Cols.LAST_UPDATED + " DESC";
+                includeSwap = false;
+                break;
+
+            case INSTALLED_WITH_KNOWN_VULNS:
+                selection = selection.add(queryInstalledWithKnownVulns());
                 includeSwap = false;
                 break;
 
