@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -15,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -138,14 +136,21 @@ public class IndexV1Updater extends RepoUpdater {
 
     /**
      * Parses the index and feeds it to the database via {@link Repo}, {@link App},
-     * and {@link Apk} instances.
+     * and {@link Apk} instances.  This uses {@link RepoPersister}  to add the apps
+     * and packages to the database in {@link RepoPersister#saveToDb(App, List)}
+     * to write the {@link Repo}, and commit the whole thing in
+     * {@link RepoPersister#commit(ContentValues)}.  One confusing thing about this
+     * whole process is that {@link RepoPersister} needs to first create and entry
+     * in the database, then fetch the ID from the database to populate
+     * {@link Repo#id}.  That has to happen first, then the rest of the {@code Repo}
+     * data must be added later.
      *
      * @param indexInputStream {@link InputStream} to {@code index-v1.json}
-     * @param cacheTag         the {@code etag} value from HTTP headers
+     * @param etag             the {@code etag} value from HTTP headers
      * @throws IOException
      * @throws UpdateException
      */
-    public void processIndexV1(InputStream indexInputStream, JarEntry indexEntry, String cacheTag)
+    public void processIndexV1(InputStream indexInputStream, JarEntry indexEntry, String etag)
             throws IOException, UpdateException {
         Utils.Profiler profiler = new Utils.Profiler(TAG);
         profiler.log("Starting to process index-v1.json");
@@ -200,6 +205,7 @@ public class IndexV1Updater extends RepoUpdater {
         // timestamp is absolutely required
         repo.timestamp = timestamp;
         // below are optional, can be null
+        repo.lastetag = etag;
         repo.name = getStringRepoValue(repoMap, "name");
         repo.icon = getStringRepoValue(repoMap, "icon");
         repo.description = getStringRepoValue(repoMap, "description");
@@ -234,15 +240,32 @@ public class IndexV1Updater extends RepoUpdater {
                 repoPersister.saveToDb(app, apks);
             }
         }
-
         profiler.log("Saved to database, but only a temporary table. Now persisting to database...");
-
         notifyCommittingToDb();
-        ContentValues values = prepareRepoDetailsForSaving(repo.name,
-                repo.description, repo.maxage, repo.version, repo.timestamp, repo.icon,
-                repo.mirrors, cacheTag);
-        repoPersister.commit(values);
 
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Schema.RepoTable.Cols.LAST_UPDATED, Utils.formatTime(new Date(), ""));
+        contentValues.put(Schema.RepoTable.Cols.TIMESTAMP, repo.timestamp);
+        contentValues.put(Schema.RepoTable.Cols.LAST_ETAG, repo.lastetag);
+        if (repo.version != Repo.INT_UNSET_VALUE) {
+            contentValues.put(Schema.RepoTable.Cols.VERSION, repo.version);
+        }
+        if (repo.maxage != Repo.INT_UNSET_VALUE) {
+            contentValues.put(Schema.RepoTable.Cols.MAX_AGE, repo.maxage);
+        }
+        if (repo.description != null) {
+            contentValues.put(Schema.RepoTable.Cols.DESCRIPTION, repo.description);
+        }
+        if (repo.name != null) {
+            contentValues.put(Schema.RepoTable.Cols.NAME, repo.name);
+        }
+        if (repo.icon != null) {
+            contentValues.put(Schema.RepoTable.Cols.ICON, repo.icon);
+        }
+        if (repo.mirrors != null && repo.mirrors.length > 0) {
+            contentValues.put(Schema.RepoTable.Cols.MIRRORS, Utils.serializeCommaSeparatedString(repo.mirrors));
+        }
+        repoPersister.commit(contentValues);
         profiler.log("Persited to database.");
 
 
