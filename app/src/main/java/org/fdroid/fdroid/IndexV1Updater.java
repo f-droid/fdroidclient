@@ -289,10 +289,12 @@ public class IndexV1Updater extends RepoUpdater {
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     private String[] getStringArrayRepoValue(Map<String, Object> repoMap, String key) {
         Object value = repoMap.get(key);
-        if (value != null && value instanceof String[]) {
-            return (String[]) value;
+        if (value != null && value instanceof ArrayList) {
+            ArrayList<String> list = (ArrayList<String>) value;
+            return list.toArray(new String[list.size()]);
         }
         return null;
     }
