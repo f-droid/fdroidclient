@@ -856,7 +856,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     }
 
     public boolean isInstalled(Context context) {
-        return isMediaInstalled(context) || installedVersionCode > 0;
+        return installedVersionCode > 0 || isMediaInstalled(context);
     }
 
     public boolean isMediaInstalled(Context context) {
