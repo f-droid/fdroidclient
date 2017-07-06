@@ -107,6 +107,7 @@ public class AppUpdateStatusService extends IntentService {
             PackageInfo info = getPackageManager().getPackageInfo(downloadedApk.packageName, 0);
             File pathToInstalled = InstalledAppProviderService.getPathToInstalledApk(info);
             if (pathToInstalled != null && pathToInstalled.canRead() &&
+                    pathToInstalled.length() == downloadedApk.size && // Check size before hash for performance.
                     TextUtils.equals(Utils.getBinaryHash(pathToInstalled, "sha256"), downloadedApk.hash)) {
                 Log.i(TAG, downloadedApk.packageName + " is pending install, but we already have the correct version installed.");
                 AppUpdateStatusManager.getInstance(this).markAsNoLongerPendingInstall(downloadedApk.getUrl());
