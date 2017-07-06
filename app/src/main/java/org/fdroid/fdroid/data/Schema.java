@@ -54,8 +54,9 @@ public interface Schema {
 
             String IGNORE_ALL_UPDATES = "ignoreAllUpdates";
             String IGNORE_THIS_UPDATE = "ignoreThisUpdate";
+            String IGNORE_VULNERABILITIES = "ignoreVulnerabilities";
 
-            String[] ALL = {PACKAGE_NAME, IGNORE_ALL_UPDATES, IGNORE_THIS_UPDATE};
+            String[] ALL = {PACKAGE_NAME, IGNORE_ALL_UPDATES, IGNORE_THIS_UPDATE, IGNORE_VULNERABILITIES};
         }
     }
 

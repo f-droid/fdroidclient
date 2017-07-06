@@ -158,8 +158,9 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_APP_PREFS = "CREATE TABLE " + AppPrefsTable.NAME
             + " ( "
             + AppPrefsTable.Cols.PACKAGE_NAME + " TEXT, "
-            + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + " INT BOOLEAN NOT NULL, "
-            + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + " INT NOT NULL "
+            + AppPrefsTable.Cols.IGNORE_THIS_UPDATE + " INT NOT NULL, "
+            + AppPrefsTable.Cols.IGNORE_ALL_UPDATES + " INT BOOLEAN NOT NULL, "
+            + AppPrefsTable.Cols.IGNORE_VULNERABILITIES + " INT BOOLEAN NOT NULL "
             + " );";
 
     private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE " + Schema.CategoryTable.NAME
@@ -299,6 +300,18 @@ class DBHelper extends SQLiteOpenHelper {
         updatePreferredSignerIfEmpty(db, oldVersion);
         addIsAppToApp(db, oldVersion);
         addApkAntiFeatures(db, oldVersion);
+        addIgnoreVulnPref(db, oldVersion);
+    }
+
+    private void addIgnoreVulnPref(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 74) {
+            return;
+        }
+
+        if (!columnExists(db, AppPrefsTable.NAME, AppPrefsTable.Cols.IGNORE_VULNERABILITIES)) {
+            Utils.debugLog(TAG, "Adding " + AppPrefsTable.Cols.IGNORE_VULNERABILITIES + " field to " + AppPrefsTable.NAME + " table in db.");
+            db.execSQL("alter table " + AppPrefsTable.NAME + " add column " + AppPrefsTable.Cols.IGNORE_VULNERABILITIES + " boolean;");
+        }
     }
 
     private void addApkAntiFeatures(SQLiteDatabase db, int oldVersion) {

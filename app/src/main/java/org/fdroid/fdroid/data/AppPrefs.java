@@ -3,37 +3,44 @@ package org.fdroid.fdroid.data;
 public class AppPrefs extends ValueObject {
 
     /**
-     * True if all updates for this app are to be ignored
+     * True if all updates for this app are to be ignored.
      */
     public boolean ignoreAllUpdates;
 
     /**
-     * True if the current update for this app is to be ignored
+     * The version code of the app for which the update should be ignored.
      */
     public int ignoreThisUpdate;
 
-    public AppPrefs(int ignoreThis, boolean ignoreAll) {
+    /**
+     * Don't notify of vulnerabilities in this app.
+     */
+    public boolean ignoreVulnerabilities;
+
+    public AppPrefs(int ignoreThis, boolean ignoreAll, boolean ignoreVulns) {
         ignoreThisUpdate = ignoreThis;
         ignoreAllUpdates = ignoreAll;
+        ignoreVulnerabilities = ignoreVulns;
     }
 
     public static AppPrefs createDefault() {
-        return new AppPrefs(0, false);
+        return new AppPrefs(0, false, false);
     }
 
     @Override
     public boolean equals(Object o) {
         return o != null && o instanceof AppPrefs &&
                 ((AppPrefs) o).ignoreAllUpdates == ignoreAllUpdates &&
-                ((AppPrefs) o).ignoreThisUpdate == ignoreThisUpdate;
+                ((AppPrefs) o).ignoreThisUpdate == ignoreThisUpdate &&
+                ((AppPrefs) o).ignoreVulnerabilities == ignoreVulnerabilities;
     }
 
     @Override
     public int hashCode() {
-        return (ignoreThisUpdate + "-" + ignoreAllUpdates).hashCode();
+        return (ignoreThisUpdate + "-" + ignoreAllUpdates + "-" + ignoreVulnerabilities).hashCode();
     }
 
     public AppPrefs createClone() {
-        return new AppPrefs(ignoreThisUpdate, ignoreAllUpdates);
+        return new AppPrefs(ignoreThisUpdate, ignoreAllUpdates, ignoreVulnerabilities);
     }
 }
