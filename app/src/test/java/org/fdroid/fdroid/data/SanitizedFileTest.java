@@ -37,11 +37,11 @@ public class SanitizedFileTest {
 
         assertEquals("/tmp/blah/safe", safeSanitized.getAbsolutePath());
         assertEquals("/tmp/blah/safe-and_bleh.boo", nonEvilSanitized.getAbsolutePath());
-        assertEquals("/tmp/blah/rmetcshadow", evilSanitized.getAbsolutePath());
+        assertEquals("/tmp/blah/rm etcshadow", evilSanitized.getAbsolutePath());
 
         assertEquals("safe", safeSanitized.getName());
         assertEquals("safe-and_bleh.boo", nonEvilSanitized.getName());
-        assertEquals("rmetcshadow", evilSanitized.getName());
+        assertEquals("rm etcshadow", evilSanitized.getName());
 
     }
 
