@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.views.apps.AppListItemController;
 
 import java.util.List;
 
@@ -16,7 +15,8 @@ import java.util.List;
  *
  * @see UpdateableApp The data that is bound to this view.
  * @see R.layout#updateable_app_list_item The view that this binds to.
- * @see AppListItemController Used for binding the {@link App} to the {@link R.layout#updateable_app_list_item}
+ * @see UpdateableAppListItemController Used for binding the {@link App} to
+ *      the {@link R.layout#updateable_app_list_item}
  */
 public class UpdateableApp extends AppUpdateData {
 
@@ -43,7 +43,7 @@ public class UpdateableApp extends AppUpdateData {
         @NonNull
         @Override
         protected RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
-            return new AppListItemController(activity, activity.getLayoutInflater()
+            return new UpdateableAppListItemController(activity, activity.getLayoutInflater()
                     .inflate(R.layout.updateable_app_list_item, parent, false));
         }
 
@@ -51,7 +51,7 @@ public class UpdateableApp extends AppUpdateData {
         protected void onBindViewHolder(@NonNull List<AppUpdateData> items, int position,
                                         @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
             UpdateableApp app = (UpdateableApp) items.get(position);
-            ((AppListItemController) holder).bindModel(app.app);
+            ((UpdateableAppListItemController) holder).bindModel(app.app);
         }
     }
 

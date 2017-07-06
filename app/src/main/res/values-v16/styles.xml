@@ -6,4 +6,7 @@
     </style>
     <style name="BodyText" parent="BodyTextV16" />
 
+    <style name="AppListItemStatusText" parent="AppListItemStatusTextBase">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
 </resources>

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
-class AppListAdapter extends RecyclerView.Adapter<AppListItemController> {
+class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController> {
 
     private Cursor cursor;
     private final Activity activity;
@@ -24,13 +24,13 @@ class AppListAdapter extends RecyclerView.Adapter<AppListItemController> {
     }
 
     @Override
-    public AppListItemController onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new AppListItemController(activity, activity.getLayoutInflater()
+    public StandardAppListItemController onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new StandardAppListItemController(activity, activity.getLayoutInflater()
                 .inflate(R.layout.app_list_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(AppListItemController holder, int position) {
+    public void onBindViewHolder(StandardAppListItemController holder, int position) {
         cursor.moveToPosition(position);
         holder.bindModel(new App(cursor));
     }

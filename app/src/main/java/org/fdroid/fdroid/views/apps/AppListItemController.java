@@ -37,7 +37,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppPrefs;
 import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
@@ -46,13 +45,25 @@ import org.fdroid.fdroid.installer.InstallerFactory;
 import java.io.File;
 import java.util.Iterator;
 
-// TODO: Support cancelling of downloads by tapping the install button a second time.
-@SuppressWarnings("LineLength")
-public class AppListItemController extends RecyclerView.ViewHolder {
+/**
+ * Supports the following layouts:
+ * <ul>
+ *     <li>app_list_item (see {@link StandardAppListItemController}</li>
+ *     <li>updateable_app_list_status_item (see
+ *         {@link org.fdroid.fdroid.views.updates.items.AppStatusListItemController}</li>
+ *     <li>updateable_app_list_item (see
+ *         {@link org.fdroid.fdroid.views.updates.items.UpdateableAppListItemController}</li>
+ *     <li>installed_app_list_item (see {@link StandardAppListItemController}</li>
+ * </ul>
+ *
+ * The state of the UI is defined in a dumb {@link AppListItemState} class, then applied to the UI
+ * in the {@link #refreshView(App, AppUpdateStatusManager.AppUpdateStatus)} method.
+ */
+public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
     private static final String TAG = "AppListItemController";
 
-    private final Activity activity;
+    protected final Activity activity;
 
     @NonNull
     private final ImageView icon;
@@ -67,13 +78,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
     private final TextView status;
 
     @Nullable
-    private final TextView downloadReady;
-
-    @Nullable
-    private final TextView installedVersion;
-
-    @Nullable
-    private final TextView ignoredStatus;
+    private final TextView secondaryStatus;
 
     @Nullable
     private final ProgressBar progressBar;
@@ -111,13 +116,15 @@ public class AppListItemController extends RecyclerView.ViewHolder {
                     public void getOutline(View view, Outline outline) {
                         float density = activity.getResources().getDisplayMetrics().density;
 
-                        // TODO: This is a bit hacky/hardcoded/too-specific to the particular icons we're using.
+                        // This is a bit hacky/hardcoded/too-specific to the particular icons we're using.
                         // This is because the default "download & install" and "downloaded & ready to install"
                         // icons are smaller than the "downloading progress" button. Hence, we can't just use
                         // the width/height of the view to calculate the outline size.
                         int xPadding = (int) (8 * density);
                         int yPadding = (int) (9 * density);
-                        outline.setOval(xPadding, yPadding, installButton.getWidth() - xPadding, installButton.getHeight() - yPadding);
+                        int right = installButton.getWidth() - xPadding;
+                        int bottom = installButton.getHeight() - yPadding;
+                        outline.setOval(xPadding, yPadding, right, bottom);
                     }
                 });
             }
@@ -126,9 +133,7 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         icon = (ImageView) itemView.findViewById(R.id.icon);
         name = (TextView) itemView.findViewById(R.id.app_name);
         status = (TextView) itemView.findViewById(R.id.status);
-        downloadReady = (TextView) itemView.findViewById(R.id.download_ready);
-        installedVersion = (TextView) itemView.findViewById(R.id.installed_version);
-        ignoredStatus = (TextView) itemView.findViewById(R.id.ignored_status);
+        secondaryStatus = (TextView) itemView.findViewById(R.id.secondary_status);
         progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar);
         cancelButton = (ImageButton) itemView.findViewById(R.id.cancel_button);
         actionButton = (Button) itemView.findViewById(R.id.action_button);
@@ -146,246 +151,196 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(onAppClicked);
     }
 
-    /**
-     * Figures out the current install/update/download/etc status for the app we are viewing.
-     * Then, asks the view to update itself to reflect this status.
-     */
-    private void refreshStatus(@NonNull App app) {
-        Iterator<AppUpdateStatusManager.AppUpdateStatus> statuses = AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName).iterator();
-        if (statuses.hasNext()) {
-            AppUpdateStatusManager.AppUpdateStatus status = statuses.next();
-            updateAppStatus(app, status);
-        } else {
-            currentStatus = null;
-        }
-    }
-
     public void bindModel(@NonNull App app) {
         currentApp = app;
 
         ImageLoader.getInstance().displayImage(app.iconUrl, icon, displayImageOptions);
 
-        refreshStatus(app);
+        // Figures out the current install/update/download/etc status for the app we are viewing.
+        // Then, asks the view to update itself to reflect this status.
+        Iterator<AppUpdateStatusManager.AppUpdateStatus> statuses =
+                AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName).iterator();
+        if (statuses.hasNext()) {
+            AppUpdateStatusManager.AppUpdateStatus status = statuses.next();
+            updateAppStatus(app, status);
+        } else {
+            updateAppStatus(app, null);
+        }
 
-        final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(activity.getApplicationContext());
-        broadcastManager.unregisterReceiver(onInstallAction);
+        final LocalBroadcastManager broadcastManager =
+                LocalBroadcastManager.getInstance(activity.getApplicationContext());
         broadcastManager.unregisterReceiver(onStatusChanged);
-
-        // broadcastManager.registerReceiver(onInstallAction, Installer.getInstallIntentFilter(Uri.parse(currentAppDownloadUrl)));
-
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED);
         intentFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
         intentFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
         broadcastManager.registerReceiver(onStatusChanged, intentFilter);
-
-        configureAppName(app);
-        configureStatusText(app);
-        configureInstalledVersion(app);
-        configureIgnoredStatus(app);
-        configureInstallButton(app);
-        configureActionButton(app);
     }
 
     /**
-     * Sets the text/visibility of the {@link R.id#status} {@link TextView} based on whether the app:
-     *  * Is compatible with the users device
-     *  * Is installed
-     *  * Can be updated
+     * Updates both the progress bar and the circular install button (which shows progress around the outside of
+     * the circle). Also updates the app label to indicate that the app is being downloaded.
      */
-    private void configureStatusText(@NonNull App app) {
-        if (status == null) {
-            return;
-        }
-
-        if (!app.compatible) {
-            status.setText(activity.getString(R.string.app_incompatible));
-            status.setVisibility(View.VISIBLE);
-        } else if (app.isInstalled()) {
-            if (app.canAndWantToUpdate(activity)) {
-                String upgradeFromTo = activity.getString(R.string.app_version_x_available, app.getSuggestedVersionName());
-                status.setText(upgradeFromTo);
-            } else {
-                String installed = activity.getString(R.string.app_version_x_installed, app.installedVersionName);
-                status.setText(installed);
-            }
-
-            status.setVisibility(View.VISIBLE);
-        } else {
-            status.setVisibility(View.INVISIBLE);
-        }
-
+    private void updateAppStatus(@NonNull App app, @Nullable AppUpdateStatusManager.AppUpdateStatus status) {
+        currentStatus = status;
+        refreshView(app, status);
     }
 
     /**
-     * Shows the currently installed version name, and whether or not it is the recommended version.
-     * Binds to the {@link R.id#installed_version} {@link TextView}.
+     * Queries the current state via {@link #getCurrentViewState(App, AppUpdateStatusManager.AppUpdateStatus)}
+     * and then updates the relevant widgets depending on that state.
+     *
+     * Should contain little to no business logic, this all belongs to
+     * {@link #getCurrentViewState(App, AppUpdateStatusManager.AppUpdateStatus)}.
+     *
+     * @see AppListItemState
+     * @see #getCurrentViewState(App, AppUpdateStatusManager.AppUpdateStatus)
      */
-    private void configureInstalledVersion(@NonNull App app) {
-        if (installedVersion == null) {
-            return;
-        }
+    private void refreshView(@NonNull App app,
+                             @Nullable AppUpdateStatusManager.AppUpdateStatus appStatus) {
 
-        int res = (app.suggestedVersionCode == app.installedVersionCode)
-                ? R.string.app_recommended_version_installed : R.string.app_version_x_installed;
+        AppListItemState viewState = getCurrentViewState(app, appStatus);
 
-        installedVersion.setText(activity.getString(res, app.installedVersionName));
-    }
+        name.setText(viewState.getMainText());
 
-    /**
-     * Shows whether the user has previously asked to ignore updates for this app entirely, or for a
-     * specific version of this app. Binds to the {@link R.id#ignored_status} {@link TextView}.
-     */
-    private void configureIgnoredStatus(@NonNull App app) {
-        if (ignoredStatus == null) {
-            return;
-        }
-
-        AppPrefs prefs = app.getPrefs(activity);
-        if (prefs.ignoreAllUpdates) {
-            ignoredStatus.setText(activity.getString(R.string.installed_app__updates_ignored));
-            ignoredStatus.setVisibility(View.VISIBLE);
-        } else if (prefs.ignoreThisUpdate > 0 && prefs.ignoreThisUpdate == app.suggestedVersionCode) {
-            ignoredStatus.setText(activity.getString(R.string.installed_app__updates_ignored_for_suggested_version, app.getSuggestedVersionName()));
-            ignoredStatus.setVisibility(View.VISIBLE);
-        } else {
-            ignoredStatus.setVisibility(View.GONE);
-        }
-    }
-
-    /**
-     * Queries the {@link AppUpdateStatusManager} to find out if there are any apks corresponding to
-     * `app` which are ready to install.
-     */
-    private boolean isReadyToInstall(@NonNull App app) {
-        for (AppUpdateStatusManager.AppUpdateStatus appStatus : AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName)) {
-            if (appStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * The app name {@link TextView} is used for a few reasons:
-     * <li> Display name + summary of the app (most common).
-     * <li> If downloading, mention that it is downloading instead of showing the summary.
-     * <li> If downloaded and ready to install, mention that it is ready to update/install.
-     */
-    private void configureAppName(@NonNull App app) {
-        if (downloadReady != null) {
-            downloadReady.setVisibility(View.GONE);
-        }
-        if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-            name.setText(app.name);
-            if (downloadReady != null) {
-                downloadReady.setVisibility(View.VISIBLE);
-            }
-        } else if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Downloading) {
-            name.setText(activity.getString(R.string.app_list__name__downloading_in_progress, app.name));
-        } else if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Installed) {
-            name.setText(activity.getString(R.string.app_list__name__successfully_installed, app.name));
-        } else {
-            name.setText(Utils.formatAppNameAndSummary(app.name, app.summary));
-        }
-    }
-
-    /**
-     * The action button will either tell the user to "Update" or "Install" the app. Both actually do
-     * the same thing (launch the package manager). It depends on whether the app has a previous
-     * version installed or not as to the chosen terminology.
-     */
-    private void configureActionButton(@NonNull App app) {
-        if (actionButton == null) {
-            return;
-        }
-
-        actionButton.setVisibility(View.VISIBLE);
-
-        if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Installed) {
-            if (activity.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
-                actionButton.setText(R.string.menu_launch);
+        if (actionButton != null) {
+            if (viewState.shouldShowActionButton()) {
+                actionButton.setVisibility(View.VISIBLE);
+                actionButton.setText(viewState.getActionButtonText());
             } else {
                 actionButton.setVisibility(View.GONE);
             }
-        } else if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-            if (app.isInstalled()) {
-                actionButton.setText(R.string.app__install_downloaded_update);
+        }
+
+        if (progressBar != null) {
+            if (viewState.showProgress()) {
+                progressBar.setVisibility(View.VISIBLE);
+                if (viewState.isProgressIndeterminate()) {
+                    progressBar.setIndeterminate(true);
+                } else {
+                    progressBar.setIndeterminate(false);
+                    progressBar.setMax(viewState.getProgressMax());
+                    progressBar.setProgress(viewState.getProgressCurrent());
+                }
             } else {
-                actionButton.setText(R.string.menu_install);
+                progressBar.setVisibility(View.GONE);
             }
-        } else {
-            actionButton.setVisibility(View.GONE);
-        }
-    }
-
-    /**
-     * The install button is shown when an app:
-     *  * Is compatible with the users device.
-     *  * Has not been filtered due to anti-features/root/etc.
-     *  * Is either not installed or installed but can be updated.
-     */
-    private void configureInstallButton(@NonNull App app) {
-        if (installButton == null) {
-            return;
         }
 
-        if (isReadyToInstall(app)) {
-            installButton.setVisibility(View.GONE);
-        } else {
-            boolean installable = app.canAndWantToUpdate(activity) || !app.isInstalled();
-            boolean shouldAllow = app.compatible && !app.isFiltered();
+        if (cancelButton != null) {
+            if (viewState.showProgress()) {
+                cancelButton.setVisibility(View.VISIBLE);
+            } else {
+                cancelButton.setVisibility(View.GONE);
+            }
+        }
 
-            if (shouldAllow && installable) {
-                installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download));
+        if (installButton != null) {
+            if (viewState.shouldShowActionButton()) {
+                installButton.setVisibility(View.GONE);
+            } else if (viewState.showProgress()) {
                 installButton.setVisibility(View.VISIBLE);
+                installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_progress));
+                int progressAsDegrees = viewState.getProgressMax() <= 0 ? 0 :
+                        (int) (((float) viewState.getProgressCurrent() / viewState.getProgressMax()) * 360);
+                installButton.setImageLevel(progressAsDegrees);
+            } else if (viewState.shouldShowInstall()) {
+                installButton.setVisibility(View.VISIBLE);
+                installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download));
             } else {
                 installButton.setVisibility(View.GONE);
             }
         }
-    }
 
-    private void onDownloadProgressUpdated(int bytesRead, int totalBytes) {
-        if (installButton != null) {
-            installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_progress));
-            int progressAsDegrees = totalBytes <= 0 ? 0 : (int) (((float) bytesRead / totalBytes) * 360);
-            installButton.setImageLevel(progressAsDegrees);
-        }
-
-        if (progressBar != null) {
-            progressBar.setVisibility(View.VISIBLE);
-            if (totalBytes <= 0) {
-                progressBar.setIndeterminate(true);
+        if (status != null) {
+            CharSequence statusText = viewState.getStatusText();
+            if (statusText == null) {
+                status.setVisibility(View.GONE);
             } else {
-                progressBar.setIndeterminate(false);
-                progressBar.setMax(totalBytes);
-                progressBar.setProgress(bytesRead);
+                status.setVisibility(View.VISIBLE);
+                status.setText(statusText);
             }
         }
 
-        if (cancelButton != null) {
-            cancelButton.setVisibility(View.VISIBLE);
+        if (secondaryStatus != null) {
+            CharSequence statusText = viewState.getSecondaryStatusText();
+            if (statusText == null) {
+                secondaryStatus.setVisibility(View.GONE);
+            } else {
+                secondaryStatus.setVisibility(View.VISIBLE);
+                secondaryStatus.setText(statusText);
+            }
         }
     }
 
-    private void onDownloadComplete() {
-        if (installButton != null) {
-            installButton.setVisibility(View.GONE);
-        }
+    @NonNull
+    protected AppListItemState getCurrentViewState(
+            @NonNull App app, @Nullable AppUpdateStatusManager.AppUpdateStatus appStatus) {
+        if (appStatus == null) {
+            return getViewStateDefault(app);
+        } else {
+            switch (appStatus.status) {
+                case ReadyToInstall:
+                    return getViewStateReadyToInstall(app);
 
-        if (progressBar != null) {
-            progressBar.setVisibility(View.GONE);
-        }
+                case Downloading:
+                    return getViewStateDownloading(app, appStatus);
 
-        if (cancelButton != null) {
-            cancelButton.setVisibility(View.GONE);
-        }
+                case Installed:
+                    return getViewStateInstalled(app);
 
-        if (currentApp != null) {
-            configureActionButton(currentApp);
+                default:
+                    return getViewStateDefault(app);
+            }
         }
     }
+
+    protected AppListItemState getViewStateInstalled(@NonNull App app) {
+        CharSequence mainText = activity.getString(
+                R.string.app_list__name__successfully_installed, app.name);
+
+        AppListItemState state = new AppListItemState(app)
+                .setMainText(mainText)
+                .setStatusText(activity.getString(R.string.notification_content_single_installed));
+
+        if (activity.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
+            state.showActionButton(activity.getString(R.string.menu_launch));
+        }
+
+        return state;
+    }
+
+    protected AppListItemState getViewStateDownloading(
+            @NonNull App app, @NonNull AppUpdateStatusManager.AppUpdateStatus currentStatus) {
+        CharSequence mainText = activity.getString(
+                R.string.app_list__name__downloading_in_progress, app.name);
+
+        return new AppListItemState(app)
+                .setMainText(mainText)
+                .setProgress(currentStatus.progressCurrent, currentStatus.progressMax);
+    }
+
+    protected AppListItemState getViewStateReadyToInstall(@NonNull App app) {
+        int actionButtonLabel = app.isInstalled()
+                ? R.string.app__install_downloaded_update
+                : R.string.menu_install;
+
+        return new AppListItemState(app)
+                .setMainText(app.name)
+                .showActionButton(activity.getString(actionButtonLabel))
+                .setStatusText(activity.getString(R.string.app_list_download_ready));
+    }
+
+    protected AppListItemState getViewStateDefault(@NonNull App app) {
+        return new AppListItemState(app);
+    }
+
+    /* =================================================================
+     * Various listeners for each different click/broadcast that we need
+     * to respond to.
+     * =================================================================
+     */
 
     @SuppressWarnings("FieldCanBeLocal")
     private final View.OnClickListener onAppClicked = new View.OnClickListener() {
@@ -398,8 +353,10 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             Intent intent = new Intent(activity, AppDetails2.class);
             intent.putExtra(AppDetails2.EXTRA_APPID, currentApp.packageName);
             if (Build.VERSION.SDK_INT >= 21) {
-                Pair<View, String> iconTransitionPair = Pair.create((View) icon, activity.getString(R.string.transition_app_item_icon));
-                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, iconTransitionPair).toBundle();
+                String transitionAppIcon = activity.getString(R.string.transition_app_item_icon);
+                Pair<View, String> iconTransitionPair = Pair.create((View) icon, transitionAppIcon);
+                Bundle bundle = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation(activity, iconTransitionPair).toBundle();
                 activity.startActivity(intent, bundle);
             } else {
                 activity.startActivity(intent);
@@ -407,73 +364,19 @@ public class AppListItemController extends RecyclerView.ViewHolder {
         }
     };
 
-    /**
-     * Updates both the progress bar and the circular install button (which shows progress around the outside of the circle).
-     * Also updates the app label to indicate that the app is being downloaded.
-     */
-    private void updateAppStatus(@NonNull App app, @NonNull AppUpdateStatusManager.AppUpdateStatus status) {
-        currentStatus = status;
-
-        configureAppName(app);
-        configureActionButton(app);
-
-        switch (status.status) {
-            case Downloading:
-                onDownloadProgressUpdated(status.progressCurrent, status.progressMax);
-                break;
-
-            case ReadyToInstall:
-                onDownloadComplete();
-                break;
-
-
-            case Installed:
-            case Installing:
-            case InstallError:
-            case UpdateAvailable:
-            case DownloadInterrupted:
-                break;
-        }
-    }
-
     private final BroadcastReceiver onStatusChanged = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            AppUpdateStatusManager.AppUpdateStatus newStatus = intent.getParcelableExtra(AppUpdateStatusManager.EXTRA_STATUS);
+            AppUpdateStatusManager.AppUpdateStatus newStatus =
+                    intent.getParcelableExtra(AppUpdateStatusManager.EXTRA_STATUS);
 
-            if (currentApp == null || !TextUtils.equals(newStatus.app.packageName, currentApp.packageName) || (installButton == null && progressBar == null)) {
+            if (currentApp == null
+                    || !TextUtils.equals(newStatus.app.packageName, currentApp.packageName)
+                    || (installButton == null && progressBar == null)) {
                 return;
             }
 
             updateAppStatus(currentApp, newStatus);
-        }
-    };
-
-    private final BroadcastReceiver onInstallAction = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
-            if (currentApp == null || !TextUtils.equals(apk.packageName, currentApp.packageName)) {
-                return;
-            }
-
-            configureAppName(currentApp);
-            configureActionButton(currentApp);
-
-            if (installButton == null) {
-                return;
-            }
-
-            if (Installer.ACTION_INSTALL_STARTED.equals(intent.getAction())) {
-                installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download_progress));
-                installButton.setImageLevel(0);
-            } else if (Installer.ACTION_INSTALL_COMPLETE.equals(intent.getAction())) {
-                installButton.setVisibility(View.GONE);
-                // TODO: It could've been a different version other than the current suggested version.
-                // In these cases, don't hide the button but rather set it back to the default install image.
-            } else if (Installer.ACTION_INSTALL_INTERRUPTED.equals(intent.getAction())) {
-                installButton.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_download));
-            }
         }
     };
 
@@ -500,8 +403,10 @@ public class AppListItemController extends RecyclerView.ViewHolder {
             }
 
             if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-                File apkFilePath = ApkCache.getApkDownloadPath(activity, Uri.parse(currentStatus.apk.getUrl()));
-                Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getUrl() + " to " + apkFilePath);
+                Uri apkDownloadUri = Uri.parse(currentStatus.apk.getUrl());
+                File apkFilePath = ApkCache.getApkDownloadPath(activity, apkDownloadUri);
+                Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getUrl() +
+                        " to " + apkFilePath);
 
                 // TODO: This seems like a bit of a hack. Is there a better way to do this by changing
                 // the Installer API so that we can ask it to install without having to get it to fire
@@ -513,7 +418,8 @@ public class AppListItemController extends RecyclerView.ViewHolder {
                         broadcastManager.unregisterReceiver(this);
 
                         if (Installer.ACTION_INSTALL_USER_INTERACTION.equals(intent.getAction())) {
-                            PendingIntent pendingIntent = intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                            PendingIntent pendingIntent =
+                                    intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
                             try {
                                 pendingIntent.send();
                             } catch (PendingIntent.CanceledException ignored) { }
@@ -521,9 +427,9 @@ public class AppListItemController extends RecyclerView.ViewHolder {
                     }
                 };
 
-                broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(Uri.parse(currentStatus.apk.getUrl())));
+                broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(apkDownloadUri));
                 Installer installer = InstallerFactory.create(activity, currentStatus.apk);
-                installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), Uri.parse(currentStatus.apk.getUrl()));
+                installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), apkDownloadUri);
             } else {
                 final Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, currentApp);
                 InstallManagerService.queue(activity, currentApp, suggestedApk);

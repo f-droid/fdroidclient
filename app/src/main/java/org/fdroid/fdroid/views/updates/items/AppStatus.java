@@ -8,7 +8,6 @@ import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.views.apps.AppListItemController;
 
 import java.util.List;
 
@@ -16,8 +15,8 @@ import java.util.List;
  * Apps which we want to show some more substantial information about.
  *
  * @see R.layout#updateable_app_status_item The view that this binds to
- * @see AppListItemController Used for binding the {@link App} to the
- * {@link R.layout#updateable_app_status_item}
+ * @see AppStatusListItemController Used for binding the {@link App} to the
+ * {@link R.layout#updateable_app_status_item}.
  */
 public class AppStatus extends AppUpdateData {
 
@@ -44,7 +43,7 @@ public class AppStatus extends AppUpdateData {
         @NonNull
         @Override
         protected RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
-            return new AppListItemController(activity, activity.getLayoutInflater()
+            return new AppStatusListItemController(activity, activity.getLayoutInflater()
                     .inflate(R.layout.updateable_app_status_item, parent, false));
         }
 
@@ -52,7 +51,7 @@ public class AppStatus extends AppUpdateData {
         protected void onBindViewHolder(@NonNull List<AppUpdateData> items, int position,
                                         @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
             AppStatus app = (AppStatus) items.get(position);
-            ((AppListItemController) holder).bindModel(app.status.app);
+            ((AppStatusListItemController) holder).bindModel(app.status.app);
         }
     }
 

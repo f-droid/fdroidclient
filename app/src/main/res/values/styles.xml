@@ -121,6 +121,17 @@
         <item name="android:textColor">?attr/lightGrayTextColor</item>
     </style>
 
+    <!-- Used for supplementary information to show below an app name in app lists, such as
+         whether it is incompatible, what version is installed, etc -->
+    <style name="AppListItemStatusTextBase">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?attr/lightGrayTextColor</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <style name="AppListItemStatusText" parent="AppListItemStatusTextBase" />
+
     <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorButtonNormal">@color/swap_bright_blue</item>
         <item name="actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
