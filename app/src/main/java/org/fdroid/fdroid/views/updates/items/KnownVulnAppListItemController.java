@@ -14,6 +14,8 @@ import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppPrefs;
+import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerService;
@@ -39,16 +41,17 @@ public class KnownVulnAppListItemController extends AppListItemController {
 
         // TODO: Take into account signature when multi-sig stuff is merged.
         if (app.installedVersionCode < app.suggestedVersionCode) {
-            mainText = activity.getString(R.string.updates__app_with_known_vulnerability__upgrade, app.name);
+            mainText = activity.getString(R.string.updates__app_with_known_vulnerability__prompt_upgrade, app.name);
             actionButtonText = activity.getString(R.string.menu_upgrade);
         } else {
-            mainText = activity.getString(R.string.updates__app_with_known_vulnerability__uninstall, app.name);
+            mainText = activity.getString(R.string.updates__app_with_known_vulnerability__prompt_uninstall, app.name);
             actionButtonText = activity.getString(R.string.menu_uninstall);
         }
 
         return new AppListItemState(app)
                 .setMainText(mainText)
-                .showActionButton(actionButtonText);
+                .showActionButton(actionButtonText)
+                .showSecondaryButton(activity.getString(R.string.updates__app_with_known_vulnerability__ignore));
     }
 
     @Override
@@ -69,8 +72,24 @@ public class KnownVulnAppListItemController extends AppListItemController {
         }
     }
 
+    @Override
+    protected void onSecondaryButtonPressed(@NonNull App app) {
+        AppPrefs prefs = app.getPrefs(activity);
+        prefs.ignoreVulnerabilities = true;
+        AppPrefsProvider.Helper.update(activity, app, prefs);
+        refreshUpdatesList();
+    }
+
     private void unregisterUninstallReceiver() {
         LocalBroadcastManager.getInstance(activity).unregisterReceiver(installReceiver);
+    }
+
+    /**
+     * Trigger the LoaderManager in UpdatesAdapter to automatically requery for the list of
+     * apps with known vulnerabilities (i.e. this app should no longer be in that list).
+     */
+    private void refreshUpdatesList() {
+        activity.getContentResolver().notifyChange(AppProvider.getInstalledWithKnownVulnsUri(), null);
     }
 
     private final BroadcastReceiver installReceiver = new BroadcastReceiver() {
@@ -78,9 +97,7 @@ public class KnownVulnAppListItemController extends AppListItemController {
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Installer.ACTION_UNINSTALL_COMPLETE:
-                    // This will cause the LoaderManager in UpdatesAdapter to automatically requery for the list of
-                    // apps with known vulnerabilities (i.e. this app should no longer be in that list).
-                    activity.getContentResolver().notifyChange(AppProvider.getInstalledWithKnownVulnsUri(), null);
+                    refreshUpdatesList();
                     unregisterUninstallReceiver();
                     break;
 

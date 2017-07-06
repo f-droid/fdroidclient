@@ -14,6 +14,7 @@ public class AppListItemState {
     private final App app;
     private CharSequence mainText = null;
     private CharSequence actionButtonText = null;
+    private CharSequence secondaryButtonText = null;
     private CharSequence statusText = null;
     private CharSequence secondaryStatusText = null;
     private int progressCurrent = -1;
@@ -31,6 +32,11 @@ public class AppListItemState {
 
     public AppListItemState showActionButton(CharSequence label) {
         actionButtonText = label;
+        return this;
+    }
+
+    public AppListItemState showSecondaryButton(CharSequence label) {
+        secondaryButtonText = label;
         return this;
     }
 
@@ -72,6 +78,14 @@ public class AppListItemState {
 
     public CharSequence getActionButtonText() {
         return actionButtonText;
+    }
+
+    public boolean shouldShowSecondaryButton() {
+        return secondaryButtonText != null;
+    }
+
+    public CharSequence getSecondaryButtonText() {
+        return secondaryButtonText;
     }
 
     public boolean showProgress() {

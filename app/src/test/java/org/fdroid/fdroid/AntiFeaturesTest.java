@@ -6,6 +6,8 @@ import android.content.ContentValues;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppPrefs;
+import org.fdroid.fdroid.data.AppPrefsProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.FDroidProviderTest;
 import org.fdroid.fdroid.data.InstalledAppTestUtils;
@@ -105,6 +107,21 @@ public class AntiFeaturesTest extends FDroidProviderTest {
         install(vulnAtV2, 3);
         List<App> installed = AppProvider.Helper.findInstalledAppsWithKnownVulns(context);
         assertEquals(0, installed.size());
+    }
+
+    @Test
+    public void allVulnerableButIgnored() {
+        install(allVuln, 101);
+        List<App> installed = AppProvider.Helper.findInstalledAppsWithKnownVulns(context);
+        assertEquals(1, installed.size());
+
+        App app = installed.get(0);
+        AppPrefs prefs = app.getPrefs(context);
+        prefs.ignoreVulnerabilities = true;
+        AppPrefsProvider.Helper.update(context, app, prefs);
+
+        List<App> installedButIgnored = AppProvider.Helper.findInstalledAppsWithKnownVulns(context);
+        assertEquals(0, installedButIgnored.size());
     }
 
     @Test

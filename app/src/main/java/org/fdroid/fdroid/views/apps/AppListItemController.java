@@ -93,6 +93,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     @Nullable
     private final Button actionButton;
 
+    @Nullable
+    private final Button secondaryButton;
+
     private final DisplayImageOptions displayImageOptions;
 
     @Nullable
@@ -137,9 +140,14 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar);
         cancelButton = (ImageButton) itemView.findViewById(R.id.cancel_button);
         actionButton = (Button) itemView.findViewById(R.id.action_button);
+        secondaryButton = (Button) itemView.findViewById(R.id.secondary_button);
 
         if (actionButton != null) {
             actionButton.setOnClickListener(onActionClicked);
+        }
+
+        if (secondaryButton != null) {
+            secondaryButton.setOnClickListener(onSecondaryButtonClicked);
         }
 
         if (cancelButton != null) {
@@ -210,6 +218,15 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 actionButton.setText(viewState.getActionButtonText());
             } else {
                 actionButton.setVisibility(View.GONE);
+            }
+        }
+
+        if (secondaryButton != null) {
+            if (viewState.shouldShowSecondaryButton()) {
+                secondaryButton.setVisibility(View.VISIBLE);
+                secondaryButton.setText(viewState.getSecondaryButtonText());
+            } else {
+                secondaryButton.setVisibility(View.GONE);
             }
         }
 
@@ -392,6 +409,18 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         }
     };
 
+    @SuppressWarnings("FieldCanBeLocal")
+    private final View.OnClickListener onSecondaryButtonClicked = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (currentApp == null) {
+                return;
+            }
+
+            onSecondaryButtonPressed(currentApp);
+        }
+    };
+
     protected void onActionButtonPressed(@NonNull App app) {
         // When the button says "Run", then launch the app.
         if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Installed) {
@@ -440,6 +469,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             InstallManagerService.queue(activity, app, suggestedApk);
         }
     }
+
+    /** To be overridden by subclasses if desired */
+    protected void onSecondaryButtonPressed(@NonNull App app) { }
 
     @SuppressWarnings("FieldCanBeLocal")
     private final View.OnClickListener onCancelDownload = new View.OnClickListener() {

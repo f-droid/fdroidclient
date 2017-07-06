@@ -708,11 +708,20 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryInstalledWithKnownVulns() {
-        // Include the hash in this check because otherwise any app with any vulnerable version will
-        // get returned.
-        String selection = " antiFeature." + Schema.AntiFeatureTable.Cols.NAME + " = 'KnownVuln' AND " +
-                getApkTableName() + "." + ApkTable.Cols.HASH + " = installed." + InstalledAppTable.Cols.HASH;
-        return new AppQuerySelection(selection).requireNaturalInstalledTable().requireNatrualJoinAntiFeatures();
+        String apk = getApkTableName();
+
+        // Include the hash in this check because otherwise apps with any vulnerable version will
+        // get returned, rather than just the installed version.
+        String compareHash = apk + "." + ApkTable.Cols.HASH + " = installed." + InstalledAppTable.Cols.HASH;
+        String knownVuln = " antiFeature." + Schema.AntiFeatureTable.Cols.NAME + " = 'KnownVuln' ";
+        String notIgnored = " COALESCE(prefs." + AppPrefsTable.Cols.IGNORE_VULNERABILITIES + ", 0) = 0 ";
+
+        String selection = knownVuln + " AND " + compareHash + " AND " + notIgnored;
+
+        return new AppQuerySelection(selection)
+                .requireNaturalInstalledTable()
+                .requireNatrualJoinAntiFeatures()
+                .requireLeftJoinPrefs();
     }
 
     static AppQuerySelection queryPackageNames(String packageNames, String packageNameField) {
