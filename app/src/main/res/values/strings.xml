@@ -73,6 +73,8 @@
     <string name="added_on">Added on %s</string>
     <string name="app__tts__cancel_download">Cancel download</string>
     <string name="app__install_downloaded_update">Update</string>
+    <string name="app_installed_media">File installed to %s</string>
+    <string name="app_permission_storage">F-Droid needs the storage permission to install this to storage. Please allow it on the next screen to proceed with installation.</string>
 
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s installed</string>
@@ -330,7 +332,6 @@
     </string>
     <string name="install_error_unknown">Failed to install due to an unknown error</string>
     <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
-    <string name="install_error_not_yet_supported">File type cannot yet be installed: %s</string>
     <string name="system_install_denied_signature">The signature of the extension is wrong! Please create a bug
         report!
     </string>

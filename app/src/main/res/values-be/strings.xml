@@ -489,7 +489,6 @@
     <string name="app__tts__cancel_download">Адмяніць спампоўку</string>
     <string name="app__tts__downloading_progress">Спампоўка, %1$d%% скончана</string>
     <string name="menu_license">Ліцэнзія: %s</string>
-    <string name="install_error_not_yet_supported">Тып файла не можа быць усталяваны: %s</string>
     <plurals name="notification_summary_updates">
 	<item quantity="one">%1$d абнаўленне</item>
 	<item quantity="few">%1$d абнаўленні</item>

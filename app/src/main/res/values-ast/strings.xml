@@ -460,7 +460,6 @@
 	<item quantity="other">Ver toles %d</item>
 </plurals>
 
-    <string name="install_error_not_yet_supported">Entá nun puede instalase\'l tipu de ficheru: %s</string>
     <string name="nearby_splash__download_apps_from_people_nearby">¿Nun tienes Internet? ¡Descarga apps de xente cercana!</string>
     <string name="nearby_splash__find_people_button">Alcontrar persones cercanes</string>
     <string name="nearby_splash__both_parties_need_fdroid">Les dos partes necesiten %1$s pa usar la cercanía.</string>

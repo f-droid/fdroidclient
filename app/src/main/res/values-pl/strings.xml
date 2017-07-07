@@ -467,7 +467,6 @@
     <string name="app__tts__cancel_download">Anuluj pobieranie</string>
     <string name="app__tts__downloading_progress">Pobieranie, %1$d%% ukończono</string>
     <string name="menu_license">Licencja: %s</string>
-    <string name="install_error_not_yet_supported">Typ pliku nie może być jeszcze zainstalowany: %s</string>
     <plurals name="notification_summary_updates">
 	<item quantity="one">%1$d Aktualizacja</item>
 	<item quantity="few">%1$d Aktualizacje</item>

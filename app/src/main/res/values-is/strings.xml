@@ -502,7 +502,6 @@
     <string name="antifeatureswarning">Þetta forrit er með eiginleika sem ekki er víst að þér líki við.</string>
     <string name="antifeatures">Neikvæðir eiginleikar</string>
     <string name="download_404">Umbeðin skrá fannst ekki.</string>
-    <string name="install_error_not_yet_supported">Skráartegundina er ekki enn hægt að setja upp: %s</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Ekkert Internet? Fáðu forrit frá fólki í nágrenninu!</string>
     <string name="nearby_splash__find_people_button">Finna fólk nálægt mér</string>
     <string name="nearby_splash__both_parties_need_fdroid">Báðir aðilar þurfa %1$s til að nota í nálægð.</string>

@@ -481,7 +481,6 @@
     <string name="app__tts__cancel_download">Herunterladen abbrechen</string>
     <string name="app__tts__downloading_progress">wird heruntergeladen, %1$d%% vervollständigt</string>
     <string name="menu_license">Lizenz: %s</string>
-    <string name="install_error_not_yet_supported">Dateityp kann nicht installiert werden: %s</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d weitere …</item>
 	<item quantity="other">+%1$d weitere …</item>

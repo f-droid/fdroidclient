@@ -486,7 +486,6 @@
     <string name="app__tts__cancel_download">Откажи преузимање</string>
     <string name="menu_license">Лиценца: %s</string>
     <string name="app__tts__downloading_progress">Преузимам, %1$d%% завршено</string>
-    <string name="install_error_not_yet_supported">Тип фајла још не може бити инсталиран: %s</string>
     <string name="by_author_format">од %s</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+још %1$d…</item>

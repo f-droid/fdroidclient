@@ -508,6 +508,7 @@
         </activity>
 
         <activity android:name=".AboutActivity" android:theme="@style/Theme.AppCompat.Light.Dialog" />
+        <activity android:name=".installer.FileInstallerActivity" android:theme="@style/AppThemeTransparent" />
 
     </application>
 

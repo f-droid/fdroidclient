@@ -343,7 +343,7 @@ public class InstallManagerService extends Service {
                         appUpdateStatusManager.updateApk(downloadUrl, AppUpdateStatusManager.Status.Installed, null);
                         Apk apkComplete =  appUpdateStatusManager.getApk(downloadUrl);
 
-                        if (apkComplete != null) {
+                        if (apkComplete != null && apkComplete.isApk()) {
                             try {
                                 PackageManagerCompat.setInstaller(context, getPackageManager(), apkComplete.packageName);
                             } catch (SecurityException e) {

@@ -488,7 +488,6 @@
 
     <string name="categories__empty_state__no_categories">Ez dago kategoriarik erakusteko</string>
 
-    <string name="install_error_not_yet_supported">Fitxategi mota ezin da oraindik instalatu: %s</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Internetik ez? Eskuratu aplikazioak inguruko jendearengandik!</string>
     <string name="nearby_splash__find_people_button">Aurkitu inguruko jendea</string>
     <string name="nearby_splash__both_parties_need_fdroid">Biek %1$s erabili behar dute inguruan elkar aurkitzeko.</string>

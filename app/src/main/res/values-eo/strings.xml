@@ -456,7 +456,6 @@
     <string name="app__tts__cancel_download">Nuligi elŝutadon</string>
     <string name="app__tts__downloading_progress">Elŝutado, %1$d%% kompleta</string>
     <string name="menu_license">Permesilo: %s</string>
-    <string name="install_error_not_yet_supported">Dosier-tipo ne povas ankoraŭ esti instalita: %s</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d pli…</item>
 	<item quantity="other">+1$d pli…</item>

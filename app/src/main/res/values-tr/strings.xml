@@ -463,7 +463,6 @@
     <string name="app__tts__cancel_download">İndirmeyi iptal et</string>
     <string name="app__tts__downloading_progress">İndiriliyor, %%%1$d tamamlandı</string>
     <string name="menu_license">Lisans: %s</string>
-    <string name="install_error_not_yet_supported">Dosya türü henüz kurulamaz: %s</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d daha…</item>
 	<item quantity="other">+%1$d daha…</item>

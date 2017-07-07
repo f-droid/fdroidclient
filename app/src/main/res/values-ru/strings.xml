@@ -486,7 +486,6 @@
     <string name="app__tts__cancel_download">Отменить скачивание</string>
     <string name="app__tts__downloading_progress">Скачано %1$d%%</string>
     <string name="menu_license">Лицензия: %s</string>
-    <string name="install_error_not_yet_supported">Тип файла пока не может быть установлен: %s</string>
     <plurals name="notification_summary_updates">
 	<item quantity="one">%1$d обновление</item>
 	<item quantity="few">%1$d обновления</item>

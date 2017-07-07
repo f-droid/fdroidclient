@@ -15,7 +15,7 @@ public class SanitizedFile extends File {
      * Removes anything that is not an alpha numeric character, or one of "-", ".", or "_".
      */
     public static String sanitizeFileName(String name) {
-        return name.replaceAll("[^A-Za-z0-9-._]", "");
+        return name.replaceAll("[^A-Za-z0-9-._ ]", "");
     }
 
     /**

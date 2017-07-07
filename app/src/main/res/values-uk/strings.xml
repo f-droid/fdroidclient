@@ -466,7 +466,6 @@
 	<item quantity="many">Усіх %d застосунків</item>
 </plurals>
 
-    <string name="install_error_not_yet_supported">Цей вид файлу не може бути встановленим: %s</string>
     <string name="nearby_splash__both_parties_need_fdroid">Обидві частини потребують %1$s для користання поблизу.</string>
 
     <string name="app__tts__downloading_progress">Стягування, %1$d%% записано</string>

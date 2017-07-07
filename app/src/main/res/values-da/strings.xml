@@ -431,7 +431,6 @@
 	<item quantity="other">Vis alle %d</item>
 </plurals>
 
-    <string name="install_error_not_yet_supported">Kan endnu ikke installere filtypen: %s</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Ingen internet? Hent apps fra folk i nærheden af dig!</string>
     <string name="nearby_splash__find_people_button">Find folk i nærheden af mig</string>
     <string name="nearby_splash__both_parties_need_fdroid">Begge parter skal have %1$s for at benytte i nærheden.</string>

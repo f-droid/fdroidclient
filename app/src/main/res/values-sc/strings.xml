@@ -493,7 +493,6 @@
     <string name="app__tts__cancel_download">Firma s\'iscarrigamentu</string>
     <string name="app__tts__downloading_progress">Iscarrighende, %1$d%% cumpridu</string>
     <string name="menu_license">Litzèntzia: %s</string>
-    <string name="install_error_not_yet_supported">Sa casta de documentu non podet èssere installada: %s</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d àtera…</item>
 	<item quantity="other">àteras +%1$d…</item>

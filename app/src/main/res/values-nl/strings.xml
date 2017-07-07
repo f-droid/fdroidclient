@@ -450,7 +450,6 @@
     <string name="app__tts__cancel_download">Annuleer download</string>
     <string name="app__tts__downloading_progress">Downloaden, %1$d%% voltooid</string>
     <string name="menu_license">Licentie: %s</string>
-    <string name="install_error_not_yet_supported">Bestandstype kan nog niet geïnstalleerd worden: %s</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d meer…</item>
 	<item quantity="other">+%1$d meer…</item>

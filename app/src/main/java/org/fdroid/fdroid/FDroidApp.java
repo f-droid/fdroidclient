@@ -39,12 +39,12 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import info.guardianproject.netcipher.NetCipher;
-import info.guardianproject.netcipher.proxy.OrbotHelper;
+
 import org.acra.ACRA;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
@@ -55,12 +55,11 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
+import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.ImageLoaderForUIL;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-import sun.net.www.protocol.bluetooth.Handler;
 
 import java.io.IOException;
 import java.net.URL;
@@ -68,6 +67,10 @@ import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
 import java.security.Security;
 import java.util.List;
+
+import info.guardianproject.netcipher.NetCipher;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
+import sun.net.www.protocol.bluetooth.Handler;
 
 @ReportsCrashes(mailTo = "reports@f-droid.org",
         mode = ReportingInteractionMode.DIALOG,
@@ -79,6 +82,8 @@ public class FDroidApp extends Application {
     private static final String TAG = "FDroidApp";
 
     public static final String SYSTEM_DIR_NAME = Environment.getRootDirectory().getAbsolutePath();
+
+    private static FDroidApp instance;
 
     // for the local repo on this device, all static since there is only one
     public static volatile int port;
@@ -204,6 +209,7 @@ public class FDroidApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         if (BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                     .detectAll()
@@ -448,5 +454,9 @@ public class FDroidApp extends Application {
 
     public static boolean isUsingTor() {
         return useTor;
+    }
+
+    public static Context getInstance() {
+        return instance;
     }
 }

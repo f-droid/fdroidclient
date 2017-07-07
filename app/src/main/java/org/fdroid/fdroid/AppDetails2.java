@@ -310,7 +310,7 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
             shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary + ") - https://f-droid.org/app/" + app.packageName);
 
-            boolean showNearbyItem = app.isInstalled() && fdroidApp.bluetoothAdapter != null;
+            boolean showNearbyItem = app.isInstalled(getApplicationContext()) && fdroidApp.bluetoothAdapter != null;
             ShareChooserDialog.createChooser((CoordinatorLayout) findViewById(R.id.rootCoordinator), this, this, shareIntent, showNearbyItem);
             return true;
         } else if (item.getItemId() == R.id.action_ignore_all) {
@@ -778,8 +778,12 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         Apk apk = app.installedApk;
         if (apk == null) {
             // TODO ideally, app would be refreshed immediately after install, then this
-            // workaround would be unnecessary
-            apk = getInstalledApk();
+            // workaround would be unnecessary - unless it is a media file
+            apk = app.getMediaApkifInstalled(getApplicationContext());
+            if (apk == null) {
+                // When the app isn't a media file - the above workaround refers to this.
+                apk = getInstalledApk();
+            }
             app.installedApk = apk;
         }
         Installer installer = InstallerFactory.create(this, apk);
