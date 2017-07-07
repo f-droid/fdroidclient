@@ -30,7 +30,6 @@ import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
@@ -48,6 +47,9 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,10 +63,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 // TODO move to org.fdroid.fdroid.updater
 // TODO reduce visibility of methods once in .updater package (.e.g tests need it public now)
@@ -297,11 +295,12 @@ public class RepoUpdater {
 
     /**
      * Update tracking data for the repo represented by this instance (index version, etag,
-     * description, human-readable name, etc.
+     * description, human-readable name, etc.  This is not reused in {@link IndexV1Updater}
+     * because its too tied up into the old parsing flow in this class.
      */
-    ContentValues prepareRepoDetailsForSaving(String name, String description, int maxAge,
-                                              int version, long timestamp, String icon,
-                                              String[] mirrors, String cacheTag) {
+    private ContentValues prepareRepoDetailsForSaving(String name, String description, int maxAge,
+                                                      int version, long timestamp, String icon,
+                                                      String[] mirrors, String cacheTag) {
         ContentValues values = new ContentValues();
 
         values.put(RepoTable.Cols.LAST_UPDATED, Utils.formatTime(new Date(), ""));

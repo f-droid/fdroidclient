@@ -17,9 +17,12 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.RepoUpdater;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.FDroidProviderTest;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.RepoPushRequest;
 import org.fdroid.fdroid.mock.RepoDetails;
 import org.junit.After;
@@ -48,6 +51,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 @Config(constants = BuildConfig.class, sdk = 24)
@@ -71,6 +75,12 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
 
     @Test
     public void testIndexV1Processing() throws IOException, RepoUpdater.UpdateException {
+        List<Repo> repos = RepoProvider.Helper.all(context);
+        for (Repo repo : repos) {
+            RepoProvider.Helper.remove(context, repo.getId());
+        }
+        assertEquals("No repos present", 0, RepoProvider.Helper.all(context).size());
+        assertEquals("No apps present", 0, AppProvider.Helper.all(context.getContentResolver()).size());
         Repo repo = MultiRepoUpdaterTest.createRepo("Testy", TESTY_JAR, context, TESTY_CERT);
         repo.timestamp = 1481222110;
         IndexV1Updater updater = new IndexV1Updater(context, repo);
@@ -80,6 +90,37 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
         InputStream indexInputStream = jarFile.getInputStream(indexEntry);
         updater.processIndexV1(indexInputStream, indexEntry, "fakeEtag");
         IOUtils.closeQuietly(indexInputStream);
+        List<App> apps = AppProvider.Helper.all(context.getContentResolver());
+        assertEquals("53 apps present", 53, apps.size());
+
+        String[] packages = {
+                "fake.app.one",
+                "org.adaway",
+                "This_does_not_exist",
+        };
+        for (String id : packages) {
+            assertEquals("No apks for " + id, 0, ApkProvider.Helper.findByPackageName(context, id).size());
+        }
+
+        for (App app : apps) {
+            assertTrue("Some apks for " + app.packageName,
+                    ApkProvider.Helper.findByPackageName(context, app.packageName).size() > 0);
+        }
+
+        repos = RepoProvider.Helper.all(context);
+        assertEquals("One repo", 1, repos.size());
+        Repo repoFromDb = repos.get(0);
+        assertEquals("repo.timestamp should be set", 1481222111, repoFromDb.timestamp);
+        assertEquals("repo.address should be the same", repo.address, repoFromDb.address);
+        assertEquals("repo.name should be set", "non-public test repo", repoFromDb.name);
+        assertEquals("repo.maxage should be set", 0, repoFromDb.maxage);
+        assertEquals("repo.version should be set", 18, repoFromDb.version);
+        assertEquals("repo.icon should be set", "fdroid-icon.png", repoFromDb.icon);
+        String description = "This is a repository of apps to be used with F-Droid. Applications in this repository are either official binaries built by the original application developers, or are binaries built from source by the admin of f-droid.org using the tools on https://gitlab.com/u/fdroid. "; // NOCHECKSTYLE LineLength
+        assertEquals("repo.description should be set", description, repoFromDb.description);
+        assertEquals("repo.mirrors should have items", 2, repo.mirrors.length);
+        assertEquals("repo.mirrors first URL", "http://frkcchxlcvnb4m5a.onion/fdroid/repo", repo.mirrors[0]);
+        assertEquals("repo.mirrors second URL", "http://testy.at.or.at/fdroid/repo", repo.mirrors[1]);
     }
 
     @Test(expected = RepoUpdater.SigningException.class)

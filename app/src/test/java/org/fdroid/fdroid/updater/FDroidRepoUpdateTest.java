@@ -29,18 +29,24 @@ public class FDroidRepoUpdateTest extends MultiRepoUpdaterTest {
         assertEmpty();
         updateEarlier();
         updateLater();
+        updateV1Later();
     }
 
     protected void updateEarlier() throws RepoUpdater.UpdateException {
         Utils.debugLog(TAG, "Updating earlier version of F-Droid repo");
-        updateRepo(createUpdater(REPO_FDROID, REPO_FDROID_URI, context, REPO_FDROID_PUB_KEY),
+        updateRepo(createRepoUpdater(REPO_FDROID, REPO_FDROID_URI, context, REPO_FDROID_PUB_KEY),
                 "index.fdroid.2016-10-30.jar");
     }
 
     protected void updateLater() throws RepoUpdater.UpdateException {
         Utils.debugLog(TAG, "Updating later version of F-Droid repo");
-        updateRepo(createUpdater(REPO_FDROID, REPO_FDROID_URI, context, REPO_FDROID_PUB_KEY),
+        updateRepo(createRepoUpdater(REPO_FDROID, REPO_FDROID_URI, context, REPO_FDROID_PUB_KEY),
                 "index.fdroid.2016-11-10.jar");
     }
 
+    protected void updateV1Later() throws RepoUpdater.UpdateException {
+        Utils.debugLog(TAG, "Updating later version of F-Droid index-v1");
+        updateRepo(createIndexV1Updater(REPO_FDROID, REPO_FDROID_URI, context, REPO_FDROID_PUB_KEY),
+                "index-v1.fdroid.2017-07-07.jar");
+    }
 }
