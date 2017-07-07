@@ -478,4 +478,6 @@
     <string name="download_404">Het gevraagde bestand is niet gevonden.</string>
     <string name="force_old_index">Dwing oud indexformaat af</string>
     <string name="force_old_index_summary">Gebruik de XML-app-index in geval van programmafouten of compatibiliteitsproblemen</string>
+    <string name="app_list_download_ready">Gedownload, klaar voor installatie</string>
+
     </resources>

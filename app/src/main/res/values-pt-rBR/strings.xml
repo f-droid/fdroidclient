@@ -265,7 +265,7 @@
         neste dispositivo.
     </string>
     <string name="loading">Carregando…</string>
-    <string name="swap_connection_misc_error">Ocorreu um erro ao conectar o dispositivo, não conseguimos permutar com ele.</string>
+    <string name="swap_connection_misc_error">Ocorreu um erro ao conectar o dispositivo, não foi possível trocar com ele!</string>
     <string name="swap_not_enabled">Permuta não habilitada</string>
     <string name="swap_not_enabled_description">Antes de permutar, seu dispositivo deve estar visível.</string>
 
@@ -483,8 +483,8 @@
     <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>
     <string name="menu_license">Licença: %s</string>
     <plurals name="notification_summary_more">
-	<item quantity="one">+%1$d mais…</item>
-	<item quantity="other">+%1$d mais…</item>
+	<item quantity="one">mais +%1$d …</item>
+	<item quantity="other">mais +%1$d …</item>
 </plurals>
     <plurals name="notification_summary_updates">
 	<item quantity="one">%1$d atualização</item>

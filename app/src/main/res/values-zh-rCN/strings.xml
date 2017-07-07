@@ -9,7 +9,7 @@
     <string name="updates">更新</string>
     <string name="other">其它</string>
     <string name="update_interval">自动更新周期</string>
-    <string name="update_interval_zero">不自动更新应用列表</string>
+    <string name="update_interval_zero">不要自动更新应用列表</string>
     <string name="automatic_scan_wifi">仅使用Wi-Fi</string>
     <string name="automatic_scan_wifi_on">仅当 Wi-Fi 等非计量网络可用时自动更新</string>
     <string name="notify">显示可用更新</string>
@@ -439,4 +439,10 @@
     <string name="download_404">找不到所请求的文件。</string>
     <string name="force_old_index">强制使用旧索引格式</string>
     <string name="force_old_index_summary">如果出现错误或存在兼容问题，请使用 XML 应用索引</string>
+    <string name="app_installed_media">文件安装到 %s</string>
+    <string name="app_permission_storage">F-Droid 需要存储权限安装这到存储。请允许此权限并在下一个屏幕上继续进行安装。</string>
+
+    <string name="app_list_download_ready">已下载， 安装准备就绪</string>
+
+    <string name="status_inserting_x_apps">正在从 %3$s 保存应用程序的详细信息 (%1$d/%2$d)</string>
     </resources>

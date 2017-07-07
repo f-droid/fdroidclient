@@ -488,4 +488,7 @@
     <string name="download_404">Berkas yang diminta tidak ditemukan.</string>
     <string name="force_old_index">Paksa format indeks lama</string>
     <string name="force_old_index_summary">Jika terdapat bug atau masalah kompatibilitas, gunakan indeks apl XML</string>
+    <string name="app_list_download_ready">Terunduh, siap untuk dipasang</string>
+
+    <string name="status_inserting_x_apps">Menyimpan detail apl (%1$d/%2$d) dari %3$s</string>
     </resources>

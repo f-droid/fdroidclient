@@ -501,4 +501,7 @@
     <string name="download_404">Nie znaleziono żądanego pliku.</string>
     <string name="force_old_index">Wymuś starszy format indeksu</string>
     <string name="force_old_index_summary">W przypadku błędów lub problemów z kompatybilnością, użyj indeksu XML aplikacji</string>
+    <string name="app_list_download_ready">Zainstalowany i gotowy do instalacji</string>
+
+    <string name="status_inserting_x_apps">Zapisywanie szczegółów aplikacji (%1$d/%2$d) z %3$s</string>
     </resources>

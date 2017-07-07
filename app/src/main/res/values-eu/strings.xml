@@ -71,7 +71,7 @@
     <string name="repo_confirm_delete_title">Biltegia ezabatu?</string>
     <string name="app_name">F-Droid</string>
 
-    <string name="installIncompatible">Aplikazio hau ez da zure gailuarekin bateragarria. Instalatu hala ere?</string>
+    <string name="installIncompatible">Aplikazioa zure gailuarekin bateraezina da, instalatu halere?</string>
     <string name="unstable_updates">Eguneraketa ezegonkorrak</string>
     <string name="unstable_updates_summary">Proposatu eguneraketak bertsio ezegonkorretara</string>
     <string name="theme_dark">Iluna</string>
@@ -494,8 +494,8 @@
 
     <string name="app__tts__downloading_progress">Deskargatzen, %1$d%% osatua</string>
     <string name="by_author_format">egilea: %s</string>
-    <string name="force_old_index">Behartu indize-formatu zaharra</string>
-    <string name="force_old_index_summary">Erroreak edo bateragarritasun arazoak badaude, erabili aplikazioen XML indizea</string>
+    <string name="force_old_index">Indize zaharreko formatua behartu</string>
+    <string name="force_old_index_summary">Errorerik edo bateragarritasun arazorik izanez gero, erabili aplikazioaren XML indizea</string>
     <string name="download_404">Ez da aurkitu eskatutako fitxategia.</string>
     <plurals name="notification_summary_more">
 	<item quantity="one">+%1$d gehiago…</item>
@@ -521,4 +521,7 @@
 	<item quantity="one">Orain dela urte %1$d eguneratua</item>
 	<item quantity="other">Orain dela %1$d urte eguneratua</item>
 </plurals>
-</resources>
+<string name="app_list_download_ready">Deskargatuta, instalatzeko prest</string>
+
+    <string name="status_inserting_x_apps">Aplikazioaren xehetasunak gordetzen (%1$d/%2$d) %3$s(e)tik</string>
+    </resources>

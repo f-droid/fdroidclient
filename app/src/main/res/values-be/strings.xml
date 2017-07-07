@@ -523,4 +523,10 @@
     <string name="download_404">Запытаны файл не знойдзены.</string>
     <string name="force_old_index">Прымусова ўжываць стары фармат індэкса</string>
     <string name="force_old_index_summary">У выпадку, калі ёсць памылкі або праблемы сумяшчальнасці, выкарыстоўвайце XML-індэкс</string>
+    <string name="app_list_download_ready">Запампованая, гатовая да ўсталявання</string>
+
+    <string name="status_inserting_x_apps">Захаванне дэталей праграмы (%1$d/%2$d) з %3$s</string>
+    <string name="app_installed_media">Файл усталяваны ў %s</string>
+    <string name="app_permission_storage">F-Droid патрабуе дазвол на ўсталёўку гэтага ў сховішча. Калі ласка, дайце дазвол на наступным экране для працягу ўсталёўкі.</string>
+
     </resources>

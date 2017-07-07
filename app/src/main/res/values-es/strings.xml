@@ -68,7 +68,7 @@
     <string name="menu_upgrade">Actualización (a nueva versión)</string>
     <string name="menu_donate">Donar</string>
     <string name="details_notinstalled">No instalado</string>
-    <string name="antiadslist">Esta aplicación contiene publicidad</string>
+    <string name="antiadslist">Esta aplicación tiene publicidad</string>
     <string name="antitracklist">Esta aplicación rastrea e informa de tu actividad</string>
     <string name="antinonfreeadlist">Esta aplicación promueve complementos no libres</string>
     <string name="antinonfreenetlist">Esta aplicación promueve servicios de red no libres</string>
@@ -160,11 +160,9 @@
     <string name="category_Science_Education">Ciencia y educación</string>
     <string name="category_Security">Seguridad</string>
     <string name="category_System">Sistema</string>
-    <string name="requesting_root_access_body">Solicitando acceso «root»…</string>
-    <string name="root_access_denied_title">Acceso «root» denegado</string>
-    <string name="root_access_denied_body">El dispositivo Android no está «rooteado» o se ha denegado el acceso «root»
-        para F-Droid.
-    </string>
+    <string name="requesting_root_access_body">Solicitando acceso administrativo…</string>
+    <string name="root_access_denied_title">Acceso administrativo («root») denegado</string>
+    <string name="root_access_denied_body">El dispositivo Android no está «rooteado» o se ha denegado el acceso administrativo a F-Droid.</string>
     <string name="swap_nfc_description">Si la otra persona tiene F-Droid y activado NFC, poned en contacto vuestros teléfonos.</string>
     <string name="swap_join_same_wifi">Unirse a la misma Red Wi-Fi que la otra persona</string>
     <string name="swap">Intercambiar aplicaciones</string>
@@ -415,21 +413,21 @@
     <string name="app_recommended_version_installed">Versión %1$s (Recomendada)</string>
     <string name="app__newly_added">Novedad</string>
 
-    <string name="installed_apps__activity_title">«Apps» instaladas</string>
+    <string name="installed_apps__activity_title">Aplis instaladas</string>
     <string name="installed_app__updates_ignored">Actualizaciones ignoradas</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Actualizaciones ignoradas para la versión %1$s
     </string>
 
-    <string name="preference_category__my_apps">Mis «apps»</string>
-    <string name="preference_manage_installed_apps">Gestionar las «apps» instaladas</string>
+    <string name="preference_category__my_apps">Mis aplicaciones</string>
+    <string name="preference_manage_installed_apps">Gestionar las aplis instaladas</string>
 
 
     <string name="tts_category_name">Categoría %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Ver la única «app» de la categoría %2$s</item>
-        <item quantity="other">Ver todas las «apps» de la categoría %2$s</item>
-    </plurals>
+	<item quantity="one">Ver la única apli de la categoría %2$s</item>
+	<item quantity="other">Ver todas las aplis de la categoría %2$s</item>
+</plurals>
     <string name="app__install_downloaded_update">Actualizar</string>
 
     <string name="app_list__name__downloading_in_progress">Descargando %1$s</string>
@@ -447,8 +445,8 @@
 
     <string name="details_new_in_version">Novedades en la versión %s</string>
 
-    <string name="antifeatureswarning">Est app contiene características que podrían no gustarte.</string>
-    <string name="antifeatures">Características no-libres</string>
+    <string name="antifeatureswarning">Esta aplicación tiene características que podrían no gustarte.</string>
+    <string name="antifeatures">Características controvertidas</string>
     <string name="details_last_updated_today">Actualizada hoy</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Actualizada ayer</item>
@@ -482,8 +480,8 @@
 	<item quantity="other">%1$d actualizaciones</item>
 </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">%1$d «app» instalada</item>
-	<item quantity="other">%1$d «apps» instaladas</item>
+	<item quantity="one">%1$d apli instalada</item>
+	<item quantity="other">%1$d aplis instaladas</item>
 </plurals>
     <plurals name="details_last_update_weeks">
 	<item quantity="one">Actualizado hace una semana</item>
@@ -501,4 +499,7 @@
     <string name="download_404">No se ha encontrado archivo solicitado.</string>
     <string name="force_old_index">Forzar al formato de índice antiguo</string>
     <string name="force_old_index_summary">En caso de que haya problemas o incopatibilidades, usa el índice XML de la aplicación</string>
+    <string name="app_list_download_ready">Descargado, listo para instalar</string>
+
+    <string name="status_inserting_x_apps">Guardando detalles de la aplicación (%1$d/%2$d) desde %3$s</string>
     </resources>

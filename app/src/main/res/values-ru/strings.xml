@@ -518,4 +518,9 @@
         <item quantity="few">Обновлено %1$d года назад</item>
         <item quantity="many">Обновлено %1$d года назад</item>
     </plurals>
-</resources>
+<string name="force_old_index">Старый формат индекса (принудительно)</string>
+    <string name="force_old_index_summary">Использовать индекс приложений XML в случае проблем с совместимостью</string>
+    <string name="app_list_download_ready">Загружено, готово к установке</string>
+
+    <string name="status_inserting_x_apps">Сохранение данных приложений (%1$d/%2$d) из %3$s</string>
+    </resources>
