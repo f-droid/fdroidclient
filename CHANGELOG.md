@@ -1,3 +1,13 @@
+### 1.0-alpha0 (2017-07-08)
+
+* Support installing media, OTA, ZIP, etc files
+
+* Fully support APKs signed by multiple signing keys
+
+* Tibetan translation
+
+* Remove related apps and categories after disabling repo
+
 ### 0.104 (2017-06-16)
 
 * Support apps with APKs signed by more than one key
