@@ -27,12 +27,16 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -296,5 +300,51 @@ public class Repo extends ValueObject {
         if (values.containsKey(Cols.PUSH_REQUESTS)) {
             pushRequests = toInt(values.getAsInteger(Cols.PUSH_REQUESTS));
         }
+    }
+
+    public boolean hasMirrors() {
+        return mirrors != null && mirrors.length > 1;
+    }
+
+    public int getMirrorCount() {
+        int count = 0;
+        if (mirrors != null && mirrors.length > 1) {
+            for (String m: mirrors) {
+                if (!m.equals(address)) {
+                    if (FDroidApp.isUsingTor()) {
+                        count++;
+                    } else {
+                        if (!m.contains(".onion")) {
+                            count++;
+                        }
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+    public String getMirror(String lastWorkingMirror) {
+        if (TextUtils.isEmpty(lastWorkingMirror)) {
+            lastWorkingMirror = address;
+        }
+        List<String> shuffledMirrors = Arrays.asList(mirrors);
+        Collections.shuffle(shuffledMirrors);
+        if (shuffledMirrors.size() > 1) {
+            for (String m : shuffledMirrors) {
+                // Return a non default, and not last used mirror
+                if (!m.equals(address) && !m.equals(lastWorkingMirror)) {
+                    if (FDroidApp.isUsingTor()) {
+                        return m;
+                    } else {
+                        // Filter-out onion mirrors for non-tor connections
+                        if (!m.contains(".onion")) {
+                            return m;
+                        }
+                    }
+                }
+            }
+        }
+        return null; // In case we are out of mirrors.
     }
 }

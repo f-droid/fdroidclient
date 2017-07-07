@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -24,8 +26,11 @@ import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.ConnectException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
@@ -78,7 +83,6 @@ public class IndexV1Updater extends RepoUpdater {
             return false;
         }
         Downloader downloader = null;
-        InputStream indexInputStream = null;
         try {
             // read file name from file
             final Uri dataUri = Uri.parse(indexUrl);
@@ -95,12 +99,47 @@ public class IndexV1Updater extends RepoUpdater {
                 return true;
             }
 
-            JarFile jarFile = new JarFile(downloader.outputFile, true);
-            JarEntry indexEntry = (JarEntry) jarFile.getEntry(DATA_FILE_NAME);
-            indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                    processIndexListener, new URL(repo.address), (int) indexEntry.getSize());
-            processIndexV1(indexInputStream, indexEntry, downloader.getCacheTag());
+            processDownloadedIndex(downloader.outputFile, downloader.getCacheTag());
+        } catch (ConnectException | SocketTimeoutException e) {
+            Utils.debugLog(TAG, "Trying to download the index from a mirror");
+            // Mirror logic here, so that the default download code is untouched.
+            String mirrorUrl;
+            String prevMirrorUrl = indexUrl;
+            FDroidApp.resetMirrorVars();
+            int n = repo.getMirrorCount() * 3; // 3 is the number of timeouts we have. 10s, 30s & 60s
+            for (int i = 0; i <= n; i++) {
+                try {
+                    mirrorUrl = FDroidApp.getMirror(prevMirrorUrl, repo);
+                    prevMirrorUrl = mirrorUrl;
+                    Uri dataUri2 = Uri.parse(mirrorUrl);
+                    downloader = DownloaderFactory.create(context, dataUri2.toString());
+                    downloader.setCacheTag(repo.lastetag);
+                    downloader.setListener(downloadListener);
+                    downloader.setTimeout(FDroidApp.getTimeout());
+                    downloader.download();
+                    if (downloader.isNotFound()) {
+                        return false;
+                    }
+                    hasChanged = downloader.hasChanged();
 
+                    if (!hasChanged) {
+                        return true;
+                    }
+
+                    processDownloadedIndex(downloader.outputFile, downloader.getCacheTag());
+                    break;
+                } catch (ConnectException | SocketTimeoutException e2) {
+                    // We'll just let this try the next mirror
+                    Utils.debugLog(TAG, "Trying next mirror");
+                } catch (IOException e2) {
+                    if (downloader != null) {
+                        FileUtils.deleteQuietly(downloader.outputFile);
+                    }
+                    throw new RepoUpdater.UpdateException(repo, "Error getting index file", e2);
+                } catch (InterruptedException e2) {
+                    // ignored if canceled, the local database just won't be updated
+                }
+            }
         } catch (IOException e) {
             if (downloader != null) {
                 FileUtils.deleteQuietly(downloader.outputFile);
@@ -111,6 +150,15 @@ public class IndexV1Updater extends RepoUpdater {
         }
 
         return true;
+    }
+
+    private void processDownloadedIndex(File outputFile, String cacheTag)
+            throws IOException, RepoUpdater.UpdateException {
+        JarFile jarFile = new JarFile(outputFile, true);
+        JarEntry indexEntry = (JarEntry) jarFile.getEntry(DATA_FILE_NAME);
+        InputStream indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
+                processIndexListener, new URL(repo.address), (int) indexEntry.getSize());
+        processIndexV1(indexInputStream, indexEntry, cacheTag);
     }
 
     /**

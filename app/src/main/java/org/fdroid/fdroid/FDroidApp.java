@@ -55,6 +55,7 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProviderService;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
@@ -92,6 +93,10 @@ public class FDroidApp extends Application {
     public static volatile String ssid;
     public static volatile String bssid;
     public static volatile Repo repo = new Repo();
+
+    private static volatile String lastWorkingMirror = null;
+    private static volatile int numTries = Integer.MAX_VALUE;
+    private static volatile int timeout = 10000;
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
     private static final org.spongycastle.jce.provider.BouncyCastleProvider SPONGYCASTLE_PROVIDER;
@@ -198,6 +203,53 @@ public class FDroidApp extends Application {
         ssid = "";
         bssid = "";
         repo = new Repo();
+    }
+
+    public static String getMirror(String urlString, long repoId) throws IOException {
+        return getMirror(urlString, RepoProvider.Helper.findById(getInstance(), repoId));
+    }
+
+    public static String getMirror(String urlString, Repo repo2) throws IOException {
+        if (repo2.hasMirrors()) {
+            if (lastWorkingMirror == null) {
+                lastWorkingMirror = repo2.address;
+            }
+            if (numTries <= 0) {
+                if (timeout == 10000) {
+                    timeout = 30000;
+                    numTries = Integer.MAX_VALUE;
+                } else if (timeout == 30000) {
+                    timeout = 60000;
+                    numTries = Integer.MAX_VALUE;
+                } else {
+                    Utils.debugLog(TAG, "Mirrors: Giving up");
+                    throw new IOException("Ran out of mirrors");
+                }
+            }
+            if (numTries == Integer.MAX_VALUE) {
+                numTries = repo2.getMirrorCount();
+            }
+            String mirror = repo2.getMirror(lastWorkingMirror);
+            String newUrl = urlString.replace(lastWorkingMirror, mirror);
+            Utils.debugLog(TAG, "Trying mirror " + mirror + " after " + lastWorkingMirror + " failed," +
+                    " timeout=" + timeout / 1000 + "s");
+            lastWorkingMirror = mirror;
+            numTries--;
+            return newUrl;
+        } else {
+            throw new IOException("No mirrors available");
+        }
+    }
+
+    public static int getTimeout() {
+        return timeout;
+    }
+
+    public static void resetMirrorVars() {
+        // Reset last working mirror, numtries, and timeout
+        lastWorkingMirror = null;
+        numTries = Integer.MAX_VALUE;
+        timeout = 10000;
     }
 
     @Override
