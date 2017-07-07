@@ -10,7 +10,7 @@ def getVersionName = { ->
         commandLine 'git', 'describe', '--tags', '--always'
         standardOutput = stdout
     }
-    return stdout.toString().trim().substring(1)
+    return stdout.toString().trim()
 }
 
 repositories {
