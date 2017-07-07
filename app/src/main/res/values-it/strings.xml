@@ -4,9 +4,7 @@
         installare la nuova versione occorre prima disinstallare quella precedente. Riprovare dopo averla disinstallata
         (Attenzione! La disinstallazione cancellerà qualsiasi dato salvato dall\'applicazione)
     </string>
-    <string name="installIncompatible">Sembra che questo pacchetto non sia compatibile con il tuo dispositivo. Vuoi
-        provare comunque ad installarlo?
-    </string>
+    <string name="installIncompatible">Applicazione incompatibile con il tuo dispositivo, installarla lo stesso?</string>
     <string name="version">Versione</string>
     <string name="delete">Elimina</string>
     <string name="enable_nfc_send">Attiva invio NFC…</string>
@@ -17,7 +15,7 @@
     <string name="update_interval_zero">Non aggiornare automaticamente l\'elenco delle applicazioni</string>
     <string name="automatic_scan_wifi">Solo via Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Aggiorna automaticamente gli elenchi applicazioni solo via Wi-Fi</string>
-    <string name="notify">Notifiche aggiornamenti</string>
+    <string name="notify">Mostra aggiornamenti disponibili</string>
     <string name="notify_on">Mostra una notifica quando sono disponibili aggiornamenti</string>
     <string name="system_installer">Estensione priviliegiata</string>
     <string name="system_installer_on">Usa l\'estensione privilegiata di F-Droid per installare, aggiornare e rimuovere
@@ -30,7 +28,7 @@
     <string name="no_such_app">Nessuna app corrispondente trovata.</string>
     <string name="about_title">Informazioni su F-Droid</string>
     <string name="about_site">Sito web</string>
-    <string name="about_mail">Email</string>
+    <string name="about_mail">E-mail</string>
     <string name="about_version">Versione</string>
     <string name="app_installed">Installato</string>
     <string name="app_not_installed">Non installato</string>
@@ -84,7 +82,7 @@
     <string name="expert">Modalità esperto</string>
     <string name="expert_on">Mostra ulteriori informazioni e attiva le impostazioni avanzate</string>
     <string name="search_hint">Ricerca applicazioni</string>
-    <string name="appcompatibility">Compatibilità applicazioni</string>
+    <string name="appcompatibility">Compatibilità applicazione</string>
     <string name="show_incompat_versions">Versioni incompatibili</string>
     <string name="show_incompat_versions_on">Mostra le versioni incompatibili con il dispositivo</string>
     <string name="rooted">Ignora root</string>
@@ -108,9 +106,9 @@
     <string name="enable_proxy_title">Abilita proxy HTTP</string>
     <string name="enable_proxy_summary">Configura il proxy HTTP per tutte le richieste di rete</string>
     <string name="proxy_host">Host Proxy</string>
-    <string name="proxy_host_summary">Configura l\'hostname del tuo proxy (es. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Hostname del tuo proxy (es. 127.0.0.1)</string>
     <string name="proxy_port">Porta proxy</string>
-    <string name="proxy_port_summary">Configura la porta del tuo proxy (es. 8118)</string>
+    <string name="proxy_port_summary">Porta del tuo proxy (es. 8118)</string>
     <string name="status_download">Scaricamento
         %2$s/%3$s (%4$d%%) da
         %1$s
@@ -200,7 +198,7 @@
     <string name="interval_1h">Ogni ora</string>
     <string name="downloading">Scaricamento…</string>
 
-    <string name="download_error">Scaricamento fallito</string>
+    <string name="download_error">Scaricamento fallito!</string>
 
     <string name="perms_new_perm_prefix">Nuovo:</string>
     <string name="perms_description_app">Fornito da %1$s.</string>
@@ -270,7 +268,7 @@
 
     <string name="update_notification_title">Aggiornamento dei repository</string>
     <string name="status_processing_xml_percent">Elaborazione %2$s/%3$s (%4$d%%) di %1$s</string>
-    <string name="status_inserting_apps">Salvataggio dettagli applicazioni</string>
+    <string name="status_inserting_apps">Salvataggio dettagli applicazione</string>
     <string name="repo_details">Repository</string>
     <string name="repo_url">Indirizzo</string>
     <string name="repo_added">Salvato il repository F-Droid %1$s.</string>
@@ -310,11 +308,9 @@
         segnala questo problema!
     </string>
     <string name="system_install_button_install">Installa</string>
-    <string name="system_install_post_success">Estensione privilegiata di F-Droid installata con successo</string>
+    <string name="system_install_post_success">Estensione privilegiata di F-Droid installata</string>
     <string name="system_install_post_fail">Installazione dell\'estensione privilegiata di F-Droid fallita</string>
-    <string name="system_install_post_success_message">L\'estensione privilegiata di F-Droid è stata installata con
-        successo. Questo permette a F-Droid di installare e disinstallare applicazioni indipendentemente.
-    </string>
+    <string name="system_install_post_success_message">L\'estensione privilegiata di F-Droid è stata installata. Questo permette a F-Droid di installare, aggiornare e disinstallare applicazioni indipendentemente.</string>
     <string name="system_install_post_fail_message">L\'installazione dell\'estensione privilegiata di F-Droid è fallita.
         Il metodo di installazione non è supportato da tutte le distribuzioni di Android, per favore consulta le
         segnalazioni di bug per maggiori informazioni.
@@ -324,15 +320,12 @@
     <string name="system_install_uninstalling">Disinstallazione…</string>
     <string name="system_install_question">Vuoi installare l\'estensione privilegiata di F-Droid?</string>
     <string name="system_install_warning">Questo può richiedere fino a 10 secondi.</string>
-    <string name="system_install_warning_lollipop">Questo può richiedere fino a 10 secondi e il dispositivo verrà
-        <b>riavviato</b>
-        successivamente.
-    </string>
+    <string name="system_install_warning_lollipop">Questo può richiedere fino a 10 secondi e il dispositivo verrà <b>riavviato</b> successivamente.</string>
     <string name="system_uninstall">Vuoi disinstallare l\'estensione privilegiata di F-Droid?</string>
     <string name="system_uninstall_button">Disinstalla</string>
 
     <string name="swap_nfc_title">Tocca per scambiare</string>
-    <string name="swap_nfc_description">Se il tuo amico ha F-Droid e NFC attivato, sovrapponi i dispositivi.</string>
+    <string name="swap_nfc_description">Se il tuo amico ha F-Droid e NFC attivato, sovrapponete i vostri dispositivi.</string>
     <string name="swap_join_same_wifi_desc">Per scambiare usando il Wi-Fi, assicuratevi di trovarvi sulla stessa rete.
         Se non avete accesso alla stessa rete, uno dei due può creare un Hotspot Wi-Fi.
     </string>
@@ -346,9 +339,7 @@
     <string name="swap_cant_send_no_bluetooth">Impossibile inviare F-Droid, perché il Bluetooth non è disponibile su
         questo dispositivo.
     </string>
-    <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra
-        possibile effettuare lo scambio.
-    </string>
+    <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra possibile effettuare lo scambio!</string>
     <string name="swap_not_enabled">Scambio non abilitato</string>
     <string name="install_confirm_update_no_perms">Vuoi installare una versione aggiornata
         di questa app? I dati presenti
@@ -362,10 +353,7 @@
     <string name="swap_nearby">Scambio ravvicinato</string>
     <string name="crash_dialog_comment_prompt">Puoi aggiungere altre informazioni e commenti qui:</string>
     <string name="menu_email">Invia email all\'autore</string>
-    <string name="crash_dialog_text">Un errore inaspettato
-        ha provocato il blocco dell\'applicazione. Vuoi inviare una e-mail
-        con i dettagli per aiutarci a sistemare il problema?
-    </string>
+    <string name="crash_dialog_text">Un errore inaspettato ha provocato il blocco dell\'applicazione. Vuoi inviare una e-mail con i dettagli per aiutarci a risolvere il problema?</string>
     <string name="crash_dialog_title">F-Droid si è bloccato</string>
     <string name="antinonfreeassetslist">Questa app contiene risorse non libere</string>
 
@@ -373,8 +361,8 @@
     <string name="useTor">Usa Tor</string>
     <string name="useTorSummary">Forza lo scaricamento attraverso Tor per aumentare la privacy</string>
     <string name="swap_stopping_wifi">Spegnimento del Wi-Fi…</string>
-    <string name="update_auto_download_summary">Scarica gli aggiornamenti in background</string>
-    <string name="update_auto_download">Scarica automaticamente gli aggiornamenti</string>
+    <string name="update_auto_download_summary">Gli aggiornamenti vengono scaricati automaticamente e ti sarai notificato per installarli</string>
+    <string name="update_auto_download">Ottieni automaticamente gli aggiornamenti</string>
     <string name="repo_provider">Repository: %s</string>
 
     <string name="system_install_not_supported">L\'installazione di Estensione Privilegiata di F-Droid non è attualmente
@@ -407,7 +395,7 @@
         F-Droid
     </string>
     <string name="versions">Versioni</string>
-    <string name="warning_no_internet">Impossibile Aggiornare,sei connesso ad internet?</string>
+    <string name="warning_no_internet">Impossibile aggiornare,sei connesso ad Internet?</string>
     <string name="app_details_donate_prompt_unknown_author">Offri agli sviluppatori di %1$s un caffè!</string>
     <string name="app_details_donate_prompt">%1$s è creato da %2$s. Offri un caffè!</string>
 
@@ -441,4 +429,93 @@
     <string name="notification_action_install">Installa</string>
 
     <string name="main_menu__swap_nearby">Nelle vicinanze</string>
-</resources>
+<string name="preference_category__my_apps">Mie App</string>
+    <string name="preference_manage_installed_apps">Gestisci App Installate</string>
+
+
+    <string name="latest__empty_state__never_updated">Una volta aggiornata la tua lista delle applicazioni, le ultime applicazioni dovrebbero apparire qui</string>
+    <string name="latest__empty_state__no_recent_apps">Nessuna app recente trovata</string>
+    <string name="latest__empty_state__no_enabled_repos">Una volta abilitato un repository e fatto aggiornare, le ultime applicazioni dovrebbero apparire qui</string>
+
+    <string name="categories__empty_state__no_categories">Nessuna categoria da visualizzare</string>
+
+    <string name="details_new_in_version">Nuovo nella versione %s</string>
+
+    <string name="antifeatureswarning">Questa app ha caratteristiche che potrebbero non piacerti.</string>
+    <string name="antifeatures">Anti-caratteristiche</string>
+    <string name="by_author_format">da %s</string>
+    <string name="app_list__name__downloading_in_progress">Scaricando %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s installato</string>
+    <string name="updates__tts__download_app">Scarica</string>
+    <string name="app_recommended_version_installed">Versione %1$s (Raccomandata)</string>
+    <string name="app__newly_added">Nuovo</string>
+    <string name="app__tts__cancel_download">Annulla Scaricamento</string>
+    <string name="app__install_downloaded_update">Aggiorna</string>
+
+    <string name="app_list_download_ready">Scaricato, pronto per l\'installazione</string>
+
+    <string name="installed_apps__activity_title">App Installate</string>
+    <string name="installed_app__updates_ignored">Aggiornamenti ignorati</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Aggiornamenti ignorati per Versione %1$s</string>
+    <string name="updates__tts__download_updates_for_all_apps">Scarica tutti gli aggiornamenti</string>
+
+    <string name="updates__hide_updateable_apps">Nascondi applicazioni</string>
+    <string name="updates__show_updateable_apps">Mostra applicazioni</string>
+
+    <plurals name="updates__download_updates_for_apps">
+	<item quantity="one">Scarica aggiornamento per %1$d app.</item>
+	<item quantity="other">Scarica aggiornamenti per %1$d app.</item>
+</plurals>
+
+    <string name="menu_license">Licenza: %s</string>
+    <plurals name="details_last_update_years">
+	<item quantity="one">Aggiornata %1$d anno fa</item>
+	<item quantity="other">Aggiornata %1$d anni fa</item>
+</plurals>
+<plurals name="details_last_update_months">
+	<item quantity="one">Aggiornata %1$d mese fa</item>
+	<item quantity="other">Aggiornata %1$d mesi fa</item>
+</plurals>
+    <plurals name="details_last_update_weeks">
+	<item quantity="one">Aggiornata %1$d settimana fa</item>
+	<item quantity="other">Aggiornata %1$d settimane fa</item>
+</plurals>
+    <plurals name="details_last_update_days">
+	<item quantity="one">Aggiornata %1$d giorno fa</item>
+	<item quantity="other">Aggiornata %1$d giorni fa</item>
+</plurals>
+    <string name="details_last_updated_today">Aggiornata oggi</string>
+    <string name="tts_category_name">Categoria %1$s</string>
+
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d App Installata</item>
+	<item quantity="other">%1$d App Installate</item>
+</plurals>
+    <plurals name="notification_summary_updates">
+	<item quantity="one">%1$d Aggiornamento</item>
+	<item quantity="other">%1$d Aggiornamenti</item>
+</plurals>
+    <string name="app__tts__downloading_progress">Scaricamento, %1$d%% completato</string>
+    <string name="download_404">Il file richiesto non è stato trovato.</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Senza Internet? Ottieni le app da persone vicine a te!</string>
+    <string name="nearby_splash__find_people_button">Trova persone vicine a me</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Entrambi le parti hanno bisogno di %1$s per l\'uso nelle vicinanze.</string>
+
+    <plurals name="notification_summary_more">
+	<item quantity="one">+%1$d altra…</item>
+	<item quantity="other">+%1$d altre…</item>
+</plurals>
+    <plurals name="tts_view_all_in_category">
+	<item quantity="one">Mostra %1$d app nella categoria %2$s</item>
+	<item quantity="other">Mostra tutte e %1$d app dalla categoria %2$s</item>
+</plurals>
+
+    <string name="menu_video">Video</string>
+    <plurals name="button_view_all_apps_in_category">
+	<item quantity="one">Mostra %d</item>
+	<item quantity="other">Mostra tutti %d</item>
+</plurals>
+
+    <string name="force_old_index_summary">In caso di bug o problemi di compatibilità, usa l\'indice XML delle app</string>
+    <string name="force_old_index">Forza il vecchio formato indice</string>
+    </resources>

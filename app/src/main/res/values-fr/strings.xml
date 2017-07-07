@@ -77,8 +77,8 @@
     <string name="display">Affichage</string>
     <string name="expert">Mode expert</string>
     <string name="expert_on">Affiche plus d\'infos et active des paramètres supplémentaires</string>
-    <string name="search_hint">Rechercher des applications</string>
-    <string name="appcompatibility">Compatibilité des applications</string>
+    <string name="search_hint">Rechercher des applis</string>
+    <string name="appcompatibility">Compatibilité des applis</string>
     <string name="show_incompat_versions">Versions incompatibles</string>
     <string name="show_incompat_versions_on">Afficher les versions d\'applis incompatibles avec cet appareil</string>
     <string name="rooted">Ignorer root</string>
@@ -120,10 +120,7 @@
     <string name="repo_description">Description</string>
     <string name="repo_last_update">Dernière mise à jour</string>
     <string name="repo_name">Nom</string>
-    <string name="unsigned_description">Cela signifie que la liste des
-        applications n\'a pas pu être vérifiée. Soyez prudent
-        avec les applications téléchargées depuis des index non signés.
-    </string>
+    <string name="unsigned_description">Cela signifie que la liste des applis n\'a pas pu être vérifiée. Soyez prudent avec les applis téléchargées depuis des index non signés.</string>
     <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé.
         Vous devez l\'activer pour voir la liste des applis qu\'il offre.
     </string>
@@ -204,22 +201,10 @@
     <string name="swap_dont_show_again">Ne plus afficher</string>
     <string name="loading">Chargement…</string>
     <string name="install_confirm">a besoin d\'accéder à</string>
-    <string name="install_confirm_update">Voulez-vous mettre à jour
-        cette application ? Vos données ne seront pas
-        perdues. Une fois mise à jour, l\'application aura accès à :
-    </string>
-    <string name="install_confirm_update_system">Voulez-vous mettre à jour
-        cette application système ? Vos données ne seront pas
-        perdues. Une fois mise à jour, l\'application aura accès à :
-    </string>
-    <string name="install_confirm_update_no_perms">Voulez-vous mettre à jour
-        cette application ? Vos données ne seront pas
-        perdues. Elle ne requiert aucune autorisation particulière.
-    </string>
-    <string name="install_confirm_update_system_no_perms">Voulez-vous mettre à jour
-        cette application système ? Vos données ne seront pas
-        perdues. Elle ne requiert aucune autorisation particulière.
-    </string>
+    <string name="install_confirm_update">Voulez-vous mettre à jour cette appli ? Vos données ne seront pas perdues. Une fois mise à jour, l\'appli aura accès à :</string>
+    <string name="install_confirm_update_system">Voulez-vous mettre à jour cette appli système ? Vos données ne seront pas perdues. Une fois mise à jour, l\'appli aura accès à :</string>
+    <string name="install_confirm_update_no_perms">Voulez-vous mettre à jour cette appli ? Vos données ne seront pas perdues. Elle ne requiert aucune autorisation particulière.</string>
+    <string name="install_confirm_update_system_no_perms">Voulez-vous mettre à jour cette appli système ? Vos données ne seront pas perdues. Elle ne requiert aucune autorisation particulière.</string>
     <string name="newPerms">Nouvelles</string>
     <string name="allPerms">Toutes</string>
     <string name="perm_costs_money">Peut vous coûter de l\'argent</string>
@@ -326,9 +311,7 @@
     <string name="system_uninstall_button">Désinstaller</string>
 
     <string name="swap_cant_find_peers">Vous n\'arrivez pas à trouver ce que vous cherchez ?</string>
-    <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, il semblerait que
-        nous ne puissions pas faire d\'échange avec.
-    </string>
+    <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, impossible de faire l\'échange avec!</string>
     <string name="swap_not_enabled">Échange désactivé</string>
     <string name="category_Time">Temps</string>
     <string name="more">Plus</string>
@@ -345,7 +328,7 @@
 
     <string name="about_license">Licence</string>
 
-    <string name="status_inserting_apps">Enregistrement des détails d\'applications</string>
+    <string name="status_inserting_apps">Enregistrement des détails d\'appli</string>
 
     <string name="crash_dialog_title">F-Droid s\'est arrêté de manière inattendue</string>
     <string name="crash_dialog_comment_prompt">Vous pouvez ajouter des informations supplémentaires :</string>
@@ -400,7 +383,7 @@
     <string name="app_details_donate_prompt_unknown_author">Offrir un café aux développeurs de %1$s !</string>
     <string name="app_details_donate_prompt">%1$s est créé par %2$s. Offrez-leur un café !</string>
 
-    <string name="repositories_summary">Ajouter des sources additionnelles d’applications</string>
+    <string name="repositories_summary">Ajouter des sources additionnelles d’applis</string>
     <string name="notification_title_single_update_available">Mise à jour disponible</string>
     <string name="notification_title_single_ready_to_install">Prêt à installer</string>
     <string name="notification_title_single_ready_to_install_update">Mise à jour prête pour installation</string>
@@ -465,9 +448,7 @@
 	<item quantity="other">Voir toutes %d</item>
 </plurals>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">Sans connexion internet? Téléchargez les applications
-        depuis des appareils de votre entourage !
-    </string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Pas de connexion Internet? Obtenez les applications depuis des appareils de votre entourage !</string>
     <string name="nearby_splash__find_people_button">Trouver des gens/appareils dans les environs</string>
     <string name="nearby_splash__both_parties_need_fdroid">Chacun utilisateur proche doit utiliser %1$s.</string>
 
@@ -524,4 +505,11 @@
 <string name="by_author_format">par %s</string>
     <string name="download_404">Le fichier n\'a pas été trouvé.</string>
     <string name="force_old_index">Forcer l\'ancien format d\'index</string>
+    <string name="force_old_index_summary">Dans le cas où des erreurs ou des incompatibilités apparaissent, utiliser l\'index d\'application XML</string>
+    <string name="app_list_download_ready">Téléchargé, prêt à installer</string>
+
+    <string name="status_inserting_x_apps">Sauvegarder les détails de l\'application (%1$d/%2$d) depuis %3$s</string>
+    <string name="app_installed_media">Fichier installé dans %s</string>
+    <string name="app_permission_storage">F-Droid a besoin de la permission stockage pour installer à cet emplacement. Veuillez l\'autoriser sur l\'écran suivant pour pouvoir continuer l\'installation.</string>
+
     </resources>

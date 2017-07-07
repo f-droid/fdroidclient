@@ -298,7 +298,7 @@
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="download_error">Falló la descarga</string>
+    <string name="download_error">¡Falló la descarga!</string>
 
     <string name="system_install_denied_signature">¡La robla d\'esta estensión ta mal! ¡Por favor, crea un informe de
         fallu!
@@ -499,4 +499,7 @@
 	<item quantity="one">Anovóse hai %1$d añu</item>
 	<item quantity="other">Anovóse hai %1$d años</item>
 </plurals>
-</resources>
+<string name="app_list_download_ready">Descargao, preparao pa instalar</string>
+
+    <string name="status_inserting_x_apps">Guardando detalles de la app (%1$d/%2$d) dende %3$s</string>
+    </resources>

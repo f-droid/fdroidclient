@@ -381,8 +381,8 @@
     <string name="details_last_updated_today">Actualizate azi</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">Actualizate azi</item>
-	<item quantity="few">Actualizate acum %1$sd zile</item>
-	<item quantity="other">Actualizate acum %1$sd de zile</item>
+	<item quantity="few">Actualizate acum %1$d zile</item>
+	<item quantity="other">Actualizate acum %1$d de zile</item>
 </plurals>
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">Vezi %d</item>
@@ -475,4 +475,7 @@
     <string name="force_old_index">Forţează vechiul format de index</string>
     <string name="force_old_index_summary">În caz de probleme legate de compatibilitate, foloseşte indexul de aplicaţii XML</string>
     <string name="by_author_format">de %s</string>
+    <string name="download_404">Fișierul dorit nu a fost găsit.</string>
+    <string name="app_list_download_ready">Descărcat, gata de instalare</string>
+
     </resources>

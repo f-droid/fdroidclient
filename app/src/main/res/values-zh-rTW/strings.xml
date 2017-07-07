@@ -470,4 +470,6 @@
     <string name="download_404">找不到要求的檔案。</string>
     <string name="force_old_index">強制舊的索引格式</string>
     <string name="force_old_index_summary">萬一有錯誤或相容性問題，使用 XML 應用程式索引</string>
+    <string name="app_list_download_ready">已下載、安裝準備就緒</string>
+
     </resources>

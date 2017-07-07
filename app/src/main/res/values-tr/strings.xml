@@ -233,7 +233,7 @@
         Aygıtınızda uygulamalar var ancak bunlar F-Droid\'de bulumamaktadır. Bu, depolarınızı güncellemeniz gerektiği
         veya gerçekten depolar uygulamalarınızı bulundurmadığı için olabilir.
     </string>
-    <string name="empty_can_update_app_list">Tebrikler! Tüm uygulamalarınız güncel (ya da depolarınız güncel değil).</string>
+    <string name="empty_can_update_app_list">Tebrikler! Uygulamalarınız güncel.</string>
     <string name="install_error_unknown">Bilinmeyen bir hata nedeniyle kurulamadı</string>
     <string name="uninstall_error_unknown">Bilinmeyen bir hata nedeniyle kaldırılamadı</string>
     <string name="system_install_button_install">Kur</string>
@@ -491,4 +491,10 @@
     <string name="download_404">İstenen dosya bulunamadı.</string>
     <string name="force_old_index">Eski indeks biçimini zorunlu kıl</string>
     <string name="force_old_index_summary">Hatalar ve uyumluluk sorunları olması halinde, XML uygulama indeksini kullan</string>
+    <string name="app_list_download_ready">İndirildi, kurmaya hazır</string>
+
+    <string name="status_inserting_x_apps">Uygulama ayrıntıları (%1$d/%2$d) %3$s konumundan kaydediliyor</string>
+    <string name="app_installed_media">Dosya %s konumuna kuruldu</string>
+    <string name="app_permission_storage">F-Droid depolama bunu depolamaya kurmak için depolama iznine gerek duyar. Lütfen kurmaya devam etmek için bir sonraki ekranda izin verin.</string>
+
     </resources>

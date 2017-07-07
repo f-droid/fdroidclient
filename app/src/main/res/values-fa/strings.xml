@@ -464,4 +464,6 @@
     <string name="download_404">فایل درخواستی یافت نشد.</string>
     <string name="force_old_index">فرمت فهرست قدیمی به اجبار</string>
     <string name="force_old_index_summary">در صورت وجود باگ یا مشکلات عدم سازگاری، از فهرست xml برنامه استفاده کنید</string>
+    <string name="app_list_download_ready">بارگزاری شده است، آماده ی نصب</string>
+
     </resources>

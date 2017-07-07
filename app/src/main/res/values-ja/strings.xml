@@ -459,4 +459,6 @@
     <string name="download_404">要求されたﾌｧｲﾙが見つかりませんでした。</string>
     <string name="force_old_index">古い索引形式を強制する</string>
     <string name="force_old_index_summary">ﾊﾞｸﾞや互換性の問題がある場合に、XML ｱﾌﾟﾘ索引を使用します</string>
+    <string name="app_list_download_ready">ﾀﾞｳﾝﾛｰﾄﾞ済、ｲﾝｽﾄｰﾙできます</string>
+
     </resources>
