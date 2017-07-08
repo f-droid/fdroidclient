@@ -188,7 +188,7 @@
     <string name="category_Writing">نوشتن</string>
 
     <string name="requesting_root_access_body">در حال درخواست دسترسی ریشه…</string>
-    <string name="empty_can_update_app_list">تبریک! تمام برنامه هایتان به‌روز هستند (یا مخزن‌هایتان منقضی شده‌اند) .</string>
+    <string name="empty_can_update_app_list">تبریک! برنامه هایتان به‌روز هستند.</string>
 
     <string name="root_access_denied_title">دسترسی ریشه داده نشد</string>
     <string name="root_access_denied_body">یا دستگاهاندرویدیتان روت شده نیست، یا درخواست روت برای اف‌دروید را رد کردید.</string>
@@ -466,4 +466,8 @@
     <string name="force_old_index_summary">در صورت وجود باگ یا مشکلات عدم سازگاری، از فهرست xml برنامه استفاده کنید</string>
     <string name="app_list_download_ready">بارگزاری شده است، آماده ی نصب</string>
 
+    <string name="app_installed_media">فایل در %s نصب شد</string>
+    <string name="app_permission_storage">اف دروید برای نصب روی این فضا به دسترسی فضای ذخیره سازی نیاز دارد. لطفا جهت ادامه ی نصب در صفحه ی بعدی این اجازه را بدهید.</string>
+
+    <string name="status_inserting_x_apps">ذخیره سازی جزئیات برنامه (%1$d/%2$d) از %3$s</string>
     </resources>
