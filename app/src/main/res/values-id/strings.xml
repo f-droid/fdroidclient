@@ -236,7 +236,7 @@
         Terdapat apl diperangkat anda, tapi tidak tersedia dari F-Droid. Ini mungkin disebabkan karena anda butuh
         pembaruan repositori, atau repositori memang tidak memiliki apl yang tersedia.
     </string>
-    <string name="empty_can_update_app_list">Selamat! Semua apl Anda sudah yang paling baru (atau repositori Anda yang kedaluwarsa).</string>
+    <string name="empty_can_update_app_list">Selamat! Apl Anda sudah yang paling baru.</string>
     <string name="requesting_root_access_body">Meminta akses root…</string>
     <string name="root_access_denied_title">Akses root ditolak</string>
     <string name="root_access_denied_body">Mungkin perangkat Android anda yang belum diroot atau anda telah menolak
@@ -491,4 +491,7 @@
     <string name="app_list_download_ready">Terunduh, siap untuk dipasang</string>
 
     <string name="status_inserting_x_apps">Menyimpan detail apl (%1$d/%2$d) dari %3$s</string>
+    <string name="app_installed_media">Berkas dipasang ke %s</string>
+    <string name="app_permission_storage">F-Droid membutuhkan izin penyimpanan untuk memasang apl ini ke penyimpanan. Harap izinkan di layar berikutnya untuk melanjutkan pemasangan.</string>
+
     </resources>
