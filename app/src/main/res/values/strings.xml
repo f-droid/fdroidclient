@@ -90,17 +90,11 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s installed</string>
-    <string name="app_list__age__released_today">Released today</string>
-    <string name="app_list__age__released_yesterday">Released yesterday</string>
     <string name="app_list__will_download_when_online">Will download automatically when online</string>
     <string name="app_list_download_ready">Downloaded, ready to install</string>
     <string name="app_list__dismiss_app_update">Update ignored</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerability ignored</string>
     <string name="app_list__dismiss_downloading_app">Download canceled</string>
-    <plurals name="app_list__age__released_x_days_ago">
-        <item quantity="one">Released %1$d day ago</item>
-        <item quantity="other">Released %1$d days ago</item>
-    </plurals>
 
     <string name="installed_apps__activity_title">Installed Apps</string>
     <string name="installed_app__updates_ignored">Updates ignored</string>
