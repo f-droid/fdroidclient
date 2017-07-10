@@ -299,6 +299,8 @@ public class AppDetailsRecyclerViewAdapter
     public class HeaderViewHolder extends RecyclerView.ViewHolder {
         private static final int MAX_LINES = 5;
 
+        private Apk suggestedApk = null;
+
         final ImageView iconView;
         final TextView titleView;
         final TextView authorView;
@@ -424,7 +426,7 @@ public class AppDetailsRecyclerViewAdapter
                 lastUpdateView.setVisibility(View.GONE);
             }
 
-            Apk suggestedApk = getSuggestedApk();
+            suggestedApk = getSuggestedApk();
             if (suggestedApk == null || TextUtils.isEmpty(app.whatsNew)) {
                 whatsNewView.setVisibility(View.GONE);
             } else {
@@ -510,7 +512,7 @@ public class AppDetailsRecyclerViewAdapter
          *    next time they go online).
          */
         private void updateButtons() {
-            if (ConnectivityMonitorService.getNetworkState(context) == NetworkState.NET_UNAVAILABLE && !app.isInstalled()) {
+            if (ConnectivityMonitorService.getNetworkState(context) == NetworkState.NET_UNAVAILABLE && !app.isInstalled(context)) {
                 buttonSecondaryView.setVisibility(View.VISIBLE);
                 buttonPrimaryView.setVisibility(View.GONE);
 
