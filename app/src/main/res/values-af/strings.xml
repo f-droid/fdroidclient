@@ -254,7 +254,7 @@
         Daar is programme op jou toestel nie, maar hulle is nie beskikbaar vanaf F-Droid nie. Dit kan wees omdat jy jou
         argiewe moet opdateer, of die argiewe het werklikwaar geen van jou programme beskikbaar nie.
     </string>
-    <string name="empty_can_update_app_list">Baie geluk! Al jou programme is op datum (of jou argiewe is verouderd).</string>
+    <string name="empty_can_update_app_list">Geluk! Jou programme is op datum.</string>
 
     <string name="requesting_root_access_body">Versoek root toegang…</string>
     <string name="root_access_denied_title">Root toegang geweier</string>
@@ -522,4 +522,10 @@
 	<item quantity="one">\'n Jaar gelede opgedateer</item>
 	<item quantity="other">%1$d jare gelede opgedateer</item>
 </plurals>
-</resources>
+<string name="app_installed_media">Lêer geïnstalleer na %s</string>
+    <string name="app_permission_storage">F-Droid het stoor toestemming nodig. Laat dit toe op die volgende skerm om voort te gaan met installasie.</string>
+
+    <string name="app_list_download_ready">Afgelaai, gereed om te installeer</string>
+
+    <string name="status_inserting_x_apps">Stoor program besonderhede (%1$d/%2$d) vanaf %3$s</string>
+    </resources>
