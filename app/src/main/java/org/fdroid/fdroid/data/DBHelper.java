@@ -193,7 +193,7 @@ class DBHelper extends SQLiteOpenHelper {
             + InstalledAppTable.Cols.HASH + " TEXT NOT NULL"
             + " );";
 
-    protected static final int DB_VERSION = 72;
+    protected static final int DB_VERSION = 73;
 
     private final Context context;
 
@@ -280,6 +280,16 @@ class DBHelper extends SQLiteOpenHelper {
         dropApkPrimaryKey(db, oldVersion);
         addIntegerPrimaryKeyToInstalledApps(db, oldVersion);
         addPreferredSignerToApp(db, oldVersion);
+        updatePreferredSignerIfEmpty(db, oldVersion);
+    }
+
+    private void updatePreferredSignerIfEmpty(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion >= 73) {
+            return;
+        }
+
+        Log.i(TAG, "Forcing repo refresh to calculate preferred signer.");
+        resetTransient(db);
     }
 
     private void addPreferredSignerToApp(SQLiteDatabase db, int oldVersion) {
