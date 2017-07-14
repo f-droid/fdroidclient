@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
 import org.fdroid.fdroid.data.Schema.ApkTable;
+import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 
 import java.util.List;
 
@@ -130,10 +131,14 @@ public class TempApkProvider extends ApkProvider {
     private void initTable(long repoIdBeingUpdated) {
         final SQLiteDatabase db = db();
         final String memoryDbName = TempAppProvider.DB;
-        db.execSQL(DBHelper.CREATE_TABLE_APK.replaceFirst(Schema.ApkTable.NAME, memoryDbName + "." + getTableName()));
-        db.execSQL(TempAppProvider.copyData(Schema.ApkTable.Cols.ALL_COLS, Schema.ApkTable.NAME, memoryDbName + "." + getTableName()));
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_appId on " + getTableName() + " (" + ApkTable.Cols.APP_ID + ");");
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_compatible ON " + getTableName() + " (" + ApkTable.Cols.IS_COMPATIBLE + ");");
+        db.execSQL(DBHelper.CREATE_TABLE_APK.replaceFirst(ApkTable.NAME, memoryDbName + "." + getTableName()));
+
+        String where = ApkTable.NAME + "." + Cols.REPO_ID + " != ?";
+        String[] whereArgs = new String[]{Long.toString(repoIdBeingUpdated)};
+        db.execSQL(TempAppProvider.copyData(Cols.ALL_COLS, ApkTable.NAME, memoryDbName + "." + getTableName(), where), whereArgs);
+
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_appId on " + getTableName() + " (" + Cols.APP_ID + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + memoryDbName + ".apk_compatible ON " + getTableName() + " (" + Cols.IS_COMPATIBLE + ");");
     }
 
 }

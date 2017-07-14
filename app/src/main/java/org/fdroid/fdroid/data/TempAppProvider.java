@@ -228,24 +228,40 @@ public class TempAppProvider extends AppProvider {
 
     private void initTable(long repoIdBeingUpdated) {
         final SQLiteDatabase db = db();
+
+        String mainApp = AppMetadataTable.NAME;
+        String tempApp = DB + "." + getTableName();
+        String mainCat = CatJoinTable.NAME;
+        String tempCat = DB + "." + getCatJoinTableName();
+
         ensureTempTableDetached(db);
         db.execSQL("ATTACH DATABASE ':memory:' AS " + DB);
-        db.execSQL(DBHelper.CREATE_TABLE_APP_METADATA.replaceFirst(AppMetadataTable.NAME, DB + "." + getTableName()));
-        db.execSQL(DBHelper.CREATE_TABLE_CAT_JOIN.replaceFirst(CatJoinTable.NAME, DB + "." + getCatJoinTableName()));
-        db.execSQL(copyData(AppMetadataTable.Cols.ALL_COLS, AppMetadataTable.NAME, DB + "." + getTableName()));
-        db.execSQL(copyData(CatJoinTable.Cols.ALL_COLS, CatJoinTable.NAME, DB + "." + getCatJoinTableName()));
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (" + AppMetadataTable.Cols.PACKAGE_ID + ");");
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (" + AppMetadataTable.Cols.UPSTREAM_VERSION_CODE + ");");
-        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (" + AppMetadataTable.Cols.IS_COMPATIBLE + ");");
+        db.execSQL(DBHelper.CREATE_TABLE_APP_METADATA.replaceFirst(AppMetadataTable.NAME, tempApp));
+        db.execSQL(DBHelper.CREATE_TABLE_CAT_JOIN.replaceFirst(CatJoinTable.NAME, tempCat));
+
+        String appWhere = mainApp + "." + Cols.REPO_ID + " != ?";
+        String[] repoArgs = new String[]{Long.toString(repoIdBeingUpdated)};
+        db.execSQL(copyData(Cols.ALL_COLS, mainApp, tempApp, appWhere), repoArgs);
+
+        // TODO: String catWhere = mainCat + "." + CatJoinTable.Cols..Cols.REPO_ID + " != ?";
+        db.execSQL(copyData(CatJoinTable.Cols.ALL_COLS, mainCat, tempCat, null));
+
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_id ON " + getTableName() + " (" + Cols.PACKAGE_ID + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_upstreamVercode ON " + getTableName() + " (" + Cols.UPSTREAM_VERSION_CODE + ");");
+        db.execSQL("CREATE INDEX IF NOT EXISTS " + DB + ".app_compatible ON " + getTableName() + " (" + Cols.IS_COMPATIBLE + ");");
     }
 
     /**
      * Constructs an INSERT INTO ... SELECT statement as a means from getting data from one table
      * into another. The list of columns to copy are explicitly specified using colsToCopy.
      */
-    static String copyData(String[] colsToCopy, String fromTable, String toTable) {
+    static String copyData(String[] colsToCopy, String fromTable, String toTable, String where) {
         String cols = TextUtils.join(", ", colsToCopy);
-        return "INSERT INTO " + toTable + " (" + cols + ") SELECT " + cols + " FROM " + fromTable;
+        String sql = "INSERT INTO " + toTable + " (" + cols + ") SELECT " + cols + " FROM " + fromTable;
+        if (!TextUtils.isEmpty(where)) {
+            sql += " WHERE " + where;
+        }
+        return sql;
     }
 
     private void commitTable(long repoIdToCommit) {
@@ -257,14 +273,16 @@ public class TempAppProvider extends AppProvider {
             final String tempApk = DB + "." + TempApkProvider.TABLE_TEMP_APK;
             final String tempCatJoin = DB + "." + TABLE_TEMP_CAT_JOIN;
 
-            db.execSQL("DELETE FROM " + AppMetadataTable.NAME + " WHERE 1");
-            db.execSQL(copyData(AppMetadataTable.Cols.ALL_COLS, tempApp, AppMetadataTable.NAME));
+            final String[] repoArgs = new String[]{Long.toString(repoIdToCommit)};
 
-            db.execSQL("DELETE FROM " + ApkTable.NAME + " WHERE 1");
-            db.execSQL(copyData(ApkTable.Cols.ALL_COLS, tempApk, ApkTable.NAME));
+            db.execSQL("DELETE FROM " + AppMetadataTable.NAME + " WHERE " + Cols.REPO_ID + " = ?", repoArgs);
+            db.execSQL(copyData(Cols.ALL_COLS, tempApp, AppMetadataTable.NAME, Cols.REPO_ID + " = ?"), repoArgs);
 
-            db.execSQL("DELETE FROM " + CatJoinTable.NAME + " WHERE 1");
-            db.execSQL(copyData(CatJoinTable.Cols.ALL_COLS, tempCatJoin, CatJoinTable.NAME));
+            db.execSQL("DELETE FROM " + ApkTable.NAME + " WHERE " + ApkTable.Cols.REPO_ID + " = ?", repoArgs);
+            db.execSQL(copyData(ApkTable.Cols.ALL_COLS, tempApk, ApkTable.NAME, ApkTable.Cols.REPO_ID + " = ?"), repoArgs);
+
+            db.execSQL("DELETE FROM " + CatJoinTable.NAME + " WHERE " + getCatRepoWhere(CatJoinTable.NAME), repoArgs);
+            db.execSQL(copyData(CatJoinTable.Cols.ALL_COLS, tempCatJoin, CatJoinTable.NAME, getCatRepoWhere(tempCatJoin)), repoArgs);
 
             db.setTransactionSuccessful();
 
@@ -275,5 +293,15 @@ public class TempAppProvider extends AppProvider {
             db.endTransaction();
             db.execSQL("DETACH DATABASE " + DB); // Can't be done in a transaction.
         }
+    }
+
+    private String getCatRepoWhere(String categoryTable) {
+        String catRepoSubquery =
+                "SELECT DISTINCT innerCatJoin." + CatJoinTable.Cols.ROW_ID + " " +
+                "FROM " + categoryTable + " AS innerCatJoin " +
+                "JOIN " + getTableName() + " AS app ON (app." + Cols.ROW_ID + " = innerCatJoin." + CatJoinTable.Cols.APP_METADATA_ID + ") " +
+                "WHERE app." + Cols.REPO_ID + " = ?";
+
+        return CatJoinTable.Cols.ROW_ID + " IN (" + catRepoSubquery + ")";
     }
 }

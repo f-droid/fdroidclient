@@ -85,6 +85,8 @@ public interface Schema {
         String NAME = "fdroid_categoryAppMetadataJoin";
 
         interface Cols {
+            String ROW_ID = "rowid";
+
             /**
              * Foreign key to {@link AppMetadataTable}.
              * @see AppMetadataTable
@@ -100,7 +102,7 @@ public interface Schema {
             /**
              * @see AppMetadataTable.Cols#ALL_COLS
              */
-            String[] ALL_COLS = {APP_METADATA_ID, CATEGORY_ID};
+            String[] ALL_COLS = {ROW_ID, APP_METADATA_ID, CATEGORY_ID};
         }
     }
 
