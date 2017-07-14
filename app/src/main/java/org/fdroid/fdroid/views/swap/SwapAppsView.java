@@ -53,6 +53,7 @@ import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -233,7 +234,12 @@ public class SwapAppsView extends ListView implements
         private class ViewHolder {
 
             private final LocalBroadcastManager localBroadcastManager;
+
+            @Nullable
             private App app;
+
+            @Nullable
+            private Apk apk;
 
             ProgressBar progressView;
             TextView nameView;
@@ -305,14 +311,19 @@ public class SwapAppsView extends ListView implements
                 if (this.app == null || !this.app.packageName.equals(app.packageName)) {
                     this.app = app;
 
-                    Context context = getContext();
-                    Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context,
-                            app.packageName, app.suggestedVersionCode);
-                    String urlString = apk.getUrl();
+                    List<Apk> availableApks = ApkProvider.Helper.findAppVersionsByRepo(getActivity(), app, repo);
+                    if (availableApks.size() > 0) {
+                        // Swap repos only add one version of an app, so we will just ask for the first apk.
+                        this.apk = availableApks.get(0);
+                    }
 
-                    // TODO unregister receivers? or will they just die with this instance
-                    localBroadcastManager.registerReceiver(downloadReceiver,
-                            DownloaderService.getIntentFilter(urlString));
+                    if (apk != null) {
+                        String urlString = apk.getUrl();
+
+                        // TODO unregister receivers? or will they just die with this instance
+                        IntentFilter downloadFilter = DownloaderService.getIntentFilter(urlString);
+                        localBroadcastManager.registerReceiver(downloadReceiver, downloadFilter);
+                    }
 
                     // NOTE: Instead of continually unregistering and re-registering the observer
                     // (with a different URI), this could equally be done by only having one
@@ -364,8 +375,8 @@ public class SwapAppsView extends ListView implements
                 OnClickListener installListener = new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (app.hasUpdates() || app.compatible) {
-                            getActivity().install(app);
+                        if (apk != null && (app.hasUpdates() || app.compatible)) {
+                            getActivity().install(app, apk);
                             showProgress();
                         }
                     }

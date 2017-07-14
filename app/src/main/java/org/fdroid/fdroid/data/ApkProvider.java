@@ -132,13 +132,15 @@ public class ApkProvider extends FDroidProvider {
             return cursorToList(cursor);
         }
 
-        public static Apk get(Context context, Uri uri) {
-            return get(context, uri, Cols.ALL);
+        @NonNull
+        public static List<Apk> findAppVersionsByRepo(Context context, App app, Repo repo) {
+            ContentResolver resolver = context.getContentResolver();
+            final Uri uri = getRepoUri(repo.getId(), app.packageName);
+            Cursor cursor = resolver.query(uri, Cols.ALL, null, null, null);
+            return cursorToList(cursor);
         }
 
-        public static Apk get(Context context, Uri uri, String[] fields) {
-            ContentResolver resolver = context.getContentResolver();
-            Cursor cursor = resolver.query(uri, fields, null, null, null);
+        private static Apk cursorToApk(Cursor cursor) {
             Apk apk = null;
             if (cursor != null) {
                 if (cursor.getCount() > 0) {
@@ -148,6 +150,17 @@ public class ApkProvider extends FDroidProvider {
                 cursor.close();
             }
             return apk;
+        }
+
+        public static Apk get(Context context, Uri uri) {
+            return get(context, uri, Cols.ALL);
+        }
+
+        @Nullable
+        public static Apk get(Context context, Uri uri, String[] fields) {
+            ContentResolver resolver = context.getContentResolver();
+            Cursor cursor = resolver.query(uri, fields, null, null, null);
+            return cursorToApk(cursor);
         }
 
         @NonNull
@@ -167,10 +180,12 @@ public class ApkProvider extends FDroidProvider {
     private static final int CODE_APK_ROW_ID = CODE_APKS + 1;
     static final int CODE_APK_FROM_ANY_REPO = CODE_APK_ROW_ID + 1;
     static final int CODE_APK_FROM_REPO = CODE_APK_FROM_ANY_REPO + 1;
+    private static final int CODE_REPO_APP = CODE_APK_FROM_REPO + 1;
 
     private static final String PROVIDER_NAME = "ApkProvider";
     protected static final String PATH_APK_FROM_ANY_REPO = "apk-any-repo";
     protected static final String PATH_APK_FROM_REPO = "apk-from-repo";
+    protected static final String PATH_REPO_APP = "repo-app";
     private static final String PATH_APKS = "apks";
     private static final String PATH_APP = "app";
     private static final String PATH_REPO      = "repo";
@@ -187,6 +202,7 @@ public class ApkProvider extends FDroidProvider {
         PACKAGE_FIELDS.put(Cols.Package.PACKAGE_NAME, PackageTable.Cols.PACKAGE_NAME);
 
         MATCHER.addURI(getAuthority(), PATH_REPO + "/#", CODE_REPO);
+        MATCHER.addURI(getAuthority(), PATH_REPO_APP + "/#/*", CODE_REPO_APP);
         MATCHER.addURI(getAuthority(), PATH_APK_FROM_ANY_REPO + "/#/*/*", CODE_APK_FROM_ANY_REPO);
         MATCHER.addURI(getAuthority(), PATH_APK_FROM_ANY_REPO + "/#/*", CODE_APK_FROM_ANY_REPO);
         MATCHER.addURI(getAuthority(), PATH_APK_FROM_REPO + "/#/#", CODE_APK_FROM_REPO);
@@ -224,6 +240,15 @@ public class ApkProvider extends FDroidProvider {
             .buildUpon()
             .appendPath(PATH_REPO)
             .appendPath(Long.toString(repoId))
+            .build();
+    }
+
+    public static Uri getRepoUri(long repoId, String packageName) {
+        return getContentUri()
+            .buildUpon()
+            .appendPath(PATH_REPO_APP)
+            .appendPath(Long.toString(repoId))
+            .appendPath(packageName)
             .build();
     }
 
@@ -427,6 +452,13 @@ public class ApkProvider extends FDroidProvider {
         QuerySelection query = new QuerySelection(selection, selectionArgs);
 
         switch (MATCHER.match(uri)) {
+            case CODE_REPO_APP:
+                List<String> uriSegments = uri.getPathSegments();
+                Long repoId = Long.parseLong(uriSegments.get(1));
+                String packageName = uriSegments.get(2);
+                query = query.add(queryRepo(repoId)).add(queryPackage(packageName));
+                break;
+
             case CODE_LIST:
                 break;
 
