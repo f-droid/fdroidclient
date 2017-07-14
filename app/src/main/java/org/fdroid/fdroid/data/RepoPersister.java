@@ -66,9 +66,9 @@ public class RepoPersister {
         }
     }
 
-    public void commit(ContentValues repoDetailsToSave) throws RepoUpdater.UpdateException {
+    public void commit(ContentValues repoDetailsToSave, long repoIdToCommit) throws RepoUpdater.UpdateException {
         flushBufferToDb();
-        TempAppProvider.Helper.commitAppsAndApks(context);
+        TempAppProvider.Helper.commitAppsAndApks(context, repoIdToCommit);
         RepoProvider.Helper.update(context, repo, repoDetailsToSave);
     }
 
@@ -79,7 +79,7 @@ public class RepoPersister {
             // the index was signed with until we've finished reading it - and we don't
             // want to put stuff in the real database until we are sure it is from a
             // trusted source. It also helps performance as it is done via an in-memory database.
-            TempAppProvider.Helper.init(context);
+            TempAppProvider.Helper.init(context, repo.getId());
             hasBeenInitialized = true;
         }
 

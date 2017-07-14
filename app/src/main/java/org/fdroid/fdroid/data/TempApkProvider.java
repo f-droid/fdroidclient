@@ -27,7 +27,7 @@ public class TempApkProvider extends ApkProvider {
     private static final UriMatcher MATCHER = new UriMatcher(-1);
 
     static {
-        MATCHER.addURI(getAuthority(), PATH_INIT, CODE_INIT);
+        MATCHER.addURI(getAuthority(), PATH_INIT + "/#", CODE_INIT);
         MATCHER.addURI(getAuthority(), PATH_APK_FROM_ANY_REPO + "/#/*", CODE_APK_FROM_ANY_REPO);
         MATCHER.addURI(getAuthority(), PATH_APK_FROM_REPO + "/#/#", CODE_APK_FROM_REPO);
         MATCHER.addURI(getAuthority(), PATH_REPO_APK + "/#/*", CODE_REPO_APK);
@@ -76,12 +76,15 @@ public class TempApkProvider extends ApkProvider {
          * table and populates it with all the data from the real apk provider table.
          *
          * This is package local because it must be invoked after
-         * {@link org.fdroid.fdroid.data.TempAppProvider.Helper#init(Context)}. Due to this
+         * {@link org.fdroid.fdroid.data.TempAppProvider.Helper#init(Context, long)}. Due to this
          * dependence, that method invokes this one itself, rather than leaving it to the
          * {@link RepoPersister}.
          */
-        static void init(Context context) {
-            Uri uri = Uri.withAppendedPath(getContentUri(), PATH_INIT);
+        static void init(Context context, long repoIdToUpdate) {
+            Uri uri = getContentUri().buildUpon()
+                    .appendPath(PATH_INIT)
+                    .appendPath(Long.toString(repoIdToUpdate))
+                    .build();
             context.getContentResolver().insert(uri, new ContentValues());
         }
     }
@@ -89,7 +92,7 @@ public class TempApkProvider extends ApkProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         if (MATCHER.match(uri) == CODE_INIT) {
-            initTable();
+            initTable(Long.parseLong(uri.getLastPathSegment()));
             return null;
         }
 
@@ -124,7 +127,7 @@ public class TempApkProvider extends ApkProvider {
 
     }
 
-    private void initTable() {
+    private void initTable(long repoIdBeingUpdated) {
         final SQLiteDatabase db = db();
         final String memoryDbName = TempAppProvider.DB;
         db.execSQL(DBHelper.CREATE_TABLE_APK.replaceFirst(Schema.ApkTable.NAME, memoryDbName + "." + getTableName()));

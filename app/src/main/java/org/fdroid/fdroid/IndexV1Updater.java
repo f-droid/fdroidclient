@@ -139,7 +139,7 @@ public class IndexV1Updater extends RepoUpdater {
      * and {@link Apk} instances.  This uses {@link RepoPersister}  to add the apps
      * and packages to the database in {@link RepoPersister#saveToDb(App, List)}
      * to write the {@link Repo}, and commit the whole thing in
-     * {@link RepoPersister#commit(ContentValues)}.  One confusing thing about this
+     * {@link RepoPersister#commit(ContentValues, long)}.  One confusing thing about this
      * whole process is that {@link RepoPersister} needs to first create and entry
      * in the database, then fetch the ID from the database to populate
      * {@link Repo#id}.  That has to happen first, then the rest of the {@code Repo}
@@ -265,7 +265,7 @@ public class IndexV1Updater extends RepoUpdater {
         if (repo.mirrors != null && repo.mirrors.length > 0) {
             contentValues.put(Schema.RepoTable.Cols.MIRRORS, Utils.serializeCommaSeparatedString(repo.mirrors));
         }
-        repoPersister.commit(contentValues);
+        repoPersister.commit(contentValues, repo.getId());
         profiler.log("Persited to database.");
 
 

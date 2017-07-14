@@ -110,7 +110,7 @@ public class ProviderUriTests {
 
         // Required so that the `assertValidUri` calls below will indeed have a real temp_fdroid_app
         // table to query.
-        TempAppProvider.Helper.init(TestUtils.createContextWithContentResolver(resolver));
+        TempAppProvider.Helper.init(TestUtils.createContextWithContentResolver(resolver), 123);
 
         List<String> packageNames = new ArrayList<>(2);
         packageNames.add("org.fdroid.fdroid");

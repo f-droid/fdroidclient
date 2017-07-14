@@ -43,8 +43,8 @@ public class TempAppProvider extends AppProvider {
     private static final UriMatcher MATCHER = new UriMatcher(-1);
 
     static {
-        MATCHER.addURI(getAuthority(), PATH_INIT, CODE_INIT);
-        MATCHER.addURI(getAuthority(), PATH_COMMIT, CODE_COMMIT);
+        MATCHER.addURI(getAuthority(), PATH_INIT + "/#", CODE_INIT);
+        MATCHER.addURI(getAuthority(), PATH_COMMIT + "/#", CODE_COMMIT);
         MATCHER.addURI(getAuthority(), PATH_APPS + "/#/*", APPS);
         MATCHER.addURI(getAuthority(), PATH_SPECIFIC_APP + "/#/*", CODE_SINGLE);
     }
@@ -105,10 +105,13 @@ public class TempAppProvider extends AppProvider {
          * Deletes the old temporary table (if it exists). Then creates a new temporary apk provider
          * table and populates it with all the data from the real apk provider table.
          */
-        public static void init(Context context) {
-            Uri uri = Uri.withAppendedPath(getContentUri(), PATH_INIT);
+        public static void init(Context context, long repoIdToUpdate) {
+            Uri uri = getContentUri().buildUpon()
+                    .appendPath(PATH_INIT)
+                    .appendPath(Long.toString(repoIdToUpdate))
+                    .build();
             context.getContentResolver().insert(uri, new ContentValues());
-            TempApkProvider.Helper.init(context);
+            TempApkProvider.Helper.init(context, repoIdToUpdate);
         }
 
         public static List<App> findByPackageNames(Context context,
@@ -122,8 +125,11 @@ public class TempAppProvider extends AppProvider {
          * Saves data from the temp table to the apk table, by removing _EVERYTHING_ from the real
          * apk table and inserting all of the records from here. The temporary table is then removed.
          */
-        public static void commitAppsAndApks(Context context) {
-            Uri uri = Uri.withAppendedPath(getContentUri(), PATH_COMMIT);
+        public static void commitAppsAndApks(Context context, long repoIdToCommit) {
+            Uri uri = getContentUri().buildUpon()
+                    .appendPath(PATH_COMMIT)
+                    .appendPath(Long.toString(repoIdToCommit))
+                    .build();
             context.getContentResolver().insert(uri, new ContentValues());
         }
     }
@@ -137,11 +143,11 @@ public class TempAppProvider extends AppProvider {
     public Uri insert(Uri uri, ContentValues values) {
         switch (MATCHER.match(uri)) {
             case CODE_INIT:
-                initTable();
+                initTable(Long.parseLong(uri.getLastPathSegment()));
                 return null;
             case CODE_COMMIT:
                 updateAllAppDetails();
-                commitTable();
+                commitTable(Long.parseLong(uri.getLastPathSegment()));
                 return null;
             default:
                 return super.insert(uri, values);
@@ -220,7 +226,7 @@ public class TempAppProvider extends AppProvider {
         }
     }
 
-    private void initTable() {
+    private void initTable(long repoIdBeingUpdated) {
         final SQLiteDatabase db = db();
         ensureTempTableDetached(db);
         db.execSQL("ATTACH DATABASE ':memory:' AS " + DB);
@@ -242,7 +248,7 @@ public class TempAppProvider extends AppProvider {
         return "INSERT INTO " + toTable + " (" + cols + ") SELECT " + cols + " FROM " + fromTable;
     }
 
-    private void commitTable() {
+    private void commitTable(long repoIdToCommit) {
         final SQLiteDatabase db = db();
         try {
             db.beginTransaction();
