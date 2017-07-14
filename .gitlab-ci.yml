@@ -1,4 +1,6 @@
-image: registry.gitlab.com/fdroid/ci-images:client-latest
+image: registry.gitlab.com/eighthave/ci-images-client:latest
+# re-enable once gitlab support fixes the repo :-/
+#image: registry.gitlab.com/fdroid/ci-images-client:latest
 
 cache:
   paths:
