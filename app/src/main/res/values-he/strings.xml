@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="installIncompatible">נראה כי חבילה זו אינה תואמת את מכשירך. האם ברצונך לנסותה ולהתקינה בכל מקרה?</string>
-    <string name="version">גרסא</string>
+    <string name="installIncompatible">יישומון זו אינו תואם את מכשירך. לנסות ולהתקין אותו בכל מקרה?</string>
+    <string name="version">גירסה</string>
     <string name="delete">מחיקה</string>
     <string name="enable_nfc_send">הפעלת שליחה עם NFC…</string>
     <string name="cache_downloaded">שמירת יישומונים במטמון</string>
@@ -39,24 +39,24 @@
 
     <string name="yes">כן</string>
     <string name="no">לא</string>
-    <string name="repo_add_title">הוסף מאגר חדש</string>
-    <string name="repo_add_add">הוסף</string>
+    <string name="repo_add_title">הוספת מאגר חדש</string>
+    <string name="repo_add_add">הוספה</string>
     <string name="links">קישורים</string>
 
     <string name="cancel">ביטול</string>
-    <string name="enable">אפשר</string>
-    <string name="add_key">הוסף מפתח</string>
-    <string name="overwrite">שכתב</string>
+    <string name="enable">לאפשר</string>
+    <string name="add_key">הוספת מפתח</string>
+    <string name="overwrite">שכתוב</string>
 
-    <string name="bluetooth_activity_not_found">לא נמצאה שיטת שליחה של Bluetooth, עילך לבחור אחת!</string>
-    <string name="choose_bt_send">בחר שיטת שליחה של Bluetooth</string>
+    <string name="bluetooth_activity_not_found">לא נמצאה שיטת שליחה של Bluetooth, נא לבחור אחת!</string>
+    <string name="choose_bt_send">נא לבחור שיטת שליחה של Bluetooth</string>
 
     <string name="repo_add_url">כתובת מאגר</string>
     <string name="repo_add_fingerprint">טביעת אצבע (רשות)</string>
-    <string name="repo_delete_to_overwrite">תחילה עליך למחוק את מאגר זה בטרם תעמוד לרשותך האפשרות להוסיף אחד עם מפתח אחר.</string>
-    <string name="bad_fingerprint">טביעת אצבע רעה</string>
-    <string name="invalid_url">מחרוזת URL אינה תקינה.</string>
-    <string name="malformed_repo_uri">מתעלם מן URI מאגר פגום: %s</string>
+    <string name="repo_delete_to_overwrite">עליך למחוק מאגר זה לפני שתינתן לך האפשרות להוסיף אחד עם מפתח שונה.</string>
+    <string name="bad_fingerprint">טביעת אצבע שגויה</string>
+    <string name="invalid_url">כתובת זו אינה תקינה.</string>
+    <string name="malformed_repo_uri">כתובת מאגר שגויה בהתעלמות: %s</string>
 
     <string name="menu_manage">מאגרים</string>
     <string name="menu_search">חיפוש</string>
@@ -65,9 +65,9 @@
     <string name="menu_share">שיתוף</string>
     <string name="menu_install">התקנה</string>
     <string name="menu_uninstall">הסרה</string>
-    <string name="menu_ignore_all">התעלם מכל העדכונים</string>
-    <string name="menu_ignore_this">התעלם מעדכון זה</string>
-    <string name="menu_website">אתר רשת</string>
+    <string name="menu_ignore_all">התעלמות מכל העדכונים</string>
+    <string name="menu_ignore_this">התעלמות מעדכון זה</string>
+    <string name="menu_website">אתר</string>
     <string name="menu_issues">סוגיות</string>
     <string name="menu_changelog">יומן שינויים</string>
     <string name="menu_source">קוד מקור</string>
@@ -75,63 +75,63 @@
     <string name="menu_donate">תרומות</string>
 
     <string name="details_notinstalled">לא מותקן</string>
-    <string name="antiadslist">אפליקציה זו מכילה פרסום</string>
+    <string name="antiadslist">יישומון זה מכיל פרסום</string>
     <string name="antitracklist">יישומון זה עוקב ומדווח על פעילותך</string>
-    <string name="antinonfreeadlist">אפליקציה זו מקדמת תוספים שאינם חופשיים</string>
-    <string name="antinonfreenetlist">אפליקציה זו מקדמת שירותי רשת שאינם חופשיים</string>
-    <string name="antinonfreedeplist">אפליקציה זו תלויה באפליקציות לא-חופשיות אחרות</string>
-    <string name="antiupstreamnonfreelist">קוד מקור upstream אינו חופשי לחלוטין</string>
+    <string name="antinonfreeadlist">יישומון זה מקדם תוספים שאינם חופשיים</string>
+    <string name="antinonfreenetlist">יישומון זה מקדם שירותי רשת שאינם חופשיים</string>
+    <string name="antinonfreedeplist">יישומון זה תלוי ביישומונים אחרים שאינם חופשיים</string>
+    <string name="antiupstreamnonfreelist">קוד המקור בתצורתו המקורית אינו חופשי לחלוטין</string>
 
     <string name="display">תצוגה</string>
 
     <string name="expert">מצב מומחה</string>
-    <string name="expert_on">הצג מידע נוסף ואפשר הגדרות נוספות</string>
+    <string name="expert_on">הצגת מידע נוסף והפעלת הגדרות נוספות</string>
 
-    <string name="search_hint">חפש אפליקציות</string>
+    <string name="search_hint">חיפוש יישומונים</string>
 
-    <string name="appcompatibility">תאימות אפליקציה</string>
+    <string name="appcompatibility">תאימות היישומון</string>
     <string name="show_incompat_versions">גירסאות לא תואמות</string>
-    <string name="show_incompat_versions_on">הצג גרסאות אפליקציה אשר לא תואמות את המכשיר שלך</string>
-    <string name="rooted">התעלם מן מצב שורש (root)</string>
-    <string name="rooted_on">אל תאפיר אפליקציות אשר דורשות הרשאות שורש (root)</string>
-    <string name="ignoreTouch">התעלם ממסך מגע</string>
-    <string name="ignoreTouch_on">תמיד הכלל אפליקציות שדורשות מסך מגע</string>
+    <string name="show_incompat_versions_on">הצגת גירסאות היישומון שאינן תואמות להתקן</string>
+    <string name="rooted">התעלמות ממצב על (root)</string>
+    <string name="rooted_on">לא לסמן באפור יישומונים שדורשים הרשאות על (root)</string>
+    <string name="ignoreTouch">התעלמות ממסך מגע</string>
+    <string name="ignoreTouch_on">תמיד לכלול יישומונים שדורשים מסך מגע</string>
 
     <string name="local_repo">מאגר מקומי</string>
-    <string name="local_repo_running">F-Droid הינו מוכן להחלף</string>
-    <string name="touch_to_configure_local_repo">גע כדי לצפות בפרטים ולהתיר לאחרים להחליף עם האפליקציות שלך.</string>
-    <string name="deleting_repo">כעת מוחק מאגר נוכחי…</string>
-    <string name="adding_apks_format">הוסף את %s למאגר…</string>
-    <string name="writing_index_jar">כעת כותב קובץ אינדקס חתום (index.jar)…</string>
-    <string name="linking_apks">כעת מקשר APK לתוך המאגר…</string>
-    <string name="copying_icons">כעת מעתיק סמלי אפליקציה לתוך המאגר…</string>
+    <string name="local_repo_running">F-Droid מוכנה להחלפה</string>
+    <string name="touch_to_configure_local_repo">יש לגעת כדי לצפות בפרטים ולאפשר לאחרים להחליף אתך יישומונים.</string>
+    <string name="deleting_repo">המאגר הנוכחי נמחק…</string>
+    <string name="adding_apks_format">%s נוסף למאגר…</string>
+    <string name="writing_index_jar">קובץ המפתח החתום (index.jar) נכתב…</string>
+    <string name="linking_apks">ה־APKs מקושרים למאגר…</string>
+    <string name="copying_icons">סמלי היישומונים מועתקים כעת למאגר…</string>
     <string name="icon">סמל</string>
     <string name="next">הבא</string>
     <string name="skip">דילוג</string>
-    <string name="proxy">פרוקסי</string>
-    <string name="enable_proxy_title">אפשר פרוקסי HTTP</string>
-    <string name="enable_proxy_summary">הגדר HTTP Proxy לכל בקשת רשת</string>
-    <string name="proxy_host">מארח פרוקסי</string>
-    <string name="proxy_host_summary">הגדר שם משתמש פרוקסי (דוגמא: 127.0.0.1)</string>
-    <string name="proxy_port">פורט פרוקסי</string>
-    <string name="proxy_port_summary">הגדר מספר פורט פרוקסי (דוגמא: 8118)</string>
+    <string name="proxy">מתווך</string>
+    <string name="enable_proxy_title">הפעלת מתווך HTTP</string>
+    <string name="enable_proxy_summary">הגדרת שרת מתווך HTTP לכל בקשת רשת</string>
+    <string name="proxy_host">מארח מתווך</string>
+    <string name="proxy_host_summary">שם המארח של המתווך שלך (לדוגמה: 127.0.0.1)</string>
+    <string name="proxy_port">פתחת מתווך</string>
+    <string name="proxy_port_summary">מספר הפתחה של המתווך שלך (לדוגמה: 8118)</string>
 
-    <string name="status_download">כעת מוריד 
+    <string name="status_download">מתבצעת הורדה 
 \n%2$s / %3$s (%4$d%%) מתוך 
 \n%1$s</string>
-    <string name="update_notification_title">כעת מעדכן מאגרים</string>
-    <string name="status_processing_xml_percent">כעת מעבד %2$s / %3$s (%4$d%%) מתוך %1$s</string>
-    <string name="status_connecting_to_repo">כעת מתחבר אל
+    <string name="update_notification_title">המאגרים מתעדכנים</string>
+    <string name="status_processing_xml_percent">%2$s בהליכי עיבוד / %3$s (%4$d%%) מתוך %1$s</string>
+    <string name="status_connecting_to_repo">מתבצעת התחברות אל 
 \n%1$s</string>
-    <string name="repos_unchanged">כל המאגרים הינם מעודכנים</string>
-    <string name="all_other_repos_fine">כל שאר המאגרים לא יצרו שגיאות.</string>
+    <string name="repos_unchanged">כל המאגרים מעודכנים</string>
+    <string name="all_other_repos_fine">כל שאר המאגרים לא נתקלו בשגיאות.</string>
     <string name="global_error_updating_repos">שגיאה במהלך עדכון: %s</string>
-    <string name="no_permissions">אין הרשאות אשר מצויות בשימוש.</string>
-    <string name="no_handler_app">אין לך שום אפליקציה זמינה אשר מסוגלת להתמודד עם %s.</string>
+    <string name="no_permissions">אין הרשאות בשימוש.</string>
+    <string name="no_handler_app">לא מותקן יישומון זמין לטיפול בסוג %s.</string>
     <string name="theme">ערכת עיצוב</string>
     <string name="unsigned">לא חתום</string>
     <string name="unverified">לא מאומת</string>
-    <string name="repo_num_apps">מספר אפליקציות</string>
+    <string name="repo_num_apps">מספר של יישומונים</string>
     <string name="repo_description">תיאור</string>
     <string name="repo_last_update">עדכון אחרון</string>
     <string name="repo_name">שם</string>
@@ -141,7 +141,7 @@
     <string name="minsdk_or_later">%s ומעלה</string>
     <string name="up_to_maxsdk">עד %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s עד %2$s</string>
-    <string name="requires_features">מצריכה: %1$s</string>
+    <string name="requires_features">נדרש: %1$s</string>
     <string name="pref_language">שפה</string>
     <string name="pref_language_default">ברירת המחדל של המערכת</string>
 
@@ -155,57 +155,57 @@
     <string name="category_Science_Education">מדע וחינוך</string>
     <string name="category_Security">אבטחה</string>
     <string name="category_System">מערכת</string>
-    <string name="empty_installed_app_list">אין אפליקציות מותקנות.
-\n
-\nאין אפליקציות מותקנות על מכשירך, אך אלו אינן זמינות מתוך F-Droid. זה אפשרי מפני שעליך לעדכן את המאגרים שלך, או שלמאגרים באמת אין את האפליקציות שלך זמינות.</string>
-    <string name="empty_can_update_app_list">ברכותינו! כל האפליקציות שלך הינן מעודכנות.</string>
+    <string name="empty_installed_app_list">אין יישומונים מותקנים. 
+\n 
+\nיש יישומונים מותקנים על מכשירך, אך אלו אינם זמינים מתוך F-Droid. מצב זה עלול לקרות כאשר עליך לעדכן את המאגרים שלך או שבמאגרים באמת אין את היישומונים שלך.</string>
+    <string name="empty_can_update_app_list">ברכותינו! היישומונים שלך עדכניים.</string>
 
-    <string name="requesting_root_access_body">כעת מבקש גישת שורש (root)…</string>
-    <string name="root_access_denied_title">גישת שורש (root) נאסרה</string>
-    <string name="root_access_denied_body">או שמכשיר Android אינו מושרש (root) או שאסרת גישת שורש עבור F-Droid.</string>
-    <string name="install_error_unknown">נכשל להתקין בשל שגיאה לא מוכרת</string>
-    <string name="uninstall_error_unknown">נכשל להסיר בשל שגיאה לא מוכרת</string>
-    <string name="system_install_post_success">התקין בהצלחה הרחבת F-Droid מועדף</string>
+    <string name="requesting_root_access_body">בקשה לגישת על (root)…</string>
+    <string name="root_access_denied_title">גישת על (root) נאסרה</string>
+    <string name="root_access_denied_body">או שלמכשיר האנדרואיד שלך אין גישת על (root) או שדחית את הגישה ל־F-Droid.</string>
+    <string name="install_error_unknown">ההתקנה נכשלה עקב שגיאה בלתי ידועה</string>
+    <string name="uninstall_error_unknown">ההסרה נכשלה עקב שגיאה בלתי ידועה</string>
+    <string name="system_install_post_success">הרחבת F-Droid מועדף הותקנה</string>
     <string name="system_install_post_fail">התקנת הרחבת F-Droid מועדף נכשלה</string>
-    <string name="system_install_post_success_message">הרחבת F-Droid מועדף הותקנה בהצלחה בתור אפליקציה מועדפת. דבר זה מתיר לאפליקציה F-Droid להתקין, לשדרג ולהסיר התקנת אפליקציות בכוחות עצמה.</string>
-    <string name="system_install_post_fail_message">ההתקנה של הרחבת F-Droid מועדף נכשלה. שיטת ההתקנה אינה נתמכת על ידי כל הפצות Android, אנא פנה למערכת מעקב באגים של F-Droid לצורך מידע נוסף.</string>
-    <string name="system_install_installing">כעת מתקין…</string>
-    <string name="system_install_uninstalling">כעת מבטל התקנה…</string>
-    <string name="system_install_question">האם ברצונך להתקין את הרחבת F-Droid מועדף?</string>
-    <string name="system_install_warning_lollipop">פעולה זו לוקחת עד 10 שניות וההתקן <b>יאותחל</b> לאחר מכן.</string>
-    <string name="system_uninstall">האם ברצונך לבטל את התקנת הרחבת F-Droid מועדף?</string>
+    <string name="system_install_post_success_message">הרחבת F-Droid מועדף הותקנה. מצב זה מאפשר ליישומון F-Droid להתקין, לשדרג ולהסיר התקנת יישומונים באופן עצמאי.</string>
+    <string name="system_install_post_fail_message">ההתקנה של הרחבת F-Droid מועדף נכשלה. שיטת ההתקנה אינה נתמכת על ידי כל הפצות Android, נא לפנות למערכת מעקב הבאגים של F-Droid לקבלת מידע נוסף.</string>
+    <string name="system_install_installing">מתבצעת התקנה…</string>
+    <string name="system_install_uninstalling">מתבצעת הסרה…</string>
+    <string name="system_install_question">להתקין את הרחבת F-Droid מועדף?</string>
+    <string name="system_install_warning_lollipop">פעולה זו אורכת עד 10 שניות וההתקן <b>יאותחל</b> לאחר מכן.</string>
+    <string name="system_uninstall">להסיר את הרחבת F-Droid מועדף?</string>
     <string name="system_uninstall_button">הסרה</string>
 
-    <string name="swap_nfc_description">אם לחברך יש F-Droid וגם NFC פועלים געו יחד במכשירים שלכם.</string>
-    <string name="swap_join_same_wifi">הצטרף לאותו Wi-Fi כמו חברך</string>
-    <string name="swap_join_this_hotspot">עזור לחברך להצטרף לנקודה חמה</string>
-    <string name="swap">החלף אפליקציות</string>
-    <string name="swap_success">הֶחְלֵף הצליח!</string>
+    <string name="swap_nfc_description">אם לחברך יש F-Droid ו־NFC פעיל הצמידו את המכשירים שלכם.</string>
+    <string name="swap_join_same_wifi">הצטרפות לאותה רשת אלחוטית כמו חברך</string>
+    <string name="swap_join_this_hotspot">סיוע לחברך להצטרף לנקודה חמה</string>
+    <string name="swap">החלפת יישומונים</string>
+    <string name="swap_success">ההחלפה הצליחה!</string>
     <string name="swap_no_wifi_network">אין רשת עדיין</string>
-    <string name="swap_active_hotspot">%1$s (נקודה חמה)</string>
-    <string name="swap_view_available_networks">הקש כדי לפתוח רשתות זמינות</string>
-    <string name="swap_switch_to_wifi">הקש כדי להחליף לרשת Wi-Fi</string>
-    <string name="open_qr_code_scanner">פתח סורק QR</string>
+    <string name="swap_active_hotspot">%1$s (הנקודה החמה שלך)</string>
+    <string name="swap_view_available_networks">נא לגעת כדי לפתוח רשתות זמינות</string>
+    <string name="swap_switch_to_wifi">נא לגעת כדי להחליף רשת אלחוטית</string>
+    <string name="open_qr_code_scanner">פתיחת סורק QR</string>
     <string name="swap_welcome">ברוך בואך ל־F-Droid!</string>
-    <string name="swap_confirm_connect">האם ברצונך לקבל אפליקציות מתוך %1$s כעת?</string>
+    <string name="swap_confirm_connect">לקבל יישומונים מההתקן %1$s כעת?</string>
     <string name="swap_dont_show_again">לא להציג זאת שוב</string>
-    <string name="swap_scan_or_type_url">אדם אחד צריך לסרוק את הקוד, או להקליד URL של המחליף האחר לתוך דפדפן.</string>
+    <string name="swap_scan_or_type_url">אדם אחד צריך לסרוק את הקוד, או להקליד את הכתובת של הצד השני בדפדפן.</string>
 
-    <string name="install_confirm">צריך גישה אל</string>
+    <string name="install_confirm">נדרשת גישה אל</string>
     <string name="newPerms">חדש</string>
-    <string name="allPerms">הכל</string>
-    <string name="perm_costs_money">זה עלול לעלות לך כסף</string>
-    <string name="uninstall_update_confirm">האם ברצונך להחליף אפליקציה זו בגרסת היצרן?</string>
-    <string name="uninstall_confirm">לבטל את התקנת אפליקציה זו?</string>
+    <string name="allPerms">הכול</string>
+    <string name="perm_costs_money">זה עשוי לעלות לך כסף</string>
+    <string name="uninstall_update_confirm">להחליף יישומון זה בגרסת היצרן?</string>
+    <string name="uninstall_confirm">להסיר יישומון זה?</string>
 
     <string name="perms_new_perm_prefix">חדש:</string>
-    <string name="perms_description_app">מסופקת על ידי %1$s.</string>
-    <string name="downloading">כעת מוריד…</string>
+    <string name="perms_description_app">מסופק על ידי %1$s.</string>
+    <string name="downloading">מתבצעת הורדה…</string>
     <string name="app_name">F-Droid</string>
 
     <string name="app_incompatible">אין תאימות</string>
     <string name="back">אחורה</string>
-    <string name="repo_searching_address">כעת מחפש מאגר F-Droid אצל
+    <string name="repo_searching_address">מתבצע חיפוש אחר מאגר ה־F-Droid אצל 
 \n%1$s</string>
     <string name="wifi">רשת אלחוטית</string>
     <string name="wifi_ap">נקודה חמה</string>
@@ -218,20 +218,20 @@
     <string name="category_Time">זמן</string>
     <string name="category_Writing">כתיבה</string>
 
-    <string name="swap_choose_apps">בחר אפליקציות</string>
-    <string name="swap_scan_qr">סרוק קוד QR</string>
+    <string name="swap_choose_apps">בחירת יישומונים</string>
+    <string name="swap_scan_qr">סריקת קוד QR</string>
     <string name="swap_people_nearby">אנשים בקרבת מקום</string>
-    <string name="swap_scanning_for_peers">כעת מחפש אנשים בקרבת מקום…</string>
-    <string name="swap_visible_bluetooth">נראה דרך Bluetooth</string>
+    <string name="swap_scanning_for_peers">מתבצא חיפוש אחר אנשים בקרבת מקום…</string>
+    <string name="swap_visible_bluetooth">גלוי דרך Bluetooth</string>
     <string name="swap_setting_up_bluetooth">כעת מעלה Bluetooth…</string>
-    <string name="swap_not_visible_bluetooth">לא נראה דרך Bluetooth</string>
-    <string name="swap_visible_wifi">נראה דרך Wi-Fi</string>
-    <string name="swap_setting_up_wifi">כעת מעלה Wi-Fi…</string>
-    <string name="swap_not_visible_wifi">לא נראה דרך Wi-Fi</string>
+    <string name="swap_not_visible_bluetooth">לא גלוי דרך Bluetooth</string>
+    <string name="swap_visible_wifi">גלוי דרך רשת אלחוטית</string>
+    <string name="swap_setting_up_wifi">הרשת האלחוטית מוגדרת…</string>
+    <string name="swap_not_visible_wifi">לא גלוי דרך רשת אלחוטית</string>
     <string name="swap_wifi_device_name">שם התקן</string>
-    <string name="swap_connecting">כעת מתחבר</string>
+    <string name="swap_connecting">מתבצע חיבור</string>
     <string name="bluetooth_unavailable">‏Bluetooth לא זמין</string>
-    <string name="loading">כעת טוען…</string>
+    <string name="loading">בטעינה…</string>
 
     <string name="interval_never">אף פעם</string>
     <string name="interval_1h">מדי שעה</string>
@@ -241,90 +241,90 @@
     <string name="interval_1w">מדי שבוע</string>
     <string name="interval_2w">כל שבועיים</string>
 
-    <string name="theme_light">בהיר</string>
-    <string name="theme_dark">אפל</string>
+    <string name="theme_light">בהירה</string>
+    <string name="theme_dark">אפלה</string>
     <string name="unstable_updates">עדכונים לא יציבים</string>
     <string name="unstable_updates_summary">הצעת עדכונים לגרסאות לא יציבות</string>
     <string name="about_source">קוד מקור</string>
-    <string name="swap_nfc_title">גע כדי להחליף</string>
-    <string name="swap_nearby">הֶחְלֵף בקרבת מקום</string>
-    <string name="swap_cant_find_peers">אינך יכול למצוא את מי שחיפשת?</string>
+    <string name="swap_nfc_title">יש לגעת כדי להחליף</string>
+    <string name="swap_nearby">החלפה בקרבת מקום</string>
+    <string name="swap_cant_find_peers">לא מצאת את מבוקשך?</string>
     <string name="swap_send_fdroid">שליחת F-Droid</string>
-    <string name="swap_confirm">אמת הֶחְלֵף</string>
-    <string name="swap_qr_isnt_for_swap">קוד QR שסרקת לא נראה כמו קוד swap.</string>
-    <string name="swap_cant_send_no_bluetooth">לא מסוגל לשלוח את F-Droid, בשל העובדה כי Bluetooth אינו זמין על מכשיר זה.</string>
-    <string name="swap_not_enabled">הֶחְלֵף לא מאופשר</string>
-    <string name="swap_not_enabled_description">בטרם ביצוע הֶחְלֵף, על מכשירך להיות נראה.</string>
+    <string name="swap_confirm">אימות ההחלפה</string>
+    <string name="swap_qr_isnt_for_swap">קוד ה־QR שסרקת לא נראה כמו קוד החלפה.</string>
+    <string name="swap_cant_send_no_bluetooth">אין אפשרות לשלוח את F-Droid כיוון שה־Bluetooth אינו זמין בהתקן זה.</string>
+    <string name="swap_not_enabled">ההחלפה מנוטרלת</string>
+    <string name="swap_not_enabled_description">בטרם ביצוע החלפה, על מכשירך להיות גלוי.</string>
 
-    <string name="swap_intro">חבר והחלף אפליקציות עם אנשים בקרבתך.</string>
-    <string name="swap_no_peers_nearby">לא היה ניתן למצוא אנשים בקרבת מקום כדי לבצע הֶחְלֵף עמם.</string>
-    <string name="swap_connection_misc_error">אירעה שגיאה במהלך התחברות להתקן, נראה כי אנחנו לא יכולים לבצע הֶחְלֵף עמו.</string>
-    <string name="SignatureMismatch">הגרסא החדשה הינה חתומה בעזרת מפתח אחר מזה הישן. כדי להתקין את הגרסא החדשה, על הישנה להיות מוסרת תחילה. אנא עשה זאת ונסה שוב. (לתשומת לבך ביטול התקנה יסיר כל מידע פנימי אשר מאוחסן על ידי האפליקציה)</string>
-    <string name="repo_exists_add_fingerprint">מאגר זה כבר מותקן, זה יוסיף מידע מפתח חדש.</string>
-    <string name="repo_exists_enable">מאגר זה כבר מותקן, אמת כי ברצונך לאפשרו שוב.</string>
-    <string name="repo_exists_and_enabled">המאגר הנכנס הינו מותקן ומאופשר כבר.</string>
+    <string name="swap_intro">ניתן להתחבר ולהחליף יישומונים עם אנשים בקרבתך.</string>
+    <string name="swap_no_peers_nearby">אין אפשרות למצוא אנשים בקרבת מקום כדי להחליף עמם.</string>
+    <string name="swap_connection_misc_error">אירעה שגיאה בעת ההתחברות להתקן, אין אפשרות לבצע מולו החלפה!</string>
+    <string name="SignatureMismatch">הגרסה החדשה חתומה במפתח שונה מהישן. כדי להתקין את הגרסה החדשה, יש להסיר את הישנה תחילה. נא לבצע זאת ולנסות שוב. (נא לשים לב שהסרת יישומון תוביל למחיקת כל הנתונים הפנימיים שמאוחסנים על ידי היישומון)</string>
+    <string name="repo_exists_add_fingerprint">מאגר זה כבר מותקן, פעולה זו תוסיף מידע מפתח חדש.</string>
+    <string name="repo_exists_enable">מאגר זה כבר מותקן, נא לאמת כדי לאפשרו שוב.</string>
+    <string name="repo_exists_and_enabled">המאגר הנכנס כבר מותקן ומאופשר.</string>
     <string name="repo_fingerprint">טביעת אצבע של מפתח החתימה (SHA-256)</string>
-    <string name="unsigned_description">משמעות הדבר היא שלא היתה אפשרות לאמת את הרשימה של האפליקציות. עליך להיזהר מן אפליקציות אשר מורדות מתוך אינדקסים לא חתומים.</string>
-    <string name="repo_not_yet_updated">מאגר זה לא נמצא בשימוש עדיין. עליך לאפשרו כדי לצפות לצפות באפליקציות אשר מאגר זה מציע.</string>
-    <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי אפליקציות מתוכו לא יהיו זמינים עוד מתוך F-Droid.
-\n
-\nהערה: כל אפליקציות אשר הותקנו בעבר יישארו על המכשיר שלך.</string>
-    <string name="repo_disabled_notification">נוטרל %1$s.
-\n
-\nעליך לאפשר שוב את מאגר זה כדי להתקין אפליקציות מתוכו.</string>
+    <string name="unsigned_description">משמעות הדבר היא שאין אפשרות לאמת את רשימת היישומונים. יש לנקוט באמצעי זהירות עם יישומונים שהתקבלו ממפתחות בלתי חתומים.</string>
+    <string name="repo_not_yet_updated">מאגר זה לא היה בשימוש עדיין. יש לאפשר אותו כדי לצפות ביישומונים שהמאגר הזה מציע.</string>
+    <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי יישומונים מתוכו לא יהיו זמינים עוד מתוך F-Droid. 
+\n 
+\nהערה: כל היישומונים שהותקנו בעבר יישארו על המכשיר שלך.</string>
+    <string name="repo_disabled_notification">%1$s נוטרל. 
+\n 
+\nעליך לאפשר שוב את המאגר זה כדי להתקין יישומונים מתוכו.</string>
     <string name="not_on_same_wifi">המכשיר שלך אינו מחובר לאותה הרשת האלחוטית כמו המאגר המקומי שהוספת זה עתה! נא לנסות להצטרף לרשת זו: %s</string>
-    <string name="swap_join_same_wifi_desc">כדי לבצע הֶחְלֵף באמצעות Wi-Fi, וודא כי אתה נמצא על גבי אותה רשת. אם אין לך גישה לאותה הרשת, אחד מכם יכול ליצור Wi-Fi Hotspot.</string>
-    <string name="install_confirm_update">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? המידע הקיים שלך לא יאבד. האפליקציה המעודכנת תקבל גישה אל:</string>
-    <string name="install_confirm_update_system">האם ברצונך להתקין עדכון לאפליקציה מובנית (קרי, built-in)? המידע הקיים שלך לא יאבד. האפליקציה המעודכנת תקבל גישה אל:</string>
-    <string name="install_confirm_update_no_perms">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? המידע הקיים שלך לא יאבד. זו לא מצריכה שום גישה מיוחדת.</string>
-    <string name="install_confirm_update_system_no_perms">האם ברצונך להתקין עדכון לאפליקציה מובנית (קרי, built-in)? המידע הקיים שלך לא יאבד. זו לא מצריכה שום גישה מיוחדת.</string>
+    <string name="swap_join_same_wifi_desc">כדי לבצע החלפה באמצעות רשת אלחוטית, עליך לוודא כי מכשירך מחובר לאותה הרשת. אם אין לך גישה לאותה הרשת, אחד מכם יכול ליצור נקודת רשת אלחוטית חמה.</string>
+    <string name="install_confirm_update">להתקין עדכון ליישומון קיים זה? המידע הנוכחי שלך לא יאבד. היישומון המעודכן יקבל גישה אל:</string>
+    <string name="install_confirm_update_system">להתקין עדכון ליישומון מובנה זה? המידע הנוכחי שלך לא יאבד. היישומון העדכני יקבל גישה אל:</string>
+    <string name="install_confirm_update_no_perms">להתקין עדכון ליישומון קיים זה? המידע הנוכחי שלך לא יאבד. פעולה זו אינה מצריכה הרשאת גישה מיוחדת.</string>
+    <string name="install_confirm_update_system_no_perms">להתקין עדכון ליישומון מובנה זה? המידע הנוכחי שלך לא יאבד. פעולה זו אינה מצריכה גישה מיוחדת.</string>
     <string name="update_interval_zero">אין עדכוני רשימות יישומונים אוטומטית</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
 
 
-    <string name="download_error">הורדה נכשלה!</string>
+    <string name="download_error">ההורדה נכשלה!</string>
 
     <string name="more">עוד</string>
     <string name="less">פחות</string>
 
     <string name="menu_settings">הגדרות</string>
-    <string name="status_download_unknown_size">כעת מוריד 
+    <string name="status_download_unknown_size">מתבצעת הורדה 
 \n%2$s מתוך 
 \n%1$s</string>
     <string name="permissions">הרשאות</string>
     <string name="repo_details">מאגר</string>
     <string name="repo_url">כתובת</string>
-    <string name="system_install_denied_signature">החתימה של ההרחבה הינה שגויה! אנא צור bug report!</string>
+    <string name="system_install_denied_signature">החתימה של ההרחבה שגויה! נא לדווח על באג!</string>
     <string name="system_install_button_install">התקנה</string>
-    <string name="system_install_installing_rebooting">כעת מתקין ומאתחל…</string>
-    <string name="system_install_warning">פעולה זו לוקחת עד 10 שניות.</string>
+    <string name="system_install_installing_rebooting">מתבצעים התקנה ואתחול…</string>
+    <string name="system_install_warning">פעולה זו אורכת עד 10 שניות.</string>
     <string name="theme_night">לילה</string>
-    <string name="system_install_denied_permissions">ההרשאות המיוחדות לא הוענקו להרחבה! אנא צור bug report!</string>
+    <string name="system_install_denied_permissions">ההרשאות המיוחדות לא הוענקו להרחבה! נא לדווח על באג!</string>
     <string name="login_title">נדרש אימות</string>
     <string name="login_name">שם משתמש</string>
     <string name="login_password">סיסמה</string>
     <string name="repo_edit_credentials">החלפת סיסמה</string>
     <string name="about_license">רשיון</string>
 
-    <string name="status_inserting_apps">כעת שומר פרטי אפליקציה</string>
+    <string name="status_inserting_apps">פרטי היישומון נשמרים</string>
     <string name="repo_error_empty_username">שם המשתמש ריק, פרטי הכניסה לא שונו</string>
 
-    <string name="menu_email">שלח דוא״ל למחבר</string>
-    <string name="antinonfreeassetslist">אפליקציה זו מכילה נכסים לא חופשיים</string>
+    <string name="menu_email">שליחת דוא״ל ליוצר</string>
+    <string name="antinonfreeassetslist">יישומון זה מכיל נכסים בלתי חופשיים</string>
 
     <string name="crash_dialog_title">‏F-Droid קרסה</string>
     <string name="crash_dialog_text">אירעה שגיאה לא צפויה אשר אילצה את עצירת היישומון. לשלוח בדוא״ל את הפרטים כדי לעזור לפתור את הבעיה?</string>
-    <string name="crash_dialog_comment_prompt">באפשרותך להוסיף מידע והערות נוספים כאן:</string>
+    <string name="crash_dialog_comment_prompt">ניתן להוסיף מידע והערות בנוסף להלן:</string>
     <string name="repo_provider">מאגר: %s</string>
 
-    <string name="useTor">השתמש ברשת Tor</string>
-    <string name="useTorSummary">אלץ תעבורת הורדה דרך Tor להגברת הפרטיות</string>
-    <string name="swap_stopping_wifi">כעת מפסיק Wi-Fi…</string>
+    <string name="useTor">שימוש ב־Tor</string>
+    <string name="useTorSummary">אילוץ העברת תעבורת ההורדה דרך Tor להגברת הפרטיות</string>
+    <string name="swap_stopping_wifi">חיבור הרשת האלחוטי מופסק…</string>
     <string name="update_auto_download">הורדת עדכונים אוטומטית</string>
     <string name="update_auto_download_summary">העדכונים מתקבלים אוטומטית ותופיע הודעה להתקין אותם</string>
-    <string name="download_pending">כעת ממתין להתחיל להוריד…</string>
+    <string name="download_pending">בהמתנה להתחלת ההורדה…</string>
 
     <string name="keep_install_history">לשמור על היסטוריית ההתקנות</string>
     <string name="keep_install_history_summary">אחסון יומן של כל ההתקנות וההסרות ב־F-Droid</string>
@@ -353,49 +353,49 @@
     <string name="updates__show_updateable_apps">הצגת יישומונים</string>
 
     <plurals name="updates__download_updates_for_apps">
-	<item quantity="one">הורד עדכונים עבור אפליקציה %1$d.</item>
-	<item quantity="two">הורד עדכונים עבור %1$d אפליקציות.</item>
-	<item quantity="many"/>
-	<item quantity="other"/>
+	<item quantity="one">הורדת עדכון עבור יישומון אחד.</item>
+	<item quantity="two">הורדת עדכונים עבור %1$d יישומונים.</item>
+	<item quantity="many"></item>
+	<item quantity="other"></item>
 </plurals>
 
     <string name="versions">גירסאות</string>
-    <string name="clear_search">נקה חיפוש</string>
+    <string name="clear_search">פינוי החיפוש</string>
 
-    <string name="repositories_summary">הוסף מקורות נוספים של אפליקציות</string>
+    <string name="repositories_summary">הוספת מקורות נוספים ליישומונים</string>
     <string name="menu_video">וידאו</string>
     <string name="menu_license">רשיון: %s</string>
     <string name="main_menu__latest_apps">עדכני ביותר</string>
     <string name="main_menu__categories">קטגוריות</string>
     <string name="main_menu__swap_nearby">בקרבת מקום</string>
 
-    <string name="latest__empty_state__no_recent_apps">לא נמצאו אפליקציות אחרונות</string>
-    <string name="latest__empty_state__never_updated">כאשר רשימת האפליקציות שלך עודכנה, האפליקציות העדכניות ביותר אמורות להופיע כאן</string>
-    <string name="latest__empty_state__no_enabled_repos">כאשר תאפשר מאגר ותעדכנו, האפליקציות העדכניות ביותר אמורות להופיע כאן</string>
+    <string name="latest__empty_state__no_recent_apps">לא נמצאו יישומונים אחרונים</string>
+    <string name="latest__empty_state__never_updated">לאחר עדכון רשימת היישומונים, היישומונים העדכניים ביותר אמורים להופיע כאן</string>
+    <string name="latest__empty_state__no_enabled_repos">לאחר הפעלת מאגר ומשיכת עדכון ממנו, היישומים העדכניים ביותר אמור להופיע כאן</string>
 
     <string name="categories__empty_state__no_categories">אין קטגוריות להצגה</string>
 
-    <string name="preference_category__my_apps">האפליקציות שלי</string>
+    <string name="preference_category__my_apps">היישומונים שלי</string>
     <string name="preference_manage_installed_apps">ניהול יישומונים מותקנים</string>
 
 
-    <string name="details_new_in_version">חדש בגרסא %s</string>
+    <string name="details_new_in_version">חדש בגירסה %s</string>
 
-    <string name="antifeatureswarning">אפליקציה זו עשויה להכיל תכונות אשר לא ימצאו חן בעיניך.</string>
+    <string name="antifeatureswarning">ייתכן שביישומון זה ישנן תכונות שלא תישאנה חן בעיניך.</string>
     <string name="antifeatures">תכונות שליליות</string>
-    <string name="hide_anti_feature_apps">סמן באפור אפליקציות עם תכונות שליליות</string>
-    <string name="hide_anti_feature_apps_on">סמן באפור אפליקציות אשר דורשות תכונות שליליות</string>
+    <string name="hide_anti_feature_apps">סימון באפור יישומונים עם תכונות שליליות</string>
+    <string name="hide_anti_feature_apps_on">סימון באפור יישומונים אשר דורשים תכונות שליליות</string>
     <string name="warning_no_internet">לא ניתן לעדכן, האם קיים חיבור לרשת?</string>
     <plurals name="button_view_all_apps_in_category">
-	<item quantity="one">הצג %d</item>
-	<item quantity="two">הצג את כל %d</item>
-	<item quantity="many"/>
-	<item quantity="other"/>
+	<item quantity="one">הצגת אחד</item>
+	<item quantity="two">הצגת כל ה־%d</item>
+	<item quantity="many"></item>
+	<item quantity="other"></item>
 </plurals>
 
-    <string name="nearby_splash__download_apps_from_people_nearby">אין אינטרנט? הורד אפליקציות מאנשים בקרבתך!</string>
-    <string name="nearby_splash__find_people_button">מצא אנשים בקרבתי</string>
-    <string name="nearby_splash__both_parties_need_fdroid">שני הצדדים צריכים %1$s כדי להשתמש בקרבת מקום.</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">אין חיבור לאינטרנט? ניתן להוריד יישומונים מאנשים בקרבתך!</string>
+    <string name="nearby_splash__find_people_button">חיפוש אנשים בקרבתי</string>
+    <string name="nearby_splash__both_parties_need_fdroid">שני הצדדים צריכים %1$s כדי להשתמש בקרבה.</string>
 
     <string name="by_author_format">מאת %s</string>
     <string name="notification_action_update">עדכון</string>
@@ -411,15 +411,15 @@
     <string name="uninstall_error_notify_title">שגיאה בהסרת %s</string>
 
 
-    <string name="app__tts__downloading_progress">כעת מוריד, %1$d%% הושלמו</string>
-    <string name="installing">כעת מתקין…</string>
-    <string name="uninstalling">כעת מסיר…</string>
+    <string name="app__tts__downloading_progress">מתבצעת הורדה, %1$d%% הושלמו</string>
+    <string name="installing">מתבצעת התקנה…</string>
+    <string name="uninstalling">מתבצעת הסרה…</string>
 
-    <string name="keep_hour">שעה 1</string>
-    <string name="keep_day">יום 1</string>
-    <string name="keep_week">שבוע 1</string>
-    <string name="keep_month">חודש 1</string>
-    <string name="keep_year">שנה 1</string>
+    <string name="keep_hour">שעה</string>
+    <string name="keep_day">יום</string>
+    <string name="keep_week">שבוע</string>
+    <string name="keep_month">חודש</string>
+    <string name="keep_year">שנה</string>
     <string name="keep_forever">תמיד</string>
 
     <plurals name="notification_summary_more">
@@ -431,25 +431,25 @@
     <string name="notification_title_single_ready_to_install">מוכן להתקנה</string>
     <string name="notification_title_single_ready_to_install_update">עדכון מוכן להתקנה</string>
     <string name="notification_title_single_install_error">התקנה נכשלה</string>
-    <string name="notification_content_single_downloading">כעת מוריד \"%1$s\"…</string>
-    <string name="notification_content_single_downloading_update">כעת מוריד עדכון עבור \"%1$s\"…</string>
-    <string name="notification_content_single_installing">כעת מתקין \"%1$s\"…</string>
-    <string name="notification_content_single_installed">הותקן בהצלחה</string>
+    <string name="notification_content_single_downloading">ההורדה של „%1$s“ מתבצעת כעת…</string>
+    <string name="notification_content_single_downloading_update">מתבצעת הורדת עדכון עבור „%1$s“…</string>
+    <string name="notification_content_single_installing">ההתקנה של „%1$s“ מתבצעת כעת…</string>
+    <string name="notification_content_single_installed">ההתקנה הצליחה</string>
     <plurals name="notification_summary_updates">
 	<item quantity="one">עדכון %1$d</item>
 	<item quantity="two">%1$d עדכונים</item>
-	<item quantity="many"/>
-	<item quantity="other"/>
+	<item quantity="many"></item>
+	<item quantity="other"></item>
 </plurals>
     <plurals name="notification_summary_installed">
-	<item quantity="one">אפליקציה %1$d הותקנה</item>
-	<item quantity="two">%1$d אפליקציות הותקנו</item>
-	<item quantity="many"/>
-	<item quantity="other"/>
+	<item quantity="one">יישומון %1$d הותקן</item>
+	<item quantity="two">%1$d יישומונים הותקנו</item>
+	<item quantity="many"></item>
+	<item quantity="other"></item>
 </plurals>
     <string name="notification_title_summary_update_available">עדכון זמין</string>
-    <string name="notification_title_summary_downloading">כעת מוריד…</string>
-    <string name="notification_title_summary_downloading_update">כעת מוריד עדכון…</string>
+    <string name="notification_title_summary_downloading">מתבצעת הורדה כעת…</string>
+    <string name="notification_title_summary_downloading_update">העדכון מתקבל כעת…</string>
     <string name="notification_title_summary_ready_to_install">מוכן להתקין</string>
     <string name="notification_title_summary_ready_to_install_update">עדכון מוכן להתקנה</string>
     <string name="notification_title_summary_installing">מתקין</string>
@@ -457,24 +457,24 @@
     <string name="tts_category_name">קטגוריה %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">הצג אפליקציה %1$d בתוך הקטגוריה %2$s</item>
-	<item quantity="two">הצג את כל %1$d האפליקציות מתוך הקטגוריה %2$s</item>
-	<item quantity="many"/>
-	<item quantity="other"/>
+	<item quantity="one">הצגת יישומון %1$d מהקטגוריה %2$s</item>
+	<item quantity="two">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
+	<item quantity="many"></item>
+	<item quantity="other"></item>
 </plurals>
 
-    <string name="details_last_updated_today">עודכנה היום</string>
+    <string name="details_last_updated_today">עודכן היום</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">עודכנה לפני יום %1$d</item>
 	<item quantity="two">עודכנה לפני %1$d ימים</item>
-	<item quantity="many"/>
-	<item quantity="other"/>
+	<item quantity="many"></item>
+	<item quantity="other"></item>
 </plurals>
     <plurals name="details_last_update_weeks">
-	<item quantity="one">עודכנה לפני שבוע %1$d</item>
-	<item quantity="two">עודכנה לפני %1$d שבועות</item>
-	<item quantity="many"/>
-	<item quantity="other"/>
+	<item quantity="one">עודכן לפני שבוע %1$d</item>
+	<item quantity="two">עודכן לפני %1$d שבועות</item>
+	<item quantity="many"></item>
+	<item quantity="other"></item>
 </plurals>
     <plurals name="details_last_update_months">
 	<item quantity="one">עודכן לפני חודש %1$d</item>
@@ -483,16 +483,16 @@
 	<item quantity="other"/>
 </plurals>
     <plurals name="details_last_update_years">
-	<item quantity="one">עודכנה לפני שנה %1$d</item>
-	<item quantity="two">עודכנה לפני %1$d שנים</item>
-	<item quantity="many"/>
-	<item quantity="other"/>
+	<item quantity="one">עודכן לפני שנה %1$d</item>
+	<item quantity="two">עודכן לפני %1$d שנים</item>
+	<item quantity="many"></item>
+	<item quantity="other"></item>
 </plurals>
 <string name="force_old_index">אילוץ שימוש בתבנית המפתח הישנה</string>
     <string name="force_old_index_summary">במקרה שמופיעות תקלות או בעיות תאימות, יש להשתמש במפתח היישומים בתבנית XML</string>
     <string name="app_list_download_ready">התקבל, בהמתנה להתקנה</string>
 
-    <string name="status_inserting_x_apps">כעת שומר פרטי אפליקציה (%1$d/%2$d) מתוך %3$s</string>
+    <string name="status_inserting_x_apps">פרטי היישומון נשמרים (%1$d/%2$d) מתוך %3$s</string>
     <string name="app_installed_media">הקובץ הותקן אל %s</string>
     <string name="app_permission_storage">ל־F-Droid נדרשת הרשאה לגשת לאחסון כדי להתקין זאת לאחסון. נא להרשות זאת במסך הבא כדי להמשיך בהתקנה.</string>
 
