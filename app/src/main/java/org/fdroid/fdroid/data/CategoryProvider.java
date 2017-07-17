@@ -12,13 +12,39 @@ import org.fdroid.fdroid.data.Schema.CategoryTable;
 import org.fdroid.fdroid.data.Schema.CategoryTable.Cols;
 import org.fdroid.fdroid.data.Schema.PackageTable;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CategoryProvider extends FDroidProvider {
 
     public static final class Helper {
         private Helper() {
         }
 
+        /**
+         * During repo updates, each app needs to know the ID of each category it belongs to.
+         * This results in lots of database lookups, usually at least one for each app, sometimes more.
+         * To improve performance, this caches the association between categories and their database IDs.
+         *
+         * It can stay around for the entire F-Droid process, even across multiple repo updates, as we
+         * don't actually remove data from the categories table.
+         */
+        private static final Map<String, Long> KNOWN_CATEGORIES = new HashMap<>();
+
+        /**
+         * Used by tests to clear that the "Category -> ID" cache (used to prevent excessive disk reads).
+         */
+        static void clearCategoryIdCache() {
+            KNOWN_CATEGORIES.clear();
+        }
+
         public static long ensureExists(Context context, String category) {
+            // Check our in-memory cache to potentially prevent a trip to the database (and hence disk).
+            String lowerCaseCategory = category.toLowerCase();
+            if (KNOWN_CATEGORIES.containsKey(lowerCaseCategory)) {
+                return KNOWN_CATEGORIES.get(lowerCaseCategory);
+            }
+
             long id = getCategoryId(context, category);
             if (id <= 0) {
                 ContentValues values = new ContentValues(1);
@@ -26,10 +52,13 @@ public class CategoryProvider extends FDroidProvider {
                 Uri uri = context.getContentResolver().insert(getContentUri(), values);
                 id = Long.parseLong(uri.getLastPathSegment());
             }
+
+            KNOWN_CATEGORIES.put(lowerCaseCategory, id);
+
             return id;
         }
 
-        public static long getCategoryId(Context context, String category) {
+        private static long getCategoryId(Context context, String category) {
             String[] projection = new String[]{Cols.ROW_ID};
             Cursor cursor = context.getContentResolver().query(getCategoryUri(category), projection,
                     null, null, null);
