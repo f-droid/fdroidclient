@@ -451,6 +451,5 @@
     <string name="rooted_on">རྩ་བའི་ཐོབ་ཐང་རྣམས་དགོས་མཁོ་ཡོང་ན་མཉེན་ཆས་ཐལ་མདོག་མ་བཟོས།</string>
     <string name="hide_anti_feature_apps">ཁྱད་ཆོས་འགལ་ཟླའི་མཉེས་ཆས་ཐལ་མདོག་བཟོས།</string>
     <string name="hide_anti_feature_apps_on">ཁྱད་ཆོས་འགལ་ཟླའི་དོགས་མཁོ་ཡོད་པའི་ཐལ་མདོག་བཟོས།</string>
-    <string name="tts_category_name">འཚོལ་སྒམ་གྱི་ནང་ལ་\"བྱང་བུ་\"ཞེས་པའི་སྡེ་ཚན་སྟོན་སྐབས་ལ་TTS འཕྲུལ་འཁོར་གྱིས་བེད་སྤྱོད་བྱས་ཡོད།</string>
 
     </resources>
