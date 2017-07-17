@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
 import android.text.TextUtils;
-import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
@@ -65,19 +64,6 @@ public class TempAppProvider extends AppProvider {
 
     public static Uri getContentUri() {
         return Uri.parse("content://" + getAuthority());
-    }
-
-    /**
-     * Same as {@link AppProvider#getSpecificAppUri(String, long)}, except loads data from the temp
-     * table being used during a repo update rather than the persistent table.
-     */
-    public static Uri getSpecificTempAppUri(String packageName, long repoId) {
-        return getContentUri()
-                .buildUpon()
-                .appendPath(PATH_SPECIFIC_APP)
-                .appendPath(Long.toString(repoId))
-                .appendPath(packageName)
-                .build();
     }
 
     public static Uri getAppsUri(List<String> apps, long repoId) {
@@ -156,47 +142,7 @@ public class TempAppProvider extends AppProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        if (MATCHER.match(uri) != CODE_SINGLE) {
-            throw new UnsupportedOperationException("Update not supported for " + uri + ".");
-        }
-
-        if (values.containsKey(Cols.DESCRIPTION) && values.getAsString(Cols.DESCRIPTION) == null) {
-            // the database does not let a description be set as null
-            values.put(Cols.DESCRIPTION, "");
-        }
-
-        List<String> pathParts = uri.getPathSegments();
-        String packageName = pathParts.get(2);
-        long repoId = Long.parseLong(pathParts.get(1));
-        QuerySelection query = new QuerySelection(where, whereArgs).add(querySingleForUpdate(packageName, repoId));
-
-        // Package names for apps cannot change...
-        values.remove(Cols.Package.PACKAGE_NAME);
-
-        if (values.containsKey(Cols.ForWriting.Categories.CATEGORIES)) {
-            String[] categories = Utils.parseCommaSeparatedString(
-                    values.getAsString(Cols.ForWriting.Categories.CATEGORIES));
-            ensureCategories(categories, packageName, repoId);
-            values.remove(Cols.ForWriting.Categories.CATEGORIES);
-        }
-
-        int count = db().update(getTableName(), values, query.getSelection(), query.getArgs());
-        if (!isApplyingBatch()) {
-            getContext().getContentResolver().notifyChange(getHighestPriorityMetadataUri(packageName), null);
-        }
-        return count;
-    }
-
-    private void ensureCategories(String[] categories, String packageName, long repoId) {
-        Query query = new AppProvider.Query();
-        query.addField(Cols.ROW_ID);
-        query.addSelection(querySingle(packageName, repoId));
-        Cursor cursor = db().rawQuery(query.toString(), query.getArgs());
-        cursor.moveToFirst();
-        long appMetadataId = cursor.getLong(0);
-        cursor.close();
-
-        ensureCategories(categories, appMetadataId);
+        throw new UnsupportedOperationException("Update not supported for " + uri + ".");
     }
 
     @Override

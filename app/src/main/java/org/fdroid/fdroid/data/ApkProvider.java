@@ -94,17 +94,6 @@ public class ApkProvider extends FDroidProvider {
             return findApkFromAnyRepo(context, packageName, versionCode, signature, Cols.ALL);
         }
 
-        /**
-         * Find all apks for a particular app, but limit it to those originating from the
-         * specified repo.
-         */
-        public static List<Apk> findByUri(Context context, Repo repo, List<App> apps, String[] projection) {
-            ContentResolver resolver = context.getContentResolver();
-            final Uri uri = getContentUriForApps(repo, apps);
-            Cursor cursor = resolver.query(uri, projection, null, null, null);
-            return cursorToList(cursor);
-        }
-
         public static Apk findApkFromAnyRepo(Context context, String packageName, int versionCode,
                                              @Nullable String signature, String[] projection) {
             final Uri uri = getApkFromAnyRepoUri(packageName, versionCode, signature);
@@ -134,36 +123,6 @@ public class ApkProvider extends FDroidProvider {
             final Uri uri = getAppUri(packageName);
             final String sort = "apk." + Cols.VERSION_CODE + " DESC";
             Cursor cursor = resolver.query(uri, projection, null, null, sort);
-            return cursorToList(cursor);
-        }
-
-        /**
-         * Returns apks in the database, which have the same packageName and version as
-         * one of the apks in the "apks" argument.
-         */
-        public static List<Apk> knownApks(Context context, List<Apk> apks, String[] fields) {
-            if (apks.isEmpty()) {
-                return new ArrayList<>();
-            }
-
-            List<Apk> knownApks = new ArrayList<>();
-            if (apks.size() > ApkProvider.MAX_APKS_TO_QUERY) {
-                int middle = apks.size() / 2;
-                List<Apk> apks1 = apks.subList(0, middle);
-                List<Apk> apks2 = apks.subList(middle, apks.size());
-                knownApks.addAll(knownApks(context, apks1, fields));
-                knownApks.addAll(knownApks(context, apks2, fields));
-            } else {
-                knownApks.addAll(knownApksSafe(context, apks, fields));
-            }
-            return knownApks;
-
-        }
-
-        private static List<Apk> knownApksSafe(final Context context, final List<Apk> apks, final String[] fields) {
-            ContentResolver resolver = context.getContentResolver();
-            final Uri uri = getContentUri(apks);
-            Cursor cursor = resolver.query(uri, fields, null, null, null);
             return cursorToList(cursor);
         }
 
@@ -206,9 +165,7 @@ public class ApkProvider extends FDroidProvider {
     private static final int CODE_PACKAGE = CODE_SINGLE + 1;
     private static final int CODE_REPO = CODE_PACKAGE + 1;
     private static final int CODE_APKS = CODE_REPO + 1;
-    private static final int CODE_REPO_APPS = CODE_APKS + 1;
-    protected static final int CODE_REPO_APK = CODE_REPO_APPS + 1;
-    private static final int CODE_APK_ROW_ID = CODE_REPO_APK + 1;
+    private static final int CODE_APK_ROW_ID = CODE_APKS + 1;
     static final int CODE_APK_FROM_ANY_REPO = CODE_APK_ROW_ID + 1;
     static final int CODE_APK_FROM_REPO = CODE_APK_FROM_ANY_REPO + 1;
 
@@ -218,8 +175,6 @@ public class ApkProvider extends FDroidProvider {
     private static final String PATH_APKS = "apks";
     private static final String PATH_APP = "app";
     private static final String PATH_REPO      = "repo";
-    private static final String PATH_REPO_APPS = "repo-apps";
-    protected static final String PATH_REPO_APK  = "repo-apk";
     private static final String PATH_APK_ROW_ID = "apk-rowId";
 
     private static final UriMatcher MATCHER = new UriMatcher(-1);
@@ -238,8 +193,6 @@ public class ApkProvider extends FDroidProvider {
         MATCHER.addURI(getAuthority(), PATH_APK_FROM_REPO + "/#/#", CODE_APK_FROM_REPO);
         MATCHER.addURI(getAuthority(), PATH_APKS + "/*", CODE_APKS);
         MATCHER.addURI(getAuthority(), PATH_APP + "/*", CODE_PACKAGE);
-        MATCHER.addURI(getAuthority(), PATH_REPO_APPS + "/#/*", CODE_REPO_APPS);
-        MATCHER.addURI(getAuthority(), PATH_REPO_APK + "/#/*", CODE_REPO_APK);
         MATCHER.addURI(getAuthority(), PATH_APK_ROW_ID + "/#", CODE_APK_ROW_ID);
         MATCHER.addURI(getAuthority(), null, CODE_LIST);
     }
@@ -291,51 +244,6 @@ public class ApkProvider extends FDroidProvider {
         }
 
         return builder.build();
-    }
-
-    public static Uri getContentUriForApps(Repo repo, List<App> apps) {
-        return getContentUri()
-            .buildUpon()
-            .appendPath(PATH_REPO_APPS)
-            .appendPath(Long.toString(repo.id))
-            .appendPath(buildAppString(apps))
-            .build();
-    }
-
-    /**
-     * Intentionally left protected because it will break if apks is larger than
-     * {@link org.fdroid.fdroid.data.ApkProvider#MAX_APKS_TO_QUERY}. Instead of using
-     * this directly, think about using
-     * {@link ApkProvider.Helper#knownApks(android.content.Context, java.util.List, String[])}
-     */
-    static Uri getContentUri(List<Apk> apks) {
-        return getContentUri().buildUpon()
-                .appendPath(PATH_APKS)
-                .appendPath(buildApkString(apks))
-                .build();
-    }
-
-    protected static String buildApkString(List<Apk> apks) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < apks.size(); i++) {
-            if (i != 0) {
-                builder.append(',');
-            }
-            final Apk apk = apks.get(i);
-            builder.append(apk.appId).append(':').append(apk.versionCode);
-        }
-        return builder.toString();
-    }
-
-    private static String buildAppString(List<App> apks) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < apks.size(); i++) {
-            if (i != 0) {
-                builder.append(',');
-            }
-            builder.append(apks.get(i).packageName);
-        }
-        return builder.toString();
     }
 
     @Override
@@ -470,10 +378,6 @@ public class ApkProvider extends FDroidProvider {
         return new QuerySelection(selection, args);
     }
 
-    private QuerySelection queryRepoApps(long repoId, String packageNames) {
-        return queryRepo(repoId).add(AppProvider.queryPackageNames(packageNames, "pkg." + PackageTable.Cols.PACKAGE_NAME));
-    }
-
     protected QuerySelection queryApks(String apkKeys) {
         return queryApks(apkKeys, true);
     }
@@ -547,11 +451,6 @@ public class ApkProvider extends FDroidProvider {
                 query = query.add(queryRepo(Long.parseLong(uri.getLastPathSegment())));
                 break;
 
-            case CODE_REPO_APPS:
-                List<String> pathSegments = uri.getPathSegments();
-                query = query.add(queryRepoApps(Long.parseLong(pathSegments.get(1)), pathSegments.get(2)));
-                break;
-
             default:
                 Log.e(TAG, "Invalid URI for apk content provider: " + uri);
                 throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
@@ -611,12 +510,6 @@ public class ApkProvider extends FDroidProvider {
                 query = query.add(queryApks(uri.getLastPathSegment(), false));
                 break;
 
-            // TODO: Add tests for this.
-            case CODE_REPO_APK:
-                List<String> pathSegments = uri.getPathSegments();
-                query = query.add(queryRepo(Long.parseLong(pathSegments.get(1)))).add(queryApks(pathSegments.get(2)));
-                break;
-
             default:
                 Log.e(TAG, "Invalid URI for apk content provider: " + uri);
                 throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
@@ -633,10 +526,7 @@ public class ApkProvider extends FDroidProvider {
         if (MATCHER.match(uri) != CODE_APK_FROM_REPO) {
             throw new UnsupportedOperationException("Cannot update anything other than a single apk.");
         }
-        return performUpdateUnchecked(uri, values, where, whereArgs);
-    }
 
-    protected int performUpdateUnchecked(Uri uri, ContentValues values, String where, String[] whereArgs) {
         validateFields(Cols.ALL, values);
         removeFieldsFromOtherTables(values);
 

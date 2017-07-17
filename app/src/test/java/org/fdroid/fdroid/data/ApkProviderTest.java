@@ -239,69 +239,6 @@ public class ApkProviderTest extends FDroidProviderTest {
     }
 
     @Test
-    public void testKnownApks() {
-
-        App fdroid = Assert.ensureApp(context, "org.fdroid.fdroid");
-        for (int i = 0; i < 7; i++) {
-            Assert.insertApk(context, fdroid, i);
-        }
-
-        App exampleOrg = Assert.ensureApp(context, "org.example");
-        for (int i = 0; i < 9; i++) {
-            Assert.insertApk(context, exampleOrg, i);
-        }
-
-        App exampleCom = Assert.ensureApp(context, "com.example");
-        for (int i = 0; i < 3; i++) {
-            Assert.insertApk(context, exampleCom, i);
-        }
-
-        App thingo = Assert.ensureApp(context, "com.apk.thingo");
-        Assert.insertApk(context, thingo, 1);
-
-        Apk[] known = {
-            new MockApk(fdroid, 1),
-            new MockApk(fdroid, 3),
-            new MockApk(fdroid, 5),
-
-            new MockApk(exampleCom, 1),
-            new MockApk(exampleCom, 2),
-        };
-
-        Apk[] unknown = {
-            new MockApk(fdroid, 7),
-            new MockApk(fdroid, 9),
-            new MockApk(fdroid, 11),
-            new MockApk(fdroid, 13),
-
-            new MockApk(exampleCom, 3),
-            new MockApk(exampleCom, 4),
-            new MockApk(exampleCom, 5),
-
-            new MockApk(-10, 1),
-            new MockApk(-10, 2),
-        };
-
-        List<Apk> apksToCheck = new ArrayList<>(known.length + unknown.length);
-        Collections.addAll(apksToCheck, known);
-        Collections.addAll(apksToCheck, unknown);
-
-        String[] projection = {
-            Cols.Package.PACKAGE_NAME,
-            Cols.APP_ID,
-            Cols.VERSION_CODE,
-        };
-
-        List<Apk> knownApks = ApkProvider.Helper.knownApks(context, apksToCheck, projection);
-
-        assertResultCount(known.length, knownApks);
-
-        for (Apk knownApk : knownApks) {
-            assertContains(knownApks, knownApk);
-        }
-    }
-
-    @Test
     public void testFindByApp() {
 
         for (int i = 0; i < 7; i++) {

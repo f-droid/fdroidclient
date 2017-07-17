@@ -9,8 +9,6 @@ import android.net.Uri;
 import org.fdroid.fdroid.data.Schema.ApkTable;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 
-import java.util.List;
-
 /**
  * This class does all of its operations in a temporary sqlite table.
  */
@@ -31,7 +29,6 @@ public class TempApkProvider extends ApkProvider {
         MATCHER.addURI(getAuthority(), PATH_INIT + "/#", CODE_INIT);
         MATCHER.addURI(getAuthority(), PATH_APK_FROM_ANY_REPO + "/#/*", CODE_APK_FROM_ANY_REPO);
         MATCHER.addURI(getAuthority(), PATH_APK_FROM_REPO + "/#/#", CODE_APK_FROM_REPO);
-        MATCHER.addURI(getAuthority(), PATH_REPO_APK + "/#/*", CODE_REPO_APK);
     }
 
     @Override
@@ -50,24 +47,6 @@ public class TempApkProvider extends ApkProvider {
 
     public static Uri getContentUri() {
         return Uri.parse("content://" + getAuthority());
-    }
-
-    public static Uri getApkUri(Apk apk) {
-        return getContentUri()
-                .buildUpon()
-                .appendPath(PATH_APK_FROM_REPO)
-                .appendPath(Long.toString(apk.appId))
-                .appendPath(Integer.toString(apk.versionCode))
-                .build();
-    }
-
-    public static Uri getApksUri(Repo repo, List<Apk> apks) {
-        return getContentUri()
-                .buildUpon()
-                .appendPath(PATH_REPO_APK)
-                .appendPath(Long.toString(repo.id))
-                .appendPath(buildApkString(apks))
-                .build();
     }
 
     public static class Helper {
@@ -102,30 +81,12 @@ public class TempApkProvider extends ApkProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        if (MATCHER.match(uri) != CODE_APK_FROM_REPO) {
-            throw new UnsupportedOperationException("Cannot update anything other than a single apk.");
-        }
-
-        return performUpdateUnchecked(uri, values, where, whereArgs);
+        throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
     }
 
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
-        if (MATCHER.match(uri) != CODE_REPO_APK) {
-            throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
-        }
-
-        List<String> pathSegments = uri.getPathSegments();
-        QuerySelection query = new QuerySelection(where, whereArgs)
-                .add(queryRepo(Long.parseLong(pathSegments.get(1)), false))
-                .add(queryApks(pathSegments.get(2), false));
-
-        int rowsAffected = db().delete(getTableName(), query.getSelection(), query.getArgs());
-        if (!isApplyingBatch()) {
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
-        return rowsAffected;
-
+        throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
     }
 
     private void initTable(long repoIdBeingUpdated) {
