@@ -45,8 +45,6 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
     @StringDef({"Conflicting", "Normal"})
     public @interface RepoIdentifier { }
 
-    /*
-     *This test fails due to issue #568 (https://gitlab.com/fdroid/fdroidclient/issues/568).
     @Test
     public void appsRemovedFromRepo() throws RepoUpdater.UpdateException {
         assertEquals(0, AppProvider.Helper.all(context.getContentResolver()).size());
@@ -67,7 +65,7 @@ public class ProperMultiRepoUpdaterTest extends MultiRepoUpdaterTest {
         assertEquals(6, ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL).size());
         assertEquals(4, ApkProvider.Helper.findByPackageName(context, "org.adaway").size());
         assertEquals(2, ApkProvider.Helper.findByPackageName(context, "org.dgtale.icsimport").size());
-    }*/
+    }
 
     @Test
     public void mainRepo() throws RepoUpdater.UpdateException {

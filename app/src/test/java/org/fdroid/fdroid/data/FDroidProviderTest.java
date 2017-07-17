@@ -23,6 +23,7 @@ public abstract class FDroidProviderTest {
 
     @After
     public final void tearDownBase() {
+        CategoryProvider.Helper.clearCategoryIdCache();
         FDroidProvider.clearDbHelperSingleton();
     }
 

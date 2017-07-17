@@ -280,7 +280,7 @@ public class RepoUpdater {
     private void commitToDb() throws UpdateException {
         Log.i(TAG, "Repo signature verified, saving app metadata to database.");
         notifyCommittingToDb();
-        persister.commit(repoDetailsToSave);
+        persister.commit(repoDetailsToSave, repo.getId());
     }
 
     private void assertSigningCertFromXmlCorrect() throws SigningException {
