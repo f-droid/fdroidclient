@@ -425,7 +425,7 @@
     <string name="tts_category_name">Categoría %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">"Ver la única aplicación %1$ d en la  %2$ categoría"</item>
+	<item quantity="one">Ver la única aplicación en la %2$s categoría</item>
 	<item quantity="other">Ver todas %1$d aplicaciones en la %2$s categoría</item>
 </plurals>
     <string name="app__install_downloaded_update">Actualizar</string>
@@ -502,7 +502,7 @@
     <string name="app_list_download_ready">Descargado, listo para instalar</string>
 
     <string name="status_inserting_x_apps">Guardando detalles de la aplicación (%1$d/%2$d) desde %3$s</string>
-    <string name="app_installed_media">Archivo instalado en % s</string>
+    <string name="app_installed_media">Archivo instalado en %s</string>
     <string name="app_permission_storage">F-Droid necesita el permiso instalar esto en su almacenamiento. Por favor permita que en la siguiente pantalla continúe con la instalación.</string>
 
     </resources>
