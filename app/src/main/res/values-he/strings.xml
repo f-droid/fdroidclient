@@ -355,8 +355,8 @@
     <plurals name="updates__download_updates_for_apps">
 	<item quantity="one">הורדת עדכון עבור יישומון אחד.</item>
 	<item quantity="two">הורדת עדכונים עבור %1$d יישומונים.</item>
-	<item quantity="many"></item>
-	<item quantity="other"></item>
+	<item quantity="many">הורדת עדכונים עבור %1$d יישומונים.</item>
+	<item quantity="other">הורדת עדכונים עבור %1$d יישומונים.</item>
 </plurals>
 
     <string name="versions">גירסאות</string>
@@ -389,8 +389,8 @@
     <plurals name="button_view_all_apps_in_category">
 	<item quantity="one">הצגת אחד</item>
 	<item quantity="two">הצגת כל ה־%d</item>
-	<item quantity="many"></item>
-	<item quantity="other"></item>
+	<item quantity="many">הצגת כל ה־%d</item>
+	<item quantity="other">הצגת כל ה־%d</item>
 </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">אין חיבור לאינטרנט? ניתן להוריד יישומונים מאנשים בקרבתך!</string>
@@ -438,14 +438,14 @@
     <plurals name="notification_summary_updates">
 	<item quantity="one">עדכון %1$d</item>
 	<item quantity="two">%1$d עדכונים</item>
-	<item quantity="many"></item>
-	<item quantity="other"></item>
+	<item quantity="many">%1$d עדכונים</item>
+	<item quantity="other">%1$d עדכונים</item>
 </plurals>
     <plurals name="notification_summary_installed">
 	<item quantity="one">יישומון %1$d הותקן</item>
 	<item quantity="two">%1$d יישומונים הותקנו</item>
-	<item quantity="many"></item>
-	<item quantity="other"></item>
+	<item quantity="many">%1$d יישומונים הותקנו</item>
+	<item quantity="other">%1$d יישומונים הותקנו</item>
 </plurals>
     <string name="notification_title_summary_update_available">עדכון זמין</string>
     <string name="notification_title_summary_downloading">מתבצעת הורדה כעת…</string>
@@ -459,34 +459,34 @@
     <plurals name="tts_view_all_in_category">
 	<item quantity="one">הצגת יישומון %1$d מהקטגוריה %2$s</item>
 	<item quantity="two">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
-	<item quantity="many"></item>
-	<item quantity="other"></item>
+	<item quantity="many">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
+	<item quantity="other">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
 </plurals>
 
     <string name="details_last_updated_today">עודכן היום</string>
     <plurals name="details_last_update_days">
 	<item quantity="one">עודכנה לפני יום %1$d</item>
 	<item quantity="two">עודכנה לפני %1$d ימים</item>
-	<item quantity="many"></item>
-	<item quantity="other"></item>
+	<item quantity="many">עודכנה לפני %1$d ימים</item>
+	<item quantity="other">עודכנה לפני %1$d ימים</item>
 </plurals>
     <plurals name="details_last_update_weeks">
 	<item quantity="one">עודכן לפני שבוע %1$d</item>
 	<item quantity="two">עודכן לפני %1$d שבועות</item>
-	<item quantity="many"></item>
-	<item quantity="other"></item>
+	<item quantity="many">עודכן לפני %1$d שבועות</item>
+	<item quantity="other">עודכן לפני %1$d שבועות</item>
 </plurals>
     <plurals name="details_last_update_months">
 	<item quantity="one">עודכן לפני חודש %1$d</item>
 	<item quantity="two">עודכנה לפני %1$d חודשים</item>
-	<item quantity="many"/>
-	<item quantity="other"/>
+	<item quantity="many">עודכנה לפני %1$d חודשים</item>
+	<item quantity="other">עודכנה לפני %1$d חודשים</item>
 </plurals>
     <plurals name="details_last_update_years">
 	<item quantity="one">עודכן לפני שנה %1$d</item>
 	<item quantity="two">עודכן לפני %1$d שנים</item>
-	<item quantity="many"></item>
-	<item quantity="other"></item>
+	<item quantity="many">עודכן לפני %1$d שנים</item>
+	<item quantity="other">עודכן לפני %1$d שנים</item>
 </plurals>
 <string name="force_old_index">אילוץ שימוש בתבנית המפתח הישנה</string>
     <string name="force_old_index_summary">במקרה שמופיעות תקלות או בעיות תאימות, יש להשתמש במפתח היישומים בתבנית XML</string>
