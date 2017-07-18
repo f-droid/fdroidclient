@@ -198,7 +198,7 @@
     <string name="empty_installed_app_list">应用程序未安装。
 \n
 \n在您的设备上有这些应用程序，但无法从 F-Droid 获取它们。这可能是因为需要更新你的软件库，或者在库里真的没有这些应用程序。</string>
-    <string name="empty_can_update_app_list">好棒！你的应用都是最新的（或者你该更新软件库了）。</string>
+    <string name="empty_can_update_app_list">好棒！您的应用是最新的啦。</string>
 
     <string name="root_access_denied_body">你的设备未 root，或者你拒绝了root请求。</string>
     <string name="install_error_unknown">由于未知原因导致安装失败</string>

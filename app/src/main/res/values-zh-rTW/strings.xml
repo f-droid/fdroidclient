@@ -181,10 +181,7 @@
     <string name="category_Phone_SMS">通話與簡訊</string>
     <string name="category_Writing">書寫</string>
 
-    <string name="empty_can_update_app_list">所有應用程式都是最新的。
-
-        恭喜您！所有應用程式都是最新的 (或者是您的應用軟體倉庫已過期)。
-    </string>
+    <string name="empty_can_update_app_list">恭喜！您的應用程式都是最新的。</string>
     <string name="uninstall_error_unknown">不明的錯誤導致解除安裝失敗</string>
     <string name="add_key">加入金鑰</string>
     <string name="repo_exists_add_fingerprint">此儲存庫已經設定，此動作將會加入新的金鑰資訊。</string>
@@ -472,4 +469,8 @@
     <string name="force_old_index_summary">萬一有錯誤或相容性問題，使用 XML 應用程式索引</string>
     <string name="app_list_download_ready">已下載、安裝準備就緒</string>
 
+    <string name="app_installed_media">檔案已安裝到 %s</string>
+    <string name="app_permission_storage">F-Droid 需要存儲權限將其安裝到存儲。請允許它在下一個螢幕上繼續進行安裝。</string>
+
+    <string name="status_inserting_x_apps">正從 %3$s 儲存應用程式的詳細資訊 (%1$d/%2$d)</string>
     </resources>

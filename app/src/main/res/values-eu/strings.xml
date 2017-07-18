@@ -234,9 +234,7 @@
         daude F-Droid bitartez eskuragarri. Biltegiak eguneratu behar dituzulako izan daiteke, edo benetan biltegiek ez
         dituzte zure aplikazioak eskuragarri.
     </string>
-    <string name="empty_can_update_app_list">Aplikazio guztiak egunean.\n\nZorionak! Zure aplikazio guztiak egunean
-        daude (edo zure biltegiak zaharkituta daude).
-    </string>
+    <string name="empty_can_update_app_list">Zorionak! Zure aplikazioak egunean daude.</string>
 
     <string name="requesting_root_access_body">Root baimena eskatzen…</string>
     <string name="root_access_denied_title">Root baimena ukatu da</string>
@@ -524,4 +522,7 @@
 <string name="app_list_download_ready">Deskargatuta, instalatzeko prest</string>
 
     <string name="status_inserting_x_apps">Aplikazioaren xehetasunak gordetzen (%1$d/%2$d) %3$s(e)tik</string>
+    <string name="app_installed_media">Fitxategia hemen instalatu da: %s</string>
+    <string name="app_permission_storage">F-droidek biltegira sarbidea behar du hau bertan instalatzeko. Eman baimena hurrengo pantailan instalazioarekin jarraitzeko.</string>
+
     </resources>

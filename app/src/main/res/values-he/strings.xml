@@ -116,12 +116,12 @@
     <string name="proxy_port">פתחת מתווך</string>
     <string name="proxy_port_summary">מספר הפתחה של המתווך שלך (לדוגמה: 8118)</string>
 
-    <string name="status_download">מתבצעת הורדה
-\n%2$s / %3$s (%4$d%%) מתוך
+    <string name="status_download">מתבצעת הורדה 
+\n%2$s / %3$s (%4$d%%) מתוך 
 \n%1$s</string>
     <string name="update_notification_title">המאגרים מתעדכנים</string>
     <string name="status_processing_xml_percent">%2$s בהליכי עיבוד / %3$s (%4$d%%) מתוך %1$s</string>
-    <string name="status_connecting_to_repo">מתבצעת התחברות אל
+    <string name="status_connecting_to_repo">מתבצעת התחברות אל 
 \n%1$s</string>
     <string name="repos_unchanged">כל המאגרים מעודכנים</string>
     <string name="all_other_repos_fine">כל שאר המאגרים לא נתקלו בשגיאות.</string>
@@ -155,8 +155,8 @@
     <string name="category_Science_Education">מדע וחינוך</string>
     <string name="category_Security">אבטחה</string>
     <string name="category_System">מערכת</string>
-    <string name="empty_installed_app_list">אין יישומונים מותקנים.
-\n
+    <string name="empty_installed_app_list">אין יישומונים מותקנים. 
+\n 
 \nיש יישומונים מותקנים על מכשירך, אך אלו אינם זמינים מתוך F-Droid. מצב זה עלול לקרות כאשר עליך לעדכן את המאגרים שלך או שבמאגרים באמת אין את היישומונים שלך.</string>
     <string name="empty_can_update_app_list">ברכותינו! היישומונים שלך עדכניים.</string>
 
@@ -205,7 +205,7 @@
 
     <string name="app_incompatible">אין תאימות</string>
     <string name="back">אחורה</string>
-    <string name="repo_searching_address">מתבצע חיפוש אחר מאגר ה־F-Droid אצל
+    <string name="repo_searching_address">מתבצע חיפוש אחר מאגר ה־F-Droid אצל 
 \n%1$s</string>
     <string name="wifi">רשת אלחוטית</string>
     <string name="wifi_ap">נקודה חמה</string>
@@ -266,11 +266,11 @@
     <string name="repo_fingerprint">טביעת אצבע של מפתח החתימה (SHA-256)</string>
     <string name="unsigned_description">משמעות הדבר היא שאין אפשרות לאמת את רשימת היישומונים. יש לנקוט באמצעי זהירות עם יישומונים שהתקבלו ממפתחות בלתי חתומים.</string>
     <string name="repo_not_yet_updated">מאגר זה לא היה בשימוש עדיין. יש לאפשר אותו כדי לצפות ביישומונים שהמאגר הזה מציע.</string>
-    <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי יישומונים מתוכו לא יהיו זמינים עוד מתוך F-Droid.
-\n
+    <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי יישומונים מתוכו לא יהיו זמינים עוד מתוך F-Droid. 
+\n 
 \nהערה: כל היישומונים שהותקנו בעבר יישארו על המכשיר שלך.</string>
-    <string name="repo_disabled_notification">%1$s נוטרל.
-\n
+    <string name="repo_disabled_notification">%1$s נוטרל. 
+\n 
 \nעליך לאפשר שוב את המאגר זה כדי להתקין יישומונים מתוכו.</string>
     <string name="not_on_same_wifi">המכשיר שלך אינו מחובר לאותה הרשת האלחוטית כמו המאגר המקומי שהוספת זה עתה! נא לנסות להצטרף לרשת זו: %s</string>
     <string name="swap_join_same_wifi_desc">כדי לבצע החלפה באמצעות רשת אלחוטית, עליך לוודא כי מכשירך מחובר לאותה הרשת. אם אין לך גישה לאותה הרשת, אחד מכם יכול ליצור נקודת רשת אלחוטית חמה.</string>
@@ -290,8 +290,8 @@
     <string name="less">פחות</string>
 
     <string name="menu_settings">הגדרות</string>
-    <string name="status_download_unknown_size">מתבצעת הורדה
-\n%2$s מתוך
+    <string name="status_download_unknown_size">מתבצעת הורדה 
+\n%2$s מתוך 
 \n%1$s</string>
     <string name="permissions">הרשאות</string>
     <string name="repo_details">מאגר</string>
@@ -353,11 +353,11 @@
     <string name="updates__show_updateable_apps">הצגת יישומונים</string>
 
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">הורד עדכון עבור אפליקציה אחת.</item>
-        <item quantity="two">הורד עדכונים עבור %1$d אפליקציות.</item>
-        <item quantity="many">הורד עדכונים עבור %1$d אפליקציות.</item>
-        <item quantity="other">הורד עדכונים עבור %1$d אפליקציות.</item>
-    </plurals>
+	<item quantity="one">הורדת עדכון עבור יישומון אחד.</item>
+	<item quantity="two">הורדת עדכונים עבור %1$d יישומונים.</item>
+	<item quantity="many">הורדת עדכונים עבור %1$d יישומונים.</item>
+	<item quantity="other">הורדת עדכונים עבור %1$d יישומונים.</item>
+</plurals>
 
     <string name="versions">גירסאות</string>
     <string name="clear_search">פינוי החיפוש</string>
@@ -387,11 +387,10 @@
     <string name="hide_anti_feature_apps_on">סימון באפור יישומונים אשר דורשים תכונות שליליות</string>
     <string name="warning_no_internet">לא ניתן לעדכן, האם קיים חיבור לרשת?</string>
     <plurals name="button_view_all_apps_in_category">
-
 	<item quantity="one">הצגת אחד</item>
 	<item quantity="two">הצגת כל ה־%d</item>
-    <item quantity="many">הצגת כל ה־%d</item>
-    <item quantity="other">הצגת כל ה־%d</item>
+	<item quantity="many">הצגת כל ה־%d</item>
+	<item quantity="other">הצגת כל ה־%d</item>
 </plurals>
 
     <string name="nearby_splash__download_apps_from_people_nearby">אין חיבור לאינטרנט? ניתן להוריד יישומונים מאנשים בקרבתך!</string>
@@ -437,17 +436,17 @@
     <string name="notification_content_single_installing">ההתקנה של „%1$s“ מתבצעת כעת…</string>
     <string name="notification_content_single_installed">ההתקנה הצליחה</string>
     <plurals name="notification_summary_updates">
-        <item quantity="one">עדכון %1$d</item>
-        <item quantity="two">%1$d עדכונים</item>
-        <item quantity="many">%1$d עדכונים</item>
-        <item quantity="other">%1$d עדכונים</item>
-    </plurals>
+	<item quantity="one">עדכון %1$d</item>
+	<item quantity="two">%1$d עדכונים</item>
+	<item quantity="many">%1$d עדכונים</item>
+	<item quantity="other">%1$d עדכונים</item>
+</plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="one">אפליקציה %1$d הותקנה</item>
-        <item quantity="two">%1$d אפליקציות הותקנו</item>
-        <item quantity="many">%1$d אפליקציות הותקנו</item>
-        <item quantity="other">%1$d אפליקציות הותקנו</item>
-    </plurals>
+	<item quantity="one">יישומון %1$d הותקן</item>
+	<item quantity="two">%1$d יישומונים הותקנו</item>
+	<item quantity="many">%1$d יישומונים הותקנו</item>
+	<item quantity="other">%1$d יישומונים הותקנו</item>
+</plurals>
     <string name="notification_title_summary_update_available">עדכון זמין</string>
     <string name="notification_title_summary_downloading">מתבצעת הורדה כעת…</string>
     <string name="notification_title_summary_downloading_update">העדכון מתקבל כעת…</string>
@@ -458,37 +457,37 @@
     <string name="tts_category_name">קטגוריה %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">הצג אפליקציה %1$d בתוך הקטגוריה %2$s</item>
-        <item quantity="two">הצג את כל %1$d האפליקציות מתוך הקטגוריה %2$s</item>
-        <item quantity="many">הצג את כל %1$d האפליקציות מתוך הקטגוריה %2$s</item>
-        <item quantity="other">הצג את כל %1$d האפליקציות מתוך הקטגוריה %2$s</item>
-    </plurals>
+	<item quantity="one">הצגת יישומון %1$d מהקטגוריה %2$s</item>
+	<item quantity="two">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
+	<item quantity="many">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
+	<item quantity="other">הצגת כל %1$d היישומונים מהקטגוריה %2$s</item>
+</plurals>
 
     <string name="details_last_updated_today">עודכן היום</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">עודכנה לפני יום %1$d</item>
-        <item quantity="two">עודכנה לפני %1$d ימים</item>
-        <item quantity="many">עודכנה לפני %1$d ימים</item>
-        <item quantity="other">עודכנה לפני %1$d ימים</item>
-    </plurals>
+	<item quantity="one">עודכנה לפני יום %1$d</item>
+	<item quantity="two">עודכנה לפני %1$d ימים</item>
+	<item quantity="many">עודכנה לפני %1$d ימים</item>
+	<item quantity="other">עודכנה לפני %1$d ימים</item>
+</plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="one">עודכנה לפני שבוע %1$d</item>
-        <item quantity="two">עודכנה לפני שבוע %1$d</item>
-        <item quantity="many">עודכנה לפני %1$d שבועות</item>
-        <item quantity="other">עודכנה לפני %1$d שבועות</item>
-    </plurals>
+	<item quantity="one">עודכן לפני שבוע %1$d</item>
+	<item quantity="two">עודכן לפני %1$d שבועות</item>
+	<item quantity="many">עודכן לפני %1$d שבועות</item>
+	<item quantity="other">עודכן לפני %1$d שבועות</item>
+</plurals>
     <plurals name="details_last_update_months">
-        <item quantity="one">עודכנה לפני חודש %1$d</item>
-        <item quantity="two">עודכנה לפני חודש %1$d</item>
-        <item quantity="many">עודכנה לפני %1$d חודשים</item>
-        <item quantity="other">עודכנה לפני %1$d חודשים</item>
-    </plurals>
+	<item quantity="one">עודכן לפני חודש %1$d</item>
+	<item quantity="two">עודכנה לפני %1$d חודשים</item>
+	<item quantity="many">עודכנה לפני %1$d חודשים</item>
+	<item quantity="other">עודכנה לפני %1$d חודשים</item>
+</plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">עודכנה לפני שנה %1$d</item>
-        <item quantity="two">עודכנה לפני שנה %1$d</item>
-        <item quantity="many">עודכנה לפני %1$d שנים</item>
-        <item quantity="other">עודכנה לפני %1$d שנים</item>
-    </plurals>
+	<item quantity="one">עודכן לפני שנה %1$d</item>
+	<item quantity="two">עודכן לפני %1$d שנים</item>
+	<item quantity="many">עודכן לפני %1$d שנים</item>
+	<item quantity="other">עודכן לפני %1$d שנים</item>
+</plurals>
 <string name="force_old_index">אילוץ שימוש בתבנית המפתח הישנה</string>
     <string name="force_old_index_summary">במקרה שמופיעות תקלות או בעיות תאימות, יש להשתמש במפתח היישומים בתבנית XML</string>
     <string name="app_list_download_ready">התקבל, בהמתנה להתקנה</string>

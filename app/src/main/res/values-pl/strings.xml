@@ -186,7 +186,7 @@
     <string name="empty_installed_app_list">Brak zainstalowanych aplikacji.\n\nMasz na swoim urządzeniu aplikacje, ale
         nie zostały one zainstalowane przez F-Droida. Być może musisz zaktualizować swoje repozytoria.
     </string>
-    <string name="empty_can_update_app_list">Wspaniale! Wszystkie Twoje aplikacje są w najnowszych wersjach (lub repozytoria nie mają najnowszych wersji).</string>
+    <string name="empty_can_update_app_list">Wspaniale! Wszystkie Twoje aplikacje są w najnowszych wersjach.</string>
 
     <string name="install_error_unknown">Instalacja nie powiodła się przez nieznany nam problem</string>
     <string name="uninstall_error_unknown">Odinstalowywanie nie powiodło się przez nieznany nam problem</string>
@@ -504,4 +504,7 @@
     <string name="app_list_download_ready">Zainstalowany i gotowy do instalacji</string>
 
     <string name="status_inserting_x_apps">Zapisywanie szczegółów aplikacji (%1$d/%2$d) z %3$s</string>
+    <string name="app_installed_media">Plik zainstalowany do %s</string>
+    <string name="app_permission_storage">F-Droid potrzebuje uprawnienia do pamięci, aby tam to zainstalować. Udziel go na następnym ekranie, aby kontynuować instalację.</string>
+
     </resources>

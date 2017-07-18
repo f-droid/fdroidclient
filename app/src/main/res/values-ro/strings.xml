@@ -321,7 +321,7 @@
     </string>
     <string name="system_installer_on">Folositi F-Droid Extension pentru a instala, actualiza si a înlătura pachete
     </string>
-    <string name="empty_can_update_app_list">Felicitări! Toate aplicațiile tale sunt la zi (sau depozitele nu au fost actualizate).</string>
+    <string name="empty_can_update_app_list">Felicitări! Aplicațiile tale sunt la zi.</string>
     <string name="empty_installed_app_list">Nici o aplicatie instalata.
 
         Exista aplicatii pe acest dispozitiv, dar nu sunt disponibile din F-Droid. Asta din cauza ca trebuie sa
@@ -478,4 +478,8 @@
     <string name="download_404">Fișierul dorit nu a fost găsit.</string>
     <string name="app_list_download_ready">Descărcat, gata de instalare</string>
 
+    <string name="app_installed_media">Fișierul instalat în %s</string>
+    <string name="app_permission_storage">F-Droid necesită permisiunea de stocare pentru a instala în această locație. Va rugăm sa i-o acordați în ecranul următor pentru a putea continua cu instalarea.</string>
+
+    <string name="status_inserting_x_apps">Salvare detalii aplicații (%1$d/%2$d) de la %3$s</string>
     </resources>

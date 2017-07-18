@@ -186,7 +186,7 @@
         Wi-Fiを使用して交換するには､同じﾈｯﾄﾜｰｸ上に居るかを確認してください｡同じﾈｯﾄﾜｰｸにｱｸｾｽしていない場合は､Wi-Fiﾎｯﾄｽﾎﾟｯﾄを作成できます｡
     </string>
     <string name="swap_join_this_hotspot">友達がﾎｯﾄｽﾎﾟｯﾄに参加するのを助ける</string>
-    <string name="empty_can_update_app_list">おめでとう! 全てのｱﾌﾟﾘは最新の状態です (または、ﾘﾎﾟｼﾞﾄﾘが更新されていません)。</string>
+    <string name="empty_can_update_app_list">おめでとう! 全てのｱﾌﾟﾘは最新です。</string>
 
     <string name="install_error_unknown">不明なｴﾗｰのためｲﾝｽﾄｰﾙに失敗しました</string>
     <string name="uninstall_error_unknown">不明なｴﾗｰのためｱﾝｲﾝｽﾄｰﾙに失敗しました</string>
@@ -461,4 +461,8 @@
     <string name="force_old_index_summary">ﾊﾞｸﾞや互換性の問題がある場合に、XML ｱﾌﾟﾘ索引を使用します</string>
     <string name="app_list_download_ready">ﾀﾞｳﾝﾛｰﾄﾞ済、ｲﾝｽﾄｰﾙできます</string>
 
+    <string name="app_installed_media">%sにﾌｧｲﾙをｲﾝｽﾄｰﾙしました</string>
+    <string name="app_permission_storage">F-Droidは、ｽﾄﾚｰｼﾞにｲﾝｽﾄｰﾙするためにｽﾄﾚｰｼﾞのｱｸｾｽ許可が必要です。ｲﾝｽﾄｰﾙを続行するには次の画面で許可してください。</string>
+
+    <string name="status_inserting_x_apps">%3$s からｱﾌﾟﾘ詳細を保存中 (%1$d/%2$d)</string>
     </resources>

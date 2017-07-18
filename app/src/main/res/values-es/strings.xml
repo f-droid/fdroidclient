@@ -205,7 +205,7 @@
         no están disponibles desde F-Droid. Esto podría ser porque necesitas actualizar los repositorios, o porque los
         repositorios no tienen esas aplicaciones.
     </string>
-    <string name="empty_can_update_app_list">¡Felicitaciones! Todas tus aplicaciones están actualizadas (o los repositorios están desactualizados).</string>
+    <string name="empty_can_update_app_list">¡Felicitaciones! Tus aplicaciones están actualizadas.</string>
 
     <string name="install_error_unknown">Fallo al instalar, debido a un error desconocido</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>
@@ -413,20 +413,20 @@
     <string name="app_recommended_version_installed">Versión %1$s (Recomendada)</string>
     <string name="app__newly_added">Novedad</string>
 
-    <string name="installed_apps__activity_title">Aplis instaladas</string>
+    <string name="installed_apps__activity_title">Aplicaciones instaladas</string>
     <string name="installed_app__updates_ignored">Actualizaciones ignoradas</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Actualizaciones ignoradas para la versión %1$s
     </string>
 
     <string name="preference_category__my_apps">Mis aplicaciones</string>
-    <string name="preference_manage_installed_apps">Gestionar las aplis instaladas</string>
+    <string name="preference_manage_installed_apps">Gestionar las aplicaciones instaladas</string>
 
 
     <string name="tts_category_name">Categoría %1$s</string>
 
     <plurals name="tts_view_all_in_category">
-	<item quantity="one">Ver la única apli de la categoría %2$s</item>
-	<item quantity="other">Ver todas las aplis de la categoría %2$s</item>
+	<item quantity="one">Ver la única aplicación en la %2$s categoría</item>
+	<item quantity="other">Ver todas %1$d aplicaciones en la %2$s categoría</item>
 </plurals>
     <string name="app__install_downloaded_update">Actualizar</string>
 
@@ -481,7 +481,7 @@
 </plurals>
     <plurals name="notification_summary_installed">
 	<item quantity="one">%1$d apli instalada</item>
-	<item quantity="other">%1$d aplis instaladas</item>
+	<item quantity="other">%1$d aplicaciones instaladas</item>
 </plurals>
     <plurals name="details_last_update_weeks">
 	<item quantity="one">Actualizado hace una semana</item>
@@ -502,4 +502,7 @@
     <string name="app_list_download_ready">Descargado, listo para instalar</string>
 
     <string name="status_inserting_x_apps">Guardando detalles de la aplicación (%1$d/%2$d) desde %3$s</string>
+    <string name="app_installed_media">Archivo instalado en %s</string>
+    <string name="app_permission_storage">F-Droid necesita el permiso instalar esto en su almacenamiento. Por favor permita que en la siguiente pantalla continúe con la instalación.</string>
+
     </resources>

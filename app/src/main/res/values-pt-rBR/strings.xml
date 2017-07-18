@@ -202,7 +202,7 @@
         eles não estão disponíveis pelo F-Droid. Isso pode ser porque você precisa atualizar seus repositórios, ou os
         repositórios realmente não têm os seus aplicativos disponíveis.
     </string>
-    <string name="empty_can_update_app_list">Parabéns! Todos os seus aplicativos estão atualizados (ou os seus repositórios estão desatualizados).</string>
+    <string name="empty_can_update_app_list">Parabéns! Todos os seus aplicativos estão atualizados (ou seus repositórios estão desatualizados).</string>
 
     <string name="install_error_unknown">Falha ao instalar devido a um erro desconhecido</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
@@ -510,4 +510,10 @@
     <string name="download_404">O arquivo solicitado não foi encontrado.</string>
     <string name="force_old_index">Forçar um formato de índice antigo</string>
     <string name="force_old_index_summary">Se existirem bugs ou problemas de compatibilidade, use o índice XML do aplicativo</string>
+    <string name="app_installed_media">Arquivos instalados em %s</string>
+    <string name="app_permission_storage">F-Droid precisa de permissão de acesso para instalar na unidade. Por favor dê permissão na próxima janela para continuar com a instalação.</string>
+
+    <string name="app_list_download_ready">Baixado, pronto para instalar</string>
+
+    <string name="status_inserting_x_apps">Salvando detalhes do aplicativo (%1$d/%2$d) de %3$s</string>
     </resources>
