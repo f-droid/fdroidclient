@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-
 import org.fdroid.fdroid.Assert;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
@@ -16,8 +15,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
