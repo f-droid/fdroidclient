@@ -1,3 +1,9 @@
+### 1.0-alpha1 (2017-07-18)
+
+* fix bug removing apps from repos (#568)
+
+* much faster index updates
+
 ### 1.0-alpha0 (2017-07-08)
 
 * Support installing media, OTA, ZIP, etc files
