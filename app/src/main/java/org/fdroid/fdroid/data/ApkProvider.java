@@ -114,14 +114,10 @@ public class ApkProvider extends FDroidProvider {
         }
 
         public static List<Apk> findByPackageName(Context context, String packageName) {
-            return findByPackageName(context, packageName, Cols.ALL);
-        }
-
-        public static List<Apk> findByPackageName(Context context, String packageName, String[] projection) {
             ContentResolver resolver = context.getContentResolver();
             final Uri uri = getAppUri(packageName);
             final String sort = "apk." + Cols.VERSION_CODE + " DESC";
-            Cursor cursor = resolver.query(uri, projection, null, null, sort);
+            Cursor cursor = resolver.query(uri, Cols.ALL, null, null, sort);
             return cursorToList(cursor);
         }
 
@@ -153,13 +149,8 @@ public class ApkProvider extends FDroidProvider {
         }
 
         public static Apk get(Context context, Uri uri) {
-            return get(context, uri, Cols.ALL);
-        }
-
-        @Nullable
-        public static Apk get(Context context, Uri uri, String[] fields) {
             ContentResolver resolver = context.getContentResolver();
-            Cursor cursor = resolver.query(uri, fields, null, null, null);
+            Cursor cursor = resolver.query(uri, Cols.ALL, null, null, null);
             return cursorToApk(cursor);
         }
 
