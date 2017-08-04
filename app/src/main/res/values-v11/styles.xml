@@ -10,11 +10,13 @@
     <style name="AlertDialogBaseThemeDark" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
         <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        <item name="android:actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
     </style>
 
     <style name="AlertDialogBaseThemeLight" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
         <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        <item name="android:actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
     </style>
 
     <style name="AppDetailsLink" parent="AppDetailsLinkBase">

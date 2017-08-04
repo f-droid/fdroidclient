@@ -39,7 +39,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -112,7 +111,6 @@ public class AppDetails2 extends AppCompatActivity implements ShareChooserDialog
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(""); // Nice and clean toolbar
         toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.ic_more));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         supportPostponeEnterTransition();

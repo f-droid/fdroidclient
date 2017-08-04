@@ -40,8 +40,9 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:paddingRight="8dp"
-                    android:paddingEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:scaleType="fitCenter"
                     android:transitionName="@string/transition_app_item_icon"
                     android:src="@drawable/ic_repo_app_default" />
 
