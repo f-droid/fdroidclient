@@ -94,8 +94,8 @@ public class AppDetailsRecyclerViewAdapter
     private App app;
     private final AppDetailsRecyclerViewAdapterCallbacks callbacks;
     private RecyclerView recyclerView;
-    private ArrayList<Object> items;
-    private ArrayList<Apk> versions;
+    private List<Object> items;
+    private List<Apk> versions;
     private boolean showVersions;
 
     private HeaderViewHolder headerView;
@@ -244,21 +244,16 @@ public class AppDetailsRecyclerViewAdapter
                 headerView = header;
                 header.bindModel();
                 break;
+
+            // These don't have any specific requirements, they all get their state from the outer class.
             case VIEWTYPE_SCREENSHOTS:
-                ((ScreenShotsViewHolder) holder).bindModel();
-                break;
             case VIEWTYPE_DONATE:
-                ((DonateViewHolder) holder).bindModel();
-                break;
             case VIEWTYPE_LINKS:
-                ((LinksViewHolder) holder).bindModel();
-                break;
             case VIEWTYPE_PERMISSIONS:
-                ((PermissionsViewHolder) holder).bindModel();
-                break;
             case VIEWTYPE_VERSIONS:
-                ((VersionsViewHolder) holder).bindModel();
+                ((AppDetailsViewHolder) holder).bindModel();
                 break;
+
             case VIEWTYPE_VERSION:
                 final Apk apk = (Apk) items.get(position);
                 ((VersionViewHolder) holder).bindModel(apk);
@@ -562,7 +557,15 @@ public class AppDetailsRecyclerViewAdapter
         super.onDetachedFromRecyclerView(recyclerView);
     }
 
-    private class ScreenShotsViewHolder extends RecyclerView.ViewHolder {
+    private abstract class AppDetailsViewHolder extends RecyclerView.ViewHolder {
+        AppDetailsViewHolder(View itemView) {
+            super(itemView);
+        }
+
+        public abstract void bindModel();
+    }
+
+    private class ScreenShotsViewHolder extends AppDetailsViewHolder {
         final RecyclerView recyclerView;
         LinearLayoutManagerSnapHelper snapHelper;
 
@@ -571,6 +574,7 @@ public class AppDetailsRecyclerViewAdapter
             recyclerView = (RecyclerView) view.findViewById(R.id.screenshots);
         }
 
+        @Override
         public void bindModel() {
             LinearLayoutManager lm = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             recyclerView.setLayoutManager(lm);
@@ -586,7 +590,7 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
-    private class DonateViewHolder extends RecyclerView.ViewHolder {
+    private class DonateViewHolder extends AppDetailsViewHolder {
         final TextView donateHeading;
         final GridLayout donationOptionsLayout;
 
@@ -596,6 +600,7 @@ public class AppDetailsRecyclerViewAdapter
             donationOptionsLayout = (GridLayout) view.findViewById(R.id.donation_options);
         }
 
+        @Override
         public void bindModel() {
             if (TextUtils.isEmpty(app.authorName)) {
                 donateHeading.setText(context.getString(R.string.app_details_donate_prompt_unknown_author, app.name));
@@ -640,7 +645,7 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
-    private abstract class ExpandableLinearLayoutViewHolder extends RecyclerView.ViewHolder {
+    private abstract class ExpandableLinearLayoutViewHolder extends AppDetailsViewHolder {
         final TextView headerView;
         final LinearLayout contentView;
 
@@ -667,6 +672,7 @@ public class AppDetailsRecyclerViewAdapter
             super(view);
         }
 
+        @Override
         public void bindModel() {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -690,6 +696,7 @@ public class AppDetailsRecyclerViewAdapter
             super(view);
         }
 
+        @Override
         public void bindModel() {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -721,6 +728,7 @@ public class AppDetailsRecyclerViewAdapter
             super(view);
         }
 
+        @Override
         public void bindModel() {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
