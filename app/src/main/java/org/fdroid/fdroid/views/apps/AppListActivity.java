@@ -34,6 +34,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     private AppListAdapter appAdapter;
     private String category;
     private String searchTerms;
+    private TextView emptyState;
     private EditText searchInput;
 
     @Override
@@ -60,6 +61,8 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
                 return false;
             }
         });
+
+        emptyState = (TextView) findViewById(R.id.empty_state);
 
         View backButton = findViewById(R.id.back);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +135,13 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         appAdapter.setAppCursor(cursor);
+        if (cursor.getCount() > 0) {
+            emptyState.setVisibility(View.GONE);
+            appView.setVisibility(View.VISIBLE);
+        } else {
+            emptyState.setVisibility(View.VISIBLE);
+            appView.setVisibility(View.GONE);
+        }
     }
 
     @Override

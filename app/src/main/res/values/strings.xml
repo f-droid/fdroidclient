@@ -323,6 +323,8 @@
     </string>
     <string name="empty_can_update_app_list">Congratulations! Your apps are up to date.</string>
 
+    <string name="empty_search_available_app_list">No matching applications available.</string>
+
     <string name="requesting_root_access_body">Requesting root access…</string>
     <string name="root_access_denied_title">Root access denied</string>
     <string name="root_access_denied_body">Either your Android device is not rooted or you have denied root access for
