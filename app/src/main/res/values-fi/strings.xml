@@ -299,7 +299,7 @@ asentamisesta
     </string>
     <string name="up_to_maxsdk">%s asti</string>
     <string name="minsdk_up_to_maxsdk">%1$s alkaen %2$s asti</string>
-
+    <string name="empty_search_available_app_list">Haulla ei löytynyt tuloksia.</string>
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="system_install_denied_signature">Laajennuksen allekirjoitus on väärä! Ole hyvä ja luo vikailmoitus!

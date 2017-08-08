@@ -336,7 +336,7 @@
     <string name="about_license">Licença</string>
 
     <string name="status_inserting_apps">Salvando detalhes dos aplicativos</string>
-
+    <string name="empty_search_available_app_list">Nenhum aplicativo correspondente disponível.</string>
     <string name="antinonfreeassetslist">Este aplicativo contém conteúdo não-livre</string>
 
     <string name="crash_dialog_title">O F-Droid travou</string>

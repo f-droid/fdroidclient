@@ -226,7 +226,7 @@
     <string name="category_Theming">Temasättning</string>
     <string name="category_Time">Tid</string>
     <string name="category_Writing">Skrivande</string>
-
+    <string name="empty_search_available_app_list">Inga matchande program är tillgängliga.</string>
     <string name="empty_installed_app_list">Inga appar har installerats.\n\nDet finns appar på din enhet, men de är inte
         tillgängliga från F-Droid. Detta kan bero på att du behöver uppdatera dina förråd, eller så har förråden
         verkligen inte dina appar tillgängliga.

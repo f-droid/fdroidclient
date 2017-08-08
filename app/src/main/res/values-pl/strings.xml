@@ -326,7 +326,7 @@
     <string name="crash_dialog_title">F-Droid zawiesił się</string>
     <string name="crash_dialog_text">Nieoczekiwany błąd spowodował zamknięcie aplikacji. Czy chciałbyś przesłać e-mailem szczegóły, aby pomóc naprawić błąd?</string>
     <string name="crash_dialog_comment_prompt">Możesz dodać dodatkowe informacje i komentarze tutaj:</string>
-
+    <string name="empty_search_available_app_list">Brak pasujących dostępnych aplikacji.</string>
     <string name="useTor">Użyj Tora</string>
     <string name="useTorSummary">Wymuś pobieranie przez Tora aby zwiększyć prywatność</string>
     <string name="swap_stopping_wifi">Zatrzymywanie Wi-Fi…</string>

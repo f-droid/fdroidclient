@@ -324,6 +324,7 @@
     <string name="perms_description_app">Надано %1$s.</string>
     <string name="about_license">Ліцензія</string>
 
+    <string name="empty_search_available_app_list">Не має збігів серед доступних програм.</string>
     <string name="status_inserting_apps">Збереження подробиць по застосунках</string>
 
     <string name="crash_dialog_title">F-Droid зазнав збою</string>

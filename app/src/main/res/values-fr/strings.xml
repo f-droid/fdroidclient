@@ -327,7 +327,7 @@
     <string name="repo_error_empty_username">Nom d\'utilisateur vide, aucune modification effectuée</string>
 
     <string name="about_license">Licence</string>
-
+    <string name="empty_search_available_app_list">Aucune application correspondante disponible.</string>
     <string name="status_inserting_apps">Enregistrement des détails d\'appli</string>
 
     <string name="crash_dialog_title">F-Droid s\'est arrêté de manière inattendue</string>

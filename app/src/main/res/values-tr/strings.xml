@@ -227,7 +227,7 @@
     <string name="category_Theming">Temalandırma</string>
     <string name="category_Time">Zaman</string>
     <string name="category_Writing">Yazma</string>
-
+    <string name="empty_search_available_app_list">Eşleşen hiçbir uygulama mevcut değildir.</string>
     <string name="empty_installed_app_list">Kurulu uygulama yok.
 
         Aygıtınızda uygulamalar var ancak bunlar F-Droid\'de bulumamaktadır. Bu, depolarınızı güncellemeniz gerektiği

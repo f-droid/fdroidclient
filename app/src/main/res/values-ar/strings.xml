@@ -241,6 +241,7 @@
     <string name="empty_can_update_app_list">كل التطبيقات محدثة.\n\nتهانينا! كل من التطبيقات الخاصة بك محدثة (أو
         المستودعات الخاصة بك قديمة).
     </string>
+    <string name="empty_search_available_app_list">لا توجد تطبيقات مطابقة متوفرة.</string>
 
     <string name="requesting_root_access_body">طلب وصول إلى النواة…</string>
     <string name="root_access_denied_title">لا يمكن الوصول إلى النواة</string>

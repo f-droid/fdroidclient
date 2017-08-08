@@ -329,6 +329,7 @@
 
     <string name="about_license">Llicència</string>
 
+    <string name="empty_search_available_app_list">Cap coincidència amb les aplicacions disponibles.</string>
     <string name="status_inserting_apps">Desant els detalls de l\'«app»</string>
 
     <string name="crash_dialog_title">L\'F-Droid ha fallat</string>

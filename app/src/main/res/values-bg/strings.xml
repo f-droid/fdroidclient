@@ -349,6 +349,7 @@
         до разработчиците за помощ?
     </string>
     <string name="crash_dialog_comment_prompt">Тук можете да добавяте допълнителна информация и коментари:</string>
+    <string name="empty_search_available_app_list">Няма съвпадения сред достъпните приложения.</string>
 
     <string name="system_install_denied_signature">Подписът на плъгина е грешен! Моля създайте бъг репорт!</string>
     <string name="system_install_denied_permissions">Разширените пълномощия не бяха предоставени на плъгина! Моля
