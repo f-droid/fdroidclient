@@ -116,9 +116,10 @@ public class AppDetailsRecyclerViewAdapter
         versions = new ArrayList<>();
         compatibleVersionsDifferentSig = new ArrayList<>();
         final List<Apk> apks = ApkProvider.Helper.findByPackageName(context, this.app.packageName);
+        boolean showIncompatibleVersions = Preferences.get().showIncompatibleVersions();
         for (final Apk apk : apks) {
-            boolean allowByCompatability = apk.compatible || Preferences.get().showIncompatibleVersions();
-            boolean allowBySig = this.app.installedSig == null || TextUtils.equals(this.app.installedSig, apk.sig);
+            boolean allowByCompatability = apk.compatible || showIncompatibleVersions;
+            boolean allowBySig = this.app.installedSig == null || showIncompatibleVersions || TextUtils.equals(this.app.installedSig, apk.sig);
             if (allowByCompatability) {
                 compatibleVersionsDifferentSig.add(apk);
                 if (allowBySig) {
@@ -951,11 +952,17 @@ public class AppDetailsRecyclerViewAdapter
                 nativecode.setVisibility(View.GONE);
             }
 
+            boolean mismatchedSig = app.installedSig != null && !TextUtils.equals(app.installedSig, apk.sig);
+
             if (apk.incompatibleReasons != null) {
                 incompatibleReasons.setText(
                         context.getResources().getString(
                                 R.string.requires_features,
                                 TextUtils.join(", ", apk.incompatibleReasons)));
+                incompatibleReasons.setVisibility(View.VISIBLE);
+            } else if (mismatchedSig) {
+                incompatibleReasons.setText(
+                        context.getString(R.string.app_details__incompatible_mismatched_signature));
                 incompatibleReasons.setVisibility(View.VISIBLE);
             } else {
                 incompatibleReasons.setVisibility(View.GONE);
@@ -974,7 +981,7 @@ public class AppDetailsRecyclerViewAdapter
                     nativecode,
             };
             for (final View v : views) {
-                v.setEnabled(apk.compatible);
+                v.setEnabled(apk.compatible && !mismatchedSig);
             }
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

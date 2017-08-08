@@ -54,6 +54,7 @@
     <string name="app_details_donate_prompt_unknown_author">Buy the developers of %1$s a coffee!</string>
     <string name="app_details_donate_prompt">%1$s is created by %2$s. Buy them a coffee!</string>
 
+    <string name="app_details__incompatible_mismatched_signature">Different signature to installed version</string>
     <string name="app_details__no_versions__show_incompat_versions">To show incompatible versions here anyway, enable the \"%1$s\" setting.</string>
     <string name="app_details__no_versions__no_compatible_signatures">No versions with compatible signature</string>
     <string name="app_details__no_versions__none_compatible_with_device">No versions compatible with device</string>
