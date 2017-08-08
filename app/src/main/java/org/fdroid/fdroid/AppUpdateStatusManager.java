@@ -16,6 +16,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
 
 import java.util.ArrayList;
@@ -76,6 +77,7 @@ public final class AppUpdateStatusManager {
     public static final String REASON_UPDATES_AVAILABLE = "updatesavailable";
     public static final String REASON_CLEAR_ALL_UPDATES = "clearallupdates";
     public static final String REASON_CLEAR_ALL_INSTALLED = "clearallinstalled";
+    public static final String REASON_REPO_DISABLED = "repodisabled";
 
     /**
      * If this is present and true, then the broadcast has been sent in response to the {@link AppUpdateStatus#status}
@@ -201,6 +203,22 @@ public final class AppUpdateStatusManager {
         this.context = context;
         localBroadcastManager = LocalBroadcastManager.getInstance(context.getApplicationContext());
         apksPendingInstall = context.getSharedPreferences("apks-pending-install", Context.MODE_PRIVATE);
+    }
+
+    public void removeAllByRepo(Repo repo) {
+        boolean hasRemovedSome = false;
+        Iterator<AppUpdateStatus> it = getAll().iterator();
+        while (it.hasNext()) {
+            AppUpdateStatus status = it.next();
+            if (status.apk.repoId == repo.getId()) {
+                it.remove();
+                hasRemovedSome = true;
+            }
+        }
+
+        if (hasRemovedSome) {
+            notifyChange(REASON_REPO_DISABLED);
+        }
     }
 
     @Nullable

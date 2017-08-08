@@ -362,9 +362,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
             AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(context);
 
+            String reason = intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE);
             if (AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED.equals(intent.getAction()) &&
-                    AppUpdateStatusManager.REASON_READY_TO_INSTALL.equals(
-                            intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE))) {
+                    (AppUpdateStatusManager.REASON_READY_TO_INSTALL.equals(reason) ||
+                    AppUpdateStatusManager.REASON_REPO_DISABLED.equals(reason))) {
                 updateBadge = true;
             }
 
