@@ -12,6 +12,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.TextViewCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -96,6 +97,7 @@ public class AppDetailsRecyclerViewAdapter
     private RecyclerView recyclerView;
     private List<Object> items;
     private List<Apk> versions;
+    private List<Apk> compatibleVersionsDifferentSig;
     private boolean showVersions;
 
     private HeaderViewHolder headerView;
@@ -112,12 +114,16 @@ public class AppDetailsRecyclerViewAdapter
 
         // Get versions
         versions = new ArrayList<>();
+        compatibleVersionsDifferentSig = new ArrayList<>();
         final List<Apk> apks = ApkProvider.Helper.findByPackageName(context, this.app.packageName);
         for (final Apk apk : apks) {
             boolean allowByCompatability = apk.compatible || Preferences.get().showIncompatibleVersions();
             boolean allowBySig = this.app.installedSig == null || TextUtils.equals(this.app.installedSig, apk.sig);
-            if (allowByCompatability && allowBySig) {
-                versions.add(apk);
+            if (allowByCompatability) {
+                compatibleVersionsDifferentSig.add(apk);
+                if (allowBySig) {
+                    versions.add(apk);
+                }
             }
         }
 
@@ -226,8 +232,12 @@ public class AppDetailsRecyclerViewAdapter
                 View permissions = inflater.inflate(R.layout.app_details2_links, parent, false);
                 return new PermissionsViewHolder(permissions);
             case VIEWTYPE_VERSIONS:
-                View versions = inflater.inflate(R.layout.app_details2_links, parent, false);
-                return new VersionsViewHolder(versions);
+                View versionsView = inflater.inflate(R.layout.app_details2_links, parent, false);
+                if (versions.size() == 0) {
+                    return new NoVersionsViewHolder(versionsView);
+                } else {
+                    return new VersionsViewHolder(versionsView);
+                }
             case VIEWTYPE_VERSION:
                 View version = inflater.inflate(R.layout.apklistitem, parent, false);
                 return new VersionViewHolder(version);
@@ -687,6 +697,64 @@ public class AppDetailsRecyclerViewAdapter
 
         protected @DrawableRes int getIcon() {
             return R.drawable.ic_access_time_24dp_grey600;
+        }
+    }
+
+    private class NoVersionsViewHolder extends AppDetailsViewHolder {
+        final TextView headerView;
+
+        NoVersionsViewHolder(View view) {
+            super(view);
+            headerView = (TextView) view.findViewById(R.id.information);
+            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView, R.drawable.ic_access_time_24dp_grey600, 0, 0, 0);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    explainIncompatibleVersions();
+                }
+            });
+        }
+
+        @Override
+        public void bindModel() {
+            if (hasCompatibleApksDifferentSigs()) {
+                headerView.setText("No versions with compatible signature");
+            } else {
+                headerView.setText("No versions compatible with device");
+            }
+        }
+
+        /**
+         * Show a dialog to the user explaining the reaons there are no compatible versions.
+         * This will either be due to device features (e.g. NFC, API levels, etc) or being signed
+         * by a different certificate (as is often the case with apps from Google Play signed by
+         * upstream).
+         */
+        private void explainIncompatibleVersions() {
+            String preferenceName = context.getString(R.string.show_incompat_versions);
+            String showIncompatible = context.getString(
+                    R.string.app_details__no_versions__show_incompat_versions, preferenceName);
+
+            String message;
+            String title;
+            if (hasCompatibleApksDifferentSigs()) {
+                title = context.getString(R.string.app_details__no_versions__no_compatible_signatures);
+                message = context.getString(R.string.app_details__no_versions__explain_incompatible_signatures) +
+                        "\n\n" + showIncompatible;
+            } else {
+                title = context.getString(R.string.app_details__no_versions__none_compatible_with_device);
+                message = showIncompatible;
+            }
+
+            new AlertDialog.Builder(context)
+                    .setTitle(title)
+                    .setMessage(message)
+                    .show();
+        }
+
+        private boolean hasCompatibleApksDifferentSigs() {
+            return compatibleVersionsDifferentSig != null && compatibleVersionsDifferentSig.size() > 0;
         }
     }
 
