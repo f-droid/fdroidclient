@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -48,6 +49,7 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
+import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -751,6 +753,15 @@ public class AppDetailsRecyclerViewAdapter
             new AlertDialog.Builder(context)
                     .setTitle(title)
                     .setMessage(message)
+                    .setPositiveButton(R.string.menu_settings, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(context, MainActivity.class);
+                            intent.putExtra(MainActivity.EXTRA_VIEW_SETTINGS, true);
+                            context.startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, null)
                     .show();
         }
 
