@@ -217,7 +217,6 @@ public class AppProvider extends FDroidProvider {
         protected String getRequiredTables() {
             final String pkg  = PackageTable.NAME;
             final String app  = getTableName();
-            final String apk  = getApkTableName();
             final String repo = RepoTable.NAME;
             final String cat  = CategoryTable.NAME;
             final String catJoin = getCatJoinTableName();
@@ -226,8 +225,7 @@ public class AppProvider extends FDroidProvider {
                 " JOIN " + app + " ON (" + app + "." + Cols.PACKAGE_ID + " = " + pkg + "." + PackageTable.Cols.ROW_ID + ") " +
                 " JOIN " + repo + " ON (" + app + "." + Cols.REPO_ID + " = " + repo + "." + RepoTable.Cols._ID + ") " +
                 " LEFT JOIN " + catJoin + " ON (" + app + "." + Cols.ROW_ID + " = " + catJoin + "." + CatJoinTable.Cols.APP_METADATA_ID + ") " +
-                " LEFT JOIN " + cat + " ON (" + cat + "." + CategoryTable.Cols.ROW_ID + " = " + catJoin + "." + CatJoinTable.Cols.CATEGORY_ID + ") " +
-                " LEFT JOIN " + apk + " ON (" + apk + "." + ApkTable.Cols.APP_ID + " = " + app + "." + Cols.ROW_ID + ") ";
+                " LEFT JOIN " + cat + " ON (" + cat + "." + CategoryTable.Cols.ROW_ID + " = " + catJoin + "." + CatJoinTable.Cols.CATEGORY_ID + ") ";
         }
 
         @Override
