@@ -11,8 +11,8 @@
          applied. The collapsable lists have a little extra on the sides. -->
     <dimen name="details_activity__collapsable_lists__padding__horizontal">4dp</dimen>
 
-    <dimen name="details_screenshot_height">200dp</dimen>
-    <dimen name="details_screenshot_width">200dp</dimen>
+    <dimen name="details_screenshot_height">240dp</dimen>
+    <dimen name="details_screenshot_width">240dp</dimen>
     <dimen name="details_screenshot_margin">4dp</dimen>
 
     <dimen name="fab_margin">16dp</dimen>
