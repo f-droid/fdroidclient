@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="3dp"
-    app:cardBackgroundColor="#ffffff"
+    android:layout_margin="@dimen/details_screenshot_margin"
     android:padding="10dp"
-    >
+    app:cardBackgroundColor="#ffffff"
+    app:cardElevation="3dp">
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:minWidth="@dimen/details_screenshot_width"
-        android:scaleType="fitCenter"
-        />
+        android:scaleType="fitCenter" />
+
 </android.support.v7.widget.CardView>
