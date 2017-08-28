@@ -262,8 +262,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:drawableStart="@drawable/ic_warning_black_24dp"
-            android:drawableLeft="@drawable/ic_warning_black_24dp"
+            android:drawableStart="?attr/antiFeaturesWarning"
+            android:drawableLeft="?attr/antiFeaturesWarning"
             android:gravity="center_vertical"
             android:drawablePadding="10dp"
             android:text="@string/antifeatureswarning" />
