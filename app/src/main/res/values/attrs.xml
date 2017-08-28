@@ -11,5 +11,6 @@
         <attr name="detailPanel" format="reference" />
         <attr name="appListItem" format="color" />
         <attr name="lightGrayTextColor" format="color" />
+        <attr name="antiFeaturesWarning" format="reference" />
     </declare-styleable>
 </resources>
