@@ -582,7 +582,6 @@ public class AppDetailsRecyclerViewAdapter
                 snapHelper.attachToRecyclerView(null);
             }
             snapHelper = new LinearLayoutManagerSnapHelper(lm);
-            snapHelper.setLinearSnapHelperListener(adapter);
             snapHelper.attachToRecyclerView(recyclerView);
         }
     }
