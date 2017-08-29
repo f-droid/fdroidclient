@@ -328,6 +328,7 @@
     <string name="about_license">Llicencia</string>
 
     <string name="status_inserting_apps">Guardando detalles de la app</string>
+    <string name="empty_search_available_app_list">Nun aplicaciones disponibles que concasen.</string>
 
     <string name="crash_dialog_title">F-Droid cascó</string>
     <string name="crash_dialog_text">Asocedió un fallu inesperáu forciando\'l paru de la app. ¿Prestaríate unviar un corréu colos detalles p\'ayudar a iguar esti problema?</string>

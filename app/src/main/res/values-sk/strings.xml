@@ -300,6 +300,7 @@
     <string name="permissions">Povolenia aplikácie</string>
     <string name="repo_details">Repozitár</string>
     <string name="repo_url">Adresa</string>
+    <string name="empty_search_available_app_list">Výrazu nezodpovedá žiadna dostupná aplikácia.</string>
 
     <string name="system_install_post_fail_message">Inštalácia F-Droidu ako systémovej aplikácie zlyhala. Táto
         inštalačná metóda nie je podporovaná všetkými distribúciami Androidu. Pre viac informácií navśívte bug tracker

@@ -355,7 +355,7 @@
     <string name="about_license">Licença</string>
 
     <string name="status_inserting_apps">A guardar detalhes das aplicações</string>
-
+    <string name="empty_search_available_app_list">Nenhuma aplicação disponível coincidente.</string>
     <string name="antinonfreeassetslist">Esta aplicação contém recursos não livres</string>
 
     <string name="crash_dialog_title">O F-Droid terminou abruptamente</string>

@@ -310,6 +310,7 @@ F-Droid 現在可以自行安裝、更新及卸載應用程式。
 
     <string name="enable_proxy_summary">為所有網絡請求設置 HTTP 代理</string>
     <string name="status_inserting_apps">正在儲存應用程式的詳細資料</string>
+    <string name="empty_search_available_app_list">沒有符合搜尋字詞的應用程式。</string>
     <string name="empty_installed_app_list">"沒有安裝任何應用程式。
 
 F-Droid 並不提供您裝置上的應用程式。

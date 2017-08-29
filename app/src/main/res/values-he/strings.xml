@@ -310,7 +310,7 @@
 
     <string name="status_inserting_apps">פרטי היישומון נשמרים</string>
     <string name="repo_error_empty_username">שם המשתמש ריק, פרטי הכניסה לא שונו</string>
-
+    <string name="empty_search_available_app_list">אין אפליקציות תואמות זמינות.</string>
     <string name="menu_email">שליחת דוא״ל ליוצר</string>
     <string name="antinonfreeassetslist">יישומון זה מכיל נכסים בלתי חופשיים</string>
 

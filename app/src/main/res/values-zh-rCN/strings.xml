@@ -289,6 +289,7 @@
     <string name="theme_night">黑暗</string>
     <string name="about_license">许可证类型</string>
 
+    <string name="empty_search_available_app_list">已安装应用列表为空。</string>
     <string name="status_inserting_apps">正在保存应用详细信息</string>
 
     <string name="menu_email">发邮件给作者</string>

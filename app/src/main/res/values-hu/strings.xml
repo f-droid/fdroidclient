@@ -185,7 +185,7 @@
     <string name="category_Theming">Stílus</string>
     <string name="category_Time">Idő</string>
     <string name="category_Writing">Írás</string>
-
+    <string name="empty_search_available_app_list">Nincs találat az elérhető alkalmazások között.</string>
     <string name="empty_installed_app_list">Nincs telepített app.\n\nVannak appok a készülékén, de azok nem érhetők el
         az F-Droidból. Ez lehet azért, mert frissíteni kell a tárolókat, vagy mert a tárolókban valóban nem szerepelnek
         az appjai.

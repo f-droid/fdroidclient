@@ -230,7 +230,7 @@
     <string name="category_Theming">Personalisasi</string>
     <string name="category_Time">Waktu</string>
     <string name="category_Writing">Menulis</string>
-
+    <string name="empty_search_available_app_list">Tidak ada aplikasi sesuai yang tersedia.</string>
     <string name="empty_installed_app_list">Tidak ada apl terpasang.
 
         Terdapat apl diperangkat anda, tapi tidak tersedia dari F-Droid. Ini mungkin disebabkan karena anda butuh
