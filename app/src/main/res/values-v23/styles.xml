@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="AppThemeNight" parent="AppBaseThemeNight">
+        <!-- set all card views a bit darker than default dark theme -->
+        <item name="android:colorBackgroundFloating">@color/fdroid_night</item>
+        <item name="appDetailsCardBackground">@color/fdroid_night</item>
+    </style>
+
     <!-- see http://stackoverflow.com/questions/32169303/activity-did-not-call-finish-api-23 -->
     <style name="AppThemeTransparent" parent="@android:style/Theme.Translucent.NoTitleBar" />
 
