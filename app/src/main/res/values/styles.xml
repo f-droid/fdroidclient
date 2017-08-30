@@ -49,14 +49,17 @@
         <item name="antiFeaturesWarning">@drawable/ic_warning_black_24dp</item>
     </style>
 
+    <!-- dark app theme with accent colors following roughly android design guidelines -->
     <style name="AppThemeDark" parent="AppBaseThemeDark">
         <!-- customizations that are not API-level specific go here. -->
     </style>
 
+    <!-- light app theme with accent colors following roughly android design guidelines -->
     <style name="AppThemeLight" parent="AppBaseThemeLight">
         <!-- customizations that are not API-level specific go here. -->
     </style>
 
+    <!-- mostly deep black theme specialized for OLED screens -->
     <style name="AppThemeNight" parent="AppThemeDark">
         <!-- customizations that are not API-level specific go here. -->
 
