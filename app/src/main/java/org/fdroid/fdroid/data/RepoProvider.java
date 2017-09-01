@@ -10,6 +10,8 @@ import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+
+import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
@@ -241,6 +243,8 @@ public class RepoProvider extends FDroidProvider {
             Uri appUri = AppProvider.getRepoUri(repo);
             int appCount = resolver.delete(appUri, null, null);
             Utils.debugLog(TAG, "Removed " + appCount + " apps from repo " + repo.address + ".");
+
+            AppUpdateStatusManager.getInstance(context).removeAllByRepo(repo);
 
             AppProvider.Helper.recalculatePreferredMetadata(context);
         }
