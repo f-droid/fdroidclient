@@ -207,6 +207,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
     defaultConfig {
         versionCode 1000001
         versionName getVersionName()

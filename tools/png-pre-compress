@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+set -e
+set -x
+
+for f in `find $(dirname $0)/../app/src/ -type f -name \*.png`; do
+    echo $f | grep -Eo '\.9\.png$' && continue  # do not optimized 9-patch, it breaks them
+    tmpfile=$(mktemp)
+    aapt singleCrunch -v -i $f -o $tmpfile
+    mv $tmpfile $f
+done
