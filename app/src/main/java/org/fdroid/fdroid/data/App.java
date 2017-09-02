@@ -15,6 +15,7 @@ import android.os.Environment;
 import android.os.LocaleList;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -101,6 +102,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     @JsonIgnore
     private AppPrefs prefs;
     @JsonIgnore
+    @NonNull
     public String preferredSigner;
 
     @JacksonInject("repoId")
@@ -159,6 +161,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * The index-v1 metadata uses the term `suggestedVersionCode` but we need that
      * value to end up in the `upstreamVersionCode` property here. These variables
      * need to be renamed across the whole F-Droid ecosystem to make sense.
+     *
      * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/1063">issue #1063</a>
      */
     @JsonProperty("suggestedVersionCode")
@@ -210,7 +213,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     }
 
     @Override
-    public int compareTo(App app) {
+    public int compareTo(@NonNull App app) {
         return name.compareToIgnoreCase(app.name);
     }
 
@@ -1137,17 +1140,14 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * However, if the app is installed, then we override this and instead want to only encourage
      * the user to try and install versions with that signature (because thats all the OS will let
      * them do).
-     * TODO: I don't think preferredSigner should ever be null, because if an app has apks then
-     * we should have chosen the first and used that. If so, then we should change to @NonNull and
-     * throw an exception if it is null.
      */
-    @Nullable
+    @NonNull
     public String getMostAppropriateSignature() {
         if (!TextUtils.isEmpty(installedSig)) {
             return installedSig;
         } else if (!TextUtils.isEmpty(preferredSigner)) {
             return preferredSigner;
         }
-        return null;
+        throw new IllegalStateException("Most Appropriate Signature not found!");
     }
 }

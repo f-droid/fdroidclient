@@ -6,7 +6,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
@@ -135,11 +134,11 @@ public class AppProviderTest extends FDroidProviderTest {
         assertResultCount(contentResolver, 2, AppProvider.getCanUpdateUri(), PROJ);
         assertResultCount(contentResolver, 9, AppProvider.getInstalledUri(), PROJ);
 
-        App installedOnlyOneVersionAvailable   = AppProvider.Helper.findSpecificApp(r, "installed, only one version available", 1, Cols.ALL);
-        App installedAlreadyLatestNoIgnore     = AppProvider.Helper.findSpecificApp(r, "installed, already latest, no ignore", 1, Cols.ALL);
-        App installedAlreadyLatestIgnoreAll    = AppProvider.Helper.findSpecificApp(r, "installed, already latest, ignore all", 1, Cols.ALL);
+        App installedOnlyOneVersionAvailable = AppProvider.Helper.findSpecificApp(r, "installed, only one version available", 1, Cols.ALL);
+        App installedAlreadyLatestNoIgnore = AppProvider.Helper.findSpecificApp(r, "installed, already latest, no ignore", 1, Cols.ALL);
+        App installedAlreadyLatestIgnoreAll = AppProvider.Helper.findSpecificApp(r, "installed, already latest, ignore all", 1, Cols.ALL);
         App installedAlreadyLatestIgnoreLatest = AppProvider.Helper.findSpecificApp(r, "installed, already latest, ignore latest", 1, Cols.ALL);
-        App installedAlreadyLatestIgnoreOld    = AppProvider.Helper.findSpecificApp(r, "installed, already latest, ignore old", 1, Cols.ALL);
+        App installedAlreadyLatestIgnoreOld = AppProvider.Helper.findSpecificApp(r, "installed, already latest, ignore old", 1, Cols.ALL);
 
         assertFalse(installedOnlyOneVersionAvailable.canAndWantToUpdate(context));
         assertFalse(installedAlreadyLatestNoIgnore.canAndWantToUpdate(context));
@@ -147,9 +146,9 @@ public class AppProviderTest extends FDroidProviderTest {
         assertFalse(installedAlreadyLatestIgnoreLatest.canAndWantToUpdate(context));
         assertFalse(installedAlreadyLatestIgnoreOld.canAndWantToUpdate(context));
 
-        App installedOldNoIgnore             = AppProvider.Helper.findSpecificApp(r, "installed, old version, no ignore", 1, Cols.ALL);
-        App installedOldIgnoreAll            = AppProvider.Helper.findSpecificApp(r, "installed, old version, ignore all", 1, Cols.ALL);
-        App installedOldIgnoreLatest         = AppProvider.Helper.findSpecificApp(r, "installed, old version, ignore latest", 1, Cols.ALL);
+        App installedOldNoIgnore = AppProvider.Helper.findSpecificApp(r, "installed, old version, no ignore", 1, Cols.ALL);
+        App installedOldIgnoreAll = AppProvider.Helper.findSpecificApp(r, "installed, old version, ignore all", 1, Cols.ALL);
+        App installedOldIgnoreLatest = AppProvider.Helper.findSpecificApp(r, "installed, old version, ignore latest", 1, Cols.ALL);
         App installedOldIgnoreNewerNotLatest = AppProvider.Helper.findSpecificApp(r, "installed, old version, ignore newer, but not latest", 1, Cols.ALL);
 
         assertTrue(installedOldNoIgnore.canAndWantToUpdate(context));
@@ -280,7 +279,7 @@ public class AppProviderTest extends FDroidProviderTest {
     }
 
     private Cursor queryAllApps() {
-        String[] projection = new String[] {
+        String[] projection = new String[]{
                 Cols._ID,
                 Cols.NAME,
                 Cols.Package.PACKAGE_NAME,
@@ -313,6 +312,8 @@ public class AppProviderTest extends FDroidProviderTest {
         values.put(Cols.DESCRIPTION, "test description");
         values.put(Cols.LICENSE, "GPL?");
         values.put(Cols.IS_COMPATIBLE, 1);
+
+        values.put(Cols.PREFERRED_SIGNER, "eaa1d713b9c2a0475234a86d6539f910");
 
         values.putAll(additionalValues);
 
