@@ -89,11 +89,6 @@ public class IndexV1Updater extends RepoUpdater {
             if (downloader.isNotFound()) {
                 return false;
             }
-            if (downloader.isCached()) {
-                // The index is unchanged since we last read it. We just mark
-                // everything that came from this repo as being updated.
-                Utils.debugLog(TAG, "Repo index for " + dataUri + " is up to date (by etag)");
-            }
             hasChanged = downloader.hasChanged();
 
             if (!hasChanged) {

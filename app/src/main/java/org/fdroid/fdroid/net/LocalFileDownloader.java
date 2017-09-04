@@ -49,9 +49,4 @@ public class LocalFileDownloader extends Downloader {
             notFound = true;
         }
     }
-
-    @Override
-    public boolean isCached() {
-        return false;
-    }
 }

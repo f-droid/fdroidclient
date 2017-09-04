@@ -85,14 +85,6 @@ public class BluetoothDownloader extends Downloader {
     }
 
     @Override
-    public boolean isCached() {
-        FileDetails details = getFileDetails();
-        return details != null &&
-            details.getCacheTag() != null &&
-            details.getCacheTag().equals(getCacheTag());
-    }
-
-    @Override
     protected void close() {
         if (connection != null) {
             connection.closeQuietly();

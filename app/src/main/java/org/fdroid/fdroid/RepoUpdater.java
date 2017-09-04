@@ -132,12 +132,6 @@ public class RepoUpdater {
             downloader.setListener(downloadListener);
             downloader.download();
 
-            if (downloader.isCached()) {
-                // The index is unchanged since we last read it. We just mark
-                // everything that came from this repo as being updated.
-                Utils.debugLog(TAG, "Repo index for " + indexUrl + " is up to date (by etag)");
-            }
-
         } catch (IOException e) {
             if (downloader != null && downloader.outputFile != null) {
                 if (!downloader.outputFile.delete()) {
