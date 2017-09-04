@@ -1,7 +1,8 @@
 package org.fdroid.fdroid.net;
 
+import android.text.TextUtils;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
-
+import info.guardianproject.netcipher.NetCipher;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
@@ -17,18 +18,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import info.guardianproject.netcipher.NetCipher;
-
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
 
-    private static final String HEADER_IF_NONE_MATCH = "If-None-Match";
     private static final String HEADER_FIELD_ETAG = "ETag";
 
     private final String username;
     private final String password;
     private HttpURLConnection connection;
-    private int statusCode = -1;
+    private boolean newFileAvailableOnServer;
 
     HttpDownloader(URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
@@ -70,24 +68,33 @@ public class HttpDownloader extends Downloader {
     }
 
     /**
-     * Get a remote file, checking the HTTP response code.  If 'etag' is not
-     * {@code null}, it's passed to the server as an If-None-Match header, in
-     * which case expect a 304 response if nothing changed. In the event of a
-     * 200 response ONLY, 'retag' (which should be passed empty) may contain
-     * an etag value for the response, or it may be left empty if none was
-     * available.
+     * Get a remote file, checking the HTTP response code and the {@code etag}.
+     * In order to prevent the {@code etag} from being used as a form of tracking
+     * cookie, this code never sends the {@code etag} to the server.  Instead, it
+     * uses a {@code HEAD} request to get the {@code etag} from the server, then
+     * only issues a {@code GET} if the {@code etag} has changed.
+     *
+     * @see <a href="http://lucb1e.com/rp/cookielesscookies">Cookieless cookies</a>
      */
     @Override
     public void download() throws IOException, InterruptedException {
         // get the file size from the server
         HttpURLConnection tmpConn = getConnection();
         tmpConn.setRequestMethod("HEAD");
+        String etag = tmpConn.getHeaderField(HEADER_FIELD_ETAG);
+
         int contentLength = -1;
         int statusCode = tmpConn.getResponseCode();
         tmpConn.disconnect();
+        newFileAvailableOnServer = false;
         switch (statusCode) {
             case 200:
                 contentLength = tmpConn.getContentLength();
+                if (!TextUtils.isEmpty(etag) && etag.equals(cacheTag)) {
+                    Utils.debugLog(TAG, sourceUrl + " is cached, not downloading");
+                    return;
+                }
+                newFileAvailableOnServer = true;
                 break;
             case 404:
                 notFound = true;
@@ -96,6 +103,7 @@ public class HttpDownloader extends Downloader {
                 Utils.debugLog(TAG, "HEAD check of " + sourceUrl + " returned " + statusCode + ": "
                         + tmpConn.getResponseMessage());
         }
+
         boolean resumable = false;
         long fileLength = outputFile.length();
         if (fileLength > contentLength) {
@@ -106,7 +114,9 @@ public class HttpDownloader extends Downloader {
             resumable = true;
         }
         setupConnection(resumable);
-        doDownload(resumable);
+        Utils.debugLog(TAG, "downloading " + sourceUrl + " (is resumable: " + resumable + ")");
+        downloadFromStream(8192, resumable);
+        cacheTag = connection.getHeaderField(HEADER_FIELD_ETAG);
     }
 
     private boolean isSwapUrl() {
@@ -147,37 +157,6 @@ public class HttpDownloader extends Downloader {
         }
     }
 
-    private void doDownload(boolean resumable) throws IOException, InterruptedException {
-        if (wantToCheckCache()) {
-            setupCacheCheck();
-            Utils.debugLog(TAG, "Checking cached status of " + sourceUrl);
-            statusCode = connection.getResponseCode();
-        }
-
-        if (isCached()) {
-            Utils.debugLog(TAG, sourceUrl + " is cached, so not downloading (HTTP " + statusCode + ")");
-        } else {
-            Utils.debugLog(TAG, "Need to download " + sourceUrl + " (is resumable: " + resumable + ")");
-            downloadFromStream(8192, resumable);
-            updateCacheCheck();
-        }
-    }
-
-    @Override
-    public boolean isCached() {
-        return wantToCheckCache() && statusCode == 304;
-    }
-
-    private void setupCacheCheck() {
-        if (cacheTag != null) {
-            connection.setRequestProperty(HEADER_IF_NONE_MATCH, cacheTag);
-        }
-    }
-
-    private void updateCacheCheck() {
-        cacheTag = connection.getHeaderField(HEADER_FIELD_ETAG);
-    }
-
     // Testing in the emulator for me, showed that figuring out the
     // filesize took about 1 to 1.5 seconds.
     // To put this in context, downloading a repo of:
@@ -193,7 +172,7 @@ public class HttpDownloader extends Downloader {
 
     @Override
     public boolean hasChanged() {
-        return this.statusCode != 304;
+        return newFileAvailableOnServer;
     }
 
     @Override

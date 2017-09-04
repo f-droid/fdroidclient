@@ -75,17 +75,11 @@ public abstract class Downloader {
         this.cacheTag = cacheTag;
     }
 
-    boolean wantToCheckCache() {
-        return cacheTag != null;
-    }
-
     public abstract boolean hasChanged();
 
     protected abstract int totalDownloadSize();
 
     public abstract void download() throws IOException, InterruptedException;
-
-    public abstract boolean isCached();
 
     /**
      * @return whether the requested file was not found in the repo (e.g. HTTP 404 Not Found)
