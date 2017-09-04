@@ -127,10 +127,10 @@ public final class LocalRepoManager {
         try {
             appInfo = pm.getApplicationInfo(fdroidPackageName, PackageManager.GET_META_DATA);
             SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
-            SanitizedFile fdroidApkLink = new SanitizedFile(webRoot, "fdroid.client.apk");
+            SanitizedFile fdroidApkLink = new SanitizedFile(fdroidDir, "F-Droid.apk");
             attemptToDelete(fdroidApkLink);
             if (Utils.symlinkOrCopyFileQuietly(apkFile, fdroidApkLink)) {
-                fdroidClientURL = "/" + fdroidApkLink.getName();
+                fdroidClientURL = "/" + fdroidDir.getName() + "/" + fdroidApkLink.getName();
             }
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Could not set up F-Droid apk in the webroot", e);

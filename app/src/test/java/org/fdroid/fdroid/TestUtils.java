@@ -95,12 +95,9 @@ public class TestUtils {
     }
 
     public static App insertApp(Context context, String packageName, String appName, int upstreamVersionCode,
-                          String repoUrl) {
+                          String repoUrl, String preferredSigner) {
         Repo repo = ensureRepo(context, repoUrl);
-        ContentValues values = new ContentValues();
-        values.put(Schema.AppMetadataTable.Cols.REPO_ID, repo.getId());
-        values.put(Schema.AppMetadataTable.Cols.UPSTREAM_VERSION_CODE, upstreamVersionCode);
-        return Assert.insertApp(context, packageName, appName, values);
+        return insertApp(context, packageName, appName, upstreamVersionCode, repo, preferredSigner);
     }
 
     public static App insertApp(Context context, String packageName, String appName, int upstreamVersionCode,

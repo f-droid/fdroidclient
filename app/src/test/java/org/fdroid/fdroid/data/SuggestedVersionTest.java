@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.data;
 
 import android.app.Application;
-
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.TestUtils;
@@ -44,7 +43,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
     @Test
     public void singleRepoSingleSig() {
         App singleApp = TestUtils.insertApp(
-                context, "single.app", "Single App (with beta)", 2, "https://beta.simple.repo");
+                context, "single.app", "Single App (with beta)", 2, "https://beta.simple.repo", TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, singleApp, 1, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, singleApp, 2, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, singleApp, 3, TestUtils.FDROID_SIG);
@@ -59,10 +58,12 @@ public class SuggestedVersionTest extends FDroidProviderTest {
 
     @Test
     public void singleRepoMultiSig() {
-        App unrelatedApp = TestUtils.insertApp(context, "noisy.app", "Noisy App", 3, "https://simple.repo");
+        App unrelatedApp = TestUtils.insertApp(context, "noisy.app", "Noisy App", 3, "https://simple.repo",
+                TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, unrelatedApp, 3, TestUtils.FDROID_SIG);
 
-        App singleApp = TestUtils.insertApp(context, "single.app", "Single App", 4, "https://simple.repo");
+        App singleApp = TestUtils.insertApp(context, "single.app", "Single App", 4, "https://simple.repo",
+                TestUtils.UPSTREAM_SIG);
         TestUtils.insertApk(context, singleApp, 1, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, singleApp, 2, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, singleApp, 3, TestUtils.FDROID_SIG);
@@ -93,12 +94,15 @@ public class SuggestedVersionTest extends FDroidProviderTest {
 
     @Test
     public void multiRepoMultiSig() {
-        App unrelatedApp = TestUtils.insertApp(context, "noisy.app", "Noisy App", 3, "https://simple.repo");
+        App unrelatedApp = TestUtils.insertApp(context, "noisy.app", "Noisy App", 3, "https://simple.repo",
+                TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, unrelatedApp, 3, TestUtils.FDROID_SIG);
 
-        App mainApp = TestUtils.insertApp(context, "single.app", "Single App (Main repo)", 4, "https://main.repo");
+        App mainApp = TestUtils.insertApp(context, "single.app", "Single App (Main repo)", 4, "https://main.repo",
+                TestUtils.FDROID_SIG);
         App thirdPartyApp = TestUtils.insertApp(
-                context, "single.app", "Single App (3rd party)", 4, "https://3rd-party.repo");
+                context, "single.app", "Single App (3rd party)", 4, "https://3rd-party.repo",
+                TestUtils.THIRD_PARTY_SIG);
 
         TestUtils.insertApk(context, mainApp, 1, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, mainApp, 2, TestUtils.FDROID_SIG);
@@ -147,7 +151,8 @@ public class SuggestedVersionTest extends FDroidProviderTest {
     @Test
     public void dontSuggestUpstreamVersions() {
         // By setting the "upstreamVersionCode" to 0, we are letting F-Droid choose the highest compatible version.
-        App mainApp = TestUtils.insertApp(context, "single.app", "Single App (Main repo)", 0, "https://main.repo");
+        App mainApp = TestUtils.insertApp(context, "single.app", "Single App (Main repo)", 0, "https://main.repo",
+                TestUtils.UPSTREAM_SIG);
 
         TestUtils.insertApk(context, mainApp, 1, TestUtils.FDROID_SIG);
         TestUtils.insertApk(context, mainApp, 2, TestUtils.FDROID_SIG);
@@ -180,6 +185,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
 
     /**
      * Same as {@link #assertSuggested(String, int, String, int)} except only for non installed apps.
+     *
      * @see #assertSuggested(String, int, String, int)
      */
     private void assertSuggested(String packageName, int suggestedVersion) {
@@ -189,7 +195,7 @@ public class SuggestedVersionTest extends FDroidProviderTest {
     /**
      * Checks that the app exists, that its suggested version code is correct, and that the apk which is "suggested"
      * has the correct signature.
-     *
+     * <p>
      * If {@param installedSig} is null then {@param installedVersion} is ignored and the signature of the suggested
      * apk is not checked.
      */

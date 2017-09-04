@@ -138,6 +138,10 @@ public class RepoXMLHandler extends DefaultHandler {
                     break;
                 case ApkTable.Cols.SIGNATURE:
                     curapk.sig = str;
+                    // the first APK in the list provides the preferred signature
+                    if (curapp.preferredSigner == null) {
+                        curapp.preferredSigner = str;
+                    }
                     break;
                 case ApkTable.Cols.SOURCE_NAME:
                     curapk.srcname = str;

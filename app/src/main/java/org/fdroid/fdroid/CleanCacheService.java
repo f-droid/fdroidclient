@@ -93,7 +93,7 @@ public class CleanCacheService extends IntentService {
         }
 
         for (File f : files) {
-            if (f.getName().startsWith("install-")) {
+            if (f.getName().endsWith(".apk")) {
                 clearOldFiles(f, TimeUnit.HOURS.toMillis(1));
             }
         }
