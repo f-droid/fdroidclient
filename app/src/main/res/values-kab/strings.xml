@@ -42,10 +42,10 @@
     <string name="notification_action_cancel">Sefsex</string>
     <string name="notification_action_install">Sbedd</string>
 
-    <string name="app_details">Talqayt...</string>
+    <string name="app_details">Talqayt…</string>
     <string name="updates__tts__download_app">Sider</string>
     <string name="more">Ugar</string>
-    <string name="less">Drus...</string>
+    <string name="less">Drus…</string>
 
     <string name="repo_details">Akufi</string>
     <string name="repo_last_update">leqqem</string>
@@ -104,7 +104,7 @@
     <string name="repo_description">Aglam</string>
     <string name="repo_name">Isem</string>
     <string name="unknown">Arussin</string>
-    <string name="system_install_installing">Asbeddi...</string>
+    <string name="system_install_installing">Asbeddi…</string>
     <string name="swap_success">Yedda!</string>
     <string name="swap_connecting">Tuqqna ɣer</string>
     <string name="loading">Asali</string>
@@ -112,7 +112,7 @@
     <string name="download_error">Azdam yerreẓ.</string>
     <string name="perms_new_perm_prefix">&amp;Amaynut</string>
     <string name="downloading">Azdam…</string>
-    <string name="installing">Asbeddi...</string>
+    <string name="installing">Asbeddi…</string>
     <string name="interval_1d">quotidien</string>
     <string name="interval_1w">s dduṛt</string>
     <string name="keep_hour">1 asrag</string>
@@ -126,7 +126,7 @@
 </plurals>
     <string name="notification_title_summary_update_available">Amucceḍ yewjed</string>
     <string name="notification_title_summary_downloading">Azdam…</string>
-    <string name="notification_title_summary_installing">Asbeddi...</string>
+    <string name="notification_title_summary_installing">Asbeddi…</string>
     <string name="theme_light">Aceɛlal</string>
     <string name="theme_dark">Aberkan</string>
     </resources>
