@@ -188,9 +188,7 @@
 
     <string name="category_Connectivity">Connectivité</string>
     <string name="category_Sports_Health">Sport &amp; Santé</string>
-    <string name="empty_can_update_app_list">Toutes les applis sont à jour.\n\nFélicitations ! Toutes vos applis sont à
-        jour (ou vos dépôts ne le sont pas).
-    </string>
+    <string name="empty_can_update_app_list">Félicitations ! Vos applications sont à jour.</string>
 
     <string name="system_install_installing">Installation…</string>
     <string name="system_install_uninstalling">Désinstallation…</string>
@@ -210,7 +208,7 @@
     <string name="perm_costs_money">Peut vous coûter de l\'argent</string>
     <string name="uninstall_update_confirm">Voulez-vous remplacer cette appli avec la version pré-installée ?</string>
     <string name="uninstall_confirm">Voulez-vous désinstaller cette appli ?</string>
-    <string name="download_error">Téléchargement échoué!</string>
+    <string name="download_error">Téléchargement échoué !</string>
 
     <string name="perms_new_perm_prefix">Nouveauté :</string>
     <string name="downloading">Téléchargement…</string>
@@ -311,7 +309,7 @@
     <string name="system_uninstall_button">Désinstaller</string>
 
     <string name="swap_cant_find_peers">Vous n\'arrivez pas à trouver ce que vous cherchez ?</string>
-    <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, impossible de faire l\'échange avec!</string>
+    <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, impossible de faire l\'échange avec !</string>
     <string name="swap_not_enabled">Échange désactivé</string>
     <string name="category_Time">Temps</string>
     <string name="more">Plus</string>
@@ -495,8 +493,8 @@
 	<item quantity="other">Mis à jour il y a %1$s semaines</item>
 </plurals>
     <plurals name="details_last_update_months">
-	<item quantity="one">Mis à jour il y a %1$d moi</item>
-        <item quantity="other">Mis à jour il y a %1$d mois</item>
+	<item quantity="one">Mis à jour il y a %1$d mois</item>
+	<item quantity="other">Mis à jour il y a %1$d mois</item>
 </plurals>
     <plurals name="details_last_update_years">
 	<item quantity="one">Mis à jour il y a %1$s an</item>
@@ -510,6 +508,6 @@
 
     <string name="status_inserting_x_apps">Sauvegarder les détails de l\'application (%1$d/%2$d) depuis %3$s</string>
     <string name="app_installed_media">Fichier installé dans %s</string>
-    <string name="app_permission_storage">F-Droid a besoin de la permission stockage pour installer à cet emplacement. Veuillez l\'autoriser sur l\'écran suivant pour pouvoir continuer l\'installation.</string>
+    <string name="app_permission_storage">F-Droid a besoin de la permission Stockage pour l\'installer à cet emplacement. Veuillez l\'autoriser sur l\'écran suivant pour pouvoir continuer l\'installation.</string>
 
     </resources>

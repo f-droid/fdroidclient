@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="updates">Amucceḍ</string>
+    <string name="ok">IH</string>
+
+    <string name="yes">Ih</string>
+    <string name="no">Ala</string>
+    <string name="back">Uɣal</string>
+    <string name="cancel">Sefsex</string>
+    <string name="menu_manage">Ikufan</string>
+    <string name="menu_settings">Iɣewwaṛen</string>
+    <string name="menu_search">Nadi</string>
+    <string name="menu_add_repo">Akufi</string>
+
+    <string name="menu_launch">Exécute</string>
+    <string name="menu_share">Bḍu</string>
+    <string name="menu_install">Sbedd</string>
+    <string name="menu_upgrade">Leqqem</string>
+    <string name="main_menu__latest_apps">Lqem angaru</string>
+    <string name="main_menu__categories">Taggayin</string>
+    <string name="main_menu__swap_nearby">S lqeṛban</string>
+
+    <string name="details_notinstalled">Yettusbedd!</string>
+    <string name="next">Ar zdat</string>
+    <string name="skip">Zgel</string>
+
+    <string name="pref_language">Tameslayt</string>
+    <string name="pref_language_default">Amezwer n unagraw</string>
+
+    <string name="category_Games">Uraren i uzekka n umsihel.</string>
+    <string name="category_Graphics">Convertir les émoticônes, comme &lt;code&gt;:-)&lt;/code&gt; et &lt;code&gt;:-P&lt;/code&gt;, en images lors de l&amp;rsquo;affichage</string>
+    <string name="category_Internet">Ur izmir ara ad yeqqen ar Internet.</string>
+    <string name="category_Multimedia">Umuγ n ugetmedia</string>
+    <string name="category_Navigation">Asnirem</string>
+    <string name="category_Reading">Taɣuri</string>
+    <string name="category_Security">Taɣellist</string>
+    <string name="category_Time">Akud</string>
+    <string name="category_Writing">Tira</string>
+
+    <string name="system_install_button_install">Sbedd</string>
+    <string name="newPerms">Amaynut</string>
+    <string name="notification_action_update">Mucceḍ</string>
+    <string name="notification_action_cancel">Sefsex</string>
+    <string name="notification_action_install">Sbedd</string>
+
+    <string name="app_details">Talqayt...</string>
+    <string name="updates__tts__download_app">Sider</string>
+    <string name="more">Ugar</string>
+    <string name="less">Drus...</string>
+
+    <string name="repo_details">Akufi</string>
+    <string name="repo_last_update">leqqem</string>
+    <string name="category_System">Anagraw</string>
+    <string name="notification_title_single_update_available">Amucceḍ yewjed</string>
+    <string name="notification_title_summary_install_error">Anezri deg usbeddi !</string>
+    <string name="version">Lqem</string>
+    <string name="by_author_format">ar %s</string>
+    <string name="delete">KKES</string>
+    <string name="other">Wayeḍ</string>
+
+    <string name="login_title">You must log in to acces user@server.com/share domain MYWINDOWSDOMAIN.</string>
+    <string name="login_name">Isem n useqdac</string>
+    <string name="login_password">Awal uffir</string>
+    <string name="repo_edit_credentials">Snifel awal uffir</string>
+    <string name="about_version">Lqem</string>
+    <string name="about_site">Asmel n web</string>
+    <string name="about_source">Tangalt taɣbalut</string>
+    <string name="about_mail">Imayl</string>
+    <string name="about_license">Turagt</string>
+
+    <string name="app_installed">Yettusbedd</string>
+    <string name="app_not_installed">Yettusbedd!</string>
+    <string name="app__newly_added">Amaynut</string>
+    <string name="added_on">Yettwarna ar %s</string>
+    <string name="app__tts__cancel_download">Sefsex asider</string>
+    <string name="app__install_downloaded_update">Mucceḍ</string>
+    <string name="updates__hide_updateable_apps">&amp;Ffer</string>
+    <string name="repo_add_add">Rnu</string>
+    <string name="links">Isɣewnen</string>
+    <string name="versions">Ileqman</string>
+    <string name="enable">Rmed</string>
+    <string name="add_key">Rnu tasarutt n usenneftaɣ</string>
+    <string name="bad_fingerprint">Adsil</string>
+    <string name="invalid_url">Ur d-tefkiḍ ara URL ameɣtu</string>
+    <string name="repo_provider">%s Akufi</string>
+
+    <string name="menu_website">Asmel n web</string>
+    <string name="menu_issues">n wuguren i d-nufa di tsuqqilt.</string>
+    <string name="menu_video">Ividyuten</string>
+    <string name="menu_license">%s Turagt</string>
+    <string name="menu_source">Tangalt taɣbalut</string>
+    <string name="menu_donate">Tawsa</string>
+    <string name="antifeatures">Timahilin</string>
+    <string name="display">Askan</string>
+
+    <string name="search_hint">Nadi</string>
+
+    <string name="rooted">&amp;Zgel</string>
+    <string name="local_repo">&amp;Adigan:</string>
+    <string name="icon">D tignit n wesnas</string>
+    <string name="proxy">Erreur à l\'attachement à la session proxy.</string>
+    <string name="permissions">Tisirag</string>
+    <string name="theme">Asentel</string>
+    <string name="repo_url">Tansa</string>
+    <string name="repo_description">Aglam</string>
+    <string name="repo_name">Isem</string>
+    <string name="unknown">Arussin</string>
+    <string name="system_install_installing">Asbeddi...</string>
+    <string name="swap_success">Yedda!</string>
+    <string name="swap_connecting">Tuqqna ɣer</string>
+    <string name="loading">Asali</string>
+    <string name="allPerms">Akk</string>
+    <string name="download_error">Azdam yerreẓ.</string>
+    <string name="perms_new_perm_prefix">&amp;Amaynut</string>
+    <string name="downloading">Azdam…</string>
+    <string name="installing">Asbeddi...</string>
+    <string name="interval_1d">quotidien</string>
+    <string name="interval_1w">s dduṛt</string>
+    <string name="keep_hour">1 asrag</string>
+    <string name="keep_day">ass</string>
+    <string name="keep_month">aggur</string>
+    <string name="keep_year">Aseggas</string>
+    <string name="notification_title_single_install_error">Anezri deg usbeddi !</string>
+    <plurals name="notification_summary_installed">
+	<item quantity="one">%1$d n usnas yebded</item>
+	<item quantity="other">%1$d n isnasen bedden</item>
+</plurals>
+    <string name="notification_title_summary_update_available">Amucceḍ yewjed</string>
+    <string name="notification_title_summary_downloading">Azdam…</string>
+    <string name="notification_title_summary_installing">Asbeddi...</string>
+    <string name="theme_light">Aceɛlal</string>
+    <string name="theme_dark">Aberkan</string>
+    </resources>

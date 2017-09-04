@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="SignatureMismatch">De nieuwe versie is met een andere sleutel ondertekend dan de oude versie. Om de nieuwe versie te installeren, moet de oude eerst gede-instaleerd worden. Probeer het daarna opnieuw. (Let op: bij het de-installeren worden de interne gegevens van de app ook verwijderd)</string>
+    <string name="SignatureMismatch">De nieuwe versie is met een andere sleutel ondertekend dan de oude versie. Om de nieuwe versie te installeren, moet de oude eerst gedeïnstalleerd worden. Probeer het daarna opnieuw. (Let op: bij het deïnstalleren worden de interne gegevens van de app ook verwijderd)</string>
     <string name="installIncompatible">Deze app is niet compatibel met je apparaat. Toch installeren?</string>
     <string name="version">Versie</string>
     <string name="delete">Verwijdeer</string>
@@ -14,8 +14,8 @@
     <string name="automatic_scan_wifi_on">Update alleen automatisch op verbinding zonder datalimiet zoals wifi</string>
     <string name="notify">Toon beschikbare updates</string>
     <string name="notify_on">Toon een melding wanneer er updates beschikbaar zijn</string>
-    <string name="system_installer">Extensie voor systeemrechten</string>
-    <string name="system_installer_on">Gebruik de F-Droid-extensie voor systeemrechten om pakketten te installeren, updaten en verwijderen</string>
+    <string name="system_installer">Systeemrechtenextensie</string>
+    <string name="system_installer_on">Gebruik de F-Droid-systeemrechtenextensie om pakketten te installeren, updaten en verwijderen</string>
     <string name="local_repo_name">Naam van collectie gedeelde apps</string>
     <string name="local_repo_name_summary">De geadverteerde titel van jouw collectie gedeelde apps: %s</string>
     <string name="local_repo_https_on">Gebruik versleutelde HTTPS:// verbinding voor gedeelde apps</string>
@@ -56,7 +56,7 @@
     <string name="menu_launch">Voer uit</string>
     <string name="menu_share">Deel</string>
     <string name="menu_install">Installeer</string>
-    <string name="menu_uninstall">De-installeer</string>
+    <string name="menu_uninstall">Deïnstalleren</string>
     <string name="menu_ignore_all">Negeer alle updates</string>
     <string name="menu_ignore_this">Negeer deze update</string>
     <string name="menu_website">Website</string>
@@ -179,14 +179,16 @@
     <string name="wifi">Wifi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="empty_installed_app_list">Geen apps geïnstalleerd. Er bevinden zich apps op dit apparaat, maar deze zijn niet beschikbaar via F-Droid. Het kan zijn dat je je bronnen moet updaten, of dat de bronnen geen van jouw apps beschikbaar stellen.</string>
+    <string name="empty_installed_app_list">Geen apps geïnstalleerd.
+\n
+\nEr bevinden zich apps op dit apparaat, maar deze zijn niet beschikbaar via F-Droid. Het kan zijn dat je je bronnen moet updaten, of dat de bronnen geen van jouw apps beschikbaar stellen.</string>
     <string name="empty_can_update_app_list">Al je apps zijn up-to-date!</string>
 
     <string name="install_error_unknown">Kon niet installeren door een onbekende fout</string>
-    <string name="uninstall_error_unknown">Kon niet de-installeren door een onbekende fout</string>
+    <string name="uninstall_error_unknown">Kon niet deïnstalleren door een onbekende fout</string>
     <string name="system_install_installing">Installeren…</string>
-    <string name="system_install_uninstalling">De-installeren…</string>
-    <string name="system_uninstall_button">De-installeer</string>
+    <string name="system_install_uninstalling">Deïnstalleren…</string>
+    <string name="system_uninstall_button">Deïnstalleren</string>
 
     <string name="swap_nfc_title">Raak aan om uit te wisselen</string>
     <string name="swap_nfc_description">Als je vriend F-Droid heeft geïnstalleerd en NFC is ingeschakeld, hou dan de
@@ -249,7 +251,7 @@
     <string name="allPerms">Alles</string>
     <string name="perm_costs_money">Dit kan geld kosten</string>
     <string name="uninstall_update_confirm">Wil je deze app vervangen door de fabrieksversie?</string>
-    <string name="uninstall_confirm">Wil je deze app de-installeren?</string>
+    <string name="uninstall_confirm">Wil je deze app deïnstalleren?</string>
 
     <string name="perms_new_perm_prefix">Nieuw:</string>
     <string name="perms_description_app">Aangeboden door %1$s.</string>
@@ -267,8 +269,8 @@
     <string name="theme_dark">Donker</string>
     <string name="unstable_updates">Instabiele updates</string>
     <string name="unstable_updates_summary">Geef updates weer voor instabiele versies</string>
-    <string name="uninstall_system">Update/de-installeer extensie voor systeemrechten</string>
-    <string name="uninstall_system_summary">Open detailscherm van extensie voor systeemrechten om deze te updaten of te de-installeren</string>
+    <string name="uninstall_system">Update/deïnstalleer systeemrechtenextensie</string>
+    <string name="uninstall_system_summary">Open detailscherm van systeemrechtenextensie om deze te updaten of te deïnstalleren</string>
     <string name="more">Meer</string>
     <string name="less">Minder</string>
 
@@ -290,16 +292,16 @@
     <string name="system_install_denied_permissions">De extensie heeft geen systeemrechten gekregen! Maak een bugrapport
         aan!
     </string>
-    <string name="system_install_button_install">Installeer</string>
-    <string name="system_install_post_success">F-Droid-extensie voor systeemrechten is geïnstalleerd</string>
-    <string name="system_install_post_fail">Installatie van F-Droid-extensie voor systeemrechten is mislukt</string>
-    <string name="system_install_post_success_message">F-Droid-extensie voor systeemrechten is geïnstalleerd. F-Droid kan hiermee zelf apps installeren, updaten en de-installeren.</string>
-    <string name="system_install_post_fail_message">De installatie van de F-Droid-extensie voor systeemrechten is mislukt. De installatiemethode wordt niet door alle Android-systemen ondersteund. Zie de F-Droid-bugtracker voor meer informatie.</string>
+    <string name="system_install_button_install">Installeren</string>
+    <string name="system_install_post_success">F-Droid-systeemrechtenextensie is geïnstalleerd</string>
+    <string name="system_install_post_fail">Installatie van F-Droid-systeemrechtenextensie is mislukt</string>
+    <string name="system_install_post_success_message">F-Droid-systeemrechtenextensie is geïnstalleerd. F-Droid kan hiermee zelf apps installeren, updaten en deïnstalleren.</string>
+    <string name="system_install_post_fail_message">De installatie van de F-Droid-systeemrechtenextensie is mislukt. De installatiemethode wordt niet door alle Android-systemen ondersteund. Zie de F-Droid-bugtracker voor meer informatie.</string>
     <string name="system_install_installing_rebooting">Installeren en opnieuw opstarten…</string>
-    <string name="system_install_question">Wil je de F-Droid-extensie voor systeemrechten installeren?</string>
+    <string name="system_install_question">Wil je de F-Droid-systeemrechtenextensie installeren?</string>
     <string name="system_install_warning">Dit kan tot 10 seconden duren.</string>
     <string name="system_install_warning_lollipop">Dit kan tot 10 seconden duren en het apparaat zal <b>opnieuw opgestart</b> worden.</string>
-    <string name="system_uninstall">Wil je de F-Droid-extensie voor systeemrechten de-installeren?</string>
+    <string name="system_uninstall">Wil je de F-Droid-systeemrechtenextensie deïnstalleren?</string>
     <string name="download_error">Download mislukt!</string>
 
     <string name="theme_night">Nacht</string>
@@ -333,15 +335,15 @@
     <string name="update_auto_download_summary">Updates worden automatisch gedownload in de achtergrond en er wordt een
         melding weergegeven om ze te installeren
     </string>
-    <string name="system_install_not_supported">Installatie van de F-Droid-extensie voor systeemrechten wordt op het moment niet ondersteund op Android 5.1 of hoger.</string>
+    <string name="system_install_not_supported">Installatie van de F-Droid-systeemrechtenextensie wordt op het moment niet ondersteund op Android 5.1 of hoger.</string>
 
     <string name="download_pending">Wachten op start van download…</string>
     <string name="install_error_notify_title">Fout bij het installeren van %s</string>
-    <string name="uninstall_error_notify_title">Fout bij het de-installeren van %s</string>
+    <string name="uninstall_error_notify_title">Fout bij het deïnstalleren van %s</string>
 
 
     <string name="installing">Installeren…</string>
-    <string name="uninstalling">De-installeren…</string>
+    <string name="uninstalling">Deïnstalleren…</string>
 
     <string name="keep_hour">1 uur</string>
     <string name="keep_day">1 dag</string>
@@ -355,7 +357,7 @@
     <string name="update_auto_install">Installeer updates automatisch</string>
     <string name="update_auto_install_summary">Download en installeer updates in de achtergrond</string>
     <string name="keep_install_history">Bewaar installatiegeschiedenis</string>
-    <string name="keep_install_history_summary">Bewaar een logbestand van alle installaties en de-installaties in F-Droid</string>
+    <string name="keep_install_history_summary">Bewaar een logbestand van alle installaties en deïnstallaties in F-Droid</string>
     <string name="warning_no_internet">Kan niet updaten, ben je verbonden met het internet?</string>
     <string name="versions">Versies</string>
     <string name="app_details_donate_prompt_unknown_author">Bestel een kopje koffie voor de ontwikkelaars van %1$s!</string>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="SignatureMismatch">Nova različica je overovljena z drugim ključem kot starejša. V primeru, da želite
         namestiti novejšo različico morate najprej odstraniti staro. Poskusite ponovno, ko ste to naredili. (Bodite
@@ -52,4 +52,67 @@
     <string name="automatic_scan_wifi">Samo na Wi-Fi</string>
     <string name="automatic_scan_wifi_on">Posodobi seznam aplikacij samo na Wi-Fi</string>
     <string name="notify_on">Prikaži obvestilo, ko so na voljo posodobitve</string>
-</resources>
+<string name="back">Nazaj</string>
+    <string name="menu_settings">Nastavitve</string>
+    <string name="menu_launch">Zaženi</string>
+    <string name="menu_share">Deli</string>
+    <string name="menu_upgrade">Nadgradnja</string>
+    <string name="main_menu__latest_apps">Najnovejše</string>
+    <string name="main_menu__categories">Kategorije</string>
+    <string name="main_menu__swap_nearby">V bližini</string>
+
+    <string name="preference_manage_installed_apps">Upravljaj nameščene aplikacije</string>
+
+
+    <string name="next">Naprej</string>
+    <string name="skip">Preskoči</string>
+
+    <string name="pref_language">Jezik</string>
+    <string name="pref_language_default">Sistemsko privzeto</string>
+
+    <string name="category_Connectivity">Povezljivost</string>
+    <string name="category_Development">Razvijanje</string>
+    <string name="category_Games">Igre</string>
+    <string name="category_Graphics">Grafika</string>
+    <string name="category_Internet">Internet</string>
+    <string name="category_Money">Denar</string>
+    <string name="category_Multimedia">Multimedija</string>
+    <string name="category_Navigation">Navigacija</string>
+    <string name="category_Phone_SMS">Telefon &amp; SMS</string>
+    <string name="category_Reading">Branje</string>
+    <string name="category_Science_Education">Znanost &amp; Izobrazba</string>
+    <string name="category_Security">Varnost</string>
+    <string name="category_Time">Čas</string>
+    <string name="category_Writing">Pisanje</string>
+
+    <string name="system_install_button_install">Namesti</string>
+    <string name="system_uninstall_button">Odstrani</string>
+    <string name="swap_welcome">Dobrodošli v F-Droid!</string>
+    <string name="swap_dont_show_again">Tega ne prikaži ponovno</string>
+    <string name="newPerms">Novo</string>
+    <string name="notification_action_update">Posodobi</string>
+    <string name="notification_action_cancel">Prekliči</string>
+    <string name="notification_action_install">Namesti</string>
+
+    <string name="app_details">Podrobnosti aplikacije</string>
+    <string name="about_title">Več o F-Droid</string>
+    <string name="app_list__name__downloading_in_progress">Prenašanje %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s nameščena</string>
+    <string name="more">Več</string>
+    <string name="less">Manj</string>
+
+    <string name="antitracklist">Ta aplikacija vam sledi in poroča o vaši aktivnosti</string>
+    <string name="warning_no_internet">Ni možno posodobiti, ste povezani na internet?</string>
+    <string name="unsigned">Nepodpisano</string>
+    <string name="unverified">Nepotrjeno</string>
+    <string name="repo_details">Zbirka</string>
+    <string name="repo_last_update">Najnovejša posodobitev</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="category_Sports_Health">Šport &amp; zdravje</string>
+    <string name="category_System">Sistem</string>
+    <string name="swap_send_fdroid">Pošlji F-Droid</string>
+    <string name="crash_dialog_title">F-Droid se je zrušil</string>
+    <string name="crash_dialog_text">Zaradi nepričakovane napake se je aplikacija prisilno ustavila. Nam želite v e-pošti posredovati podrobnosti in s tem pomagati odpraviti napako?</string>
+    <string name="notification_title_single_update_available">Posodobitev na voljo</string>
+    <string name="notification_title_summary_install_error">Namestitev neuspešna</string>
+    </resources>
