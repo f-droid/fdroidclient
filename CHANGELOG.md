@@ -1,3 +1,13 @@
+### 1.0-alpha2 (2017-09-04)
+
+* Prevent HTTP ETag from being used as a tracking cookie
+
+* Improved screenshots layout
+
+* Properly clean up temp and cached files
+
+* Dark mode fixes
+
 ### 1.0-alpha1 (2017-07-18)
 
 * fix bug removing apps from repos (#568)
