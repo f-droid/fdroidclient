@@ -37,7 +37,7 @@
     <string name="repo_add_title">Додај нову ризницу</string>
     <string name="repo_add_add">Додај</string>
     <string name="cancel">Одустани</string>
-    <string name="enable">Омогући</string>
+    <string name="enable">Укључи</string>
     <string name="add_key">Додај кључ</string>
     <string name="overwrite">Пребриши</string>
     <string name="bluetooth_activity_not_found">Нема начина за слања блутутом, одредите један!</string>
@@ -282,7 +282,7 @@
     <string name="repo_details">Ризница</string>
     <string name="repo_url">Адреса</string>
     <string name="system_install_denied_signature">Потпис проширења је погрешан! Пријавите грешку!</string>
-    <string name="system_install_button_install">Инсталирај</string>
+    <string name="system_install_button_install">Угради</string>
     <string name="system_install_denied_permissions">Повлашћене дозволе нису одобрене за проширење! Пријавите грешку!
     </string>
     <string name="system_install_installing_rebooting">Инсталирам и поново покрећем…</string>
